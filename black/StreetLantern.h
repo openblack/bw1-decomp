@@ -26,9 +26,18 @@ struct GStreetLantern
 };
 static_assert(sizeof(struct GStreetLantern) == 0x64, "Data type is of wrong size");
 
-// win1.41 008ea8d4 mac 109e0fa4 GStreetLantern::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GStreetLantern asm("??_R4GStreetLantern@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becaf8 mac inlined GStreetLantern::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GStreetLantern asm("??_R0?AVGStreetLantern@@@8");
+// win1.41 009ad9d8 mac inlined GStreetLantern::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GStreetLantern asm("??_R1A@?0A@A@GStreetLantern@@8");
+// win1.41 009ad9f0 mac inlined GStreetLantern::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GStreetLantern asm("??_R2GStreetLantern@@8");
+// win1.41 009ada08 mac inlined GStreetLantern::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GStreetLantern asm("??_R3GStreetLantern@@8");
+// win1.41 008ea8d4 mac 109e0fa4 GStreetLantern::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GStreetLantern asm("??_R4GStreetLantern@@6B@");
 // win1.41 008ea8d8 mac 109e0fac GStreetLantern::`vftable'
 extern const struct ObjectVftable __vt__14GStreetLantern asm("??_7GStreetLantern@@6B@");
 

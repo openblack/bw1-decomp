@@ -18,6 +18,17 @@ struct Pigeon
 };
 static_assert(sizeof(struct Pigeon) == 0x148, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c9238 mac inlined Pigeon::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Pigeon asm("??_R0?AVPigeon@@@8");
+// win1.41 009a7380 mac inlined Pigeon::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Pigeon asm("??_R1A@?0A@A@Pigeon@@8");
+// win1.41 009a7398 mac inlined Pigeon::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Pigeon asm("??_R2Pigeon@@8");
+// win1.41 009a73c8 mac inlined Pigeon::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Pigeon asm("??_R3Pigeon@@8");
+
 // Override methods
 
 // win1.41 0041eda0 mac 101717d0 Pigeon::_dt(void)

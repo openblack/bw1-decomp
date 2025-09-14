@@ -26,9 +26,18 @@ struct PhysicsObject
 };
 static_assert(sizeof(struct PhysicsObject) == 0x1dc, "Data type is of wrong size");
 
-// win1.41 00932b90 mac 10746ec0 PhysicsObject::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13PhysicsObject asm("??_R4PhysicsObject@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bfeec0 mac inlined PhysicsObject::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13PhysicsObject asm("??_R0?AVPhysicsObject@@@8");
+// win1.41 009b31c0 mac inlined PhysicsObject::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13PhysicsObject asm("??_R1A@?0A@A@PhysicsObject@@8");
+// win1.41 009b31d8 mac inlined PhysicsObject::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13PhysicsObject asm("??_R2PhysicsObject@@8");
+// win1.41 009b31e8 mac inlined PhysicsObject::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13PhysicsObject asm("??_R3PhysicsObject@@8");
+// win1.41 00932b90 mac 10746ec0 PhysicsObject::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13PhysicsObject asm("??_R4PhysicsObject@@6B@");
 // win1.41 00932b94 mac 10746ec8 PhysicsObject::`vftable'
 extern const struct BaseVftable __vt__13PhysicsObject asm("??_7PhysicsObject@@6B@");
 

@@ -16,6 +16,17 @@ struct GMagicFlockGroundInfo
 };
 static_assert(sizeof(struct GMagicFlockGroundInfo) == 0x58, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009cd008 mac inlined GMagicFlockGroundInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21GMagicFlockGroundInfo asm("??_R0?AVGMagicFlockGroundInfo@@@8");
+// win1.41 009a8198 mac inlined GMagicFlockGroundInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21GMagicFlockGroundInfo asm("??_R1A@?0A@A@GMagicFlockGroundInfo@@8");
+// win1.41 009a81b0 mac inlined GMagicFlockGroundInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21GMagicFlockGroundInfo asm("??_R2GMagicFlockGroundInfo@@8");
+// win1.41 009a81c8 mac inlined GMagicFlockGroundInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21GMagicFlockGroundInfo asm("??_R3GMagicFlockGroundInfo@@8");
+
 // Override methods
 
 // win1.41 004357e0 mac 1051ece0 GMagicFlockGroundInfo::_dt(void)

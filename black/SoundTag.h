@@ -37,9 +37,18 @@ struct SoundTag
 };
 static_assert(sizeof(struct SoundTag) == 0x54, "Data type is of wrong size");
 
-// win1.41 00980534 mac 109d7a40 SoundTag::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8SoundTag asm("??_R4SoundTag@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c224f0 mac inlined SoundTag::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8SoundTag asm("??_R0?AVSoundTag@@@8");
+// win1.41 009b91f8 mac inlined SoundTag::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8SoundTag asm("??_R1A@?0A@A@SoundTag@@8");
+// win1.41 009b9210 mac inlined SoundTag::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8SoundTag asm("??_R2SoundTag@@8");
+// win1.41 009b9220 mac inlined SoundTag::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8SoundTag asm("??_R3SoundTag@@8");
+// win1.41 00980534 mac 109d7a40 SoundTag::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8SoundTag asm("??_R4SoundTag@@6B@");
 // win1.41 00980538 mac 109d7a48 SoundTag::`vftable'
 extern const struct BaseVftable __vt__8SoundTag asm("??_7SoundTag@@6B@");
 

@@ -23,6 +23,17 @@ struct PlannedTownCitadelHeart
 };
 static_assert(sizeof(struct PlannedTownCitadelHeart) == 0x48, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009ceab8 mac inlined PlannedTownCitadelHeart::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23PlannedTownCitadelHeart asm("??_R0?AVPlannedTownCitadelHeart@@@8");
+// win1.41 009a90a0 mac inlined PlannedTownCitadelHeart::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23PlannedTownCitadelHeart asm("??_R1A@?0A@A@PlannedTownCitadelHeart@@8");
+// win1.41 009a90b8 mac inlined PlannedTownCitadelHeart::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23PlannedTownCitadelHeart asm("??_R2PlannedTownCitadelHeart@@8");
+// win1.41 009a90d0 mac inlined PlannedTownCitadelHeart::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23PlannedTownCitadelHeart asm("??_R3PlannedTownCitadelHeart@@8");
+
 // Override methods
 
 // win1.41 00467e60 mac 101c1e40 PlannedTownCitadelHeart::_dt(void)

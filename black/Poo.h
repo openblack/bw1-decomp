@@ -21,6 +21,17 @@ struct Poo
 };
 static_assert(sizeof(struct Poo) == 0x68, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00beca90 mac inlined Poo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__3Poo asm("??_R0?AVPoo@@@8");
+// win1.41 009ad710 mac inlined Poo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__3Poo asm("??_R1A@?0A@A@Poo@@8");
+// win1.41 009ad728 mac inlined Poo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__3Poo asm("??_R2Poo@@8");
+// win1.41 009ad748 mac inlined Poo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__3Poo asm("??_R3Poo@@8");
+
 // Override methods
 
 // win1.41 0055d0c0 mac 103be130 Poo::_dt(void)

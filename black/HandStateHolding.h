@@ -19,9 +19,18 @@ struct HandStateHolding
 };
 static_assert(sizeof(struct HandStateHolding) == 0x144, "Data type is of wrong size");
 
-// win1.41 00900b3c mac 1099b3a4 HandStateHolding::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16HandStateHolding asm("??_R4HandStateHolding@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf0158 mac inlined HandStateHolding::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16HandStateHolding asm("??_R0?AVHandStateHolding@@@8");
+// win1.41 009b0f78 mac inlined HandStateHolding::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16HandStateHolding asm("??_R1A@?0A@A@HandStateHolding@@8");
+// win1.41 009b0fe0 mac inlined HandStateHolding::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16HandStateHolding asm("??_R2HandStateHolding@@8");
+// win1.41 009b0ff0 mac inlined HandStateHolding::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16HandStateHolding asm("??_R3HandStateHolding@@8");
+// win1.41 00900b3c mac 1099b3a4 HandStateHolding::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16HandStateHolding asm("??_R4HandStateHolding@@6B@");
 // win1.41 00900b40 mac 1099b3b4 HandStateHolding::`vftable'
 extern const struct HandStateVftable __vt__16HandStateHolding asm("??_7HandStateHolding@@6B@");
 

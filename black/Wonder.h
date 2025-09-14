@@ -29,9 +29,18 @@ struct Wonder
 };
 static_assert(sizeof(struct Wonder) == 0xc8, "Data type is of wrong size");
 
-// win1.41 008df968 mac 107605fc Wonder::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Wonder asm("??_R4Wonder@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bece20 mac inlined Wonder::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Wonder asm("??_R0?AVWonder@@@8");
+// win1.41 009ae410 mac inlined Wonder::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Wonder asm("??_R1A@?0A@A@Wonder@@8");
+// win1.41 009ae428 mac inlined Wonder::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Wonder asm("??_R2Wonder@@8");
+// win1.41 009ae450 mac inlined Wonder::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Wonder asm("??_R3Wonder@@8");
+// win1.41 008df968 mac 107605fc Wonder::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Wonder asm("??_R4Wonder@@6B@");
 // win1.41 008df96c mac 10760604 Wonder::`vftable'
 extern const struct MultiMapFixedVftable __vt__6Wonder asm("??_7Wonder@@6B@");
 

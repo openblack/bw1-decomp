@@ -178,7 +178,7 @@ def get_virtual_methods(vftable, vftable_map):
     return result
 
 
-def build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, rtti_locator_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map):
+def build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, rtti_typedesc_address_look_up, rtti_base_class_desc_address_look_up, rtti_base_class_array_address_look_up, rtti_class_hierarchy_desc_address_look_up, rtti_locator_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map):
     consumed_vftable_addresses = set()
     consumed_methods = set()
     for t in header_structs:
@@ -195,7 +195,7 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
                     structs.append(associated_vftable)
                 if t.name in helper_base_map:
                     structs.append(helper_base_map[t.name])
-                new_struct = RTTIClass(t, vftable_address_look_up, rtti_locator_address_look_up, virtual_table_function_arg_map, class_method_look_up, class_static_method_look_up)
+                new_struct = RTTIClass(t, vftable_address_look_up, rtti_typedesc_address_look_up, rtti_base_class_desc_address_look_up, rtti_base_class_array_address_look_up, rtti_class_hierarchy_desc_address_look_up, rtti_locator_address_look_up, virtual_table_function_arg_map, class_method_look_up, class_static_method_look_up)
                 consumed_vftable_addresses.add(new_struct.vftable_win_address)
             else:
                 new_struct = t
@@ -315,6 +315,18 @@ if __name__ == "__main__":
 
     vftable_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__vt__")], global_decls)
     vftable_address_look_up = {i["name"].removeprefix("__vt__"): i for i in vftable_addresses}
+
+    typedesc_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__RTTITypeDescriptor__")], remainder_globals)
+    typedesc_address_look_up = {i["name"].removeprefix("__RTTITypeDescriptor__"): i for i in typedesc_addresses}
+
+    base_class_desc_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__RTTIBaseClassDescriptor__")], remainder_globals)
+    base_class_desc_address_look_up = {i["name"].removeprefix("__RTTIBaseClassDescriptor__"): i for i in base_class_desc_addresses}
+
+    base_class_array_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__RTTIBaseClassArray__")], remainder_globals)
+    base_class_array_address_look_up = {i["name"].removeprefix("__RTTIBaseClassArray__"): i for i in base_class_array_addresses}
+
+    class_hierarchy_desc_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__RTTIClassHierarchyDescriptor__")], remainder_globals)
+    class_hierarchy_desc_address_look_up = {i["name"].removeprefix("__RTTIClassHierarchyDescriptor__"): i for i in class_hierarchy_desc_addresses}
 
     locator_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__RTTICompleObjectLocator__")], remainder_globals)
     locator_address_look_up = {i["name"].removeprefix("__RTTICompleObjectLocator__"): i for i in locator_addresses}
@@ -483,7 +495,7 @@ if __name__ == "__main__":
     header_map: dict[Path, Header] = {}
 
     build_enum_headers(header_enums, header_map, local_header_import_map)
-    remainder_vftables, remainder_class_methods, remainder_class_static_methods = build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, locator_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map)
+    remainder_vftables, remainder_class_methods, remainder_class_static_methods = build_struct_headers(header_structs, header_map, vftable_map, helper_base_map, vftable_address_look_up, typedesc_address_look_up, base_class_desc_address_look_up, base_class_array_address_look_up, class_hierarchy_desc_address_look_up, locator_address_look_up, class_method_look_up, class_static_method_look_up, local_header_import_map)
     remainder_class_static_methods = build_remaining_static_function_headers(remainder_class_static_methods, header_map)
     build_neighbour_function_headers(assigned_neighbour_functions, header_map)
     build_loadit_headers(loadit_functions, header_map)

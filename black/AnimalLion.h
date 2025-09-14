@@ -20,6 +20,17 @@ struct Lion
 };
 static_assert(sizeof(struct Lion) == 0x148, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c9300 mac inlined Lion::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Lion asm("??_R0?AVLion@@@8");
+// win1.41 009a75b0 mac inlined Lion::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Lion asm("??_R1A@?0A@A@Lion@@8");
+// win1.41 009a7638 mac inlined Lion::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Lion asm("??_R2Lion@@8");
+// win1.41 009a7660 mac inlined Lion::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Lion asm("??_R3Lion@@8");
+
 // Override methods
 
 // win1.41 0041fd90 mac 10175be0 Lion::_dt(void)

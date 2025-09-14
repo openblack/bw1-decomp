@@ -17,9 +17,18 @@ struct SetupButton
 };
 static_assert(sizeof(struct SetupButton) == 0x244, "Data type is of wrong size");
 
-// win1.41 008ab2b0 mac 10730d6c SetupButton::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11SetupButton asm("??_R4SetupButton@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8138 mac inlined SetupButton::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11SetupButton asm("??_R0?AUSetupButton@@@8");
+// win1.41 009a65b8 mac inlined SetupButton::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11SetupButton asm("??_R1A@?0A@A@SetupButton@@8");
+// win1.41 009a65d0 mac inlined SetupButton::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11SetupButton asm("??_R2SetupButton@@8");
+// win1.41 009a65e0 mac inlined SetupButton::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11SetupButton asm("??_R3SetupButton@@8");
+// win1.41 008ab2b0 mac 10730d6c SetupButton::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11SetupButton asm("??_R4SetupButton@@6B@");
 // win1.41 008ab2b4 mac 10730d7c SetupButton::`vftable'
 extern const struct SetupControlVftable __vt__11SetupButton asm("??_7SetupButton@@6B@");
 

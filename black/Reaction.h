@@ -35,9 +35,18 @@ struct Reaction
 };
 static_assert(sizeof(struct Reaction) == 0x44, "Data type is of wrong size");
 
-// win1.41 008f3670 mac 10759508 Reaction::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Reaction asm("??_R4Reaction@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00beca78 mac inlined Reaction::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Reaction asm("??_R0?AVReaction@@@8");
+// win1.41 009ad6c0 mac inlined Reaction::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Reaction asm("??_R1A@?0A@A@Reaction@@8");
+// win1.41 009ad6d8 mac inlined Reaction::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Reaction asm("??_R2Reaction@@8");
+// win1.41 009ad6e8 mac inlined Reaction::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Reaction asm("??_R3Reaction@@8");
+// win1.41 008f3670 mac 10759508 Reaction::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Reaction asm("??_R4Reaction@@6B@");
 // win1.41 008f3674 mac 10759510 Reaction::`vftable'
 extern const struct GameThingVftable __vt__8Reaction asm("??_7Reaction@@6B@");
 

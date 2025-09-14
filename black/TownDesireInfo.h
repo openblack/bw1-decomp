@@ -44,9 +44,18 @@ struct GTownDesireInfo
 };
 static_assert(sizeof(struct GTownDesireInfo) == 0x90, "Data type is of wrong size");
 
-// win1.41 0099a094 mac 109e57f0 GTownDesireInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15GTownDesireInfo asm("??_R4GTownDesireInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c22c98 mac inlined GTownDesireInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GTownDesireInfo asm("??_R0?AVGTownDesireInfo@@@8");
+// win1.41 009b9bd8 mac inlined GTownDesireInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GTownDesireInfo asm("??_R1A@?0A@A@GTownDesireInfo@@8");
+// win1.41 009b9bf0 mac inlined GTownDesireInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15GTownDesireInfo asm("??_R2GTownDesireInfo@@8");
+// win1.41 009b9c00 mac inlined GTownDesireInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15GTownDesireInfo asm("??_R3GTownDesireInfo@@8");
+// win1.41 0099a094 mac 109e57f0 GTownDesireInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15GTownDesireInfo asm("??_R4GTownDesireInfo@@6B@");
 // win1.41 0099a098 mac 109e57f8 GTownDesireInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__15GTownDesireInfo asm("??_7GTownDesireInfo@@6B@");
 

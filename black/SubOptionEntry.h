@@ -29,6 +29,16 @@ struct SubOptionEntry
 };
 static_assert(sizeof(struct SubOptionEntry) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c28408 mac inlined SubOptionEntry::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14SubOptionEntry asm("??_R0?AVSubOptionEntry@@@8");
+// win1.41 009ba7a8 mac inlined SubOptionEntry::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14SubOptionEntry asm("??_R1A@?0A@A@SubOptionEntry@@8");
+// win1.41 009ba7c0 mac inlined SubOptionEntry::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14SubOptionEntry asm("??_R2SubOptionEntry@@8");
+// win1.41 009ba7c8 mac inlined SubOptionEntry::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14SubOptionEntry asm("??_R3SubOptionEntry@@8");
 // win1.41 0099ecd8 mac 10745d2c SubOptionEntry::`vftable'
 extern const struct SubOptionEntryVftable __vt__14SubOptionEntry asm("??_7SubOptionEntry@@6B@");
 
@@ -37,6 +47,17 @@ struct SubOptionEntryButton
   struct SubOptionEntry super;  /* 0x0 */
 };
 static_assert(sizeof(struct SubOptionEntryButton) == 0x4, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c28428 mac inlined SubOptionEntryButton::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20SubOptionEntryButton asm("??_R0?AVSubOptionEntryButton@@@8");
+// win1.41 009ba7f0 mac inlined SubOptionEntryButton::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20SubOptionEntryButton asm("??_R1A@?0A@A@SubOptionEntryButton@@8");
+// win1.41 009ba808 mac inlined SubOptionEntryButton::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20SubOptionEntryButton asm("??_R2SubOptionEntryButton@@8");
+// win1.41 009ba818 mac inlined SubOptionEntryButton::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20SubOptionEntryButton asm("??_R3SubOptionEntryButton@@8");
 
 // Override methods
 
@@ -53,6 +74,17 @@ struct SubOptionEntryCheckBoxChecked
 };
 static_assert(sizeof(struct SubOptionEntryCheckBoxChecked) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c28480 mac inlined SubOptionEntryCheckBoxChecked::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__29SubOptionEntryCheckBoxChecked asm("??_R0?AVSubOptionEntryCheckBoxChecked@@@8");
+// win1.41 009ba890 mac inlined SubOptionEntryCheckBoxChecked::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__29SubOptionEntryCheckBoxChecked asm("??_R1A@?0A@A@SubOptionEntryCheckBoxChecked@@8");
+// win1.41 009ba8a8 mac inlined SubOptionEntryCheckBoxChecked::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__29SubOptionEntryCheckBoxChecked asm("??_R2SubOptionEntryCheckBoxChecked@@8");
+// win1.41 009ba8b8 mac inlined SubOptionEntryCheckBoxChecked::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__29SubOptionEntryCheckBoxChecked asm("??_R3SubOptionEntryCheckBoxChecked@@8");
+
 // Override methods
 
 // win1.41 0078deb0 mac 1010e9a0 SubOptionEntryCheckBoxChecked::GetSubMeshData(SubMeshDrawData &, int, int)
@@ -67,6 +99,17 @@ struct SubOptionEntryCheckBoxUnChecked
   struct SubOptionEntry super;  /* 0x0 */
 };
 static_assert(sizeof(struct SubOptionEntryCheckBoxUnChecked) == 0x4, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c28450 mac inlined SubOptionEntryCheckBoxUnChecked::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__31SubOptionEntryCheckBoxUnChecked asm("??_R0?AVSubOptionEntryCheckBoxUnChecked@@@8");
+// win1.41 009ba840 mac inlined SubOptionEntryCheckBoxUnChecked::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__31SubOptionEntryCheckBoxUnChecked asm("??_R1A@?0A@A@SubOptionEntryCheckBoxUnChecked@@8");
+// win1.41 009ba858 mac inlined SubOptionEntryCheckBoxUnChecked::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__31SubOptionEntryCheckBoxUnChecked asm("??_R2SubOptionEntryCheckBoxUnChecked@@8");
+// win1.41 009ba868 mac inlined SubOptionEntryCheckBoxUnChecked::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__31SubOptionEntryCheckBoxUnChecked asm("??_R3SubOptionEntryCheckBoxUnChecked@@8");
 
 // Override methods
 
@@ -83,6 +126,17 @@ struct SubOptionEntryFrame
 };
 static_assert(sizeof(struct SubOptionEntryFrame) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c28578 mac inlined SubOptionEntryFrame::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19SubOptionEntryFrame asm("??_R0?AVSubOptionEntryFrame@@@8");
+// win1.41 009baa70 mac inlined SubOptionEntryFrame::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19SubOptionEntryFrame asm("??_R1A@?0A@A@SubOptionEntryFrame@@8");
+// win1.41 009baa88 mac inlined SubOptionEntryFrame::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19SubOptionEntryFrame asm("??_R2SubOptionEntryFrame@@8");
+// win1.41 009baa98 mac inlined SubOptionEntryFrame::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19SubOptionEntryFrame asm("??_R3SubOptionEntryFrame@@8");
+
 // Override methods
 
 // win1.41 0078e7a0 mac 1010d690 SubOptionEntryFrame::GetSubMeshData(SubMeshDrawData &, int, int)
@@ -97,6 +151,17 @@ struct SubOptionEntryListBox
   struct SubOptionEntry super;  /* 0x0 */
 };
 static_assert(sizeof(struct SubOptionEntryListBox) == 0x4, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c28550 mac inlined SubOptionEntryListBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21SubOptionEntryListBox asm("??_R0?AVSubOptionEntryListBox@@@8");
+// win1.41 009baa20 mac inlined SubOptionEntryListBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21SubOptionEntryListBox asm("??_R1A@?0A@A@SubOptionEntryListBox@@8");
+// win1.41 009baa38 mac inlined SubOptionEntryListBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21SubOptionEntryListBox asm("??_R2SubOptionEntryListBox@@8");
+// win1.41 009baa48 mac inlined SubOptionEntryListBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21SubOptionEntryListBox asm("??_R3SubOptionEntryListBox@@8");
 
 // Override methods
 
@@ -113,6 +178,17 @@ struct SubOptionEntryPicture
 };
 static_assert(sizeof(struct SubOptionEntryPicture) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c284d8 mac inlined SubOptionEntryPicture::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21SubOptionEntryPicture asm("??_R0?AVSubOptionEntryPicture@@@8");
+// win1.41 009ba930 mac inlined SubOptionEntryPicture::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21SubOptionEntryPicture asm("??_R1A@?0A@A@SubOptionEntryPicture@@8");
+// win1.41 009ba948 mac inlined SubOptionEntryPicture::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21SubOptionEntryPicture asm("??_R2SubOptionEntryPicture@@8");
+// win1.41 009ba958 mac inlined SubOptionEntryPicture::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21SubOptionEntryPicture asm("??_R3SubOptionEntryPicture@@8");
+
 // Override methods
 
 // win1.41 0078e0c0 mac 1010e480 SubOptionEntryPicture::GetSubMeshData(SubMeshDrawData &, int, int)
@@ -127,6 +203,17 @@ struct SubOptionEntryScroll
   struct SubOptionEntry super;  /* 0x0 */
 };
 static_assert(sizeof(struct SubOptionEntryScroll) == 0x4, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c28500 mac inlined SubOptionEntryScroll::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20SubOptionEntryScroll asm("??_R0?AVSubOptionEntryScroll@@@8");
+// win1.41 009ba980 mac inlined SubOptionEntryScroll::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20SubOptionEntryScroll asm("??_R1A@?0A@A@SubOptionEntryScroll@@8");
+// win1.41 009ba998 mac inlined SubOptionEntryScroll::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20SubOptionEntryScroll asm("??_R2SubOptionEntryScroll@@8");
+// win1.41 009ba9a8 mac inlined SubOptionEntryScroll::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20SubOptionEntryScroll asm("??_R3SubOptionEntryScroll@@8");
 
 // Override methods
 
@@ -143,6 +230,17 @@ struct SubOptionEntrySlider
 };
 static_assert(sizeof(struct SubOptionEntrySlider) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c284b0 mac inlined SubOptionEntrySlider::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20SubOptionEntrySlider asm("??_R0?AVSubOptionEntrySlider@@@8");
+// win1.41 009ba8e0 mac inlined SubOptionEntrySlider::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20SubOptionEntrySlider asm("??_R1A@?0A@A@SubOptionEntrySlider@@8");
+// win1.41 009ba8f8 mac inlined SubOptionEntrySlider::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20SubOptionEntrySlider asm("??_R2SubOptionEntrySlider@@8");
+// win1.41 009ba908 mac inlined SubOptionEntrySlider::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20SubOptionEntrySlider asm("??_R3SubOptionEntrySlider@@8");
+
 // Override methods
 
 // win1.41 0078e040 mac 1010e720 SubOptionEntrySlider::GetSubMeshData(SubMeshDrawData &, int, int)
@@ -157,6 +255,17 @@ struct SubOptionEntryText
   struct SubOptionEntry super;  /* 0x0 */
 };
 static_assert(sizeof(struct SubOptionEntryText) == 0x4, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c28528 mac inlined SubOptionEntryText::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18SubOptionEntryText asm("??_R0?AVSubOptionEntryText@@@8");
+// win1.41 009ba9d0 mac inlined SubOptionEntryText::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18SubOptionEntryText asm("??_R1A@?0A@A@SubOptionEntryText@@8");
+// win1.41 009ba9e8 mac inlined SubOptionEntryText::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18SubOptionEntryText asm("??_R2SubOptionEntryText@@8");
+// win1.41 009ba9f8 mac inlined SubOptionEntryText::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18SubOptionEntryText asm("??_R3SubOptionEntryText@@8");
 
 // Override methods
 

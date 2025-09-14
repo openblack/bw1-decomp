@@ -18,6 +18,17 @@ struct BaseAtomModifierData
 };
 static_assert(sizeof(struct BaseAtomModifierData) == 0x14, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bed628 mac inlined BaseAtomModifierData::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20BaseAtomModifierData asm("??_R0?AVBaseAtomModifierData@@@8");
+// win1.41 009aef10 mac inlined BaseAtomModifierData::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20BaseAtomModifierData asm("??_R1A@?0A@A@BaseAtomModifierData@@8");
+// win1.41 009aeff0 mac inlined BaseAtomModifierData::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20BaseAtomModifierData asm("??_R2BaseAtomModifierData@@8");
+// win1.41 009af008 mac inlined BaseAtomModifierData::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20BaseAtomModifierData asm("??_R3BaseAtomModifierData@@8");
+
 // Override methods
 
 // win1.41 0055f210 mac 1030ac30 BaseAtomModifierData::_dt(void)
@@ -36,6 +47,17 @@ struct BaseCollectionModifierData
   struct PSysBase super;  /* 0x0 */
 };
 static_assert(sizeof(struct BaseCollectionModifierData) == 0x14, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bed678 mac inlined BaseCollectionModifierData::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__26BaseCollectionModifierData asm("??_R0?AVBaseCollectionModifierData@@@8");
+// win1.41 009aef80 mac inlined BaseCollectionModifierData::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__26BaseCollectionModifierData asm("??_R1A@?0A@A@BaseCollectionModifierData@@8");
+// win1.41 009af030 mac inlined BaseCollectionModifierData::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__26BaseCollectionModifierData asm("??_R2BaseCollectionModifierData@@8");
+// win1.41 009af048 mac inlined BaseCollectionModifierData::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__26BaseCollectionModifierData asm("??_R3BaseCollectionModifierData@@8");
 
 // Override methods
 
@@ -56,6 +78,17 @@ struct DrawOffset
 };
 static_assert(sizeof(struct DrawOffset) == 0x14, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c09468 mac inlined DrawOffset::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10DrawOffset asm("??_R0?AVDrawOffset@@@8");
+// win1.41 009b7d30 mac inlined DrawOffset::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10DrawOffset asm("??_R1A@?0A@A@DrawOffset@@8");
+// win1.41 009b7d48 mac inlined DrawOffset::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10DrawOffset asm("??_R2DrawOffset@@8");
+// win1.41 009b7d60 mac inlined DrawOffset::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10DrawOffset asm("??_R3DrawOffset@@8");
+
 // Override methods
 
 // win1.41 006c7550 mac 1047e1d0 DrawOffset::_dt(void)
@@ -74,6 +107,17 @@ struct DrawOffsetDecay
   struct DrawOffset super;  /* 0x0 */
 };
 static_assert(sizeof(struct DrawOffsetDecay) == 0x14, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c094a8 mac inlined DrawOffsetDecay::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15DrawOffsetDecay asm("??_R0?AVDrawOffsetDecay@@@8");
+// win1.41 009b7de0 mac inlined DrawOffsetDecay::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15DrawOffsetDecay asm("??_R1A@?0A@A@DrawOffsetDecay@@8");
+// win1.41 009b7df8 mac inlined DrawOffsetDecay::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15DrawOffsetDecay asm("??_R2DrawOffsetDecay@@8");
+// win1.41 009b7e10 mac inlined DrawOffsetDecay::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15DrawOffsetDecay asm("??_R3DrawOffsetDecay@@8");
 
 // Override methods
 
@@ -94,6 +138,17 @@ struct DrawOffsetLT
 };
 static_assert(sizeof(struct DrawOffsetLT) == 0x14, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c09488 mac inlined DrawOffsetLT::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12DrawOffsetLT asm("??_R0?AVDrawOffsetLT@@@8");
+// win1.41 009b7d88 mac inlined DrawOffsetLT::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12DrawOffsetLT asm("??_R1A@?0A@A@DrawOffsetLT@@8");
+// win1.41 009b7da0 mac inlined DrawOffsetLT::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12DrawOffsetLT asm("??_R2DrawOffsetLT@@8");
+// win1.41 009b7db8 mac inlined DrawOffsetLT::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12DrawOffsetLT asm("??_R3DrawOffsetLT@@8");
+
 // Override methods
 
 // win1.41 006c75e0 mac 10423a30 DrawOffsetLT::_dt(void)
@@ -112,6 +167,17 @@ struct GJAnimVolFX
   struct PSysBase super;  /* 0x0 */
 };
 static_assert(sizeof(struct GJAnimVolFX) == 0x14, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c044b8 mac inlined GJAnimVolFX::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GJAnimVolFX asm("??_R0?AVGJAnimVolFX@@@8");
+// win1.41 009b45d8 mac inlined GJAnimVolFX::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GJAnimVolFX asm("??_R1A@?0A@A@GJAnimVolFX@@8");
+// win1.41 009b45f0 mac inlined GJAnimVolFX::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11GJAnimVolFX asm("??_R2GJAnimVolFX@@8");
+// win1.41 009b4608 mac inlined GJAnimVolFX::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11GJAnimVolFX asm("??_R3GJAnimVolFX@@8");
 
 // Override methods
 

@@ -19,6 +19,17 @@ struct Furniture
 };
 static_assert(sizeof(struct Furniture) == 0x54, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bea928 mac inlined Furniture::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9Furniture asm("??_R0?AVFurniture@@@8");
+// win1.41 009acfb8 mac inlined Furniture::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9Furniture asm("??_R1A@?0A@A@Furniture@@8");
+// win1.41 009acfd0 mac inlined Furniture::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9Furniture asm("??_R2Furniture@@8");
+// win1.41 009acfe8 mac inlined Furniture::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9Furniture asm("??_R3Furniture@@8");
+
 // Override methods
 
 // win1.41 0054a470 mac inlined Furniture::_dt(void)

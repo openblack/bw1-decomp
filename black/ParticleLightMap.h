@@ -18,6 +18,17 @@ struct ParticleLightMap
 };
 static_assert(sizeof(struct ParticleLightMap) == 0x18, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c09690 mac inlined ParticleLightMap::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16ParticleLightMap asm("??_R0?AVParticleLightMap@@@8");
+// win1.41 009b8290 mac inlined ParticleLightMap::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16ParticleLightMap asm("??_R1A@?0A@A@ParticleLightMap@@8");
+// win1.41 009b82a8 mac inlined ParticleLightMap::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16ParticleLightMap asm("??_R2ParticleLightMap@@8");
+// win1.41 009b82c0 mac inlined ParticleLightMap::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16ParticleLightMap asm("??_R3ParticleLightMap@@8");
+
 // Override methods
 
 // win1.41 006ca450 mac 10423560 ParticleLightMap::_dt(void)

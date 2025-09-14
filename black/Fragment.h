@@ -36,9 +36,18 @@ struct Fragment
 };
 static_assert(sizeof(struct Fragment) == 0xa8, "Data type is of wrong size");
 
-// win1.41 0099aa94 mac 10746eac Fragment::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Fragment asm("??_R4Fragment@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009d10d8 mac inlined Fragment::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Fragment asm("??_R0?AVFragment@@@8");
+// win1.41 009b9ec8 mac inlined Fragment::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Fragment asm("??_R1A@?0A@A@Fragment@@8");
+// win1.41 009b9ee0 mac inlined Fragment::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Fragment asm("??_R2Fragment@@8");
+// win1.41 009b9f08 mac inlined Fragment::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Fragment asm("??_R3Fragment@@8");
+// win1.41 0099aa94 mac 10746eac Fragment::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Fragment asm("??_R4Fragment@@6B@");
 // win1.41 0099aa98 mac 106f601c Fragment::`vftable'
 extern const struct RockVftable __vt__8Fragment asm("??_7Fragment@@6B@");
 

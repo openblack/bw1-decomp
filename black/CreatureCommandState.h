@@ -17,9 +17,18 @@ struct CreatureCommandState
 };
 static_assert(sizeof(struct CreatureCommandState) == 0x2c, "Data type is of wrong size");
 
-// win1.41 008cf96c mac 10787554 CreatureCommandState::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20CreatureCommandState asm("??_R4CreatureCommandState@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009dd8e0 mac inlined CreatureCommandState::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20CreatureCommandState asm("??_R0?AVCreatureCommandState@@@8");
+// win1.41 009aa450 mac inlined CreatureCommandState::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20CreatureCommandState asm("??_R1A@?0A@A@CreatureCommandState@@8");
+// win1.41 009aa468 mac inlined CreatureCommandState::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20CreatureCommandState asm("??_R2CreatureCommandState@@8");
+// win1.41 009aa478 mac inlined CreatureCommandState::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20CreatureCommandState asm("??_R3CreatureCommandState@@8");
+// win1.41 008cf96c mac 10787554 CreatureCommandState::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20CreatureCommandState asm("??_R4CreatureCommandState@@6B@");
 // win1.41 008cf970 mac 1078755c CreatureCommandState::`vftable'
 extern const struct BaseVftable __vt__20CreatureCommandState asm("??_7CreatureCommandState@@6B@");
 

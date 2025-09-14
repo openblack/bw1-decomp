@@ -25,9 +25,18 @@ struct GEffectInfo
 };
 static_assert(sizeof(struct GEffectInfo) == 0x34, "Data type is of wrong size");
 
-// win1.41 008d8b44 mac 1073d04c GEffectInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GEffectInfo asm("??_R4GEffectInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be9638 mac inlined GEffectInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GEffectInfo asm("??_R0?AVGEffectInfo@@@8");
+// win1.41 009abec8 mac inlined GEffectInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GEffectInfo asm("??_R1A@?0A@A@GEffectInfo@@8");
+// win1.41 009abee0 mac inlined GEffectInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11GEffectInfo asm("??_R2GEffectInfo@@8");
+// win1.41 009abef0 mac inlined GEffectInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11GEffectInfo asm("??_R3GEffectInfo@@8");
+// win1.41 008d8b44 mac 1073d04c GEffectInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GEffectInfo asm("??_R4GEffectInfo@@6B@");
 // win1.41 008d8b48 mac 1073d064 GEffectInfo::`vftable'
 extern const struct BaseInfoVftable __vt__11GEffectInfo asm("??_7GEffectInfo@@6B@");
 

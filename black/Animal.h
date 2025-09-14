@@ -59,9 +59,18 @@ struct Animal
 };
 static_assert(sizeof(struct Animal) == 0x148, "Data type is of wrong size");
 
-// win1.41 008ab7c8 mac 10761cd0 Animal::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Animal asm("??_R4Animal@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8e00 mac inlined Animal::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Animal asm("??_R0?AVAnimal@@@8");
+// win1.41 009a6c30 mac inlined Animal::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Animal asm("??_R1A@?0A@A@Animal@@8");
+// win1.41 009a6c48 mac inlined Animal::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Animal asm("??_R2Animal@@8");
+// win1.41 009a6c70 mac inlined Animal::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Animal asm("??_R3Animal@@8");
+// win1.41 008ab7c8 mac 10761cd0 Animal::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Animal asm("??_R4Animal@@6B@");
 // win1.41 008ab7cc mac 10762bcc Animal::`vftable'
 extern const struct LivingVftable __vt__6Animal asm("??_7Animal@@6B@");
 

@@ -112,9 +112,18 @@ struct Morphable
 };
 static_assert(sizeof(struct Morphable) == 0x4834, "Data type is of wrong size");
 
-// win1.41 008cbef4 mac 1073d0fc Morphable::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9Morphable asm("??_R4Morphable@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cecb0 mac inlined Morphable::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9Morphable asm("??_R0?AVMorphable@@@8");
+// win1.41 009a9288 mac inlined Morphable::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9Morphable asm("??_R1A@?0A@A@Morphable@@8");
+// win1.41 009a9250 mac inlined Morphable::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9Morphable asm("??_R2Morphable@@8");
+// win1.41 009a9260 mac inlined Morphable::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9Morphable asm("??_R3Morphable@@8");
+// win1.41 008cbef4 mac 1073d0fc Morphable::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9Morphable asm("??_R4Morphable@@6B@");
 // win1.41 008cbef8 mac 1073d10c Morphable::`vftable'
 extern const struct MorphableVftable __vt__9Morphable asm("??_7Morphable@@6B@");
 

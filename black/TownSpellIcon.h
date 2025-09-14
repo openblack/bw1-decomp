@@ -31,9 +31,18 @@ struct TownSpellIcon
 };
 static_assert(sizeof(struct TownSpellIcon) == 0x118, "Data type is of wrong size");
 
-// win1.41 008e7790 mac 109e5998 TownSpellIcon::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13TownSpellIcon asm("??_R4TownSpellIcon@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becec8 mac inlined TownSpellIcon::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13TownSpellIcon asm("??_R0?AVTownSpellIcon@@@8");
+// win1.41 009ae810 mac inlined TownSpellIcon::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13TownSpellIcon asm("??_R1A@?0A@A@TownSpellIcon@@8");
+// win1.41 009ae518 mac inlined TownSpellIcon::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13TownSpellIcon asm("??_R2TownSpellIcon@@8");
+// win1.41 009ae540 mac inlined TownSpellIcon::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13TownSpellIcon asm("??_R3TownSpellIcon@@8");
+// win1.41 008e7790 mac 109e5998 TownSpellIcon::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13TownSpellIcon asm("??_R4TownSpellIcon@@6B@");
 // win1.41 008e7794 mac 109e59d8 TownSpellIcon::`vftable'
 extern const struct MultiMapFixedVftable __vt__13TownSpellIcon asm("??_7TownSpellIcon@@6B@");
 
@@ -69,6 +78,17 @@ struct TownCentreSpellIcon
   uint32_t power_up_enabled[POWER_UP_TYPE_LAST];
 };
 static_assert(sizeof(struct TownCentreSpellIcon) == 0x128, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00becee8 mac inlined TownCentreSpellIcon::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19TownCentreSpellIcon asm("??_R0?AVTownCentreSpellIcon@@@8");
+// win1.41 009ae828 mac inlined TownCentreSpellIcon::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19TownCentreSpellIcon asm("??_R1A@?0A@A@TownCentreSpellIcon@@8");
+// win1.41 009ae840 mac inlined TownCentreSpellIcon::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19TownCentreSpellIcon asm("??_R2TownCentreSpellIcon@@8");
+// win1.41 009ae868 mac inlined TownCentreSpellIcon::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19TownCentreSpellIcon asm("??_R3TownCentreSpellIcon@@8");
 
 // Non-virtual methods
 

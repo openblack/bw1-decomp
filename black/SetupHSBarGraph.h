@@ -17,9 +17,18 @@ struct SetupHSBarGraph
 };
 static_assert(sizeof(struct SetupHSBarGraph) == 0x284, "Data type is of wrong size");
 
-// win1.41 008ffee0 mac 10731040 SetupHSBarGraph::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SetupHSBarGraph asm("??_R4SetupHSBarGraph@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bef078 mac inlined SetupHSBarGraph::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15SetupHSBarGraph asm("??_R0?AUSetupHSBarGraph@@@8");
+// win1.41 009b04b8 mac inlined SetupHSBarGraph::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15SetupHSBarGraph asm("??_R1A@?0A@A@SetupHSBarGraph@@8");
+// win1.41 009b04d0 mac inlined SetupHSBarGraph::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15SetupHSBarGraph asm("??_R2SetupHSBarGraph@@8");
+// win1.41 009b04e8 mac inlined SetupHSBarGraph::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15SetupHSBarGraph asm("??_R3SetupHSBarGraph@@8");
+// win1.41 008ffee0 mac 10731040 SetupHSBarGraph::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SetupHSBarGraph asm("??_R4SetupHSBarGraph@@6B@");
 // win1.41 008ffee4 mac 10731048 SetupHSBarGraph::`vftable'
 extern const struct SetupVBarGraphVftable __vt__15SetupHSBarGraph asm("??_7SetupHSBarGraph@@6B@");
 

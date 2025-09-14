@@ -19,6 +19,17 @@ struct PSysSound
 };
 static_assert(sizeof(struct PSysSound) == 0x14, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c09760 mac inlined PSysSound::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9PSysSound asm("??_R0?AVPSysSound@@@8");
+// win1.41 009b83f0 mac inlined PSysSound::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9PSysSound asm("??_R1A@?0A@A@PSysSound@@8");
+// win1.41 009b8408 mac inlined PSysSound::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9PSysSound asm("??_R2PSysSound@@8");
+// win1.41 009b8420 mac inlined PSysSound::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9PSysSound asm("??_R3PSysSound@@8");
+
 // Override methods
 
 // win1.41 006d0f50 mac 10486f90 PSysSound::_dt(void)

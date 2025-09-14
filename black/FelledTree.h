@@ -17,9 +17,18 @@ struct FelledTree
 };
 static_assert(sizeof(struct FelledTree) == 0xa0, "Data type is of wrong size");
 
-// win1.41 008d6978 mac 1073a888 FelledTree::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10FelledTree asm("??_R4FelledTree@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be8a50 mac inlined FelledTree::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10FelledTree asm("??_R0?AVFelledTree@@@8");
+// win1.41 009ab858 mac inlined FelledTree::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10FelledTree asm("??_R1A@?0A@A@FelledTree@@8");
+// win1.41 009ab870 mac inlined FelledTree::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10FelledTree asm("??_R2FelledTree@@8");
+// win1.41 009ab8a0 mac inlined FelledTree::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10FelledTree asm("??_R3FelledTree@@8");
+// win1.41 008d6978 mac 1073a888 FelledTree::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10FelledTree asm("??_R4FelledTree@@6B@");
 // win1.41 008d697c mac 1073a890 FelledTree::`vftable'
 extern const struct RockVftable __vt__10FelledTree asm("??_7FelledTree@@6B@");
 

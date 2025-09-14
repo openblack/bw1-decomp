@@ -30,9 +30,14 @@ struct LHDLL
 };
 static_assert(sizeof(struct LHDLL) == 0x24, "Data type is of wrong size");
 
-// win1.41 0099f010 mac 109c41fc LHDLL::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5LHDLL asm("??_R4LHDLL@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c0d108 mac inlined LHDLL::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5LHDLL asm("??_R0?AVLHDLL@@@8");
+// win1.41 009b8ea8 mac inlined LHDLL::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5LHDLL asm("??_R1A@?0A@A@LHDLL@@8");
+// win1.41 0099f010 mac 109c41fc LHDLL::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5LHDLL asm("??_R4LHDLL@@6B@");
 // win1.41 0099f014 mac 109c4204 LHDLL::`vftable'
 extern const struct LHDLLVftable __vt__5LHDLL asm("??_7LHDLL@@6B@");
 

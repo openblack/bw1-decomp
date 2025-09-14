@@ -18,6 +18,17 @@ struct Tortoise
 };
 static_assert(sizeof(struct Tortoise) == 0x148, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c9108 mac inlined Tortoise::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Tortoise asm("??_R0?AVTortoise@@@8");
+// win1.41 009a70e8 mac inlined Tortoise::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Tortoise asm("??_R1A@?0A@A@Tortoise@@8");
+// win1.41 009a7100 mac inlined Tortoise::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Tortoise asm("??_R2Tortoise@@8");
+// win1.41 009a7130 mac inlined Tortoise::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Tortoise asm("??_R3Tortoise@@8");
+
 // Override methods
 
 // win1.41 0041db60 mac 101209b0 Tortoise::_dt(void)

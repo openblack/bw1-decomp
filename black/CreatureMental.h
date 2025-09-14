@@ -77,9 +77,18 @@ struct CreatureMental
 };
 static_assert(sizeof(struct CreatureMental) == 0x20d40, "Data type is of wrong size");
 
-// win1.41 008cf8a8 mac 1078743c CreatureMental::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CreatureMental asm("??_R4CreatureMental@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009dd858 mac inlined CreatureMental::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14CreatureMental asm("??_R0?AVCreatureMental@@@8");
+// win1.41 009aa310 mac inlined CreatureMental::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14CreatureMental asm("??_R1A@?0A@A@CreatureMental@@8");
+// win1.41 009aa328 mac inlined CreatureMental::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14CreatureMental asm("??_R2CreatureMental@@8");
+// win1.41 009aa338 mac inlined CreatureMental::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14CreatureMental asm("??_R3CreatureMental@@8");
+// win1.41 008cf8a8 mac 1078743c CreatureMental::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CreatureMental asm("??_R4CreatureMental@@6B@");
 // win1.41 008cf8ac mac 10787444 CreatureMental::`vftable'
 extern const struct BaseVftable __vt__14CreatureMental asm("??_7CreatureMental@@6B@");
 

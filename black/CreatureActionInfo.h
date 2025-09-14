@@ -16,6 +16,17 @@ struct CreatureActionInfo
 };
 static_assert(sizeof(struct CreatureActionInfo) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009d7d18 mac inlined CreatureActionInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18CreatureActionInfo asm("??_R0?AVCreatureActionInfo@@@8");
+// win1.41 009a9960 mac inlined CreatureActionInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18CreatureActionInfo asm("??_R1A@?0A@A@CreatureActionInfo@@8");
+// win1.41 009a9978 mac inlined CreatureActionInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18CreatureActionInfo asm("??_R2CreatureActionInfo@@8");
+// win1.41 009a9988 mac inlined CreatureActionInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18CreatureActionInfo asm("??_R3CreatureActionInfo@@8");
+
 // Override methods
 
 // win1.41 004917c0 mac 1022eaa0 CreatureActionInfo::_dt(void)

@@ -19,9 +19,18 @@ struct HandStateCitadel
 };
 static_assert(sizeof(struct HandStateCitadel) == 0xd0, "Data type is of wrong size");
 
-// win1.41 00900a7c mac 1099b18c HandStateCitadel::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16HandStateCitadel asm("??_R4HandStateCitadel@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf00c0 mac inlined HandStateCitadel::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16HandStateCitadel asm("??_R0?AVHandStateCitadel@@@8");
+// win1.41 009b0ed8 mac inlined HandStateCitadel::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16HandStateCitadel asm("??_R1A@?0A@A@HandStateCitadel@@8");
+// win1.41 009b0ef0 mac inlined HandStateCitadel::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16HandStateCitadel asm("??_R2HandStateCitadel@@8");
+// win1.41 009b0f00 mac inlined HandStateCitadel::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16HandStateCitadel asm("??_R3HandStateCitadel@@8");
+// win1.41 00900a7c mac 1099b18c HandStateCitadel::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16HandStateCitadel asm("??_R4HandStateCitadel@@6B@");
 // win1.41 00900a80 mac 1099b194 HandStateCitadel::`vftable'
 extern const struct HandStateVftable __vt__16HandStateCitadel asm("??_7HandStateCitadel@@6B@");
 

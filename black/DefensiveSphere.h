@@ -18,6 +18,17 @@ struct DefensiveSphere
 };
 static_assert(sizeof(struct DefensiveSphere) == 0x14, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c09740 mac inlined DefensiveSphere::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15DefensiveSphere asm("??_R0?AVDefensiveSphere@@@8");
+// win1.41 009b8398 mac inlined DefensiveSphere::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15DefensiveSphere asm("??_R1A@?0A@A@DefensiveSphere@@8");
+// win1.41 009b83b0 mac inlined DefensiveSphere::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15DefensiveSphere asm("??_R2DefensiveSphere@@8");
+// win1.41 009b83c8 mac inlined DefensiveSphere::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15DefensiveSphere asm("??_R3DefensiveSphere@@8");
+
 // Override methods
 
 // win1.41 006d0d00 mac 10417570 DefensiveSphere::_dt(void)

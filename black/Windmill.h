@@ -21,9 +21,18 @@ struct Windmill
 };
 static_assert(sizeof(struct Windmill) == 0xc4, "Data type is of wrong size");
 
-// win1.41 008aa8e0 mac 1073c6e0 Windmill::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Windmill asm("??_R4Windmill@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8030 mac inlined Windmill::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Windmill asm("??_R0?AVWindmill@@@8");
+// win1.41 009a6508 mac inlined Windmill::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Windmill asm("??_R1A@?0A@A@Windmill@@8");
+// win1.41 009a6520 mac inlined Windmill::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Windmill asm("??_R2Windmill@@8");
+// win1.41 009a6548 mac inlined Windmill::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Windmill asm("??_R3Windmill@@8");
+// win1.41 008aa8e0 mac 1073c6e0 Windmill::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Windmill asm("??_R4Windmill@@6B@");
 // win1.41 008aa8e4 mac 1073c6e8 Windmill::`vftable'
 extern const struct AbodeVftable __vt__8Windmill asm("??_7Windmill@@6B@");
 

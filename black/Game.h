@@ -182,9 +182,18 @@ struct GGame
 };
 static_assert(sizeof(struct GGame) == 0x250544, "Data type is of wrong size");
 
-// win1.41 008df62c mac 10732e00 GGame::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5GGame asm("??_R4GGame@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bec358 mac inlined GGame::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5GGame asm("??_R0?AVGGame@@@8");
+// win1.41 009ad010 mac inlined GGame::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5GGame asm("??_R1A@?0A@A@GGame@@8");
+// win1.41 009ad028 mac inlined GGame::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5GGame asm("??_R2GGame@@8");
+// win1.41 009ad038 mac inlined GGame::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5GGame asm("??_R3GGame@@8");
+// win1.41 008df62c mac 10732e00 GGame::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5GGame asm("??_R4GGame@@6B@");
 // win1.41 008df630 mac 10732e08 GGame::`vftable'
 extern const struct GameThingVftable __vt__5GGame asm("??_7GGame@@6B@");
 

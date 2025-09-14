@@ -950,15 +950,6 @@ def extract_globals_info(tu: TranslationUnit, known_types: Set[str]) -> Tuple[bo
                             found_issues = True
                             sys.stderr.write(
                                 f"{c.extent.start.file.name}:{c.extent.start.line}: vftable for \"{vftable_type_name}\" is missing a mac address\n")
-                            # continue
-                        # insert RTTICompleObjectLocator
-                        locator_name = f"__RTTICompleObjectLocator__{len(vftable_type_name)}{vftable_type_name}"
-                        locator_decorated_name = f"{vftable_type_name}::`RTTI Complete Object Locator'"
-                        locator_msvc_mangled_name = f"??_R4{vftable_type_name}@@6B@"
-                        locator_type = "struct RTTICompleteObjectLocator"
-                        locator_win_addr = literal_value - 4 if literal_value != -1 else -1
-                        locator_mac_addr = mac_rtti_lookup.get(vftable_type_name)
-                        global_addresses[locator_name] = GlobalInfo(locator_type, locator_win_addr, locator_mac_addr, locator_decorated_name, locator_msvc_mangled_name)
                     global_addresses[c.spelling] = GlobalInfo(type_name, literal_value, mac_addr, decorated_name, msvc_mangled_name)
                     last_comment = None
                 elif c.type.kind.name == 'ELABORATED':
@@ -1038,7 +1029,7 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
             match = extract_info_from_comment(t.spelling)
             if match:
                 win_addr, mac_addr, decorated_name = match
-                if "virtual table" in decorated_name or "vtable" in decorated_name or "vftable" in decorated_name and "`RTTI Complete Object Locator'" in decorated_name:
+                if "virtual table" in decorated_name or "vtable" in decorated_name or "vftable" in decorated_name or "`RTTI Complete Object Locator'" in decorated_name:
                     continue
                 if decorated_name in decorated_names:
                     sys.stderr.write(f"{t.extent.start.file.name}:{t.extent.start.line}: error: duplicate entry: \"{decorated_name}\"\n")

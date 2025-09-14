@@ -25,9 +25,18 @@ struct Whale
 };
 static_assert(sizeof(struct Whale) == 0x74, "Data type is of wrong size");
 
-// win1.41 008febe8 mac 1075fc5c Whale::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Whale asm("??_R4Whale@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bee188 mac inlined Whale::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Whale asm("??_R0?AVWhale@@@8");
+// win1.41 009b0358 mac inlined Whale::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Whale asm("??_R1A@?0A@A@Whale@@8");
+// win1.41 009b0370 mac inlined Whale::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Whale asm("??_R2Whale@@8");
+// win1.41 009b0390 mac inlined Whale::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Whale asm("??_R3Whale@@8");
+// win1.41 008febe8 mac 1075fc5c Whale::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Whale asm("??_R4Whale@@6B@");
 // win1.41 008febec mac 1075fc64 Whale::`vftable'
 extern const struct MobileObjectVftable __vt__5Whale asm("??_7Whale@@6B@");
 

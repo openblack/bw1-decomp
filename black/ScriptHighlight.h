@@ -30,9 +30,18 @@ struct ScriptHighlight
 };
 static_assert(sizeof(struct ScriptHighlight) == 0x8c, "Data type is of wrong size");
 
-// win1.41 00942288 mac 109c45c8 ScriptHighlight::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15ScriptHighlight asm("??_R4ScriptHighlight@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c0d850 mac inlined ScriptHighlight::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15ScriptHighlight asm("??_R0?AVScriptHighlight@@@8");
+// win1.41 009b8f68 mac inlined ScriptHighlight::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15ScriptHighlight asm("??_R1A@?0A@A@ScriptHighlight@@8");
+// win1.41 009b8f80 mac inlined ScriptHighlight::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15ScriptHighlight asm("??_R2ScriptHighlight@@8");
+// win1.41 009b8fa0 mac inlined ScriptHighlight::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15ScriptHighlight asm("??_R3ScriptHighlight@@8");
+// win1.41 00942288 mac 109c45c8 ScriptHighlight::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15ScriptHighlight asm("??_R4ScriptHighlight@@6B@");
 // win1.41 0094228c mac 106fa600 ScriptHighlight::`vftable'
 extern const struct ObjectVftable __vt__15ScriptHighlight asm("??_7ScriptHighlight@@6B@");
 

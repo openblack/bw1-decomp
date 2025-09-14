@@ -25,9 +25,18 @@ struct DialogBoxKeyBinding
 };
 static_assert(sizeof(struct DialogBoxKeyBinding) == 0x1c, "Data type is of wrong size");
 
-// win1.41 008d859c mac 10998f98 DialogBoxKeyBinding::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19DialogBoxKeyBinding asm("??_R4DialogBoxKeyBinding@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be8c00 mac inlined DialogBoxKeyBinding::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19DialogBoxKeyBinding asm("??_R0?AVDialogBoxKeyBinding@@@8");
+// win1.41 009ab8e0 mac inlined DialogBoxKeyBinding::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19DialogBoxKeyBinding asm("??_R1A@?0A@A@DialogBoxKeyBinding@@8");
+// win1.41 009ab8f8 mac inlined DialogBoxKeyBinding::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19DialogBoxKeyBinding asm("??_R2DialogBoxKeyBinding@@8");
+// win1.41 009ab908 mac inlined DialogBoxKeyBinding::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19DialogBoxKeyBinding asm("??_R3DialogBoxKeyBinding@@8");
+// win1.41 008d859c mac 10998f98 DialogBoxKeyBinding::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19DialogBoxKeyBinding asm("??_R4DialogBoxKeyBinding@@6B@");
 // win1.41 008d85a0 mac 10998fa0 DialogBoxKeyBinding::`vftable'
 extern const struct DialogBoxBaseVftable __vt__19DialogBoxKeyBinding asm("??_7DialogBoxKeyBinding@@6B@");
 

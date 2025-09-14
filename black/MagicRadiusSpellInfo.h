@@ -16,6 +16,17 @@ struct GMagicRadiusSpellInfo
 };
 static_assert(sizeof(struct GMagicRadiusSpellInfo) == 0x58, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009cbab0 mac inlined GMagicRadiusSpellInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21GMagicRadiusSpellInfo asm("??_R0?AVGMagicRadiusSpellInfo@@@8");
+// win1.41 009a7fb8 mac inlined GMagicRadiusSpellInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21GMagicRadiusSpellInfo asm("??_R1A@?0A@A@GMagicRadiusSpellInfo@@8");
+// win1.41 009a8288 mac inlined GMagicRadiusSpellInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21GMagicRadiusSpellInfo asm("??_R2GMagicRadiusSpellInfo@@8");
+// win1.41 009a82a0 mac inlined GMagicRadiusSpellInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21GMagicRadiusSpellInfo asm("??_R3GMagicRadiusSpellInfo@@8");
+
 // Override methods
 
 // win1.41 00435850 mac 10190190 GMagicRadiusSpellInfo::_dt(void)

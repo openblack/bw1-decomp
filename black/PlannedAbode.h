@@ -30,9 +30,18 @@ struct PlannedAbode
 };
 static_assert(sizeof(struct PlannedAbode) == 0x4c, "Data type is of wrong size");
 
-// win1.41 008aa3b8 mac 10746fa8 PlannedAbode::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12PlannedAbode asm("??_R4PlannedAbode@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8000 mac inlined PlannedAbode::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12PlannedAbode asm("??_R0?AVPlannedAbode@@@8");
+// win1.41 009a64b0 mac inlined PlannedAbode::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12PlannedAbode asm("??_R1A@?0A@A@PlannedAbode@@8");
+// win1.41 009a64c8 mac inlined PlannedAbode::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12PlannedAbode asm("??_R2PlannedAbode@@8");
+// win1.41 009a64e0 mac inlined PlannedAbode::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12PlannedAbode asm("??_R3PlannedAbode@@8");
+// win1.41 008aa3b8 mac 10746fa8 PlannedAbode::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12PlannedAbode asm("??_R4PlannedAbode@@6B@");
 // win1.41 008aa3bc mac 10746fb0 PlannedAbode::`vftable'
 extern const struct PlannedMultiMapFixedVftable __vt__12PlannedAbode asm("??_7PlannedAbode@@6B@");
 

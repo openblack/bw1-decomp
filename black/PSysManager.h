@@ -20,9 +20,18 @@ struct PSysManager
 };
 static_assert(sizeof(struct PSysManager) == 0xe4, "Data type is of wrong size");
 
-// win1.41 009353bc mac 109b86b8 PSysManager::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11PSysManager asm("??_R4PSysManager@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c02208 mac inlined PSysManager::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11PSysManager asm("??_R0?AVPSysManager@@@8");
+// win1.41 009b3768 mac inlined PSysManager::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11PSysManager asm("??_R1A@?0A@A@PSysManager@@8");
+// win1.41 009b3780 mac inlined PSysManager::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11PSysManager asm("??_R2PSysManager@@8");
+// win1.41 009b3798 mac inlined PSysManager::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11PSysManager asm("??_R3PSysManager@@8");
+// win1.41 009353bc mac 109b86b8 PSysManager::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11PSysManager asm("??_R4PSysManager@@6B@");
 // win1.41 009353c0 mac 109b86c0 PSysManager::`vftable'
 extern const struct GameThingVftable __vt__11PSysManager asm("??_7PSysManager@@6B@");
 

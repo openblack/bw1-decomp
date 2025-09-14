@@ -18,6 +18,17 @@ struct DefensiveShield
 };
 static_assert(sizeof(struct DefensiveShield) == 0x14, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c09700 mac inlined DefensiveShield::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15DefensiveShield asm("??_R0?AVDefensiveShield@@@8");
+// win1.41 009b8340 mac inlined DefensiveShield::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15DefensiveShield asm("??_R1A@?0A@A@DefensiveShield@@8");
+// win1.41 009b8358 mac inlined DefensiveShield::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15DefensiveShield asm("??_R2DefensiveShield@@8");
+// win1.41 009b8370 mac inlined DefensiveShield::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15DefensiveShield asm("??_R3DefensiveShield@@8");
+
 // Override methods
 
 // win1.41 006d0ad0 mac 1041dc60 DefensiveShield::_dt(void)

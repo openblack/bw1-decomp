@@ -23,9 +23,18 @@ struct ShowNeeds
 };
 static_assert(sizeof(struct ShowNeeds) == 0x24, "Data type is of wrong size");
 
-// win1.41 008ec9a8 mac 1075b608 ShowNeeds::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9ShowNeeds asm("??_R4ShowNeeds@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009dd580 mac inlined ShowNeeds::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9ShowNeeds asm("??_R0?AVShowNeeds@@@8");
+// win1.41 009ae478 mac inlined ShowNeeds::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9ShowNeeds asm("??_R1A@?0A@A@ShowNeeds@@8");
+// win1.41 009ae490 mac inlined ShowNeeds::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9ShowNeeds asm("??_R2ShowNeeds@@8");
+// win1.41 009ae4a0 mac inlined ShowNeeds::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9ShowNeeds asm("??_R3ShowNeeds@@8");
+// win1.41 008ec9a8 mac 1075b608 ShowNeeds::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9ShowNeeds asm("??_R4ShowNeeds@@6B@");
 // win1.41 008ec9ac mac 1075b610 ShowNeeds::`vftable'
 extern const struct GameThingVftable __vt__9ShowNeeds asm("??_7ShowNeeds@@6B@");
 

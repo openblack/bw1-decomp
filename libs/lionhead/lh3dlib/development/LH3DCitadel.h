@@ -13,9 +13,10 @@ struct LH3DCitadel
 };
 static_assert(sizeof(struct LH3DCitadel) == 0xc0, "Data type is of wrong size");
 
-// win1.41 009a2bf8 mac 101ca6c8 LH3DCitadel::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11LH3DCitadel asm("??_R4LH3DCitadel@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009a2bf8 mac 101ca6c8 LH3DCitadel::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11LH3DCitadel asm("??_R4LH3DCitadel@@6B@");
 // win1.41 009a2bfc mac 101ca6d0 LH3DCitadel::`vftable'
 extern const struct LH3DObjectVftable __vt__11LH3DCitadel asm("??_7LH3DCitadel@@6B@");
 

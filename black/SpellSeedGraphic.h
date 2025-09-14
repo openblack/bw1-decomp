@@ -43,9 +43,18 @@ struct SpellSeedGraphic
 };
 static_assert(sizeof(struct SpellSeedGraphic) == 0x74, "Data type is of wrong size");
 
-// win1.41 00981aa4 mac 109dbe4c SpellSeedGraphic::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16SpellSeedGraphic asm("??_R4SpellSeedGraphic@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c22688 mac inlined SpellSeedGraphic::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16SpellSeedGraphic asm("??_R0?AVSpellSeedGraphic@@@8");
+// win1.41 009b93f0 mac inlined SpellSeedGraphic::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16SpellSeedGraphic asm("??_R1A@?0A@A@SpellSeedGraphic@@8");
+// win1.41 009b9408 mac inlined SpellSeedGraphic::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16SpellSeedGraphic asm("??_R2SpellSeedGraphic@@8");
+// win1.41 009b9420 mac inlined SpellSeedGraphic::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16SpellSeedGraphic asm("??_R3SpellSeedGraphic@@8");
+// win1.41 00981aa4 mac 109dbe4c SpellSeedGraphic::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16SpellSeedGraphic asm("??_R4SpellSeedGraphic@@6B@");
 // win1.41 00981aa8 mac 109dbe54 SpellSeedGraphic::`vftable'
 extern const struct GameThingWithPosVftable __vt__16SpellSeedGraphic asm("??_7SpellSeedGraphic@@6B@");
 

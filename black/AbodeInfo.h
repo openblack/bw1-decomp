@@ -60,9 +60,18 @@ struct GAbodeInfo
 };
 static_assert(sizeof(struct GAbodeInfo) == 0x1c8, "Data type is of wrong size");
 
-// win1.41 008a99f4 mac 107346c4 GAbodeInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GAbodeInfo asm("??_R4GAbodeInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c7ef8 mac inlined GAbodeInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GAbodeInfo asm("??_R0?AVGAbodeInfo@@@8");
+// win1.41 009a6368 mac inlined GAbodeInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GAbodeInfo asm("??_R1A@?0A@A@GAbodeInfo@@8");
+// win1.41 009a6380 mac inlined GAbodeInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GAbodeInfo asm("??_R2GAbodeInfo@@8");
+// win1.41 009a6398 mac inlined GAbodeInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GAbodeInfo asm("??_R3GAbodeInfo@@8");
+// win1.41 008a99f4 mac 107346c4 GAbodeInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GAbodeInfo asm("??_R4GAbodeInfo@@6B@");
 // win1.41 008a99f8 mac 107346cc GAbodeInfo::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__10GAbodeInfo asm("??_7GAbodeInfo@@6B@");
 

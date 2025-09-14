@@ -14,9 +14,18 @@ struct HistoryBox
 };
 static_assert(sizeof(struct HistoryBox) == 0x1c, "Data type is of wrong size");
 
-// win1.41 008de970 mac 109ed4ac HistoryBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10HistoryBox asm("??_R4HistoryBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea3a8 mac inlined HistoryBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10HistoryBox asm("??_R0?AVHistoryBox@@@8");
+// win1.41 009aca10 mac inlined HistoryBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10HistoryBox asm("??_R1A@?0A@A@HistoryBox@@8");
+// win1.41 009aca28 mac inlined HistoryBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10HistoryBox asm("??_R2HistoryBox@@8");
+// win1.41 009aca38 mac inlined HistoryBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10HistoryBox asm("??_R3HistoryBox@@8");
+// win1.41 008de970 mac 109ed4ac HistoryBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10HistoryBox asm("??_R4HistoryBox@@6B@");
 // win1.41 008de974 mac 109ed4b4 HistoryBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__10HistoryBox asm("??_7HistoryBox@@6B@");
 

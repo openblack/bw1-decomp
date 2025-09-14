@@ -11,6 +11,17 @@ struct MPFEChangedTeamRequestMessage
 };
 static_assert(sizeof(struct MPFEChangedTeamRequestMessage) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bfdca0 mac inlined MPFEChangedTeamRequestMessage::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__29MPFEChangedTeamRequestMessage asm("??_R0?AVMPFEChangedTeamRequestMessage@@@8");
+// win1.41 009b2c30 mac inlined MPFEChangedTeamRequestMessage::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__29MPFEChangedTeamRequestMessage asm("??_R1A@?0A@A@MPFEChangedTeamRequestMessage@@8");
+// win1.41 009b2c48 mac inlined MPFEChangedTeamRequestMessage::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__29MPFEChangedTeamRequestMessage asm("??_R2MPFEChangedTeamRequestMessage@@8");
+// win1.41 009b2c58 mac inlined MPFEChangedTeamRequestMessage::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__29MPFEChangedTeamRequestMessage asm("??_R3MPFEChangedTeamRequestMessage@@8");
+
 // Override methods
 
 // win1.41 00632d20 mac 10397440 MPFEChangedTeamRequestMessage::_dt(void)

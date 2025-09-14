@@ -11,6 +11,17 @@ struct MPFEMapErrorMessage
 };
 static_assert(sizeof(struct MPFEMapErrorMessage) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bfdbd0 mac inlined MPFEMapErrorMessage::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19MPFEMapErrorMessage asm("??_R0?AVMPFEMapErrorMessage@@@8");
+// win1.41 009b2be0 mac inlined MPFEMapErrorMessage::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19MPFEMapErrorMessage asm("??_R1A@?0A@A@MPFEMapErrorMessage@@8");
+// win1.41 009b2bf8 mac inlined MPFEMapErrorMessage::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19MPFEMapErrorMessage asm("??_R2MPFEMapErrorMessage@@8");
+// win1.41 009b2c08 mac inlined MPFEMapErrorMessage::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19MPFEMapErrorMessage asm("??_R3MPFEMapErrorMessage@@8");
+
 // Override methods
 
 // win1.41 00631510 mac 103a4050 MPFEMapErrorMessage::_dt(void)

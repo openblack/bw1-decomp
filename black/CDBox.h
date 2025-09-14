@@ -13,9 +13,18 @@ struct CDBox
 };
 static_assert(sizeof(struct CDBox) == 0x34, "Data type is of wrong size");
 
-// win1.41 008deb00 mac 109ed714 CDBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5CDBox asm("??_R4CDBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea2f8 mac inlined CDBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5CDBox asm("??_R0?AVCDBox@@@8");
+// win1.41 009ac830 mac inlined CDBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5CDBox asm("??_R1A@?0A@A@CDBox@@8");
+// win1.41 009ac848 mac inlined CDBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5CDBox asm("??_R2CDBox@@8");
+// win1.41 009ac858 mac inlined CDBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5CDBox asm("??_R3CDBox@@8");
+// win1.41 008deb00 mac 109ed714 CDBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5CDBox asm("??_R4CDBox@@6B@");
 // win1.41 008deb04 mac 109ed71c CDBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__5CDBox asm("??_7CDBox@@6B@");
 

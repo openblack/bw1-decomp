@@ -18,6 +18,17 @@ struct GPrayerSiteInfo
 };
 static_assert(sizeof(struct GPrayerSiteInfo) == 0x120, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c020c0 mac inlined GPrayerSiteInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GPrayerSiteInfo asm("??_R0?AVGPrayerSiteInfo@@@8");
+// win1.41 009b3558 mac inlined GPrayerSiteInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GPrayerSiteInfo asm("??_R1A@?0A@A@GPrayerSiteInfo@@8");
+// win1.41 009b3570 mac inlined GPrayerSiteInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15GPrayerSiteInfo asm("??_R2GPrayerSiteInfo@@8");
+// win1.41 009b3588 mac inlined GPrayerSiteInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15GPrayerSiteInfo asm("??_R3GPrayerSiteInfo@@8");
+
 // Override methods
 
 // win1.41 006706c0 mac 1011ea20 GPrayerSiteInfo::_dt(void)

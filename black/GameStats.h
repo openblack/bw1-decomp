@@ -23,9 +23,18 @@ struct GameStats
 };
 static_assert(sizeof(struct GameStats) == 0x1128, "Data type is of wrong size");
 
-// win1.41 008ffdbc mac 1099ab2c GameStats::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GameStats asm("??_R4GameStats@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bee570 mac inlined GameStats::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GameStats asm("??_R0?AVGameStats@@@8");
+// win1.41 009b0468 mac inlined GameStats::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GameStats asm("??_R1A@?0A@A@GameStats@@8");
+// win1.41 009b0480 mac inlined GameStats::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GameStats asm("??_R2GameStats@@8");
+// win1.41 009b0490 mac inlined GameStats::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GameStats asm("??_R3GameStats@@8");
+// win1.41 008ffdbc mac 1099ab2c GameStats::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GameStats asm("??_R4GameStats@@6B@");
 // win1.41 008ffdc0 mac 1099ab34 GameStats::`vftable'
 extern const struct GameThingVftable __vt__9GameStats asm("??_7GameStats@@6B@");
 

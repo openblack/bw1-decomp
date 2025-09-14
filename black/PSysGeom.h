@@ -11,6 +11,17 @@ struct TestFunnel
 };
 static_assert(sizeof(struct TestFunnel) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c025a8 mac inlined TestFunnel::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10TestFunnel asm("??_R0?AVTestFunnel@@@8");
+// win1.41 009b3e40 mac inlined TestFunnel::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10TestFunnel asm("??_R1A@?0A@A@TestFunnel@@8");
+// win1.41 009b3e58 mac inlined TestFunnel::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10TestFunnel asm("??_R2TestFunnel@@8");
+// win1.41 009b3e68 mac inlined TestFunnel::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10TestFunnel asm("??_R3TestFunnel@@8");
+
 // Override methods
 
 // win1.41 006868e0 mac 10402ae0 TestFunnel::Eval( const(float, float *, float *))
@@ -22,6 +33,17 @@ struct TestFunnelParab
 };
 static_assert(sizeof(struct TestFunnelParab) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c02588 mac inlined TestFunnelParab::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15TestFunnelParab asm("??_R0?AVTestFunnelParab@@@8");
+// win1.41 009b3df0 mac inlined TestFunnelParab::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15TestFunnelParab asm("??_R1A@?0A@A@TestFunnelParab@@8");
+// win1.41 009b3e08 mac inlined TestFunnelParab::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15TestFunnelParab asm("??_R2TestFunnelParab@@8");
+// win1.41 009b3e18 mac inlined TestFunnelParab::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15TestFunnelParab asm("??_R3TestFunnelParab@@8");
+
 // Override methods
 
 // win1.41 00686910 mac 104029c0 TestFunnelParab::Eval( const(float, float *, float *))
@@ -32,6 +54,17 @@ struct TestFunnelSpout
   struct FuncT super;  /* 0x0 */
 };
 static_assert(sizeof(struct TestFunnelSpout) == 0x4, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c02568 mac inlined TestFunnelSpout::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15TestFunnelSpout asm("??_R0?AVTestFunnelSpout@@@8");
+// win1.41 009b3da0 mac inlined TestFunnelSpout::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15TestFunnelSpout asm("??_R1A@?0A@A@TestFunnelSpout@@8");
+// win1.41 009b3db8 mac inlined TestFunnelSpout::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15TestFunnelSpout asm("??_R2TestFunnelSpout@@8");
+// win1.41 009b3dc8 mac inlined TestFunnelSpout::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15TestFunnelSpout asm("??_R3TestFunnelSpout@@8");
 
 // Override methods
 

@@ -16,6 +16,17 @@ struct DifferentCreatureInfo
 };
 static_assert(sizeof(struct DifferentCreatureInfo) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009cf900 mac inlined DifferentCreatureInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21DifferentCreatureInfo asm("??_R0?AVDifferentCreatureInfo@@@8");
+// win1.41 009a9400 mac inlined DifferentCreatureInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21DifferentCreatureInfo asm("??_R1A@?0A@A@DifferentCreatureInfo@@8");
+// win1.41 009a9418 mac inlined DifferentCreatureInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21DifferentCreatureInfo asm("??_R2DifferentCreatureInfo@@8");
+// win1.41 009a9428 mac inlined DifferentCreatureInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21DifferentCreatureInfo asm("??_R3DifferentCreatureInfo@@8");
+
 // Override methods
 
 // win1.41 00472d50 mac 101d2170 DifferentCreatureInfo::_dt(void)

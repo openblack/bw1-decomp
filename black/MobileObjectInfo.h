@@ -19,9 +19,18 @@ struct GMobileObjectInfo
 };
 static_assert(sizeof(struct GMobileObjectInfo) == 0x114, "Data type is of wrong size");
 
-// win1.41 009305c8 mac 10736eec GMobileObjectInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GMobileObjectInfo asm("??_R4GMobileObjectInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c9658 mac inlined GMobileObjectInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17GMobileObjectInfo asm("??_R0?AVGMobileObjectInfo@@@8");
+// win1.41 009a7ae8 mac inlined GMobileObjectInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17GMobileObjectInfo asm("??_R1A@?0A@A@GMobileObjectInfo@@8");
+// win1.41 009b1fe8 mac inlined GMobileObjectInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17GMobileObjectInfo asm("??_R2GMobileObjectInfo@@8");
+// win1.41 009b2000 mac inlined GMobileObjectInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17GMobileObjectInfo asm("??_R3GMobileObjectInfo@@8");
+// win1.41 009305c8 mac 10736eec GMobileObjectInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GMobileObjectInfo asm("??_R4GMobileObjectInfo@@6B@");
 // win1.41 009305cc mac 10736ef4 GMobileObjectInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__17GMobileObjectInfo asm("??_7GMobileObjectInfo@@6B@");
 

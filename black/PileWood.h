@@ -20,9 +20,18 @@ struct PileWood
 };
 static_assert(sizeof(struct PileWood) == 0xb4, "Data type is of wrong size");
 
-// win1.41 008e5d88 mac 10748250 PileWood::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8PileWood asm("??_R4PileWood@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becbb8 mac inlined PileWood::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8PileWood asm("??_R0?AVPileWood@@@8");
+// win1.41 009adc08 mac inlined PileWood::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8PileWood asm("??_R1A@?0A@A@PileWood@@8");
+// win1.41 009adc20 mac inlined PileWood::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8PileWood asm("??_R2PileWood@@8");
+// win1.41 009adc50 mac inlined PileWood::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8PileWood asm("??_R3PileWood@@8");
+// win1.41 008e5d88 mac 10748250 PileWood::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8PileWood asm("??_R4PileWood@@6B@");
 // win1.41 008e5d8c mac 10748258 PileWood::`vftable'
 extern const struct PotVftable __vt__8PileWood asm("??_7PileWood@@6B@");
 

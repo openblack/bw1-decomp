@@ -20,9 +20,18 @@ struct SetupSlider
 };
 static_assert(sizeof(struct SetupSlider) == 0x250, "Data type is of wrong size");
 
-// win1.41 008ab2e8 mac 10731254 SetupSlider::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11SetupSlider asm("??_R4SetupSlider@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8158 mac inlined SetupSlider::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11SetupSlider asm("??_R0?AUSetupSlider@@@8");
+// win1.41 009a6608 mac inlined SetupSlider::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11SetupSlider asm("??_R1A@?0A@A@SetupSlider@@8");
+// win1.41 009a6620 mac inlined SetupSlider::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11SetupSlider asm("??_R2SetupSlider@@8");
+// win1.41 009a6630 mac inlined SetupSlider::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11SetupSlider asm("??_R3SetupSlider@@8");
+// win1.41 008ab2e8 mac 10731254 SetupSlider::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11SetupSlider asm("??_R4SetupSlider@@6B@");
 // win1.41 008ab2ec mac 1073125c SetupSlider::`vftable'
 extern const struct SetupControlVftable __vt__11SetupSlider asm("??_7SetupSlider@@6B@");
 

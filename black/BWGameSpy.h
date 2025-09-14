@@ -12,9 +12,18 @@ struct BWGameSpy
 };
 static_assert(sizeof(struct BWGameSpy) == 0x4, "Data type is of wrong size");
 
-// win1.41 008c7058 mac 109edca4 BWGameSpy::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9BWGameSpy asm("??_R4BWGameSpy@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cd680 mac inlined BWGameSpy::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9BWGameSpy asm("??_R0?AVBWGameSpy@@@8");
+// win1.41 009a8700 mac inlined BWGameSpy::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9BWGameSpy asm("??_R1A@?0A@A@BWGameSpy@@8");
+// win1.41 009a8718 mac inlined BWGameSpy::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9BWGameSpy asm("??_R2BWGameSpy@@8");
+// win1.41 009a8728 mac inlined BWGameSpy::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9BWGameSpy asm("??_R3BWGameSpy@@8");
+// win1.41 008c7058 mac 109edca4 BWGameSpy::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9BWGameSpy asm("??_R4BWGameSpy@@6B@");
 // win1.41 008c705c mac 109edcac BWGameSpy::`vftable'
 extern const struct LayerCommunicationVftable __vt__9BWGameSpy asm("??_7BWGameSpy@@6B@");
 

@@ -25,9 +25,18 @@ struct DataPath
 };
 static_assert(sizeof(struct DataPath) == 0x30, "Data type is of wrong size");
 
-// win1.41 0092b418 mac 109a0f04 DataPath::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8DataPath asm("??_R4DataPath@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf3ab0 mac inlined DataPath::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8DataPath asm("??_R0?AVDataPath@@@8");
+// win1.41 009b19d0 mac inlined DataPath::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8DataPath asm("??_R1A@?0A@A@DataPath@@8");
+// win1.41 009b19e8 mac inlined DataPath::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8DataPath asm("??_R2DataPath@@8");
+// win1.41 009b19f8 mac inlined DataPath::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8DataPath asm("??_R3DataPath@@8");
+// win1.41 0092b418 mac 109a0f04 DataPath::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8DataPath asm("??_R4DataPath@@6B@");
 // win1.41 0092b41c mac 109a0f0c DataPath::`vftable'
 extern const struct GameThingVftable __vt__8DataPath asm("??_7DataPath@@6B@");
 

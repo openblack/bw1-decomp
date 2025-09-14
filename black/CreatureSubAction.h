@@ -25,9 +25,18 @@ struct CreatureSubAction
 };
 static_assert(sizeof(struct CreatureSubAction) == 0x60, "Data type is of wrong size");
 
-// win1.41 008cd370 mac 1077e1bc CreatureSubAction::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17CreatureSubAction asm("??_R4CreatureSubAction@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cfa00 mac inlined CreatureSubAction::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17CreatureSubAction asm("??_R0?AVCreatureSubAction@@@8");
+// win1.41 009a95a8 mac inlined CreatureSubAction::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17CreatureSubAction asm("??_R1A@?0A@A@CreatureSubAction@@8");
+// win1.41 009a95c0 mac inlined CreatureSubAction::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17CreatureSubAction asm("??_R2CreatureSubAction@@8");
+// win1.41 009a95d0 mac inlined CreatureSubAction::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17CreatureSubAction asm("??_R3CreatureSubAction@@8");
+// win1.41 008cd370 mac 1077e1bc CreatureSubAction::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17CreatureSubAction asm("??_R4CreatureSubAction@@6B@");
 // win1.41 008cd374 mac 1077e1c4 CreatureSubAction::`vftable'
 extern const struct BaseVftable __vt__17CreatureSubAction asm("??_7CreatureSubAction@@6B@");
 
@@ -66,9 +75,18 @@ struct CreatureSubActionAgenda
 };
 static_assert(sizeof(struct CreatureSubActionAgenda) == 0xc50, "Data type is of wrong size");
 
-// win1.41 008cd350 mac 1077e1f4 CreatureSubActionAgenda::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23CreatureSubActionAgenda asm("??_R4CreatureSubActionAgenda@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cf9b8 mac inlined CreatureSubActionAgenda::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23CreatureSubActionAgenda asm("??_R0?AVCreatureSubActionAgenda@@@8");
+// win1.41 009a9558 mac inlined CreatureSubActionAgenda::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23CreatureSubActionAgenda asm("??_R1A@?0A@A@CreatureSubActionAgenda@@8");
+// win1.41 009a9570 mac inlined CreatureSubActionAgenda::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23CreatureSubActionAgenda asm("??_R2CreatureSubActionAgenda@@8");
+// win1.41 009a9580 mac inlined CreatureSubActionAgenda::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23CreatureSubActionAgenda asm("??_R3CreatureSubActionAgenda@@8");
+// win1.41 008cd350 mac 1077e1f4 CreatureSubActionAgenda::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23CreatureSubActionAgenda asm("??_R4CreatureSubActionAgenda@@6B@");
 // win1.41 008cd354 mac 1077e1fc CreatureSubActionAgenda::`vftable'
 extern const struct BaseVftable __vt__23CreatureSubActionAgenda asm("??_7CreatureSubActionAgenda@@6B@");
 

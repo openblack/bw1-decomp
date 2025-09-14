@@ -22,9 +22,18 @@ struct WeatherThing
 };
 static_assert(sizeof(struct WeatherThing) == 0x88, "Data type is of wrong size");
 
-// win1.41 008ebc44 mac 109ea360 WeatherThing::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12WeatherThing asm("??_R4WeatherThing@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becd00 mac inlined WeatherThing::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12WeatherThing asm("??_R0?AVWeatherThing@@@8");
+// win1.41 009ae018 mac inlined WeatherThing::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12WeatherThing asm("??_R1A@?0A@A@WeatherThing@@8");
+// win1.41 009ae030 mac inlined WeatherThing::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12WeatherThing asm("??_R2WeatherThing@@8");
+// win1.41 009ae048 mac inlined WeatherThing::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12WeatherThing asm("??_R3WeatherThing@@8");
+// win1.41 008ebc44 mac 109ea360 WeatherThing::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12WeatherThing asm("??_R4WeatherThing@@6B@");
 // win1.41 008ebc48 mac 109ea368 WeatherThing::`vftable'
 extern const struct GameThingWithPosVftable __vt__12WeatherThing asm("??_7WeatherThing@@6B@");
 

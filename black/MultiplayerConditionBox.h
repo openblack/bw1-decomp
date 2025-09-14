@@ -13,9 +13,18 @@ struct MultiplayerConditionBox
 };
 static_assert(sizeof(struct MultiplayerConditionBox) == 0x3c, "Data type is of wrong size");
 
-// win1.41 008de9c0 mac inlined MultiplayerConditionBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23MultiplayerConditionBox asm("??_R4MultiplayerConditionBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea348 mac inlined MultiplayerConditionBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23MultiplayerConditionBox asm("??_R0?AVMultiplayerConditionBox@@@8");
+// win1.41 009ac920 mac inlined MultiplayerConditionBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23MultiplayerConditionBox asm("??_R1A@?0A@A@MultiplayerConditionBox@@8");
+// win1.41 009ac938 mac inlined MultiplayerConditionBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23MultiplayerConditionBox asm("??_R2MultiplayerConditionBox@@8");
+// win1.41 009ac948 mac inlined MultiplayerConditionBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23MultiplayerConditionBox asm("??_R3MultiplayerConditionBox@@8");
+// win1.41 008de9c0 mac inlined MultiplayerConditionBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23MultiplayerConditionBox asm("??_R4MultiplayerConditionBox@@6B@");
 // win1.41 008de9c4 mac inlined MultiplayerConditionBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__23MultiplayerConditionBox asm("??_7MultiplayerConditionBox@@6B@");
 

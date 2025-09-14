@@ -29,9 +29,18 @@ struct Football
 };
 static_assert(sizeof(struct Football) == 0x318, "Data type is of wrong size");
 
-// win1.41 008dd644 mac 109993e8 Football::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Football asm("??_R4Football@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be9f80 mac inlined Football::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Football asm("??_R0?AVFootball@@@8");
+// win1.41 009ac588 mac inlined Football::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Football asm("??_R1A@?0A@A@Football@@8");
+// win1.41 009ac5a0 mac inlined Football::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Football asm("??_R2Football@@8");
+// win1.41 009ac5c8 mac inlined Football::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Football asm("??_R3Football@@8");
+// win1.41 008dd644 mac 109993e8 Football::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Football asm("??_R4Football@@6B@");
 // win1.41 008dd648 mac 109993f0 Football::`vftable'
 extern const struct AbodeVftable __vt__8Football asm("??_7Football@@6B@");
 

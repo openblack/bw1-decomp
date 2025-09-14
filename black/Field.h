@@ -63,9 +63,18 @@ struct Field
 };
 static_assert(sizeof(struct Field) == 0x124, "Data type is of wrong size");
 
-// win1.41 008d9b78 mac 1073ee70 Field::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Field asm("??_R4Field@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be9d68 mac inlined Field::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Field asm("??_R0?AVField@@@8");
+// win1.41 009ac228 mac inlined Field::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Field asm("??_R1A@?0A@A@Field@@8");
+// win1.41 009ac240 mac inlined Field::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Field asm("??_R2Field@@8");
+// win1.41 009ac268 mac inlined Field::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Field asm("??_R3Field@@8");
+// win1.41 008d9b78 mac 1073ee70 Field::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Field asm("??_R4Field@@6B@");
 // win1.41 008d9b7c mac 1073ee78 Field::`vftable'
 extern const struct MultiMapFixedVftable __vt__5Field asm("??_7Field@@6B@");
 

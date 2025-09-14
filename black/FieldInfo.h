@@ -16,6 +16,17 @@ struct GFieldInfo
 };
 static_assert(sizeof(struct GFieldInfo) == 0x120, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00be9d28 mac inlined GFieldInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GFieldInfo asm("??_R0?AVGFieldInfo@@@8");
+// win1.41 009ac178 mac inlined GFieldInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GFieldInfo asm("??_R1A@?0A@A@GFieldInfo@@8");
+// win1.41 009ac190 mac inlined GFieldInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GFieldInfo asm("??_R2GFieldInfo@@8");
+// win1.41 009ac1a8 mac inlined GFieldInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GFieldInfo asm("??_R3GFieldInfo@@8");
+
 // Override methods
 
 // win1.41 00527cc0 mac 100d5dc0 GFieldInfo::_dt(void)

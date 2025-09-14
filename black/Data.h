@@ -20,9 +20,18 @@ struct GData
 };
 static_assert(sizeof(struct GData) == 0x28, "Data type is of wrong size");
 
-// win1.41 008d6030 mac 10730b70 GData::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5GData asm("??_R4GData@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be8988 mac inlined GData::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5GData asm("??_R0?AVGData@@@8");
+// win1.41 009ab7a0 mac inlined GData::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5GData asm("??_R1A@?0A@A@GData@@8");
+// win1.41 009ab7b8 mac inlined GData::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5GData asm("??_R2GData@@8");
+// win1.41 009ab7c8 mac inlined GData::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5GData asm("??_R3GData@@8");
+// win1.41 008d6030 mac 10730b70 GData::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5GData asm("??_R4GData@@6B@");
 // win1.41 008d6034 mac 10730b78 GData::`vftable'
 extern const struct BaseVftable __vt__5GData asm("??_7GData@@6B@");
 

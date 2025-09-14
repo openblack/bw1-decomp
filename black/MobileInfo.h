@@ -13,4 +13,11 @@ struct GMobileInfo
 };
 static_assert(sizeof(struct GMobileInfo) == 0x104, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c8d00 mac inlined GMobileInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GMobileInfo asm("??_R0?AVGMobileInfo@@@8");
+// win1.41 009a6af0 mac inlined GMobileInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GMobileInfo asm("??_R1A@?0A@A@GMobileInfo@@8");
+
 #endif /* BW1_DECOMP_MOBILE_INFO_INCLUDED_H */

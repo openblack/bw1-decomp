@@ -18,9 +18,18 @@ struct TerrainMapInfo
 };
 static_assert(sizeof(struct TerrainMapInfo) == 0x128, "Data type is of wrong size");
 
-// win1.41 008df86c mac 10730b28 TerrainMapInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14TerrainMapInfo asm("??_R4TerrainMapInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bec478 mac inlined TerrainMapInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14TerrainMapInfo asm("??_R0?AVTerrainMapInfo@@@8");
+// win1.41 009ad2e0 mac inlined TerrainMapInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14TerrainMapInfo asm("??_R1A@?0A@A@TerrainMapInfo@@8");
+// win1.41 009ad2f8 mac inlined TerrainMapInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14TerrainMapInfo asm("??_R2TerrainMapInfo@@8");
+// win1.41 009ad308 mac inlined TerrainMapInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14TerrainMapInfo asm("??_R3TerrainMapInfo@@8");
+// win1.41 008df86c mac 10730b28 TerrainMapInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14TerrainMapInfo asm("??_R4TerrainMapInfo@@6B@");
 // win1.41 008df870 mac 10730b30 TerrainMapInfo::`vftable'
 extern const struct BaseInfoVftable __vt__14TerrainMapInfo asm("??_7TerrainMapInfo@@6B@");
 

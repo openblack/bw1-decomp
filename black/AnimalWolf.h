@@ -24,6 +24,17 @@ struct SpellWolf
 };
 static_assert(sizeof(struct SpellWolf) == 0x148, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c93f0 mac inlined SpellWolf::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellWolf asm("??_R0?AVSpellWolf@@@8");
+// win1.41 009a76f8 mac inlined SpellWolf::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9SpellWolf asm("??_R1A@?0A@A@SpellWolf@@8");
+// win1.41 009a7710 mac inlined SpellWolf::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9SpellWolf asm("??_R2SpellWolf@@8");
+// win1.41 009a7740 mac inlined SpellWolf::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9SpellWolf asm("??_R3SpellWolf@@8");
+
 // Override methods
 
 // win1.41 004208e0 mac 10176960 SpellWolf::_dt(void)
@@ -58,6 +69,17 @@ struct Wolf
   struct Lion super;  /* 0x0 */
 };
 static_assert(sizeof(struct Wolf) == 0x148, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 009c9488 mac inlined Wolf::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Wolf asm("??_R0?AVWolf@@@8");
+// win1.41 009a77d8 mac inlined Wolf::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Wolf asm("??_R1A@?0A@A@Wolf@@8");
+// win1.41 009a77f0 mac inlined Wolf::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Wolf asm("??_R2Wolf@@8");
+// win1.41 009a7820 mac inlined Wolf::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Wolf asm("??_R3Wolf@@8");
 
 // Override methods
 

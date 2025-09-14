@@ -29,9 +29,18 @@ struct GLeashStatus
 };
 static_assert(sizeof(struct GLeashStatus) == 0x3c, "Data type is of wrong size");
 
-// win1.41 0092abcc mac 109a0a54 GLeashStatus::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12GLeashStatus asm("??_R4GLeashStatus@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf2a20 mac inlined GLeashStatus::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12GLeashStatus asm("??_R0?AVGLeashStatus@@@8");
+// win1.41 009b1738 mac inlined GLeashStatus::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12GLeashStatus asm("??_R1A@?0A@A@GLeashStatus@@8");
+// win1.41 009b1750 mac inlined GLeashStatus::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12GLeashStatus asm("??_R2GLeashStatus@@8");
+// win1.41 009b1760 mac inlined GLeashStatus::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12GLeashStatus asm("??_R3GLeashStatus@@8");
+// win1.41 0092abcc mac 109a0a54 GLeashStatus::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12GLeashStatus asm("??_R4GLeashStatus@@6B@");
 // win1.41 0092abd0 mac 109a0a5c GLeashStatus::`vftable'
 extern const struct GameThingVftable __vt__12GLeashStatus asm("??_7GLeashStatus@@6B@");
 

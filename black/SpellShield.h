@@ -27,9 +27,18 @@ struct SpellShield
 };
 static_assert(sizeof(struct SpellShield) == 0x10c, "Data type is of wrong size");
 
-// win1.41 009828d4 mac 109e09bc SpellShield::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11SpellShield asm("??_R4SpellShield@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c22778 mac inlined SpellShield::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11SpellShield asm("??_R0?AVSpellShield@@@8");
+// win1.41 009b9548 mac inlined SpellShield::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11SpellShield asm("??_R1A@?0A@A@SpellShield@@8");
+// win1.41 009b9560 mac inlined SpellShield::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11SpellShield asm("??_R2SpellShield@@8");
+// win1.41 009b9580 mac inlined SpellShield::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11SpellShield asm("??_R3SpellShield@@8");
+// win1.41 009828d4 mac 109e09bc SpellShield::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11SpellShield asm("??_R4SpellShield@@6B@");
 // win1.41 009828d8 mac 109e09c4 SpellShield::`vftable'
 extern const struct SpellWithObjectsVftable __vt__11SpellShield asm("??_7SpellShield@@6B@");
 

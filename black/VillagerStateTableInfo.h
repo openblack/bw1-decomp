@@ -52,9 +52,18 @@ struct GVillagerStateTableInfo
 };
 static_assert(sizeof(struct GVillagerStateTableInfo) == 0x114, "Data type is of wrong size");
 
-// win1.41 0099aa20 mac 109e9f8c GVillagerStateTableInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23GVillagerStateTableInfo asm("??_R4GVillagerStateTableInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c24608 mac inlined GVillagerStateTableInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23GVillagerStateTableInfo asm("??_R0?AVGVillagerStateTableInfo@@@8");
+// win1.41 009b9e28 mac inlined GVillagerStateTableInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23GVillagerStateTableInfo asm("??_R1A@?0A@A@GVillagerStateTableInfo@@8");
+// win1.41 009b9e40 mac inlined GVillagerStateTableInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23GVillagerStateTableInfo asm("??_R2GVillagerStateTableInfo@@8");
+// win1.41 009b9e50 mac inlined GVillagerStateTableInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23GVillagerStateTableInfo asm("??_R3GVillagerStateTableInfo@@8");
+// win1.41 0099aa20 mac 109e9f8c GVillagerStateTableInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23GVillagerStateTableInfo asm("??_R4GVillagerStateTableInfo@@6B@");
 // win1.41 0099aa24 mac 109e9f94 GVillagerStateTableInfo::`vftable'
 extern const struct BaseVftable __vt__23GVillagerStateTableInfo asm("??_7GVillagerStateTableInfo@@6B@");
 

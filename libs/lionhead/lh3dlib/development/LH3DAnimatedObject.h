@@ -21,9 +21,10 @@ struct LH3DAnimatedObject
 };
 static_assert(sizeof(struct LH3DAnimatedObject) == 0xa4, "Data type is of wrong size");
 
-// win1.41 009a329c mac 101cc084 LH3DAnimatedObject::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18LH3DAnimatedObject asm("??_R4LH3DAnimatedObject@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009a329c mac 101cc084 LH3DAnimatedObject::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18LH3DAnimatedObject asm("??_R4LH3DAnimatedObject@@6B@");
 // win1.41 009a32a0 mac 101cc08c LH3DAnimatedObject::`vftable'
 extern const struct LH3DObjectVftable __vt__18LH3DAnimatedObject asm("??_7LH3DAnimatedObject@@6B@");
 

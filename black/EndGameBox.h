@@ -14,9 +14,18 @@ struct EndGameBox
 };
 static_assert(sizeof(struct EndGameBox) == 0xbc, "Data type is of wrong size");
 
-// win1.41 008de9e8 mac 1099ad1c EndGameBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10EndGameBox asm("??_R4EndGameBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea370 mac inlined EndGameBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10EndGameBox asm("??_R0?AVEndGameBox@@@8");
+// win1.41 009ac970 mac inlined EndGameBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10EndGameBox asm("??_R1A@?0A@A@EndGameBox@@8");
+// win1.41 009ac988 mac inlined EndGameBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10EndGameBox asm("??_R2EndGameBox@@8");
+// win1.41 009ac998 mac inlined EndGameBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10EndGameBox asm("??_R3EndGameBox@@8");
+// win1.41 008de9e8 mac 1099ad1c EndGameBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10EndGameBox asm("??_R4EndGameBox@@6B@");
 // win1.41 008de9ec mac 1099ad24 EndGameBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__10EndGameBox asm("??_7EndGameBox@@6B@");
 

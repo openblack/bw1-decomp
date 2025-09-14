@@ -22,6 +22,17 @@ struct PrayerSite
 };
 static_assert(sizeof(struct PrayerSite) == 0x7c, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c02100 mac inlined PrayerSite::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10PrayerSite asm("??_R0?AVPrayerSite@@@8");
+// win1.41 009b3608 mac inlined PrayerSite::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10PrayerSite asm("??_R1A@?0A@A@PrayerSite@@8");
+// win1.41 009b3620 mac inlined PrayerSite::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10PrayerSite asm("??_R2PrayerSite@@8");
+// win1.41 009b3640 mac inlined PrayerSite::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10PrayerSite asm("??_R3PrayerSite@@8");
+
 // Override methods
 
 // win1.41 00670800 mac inlined PrayerSite::_dt(void)

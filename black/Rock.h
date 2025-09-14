@@ -41,9 +41,18 @@ struct Rock
 };
 static_assert(sizeof(struct Rock) == 0x94, "Data type is of wrong size");
 
-// win1.41 008e20fc mac 107387e8 Rock::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Rock asm("??_R4Rock@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cd328 mac inlined Rock::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Rock asm("??_R0?AVRock@@@8");
+// win1.41 009a8510 mac inlined Rock::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Rock asm("??_R1A@?0A@A@Rock@@8");
+// win1.41 009ae568 mac inlined Rock::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Rock asm("??_R2Rock@@8");
+// win1.41 009ae590 mac inlined Rock::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Rock asm("??_R3Rock@@8");
+// win1.41 008e20fc mac 107387e8 Rock::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Rock asm("??_R4Rock@@6B@");
 // win1.41 008e2100 mac 10738828 Rock::`vftable'
 extern const struct RockVftable __vt__4Rock asm("??_7Rock@@6B@");
 

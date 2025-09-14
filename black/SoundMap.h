@@ -21,9 +21,18 @@ struct GSoundMap
 };
 static_assert(sizeof(struct GSoundMap) == 0x110, "Data type is of wrong size");
 
-// win1.41 008df79c mac 109d7980 GSoundMap::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GSoundMap asm("??_R4GSoundMap@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bec3d8 mac inlined GSoundMap::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GSoundMap asm("??_R0?AVGSoundMap@@@8");
+// win1.41 009ad150 mac inlined GSoundMap::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GSoundMap asm("??_R1A@?0A@A@GSoundMap@@8");
+// win1.41 009ad168 mac inlined GSoundMap::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GSoundMap asm("??_R2GSoundMap@@8");
+// win1.41 009ad178 mac inlined GSoundMap::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GSoundMap asm("??_R3GSoundMap@@8");
+// win1.41 008df79c mac 109d7980 GSoundMap::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GSoundMap asm("??_R4GSoundMap@@6B@");
 // win1.41 008df7a0 mac 109d7988 GSoundMap::`vftable'
 extern const struct BaseVftable __vt__9GSoundMap asm("??_7GSoundMap@@6B@");
 

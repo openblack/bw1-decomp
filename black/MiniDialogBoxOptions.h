@@ -35,9 +35,18 @@ struct MiniDialogBoxOptions
 };
 static_assert(sizeof(struct MiniDialogBoxOptions) == 0x48, "Data type is of wrong size");
 
-// win1.41 008d8668 mac 10999048 MiniDialogBoxOptions::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20MiniDialogBoxOptions asm("??_R4MiniDialogBoxOptions@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be8dc8 mac inlined MiniDialogBoxOptions::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20MiniDialogBoxOptions asm("??_R0?AVMiniDialogBoxOptions@@@8");
+// win1.41 009aba48 mac inlined MiniDialogBoxOptions::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20MiniDialogBoxOptions asm("??_R1A@?0A@A@MiniDialogBoxOptions@@8");
+// win1.41 009aba60 mac inlined MiniDialogBoxOptions::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20MiniDialogBoxOptions asm("??_R2MiniDialogBoxOptions@@8");
+// win1.41 009aba70 mac inlined MiniDialogBoxOptions::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20MiniDialogBoxOptions asm("??_R3MiniDialogBoxOptions@@8");
+// win1.41 008d8668 mac 10999048 MiniDialogBoxOptions::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20MiniDialogBoxOptions asm("??_R4MiniDialogBoxOptions@@6B@");
 // win1.41 008d866c mac 10999050 MiniDialogBoxOptions::`vftable'
 extern const struct DialogBoxBaseVftable __vt__20MiniDialogBoxOptions asm("??_7MiniDialogBoxOptions@@6B@");
 

@@ -32,9 +32,18 @@ struct PotStructure
 };
 static_assert(sizeof(struct PotStructure) == 0x84, "Data type is of wrong size");
 
-// win1.41 008f8dc8 mac 10747844 PotStructure::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12PotStructure asm("??_R4PotStructure@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becb78 mac inlined PotStructure::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12PotStructure asm("??_R0?AVPotStructure@@@8");
+// win1.41 009adbd8 mac inlined PotStructure::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12PotStructure asm("??_R1A@?0A@A@PotStructure@@8");
+// win1.41 009ae9f0 mac inlined PotStructure::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12PotStructure asm("??_R2PotStructure@@8");
+// win1.41 009aea18 mac inlined PotStructure::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12PotStructure asm("??_R3PotStructure@@8");
+// win1.41 008f8dc8 mac 10747844 PotStructure::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12PotStructure asm("??_R4PotStructure@@6B@");
 // win1.41 008f8dcc mac 1074784c PotStructure::`vftable'
 extern const struct PotVftable __vt__12PotStructure asm("??_7PotStructure@@6B@");
 

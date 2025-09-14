@@ -17,6 +17,17 @@ struct HelpSpiritInfo
 };
 static_assert(sizeof(struct HelpSpiritInfo) == 0x1f4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf0be8 mac inlined HelpSpiritInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14HelpSpiritInfo asm("??_R0?AVHelpSpiritInfo@@@8");
+// win1.41 009b1298 mac inlined HelpSpiritInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14HelpSpiritInfo asm("??_R1A@?0A@A@HelpSpiritInfo@@8");
+// win1.41 009b12b0 mac inlined HelpSpiritInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14HelpSpiritInfo asm("??_R2HelpSpiritInfo@@8");
+// win1.41 009b12d0 mac inlined HelpSpiritInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14HelpSpiritInfo asm("??_R3HelpSpiritInfo@@8");
+
 // Override methods
 
 // win1.41 005c4a70 mac 1034c8b0 HelpSpiritInfo::_dt(void)

@@ -18,6 +18,17 @@ struct Crow
 };
 static_assert(sizeof(struct Crow) == 0x148, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c91e8 mac inlined Crow::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Crow asm("??_R0?AVCrow@@@8");
+// win1.41 009a72a0 mac inlined Crow::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Crow asm("??_R1A@?0A@A@Crow@@8");
+// win1.41 009a72b8 mac inlined Crow::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Crow asm("??_R2Crow@@8");
+// win1.41 009a72e8 mac inlined Crow::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Crow asm("??_R3Crow@@8");
+
 // Override methods
 
 // win1.41 0041ec20 mac 101718e0 Crow::_dt(void)

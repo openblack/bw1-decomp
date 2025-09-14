@@ -62,9 +62,18 @@ struct ScriptDLL
 };
 static_assert(sizeof(struct ScriptDLL) == 0xdc, "Data type is of wrong size");
 
-// win1.41 009421fc mac 109c4210 ScriptDLL::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9ScriptDLL asm("??_R4ScriptDLL@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c0d120 mac inlined ScriptDLL::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9ScriptDLL asm("??_R0?AVScriptDLL@@@8");
+// win1.41 009b8ec0 mac inlined ScriptDLL::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9ScriptDLL asm("??_R1A@?0A@A@ScriptDLL@@8");
+// win1.41 009b8ed8 mac inlined ScriptDLL::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9ScriptDLL asm("??_R2ScriptDLL@@8");
+// win1.41 009b8ee8 mac inlined ScriptDLL::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9ScriptDLL asm("??_R3ScriptDLL@@8");
+// win1.41 009421fc mac 109c4210 ScriptDLL::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9ScriptDLL asm("??_R4ScriptDLL@@6B@");
 // win1.41 00942200 mac 109c4218 ScriptDLL::`vftable'
 extern const struct LHDLLVftable __vt__9ScriptDLL asm("??_7ScriptDLL@@6B@");
 

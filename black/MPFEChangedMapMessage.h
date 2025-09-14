@@ -11,6 +11,17 @@ struct MPFEChangedMapMessage
 };
 static_assert(sizeof(struct MPFEChangedMapMessage) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bfdb58 mac inlined MPFEChangedMapMessage::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21MPFEChangedMapMessage asm("??_R0?AVMPFEChangedMapMessage@@@8");
+// win1.41 009b2b90 mac inlined MPFEChangedMapMessage::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21MPFEChangedMapMessage asm("??_R1A@?0A@A@MPFEChangedMapMessage@@8");
+// win1.41 009b2ba8 mac inlined MPFEChangedMapMessage::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21MPFEChangedMapMessage asm("??_R2MPFEChangedMapMessage@@8");
+// win1.41 009b2bb8 mac inlined MPFEChangedMapMessage::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21MPFEChangedMapMessage asm("??_R3MPFEChangedMapMessage@@8");
+
 // Override methods
 
 // win1.41 00631270 mac 103969e0 MPFEChangedMapMessage::_dt(void)

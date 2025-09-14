@@ -16,6 +16,17 @@ struct GPlaytimeInfo
 };
 static_assert(sizeof(struct GPlaytimeInfo) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c01f98 mac inlined GPlaytimeInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13GPlaytimeInfo asm("??_R0?AVGPlaytimeInfo@@@8");
+// win1.41 009b32f8 mac inlined GPlaytimeInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13GPlaytimeInfo asm("??_R1A@?0A@A@GPlaytimeInfo@@8");
+// win1.41 009b3310 mac inlined GPlaytimeInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13GPlaytimeInfo asm("??_R2GPlaytimeInfo@@8");
+// win1.41 009b3320 mac inlined GPlaytimeInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13GPlaytimeInfo asm("??_R3GPlaytimeInfo@@8");
+
 // Override methods
 
 // win1.41 0066c330 mac 10115d70 GPlaytimeInfo::_dt(void)

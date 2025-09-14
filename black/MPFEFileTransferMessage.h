@@ -11,6 +11,17 @@ struct MPFEFileTransferMessage
 };
 static_assert(sizeof(struct MPFEFileTransferMessage) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bfd8c8 mac inlined MPFEFileTransferMessage::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23MPFEFileTransferMessage asm("??_R0?AVMPFEFileTransferMessage@@@8");
+// win1.41 009b2870 mac inlined MPFEFileTransferMessage::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23MPFEFileTransferMessage asm("??_R1A@?0A@A@MPFEFileTransferMessage@@8");
+// win1.41 009b2888 mac inlined MPFEFileTransferMessage::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23MPFEFileTransferMessage asm("??_R2MPFEFileTransferMessage@@8");
+// win1.41 009b2898 mac inlined MPFEFileTransferMessage::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23MPFEFileTransferMessage asm("??_R3MPFEFileTransferMessage@@8");
+
 // Override methods
 
 // win1.41 0062f4a0 mac 103a5220 MPFEFileTransferMessage::_dt(void)

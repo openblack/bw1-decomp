@@ -20,9 +20,18 @@ struct DancePathInfo
 };
 static_assert(sizeof(struct DancePathInfo) == 0x20, "Data type is of wrong size");
 
-// win1.41 00900910 mac 10744cf0 DancePathInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13DancePathInfo asm("??_R4DancePathInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00beff20 mac inlined DancePathInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13DancePathInfo asm("??_R0?AVDancePathInfo@@@8");
+// win1.41 009b0df8 mac inlined DancePathInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13DancePathInfo asm("??_R1A@?0A@A@DancePathInfo@@8");
+// win1.41 009b0e10 mac inlined DancePathInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13DancePathInfo asm("??_R2DancePathInfo@@8");
+// win1.41 009b0e20 mac inlined DancePathInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13DancePathInfo asm("??_R3DancePathInfo@@8");
+// win1.41 00900910 mac 10744cf0 DancePathInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13DancePathInfo asm("??_R4DancePathInfo@@6B@");
 // win1.41 00900914 mac 10744cf8 DancePathInfo::`vftable'
 extern const struct GameThingVftable __vt__13DancePathInfo asm("??_7DancePathInfo@@6B@");
 

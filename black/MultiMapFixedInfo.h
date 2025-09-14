@@ -38,6 +38,13 @@ struct GMultiMapFixedInfo
 };
 static_assert(sizeof(struct GMultiMapFixedInfo) == 0x120, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c7ed0 mac inlined GMultiMapFixedInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18GMultiMapFixedInfo asm("??_R0?AVGMultiMapFixedInfo@@@8");
+// win1.41 009a6350 mac inlined GMultiMapFixedInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18GMultiMapFixedInfo asm("??_R1A@?0A@A@GMultiMapFixedInfo@@8");
+
 // Override methods
 
 // win1.41 0052eb60 mac 100dffe0 GMultiMapFixedInfo::IsOkToCreateAtPos(const MapCoords&, float, float) const

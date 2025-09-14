@@ -16,6 +16,17 @@ struct GAnimalStateTableInfo
 };
 static_assert(sizeof(struct GAnimalStateTableInfo) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c8d88 mac inlined GAnimalStateTableInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21GAnimalStateTableInfo asm("??_R0?AVGAnimalStateTableInfo@@@8");
+// win1.41 009a6b98 mac inlined GAnimalStateTableInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21GAnimalStateTableInfo asm("??_R1A@?0A@A@GAnimalStateTableInfo@@8");
+// win1.41 009a6bb0 mac inlined GAnimalStateTableInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21GAnimalStateTableInfo asm("??_R2GAnimalStateTableInfo@@8");
+// win1.41 009a6bc0 mac inlined GAnimalStateTableInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21GAnimalStateTableInfo asm("??_R3GAnimalStateTableInfo@@8");
+
 // Override methods
 
 // win1.41 00416e80 mac 1016b620 GAnimalStateTableInfo::_dt(void)

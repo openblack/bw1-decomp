@@ -32,9 +32,18 @@ struct EffectValues
 };
 static_assert(sizeof(struct EffectValues) == 0x40, "Data type is of wrong size");
 
-// win1.41 008d8ba4 mac 10734728 EffectValues::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12EffectValues asm("??_R4EffectValues@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be9678 mac inlined EffectValues::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12EffectValues asm("??_R0?AVEffectValues@@@8");
+// win1.41 009abf70 mac inlined EffectValues::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12EffectValues asm("??_R1A@?0A@A@EffectValues@@8");
+// win1.41 009abf88 mac inlined EffectValues::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12EffectValues asm("??_R2EffectValues@@8");
+// win1.41 009abf98 mac inlined EffectValues::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12EffectValues asm("??_R3EffectValues@@8");
+// win1.41 008d8ba4 mac 10734728 EffectValues::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12EffectValues asm("??_R4EffectValues@@6B@");
 // win1.41 008d8ba8 mac 10734730 EffectValues::`vftable'
 extern const struct GBaseInfoVftable __vt__12EffectValues asm("??_7EffectValues@@6B@");
 

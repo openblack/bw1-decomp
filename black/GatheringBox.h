@@ -13,9 +13,18 @@ struct GatheringBox
 };
 static_assert(sizeof(struct GatheringBox) == 0xf0, "Data type is of wrong size");
 
-// win1.41 008deb28 mac 1099afbc GatheringBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12GatheringBox asm("??_R4GatheringBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea470 mac inlined GatheringBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12GatheringBox asm("??_R0?AVGatheringBox@@@8");
+// win1.41 009acbf0 mac inlined GatheringBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12GatheringBox asm("??_R1A@?0A@A@GatheringBox@@8");
+// win1.41 009acc08 mac inlined GatheringBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12GatheringBox asm("??_R2GatheringBox@@8");
+// win1.41 009acc18 mac inlined GatheringBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12GatheringBox asm("??_R3GatheringBox@@8");
+// win1.41 008deb28 mac 1099afbc GatheringBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12GatheringBox asm("??_R4GatheringBox@@6B@");
 // win1.41 008deb2c mac 1099afc4 GatheringBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__12GatheringBox asm("??_7GatheringBox@@6B@");
 

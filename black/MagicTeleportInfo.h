@@ -16,6 +16,17 @@ struct GMagicTeleportInfo
 };
 static_assert(sizeof(struct GMagicTeleportInfo) == 0x58, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009cb9a8 mac inlined GMagicTeleportInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18GMagicTeleportInfo asm("??_R0?AVGMagicTeleportInfo@@@8");
+// win1.41 009a7dc0 mac inlined GMagicTeleportInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18GMagicTeleportInfo asm("??_R1A@?0A@A@GMagicTeleportInfo@@8");
+// win1.41 009a7dd8 mac inlined GMagicTeleportInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18GMagicTeleportInfo asm("??_R2GMagicTeleportInfo@@8");
+// win1.41 009a7df0 mac inlined GMagicTeleportInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18GMagicTeleportInfo asm("??_R3GMagicTeleportInfo@@8");
+
 // Override methods
 
 // win1.41 004356c0 mac 103b2190 GMagicTeleportInfo::_dt(void)

@@ -22,9 +22,18 @@ struct AnimatedStatic
 };
 static_assert(sizeof(struct AnimatedStatic) == 0x98, "Data type is of wrong size");
 
-// win1.41 008c1a0c mac 10735450 AnimatedStatic::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14AnimatedStatic asm("??_R4AnimatedStatic@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c9560 mac inlined AnimatedStatic::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14AnimatedStatic asm("??_R0?AVAnimatedStatic@@@8");
+// win1.41 009a7948 mac inlined AnimatedStatic::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14AnimatedStatic asm("??_R1A@?0A@A@AnimatedStatic@@8");
+// win1.41 009a7960 mac inlined AnimatedStatic::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14AnimatedStatic asm("??_R2AnimatedStatic@@8");
+// win1.41 009a7988 mac inlined AnimatedStatic::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14AnimatedStatic asm("??_R3AnimatedStatic@@8");
+// win1.41 008c1a0c mac 10735450 AnimatedStatic::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14AnimatedStatic asm("??_R4AnimatedStatic@@6B@");
 // win1.41 008c1a10 mac 10735458 AnimatedStatic::`vftable'
 extern const struct MultiMapFixedVftable __vt__14AnimatedStatic asm("??_7AnimatedStatic@@6B@");
 

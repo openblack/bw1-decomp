@@ -22,6 +22,17 @@ struct Flowers
 };
 static_assert(sizeof(struct Flowers) == 0x7c, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00be9d00 mac inlined Flowers::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7Flowers asm("??_R0?AVFlowers@@@8");
+// win1.41 009ac110 mac inlined Flowers::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7Flowers asm("??_R1A@?0A@A@Flowers@@8");
+// win1.41 009ac128 mac inlined Flowers::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7Flowers asm("??_R2Flowers@@8");
+// win1.41 009ac150 mac inlined Flowers::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7Flowers asm("??_R3Flowers@@8");
+
 // Override methods
 
 // win1.41 005279b0 mac 100d0030 Flowers::_dt(void)

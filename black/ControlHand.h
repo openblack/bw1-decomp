@@ -222,9 +222,18 @@ struct CHand
 };
 static_assert(sizeof(struct CHand) == 0x49c4, "Data type is of wrong size");
 
-// win1.41 008cbec8 mac 1077dbd8 CHand::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5CHand asm("??_R4CHand@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cecc8 mac inlined CHand::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5CHand asm("??_R0?AVCHand@@@8");
+// win1.41 009a92a0 mac inlined CHand::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5CHand asm("??_R1A@?0A@A@CHand@@8");
+// win1.41 009a92b8 mac inlined CHand::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5CHand asm("??_R2CHand@@8");
+// win1.41 009a92c8 mac inlined CHand::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5CHand asm("??_R3CHand@@8");
+// win1.41 008cbec8 mac 1077dbd8 CHand::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5CHand asm("??_R4CHand@@6B@");
 // win1.41 008cbecc mac 1077dbe0 CHand::`vftable'
 extern const struct MorphableVftable __vt__5CHand asm("??_7CHand@@6B@");
 

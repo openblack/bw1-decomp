@@ -69,9 +69,18 @@ struct LandscapeVortex
 };
 static_assert(sizeof(struct LandscapeVortex) == 0xec, "Data type is of wrong size");
 
-// win1.41 0092ee7c mac 1099b714 LandscapeVortex::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15LandscapeVortex asm("??_R4LandscapeVortex@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf0200 mac inlined LandscapeVortex::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15LandscapeVortex asm("??_R0?AVLandscapeVortex@@@8");
+// win1.41 009b1cc8 mac inlined LandscapeVortex::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15LandscapeVortex asm("??_R1A@?0A@A@LandscapeVortex@@8");
+// win1.41 009b1e30 mac inlined LandscapeVortex::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15LandscapeVortex asm("??_R2LandscapeVortex@@8");
+// win1.41 009b1e58 mac inlined LandscapeVortex::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15LandscapeVortex asm("??_R3LandscapeVortex@@8");
+// win1.41 0092ee7c mac 1099b714 LandscapeVortex::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15LandscapeVortex asm("??_R4LandscapeVortex@@6B@");
 // win1.41 0092ee80 mac 106f8abc LandscapeVortex::`vftable'
 extern const struct LandscapeVortexVftable __vt__15LandscapeVortex asm("??_7LandscapeVortex@@6B@");
 
@@ -144,6 +153,17 @@ struct LandscapeVortexIn
 };
 static_assert(sizeof(struct LandscapeVortexIn) == 0xec, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf4098 mac inlined LandscapeVortexIn::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17LandscapeVortexIn asm("??_R0?AVLandscapeVortexIn@@@8");
+// win1.41 009b1d50 mac inlined LandscapeVortexIn::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17LandscapeVortexIn asm("??_R1A@?0A@A@LandscapeVortexIn@@8");
+// win1.41 009b1d68 mac inlined LandscapeVortexIn::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17LandscapeVortexIn asm("??_R2LandscapeVortexIn@@8");
+// win1.41 009b1d98 mac inlined LandscapeVortexIn::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17LandscapeVortexIn asm("??_R3LandscapeVortexIn@@8");
+
 // Override methods
 
 // win1.41 005fd7b0 mac 103b98f0 LandscapeVortexIn::_dt(void)
@@ -175,6 +195,17 @@ struct LandscapeVortexOut
 };
 static_assert(sizeof(struct LandscapeVortexOut) == 0xec, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf40d8 mac inlined LandscapeVortexOut::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18LandscapeVortexOut asm("??_R0?AVLandscapeVortexOut@@@8");
+// win1.41 009b1dc0 mac inlined LandscapeVortexOut::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18LandscapeVortexOut asm("??_R1A@?0A@A@LandscapeVortexOut@@8");
+// win1.41 009b1dd8 mac inlined LandscapeVortexOut::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18LandscapeVortexOut asm("??_R2LandscapeVortexOut@@8");
+// win1.41 009b1e08 mac inlined LandscapeVortexOut::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18LandscapeVortexOut asm("??_R3LandscapeVortexOut@@8");
+
 // Override methods
 
 // win1.41 005fdde0 mac 103b97a0 LandscapeVortexOut::_dt(void)
@@ -197,6 +228,17 @@ struct LandscapeVortexVolc
   struct LandscapeVortex super;  /* 0x0 */
 };
 static_assert(sizeof(struct LandscapeVortexVolc) == 0xec, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bf4060 mac inlined LandscapeVortexVolc::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19LandscapeVortexVolc asm("??_R0?AVLandscapeVortexVolc@@@8");
+// win1.41 009b1ce0 mac inlined LandscapeVortexVolc::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19LandscapeVortexVolc asm("??_R1A@?0A@A@LandscapeVortexVolc@@8");
+// win1.41 009b1cf8 mac inlined LandscapeVortexVolc::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19LandscapeVortexVolc asm("??_R2LandscapeVortexVolc@@8");
+// win1.41 009b1d28 mac inlined LandscapeVortexVolc::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19LandscapeVortexVolc asm("??_R3LandscapeVortexVolc@@8");
 
 // Override methods
 

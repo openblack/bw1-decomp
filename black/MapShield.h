@@ -43,9 +43,18 @@ struct MapShield
 };
 static_assert(sizeof(struct MapShield) == 0x68, "Data type is of wrong size");
 
-// win1.41 00982e70 mac 109def60 MapShield::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9MapShield asm("??_R4MapShield@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c227e8 mac inlined MapShield::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9MapShield asm("??_R0?AVMapShield@@@8");
+// win1.41 009b9600 mac inlined MapShield::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9MapShield asm("??_R1A@?0A@A@MapShield@@8");
+// win1.41 009b9618 mac inlined MapShield::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9MapShield asm("??_R2MapShield@@8");
+// win1.41 009b9638 mac inlined MapShield::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9MapShield asm("??_R3MapShield@@8");
+// win1.41 00982e70 mac 109def60 MapShield::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9MapShield asm("??_R4MapShield@@6B@");
 // win1.41 00982e74 mac 109def98 MapShield::`vftable'
 extern const struct MapShieldVftable __vt__9MapShield asm("??_7MapShield@@6B@");
 

@@ -39,9 +39,18 @@ struct MPFEChannelSelector
 };
 static_assert(sizeof(struct MPFEChannelSelector) == 0x58, "Data type is of wrong size");
 
-// win1.41 0093077c mac 109a250c MPFEChannelSelector::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19MPFEChannelSelector asm("??_R4MPFEChannelSelector@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf4a40 mac inlined MPFEChannelSelector::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19MPFEChannelSelector asm("??_R0?AVMPFEChannelSelector@@@8");
+// win1.41 009b24f8 mac inlined MPFEChannelSelector::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19MPFEChannelSelector asm("??_R1A@?0A@A@MPFEChannelSelector@@8");
+// win1.41 009b2510 mac inlined MPFEChannelSelector::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19MPFEChannelSelector asm("??_R2MPFEChannelSelector@@8");
+// win1.41 009b2520 mac inlined MPFEChannelSelector::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19MPFEChannelSelector asm("??_R3MPFEChannelSelector@@8");
+// win1.41 0093077c mac 109a250c MPFEChannelSelector::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19MPFEChannelSelector asm("??_R4MPFEChannelSelector@@6B@");
 // win1.41 00930780 mac 109a2514 MPFEChannelSelector::`vftable'
 extern const struct DialogBoxBaseVftable __vt__19MPFEChannelSelector asm("??_7MPFEChannelSelector@@6B@");
 

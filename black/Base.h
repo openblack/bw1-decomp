@@ -31,9 +31,18 @@ struct Base
 };
 static_assert(sizeof(struct Base) == 0x8, "Data type is of wrong size");
 
-// win1.41 008a9a40 mac 10733fb4 Base::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Base asm("??_R4Base@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c7e80 mac inlined Base::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Base asm("??_R0?AVBase@@@8");
+// win1.41 009a6308 mac inlined Base::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Base asm("??_R1A@?0A@A@Base@@8");
+// win1.41 009a62d8 mac inlined Base::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Base asm("??_R2Base@@8");
+// win1.41 009a62e0 mac inlined Base::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Base asm("??_R3Base@@8");
+// win1.41 008a9a40 mac 10733fb4 Base::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Base asm("??_R4Base@@6B@");
 // win1.41 008a9a44 mac 10734004 Base::`vftable'
 extern const struct BaseVftable __vt__4Base asm("??_7Base@@6B@");
 

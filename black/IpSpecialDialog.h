@@ -12,6 +12,17 @@ struct IPSpecialDialog
 };
 static_assert(sizeof(struct IPSpecialDialog) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf2a88 mac inlined IPSpecialDialog::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15IPSpecialDialog asm("??_R0?AVIPSpecialDialog@@@8");
+// win1.41 009b1788 mac inlined IPSpecialDialog::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15IPSpecialDialog asm("??_R1A@?0A@A@IPSpecialDialog@@8");
+// win1.41 009b17a0 mac inlined IPSpecialDialog::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15IPSpecialDialog asm("??_R2IPSpecialDialog@@8");
+// win1.41 009b17b0 mac inlined IPSpecialDialog::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15IPSpecialDialog asm("??_R3IPSpecialDialog@@8");
+
 // Override methods
 
 // win1.41 005dd4a0 mac 100fdfa0 IPSpecialDialog::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))

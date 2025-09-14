@@ -14,9 +14,18 @@ struct NewProfileBox
 };
 static_assert(sizeof(struct NewProfileBox) == 0x24, "Data type is of wrong size");
 
-// win1.41 008dec18 mac 109ed914 NewProfileBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13NewProfileBox asm("??_R4NewProfileBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea310 mac inlined NewProfileBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13NewProfileBox asm("??_R0?AVNewProfileBox@@@8");
+// win1.41 009ac880 mac inlined NewProfileBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13NewProfileBox asm("??_R1A@?0A@A@NewProfileBox@@8");
+// win1.41 009ac898 mac inlined NewProfileBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13NewProfileBox asm("??_R2NewProfileBox@@8");
+// win1.41 009ac8a8 mac inlined NewProfileBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13NewProfileBox asm("??_R3NewProfileBox@@8");
+// win1.41 008dec18 mac 109ed914 NewProfileBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13NewProfileBox asm("??_R4NewProfileBox@@6B@");
 // win1.41 008dec1c mac 109ed91c NewProfileBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__13NewProfileBox asm("??_7NewProfileBox@@6B@");
 

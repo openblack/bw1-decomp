@@ -34,9 +34,18 @@ struct CreatureInfo
 };
 static_assert(sizeof(struct CreatureInfo) == 0x394, "Data type is of wrong size");
 
-// win1.41 008cc754 mac 1077e340 CreatureInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreatureInfo asm("??_R4CreatureInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cf8e0 mac inlined CreatureInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12CreatureInfo asm("??_R0?AVCreatureInfo@@@8");
+// win1.41 009a93a0 mac inlined CreatureInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12CreatureInfo asm("??_R1A@?0A@A@CreatureInfo@@8");
+// win1.41 009a93b8 mac inlined CreatureInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12CreatureInfo asm("??_R2CreatureInfo@@8");
+// win1.41 009a93d8 mac inlined CreatureInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12CreatureInfo asm("??_R3CreatureInfo@@8");
+// win1.41 008cc754 mac 1077e340 CreatureInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreatureInfo asm("??_R4CreatureInfo@@6B@");
 // win1.41 008cc758 mac 1077e348 CreatureInfo::`vftable'
 extern const struct GObjectInfoVftable __vt__12CreatureInfo asm("??_7CreatureInfo@@6B@");
 

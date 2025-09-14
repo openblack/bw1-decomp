@@ -20,6 +20,17 @@ struct Bat
 };
 static_assert(sizeof(struct Bat) == 0x148, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c9288 mac inlined Bat::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__3Bat asm("??_R0?AVBat@@@8");
+// win1.41 009a7460 mac inlined Bat::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__3Bat asm("??_R1A@?0A@A@Bat@@8");
+// win1.41 009a7478 mac inlined Bat::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__3Bat asm("??_R2Bat@@8");
+// win1.41 009a74a8 mac inlined Bat::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__3Bat asm("??_R3Bat@@8");
+
 // Override methods
 
 // win1.41 0041ef30 mac 10171c00 Bat::_dt(void)
@@ -38,6 +49,17 @@ struct SpellBat
   struct SpellDove super;  /* 0x0 */
 };
 static_assert(sizeof(struct SpellBat) == 0x148, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 009c92a8 mac inlined SpellBat::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8SpellBat asm("??_R0?AVSpellBat@@@8");
+// win1.41 009a74d0 mac inlined SpellBat::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8SpellBat asm("??_R1A@?0A@A@SpellBat@@8");
+// win1.41 009a74e8 mac inlined SpellBat::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8SpellBat asm("??_R2SpellBat@@8");
+// win1.41 009a7518 mac inlined SpellBat::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8SpellBat asm("??_R3SpellBat@@8");
 
 // Override methods
 

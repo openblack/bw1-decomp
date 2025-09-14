@@ -30,9 +30,18 @@ struct MagicFireBall
 };
 static_assert(sizeof(struct MagicFireBall) == 0x60, "Data type is of wrong size");
 
-// win1.41 00935958 mac 109afc28 MagicFireBall::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13MagicFireBall asm("??_R4MagicFireBall@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c02408 mac inlined MagicFireBall::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13MagicFireBall asm("??_R0?AVMagicFireBall@@@8");
+// win1.41 009b3b20 mac inlined MagicFireBall::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13MagicFireBall asm("??_R1A@?0A@A@MagicFireBall@@8");
+// win1.41 009b3b38 mac inlined MagicFireBall::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13MagicFireBall asm("??_R2MagicFireBall@@8");
+// win1.41 009b3b50 mac inlined MagicFireBall::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13MagicFireBall asm("??_R3MagicFireBall@@8");
+// win1.41 00935958 mac 109afc28 MagicFireBall::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13MagicFireBall asm("??_R4MagicFireBall@@6B@");
 // win1.41 0093595c mac 109afc30 MagicFireBall::`vftable'
 extern const struct ObjectVftable __vt__13MagicFireBall asm("??_7MagicFireBall@@6B@");
 

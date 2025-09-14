@@ -18,9 +18,18 @@ struct SetupStaticTextNoHit
 };
 static_assert(sizeof(struct SetupStaticTextNoHit) == 0x244, "Data type is of wrong size");
 
-// win1.41 00900094 mac 1099b094 SetupStaticTextNoHit::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20SetupStaticTextNoHit asm("??_R4SetupStaticTextNoHit@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bef140 mac inlined SetupStaticTextNoHit::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20SetupStaticTextNoHit asm("??_R0?AUSetupStaticTextNoHit@@@8");
+// win1.41 009b0598 mac inlined SetupStaticTextNoHit::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20SetupStaticTextNoHit asm("??_R1A@?0A@A@SetupStaticTextNoHit@@8");
+// win1.41 009b05b0 mac inlined SetupStaticTextNoHit::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20SetupStaticTextNoHit asm("??_R2SetupStaticTextNoHit@@8");
+// win1.41 009b05c0 mac inlined SetupStaticTextNoHit::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20SetupStaticTextNoHit asm("??_R3SetupStaticTextNoHit@@8");
+// win1.41 00900094 mac 1099b094 SetupStaticTextNoHit::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20SetupStaticTextNoHit asm("??_R4SetupStaticTextNoHit@@6B@");
 // win1.41 00900098 mac 1099b09c SetupStaticTextNoHit::`vftable'
 extern const struct SetupControlVftable __vt__20SetupStaticTextNoHit asm("??_7SetupStaticTextNoHit@@6B@");
 

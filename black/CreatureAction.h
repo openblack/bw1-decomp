@@ -62,9 +62,18 @@ struct CreaturePreviousActions
 };
 static_assert(sizeof(struct CreaturePreviousActions) == 0x528, "Data type is of wrong size");
 
-// win1.41 008d1548 mac 107875fc CreaturePreviousActions::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23CreaturePreviousActions asm("??_R4CreaturePreviousActions@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be02d8 mac inlined CreaturePreviousActions::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23CreaturePreviousActions asm("??_R0?AVCreaturePreviousActions@@@8");
+// win1.41 009ab390 mac inlined CreaturePreviousActions::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23CreaturePreviousActions asm("??_R1A@?0A@A@CreaturePreviousActions@@8");
+// win1.41 009ab3a8 mac inlined CreaturePreviousActions::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23CreaturePreviousActions asm("??_R2CreaturePreviousActions@@8");
+// win1.41 009ab3b8 mac inlined CreaturePreviousActions::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23CreaturePreviousActions asm("??_R3CreaturePreviousActions@@8");
+// win1.41 008d1548 mac 107875fc CreaturePreviousActions::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23CreaturePreviousActions asm("??_R4CreaturePreviousActions@@6B@");
 // win1.41 008d154c mac 10787604 CreaturePreviousActions::`vftable'
 extern const struct BaseVftable __vt__23CreaturePreviousActions asm("??_7CreaturePreviousActions@@6B@");
 
@@ -79,6 +88,17 @@ struct CreatureActionKnownAbout
 };
 static_assert(sizeof(struct CreatureActionKnownAbout) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bdfda8 mac inlined CreatureActionKnownAbout::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureActionKnownAbout asm("??_R0?AVCreatureActionKnownAbout@@@8");
+// win1.41 009aaf90 mac inlined CreatureActionKnownAbout::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24CreatureActionKnownAbout asm("??_R1A@?0A@A@CreatureActionKnownAbout@@8");
+// win1.41 009aafa8 mac inlined CreatureActionKnownAbout::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__24CreatureActionKnownAbout asm("??_R2CreatureActionKnownAbout@@8");
+// win1.41 009aafb8 mac inlined CreatureActionKnownAbout::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__24CreatureActionKnownAbout asm("??_R3CreatureActionKnownAbout@@8");
+
 // Override methods
 
 // win1.41 004e29b0 mac 10266bf0 CreatureActionKnownAbout::_dt(void)
@@ -89,6 +109,17 @@ struct CreatureActionKnownAboutEntry
   struct GBaseInfo super;  /* 0x0 */
 };
 static_assert(sizeof(struct CreatureActionKnownAboutEntry) == 0x10, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bdfe00 mac inlined CreatureActionKnownAboutEntry::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__29CreatureActionKnownAboutEntry asm("??_R0?AVCreatureActionKnownAboutEntry@@@8");
+// win1.41 009aafe0 mac inlined CreatureActionKnownAboutEntry::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__29CreatureActionKnownAboutEntry asm("??_R1A@?0A@A@CreatureActionKnownAboutEntry@@8");
+// win1.41 009aaff8 mac inlined CreatureActionKnownAboutEntry::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__29CreatureActionKnownAboutEntry asm("??_R2CreatureActionKnownAboutEntry@@8");
+// win1.41 009ab008 mac inlined CreatureActionKnownAboutEntry::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__29CreatureActionKnownAboutEntry asm("??_R3CreatureActionKnownAboutEntry@@8");
 
 // Override methods
 
@@ -103,6 +134,17 @@ struct CreatureFalling
 };
 static_assert(sizeof(struct CreatureFalling) == 0x57b8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00be9c18 mac inlined CreatureFalling::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15CreatureFalling asm("??_R0?AVCreatureFalling@@@8");
+// win1.41 009abfc0 mac inlined CreatureFalling::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15CreatureFalling asm("??_R1A@?0A@A@CreatureFalling@@8");
+// win1.41 009abfd8 mac inlined CreatureFalling::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15CreatureFalling asm("??_R2CreatureFalling@@8");
+// win1.41 009abff0 mac inlined CreatureFalling::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15CreatureFalling asm("??_R3CreatureFalling@@8");
+
 // Override methods
 
 // win1.41 004803d0 mac inlined CreatureFalling::SetAnimTime(long, long)
@@ -113,6 +155,17 @@ struct CreatureMagicActionKnownAboutEntry
   struct CreatureActionKnownAboutEntry super;  /* 0x0 */
 };
 static_assert(sizeof(struct CreatureMagicActionKnownAboutEntry) == 0x10, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bdfe30 mac inlined CreatureMagicActionKnownAboutEntry::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__34CreatureMagicActionKnownAboutEntry asm("??_R0?AVCreatureMagicActionKnownAboutEntry@@@8");
+// win1.41 009ab030 mac inlined CreatureMagicActionKnownAboutEntry::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__34CreatureMagicActionKnownAboutEntry asm("??_R1A@?0A@A@CreatureMagicActionKnownAboutEntry@@8");
+// win1.41 009ab048 mac inlined CreatureMagicActionKnownAboutEntry::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__34CreatureMagicActionKnownAboutEntry asm("??_R2CreatureMagicActionKnownAboutEntry@@8");
+// win1.41 009ab060 mac inlined CreatureMagicActionKnownAboutEntry::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__34CreatureMagicActionKnownAboutEntry asm("??_R3CreatureMagicActionKnownAboutEntry@@8");
 
 // Override methods
 

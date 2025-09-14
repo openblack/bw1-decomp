@@ -29,9 +29,18 @@ struct SpellSeed
 };
 static_assert(sizeof(struct SpellSeed) == 0xa0, "Data type is of wrong size");
 
-// win1.41 00981fbc mac 109dd91c SpellSeed::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9SpellSeed asm("??_R4SpellSeed@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c226f0 mac inlined SpellSeed::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellSeed asm("??_R0?AVSpellSeed@@@8");
+// win1.41 009b9448 mac inlined SpellSeed::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9SpellSeed asm("??_R1A@?0A@A@SpellSeed@@8");
+// win1.41 009b9460 mac inlined SpellSeed::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9SpellSeed asm("??_R2SpellSeed@@8");
+// win1.41 009b9478 mac inlined SpellSeed::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9SpellSeed asm("??_R3SpellSeed@@8");
+// win1.41 00981fbc mac 109dd91c SpellSeed::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9SpellSeed asm("??_R4SpellSeed@@6B@");
 // win1.41 00981fc0 mac 109dd924 SpellSeed::`vftable'
 extern const struct ObjectVftable __vt__9SpellSeed asm("??_7SpellSeed@@6B@");
 

@@ -21,9 +21,18 @@ struct GTribeInfo
 };
 static_assert(sizeof(struct GTribeInfo) == 0x1c, "Data type is of wrong size");
 
-// win1.41 0099a18c mac 1075e974 GTribeInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GTribeInfo asm("??_R4GTribeInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c23060 mac inlined GTribeInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GTribeInfo asm("??_R0?AVGTribeInfo@@@8");
+// win1.41 009b9cd0 mac inlined GTribeInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GTribeInfo asm("??_R1A@?0A@A@GTribeInfo@@8");
+// win1.41 009b9ce8 mac inlined GTribeInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GTribeInfo asm("??_R2GTribeInfo@@8");
+// win1.41 009b9cf8 mac inlined GTribeInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GTribeInfo asm("??_R3GTribeInfo@@8");
+// win1.41 0099a18c mac 1075e974 GTribeInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GTribeInfo asm("??_R4GTribeInfo@@6B@");
 // win1.41 0099a190 mac 1075e97c GTribeInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__10GTribeInfo asm("??_7GTribeInfo@@6B@");
 

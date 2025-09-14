@@ -18,6 +18,17 @@ struct SpellPointInf
 };
 static_assert(sizeof(struct SpellPointInf) == 0x14, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bed730 mac inlined SpellPointInf::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13SpellPointInf asm("??_R0?AVSpellPointInf@@@8");
+// win1.41 009af120 mac inlined SpellPointInf::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13SpellPointInf asm("??_R1A@?0A@A@SpellPointInf@@8");
+// win1.41 009af138 mac inlined SpellPointInf::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13SpellPointInf asm("??_R2SpellPointInf@@8");
+// win1.41 009af150 mac inlined SpellPointInf::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13SpellPointInf asm("??_R3SpellPointInf@@8");
+
 // Override methods
 
 // win1.41 0055f450 mac 1041f870 SpellPointInf::_dt(void)

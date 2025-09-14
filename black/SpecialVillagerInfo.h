@@ -25,9 +25,18 @@ struct GSpecialVillagerInfo
 };
 static_assert(sizeof(struct GSpecialVillagerInfo) == 0x60, "Data type is of wrong size");
 
-// win1.41 00980564 mac 1075b7e4 GSpecialVillagerInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20GSpecialVillagerInfo asm("??_R4GSpecialVillagerInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c22528 mac inlined GSpecialVillagerInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20GSpecialVillagerInfo asm("??_R0?AVGSpecialVillagerInfo@@@8");
+// win1.41 009b9248 mac inlined GSpecialVillagerInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20GSpecialVillagerInfo asm("??_R1A@?0A@A@GSpecialVillagerInfo@@8");
+// win1.41 009b9260 mac inlined GSpecialVillagerInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20GSpecialVillagerInfo asm("??_R2GSpecialVillagerInfo@@8");
+// win1.41 009b9270 mac inlined GSpecialVillagerInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20GSpecialVillagerInfo asm("??_R3GSpecialVillagerInfo@@8");
+// win1.41 00980564 mac 1075b7e4 GSpecialVillagerInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20GSpecialVillagerInfo asm("??_R4GSpecialVillagerInfo@@6B@");
 // win1.41 00980568 mac 1075b7ec GSpecialVillagerInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__20GSpecialVillagerInfo asm("??_7GSpecialVillagerInfo@@6B@");
 

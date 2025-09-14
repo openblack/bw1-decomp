@@ -306,9 +306,18 @@ struct GameThingWithPos
 };
 static_assert(sizeof(struct GameThingWithPos) == 0x28, "Data type is of wrong size");
 
-// win1.41 008c319c mac 107313b0 GameThingWithPos::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GameThingWithPos asm("??_R4GameThingWithPos@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c7f30 mac inlined GameThingWithPos::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GameThingWithPos asm("??_R0?AVGameThingWithPos@@@8");
+// win1.41 009a63d8 mac inlined GameThingWithPos::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GameThingWithPos asm("??_R1A@?0A@A@GameThingWithPos@@8");
+// win1.41 009a7a50 mac inlined GameThingWithPos::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GameThingWithPos asm("??_R2GameThingWithPos@@8");
+// win1.41 009a7a60 mac inlined GameThingWithPos::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GameThingWithPos asm("??_R3GameThingWithPos@@8");
+// win1.41 008c319c mac 107313b0 GameThingWithPos::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GameThingWithPos asm("??_R4GameThingWithPos@@6B@");
 // win1.41 008c31a0 mac 107313c8 GameThingWithPos::`vftable'
 extern const struct GameThingWithPosVftable __vt__16GameThingWithPos asm("??_7GameThingWithPos@@6B@");
 

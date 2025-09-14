@@ -26,9 +26,18 @@ struct DialogBoxImmersion
 };
 static_assert(sizeof(struct DialogBoxImmersion) == 0x30, "Data type is of wrong size");
 
-// win1.41 008d8640 mac 109990a8 DialogBoxImmersion::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18DialogBoxImmersion asm("??_R4DialogBoxImmersion@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be8da0 mac inlined DialogBoxImmersion::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18DialogBoxImmersion asm("??_R0?AVDialogBoxImmersion@@@8");
+// win1.41 009ab9f8 mac inlined DialogBoxImmersion::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18DialogBoxImmersion asm("??_R1A@?0A@A@DialogBoxImmersion@@8");
+// win1.41 009aba10 mac inlined DialogBoxImmersion::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18DialogBoxImmersion asm("??_R2DialogBoxImmersion@@8");
+// win1.41 009aba20 mac inlined DialogBoxImmersion::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18DialogBoxImmersion asm("??_R3DialogBoxImmersion@@8");
+// win1.41 008d8640 mac 109990a8 DialogBoxImmersion::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18DialogBoxImmersion asm("??_R4DialogBoxImmersion@@6B@");
 // win1.41 008d8644 mac 109990b0 DialogBoxImmersion::`vftable'
 extern const struct DialogBoxBaseVftable __vt__18DialogBoxImmersion asm("??_7DialogBoxImmersion@@6B@");
 

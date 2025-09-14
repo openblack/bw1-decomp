@@ -26,9 +26,18 @@ struct SetupCheckBox
 };
 static_assert(sizeof(struct SetupCheckBox) == 0x260, "Data type is of wrong size");
 
-// win1.41 008ab584 mac 10730d88 SetupCheckBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13SetupCheckBox asm("??_R4SetupCheckBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c82d8 mac inlined SetupCheckBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13SetupCheckBox asm("??_R0?AUSetupCheckBox@@@8");
+// win1.41 009a6928 mac inlined SetupCheckBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13SetupCheckBox asm("??_R1A@?0A@A@SetupCheckBox@@8");
+// win1.41 009a6940 mac inlined SetupCheckBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13SetupCheckBox asm("??_R2SetupCheckBox@@8");
+// win1.41 009a6950 mac inlined SetupCheckBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13SetupCheckBox asm("??_R3SetupCheckBox@@8");
+// win1.41 008ab584 mac 10730d88 SetupCheckBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13SetupCheckBox asm("??_R4SetupCheckBox@@6B@");
 // win1.41 008ab588 mac 10730d90 SetupCheckBox::`vftable'
 extern const struct SetupControlVftable __vt__13SetupCheckBox asm("??_7SetupCheckBox@@6B@");
 

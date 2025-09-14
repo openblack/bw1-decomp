@@ -16,9 +16,18 @@ struct MPFEChooseConnection
 };
 static_assert(sizeof(struct MPFEChooseConnection) == 0x10, "Data type is of wrong size");
 
-// win1.41 009307d4 mac 109a2554 MPFEChooseConnection::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20MPFEChooseConnection asm("??_R4MPFEChooseConnection@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf4b00 mac inlined MPFEChooseConnection::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20MPFEChooseConnection asm("??_R0?AVMPFEChooseConnection@@@8");
+// win1.41 009b2598 mac inlined MPFEChooseConnection::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20MPFEChooseConnection asm("??_R1A@?0A@A@MPFEChooseConnection@@8");
+// win1.41 009b25b0 mac inlined MPFEChooseConnection::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20MPFEChooseConnection asm("??_R2MPFEChooseConnection@@8");
+// win1.41 009b25c0 mac inlined MPFEChooseConnection::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20MPFEChooseConnection asm("??_R3MPFEChooseConnection@@8");
+// win1.41 009307d4 mac 109a2554 MPFEChooseConnection::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20MPFEChooseConnection asm("??_R4MPFEChooseConnection@@6B@");
 // win1.41 009307d8 mac 109a255c MPFEChooseConnection::`vftable'
 extern const struct DialogBoxBaseVftable __vt__20MPFEChooseConnection asm("??_7MPFEChooseConnection@@6B@");
 

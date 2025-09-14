@@ -29,9 +29,18 @@ struct MPFELogin
 };
 static_assert(sizeof(struct MPFELogin) == 0x5c, "Data type is of wrong size");
 
-// win1.41 00930964 mac 109a3a28 MPFELogin::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9MPFELogin asm("??_R4MPFELogin@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bfda80 mac inlined MPFELogin::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9MPFELogin asm("??_R0?AVMPFELogin@@@8");
+// win1.41 009b2af0 mac inlined MPFELogin::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9MPFELogin asm("??_R1A@?0A@A@MPFELogin@@8");
+// win1.41 009b2b08 mac inlined MPFELogin::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9MPFELogin asm("??_R2MPFELogin@@8");
+// win1.41 009b2b18 mac inlined MPFELogin::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9MPFELogin asm("??_R3MPFELogin@@8");
+// win1.41 00930964 mac 109a3a28 MPFELogin::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9MPFELogin asm("??_R4MPFELogin@@6B@");
 // win1.41 00930968 mac 109a3a30 MPFELogin::`vftable'
 extern const struct DialogBoxBaseVftable __vt__9MPFELogin asm("??_7MPFELogin@@6B@");
 
@@ -55,9 +64,18 @@ struct MPFELoginDatabase
 };
 static_assert(sizeof(struct MPFELoginDatabase) == 0xc, "Data type is of wrong size");
 
-// win1.41 0093098c mac 109a39c4 MPFELoginDatabase::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17MPFELoginDatabase asm("??_R4MPFELoginDatabase@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bfdb38 mac inlined MPFELoginDatabase::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17MPFELoginDatabase asm("??_R0?AVMPFELoginDatabase@@@8");
+// win1.41 009b2b40 mac inlined MPFELoginDatabase::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17MPFELoginDatabase asm("??_R1A@?0A@A@MPFELoginDatabase@@8");
+// win1.41 009b2b58 mac inlined MPFELoginDatabase::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17MPFELoginDatabase asm("??_R2MPFELoginDatabase@@8");
+// win1.41 009b2b68 mac inlined MPFELoginDatabase::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17MPFELoginDatabase asm("??_R3MPFELoginDatabase@@8");
+// win1.41 0093098c mac 109a39c4 MPFELoginDatabase::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17MPFELoginDatabase asm("??_R4MPFELoginDatabase@@6B@");
 // win1.41 00930990 mac 109a39cc MPFELoginDatabase::`vftable'
 extern const struct MPFEDatabaseVftable __vt__17MPFELoginDatabase asm("??_7MPFELoginDatabase@@6B@");
 

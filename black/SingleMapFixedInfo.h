@@ -30,9 +30,18 @@ struct GSingleMapFixedInfo
 };
 static_assert(sizeof(struct GSingleMapFixedInfo) == 0x100, "Data type is of wrong size");
 
-// win1.41 008db6d8 mac 10740ce8 GSingleMapFixedInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19GSingleMapFixedInfo asm("??_R4GSingleMapFixedInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be9e88 mac inlined GSingleMapFixedInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19GSingleMapFixedInfo asm("??_R0?AVGSingleMapFixedInfo@@@8");
+// win1.41 009ac3a0 mac inlined GSingleMapFixedInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19GSingleMapFixedInfo asm("??_R1A@?0A@A@GSingleMapFixedInfo@@8");
+// win1.41 009ac3b8 mac inlined GSingleMapFixedInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19GSingleMapFixedInfo asm("??_R2GSingleMapFixedInfo@@8");
+// win1.41 009ac3d0 mac inlined GSingleMapFixedInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19GSingleMapFixedInfo asm("??_R3GSingleMapFixedInfo@@8");
+// win1.41 008db6d8 mac 10740ce8 GSingleMapFixedInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19GSingleMapFixedInfo asm("??_R4GSingleMapFixedInfo@@6B@");
 // win1.41 008db6dc mac 10740cf0 GSingleMapFixedInfo::`vftable'
 extern const struct GSingleMapFixedInfoVftable __vt__19GSingleMapFixedInfo asm("??_7GSingleMapFixedInfo@@6B@");
 

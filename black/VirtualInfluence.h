@@ -36,9 +36,18 @@ struct GVirtualInfluence
 };
 static_assert(sizeof(struct GVirtualInfluence) == 0x60, "Data type is of wrong size");
 
-// win1.41 0099aa6c mac 1075e9c4 GVirtualInfluence::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GVirtualInfluence asm("??_R4GVirtualInfluence@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c24658 mac inlined GVirtualInfluence::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17GVirtualInfluence asm("??_R0?AVGVirtualInfluence@@@8");
+// win1.41 009b9e78 mac inlined GVirtualInfluence::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17GVirtualInfluence asm("??_R1A@?0A@A@GVirtualInfluence@@8");
+// win1.41 009b9e90 mac inlined GVirtualInfluence::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17GVirtualInfluence asm("??_R2GVirtualInfluence@@8");
+// win1.41 009b9ea0 mac inlined GVirtualInfluence::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17GVirtualInfluence asm("??_R3GVirtualInfluence@@8");
+// win1.41 0099aa6c mac 1075e9c4 GVirtualInfluence::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GVirtualInfluence asm("??_R4GVirtualInfluence@@6B@");
 // win1.41 0099aa70 mac 1075e9cc GVirtualInfluence::`vftable'
 extern const struct BaseVftable __vt__17GVirtualInfluence asm("??_7GVirtualInfluence@@6B@");
 

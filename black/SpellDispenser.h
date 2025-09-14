@@ -22,6 +22,17 @@ struct SpellDispenser
 };
 static_assert(sizeof(struct SpellDispenser) == 0xc4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c225c0 mac inlined SpellDispenser::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14SpellDispenser asm("??_R0?AVSpellDispenser@@@8");
+// win1.41 009b9330 mac inlined SpellDispenser::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14SpellDispenser asm("??_R1A@?0A@A@SpellDispenser@@8");
+// win1.41 009b9348 mac inlined SpellDispenser::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14SpellDispenser asm("??_R2SpellDispenser@@8");
+// win1.41 009b9370 mac inlined SpellDispenser::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14SpellDispenser asm("??_R3SpellDispenser@@8");
+
 // Override methods
 
 // win1.41 00722700 mac 1051a8e0 SpellDispenser::_dt(void)

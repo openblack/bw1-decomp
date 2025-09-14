@@ -15,9 +15,18 @@ struct CreatureBeliefList
 };
 static_assert(sizeof(struct CreatureBeliefList) == 0x14, "Data type is of wrong size");
 
-// win1.41 008cf908 mac 10787474 CreatureBeliefList::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18CreatureBeliefList asm("??_R4CreatureBeliefList@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009dd898 mac inlined CreatureBeliefList::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18CreatureBeliefList asm("??_R0?AVCreatureBeliefList@@@8");
+// win1.41 009aa3b0 mac inlined CreatureBeliefList::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18CreatureBeliefList asm("??_R1A@?0A@A@CreatureBeliefList@@8");
+// win1.41 009aa3c8 mac inlined CreatureBeliefList::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18CreatureBeliefList asm("??_R2CreatureBeliefList@@8");
+// win1.41 009aa3d8 mac inlined CreatureBeliefList::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18CreatureBeliefList asm("??_R3CreatureBeliefList@@8");
+// win1.41 008cf908 mac 10787474 CreatureBeliefList::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18CreatureBeliefList asm("??_R4CreatureBeliefList@@6B@");
 // win1.41 008cf90c mac 1078747c CreatureBeliefList::`vftable'
 extern const struct BaseVftable __vt__18CreatureBeliefList asm("??_7CreatureBeliefList@@6B@");
 
@@ -36,9 +45,18 @@ struct AllocatedBeliefList
 };
 static_assert(sizeof(struct AllocatedBeliefList) == 0x18, "Data type is of wrong size");
 
-// win1.41 008cfe54 mac 107874ac AllocatedBeliefList::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19AllocatedBeliefList asm("??_R4AllocatedBeliefList@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bdf390 mac inlined AllocatedBeliefList::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19AllocatedBeliefList asm("??_R0?AVAllocatedBeliefList@@@8");
+// win1.41 009aaa40 mac inlined AllocatedBeliefList::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19AllocatedBeliefList asm("??_R1A@?0A@A@AllocatedBeliefList@@8");
+// win1.41 009aaa58 mac inlined AllocatedBeliefList::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19AllocatedBeliefList asm("??_R2AllocatedBeliefList@@8");
+// win1.41 009aaa68 mac inlined AllocatedBeliefList::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19AllocatedBeliefList asm("??_R3AllocatedBeliefList@@8");
+// win1.41 008cfe54 mac 107874ac AllocatedBeliefList::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19AllocatedBeliefList asm("??_R4AllocatedBeliefList@@6B@");
 // win1.41 008cfe58 mac 107874b4 AllocatedBeliefList::`vftable'
 extern const struct BaseVftable __vt__19AllocatedBeliefList asm("??_7AllocatedBeliefList@@6B@");
 
@@ -56,9 +74,18 @@ struct CreatureBeliefs
 };
 static_assert(sizeof(struct CreatureBeliefs) == 0x270, "Data type is of wrong size");
 
-// win1.41 008cf8e8 mac 109899cc CreatureBeliefs::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15CreatureBeliefs asm("??_R4CreatureBeliefs@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009dd878 mac inlined CreatureBeliefs::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15CreatureBeliefs asm("??_R0?AVCreatureBeliefs@@@8");
+// win1.41 009aa360 mac inlined CreatureBeliefs::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15CreatureBeliefs asm("??_R1A@?0A@A@CreatureBeliefs@@8");
+// win1.41 009aa378 mac inlined CreatureBeliefs::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15CreatureBeliefs asm("??_R2CreatureBeliefs@@8");
+// win1.41 009aa388 mac inlined CreatureBeliefs::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15CreatureBeliefs asm("??_R3CreatureBeliefs@@8");
+// win1.41 008cf8e8 mac 109899cc CreatureBeliefs::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15CreatureBeliefs asm("??_R4CreatureBeliefs@@6B@");
 // win1.41 008cf8ec mac 109899d4 CreatureBeliefs::`vftable'
 extern const struct BaseVftable __vt__15CreatureBeliefs asm("??_7CreatureBeliefs@@6B@");
 

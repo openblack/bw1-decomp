@@ -56,9 +56,18 @@ struct Pot
 };
 static_assert(sizeof(struct Pot) == 0x78, "Data type is of wrong size");
 
-// win1.41 008e6600 mac 10747720 Pot::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__3Pot asm("??_R4Pot@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8eb0 mac inlined Pot::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__3Pot asm("??_R0?AVPot@@@8");
+// win1.41 009adbc0 mac inlined Pot::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__3Pot asm("??_R1A@?0A@A@Pot@@8");
+// win1.41 009ad770 mac inlined Pot::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__3Pot asm("??_R2Pot@@8");
+// win1.41 009ad790 mac inlined Pot::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__3Pot asm("??_R3Pot@@8");
+// win1.41 008e6600 mac 10747720 Pot::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__3Pot asm("??_R4Pot@@6B@");
 // win1.41 008e6604 mac 10749c20 Pot::`vftable'
 extern const struct PotVftable __vt__3Pot asm("??_7Pot@@6B@");
 

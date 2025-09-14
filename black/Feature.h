@@ -24,9 +24,18 @@ struct Feature
 };
 static_assert(sizeof(struct Feature) == 0x7c, "Data type is of wrong size");
 
-// win1.41 008c231c mac 1073d268 Feature::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7Feature asm("??_R4Feature@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c9548 mac inlined Feature::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7Feature asm("??_R0?AVFeature@@@8");
+// win1.41 009a7930 mac inlined Feature::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7Feature asm("??_R1A@?0A@A@Feature@@8");
+// win1.41 009a79b0 mac inlined Feature::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7Feature asm("??_R2Feature@@8");
+// win1.41 009a79d0 mac inlined Feature::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7Feature asm("??_R3Feature@@8");
+// win1.41 008c231c mac 1073d268 Feature::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7Feature asm("??_R4Feature@@6B@");
 // win1.41 008c2320 mac 1073e240 Feature::`vftable'
 extern const struct MultiMapFixedVftable __vt__7Feature asm("??_7Feature@@6B@");
 

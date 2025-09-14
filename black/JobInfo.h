@@ -16,6 +16,17 @@ struct GJobInfo
 };
 static_assert(sizeof(struct GJobInfo) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf3328 mac inlined GJobInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8GJobInfo asm("??_R0?AVGJobInfo@@@8");
+// win1.41 009b17d8 mac inlined GJobInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8GJobInfo asm("??_R1A@?0A@A@GJobInfo@@8");
+// win1.41 009b17f0 mac inlined GJobInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8GJobInfo asm("??_R2GJobInfo@@8");
+// win1.41 009b1800 mac inlined GJobInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8GJobInfo asm("??_R3GJobInfo@@8");
+
 // Override methods
 
 // win1.41 005e1720 mac 100fe5c0 GJobInfo::_dt(void)

@@ -19,6 +19,17 @@ struct SpellFlockFlying
 };
 static_assert(sizeof(struct SpellFlockFlying) == 0xf4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00beca00 mac inlined SpellFlockFlying::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16SpellFlockFlying asm("??_R0?AVSpellFlockFlying@@@8");
+// win1.41 009ad4d0 mac inlined SpellFlockFlying::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16SpellFlockFlying asm("??_R1A@?0A@A@SpellFlockFlying@@8");
+// win1.41 009ad4e8 mac inlined SpellFlockFlying::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16SpellFlockFlying asm("??_R2SpellFlockFlying@@8");
+// win1.41 009ad508 mac inlined SpellFlockFlying::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16SpellFlockFlying asm("??_R3SpellFlockFlying@@8");
+
 // Override methods
 
 // win1.41 0055d2a0 mac 1051dac0 SpellFlockFlying::_dt(void)

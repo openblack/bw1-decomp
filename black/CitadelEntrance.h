@@ -23,6 +23,17 @@ struct CitadelEntrance
 };
 static_assert(sizeof(struct CitadelEntrance) == 0x54, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009ceb00 mac inlined CitadelEntrance::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15CitadelEntrance asm("??_R0?AVCitadelEntrance@@@8");
+// win1.41 009a90f8 mac inlined CitadelEntrance::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15CitadelEntrance asm("??_R1A@?0A@A@CitadelEntrance@@8");
+// win1.41 009a9110 mac inlined CitadelEntrance::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15CitadelEntrance asm("??_R2CitadelEntrance@@8");
+// win1.41 009a9128 mac inlined CitadelEntrance::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15CitadelEntrance asm("??_R3CitadelEntrance@@8");
+
 // Override methods
 
 // win1.41 00468e80 mac 101bb490 CitadelEntrance::_dt(void)

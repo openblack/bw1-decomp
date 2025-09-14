@@ -25,6 +25,17 @@ struct MagicFood
 };
 static_assert(sizeof(struct MagicFood) == 0xbc, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00be67b0 mac inlined MagicFood::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9MagicFood asm("??_R0?AVMagicFood@@@8");
+// win1.41 009b1a70 mac inlined MagicFood::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9MagicFood asm("??_R1A@?0A@A@MagicFood@@8");
+// win1.41 009b1a88 mac inlined MagicFood::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9MagicFood asm("??_R2MagicFood@@8");
+// win1.41 009b1ab8 mac inlined MagicFood::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9MagicFood asm("??_R3MagicFood@@8");
+
 // Override methods
 
 // win1.41 005fa9c0 mac 103ac0d0 MagicFood::_dt(void)

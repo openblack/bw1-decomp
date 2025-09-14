@@ -46,9 +46,18 @@ struct Ball
 };
 static_assert(sizeof(struct Ball) == 0xb8, "Data type is of wrong size");
 
-// win1.41 008c4f70 mac 107371dc Ball::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Ball asm("??_R4Ball@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cd070 mac inlined Ball::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Ball asm("??_R0?AVBall@@@8");
+// win1.41 009a8328 mac inlined Ball::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Ball asm("??_R1A@?0A@A@Ball@@8");
+// win1.41 009a8340 mac inlined Ball::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Ball asm("??_R2Ball@@8");
+// win1.41 009a8360 mac inlined Ball::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Ball asm("??_R3Ball@@8");
+// win1.41 008c4f70 mac 107371dc Ball::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Ball asm("??_R4Ball@@6B@");
 // win1.41 008c4f74 mac 107371e4 Ball::`vftable'
 extern const struct MobileVftable __vt__4Ball asm("??_7Ball@@6B@");
 

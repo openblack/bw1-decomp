@@ -40,6 +40,13 @@ struct LHConnection
 };
 static_assert(sizeof(struct LHConnection) == 0x90, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf3a08 mac inlined LHConnection::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12LHConnection asm("??_R0?AVLHConnection@@@8");
+// win1.41 009b1918 mac inlined LHConnection::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12LHConnection asm("??_R1A@?0A@A@LHConnection@@8");
+
 // Non-virtual methods
 
 // win1.41 100046c0 mac 100df730 LHConnection::SetNetUser(LHNetUser *)

@@ -30,9 +30,18 @@ struct Mist
 };
 static_assert(sizeof(struct Mist) == 0x54, "Data type is of wrong size");
 
-// win1.41 008eb63c mac 10745708 Mist::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Mist asm("??_R4Mist@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becc88 mac inlined Mist::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Mist asm("??_R0?AVMist@@@8");
+// win1.41 009adea0 mac inlined Mist::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Mist asm("??_R1A@?0A@A@Mist@@8");
+// win1.41 009adeb8 mac inlined Mist::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Mist asm("??_R2Mist@@8");
+// win1.41 009aded0 mac inlined Mist::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Mist asm("??_R3Mist@@8");
+// win1.41 008eb63c mac 10745708 Mist::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Mist asm("??_R4Mist@@6B@");
 // win1.41 008eb640 mac 10745710 Mist::`vftable'
 extern const struct GameThingWithPosVftable __vt__4Mist asm("??_7Mist@@6B@");
 

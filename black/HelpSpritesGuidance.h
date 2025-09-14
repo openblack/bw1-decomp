@@ -16,6 +16,17 @@ struct GHelpSpritesGuidance
 };
 static_assert(sizeof(struct GHelpSpritesGuidance) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c221d8 mac inlined GHelpSpritesGuidance::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20GHelpSpritesGuidance asm("??_R0?AVGHelpSpritesGuidance@@@8");
+// win1.41 009b9108 mac inlined GHelpSpritesGuidance::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20GHelpSpritesGuidance asm("??_R1A@?0A@A@GHelpSpritesGuidance@@8");
+// win1.41 009b9120 mac inlined GHelpSpritesGuidance::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20GHelpSpritesGuidance asm("??_R2GHelpSpritesGuidance@@8");
+// win1.41 009b9130 mac inlined GHelpSpritesGuidance::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20GHelpSpritesGuidance asm("??_R3GHelpSpritesGuidance@@8");
+
 // Override methods
 
 // win1.41 0071aa60 mac 1050d8c0 GHelpSpritesGuidance::_dt(void)

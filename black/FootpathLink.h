@@ -23,9 +23,18 @@ struct GFootpathLink
 };
 static_assert(sizeof(struct GFootpathLink) == 0x1c, "Data type is of wrong size");
 
-// win1.41 008d3e84 mac 10743230 GFootpathLink::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13GFootpathLink asm("??_R4GFootpathLink@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be68c0 mac inlined GFootpathLink::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13GFootpathLink asm("??_R0?AVGFootpathLink@@@8");
+// win1.41 009ab608 mac inlined GFootpathLink::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13GFootpathLink asm("??_R1A@?0A@A@GFootpathLink@@8");
+// win1.41 009ab620 mac inlined GFootpathLink::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13GFootpathLink asm("??_R2GFootpathLink@@8");
+// win1.41 009ab630 mac inlined GFootpathLink::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13GFootpathLink asm("??_R3GFootpathLink@@8");
+// win1.41 008d3e84 mac 10743230 GFootpathLink::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13GFootpathLink asm("??_R4GFootpathLink@@6B@");
 // win1.41 008d3e88 mac 10743238 GFootpathLink::`vftable'
 extern const struct GameThingVftable __vt__13GFootpathLink asm("??_7GFootpathLink@@6B@");
 

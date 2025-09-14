@@ -16,6 +16,17 @@ struct HelpSystemInfo
 };
 static_assert(sizeof(struct HelpSystemInfo) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf0c88 mac inlined HelpSystemInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14HelpSystemInfo asm("??_R0?AVHelpSystemInfo@@@8");
+// win1.41 009b1350 mac inlined HelpSystemInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14HelpSystemInfo asm("??_R1A@?0A@A@HelpSystemInfo@@8");
+// win1.41 009b1368 mac inlined HelpSystemInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14HelpSystemInfo asm("??_R2HelpSystemInfo@@8");
+// win1.41 009b1378 mac inlined HelpSystemInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14HelpSystemInfo asm("??_R3HelpSystemInfo@@8");
+
 // Override methods
 
 // win1.41 005c53f0 mac 10351af0 HelpSystemInfo::_dt(void)

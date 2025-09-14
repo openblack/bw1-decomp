@@ -37,6 +37,17 @@ struct DialogBoxBase
 };
 static_assert(sizeof(struct DialogBoxBase) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00be8be0 mac inlined DialogBoxBase::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13DialogBoxBase asm("??_R0?AVDialogBoxBase@@@8");
+// win1.41 009ab8c8 mac inlined DialogBoxBase::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13DialogBoxBase asm("??_R1A@?0A@A@DialogBoxBase@@8");
+// win1.41 009ab92c mac inlined DialogBoxBase::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13DialogBoxBase asm("??_R2DialogBoxBase@@8");
+// win1.41 009ab938 mac inlined DialogBoxBase::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13DialogBoxBase asm("??_R3DialogBoxBase@@8");
+
 // Static methods
 
 // win1.41 005136e0 mac 102b1ff0 DialogBoxBase::HideAll(void)

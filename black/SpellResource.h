@@ -19,6 +19,17 @@ struct SpellResource
 };
 static_assert(sizeof(struct SpellResource) == 0xec, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00becdc8 mac inlined SpellResource::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13SpellResource asm("??_R0?AVSpellResource@@@8");
+// win1.41 009ae2f8 mac inlined SpellResource::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13SpellResource asm("??_R1A@?0A@A@SpellResource@@8");
+// win1.41 009ae310 mac inlined SpellResource::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13SpellResource asm("??_R2SpellResource@@8");
+// win1.41 009ae328 mac inlined SpellResource::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13SpellResource asm("??_R3SpellResource@@8");
+
 // Override methods
 
 // win1.41 0055cfd0 mac 1051fdd0 SpellResource::_dt(void)

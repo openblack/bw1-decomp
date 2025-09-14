@@ -16,6 +16,17 @@ struct GLeashSelectorInfo
 };
 static_assert(sizeof(struct GLeashSelectorInfo) == 0x100, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009cb948 mac inlined GLeashSelectorInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18GLeashSelectorInfo asm("??_R0?AVGLeashSelectorInfo@@@8");
+// win1.41 009a7cc8 mac inlined GLeashSelectorInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18GLeashSelectorInfo asm("??_R1A@?0A@A@GLeashSelectorInfo@@8");
+// win1.41 009a7ce0 mac inlined GLeashSelectorInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18GLeashSelectorInfo asm("??_R2GLeashSelectorInfo@@8");
+// win1.41 009a7cf8 mac inlined GLeashSelectorInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18GLeashSelectorInfo asm("??_R3GLeashSelectorInfo@@8");
+
 // Override methods
 
 // win1.41 0042b3d0 mac 10182f90 GLeashSelectorInfo::_dt(void)

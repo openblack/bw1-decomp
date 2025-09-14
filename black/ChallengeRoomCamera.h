@@ -11,6 +11,17 @@ struct ChallengeRoomCamera
 };
 static_assert(sizeof(struct ChallengeRoomCamera) == 0x46c, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c28608 mac inlined ChallengeRoomCamera::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19ChallengeRoomCamera asm("??_R0?AUChallengeRoomCamera@@@8");
+// win1.41 009baaf8 mac inlined ChallengeRoomCamera::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19ChallengeRoomCamera asm("??_R1A@?0A@A@ChallengeRoomCamera@@8");
+// win1.41 009bab10 mac inlined ChallengeRoomCamera::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19ChallengeRoomCamera asm("??_R2ChallengeRoomCamera@@8");
+// win1.41 009bab20 mac inlined ChallengeRoomCamera::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19ChallengeRoomCamera asm("??_R3ChallengeRoomCamera@@8");
+
 // Override methods
 
 // win1.41 00785300 mac 101b6a80 ChallengeRoomCamera::Init(char *)

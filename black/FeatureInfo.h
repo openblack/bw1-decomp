@@ -20,6 +20,17 @@ struct GFeatureInfo
 };
 static_assert(sizeof(struct GFeatureInfo) == 0x120, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c9500 mac inlined GFeatureInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12GFeatureInfo asm("??_R0?AVGFeatureInfo@@@8");
+// win1.41 009a78b8 mac inlined GFeatureInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12GFeatureInfo asm("??_R1A@?0A@A@GFeatureInfo@@8");
+// win1.41 009ac018 mac inlined GFeatureInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12GFeatureInfo asm("??_R2GFeatureInfo@@8");
+// win1.41 009ac030 mac inlined GFeatureInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12GFeatureInfo asm("??_R3GFeatureInfo@@8");
+
 // Override methods
 
 // win1.41 00527320 mac 100a6900 GFeatureInfo::_dt(void)

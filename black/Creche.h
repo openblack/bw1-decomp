@@ -24,9 +24,18 @@ struct Creche
 };
 static_assert(sizeof(struct Creche) == 0xc4, "Data type is of wrong size");
 
-// win1.41 008d16c0 mac 10994094 Creche::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Creche asm("??_R4Creche@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be67f8 mac inlined Creche::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Creche asm("??_R0?AVCreche@@@8");
+// win1.41 009ab480 mac inlined Creche::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Creche asm("??_R1A@?0A@A@Creche@@8");
+// win1.41 009ab498 mac inlined Creche::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Creche asm("??_R2Creche@@8");
+// win1.41 009ab4c0 mac inlined Creche::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Creche asm("??_R3Creche@@8");
+// win1.41 008d16c0 mac 10994094 Creche::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Creche asm("??_R4Creche@@6B@");
 // win1.41 008d16c4 mac 1099409c Creche::`vftable'
 extern const struct AbodeVftable __vt__6Creche asm("??_7Creche@@6B@");
 

@@ -16,6 +16,17 @@ struct CreatureInitialDesireInfo
 };
 static_assert(sizeof(struct CreatureInitialDesireInfo) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009d7d40 mac inlined CreatureInitialDesireInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25CreatureInitialDesireInfo asm("??_R0?AVCreatureInitialDesireInfo@@@8");
+// win1.41 009a99b0 mac inlined CreatureInitialDesireInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25CreatureInitialDesireInfo asm("??_R1A@?0A@A@CreatureInitialDesireInfo@@8");
+// win1.41 009a99c8 mac inlined CreatureInitialDesireInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__25CreatureInitialDesireInfo asm("??_R2CreatureInitialDesireInfo@@8");
+// win1.41 009a99d8 mac inlined CreatureInitialDesireInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__25CreatureInitialDesireInfo asm("??_R3CreatureInitialDesireInfo@@8");
+
 // Override methods
 
 // win1.41 004918a0 mac 1022e850 CreatureInitialDesireInfo::_dt(void)

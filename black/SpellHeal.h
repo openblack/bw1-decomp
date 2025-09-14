@@ -20,6 +20,17 @@ struct SpellHeal
 };
 static_assert(sizeof(struct SpellHeal) == 0xec, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00becaa8 mac inlined SpellHeal::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellHeal asm("??_R0?AVSpellHeal@@@8");
+// win1.41 009ad860 mac inlined SpellHeal::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9SpellHeal asm("??_R1A@?0A@A@SpellHeal@@8");
+// win1.41 009ad878 mac inlined SpellHeal::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9SpellHeal asm("??_R2SpellHeal@@8");
+// win1.41 009ad890 mac inlined SpellHeal::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9SpellHeal asm("??_R3SpellHeal@@8");
+
 // Override methods
 
 // win1.41 0055d1b0 mac 10533d20 SpellHeal::_dt(void)

@@ -13,9 +13,18 @@ struct StatsBox
 };
 static_assert(sizeof(struct StatsBox) == 0x74, "Data type is of wrong size");
 
-// win1.41 008dea10 mac 1099add0 StatsBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8StatsBox asm("??_R4StatsBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea390 mac inlined StatsBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8StatsBox asm("??_R0?AVStatsBox@@@8");
+// win1.41 009ac9c0 mac inlined StatsBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8StatsBox asm("??_R1A@?0A@A@StatsBox@@8");
+// win1.41 009ac9d8 mac inlined StatsBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8StatsBox asm("??_R2StatsBox@@8");
+// win1.41 009ac9e8 mac inlined StatsBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8StatsBox asm("??_R3StatsBox@@8");
+// win1.41 008dea10 mac 1099add0 StatsBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8StatsBox asm("??_R4StatsBox@@6B@");
 // win1.41 008dea14 mac 1099add8 StatsBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__8StatsBox asm("??_7StatsBox@@6B@");
 

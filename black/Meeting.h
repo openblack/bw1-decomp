@@ -19,6 +19,17 @@ struct Meeting
 };
 static_assert(sizeof(struct Meeting) == 0x28, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf41c8 mac inlined Meeting::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7Meeting asm("??_R0?AVMeeting@@@8");
+// win1.41 009b1f40 mac inlined Meeting::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7Meeting asm("??_R1A@?0A@A@Meeting@@8");
+// win1.41 009b1f58 mac inlined Meeting::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7Meeting asm("??_R2Meeting@@8");
+// win1.41 009b1f70 mac inlined Meeting::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7Meeting asm("??_R3Meeting@@8");
+
 // Override methods
 
 // win1.41 00606160 mac inlined Meeting::_dt(void)

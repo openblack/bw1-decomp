@@ -24,6 +24,17 @@ struct Dove
 };
 static_assert(sizeof(struct Dove) == 0x148, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c9170 mac inlined Dove::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Dove asm("??_R0?AVDove@@@8");
+// win1.41 009a71c8 mac inlined Dove::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Dove asm("??_R1A@?0A@A@Dove@@8");
+// win1.41 009a71e0 mac inlined Dove::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Dove asm("??_R2Dove@@8");
+// win1.41 009a7208 mac inlined Dove::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Dove asm("??_R3Dove@@8");
+
 // Override methods
 
 // win1.41 0041dda0 mac 10171a70 Dove::_dt(void)
@@ -58,6 +69,17 @@ struct SpellDove
   struct Dove super;  /* 0x0 */
 };
 static_assert(sizeof(struct SpellDove) == 0x148, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 009c91b8 mac inlined SpellDove::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellDove asm("??_R0?AVSpellDove@@@8");
+// win1.41 009a7230 mac inlined SpellDove::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9SpellDove asm("??_R1A@?0A@A@SpellDove@@8");
+// win1.41 009a7248 mac inlined SpellDove::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9SpellDove asm("??_R2SpellDove@@8");
+// win1.41 009a7278 mac inlined SpellDove::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9SpellDove asm("??_R3SpellDove@@8");
 
 // Override methods
 

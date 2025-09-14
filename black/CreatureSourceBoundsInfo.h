@@ -16,6 +16,17 @@ struct CreatureSourceBoundsInfo
 };
 static_assert(sizeof(struct CreatureSourceBoundsInfo) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bdf5b0 mac inlined CreatureSourceBoundsInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureSourceBoundsInfo asm("??_R0?AVCreatureSourceBoundsInfo@@@8");
+// win1.41 009aad10 mac inlined CreatureSourceBoundsInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24CreatureSourceBoundsInfo asm("??_R1A@?0A@A@CreatureSourceBoundsInfo@@8");
+// win1.41 009aad28 mac inlined CreatureSourceBoundsInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__24CreatureSourceBoundsInfo asm("??_R2CreatureSourceBoundsInfo@@8");
+// win1.41 009aad38 mac inlined CreatureSourceBoundsInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__24CreatureSourceBoundsInfo asm("??_R3CreatureSourceBoundsInfo@@8");
+
 // Override methods
 
 // win1.41 004dd400 mac 1025eab0 CreatureSourceBoundsInfo::_dt(void)

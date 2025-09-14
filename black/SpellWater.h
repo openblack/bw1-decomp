@@ -19,9 +19,18 @@ struct SpellWater
 };
 static_assert(sizeof(struct SpellWater) == 0xf4, "Data type is of wrong size");
 
-// win1.41 008f5538 mac 109dacc8 SpellWater::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10SpellWater asm("??_R4SpellWater@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bece70 mac inlined SpellWater::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10SpellWater asm("??_R0?AVSpellWater@@@8");
+// win1.41 009ae678 mac inlined SpellWater::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10SpellWater asm("??_R1A@?0A@A@SpellWater@@8");
+// win1.41 009ae690 mac inlined SpellWater::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10SpellWater asm("??_R2SpellWater@@8");
+// win1.41 009ae6a8 mac inlined SpellWater::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10SpellWater asm("??_R3SpellWater@@8");
+// win1.41 008f5538 mac 109dacc8 SpellWater::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10SpellWater asm("??_R4SpellWater@@6B@");
 // win1.41 008f553c mac 109dacd0 SpellWater::`vftable'
 extern const struct SpellVftable __vt__10SpellWater asm("??_7SpellWater@@6B@");
 

@@ -27,9 +27,18 @@ struct MultiplayerDatabase
 };
 static_assert(sizeof(struct MultiplayerDatabase) == 0x10, "Data type is of wrong size");
 
-// win1.41 009309f0 mac 10745c84 MultiplayerDatabase::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19MultiplayerDatabase asm("??_R4MultiplayerDatabase@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bfdd48 mac inlined MultiplayerDatabase::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19MultiplayerDatabase asm("??_R0?AVMultiplayerDatabase@@@8");
+// win1.41 009b2d20 mac inlined MultiplayerDatabase::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19MultiplayerDatabase asm("??_R1A@?0A@A@MultiplayerDatabase@@8");
+// win1.41 009b2d38 mac inlined MultiplayerDatabase::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19MultiplayerDatabase asm("??_R2MultiplayerDatabase@@8");
+// win1.41 009b2d40 mac inlined MultiplayerDatabase::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19MultiplayerDatabase asm("??_R3MultiplayerDatabase@@8");
+// win1.41 009309f0 mac 10745c84 MultiplayerDatabase::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19MultiplayerDatabase asm("??_R4MultiplayerDatabase@@6B@");
 // win1.41 009309f4 mac 10745c8c MultiplayerDatabase::`vftable'
 extern const struct MultiplayerDatabaseVftable __vt__19MultiplayerDatabase asm("??_7MultiplayerDatabase@@6B@");
 

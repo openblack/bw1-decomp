@@ -23,6 +23,17 @@ struct GSpellSeedInfo
 };
 static_assert(sizeof(struct GSpellSeedInfo) == 0x190, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c22758 mac inlined GSpellSeedInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GSpellSeedInfo asm("??_R0?AVGSpellSeedInfo@@@8");
+// win1.41 009b94f0 mac inlined GSpellSeedInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GSpellSeedInfo asm("??_R1A@?0A@A@GSpellSeedInfo@@8");
+// win1.41 009b9508 mac inlined GSpellSeedInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GSpellSeedInfo asm("??_R2GSpellSeedInfo@@8");
+// win1.41 009b9520 mac inlined GSpellSeedInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GSpellSeedInfo asm("??_R3GSpellSeedInfo@@8");
+
 // Static methods
 
 // win1.41 0072b090 mac 1052d6f0 GSpellSeedInfo::GetFirstSpellSeedForMagicType(MAGIC_TYPE)

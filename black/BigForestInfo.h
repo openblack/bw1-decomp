@@ -18,9 +18,18 @@ struct GBigForestInfo
 };
 static_assert(sizeof(struct GBigForestInfo) == 0x128, "Data type is of wrong size");
 
-// win1.41 008c58b4 mac 1073865c GBigForestInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GBigForestInfo asm("??_R4GBigForestInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cd2a0 mac inlined GBigForestInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GBigForestInfo asm("??_R0?AVGBigForestInfo@@@8");
+// win1.41 009a8440 mac inlined GBigForestInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GBigForestInfo asm("??_R1A@?0A@A@GBigForestInfo@@8");
+// win1.41 009a8458 mac inlined GBigForestInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GBigForestInfo asm("??_R2GBigForestInfo@@8");
+// win1.41 009a8470 mac inlined GBigForestInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GBigForestInfo asm("??_R3GBigForestInfo@@8");
+// win1.41 008c58b4 mac 1073865c GBigForestInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GBigForestInfo asm("??_R4GBigForestInfo@@6B@");
 // win1.41 008c58b8 mac 10738664 GBigForestInfo::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__14GBigForestInfo asm("??_7GBigForestInfo@@6B@");
 

@@ -17,6 +17,17 @@ struct SpellStormAndTornado
 };
 static_assert(sizeof(struct SpellStormAndTornado) == 0xec, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c097e0 mac inlined SpellStormAndTornado::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20SpellStormAndTornado asm("??_R0?AVSpellStormAndTornado@@@8");
+// win1.41 009b9730 mac inlined SpellStormAndTornado::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20SpellStormAndTornado asm("??_R1A@?0A@A@SpellStormAndTornado@@8");
+// win1.41 009b9748 mac inlined SpellStormAndTornado::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20SpellStormAndTornado asm("??_R2SpellStormAndTornado@@8");
+// win1.41 009b9760 mac inlined SpellStormAndTornado::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20SpellStormAndTornado asm("??_R3SpellStormAndTornado@@8");
+
 // Override methods
 
 // win1.41 0072d990 mac 1052dff0 SpellStormAndTornado::_dt(void)

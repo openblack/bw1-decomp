@@ -31,9 +31,18 @@ struct CreaturePlan
 };
 static_assert(sizeof(struct CreaturePlan) == 0x30, "Data type is of wrong size");
 
-// win1.41 008cc7c8 mac 1098d1c0 CreaturePlan::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreaturePlan asm("??_R4CreaturePlan@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cf928 mac inlined CreaturePlan::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12CreaturePlan asm("??_R0?AVCreaturePlan@@@8");
+// win1.41 009a9450 mac inlined CreaturePlan::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12CreaturePlan asm("??_R1A@?0A@A@CreaturePlan@@8");
+// win1.41 009a9468 mac inlined CreaturePlan::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12CreaturePlan asm("??_R2CreaturePlan@@8");
+// win1.41 009a9478 mac inlined CreaturePlan::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12CreaturePlan asm("??_R3CreaturePlan@@8");
+// win1.41 008cc7c8 mac 1098d1c0 CreaturePlan::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreaturePlan asm("??_R4CreaturePlan@@6B@");
 // win1.41 008cc7cc mac 1098d1c8 CreaturePlan::`vftable'
 extern const struct BaseVftable __vt__12CreaturePlan asm("??_7CreaturePlan@@6B@");
 
@@ -70,6 +79,17 @@ struct CreatureTimeToWait
   struct Base super;  /* 0x0 */
 };
 static_assert(sizeof(struct CreatureTimeToWait) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bdfe90 mac inlined CreatureTimeToWait::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18CreatureTimeToWait asm("??_R0?AVCreatureTimeToWait@@@8");
+// win1.41 009ab088 mac inlined CreatureTimeToWait::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18CreatureTimeToWait asm("??_R1A@?0A@A@CreatureTimeToWait@@8");
+// win1.41 009ab0a0 mac inlined CreatureTimeToWait::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18CreatureTimeToWait asm("??_R2CreatureTimeToWait@@8");
+// win1.41 009ab0b0 mac inlined CreatureTimeToWait::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18CreatureTimeToWait asm("??_R3CreatureTimeToWait@@8");
 
 // Override methods
 

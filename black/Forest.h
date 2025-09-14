@@ -46,9 +46,18 @@ struct Forest
 };
 static_assert(sizeof(struct Forest) == 0x58, "Data type is of wrong size");
 
-// win1.41 008de418 mac 107434e0 Forest::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Forest asm("??_R4Forest@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bdea58 mac inlined Forest::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Forest asm("??_R0?AVForest@@@8");
+// win1.41 009ac788 mac inlined Forest::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Forest asm("??_R1A@?0A@A@Forest@@8");
+// win1.41 009ac7a0 mac inlined Forest::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Forest asm("??_R2Forest@@8");
+// win1.41 009ac7b8 mac inlined Forest::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Forest asm("??_R3Forest@@8");
+// win1.41 008de418 mac 107434e0 Forest::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Forest asm("??_R4Forest@@6B@");
 // win1.41 008de41c mac 107434e8 Forest::`vftable'
 extern const struct ForestVftable __vt__6Forest asm("??_7Forest@@6B@");
 

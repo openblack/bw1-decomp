@@ -27,6 +27,17 @@ struct FieldCrop
 };
 static_assert(sizeof(struct FieldCrop) == 0x68, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00becc50 mac inlined FieldCrop::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9FieldCrop asm("??_R0?AVFieldCrop@@@8");
+// win1.41 009addd0 mac inlined FieldCrop::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9FieldCrop asm("??_R1A@?0A@A@FieldCrop@@8");
+// win1.41 009adde8 mac inlined FieldCrop::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9FieldCrop asm("??_R2FieldCrop@@8");
+// win1.41 009ade08 mac inlined FieldCrop::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9FieldCrop asm("??_R3FieldCrop@@8");
+
 // Override methods
 
 // win1.41 0055d110 mac 103bb4e0 FieldCrop::_dt(void)

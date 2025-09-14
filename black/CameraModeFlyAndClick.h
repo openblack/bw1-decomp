@@ -11,9 +11,18 @@ struct CameraModeFlyAndClick
 };
 static_assert(sizeof(struct CameraModeFlyAndClick) == 0x8, "Data type is of wrong size");
 
-// win1.41 008c7810 mac inlined CameraModeFlyAndClick::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__21CameraModeFlyAndClick asm("??_R4CameraModeFlyAndClick@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009ce0f8 mac inlined CameraModeFlyAndClick::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21CameraModeFlyAndClick asm("??_R0?AVCameraModeFlyAndClick@@@8");
+// win1.41 009a89e0 mac inlined CameraModeFlyAndClick::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21CameraModeFlyAndClick asm("??_R1A@?0A@A@CameraModeFlyAndClick@@8");
+// win1.41 009a89f8 mac inlined CameraModeFlyAndClick::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21CameraModeFlyAndClick asm("??_R2CameraModeFlyAndClick@@8");
+// win1.41 009a8a08 mac inlined CameraModeFlyAndClick::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21CameraModeFlyAndClick asm("??_R3CameraModeFlyAndClick@@8");
+// win1.41 008c7810 mac inlined CameraModeFlyAndClick::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__21CameraModeFlyAndClick asm("??_R4CameraModeFlyAndClick@@6B@");
 // win1.41 008c7814 mac inlined CameraModeFlyAndClick::`vftable'
 extern const struct CameraModeVftable __vt__21CameraModeFlyAndClick asm("??_7CameraModeFlyAndClick@@6B@");
 

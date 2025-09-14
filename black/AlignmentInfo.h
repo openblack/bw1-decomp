@@ -16,6 +16,17 @@ struct GAlignmentInfo
 };
 static_assert(sizeof(struct GAlignmentInfo) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c8340 mac inlined GAlignmentInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GAlignmentInfo asm("??_R0?AVGAlignmentInfo@@@8");
+// win1.41 009a69c8 mac inlined GAlignmentInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GAlignmentInfo asm("??_R1A@?0A@A@GAlignmentInfo@@8");
+// win1.41 009a69e0 mac inlined GAlignmentInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GAlignmentInfo asm("??_R2GAlignmentInfo@@8");
+// win1.41 009a69f0 mac inlined GAlignmentInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GAlignmentInfo asm("??_R3GAlignmentInfo@@8");
+
 // Override methods
 
 // win1.41 00414120 mac 100a42b0 GAlignmentInfo::_dt(void)

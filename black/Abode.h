@@ -102,9 +102,18 @@ struct Abode
 };
 static_assert(sizeof(struct Abode) == 0xc4, "Data type is of wrong size");
 
-// win1.41 008a9a60 mac 1073480c Abode::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Abode asm("??_R4Abode@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c7fa0 mac inlined Abode::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Abode asm("??_R0?AVAbode@@@8");
+// win1.41 009a6438 mac inlined Abode::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Abode asm("??_R1A@?0A@A@Abode@@8");
+// win1.41 009a6450 mac inlined Abode::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Abode asm("??_R2Abode@@8");
+// win1.41 009a6470 mac inlined Abode::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Abode asm("??_R3Abode@@8");
+// win1.41 008a9a60 mac 1073480c Abode::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Abode asm("??_R4Abode@@6B@");
 // win1.41 008a9a64 mac 10734814 Abode::`vftable'
 extern const struct AbodeVftable __vt__5Abode asm("??_7Abode@@6B@");
 

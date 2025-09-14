@@ -57,9 +57,18 @@ struct SpellIcon
 };
 static_assert(sizeof(struct SpellIcon) == 0x110, "Data type is of wrong size");
 
-// win1.41 008f84a8 mac 10733a6c SpellIcon::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9SpellIcon asm("??_R4SpellIcon@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00beceb0 mac inlined SpellIcon::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellIcon asm("??_R0?AVSpellIcon@@@8");
+// win1.41 009ae7f8 mac inlined SpellIcon::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9SpellIcon asm("??_R1A@?0A@A@SpellIcon@@8");
+// win1.41 009ae9a8 mac inlined SpellIcon::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9SpellIcon asm("??_R2SpellIcon@@8");
+// win1.41 009ae9c8 mac inlined SpellIcon::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9SpellIcon asm("??_R3SpellIcon@@8");
+// win1.41 008f84a8 mac 10733a6c SpellIcon::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9SpellIcon asm("??_R4SpellIcon@@6B@");
 // win1.41 008f84ac mac 10733aa4 SpellIcon::`vftable'
 extern const struct MultiMapFixedVftable __vt__9SpellIcon asm("??_7SpellIcon@@6B@");
 

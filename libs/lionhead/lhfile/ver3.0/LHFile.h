@@ -74,9 +74,18 @@ struct LHFile
 };
 static_assert(sizeof(struct LHFile) == 0x6c, "Data type is of wrong size");
 
-// win1.41 008c4d10 mac 101da9ec LHFile::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6LHFile asm("??_R4LHFile@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cb970 mac inlined LHFile::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6LHFile asm("??_R0?AVLHFile@@@8");
+// win1.41 009a7d58 mac inlined LHFile::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6LHFile asm("??_R1A@?0A@A@LHFile@@8");
+// win1.41 009a8024 mac inlined LHFile::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6LHFile asm("??_R2LHFile@@8");
+// win1.41 009a8030 mac inlined LHFile::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6LHFile asm("??_R3LHFile@@8");
+// win1.41 008c4d10 mac 101da9ec LHFile::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6LHFile asm("??_R4LHFile@@6B@");
 // win1.41 008c4d14 mac 101da9f4 LHFile::`vftable'
 extern const struct LHFileVftable __vt__6LHFile asm("??_7LHFile@@6B@");
 

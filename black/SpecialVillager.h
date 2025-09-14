@@ -24,9 +24,18 @@ struct SpecialVillager
 };
 static_assert(sizeof(struct SpecialVillager) == 0x134, "Data type is of wrong size");
 
-// win1.41 008e15b0 mac 1073bc5c SpecialVillager::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SpecialVillager asm("??_R4SpecialVillager@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be8f48 mac inlined SpecialVillager::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15SpecialVillager asm("??_R0?AVSpecialVillager@@@8");
+// win1.41 009ad8d0 mac inlined SpecialVillager::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15SpecialVillager asm("??_R1A@?0A@A@SpecialVillager@@8");
+// win1.41 009ad8e8 mac inlined SpecialVillager::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15SpecialVillager asm("??_R2SpecialVillager@@8");
+// win1.41 009ad910 mac inlined SpecialVillager::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15SpecialVillager asm("??_R3SpecialVillager@@8");
+// win1.41 008e15b0 mac 1073bc5c SpecialVillager::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SpecialVillager asm("??_R4SpecialVillager@@6B@");
 // win1.41 008e15b4 mac 106f5d78 SpecialVillager::`vftable'
 extern const struct VillagerVftable __vt__15SpecialVillager asm("??_7SpecialVillager@@6B@");
 

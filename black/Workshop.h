@@ -30,9 +30,18 @@ struct Workshop
 };
 static_assert(sizeof(struct Workshop) == 0xe8, "Data type is of wrong size");
 
-// win1.41 0099bb1c mac 1075a25c Workshop::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Workshop asm("??_R4Workshop@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf1a10 mac inlined Workshop::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Workshop asm("??_R0?AVWorkshop@@@8");
+// win1.41 009ba258 mac inlined Workshop::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Workshop asm("??_R1A@?0A@A@Workshop@@8");
+// win1.41 009ba270 mac inlined Workshop::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Workshop asm("??_R2Workshop@@8");
+// win1.41 009ba298 mac inlined Workshop::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Workshop asm("??_R3Workshop@@8");
+// win1.41 0099bb1c mac 1075a25c Workshop::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Workshop asm("??_R4Workshop@@6B@");
 // win1.41 0099bb20 mac 106f651c Workshop::`vftable'
 extern const struct AbodeVftable __vt__8Workshop asm("??_7Workshop@@6B@");
 

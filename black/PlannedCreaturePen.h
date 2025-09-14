@@ -17,6 +17,17 @@ struct PlannedCreaturePen
 };
 static_assert(sizeof(struct PlannedCreaturePen) == 0x48, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009ce8e8 mac inlined PlannedCreaturePen::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18PlannedCreaturePen asm("??_R0?AVPlannedCreaturePen@@@8");
+// win1.41 009ab290 mac inlined PlannedCreaturePen::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18PlannedCreaturePen asm("??_R1A@?0A@A@PlannedCreaturePen@@8");
+// win1.41 009ab2a8 mac inlined PlannedCreaturePen::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18PlannedCreaturePen asm("??_R2PlannedCreaturePen@@8");
+// win1.41 009ab2c8 mac inlined PlannedCreaturePen::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18PlannedCreaturePen asm("??_R3PlannedCreaturePen@@8");
+
 // Override methods
 
 // win1.41 004ef050 mac 102748a0 PlannedCreaturePen::_dt(void)

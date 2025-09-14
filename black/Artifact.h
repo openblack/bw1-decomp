@@ -23,9 +23,18 @@ struct TownArtifact
 };
 static_assert(sizeof(struct TownArtifact) == 0x40, "Data type is of wrong size");
 
-// win1.41 008c47cc mac 10736fe0 TownArtifact::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12TownArtifact asm("??_R4TownArtifact@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c96f8 mac inlined TownArtifact::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12TownArtifact asm("??_R0?AVTownArtifact@@@8");
+// win1.41 009a7bd8 mac inlined TownArtifact::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12TownArtifact asm("??_R1A@?0A@A@TownArtifact@@8");
+// win1.41 009a7bf0 mac inlined TownArtifact::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12TownArtifact asm("??_R2TownArtifact@@8");
+// win1.41 009a7c00 mac inlined TownArtifact::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12TownArtifact asm("??_R3TownArtifact@@8");
+// win1.41 008c47cc mac 10736fe0 TownArtifact::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12TownArtifact asm("??_R4TownArtifact@@6B@");
 // win1.41 008c47d0 mac 10736fe8 TownArtifact::`vftable'
 extern const struct GameThingVftable __vt__12TownArtifact asm("??_7TownArtifact@@6B@");
 

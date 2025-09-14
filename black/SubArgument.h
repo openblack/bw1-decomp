@@ -28,6 +28,12 @@ struct SubArgument
 };
 static_assert(sizeof(struct SubArgument) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009d03a8 mac inlined SubArgument::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11SubArgument asm("??_R0?AVSubArgument@@@8");
+// win1.41 009a9718 mac inlined SubArgument::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11SubArgument asm("??_R1A@?0A@A@SubArgument@@8");
 // win1.41 inlined mac 1077e3e4 SubArgument::`vftable'
 extern const struct SubArgumentVftable __vt__11SubArgument asm("??_7SubArgument@@6B@");
 

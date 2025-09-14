@@ -22,6 +22,17 @@ struct SpellForest
 };
 static_assert(sizeof(struct SpellForest) == 0xec, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bece90 mac inlined SpellForest::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11SpellForest asm("??_R0?AVSpellForest@@@8");
+// win1.41 009ae740 mac inlined SpellForest::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11SpellForest asm("??_R1A@?0A@A@SpellForest@@8");
+// win1.41 009ae758 mac inlined SpellForest::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11SpellForest asm("??_R2SpellForest@@8");
+// win1.41 009ae770 mac inlined SpellForest::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11SpellForest asm("??_R3SpellForest@@8");
+
 // Override methods
 
 // win1.41 0055d220 mac 1051fef0 SpellForest::_dt(void)

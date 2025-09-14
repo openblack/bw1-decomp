@@ -32,9 +32,18 @@ struct Prss
 };
 static_assert(sizeof(struct Prss) == 0x10, "Data type is of wrong size");
 
-// win1.41 008d87b4 mac 101cbc0c Prss::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Prss asm("??_R4Prss@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cdc28 mac inlined Prss::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Prss asm("??_R0?AVPrss@@@8");
+// win1.41 009a8840 mac inlined Prss::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Prss asm("??_R1A@?0A@A@Prss@@8");
+// win1.41 009abb34 mac inlined Prss::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Prss asm("??_R2Prss@@8");
+// win1.41 009abb40 mac inlined Prss::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Prss asm("??_R3Prss@@8");
+// win1.41 008d87b4 mac 101cbc0c Prss::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Prss asm("??_R4Prss@@6B@");
 // win1.41 008d87b8 mac 101cbc14 Prss::`vftable'
 extern const struct PrssVftable __vt__4Prss asm("??_7Prss@@6B@");
 

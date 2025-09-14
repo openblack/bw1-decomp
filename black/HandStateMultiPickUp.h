@@ -15,9 +15,18 @@ struct HandStateMultiPickUp
 };
 static_assert(sizeof(struct HandStateMultiPickUp) == 0x8, "Data type is of wrong size");
 
-// win1.41 00900b68 mac 1099b58c HandStateMultiPickUp::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20HandStateMultiPickUp asm("??_R4HandStateMultiPickUp@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf01a8 mac inlined HandStateMultiPickUp::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20HandStateMultiPickUp asm("??_R0?AVHandStateMultiPickUp@@@8");
+// win1.41 009b1018 mac inlined HandStateMultiPickUp::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20HandStateMultiPickUp asm("??_R1A@?0A@A@HandStateMultiPickUp@@8");
+// win1.41 009b1030 mac inlined HandStateMultiPickUp::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20HandStateMultiPickUp asm("??_R2HandStateMultiPickUp@@8");
+// win1.41 009b1040 mac inlined HandStateMultiPickUp::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20HandStateMultiPickUp asm("??_R3HandStateMultiPickUp@@8");
+// win1.41 00900b68 mac 1099b58c HandStateMultiPickUp::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20HandStateMultiPickUp asm("??_R4HandStateMultiPickUp@@6B@");
 // win1.41 00900b6c mac 1099b594 HandStateMultiPickUp::`vftable'
 extern const struct HandStateVftable __vt__20HandStateMultiPickUp asm("??_7HandStateMultiPickUp@@6B@");
 

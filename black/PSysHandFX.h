@@ -37,6 +37,13 @@ struct PSysHandFX
 };
 static_assert(sizeof(struct PSysHandFX) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c028f8 mac inlined PSysHandFX::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10PSysHandFX asm("??_R0?AVPSysHandFX@@@8");
+// win1.41 009b4160 mac inlined PSysHandFX::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10PSysHandFX asm("??_R1A@?0A@A@PSysHandFX@@8");
+
 // Static methods
 
 // win1.41 0068c9d0 mac 1040e720 PSysHandFX::CreateHandFX(void)
@@ -53,9 +60,18 @@ struct PHandFX
 };
 static_assert(sizeof(struct PHandFX) == 0x74, "Data type is of wrong size");
 
-// win1.41 00936c18 mac 109b139c PHandFX::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7PHandFX asm("??_R4PHandFX@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c02918 mac inlined PHandFX::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7PHandFX asm("??_R0?AVPHandFX@@@8");
+// win1.41 009b4178 mac inlined PHandFX::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7PHandFX asm("??_R1A@?0A@A@PHandFX@@8");
+// win1.41 009b4190 mac inlined PHandFX::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7PHandFX asm("??_R2PHandFX@@8");
+// win1.41 009b41a0 mac inlined PHandFX::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7PHandFX asm("??_R3PHandFX@@8");
+// win1.41 00936c18 mac 109b139c PHandFX::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7PHandFX asm("??_R4PHandFX@@6B@");
 // win1.41 00936c1c mac 109b13a4 PHandFX::`vftable'
 extern const struct PSysHandFXVftable __vt__7PHandFX asm("??_7PHandFX@@6B@");
 

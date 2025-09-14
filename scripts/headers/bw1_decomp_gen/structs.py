@@ -324,7 +324,7 @@ class RTTIClass(Struct):
     def all_methods(self) -> list[DefinedFunctionPrototype]:
         return super().all_methods + self.method_overrides
 
-    def __init__(self, struct: Struct, vftable_map: dict[str, dict], rtti_locator_map: dict[str, dict], virtual_table_function_arg_map: OrderedDict[str, list[str]], method_map: dict[str, DefinedFunctionPrototype], static_method_map: dict[str, DefinedFunctionPrototype]):
+    def __init__(self, struct: Struct, vftable_map: dict[str, dict], rtti_typedesc_map: dict[str, dict], rtti_base_class_desc_map: dict[str, dict], rtti_base_class_array_map: dict[str, dict], rtti_class_hierarchy_desc_map: dict[str, dict], rtti_locator_map: dict[str, dict], virtual_table_function_arg_map: OrderedDict[str, list[str]], method_map: dict[str, DefinedFunctionPrototype], static_method_map: dict[str, DefinedFunctionPrototype]):
         self.name = struct.name
         self.size = struct.size
         self.members = struct.members[:]
@@ -342,19 +342,82 @@ class RTTIClass(Struct):
             if not self.vftable_type_name.endswith("Vftable"):
                 raise TypeError(f"type: `{struct.name}` has a __vt__ declared with invalid type `{self.vftable_type_name}`")
         else:
+            self.vftable_name = None
             self.vftable_win_address = None
             self.vftable_mac_address = None
             self.vftable_type_name = None
             self.vftable_decorated_name = None
             self.vftable_msvc_mangled_name = None
+        typedesc_global = rtti_typedesc_map.get(basename) or rtti_typedesc_map.get(f"{len(basename)}{basename}")
+        if typedesc_global:
+            self.typedesc_name = typedesc_global['name']
+            self.typedesc_win_address = typedesc_global['win_addr']
+            self.typedesc_mac_address = typedesc_global['mac_addr']
+            self.typedesc_type_name = typedesc_global['type']
+            self.typedesc_decorated_name = typedesc_global['decorated_name']
+            self.typedesc_msvc_mangled_name = typedesc_global['msvc_mangled_name']
+        else:
+            self.typedesc_name = None
+            self.typedesc_win_address = None
+            self.typedesc_mac_address = None
+            self.typedesc_type_name = None
+            self.typedesc_decorated_name = None
+            self.typedesc_msvc_mangled_name = None
+        base_class_desc_global = rtti_base_class_desc_map.get(basename) or rtti_base_class_desc_map.get(f"{len(basename)}{basename}")
+        if base_class_desc_global:
+            self.base_class_desc_name = base_class_desc_global['name']
+            self.base_class_desc_win_address = base_class_desc_global['win_addr']
+            self.base_class_desc_mac_address = base_class_desc_global['mac_addr']
+            self.base_class_desc_type_name = base_class_desc_global['type']
+            self.base_class_desc_decorated_name = base_class_desc_global['decorated_name']
+            self.base_class_desc_msvc_mangled_name = base_class_desc_global['msvc_mangled_name']
+        else:
+            self.base_class_desc_name = None
+            self.base_class_desc_win_address = None
+            self.base_class_desc_mac_address = None
+            self.base_class_desc_type_name = None
+            self.base_class_desc_decorated_name = None
+            self.base_class_desc_msvc_mangled_name = None
+        base_class_array_global = rtti_base_class_array_map.get(basename) or rtti_base_class_array_map.get(f"{len(basename)}{basename}")
+        if base_class_array_global:
+            self.base_class_array_name = base_class_array_global['name']
+            self.base_class_array_win_address = base_class_array_global['win_addr']
+            self.base_class_array_mac_address = base_class_array_global['mac_addr']
+            self.base_class_array_type_name = base_class_array_global['type']
+            self.base_class_array_decorated_name = base_class_array_global['decorated_name']
+            self.base_class_array_msvc_mangled_name = base_class_array_global['msvc_mangled_name']
+        else:
+            self.base_class_array_name = None
+            self.base_class_array_win_address = None
+            self.base_class_array_mac_address = None
+            self.base_class_array_type_name = None
+            self.base_class_array_decorated_name = None
+            self.base_class_array_msvc_mangled_name = None
+        class_hierarchy_desc_global = rtti_class_hierarchy_desc_map.get(basename) or rtti_class_hierarchy_desc_map.get(f"{len(basename)}{basename}")
+        if class_hierarchy_desc_global:
+            self.class_hierarchy_desc_name = class_hierarchy_desc_global['name']
+            self.class_hierarchy_desc_win_address = class_hierarchy_desc_global['win_addr']
+            self.class_hierarchy_desc_mac_address = class_hierarchy_desc_global['mac_addr']
+            self.class_hierarchy_desc_type_name = class_hierarchy_desc_global['type']
+            self.class_hierarchy_desc_decorated_name = class_hierarchy_desc_global['decorated_name']
+            self.class_hierarchy_desc_msvc_mangled_name = class_hierarchy_desc_global['msvc_mangled_name']
+        else:
+            self.class_hierarchy_desc_name = None
+            self.class_hierarchy_desc_win_address = None
+            self.class_hierarchy_desc_mac_address = None
+            self.class_hierarchy_desc_type_name = None
+            self.class_hierarchy_desc_decorated_name = None
+            self.class_hierarchy_desc_msvc_mangled_name = None
         locator_global = rtti_locator_map.get(basename) or rtti_locator_map.get(f"{len(basename)}{basename}")
         if locator_global:
+            self.locator_name = locator_global['name']
             self.locator_win_address = locator_global['win_addr']
             self.locator_mac_address = locator_global['mac_addr']
             self.locator_type_name = locator_global['type']
             self.locator_decorated_name = locator_global['decorated_name']
             self.locator_msvc_mangled_name = locator_global['msvc_mangled_name']
         else:
+            self.locator_name = None
             self.locator_win_address = None
             self.locator_mac_address = None
             self.locator_type_name = None
@@ -421,17 +484,42 @@ class RTTIClass(Struct):
     def to_code_data(self, cw: csnake.CodeWriter):
         super().to_code_data(cw)
         basename = TYPE_SUBSTITUTION_MAP.get(self.name, self.name)
-        if self.locator_win_address:
-            win_addr = f"{self.locator_win_address:08x}" if self.locator_win_address >= 0 else "inlined"
-            mac_addr = f"{self.locator_mac_address:08x}" if self.locator_mac_address >= 0 else "inlined"
-            cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.locator_decorated_name}")
-            cw.add_variable_declaration(CSnakeVariable(f"__RTTICompleObjectLocator__{len(basename)}{basename}", self.locator_type_name, mangled_name=self.locator_msvc_mangled_name), extern=True)
+
+        if self.typedesc_win_address or self.base_class_desc_win_address or self.base_class_array_win_address or self.class_hierarchy_desc_win_address or self.locator_win_address or self.vftable_win_address:
+            cw.add_line('// Object Oriented datastructures')
             cw.add_line()
-        if self.vftable_win_address:
-            win_addr = f"{self.vftable_win_address:08x}" if self.vftable_win_address >= 0 else "inlined"
-            mac_addr = f"{self.vftable_mac_address:08x}" if self.vftable_mac_address >= 0 else "inlined"
-            cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.vftable_decorated_name}")
-            cw.add_variable_declaration(CSnakeVariable(f"__vt__{len(basename)}{basename}", self.vftable_type_name, ["const"], mangled_name=self.vftable_msvc_mangled_name), extern=True)
+
+            if self.typedesc_win_address:
+                win_addr = f"{self.typedesc_win_address:08x}" if self.typedesc_win_address >= 0 else "inlined"
+                mac_addr = f"{self.typedesc_mac_address:08x}" if self.typedesc_mac_address >= 0 else "inlined"
+                cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.typedesc_decorated_name}")
+                cw.add_variable_declaration(CSnakeVariable(self.typedesc_name, self.typedesc_type_name, ["const"], mangled_name=self.typedesc_msvc_mangled_name), extern=True)
+            if self.base_class_desc_win_address:
+                win_addr = f"{self.base_class_desc_win_address:08x}" if self.base_class_desc_win_address >= 0 else "inlined"
+                mac_addr = f"{self.base_class_desc_mac_address:08x}" if self.base_class_desc_mac_address >= 0 else "inlined"
+                cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.base_class_desc_decorated_name}")
+                cw.add_variable_declaration(CSnakeVariable(self.base_class_desc_name, self.base_class_desc_type_name, ["const"], mangled_name=self.base_class_desc_msvc_mangled_name), extern=True)
+            if self.base_class_array_win_address:
+                win_addr = f"{self.base_class_array_win_address:08x}" if self.base_class_array_win_address >= 0 else "inlined"
+                mac_addr = f"{self.base_class_array_mac_address:08x}" if self.base_class_array_mac_address >= 0 else "inlined"
+                cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.base_class_array_decorated_name}")
+                cw.add_variable_declaration(CSnakeVariable(self.base_class_array_name, self.base_class_array_type_name, ["const"], mangled_name=self.base_class_array_msvc_mangled_name), extern=True)
+            if self.class_hierarchy_desc_win_address:
+                win_addr = f"{self.class_hierarchy_desc_win_address:08x}" if self.class_hierarchy_desc_win_address >= 0 else "inlined"
+                mac_addr = f"{self.class_hierarchy_desc_mac_address:08x}" if self.class_hierarchy_desc_mac_address >= 0 else "inlined"
+                cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.class_hierarchy_desc_decorated_name}")
+                cw.add_variable_declaration(CSnakeVariable(self.class_hierarchy_desc_name, self.class_hierarchy_desc_type_name, ["const"], mangled_name=self.class_hierarchy_desc_msvc_mangled_name), extern=True)
+            if self.locator_win_address:
+                win_addr = f"{self.locator_win_address:08x}" if self.locator_win_address >= 0 else "inlined"
+                mac_addr = f"{self.locator_mac_address:08x}" if self.locator_mac_address >= 0 else "inlined"
+                cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.locator_decorated_name}")
+                cw.add_variable_declaration(CSnakeVariable(self.locator_name, self.locator_type_name, ["const"], mangled_name=self.locator_msvc_mangled_name), extern=True)
+            if self.vftable_win_address:
+                win_addr = f"{self.vftable_win_address:08x}" if self.vftable_win_address >= 0 else "inlined"
+                mac_addr = f"{self.vftable_mac_address:08x}" if self.vftable_mac_address >= 0 else "inlined"
+                cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.vftable_decorated_name}")
+                cw.add_variable_declaration(CSnakeVariable(f"__vt__{len(basename)}{basename}", self.vftable_type_name, ["const"], mangled_name=self.vftable_msvc_mangled_name), extern=True)
+
             cw.add_line()
 
     def to_code_methods(self, cw: csnake.CodeWriter):

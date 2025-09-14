@@ -13,9 +13,18 @@ struct GestureSystemDataList
 };
 static_assert(sizeof(struct GestureSystemDataList) == 0x10, "Data type is of wrong size");
 
-// win1.41 008df7bc mac 10733088 GestureSystemDataList::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__21GestureSystemDataList asm("??_R4GestureSystemDataList@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bec3f0 mac inlined GestureSystemDataList::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21GestureSystemDataList asm("??_R0?AVGestureSystemDataList@@@8");
+// win1.41 009ad1a0 mac inlined GestureSystemDataList::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21GestureSystemDataList asm("??_R1A@?0A@A@GestureSystemDataList@@8");
+// win1.41 009ad1b8 mac inlined GestureSystemDataList::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21GestureSystemDataList asm("??_R2GestureSystemDataList@@8");
+// win1.41 009ad1c8 mac inlined GestureSystemDataList::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21GestureSystemDataList asm("??_R3GestureSystemDataList@@8");
+// win1.41 008df7bc mac 10733088 GestureSystemDataList::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__21GestureSystemDataList asm("??_R4GestureSystemDataList@@6B@");
 // win1.41 008df7c0 mac 10733090 GestureSystemDataList::`vftable'
 extern const struct BaseVftable __vt__21GestureSystemDataList asm("??_7GestureSystemDataList@@6B@");
 

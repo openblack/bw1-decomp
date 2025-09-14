@@ -16,6 +16,17 @@ struct GSpellSystemInfo
 };
 static_assert(sizeof(struct GSpellSystemInfo) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c22738 mac inlined GSpellSystemInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GSpellSystemInfo asm("??_R0?AVGSpellSystemInfo@@@8");
+// win1.41 009b94a0 mac inlined GSpellSystemInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GSpellSystemInfo asm("??_R1A@?0A@A@GSpellSystemInfo@@8");
+// win1.41 009b94b8 mac inlined GSpellSystemInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GSpellSystemInfo asm("??_R2GSpellSystemInfo@@8");
+// win1.41 009b94c8 mac inlined GSpellSystemInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GSpellSystemInfo asm("??_R3GSpellSystemInfo@@8");
+
 // Override methods
 
 // win1.41 0072ae00 mac 1052de00 GSpellSystemInfo::_dt(void)

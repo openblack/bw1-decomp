@@ -24,6 +24,17 @@ struct MagicShield
 };
 static_assert(sizeof(struct MagicShield) == 0x68, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c22810 mac inlined MagicShield::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11MagicShield asm("??_R0?AVMagicShield@@@8");
+// win1.41 009b9660 mac inlined MagicShield::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11MagicShield asm("??_R1A@?0A@A@MagicShield@@8");
+// win1.41 009b9678 mac inlined MagicShield::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11MagicShield asm("??_R2MagicShield@@8");
+// win1.41 009b96a0 mac inlined MagicShield::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11MagicShield asm("??_R3MagicShield@@8");
+
 // Override methods
 
 // win1.41 0072c230 mac 105340b0 MagicShield::_dt(void)

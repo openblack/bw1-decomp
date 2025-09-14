@@ -21,9 +21,18 @@ struct Cow
 };
 static_assert(sizeof(struct Cow) == 0x148, "Data type is of wrong size");
 
-// win1.41 008ad058 mac 1074b2d0 Cow::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__3Cow asm("??_R4Cow@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8f68 mac inlined Cow::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__3Cow asm("??_R0?AVCow@@@8");
+// win1.41 009a6d00 mac inlined Cow::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__3Cow asm("??_R1A@?0A@A@Cow@@8");
+// win1.41 009a6d18 mac inlined Cow::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__3Cow asm("??_R2Cow@@8");
+// win1.41 009a6d40 mac inlined Cow::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__3Cow asm("??_R3Cow@@8");
+// win1.41 008ad058 mac 1074b2d0 Cow::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__3Cow asm("??_R4Cow@@6B@");
 // win1.41 008ad05c mac 1074b318 Cow::`vftable'
 extern const struct LivingVftable __vt__3Cow asm("??_7Cow@@6B@");
 

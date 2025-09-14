@@ -17,6 +17,17 @@ struct GRewardInfo
 };
 static_assert(sizeof(struct GRewardInfo) == 0x114, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c0bea8 mac inlined GRewardInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GRewardInfo asm("??_R0?AVGRewardInfo@@@8");
+// win1.41 009b8c98 mac inlined GRewardInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GRewardInfo asm("??_R1A@?0A@A@GRewardInfo@@8");
+// win1.41 009b8cb0 mac inlined GRewardInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11GRewardInfo asm("??_R2GRewardInfo@@8");
+// win1.41 009b8cd0 mac inlined GRewardInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11GRewardInfo asm("??_R3GRewardInfo@@8");
+
 // Override methods
 
 // win1.41 006e54b0 mac 1013b160 GRewardInfo::_dt(void)

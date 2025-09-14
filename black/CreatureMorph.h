@@ -3811,6 +3811,17 @@ struct LH3DCreature
 };
 static_assert(sizeof(struct LH3DCreature) == 0x57b8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009d1078 mac inlined LH3DCreature::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12LH3DCreature asm("??_R0?AVLH3DCreature@@@8");
+// win1.41 009a9910 mac inlined LH3DCreature::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12LH3DCreature asm("??_R1A@?0A@A@LH3DCreature@@8");
+// win1.41 009a9928 mac inlined LH3DCreature::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12LH3DCreature asm("??_R2LH3DCreature@@8");
+// win1.41 009a9938 mac inlined LH3DCreature::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12LH3DCreature asm("??_R3LH3DCreature@@8");
+
 // Static methods
 
 // win1.41 0047f1f0 mac 101fc320 LH3DCreature::FollowerCallbackFunction(int, int)

@@ -43,9 +43,18 @@ struct FishFarm
 };
 static_assert(sizeof(struct FishFarm) == 0x98, "Data type is of wrong size");
 
-// win1.41 008dadbc mac 107402f8 FishFarm::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8FishFarm asm("??_R4FishFarm@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009d97c8 mac inlined FishFarm::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8FishFarm asm("??_R0?AVFishFarm@@@8");
+// win1.41 009ac340 mac inlined FishFarm::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8FishFarm asm("??_R1A@?0A@A@FishFarm@@8");
+// win1.41 009ac358 mac inlined FishFarm::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8FishFarm asm("??_R2FishFarm@@8");
+// win1.41 009ac378 mac inlined FishFarm::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8FishFarm asm("??_R3FishFarm@@8");
+// win1.41 008dadbc mac 107402f8 FishFarm::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8FishFarm asm("??_R4FishFarm@@6B@");
 // win1.41 008dadc0 mac 10740300 FishFarm::`vftable'
 extern const struct MultiMapFixedVftable __vt__8FishFarm asm("??_7FishFarm@@6B@");
 

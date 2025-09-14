@@ -32,9 +32,18 @@ struct DeadTree
 };
 static_assert(sizeof(struct DeadTree) == 0xa0, "Data type is of wrong size");
 
-// win1.41 008d6060 mac 1073a834 DeadTree::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8DeadTree asm("??_R4DeadTree@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be8a28 mac inlined DeadTree::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8DeadTree asm("??_R0?AVDeadTree@@@8");
+// win1.41 009ab7f0 mac inlined DeadTree::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8DeadTree asm("??_R1A@?0A@A@DeadTree@@8");
+// win1.41 009ab808 mac inlined DeadTree::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8DeadTree asm("??_R2DeadTree@@8");
+// win1.41 009ab830 mac inlined DeadTree::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8DeadTree asm("??_R3DeadTree@@8");
+// win1.41 008d6060 mac 1073a834 DeadTree::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8DeadTree asm("??_R4DeadTree@@6B@");
 // win1.41 008d6064 mac 1073a87c DeadTree::`vftable'
 extern const struct RockVftable __vt__8DeadTree asm("??_7DeadTree@@6B@");
 

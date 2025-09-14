@@ -16,6 +16,17 @@ struct ParticleBaseMeshCreator
 };
 static_assert(sizeof(struct ParticleBaseMeshCreator) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c04830 mac inlined ParticleBaseMeshCreator::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23ParticleBaseMeshCreator asm("??_R0?AVParticleBaseMeshCreator@@@8");
+// win1.41 009b4d80 mac inlined ParticleBaseMeshCreator::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23ParticleBaseMeshCreator asm("??_R1A@?0A@A@ParticleBaseMeshCreator@@8");
+// win1.41 009b4d98 mac inlined ParticleBaseMeshCreator::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23ParticleBaseMeshCreator asm("??_R2ParticleBaseMeshCreator@@8");
+// win1.41 009b4da8 mac inlined ParticleBaseMeshCreator::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23ParticleBaseMeshCreator asm("??_R3ParticleBaseMeshCreator@@8");
+
 // Override methods
 
 // win1.41 006a8900 mac 1043f270 ParticleBaseMeshCreator::_dt(void)

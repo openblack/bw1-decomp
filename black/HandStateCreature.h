@@ -17,9 +17,18 @@ struct HandStateCreature
 };
 static_assert(sizeof(struct HandStateCreature) == 0x120, "Data type is of wrong size");
 
-// win1.41 00900aa8 mac 1073bc10 HandStateCreature::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17HandStateCreature asm("??_R4HandStateCreature@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be8ed8 mac inlined HandStateCreature::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17HandStateCreature asm("??_R0?AVHandStateCreature@@@8");
+// win1.41 009b0f28 mac inlined HandStateCreature::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17HandStateCreature asm("??_R1A@?0A@A@HandStateCreature@@8");
+// win1.41 009b0f40 mac inlined HandStateCreature::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17HandStateCreature asm("??_R2HandStateCreature@@8");
+// win1.41 009b0f50 mac inlined HandStateCreature::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17HandStateCreature asm("??_R3HandStateCreature@@8");
+// win1.41 00900aa8 mac 1073bc10 HandStateCreature::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17HandStateCreature asm("??_R4HandStateCreature@@6B@");
 // win1.41 00900aac mac 106f5d68 HandStateCreature::`vftable'
 extern const struct HandStateVftable __vt__17HandStateCreature asm("??_7HandStateCreature@@6B@");
 
