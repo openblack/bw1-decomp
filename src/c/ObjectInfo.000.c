@@ -2,6 +2,18 @@
 
 #include "Object.h"
 
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GObjectInfo = {
+    .pTypeDescriptor = &__RTTITypeDescriptor__11GObjectInfo,
+    .numContainedBases = 0x00000002,
+    .where = {
+        .mdisp = 0x00000000,
+        .pdisp = 0xFFFFFFFF,
+        .vdisp = 0x00000000,
+    },
+    .attributes = 0x0000000,
+};
+
 __attribute__((XOR32rr_REV))
 uint32_t __fastcall GetMesh__11GObjectInfoCF10TRIBE_TYPE(const struct GObjectInfo* this, const void* edx, enum TRIBE_TYPE tribe)
 {

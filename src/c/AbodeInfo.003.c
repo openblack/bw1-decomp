@@ -1,5 +1,46 @@
 #include "AbodeInfo.h"
 
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GAbodeInfo = {
+    .pTypeDescriptor = &__RTTITypeDescriptor__10GAbodeInfo,
+    .numContainedBases = 0x00000004,
+    .where = {
+        .mdisp = 0x00000000,
+        .pdisp = 0xFFFFFFFF,
+        .vdisp = 0x00000000,
+    },
+    .attributes = 0x0000000,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassArray __RTTIBaseClassArray__10GAbodeInfo = {
+    .arrayOfBaseClassDescriptors = {
+        (void*)0x009a6368,
+        &__RTTIBaseClassDescriptor__18GMultiMapFixedInfo,
+        &__RTTIBaseClassDescriptor__11GObjectInfo,
+        &__RTTIBaseClassDescriptor__9GBaseInfo,
+        &__RTTIBaseClassDescriptor__4Base,
+        NULL,
+    }
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GAbodeInfo = {
+  .signature = 0x00000000,
+  .attributes = 0x00000000,
+  .numBaseClasses = 0x00000005,
+  .pBaseClassArray = &__RTTIBaseClassArray__10GAbodeInfo,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10GAbodeInfo = {
+  .signature = 0x00000000,
+  .offset = 0x00000000,
+  .cdOffset = 0x00000000,
+  .pTypeDescriptor = &__RTTITypeDescriptor__10GAbodeInfo,
+  .pClassDescriptor = &__RTTIClassHierarchyDescriptor__10GAbodeInfo,
+};
+
 void __cdecl crt_global_destruction_register_for_AbodeInfos__10GAbodeInfoFv(void)
 {
     asm("push 0x004012e0");

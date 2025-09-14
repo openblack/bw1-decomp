@@ -70,21 +70,6 @@ _RTTIBaseClassDescriptor__\name:
 .endm
 
 .align 8
-RTTIBaseClassDescriptor GBaseInfo 1                                                                                // [0xfd320] 0x008a9000 + 0xfd320 = 0x009a6320
-RTTIBaseClassDescriptor GObjectInfo 2                                                                              // [0xfd338] 0x008a9000 + 0xfd338 = 0x009a6338
-RTTIBaseClassDescriptor GMultiMapFixedInfo 3                                                                       // [0xfd350] 0x008a9000 + 0xfd350 = 0x009a6350
-RTTIBaseClassDescriptor GAbodeInfo 4                                                                               // [0xfd368] 0x008a9000 + 0xfd368 = 0x009a6368
-
-RTTIBaseClassArray GAbodeInfo                                                                                      // [0xfd380] 0x008a9000 + 0xfd380 = 0x009a6380
-.long ??_R1A@?0A@A@GMultiMapFixedInfo@@8
-.long ??_R1A@?0A@A@GObjectInfo@@8
-.long ??_R1A@?0A@A@GBaseInfo@@8
-.long ??_R1A@?0A@A@Base@@8
-.long 0x00000000
-
-RTTIClassHierarchyDescriptor GAbodeInfo 5                                                                          // [0xfd398] 0x008a9000 + 0xfd398 = 0x009a6398
-RTTICompleteObjectLocator GAbodeInfo                                                                               // [0xfd3a8] 0x008a9000 + 0xfd3a8 = 0x009a63a8
-.long 0x00000000
 
 RTTIBaseClassDescriptor GameThing 1                                                                                // [0xfd3c0] 0x008a9000 + 0xfd3c0 = 0x009a63c0
 RTTIBaseClassDescriptor GameThingWithPos 2                                                                         // [0xfd3d8] 0x008a9000 + 0xfd3d8 = 0x009a63d8
