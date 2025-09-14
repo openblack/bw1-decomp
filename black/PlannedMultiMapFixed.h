@@ -49,9 +49,18 @@ struct PlannedMultiMapFixed
 };
 static_assert(sizeof(struct PlannedMultiMapFixed) == 0x48, "Data type is of wrong size");
 
-// win1.41 008f3150 mac 107340b0 PlannedMultiMapFixed::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20PlannedMultiMapFixed asm("??_R4PlannedMultiMapFixed@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c7fd8 mac inlined PlannedMultiMapFixed::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20PlannedMultiMapFixed asm("??_R0?AVPlannedMultiMapFixed@@@8");
+// win1.41 009a6498 mac inlined PlannedMultiMapFixed::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20PlannedMultiMapFixed asm("??_R1A@?0A@A@PlannedMultiMapFixed@@8");
+// win1.41 009ae968 mac inlined PlannedMultiMapFixed::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20PlannedMultiMapFixed asm("??_R2PlannedMultiMapFixed@@8");
+// win1.41 009ae980 mac inlined PlannedMultiMapFixed::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20PlannedMultiMapFixed asm("??_R3PlannedMultiMapFixed@@8");
+// win1.41 008f3150 mac 107340b0 PlannedMultiMapFixed::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20PlannedMultiMapFixed asm("??_R4PlannedMultiMapFixed@@6B@");
 // win1.41 008f3154 mac 107340d0 PlannedMultiMapFixed::`vftable'
 extern const struct PlannedMultiMapFixedVftable __vt__20PlannedMultiMapFixed asm("??_7PlannedMultiMapFixed@@6B@");
 

@@ -24,9 +24,18 @@ struct MPFEDatabase
 };
 static_assert(sizeof(struct MPFEDatabase) == 0xc, "Data type is of wrong size");
 
-// win1.41 00930868 mac 109a37c0 MPFEDatabase::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12MPFEDatabase asm("??_R4MPFEDatabase@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bfd810 mac inlined MPFEDatabase::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12MPFEDatabase asm("??_R0?AVMPFEDatabase@@@8");
+// win1.41 009b2778 mac inlined MPFEDatabase::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12MPFEDatabase asm("??_R1A@?0A@A@MPFEDatabase@@8");
+// win1.41 009b2790 mac inlined MPFEDatabase::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12MPFEDatabase asm("??_R2MPFEDatabase@@8");
+// win1.41 009b2798 mac inlined MPFEDatabase::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12MPFEDatabase asm("??_R3MPFEDatabase@@8");
+// win1.41 00930868 mac 109a37c0 MPFEDatabase::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12MPFEDatabase asm("??_R4MPFEDatabase@@6B@");
 // win1.41 0093086c mac 109a37c8 MPFEDatabase::`vftable'
 extern const struct MPFEDatabaseVftable __vt__12MPFEDatabase asm("??_7MPFEDatabase@@6B@");
 

@@ -34,6 +34,17 @@ struct CPDesireNodeInfo
 };
 static_assert(sizeof(struct CPDesireNodeInfo) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c00b10 mac inlined CPDesireNodeInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16CPDesireNodeInfo asm("??_R0?AVCPDesireNodeInfo@@@8");
+// win1.41 009b3260 mac inlined CPDesireNodeInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16CPDesireNodeInfo asm("??_R1A@?0A@A@CPDesireNodeInfo@@8");
+// win1.41 009b3278 mac inlined CPDesireNodeInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16CPDesireNodeInfo asm("??_R2CPDesireNodeInfo@@8");
+// win1.41 009b3280 mac inlined CPDesireNodeInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16CPDesireNodeInfo asm("??_R3CPDesireNodeInfo@@8");
+
 // Override methods
 
 // win1.41 00655b70 mac 104ab970 CPDesireNodeInfo::GetNumChildren(void)
@@ -62,9 +73,18 @@ struct GPlayerInfo
 };
 static_assert(sizeof(struct GPlayerInfo) == 0x90, "Data type is of wrong size");
 
-// win1.41 008df72c mac 10730be8 GPlayerInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GPlayerInfo asm("??_R4GPlayerInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bec370 mac inlined GPlayerInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GPlayerInfo asm("??_R0?AVGPlayerInfo@@@8");
+// win1.41 009ad060 mac inlined GPlayerInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GPlayerInfo asm("??_R1A@?0A@A@GPlayerInfo@@8");
+// win1.41 009ad078 mac inlined GPlayerInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11GPlayerInfo asm("??_R2GPlayerInfo@@8");
+// win1.41 009ad088 mac inlined GPlayerInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11GPlayerInfo asm("??_R3GPlayerInfo@@8");
+// win1.41 008df72c mac 10730be8 GPlayerInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GPlayerInfo asm("??_R4GPlayerInfo@@6B@");
 // win1.41 008df730 mac 10730bf0 GPlayerInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__11GPlayerInfo asm("??_7GPlayerInfo@@6B@");
 

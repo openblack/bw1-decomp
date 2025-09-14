@@ -13,9 +13,18 @@ struct LoginBox
 };
 static_assert(sizeof(struct LoginBox) == 0x89c, "Data type is of wrong size");
 
-// win1.41 008dec94 mac 109ed794 LoginBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8LoginBox asm("??_R4LoginBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea588 mac inlined LoginBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8LoginBox asm("??_R0?AVLoginBox@@@8");
+// win1.41 009ace70 mac inlined LoginBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8LoginBox asm("??_R1A@?0A@A@LoginBox@@8");
+// win1.41 009ace88 mac inlined LoginBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8LoginBox asm("??_R2LoginBox@@8");
+// win1.41 009ace98 mac inlined LoginBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8LoginBox asm("??_R3LoginBox@@8");
+// win1.41 008dec94 mac 109ed794 LoginBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8LoginBox asm("??_R4LoginBox@@6B@");
 // win1.41 008dec98 mac 109ed79c LoginBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__8LoginBox asm("??_7LoginBox@@6B@");
 

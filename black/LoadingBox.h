@@ -12,9 +12,18 @@ struct LoadingBox
 };
 static_assert(sizeof(struct LoadingBox) == 0x10, "Data type is of wrong size");
 
-// win1.41 008deb50 mac 109ed8d4 LoadingBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10LoadingBox asm("??_R4LoadingBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea2d8 mac inlined LoadingBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10LoadingBox asm("??_R0?AVLoadingBox@@@8");
+// win1.41 009ac7e0 mac inlined LoadingBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10LoadingBox asm("??_R1A@?0A@A@LoadingBox@@8");
+// win1.41 009ac7f8 mac inlined LoadingBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10LoadingBox asm("??_R2LoadingBox@@8");
+// win1.41 009ac808 mac inlined LoadingBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10LoadingBox asm("??_R3LoadingBox@@8");
+// win1.41 008deb50 mac 109ed8d4 LoadingBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10LoadingBox asm("??_R4LoadingBox@@6B@");
 // win1.41 008deb54 mac 109ed8dc LoadingBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__10LoadingBox asm("??_7LoadingBox@@6B@");
 

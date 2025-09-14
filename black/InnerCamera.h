@@ -90,9 +90,18 @@ struct InnerCamera
 };
 static_assert(sizeof(struct InnerCamera) == 0x46c, "Data type is of wrong size");
 
-// win1.41 0099ee6c mac 10777d9c InnerCamera::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11InnerCamera asm("??_R4InnerCamera@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c275a8 mac inlined InnerCamera::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11InnerCamera asm("??_R0?AUInnerCamera@@@8");
+// win1.41 009ba6a0 mac inlined InnerCamera::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11InnerCamera asm("??_R1A@?0A@A@InnerCamera@@8");
+// win1.41 009bab94 mac inlined InnerCamera::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11InnerCamera asm("??_R2InnerCamera@@8");
+// win1.41 009baba0 mac inlined InnerCamera::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11InnerCamera asm("??_R3InnerCamera@@8");
+// win1.41 0099ee6c mac 10777d9c InnerCamera::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11InnerCamera asm("??_R4InnerCamera@@6B@");
 // win1.41 0099ee70 mac 10777da4 InnerCamera::`vftable'
 extern const struct InnerCameraVftable __vt__11InnerCamera asm("??_7InnerCamera@@6B@");
 

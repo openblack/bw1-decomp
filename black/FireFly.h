@@ -46,9 +46,18 @@ struct FireFly
 };
 static_assert(sizeof(struct FireFly) == 0xc4, "Data type is of wrong size");
 
-// win1.41 008da4f4 mac 1073f830 FireFly::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7FireFly asm("??_R4FireFly@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be9dc0 mac inlined FireFly::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7FireFly asm("??_R0?AVFireFly@@@8");
+// win1.41 009ac290 mac inlined FireFly::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7FireFly asm("??_R1A@?0A@A@FireFly@@8");
+// win1.41 009ac2a8 mac inlined FireFly::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7FireFly asm("??_R2FireFly@@8");
+// win1.41 009ac2c0 mac inlined FireFly::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7FireFly asm("??_R3FireFly@@8");
+// win1.41 008da4f4 mac 1073f830 FireFly::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7FireFly asm("??_R4FireFly@@6B@");
 // win1.41 008da4f8 mac 106f5e14 FireFly::`vftable'
 extern const struct ObjectVftable __vt__7FireFly asm("??_7FireFly@@6B@");
 

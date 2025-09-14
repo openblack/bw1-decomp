@@ -40,9 +40,18 @@ struct GBaseInfo
 };
 static_assert(sizeof(struct GBaseInfo) == 0x10, "Data type is of wrong size");
 
-// win1.41 008c4d18 mac 10730abc GBaseInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GBaseInfo asm("??_R4GBaseInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c7e98 mac inlined GBaseInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GBaseInfo asm("??_R0?AVGBaseInfo@@@8");
+// win1.41 009a6320 mac inlined GBaseInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GBaseInfo asm("??_R1A@?0A@A@GBaseInfo@@8");
+// win1.41 009a8058 mac inlined GBaseInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GBaseInfo asm("??_R2GBaseInfo@@8");
+// win1.41 009a8068 mac inlined GBaseInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GBaseInfo asm("??_R3GBaseInfo@@8");
+// win1.41 008c4d18 mac 10730abc GBaseInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GBaseInfo asm("??_R4GBaseInfo@@6B@");
 // win1.41 008c4d1c mac 10730acc GBaseInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__9GBaseInfo asm("??_7GBaseInfo@@6B@");
 
@@ -81,9 +90,18 @@ struct BaseInfo
 };
 static_assert(sizeof(struct BaseInfo) == 0xc, "Data type is of wrong size");
 
-// win1.41 008ea8cc mac 10745360 BaseInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8BaseInfo asm("??_R4BaseInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becac0 mac inlined BaseInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8BaseInfo asm("??_R0?AVBaseInfo@@@8");
+// win1.41 009ad938 mac inlined BaseInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8BaseInfo asm("??_R1A@?0A@A@BaseInfo@@8");
+// win1.41 009ad950 mac inlined BaseInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8BaseInfo asm("??_R2BaseInfo@@8");
+// win1.41 009ad958 mac inlined BaseInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8BaseInfo asm("??_R3BaseInfo@@8");
+// win1.41 008ea8cc mac 10745360 BaseInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8BaseInfo asm("??_R4BaseInfo@@6B@");
 // win1.41 008ea8d0 mac 10745368 BaseInfo::`vftable'
 extern const struct BaseInfoVftable __vt__8BaseInfo asm("??_7BaseInfo@@6B@");
 

@@ -44,9 +44,18 @@ struct Citadel
 };
 static_assert(sizeof(struct Citadel) == 0x80, "Data type is of wrong size");
 
-// win1.41 008c7e64 mac 10779c40 Citadel::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7Citadel asm("??_R4Citadel@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009ce848 mac inlined Citadel::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7Citadel asm("??_R0?AVCitadel@@@8");
+// win1.41 009a8dd8 mac inlined Citadel::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7Citadel asm("??_R1A@?0A@A@Citadel@@8");
+// win1.41 009a8df0 mac inlined Citadel::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7Citadel asm("??_R2Citadel@@8");
+// win1.41 009a8e08 mac inlined Citadel::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7Citadel asm("??_R3Citadel@@8");
+// win1.41 008c7e64 mac 10779c40 Citadel::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7Citadel asm("??_R4Citadel@@6B@");
 // win1.41 008c7e68 mac 10779c48 Citadel::`vftable'
 extern const struct ContainerVftable __vt__7Citadel asm("??_7Citadel@@6B@");
 

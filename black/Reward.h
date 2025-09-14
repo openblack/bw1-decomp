@@ -28,9 +28,18 @@ struct Reward
 };
 static_assert(sizeof(struct Reward) == 0xa8, "Data type is of wrong size");
 
-// win1.41 00941890 mac 10759768 Reward::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Reward asm("??_R4Reward@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c0bee8 mac inlined Reward::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Reward asm("??_R0?AVReward@@@8");
+// win1.41 009b8d48 mac inlined Reward::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Reward asm("??_R1A@?0A@A@Reward@@8");
+// win1.41 009b8d60 mac inlined Reward::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Reward asm("??_R2Reward@@8");
+// win1.41 009b8d80 mac inlined Reward::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Reward asm("??_R3Reward@@8");
+// win1.41 00941890 mac 10759768 Reward::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Reward asm("??_R4Reward@@6B@");
 // win1.41 00941894 mac 10759770 Reward::`vftable'
 extern const struct MobileObjectVftable __vt__6Reward asm("??_7Reward@@6B@");
 
@@ -86,6 +95,17 @@ struct GRewardProgress
   struct GBaseInfo super;  /* 0x0 */
 };
 static_assert(sizeof(struct GRewardProgress) == 0x10, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c0bec8 mac inlined GRewardProgress::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GRewardProgress asm("??_R0?AVGRewardProgress@@@8");
+// win1.41 009b8cf8 mac inlined GRewardProgress::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GRewardProgress asm("??_R1A@?0A@A@GRewardProgress@@8");
+// win1.41 009b8d10 mac inlined GRewardProgress::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15GRewardProgress asm("??_R2GRewardProgress@@8");
+// win1.41 009b8d20 mac inlined GRewardProgress::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15GRewardProgress asm("??_R3GRewardProgress@@8");
 
 // Override methods
 

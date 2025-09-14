@@ -89,9 +89,18 @@ struct TempleRoom
 };
 static_assert(sizeof(struct TempleRoom) == 0xec, "Data type is of wrong size");
 
-// win1.41 0099eec0 mac 10732ce8 TempleRoom::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10TempleRoom asm("??_R4TempleRoom@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bec570 mac inlined TempleRoom::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10TempleRoom asm("??_R0?AVTempleRoom@@@8");
+// win1.41 009ba578 mac inlined TempleRoom::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10TempleRoom asm("??_R1A@?0A@A@TempleRoom@@8");
+// win1.41 009babc4 mac inlined TempleRoom::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10TempleRoom asm("??_R2TempleRoom@@8");
+// win1.41 009babd0 mac inlined TempleRoom::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10TempleRoom asm("??_R3TempleRoom@@8");
+// win1.41 0099eec0 mac 10732ce8 TempleRoom::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10TempleRoom asm("??_R4TempleRoom@@6B@");
 // win1.41 0099eec4 mac 106f5af8 TempleRoom::`vftable'
 extern const struct TempleRoomVftable __vt__10TempleRoom asm("??_7TempleRoom@@6B@");
 

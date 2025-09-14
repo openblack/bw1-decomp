@@ -19,9 +19,18 @@ struct RenderParticle
 };
 static_assert(sizeof(struct RenderParticle) == 0x18, "Data type is of wrong size");
 
-// win1.41 008fac38 mac 109b6a34 RenderParticle::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14RenderParticle asm("??_R4RenderParticle@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bed540 mac inlined RenderParticle::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14RenderParticle asm("??_R0?AVRenderParticle@@@8");
+// win1.41 009aed38 mac inlined RenderParticle::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14RenderParticle asm("??_R1A@?0A@A@RenderParticle@@8");
+// win1.41 009aeda8 mac inlined RenderParticle::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14RenderParticle asm("??_R2RenderParticle@@8");
+// win1.41 009aedc0 mac inlined RenderParticle::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14RenderParticle asm("??_R3RenderParticle@@8");
+// win1.41 008fac38 mac 109b6a34 RenderParticle::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14RenderParticle asm("??_R4RenderParticle@@6B@");
 // win1.41 008fac3c mac 109b6a54 RenderParticle::`vftable'
 extern const struct GameThingVftable __vt__14RenderParticle asm("??_7RenderParticle@@6B@");
 

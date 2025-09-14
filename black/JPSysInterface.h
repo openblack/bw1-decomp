@@ -25,9 +25,18 @@ struct GJPSysInterface
 };
 static_assert(sizeof(struct GJPSysInterface) == 0x18, "Data type is of wrong size");
 
-// win1.41 008fa89c mac 109b880c GJPSysInterface::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15GJPSysInterface asm("??_R4GJPSysInterface@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bed520 mac inlined GJPSysInterface::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GJPSysInterface asm("??_R0?AVGJPSysInterface@@@8");
+// win1.41 009aeca0 mac inlined GJPSysInterface::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GJPSysInterface asm("??_R1A@?0A@A@GJPSysInterface@@8");
+// win1.41 009aecb8 mac inlined GJPSysInterface::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15GJPSysInterface asm("??_R2GJPSysInterface@@8");
+// win1.41 009aecd0 mac inlined GJPSysInterface::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15GJPSysInterface asm("??_R3GJPSysInterface@@8");
+// win1.41 008fa89c mac 109b880c GJPSysInterface::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15GJPSysInterface asm("??_R4GJPSysInterface@@6B@");
 // win1.41 008fa8a0 mac 109b8814 GJPSysInterface::`vftable'
 extern const struct PSysInterfaceVftable __vt__15GJPSysInterface asm("??_7GJPSysInterface@@6B@");
 

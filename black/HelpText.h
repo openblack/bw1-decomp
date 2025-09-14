@@ -35,9 +35,18 @@ struct HelpText
 };
 static_assert(sizeof(struct HelpText) == 0xbc, "Data type is of wrong size");
 
-// win1.41 0092a51c mac 1099db6c HelpText::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8HelpText asm("??_R4HelpText@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf1a50 mac inlined HelpText::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8HelpText asm("??_R0?AVHelpText@@@8");
+// win1.41 009b1440 mac inlined HelpText::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8HelpText asm("??_R1A@?0A@A@HelpText@@8");
+// win1.41 009b1458 mac inlined HelpText::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8HelpText asm("??_R2HelpText@@8");
+// win1.41 009b1468 mac inlined HelpText::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8HelpText asm("??_R3HelpText@@8");
+// win1.41 0092a51c mac 1099db6c HelpText::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8HelpText asm("??_R4HelpText@@6B@");
 // win1.41 0092a520 mac 1099db74 HelpText::`vftable'
 extern const struct BaseVftable __vt__8HelpText asm("??_7HelpText@@6B@");
 

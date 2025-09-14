@@ -28,9 +28,18 @@ struct Dance
 };
 static_assert(sizeof(struct Dance) == 0x12c, "Data type is of wrong size");
 
-// win1.41 008d3964 mac 1074465c Dance::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Dance asm("??_R4Dance@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be6740 mac inlined Dance::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Dance asm("??_R0?AVDance@@@8");
+// win1.41 009ab5b0 mac inlined Dance::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Dance asm("??_R1A@?0A@A@Dance@@8");
+// win1.41 009ab5c8 mac inlined Dance::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Dance asm("??_R2Dance@@8");
+// win1.41 009ab5e0 mac inlined Dance::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Dance asm("??_R3Dance@@8");
+// win1.41 008d3964 mac 1074465c Dance::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Dance asm("??_R4Dance@@6B@");
 // win1.41 008d3968 mac 106f5ec0 Dance::`vftable'
 extern const struct GroupBehaviourVftable __vt__5Dance asm("??_7Dance@@6B@");
 

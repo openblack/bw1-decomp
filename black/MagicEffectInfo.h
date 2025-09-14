@@ -64,9 +64,18 @@ struct GMagicEffectInfo
 };
 static_assert(sizeof(struct GMagicEffectInfo) == 0x11c, "Data type is of wrong size");
 
-// win1.41 008d8b74 mac 1073d070 GMagicEffectInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GMagicEffectInfo asm("??_R4GMagicEffectInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be9658 mac inlined GMagicEffectInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GMagicEffectInfo asm("??_R0?AVGMagicEffectInfo@@@8");
+// win1.41 009abf18 mac inlined GMagicEffectInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GMagicEffectInfo asm("??_R1A@?0A@A@GMagicEffectInfo@@8");
+// win1.41 009abf30 mac inlined GMagicEffectInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GMagicEffectInfo asm("??_R2GMagicEffectInfo@@8");
+// win1.41 009abf48 mac inlined GMagicEffectInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GMagicEffectInfo asm("??_R3GMagicEffectInfo@@8");
+// win1.41 008d8b74 mac 1073d070 GMagicEffectInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GMagicEffectInfo asm("??_R4GMagicEffectInfo@@6B@");
 // win1.41 008d8b78 mac 1073d078 GMagicEffectInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__16GMagicEffectInfo asm("??_7GMagicEffectInfo@@6B@");
 

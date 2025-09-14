@@ -33,9 +33,18 @@ struct PileFood
 };
 static_assert(sizeof(struct PileFood) == 0xbc, "Data type is of wrong size");
 
-// win1.41 00933058 mac 1074939c PileFood::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8PileFood asm("??_R4PileFood@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00beca40 mac inlined PileFood::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8PileFood asm("??_R0?AVPileFood@@@8");
+// win1.41 009ad5e0 mac inlined PileFood::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8PileFood asm("??_R1A@?0A@A@PileFood@@8");
+// win1.41 009b3448 mac inlined PileFood::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8PileFood asm("??_R2PileFood@@8");
+// win1.41 009b3478 mac inlined PileFood::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8PileFood asm("??_R3PileFood@@8");
+// win1.41 00933058 mac 1074939c PileFood::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8PileFood asm("??_R4PileFood@@6B@");
 // win1.41 0093305c mac 107493a4 PileFood::`vftable'
 extern const struct PotVftable __vt__8PileFood asm("??_7PileFood@@6B@");
 

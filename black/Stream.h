@@ -20,9 +20,18 @@ struct GStream
 };
 static_assert(sizeof(struct GStream) == 0x28, "Data type is of wrong size");
 
-// win1.41 008ebb44 mac 1075dd20 GStream::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GStream asm("??_R4GStream@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becbf8 mac inlined GStream::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7GStream asm("??_R0?AVGStream@@@8");
+// win1.41 009adcc8 mac inlined GStream::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7GStream asm("??_R1A@?0A@A@GStream@@8");
+// win1.41 009adce0 mac inlined GStream::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7GStream asm("??_R2GStream@@8");
+// win1.41 009adcf0 mac inlined GStream::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7GStream asm("??_R3GStream@@8");
+// win1.41 008ebb44 mac 1075dd20 GStream::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GStream asm("??_R4GStream@@6B@");
 // win1.41 008ebb48 mac 1075dd28 GStream::`vftable'
 extern const struct GameThingVftable __vt__7GStream asm("??_7GStream@@6B@");
 

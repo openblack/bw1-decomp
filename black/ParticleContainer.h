@@ -28,9 +28,18 @@ struct GParticleContainer
 };
 static_assert(sizeof(struct GParticleContainer) == 0x40, "Data type is of wrong size");
 
-// win1.41 008e2a10 mac 107461ec GParticleContainer::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18GParticleContainer asm("??_R4GParticleContainer@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becd40 mac inlined GParticleContainer::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18GParticleContainer asm("??_R0?AVGParticleContainer@@@8");
+// win1.41 009ae108 mac inlined GParticleContainer::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18GParticleContainer asm("??_R1A@?0A@A@GParticleContainer@@8");
+// win1.41 009ae120 mac inlined GParticleContainer::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18GParticleContainer asm("??_R2GParticleContainer@@8");
+// win1.41 009ae138 mac inlined GParticleContainer::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18GParticleContainer asm("??_R3GParticleContainer@@8");
+// win1.41 008e2a10 mac 107461ec GParticleContainer::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18GParticleContainer asm("??_R4GParticleContainer@@6B@");
 // win1.41 008e2a14 mac 107461f4 GParticleContainer::`vftable'
 extern const struct GameThingVftable __vt__18GParticleContainer asm("??_7GParticleContainer@@6B@");
 

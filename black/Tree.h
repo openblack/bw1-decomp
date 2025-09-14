@@ -51,9 +51,18 @@ struct Tree
 };
 static_assert(sizeof(struct Tree) == 0x6c, "Data type is of wrong size");
 
-// win1.41 008e92f0 mac 1075df20 Tree::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Tree asm("??_R4Tree@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009d96e0 mac inlined Tree::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Tree asm("??_R0?AVTree@@@8");
+// win1.41 009ad470 mac inlined Tree::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Tree asm("??_R1A@?0A@A@Tree@@8");
+// win1.41 009ad488 mac inlined Tree::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Tree asm("??_R2Tree@@8");
+// win1.41 009ad4a8 mac inlined Tree::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Tree asm("??_R3Tree@@8");
+// win1.41 008e92f0 mac 1075df20 Tree::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Tree asm("??_R4Tree@@6B@");
 // win1.41 008e92f4 mac 106f65d0 Tree::`vftable'
 extern const struct TreeVftable __vt__4Tree asm("??_7Tree@@6B@");
 

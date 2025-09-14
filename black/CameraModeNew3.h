@@ -140,9 +140,18 @@ struct CameraModeNew3
 };
 static_assert(sizeof(struct CameraModeNew3) == 0x300, "Data type is of wrong size");
 
-// win1.41 008c7bf8 mac 10732de0 CameraModeNew3::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CameraModeNew3 asm("??_R4CameraModeNew3@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cd3b0 mac inlined CameraModeNew3::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14CameraModeNew3 asm("??_R0?AVCameraModeNew3@@@8");
+// win1.41 009a8c10 mac inlined CameraModeNew3::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14CameraModeNew3 asm("??_R1A@?0A@A@CameraModeNew3@@8");
+// win1.41 009a8c28 mac inlined CameraModeNew3::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14CameraModeNew3 asm("??_R2CameraModeNew3@@8");
+// win1.41 009a8c38 mac inlined CameraModeNew3::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14CameraModeNew3 asm("??_R3CameraModeNew3@@8");
+// win1.41 008c7bf8 mac 10732de0 CameraModeNew3::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CameraModeNew3 asm("??_R4CameraModeNew3@@6B@");
 // win1.41 008c7bfc mac 106f5b14 CameraModeNew3::`vftable'
 extern const struct CameraModeNew3Vftable __vt__14CameraModeNew3 asm("??_7CameraModeNew3@@6B@");
 

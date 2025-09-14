@@ -60,9 +60,18 @@ struct CreatureAgenda
 };
 static_assert(sizeof(struct CreatureAgenda) == 0x1af8, "Data type is of wrong size");
 
-// win1.41 008cf94c mac 1078758c CreatureAgenda::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CreatureAgenda asm("??_R4CreatureAgenda@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009dd8c0 mac inlined CreatureAgenda::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14CreatureAgenda asm("??_R0?AVCreatureAgenda@@@8");
+// win1.41 009aa400 mac inlined CreatureAgenda::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14CreatureAgenda asm("??_R1A@?0A@A@CreatureAgenda@@8");
+// win1.41 009aa418 mac inlined CreatureAgenda::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14CreatureAgenda asm("??_R2CreatureAgenda@@8");
+// win1.41 009aa428 mac inlined CreatureAgenda::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14CreatureAgenda asm("??_R3CreatureAgenda@@8");
+// win1.41 008cf94c mac 1078758c CreatureAgenda::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14CreatureAgenda asm("??_R4CreatureAgenda@@6B@");
 // win1.41 008cf950 mac 10787594 CreatureAgenda::`vftable'
 extern const struct BaseVftable __vt__14CreatureAgenda asm("??_7CreatureAgenda@@6B@");
 

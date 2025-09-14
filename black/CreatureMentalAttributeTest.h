@@ -104,6 +104,17 @@ struct Attribute
 };
 static_assert(sizeof(struct Attribute) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009dd3b8 mac inlined Attribute::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9Attribute asm("??_R0?AVAttribute@@@8");
+// win1.41 009a9ff0 mac inlined Attribute::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9Attribute asm("??_R1A@?0A@A@Attribute@@8");
+// win1.41 009aa058 mac inlined Attribute::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9Attribute asm("??_R2Attribute@@8");
+// win1.41 009aa068 mac inlined Attribute::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9Attribute asm("??_R3Attribute@@8");
+
 // Override methods
 
 // win1.41 004cb750 mac 1023cc80 Attribute::_dt(void)
@@ -114,6 +125,17 @@ struct AttributeAbodeBeingBuilt
   struct Attribute super;  /* 0x0 */
 };
 static_assert(sizeof(struct AttributeAbodeBeingBuilt) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bdeef0 mac inlined AttributeAbodeBeingBuilt::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24AttributeAbodeBeingBuilt asm("??_R0?AVAttributeAbodeBeingBuilt@@@8");
+// win1.41 009aa5e0 mac inlined AttributeAbodeBeingBuilt::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24AttributeAbodeBeingBuilt asm("??_R1A@?0A@A@AttributeAbodeBeingBuilt@@8");
+// win1.41 009aa5f8 mac inlined AttributeAbodeBeingBuilt::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__24AttributeAbodeBeingBuilt asm("??_R2AttributeAbodeBeingBuilt@@8");
+// win1.41 009aa608 mac inlined AttributeAbodeBeingBuilt::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__24AttributeAbodeBeingBuilt asm("??_R3AttributeAbodeBeingBuilt@@8");
 
 // Override methods
 
@@ -126,6 +148,17 @@ struct AttributeAbodeType
 };
 static_assert(sizeof(struct AttributeAbodeType) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bdef48 mac inlined AttributeAbodeType::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18AttributeAbodeType asm("??_R0?AVAttributeAbodeType@@@8");
+// win1.41 009aa680 mac inlined AttributeAbodeType::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18AttributeAbodeType asm("??_R1A@?0A@A@AttributeAbodeType@@8");
+// win1.41 009aa698 mac inlined AttributeAbodeType::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18AttributeAbodeType asm("??_R2AttributeAbodeType@@8");
+// win1.41 009aa6a8 mac inlined AttributeAbodeType::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18AttributeAbodeType asm("??_R3AttributeAbodeType@@8");
+
 // Override methods
 
 // win1.41 004d6020 mac 10249e60 AttributeAbodeType::_dt(void)
@@ -136,6 +169,17 @@ struct AttributeAllegiance
   struct Attribute super;  /* 0x0 */
 };
 static_assert(sizeof(struct AttributeAllegiance) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 009dd300 mac inlined AttributeAllegiance::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19AttributeAllegiance asm("??_R0?AVAttributeAllegiance@@@8");
+// win1.41 009a9e60 mac inlined AttributeAllegiance::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19AttributeAllegiance asm("??_R1A@?0A@A@AttributeAllegiance@@8");
+// win1.41 009a9e78 mac inlined AttributeAllegiance::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19AttributeAllegiance asm("??_R2AttributeAllegiance@@8");
+// win1.41 009a9e88 mac inlined AttributeAllegiance::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19AttributeAllegiance asm("??_R3AttributeAllegiance@@8");
 
 // Override methods
 
@@ -148,6 +192,17 @@ struct AttributeAnimate
 };
 static_assert(sizeof(struct AttributeAnimate) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009dd270 mac inlined AttributeAnimate::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16AttributeAnimate asm("??_R0?AVAttributeAnimate@@@8");
+// win1.41 009a9d20 mac inlined AttributeAnimate::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16AttributeAnimate asm("??_R1A@?0A@A@AttributeAnimate@@8");
+// win1.41 009a9d38 mac inlined AttributeAnimate::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16AttributeAnimate asm("??_R2AttributeAnimate@@8");
+// win1.41 009a9d48 mac inlined AttributeAnimate::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16AttributeAnimate asm("??_R3AttributeAnimate@@8");
+
 // Override methods
 
 // win1.41 004cb8b0 mac 1024b770 AttributeAnimate::_dt(void)
@@ -158,6 +213,17 @@ struct AttributeCreatureDominantDesire
   struct Attribute super;  /* 0x0 */
 };
 static_assert(sizeof(struct AttributeCreatureDominantDesire) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bdef18 mac inlined AttributeCreatureDominantDesire::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__31AttributeCreatureDominantDesire asm("??_R0?AVAttributeCreatureDominantDesire@@@8");
+// win1.41 009aa630 mac inlined AttributeCreatureDominantDesire::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__31AttributeCreatureDominantDesire asm("??_R1A@?0A@A@AttributeCreatureDominantDesire@@8");
+// win1.41 009aa648 mac inlined AttributeCreatureDominantDesire::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__31AttributeCreatureDominantDesire asm("??_R2AttributeCreatureDominantDesire@@8");
+// win1.41 009aa658 mac inlined AttributeCreatureDominantDesire::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__31AttributeCreatureDominantDesire asm("??_R3AttributeCreatureDominantDesire@@8");
 
 // Override methods
 
@@ -170,6 +236,17 @@ struct AttributeCreatureHeight
 };
 static_assert(sizeof(struct AttributeCreatureHeight) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bdeec8 mac inlined AttributeCreatureHeight::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23AttributeCreatureHeight asm("??_R0?AVAttributeCreatureHeight@@@8");
+// win1.41 009aa590 mac inlined AttributeCreatureHeight::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23AttributeCreatureHeight asm("??_R1A@?0A@A@AttributeCreatureHeight@@8");
+// win1.41 009aa5a8 mac inlined AttributeCreatureHeight::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23AttributeCreatureHeight asm("??_R2AttributeCreatureHeight@@8");
+// win1.41 009aa5b8 mac inlined AttributeCreatureHeight::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23AttributeCreatureHeight asm("??_R3AttributeCreatureHeight@@8");
+
 // Override methods
 
 // win1.41 004d5e10 mac 1024aa00 AttributeCreatureHeight::_dt(void)
@@ -180,6 +257,17 @@ struct AttributeCreatureSpellKnowledge
   struct Attribute super;  /* 0x0 */
 };
 static_assert(sizeof(struct AttributeCreatureSpellKnowledge) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bdee98 mac inlined AttributeCreatureSpellKnowledge::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__31AttributeCreatureSpellKnowledge asm("??_R0?AVAttributeCreatureSpellKnowledge@@@8");
+// win1.41 009aa540 mac inlined AttributeCreatureSpellKnowledge::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__31AttributeCreatureSpellKnowledge asm("??_R1A@?0A@A@AttributeCreatureSpellKnowledge@@8");
+// win1.41 009aa558 mac inlined AttributeCreatureSpellKnowledge::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__31AttributeCreatureSpellKnowledge asm("??_R2AttributeCreatureSpellKnowledge@@8");
+// win1.41 009aa568 mac inlined AttributeCreatureSpellKnowledge::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__31AttributeCreatureSpellKnowledge asm("??_R3AttributeCreatureSpellKnowledge@@8");
 
 // Override methods
 
@@ -192,6 +280,17 @@ struct AttributeCreatureType
 };
 static_assert(sizeof(struct AttributeCreatureType) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009dd248 mac inlined AttributeCreatureType::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21AttributeCreatureType asm("??_R0?AVAttributeCreatureType@@@8");
+// win1.41 009a9cd0 mac inlined AttributeCreatureType::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21AttributeCreatureType asm("??_R1A@?0A@A@AttributeCreatureType@@8");
+// win1.41 009a9ce8 mac inlined AttributeCreatureType::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21AttributeCreatureType asm("??_R2AttributeCreatureType@@8");
+// win1.41 009a9cf8 mac inlined AttributeCreatureType::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21AttributeCreatureType asm("??_R3AttributeCreatureType@@8");
+
 // Override methods
 
 // win1.41 004cbbe0 mac 10247480 AttributeCreatureType::_dt(void)
@@ -202,6 +301,17 @@ struct AttributeCreatureWhatHeIsCarrying
   struct Attribute super;  /* 0x0 */
 };
 static_assert(sizeof(struct AttributeCreatureWhatHeIsCarrying) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bdee68 mac inlined AttributeCreatureWhatHeIsCarrying::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__33AttributeCreatureWhatHeIsCarrying asm("??_R0?AVAttributeCreatureWhatHeIsCarrying@@@8");
+// win1.41 009aa4f0 mac inlined AttributeCreatureWhatHeIsCarrying::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__33AttributeCreatureWhatHeIsCarrying asm("??_R1A@?0A@A@AttributeCreatureWhatHeIsCarrying@@8");
+// win1.41 009aa508 mac inlined AttributeCreatureWhatHeIsCarrying::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__33AttributeCreatureWhatHeIsCarrying asm("??_R2AttributeCreatureWhatHeIsCarrying@@8");
+// win1.41 009aa518 mac inlined AttributeCreatureWhatHeIsCarrying::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__33AttributeCreatureWhatHeIsCarrying asm("??_R3AttributeCreatureWhatHeIsCarrying@@8");
 
 // Override methods
 
@@ -214,6 +324,17 @@ struct AttributeForestSize
 };
 static_assert(sizeof(struct AttributeForestSize) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bdee40 mac inlined AttributeForestSize::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19AttributeForestSize asm("??_R0?AVAttributeForestSize@@@8");
+// win1.41 009aa4a0 mac inlined AttributeForestSize::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19AttributeForestSize asm("??_R1A@?0A@A@AttributeForestSize@@8");
+// win1.41 009aa4b8 mac inlined AttributeForestSize::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19AttributeForestSize asm("??_R2AttributeForestSize@@8");
+// win1.41 009aa4c8 mac inlined AttributeForestSize::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19AttributeForestSize asm("??_R3AttributeForestSize@@8");
+
 // Override methods
 
 // win1.41 004d5f40 mac 1024a510 AttributeForestSize::_dt(void)
@@ -224,6 +345,17 @@ struct AttributeIsHarderThanMe
   struct Attribute super;  /* 0x0 */
 };
 static_assert(sizeof(struct AttributeIsHarderThanMe) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 009dd290 mac inlined AttributeIsHarderThanMe::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23AttributeIsHarderThanMe asm("??_R0?AVAttributeIsHarderThanMe@@@8");
+// win1.41 009a9d70 mac inlined AttributeIsHarderThanMe::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23AttributeIsHarderThanMe asm("??_R1A@?0A@A@AttributeIsHarderThanMe@@8");
+// win1.41 009a9d88 mac inlined AttributeIsHarderThanMe::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23AttributeIsHarderThanMe asm("??_R2AttributeIsHarderThanMe@@8");
+// win1.41 009a9d98 mac inlined AttributeIsHarderThanMe::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23AttributeIsHarderThanMe asm("??_R3AttributeIsHarderThanMe@@8");
 
 // Override methods
 
@@ -236,6 +368,17 @@ struct AttributeLife
 };
 static_assert(sizeof(struct AttributeLife) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009dd3d0 mac inlined AttributeLife::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13AttributeLife asm("??_R0?AVAttributeLife@@@8");
+// win1.41 009aa008 mac inlined AttributeLife::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13AttributeLife asm("??_R1A@?0A@A@AttributeLife@@8");
+// win1.41 009aa020 mac inlined AttributeLife::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13AttributeLife asm("??_R2AttributeLife@@8");
+// win1.41 009aa030 mac inlined AttributeLife::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13AttributeLife asm("??_R3AttributeLife@@8");
+
 // Override methods
 
 // win1.41 004cb980 mac 1024b470 AttributeLife::_dt(void)
@@ -246,6 +389,17 @@ struct AttributeMobileObjectType
   struct Attribute super;  /* 0x0 */
 };
 static_assert(sizeof(struct AttributeMobileObjectType) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bdef70 mac inlined AttributeMobileObjectType::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25AttributeMobileObjectType asm("??_R0?AVAttributeMobileObjectType@@@8");
+// win1.41 009aa6d0 mac inlined AttributeMobileObjectType::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25AttributeMobileObjectType asm("??_R1A@?0A@A@AttributeMobileObjectType@@8");
+// win1.41 009aa6e8 mac inlined AttributeMobileObjectType::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__25AttributeMobileObjectType asm("??_R2AttributeMobileObjectType@@8");
+// win1.41 009aa6f8 mac inlined AttributeMobileObjectType::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__25AttributeMobileObjectType asm("??_R3AttributeMobileObjectType@@8");
 
 // Override methods
 
@@ -258,6 +412,17 @@ struct AttributeOnFire
 };
 static_assert(sizeof(struct AttributeOnFire) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009dd348 mac inlined AttributeOnFire::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15AttributeOnFire asm("??_R0?AVAttributeOnFire@@@8");
+// win1.41 009a9f00 mac inlined AttributeOnFire::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15AttributeOnFire asm("??_R1A@?0A@A@AttributeOnFire@@8");
+// win1.41 009a9f18 mac inlined AttributeOnFire::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15AttributeOnFire asm("??_R2AttributeOnFire@@8");
+// win1.41 009a9f28 mac inlined AttributeOnFire::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15AttributeOnFire asm("??_R3AttributeOnFire@@8");
+
 // Override methods
 
 // win1.41 004cbac0 mac 10249ad0 AttributeOnFire::_dt(void)
@@ -268,6 +433,17 @@ struct AttributeOrigin
   struct Attribute super;  /* 0x0 */
 };
 static_assert(sizeof(struct AttributeOrigin) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 009dd2b8 mac inlined AttributeOrigin::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15AttributeOrigin asm("??_R0?AVAttributeOrigin@@@8");
+// win1.41 009a9dc0 mac inlined AttributeOrigin::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15AttributeOrigin asm("??_R1A@?0A@A@AttributeOrigin@@8");
+// win1.41 009a9dd8 mac inlined AttributeOrigin::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15AttributeOrigin asm("??_R2AttributeOrigin@@8");
+// win1.41 009a9de8 mac inlined AttributeOrigin::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15AttributeOrigin asm("??_R3AttributeOrigin@@8");
 
 // Override methods
 
@@ -280,6 +456,17 @@ struct AttributePlayerNumber
 };
 static_assert(sizeof(struct AttributePlayerNumber) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009dd2d8 mac inlined AttributePlayerNumber::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21AttributePlayerNumber asm("??_R0?AVAttributePlayerNumber@@@8");
+// win1.41 009a9e10 mac inlined AttributePlayerNumber::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21AttributePlayerNumber asm("??_R1A@?0A@A@AttributePlayerNumber@@8");
+// win1.41 009a9e28 mac inlined AttributePlayerNumber::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21AttributePlayerNumber asm("??_R2AttributePlayerNumber@@8");
+// win1.41 009a9e38 mac inlined AttributePlayerNumber::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21AttributePlayerNumber asm("??_R3AttributePlayerNumber@@8");
+
 // Override methods
 
 // win1.41 004cbb20 mac 10249960 AttributePlayerNumber::_dt(void)
@@ -290,6 +477,17 @@ struct AttributeSex
   struct Attribute super;  /* 0x0 */
 };
 static_assert(sizeof(struct AttributeSex) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 009dd328 mac inlined AttributeSex::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12AttributeSex asm("??_R0?AVAttributeSex@@@8");
+// win1.41 009a9eb0 mac inlined AttributeSex::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12AttributeSex asm("??_R1A@?0A@A@AttributeSex@@8");
+// win1.41 009a9ec8 mac inlined AttributeSex::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12AttributeSex asm("??_R2AttributeSex@@8");
+// win1.41 009a9ed8 mac inlined AttributeSex::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12AttributeSex asm("??_R3AttributeSex@@8");
 
 // Override methods
 
@@ -302,6 +500,17 @@ struct AttributeTownReligiousBeliefInYou
 };
 static_assert(sizeof(struct AttributeTownReligiousBeliefInYou) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009dd4c8 mac inlined AttributeTownReligiousBeliefInYou::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__33AttributeTownReligiousBeliefInYou asm("??_R0?AVAttributeTownReligiousBeliefInYou@@@8");
+// win1.41 009aa0e0 mac inlined AttributeTownReligiousBeliefInYou::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__33AttributeTownReligiousBeliefInYou asm("??_R1A@?0A@A@AttributeTownReligiousBeliefInYou@@8");
+// win1.41 009aa0f8 mac inlined AttributeTownReligiousBeliefInYou::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__33AttributeTownReligiousBeliefInYou asm("??_R2AttributeTownReligiousBeliefInYou@@8");
+// win1.41 009aa108 mac inlined AttributeTownReligiousBeliefInYou::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__33AttributeTownReligiousBeliefInYou asm("??_R3AttributeTownReligiousBeliefInYou@@8");
+
 // Override methods
 
 // win1.41 004cd710 mac 1024b0c0 AttributeTownReligiousBeliefInYou::_dt(void)
@@ -312,6 +521,17 @@ struct AttributeTownSize
   struct Attribute super;  /* 0x0 */
 };
 static_assert(sizeof(struct AttributeTownSize) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 009dd518 mac inlined AttributeTownSize::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17AttributeTownSize asm("??_R0?AVAttributeTownSize@@@8");
+// win1.41 009aa180 mac inlined AttributeTownSize::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17AttributeTownSize asm("??_R1A@?0A@A@AttributeTownSize@@8");
+// win1.41 009aa198 mac inlined AttributeTownSize::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17AttributeTownSize asm("??_R2AttributeTownSize@@8");
+// win1.41 009aa1a8 mac inlined AttributeTownSize::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17AttributeTownSize asm("??_R3AttributeTownSize@@8");
 
 // Override methods
 
@@ -324,6 +544,17 @@ struct AttributeTribe
 };
 static_assert(sizeof(struct AttributeTribe) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009dd4f8 mac inlined AttributeTribe::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14AttributeTribe asm("??_R0?AVAttributeTribe@@@8");
+// win1.41 009aa130 mac inlined AttributeTribe::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14AttributeTribe asm("??_R1A@?0A@A@AttributeTribe@@8");
+// win1.41 009aa148 mac inlined AttributeTribe::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14AttributeTribe asm("??_R2AttributeTribe@@8");
+// win1.41 009aa158 mac inlined AttributeTribe::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14AttributeTribe asm("??_R3AttributeTribe@@8");
+
 // Override methods
 
 // win1.41 004cd6a0 mac 1024b2c0 AttributeTribe::_dt(void)
@@ -334,6 +565,17 @@ struct AttributeType
   struct Attribute super;  /* 0x0 */
 };
 static_assert(sizeof(struct AttributeType) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 009dd228 mac inlined AttributeType::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13AttributeType asm("??_R0?AVAttributeType@@@8");
+// win1.41 009a9c80 mac inlined AttributeType::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13AttributeType asm("??_R1A@?0A@A@AttributeType@@8");
+// win1.41 009a9c98 mac inlined AttributeType::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13AttributeType asm("??_R2AttributeType@@8");
+// win1.41 009a9ca8 mac inlined AttributeType::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13AttributeType asm("??_R3AttributeType@@8");
 
 // Override methods
 
@@ -346,6 +588,17 @@ struct AttributeVillagerJob
 };
 static_assert(sizeof(struct AttributeVillagerJob) == 0x8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009dd390 mac inlined AttributeVillagerJob::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20AttributeVillagerJob asm("??_R0?AVAttributeVillagerJob@@@8");
+// win1.41 009a9fa0 mac inlined AttributeVillagerJob::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20AttributeVillagerJob asm("??_R1A@?0A@A@AttributeVillagerJob@@8");
+// win1.41 009a9fb8 mac inlined AttributeVillagerJob::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20AttributeVillagerJob asm("??_R2AttributeVillagerJob@@8");
+// win1.41 009a9fc8 mac inlined AttributeVillagerJob::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20AttributeVillagerJob asm("??_R3AttributeVillagerJob@@8");
+
 // Override methods
 
 // win1.41 004cb9e0 mac 1024a3a0 AttributeVillagerJob::_dt(void)
@@ -356,6 +609,17 @@ struct AttributeWhatTownNeedsMost
   struct Attribute super;  /* 0x0 */
 };
 static_assert(sizeof(struct AttributeWhatTownNeedsMost) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 009dd498 mac inlined AttributeWhatTownNeedsMost::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__26AttributeWhatTownNeedsMost asm("??_R0?AVAttributeWhatTownNeedsMost@@@8");
+// win1.41 009aa090 mac inlined AttributeWhatTownNeedsMost::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__26AttributeWhatTownNeedsMost asm("??_R1A@?0A@A@AttributeWhatTownNeedsMost@@8");
+// win1.41 009aa0a8 mac inlined AttributeWhatTownNeedsMost::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__26AttributeWhatTownNeedsMost asm("??_R2AttributeWhatTownNeedsMost@@8");
+// win1.41 009aa0b8 mac inlined AttributeWhatTownNeedsMost::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__26AttributeWhatTownNeedsMost asm("??_R3AttributeWhatTownNeedsMost@@8");
 
 // Override methods
 

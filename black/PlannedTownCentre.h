@@ -20,9 +20,18 @@ struct PlannedTownCentre
 };
 static_assert(sizeof(struct PlannedTownCentre) == 0x4c, "Data type is of wrong size");
 
-// win1.41 008e46d8 mac 109e3cf0 PlannedTownCentre::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17PlannedTownCentre asm("??_R4PlannedTownCentre@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bece38 mac inlined PlannedTownCentre::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17PlannedTownCentre asm("??_R0?AVPlannedTownCentre@@@8");
+// win1.41 009ae5b8 mac inlined PlannedTownCentre::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17PlannedTownCentre asm("??_R1A@?0A@A@PlannedTownCentre@@8");
+// win1.41 009ae5d0 mac inlined PlannedTownCentre::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17PlannedTownCentre asm("??_R2PlannedTownCentre@@8");
+// win1.41 009ae5f0 mac inlined PlannedTownCentre::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17PlannedTownCentre asm("??_R3PlannedTownCentre@@8");
+// win1.41 008e46d8 mac 109e3cf0 PlannedTownCentre::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17PlannedTownCentre asm("??_R4PlannedTownCentre@@6B@");
 // win1.41 008e46dc mac 109e3cf8 PlannedTownCentre::`vftable'
 extern const struct PlannedMultiMapFixedVftable __vt__17PlannedTownCentre asm("??_7PlannedTownCentre@@6B@");
 

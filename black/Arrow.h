@@ -18,6 +18,17 @@ struct Arrow
 };
 static_assert(sizeof(struct Arrow) == 0x68, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c96b8 mac inlined Arrow::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Arrow asm("??_R0?AVArrow@@@8");
+// win1.41 009a7b78 mac inlined Arrow::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Arrow asm("??_R1A@?0A@A@Arrow@@8");
+// win1.41 009a7b90 mac inlined Arrow::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Arrow asm("??_R2Arrow@@8");
+// win1.41 009a7bb0 mac inlined Arrow::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Arrow asm("??_R3Arrow@@8");
+
 // Override methods
 
 // win1.41 00425c00 mac inlined Arrow::_dt(void)

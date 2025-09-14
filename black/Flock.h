@@ -51,9 +51,18 @@ struct Flock
 };
 static_assert(sizeof(struct Flock) == 0x90, "Data type is of wrong size");
 
-// win1.41 008dd104 mac 10742990 Flock::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Flock asm("??_R4Flock@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be9ee8 mac inlined Flock::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Flock asm("??_R0?AVFlock@@@8");
+// win1.41 009ac4e0 mac inlined Flock::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Flock asm("??_R1A@?0A@A@Flock@@8");
+// win1.41 009ac4f8 mac inlined Flock::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Flock asm("??_R2Flock@@8");
+// win1.41 009ac510 mac inlined Flock::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Flock asm("??_R3Flock@@8");
+// win1.41 008dd104 mac 10742990 Flock::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Flock asm("??_R4Flock@@6B@");
 // win1.41 008dd108 mac 10742998 Flock::`vftable'
 extern const struct GameThingWithPosVftable __vt__5Flock asm("??_7Flock@@6B@");
 

@@ -23,9 +23,18 @@ struct GStreetLight
 };
 static_assert(sizeof(struct GStreetLight) == 0x2c, "Data type is of wrong size");
 
-// win1.41 008eb134 mac 109e1864 GStreetLight::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12GStreetLight asm("??_R4GStreetLight@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becb18 mac inlined GStreetLight::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12GStreetLight asm("??_R0?AVGStreetLight@@@8");
+// win1.41 009ada30 mac inlined GStreetLight::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12GStreetLight asm("??_R1A@?0A@A@GStreetLight@@8");
+// win1.41 009ada48 mac inlined GStreetLight::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12GStreetLight asm("??_R2GStreetLight@@8");
+// win1.41 009ada60 mac inlined GStreetLight::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12GStreetLight asm("??_R3GStreetLight@@8");
+// win1.41 008eb134 mac 109e1864 GStreetLight::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12GStreetLight asm("??_R4GStreetLight@@6B@");
 // win1.41 008eb138 mac 109e186c GStreetLight::`vftable'
 extern const struct GameThingWithPosVftable __vt__12GStreetLight asm("??_7GStreetLight@@6B@");
 

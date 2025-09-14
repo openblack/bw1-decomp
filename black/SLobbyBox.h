@@ -13,9 +13,18 @@ struct GSLobbyBox
 };
 static_assert(sizeof(struct GSLobbyBox) == 0x2b4, "Data type is of wrong size");
 
-// win1.41 008deb78 mac 109edd0c GSLobbyBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GSLobbyBox asm("??_R4GSLobbyBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea518 mac inlined GSLobbyBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GSLobbyBox asm("??_R0?AVGSLobbyBox@@@8");
+// win1.41 009acd80 mac inlined GSLobbyBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GSLobbyBox asm("??_R1A@?0A@A@GSLobbyBox@@8");
+// win1.41 009acd98 mac inlined GSLobbyBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GSLobbyBox asm("??_R2GSLobbyBox@@8");
+// win1.41 009acda8 mac inlined GSLobbyBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GSLobbyBox asm("??_R3GSLobbyBox@@8");
+// win1.41 008deb78 mac 109edd0c GSLobbyBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GSLobbyBox asm("??_R4GSLobbyBox@@6B@");
 // win1.41 008deb7c mac 109edd14 GSLobbyBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__10GSLobbyBox asm("??_7GSLobbyBox@@6B@");
 

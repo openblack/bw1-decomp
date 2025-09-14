@@ -13,9 +13,18 @@ struct RegisterBox
 };
 static_assert(sizeof(struct RegisterBox) == 0x28, "Data type is of wrong size");
 
-// win1.41 008debc8 mac 109ed854 RegisterBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11RegisterBox asm("??_R4RegisterBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea428 mac inlined RegisterBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11RegisterBox asm("??_R0?AVRegisterBox@@@8");
+// win1.41 009acb50 mac inlined RegisterBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11RegisterBox asm("??_R1A@?0A@A@RegisterBox@@8");
+// win1.41 009acb68 mac inlined RegisterBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11RegisterBox asm("??_R2RegisterBox@@8");
+// win1.41 009acb78 mac inlined RegisterBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11RegisterBox asm("??_R3RegisterBox@@8");
+// win1.41 008debc8 mac 109ed854 RegisterBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11RegisterBox asm("??_R4RegisterBox@@6B@");
 // win1.41 008debcc mac 109ed85c RegisterBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__11RegisterBox asm("??_7RegisterBox@@6B@");
 

@@ -39,9 +39,18 @@ struct EditorIconBase
 };
 static_assert(sizeof(struct EditorIconBase) == 0x4, "Data type is of wrong size");
 
-// win1.41 008d895c mac 10999254 EditorIconBase::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14EditorIconBase asm("??_R4EditorIconBase@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8360 mac inlined EditorIconBase::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14EditorIconBase asm("??_R0?AVEditorIconBase@@@8");
+// win1.41 009a6a18 mac inlined EditorIconBase::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14EditorIconBase asm("??_R1A@?0A@A@EditorIconBase@@8");
+// win1.41 009abd2c mac inlined EditorIconBase::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14EditorIconBase asm("??_R2EditorIconBase@@8");
+// win1.41 009abd38 mac inlined EditorIconBase::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14EditorIconBase asm("??_R3EditorIconBase@@8");
+// win1.41 008d895c mac 10999254 EditorIconBase::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14EditorIconBase asm("??_R4EditorIconBase@@6B@");
 // win1.41 008d8960 mac 1099925c EditorIconBase::`vftable'
 extern const struct EditorIconBaseVftable __vt__14EditorIconBase asm("??_7EditorIconBase@@6B@");
 

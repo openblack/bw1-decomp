@@ -105,9 +105,18 @@ struct Villager
 };
 static_assert(sizeof(struct Villager) == 0x130, "Data type is of wrong size");
 
-// win1.41 008f795c mac 10732cdc Villager::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Villager asm("??_R4Villager@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cafc8 mac inlined Villager::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Villager asm("??_R0?AVVillager@@@8");
+// win1.41 009ad8b8 mac inlined Villager::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Villager asm("??_R1A@?0A@A@Villager@@8");
+// win1.41 009ad530 mac inlined Villager::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Villager asm("??_R2Villager@@8");
+// win1.41 009ad558 mac inlined Villager::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Villager asm("??_R3Villager@@8");
+// win1.41 008f795c mac 10732cdc Villager::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Villager asm("??_R4Villager@@6B@");
 // win1.41 008f7960 mac 106f5ae4 Villager::`vftable'
 extern const struct VillagerVftable __vt__8Villager asm("??_7Villager@@6B@");
 
@@ -661,6 +670,17 @@ struct MissionaryControl
   struct GameThingWithPos super;  /* 0x0 */
 };
 static_assert(sizeof(struct MissionaryControl) == 0x28, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c23698 mac inlined MissionaryControl::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17MissionaryControl asm("??_R0?AVMissionaryControl@@@8");
+// win1.41 009b9d80 mac inlined MissionaryControl::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17MissionaryControl asm("??_R1A@?0A@A@MissionaryControl@@8");
+// win1.41 009b9d98 mac inlined MissionaryControl::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17MissionaryControl asm("??_R2MissionaryControl@@8");
+// win1.41 009b9db0 mac inlined MissionaryControl::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17MissionaryControl asm("??_R3MissionaryControl@@8");
 
 // Override methods
 

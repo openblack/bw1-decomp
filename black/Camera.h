@@ -40,9 +40,18 @@ struct GCamera
 };
 static_assert(sizeof(struct GCamera) == 0x1d8, "Data type is of wrong size");
 
-// win1.41 008c710c mac 107770e8 GCamera::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GCamera asm("??_R4GCamera@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cd9c0 mac inlined GCamera::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7GCamera asm("??_R0?AVGCamera@@@8");
+// win1.41 009a87e8 mac inlined GCamera::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7GCamera asm("??_R1A@?0A@A@GCamera@@8");
+// win1.41 009a8800 mac inlined GCamera::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7GCamera asm("??_R2GCamera@@8");
+// win1.41 009a8818 mac inlined GCamera::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7GCamera asm("??_R3GCamera@@8");
+// win1.41 008c710c mac 107770e8 GCamera::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GCamera asm("??_R4GCamera@@6B@");
 // win1.41 008c7110 mac 107770f0 GCamera::`vftable'
 extern const struct GameThingWithPosVftable __vt__7GCamera asm("??_7GCamera@@6B@");
 

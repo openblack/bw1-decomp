@@ -15,9 +15,10 @@ struct Waypoint
 };
 static_assert(sizeof(struct Waypoint) == 0x2c, "Data type is of wrong size");
 
-// win1.41 0099b4a8 mac 1075f65c Waypoint::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Waypoint asm("??_R4Waypoint@@6B@");
+// Object Oriented datastructures
 
+// win1.41 0099b4a8 mac 1075f65c Waypoint::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Waypoint asm("??_R4Waypoint@@6B@");
 // win1.41 0099b4ac mac 1075f664 Waypoint::`vftable'
 extern const struct GameThingWithPosVftable __vt__8Waypoint asm("??_7Waypoint@@6B@");
 

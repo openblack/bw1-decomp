@@ -21,6 +21,17 @@ struct SpellTeleport
 };
 static_assert(sizeof(struct SpellTeleport) == 0xf4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00becc10 mac inlined SpellTeleport::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13SpellTeleport asm("??_R0?AVSpellTeleport@@@8");
+// win1.41 009add18 mac inlined SpellTeleport::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13SpellTeleport asm("??_R1A@?0A@A@SpellTeleport@@8");
+// win1.41 009add30 mac inlined SpellTeleport::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13SpellTeleport asm("??_R2SpellTeleport@@8");
+// win1.41 009add50 mac inlined SpellTeleport::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13SpellTeleport asm("??_R3SpellTeleport@@8");
+
 // Override methods
 
 // win1.41 0055d870 mac 103b19e0 SpellTeleport::_dt(void)

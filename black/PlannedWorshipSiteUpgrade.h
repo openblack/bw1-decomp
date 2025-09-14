@@ -18,6 +18,17 @@ struct PlannedWorshipSiteUpgrade
 };
 static_assert(sizeof(struct PlannedWorshipSiteUpgrade) == 0x48, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c24de0 mac inlined PlannedWorshipSiteUpgrade::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25PlannedWorshipSiteUpgrade asm("??_R0?AVPlannedWorshipSiteUpgrade@@@8");
+// win1.41 009ba448 mac inlined PlannedWorshipSiteUpgrade::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25PlannedWorshipSiteUpgrade asm("??_R1A@?0A@A@PlannedWorshipSiteUpgrade@@8");
+// win1.41 009ba460 mac inlined PlannedWorshipSiteUpgrade::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__25PlannedWorshipSiteUpgrade asm("??_R2PlannedWorshipSiteUpgrade@@8");
+// win1.41 009ba480 mac inlined PlannedWorshipSiteUpgrade::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__25PlannedWorshipSiteUpgrade asm("??_R3PlannedWorshipSiteUpgrade@@8");
+
 // Override methods
 
 // win1.41 0077ee70 mac inlined PlannedWorshipSiteUpgrade::_dt(void)

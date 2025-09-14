@@ -13,9 +13,18 @@ struct ChannelBox
 };
 static_assert(sizeof(struct ChannelBox) == 0xad4, "Data type is of wrong size");
 
-// win1.41 008dea38 mac 109a1fb0 ChannelBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10ChannelBox asm("??_R4ChannelBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea3c8 mac inlined ChannelBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10ChannelBox asm("??_R0?AVChannelBox@@@8");
+// win1.41 009aca60 mac inlined ChannelBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10ChannelBox asm("??_R1A@?0A@A@ChannelBox@@8");
+// win1.41 009aca78 mac inlined ChannelBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10ChannelBox asm("??_R2ChannelBox@@8");
+// win1.41 009aca88 mac inlined ChannelBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10ChannelBox asm("??_R3ChannelBox@@8");
+// win1.41 008dea38 mac 109a1fb0 ChannelBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10ChannelBox asm("??_R4ChannelBox@@6B@");
 // win1.41 008dea3c mac 109a1fb8 ChannelBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__10ChannelBox asm("??_7ChannelBox@@6B@");
 

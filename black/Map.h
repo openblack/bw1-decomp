@@ -91,6 +91,17 @@ struct GMap
 };
 static_assert(sizeof(struct GMap) == 0x200050, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf4140 mac inlined GMap::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4GMap asm("??_R0?AVGMap@@@8");
+// win1.41 009b1ef0 mac inlined GMap::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4GMap asm("??_R1A@?0A@A@GMap@@8");
+// win1.41 009b1f08 mac inlined GMap::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4GMap asm("??_R2GMap@@8");
+// win1.41 009b1f18 mac inlined GMap::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4GMap asm("??_R3GMap@@8");
+
 // Non-virtual methods
 
 // win1.41 00612660 mac 100fddf0 GMap::ToMap(long, long)

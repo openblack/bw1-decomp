@@ -36,9 +36,18 @@ struct MobileStatic
 };
 static_assert(sizeof(struct MobileStatic) == 0x88, "Data type is of wrong size");
 
-// win1.41 008e80b0 mac 107387a4 MobileStatic::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12MobileStatic asm("??_R4MobileStatic@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cd308 mac inlined MobileStatic::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12MobileStatic asm("??_R0?AVMobileStatic@@@8");
+// win1.41 009a84f8 mac inlined MobileStatic::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12MobileStatic asm("??_R1A@?0A@A@MobileStatic@@8");
+// win1.41 009adf40 mac inlined MobileStatic::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12MobileStatic asm("??_R2MobileStatic@@8");
+// win1.41 009adf60 mac inlined MobileStatic::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12MobileStatic asm("??_R3MobileStatic@@8");
+// win1.41 008e80b0 mac 107387a4 MobileStatic::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12MobileStatic asm("??_R4MobileStatic@@6B@");
 // win1.41 008e80b4 mac 107387dc MobileStatic::`vftable'
 extern const struct MultiMapFixedVftable __vt__12MobileStatic asm("??_7MobileStatic@@6B@");
 
@@ -173,6 +182,17 @@ struct GBaseOnly
   struct Object super;  /* 0x0 */
 };
 static_assert(sizeof(struct GBaseOnly) == 0x54, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bed280 mac inlined GBaseOnly::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GBaseOnly asm("??_R0?AVGBaseOnly@@@8");
+// win1.41 009aea40 mac inlined GBaseOnly::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GBaseOnly asm("??_R1A@?0A@A@GBaseOnly@@8");
+// win1.41 009aea58 mac inlined GBaseOnly::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GBaseOnly asm("??_R2GBaseOnly@@8");
+// win1.41 009aea70 mac inlined GBaseOnly::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GBaseOnly asm("??_R3GBaseOnly@@8");
 
 // Override methods
 

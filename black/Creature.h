@@ -220,9 +220,18 @@ struct Creature
 };
 static_assert(sizeof(struct Creature) == 0x12c8, "Data type is of wrong size");
 
-// win1.41 008cc80c mac 1077dda8 Creature::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Creature asm("??_R4Creature@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8060 mac inlined Creature::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Creature asm("??_R0?AVCreature@@@8");
+// win1.41 009a94f0 mac inlined Creature::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Creature asm("??_R1A@?0A@A@Creature@@8");
+// win1.41 009a9508 mac inlined Creature::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Creature asm("??_R2Creature@@8");
+// win1.41 009a9530 mac inlined Creature::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Creature asm("??_R3Creature@@8");
+// win1.41 008cc80c mac 1077dda8 Creature::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Creature asm("??_R4Creature@@6B@");
 // win1.41 008cc810 mac 1077e3fc Creature::`vftable'
 extern const struct LivingVftable __vt__8Creature asm("??_7Creature@@6B@");
 
@@ -589,6 +598,17 @@ struct Creed
   struct MobileObject super;  /* 0x0 */
 };
 static_assert(sizeof(struct Creed) == 0x68, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00be6838 mac inlined Creed::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Creed asm("??_R0?AVCreed@@@8");
+// win1.41 009ab4e8 mac inlined Creed::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Creed asm("??_R1A@?0A@A@Creed@@8");
+// win1.41 009ab500 mac inlined Creed::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Creed asm("??_R2Creed@@8");
+// win1.41 009ab520 mac inlined Creed::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Creed asm("??_R3Creed@@8");
 
 // Override methods
 

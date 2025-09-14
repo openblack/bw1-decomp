@@ -15,9 +15,18 @@ struct GTerrainMap
 };
 static_assert(sizeof(struct GTerrainMap) == 0x4a130, "Data type is of wrong size");
 
-// win1.41 008df81c mac 10730ba8 GTerrainMap::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GTerrainMap asm("??_R4GTerrainMap@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bec458 mac inlined GTerrainMap::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GTerrainMap asm("??_R0?AVGTerrainMap@@@8");
+// win1.41 009ad290 mac inlined GTerrainMap::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GTerrainMap asm("??_R1A@?0A@A@GTerrainMap@@8");
+// win1.41 009ad2a8 mac inlined GTerrainMap::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11GTerrainMap asm("??_R2GTerrainMap@@8");
+// win1.41 009ad2b8 mac inlined GTerrainMap::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11GTerrainMap asm("??_R3GTerrainMap@@8");
+// win1.41 008df81c mac 10730ba8 GTerrainMap::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GTerrainMap asm("??_R4GTerrainMap@@6B@");
 // win1.41 008df820 mac 10730bb0 GTerrainMap::`vftable'
 extern const struct BaseVftable __vt__11GTerrainMap asm("??_7GTerrainMap@@6B@");
 

@@ -37,9 +37,18 @@ struct Mobile
 };
 static_assert(sizeof(struct Mobile) == 0x58, "Data type is of wrong size");
 
-// win1.41 008ce74c mac 10732c28 Mobile::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Mobile asm("??_R4Mobile@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8db0 mac inlined Mobile::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Mobile asm("??_R0?AVMobile@@@8");
+// win1.41 009a6be8 mac inlined Mobile::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Mobile asm("??_R1A@?0A@A@Mobile@@8");
+// win1.41 009a9688 mac inlined Mobile::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Mobile asm("??_R2Mobile@@8");
+// win1.41 009a96a0 mac inlined Mobile::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Mobile asm("??_R3Mobile@@8");
+// win1.41 008ce74c mac 10732c28 Mobile::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Mobile asm("??_R4Mobile@@6B@");
 // win1.41 008ce750 mac 10732c50 Mobile::`vftable'
 extern const struct MobileVftable __vt__6Mobile asm("??_7Mobile@@6B@");
 

@@ -18,6 +18,17 @@ struct VortexObjectInfo
 };
 static_assert(sizeof(struct VortexObjectInfo) == 0x14, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bed2a8 mac inlined VortexObjectInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16VortexObjectInfo asm("??_R0?AVVortexObjectInfo@@@8");
+// win1.41 009aea98 mac inlined VortexObjectInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16VortexObjectInfo asm("??_R1A@?0A@A@VortexObjectInfo@@8");
+// win1.41 009aeab0 mac inlined VortexObjectInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16VortexObjectInfo asm("??_R2VortexObjectInfo@@8");
+// win1.41 009aeac8 mac inlined VortexObjectInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16VortexObjectInfo asm("??_R3VortexObjectInfo@@8");
+
 // Override methods
 
 // win1.41 0055d830 mac 103b2be0 VortexObjectInfo::_dt(void)

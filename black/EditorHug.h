@@ -17,6 +17,17 @@ struct EditorHug
 };
 static_assert(sizeof(struct EditorHug) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00be9138 mac inlined EditorHug::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9EditorHug asm("??_R0?AVEditorHug@@@8");
+// win1.41 009abb68 mac inlined EditorHug::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9EditorHug asm("??_R1A@?0A@A@EditorHug@@8");
+// win1.41 009abb80 mac inlined EditorHug::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9EditorHug asm("??_R2EditorHug@@8");
+// win1.41 009abb90 mac inlined EditorHug::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9EditorHug asm("??_R3EditorHug@@8");
+
 // Override methods
 
 // win1.41 0051f180 mac inlined EditorHug::ProcessTurn(void)

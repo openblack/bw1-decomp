@@ -18,6 +18,17 @@ struct Goat
 };
 static_assert(sizeof(struct Goat) == 0x148, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c9008 mac inlined Goat::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Goat asm("??_R0?AVGoat@@@8");
+// win1.41 009a6e48 mac inlined Goat::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Goat asm("??_R1A@?0A@A@Goat@@8");
+// win1.41 009a6e60 mac inlined Goat::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Goat asm("??_R2Goat@@8");
+// win1.41 009a6e90 mac inlined Goat::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Goat asm("??_R3Goat@@8");
+
 // Override methods
 
 // win1.41 0041d6e0 mac 101710a0 Goat::_dt(void)

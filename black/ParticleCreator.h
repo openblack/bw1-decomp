@@ -15,6 +15,17 @@ struct ParticleCreator
 };
 static_assert(sizeof(struct ParticleCreator) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c02180 mac inlined ParticleCreator::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15ParticleCreator asm("??_R0?AVParticleCreator@@@8");
+// win1.41 009b4d68 mac inlined ParticleCreator::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15ParticleCreator asm("??_R1A@?0A@A@ParticleCreator@@8");
+// win1.41 009b4ed0 mac inlined ParticleCreator::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15ParticleCreator asm("??_R2ParticleCreator@@8");
+// win1.41 009b4ee0 mac inlined ParticleCreator::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15ParticleCreator asm("??_R3ParticleCreator@@8");
+
 // Override methods
 
 // win1.41 006a9400 mac 103dfee0 ParticleCreator::_dt(void)

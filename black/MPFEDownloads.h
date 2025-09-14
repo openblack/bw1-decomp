@@ -25,6 +25,16 @@ struct MPFEDownloads
 };
 static_assert(sizeof(struct MPFEDownloads) == 0x280, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf4668 mac inlined MPFEDownloads::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13MPFEDownloads asm("??_R0?AVMPFEDownloads@@@8");
+// win1.41 009b2080 mac inlined MPFEDownloads::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13MPFEDownloads asm("??_R1A@?0A@A@MPFEDownloads@@8");
+// win1.41 009b27bc mac inlined MPFEDownloads::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13MPFEDownloads asm("??_R2MPFEDownloads@@8");
+// win1.41 009b27c8 mac inlined MPFEDownloads::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13MPFEDownloads asm("??_R3MPFEDownloads@@8");
 // win1.41 00930878 mac 106f4b80 MPFEDownloads::`vftable'
 extern const struct MPFEDownloadsVftable __vt__13MPFEDownloads asm("??_7MPFEDownloads@@6B@");
 

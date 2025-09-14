@@ -13,9 +13,18 @@ struct PictureRoomBase
 };
 static_assert(sizeof(struct PictureRoomBase) == 0x160, "Data type is of wrong size");
 
-// win1.41 0099ed74 mac 10746f04 PictureRoomBase::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15PictureRoomBase asm("??_R4PictureRoomBase@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c24e78 mac inlined PictureRoomBase::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15PictureRoomBase asm("??_R0?AVPictureRoomBase@@@8");
+// win1.41 009ba590 mac inlined PictureRoomBase::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15PictureRoomBase asm("??_R1A@?0A@A@PictureRoomBase@@8");
+// win1.41 009baac0 mac inlined PictureRoomBase::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15PictureRoomBase asm("??_R2PictureRoomBase@@8");
+// win1.41 009baad0 mac inlined PictureRoomBase::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15PictureRoomBase asm("??_R3PictureRoomBase@@8");
+// win1.41 0099ed74 mac 10746f04 PictureRoomBase::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15PictureRoomBase asm("??_R4PictureRoomBase@@6B@");
 // win1.41 0099ed78 mac 10746f0c PictureRoomBase::`vftable'
 extern const struct TempleRoomVftable __vt__15PictureRoomBase asm("??_7PictureRoomBase@@6B@");
 

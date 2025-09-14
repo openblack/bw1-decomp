@@ -26,9 +26,14 @@ struct LHOSFile
 };
 static_assert(sizeof(struct LHOSFile) == 0x8, "Data type is of wrong size");
 
-// win1.41 0099f868 mac 1099a66c LHOSFile::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8LHOSFile asm("??_R4LHOSFile@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cba58 mac inlined LHOSFile::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8LHOSFile asm("??_R0?AVLHOSFile@@@8");
+// win1.41 009a7f38 mac inlined LHOSFile::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8LHOSFile asm("??_R1A@?0A@A@LHOSFile@@8");
+// win1.41 0099f868 mac 1099a66c LHOSFile::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8LHOSFile asm("??_R4LHOSFile@@6B@");
 // win1.41 0099f86c mac 1099a674 LHOSFile::`vftable'
 extern const struct LHOSFileVftable __vt__8LHOSFile asm("??_7LHOSFile@@6B@");
 

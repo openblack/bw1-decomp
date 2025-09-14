@@ -26,6 +26,12 @@ struct Property
 };
 static_assert(sizeof(struct Property) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bef9e8 mac inlined Property::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Property asm("??_R0?AVProperty@@@8");
+// win1.41 009b0a60 mac inlined Property::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Property asm("??_R1A@?0A@A@Property@@8");
 // win1.41 inlined mac 1099a22c Property::`vftable'
 extern const struct PropertyVftable __vt__8Property asm("??_7Property@@6B@");
 
@@ -34,6 +40,17 @@ struct BoolProperty
   struct Property super;  /* 0x0 */
 };
 static_assert(sizeof(struct BoolProperty) == 0x4, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00befb40 mac inlined BoolProperty::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12BoolProperty asm("??_R0?AVBoolProperty@@@8");
+// win1.41 009b0c38 mac inlined BoolProperty::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12BoolProperty asm("??_R1A@?0A@A@BoolProperty@@8");
+// win1.41 009b0c50 mac inlined BoolProperty::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12BoolProperty asm("??_R2BoolProperty@@8");
+// win1.41 009b0c60 mac inlined BoolProperty::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12BoolProperty asm("??_R3BoolProperty@@8");
 
 // Override methods
 
@@ -48,6 +65,17 @@ struct SoundActionProperty
 };
 static_assert(sizeof(struct SoundActionProperty) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00befac0 mac inlined SoundActionProperty::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19SoundActionProperty asm("??_R0?AVSoundActionProperty@@@8");
+// win1.41 009b0b48 mac inlined SoundActionProperty::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19SoundActionProperty asm("??_R1A@?0A@A@SoundActionProperty@@8");
+// win1.41 009b0b60 mac inlined SoundActionProperty::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19SoundActionProperty asm("??_R2SoundActionProperty@@8");
+// win1.41 009b0b70 mac inlined SoundActionProperty::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19SoundActionProperty asm("??_R3SoundActionProperty@@8");
+
 // Override methods
 
 // win1.41 00585740 mac 102dcd30 SoundActionProperty::GetAsString(void)
@@ -61,6 +89,17 @@ struct StringProperty
 };
 static_assert(sizeof(struct StringProperty) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00befaf8 mac inlined StringProperty::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14StringProperty asm("??_R0?AVStringProperty@@@8");
+// win1.41 009b0b98 mac inlined StringProperty::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14StringProperty asm("??_R1A@?0A@A@StringProperty@@8");
+// win1.41 009b0bb0 mac inlined StringProperty::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14StringProperty asm("??_R2StringProperty@@8");
+// win1.41 009b0bc0 mac inlined StringProperty::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14StringProperty asm("??_R3StringProperty@@8");
+
 // Override methods
 
 // win1.41 005850d0 mac 102dd630 StringProperty::GetAsString(void)
@@ -73,6 +112,17 @@ struct TPointerProperty
   struct Property super;  /* 0x0 */
 };
 static_assert(sizeof(struct TPointerProperty) == 0x4, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c04b70 mac inlined TPointerProperty::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16TPointerProperty asm("??_R0?AVTPointerProperty@@@8");
+// win1.41 009b5268 mac inlined TPointerProperty::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16TPointerProperty asm("??_R1A@?0A@A@TPointerProperty@@8");
+// win1.41 009b56e0 mac inlined TPointerProperty::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16TPointerProperty asm("??_R2TPointerProperty@@8");
+// win1.41 009b56f0 mac inlined TPointerProperty::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16TPointerProperty asm("??_R3TPointerProperty@@8");
 
 // Override methods
 

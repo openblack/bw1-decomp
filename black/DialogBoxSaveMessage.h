@@ -17,9 +17,18 @@ struct DialogBoxSaveMessage
 };
 static_assert(sizeof(struct DialogBoxSaveMessage) == 0x24, "Data type is of wrong size");
 
-// win1.41 008d8694 mac 10999130 DialogBoxSaveMessage::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20DialogBoxSaveMessage asm("??_R4DialogBoxSaveMessage@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be8df0 mac inlined DialogBoxSaveMessage::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20DialogBoxSaveMessage asm("??_R0?AVDialogBoxSaveMessage@@@8");
+// win1.41 009aba98 mac inlined DialogBoxSaveMessage::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20DialogBoxSaveMessage asm("??_R1A@?0A@A@DialogBoxSaveMessage@@8");
+// win1.41 009abab0 mac inlined DialogBoxSaveMessage::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20DialogBoxSaveMessage asm("??_R2DialogBoxSaveMessage@@8");
+// win1.41 009abac0 mac inlined DialogBoxSaveMessage::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20DialogBoxSaveMessage asm("??_R3DialogBoxSaveMessage@@8");
+// win1.41 008d8694 mac 10999130 DialogBoxSaveMessage::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20DialogBoxSaveMessage asm("??_R4DialogBoxSaveMessage@@6B@");
 // win1.41 008d8698 mac 10999138 DialogBoxSaveMessage::`vftable'
 extern const struct DialogBoxBaseVftable __vt__20DialogBoxSaveMessage asm("??_7DialogBoxSaveMessage@@6B@");
 

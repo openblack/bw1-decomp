@@ -13,9 +13,18 @@ struct GestureSystem
 };
 static_assert(sizeof(struct GestureSystem) == 0xca0, "Data type is of wrong size");
 
-// win1.41 008df7fc mac 107330f8 GestureSystem::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13GestureSystem asm("??_R4GestureSystem@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bec438 mac inlined GestureSystem::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13GestureSystem asm("??_R0?AVGestureSystem@@@8");
+// win1.41 009ad240 mac inlined GestureSystem::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13GestureSystem asm("??_R1A@?0A@A@GestureSystem@@8");
+// win1.41 009ad258 mac inlined GestureSystem::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13GestureSystem asm("??_R2GestureSystem@@8");
+// win1.41 009ad268 mac inlined GestureSystem::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13GestureSystem asm("??_R3GestureSystem@@8");
+// win1.41 008df7fc mac 107330f8 GestureSystem::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13GestureSystem asm("??_R4GestureSystem@@6B@");
 // win1.41 008df800 mac 10733100 GestureSystem::`vftable'
 extern const struct BaseVftable __vt__13GestureSystem asm("??_7GestureSystem@@6B@");
 

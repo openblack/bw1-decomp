@@ -12,9 +12,18 @@ struct ChallengeRoom
 };
 static_assert(sizeof(struct ChallengeRoom) == 0x160, "Data type is of wrong size");
 
-// win1.41 0099ead4 mac 10777d4c ChallengeRoom::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13ChallengeRoom asm("??_R4ChallengeRoom@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c24e98 mac inlined ChallengeRoom::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13ChallengeRoom asm("??_R0?AVChallengeRoom@@@8");
+// win1.41 009ba5a8 mac inlined ChallengeRoom::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13ChallengeRoom asm("??_R1A@?0A@A@ChallengeRoom@@8");
+// win1.41 009ba5c0 mac inlined ChallengeRoom::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13ChallengeRoom asm("??_R2ChallengeRoom@@8");
+// win1.41 009ba5d0 mac inlined ChallengeRoom::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13ChallengeRoom asm("??_R3ChallengeRoom@@8");
+// win1.41 0099ead4 mac 10777d4c ChallengeRoom::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13ChallengeRoom asm("??_R4ChallengeRoom@@6B@");
 // win1.41 0099ead8 mac 10777d54 ChallengeRoom::`vftable'
 extern const struct TempleRoomVftable __vt__13ChallengeRoom asm("??_7ChallengeRoom@@6B@");
 

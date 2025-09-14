@@ -34,9 +34,18 @@ struct ValueSpinner
 };
 static_assert(sizeof(struct ValueSpinner) == 0xa0, "Data type is of wrong size");
 
-// win1.41 008c5898 mac 10737b54 ValueSpinner::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12ValueSpinner asm("??_R4ValueSpinner@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cd260 mac inlined ValueSpinner::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12ValueSpinner asm("??_R0?AUValueSpinner@@@8");
+// win1.41 009a83f0 mac inlined ValueSpinner::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12ValueSpinner asm("??_R1A@?0A@A@ValueSpinner@@8");
+// win1.41 009a8408 mac inlined ValueSpinner::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12ValueSpinner asm("??_R2ValueSpinner@@8");
+// win1.41 009a8418 mac inlined ValueSpinner::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12ValueSpinner asm("??_R3ValueSpinner@@8");
+// win1.41 008c5898 mac 10737b54 ValueSpinner::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12ValueSpinner asm("??_R4ValueSpinner@@6B@");
 // win1.41 008c589c mac 10737b5c ValueSpinner::`vftable'
 extern const struct ValueSpinnerVftable __vt__12ValueSpinner asm("??_7ValueSpinner@@6B@");
 

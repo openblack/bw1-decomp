@@ -14,9 +14,18 @@ struct TattooEditor
 };
 static_assert(sizeof(struct TattooEditor) == 0x3228, "Data type is of wrong size");
 
-// win1.41 008debf0 mac 109ed754 TattooEditor::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12TattooEditor asm("??_R4TattooEditor@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea490 mac inlined TattooEditor::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12TattooEditor asm("??_R0?AVTattooEditor@@@8");
+// win1.41 009acc40 mac inlined TattooEditor::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12TattooEditor asm("??_R1A@?0A@A@TattooEditor@@8");
+// win1.41 009acc58 mac inlined TattooEditor::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12TattooEditor asm("??_R2TattooEditor@@8");
+// win1.41 009acc68 mac inlined TattooEditor::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12TattooEditor asm("??_R3TattooEditor@@8");
+// win1.41 008debf0 mac 109ed754 TattooEditor::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12TattooEditor asm("??_R4TattooEditor@@6B@");
 // win1.41 008debf4 mac 109ed75c TattooEditor::`vftable'
 extern const struct DialogBoxBaseVftable __vt__12TattooEditor asm("??_7TattooEditor@@6B@");
 

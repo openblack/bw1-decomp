@@ -110,6 +110,17 @@ struct GlobalGameLists
 };
 static_assert(sizeof(struct GlobalGameLists) == 0x190, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bec390 mac inlined GlobalGameLists::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GlobalGameLists asm("??_R0?AVGlobalGameLists@@@8");
+// win1.41 009ad0b0 mac inlined GlobalGameLists::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GlobalGameLists asm("??_R1A@?0A@A@GlobalGameLists@@8");
+// win1.41 009ad0c8 mac inlined GlobalGameLists::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15GlobalGameLists asm("??_R2GlobalGameLists@@8");
+// win1.41 009ad0d8 mac inlined GlobalGameLists::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15GlobalGameLists asm("??_R3GlobalGameLists@@8");
+
 // Non-virtual methods
 
 // win1.41 00591370 mac 10059120 GlobalGameLists::Process(void)

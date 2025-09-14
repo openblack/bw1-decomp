@@ -11,6 +11,17 @@ struct PlayerMessage
 };
 static_assert(sizeof(struct PlayerMessage) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c01ec8 mac inlined PlayerMessage::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13PlayerMessage asm("??_R0?AVPlayerMessage@@@8");
+// win1.41 009b32a8 mac inlined PlayerMessage::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13PlayerMessage asm("??_R1A@?0A@A@PlayerMessage@@8");
+// win1.41 009b32c0 mac inlined PlayerMessage::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13PlayerMessage asm("??_R2PlayerMessage@@8");
+// win1.41 009b32d0 mac inlined PlayerMessage::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13PlayerMessage asm("??_R3PlayerMessage@@8");
+
 // Override methods
 
 // win1.41 0066b5e0 mac inlined PlayerMessage::ProcessTurn(void)

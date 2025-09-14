@@ -26,6 +26,17 @@ struct HanoiBlock
 };
 static_assert(sizeof(struct HanoiBlock) == 0x68, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00becda8 mac inlined HanoiBlock::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10HanoiBlock asm("??_R0?AVHanoiBlock@@@8");
+// win1.41 009ae230 mac inlined HanoiBlock::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10HanoiBlock asm("??_R1A@?0A@A@HanoiBlock@@8");
+// win1.41 009ae248 mac inlined HanoiBlock::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10HanoiBlock asm("??_R2HanoiBlock@@8");
+// win1.41 009ae268 mac inlined HanoiBlock::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10HanoiBlock asm("??_R3HanoiBlock@@8");
+
 // Override methods
 
 // win1.41 00561850 mac 1011ebc0 HanoiBlock::_dt(void)

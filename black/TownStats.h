@@ -61,9 +61,18 @@ struct TownStats
 };
 static_assert(sizeof(struct TownStats) == 0x118, "Data type is of wrong size");
 
-// win1.41 0099a008 mac 109e3664 TownStats::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9TownStats asm("??_R4TownStats@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c22ba0 mac inlined TownStats::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9TownStats asm("??_R0?AVTownStats@@@8");
+// win1.41 009b9a40 mac inlined TownStats::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9TownStats asm("??_R1A@?0A@A@TownStats@@8");
+// win1.41 009b9a58 mac inlined TownStats::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9TownStats asm("??_R2TownStats@@8");
+// win1.41 009b9a68 mac inlined TownStats::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9TownStats asm("??_R3TownStats@@8");
+// win1.41 0099a008 mac 109e3664 TownStats::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9TownStats asm("??_R4TownStats@@6B@");
 // win1.41 0099a00c mac 109e366c TownStats::`vftable'
 extern const struct BaseVftable __vt__9TownStats asm("??_7TownStats@@6B@");
 

@@ -18,6 +18,17 @@ struct Leopard
 };
 static_assert(sizeof(struct Leopard) == 0x148, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c9318 mac inlined Leopard::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7Leopard asm("??_R0?AVLeopard@@@8");
+// win1.41 009a75c8 mac inlined Leopard::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7Leopard asm("??_R1A@?0A@A@Leopard@@8");
+// win1.41 009a75e0 mac inlined Leopard::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7Leopard asm("??_R2Leopard@@8");
+// win1.41 009a7610 mac inlined Leopard::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7Leopard asm("??_R3Leopard@@8");
+
 // Override methods
 
 // win1.41 0041fca0 mac 10171210 Leopard::_dt(void)

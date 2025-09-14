@@ -33,9 +33,18 @@ struct GameOSFile
 };
 static_assert(sizeof(struct GameOSFile) == 0x230, "Data type is of wrong size");
 
-// win1.41 008df95c mac 1099a69c GameOSFile::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GameOSFile asm("??_R4GameOSFile@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bec9b8 mac inlined GameOSFile::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GameOSFile asm("??_R0?AVGameOSFile@@@8");
+// win1.41 009ad420 mac inlined GameOSFile::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GameOSFile asm("??_R1A@?0A@A@GameOSFile@@8");
+// win1.41 009ad438 mac inlined GameOSFile::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GameOSFile asm("??_R2GameOSFile@@8");
+// win1.41 009ad448 mac inlined GameOSFile::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GameOSFile asm("??_R3GameOSFile@@8");
+// win1.41 008df95c mac 1099a69c GameOSFile::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GameOSFile asm("??_R4GameOSFile@@6B@");
 // win1.41 008df960 mac 1099a6a4 GameOSFile::`vftable'
 extern const struct LHOSFileVftable __vt__10GameOSFile asm("??_7GameOSFile@@6B@");
 

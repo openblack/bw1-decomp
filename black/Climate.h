@@ -20,9 +20,18 @@ struct GClimate
 };
 static_assert(sizeof(struct GClimate) == 0x88, "Data type is of wrong size");
 
-// win1.41 008f9f98 mac 109ea018 GClimate::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8GClimate asm("??_R4GClimate@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bed368 mac inlined GClimate::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8GClimate asm("??_R0?AVGClimate@@@8");
+// win1.41 009aeaf0 mac inlined GClimate::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8GClimate asm("??_R1A@?0A@A@GClimate@@8");
+// win1.41 009aeb08 mac inlined GClimate::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8GClimate asm("??_R2GClimate@@8");
+// win1.41 009aeb18 mac inlined GClimate::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8GClimate asm("??_R3GClimate@@8");
+// win1.41 008f9f98 mac 109ea018 GClimate::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8GClimate asm("??_R4GClimate@@6B@");
 // win1.41 008f9f9c mac 109ea020 GClimate::`vftable'
 extern const struct GameThingVftable __vt__8GClimate asm("??_7GClimate@@6B@");
 

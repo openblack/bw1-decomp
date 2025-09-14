@@ -12,9 +12,18 @@ struct SaveGameRoom
 };
 static_assert(sizeof(struct SaveGameRoom) == 0x160, "Data type is of wrong size");
 
-// win1.41 0099edf8 mac 109c207c SaveGameRoom::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12SaveGameRoom asm("??_R4SaveGameRoom@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c286a0 mac inlined SaveGameRoom::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12SaveGameRoom asm("??_R0?AVSaveGameRoom@@@8");
+// win1.41 009bab48 mac inlined SaveGameRoom::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12SaveGameRoom asm("??_R1A@?0A@A@SaveGameRoom@@8");
+// win1.41 009bab60 mac inlined SaveGameRoom::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12SaveGameRoom asm("??_R2SaveGameRoom@@8");
+// win1.41 009bab70 mac inlined SaveGameRoom::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12SaveGameRoom asm("??_R3SaveGameRoom@@8");
+// win1.41 0099edf8 mac 109c207c SaveGameRoom::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12SaveGameRoom asm("??_R4SaveGameRoom@@6B@");
 // win1.41 0099edfc mac 109c2084 SaveGameRoom::`vftable'
 extern const struct TempleRoomVftable __vt__12SaveGameRoom asm("??_7SaveGameRoom@@6B@");
 

@@ -69,9 +69,18 @@ struct GroupBehaviour
 };
 static_assert(sizeof(struct GroupBehaviour) == 0xe8, "Data type is of wrong size");
 
-// win1.41 009003f4 mac 10744630 GroupBehaviour::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GroupBehaviour asm("??_R4GroupBehaviour@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be6720 mac inlined GroupBehaviour::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GroupBehaviour asm("??_R0?AVGroupBehaviour@@@8");
+// win1.41 009ab598 mac inlined GroupBehaviour::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GroupBehaviour asm("??_R1A@?0A@A@GroupBehaviour@@8");
+// win1.41 009b0e48 mac inlined GroupBehaviour::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GroupBehaviour asm("??_R2GroupBehaviour@@8");
+// win1.41 009b0e60 mac inlined GroupBehaviour::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GroupBehaviour asm("??_R3GroupBehaviour@@8");
+// win1.41 009003f4 mac 10744630 GroupBehaviour::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GroupBehaviour asm("??_R4GroupBehaviour@@6B@");
 // win1.41 009003f8 mac 106f5ebc GroupBehaviour::`vftable'
 extern const struct GroupBehaviourVftable __vt__14GroupBehaviour asm("??_7GroupBehaviour@@6B@");
 
@@ -109,6 +118,17 @@ struct DanceEditState
 };
 static_assert(sizeof(struct DanceEditState) == 0xe8, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00be8270 mac inlined DanceEditState::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14DanceEditState asm("??_R0?AVDanceEditState@@@8");
+// win1.41 009ab658 mac inlined DanceEditState::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14DanceEditState asm("??_R1A@?0A@A@DanceEditState@@8");
+// win1.41 009ab670 mac inlined DanceEditState::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14DanceEditState asm("??_R2DanceEditState@@8");
+// win1.41 009ab688 mac inlined DanceEditState::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14DanceEditState asm("??_R3DanceEditState@@8");
+
 // Override methods
 
 // win1.41 0050cc50 mac inlined DanceEditState::_dt(void)
@@ -121,6 +141,17 @@ struct DanceKeyAction
   struct GameThing super;  /* 0x0 */
 };
 static_assert(sizeof(struct DanceKeyAction) == 0x14, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00be82d0 mac inlined DanceKeyAction::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14DanceKeyAction asm("??_R0?AVDanceKeyAction@@@8");
+// win1.41 009ab700 mac inlined DanceKeyAction::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14DanceKeyAction asm("??_R1A@?0A@A@DanceKeyAction@@8");
+// win1.41 009ab718 mac inlined DanceKeyAction::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14DanceKeyAction asm("??_R2DanceKeyAction@@8");
+// win1.41 009ab728 mac inlined DanceKeyAction::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14DanceKeyAction asm("??_R3DanceKeyAction@@8");
 
 // Override methods
 

@@ -19,9 +19,18 @@ struct GCameraEditor
 };
 static_assert(sizeof(struct GCameraEditor) == 0x28, "Data type is of wrong size");
 
-// win1.41 008c7638 mac inlined GCameraEditor::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13GCameraEditor asm("??_R4GCameraEditor@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cdc40 mac inlined GCameraEditor::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13GCameraEditor asm("??_R0?AVGCameraEditor@@@8");
+// win1.41 009a8858 mac inlined GCameraEditor::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13GCameraEditor asm("??_R1A@?0A@A@GCameraEditor@@8");
+// win1.41 009a8870 mac inlined GCameraEditor::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13GCameraEditor asm("??_R2GCameraEditor@@8");
+// win1.41 009a8880 mac inlined GCameraEditor::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13GCameraEditor asm("??_R3GCameraEditor@@8");
+// win1.41 008c7638 mac inlined GCameraEditor::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13GCameraEditor asm("??_R4GCameraEditor@@6B@");
 // win1.41 008c763c mac inlined GCameraEditor::`vftable'
 extern const struct PrssVftable __vt__13GCameraEditor asm("??_7GCameraEditor@@6B@");
 

@@ -14,9 +14,18 @@ struct LHReleasedOSFile
 };
 static_assert(sizeof(struct LHReleasedOSFile) == 0x8, "Data type is of wrong size");
 
-// win1.41 008c4cfc mac 1099a680 LHReleasedOSFile::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16LHReleasedOSFile asm("??_R4LHReleasedOSFile@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cba70 mac inlined LHReleasedOSFile::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16LHReleasedOSFile asm("??_R0?AVLHReleasedOSFile@@@8");
+// win1.41 009a7f50 mac inlined LHReleasedOSFile::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16LHReleasedOSFile asm("??_R1A@?0A@A@LHReleasedOSFile@@8");
+// win1.41 009a7f68 mac inlined LHReleasedOSFile::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16LHReleasedOSFile asm("??_R2LHReleasedOSFile@@8");
+// win1.41 009a7f78 mac inlined LHReleasedOSFile::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16LHReleasedOSFile asm("??_R3LHReleasedOSFile@@8");
+// win1.41 008c4cfc mac 1099a680 LHReleasedOSFile::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16LHReleasedOSFile asm("??_R4LHReleasedOSFile@@6B@");
 // win1.41 008c4d00 mac 1099a690 LHReleasedOSFile::`vftable'
 extern const struct LHOSFileVftable __vt__16LHReleasedOSFile asm("??_7LHReleasedOSFile@@6B@");
 

@@ -46,9 +46,18 @@ struct WorshipTotem
 };
 static_assert(sizeof(struct WorshipTotem) == 0x104, "Data type is of wrong size");
 
-// win1.41 0099e1b8 mac 1073a768 WorshipTotem::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12WorshipTotem asm("??_R4WorshipTotem@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8ee8 mac inlined WorshipTotem::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12WorshipTotem asm("??_R0?AVWorshipTotem@@@8");
+// win1.41 009ba510 mac inlined WorshipTotem::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12WorshipTotem asm("??_R1A@?0A@A@WorshipTotem@@8");
+// win1.41 009ba528 mac inlined WorshipTotem::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12WorshipTotem asm("??_R2WorshipTotem@@8");
+// win1.41 009ba550 mac inlined WorshipTotem::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12WorshipTotem asm("??_R3WorshipTotem@@8");
+// win1.41 0099e1b8 mac 1073a768 WorshipTotem::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12WorshipTotem asm("??_R4WorshipTotem@@6B@");
 // win1.41 0099e1bc mac 106f5d3c WorshipTotem::`vftable'
 extern const struct MultiMapFixedVftable __vt__12WorshipTotem asm("??_7WorshipTotem@@6B@");
 

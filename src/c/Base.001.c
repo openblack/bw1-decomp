@@ -1,6 +1,6 @@
 #include "Base.h"
 
-struct RTTICompleteObjectLocator* const p__RTTICompleObjectLocator__4Base = &__RTTICompleObjectLocator__4Base;
+const struct RTTICompleteObjectLocator* const p__RTTICompleObjectLocator__4Base = &__RTTICompleObjectLocator__4Base;
 
 const struct BaseVftable __vt__4Base = {
     Serialise__4BaseFR7Archive,

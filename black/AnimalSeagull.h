@@ -18,6 +18,17 @@ struct Seagull
 };
 static_assert(sizeof(struct Seagull) == 0x148, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c9260 mac inlined Seagull::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7Seagull asm("??_R0?AVSeagull@@@8");
+// win1.41 009a73f0 mac inlined Seagull::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7Seagull asm("??_R1A@?0A@A@Seagull@@8");
+// win1.41 009a7408 mac inlined Seagull::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7Seagull asm("??_R2Seagull@@8");
+// win1.41 009a7438 mac inlined Seagull::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7Seagull asm("??_R3Seagull@@8");
+
 // Override methods
 
 // win1.41 0041ee60 mac 101716c0 Seagull::_dt(void)

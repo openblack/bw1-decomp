@@ -16,6 +16,17 @@ struct GWeather
 };
 static_assert(sizeof(struct GWeather) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c24798 mac inlined GWeather::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8GWeather asm("??_R0?AVGWeather@@@8");
+// win1.41 009ba040 mac inlined GWeather::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8GWeather asm("??_R1A@?0A@A@GWeather@@8");
+// win1.41 009ba058 mac inlined GWeather::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8GWeather asm("??_R2GWeather@@8");
+// win1.41 009ba068 mac inlined GWeather::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8GWeather asm("??_R3GWeather@@8");
+
 // Override methods
 
 // win1.41 0083f900 mac inlined GWeather::Update(float)

@@ -25,6 +25,17 @@ struct CitadelBuildingSite
 };
 static_assert(sizeof(struct CitadelBuildingSite) == 0x644, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009cd430 mac inlined CitadelBuildingSite::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19CitadelBuildingSite asm("??_R0?AVCitadelBuildingSite@@@8");
+// win1.41 009a85e0 mac inlined CitadelBuildingSite::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19CitadelBuildingSite asm("??_R1A@?0A@A@CitadelBuildingSite@@8");
+// win1.41 009a85f8 mac inlined CitadelBuildingSite::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19CitadelBuildingSite asm("??_R2CitadelBuildingSite@@8");
+// win1.41 009a8610 mac inlined CitadelBuildingSite::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19CitadelBuildingSite asm("??_R3CitadelBuildingSite@@8");
+
 // Override methods
 
 // win1.41 0043d1b0 mac 100be2b0 CitadelBuildingSite::_dt(void)

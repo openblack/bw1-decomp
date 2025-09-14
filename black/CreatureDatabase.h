@@ -12,9 +12,18 @@ struct CreatureDatabase
 };
 static_assert(sizeof(struct CreatureDatabase) == 0x10, "Data type is of wrong size");
 
-// win1.41 009309fc mac 10745cbc CreatureDatabase::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16CreatureDatabase asm("??_R4CreatureDatabase@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bfdd98 mac inlined CreatureDatabase::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16CreatureDatabase asm("??_R0?AVCreatureDatabase@@@8");
+// win1.41 009b2d68 mac inlined CreatureDatabase::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16CreatureDatabase asm("??_R1A@?0A@A@CreatureDatabase@@8");
+// win1.41 009b2d80 mac inlined CreatureDatabase::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16CreatureDatabase asm("??_R2CreatureDatabase@@8");
+// win1.41 009b2d90 mac inlined CreatureDatabase::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16CreatureDatabase asm("??_R3CreatureDatabase@@8");
+// win1.41 009309fc mac 10745cbc CreatureDatabase::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16CreatureDatabase asm("??_R4CreatureDatabase@@6B@");
 // win1.41 00930a00 mac 10745cc4 CreatureDatabase::`vftable'
 extern const struct MultiplayerDatabaseVftable __vt__16CreatureDatabase asm("??_7CreatureDatabase@@6B@");
 

@@ -18,9 +18,18 @@ struct GBallInfo
 };
 static_assert(sizeof(struct GBallInfo) == 0x140, "Data type is of wrong size");
 
-// win1.41 008c4f30 mac 10737af4 GBallInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GBallInfo asm("??_R4GBallInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cd058 mac inlined GBallInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GBallInfo asm("??_R0?AVGBallInfo@@@8");
+// win1.41 009a82c8 mac inlined GBallInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GBallInfo asm("??_R1A@?0A@A@GBallInfo@@8");
+// win1.41 009a82e0 mac inlined GBallInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GBallInfo asm("??_R2GBallInfo@@8");
+// win1.41 009a8300 mac inlined GBallInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GBallInfo asm("??_R3GBallInfo@@8");
+// win1.41 008c4f30 mac 10737af4 GBallInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GBallInfo asm("??_R4GBallInfo@@6B@");
 // win1.41 008c4f34 mac 10737afc GBallInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__9GBallInfo asm("??_7GBallInfo@@6B@");
 
@@ -36,6 +45,17 @@ struct GPBallInfo
   struct GMobileObjectInfo super;  /* 0x0 */
 };
 static_assert(sizeof(struct GPBallInfo) == 0x114, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bfe048 mac inlined GPBallInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GPBallInfo asm("??_R0?AVGPBallInfo@@@8");
+// win1.41 009b2ed0 mac inlined GPBallInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GPBallInfo asm("??_R1A@?0A@A@GPBallInfo@@8");
+// win1.41 009b2ee8 mac inlined GPBallInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GPBallInfo asm("??_R2GPBallInfo@@8");
+// win1.41 009b2f08 mac inlined GPBallInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GPBallInfo asm("??_R3GPBallInfo@@8");
 
 // Override methods
 

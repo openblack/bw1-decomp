@@ -17,4 +17,11 @@ struct GMobileWallHugInfo
 };
 static_assert(sizeof(struct GMobileWallHugInfo) == 0x120, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c8d20 mac inlined GMobileWallHugInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18GMobileWallHugInfo asm("??_R0?AVGMobileWallHugInfo@@@8");
+// win1.41 009a6b08 mac inlined GMobileWallHugInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18GMobileWallHugInfo asm("??_R1A@?0A@A@GMobileWallHugInfo@@8");
+
 #endif /* BW1_DECOMP_MOBILE_WALL_HUG_INFO_INCLUDED_H */

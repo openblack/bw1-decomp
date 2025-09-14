@@ -19,9 +19,18 @@ struct SetupMultiList
 };
 static_assert(sizeof(struct SetupMultiList) == 0x2bc, "Data type is of wrong size");
 
-// win1.41 008ab360 mac 107311c0 SetupMultiList::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SetupMultiList asm("??_R4SetupMultiList@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c81b0 mac inlined SetupMultiList::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14SetupMultiList asm("??_R0?AUSetupMultiList@@@8");
+// win1.41 009a66a8 mac inlined SetupMultiList::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14SetupMultiList asm("??_R1A@?0A@A@SetupMultiList@@8");
+// win1.41 009a66c0 mac inlined SetupMultiList::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14SetupMultiList asm("??_R2SetupMultiList@@8");
+// win1.41 009a66d0 mac inlined SetupMultiList::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14SetupMultiList asm("??_R3SetupMultiList@@8");
+// win1.41 008ab360 mac 107311c0 SetupMultiList::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SetupMultiList asm("??_R4SetupMultiList@@6B@");
 // win1.41 008ab364 mac 107311c8 SetupMultiList::`vftable'
 extern const struct SetupListVftable __vt__14SetupMultiList asm("??_7SetupMultiList@@6B@");
 

@@ -13,9 +13,18 @@ struct LobbyBox
 };
 static_assert(sizeof(struct LobbyBox) == 0x8c, "Data type is of wrong size");
 
-// win1.41 008deba0 mac 109edd54 LobbyBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8LobbyBox asm("??_R4LobbyBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea550 mac inlined LobbyBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8LobbyBox asm("??_R0?AVLobbyBox@@@8");
+// win1.41 009ace20 mac inlined LobbyBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8LobbyBox asm("??_R1A@?0A@A@LobbyBox@@8");
+// win1.41 009ace38 mac inlined LobbyBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8LobbyBox asm("??_R2LobbyBox@@8");
+// win1.41 009ace48 mac inlined LobbyBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8LobbyBox asm("??_R3LobbyBox@@8");
+// win1.41 008deba0 mac 109edd54 LobbyBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8LobbyBox asm("??_R4LobbyBox@@6B@");
 // win1.41 008deba4 mac 109edd5c LobbyBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__8LobbyBox asm("??_7LobbyBox@@6B@");
 

@@ -24,9 +24,18 @@ struct GAudio
 };
 static_assert(sizeof(struct GAudio) == 0x3d4, "Data type is of wrong size");
 
-// win1.41 008c48dc mac 1077682c GAudio::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6GAudio asm("??_R4GAudio@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009caf20 mac inlined GAudio::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6GAudio asm("??_R0?AVGAudio@@@8");
+// win1.41 009a7c28 mac inlined GAudio::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6GAudio asm("??_R1A@?0A@A@GAudio@@8");
+// win1.41 009a7c40 mac inlined GAudio::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6GAudio asm("??_R2GAudio@@8");
+// win1.41 009a7c50 mac inlined GAudio::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6GAudio asm("??_R3GAudio@@8");
+// win1.41 008c48dc mac 1077682c GAudio::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6GAudio asm("??_R4GAudio@@6B@");
 // win1.41 008c48e0 mac 10776834 GAudio::`vftable'
 extern const struct GameThingVftable __vt__6GAudio asm("??_7GAudio@@6B@");
 

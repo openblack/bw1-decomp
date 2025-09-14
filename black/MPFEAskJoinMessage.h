@@ -11,6 +11,17 @@ struct MPFEAskJoinMessage
 };
 static_assert(sizeof(struct MPFEAskJoinMessage) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf47f8 mac inlined MPFEAskJoinMessage::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18MPFEAskJoinMessage asm("??_R0?AVMPFEAskJoinMessage@@@8");
+// win1.41 009b2188 mac inlined MPFEAskJoinMessage::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18MPFEAskJoinMessage asm("??_R1A@?0A@A@MPFEAskJoinMessage@@8");
+// win1.41 009b21a0 mac inlined MPFEAskJoinMessage::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18MPFEAskJoinMessage asm("??_R2MPFEAskJoinMessage@@8");
+// win1.41 009b21b0 mac inlined MPFEAskJoinMessage::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18MPFEAskJoinMessage asm("??_R3MPFEAskJoinMessage@@8");
+
 // Override methods
 
 // win1.41 00626f90 mac 10397e50 MPFEAskJoinMessage::_dt(void)

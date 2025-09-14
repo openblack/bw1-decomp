@@ -12,6 +12,17 @@ struct SetupLandscapeBox
 };
 static_assert(sizeof(struct SetupLandscapeBox) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bea8c8 mac inlined SetupLandscapeBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17SetupLandscapeBox asm("??_R0?AVSetupLandscapeBox@@@8");
+// win1.41 009acec0 mac inlined SetupLandscapeBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17SetupLandscapeBox asm("??_R1A@?0A@A@SetupLandscapeBox@@8");
+// win1.41 009aced8 mac inlined SetupLandscapeBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17SetupLandscapeBox asm("??_R2SetupLandscapeBox@@8");
+// win1.41 009acee8 mac inlined SetupLandscapeBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17SetupLandscapeBox asm("??_R3SetupLandscapeBox@@8");
+
 // Override methods
 
 // win1.41 00546280 mac 105cd3c0 SetupLandscapeBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))

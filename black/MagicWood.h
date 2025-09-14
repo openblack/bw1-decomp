@@ -25,6 +25,17 @@ struct MagicWood
 };
 static_assert(sizeof(struct MagicWood) == 0xb4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf4110 mac inlined MagicWood::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9MagicWood asm("??_R0?AVMagicWood@@@8");
+// win1.41 009b1e80 mac inlined MagicWood::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9MagicWood asm("??_R1A@?0A@A@MagicWood@@8");
+// win1.41 009b1e98 mac inlined MagicWood::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9MagicWood asm("??_R2MagicWood@@8");
+// win1.41 009b1ec8 mac inlined MagicWood::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9MagicWood asm("??_R3MagicWood@@8");
+
 // Override methods
 
 // win1.41 00600df0 mac 103ba240 MagicWood::_dt(void)

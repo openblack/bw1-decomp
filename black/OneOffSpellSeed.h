@@ -30,9 +30,18 @@ struct OneOffSpellSeed
 };
 static_assert(sizeof(struct OneOffSpellSeed) == 0x7c, "Data type is of wrong size");
 
-// win1.41 008f3770 mac 1099eba8 OneOffSpellSeed::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15OneOffSpellSeed asm("??_R4OneOffSpellSeed@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00beca20 mac inlined OneOffSpellSeed::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15OneOffSpellSeed asm("??_R0?AVOneOffSpellSeed@@@8");
+// win1.41 009ad580 mac inlined OneOffSpellSeed::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15OneOffSpellSeed asm("??_R1A@?0A@A@OneOffSpellSeed@@8");
+// win1.41 009ad598 mac inlined OneOffSpellSeed::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15OneOffSpellSeed asm("??_R2OneOffSpellSeed@@8");
+// win1.41 009ad5b8 mac inlined OneOffSpellSeed::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15OneOffSpellSeed asm("??_R3OneOffSpellSeed@@8");
+// win1.41 008f3770 mac 1099eba8 OneOffSpellSeed::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15OneOffSpellSeed asm("??_R4OneOffSpellSeed@@6B@");
 // win1.41 008f3774 mac 106f8cd0 OneOffSpellSeed::`vftable'
 extern const struct ObjectVftable __vt__15OneOffSpellSeed asm("??_7OneOffSpellSeed@@6B@");
 

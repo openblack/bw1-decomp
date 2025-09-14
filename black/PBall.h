@@ -17,6 +17,17 @@ struct PBall
 };
 static_assert(sizeof(struct PBall) == 0x68, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bfe068 mac inlined PBall::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5PBall asm("??_R0?AVPBall@@@8");
+// win1.41 009b2f30 mac inlined PBall::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5PBall asm("??_R1A@?0A@A@PBall@@8");
+// win1.41 009b2f48 mac inlined PBall::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5PBall asm("??_R2PBall@@8");
+// win1.41 009b2f68 mac inlined PBall::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5PBall asm("??_R3PBall@@8");
+
 // Override methods
 
 // win1.41 0063e950 mac inlined PBall::_dt(void)

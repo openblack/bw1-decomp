@@ -112,9 +112,18 @@ struct MobileWallHug
 };
 static_assert(sizeof(struct MobileWallHug) == 0x8c, "Data type is of wrong size");
 
-// win1.41 008cded4 mac 10732c5c MobileWallHug::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13MobileWallHug asm("??_R4MobileWallHug@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8dc8 mac inlined MobileWallHug::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13MobileWallHug asm("??_R0?AVMobileWallHug@@@8");
+// win1.41 009a6c00 mac inlined MobileWallHug::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13MobileWallHug asm("??_R1A@?0A@A@MobileWallHug@@8");
+// win1.41 009a9640 mac inlined MobileWallHug::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13MobileWallHug asm("??_R2MobileWallHug@@8");
+// win1.41 009a9660 mac inlined MobileWallHug::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13MobileWallHug asm("??_R3MobileWallHug@@8");
+// win1.41 008cded4 mac 10732c5c MobileWallHug::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13MobileWallHug asm("??_R4MobileWallHug@@6B@");
 // win1.41 008cded8 mac 10732c8c MobileWallHug::`vftable'
 extern const struct MobileWallHugVftable __vt__13MobileWallHug asm("??_7MobileWallHug@@6B@");
 

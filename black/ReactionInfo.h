@@ -39,9 +39,18 @@ struct ReactionInfo
 };
 static_assert(sizeof(struct ReactionInfo) == 0x64, "Data type is of wrong size");
 
-// win1.41 009417e8 mac 1075963c ReactionInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12ReactionInfo asm("??_R4ReactionInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c0bb40 mac inlined ReactionInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12ReactionInfo asm("??_R0?AVReactionInfo@@@8");
+// win1.41 009b8c48 mac inlined ReactionInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12ReactionInfo asm("??_R1A@?0A@A@ReactionInfo@@8");
+// win1.41 009b8c60 mac inlined ReactionInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12ReactionInfo asm("??_R2ReactionInfo@@8");
+// win1.41 009b8c70 mac inlined ReactionInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12ReactionInfo asm("??_R3ReactionInfo@@8");
+// win1.41 009417e8 mac 1075963c ReactionInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12ReactionInfo asm("??_R4ReactionInfo@@6B@");
 // win1.41 009417ec mac 10759644 ReactionInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__12ReactionInfo asm("??_7ReactionInfo@@6B@");
 

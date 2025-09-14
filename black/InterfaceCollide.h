@@ -27,9 +27,18 @@ struct GInterfaceCollide
 };
 static_assert(sizeof(struct GInterfaceCollide) == 0x30, "Data type is of wrong size");
 
-// win1.41 0092aac0 mac 10733130 GInterfaceCollide::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GInterfaceCollide asm("??_R4GInterfaceCollide@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf1b40 mac inlined GInterfaceCollide::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17GInterfaceCollide asm("??_R0?AVGInterfaceCollide@@@8");
+// win1.41 009b1588 mac inlined GInterfaceCollide::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17GInterfaceCollide asm("??_R1A@?0A@A@GInterfaceCollide@@8");
+// win1.41 009b15a0 mac inlined GInterfaceCollide::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17GInterfaceCollide asm("??_R2GInterfaceCollide@@8");
+// win1.41 009b15b0 mac inlined GInterfaceCollide::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17GInterfaceCollide asm("??_R3GInterfaceCollide@@8");
+// win1.41 0092aac0 mac 10733130 GInterfaceCollide::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17GInterfaceCollide asm("??_R4GInterfaceCollide@@6B@");
 // win1.41 0092aac4 mac 10733138 GInterfaceCollide::`vftable'
 extern const struct BaseVftable __vt__17GInterfaceCollide asm("??_7GInterfaceCollide@@6B@");
 

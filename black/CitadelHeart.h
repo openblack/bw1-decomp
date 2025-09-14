@@ -54,6 +54,17 @@ struct LeashObj
 };
 static_assert(sizeof(struct LeashObj) == 0x78, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009ce9b8 mac inlined LeashObj::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8LeashObj asm("??_R0?AVLeashObj@@@8");
+// win1.41 009a8ea8 mac inlined LeashObj::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8LeashObj asm("??_R1A@?0A@A@LeashObj@@8");
+// win1.41 009a8ec0 mac inlined LeashObj::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8LeashObj asm("??_R2LeashObj@@8");
+// win1.41 009a8ed8 mac inlined LeashObj::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8LeashObj asm("??_R3LeashObj@@8");
+
 // Override methods
 
 // win1.41 00464890 mac 101c0f00 LeashObj::_dt(void)
@@ -116,9 +127,18 @@ struct CitadelHeart
 };
 static_assert(sizeof(struct CitadelHeart) == 0xe8, "Data type is of wrong size");
 
-// win1.41 008c8cfc mac 1077b83c CitadelHeart::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CitadelHeart asm("??_R4CitadelHeart@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009ce8a8 mac inlined CitadelHeart::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12CitadelHeart asm("??_R0?AVCitadelHeart@@@8");
+// win1.41 009a8f18 mac inlined CitadelHeart::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12CitadelHeart asm("??_R1A@?0A@A@CitadelHeart@@8");
+// win1.41 009a8f30 mac inlined CitadelHeart::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12CitadelHeart asm("??_R2CitadelHeart@@8");
+// win1.41 009a8f58 mac inlined CitadelHeart::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12CitadelHeart asm("??_R3CitadelHeart@@8");
+// win1.41 008c8cfc mac 1077b83c CitadelHeart::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CitadelHeart asm("??_R4CitadelHeart@@6B@");
 // win1.41 008c8d00 mac 1077b844 CitadelHeart::`vftable'
 extern const struct MultiMapFixedVftable __vt__12CitadelHeart asm("??_7CitadelHeart@@6B@");
 

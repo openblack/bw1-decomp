@@ -16,9 +16,18 @@ struct HandStateInvisible
 };
 static_assert(sizeof(struct HandStateInvisible) == 0x8, "Data type is of wrong size");
 
-// win1.41 008cbeb0 mac 1077db84 HandStateInvisible::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18HandStateInvisible asm("??_R4HandStateInvisible@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cecf8 mac inlined HandStateInvisible::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18HandStateInvisible asm("??_R0?AVHandStateInvisible@@@8");
+// win1.41 009a9308 mac inlined HandStateInvisible::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18HandStateInvisible asm("??_R1A@?0A@A@HandStateInvisible@@8");
+// win1.41 009a9320 mac inlined HandStateInvisible::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18HandStateInvisible asm("??_R2HandStateInvisible@@8");
+// win1.41 009a9330 mac inlined HandStateInvisible::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18HandStateInvisible asm("??_R3HandStateInvisible@@8");
+// win1.41 008cbeb0 mac 1077db84 HandStateInvisible::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18HandStateInvisible asm("??_R4HandStateInvisible@@6B@");
 // win1.41 008cbeb4 mac 1077db8c HandStateInvisible::`vftable'
 extern const struct HandStateVftable __vt__18HandStateInvisible asm("??_7HandStateInvisible@@6B@");
 

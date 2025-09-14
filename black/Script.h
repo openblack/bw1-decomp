@@ -17,9 +17,18 @@ struct GScript
 };
 static_assert(sizeof(struct GScript) == 0xbc, "Data type is of wrong size");
 
-// win1.41 00942170 mac 109c38c8 GScript::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GScript asm("??_R4GScript@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c0c008 mac inlined GScript::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7GScript asm("??_R0?AVGScript@@@8");
+// win1.41 009b8e08 mac inlined GScript::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7GScript asm("??_R1A@?0A@A@GScript@@8");
+// win1.41 009b8e20 mac inlined GScript::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7GScript asm("??_R2GScript@@8");
+// win1.41 009b8e30 mac inlined GScript::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7GScript asm("??_R3GScript@@8");
+// win1.41 00942170 mac 109c38c8 GScript::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GScript asm("??_R4GScript@@6B@");
 // win1.41 00942174 mac 109c38d0 GScript::`vftable'
 extern const struct BaseVftable __vt__7GScript asm("??_7GScript@@6B@");
 
@@ -57,6 +66,17 @@ struct GScriptOpposingCreature
   struct GBaseInfo super;  /* 0x0 */
 };
 static_assert(sizeof(struct GScriptOpposingCreature) == 0x10, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c0cde0 mac inlined GScriptOpposingCreature::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23GScriptOpposingCreature asm("??_R0?AVGScriptOpposingCreature@@@8");
+// win1.41 009b8e58 mac inlined GScriptOpposingCreature::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23GScriptOpposingCreature asm("??_R1A@?0A@A@GScriptOpposingCreature@@8");
+// win1.41 009b8e70 mac inlined GScriptOpposingCreature::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23GScriptOpposingCreature asm("??_R2GScriptOpposingCreature@@8");
+// win1.41 009b8e80 mac inlined GScriptOpposingCreature::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23GScriptOpposingCreature asm("??_R3GScriptOpposingCreature@@8");
 
 // Override methods
 

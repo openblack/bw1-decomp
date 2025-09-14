@@ -14,9 +14,18 @@ struct ProfileEditor
 };
 static_assert(sizeof(struct ProfileEditor) == 0x58, "Data type is of wrong size");
 
-// win1.41 008dec68 mac 109ed814 ProfileEditor::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13ProfileEditor asm("??_R4ProfileEditor@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea408 mac inlined ProfileEditor::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13ProfileEditor asm("??_R0?AVProfileEditor@@@8");
+// win1.41 009acb00 mac inlined ProfileEditor::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13ProfileEditor asm("??_R1A@?0A@A@ProfileEditor@@8");
+// win1.41 009acb18 mac inlined ProfileEditor::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13ProfileEditor asm("??_R2ProfileEditor@@8");
+// win1.41 009acb28 mac inlined ProfileEditor::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13ProfileEditor asm("??_R3ProfileEditor@@8");
+// win1.41 008dec68 mac 109ed814 ProfileEditor::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13ProfileEditor asm("??_R4ProfileEditor@@6B@");
 // win1.41 008dec6c mac 109ed81c ProfileEditor::`vftable'
 extern const struct DialogBoxBaseVftable __vt__13ProfileEditor asm("??_7ProfileEditor@@6B@");
 

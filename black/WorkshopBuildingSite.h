@@ -22,6 +22,17 @@ struct WorkshopBuildingSite
 };
 static_assert(sizeof(struct WorkshopBuildingSite) == 0x644, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009cd4b0 mac inlined WorkshopBuildingSite::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20WorkshopBuildingSite asm("??_R0?AVWorkshopBuildingSite@@@8");
+// win1.41 009a8690 mac inlined WorkshopBuildingSite::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20WorkshopBuildingSite asm("??_R1A@?0A@A@WorkshopBuildingSite@@8");
+// win1.41 009a86a8 mac inlined WorkshopBuildingSite::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20WorkshopBuildingSite asm("??_R2WorkshopBuildingSite@@8");
+// win1.41 009a86c0 mac inlined WorkshopBuildingSite::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20WorkshopBuildingSite asm("??_R3WorkshopBuildingSite@@8");
+
 // Override methods
 
 // win1.41 0043d970 mac 100b7a40 WorkshopBuildingSite::_dt(void)

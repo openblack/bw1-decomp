@@ -16,6 +16,17 @@ struct GAnimatedStaticInfo
 };
 static_assert(sizeof(struct GAnimatedStaticInfo) == 0x120, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c9520 mac inlined GAnimatedStaticInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19GAnimatedStaticInfo asm("??_R0?AVGAnimatedStaticInfo@@@8");
+// win1.41 009a78d0 mac inlined GAnimatedStaticInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19GAnimatedStaticInfo asm("??_R1A@?0A@A@GAnimatedStaticInfo@@8");
+// win1.41 009a78e8 mac inlined GAnimatedStaticInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19GAnimatedStaticInfo asm("??_R2GAnimatedStaticInfo@@8");
+// win1.41 009a7908 mac inlined GAnimatedStaticInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19GAnimatedStaticInfo asm("??_R3GAnimatedStaticInfo@@8");
+
 // Override methods
 
 // win1.41 00421f20 mac 100a67f0 GAnimatedStaticInfo::_dt(void)

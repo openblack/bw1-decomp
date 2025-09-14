@@ -41,9 +41,18 @@ struct StoragePit
 };
 static_assert(sizeof(struct StoragePit) == 0xdc, "Data type is of wrong size");
 
-// win1.41 008f702c mac 10747800 StoragePit::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10StoragePit asm("??_R4StoragePit@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8ec8 mac inlined StoragePit::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10StoragePit asm("??_R0?AVStoragePit@@@8");
+// win1.41 009ad7b8 mac inlined StoragePit::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10StoragePit asm("??_R1A@?0A@A@StoragePit@@8");
+// win1.41 009ad7d0 mac inlined StoragePit::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10StoragePit asm("??_R2StoragePit@@8");
+// win1.41 009ad7f8 mac inlined StoragePit::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10StoragePit asm("??_R3StoragePit@@8");
+// win1.41 008f702c mac 10747800 StoragePit::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10StoragePit asm("??_R4StoragePit@@6B@");
 // win1.41 008f7030 mac 106f604c StoragePit::`vftable'
 extern const struct MultiMapFixedVftable __vt__10StoragePit asm("??_7StoragePit@@6B@");
 

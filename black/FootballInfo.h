@@ -18,6 +18,17 @@ struct GPFootballInfo
 };
 static_assert(sizeof(struct GPFootballInfo) == 0x120, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bfed10 mac inlined GPFootballInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GPFootballInfo asm("??_R0?AVGPFootballInfo@@@8");
+// win1.41 009b3060 mac inlined GPFootballInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GPFootballInfo asm("??_R1A@?0A@A@GPFootballInfo@@8");
+// win1.41 009b3078 mac inlined GPFootballInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GPFootballInfo asm("??_R2GPFootballInfo@@8");
+// win1.41 009b3090 mac inlined GPFootballInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GPFootballInfo asm("??_R3GPFootballInfo@@8");
+
 // Override methods
 
 // win1.41 00643620 mac 10111690 GPFootballInfo::_dt(void)

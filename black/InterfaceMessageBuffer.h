@@ -13,9 +13,18 @@ struct GInterfaceMessageBuffer
 };
 static_assert(sizeof(struct GInterfaceMessageBuffer) == 0x14, "Data type is of wrong size");
 
-// win1.41 0092aaa0 mac 1099f8dc GInterfaceMessageBuffer::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23GInterfaceMessageBuffer asm("??_R4GInterfaceMessageBuffer@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf1b88 mac inlined GInterfaceMessageBuffer::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23GInterfaceMessageBuffer asm("??_R0?AVGInterfaceMessageBuffer@@@8");
+// win1.41 009b1628 mac inlined GInterfaceMessageBuffer::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23GInterfaceMessageBuffer asm("??_R1A@?0A@A@GInterfaceMessageBuffer@@8");
+// win1.41 009b1640 mac inlined GInterfaceMessageBuffer::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23GInterfaceMessageBuffer asm("??_R2GInterfaceMessageBuffer@@8");
+// win1.41 009b1650 mac inlined GInterfaceMessageBuffer::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23GInterfaceMessageBuffer asm("??_R3GInterfaceMessageBuffer@@8");
+// win1.41 0092aaa0 mac 1099f8dc GInterfaceMessageBuffer::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23GInterfaceMessageBuffer asm("??_R4GInterfaceMessageBuffer@@6B@");
 // win1.41 0092aaa4 mac 1099f8e4 GInterfaceMessageBuffer::`vftable'
 extern const struct BaseVftable __vt__23GInterfaceMessageBuffer asm("??_7GInterfaceMessageBuffer@@6B@");
 

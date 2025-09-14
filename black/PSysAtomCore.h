@@ -48,6 +48,17 @@ struct AtomCore
 };
 static_assert(sizeof(struct AtomCore) == 0x14, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c02268 mac inlined AtomCore::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8AtomCore asm("??_R0?AVAtomCore@@@8");
+// win1.41 009b37c0 mac inlined AtomCore::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8AtomCore asm("??_R1A@?0A@A@AtomCore@@8");
+// win1.41 009b37d8 mac inlined AtomCore::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8AtomCore asm("??_R2AtomCore@@8");
+// win1.41 009b37f0 mac inlined AtomCore::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8AtomCore asm("??_R3AtomCore@@8");
+
 // Override methods
 
 // win1.41 006739f0 mac 10091fd0 AtomCore::_dt(void)

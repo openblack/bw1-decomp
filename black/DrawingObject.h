@@ -19,4 +19,9 @@ struct DrawingObject
 };
 static_assert(sizeof(struct DrawingObject) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009cd240 mac inlined DrawingObject::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13DrawingObject asm("??_R0?AVDrawingObject@@@8");
+
 #endif /* BW1_DECOMP_DRAWING_OBJECT_INCLUDED_H */

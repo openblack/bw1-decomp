@@ -12,6 +12,17 @@ struct SetupMultiplayerMain
 };
 static_assert(sizeof(struct SetupMultiplayerMain) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bea448 mac inlined SetupMultiplayerMain::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20SetupMultiplayerMain asm("??_R0?AVSetupMultiplayerMain@@@8");
+// win1.41 009acba0 mac inlined SetupMultiplayerMain::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20SetupMultiplayerMain asm("??_R1A@?0A@A@SetupMultiplayerMain@@8");
+// win1.41 009acbb8 mac inlined SetupMultiplayerMain::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20SetupMultiplayerMain asm("??_R2SetupMultiplayerMain@@8");
+// win1.41 009acbc8 mac inlined SetupMultiplayerMain::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20SetupMultiplayerMain asm("??_R3SetupMultiplayerMain@@8");
+
 // Override methods
 
 // win1.41 00549b60 mac 105ce270 SetupMultiplayerMain::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))

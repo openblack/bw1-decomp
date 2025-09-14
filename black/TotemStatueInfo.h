@@ -19,9 +19,18 @@ struct GTotemStatueInfo
 };
 static_assert(sizeof(struct GTotemStatueInfo) == 0x124, "Data type is of wrong size");
 
-// win1.41 00999a44 mac 109e33a8 GTotemStatueInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GTotemStatueInfo asm("??_R4GTotemStatueInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c22b48 mac inlined GTotemStatueInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GTotemStatueInfo asm("??_R0?AVGTotemStatueInfo@@@8");
+// win1.41 009b9990 mac inlined GTotemStatueInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GTotemStatueInfo asm("??_R1A@?0A@A@GTotemStatueInfo@@8");
+// win1.41 009b99a8 mac inlined GTotemStatueInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GTotemStatueInfo asm("??_R2GTotemStatueInfo@@8");
+// win1.41 009b99c0 mac inlined GTotemStatueInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GTotemStatueInfo asm("??_R3GTotemStatueInfo@@8");
+// win1.41 00999a44 mac 109e33a8 GTotemStatueInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GTotemStatueInfo asm("??_R4GTotemStatueInfo@@6B@");
 // win1.41 00999a48 mac 109e33b0 GTotemStatueInfo::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__16GTotemStatueInfo asm("??_7GTotemStatueInfo@@6B@");
 

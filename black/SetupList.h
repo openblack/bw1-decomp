@@ -65,9 +65,18 @@ struct SetupList
 };
 static_assert(sizeof(struct SetupList) == 0x2b0, "Data type is of wrong size");
 
-// win1.41 008ab320 mac 107311a4 SetupList::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9SetupList asm("??_R4SetupList@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8178 mac inlined SetupList::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9SetupList asm("??_R0?AUSetupList@@@8");
+// win1.41 009a6658 mac inlined SetupList::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9SetupList asm("??_R1A@?0A@A@SetupList@@8");
+// win1.41 009a6670 mac inlined SetupList::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9SetupList asm("??_R2SetupList@@8");
+// win1.41 009a6680 mac inlined SetupList::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9SetupList asm("??_R3SetupList@@8");
+// win1.41 008ab320 mac 107311a4 SetupList::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9SetupList asm("??_R4SetupList@@6B@");
 // win1.41 008ab324 mac 107311b4 SetupList::`vftable'
 extern const struct SetupListVftable __vt__9SetupList asm("??_7SetupList@@6B@");
 

@@ -63,9 +63,18 @@ struct PSysInterface
 };
 static_assert(sizeof(struct PSysInterface) == 0x14, "Data type is of wrong size");
 
-// win1.41 008fa9d4 mac 107461ac PSysInterface::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13PSysInterface asm("??_R4PSysInterface@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bed500 mac inlined PSysInterface::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13PSysInterface asm("??_R0?AVPSysInterface@@@8");
+// win1.41 009aec88 mac inlined PSysInterface::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13PSysInterface asm("??_R1A@?0A@A@PSysInterface@@8");
+// win1.41 009aecf8 mac inlined PSysInterface::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13PSysInterface asm("??_R2PSysInterface@@8");
+// win1.41 009aed10 mac inlined PSysInterface::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13PSysInterface asm("??_R3PSysInterface@@8");
+// win1.41 008fa9d4 mac 107461ac PSysInterface::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13PSysInterface asm("??_R4PSysInterface@@6B@");
 // win1.41 008fa9d8 mac 106f5fd8 PSysInterface::`vftable'
 extern const struct PSysInterfaceVftable __vt__13PSysInterface asm("??_7PSysInterface@@6B@");
 

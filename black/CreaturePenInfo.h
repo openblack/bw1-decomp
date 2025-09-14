@@ -17,6 +17,17 @@ struct GCreaturePenInfo
 };
 static_assert(sizeof(struct GCreaturePenInfo) == 0x134, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00be0178 mac inlined GCreaturePenInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GCreaturePenInfo asm("??_R0?AVGCreaturePenInfo@@@8");
+// win1.41 009ab1c8 mac inlined GCreaturePenInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GCreaturePenInfo asm("??_R1A@?0A@A@GCreaturePenInfo@@8");
+// win1.41 009ab1e0 mac inlined GCreaturePenInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GCreaturePenInfo asm("??_R2GCreaturePenInfo@@8");
+// win1.41 009ab200 mac inlined GCreaturePenInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GCreaturePenInfo asm("??_R3GCreaturePenInfo@@8");
+
 // Override methods
 
 // win1.41 004eee30 mac 10274c20 GCreaturePenInfo::_dt(void)

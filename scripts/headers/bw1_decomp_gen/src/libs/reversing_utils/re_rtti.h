@@ -8,25 +8,31 @@
 #define VT_TO_RTTI_TYPE_DESCRIPTOR(VT) \
   (((const struct RTTICompleteObjectLocator*)((uintptr_t)(VT) - 4))->pTypeDescriptor)
 
+struct RTTIPMD {
+    int mdisp;
+    int pdisp;
+    int vdisp;
+};
+
 struct RTTIBaseClassDescriptor {
-  struct TypeDescriptor* pTypeDescriptor;
+  const struct RTTITypeDescriptor* pTypeDescriptor;
   unsigned long numContainedBases;
-  unsigned where;
+  struct RTTIPMD where;
   unsigned long attributes;
 };
 
 struct RTTIBaseClassArray {
-  struct RTTIBaseClassDescriptor* arrayOfBaseClassDescriptors[0];
+  const struct RTTIBaseClassDescriptor* arrayOfBaseClassDescriptors[0];
 };
 
 struct RTTIClassHierarchyDescriptor {
   unsigned long signature;
   unsigned long attributes;
   unsigned long numBaseClasses;
-  struct RTTIBaseClassArray* pBaseClassArray;
+  const struct RTTIBaseClassArray* pBaseClassArray;
 };
 
-struct TypeDescriptor {
+struct RTTITypeDescriptor {
   const void* pVFTable;
   void* spare;
   const char name[];
@@ -36,11 +42,11 @@ struct RTTICompleteObjectLocator {
   unsigned long signature;
   unsigned long offset;
   unsigned long cdOffset;
-  struct TypeDescriptor* pTypeDescriptor;
-  struct RTTIClassHierarchyDescriptor* pClassDescriptor;
+  const struct RTTITypeDescriptor* pTypeDescriptor;
+  const struct RTTIClassHierarchyDescriptor* pClassDescriptor;
 };
 
-void* __cdecl __RTDynamicCast(void* intptr, size_t vf_delta, struct TypeDescriptor* src_type, struct TypeDescriptor* target_type, bool is_reference);
+void* __cdecl __RTDynamicCast(void* intptr, size_t vf_delta, const struct RTTITypeDescriptor* src_type, const struct RTTITypeDescriptor* target_type, bool is_reference);
 const char* __RTTypeName(const void* intptr);
 
 #endif /* BW1_DECOMP_REVERSING_UTILS_RTTI_INCLUDED_H */

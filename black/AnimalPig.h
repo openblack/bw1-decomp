@@ -18,6 +18,17 @@ struct Pig
 };
 static_assert(sizeof(struct Pig) == 0x148, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009c90b8 mac inlined Pig::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__3Pig asm("??_R0?AVPig@@@8");
+// win1.41 009a7008 mac inlined Pig::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__3Pig asm("??_R1A@?0A@A@Pig@@8");
+// win1.41 009a7020 mac inlined Pig::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__3Pig asm("??_R2Pig@@8");
+// win1.41 009a7050 mac inlined Pig::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__3Pig asm("??_R3Pig@@8");
+
 // Override methods
 
 // win1.41 0041d9d0 mac 101207f0 Pig::_dt(void)

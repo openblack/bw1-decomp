@@ -21,9 +21,18 @@ struct GSpellIconInfo
 };
 static_assert(sizeof(struct GSpellIconInfo) == 0x12c, "Data type is of wrong size");
 
-// win1.41 00981a54 mac 109dc3c4 GSpellIconInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GSpellIconInfo asm("??_R4GSpellIconInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c22668 mac inlined GSpellIconInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GSpellIconInfo asm("??_R0?AVGSpellIconInfo@@@8");
+// win1.41 009b9398 mac inlined GSpellIconInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GSpellIconInfo asm("??_R1A@?0A@A@GSpellIconInfo@@8");
+// win1.41 009b93b0 mac inlined GSpellIconInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GSpellIconInfo asm("??_R2GSpellIconInfo@@8");
+// win1.41 009b93c8 mac inlined GSpellIconInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GSpellIconInfo asm("??_R3GSpellIconInfo@@8");
+// win1.41 00981a54 mac 109dc3c4 GSpellIconInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GSpellIconInfo asm("??_R4GSpellIconInfo@@6B@");
 // win1.41 00981a58 mac 109dc3cc GSpellIconInfo::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__14GSpellIconInfo asm("??_7GSpellIconInfo@@6B@");
 

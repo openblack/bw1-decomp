@@ -18,6 +18,17 @@ struct ParticleChainJoint
 };
 static_assert(sizeof(struct ParticleChainJoint) == 0x18, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bed600 mac inlined ParticleChainJoint::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18ParticleChainJoint asm("??_R0?AVParticleChainJoint@@@8");
+// win1.41 009aeeb8 mac inlined ParticleChainJoint::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18ParticleChainJoint asm("??_R1A@?0A@A@ParticleChainJoint@@8");
+// win1.41 009aeed0 mac inlined ParticleChainJoint::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18ParticleChainJoint asm("??_R2ParticleChainJoint@@8");
+// win1.41 009aeee8 mac inlined ParticleChainJoint::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18ParticleChainJoint asm("??_R3ParticleChainJoint@@8");
+
 // Override methods
 
 // win1.41 0055f0e0 mac 10422de0 ParticleChainJoint::_dt(void)

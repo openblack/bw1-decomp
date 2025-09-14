@@ -16,6 +16,17 @@ struct TownCreatureInfo
 };
 static_assert(sizeof(struct TownCreatureInfo) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c22c00 mac inlined TownCreatureInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16TownCreatureInfo asm("??_R0?AVTownCreatureInfo@@@8");
+// win1.41 009b9b38 mac inlined TownCreatureInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16TownCreatureInfo asm("??_R1A@?0A@A@TownCreatureInfo@@8");
+// win1.41 009b9b50 mac inlined TownCreatureInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16TownCreatureInfo asm("??_R2TownCreatureInfo@@8");
+// win1.41 009b9b60 mac inlined TownCreatureInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16TownCreatureInfo asm("??_R3TownCreatureInfo@@8");
+
 // Override methods
 
 // win1.41 007437d0 mac 10557190 TownCreatureInfo::_dt(void)

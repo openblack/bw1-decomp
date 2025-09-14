@@ -110,9 +110,18 @@ struct GPlayer
 };
 static_assert(sizeof(struct GPlayer) == 0xa60, "Data type is of wrong size");
 
-// win1.41 00932be4 mac 109bdcf4 GPlayer::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GPlayer asm("??_R4GPlayer@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bff140 mac inlined GPlayer::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7GPlayer asm("??_R0?AVGPlayer@@@8");
+// win1.41 009b3210 mac inlined GPlayer::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7GPlayer asm("??_R1A@?0A@A@GPlayer@@8");
+// win1.41 009b3228 mac inlined GPlayer::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7GPlayer asm("??_R2GPlayer@@8");
+// win1.41 009b3238 mac inlined GPlayer::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7GPlayer asm("??_R3GPlayer@@8");
+// win1.41 00932be4 mac 109bdcf4 GPlayer::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GPlayer asm("??_R4GPlayer@@6B@");
 // win1.41 00932be8 mac 109bdcfc GPlayer::`vftable'
 extern const struct GameThingVftable __vt__7GPlayer asm("??_7GPlayer@@6B@");
 

@@ -152,9 +152,18 @@ struct Town
 };
 static_assert(sizeof(struct Town) == 0xf28, "Data type is of wrong size");
 
-// win1.41 00999ae0 mac 1077dcc8 Town::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Town asm("??_R4Town@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cfa40 mac inlined Town::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Town asm("??_R0?AVTown@@@8");
+// win1.41 009b9a90 mac inlined Town::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Town asm("??_R1A@?0A@A@Town@@8");
+// win1.41 009b9aa8 mac inlined Town::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Town asm("??_R2Town@@8");
+// win1.41 009b9ac0 mac inlined Town::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Town asm("??_R3Town@@8");
+// win1.41 00999ae0 mac 1077dcc8 Town::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Town asm("??_R4Town@@6B@");
 // win1.41 00999ae4 mac 106f6950 Town::`vftable'
 extern const struct ContainerVftable __vt__4Town asm("??_7Town@@6B@");
 

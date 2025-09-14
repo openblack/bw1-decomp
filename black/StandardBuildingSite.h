@@ -24,9 +24,18 @@ struct StandardBuildingSite
 };
 static_assert(sizeof(struct StandardBuildingSite) == 0x648, "Data type is of wrong size");
 
-// win1.41 008c6df0 mac 10739334 StandardBuildingSite::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20StandardBuildingSite asm("??_R4StandardBuildingSite@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cd470 mac inlined StandardBuildingSite::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20StandardBuildingSite asm("??_R0?AVStandardBuildingSite@@@8");
+// win1.41 009a8638 mac inlined StandardBuildingSite::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20StandardBuildingSite asm("??_R1A@?0A@A@StandardBuildingSite@@8");
+// win1.41 009a8650 mac inlined StandardBuildingSite::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20StandardBuildingSite asm("??_R2StandardBuildingSite@@8");
+// win1.41 009a8668 mac inlined StandardBuildingSite::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20StandardBuildingSite asm("??_R3StandardBuildingSite@@8");
+// win1.41 008c6df0 mac 10739334 StandardBuildingSite::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20StandardBuildingSite asm("??_R4StandardBuildingSite@@6B@");
 // win1.41 008c6df4 mac 1073933c StandardBuildingSite::`vftable'
 extern const struct BuildingSiteVftable __vt__20StandardBuildingSite asm("??_7StandardBuildingSite@@6B@");
 

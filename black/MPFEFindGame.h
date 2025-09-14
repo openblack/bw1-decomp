@@ -12,6 +12,17 @@ struct MPFEFindGame
 };
 static_assert(sizeof(struct MPFEFindGame) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bfd8f0 mac inlined MPFEFindGame::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12MPFEFindGame asm("??_R0?AVMPFEFindGame@@@8");
+// win1.41 009b28c0 mac inlined MPFEFindGame::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12MPFEFindGame asm("??_R1A@?0A@A@MPFEFindGame@@8");
+// win1.41 009b28d8 mac inlined MPFEFindGame::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12MPFEFindGame asm("??_R2MPFEFindGame@@8");
+// win1.41 009b28e8 mac inlined MPFEFindGame::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12MPFEFindGame asm("??_R3MPFEFindGame@@8");
+
 // Override methods
 
 // win1.41 0062f650 mac 103a5d40 MPFEFindGame::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))

@@ -16,6 +16,17 @@ struct GMagicStormAndTornadoInfo
 };
 static_assert(sizeof(struct GMagicStormAndTornadoInfo) == 0x58, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009cbad8 mac inlined GMagicStormAndTornadoInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25GMagicStormAndTornadoInfo asm("??_R0?AVGMagicStormAndTornadoInfo@@@8");
+// win1.41 009a7fd0 mac inlined GMagicStormAndTornadoInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25GMagicStormAndTornadoInfo asm("??_R1A@?0A@A@GMagicStormAndTornadoInfo@@8");
+// win1.41 009a7fe8 mac inlined GMagicStormAndTornadoInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__25GMagicStormAndTornadoInfo asm("??_R2GMagicStormAndTornadoInfo@@8");
+// win1.41 009a8000 mac inlined GMagicStormAndTornadoInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__25GMagicStormAndTornadoInfo asm("??_R3GMagicStormAndTornadoInfo@@8");
+
 // Override methods
 
 // win1.41 00435740 mac 103aebf0 GMagicStormAndTornadoInfo::_dt(void)

@@ -62,9 +62,18 @@ struct CreatureAttitudeToPlayer
 };
 static_assert(sizeof(struct CreatureAttitudeToPlayer) == 0x1db4, "Data type is of wrong size");
 
-// win1.41 008cf3d8 mac 10783e38 CreatureAttitudeToPlayer::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__24CreatureAttitudeToPlayer asm("??_R4CreatureAttitudeToPlayer@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009d9b58 mac inlined CreatureAttitudeToPlayer::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureAttitudeToPlayer asm("??_R0?AVCreatureAttitudeToPlayer@@@8");
+// win1.41 009a9c30 mac inlined CreatureAttitudeToPlayer::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24CreatureAttitudeToPlayer asm("??_R1A@?0A@A@CreatureAttitudeToPlayer@@8");
+// win1.41 009a9c48 mac inlined CreatureAttitudeToPlayer::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__24CreatureAttitudeToPlayer asm("??_R2CreatureAttitudeToPlayer@@8");
+// win1.41 009a9c58 mac inlined CreatureAttitudeToPlayer::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__24CreatureAttitudeToPlayer asm("??_R3CreatureAttitudeToPlayer@@8");
+// win1.41 008cf3d8 mac 10783e38 CreatureAttitudeToPlayer::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__24CreatureAttitudeToPlayer asm("??_R4CreatureAttitudeToPlayer@@6B@");
 // win1.41 008cf3dc mac 10783e40 CreatureAttitudeToPlayer::`vftable'
 extern const struct BaseVftable __vt__24CreatureAttitudeToPlayer asm("??_7CreatureAttitudeToPlayer@@6B@");
 

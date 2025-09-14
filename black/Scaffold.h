@@ -34,9 +34,18 @@ struct Scaffold
 };
 static_assert(sizeof(struct Scaffold) == 0x9c, "Data type is of wrong size");
 
-// win1.41 008e5528 mac 1075a2f8 Scaffold::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Scaffold asm("??_R4Scaffold@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bece58 mac inlined Scaffold::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Scaffold asm("??_R0?AVScaffold@@@8");
+// win1.41 009ae618 mac inlined Scaffold::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Scaffold asm("??_R1A@?0A@A@Scaffold@@8");
+// win1.41 009ae630 mac inlined Scaffold::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Scaffold asm("??_R2Scaffold@@8");
+// win1.41 009ae650 mac inlined Scaffold::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Scaffold asm("??_R3Scaffold@@8");
+// win1.41 008e5528 mac 1075a2f8 Scaffold::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Scaffold asm("??_R4Scaffold@@6B@");
 // win1.41 008e552c mac 1075a300 Scaffold::`vftable'
 extern const struct MobileObjectVftable __vt__8Scaffold asm("??_7Scaffold@@6B@");
 

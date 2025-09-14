@@ -18,6 +18,17 @@ struct GMagicLivingInfo
 };
 static_assert(sizeof(struct GMagicLivingInfo) == 0x1f4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf3ea0 mac inlined GMagicLivingInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GMagicLivingInfo asm("??_R0?AVGMagicLivingInfo@@@8");
+// win1.41 009b1b30 mac inlined GMagicLivingInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GMagicLivingInfo asm("??_R1A@?0A@A@GMagicLivingInfo@@8");
+// win1.41 009b1b48 mac inlined GMagicLivingInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GMagicLivingInfo asm("??_R2GMagicLivingInfo@@8");
+// win1.41 009b1b68 mac inlined GMagicLivingInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GMagicLivingInfo asm("??_R3GMagicLivingInfo@@8");
+
 // Override methods
 
 // win1.41 005fb980 mac inlined GMagicLivingInfo::_dt(void)

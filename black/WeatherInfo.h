@@ -17,9 +17,10 @@ struct WeatherInfo
 };
 static_assert(sizeof(struct WeatherInfo) == 0x64, "Data type is of wrong size");
 
-// win1.41 0099b9b4 mac 109ea14c WeatherInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11WeatherInfo asm("??_R4WeatherInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 0099b9b4 mac 109ea14c WeatherInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11WeatherInfo asm("??_R4WeatherInfo@@6B@");
 // win1.41 0099b9b8 mac 109ea154 WeatherInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__11WeatherInfo asm("??_7WeatherInfo@@6B@");
 
@@ -28,6 +29,17 @@ struct GWeatherInfo
   struct GBaseInfo super;  /* 0x0 */
 };
 static_assert(sizeof(struct GWeatherInfo) == 0x10, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c24760 mac inlined GWeatherInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12GWeatherInfo asm("??_R0?AVGWeatherInfo@@@8");
+// win1.41 009b9fd8 mac inlined GWeatherInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12GWeatherInfo asm("??_R1A@?0A@A@GWeatherInfo@@8");
+// win1.41 009b9ff0 mac inlined GWeatherInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12GWeatherInfo asm("??_R2GWeatherInfo@@8");
+// win1.41 009ba000 mac inlined GWeatherInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12GWeatherInfo asm("??_R3GWeatherInfo@@8");
 
 // Override methods
 

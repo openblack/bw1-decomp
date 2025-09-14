@@ -21,6 +21,17 @@ struct CreaturePen
 };
 static_assert(sizeof(struct CreaturePen) == 0x8c, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009ce8c8 mac inlined CreaturePen::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11CreaturePen asm("??_R0?AVCreaturePen@@@8");
+// win1.41 009ab228 mac inlined CreaturePen::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11CreaturePen asm("??_R1A@?0A@A@CreaturePen@@8");
+// win1.41 009ab240 mac inlined CreaturePen::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11CreaturePen asm("??_R2CreaturePen@@8");
+// win1.41 009ab268 mac inlined CreaturePen::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11CreaturePen asm("??_R3CreaturePen@@8");
+
 // Override methods
 
 // win1.41 004eeed0 mac 10275140 CreaturePen::_dt(void)

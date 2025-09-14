@@ -17,6 +17,17 @@ struct GWorshipSiteUpgradeInfo
 };
 static_assert(sizeof(struct GWorshipSiteUpgradeInfo) == 0x120, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c24d68 mac inlined GWorshipSiteUpgradeInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23GWorshipSiteUpgradeInfo asm("??_R0?AVGWorshipSiteUpgradeInfo@@@8");
+// win1.41 009ba380 mac inlined GWorshipSiteUpgradeInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23GWorshipSiteUpgradeInfo asm("??_R1A@?0A@A@GWorshipSiteUpgradeInfo@@8");
+// win1.41 009ba398 mac inlined GWorshipSiteUpgradeInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23GWorshipSiteUpgradeInfo asm("??_R2GWorshipSiteUpgradeInfo@@8");
+// win1.41 009ba3b8 mac inlined GWorshipSiteUpgradeInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23GWorshipSiteUpgradeInfo asm("??_R3GWorshipSiteUpgradeInfo@@8");
+
 // Override methods
 
 // win1.41 0077ebc0 mac 105b4170 GWorshipSiteUpgradeInfo::_dt(void)

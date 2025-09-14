@@ -35,9 +35,18 @@ struct Container
 };
 static_assert(sizeof(struct Container) == 0x30, "Data type is of wrong size");
 
-// win1.41 008cb97c mac 10739750 Container::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9Container asm("??_R4Container@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009ce830 mac inlined Container::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9Container asm("??_R0?AVContainer@@@8");
+// win1.41 009a8dc0 mac inlined Container::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9Container asm("??_R1A@?0A@A@Container@@8");
+// win1.41 009a9210 mac inlined Container::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9Container asm("??_R2Container@@8");
+// win1.41 009a9228 mac inlined Container::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9Container asm("??_R3Container@@8");
+// win1.41 008cb97c mac 10739750 Container::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9Container asm("??_R4Container@@6B@");
 // win1.41 008cb980 mac 10739758 Container::`vftable'
 extern const struct ContainerVftable __vt__9Container asm("??_7Container@@6B@");
 

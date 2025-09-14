@@ -12,6 +12,17 @@ struct EditingDebugBox
 };
 static_assert(sizeof(struct EditingDebugBox) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bea4f8 mac inlined EditingDebugBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15EditingDebugBox asm("??_R0?AVEditingDebugBox@@@8");
+// win1.41 009acd30 mac inlined EditingDebugBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15EditingDebugBox asm("??_R1A@?0A@A@EditingDebugBox@@8");
+// win1.41 009acd48 mac inlined EditingDebugBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15EditingDebugBox asm("??_R2EditingDebugBox@@8");
+// win1.41 009acd58 mac inlined EditingDebugBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15EditingDebugBox asm("??_R3EditingDebugBox@@8");
+
 // Override methods
 
 // win1.41 0053d520 mac 105c3250 EditingDebugBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))

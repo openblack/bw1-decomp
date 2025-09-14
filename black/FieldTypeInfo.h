@@ -20,9 +20,18 @@ struct GFieldTypeInfo
 };
 static_assert(sizeof(struct GFieldTypeInfo) == 0x154, "Data type is of wrong size");
 
-// win1.41 008d9b2c mac 1073ed24 GFieldTypeInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GFieldTypeInfo asm("??_R4GFieldTypeInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be9d48 mac inlined GFieldTypeInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GFieldTypeInfo asm("??_R0?AVGFieldTypeInfo@@@8");
+// win1.41 009ac1d0 mac inlined GFieldTypeInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GFieldTypeInfo asm("??_R1A@?0A@A@GFieldTypeInfo@@8");
+// win1.41 009ac1e8 mac inlined GFieldTypeInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GFieldTypeInfo asm("??_R2GFieldTypeInfo@@8");
+// win1.41 009ac200 mac inlined GFieldTypeInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GFieldTypeInfo asm("??_R3GFieldTypeInfo@@8");
+// win1.41 008d9b2c mac 1073ed24 GFieldTypeInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GFieldTypeInfo asm("??_R4GFieldTypeInfo@@6B@");
 // win1.41 008d9b30 mac 1073ed2c GFieldTypeInfo::`vftable'
 extern const struct MultiMapFixedVftable __vt__14GFieldTypeInfo asm("??_7GFieldTypeInfo@@6B@");
 

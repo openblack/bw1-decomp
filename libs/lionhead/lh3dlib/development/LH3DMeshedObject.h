@@ -18,9 +18,10 @@ struct LH3DMeshedObject
 };
 static_assert(sizeof(struct LH3DMeshedObject) == 0x80, "Data type is of wrong size");
 
-// win1.41 009a2744 mac 101ca644 LH3DMeshedObject::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16LH3DMeshedObject asm("??_R4LH3DMeshedObject@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009a2744 mac 101ca644 LH3DMeshedObject::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16LH3DMeshedObject asm("??_R4LH3DMeshedObject@@6B@");
 // win1.41 009a2748 mac 101ca65c LH3DMeshedObject::`vftable'
 extern const struct LH3DObjectVftable __vt__16LH3DMeshedObject asm("??_7LH3DMeshedObject@@6B@");
 

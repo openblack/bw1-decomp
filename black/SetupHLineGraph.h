@@ -60,9 +60,18 @@ struct SetupHLineGraph
 };
 static_assert(sizeof(struct SetupHLineGraph) == 0x258, "Data type is of wrong size");
 
-// win1.41 008ab420 mac 10730fcc SetupHLineGraph::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SetupHLineGraph asm("??_R4SetupHLineGraph@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8238 mac inlined SetupHLineGraph::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15SetupHLineGraph asm("??_R0?AUSetupHLineGraph@@@8");
+// win1.41 009a6798 mac inlined SetupHLineGraph::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15SetupHLineGraph asm("??_R1A@?0A@A@SetupHLineGraph@@8");
+// win1.41 009a67b0 mac inlined SetupHLineGraph::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15SetupHLineGraph asm("??_R2SetupHLineGraph@@8");
+// win1.41 009a67c0 mac inlined SetupHLineGraph::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15SetupHLineGraph asm("??_R3SetupHLineGraph@@8");
+// win1.41 008ab420 mac 10730fcc SetupHLineGraph::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SetupHLineGraph asm("??_R4SetupHLineGraph@@6B@");
 // win1.41 008ab424 mac 10730fd4 SetupHLineGraph::`vftable'
 extern const struct SetupHLineGraphVftable __vt__15SetupHLineGraph asm("??_7SetupHLineGraph@@6B@");
 

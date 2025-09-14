@@ -11,6 +11,17 @@ struct MPFEStartGameReadyMessage
 };
 static_assert(sizeof(struct MPFEStartGameReadyMessage) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bfd990 mac inlined MPFEStartGameReadyMessage::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25MPFEStartGameReadyMessage asm("??_R0?AVMPFEStartGameReadyMessage@@@8");
+// win1.41 009b2960 mac inlined MPFEStartGameReadyMessage::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25MPFEStartGameReadyMessage asm("??_R1A@?0A@A@MPFEStartGameReadyMessage@@8");
+// win1.41 009b2978 mac inlined MPFEStartGameReadyMessage::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__25MPFEStartGameReadyMessage asm("??_R2MPFEStartGameReadyMessage@@8");
+// win1.41 009b2988 mac inlined MPFEStartGameReadyMessage::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__25MPFEStartGameReadyMessage asm("??_R3MPFEStartGameReadyMessage@@8");
+
 // Override methods
 
 // win1.41 0062fd00 mac 103a7130 MPFEStartGameReadyMessage::_dt(void)

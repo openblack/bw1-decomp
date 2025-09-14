@@ -21,6 +21,17 @@ struct GameOptionsRoom
 };
 static_assert(sizeof(struct GameOptionsRoom) == 0x160, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c282c0 mac inlined GameOptionsRoom::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GameOptionsRoom asm("??_R0?AVGameOptionsRoom@@@8");
+// win1.41 009ba758 mac inlined GameOptionsRoom::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GameOptionsRoom asm("??_R1A@?0A@A@GameOptionsRoom@@8");
+// win1.41 009ba770 mac inlined GameOptionsRoom::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15GameOptionsRoom asm("??_R2GameOptionsRoom@@8");
+// win1.41 009ba780 mac inlined GameOptionsRoom::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15GameOptionsRoom asm("??_R3GameOptionsRoom@@8");
+
 // Override methods
 
 // win1.41 0078d8f0 mac 102ffdb0 GameOptionsRoom::IsAvailable(void)

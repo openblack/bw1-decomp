@@ -13,9 +13,18 @@ struct SkirmishGameBox
 };
 static_assert(sizeof(struct SkirmishGameBox) == 0x23c, "Data type is of wrong size");
 
-// win1.41 008de948 mac 109ed654 SkirmishGameBox::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SkirmishGameBox asm("??_R4SkirmishGameBox@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea3e8 mac inlined SkirmishGameBox::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15SkirmishGameBox asm("??_R0?AVSkirmishGameBox@@@8");
+// win1.41 009acab0 mac inlined SkirmishGameBox::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15SkirmishGameBox asm("??_R1A@?0A@A@SkirmishGameBox@@8");
+// win1.41 009acac8 mac inlined SkirmishGameBox::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15SkirmishGameBox asm("??_R2SkirmishGameBox@@8");
+// win1.41 009acad8 mac inlined SkirmishGameBox::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15SkirmishGameBox asm("??_R3SkirmishGameBox@@8");
+// win1.41 008de948 mac 109ed654 SkirmishGameBox::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SkirmishGameBox asm("??_R4SkirmishGameBox@@6B@");
 // win1.41 008de94c mac 109ed65c SkirmishGameBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__15SkirmishGameBox asm("??_7SkirmishGameBox@@6B@");
 

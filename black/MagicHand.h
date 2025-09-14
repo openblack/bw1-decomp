@@ -21,6 +21,17 @@ struct GMagicHand
 };
 static_assert(sizeof(struct GMagicHand) == 0x1c, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bf3e58 mac inlined GMagicHand::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GMagicHand asm("??_R0?AVGMagicHand@@@8");
+// win1.41 009b1ae0 mac inlined GMagicHand::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GMagicHand asm("??_R1A@?0A@A@GMagicHand@@8");
+// win1.41 009b1af8 mac inlined GMagicHand::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GMagicHand asm("??_R2GMagicHand@@8");
+// win1.41 009b1b08 mac inlined GMagicHand::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GMagicHand asm("??_R3GMagicHand@@8");
+
 // Override methods
 
 // win1.41 005faf40 mac 103ad580 GMagicHand::_dt(void)

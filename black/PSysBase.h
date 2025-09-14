@@ -17,9 +17,18 @@ struct PSysBase
 };
 static_assert(sizeof(struct PSysBase) == 0x14, "Data type is of wrong size");
 
-// win1.41 008c9c30 mac 10746188 PSysBase::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8PSysBase asm("??_R4PSysBase@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cea90 mac inlined PSysBase::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8PSysBase asm("??_R0?AVPSysBase@@@8");
+// win1.41 009a9050 mac inlined PSysBase::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8PSysBase asm("??_R1A@?0A@A@PSysBase@@8");
+// win1.41 009a9068 mac inlined PSysBase::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8PSysBase asm("??_R2PSysBase@@8");
+// win1.41 009a9078 mac inlined PSysBase::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8PSysBase asm("??_R3PSysBase@@8");
+// win1.41 008c9c30 mac 10746188 PSysBase::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8PSysBase asm("??_R4PSysBase@@6B@");
 // win1.41 008c9c34 mac 106f5fd4 PSysBase::`vftable'
 extern const struct GameThingVftable __vt__8PSysBase asm("??_7PSysBase@@6B@");
 

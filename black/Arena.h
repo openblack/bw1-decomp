@@ -28,9 +28,18 @@ struct GArena
 };
 static_assert(sizeof(struct GArena) == 0x4c, "Data type is of wrong size");
 
-// win1.41 008c2c94 mac 10735f14 GArena::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6GArena asm("??_R4GArena@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c95e0 mac inlined GArena::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6GArena asm("??_R0?AVGArena@@@8");
+// win1.41 009a79f8 mac inlined GArena::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6GArena asm("??_R1A@?0A@A@GArena@@8");
+// win1.41 009a7a10 mac inlined GArena::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6GArena asm("??_R2GArena@@8");
+// win1.41 009a7a28 mac inlined GArena::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6GArena asm("??_R3GArena@@8");
+// win1.41 008c2c94 mac 10735f14 GArena::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6GArena asm("??_R4GArena@@6B@");
 // win1.41 008c2c98 mac 106f5c54 GArena::`vftable'
 extern const struct GameThingVftable __vt__6GArena asm("??_7GArena@@6B@");
 
@@ -60,6 +69,17 @@ struct ArenaSpellIcon
   struct Fixed super;  /* 0x0 */
 };
 static_assert(sizeof(struct ArenaSpellIcon) == 0x58, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 009c9628 mac inlined ArenaSpellIcon::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14ArenaSpellIcon asm("??_R0?AVArenaSpellIcon@@@8");
+// win1.41 009a7a88 mac inlined ArenaSpellIcon::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14ArenaSpellIcon asm("??_R1A@?0A@A@ArenaSpellIcon@@8");
+// win1.41 009a7aa0 mac inlined ArenaSpellIcon::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14ArenaSpellIcon asm("??_R2ArenaSpellIcon@@8");
+// win1.41 009a7ac0 mac inlined ArenaSpellIcon::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14ArenaSpellIcon asm("??_R3ArenaSpellIcon@@8");
 
 // Override methods
 

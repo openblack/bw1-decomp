@@ -28,9 +28,18 @@ struct InfluenceRing
 };
 static_assert(sizeof(struct InfluenceRing) == 0x44, "Data type is of wrong size");
 
-// win1.41 008ea3c8 mac 10744e50 InfluenceRing::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13InfluenceRing asm("??_R4InfluenceRing@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becc30 mac inlined InfluenceRing::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13InfluenceRing asm("??_R0?AVInfluenceRing@@@8");
+// win1.41 009add78 mac inlined InfluenceRing::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13InfluenceRing asm("??_R1A@?0A@A@InfluenceRing@@8");
+// win1.41 009add90 mac inlined InfluenceRing::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13InfluenceRing asm("??_R2InfluenceRing@@8");
+// win1.41 009adda8 mac inlined InfluenceRing::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13InfluenceRing asm("??_R3InfluenceRing@@8");
+// win1.41 008ea3c8 mac 10744e50 InfluenceRing::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13InfluenceRing asm("??_R4InfluenceRing@@6B@");
 // win1.41 008ea3cc mac 10744e58 InfluenceRing::`vftable'
 extern const struct GameThingWithPosVftable __vt__13InfluenceRing asm("??_7InfluenceRing@@6B@");
 

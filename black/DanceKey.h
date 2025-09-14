@@ -22,9 +22,18 @@ struct DanceKeyFrame
 };
 static_assert(sizeof(struct DanceKeyFrame) == 0x24, "Data type is of wrong size");
 
-// win1.41 008d46ec mac 10997014 DanceKeyFrame::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13DanceKeyFrame asm("??_R4DanceKeyFrame@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be83c8 mac inlined DanceKeyFrame::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13DanceKeyFrame asm("??_R0?AVDanceKeyFrame@@@8");
+// win1.41 009ab750 mac inlined DanceKeyFrame::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13DanceKeyFrame asm("??_R1A@?0A@A@DanceKeyFrame@@8");
+// win1.41 009ab768 mac inlined DanceKeyFrame::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13DanceKeyFrame asm("??_R2DanceKeyFrame@@8");
+// win1.41 009ab778 mac inlined DanceKeyFrame::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13DanceKeyFrame asm("??_R3DanceKeyFrame@@8");
+// win1.41 008d46ec mac 10997014 DanceKeyFrame::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13DanceKeyFrame asm("??_R4DanceKeyFrame@@6B@");
 // win1.41 008d46f0 mac 1099701c DanceKeyFrame::`vftable'
 extern const struct GameThingVftable __vt__13DanceKeyFrame asm("??_7DanceKeyFrame@@6B@");
 

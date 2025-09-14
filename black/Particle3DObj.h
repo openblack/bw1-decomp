@@ -17,6 +17,17 @@ struct Particle3DObj
 };
 static_assert(sizeof(struct Particle3DObj) == 0x18, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c094c8 mac inlined Particle3DObj::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13Particle3DObj asm("??_R0?AVParticle3DObj@@@8");
+// win1.41 009b7e50 mac inlined Particle3DObj::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13Particle3DObj asm("??_R1A@?0A@A@Particle3DObj@@8");
+// win1.41 009b7e68 mac inlined Particle3DObj::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13Particle3DObj asm("??_R2Particle3DObj@@8");
+// win1.41 009b7e88 mac inlined Particle3DObj::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13Particle3DObj asm("??_R3Particle3DObj@@8");
+
 // Override methods
 
 // win1.41 006c7a60 mac inlined Particle3DObj::_dt(void)

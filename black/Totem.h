@@ -32,9 +32,18 @@ struct Totem
 };
 static_assert(sizeof(struct Totem) == 0xe4, "Data type is of wrong size");
 
-// win1.41 008ef578 mac 10755f88 Totem::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Totem asm("??_R4Totem@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becf30 mac inlined Totem::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Totem asm("??_R0?AVTotem@@@8");
+// win1.41 009ae8e8 mac inlined Totem::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Totem asm("??_R1A@?0A@A@Totem@@8");
+// win1.41 009ae4c8 mac inlined Totem::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Totem asm("??_R2Totem@@8");
+// win1.41 009ae4f0 mac inlined Totem::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Totem asm("??_R3Totem@@8");
+// win1.41 008ef578 mac 10755f88 Totem::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Totem asm("??_R4Totem@@6B@");
 // win1.41 008ef57c mac 10755fc8 Totem::`vftable'
 extern const struct AbodeVftable __vt__5Totem asm("??_7Totem@@6B@");
 

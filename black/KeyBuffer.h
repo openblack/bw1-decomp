@@ -16,9 +16,18 @@ struct GKeyBuffer
 };
 static_assert(sizeof(struct GKeyBuffer) == 0x10, "Data type is of wrong size");
 
-// win1.41 008df77c mac 10733c44 GKeyBuffer::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GKeyBuffer asm("??_R4GKeyBuffer@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bec3b0 mac inlined GKeyBuffer::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GKeyBuffer asm("??_R0?AVGKeyBuffer@@@8");
+// win1.41 009ad100 mac inlined GKeyBuffer::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GKeyBuffer asm("??_R1A@?0A@A@GKeyBuffer@@8");
+// win1.41 009ad118 mac inlined GKeyBuffer::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GKeyBuffer asm("??_R2GKeyBuffer@@8");
+// win1.41 009ad128 mac inlined GKeyBuffer::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GKeyBuffer asm("??_R3GKeyBuffer@@8");
+// win1.41 008df77c mac 10733c44 GKeyBuffer::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GKeyBuffer asm("??_R4GKeyBuffer@@6B@");
 // win1.41 008df780 mac 10733c4c GKeyBuffer::`vftable'
 extern const struct BaseVftable __vt__10GKeyBuffer asm("??_7GKeyBuffer@@6B@");
 
@@ -37,6 +46,17 @@ struct GKeyInput
   struct Base super;  /* 0x0 */
 };
 static_assert(sizeof(struct GKeyInput) == 0x8, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bf3340 mac inlined GKeyInput::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GKeyInput asm("??_R0?AVGKeyInput@@@8");
+// win1.41 009b1828 mac inlined GKeyInput::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GKeyInput asm("??_R1A@?0A@A@GKeyInput@@8");
+// win1.41 009b1840 mac inlined GKeyInput::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GKeyInput asm("??_R2GKeyInput@@8");
+// win1.41 009b1850 mac inlined GKeyInput::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GKeyInput asm("??_R3GKeyInput@@8");
 
 // Override methods
 

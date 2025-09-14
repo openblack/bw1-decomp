@@ -18,6 +18,17 @@ struct PlannedCitadelPart
 };
 static_assert(sizeof(struct PlannedCitadelPart) == 0x48, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009cea10 mac inlined PlannedCitadelPart::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18PlannedCitadelPart asm("??_R0?AVPlannedCitadelPart@@@8");
+// win1.41 009a8f80 mac inlined PlannedCitadelPart::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18PlannedCitadelPart asm("??_R1A@?0A@A@PlannedCitadelPart@@8");
+// win1.41 009a9198 mac inlined PlannedCitadelPart::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18PlannedCitadelPart asm("??_R2PlannedCitadelPart@@8");
+// win1.41 009a91b0 mac inlined PlannedCitadelPart::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18PlannedCitadelPart asm("??_R3PlannedCitadelPart@@8");
+
 // Override methods
 
 // win1.41 00469670 mac 101bff10 PlannedCitadelPart::_dt(void)

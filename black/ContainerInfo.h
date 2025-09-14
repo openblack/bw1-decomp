@@ -22,6 +22,17 @@ struct GContainerInfo
 };
 static_assert(sizeof(struct GContainerInfo) == 0x148, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009ce7f0 mac inlined GContainerInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GContainerInfo asm("??_R0?AVGContainerInfo@@@8");
+// win1.41 009a8d50 mac inlined GContainerInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GContainerInfo asm("??_R1A@?0A@A@GContainerInfo@@8");
+// win1.41 009a91d8 mac inlined GContainerInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GContainerInfo asm("??_R2GContainerInfo@@8");
+// win1.41 009a91e8 mac inlined GContainerInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GContainerInfo asm("??_R3GContainerInfo@@8");
+
 // Override methods
 
 // win1.41 0046b880 mac 100bfd60 GContainerInfo::_dt(void)

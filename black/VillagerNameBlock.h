@@ -43,9 +43,18 @@ struct VillagerName
 };
 static_assert(sizeof(struct VillagerName) == 0x464, "Data type is of wrong size");
 
-// win1.41 0099a9b8 mac 109e9588 VillagerName::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12VillagerName asm("??_R4VillagerName@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c24558 mac inlined VillagerName::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12VillagerName asm("??_R0?AUVillagerName@@@8");
+// win1.41 009b9dd8 mac inlined VillagerName::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12VillagerName asm("??_R1A@?0A@A@VillagerName@@8");
+// win1.41 009b9df0 mac inlined VillagerName::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12VillagerName asm("??_R2VillagerName@@8");
+// win1.41 009b9e00 mac inlined VillagerName::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12VillagerName asm("??_R3VillagerName@@8");
+// win1.41 0099a9b8 mac 109e9588 VillagerName::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12VillagerName asm("??_R4VillagerName@@6B@");
 // win1.41 0099a9bc mac 109e9590 VillagerName::`vftable'
 extern const struct DrawingObjectVftable __vt__12VillagerName asm("??_7VillagerName@@6B@");
 

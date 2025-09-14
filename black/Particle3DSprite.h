@@ -18,6 +18,17 @@ struct Particle3DSprite
 };
 static_assert(sizeof(struct Particle3DSprite) == 0x18, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bed5e0 mac inlined Particle3DSprite::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16Particle3DSprite asm("??_R0?AVParticle3DSprite@@@8");
+// win1.41 009aee60 mac inlined Particle3DSprite::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16Particle3DSprite asm("??_R1A@?0A@A@Particle3DSprite@@8");
+// win1.41 009aee78 mac inlined Particle3DSprite::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16Particle3DSprite asm("??_R2Particle3DSprite@@8");
+// win1.41 009aee90 mac inlined Particle3DSprite::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16Particle3DSprite asm("??_R3Particle3DSprite@@8");
+
 // Override methods
 
 // win1.41 0055f070 mac inlined Particle3DSprite::_dt(void)

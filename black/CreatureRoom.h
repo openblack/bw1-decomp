@@ -15,9 +15,18 @@ struct CreatureRoom
 };
 static_assert(sizeof(struct CreatureRoom) == 0x4d8, "Data type is of wrong size");
 
-// win1.41 0099eb2c mac 1098e5f0 CreatureRoom::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreatureRoom asm("??_R4CreatureRoom@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c274c8 mac inlined CreatureRoom::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12CreatureRoom asm("??_R0?AVCreatureRoom@@@8");
+// win1.41 009ba5f8 mac inlined CreatureRoom::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12CreatureRoom asm("??_R1A@?0A@A@CreatureRoom@@8");
+// win1.41 009ba610 mac inlined CreatureRoom::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12CreatureRoom asm("??_R2CreatureRoom@@8");
+// win1.41 009ba620 mac inlined CreatureRoom::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12CreatureRoom asm("??_R3CreatureRoom@@8");
+// win1.41 0099eb2c mac 1098e5f0 CreatureRoom::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreatureRoom asm("??_R4CreatureRoom@@6B@");
 // win1.41 0099eb30 mac 1098e5f8 CreatureRoom::`vftable'
 extern const struct TempleRoomVftable __vt__12CreatureRoom asm("??_7CreatureRoom@@6B@");
 

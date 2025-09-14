@@ -16,6 +16,17 @@ struct GMagicShieldInfo
 };
 static_assert(sizeof(struct GMagicShieldInfo) == 0x58, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009ccfa0 mac inlined GMagicShieldInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GMagicShieldInfo asm("??_R0?AVGMagicShieldInfo@@@8");
+// win1.41 009a8090 mac inlined GMagicShieldInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GMagicShieldInfo asm("??_R1A@?0A@A@GMagicShieldInfo@@8");
+// win1.41 009a80a8 mac inlined GMagicShieldInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GMagicShieldInfo asm("??_R2GMagicShieldInfo@@8");
+// win1.41 009a80c0 mac inlined GMagicShieldInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GMagicShieldInfo asm("??_R3GMagicShieldInfo@@8");
+
 // Override methods
 
 // win1.41 00435780 mac 103aeca0 GMagicShieldInfo::_dt(void)

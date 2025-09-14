@@ -39,9 +39,18 @@ struct ShowNeedsVisuals
 };
 static_assert(sizeof(struct ShowNeedsVisuals) == 0x94, "Data type is of wrong size");
 
-// win1.41 008ecaa8 mac 1075acf0 ShowNeedsVisuals::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16ShowNeedsVisuals asm("??_R4ShowNeedsVisuals@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009d9678 mac inlined ShowNeedsVisuals::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16ShowNeedsVisuals asm("??_R0?AVShowNeedsVisuals@@@8");
+// win1.41 009ae6d0 mac inlined ShowNeedsVisuals::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16ShowNeedsVisuals asm("??_R1A@?0A@A@ShowNeedsVisuals@@8");
+// win1.41 009ae6e8 mac inlined ShowNeedsVisuals::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16ShowNeedsVisuals asm("??_R2ShowNeedsVisuals@@8");
+// win1.41 009ae700 mac inlined ShowNeedsVisuals::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16ShowNeedsVisuals asm("??_R3ShowNeedsVisuals@@8");
+// win1.41 008ecaa8 mac 1075acf0 ShowNeedsVisuals::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16ShowNeedsVisuals asm("??_R4ShowNeedsVisuals@@6B@");
 // win1.41 008ecaac mac 1075acf8 ShowNeedsVisuals::`vftable'
 extern const struct ObjectVftable __vt__16ShowNeedsVisuals asm("??_7ShowNeedsVisuals@@6B@");
 

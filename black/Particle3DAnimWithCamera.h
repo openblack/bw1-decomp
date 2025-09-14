@@ -16,6 +16,17 @@ struct Particle3DAnimWithCamera
 };
 static_assert(sizeof(struct Particle3DAnimWithCamera) == 0x18, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c09558 mac inlined Particle3DAnimWithCamera::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24Particle3DAnimWithCamera asm("??_R0?AVParticle3DAnimWithCamera@@@8");
+// win1.41 009b8000 mac inlined Particle3DAnimWithCamera::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24Particle3DAnimWithCamera asm("??_R1A@?0A@A@Particle3DAnimWithCamera@@8");
+// win1.41 009b8018 mac inlined Particle3DAnimWithCamera::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__24Particle3DAnimWithCamera asm("??_R2Particle3DAnimWithCamera@@8");
+// win1.41 009b8038 mac inlined Particle3DAnimWithCamera::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__24Particle3DAnimWithCamera asm("??_R3Particle3DAnimWithCamera@@8");
+
 // Override methods
 
 // win1.41 006c8680 mac inlined Particle3DAnimWithCamera::_dt(void)

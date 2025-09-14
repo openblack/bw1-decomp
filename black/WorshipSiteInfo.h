@@ -32,9 +32,18 @@ struct GWorshipSiteInfo
 };
 static_assert(sizeof(struct GWorshipSiteInfo) == 0x160, "Data type is of wrong size");
 
-// win1.41 0099c474 mac 109eb3b4 GWorshipSiteInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GWorshipSiteInfo asm("??_R4GWorshipSiteInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00c24cf0 mac inlined GWorshipSiteInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GWorshipSiteInfo asm("??_R0?AVGWorshipSiteInfo@@@8");
+// win1.41 009ba2c0 mac inlined GWorshipSiteInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GWorshipSiteInfo asm("??_R1A@?0A@A@GWorshipSiteInfo@@8");
+// win1.41 009ba2d8 mac inlined GWorshipSiteInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GWorshipSiteInfo asm("??_R2GWorshipSiteInfo@@8");
+// win1.41 009ba2f8 mac inlined GWorshipSiteInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GWorshipSiteInfo asm("??_R3GWorshipSiteInfo@@8");
+// win1.41 0099c474 mac 109eb3b4 GWorshipSiteInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GWorshipSiteInfo asm("??_R4GWorshipSiteInfo@@6B@");
 // win1.41 0099c478 mac 109eb3bc GWorshipSiteInfo::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__16GWorshipSiteInfo asm("??_7GWorshipSiteInfo@@6B@");
 

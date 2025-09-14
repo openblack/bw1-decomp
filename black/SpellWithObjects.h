@@ -28,9 +28,18 @@ struct SpellWithObjects
 };
 static_assert(sizeof(struct SpellWithObjects) == 0xf4, "Data type is of wrong size");
 
-// win1.41 008f452c mac 109a58f4 SpellWithObjects::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16SpellWithObjects asm("??_R4SpellWithObjects@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becca0 mac inlined SpellWithObjects::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16SpellWithObjects asm("??_R0?AVSpellWithObjects@@@8");
+// win1.41 009adf88 mac inlined SpellWithObjects::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16SpellWithObjects asm("??_R1A@?0A@A@SpellWithObjects@@8");
+// win1.41 009ad820 mac inlined SpellWithObjects::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16SpellWithObjects asm("??_R2SpellWithObjects@@8");
+// win1.41 009ad838 mac inlined SpellWithObjects::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16SpellWithObjects asm("??_R3SpellWithObjects@@8");
+// win1.41 008f452c mac 109a58f4 SpellWithObjects::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16SpellWithObjects asm("??_R4SpellWithObjects@@6B@");
 // win1.41 008f4530 mac 109a591c SpellWithObjects::`vftable'
 extern const struct SpellWithObjectsVftable __vt__16SpellWithObjects asm("??_7SpellWithObjects@@6B@");
 

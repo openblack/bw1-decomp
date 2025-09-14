@@ -14,9 +14,18 @@ struct MainMenu
 };
 static_assert(sizeof(struct MainMenu) == 0x38, "Data type is of wrong size");
 
-// win1.41 008dec40 mac 109ed7d4 MainMenu::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8MainMenu asm("??_R4MainMenu@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bea330 mac inlined MainMenu::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8MainMenu asm("??_R0?AVMainMenu@@@8");
+// win1.41 009ac8d0 mac inlined MainMenu::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8MainMenu asm("??_R1A@?0A@A@MainMenu@@8");
+// win1.41 009ac8e8 mac inlined MainMenu::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8MainMenu asm("??_R2MainMenu@@8");
+// win1.41 009ac8f8 mac inlined MainMenu::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8MainMenu asm("??_R3MainMenu@@8");
+// win1.41 008dec40 mac 109ed7d4 MainMenu::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8MainMenu asm("??_R4MainMenu@@6B@");
 // win1.41 008dec44 mac 109ed7dc MainMenu::`vftable'
 extern const struct DialogBoxBaseVftable __vt__8MainMenu asm("??_7MainMenu@@6B@");
 

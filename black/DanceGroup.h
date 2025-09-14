@@ -34,9 +34,18 @@ struct DanceGroup
 };
 static_assert(sizeof(struct DanceGroup) == 0x17c, "Data type is of wrong size");
 
-// win1.41 008d44cc mac 10996e7c DanceGroup::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10DanceGroup asm("??_R4DanceGroup@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be8298 mac inlined DanceGroup::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10DanceGroup asm("??_R0?AVDanceGroup@@@8");
+// win1.41 009ab6b0 mac inlined DanceGroup::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10DanceGroup asm("??_R1A@?0A@A@DanceGroup@@8");
+// win1.41 009ab6c8 mac inlined DanceGroup::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10DanceGroup asm("??_R2DanceGroup@@8");
+// win1.41 009ab6d8 mac inlined DanceGroup::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10DanceGroup asm("??_R3DanceGroup@@8");
+// win1.41 008d44cc mac 10996e7c DanceGroup::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10DanceGroup asm("??_R4DanceGroup@@6B@");
 // win1.41 008d44d0 mac 10996e84 DanceGroup::`vftable'
 extern const struct GameThingVftable __vt__10DanceGroup asm("??_7DanceGroup@@6B@");
 

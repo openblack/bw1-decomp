@@ -27,6 +27,17 @@ struct GBelief
 };
 static_assert(sizeof(struct GBelief) == 0x1d0, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c22bb8 mac inlined GBelief::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7GBelief asm("??_R0?AVGBelief@@@8");
+// win1.41 009b9ae8 mac inlined GBelief::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7GBelief asm("??_R1A@?0A@A@GBelief@@8");
+// win1.41 009b9b00 mac inlined GBelief::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7GBelief asm("??_R2GBelief@@8");
+// win1.41 009b9b10 mac inlined GBelief::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7GBelief asm("??_R3GBelief@@8");
+
 // Non-virtual methods
 
 // win1.41 004387d0 mac 100b1700 GBelief::SetBelief(unsigned long, float)

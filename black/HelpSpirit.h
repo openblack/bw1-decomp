@@ -24,9 +24,18 @@ struct HelpSpirit
 };
 static_assert(sizeof(struct HelpSpirit) == 0x64, "Data type is of wrong size");
 
-// win1.41 009154b4 mac 1099bee0 HelpSpirit::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10HelpSpirit asm("??_R4HelpSpirit@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf0c08 mac inlined HelpSpirit::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10HelpSpirit asm("??_R0?AVHelpSpirit@@@8");
+// win1.41 009b12f8 mac inlined HelpSpirit::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10HelpSpirit asm("??_R1A@?0A@A@HelpSpirit@@8");
+// win1.41 009b1310 mac inlined HelpSpirit::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10HelpSpirit asm("??_R2HelpSpirit@@8");
+// win1.41 009b1328 mac inlined HelpSpirit::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10HelpSpirit asm("??_R3HelpSpirit@@8");
+// win1.41 009154b4 mac 1099bee0 HelpSpirit::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10HelpSpirit asm("??_R4HelpSpirit@@6B@");
 // win1.41 009154b8 mac 1099bee8 HelpSpirit::`vftable'
 extern const struct ObjectVftable __vt__10HelpSpirit asm("??_7HelpSpirit@@6B@");
 

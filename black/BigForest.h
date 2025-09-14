@@ -34,9 +34,18 @@ struct BigForest
 };
 static_assert(sizeof(struct BigForest) == 0x88, "Data type is of wrong size");
 
-// win1.41 008c5900 mac 10783da4 BigForest::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9BigForest asm("??_R4BigForest@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009cd2c0 mac inlined BigForest::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9BigForest asm("??_R0?AVBigForest@@@8");
+// win1.41 009a8498 mac inlined BigForest::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9BigForest asm("??_R1A@?0A@A@BigForest@@8");
+// win1.41 009a84b0 mac inlined BigForest::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9BigForest asm("??_R2BigForest@@8");
+// win1.41 009a84d0 mac inlined BigForest::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9BigForest asm("??_R3BigForest@@8");
+// win1.41 008c5900 mac 10783da4 BigForest::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9BigForest asm("??_R4BigForest@@6B@");
 // win1.41 008c5904 mac 106f7ce0 BigForest::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__9BigForest asm("??_7BigForest@@6B@");
 

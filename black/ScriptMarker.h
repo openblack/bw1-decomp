@@ -18,9 +18,18 @@ struct ScriptMarker
 };
 static_assert(sizeof(struct ScriptMarker) == 0x28, "Data type is of wrong size");
 
-// win1.41 008e10ac mac 109c17cc ScriptMarker::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12ScriptMarker asm("??_R4ScriptMarker@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00becf10 mac inlined ScriptMarker::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12ScriptMarker asm("??_R0?AVScriptMarker@@@8");
+// win1.41 009ae890 mac inlined ScriptMarker::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12ScriptMarker asm("??_R1A@?0A@A@ScriptMarker@@8");
+// win1.41 009ae8a8 mac inlined ScriptMarker::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12ScriptMarker asm("??_R2ScriptMarker@@8");
+// win1.41 009ae8c0 mac inlined ScriptMarker::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12ScriptMarker asm("??_R3ScriptMarker@@8");
+// win1.41 008e10ac mac 109c17cc ScriptMarker::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12ScriptMarker asm("??_R4ScriptMarker@@6B@");
 // win1.41 008e10b0 mac 106fa474 ScriptMarker::`vftable'
 extern const struct GameThingWithPosVftable __vt__12ScriptMarker asm("??_7ScriptMarker@@6B@");
 

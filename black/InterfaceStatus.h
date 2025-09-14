@@ -66,9 +66,18 @@ struct GInterfaceStatus
 };
 static_assert(sizeof(struct GInterfaceStatus) == 0x134, "Data type is of wrong size");
 
-// win1.41 0092accc mac 1098d398 GInterfaceStatus::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GInterfaceStatus asm("??_R4GInterfaceStatus@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00be0340 mac inlined GInterfaceStatus::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GInterfaceStatus asm("??_R0?AVGInterfaceStatus@@@8");
+// win1.41 009b16e0 mac inlined GInterfaceStatus::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GInterfaceStatus asm("??_R1A@?0A@A@GInterfaceStatus@@8");
+// win1.41 009b16f8 mac inlined GInterfaceStatus::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GInterfaceStatus asm("??_R2GInterfaceStatus@@8");
+// win1.41 009b1710 mac inlined GInterfaceStatus::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GInterfaceStatus asm("??_R3GInterfaceStatus@@8");
+// win1.41 0092accc mac 1098d398 GInterfaceStatus::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GInterfaceStatus asm("??_R4GInterfaceStatus@@6B@");
 // win1.41 0092acd0 mac 106f8170 GInterfaceStatus::`vftable'
 extern const struct GameThingWithPosVftable __vt__16GInterfaceStatus asm("??_7GInterfaceStatus@@6B@");
 

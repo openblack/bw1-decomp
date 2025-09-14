@@ -18,6 +18,17 @@ struct Chain
 };
 static_assert(sizeof(struct Chain) == 0x14, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00c095a8 mac inlined Chain::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Chain asm("??_R0?AVChain@@@8");
+// win1.41 009b8078 mac inlined Chain::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Chain asm("??_R1A@?0A@A@Chain@@8");
+// win1.41 009b8090 mac inlined Chain::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Chain asm("??_R2Chain@@8");
+// win1.41 009b80a8 mac inlined Chain::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Chain asm("??_R3Chain@@8");
+
 // Override methods
 
 // win1.41 006c8810 mac 1047b970 Chain::_dt(void)

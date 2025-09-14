@@ -19,6 +19,17 @@ struct PlannedFeature
 };
 static_assert(sizeof(struct PlannedFeature) == 0x48, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00be9cb0 mac inlined PlannedFeature::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14PlannedFeature asm("??_R0?AVPlannedFeature@@@8");
+// win1.41 009ac058 mac inlined PlannedFeature::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14PlannedFeature asm("??_R1A@?0A@A@PlannedFeature@@8");
+// win1.41 009ac070 mac inlined PlannedFeature::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14PlannedFeature asm("??_R2PlannedFeature@@8");
+// win1.41 009ac088 mac inlined PlannedFeature::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14PlannedFeature asm("??_R3PlannedFeature@@8");
+
 // Override methods
 
 // win1.41 005274a0 mac 100d1600 PlannedFeature::_dt(void)

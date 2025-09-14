@@ -37,9 +37,18 @@ struct CitadelPart
 };
 static_assert(sizeof(struct CitadelPart) == 0x8c, "Data type is of wrong size");
 
-// win1.41 008caafc mac 107339ec CitadelPart::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11CitadelPart asm("??_R4CitadelPart@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009ce888 mac inlined CitadelPart::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11CitadelPart asm("??_R0?AVCitadelPart@@@8");
+// win1.41 009a8f00 mac inlined CitadelPart::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11CitadelPart asm("??_R1A@?0A@A@CitadelPart@@8");
+// win1.41 009a9150 mac inlined CitadelPart::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11CitadelPart asm("??_R2CitadelPart@@8");
+// win1.41 009a9170 mac inlined CitadelPart::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11CitadelPart asm("??_R3CitadelPart@@8");
+// win1.41 008caafc mac 107339ec CitadelPart::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11CitadelPart asm("??_R4CitadelPart@@6B@");
 // win1.41 008cab00 mac 10733a24 CitadelPart::`vftable'
 extern const struct MultiMapFixedVftable __vt__11CitadelPart asm("??_7CitadelPart@@6B@");
 

@@ -18,6 +18,17 @@ struct BWLan
 };
 static_assert(sizeof(struct BWLan) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009cd970 mac inlined BWLan::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5BWLan asm("??_R0?AVBWLan@@@8");
+// win1.41 009a8798 mac inlined BWLan::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5BWLan asm("??_R1A@?0A@A@BWLan@@8");
+// win1.41 009a87b0 mac inlined BWLan::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5BWLan asm("??_R2BWLan@@8");
+// win1.41 009a87c0 mac inlined BWLan::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5BWLan asm("??_R3BWLan@@8");
+
 // Override methods
 
 // win1.41 004408e0 mac inlined BWLan::SendMessageW(wchar_t *, bool, MPFEPlayerDetails *)

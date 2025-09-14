@@ -12,6 +12,17 @@ struct SetupOnlineLandscapes
 };
 static_assert(sizeof(struct SetupOnlineLandscapes) == 0x10, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00bea4b0 mac inlined SetupOnlineLandscapes::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21SetupOnlineLandscapes asm("??_R0?AVSetupOnlineLandscapes@@@8");
+// win1.41 009acc90 mac inlined SetupOnlineLandscapes::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21SetupOnlineLandscapes asm("??_R1A@?0A@A@SetupOnlineLandscapes@@8");
+// win1.41 009acca8 mac inlined SetupOnlineLandscapes::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__21SetupOnlineLandscapes asm("??_R2SetupOnlineLandscapes@@8");
+// win1.41 009accb8 mac inlined SetupOnlineLandscapes::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__21SetupOnlineLandscapes asm("??_R3SetupOnlineLandscapes@@8");
+
 // Override methods
 
 // win1.41 00547ff0 mac 105cbb10 SetupOnlineLandscapes::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))

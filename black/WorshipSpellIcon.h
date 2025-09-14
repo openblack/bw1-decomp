@@ -46,9 +46,18 @@ struct WorshipSpellIcon
 };
 static_assert(sizeof(struct WorshipSpellIcon) == 0x140, "Data type is of wrong size");
 
-// win1.41 0099d874 mac 10733ab0 WorshipSpellIcon::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16WorshipSpellIcon asm("??_R4WorshipSpellIcon@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf4178 mac inlined WorshipSpellIcon::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16WorshipSpellIcon asm("??_R0?AVWorshipSpellIcon@@@8");
+// win1.41 009ba4a8 mac inlined WorshipSpellIcon::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16WorshipSpellIcon asm("??_R1A@?0A@A@WorshipSpellIcon@@8");
+// win1.41 009ba4c0 mac inlined WorshipSpellIcon::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16WorshipSpellIcon asm("??_R2WorshipSpellIcon@@8");
+// win1.41 009ba4e8 mac inlined WorshipSpellIcon::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16WorshipSpellIcon asm("??_R3WorshipSpellIcon@@8");
+// win1.41 0099d874 mac 10733ab0 WorshipSpellIcon::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16WorshipSpellIcon asm("??_R4WorshipSpellIcon@@6B@");
 // win1.41 0099d878 mac 106f5b44 WorshipSpellIcon::`vftable'
 extern const struct MultiMapFixedVftable __vt__16WorshipSpellIcon asm("??_7WorshipSpellIcon@@6B@");
 
@@ -109,6 +118,17 @@ struct PrayerIcon
   struct SingleMapFixed super;  /* 0x0 */
 };
 static_assert(sizeof(struct PrayerIcon) == 0x5c, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00c02120 mac inlined PrayerIcon::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10PrayerIcon asm("??_R0?AVPrayerIcon@@@8");
+// win1.41 009b3668 mac inlined PrayerIcon::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10PrayerIcon asm("??_R1A@?0A@A@PrayerIcon@@8");
+// win1.41 009b3680 mac inlined PrayerIcon::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10PrayerIcon asm("??_R2PrayerIcon@@8");
+// win1.41 009b36a0 mac inlined PrayerIcon::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10PrayerIcon asm("??_R3PrayerIcon@@8");
 
 // Override methods
 

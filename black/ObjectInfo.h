@@ -88,9 +88,18 @@ struct GObjectInfo
 };
 static_assert(sizeof(struct GObjectInfo) == 0x100, "Data type is of wrong size");
 
-// win1.41 00930a5c mac 10734630 GObjectInfo::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GObjectInfo asm("??_R4GObjectInfo@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c7eb0 mac inlined GObjectInfo::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GObjectInfo asm("??_R0?AVGObjectInfo@@@8");
+// win1.41 009a6338 mac inlined GObjectInfo::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GObjectInfo asm("??_R1A@?0A@A@GObjectInfo@@8");
+// win1.41 009b2e08 mac inlined GObjectInfo::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11GObjectInfo asm("??_R2GObjectInfo@@8");
+// win1.41 009b2e18 mac inlined GObjectInfo::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11GObjectInfo asm("??_R3GObjectInfo@@8");
+// win1.41 00930a5c mac 10734630 GObjectInfo::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GObjectInfo asm("??_R4GObjectInfo@@6B@");
 // win1.41 00930a60 mac 10734638 GObjectInfo::`vftable'
 extern const struct GObjectInfoVftable __vt__11GObjectInfo asm("??_7GObjectInfo@@6B@");
 

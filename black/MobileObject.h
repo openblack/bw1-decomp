@@ -53,9 +53,18 @@ struct MobileObject
 };
 static_assert(sizeof(struct MobileObject) == 0x68, "Data type is of wrong size");
 
-// win1.41 008eed18 mac 106f3288 MobileObject::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12MobileObject asm("??_R4MobileObject@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c9698 mac inlined MobileObject::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12MobileObject asm("??_R0?AVMobileObject@@@8");
+// win1.41 009a7b60 mac inlined MobileObject::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12MobileObject asm("??_R1A@?0A@A@MobileObject@@8");
+// win1.41 009ae0c0 mac inlined MobileObject::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12MobileObject asm("??_R2MobileObject@@8");
+// win1.41 009ae0e0 mac inlined MobileObject::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12MobileObject asm("??_R3MobileObject@@8");
+// win1.41 008eed18 mac 106f3288 MobileObject::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12MobileObject asm("??_R4MobileObject@@6B@");
 // win1.41 008eed1c mac 109ab974 MobileObject::`vftable'
 extern const struct MobileObjectVftable __vt__12MobileObject asm("??_7MobileObject@@6B@");
 
@@ -167,6 +176,17 @@ struct GSpeedThreshold
   struct GBaseInfo super;  /* 0x0 */
 };
 static_assert(sizeof(struct GSpeedThreshold) == 0x10, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00bf4218 mac inlined GSpeedThreshold::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GSpeedThreshold asm("??_R0?AVGSpeedThreshold@@@8");
+// win1.41 009b1f98 mac inlined GSpeedThreshold::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GSpeedThreshold asm("??_R1A@?0A@A@GSpeedThreshold@@8");
+// win1.41 009b1fb0 mac inlined GSpeedThreshold::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15GSpeedThreshold asm("??_R2GSpeedThreshold@@8");
+// win1.41 009b1fc0 mac inlined GSpeedThreshold::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15GSpeedThreshold asm("??_R3GSpeedThreshold@@8");
 
 // Override methods
 

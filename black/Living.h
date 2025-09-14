@@ -59,9 +59,18 @@ struct DataForScriptRemind
 };
 static_assert(sizeof(struct DataForScriptRemind) == 0x48, "Data type is of wrong size");
 
-// win1.41 0092b51c mac 109a0de0 DataForScriptRemind::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19DataForScriptRemind asm("??_R4DataForScriptRemind@@6B@");
+// Object Oriented datastructures
 
+// win1.41 00bf3ad8 mac inlined DataForScriptRemind::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19DataForScriptRemind asm("??_R0?AVDataForScriptRemind@@@8");
+// win1.41 009b1a20 mac inlined DataForScriptRemind::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19DataForScriptRemind asm("??_R1A@?0A@A@DataForScriptRemind@@8");
+// win1.41 009b1a38 mac inlined DataForScriptRemind::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19DataForScriptRemind asm("??_R2DataForScriptRemind@@8");
+// win1.41 009b1a48 mac inlined DataForScriptRemind::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19DataForScriptRemind asm("??_R3DataForScriptRemind@@8");
+// win1.41 0092b51c mac 109a0de0 DataForScriptRemind::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19DataForScriptRemind asm("??_R4DataForScriptRemind@@6B@");
 // win1.41 0092b520 mac 109a0de8 DataForScriptRemind::`vftable'
 extern const struct GameThingVftable __vt__19DataForScriptRemind asm("??_7DataForScriptRemind@@6B@");
 
@@ -318,9 +327,18 @@ struct Living
 };
 static_assert(sizeof(struct Living) == 0xe0, "Data type is of wrong size");
 
-// win1.41 008cd390 mac 10732c98 Living::`RTTI Complete Object Locator'
-extern struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Living asm("??_R4Living@@6B@");
+// Object Oriented datastructures
 
+// win1.41 009c8de8 mac inlined Living::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Living asm("??_R0?AVLiving@@@8");
+// win1.41 009a6c18 mac inlined Living::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Living asm("??_R1A@?0A@A@Living@@8");
+// win1.41 009a95f8 mac inlined Living::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Living asm("??_R2Living@@8");
+// win1.41 009a9618 mac inlined Living::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Living asm("??_R3Living@@8");
+// win1.41 008cd390 mac 10732c98 Living::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Living asm("??_R4Living@@6B@");
 // win1.41 008cd394 mac 106f5ae0 Living::`vftable'
 extern const struct LivingVftable __vt__6Living asm("??_7Living@@6B@");
 

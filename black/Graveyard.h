@@ -25,6 +25,17 @@ struct Graveyard
 };
 static_assert(sizeof(struct Graveyard) == 0xc4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 00becde8 mac inlined Graveyard::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9Graveyard asm("??_R0?AVGraveyard@@@8");
+// win1.41 009ae350 mac inlined Graveyard::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9Graveyard asm("??_R1A@?0A@A@Graveyard@@8");
+// win1.41 009ae368 mac inlined Graveyard::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9Graveyard asm("??_R2Graveyard@@8");
+// win1.41 009ae390 mac inlined Graveyard::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9Graveyard asm("??_R3Graveyard@@8");
+
 // Override methods
 
 // win1.41 0055e010 mac 100f42d0 Graveyard::_dt(void)

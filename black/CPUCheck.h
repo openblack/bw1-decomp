@@ -20,6 +20,17 @@ struct CPUCheck
 };
 static_assert(sizeof(struct CPUCheck) == 0x4, "Data type is of wrong size");
 
+// Object Oriented datastructures
+
+// win1.41 009cee68 mac inlined CPUCheck::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8CPUCheck asm("??_R0?AVCPUCheck@@@8");
+// win1.41 009a9358 mac inlined CPUCheck::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8CPUCheck asm("??_R1A@?0A@A@CPUCheck@@8");
+// win1.41 009a9370 mac inlined CPUCheck::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8CPUCheck asm("??_R2CPUCheck@@8");
+// win1.41 009a9378 mac inlined CPUCheck::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8CPUCheck asm("??_R3CPUCheck@@8");
+
 // Override methods
 
 // win1.41 00471a80 mac 100c00a0 CPUCheck::~CPUCheck(void)
