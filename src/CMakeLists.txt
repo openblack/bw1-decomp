@@ -68,7 +68,9 @@ set(SOURCES_001
     c/BaseInfo.000.c
     c/AbodeInfo.002.c
     c/Base.001.c
+    c/BaseInfo.001.c
     c/ObjectInfo.000.c
+    c/MultiMapFixedInfo.000.c
     c/AbodeInfo.003.c
     c/Abode.000.c
     c/Fixed.000.c
