@@ -69,16 +69,7 @@ _RTTIBaseClassDescriptor__\name:
     _RTTICompleteObjectLocator \name U 0
 .endm
 
-.long 0x00000000                                                                                                   // [0xfd2d4] 0x008a9000 + 0xfd2d4 = 0x009a62d4
-
-RTTIBaseClassArray Base                                                                                            // [0xfd2d8] 0x008a9000 + 0xfd2d8 = 0x009a62d8
-.long 0x00000000
-
-RTTIClassHierarchyDescriptor Base 1                                                                                // [0xfd2e0] 0x008a9000 + 0xfd2e0 = 0x009a62e0
-RTTICompleteObjectLocator Base                                                                                     // [0xfd2f0] 0x008a9000 + 0xfd2f0 = 0x009a62f0
-.long 0x00000000                                                                                                   // [0xfd300] 0x008a9000 + 0xfd300 = 0x009a6300
-
-RTTIBaseClassDescriptor Base 0                                                                                     // [0xfd300] 0x008a9000 + 0xfd300 = 0x009a6300
+.align 8
 RTTIBaseClassDescriptor GBaseInfo 1                                                                                // [0xfd320] 0x008a9000 + 0xfd320 = 0x009a6320
 RTTIBaseClassDescriptor GObjectInfo 2                                                                              // [0xfd338] 0x008a9000 + 0xfd338 = 0x009a6338
 RTTIBaseClassDescriptor GMultiMapFixedInfo 3                                                                       // [0xfd350] 0x008a9000 + 0xfd350 = 0x009a6350
