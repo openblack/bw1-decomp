@@ -63,7 +63,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GGuidance asm("??_
 // win1.41 009b9180 mac inlined GGuidance::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GGuidance asm("??_R3GGuidance@@8");
 // win1.41 009804a8 mac 109d783c GGuidance::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GGuidance asm("??_R4GGuidance@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9GGuidance asm("??_R4GGuidance@@6B@");
 // win1.41 009804ac mac 109d7844 GGuidance::`vftable'
 extern const struct BaseVftable __vt__9GGuidance asm("??_7GGuidance@@6B@");
 

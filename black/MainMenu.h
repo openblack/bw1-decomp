@@ -25,7 +25,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8MainMenu asm("??_R
 // win1.41 009ac8f8 mac inlined MainMenu::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8MainMenu asm("??_R3MainMenu@@8");
 // win1.41 008dec40 mac 109ed7d4 MainMenu::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8MainMenu asm("??_R4MainMenu@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8MainMenu asm("??_R4MainMenu@@6B@");
 // win1.41 008dec44 mac 109ed7dc MainMenu::`vftable'
 extern const struct DialogBoxBaseVftable __vt__8MainMenu asm("??_7MainMenu@@6B@");
 

@@ -43,7 +43,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Totem asm("??_R2To
 // win1.41 009ae4f0 mac inlined Totem::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Totem asm("??_R3Totem@@8");
 // win1.41 008ef578 mac 10755f88 Totem::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Totem asm("??_R4Totem@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__5Totem asm("??_R4Totem@@6B@");
 // win1.41 008ef57c mac 10755fc8 Totem::`vftable'
 extern const struct AbodeVftable __vt__5Totem asm("??_7Totem@@6B@");
 

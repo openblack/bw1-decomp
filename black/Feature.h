@@ -35,7 +35,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7Feature asm("??_R2
 // win1.41 009a79d0 mac inlined Feature::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7Feature asm("??_R3Feature@@8");
 // win1.41 008c231c mac 1073d268 Feature::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7Feature asm("??_R4Feature@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__7Feature asm("??_R4Feature@@6B@");
 // win1.41 008c2320 mac 1073e240 Feature::`vftable'
 extern const struct MultiMapFixedVftable __vt__7Feature asm("??_7Feature@@6B@");
 

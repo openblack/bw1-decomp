@@ -39,7 +39,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18GParticleContaine
 // win1.41 009ae138 mac inlined GParticleContainer::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18GParticleContainer asm("??_R3GParticleContainer@@8");
 // win1.41 008e2a10 mac 107461ec GParticleContainer::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18GParticleContainer asm("??_R4GParticleContainer@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__18GParticleContainer asm("??_R4GParticleContainer@@6B@");
 // win1.41 008e2a14 mac 107461f4 GParticleContainer::`vftable'
 extern const struct GameThingVftable __vt__18GParticleContainer asm("??_7GParticleContainer@@6B@");
 

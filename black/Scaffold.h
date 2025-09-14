@@ -45,7 +45,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Scaffold asm("??_R
 // win1.41 009ae650 mac inlined Scaffold::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Scaffold asm("??_R3Scaffold@@8");
 // win1.41 008e5528 mac 1075a2f8 Scaffold::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Scaffold asm("??_R4Scaffold@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Scaffold asm("??_R4Scaffold@@6B@");
 // win1.41 008e552c mac 1075a300 Scaffold::`vftable'
 extern const struct MobileObjectVftable __vt__8Scaffold asm("??_7Scaffold@@6B@");
 

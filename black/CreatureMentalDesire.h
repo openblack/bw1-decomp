@@ -48,7 +48,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15CreatureDesires a
 // win1.41 009aac48 mac inlined CreatureDesires::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15CreatureDesires asm("??_R3CreatureDesires@@8");
 // win1.41 008cff98 mac 1098a9fc CreatureDesires::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15CreatureDesires asm("??_R4CreatureDesires@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15CreatureDesires asm("??_R4CreatureDesires@@6B@");
 // win1.41 008cff9c mac 1098aa04 CreatureDesires::`vftable'
 extern const struct BaseVftable __vt__15CreatureDesires asm("??_7CreatureDesires@@6B@");
 

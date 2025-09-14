@@ -67,7 +67,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__3Pot asm("??_R2Pot@
 // win1.41 009ad790 mac inlined Pot::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__3Pot asm("??_R3Pot@@8");
 // win1.41 008e6600 mac 10747720 Pot::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__3Pot asm("??_R4Pot@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__3Pot asm("??_R4Pot@@6B@");
 // win1.41 008e6604 mac 10749c20 Pot::`vftable'
 extern const struct PotVftable __vt__3Pot asm("??_7Pot@@6B@");
 

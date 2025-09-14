@@ -57,7 +57,7 @@ static_assert(sizeof(struct Fixed) == 0x58, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 008db718 mac 1073397c FixedObject::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11FixedObject asm("??_R4Fixed@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11FixedObject asm("??_R4Fixed@@6B@");
 // win1.41 008db71c mac 107339a4 FixedObject::`vftable'
 extern const struct FixedVftable __vt__11FixedObject asm("??_7Fixed@@6B@");
 
@@ -149,7 +149,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14SingleMapFixed as
 // win1.41 009ac4b8 mac inlined SingleMapFixed::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14SingleMapFixed asm("??_R3SingleMapFixed@@8");
 // win1.41 008dc890 mac 10740de0 SingleMapFixed::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SingleMapFixed asm("??_R4SingleMapFixed@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14SingleMapFixed asm("??_R4SingleMapFixed@@6B@");
 // win1.41 008dc894 mac 10740de8 SingleMapFixed::`vftable'
 extern const struct SingleMapFixedVftable __vt__14SingleMapFixed asm("??_7SingleMapFixed@@6B@");
 

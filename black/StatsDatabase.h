@@ -23,7 +23,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13StatsDatabase asm
 // win1.41 009b2de0 mac inlined StatsDatabase::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13StatsDatabase asm("??_R3StatsDatabase@@8");
 // win1.41 00930a08 mac 10745c98 StatsDatabase::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13StatsDatabase asm("??_R4StatsDatabase@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13StatsDatabase asm("??_R4StatsDatabase@@6B@");
 // win1.41 00930a0c mac 10745ca0 StatsDatabase::`vftable'
 extern const struct MultiplayerDatabaseVftable __vt__13StatsDatabase asm("??_7StatsDatabase@@6B@");
 

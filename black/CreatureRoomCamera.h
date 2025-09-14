@@ -30,7 +30,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18CreatureRoomCamer
 // win1.41 009ba6e0 mac inlined CreatureRoomCamera::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18CreatureRoomCamera asm("??_R3CreatureRoomCamera@@8");
 // win1.41 0099eb88 mac 1098e6ec CreatureRoomCamera::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18CreatureRoomCamera asm("??_R4CreatureRoomCamera@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__18CreatureRoomCamera asm("??_R4CreatureRoomCamera@@6B@");
 // win1.41 0099eb8c mac 1098e6f4 CreatureRoomCamera::`vftable'
 extern const struct InnerCameraVftable __vt__18CreatureRoomCamera asm("??_7CreatureRoomCamera@@6B@");
 

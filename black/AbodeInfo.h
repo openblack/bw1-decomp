@@ -71,7 +71,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GAbodeInfo asm("?
 // win1.41 009a6398 mac inlined GAbodeInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GAbodeInfo asm("??_R3GAbodeInfo@@8");
 // win1.41 008a99f4 mac 107346c4 GAbodeInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GAbodeInfo asm("??_R4GAbodeInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10GAbodeInfo asm("??_R4GAbodeInfo@@6B@");
 // win1.41 008a99f8 mac 107346cc GAbodeInfo::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__10GAbodeInfo asm("??_7GAbodeInfo@@6B@");
 

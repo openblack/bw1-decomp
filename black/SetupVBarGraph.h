@@ -69,7 +69,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14SetupVBarGraph as
 // win1.41 009a6810 mac inlined SetupVBarGraph::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14SetupVBarGraph asm("??_R3SetupVBarGraph@@8");
 // win1.41 008ab47c mac 10730f60 SetupVBarGraph::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SetupVBarGraph asm("??_R4SetupVBarGraph@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14SetupVBarGraph asm("??_R4SetupVBarGraph@@6B@");
 // win1.41 008ab480 mac 10730f68 SetupVBarGraph::`vftable'
 extern const struct SetupVBarGraphVftable __vt__14SetupVBarGraph asm("??_7SetupVBarGraph@@6B@");
 

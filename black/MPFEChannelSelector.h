@@ -50,7 +50,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19MPFEChannelSelect
 // win1.41 009b2520 mac inlined MPFEChannelSelector::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19MPFEChannelSelector asm("??_R3MPFEChannelSelector@@8");
 // win1.41 0093077c mac 109a250c MPFEChannelSelector::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19MPFEChannelSelector asm("??_R4MPFEChannelSelector@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__19MPFEChannelSelector asm("??_R4MPFEChannelSelector@@6B@");
 // win1.41 00930780 mac 109a2514 MPFEChannelSelector::`vftable'
 extern const struct DialogBoxBaseVftable __vt__19MPFEChannelSelector asm("??_7MPFEChannelSelector@@6B@");
 

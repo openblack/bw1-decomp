@@ -54,7 +54,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16SpellSeedGraphic 
 // win1.41 009b9420 mac inlined SpellSeedGraphic::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16SpellSeedGraphic asm("??_R3SpellSeedGraphic@@8");
 // win1.41 00981aa4 mac 109dbe4c SpellSeedGraphic::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16SpellSeedGraphic asm("??_R4SpellSeedGraphic@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__16SpellSeedGraphic asm("??_R4SpellSeedGraphic@@6B@");
 // win1.41 00981aa8 mac 109dbe54 SpellSeedGraphic::`vftable'
 extern const struct GameThingWithPosVftable __vt__16SpellSeedGraphic asm("??_7SpellSeedGraphic@@6B@");
 

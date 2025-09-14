@@ -44,7 +44,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9SetupEdit asm("??_
 // win1.41 009a6720 mac inlined SetupEdit::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9SetupEdit asm("??_R3SetupEdit@@8");
 // win1.41 008ab39c mac 10731154 SetupEdit::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9SetupEdit asm("??_R4SetupEdit@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9SetupEdit asm("??_R4SetupEdit@@6B@");
 // win1.41 008ab3a0 mac 1073115c SetupEdit::`vftable'
 extern const struct SetupControlVftable __vt__9SetupEdit asm("??_7SetupEdit@@6B@");
 

@@ -36,7 +36,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11GEffectInfo asm("
 // win1.41 009abef0 mac inlined GEffectInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11GEffectInfo asm("??_R3GEffectInfo@@8");
 // win1.41 008d8b44 mac 1073d04c GEffectInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11GEffectInfo asm("??_R4GEffectInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11GEffectInfo asm("??_R4GEffectInfo@@6B@");
 // win1.41 008d8b48 mac 1073d064 GEffectInfo::`vftable'
 extern const struct BaseInfoVftable __vt__11GEffectInfo asm("??_7GEffectInfo@@6B@");
 

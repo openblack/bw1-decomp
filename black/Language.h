@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GLanguage asm("??_
 // win1.41 009b18a0 mac inlined GLanguage::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GLanguage asm("??_R3GLanguage@@8");
 // win1.41 0092b340 mac 10733c04 GLanguage::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GLanguage asm("??_R4GLanguage@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9GLanguage asm("??_R4GLanguage@@6B@");
 // win1.41 0092b344 mac 10733c0c GLanguage::`vftable'
 extern const struct BaseVftable __vt__9GLanguage asm("??_7GLanguage@@6B@");
 

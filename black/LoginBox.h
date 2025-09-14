@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8LoginBox asm("??_R
 // win1.41 009ace98 mac inlined LoginBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8LoginBox asm("??_R3LoginBox@@8");
 // win1.41 008dec94 mac 109ed794 LoginBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8LoginBox asm("??_R4LoginBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8LoginBox asm("??_R4LoginBox@@6B@");
 // win1.41 008dec98 mac 109ed79c LoginBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__8LoginBox asm("??_7LoginBox@@6B@");
 

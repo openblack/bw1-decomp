@@ -42,7 +42,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GFootpath asm("??_
 // win1.41 009ac668 mac inlined GFootpath::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GFootpath asm("??_R3GFootpath@@8");
 // win1.41 008de0b8 mac 10743350 GFootpath::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GFootpath asm("??_R4GFootpath@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9GFootpath asm("??_R4GFootpath@@6B@");
 // win1.41 008de0bc mac 10743358 GFootpath::`vftable'
 extern const struct GameThingVftable __vt__9GFootpath asm("??_7GFootpath@@6B@");
 

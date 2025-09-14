@@ -35,7 +35,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12MPFEDatabase asm(
 // win1.41 009b2798 mac inlined MPFEDatabase::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12MPFEDatabase asm("??_R3MPFEDatabase@@8");
 // win1.41 00930868 mac 109a37c0 MPFEDatabase::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12MPFEDatabase asm("??_R4MPFEDatabase@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12MPFEDatabase asm("??_R4MPFEDatabase@@6B@");
 // win1.41 0093086c mac 109a37c8 MPFEDatabase::`vftable'
 extern const struct MPFEDatabaseVftable __vt__12MPFEDatabase asm("??_7MPFEDatabase@@6B@");
 

@@ -113,7 +113,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Abode asm("??_R2Ab
 // win1.41 009a6470 mac inlined Abode::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Abode asm("??_R3Abode@@8");
 // win1.41 008a9a60 mac 1073480c Abode::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Abode asm("??_R4Abode@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__5Abode asm("??_R4Abode@@6B@");
 // win1.41 008a9a64 mac 10734814 Abode::`vftable'
 extern const struct AbodeVftable __vt__5Abode asm("??_7Abode@@6B@");
 

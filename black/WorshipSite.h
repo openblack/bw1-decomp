@@ -68,7 +68,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11WorshipSite asm("
 // win1.41 009ae2d0 mac inlined WorshipSite::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11WorshipSite asm("??_R3WorshipSite@@8");
 // win1.41 008f283c mac 10733a30 WorshipSite::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11WorshipSite asm("??_R4WorshipSite@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11WorshipSite asm("??_R4WorshipSite@@6B@");
 // win1.41 008f2840 mac 106f5b48 WorshipSite::`vftable'
 extern const struct MultiMapFixedVftable __vt__11WorshipSite asm("??_7WorshipSite@@6B@");
 

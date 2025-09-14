@@ -25,7 +25,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GAlignment asm("?
 // win1.41 009a94c8 mac inlined GAlignment::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GAlignment asm("??_R3GAlignment@@8");
 // win1.41 008cc7ec mac 1077e184 GAlignment::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GAlignment asm("??_R4GAlignment@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10GAlignment asm("??_R4GAlignment@@6B@");
 // win1.41 008cc7f0 mac 1077e18c GAlignment::`vftable'
 extern const struct BaseVftable __vt__10GAlignment asm("??_7GAlignment@@6B@");
 

@@ -25,7 +25,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13NewProfileBox asm
 // win1.41 009ac8a8 mac inlined NewProfileBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13NewProfileBox asm("??_R3NewProfileBox@@8");
 // win1.41 008dec18 mac 109ed914 NewProfileBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13NewProfileBox asm("??_R4NewProfileBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13NewProfileBox asm("??_R4NewProfileBox@@6B@");
 // win1.41 008dec1c mac 109ed91c NewProfileBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__13NewProfileBox asm("??_7NewProfileBox@@6B@");
 

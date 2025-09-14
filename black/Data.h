@@ -31,7 +31,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5GData asm("??_R2GD
 // win1.41 009ab7c8 mac inlined GData::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5GData asm("??_R3GData@@8");
 // win1.41 008d6030 mac 10730b70 GData::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5GData asm("??_R4GData@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__5GData asm("??_R4GData@@6B@");
 // win1.41 008d6034 mac 10730b78 GData::`vftable'
 extern const struct BaseVftable __vt__5GData asm("??_7GData@@6B@");
 

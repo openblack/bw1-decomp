@@ -30,7 +30,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14SetupMultiList as
 // win1.41 009a66d0 mac inlined SetupMultiList::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14SetupMultiList asm("??_R3SetupMultiList@@8");
 // win1.41 008ab360 mac 107311c0 SetupMultiList::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SetupMultiList asm("??_R4SetupMultiList@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14SetupMultiList asm("??_R4SetupMultiList@@6B@");
 // win1.41 008ab364 mac 107311c8 SetupMultiList::`vftable'
 extern const struct SetupListVftable __vt__14SetupMultiList asm("??_7SetupMultiList@@6B@");
 

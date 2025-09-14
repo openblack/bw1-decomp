@@ -30,7 +30,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10SpellWater asm("?
 // win1.41 009ae6a8 mac inlined SpellWater::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10SpellWater asm("??_R3SpellWater@@8");
 // win1.41 008f5538 mac 109dacc8 SpellWater::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10SpellWater asm("??_R4SpellWater@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10SpellWater asm("??_R4SpellWater@@6B@");
 // win1.41 008f553c mac 109dacd0 SpellWater::`vftable'
 extern const struct SpellVftable __vt__10SpellWater asm("??_7SpellWater@@6B@");
 

@@ -28,7 +28,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20CreatureCommandSt
 // win1.41 009aa478 mac inlined CreatureCommandState::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20CreatureCommandState asm("??_R3CreatureCommandState@@8");
 // win1.41 008cf96c mac 10787554 CreatureCommandState::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20CreatureCommandState asm("??_R4CreatureCommandState@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__20CreatureCommandState asm("??_R4CreatureCommandState@@6B@");
 // win1.41 008cf970 mac 1078755c CreatureCommandState::`vftable'
 extern const struct BaseVftable __vt__20CreatureCommandState asm("??_7CreatureCommandState@@6B@");
 

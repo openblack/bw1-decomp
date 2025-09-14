@@ -77,7 +77,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GInterfaceStatus 
 // win1.41 009b1710 mac inlined GInterfaceStatus::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GInterfaceStatus asm("??_R3GInterfaceStatus@@8");
 // win1.41 0092accc mac 1098d398 GInterfaceStatus::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GInterfaceStatus asm("??_R4GInterfaceStatus@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__16GInterfaceStatus asm("??_R4GInterfaceStatus@@6B@");
 // win1.41 0092acd0 mac 106f8170 GInterfaceStatus::`vftable'
 extern const struct GameThingWithPosVftable __vt__16GInterfaceStatus asm("??_7GInterfaceStatus@@6B@");
 

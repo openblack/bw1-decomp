@@ -70,7 +70,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Animal asm("??_R2A
 // win1.41 009a6c70 mac inlined Animal::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Animal asm("??_R3Animal@@8");
 // win1.41 008ab7c8 mac 10761cd0 Animal::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Animal asm("??_R4Animal@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__6Animal asm("??_R4Animal@@6B@");
 // win1.41 008ab7cc mac 10762bcc Animal::`vftable'
 extern const struct LivingVftable __vt__6Animal asm("??_7Animal@@6B@");
 

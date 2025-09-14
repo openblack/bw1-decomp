@@ -80,7 +80,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15LandscapeVortex a
 // win1.41 009b1e58 mac inlined LandscapeVortex::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15LandscapeVortex asm("??_R3LandscapeVortex@@8");
 // win1.41 0092ee7c mac 1099b714 LandscapeVortex::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15LandscapeVortex asm("??_R4LandscapeVortex@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15LandscapeVortex asm("??_R4LandscapeVortex@@6B@");
 // win1.41 0092ee80 mac 106f8abc LandscapeVortex::`vftable'
 extern const struct LandscapeVortexVftable __vt__15LandscapeVortex asm("??_7LandscapeVortex@@6B@");
 

@@ -30,7 +30,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16GTotemStatueInfo 
 // win1.41 009b99c0 mac inlined GTotemStatueInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16GTotemStatueInfo asm("??_R3GTotemStatueInfo@@8");
 // win1.41 00999a44 mac 109e33a8 GTotemStatueInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16GTotemStatueInfo asm("??_R4GTotemStatueInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__16GTotemStatueInfo asm("??_R4GTotemStatueInfo@@6B@");
 // win1.41 00999a48 mac 109e33b0 GTotemStatueInfo::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__16GTotemStatueInfo asm("??_7GTotemStatueInfo@@6B@");
 

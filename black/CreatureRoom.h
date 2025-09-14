@@ -26,7 +26,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12CreatureRoom asm(
 // win1.41 009ba620 mac inlined CreatureRoom::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12CreatureRoom asm("??_R3CreatureRoom@@8");
 // win1.41 0099eb2c mac 1098e5f0 CreatureRoom::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CreatureRoom asm("??_R4CreatureRoom@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12CreatureRoom asm("??_R4CreatureRoom@@6B@");
 // win1.41 0099eb30 mac 1098e5f8 CreatureRoom::`vftable'
 extern const struct TempleRoomVftable __vt__12CreatureRoom asm("??_7CreatureRoom@@6B@");
 

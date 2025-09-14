@@ -31,7 +31,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8GClimate asm("??_R
 // win1.41 009aeb18 mac inlined GClimate::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8GClimate asm("??_R3GClimate@@8");
 // win1.41 008f9f98 mac 109ea018 GClimate::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8GClimate asm("??_R4GClimate@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8GClimate asm("??_R4GClimate@@6B@");
 // win1.41 008f9f9c mac 109ea020 GClimate::`vftable'
 extern const struct GameThingVftable __vt__8GClimate asm("??_7GClimate@@6B@");
 

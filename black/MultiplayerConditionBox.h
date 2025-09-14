@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23MultiplayerCondit
 // win1.41 009ac948 mac inlined MultiplayerConditionBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23MultiplayerConditionBox asm("??_R3MultiplayerConditionBox@@8");
 // win1.41 008de9c0 mac inlined MultiplayerConditionBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23MultiplayerConditionBox asm("??_R4MultiplayerConditionBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__23MultiplayerConditionBox asm("??_R4MultiplayerConditionBox@@6B@");
 // win1.41 008de9c4 mac inlined MultiplayerConditionBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__23MultiplayerConditionBox asm("??_7MultiplayerConditionBox@@6B@");
 

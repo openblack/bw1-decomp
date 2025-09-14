@@ -27,7 +27,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15SetupStaticText a
 // win1.41 009a69a0 mac inlined SetupStaticText::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15SetupStaticText asm("??_R3SetupStaticText@@8");
 // win1.41 008ab5bc mac 107312e0 SetupStaticText::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15SetupStaticText asm("??_R4SetupStaticText@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15SetupStaticText asm("??_R4SetupStaticText@@6B@");
 // win1.41 008ab5c0 mac 107312e8 SetupStaticText::`vftable'
 extern const struct SetupControlVftable __vt__15SetupStaticText asm("??_7SetupStaticText@@6B@");
 

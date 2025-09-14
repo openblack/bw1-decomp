@@ -39,7 +39,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16SpellWithObjects 
 // win1.41 009ad838 mac inlined SpellWithObjects::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16SpellWithObjects asm("??_R3SpellWithObjects@@8");
 // win1.41 008f452c mac 109a58f4 SpellWithObjects::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16SpellWithObjects asm("??_R4SpellWithObjects@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__16SpellWithObjects asm("??_R4SpellWithObjects@@6B@");
 // win1.41 008f4530 mac 109a591c SpellWithObjects::`vftable'
 extern const struct SpellWithObjectsVftable __vt__16SpellWithObjects asm("??_7SpellWithObjects@@6B@");
 

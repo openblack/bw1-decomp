@@ -37,7 +37,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GStreetLantern as
 // win1.41 009ada08 mac inlined GStreetLantern::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GStreetLantern asm("??_R3GStreetLantern@@8");
 // win1.41 008ea8d4 mac 109e0fa4 GStreetLantern::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GStreetLantern asm("??_R4GStreetLantern@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14GStreetLantern asm("??_R4GStreetLantern@@6B@");
 // win1.41 008ea8d8 mac 109e0fac GStreetLantern::`vftable'
 extern const struct ObjectVftable __vt__14GStreetLantern asm("??_7GStreetLantern@@6B@");
 

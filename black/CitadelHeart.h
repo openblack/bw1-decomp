@@ -138,7 +138,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12CitadelHeart asm(
 // win1.41 009a8f58 mac inlined CitadelHeart::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12CitadelHeart asm("??_R3CitadelHeart@@8");
 // win1.41 008c8cfc mac 1077b83c CitadelHeart::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12CitadelHeart asm("??_R4CitadelHeart@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12CitadelHeart asm("??_R4CitadelHeart@@6B@");
 // win1.41 008c8d00 mac 1077b844 CitadelHeart::`vftable'
 extern const struct MultiMapFixedVftable __vt__12CitadelHeart asm("??_7CitadelHeart@@6B@");
 

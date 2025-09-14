@@ -48,7 +48,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8SoundTag asm("??_R
 // win1.41 009b9220 mac inlined SoundTag::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8SoundTag asm("??_R3SoundTag@@8");
 // win1.41 00980534 mac 109d7a40 SoundTag::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8SoundTag asm("??_R4SoundTag@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8SoundTag asm("??_R4SoundTag@@6B@");
 // win1.41 00980538 mac 109d7a48 SoundTag::`vftable'
 extern const struct BaseVftable __vt__8SoundTag asm("??_7SoundTag@@6B@");
 

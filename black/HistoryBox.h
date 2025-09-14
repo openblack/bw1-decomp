@@ -25,7 +25,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10HistoryBox asm("?
 // win1.41 009aca38 mac inlined HistoryBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10HistoryBox asm("??_R3HistoryBox@@8");
 // win1.41 008de970 mac 109ed4ac HistoryBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10HistoryBox asm("??_R4HistoryBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10HistoryBox asm("??_R4HistoryBox@@6B@");
 // win1.41 008de974 mac 109ed4b4 HistoryBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__10HistoryBox asm("??_7HistoryBox@@6B@");
 

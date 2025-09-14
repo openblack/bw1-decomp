@@ -137,7 +137,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13GVillagerInfo asm
 // win1.41 009b9d58 mac inlined GVillagerInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13GVillagerInfo asm("??_R3GVillagerInfo@@8");
 // win1.41 0099a3e0 mac 109e7800 GVillagerInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13GVillagerInfo asm("??_R4GVillagerInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13GVillagerInfo asm("??_R4GVillagerInfo@@6B@");
 // win1.41 0099a3e4 mac 109e7808 GVillagerInfo::`vftable'
 extern const struct GObjectInfoVftable __vt__13GVillagerInfo asm("??_7GVillagerInfo@@6B@");
 

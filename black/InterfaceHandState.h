@@ -25,7 +25,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__18InterfaceHandStat
 // win1.41 009b1600 mac inlined InterfaceHandState::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__18InterfaceHandState asm("??_R3InterfaceHandState@@8");
 // win1.41 0092aae0 mac 1099e2ac InterfaceHandState::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__18InterfaceHandState asm("??_R4InterfaceHandState@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__18InterfaceHandState asm("??_R4InterfaceHandState@@6B@");
 // win1.41 0092aae4 mac 1099e2b4 InterfaceHandState::`vftable'
 extern const struct BaseVftable __vt__18InterfaceHandState asm("??_7InterfaceHandState@@6B@");
 

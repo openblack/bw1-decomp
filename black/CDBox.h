@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5CDBox asm("??_R2CD
 // win1.41 009ac858 mac inlined CDBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5CDBox asm("??_R3CDBox@@8");
 // win1.41 008deb00 mac 109ed714 CDBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5CDBox asm("??_R4CDBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__5CDBox asm("??_R4CDBox@@6B@");
 // win1.41 008deb04 mac 109ed71c CDBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__5CDBox asm("??_7CDBox@@6B@");
 

@@ -71,7 +71,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7PHandFX asm("??_R2
 // win1.41 009b41a0 mac inlined PHandFX::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7PHandFX asm("??_R3PHandFX@@8");
 // win1.41 00936c18 mac 109b139c PHandFX::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7PHandFX asm("??_R4PHandFX@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__7PHandFX asm("??_R4PHandFX@@6B@");
 // win1.41 00936c1c mac 109b13a4 PHandFX::`vftable'
 extern const struct PSysHandFXVftable __vt__7PHandFX asm("??_7PHandFX@@6B@");
 

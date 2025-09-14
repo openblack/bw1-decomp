@@ -76,7 +76,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9SetupList asm("??_
 // win1.41 009a6680 mac inlined SetupList::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9SetupList asm("??_R3SetupList@@8");
 // win1.41 008ab320 mac 107311a4 SetupList::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9SetupList asm("??_R4SetupList@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9SetupList asm("??_R4SetupList@@6B@");
 // win1.41 008ab324 mac 107311b4 SetupList::`vftable'
 extern const struct SetupListVftable __vt__9SetupList asm("??_7SetupList@@6B@");
 

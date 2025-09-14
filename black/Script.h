@@ -28,7 +28,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7GScript asm("??_R2
 // win1.41 009b8e30 mac inlined GScript::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7GScript asm("??_R3GScript@@8");
 // win1.41 00942170 mac 109c38c8 GScript::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__7GScript asm("??_R4GScript@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__7GScript asm("??_R4GScript@@6B@");
 // win1.41 00942174 mac 109c38d0 GScript::`vftable'
 extern const struct BaseVftable __vt__7GScript asm("??_7GScript@@6B@");
 

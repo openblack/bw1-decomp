@@ -40,7 +40,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12GLeashStatus asm(
 // win1.41 009b1760 mac inlined GLeashStatus::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12GLeashStatus asm("??_R3GLeashStatus@@8");
 // win1.41 0092abcc mac 109a0a54 GLeashStatus::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12GLeashStatus asm("??_R4GLeashStatus@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12GLeashStatus asm("??_R4GLeashStatus@@6B@");
 // win1.41 0092abd0 mac 109a0a5c GLeashStatus::`vftable'
 extern const struct GameThingVftable __vt__12GLeashStatus asm("??_7GLeashStatus@@6B@");
 

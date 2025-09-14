@@ -33,7 +33,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14AnimatedStatic as
 // win1.41 009a7988 mac inlined AnimatedStatic::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14AnimatedStatic asm("??_R3AnimatedStatic@@8");
 // win1.41 008c1a0c mac 10735450 AnimatedStatic::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14AnimatedStatic asm("??_R4AnimatedStatic@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14AnimatedStatic asm("??_R4AnimatedStatic@@6B@");
 // win1.41 008c1a10 mac 10735458 AnimatedStatic::`vftable'
 extern const struct MultiMapFixedVftable __vt__14AnimatedStatic asm("??_7AnimatedStatic@@6B@");
 

@@ -39,7 +39,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Reward asm("??_R2R
 // win1.41 009b8d80 mac inlined Reward::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Reward asm("??_R3Reward@@8");
 // win1.41 00941890 mac 10759768 Reward::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Reward asm("??_R4Reward@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__6Reward asm("??_R4Reward@@6B@");
 // win1.41 00941894 mac 10759770 Reward::`vftable'
 extern const struct MobileObjectVftable __vt__6Reward asm("??_7Reward@@6B@");
 

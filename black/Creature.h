@@ -231,7 +231,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Creature asm("??_R
 // win1.41 009a9530 mac inlined Creature::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Creature asm("??_R3Creature@@8");
 // win1.41 008cc80c mac 1077dda8 Creature::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Creature asm("??_R4Creature@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Creature asm("??_R4Creature@@6B@");
 // win1.41 008cc810 mac 1077e3fc Creature::`vftable'
 extern const struct LivingVftable __vt__8Creature asm("??_7Creature@@6B@");
 

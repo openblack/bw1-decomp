@@ -32,7 +32,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14GSpellIconInfo as
 // win1.41 009b93c8 mac inlined GSpellIconInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14GSpellIconInfo asm("??_R3GSpellIconInfo@@8");
 // win1.41 00981a54 mac 109dc3c4 GSpellIconInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14GSpellIconInfo asm("??_R4GSpellIconInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14GSpellIconInfo asm("??_R4GSpellIconInfo@@6B@");
 // win1.41 00981a58 mac 109dc3cc GSpellIconInfo::`vftable'
 extern const struct GMultiMapFixedInfoVftable __vt__14GSpellIconInfo asm("??_7GSpellIconInfo@@6B@");
 

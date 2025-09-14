@@ -328,8 +328,8 @@ if __name__ == "__main__":
     class_hierarchy_desc_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__RTTIClassHierarchyDescriptor__")], remainder_globals)
     class_hierarchy_desc_address_look_up = {i["name"].removeprefix("__RTTIClassHierarchyDescriptor__"): i for i in class_hierarchy_desc_addresses}
 
-    locator_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__RTTICompleObjectLocator__")], remainder_globals)
-    locator_address_look_up = {i["name"].removeprefix("__RTTICompleObjectLocator__"): i for i in locator_addresses}
+    locator_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__RTTICompleteObjectLocator__")], remainder_globals)
+    locator_address_look_up = {i["name"].removeprefix("__RTTICompleteObjectLocator__"): i for i in locator_addresses}
 
     class_method_look_up, class_static_method_look_up, class_list_functions, remainder_functions = find_methods(db['functions'])
     (

@@ -45,7 +45,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10DanceGroup asm("?
 // win1.41 009ab6d8 mac inlined DanceGroup::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10DanceGroup asm("??_R3DanceGroup@@8");
 // win1.41 008d44cc mac 10996e7c DanceGroup::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10DanceGroup asm("??_R4DanceGroup@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10DanceGroup asm("??_R4DanceGroup@@6B@");
 // win1.41 008d44d0 mac 10996e84 DanceGroup::`vftable'
 extern const struct GameThingVftable __vt__10DanceGroup asm("??_7DanceGroup@@6B@");
 

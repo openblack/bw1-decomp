@@ -32,7 +32,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GMagicInfo asm("?
 // win1.41 009a7d30 mac inlined GMagicInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GMagicInfo asm("??_R3GMagicInfo@@8");
 // win1.41 008c4cb8 mac 10776ff0 GMagicInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GMagicInfo asm("??_R4GMagicInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10GMagicInfo asm("??_R4GMagicInfo@@6B@");
 // win1.41 008c4cbc mac 10777008 GMagicInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__10GMagicInfo asm("??_7GMagicInfo@@6B@");
 

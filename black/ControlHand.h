@@ -233,7 +233,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5CHand asm("??_R2CH
 // win1.41 009a92c8 mac inlined CHand::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5CHand asm("??_R3CHand@@8");
 // win1.41 008cbec8 mac 1077dbd8 CHand::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5CHand asm("??_R4CHand@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__5CHand asm("??_R4CHand@@6B@");
 // win1.41 008cbecc mac 1077dbe0 CHand::`vftable'
 extern const struct MorphableVftable __vt__5CHand asm("??_7CHand@@6B@");
 

@@ -23,7 +23,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14LHReleasedFile as
 // win1.41 009a7d98 mac inlined LHReleasedFile::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14LHReleasedFile asm("??_R3LHReleasedFile@@8");
 // win1.41 008c4d08 mac 101daa00 LHReleasedFile::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14LHReleasedFile asm("??_R4LHReleasedFile@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14LHReleasedFile asm("??_R4LHReleasedFile@@6B@");
 // win1.41 008c4d0c mac 101daa08 LHReleasedFile::`vftable'
 extern const struct LHFileVftable __vt__14LHReleasedFile asm("??_7LHReleasedFile@@6B@");
 

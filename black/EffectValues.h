@@ -43,7 +43,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12EffectValues asm(
 // win1.41 009abf98 mac inlined EffectValues::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12EffectValues asm("??_R3EffectValues@@8");
 // win1.41 008d8ba4 mac 10734728 EffectValues::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12EffectValues asm("??_R4EffectValues@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12EffectValues asm("??_R4EffectValues@@6B@");
 // win1.41 008d8ba8 mac 10734730 EffectValues::`vftable'
 extern const struct GBaseInfoVftable __vt__12EffectValues asm("??_7EffectValues@@6B@");
 

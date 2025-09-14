@@ -27,7 +27,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GKeyBuffer asm("?
 // win1.41 009ad128 mac inlined GKeyBuffer::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GKeyBuffer asm("??_R3GKeyBuffer@@8");
 // win1.41 008df77c mac 10733c44 GKeyBuffer::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GKeyBuffer asm("??_R4GKeyBuffer@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10GKeyBuffer asm("??_R4GKeyBuffer@@6B@");
 // win1.41 008df780 mac 10733c4c GKeyBuffer::`vftable'
 extern const struct BaseVftable __vt__10GKeyBuffer asm("??_7GKeyBuffer@@6B@");
 

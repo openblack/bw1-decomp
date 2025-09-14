@@ -40,7 +40,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9SpellSeed asm("??_
 // win1.41 009b9478 mac inlined SpellSeed::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9SpellSeed asm("??_R3SpellSeed@@8");
 // win1.41 00981fbc mac 109dd91c SpellSeed::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9SpellSeed asm("??_R4SpellSeed@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9SpellSeed asm("??_R4SpellSeed@@6B@");
 // win1.41 00981fc0 mac 109dd924 SpellSeed::`vftable'
 extern const struct ObjectVftable __vt__9SpellSeed asm("??_7SpellSeed@@6B@");
 

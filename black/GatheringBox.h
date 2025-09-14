@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12GatheringBox asm(
 // win1.41 009acc18 mac inlined GatheringBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12GatheringBox asm("??_R3GatheringBox@@8");
 // win1.41 008deb28 mac 1099afbc GatheringBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12GatheringBox asm("??_R4GatheringBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12GatheringBox asm("??_R4GatheringBox@@6B@");
 // win1.41 008deb2c mac 1099afc4 GatheringBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__12GatheringBox asm("??_7GatheringBox@@6B@");
 

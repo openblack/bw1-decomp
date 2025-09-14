@@ -50,7 +50,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12ReactionInfo asm(
 // win1.41 009b8c70 mac inlined ReactionInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12ReactionInfo asm("??_R3ReactionInfo@@8");
 // win1.41 009417e8 mac 1075963c ReactionInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12ReactionInfo asm("??_R4ReactionInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12ReactionInfo asm("??_R4ReactionInfo@@6B@");
 // win1.41 009417ec mac 10759644 ReactionInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__12ReactionInfo asm("??_7ReactionInfo@@6B@");
 

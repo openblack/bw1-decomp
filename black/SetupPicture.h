@@ -42,7 +42,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12SetupPicture asm(
 // win1.41 009a68b0 mac inlined SetupPicture::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12SetupPicture asm("??_R3SetupPicture@@8");
 // win1.41 008ab514 mac 10730eb0 SetupPicture::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12SetupPicture asm("??_R4SetupPicture@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12SetupPicture asm("??_R4SetupPicture@@6B@");
 // win1.41 008ab518 mac 10730eb8 SetupPicture::`vftable'
 extern const struct SetupControlVftable __vt__12SetupPicture asm("??_7SetupPicture@@6B@");
 

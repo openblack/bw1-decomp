@@ -32,7 +32,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Windmill asm("??_R
 // win1.41 009a6548 mac inlined Windmill::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Windmill asm("??_R3Windmill@@8");
 // win1.41 008aa8e0 mac 1073c6e0 Windmill::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Windmill asm("??_R4Windmill@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Windmill asm("??_R4Windmill@@6B@");
 // win1.41 008aa8e4 mac 1073c6e8 Windmill::`vftable'
 extern const struct AbodeVftable __vt__8Windmill asm("??_7Windmill@@6B@");
 

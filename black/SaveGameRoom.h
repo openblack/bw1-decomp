@@ -23,7 +23,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12SaveGameRoom asm(
 // win1.41 009bab70 mac inlined SaveGameRoom::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12SaveGameRoom asm("??_R3SaveGameRoom@@8");
 // win1.41 0099edf8 mac 109c207c SaveGameRoom::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12SaveGameRoom asm("??_R4SaveGameRoom@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12SaveGameRoom asm("??_R4SaveGameRoom@@6B@");
 // win1.41 0099edfc mac 109c2084 SaveGameRoom::`vftable'
 extern const struct TempleRoomVftable __vt__12SaveGameRoom asm("??_7SaveGameRoom@@6B@");
 

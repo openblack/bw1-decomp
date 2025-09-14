@@ -36,7 +36,7 @@ static_assert(sizeof(struct LH3DComplexObject) == 0xc0, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 009a3064 mac 101cbdfc LH3DComplexObject::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17LH3DComplexObject asm("??_R4LH3DComplexObject@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17LH3DComplexObject asm("??_R4LH3DComplexObject@@6B@");
 // win1.41 009a3068 mac 101cbe04 LH3DComplexObject::`vftable'
 extern const struct LH3DObjectVftable __vt__17LH3DComplexObject asm("??_7LH3DComplexObject@@6B@");
 

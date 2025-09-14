@@ -48,7 +48,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Mobile asm("??_R2M
 // win1.41 009a96a0 mac inlined Mobile::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Mobile asm("??_R3Mobile@@8");
 // win1.41 008ce74c mac 10732c28 Mobile::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Mobile asm("??_R4Mobile@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__6Mobile asm("??_R4Mobile@@6B@");
 // win1.41 008ce750 mac 10732c50 Mobile::`vftable'
 extern const struct MobileVftable __vt__6Mobile asm("??_7Mobile@@6B@");
 

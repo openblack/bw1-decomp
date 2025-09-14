@@ -22,7 +22,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__23CameraModeFollowH
 // win1.41 009a8aa8 mac inlined CameraModeFollowHeading::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23CameraModeFollowHeading asm("??_R3CameraModeFollowHeading@@8");
 // win1.41 008c7900 mac 10777930 CameraModeFollowHeading::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__23CameraModeFollowHeading asm("??_R4CameraModeFollowHeading@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__23CameraModeFollowHeading asm("??_R4CameraModeFollowHeading@@6B@");
 // win1.41 008c7904 mac 10777938 CameraModeFollowHeading::`vftable'
 extern const struct CameraModeVftable __vt__23CameraModeFollowHeading asm("??_7CameraModeFollowHeading@@6B@");
 

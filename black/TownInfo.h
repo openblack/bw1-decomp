@@ -46,7 +46,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9GTownInfo asm("??_
 // win1.41 009b9a18 mac inlined GTownInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9GTownInfo asm("??_R3GTownInfo@@8");
 // win1.41 00999ab0 mac 109e35e4 GTownInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9GTownInfo asm("??_R4GTownInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9GTownInfo asm("??_R4GTownInfo@@6B@");
 // win1.41 00999ab4 mac 109e35ec GTownInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__9GTownInfo asm("??_7GTownInfo@@6B@");
 

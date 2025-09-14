@@ -35,7 +35,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6Creche asm("??_R2C
 // win1.41 009ab4c0 mac inlined Creche::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6Creche asm("??_R3Creche@@8");
 // win1.41 008d16c0 mac 10994094 Creche::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6Creche asm("??_R4Creche@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__6Creche asm("??_R4Creche@@6B@");
 // win1.41 008d16c4 mac 1099409c Creche::`vftable'
 extern const struct AbodeVftable __vt__6Creche asm("??_7Creche@@6B@");
 

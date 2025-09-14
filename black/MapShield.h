@@ -54,7 +54,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9MapShield asm("??_
 // win1.41 009b9638 mac inlined MapShield::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9MapShield asm("??_R3MapShield@@8");
 // win1.41 00982e70 mac 109def60 MapShield::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9MapShield asm("??_R4MapShield@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9MapShield asm("??_R4MapShield@@6B@");
 // win1.41 00982e74 mac 109def98 MapShield::`vftable'
 extern const struct MapShieldVftable __vt__9MapShield asm("??_7MapShield@@6B@");
 

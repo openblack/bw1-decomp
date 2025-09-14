@@ -43,7 +43,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Prss asm("??_R2Prs
 // win1.41 009abb40 mac inlined Prss::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Prss asm("??_R3Prss@@8");
 // win1.41 008d87b4 mac 101cbc0c Prss::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Prss asm("??_R4Prss@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__4Prss asm("??_R4Prss@@6B@");
 // win1.41 008d87b8 mac 101cbc14 Prss::`vftable'
 extern const struct PrssVftable __vt__4Prss asm("??_7Prss@@6B@");
 

@@ -23,7 +23,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13ChallengeRoom asm
 // win1.41 009ba5d0 mac inlined ChallengeRoom::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13ChallengeRoom asm("??_R3ChallengeRoom@@8");
 // win1.41 0099ead4 mac 10777d4c ChallengeRoom::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13ChallengeRoom asm("??_R4ChallengeRoom@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13ChallengeRoom asm("??_R4ChallengeRoom@@6B@");
 // win1.41 0099ead8 mac 10777d54 ChallengeRoom::`vftable'
 extern const struct TempleRoomVftable __vt__13ChallengeRoom asm("??_7ChallengeRoom@@6B@");
 

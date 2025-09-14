@@ -57,7 +57,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16WorshipSpellIcon 
 // win1.41 009ba4e8 mac inlined WorshipSpellIcon::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16WorshipSpellIcon asm("??_R3WorshipSpellIcon@@8");
 // win1.41 0099d874 mac 10733ab0 WorshipSpellIcon::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16WorshipSpellIcon asm("??_R4WorshipSpellIcon@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__16WorshipSpellIcon asm("??_R4WorshipSpellIcon@@6B@");
 // win1.41 0099d878 mac 106f5b44 WorshipSpellIcon::`vftable'
 extern const struct MultiMapFixedVftable __vt__16WorshipSpellIcon asm("??_7WorshipSpellIcon@@6B@");
 

@@ -20,7 +20,7 @@ static_assert(sizeof(struct WeatherInfo) == 0x64, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 0099b9b4 mac 109ea14c WeatherInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11WeatherInfo asm("??_R4WeatherInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11WeatherInfo asm("??_R4WeatherInfo@@6B@");
 // win1.41 0099b9b8 mac 109ea154 WeatherInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__11WeatherInfo asm("??_7WeatherInfo@@6B@");
 

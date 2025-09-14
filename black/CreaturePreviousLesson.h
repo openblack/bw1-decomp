@@ -25,7 +25,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__22CreaturePreviousL
 // win1.41 009aaec8 mac inlined CreaturePreviousLesson::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__22CreaturePreviousLesson asm("??_R3CreaturePreviousLesson@@8");
 // win1.41 008d042c mac 107874e4 CreaturePreviousLesson::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__22CreaturePreviousLesson asm("??_R4CreaturePreviousLesson@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__22CreaturePreviousLesson asm("??_R4CreaturePreviousLesson@@6B@");
 // win1.41 008d0430 mac 107874ec CreaturePreviousLesson::`vftable'
 extern const struct BaseVftable __vt__22CreaturePreviousLesson asm("??_7CreaturePreviousLesson@@6B@");
 

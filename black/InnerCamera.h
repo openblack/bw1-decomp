@@ -101,7 +101,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11InnerCamera asm("
 // win1.41 009baba0 mac inlined InnerCamera::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11InnerCamera asm("??_R3InnerCamera@@8");
 // win1.41 0099ee6c mac 10777d9c InnerCamera::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11InnerCamera asm("??_R4InnerCamera@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11InnerCamera asm("??_R4InnerCamera@@6B@");
 // win1.41 0099ee70 mac 10777da4 InnerCamera::`vftable'
 extern const struct InnerCameraVftable __vt__11InnerCamera asm("??_7InnerCamera@@6B@");
 

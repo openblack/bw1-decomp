@@ -28,7 +28,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14HandStateGrain as
 // win1.41 009b0fb8 mac inlined HandStateGrain::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14HandStateGrain asm("??_R3HandStateGrain@@8");
 // win1.41 00900afc mac 1099b3c0 HandStateGrain::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14HandStateGrain asm("??_R4HandStateGrain@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14HandStateGrain asm("??_R4HandStateGrain@@6B@");
 // win1.41 00900b00 mac 1099b3c8 HandStateGrain::`vftable'
 extern const struct HandStateVftable __vt__14HandStateGrain asm("??_7HandStateGrain@@6B@");
 

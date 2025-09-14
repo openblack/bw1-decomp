@@ -44,7 +44,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8PileFood asm("??_R
 // win1.41 009b3478 mac inlined PileFood::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8PileFood asm("??_R3PileFood@@8");
 // win1.41 00933058 mac 1074939c PileFood::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8PileFood asm("??_R4PileFood@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8PileFood asm("??_R4PileFood@@6B@");
 // win1.41 0093305c mac 107493a4 PileFood::`vftable'
 extern const struct PotVftable __vt__8PileFood asm("??_7PileFood@@6B@");
 

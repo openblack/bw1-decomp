@@ -116,7 +116,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Villager asm("??_R
 // win1.41 009ad558 mac inlined Villager::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Villager asm("??_R3Villager@@8");
 // win1.41 008f795c mac 10732cdc Villager::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Villager asm("??_R4Villager@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Villager asm("??_R4Villager@@6B@");
 // win1.41 008f7960 mac 106f5ae4 Villager::`vftable'
 extern const struct VillagerVftable __vt__8Villager asm("??_7Villager@@6B@");
 

@@ -22,7 +22,7 @@ static_assert(sizeof(struct LH3DMist) == 0x9c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009a22e4 mac 101cd2bc LH3DMist::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8LH3DMist asm("??_R4LH3DMist@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8LH3DMist asm("??_R4LH3DMist@@6B@");
 // win1.41 009a22e8 mac 101cd2c4 LH3DMist::`vftable'
 extern const struct LH3DObjectVftable __vt__8LH3DMist asm("??_7LH3DMist@@6B@");
 

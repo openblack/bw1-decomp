@@ -62,7 +62,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__5Flock asm("??_R2Fl
 // win1.41 009ac510 mac inlined Flock::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Flock asm("??_R3Flock@@8");
 // win1.41 008dd104 mac 10742990 Flock::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__5Flock asm("??_R4Flock@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__5Flock asm("??_R4Flock@@6B@");
 // win1.41 008dd108 mac 10742998 Flock::`vftable'
 extern const struct GameThingWithPosVftable __vt__5Flock asm("??_7Flock@@6B@");
 

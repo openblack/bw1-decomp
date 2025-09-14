@@ -35,7 +35,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6GAudio asm("??_R2G
 // win1.41 009a7c50 mac inlined GAudio::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6GAudio asm("??_R3GAudio@@8");
 // win1.41 008c48dc mac 1077682c GAudio::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6GAudio asm("??_R4GAudio@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__6GAudio asm("??_R4GAudio@@6B@");
 // win1.41 008c48e0 mac 10776834 GAudio::`vftable'
 extern const struct GameThingVftable __vt__6GAudio asm("??_7GAudio@@6B@");
 

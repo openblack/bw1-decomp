@@ -31,7 +31,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17PlannedTownCentre
 // win1.41 009ae5f0 mac inlined PlannedTownCentre::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17PlannedTownCentre asm("??_R3PlannedTownCentre@@8");
 // win1.41 008e46d8 mac 109e3cf0 PlannedTownCentre::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17PlannedTownCentre asm("??_R4PlannedTownCentre@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17PlannedTownCentre asm("??_R4PlannedTownCentre@@6B@");
 // win1.41 008e46dc mac 109e3cf8 PlannedTownCentre::`vftable'
 extern const struct PlannedMultiMapFixedVftable __vt__17PlannedTownCentre asm("??_7PlannedTownCentre@@6B@");
 

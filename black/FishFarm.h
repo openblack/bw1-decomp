@@ -54,7 +54,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8FishFarm asm("??_R
 // win1.41 009ac378 mac inlined FishFarm::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8FishFarm asm("??_R3FishFarm@@8");
 // win1.41 008dadbc mac 107402f8 FishFarm::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8FishFarm asm("??_R4FishFarm@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8FishFarm asm("??_R4FishFarm@@6B@");
 // win1.41 008dadc0 mac 10740300 FishFarm::`vftable'
 extern const struct MultiMapFixedVftable __vt__8FishFarm asm("??_7FishFarm@@6B@");
 

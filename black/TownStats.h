@@ -72,7 +72,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9TownStats asm("??_
 // win1.41 009b9a68 mac inlined TownStats::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9TownStats asm("??_R3TownStats@@8");
 // win1.41 0099a008 mac 109e3664 TownStats::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9TownStats asm("??_R4TownStats@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9TownStats asm("??_R4TownStats@@6B@");
 // win1.41 0099a00c mac 109e366c TownStats::`vftable'
 extern const struct BaseVftable __vt__9TownStats asm("??_7TownStats@@6B@");
 

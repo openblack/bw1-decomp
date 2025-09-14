@@ -50,7 +50,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14EditorIconBase as
 // win1.41 009abd38 mac inlined EditorIconBase::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14EditorIconBase asm("??_R3EditorIconBase@@8");
 // win1.41 008d895c mac 10999254 EditorIconBase::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14EditorIconBase asm("??_R4EditorIconBase@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14EditorIconBase asm("??_R4EditorIconBase@@6B@");
 // win1.41 008d8960 mac 1099925c EditorIconBase::`vftable'
 extern const struct EditorIconBaseVftable __vt__14EditorIconBase asm("??_7EditorIconBase@@6B@");
 

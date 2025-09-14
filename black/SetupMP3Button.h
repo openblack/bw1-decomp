@@ -34,7 +34,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14SetupMP3Button as
 // win1.41 009b0570 mac inlined SetupMP3Button::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14SetupMP3Button asm("??_R3SetupMP3Button@@8");
 // win1.41 0090005c mac 10731104 SetupMP3Button::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14SetupMP3Button asm("??_R4SetupMP3Button@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14SetupMP3Button asm("??_R4SetupMP3Button@@6B@");
 // win1.41 00900060 mac 1073110c SetupMP3Button::`vftable'
 extern const struct SetupControlVftable __vt__14SetupMP3Button asm("??_7SetupMP3Button@@6B@");
 

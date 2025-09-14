@@ -39,7 +39,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6GArena asm("??_R2G
 // win1.41 009a7a28 mac inlined GArena::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6GArena asm("??_R3GArena@@8");
 // win1.41 008c2c94 mac 10735f14 GArena::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6GArena asm("??_R4GArena@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__6GArena asm("??_R4GArena@@6B@");
 // win1.41 008c2c98 mac 106f5c54 GArena::`vftable'
 extern const struct GameThingVftable __vt__6GArena asm("??_7GArena@@6B@");
 

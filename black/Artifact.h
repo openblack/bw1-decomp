@@ -34,7 +34,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12TownArtifact asm(
 // win1.41 009a7c00 mac inlined TownArtifact::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12TownArtifact asm("??_R3TownArtifact@@8");
 // win1.41 008c47cc mac 10736fe0 TownArtifact::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12TownArtifact asm("??_R4TownArtifact@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12TownArtifact asm("??_R4TownArtifact@@6B@");
 // win1.41 008c47d0 mac 10736fe8 TownArtifact::`vftable'
 extern const struct GameThingVftable __vt__12TownArtifact asm("??_7TownArtifact@@6B@");
 

@@ -46,7 +46,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8Reaction asm("??_R
 // win1.41 009ad6e8 mac inlined Reaction::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Reaction asm("??_R3Reaction@@8");
 // win1.41 008f3670 mac 10759508 Reaction::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8Reaction asm("??_R4Reaction@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Reaction asm("??_R4Reaction@@6B@");
 // win1.41 008f3674 mac 10759510 Reaction::`vftable'
 extern const struct GameThingVftable __vt__8Reaction asm("??_7Reaction@@6B@");
 

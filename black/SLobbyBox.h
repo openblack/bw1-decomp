@@ -24,7 +24,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GSLobbyBox asm("?
 // win1.41 009acda8 mac inlined GSLobbyBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GSLobbyBox asm("??_R3GSLobbyBox@@8");
 // win1.41 008deb78 mac 109edd0c GSLobbyBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10GSLobbyBox asm("??_R4GSLobbyBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10GSLobbyBox asm("??_R4GSLobbyBox@@6B@");
 // win1.41 008deb7c mac 109edd14 GSLobbyBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__10GSLobbyBox asm("??_7GSLobbyBox@@6B@");
 

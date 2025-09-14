@@ -60,7 +60,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20PlannedMultiMapFi
 // win1.41 009ae980 mac inlined PlannedMultiMapFixed::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20PlannedMultiMapFixed asm("??_R3PlannedMultiMapFixed@@8");
 // win1.41 008f3150 mac 107340b0 PlannedMultiMapFixed::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20PlannedMultiMapFixed asm("??_R4PlannedMultiMapFixed@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__20PlannedMultiMapFixed asm("??_R4PlannedMultiMapFixed@@6B@");
 // win1.41 008f3154 mac 107340d0 PlannedMultiMapFixed::`vftable'
 extern const struct PlannedMultiMapFixedVftable __vt__20PlannedMultiMapFixed asm("??_7PlannedMultiMapFixed@@6B@");
 

@@ -77,7 +77,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12BuildingSite asm(
 // win1.41 009a85b8 mac inlined BuildingSite::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12BuildingSite asm("??_R3BuildingSite@@8");
 // win1.41 008c6b68 mac 107391b8 BuildingSite::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12BuildingSite asm("??_R4BuildingSite@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12BuildingSite asm("??_R4BuildingSite@@6B@");
 // win1.41 008c6b6c mac 107391d0 BuildingSite::`vftable'
 extern const struct BuildingSiteVftable __vt__12BuildingSite asm("??_7BuildingSite@@6B@");
 

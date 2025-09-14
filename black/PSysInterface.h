@@ -74,7 +74,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13PSysInterface asm
 // win1.41 009aed10 mac inlined PSysInterface::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13PSysInterface asm("??_R3PSysInterface@@8");
 // win1.41 008fa9d4 mac 107461ac PSysInterface::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13PSysInterface asm("??_R4PSysInterface@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13PSysInterface asm("??_R4PSysInterface@@6B@");
 // win1.41 008fa9d8 mac 106f5fd8 PSysInterface::`vftable'
 extern const struct PSysInterfaceVftable __vt__13PSysInterface asm("??_7PSysInterface@@6B@");
 

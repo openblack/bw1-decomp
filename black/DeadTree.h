@@ -43,7 +43,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8DeadTree asm("??_R
 // win1.41 009ab830 mac inlined DeadTree::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8DeadTree asm("??_R3DeadTree@@8");
 // win1.41 008d6060 mac 1073a834 DeadTree::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8DeadTree asm("??_R4DeadTree@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8DeadTree asm("??_R4DeadTree@@6B@");
 // win1.41 008d6064 mac 1073a87c DeadTree::`vftable'
 extern const struct RockVftable __vt__8DeadTree asm("??_7DeadTree@@6B@");
 

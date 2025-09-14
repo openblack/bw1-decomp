@@ -57,7 +57,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Ball asm("??_R2Bal
 // win1.41 009a8360 mac inlined Ball::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Ball asm("??_R3Ball@@8");
 // win1.41 008c4f70 mac 107371dc Ball::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Ball asm("??_R4Ball@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__4Ball asm("??_R4Ball@@6B@");
 // win1.41 008c4f74 mac 107371e4 Ball::`vftable'
 extern const struct MobileVftable __vt__4Ball asm("??_7Ball@@6B@");
 

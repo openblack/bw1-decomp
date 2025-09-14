@@ -36,7 +36,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17SetupColourPicker
 // win1.41 009a6900 mac inlined SetupColourPicker::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17SetupColourPicker asm("??_R3SetupColourPicker@@8");
 // win1.41 008ab54c mac 10730e58 SetupColourPicker::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17SetupColourPicker asm("??_R4SetupColourPicker@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17SetupColourPicker asm("??_R4SetupColourPicker@@6B@");
 // win1.41 008ab550 mac 10730e60 SetupColourPicker::`vftable'
 extern const struct SetupControlVftable __vt__17SetupColourPicker asm("??_7SetupColourPicker@@6B@");
 

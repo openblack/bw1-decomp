@@ -32,7 +32,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Heap asm("??_R2Hea
 // win1.41 009b3038 mac inlined Heap::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Heap asm("??_R3Heap@@8");
 // win1.41 00931cc4 mac 10730a2c Heap::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Heap asm("??_R4Heap@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__4Heap asm("??_R4Heap@@6B@");
 // win1.41 00931cc8 mac 10730a34 Heap::`vftable'
 extern const struct HeapVftable __vt__4Heap asm("??_7Heap@@6B@");
 

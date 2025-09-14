@@ -22,7 +22,7 @@ struct RTTIBaseClassDescriptor {
 };
 
 struct RTTIBaseClassArray {
-  const struct RTTIBaseClassDescriptor* arrayOfBaseClassDescriptors[0];
+  const struct RTTIBaseClassDescriptor* arrayOfBaseClassDescriptors[];
 };
 
 struct RTTIClassHierarchyDescriptor {

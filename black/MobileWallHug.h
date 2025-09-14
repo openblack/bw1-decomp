@@ -123,7 +123,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13MobileWallHug asm
 // win1.41 009a9660 mac inlined MobileWallHug::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13MobileWallHug asm("??_R3MobileWallHug@@8");
 // win1.41 008cded4 mac 10732c5c MobileWallHug::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13MobileWallHug asm("??_R4MobileWallHug@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13MobileWallHug asm("??_R4MobileWallHug@@6B@");
 // win1.41 008cded8 mac 10732c8c MobileWallHug::`vftable'
 extern const struct MobileWallHugVftable __vt__13MobileWallHug asm("??_7MobileWallHug@@6B@");
 

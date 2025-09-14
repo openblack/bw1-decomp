@@ -47,7 +47,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12MobileStatic asm(
 // win1.41 009adf60 mac inlined MobileStatic::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12MobileStatic asm("??_R3MobileStatic@@8");
 // win1.41 008e80b0 mac 107387a4 MobileStatic::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12MobileStatic asm("??_R4MobileStatic@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12MobileStatic asm("??_R4MobileStatic@@6B@");
 // win1.41 008e80b4 mac 107387dc MobileStatic::`vftable'
 extern const struct MultiMapFixedVftable __vt__12MobileStatic asm("??_7MobileStatic@@6B@");
 

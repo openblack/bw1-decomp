@@ -73,7 +73,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__9ScriptDLL asm("??_
 // win1.41 009b8ee8 mac inlined ScriptDLL::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__9ScriptDLL asm("??_R3ScriptDLL@@8");
 // win1.41 009421fc mac 109c4210 ScriptDLL::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__9ScriptDLL asm("??_R4ScriptDLL@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__9ScriptDLL asm("??_R4ScriptDLL@@6B@");
 // win1.41 00942200 mac 109c4218 ScriptDLL::`vftable'
 extern const struct LHDLLVftable __vt__9ScriptDLL asm("??_7ScriptDLL@@6B@");
 

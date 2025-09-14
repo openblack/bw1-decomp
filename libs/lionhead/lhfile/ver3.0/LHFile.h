@@ -85,7 +85,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__6LHFile asm("??_R2L
 // win1.41 009a8030 mac inlined LHFile::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__6LHFile asm("??_R3LHFile@@8");
 // win1.41 008c4d10 mac 101da9ec LHFile::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__6LHFile asm("??_R4LHFile@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__6LHFile asm("??_R4LHFile@@6B@");
 // win1.41 008c4d14 mac 101da9f4 LHFile::`vftable'
 extern const struct LHFileVftable __vt__6LHFile asm("??_7LHFile@@6B@");
 

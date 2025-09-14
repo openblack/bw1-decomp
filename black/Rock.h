@@ -52,7 +52,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4Rock asm("??_R2Roc
 // win1.41 009ae590 mac inlined Rock::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4Rock asm("??_R3Rock@@8");
 // win1.41 008e20fc mac 107387e8 Rock::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__4Rock asm("??_R4Rock@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__4Rock asm("??_R4Rock@@6B@");
 // win1.41 008e2100 mac 10738828 Rock::`vftable'
 extern const struct RockVftable __vt__4Rock asm("??_7Rock@@6B@");
 

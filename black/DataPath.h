@@ -36,7 +36,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8DataPath asm("??_R
 // win1.41 009b19f8 mac inlined DataPath::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8DataPath asm("??_R3DataPath@@8");
 // win1.41 0092b418 mac 109a0f04 DataPath::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__8DataPath asm("??_R4DataPath@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8DataPath asm("??_R4DataPath@@6B@");
 // win1.41 0092b41c mac 109a0f0c DataPath::`vftable'
 extern const struct GameThingVftable __vt__8DataPath asm("??_7DataPath@@6B@");
 

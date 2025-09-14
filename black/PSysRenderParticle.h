@@ -30,7 +30,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__14RenderParticle as
 // win1.41 009aedc0 mac inlined RenderParticle::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__14RenderParticle asm("??_R3RenderParticle@@8");
 // win1.41 008fac38 mac 109b6a34 RenderParticle::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__14RenderParticle asm("??_R4RenderParticle@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14RenderParticle asm("??_R4RenderParticle@@6B@");
 // win1.41 008fac3c mac 109b6a54 RenderParticle::`vftable'
 extern const struct GameThingVftable __vt__14RenderParticle asm("??_7RenderParticle@@6B@");
 

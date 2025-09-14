@@ -31,7 +31,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11PSysManager asm("
 // win1.41 009b3798 mac inlined PSysManager::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11PSysManager asm("??_R3PSysManager@@8");
 // win1.41 009353bc mac 109b86b8 PSysManager::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11PSysManager asm("??_R4PSysManager@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11PSysManager asm("??_R4PSysManager@@6B@");
 // win1.41 009353c0 mac 109b86c0 PSysManager::`vftable'
 extern const struct GameThingVftable __vt__11PSysManager asm("??_7PSysManager@@6B@");
 

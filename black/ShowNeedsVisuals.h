@@ -50,7 +50,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__16ShowNeedsVisuals 
 // win1.41 009ae700 mac inlined ShowNeedsVisuals::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__16ShowNeedsVisuals asm("??_R3ShowNeedsVisuals@@8");
 // win1.41 008ecaa8 mac 1075acf0 ShowNeedsVisuals::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__16ShowNeedsVisuals asm("??_R4ShowNeedsVisuals@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__16ShowNeedsVisuals asm("??_R4ShowNeedsVisuals@@6B@");
 // win1.41 008ecaac mac 1075acf8 ShowNeedsVisuals::`vftable'
 extern const struct ObjectVftable __vt__16ShowNeedsVisuals asm("??_7ShowNeedsVisuals@@6B@");
 

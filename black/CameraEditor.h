@@ -30,7 +30,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13GCameraEditor asm
 // win1.41 009a8880 mac inlined GCameraEditor::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13GCameraEditor asm("??_R3GCameraEditor@@8");
 // win1.41 008c7638 mac inlined GCameraEditor::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13GCameraEditor asm("??_R4GCameraEditor@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13GCameraEditor asm("??_R4GCameraEditor@@6B@");
 // win1.41 008c763c mac inlined GCameraEditor::`vftable'
 extern const struct PrssVftable __vt__13GCameraEditor asm("??_7GCameraEditor@@6B@");
 

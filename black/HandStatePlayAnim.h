@@ -31,7 +31,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17HandStatePlayAnim
 // win1.41 009b10e0 mac inlined HandStatePlayAnim::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17HandStatePlayAnim asm("??_R3HandStatePlayAnim@@8");
 // win1.41 00900bc0 mac 1099b904 HandStatePlayAnim::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__17HandStatePlayAnim asm("??_R4HandStatePlayAnim@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17HandStatePlayAnim asm("??_R4HandStatePlayAnim@@6B@");
 // win1.41 00900bc4 mac 1099b90c HandStatePlayAnim::`vftable'
 extern const struct HandStateVftable __vt__17HandStatePlayAnim asm("??_7HandStatePlayAnim@@6B@");
 

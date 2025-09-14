@@ -30,7 +30,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12HandStateTug asm(
 // win1.41 009b1180 mac inlined HandStateTug::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12HandStateTug asm("??_R3HandStateTug@@8");
 // win1.41 00900c18 mac 1099bc00 HandStateTug::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12HandStateTug asm("??_R4HandStateTug@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12HandStateTug asm("??_R4HandStateTug@@6B@");
 // win1.41 00900c1c mac 1099bc08 HandStateTug::`vftable'
 extern const struct HandStateVftable __vt__12HandStateTug asm("??_7HandStateTug@@6B@");
 

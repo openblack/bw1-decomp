@@ -41,7 +41,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__15OneOffSpellSeed a
 // win1.41 009ad5b8 mac inlined OneOffSpellSeed::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__15OneOffSpellSeed asm("??_R3OneOffSpellSeed@@8");
 // win1.41 008f3770 mac 1099eba8 OneOffSpellSeed::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__15OneOffSpellSeed asm("??_R4OneOffSpellSeed@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15OneOffSpellSeed asm("??_R4OneOffSpellSeed@@6B@");
 // win1.41 008f3774 mac 106f8cd0 OneOffSpellSeed::`vftable'
 extern const struct ObjectVftable __vt__15OneOffSpellSeed asm("??_7OneOffSpellSeed@@6B@");
 

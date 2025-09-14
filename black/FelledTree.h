@@ -28,7 +28,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10FelledTree asm("?
 // win1.41 009ab8a0 mac inlined FelledTree::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10FelledTree asm("??_R3FelledTree@@8");
 // win1.41 008d6978 mac 1073a888 FelledTree::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10FelledTree asm("??_R4FelledTree@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10FelledTree asm("??_R4FelledTree@@6B@");
 // win1.41 008d697c mac 1073a890 FelledTree::`vftable'
 extern const struct RockVftable __vt__10FelledTree asm("??_7FelledTree@@6B@");
 

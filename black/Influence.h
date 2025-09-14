@@ -39,7 +39,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__13InfluenceRing asm
 // win1.41 009adda8 mac inlined InfluenceRing::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13InfluenceRing asm("??_R3InfluenceRing@@8");
 // win1.41 008ea3c8 mac 10744e50 InfluenceRing::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__13InfluenceRing asm("??_R4InfluenceRing@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13InfluenceRing asm("??_R4InfluenceRing@@6B@");
 // win1.41 008ea3cc mac 10744e58 InfluenceRing::`vftable'
 extern const struct GameThingWithPosVftable __vt__13InfluenceRing asm("??_7InfluenceRing@@6B@");
 

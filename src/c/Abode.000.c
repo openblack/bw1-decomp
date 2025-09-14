@@ -1,7 +1,7 @@
 #include "Abode.h"
 #include "Object.h"
 
-const struct RTTICompleteObjectLocator* const p__RTTICompleObjectLocator__5Abode = &__RTTICompleObjectLocator__5Abode;
+const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__5Abode = &__RTTICompleteObjectLocator__5Abode;
 
 const struct AbodeVftable __vt__5Abode = {
   Serialise__4BaseFR7Archive,

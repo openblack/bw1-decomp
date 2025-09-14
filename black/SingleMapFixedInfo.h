@@ -41,7 +41,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__19GSingleMapFixedIn
 // win1.41 009ac3d0 mac inlined GSingleMapFixedInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__19GSingleMapFixedInfo asm("??_R3GSingleMapFixedInfo@@8");
 // win1.41 008db6d8 mac 10740ce8 GSingleMapFixedInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__19GSingleMapFixedInfo asm("??_R4GSingleMapFixedInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__19GSingleMapFixedInfo asm("??_R4GSingleMapFixedInfo@@6B@");
 // win1.41 008db6dc mac 10740cf0 GSingleMapFixedInfo::`vftable'
 extern const struct GSingleMapFixedInfoVftable __vt__19GSingleMapFixedInfo asm("??_7GSingleMapFixedInfo@@6B@");
 

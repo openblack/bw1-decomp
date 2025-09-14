@@ -36,7 +36,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20GSpecialVillagerI
 // win1.41 009b9270 mac inlined GSpecialVillagerInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20GSpecialVillagerInfo asm("??_R3GSpecialVillagerInfo@@8");
 // win1.41 00980564 mac 1075b7e4 GSpecialVillagerInfo::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__20GSpecialVillagerInfo asm("??_R4GSpecialVillagerInfo@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__20GSpecialVillagerInfo asm("??_R4GSpecialVillagerInfo@@6B@");
 // win1.41 00980568 mac 1075b7ec GSpecialVillagerInfo::`vftable'
 extern const struct GBaseInfoVftable __vt__20GSpecialVillagerInfo asm("??_7GSpecialVillagerInfo@@6B@");
 

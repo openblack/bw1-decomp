@@ -33,7 +33,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__12WeatherThing asm(
 // win1.41 009ae048 mac inlined WeatherThing::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12WeatherThing asm("??_R3WeatherThing@@8");
 // win1.41 008ebc44 mac 109ea360 WeatherThing::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__12WeatherThing asm("??_R4WeatherThing@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12WeatherThing asm("??_R4WeatherThing@@6B@");
 // win1.41 008ebc48 mac 109ea368 WeatherThing::`vftable'
 extern const struct GameThingWithPosVftable __vt__12WeatherThing asm("??_7WeatherThing@@6B@");
 

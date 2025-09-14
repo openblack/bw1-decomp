@@ -23,7 +23,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10LoadingBox asm("?
 // win1.41 009ac808 mac inlined LoadingBox::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10LoadingBox asm("??_R3LoadingBox@@8");
 // win1.41 008deb50 mac 109ed8d4 LoadingBox::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__10LoadingBox asm("??_R4LoadingBox@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10LoadingBox asm("??_R4LoadingBox@@6B@");
 // win1.41 008deb54 mac 109ed8dc LoadingBox::`vftable'
 extern const struct DialogBoxBaseVftable __vt__10LoadingBox asm("??_7LoadingBox@@6B@");
 

@@ -1,7 +1,7 @@
 #include "PlannedAbode.h"
 #include "PlannedMultiMapFixed.h"
 
-const struct RTTICompleteObjectLocator* const p__RTTICompleObjectLocator__12PlannedAbode = &__RTTICompleObjectLocator__12PlannedAbode;
+const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__12PlannedAbode = &__RTTICompleteObjectLocator__12PlannedAbode;
 
 const struct PlannedMultiMapFixedVftable __vt__12PlannedAbode = {
     Serialise__4BaseFR7Archive,

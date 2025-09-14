@@ -38,7 +38,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11SpellShield asm("
 // win1.41 009b9580 mac inlined SpellShield::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11SpellShield asm("??_R3SpellShield@@8");
 // win1.41 009828d4 mac 109e09bc SpellShield::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11SpellShield asm("??_R4SpellShield@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11SpellShield asm("??_R4SpellShield@@6B@");
 // win1.41 009828d8 mac 109e09c4 SpellShield::`vftable'
 extern const struct SpellWithObjectsVftable __vt__11SpellShield asm("??_7SpellShield@@6B@");
 

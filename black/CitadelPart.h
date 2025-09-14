@@ -48,7 +48,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11CitadelPart asm("
 // win1.41 009a9170 mac inlined CitadelPart::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11CitadelPart asm("??_R3CitadelPart@@8");
 // win1.41 008caafc mac 107339ec CitadelPart::`RTTI Complete Object Locator'
-extern const struct RTTICompleteObjectLocator __RTTICompleObjectLocator__11CitadelPart asm("??_R4CitadelPart@@6B@");
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11CitadelPart asm("??_R4CitadelPart@@6B@");
 // win1.41 008cab00 mac 10733a24 CitadelPart::`vftable'
 extern const struct MultiMapFixedVftable __vt__11CitadelPart asm("??_7CitadelPart@@6B@");
 
