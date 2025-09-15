@@ -1,5 +1,46 @@
 #include "PlannedAbode.h"
 
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12PlannedAbode = {
+    .pTypeDescriptor = &__RTTITypeDescriptor__12PlannedAbode,
+    .numContainedBases = 0x00000004,
+    .where = {
+        .mdisp = 0x00000000,
+        .pdisp = 0xFFFFFFFF,
+        .vdisp = 0x00000000,
+    },
+    .attributes = 0x0000000,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassArray __RTTIBaseClassArray__12PlannedAbode = {
+    .arrayOfBaseClassDescriptors = {
+        (void*)0x009a64b0,
+        &__RTTIBaseClassDescriptor__20PlannedMultiMapFixed,
+        &__RTTIBaseClassDescriptor__16GameThingWithPos,
+        &__RTTIBaseClassDescriptor__9GameThing,
+        &__RTTIBaseClassDescriptor__4Base,
+        NULL,
+    }
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12PlannedAbode = {
+  .signature = 0x00000000,
+  .attributes = 0x00000000,
+  .numBaseClasses = 0x00000005,
+  .pBaseClassArray = &__RTTIBaseClassArray__12PlannedAbode,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12PlannedAbode = {
+  .signature = 0x00000000,
+  .offset = 0x00000000,
+  .cdOffset = 0x00000000,
+  .pTypeDescriptor = &__RTTITypeDescriptor__12PlannedAbode,
+  .pClassDescriptor = &__RTTIClassHierarchyDescriptor__12PlannedAbode,
+};
+
 struct Town* __fastcall GetTown__12PlannedAbodeFv(struct GameThing* this)
 {
     asm("{disp8} mov        eax, dword ptr [ecx + 0x48]");                   // 0x004050e0    8b4148

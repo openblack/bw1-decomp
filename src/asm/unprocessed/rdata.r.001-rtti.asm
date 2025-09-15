@@ -1,5 +1,4 @@
 .intel_syntax noprefix
-.align 16
 .section .rdata$r,"dr"
 
 .macro _RTTIBaseClassDescriptor name num_base_classes type
@@ -70,20 +69,6 @@ _RTTIBaseClassDescriptor__\name:
 .endm
 
 .align 8
-
-RTTIBaseClassDescriptor PlannedMultiMapFixed 3                                                                     // [0xfd498] 0x008a9000 + 0xfd498 = 0x009a6498
-RTTIBaseClassDescriptor PlannedAbode 4                                                                             // [0xfd4b0] 0x008a9000 + 0xfd4b0 = 0x009a64b0
-
-RTTIBaseClassArray PlannedAbode                                                                                    // [0xfd450] 0x008a9000 + 0xfd450 = 0x009a6450
-.long ??_R1A@?0A@A@PlannedMultiMapFixed@@8
-.long ??_R1A@?0A@A@GameThingWithPos@@8
-.long ??_R1A@?0A@A@GameThing@@8
-.long ??_R1A@?0A@A@Base@@8
-.long 0x00000000
-
-RTTIClassHierarchyDescriptor PlannedAbode 5                                                                        // [0xfd4e0] 0x008a9000 + 0xfd4e0 = 0x009a64e0
-RTTICompleteObjectLocator PlannedAbode                                                                             // [0xfd4f0] 0x008a9000 + 0xfd4f0 = 0x009a64f0
-.long 0x00000000
 
 RTTIBaseClassDescriptor Windmill 7                                                                                 // [0xfd508] 0x008a9000 + 0xfd508 = 0x009a6508
 
