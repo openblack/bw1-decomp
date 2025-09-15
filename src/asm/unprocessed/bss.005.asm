@@ -41,7 +41,6 @@
 .globl __umaskval
 .globl __pgmptr
 .globl ___error_mode
-.globl _DAT_00c4cc68
 .globl _SetupThing
 .globl _UINT_00c58604
 .globl _GCitadelHeartInfo_ARRAY_00c5e270
