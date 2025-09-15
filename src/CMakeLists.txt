@@ -76,11 +76,11 @@ set(SOURCES_001
     c/Fixed.000.c
     c/MultiMapFixed.000.c
     c/Abode.001.c
-    c/_float_constants.000.c
     c/GameThing.000.c
-    c/_float_constants.001.c
     c/GameThingWithPos.000.c
     c/Object.000.c
+    c/Fixed.001.c
+    c/MultiMapFixed.001.c
     c/Abode.002.c
     c/LHMatrix.000.c
     c/Abode.003.c

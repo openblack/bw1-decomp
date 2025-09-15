@@ -1,5 +1,48 @@
 #include "Abode.h"
 
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Abode = {
+    .pTypeDescriptor = &__RTTITypeDescriptor__5Abode,
+    .numContainedBases = 0x00000006,
+    .where = {
+        .mdisp = 0x00000000,
+        .pdisp = 0xFFFFFFFF,
+        .vdisp = 0x00000000,
+    },
+    .attributes = 0x0000000,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassArray __RTTIBaseClassArray__5Abode = {
+    .arrayOfBaseClassDescriptors = {
+        (void*)0x009a6438,
+        &__RTTIBaseClassDescriptor__13MultiMapFixed,
+        &__RTTIBaseClassDescriptor__11FixedObject,
+        &__RTTIBaseClassDescriptor__6Object,
+        &__RTTIBaseClassDescriptor__16GameThingWithPos,
+        &__RTTIBaseClassDescriptor__9GameThing,
+        &__RTTIBaseClassDescriptor__4Base,
+        NULL,
+    }
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__5Abode = {
+  .signature = 0x00000000,
+  .attributes = 0x00000000,
+  .numBaseClasses = 0x00000007,
+  .pBaseClassArray = &__RTTIBaseClassArray__5Abode,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__5Abode = {
+  .signature = 0x00000000,
+  .offset = 0x00000000,
+  .cdOffset = 0x00000000,
+  .pTypeDescriptor = &__RTTITypeDescriptor__5Abode,
+  .pClassDescriptor = &__RTTIClassHierarchyDescriptor__5Abode,
+};
+
 void __fastcall __dt__5AbodeFv(struct Abode* this)
 {
     asm("push               esi");                                      // 0x00402b60    56

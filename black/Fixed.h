@@ -56,7 +56,15 @@ static_assert(sizeof(struct Fixed) == 0x58, "Data type is of wrong size");
 
 // Object Oriented datastructures
 
-// win1.41 008db718 mac 1073397c FixedObject::`RTTI Complete Object Locator'
+// win1.41 009c7f68 mac inlined FixedObject::`RTTI Type Descriptor'
+extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11FixedObject asm("??_R0?AVFixed@@@8");
+// win1.41 009a6408 mac inlined FixedObject::`RTTI Base Class Descriptor'
+extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11FixedObject asm("??_R1A@?0A@A@Fixed@@8");
+// win1.41 009ac3f8 mac inlined FixedObject::`RTTI Base Class Array'
+extern const struct RTTIBaseClassArray __RTTIBaseClassArray__11FixedObject asm("??_R2Fixed@@8");
+// win1.41 009ac410 mac inlined FixedObject::`RTTI Class Hierarchy Descriptor'
+extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__11FixedObject asm("??_R3Fixed@@8");
+// win1.41 009ac420 mac 1073397c FixedObject::`RTTI Complete Object Locator'
 extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11FixedObject asm("??_R4Fixed@@6B@");
 // win1.41 008db71c mac 107339a4 FixedObject::`vftable'
 extern const struct FixedVftable __vt__11FixedObject asm("??_7Fixed@@6B@");

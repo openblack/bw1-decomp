@@ -1,8 +1,22 @@
 #include "GameThing.h"
 
 const float maxAlignmentChangePerGameTurn asm("?maxAlignmentChangePerGameTurn@GameThing@@2MB");
- // [0x1394] 0x008a9000 + 0x1394 = 0x008aa394
+// [0x1390] 0x008a9000 + 0x1390 = 0x008aa390
+const float rdata_float1p0 = 1.0f;
+// [0x1394] 0x008a9000 + 0x1394 = 0x008aa394
 const float maxAlignmentChangePerGameTurn = 1.0f / (60 * 60 * 10);
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GameThing = {
+    .pTypeDescriptor = &__RTTITypeDescriptor__9GameThing,
+    .numContainedBases = 0x00000001,
+    .where = {
+        .mdisp = 0x00000000,
+        .pdisp = 0xFFFFFFFF,
+        .vdisp = 0x00000000,
+    },
+    .attributes = 0x0000000,
+};
 
 float __fastcall CalculateInfluence__9GameThingFRC9MapCoords(struct GameThing* this, const void* edx, const struct MapCoords* param_1)
 {
