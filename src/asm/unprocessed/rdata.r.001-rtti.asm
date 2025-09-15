@@ -71,26 +71,6 @@ _RTTIBaseClassDescriptor__\name:
 
 .align 8
 
-RTTIBaseClassDescriptor GameThing 1                                                                                // [0xfd3c0] 0x008a9000 + 0xfd3c0 = 0x009a63c0
-RTTIBaseClassDescriptor GameThingWithPos 2                                                                         // [0xfd3d8] 0x008a9000 + 0xfd3d8 = 0x009a63d8
-RTTIBaseClassDescriptor Object 3                                                                                   // [0xfd3f0] 0x008a9000 + 0xfd3f0 = 0x009a63f0
-RTTIBaseClassDescriptor Fixed 4                                                                                    // [0xfd408] 0x008a9000 + 0xfd408 = 0x009a6408
-RTTIBaseClassDescriptor MultiMapFixed 5                                                                            // [0xfd420] 0x008a9000 + 0xfd420 = 0x009a6420
-RTTIBaseClassDescriptor Abode 6                                                                                    // [0xfd438] 0x008a9000 + 0xfd438 = 0x009a6438
-
-RTTIBaseClassArray Abode                                                                                           // [0xfd450] 0x008a9000 + 0xfd450 = 0x009a6450
-.long ??_R1A@?0A@A@MultiMapFixed@@8
-.long ??_R1A@?0A@A@Fixed@@8
-.long ??_R1A@?0A@A@Object@@8
-.long ??_R1A@?0A@A@GameThingWithPos@@8
-.long ??_R1A@?0A@A@GameThing@@8
-.long ??_R1A@?0A@A@Base@@8
-.long 0x00000000
-
-RTTIClassHierarchyDescriptor Abode 7                                                                               // [0xfd470] 0x008a9000 + 0xfd470 = 0x009a6470
-RTTICompleteObjectLocator Abode                                                                                    // [0xfd480] 0x008a9000 + 0xfd480 = 0x009a6480
-.long 0x00000000
-
 RTTIBaseClassDescriptor PlannedMultiMapFixed 3                                                                     // [0xfd498] 0x008a9000 + 0xfd498 = 0x009a6498
 RTTIBaseClassDescriptor PlannedAbode 4                                                                             // [0xfd4b0] 0x008a9000 + 0xfd4b0 = 0x009a64b0
 

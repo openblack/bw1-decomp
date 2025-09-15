@@ -1,5 +1,17 @@
 #include "Object.h"
 
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Object = {
+    .pTypeDescriptor = &__RTTITypeDescriptor__6Object,
+    .numContainedBases = 0x00000003,
+    .where = {
+        .mdisp = 0x00000000,
+        .pdisp = 0xFFFFFFFF,
+        .vdisp = 0x00000000,
+    },
+    .attributes = 0x0000000,
+};
+
 float __fastcall GetXAngle__6ObjectFv(struct Object* this)
 {
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x004024f0    d90598a38a00
