@@ -70,23 +70,6 @@ _RTTIBaseClassDescriptor__\name:
 
 .align 8
 
-RTTIBaseClassDescriptor Windmill 7                                                                                 // [0xfd508] 0x008a9000 + 0xfd508 = 0x009a6508
-
-RTTIBaseClassArray Windmill                                                                                        // [0xfd520] 0x008a9000 + 0xfd520 = 0x009a6520
-.long ??_R1A@?0A@A@Abode@@8
-.long ??_R1A@?0A@A@MultiMapFixed@@8
-.long ??_R1A@?0A@A@Fixed@@8
-.long ??_R1A@?0A@A@Object@@8
-.long ??_R1A@?0A@A@GameThingWithPos@@8
-.long ??_R1A@?0A@A@GameThing@@8
-.long ??_R1A@?0A@A@Base@@8
-.long 0x00000000
-.long 0x00000000
-
-RTTIClassHierarchyDescriptor Windmill 8                                                                            // [0xfd548] 0x008a9000 + 0xfd548 = 0x009a6548
-RTTICompleteObjectLocator Windmill                                                                                 // [0xfd558] 0x008a9000 + 0xfd558 = 0x009a6558
-.long 0x00000000
-
 RTTIBaseClassDescriptorStruct SetupControl 0                                                                       // [0xfd570] 0x008a9000 + 0xfd570 = 0x009a6570
 
 RTTIBaseClassArray SetupControl                                                                                    // [0xfd588] 0x008a9000 + 0xfd588 = 0x009a6588
