@@ -1,5 +1,49 @@
 #include "Windmill.h"
 
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Windmill = {
+    .pTypeDescriptor = &__RTTITypeDescriptor__8Windmill,
+    .numContainedBases = 0x00000007,
+    .where = {
+        .mdisp = 0x00000000,
+        .pdisp = 0xFFFFFFFF,
+        .vdisp = 0x00000000,
+    },
+    .attributes = 0x0000000,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassArray __RTTIBaseClassArray__8Windmill = {
+    .arrayOfBaseClassDescriptors = {
+        (void*)0x009a6508,
+        &__RTTIBaseClassDescriptor__5Abode,
+        &__RTTIBaseClassDescriptor__13MultiMapFixed,
+        &__RTTIBaseClassDescriptor__11FixedObject,
+        &__RTTIBaseClassDescriptor__6Object,
+        &__RTTIBaseClassDescriptor__16GameThingWithPos,
+        &__RTTIBaseClassDescriptor__9GameThing,
+        &__RTTIBaseClassDescriptor__4Base,
+        NULL,
+    }
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8Windmill = {
+  .signature = 0x00000000,
+  .attributes = 0x00000000,
+  .numBaseClasses = 0x00000008,
+  .pBaseClassArray = &__RTTIBaseClassArray__8Windmill,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Windmill = {
+  .signature = 0x00000000,
+  .offset = 0x00000000,
+  .cdOffset = 0x00000000,
+  .pTypeDescriptor = &__RTTITypeDescriptor__8Windmill,
+  .pClassDescriptor = &__RTTIClassHierarchyDescriptor__8Windmill,
+};
+
 __attribute__((XOR32rr_REV))
 struct Windmill* __cdecl Create__8WindmillFRC9MapCoordsPC10GAbodeInfoP4Townfffi(const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, float food, int wood)
 {
