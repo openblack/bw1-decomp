@@ -38,7 +38,6 @@
 .globl __umaskval
 .globl __pgmptr
 .globl ___error_mode
-.globl _DAT_00c4cc68
 .globl _SetupThing
 .globl _UINT_00c58604
 .globl _GCitadelHeartInfo_ARRAY_00c5e270
@@ -146,8 +145,6 @@
 // Virtual (non-allocated at build time)
 .set __except_list,                        0x00000000
 
-_DAT_00c4cc68:                             .space 4                                                                // [0x286c68] 0x009c6000 + 0x286c68 = 0x00c4cc68
-                                           .space 0x14
 _SetupThing:                               .space 0xb8                                                             // [0x286c80] 0x009c6000 + 0x286c80 = 0x00c4cc80
                                            .space 0xb8cc                                                           // [0x28a000] 0x009c6000 + 0x28a000 = 0x00c50000
 _UINT_00c58604:                            .space 4                                                                // [0x292604] 0x009c6000 + 0x292604 = 0x00c58604

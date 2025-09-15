@@ -444,7 +444,7 @@ _jmp_addr_0x005162e5:    {disp32} mov       eax, dword ptr [data_bytes + 0x2723f
                          mov                eax, dword ptr [esi]                          // 0x005162fb    8b06
                          mov.s              ecx, esi                                      // 0x005162fd    8bce
                          call               dword ptr [eax + 0x48]                        // 0x005162ff    ff5048
-                         cmp                dword ptr [data_bytes + 0x286c6c], eax        // 0x00516302    39056cccc400
+                         cmp                dword ptr [_abode_town_00c4cc6c], eax         // 0x00516302    39056cccc400
                          {disp8} je         _jmp_addr_0x0051630e                          // 0x00516308    7404
 _jmp_addr_0x0051630a:    cmp.s              edi, ebx                                      // 0x0051630a    3bfb
                          {disp8} je         _jmp_addr_0x00516316                          // 0x0051630c    7408
@@ -471,7 +471,7 @@ _jmp_addr_0x00516316:    pop                edi                                 
                          call               _jmp_addr_0x0063b040                          // 0x00516335    e8064d1200
                          test               eax, eax                                      // 0x0051633a    85c0
                          {disp32} je        _jmp_addr_0x00516448                          // 0x0051633c    0f8406010000
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c70]        // 0x00516342    8b0d70ccc400
+                         {disp32} mov       ecx, dword ptr [_windmill_lh3d_object_00c4cc70]        // 0x00516342    8b0d70ccc400
                          mov                edx, dword ptr [esi]                          // 0x00516348    8b16
                          push               edi                                           // 0x0051634a    57
                          mov                edi, dword ptr [ecx]                          // 0x0051634b    8b39
@@ -483,13 +483,13 @@ _jmp_addr_0x00516316:    pop                edi                                 
                          fstp               dword ptr [esp]                               // 0x0051635a    d91c24
                          call               dword ptr [eax + 0x508]                       // 0x0051635d    ff9008050000
                          push               ecx                                           // 0x00516363    51
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c70]        // 0x00516364    8b0d70ccc400
+                         {disp32} mov       ecx, dword ptr [_windmill_lh3d_object_00c4cc70]        // 0x00516364    8b0d70ccc400
                          fstp               dword ptr [esp]                               // 0x0051636a    d91c24
                          {disp8} lea        edx, dword ptr [esp + 0x20]                   // 0x0051636d    8d542420
                          call               dword ptr [edi + 0x20]                        // 0x00516371    ff5720
-                         {disp32} fld       dword ptr [data_bytes + 0x286c74]             // 0x00516374    d90574ccc400
+                         {disp32} fld       dword ptr [_windmill_float_00c4cc74]          // 0x00516374    d90574ccc400
                          fld                st(0)                                         // 0x0051637a    d9c0
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c70]        // 0x0051637c    8b0d70ccc400
+                         {disp32} mov       ecx, dword ptr [_windmill_lh3d_object_00c4cc70]        // 0x0051637c    8b0d70ccc400
                          fcos                                                             // 0x00516382    d9ff
                          {disp8} lea        eax, dword ptr [ecx + 0x14]                   // 0x00516384    8d4114
                          {disp8} lea        edx, dword ptr [esp + 0x0c]                   // 0x00516387    8d54240c
@@ -547,14 +547,14 @@ _jmp_addr_0x00516316:    pop                edi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                   // 0x00516418    8d4c242c
                          push               ecx                                           // 0x0051641c    51
                          call               _jmp_addr_0x007feb30                          // 0x0051641d    e80e872e00
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c70]        // 0x00516422    8b0d70ccc400
+                         {disp32} mov       ecx, dword ptr [_windmill_lh3d_object_00c4cc70]        // 0x00516422    8b0d70ccc400
                          add                esp, 0x18                                     // 0x00516428    83c418
                          {disp8} mov        dword ptr [esp + 0x0c], eax                   // 0x0051642b    8944240c
                          mov                esi, dword ptr [ecx]                          // 0x0051642f    8b31
                          push               eax                                           // 0x00516431    50
                          {disp8} mov        edx, dword ptr [esp + 0x14]                   // 0x00516432    8b542414
                          call               dword ptr [esi + 0x2c]                        // 0x00516436    ff562c
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x286c70]        // 0x00516439    8b0d70ccc400
+                         {disp32} mov       ecx, dword ptr [_windmill_lh3d_object_00c4cc70]        // 0x00516439    8b0d70ccc400
                          mov                edx, dword ptr [ecx]                          // 0x0051643f    8b11
                          call               dword ptr [edx + 0x108]                       // 0x00516441    ff9208010000
                          pop                edi                                           // 0x00516447    5f

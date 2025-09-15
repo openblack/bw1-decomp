@@ -2503,7 +2503,7 @@ _jmp_addr_0x0042c969:    {disp8} lea        edx, dword ptr [esp + 0x1c]         
                          mov.s              ecx, esi                                             // 0x0042c96e    8bce
                          call               @LoadBinary__10GAbodeInfoFP6LHFile@12                // 0x0042c970    e8ab1b0000
                          add                esi, 0x000001c8                                      // 0x0042c975    81c6c8010000
-                         cmp                esi, OFFSET _DAT_00c4cc68                            // 0x0042c97b    81fe68ccc400
+                         cmp                esi, OFFSET _AbodeInfos + 0x93 * 0x1c8               // 0x0042c97b    81fe68ccc400
                          .byte              0x72, 0xe6// {disp8} jb _jmp_addr_0x0042c969         // 0x0042c981    72e6
                          mov                esi, OFFSET _GVillagerInfo_ARRAY_00da6be8            // 0x0042c983    bee86bda00
 _jmp_addr_0x0042c988:    {disp8} lea        ecx, dword ptr [esp + 0x1c]                          // 0x0042c988    8d4c241c

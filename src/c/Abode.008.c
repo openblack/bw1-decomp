@@ -549,7 +549,7 @@ uint32_t __fastcall InterfaceTap__5AbodeFP16GInterfaceStatus(struct Object* this
     asm("mov.s              edi, ecx");                                      // 0x00406838    8bf9
     asm("mov                eax, dword ptr [edi]");                          // 0x0040683a    8b07
     asm("call               dword ptr [eax + 0x48]");                        // 0x0040683c    ff5048
-    asm("{disp32} mov       dword ptr [data_bytes + 0x286c6c], eax");        // 0x0040683f    a36cccc400
+    asm("{disp32} mov       dword ptr [_abode_town_00c4cc6c], eax");         // 0x0040683f    a36cccc400
     asm("call               _jmp_addr_0x00829690");                          // 0x00406844    e8472e4200
     asm("{disp32} mov       esi, dword ptr [edi + 0x000000a0]");             // 0x00406849    8bb7a0000000
     asm("test               esi, esi");                                      // 0x0040684f    85f6
@@ -598,15 +598,15 @@ uint32_t __fastcall InterfaceTap__5AbodeFP16GInterfaceStatus(struct Object* this
     asm("call               dword ptr [rdata_bytes + 0x75c]");               // 0x004068e2    ff155c978a00
     asm("{disp32} mov       ecx, dword ptr [_global]");                      // 0x004068e8    8b0d203bcd00
     asm("{disp32} mov       edx, dword ptr [ecx + 0x000003ac]");             // 0x004068ee    8b91ac030000
-    asm("{disp32} mov       eax, dword ptr [data_bytes + 0x286c7c]");        // 0x004068f4    a17cccc400
+    asm("{disp32} mov       eax, dword ptr [_windmill_int_00c4cc7c]");       // 0x004068f4    a17cccc400
     asm("{disp8} mov        dword ptr [esp + 0x18], edx");                   // 0x004068f9    89542418
     asm("{disp8} lea        edx, dword ptr [eax + 0x6e]");                   // 0x004068fd    8d506e
     asm("inc                eax");                                           // 0x00406900    40
     asm("cmp                eax, 0x09");                                     // 0x00406901    83f809
     asm("{disp8} mov        dword ptr [esp + 0x38], edx");                   // 0x00406904    89542438
-    asm("{disp32} mov       dword ptr [data_bytes + 0x286c7c], eax");        // 0x00406908    a37cccc400
+    asm("{disp32} mov       dword ptr [_windmill_int_00c4cc7c], eax");       // 0x00406908    a37cccc400
     asm("{disp8} jne        _jmp_addr_0x00406919");                          // 0x0040690d    750a
-    asm("{disp32} mov       dword ptr [data_bytes + 0x286c7c], 0x00000000"); // 0x0040690f    c7057cccc40000000000
+    asm("{disp32} mov       dword ptr [_windmill_int_00c4cc7c], 0x00000000"); // 0x0040690f    c7057cccc40000000000
     asm("_jmp_addr_0x00406919:");
     asm("{disp8} mov        edx, dword ptr [esp + 0x0c]");                   // 0x00406919    8b54240c
     asm("{disp8} mov        eax, dword ptr [esp + 0x08]");                   // 0x0040691d    8b442408
@@ -1686,7 +1686,7 @@ void __fastcall DiscipleInHandNear__5AbodeFR8VillagerR16GInterfaceStatus(struct 
     asm("cmp.s              edi, eax");                                      // 0x00407480    3bf8
     asm("pop                edi");                                           // 0x00407482    5f
     asm("{disp8} jne        _jmp_addr_0x00407490");                          // 0x00407483    750b
-    asm("{disp32} mov       dword ptr [data_bytes + 0x286c6c], esi");        // 0x00407485    89356cccc400
+    asm("{disp32} mov       dword ptr [_abode_town_00c4cc6c], esi");         // 0x00407485    89356cccc400
     asm("call               _jmp_addr_0x00829690");                          // 0x0040748b    e800224200
     asm("_jmp_addr_0x00407490:");
     asm("pop                esi");                                           // 0x00407490    5e

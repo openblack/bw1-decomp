@@ -8,6 +8,7 @@ __attribute__((section(".bss"))) float abode_info_float_0x00c3c684;
 __attribute__((section(".bss"))) float abode_info_float_0x00c3c688;
 __attribute__((section(".bss"))) float abode_info_float_0x00c3c68c;
 __attribute__((section(".bss"))) struct GAbodeInfo AbodeInfos[0x93]; // 0x00c3c690-00c4cc68
+__attribute__((section(".bss"))) int abode_info_DAT_00c4cc68; // not actually data, it seems
 
 const float abode_info_float_0x008a99dc = 10.0f;
 const float abode_info_float_0x008a99e0 = 365.25f;
