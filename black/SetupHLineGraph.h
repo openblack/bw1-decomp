@@ -63,7 +63,7 @@ static_assert(sizeof(struct SetupHLineGraph) == 0x258, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 009c8238 mac inlined SetupHLineGraph::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15SetupHLineGraph asm("??_R0?AUSetupHLineGraph@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15SetupHLineGraph asm("??_R0?AUSetupHLineGraph@@@8");
 // win1.41 009a6798 mac inlined SetupHLineGraph::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15SetupHLineGraph asm("??_R1A@?0A@A@SetupHLineGraph@@8");
 // win1.41 009a67b0 mac inlined SetupHLineGraph::`RTTI Base Class Array'

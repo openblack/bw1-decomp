@@ -20,7 +20,7 @@ static_assert(sizeof(struct FelledTree) == 0xa0, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00be8a50 mac inlined FelledTree::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10FelledTree asm("??_R0?AVFelledTree@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10FelledTree asm("??_R0?AVFelledTree@@@8");
 // win1.41 009ab858 mac inlined FelledTree::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10FelledTree asm("??_R1A@?0A@A@FelledTree@@8");
 // win1.41 009ab870 mac inlined FelledTree::`RTTI Base Class Array'

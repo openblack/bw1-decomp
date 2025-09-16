@@ -138,7 +138,7 @@ static_assert(sizeof(struct MultiMapFixed) == 0x7c, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 009c7f80 mac inlined MultiMapFixed::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13MultiMapFixed asm("??_R0?AVMultiMapFixed@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13MultiMapFixed asm("??_R0?AVMultiMapFixed@@@8");
 // win1.41 009a6420 mac inlined MultiMapFixed::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13MultiMapFixed asm("??_R1A@?0A@A@MultiMapFixed@@8");
 // win1.41 009ac438 mac inlined MultiMapFixed::`RTTI Base Class Array'

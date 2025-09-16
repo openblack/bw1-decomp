@@ -20,7 +20,7 @@ static_assert(sizeof(struct CreatureCommandState) == 0x2c, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 009dd8e0 mac inlined CreatureCommandState::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20CreatureCommandState asm("??_R0?AVCreatureCommandState@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20CreatureCommandState asm("??_R0?AVCreatureCommandState@@@8");
 // win1.41 009aa450 mac inlined CreatureCommandState::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20CreatureCommandState asm("??_R1A@?0A@A@CreatureCommandState@@8");
 // win1.41 009aa468 mac inlined CreatureCommandState::`RTTI Base Class Array'

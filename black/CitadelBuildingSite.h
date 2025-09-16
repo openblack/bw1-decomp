@@ -28,7 +28,7 @@ static_assert(sizeof(struct CitadelBuildingSite) == 0x644, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 009cd430 mac inlined CitadelBuildingSite::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19CitadelBuildingSite asm("??_R0?AVCitadelBuildingSite@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19CitadelBuildingSite asm("??_R0?AVCitadelBuildingSite@@@8");
 // win1.41 009a85e0 mac inlined CitadelBuildingSite::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19CitadelBuildingSite asm("??_R1A@?0A@A@CitadelBuildingSite@@8");
 // win1.41 009a85f8 mac inlined CitadelBuildingSite::`RTTI Base Class Array'

@@ -31,7 +31,7 @@ static_assert(sizeof(struct GParticleContainer) == 0x40, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 00becd40 mac inlined GParticleContainer::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18GParticleContainer asm("??_R0?AVGParticleContainer@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18GParticleContainer asm("??_R0?AVGParticleContainer@@@8");
 // win1.41 009ae108 mac inlined GParticleContainer::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18GParticleContainer asm("??_R1A@?0A@A@GParticleContainer@@8");
 // win1.41 009ae120 mac inlined GParticleContainer::`RTTI Base Class Array'

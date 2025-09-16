@@ -20,7 +20,7 @@ static_assert(sizeof(struct GWorshipSiteUpgradeInfo) == 0x120, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 00c24d68 mac inlined GWorshipSiteUpgradeInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23GWorshipSiteUpgradeInfo asm("??_R0?AVGWorshipSiteUpgradeInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23GWorshipSiteUpgradeInfo asm("??_R0?AVGWorshipSiteUpgradeInfo@@@8");
 // win1.41 009ba380 mac inlined GWorshipSiteUpgradeInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23GWorshipSiteUpgradeInfo asm("??_R1A@?0A@A@GWorshipSiteUpgradeInfo@@8");
 // win1.41 009ba398 mac inlined GWorshipSiteUpgradeInfo::`RTTI Base Class Array'

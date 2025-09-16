@@ -31,7 +31,7 @@ static_assert(sizeof(struct InfluenceRing) == 0x44, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00becc30 mac inlined InfluenceRing::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13InfluenceRing asm("??_R0?AVInfluenceRing@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13InfluenceRing asm("??_R0?AVInfluenceRing@@@8");
 // win1.41 009add78 mac inlined InfluenceRing::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13InfluenceRing asm("??_R1A@?0A@A@InfluenceRing@@8");
 // win1.41 009add90 mac inlined InfluenceRing::`RTTI Base Class Array'

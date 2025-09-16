@@ -23,7 +23,7 @@ static_assert(sizeof(struct GFeatureInfo) == 0x120, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 009c9500 mac inlined GFeatureInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12GFeatureInfo asm("??_R0?AVGFeatureInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12GFeatureInfo asm("??_R0?AVGFeatureInfo@@@8");
 // win1.41 009a78b8 mac inlined GFeatureInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12GFeatureInfo asm("??_R1A@?0A@A@GFeatureInfo@@8");
 // win1.41 009ac018 mac inlined GFeatureInfo::`RTTI Base Class Array'

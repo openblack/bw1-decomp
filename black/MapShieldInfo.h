@@ -19,7 +19,7 @@ static_assert(sizeof(struct GMapShieldInfo) == 0x100, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00c227a8 mac inlined GMapShieldInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GMapShieldInfo asm("??_R0?AVGMapShieldInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14GMapShieldInfo asm("??_R0?AVGMapShieldInfo@@@8");
 // win1.41 009b95a8 mac inlined GMapShieldInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GMapShieldInfo asm("??_R1A@?0A@A@GMapShieldInfo@@8");
 // win1.41 009b95c0 mac inlined GMapShieldInfo::`RTTI Base Class Array'

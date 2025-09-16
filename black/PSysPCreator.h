@@ -21,7 +21,7 @@ static_assert(sizeof(struct RenderParticleCreatureRef) == 0x18, "Data type is of
 // Object Oriented datastructures
 
 // win1.41 00c09510 mac inlined RenderParticleCreatureRef::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25RenderParticleCreatureRef asm("??_R0?AVRenderParticleCreatureRef@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__25RenderParticleCreatureRef asm("??_R0?AVRenderParticleCreatureRef@@@8");
 // win1.41 009b7f10 mac inlined RenderParticleCreatureRef::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25RenderParticleCreatureRef asm("??_R1A@?0A@A@RenderParticleCreatureRef@@8");
 // win1.41 009b7f28 mac inlined RenderParticleCreatureRef::`RTTI Base Class Array'
@@ -45,7 +45,7 @@ static_assert(sizeof(struct RenderParticleGJMesh) == 0x18, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00c095c0 mac inlined RenderParticleGJMesh::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20RenderParticleGJMesh asm("??_R0?AVRenderParticleGJMesh@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20RenderParticleGJMesh asm("??_R0?AVRenderParticleGJMesh@@@8");
 // win1.41 009b80d0 mac inlined RenderParticleGJMesh::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20RenderParticleGJMesh asm("??_R1A@?0A@A@RenderParticleGJMesh@@8");
 // win1.41 009b80e8 mac inlined RenderParticleGJMesh::`RTTI Base Class Array'
@@ -67,7 +67,7 @@ static_assert(sizeof(struct RenderParticleGJMeshRotatingUV) == 0x18, "Data type 
 // Object Oriented datastructures
 
 // win1.41 00c095e8 mac inlined RenderParticleGJMeshRotatingUV::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__30RenderParticleGJMeshRotatingUV asm("??_R0?AVRenderParticleGJMeshRotatingUV@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__30RenderParticleGJMeshRotatingUV asm("??_R0?AVRenderParticleGJMeshRotatingUV@@@8");
 // win1.41 009b8128 mac inlined RenderParticleGJMeshRotatingUV::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__30RenderParticleGJMeshRotatingUV asm("??_R1A@?0A@A@RenderParticleGJMeshRotatingUV@@8");
 // win1.41 009b8140 mac inlined RenderParticleGJMeshRotatingUV::`RTTI Base Class Array'
@@ -89,7 +89,7 @@ static_assert(sizeof(struct RenderParticleGameObject) == 0x18, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 00c09668 mac inlined RenderParticleGameObject::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24RenderParticleGameObject asm("??_R0?AVRenderParticleGameObject@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__24RenderParticleGameObject asm("??_R0?AVRenderParticleGameObject@@@8");
 // win1.41 009b8238 mac inlined RenderParticleGameObject::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24RenderParticleGameObject asm("??_R1A@?0A@A@RenderParticleGameObject@@8");
 // win1.41 009b8250 mac inlined RenderParticleGameObject::`RTTI Base Class Array'
@@ -113,7 +113,7 @@ static_assert(sizeof(struct RenderParticleGameObjectRef) == 0x18, "Data type is 
 // Object Oriented datastructures
 
 // win1.41 00bed580 mac inlined RenderParticleGameObjectRef::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__27RenderParticleGameObjectRef asm("??_R0?AVRenderParticleGameObjectRef@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__27RenderParticleGameObjectRef asm("??_R0?AVRenderParticleGameObjectRef@@@8");
 // win1.41 009aede8 mac inlined RenderParticleGameObjectRef::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__27RenderParticleGameObjectRef asm("??_R1A@?0A@A@RenderParticleGameObjectRef@@8");
 // win1.41 009b7f68 mac inlined RenderParticleGameObjectRef::`RTTI Base Class Array'
@@ -139,7 +139,7 @@ static_assert(sizeof(struct RenderParticleGoldenShower) == 0x18, "Data type is o
 // Object Oriented datastructures
 
 // win1.41 00bed5b0 mac inlined RenderParticleGoldenShower::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__26RenderParticleGoldenShower asm("??_R0?AVRenderParticleGoldenShower@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__26RenderParticleGoldenShower asm("??_R0?AVRenderParticleGoldenShower@@@8");
 // win1.41 009aee00 mac inlined RenderParticleGoldenShower::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__26RenderParticleGoldenShower asm("??_R1A@?0A@A@RenderParticleGoldenShower@@8");
 // win1.41 009aee18 mac inlined RenderParticleGoldenShower::`RTTI Base Class Array'
@@ -163,7 +163,7 @@ static_assert(sizeof(struct RenderParticleMist) == 0x18, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 00c09618 mac inlined RenderParticleMist::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18RenderParticleMist asm("??_R0?AVRenderParticleMist@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18RenderParticleMist asm("??_R0?AVRenderParticleMist@@@8");
 // win1.41 009b8188 mac inlined RenderParticleMist::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18RenderParticleMist asm("??_R1A@?0A@A@RenderParticleMist@@8");
 // win1.41 009b81a0 mac inlined RenderParticleMist::`RTTI Base Class Array'
@@ -187,7 +187,7 @@ static_assert(sizeof(struct RenderParticleVolBlendMesh) == 0x18, "Data type is o
 // Object Oriented datastructures
 
 // win1.41 00c096b0 mac inlined RenderParticleVolBlendMesh::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__26RenderParticleVolBlendMesh asm("??_R0?AVRenderParticleVolBlendMesh@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__26RenderParticleVolBlendMesh asm("??_R0?AVRenderParticleVolBlendMesh@@@8");
 // win1.41 009b82e8 mac inlined RenderParticleVolBlendMesh::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__26RenderParticleVolBlendMesh asm("??_R1A@?0A@A@RenderParticleVolBlendMesh@@8");
 // win1.41 009b8300 mac inlined RenderParticleVolBlendMesh::`RTTI Base Class Array'

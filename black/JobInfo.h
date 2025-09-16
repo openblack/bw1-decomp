@@ -19,7 +19,7 @@ static_assert(sizeof(struct GJobInfo) == 0x10, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf3328 mac inlined GJobInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8GJobInfo asm("??_R0?AVGJobInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8GJobInfo asm("??_R0?AVGJobInfo@@@8");
 // win1.41 009b17d8 mac inlined GJobInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8GJobInfo asm("??_R1A@?0A@A@GJobInfo@@8");
 // win1.41 009b17f0 mac inlined GJobInfo::`RTTI Base Class Array'

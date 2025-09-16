@@ -19,7 +19,7 @@ static_assert(sizeof(struct GLeashSelectorInfo) == 0x100, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 009cb948 mac inlined GLeashSelectorInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18GLeashSelectorInfo asm("??_R0?AVGLeashSelectorInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18GLeashSelectorInfo asm("??_R0?AVGLeashSelectorInfo@@@8");
 // win1.41 009a7cc8 mac inlined GLeashSelectorInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18GLeashSelectorInfo asm("??_R1A@?0A@A@GLeashSelectorInfo@@8");
 // win1.41 009a7ce0 mac inlined GLeashSelectorInfo::`RTTI Base Class Array'

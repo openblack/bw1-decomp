@@ -33,7 +33,7 @@ static_assert(sizeof(struct ScriptHighlight) == 0x8c, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00c0d850 mac inlined ScriptHighlight::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15ScriptHighlight asm("??_R0?AVScriptHighlight@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15ScriptHighlight asm("??_R0?AVScriptHighlight@@@8");
 // win1.41 009b8f68 mac inlined ScriptHighlight::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15ScriptHighlight asm("??_R1A@?0A@A@ScriptHighlight@@8");
 // win1.41 009b8f80 mac inlined ScriptHighlight::`RTTI Base Class Array'

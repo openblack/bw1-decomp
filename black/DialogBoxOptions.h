@@ -47,7 +47,7 @@ static_assert(sizeof(struct DialogBoxOptions) == 0x68, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00be8d20 mac inlined DialogBoxOptions::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16DialogBoxOptions asm("??_R0?AVDialogBoxOptions@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16DialogBoxOptions asm("??_R0?AVDialogBoxOptions@@@8");
 // win1.41 009ab9a8 mac inlined DialogBoxOptions::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16DialogBoxOptions asm("??_R1A@?0A@A@DialogBoxOptions@@8");
 // win1.41 009ab9c0 mac inlined DialogBoxOptions::`RTTI Base Class Array'

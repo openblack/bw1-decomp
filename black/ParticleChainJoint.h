@@ -21,7 +21,7 @@ static_assert(sizeof(struct ParticleChainJoint) == 0x18, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 00bed600 mac inlined ParticleChainJoint::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18ParticleChainJoint asm("??_R0?AVParticleChainJoint@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18ParticleChainJoint asm("??_R0?AVParticleChainJoint@@@8");
 // win1.41 009aeeb8 mac inlined ParticleChainJoint::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18ParticleChainJoint asm("??_R1A@?0A@A@ParticleChainJoint@@8");
 // win1.41 009aeed0 mac inlined ParticleChainJoint::`RTTI Base Class Array'

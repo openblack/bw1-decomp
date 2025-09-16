@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEReadyMessage) == 0x4, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00bf49d8 mac inlined MPFEReadyMessage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16MPFEReadyMessage asm("??_R0?AVMPFEReadyMessage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16MPFEReadyMessage asm("??_R0?AVMPFEReadyMessage@@@8");
 // win1.41 009b2408 mac inlined MPFEReadyMessage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16MPFEReadyMessage asm("??_R1A@?0A@A@MPFEReadyMessage@@8");
 // win1.41 009b2420 mac inlined MPFEReadyMessage::`RTTI Base Class Array'

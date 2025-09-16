@@ -40,7 +40,7 @@ static_assert(sizeof(struct Mobile) == 0x58, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c8db0 mac inlined Mobile::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Mobile asm("??_R0?AVMobile@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__6Mobile asm("??_R0?AVMobile@@@8");
 // win1.41 009a6be8 mac inlined Mobile::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Mobile asm("??_R1A@?0A@A@Mobile@@8");
 // win1.41 009a9688 mac inlined Mobile::`RTTI Base Class Array'

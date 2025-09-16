@@ -16,7 +16,7 @@ static_assert(sizeof(struct AnimEdit) == 0x10, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00be8f68 mac inlined AnimEdit::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8AnimEdit asm("??_R0?AVAnimEdit@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8AnimEdit asm("??_R0?AVAnimEdit@@@8");
 // win1.41 009abae8 mac inlined AnimEdit::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8AnimEdit asm("??_R1A@?0A@A@AnimEdit@@8");
 // win1.41 009abb00 mac inlined AnimEdit::`RTTI Base Class Array'

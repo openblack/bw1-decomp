@@ -314,7 +314,7 @@ static_assert(sizeof(struct Object) == 0x54, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c7f50 mac inlined Object::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Object asm("??_R0?AVObject@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__6Object asm("??_R0?AVObject@@@8");
 // win1.41 009a63f0 mac inlined Object::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Object asm("??_R1A@?0A@A@Object@@8");
 // win1.41 009b2e40 mac inlined Object::`RTTI Base Class Array'

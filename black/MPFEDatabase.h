@@ -27,7 +27,7 @@ static_assert(sizeof(struct MPFEDatabase) == 0xc, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bfd810 mac inlined MPFEDatabase::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12MPFEDatabase asm("??_R0?AVMPFEDatabase@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12MPFEDatabase asm("??_R0?AVMPFEDatabase@@@8");
 // win1.41 009b2778 mac inlined MPFEDatabase::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12MPFEDatabase asm("??_R1A@?0A@A@MPFEDatabase@@8");
 // win1.41 009b2790 mac inlined MPFEDatabase::`RTTI Base Class Array'

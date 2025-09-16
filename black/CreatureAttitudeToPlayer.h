@@ -65,7 +65,7 @@ static_assert(sizeof(struct CreatureAttitudeToPlayer) == 0x1db4, "Data type is o
 // Object Oriented datastructures
 
 // win1.41 009d9b58 mac inlined CreatureAttitudeToPlayer::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureAttitudeToPlayer asm("??_R0?AVCreatureAttitudeToPlayer@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureAttitudeToPlayer asm("??_R0?AVCreatureAttitudeToPlayer@@@8");
 // win1.41 009a9c30 mac inlined CreatureAttitudeToPlayer::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24CreatureAttitudeToPlayer asm("??_R1A@?0A@A@CreatureAttitudeToPlayer@@8");
 // win1.41 009a9c48 mac inlined CreatureAttitudeToPlayer::`RTTI Base Class Array'

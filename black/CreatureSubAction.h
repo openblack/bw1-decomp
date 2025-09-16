@@ -28,7 +28,7 @@ static_assert(sizeof(struct CreatureSubAction) == 0x60, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 009cfa00 mac inlined CreatureSubAction::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17CreatureSubAction asm("??_R0?AVCreatureSubAction@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17CreatureSubAction asm("??_R0?AVCreatureSubAction@@@8");
 // win1.41 009a95a8 mac inlined CreatureSubAction::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17CreatureSubAction asm("??_R1A@?0A@A@CreatureSubAction@@8");
 // win1.41 009a95c0 mac inlined CreatureSubAction::`RTTI Base Class Array'
@@ -78,7 +78,7 @@ static_assert(sizeof(struct CreatureSubActionAgenda) == 0xc50, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 009cf9b8 mac inlined CreatureSubActionAgenda::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23CreatureSubActionAgenda asm("??_R0?AVCreatureSubActionAgenda@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23CreatureSubActionAgenda asm("??_R0?AVCreatureSubActionAgenda@@@8");
 // win1.41 009a9558 mac inlined CreatureSubActionAgenda::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23CreatureSubActionAgenda asm("??_R1A@?0A@A@CreatureSubActionAgenda@@8");
 // win1.41 009a9570 mac inlined CreatureSubActionAgenda::`RTTI Base Class Array'

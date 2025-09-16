@@ -6,6 +6,13 @@ const float rdata_float1p0 = 1.0f;
 // [0x1394] 0x008a9000 + 0x1394 = 0x008aa394
 const float maxAlignmentChangePerGameTurn = 1.0f / (60 * 60 * 10);
 
+__attribute__((aligned(8)))
+struct RTTITypeDescriptor __RTTITypeDescriptor__9GameThing = {
+    .pVFTable = &__vt__9type_info,
+    .spare = 0,
+    .name = ".?AVGameThing@@",
+};
+
 __attribute__((section(".rdata$r"), aligned(8)))
 const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GameThing = {
     .pTypeDescriptor = &__RTTITypeDescriptor__9GameThing,

@@ -19,7 +19,7 @@ static_assert(sizeof(struct GMagicRadiusSpellInfo) == 0x58, "Data type is of wro
 // Object Oriented datastructures
 
 // win1.41 009cbab0 mac inlined GMagicRadiusSpellInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21GMagicRadiusSpellInfo asm("??_R0?AVGMagicRadiusSpellInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__21GMagicRadiusSpellInfo asm("??_R0?AVGMagicRadiusSpellInfo@@@8");
 // win1.41 009a7fb8 mac inlined GMagicRadiusSpellInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21GMagicRadiusSpellInfo asm("??_R1A@?0A@A@GMagicRadiusSpellInfo@@8");
 // win1.41 009a8288 mac inlined GMagicRadiusSpellInfo::`RTTI Base Class Array'

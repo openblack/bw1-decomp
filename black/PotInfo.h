@@ -20,7 +20,7 @@ static_assert(sizeof(struct GPotInfo) == 0x114, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c02018 mac inlined GPotInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8GPotInfo asm("??_R0?AVGPotInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8GPotInfo asm("??_R0?AVGPotInfo@@@8");
 // win1.41 009b33e8 mac inlined GPotInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8GPotInfo asm("??_R1A@?0A@A@GPotInfo@@8");
 // win1.41 009b3400 mac inlined GPotInfo::`RTTI Base Class Array'

@@ -19,7 +19,7 @@ static_assert(sizeof(struct Particle3DObjAnimTextured) == 0x18, "Data type is of
 // Object Oriented datastructures
 
 // win1.41 00c094e8 mac inlined Particle3DObjAnimTextured::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25Particle3DObjAnimTextured asm("??_R0?AVParticle3DObjAnimTextured@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__25Particle3DObjAnimTextured asm("??_R0?AVParticle3DObjAnimTextured@@@8");
 // win1.41 009b7eb0 mac inlined Particle3DObjAnimTextured::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25Particle3DObjAnimTextured asm("??_R1A@?0A@A@Particle3DObjAnimTextured@@8");
 // win1.41 009b7ec8 mac inlined Particle3DObjAnimTextured::`RTTI Base Class Array'

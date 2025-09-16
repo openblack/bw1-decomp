@@ -30,7 +30,7 @@ static_assert(sizeof(struct Bonfire) == 0x94, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009cd340 mac inlined Bonfire::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7Bonfire asm("??_R0?AVBonfire@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__7Bonfire asm("??_R0?AVBonfire@@@8");
 // win1.41 009a8528 mac inlined Bonfire::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7Bonfire asm("??_R1A@?0A@A@Bonfire@@8");
 // win1.41 009a8540 mac inlined Bonfire::`RTTI Base Class Array'

@@ -47,7 +47,7 @@ static_assert(sizeof(struct GTownDesireInfo) == 0x90, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00c22c98 mac inlined GTownDesireInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GTownDesireInfo asm("??_R0?AVGTownDesireInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15GTownDesireInfo asm("??_R0?AVGTownDesireInfo@@@8");
 // win1.41 009b9bd8 mac inlined GTownDesireInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GTownDesireInfo asm("??_R1A@?0A@A@GTownDesireInfo@@8");
 // win1.41 009b9bf0 mac inlined GTownDesireInfo::`RTTI Base Class Array'

@@ -31,7 +31,7 @@ static_assert(sizeof(struct SpellWithObjects) == 0xf4, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00becca0 mac inlined SpellWithObjects::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16SpellWithObjects asm("??_R0?AVSpellWithObjects@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16SpellWithObjects asm("??_R0?AVSpellWithObjects@@@8");
 // win1.41 009adf88 mac inlined SpellWithObjects::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16SpellWithObjects asm("??_R1A@?0A@A@SpellWithObjects@@8");
 // win1.41 009ad820 mac inlined SpellWithObjects::`RTTI Base Class Array'

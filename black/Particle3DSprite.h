@@ -21,7 +21,7 @@ static_assert(sizeof(struct Particle3DSprite) == 0x18, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00bed5e0 mac inlined Particle3DSprite::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16Particle3DSprite asm("??_R0?AVParticle3DSprite@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16Particle3DSprite asm("??_R0?AVParticle3DSprite@@@8");
 // win1.41 009aee60 mac inlined Particle3DSprite::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16Particle3DSprite asm("??_R1A@?0A@A@Particle3DSprite@@8");
 // win1.41 009aee78 mac inlined Particle3DSprite::`RTTI Base Class Array'

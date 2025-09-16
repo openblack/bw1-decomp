@@ -16,7 +16,7 @@ static_assert(sizeof(struct CreatureBelief) == 0x4c, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00bdf1e8 mac inlined CreatureBelief::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14CreatureBelief asm("??_R0?AVCreatureBelief@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14CreatureBelief asm("??_R0?AVCreatureBelief@@@8");
 // win1.41 009aa9a0 mac inlined CreatureBelief::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14CreatureBelief asm("??_R1A@?0A@A@CreatureBelief@@8");
 // win1.41 009aaa08 mac inlined CreatureBelief::`RTTI Base Class Array'
@@ -42,7 +42,7 @@ static_assert(sizeof(struct CreatureBeliefAboutAbode) == 0x4c, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 00bdf110 mac inlined CreatureBeliefAboutAbode::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureBeliefAboutAbode asm("??_R0?AVCreatureBeliefAboutAbode@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureBeliefAboutAbode asm("??_R0?AVCreatureBeliefAboutAbode@@@8");
 // win1.41 009aa810 mac inlined CreatureBeliefAboutAbode::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24CreatureBeliefAboutAbode asm("??_R1A@?0A@A@CreatureBeliefAboutAbode@@8");
 // win1.41 009aa828 mac inlined CreatureBeliefAboutAbode::`RTTI Base Class Array'
@@ -64,7 +64,7 @@ static_assert(sizeof(struct CreatureBeliefAboutCitadel) == 0x4c, "Data type is o
 // Object Oriented datastructures
 
 // win1.41 00bdf1b8 mac inlined CreatureBeliefAboutCitadel::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__26CreatureBeliefAboutCitadel asm("??_R0?AVCreatureBeliefAboutCitadel@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__26CreatureBeliefAboutCitadel asm("??_R0?AVCreatureBeliefAboutCitadel@@@8");
 // win1.41 009aa950 mac inlined CreatureBeliefAboutCitadel::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__26CreatureBeliefAboutCitadel asm("??_R1A@?0A@A@CreatureBeliefAboutCitadel@@8");
 // win1.41 009aa968 mac inlined CreatureBeliefAboutCitadel::`RTTI Base Class Array'
@@ -86,7 +86,7 @@ static_assert(sizeof(struct CreatureBeliefAboutContext) == 0x4c, "Data type is o
 // Object Oriented datastructures
 
 // win1.41 00bdf0b0 mac inlined CreatureBeliefAboutContext::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__26CreatureBeliefAboutContext asm("??_R0?AVCreatureBeliefAboutContext@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__26CreatureBeliefAboutContext asm("??_R0?AVCreatureBeliefAboutContext@@@8");
 // win1.41 009aa770 mac inlined CreatureBeliefAboutContext::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__26CreatureBeliefAboutContext asm("??_R1A@?0A@A@CreatureBeliefAboutContext@@8");
 // win1.41 009aa788 mac inlined CreatureBeliefAboutContext::`RTTI Base Class Array'
@@ -108,7 +108,7 @@ static_assert(sizeof(struct CreatureBeliefAboutCreature) == 0x4c, "Data type is 
 // Object Oriented datastructures
 
 // win1.41 00bdf160 mac inlined CreatureBeliefAboutCreature::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__27CreatureBeliefAboutCreature asm("??_R0?AVCreatureBeliefAboutCreature@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__27CreatureBeliefAboutCreature asm("??_R0?AVCreatureBeliefAboutCreature@@@8");
 // win1.41 009aa8b0 mac inlined CreatureBeliefAboutCreature::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__27CreatureBeliefAboutCreature asm("??_R1A@?0A@A@CreatureBeliefAboutCreature@@8");
 // win1.41 009aa8c8 mac inlined CreatureBeliefAboutCreature::`RTTI Base Class Array'
@@ -130,7 +130,7 @@ static_assert(sizeof(struct CreatureBeliefAboutFlock) == 0x4c, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 00bdf208 mac inlined CreatureBeliefAboutFlock::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureBeliefAboutFlock asm("??_R0?AVCreatureBeliefAboutFlock@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureBeliefAboutFlock asm("??_R0?AVCreatureBeliefAboutFlock@@@8");
 // win1.41 009aa9b8 mac inlined CreatureBeliefAboutFlock::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24CreatureBeliefAboutFlock asm("??_R1A@?0A@A@CreatureBeliefAboutFlock@@8");
 // win1.41 009aa9d0 mac inlined CreatureBeliefAboutFlock::`RTTI Base Class Array'
@@ -152,7 +152,7 @@ static_assert(sizeof(struct CreatureBeliefAboutForest) == 0x4c, "Data type is of
 // Object Oriented datastructures
 
 // win1.41 00bdf138 mac inlined CreatureBeliefAboutForest::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25CreatureBeliefAboutForest asm("??_R0?AVCreatureBeliefAboutForest@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__25CreatureBeliefAboutForest asm("??_R0?AVCreatureBeliefAboutForest@@@8");
 // win1.41 009aa860 mac inlined CreatureBeliefAboutForest::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25CreatureBeliefAboutForest asm("??_R1A@?0A@A@CreatureBeliefAboutForest@@8");
 // win1.41 009aa878 mac inlined CreatureBeliefAboutForest::`RTTI Base Class Array'
@@ -174,7 +174,7 @@ static_assert(sizeof(struct CreatureBeliefAboutMobileObject) == 0x4c, "Data type
 // Object Oriented datastructures
 
 // win1.41 00bdf428 mac inlined CreatureBeliefAboutMobileObject::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__31CreatureBeliefAboutMobileObject asm("??_R0?AVCreatureBeliefAboutMobileObject@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__31CreatureBeliefAboutMobileObject asm("??_R0?AVCreatureBeliefAboutMobileObject@@@8");
 // win1.41 009aaa90 mac inlined CreatureBeliefAboutMobileObject::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__31CreatureBeliefAboutMobileObject asm("??_R1A@?0A@A@CreatureBeliefAboutMobileObject@@8");
 // win1.41 009aaaa8 mac inlined CreatureBeliefAboutMobileObject::`RTTI Base Class Array'
@@ -196,7 +196,7 @@ static_assert(sizeof(struct CreatureBeliefAboutTown) == 0x4c, "Data type is of w
 // Object Oriented datastructures
 
 // win1.41 00bdf088 mac inlined CreatureBeliefAboutTown::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23CreatureBeliefAboutTown asm("??_R0?AVCreatureBeliefAboutTown@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23CreatureBeliefAboutTown asm("??_R0?AVCreatureBeliefAboutTown@@@8");
 // win1.41 009aa720 mac inlined CreatureBeliefAboutTown::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23CreatureBeliefAboutTown asm("??_R1A@?0A@A@CreatureBeliefAboutTown@@8");
 // win1.41 009aa738 mac inlined CreatureBeliefAboutTown::`RTTI Base Class Array'
@@ -218,7 +218,7 @@ static_assert(sizeof(struct CreatureBeliefAboutVillager) == 0x4c, "Data type is 
 // Object Oriented datastructures
 
 // win1.41 00bdf0e0 mac inlined CreatureBeliefAboutVillager::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__27CreatureBeliefAboutVillager asm("??_R0?AVCreatureBeliefAboutVillager@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__27CreatureBeliefAboutVillager asm("??_R0?AVCreatureBeliefAboutVillager@@@8");
 // win1.41 009aa7c0 mac inlined CreatureBeliefAboutVillager::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__27CreatureBeliefAboutVillager asm("??_R1A@?0A@A@CreatureBeliefAboutVillager@@8");
 // win1.41 009aa7d8 mac inlined CreatureBeliefAboutVillager::`RTTI Base Class Array'
@@ -240,7 +240,7 @@ static_assert(sizeof(struct CreatureBeliefSmall) == 0x4c, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 00bdf190 mac inlined CreatureBeliefSmall::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19CreatureBeliefSmall asm("??_R0?AVCreatureBeliefSmall@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19CreatureBeliefSmall asm("??_R0?AVCreatureBeliefSmall@@@8");
 // win1.41 009aa900 mac inlined CreatureBeliefSmall::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19CreatureBeliefSmall asm("??_R1A@?0A@A@CreatureBeliefSmall@@8");
 // win1.41 009aa918 mac inlined CreatureBeliefSmall::`RTTI Base Class Array'

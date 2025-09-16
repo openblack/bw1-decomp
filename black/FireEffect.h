@@ -40,7 +40,7 @@ static_assert(sizeof(struct FireEffect) == 0x50, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c22940 mac inlined FireEffect::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10FireEffect asm("??_R0?AVFireEffect@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10FireEffect asm("??_R0?AVFireEffect@@@8");
 // win1.41 009b9828 mac inlined FireEffect::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10FireEffect asm("??_R1A@?0A@A@FireEffect@@8");
 // win1.41 009b9840 mac inlined FireEffect::`RTTI Base Class Array'

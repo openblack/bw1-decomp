@@ -21,7 +21,7 @@ static_assert(sizeof(struct SetupStaticTextNoHit) == 0x244, "Data type is of wro
 // Object Oriented datastructures
 
 // win1.41 00bef140 mac inlined SetupStaticTextNoHit::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20SetupStaticTextNoHit asm("??_R0?AUSetupStaticTextNoHit@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20SetupStaticTextNoHit asm("??_R0?AUSetupStaticTextNoHit@@@8");
 // win1.41 009b0598 mac inlined SetupStaticTextNoHit::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20SetupStaticTextNoHit asm("??_R1A@?0A@A@SetupStaticTextNoHit@@8");
 // win1.41 009b05b0 mac inlined SetupStaticTextNoHit::`RTTI Base Class Array'

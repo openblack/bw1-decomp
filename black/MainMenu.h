@@ -17,7 +17,7 @@ static_assert(sizeof(struct MainMenu) == 0x38, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bea330 mac inlined MainMenu::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8MainMenu asm("??_R0?AVMainMenu@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8MainMenu asm("??_R0?AVMainMenu@@@8");
 // win1.41 009ac8d0 mac inlined MainMenu::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8MainMenu asm("??_R1A@?0A@A@MainMenu@@8");
 // win1.41 009ac8e8 mac inlined MainMenu::`RTTI Base Class Array'

@@ -16,7 +16,7 @@ static_assert(sizeof(struct PictureRoomBase) == 0x160, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00c24e78 mac inlined PictureRoomBase::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15PictureRoomBase asm("??_R0?AVPictureRoomBase@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15PictureRoomBase asm("??_R0?AVPictureRoomBase@@@8");
 // win1.41 009ba590 mac inlined PictureRoomBase::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15PictureRoomBase asm("??_R1A@?0A@A@PictureRoomBase@@8");
 // win1.41 009baac0 mac inlined PictureRoomBase::`RTTI Base Class Array'

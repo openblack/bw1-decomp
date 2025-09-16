@@ -63,7 +63,7 @@ static_assert(sizeof(struct CreatureAgenda) == 0x1af8, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 009dd8c0 mac inlined CreatureAgenda::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14CreatureAgenda asm("??_R0?AVCreatureAgenda@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14CreatureAgenda asm("??_R0?AVCreatureAgenda@@@8");
 // win1.41 009aa400 mac inlined CreatureAgenda::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14CreatureAgenda asm("??_R1A@?0A@A@CreatureAgenda@@8");
 // win1.41 009aa418 mac inlined CreatureAgenda::`RTTI Base Class Array'

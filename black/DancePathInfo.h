@@ -23,7 +23,7 @@ static_assert(sizeof(struct DancePathInfo) == 0x20, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00beff20 mac inlined DancePathInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13DancePathInfo asm("??_R0?AVDancePathInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13DancePathInfo asm("??_R0?AVDancePathInfo@@@8");
 // win1.41 009b0df8 mac inlined DancePathInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13DancePathInfo asm("??_R1A@?0A@A@DancePathInfo@@8");
 // win1.41 009b0e10 mac inlined DancePathInfo::`RTTI Base Class Array'

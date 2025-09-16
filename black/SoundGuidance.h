@@ -55,7 +55,7 @@ static_assert(sizeof(struct GGuidance) == 0xec, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c22200 mac inlined GGuidance::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GGuidance asm("??_R0?AVGGuidance@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9GGuidance asm("??_R0?AVGGuidance@@@8");
 // win1.41 009b9158 mac inlined GGuidance::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GGuidance asm("??_R1A@?0A@A@GGuidance@@8");
 // win1.41 009b9170 mac inlined GGuidance::`RTTI Base Class Array'

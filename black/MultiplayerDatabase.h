@@ -30,7 +30,7 @@ static_assert(sizeof(struct MultiplayerDatabase) == 0x10, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 00bfdd48 mac inlined MultiplayerDatabase::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19MultiplayerDatabase asm("??_R0?AVMultiplayerDatabase@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19MultiplayerDatabase asm("??_R0?AVMultiplayerDatabase@@@8");
 // win1.41 009b2d20 mac inlined MultiplayerDatabase::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19MultiplayerDatabase asm("??_R1A@?0A@A@MultiplayerDatabase@@8");
 // win1.41 009b2d38 mac inlined MultiplayerDatabase::`RTTI Base Class Array'

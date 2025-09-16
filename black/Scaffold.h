@@ -37,7 +37,7 @@ static_assert(sizeof(struct Scaffold) == 0x9c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bece58 mac inlined Scaffold::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Scaffold asm("??_R0?AVScaffold@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8Scaffold asm("??_R0?AVScaffold@@@8");
 // win1.41 009ae618 mac inlined Scaffold::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Scaffold asm("??_R1A@?0A@A@Scaffold@@8");
 // win1.41 009ae630 mac inlined Scaffold::`RTTI Base Class Array'

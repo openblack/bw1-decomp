@@ -493,7 +493,7 @@ class RTTIClass(Struct):
                 win_addr = f"{self.typedesc_win_address:08x}" if self.typedesc_win_address >= 0 else "inlined"
                 mac_addr = f"{self.typedesc_mac_address:08x}" if self.typedesc_mac_address >= 0 else "inlined"
                 cw.add_line(f"// win1.41 {win_addr} mac {mac_addr} {self.typedesc_decorated_name}")
-                cw.add_variable_declaration(CSnakeVariable(self.typedesc_name, self.typedesc_type_name, ["const"], mangled_name=self.typedesc_msvc_mangled_name), extern=True)
+                cw.add_variable_declaration(CSnakeVariable(self.typedesc_name, self.typedesc_type_name, mangled_name=self.typedesc_msvc_mangled_name), extern=True)
             if self.base_class_desc_win_address:
                 win_addr = f"{self.base_class_desc_win_address:08x}" if self.base_class_desc_win_address >= 0 else "inlined"
                 mac_addr = f"{self.base_class_desc_mac_address:08x}" if self.base_class_desc_mac_address >= 0 else "inlined"

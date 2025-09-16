@@ -32,7 +32,7 @@ static_assert(sizeof(struct SpellSeed) == 0xa0, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c226f0 mac inlined SpellSeed::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellSeed asm("??_R0?AVSpellSeed@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellSeed asm("??_R0?AVSpellSeed@@@8");
 // win1.41 009b9448 mac inlined SpellSeed::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9SpellSeed asm("??_R1A@?0A@A@SpellSeed@@8");
 // win1.41 009b9460 mac inlined SpellSeed::`RTTI Base Class Array'

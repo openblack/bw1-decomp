@@ -19,7 +19,7 @@ static_assert(sizeof(struct ParticleBaseMeshCreator) == 0x4, "Data type is of wr
 // Object Oriented datastructures
 
 // win1.41 00c04830 mac inlined ParticleBaseMeshCreator::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23ParticleBaseMeshCreator asm("??_R0?AVParticleBaseMeshCreator@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23ParticleBaseMeshCreator asm("??_R0?AVParticleBaseMeshCreator@@@8");
 // win1.41 009b4d80 mac inlined ParticleBaseMeshCreator::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23ParticleBaseMeshCreator asm("??_R1A@?0A@A@ParticleBaseMeshCreator@@8");
 // win1.41 009b4d98 mac inlined ParticleBaseMeshCreator::`RTTI Base Class Array'

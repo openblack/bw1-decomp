@@ -19,7 +19,7 @@ static_assert(sizeof(struct CreatureInitialSourceInfo) == 0x10, "Data type is of
 // Object Oriented datastructures
 
 // win1.41 00bdf588 mac inlined CreatureInitialSourceInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25CreatureInitialSourceInfo asm("??_R0?AVCreatureInitialSourceInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__25CreatureInitialSourceInfo asm("??_R0?AVCreatureInitialSourceInfo@@@8");
 // win1.41 009aacc0 mac inlined CreatureInitialSourceInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25CreatureInitialSourceInfo asm("??_R1A@?0A@A@CreatureInitialSourceInfo@@8");
 // win1.41 009aacd8 mac inlined CreatureInitialSourceInfo::`RTTI Base Class Array'

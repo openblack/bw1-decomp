@@ -31,7 +31,7 @@ static_assert(sizeof(struct Reward) == 0xa8, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c0bee8 mac inlined Reward::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Reward asm("??_R0?AVReward@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__6Reward asm("??_R0?AVReward@@@8");
 // win1.41 009b8d48 mac inlined Reward::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Reward asm("??_R1A@?0A@A@Reward@@8");
 // win1.41 009b8d60 mac inlined Reward::`RTTI Base Class Array'
@@ -99,7 +99,7 @@ static_assert(sizeof(struct GRewardProgress) == 0x10, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00c0bec8 mac inlined GRewardProgress::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GRewardProgress asm("??_R0?AVGRewardProgress@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15GRewardProgress asm("??_R0?AVGRewardProgress@@@8");
 // win1.41 009b8cf8 mac inlined GRewardProgress::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GRewardProgress asm("??_R1A@?0A@A@GRewardProgress@@8");
 // win1.41 009b8d10 mac inlined GRewardProgress::`RTTI Base Class Array'

@@ -40,7 +40,7 @@ static_assert(sizeof(struct PSysHandFX) == 0x4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c028f8 mac inlined PSysHandFX::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10PSysHandFX asm("??_R0?AVPSysHandFX@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10PSysHandFX asm("??_R0?AVPSysHandFX@@@8");
 // win1.41 009b4160 mac inlined PSysHandFX::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10PSysHandFX asm("??_R1A@?0A@A@PSysHandFX@@8");
 
@@ -63,7 +63,7 @@ static_assert(sizeof(struct PHandFX) == 0x74, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c02918 mac inlined PHandFX::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7PHandFX asm("??_R0?AVPHandFX@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__7PHandFX asm("??_R0?AVPHandFX@@@8");
 // win1.41 009b4178 mac inlined PHandFX::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7PHandFX asm("??_R1A@?0A@A@PHandFX@@8");
 // win1.41 009b4190 mac inlined PHandFX::`RTTI Base Class Array'

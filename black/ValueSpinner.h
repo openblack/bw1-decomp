@@ -37,7 +37,7 @@ static_assert(sizeof(struct ValueSpinner) == 0xa0, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 009cd260 mac inlined ValueSpinner::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12ValueSpinner asm("??_R0?AUValueSpinner@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12ValueSpinner asm("??_R0?AUValueSpinner@@@8");
 // win1.41 009a83f0 mac inlined ValueSpinner::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12ValueSpinner asm("??_R1A@?0A@A@ValueSpinner@@8");
 // win1.41 009a8408 mac inlined ValueSpinner::`RTTI Base Class Array'

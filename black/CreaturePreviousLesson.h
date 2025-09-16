@@ -17,7 +17,7 @@ static_assert(sizeof(struct CreaturePreviousLesson) == 0x120c, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 00bdf938 mac inlined CreaturePreviousLesson::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__22CreaturePreviousLesson asm("??_R0?AVCreaturePreviousLesson@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__22CreaturePreviousLesson asm("??_R0?AVCreaturePreviousLesson@@@8");
 // win1.41 009aaea0 mac inlined CreaturePreviousLesson::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__22CreaturePreviousLesson asm("??_R1A@?0A@A@CreaturePreviousLesson@@8");
 // win1.41 009aaeb8 mac inlined CreaturePreviousLesson::`RTTI Base Class Array'

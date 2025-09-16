@@ -27,7 +27,7 @@ static_assert(sizeof(struct SpellWolf) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c93f0 mac inlined SpellWolf::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellWolf asm("??_R0?AVSpellWolf@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellWolf asm("??_R0?AVSpellWolf@@@8");
 // win1.41 009a76f8 mac inlined SpellWolf::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9SpellWolf asm("??_R1A@?0A@A@SpellWolf@@8");
 // win1.41 009a7710 mac inlined SpellWolf::`RTTI Base Class Array'
@@ -73,7 +73,7 @@ static_assert(sizeof(struct Wolf) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c9488 mac inlined Wolf::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Wolf asm("??_R0?AVWolf@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__4Wolf asm("??_R0?AVWolf@@@8");
 // win1.41 009a77d8 mac inlined Wolf::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Wolf asm("??_R1A@?0A@A@Wolf@@8");
 // win1.41 009a77f0 mac inlined Wolf::`RTTI Base Class Array'

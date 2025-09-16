@@ -33,7 +33,7 @@ static_assert(sizeof(struct PhysicalShield) == 0x68, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00c22840 mac inlined PhysicalShield::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14PhysicalShield asm("??_R0?AVPhysicalShield@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14PhysicalShield asm("??_R0?AVPhysicalShield@@@8");
 // win1.41 009b96c8 mac inlined PhysicalShield::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14PhysicalShield asm("??_R1A@?0A@A@PhysicalShield@@8");
 // win1.41 009b96e0 mac inlined PhysicalShield::`RTTI Base Class Array'

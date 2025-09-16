@@ -14,7 +14,7 @@ static_assert(sizeof(struct CameraModePath) == 0x8, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 009cd9e0 mac inlined CameraModePath::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14CameraModePath asm("??_R0?AVCameraModePath@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14CameraModePath asm("??_R0?AVCameraModePath@@@8");
 // win1.41 009a8c60 mac inlined CameraModePath::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14CameraModePath asm("??_R1A@?0A@A@CameraModePath@@8");
 // win1.41 009a8c78 mac inlined CameraModePath::`RTTI Base Class Array'

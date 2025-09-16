@@ -15,7 +15,7 @@ static_assert(sizeof(struct SetupLandscapeBox) == 0x10, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00bea8c8 mac inlined SetupLandscapeBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17SetupLandscapeBox asm("??_R0?AVSetupLandscapeBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17SetupLandscapeBox asm("??_R0?AVSetupLandscapeBox@@@8");
 // win1.41 009acec0 mac inlined SetupLandscapeBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17SetupLandscapeBox asm("??_R1A@?0A@A@SetupLandscapeBox@@8");
 // win1.41 009aced8 mac inlined SetupLandscapeBox::`RTTI Base Class Array'

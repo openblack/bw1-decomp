@@ -39,7 +39,7 @@ static_assert(sizeof(struct GVirtualInfluence) == 0x60, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00c24658 mac inlined GVirtualInfluence::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17GVirtualInfluence asm("??_R0?AVGVirtualInfluence@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17GVirtualInfluence asm("??_R0?AVGVirtualInfluence@@@8");
 // win1.41 009b9e78 mac inlined GVirtualInfluence::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17GVirtualInfluence asm("??_R1A@?0A@A@GVirtualInfluence@@8");
 // win1.41 009b9e90 mac inlined GVirtualInfluence::`RTTI Base Class Array'

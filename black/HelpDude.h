@@ -20,7 +20,7 @@ static_assert(sizeof(struct HelpDude) == 0x8, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf0750 mac inlined HelpDude::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8HelpDude asm("??_R0?AUHelpDude@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8HelpDude asm("??_R0?AUHelpDude@@@8");
 // win1.41 009b11f8 mac inlined HelpDude::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8HelpDude asm("??_R1A@?0A@A@HelpDude@@8");
 // win1.41 009b1210 mac inlined HelpDude::`RTTI Base Class Array'

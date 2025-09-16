@@ -21,7 +21,7 @@ static_assert(sizeof(struct Sheep) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c8fa8 mac inlined Sheep::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Sheep asm("??_R0?AVSheep@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5Sheep asm("??_R0?AVSheep@@@8");
 // win1.41 009a6d68 mac inlined Sheep::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Sheep asm("??_R1A@?0A@A@Sheep@@8");
 // win1.41 009a6d80 mac inlined Sheep::`RTTI Base Class Array'

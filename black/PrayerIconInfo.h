@@ -22,7 +22,7 @@ static_assert(sizeof(struct GPrayerIconInfo) == 0x108, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00c020e0 mac inlined GPrayerIconInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GPrayerIconInfo asm("??_R0?AVGPrayerIconInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15GPrayerIconInfo asm("??_R0?AVGPrayerIconInfo@@@8");
 // win1.41 009b35b0 mac inlined GPrayerIconInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GPrayerIconInfo asm("??_R1A@?0A@A@GPrayerIconInfo@@8");
 // win1.41 009b35c8 mac inlined GPrayerIconInfo::`RTTI Base Class Array'

@@ -18,7 +18,7 @@ static_assert(sizeof(struct HandStateMultiPickUp) == 0x8, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 00bf01a8 mac inlined HandStateMultiPickUp::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20HandStateMultiPickUp asm("??_R0?AVHandStateMultiPickUp@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20HandStateMultiPickUp asm("??_R0?AVHandStateMultiPickUp@@@8");
 // win1.41 009b1018 mac inlined HandStateMultiPickUp::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20HandStateMultiPickUp asm("??_R1A@?0A@A@HandStateMultiPickUp@@8");
 // win1.41 009b1030 mac inlined HandStateMultiPickUp::`RTTI Base Class Array'

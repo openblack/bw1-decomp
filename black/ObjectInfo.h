@@ -91,7 +91,7 @@ static_assert(sizeof(struct GObjectInfo) == 0x100, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 009c7eb0 mac inlined GObjectInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GObjectInfo asm("??_R0?AVGObjectInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11GObjectInfo asm("??_R0?AVGObjectInfo@@@8");
 // win1.41 009a6338 mac inlined GObjectInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GObjectInfo asm("??_R1A@?0A@A@GObjectInfo@@8");
 // win1.41 009b2e08 mac inlined GObjectInfo::`RTTI Base Class Array'

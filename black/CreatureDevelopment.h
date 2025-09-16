@@ -19,7 +19,7 @@ static_assert(sizeof(struct CreatureDevelopmentDurationEntry) == 0x10, "Data typ
 // Object Oriented datastructures
 
 // win1.41 00bdf4d8 mac inlined CreatureDevelopmentDurationEntry::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__32CreatureDevelopmentDurationEntry asm("??_R0?AVCreatureDevelopmentDurationEntry@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__32CreatureDevelopmentDurationEntry asm("??_R0?AVCreatureDevelopmentDurationEntry@@@8");
 // win1.41 009aabd0 mac inlined CreatureDevelopmentDurationEntry::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__32CreatureDevelopmentDurationEntry asm("??_R1A@?0A@A@CreatureDevelopmentDurationEntry@@8");
 // win1.41 009aabe8 mac inlined CreatureDevelopmentDurationEntry::`RTTI Base Class Array'
@@ -43,7 +43,7 @@ static_assert(sizeof(struct CreatureDevelopmentPhaseEntry) == 0x10, "Data type i
 // Object Oriented datastructures
 
 // win1.41 00bdf4a8 mac inlined CreatureDevelopmentPhaseEntry::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__29CreatureDevelopmentPhaseEntry asm("??_R0?AVCreatureDevelopmentPhaseEntry@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__29CreatureDevelopmentPhaseEntry asm("??_R0?AVCreatureDevelopmentPhaseEntry@@@8");
 // win1.41 009aab80 mac inlined CreatureDevelopmentPhaseEntry::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__29CreatureDevelopmentPhaseEntry asm("??_R1A@?0A@A@CreatureDevelopmentPhaseEntry@@8");
 // win1.41 009aab98 mac inlined CreatureDevelopmentPhaseEntry::`RTTI Base Class Array'

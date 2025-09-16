@@ -19,7 +19,7 @@ static_assert(sizeof(struct GSquadInfo) == 0x10, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c09c10 mac inlined GSquadInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GSquadInfo asm("??_R0?AVGSquadInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10GSquadInfo asm("??_R0?AVGSquadInfo@@@8");
 // win1.41 009b8b58 mac inlined GSquadInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GSquadInfo asm("??_R1A@?0A@A@GSquadInfo@@8");
 // win1.41 009b8b70 mac inlined GSquadInfo::`RTTI Base Class Array'

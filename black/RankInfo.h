@@ -19,7 +19,7 @@ static_assert(sizeof(struct GRankInfo) == 0x10, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c09c30 mac inlined GRankInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GRankInfo asm("??_R0?AVGRankInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9GRankInfo asm("??_R0?AVGRankInfo@@@8");
 // win1.41 009b8ba8 mac inlined GRankInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GRankInfo asm("??_R1A@?0A@A@GRankInfo@@8");
 // win1.41 009b8bc0 mac inlined GRankInfo::`RTTI Base Class Array'

@@ -40,7 +40,7 @@ static_assert(sizeof(struct CreatureDesires) == 0x708, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00bdf508 mac inlined CreatureDesires::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15CreatureDesires asm("??_R0?AVCreatureDesires@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15CreatureDesires asm("??_R0?AVCreatureDesires@@@8");
 // win1.41 009aac20 mac inlined CreatureDesires::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15CreatureDesires asm("??_R1A@?0A@A@CreatureDesires@@8");
 // win1.41 009aac38 mac inlined CreatureDesires::`RTTI Base Class Array'
@@ -71,7 +71,7 @@ static_assert(sizeof(struct CreatureDesireActionEntry) == 0x10, "Data type is of
 // Object Oriented datastructures
 
 // win1.41 009d7d68 mac inlined CreatureDesireActionEntry::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25CreatureDesireActionEntry asm("??_R0?AVCreatureDesireActionEntry@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__25CreatureDesireActionEntry asm("??_R0?AVCreatureDesireActionEntry@@@8");
 // win1.41 009a9a00 mac inlined CreatureDesireActionEntry::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25CreatureDesireActionEntry asm("??_R1A@?0A@A@CreatureDesireActionEntry@@8");
 // win1.41 009a9a18 mac inlined CreatureDesireActionEntry::`RTTI Base Class Array'
@@ -95,7 +95,7 @@ static_assert(sizeof(struct CreatureDesireAttributeEntry) == 0x10, "Data type is
 // Object Oriented datastructures
 
 // win1.41 009d7d90 mac inlined CreatureDesireAttributeEntry::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__28CreatureDesireAttributeEntry asm("??_R0?AVCreatureDesireAttributeEntry@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__28CreatureDesireAttributeEntry asm("??_R0?AVCreatureDesireAttributeEntry@@@8");
 // win1.41 009a9a50 mac inlined CreatureDesireAttributeEntry::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__28CreatureDesireAttributeEntry asm("??_R1A@?0A@A@CreatureDesireAttributeEntry@@8");
 // win1.41 009a9a68 mac inlined CreatureDesireAttributeEntry::`RTTI Base Class Array'
@@ -119,7 +119,7 @@ static_assert(sizeof(struct CreatureDesireDependency) == 0x10, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 00bdf458 mac inlined CreatureDesireDependency::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureDesireDependency asm("??_R0?AVCreatureDesireDependency@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureDesireDependency asm("??_R0?AVCreatureDesireDependency@@@8");
 // win1.41 009aaae0 mac inlined CreatureDesireDependency::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24CreatureDesireDependency asm("??_R1A@?0A@A@CreatureDesireDependency@@8");
 // win1.41 009aaaf8 mac inlined CreatureDesireDependency::`RTTI Base Class Array'
@@ -143,7 +143,7 @@ static_assert(sizeof(struct CreatureDesireForType) == 0x10, "Data type is of wro
 // Object Oriented datastructures
 
 // win1.41 00bdf480 mac inlined CreatureDesireForType::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21CreatureDesireForType asm("??_R0?AVCreatureDesireForType@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__21CreatureDesireForType asm("??_R0?AVCreatureDesireForType@@@8");
 // win1.41 009aab30 mac inlined CreatureDesireForType::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21CreatureDesireForType asm("??_R1A@?0A@A@CreatureDesireForType@@8");
 // win1.41 009aab48 mac inlined CreatureDesireForType::`RTTI Base Class Array'
@@ -167,7 +167,7 @@ static_assert(sizeof(struct CreatureDesireSourceTable) == 0x10, "Data type is of
 // Object Oriented datastructures
 
 // win1.41 00bdf560 mac inlined CreatureDesireSourceTable::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25CreatureDesireSourceTable asm("??_R0?AVCreatureDesireSourceTable@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__25CreatureDesireSourceTable asm("??_R0?AVCreatureDesireSourceTable@@@8");
 // win1.41 009aac70 mac inlined CreatureDesireSourceTable::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25CreatureDesireSourceTable asm("??_R1A@?0A@A@CreatureDesireSourceTable@@8");
 // win1.41 009aac88 mac inlined CreatureDesireSourceTable::`RTTI Base Class Array'

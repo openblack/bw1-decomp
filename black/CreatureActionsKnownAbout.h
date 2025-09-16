@@ -16,7 +16,7 @@ static_assert(sizeof(struct CreatureActionsKnownAbout) == 0x18, "Data type is of
 // Object Oriented datastructures
 
 // win1.41 00bdfd80 mac inlined CreatureActionsKnownAbout::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25CreatureActionsKnownAbout asm("??_R0?AVCreatureActionsKnownAbout@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__25CreatureActionsKnownAbout asm("??_R0?AVCreatureActionsKnownAbout@@@8");
 // win1.41 009aaf40 mac inlined CreatureActionsKnownAbout::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25CreatureActionsKnownAbout asm("??_R1A@?0A@A@CreatureActionsKnownAbout@@8");
 // win1.41 009aaf58 mac inlined CreatureActionsKnownAbout::`RTTI Base Class Array'

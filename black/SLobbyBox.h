@@ -16,7 +16,7 @@ static_assert(sizeof(struct GSLobbyBox) == 0x2b4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bea518 mac inlined GSLobbyBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GSLobbyBox asm("??_R0?AVGSLobbyBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10GSLobbyBox asm("??_R0?AVGSLobbyBox@@@8");
 // win1.41 009acd80 mac inlined GSLobbyBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GSLobbyBox asm("??_R1A@?0A@A@GSLobbyBox@@8");
 // win1.41 009acd98 mac inlined GSLobbyBox::`RTTI Base Class Array'

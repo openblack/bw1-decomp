@@ -1,5 +1,15 @@
 #include "PlannedAbode.h"
 
+__attribute__((aligned(8)))
+struct RTTITypeDescriptor __RTTITypeDescriptor__12PlannedAbode = {
+    .pVFTable = &__vt__9type_info,
+    .spare = 0,
+    .name = ".?AVPlannedAbode@@",
+};
+
+__attribute__((aligned(4)))
+char debug_text_PlannedAbode[] = "Planned Abode\0";
+
 __attribute__((section(".rdata$r"), aligned(8)))
 const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12PlannedAbode = {
     .pTypeDescriptor = &__RTTITypeDescriptor__12PlannedAbode,

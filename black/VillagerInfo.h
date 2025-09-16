@@ -129,7 +129,7 @@ static_assert(sizeof(struct GVillagerInfo) == 0x3a4, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00c235c0 mac inlined GVillagerInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13GVillagerInfo asm("??_R0?AVGVillagerInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13GVillagerInfo asm("??_R0?AVGVillagerInfo@@@8");
 // win1.41 009b9d20 mac inlined GVillagerInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13GVillagerInfo asm("??_R1A@?0A@A@GVillagerInfo@@8");
 // win1.41 009b9d38 mac inlined GVillagerInfo::`RTTI Base Class Array'

@@ -29,7 +29,7 @@ static_assert(sizeof(struct GCitadelHeartInfo) == 0x158, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 009ce980 mac inlined GCitadelHeartInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17GCitadelHeartInfo asm("??_R0?AVGCitadelHeartInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17GCitadelHeartInfo asm("??_R0?AVGCitadelHeartInfo@@@8");
 // win1.41 009a8e48 mac inlined GCitadelHeartInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17GCitadelHeartInfo asm("??_R1A@?0A@A@GCitadelHeartInfo@@8");
 // win1.41 009a8e60 mac inlined GCitadelHeartInfo::`RTTI Base Class Array'

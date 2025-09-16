@@ -51,7 +51,7 @@ static_assert(sizeof(struct AtomCore) == 0x14, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c02268 mac inlined AtomCore::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8AtomCore asm("??_R0?AVAtomCore@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8AtomCore asm("??_R0?AVAtomCore@@@8");
 // win1.41 009b37c0 mac inlined AtomCore::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8AtomCore asm("??_R1A@?0A@A@AtomCore@@8");
 // win1.41 009b37d8 mac inlined AtomCore::`RTTI Base Class Array'

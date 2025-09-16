@@ -37,7 +37,7 @@ static_assert(sizeof(struct CPDesireNodeInfo) == 0x4, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00c00b10 mac inlined CPDesireNodeInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16CPDesireNodeInfo asm("??_R0?AVCPDesireNodeInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16CPDesireNodeInfo asm("??_R0?AVCPDesireNodeInfo@@@8");
 // win1.41 009b3260 mac inlined CPDesireNodeInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16CPDesireNodeInfo asm("??_R1A@?0A@A@CPDesireNodeInfo@@8");
 // win1.41 009b3278 mac inlined CPDesireNodeInfo::`RTTI Base Class Array'
@@ -76,7 +76,7 @@ static_assert(sizeof(struct GPlayerInfo) == 0x90, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bec370 mac inlined GPlayerInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GPlayerInfo asm("??_R0?AVGPlayerInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11GPlayerInfo asm("??_R0?AVGPlayerInfo@@@8");
 // win1.41 009ad060 mac inlined GPlayerInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GPlayerInfo asm("??_R1A@?0A@A@GPlayerInfo@@8");
 // win1.41 009ad078 mac inlined GPlayerInfo::`RTTI Base Class Array'

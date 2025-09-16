@@ -38,7 +38,7 @@ static_assert(sizeof(struct MiniDialogBoxOptions) == 0x48, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00be8dc8 mac inlined MiniDialogBoxOptions::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20MiniDialogBoxOptions asm("??_R0?AVMiniDialogBoxOptions@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20MiniDialogBoxOptions asm("??_R0?AVMiniDialogBoxOptions@@@8");
 // win1.41 009aba48 mac inlined MiniDialogBoxOptions::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20MiniDialogBoxOptions asm("??_R1A@?0A@A@MiniDialogBoxOptions@@8");
 // win1.41 009aba60 mac inlined MiniDialogBoxOptions::`RTTI Base Class Array'

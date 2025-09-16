@@ -21,7 +21,7 @@ static_assert(sizeof(struct Pigeon) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c9238 mac inlined Pigeon::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Pigeon asm("??_R0?AVPigeon@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__6Pigeon asm("??_R0?AVPigeon@@@8");
 // win1.41 009a7380 mac inlined Pigeon::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Pigeon asm("??_R1A@?0A@A@Pigeon@@8");
 // win1.41 009a7398 mac inlined Pigeon::`RTTI Base Class Array'

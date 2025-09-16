@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEDisconnectNowMessage) == 0x4, "Data type is of w
 // Object Oriented datastructures
 
 // win1.41 00bfda30 mac inlined MPFEDisconnectNowMessage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24MPFEDisconnectNowMessage asm("??_R0?AVMPFEDisconnectNowMessage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__24MPFEDisconnectNowMessage asm("??_R0?AVMPFEDisconnectNowMessage@@@8");
 // win1.41 009b2a50 mac inlined MPFEDisconnectNowMessage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24MPFEDisconnectNowMessage asm("??_R1A@?0A@A@MPFEDisconnectNowMessage@@8");
 // win1.41 009b2a68 mac inlined MPFEDisconnectNowMessage::`RTTI Base Class Array'

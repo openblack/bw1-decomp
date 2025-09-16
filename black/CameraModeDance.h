@@ -14,7 +14,7 @@ static_assert(sizeof(struct CameraModeDance) == 0x8, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 009ce0d0 mac inlined CameraModeDance::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15CameraModeDance asm("??_R0?AVCameraModeDance@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15CameraModeDance asm("??_R0?AVCameraModeDance@@@8");
 // win1.41 009a8990 mac inlined CameraModeDance::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15CameraModeDance asm("??_R1A@?0A@A@CameraModeDance@@8");
 // win1.41 009a89a8 mac inlined CameraModeDance::`RTTI Base Class Array'

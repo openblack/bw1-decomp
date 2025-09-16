@@ -27,7 +27,7 @@ static_assert(sizeof(struct PFootball) == 0x7c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bfed78 mac inlined PFootball::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9PFootball asm("??_R0?AVPFootball@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9PFootball asm("??_R0?AVPFootball@@@8");
 // win1.41 009b3160 mac inlined PFootball::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9PFootball asm("??_R1A@?0A@A@PFootball@@8");
 // win1.41 009b3178 mac inlined PFootball::`RTTI Base Class Array'
@@ -69,7 +69,7 @@ static_assert(sizeof(struct PPlannedFootball) == 0x48, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00bfed58 mac inlined PPlannedFootball::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16PPlannedFootball asm("??_R0?AVPPlannedFootball@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16PPlannedFootball asm("??_R0?AVPPlannedFootball@@@8");
 // win1.41 009b3108 mac inlined PPlannedFootball::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16PPlannedFootball asm("??_R1A@?0A@A@PPlannedFootball@@8");
 // win1.41 009b3120 mac inlined PPlannedFootball::`RTTI Base Class Array'

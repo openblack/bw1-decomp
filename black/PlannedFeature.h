@@ -22,7 +22,7 @@ static_assert(sizeof(struct PlannedFeature) == 0x48, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00be9cb0 mac inlined PlannedFeature::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14PlannedFeature asm("??_R0?AVPlannedFeature@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14PlannedFeature asm("??_R0?AVPlannedFeature@@@8");
 // win1.41 009ac058 mac inlined PlannedFeature::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14PlannedFeature asm("??_R1A@?0A@A@PlannedFeature@@8");
 // win1.41 009ac070 mac inlined PlannedFeature::`RTTI Base Class Array'

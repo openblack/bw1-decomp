@@ -16,7 +16,7 @@ static_assert(sizeof(struct SkirmishGameBox) == 0x23c, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00bea3e8 mac inlined SkirmishGameBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15SkirmishGameBox asm("??_R0?AVSkirmishGameBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15SkirmishGameBox asm("??_R0?AVSkirmishGameBox@@@8");
 // win1.41 009acab0 mac inlined SkirmishGameBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15SkirmishGameBox asm("??_R1A@?0A@A@SkirmishGameBox@@8");
 // win1.41 009acac8 mac inlined SkirmishGameBox::`RTTI Base Class Array'

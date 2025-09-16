@@ -16,7 +16,7 @@ static_assert(sizeof(struct MultiplayerConditionBox) == 0x3c, "Data type is of w
 // Object Oriented datastructures
 
 // win1.41 00bea348 mac inlined MultiplayerConditionBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23MultiplayerConditionBox asm("??_R0?AVMultiplayerConditionBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23MultiplayerConditionBox asm("??_R0?AVMultiplayerConditionBox@@@8");
 // win1.41 009ac920 mac inlined MultiplayerConditionBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23MultiplayerConditionBox asm("??_R1A@?0A@A@MultiplayerConditionBox@@8");
 // win1.41 009ac938 mac inlined MultiplayerConditionBox::`RTTI Base Class Array'

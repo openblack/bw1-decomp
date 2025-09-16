@@ -65,7 +65,7 @@ static_assert(sizeof(struct CreaturePreviousActions) == 0x528, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 00be02d8 mac inlined CreaturePreviousActions::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23CreaturePreviousActions asm("??_R0?AVCreaturePreviousActions@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23CreaturePreviousActions asm("??_R0?AVCreaturePreviousActions@@@8");
 // win1.41 009ab390 mac inlined CreaturePreviousActions::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23CreaturePreviousActions asm("??_R1A@?0A@A@CreaturePreviousActions@@8");
 // win1.41 009ab3a8 mac inlined CreaturePreviousActions::`RTTI Base Class Array'
@@ -91,7 +91,7 @@ static_assert(sizeof(struct CreatureActionKnownAbout) == 0x8, "Data type is of w
 // Object Oriented datastructures
 
 // win1.41 00bdfda8 mac inlined CreatureActionKnownAbout::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureActionKnownAbout asm("??_R0?AVCreatureActionKnownAbout@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__24CreatureActionKnownAbout asm("??_R0?AVCreatureActionKnownAbout@@@8");
 // win1.41 009aaf90 mac inlined CreatureActionKnownAbout::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24CreatureActionKnownAbout asm("??_R1A@?0A@A@CreatureActionKnownAbout@@8");
 // win1.41 009aafa8 mac inlined CreatureActionKnownAbout::`RTTI Base Class Array'
@@ -113,7 +113,7 @@ static_assert(sizeof(struct CreatureActionKnownAboutEntry) == 0x10, "Data type i
 // Object Oriented datastructures
 
 // win1.41 00bdfe00 mac inlined CreatureActionKnownAboutEntry::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__29CreatureActionKnownAboutEntry asm("??_R0?AVCreatureActionKnownAboutEntry@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__29CreatureActionKnownAboutEntry asm("??_R0?AVCreatureActionKnownAboutEntry@@@8");
 // win1.41 009aafe0 mac inlined CreatureActionKnownAboutEntry::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__29CreatureActionKnownAboutEntry asm("??_R1A@?0A@A@CreatureActionKnownAboutEntry@@8");
 // win1.41 009aaff8 mac inlined CreatureActionKnownAboutEntry::`RTTI Base Class Array'
@@ -137,7 +137,7 @@ static_assert(sizeof(struct CreatureFalling) == 0x57b8, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00be9c18 mac inlined CreatureFalling::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15CreatureFalling asm("??_R0?AVCreatureFalling@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15CreatureFalling asm("??_R0?AVCreatureFalling@@@8");
 // win1.41 009abfc0 mac inlined CreatureFalling::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15CreatureFalling asm("??_R1A@?0A@A@CreatureFalling@@8");
 // win1.41 009abfd8 mac inlined CreatureFalling::`RTTI Base Class Array'
@@ -159,7 +159,7 @@ static_assert(sizeof(struct CreatureMagicActionKnownAboutEntry) == 0x10, "Data t
 // Object Oriented datastructures
 
 // win1.41 00bdfe30 mac inlined CreatureMagicActionKnownAboutEntry::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__34CreatureMagicActionKnownAboutEntry asm("??_R0?AVCreatureMagicActionKnownAboutEntry@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__34CreatureMagicActionKnownAboutEntry asm("??_R0?AVCreatureMagicActionKnownAboutEntry@@@8");
 // win1.41 009ab030 mac inlined CreatureMagicActionKnownAboutEntry::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__34CreatureMagicActionKnownAboutEntry asm("??_R1A@?0A@A@CreatureMagicActionKnownAboutEntry@@8");
 // win1.41 009ab048 mac inlined CreatureMagicActionKnownAboutEntry::`RTTI Base Class Array'

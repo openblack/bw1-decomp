@@ -41,7 +41,7 @@ static_assert(sizeof(struct GMultiMapFixedInfo) == 0x120, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 009c7ed0 mac inlined GMultiMapFixedInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18GMultiMapFixedInfo asm("??_R0?AVGMultiMapFixedInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18GMultiMapFixedInfo asm("??_R0?AVGMultiMapFixedInfo@@@8");
 // win1.41 009a6350 mac inlined GMultiMapFixedInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18GMultiMapFixedInfo asm("??_R1A@?0A@A@GMultiMapFixedInfo@@8");
 

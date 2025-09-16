@@ -14,7 +14,7 @@ static_assert(sizeof(struct TestFunnel) == 0x4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c025a8 mac inlined TestFunnel::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10TestFunnel asm("??_R0?AVTestFunnel@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10TestFunnel asm("??_R0?AVTestFunnel@@@8");
 // win1.41 009b3e40 mac inlined TestFunnel::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10TestFunnel asm("??_R1A@?0A@A@TestFunnel@@8");
 // win1.41 009b3e58 mac inlined TestFunnel::`RTTI Base Class Array'
@@ -36,7 +36,7 @@ static_assert(sizeof(struct TestFunnelParab) == 0x4, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00c02588 mac inlined TestFunnelParab::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15TestFunnelParab asm("??_R0?AVTestFunnelParab@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15TestFunnelParab asm("??_R0?AVTestFunnelParab@@@8");
 // win1.41 009b3df0 mac inlined TestFunnelParab::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15TestFunnelParab asm("??_R1A@?0A@A@TestFunnelParab@@8");
 // win1.41 009b3e08 mac inlined TestFunnelParab::`RTTI Base Class Array'
@@ -58,7 +58,7 @@ static_assert(sizeof(struct TestFunnelSpout) == 0x4, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00c02568 mac inlined TestFunnelSpout::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15TestFunnelSpout asm("??_R0?AVTestFunnelSpout@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15TestFunnelSpout asm("??_R0?AVTestFunnelSpout@@@8");
 // win1.41 009b3da0 mac inlined TestFunnelSpout::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15TestFunnelSpout asm("??_R1A@?0A@A@TestFunnelSpout@@8");
 // win1.41 009b3db8 mac inlined TestFunnelSpout::`RTTI Base Class Array'

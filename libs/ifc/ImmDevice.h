@@ -39,7 +39,7 @@ static_assert(sizeof(struct CImmDevice) == 0x4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf2940 mac inlined CImmDevice::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10CImmDevice asm("??_R0?AVCImmDevice@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10CImmDevice asm("??_R0?AVCImmDevice@@@8");
 // win1.41 009b1678 mac inlined CImmDevice::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10CImmDevice asm("??_R1A@?0A@A@CImmDevice@@8");
 

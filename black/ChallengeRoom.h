@@ -15,7 +15,7 @@ static_assert(sizeof(struct ChallengeRoom) == 0x160, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00c24e98 mac inlined ChallengeRoom::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13ChallengeRoom asm("??_R0?AVChallengeRoom@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13ChallengeRoom asm("??_R0?AVChallengeRoom@@@8");
 // win1.41 009ba5a8 mac inlined ChallengeRoom::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13ChallengeRoom asm("??_R1A@?0A@A@ChallengeRoom@@8");
 // win1.41 009ba5c0 mac inlined ChallengeRoom::`RTTI Base Class Array'

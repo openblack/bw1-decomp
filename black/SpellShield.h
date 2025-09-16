@@ -30,7 +30,7 @@ static_assert(sizeof(struct SpellShield) == 0x10c, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00c22778 mac inlined SpellShield::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11SpellShield asm("??_R0?AVSpellShield@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11SpellShield asm("??_R0?AVSpellShield@@@8");
 // win1.41 009b9548 mac inlined SpellShield::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11SpellShield asm("??_R1A@?0A@A@SpellShield@@8");
 // win1.41 009b9560 mac inlined SpellShield::`RTTI Base Class Array'

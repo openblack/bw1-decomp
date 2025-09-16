@@ -28,7 +28,7 @@ static_assert(sizeof(struct MagicFood) == 0xbc, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00be67b0 mac inlined MagicFood::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9MagicFood asm("??_R0?AVMagicFood@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9MagicFood asm("??_R0?AVMagicFood@@@8");
 // win1.41 009b1a70 mac inlined MagicFood::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9MagicFood asm("??_R1A@?0A@A@MagicFood@@8");
 // win1.41 009b1a88 mac inlined MagicFood::`RTTI Base Class Array'

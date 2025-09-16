@@ -21,7 +21,7 @@ static_assert(sizeof(struct GScript) == 0xbc, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c0c008 mac inlined GScript::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7GScript asm("??_R0?AVGScript@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__7GScript asm("??_R0?AVGScript@@@8");
 // win1.41 009b8e08 mac inlined GScript::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7GScript asm("??_R1A@?0A@A@GScript@@8");
 // win1.41 009b8e20 mac inlined GScript::`RTTI Base Class Array'
@@ -77,7 +77,7 @@ static_assert(sizeof(struct GScriptOpposingCreature) == 0x10, "Data type is of w
 // Object Oriented datastructures
 
 // win1.41 00c0cde0 mac inlined GScriptOpposingCreature::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23GScriptOpposingCreature asm("??_R0?AVGScriptOpposingCreature@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23GScriptOpposingCreature asm("??_R0?AVGScriptOpposingCreature@@@8");
 // win1.41 009b8e58 mac inlined GScriptOpposingCreature::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23GScriptOpposingCreature asm("??_R1A@?0A@A@GScriptOpposingCreature@@8");
 // win1.41 009b8e70 mac inlined GScriptOpposingCreature::`RTTI Base Class Array'

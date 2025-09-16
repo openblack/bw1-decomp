@@ -21,7 +21,7 @@ static_assert(sizeof(struct FireGraphic) == 0x14, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c22990 mac inlined FireGraphic::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11FireGraphic asm("??_R0?AVFireGraphic@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11FireGraphic asm("??_R0?AVFireGraphic@@@8");
 // win1.41 009b9890 mac inlined FireGraphic::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11FireGraphic asm("??_R1A@?0A@A@FireGraphic@@8");
 // win1.41 009b98a8 mac inlined FireGraphic::`RTTI Base Class Array'

@@ -21,7 +21,7 @@ static_assert(sizeof(struct Tiger) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c9440 mac inlined Tiger::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Tiger asm("??_R0?AVTiger@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5Tiger asm("??_R0?AVTiger@@@8");
 // win1.41 009a7768 mac inlined Tiger::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Tiger asm("??_R1A@?0A@A@Tiger@@8");
 // win1.41 009a7780 mac inlined Tiger::`RTTI Base Class Array'

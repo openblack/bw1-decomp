@@ -17,7 +17,7 @@ static_assert(sizeof(struct ProfileEditor) == 0x58, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00bea408 mac inlined ProfileEditor::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13ProfileEditor asm("??_R0?AVProfileEditor@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13ProfileEditor asm("??_R0?AVProfileEditor@@@8");
 // win1.41 009acb00 mac inlined ProfileEditor::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13ProfileEditor asm("??_R1A@?0A@A@ProfileEditor@@8");
 // win1.41 009acb18 mac inlined ProfileEditor::`RTTI Base Class Array'

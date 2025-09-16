@@ -22,7 +22,7 @@ static_assert(sizeof(struct GFishFarmInfo) == 0x120, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00be9e08 mac inlined GFishFarmInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13GFishFarmInfo asm("??_R0?AVGFishFarmInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13GFishFarmInfo asm("??_R0?AVGFishFarmInfo@@@8");
 // win1.41 009ac2e8 mac inlined GFishFarmInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13GFishFarmInfo asm("??_R1A@?0A@A@GFishFarmInfo@@8");
 // win1.41 009ac300 mac inlined GFishFarmInfo::`RTTI Base Class Array'

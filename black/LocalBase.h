@@ -16,7 +16,7 @@ static_assert(sizeof(struct LocalBase) == 0x8, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf0738 mac inlined LocalBase::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9LocalBase asm("??_R0?AVLocalBase@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9LocalBase asm("??_R0?AVLocalBase@@@8");
 // win1.41 009b11e0 mac inlined LocalBase::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9LocalBase asm("??_R1A@?0A@A@LocalBase@@8");
 // win1.41 009b11a8 mac inlined LocalBase::`RTTI Base Class Array'

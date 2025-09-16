@@ -19,7 +19,7 @@ static_assert(sizeof(struct GMagicHealInfo) == 0x58, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 009cba38 mac inlined GMagicHealInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GMagicHealInfo asm("??_R0?AVGMagicHealInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14GMagicHealInfo asm("??_R0?AVGMagicHealInfo@@@8");
 // win1.41 009a7ee0 mac inlined GMagicHealInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GMagicHealInfo asm("??_R1A@?0A@A@GMagicHealInfo@@8");
 // win1.41 009a7ef8 mac inlined GMagicHealInfo::`RTTI Base Class Array'

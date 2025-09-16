@@ -818,7 +818,7 @@ static_assert(sizeof(struct UR_Lightning_CollectionData) == 0x14, "Data type is 
 // Object Oriented datastructures
 
 // win1.41 00c04280 mac inlined UR_Lightning_CollectionData::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__27UR_Lightning_CollectionData asm("??_R0?AVUR_Lightning_CollectionData@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__27UR_Lightning_CollectionData asm("??_R0?AVUR_Lightning_CollectionData@@@8");
 // win1.41 009b41c8 mac inlined UR_Lightning_CollectionData::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__27UR_Lightning_CollectionData asm("??_R1A@?0A@A@UR_Lightning_CollectionData@@8");
 // win1.41 009b41e0 mac inlined UR_Lightning_CollectionData::`RTTI Base Class Array'
@@ -935,7 +935,7 @@ static_assert(sizeof(struct UR_PlasmaInf) == 0x14, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 009cea70 mac inlined UR_PlasmaInf::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12UR_PlasmaInf asm("??_R0?AVUR_PlasmaInf@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12UR_PlasmaInf asm("??_R0?AVUR_PlasmaInf@@@8");
 // win1.41 009a8ff8 mac inlined UR_PlasmaInf::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12UR_PlasmaInf asm("??_R1A@?0A@A@UR_PlasmaInf@@8");
 // win1.41 009a9010 mac inlined UR_PlasmaInf::`RTTI Base Class Array'

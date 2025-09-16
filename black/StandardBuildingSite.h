@@ -27,7 +27,7 @@ static_assert(sizeof(struct StandardBuildingSite) == 0x648, "Data type is of wro
 // Object Oriented datastructures
 
 // win1.41 009cd470 mac inlined StandardBuildingSite::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20StandardBuildingSite asm("??_R0?AVStandardBuildingSite@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20StandardBuildingSite asm("??_R0?AVStandardBuildingSite@@@8");
 // win1.41 009a8638 mac inlined StandardBuildingSite::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20StandardBuildingSite asm("??_R1A@?0A@A@StandardBuildingSite@@8");
 // win1.41 009a8650 mac inlined StandardBuildingSite::`RTTI Base Class Array'

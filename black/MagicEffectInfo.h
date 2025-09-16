@@ -67,7 +67,7 @@ static_assert(sizeof(struct GMagicEffectInfo) == 0x11c, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00be9658 mac inlined GMagicEffectInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GMagicEffectInfo asm("??_R0?AVGMagicEffectInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16GMagicEffectInfo asm("??_R0?AVGMagicEffectInfo@@@8");
 // win1.41 009abf18 mac inlined GMagicEffectInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GMagicEffectInfo asm("??_R1A@?0A@A@GMagicEffectInfo@@8");
 // win1.41 009abf30 mac inlined GMagicEffectInfo::`RTTI Base Class Array'

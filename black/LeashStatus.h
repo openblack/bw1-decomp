@@ -32,7 +32,7 @@ static_assert(sizeof(struct GLeashStatus) == 0x3c, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00bf2a20 mac inlined GLeashStatus::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12GLeashStatus asm("??_R0?AVGLeashStatus@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12GLeashStatus asm("??_R0?AVGLeashStatus@@@8");
 // win1.41 009b1738 mac inlined GLeashStatus::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12GLeashStatus asm("??_R1A@?0A@A@GLeashStatus@@8");
 // win1.41 009b1750 mac inlined GLeashStatus::`RTTI Base Class Array'

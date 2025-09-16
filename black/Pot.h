@@ -59,7 +59,7 @@ static_assert(sizeof(struct Pot) == 0x78, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c8eb0 mac inlined Pot::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__3Pot asm("??_R0?AVPot@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__3Pot asm("??_R0?AVPot@@@8");
 // win1.41 009adbc0 mac inlined Pot::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__3Pot asm("??_R1A@?0A@A@Pot@@8");
 // win1.41 009ad770 mac inlined Pot::`RTTI Base Class Array'

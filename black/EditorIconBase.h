@@ -42,7 +42,7 @@ static_assert(sizeof(struct EditorIconBase) == 0x4, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 009c8360 mac inlined EditorIconBase::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14EditorIconBase asm("??_R0?AVEditorIconBase@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14EditorIconBase asm("??_R0?AVEditorIconBase@@@8");
 // win1.41 009a6a18 mac inlined EditorIconBase::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14EditorIconBase asm("??_R1A@?0A@A@EditorIconBase@@8");
 // win1.41 009abd2c mac inlined EditorIconBase::`RTTI Base Class Array'

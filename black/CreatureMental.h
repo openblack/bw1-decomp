@@ -80,7 +80,7 @@ static_assert(sizeof(struct CreatureMental) == 0x20d40, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 009dd858 mac inlined CreatureMental::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14CreatureMental asm("??_R0?AVCreatureMental@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14CreatureMental asm("??_R0?AVCreatureMental@@@8");
 // win1.41 009aa310 mac inlined CreatureMental::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14CreatureMental asm("??_R1A@?0A@A@CreatureMental@@8");
 // win1.41 009aa328 mac inlined CreatureMental::`RTTI Base Class Array'

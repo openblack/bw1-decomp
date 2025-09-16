@@ -18,7 +18,7 @@ static_assert(sizeof(struct MPFEUserTeamList) == 0x4, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00bfdcd0 mac inlined MPFEUserTeamList::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16MPFEUserTeamList asm("??_R0?AVMPFEUserTeamList@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16MPFEUserTeamList asm("??_R0?AVMPFEUserTeamList@@@8");
 // win1.41 009b2c80 mac inlined MPFEUserTeamList::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16MPFEUserTeamList asm("??_R1A@?0A@A@MPFEUserTeamList@@8");
 // win1.41 009b2c98 mac inlined MPFEUserTeamList::`RTTI Base Class Array'

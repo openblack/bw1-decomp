@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEChangeClanRequest) == 0x4, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00bf4c20 mac inlined MPFEChangeClanRequest::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21MPFEChangeClanRequest asm("??_R0?AVMPFEChangeClanRequest@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__21MPFEChangeClanRequest asm("??_R0?AVMPFEChangeClanRequest@@@8");
 // win1.41 009b2638 mac inlined MPFEChangeClanRequest::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21MPFEChangeClanRequest asm("??_R1A@?0A@A@MPFEChangeClanRequest@@8");
 // win1.41 009b2650 mac inlined MPFEChangeClanRequest::`RTTI Base Class Array'

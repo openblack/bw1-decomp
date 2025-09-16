@@ -26,7 +26,7 @@ static_assert(sizeof(struct Persistent) == 0x4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bef860 mac inlined Persistent::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10Persistent asm("??_R0?AVPersistent@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10Persistent asm("??_R0?AVPersistent@@@8");
 // win1.41 009b0798 mac inlined Persistent::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10Persistent asm("??_R1A@?0A@A@Persistent@@8");
 // win1.41 009b07b0 mac inlined Persistent::`RTTI Base Class Array'
@@ -56,7 +56,7 @@ static_assert(sizeof(struct FloatProvider) == 0x4, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00c021a0 mac inlined FloatProvider::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13FloatProvider asm("??_R0?AVFloatProvider@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13FloatProvider asm("??_R0?AVFloatProvider@@@8");
 // win1.41 009b5f38 mac inlined FloatProvider::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13FloatProvider asm("??_R1A@?0A@A@FloatProvider@@8");
 // win1.41 009b5fa0 mac inlined FloatProvider::`RTTI Base Class Array'

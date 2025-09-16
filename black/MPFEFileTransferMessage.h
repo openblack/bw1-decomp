@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEFileTransferMessage) == 0x4, "Data type is of wr
 // Object Oriented datastructures
 
 // win1.41 00bfd8c8 mac inlined MPFEFileTransferMessage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23MPFEFileTransferMessage asm("??_R0?AVMPFEFileTransferMessage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23MPFEFileTransferMessage asm("??_R0?AVMPFEFileTransferMessage@@@8");
 // win1.41 009b2870 mac inlined MPFEFileTransferMessage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23MPFEFileTransferMessage asm("??_R1A@?0A@A@MPFEFileTransferMessage@@8");
 // win1.41 009b2888 mac inlined MPFEFileTransferMessage::`RTTI Base Class Array'

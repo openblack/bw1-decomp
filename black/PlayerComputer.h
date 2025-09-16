@@ -22,7 +22,7 @@ static_assert(sizeof(struct GComputerAttitudeToPlayer) == 0x14, "Data type is of
 // Object Oriented datastructures
 
 // win1.41 00bed468 mac inlined GComputerAttitudeToPlayer::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25GComputerAttitudeToPlayer asm("??_R0?AVGComputerAttitudeToPlayer@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__25GComputerAttitudeToPlayer asm("??_R0?AVGComputerAttitudeToPlayer@@@8");
 // win1.41 009aec38 mac inlined GComputerAttitudeToPlayer::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25GComputerAttitudeToPlayer asm("??_R1A@?0A@A@GComputerAttitudeToPlayer@@8");
 // win1.41 009aec50 mac inlined GComputerAttitudeToPlayer::`RTTI Base Class Array'
@@ -52,7 +52,7 @@ static_assert(sizeof(struct GComputerPlayer) == 0x28, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00becd68 mac inlined GComputerPlayer::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GComputerPlayer asm("??_R0?AVGComputerPlayer@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15GComputerPlayer asm("??_R0?AVGComputerPlayer@@@8");
 // win1.41 009ae160 mac inlined GComputerPlayer::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GComputerPlayer asm("??_R1A@?0A@A@GComputerPlayer@@8");
 // win1.41 009ae178 mac inlined GComputerPlayer::`RTTI Base Class Array'
@@ -96,7 +96,7 @@ static_assert(sizeof(struct GComputerPlayerQueue) == 0x14, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00bee2d0 mac inlined GComputerPlayerQueue::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20GComputerPlayerQueue asm("??_R0?AVGComputerPlayerQueue@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20GComputerPlayerQueue asm("??_R0?AVGComputerPlayerQueue@@@8");
 // win1.41 009b0418 mac inlined GComputerPlayerQueue::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20GComputerPlayerQueue asm("??_R1A@?0A@A@GComputerPlayerQueue@@8");
 // win1.41 009b0430 mac inlined GComputerPlayerQueue::`RTTI Base Class Array'
@@ -126,7 +126,7 @@ static_assert(sizeof(struct GComputerSeen) == 0x14, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00becd20 mac inlined GComputerSeen::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13GComputerSeen asm("??_R0?AVGComputerSeen@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13GComputerSeen asm("??_R0?AVGComputerSeen@@@8");
 // win1.41 009ae070 mac inlined GComputerSeen::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13GComputerSeen asm("??_R1A@?0A@A@GComputerSeen@@8");
 // win1.41 009ae088 mac inlined GComputerSeen::`RTTI Base Class Array'
@@ -156,7 +156,7 @@ static_assert(sizeof(struct GComputerSpellCast) == 0x14, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 00becbd0 mac inlined GComputerSpellCast::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18GComputerSpellCast asm("??_R0?AVGComputerSpellCast@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18GComputerSpellCast asm("??_R0?AVGComputerSpellCast@@@8");
 // win1.41 009adc78 mac inlined GComputerSpellCast::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18GComputerSpellCast asm("??_R1A@?0A@A@GComputerSpellCast@@8");
 // win1.41 009adc90 mac inlined GComputerSpellCast::`RTTI Base Class Array'
@@ -186,7 +186,7 @@ static_assert(sizeof(struct PlayerActionState) == 0x28, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00bed438 mac inlined PlayerActionState::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17PlayerActionState asm("??_R0?AVPlayerActionState@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17PlayerActionState asm("??_R0?AVPlayerActionState@@@8");
 // win1.41 009aebe0 mac inlined PlayerActionState::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17PlayerActionState asm("??_R1A@?0A@A@PlayerActionState@@8");
 // win1.41 009aebf8 mac inlined PlayerActionState::`RTTI Base Class Array'
@@ -222,7 +222,7 @@ static_assert(sizeof(struct PlayerSubAction) == 0x14, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00bed418 mac inlined PlayerSubAction::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15PlayerSubAction asm("??_R0?AVPlayerSubAction@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15PlayerSubAction asm("??_R0?AVPlayerSubAction@@@8");
 // win1.41 009aeb90 mac inlined PlayerSubAction::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15PlayerSubAction asm("??_R1A@?0A@A@PlayerSubAction@@8");
 // win1.41 009aeba8 mac inlined PlayerSubAction::`RTTI Base Class Array'
@@ -250,7 +250,7 @@ static_assert(sizeof(struct PlayerSubActionArgument) == 0x14, "Data type is of w
 // Object Oriented datastructures
 
 // win1.41 00bed3f0 mac inlined PlayerSubActionArgument::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23PlayerSubActionArgument asm("??_R0?AVPlayerSubActionArgument@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23PlayerSubActionArgument asm("??_R0?AVPlayerSubActionArgument@@@8");
 // win1.41 009aeb40 mac inlined PlayerSubActionArgument::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23PlayerSubActionArgument asm("??_R1A@?0A@A@PlayerSubActionArgument@@8");
 // win1.41 009aeb58 mac inlined PlayerSubActionArgument::`RTTI Base Class Array'

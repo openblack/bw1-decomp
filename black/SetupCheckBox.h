@@ -29,7 +29,7 @@ static_assert(sizeof(struct SetupCheckBox) == 0x260, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 009c82d8 mac inlined SetupCheckBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13SetupCheckBox asm("??_R0?AUSetupCheckBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13SetupCheckBox asm("??_R0?AUSetupCheckBox@@@8");
 // win1.41 009a6928 mac inlined SetupCheckBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13SetupCheckBox asm("??_R1A@?0A@A@SetupCheckBox@@8");
 // win1.41 009a6940 mac inlined SetupCheckBox::`RTTI Base Class Array'

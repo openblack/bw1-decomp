@@ -19,7 +19,7 @@ static_assert(sizeof(struct GAnimatedStaticInfo) == 0x120, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 009c9520 mac inlined GAnimatedStaticInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19GAnimatedStaticInfo asm("??_R0?AVGAnimatedStaticInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19GAnimatedStaticInfo asm("??_R0?AVGAnimatedStaticInfo@@@8");
 // win1.41 009a78d0 mac inlined GAnimatedStaticInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19GAnimatedStaticInfo asm("??_R1A@?0A@A@GAnimatedStaticInfo@@8");
 // win1.41 009a78e8 mac inlined GAnimatedStaticInfo::`RTTI Base Class Array'

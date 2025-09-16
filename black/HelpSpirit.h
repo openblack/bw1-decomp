@@ -27,7 +27,7 @@ static_assert(sizeof(struct HelpSpirit) == 0x64, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf0c08 mac inlined HelpSpirit::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10HelpSpirit asm("??_R0?AVHelpSpirit@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10HelpSpirit asm("??_R0?AVHelpSpirit@@@8");
 // win1.41 009b12f8 mac inlined HelpSpirit::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10HelpSpirit asm("??_R1A@?0A@A@HelpSpirit@@8");
 // win1.41 009b1310 mac inlined HelpSpirit::`RTTI Base Class Array'

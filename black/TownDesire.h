@@ -55,7 +55,7 @@ static_assert(sizeof(struct TownDesire) == 0x564, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c22d68 mac inlined TownDesire::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10TownDesire asm("??_R0?AVTownDesire@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10TownDesire asm("??_R0?AVTownDesire@@@8");
 // win1.41 009b9c28 mac inlined TownDesire::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10TownDesire asm("??_R1A@?0A@A@TownDesire@@8");
 // win1.41 009b9c40 mac inlined TownDesire::`RTTI Base Class Array'

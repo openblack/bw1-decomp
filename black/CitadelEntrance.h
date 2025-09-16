@@ -26,7 +26,7 @@ static_assert(sizeof(struct CitadelEntrance) == 0x54, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 009ceb00 mac inlined CitadelEntrance::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15CitadelEntrance asm("??_R0?AVCitadelEntrance@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15CitadelEntrance asm("??_R0?AVCitadelEntrance@@@8");
 // win1.41 009a90f8 mac inlined CitadelEntrance::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15CitadelEntrance asm("??_R1A@?0A@A@CitadelEntrance@@8");
 // win1.41 009a9110 mac inlined CitadelEntrance::`RTTI Base Class Array'

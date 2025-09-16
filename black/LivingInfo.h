@@ -41,7 +41,7 @@ static_assert(sizeof(struct GLivingInfo) == 0x1f4, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 009c8d48 mac inlined GLivingInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GLivingInfo asm("??_R0?AVGLivingInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11GLivingInfo asm("??_R0?AVGLivingInfo@@@8");
 // win1.41 009a6b20 mac inlined GLivingInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GLivingInfo asm("??_R1A@?0A@A@GLivingInfo@@8");
 

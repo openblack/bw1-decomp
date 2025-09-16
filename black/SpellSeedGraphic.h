@@ -46,7 +46,7 @@ static_assert(sizeof(struct SpellSeedGraphic) == 0x74, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00c22688 mac inlined SpellSeedGraphic::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16SpellSeedGraphic asm("??_R0?AVSpellSeedGraphic@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16SpellSeedGraphic asm("??_R0?AVSpellSeedGraphic@@@8");
 // win1.41 009b93f0 mac inlined SpellSeedGraphic::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16SpellSeedGraphic asm("??_R1A@?0A@A@SpellSeedGraphic@@8");
 // win1.41 009b9408 mac inlined SpellSeedGraphic::`RTTI Base Class Array'

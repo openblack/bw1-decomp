@@ -29,7 +29,7 @@ static_assert(sizeof(struct MagicTeleport) == 0x88, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00be0360 mac inlined MagicTeleport::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13MagicTeleport asm("??_R0?AVMagicTeleport@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13MagicTeleport asm("??_R0?AVMagicTeleport@@@8");
 // win1.41 009b1b90 mac inlined MagicTeleport::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13MagicTeleport asm("??_R1A@?0A@A@MagicTeleport@@8");
 // win1.41 009b1ba8 mac inlined MagicTeleport::`RTTI Base Class Array'

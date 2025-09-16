@@ -26,7 +26,7 @@ static_assert(sizeof(struct GWaterfall) == 0x58, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00becb58 mac inlined GWaterfall::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GWaterfall asm("??_R0?AVGWaterfall@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10GWaterfall asm("??_R0?AVGWaterfall@@@8");
 // win1.41 009adb68 mac inlined GWaterfall::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GWaterfall asm("??_R1A@?0A@A@GWaterfall@@8");
 // win1.41 009adb80 mac inlined GWaterfall::`RTTI Base Class Array'

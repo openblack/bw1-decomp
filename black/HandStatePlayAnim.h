@@ -23,7 +23,7 @@ static_assert(sizeof(struct HandStatePlayAnim) == 0x20, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00bf0220 mac inlined HandStatePlayAnim::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17HandStatePlayAnim asm("??_R0?AVHandStatePlayAnim@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17HandStatePlayAnim asm("??_R0?AVHandStatePlayAnim@@@8");
 // win1.41 009b10b8 mac inlined HandStatePlayAnim::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17HandStatePlayAnim asm("??_R1A@?0A@A@HandStatePlayAnim@@8");
 // win1.41 009b10d0 mac inlined HandStatePlayAnim::`RTTI Base Class Array'

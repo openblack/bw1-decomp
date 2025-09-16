@@ -27,7 +27,7 @@ static_assert(sizeof(struct SpellFlock) == 0xf4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00beccc0 mac inlined SpellFlock::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10SpellFlock asm("??_R0?AVSpellFlock@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10SpellFlock asm("??_R0?AVSpellFlock@@@8");
 // win1.41 009adfa0 mac inlined SpellFlock::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10SpellFlock asm("??_R1A@?0A@A@SpellFlock@@8");
 // win1.41 009adef8 mac inlined SpellFlock::`RTTI Base Class Array'

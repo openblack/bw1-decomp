@@ -54,7 +54,7 @@ static_assert(sizeof(struct Tree) == 0x6c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009d96e0 mac inlined Tree::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Tree asm("??_R0?AVTree@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__4Tree asm("??_R0?AVTree@@@8");
 // win1.41 009ad470 mac inlined Tree::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Tree asm("??_R1A@?0A@A@Tree@@8");
 // win1.41 009ad488 mac inlined Tree::`RTTI Base Class Array'

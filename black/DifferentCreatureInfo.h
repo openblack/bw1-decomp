@@ -19,7 +19,7 @@ static_assert(sizeof(struct DifferentCreatureInfo) == 0x10, "Data type is of wro
 // Object Oriented datastructures
 
 // win1.41 009cf900 mac inlined DifferentCreatureInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21DifferentCreatureInfo asm("??_R0?AVDifferentCreatureInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__21DifferentCreatureInfo asm("??_R0?AVDifferentCreatureInfo@@@8");
 // win1.41 009a9400 mac inlined DifferentCreatureInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21DifferentCreatureInfo asm("??_R1A@?0A@A@DifferentCreatureInfo@@8");
 // win1.41 009a9418 mac inlined DifferentCreatureInfo::`RTTI Base Class Array'

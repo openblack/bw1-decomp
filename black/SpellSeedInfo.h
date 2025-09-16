@@ -26,7 +26,7 @@ static_assert(sizeof(struct GSpellSeedInfo) == 0x190, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00c22758 mac inlined GSpellSeedInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GSpellSeedInfo asm("??_R0?AVGSpellSeedInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14GSpellSeedInfo asm("??_R0?AVGSpellSeedInfo@@@8");
 // win1.41 009b94f0 mac inlined GSpellSeedInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GSpellSeedInfo asm("??_R1A@?0A@A@GSpellSeedInfo@@8");
 // win1.41 009b9508 mac inlined GSpellSeedInfo::`RTTI Base Class Array'

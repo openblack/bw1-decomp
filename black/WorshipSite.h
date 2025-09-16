@@ -60,7 +60,7 @@ static_assert(sizeof(struct WorshipSite) == 0x128, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 009d96c0 mac inlined WorshipSite::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11WorshipSite asm("??_R0?AVWorshipSite@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11WorshipSite asm("??_R0?AVWorshipSite@@@8");
 // win1.41 009ae290 mac inlined WorshipSite::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11WorshipSite asm("??_R1A@?0A@A@WorshipSite@@8");
 // win1.41 009ae2a8 mac inlined WorshipSite::`RTTI Base Class Array'

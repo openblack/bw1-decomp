@@ -115,7 +115,7 @@ static_assert(sizeof(struct Morphable) == 0x4834, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009cecb0 mac inlined Morphable::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9Morphable asm("??_R0?AVMorphable@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9Morphable asm("??_R0?AVMorphable@@@8");
 // win1.41 009a9288 mac inlined Morphable::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9Morphable asm("??_R1A@?0A@A@Morphable@@8");
 // win1.41 009a9250 mac inlined Morphable::`RTTI Base Class Array'

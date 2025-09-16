@@ -22,7 +22,7 @@ static_assert(sizeof(struct PlannedCitadelHeart) == 0x48, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 009cea38 mac inlined PlannedCitadelHeart::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19PlannedCitadelHeart asm("??_R0?AVPlannedCitadelHeart@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19PlannedCitadelHeart asm("??_R0?AVPlannedCitadelHeart@@@8");
 // win1.41 009a8f98 mac inlined PlannedCitadelHeart::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19PlannedCitadelHeart asm("??_R1A@?0A@A@PlannedCitadelHeart@@8");
 // win1.41 009a8fb0 mac inlined PlannedCitadelHeart::`RTTI Base Class Array'

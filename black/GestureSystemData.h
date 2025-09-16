@@ -16,7 +16,7 @@ static_assert(sizeof(struct GestureSystemData) == 0x65c, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 00bec418 mac inlined GestureSystemData::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17GestureSystemData asm("??_R0?AVGestureSystemData@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17GestureSystemData asm("??_R0?AVGestureSystemData@@@8");
 // win1.41 009ad1f0 mac inlined GestureSystemData::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17GestureSystemData asm("??_R1A@?0A@A@GestureSystemData@@8");
 // win1.41 009ad208 mac inlined GestureSystemData::`RTTI Base Class Array'

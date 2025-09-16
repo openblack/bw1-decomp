@@ -22,7 +22,7 @@ static_assert(sizeof(struct HandStateTug) == 0x14c, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00bf0260 mac inlined HandStateTug::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12HandStateTug asm("??_R0?AVHandStateTug@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12HandStateTug asm("??_R0?AVHandStateTug@@@8");
 // win1.41 009b1158 mac inlined HandStateTug::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12HandStateTug asm("??_R1A@?0A@A@HandStateTug@@8");
 // win1.41 009b1170 mac inlined HandStateTug::`RTTI Base Class Array'

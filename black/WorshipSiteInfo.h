@@ -35,7 +35,7 @@ static_assert(sizeof(struct GWorshipSiteInfo) == 0x160, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00c24cf0 mac inlined GWorshipSiteInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GWorshipSiteInfo asm("??_R0?AVGWorshipSiteInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16GWorshipSiteInfo asm("??_R0?AVGWorshipSiteInfo@@@8");
 // win1.41 009ba2c0 mac inlined GWorshipSiteInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GWorshipSiteInfo asm("??_R1A@?0A@A@GWorshipSiteInfo@@8");
 // win1.41 009ba2d8 mac inlined GWorshipSiteInfo::`RTTI Base Class Array'

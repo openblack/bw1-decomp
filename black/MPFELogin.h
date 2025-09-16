@@ -32,7 +32,7 @@ static_assert(sizeof(struct MPFELogin) == 0x5c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bfda80 mac inlined MPFELogin::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9MPFELogin asm("??_R0?AVMPFELogin@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9MPFELogin asm("??_R0?AVMPFELogin@@@8");
 // win1.41 009b2af0 mac inlined MPFELogin::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9MPFELogin asm("??_R1A@?0A@A@MPFELogin@@8");
 // win1.41 009b2b08 mac inlined MPFELogin::`RTTI Base Class Array'
@@ -67,7 +67,7 @@ static_assert(sizeof(struct MPFELoginDatabase) == 0xc, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00bfdb38 mac inlined MPFELoginDatabase::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17MPFELoginDatabase asm("??_R0?AVMPFELoginDatabase@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17MPFELoginDatabase asm("??_R0?AVMPFELoginDatabase@@@8");
 // win1.41 009b2b40 mac inlined MPFELoginDatabase::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17MPFELoginDatabase asm("??_R1A@?0A@A@MPFELoginDatabase@@8");
 // win1.41 009b2b58 mac inlined MPFELoginDatabase::`RTTI Base Class Array'

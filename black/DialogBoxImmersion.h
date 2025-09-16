@@ -29,7 +29,7 @@ static_assert(sizeof(struct DialogBoxImmersion) == 0x30, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 00be8da0 mac inlined DialogBoxImmersion::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18DialogBoxImmersion asm("??_R0?AVDialogBoxImmersion@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18DialogBoxImmersion asm("??_R0?AVDialogBoxImmersion@@@8");
 // win1.41 009ab9f8 mac inlined DialogBoxImmersion::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18DialogBoxImmersion asm("??_R1A@?0A@A@DialogBoxImmersion@@8");
 // win1.41 009aba10 mac inlined DialogBoxImmersion::`RTTI Base Class Array'

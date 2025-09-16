@@ -19,7 +19,7 @@ static_assert(sizeof(struct SetupStaticText) == 0x244, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 009c82f8 mac inlined SetupStaticText::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15SetupStaticText asm("??_R0?AUSetupStaticText@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15SetupStaticText asm("??_R0?AUSetupStaticText@@@8");
 // win1.41 009a6978 mac inlined SetupStaticText::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15SetupStaticText asm("??_R1A@?0A@A@SetupStaticText@@8");
 // win1.41 009a6990 mac inlined SetupStaticText::`RTTI Base Class Array'

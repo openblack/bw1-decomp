@@ -28,7 +28,7 @@ static_assert(sizeof(struct DataPath) == 0x30, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf3ab0 mac inlined DataPath::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8DataPath asm("??_R0?AVDataPath@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8DataPath asm("??_R0?AVDataPath@@@8");
 // win1.41 009b19d0 mac inlined DataPath::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8DataPath asm("??_R1A@?0A@A@DataPath@@8");
 // win1.41 009b19e8 mac inlined DataPath::`RTTI Base Class Array'

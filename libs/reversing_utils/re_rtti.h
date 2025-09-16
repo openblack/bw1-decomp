@@ -49,4 +49,6 @@ struct RTTICompleteObjectLocator {
 void* __cdecl __RTDynamicCast(void* intptr, size_t vf_delta, const struct RTTITypeDescriptor* src_type, const struct RTTITypeDescriptor* target_type, bool is_reference);
 const char* __RTTypeName(const void* intptr);
 
+extern int __vt__9type_info asm("??_7type_info@@6B@");
+
 #endif /* BW1_DECOMP_REVERSING_UTILS_RTTI_INCLUDED_H */

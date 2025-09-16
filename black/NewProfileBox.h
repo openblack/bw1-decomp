@@ -17,7 +17,7 @@ static_assert(sizeof(struct NewProfileBox) == 0x24, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00bea310 mac inlined NewProfileBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13NewProfileBox asm("??_R0?AVNewProfileBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13NewProfileBox asm("??_R0?AVNewProfileBox@@@8");
 // win1.41 009ac880 mac inlined NewProfileBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13NewProfileBox asm("??_R1A@?0A@A@NewProfileBox@@8");
 // win1.41 009ac898 mac inlined NewProfileBox::`RTTI Base Class Array'

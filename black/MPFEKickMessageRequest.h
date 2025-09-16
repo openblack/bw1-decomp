@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEKickMessageRequest) == 0x4, "Data type is of wro
 // Object Oriented datastructures
 
 // win1.41 00bf4900 mac inlined MPFEKickMessageRequest::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__22MPFEKickMessageRequest asm("??_R0?AVMPFEKickMessageRequest@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__22MPFEKickMessageRequest asm("??_R0?AVMPFEKickMessageRequest@@@8");
 // win1.41 009b2318 mac inlined MPFEKickMessageRequest::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__22MPFEKickMessageRequest asm("??_R1A@?0A@A@MPFEKickMessageRequest@@8");
 // win1.41 009b2330 mac inlined MPFEKickMessageRequest::`RTTI Base Class Array'

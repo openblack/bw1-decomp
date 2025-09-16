@@ -24,7 +24,7 @@ static_assert(sizeof(struct CreaturePen) == 0x8c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009ce8c8 mac inlined CreaturePen::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11CreaturePen asm("??_R0?AVCreaturePen@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11CreaturePen asm("??_R0?AVCreaturePen@@@8");
 // win1.41 009ab228 mac inlined CreaturePen::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11CreaturePen asm("??_R1A@?0A@A@CreaturePen@@8");
 // win1.41 009ab240 mac inlined CreaturePen::`RTTI Base Class Array'

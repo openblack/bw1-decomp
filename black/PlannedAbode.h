@@ -33,7 +33,7 @@ static_assert(sizeof(struct PlannedAbode) == 0x4c, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 009c8000 mac inlined PlannedAbode::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12PlannedAbode asm("??_R0?AVPlannedAbode@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12PlannedAbode asm("??_R0?AVPlannedAbode@@@8");
 // win1.41 009a64b0 mac inlined PlannedAbode::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12PlannedAbode asm("??_R1A@?0A@A@PlannedAbode@@8");
 // win1.41 009a64c8 mac inlined PlannedAbode::`RTTI Base Class Array'

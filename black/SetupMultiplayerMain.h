@@ -15,7 +15,7 @@ static_assert(sizeof(struct SetupMultiplayerMain) == 0x10, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00bea448 mac inlined SetupMultiplayerMain::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20SetupMultiplayerMain asm("??_R0?AVSetupMultiplayerMain@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20SetupMultiplayerMain asm("??_R0?AVSetupMultiplayerMain@@@8");
 // win1.41 009acba0 mac inlined SetupMultiplayerMain::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20SetupMultiplayerMain asm("??_R1A@?0A@A@SetupMultiplayerMain@@8");
 // win1.41 009acbb8 mac inlined SetupMultiplayerMain::`RTTI Base Class Array'

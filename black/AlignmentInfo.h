@@ -19,7 +19,7 @@ static_assert(sizeof(struct GAlignmentInfo) == 0x10, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 009c8340 mac inlined GAlignmentInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GAlignmentInfo asm("??_R0?AVGAlignmentInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14GAlignmentInfo asm("??_R0?AVGAlignmentInfo@@@8");
 // win1.41 009a69c8 mac inlined GAlignmentInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GAlignmentInfo asm("??_R1A@?0A@A@GAlignmentInfo@@8");
 // win1.41 009a69e0 mac inlined GAlignmentInfo::`RTTI Base Class Array'

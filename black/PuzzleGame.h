@@ -54,7 +54,7 @@ static_assert(sizeof(struct PuzzleGame) == 0x588, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00becad8 mac inlined PuzzleGame::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10PuzzleGame asm("??_R0?AVPuzzleGame@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10PuzzleGame asm("??_R0?AVPuzzleGame@@@8");
 // win1.41 009ad980 mac inlined PuzzleGame::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10PuzzleGame asm("??_R1A@?0A@A@PuzzleGame@@8");
 // win1.41 009ad998 mac inlined PuzzleGame::`RTTI Base Class Array'
@@ -98,7 +98,7 @@ static_assert(sizeof(struct ChessGamePuzzle) == 0x28, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00c099b0 mac inlined ChessGamePuzzle::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15ChessGamePuzzle asm("??_R0?AVChessGamePuzzle@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15ChessGamePuzzle asm("??_R0?AVChessGamePuzzle@@@8");
 // win1.41 009b8848 mac inlined ChessGamePuzzle::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15ChessGamePuzzle asm("??_R1A@?0A@A@ChessGamePuzzle@@8");
 // win1.41 009b8860 mac inlined ChessGamePuzzle::`RTTI Base Class Array'
@@ -124,7 +124,7 @@ static_assert(sizeof(struct ChessPiece) == 0x98, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c09a70 mac inlined ChessPiece::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10ChessPiece asm("??_R0?AVChessPiece@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10ChessPiece asm("??_R0?AVChessPiece@@@8");
 // win1.41 009b8ad0 mac inlined ChessPiece::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10ChessPiece asm("??_R1A@?0A@A@ChessPiece@@8");
 
@@ -137,7 +137,7 @@ static_assert(sizeof(struct ChessKing) == 0x98, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c09a90 mac inlined ChessKing::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9ChessKing asm("??_R0?AVChessKing@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9ChessKing asm("??_R0?AVChessKing@@@8");
 // win1.41 009b8ae8 mac inlined ChessKing::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9ChessKing asm("??_R1A@?0A@A@ChessKing@@8");
 // win1.41 009b8b00 mac inlined ChessKing::`RTTI Base Class Array'
@@ -159,7 +159,7 @@ static_assert(sizeof(struct ChessKnight) == 0x98, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c09a50 mac inlined ChessKnight::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11ChessKnight asm("??_R0?AVChessKnight@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11ChessKnight asm("??_R0?AVChessKnight@@@8");
 // win1.41 009b8a60 mac inlined ChessKnight::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11ChessKnight asm("??_R1A@?0A@A@ChessKnight@@8");
 // win1.41 009b8a78 mac inlined ChessKnight::`RTTI Base Class Array'
@@ -181,7 +181,7 @@ static_assert(sizeof(struct ChessMad) == 0x98, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c099f8 mac inlined ChessMad::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8ChessMad asm("??_R0?AVChessMad@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8ChessMad asm("??_R0?AVChessMad@@@8");
 // win1.41 009b8910 mac inlined ChessMad::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8ChessMad asm("??_R1A@?0A@A@ChessMad@@8");
 // win1.41 009b8928 mac inlined ChessMad::`RTTI Base Class Array'
@@ -205,7 +205,7 @@ static_assert(sizeof(struct ChessPion) == 0x98, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c099e0 mac inlined ChessPion::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9ChessPion asm("??_R0?AVChessPion@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9ChessPion asm("??_R0?AVChessPion@@@8");
 // win1.41 009b88a0 mac inlined ChessPion::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9ChessPion asm("??_R1A@?0A@A@ChessPion@@8");
 // win1.41 009b88b8 mac inlined ChessPion::`RTTI Base Class Array'
@@ -255,7 +255,7 @@ static_assert(sizeof(struct ChessQueen) == 0x98, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c09a30 mac inlined ChessQueen::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10ChessQueen asm("??_R0?AVChessQueen@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10ChessQueen asm("??_R0?AVChessQueen@@@8");
 // win1.41 009b89f0 mac inlined ChessQueen::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10ChessQueen asm("??_R1A@?0A@A@ChessQueen@@8");
 // win1.41 009b8a08 mac inlined ChessQueen::`RTTI Base Class Array'
@@ -277,7 +277,7 @@ static_assert(sizeof(struct ChessTower) == 0x98, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c09a10 mac inlined ChessTower::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10ChessTower asm("??_R0?AVChessTower@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10ChessTower asm("??_R0?AVChessTower@@@8");
 // win1.41 009b8980 mac inlined ChessTower::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10ChessTower asm("??_R1A@?0A@A@ChessTower@@8");
 // win1.41 009b8998 mac inlined ChessTower::`RTTI Base Class Array'
@@ -299,7 +299,7 @@ static_assert(sizeof(struct PieceHorse) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c9058 mac inlined PieceHorse::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10PieceHorse asm("??_R0?AVPieceHorse@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10PieceHorse asm("??_R0?AVPieceHorse@@@8");
 // win1.41 009a6f28 mac inlined PieceHorse::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10PieceHorse asm("??_R1A@?0A@A@PieceHorse@@8");
 // win1.41 009a6f40 mac inlined PieceHorse::`RTTI Base Class Array'
@@ -325,7 +325,7 @@ static_assert(sizeof(struct PieceLion) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c9398 mac inlined PieceLion::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9PieceLion asm("??_R0?AVPieceLion@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9PieceLion asm("??_R0?AVPieceLion@@@8");
 // win1.41 009a7688 mac inlined PieceLion::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9PieceLion asm("??_R1A@?0A@A@PieceLion@@8");
 // win1.41 009a76a0 mac inlined PieceLion::`RTTI Base Class Array'
@@ -353,7 +353,7 @@ static_assert(sizeof(struct PiecePig) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c90d8 mac inlined PiecePig::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8PiecePig asm("??_R0?AVPiecePig@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8PiecePig asm("??_R0?AVPiecePig@@@8");
 // win1.41 009a7078 mac inlined PiecePig::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8PiecePig asm("??_R1A@?0A@A@PiecePig@@8");
 // win1.41 009a7090 mac inlined PiecePig::`RTTI Base Class Array'
@@ -381,7 +381,7 @@ static_assert(sizeof(struct PieceSheep) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c8fd0 mac inlined PieceSheep::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10PieceSheep asm("??_R0?AVPieceSheep@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10PieceSheep asm("??_R0?AVPieceSheep@@@8");
 // win1.41 009a6dd8 mac inlined PieceSheep::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10PieceSheep asm("??_R1A@?0A@A@PieceSheep@@8");
 // win1.41 009a6df0 mac inlined PieceSheep::`RTTI Base Class Array'
@@ -407,7 +407,7 @@ static_assert(sizeof(struct PieceTortoise) == 0x148, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 009c9138 mac inlined PieceTortoise::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13PieceTortoise asm("??_R0?AVPieceTortoise@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13PieceTortoise asm("??_R0?AVPieceTortoise@@@8");
 // win1.41 009a7158 mac inlined PieceTortoise::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13PieceTortoise asm("??_R1A@?0A@A@PieceTortoise@@8");
 // win1.41 009a7170 mac inlined PieceTortoise::`RTTI Base Class Array'
@@ -433,7 +433,7 @@ static_assert(sizeof(struct PieceVillager) == 0x148, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 009c8f08 mac inlined PieceVillager::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13PieceVillager asm("??_R0?AVPieceVillager@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13PieceVillager asm("??_R0?AVPieceVillager@@@8");
 // win1.41 009a6c98 mac inlined PieceVillager::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13PieceVillager asm("??_R1A@?0A@A@PieceVillager@@8");
 // win1.41 009a6cb0 mac inlined PieceVillager::`RTTI Base Class Array'
@@ -463,7 +463,7 @@ static_assert(sizeof(struct PieceWolf) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c94d0 mac inlined PieceWolf::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9PieceWolf asm("??_R0?AVPieceWolf@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9PieceWolf asm("??_R0?AVPieceWolf@@@8");
 // win1.41 009a7848 mac inlined PieceWolf::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9PieceWolf asm("??_R1A@?0A@A@PieceWolf@@8");
 // win1.41 009a7860 mac inlined PieceWolf::`RTTI Base Class Array'
@@ -491,7 +491,7 @@ static_assert(sizeof(struct PieceCow) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c09960 mac inlined PieceCow::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8PieceCow asm("??_R0?AVPieceCow@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8PieceCow asm("??_R0?AVPieceCow@@@8");
 // win1.41 009b8748 mac inlined PieceCow::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8PieceCow asm("??_R1A@?0A@A@PieceCow@@8");
 
@@ -504,7 +504,7 @@ static_assert(sizeof(struct PuzzleCow) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c09978 mac inlined PuzzleCow::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9PuzzleCow asm("??_R0?AVPuzzleCow@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9PuzzleCow asm("??_R0?AVPuzzleCow@@@8");
 // win1.41 009b8760 mac inlined PuzzleCow::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9PuzzleCow asm("??_R1A@?0A@A@PuzzleCow@@8");
 // win1.41 009b8778 mac inlined PuzzleCow::`RTTI Base Class Array'
@@ -536,7 +536,7 @@ static_assert(sizeof(struct PuzzleGrain) == 0xbc, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00beca58 mac inlined PuzzleGrain::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11PuzzleGrain asm("??_R0?AVPuzzleGrain@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11PuzzleGrain asm("??_R0?AVPuzzleGrain@@@8");
 // win1.41 009ad5f8 mac inlined PuzzleGrain::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11PuzzleGrain asm("??_R1A@?0A@A@PuzzleGrain@@8");
 // win1.41 009ad610 mac inlined PuzzleGrain::`RTTI Base Class Array'
@@ -608,7 +608,7 @@ static_assert(sizeof(struct PuzzleHorse) == 0x148, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00c09990 mac inlined PuzzleHorse::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11PuzzleHorse asm("??_R0?AVPuzzleHorse@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11PuzzleHorse asm("??_R0?AVPuzzleHorse@@@8");
 // win1.41 009b87d0 mac inlined PuzzleHorse::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11PuzzleHorse asm("??_R1A@?0A@A@PuzzleHorse@@8");
 // win1.41 009b87e8 mac inlined PuzzleHorse::`RTTI Base Class Array'
@@ -686,7 +686,7 @@ static_assert(sizeof(struct PuzzleLion) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00becb38 mac inlined PuzzleLion::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10PuzzleLion asm("??_R0?AVPuzzleLion@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10PuzzleLion asm("??_R0?AVPuzzleLion@@@8");
 // win1.41 009adaf0 mac inlined PuzzleLion::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10PuzzleLion asm("??_R1A@?0A@A@PuzzleLion@@8");
 // win1.41 009adb08 mac inlined PuzzleLion::`RTTI Base Class Array'
@@ -714,7 +714,7 @@ static_assert(sizeof(struct PuzzleMobileObject) == 0x68, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 00bee278 mac inlined PuzzleMobileObject::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18PuzzleMobileObject asm("??_R0?AVPuzzleMobileObject@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18PuzzleMobileObject asm("??_R0?AVPuzzleMobileObject@@@8");
 // win1.41 009b03b8 mac inlined PuzzleMobileObject::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18PuzzleMobileObject asm("??_R1A@?0A@A@PuzzleMobileObject@@8");
 // win1.41 009b03d0 mac inlined PuzzleMobileObject::`RTTI Base Class Array'
@@ -748,7 +748,7 @@ static_assert(sizeof(struct PuzzlePig) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c09928 mac inlined PuzzlePig::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9PuzzlePig asm("??_R0?AVPuzzlePig@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9PuzzlePig asm("??_R0?AVPuzzlePig@@@8");
 // win1.41 009b8658 mac inlined PuzzlePig::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9PuzzlePig asm("??_R1A@?0A@A@PuzzlePig@@8");
 // win1.41 009b8670 mac inlined PuzzlePig::`RTTI Base Class Array'
@@ -778,7 +778,7 @@ static_assert(sizeof(struct PuzzleSheep) == 0x148, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00becd88 mac inlined PuzzleSheep::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11PuzzleSheep asm("??_R0?AVPuzzleSheep@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11PuzzleSheep asm("??_R0?AVPuzzleSheep@@@8");
 // win1.41 009ae1b8 mac inlined PuzzleSheep::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11PuzzleSheep asm("??_R1A@?0A@A@PuzzleSheep@@8");
 // win1.41 009ae1d0 mac inlined PuzzleSheep::`RTTI Base Class Array'
@@ -808,7 +808,7 @@ static_assert(sizeof(struct PuzzleTortoise) == 0x148, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00c09940 mac inlined PuzzleTortoise::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14PuzzleTortoise asm("??_R0?AVPuzzleTortoise@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14PuzzleTortoise asm("??_R0?AVPuzzleTortoise@@@8");
 // win1.41 009b86d0 mac inlined PuzzleTortoise::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14PuzzleTortoise asm("??_R1A@?0A@A@PuzzleTortoise@@8");
 // win1.41 009b86e8 mac inlined PuzzleTortoise::`RTTI Base Class Array'
@@ -836,7 +836,7 @@ static_assert(sizeof(struct PuzzleTotem) == 0xe4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00be6758 mac inlined PuzzleTotem::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11PuzzleTotem asm("??_R0?AVPuzzleTotem@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11PuzzleTotem asm("??_R0?AVPuzzleTotem@@@8");
 // win1.41 009ae900 mac inlined PuzzleTotem::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11PuzzleTotem asm("??_R1A@?0A@A@PuzzleTotem@@8");
 // win1.41 009ae918 mac inlined PuzzleTotem::`RTTI Base Class Array'
@@ -892,7 +892,7 @@ static_assert(sizeof(struct PuzzleVillager) == 0x148, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00becc68 mac inlined PuzzleVillager::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14PuzzleVillager asm("??_R0?AVPuzzleVillager@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14PuzzleVillager asm("??_R0?AVPuzzleVillager@@@8");
 // win1.41 009ade30 mac inlined PuzzleVillager::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14PuzzleVillager asm("??_R1A@?0A@A@PuzzleVillager@@8");
 // win1.41 009ade48 mac inlined PuzzleVillager::`RTTI Base Class Array'

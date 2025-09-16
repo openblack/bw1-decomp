@@ -29,7 +29,7 @@ static_assert(sizeof(struct Property) == 0x4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bef9e8 mac inlined Property::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Property asm("??_R0?AVProperty@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8Property asm("??_R0?AVProperty@@@8");
 // win1.41 009b0a60 mac inlined Property::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Property asm("??_R1A@?0A@A@Property@@8");
 // win1.41 inlined mac 1099a22c Property::`vftable'
@@ -44,7 +44,7 @@ static_assert(sizeof(struct BoolProperty) == 0x4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00befb40 mac inlined BoolProperty::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12BoolProperty asm("??_R0?AVBoolProperty@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12BoolProperty asm("??_R0?AVBoolProperty@@@8");
 // win1.41 009b0c38 mac inlined BoolProperty::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12BoolProperty asm("??_R1A@?0A@A@BoolProperty@@8");
 // win1.41 009b0c50 mac inlined BoolProperty::`RTTI Base Class Array'
@@ -68,7 +68,7 @@ static_assert(sizeof(struct SoundActionProperty) == 0x4, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 00befac0 mac inlined SoundActionProperty::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19SoundActionProperty asm("??_R0?AVSoundActionProperty@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19SoundActionProperty asm("??_R0?AVSoundActionProperty@@@8");
 // win1.41 009b0b48 mac inlined SoundActionProperty::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19SoundActionProperty asm("??_R1A@?0A@A@SoundActionProperty@@8");
 // win1.41 009b0b60 mac inlined SoundActionProperty::`RTTI Base Class Array'
@@ -92,7 +92,7 @@ static_assert(sizeof(struct StringProperty) == 0x4, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00befaf8 mac inlined StringProperty::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14StringProperty asm("??_R0?AVStringProperty@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14StringProperty asm("??_R0?AVStringProperty@@@8");
 // win1.41 009b0b98 mac inlined StringProperty::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14StringProperty asm("??_R1A@?0A@A@StringProperty@@8");
 // win1.41 009b0bb0 mac inlined StringProperty::`RTTI Base Class Array'
@@ -116,7 +116,7 @@ static_assert(sizeof(struct TPointerProperty) == 0x4, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00c04b70 mac inlined TPointerProperty::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16TPointerProperty asm("??_R0?AVTPointerProperty@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16TPointerProperty asm("??_R0?AVTPointerProperty@@@8");
 // win1.41 009b5268 mac inlined TPointerProperty::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16TPointerProperty asm("??_R1A@?0A@A@TPointerProperty@@8");
 // win1.41 009b56e0 mac inlined TPointerProperty::`RTTI Base Class Array'

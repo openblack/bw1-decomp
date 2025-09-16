@@ -113,7 +113,7 @@ static_assert(sizeof(struct GlobalGameLists) == 0x190, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00bec390 mac inlined GlobalGameLists::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GlobalGameLists asm("??_R0?AVGlobalGameLists@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15GlobalGameLists asm("??_R0?AVGlobalGameLists@@@8");
 // win1.41 009ad0b0 mac inlined GlobalGameLists::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GlobalGameLists asm("??_R1A@?0A@A@GlobalGameLists@@8");
 // win1.41 009ad0c8 mac inlined GlobalGameLists::`RTTI Base Class Array'

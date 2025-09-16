@@ -24,7 +24,7 @@ static_assert(sizeof(struct CreatureDamageMap) == 0x10, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00be01f8 mac inlined CreatureDamageMap::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17CreatureDamageMap asm("??_R0?AVCreatureDamageMap@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17CreatureDamageMap asm("??_R0?AVCreatureDamageMap@@@8");
 // win1.41 009ab340 mac inlined CreatureDamageMap::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17CreatureDamageMap asm("??_R1A@?0A@A@CreatureDamageMap@@8");
 // win1.41 009ab358 mac inlined CreatureDamageMap::`RTTI Base Class Array'
@@ -76,7 +76,7 @@ static_assert(sizeof(struct CreaturePhysical) == 0x74, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00be01d8 mac inlined CreaturePhysical::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16CreaturePhysical asm("??_R0?AVCreaturePhysical@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16CreaturePhysical asm("??_R0?AVCreaturePhysical@@@8");
 // win1.41 009ab2f0 mac inlined CreaturePhysical::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16CreaturePhysical asm("??_R1A@?0A@A@CreaturePhysical@@8");
 // win1.41 009ab308 mac inlined CreaturePhysical::`RTTI Base Class Array'

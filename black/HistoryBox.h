@@ -17,7 +17,7 @@ static_assert(sizeof(struct HistoryBox) == 0x1c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bea3a8 mac inlined HistoryBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10HistoryBox asm("??_R0?AVHistoryBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10HistoryBox asm("??_R0?AVHistoryBox@@@8");
 // win1.41 009aca10 mac inlined HistoryBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10HistoryBox asm("??_R1A@?0A@A@HistoryBox@@8");
 // win1.41 009aca28 mac inlined HistoryBox::`RTTI Base Class Array'

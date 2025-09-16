@@ -57,7 +57,7 @@ static_assert(sizeof(struct Fixed) == 0x58, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c7f68 mac inlined FixedObject::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11FixedObject asm("??_R0?AVFixed@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11FixedObject asm("??_R0?AVFixed@@@8");
 // win1.41 009a6408 mac inlined FixedObject::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11FixedObject asm("??_R1A@?0A@A@Fixed@@8");
 // win1.41 009ac3f8 mac inlined FixedObject::`RTTI Base Class Array'
@@ -149,7 +149,7 @@ static_assert(sizeof(struct SingleMapFixed) == 0x5c, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00be9ec8 mac inlined SingleMapFixed::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14SingleMapFixed asm("??_R0?AVSingleMapFixed@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14SingleMapFixed asm("??_R0?AVSingleMapFixed@@@8");
 // win1.41 009ac480 mac inlined SingleMapFixed::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14SingleMapFixed asm("??_R1A@?0A@A@SingleMapFixed@@8");
 // win1.41 009ac498 mac inlined SingleMapFixed::`RTTI Base Class Array'

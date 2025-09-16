@@ -19,7 +19,7 @@ static_assert(sizeof(struct GMagicFlockFlyingInfo) == 0x58, "Data type is of wro
 // Object Oriented datastructures
 
 // win1.41 009ccfe0 mac inlined GMagicFlockFlyingInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21GMagicFlockFlyingInfo asm("??_R0?AVGMagicFlockFlyingInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__21GMagicFlockFlyingInfo asm("??_R0?AVGMagicFlockFlyingInfo@@@8");
 // win1.41 009a8140 mac inlined GMagicFlockFlyingInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21GMagicFlockFlyingInfo asm("??_R1A@?0A@A@GMagicFlockFlyingInfo@@8");
 // win1.41 009a8158 mac inlined GMagicFlockFlyingInfo::`RTTI Base Class Array'

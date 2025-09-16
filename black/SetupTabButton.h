@@ -28,7 +28,7 @@ static_assert(sizeof(struct SetupTabButton) == 0x254, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 009c8278 mac inlined SetupTabButton::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14SetupTabButton asm("??_R0?AUSetupTabButton@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14SetupTabButton asm("??_R0?AUSetupTabButton@@@8");
 // win1.41 009a6838 mac inlined SetupTabButton::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14SetupTabButton asm("??_R1A@?0A@A@SetupTabButton@@8");
 // win1.41 009a6850 mac inlined SetupTabButton::`RTTI Base Class Array'

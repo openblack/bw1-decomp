@@ -15,7 +15,7 @@ static_assert(sizeof(struct MPFECreateGame) == 0x10, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00bf4ad8 mac inlined MPFECreateGame::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14MPFECreateGame asm("??_R0?AVMPFECreateGame@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14MPFECreateGame asm("??_R0?AVMPFECreateGame@@@8");
 // win1.41 009b2548 mac inlined MPFECreateGame::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14MPFECreateGame asm("??_R1A@?0A@A@MPFECreateGame@@8");
 // win1.41 009b2560 mac inlined MPFECreateGame::`RTTI Base Class Array'

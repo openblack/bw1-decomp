@@ -19,7 +19,7 @@ static_assert(sizeof(struct CreatureExplorationMap) == 0x2018, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 00bdf8b0 mac inlined CreatureExplorationMap::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__22CreatureExplorationMap asm("??_R0?AVCreatureExplorationMap@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__22CreatureExplorationMap asm("??_R0?AVCreatureExplorationMap@@@8");
 // win1.41 009aae00 mac inlined CreatureExplorationMap::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__22CreatureExplorationMap asm("??_R1A@?0A@A@CreatureExplorationMap@@8");
 // win1.41 009aae18 mac inlined CreatureExplorationMap::`RTTI Base Class Array'
@@ -45,7 +45,7 @@ static_assert(sizeof(struct CreatureExplorationRegionEntry) == 0x8, "Data type i
 // Object Oriented datastructures
 
 // win1.41 00bdf850 mac inlined CreatureExplorationRegionEntry::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__30CreatureExplorationRegionEntry asm("??_R0?AVCreatureExplorationRegionEntry@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__30CreatureExplorationRegionEntry asm("??_R0?AVCreatureExplorationRegionEntry@@@8");
 // win1.41 009aad60 mac inlined CreatureExplorationRegionEntry::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__30CreatureExplorationRegionEntry asm("??_R1A@?0A@A@CreatureExplorationRegionEntry@@8");
 // win1.41 009aad78 mac inlined CreatureExplorationRegionEntry::`RTTI Base Class Array'
@@ -67,7 +67,7 @@ static_assert(sizeof(struct CreatureGlobalExplorationMap) == 0x8, "Data type is 
 // Object Oriented datastructures
 
 // win1.41 00bdf880 mac inlined CreatureGlobalExplorationMap::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__28CreatureGlobalExplorationMap asm("??_R0?AVCreatureGlobalExplorationMap@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__28CreatureGlobalExplorationMap asm("??_R0?AVCreatureGlobalExplorationMap@@@8");
 // win1.41 009aadb0 mac inlined CreatureGlobalExplorationMap::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__28CreatureGlobalExplorationMap asm("??_R1A@?0A@A@CreatureGlobalExplorationMap@@8");
 // win1.41 009aadc8 mac inlined CreatureGlobalExplorationMap::`RTTI Base Class Array'

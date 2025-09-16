@@ -17,7 +17,7 @@ static_assert(sizeof(struct TattooEditor) == 0x3228, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00bea490 mac inlined TattooEditor::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12TattooEditor asm("??_R0?AVTattooEditor@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12TattooEditor asm("??_R0?AVTattooEditor@@@8");
 // win1.41 009acc40 mac inlined TattooEditor::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12TattooEditor asm("??_R1A@?0A@A@TattooEditor@@8");
 // win1.41 009acc58 mac inlined TattooEditor::`RTTI Base Class Array'

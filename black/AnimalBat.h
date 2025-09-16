@@ -23,7 +23,7 @@ static_assert(sizeof(struct Bat) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c9288 mac inlined Bat::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__3Bat asm("??_R0?AVBat@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__3Bat asm("??_R0?AVBat@@@8");
 // win1.41 009a7460 mac inlined Bat::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__3Bat asm("??_R1A@?0A@A@Bat@@8");
 // win1.41 009a7478 mac inlined Bat::`RTTI Base Class Array'
@@ -53,7 +53,7 @@ static_assert(sizeof(struct SpellBat) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c92a8 mac inlined SpellBat::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8SpellBat asm("??_R0?AVSpellBat@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8SpellBat asm("??_R0?AVSpellBat@@@8");
 // win1.41 009a74d0 mac inlined SpellBat::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8SpellBat asm("??_R1A@?0A@A@SpellBat@@8");
 // win1.41 009a74e8 mac inlined SpellBat::`RTTI Base Class Array'

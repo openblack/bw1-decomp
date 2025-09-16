@@ -28,7 +28,7 @@ static_assert(sizeof(struct Graveyard) == 0xc4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00becde8 mac inlined Graveyard::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9Graveyard asm("??_R0?AVGraveyard@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9Graveyard asm("??_R0?AVGraveyard@@@8");
 // win1.41 009ae350 mac inlined Graveyard::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9Graveyard asm("??_R1A@?0A@A@Graveyard@@8");
 // win1.41 009ae368 mac inlined Graveyard::`RTTI Base Class Array'

@@ -21,7 +21,7 @@ static_assert(sizeof(struct VortexObjectInfo) == 0x14, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00bed2a8 mac inlined VortexObjectInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16VortexObjectInfo asm("??_R0?AVVortexObjectInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16VortexObjectInfo asm("??_R0?AVVortexObjectInfo@@@8");
 // win1.41 009aea98 mac inlined VortexObjectInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16VortexObjectInfo asm("??_R1A@?0A@A@VortexObjectInfo@@8");
 // win1.41 009aeab0 mac inlined VortexObjectInfo::`RTTI Base Class Array'

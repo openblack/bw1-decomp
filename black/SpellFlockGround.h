@@ -22,7 +22,7 @@ static_assert(sizeof(struct SpellFlockGround) == 0xf4, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00becce0 mac inlined SpellFlockGround::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16SpellFlockGround asm("??_R0?AVSpellFlockGround@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16SpellFlockGround asm("??_R0?AVSpellFlockGround@@@8");
 // win1.41 009adfb8 mac inlined SpellFlockGround::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16SpellFlockGround asm("??_R1A@?0A@A@SpellFlockGround@@8");
 // win1.41 009adfd0 mac inlined SpellFlockGround::`RTTI Base Class Array'

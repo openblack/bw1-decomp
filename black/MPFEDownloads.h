@@ -28,7 +28,7 @@ static_assert(sizeof(struct MPFEDownloads) == 0x280, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00bf4668 mac inlined MPFEDownloads::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13MPFEDownloads asm("??_R0?AVMPFEDownloads@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13MPFEDownloads asm("??_R0?AVMPFEDownloads@@@8");
 // win1.41 009b2080 mac inlined MPFEDownloads::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13MPFEDownloads asm("??_R1A@?0A@A@MPFEDownloads@@8");
 // win1.41 009b27bc mac inlined MPFEDownloads::`RTTI Base Class Array'

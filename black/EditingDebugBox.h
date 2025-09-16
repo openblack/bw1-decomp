@@ -15,7 +15,7 @@ static_assert(sizeof(struct EditingDebugBox) == 0x10, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00bea4f8 mac inlined EditingDebugBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15EditingDebugBox asm("??_R0?AVEditingDebugBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15EditingDebugBox asm("??_R0?AVEditingDebugBox@@@8");
 // win1.41 009acd30 mac inlined EditingDebugBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15EditingDebugBox asm("??_R1A@?0A@A@EditingDebugBox@@8");
 // win1.41 009acd48 mac inlined EditingDebugBox::`RTTI Base Class Array'

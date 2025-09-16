@@ -18,7 +18,7 @@ static_assert(sizeof(struct CreatureBeliefList) == 0x14, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 009dd898 mac inlined CreatureBeliefList::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18CreatureBeliefList asm("??_R0?AVCreatureBeliefList@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18CreatureBeliefList asm("??_R0?AVCreatureBeliefList@@@8");
 // win1.41 009aa3b0 mac inlined CreatureBeliefList::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18CreatureBeliefList asm("??_R1A@?0A@A@CreatureBeliefList@@8");
 // win1.41 009aa3c8 mac inlined CreatureBeliefList::`RTTI Base Class Array'
@@ -48,7 +48,7 @@ static_assert(sizeof(struct AllocatedBeliefList) == 0x18, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 00bdf390 mac inlined AllocatedBeliefList::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19AllocatedBeliefList asm("??_R0?AVAllocatedBeliefList@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19AllocatedBeliefList asm("??_R0?AVAllocatedBeliefList@@@8");
 // win1.41 009aaa40 mac inlined AllocatedBeliefList::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19AllocatedBeliefList asm("??_R1A@?0A@A@AllocatedBeliefList@@8");
 // win1.41 009aaa58 mac inlined AllocatedBeliefList::`RTTI Base Class Array'
@@ -77,7 +77,7 @@ static_assert(sizeof(struct CreatureBeliefs) == 0x270, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 009dd878 mac inlined CreatureBeliefs::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15CreatureBeliefs asm("??_R0?AVCreatureBeliefs@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15CreatureBeliefs asm("??_R0?AVCreatureBeliefs@@@8");
 // win1.41 009aa360 mac inlined CreatureBeliefs::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15CreatureBeliefs asm("??_R1A@?0A@A@CreatureBeliefs@@8");
 // win1.41 009aa378 mac inlined CreatureBeliefs::`RTTI Base Class Array'

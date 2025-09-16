@@ -23,7 +23,7 @@ static_assert(sizeof(struct GStream) == 0x28, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00becbf8 mac inlined GStream::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7GStream asm("??_R0?AVGStream@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__7GStream asm("??_R0?AVGStream@@@8");
 // win1.41 009adcc8 mac inlined GStream::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7GStream asm("??_R1A@?0A@A@GStream@@8");
 // win1.41 009adce0 mac inlined GStream::`RTTI Base Class Array'

@@ -19,7 +19,7 @@ static_assert(sizeof(struct GInfluenceInfo) == 0x10, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00bf1ab8 mac inlined GInfluenceInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GInfluenceInfo asm("??_R0?AVGInfluenceInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14GInfluenceInfo asm("??_R0?AVGInfluenceInfo@@@8");
 // win1.41 009b1490 mac inlined GInfluenceInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GInfluenceInfo asm("??_R1A@?0A@A@GInfluenceInfo@@8");
 // win1.41 009b14a8 mac inlined GInfluenceInfo::`RTTI Base Class Array'

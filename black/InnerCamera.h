@@ -93,7 +93,7 @@ static_assert(sizeof(struct InnerCamera) == 0x46c, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00c275a8 mac inlined InnerCamera::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11InnerCamera asm("??_R0?AUInnerCamera@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11InnerCamera asm("??_R0?AUInnerCamera@@@8");
 // win1.41 009ba6a0 mac inlined InnerCamera::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11InnerCamera asm("??_R1A@?0A@A@InnerCamera@@8");
 // win1.41 009bab94 mac inlined InnerCamera::`RTTI Base Class Array'

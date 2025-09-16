@@ -1,5 +1,15 @@
 #include "Abode.h"
 
+__attribute__((aligned(8)))
+struct RTTITypeDescriptor __RTTITypeDescriptor__5Abode = {
+    .pVFTable = &__vt__9type_info,
+    .spare = 0,
+    .name = ".?AVAbode@@",
+};
+
+char abode_column[] = "Abode:\0";
+char abode_file[] = "C:\\dev\\MP\\Black\\Abode.cpp\0";
+
 __attribute__((section(".rdata$r"), aligned(8)))
 const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Abode = {
     .pTypeDescriptor = &__RTTITypeDescriptor__5Abode,

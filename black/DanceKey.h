@@ -25,7 +25,7 @@ static_assert(sizeof(struct DanceKeyFrame) == 0x24, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00be83c8 mac inlined DanceKeyFrame::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13DanceKeyFrame asm("??_R0?AVDanceKeyFrame@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13DanceKeyFrame asm("??_R0?AVDanceKeyFrame@@@8");
 // win1.41 009ab750 mac inlined DanceKeyFrame::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13DanceKeyFrame asm("??_R1A@?0A@A@DanceKeyFrame@@8");
 // win1.41 009ab768 mac inlined DanceKeyFrame::`RTTI Base Class Array'

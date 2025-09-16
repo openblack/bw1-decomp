@@ -22,7 +22,7 @@ static_assert(sizeof(struct RenderParticle) == 0x18, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00bed540 mac inlined RenderParticle::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14RenderParticle asm("??_R0?AVRenderParticle@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14RenderParticle asm("??_R0?AVRenderParticle@@@8");
 // win1.41 009aed38 mac inlined RenderParticle::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14RenderParticle asm("??_R1A@?0A@A@RenderParticle@@8");
 // win1.41 009aeda8 mac inlined RenderParticle::`RTTI Base Class Array'

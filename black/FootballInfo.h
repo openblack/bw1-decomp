@@ -21,7 +21,7 @@ static_assert(sizeof(struct GPFootballInfo) == 0x120, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00bfed10 mac inlined GPFootballInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GPFootballInfo asm("??_R0?AVGPFootballInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14GPFootballInfo asm("??_R0?AVGPFootballInfo@@@8");
 // win1.41 009b3060 mac inlined GPFootballInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GPFootballInfo asm("??_R1A@?0A@A@GPFootballInfo@@8");
 // win1.41 009b3078 mac inlined GPFootballInfo::`RTTI Base Class Array'

@@ -21,7 +21,7 @@ static_assert(sizeof(struct Swallow) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c9210 mac inlined Swallow::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7Swallow asm("??_R0?AVSwallow@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__7Swallow asm("??_R0?AVSwallow@@@8");
 // win1.41 009a7310 mac inlined Swallow::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7Swallow asm("??_R1A@?0A@A@Swallow@@8");
 // win1.41 009a7328 mac inlined Swallow::`RTTI Base Class Array'

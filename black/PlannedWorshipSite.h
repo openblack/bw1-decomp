@@ -21,7 +21,7 @@ static_assert(sizeof(struct PlannedWorshipSite) == 0x48, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 00c24d30 mac inlined PlannedWorshipSite::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18PlannedWorshipSite asm("??_R0?AVPlannedWorshipSite@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18PlannedWorshipSite asm("??_R0?AVPlannedWorshipSite@@@8");
 // win1.41 009ba320 mac inlined PlannedWorshipSite::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18PlannedWorshipSite asm("??_R1A@?0A@A@PlannedWorshipSite@@8");
 // win1.41 009ba338 mac inlined PlannedWorshipSite::`RTTI Base Class Array'

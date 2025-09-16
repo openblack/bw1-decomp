@@ -43,7 +43,7 @@ static_assert(sizeof(struct GBaseInfo) == 0x10, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c7e98 mac inlined GBaseInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GBaseInfo asm("??_R0?AVGBaseInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9GBaseInfo asm("??_R0?AVGBaseInfo@@@8");
 // win1.41 009a6320 mac inlined GBaseInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GBaseInfo asm("??_R1A@?0A@A@GBaseInfo@@8");
 // win1.41 009a8058 mac inlined GBaseInfo::`RTTI Base Class Array'
@@ -93,7 +93,7 @@ static_assert(sizeof(struct BaseInfo) == 0xc, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00becac0 mac inlined BaseInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8BaseInfo asm("??_R0?AVBaseInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8BaseInfo asm("??_R0?AVBaseInfo@@@8");
 // win1.41 009ad938 mac inlined BaseInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8BaseInfo asm("??_R1A@?0A@A@BaseInfo@@8");
 // win1.41 009ad950 mac inlined BaseInfo::`RTTI Base Class Array'

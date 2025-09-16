@@ -16,7 +16,7 @@ static_assert(sizeof(struct GInterfaceMessageBuffer) == 0x14, "Data type is of w
 // Object Oriented datastructures
 
 // win1.41 00bf1b88 mac inlined GInterfaceMessageBuffer::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23GInterfaceMessageBuffer asm("??_R0?AVGInterfaceMessageBuffer@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23GInterfaceMessageBuffer asm("??_R0?AVGInterfaceMessageBuffer@@@8");
 // win1.41 009b1628 mac inlined GInterfaceMessageBuffer::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23GInterfaceMessageBuffer asm("??_R1A@?0A@A@GInterfaceMessageBuffer@@8");
 // win1.41 009b1640 mac inlined GInterfaceMessageBuffer::`RTTI Base Class Array'

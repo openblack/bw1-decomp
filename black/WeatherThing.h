@@ -25,7 +25,7 @@ static_assert(sizeof(struct WeatherThing) == 0x88, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00becd00 mac inlined WeatherThing::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12WeatherThing asm("??_R0?AVWeatherThing@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12WeatherThing asm("??_R0?AVWeatherThing@@@8");
 // win1.41 009ae018 mac inlined WeatherThing::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12WeatherThing asm("??_R1A@?0A@A@WeatherThing@@8");
 // win1.41 009ae030 mac inlined WeatherThing::`RTTI Base Class Array'
