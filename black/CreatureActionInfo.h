@@ -19,7 +19,7 @@ static_assert(sizeof(struct CreatureActionInfo) == 0x10, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 009d7d18 mac inlined CreatureActionInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18CreatureActionInfo asm("??_R0?AVCreatureActionInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18CreatureActionInfo asm("??_R0?AVCreatureActionInfo@@@8");
 // win1.41 009a9960 mac inlined CreatureActionInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18CreatureActionInfo asm("??_R1A@?0A@A@CreatureActionInfo@@8");
 // win1.41 009a9978 mac inlined CreatureActionInfo::`RTTI Base Class Array'

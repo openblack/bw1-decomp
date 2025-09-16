@@ -14,7 +14,7 @@ static_assert(sizeof(struct CameraModeCtrInteract) == 0x8, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 009ce078 mac inlined CameraModeCtrInteract::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21CameraModeCtrInteract asm("??_R0?AVCameraModeCtrInteract@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__21CameraModeCtrInteract asm("??_R0?AVCameraModeCtrInteract@@@8");
 // win1.41 009a8940 mac inlined CameraModeCtrInteract::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21CameraModeCtrInteract asm("??_R1A@?0A@A@CameraModeCtrInteract@@8");
 // win1.41 009a8958 mac inlined CameraModeCtrInteract::`RTTI Base Class Array'

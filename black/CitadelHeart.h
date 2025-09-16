@@ -57,7 +57,7 @@ static_assert(sizeof(struct LeashObj) == 0x78, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009ce9b8 mac inlined LeashObj::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8LeashObj asm("??_R0?AVLeashObj@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8LeashObj asm("??_R0?AVLeashObj@@@8");
 // win1.41 009a8ea8 mac inlined LeashObj::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8LeashObj asm("??_R1A@?0A@A@LeashObj@@8");
 // win1.41 009a8ec0 mac inlined LeashObj::`RTTI Base Class Array'
@@ -130,7 +130,7 @@ static_assert(sizeof(struct CitadelHeart) == 0xe8, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 009ce8a8 mac inlined CitadelHeart::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12CitadelHeart asm("??_R0?AVCitadelHeart@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12CitadelHeart asm("??_R0?AVCitadelHeart@@@8");
 // win1.41 009a8f18 mac inlined CitadelHeart::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12CitadelHeart asm("??_R1A@?0A@A@CitadelHeart@@8");
 // win1.41 009a8f30 mac inlined CitadelHeart::`RTTI Base Class Array'

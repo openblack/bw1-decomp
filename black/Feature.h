@@ -27,7 +27,7 @@ static_assert(sizeof(struct Feature) == 0x7c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c9548 mac inlined Feature::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7Feature asm("??_R0?AVFeature@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__7Feature asm("??_R0?AVFeature@@@8");
 // win1.41 009a7930 mac inlined Feature::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7Feature asm("??_R1A@?0A@A@Feature@@8");
 // win1.41 009a79b0 mac inlined Feature::`RTTI Base Class Array'

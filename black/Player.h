@@ -113,7 +113,7 @@ static_assert(sizeof(struct GPlayer) == 0xa60, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bff140 mac inlined GPlayer::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7GPlayer asm("??_R0?AVGPlayer@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__7GPlayer asm("??_R0?AVGPlayer@@@8");
 // win1.41 009b3210 mac inlined GPlayer::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7GPlayer asm("??_R1A@?0A@A@GPlayer@@8");
 // win1.41 009b3228 mac inlined GPlayer::`RTTI Base Class Array'

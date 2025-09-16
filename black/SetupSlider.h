@@ -23,7 +23,7 @@ static_assert(sizeof(struct SetupSlider) == 0x250, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 009c8158 mac inlined SetupSlider::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11SetupSlider asm("??_R0?AUSetupSlider@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11SetupSlider asm("??_R0?AUSetupSlider@@@8");
 // win1.41 009a6608 mac inlined SetupSlider::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11SetupSlider asm("??_R1A@?0A@A@SetupSlider@@8");
 // win1.41 009a6620 mac inlined SetupSlider::`RTTI Base Class Array'

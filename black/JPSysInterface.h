@@ -28,7 +28,7 @@ static_assert(sizeof(struct GJPSysInterface) == 0x18, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00bed520 mac inlined GJPSysInterface::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GJPSysInterface asm("??_R0?AVGJPSysInterface@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15GJPSysInterface asm("??_R0?AVGJPSysInterface@@@8");
 // win1.41 009aeca0 mac inlined GJPSysInterface::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GJPSysInterface asm("??_R1A@?0A@A@GJPSysInterface@@8");
 // win1.41 009aecb8 mac inlined GJPSysInterface::`RTTI Base Class Array'

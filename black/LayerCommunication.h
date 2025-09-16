@@ -42,7 +42,7 @@ static_assert(sizeof(struct LayerCommunication) == 0x4, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 009cd658 mac inlined LayerCommunication::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18LayerCommunication asm("??_R0?AVLayerCommunication@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18LayerCommunication asm("??_R0?AVLayerCommunication@@@8");
 // win1.41 009a86e8 mac inlined LayerCommunication::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18LayerCommunication asm("??_R1A@?0A@A@LayerCommunication@@8");
 

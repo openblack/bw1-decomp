@@ -15,7 +15,7 @@ static_assert(sizeof(struct LoadingBox) == 0x10, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bea2d8 mac inlined LoadingBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10LoadingBox asm("??_R0?AVLoadingBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10LoadingBox asm("??_R0?AVLoadingBox@@@8");
 // win1.41 009ac7e0 mac inlined LoadingBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10LoadingBox asm("??_R1A@?0A@A@LoadingBox@@8");
 // win1.41 009ac7f8 mac inlined LoadingBox::`RTTI Base Class Array'

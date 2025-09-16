@@ -19,7 +19,7 @@ static_assert(sizeof(struct GTerrainMaterialInfo) == 0x10, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00c22ae0 mac inlined GTerrainMaterialInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20GTerrainMaterialInfo asm("??_R0?AVGTerrainMaterialInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20GTerrainMaterialInfo asm("??_R0?AVGTerrainMaterialInfo@@@8");
 // win1.41 009b9940 mac inlined GTerrainMaterialInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20GTerrainMaterialInfo asm("??_R1A@?0A@A@GTerrainMaterialInfo@@8");
 // win1.41 009b9958 mac inlined GTerrainMaterialInfo::`RTTI Base Class Array'

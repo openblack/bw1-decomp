@@ -21,7 +21,7 @@ static_assert(sizeof(struct ScriptTimer) == 0x28, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bece00 mac inlined ScriptTimer::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11ScriptTimer asm("??_R0?AVScriptTimer@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11ScriptTimer asm("??_R0?AVScriptTimer@@@8");
 // win1.41 009ae3b8 mac inlined ScriptTimer::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11ScriptTimer asm("??_R1A@?0A@A@ScriptTimer@@8");
 // win1.41 009ae3d0 mac inlined ScriptTimer::`RTTI Base Class Array'

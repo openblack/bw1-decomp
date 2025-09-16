@@ -19,7 +19,7 @@ static_assert(sizeof(struct GBeliefInfo) == 0x10, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009cd220 mac inlined GBeliefInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GBeliefInfo asm("??_R0?AVGBeliefInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11GBeliefInfo asm("??_R0?AVGBeliefInfo@@@8");
 // win1.41 009a8388 mac inlined GBeliefInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GBeliefInfo asm("??_R1A@?0A@A@GBeliefInfo@@8");
 // win1.41 009a83a0 mac inlined GBeliefInfo::`RTTI Base Class Array'

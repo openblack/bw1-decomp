@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEPublicChatMessage) == 0x4, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00bf4768 mac inlined MPFEPublicChatMessage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21MPFEPublicChatMessage asm("??_R0?AVMPFEPublicChatMessage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__21MPFEPublicChatMessage asm("??_R0?AVMPFEPublicChatMessage@@@8");
 // win1.41 009b20e8 mac inlined MPFEPublicChatMessage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21MPFEPublicChatMessage asm("??_R1A@?0A@A@MPFEPublicChatMessage@@8");
 // win1.41 009b2100 mac inlined MPFEPublicChatMessage::`RTTI Base Class Array'

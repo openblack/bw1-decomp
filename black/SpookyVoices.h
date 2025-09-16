@@ -15,7 +15,7 @@ static_assert(sizeof(struct GSpookyVoices) == 0x8, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00c228c8 mac inlined GSpookyVoices::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13GSpookyVoices asm("??_R0?AVGSpookyVoices@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13GSpookyVoices asm("??_R0?AVGSpookyVoices@@@8");
 // win1.41 009b97d8 mac inlined GSpookyVoices::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13GSpookyVoices asm("??_R1A@?0A@A@GSpookyVoices@@8");
 // win1.41 009b97f0 mac inlined GSpookyVoices::`RTTI Base Class Array'

@@ -29,7 +29,7 @@ static_assert(sizeof(struct GStreetLantern) == 0x64, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00becaf8 mac inlined GStreetLantern::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GStreetLantern asm("??_R0?AVGStreetLantern@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14GStreetLantern asm("??_R0?AVGStreetLantern@@@8");
 // win1.41 009ad9d8 mac inlined GStreetLantern::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GStreetLantern asm("??_R1A@?0A@A@GStreetLantern@@8");
 // win1.41 009ad9f0 mac inlined GStreetLantern::`RTTI Base Class Array'

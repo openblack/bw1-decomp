@@ -223,7 +223,7 @@ static_assert(sizeof(struct Creature) == 0x12c8, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c8060 mac inlined Creature::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Creature asm("??_R0?AVCreature@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8Creature asm("??_R0?AVCreature@@@8");
 // win1.41 009a94f0 mac inlined Creature::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Creature asm("??_R1A@?0A@A@Creature@@8");
 // win1.41 009a9508 mac inlined Creature::`RTTI Base Class Array'
@@ -602,7 +602,7 @@ static_assert(sizeof(struct Creed) == 0x68, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00be6838 mac inlined Creed::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Creed asm("??_R0?AVCreed@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5Creed asm("??_R0?AVCreed@@@8");
 // win1.41 009ab4e8 mac inlined Creed::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Creed asm("??_R1A@?0A@A@Creed@@8");
 // win1.41 009ab500 mac inlined Creed::`RTTI Base Class Array'

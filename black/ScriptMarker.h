@@ -21,7 +21,7 @@ static_assert(sizeof(struct ScriptMarker) == 0x28, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00becf10 mac inlined ScriptMarker::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12ScriptMarker asm("??_R0?AVScriptMarker@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12ScriptMarker asm("??_R0?AVScriptMarker@@@8");
 // win1.41 009ae890 mac inlined ScriptMarker::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12ScriptMarker asm("??_R1A@?0A@A@ScriptMarker@@8");
 // win1.41 009ae8a8 mac inlined ScriptMarker::`RTTI Base Class Array'

@@ -19,7 +19,7 @@ static_assert(sizeof(struct Playtime) == 0x14, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c01fb8 mac inlined Playtime::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Playtime asm("??_R0?AVPlaytime@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8Playtime asm("??_R0?AVPlaytime@@@8");
 // win1.41 009b3348 mac inlined Playtime::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Playtime asm("??_R1A@?0A@A@Playtime@@8");
 // win1.41 009b3360 mac inlined Playtime::`RTTI Base Class Array'

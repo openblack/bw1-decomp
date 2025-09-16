@@ -30,7 +30,7 @@ static_assert(sizeof(struct FieldCrop) == 0x68, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00becc50 mac inlined FieldCrop::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9FieldCrop asm("??_R0?AVFieldCrop@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9FieldCrop asm("??_R0?AVFieldCrop@@@8");
 // win1.41 009addd0 mac inlined FieldCrop::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9FieldCrop asm("??_R1A@?0A@A@FieldCrop@@8");
 // win1.41 009adde8 mac inlined FieldCrop::`RTTI Base Class Array'

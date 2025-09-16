@@ -21,7 +21,7 @@ static_assert(sizeof(struct Zebra) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c9090 mac inlined Zebra::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Zebra asm("??_R0?AVZebra@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5Zebra asm("??_R0?AVZebra@@@8");
 // win1.41 009a6f98 mac inlined Zebra::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Zebra asm("??_R1A@?0A@A@Zebra@@8");
 // win1.41 009a6fb0 mac inlined Zebra::`RTTI Base Class Array'

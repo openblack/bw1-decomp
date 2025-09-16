@@ -19,7 +19,7 @@ static_assert(sizeof(struct GForestInfo) == 0x148, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00bea240 mac inlined GForestInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GForestInfo asm("??_R0?AVGForestInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11GForestInfo asm("??_R0?AVGForestInfo@@@8");
 // win1.41 009ac730 mac inlined GForestInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GForestInfo asm("??_R1A@?0A@A@GForestInfo@@8");
 // win1.41 009ac748 mac inlined GForestInfo::`RTTI Base Class Array'

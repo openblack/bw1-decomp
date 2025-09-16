@@ -20,7 +20,7 @@ static_assert(sizeof(struct GFurnitureInfo) == 0x100, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00bea908 mac inlined GFurnitureInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GFurnitureInfo asm("??_R0?AVGFurnitureInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14GFurnitureInfo asm("??_R0?AVGFurnitureInfo@@@8");
 // win1.41 009acf60 mac inlined GFurnitureInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GFurnitureInfo asm("??_R1A@?0A@A@GFurnitureInfo@@8");
 // win1.41 009acf78 mac inlined GFurnitureInfo::`RTTI Base Class Array'

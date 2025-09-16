@@ -66,7 +66,7 @@ static_assert(sizeof(struct Field) == 0x124, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00be9d68 mac inlined Field::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Field asm("??_R0?AVField@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5Field asm("??_R0?AVField@@@8");
 // win1.41 009ac228 mac inlined Field::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Field asm("??_R1A@?0A@A@Field@@8");
 // win1.41 009ac240 mac inlined Field::`RTTI Base Class Array'

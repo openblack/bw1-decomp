@@ -24,7 +24,7 @@ static_assert(sizeof(struct GTribeInfo) == 0x1c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c23060 mac inlined GTribeInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GTribeInfo asm("??_R0?AVGTribeInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10GTribeInfo asm("??_R0?AVGTribeInfo@@@8");
 // win1.41 009b9cd0 mac inlined GTribeInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GTribeInfo asm("??_R1A@?0A@A@GTribeInfo@@8");
 // win1.41 009b9ce8 mac inlined GTribeInfo::`RTTI Base Class Array'

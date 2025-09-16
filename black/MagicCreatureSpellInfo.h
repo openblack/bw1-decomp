@@ -19,7 +19,7 @@ static_assert(sizeof(struct GMagicCreatureSpellInfo) == 0x58, "Data type is of w
 // Object Oriented datastructures
 
 // win1.41 009cd030 mac inlined GMagicCreatureSpellInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23GMagicCreatureSpellInfo asm("??_R0?AVGMagicCreatureSpellInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23GMagicCreatureSpellInfo asm("??_R0?AVGMagicCreatureSpellInfo@@@8");
 // win1.41 009a81f0 mac inlined GMagicCreatureSpellInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23GMagicCreatureSpellInfo asm("??_R1A@?0A@A@GMagicCreatureSpellInfo@@8");
 // win1.41 009a8208 mac inlined GMagicCreatureSpellInfo::`RTTI Base Class Array'

@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFECondtionUpdateMessage) == 0x4, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 00bf4c78 mac inlined MPFECondtionUpdateMessage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25MPFECondtionUpdateMessage asm("??_R0?AVMPFECondtionUpdateMessage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__25MPFECondtionUpdateMessage asm("??_R0?AVMPFECondtionUpdateMessage@@@8");
 // win1.41 009b26d8 mac inlined MPFECondtionUpdateMessage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25MPFECondtionUpdateMessage asm("??_R1A@?0A@A@MPFECondtionUpdateMessage@@8");
 // win1.41 009b26f0 mac inlined MPFECondtionUpdateMessage::`RTTI Base Class Array'

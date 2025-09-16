@@ -106,7 +106,7 @@ static_assert(sizeof(struct Abode) == 0xc4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c7fa0 mac inlined Abode::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Abode asm("??_R0?AVAbode@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5Abode asm("??_R0?AVAbode@@@8");
 // win1.41 009a6438 mac inlined Abode::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Abode asm("??_R1A@?0A@A@Abode@@8");
 // win1.41 009a6450 mac inlined Abode::`RTTI Base Class Array'

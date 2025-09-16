@@ -61,7 +61,7 @@ static_assert(sizeof(struct SetupVBarGraph) == 0x284, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 009c8258 mac inlined SetupVBarGraph::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14SetupVBarGraph asm("??_R0?AUSetupVBarGraph@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14SetupVBarGraph asm("??_R0?AUSetupVBarGraph@@@8");
 // win1.41 009a67e8 mac inlined SetupVBarGraph::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14SetupVBarGraph asm("??_R1A@?0A@A@SetupVBarGraph@@8");
 // win1.41 009a6800 mac inlined SetupVBarGraph::`RTTI Base Class Array'

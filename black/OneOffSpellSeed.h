@@ -33,7 +33,7 @@ static_assert(sizeof(struct OneOffSpellSeed) == 0x7c, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00beca20 mac inlined OneOffSpellSeed::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15OneOffSpellSeed asm("??_R0?AVOneOffSpellSeed@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15OneOffSpellSeed asm("??_R0?AVOneOffSpellSeed@@@8");
 // win1.41 009ad580 mac inlined OneOffSpellSeed::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15OneOffSpellSeed asm("??_R1A@?0A@A@OneOffSpellSeed@@8");
 // win1.41 009ad598 mac inlined OneOffSpellSeed::`RTTI Base Class Array'

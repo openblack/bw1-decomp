@@ -25,7 +25,7 @@ static_assert(sizeof(struct AnimatedStatic) == 0x98, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 009c9560 mac inlined AnimatedStatic::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14AnimatedStatic asm("??_R0?AVAnimatedStatic@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14AnimatedStatic asm("??_R0?AVAnimatedStatic@@@8");
 // win1.41 009a7948 mac inlined AnimatedStatic::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14AnimatedStatic asm("??_R1A@?0A@A@AnimatedStatic@@8");
 // win1.41 009a7960 mac inlined AnimatedStatic::`RTTI Base Class Array'

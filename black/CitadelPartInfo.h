@@ -20,7 +20,7 @@ static_assert(sizeof(struct GCitadelPartInfo) == 0x134, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 009ce960 mac inlined GCitadelPartInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GCitadelPartInfo asm("??_R0?AVGCitadelPartInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16GCitadelPartInfo asm("??_R0?AVGCitadelPartInfo@@@8");
 // win1.41 009a8e30 mac inlined GCitadelPartInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GCitadelPartInfo asm("??_R1A@?0A@A@GCitadelPartInfo@@8");
 

@@ -1,5 +1,13 @@
 #include "Base.h"
 
+#include "reversing_utils/re_rtti.h"
+
+struct RTTITypeDescriptor __RTTITypeDescriptor__4Base = {
+    .pVFTable = &__vt__9type_info,
+    .spare = 0,
+    .name = ".?AVBase@@",
+};
+
 // Inlined so that the first object file to be compiles (AbodeInfo.o is before Base.o) has these definitions first
 
 void __fastcall Serialise__4BaseFR7Archive(struct Base* this, const void* edx, struct Archive* param_1)

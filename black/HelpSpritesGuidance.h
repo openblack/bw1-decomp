@@ -19,7 +19,7 @@ static_assert(sizeof(struct GHelpSpritesGuidance) == 0x10, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00c221d8 mac inlined GHelpSpritesGuidance::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20GHelpSpritesGuidance asm("??_R0?AVGHelpSpritesGuidance@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20GHelpSpritesGuidance asm("??_R0?AVGHelpSpritesGuidance@@@8");
 // win1.41 009b9108 mac inlined GHelpSpritesGuidance::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20GHelpSpritesGuidance asm("??_R1A@?0A@A@GHelpSpritesGuidance@@8");
 // win1.41 009b9120 mac inlined GHelpSpritesGuidance::`RTTI Base Class Array'

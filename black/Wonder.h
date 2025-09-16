@@ -32,7 +32,7 @@ static_assert(sizeof(struct Wonder) == 0xc8, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bece20 mac inlined Wonder::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Wonder asm("??_R0?AVWonder@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__6Wonder asm("??_R0?AVWonder@@@8");
 // win1.41 009ae410 mac inlined Wonder::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Wonder asm("??_R1A@?0A@A@Wonder@@8");
 // win1.41 009ae428 mac inlined Wonder::`RTTI Base Class Array'

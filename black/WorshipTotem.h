@@ -49,7 +49,7 @@ static_assert(sizeof(struct WorshipTotem) == 0x104, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 009c8ee8 mac inlined WorshipTotem::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12WorshipTotem asm("??_R0?AVWorshipTotem@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12WorshipTotem asm("??_R0?AVWorshipTotem@@@8");
 // win1.41 009ba510 mac inlined WorshipTotem::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12WorshipTotem asm("??_R1A@?0A@A@WorshipTotem@@8");
 // win1.41 009ba528 mac inlined WorshipTotem::`RTTI Base Class Array'

@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEMapErrorMessage) == 0x4, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 00bfdbd0 mac inlined MPFEMapErrorMessage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19MPFEMapErrorMessage asm("??_R0?AVMPFEMapErrorMessage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19MPFEMapErrorMessage asm("??_R0?AVMPFEMapErrorMessage@@@8");
 // win1.41 009b2be0 mac inlined MPFEMapErrorMessage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19MPFEMapErrorMessage asm("??_R1A@?0A@A@MPFEMapErrorMessage@@8");
 // win1.41 009b2bf8 mac inlined MPFEMapErrorMessage::`RTTI Base Class Array'

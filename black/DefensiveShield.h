@@ -21,7 +21,7 @@ static_assert(sizeof(struct DefensiveShield) == 0x14, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00c09700 mac inlined DefensiveShield::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15DefensiveShield asm("??_R0?AVDefensiveShield@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15DefensiveShield asm("??_R0?AVDefensiveShield@@@8");
 // win1.41 009b8340 mac inlined DefensiveShield::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15DefensiveShield asm("??_R1A@?0A@A@DefensiveShield@@8");
 // win1.41 009b8358 mac inlined DefensiveShield::`RTTI Base Class Array'

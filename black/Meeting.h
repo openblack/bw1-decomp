@@ -22,7 +22,7 @@ static_assert(sizeof(struct Meeting) == 0x28, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf41c8 mac inlined Meeting::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7Meeting asm("??_R0?AVMeeting@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__7Meeting asm("??_R0?AVMeeting@@@8");
 // win1.41 009b1f40 mac inlined Meeting::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7Meeting asm("??_R1A@?0A@A@Meeting@@8");
 // win1.41 009b1f58 mac inlined Meeting::`RTTI Base Class Array'

@@ -23,7 +23,7 @@ static_assert(sizeof(struct SpellHeal) == 0xec, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00becaa8 mac inlined SpellHeal::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellHeal asm("??_R0?AVSpellHeal@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellHeal asm("??_R0?AVSpellHeal@@@8");
 // win1.41 009ad860 mac inlined SpellHeal::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9SpellHeal asm("??_R1A@?0A@A@SpellHeal@@8");
 // win1.41 009ad878 mac inlined SpellHeal::`RTTI Base Class Array'

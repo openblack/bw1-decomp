@@ -44,7 +44,7 @@ static_assert(sizeof(struct StoragePit) == 0xdc, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c8ec8 mac inlined StoragePit::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10StoragePit asm("??_R0?AVStoragePit@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10StoragePit asm("??_R0?AVStoragePit@@@8");
 // win1.41 009ad7b8 mac inlined StoragePit::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10StoragePit asm("??_R1A@?0A@A@StoragePit@@8");
 // win1.41 009ad7d0 mac inlined StoragePit::`RTTI Base Class Array'

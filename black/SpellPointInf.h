@@ -21,7 +21,7 @@ static_assert(sizeof(struct SpellPointInf) == 0x14, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00bed730 mac inlined SpellPointInf::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13SpellPointInf asm("??_R0?AVSpellPointInf@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13SpellPointInf asm("??_R0?AVSpellPointInf@@@8");
 // win1.41 009af120 mac inlined SpellPointInf::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13SpellPointInf asm("??_R1A@?0A@A@SpellPointInf@@8");
 // win1.41 009af138 mac inlined SpellPointInf::`RTTI Base Class Array'

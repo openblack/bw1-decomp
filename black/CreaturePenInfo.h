@@ -20,7 +20,7 @@ static_assert(sizeof(struct GCreaturePenInfo) == 0x134, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00be0178 mac inlined GCreaturePenInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GCreaturePenInfo asm("??_R0?AVGCreaturePenInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16GCreaturePenInfo asm("??_R0?AVGCreaturePenInfo@@@8");
 // win1.41 009ab1c8 mac inlined GCreaturePenInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GCreaturePenInfo asm("??_R1A@?0A@A@GCreaturePenInfo@@8");
 // win1.41 009ab1e0 mac inlined GCreaturePenInfo::`RTTI Base Class Array'

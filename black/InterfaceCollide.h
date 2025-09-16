@@ -30,7 +30,7 @@ static_assert(sizeof(struct GInterfaceCollide) == 0x30, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00bf1b40 mac inlined GInterfaceCollide::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17GInterfaceCollide asm("??_R0?AVGInterfaceCollide@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17GInterfaceCollide asm("??_R0?AVGInterfaceCollide@@@8");
 // win1.41 009b1588 mac inlined GInterfaceCollide::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17GInterfaceCollide asm("??_R1A@?0A@A@GInterfaceCollide@@8");
 // win1.41 009b15a0 mac inlined GInterfaceCollide::`RTTI Base Class Array'

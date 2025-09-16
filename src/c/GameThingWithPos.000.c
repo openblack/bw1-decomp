@@ -9,6 +9,13 @@ const float rdata_float0p2 = 0.2;                                  // [0x13ac] 0
 const float rdata_float0p001 = 0.001;                              // [0x13b0] 0x008a9000 + 0x13b0 = 0x008aa3b0
 const float rdata_float0p5 = 0.5;                                  // [0x13b4] 0x008a9000 + 0x13b4 = 0x008aa3b4
 
+__attribute__((aligned(8)))
+struct RTTITypeDescriptor __RTTITypeDescriptor__16GameThingWithPos = {
+    .pVFTable = &__vt__9type_info,
+    .spare = 0,
+    .name = ".?AVGameThingWithPos@@",
+};
+
 __attribute__((section(".rdata$r"), aligned(8)))
 const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GameThingWithPos = {
     .pTypeDescriptor = &__RTTITypeDescriptor__16GameThingWithPos,

@@ -22,7 +22,7 @@ static_assert(sizeof(struct SecretCreature) == 0x4, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00c20bb8 mac inlined SecretCreature::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14SecretCreature asm("??_R0?AVSecretCreature@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14SecretCreature asm("??_R0?AVSecretCreature@@@8");
 // win1.41 009b9018 mac inlined SecretCreature::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14SecretCreature asm("??_R1A@?0A@A@SecretCreature@@8");
 // win1.41 009b9030 mac inlined SecretCreature::`RTTI Base Class Array'

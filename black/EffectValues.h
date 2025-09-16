@@ -35,7 +35,7 @@ static_assert(sizeof(struct EffectValues) == 0x40, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00be9678 mac inlined EffectValues::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12EffectValues asm("??_R0?AVEffectValues@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12EffectValues asm("??_R0?AVEffectValues@@@8");
 // win1.41 009abf70 mac inlined EffectValues::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12EffectValues asm("??_R1A@?0A@A@EffectValues@@8");
 // win1.41 009abf88 mac inlined EffectValues::`RTTI Base Class Array'

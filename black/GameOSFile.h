@@ -36,7 +36,7 @@ static_assert(sizeof(struct GameOSFile) == 0x230, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bec9b8 mac inlined GameOSFile::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GameOSFile asm("??_R0?AVGameOSFile@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10GameOSFile asm("??_R0?AVGameOSFile@@@8");
 // win1.41 009ad420 mac inlined GameOSFile::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GameOSFile asm("??_R1A@?0A@A@GameOSFile@@8");
 // win1.41 009ad438 mac inlined GameOSFile::`RTTI Base Class Array'

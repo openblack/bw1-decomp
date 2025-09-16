@@ -69,7 +69,7 @@ static_assert(sizeof(struct BuildingSite) == 0x644, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 009cd3f0 mac inlined BuildingSite::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12BuildingSite asm("??_R0?AVBuildingSite@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12BuildingSite asm("??_R0?AVBuildingSite@@@8");
 // win1.41 009a8590 mac inlined BuildingSite::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12BuildingSite asm("??_R1A@?0A@A@BuildingSite@@8");
 // win1.41 009a85a8 mac inlined BuildingSite::`RTTI Base Class Array'

@@ -23,7 +23,7 @@ static_assert(sizeof(struct GFieldTypeInfo) == 0x154, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00be9d48 mac inlined GFieldTypeInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GFieldTypeInfo asm("??_R0?AVGFieldTypeInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14GFieldTypeInfo asm("??_R0?AVGFieldTypeInfo@@@8");
 // win1.41 009ac1d0 mac inlined GFieldTypeInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GFieldTypeInfo asm("??_R1A@?0A@A@GFieldTypeInfo@@8");
 // win1.41 009ac1e8 mac inlined GFieldTypeInfo::`RTTI Base Class Array'

@@ -18,7 +18,7 @@ static_assert(sizeof(struct ParticleCreator) == 0x4, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00c02180 mac inlined ParticleCreator::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15ParticleCreator asm("??_R0?AVParticleCreator@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15ParticleCreator asm("??_R0?AVParticleCreator@@@8");
 // win1.41 009b4d68 mac inlined ParticleCreator::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15ParticleCreator asm("??_R1A@?0A@A@ParticleCreator@@8");
 // win1.41 009b4ed0 mac inlined ParticleCreator::`RTTI Base Class Array'

@@ -21,7 +21,7 @@ static_assert(sizeof(struct Tortoise) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c9108 mac inlined Tortoise::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Tortoise asm("??_R0?AVTortoise@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8Tortoise asm("??_R0?AVTortoise@@@8");
 // win1.41 009a70e8 mac inlined Tortoise::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Tortoise asm("??_R1A@?0A@A@Tortoise@@8");
 // win1.41 009a7100 mac inlined Tortoise::`RTTI Base Class Array'

@@ -115,7 +115,7 @@ static_assert(sizeof(struct MobileWallHug) == 0x8c, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 009c8dc8 mac inlined MobileWallHug::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13MobileWallHug asm("??_R0?AVMobileWallHug@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13MobileWallHug asm("??_R0?AVMobileWallHug@@@8");
 // win1.41 009a6c00 mac inlined MobileWallHug::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13MobileWallHug asm("??_R1A@?0A@A@MobileWallHug@@8");
 // win1.41 009a9640 mac inlined MobileWallHug::`RTTI Base Class Array'

@@ -21,7 +21,7 @@ static_assert(sizeof(struct GPrayerSiteInfo) == 0x120, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00c020c0 mac inlined GPrayerSiteInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GPrayerSiteInfo asm("??_R0?AVGPrayerSiteInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15GPrayerSiteInfo asm("??_R0?AVGPrayerSiteInfo@@@8");
 // win1.41 009b3558 mac inlined GPrayerSiteInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GPrayerSiteInfo asm("??_R1A@?0A@A@GPrayerSiteInfo@@8");
 // win1.41 009b3570 mac inlined GPrayerSiteInfo::`RTTI Base Class Array'

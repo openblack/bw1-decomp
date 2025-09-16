@@ -41,7 +41,7 @@ static_assert(sizeof(struct CreatureVisionState) == 0x48, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 009dd7e8 mac inlined CreatureVisionState::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19CreatureVisionState asm("??_R0?AVCreatureVisionState@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19CreatureVisionState asm("??_R0?AVCreatureVisionState@@@8");
 // win1.41 009aa270 mac inlined CreatureVisionState::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19CreatureVisionState asm("??_R1A@?0A@A@CreatureVisionState@@8");
 // win1.41 009aa288 mac inlined CreatureVisionState::`RTTI Base Class Array'

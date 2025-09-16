@@ -18,7 +18,7 @@ static_assert(sizeof(struct GTerrainMap) == 0x4a130, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00bec458 mac inlined GTerrainMap::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GTerrainMap asm("??_R0?AVGTerrainMap@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11GTerrainMap asm("??_R0?AVGTerrainMap@@@8");
 // win1.41 009ad290 mac inlined GTerrainMap::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GTerrainMap asm("??_R1A@?0A@A@GTerrainMap@@8");
 // win1.41 009ad2a8 mac inlined GTerrainMap::`RTTI Base Class Array'

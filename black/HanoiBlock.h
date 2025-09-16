@@ -29,7 +29,7 @@ static_assert(sizeof(struct HanoiBlock) == 0x68, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00becda8 mac inlined HanoiBlock::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10HanoiBlock asm("??_R0?AVHanoiBlock@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10HanoiBlock asm("??_R0?AVHanoiBlock@@@8");
 // win1.41 009ae230 mac inlined HanoiBlock::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10HanoiBlock asm("??_R1A@?0A@A@HanoiBlock@@8");
 // win1.41 009ae248 mac inlined HanoiBlock::`RTTI Base Class Array'

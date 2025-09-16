@@ -23,7 +23,7 @@ static_assert(sizeof(struct PlannedTownCentre) == 0x4c, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00bece38 mac inlined PlannedTownCentre::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17PlannedTownCentre asm("??_R0?AVPlannedTownCentre@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17PlannedTownCentre asm("??_R0?AVPlannedTownCentre@@@8");
 // win1.41 009ae5b8 mac inlined PlannedTownCentre::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17PlannedTownCentre asm("??_R1A@?0A@A@PlannedTownCentre@@8");
 // win1.41 009ae5d0 mac inlined PlannedTownCentre::`RTTI Base Class Array'

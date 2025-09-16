@@ -77,7 +77,7 @@ static_assert(sizeof(struct LHFile) == 0x6c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009cb970 mac inlined LHFile::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6LHFile asm("??_R0?AVLHFile@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__6LHFile asm("??_R0?AVLHFile@@@8");
 // win1.41 009a7d58 mac inlined LHFile::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6LHFile asm("??_R1A@?0A@A@LHFile@@8");
 // win1.41 009a8024 mac inlined LHFile::`RTTI Base Class Array'

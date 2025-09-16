@@ -24,7 +24,7 @@ static_assert(sizeof(struct Cow) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c8f68 mac inlined Cow::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__3Cow asm("??_R0?AVCow@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__3Cow asm("??_R0?AVCow@@@8");
 // win1.41 009a6d00 mac inlined Cow::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__3Cow asm("??_R1A@?0A@A@Cow@@8");
 // win1.41 009a6d18 mac inlined Cow::`RTTI Base Class Array'

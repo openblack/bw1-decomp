@@ -20,7 +20,7 @@ static_assert(sizeof(struct GArrowInfo) == 0x114, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c9678 mac inlined GArrowInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GArrowInfo asm("??_R0?AVGArrowInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10GArrowInfo asm("??_R0?AVGArrowInfo@@@8");
 // win1.41 009a7b00 mac inlined GArrowInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GArrowInfo asm("??_R1A@?0A@A@GArrowInfo@@8");
 // win1.41 009a7b18 mac inlined GArrowInfo::`RTTI Base Class Array'

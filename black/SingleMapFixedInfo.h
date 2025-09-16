@@ -33,7 +33,7 @@ static_assert(sizeof(struct GSingleMapFixedInfo) == 0x100, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00be9e88 mac inlined GSingleMapFixedInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19GSingleMapFixedInfo asm("??_R0?AVGSingleMapFixedInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19GSingleMapFixedInfo asm("??_R0?AVGSingleMapFixedInfo@@@8");
 // win1.41 009ac3a0 mac inlined GSingleMapFixedInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19GSingleMapFixedInfo asm("??_R1A@?0A@A@GSingleMapFixedInfo@@8");
 // win1.41 009ac3b8 mac inlined GSingleMapFixedInfo::`RTTI Base Class Array'

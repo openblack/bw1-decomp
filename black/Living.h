@@ -62,7 +62,7 @@ static_assert(sizeof(struct DataForScriptRemind) == 0x48, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 00bf3ad8 mac inlined DataForScriptRemind::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19DataForScriptRemind asm("??_R0?AVDataForScriptRemind@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19DataForScriptRemind asm("??_R0?AVDataForScriptRemind@@@8");
 // win1.41 009b1a20 mac inlined DataForScriptRemind::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19DataForScriptRemind asm("??_R1A@?0A@A@DataForScriptRemind@@8");
 // win1.41 009b1a38 mac inlined DataForScriptRemind::`RTTI Base Class Array'
@@ -330,7 +330,7 @@ static_assert(sizeof(struct Living) == 0xe0, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c8de8 mac inlined Living::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Living asm("??_R0?AVLiving@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__6Living asm("??_R0?AVLiving@@@8");
 // win1.41 009a6c18 mac inlined Living::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Living asm("??_R1A@?0A@A@Living@@8");
 // win1.41 009a95f8 mac inlined Living::`RTTI Base Class Array'

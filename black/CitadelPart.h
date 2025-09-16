@@ -40,7 +40,7 @@ static_assert(sizeof(struct CitadelPart) == 0x8c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009ce888 mac inlined CitadelPart::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11CitadelPart asm("??_R0?AVCitadelPart@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11CitadelPart asm("??_R0?AVCitadelPart@@@8");
 // win1.41 009a8f00 mac inlined CitadelPart::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11CitadelPart asm("??_R1A@?0A@A@CitadelPart@@8");
 // win1.41 009a9150 mac inlined CitadelPart::`RTTI Base Class Array'

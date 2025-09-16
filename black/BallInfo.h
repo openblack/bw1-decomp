@@ -21,7 +21,7 @@ static_assert(sizeof(struct GBallInfo) == 0x140, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009cd058 mac inlined GBallInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GBallInfo asm("??_R0?AVGBallInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9GBallInfo asm("??_R0?AVGBallInfo@@@8");
 // win1.41 009a82c8 mac inlined GBallInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GBallInfo asm("??_R1A@?0A@A@GBallInfo@@8");
 // win1.41 009a82e0 mac inlined GBallInfo::`RTTI Base Class Array'
@@ -49,7 +49,7 @@ static_assert(sizeof(struct GPBallInfo) == 0x114, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bfe048 mac inlined GPBallInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GPBallInfo asm("??_R0?AVGPBallInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10GPBallInfo asm("??_R0?AVGPBallInfo@@@8");
 // win1.41 009b2ed0 mac inlined GPBallInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GPBallInfo asm("??_R1A@?0A@A@GPBallInfo@@8");
 // win1.41 009b2ee8 mac inlined GPBallInfo::`RTTI Base Class Array'

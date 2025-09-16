@@ -1,5 +1,12 @@
 #include "Object.h"
 
+__attribute__((aligned(8)))
+struct RTTITypeDescriptor __RTTITypeDescriptor__6Object = {
+    .pVFTable = &__vt__9type_info,
+    .spare = 0,
+    .name = ".?AVObject@@",
+};
+
 __attribute__((section(".rdata$r"), aligned(8)))
 const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Object = {
     .pTypeDescriptor = &__RTTITypeDescriptor__6Object,

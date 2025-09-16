@@ -34,7 +34,7 @@ static_assert(sizeof(struct CreaturePlan) == 0x30, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 009cf928 mac inlined CreaturePlan::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12CreaturePlan asm("??_R0?AVCreaturePlan@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12CreaturePlan asm("??_R0?AVCreaturePlan@@@8");
 // win1.41 009a9450 mac inlined CreaturePlan::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12CreaturePlan asm("??_R1A@?0A@A@CreaturePlan@@8");
 // win1.41 009a9468 mac inlined CreaturePlan::`RTTI Base Class Array'
@@ -83,7 +83,7 @@ static_assert(sizeof(struct CreatureTimeToWait) == 0x8, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00bdfe90 mac inlined CreatureTimeToWait::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18CreatureTimeToWait asm("??_R0?AVCreatureTimeToWait@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18CreatureTimeToWait asm("??_R0?AVCreatureTimeToWait@@@8");
 // win1.41 009ab088 mac inlined CreatureTimeToWait::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18CreatureTimeToWait asm("??_R1A@?0A@A@CreatureTimeToWait@@8");
 // win1.41 009ab0a0 mac inlined CreatureTimeToWait::`RTTI Base Class Array'

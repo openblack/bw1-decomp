@@ -22,7 +22,7 @@ static_assert(sizeof(struct PSysSound) == 0x14, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c09760 mac inlined PSysSound::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9PSysSound asm("??_R0?AVPSysSound@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9PSysSound asm("??_R0?AVPSysSound@@@8");
 // win1.41 009b83f0 mac inlined PSysSound::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9PSysSound asm("??_R1A@?0A@A@PSysSound@@8");
 // win1.41 009b8408 mac inlined PSysSound::`RTTI Base Class Array'

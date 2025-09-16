@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEInviteToTeamMessage) == 0x4, "Data type is of wr
 // Object Oriented datastructures
 
 // win1.41 00bf4860 mac inlined MPFEInviteToTeamMessage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23MPFEInviteToTeamMessage asm("??_R0?AVMPFEInviteToTeamMessage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23MPFEInviteToTeamMessage asm("??_R0?AVMPFEInviteToTeamMessage@@@8");
 // win1.41 009b2228 mac inlined MPFEInviteToTeamMessage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23MPFEInviteToTeamMessage asm("??_R1A@?0A@A@MPFEInviteToTeamMessage@@8");
 // win1.41 009b2240 mac inlined MPFEInviteToTeamMessage::`RTTI Base Class Array'

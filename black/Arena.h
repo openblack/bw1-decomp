@@ -31,7 +31,7 @@ static_assert(sizeof(struct GArena) == 0x4c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c95e0 mac inlined GArena::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6GArena asm("??_R0?AVGArena@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__6GArena asm("??_R0?AVGArena@@@8");
 // win1.41 009a79f8 mac inlined GArena::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6GArena asm("??_R1A@?0A@A@GArena@@8");
 // win1.41 009a7a10 mac inlined GArena::`RTTI Base Class Array'
@@ -73,7 +73,7 @@ static_assert(sizeof(struct ArenaSpellIcon) == 0x58, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 009c9628 mac inlined ArenaSpellIcon::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14ArenaSpellIcon asm("??_R0?AVArenaSpellIcon@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14ArenaSpellIcon asm("??_R0?AVArenaSpellIcon@@@8");
 // win1.41 009a7a88 mac inlined ArenaSpellIcon::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14ArenaSpellIcon asm("??_R1A@?0A@A@ArenaSpellIcon@@8");
 // win1.41 009a7aa0 mac inlined ArenaSpellIcon::`RTTI Base Class Array'

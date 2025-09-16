@@ -24,7 +24,7 @@ static_assert(sizeof(struct GSoundMap) == 0x110, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bec3d8 mac inlined GSoundMap::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GSoundMap asm("??_R0?AVGSoundMap@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9GSoundMap asm("??_R0?AVGSoundMap@@@8");
 // win1.41 009ad150 mac inlined GSoundMap::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GSoundMap asm("??_R1A@?0A@A@GSoundMap@@8");
 // win1.41 009ad168 mac inlined GSoundMap::`RTTI Base Class Array'

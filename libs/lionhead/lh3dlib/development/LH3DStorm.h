@@ -28,7 +28,7 @@ static_assert(sizeof(struct LH3DStorm) == 0x4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c24780 mac inlined LH3DStorm::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9LH3DStorm asm("??_R0?AULH3DStorm@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9LH3DStorm asm("??_R0?AULH3DStorm@@@8");
 // win1.41 009ba028 mac inlined LH3DStorm::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9LH3DStorm asm("??_R1A@?0A@A@LH3DStorm@@8");
 // win1.41 009a3b00 mac 101cd534 LH3DStorm::`vftable'

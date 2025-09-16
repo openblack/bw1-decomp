@@ -46,7 +46,7 @@ static_assert(sizeof(struct CreatureLearning) == 0x16168, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 00bdf918 mac inlined CreatureLearning::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16CreatureLearning asm("??_R0?AVCreatureLearning@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16CreatureLearning asm("??_R0?AVCreatureLearning@@@8");
 // win1.41 009aae50 mac inlined CreatureLearning::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16CreatureLearning asm("??_R1A@?0A@A@CreatureLearning@@8");
 // win1.41 009aae68 mac inlined CreatureLearning::`RTTI Base Class Array'
@@ -78,7 +78,7 @@ static_assert(sizeof(struct CreatureLearningEpisode) == 0x14, "Data type is of w
 // Object Oriented datastructures
 
 // win1.41 009dd368 mac inlined CreatureLearningEpisode::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23CreatureLearningEpisode asm("??_R0?AVCreatureLearningEpisode@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23CreatureLearningEpisode asm("??_R0?AVCreatureLearningEpisode@@@8");
 // win1.41 009a9f50 mac inlined CreatureLearningEpisode::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23CreatureLearningEpisode asm("??_R1A@?0A@A@CreatureLearningEpisode@@8");
 // win1.41 009a9f68 mac inlined CreatureLearningEpisode::`RTTI Base Class Array'
@@ -102,7 +102,7 @@ static_assert(sizeof(struct CreatureLearningContext) == 0x8, "Data type is of wr
 // Object Oriented datastructures
 
 // win1.41 00bdfab8 mac inlined CreatureLearningContext::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23CreatureLearningContext asm("??_R0?AVCreatureLearningContext@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23CreatureLearningContext asm("??_R0?AVCreatureLearningContext@@@8");
 // win1.41 009aaef0 mac inlined CreatureLearningContext::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23CreatureLearningContext asm("??_R1A@?0A@A@CreatureLearningContext@@8");
 // win1.41 009aaf08 mac inlined CreatureLearningContext::`RTTI Base Class Array'

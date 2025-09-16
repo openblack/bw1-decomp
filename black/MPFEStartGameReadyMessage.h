@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEStartGameReadyMessage) == 0x4, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 00bfd990 mac inlined MPFEStartGameReadyMessage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__25MPFEStartGameReadyMessage asm("??_R0?AVMPFEStartGameReadyMessage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__25MPFEStartGameReadyMessage asm("??_R0?AVMPFEStartGameReadyMessage@@@8");
 // win1.41 009b2960 mac inlined MPFEStartGameReadyMessage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__25MPFEStartGameReadyMessage asm("??_R1A@?0A@A@MPFEStartGameReadyMessage@@8");
 // win1.41 009b2978 mac inlined MPFEStartGameReadyMessage::`RTTI Base Class Array'

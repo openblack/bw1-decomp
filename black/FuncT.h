@@ -22,7 +22,7 @@ static_assert(sizeof(struct FuncT) == 0x4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c025c8 mac inlined FuncT::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5FuncT asm("??_R0?AVFuncT@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5FuncT asm("??_R0?AVFuncT@@@8");
 // win1.41 009b3e90 mac inlined FuncT::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5FuncT asm("??_R1A@?0A@A@FuncT@@8");
 

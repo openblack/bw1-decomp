@@ -19,7 +19,7 @@ static_assert(sizeof(struct GToolTipsInfo) == 0x10, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00bf19d0 mac inlined GToolTipsInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13GToolTipsInfo asm("??_R0?AVGToolTipsInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13GToolTipsInfo asm("??_R0?AVGToolTipsInfo@@@8");
 // win1.41 009b13f0 mac inlined GToolTipsInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13GToolTipsInfo asm("??_R1A@?0A@A@GToolTipsInfo@@8");
 // win1.41 009b1408 mac inlined GToolTipsInfo::`RTTI Base Class Array'

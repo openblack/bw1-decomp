@@ -15,7 +15,7 @@ static_assert(sizeof(struct IPSpecialDialog) == 0x10, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00bf2a88 mac inlined IPSpecialDialog::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15IPSpecialDialog asm("??_R0?AVIPSpecialDialog@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15IPSpecialDialog asm("??_R0?AVIPSpecialDialog@@@8");
 // win1.41 009b1788 mac inlined IPSpecialDialog::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15IPSpecialDialog asm("??_R1A@?0A@A@IPSpecialDialog@@8");
 // win1.41 009b17a0 mac inlined IPSpecialDialog::`RTTI Base Class Array'

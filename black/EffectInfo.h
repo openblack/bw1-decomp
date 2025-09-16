@@ -28,7 +28,7 @@ static_assert(sizeof(struct GEffectInfo) == 0x34, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00be9638 mac inlined GEffectInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GEffectInfo asm("??_R0?AVGEffectInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11GEffectInfo asm("??_R0?AVGEffectInfo@@@8");
 // win1.41 009abec8 mac inlined GEffectInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GEffectInfo asm("??_R1A@?0A@A@GEffectInfo@@8");
 // win1.41 009abee0 mac inlined GEffectInfo::`RTTI Base Class Array'

@@ -15,7 +15,7 @@ static_assert(sizeof(struct StatsDatabase) == 0x10, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00bfddd8 mac inlined StatsDatabase::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13StatsDatabase asm("??_R0?AVStatsDatabase@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13StatsDatabase asm("??_R0?AVStatsDatabase@@@8");
 // win1.41 009b2db8 mac inlined StatsDatabase::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13StatsDatabase asm("??_R1A@?0A@A@StatsDatabase@@8");
 // win1.41 009b2dd0 mac inlined StatsDatabase::`RTTI Base Class Array'

@@ -23,7 +23,7 @@ static_assert(sizeof(struct GClimate) == 0x88, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bed368 mac inlined GClimate::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8GClimate asm("??_R0?AVGClimate@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8GClimate asm("??_R0?AVGClimate@@@8");
 // win1.41 009aeaf0 mac inlined GClimate::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8GClimate asm("??_R1A@?0A@A@GClimate@@8");
 // win1.41 009aeb08 mac inlined GClimate::`RTTI Base Class Array'

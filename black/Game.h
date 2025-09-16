@@ -185,7 +185,7 @@ static_assert(sizeof(struct GGame) == 0x250544, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bec358 mac inlined GGame::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5GGame asm("??_R0?AVGGame@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5GGame asm("??_R0?AVGGame@@@8");
 // win1.41 009ad010 mac inlined GGame::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5GGame asm("??_R1A@?0A@A@GGame@@8");
 // win1.41 009ad028 mac inlined GGame::`RTTI Base Class Array'

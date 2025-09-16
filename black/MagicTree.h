@@ -26,7 +26,7 @@ static_assert(sizeof(struct MagicTree) == 0x6c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf3f18 mac inlined MagicTree::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9MagicTree asm("??_R0?AVMagicTree@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9MagicTree asm("??_R0?AVMagicTree@@@8");
 // win1.41 009b1bf8 mac inlined MagicTree::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9MagicTree asm("??_R1A@?0A@A@MagicTree@@8");
 // win1.41 009b1c10 mac inlined MagicTree::`RTTI Base Class Array'

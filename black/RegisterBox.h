@@ -16,7 +16,7 @@ static_assert(sizeof(struct RegisterBox) == 0x28, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bea428 mac inlined RegisterBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11RegisterBox asm("??_R0?AVRegisterBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11RegisterBox asm("??_R0?AVRegisterBox@@@8");
 // win1.41 009acb50 mac inlined RegisterBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11RegisterBox asm("??_R1A@?0A@A@RegisterBox@@8");
 // win1.41 009acb68 mac inlined RegisterBox::`RTTI Base Class Array'

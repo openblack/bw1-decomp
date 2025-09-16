@@ -69,7 +69,7 @@ static_assert(sizeof(struct GInterfaceStatus) == 0x134, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00be0340 mac inlined GInterfaceStatus::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GInterfaceStatus asm("??_R0?AVGInterfaceStatus@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16GInterfaceStatus asm("??_R0?AVGInterfaceStatus@@@8");
 // win1.41 009b16e0 mac inlined GInterfaceStatus::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GInterfaceStatus asm("??_R1A@?0A@A@GInterfaceStatus@@8");
 // win1.41 009b16f8 mac inlined GInterfaceStatus::`RTTI Base Class Array'

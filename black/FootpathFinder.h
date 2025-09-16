@@ -34,7 +34,7 @@ static_assert(sizeof(struct GFootpathFinder) == 0x640c8, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 00bea200 mac inlined GFootpathFinder::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GFootpathFinder asm("??_R0?AVGFootpathFinder@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15GFootpathFinder asm("??_R0?AVGFootpathFinder@@@8");
 // win1.41 009ac6e0 mac inlined GFootpathFinder::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GFootpathFinder asm("??_R1A@?0A@A@GFootpathFinder@@8");
 // win1.41 009ac6f8 mac inlined GFootpathFinder::`RTTI Base Class Array'

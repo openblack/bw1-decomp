@@ -16,7 +16,7 @@ static_assert(sizeof(struct ChannelBox) == 0xad4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bea3c8 mac inlined ChannelBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10ChannelBox asm("??_R0?AVChannelBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10ChannelBox asm("??_R0?AVChannelBox@@@8");
 // win1.41 009aca60 mac inlined ChannelBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10ChannelBox asm("??_R1A@?0A@A@ChannelBox@@8");
 // win1.41 009aca78 mac inlined ChannelBox::`RTTI Base Class Array'

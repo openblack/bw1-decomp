@@ -34,7 +34,7 @@ static_assert(sizeof(struct TownSpellIcon) == 0x118, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00becec8 mac inlined TownSpellIcon::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13TownSpellIcon asm("??_R0?AVTownSpellIcon@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13TownSpellIcon asm("??_R0?AVTownSpellIcon@@@8");
 // win1.41 009ae810 mac inlined TownSpellIcon::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13TownSpellIcon asm("??_R1A@?0A@A@TownSpellIcon@@8");
 // win1.41 009ae518 mac inlined TownSpellIcon::`RTTI Base Class Array'
@@ -82,7 +82,7 @@ static_assert(sizeof(struct TownCentreSpellIcon) == 0x128, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00becee8 mac inlined TownCentreSpellIcon::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19TownCentreSpellIcon asm("??_R0?AVTownCentreSpellIcon@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19TownCentreSpellIcon asm("??_R0?AVTownCentreSpellIcon@@@8");
 // win1.41 009ae828 mac inlined TownCentreSpellIcon::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19TownCentreSpellIcon asm("??_R1A@?0A@A@TownCentreSpellIcon@@8");
 // win1.41 009ae840 mac inlined TownCentreSpellIcon::`RTTI Base Class Array'

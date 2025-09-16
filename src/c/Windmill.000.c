@@ -1,5 +1,17 @@
 #include "Windmill.h"
 
+__attribute__((aligned(8)))
+struct RTTITypeDescriptor __RTTITypeDescriptor__8Windmill = {
+    .pVFTable = &__vt__9type_info,
+    .spare = 0,
+    .name = ".?AVWindmill@@",
+};
+
+__attribute__((aligned(4)))
+char windmill_column[] asm("??_C@_09ABCDEFGH@Windmill?$AA@") = "Windmill:\0";
+__attribute__((aligned(4)))
+char windmill_underscore_join[] = "%s_%s\0";
+
 __attribute__((section(".rdata$r"), aligned(8)))
 const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Windmill = {
     .pTypeDescriptor = &__RTTITypeDescriptor__8Windmill,

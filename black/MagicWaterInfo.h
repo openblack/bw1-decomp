@@ -19,7 +19,7 @@ static_assert(sizeof(struct GMagicWaterInfo) == 0x58, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 009ccfc0 mac inlined GMagicWaterInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GMagicWaterInfo asm("??_R0?AVGMagicWaterInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15GMagicWaterInfo asm("??_R0?AVGMagicWaterInfo@@@8");
 // win1.41 009a80e8 mac inlined GMagicWaterInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GMagicWaterInfo asm("??_R1A@?0A@A@GMagicWaterInfo@@8");
 // win1.41 009a8100 mac inlined GMagicWaterInfo::`RTTI Base Class Array'

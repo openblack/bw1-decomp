@@ -60,7 +60,7 @@ static_assert(sizeof(struct SpellIcon) == 0x110, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00beceb0 mac inlined SpellIcon::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellIcon asm("??_R0?AVSpellIcon@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9SpellIcon asm("??_R0?AVSpellIcon@@@8");
 // win1.41 009ae7f8 mac inlined SpellIcon::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9SpellIcon asm("??_R1A@?0A@A@SpellIcon@@8");
 // win1.41 009ae9a8 mac inlined SpellIcon::`RTTI Base Class Array'

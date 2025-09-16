@@ -25,7 +25,7 @@ static_assert(sizeof(struct GContainerInfo) == 0x148, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 009ce7f0 mac inlined GContainerInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GContainerInfo asm("??_R0?AVGContainerInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14GContainerInfo asm("??_R0?AVGContainerInfo@@@8");
 // win1.41 009a8d50 mac inlined GContainerInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GContainerInfo asm("??_R1A@?0A@A@GContainerInfo@@8");
 // win1.41 009a91d8 mac inlined GContainerInfo::`RTTI Base Class Array'

@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEKickMessage) == 0x4, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00bf4928 mac inlined MPFEKickMessage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15MPFEKickMessage asm("??_R0?AVMPFEKickMessage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15MPFEKickMessage asm("??_R0?AVMPFEKickMessage@@@8");
 // win1.41 009b2368 mac inlined MPFEKickMessage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15MPFEKickMessage asm("??_R1A@?0A@A@MPFEKickMessage@@8");
 // win1.41 009b2380 mac inlined MPFEKickMessage::`RTTI Base Class Array'

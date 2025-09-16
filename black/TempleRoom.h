@@ -92,7 +92,7 @@ static_assert(sizeof(struct TempleRoom) == 0xec, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bec570 mac inlined TempleRoom::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10TempleRoom asm("??_R0?AVTempleRoom@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10TempleRoom asm("??_R0?AVTempleRoom@@@8");
 // win1.41 009ba578 mac inlined TempleRoom::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10TempleRoom asm("??_R1A@?0A@A@TempleRoom@@8");
 // win1.41 009babc4 mac inlined TempleRoom::`RTTI Base Class Array'

@@ -20,7 +20,7 @@ static_assert(sizeof(struct GMagicFireBallInfo) == 0x100, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 00c023c0 mac inlined GMagicFireBallInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18GMagicFireBallInfo asm("??_R0?AVGMagicFireBallInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18GMagicFireBallInfo asm("??_R0?AVGMagicFireBallInfo@@@8");
 // win1.41 009b3ac8 mac inlined GMagicFireBallInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18GMagicFireBallInfo asm("??_R1A@?0A@A@GMagicFireBallInfo@@8");
 // win1.41 009b3ae0 mac inlined GMagicFireBallInfo::`RTTI Base Class Array'

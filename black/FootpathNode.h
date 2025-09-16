@@ -26,7 +26,7 @@ static_assert(sizeof(struct GFootpathNode) == 0x30, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00bea140 mac inlined GFootpathNode::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13GFootpathNode asm("??_R0?AVGFootpathNode@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13GFootpathNode asm("??_R0?AVGFootpathNode@@@8");
 // win1.41 009ac5f0 mac inlined GFootpathNode::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13GFootpathNode asm("??_R1A@?0A@A@GFootpathNode@@8");
 // win1.41 009ac608 mac inlined GFootpathNode::`RTTI Base Class Array'

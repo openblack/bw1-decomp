@@ -28,7 +28,7 @@ static_assert(sizeof(struct SetupColourPicker) == 0x258, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 009c82b8 mac inlined SetupColourPicker::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17SetupColourPicker asm("??_R0?AUSetupColourPicker@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17SetupColourPicker asm("??_R0?AUSetupColourPicker@@@8");
 // win1.41 009a68d8 mac inlined SetupColourPicker::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17SetupColourPicker asm("??_R1A@?0A@A@SetupColourPicker@@8");
 // win1.41 009a68f0 mac inlined SetupColourPicker::`RTTI Base Class Array'

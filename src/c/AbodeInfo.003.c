@@ -1,5 +1,12 @@
 #include "AbodeInfo.h"
 
+__attribute__((aligned(8)))
+struct RTTITypeDescriptor __RTTITypeDescriptor__10GAbodeInfo = {
+    .pVFTable = &__vt__9type_info,
+    .spare = 0,
+    .name = ".?AVGAbodeInfo@@",
+};
+
 __attribute__((section(".rdata$r"), aligned(8)))
 const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GAbodeInfo = {
     .pTypeDescriptor = &__RTTITypeDescriptor__10GAbodeInfo,

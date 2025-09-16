@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEChangedMapMessage) == 0x4, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00bfdb58 mac inlined MPFEChangedMapMessage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21MPFEChangedMapMessage asm("??_R0?AVMPFEChangedMapMessage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__21MPFEChangedMapMessage asm("??_R0?AVMPFEChangedMapMessage@@@8");
 // win1.41 009b2b90 mac inlined MPFEChangedMapMessage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21MPFEChangedMapMessage asm("??_R1A@?0A@A@MPFEChangedMapMessage@@8");
 // win1.41 009b2ba8 mac inlined MPFEChangedMapMessage::`RTTI Base Class Array'

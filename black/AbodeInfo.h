@@ -63,7 +63,7 @@ static_assert(sizeof(struct GAbodeInfo) == 0x1c8, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c7ef8 mac inlined GAbodeInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GAbodeInfo asm("??_R0?AVGAbodeInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10GAbodeInfo asm("??_R0?AVGAbodeInfo@@@8");
 // win1.41 009a6368 mac inlined GAbodeInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GAbodeInfo asm("??_R1A@?0A@A@GAbodeInfo@@8");
 // win1.41 009a6380 mac inlined GAbodeInfo::`RTTI Base Class Array'

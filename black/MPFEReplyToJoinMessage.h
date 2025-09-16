@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEReplyToJoinMessage) == 0x4, "Data type is of wro
 // Object Oriented datastructures
 
 // win1.41 00bf4828 mac inlined MPFEReplyToJoinMessage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__22MPFEReplyToJoinMessage asm("??_R0?AVMPFEReplyToJoinMessage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__22MPFEReplyToJoinMessage asm("??_R0?AVMPFEReplyToJoinMessage@@@8");
 // win1.41 009b21d8 mac inlined MPFEReplyToJoinMessage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__22MPFEReplyToJoinMessage asm("??_R1A@?0A@A@MPFEReplyToJoinMessage@@8");
 // win1.41 009b21f0 mac inlined MPFEReplyToJoinMessage::`RTTI Base Class Array'

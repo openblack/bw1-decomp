@@ -19,7 +19,7 @@ static_assert(sizeof(struct GKeyBuffer) == 0x10, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bec3b0 mac inlined GKeyBuffer::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GKeyBuffer asm("??_R0?AVGKeyBuffer@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10GKeyBuffer asm("??_R0?AVGKeyBuffer@@@8");
 // win1.41 009ad100 mac inlined GKeyBuffer::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GKeyBuffer asm("??_R1A@?0A@A@GKeyBuffer@@8");
 // win1.41 009ad118 mac inlined GKeyBuffer::`RTTI Base Class Array'
@@ -50,7 +50,7 @@ static_assert(sizeof(struct GKeyInput) == 0x8, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf3340 mac inlined GKeyInput::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GKeyInput asm("??_R0?AVGKeyInput@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9GKeyInput asm("??_R0?AVGKeyInput@@@8");
 // win1.41 009b1828 mac inlined GKeyInput::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GKeyInput asm("??_R1A@?0A@A@GKeyInput@@8");
 // win1.41 009b1840 mac inlined GKeyInput::`RTTI Base Class Array'

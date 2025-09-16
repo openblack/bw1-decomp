@@ -24,7 +24,7 @@ static_assert(sizeof(struct Windmill) == 0xc4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c8030 mac inlined Windmill::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Windmill asm("??_R0?AVWindmill@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8Windmill asm("??_R0?AVWindmill@@@8");
 // win1.41 009a6508 mac inlined Windmill::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Windmill asm("??_R1A@?0A@A@Windmill@@8");
 // win1.41 009a6520 mac inlined Windmill::`RTTI Base Class Array'

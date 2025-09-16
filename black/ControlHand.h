@@ -225,7 +225,7 @@ static_assert(sizeof(struct CHand) == 0x49c4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009cecc8 mac inlined CHand::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5CHand asm("??_R0?AVCHand@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5CHand asm("??_R0?AVCHand@@@8");
 // win1.41 009a92a0 mac inlined CHand::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5CHand asm("??_R1A@?0A@A@CHand@@8");
 // win1.41 009a92b8 mac inlined CHand::`RTTI Base Class Array'

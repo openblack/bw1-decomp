@@ -19,7 +19,7 @@ static_assert(sizeof(struct Particle3DAnimWithCamera) == 0x18, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 00c09558 mac inlined Particle3DAnimWithCamera::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__24Particle3DAnimWithCamera asm("??_R0?AVParticle3DAnimWithCamera@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__24Particle3DAnimWithCamera asm("??_R0?AVParticle3DAnimWithCamera@@@8");
 // win1.41 009b8000 mac inlined Particle3DAnimWithCamera::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__24Particle3DAnimWithCamera asm("??_R1A@?0A@A@Particle3DAnimWithCamera@@8");
 // win1.41 009b8018 mac inlined Particle3DAnimWithCamera::`RTTI Base Class Array'

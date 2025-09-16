@@ -16,7 +16,7 @@ static_assert(sizeof(struct LoginBox) == 0x89c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bea588 mac inlined LoginBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8LoginBox asm("??_R0?AVLoginBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8LoginBox asm("??_R0?AVLoginBox@@@8");
 // win1.41 009ace70 mac inlined LoginBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8LoginBox asm("??_R1A@?0A@A@LoginBox@@8");
 // win1.41 009ace88 mac inlined LoginBox::`RTTI Base Class Array'

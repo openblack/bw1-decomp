@@ -20,7 +20,7 @@ static_assert(sizeof(struct ThingMusicInfo) == 0x14, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 009cb3a0 mac inlined ThingMusicInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14ThingMusicInfo asm("??_R0?AVThingMusicInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14ThingMusicInfo asm("??_R0?AVThingMusicInfo@@@8");
 // win1.41 009a7c78 mac inlined ThingMusicInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14ThingMusicInfo asm("??_R1A@?0A@A@ThingMusicInfo@@8");
 // win1.41 009a7c90 mac inlined ThingMusicInfo::`RTTI Base Class Array'

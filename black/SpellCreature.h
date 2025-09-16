@@ -24,7 +24,7 @@ static_assert(sizeof(struct SpellCreature) == 0xec, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00c22590 mac inlined SpellCreature::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13SpellCreature asm("??_R0?AVSpellCreature@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13SpellCreature asm("??_R0?AVSpellCreature@@@8");
 // win1.41 009b92d8 mac inlined SpellCreature::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13SpellCreature asm("??_R1A@?0A@A@SpellCreature@@8");
 // win1.41 009b92f0 mac inlined SpellCreature::`RTTI Base Class Array'

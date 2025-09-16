@@ -26,7 +26,7 @@ static_assert(sizeof(struct ShowNeeds) == 0x24, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009dd580 mac inlined ShowNeeds::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9ShowNeeds asm("??_R0?AVShowNeeds@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9ShowNeeds asm("??_R0?AVShowNeeds@@@8");
 // win1.41 009ae478 mac inlined ShowNeeds::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9ShowNeeds asm("??_R1A@?0A@A@ShowNeeds@@8");
 // win1.41 009ae490 mac inlined ShowNeeds::`RTTI Base Class Array'

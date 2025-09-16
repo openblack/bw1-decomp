@@ -24,7 +24,7 @@ static_assert(sizeof(struct GFootpathLinkSave) == 0x24, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00bea1c0 mac inlined GFootpathLinkSave::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17GFootpathLinkSave asm("??_R0?AVGFootpathLinkSave@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17GFootpathLinkSave asm("??_R0?AVGFootpathLinkSave@@@8");
 // win1.41 009ac690 mac inlined GFootpathLinkSave::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17GFootpathLinkSave asm("??_R1A@?0A@A@GFootpathLinkSave@@8");
 // win1.41 009ac6a8 mac inlined GFootpathLinkSave::`RTTI Base Class Array'

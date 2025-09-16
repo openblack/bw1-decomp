@@ -19,7 +19,7 @@ static_assert(sizeof(struct GVortexInfo) == 0x10, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf4020 mac inlined GVortexInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11GVortexInfo asm("??_R0?AVGVortexInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11GVortexInfo asm("??_R0?AVGVortexInfo@@@8");
 // win1.41 009b1c60 mac inlined GVortexInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GVortexInfo asm("??_R1A@?0A@A@GVortexInfo@@8");
 // win1.41 009b1c78 mac inlined GVortexInfo::`RTTI Base Class Array'

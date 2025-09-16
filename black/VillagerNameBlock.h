@@ -46,7 +46,7 @@ static_assert(sizeof(struct VillagerName) == 0x464, "Data type is of wrong size"
 // Object Oriented datastructures
 
 // win1.41 00c24558 mac inlined VillagerName::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12VillagerName asm("??_R0?AUVillagerName@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12VillagerName asm("??_R0?AUVillagerName@@@8");
 // win1.41 009b9dd8 mac inlined VillagerName::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12VillagerName asm("??_R1A@?0A@A@VillagerName@@8");
 // win1.41 009b9df0 mac inlined VillagerName::`RTTI Base Class Array'

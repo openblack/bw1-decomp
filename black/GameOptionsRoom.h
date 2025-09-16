@@ -24,7 +24,7 @@ static_assert(sizeof(struct GameOptionsRoom) == 0x160, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00c282c0 mac inlined GameOptionsRoom::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GameOptionsRoom asm("??_R0?AVGameOptionsRoom@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15GameOptionsRoom asm("??_R0?AVGameOptionsRoom@@@8");
 // win1.41 009ba758 mac inlined GameOptionsRoom::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GameOptionsRoom asm("??_R1A@?0A@A@GameOptionsRoom@@8");
 // win1.41 009ba770 mac inlined GameOptionsRoom::`RTTI Base Class Array'

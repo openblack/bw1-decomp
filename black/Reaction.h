@@ -38,7 +38,7 @@ static_assert(sizeof(struct Reaction) == 0x44, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00beca78 mac inlined Reaction::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Reaction asm("??_R0?AVReaction@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8Reaction asm("??_R0?AVReaction@@@8");
 // win1.41 009ad6c0 mac inlined Reaction::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Reaction asm("??_R1A@?0A@A@Reaction@@8");
 // win1.41 009ad6d8 mac inlined Reaction::`RTTI Base Class Array'

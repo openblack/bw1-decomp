@@ -40,7 +40,7 @@ static_assert(sizeof(struct SoundTag) == 0x54, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c224f0 mac inlined SoundTag::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8SoundTag asm("??_R0?AVSoundTag@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8SoundTag asm("??_R0?AVSoundTag@@@8");
 // win1.41 009b91f8 mac inlined SoundTag::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8SoundTag asm("??_R1A@?0A@A@SoundTag@@8");
 // win1.41 009b9210 mac inlined SoundTag::`RTTI Base Class Array'

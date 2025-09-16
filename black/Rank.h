@@ -15,7 +15,7 @@ static_assert(sizeof(struct Rank) == 0x8, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c09c68 mac inlined Rank::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Rank asm("??_R0?AVRank@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__4Rank asm("??_R0?AVRank@@@8");
 // win1.41 009b8bf8 mac inlined Rank::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Rank asm("??_R1A@?0A@A@Rank@@8");
 // win1.41 009b8c10 mac inlined Rank::`RTTI Base Class Array'

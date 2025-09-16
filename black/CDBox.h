@@ -16,7 +16,7 @@ static_assert(sizeof(struct CDBox) == 0x34, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bea2f8 mac inlined CDBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5CDBox asm("??_R0?AVCDBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5CDBox asm("??_R0?AVCDBox@@@8");
 // win1.41 009ac830 mac inlined CDBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5CDBox asm("??_R1A@?0A@A@CDBox@@8");
 // win1.41 009ac848 mac inlined CDBox::`RTTI Base Class Array'

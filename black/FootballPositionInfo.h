@@ -19,7 +19,7 @@ static_assert(sizeof(struct GFootballPositionInfo) == 0x10, "Data type is of wro
 // Object Oriented datastructures
 
 // win1.41 00be9f48 mac inlined GFootballPositionInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__21GFootballPositionInfo asm("??_R0?AVGFootballPositionInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__21GFootballPositionInfo asm("??_R0?AVGFootballPositionInfo@@@8");
 // win1.41 009ac538 mac inlined GFootballPositionInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__21GFootballPositionInfo asm("??_R1A@?0A@A@GFootballPositionInfo@@8");
 // win1.41 009ac550 mac inlined GFootballPositionInfo::`RTTI Base Class Array'
@@ -43,7 +43,7 @@ static_assert(sizeof(struct GPFootballPositionInfo) == 0x10, "Data type is of wr
 // Object Oriented datastructures
 
 // win1.41 00bfed30 mac inlined GPFootballPositionInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__22GPFootballPositionInfo asm("??_R0?AVGPFootballPositionInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__22GPFootballPositionInfo asm("??_R0?AVGPFootballPositionInfo@@@8");
 // win1.41 009b30b8 mac inlined GPFootballPositionInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__22GPFootballPositionInfo asm("??_R1A@?0A@A@GPFootballPositionInfo@@8");
 // win1.41 009b30d0 mac inlined GPFootballPositionInfo::`RTTI Base Class Array'

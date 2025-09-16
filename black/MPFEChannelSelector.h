@@ -42,7 +42,7 @@ static_assert(sizeof(struct MPFEChannelSelector) == 0x58, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 00bf4a40 mac inlined MPFEChannelSelector::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19MPFEChannelSelector asm("??_R0?AVMPFEChannelSelector@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19MPFEChannelSelector asm("??_R0?AVMPFEChannelSelector@@@8");
 // win1.41 009b24f8 mac inlined MPFEChannelSelector::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19MPFEChannelSelector asm("??_R1A@?0A@A@MPFEChannelSelector@@8");
 // win1.41 009b2510 mac inlined MPFEChannelSelector::`RTTI Base Class Array'

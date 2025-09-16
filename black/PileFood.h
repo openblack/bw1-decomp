@@ -36,7 +36,7 @@ static_assert(sizeof(struct PileFood) == 0xbc, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00beca40 mac inlined PileFood::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8PileFood asm("??_R0?AVPileFood@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8PileFood asm("??_R0?AVPileFood@@@8");
 // win1.41 009ad5e0 mac inlined PileFood::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8PileFood asm("??_R1A@?0A@A@PileFood@@8");
 // win1.41 009b3448 mac inlined PileFood::`RTTI Base Class Array'

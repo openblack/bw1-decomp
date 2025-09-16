@@ -19,7 +19,7 @@ static_assert(sizeof(struct MPFEChooseConnection) == 0x10, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00bf4b00 mac inlined MPFEChooseConnection::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20MPFEChooseConnection asm("??_R0?AVMPFEChooseConnection@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20MPFEChooseConnection asm("??_R0?AVMPFEChooseConnection@@@8");
 // win1.41 009b2598 mac inlined MPFEChooseConnection::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20MPFEChooseConnection asm("??_R1A@?0A@A@MPFEChooseConnection@@8");
 // win1.41 009b25b0 mac inlined MPFEChooseConnection::`RTTI Base Class Array'

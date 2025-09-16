@@ -72,7 +72,7 @@ static_assert(sizeof(struct LandscapeVortex) == 0xec, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00bf0200 mac inlined LandscapeVortex::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15LandscapeVortex asm("??_R0?AVLandscapeVortex@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15LandscapeVortex asm("??_R0?AVLandscapeVortex@@@8");
 // win1.41 009b1cc8 mac inlined LandscapeVortex::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15LandscapeVortex asm("??_R1A@?0A@A@LandscapeVortex@@8");
 // win1.41 009b1e30 mac inlined LandscapeVortex::`RTTI Base Class Array'
@@ -156,7 +156,7 @@ static_assert(sizeof(struct LandscapeVortexIn) == 0xec, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00bf4098 mac inlined LandscapeVortexIn::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17LandscapeVortexIn asm("??_R0?AVLandscapeVortexIn@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17LandscapeVortexIn asm("??_R0?AVLandscapeVortexIn@@@8");
 // win1.41 009b1d50 mac inlined LandscapeVortexIn::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17LandscapeVortexIn asm("??_R1A@?0A@A@LandscapeVortexIn@@8");
 // win1.41 009b1d68 mac inlined LandscapeVortexIn::`RTTI Base Class Array'
@@ -198,7 +198,7 @@ static_assert(sizeof(struct LandscapeVortexOut) == 0xec, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 00bf40d8 mac inlined LandscapeVortexOut::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18LandscapeVortexOut asm("??_R0?AVLandscapeVortexOut@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18LandscapeVortexOut asm("??_R0?AVLandscapeVortexOut@@@8");
 // win1.41 009b1dc0 mac inlined LandscapeVortexOut::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18LandscapeVortexOut asm("??_R1A@?0A@A@LandscapeVortexOut@@8");
 // win1.41 009b1dd8 mac inlined LandscapeVortexOut::`RTTI Base Class Array'
@@ -232,7 +232,7 @@ static_assert(sizeof(struct LandscapeVortexVolc) == 0xec, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 00bf4060 mac inlined LandscapeVortexVolc::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19LandscapeVortexVolc asm("??_R0?AVLandscapeVortexVolc@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19LandscapeVortexVolc asm("??_R0?AVLandscapeVortexVolc@@@8");
 // win1.41 009b1ce0 mac inlined LandscapeVortexVolc::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19LandscapeVortexVolc asm("??_R1A@?0A@A@LandscapeVortexVolc@@8");
 // win1.41 009b1cf8 mac inlined LandscapeVortexVolc::`RTTI Base Class Array'

@@ -28,7 +28,7 @@ static_assert(sizeof(struct Whale) == 0x74, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bee188 mac inlined Whale::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Whale asm("??_R0?AVWhale@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5Whale asm("??_R0?AVWhale@@@8");
 // win1.41 009b0358 mac inlined Whale::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Whale asm("??_R1A@?0A@A@Whale@@8");
 // win1.41 009b0370 mac inlined Whale::`RTTI Base Class Array'

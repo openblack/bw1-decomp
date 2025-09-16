@@ -19,7 +19,7 @@ static_assert(sizeof(struct HandStateInvisible) == 0x8, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 009cecf8 mac inlined HandStateInvisible::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18HandStateInvisible asm("??_R0?AVHandStateInvisible@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18HandStateInvisible asm("??_R0?AVHandStateInvisible@@@8");
 // win1.41 009a9308 mac inlined HandStateInvisible::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18HandStateInvisible asm("??_R1A@?0A@A@HandStateInvisible@@8");
 // win1.41 009a9320 mac inlined HandStateInvisible::`RTTI Base Class Array'

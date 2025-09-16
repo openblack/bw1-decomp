@@ -16,7 +16,7 @@ static_assert(sizeof(struct GLanguage) == 0xc, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf3600 mac inlined GLanguage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GLanguage asm("??_R0?AVGLanguage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9GLanguage asm("??_R0?AVGLanguage@@@8");
 // win1.41 009b1878 mac inlined GLanguage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GLanguage asm("??_R1A@?0A@A@GLanguage@@8");
 // win1.41 009b1890 mac inlined GLanguage::`RTTI Base Class Array'

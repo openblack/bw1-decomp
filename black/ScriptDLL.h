@@ -65,7 +65,7 @@ static_assert(sizeof(struct ScriptDLL) == 0xdc, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c0d120 mac inlined ScriptDLL::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9ScriptDLL asm("??_R0?AVScriptDLL@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9ScriptDLL asm("??_R0?AVScriptDLL@@@8");
 // win1.41 009b8ec0 mac inlined ScriptDLL::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9ScriptDLL asm("??_R1A@?0A@A@ScriptDLL@@8");
 // win1.41 009b8ed8 mac inlined ScriptDLL::`RTTI Base Class Array'

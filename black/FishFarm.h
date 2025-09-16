@@ -46,7 +46,7 @@ static_assert(sizeof(struct FishFarm) == 0x98, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009d97c8 mac inlined FishFarm::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8FishFarm asm("??_R0?AVFishFarm@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8FishFarm asm("??_R0?AVFishFarm@@@8");
 // win1.41 009ac340 mac inlined FishFarm::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8FishFarm asm("??_R1A@?0A@A@FishFarm@@8");
 // win1.41 009ac358 mac inlined FishFarm::`RTTI Base Class Array'

@@ -29,7 +29,7 @@ static_assert(sizeof(struct PhysicsObject) == 0x1dc, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00bfeec0 mac inlined PhysicsObject::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13PhysicsObject asm("??_R0?AVPhysicsObject@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13PhysicsObject asm("??_R0?AVPhysicsObject@@@8");
 // win1.41 009b31c0 mac inlined PhysicsObject::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13PhysicsObject asm("??_R1A@?0A@A@PhysicsObject@@8");
 // win1.41 009b31d8 mac inlined PhysicsObject::`RTTI Base Class Array'

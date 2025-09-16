@@ -20,7 +20,7 @@ static_assert(sizeof(struct VortexSave) == 0x14, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c246a8 mac inlined VortexSave::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10VortexSave asm("??_R0?AVVortexSave@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10VortexSave asm("??_R0?AVVortexSave@@@8");
 // win1.41 009b9f30 mac inlined VortexSave::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10VortexSave asm("??_R1A@?0A@A@VortexSave@@8");
 // win1.41 009b9f48 mac inlined VortexSave::`RTTI Base Class Array'

@@ -17,7 +17,7 @@ static_assert(sizeof(struct SkipBox) == 0x24, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bea538 mac inlined SkipBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7SkipBox asm("??_R0?AVSkipBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__7SkipBox asm("??_R0?AVSkipBox@@@8");
 // win1.41 009acdd0 mac inlined SkipBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7SkipBox asm("??_R1A@?0A@A@SkipBox@@8");
 // win1.41 009acde8 mac inlined SkipBox::`RTTI Base Class Array'

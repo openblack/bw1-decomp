@@ -22,7 +22,7 @@ static_assert(sizeof(struct SetupMultiList) == 0x2bc, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 009c81b0 mac inlined SetupMultiList::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14SetupMultiList asm("??_R0?AUSetupMultiList@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14SetupMultiList asm("??_R0?AUSetupMultiList@@@8");
 // win1.41 009a66a8 mac inlined SetupMultiList::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14SetupMultiList asm("??_R1A@?0A@A@SetupMultiList@@8");
 // win1.41 009a66c0 mac inlined SetupMultiList::`RTTI Base Class Array'

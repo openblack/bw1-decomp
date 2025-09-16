@@ -17,7 +17,7 @@ static_assert(sizeof(struct LHReleasedOSFile) == 0x8, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 009cba70 mac inlined LHReleasedOSFile::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16LHReleasedOSFile asm("??_R0?AVLHReleasedOSFile@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16LHReleasedOSFile asm("??_R0?AVLHReleasedOSFile@@@8");
 // win1.41 009a7f50 mac inlined LHReleasedOSFile::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16LHReleasedOSFile asm("??_R1A@?0A@A@LHReleasedOSFile@@8");
 // win1.41 009a7f68 mac inlined LHReleasedOSFile::`RTTI Base Class Array'

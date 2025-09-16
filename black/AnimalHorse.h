@@ -21,7 +21,7 @@ static_assert(sizeof(struct Horse) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c9030 mac inlined Horse::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Horse asm("??_R0?AVHorse@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5Horse asm("??_R0?AVHorse@@@8");
 // win1.41 009a6eb8 mac inlined Horse::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Horse asm("??_R1A@?0A@A@Horse@@8");
 // win1.41 009a6ed0 mac inlined Horse::`RTTI Base Class Array'

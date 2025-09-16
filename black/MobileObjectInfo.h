@@ -22,7 +22,7 @@ static_assert(sizeof(struct GMobileObjectInfo) == 0x114, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 009c9658 mac inlined GMobileObjectInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17GMobileObjectInfo asm("??_R0?AVGMobileObjectInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17GMobileObjectInfo asm("??_R0?AVGMobileObjectInfo@@@8");
 // win1.41 009a7ae8 mac inlined GMobileObjectInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17GMobileObjectInfo asm("??_R1A@?0A@A@GMobileObjectInfo@@8");
 // win1.41 009b1fe8 mac inlined GMobileObjectInfo::`RTTI Base Class Array'

@@ -49,7 +49,7 @@ static_assert(sizeof(struct FireFly) == 0xc4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00be9dc0 mac inlined FireFly::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7FireFly asm("??_R0?AVFireFly@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__7FireFly asm("??_R0?AVFireFly@@@8");
 // win1.41 009ac290 mac inlined FireFly::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7FireFly asm("??_R1A@?0A@A@FireFly@@8");
 // win1.41 009ac2a8 mac inlined FireFly::`RTTI Base Class Array'

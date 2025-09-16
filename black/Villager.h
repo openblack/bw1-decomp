@@ -108,7 +108,7 @@ static_assert(sizeof(struct Villager) == 0x130, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009cafc8 mac inlined Villager::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Villager asm("??_R0?AVVillager@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8Villager asm("??_R0?AVVillager@@@8");
 // win1.41 009ad8b8 mac inlined Villager::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Villager asm("??_R1A@?0A@A@Villager@@8");
 // win1.41 009ad530 mac inlined Villager::`RTTI Base Class Array'
@@ -678,7 +678,7 @@ static_assert(sizeof(struct MissionaryControl) == 0x28, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00c23698 mac inlined MissionaryControl::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__17MissionaryControl asm("??_R0?AVMissionaryControl@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__17MissionaryControl asm("??_R0?AVMissionaryControl@@@8");
 // win1.41 009b9d80 mac inlined MissionaryControl::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17MissionaryControl asm("??_R1A@?0A@A@MissionaryControl@@8");
 // win1.41 009b9d98 mac inlined MissionaryControl::`RTTI Base Class Array'

@@ -27,7 +27,7 @@ static_assert(sizeof(struct Creche) == 0xc4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00be67f8 mac inlined Creche::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__6Creche asm("??_R0?AVCreche@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__6Creche asm("??_R0?AVCreche@@@8");
 // win1.41 009ab480 mac inlined Creche::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Creche asm("??_R1A@?0A@A@Creche@@8");
 // win1.41 009ab498 mac inlined Creche::`RTTI Base Class Array'

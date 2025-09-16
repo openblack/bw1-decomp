@@ -16,7 +16,7 @@ static_assert(sizeof(struct GatheringBox) == 0xf0, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00bea470 mac inlined GatheringBox::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12GatheringBox asm("??_R0?AVGatheringBox@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12GatheringBox asm("??_R0?AVGatheringBox@@@8");
 // win1.41 009acbf0 mac inlined GatheringBox::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12GatheringBox asm("??_R1A@?0A@A@GatheringBox@@8");
 // win1.41 009acc08 mac inlined GatheringBox::`RTTI Base Class Array'

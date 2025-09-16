@@ -35,7 +35,7 @@ static_assert(sizeof(struct Prss) == 0x10, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009cdc28 mac inlined Prss::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Prss asm("??_R0?AVPrss@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__4Prss asm("??_R0?AVPrss@@@8");
 // win1.41 009a8840 mac inlined Prss::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Prss asm("??_R1A@?0A@A@Prss@@8");
 // win1.41 009abb34 mac inlined Prss::`RTTI Base Class Array'

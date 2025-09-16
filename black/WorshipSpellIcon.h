@@ -49,7 +49,7 @@ static_assert(sizeof(struct WorshipSpellIcon) == 0x140, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00bf4178 mac inlined WorshipSpellIcon::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16WorshipSpellIcon asm("??_R0?AVWorshipSpellIcon@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16WorshipSpellIcon asm("??_R0?AVWorshipSpellIcon@@@8");
 // win1.41 009ba4a8 mac inlined WorshipSpellIcon::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16WorshipSpellIcon asm("??_R1A@?0A@A@WorshipSpellIcon@@8");
 // win1.41 009ba4c0 mac inlined WorshipSpellIcon::`RTTI Base Class Array'
@@ -122,7 +122,7 @@ static_assert(sizeof(struct PrayerIcon) == 0x5c, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c02120 mac inlined PrayerIcon::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10PrayerIcon asm("??_R0?AVPrayerIcon@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10PrayerIcon asm("??_R0?AVPrayerIcon@@@8");
 // win1.41 009b3668 mac inlined PrayerIcon::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10PrayerIcon asm("??_R1A@?0A@A@PrayerIcon@@8");
 // win1.41 009b3680 mac inlined PrayerIcon::`RTTI Base Class Array'

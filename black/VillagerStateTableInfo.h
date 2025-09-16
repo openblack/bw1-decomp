@@ -55,7 +55,7 @@ static_assert(sizeof(struct GVillagerStateTableInfo) == 0x114, "Data type is of 
 // Object Oriented datastructures
 
 // win1.41 00c24608 mac inlined GVillagerStateTableInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23GVillagerStateTableInfo asm("??_R0?AVGVillagerStateTableInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23GVillagerStateTableInfo asm("??_R0?AVGVillagerStateTableInfo@@@8");
 // win1.41 009b9e28 mac inlined GVillagerStateTableInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23GVillagerStateTableInfo asm("??_R1A@?0A@A@GVillagerStateTableInfo@@8");
 // win1.41 009b9e40 mac inlined GVillagerStateTableInfo::`RTTI Base Class Array'

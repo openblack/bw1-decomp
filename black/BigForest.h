@@ -37,7 +37,7 @@ static_assert(sizeof(struct BigForest) == 0x88, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009cd2c0 mac inlined BigForest::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9BigForest asm("??_R0?AVBigForest@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9BigForest asm("??_R0?AVBigForest@@@8");
 // win1.41 009a8498 mac inlined BigForest::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9BigForest asm("??_R1A@?0A@A@BigForest@@8");
 // win1.41 009a84b0 mac inlined BigForest::`RTTI Base Class Array'

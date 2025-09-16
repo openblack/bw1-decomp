@@ -24,7 +24,7 @@ static_assert(sizeof(struct Heap) == 0x4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bfec28 mac inlined Heap::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Heap asm("??_R0?AVHeap@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__4Heap asm("??_R0?AVHeap@@@8");
 // win1.41 009b3018 mac inlined Heap::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Heap asm("??_R1A@?0A@A@Heap@@8");
 // win1.41 009b3030 mac inlined Heap::`RTTI Base Class Array'
@@ -57,7 +57,7 @@ static_assert(sizeof(struct HeapWithPools) == 0x4, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00bfebd0 mac inlined HeapWithPools::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13HeapWithPools asm("??_R0?AVHeapWithPools@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13HeapWithPools asm("??_R0?AVHeapWithPools@@@8");
 // win1.41 009b2f90 mac inlined HeapWithPools::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13HeapWithPools asm("??_R1A@?0A@A@HeapWithPools@@8");
 
@@ -75,7 +75,7 @@ static_assert(sizeof(struct UniqueKeyHeap) == 0x4, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00bfebf0 mac inlined UniqueKeyHeap::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__13UniqueKeyHeap asm("??_R0?AVUniqueKeyHeap@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__13UniqueKeyHeap asm("??_R0?AVUniqueKeyHeap@@@8");
 // win1.41 009b2fa8 mac inlined UniqueKeyHeap::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13UniqueKeyHeap asm("??_R1A@?0A@A@UniqueKeyHeap@@8");
 
@@ -93,7 +93,7 @@ static_assert(sizeof(struct HeapStore) == 0x4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bfec10 mac inlined HeapStore::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9HeapStore asm("??_R0?AVHeapStore@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9HeapStore asm("??_R0?AVHeapStore@@@8");
 // win1.41 009b2fc0 mac inlined HeapStore::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9HeapStore asm("??_R1A@?0A@A@HeapStore@@8");
 // win1.41 009b2fd8 mac inlined HeapStore::`RTTI Base Class Array'

@@ -39,7 +39,7 @@ static_assert(sizeof(struct Fragment) == 0xa8, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009d10d8 mac inlined Fragment::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Fragment asm("??_R0?AVFragment@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8Fragment asm("??_R0?AVFragment@@@8");
 // win1.41 009b9ec8 mac inlined Fragment::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Fragment asm("??_R1A@?0A@A@Fragment@@8");
 // win1.41 009b9ee0 mac inlined Fragment::`RTTI Base Class Array'

@@ -22,7 +22,7 @@ static_assert(sizeof(struct GTotemStatueInfo) == 0x124, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00c22b48 mac inlined GTotemStatueInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16GTotemStatueInfo asm("??_R0?AVGTotemStatueInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16GTotemStatueInfo asm("??_R0?AVGTotemStatueInfo@@@8");
 // win1.41 009b9990 mac inlined GTotemStatueInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16GTotemStatueInfo asm("??_R1A@?0A@A@GTotemStatueInfo@@8");
 // win1.41 009b99a8 mac inlined GTotemStatueInfo::`RTTI Base Class Array'

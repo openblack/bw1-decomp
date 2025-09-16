@@ -14,7 +14,7 @@ static_assert(sizeof(struct CameraModeFollowHeading) == 0x8, "Data type is of wr
 // Object Oriented datastructures
 
 // win1.41 009ce1d8 mac inlined CameraModeFollowHeading::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__23CameraModeFollowHeading asm("??_R0?AVCameraModeFollowHeading@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__23CameraModeFollowHeading asm("??_R0?AVCameraModeFollowHeading@@@8");
 // win1.41 009a8a80 mac inlined CameraModeFollowHeading::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23CameraModeFollowHeading asm("??_R1A@?0A@A@CameraModeFollowHeading@@8");
 // win1.41 009a8a98 mac inlined CameraModeFollowHeading::`RTTI Base Class Array'

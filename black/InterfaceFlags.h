@@ -18,7 +18,7 @@ static_assert(sizeof(struct GInterfaceFlags) == 0x14, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00bf1b20 mac inlined GInterfaceFlags::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GInterfaceFlags asm("??_R0?AVGInterfaceFlags@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15GInterfaceFlags asm("??_R0?AVGInterfaceFlags@@@8");
 // win1.41 009b1538 mac inlined GInterfaceFlags::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GInterfaceFlags asm("??_R1A@?0A@A@GInterfaceFlags@@8");
 // win1.41 009b1550 mac inlined GInterfaceFlags::`RTTI Base Class Array'

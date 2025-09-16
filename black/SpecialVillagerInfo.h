@@ -28,7 +28,7 @@ static_assert(sizeof(struct GSpecialVillagerInfo) == 0x60, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 00c22528 mac inlined GSpecialVillagerInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20GSpecialVillagerInfo asm("??_R0?AVGSpecialVillagerInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20GSpecialVillagerInfo asm("??_R0?AVGSpecialVillagerInfo@@@8");
 // win1.41 009b9248 mac inlined GSpecialVillagerInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20GSpecialVillagerInfo asm("??_R1A@?0A@A@GSpecialVillagerInfo@@8");
 // win1.41 009b9260 mac inlined GSpecialVillagerInfo::`RTTI Base Class Array'

@@ -46,7 +46,7 @@ static_assert(sizeof(struct MapShield) == 0x68, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c227e8 mac inlined MapShield::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9MapShield asm("??_R0?AVMapShield@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9MapShield asm("??_R0?AVMapShield@@@8");
 // win1.41 009b9600 mac inlined MapShield::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9MapShield asm("??_R1A@?0A@A@MapShield@@8");
 // win1.41 009b9618 mac inlined MapShield::`RTTI Base Class Array'

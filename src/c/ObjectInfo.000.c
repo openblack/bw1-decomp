@@ -2,6 +2,13 @@
 
 #include "Object.h"
 
+__attribute__((aligned(8)))
+struct RTTITypeDescriptor __RTTITypeDescriptor__11GObjectInfo = {
+    .pVFTable = &__vt__9type_info,
+    .spare = 0,
+    .name = ".?AVGObjectInfo@@",
+};
+
 __attribute__((section(".rdata$r"), aligned(8)))
 const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GObjectInfo = {
     .pTypeDescriptor = &__RTTITypeDescriptor__11GObjectInfo,

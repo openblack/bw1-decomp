@@ -33,7 +33,7 @@ static_assert(sizeof(struct Workshop) == 0xe8, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf1a10 mac inlined Workshop::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8Workshop asm("??_R0?AVWorkshop@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8Workshop asm("??_R0?AVWorkshop@@@8");
 // win1.41 009ba258 mac inlined Workshop::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8Workshop asm("??_R1A@?0A@A@Workshop@@8");
 // win1.41 009ba270 mac inlined Workshop::`RTTI Base Class Array'

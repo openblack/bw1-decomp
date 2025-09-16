@@ -45,7 +45,7 @@ static_assert(sizeof(struct PileResource) == 0xb4, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 00becb98 mac inlined PileResource::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12PileResource asm("??_R0?AVPileResource@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12PileResource asm("??_R0?AVPileResource@@@8");
 // win1.41 009adbf0 mac inlined PileResource::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12PileResource asm("??_R1A@?0A@A@PileResource@@8");
 // win1.41 009b34a0 mac inlined PileResource::`RTTI Base Class Array'

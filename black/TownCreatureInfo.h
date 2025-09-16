@@ -19,7 +19,7 @@ static_assert(sizeof(struct TownCreatureInfo) == 0x10, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00c22c00 mac inlined TownCreatureInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16TownCreatureInfo asm("??_R0?AVTownCreatureInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16TownCreatureInfo asm("??_R0?AVTownCreatureInfo@@@8");
 // win1.41 009b9b38 mac inlined TownCreatureInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16TownCreatureInfo asm("??_R1A@?0A@A@TownCreatureInfo@@8");
 // win1.41 009b9b50 mac inlined TownCreatureInfo::`RTTI Base Class Array'

@@ -33,7 +33,7 @@ static_assert(sizeof(struct Mist) == 0x54, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00becc88 mac inlined Mist::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__4Mist asm("??_R0?AVMist@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__4Mist asm("??_R0?AVMist@@@8");
 // win1.41 009adea0 mac inlined Mist::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Mist asm("??_R1A@?0A@A@Mist@@8");
 // win1.41 009adeb8 mac inlined Mist::`RTTI Base Class Array'

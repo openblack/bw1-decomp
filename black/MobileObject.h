@@ -56,7 +56,7 @@ static_assert(sizeof(struct MobileObject) == 0x68, "Data type is of wrong size")
 // Object Oriented datastructures
 
 // win1.41 009c9698 mac inlined MobileObject::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__12MobileObject asm("??_R0?AVMobileObject@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__12MobileObject asm("??_R0?AVMobileObject@@@8");
 // win1.41 009a7b60 mac inlined MobileObject::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12MobileObject asm("??_R1A@?0A@A@MobileObject@@8");
 // win1.41 009ae0c0 mac inlined MobileObject::`RTTI Base Class Array'
@@ -180,7 +180,7 @@ static_assert(sizeof(struct GSpeedThreshold) == 0x10, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00bf4218 mac inlined GSpeedThreshold::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15GSpeedThreshold asm("??_R0?AVGSpeedThreshold@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15GSpeedThreshold asm("??_R0?AVGSpeedThreshold@@@8");
 // win1.41 009b1f98 mac inlined GSpeedThreshold::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15GSpeedThreshold asm("??_R1A@?0A@A@GSpeedThreshold@@8");
 // win1.41 009b1fb0 mac inlined GSpeedThreshold::`RTTI Base Class Array'

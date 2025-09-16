@@ -30,7 +30,7 @@ static_assert(sizeof(struct CreatureContext) == 0x70, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 009dd720 mac inlined CreatureContext::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15CreatureContext asm("??_R0?AVCreatureContext@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15CreatureContext asm("??_R0?AVCreatureContext@@@8");
 // win1.41 009aa220 mac inlined CreatureContext::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15CreatureContext asm("??_R1A@?0A@A@CreatureContext@@8");
 // win1.41 009aa238 mac inlined CreatureContext::`RTTI Base Class Array'

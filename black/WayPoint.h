@@ -20,7 +20,7 @@ static_assert(sizeof(struct WayPoint) == 0x28, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c24708 mac inlined WayPoint::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8WayPoint asm("??_R0?AVWayPoint@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8WayPoint asm("??_R0?AVWayPoint@@@8");
 // win1.41 009b9f80 mac inlined WayPoint::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8WayPoint asm("??_R1A@?0A@A@WayPoint@@8");
 // win1.41 009b9f98 mac inlined WayPoint::`RTTI Base Class Array'

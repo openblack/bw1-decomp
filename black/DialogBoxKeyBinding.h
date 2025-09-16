@@ -28,7 +28,7 @@ static_assert(sizeof(struct DialogBoxKeyBinding) == 0x1c, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 00be8c00 mac inlined DialogBoxKeyBinding::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__19DialogBoxKeyBinding asm("??_R0?AVDialogBoxKeyBinding@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__19DialogBoxKeyBinding asm("??_R0?AVDialogBoxKeyBinding@@@8");
 // win1.41 009ab8e0 mac inlined DialogBoxKeyBinding::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__19DialogBoxKeyBinding asm("??_R1A@?0A@A@DialogBoxKeyBinding@@8");
 // win1.41 009ab8f8 mac inlined DialogBoxKeyBinding::`RTTI Base Class Array'

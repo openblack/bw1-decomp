@@ -21,7 +21,7 @@ static_assert(sizeof(struct ParticleLightMap) == 0x18, "Data type is of wrong si
 // Object Oriented datastructures
 
 // win1.41 00c09690 mac inlined ParticleLightMap::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16ParticleLightMap asm("??_R0?AVParticleLightMap@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16ParticleLightMap asm("??_R0?AVParticleLightMap@@@8");
 // win1.41 009b8290 mac inlined ParticleLightMap::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16ParticleLightMap asm("??_R1A@?0A@A@ParticleLightMap@@8");
 // win1.41 009b82a8 mac inlined ParticleLightMap::`RTTI Base Class Array'

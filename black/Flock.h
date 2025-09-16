@@ -54,7 +54,7 @@ static_assert(sizeof(struct Flock) == 0x90, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00be9ee8 mac inlined Flock::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__5Flock asm("??_R0?AVFlock@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__5Flock asm("??_R0?AVFlock@@@8");
 // win1.41 009ac4e0 mac inlined Flock::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Flock asm("??_R1A@?0A@A@Flock@@8");
 // win1.41 009ac4f8 mac inlined Flock::`RTTI Base Class Array'

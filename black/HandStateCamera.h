@@ -21,7 +21,7 @@ static_assert(sizeof(struct HandStateCamera) == 0xd8, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 00bf00a0 mac inlined HandStateCamera::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__15HandStateCamera asm("??_R0?AVHandStateCamera@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__15HandStateCamera asm("??_R0?AVHandStateCamera@@@8");
 // win1.41 009b0e88 mac inlined HandStateCamera::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__15HandStateCamera asm("??_R1A@?0A@A@HandStateCamera@@8");
 // win1.41 009b0ea0 mac inlined HandStateCamera::`RTTI Base Class Array'

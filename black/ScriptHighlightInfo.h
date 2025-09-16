@@ -20,7 +20,7 @@ static_assert(sizeof(struct GScriptHighlightInfo) == 0x100, "Data type is of wro
 // Object Oriented datastructures
 
 // win1.41 00c205b8 mac inlined GScriptHighlightInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20GScriptHighlightInfo asm("??_R0?AVGScriptHighlightInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20GScriptHighlightInfo asm("??_R0?AVGScriptHighlightInfo@@@8");
 // win1.41 009b8f10 mac inlined GScriptHighlightInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20GScriptHighlightInfo asm("??_R1A@?0A@A@GScriptHighlightInfo@@8");
 // win1.41 009b8f28 mac inlined GScriptHighlightInfo::`RTTI Base Class Array'

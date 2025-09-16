@@ -38,7 +38,7 @@ static_assert(sizeof(struct HelpText) == 0xbc, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bf1a50 mac inlined HelpText::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__8HelpText asm("??_R0?AVHelpText@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__8HelpText asm("??_R0?AVHelpText@@@8");
 // win1.41 009b1440 mac inlined HelpText::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__8HelpText asm("??_R1A@?0A@A@HelpText@@8");
 // win1.41 009b1458 mac inlined HelpText::`RTTI Base Class Array'

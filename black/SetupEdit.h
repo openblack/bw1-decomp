@@ -36,7 +36,7 @@ static_assert(sizeof(struct SetupEdit) == 0x468, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c81d0 mac inlined SetupEdit::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9SetupEdit asm("??_R0?AUSetupEdit@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9SetupEdit asm("??_R0?AUSetupEdit@@@8");
 // win1.41 009a66f8 mac inlined SetupEdit::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9SetupEdit asm("??_R1A@?0A@A@SetupEdit@@8");
 // win1.41 009a6710 mac inlined SetupEdit::`RTTI Base Class Array'

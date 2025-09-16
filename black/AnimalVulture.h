@@ -22,7 +22,7 @@ static_assert(sizeof(struct Vulture) == 0x148, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 009c92d8 mac inlined Vulture::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__7Vulture asm("??_R0?AVVulture@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__7Vulture asm("??_R0?AVVulture@@@8");
 // win1.41 009a7540 mac inlined Vulture::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__7Vulture asm("??_R1A@?0A@A@Vulture@@8");
 // win1.41 009a7558 mac inlined Vulture::`RTTI Base Class Array'

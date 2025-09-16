@@ -14,7 +14,7 @@ static_assert(sizeof(struct MPFEAskJoinMessage) == 0x4, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 00bf47f8 mac inlined MPFEAskJoinMessage::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18MPFEAskJoinMessage asm("??_R0?AVMPFEAskJoinMessage@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18MPFEAskJoinMessage asm("??_R0?AVMPFEAskJoinMessage@@@8");
 // win1.41 009b2188 mac inlined MPFEAskJoinMessage::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18MPFEAskJoinMessage asm("??_R1A@?0A@A@MPFEAskJoinMessage@@8");
 // win1.41 009b21a0 mac inlined MPFEAskJoinMessage::`RTTI Base Class Array'

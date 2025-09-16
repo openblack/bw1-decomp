@@ -72,7 +72,7 @@ static_assert(sizeof(struct GroupBehaviour) == 0xe8, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00be6720 mac inlined GroupBehaviour::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14GroupBehaviour asm("??_R0?AVGroupBehaviour@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14GroupBehaviour asm("??_R0?AVGroupBehaviour@@@8");
 // win1.41 009ab598 mac inlined GroupBehaviour::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14GroupBehaviour asm("??_R1A@?0A@A@GroupBehaviour@@8");
 // win1.41 009b0e48 mac inlined GroupBehaviour::`RTTI Base Class Array'
@@ -121,7 +121,7 @@ static_assert(sizeof(struct DanceEditState) == 0xe8, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00be8270 mac inlined DanceEditState::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14DanceEditState asm("??_R0?AVDanceEditState@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14DanceEditState asm("??_R0?AVDanceEditState@@@8");
 // win1.41 009ab658 mac inlined DanceEditState::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14DanceEditState asm("??_R1A@?0A@A@DanceEditState@@8");
 // win1.41 009ab670 mac inlined DanceEditState::`RTTI Base Class Array'
@@ -145,7 +145,7 @@ static_assert(sizeof(struct DanceKeyAction) == 0x14, "Data type is of wrong size
 // Object Oriented datastructures
 
 // win1.41 00be82d0 mac inlined DanceKeyAction::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__14DanceKeyAction asm("??_R0?AVDanceKeyAction@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__14DanceKeyAction asm("??_R0?AVDanceKeyAction@@@8");
 // win1.41 009ab700 mac inlined DanceKeyAction::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__14DanceKeyAction asm("??_R1A@?0A@A@DanceKeyAction@@8");
 // win1.41 009ab718 mac inlined DanceKeyAction::`RTTI Base Class Array'

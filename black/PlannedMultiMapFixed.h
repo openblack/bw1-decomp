@@ -52,7 +52,7 @@ static_assert(sizeof(struct PlannedMultiMapFixed) == 0x48, "Data type is of wron
 // Object Oriented datastructures
 
 // win1.41 009c7fd8 mac inlined PlannedMultiMapFixed::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__20PlannedMultiMapFixed asm("??_R0?AVPlannedMultiMapFixed@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__20PlannedMultiMapFixed asm("??_R0?AVPlannedMultiMapFixed@@@8");
 // win1.41 009a6498 mac inlined PlannedMultiMapFixed::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__20PlannedMultiMapFixed asm("??_R1A@?0A@A@PlannedMultiMapFixed@@8");
 // win1.41 009ae968 mac inlined PlannedMultiMapFixed::`RTTI Base Class Array'

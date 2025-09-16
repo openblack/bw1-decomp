@@ -22,7 +22,7 @@ static_assert(sizeof(struct CreatureRoomCamera) == 0x4c4, "Data type is of wrong
 // Object Oriented datastructures
 
 // win1.41 00c275c8 mac inlined CreatureRoomCamera::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18CreatureRoomCamera asm("??_R0?AUCreatureRoomCamera@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18CreatureRoomCamera asm("??_R0?AUCreatureRoomCamera@@@8");
 // win1.41 009ba6b8 mac inlined CreatureRoomCamera::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18CreatureRoomCamera asm("??_R1A@?0A@A@CreatureRoomCamera@@8");
 // win1.41 009ba6d0 mac inlined CreatureRoomCamera::`RTTI Base Class Array'

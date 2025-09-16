@@ -34,7 +34,7 @@ static_assert(sizeof(struct GFootpath) == 0x24, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00bea170 mac inlined GFootpath::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__9GFootpath asm("??_R0?AVGFootpath@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__9GFootpath asm("??_R0?AVGFootpath@@@8");
 // win1.41 009ac640 mac inlined GFootpath::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GFootpath asm("??_R1A@?0A@A@GFootpath@@8");
 // win1.41 009ac658 mac inlined GFootpath::`RTTI Base Class Array'

@@ -23,7 +23,7 @@ static_assert(sizeof(struct PSysManager) == 0xe4, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c02208 mac inlined PSysManager::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__11PSysManager asm("??_R0?AVPSysManager@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__11PSysManager asm("??_R0?AVPSysManager@@@8");
 // win1.41 009b3768 mac inlined PSysManager::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11PSysManager asm("??_R1A@?0A@A@PSysManager@@8");
 // win1.41 009b3780 mac inlined PSysManager::`RTTI Base Class Array'

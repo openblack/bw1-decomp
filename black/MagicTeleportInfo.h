@@ -19,7 +19,7 @@ static_assert(sizeof(struct GMagicTeleportInfo) == 0x58, "Data type is of wrong 
 // Object Oriented datastructures
 
 // win1.41 009cb9a8 mac inlined GMagicTeleportInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18GMagicTeleportInfo asm("??_R0?AVGMagicTeleportInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18GMagicTeleportInfo asm("??_R0?AVGMagicTeleportInfo@@@8");
 // win1.41 009a7dc0 mac inlined GMagicTeleportInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18GMagicTeleportInfo asm("??_R1A@?0A@A@GMagicTeleportInfo@@8");
 // win1.41 009a7dd8 mac inlined GMagicTeleportInfo::`RTTI Base Class Array'

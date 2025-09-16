@@ -21,7 +21,7 @@ static_assert(sizeof(struct SubArgumentInteger) == 0x4, "Data type is of wrong s
 // Object Oriented datastructures
 
 // win1.41 009d06c8 mac inlined SubArgumentInteger::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__18SubArgumentInteger asm("??_R0?AVSubArgumentInteger@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__18SubArgumentInteger asm("??_R0?AVSubArgumentInteger@@@8");
 // win1.41 009a98c0 mac inlined SubArgumentInteger::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18SubArgumentInteger asm("??_R1A@?0A@A@SubArgumentInteger@@8");
 // win1.41 009a98d8 mac inlined SubArgumentInteger::`RTTI Base Class Array'
@@ -43,7 +43,7 @@ static_assert(sizeof(struct SubArgumentObjectAndInteger) == 0x4, "Data type is o
 // Object Oriented datastructures
 
 // win1.41 009d95a8 mac inlined SubArgumentObjectAndInteger::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__27SubArgumentObjectAndInteger asm("??_R0?AVSubArgumentObjectAndInteger@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__27SubArgumentObjectAndInteger asm("??_R0?AVSubArgumentObjectAndInteger@@@8");
 // win1.41 009a9af0 mac inlined SubArgumentObjectAndInteger::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__27SubArgumentObjectAndInteger asm("??_R1A@?0A@A@SubArgumentObjectAndInteger@@8");
 // win1.41 009a9b08 mac inlined SubArgumentObjectAndInteger::`RTTI Base Class Array'
@@ -69,7 +69,7 @@ static_assert(sizeof(struct SubArgumentPoint) == 0x4, "Data type is of wrong siz
 // Object Oriented datastructures
 
 // win1.41 009d03c8 mac inlined SubArgumentPoint::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__16SubArgumentPoint asm("??_R0?AVSubArgumentPoint@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__16SubArgumentPoint asm("??_R0?AVSubArgumentPoint@@@8");
 // win1.41 009a9730 mac inlined SubArgumentPoint::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__16SubArgumentPoint asm("??_R1A@?0A@A@SubArgumentPoint@@8");
 // win1.41 009a9748 mac inlined SubArgumentPoint::`RTTI Base Class Array'

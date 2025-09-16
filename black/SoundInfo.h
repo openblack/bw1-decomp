@@ -19,7 +19,7 @@ static_assert(sizeof(struct GSoundInfo) == 0x10, "Data type is of wrong size");
 // Object Oriented datastructures
 
 // win1.41 00c223b0 mac inlined GSoundInfo::`RTTI Type Descriptor'
-extern const struct RTTITypeDescriptor __RTTITypeDescriptor__10GSoundInfo asm("??_R0?AVGSoundInfo@@@8");
+extern struct RTTITypeDescriptor __RTTITypeDescriptor__10GSoundInfo asm("??_R0?AVGSoundInfo@@@8");
 // win1.41 009b91a8 mac inlined GSoundInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10GSoundInfo asm("??_R1A@?0A@A@GSoundInfo@@8");
 // win1.41 009b91c0 mac inlined GSoundInfo::`RTTI Base Class Array'
