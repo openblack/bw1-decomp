@@ -57,7 +57,7 @@
 .extern _jmp_addr_0x00519320
 .extern _jmp_addr_0x00519960
 .extern _jmp_addr_0x00519ad0
-.extern @DrawVillagerInfo__8VillagerFv@4
+.extern @?DrawVillagerInfo@Villager@@UAEIXZ@4
 .extern ?Draw@Villager@@UAEXXZ
 .extern _jmp_addr_0x005250a0
 .extern _jmp_addr_0x00525100
@@ -151,7 +151,7 @@
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2
 .extern @SetGameAngle__13MobileWallHugFUs@10
-.extern @__ct__6ObjectFv@4
+.extern ??0Object@@QAE@XZ
 .extern _Get3DType__6ObjectF9MESH_LIST
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
 .extern _jmp_addr_0x00636640
@@ -228,11 +228,11 @@
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Spiral__6GUtilsFRlRl
 .extern _jmp_addr_0x0074dc80
-.extern @__ct__8VillagerFRC9MapCoordsPC13GVillagerInfoUli@21
+.extern ??0Villager@@QAE@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z
 .extern _jmp_addr_0x0074fbc0
 .extern _jmp_addr_0x007506c0
-.extern @ToBeDeleted__8VillagerFi@12
-.extern @SetAge__8VillagerFUl@12
+.extern ?ToBeDeleted@Villager@@UAEXH@Z
+.extern ?SetAge@Villager@@UAEXI@Z
 .extern ?Save@Villager@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@Villager@@UAEIAAVGameOSFile@@@Z
 .extern _Add__12VillagerNameFf7LHPointPwR9LH3DColor
@@ -5293,7 +5293,7 @@ _jmp_addr_0x0071f081:    pop                ebx                                 
                          {disp8} mov        eax, dword ptr [esp + 0x08]                          // 0x0071f0ca    8b442408
                          push               eax                                                  // 0x0071f0ce    50
                          mov.s              ecx, esi                                             // 0x0071f0cf    8bce
-                         call               @ToBeDeleted__8VillagerFi@12                         // 0x0071f0d1    e8da300300
+                         call               ?ToBeDeleted@Villager@@UAEXH@Z                       // 0x0071f0d1    e8da300300
                          pop                esi                                                  // 0x0071f0d6    5e
                          ret                0x0004                                               // 0x0071f0d7    c20400
                          nop                                                                     // 0x0071f0da    90
@@ -5314,7 +5314,7 @@ _jmp_addr_0x0071f0e0:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          push               ecx                                                  // 0x0071f0f6    51
                          push               edx                                                  // 0x0071f0f7    52
                          mov.s              ecx, esi                                             // 0x0071f0f8    8bce
-                         call               @__ct__8VillagerFRC9MapCoordsPC13GVillagerInfoUli@21 // 0x0071f0fa    e851080300
+                         call               ??0Villager@@QAE@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z // 0x0071f0fa    e851080300
                          {disp8} mov        ecx, dword ptr [esp + 0x1c]                          // 0x0071f0ff    8b4c241c
                          mov                dword ptr [esi], 0x008e15b4                          // 0x0071f103    c706b4158e00
                          sub                ecx, dword ptr [data_bytes + 0x3d5154]               // 0x0071f109    2b0d54b1d900
@@ -5341,7 +5341,7 @@ _jmp_addr_0x0071f0e0:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          {disp8} mov        edi, dword ptr [ecx + edx * 0x1 + 0x40]              // 0x0071f153    8b7c1140
 _jmp_addr_0x0071f157:    push               edi                                                  // 0x0071f157    57
                          mov.s              ecx, esi                                             // 0x0071f158    8bce
-                         call               @SetAge__8VillagerFUl@12                             // 0x0071f15a    e861370300
+                         call               ?SetAge@Villager@@UAEXI@Z                            // 0x0071f15a    e861370300
                          pop                edi                                                  // 0x0071f15f    5f
                          mov.s              eax, esi                                             // 0x0071f160    8bc6
                          pop                esi                                                  // 0x0071f162    5e
@@ -5465,7 +5465,7 @@ _jmp_addr_0x0071f22c:    xor.s              edi, edi                            
                          test               eax, eax                                             // 0x0071f25c    85c0
                          {disp32} jne       _jmp_addr_0x0071f3bf                                 // 0x0071f25e    0f855b010000
 _jmp_addr_0x0071f264:    mov.s              ecx, esi                                             // 0x0071f264    8bce
-                         call               @DrawVillagerInfo__8VillagerFv@4                     // 0x0071f266    e8a5c2dfff
+                         call               ?DrawVillagerInfo@Villager@@UAEIXZ                   // 0x0071f266    e8a5c2dfff
                          test               al, al                                               // 0x0071f26b    84c0
                          {disp32} jne       _jmp_addr_0x0071f3bf                                 // 0x0071f26d    0f854c010000
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0071f273    8b0d5c19d000

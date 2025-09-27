@@ -47,8 +47,8 @@
 .extern _jmp_addr_0x00715130
 .extern _jmp_addr_0x00719610
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
-.extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
-.extern @SetSpeed__8VillagerFli@16
+.extern ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z
+.extern ?SetSpeed@Villager@@QAEXHH@Z
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern ??0_Lockit@std@@QAE@XZ
@@ -817,7 +817,7 @@ _DoWallHuggerLookahead__Fv:    {disp32} mov      eax, dword ptr [data_bytes + 0x
                          add               eax, 0x14                                     // 0x00609aaf    83c014
                          push              0x00da6be8 /* _GVillagerInfo_ARRAY_00da6be8 */ // 0x00609ab2    68e86bda00
                          push              eax                                           // 0x00609ab7    50
-                         call              _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                          // 0x00609ab8    e823611400
+                         call              ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                          // 0x00609ab8    e823611400
                          {disp8} mov       edx, dword ptr [esp + 0x20]                   // 0x00609abd    8b542420
                          mov.s             esi, eax                                      // 0x00609ac1    8bf0
                          {disp8} mov       al, byte ptr [edx + 0x74]                     // 0x00609ac3    8a4274
@@ -880,7 +880,7 @@ _jmp_addr_0x00609b06:    {disp8} mov       edx, dword ptr [esp + 0x10]          
                          mov.s             ecx, esi                                      // 0x00609b7a    8bce
                          shl               eax, 2                                        // 0x00609b7c    c1e002
                          push              eax                                           // 0x00609b7f    50
-                         call              @SetSpeed__8VillagerFli@16                    // 0x00609b80    e84b731400
+                         call              ?SetSpeed@Villager@@QAEXHH@Z                  // 0x00609b80    e84b731400
                          mov.s             ecx, esi                                      // 0x00609b85    8bce
                          mov               ebp, 0x000005dc                               // 0x00609b87    bddc050000
                          call              @MoveTo__13MobileWallHugFv@4                  // 0x00609b8c    e88f130000
@@ -1063,7 +1063,7 @@ _jmp_addr_0x00609d50:    sub               esp, 0x3c                            
                          push              0x00da6be8 /* _GVillagerInfo_ARRAY_00da6be8 */ // 0x00609d62    68e86bda00
                          push              eax                                           // 0x00609d67    50
                          mov.s             ebx, ecx                                      // 0x00609d68    8bd9
-                         call              _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                          // 0x00609d6a    e8715e1400
+                         call              ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                          // 0x00609d6a    e8715e1400
                          {disp8} mov       cl, byte ptr [edi + 0x74]                     // 0x00609d6f    8a4f74
                          mov.s             esi, eax                                      // 0x00609d72    8bf0
                          {disp8} mov       byte ptr [esi + 0x74], cl                     // 0x00609d74    884e74
@@ -1137,7 +1137,7 @@ _jmp_addr_0x00609df6:    push              0x0                                  
                          shl               ecx, 2                                        // 0x00609e53    c1e102
                          push              ecx                                           // 0x00609e56    51
                          mov.s             ecx, esi                                      // 0x00609e57    8bce
-                         call              @SetSpeed__8VillagerFli@16                    // 0x00609e59    e872701400
+                         call              ?SetSpeed@Villager@@QAEXHH@Z                  // 0x00609e59    e872701400
                          {disp8} mov       al, byte ptr [esp + 0x58]                     // 0x00609e5e    8a442458
                          test              al, al                                        // 0x00609e62    84c0
                          {disp32} je       _jmp_addr_0x00609f9c                          // 0x00609e64    0f8432010000

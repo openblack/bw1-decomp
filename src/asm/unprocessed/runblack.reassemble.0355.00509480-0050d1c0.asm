@@ -65,7 +65,7 @@
 .extern ?CallVirtualFunctionsForCreation@MobileObject@@UAEXABUMapCoords@@@Z
 .extern ?Save@MobileObject@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@MobileObject@@UAEIAAVGameOSFile@@@Z
-.extern @__ct__6ObjectFv@4
+.extern ??0Object@@QAE@XZ
 .extern ?Create@Game3DObject@@SAPAV1@ABUMapCoords@@W4ObjectType@LH3DObject@@W4MESH_LIST@@MM@Z
 .extern _jmp_addr_0x0068e070
 .extern _jmp_addr_0x0068e0f0
@@ -78,7 +78,7 @@
 .extern _jmp_addr_0x0072b230
 .extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _GetDistance__6GUtilsFRC9MapCoordsRC9MapCoords
-.extern @GetDesireForFood__8VillagerFv@4
+.extern ?GetDesireForFood@Villager@@QAEMXZ
 .extern _jmp_addr_0x0077bd60
 .extern _jmp_addr_0x0077cc70
 .extern _jmp_addr_0x007a1400
@@ -2875,7 +2875,7 @@ _jmp_addr_0x0050b300:    push               0x00407870                          
                          nop                                                              // 0x0050b30f    90
 _jmp_addr_0x0050b310:    push               esi                                           // 0x0050b310    56
                          mov.s              esi, ecx                                      // 0x0050b311    8bf1
-                         call               @__ct__6ObjectFv@4                            // 0x0050b313    e838b11200
+                         call               ??0Object@@QAE@XZ                             // 0x0050b313    e838b11200
                          {disp8} mov        dword ptr [esi + 0x58], 0x00000000            // 0x0050b318    c7465800000000
                          mov.s              ecx, esi                                      // 0x0050b31f    8bce
                          mov                dword ptr [esi], 0x008d1ffc                   // 0x0050b321    c706fc1f8d00
@@ -4101,7 +4101,7 @@ _jmp_addr_0x0050be46:    {disp8} mov        eax, dword ptr [esi + 0x04]         
                          test               eax, eax                                      // 0x0050be60    85c0
                          {disp8} je         _jmp_addr_0x0050be73                          // 0x0050be62    740f
                          mov.s              ecx, eax                                      // 0x0050be64    8bc8
-                         call               @GetDesireForFood__8VillagerFv@4              // 0x0050be66    e8e5fc2400
+                         call               ?GetDesireForFood@Villager@@QAEMXZ            // 0x0050be66    e8e5fc2400
                          {disp8} fadd       dword ptr [esp + 0x0c]                        // 0x0050be6b    d844240c
                          {disp8} fstp       dword ptr [esp + 0x0c]                        // 0x0050be6f    d95c240c
 _jmp_addr_0x0050be73:    mov                esi, dword ptr [esi]                          // 0x0050be73    8b36

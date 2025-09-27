@@ -12,7 +12,7 @@
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x00751ea0
 .extern _jmp_addr_0x00752620
-.extern @GetDesireForFood__8VillagerFv@4
+.extern ?GetDesireForFood@Villager@@QAEMXZ
 .extern _jmp_addr_0x007a1400
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x0083add0
@@ -101,7 +101,7 @@ _jmp_addr_0x00423b2a:    pop                ecx                                 
                          test               eax, eax                                      // 0x00423b38    85c0
                          {disp8} je         _jmp_addr_0x00423b6f                          // 0x00423b3a    7433
                          mov.s              ecx, esi                                      // 0x00423b3c    8bce
-                         call               @GetDesireForFood__8VillagerFv@4              // 0x00423b3e    e80d803300
+                         call               ?GetDesireForFood@Villager@@QAEMXZ            // 0x00423b3e    e80d803300
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2414]              // 0x00423b43    d80d14b48a00
                          call               _jmp_addr_0x007a1400                          // 0x00423b49    e8b2d83700
                          mov.s              ecx, eax                                      // 0x00423b4e    8bc8
@@ -135,7 +135,7 @@ _jmp_addr_0x00423b6f:    mov                eax, 0x00000181                     
                          test               eax, eax                                      // 0x00423b88    85c0
                          {disp8} je         _jmp_addr_0x00423bbf                          // 0x00423b8a    7433
                          mov.s              ecx, esi                                      // 0x00423b8c    8bce
-                         call               @GetDesireForFood__8VillagerFv@4              // 0x00423b8e    e8bd7f3300
+                         call               ?GetDesireForFood@Villager@@QAEMXZ            // 0x00423b8e    e8bd7f3300
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2414]              // 0x00423b93    d80d14b48a00
                          call               _jmp_addr_0x007a1400                          // 0x00423b99    e862d83700
                          mov.s              ecx, eax                                      // 0x00423b9e    8bc8

@@ -182,34 +182,34 @@
 .extern _jmp_addr_0x00745f80
 .extern _jmp_addr_0x00751ee0
 .extern _jmp_addr_0x00751f10
-.extern @GetAbode__8VillagerFv@4
-.extern @CallState__8VillagerFv@4
+.extern ?GetAbode@Villager@@QAEPAVAbode@@XZ
+.extern ?CallState@Villager@@QAEIXZ
 .extern _jmp_addr_0x00752240
 .extern _jmp_addr_0x00752620
-.extern @SetAge__8VillagerFUl@12
+.extern ?SetAge@Villager@@UAEXI@Z
 .extern _jmp_addr_0x00752a90
 .extern _jmp_addr_0x00753140
-.extern @ProcessFoodSpeedup__8VillagerFv@4
-.extern @SetState__8VillagerFUlUc@16
-.extern @SetupNothingToDo__8VillagerFv@4
+.extern ?ProcessFoodSpeedup@Villager@@QAEXXZ
+.extern ?SetState@Villager@@UAEXW4LIVING_ACTION_INDEX@@W4VILLAGER_STATES@@@Z
+.extern ?SetupNothingToDo@Villager@@QAEIXZ
 .extern _jmp_addr_0x00754070
 .extern _jmp_addr_0x00756000
-.extern @SetSkeleton__8VillagerFi@9
+.extern ?SetSkeleton@Villager@@QAEX_N@Z
 .extern ?SetTown@Villager@@QAEXPAVTown@@@Z
 .extern _jmp_addr_0x007567e0
-.extern @FindChildrenAndOrphanThem__8VillagerFv@4
+.extern ?FindChildrenAndOrphanThem@Villager@@QAEXXZ
 .extern _jmp_addr_0x00757180
-.extern @ChildDecideWhatToDo__8VillagerFv@4
+.extern ?ChildDecideWhatToDo@Villager@@QAE_NXZ
 .extern ?ChildBecomesAdult@Villager@@QAE_NXZ
 .extern _jmp_addr_0x00758340
 .extern _jmp_addr_0x007593a0
 .extern _jmp_addr_0x00759c00
 .extern _jmp_addr_0x0075b4c0
-.extern @GetDesireForFood__8VillagerFv@4
+.extern ?GetDesireForFood@Villager@@QAEMXZ
 .extern _jmp_addr_0x0075bc00
 .extern _jmp_addr_0x0075bcc0
 .extern _jmp_addr_0x0075f4a0
-.extern @CheckNeededForSomething__8VillagerFv@4
+.extern ?CheckNeededForSomething@Villager@@QAE_NXZ
 .extern _jmp_addr_0x00760ca0
 .extern _jmp_addr_0x00769b80
 .extern _jmp_addr_0x00769ee0
@@ -371,12 +371,10 @@
 .globl _GetIncrementSpiralSizeFromRadius__6GUtilsFff@8
 .globl _FUN_0074f620
 .globl _hypotenuse__Fll
-.globl @__ct__8VillagerFRC9MapCoordsPC13GVillagerInfoUli@21
-.globl @SetToZero__8VillagerFv@4
+.globl ?SetToZero@Villager@@QAEXXZ
 .globl _jmp_addr_0x0074fb80
 .globl _jmp_addr_0x0074fbc0
-.globl _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
-.globl @DeleteDependancys__8VillagerFv@4
+.globl ?DeleteDependancys@Villager@@QAEXXZ
 .globl ?FinishedIntoOutOfAnimation@Villager@@QAEXXZ
 .globl _jmp_addr_0x007501a0
 .globl _jmp_addr_0x00750670
@@ -386,8 +384,8 @@
 .globl _jmp_addr_0x00750b50
 .globl _jmp_addr_0x00750bb0
 .globl ?SetAbode@Villager@@QAEXPAVAbode@@@Z
-.globl @SetSpeed__8VillagerFli@16
-.globl @IsAMother__8VillagerFv@4
+.globl ?SetSpeed@Villager@@QAEXHH@Z
+.globl ?IsAMother@Villager@@QAE_NXZ
 .globl _jmp_addr_0x00751190
 .globl _jmp_addr_0x007511b0
 .globl _jmp_addr_0x007511e0
@@ -399,8 +397,8 @@
 .globl _jmp_addr_0x007514d0
 .globl _jmp_addr_0x007514f0
 .globl _jmp_addr_0x00751570
-.globl @CheckTakeResourcesToStoragePit__8VillagerFv@4
-.globl @DiscipleDecideWhatToDo__8VillagerFv@4
+.globl ?CheckTakeResourcesToStoragePit@Villager@@QAE_NXZ
+.globl ?DiscipleDecideWhatToDo@Villager@@QAE_NXZ
 
 .globl _globl_ct_0x00747310
 .globl _globl_ct_0x00747350
@@ -429,8 +427,8 @@
 .globl _globl_ct_0x0074f830
 .globl _globl_ct_0x0074f930
 .globl _SetOnFire__4TreeFf
-.globl _DecideWhatToDo__8VillagerFv
-.globl _ProcessState__8VillagerFv
+.globl ?DecideWhatToDo@Villager@@UAE_NXZ
+.globl ?ProcessState@Villager@@UAEIXZ
 .globl _CreateCollideData__4TreeFv
 .globl _GetWoodValueMultiplier__4TreeFv
 .globl ?CalculateDesireForFood@Town@@UAEMXZ
@@ -819,7 +817,7 @@ _jmp_addr_0x00747676:    mov                eax, dword ptr [esi]                
                          test               eax, eax                                       // 0x00747683    85c0
                          {disp8} je         _jmp_addr_0x007476ef                           // 0x00747685    7468
                          mov.s              ecx, esi                                       // 0x00747687    8bce
-                         call               @CallState__8VillagerFv@4                      // 0x00747689    e842ab0000
+                         call               ?CallState@Villager@@QAEIXZ                    // 0x00747689    e842ab0000
                          cmp                eax, 0x05                                      // 0x0074768e    83f805
                          {disp32} jne       _jmp_addr_0x00747735                           // 0x00747691    0f859e000000
                          {disp32} mov       eax, dword ptr [edi + 0x00000770]              // 0x00747697    8b8770070000
@@ -3763,7 +3761,7 @@ _jmp_addr_0x00749480:    pop                edi                                 
 _jmp_addr_0x00749490:    push               esi                                            // 0x00749490    56
                          mov.s              esi, ecx                                       // 0x00749491    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                    // 0x00749493    8b4c2408
-                         call               @GetAbode__8VillagerFv@4                       // 0x00749497    e8c48c0000
+                         call               ?GetAbode@Villager@@QAEPAVAbode@@XZ            // 0x00749497    e8c48c0000
                          test               eax, eax                                       // 0x0074949c    85c0
                          {disp8} je         _jmp_addr_0x007494ae                           // 0x0074949e    740e
                          {disp8} mov        ecx, dword ptr [esi + 0x4c]                    // 0x007494a0    8b4e4c

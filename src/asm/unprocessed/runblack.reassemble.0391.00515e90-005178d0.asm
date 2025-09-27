@@ -35,7 +35,7 @@
 .extern _jmp_addr_0x00726d30
 .extern _jmp_addr_0x00730480
 .extern _jmp_addr_0x00730570
-.extern @GetAbode__8VillagerFv@4
+.extern ?GetAbode@Villager@@QAEPAVAbode@@XZ
 .extern _jmp_addr_0x007a1400
 .extern _atexit
 .extern ___RTDynamicCast
@@ -804,7 +804,7 @@ _jmp_addr_0x0051674b:    mov                edx, dword ptr [esi]                
                          test               eax, eax                                      // 0x00516757    85c0
                          {disp8} je         _jmp_addr_0x005167ad                          // 0x00516759    7452
                          mov.s              ecx, esi                                      // 0x0051675b    8bce
-                         call               @GetAbode__8VillagerFv@4                      // 0x0051675d    e8feb92300
+                         call               ?GetAbode@Villager@@QAEPAVAbode@@XZ           // 0x0051675d    e8feb92300
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x00516762    8b0d203bcd00
                          {disp32} mov       edx, dword ptr [ecx + 0x000003c8]             // 0x00516768    8b91c8030000
                          push               0x0                                           // 0x0051676e    6a00

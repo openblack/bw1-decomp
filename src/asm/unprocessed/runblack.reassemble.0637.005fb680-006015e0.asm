@@ -68,7 +68,7 @@
 .extern ?ToBeDeleted@MobileStatic@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@MobileStatic@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00635470
-.extern @__ct__6ObjectFv@4
+.extern ??0Object@@QAE@XZ
 .extern @Create3DObject__6ObjectFv@4
 .extern @ActualMoveMapObject__6ObjectFRC9MapCoords@12
 .extern @SetScale__6ObjectFf@12
@@ -114,7 +114,7 @@
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x0074ce10
 .extern _Spiral__6GUtilsFRlRl
-.extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
+.extern ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z
 .extern _jmp_addr_0x00756000
 .extern _jmp_addr_0x0076f890
 .extern _jmp_addr_0x0076fa00
@@ -5181,7 +5181,7 @@ _jmp_addr_0x005fe37b:    push               0x0                                 
                          {disp8} lea        eax, dword ptr [esp + 0x20]                   // 0x005fe37e    8d442420
                          push               edi                                           // 0x005fe382    57
                          push               eax                                           // 0x005fe383    50
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                          // 0x005fe384    e857181500
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                          // 0x005fe384    e857181500
                          add                esp, 0x10                                     // 0x005fe389    83c410
                          test               eax, eax                                      // 0x005fe38c    85c0
                          {disp8} je         _jmp_addr_0x005fe39d                          // 0x005fe38e    740d
@@ -8583,7 +8583,7 @@ _jmp_addr_0x00600d40:    push               esi                                 
                          nop                                                              // 0x00600d7f    90
 @__ct__12MobileObjectFv@4:    push               esi                                           // 0x00600d80    56
                          mov.s              esi, ecx                                      // 0x00600d81    8bf1
-                         call               @__ct__6ObjectFv@4                            // 0x00600d83    e8c8560300
+                         call               ??0Object@@QAE@XZ                             // 0x00600d83    e8c8560300
                          {disp8} mov        dword ptr [esi + 0x58], 0x00000000            // 0x00600d88    c7465800000000
                          mov                dword ptr [esi], 0x008eed1c                   // 0x00600d8f    c7061ced8e00
                          mov.s              eax, esi                                      // 0x00600d95    8bc6

@@ -216,13 +216,13 @@
 .extern _GetMapCellSpiralSizeFromRadius__6GUtilsFf@4
 .extern _GetIncrementSpiralSizeFromRadius__6GUtilsFff@8
 .extern ?SetAbode@Villager@@QAEXPAVAbode@@@Z
-.extern @GetAbode__8VillagerFv@4
+.extern ?GetAbode@Villager@@QAEPAVAbode@@XZ
 .extern _jmp_addr_0x00752820
 .extern _jmp_addr_0x00752860
 .extern _jmp_addr_0x00756000
 .extern ?SetTown@Villager@@QAEXPAVTown@@@Z
 .extern _jmp_addr_0x00756760
-.extern @FindChildrenAndOrphanThem__8VillagerFv@4
+.extern ?FindChildrenAndOrphanThem@Villager@@QAEXXZ
 .extern _jmp_addr_0x0076bae0
 .extern ?RemoveVillagerFromWorshipSite@Villager@@QAE_NXZ
 .extern _jmp_addr_0x00779b60
@@ -6473,9 +6473,9 @@ _jmp_addr_0x0073e1f0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               edi                                                  // 0x0073e217    57
                          mov.s              edi, ecx                                             // 0x0073e218    8bf9
                          mov.s              ecx, esi                                             // 0x0073e21a    8bce
-                         call               @FindChildrenAndOrphanThem__8VillagerFv@4            // 0x0073e21c    e8bf890100
+                         call               ?FindChildrenAndOrphanThem@Villager@@QAEXXZ          // 0x0073e21c    e8bf890100
                          mov.s              ecx, esi                                             // 0x0073e221    8bce
-                         call               @GetAbode__8VillagerFv@4                             // 0x0073e223    e8383f0100
+                         call               ?GetAbode@Villager@@QAEPAVAbode@@XZ                  // 0x0073e223    e8383f0100
                          push               esi                                                  // 0x0073e228    56
                          {disp32} lea       ecx, dword ptr [edi + 0x00000610]                    // 0x0073e229    8d8f10060000
                          mov.s              ebx, eax                                             // 0x0073e22f    8bd8

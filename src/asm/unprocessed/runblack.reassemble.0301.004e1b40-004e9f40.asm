@@ -125,7 +125,7 @@
 .extern _jmp_addr_0x0074dbf0
 .extern _ConvertWholeDistanceToMeters__6GUtilsFl
 .extern _jmp_addr_0x0074de90
-.extern @GetAbode__8VillagerFv@4
+.extern ?GetAbode@Villager@@QAEPAVAbode@@XZ
 .extern _jmp_addr_0x0078ea60
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
@@ -5421,7 +5421,7 @@ _jmp_addr_0x004e4d48:    pop                edi                                 
 ?IsVillagerFarFromHome@Villager@@UAEIPAVCreature@@@Z:
                          push               esi                                             // 0x004e4d50    56
                          mov.s              esi, ecx                                        // 0x004e4d51    8bf1
-                         call               @GetAbode__8VillagerFv@4                        // 0x004e4d53    e808d42600
+                         call               ?GetAbode@Villager@@QAEPAVAbode@@XZ             // 0x004e4d53    e808d42600
                          test               eax, eax                                        // 0x004e4d58    85c0
                          {disp8} je         _jmp_addr_0x004e4d82                            // 0x004e4d5a    7426
                          add                esi, 0x14                                       // 0x004e4d5c    83c614

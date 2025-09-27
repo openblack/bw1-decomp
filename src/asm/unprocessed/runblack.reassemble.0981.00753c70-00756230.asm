@@ -31,15 +31,15 @@
 .extern _jmp_addr_0x00749c80
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _GetPosFromAngle__6GUtilsFff
-.extern @DeleteDependancys__8VillagerFv@4
-.extern @DiscipleDecideWhatToDo__8VillagerFv@4
+.extern ?DeleteDependancys@Villager@@QAEXXZ
+.extern ?DiscipleDecideWhatToDo@Villager@@QAE_NXZ
 .extern _jmp_addr_0x00751f10
-.extern @GetAbode__8VillagerFv@4
+.extern ?GetAbode@Villager@@QAEPAVAbode@@XZ
 .extern _jmp_addr_0x00761090
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 
-.globl @GetChillOutPos__8VillagerFR9MapCoords@12
+.globl ?GetChillOutPos@Villager@@QAEIAAUMapCoords@@@Z
 .globl _jmp_addr_0x00753e20
 .globl _jmp_addr_0x00754070
 .globl ?Save@Villager@@UAEIAAVGameOSFile@@@Z
@@ -57,7 +57,9 @@
 
 start_0x00753c70_0x00756230:
 // Snippet: asm, [0x00753c70, 0x00756200)
-@GetChillOutPos__8VillagerFR9MapCoords@12:    sub               esp, 0x2c                                     // 0x00753c70    83ec2c
+
+?GetChillOutPos@Villager@@QAEIAAUMapCoords@@@Z:
+                         sub               esp, 0x2c                                     // 0x00753c70    83ec2c
                          push              esi                                           // 0x00753c73    56
                          push              edi                                           // 0x00753c74    57
                          mov.s             edi, ecx                                      // 0x00753c75    8bf9
@@ -139,7 +141,7 @@ _jmp_addr_0x00753d45:    pop               edi                                  
                          mov.s             ecx, esi                                      // 0x00753d68    8bce
                          {disp32} fmul     dword ptr [_rdata_float0p5]                   // 0x00753d6a    d80db4a38a00
                          {disp8} fstp      dword ptr [esp + 0x04]                        // 0x00753d70    d95c2404
-                         call              @GetAbode__8VillagerFv@4                      // 0x00753d74    e8e7e3ffff
+                         call              ?GetAbode@Villager@@QAEPAVAbode@@XZ           // 0x00753d74    e8e7e3ffff
                          test              eax, eax                                      // 0x00753d79    85c0
                          {disp8} je        _jmp_addr_0x00753dbb                          // 0x00753d7b    743e
                          {disp8} fld       dword ptr [esp + 0x04]                        // 0x00753d7d    d9442404
@@ -201,7 +203,7 @@ _jmp_addr_0x00753df3:    mov               eax, 0x00000001                      
 ?RemoveFromGame@Villager@@UAEIXZ:
                          push              esi                                           // 0x00753e00    56
                          mov.s             esi, ecx                                      // 0x00753e01    8bf1
-                         call              @DeleteDependancys__8VillagerFv@4             // 0x00753e03    e858bfffff
+                         call              ?DeleteDependancys@Villager@@QAEXXZ           // 0x00753e03    e858bfffff
                          mov.s             ecx, esi                                      // 0x00753e08    8bce
                          call              ?RemoveFromGame@Living@@UAEIXZ                // 0x00753e0a    e851a7e9ff
                          pop               esi                                           // 0x00753e0f    5e
@@ -523,7 +525,7 @@ _jmp_addr_0x007540fa:    dec               word ptr [esi + 0x58]                
                          test              eax, eax                                      // 0x00754110    85c0
                          {disp8} je        _jmp_addr_0x0075412c                          // 0x00754112    7418
                          mov.s             ecx, esi                                      // 0x00754114    8bce
-                         call              @DiscipleDecideWhatToDo__8VillagerFv@4        // 0x00754116    e805d6ffff
+                         call              ?DiscipleDecideWhatToDo@Villager@@QAE_NXZ     // 0x00754116    e805d6ffff
                          test              eax, eax                                      // 0x0075411b    85c0
                          {disp8} jne       _jmp_addr_0x00754132                          // 0x0075411d    7513
                          {disp8} mov       word ptr [esi + 0x58], 0x012c                 // 0x0075411f    66c746582c01

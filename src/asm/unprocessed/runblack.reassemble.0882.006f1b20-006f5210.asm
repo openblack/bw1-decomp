@@ -70,7 +70,7 @@
 .extern _jmp_addr_0x0070d220
 .extern _jmp_addr_0x007115a0
 .extern _jmp_addr_0x00740b40
-.extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
+.extern ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z
 .extern _jmp_addr_0x007a1400
 .extern _atexit
 .extern ___RTDynamicCast
@@ -1881,7 +1881,7 @@ _jmp_addr_0x006f2f34:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                          // 0x006f2ff1    8d4c2424
                          call               @__ct__9MapCoordsFRC7LHPoint@12                      // 0x006f2ff5    e86601f1ff
                          push               eax                                                  // 0x006f2ffa    50
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli  // 0x006f2ffb    e8e0cb0500
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z  // 0x006f2ffb    e8e0cb0500
                          mov.s              esi, eax                                             // 0x006f3000    8bf0
                          add                esp, 0x10                                            // 0x006f3002    83c410
                          test               esi, esi                                             // 0x006f3005    85f6

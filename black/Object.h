@@ -334,7 +334,7 @@ enum LH3DObject__ObjectType __cdecl Get3DType__6ObjectF9MESH_LIST(enum MESH_LIST
 // Constructors
 
 // win1.41 00636450 mac 103d9480 Object::Object(void)
-struct Object* __fastcall __ct__6ObjectFv(struct Object* this);
+struct Object* __fastcall __ct__6ObjectFv(struct Object* this) asm("??0Object@@QAE@XZ");
 // win1.41 00636520 mac 103d90d0 Object::Object(MapCoords const &, GObjectInfo const *)
 struct Object* __fastcall __ct__6ObjectFRC9MapCoordsPC11GObjectInfo(struct Object* this, const void* edx, const struct MapCoords* coords, const struct GObjectInfo* info);
 

@@ -185,7 +185,7 @@
 .globl @SetTopStateToFinal__6LivingFv@4
 .globl _jmp_addr_0x005ecac0
 .globl @SetStateAnim__6LivingFv@4
-.globl ?SetAnim__i@Living@@UAEXH@Z
+.globl ?SetAnim@Living@@UAEXH@Z
 .globl ?IsDancing@Living@@UAE_NXZ
 .globl _jmp_addr_0x005ecc20
 .globl @__ct__12LivingActionFv@4
@@ -239,11 +239,11 @@
 .globl _globl_ct_0x005ef850
 .globl _globl_ct_0x005ef880
 .globl _globl_ct_0x005ef8b0
-.globl _EnterMoveOnPath__6LivingFUcUc
+.globl ?EnterMoveOnPath@Living@@UAEIEE@Z
 .globl _ToBeDeleted__6LivingFi
 .globl _GetFinalDestPos__6LivingFP9MapCoords
 .globl _SetAge__6LivingFUl
-.globl _MoveAlongPath__6LivingFv
+.globl ?MoveAlongPath@Living@@UAEIXZ
 .globl ??_GLHLobby@@UAEPAXI@Z
 .globl ?MoveByTeleport@Living@@UAEXABUMapCoords@@@Z
 .globl ?SetDying@Living@@UAE_NXZ
@@ -255,7 +255,7 @@
 .globl ?Birthday@PuzzleHorse@@UAEXXZ
 .globl ?IsDeathState@Living@@UBE_NW4VILLAGER_STATES@@@Z
 .globl ?GetAge@PuzzleHorse@@UAEIXZ
-.globl ?SetAnim__li@Living@@UAEXHH@Z
+.globl ?SetAnim@Living@@UAEXHH@Z
 .globl ?ExitReaction@Living@@UAEHW4VILLAGER_STATES@@@Z
 .globl ?MoveInFlock@Living@@UAE_NXZ
 .globl ?DebugShowTime@Living@@UAEIIEE@Z
@@ -7635,7 +7635,8 @@ _jmp_addr_0x005ecb7c:    pop                edi                                 
                          pop                esi                                           // 0x005ecb7d    5e
                          ret                                                              // 0x005ecb7e    c3
                          nop                                                              // 0x005ecb7f    90
-?SetAnim__i@Living@@UAEXH@Z:
+
+?SetAnim@Living@@UAEXH@Z:
                          push               esi                                           // 0x005ecb80    56
                          mov.s              esi, ecx                                      // 0x005ecb81    8bf1
                          mov                eax, dword ptr [esi]                          // 0x005ecb83    8b06
@@ -7649,7 +7650,8 @@ _jmp_addr_0x005ecb7c:    pop                edi                                 
                          pop                esi                                           // 0x005ecb9b    5e
                          ret                0x0004                                        // 0x005ecb9c    c20400
                          nop                                                              // 0x005ecb9f    90
-?SetAnim__li@Living@@UAEXHH@Z:
+
+?SetAnim@Living@@UAEXHH@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x005ecba0    8b442404
                          test               eax, eax                                      // 0x005ecba4    85c0
                          push               esi                                           // 0x005ecba6    56
@@ -9428,7 +9430,8 @@ _jmp_addr_0x005edd72:    {disp8} mov        ecx, dword ptr [esp + 0x28]         
                          nop                                                              // 0x005eddcd    90
                          nop                                                              // 0x005eddce    90
                          nop                                                              // 0x005eddcf    90
-_EnterMoveOnPath__6LivingFUcUc:
+
+?EnterMoveOnPath@Living@@UAEIEE@Z:
                          mov                eax, 0x00000001                               // 0x005eddd0    b801000000
                          ret                0x0008                                        // 0x005eddd5    c20800
                          nop                                                              // 0x005eddd8    90
@@ -9828,7 +9831,8 @@ _jmp_addr_0x005ee221:    xor.s              eax, eax                            
                          nop                                                              // 0x005ee22d    90
                          nop                                                              // 0x005ee22e    90
                          nop                                                              // 0x005ee22f    90
-_MoveAlongPath__6LivingFv:
+
+?MoveAlongPath@Living@@UAEIXZ:
                          sub                esp, 0x34                                     // 0x005ee230    83ec34
                          push               esi                                           // 0x005ee233    56
                          mov.s              esi, ecx                                      // 0x005ee234    8bf1

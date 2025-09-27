@@ -305,7 +305,7 @@
 .globl _jmp_addr_0x00636120
 .globl _jmp_addr_0x006361f0
 .globl _jmp_addr_0x00636220
-.globl @__ct__6ObjectFv@4
+.globl ??0Object@@QAE@XZ
 .globl _Get3DType__6ObjectF9MESH_LIST
 .extern ?Get3DType@Object@@UAE?AW4LH3DObject__ObjectType@@XZ
 .globl @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
@@ -327,7 +327,6 @@
 .extern ?SetUpPhysOb@Object@@UAEXPAVPhysOb@@@Z
 .extern ?InteractsWithPhysicsObjects@Object@@UAE_NXZ
 .extern ?ReactToPhysicsImpact@Object@@UAEXPAVPhysicsObject@@_N@Z
-.globl @ReduceLife__6ObjectFfP7GPlayer@16
 .extern ?IncreaseLife@Object@@UAEXM@Z
 .extern ?DestroyedByEffect@Object@@UAEIPAVGPlayer@@M@Z
 .globl _jmp_addr_0x00637930
@@ -414,7 +413,7 @@
 .globl ?MoveMapObject@Object@@UAEIUMapCoords@@@Z
 .globl ?SetLife@Object@@UAEXM@Z
 .globl _Load__6ObjectFR10GameOSFile
-.globl _ReduceLife__6ObjectFfP7GPlayer
+.globl ?ReduceLife@Object@@UAEMMPAVGPlayer@@@Z
 .globl ?Create3DObject@Object@@UAEXXZ
 .globl ?InsertMapObjectToCell@Object@@UAEXPAUMapCell@@@Z
 .globl ?SetScale@Object@@UAEXM@Z
@@ -8207,7 +8206,8 @@ _jmp_addr_0x00636420:    push               0x00636430                          
                          {disp32} jmp       _jmp_addr_0x00436960                           // 0x00636449    e91205e0ff
 _jmp_addr_0x0063644e:    ret                                                               // 0x0063644e    c3
                          nop                                                               // 0x0063644f    90
-@__ct__6ObjectFv@4:      push               esi                                            // 0x00636450    56
+??0Object@@QAE@XZ:
+                         push               esi                                            // 0x00636450    56
                          push               edi                                            // 0x00636451    57
                          mov.s              esi, ecx                                       // 0x00636452    8bf1
                          call               @__ct__9GameThingFv@4                          // 0x00636454    e8b795f3ff
@@ -10226,8 +10226,9 @@ _jmp_addr_0x00637809:    pop                esi                                 
                          nop                                                               // 0x0063780d    90
                          nop                                                               // 0x0063780e    90
                          nop                                                               // 0x0063780f    90
-_ReduceLife__6ObjectFfP7GPlayer:
-@ReduceLife__6ObjectFfP7GPlayer@16:    push               esi                                            // 0x00637810    56
+
+?ReduceLife@Object@@UAEMMPAVGPlayer@@@Z:
+                         push               esi                                            // 0x00637810    56
                          mov.s              esi, ecx                                       // 0x00637811    8bf1
                          mov                eax, dword ptr [esi]                           // 0x00637813    8b06
                          call               dword ptr [eax + 0x11c]                        // 0x00637815    ff901c010000

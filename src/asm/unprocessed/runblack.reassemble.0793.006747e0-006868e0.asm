@@ -78,7 +78,7 @@
 .extern _jmp_addr_0x00604f40
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
 .extern @GetLHPoint__9MapCoordsCFv@12
-.extern @__ct__6ObjectFv@4
+.extern ??0Object@@QAE@XZ
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
 .extern _jmp_addr_0x00636640
 .extern ?ToBeDeleted@Object@@UAEXH@Z
@@ -20512,7 +20512,7 @@ _jmp_addr_0x00682a0b:    pop                edi                                 
                          nop                                                              // 0x00682a1f    90
 @__ct__13MagicFireBallFv@4:    push               esi                                           // 0x00682a20    56
                          mov.s              esi, ecx                                      // 0x00682a21    8bf1
-                         call               @__ct__6ObjectFv@4                            // 0x00682a23    e8283afbff
+                         call               ??0Object@@QAE@XZ                             // 0x00682a23    e8283afbff
                          {disp8} mov        dword ptr [esi + 0x54], 0x00000000            // 0x00682a28    c7465400000000
                          mov.s              ecx, esi                                      // 0x00682a2f    8bce
                          mov                dword ptr [esi], 0x0093595c                   // 0x00682a31    c7065c599300

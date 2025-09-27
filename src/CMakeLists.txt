@@ -964,7 +964,7 @@ target_link_options(runblack-reassembled
         "/filealign:0x1000"
         "/entry:WinMainCRTStartup"
         "/safeseh:no"
-        "/demangle:no"
+        #"/demangle:no"
         "/NODEFAULTLIB"
         "/OPT:NOREF"
         "/OPT:NOICF"
