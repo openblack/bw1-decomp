@@ -106,7 +106,7 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0019.004061a0-004097a0.asm
 
     asm/unprocessed/text.x.001.asm
-    asm/unprocessed/rdata.100.008a99d0-008f795c.asm
+    asm/unprocessed/rdata.100.008a99d0-008e15b0.asm
     asm/unprocessed/rdata.r.001-rtti.asm
     asm/unprocessed/data.101.009c7e80-00c234e0.asm
     asm/unprocessed/bss.001.asm
@@ -364,6 +364,7 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0970.0073a650-00747310.asm
     asm/unprocessed/runblack.reassemble.0972.00747310-0074f950.asm
 
+    asm/unprocessed/rdata.125.008e15b0-008f795c.asm
     asm/unprocessed/rdata.150.008f795c-0099f250.asm
     asm/unprocessed/data.150.00c234e0-00c2b1d0.asm
 
