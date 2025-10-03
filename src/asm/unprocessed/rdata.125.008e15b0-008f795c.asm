@@ -15,18 +15,18 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?Get3DSoundPos@GameThingWithPos@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
 .long ?Dump@Base@@UAEXXZ
-.long ?GetPlayer@Villager@@UAEPAVGPlayer@@XZ                                                                                                   // [0x385d0] 0x008a9000 + 0x385d0 = 0x008e15d0
+.long ?GetPlayer@Villager@@UAEPAVGPlayer@@XZ
 .long ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
 .long ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z
 .long ?RemoveDance@GameThing@@QAEXXZ
-.long ?IsAvailable@Villager@@UAE_NXZ                                                                                                   // [0x385e0] 0x008a9000 + 0x385e0 = 0x008e15e0
+.long ?IsAvailable@Villager@@UAE_NXZ
 .long ?IsCreature@GameThing@@QAE_NPAVCreature@@@Z
 .long ?IsCreature@GameThing@@UAE_NXZ
 .long ?IsCreatureNotTooNear@GameThing@@UAE_NPAVCreature@@@Z
 .long ?GetDrawImportance@Object@@UAEMXZ
 .long ?GetMaxAlignmentChangePerGameTurn@GameThing@@UAEMXZ
 .long ?GetComputerSeen@GameThing@@UAE_NXZ
-.long ?GetTown@Villager@@UAEPAVTown@@XZ                                                                                                   // [0x385fc] 0x008a9000 + 0x385fc = 0x008e15fc
+.long ?GetTown@Villager@@UAEPAVTown@@XZ
 .long ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z
 .long ?SetVillagerActivity@GameThing@@UAEXPAVVillager@@@Z
 .long ?UpdateVillagerActivityEffect@GameThing@@QAEIPAVVillager@@@Z
@@ -47,7 +47,7 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?JustRemoveResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPA_N@Z
 .long ?JustGetResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPA_N@Z
 .long ?GetResource@Object@@UAEIW4RESOURCE_TYPE@@@Z
-.long ?AddResource@Villager@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@_NPBUMapCoords@@H@Z                                                                                                   // [0x38650] 0x008a9000 + 0x38650 = 0x008e1650
+.long ?AddResource@Villager@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@_NPBUMapCoords@@H@Z
 .long ?RemoveResource@GameThing@@QAEIW4RESOURCE_TYPE@@KPAVGInterfaceStatus@@PA_N@Z
 .long ?CastCreature@GameThing@@QAEPAVCreature@@XZ
 .long ?CastPlayer@GameThing@@QAEPAVGPlayer@@XZ
@@ -66,11 +66,11 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?GetSampleForAttack@GameThing@@UAEIXZ
 .long ?GetGuidanceResourceType@GameThing@@UAEIXZ
 .long ?GetShowNeedsPos@MultiMapFixed@@UAEIKPAUMapCoords@@@Z
-.long ?Load@SpecialVillager@@UAEIAAVGameOSFile@@@Z                                                                                                   // [0x3869c] 0x008a9000 + 0x3869c = 0x008e169c
+.long ?Load@SpecialVillager@@UAEIAAVGameOSFile@@@Z
 .long ?Save@SpecialVillager@@UAEIAAVGameOSFile@@@Z
-.long ?GetSaveType@SpecialVillager@@UAEIXZ                                                                                       // [0x386a0] 0x008a9000 + 0x386a0 = 0x008e16a0
+.long ?GetSaveType@SpecialVillager@@UAEIXZ
 .long ?SaveExtraData@GameThing@@QAEXAAVGameOSFile@@@Z
-.long ?ResolveLoad@Villager@@UAEXXZ                                                                                                   // [0x386ac] 0x008a9000 + 0x386ac = 0x008e16ac
+.long ?ResolveLoad@Villager@@UAEXXZ
 .long ?SetPos@GameThingWithPos@@QAEXABUMapCoords@@@Z
 .long ?GetPos@GameThingWithPos@@QAEPAUMapCoords@@XZ
 .long ?GetArrivePos@GameThingWithPos@@QAEPAUMapCoords@@XZ
@@ -82,9 +82,7 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?GetLife@Object@@UAEMXZ
 .long ?GetScale@Object@@UAEMXZ
 .long ?SetScale@Object@@UAEXM@Z
-
 .long ?GetPower@GameThingWithPos@@UBEMXZ
-
 .long ?GetPSysPower@GameThingWithPos@@UBEMXZ
 .long ?GetSpeedInMetres@MobileWallHug@@UBEMXZ
 .long ?SetSpeedInMetres@Villager@@UAEXMH@Z
@@ -93,7 +91,6 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?GetDefaultSpeedInMetres@MobileWallHug@@UAEMXZ
 .long ?SetHeight@GameThingWithPos@@UAEXM@Z
 .long ?SetMaxHeight@GameThingWithPos@@UAEXM@Z
-
 .long ?GetMaxHeight@GameThingWithPos@@UAEMXZ
 .long ?GetPSysBeamTargetPos@GameThingWithPos@@UAEXPAULHPoint@@@Z
 .long ?GetSpeedInMetresPerSecond@MobileWallHug@@UBEMXZ
@@ -101,7 +98,7 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?GetRunningSpeedInMetresPerSecond@MobileWallHug@@UAEMXZ
 .long ?GetDefaultSpeedInMetresPerSecond@MobileWallHug@@UAEMXZ
 .long ?IsAnimate@Living@@UAE_NXZ
-.long ?GetMovementDirection@MobileWallHug@@UAEXPAULHPoint@@@Z                                                               // [0x38710] 0x008a9000 + 0x38710 = 0x008e1710
+.long ?GetMovementDirection@MobileWallHug@@UAEXPAULHPoint@@@Z
 .long ?GetPhysicsMovementDirection@Object@@UAEXPAULHPoint@@@Z
 .long ?GetInteractPos@GameThingWithPos@@UAEXPAULHPoint@@@Z
 .long ?IsMoving@Object@@UAE_NXZ
@@ -110,48 +107,38 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?IsCannotBePickedUp@GameThingWithPos@@UBE_NXZ
 .long ?GetOverwritePickUpToolTip@GameThingWithPos@@UAEIXZ
 .long ?IsStompable@Living@@UAE_NXZ
-
 .long ?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ
 .long ?IsInteractable@GameThingWithPos@@UAE_NXZ
 .long ?GetOverwriteInteractableToolTip@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteDropToolTip@GameThingWithPos@@UAEIXZ
-
 .long ?GetOverwriteTapToolTip@GameThingWithPos@@UAEIXZ
 .long ?IsCastShadowAtNight@GameThingWithPos@@UAE_NXZ
 .long ?CleanupWhenDeleted@Object@@UAEXH@Z
-
 .long ?GetImpressiveType@GameThingWithPos@@UAE?AW4IMPRESSIVE_TYPE@@XZ
-
 .long ?GetImpressiveIntensity@GameThingWithPos@@UAEMW4IMPRESSIVE_TYPE@@@Z
 .long ?GetImpressiveValue@Object@@UAEMPAVLiving@@PAVReaction@@@Z
 .long ?GetUpdateOfBoredomValue@Object@@UAEMPAVReaction@@PAVGameThingWithPos@@@Z
 .long ?IsTown@GameThingWithPos@@UAE_NXZ
-
 .long ?IsTown@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsActivityObjectWhichAngerAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsActivityObjectWhichCompassionAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsActivityObjectWhichPlayfulnessAppliesTo@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsTownBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?TrueFunction@GameThingWithPos@@UAE_NXZ
 .long ?FalseFunction@GameThingWithPos@@UAE_NXZ
 .long ?IsNotLiving@Living@@UAEIXZ
-
 .long ?IsSuitableForCreatureActivity@GameThingWithPos@@UAE_NXZ
 .long ?IsTownCentre@GameThingWithPos@@UAE_NXZ
 .long ?IsTotemStatue@GameThingWithPos@@UAE_NXZ
 .long ?IsTownDesireFlag@GameThingWithPos@@UAE_NXZ
-
 .long ?IsRock@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsRock@GameThingWithPos@@UAE_NXZ
 .long ?IsSpellDispenser@GameThingWithPos@@UAE_NXZ
 .long ?IsMist@GameThingWithPos@@UAE_NXZ
-
 .long ?IsQueryIcon@GameThingWithPos@@UAE_NXZ
 .long ?IsStreetLight@GameThingWithPos@@UAE_NXZ
 .long ?IsStreetLantern@GameThingWithPos@@UAE_NXZ
 .long ?IsAbode@GameThingWithPos@@UAE_NXZ
-
 .long ?IsField@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsField@GameThingWithPos@@UAE_NXZ
 .long ?IsBuildingMaterial@Object@@UAE_NXZ
@@ -167,7 +154,7 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?CanBeHelpedByCreature@Villager@@UAEIPAVCreature@@@Z
 .long ?CanBePlayedWithByCreature@Living@@UAEIPAVCreature@@@Z
 .long ?CanBeImpressedByCreature@Villager@@UAEIPAVCreature@@@Z
-.long ?CanBeInspectedByCreature@Living@@UAEIPAVCreature@@@Z                                                               // [0x387f0] 0x008a9000 + 0x387f0 = 0x008e17f0
+.long ?CanBeInspectedByCreature@Living@@UAEIPAVCreature@@@Z
 .long ?CanBePoodUponByCreature@Living@@UAEIPAVCreature@@@Z
 .long ?CanBeBefriendedByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBeSleptNextToByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
@@ -180,22 +167,18 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?CanBeGivenToVillager@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBePutInAStoragePit@Object@@UAE_NPAVCreature@@@Z
 .long ?CanBeDestroyedByStoning@Living@@UAEIPAVCreature@@@Z
-
 .long ?CanBeStonedAndEatenByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBeExaminedByCreature@Object@@UAE_NPAVCreature@@@Z
 .long ?CanBeFoughtByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanReceiveGifts@Villager@@UAEIPAVCreature@@@Z
-
 .long ?CanActAsAContainer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsBeingBuilt@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?NeedsRepair@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsOnFire@Object@@UAE_NPAVCreature@@@Z
-
 .long ?IsNotOnFire@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBeUsedForBuilding@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsMushroom@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBeUsedForRepair@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?CanBeGivenToTown@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBeUsedToHoldWater@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBePutInFoodPile@Object@@UAE_NPAVCreature@@@Z
@@ -207,8 +190,7 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?IsVillagerFarFromHome@Villager@@UAEIPAVCreature@@@Z
 .long ?IsVillagerInTownWithoutManyBreeders@Villager@@UAEIPAVCreature@@@Z
 .long ?IsVillagerNotWorshipping@Villager@@UAEIPAVCreature@@@Z
-.long ?IsVillagerBelongingToOtherPlayer@Villager@@UAEIPAVCreature@@@Z                                                               // [0x38880] 0x008a9000 + 0x38880 = 0x008e1880
-
+.long ?IsVillagerBelongingToOtherPlayer@Villager@@UAEIPAVCreature@@@Z
 .long ?IsCow@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?CanBePoodOn@Object@@UAE_NPAVCreature@@@Z
 .long ?IsVillagerWhoHasNotBeenImpressedRecently@Villager@@UAEIPAVCreature@@@Z
@@ -225,27 +207,22 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?IsWorkshop@GameThingWithPos@@UAE_NXZ
 .long ?IsWorkshop@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsBuildingWhichIsBeingBuilt@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsStoragePitWithFoodInIt@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsFieldWhichNeedsWatering@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsFieldWithFoodInIt@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsFieldBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsStoragePitBelongingToAnotherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsStoragePitBelongingToMyPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?BenefitsFromHavingWaterSprinkledOnIt@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsTree@GameThingWithPos@@UAE_NXZ
-
 .long ?IsTree@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsTreeNotTooNearPlannedForest@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsTreeBigEnoughForCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsAFoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsAWoodPileOutsideStoragePit@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsDoingSomethingInteresting@Villager@@UAEIPAVCreature@@@Z
 .long ?CanBeUsedForBuildingHomeByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsPickupableRock@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsCitadelPart@GameThingWithPos@@UAE_NXZ
 .long ?IsCitadelPart@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsPlayingFootball@Villager@@UAEIPAVCreature@@@Z
@@ -254,7 +231,6 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?CanBeBroughtHomeByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsAnimalBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsOneOffSpellBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsOneOffSpellAggressive@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsOneOffSpellCompassionate@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsOneOffSpellPlayful@GameThingWithPos@@UAE_NPAVCreature@@@Z
@@ -263,42 +239,34 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?CanBeStolenByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsStealableByCreature@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsStealableSpell@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsStealableScaffold@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsTownBelongingToOtherPlayer@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsTotemWithStealableSpell@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsCreatureAvailableForJointActivity@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsCreatureNotAvailableForJointActivity@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsToyAwayFromHome@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsToy@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsToyBall@GameThingWithPos@@UAE_NPAVCreature@@@Z
-
 .long ?IsToyDie@GameThingWithPos@@UAE_NPAVCreature@@@Z
 .long ?IsToyCuddly@GameThingWithPos@@UBE_NPAVCreature@@@Z
 .long ?IsLiving@Living@@UBEIXZ
 .long ?IsLiving@GameThingWithPos@@UBE_NPAVCreature@@@Z
-
 .long ?IsFence@GameThingWithPos@@UBE_NXZ
 .long ?IsSpellIcon@GameThingWithPos@@UBE_NXZ
 .long ?NothingScareyNearMe@GameThingWithPos@@UBE_NXZ
 .long ?CanBeUsedForThrowingDamageByCreature@GameThingWithPos@@UBE_NPAVCreature@@@Z
-
 .long ?IsCreatureWhoSeemsFriendly@GameThingWithPos@@UBE_NPAVCreature@@@Z
 .long ?CanBeThrownInTheSeaPlayfully@GameThingWithPos@@UBE_NPAVCreature@@@Z
 .long ?GetCreatureMimicType@Villager@@UAEIXZ
 .long ?GetHowMuchCreatureWantsToLookAtMe@Villager@@UAEMXZ
-
 .long ?IsFlock@GameThingWithPos@@UBE_NXZ
 .long ?IsDance@GameThingWithPos@@UBE_NXZ
 .long ?IsReward@GameThingWithPos@@UBE_NXZ
 .long ?IsScriptContainer@GameThingWithPos@@UBE_NXZ
-
 .long ?IsWeather@GameThingWithPos@@UBE_NXZ
 .long ?IsSpell@GameThingWithPos@@UBE_NXZ
 .long ?IsDeletedWhenReleasedFromScript@GameThingWithPos@@UAE_NXZ
 .long ?IsMobileWallHug@MobileWallHug@@UBEIXZ
-
 .long ?IsActive@GameThingWithPos@@UBE_NXZ
 .long ?IsObjectTurningTooFastForCameraToFollowSmoothly@GameThingWithPos@@UBE_NXZ
 .long ?CalculateWhereIWillBeAfterNSeconds@Villager@@UAEXMPAULHPoint@@@Z
@@ -319,43 +287,34 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?IsFemaleVillager@Villager@@UAEIXZ
 .long ?IsAnimal@GameThingWithPos@@UAE_NXZ
 .long ?IsAChild@Villager@@UAEIXZ
-
 .long ?IsHouse@GameThingWithPos@@UAE_NXZ
 .long ?IsObject@Object@@UAE_NXZ
 .long ?IsFootball@GameThingWithPos@@UBE_NXZ
 .long ?IsCitadel@GameThingWithPos@@UAE_NXZ
-
 .long ?IsForest@GameThingWithPos@@UAE_NXZ
 .long ?IsMobileObject@GameThingWithPos@@UAE_NXZ
 .long ?IsMobileStatic@GameThingWithPos@@UAE_NXZ
 .long ?IsAnyKindOfTree@GameThingWithPos@@UAE_NXZ
-
 .long ?IsDeadTree@GameThingWithPos@@UAE_NXZ
 .long ?IsPileFood@GameThingWithPos@@UAE_NXZ
 .long ?IsFeature@GameThingWithPos@@UAE_NXZ
 .long ?IsScriptMarker@GameThingWithPos@@UAE_NXZ
-
 .long ?IsScriptHighlight@GameThingWithPos@@UAE_NXZ
 .long ?IsWonder@GameThingWithPos@@UAE_NXZ
 .long ?IsInfluenceRing@GameThingWithPos@@UAE_NXZ
 .long ?IsPuzzleGame@GameThingWithPos@@UAE_NXZ
-
 .long ?IsScaffold@GameThingWithPos@@UAE_NXZ
 .long ?IsSkeleton@Living@@UBEIXZ
 .long ?IsPoisoned@Living@@UAEIXZ
 .long ?IsSpeedUp@GameThingWithPos@@UAE_NXZ
-
 .long ?IsParticleContainer@GameThingWithPos@@UAE_NXZ
 .long ?IsSacrificeAltar@GameThingWithPos@@UAE_NXZ
 .long ?IsPot@GameThingWithPos@@UAE_NXZ
 .long ?IsComputerPlayer@GameThingWithPos@@UBE_NXZ
-
 .long ?CanBeThrownByPlayer@GameThingWithPos@@UBE_NXZ
 .long ?SetSkeleton@Villager@@QAEX_N@Z
-
 .long ?IsSpellSeed@GameThingWithPos@@UBE_NXZ
 .long ?IsSpellShield@GameThingWithPos@@UBE_NXZ
-
 .long ?IsPileResource@GameThingWithPos@@UBE_NXZ
 .long ?IsScriptTimer@GameThingWithPos@@UBE_NXZ
 .long ?CreateBuildingSite@GameThingWithPos@@UBE_NXZ
@@ -363,12 +322,11 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?GetQueryLastEnumText@Villager@@UAE?AW4HELP_TEXT@@XZ
 .long ?GetFOVHelpMessageSet@Villager@@UAEIXZ
 .long ?GetFOVHelpCondition@Villager@@UAEIXZ
-.long ?GetScriptObjectType@Villager@@UAEIXZ                                                               // [0x38a90] 0x008a9000 + 0x38a90 = 0x008e1a90
+.long ?GetScriptObjectType@Villager@@UAEIXZ
 .long ?GetFacingDirection@MobileWallHug@@UAEMXZ
 .long ?SetAffectedByWind@GameThingWithPos@@UAEXH@Z
 .long ?GetReactionPower@GameThingWithPos@@UAEMXZ
 .long ?GetSpellCastPos@GameThingWithPos@@UAEXPAUMapCoords@@@Z
-
 .long ?CleanUpBeforeReset@GameThingWithPos@@UAEXXZ
 .long ?DestroyedByBeam@Object@@UAEXXZ
 .long ?GetXAngle@Object@@UAEMXZ
@@ -383,11 +341,11 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?UpdateFrom3DPosition@Object@@UAEXXZ
 .long ?MoveAlongPath@Living@@UAEIXZ
 .long ?IsReachable@Villager@@UAE_NXZ
-.long ?BlocksTownClearArea@Mobile@@UBE_NXZ                                                                                       // [0x38ae4] 0x008a9000 + 0x38ae4 = 0x008e1ae4
+.long ?BlocksTownClearArea@Mobile@@UBE_NXZ
 .long ?Create3DObject@Object@@UAEXXZ
 .long ?GetMapChild@Object@@UAEPAV1@PBUMapCell@@@Z
 .long ?SetMapChild@Object@@UAEXPAV1@PAUMapCell@@@Z
-.long ?InsertMapObject@Villager@@UAEXXZ                                                                                                   // [0x38af8] 0x008a9000 + 0x38af8 = 0x008e1af8
+.long ?InsertMapObject@Villager@@UAEXXZ
 .long ?RemoveMapObject@Object@@UAEXXZ
 .long ?InsertMapObjectToCell@Object@@UAEXPAUMapCell@@@Z
 .long ?RemoveMapObjectFromCell@Object@@UAEXPAUMapCell@@@Z
@@ -508,7 +466,7 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?ValidToApplyThisToObject@Villager@@UAEIPAVGInterfaceStatus@@PAVObject@@@Z
 .long ?ApplyThisToObject@Villager@@UAEIPAVGInterfaceStatus@@PAVObject@@PAUGestureSystemPacketData@@@Z
 .long ?ValidToApplyThisToMapCoord@Mobile@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@@Z
-.long ?ApplyThisToMapCoord@Mobile@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@PAUGestureSystemPacketData@@@Z                                                               // [0x38cd0] 0x008a9000 + 0x38cd0 = 0x008e1cd0
+.long ?ApplyThisToMapCoord@Mobile@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@PAUGestureSystemPacketData@@@Z
 .long ?ValidForLockedApplyProcess@Object@@UAEIPAVGInterfaceStatus@@@Z
 .long ?ApplyUnlockProcess@Object@@UAEIPAVGInterfaceStatus@@@Z
 .long ?IsInterfacePowerUpWhenInHand@Object@@UAEIXZ
@@ -532,11 +490,11 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?GetImportance@Villager@@UAEMXZ
 .long ?InitialisePhysicsFromHand@Villager@@UAEIAAULHPoint@@0PAVGInterfaceStatus@@PAVObject@@H@Z
 .long ?InitialisePhysics@Villager@@UAEIABULHPoint@@0PAVObject@@_NPAVGInterfaceStatus@@@Z
-.long ?GetPhysicsConstantsType@Villager@@UAEIXZ                                                               // [0x38d30] 0x008a9000 + 0x38d30 = 0x008e1d30
+.long ?GetPhysicsConstantsType@Villager@@UAEIXZ
 .long ?SetUpPhysOb@Villager@@UAEXPAUPhysOb@@@Z
 .long ?EndPhysics@Villager@@UAEXPAVPhysicsObject@@_N@Z
 .long ?DropSfx@Object@@UAEIXZ
-.long ?GetBoundingSphere@Living@@UAEXAAULHPoint@@AAM@Z                                                               // [0x38d40] 0x008a9000 + 0x38d40 = 0x008e1d40
+.long ?GetBoundingSphere@Living@@UAEXAAULHPoint@@AAM@Z
 .long ?InteractsWithPhysicsObjects@Object@@UAE_NXZ
 .long ?ChecksVerticesVObjects@Object@@UAEIXZ
 .long ?ShouldPhysicsRaiseObjectUntilNotIntersectingThis@Object@@UAEXPAV1@@Z
@@ -544,7 +502,7 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?ReactToPhysicsImpact@Living@@UAEXPAVPhysicsObject@@_N@Z
 .long ?CanBecomeAPhysicsObject@Villager@@UAE_NXZ
 .long ?GetAlwaysRemainsInPhysicsInternalSystem@Object@@UAE_NXZ
-.long ?HasSunk@Villager@@UAE_NXZ                                                               // [0x38d60] 0x008a9000 + 0x38d60 = 0x008e1d60
+.long ?HasSunk@Villager@@UAE_NXZ
 .long ?CreatureMustAvoid@Living@@UAE_NPAVCreature@@@Z
 .long ?AddToRoutePlan@Object@@UAEXPAVRPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z
 .long ?GetRoutePlanRadius@Object@@UAEMPAVCreature@@@Z
@@ -588,189 +546,190 @@ VftableAndRTTI SpecialVillager                                                  
 .long ?AreWeThere@MobileWallHug@@UAE_NABUMapCoords@@M@Z
 .long ?GetDestPos@MobileWallHug@@UAEPAUMapCoords@@XZ
 .long ?SetSpeed@MobileWallHug@@UAEXH@Z
-.long ?SetTowardsAngle@MobileWallHug@@UAEXG@Z                                                               // [0x38e10] 0x008a9000 + 0x38e10 = 0x008e1e10
+.long ?SetTowardsAngle@MobileWallHug@@UAEXG@Z
 .long ?MoveTo3D@MobileWallHug@@UAEXXZ
 .long ?SetNewWander@MobileWallHug@@UAEXABUMapCoords@@HH@Z
 .long ?AmILikelyToMove@Living@@UAE_NXZ
-.long ?SetFoodSpeedup@Villager@@UAEX_N@Z                                                               // [0x38e20] 0x008a9000 + 0x38e20 = 0x008e1e20
+.long ?SetFoodSpeedup@Villager@@UAEX_N@Z
 .long ?IsFoodSpeedUp@Villager@@UAE_NXZ
 .long ?GetNumTurnsToDieOver@PuzzleHorse@@UAEIXZ
 .long ?GetFinalDestPos@Villager@@UAEPAUMapCoords@@PAU2@@Z
-.long ?FleeingFromObjectReaction@Villager@@UAE_NXZ                                                               // [0x38e30] 0x008a9000 + 0x38e30 = 0x008e1e30
+.long ?FleeingFromObjectReaction@Villager@@UAE_NXZ
 .long ?LookingAtObjectReaction@Villager@@UAE_NXZ
 .long ?FleeingAndLookingAtObjectReaction@Villager@@UAE_NXZ
 .long ?FollowingObjectReaction@Villager@@UAE_NXZ
-.long ?InspectObjectReaction@Villager@@UAE_NXZ                                                               // [0x38e40] 0x008a9000 + 0x38e40 = 0x008e1e40
+.long ?InspectObjectReaction@Villager@@UAE_NXZ
 .long ?Dying@Villager@@UAE_NXZ
 .long ?Dead@Villager@@UAE_NXZ
 .long ?Downed@PuzzleHorse@@UAE_NXZ
-.long ?BeingEaten@Villager@@UAE_NXZ                                                               // [0x38e50] 0x008a9000 + 0x38e50 = 0x008e1e50
+.long ?BeingEaten@Villager@@UAE_NXZ
 .long ?GotoFoodReaction@Villager@@UAE_NXZ
 .long ?GotoWoodReaction@Villager@@UAE_NXZ
 .long ?MoveInFlock@Living@@UAE_NXZ
-.long ?IsMovingForAnimation@Villager@@UAE_NXZ                                                               // [0x38e60] 0x008a9000 + 0x38e60 = 0x008e1e60
+.long ?IsMovingForAnimation@Villager@@UAE_NXZ
 .long ?ArrivesAtFoodReaction@Villager@@UAE_NXZ
 .long ?ArrivesAtWoodReaction@Villager@@UAE_NXZ
-.long ?InHand@Villager@@UAE_NXZ                                                                           // [0x38e70] 0x008a9000 + 0x38e70 = 0x008e1e70
+.long ?InHand@Villager@@UAE_NXZ
 .long ?DecideWhatToDo@Villager@@UAE_NXZ
 .long ?Birthday@Villager@@UAEXXZ
-.long ?GetAge@PuzzleHorse@@UAEIXZ                                                                                       // [0x38e80] 0x008a9000 + 0x38e80 = 0x008e1e80
+.long ?GetAge@PuzzleHorse@@UAEIXZ
 .long ?SetAge@Villager@@UAEXI@Z
-.long ?LookAtFlyingObjectReaction@PuzzleHorse@@UAE_NXZ                                                                                                   // [0x38e8c] 0x008a9000 + 0x38e8c = 0x008e1e8c
+.long ?LookAtFlyingObjectReaction@PuzzleHorse@@UAE_NXZ
 .long ?SetCurrentAndDestinationState@Villager@@QAE_NW4VILLAGER_STATES@@0@Z
 .long ?CallIntoAnimationFunction@Villager@@UAEHW4VILLAGER_STATES@@@Z
-.long ?CallOutofAnimationFunction@Villager@@UAEHW4VILLAGER_STATES@@@Z                                                                                       // [0x38e94] 0x008a9000 + 0x38e94 = 0x008e1e94
+.long ?CallOutofAnimationFunction@Villager@@UAEHW4VILLAGER_STATES@@@Z
 .long ?SetTopState@Villager@@UAEHW4VILLAGER_STATES@@@Z
 .long ?StorePreviousState@Villager@@UAEXXZ
 .long ?SetStateSpeed@Villager@@UAEXXZ
 .long ?IsFinalState@Villager@@UAE_NW4VILLAGER_STATES@@@Z
-.long ?SetAnim@Living@@UAEXHH@Z                                                               // [0x38ea0] 0x008a9000 + 0x38ea0 = 0x008e1ea0
+.long ?SetAnim@Living@@UAEXHH@Z
 .long ?SetAnim@Living@@UAEXH@Z
 .long ?GetAnimId@Villager@@UAE?AW4ANIM_LIST@@XZ
-.long ?CallExitStateFunction@Villager@@UAEIW4VILLAGER_STATES@@@Z                                                                           // [0x38eb0] 0x008a9000 + 0x38eb0 = 0x008e1eb0
+.long ?CallExitStateFunction@Villager@@UAEIW4VILLAGER_STATES@@@Z
 .long ?CallEntryStateFunction@Villager@@QAE_NW4VILLAGER_STATES@@0@Z
 .long ?CallEntryStateFunction@Villager@@QAE_NW4VILLAGER_STATES@@@Z
 .long ?ExitReaction@Villager@@UAEHW4VILLAGER_STATES@@@Z
 .long ?ExitInScript@Living@@UAEHW4VILLAGER_STATES@@@Z
-.long ?ExitDanceInScript@Living@@UAEHW4VILLAGER_STATES@@@Z                                                                           // [0x38ec4] 0x008a9000 + 0x38ec4 = 0x008e1ec4
+.long ?ExitDanceInScript@Living@@UAEHW4VILLAGER_STATES@@@Z
 .long ?ExitInHand@Villager@@UAEHW4VILLAGER_STATES@@@Z
 .long ?ExitInFlying@Villager@@UAEHW4VILLAGER_STATES@@@Z
 .long ?ExitInLanded@Living@@UAEHW4VILLAGER_STATES@@@Z
-.long ?ExitNoChangeState@Living@@UAEHW4VILLAGER_STATES@@@Z                                                               // [0x38ed0] 0x008a9000 + 0x38ed0 = 0x008e1ed0
+.long ?ExitNoChangeState@Living@@UAEHW4VILLAGER_STATES@@@Z
 .long ?ExitMoveOnPath@Living@@UAEHW4VILLAGER_STATES@@@Z
 .long ?ExitMoveToPos@Living@@UAEHE@Z
-.long ?ExitBeingEaten@Living@@UAEHE@Z                                                                           // [0x38ee0] 0x008a9000 + 0x38ee0 = 0x008e1ee0
+.long ?ExitBeingEaten@Living@@UAEHE@Z
 .long ?SetState@Villager@@UAEXW4LIVING_ACTION_INDEX@@W4VILLAGER_STATES@@@Z
 .long ?EnterMoveToPos@Living@@UAEIW4VILLAGER_STATES@@0@Z
 .long ?EnterInScript@Living@@UAEIW4VILLAGER_STATES@@0@Z
-.long ?EnterInHand@Villager@@UAEIW4VILLAGER_STATES@@0@Z                                                                           // [0x38ef0] 0x008a9000 + 0x38ef0 = 0x008e1ef0
+.long ?EnterInHand@Villager@@UAEIW4VILLAGER_STATES@@0@Z
 .long ?EnterMoveOnPath@Living@@UAEIEE@Z
 .long ?EnterDanceInScript@Living@@UAEIW4VILLAGER_STATES@@0@Z
 .long ?EnterScriptWander@Living@@UAEIW4VILLAGER_STATES@@0@Z
 .long ?ExitScriptWander@Living@@UAEHW4VILLAGER_STATES@@@Z
-.long ?EnterPlayAnim@Living@@UAEIW4VILLAGER_STATES@@0@Z                                                               // [0x38f00] 0x008a9000 + 0x38f00 = 0x008e1f00
+.long ?EnterPlayAnim@Living@@UAEIW4VILLAGER_STATES@@0@Z
 .long ?ExitPlayAnim@Living@@UAEHW4VILLAGER_STATES@@@Z
 .long ?IsScriptState@Villager@@UBE_NW4VILLAGER_STATES@@@Z
 .long ?IsScriptInterruptableState@Villager@@UBE_NW4VILLAGER_STATES@@@Z
-.long ?IsStateForInterface@Living@@UBE_NW4VILLAGER_STATES@@@Z                                                               // [0x38f10] 0x008a9000 + 0x38f10 = 0x008e1f10
+.long ?IsStateForInterface@Living@@UBE_NW4VILLAGER_STATES@@@Z
 .long ?IsStateExitFunctionSameAs@Villager@@UBE_NW4VILLAGER_STATES@@@Z
 .long ?IsDeathState@Living@@UBE_NW4VILLAGER_STATES@@@Z
 .long ?DebugShowTime@Villager@@UAEIIEE@Z
-.long ?IsDancing@Living@@UAE_NXZ                                                               // [0x38f20] 0x008a9000 + 0x38f20 = 0x008e1f20
+.long ?IsDancing@Living@@UAE_NXZ
 .long ?IsInterestedInFoodObject@Villager@@UAE_NPAVObject@@@Z
 .long ?IsInterestedInWoodObject@Villager@@UAE_NPAVObject@@@Z
 .long ?IsAvailableForReaction@Villager@@UAE_NW4REACTION@@@Z
-.long ?IsAvailableForBeliefButNotReaction@Villager@@UAE_NW4REACTION@@@Z                                                               // [0x38f30] 0x008a9000 + 0x38f30 = 0x008e1f30
+.long ?IsAvailableForBeliefButNotReaction@Villager@@UAE_NW4REACTION@@@Z
 .long ?UpdateHowImpressed@Villager@@UAEXPAVReaction@@H@Z
 .long ?AddReaction@Villager@@UAEXPAVReaction@@W4VILLAGER_STATES@@@Z
 .long ?StartReacting@Living@@UAEXW4REACTION@@PAVGameThingWithPos@@PAVReaction@@@Z
-.long ?StopReacting@Villager@@UAEXXZ                                                               // [0x38f40] 0x008a9000 + 0x38f40 = 0x008e1f40
+.long ?StopReacting@Villager@@UAEXXZ
 .long ?StopReactingAndSetState@Living@@UAEXXZ
 .long ?ResetStateAfterReacting@Villager@@UAEXXZ
 .long ?SetupFleeFromObject@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
-.long ?SetupLookAtObject@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z                                                               // [0x38f50] 0x008a9000 + 0x38f50 = 0x008e1f50
+.long ?SetupLookAtObject@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupLookAtSpell@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupLookAtNiceSpell@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupFollowObject@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
-.long ?SetupReactToCreature@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z                                                               // [0x38f60] 0x008a9000 + 0x38f60 = 0x008e1f60
+.long ?SetupReactToCreature@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToFood@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToWood@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToMagicTree@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
-.long ?SetupReactToFlyingObject@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z                                                               // [0x38f70] 0x008a9000 + 0x38f70 = 0x008e1f70
+.long ?SetupReactToFlyingObject@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToFire@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToBall@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToMagicShield@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
-.long ?SetupReactToCreatureGift@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z                                                               // [0x38f80] 0x008a9000 + 0x38f80 = 0x008e1f80
+.long ?SetupReactToCreatureGift@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToNewBuilding@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToHandPickUp@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToHandUsingTotem@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
-.long ?SetupReactToObjectCrushed@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z                                                               // [0x38f90] 0x008a9000 + 0x38f90 = 0x008e1f90
+.long ?SetupReactToObjectCrushed@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToFight@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToTeleport@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToHandPuttingStuffInStoragePit@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
-.long ?SetupReactToDeath@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z                                                               // [0x38fa0] 0x008a9000 + 0x38fa0 = 0x008e1fa0
+.long ?SetupReactToDeath@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToDroppedByHand@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToFainting@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToConfused@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
-.long ?SetupReactToFallingTree@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z                                                               // [0x38fb0] 0x008a9000 + 0x38fb0 = 0x008e1fb0
+.long ?SetupReactToFallingTree@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToCrowd@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToBreeder@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupFleeFromPredator@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
-.long ?SetupReactToTownCelebration@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z                                                               // [0x38fc0] 0x008a9000 + 0x38fc0 = 0x008e1fc0
+.long ?SetupReactToTownCelebration@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToVillagerInHand@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToBurningObjectInHand@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?SetupReactToMagicShieldStruck@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
-.long ?SetupReactToMagicShieldDestroyed@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z                                                               // [0x38fd0] 0x008a9000 + 0x38fd0 = 0x008e1fd0
+.long ?SetupReactToMagicShieldDestroyed@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .long ?FleeFromObjectPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?LookAtObjectPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?FollowObjectPriority@Living@@UAEEPAVReaction@@0@Z
-.long ?FleeFromSpellPriority@Living@@UAEEPAVReaction@@0@Z                                                               // [0x38fe0] 0x008a9000 + 0x38fe0 = 0x008e1fe0
+.long ?FleeFromSpellPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?LookAtSpellPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?LookAtNiceSpellPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?FollowSpellPriority@Living@@UAEEPAVReaction@@0@Z
-.long ?ReactToCreaturePriority@Villager@@UAEEPAVReaction@@0@Z                                                               // [0x38ff0] 0x008a9000 + 0x38ff0 = 0x008e1ff0
+.long ?ReactToCreaturePriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToFoodPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?ReactToWoodPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?ReactToMagicTreePriority@Living@@UAEEPAVReaction@@0@Z
-.long ?ReactToFlyingObjectPriority@Villager@@UAEEPAVReaction@@0@Z                                                               // [0x39000] 0x008a9000 + 0x39000 = 0x008e2000
+.long ?ReactToFlyingObjectPriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToBallPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?ReactToFirePriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToMagicShieldPriority@Villager@@UAEEPAVReaction@@0@Z
-.long ?ReactToCreatureGiftPriority@Living@@UAEEPAVReaction@@0@Z                                                               // [0x39010] 0x008a9000 + 0x39010 = 0x008e2010
+.long ?ReactToCreatureGiftPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?ReactToNewBuildingPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?ReactToHandPickUpPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?ReactToHandUsingTotemPriority@Living@@UAEEPAVReaction@@0@Z
-.long ?ReactToObjectCrushedPriority@Living@@UAEEPAVReaction@@0@Z                                                               // [0x39020] 0x008a9000 + 0x39020 = 0x008e2020
+.long ?ReactToObjectCrushedPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?ReactToFightPriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToTeleportPriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToHandPuttingStuffInStoragePitPriority@Living@@UAEEPAVReaction@@0@Z
-.long ?ReactToDeathPriority@Villager@@UAEEPAVReaction@@0@Z                                                               // [0x39030] 0x008a9000 + 0x39030 = 0x008e2030
+.long ?ReactToDeathPriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToDroppedByHandPriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToFaintingPriority@Living@@UAEEPAVReaction@@0@Z
 .long ?ReactToConfusedPriority@Living@@UAEEPAVReaction@@0@Z
-.long ?ReactToFallingTreePriority@Villager@@UAEEPAVReaction@@0@Z                                                               // [0x39040] 0x008a9000 + 0x39040 = 0x008e2040
+.long ?ReactToFallingTreePriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToCrowdPriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToBreederPriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToTownCelebrationPriority@Villager@@UAEEPAVReaction@@0@Z
-.long ?FleeFromPredatorPriority@Villager@@UAEEPAVReaction@@0@Z                                                               // [0x39050] 0x008a9000 + 0x39050 = 0x008e2050
+.long ?FleeFromPredatorPriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToVillagerInHandPriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToBurningObjectInHandPriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToMagicShieldStruckPriority@Villager@@UAEEPAVReaction@@0@Z
-.long ?ReactToMagicShieldDestroyedPriority@Villager@@UAEEPAVReaction@@0@Z                                                               // [0x39060] 0x008a9000 + 0x39060 = 0x008e2060
+.long ?ReactToMagicShieldDestroyedPriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?ReactToScaffoldPriority@Villager@@UAEEPAVReaction@@0@Z
 .long ?StandardNumGameTurnsToReactFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z
 .long ?StandardNumGameTurnsBeforeReactingAgainFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z
-.long ?NumGameTurnsToReactToCreatureFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z                                                               // [0x39070] 0x008a9000 + 0x39070 = 0x008e2070
+.long ?NumGameTurnsToReactToCreatureFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z
 .long ?NumGameTurnsBeforeReactingAgainToCreatureFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z
 .long ?NumGameTurnsToReactToPredatorFunction@Villager@@UAEIPAVGameThingWithPos@@IM@Z
 .long ?NumGameTurnsBeforeReactingAgainToPredatorFunction@Villager@@UAEIPAVGameThingWithPos@@IM@Z
-.long ?StandardNumGameTurnsBeforeReactingToWoodAgainFunction@Villager@@UAEIPAVGameThingWithPos@@IM@Z                                                               // [0x39080] 0x008a9000 + 0x39080 = 0x008e2080
+.long ?StandardNumGameTurnsBeforeReactingToWoodAgainFunction@Villager@@UAEIPAVGameThingWithPos@@IM@Z
 .long ?NumGameTurnsToReactToBurningObjectFunction@Villager@@UAEIPAVGameThingWithPos@@IM@Z
 .long ?NumGameTurnsBeforeReactingAgainToBurningObjectFunction@Villager@@UAEIPAVGameThingWithPos@@IM@Z
 .long ?NumGameTurnsToReactToShieldFunction@Villager@@UAEIPAVGameThingWithPos@@IM@Z
-.long ?NumGameTurnsBeforeReactingToShieldAgainFunction@Villager@@UAEIPAVGameThingWithPos@@IM@Z                                                               // [0x39090] 0x008a9000 + 0x39090 = 0x008e2090
+.long ?NumGameTurnsBeforeReactingToShieldAgainFunction@Villager@@UAEIPAVGameThingWithPos@@IM@Z
 .long ?IsPosValidForMapCellExistance@Living@@UAEIABUMapCoords@@@Z
 .long ?MoveByTeleport@Living@@UAEXABUMapCoords@@@Z
 .long ?IsDead@Living@@UAE_NXZ
-.long ?IsChild@Villager@@UAE_NXZ                                                               // [0x390a0] 0x008a9000 + 0x390a0 = 0x008e20a0
+.long ?IsChild@Villager@@UAE_NXZ
 .long ?GetFleeingPositionFromMovingObject@Living@@UAEXPAUMapCoords@@PAVGameThingWithPos@@M@Z
-.long ?GetFleeingPositionFromStationaryObject@Living@@UAEXPAUMapCoords@@PAVGameThingWithPos@@M@Z                                                                                       // [0x390b0] 0x008a9000 + 0x390b0 = 0x008e20b0
+.long ?GetFleeingPositionFromStationaryObject@Living@@UAEXPAUMapCoords@@PAVGameThingWithPos@@M@Z
 .long ?GetFinalState@Villager@@UBEEXZ
-.long ?RemoveFromDance@Villager@@UAEXH@Z                                                                                                   // [0x390bc] 0x008a9000 + 0x390bc = 0x008e20bc
+.long ?RemoveFromDance@Villager@@UAEXH@Z
 .long ?SetStateAfterFinishingDance@Villager@@UAEXXZ
 .long ?CalculateLifeDesire@Villager@@UAEMXZ
 .long ?DanceType@Living@@UAEIXZ
-.long ?CanBeHealedByHealSpell@Living@@UAE_NXZ                                                               // [0x390c0] 0x008a9000 + 0x390c0 = 0x008e20c0
+.long ?CanBeHealedByHealSpell@Living@@UAE_NXZ
 .long ?MoveAllowedForChessGame@Villager@@UAE_NXZ
 .long ?AttackAllowedForChessGame@Villager@@UAE_NXZ
 .long ?AddToBoxPositionForChessGame@Villager@@UAEXHH@Z
-.long ?GetBoxXForChessGame@Villager@@UAEHXZ                                                               // [0x390d0] 0x008a9000 + 0x390d0 = 0x008e20d0
+.long ?GetBoxXForChessGame@Villager@@UAEHXZ
 .long ?GetBoxZForChessGame@Villager@@UAEHXZ
 .long ?SetBoxXForChessGame@Villager@@UAEXH@Z
 .long ?SetBoxZForChessGame@Villager@@UAEXH@Z
-.long ?GetTeamForChessGame@Villager@@UAEIXZ                                                               // [0x390e0] 0x008a9000 + 0x390e0 = 0x008e20e0
+.long ?GetTeamForChessGame@Villager@@UAEIXZ
 .long ?IsPosValidForTurnAngle@Villager@@UAE_NABUMapCoords@@@Z
-.long 0x0071f490, 0x0071f240                                                                           // [0x390f0] 0x008a9000 + 0x390f0 = 0x008e20f0
+.long ?GetVillagerName@SpecialVillager@@UAEPBDXZ
+.long 0x0071f240
 
 VftableAndRTTI Rock                                                                                                // [0x390fc] 0x008a9000 + 0x390fc = 0x008e20fc
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
