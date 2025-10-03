@@ -67,5 +67,9 @@ uint32_t __fastcall Save__15SpecialVillagerFR10GameOSFile(struct GameThing* this
 uint32_t __fastcall GetSaveType__15SpecialVillagerFv(struct GameThing* this) asm("?GetSaveType@SpecialVillager@@UAEIXZ");
 // win1.41 0071f3d0 mac 1002d450 SpecialVillager::Draw(void)
 void __fastcall Draw__15SpecialVillagerFv(struct Object* this) asm("?Draw@SpecialVillager@@UAEXXZ");
+// win1.41 0071f490 mac 10147040 SpecialVillager::GetVillagerName(void)
+const char* __fastcall GetVillagerName__15SpecialVillagerFv(struct Villager* this) asm("?GetVillagerName@SpecialVillager@@UAEPBDXZ");
+// win1.41 0071f240 mac 10068e20 SpecialVillager::DrawVillagerInfo(void)
+uint32_t __fastcall DrawVillagerInfo__15SpecialVillagerFv(struct Villager* this) asm("?DrawVillagerInfo@SpecialVillager@@UAEIXZ");
 
 #endif /* BW1_DECOMP_SPECIAL_VILLAGER_INCLUDED_H */
