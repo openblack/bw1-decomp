@@ -135,58 +135,6 @@
 .globl ?GetDebugText@GComputerPlayerQueue@@UAEPADXZ
 .globl ??_GGComputerPlayerQueue@@UAEPAXI@Z
 
-?GetSaveType@SpecialVillager@@UAEIXZ:
-                         mov                eax, 0x00000076                                // 0x00560fc0    b876000000
-                         ret                                                               // 0x00560fc5    c3
-                         nop                                                               // 0x00560fc6    90
-                         nop                                                               // 0x00560fc7    90
-                         nop                                                               // 0x00560fc8    90
-                         nop                                                               // 0x00560fc9    90
-                         nop                                                               // 0x00560fca    90
-                         nop                                                               // 0x00560fcb    90
-                         nop                                                               // 0x00560fcc    90
-                         nop                                                               // 0x00560fcd    90
-                         nop                                                               // 0x00560fce    90
-                         nop                                                               // 0x00560fcf    90
-?GetDebugText@SpecialVillager@@UAEPADXZ:
-                         mov                eax, 0x00bee13c                                // 0x00560fd0    b83ce1be00
-                         ret                                                               // 0x00560fd5    c3
-                         nop                                                               // 0x00560fd6    90
-                         nop                                                               // 0x00560fd7    90
-                         nop                                                               // 0x00560fd8    90
-                         nop                                                               // 0x00560fd9    90
-                         nop                                                               // 0x00560fda    90
-                         nop                                                               // 0x00560fdb    90
-                         nop                                                               // 0x00560fdc    90
-                         nop                                                               // 0x00560fdd    90
-                         nop                                                               // 0x00560fde    90
-                         nop                                                               // 0x00560fdf    90
-??_GSpecialVillager@@UAEPAXI@Z:
-                         push               esi                                            // 0x00560fe0    56
-                         mov.s              esi, ecx                                       // 0x00560fe1    8bf1
-                         call               _jmp_addr_0x0071f170                           // 0x00560fe3    e888e11b00
-                         test               byte ptr [esp + 0x08], 0x01                    // 0x00560fe8    f644240801
-                         {disp8} je         _jmp_addr_0x00560ffd                           // 0x00560fed    740e
-                         push               0x00000134                                     // 0x00560fef    6834010000
-                         push               esi                                            // 0x00560ff4    56
-                         call               ??3Base@@SAXPAXK@Z                           // 0x00560ff5    e87659edff
-                         add                esp, 0x08                                      // 0x00560ffa    83c408
-_jmp_addr_0x00560ffd:    mov.s              eax, esi                                       // 0x00560ffd    8bc6
-                         pop                esi                                            // 0x00560fff    5e
-                         ret                0x0004                                         // 0x00561000    c20400
-                         nop                                                               // 0x00561003    90
-                         nop                                                               // 0x00561004    90
-                         nop                                                               // 0x00561005    90
-                         nop                                                               // 0x00561006    90
-                         nop                                                               // 0x00561007    90
-                         nop                                                               // 0x00561008    90
-                         nop                                                               // 0x00561009    90
-                         nop                                                               // 0x0056100a    90
-                         nop                                                               // 0x0056100b    90
-                         nop                                                               // 0x0056100c    90
-                         nop                                                               // 0x0056100d    90
-                         nop                                                               // 0x0056100e    90
-                         nop                                                               // 0x0056100f    90
 ?GetText@ScriptMarker@@UAEPBDXZ:
                          mov                eax, 0x00bee150                                // 0x00561010    b850e1be00
                          ret                                                               // 0x00561015    c3
