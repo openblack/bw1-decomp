@@ -537,6 +537,8 @@
 .globl ?Process@SpellFlock@@UAEIXZ
 .globl ?Load@SpellFlock@@UAEIAAVGameOSFile@@@Z
 .globl ?Save@SpellFlock@@UAEIAAVGameOSFile@@@Z
+.globl ?GetVillagerName@SpecialVillager@@UAEPBDXZ
+.globl ?DrawVillagerInfo@SpecialVillager@@UAEIXZ
 
 start_0x0071bdd0_0x00728570:
 // Snippet: asm, [0x0071bdd0, 0x0072853b)
@@ -5455,6 +5457,8 @@ _jmp_addr_0x0071f22c:    xor.s              edi, edi                            
                          nop                                                                     // 0x0071f23d    90
                          nop                                                                     // 0x0071f23e    90
                          nop                                                                     // 0x0071f23f    90
+
+?DrawVillagerInfo@SpecialVillager@@UAEIXZ:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x3d6368]               // 0x0071f240    a168c3d900
                          sub                esp, 0x18                                            // 0x0071f245    83ec18
                          test               eax, eax                                             // 0x0071f248    85c0
@@ -5653,6 +5657,8 @@ _jmp_addr_0x0071f483:    {disp8} mov        al, byte ptr [esi + 0x0a]           
                          pop                esi                                                  // 0x0071f48d    5e
                          ret                                                                     // 0x0071f48e    c3
                          nop                                                                     // 0x0071f48f    90
+
+?GetVillagerName@SpecialVillager@@UAEPBDXZ:
                          {disp32} mov       eax, dword ptr [ecx + 0x00000130]                    // 0x0071f490    8b8130010000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x3d5154]               // 0x0071f496    8b0d54b1d900
                          lea                eax, dword ptr [eax + eax * 0x2]                     // 0x0071f49c    8d0440
