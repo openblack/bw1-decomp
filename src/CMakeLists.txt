@@ -242,7 +242,8 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0490.005525e0-005529e0.asm
     asm/unprocessed/runblack.reassemble.0493.005529e0-00555240.asm
     asm/unprocessed/runblack.reassemble.0497.00555240-0055c770.asm
-    asm/unprocessed/runblack.reassemble.0501.0055c770-00560fc0.asm
+    asm/unprocessed/runblack.reassemble.0500.0055c770-0055c8a0.asm
+    asm/unprocessed/runblack.reassemble.0501.0055c8a0-00560fc0.asm
     c/SpecialVillager.500.c
     asm/unprocessed/runblack.reassemble.0502.00560fc0-00562180.asm
     asm/unprocessed/runblack.reassemble.0506.00562180-0056a4d0.asm
