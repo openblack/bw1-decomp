@@ -64,7 +64,7 @@
 .extern _jmp_addr_0x0073bab0
 .extern ?GetTotemStatue@Town@@QAEPAVTotemStatue@@XZ
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
-.extern @GetAbode__8VillagerFv@4
+.extern ?GetAbode@Villager@@QAEPAVAbode@@XZ
 .extern @GetTotemPos__11WorshipSiteFv@12
 .extern _jmp_addr_0x007a1400
 .extern _atexit
@@ -21992,7 +21992,7 @@ _jmp_addr_0x004bf901:    sub                esp, 0x10                           
                          {disp8} mov        dword ptr [esp + 0x10], ebx                          // 0x004bf995    895c2410
                          {disp32} je        _jmp_addr_0x004bfbb8                                 // 0x004bf999    0f8419020000
                          mov.s              ecx, ebx                                             // 0x004bf99f    8bcb
-                         call               @GetAbode__8VillagerFv@4                             // 0x004bf9a1    e8ba272900
+                         call               ?GetAbode@Villager@@QAEPAVAbode@@XZ                  // 0x004bf9a1    e8ba272900
                          test               eax, eax                                             // 0x004bf9a6    85c0
                          {disp32} je        _jmp_addr_0x004bfbb8                                 // 0x004bf9a8    0f840a020000
                          {disp32} mov       eax, dword ptr [esi + 0x00001514]                    // 0x004bf9ae    8b8614150000
@@ -22042,7 +22042,7 @@ _jmp_addr_0x004bf9ff:    sub                esp, 0x10                           
                          {disp8} mov        ebx, dword ptr [esp + 0x10]                          // 0x004bfa36    8b5c2410
 _jmp_addr_0x004bfa3a:    {disp32} mov       edi, dword ptr [esi + 0x00001514]                    // 0x004bfa3a    8bbe14150000
                          mov.s              ecx, ebx                                             // 0x004bfa40    8bcb
-                         call               @GetAbode__8VillagerFv@4                             // 0x004bfa42    e819272900
+                         call               ?GetAbode@Villager@@QAEPAVAbode@@XZ                  // 0x004bfa42    e819272900
                          {disp32} mov       ecx, dword ptr [edi + 0x00000164]                    // 0x004bfa47    8b8f64010000
                          push               eax                                                  // 0x004bfa4d    50
                          push               edi                                                  // 0x004bfa4e    57

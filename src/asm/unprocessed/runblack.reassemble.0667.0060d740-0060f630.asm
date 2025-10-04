@@ -64,7 +64,7 @@
 .extern _Spiral__6GUtilsFRlRl
 .extern _jmp_addr_0x0074dc30
 .extern _ConvertGameAngleTo3D__6GUtilsFl
-.extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
+.extern ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern ___RTDynamicCast
@@ -487,7 +487,7 @@ _jmp_addr_0x0060db00:    push               esi                                 
                          {disp8} lea        eax, dword ptr [ebx + 0x10]                 // 0x0060db73    8d4310
                          push               0x00da6be8 /* _GVillagerInfo_ARRAY_00da6be8 */ // 0x0060db76    68e86bda00
                          push               eax                                         // 0x0060db7b    50
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                        // 0x0060db7c    e85f201400
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                        // 0x0060db7c    e85f201400
                          add                esp, 0x10                                   // 0x0060db81    83c410
                          push               0x0                                         // 0x0060db84    6a00
                          mov.s              edi, eax                                    // 0x0060db86    8bf8
@@ -618,7 +618,7 @@ _jmp_addr_0x0060dcd2:    {disp8} mov        eax, dword ptr [ebx + 0x34]         
                          {disp8} lea        eax, dword ptr [edi + 0x14]                 // 0x0060dcec    8d4714
                          push               0x00da6be8 /* _GVillagerInfo_ARRAY_00da6be8 */ // 0x0060dcef    68e86bda00
                          push               eax                                         // 0x0060dcf4    50
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                        // 0x0060dcf5    e8e61e1400
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                        // 0x0060dcf5    e8e61e1400
                          {disp8} mov        cl, byte ptr [edi + 0x74]                   // 0x0060dcfa    8a4f74
                          mov.s              esi, eax                                    // 0x0060dcfd    8bf0
                          add                esp, 0x10                                   // 0x0060dcff    83c410
@@ -743,7 +743,7 @@ _jmp_addr_0x0060de22:    {disp8} mov        eax, dword ptr [ebx + 0x04]         
                          {disp8} lea        ecx, dword ptr [ebx + 0x10]                 // 0x0060de78    8d4b10
                          push               0x00da6be8 /* _GVillagerInfo_ARRAY_00da6be8 */ // 0x0060de7b    68e86bda00
                          push               ecx                                         // 0x0060de80    51
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                        // 0x0060de81    e85a1d1400
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                        // 0x0060de81    e85a1d1400
                          add                esp, 0x10                                   // 0x0060de86    83c410
                          push               0x0                                         // 0x0060de89    6a00
                          mov.s              ebp, eax                                    // 0x0060de8b    8be8

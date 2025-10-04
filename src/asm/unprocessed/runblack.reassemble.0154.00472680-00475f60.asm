@@ -142,7 +142,7 @@
 .extern @SetGameAngle__13MobileWallHugFUs@10
 .extern _jmp_addr_0x0060db00
 .extern _jmp_addr_0x006340e0
-.extern @__ct__6ObjectFv@4
+.extern ??0Object@@QAE@XZ
 .extern _jmp_addr_0x00636640
 .extern _jmp_addr_0x00639a60
 .extern _jmp_addr_0x0064a9f0
@@ -3262,7 +3262,7 @@ _jmp_addr_0x00474749:    {disp32} mov       dword ptr [esi + 0x00000370], eax   
 @__ct__13MobileWallHugFv@4:    push               esi                                                  // 0x00474890    56
                          push               edi                                                  // 0x00474891    57
                          mov.s              esi, ecx                                             // 0x00474892    8bf1
-                         call               @__ct__6ObjectFv@4                                   // 0x00474894    e8b71b1c00
+                         call               ??0Object@@QAE@XZ                                    // 0x00474894    e8b71b1c00
                          mov                dword ptr [esi], 0x008ce750                          // 0x00474899    c70650e78c00
                          xor.s              edi, edi                                             // 0x0047489f    33ff
                          {disp8} mov        dword ptr [esi + 0x60], edi                          // 0x004748a1    897e60

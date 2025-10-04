@@ -117,10 +117,10 @@
 .extern _jmp_addr_0x007498c0
 .extern _jmp_addr_0x00749990
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
-.extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
+.extern ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z
 .extern _jmp_addr_0x00750b50
 .extern ?SetAbode@Villager@@QAEXPAVAbode@@@Z
-.extern @GetAbode__8VillagerFv@4
+.extern ?GetAbode@Villager@@QAEPAVAbode@@XZ
 .extern ?SetTown@Villager@@QAEXPAVTown@@@Z
 .extern ?MakeHomelessNoStateChange@Villager@@QAE_NXZ
 .extern _jmp_addr_0x007714b0
@@ -5620,7 +5620,7 @@ _jmp_addr_0x00739e72:    {disp8} mov        ecx, dword ptr [esi + 0x28]         
                          {disp8} lea        edx, dword ptr [esp + 0x2c]                    // 0x00739ed6    8d54242c
                          push               edx                                            // 0x00739eda    52
                          {disp8} mov        dword ptr [esp + 0x38], 0x00000000             // 0x00739edb    c744243800000000
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                           // 0x00739ee3    e8f85c0100
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                           // 0x00739ee3    e8f85c0100
                          add                esp, 0x10                                      // 0x00739ee8    83c410
                          test               eax, eax                                       // 0x00739eeb    85c0
                          {disp8} je         _jmp_addr_0x00739f04                           // 0x00739eed    7415
@@ -5710,7 +5710,7 @@ _jmp_addr_0x00739f93:    {disp8} mov        edx, dword ptr [esi + 0x28]         
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                    // 0x00739ffa    8d4c2428
                          push               ebx                                            // 0x00739ffe    53
                          push               ecx                                            // 0x00739fff    51
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                           // 0x0073a000    e8db5b0100
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                           // 0x0073a000    e8db5b0100
                          add                esp, 0x10                                      // 0x0073a005    83c410
                          test               eax, eax                                       // 0x0073a008    85c0
                          {disp8} jne        _jmp_addr_0x0073a03a                           // 0x0073a00a    752e
@@ -5785,7 +5785,7 @@ _jmp_addr_0x0073a05d:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          mov.s              ecx, esi                                       // 0x0073a0b4    8bce
                          call               ?SetTown@Villager@@QAEXPAVTown@@@Z             // 0x0073a0b6    e875c40100
                          mov.s              ecx, esi                                       // 0x0073a0bb    8bce
-                         call               @GetAbode__8VillagerFv@4                       // 0x0073a0bd    e89e800100
+                         call               ?GetAbode@Villager@@QAEPAVAbode@@XZ            // 0x0073a0bd    e89e800100
                          mov.s              ebx, eax                                       // 0x0073a0c2    8bd8
                          test               ebx, ebx                                       // 0x0073a0c4    85db
                          {disp8} je         _jmp_addr_0x0073a0e4                           // 0x0073a0c6    741c

@@ -73,7 +73,7 @@
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _GetPosFromAngle__6GUtilsFff
-.extern @GetAbode__8VillagerFv@4
+.extern ?GetAbode@Villager@@QAEPAVAbode@@XZ
 .extern _jmp_addr_0x00752820
 .extern _jmp_addr_0x00756000
 .extern _jmp_addr_0x00763800
@@ -1833,7 +1833,7 @@ _jmp_addr_0x0066a96a:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          test               eax, eax                                      // 0x0066aa1d    85c0
                          {disp32} je        _jmp_addr_0x0066ab91                          // 0x0066aa1f    0f846c010000
                          mov.s              ecx, esi                                      // 0x0066aa25    8bce
-                         call               @GetAbode__8VillagerFv@4                      // 0x0066aa27    e834770e00
+                         call               ?GetAbode@Villager@@QAEPAVAbode@@XZ           // 0x0066aa27    e834770e00
                          mov.s              edi, eax                                      // 0x0066aa2c    8bf8
                          cmp.s              edi, ebp                                      // 0x0066aa2e    3bfd
                          {disp8} mov        dword ptr [esp + 0x20], ebp                   // 0x0066aa30    896c2420

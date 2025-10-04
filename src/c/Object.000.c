@@ -266,7 +266,7 @@ bool __fastcall IsSpellSeedReturnPoint__6ObjectCFv(const struct Object* this)
 }
 
 __attribute__((XOR32rr_REV))
-bool __fastcall IsABeliever__6ObjectFv(struct Object* this)
+bool32_t __fastcall IsABeliever__6ObjectFv(struct Object* this)
 {
     return 0;
 }

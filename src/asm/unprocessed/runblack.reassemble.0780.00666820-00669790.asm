@@ -77,7 +77,7 @@
 .extern _GetPosFromAngle__6GUtilsFff
 .extern _Spiral__6GUtilsFRlRl
 .extern _GetDistanceModifier__6GUtilsFff@8
-.extern @IsVillagerAvailable__8VillagerFv@4
+.extern ?IsVillagerAvailable@Villager@@QAE_NXZ
 .extern _jmp_addr_0x00761090
 .extern _jmp_addr_0x0077b920
 .extern _jmp_addr_0x0077ce60
@@ -2751,7 +2751,7 @@ _jmp_addr_0x00668510:    sub                esp, 0x1c                           
                          {disp8} mov        esi, dword ptr [esp + 0x28]              // 0x00668515    8b742428
                          mov.s              ebx, ecx                                 // 0x00668519    8bd9
                          mov.s              ecx, esi                                 // 0x0066851b    8bce
-                         call               @IsVillagerAvailable__8VillagerFv@4      // 0x0066851d    e86e9d0e00
+                         call               ?IsVillagerAvailable@Villager@@QAE_NXZ   // 0x0066851d    e86e9d0e00
                          test               eax, eax                                 // 0x00668522    85c0
                          {disp32} je        _jmp_addr_0x00668637                     // 0x00668524    0f840d010000
                          mov                eax, dword ptr [esi]                     // 0x0066852a    8b06
@@ -3007,7 +3007,7 @@ _jmp_addr_0x00668806:    {disp32} mov       esi, dword ptr [edi + 0x000000a0]   
                          test               esi, esi                                 // 0x0066880c    85f6
                          {disp32} je        _jmp_addr_0x0066889e                     // 0x0066880e    0f848a000000
 _jmp_addr_0x00668814:    mov.s              ecx, esi                                 // 0x00668814    8bce
-                         call               @IsVillagerAvailable__8VillagerFv@4      // 0x00668816    e8759a0e00
+                         call               ?IsVillagerAvailable@Villager@@QAE_NXZ   // 0x00668816    e8759a0e00
                          test               eax, eax                                 // 0x0066881b    85c0
                          {disp8} je         _jmp_addr_0x00668890                     // 0x0066881d    7471
                          {disp32} mov       dl, byte ptr [esi + 0x000000e0]          // 0x0066881f    8a96e0000000

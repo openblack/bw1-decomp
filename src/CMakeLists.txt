@@ -57,7 +57,7 @@ find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
 find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 
 set(SOURCES_001
-    asm/unprocessed/data.000.009c6000-009c7e80-crt-init.asm
+    asm/unprocessed/data.100.009c6000-009c7e80-crt-init.asm
 
     c/_HeaderIncluder.c
     c/_CXXFuncs.c
@@ -106,9 +106,9 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0019.004061a0-004097a0.asm
 
     asm/unprocessed/text.x.001.asm
-    asm/unprocessed/rdata.003.008a99d0-0099f250.asm
+    asm/unprocessed/rdata.100.008a99d0-008e15b0.asm
     asm/unprocessed/rdata.r.001-rtti.asm
-    asm/unprocessed/data.001.009c7e80-00c2b1d0.asm
+    asm/unprocessed/data.101.009c7e80-00c234e0.asm
     asm/unprocessed/bss.001.asm
     asm/unprocessed/xdata.x.000.009bbdc8-009bc428.asm
     asm/unprocessed/data1.asm
@@ -242,7 +242,11 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0490.005525e0-005529e0.asm
     asm/unprocessed/runblack.reassemble.0493.005529e0-00555240.asm
     asm/unprocessed/runblack.reassemble.0497.00555240-0055c770.asm
-    asm/unprocessed/runblack.reassemble.0501.0055c770-00562180.asm
+    asm/unprocessed/runblack.reassemble.0500.0055c770-0055c8a0.asm
+    c/Villager.500.c
+    asm/unprocessed/runblack.reassemble.0501.0055c8a0-00560fc0.asm
+    c/SpecialVillager.500.c
+    asm/unprocessed/runblack.reassemble.0502.00560fc0-00562180.asm
     asm/unprocessed/runblack.reassemble.0506.00562180-0056a4d0.asm
     asm/unprocessed/runblack.reassemble.0509.0056a4d0-0056a6d0.asm
     asm/unprocessed/runblack.reassemble.0512.0056a6d0-0056d220.asm
@@ -362,7 +366,13 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0962.00735c30-00736490.asm
     asm/unprocessed/runblack.reassemble.0965.00736490-0073a650.asm
     asm/unprocessed/runblack.reassemble.0970.0073a650-00747310.asm
-    asm/unprocessed/runblack.reassemble.0972.00747310-00751970.asm
+    asm/unprocessed/runblack.reassemble.0972.00747310-0074f950.asm
+
+    asm/unprocessed/rdata.125.008e15b0-008f795c.asm
+    asm/unprocessed/rdata.150.008f795c-0099f250.asm
+    asm/unprocessed/data.150.00c234e0-00c2b1d0.asm
+
+    asm/unprocessed/runblack.reassemble.0973.0074f950-00751970.asm
     asm/unprocessed/runblack.reassemble.0976.00751970-00753c70.asm
     asm/unprocessed/runblack.reassemble.0981.00753c70-00756230.asm
     asm/unprocessed/runblack.reassemble.0984.00756230-00756e80.asm
@@ -394,8 +404,8 @@ set(SOURCES_001
 )
 set(SOURCES_002
     asm/unprocessed/bss.002.asm
-    asm/unprocessed/data.002.00c2b1e0-00c2bf5c.asm
-    asm/unprocessed/rdata.004.0099f250-0099f878.asm
+    asm/unprocessed/data.200.00c2b1e0-00c2bf5c.asm
+    asm/unprocessed/rdata.200.0099f250-0099f878.asm
     asm/unprocessed/rdata.r.002-libcpmt-rtti.asm
     asm/unprocessed/xdata.x.001.009bc428-009be430.asm
     asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm # some libcpmt.lib
@@ -420,10 +430,10 @@ set(SOURCES_004
 
 set(SOURCES_008
     asm/unprocessed/bss.004.asm
-    asm/unprocessed/rdata.005.009a0744-009a6298.asm  # contains some d3d 7? data and some libjpeg data
+    asm/unprocessed/rdata.800.009a0744-009a6298.asm  # contains some d3d 7? data and some libjpeg data
     asm/unprocessed/rdata.r.003.009bb9b4-009bbdc8.asm
     asm/unprocessed/xdata.x.002.009be4f0-009c5564.asm  # contains some ddraw data
-    asm/unprocessed/data.003.00c2de20-00c30f70.asm
+    asm/unprocessed/data.800.00c2de20-00c30f70.asm
     asm/unprocessed/runblack.reassemble.1129.007db410-007dc8b0.asm
     asm/unprocessed/runblack.reassemble.1137.007dc8b0-007dee50.asm
     c/PCMain.1138.007dee50-007deef0.c
@@ -489,8 +499,8 @@ set(SOURCES_008
 )
 set(SOURCES_009
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
-    asm/unprocessed/data.004.00c30f70-00c3c680.asm
-    asm/unprocessed/data.005.00c3c680-00c3cff0.asm  # some libjpeg strings
+    asm/unprocessed/data.900.00c30f70-00c3c680.asm
+    asm/unprocessed/data.910.00c3c680-00c3cff0.asm  # some libjpeg strings
 )
 
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})
@@ -875,8 +885,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/data.002.00c2b1e0-00c2bf5c.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/data.002.00c2b1e0-00c2bf5c.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/data.200.00c2b1e0-00c2bf5c.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/data.200.00c2b1e0-00c2bf5c.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
@@ -884,8 +894,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/rdata.004.0099f250-0099f878.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/rdata.004.0099f250-0099f878.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/rdata.200.0099f250-0099f878.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/rdata.200.0099f250-0099f878.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
@@ -959,7 +969,7 @@ target_link_options(runblack-reassembled
         "/filealign:0x1000"
         "/entry:WinMainCRTStartup"
         "/safeseh:no"
-        "/demangle:no"
+        # "/demangle:no"
         "/NODEFAULTLIB"
         "/OPT:NOREF"
         "/OPT:NOICF"

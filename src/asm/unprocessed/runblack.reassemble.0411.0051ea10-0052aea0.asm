@@ -77,7 +77,7 @@
 .extern _jmp_addr_0x0060c180
 .extern _jmp_addr_0x00618b40
 .extern @GetAnim__9MorphableFll@16
-.extern @__ct__6ObjectFv@4
+.extern ??0Object@@QAE@XZ
 .extern _Get3DType__6ObjectF9MESH_LIST
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
 .extern _jmp_addr_0x00636640
@@ -121,7 +121,7 @@
 .extern ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Spiral__6GUtilsFRlRl
-.extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
+.extern ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z
 .extern _jmp_addr_0x007714b0
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
@@ -1406,7 +1406,7 @@ _jmp_addr_0x0051f4a8:    push               0x0                                 
                          push               0x00da6be8 /* _GVillagerInfo_ARRAY_00da6be8 */     // 0x0051f4ac    68e86bda00
                          add                ebp, 0x10                                            // 0x0051f4b1    83c510
                          push               ebp                                                  // 0x0051f4b4    55
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli  // 0x0051f4b5    e826072300
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z  // 0x0051f4b5    e826072300
                          add                esp, 0x10                                            // 0x0051f4ba    83c410
                          push               0x0                                                  // 0x0051f4bd    6a00
                          mov.s              edi, eax                                             // 0x0051f4bf    8bf8
@@ -18635,7 +18635,7 @@ _jmp_addr_0x0052a32d:    mov.s              eax, esi                            
                          nop                                                                     // 0x0052a33f    90
 @__ct__7FireFlyFv@4:     push               esi                                                  // 0x0052a340    56
                          mov.s              esi, ecx                                             // 0x0052a341    8bf1
-                         call               @__ct__6ObjectFv@4                                   // 0x0052a343    e808c11000
+                         call               ??0Object@@QAE@XZ                                    // 0x0052a343    e808c11000
                          xor.s              eax, eax                                             // 0x0052a348    33c0
                          {disp8} mov        dword ptr [esi + 0x54], eax                          // 0x0052a34a    894654
                          {disp8} mov        dword ptr [esi + 0x60], eax                          // 0x0052a34d    894660

@@ -181,7 +181,7 @@
 .extern _jmp_addr_0x0060aad0
 .extern @MoveTo__13MobileWallHugFv@4
 .extern @SetGameAngle__13MobileWallHugFUs@10
-.extern @__ct__6ObjectFv@4
+.extern ??0Object@@QAE@XZ
 .extern _jmp_addr_0x00636e30
 .extern ?InitialisePhysicsFromHand@Object@@UAEIPAULHPoint@@0PAVGInterfaceStatus@@PAV1@H@Z
 .extern ?InitialisePhysics@Object@@UAEIPBULHPoint@@0PAV1@_NPAVGInterfaceStatus@@@Z
@@ -327,7 +327,7 @@
 .extern _jmp_addr_0x0074f210
 .extern _jmp_addr_0x0074f250
 .extern _GetMapCellSpiralSizeFromRadius__6GUtilsFf@4
-.extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
+.extern ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z
 .extern _jmp_addr_0x00771300
 .extern _jmp_addr_0x007741f0
 .extern _jmp_addr_0x00774c50
@@ -9975,7 +9975,7 @@ _jmp_addr_0x006e5610:    sub                esi, 0x2c                           
 _jmp_addr_0x006e561f:    ret                                                              // 0x006e561f    c3
 _jmp_addr_0x006e5620:    push               esi                                           // 0x006e5620    56
                          mov.s              esi, ecx                                      // 0x006e5621    8bf1
-                         call               @__ct__6ObjectFv@4                            // 0x006e5623    e8280ef5ff
+                         call               ??0Object@@QAE@XZ                             // 0x006e5623    e8280ef5ff
                          {disp8} mov        dword ptr [esi + 0x58], 0x00000000            // 0x006e5628    c7465800000000
                          mov                dword ptr [esi], 0x00941894                   // 0x006e562f    c70694189400
                          {disp32} mov       eax, dword ptr [data_bytes + 0x38f9a0]        // 0x006e5635    a1a059d500
@@ -27094,7 +27094,7 @@ _jmp_addr_0x006f121a:    {disp8} lea        eax, dword ptr [ebx + -0x01]        
                          {disp8} lea        eax, dword ptr [esp + 0x24]                   // 0x006f12c4    8d442424
                          push               esi                                           // 0x006f12c8    56
                          push               eax                                           // 0x006f12c9    50
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                          // 0x006f12ca    e811e90500
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                          // 0x006f12ca    e811e90500
                          mov.s              edi, eax                                      // 0x006f12cf    8bf8
                          {disp32} mov       eax, dword ptr [esi + 0x00000138]             // 0x006f12d1    8b8638010000
                          mov                edx, dword ptr [edi]                          // 0x006f12d7    8b17
@@ -27118,7 +27118,7 @@ _jmp_addr_0x006f121a:    {disp8} lea        eax, dword ptr [ebx + -0x01]        
                          push               ecx                                           // 0x006f130f    51
                          {disp8} lea        edx, dword ptr [esp + 0x28]                   // 0x006f1310    8d542428
                          push               edx                                           // 0x006f1314    52
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                          // 0x006f1315    e8c6e80500
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                          // 0x006f1315    e8c6e80500
                          mov.s              edi, eax                                      // 0x006f131a    8bf8
                          mov                eax, dword ptr [edi]                          // 0x006f131c    8b07
                          add                esp, 0x10                                     // 0x006f131e    83c410

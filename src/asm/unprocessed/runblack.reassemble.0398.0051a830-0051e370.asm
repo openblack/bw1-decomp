@@ -54,7 +54,7 @@
 .extern _jmp_addr_0x00730570
 .extern _jmp_addr_0x00737760
 .extern _jmp_addr_0x00737780
-.extern @IsPregnant__8VillagerFv@4
+.extern ?IsPregnant@Villager@@QAE_NXZ
 .extern _Add__12VillagerNameFf7LHPointPwR9LH3DColor
 .extern _jmp_addr_0x00779a60
 .extern _jmp_addr_0x007a1400
@@ -104,7 +104,6 @@
 
 .globl _jmp_addr_0x0051a830
 .globl _jmp_addr_0x0051af00
-.globl @DrawVillagerInfo__8VillagerFv@4
 .globl ?Draw@Villager@@UAEXXZ
 .globl _jmp_addr_0x0051c8e0
 .globl _jmp_addr_0x0051dce0
@@ -113,7 +112,7 @@
 .globl _globl_ct_0x0051cc80
 .globl _globl_ct_0x0051ccb0
 .globl _globl_ct_0x0051cce0
-.globl _DrawVillagerInfo__8VillagerFv
+.globl ?DrawVillagerInfo@Villager@@UAEIXZ
 .globl ?DrawOutOfMap@Object@@UAEX_N@Z
 .globl ?Draw@Totem@@UAEXXZ
 .globl ?Draw@Living@@UAEXXZ
@@ -1154,8 +1153,9 @@ _jmp_addr_0x0051b4f3:    {disp8} mov        edi, dword ptr [esi + 0x40]         
                          pop                esi                                                  // 0x0051b50b    5e
                          ret                0x0004                                               // 0x0051b50c    c20400
                          nop                                                                     // 0x0051b50f    90
-_DrawVillagerInfo__8VillagerFv:
-@DrawVillagerInfo__8VillagerFv@4:    sub                esp, 0x00000820                                      // 0x0051b510    81ec20080000
+
+?DrawVillagerInfo@Villager@@UAEIXZ:
+                         sub                esp, 0x00000820                                      // 0x0051b510    81ec20080000
                          push               ebx                                                  // 0x0051b516    53
                          push               ebp                                                  // 0x0051b517    55
                          push               esi                                                  // 0x0051b518    56
@@ -1279,7 +1279,7 @@ _jmp_addr_0x0051b63f:    {disp32} fld       dword ptr [esi + 0x000000e8]        
                          call               _swprintf                                            // 0x0051b694    e8e6ad2a00
                          add                esp, 0x2c                                            // 0x0051b699    83c42c
                          mov.s              ecx, esi                                             // 0x0051b69c    8bce
-                         call               @IsPregnant__8VillagerFv@4                           // 0x0051b69e    e86d6b2300
+                         call               ?IsPregnant@Villager@@QAE_NXZ                        // 0x0051b69e    e86d6b2300
                          test               eax, eax                                             // 0x0051b6a3    85c0
                          {disp8} je         _jmp_addr_0x0051b6d7                                 // 0x0051b6a5    7430
                          cmp                dword ptr [data_bytes + 0x351cac], 0x000017e3        // 0x0051b6a7    813dac7cd100e3170000
@@ -1352,7 +1352,7 @@ _jmp_addr_0x0051b758:    {disp8} mov        edi, dword ptr [eax + 0x08]         
                          call               _swprintf                                            // 0x0051b795    e8e5ac2a00
                          add                esp, 0x1c                                            // 0x0051b79a    83c41c
                          mov.s              ecx, esi                                             // 0x0051b79d    8bce
-                         call               @IsPregnant__8VillagerFv@4                           // 0x0051b79f    e86c6a2300
+                         call               ?IsPregnant@Villager@@QAE_NXZ                        // 0x0051b79f    e86c6a2300
                          test               eax, eax                                             // 0x0051b7a4    85c0
                          {disp8} je         _jmp_addr_0x0051b7ba                                 // 0x0051b7a6    7412
                          {disp8} lea        edx, dword ptr [esp + 0x30]                          // 0x0051b7a8    8d542430

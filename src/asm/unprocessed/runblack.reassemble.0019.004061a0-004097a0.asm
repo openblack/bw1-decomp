@@ -57,7 +57,7 @@
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _GetPosFromAngle__6GUtilsFff
 .extern _FindNearestDrinkingWater__6GUtilsFR9MapCoordsR9MapCoordsf
-.extern @GetAbode__8VillagerFv@4
+.extern ?GetAbode@Villager@@QAEPAVAbode@@XZ
 .extern _jmp_addr_0x00752b80
 .extern ?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z
 .extern _jmp_addr_0x0076d4c0

@@ -1411,7 +1411,7 @@ uint32_t __fastcall GetDiscipleStateIfInteractedWith__5AbodeFP16GInterfaceStatus
     asm("test               ah, 0x01");                                      // 0x004071bf    f6c401
     asm("{disp8} je         _jmp_addr_0x004071f0");                          // 0x004071c2    742c
     asm("mov.s              ecx, ebp");                                      // 0x004071c4    8bcd
-    asm("call               @GetAbode__8VillagerFv@4");                      // 0x004071c6    e895af3400
+    asm("call               ?GetAbode@Villager@@QAEPAVAbode@@XZ");           // 0x004071c6    e895af3400
     asm("cmp.s              eax, esi");                                      // 0x004071cb    3bc6
     asm("{disp8} je         _jmp_addr_0x004071f0");                          // 0x004071cd    7421
     asm("mov                eax, dword ptr [esi]");                          // 0x004071cf    8b06

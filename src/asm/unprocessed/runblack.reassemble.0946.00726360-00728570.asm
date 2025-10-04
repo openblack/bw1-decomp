@@ -55,7 +55,6 @@
 .extern _jmp_addr_0x00519320
 .extern _jmp_addr_0x00519960
 .extern _jmp_addr_0x00519ad0
-.extern @DrawVillagerInfo__8VillagerFv@4
 .extern _jmp_addr_0x005250a0
 .extern _jmp_addr_0x00525100
 .extern _jmp_addr_0x00525500
@@ -146,7 +145,7 @@
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2
 .extern @SetGameAngle__13MobileWallHugFUs@10
-.extern @__ct__6ObjectFv@4
+.extern ??0Object@@QAE@XZ
 .extern _Get3DType__6ObjectF9MESH_LIST
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
 .extern _jmp_addr_0x00636640
@@ -223,11 +222,11 @@
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Spiral__6GUtilsFRlRl
 .extern _jmp_addr_0x0074dc80
-.extern @__ct__8VillagerFRC9MapCoordsPC13GVillagerInfoUli@21
+.extern ??0Villager@@QAE@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z
 .extern _jmp_addr_0x0074fbc0
 .extern _jmp_addr_0x007506c0
-.extern @ToBeDeleted__8VillagerFi@12
-.extern @SetAge__8VillagerFUl@12
+.extern ?ToBeDeleted@Villager@@UAEXH@Z
+.extern ?SetAge@Villager@@UAEXI@Z
 .extern ?Save@Villager@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@Villager@@UAEIAAVGameOSFile@@@Z
 .extern _Add__12VillagerNameFf7LHPointPwR9LH3DColor
@@ -2895,7 +2894,7 @@ _jmp_addr_0x00727f00:    fldln2                                                 
                          nop                                                                     // 0x00727f1f    90
 _jmp_addr_0x00727f20:    push               esi                                                  // 0x00727f20    56
                          mov.s              esi, ecx                                             // 0x00727f21    8bf1
-                         call               @__ct__6ObjectFv@4                                   // 0x00727f23    e828e5f0ff
+                         call               ??0Object@@QAE@XZ                                    // 0x00727f23    e828e5f0ff
                          xor.s              eax, eax                                             // 0x00727f28    33c0
                          {disp8} mov        dword ptr [esi + 0x58], eax                          // 0x00727f2a    894658
                          {disp8} mov        dword ptr [esi + 0x5c], eax                          // 0x00727f2d    89465c

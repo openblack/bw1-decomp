@@ -46,7 +46,7 @@
 .extern ?CallVirtualFunctionsForCreation@Living@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x005eca60
 .extern @SetStateAnim__6LivingFv@4
-.extern ?SetAnim__i@Living@@UAEXH@Z
+.extern ?SetAnim@Living@@UAEXH@Z
 .extern _jmp_addr_0x005ecf40
 .extern @GetFlockPos__6LivingFv@4
 .extern @IAmFlockLeader__6LivingFv@4
@@ -9444,7 +9444,7 @@ _jmp_addr_0x0041e790:    {disp32} mov       eax, dword ptr [ecx + 0x000000b8]   
                          nop                                                              // 0x0041e7de    90
                          nop                                                              // 0x0041e7df    90
                          push               0x0                                           // 0x0041e7e0    6a00
-                         call               ?SetAnim__i@Living@@UAEXH@Z                   // 0x0041e7e2    e899e31c00
+                         call               ?SetAnim@Living@@UAEXH@Z                      // 0x0041e7e2    e899e31c00
                          ret                0x0004                                        // 0x0041e7e7    c20400
                          call               dword ptr [__imp__RegCloseKey@4]              // 0x0041e7ea    ff1504908a00
 _jmp_addr_0x0041e7f0:    sub                esp, 0x0c                                     // 0x0041e7f0    83ec0c

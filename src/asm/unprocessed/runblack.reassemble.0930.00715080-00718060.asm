@@ -103,7 +103,7 @@
 .extern _jmp_addr_0x00747270
 .extern _Create__4TreeFRC9MapCoordsPC9GTreeInfoP6Forestfff
 .extern _GetTribeFromText__10GTribeInfoFPCc
-.extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
+.extern ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z
 .extern ?GetInfoFromText@GVillagerInfo@@SAHPAD@Z
 .extern _Find__13GVillagerInfoF10TRIBE_TYPE15VILLAGER_NUMBER
 .extern _jmp_addr_0x00770bc0
@@ -972,7 +972,7 @@ _jmp_addr_0x007158e8:    {disp32} mov       dword ptr [_DAT_00d99380], edi      
                          call               _GetScriptPos__6GSetupFPc                     // 0x00715a87    e8c4270000
                          add                esp, 0x08                                     // 0x00715a8c    83c408
                          push               eax                                           // 0x00715a8f    50
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                          // 0x00715a90    e84ba10300
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                          // 0x00715a90    e84ba10300
                          mov.s              esi, eax                                      // 0x00715a95    8bf0
                          add                esp, 0x10                                     // 0x00715a97    83c410
                          cmp.s              esi, ebx                                      // 0x00715a9a    3bf3
@@ -1022,7 +1022,7 @@ _jmp_addr_0x00715ae3:    push               esi                                 
                          call               _GetScriptPos__6GSetupFPc                     // 0x00715b2a    e821270000
                          add                esp, 0x08                                     // 0x00715b2f    83c408
                          push               eax                                           // 0x00715b32    50
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                          // 0x00715b33    e8a8a00300
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                          // 0x00715b33    e8a8a00300
                          mov.s              esi, eax                                      // 0x00715b38    8bf0
                          add                esp, 0x10                                     // 0x00715b3a    83c410
                          cmp.s              esi, ebx                                      // 0x00715b3d    3bf3
@@ -1189,7 +1189,7 @@ _jmp_addr_0x00715d5f:    {disp8} mov        edx, dword ptr [esp + 0x20]         
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                   // 0x00715d66    8d44241c
                          push               edi                                           // 0x00715d6a    57
                          push               eax                                           // 0x00715d6b    50
-                         call               _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli                          // 0x00715d6c    e86f9e0300
+                         call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@I_N@Z                          // 0x00715d6c    e86f9e0300
                          mov.s              edi, eax                                      // 0x00715d71    8bf8
                          add                esp, 0x10                                     // 0x00715d73    83c410
                          test               edi, edi                                      // 0x00715d76    85ff

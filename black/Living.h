@@ -350,9 +350,9 @@ void __cdecl ProcessLiving__6LivingFv(void);
 // Constructors
 
 // win1.41 0055c820 mac 1030ed90 Living::Living(void)
-struct Living* __fastcall __ct__6LivingFv(struct Living* this);
+struct Living* __fastcall __ct__6LivingFv(struct Living* this) asm("??0Living@@QAE@XZ");
 // win1.41 005ebec0 mac 10383560 Living::Living(MapCoords const &, GLivingInfo const *)
-struct Living* __fastcall __ct__6LivingFRC9MapCoordsPC11GLivingInfo(struct Living* this, const void* edx, struct MapCoords* coords, struct GLivingInfo* info);
+struct Living* __fastcall __ct__6LivingFRC9MapCoordsPC11GLivingInfo(struct Living* this, const void* edx, struct MapCoords* coords, struct GLivingInfo* info) asm("??0Living@@QAE@ABUMapCoords@@PBVGLivingInfo@@@Z");
 
 // Non-virtual methods
 
@@ -504,7 +504,7 @@ uint32_t __fastcall IsPoisoned__6LivingFv(struct GameThingWithPos* this) asm("?I
 // win1.41 00417000 mac 1012f850 Living::SetSkeleton(int)
 void __fastcall SetSkeleton__6LivingFi(struct GameThingWithPos* this, const void* edx, int param_1) asm("?SetSkeleton@Living@@UAEXH@Z");
 // win1.41 005ee230 mac 1037e700 Living::MoveAlongPath(void)
-uint32_t __fastcall MoveAlongPath__6LivingFv(struct Object* this);
+uint32_t __fastcall MoveAlongPath__6LivingFv(struct Object* this) asm("?MoveAlongPath@Living@@UAEIXZ");
 // win1.41 00417480 mac inlined Living::SetSpecularColor(LH3DColor)
 void __fastcall SetSpecularColor__6LivingF9LH3DColor(struct Object* this, const void* edx, struct LH3DColor param_1) asm("?SetSpecularColor@Living@@UAEXULH3DColor@@@Z");
 // win1.41 00417490 mac 10130e80 Living::GetSpecularColor(void)
@@ -564,9 +564,9 @@ void __fastcall StorePreviousState__6LivingFv(struct Living* this);
 // win1.41 00473e50 mac 101e3470 Living::SetStateSpeed(void)
 void __fastcall SetStateSpeed__6LivingFv(struct Living* this) asm("?SetStateSpeed@Living@@UAEXXZ");
 // win1.41 005ecba0 mac inlined Living::SetAnim__li(int, int)
-void __fastcall SetAnim__li__6LivingFii(struct Living* this, const void* edx, int param_1, int param_2) asm("?SetAnim__li@Living@@UAEXHH@Z");
+void __fastcall SetAnim__li__6LivingFii(struct Living* this, const void* edx, int param_1, int param_2) asm("?SetAnim@Living@@UAEXHH@Z");
 // win1.41 005ecb80 mac inlined Living::SetAnim__i(int)
-void __fastcall SetAnim__i__6LivingFi(struct Living* this, const void* edx, int param_1) asm("?SetAnim__i@Living@@UAEXH@Z");
+void __fastcall SetAnim__i__6LivingFi(struct Living* this, const void* edx, int param_1) asm("?SetAnim@Living@@UAEXH@Z");
 // win1.41 005eccd0 mac inlined Living::ExitReaction(VILLAGER_STATES)
 int __fastcall ExitReaction__6LivingF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?ExitReaction@Living@@UAEHW4VILLAGER_STATES@@@Z");
 // win1.41 005ed9c0 mac inlined Living::ExitInScript(VILLAGER_STATES)
@@ -596,7 +596,7 @@ uint32_t __fastcall EnterInScript__6LivingF15VILLAGER_STATES15VILLAGER_STATES(st
 // win1.41 00417060 mac inlined Living::EnterInHand(VILLAGER_STATES, VILLAGER_STATES)
 uint32_t __fastcall EnterInHand__6LivingF15VILLAGER_STATES15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1, enum VILLAGER_STATES param_2) asm("?EnterInHand@Living@@UAEIW4VILLAGER_STATES@@0@Z");
 // win1.41 005eddd0 mac 1037f260 Living::EnterMoveOnPath(unsigned char, unsigned char)
-uint32_t __fastcall EnterMoveOnPath__6LivingFUcUc(struct Living* this, const void* edx, enum VILLAGER_STATES state_1, enum VILLAGER_STATES state_2);
+uint32_t __fastcall EnterMoveOnPath__6LivingFUcUc(struct Living* this, const void* edx, uint8_t state_1, uint8_t state_2) asm("?EnterMoveOnPath@Living@@UAEIEE@Z");
 // win1.41 005eda50 mac inlined Living::EnterDanceInScript(VILLAGER_STATES, VILLAGER_STATES)
 uint32_t __fastcall EnterDanceInScript__6LivingF15VILLAGER_STATES15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1, enum VILLAGER_STATES param_2) asm("?EnterDanceInScript@Living@@UAEIW4VILLAGER_STATES@@0@Z");
 // win1.41 007687d0 mac inlined Living::EnterScriptWander(VILLAGER_STATES, VILLAGER_STATES)
