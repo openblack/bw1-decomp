@@ -60,7 +60,7 @@
 .extern ??0Mobile@@QAE@XZ
 .extern ??0Living@@QAE@XZ
 .extern ??0Villager@@QAE@XZ
-.extern _jmp_addr_0x0055cb70
+.extern ??0LHPlane@@QAE@XZ
 .extern _jmp_addr_0x0055cb90
 .extern _jmp_addr_0x0055cc10
 .extern _jmp_addr_0x0055cc60
@@ -7953,7 +7953,7 @@ _jmp_addr_0x00559d90:    mov.s              ecx, edi                            
                          mov                dword ptr [esi], 0x008bd068                   // 0x0055ae79    c70668d08b00
                          call               @__ct__9MapCoordsFv@4                         // 0x0055ae7f    e8dc6ceeff
                          {disp32} lea       ecx, dword ptr [esi + 0x00000154]             // 0x0055ae84    8d8e54010000
-                         call               _jmp_addr_0x0055cb70                          // 0x0055ae8a    e8e11c0000
+                         call               ??0LHPlane@@QAE@XZ                          // 0x0055ae8a    e8e11c0000
                          mov.s              ecx, esi                                      // 0x0055ae8f    8bce
                          mov                dword ptr [esi], 0x008be8f0                   // 0x0055ae91    c706f0e88b00
                          call               _jmp_addr_0x00420930                          // 0x0055ae97    e8945aecff

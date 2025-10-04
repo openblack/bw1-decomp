@@ -243,6 +243,7 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0493.005529e0-00555240.asm
     asm/unprocessed/runblack.reassemble.0497.00555240-0055c770.asm
     asm/unprocessed/runblack.reassemble.0500.0055c770-0055c8a0.asm
+    c/Villager.500.c
     asm/unprocessed/runblack.reassemble.0501.0055c8a0-00560fc0.asm
     c/SpecialVillager.500.c
     asm/unprocessed/runblack.reassemble.0502.00560fc0-00562180.asm
@@ -968,7 +969,7 @@ target_link_options(runblack-reassembled
         "/filealign:0x1000"
         "/entry:WinMainCRTStartup"
         "/safeseh:no"
-        #"/demangle:no"
+        # "/demangle:no"
         "/NODEFAULTLIB"
         "/OPT:NOREF"
         "/OPT:NOICF"
