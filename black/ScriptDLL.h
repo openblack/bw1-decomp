@@ -10,6 +10,39 @@
 
 struct LHTransport;
 
+enum VMType
+{
+  VMType_0 = 0x0,
+  _VMType_COUNT = 0x1
+};
+static_assert(sizeof(enum VMType) == 0x4, "Data type is of wrong size");
+
+static const char* VMType_strs[_VMType_COUNT] = {
+  "VMType_0",
+};
+
+enum VMScriptType
+{
+  VMScriptType_0 = 0x0,
+  _VMScriptType_COUNT = 0x1
+};
+static_assert(sizeof(enum VMScriptType) == 0x4, "Data type is of wrong size");
+
+static const char* VMScriptType_strs[_VMScriptType_COUNT] = {
+  "VMScriptType_0",
+};
+
+enum STATE_TYPE
+{
+  STATE_TYPE_0 = 0x0,
+  _STATE_TYPE_COUNT = 0x1
+};
+static_assert(sizeof(enum STATE_TYPE) == 0x4, "Data type is of wrong size");
+
+static const char* STATE_TYPE_strs[_STATE_TYPE_COUNT] = {
+  "STATE_TYPE_0",
+};
+
 struct ScriptDLL
 {
   struct LHDLL super;  /* 0x0 */

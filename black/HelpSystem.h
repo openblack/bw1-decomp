@@ -12,6 +12,39 @@ struct Bubble;
 struct HelpDudeControl;
 struct HelpSpirit;
 
+enum HELP_SET_CATEGORY
+{
+  HELP_SET_CATEGORY_0 = 0x0,
+  _HELP_SET_CATEGORY_COUNT = 0x1
+};
+static_assert(sizeof(enum HELP_SET_CATEGORY) == 0x4, "Data type is of wrong size");
+
+static const char* HELP_SET_CATEGORY_strs[_HELP_SET_CATEGORY_COUNT] = {
+  "HELP_SET_CATEGORY_0",
+};
+
+enum HELP_SYSTEM_MESSAGE_SET
+{
+  HELP_SYSTEM_MESSAGE_SET_0 = 0x0,
+  _HELP_SYSTEM_MESSAGE_SET_COUNT = 0x1
+};
+static_assert(sizeof(enum HELP_SYSTEM_MESSAGE_SET) == 0x4, "Data type is of wrong size");
+
+static const char* HELP_SYSTEM_MESSAGE_SET_strs[_HELP_SYSTEM_MESSAGE_SET_COUNT] = {
+  "HELP_SYSTEM_MESSAGE_SET_0",
+};
+
+enum HELP_EVENT_TYPE
+{
+  HELP_EVENT_TYPE_0 = 0x0,
+  _HELP_EVENT_TYPE_COUNT = 0x1
+};
+static_assert(sizeof(enum HELP_EVENT_TYPE) == 0x4, "Data type is of wrong size");
+
+static const char* HELP_EVENT_TYPE_strs[_HELP_EVENT_TYPE_COUNT] = {
+  "HELP_EVENT_TYPE_0",
+};
+
 struct HelpSystem
 {
   struct Base super;  /* 0x0 */

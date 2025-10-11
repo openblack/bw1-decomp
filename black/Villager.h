@@ -134,6 +134,11 @@ struct Villager* __fastcall __ct__8VillagerFv(struct Villager* this);
 // win1.41 0074f950 mac 10571a90 Villager::Villager(MapCoords const &, GVillagerInfo const *, unsigned long, int)
 struct Villager* __fastcall __ct__8VillagerFRC9MapCoordsPC13GVillagerInfoUli(struct Villager* this, const void* edx, struct MapCoords* coords, struct GVillagerInfo* info, uint32_t age, bool skeleton);
 
+// Non-virtual Destructors
+
+// win1.41 0074fbc0 mac inlined Villager::_dt(void)
+void __fastcall __dt__8VillagerFv(struct Villager* this) asm("??1Villager@@UAE@XZ");
+
 // Non-virtual methods
 
 // win1.41 inlined mac inlined Villager::CallValidate(uchar)
@@ -271,8 +276,8 @@ bool32_t __fastcall RemoveVillagerFromWorshipSite__8VillagerFv(struct Villager* 
 
 // Override methods
 
-// win1.41 0055cb40 mac 10571890 Villager::_dt(void)
-void __fastcall __dt__8VillagerFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GVillager@@UAEPAXI@Z");
+// win1.41 0055cb40 mac 10571890 Villager::_dt(unsigned int)
+void __fastcall __dt__8VillagerFUi(struct Base* this, const void* edx, uint32_t param_1) asm("??_GVillager@@UAEPAXI@Z");
 // win1.41 007521b0 mac 1056caa0 Villager::ToBeDeleted(int)
 void __fastcall ToBeDeleted__8VillagerFi(struct Base* this, const void* edx, int param_1);
 // win1.41 007502f0 mac 10064390 Villager::GetPlayer(void)
