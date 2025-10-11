@@ -291,10 +291,13 @@ def build_list_template_headers(template_container_structs, header_map, local_he
     return consumed_template_container_structs
 
 
-# TODO: For each global and their types, create inspector entires: webserver or imgui inspector window
 if __name__ == "__main__":
+    json_path = Path("extracted_reversing_data_bw_141.json")
+    if len(sys.argv) == 2:
+        json_path = Path(sys.argv[1])
+
     tic = time.perf_counter()
-    db = load(open("extracted_reversing_data_bw_141.json"))
+    db = load(json_path.open())
     projects_and_files = map_projects_to_object_files()
     primitives = []
     for decl in db['types']:
