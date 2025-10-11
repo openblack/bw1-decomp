@@ -1,0 +1,94 @@
+name: Insert Functions
+
+on:
+  issues:
+    types: [opened, edited]  # Trigger when a new issue is created or edited
+
+jobs:
+  insert-functions:
+    if: contains(github.event.issue.title, '[INSERT FUNCTIONS]')
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Check for CSV code block in issue body
+      id: extract_csv
+      shell: bash
+      env:
+        ISSUE_BODY: ${{ github.event.issue.body }}
+      run: |
+        echo "Checking issue body for CSV code block..."
+
+        csv_block=$(printf '%s\n' "$ISSUE_BODY" | awk '/```csv/{flag=1;next}/```/{flag=0}flag')
+
+        if [ -z "$csv_block" ]; then
+          echo "❌ No CSV code block found in issue body."
+          exit 1
+        fi
+
+        printf '%s\n' "$csv_block" > "manual_analysis_functions.csv"
+
+        echo "✅ Saved CSV to $workspace_path"
+        head -n 10 "manual_analysis_functions.csv"
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: |
+        pip install -r scripts/headers/requirements.txt
+
+    - name: Run analyze_headers.py script
+      run: python scripts/headers/analyze_headers.py
+
+    - name: Run insert_functions.py
+      run: python scripts/insert_functions.py manual_analysis_functions.csv extracted_reversing_data_bw_141.json
+
+    - name: Run generate_headers.py script
+      run: python scripts/headers/bw1_decomp_gen/generate_headers.py
+
+    - run: git diff
+
+    - name: Commit and create pull request
+      shell: bash
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+        ISSUE_NUMBER: ${{ github.event.issue.number }}
+      run: |
+        git config user.name "${ISSUE_AUTHOR}"
+        git config user.email "${ISSUE_AUTHOR}@users.noreply.github.com"
+
+        # Stage all changes except CSV and JSON
+        git add -u
+        git reset manual_analysis_functions.csv extracted_reversing_data_bw_141.json || true
+
+        # Exit if nothing to commit
+        if git diff --cached --quiet; then
+          echo "No changes to commit."
+          exit 0
+        fi
+
+        branch="insert-funcs-issue-${ISSUE_NUMBER}"
+        git checkout -b "$branch"
+        git commit -m "Insert functions from issue #${ISSUE_NUMBER}"
+
+        git push --force origin "$branch"
+
+        # gh CLI uses GH_TOKEN automatically
+        gh pr create \
+          --title "Insert functions from issue #${ISSUE_NUMBER}" \
+          --body "Automatically generated from [#${ISSUE_NUMBER}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}) by @${ISSUE_AUTHOR}
+
+        Closes #${ISSUE_NUMBER}" \
+          --head "$branch" \
+          --base main \
+          --repo "${GITHUB_REPOSITORY}" \
+          --fill \
+          --label "auto-pr" \
+          --assignee "${ISSUE_AUTHOR}" \
+          --draft=false
