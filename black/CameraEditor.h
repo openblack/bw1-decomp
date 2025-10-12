@@ -6,6 +6,7 @@
 
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
 #include <lionhead/lh3dlib/development/Prss.h> /* For struct Prss */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 // Forward Declares
 

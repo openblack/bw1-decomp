@@ -6,6 +6,7 @@
 #include <stdint.h> /* For int16_t, uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE, enum RESOURCE_TYPE, enum SPELL_SEED_TYPE */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "CitadelPart.h" /* For struct CitadelPart */
 #include "WorshipSpellIcon.h" /* For struct WorshipSpellIcon */

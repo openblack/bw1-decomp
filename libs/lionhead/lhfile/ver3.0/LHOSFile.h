@@ -6,6 +6,8 @@
 #include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint32_t */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
+
 #include "LHFile.h" /* For enum LH_FILE_MODE, enum LH_SEEK_MODE */
 
 // Forward Declares

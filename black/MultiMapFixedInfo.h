@@ -7,6 +7,7 @@
 
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
 #include <chlasm/Enum.h> /* For enum ABODE_NUMBER, enum ABODE_TYPE */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
 
 #include "ObjectInfo.h" /* For struct GObjectInfo, struct GObjectInfoVftable */
 

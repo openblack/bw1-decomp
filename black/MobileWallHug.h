@@ -5,6 +5,8 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int16_t, int8_t, uint16_t, uint32_t, uint8_t */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
+
 #include "Collide.h" /* For struct CircleHugInfo */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "MapCoords.h" /* For struct MapCoords */

@@ -6,6 +6,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <chlasm/Enum.h> /* For enum IMMERSION_EFFECT_TYPE */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
 #include "MobileObject.h" /* For struct MobileObject */
 

@@ -3,6 +3,8 @@
 
 #include <assert.h> /* For static_assert */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
+
 #include "FuncT.h" /* For struct FuncT */
 
 struct TestFunnel

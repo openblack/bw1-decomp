@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/CreatureEnum.h> /* For enum CREATURE_DESIRE_SOURCE */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
 #include "Base.h" /* For struct Base */
 #include "CreatureAction.h" /* For struct CreatureActionContextStart */

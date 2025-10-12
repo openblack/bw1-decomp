@@ -7,6 +7,7 @@
 
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE */
 #include <reversing_utils/re_common.h> /* For bool32_t */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "PlannedMultiMapFixed.h" /* For struct PlannedMultiMapFixed */
 

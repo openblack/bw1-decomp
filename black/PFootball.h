@@ -5,6 +5,8 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
+
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 #include "PlannedMultiMapFixed.h" /* For struct PlannedMultiMapFixed */
 

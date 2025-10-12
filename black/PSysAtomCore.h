@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
+
 #include "PSysBase.h" /* For struct PSysBase */
 #include "PSysModifiers.h" /* For struct BaseAtomModifierData, struct BaseCollectionModifierData */
 

@@ -6,6 +6,7 @@
 
 #include <chlasm/CreatureEnum.h> /* For enum DETECTED_PLAYER_ACTION */
 #include <chlasm/Enum.h> /* For enum MAGIC_TYPE */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "Base.h" /* For struct Base */
 

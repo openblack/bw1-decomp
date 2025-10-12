@@ -6,6 +6,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <lionhead/lh3dlib/development/Zoomer.h> /* For struct Zoomer */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 

@@ -5,6 +5,7 @@
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
 #include <reversing_utils/re_common.h> /* For bool32_t */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
 #include "Morphable.h" /* For struct Morphable */
 

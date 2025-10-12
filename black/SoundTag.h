@@ -8,6 +8,7 @@
 #include <chlasm/AudioSFX.h> /* For enum AUDIO_SFX_BANK_TYPE */
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "LocalBase.h" /* For struct LocalBase */
 

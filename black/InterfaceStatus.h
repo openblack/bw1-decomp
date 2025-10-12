@@ -7,6 +7,7 @@
 
 #include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "MagicHand.h" /* For struct GMagicHand */

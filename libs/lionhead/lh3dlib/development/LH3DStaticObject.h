@@ -3,6 +3,8 @@
 
 #include <assert.h> /* For static_assert */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTICompleteObjectLocator */
+
 #include "LH3DMeshedObject.h" /* For struct LH3DMeshedObject */
 
 struct LH3DStaticObject

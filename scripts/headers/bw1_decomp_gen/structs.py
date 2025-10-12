@@ -531,3 +531,17 @@ class RTTIClass(Struct):
             for f in self.method_overrides:
                 f.to_code(cw)
             cw.add_line()
+
+    def get_types(self):
+        result = super().get_types()
+        if self.typedesc_win_address:
+            result.add("struct RTTITypeDescriptor")
+        if self.base_class_desc_win_address:
+            result.add("struct RTTIBaseClassDescriptor")
+        if self.base_class_array_win_address:
+            result.add("struct RTTIBaseClassArray")
+        if self.class_hierarchy_desc_win_address:
+            result.add("struct RTTIClassHierarchyDescriptor")
+        if self.locator_win_address:
+            result.add("struct RTTICompleteObjectLocator")
+        return result

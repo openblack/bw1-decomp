@@ -6,6 +6,8 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
+
 // Forward Declares
 
 struct CImmDevice;

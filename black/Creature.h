@@ -11,6 +11,7 @@
 #include <chlasm/GStates.h> /* For enum VILLAGER_STATES */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "CreatureHelp.h" /* For struct CreatureHelpStackEntry, struct CreatureHelpState */
 #include "CreatureSubAction.h" /* For struct CreatureSubActionAgenda */

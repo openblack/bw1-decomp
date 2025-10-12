@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint8_t */
 
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <reversing_utils/re_rtti.h> /* For struct RTTICompleteObjectLocator */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 

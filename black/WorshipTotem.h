@@ -7,6 +7,7 @@
 
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <lionhead/lh3dlib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "CitadelPart.h" /* For struct CitadelPart */
 #include "LightSheet.h" /* For struct LightSheet */

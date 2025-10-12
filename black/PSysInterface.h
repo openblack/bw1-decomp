@@ -6,6 +6,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum PARTICLE_TYPE */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "GameThing.h" /* For struct GameThingVftable */
 #include "PSysBase.h" /* For struct PSysBase */
