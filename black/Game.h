@@ -7,6 +7,7 @@
 
 #include <chlasm/Enum.h> /* For enum TRIBE_TYPE */
 #include <lhall/released/headers/LHTimer.h> /* For struct LHTimer */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "CreatureDatabase.h" /* For struct CreatureDatabase */
 #include "Data.h" /* For struct GData */

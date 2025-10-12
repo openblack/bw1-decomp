@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
+
 #include "AnimatedStatic.h" /* For struct AnimatedStatic */
 #include "Arena.h" /* For struct GArena */
 #include "Artifact.h" /* For struct TownArtifact */

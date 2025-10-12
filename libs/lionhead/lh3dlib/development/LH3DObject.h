@@ -5,6 +5,8 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTICompleteObjectLocator */
+
 #include "LH3DColor.h" /* For struct LH3DColor */
 #include "LHMatrix.h" /* For struct LHMatrix */
 

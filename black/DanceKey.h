@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <lionhead/lhlib/ver5.0/LHDynamicStack.h> /* For struct LHDynamicStack__Ul */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "DanceGroup.h" /* For enum DANCE_GROUP_ACTION_TYPE */
 #include "GameThing.h" /* For struct GameThing */

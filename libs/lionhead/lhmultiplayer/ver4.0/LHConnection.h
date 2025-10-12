@@ -6,6 +6,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <reversing_utils/re_common.h> /* For bool32_t */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
 
 #include "LHNetEvent.h" /* For enum LH_NETEVENT_TYPE */
 #include "LHTransportInfo.h" /* For enum LH_TRANSPORT_TYPE */

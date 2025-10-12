@@ -8,6 +8,7 @@
 #include <chlasm/AllMeshes.h> /* For enum ANIM_LIST */
 #include <chlasm/Enum.h> /* For enum DEATH_REASON, enum HOLD_TYPE, enum RESOURCE_TYPE */
 #include <chlasm/GStates.h> /* For ANIMAL_STATE_LAST_STATE, enum VILLAGER_STATES */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "Living.h" /* For struct Living */
 #include "LivingAction.h" /* For struct Living__StateTableEntry */

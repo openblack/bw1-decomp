@@ -7,6 +7,7 @@
 #include <lhall/released/headers/RPHolder.h> /* For struct RPHolder */
 #include <lhall/released/headers/RPlan.h> /* For struct RPlan */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "GameThing.h" /* For struct GameThing */
 

@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 
 #include <lionhead/lh3dlib/development/Prss.h> /* For struct Prss */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
 struct CreatureSelect
 {

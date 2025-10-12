@@ -7,6 +7,7 @@
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
 #include <chlasm/Enum.h> /* For enum VILLAGER_BASIC_INFO */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 

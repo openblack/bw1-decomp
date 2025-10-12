@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
+
 // Forward Declares
 
 struct CHand;

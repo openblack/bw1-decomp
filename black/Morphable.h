@@ -8,6 +8,7 @@
 #include <lionhead/lh3dlib/development/LH3DAnim.h> /* For struct LH3DAnimSet */
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
 #include <lionhead/lhfile/ver3.0/LHReleasedFile.h> /* For struct LHReleasedFile */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "DrawingObject.h" /* For struct DrawingObject */
 #include "Name.h" /* For struct Name */

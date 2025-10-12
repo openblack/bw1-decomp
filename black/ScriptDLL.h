@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t, uintptr_t */
 
 #include <lionhead/lhdll/ver1.0/LHDLL.h> /* For struct LHDLL */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 // Forward Declares
 

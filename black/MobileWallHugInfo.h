@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int32_t, uint8_t */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
+
 #include "MobileInfo.h" /* For struct GMobileInfo */
 
 struct GMobileWallHugInfo

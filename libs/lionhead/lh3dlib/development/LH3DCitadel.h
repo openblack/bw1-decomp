@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTICompleteObjectLocator */
+
 #include "LH3DStaticMorphableObject.h" /* For struct LH3DStaticMorphableObject */
 
 struct LH3DCitadel

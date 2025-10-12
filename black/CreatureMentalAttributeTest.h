@@ -7,6 +7,7 @@
 #include <chlasm/CreatureEnum.h> /* For enum ATTRIBUTE_TYPE, enum CREATURE_ACTION */
 #include <chlasm/Enum.h> /* For enum CREATURE_DESIRES */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
 #include "Base.h" /* For struct Base */
 #include "CreatureLearning.h" /* For struct CreatureLearningEpisode */

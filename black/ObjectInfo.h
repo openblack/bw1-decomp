@@ -6,6 +6,7 @@
 
 #include <chlasm/Enum.h> /* For enum ALIGNMENT_TYPE, enum IMMERSION_EFFECT_TYPE, enum OBJECT_TYPE, enum SOUND_COLLISION_TYPE, enum TRIBE_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "BaseInfo.h" /* For struct GBaseInfo, struct GBaseInfoVftable */
 #include "Object.h" /* For enum FOOD_TYPE */

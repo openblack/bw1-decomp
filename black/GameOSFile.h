@@ -7,6 +7,7 @@
 
 #include <lionhead/lhfile/ver3.0/LHFile.h> /* For enum LH_FILE_MODE */
 #include <lionhead/lhfile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "GameThing.h" /* For struct GameThing */
 #include "SaveLoadPtr.h" /* For struct GSaveLoadPtr */

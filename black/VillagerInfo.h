@@ -6,6 +6,7 @@
 
 #include <chlasm/AllMeshes.h> /* For enum ANIM_LIST, enum MESH_LIST */
 #include <chlasm/Enum.h> /* For enum JOB_INFO, enum SEX_TYPE, enum TOWN_DESIRE_INFO, enum TRIBE_TYPE, enum VILLAGER_NUMBER */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "LivingInfo.h" /* For struct GLivingInfo */
 

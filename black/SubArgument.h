@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <reversing_utils/re_common.h> /* For bool32_t */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
 
 // Forward Declares
 

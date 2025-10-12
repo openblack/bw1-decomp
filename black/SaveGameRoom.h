@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
+
 #include "PictureRoom.h" /* For struct PictureRoomBase */
 
 struct SaveGameRoom

@@ -4,6 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 
+#include <reversing_utils/re_rtti.h> /* For struct RTTICompleteObjectLocator */
+
 #include "LH3DObject.h" /* For struct LH3DObject */
 
 // Forward Declares

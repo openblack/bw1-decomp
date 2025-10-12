@@ -7,6 +7,7 @@
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
 #include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
 #include <reversing_utils/re_common.h> /* For bool32_t */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
 #include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
 

@@ -8,6 +8,7 @@
 #include <chlasm/Enum.h> /* For enum SPELL_SEED_TYPE */
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <reversing_utils/re_common.h> /* For bool32_t */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "LightSheet.h" /* For struct LightSheet */
 #include "MapCoords.h" /* For struct MapCoords */

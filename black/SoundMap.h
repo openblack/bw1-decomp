@@ -5,6 +5,7 @@
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "Base.h" /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */

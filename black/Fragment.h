@@ -7,6 +7,7 @@
 
 #include <chlasm/Enum.h> /* For enum IMMERSION_EFFECT_TYPE, enum SOUND_COLLISION_TYPE */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "Rock.h" /* For struct Rock */
 
