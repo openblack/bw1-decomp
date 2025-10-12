@@ -5,7 +5,7 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int8_t, uint32_t, uint8_t */
 
-#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_INTERFACE_LEVEL */
+#include <chlasm/ScriptEnums.h> /* For enum SCRIPT_INTERFACE_LEVEL, enum SCRIPT_OBJECT_TYPE */
 
 #include "Base.h" /* For struct Base */
 #include "BaseInfo.h" /* For struct GBaseInfo */

@@ -55,20 +55,20 @@ bool __cdecl LoadAllGame__10GameOSFileFPc(char* filename);
 
 // Non-virtual methods
 
-// win1.41 00407700 mac 1010b3b0 GameOSFile::WriteIt<uint32_t>(uint32_t&)
-void __fastcall WriteIt_u32___10GameOSFileFRUl(struct GameOSFile* this, const void* edx, uint32_t* val) asm("??$WriteIt@I@GameOSFile@@QAEXAAI@Z");
 // win1.41 inlined mac inlined GameOSFile::ReadIt<MapCoords>(MapCoords*)
 void __fastcall ReadIt_MapCoords___10GameOSFileFRUl(struct GameOSFile* this, const void* edx, struct MapCoords* out);
 // win1.41 inlined mac inlined GameOSFile::ReadIt<uint8_t>(uint8_t*)
 void __fastcall ReadIt_u8___10GameOSFileFRUl(struct GameOSFile* this, const void* edx, uint8_t* out);
 // win1.41 inlined mac inlined GameOSFile::ReadIt<uint16_t>(uint16_t*)
 void __fastcall ReadIt_u16___10GameOSFileFRUl(struct GameOSFile* this, const void* edx, uint16_t* out);
-// win1.41 004077a0 mac 10139ad0 GameOSFile::ReadIt<uint32_t>(uint32_t&)
-void __fastcall ReadIt_u32___10GameOSFileFRUl(struct GameOSFile* this, const void* edx, uint32_t* out) asm("??$ReadIt@H@GameOSFile@@QAEXAAI@Z");
 // win1.41 inlined mac 104f2b44 GameOSFile::ReadIt<float>(float*)
 void __fastcall ReadIt_f32___10GameOSFileFRUl(struct GameOSFile* this, const void* edx, float* out);
+// win1.41 00407700 mac 1010b3b0 GameOSFile::WriteIt<uint32_t>(uint32_t&)
+void __fastcall WriteIt_u32___10GameOSFileFRUl(struct GameOSFile* this, const void* edx, uint32_t* val) asm("??$WriteIt@I@GameOSFile@@QAEXAAI@Z");
 // win1.41 00407750 mac 10331500 GameOSFile::ReadIt<int>(int&)
 void __fastcall ReadIt_i32___10GameOSFileFRl(struct GameOSFile* this, const void* edx, int* out) asm("??$ReadIt@H@GameOSFile@@QAEXAAH@Z");
+// win1.41 004077a0 mac 10139ad0 GameOSFile::ReadIt<uint32_t>(uint32_t&)
+void __fastcall ReadIt_u32___10GameOSFileFRUl(struct GameOSFile* this, const void* edx, uint32_t* out) asm("??$ReadIt@H@GameOSFile@@QAEXAAI@Z");
 // win1.41 00558dc0 mac 10304ef0 GameOSFile::LoadInstance(GameThing **)
 void __fastcall LoadInstance__10GameOSFileFPP9GameThing(struct GameOSFile* this, const void* edx, struct GameThing** out_thing);
 // win1.41 00561c60 mac 103049e0 GameOSFile::ResolveAllLoads(void)
