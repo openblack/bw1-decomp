@@ -10,7 +10,11 @@
 
 #include "Base.h" /* For struct Base */
 #include "BaseInfo.h" /* For struct GBaseInfo */
-#include "GameThingWithPos.h" /* For struct GameThingWithPos */
+
+// Forward Declares
+
+struct Abode;
+struct GameThingWithPos;
 
 struct GScript
 {
@@ -61,8 +65,8 @@ void __fastcall CleanGameForScriptReboot__7GScriptFv(struct GScript* this);
 void __fastcall ScriptErrorMessage__7GScriptFPc(struct GScript* this, const void* edx, char* msg) asm("?ScriptErrorMessage@GScript@@QAEXPAD@Z");
 // win1.41 006f62c0 mac 100054c0 GScript::ScriptWarningMessage(char*)
 void __fastcall ScriptWarningMessage__7GScriptFPc(struct GScript* this, const void* edx, char* msg) asm("?ScriptWarningMessage@GScript@@QAEXPAD@Z");
-// win1.41 006f741 mac 104ea250 GScript::FindInTown(GameThingWithPos*, int (*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, ulong), SCRIPT_OBJECT_TYPE, ulong)
-struct Abode* __fastcall FindInTown__7GScriptFP16GameThingWithPosPFP16GameThingWithPos18SCRIPT_OBJECT_TYPEUl_i18SCRIPT_OBJECT_TYPEUl(struct GScript* this, const void* edx, struct GameThingWithPos* param_1, int (*)(struct GameThingWithPos* param_1, enum SCRIPT_OBJECT_TYPE param_2, uint32_t param_3), enum SCRIPT_OBJECT_TYPE param_2, uint32_t param_3) asm("?FindInTown@GScript@@QAEPAVAbode@@PAVGameThingWithPos@@P6AH0W4SCRIPT_OBJECT_TYPE@@I@Z1I@Z");
+// win1.41 006f7410 mac 104ea250 GScript::FindInTown(GameThingWithPos*, int (*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, ulong), SCRIPT_OBJECT_TYPE, ulong)
+struct Abode* __fastcall FindInTown__7GScriptFP16GameThingWithPosPFP16GameThingWithPos18SCRIPT_OBJECT_TYPEUl_i18SCRIPT_OBJECT_TYPEUl(struct GScript* this, const void* edx, struct GameThingWithPos* param_1, int (__cdecl* param_2)(struct GameThingWithPos * param_1, enum SCRIPT_OBJECT_TYPE param_2, uint32_t param_3), enum SCRIPT_OBJECT_TYPE param_3, uint32_t param_4) asm("?FindInTown@GScript@@QAEPAVAbode@@PAVGameThingWithPos@@P6AH0W4SCRIPT_OBJECT_TYPE@@I@Z1I@Z");
 
 // Override methods
 
