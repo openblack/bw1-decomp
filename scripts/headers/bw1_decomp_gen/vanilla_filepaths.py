@@ -1057,7 +1057,6 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\black\TownStats.h"),
     BWPath(r"C:\Dev\black\ValueSpinner.h"),
     BWPath(r"C:\Dev\black\Waterfall.h"),
-    BWPath(r"C:\Dev\black\Waypoint.h"),
     BWPath(r"C:\Dev\black\Graveyard.h"),
     BWPath(r"C:\Dev\black\Windmill.h"),
     BWPath(r"C:\Dev\black\WeatherInfo.h"),
@@ -1644,6 +1643,7 @@ ROOMMATE_CLASS_MAP = {
     "GPBallInfo": "BallInfo",
     "GPFootballInfo": "FootballInfo",
     "GPFootballPositionInfo": "FootballPositionInfo",
+    "Waypoint": "WayPoint",
 }
 
 

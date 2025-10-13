@@ -53,7 +53,7 @@
 #include "Tree.h" /* For struct Tree */
 #include "Villager.h" /* For struct Villager */
 #include "Waterfall.h" /* For struct GWaterfall */
-#include "Waypoint.h" /* For struct Waypoint */
+#include "WayPoint.h" /* For struct Waypoint */
 #include "WeatherThing.h" /* For struct WeatherThing */
 #include "Whale.h" /* For struct Whale */
 

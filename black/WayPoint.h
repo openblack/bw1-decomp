@@ -2,9 +2,10 @@
 #define BW1_DECOMP_WAY_POINT_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdint.h> /* For uint32_t */
+#include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
+#include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
@@ -42,5 +43,21 @@ char* __fastcall GetDebugText__8WayPointFv(struct GameThing* this) asm("?GetDebu
 uint32_t __fastcall GetSaveType__8WayPointFv(struct GameThing* this) asm("?GetSaveType@WayPoint@@UAEIXZ");
 // win1.41 00770b40 mac 1015f790 WayPoint::GetText(void)
 const char* __fastcall GetText__8WayPointFv(struct GameThingWithPos* this) asm("?GetText@WayPoint@@UAEPBDXZ");
+
+struct Waypoint
+{
+  struct GameThingWithPos super;  /* 0x0 */
+  uint8_t field_0x28[0x4];
+};
+static_assert(sizeof(struct Waypoint) == 0x2c, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 0099b4a8 mac 1075f65c Waypoint::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Waypoint asm("??_R4Waypoint@@6B@");
+// win1.41 0099b4ac mac 1075f664 Waypoint::`vftable'
+extern const struct GameThingWithPosVftable __vt__8Waypoint asm("??_7Waypoint@@6B@");
+
+DECLARE_LH_LIST_HEAD(Waypoint);
 
 #endif /* BW1_DECOMP_WAY_POINT_INCLUDED_H */

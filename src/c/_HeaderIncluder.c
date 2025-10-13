@@ -553,7 +553,6 @@
 #include "black/VortexSave.h"
 #include "black/Waterfall.h"
 #include "black/WayPoint.h"
-#include "black/Waypoint.h"
 #include "black/Weather.h"
 #include "black/WeatherInfo.h"
 #include "black/WeatherThing.h"
