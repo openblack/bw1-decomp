@@ -16,6 +16,17 @@
 struct CreatureContext;
 struct Morphable;
 
+enum CREATURE_SUB_STATE_ACTIONS
+{
+  CREATURE_SUB_STATE_ACTIONS_0 = 0x0,
+  _CREATURE_SUB_STATE_ACTIONS_COUNT = 0x1
+};
+static_assert(sizeof(enum CREATURE_SUB_STATE_ACTIONS) == 0x4, "Data type is of wrong size");
+
+static const char* CREATURE_SUB_STATE_ACTIONS_strs[_CREATURE_SUB_STATE_ACTIONS_COUNT] = {
+  "CREATURE_SUB_STATE_ACTIONS_0",
+};
+
 struct CreatureActionContextStart
 {
   uint32_t field_0x0;
