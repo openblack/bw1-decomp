@@ -16,6 +16,17 @@
 struct Abode;
 struct GameThingWithPos;
 
+enum SCRIPT_FEATURE_COMMANDS
+{
+  SCRIPT_FEATURE_COMMANDS_0 = 0x0,
+  _SCRIPT_FEATURE_COMMANDS_COUNT = 0x1
+};
+static_assert(sizeof(enum SCRIPT_FEATURE_COMMANDS) == 0x4, "Data type is of wrong size");
+
+static const char* SCRIPT_FEATURE_COMMANDS_strs[_SCRIPT_FEATURE_COMMANDS_COUNT] = {
+  "SCRIPT_FEATURE_COMMANDS_0",
+};
+
 struct GScript
 {
   struct Base super;  /* 0x0 */
