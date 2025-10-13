@@ -122,6 +122,7 @@ uint32_t __fastcall GetSaveType__12BuildingSiteFv(struct GameThing* this) asm("?
 void __fastcall Init__12BuildingSiteFv(struct BuildingSite* this) asm("?Init@BuildingSite@@UAEXXZ");
 
 DECLARE_LH_LINKED_LIST(BuildingSite);
+
 DECLARE_LH_LIST_HEAD(BuildingSite);
 
 #endif /* BW1_DECOMP_BUILDING_SITE_INCLUDED_H */

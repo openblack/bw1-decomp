@@ -25,12 +25,12 @@ HEADER_GUARD_TEMPLATE = "BW1_DECOMP_%s_INCLUDED_H"
 ASSUME_INCLUDE_DIRS_DEFINED_IN_TARGET = False
 
 
-def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionPrototype], dict[str, DefinedFunctionPrototype], set[DefinedFunctionPrototype]]:
+def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionPrototype], dict[str, DefinedFunctionPrototype], dict[str, DefinedFunctionPrototype], set[DefinedFunctionPrototype]]:
     def is_container(func):
         name = func.decorated_name
         containers = LH_COLLECTION_TEMPLATES.union({"LHLinkedNode"})
         for c in containers:
-            if name.startswith(f"{name}<"):
+            if name.startswith(f"{c}<"):
                 return True
         return False
     functions: list[DefinedFunctionPrototype] = [DefinedFunctionPrototype.from_json(f) for f in function_db]
@@ -48,17 +48,17 @@ def find_methods(function_db: list[dict]) -> tuple[dict[str, DefinedFunctionProt
     for f in thiscalls:
         key = extract_type_name(f.args[0])
         thiscall_map[key] = thiscall_map.get(key, []) + [f]
-    static_method_map: dict[str: DefinedFunctionPrototype] = {}
+    static_method_map: dict[str, DefinedFunctionPrototype] = {}
     for f in static_methods:
         key = extract_type_from_func_name(f.decorated_name)
         static_method_map[key] = static_method_map.get(key, []) + [f]
-    class_list_function_map: dict[str: DefinedFunctionPrototype] = {}
+    class_container_function_map: dict[str, DefinedFunctionPrototype] = {}
     for f in class_container_functions:
         templated_name = extract_type_from_func_name(f.decorated_name)
         inner_type = templated_name.split("<", 1)[1].rstrip('>')
         key = extract_type_name(inner_type)
-        class_container_functions[key] = class_container_functions.get(key, []) + [f]
-    return thiscall_map, static_method_map, class_container_functions, remainder
+        class_container_function_map[key] = class_container_function_map.get(key, []) + [f]
+    return thiscall_map, static_method_map, class_container_function_map, remainder
 
 
 PRIMITIVE_LOOK_UP = {
@@ -281,11 +281,11 @@ def build_sinit_headers(sinit_functions, header_map):
         header_map[path] = header
 
 
-def build_list_template_headers(template_container_structs, header_map, local_header_import_map):
+def build_list_template_headers(template_container_structs, template_container_method_look_up, header_map, local_header_import_map):
     consumed_template_container_structs = {n : set() for n in template_container_structs.keys()}
     for header in header_map.values():
         for n in template_container_structs.keys():
-            header.add_template_container_struct_defines(n, template_container_structs[n])
+            header.add_template_container_struct_defines(n, template_container_structs[n], template_container_method_look_up)
             consumed_template_container_structs[n].update(header.get_template_container_struct_defines(n))
         header.build_include_list(local_header_import_map)
     return consumed_template_container_structs
@@ -334,7 +334,7 @@ if __name__ == "__main__":
     locator_addresses, remainder_globals = partition([lambda x: x["name"].startswith("__RTTICompleteObjectLocator__")], remainder_globals)
     locator_address_look_up = {i["name"].removeprefix("__RTTICompleteObjectLocator__"): i for i in locator_addresses}
 
-    class_method_look_up, class_static_method_look_up, class_list_functions, remainder_functions = find_methods(db['functions'])
+    class_method_look_up, class_static_method_look_up, class_container_method_look_up, remainder_functions = find_methods(db['functions'])
     (
         assigned_neighbour_functions,
         loadit_functions,
@@ -503,7 +503,7 @@ if __name__ == "__main__":
     build_neighbour_function_headers(assigned_neighbour_functions, header_map)
     build_loadit_headers(loadit_functions, header_map)
     build_sinit_headers(sinit_functions, header_map)
-    consumed_template_container_structs = build_list_template_headers(template_container_structs, header_map, local_header_import_map)
+    consumed_template_container_structs = build_list_template_headers(template_container_structs, class_container_method_look_up, header_map, local_header_import_map)
     consumed_template_container_structs_flat = set()
     for v in consumed_template_container_structs.values():
         consumed_template_container_structs_flat |= v

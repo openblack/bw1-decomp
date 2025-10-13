@@ -168,6 +168,7 @@ struct MapCoords* __fastcall GetDoorPos__8FishFarmFP9MapCoords(struct MultiMapFi
 struct PlannedMultiMapFixed* __fastcall ConvertToPlanned__8FishFarmFv(struct MultiMapFixed* this) asm("?ConvertToPlanned@FishFarm@@UAEPAVPlannedMultiMapFixed@@XZ");
 
 DECLARE_LH_LINKED_LIST(FishFarm);
+
 DECLARE_LH_LIST_HEAD(FishFarm);
 
 #endif /* BW1_DECOMP_FISH_FARM_INCLUDED_H */
