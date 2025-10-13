@@ -1,6 +1,7 @@
 #include "Game.h"
 
 #include "Interface.h"
+#include "lionhead/lh3dlib/development/LHCoord.h"
 #include "lionhead/lhlib/ver5.0/LHMouse.h"
 #include "lionhead/lhlib/ver5.0/LHSystem.h"
 #include "globals.h"
