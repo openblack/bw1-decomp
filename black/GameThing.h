@@ -392,6 +392,7 @@ void __fastcall SaveExtraData__9GameThingFR10GameOSFile(struct GameThing* this, 
 void __fastcall ResolveLoad__9GameThingFv(struct GameThing* this) asm("?ResolveLoad@GameThing@@QAEXXZ");
 
 DECLARE_LH_LINKED_LIST(GameThing);
+
 DECLARE_LH_LIST_HEAD(GameThing);
 
 #endif /* BW1_DECOMP_GAME_THING_INCLUDED_H */

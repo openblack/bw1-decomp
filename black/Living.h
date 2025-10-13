@@ -832,6 +832,7 @@ uint32_t __fastcall DanceType__6LivingFv(struct Living* this) asm("?DanceType@Li
 bool __fastcall CanBeHealedByHealSpell__6LivingFv(struct Living* this) asm("?CanBeHealedByHealSpell@Living@@UAE_NXZ");
 
 DECLARE_LH_LINKED_LIST(Living);
+
 DECLARE_LH_LIST_HEAD(Living);
 
 #endif /* BW1_DECOMP_LIVING_INCLUDED_H */

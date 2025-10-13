@@ -120,6 +120,7 @@ class DefinedFunctionPrototype(FuncPtr):
         conv = self.call_type
         params = []
         for i, (l, a) in enumerate(zip(self.arg_labels, self.args)):
+            a = a.replace("<", "__").replace(">", "") # transform LHListHead<T> to LHListHead__T
             if not l:
                 l = f"param_{i}"
             if funcptr_re.search(a):

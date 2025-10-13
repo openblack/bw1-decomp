@@ -94,6 +94,7 @@ uint32_t __fastcall Save__9GFootpathFR10GameOSFile(struct GameThing* this, const
 uint32_t __fastcall GetSaveType__9GFootpathFv(struct GameThing* this) asm("?GetSaveType@GFootpath@@UAEIXZ");
 
 DECLARE_LH_LINKED_LIST(GFootpath);
+
 DECLARE_LH_LIST_HEAD(GFootpath);
 
 #endif /* BW1_DECOMP_FOOTPATH_INCLUDED_H */

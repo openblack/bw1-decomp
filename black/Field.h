@@ -209,6 +209,7 @@ uint32_t __fastcall SaveObject__5FieldFR8LHOSFileRC9MapCoords(struct Object* thi
 struct MapCoords* __fastcall GetDoorPos__5FieldFP9MapCoords(struct MultiMapFixed* this, const void* edx, struct MapCoords* param_1) asm("?GetDoorPos@Field@@UAEPAUMapCoords@@PAU2@@Z");
 
 DECLARE_LH_LINKED_LIST(Field);
+
 DECLARE_LH_LIST_HEAD(Field);
 
 #endif /* BW1_DECOMP_FIELD_INCLUDED_H */

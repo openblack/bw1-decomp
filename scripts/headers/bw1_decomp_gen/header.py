@@ -143,6 +143,7 @@ class Header:
         self.includes = {i.header_path.as_posix(): i for i in includes}
         self.structs = structs
         self.templated_containers = dict()
+        self.templated_container_functions = dict()
 
     def build_include_list(self, local_header_import_map: dict[str, Path]):
         types = self.get_direct_dependencies()
@@ -174,10 +175,19 @@ class Header:
                 i.dependencies.add(t)
                 self.includes[header] = i
 
-    def add_template_container_struct_defines(self, name: str, struct_map: set[str]):
+    def add_template_container_struct_defines(self, name: str, struct_map: set[str], template_container_method_look_up):
         if name not in self.templated_containers:
             self.templated_containers[name] = set()
+        if name not in self.templated_container_functions:
+            self.templated_container_functions[name] = dict()
         self.templated_containers[name].update(struct_map.intersection(self.get_types()))
+        for t in {s.decorated_name for s in self.structs}:
+            n = t.removeprefix("struct ")
+            for i in template_container_method_look_up.get(n, []):
+                namespace = i.decorated_name.split("::")[0]
+                if namespace.startswith(name.split("<")[0]) and (namespace.endswith("*>") == name.endswith("*>")):
+                    self.templated_container_functions[name][n] = self.templated_container_functions[name].get(n, [])
+                    self.templated_container_functions[name][n].append(i)
 
     def get_template_container_struct_defines(self, name: str) -> set[str]:
         return self.templated_containers[name]
@@ -303,7 +313,13 @@ class Header:
                 for k, v in self.templated_containers.items():
                     if s.decorated_name in v:
                         cw.add_line(f"{CONTAINER_DECLARATION_MACROS[k]}({s.name});")
-                cw.add_line()
+                        funcs = self.templated_container_functions[k].get(s.name, [])
+                        if funcs:
+                            cw.add_line()
+                        for f in funcs:
+                            f.to_code(cw)
+
+                        cw.add_line()
             if i == len(self.structs) - 1 and isinstance(s, FuncPtr):
                 cw.add_line()
 

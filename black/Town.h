@@ -311,6 +311,7 @@ float __fastcall CalculateDesireForFood__4TownFv(struct GameThingWithPos* this) 
 uint32_t __fastcall GetScriptObjectType__4TownFv(struct GameThingWithPos* this) asm("?GetScriptObjectType@Town@@UAEIXZ");
 
 DECLARE_LH_LINKED_LIST(Town);
+
 DECLARE_LH_LIST_HEAD(Town);
 
 #endif /* BW1_DECOMP_TOWN_INCLUDED_H */
