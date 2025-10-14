@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @__dt__12SetupControlFv@4
+.extern ??1SetupControl@@UAE@XZ  
 .extern _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf
 .extern _DrawBevBox__10SetupThingFiiiiiiiUl
 .extern _jmp_addr_0x007a1400
@@ -42,7 +42,7 @@ start_0x00411670_0x004125a0:
 ??_GSetupStaticText@@UAEPAXI@Z:
                          push               esi                                           // 0x00411670    56
                          mov.s              esi, ecx                                      // 0x00411671    8bf1
-                         call               @__dt__12SetupControlFv@4                     // 0x00411673    e8487dffff
+                         call               ??1SetupControl@@UAE@XZ                       // 0x00411673    e8487dffff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00411678    f644240801
                          {disp8} je         _jmp_addr_0x00411688                          // 0x0041167d    7409
                          push               esi                                           // 0x0041167f    56

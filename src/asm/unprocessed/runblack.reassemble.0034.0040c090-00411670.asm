@@ -15,8 +15,8 @@
 .extern _jmp_addr_0x00408240
 .extern @SetFocusControl__8SetupBoxFP12SetupControl@12
 .extern @SetFocus__12SetupControlFb@9
-.extern @__ct__12SetupControlFiiiiiPw@32
-.extern @__dt__12SetupControlFv@4
+.extern ??0SetupControl@@QAE@HHHHHPB_S@Z
+.extern ??1SetupControl@@UAE@XZ  
 .extern @Draw__11SetupButtonFbb@10
 .extern @__ct__10SetupButtonFiiiiiPwi@36
 .extern @__ct__9SetupListFiiiii@28
@@ -266,7 +266,7 @@ _jmp_addr_0x0040c21b:    pop                  esi                               
                          push                 ecx                                           // 0x0040c254    51
                          push                 edx                                           // 0x0040c255    52
                          mov.s                ecx, esi                                      // 0x0040c256    8bce
-                         call                 @__ct__12SetupControlFiiiiiPw@32              // 0x0040c258    e8f3cfffff
+                         call                 ??0SetupControl@@QAE@HHHHHPB_S@Z              // 0x0040c258    e8f3cfffff
                          {disp32} mov         eax, dword ptr [esp + 0x0000022c]             // 0x0040c25d    8b84242c020000
                          {disp32} mov         ecx, dword ptr [esi + 0x00000234]             // 0x0040c264    8b8e34020000
                          xor.s                ebx, ebx                                      // 0x0040c26a    33db
@@ -476,7 +476,7 @@ _jmp_addr_0x0040c558:    pop                  esi                               
 ??_GSetupEdit@@UAEPAXI@Z:
                          push                 esi                                           // 0x0040c560    56
                          mov.s                esi, ecx                                      // 0x0040c561    8bf1
-                         call                 @__dt__12SetupControlFv@4                     // 0x0040c563    e858ceffff
+                         call                 ??1SetupControl@@UAE@XZ                       // 0x0040c563    e858ceffff
                          test                 byte ptr [esp + 0x08], 0x01                   // 0x0040c568    f644240801
                          {disp8} je           _jmp_addr_0x0040c578                          // 0x0040c56d    7409
                          push                 esi                                           // 0x0040c56f    56
@@ -1692,7 +1692,7 @@ _jmp_addr_0x0040d353:    mov                  eax, 0x00000001                   
 ??_GSetupBigButton@@UAEPAXI@Z:
                          push                 esi                                           // 0x0040d360    56
                          mov.s                esi, ecx                                      // 0x0040d361    8bf1
-                         call                 @__dt__12SetupControlFv@4                     // 0x0040d363    e858c0ffff
+                         call                 ??1SetupControl@@UAE@XZ                       // 0x0040d363    e858c0ffff
                          test                 byte ptr [esp + 0x08], 0x01                   // 0x0040d368    f644240801
                          {disp8} je           _jmp_addr_0x0040d378                          // 0x0040d36d    7409
                          push                 esi                                           // 0x0040d36f    56
@@ -3245,7 +3245,7 @@ _jmp_addr_0x0040e5b9:    ret                  0x000c                            
 ??_GSetupHLineGraph@@UAEPAXI@Z:
                          push                 esi                                           // 0x0040e5c0    56
                          mov.s                esi, ecx                                      // 0x0040e5c1    8bf1
-                         call                 @__dt__12SetupControlFv@4                     // 0x0040e5c3    e8f8adffff
+                         call                 ??1SetupControl@@UAE@XZ                       // 0x0040e5c3    e8f8adffff
                          test                 byte ptr [esp + 0x08], 0x01                   // 0x0040e5c8    f644240801
                          {disp8} je           _jmp_addr_0x0040e5d8                          // 0x0040e5cd    7409
                          push                 esi                                           // 0x0040e5cf    56
@@ -4136,7 +4136,7 @@ _jmp_addr_0x0040ef88:    ret                  0x0008                            
 ??_GSetupVBarGraph@@UAEPAXI@Z:
                          push                 esi                                           // 0x0040ef90    56
                          mov.s                esi, ecx                                      // 0x0040ef91    8bf1
-                         call                 @__dt__12SetupControlFv@4                     // 0x0040ef93    e828a4ffff
+                         call                 ??1SetupControl@@UAE@XZ                       // 0x0040ef93    e828a4ffff
                          test                 byte ptr [esp + 0x08], 0x01                   // 0x0040ef98    f644240801
                          {disp8} je           _jmp_addr_0x0040efa8                          // 0x0040ef9d    7409
                          push                 esi                                           // 0x0040ef9f    56
@@ -4745,7 +4745,7 @@ _jmp_addr_0x0040f688:    ret                  0x0008                            
 ??_GSetupTabButton@@UAEPAXI@Z:
                          push                 esi                                           // 0x0040f690    56
                          mov.s                esi, ecx                                      // 0x0040f691    8bf1
-                         call                 @__dt__12SetupControlFv@4                     // 0x0040f693    e8289dffff
+                         call                 ??1SetupControl@@UAE@XZ                       // 0x0040f693    e8289dffff
                          test                 byte ptr [esp + 0x08], 0x01                   // 0x0040f698    f644240801
                          {disp8} je           _jmp_addr_0x0040f6a8                          // 0x0040f69d    7409
                          push                 esi                                           // 0x0040f69f    56
@@ -5949,7 +5949,7 @@ _Click__12SetupPictureFii:
 ??_GSetupPicture@@UAEPAXI@Z:
                          push                 esi                                           // 0x00410720    56
                          mov.s                esi, ecx                                      // 0x00410721    8bf1
-                         call                 @__dt__12SetupControlFv@4                     // 0x00410723    e8988cffff
+                         call                 ??1SetupControl@@UAE@XZ                       // 0x00410723    e8988cffff
                          test                 byte ptr [esp + 0x08], 0x01                   // 0x00410728    f644240801
                          {disp8} je           _jmp_addr_0x00410738                          // 0x0041072d    7409
                          push                 esi                                           // 0x0041072f    56
@@ -6314,7 +6314,7 @@ _Click__17SetupColourPickerFii:
 ??_GSetupColourPicker@@UAEPAXI@Z:
                          push                 esi                                           // 0x00410b60    56
                          mov.s                esi, ecx                                      // 0x00410b61    8bf1
-                         call                 @__dt__12SetupControlFv@4                     // 0x00410b63    e85888ffff
+                         call                 ??1SetupControl@@UAE@XZ                       // 0x00410b63    e85888ffff
                          test                 byte ptr [esp + 0x08], 0x01                   // 0x00410b68    f644240801
                          {disp8} je           _jmp_addr_0x00410b78                          // 0x00410b6d    7409
                          push                 esi                                           // 0x00410b6f    56
@@ -6799,7 +6799,7 @@ _jmp_addr_0x00411068:    ret                  0x0008                            
 ??_GSetupCheckBox@@UAEPAXI@Z:
                          push                 esi                                           // 0x00411070    56
                          mov.s                esi, ecx                                      // 0x00411071    8bf1
-                         call                 @__dt__12SetupControlFv@4                     // 0x00411073    e84883ffff
+                         call                 ??1SetupControl@@UAE@XZ                       // 0x00411073    e84883ffff
                          test                 byte ptr [esp + 0x08], 0x01                   // 0x00411078    f644240801
                          {disp8} je           _jmp_addr_0x00411088                          // 0x0041107d    7409
                          push                 esi                                           // 0x0041107f    56
@@ -6973,7 +6973,7 @@ _jmp_addr_0x004111a2:    mov.s                ecx, edi                          
                          push                 0x000000c8                                    // 0x0041120a    68c8000000
                          push                 0x0000270f                                    // 0x0041120f    680f270000
                          mov.s                ecx, esi                                      // 0x00411214    8bce
-                         call                 @__ct__12SetupControlFiiiiiPw@32              // 0x00411216    e83580ffff
+                         call                 ??0SetupControl@@QAE@HHHHHPB_S@Z              // 0x00411216    e83580ffff
                          mov                  dword ptr [esi], 0x008ab5c0                   // 0x0041121b    c706c0b58a00
                          {disp32} mov         dword ptr [esi + 0x0000023c], 0x00000004      // 0x00411221    c7863c02000004000000
                          {disp32} mov         byte ptr [esi + 0x0000022a], 0x00             // 0x0041122b    c6862a02000000

@@ -102,6 +102,7 @@ set(SOURCES_001
     c/Abode.007.c
     c/PlannedAbode.004.c
     c/Abode.008.c
+    c/SetupControl.000.c
 
     asm/unprocessed/runblack.reassemble.0019.004061a0-004097a0.asm
 
