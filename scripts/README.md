@@ -49,13 +49,31 @@ python scripts/msvc_mangler.py "class Foo { public: void Bar(int fuz) {} };"
 
 This script uses clang to compile classes get get function signatures in their mangled form as if they were compiled on msvc.
 
+## Repository Function Name Replacer
+
+```bash
+python scripts/repo_replace_function_names.py 0x00435b90 my_function_name
+```
+
+This script automates the process of replacing and inserting function names throughout the repository. It uses git operations and direct file manipulation to propagate function name changes across assembly files, RTTI data, and other codebase references.
+
+The script provides several utility functions for managing function names:
+
+* `replace_function_name_in_repo_files(source, destination)` — Replaces all occurrences of a function name across the entire repository, including RTTI data, assembly labels, extern declarations, and all references. It handles alignment padding when the source and destination names have different lengths.
+
+* `set_function_name_in_repo_files(addr, label)` — Sets a function name at a given address. If a typical jump reference exists, it replaces that; otherwise, it inserts a global label directly into the assembly file at the specified address.
+
+* `insert_global_function_name_to_asm_file(addr, label)` — Inserts a new global function label into the assembly file at the specified address, automatically adding the necessary `.globl` declaration in the appropriate location.
+
+The script is designed to work with the reversing workflow, enabling quick bulk updates to function names discovered during analysis without manually editing multiple files.
+
 ## Easy Function Inserter
 
 ```bash
 python scripts/insert_functions.py manual_analysis_functions.csv extracted_reversing_data_bw_141.json
 ```
 
-This script uses the [Mac unmangler] and [Msvc mangler] to quickly insert new functions from manual analysis into the reversing database (from `scripts/headers/analyze_headers.py`) which can then be added to the headers using `scripts/headers/bw1_decomp_gen/generate_headers.py`.
+This script uses the [Mac unmangler] and [Msvc mangler] to quickly insert new functions from manual analysis into the reversing database (from `scripts/headers/analyze_headers.py`) which can then be added to the headers using `scripts/headers/bw1_decomp_gen/generate_headers.py`. It also uses the [Repository Function Name Replacer] to propagate function names throughout the codebase.
 
 The script is meant to be run after cross referencing the mac version which has function names with the windows version which does not. The function signature is inferenced using [Mac unmangler] but needs manual input of the best guess for the return type.
 
