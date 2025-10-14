@@ -13,7 +13,7 @@ EMBEDDED_ENUMS = {
 }
 
 
-CALL_TYPE_REPLACEMNTS = {
+CALL_TYPE_REPLACEMENTS = {
     "thiscall": "__thiscall",
     "fastcall": "__fastcall",
     "stdcall": "__stdcall",
@@ -23,7 +23,7 @@ CALL_TYPE_REPLACEMNTS = {
 
 
 def fix_calltype(input: str) -> str:
-    return CALL_TYPE_REPLACEMNTS.get(input, input)
+    return CALL_TYPE_REPLACEMENTS.get(input, input)
 
 
 def fix_mac_mangled(input: str) -> str:
@@ -44,13 +44,22 @@ def insert_functions_from_csv(csv_path: Path, json_path: Path):
             call_type = fix_calltype(line['call type'])
             mac_mangled = fix_mac_mangled(line['mac mangled name'])
             return_type = line['return type']
+            if return_type in custom_types_lut:
+                return_type = custom_types_lut[return_type]
+            elif return_type.removesuffix(" *") in custom_types_lut:
+                return_type = custom_types_lut[return_type.removesuffix(" *")] + " *"
+            elif return_type.removesuffix("*") in custom_types_lut:
+                return_type = custom_types_lut[return_type.removesuffix("*")] + "*"
             return_type = custom_types_lut.get(return_type, return_type)
             mac_unmangled = UnmangledDetails(mac_mangled)
             argument_types = []
             for i in mac_unmangled.args:
                 i = copy(i)
                 i.typename = custom_types_lut.get(i.typename, i.typename)
-                argument_types.append(str(i))
+                t = str(i).replace("&", "*")
+                if t.count("const") == 1 and t.endswith(" const *"):
+                    t = f"const {t.removesuffix(" const *")} *"
+                argument_types.append(t)
             argument_names = [f"param_{i + 1}" for i in range(len(argument_types))]
 
             embedded_enums = "\n".join(f"enum {i} {{{i}_0}};" for i in EMBEDDED_ENUMS.get(mac_unmangled.type_name, []))
