@@ -50,7 +50,7 @@ jobs:
       with:
         repository: 'openblack/llvm-project'
         tag: 'bw1-decomp-010'
-        fileName: 'llvm-${{ matrix.os }}.zip'
+        fileName: 'llvm-windows.zip'
         extract: true
         out-file-path: 'llvm'
 
