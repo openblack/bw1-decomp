@@ -225,7 +225,7 @@
 .globl _jmp_addr_0x0042e5e0
 .globl @__ct__10GMagicInfoFv@4
 .globl @__ct__4BallFRC9MapCoordsPC9GBallInfo@16
-.globl _jmp_addr_0x00435b90
+.globl ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z
 .globl _jmp_addr_0x00435c00
 .globl _jmp_addr_0x00435c40
 .globl _jmp_addr_0x00435f30

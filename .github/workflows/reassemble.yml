@@ -15,48 +15,15 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.12'
+    - uses: ./.github/actions/python_prep
 
-    - name: Install Python dependencies
-      run: pip install -r src/scripts/requirements.txt
-
-    - name: Install Ninja
-      uses: seanmiddleditch/gha-setup-ninja@master
-
-    - name: Download patched llvm project
-      uses: robinraju/release-downloader@v1
-      with:
-        repository: 'openblack/llvm-project'
-        tag: 'bw1-decomp-010'
-        fileName: 'llvm-${{ matrix.os }}.zip'
-        extract: true
-        out-file-path: 'llvm'
-
-    - name: Ensure LLVM binaries are executable
-      if: ${{ runner.os != 'Windows' }}
-      run: chmod -R +x llvm/bin
-
-    - if: ${{ runner.os == 'Windows' }}
-      run: |
-        C:/msys64/usr/bin/pacman -Sy --noconfirm mingw-w64-clang-x86_64-headers-git
-
-    - if: ${{ runner.os != 'Windows' }}
-      run: |
-        sudo apt install -y mingw-w64 libc6-dev-i386-cross
-
-    - name: Set path for LLVM binaries in env
-      shell: bash
-      run: |
-        echo "CLANG_INCLUDE=$(echo '${{ github.workspace }}/llvm/lib/clang/20/include;/usr/i686-w64-mingw32/include' | sed 's,\\,/,g')" >> $GITHUB_ENV
-        echo "LLVM_BINARIES=$(echo '${{ github.workspace }}'/llvm/bin | sed 's,\\,/,g')" >> $GITHUB_ENV
+    - uses: ./.github/actions/clang_prep
 
     - name: Build bw1-decomp project
-      run: |
-        cmake -G Ninja -Ssrc -Bbuild -DCMAKE_BUILD_TYPE=Release -DLLVM_BINARIES_DIR="${{env.LLVM_BINARIES}}" -DCMAKE_C_STANDARD_INCLUDE_DIRECTORIES="${{env.CLANG_INCLUDE}}"
-        cmake --build build
+      uses: ./.github/actions/clang_build
+      with:
+        configuration: Release
+        build_dir: build
 
     - name: Upload binary build path if it fails
       if: failure()
@@ -64,19 +31,6 @@ jobs:
       with:
         name: failed-build-${{ matrix.os }}
         path: build/
-
-    - name: Verify MD5 sum of resulting binary
-      run: |
-        expected_md5="174b1a64e74b2321f3c38ccc8a511e78"
-        actual_md5=$(md5sum "${{ github.workspace }}/build/runblack-reassembled.exe" | awk '{ print $1 }' | sed 's/^\\//')
-
-        if [ "$expected_md5" != "$actual_md5" ]; then
-        echo "Error: MD5 sum mismatch. Expected $expected_md5 but got $actual_md5"
-        exit 1
-        else
-        echo "MD5 sum matches: $actual_md5"
-        fi
-      shell: bash
 
     - name: Upload binary if MD5 sum mismatch
       if: failure()
@@ -86,9 +40,10 @@ jobs:
         path: build/runblack-reassembled.exe
 
     - name: Build bw1-decomp project (Debug)
-      run: |
-        cmake -G Ninja -Ssrc -Bbuild_debug -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLLVM_BINARIES_DIR="${{env.LLVM_BINARIES}}" -DCMAKE_C_STANDARD_INCLUDE_DIRECTORIES="${{env.CLANG_INCLUDE}}"
-        cmake --build build_debug
+      uses: ./.github/actions/clang_build
+      with:
+        configuration: RelWithDebInfo
+        build_dir: build_debug
 
     - name: Upload debug version
       uses: actions/upload-artifact@v4

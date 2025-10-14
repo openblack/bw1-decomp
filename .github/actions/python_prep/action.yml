@@ -1,0 +1,14 @@
+name: 'Prep for Python Tools'
+description: 'Setup the correct python dependencies for this recomp.'
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+
+    - name: Install Python dependencies
+      shell: bash
+      run: pip install -r src/scripts/requirements.txt
+

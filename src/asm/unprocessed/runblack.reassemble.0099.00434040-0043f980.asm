@@ -226,7 +226,7 @@
 .globl _jmp_addr_0x0042e5e0
 .globl @__ct__10GMagicInfoFv@4
 .globl @__ct__4BallFRC9MapCoordsPC9GBallInfo@16
-.globl _jmp_addr_0x00435b90
+.globl ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z
 .globl _jmp_addr_0x00435c00
 .globl _jmp_addr_0x00435c40
 .globl _jmp_addr_0x00435f30
@@ -3181,7 +3181,8 @@ _jmp_addr_0x00435b73:    mov.s              ecx, esi                            
                          nop                                                                     // 0x00435b8d    90
                          nop                                                                     // 0x00435b8e    90
                          nop                                                                     // 0x00435b8f    90
-_jmp_addr_0x00435b90:    push               esi                                                  // 0x00435b90    56
+?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z:
+                         push               esi                                                  // 0x00435b90    56
                          push               edi                                                  // 0x00435b91    57
                          push               0x3d                                                 // 0x00435b92    6a3d
                          push               0x009cd08c                                           // 0x00435b94    688cd09c00

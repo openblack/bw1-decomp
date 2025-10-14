@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x00426230
 .extern _jmp_addr_0x00426880
 .extern _jmp_addr_0x004268b0
-.extern _jmp_addr_0x00435b90
+.extern ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
@@ -11084,7 +11084,7 @@ _jmp_addr_0x005313e0:    push               esi                                 
                          {disp8} lea        eax, dword ptr [esi + 0x14]                          // 0x005313e9    8d4614
                          push               0x00c58498                                           // 0x005313ec    689884c500
                          push               eax                                                  // 0x005313f1    50
-                         call               _jmp_addr_0x00435b90                                 // 0x005313f2    e89947f0ff
+                         call               ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z                                 // 0x005313f2    e89947f0ff
                          add                esp, 0x14                                            // 0x005313f7    83c414
                          {disp32} mov       dword ptr [esi + 0x00000258], eax                    // 0x005313fa    898658020000
                          pop                esi                                                  // 0x00531400    5e

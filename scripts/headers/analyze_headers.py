@@ -147,7 +147,8 @@ PATHS = [
 if sys.platform == "win32":
     llvm_bin = Path(r"C:\Program Files\LLVM\bin")
 else:
-    llvm_bin = Path(r"/usr/bin")
+    llvm_bin = Path("/usr/bin")
+    Config.set_library_file("/usr/lib/libclang.so")
 Config.set_library_path(str(llvm_bin))
 
 

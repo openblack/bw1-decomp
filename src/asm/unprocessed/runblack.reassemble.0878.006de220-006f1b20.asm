@@ -27,7 +27,7 @@
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern _jmp_addr_0x0042a5f0
 .extern @ResetData__6LHFile@4
-.extern _jmp_addr_0x00435b90
+.extern ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
@@ -27499,7 +27499,7 @@ _jmp_addr_0x006f177b:    {disp8} lea        ecx, dword ptr [esp + 0x2c]         
                          {disp8} lea        edx, dword ptr [esp + 0x28]                   // 0x006f179a    8d542428
                          push               0x00c58498                                    // 0x006f179e    689884c500
                          push               edx                                           // 0x006f17a3    52
-                         call               _jmp_addr_0x00435b90                          // 0x006f17a4    e8e743d4ff
+                         call               ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z                          // 0x006f17a4    e8e743d4ff
                          mov.s              edi, eax                                      // 0x006f17a9    8bf8
                          {disp32} mov       eax, dword ptr [rdata_bytes + 0x991a0]        // 0x006f17ab    a1a0219400
                          push               eax                                           // 0x006f17b0    50
