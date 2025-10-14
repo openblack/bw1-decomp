@@ -4,36 +4,39 @@ from pathlib import Path
 
 RTTI_DATA_FILE = Path("src/asm/unprocessed/rdata.003.008a99d0-0099f250.asm")
 
-def sed(pattern, replacement, path):
-    cmd = ["sed", "-i", "-E", f"s/{pattern}/{replacement}/g", path]
-    subprocess.run(cmd)
-
-def git_sed(pattern: str, replacement: str, path: Optional[Path]=None):
-    cmd = ["git", "sed", pattern, replacement]
-    if path:
-        cmd += ["--", path]
+def sed(pattern, replacement, path: Path):
+    sep="/"
+    cmd = ["sed", "-i", "-E", f"s{sep}{pattern}{sep}{replacement}{sep}g", path]
     subprocess.run(cmd)
 
 def git_grep(pattern: str, path: Optional[Path]=None) -> str:
     cmd = ["git", "grep", pattern]
     if path:
-        cmd += ["--", path]
+        cmd += ["--", path.as_posix()]
     return subprocess.run(cmd, capture_output=True, text=True).stdout
 
 def git_grep_quiet(pattern: str, path: Optional[Path]=None) -> bool:
     cmd = ["git", "grep", "-q", pattern]
     if path:
-        cmd += ["--", path]
+        cmd += ["--", path.as_posix()]
     return subprocess.run(cmd).returncode == 0
 
-def get_grep_filename(pattern: str, path: Optional[Path]=None) -> str:
+def get_grep_filenames(pattern: str, path: Optional[Path]=None) -> list[str]:
     cmd = ['git', 'grep', '-l', pattern]
     if path:
-        cmd += ["--", path]
-    result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-    filenames = result.stdout.strip().split('\n')
+        cmd += ["--", path.as_posix()]
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    return result.stdout.strip().split('\n')
+
+def get_grep_filename(pattern: str, path: Optional[Path]=None) -> str:
+    filenames = get_grep_filenames(pattern, path)
     assert len(filenames) == 1, f"Expected 1 match, got {len(filenames)}: {filenames}"
     return filenames[0]
+
+def git_sed(pattern: str, replacement: str, path: Optional[Path]=None):
+    filenames = get_grep_filenames(pattern, path)
+    for f in map(Path, filter(None, filenames)):
+        sed(pattern, replacement, f)
 
 def replace_function_name_in_repo_asm_rtti(source: str, destination: str):
     sed(", " + source + ", ", "\\n.long " + destination + "\\n.long ", RTTI_DATA_FILE)
