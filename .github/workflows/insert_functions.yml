@@ -75,20 +75,36 @@ jobs:
 
         branch="insert-funcs-issue-${ISSUE_NUMBER}"
         git checkout -b "$branch"
-        git commit -m "Insert functions from issue #${ISSUE_NUMBER}"
 
+        # Get a clean PR title from the issue title
+        clean_title=$(echo "${ISSUE_TITLE}" | sed -E 's/^\[INSERT[[:space:]_]*FUNCTIONS\][[:space:]]*//I')
+
+        git commit -m "Insert functions from issue #${ISSUE_NUMBER}: ${clean_title}"
         git push --force origin "$branch"
 
-        # gh CLI uses GH_TOKEN automatically
-        gh pr create \
-          --title "Insert functions from issue #${ISSUE_NUMBER}" \
-          --body "Automatically generated from [#${ISSUE_NUMBER}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}) by @${ISSUE_AUTHOR}
+        # Try to create the PR — handle if it already exists
+        if gh pr view "$branch" --repo "${GITHUB_REPOSITORY}" &>/dev/null; then
+          echo "ℹ️ PR already exists for branch '$branch'. Updating body and labels..."
+          
+          gh pr edit "$branch" \
+            --title "Insert functions: ${clean_title}" \
+            --body "Automatically updated from [#${ISSUE_NUMBER}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}) by @${ISSUE_AUTHOR}
 
         Closes #${ISSUE_NUMBER}" \
-          --head "$branch" \
-          --base main \
-          --repo "${GITHUB_REPOSITORY}" \
-          --fill \
-          --label "auto-pr" \
-          --assignee "${ISSUE_AUTHOR}" \
-          --draft=false
+            --add-label "auto-pr" \
+            --repo "${GITHUB_REPOSITORY}"
+        else
+          echo "🚀 Creating new pull request..."
+          gh pr create \
+            --title "Insert functions: ${clean_title}" \
+            --body "Automatically generated from [#${ISSUE_NUMBER}](${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/issues/${ISSUE_NUMBER}) by @${ISSUE_AUTHOR}
+
+        Closes #${ISSUE_NUMBER}" \
+            --head "$branch" \
+            --base main \
+            --repo "${GITHUB_REPOSITORY}" \
+            --label "auto-pr" \
+            --assignee "${ISSUE_AUTHOR}" \
+            --draft=false
+        fi
+
