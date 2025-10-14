@@ -53,13 +53,14 @@ def insert_functions_from_csv(csv_path: Path, json_path: Path):
             return_type = custom_types_lut.get(return_type, return_type)
             mac_unmangled = UnmangledDetails(mac_mangled)
             argument_types = []
-            for i in mac_unmangled.args:
-                i = copy(i)
-                i.typename = custom_types_lut.get(i.typename, i.typename)
-                t = str(i).replace("&", "*")
-                if t.count("const") == 1 and t.endswith(" const *"):
-                    t = f"const {t.removesuffix(" const *")} *"
-                argument_types.append(t)
+            if mac_unmangled.args != [UnmangledDetails.Arg([], "void")]:
+                for i in mac_unmangled.args:
+                    i = copy(i)
+                    i.typename = custom_types_lut.get(i.typename, i.typename)
+                    t = str(i).replace("&", "*")
+                    if t.count("const") == 1 and t.endswith(" const *"):
+                        t = f"const {t.removesuffix(" const *")} *"
+                    argument_types.append(t)
             argument_names = [f"param_{i + 1}" for i in range(len(argument_types))]
 
             embedded_enums = "\n".join(f"enum {i} {{{i}_0}};" for i in EMBEDDED_ENUMS.get(mac_unmangled.type_name, []))
