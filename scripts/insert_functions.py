@@ -1,6 +1,7 @@
 import csv
 import json
 import sys
+from copy import copy
 from pathlib import Path
 
 from mac_unmangler import UnmangledDetails
@@ -30,6 +31,10 @@ def fix_mac_mangled(input: str) -> str:
 
 
 def insert_functions_from_csv(csv_path: Path, json_path: Path):
+    with json_path.open() as f:
+        data = json.load(f)
+    custom_types_lut = {i['type'].removeprefix("struct ").removeprefix("union ").removeprefix("enum "): i['type'] for i in data['types']}
+
     new_entries = []
     with csv_path.open() as f:
         for line in csv.DictReader(f.readlines()):
@@ -39,8 +44,13 @@ def insert_functions_from_csv(csv_path: Path, json_path: Path):
             call_type = fix_calltype(line['call type'])
             mac_mangled = fix_mac_mangled(line['mac mangled name'])
             return_type = line['return type']
+            return_type = custom_types_lut.get(return_type, return_type)
             mac_unmangled = UnmangledDetails(mac_mangled)
-            argument_types = list(map(str, mac_unmangled.args))
+            argument_types = []
+            for i in mac_unmangled.args:
+                i = copy(i)
+                i.typename = custom_types_lut.get(i.typename, i.typename)
+                argument_types.append(str(i))
             argument_names = [f"param_{i + 1}" for i in range(len(argument_types))]
 
             embedded_enums = "\n".join(f"enum {i} {{{i}_0}};" for i in EMBEDDED_ENUMS.get(mac_unmangled.type_name, []))
@@ -82,8 +92,6 @@ public:
 
             set_function_name_in_repo_files(win_addr, mangled_name)
 
-    with json_path.open() as f:
-        data = json.load(f)
     data['functions'] += new_entries
     with json_path.open("w") as f:
         data = json.dump(data, f, indent=2)
