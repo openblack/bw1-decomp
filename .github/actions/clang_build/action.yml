@@ -1,0 +1,42 @@
+name: 'Clang build'
+description: 'Build the project and check the sha.'
+inputs:
+  configuration:
+    description: 'The CMake Configuration to use (Release or RelWithDebInfo)'
+    required: true
+    default: 'Release'
+  build_dir:
+    description: 'The path to put the build files into.'
+    required: true
+    default: 'build'
+  expected_md5:
+    description: 'The SHA to check if the Release configuration is byte for byte the same as the original file'
+    required: true
+    default: '174b1a64e74b2321f3c38ccc8a511e78'
+runs:
+  using: "composite"
+  steps:
+    - name: Set path for LLVM binaries in env
+      shell: bash
+      run: |
+        echo "CLANG_INCLUDE=$(echo '${{ github.workspace }}/llvm/lib/clang/20/include;/usr/i686-w64-mingw32/include' | sed 's,\\,/,g')" >> $GITHUB_ENV
+        echo "LLVM_BINARIES=$(echo '${{ github.workspace }}'/llvm/bin | sed 's,\\,/,g')" >> $GITHUB_ENV
+
+    - name: Build bw1-decomp project
+      shell: bash
+      run: |
+        cmake -G Ninja -Ssrc -B${{ inputs.build_dir }} -DCMAKE_BUILD_TYPE=${{ inputs.configuration }} -DLLVM_BINARIES_DIR="${{env.LLVM_BINARIES}}" -DCMAKE_C_STANDARD_INCLUDE_DIRECTORIES="${{env.CLANG_INCLUDE}}"
+        cmake --build ${{ inputs.build_dir }}
+
+    - name: Verify MD5 sum of resulting binary
+      if: ${{ inputs.configuration == 'Release' }}
+      shell: bash
+      run: |
+        actual_md5=$(md5sum "${{ github.workspace }}/${{ inputs.build_dir }}/runblack-reassembled.exe" | awk '{ print $1 }' | sed 's/^\\//')
+
+        if [ "${{ inputs.expected_md5 }}" != "$actual_md5" ]; then
+        echo "❌ Error: MD5 sum mismatch. Expected ${{ inputs.expected_md5 }} but got $actual_md5"
+        exit 1
+        else
+        echo "✅ MD5 sum matches: ${{ inputs.expected_md5 }}"
+        fi

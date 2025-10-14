@@ -13,7 +13,7 @@
 .extern _jmp_addr_0x004146b0
 .extern _jmp_addr_0x00417c20
 .extern _jmp_addr_0x00419c20
-.extern _jmp_addr_0x00435b90
+.extern ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z
 .extern _jmp_addr_0x00436a70
 .extern _jmp_addr_0x00436ab0
 .extern _CreateCitadel__7CitadelFRC9MapCoordsPC17GCitadelHeartInfoUcff
@@ -2779,7 +2779,7 @@ _jmp_addr_0x0063c817:    {disp32} mov       edx, dword ptr [edi + 0x0000039c]   
                          {disp8} lea        eax, dword ptr [esp + 0x38]                    // 0x0063c84f    8d442438
                          push               0x00c58498                                     // 0x0063c853    689884c500
                          push               eax                                            // 0x0063c858    50
-                         call               _jmp_addr_0x00435b90                           // 0x0063c859    e83293dfff
+                         call               ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z                           // 0x0063c859    e83293dfff
                          add                esp, 0x14                                      // 0x0063c85e    83c414
                          push               0x0                                            // 0x0063c861    6a00
                          push               0x1                                            // 0x0063c863    6a01

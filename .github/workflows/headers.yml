@@ -10,13 +10,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.12'
-
-    - name: Install dependencies
-      run: pip install -r scripts/headers/requirements.txt
+    - uses: ./.github/actions/python_prep
 
     - name: Run unit tests
       run: python -m unittest discover -v -s ./scripts/headers -p '*test.py'

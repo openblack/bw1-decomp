@@ -1,6 +1,0 @@
-inflection
-libclang
-
-# https://gitlab.com/bwrsandman/csnake/-/tree/bwrsandman-master-patch-49783
-# csnake
-git+https://gitlab.com/bwrsandman/csnake.git@bwrsandman-master-patch-49783#egg=csnake
