@@ -63,9 +63,9 @@ jobs:
         git config user.name "${ISSUE_AUTHOR}"
         git config user.email "${ISSUE_AUTHOR}@users.noreply.github.com"
 
-        # Stage all changes except CSV and JSON
+        # Stage changes to header and asm files, ignore other changes
         git add -u
-        git reset manual_analysis_functions.csv extracted_reversing_data_bw_141.json || true
+        git reset manual_analysis_functions.csv extracted_reversing_data_bw_141.json globals.h libs/ifc/README.md || true
 
         # Exit if nothing to commit
         if git diff --cached --quiet; then
