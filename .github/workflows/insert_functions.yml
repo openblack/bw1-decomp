@@ -59,6 +59,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
         ISSUE_NUMBER: ${{ github.event.issue.number }}
+        ISSUE_TITLE: ${{ github.event.issue.title }}
       run: |
         git config user.name "${ISSUE_AUTHOR}"
         git config user.email "${ISSUE_AUTHOR}@users.noreply.github.com"
