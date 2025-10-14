@@ -10,13 +10,31 @@ EMBEDDED_ENUMS = {
     "GGuidance": ["GUIDANCE_SFX_TYPE"],
 }
 
+
+CALL_TYPE_REPLACEMNTS = {
+    "thiscall": "__thiscall",
+    "fastcall": "__fastcall",
+    "stdcall": "__stdcall",
+    "ccall": "__cdecl",
+    "cdecl": "__cdecl",
+}
+
+
+def fix_calltype(input: str) -> str:
+    return CALL_TYPE_REPLACEMNTS.get(input, input)
+
+
+def fix_mac_mangled(input: str) -> str:
+    return input.lstrip(".")
+
+
 def insert_functions_from_csv(csv_path: Path, json_path: Path):
     new_entries = []
     with csv_path.open() as f:
         for line in csv.DictReader(f.readlines()):
             is_virtual = False  # Normally, all virtual functions are named
-            call_type = line['call type']
-            mac_mangled = line['mac mangled name']
+            call_type = fix_calltype(line['call type'])
+            mac_mangled = fix_mac_mangled(line['mac mangled name'])
             return_type = line['return type']
             mac_unmangled = UnmangledDetails(mac_mangled)
             argument_types = list(map(str, mac_unmangled.args))
@@ -36,7 +54,7 @@ public:
             mangled_class = mangle_class(class_definition)
             mangled_name = mangled_class[0]
 
-            if call_type == 'thiscall':
+            if call_type == '__thiscall':
                 if argument_types:
                     argument_types = [f"{mac_unmangled.type_name}*", "void*"] + argument_types
                     argument_names = ["this", "edx"] + argument_names
