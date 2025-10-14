@@ -76,13 +76,11 @@ public:
             mangled_class = mangle_class(class_definition)
             mangled_name = mangled_class[0]
 
-            if call_type == '__thiscall':
-                if argument_types:
-                    argument_types = [f"{mac_unmangled.type_name}*", "void*"] + argument_types
-                    argument_names = ["this", "edx"] + argument_names
-                else:
-                    argument_types = [f"{mac_unmangled.type_name}*"]
-                    argument_names = ["this"]
+            this_type = f"{'const ' if mac_unmangled.isconst else ''}struct {mac_unmangled.type_name} *"
+
+            argument_types = [this_type] + argument_types
+            argument_names = ["this"] + argument_names
+
             print(f"Inserting {str(mac_unmangled)}")
             entry = dict(
                 win_addr=win_addr,
