@@ -131,7 +131,7 @@
 .extern @SetupScreenFadeTo__7GScriptFUcUcUcSc@12
 .extern _jmp_addr_0x006ebea0
 .extern _jmp_addr_0x006ec270
-.extern _jmp_addr_0x006ec780
+.extern ?StopHelpScripts@GScript@@QAEXXZ
 .extern @Init__19ScriptCreatureCurseFP8Creature@12
 .extern _jmp_addr_0x007096e0
 .extern _jmp_addr_0x00711d90
@@ -1666,7 +1666,7 @@ _jmp_addr_0x00553b44:    {disp32} mov       eax, dword ptr [esi + 0x002502c4]   
                          add                esp, 0x04                                     // 0x00553b5f    83c404
                          cmp.s              eax, ebx                                      // 0x00553b62    3bc3
                          {disp8} jne        _jmp_addr_0x00553b71                          // 0x00553b64    750b
-                         call               _jmp_addr_0x006ec780                          // 0x00553b66    e8158c1900
+                         call               ?StopHelpScripts@GScript@@QAEXXZ              // 0x00553b66    e8158c1900
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00553b6b    8b0d5c19d000
 _jmp_addr_0x00553b71:    cmp                byte ptr [data_bytes + 0x440018], bl          // 0x00553b71    381d1860e000
                          {disp32} je        _jmp_addr_0x00553db0                          // 0x00553b77    0f8433020000

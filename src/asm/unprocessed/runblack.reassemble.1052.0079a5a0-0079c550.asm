@@ -20,7 +20,7 @@
 .extern _jmp_addr_0x0064b7c0
 .extern _jmp_addr_0x0064b890
 .extern _jmp_addr_0x0064ba70
-.extern _jmp_addr_0x006ec780
+.extern ?StopHelpScripts@GScript@@QAEXXZ
 .extern _jmp_addr_0x007949a0
 .extern _jmp_addr_0x007949b0
 .extern _jmp_addr_0x00794a80
@@ -296,7 +296,7 @@ _jmp_addr_0x0079a720:    xor.s             edx, edx                             
                          nop                                                             // 0x0079a7ff    90
 _jmp_addr_0x0079a800:    push              esi                                           // 0x0079a800    56
                          mov.s             esi, ecx                                      // 0x0079a801    8bf1
-                         call              _jmp_addr_0x006ec780                          // 0x0079a803    e8781ff5ff
+                         call              ?StopHelpScripts@GScript@@QAEXXZ              // 0x0079a803    e8781ff5ff
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x0079a808    8b0d5c19d000
                          {disp32} mov      eax, dword ptr [ecx + 0x0025005c]             // 0x0079a80e    8b815c002500
                          test              eax, eax                                      // 0x0079a814    85c0

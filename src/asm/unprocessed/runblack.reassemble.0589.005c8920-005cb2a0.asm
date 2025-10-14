@@ -34,7 +34,7 @@
 .extern _jmp_addr_0x006de570
 .extern _jmp_addr_0x006e9d10
 .extern _StartScript__7GScriptFPc@4
-.extern _jmp_addr_0x006ec780
+.extern ?StopHelpScripts@GScript@@QAEXXZ
 .extern _jmp_addr_0x006f6ba0
 .extern _jmp_addr_0x006f6c50
 .extern _jmp_addr_0x0070d0f0
@@ -455,7 +455,7 @@ _jmp_addr_0x005c8c40:    {disp32} mov       eax, dword ptr [_game]              
                          {disp8} jne        _jmp_addr_0x005c8c68                          // 0x005c8c63    7503
                          xor.s              eax, eax                                      // 0x005c8c65    33c0
                          ret                                                              // 0x005c8c67    c3
-_jmp_addr_0x005c8c68:    call               _jmp_addr_0x006ec780                          // 0x005c8c68    e8133b1200
+_jmp_addr_0x005c8c68:    call               ?StopHelpScripts@GScript@@QAEXXZ              // 0x005c8c68    e8133b1200
                          mov                eax, 0x00000001                               // 0x005c8c6d    b801000000
                          ret                                                              // 0x005c8c72    c3
                          nop                                                              // 0x005c8c73    90

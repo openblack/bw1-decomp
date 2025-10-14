@@ -110,7 +110,7 @@
 .extern @IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE@12
 .extern _jmp_addr_0x006de570
 .extern _jmp_addr_0x006eb7e0
-.extern _jmp_addr_0x006ec780
+.extern ?StopHelpScripts@GScript@@QAEXXZ
 .extern _jmp_addr_0x006f6c50
 .extern _jmp_addr_0x007290f0
 .extern _jmp_addr_0x0078cd20
@@ -12037,7 +12037,7 @@ _jmp_addr_0x005c79c0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
 _jmp_addr_0x005c79e0:    push               esi                                            // 0x005c79e0    56
                          push               edi                                            // 0x005c79e1    57
                          mov.s              esi, ecx                                       // 0x005c79e2    8bf1
-                         call               _jmp_addr_0x006ec780                           // 0x005c79e4    e8974d1200
+                         call               ?StopHelpScripts@GScript@@QAEXXZ               // 0x005c79e4    e8974d1200
                          push               0x0                                            // 0x005c79e9    6a00
                          push               0x2                                            // 0x005c79eb    6a02
                          mov.s              ecx, esi                                       // 0x005c79ed    8bce

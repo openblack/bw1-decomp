@@ -14,7 +14,7 @@
 .extern _jmp_addr_0x00470af0
 .extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x005d8a10
-.extern _jmp_addr_0x006ec780
+.extern ?StopHelpScripts@GScript@@QAEXXZ
 .extern _jmp_addr_0x006f0a80
 .extern _jmp_addr_0x00794a80
 .extern @TriggerIntro__11InnerCameraFbP8Zoomer3dP8Zoomer3d@17
@@ -1946,7 +1946,7 @@ _jmp_addr_0x007a12f5:    mov                edx, dword ptr [ecx]                
                          {disp8} mov        eax, dword ptr [edx + 0x44]                   // 0x007a1315    8b4244
                          test               eax, eax                                      // 0x007a1318    85c0
                          {disp8} jne        _jmp_addr_0x007a132e                          // 0x007a131a    7512
-                         call               _jmp_addr_0x006ec780                          // 0x007a131c    e85fb4f4ff
+                         call               ?StopHelpScripts@GScript@@QAEXXZ              // 0x007a131c    e85fb4f4ff
                          push               0x00c2a788                                    // 0x007a1321    6888a7c200
                          call               _jmp_addr_0x00794a80                          // 0x007a1326    e85537ffff
                          add                esp, 0x04                                     // 0x007a132b    83c404

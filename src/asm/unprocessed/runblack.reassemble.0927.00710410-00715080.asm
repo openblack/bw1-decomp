@@ -52,7 +52,7 @@
 .extern @LoadBinary__7GScriptFPc@12
 .extern _jmp_addr_0x006eb8b0
 .extern _jmp_addr_0x006eb950
-.extern _jmp_addr_0x006ec780
+.extern ?StopHelpScripts@GScript@@QAEXXZ
 .extern ?ScriptErrorMessage@GScript@@QAEXPAD@Z
 .extern _jmp_addr_0x006f69f0
 .extern _jmp_addr_0x006f6a90
@@ -449,7 +449,7 @@ _jmp_addr_0x007106db:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          call               _jmp_addr_0x006f6a90                          // 0x007106f2    e89963feff
                          cmp                eax, 0x01                                     // 0x007106f7    83f801
                          {disp8} jne        _jmp_addr_0x00710713                          // 0x007106fa    7517
-                         call               _jmp_addr_0x006ec780                          // 0x007106fc    e87fc0fdff
+                         call               ?StopHelpScripts@GScript@@QAEXXZ              // 0x007106fc    e87fc0fdff
                          {disp32} mov       edx, dword ptr [_game]                        // 0x00710701    8b155c19d000
                          {disp32} mov       eax, dword ptr [edx + 0x0025005c]             // 0x00710707    8b825c002500
                          {disp32} mov       esi, dword ptr [eax + 0x000045cc]             // 0x0071070d    8bb0cc450000

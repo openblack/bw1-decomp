@@ -453,7 +453,7 @@
 .globl _jmp_addr_0x006ebea0
 .globl _jmp_addr_0x006ec270
 .globl _jmp_addr_0x006ec670
-.globl _jmp_addr_0x006ec780
+.globl ?StopHelpScripts@GScript@@QAEXXZ
 .globl _jmp_addr_0x006ec790
 .globl _jmp_addr_0x006ec7b0
 .globl _jmp_addr_0x006efcd0
@@ -18966,7 +18966,7 @@ _jmp_addr_0x006eb7e0:    {disp32} mov       eax, dword ptr [_game]              
                          call               _jmp_addr_0x006f6c50                          // 0x006eb7ff    e84cb40000
                          cmp                eax, 0x02                                     // 0x006eb804    83f802
                          {disp8} jne        _jmp_addr_0x006eb80e                          // 0x006eb807    7505
-                         call               _jmp_addr_0x006ec780                          // 0x006eb809    e8720f0000
+                         call               ?StopHelpScripts@GScript@@QAEXXZ              // 0x006eb809    e8720f0000
 _jmp_addr_0x006eb80e:    {disp32} mov       edx, dword ptr [_game]                        // 0x006eb80e    8b155c19d000
                          {disp32} mov       eax, dword ptr [edx + 0x0025005c]             // 0x006eb814    8b825c002500
                          {disp32} mov       ecx, dword ptr [eax + 0x000045cc]             // 0x006eb81a    8b88cc450000
@@ -20103,7 +20103,7 @@ _jmp_addr_0x006ec670:    {disp32} mov       eax, dword ptr [_game]              
                          call               _jmp_addr_0x006f6c50                          // 0x006ec68c    e8bfa50000
                          cmp                eax, 0x02                                     // 0x006ec691    83f802
                          {disp8} jne        _jmp_addr_0x006ec6c4                          // 0x006ec694    752e
-                         call               _jmp_addr_0x006ec780                          // 0x006ec696    e8e5000000
+                         call               ?StopHelpScripts@GScript@@QAEXXZ              // 0x006ec696    e8e5000000
                          {disp32} mov       edx, dword ptr [_game]                        // 0x006ec69b    8b155c19d000
                          {disp32} mov       ecx, dword ptr [edx + 0x0025005c]             // 0x006ec6a1    8b8a5c002500
                          push               0x0                                           // 0x006ec6a7    6a00
@@ -20183,7 +20183,8 @@ _jmp_addr_0x006ec74d:    ret                                                    
                          nop                                                              // 0x006ec77d    90
                          nop                                                              // 0x006ec77e    90
                          nop                                                              // 0x006ec77f    90
-_jmp_addr_0x006ec780:    push               0x4a                                          // 0x006ec780    6a4a
+?StopHelpScripts@GScript@@QAEXXZ:
+                         push               0x4a                                          // 0x006ec780    6a4a
                          call               _jmp_addr_0x006f0cc0                          // 0x006ec782    e839450000
                          pop                ecx                                           // 0x006ec787    59
                          ret                                                              // 0x006ec788    c3
