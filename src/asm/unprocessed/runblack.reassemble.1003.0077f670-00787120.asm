@@ -58,7 +58,7 @@
 .extern _SetMaterialProperties__7GJUtilsFP8LH3DMeshRC18MaterialProperties
 .extern _jmp_addr_0x005da6f0
 .extern _jmp_addr_0x005dc890
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005fb830
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2
 .extern ?Get3DType@Object@@UAE?AW4LH3DObject__ObjectType@@XZ
@@ -560,7 +560,7 @@ _jmp_addr_0x0077f8f0:    push               ebx                                 
                          fstp               st(0)                                         // 0x0077f923    ddd8
                          push               esi                                           // 0x0077f925    56
                          mov.s              ecx, ebx                                      // 0x0077f926    8bcb
-                         call               _jmp_addr_0x005dc8b0                          // 0x0077f928    e883cfe5ff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x0077f928    e883cfe5ff
                          mov.s              ecx, eax                                      // 0x0077f92d    8bc8
                          call               _jmp_addr_0x005da6f0                          // 0x0077f92f    e8bcade5ff
                          push               0x1                                           // 0x0077f934    6a01

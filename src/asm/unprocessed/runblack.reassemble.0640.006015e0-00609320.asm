@@ -38,7 +38,7 @@
 .extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
 .extern ?InteractsWithPhysicsObjects@MultiMapFixed@@UAE_NXZ
-.extern _jmp_addr_0x005508a0
+.extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern @GetNextPlayerAndNeutral__5GGameFP7GPlayer@12
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
@@ -465,7 +465,7 @@ _jmp_addr_0x006016d0:    {disp32} mov       ecx, dword ptr [_game]              
                          push               esi                                           // 0x006016d6    56
                          push               edi                                           // 0x006016d7    57
                          push               0x0                                           // 0x006016d8    6a00
-                         call               _jmp_addr_0x005508a0                          // 0x006016da    e8c1f1f4ff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x006016da    e8c1f1f4ff
                          mov.s              edi, eax                                      // 0x006016df    8bf8
                          test               edi, edi                                      // 0x006016e1    85ff
                          {disp8} je         _jmp_addr_0x0060172c                          // 0x006016e3    7447
@@ -487,7 +487,7 @@ _jmp_addr_0x00601702:    {disp32} mov       ecx, dword ptr [esi + 0x000005c8]   
                          {disp8} jne        _jmp_addr_0x00601702                          // 0x00601718    75e8
 _jmp_addr_0x0060171a:    {disp32} mov       ecx, dword ptr [_game]                        // 0x0060171a    8b0d5c19d000
                          push               edi                                           // 0x00601720    57
-                         call               _jmp_addr_0x005508a0                          // 0x00601721    e87af1f4ff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x00601721    e87af1f4ff
                          mov.s              edi, eax                                      // 0x00601726    8bf8
                          test               edi, edi                                      // 0x00601728    85ff
                          {disp8} jne        _jmp_addr_0x006016e5                          // 0x0060172a    75b9
@@ -533,7 +533,7 @@ _jmp_addr_0x00601755:    or                 byte ptr [eax + 0x59c0], 1          
                          push               esi                                           // 0x00601787    56
                          push               0x0                                           // 0x00601788    6a00
                          {disp8} mov        dword ptr [esp + 0x08], 0x00000000            // 0x0060178a    c744240800000000
-                         call               _jmp_addr_0x005508a0                          // 0x00601792    e809f1f4ff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x00601792    e809f1f4ff
                          mov.s              esi, eax                                      // 0x00601797    8bf0
                          test               esi, esi                                      // 0x00601799    85f6
                          {disp8} je         _jmp_addr_0x00601814                          // 0x0060179b    7477
@@ -555,7 +555,7 @@ _jmp_addr_0x006017a2:    push               0x1                                 
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x006017c9    8b0d5c19d000
                          push               esi                                           // 0x006017cf    56
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x006017d0    d95c2414
-                         call               _jmp_addr_0x005508a0                          // 0x006017d4    e8c7f0f4ff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x006017d4    e8c7f0f4ff
                          mov.s              esi, eax                                      // 0x006017d9    8bf0
                          test               esi, esi                                      // 0x006017db    85f6
                          {disp8} jne        _jmp_addr_0x006017a2                          // 0x006017dd    75c3
@@ -6759,7 +6759,7 @@ _jmp_addr_0x006057b0:    sub                esp, 0x08                           
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x006057b7    8b0d5c19d000
                          push               0x0                                           // 0x006057bd    6a00
                          {disp8} mov        dword ptr [esp + 0x0c], 0x00000000            // 0x006057bf    c744240c00000000
-                         call               _jmp_addr_0x005508a0                          // 0x006057c7    e8d4b0f4ff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x006057c7    e8d4b0f4ff
                          mov.s              esi, eax                                      // 0x006057cc    8bf0
                          test               esi, esi                                      // 0x006057ce    85f6
                          {disp8} je         _jmp_addr_0x00605845                          // 0x006057d0    7473
@@ -6778,7 +6778,7 @@ _jmp_addr_0x006057d2:    push               0x1                                 
                          push               esi                                           // 0x006057f7    56
                          {disp8} fadd       dword ptr [esp + 0x0c]                        // 0x006057f8    d844240c
                          {disp8} fstp       dword ptr [esp + 0x0c]                        // 0x006057fc    d95c240c
-                         call               _jmp_addr_0x005508a0                          // 0x00605800    e89bb0f4ff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x00605800    e89bb0f4ff
                          mov.s              esi, eax                                      // 0x00605805    8bf0
                          test               esi, esi                                      // 0x00605807    85f6
                          {disp8} jne        _jmp_addr_0x006057d2                          // 0x00605809    75c7

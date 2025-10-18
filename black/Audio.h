@@ -44,6 +44,8 @@ extern const struct GameThingVftable __vt__6GAudio asm("??_7GAudio@@6B@");
 
 // win1.41 00428ef0 mac 1017c7c0 GAudio::InitAtmos(void)
 void __fastcall InitAtmos__6GAudioFv(struct GAudio* this) asm("?InitAtmos@GAudio@@QAEXXZ");
+// win1.41 00428f90 mac 1017c710 GAudio::ReleaseAtmosSoundBanks(void)
+void __fastcall ReleaseAtmosSoundBanks__6GAudioFv(struct GAudio* this) asm("?ReleaseAtmosSoundBanks@GAudio@@QAEXXZ");
 // win1.41 00429d60 mac 100001c0 GAudio::PlaySoundEffect(Base *, unsigned long, unsigned long, unsigned long, int, int, AUDIO_SFX_BANK_TYPE)
 void __fastcall PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE(struct GAudio* this, const void* edx, struct Base* param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4, int param_5, int param_6, enum AUDIO_SFX_BANK_TYPE param_7);
 // win1.41 00429e30 mac 10020580 GAudio::PlaySoundEffect(LH_SamplePlayOptions *)

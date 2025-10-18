@@ -38,11 +38,11 @@
 .extern _jmp_addr_0x004f25f0
 .extern _jmp_addr_0x004f4b60
 .extern _jmp_addr_0x004f51e0
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005e6f70
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern @InBounds__9MapCoordsCFv@4
-.extern _jmp_addr_0x0064aac0
+.extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
 .extern _GetAngleFromDXDZ__6GUtilsFll
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x0074d360
@@ -913,7 +913,7 @@ _jmp_addr_0x004775d0:    sub                esp, 0x0c                           
                          {disp8} mov        dword ptr [esp + 0x10], edi              // 0x004775eb    897c2410
                          call               dword ptr [edx + 0x1c]                   // 0x004775ef    ff521c
                          mov.s              ecx, eax                                 // 0x004775f2    8bc8
-                         call               _jmp_addr_0x0064aac0                     // 0x004775f4    e8c7341d00
+                         call               ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z                     // 0x004775f4    e8c7341d00
                          mov.s              ecx, eax                                 // 0x004775f9    8bc8
                          test               ecx, ecx                                 // 0x004775fb    85c9
                          {disp32} je        _jmp_addr_0x00477791                     // 0x004775fd    0f848e010000
@@ -1048,7 +1048,7 @@ _jmp_addr_0x00477778:    mov                eax, dword ptr [esi]                
                          mov.s              ecx, esi                                 // 0x0047777b    8bce
                          call               dword ptr [eax + 0x1c]                   // 0x0047777d    ff501c
                          mov.s              ecx, eax                                 // 0x00477780    8bc8
-                         call               _jmp_addr_0x0064aac0                     // 0x00477782    e839331d00
+                         call               ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z                     // 0x00477782    e839331d00
                          mov.s              ecx, eax                                 // 0x00477787    8bc8
                          test               ecx, ecx                                 // 0x00477789    85c9
                          {disp32} jne       _jmp_addr_0x00477603                     // 0x0047778b    0f8572feffff
@@ -1073,12 +1073,12 @@ _jmp_addr_0x004777a0:    push               esi                                 
                          mov.s              ecx, edi                                 // 0x004777b1    8bcf
                          call               dword ptr [edx + 0x1c]                   // 0x004777b3    ff521c
                          mov.s              ecx, eax                                 // 0x004777b6    8bc8
-                         call               _jmp_addr_0x0064aac0                     // 0x004777b8    e803331d00
+                         call               ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z                     // 0x004777b8    e803331d00
                          mov.s              esi, eax                                 // 0x004777bd    8bf0
                          test               esi, esi                                 // 0x004777bf    85f6
                          {disp8} je         _jmp_addr_0x004777e7                     // 0x004777c1    7424
 _jmp_addr_0x004777c3:    mov.s              ecx, esi                                 // 0x004777c3    8bce
-                         call               _jmp_addr_0x005dc8b0                     // 0x004777c5    e8e6501600
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                     // 0x004777c5    e8e6501600
                          cmp                dword ptr [eax + 0x000003c8], edi        // 0x004777ca    39b8c8030000
                          {disp8} je         _jmp_addr_0x004777ec                     // 0x004777d0    741a
                          mov                eax, dword ptr [edi]                     // 0x004777d2    8b07
@@ -1086,7 +1086,7 @@ _jmp_addr_0x004777c3:    mov.s              ecx, esi                            
                          mov.s              ecx, edi                                 // 0x004777d5    8bcf
                          call               dword ptr [eax + 0x1c]                   // 0x004777d7    ff501c
                          mov.s              ecx, eax                                 // 0x004777da    8bc8
-                         call               _jmp_addr_0x0064aac0                     // 0x004777dc    e8df321d00
+                         call               ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z                     // 0x004777dc    e8df321d00
                          mov.s              esi, eax                                 // 0x004777e1    8bf0
                          test               esi, esi                                 // 0x004777e3    85f6
                          {disp8} jne        _jmp_addr_0x004777c3                     // 0x004777e5    75dc

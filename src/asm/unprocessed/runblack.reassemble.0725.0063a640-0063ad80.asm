@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
-.extern _jmp_addr_0x005508a0
+.extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x005e6540
 .extern _DoesObjectTypeCountAsFixed__7MapCellF11OBJECT_TYPE
@@ -108,7 +108,7 @@ _jmp_addr_0x0063a6a0:    push               ebx                                 
                          mov.s              ebx, ecx                                      // 0x0063a6a3    8bd9
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0063a6a5    8b0d5c19d000
                          push               0x0                                           // 0x0063a6ab    6a00
-                         call               _jmp_addr_0x005508a0                          // 0x0063a6ad    e8ee61f1ff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x0063a6ad    e8ee61f1ff
                          mov.s              edi, eax                                      // 0x0063a6b2    8bf8
                          test               edi, edi                                      // 0x0063a6b4    85ff
                          {disp8} je         _jmp_addr_0x0063a6f4                          // 0x0063a6b6    743c
@@ -129,7 +129,7 @@ _jmp_addr_0x0063a6dc:    inc                esi                                 
                          .byte              0x72, 0xd8// {disp8} jb _jmp_addr_0x0063a6ba  // 0x0063a6e0    72d8
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0063a6e2    8b0d5c19d000
                          push               edi                                           // 0x0063a6e8    57
-                         call               _jmp_addr_0x005508a0                          // 0x0063a6e9    e8b261f1ff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x0063a6e9    e8b261f1ff
                          mov.s              edi, eax                                      // 0x0063a6ee    8bf8
                          test               edi, edi                                      // 0x0063a6f0    85ff
                          {disp8} jne        _jmp_addr_0x0063a6b8                          // 0x0063a6f2    75c4
@@ -156,7 +156,7 @@ _jmp_addr_0x0063a710:    push               ebx                                 
                          mov.s              ebx, ecx                                      // 0x0063a713    8bd9
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0063a715    8b0d5c19d000
                          push               0x0                                           // 0x0063a71b    6a00
-                         call               _jmp_addr_0x005508a0                          // 0x0063a71d    e87e61f1ff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x0063a71d    e87e61f1ff
                          mov.s              edi, eax                                      // 0x0063a722    8bf8
                          test               edi, edi                                      // 0x0063a724    85ff
                          {disp8} je         _jmp_addr_0x0063a764                          // 0x0063a726    743c
@@ -177,7 +177,7 @@ _jmp_addr_0x0063a74c:    inc                esi                                 
                          .byte              0x72, 0xd8// {disp8} jb _jmp_addr_0x0063a72a  // 0x0063a750    72d8
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0063a752    8b0d5c19d000
                          push               edi                                           // 0x0063a758    57
-                         call               _jmp_addr_0x005508a0                          // 0x0063a759    e84261f1ff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x0063a759    e84261f1ff
                          mov.s              edi, eax                                      // 0x0063a75e    8bf8
                          test               edi, edi                                      // 0x0063a760    85ff
                          {disp8} jne        _jmp_addr_0x0063a728                          // 0x0063a762    75c4

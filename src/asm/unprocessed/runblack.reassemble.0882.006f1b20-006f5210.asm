@@ -42,7 +42,7 @@
 .extern _jmp_addr_0x005d06e0
 .extern _jmp_addr_0x005d0730
 .extern _jmp_addr_0x005dc130
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005e6bd0
 .extern _jmp_addr_0x005e6ea0
 .extern _jmp_addr_0x005e6f70
@@ -3624,7 +3624,7 @@ _jmp_addr_0x006f4266:    mov.s              ecx, edi                            
                          mov.s              ecx, edi                                             // 0x006f4272    8bcf
                          call               _jmp_addr_0x0064a9f0                                 // 0x006f4274    e87767f5ff
                          mov.s              ecx, eax                                             // 0x006f4279    8bc8
-                         call               _jmp_addr_0x005dc8b0                                 // 0x006f427b    e83086eeff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ // 0x006f427b    e83086eeff
                          {disp32} mov       eax, dword ptr [eax + 0x000001bc]                    // 0x006f4280    8b80bc010000
                          push               eax                                                  // 0x006f4286    50
                          {disp32} mov       eax, dword ptr [_game]                               // 0x006f4287    a15c19d000
@@ -3797,7 +3797,7 @@ _jmp_addr_0x006f43c2:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          mov.s              ecx, eax                                             // 0x006f4463    8bc8
                          call               _jmp_addr_0x0064a9f0                                 // 0x006f4465    e88665f5ff
                          mov.s              ecx, eax                                             // 0x006f446a    8bc8
-                         call               _jmp_addr_0x005dc8b0                                 // 0x006f446c    e83f84eeff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ // 0x006f446c    e83f84eeff
                          mov.s              ecx, eax                                             // 0x006f4471    8bc8
                          call               _jmp_addr_0x005d06e0                                 // 0x006f4473    e868c2edff
                          pop                ecx                                                  // 0x006f4478    59

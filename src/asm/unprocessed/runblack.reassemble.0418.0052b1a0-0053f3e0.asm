@@ -99,7 +99,7 @@
 .extern _jmp_addr_0x005453d0
 .extern _jmp_addr_0x00545630
 .extern _jmp_addr_0x0054ae20
-.extern _jmp_addr_0x005508a0
+.extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern @IsMultiplayerGame__5GGameCFv@4
 .extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x005575a0
@@ -14950,7 +14950,7 @@ _jmp_addr_0x00533e30:    {disp32} mov       dword ptr [data_bytes + 0x30a348], 0
                          {disp32} jne       _jmp_addr_0x005346c7                                 // 0x00533e7a    0f8547080000
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x00533e80    8b0d5c19d000
                          push               eax                                                  // 0x00533e86    50
-                         call               _jmp_addr_0x005508a0                                 // 0x00533e87    e814ca0100
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z         // 0x00533e87    e814ca0100
                          mov.s              edi, eax                                             // 0x00533e8c    8bf8
                          test               edi, edi                                             // 0x00533e8e    85ff
                          {disp8} je         _jmp_addr_0x00533edf                                 // 0x00533e90    744d
@@ -14975,7 +14975,7 @@ _jmp_addr_0x00533e92:    mov.s              ecx, edi                            
                          {disp32} je        _jmp_addr_0x00533fb1                                 // 0x00533ec7    0f84e4000000
 _jmp_addr_0x00533ecd:    {disp32} mov       ecx, dword ptr [_game]                               // 0x00533ecd    8b0d5c19d000
                          push               edi                                                  // 0x00533ed3    57
-                         call               _jmp_addr_0x005508a0                                 // 0x00533ed4    e8c7c90100
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z         // 0x00533ed4    e8c7c90100
                          mov.s              edi, eax                                             // 0x00533ed9    8bf8
                          test               edi, edi                                             // 0x00533edb    85ff
                          {disp8} jne        _jmp_addr_0x00533e92                                 // 0x00533edd    75b3

@@ -2,6 +2,7 @@
 #define BW1_DECOMP_GESTURE_SYSTEM_DATA_LIST_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
@@ -29,6 +30,11 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__21GestureSystemDataList asm("??_R4GestureSystemDataList@@6B@");
 // win1.41 008df7c0 mac 10733090 GestureSystemDataList::`vftable'
 extern const struct BaseVftable __vt__21GestureSystemDataList asm("??_7GestureSystemDataList@@6B@");
+
+// Non-virtual methods
+
+// win1.41 00579af0 mac 1032b530 GestureSystemDataList::Load(char *)
+bool __fastcall Load__21GestureSystemDataListFPc(struct GestureSystemDataList* this, const void* edx, char* param_1) asm("?Load@GestureSystemDataList@@QAE_NPAD@Z");
 
 // Override methods
 

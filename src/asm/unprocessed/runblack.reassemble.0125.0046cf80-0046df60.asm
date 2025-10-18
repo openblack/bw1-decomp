@@ -21,7 +21,7 @@
 .extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x005514d0
 .extern @MyInterface__5GGameFv@4
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00617140
 .extern @SelectMesh__9MorphableFl@12
 .extern @ReadBinary__9MorphableFP6LHFileP8AnimInfoP8AnimInfo@20
@@ -287,7 +287,7 @@ _jmp_addr_0x0046d210:    push               esi                                 
                          test               al, al                                        // 0x0046d225    84c0
                          {disp32} jne       _jmp_addr_0x0046d2b3                          // 0x0046d227    0f8586000000
                          {disp32} mov       ecx, dword ptr [esi + 0x00004850]             // 0x0046d22d    8b8e50480000
-                         call               _jmp_addr_0x005dc8b0                          // 0x0046d233    e878f61600
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x0046d233    e878f61600
                          mov                edx, dword ptr [eax]                          // 0x0046d238    8b10
                          mov.s              ecx, eax                                      // 0x0046d23a    8bc8
                          call               dword ptr [edx + 0x40c]                       // 0x0046d23c    ff920c040000
@@ -1371,7 +1371,7 @@ _jmp_addr_0x0046df00:    {disp32} mov       al, byte ptr [data_bytes + 0x286cee]
                          mov.s              esi, ecx                                      // 0x0046df08    8bf1
                          {disp8} jne        _jmp_addr_0x0046df46                          // 0x0046df0a    753a
                          {disp32} mov       ecx, dword ptr [esi + 0x00004850]             // 0x0046df0c    8b8e50480000
-                         call               _jmp_addr_0x005dc8b0                          // 0x0046df12    e899e91600
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x0046df12    e899e91600
                          mov                edx, dword ptr [eax]                          // 0x0046df17    8b10
                          mov.s              ecx, eax                                      // 0x0046df19    8bc8
                          call               dword ptr [edx + 0x40c]                       // 0x0046df1b    ff920c040000

@@ -40,7 +40,7 @@
 .extern _jmp_addr_0x005b39c0
 .extern _jmp_addr_0x005da0c0
 .extern _jmp_addr_0x005dc870
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005eca60
 .extern _jmp_addr_0x005ee5f0
 .extern _jmp_addr_0x005fb400
@@ -2014,7 +2014,7 @@ _jmp_addr_0x005fc4f0:    sub                esp, 0x0c                           
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                   // 0x005fc508    8d4f14
                          push               ecx                                           // 0x005fc50b    51
                          {disp8} mov        ecx, dword ptr [esp + 0x20]                   // 0x005fc50c    8b4c2420
-                         call               _jmp_addr_0x005dc8b0                          // 0x005fc510    e89b03feff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x005fc510    e89b03feff
                          mov.s              ecx, eax                                      // 0x005fc515    8bc8
                          call               _jmp_addr_0x005da0c0                          // 0x005fc517    e8a4dbfdff
                          mov                edx, dword ptr [esi]                          // 0x005fc51c    8b16

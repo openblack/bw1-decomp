@@ -28,7 +28,7 @@
 .extern _jmp_addr_0x005ea980
 .extern _jmp_addr_0x005ebaf0
 .extern _jmp_addr_0x005f3d90
-.extern _jmp_addr_0x005f4c90
+.extern ?StartTipOfTheDayText@@YAXXZ
 .extern @GetNearestTown__9MapCoordsCFf@12
 .extern _jmp_addr_0x0063ed40
 .extern _jmp_addr_0x00640cb0
@@ -859,7 +859,7 @@ _jmp_addr_0x00641d10:    call              _jmp_addr_0x00642d80                 
 _jmp_addr_0x00641d94:    call              _jmp_addr_0x006426f0                          // 0x00641d94    e857090000
 _jmp_addr_0x00641d99:    push              edi                                           // 0x00641d99    57
                          call              _jmp_addr_0x00719280                          // 0x00641d9a    e8e1740d00
-                         call              _jmp_addr_0x005f4c90                          // 0x00641d9f    e8ec2efbff
+                         call              ?StartTipOfTheDayText@@YAXXZ                  // 0x00641d9f    e8ec2efbff
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00641da4    8b0d5c19d000
                          call              ?InitOneTimeOnly@GGame@@QAEIXZ                // 0x00641daa    e891d1f0ff
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00641daf    8b0d5c19d000

@@ -25,7 +25,7 @@
 .extern _jmp_addr_0x0056fa80
 .extern @SetToZero__16GameThingWithPosFv@4
 .extern _jmp_addr_0x005d0560
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern @SetToZero__6LivingFv@4
 .extern @__ct__12LivingActionFv@4
 .extern _jmp_addr_0x00606ed0
@@ -13149,7 +13149,7 @@ _jmp_addr_0x00561cfd:    mov                esi, dword ptr [eax]                
                          mov.s              ecx, eax                                       // 0x00561d0d    8bc8
                          call               _jmp_addr_0x0064a9f0                           // 0x00561d0f    e8dc8c0e00
                          mov.s              ecx, eax                                       // 0x00561d14    8bc8
-                         call               _jmp_addr_0x005dc8b0                           // 0x00561d16    e895ab0700
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                           // 0x00561d16    e895ab0700
                          mov.s              ecx, eax                                       // 0x00561d1b    8bc8
                          call               _jmp_addr_0x005d0560                           // 0x00561d1d    e83ee80600
 _jmp_addr_0x00561d22:    test               esi, esi                                       // 0x00561d22    85f6

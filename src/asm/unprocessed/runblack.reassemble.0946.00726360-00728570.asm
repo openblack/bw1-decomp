@@ -111,7 +111,7 @@
 .extern _jmp_addr_0x005d8a80
 .extern _jmp_addr_0x005da100
 .extern _jmp_addr_0x005dc830
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005dc8d0
 .extern @SetupMoveToPos__6LivingFRC9MapCoordsUc@13
 .extern ___nw__9LocalBaseFUl
@@ -159,7 +159,7 @@
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern _jmp_addr_0x0064a9c0
 .extern _jmp_addr_0x0064a9f0
-.extern _jmp_addr_0x0064aac0
+.extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
 .extern @IsNeutral__7GPlayerFv@4
 .extern _jmp_addr_0x0064aee0
 .extern _jmp_addr_0x0064af20

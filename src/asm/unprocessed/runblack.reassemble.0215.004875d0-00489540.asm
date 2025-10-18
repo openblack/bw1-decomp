@@ -39,7 +39,7 @@
 .extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x005da100
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00607000
 .extern _jmp_addr_0x00617a10
 .extern _jmp_addr_0x006182f0
@@ -534,7 +534,7 @@ _jmp_addr_0x00487bbd:    push               eax                                 
                          push               ecx                                           // 0x00487c0c    51
                          push               eax                                           // 0x00487c0d    50
                          mov.s              ecx, edi                                      // 0x00487c0e    8bcf
-                         call               _jmp_addr_0x005dc8b0                          // 0x00487c10    e89b4c1500
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x00487c10    e89b4c1500
                          mov.s              ecx, eax                                      // 0x00487c15    8bc8
                          call               _jmp_addr_0x005da100                          // 0x00487c17    e8e4241500
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00487c1c    8b0d5c19d000

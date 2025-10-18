@@ -10,7 +10,7 @@
 .extern @GetPlayer__5GGameFUl@12
 .extern @IsMultiplayerGame__5GGameCFv@4
 .extern _jmp_addr_0x00555880
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005e1020
 .extern _jmp_addr_0x005e15b0
 .extern _jmp_addr_0x005e1860
@@ -2120,7 +2120,7 @@ _jmp_addr_0x005defa7:    {disp32} mov       ecx, dword ptr [_game]              
                          mov.s              ecx, eax                                      // 0x005defce    8bc8
                          call               _jmp_addr_0x0064a9f0                          // 0x005defd0    e81bba0600
                          mov.s              ecx, eax                                      // 0x005defd5    8bc8
-                         call               _jmp_addr_0x005dc8b0                          // 0x005defd7    e8d4d8ffff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x005defd7    e8d4d8ffff
                          {disp32} mov       eax, dword ptr [eax + 0x000001bc]             // 0x005defdc    8b80bc010000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005defe2    8b0d5c19d000
                          {disp32} mov       ecx, dword ptr [ecx + 0x00205b80]             // 0x005defe8    8b89805b2000

@@ -23,6 +23,7 @@ struct Citadel;
 struct Creature;
 struct GAlignment;
 struct GInterface;
+struct GInterfaceStatus;
 struct GameStats;
 struct PSysProcessInfo;
 struct Spell;
@@ -145,6 +146,8 @@ void __fastcall Process__7GPlayerFv(struct GPlayer* this);
 void __fastcall Birthday__7GPlayerFv(struct GPlayer* this);
 // win1.41 0064a790 mac 1005c3d0 GPlayer::GetPlayerNumber(void) const
 uint8_t __fastcall GetPlayerNumber__7GPlayerCFv(const struct GPlayer* this);
+// win1.41 0064aac0 mac 10035b60 GPlayer::GetNextInterfaceStatus(GInterfaceStatus *)
+struct GInterfaceStatus* __fastcall GetNextInterfaceStatus__7GPlayerFP16GInterfaceStatus(struct GPlayer* this, const void* edx, struct GInterfaceStatus* param_1) asm("?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z");
 // win1.41 0064ac00 mac 100306d0 GPlayer::IsNeutral(void)
 bool __fastcall IsNeutral__7GPlayerFv(const struct GPlayer* this);
 // win1.41 0064ad00 mac 1004d120 GPlayer::CalculateInfluencePower(void)

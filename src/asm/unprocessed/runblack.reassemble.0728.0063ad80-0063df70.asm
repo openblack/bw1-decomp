@@ -52,8 +52,8 @@
 .extern _jmp_addr_0x004f51e0
 .extern _jmp_addr_0x00519320
 .extern @GetPlayer__5GGameFUl@12
-.extern _jmp_addr_0x005509e0
-.extern _jmp_addr_0x00550a10
+.extern ?GetPlayerFromReal@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?GetPlayerInterfaceFromReal@GGame@@QAEPAVGInterface@@K@Z
 .extern _jmp_addr_0x00552a80
 .extern _jmp_addr_0x00552a90
 .extern @IsMultiplayerGame__5GGameCFv@4
@@ -2445,11 +2445,11 @@ _jmp_addr_0x0063c420:    sub                esp, 0x000002f4                     
                          {disp32} mov       ecx, dword ptr [_game]                         // 0x0063c433    8b0d5c19d000
                          and                esi, 0x000000ff                                // 0x0063c439    81e6ff000000
                          push               esi                                            // 0x0063c43f    56
-                         call               _jmp_addr_0x005509e0                           // 0x0063c440    e89b45f1ff
+                         call               ?GetPlayerFromReal@GGame@@QAEPAVGPlayer@@K@Z   // 0x0063c440    e89b45f1ff
                          {disp32} mov       ecx, dword ptr [_game]                         // 0x0063c445    8b0d5c19d000
                          push               esi                                            // 0x0063c44b    56
                          mov.s              ebp, eax                                       // 0x0063c44c    8be8
-                         call               _jmp_addr_0x00550a10                           // 0x0063c44e    e8bd45f1ff
+                         call               ?GetPlayerInterfaceFromReal@GGame@@QAEPAVGInterface@@K@Z                           // 0x0063c44e    e8bd45f1ff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x35a4cc]         // 0x0063c453    8b0dcc04d200
                          push               esi                                            // 0x0063c459    56
                          mov.s              edi, eax                                       // 0x0063c45a    8bf8

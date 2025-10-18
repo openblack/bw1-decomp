@@ -116,7 +116,7 @@
 .extern _jmp_addr_0x005d8a80
 .extern _jmp_addr_0x005da100
 .extern _jmp_addr_0x005dc830
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005dc8d0
 .extern @SetupMoveToPos__6LivingFRC9MapCoordsUc@13
 .extern ___nw__9LocalBaseFUl
@@ -164,7 +164,7 @@
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern _jmp_addr_0x0064a9c0
 .extern _jmp_addr_0x0064a9f0
-.extern _jmp_addr_0x0064aac0
+.extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
 .extern @IsNeutral__7GPlayerFv@4
 .extern _jmp_addr_0x0064aee0
 .extern _jmp_addr_0x0064af20
@@ -2362,7 +2362,7 @@ _jmp_addr_0x0071d100:    sub                esp, 0x18                           
                          {disp8} fstp       dword ptr [esp + 0x14]                               // 0x0071d168    d95c2414
                          push               0x0                                                  // 0x0071d16c    6a00
                          mov.s              ecx, edi                                             // 0x0071d16e    8bcf
-                         call               _jmp_addr_0x0064aac0                                 // 0x0071d170    e84bd9f2ff
+                         call               ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z                                 // 0x0071d170    e84bd9f2ff
                          mov.s              esi, eax                                             // 0x0071d175    8bf0
                          test               esi, esi                                             // 0x0071d177    85f6
                          {disp8} je         _jmp_addr_0x0071d1b5                                 // 0x0071d179    743a
@@ -2382,7 +2382,7 @@ _jmp_addr_0x0071d17b:    {disp8} lea        eax, dword ptr [esp + 0x18]         
                          call               _jmp_addr_0x0071d0b0                                 // 0x0071d1a2    e809ffffff
 _jmp_addr_0x0071d1a7:    push               esi                                                  // 0x0071d1a7    56
                          mov.s              ecx, edi                                             // 0x0071d1a8    8bcf
-                         call               _jmp_addr_0x0064aac0                                 // 0x0071d1aa    e811d9f2ff
+                         call               ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z                                 // 0x0071d1aa    e811d9f2ff
                          mov.s              esi, eax                                             // 0x0071d1af    8bf0
                          test               esi, esi                                             // 0x0071d1b1    85f6
                          {disp8} jne        _jmp_addr_0x0071d17b                                 // 0x0071d1b3    75c6
@@ -6962,7 +6962,7 @@ _jmp_addr_0x007201f0:    push               esi                                 
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                          // 0x007201f3    8b4c2408
                          push               edi                                                  // 0x007201f7    57
                          {disp32} mov       dword ptr [esi + 0x000000a8], ecx                    // 0x007201f8    898ea8000000
-                         call               _jmp_addr_0x005dc8b0                                 // 0x007201fe    e8adc6ebff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ // 0x007201fe    e8adc6ebff
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x00720203    8b0d5c19d000
                          mov.s              edi, eax                                             // 0x00720209    8bf8
                          call               @MyInterface__5GGameFv@4                             // 0x0072020b    e84056e3ff
@@ -7374,7 +7374,7 @@ _jmp_addr_0x00720523:    {disp32} mov       ecx, dword ptr [esi + 0x000000a0]   
                          cmp.s              edi, eax                                             // 0x007205bc    3bf8
                          {disp8} jne        _jmp_addr_0x007205ce                                 // 0x007205be    750e
                          mov.s              ecx, edi                                             // 0x007205c0    8bcf
-                         call               _jmp_addr_0x005dc8b0                                 // 0x007205c2    e8e9c2ebff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ // 0x007205c2    e8e9c2ebff
                          mov.s              ecx, eax                                             // 0x007205c7    8bc8
                          call               _jmp_addr_0x005d1260                                 // 0x007205c9    e8920cebff
 _jmp_addr_0x007205ce:    cmp                dword ptr [esi + 0x40], ebx                          // 0x007205ce    395e40
@@ -10437,7 +10437,7 @@ _jmp_addr_0x0072248c:    pop                esi                                 
                          call               _jmp_addr_0x007218e0                                 // 0x007224b2    e829f4ffff
                          mov.s              edi, eax                                             // 0x007224b7    8bf8
                          mov.s              ecx, edi                                             // 0x007224b9    8bcf
-                         call               _jmp_addr_0x005dc8b0                                 // 0x007224bb    e8f0a3ebff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ // 0x007224bb    e8f0a3ebff
                          mov.s              ecx, edi                                             // 0x007224c0    8bcf
                          mov.s              ebx, eax                                             // 0x007224c2    8bd8
                          call               _jmp_addr_0x005dc830                                 // 0x007224c4    e867a3ebff

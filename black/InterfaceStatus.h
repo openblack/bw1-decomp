@@ -100,6 +100,8 @@ struct GInterfaceStatus* __fastcall __ct__16GInterfaceStatusFv(struct GInterface
 void __fastcall SetToZero__16GInterfaceStatusFP10GInterface(struct GInterfaceStatus* this, const void* edx, struct GInterface* param_1);
 // win1.41 005dc2f0 mac 1007b2f0 GInterfaceStatus::IsSpaceInHands(void)
 bool __fastcall IsSpaceInHands__16GInterfaceStatusFv(struct GInterfaceStatus* this);
+// win1.41 005dc8b0 mac 10035b20 GInterfaceStatus::GetInterface(void)
+struct GInterface* __fastcall GetInterface__16GInterfaceStatusFv(struct GInterfaceStatus* this) asm("?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ");
 // win1.41 005dd1a0 mac 1036bf20 GInterfaceStatus::Init(unsigned char, GInterface *)
 void __fastcall Init__16GInterfaceStatusFUcP10GInterface(struct GInterfaceStatus* this, const void* edx, uint8_t player_number, struct GInterface* iface);
 

@@ -146,7 +146,7 @@
 .globl _jmp_addr_0x005f3cc0
 .globl _jmp_addr_0x005f3ce0
 .globl _jmp_addr_0x005f3d90
-.globl _jmp_addr_0x005f4c90
+.globl ?StartTipOfTheDayText@@YAXXZ
 .globl _RenderLoadingFrame__Fb
 .globl _jmp_addr_0x005f5200
 .globl _jmp_addr_0x005f5cf0
@@ -6511,7 +6511,8 @@ _jmp_addr_0x005f4c81:    add                esp, 0x00000854                     
                          nop                                                              // 0x005f4c8d    90
                          nop                                                              // 0x005f4c8e    90
                          nop                                                              // 0x005f4c8f    90
-_jmp_addr_0x005f4c90:    push               ecx                                           // 0x005f4c90    51
+?StartTipOfTheDayText@@YAXXZ:
+                         push               ecx                                           // 0x005f4c90    51
                          push               esi                                           // 0x005f4c91    56
                          {disp8} mov        dword ptr [esp + 0x04], 0x00000000            // 0x005f4c92    c744240400000000
                          call               dword ptr [__imp__timeGetTime@4]              // 0x005f4c9a    ff158c988a00

@@ -34,7 +34,7 @@
 .extern @__ct__6ForestFRC9MapCoordsUl@16
 .extern _jmp_addr_0x0053b4a0
 .extern @GetCamera__5GGameFv@4
-.extern _jmp_addr_0x005508d0
+.extern ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern @GetNextPlayerAndNeutral__5GGameFP7GPlayer@12
 .extern @GetPlayer__5GGameFUl@12
 .extern @MyInterface__5GGameFv@4
@@ -7706,7 +7706,7 @@ _jmp_addr_0x00438b20:    push               ecx                                 
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x00438b26    8b0d5c19d000
                          push               0x0                                                  // 0x00438b2c    6a00
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000                   // 0x00438b2e    c744241000000000
-                         call               _jmp_addr_0x005508d0                                 // 0x00438b36    e8957d1100
+                         call               ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z   // 0x00438b36    e8957d1100
                          {disp8} mov        edi, dword ptr [esp + 0x14]                          // 0x00438b3b    8b7c2414
                          mov.s              esi, eax                                             // 0x00438b3f    8bf0
                          test               esi, esi                                             // 0x00438b41    85f6
@@ -7730,7 +7730,7 @@ _jmp_addr_0x00438b45:    cmp.s              edi, esi                            
 _jmp_addr_0x00438b6e:    fstp               st(0)                                                // 0x00438b6e    ddd8
 _jmp_addr_0x00438b70:    {disp32} mov       ecx, dword ptr [_game]                               // 0x00438b70    8b0d5c19d000
                          push               esi                                                  // 0x00438b76    56
-                         call               _jmp_addr_0x005508d0                                 // 0x00438b77    e8547d1100
+                         call               ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z   // 0x00438b77    e8547d1100
                          mov.s              esi, eax                                             // 0x00438b7c    8bf0
                          test               esi, esi                                             // 0x00438b7e    85f6
                          {disp8} jne        _jmp_addr_0x00438b45                                 // 0x00438b80    75c3
