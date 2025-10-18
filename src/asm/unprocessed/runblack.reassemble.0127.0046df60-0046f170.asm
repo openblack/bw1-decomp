@@ -14,8 +14,8 @@
 .extern _jmp_addr_0x0046dc30
 .extern @ThrowObject__5CHandFv@4
 .extern _jmp_addr_0x0046de40
-.extern @GetCamera__5GGameFv@4
-.extern @MyInterface__5GGameFv@4
+.extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
+.extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x00563400
@@ -146,7 +146,7 @@ _jmp_addr_0x0046e026:    {disp8} fld        dword ptr [esp + 0x10]              
                          {disp8} jmp        _jmp_addr_0x0046e06d                          // 0x0046e067    eb04
 _jmp_addr_0x0046e069:    {disp8} mov        edi, dword ptr [esp + 0x28]                   // 0x0046e069    8b7c2428
 _jmp_addr_0x0046e06d:    {disp32} mov       ecx, dword ptr [_game]                        // 0x0046e06d    8b0d5c19d000
-                         call               @GetCamera__5GGameFv@4                        // 0x0046e073    e808e10d00
+                         call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x0046e073    e808e10d00
                          test               ebx, ebx                                      // 0x0046e078    85db
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]        // 0x0046e07a    8b0db81dea00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]        // 0x0046e080    8b15bc1dea00
@@ -870,7 +870,7 @@ _jmp_addr_0x0046e7b0:    sub                esp, 0x18                           
                          push               edx                                           // 0x0046e85f    52
                          call               dword ptr [edi + 0x20]                        // 0x0046e860    ff5720
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0046e863    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                      // 0x0046e869    e8e26f0e00
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x0046e869    e8e26f0e00
                          {disp32} mov       eax, dword ptr [eax + 0x000003a0]             // 0x0046e86e    8b80a0030000
                          {disp32} mov       ecx, dword ptr [esi + 0x0000494c]             // 0x0046e874    8b8e4c490000
                          mov                edx, dword ptr [ecx]                          // 0x0046e87a    8b11

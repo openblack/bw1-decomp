@@ -18,9 +18,9 @@
 .extern _jmp_addr_0x0046e680
 .extern _jmp_addr_0x0046edb0
 .extern @Read__8AnimInfoFPc@12
-.extern @GetCamera__5GGameFv@4
+.extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern _jmp_addr_0x005514d0
-.extern @MyInterface__5GGameFv@4
+.extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00617140
 .extern @SelectMesh__9MorphableFl@12
@@ -74,7 +74,7 @@ _jmp_addr_0x0046cf80:    push               ebp                                 
                          push               esi                                           // 0x0046cf81    56
                          mov.s              esi, ecx                                      // 0x0046cf82    8bf1
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0046cf84    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                      // 0x0046cf8a    e8c1880e00
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x0046cf8a    e8c1880e00
                          {disp8} mov        ebp, dword ptr [esp + 0x0c]                   // 0x0046cf8f    8b6c240c
                          cmp                ebp, 0x07                                     // 0x0046cf93    83fd07
                          {disp32} mov       eax, dword ptr [esi + 0x00004878]             // 0x0046cf96    8b8678480000
@@ -1079,7 +1079,7 @@ _jmp_addr_0x0046db92:    {disp8} mov        ecx, dword ptr [esi + 0x1c]         
                          {disp8} fild       dword ptr [esi + 0x04]                        // 0x0046dbbd    db4604
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]       // 0x0046dbc0    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x0046dbc6    d95c241c
-                         call               @GetCamera__5GGameFv@4                        // 0x0046dbca    e8b1e50d00
+                         call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x0046dbca    e8b1e50d00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdb8]        // 0x0046dbcf    8b15b81dea00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdbc]        // 0x0046dbd5    a1bc1dea00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdc0]        // 0x0046dbda    8b0dc01dea00

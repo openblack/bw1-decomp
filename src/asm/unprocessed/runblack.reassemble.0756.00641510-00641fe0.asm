@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x0054eb40
 .extern _jmp_addr_0x0054ec80
 .extern ?InitOneTimeOnly@GGame@@QAEIXZ
-.extern _StartPlaygroundGame__5GGameFPc@4
+.extern ?StartPlaygroundGame@GGame@@QAEXPAD@Z
 .extern _jmp_addr_0x00555530
 .extern _jmp_addr_0x00564160
 .extern _jmp_addr_0x00590fd0
@@ -257,7 +257,7 @@ _jmp_addr_0x00641694:    {disp8} mov       edx, dword ptr [ebp + 0x00]          
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00641748    8b0d5c19d000
                          add               esp, 0x0c                                     // 0x0064174e    83c40c
                          push              eax                                           // 0x00641751    50
-                         call              _StartPlaygroundGame__5GGameFPc@4             // 0x00641752    e8e917f1ff
+                         call              ?StartPlaygroundGame@GGame@@QAEXPAD@Z         // 0x00641752    e8e917f1ff
                          push              0x47c34f80                                    // 0x00641757    68804fc347
                          mov               ecx, 0x00c5e258                               // 0x0064175c    b958e2c500
                          call              @GetNearestTown__9MapCoordsCFf@12             // 0x00641761    e87a09fcff

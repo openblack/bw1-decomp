@@ -18,10 +18,10 @@
 .extern _jmp_addr_0x005136b0
 .extern _HideAll__13DialogBoxBaseFv@0
 .extern _jmp_addr_0x0053ce60
-.extern @IsMultiplayerGame__5GGameCFv@4
+.extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern _jmp_addr_0x00553a70
 .extern _jmp_addr_0x005553a0
-.extern @MyInterface__5GGameFv@4
+.extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00558160
 .extern _jmp_addr_0x005c69b0
 .extern _RenderLoadingFrame__Fb
@@ -7201,7 +7201,7 @@ _jmp_addr_0x007937db:    ret                0x0014                              
                          mov                eax, 0x00000001                               // 0x007937e9    b801000000
                          ret                                                              // 0x007937ee    c3
 _jmp_addr_0x007937ef:    {disp32} mov       ecx, dword ptr [_game]                        // 0x007937ef    8b0d5c19d000
-                         call               @IsMultiplayerGame__5GGameCFv@4               // 0x007937f5    e886f7dbff
+                         call               ?IsMultiplayerGame@GGame@@QBE_NXZ             // 0x007937f5    e886f7dbff
                          test               eax, eax                                      // 0x007937fa    85c0
                          {disp8} jne        _jmp_addr_0x0079380d                          // 0x007937fc    750f
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4741b0]        // 0x007937fe    a1b0a1e300
@@ -8516,7 +8516,7 @@ _jmp_addr_0x007947c0:    push               edi                                 
                          push               esi                                           // 0x007947d8    56
                          {disp8} mov        esi, dword ptr [esp + 0x14]                   // 0x007947d9    8b742414
                          {disp8} je         _jmp_addr_0x0079480c                          // 0x007947dd    742d
-                         call               @MyInterface__5GGameFv@4                      // 0x007947df    e86c10dcff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x007947df    e86c10dcff
                          xor.s              ecx, ecx                                      // 0x007947e4    33c9
                          cmp                esi, 0x04                                     // 0x007947e6    83fe04
                          sete               cl                                            // 0x007947e9    0f94c1

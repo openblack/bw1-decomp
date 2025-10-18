@@ -208,12 +208,6 @@ void __cdecl DoYesNoSkipTutorialRequestersIfNecessary__5GGameFv(void);
 void __stdcall KeyHandler__5GGameFUs6LH_KEYUsUsPv(struct GGame* this, unsigned short param_1, enum LH_KEY param_2, unsigned short param_3, unsigned short param_4, void* param_5) asm("?KeyHandler@GGame@@QAEXGW4LH_KEY@@GGPAX@Z");
 // win1.41 0054ffe0 mac 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
 bool __stdcall MouseHandler__5GGameFPv19LH_MOUSE_EVENT_TYPEUlUl(struct GGame* this, void* param_1, enum LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4) asm("?MouseHandler@GGame@@QAE_NPAXW4LH_MOUSE_EVENT_TYPE@@KK@Z");
-// win1.41 00552620 mac 1005cfb0 GGame::GetTribe(TRIBE_TYPE)
-struct GTribeInfo* __stdcall GetTribe__5GGameF10TRIBE_TYPE(enum TRIBE_TYPE type);
-// win1.41 00552f40 mac 1056f520 GGame::StartPlaygroundGame(char *)
-void __stdcall StartPlaygroundGame__5GGameFPc(char* map_path);
-// win1.41 00555890 mac 105996f0 GGame::SetLandBalance(unsigned long, float, GPlayer *)
-void __stdcall SetLandBalance__5GGameFUlfP7GPlayer(int index, float balance, struct GPlayer* player);
 
 // Constructors
 
@@ -225,7 +219,7 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this);
 // win1.41 00510630 mac 100c09f0 GGame::SetupDataTables(void)
 void __fastcall SetupDataTables__5GGameFv(struct GGame* this) asm("?SetupDataTables@GGame@@QAEXXZ");
 // win1.41 0054c180 mac 1003a410 GGame::GetCamera(void)
-struct GCamera* __fastcall GetCamera__5GGameFv(struct GGame* this);
+struct GCamera* __fastcall GetCamera__5GGameFv(struct GGame* this) asm("?GetCamera@GGame@@QAEPAVGCamera@@XZ");
 // win1.41 0054c190 mac 101c8360 GGame::StartGame(void)
 void __fastcall StartGame__5GGameFv(struct GGame* this) asm("?StartGame@GGame@@QAEIXZ");
 // win1.41 0054c3d0 mac 1001e260 GGame::ProcessGameInputs(void)
@@ -233,7 +227,7 @@ void __fastcall ProcessGameInputs__5GGameFv(struct GGame* this) asm("?ProcessGam
 // win1.41 0054c420 mac 10083f50 GGame::ProcessBufferedKeys(void)
 void __fastcall ProcessBufferedKeys__5GGameFv(struct GGame* this) asm("?ProcessBufferedKeys@GGame@@QAEIXZ");
 // win1.41 0054c4a0 mac 10029760 GGame::LocalTimerSaysDoATurn(void)
-bool __fastcall LocalTimerSaysDoATurn__5GGameFv(struct GGame* this);
+bool __fastcall LocalTimerSaysDoATurn__5GGameFv(struct GGame* this) asm("?LocalTimerSaysDoATurn@GGame@@QAE_NXZ");
 // win1.41 0054cc30 mac 10029320 GGame::ProcessNetworkPackets(void)
 void __fastcall ProcessNetworkPackets__5GGameFv(struct GGame* this) asm("?ProcessNetworkPackets@GGame@@QAEIXZ");
 // win1.41 0054ced0 mac 100dc070 GGame::DoNetworkStart(void)
@@ -245,7 +239,7 @@ void __fastcall ProcessOneGameTurn__5GGameFv(struct GGame* this) asm("?ProcessOn
 // win1.41 0054d820 mac 10083dd0 GGame::ProcessGameCode(void)
 void __fastcall ProcessGameCode__5GGameFv(struct GGame* this) asm("?ProcessGameCode@GGame@@QAEIXZ");
 // win1.41 0054d850 mac 10079980 GGame::ProcessGraphicsEngine(unsigned long, unsigned long)
-void __fastcall ProcessGraphicsEngine__5GGameFUlUl(struct GGame* this, const void* edx, uint32_t param_1, uint32_t param_2);
+void __fastcall ProcessGraphicsEngine__5GGameFUlUl(struct GGame* this, const void* edx, uint32_t param_1, uint32_t param_2) asm("?ProcessGraphicsEngine@GGame@@QAEXKK@Z");
 // win1.41 0054da80 mac 10033dd0 GGame::ProcessGraphicsEngine(void)
 void __fastcall Process3dEngine__5GGameFv(struct GGame* this) asm("?Process3dEngine@GGame@@QAEIXZ");
 // win1.41 0054e4f0 mac 10083c70 GGame::StartTurn(void)
@@ -257,7 +251,7 @@ void __fastcall EndTurn__5GGameFv(struct GGame* this) asm("?EndTurn@GGame@@QAEIX
 // win1.41 0054ef40 mac 10514230 GGame::InitOneTimeOnly(void)
 uint32_t __fastcall InitOneTimeOnly__5GGameFv(struct GGame* this) asm("?InitOneTimeOnly@GGame@@QAEIXZ");
 // win1.41 0054f3b0 mac 101b9770 GGame::Init(void)
-bool __fastcall Init__5GGameFv(struct GGame* this);
+bool __fastcall Init__5GGameFv(struct GGame* this) asm("?Init@GGame@@QAE_NXZ");
 // win1.41 0054f421 mac inlined GGame::InitInner(void)
 bool __fastcall InitInner__5GGameFv(struct GGame* this) asm("?InitInner@GGame@@QAE_NXZ");
 // win1.41 00550080 mac 101c6850 GGame::UnfinishInitialisation(void)
@@ -267,13 +261,13 @@ void __fastcall FinishInitialisation__5GGameFv(struct GGame* this) asm("?FinishI
 // win1.41 00550170 mac inlined GGame::CreateMeshPack(void)
 void __fastcall CreateMeshPack__5GGameFv(struct GGame* this) asm("?CreateMeshPack@GGame@@QAEXXZ");
 // win1.41 00550390 mac 10427340 GGame::LoadFiles(void)
-int __fastcall LoadFiles__5GGameFv(struct GGame* this);
+bool __fastcall LoadFiles__5GGameFv(struct GGame* this) asm("?LoadFiles@GGame@@QAE_NXZ");
 // win1.41 00550410 mac 1054a080 GGame::SetupPlayers(void)
 void __fastcall SetupPlayers__5GGameFv(struct GGame* this) asm("?SetupPlayers@GGame@@QAEXXZ");
 // win1.41 005507d0 mac inlined GGame::LoopThroughPlayers(void)
 void __fastcall LoopThroughPlayers__5GGameFv(struct GGame* this) asm("?LoopThroughPlayers@GGame@@QAEXXZ");
 // win1.41 005507f0 mac 10506220 GGame::Birthday(void)
-void __fastcall Birthday__5GGameFv(struct GGame* this);
+void __fastcall Birthday__5GGameFv(struct GGame* this) asm("?Birthday@GGame@@QAEXXZ");
 // win1.41 00550820 mac inlined GGame::MyPlayerID(unsigned long)
 int __fastcall MyPlayerID__5GGameFUl(struct GGame* this, const void* edx, unsigned long param_1) asm("?MyPlayerID@GGame@@QAEHK@Z");
 // win1.41 005508a0 mac 10064420 GGame::GetNextPlayer(GPlayer *)
@@ -281,11 +275,11 @@ struct GPlayer* __fastcall GetNextPlayer__5GGameFP7GPlayer(struct GGame* this, c
 // win1.41 005508d0 mac 100c0950 GGame::GetNextActivePlayer(GPlayer *)
 struct GPlayer* __fastcall GetNextActivePlayer__5GGameFP7GPlayer(struct GGame* this, const void* edx, struct GPlayer* param_1) asm("?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z");
 // win1.41 00550930 mac 10095d40 GGame::GetNextActivePlayerAndNeutral(GPlayer *)
-struct GPlayer* __fastcall GetNextActivePlayerAndNeutral__5GGameFP7GPlayer(struct GGame* this, const void* edx, struct GPlayer* player);
+struct GPlayer* __fastcall GetNextActivePlayerAndNeutral__5GGameFP7GPlayer(struct GGame* this, const void* edx, struct GPlayer* player) asm("?GetNextActivePlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z");
 // win1.41 00550980 mac 1005c2a0 GGame::GetNextPlayerAndNeutral(GPlayer *)
-struct GPlayer* __fastcall GetNextPlayerAndNeutral__5GGameFP7GPlayer(struct GGame* this, const void* edx, struct GPlayer* player);
+struct GPlayer* __fastcall GetNextPlayerAndNeutral__5GGameFP7GPlayer(struct GGame* this, const void* edx, struct GPlayer* player) asm("?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z");
 // win1.41 005509b0 mac 100586e0 GGame::GetPlayer(unsigned long)
-struct GPlayer* __fastcall GetPlayer__5GGameFUl(struct GGame* this, const void* edx, enum PLAYER_NAME param_1);
+struct GPlayer* __fastcall GetPlayer__5GGameFUl(struct GGame* this, const void* edx, uint32_t param_1) asm("?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z");
 // win1.41 005509e0 mac 1000be00 GGame::GetPlayerFromReal(unsigned long)
 struct GPlayer* __fastcall GetPlayerFromReal__5GGameFUl(struct GGame* this, const void* edx, unsigned long param_1) asm("?GetPlayerFromReal@GGame@@QAEPAVGPlayer@@K@Z");
 // win1.41 00550a10 mac inlined GGame::GetPlayerInterfaceFromReal(unsigned long)
@@ -294,24 +288,30 @@ struct GInterface* __fastcall GetPlayerInterfaceFromReal__5GGameFUl(struct GGame
 struct GPlayer* __fastcall GetNextPlayerWithNoCreature__5GGameFP7GPlayer(struct GGame* this, const void* edx, struct GPlayer* param_1) asm("?GetNextPlayerWithNoCreature@GGame@@QAEPAVGPlayer@@PAV2@@Z");
 // win1.41 00550a60 mac inlined GGame::GetPlayer(PLAYER_NAME)
 struct GPlayer* __fastcall GetPlayer__5GGameF11PLAYER_NAME(struct GGame* this, const void* edx, enum PLAYER_NAME param_1) asm("?GetPlayer@GGame@@QAEPAVGPlayer@@W4PLAYER_NAME@@@Z");
+// win1.41 00552620 mac 1005cfb0 GGame::GetTribe(TRIBE_TYPE)
+struct GTribeInfo* __fastcall GetTribe__5GGameF10TRIBE_TYPE(struct GGame* this, const void* edx, enum TRIBE_TYPE type) asm("?GetTribe@GGame@@QAEPAVGTribeInfo@@W4TRIBE_TYPE@@@Z");
 // win1.41 00552640 mac 10073d30 GGame::AddPlayerSparkles(void)
-void __fastcall AddPlayerSparkles__5GGameFv(struct GGame* this);
+void __fastcall AddPlayerSparkles__5GGameFv(struct GGame* this) asm("?AddPlayerSparkles@GGame@@QAEXXZ");
 // win1.41 00552bb0 mac 10424170 GGame::ClearMap(void)
-void __fastcall ClearMap__5GGameFv(struct GGame* this);
-// win1.41 00552f80 mac 100369c0 GGame::IsMultiplayerGame(void)
-bool __fastcall IsMultiplayerGame__5GGameCFv(struct GGame* this);
+void __fastcall ClearMap__5GGameFv(struct GGame* this) asm("?ClearMap@GGame@@QAEXXZ");
+// win1.41 00552f40 mac 1056f520 GGame::StartPlaygroundGame(char *)
+void __fastcall StartPlaygroundGame__5GGameFPc(struct GGame* this, const void* edx, char* map_path) asm("?StartPlaygroundGame@GGame@@QAEXPAD@Z");
+// win1.41 00552f80 mac 100369c0 GGame::IsMultiplayerGame(void) const
+bool __fastcall IsMultiplayerGame__5GGameCFv(struct GGame* this) asm("?IsMultiplayerGame@GGame@@QBE_NXZ");
 // win1.41 00552fa0 mac 10423f90 GGame::FindTownWithID(unsigned long)
-struct Town* __fastcall FindTownWithID__5GGameFUl(struct GGame* this, const void* edx, int id);
+struct Town* __fastcall FindTownWithID__5GGameFUl(struct GGame* this, const void* edx, int id) asm("?FindTownWithID@GGame@@QAEPAVTown@@K@Z");
 // win1.41 005538e0 mac 10166f50 GGame::OnNewGame(void)
-void __fastcall OnNewGame__5GGameFv(struct GGame* this);
+void __fastcall OnNewGame__5GGameFv(struct GGame* this) asm("?OnNewGame@GGame@@QAEXXZ");
 // win1.41 00555280 mac 1008f570 GGame::Update3DInfluence(void)
-struct GPlayer* __fastcall Update3DInfluence__5GGameFv(struct GGame* this);
+struct GPlayer* __fastcall Update3DInfluence__5GGameFv(struct GGame* this) asm("?Update3DInfluence@GGame@@QAEPAVGPlayer@@XZ");
 // win1.41 00555850 mac 10051560 GGame::MyInterface(void)
-struct GInterface* __fastcall MyInterface__5GGameFv(struct GGame* this);
+struct GInterface* __fastcall MyInterface__5GGameFv(struct GGame* this) asm("?MyInterface@GGame@@QAEPAVGInterface@@XZ");
+// win1.41 00555890 mac 105996f0 GGame::SetLandBalance(unsigned long, float, GPlayer *)
+void __fastcall SetLandBalance__5GGameFUlfP7GPlayer(struct GGame* this, const void* edx, int index, float balance, struct GPlayer* player) asm("?SetLandBalance@GGame@@QAEXKMPAVGPlayer@@@Z");
 // win1.41 00555990 mac inlined GGame::ResetAndStartPlaygroundGame(char *)
-void __fastcall ResetAndStartPlaygroundGame__5GGameFPc(struct GGame* this, const void* edx, char* path);
+void __fastcall ResetAndStartPlaygroundGame__5GGameFPc(struct GGame* this, const void* edx, char* path) asm("?ResetAndStartPlaygroundGame@GGame@@QAEXPAD@Z");
 // win1.41 0063c3d0 mac 1001e1e0 GGame::ProcessOneSuperpacket(void)
-void __fastcall ProcessOneSuperpacket__5GGameFv(struct GGame* this);
+void __fastcall ProcessOneSuperpacket__5GGameFv(struct GGame* this) asm("?ProcessOneSuperpacket@GGame@@QAEXXZ");
 
 // Override methods
 
@@ -328,7 +328,7 @@ char* __fastcall GetDebugText__5GGameFv(struct GameThing* this) asm("?GetDebugTe
 // win1.41 00554830 mac 10354cc0 GGame::Load(GameOSFile &)
 uint32_t __fastcall Load__5GGameFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@GGame@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00554090 mac 104935a0 GGame::Save(GameOSFile &)
-int __fastcall Save__5GGameFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+int __fastcall Save__5GGameFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@Game@@QAEIAAVGGameOSFile@@@Z");
 // win1.41 0054b9b0 mac 10512c00 GGame::GetSaveType(void)
 uint32_t __fastcall GetSaveType__5GGameFv(struct GameThing* this) asm("?GetSaveType@GGame@@UAEIXZ");
 // win1.41 00555080 mac 100c76b0 GGame::ResolveLoad(void)

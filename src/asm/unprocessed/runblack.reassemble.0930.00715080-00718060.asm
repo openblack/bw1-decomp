@@ -47,12 +47,12 @@
 .extern @AddPos__9GFootpathFRC9MapCoords@12
 .extern @__ct__6ForestFRC9MapCoordsUl@16
 .extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
-.extern @GetNextPlayerAndNeutral__5GGameFP7GPlayer@12
-.extern @GetPlayer__5GGameFUl@12
-.extern @IsMultiplayerGame__5GGameCFv@4
-.extern @FindTownWithID__5GGameFUl@12
+.extern ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?IsMultiplayerGame@GGame@@QBE_NXZ
+.extern ?FindTownWithID@GGame@@QAEPAVTown@@K@Z
 .extern _jmp_addr_0x00552ff0
-.extern _SetLandBalance__5GGameFUlfP7GPlayer@12
+.extern ?SetLandBalance@GGame@@QAEXKMPAVGPlayer@@@Z
 .extern _jmp_addr_0x005571c0
 .extern @SetVisualTimeCycleFromMapEditor__9GGameInfoFfff@20
 .extern _jmp_addr_0x005cd9d0
@@ -475,7 +475,7 @@ _jmp_addr_0x00715419:    xor.s              eax, eax                            
                          push               ecx                                           // 0x00715440    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00715441    8b0d5c19d000
                          mov.s              esi, eax                                      // 0x00715447    8bf0
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00715449    e852dbe3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00715449    e852dbe3ff
                          cmp.s              eax, ebx                                      // 0x0071544e    3bc3
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x00715450    0f84342a0000
                          {disp32} mov       edx, dword ptr [ebp + 0x00006038]             // 0x00715456    8b9538600000
@@ -498,7 +498,7 @@ _jmp_addr_0x00715419:    xor.s              eax, eax                            
                          push               ecx                                           // 0x00715487    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00715488    8b0d5c19d000
                          {disp8} mov        dword ptr [esp + 0x28], eax                   // 0x0071548e    89442428
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00715492    e809dbe3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00715492    e809dbe3ff
                          mov.s              edi, eax                                      // 0x00715497    8bf8
                          cmp.s              edi, ebx                                      // 0x00715499    3bfb
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x0071549b    0f84e9290000
@@ -532,7 +532,7 @@ _jmp_addr_0x007154e8:    sbb.s              eax, eax                            
 _jmp_addr_0x007154ed:    test               eax, eax                                      // 0x007154ed    85c0
                          {disp32} jne       _jmp_addr_0x00717e8a                          // 0x007154ef    0f8595290000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x007154f5    8b0d5c19d000
-                         call               @IsMultiplayerGame__5GGameCFv@4               // 0x007154fb    e880dae3ff
+                         call               ?IsMultiplayerGame@GGame@@QBE_NXZ             // 0x007154fb    e880dae3ff
                          test               eax, eax                                      // 0x00715500    85c0
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x00715502    0f8482290000
                          cmp                dword ptr [edi + 0x000005b4], 0x03            // 0x00715508    83bfb405000003
@@ -556,7 +556,7 @@ _jmp_addr_0x007154ed:    test               eax, eax                            
                          {disp32} mov       eax, dword ptr [ebp + 0x00006000]             // 0x00715542    8b8500600000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00715548    8b0d5c19d000
                          push               eax                                           // 0x0071554e    50
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x0071554f    e84cdae3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x0071554f    e84cdae3ff
                          cmp.s              eax, ebx                                      // 0x00715554    3bc3
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x00715556    0f842e290000
                          {disp32} mov       dword ptr [eax + 0x000005f4], 0x00000001      // 0x0071555c    c780f405000001000000
@@ -570,7 +570,7 @@ _jmp_addr_0x007154ed:    test               eax, eax                            
                          {disp32} mov       ecx, dword ptr [ebp + 0x00006000]             // 0x00715573    8b8d00600000
                          push               ecx                                           // 0x00715579    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0071557a    8b0d5c19d000
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00715580    e81bdae3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00715580    e81bdae3ff
                          mov.s              esi, eax                                      // 0x00715585    8bf0
                          cmp.s              esi, ebx                                      // 0x00715587    3bf3
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x00715589    0f84fb280000
@@ -648,7 +648,7 @@ _jmp_addr_0x007154ed:    test               eax, eax                            
                          {disp32} fild      dword ptr [ebp + 0x00006010]                  // 0x00715682    db8510600000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3418]              // 0x00715688    d80d18c48a00
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x0071568e    d95c2414
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00715692    e809d9e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00715692    e809d9e3ff
                          test               eax, eax                                      // 0x00715697    85c0
                          {disp8} jne        _jmp_addr_0x007156b3                          // 0x00715699    7518
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x0071569b    8d4c2434
@@ -755,7 +755,7 @@ _jmp_addr_0x00715727:    {disp32} mov       edx, dword ptr [esi + 0x00000120]   
                          {disp32} fild      dword ptr [ebp + 0x00006014]                  // 0x007157d9    db8514600000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3418]              // 0x007157df    d80d18c48a00
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x007157e5    d95c2414
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x007157e9    e8b2d7e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x007157e9    e8b2d7e3ff
                          mov.s              esi, eax                                      // 0x007157ee    8bf0
                          cmp.s              esi, ebx                                      // 0x007157f0    3bf3
                          {disp8} jne        _jmp_addr_0x0071580e                          // 0x007157f2    751a
@@ -853,7 +853,7 @@ _jmp_addr_0x007158e8:    {disp32} mov       dword ptr [_DAT_00d99380], edi      
                          add                esp, 0x04                                     // 0x00715913    83c404
                          push               edx                                           // 0x00715916    52
                          mov.s              esi, eax                                      // 0x00715917    8bf0
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00715919    e882d6e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00715919    e882d6e3ff
                          cmp.s              eax, ebx                                      // 0x0071591e    3bc3
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x00715920    0f8464250000
                          lea                ecx, dword ptr [esi + esi * 0x4]              // 0x00715926    8d0cb6
@@ -878,7 +878,7 @@ _jmp_addr_0x007158e8:    {disp32} mov       dword ptr [_DAT_00d99380], edi      
                          push               ecx                                           // 0x0071595f    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00715960    8b0d5c19d000
                          mov.s              esi, eax                                      // 0x00715966    8bf0
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00715968    e833d6e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00715968    e833d6e3ff
                          mov.s              edi, eax                                      // 0x0071596d    8bf8
                          cmp.s              edi, ebx                                      // 0x0071596f    3bfb
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x00715971    0f8413250000
@@ -910,7 +910,7 @@ _jmp_addr_0x007158e8:    {disp32} mov       dword ptr [_DAT_00d99380], edi      
                          {disp32} mov       ecx, dword ptr [ebp + 0x00006000]             // 0x007159c0    8b8d00600000
                          push               ecx                                           // 0x007159c6    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x007159c7    8b0d5c19d000
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x007159cd    e8ced5e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x007159cd    e8ced5e3ff
                          mov.s              edi, eax                                      // 0x007159d2    8bf8
                          cmp.s              edi, ebx                                      // 0x007159d4    3bfb
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x007159d6    0f84ae240000
@@ -981,7 +981,7 @@ _jmp_addr_0x007158e8:    {disp32} mov       dword ptr [_DAT_00d99380], edi      
                          {disp32} mov       edx, dword ptr [ebp + 0x00006000]             // 0x00715aa8    8b9500600000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00715aae    8b0d5c19d000
                          push               edx                                           // 0x00715ab4    52
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00715ab5    e8e6d4e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00715ab5    e8e6d4e3ff
                          cmp.s              eax, ebx                                      // 0x00715aba    3bc3
                          {disp8} jne        _jmp_addr_0x00715ae3                          // 0x00715abc    7525
                          {disp32} lea       eax, dword ptr [esp + 0x000002ec]             // 0x00715abe    8d8424ec020000
@@ -1031,7 +1031,7 @@ _jmp_addr_0x00715ae3:    push               esi                                 
                          {disp32} mov       eax, dword ptr [ebp + 0x00006000]             // 0x00715b4b    8b8500600000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00715b51    8b0d5c19d000
                          push               eax                                           // 0x00715b57    50
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00715b58    e843d4e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00715b58    e843d4e3ff
                          cmp.s              eax, ebx                                      // 0x00715b5d    3bc3
                          {disp8} jne        _jmp_addr_0x00715b86                          // 0x00715b5f    7525
                          {disp32} lea       ecx, dword ptr [esp + 0x00000244]             // 0x00715b61    8d8c2444020000
@@ -1111,7 +1111,7 @@ _jmp_addr_0x00715bf3:    cmp                eax, 0x12                           
 _jmp_addr_0x00715c5b:    {disp8} mov        dword ptr [esp + 0x1c], edx                   // 0x00715c5b    8954241c
 _jmp_addr_0x00715c5f:    {disp32} mov       ecx, dword ptr [_game]                        // 0x00715c5f    8b0d5c19d000
                          push               ebx                                           // 0x00715c65    53
-                         call               @GetNextPlayerAndNeutral__5GGameFP7GPlayer@12 // 0x00715c66    e815ade3ff
+                         call               ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z // 0x00715c66    e815ade3ff
                          cmp.s              eax, ebx                                      // 0x00715c6b    3bc3
                          {disp8} mov        dword ptr [esp + 0x24], eax                   // 0x00715c6d    89442424
                          {disp32} je        _jmp_addr_0x00715d1b                          // 0x00715c71    0f84a4000000
@@ -1148,7 +1148,7 @@ _jmp_addr_0x00715cd7:    {disp32} mov       edi, dword ptr [edi + 0x0000075c]   
 _jmp_addr_0x00715ce1:    {disp8} mov        ecx, dword ptr [esp + 0x24]                   // 0x00715ce1    8b4c2424
                          push               ecx                                           // 0x00715ce5    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00715ce6    8b0d5c19d000
-                         call               @GetNextPlayerAndNeutral__5GGameFP7GPlayer@12 // 0x00715cec    e88face3ff
+                         call               ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z // 0x00715cec    e88face3ff
                          test               eax, eax                                      // 0x00715cf1    85c0
                          {disp8} mov        dword ptr [esp + 0x24], eax                   // 0x00715cf3    89442424
                          {disp8} jne        _jmp_addr_0x00715c85                          // 0x00715cf7    758c
@@ -1289,7 +1289,7 @@ _jmp_addr_0x00715dee:    push               edi                                 
                          {disp32} mov       edx, dword ptr [ebp + 0x00006000]             // 0x00715e91    8b9500600000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00715e97    8b0d5c19d000
                          push               edx                                           // 0x00715e9d    52
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00715e9e    e8fdd0e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00715e9e    e8fdd0e3ff
                          mov.s              esi, eax                                      // 0x00715ea3    8bf0
                          cmp.s              esi, ebx                                      // 0x00715ea5    3bf3
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x00715ea7    0f84dd1f0000
@@ -1361,7 +1361,7 @@ _jmp_addr_0x00715f39:    cmp.s              eax, ebx                            
                          call               @GetPlayerNumber__7GPlayerCFv@4               // 0x00715f8e    e8fd47f3ff
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00715f93    8b0d5c19d000
                          push               eax                                           // 0x00715f99    50
-                         call               @GetPlayer__5GGameFUl@12                      // 0x00715f9a    e811aae3ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x00715f9a    e811aae3ff
                          {disp32} mov       edi, dword ptr [eax + 0x00000a48]             // 0x00715f9f    8bb8480a0000
                          add                eax, 0x00000a48                               // 0x00715fa5    05480a0000
                          test               edi, edi                                      // 0x00715faa    85ff
@@ -1695,7 +1695,7 @@ _jmp_addr_0x007163c4:    test               edi, edi                            
 _jmp_addr_0x007163f2:    {disp32} mov       ecx, dword ptr [ebp + ebx * 0x4 + 0x00006000] // 0x007163f2    8b8c9d00600000
                          push               ecx                                           // 0x007163f9    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x007163fa    8b0d5c19d000
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00716400    e89bcbe3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00716400    e89bcbe3ff
                          mov.s              esi, eax                                      // 0x00716405    8bf0
                          test               esi, esi                                      // 0x00716407    85f6
                          {disp8} je         _jmp_addr_0x00716433                          // 0x00716409    7428
@@ -1774,7 +1774,7 @@ _jmp_addr_0x007164db:    cmp.s              eax, ebx                            
 _jmp_addr_0x007164e8:    xor.s              esi, esi                                      // 0x007164e8    33f6
 _jmp_addr_0x007164ea:    {disp32} mov       eax, dword ptr [ebp + 0x0000600c]             // 0x007164ea    8b850c600000
                          push               eax                                           // 0x007164f0    50
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x007164f1    e8aacae3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x007164f1    e8aacae3ff
                          push               ebx                                           // 0x007164f6    53
                          push               esi                                           // 0x007164f7    56
                          push               eax                                           // 0x007164f8    50
@@ -1830,7 +1830,7 @@ _jmp_addr_0x0071657f:    cmp.s              eax, ebx                            
 _jmp_addr_0x0071658c:    xor.s              esi, esi                                      // 0x0071658c    33f6
 _jmp_addr_0x0071658e:    {disp32} mov       edx, dword ptr [ebp + 0x0000600c]             // 0x0071658e    8b950c600000
                          push               edx                                           // 0x00716594    52
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00716595    e806cae3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00716595    e806cae3ff
                          {disp32} mov       ecx, dword ptr [ebp + 0x00006010]             // 0x0071659a    8b8d10600000
                          push               ecx                                           // 0x007165a0    51
                          push               esi                                           // 0x007165a1    56
@@ -1891,7 +1891,7 @@ _jmp_addr_0x007165f3:    call               _GetScriptPos__6GSetupFPc           
                          {disp32} mov       eax, dword ptr [ebp + 0x00006000]             // 0x0071663f    8b8500600000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00716645    8b0d5c19d000
                          push               eax                                           // 0x0071664b    50
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x0071664c    e84fc9e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x0071664c    e84fc9e3ff
                          cmp.s              eax, ebx                                      // 0x00716651    3bc3
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x00716653    0f8431180000
                          {disp32} mov       ecx, dword ptr [ebp + 0x00006008]             // 0x00716659    8b8d08600000
@@ -1913,7 +1913,7 @@ _jmp_addr_0x007165f3:    call               _GetScriptPos__6GSetupFPc           
                          {disp32} mov       ecx, dword ptr [ebp + 0x00006000]             // 0x0071668d    8b8d00600000
                          push               ecx                                           // 0x00716693    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00716694    8b0d5c19d000
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x0071669a    e801c9e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x0071669a    e801c9e3ff
                          cmp.s              eax, ebx                                      // 0x0071669f    3bc3
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x007166a1    0f84e3170000
                          {disp32} mov       edx, dword ptr [ebp + 0x0000603c]             // 0x007166a7    8b953c600000
@@ -1958,7 +1958,7 @@ _jmp_addr_0x007166fe:    push               ecx                                 
                          {disp32} mov       edx, dword ptr [ebp + 0x00006000]             // 0x00716722    8b9500600000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00716728    8b0d5c19d000
                          push               edx                                           // 0x0071672e    52
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x0071672f    e86cc8e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x0071672f    e86cc8e3ff
                          cmp.s              eax, ebx                                      // 0x00716734    3bc3
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x00716736    0f844e170000
                          push               eax                                           // 0x0071673c    50
@@ -2079,7 +2079,7 @@ _jmp_addr_0x007167e7:    {disp32} fild      dword ptr [ebp + 0x0000600c]        
                          add                esp, 0x10                                     // 0x007168da    83c410
                          push               edx                                           // 0x007168dd    52
                          mov.s              edi, eax                                      // 0x007168de    8bf8
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x007168e0    e8bbc6e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x007168e0    e8bbc6e3ff
                          cmp.s              eax, ebx                                      // 0x007168e5    3bc3
                          {disp32} mov       ecx, dword ptr [ebp + 0x00006048]             // 0x007168e7    8b8d48600000
                          {disp8} mov        dword ptr [esp + 0x20], ecx                   // 0x007168ed    894c2420
@@ -2273,7 +2273,7 @@ _jmp_addr_0x00716a39:    {disp32} mov       dword ptr [_DAT_00d99380], eax      
                          {disp32} mov       ecx, dword ptr [ebp + 0x00006000]             // 0x00716b58    8b8d00600000
                          push               ecx                                           // 0x00716b5e    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00716b5f    8b0d5c19d000
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00716b65    e836c4e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00716b65    e836c4e3ff
                          mov.s              edi, eax                                      // 0x00716b6a    8bf8
                          cmp.s              edi, ebx                                      // 0x00716b6c    3bfb
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x00716b6e    0f8416130000
@@ -2383,7 +2383,7 @@ _jmp_addr_0x00716bd7:    cmp.s              edi, ebx                            
                          {disp32} mov       eax, dword ptr [ebp + 0x00006000]             // 0x00716ca6    8b8500600000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00716cac    8b0d5c19d000
                          push               eax                                           // 0x00716cb2    50
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00716cb3    e8e8c2e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00716cb3    e8e8c2e3ff
                          {disp32} lea       ecx, dword ptr [ebp + 0x00000800]             // 0x00716cb8    8d8d00080000
                          push               ecx                                           // 0x00716cbe    51
                          {disp32} lea       edx, dword ptr [esp + 0x0000011c]             // 0x00716cbf    8d94241c010000
@@ -2565,7 +2565,7 @@ _jmp_addr_0x00716bd7:    cmp.s              edi, ebx                            
                          {disp32} mov       ecx, dword ptr [ebp + 0x00006008]             // 0x00716f03    8b8d08600000
                          push               ecx                                           // 0x00716f09    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00716f0a    8b0d5c19d000
-                         call               @GetPlayer__5GGameFUl@12                      // 0x00716f10    e89b9ae3ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x00716f10    e89b9ae3ff
                          push               eax                                           // 0x00716f15    50
                          {disp32} mov       eax, dword ptr [ebp + 0x00006004]             // 0x00716f16    8b8504600000
                          lea                edx, dword ptr [eax + eax * 0x8]              // 0x00716f1c    8d14c0
@@ -2790,7 +2790,7 @@ _jmp_addr_0x0071704e:    {disp32} mov       dword ptr [_PTR_00d99384], ebx      
                          push               eax                                           // 0x007171bb    50
                          push               ecx                                           // 0x007171bc    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x007171bd    8b0d5c19d000
-                         call               @GetPlayer__5GGameFUl@12                      // 0x007171c3    e8e897e3ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x007171c3    e8e897e3ff
                          push               eax                                           // 0x007171c8    50
                          {disp32} lea       edx, dword ptr [esp + 0x00000214]             // 0x007171c9    8d942414020000
                          push               ebp                                           // 0x007171d0    55
@@ -3439,7 +3439,7 @@ _jmp_addr_0x00717805:    cmp.s              eax, ebx                            
                          {disp32} mov       edx, dword ptr [ebp + 0x00006000]             // 0x007179ec    8b9500600000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x007179f2    8b0d5c19d000
                          push               edx                                           // 0x007179f8    52
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x007179f9    e8a2b5e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x007179f9    e8a2b5e3ff
                          mov.s              esi, eax                                      // 0x007179fe    8bf0
                          {disp32} lea       eax, dword ptr [ebp + 0x00000800]             // 0x00717a00    8d8500080000
                          push               eax                                           // 0x00717a06    50
@@ -3463,7 +3463,7 @@ _jmp_addr_0x00717805:    cmp.s              eax, ebx                            
                          {disp32} lea       edx, dword ptr [ebp + 0x00000800]             // 0x00717a46    8d9500080000
                          push               edx                                           // 0x00717a4c    52
                          push               eax                                           // 0x00717a4d    50
-                         call               @GetPlayer__5GGameFUl@12                      // 0x00717a4e    e85d8fe3ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x00717a4e    e85d8fe3ff
                          {disp32} mov       ecx, dword ptr [eax + 0x00000944]             // 0x00717a53    8b8844090000
                          call               _jmp_addr_0x006642b0                          // 0x00717a59    e852c8f4ff
                          xor.s              eax, eax                                      // 0x00717a5e    33c0
@@ -3495,7 +3495,7 @@ _jmp_addr_0x00717805:    cmp.s              eax, ebx                            
                          push               ebx                                           // 0x00717aac    53
                          push               edx                                           // 0x00717aad    52
                          push               eax                                           // 0x00717aae    50
-                         call               _SetLandBalance__5GGameFUlfP7GPlayer@12       // 0x00717aaf    e8dcdde3ff
+                         call               ?SetLandBalance@GGame@@QAEXKMPAVGPlayer@@@Z   // 0x00717aaf    e8dcdde3ff
                          xor.s              eax, eax                                      // 0x00717ab4    33c0
                          pop                edi                                           // 0x00717ab6    5f
                          pop                esi                                           // 0x00717ab7    5e
@@ -3524,7 +3524,7 @@ _jmp_addr_0x00717aff:    {disp32} mov       ecx, dword ptr [_game]              
                          push               esi                                           // 0x00717b05    56
                          push               ebp                                           // 0x00717b06    55
                          push               edi                                           // 0x00717b07    57
-                         call               _SetLandBalance__5GGameFUlfP7GPlayer@12       // 0x00717b08    e883dde3ff
+                         call               ?SetLandBalance@GGame@@QAEXKMPAVGPlayer@@@Z   // 0x00717b08    e883dde3ff
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00717b0d    8b0d5c19d000
                          push               esi                                           // 0x00717b13    56
                          call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x00717b14    e8878de3ff
@@ -3548,7 +3548,7 @@ _jmp_addr_0x00717b2c:    push               ebp                                 
                          push               eax                                           // 0x00717b47    50
                          push               edx                                           // 0x00717b48    52
                          push               edi                                           // 0x00717b49    57
-                         call               _SetLandBalance__5GGameFUlfP7GPlayer@12       // 0x00717b4a    e841dde3ff
+                         call               ?SetLandBalance@GGame@@QAEXKMPAVGPlayer@@@Z   // 0x00717b4a    e841dde3ff
                          xor.s              eax, eax                                      // 0x00717b4f    33c0
                          pop                edi                                           // 0x00717b51    5f
                          pop                esi                                           // 0x00717b52    5e
@@ -3581,7 +3581,7 @@ _jmp_addr_0x00717b2c:    push               ebp                                 
                          {disp32} mov       eax, dword ptr [ebp + 0x00006000]             // 0x00717b9a    8b8500600000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00717ba0    8b0d5c19d000
                          push               eax                                           // 0x00717ba6    50
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00717ba7    e8f4b3e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00717ba7    e8f4b3e3ff
                          cmp.s              eax, ebx                                      // 0x00717bac    3bc3
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x00717bae    0f84d6020000
                          {disp32} mov       ecx, dword ptr [ebp + 0x00006034]             // 0x00717bb4    8b8d34600000
@@ -3764,7 +3764,7 @@ _jmp_addr_0x00717d14:    {disp32} mov       eax, dword ptr [data_bytes + 0x30ab1
                          {disp32} mov       ecx, dword ptr [ebp + 0x00006000]             // 0x00717de2    8b8d00600000
                          push               ecx                                           // 0x00717de8    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00717de9    8b0d5c19d000
-                         call               @FindTownWithID__5GGameFUl@12                 // 0x00717def    e8acb1e3ff
+                         call               ?FindTownWithID@GGame@@QAEPAVTown@@K@Z        // 0x00717def    e8acb1e3ff
                          {disp32} lea       edx, dword ptr [ebp + 0x00000800]             // 0x00717df4    8d9500080000
                          push               edx                                           // 0x00717dfa    52
                          mov.s              esi, eax                                      // 0x00717dfb    8bf0

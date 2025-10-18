@@ -10,7 +10,7 @@
 .extern @__ct__9MapCoordsFv@4
 .extern @__as__7Point2DFRC7Point2D@12
 .extern _jmp_addr_0x005357c0
-.extern @MyInterface__5GGameFv@4
+.extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005dc8d0
 .extern @__ct__9MapCoordsFllf@20
 .extern _jmp_addr_0x00603490
@@ -555,7 +555,7 @@ _jmp_addr_0x0060dbef:    {disp8} mov        eax, dword ptr [esi + 0x04]         
                          add                esp, 0x00000288                             // 0x0060dc24    81c488020000
                          ret                0x0008                                      // 0x0060dc2a    c20800
                          {disp32} mov       ecx, dword ptr [_game]                      // 0x0060dc2d    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                    // 0x0060dc33    e8187cf4ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ    // 0x0060dc33    e8187cf4ff
                          {disp32} lea       ecx, dword ptr [esp + 0x000000b0]           // 0x0060dc38    8d8c24b0000000
                          push               ecx                                         // 0x0060dc3f    51
                          {disp32} mov       ecx, dword ptr [eax + 0x0000039c]           // 0x0060dc40    8b889c030000

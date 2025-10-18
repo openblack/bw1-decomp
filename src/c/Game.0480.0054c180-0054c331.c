@@ -15,7 +15,7 @@ void __fastcall StartGame__5GGameFv(struct GGame* this)
     asm("                         xor.s              ebx, ebx");                                      // 0x0054c19a    33db
     asm("                         mov.s              esi, ecx");                                      // 0x0054c19c    8bf1
     asm("                         {disp32} mov       dword ptr [eax + 0x00250180], ebx");             // 0x0054c19e    899880012500
-    asm("                         call               @Init__5GGameFv@4");                             // 0x0054c1a4    e807320000
+    asm("                         call               ?Init@GGame@@QAE_NXZ");                          // 0x0054c1a4    e807320000
     asm("                         cmp                eax, 0x01");                                     // 0x0054c1a9    83f801
     asm("                         {disp32} jne       _jmp_addr_0x0054c2d0");                          // 0x0054c1ac    0f851e010000
     asm("                         cmp                byte ptr [_ARGS_CONVERT], bl");                  // 0x0054c1b2    381dc16ad400

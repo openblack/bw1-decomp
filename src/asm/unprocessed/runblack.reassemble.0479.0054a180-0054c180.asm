@@ -1193,12 +1193,12 @@ _jmp_addr_0x0054a710:    {disp32} mov       ecx, dword ptr [_game]              
                          push               ebx                                           // 0x0054a71e    53
                          {disp32} mov       bl, byte ptr [data_bytes + 0x33b9a8]          // 0x0054a71f    8a1da819d000
                          {disp8} je         _jmp_addr_0x0054a74a                          // 0x0054a725    7423
-                         call               @MyInterface__5GGameFv@4                      // 0x0054a727    e824b10000
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x0054a727    e824b10000
                          test               eax, eax                                      // 0x0054a72c    85c0
                          {disp8} je         _jmp_addr_0x0054a74a                          // 0x0054a72e    741a
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0054a730    8b0d5c19d000
                          push               0x0                                           // 0x0054a736    6a00
-                         call               @MyInterface__5GGameFv@4                      // 0x0054a738    e813b10000
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x0054a738    e813b10000
                          mov.s              ecx, eax                                      // 0x0054a73d    8bc8
                          call               _jmp_addr_0x005db710                          // 0x0054a73f    e8cc0f0900
                          test               eax, eax                                      // 0x0054a744    85c0

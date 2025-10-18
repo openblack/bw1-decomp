@@ -13,7 +13,7 @@
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern @SetPosition__6ZoomerFf@12
 .extern _jmp_addr_0x00511f50
-.extern @IsMultiplayerGame__5GGameCFv@4
+.extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern _jmp_addr_0x005c8fe0
 .extern _StartScript__7GScriptFPc@4
 .extern _jmp_addr_0x006f6840
@@ -191,7 +191,7 @@ _jmp_addr_0x00794a74:    ret                                                    
                          nop                                                              // 0x00794a7e    90
                          nop                                                              // 0x00794a7f    90
 _jmp_addr_0x00794a80:    {disp32} mov       ecx, dword ptr [_game]                        // 0x00794a80    8b0d5c19d000
-                         call               @IsMultiplayerGame__5GGameCFv@4               // 0x00794a86    e8f5e4dbff
+                         call               ?IsMultiplayerGame@GGame@@QBE_NXZ             // 0x00794a86    e8f5e4dbff
                          test               eax, eax                                      // 0x00794a8b    85c0
                          {disp8} jne        _jmp_addr_0x00794aae                          // 0x00794a8d    751f
                          {disp32} mov       eax, dword ptr [_game]                        // 0x00794a8f    a15c19d000
