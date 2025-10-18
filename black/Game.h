@@ -258,8 +258,6 @@ uint32_t __fastcall InitOneTimeOnly__5GGameFv(struct GGame* this) asm("?InitOneT
 bool __fastcall Init__5GGameFv(struct GGame* this);
 // win1.41 00550110 mac 10505500 GGame::FinishInitialisation(void)
 void __fastcall FinishInitialisation__5GGameFv(struct GGame* this) asm("?FinishInitialisation@GGame@@QAEXXZ");
-// win1.41 00550110 mac 10505500 GGame::FinishInitialisation(void)
-void __fastcall FinishInitialisation__5GGameFv(struct GGame* this) asm("?FinishInitialisation@GGame@@QAEXXZ");
 // win1.41 00550390 mac 10427340 GGame::LoadFiles(void)
 int __fastcall LoadFiles__5GGameFv(struct GGame* this);
 // win1.41 005507f0 mac 10506220 GGame::Birthday(void)
