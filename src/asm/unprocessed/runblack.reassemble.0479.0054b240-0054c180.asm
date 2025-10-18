@@ -420,7 +420,7 @@
 .globl _jmp_addr_0x0054ae20
 .globl _jmp_addr_0x0054b180
 .globl _jmp_addr_0x0054b190
-.globl @__ct__5GGameFv@4
+.globl ??0GGame@@QAE@XZ
 .globl ??1GGame@@UAE@XZ
 .globl _jmp_addr_0x0054b820
 .globl @Reset__7LHTimerFUl@12
@@ -470,7 +470,8 @@
 .globl ??_GTerrainMapTypeInfo@@UAEPAXI@Z
 .globl ?ToBeDeleted@GGame@@UAEXH@Z
 
-@__ct__5GGameFv@4:       push               ebx                                           // 0x0054b240    53
+??0GGame@@QAE@XZ:
+                         push               ebx                                           // 0x0054b240    53
                          push               ebp                                           // 0x0054b241    55
                          push               esi                                           // 0x0054b242    56
                          push               edi                                           // 0x0054b243    57
