@@ -420,7 +420,6 @@
 .globl _jmp_addr_0x0054ae20
 .globl _jmp_addr_0x0054b180
 .globl _jmp_addr_0x0054b190
-.globl @__ct__5GGameFv@4
 .globl ??1GGame@@UAE@XZ
 .globl _jmp_addr_0x0054b820
 .globl @Reset__7LHTimerFUl@12

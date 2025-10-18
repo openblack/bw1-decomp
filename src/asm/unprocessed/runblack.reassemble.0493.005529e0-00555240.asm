@@ -57,7 +57,7 @@
 .extern _jmp_addr_0x0053b2f0
 .extern ?InitStaticsValues@@YAXXZ
 .extern _jmp_addr_0x0054ae20
-.extern @__ct__5GGameFv@4
+.extern ??0GGame@@QAE@XZ
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern _DoYesNoSkipTutorialRequestersIfNecessary__5GGameFv
 .extern _jmp_addr_0x0054da00
@@ -1072,7 +1072,7 @@ _jmp_addr_0x00553350:    {disp32} mov       ecx, dword ptr [data_bytes + 0x30db1
                          test               eax, eax                                      // 0x00553371    85c0
                          {disp8} je         _jmp_addr_0x0055337e                          // 0x00553373    7409
                          mov.s              ecx, eax                                      // 0x00553375    8bc8
-                         call               @__ct__5GGameFv@4                             // 0x00553377    e8c47effff
+                         call               ??0GGame@@QAE@XZ                              // 0x00553377    e8c47effff
                          {disp8} jmp        _jmp_addr_0x00553380                          // 0x0055337c    eb02
 _jmp_addr_0x0055337e:    xor.s              eax, eax                                      // 0x0055337e    33c0
 _jmp_addr_0x00553380:    {disp32} mov       dword ptr [_game]                , eax        // 0x00553380    a35c19d000

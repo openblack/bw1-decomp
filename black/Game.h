@@ -212,7 +212,7 @@ bool __stdcall MouseHandler__5GGameFPv19LH_MOUSE_EVENT_TYPEUlUl(struct GGame* th
 // Constructors
 
 // win1.41 0054b240 mac 104fda10 GGame::GGame(void)
-struct GGame* __fastcall __ct__5GGameFv(struct GGame* this);
+struct GGame* __fastcall __ct__5GGameFv(struct GGame* this) asm("??0GGame@@QAE@XZ");
 
 // Non-virtual methods
 
