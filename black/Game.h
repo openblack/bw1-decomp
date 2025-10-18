@@ -6,7 +6,9 @@
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum TRIBE_TYPE */
+#include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
 #include <lhall/released/headers/LHTimer.h> /* For struct LHTimer */
+#include <lionhead/lhlib/ver5.0/LHMouse.h> /* For enum LH_MOUSE_EVENT_TYPE */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "CreatureDatabase.h" /* For struct CreatureDatabase */
@@ -202,6 +204,10 @@ extern const struct GameThingVftable __vt__5GGame asm("??_7GGame@@6B@");
 
 // win1.41 0054cbd0 mac 101584c0 GGame::DoYesNoSkipTutorialRequestersIfNecessary(void)
 void __cdecl DoYesNoSkipTutorialRequestersIfNecessary__5GGameFv(void);
+// win1.41 0054ff80 mac 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void *)
+void __stdcall KeyHandler__5GGameFUs6LH_KEYUsUsPv(struct GGame* this, unsigned short param_1, enum LH_KEY param_2, unsigned short param_3, unsigned short param_4, void* param_5) asm("?KeyHandler@GGame@@QAEXGW4LH_KEY@@GGPAX@Z");
+// win1.41 0054ffe0 mac 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
+bool __stdcall MouseHandler__5GGameFPv19LH_MOUSE_EVENT_TYPEUlUl(struct GGame* this, void* param_1, enum LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4) asm("?MouseHandler@GGame@@QAE_NPAXW4LH_MOUSE_EVENT_TYPE@@KK@Z");
 // win1.41 00552620 mac 1005cfb0 GGame::GetTribe(TRIBE_TYPE)
 struct GTribeInfo* __stdcall GetTribe__5GGameF10TRIBE_TYPE(enum TRIBE_TYPE type);
 // win1.41 00552f40 mac 1056f520 GGame::StartPlaygroundGame(char *)
@@ -250,6 +256,8 @@ void __fastcall EndTurn__5GGameFv(struct GGame* this) asm("?EndTurn@GGame@@QAEIX
 uint32_t __fastcall InitOneTimeOnly__5GGameFv(struct GGame* this) asm("?InitOneTimeOnly@GGame@@QAEIXZ");
 // win1.41 0054f3b0 mac 101b9770 GGame::Init(void)
 bool __fastcall Init__5GGameFv(struct GGame* this);
+// win1.41 00550110 mac 10505500 GGame::FinishInitialisation(void)
+void __fastcall FinishInitialisation__5GGameFv(struct GGame* this) asm("?FinishInitialisation@GGame@@QAEXXZ");
 // win1.41 00550110 mac 10505500 GGame::FinishInitialisation(void)
 void __fastcall FinishInitialisation__5GGameFv(struct GGame* this) asm("?FinishInitialisation@GGame@@QAEXXZ");
 // win1.41 00550390 mac 10427340 GGame::LoadFiles(void)

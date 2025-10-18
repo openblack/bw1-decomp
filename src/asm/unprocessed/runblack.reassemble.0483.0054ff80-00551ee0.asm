@@ -9,7 +9,7 @@
 
 .extern ?Open@Windmill@@QAEXXZ
 .extern ?Close@Windmill@@QAEXXZ
-.extern _jmp_addr_0x00428ef0
+.extern ?InitAtmos@GAudio@@QAEXXZ
 .extern _jmp_addr_0x00428f90
 .extern _jmp_addr_0x00436960
 .extern _jmp_addr_0x00436ab0
@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x00556c10
 .extern _jmp_addr_0x00579af0
 .extern _jmp_addr_0x005ceba0
-.extern _jmp_addr_0x005d9e80
+.extern ?Init@GInterfaceMessageBuffer@@QAEXG@Z
 .extern _jmp_addr_0x005db710
 .extern _jmp_addr_0x005dc8b0
 .extern _jmp_addr_0x005e1bf0
@@ -88,9 +88,12 @@
 .globl _jmp_addr_0x005515d0
 .globl _jmp_addr_0x00551630
 .globl ?Dump@GGame@@UAEXXZ
+.globl ?KeyHandler@GGame@@QAEXGW4LH_KEY@@GGPAX@Z
+.globl ?MouseHandler@GGame@@QAE_NPAXW4LH_MOUSE_EVENT_TYPE@@KK@Z
 
 start_0x0054ff80_0x00551ee0:
 // Snippet: asm, [0x0054ff80, 0x00551e20)
+?KeyHandler@GGame@@QAEXGW4LH_KEY@@GGPAX@Z:
                          {disp8} mov        ax, word ptr [esp + 0x04]                      // 0x0054ff80    668b442404
                          cmp                ax, 0x0100                                     // 0x0054ff85    663d0001
                          push               esi                                            // 0x0054ff89    56
@@ -130,6 +133,7 @@ _jmp_addr_0x0054ffd5:    pop                esi                                 
                          nop                                                               // 0x0054ffdd    90
                          nop                                                               // 0x0054ffde    90
                          nop                                                               // 0x0054ffdf    90
+?MouseHandler@GGame@@QAE_NPAXW4LH_MOUSE_EVENT_TYPE@@KK@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x0054ffe0    8b442408
                          cmp                eax, 0x04                                      // 0x0054ffe4    83f804
                          {disp8} je         _jmp_addr_0x00550007                           // 0x0054ffe7    741e
@@ -238,7 +242,7 @@ _jmp_addr_0x00550109:    pop                edi                                 
                          call               @MyInterface__5GGameFv@4                       // 0x0055011e    e82d570000
                          push               0x40                                           // 0x00550123    6a40
                          {disp32} lea       ecx, dword ptr [eax + 0x00000430]              // 0x00550125    8d8830040000
-                         call               _jmp_addr_0x005d9e80                           // 0x0055012b    e8509d0800
+                         call               ?Init@GInterfaceMessageBuffer@@QAEXG@Z         // 0x0055012b    e8509d0800
 _jmp_addr_0x00550130:    xor.s              eax, eax                                       // 0x00550130    33c0
                          {disp32} mov       dword ptr [data_bytes + 0x4bf36c], 0x0054ff80  // 0x00550132    c7056c53e80080ff5400
                          {disp32} mov       dword ptr [data_bytes + 0x4bf370], eax         // 0x0055013c    a37053e800
@@ -246,7 +250,7 @@ _jmp_addr_0x00550130:    xor.s              eax, eax                            
                          {disp32} mov       dword ptr [data_bytes + 0x4bf354], eax         // 0x0055014b    a35453e800
                          call               ?Open@Windmill@@QAEXXZ                         // 0x00550150    e82b58ebff
                          {disp32} mov       ecx, dword ptr [_global]                       // 0x00550155    8b0d203bcd00
-                         call               _jmp_addr_0x00428ef0                           // 0x0055015b    e8908dedff
+                         call               ?InitAtmos@GAudio@@QAEXXZ                      // 0x0055015b    e8908dedff
                          pop                esi                                            // 0x00550160    5e
                          ret                                                               // 0x00550161    c3
                          nop                                                               // 0x00550162    90

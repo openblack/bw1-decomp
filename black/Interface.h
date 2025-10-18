@@ -2,6 +2,7 @@
 #define BW1_DECOMP_INTERFACE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <lionhead/lhfile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
@@ -12,6 +13,7 @@
 #include "InterfaceCollide.h" /* For struct GInterfaceCollide */
 #include "InterfaceFlags.h" /* For struct GInterfaceFlags */
 #include "InterfaceHandState.h" /* For struct InterfaceHandState */
+#include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
 #include "InterfaceMessageBuffer.h" /* For struct GInterfaceMessageBuffer */
 
 // Forward Declares
@@ -22,6 +24,7 @@ struct GInterfaceStatus;
 struct GPlayer;
 struct GameOSFile;
 struct GameThing;
+struct LHCoord;
 struct LHPlayer;
 struct LHPoint;
 struct Leash;
@@ -128,6 +131,8 @@ void __fastcall PostDrawProcess__10GInterfaceFv(struct GInterface* this);
 void __fastcall Process__10GInterfaceFv(struct GInterface* this);
 // win1.41 005d9130 mac 100315f0 GInterface::UpdateAllLeashes(void)
 void __fastcall UpdateAllLeashes__10GInterfaceFv(struct GInterface* this);
+// win1.41 005d9d80 mac 10004300 GInterface::SendMessageA(INTERFACE_MESSAGE_TYPES, LHCoord *)
+bool __fastcall SendMessageA__10GInterfaceF23INTERFACE_MESSAGE_TYPESP7LHCoord(struct GInterface* this, const void* edx, enum INTERFACE_MESSAGE_TYPES param_1, struct LHCoord* param_2) asm("?SendMessageA@GInterface@@QAE_NW4INTERFACE_MESSAGE_TYPES@@PAULHCoord@@@Z");
 
 // Override methods
 
