@@ -37,7 +37,7 @@ def get_clang_resource_dir():
     return check_output(['clang', '-print-resource-dir']).strip().decode('utf-8')
 
 
-def mangle_class(class_definition):
+def compile_code(code):
     args = ['-m32', '--target=i686-pc-windows-msvc', f"-resource-dir={get_clang_resource_dir()}"]
     includes = [
         "stdint.h",
@@ -48,7 +48,7 @@ def mangle_class(class_definition):
     source += "\n".join(f"class {i};" for i in CLASSES) + "\n"
     source += "\n".join(f"union {i};" for i in UNIONS) + "\n"
     source += "\n".join(f"enum {i} {{{i}_0}};" for i in ENUMS) + "\n"
-    source += class_definition
+    source += code
     from clang.cindex import Index, CursorKind, Config, Diagnostic
     index = Index.create()
     translation_unit = index.parse('tmp.cpp', args=args, unsaved_files=[('tmp.cpp', source)])
@@ -64,6 +64,16 @@ def mangle_class(class_definition):
         print("\n".join(f"{i}\t{l}" for i, l in enumerate(source.split("\n"), 1)))
         raise RuntimeError("Error parsing source:\n\t" + "\n\t".join(error_strings))
 
+    return translation_unit
+
+
+def mangle_function(function_definition):
+    translation_unit = compile_code(function_definition)
+    return list(translation_unit.cursor.get_children())[-1].mangled_name
+
+
+def mangle_class(class_definition):
+    translation_unit = compile_code(class_definition)
     class_decl = list(translation_unit.cursor.get_children())[-1]
     return [i.mangled_name for i in class_decl.get_children() if i.mangled_name]
 

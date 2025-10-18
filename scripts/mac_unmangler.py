@@ -238,7 +238,10 @@ class UnmangledDetails:
         return f"{function_name}({', '.join(map(str, self.args))}){' const' if self.isconst else ''}"
 
     def __str__(self):
-        return f"{self.type_name}::{self.get_post_namespace_signature()}"
+        if hasattr(self, "type_name"):
+            return f"{self.type_name}::{self.get_post_namespace_signature()}"
+        else:
+            return self.get_post_namespace_signature()
 
 
 def demangle(mangled: str):

@@ -5,7 +5,7 @@ from copy import copy
 from pathlib import Path
 
 from mac_unmangler import UnmangledDetails
-from msvc_mangler import mangle_class
+from msvc_mangler import mangle_class, mangle_function
 from repo_replace_function_names import set_function_name_in_repo_files
 
 EMBEDDED_ENUMS = {
@@ -69,9 +69,11 @@ def insert_functions_from_csv(csv_path: Path, json_path: Path):
                     argument_types.append(t)
             argument_names = [f"param_{i + 1}" for i in range(len(argument_types))]
 
-            embedded_enums = "\n".join(f"enum {i} {{{i}_0}};" for i in EMBEDDED_ENUMS.get(mac_unmangled.type_name, []))
+            if hasattr(mac_unmangled, "type_name"): # class function
 
-            class_definition = f"""\
+                embedded_enums = "\n".join(f"enum {i} {{{i}_0}};" for i in EMBEDDED_ENUMS.get(mac_unmangled.type_name, []))
+
+                class_definition = f"""\
 class {mac_unmangled.type_name}
 {{
 public:
@@ -80,13 +82,17 @@ public:
     {mac_unmangled.get_post_namespace_signature()};
 }};
 """
-            mangled_class = mangle_class(class_definition)
-            mangled_name = mangled_class[0]
+                mangled_class = mangle_class(class_definition)
+                mangled_name = mangled_class[0]
 
-            this_type = f"{'const ' if mac_unmangled.isconst else ''}struct {mac_unmangled.type_name} *"
+                this_type = f"{'const ' if mac_unmangled.isconst else ''}struct {mac_unmangled.type_name} *"
 
-            argument_types = [this_type] + argument_types
-            argument_names = ["this"] + argument_names
+                argument_types = [this_type] + argument_types
+                argument_names = ["this"] + argument_names
+
+            else: # non-class function
+                function_definition = f"{return_type} {mac_unmangled.get_post_namespace_signature()};"
+                mangled_name = mangle_function(function_definition)
 
             print(f"Inserting {str(mac_unmangled)}")
             entry = dict(
