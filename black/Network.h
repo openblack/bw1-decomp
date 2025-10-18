@@ -40,7 +40,7 @@ void __cdecl ResetStateDebug__8GNetworkFv(void);
 
 // Non-virtual methods
 
-// win1.41 00635290 mac 1001e1e0 GNetwork::ProcessOneSuperpacket(void)
+// win1.41 00635290 mac 100229f0 GNetwork::ProcessOneSuperpacket(void)
 uint32_t __fastcall ProcessOneSuperpacket__8GNetworkFv(struct GNetwork* this);
 
 #endif /* BW1_DECOMP_NETWORK_INCLUDED_H */

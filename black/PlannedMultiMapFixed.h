@@ -85,9 +85,9 @@ uint32_t __fastcall Load__20PlannedMultiMapFixedFR10GameOSFile(struct GameThing*
 uint32_t __fastcall Save__20PlannedMultiMapFixedFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z");
 // win1.41 0055cbd0 mac inlined PlannedMultiMapFixed::GetSaveType(void)
 uint32_t __fastcall GetSaveType__20PlannedMultiMapFixedFv(struct GameThing* this) asm("?GetSaveType@PlannedMultiMapFixed@@UAEIXZ");
-// win1.41 004050c0 mac 103e0c80 PlannedMultiMapFixed::GetScale(void)
+// win1.41 004050c0 mac 1017d1b0 PlannedMultiMapFixed::GetScale(void)
 float __fastcall GetScale__20PlannedMultiMapFixedFv(struct GameThingWithPos* this) asm("?GetScale@PlannedMultiMapFixed@@UBEMXZ");
-// win1.41 004050d0 mac 103e31e0 PlannedMultiMapFixed::SetScale(float)
+// win1.41 004050d0 mac 103509e0 PlannedMultiMapFixed::SetScale(float)
 void __fastcall SetScale__20PlannedMultiMapFixedFf(struct GameThingWithPos* this, const void* edx, float scale) asm("?SetScale@PlannedMultiMapFixed@@UAEXM@Z");
 // win1.41 00648940 mac 10115200 PlannedMultiMapFixed::GetText(void)
 const char* __fastcall GetText__20PlannedMultiMapFixedFv(struct GameThingWithPos* this) asm("?GetText@PlannedMultiMapFixed@@UAEPBDXZ");

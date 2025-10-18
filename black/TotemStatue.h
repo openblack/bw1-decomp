@@ -66,7 +66,7 @@ extern const struct MultiMapFixedVftable __vt__11TotemStatue asm("??_7TotemStatu
 
 // Static methods
 
-// win1.41 00737cc0 mac 10544f40 TotemStatue::Create(TownCentre *)
+// win1.41 00737cc0 mac 10545210 TotemStatue::Create(TownCentre *)
 struct TotemStatue* __cdecl Create__11TotemStatueFP10TownCentre(struct TownCentre* this);
 
 // Constructors

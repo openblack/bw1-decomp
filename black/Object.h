@@ -383,19 +383,19 @@ float __fastcall GetLife__6ObjectFv(struct GameThingWithPos* this) asm("?GetLife
 float __fastcall GetScale__6ObjectFv(struct GameThingWithPos* this) asm("?GetScale@Object@@UAEMXZ");
 // win1.41 00639200 mac 103d3c80 Object::SetScale(float)
 void __fastcall SetScale__6ObjectFf(struct GameThingWithPos* this, const void* edx, float scale) asm("?SetScale@Object@@UAEXM@Z");
-// win1.41 004027c0 mac 103d58a0 Object::GetDistanceFromObject(MapCoords &)
+// win1.41 004027c0 mac 1016ea00 Object::GetDistanceFromObject(MapCoords &)
 float __fastcall GetDistanceFromObject__6ObjectFRC9MapCoords(struct GameThingWithPos* this, const void* edx, const struct MapCoords* target) asm("?GetDistanceFromObject@Object@@UAEMPAUMapCoords@@@Z");
 // win1.41 006394e0 mac 103d35f0 Object::GetPhysicsMovementDirection(LHPoint *)
 void __fastcall GetPhysicsMovementDirection__6ObjectFP7LHPoint(struct GameThingWithPos* this, const void* edx, struct LHPoint* pos) asm("?GetPhysicsMovementDirection@Object@@UAEXPAULHPoint@@@Z");
 // win1.41 00402710 mac 10032610 Object::IsMoving( const(void))
 bool __fastcall IsMoving__6ObjectCFv(const struct GameThingWithPos* this) asm("?IsMoving@Object@@UAE_NXZ");
-// win1.41 006392b0 mac 10054140 Object::IsObjectInMap(MapCell *)
-bool __fastcall IsObjectInMap__6ObjectFP7MapCell(struct GameThingWithPos* this) asm("?IsObjectInMap@Object@@UAE_NXZ");
+// win1.41 006392b0 mac 10037930 Object::IsObjectInMap(void)
+bool __fastcall IsObjectInMap__6ObjectFv(struct GameThingWithPos* this) asm("?IsObjectInMap@Object@@UAE_NXZ");
 // win1.41 0063a780 mac 103d07e0 Object::IsDrowning(void)
 bool __fastcall IsDrowning__6ObjectFv(struct GameThingWithPos* this) asm("?IsDrowning@Object@@UAE_NXZ");
 // win1.41 006377f0 mac 103d6d80 Object::CleanupWhenDeleted(int)
 void __fastcall CleanupWhenDeleted__6ObjectFi(struct GameThingWithPos* this, const void* edx, int param_1) asm("?CleanupWhenDeleted@Object@@UAEXH@Z");
-// win1.41 00639860 mac 103d3840 Object::GetImpressiveValue(Living *, Reaction *)
+// win1.41 00639860 mac 103d2e30 Object::GetImpressiveValue(Living *, Reaction *)
 float __fastcall GetImpressiveValue__6ObjectFP6LivingP8Reaction(struct GameThingWithPos* this, const void* edx, struct Living* param_1, struct Reaction* param_2) asm("?GetImpressiveValue@Object@@UAEMPAVLiving@@PAVReaction@@@Z");
 // win1.41 00639940 mac 103d2cf0 Object::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
 float __fastcall GetUpdateOfBoredomValue__6ObjectFP8ReactionP16GameThingWithPos(struct GameThingWithPos* this, const void* edx, struct Reaction* param_1, struct GameThingWithPos* param_2) asm("?GetUpdateOfBoredomValue@Object@@UAEMPAVReaction@@PAVGameThingWithPos@@@Z");
@@ -489,9 +489,9 @@ uint32_t __fastcall MoveAlongPath__6ObjectFv(struct Object* this) asm("?MoveAlon
 bool __fastcall IsReachable__6ObjectFv(struct Object* this) asm("?IsReachable@Object@@UAE_NXZ");
 // win1.41 0063a920 mac 103d03c0 Object::BlocksTownClearArea( const(void))
 bool __fastcall BlocksTownClearArea__6ObjectCFv(const struct Object* this) asm("?BlocksTownClearArea@Object@@UAE_NXZ");
-// win1.41 006365f0 mac 103d90d0 Object::Create3DObject(void)
+// win1.41 006365f0 mac 103d9010 Object::Create3DObject(void)
 void __fastcall Create3DObject__6ObjectFv(struct Object* this) asm("?Create3DObject@Object@@UAEXXZ");
-// win1.41 00418c90 mac 1005ba80 Object::GetMapChild(MapCell const &)
+// win1.41 00418c90 mac 100540e0 Object::GetMapChild(MapCell const &)
 struct Object* __fastcall GetMapChild__6ObjectFRC7MapCell(struct Object* this, const void* edx, const struct MapCell* param_1) asm("?GetMapChild@Object@@UAEPAV1@PBUMapCell@@@Z");
 // win1.41 00418cc0 mac 10053b70 Object::SetMapChild(Object *, MapCell *)
 void __fastcall SetMapChild__6ObjectFP6ObjectP7MapCell(struct Object* this, const void* edx, struct Object* child, struct MapCell* cell) asm("?SetMapChild@Object@@UAEXPAV1@PAUMapCell@@@Z");
@@ -503,8 +503,8 @@ void __fastcall RemoveMapObject__6ObjectFv(struct Object* this) asm("?RemoveMapO
 void __fastcall InsertMapObjectToCell__6ObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell) asm("?InsertMapObjectToCell@Object@@UAEXPAUMapCell@@@Z");
 // win1.41 006368d0 mac 10053bc0 Object::RemoveMapObjectFromCell(MapCell *)
 void __fastcall RemoveMapObjectFromCell__6ObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell) asm("?RemoveMapObjectFromCell@Object@@UAEXPAUMapCell@@@Z");
-// win1.41 006367d0 mac 1016ea00 Object::IsObjectInMap(MapCoords const &)
-bool __fastcall IsObjectInMap__6ObjectFRC9MapCoords(struct Object* this, const void* edx, struct MapCell* cell) asm("?IsObjectInMap@Object@@UAE_NPAUMapCell@@@Z");
+// win1.41 006367d0 mac 10054140 Object::IsObjectInMap(MapCell *)
+bool __fastcall IsObjectInMap__6ObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell) asm("?IsObjectInMap@Object@@UAE_NPAUMapCell@@@Z");
 // win1.41 006366b0 mac 103d8d10 Object::IsObjectInMapCheck(void)
 bool __fastcall IsObjectInMapCheck__6ObjectFv(struct Object* this) asm("?IsObjectInMapCheck@Object@@UAE_NXZ");
 // win1.41 00636a40 mac 1004d070 Object::MoveMapObject(MapCoords const &)
@@ -635,7 +635,7 @@ uint32_t __fastcall GetHandHelpMessageSet__6ObjectFv(struct Object* this) asm("?
 uint32_t __fastcall GetHandHelpCondition__6ObjectFv(struct Object* this) asm("?GetHandHelpCondition@Object@@UAEIXZ");
 // win1.41 00636be0 mac 103d84b0 Object::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z");
-// win1.41 006364f0 mac 103d93a0 Object::Get3DType(void)
+// win1.41 006364f0 mac 103d92f0 Object::Get3DType(void)
 enum LH3DObject__ObjectType __fastcall Get3DType__6ObjectFv(struct Object* this) asm("?Get3DType@Object@@UAE?AW4LH3DObject__ObjectType@@XZ");
 // win1.41 004026d0 mac 10586d80 Object::GetFoodValue(FOOD_TYPE)
 float __fastcall GetFoodValue__6ObjectF9FOOD_TYPE(struct Object* this, const void* edx, enum FOOD_TYPE type) asm("?GetFoodValue@Object@@UAEMW4FOOD_TYPE@@@Z");

@@ -85,7 +85,7 @@ static_assert(sizeof(struct IntersectIntervalCircle) == 0x2c, "Data type is of w
 
 // win1.41 006169f0 mac inlined IntersectIntervalCircle<0>::Resolve(void)
 void __fastcall Resolve__26IntersectIntervalCircle_0_Fv(struct IntersectIntervalCircle* this);
-// win1.41 006169f0 mac inlined IntersectIntervalCircle<1>::Resolve(void)
+// win1.41 00616c70 mac inlined IntersectIntervalCircle<1>::Resolve(void)
 void __fastcall Resolve__26IntersectIntervalCircle_1_Fv(struct IntersectIntervalCircle* this);
 
 struct CircleHugInfo
@@ -177,7 +177,7 @@ static_assert(sizeof(struct NewCollide) == 0x4, "Data type is of wrong size");
 
 // Constructors
 
-// win1.41 00829390 mac 1061bfd4 NewCollide::NewCollide(LH3DObject*)
+// win1.41 00829390 mac 100d9080 NewCollide::NewCollide(LH3DObject*)
 struct NewCollide* __fastcall __ct__10NewCollideFP10LH3DObject(struct NewCollide* this, const void* edx, struct LH3DObject* obj);
 
 // Non-virtual methods

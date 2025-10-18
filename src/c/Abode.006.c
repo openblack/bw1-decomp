@@ -278,7 +278,7 @@ void __fastcall ReduceLife__5AbodeFfP7GPlayer(struct Object* this, const void* e
     asm("{disp8} jne        _jmp_addr_0x00405e5e");                          // 0x00405e54    7508
     asm("push               ebx");                                           // 0x00405e56    53
     asm("mov.s              ecx, esi");                                      // 0x00405e57    8bce
-    asm("call               ?FUN_004073c0@Abode@@UAEXPAVGPlayer@@@Z");       // 0x00405e59    e892150000
+    asm("call               ?FUN_004073f0@Abode@@UAEXPAVGPlayer@@@Z");       // 0x00405e59    e892150000
     asm("_jmp_addr_0x00405e5e:");
     asm("{disp8} mov        eax, dword ptr [esi + 0x74]");                   // 0x00405e5e    8b4674
     asm("test               eax, eax");                                      // 0x00405e61    85c0

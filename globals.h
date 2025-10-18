@@ -240,7 +240,6 @@ struct globals_t
   struct LHMatrix* g_local_to_clipping;  /* 0x00ea9e10 */
   struct LHMatrix* g_world_to_clipping;  /* 0x00ea9e40 */
   struct LHPlane* field_0x00ea9e70;
-  struct LHPoint* LHPoint_00ea9e70;
   struct LHPlane* g_sun_light_clipping;  /* 0x00ea9e80 */
   struct LHPlane* field_0x00ea9e90;
   struct LHMatrix** g_current_matrix;  /* 0x00ea9ea0 */
@@ -428,7 +427,6 @@ static struct globals_t globals = {
     .g_local_to_clipping = (struct LHMatrix*)0x00ea9e10,
     .g_world_to_clipping = (struct LHMatrix*)0x00ea9e40,
     .field_0x00ea9e70 = (struct LHPlane*)0x00ea9e70,
-    .LHPoint_00ea9e70 = (struct LHPoint*)0x00ea9e70,
     .g_sun_light_clipping = (struct LHPlane*)0x00ea9e80,
     .field_0x00ea9e90 = (struct LHPlane*)0x00ea9e90,
     .g_current_matrix = (struct LHMatrix**)0x00ea9ea0,

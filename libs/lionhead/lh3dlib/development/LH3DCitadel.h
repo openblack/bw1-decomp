@@ -22,9 +22,4 @@ extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__11LH3
 // win1.41 009a2bfc mac 101ca6d0 LH3DCitadel::`vftable'
 extern const struct LH3DObjectVftable __vt__11LH3DCitadel asm("??_7LH3DCitadel@@6B@");
 
-// Constructors
-
-// win1.41 007f9560 mac 100b45b0 LH3DCitadel::LH3DCitadel(void)
-struct LH3DCitadel* __fastcall __ct__11LH3DCitadelFv(struct LH3DCitadel* this);
-
 #endif /* BW1_DECOMP_LH3D_CITADEL_INCLUDED_H */

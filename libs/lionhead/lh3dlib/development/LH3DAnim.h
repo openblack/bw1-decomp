@@ -118,7 +118,7 @@ struct LH3DAnimSet* __fastcall __ct__11LH3DAnimSetFv(struct LH3DAnimSet* this);
 
 // Non-virtual methods
 
-// win1.41 00619b80 mac 1001f930 LH3DAnimSet::ReadBinaryNew
+// win1.41 00619b80 mac 101059e0 LH3DAnimSet::ReadBinaryNew
 uint32_t __fastcall ReadBinaryNew__11LH3DAnimSetFP6LHFileP8AnimInfoP8AnimInfo(struct LH3DAnimSet* this, const void* edx, struct LHFile* param_2, struct AnimInfo* param_3, struct AnimInfo* param_4);
 
 struct CatInfo
@@ -145,7 +145,7 @@ static_assert(sizeof(struct AnimInfo) == 0x5468, "Data type is of wrong size");
 
 // Non-virtual methods
 
-// win1.41 004c4ab0 mac 1001f930 AnimInfo::Read(char *)
+// win1.41 004c4ab0 mac 10230d20 AnimInfo::Read(char *)
 uint32_t __fastcall Read__8AnimInfoFPc(struct AnimInfo* this, const void* edx, char* spec_filename);
 
 struct LH3DAnim

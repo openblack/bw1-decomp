@@ -15,7 +15,7 @@ static_assert(sizeof(struct LHMatrix) == 0x30, "Data type is of wrong size");
 
 // Static methods
 
-// win1.41 00403530 mac 100417d0 LHMatrix::Translation(const LHPoint&)
+// win1.41 00403530 mac inlined LHMatrix::Translation(const LHPoint&)
 void __fastcall Translation__8LHMatrixFv(struct LHMatrix* this, const struct LHPoint* translation) asm("?Translation@LHMatrix@@QAEXABVLHPoint@@@Z");
 // win1.41 00403570 mac inlined LHMatrix::PostTranslation(const LHPoint&)
 void __fastcall PostTranslation__8LHMatrixFRC7LHPoint(struct LHMatrix* this, struct LHPoint* translation) asm("?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z");

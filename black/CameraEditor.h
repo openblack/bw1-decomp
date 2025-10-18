@@ -41,7 +41,7 @@ extern const struct PrssVftable __vt__13GCameraEditor asm("??_7GCameraEditor@@6B
 void __cdecl FinalDraw__13GCameraEditorFv(void);
 // win1.41 00445530 mac 1019b6c0 GCameraEditor::CreateSegFile(void)
 void __cdecl CreateSegFile__13GCameraEditorFv(void);
-// win1.41 00446450 mac 1019b070 GCameraEditor::Draw3DPart(void)
+// win1.41 00445e10 mac 1019b440 GCameraEditor::Draw3DPart(void)
 void __cdecl Draw3DPart__13GCameraEditorFv(void);
 // win1.41 00446fe0 mac 1019adf0 GCameraEditor::LoadCameraFromHD(long, GCameraEditor::CameraBin &)
 void __cdecl LoadCameraFromHD__13GCameraEditorFlRQ213GCameraEditor9CameraBin(int param_1, struct GCameraEditor__CameraBin* param_2);
