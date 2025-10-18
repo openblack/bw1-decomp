@@ -38,7 +38,7 @@
 .extern _jmp_addr_0x0054a710
 .extern _SetTurnOffMouseMove__Fb
 .extern @__ct__5GGameFv@4
-.extern @GetCamera__5GGameFv@4
+.extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern _jmp_addr_0x005739f0
@@ -5007,7 +5007,7 @@ _jmp_addr_0x00645932:    mov.s              ecx, esi                            
                          cmp.s              edi, eax                                       // 0x00645945    3bf8
                          {disp8} jl         _jmp_addr_0x00645932                           // 0x00645947    7ce9
 _jmp_addr_0x00645949:    {disp32} mov       ecx, dword ptr [_game]                         // 0x00645949    8b0d5c19d000
-                         call               @GetCamera__5GGameFv@4                         // 0x0064594f    e82c68f0ff
+                         call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ            // 0x0064594f    e82c68f0ff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]         // 0x00645954    8b0db81dea00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]         // 0x0064595a    8b15bc1dea00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]         // 0x00645960    a1c01dea00

@@ -13,8 +13,8 @@
 .extern _jmp_addr_0x0048d250
 .extern _jmp_addr_0x004ec450
 .extern _jmp_addr_0x004ec4b0
-.extern @GetCamera__5GGameFv@4
-.extern @GetPlayer__5GGameFUl@12
+.extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern _jmp_addr_0x005df310
 .extern _jmp_addr_0x00617a10
 .extern ?MorphAnims@Morphable@@UAEXXZ
@@ -75,7 +75,7 @@ _jmp_addr_0x0048d56e:    {disp32} mov       edx, dword ptr [_game]              
                          mov.s              ebp, ecx                                      // 0x0048d57c    8be9
 _jmp_addr_0x0048d57e:    {disp32} mov       ecx, dword ptr [_game]                        // 0x0048d57e    8b0d5c19d000
                          push               ebp                                           // 0x0048d584    55
-                         call               @GetPlayer__5GGameFUl@12                      // 0x0048d585    e826340c00
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x0048d585    e826340c00
                          mov.s              ecx, eax                                      // 0x0048d58a    8bc8
                          call               _jmp_addr_0x0064a9f0                          // 0x0048d58c    e85fd41b00
                          test               eax, eax                                      // 0x0048d591    85c0
@@ -726,11 +726,11 @@ _jmp_addr_0x0048dd70:    sub                esp, 0x000000b8                     
                          test               eax, eax                                      // 0x0048dd8d    85c0
                          {disp32} je        _jmp_addr_0x0048e1a8                          // 0x0048dd8f    0f8413040000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0048dd95    8b0d5c19d000
-                         call               @GetCamera__5GGameFv@4                        // 0x0048dd9b    e8e0e30b00
+                         call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x0048dd9b    e8e0e30b00
                          test               eax, eax                                      // 0x0048dda0    85c0
                          {disp32} je        _jmp_addr_0x0048e1a8                          // 0x0048dda2    0f8400040000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0048dda8    8b0d5c19d000
-                         call               @GetCamera__5GGameFv@4                        // 0x0048ddae    e8cde30b00
+                         call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x0048ddae    e8cde30b00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdb8]        // 0x0048ddb3    a1b81dea00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdbc]        // 0x0048ddb8    8b0dbc1dea00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdc0]        // 0x0048ddbe    8b15c01dea00

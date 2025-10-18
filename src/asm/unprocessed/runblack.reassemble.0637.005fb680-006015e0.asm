@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x0052fa50
 .extern _jmp_addr_0x0052fb50
 .extern _jmp_addr_0x0052fc20
-.extern @GetPlayer__5GGameFUl@12
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x00563400
@@ -3115,7 +3115,7 @@ _jmp_addr_0x005fd057:    pop                edi                                 
                          {disp8} mov        eax, dword ptr [ecx + 0x6c]                   // 0x005fd060    8b416c
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005fd063    8b0d5c19d000
                          push               eax                                           // 0x005fd069    50
-                         call               @GetPlayer__5GGameFUl@12                      // 0x005fd06a    e84139f5ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x005fd06a    e84139f5ff
                          ret                                                              // 0x005fd06f    c3
 ?ToBeDeleted@MagicTree@@UAEXH@Z:
                          push               ebx                                           // 0x005fd070    53

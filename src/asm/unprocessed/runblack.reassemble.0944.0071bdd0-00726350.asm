@@ -78,11 +78,11 @@
 .extern _jmp_addr_0x0053a490
 .extern _jmp_addr_0x0053a520
 .extern _jmp_addr_0x0053a740
-.extern @GetCamera__5GGameFv@4
-.extern @GetNextPlayerAndNeutral__5GGameFP7GPlayer@12
-.extern @GetPlayer__5GGameFUl@12
-.extern @IsMultiplayerGame__5GGameCFv@4
-.extern @MyInterface__5GGameFv@4
+.extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
+.extern ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?IsMultiplayerGame@GGame@@QBE_NXZ
+.extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x005575e0
 .extern _jmp_addr_0x00561e10
@@ -1008,7 +1008,7 @@ _jmp_addr_0x0071c201:    {disp32} mov       ecx, dword ptr [esi + 0x000000cc]   
                          {disp32} fadd      dword ptr [esi + 0x000000c8]                         // 0x0071c29a    d886c8000000
                          {disp32} fstp      dword ptr [esi + 0x000000c8]                         // 0x0071c2a0    d99ec8000000
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0071c2a6    8b0d5c19d000
-                         call               @GetNextPlayerAndNeutral__5GGameFP7GPlayer@12        // 0x0071c2ac    e8cf46e3ff
+                         call               ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z        // 0x0071c2ac    e8cf46e3ff
                          mov.s              edi, eax                                             // 0x0071c2b1    8bf8
                          cmp.s              edi, ebx                                             // 0x0071c2b3    3bfb
                          {disp32} je        _jmp_addr_0x0071c37f                                 // 0x0071c2b5    0f84c4000000
@@ -1060,7 +1060,7 @@ _jmp_addr_0x0071c34d:    {disp32} fdiv      dword ptr [rdata_bytes + 0xd7170]   
 _jmp_addr_0x0071c367:    fstp               st(0)                                                // 0x0071c367    ddd8
 _jmp_addr_0x0071c369:    {disp32} mov       ecx, dword ptr [_game]                               // 0x0071c369    8b0d5c19d000
                          push               edi                                                  // 0x0071c36f    57
-                         call               @GetNextPlayerAndNeutral__5GGameFP7GPlayer@12        // 0x0071c370    e80b46e3ff
+                         call               ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z        // 0x0071c370    e80b46e3ff
                          mov.s              edi, eax                                             // 0x0071c375    8bf8
                          cmp.s              edi, ebx                                             // 0x0071c377    3bfb
                          {disp32} jne       _jmp_addr_0x0071c2bb                                 // 0x0071c379    0f853cffffff
@@ -1602,7 +1602,7 @@ _jmp_addr_0x0071c990:    push               esi                                 
                          test               edi, edi                                             // 0x0071c9a3    85ff
                          {disp8} je         _jmp_addr_0x0071c9e1                                 // 0x0071c9a5    743a
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0071c9a7    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                             // 0x0071c9ad    e89e8ee3ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x0071c9ad    e89e8ee3ff
                          add                eax, 0x000003b8                                      // 0x0071c9b2    05b8030000
                          push               eax                                                  // 0x0071c9b7    50
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                          // 0x0071c9b8    8d4f14
@@ -1698,7 +1698,7 @@ _jmp_addr_0x0071ca60:    push               esi                                 
                          test               eax, eax                                             // 0x0071ca9d    85c0
                          {disp8} je         _jmp_addr_0x0071cae0                                 // 0x0071ca9f    743f
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0071caa1    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                             // 0x0071caa7    e8a48de3ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x0071caa7    e8a48de3ff
                          add                eax, 0x000003b8                                      // 0x0071caac    05b8030000
                          push               eax                                                  // 0x0071cab1    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x0071cab2    8d4e14
@@ -1752,7 +1752,7 @@ _jmp_addr_0x0071caf0:    push               esi                                 
                          test               eax, eax                                             // 0x0071cb2d    85c0
                          {disp8} je         _jmp_addr_0x0071cb70                                 // 0x0071cb2f    743f
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0071cb31    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                             // 0x0071cb37    e8148de3ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x0071cb37    e8148de3ff
                          add                eax, 0x000003b8                                      // 0x0071cb3c    05b8030000
                          push               eax                                                  // 0x0071cb41    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x0071cb42    8d4e14
@@ -1795,7 +1795,7 @@ _jmp_addr_0x0071cb70:    pop                edi                                 
                          add                eax, dword ptr [edi + 0x00000618]                    // 0x0071cb99    038718060000
                          {disp8} je         _jmp_addr_0x0071cbdb                                 // 0x0071cb9f    743a
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0071cba1    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                             // 0x0071cba7    e8a48ce3ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x0071cba7    e8a48ce3ff
                          add                eax, 0x000003b8                                      // 0x0071cbac    05b8030000
                          push               eax                                                  // 0x0071cbb1    50
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                          // 0x0071cbb2    8d4f14
@@ -1825,7 +1825,7 @@ _jmp_addr_0x0071cbe0:    push               esi                                 
                          add                eax, dword ptr [edi + 0x00000618]                    // 0x0071cbf9    038718060000
                          {disp8} je         _jmp_addr_0x0071cc3b                                 // 0x0071cbff    743a
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0071cc01    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                             // 0x0071cc07    e8448ce3ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x0071cc07    e8448ce3ff
                          add                eax, 0x000003b8                                      // 0x0071cc0c    05b8030000
                          push               eax                                                  // 0x0071cc11    50
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                          // 0x0071cc12    8d4f14
@@ -1866,7 +1866,7 @@ _jmp_addr_0x0071cc40:    push               esi                                 
                          test               eax, eax                                             // 0x0071cc7d    85c0
                          {disp8} je         _jmp_addr_0x0071ccbb                                 // 0x0071cc7f    743a
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0071cc81    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                             // 0x0071cc87    e8c48be3ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x0071cc87    e8c48be3ff
                          add                eax, 0x000003b8                                      // 0x0071cc8c    05b8030000
                          push               eax                                                  // 0x0071cc91    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x0071cc92    8d4e14
@@ -2349,7 +2349,7 @@ _jmp_addr_0x0071d100:    sub                esp, 0x18                           
                          {disp8} lea        edx, dword ptr [eax + ecx * 0x1 + 0x18]              // 0x0071d12e    8d540818
                          cmp.s              edi, edx                                             // 0x0071d132    3bfa
                          {disp8} je         _jmp_addr_0x0071d1b5                                 // 0x0071d134    747f
-                         call               @MyInterface__5GGameFv@4                             // 0x0071d136    e81587e3ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x0071d136    e81587e3ff
                          add                eax, 0x000003b8                                      // 0x0071d13b    05b8030000
                          {disp8} mov        dword ptr [esp + 0x0c], 0x00000000                   // 0x0071d140    c744240c00000000
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000                   // 0x0071d148    c744241000000000
@@ -3062,7 +3062,7 @@ _jmp_addr_0x0071d800:    sub                esp, 0x18                           
                          mov.s              esi, ecx                                             // 0x0071d804    8bf1
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0071d806    8b0d5c19d000
                          push               edi                                                  // 0x0071d80c    57
-                         call               @GetCamera__5GGameFv@4                               // 0x0071d80d    e86ee9e2ff
+                         call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ                  // 0x0071d80d    e86ee9e2ff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]               // 0x0071d812    8b0db81dea00
                          {disp32} lea       edi, dword ptr [esi + 0x000000ec]                    // 0x0071d818    8dbeec000000
                          mov.s              eax, edi                                             // 0x0071d81e    8bc7
@@ -3215,11 +3215,11 @@ _jmp_addr_0x0071d988:    pop                edi                                 
                          add                esp, 0x1c                                            // 0x0071d9ee    83c41c
                          cmp.s              ecx, edi                                             // 0x0071d9f1    3bcf
                          {disp32} je        _jmp_addr_0x0071da7b                                 // 0x0071d9f3    0f8482000000
-                         call               @MyInterface__5GGameFv@4                             // 0x0071d9f9    e8527ee3ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x0071d9f9    e8527ee3ff
                          test               eax, eax                                             // 0x0071d9fe    85c0
                          {disp8} je         _jmp_addr_0x0071da7b                                 // 0x0071da00    7479
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0071da02    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                             // 0x0071da08    e8437ee3ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x0071da08    e8437ee3ff
                          add                eax, 0x000003b8                                      // 0x0071da0d    05b8030000
                          {disp8} mov        dword ptr [esp + 0x0c], edi                          // 0x0071da12    897c240c
                          {disp8} mov        dword ptr [esp + 0x10], edi                          // 0x0071da16    897c2410
@@ -3516,7 +3516,7 @@ _jmp_addr_0x0071dd60:    push               ebp                                 
                          {disp8} mov        dword ptr [esp + 0x20], 0x00000000                   // 0x0071de11    c744242000000000
 _jmp_addr_0x0071de19:    {disp32} mov       ecx, dword ptr [_game]                               // 0x0071de19    8b0d5c19d000
                          {disp8} mov        dword ptr [esp + 0x1c], 0x3f800000                   // 0x0071de1f    c744241c0000803f
-                         call               @GetCamera__5GGameFv@4                               // 0x0071de27    e854e3e2ff
+                         call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ                  // 0x0071de27    e854e3e2ff
                          mov.s              ecx, eax                                             // 0x0071de2c    8bc8
                          {disp32} mov       al, byte ptr [ecx + 0x00000082]                      // 0x0071de2e    8a8182000000
                          add                ecx, 0x00000080                                      // 0x0071de34    81c180000000
@@ -4367,7 +4367,7 @@ _jmp_addr_0x0071e760:    sub                esp, 0x0c                           
                          {disp8} fimul      dword ptr [esp + 0x10]                               // 0x0071e791    da4c2410
                          {disp32} fmul      dword ptr [_rdata_float0p001]                        // 0x0071e795    d80db0a38a00
                          {disp8} fstp       dword ptr [esp + 0x10]                               // 0x0071e79b    d95c2410
-                         call               @GetCamera__5GGameFv@4                               // 0x0071e79f    e8dcd9e2ff
+                         call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ                  // 0x0071e79f    e8dcd9e2ff
                          mov.s              ecx, eax                                             // 0x0071e7a4    8bc8
                          call               _jmp_addr_0x00442d10                                 // 0x0071e7a6    e86545d2ff
                          {disp8} fstp       dword ptr [esp + 0x08]                               // 0x0071e7ab    d95c2408
@@ -5380,7 +5380,7 @@ _jmp_addr_0x0071f191:    {disp32} jmp       _jmp_addr_0x0074fbc0                
 _Create__15SpecialVillagerFRC9MapCoordsPC13GVillagerInfoUliP20GSpecialVillagerInfo:    {disp32} mov       ecx, dword ptr [_game]                               // 0x0071f1a0    8b0d5c19d000
                          push               esi                                                  // 0x0071f1a6    56
                          push               edi                                                  // 0x0071f1a7    57
-                         call               @IsMultiplayerGame__5GGameCFv@4                      // 0x0071f1a8    e8d33de3ff
+                         call               ?IsMultiplayerGame@GGame@@QBE_NXZ                    // 0x0071f1a8    e8d33de3ff
                          test               eax, eax                                             // 0x0071f1ad    85c0
                          {disp8} je         _jmp_addr_0x0071f1b6                                 // 0x0071f1af    7405
                          pop                edi                                                  // 0x0071f1b1    5f
@@ -6093,7 +6093,7 @@ _jmp_addr_0x0071f8f0:    {disp32} jmp       _jmp_addr_0x0071f640                
                          nop                                                                     // 0x0071f8fe    90
                          nop                                                                     // 0x0071f8ff    90
 _jmp_addr_0x0071f900:    {disp32} mov       ecx, dword ptr [_game]                               // 0x0071f900    8b0d5c19d000
-                         call               @IsMultiplayerGame__5GGameCFv@4                      // 0x0071f906    e87536e3ff
+                         call               ?IsMultiplayerGame@GGame@@QBE_NXZ                    // 0x0071f906    e87536e3ff
                          test               eax, eax                                             // 0x0071f90b    85c0
                          mov                eax, 0x00000030                                      // 0x0071f90d    b830000000
                          {disp8} jne        _jmp_addr_0x0071f919                                 // 0x0071f912    7505
@@ -6965,7 +6965,7 @@ _jmp_addr_0x007201f0:    push               esi                                 
                          call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ // 0x007201fe    e8adc6ebff
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x00720203    8b0d5c19d000
                          mov.s              edi, eax                                             // 0x00720209    8bf8
-                         call               @MyInterface__5GGameFv@4                             // 0x0072020b    e84056e3ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x0072020b    e84056e3ff
                          sub.s              edi, eax                                             // 0x00720210    2bf8
                          neg                edi                                                  // 0x00720212    f7df
                          sbb.s              edi, edi                                             // 0x00720214    1bff
@@ -10396,7 +10396,7 @@ _jmp_addr_0x00722400:    push               ecx                                 
                          cmp                eax, 0x01                                            // 0x00722427    83f801
                          {disp8} jne        _jmp_addr_0x0072248c                                 // 0x0072242a    7560
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0072242c    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                             // 0x00722432    e81934e3ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x00722432    e81934e3ff
                          {disp32} mov       eax, dword ptr [eax + 0x000003a0]                    // 0x00722437    8b80a0030000
                          {disp32} mov       ecx, dword ptr [eax + 0x00004904]                    // 0x0072243d    8b8804490000
                          cmp                ecx, dword ptr [esi + 0x000000ac]                    // 0x00722443    3b8eac000000
@@ -11520,7 +11520,7 @@ _jmp_addr_0x00723010:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} jne        _jmp_addr_0x0072302b                                 // 0x00723016    7513
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x00723018    8b0d5c19d000
                          push               eax                                                  // 0x0072301e    50
-                         call               @GetPlayer__5GGameFUl@12                             // 0x0072301f    e88cd9e2ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z                 // 0x0072301f    e88cd9e2ff
                          add                eax, 0x00000a50                                      // 0x00723024    05500a0000
                          mov                eax, dword ptr [eax]                                 // 0x00723029    8b00
 _jmp_addr_0x0072302b:    ret                                                                     // 0x0072302b    c3
@@ -13023,7 +13023,7 @@ _jmp_addr_0x007240eb:    mov.s              ecx, esi                            
                          {disp8} jg         _jmp_addr_0x00724125                                 // 0x0072411e    7f05
                          mov                edi, 0x00000001                                      // 0x00724120    bf01000000
 _jmp_addr_0x00724125:    {disp32} mov       ecx, dword ptr [_game]                               // 0x00724125    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                             // 0x0072412b    e82017e3ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x0072412b    e82017e3ff
                          {disp32} mov       ecx, dword ptr [esi + 0x00000110]                    // 0x00724130    8b8e10010000
                          {disp32} mov       eax, dword ptr [eax + 0x000003a0]                    // 0x00724136    8b80a0030000
                          {disp32} fld       dword ptr [eax + 0x00004834]                         // 0x0072413c    d98034480000
@@ -16276,7 +16276,7 @@ _jmp_addr_0x007262c0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          test               byte ptr [esi + 0x24], 0x10                          // 0x007262e3    f6462410
                          {disp8} je         _jmp_addr_0x00726306                                 // 0x007262e7    741d
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x007262e9    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                             // 0x007262ef    e85cf5e2ff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x007262ef    e85cf5e2ff
                          mov.s              ecx, eax                                             // 0x007262f4    8bc8
                          call               _jmp_addr_0x005ced10                                 // 0x007262f6    e8158aeaff
                          cmp.s              eax, esi                                             // 0x007262fb    3bc6

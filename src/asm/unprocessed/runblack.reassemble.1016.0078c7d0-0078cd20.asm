@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @IsMultiplayerGame__5GGameCFv@4
+.extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern _jmp_addr_0x0078bda0
 .extern _jmp_addr_0x0078c040
 .extern _jmp_addr_0x0078c110
@@ -352,7 +352,7 @@ _jmp_addr_0x0078cbd7:    pop              esi                                   
                          nop                                                     // 0x0078cbde    90
                          nop                                                     // 0x0078cbdf    90
                          {disp32} mov     ecx, dword ptr [_game]                 // 0x0078cbe0    8b0d5c19d000
-                         call             @IsMultiplayerGame__5GGameCFv@4        // 0x0078cbe6    e89563dcff
+                         call             ?IsMultiplayerGame@GGame@@QBE_NXZ      // 0x0078cbe6    e89563dcff
                          test             eax, eax                               // 0x0078cbeb    85c0
                          {disp8} jne      _jmp_addr_0x0078cc03                   // 0x0078cbed    7514
                          {disp32} mov     eax, dword ptr [_game]                 // 0x0078cbef    a15c19d000

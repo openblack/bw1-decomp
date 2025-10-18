@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x00411fc0
 .extern @__ct__16CameraModeFollowFP7GCameraP16GameThingWithPosfii@28
 .extern _jmp_addr_0x0053b4a0
-.extern @GetCamera__5GGameFv@4
+.extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern _jmp_addr_0x005708d0
 .extern _jmp_addr_0x00571f50
 .extern _jmp_addr_0x00571ff0
@@ -220,7 +220,7 @@ _jmp_addr_0x00572fac:    cmp               ecx, dword ptr [ebx + 0x000000c4]    
                          {disp32} jle      _jmp_addr_0x005734c5                          // 0x00572fc0    0f8eff040000
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00572fc6    8b0d5c19d000
                          {disp8} mov       byte ptr [esp + 0x12], 0x00                   // 0x00572fcc    c644241200
-                         call              @GetCamera__5GGameFv@4                        // 0x00572fd1    e8aa91fdff
+                         call              ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x00572fd1    e8aa91fdff
                          test              eax, eax                                      // 0x00572fd6    85c0
                          {disp8} je        _jmp_addr_0x0057301c                          // 0x00572fd8    7442
                          {disp8} mov       ecx, dword ptr [eax + 0x58]                   // 0x00572fda    8b4858
@@ -276,7 +276,7 @@ _jmp_addr_0x00573072:    sub               eax, 0x00                            
                          {disp32} je       _jmp_addr_0x0057313b                          // 0x00573084    0f84b1000000
                          test              eax, eax                                      // 0x0057308a    85c0
                          {disp32} je       _jmp_addr_0x0057341d                          // 0x0057308c    0f848b030000
-                         call              @GetCamera__5GGameFv@4                        // 0x00573092    e8e990fdff
+                         call              ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x00573092    e8e990fdff
                          test              eax, eax                                      // 0x00573097    85c0
                          {disp32} je       _jmp_addr_0x0057341d                          // 0x00573099    0f847e030000
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x0057309f    8b0d5c19d000
@@ -316,14 +316,14 @@ _jmp_addr_0x00573072:    sub               eax, 0x00                            
                          shl               eax, 5                                        // 0x0057311e    c1e005
                          {disp32} mov      eax, dword ptr [eax + ecx * 0x1 + 0x00000a64] // 0x00573121    8b8408640a0000
                          push              eax                                           // 0x00573128    50
-                         call              @GetCamera__5GGameFv@4                        // 0x00573129    e85290fdff
+                         call              ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x00573129    e85290fdff
                          push              eax                                           // 0x0057312e    50
                          mov.s             ecx, esi                                      // 0x0057312f    8bce
                          call              @__ct__16CameraModeFollowFP7GCameraP16GameThingWithPosfii@28                          // 0x00573131    e8ca86edff
                          {disp32} jmp      _jmp_addr_0x0057341d                          // 0x00573136    e9e2020000
 _jmp_addr_0x0057313b:    test              eax, eax                                      // 0x0057313b    85c0
                          {disp32} je       _jmp_addr_0x0057341d                          // 0x0057313d    0f84da020000
-                         call              @GetCamera__5GGameFv@4                        // 0x00573143    e83890fdff
+                         call              ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x00573143    e83890fdff
                          test              eax, eax                                      // 0x00573148    85c0
                          {disp32} je       _jmp_addr_0x0057341d                          // 0x0057314a    0f84cd020000
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00573150    8b0d5c19d000
@@ -471,7 +471,7 @@ _jmp_addr_0x00573308:    {disp8} mov       al, byte ptr [esp + 0x12]            
                          push              0x0                                           // 0x00573332    6a00
                          push              0x3f800000                                    // 0x00573334    680000803f
                          push              esi                                           // 0x00573339    56
-                         call              @GetCamera__5GGameFv@4                        // 0x0057333a    e8418efdff
+                         call              ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x0057333a    e8418efdff
                          push              eax                                           // 0x0057333f    50
                          mov.s             ecx, edi                                      // 0x00573340    8bcf
                          call              @__ct__16CameraModeFollowFP7GCameraP16GameThingWithPosfii@28                          // 0x00573342    e8b984edff

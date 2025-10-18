@@ -32,11 +32,11 @@
 .extern _jmp_addr_0x00531c20
 .extern @__ct__6ForestFRC9MapCoordsUl@16
 .extern _jmp_addr_0x0053b4a0
-.extern @GetCamera__5GGameFv@4
+.extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
-.extern @GetNextPlayerAndNeutral__5GGameFP7GPlayer@12
-.extern @GetPlayer__5GGameFUl@12
-.extern @MyInterface__5GGameFv@4
+.extern ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12

@@ -47,7 +47,7 @@
 .extern _jmp_addr_0x004ff5c0
 .extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern _jmp_addr_0x00550ba0
-.extern @MyInterface__5GGameFv@4
+.extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x005e6ae0
 .extern _jmp_addr_0x005e6f70
@@ -3055,7 +3055,7 @@ _jmp_addr_0x004f71b9:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          call               _jmp_addr_0x00842150                           // 0x004f71cf    e87caf3400
                          {disp32} mov       ecx, dword ptr [_game]                         // 0x004f71d4    8b0d5c19d000
                          add                esp, 0x04                                      // 0x004f71da    83c404
-                         call               @MyInterface__5GGameFv@4                       // 0x004f71dd    e86ee60500
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ       // 0x004f71dd    e86ee60500
                          {disp32} mov       ecx, dword ptr [eax + 0x000003a0]              // 0x004f71e2    8b88a0030000
                          push               0x1                                            // 0x004f71e8    6a01
                          call               _jmp_addr_0x0046c2e0                           // 0x004f71ea    e8f150f7ff
@@ -3097,7 +3097,7 @@ _StringFunction__4PrssFlPci:
                          test               eax, eax                                       // 0x004f7216    85c0
                          {disp8} jne        _jmp_addr_0x004f723f                           // 0x004f7218    7525
                          {disp32} mov       ecx, dword ptr [_game]                         // 0x004f721a    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                       // 0x004f7220    e82be60500
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ       // 0x004f7220    e82be60500
                          {disp32} mov       ecx, dword ptr [eax + 0x000003a0]              // 0x004f7225    8b88a0030000
                          push               0x1                                            // 0x004f722b    6a01
                          call               _jmp_addr_0x0046c1b0                           // 0x004f722d    e87e4ff7ff

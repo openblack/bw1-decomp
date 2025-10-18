@@ -17,7 +17,7 @@
 .extern _jmp_addr_0x0051fbe0
 .extern _jmp_addr_0x00520b90
 .extern _jmp_addr_0x005254c0
-.extern @GetPlayer__5GGameFUl@12
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern _jmp_addr_0x00555880
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern _jmp_addr_0x0064d750
@@ -2703,7 +2703,7 @@ _jmp_addr_0x00414410:    sub                esp, 0x08                           
                          mov.s              ebp, eax                                      // 0x0041444e    8be8
                          push               0x0                                           // 0x00414450    6a00
                          {disp8} mov        dword ptr [esp + 0x18], ebp                   // 0x00414452    896c2418
-                         call               @GetPlayer__5GGameFUl@12                      // 0x00414456    e855c51300
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x00414456    e855c51300
                          {disp8} fld        dword ptr [esp + 0x24]                        // 0x0041445b    d9442424
                          {disp8} mov        eax, dword ptr [eax + 0x64]                   // 0x0041445f    8b4064
                          fabs                                                             // 0x00414462    d9e1
@@ -3150,7 +3150,7 @@ _jmp_addr_0x0041493c:    mov                dword ptr [ebx], esi                
                          {disp8} lea        edi, dword ptr [ebx + 0x64]                   // 0x00414942    8d7b64
 _jmp_addr_0x00414945:    {disp32} mov       ecx, dword ptr [_game]                        // 0x00414945    8b0d5c19d000
                          push               esi                                           // 0x0041494b    56
-                         call               @GetPlayer__5GGameFUl@12                      // 0x0041494c    e85fc01300
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x0041494c    e85fc01300
                          {disp8} mov        edx, dword ptr [eax + 0x60]                   // 0x00414951    8b5060
                          {disp8} fld        dword ptr [edx + 0x08]                        // 0x00414954    d94208
                          inc                esi                                           // 0x00414957    46
@@ -3191,7 +3191,7 @@ _jmp_addr_0x00414962:    {disp32} mov       al, byte ptr [ebx + 0x00000084]     
                          {disp8} mov        byte ptr [esp + 0x23], al                     // 0x00414a00    88442423
                          {disp8} mov        byte ptr [esp + 0x1e], al                     // 0x00414a04    8844241e
                          {disp8} mov        byte ptr [esp + 0x1f], al                     // 0x00414a08    8844241f
-                         call               @GetPlayer__5GGameFUl@12                      // 0x00414a0c    e89fbf1300
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x00414a0c    e89fbf1300
                          {disp8} mov        ecx, dword ptr [eax + 0x60]                   // 0x00414a11    8b4860
                          {disp8} mov        edx, dword ptr [ecx + 0x08]                   // 0x00414a14    8b5108
                          {disp8} mov        dword ptr [esp + 0x14], edx                   // 0x00414a17    89542414

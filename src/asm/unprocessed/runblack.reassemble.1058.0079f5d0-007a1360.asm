@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x00418a50
 .extern @__ct__7LHPointFfff@20
 .extern _jmp_addr_0x00470af0
-.extern @MyInterface__5GGameFv@4
+.extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005d8a10
 .extern ?StopHelpScripts@GScript@@QAEXXZ
 .extern _jmp_addr_0x006f0a80
@@ -1235,13 +1235,13 @@ _jmp_addr_0x007a0726:    {disp32} fld       dword ptr [data_bytes + 0x43fff0]   
                          {disp8} mov        edx, dword ptr [esp + 0x18]                   // 0x007a078e    8b542418
                          {disp32} mov       dword ptr [data_bytes + 0x440008], edx        // 0x007a0792    89150860e000
                          {disp32} mov       dword ptr [data_bytes + 0x440028], 0x00000000 // 0x007a0798    c7052860e00000000000
-                         call               @MyInterface__5GGameFv@4                      // 0x007a07a2    e8a950dbff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x007a07a2    e8a950dbff
                          test               eax, eax                                      // 0x007a07a7    85c0
                          {disp8} je         _jmp_addr_0x007a07c4                          // 0x007a07a9    7419
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x007a07ab    8b0d5c19d000
                          push               0x80000000                                    // 0x007a07b1    6800000080
                          push               0x2c                                          // 0x007a07b6    6a2c
-                         call               @MyInterface__5GGameFv@4                      // 0x007a07b8    e89350dbff
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x007a07b8    e89350dbff
                          mov.s              ecx, eax                                      // 0x007a07bd    8bc8
                          call               _jmp_addr_0x005d8a10                          // 0x007a07bf    e84c82e3ff
 _jmp_addr_0x007a07c4:    {disp32} mov       dword ptr [esi + 0x0000046c], 0x00000001      // 0x007a07c4    c7866c04000001000000

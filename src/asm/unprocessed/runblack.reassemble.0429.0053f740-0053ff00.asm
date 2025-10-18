@@ -14,7 +14,7 @@
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
 .extern @Destroy__13DialogBoxBaseFv@4
 .extern _HideAll__13DialogBoxBaseFv@0
-.extern @IsMultiplayerGame__5GGameCFv@4
+.extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern _jmp_addr_0x00564160
 .extern _jmp_addr_0x005de5e0
 .extern _jmp_addr_0x005de8b0
@@ -477,7 +477,7 @@ _jmp_addr_0x0053fce8:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x0053fcf5    8b0d5c19d000
                          mov               ebx, dword ptr [esi]                          // 0x0053fcfb    8b1e
                          add               esp, 0x08                                     // 0x0053fcfd    83c408
-                         call              @IsMultiplayerGame__5GGameCFv@4               // 0x0053fd00    e87b320100
+                         call              ?IsMultiplayerGame@GGame@@QBE_NXZ             // 0x0053fd00    e87b320100
                          dec               eax                                           // 0x0053fd05    48
                          neg               eax                                           // 0x0053fd06    f7d8
                          sbb.s             al, al                                        // 0x0053fd08    1ac0
@@ -488,7 +488,7 @@ _jmp_addr_0x0053fce8:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          {disp32} mov      dword ptr [esi + 0x00000238], 0x0053ffb0      // 0x0053fd12    c78638020000b0ff5300
                          {disp32} jmp      _jmp_addr_0x0053fe14                          // 0x0053fd1c    e9f3000000
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x0053fd21    8b0d5c19d000
-                         call              @IsMultiplayerGame__5GGameCFv@4               // 0x0053fd27    e854320100
+                         call              ?IsMultiplayerGame@GGame@@QBE_NXZ             // 0x0053fd27    e854320100
                          test              eax, eax                                      // 0x0053fd2c    85c0
                          {disp32} mov      eax, dword ptr [data_bytes + 0x351cac]        // 0x0053fd2e    a1ac7cd100
                          {disp8} jne       _jmp_addr_0x0053fd51                          // 0x0053fd33    751c
@@ -558,7 +558,7 @@ _jmp_addr_0x0053fe14:    inc               edi                                  
                          mov               edi, 0x00000046                               // 0x0053fe31    bf46000000
                          mov               ebx, 0x00000050                               // 0x0053fe36    bb50000000
                          {disp8} jne       _jmp_addr_0x0053fe46                          // 0x0053fe3b    7509
-                         call              @IsMultiplayerGame__5GGameCFv@4               // 0x0053fe3d    e83e310100
+                         call              ?IsMultiplayerGame@GGame@@QBE_NXZ             // 0x0053fe3d    e83e310100
                          test              eax, eax                                      // 0x0053fe42    85c0
                          {disp8} je        _jmp_addr_0x0053fe55                          // 0x0053fe44    740f
 _jmp_addr_0x0053fe46:    mov               ebx, 0x00000064                               // 0x0053fe46    bb64000000

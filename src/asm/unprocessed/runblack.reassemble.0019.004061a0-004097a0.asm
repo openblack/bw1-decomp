@@ -37,8 +37,8 @@
 .extern ?GetDiscipleStateIfInteractedWith@MultiMapFixed@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z
 .extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
 .extern @Load__13MultiMapFixedFR10GameOSFile@12
-.extern @GetCamera__5GGameFv@4
-.extern @MyInterface__5GGameFv@4
+.extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
+.extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x00561e10
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
@@ -1303,13 +1303,13 @@ _jmp_addr_0x004082f0:    {disp32} mov       ecx, dword ptr [_global]            
                          push               0x0                                           // 0x0040830a    6a00
                          call               _jmp_addr_0x00429da0                          // 0x0040830c    e88f1a0200
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00408311    8b0d5c19d000
-                         call               @MyInterface__5GGameFv@4                      // 0x00408317    e834d51400
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x00408317    e834d51400
                          test               eax, eax                                      // 0x0040831c    85c0
                          {disp8} je         _jmp_addr_0x00408339                          // 0x0040831e    7419
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00408320    8b0d5c19d000
                          push               0x80000000                                    // 0x00408326    6800000080
                          push               0x2c                                          // 0x0040832b    6a2c
-                         call               @MyInterface__5GGameFv@4                      // 0x0040832d    e81ed51400
+                         call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x0040832d    e81ed51400
                          mov.s              ecx, eax                                      // 0x00408332    8bc8
                          call               _jmp_addr_0x005d8a10                          // 0x00408334    e8d7061d00
 _jmp_addr_0x00408339:    ret                                                              // 0x00408339    c3

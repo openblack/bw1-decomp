@@ -10,7 +10,7 @@
 .extern _jmp_addr_0x004c9fe0
 .extern _jmp_addr_0x004cb410
 .extern _jmp_addr_0x004e1e20
-.extern @IsMultiplayerGame__5GGameCFv@4
+.extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern _jmp_addr_0x005c6740
 .extern _StartScript__7GScriptFPc@4
 .extern _jmp_addr_0x006f69f0
@@ -796,7 +796,7 @@ _jmp_addr_0x004caa75:    add                esp, 0x08                           
                          push               0x009dd0a4                                    // 0x004cab02    68a4d09d00
                          call               _StartScript__7GScriptFPc@4                   // 0x004cab07    e8040c2200
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x004cab0c    8b0d5c19d000
-                         call               @IsMultiplayerGame__5GGameCFv@4               // 0x004cab12    e869840800
+                         call               ?IsMultiplayerGame@GGame@@QBE_NXZ             // 0x004cab12    e869840800
                          test               eax, eax                                      // 0x004cab17    85c0
                          {disp8} jne        _jmp_addr_0x004cab2f                          // 0x004cab19    7514
                          {disp8} mov        ecx, dword ptr [esp + 0x0c]                   // 0x004cab1b    8b4c240c
@@ -1179,7 +1179,7 @@ _jmp_addr_0x004caead:    {disp8} mov        dword ptr [esp + 0x04], 0x457ff000  
                          push               0x009dd0a4                                    // 0x004caf3e    68a4d09d00
                          call               _StartScript__7GScriptFPc@4                   // 0x004caf43    e8c8072200
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x004caf48    8b0d5c19d000
-                         call               @IsMultiplayerGame__5GGameCFv@4               // 0x004caf4e    e82d800800
+                         call               ?IsMultiplayerGame@GGame@@QBE_NXZ             // 0x004caf4e    e82d800800
                          test               eax, eax                                      // 0x004caf53    85c0
                          {disp8} jne        _jmp_addr_0x004caf6b                          // 0x004caf55    7514
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x004caf57    8b44240c
