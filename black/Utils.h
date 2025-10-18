@@ -10,7 +10,7 @@
 struct JustMapXZ;
 struct MapCoords;
 
-// win1.41 00605cd0 mac 10049550 GUtils::GetDistanceInMetres_2(MapCoords const &, MapCoords const &)
+// win1.41 00605cd0 mac inlined GUtils::GetDistanceInMetres_2(MapCoords const &, MapCoords const &)
 float __cdecl GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2(const struct MapCoords* this, const struct MapCoords* other);
 // win1.41 0074ccb0 mac 100495f0 GUtils::GetDistance(MapCoords const &, MapCoords const &)
 void __cdecl GetDistance__6GUtilsFRC9MapCoordsRC9MapCoords(struct MapCoords* param_1, struct MapCoords* param_2);

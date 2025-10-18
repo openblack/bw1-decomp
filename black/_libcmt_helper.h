@@ -4,9 +4,9 @@
 #include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint32_t */
 
-// win1.41 007c64ee mac 106203fc operator new(unsigned long)
+// win1.41 007db790 mac 106203fc operator new(unsigned long)
 void* __cdecl operator_new(size_t size);
-// win1.41 007db790 mac 106203fc operator new(unsigned long, const char*, uint32_t)
+// win1.41 007c64ee mac inlined operator new(unsigned long, const char*, uint32_t)
 void* __cdecl __nw__FUl(size_t size, const char* file_name, uint32_t line);
 // win1.41 007aee98 mac 1061fbd4 operator delete(void* )
 void __cdecl __dl__FPv(void* address);

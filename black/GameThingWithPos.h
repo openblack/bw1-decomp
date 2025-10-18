@@ -61,7 +61,7 @@ struct GameThingWithPosVftable
   void (__fastcall* GetPhysicsMovementDirection)(struct GameThingWithPos* this, const void* edx, struct LHPoint* pos);
   void (__fastcall* GetInteractPos)(struct GameThingWithPos* this, const void* edx, struct LHPoint* pos);  /* 0x170 */
   bool (__fastcall* IsMoving)(const struct GameThingWithPos* this);
-  bool (__fastcall* IsObjectInMap)(struct GameThingWithPos* this);
+  bool (__fastcall* IsObjectInMap_0)(struct GameThingWithPos* this);
   bool (__fastcall* IsDrowning)(struct GameThingWithPos* this);
   bool (__fastcall* IsCannotBePickedUp)(const struct GameThingWithPos* this);  /* 0x180 */
   uint32_t (__fastcall* GetOverwritePickUpToolTip)(struct GameThingWithPos* this);
@@ -326,8 +326,6 @@ extern const struct GameThingWithPosVftable __vt__16GameThingWithPos asm("??_7Ga
 
 // win1.41 0055d050 mac 101bb2c0 GameThingWithPos::GameThingWithPos(void)
 struct GameThingWithPos* __fastcall __ct__16GameThingWithPosFv(struct GameThingWithPos* this);
-// win1.41 0055d050 mac inlined GameThingWithPos::GameThingWithPos(MapCoords const &)
-struct GameThingWithPos* __fastcall __ct__16GameThingWithPosFRC9MapCoords(struct GameThingWithPos* this, const void* edx, const struct MapCoords* coords);
 
 // Non-virtual Destructors
 

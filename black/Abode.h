@@ -204,8 +204,8 @@ void __fastcall DrawPercentFull__5AbodeFi(struct Abode* this, const void* edx, i
 struct MapCoords* __fastcall FUN_00407230__5AbodeFb(struct Abode* this, const void* edx, struct MapCoords* coords, bool param_2) asm("?FUN_00407230@Abode@@QAEPAUMapCoords@@_N@Z");
 // win1.41 004072e0 mac 1000cd50 Abode::GetPosOutside(float, float, float)
 struct MapCoords* __fastcall GetPosOutside__5AbodeFfff(struct Abode* this, const void* edx, struct MapCoords* coords, float param_2, float param_3, float param_4) asm("?GetPosOutside@Abode@@QAEPAUMapCoords@@PAU2@MMM@Z");
-// win1.41 004073c0 mac inlined Abode::FUN_004073c0(GPlayer *)
-void __fastcall FUN_004073c0__5AbodeFP7GPlayer(struct Abode* this, const void* edx, struct GPlayer* param_1) asm("?FUN_004073c0@Abode@@UAEXPAVGPlayer@@@Z");
+// win1.41 004073f0 mac inlined Abode::FUN_004073f0(GPlayer *)
+void __fastcall FUN_004073f0__5AbodeFP7GPlayer(struct Abode* this, const void* edx, struct GPlayer* param_1) asm("?FUN_004073f0@Abode@@UAEXPAVGPlayer@@@Z");
 // win1.41 004074a0 mac 100e7ac0 Abode::CalculateDesireToGainMale(void)
 float __fastcall CalculateDesireToGainMale__5AbodeFv(struct Abode* this) asm("?CalculateDesireToGainMale@Abode@@QAEMXZ");
 // win1.41 00407540 mac 100af0d0 Abode::CalculateDesireToGainVillager(void)

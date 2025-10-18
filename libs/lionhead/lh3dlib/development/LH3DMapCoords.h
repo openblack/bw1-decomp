@@ -40,7 +40,7 @@ void __fastcall SetCellX__13LH3DMapCoordsFs(struct LH3DMapCoords* this, const vo
 void __fastcall SetCellZ__13LH3DMapCoordsFs(struct LH3DMapCoords* this, const void* edx, uint16_t z);
 // win1.41 inlined mac 10049a90 LH3DMapCoords::MapX(void) const
 uint16_t __fastcall MapX__13LH3DMapCoordsCFv(const struct LH3DMapCoords* this);
-// win1.41 inlined mac 100456f0 LH3DMapCoords::MapZ(void) const
+// win1.41 inlined mac 100499b0 LH3DMapCoords::MapZ(void) const
 uint16_t __fastcall MapZ__13LH3DMapCoordsCFv(const struct LH3DMapCoords* this);
 // win1.41 inlined mac 100456f0 LH3DMapCoords::WholeX(void) const
 uint32_t __fastcall WholeX__13LH3DMapCoordsCFv(const struct LH3DMapCoords* this);

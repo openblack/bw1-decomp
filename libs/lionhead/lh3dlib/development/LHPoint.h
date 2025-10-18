@@ -24,7 +24,7 @@ struct Point2D* __fastcall __ct__7Point2DFll(struct Point2D* this, const void* e
 struct Point2D* __fastcall __as__7Point2DFRC7Point2D(struct Point2D* this, const void* edx, const struct Point2D* other);
 // win1.41 00611170 mac inlined Point2D::DotProduct(Point2D&)
 float __fastcall DotProduct__7Point2DRP7Point2D(const struct Point2D* this, const void* edx, const struct Point2D* other);
-// win1.41 00611220 mac 100a8d60 Point2D::operator=(const Point2D&) copy
+// win1.41 00611220 mac inlined Point2D::operator=(const Point2D&) copy
 struct Point2D* __fastcall __as__7Point2DFRC7Point2D2(struct Point2D* this, const void* edx, const struct Point2D* other);
 // win1.41 00611310 mac inlined Point2D::DotProduct(Point2D*)
 float __fastcall DotProduct__7Point2DFP7Point2D(const struct Point2D* this, const void* edx, const struct Point2D* other);
@@ -44,7 +44,7 @@ float __fastcall Cross__7Point2DCFRC7Point2D(const struct Point2D* this, const v
 float __fastcall Normalize__7Point2DFv(struct Point2D* this);
 // win1.41 006115f0 mac 1005ba40 Point2D::GetNormSq(void) const
 float __fastcall GetNormSq__7Point2DFv(const struct Point2D* this);
-// win1.41 0086fda0 mac 1005ba40 Point2D::GetNormSq(void) const copy
+// win1.41 0086fda0 mac inlined Point2D::GetNormSq(void) const copy
 float __fastcall GetNormSq__7Point2DFv2(const struct Point2D* this);
 // win1.41 006159c0 mac inlined Point2D::operator==(const Point2D&)
 bool __fastcall __eq__7Point2DFRC7Point2D(struct Point2D* this, const void* edx, const struct Point2D* other);

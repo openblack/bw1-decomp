@@ -48,8 +48,6 @@ struct GData* __fastcall __ct__5GDataFv(struct GData* this);
 uint32_t __fastcall Rand__5GDataFl(struct GData* this, const void* edx, uint32_t max, const char* src_file, uint32_t src_line);
 // win1.41 00510750 mac 100c08f0 GData::Reset(void)
 void __fastcall Reset__5GDataFv(struct GData* this);
-// win1.41 006de530 mac inlined GData::Rand(float)
-float __fastcall Rand__5GDataFf(struct GData* this, const void* edx, float scale, const char* src_file, uint32_t src_line);
 
 // Override methods
 

@@ -107,7 +107,7 @@ void __fastcall Draw__9SetupListFbb(struct SetupControl* this, const void* edx, 
 void __fastcall Drag__9SetupListFii(struct SetupControl* this, const void* edx, int x, int y);
 // win1.41 0040a370 mac 10478900 SetupList::MouseDown(int, int, bool)
 void __fastcall MouseDown__9SetupListFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
-// win1.41 0040a3f0 mac 100b4690 SetupList::MouseUp(int, int, bool)
+// win1.41 0040a3f0 mac 100c7610 SetupList::MouseUp(int, int, bool)
 void __fastcall MouseUp__9SetupListFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
 // win1.41 0040a360 mac 100b7170 SetupList::Click(int, int)
 void __fastcall Click__9SetupListFii(struct SetupControl* this, const void* edx, int x, int y);

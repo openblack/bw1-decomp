@@ -43,7 +43,7 @@ struct SetupMultiList* __fastcall __ct__14SetupMultiListFiiiiii(struct SetupMult
 
 // Override methods
 
-// win1.41 0040b560 mac 103f18b0 SetupMultiList::Click(int, int)
+// win1.41 0040b560 mac 103e0950 SetupMultiList::Click(int, int)
 void __fastcall Click__14SetupMultiListFii(struct SetupControl* this, const void* edx, int x, int y);
 // win1.41 0040b4a0 mac 103f18b0 SetupMultiList::~SetupMultiList(void)
 void __fastcall __dt__14SetupMultiListFb(struct SetupControl* this, const void* edx, bool param_1);

@@ -15,6 +15,7 @@ struct GAbodeInfo;
 struct GameThing;
 struct MapCoords;
 struct Town;
+struct TownCentre;
 
 struct PlannedTownCentre
 {
@@ -44,8 +45,8 @@ struct PlannedTownCentre* __cdecl Create__17PlannedTownCentreFRC9MapCoordsPC10GA
 
 // Constructors
 
-// win1.41 00744460 mac 103e51a0 PlannedTownCentre::PlannedTownCentre(MapCoords const &, GAbodeInfo const *, Town *, float, float)
-struct PlannedTownCentre* __fastcall __ct__17PlannedTownCentreFRC9MapCoordsPC10GAbodeInfoP4Townff(struct PlannedTownCentre* this, const void* edx, const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float param_4, float param_5);
+// win1.41 00744460 mac 1055a270 PlannedTownCentre::PlannedTownCentre(TownCentre*)
+struct PlannedTownCentre* __fastcall __ct__17PlannedTownCentreFP10TownCentre(struct PlannedTownCentre* this, const void* edx, const struct TownCentre* town_centre);
 
 // Override methods
 

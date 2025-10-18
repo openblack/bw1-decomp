@@ -345,7 +345,7 @@ const struct AbodeVftable __vt__5Abode = {
   RemoveMapObject__13MultiMapFixedFv,
   InsertMapObjectToCell__11FixedObjectFP7MapCell,
   RemoveMapObjectFromCell__6ObjectFP7MapCell,
-  IsObjectInMap__6ObjectFRC9MapCoords,
+  IsObjectInMap__6ObjectFP7MapCell,
   IsObjectInMapCheck__6ObjectFv,
   MoveMapObject__13MultiMapFixedFRC9MapCoords,
   ActualMoveMapObject__6ObjectFRC9MapCoords,

@@ -713,7 +713,4 @@ float __fastcall GetImpressiveValue__17MissionaryControlFP6LivingP8Reaction(stru
 // win1.41 00756710 mac 105638f0 MissionaryControl::GetText(void)
 const char* __fastcall GetText__17MissionaryControlFv(struct GameThingWithPos* this) asm("?GetText@MissionaryControl@@UAEPBDXZ");
 
-// win1.41 00d09198 mac inlined get_villager_state_table
-struct Villager__StateTable* __cdecl get_villager_state_table(void);
-
 #endif /* BW1_DECOMP_VILLAGER_INCLUDED_H */

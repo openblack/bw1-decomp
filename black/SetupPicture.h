@@ -56,7 +56,7 @@ struct SetupPicture* __fastcall __ct__12SetupPictureFiiiP12LH3DMaterialiibib(str
 
 // win1.41 00410740 mac 102410c0 SetupPicture::SetFocus(bool)
 void __fastcall SetFocus__12SetupPictureFb(struct SetupControl* this, const void* edx, bool focus);
-// win1.41 0040fa20 mac 104081c0 SetupPicture::Draw(bool, bool)
+// win1.41 0040fa20 mac 100ab020 SetupPicture::Draw(bool, bool)
 void __fastcall Draw__12SetupPictureFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
 // win1.41 0040fa10 mac 100e47c0 SetupPicture::Drag(int, int)
 void __fastcall Drag__12SetupPictureFii(struct SetupControl* this, const void* edx, int x, int y);

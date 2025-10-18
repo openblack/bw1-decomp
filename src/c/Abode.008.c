@@ -1617,14 +1617,14 @@ void __fastcall StopBeingFunctional__5AbodeFP7GPlayer(struct Abode* this, const 
     asm("inc                esi");                                           // 0x004073de    46
     asm("push               edx");                                           // 0x004073df    52
     asm("{disp32} mov       dword ptr [eax + 0x00001080], esi");             // 0x004073e0    89b080100000
-    asm("call               ?FUN_004073c0@Abode@@UAEXPAVGPlayer@@@Z");       // 0x004073e6    e805000000
+    asm("call               ?FUN_004073f0@Abode@@UAEXPAVGPlayer@@@Z");       // 0x004073e6    e805000000
     asm("pop                esi");                                           // 0x004073eb    5e
     asm("_jmp_addr_0x004073ec:");
     asm("ret                0x0004");                                        // 0x004073ec    c20400
     __builtin_unreachable();
 }
 
-void __fastcall FUN_004073c0__5AbodeFP7GPlayer(struct Abode* this, const void* edx, struct GPlayer* param_1)
+void __fastcall FUN_004073f0__5AbodeFP7GPlayer(struct Abode* this, const void* edx, struct GPlayer* param_1)
 {
     asm("{disp8} mov        al, byte ptr [ecx + 0x7c]");                     // 0x004073f0    8a417c
     asm("test               al, 0x40");                                      // 0x004073f3    a840

@@ -816,8 +816,6 @@ bool __fastcall IsChild__6LivingFv(struct Living* this) asm("?IsChild@Living@@UA
 void __fastcall GetFleeingPositionFromMovingObject__6LivingFP9MapCoordsP16GameThingWithPosf(struct Living* this, const void* edx, struct MapCoords* param_1, struct GameThingWithPos* param_2, float param_3) asm("?GetFleeingPositionFromMovingObject@Living@@UAEXPAUMapCoords@@PAVGameThingWithPos@@M@Z");
 // win1.41 005f2010 mac 10386800 Living::GetFleeingPositionFromStationaryObject(MapCoords *, GameThingWithPos *, float)
 void __fastcall GetFleeingPositionFromStationaryObject__6LivingFP9MapCoordsP16GameThingWithPosf(struct Living* this, const void* edx, struct MapCoords* param_1, struct GameThingWithPos* param_2, float param_3) asm("?GetFleeingPositionFromStationaryObject@Living@@UAEXPAUMapCoords@@PAVGameThingWithPos@@M@Z");
-// win1.41 00751dd0 mac 1004ec00 Living::GetFinalState(void)
-enum VILLAGER_STATES __fastcall GetFinalState__6LivingCFv(const struct Living* this);
 // win1.41 004749e0 mac 1012f950 Living::GetFinalState( const(void))
 enum VILLAGER_STATES __fastcall GetFinalState__6LivingCFv(const struct Living* this) asm("?GetFinalState@Living@@UBE?AW4VILLAGER_STATES@@XZ");
 // win1.41 005ef930 mac 103841e0 Living::RemoveFromDance(int)

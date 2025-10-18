@@ -51,7 +51,7 @@ extern const struct SetupControlVftable __vt__9SetupEdit asm("??_7SetupEdit@@6B@
 
 // Constructors
 
-// win1.41 0040c220 mac 1014cca0 SetupEdit::SetupEdit(int, int, int, int, int, wchar_t *, int)
+// win1.41 0040c220 mac 101bc370 SetupEdit::SetupEdit(int, int, int, int, int, wchar_t *, int)
 struct SetupEdit* __fastcall __ct__9SetupEditFiiiiiPwi(struct SetupEdit* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label, bool editable);
 
 // Non-virtual methods

@@ -99,7 +99,7 @@ void __fastcall SetFocus__12SetupControlFb(struct SetupControl* this, const void
 bool __fastcall HitTest__12SetupControlFii(struct SetupControl* this, const void* edx, int x, int y);
 // win1.41 00409340 mac inlined SetupControl::Drag(int, int)
 void __fastcall Drag__12SetupControlFii(struct SetupControl* this, const void* edx, int x, int y);
-// win1.41 00409350 mac 103dbde0 SetupControl::MouseDown(int, int, bool)
+// win1.41 00409350 mac 100a6190 SetupControl::MouseDown(int, int, bool)
 void __fastcall MouseDown__12SetupControlFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
 // win1.41 00409360 mac 104faf30 SetupControl::MouseUp(int, int, bool)
 void __fastcall MouseUp__12SetupControlFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);

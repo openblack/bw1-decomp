@@ -82,13 +82,13 @@ uint32_t __fastcall GetSizeEMetricsData__8LH3DMeshFv(struct LH3DMesh* this) asm(
 uint32_t __fastcall GetSizeEBone__8LH3DMeshFv(struct LH3DMesh* this) asm("?GetSizeEBone@LH3DMesh@@QAEIXZ");
 // win1.41 00403a30 mac 103689c0 LH3DMesh::GetSizeTnLData(void)
 uint32_t __fastcall GetSizeTnLData__8LH3DMeshFv(struct LH3DMesh* this) asm("?GetSizeTnLData@LH3DMesh@@QAEIXZ");
-// win1.41 00403b90 mac 1000e400 LH3DMesh::GetSizeFootprintData_dup1(void)
+// win1.41 00403b90 mac inlined LH3DMesh::GetSizeFootprintData_dup1(void)
 uint32_t __fastcall GetSizeFootprintData_dup1__8LH3DMeshFv(struct LH3DMesh* this) asm("?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ");
-// win1.41 00403bb0 mac 1000e360 LH3DMesh::GetSizeUV2Data_dup1(void)
+// win1.41 00403bb0 mac inlined LH3DMesh::GetSizeUV2Data_dup1(void)
 uint32_t __fastcall GetSizeUV2Data_dup1__8LH3DMeshFv(struct LH3DMesh* this) asm("?GetSizeUV2Data_dup1@LH3DMesh@@QAEIXZ");
-// win1.41 00403be0 mac 1000e2b0 LH3DMesh::GetSizeNameData_dup1(void)
+// win1.41 00403be0 mac inlined LH3DMesh::GetSizeNameData_dup1(void)
 uint32_t __fastcall GetSizeNameData_dup1__8LH3DMeshFv(struct LH3DMesh* this) asm("?GetSizeNameData_dup1@LH3DMesh@@QAEIXZ");
-// win1.41 00403c50 mac 100242d0 LH3DMesh::GetSizeEMetricsData_dup1(void)
+// win1.41 00403c50 mac inlined LH3DMesh::GetSizeEMetricsData_dup1(void)
 uint32_t __fastcall GetSizeEMetricsData_dup1__8LH3DMeshFv(struct LH3DMesh* this) asm("?GetSizeEMetricsData_dup1@LH3DMesh@@QAEIXZ");
 // win1.41 00806d00 mac 1001165c LH3DMesh::Release(void)
 void __fastcall Release__8LH3DMeshFv(struct LH3DMesh* this) asm("?Release@LH3DMesh@@QAEXXZ");

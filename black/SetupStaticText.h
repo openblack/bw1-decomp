@@ -3,7 +3,6 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <uchar.h> /* For char16_t */
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
@@ -32,11 +31,6 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15SetupStaticText asm("??_R4SetupStaticText@@6B@");
 // win1.41 008ab5c0 mac 107312e8 SetupStaticText::`vftable'
 extern const struct SetupControlVftable __vt__15SetupStaticText asm("??_7SetupStaticText@@6B@");
-
-// Constructors
-
-// win1.41 inlined mac 10327f40 SetupStaticText::SetupStaticText(int, int, int, int, int, wchar_t *, TEXTJUSTIFY)
-struct SetupStaticText* __fastcall __ct__15SetupStaticTextFiiiiiPw11TEXTJUSTIFY(struct SetupStaticText* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label, enum TEXTJUSTIFY text_justify);
 
 // Override methods
 
