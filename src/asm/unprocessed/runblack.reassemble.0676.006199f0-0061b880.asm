@@ -71,8 +71,8 @@
 .globl @ReadBinaryNew__11LH3DAnimSetFP6LHFileP8AnimInfoP8AnimInfo@20
 .globl _jmp_addr_0x00619c90
 .globl _jmp_addr_0x00619da0
-.globl _jmp_addr_0x0061a110
-.globl _jmp_addr_0x0061a150
+.globl ?ProcessPosition@CMouse@@QAEXXZ
+.globl ?ProcessButtons@CMouse@@QAEXXZ
 .globl _jmp_addr_0x0061a660
 .globl _jmp_addr_0x0061a9f0
 .globl _jmp_addr_0x0061acf0
@@ -686,7 +686,8 @@ _jmp_addr_0x0061a100:    push              0x00407870                           
                          nop                                                                    // 0x0061a10d    90
                          nop                                                                    // 0x0061a10e    90
                          nop                                                                    // 0x0061a10f    90
-_jmp_addr_0x0061a110:    sub               esp, 0x08                                            // 0x0061a110    83ec08
+?ProcessPosition@CMouse@@QAEXXZ:
+                         sub               esp, 0x08                                            // 0x0061a110    83ec08
                          {disp32} mov      eax, dword ptr [data_bytes + 0x4bf2c0]               // 0x0061a113    a1c052e800
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x4bf2c4]               // 0x0061a118    8b0dc452e800
                          {disp8} mov       dword ptr [esp + 0x00], eax                          // 0x0061a11e    89442400
@@ -703,7 +704,8 @@ _jmp_addr_0x0061a110:    sub               esp, 0x08                            
                          add               esp, 0x08                                            // 0x0061a147    83c408
                          ret                                                                    // 0x0061a14a    c3
                          call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                                 // 0x0061a14b    e8a976deff
-_jmp_addr_0x0061a150:    {disp32} mov      al, byte ptr [rdata_bytes + 0xf8620]                 // 0x0061a150    a020169a00
+?ProcessButtons@CMouse@@QAEXXZ:
+                         {disp32} mov      al, byte ptr [rdata_bytes + 0xf8620]                 // 0x0061a150    a020169a00
                          push              ebp                                                  // 0x0061a155    55
                          push              esi                                                  // 0x0061a156    56
                          push              edi                                                  // 0x0061a157    57

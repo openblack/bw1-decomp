@@ -91,6 +91,13 @@ struct CMouse
 };
 static_assert(sizeof(struct CMouse) == 0x4, "Data type is of wrong size");
 
+// Non-virtual methods
+
+// win1.41 0061a150 mac 10090d20 CMouse::ProcessButtons(void)
+void __fastcall ProcessButtons__6CMouseFv(struct CMouse* this) asm("?ProcessButtons@CMouse@@QAEXXZ");
+// win1.41 0061a110 mac 10007d80 CMouse::ProcessPosition(void)
+void __fastcall ProcessPosition__6CMouseFv(struct CMouse* this) asm("?ProcessPosition@CMouse@@QAEXXZ");
+
 struct ControlKey
 {
   enum LH_KEY key;  /* 0x0 */

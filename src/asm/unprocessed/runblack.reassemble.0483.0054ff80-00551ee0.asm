@@ -31,7 +31,7 @@
 .extern _jmp_addr_0x005db710
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005e1bf0
-.extern _jmp_addr_0x0061a110
+.extern ?ProcessPosition@CMouse@@QAEXXZ
 .extern _jmp_addr_0x00634640
 .extern _jmp_addr_0x0063c3f0
 .extern _jmp_addr_0x00649110
