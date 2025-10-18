@@ -85,6 +85,12 @@ static const char* BINDABLE_ACTIONS_strs[_BINDABLE_ACTIONS_COUNT] = {
   "_BINDABLE_ACTION_SIZE",
 };
 
+struct CMouse
+{
+  uint32_t field_0x0;
+};
+static_assert(sizeof(struct CMouse) == 0x4, "Data type is of wrong size");
+
 struct ControlKey
 {
   enum LH_KEY key;  /* 0x0 */
