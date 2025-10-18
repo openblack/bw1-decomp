@@ -49,6 +49,20 @@ python scripts/msvc_mangler.py "class Foo { public: void Bar(int fuz) {} };"
 
 This script uses clang to compile classes get get function signatures in their mangled form as if they were compiled on msvc.
 
+## Cross mangler
+
+```bash
+python scripts/msvc_mangler.py extracted_reversing_data_bw_141.json
+void __fastcall ProcessGraphicsEngine__5GGameFUlUl
+?ProcessGraphicsEngine@GGame@@QAEXKK@Z
+GPlayer* __fastcall GetPlayer__5GGameFUl
+?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+bool __fastcall IsMultiplayerGame__5GGameCFv
+?IsMultiplayerGame@GGame@@QBE_NXZ
+```
+
+This script uses the [Mac unmangler] and [Msvc mangler] to go from the mac mangling style to the msvc style. Run on its own, it's tuned to easily copy from the return type (without struct, enum and union) to the function name in a header to get a mangled form to put in an asm block.
+
 ## Repository Function Name Replacer
 
 ```bash
@@ -73,7 +87,7 @@ The script is designed to work with the reversing workflow, enabling quick bulk 
 python scripts/insert_functions.py manual_analysis_functions.csv extracted_reversing_data_bw_141.json
 ```
 
-This script uses the [Mac unmangler] and [Msvc mangler] to quickly insert new functions from manual analysis into the reversing database (from `scripts/headers/analyze_headers.py`) which can then be added to the headers using `scripts/headers/bw1_decomp_gen/generate_headers.py`. It also uses the [Repository Function Name Replacer] to propagate function names throughout the codebase.
+This script uses the [Cross mangler] to quickly insert new functions from manual analysis into the reversing database (from `scripts/headers/analyze_headers.py`) which can then be added to the headers using `scripts/headers/bw1_decomp_gen/generate_headers.py`. It also uses the [Repository Function Name Replacer] to propagate function names throughout the codebase.
 
 The script is meant to be run after cross referencing the mac version which has function names with the windows version which does not. The function signature is inferenced using [Mac unmangler] but needs manual input of the best guess for the return type.
 
