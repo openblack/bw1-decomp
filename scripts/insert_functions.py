@@ -30,6 +30,12 @@ def fix_mac_mangled(input: str) -> str:
     return input.lstrip(".")
 
 
+def fix_addr(input: str) -> int:
+    if input.lower() in {'inline', 'inlined', "-1", "null", "none"}:
+        return -1
+    return int(input, 16)
+
+
 def insert_functions_from_csv(csv_path: Path, json_path: Path):
     with json_path.open() as f:
         data = json.load(f)
@@ -39,8 +45,8 @@ def insert_functions_from_csv(csv_path: Path, json_path: Path):
     with csv_path.open() as f:
         for line in csv.DictReader(f.readlines()):
             is_virtual = False  # Normally, all virtual functions are named
-            win_addr = int(line['win addr'], 16)
-            mac_addr = int(line['mac addr'], 16)
+            win_addr = fix_addr(line['win addr'])
+            mac_addr = fix_addr(line['mac addr'])
             call_type = fix_calltype(line['call type'])
             mac_mangled = fix_mac_mangled(line['mac mangled name'])
             return_type = line['return type']
@@ -98,7 +104,8 @@ public:
             )
             new_entries.append(entry)
 
-            set_function_name_in_repo_files(win_addr, mangled_name)
+            if win_addr != -1:
+                set_function_name_in_repo_files(win_addr, mangled_name)
 
     data['functions'] += new_entries
     with json_path.open("w") as f:
