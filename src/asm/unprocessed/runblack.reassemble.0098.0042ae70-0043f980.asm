@@ -33,7 +33,7 @@
 .extern @__ct__6ForestFRC9MapCoordsUl@16
 .extern _jmp_addr_0x0053b4a0
 .extern @GetCamera__5GGameFv@4
-.extern _jmp_addr_0x005508d0
+.extern ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern @GetNextPlayerAndNeutral__5GGameFP7GPlayer@12
 .extern @GetPlayer__5GGameFUl@12
 .extern @MyInterface__5GGameFv@4

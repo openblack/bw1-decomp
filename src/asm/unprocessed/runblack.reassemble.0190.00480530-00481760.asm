@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x00617a80
 .extern @GetAnim__9MorphableFll@16
 .extern _jmp_addr_0x00646950
-.extern _jmp_addr_0x0064aac0
+.extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
 .extern _jmp_addr_0x006de570
 .extern _jmp_addr_0x007120e0
 .extern _jmp_addr_0x00712330
@@ -145,7 +145,7 @@ _jmp_addr_0x004805f0:    {disp32} fstp      dword ptr [esi + 0x00004838]        
                          push               0x0                                      // 0x00480665    6a00
                          call               dword ptr [edx + 0x1c]                   // 0x00480667    ff521c
                          mov.s              ecx, eax                                 // 0x0048066a    8bc8
-                         call               _jmp_addr_0x0064aac0                     // 0x0048066c    e84fa41c00
+                         call               ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z                     // 0x0048066c    e84fa41c00
                          mov.s              edi, eax                                 // 0x00480671    8bf8
                          test               edi, edi                                 // 0x00480673    85ff
                          {disp8} je         _jmp_addr_0x004806a9                     // 0x00480675    7432
@@ -161,7 +161,7 @@ _jmp_addr_0x00480690:    {disp32} mov       ecx, dword ptr [esi + 0x00004834]   
                          push               edi                                      // 0x00480698    57
                          call               dword ptr [edx + 0x1c]                   // 0x00480699    ff521c
                          mov.s              ecx, eax                                 // 0x0048069c    8bc8
-                         call               _jmp_addr_0x0064aac0                     // 0x0048069e    e81da41c00
+                         call               ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z                     // 0x0048069e    e81da41c00
                          mov.s              edi, eax                                 // 0x004806a3    8bf8
                          test               edi, edi                                 // 0x004806a5    85ff
                          {disp8} jne        _jmp_addr_0x00480677                     // 0x004806a7    75ce

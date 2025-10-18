@@ -49,7 +49,7 @@
 .extern _jmp_addr_0x005d8a80
 .extern _jmp_addr_0x005d8d00
 .extern _jmp_addr_0x005dc130
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005feda0
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x0064bab0
@@ -2423,7 +2423,7 @@ _jmp_addr_0x00688200:    push               ecx                                 
                          test               eax, eax                                      // 0x0068820f    85c0
                          {disp8} je         _jmp_addr_0x00688234                          // 0x00688211    7421
                          mov.s              ecx, eax                                      // 0x00688213    8bc8
-                         call               _jmp_addr_0x005dc8b0                          // 0x00688215    e89646f5ff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x00688215    e89646f5ff
                          {disp32} mov       eax, dword ptr [eax + 0x000003a0]             // 0x0068821a    8b80a0030000
                          {disp32} mov       ecx, dword ptr [eax + 0x0000482c]             // 0x00688220    8b882c480000
                          test               ecx, ecx                                      // 0x00688226    85c9
@@ -3450,7 +3450,7 @@ _jmp_addr_0x00688f93:    {disp8} fild       dword ptr [edi + 0x70]              
                          test               eax, eax                                      // 0x00688fa9    85c0
                          {disp32} je        _jmp_addr_0x00689086                          // 0x00688fab    0f84d5000000
                          mov.s              ecx, eax                                      // 0x00688fb1    8bc8
-                         call               _jmp_addr_0x005dc8b0                          // 0x00688fb3    e8f838f5ff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x00688fb3    e8f838f5ff
                          {disp32} mov       eax, dword ptr [eax + 0x000003a0]             // 0x00688fb8    8b80a0030000
                          {disp32} mov       ebx, dword ptr [eax + 0x0000482c]             // 0x00688fbe    8b982c480000
                          test               ebx, ebx                                      // 0x00688fc4    85db

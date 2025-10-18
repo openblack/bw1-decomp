@@ -35,7 +35,7 @@
 .extern _jmp_addr_0x005c9c60
 .extern _jmp_addr_0x005dc130
 .extern _jmp_addr_0x005dc870
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005e6540
 .extern _jmp_addr_0x005fa8b0
 .extern _jmp_addr_0x005fa9f0
@@ -2971,7 +2971,7 @@ _jmp_addr_0x0066e668:    {disp8} mov        eax, dword ptr [esp + 0x20]         
                          call               _jmp_addr_0x0068fa50                          // 0x0066e6a8    e8a3130200
                          add                esp, 0x04                                     // 0x0066e6ad    83c404
 _jmp_addr_0x0066e6b0:    mov.s              ecx, ebx                                      // 0x0066e6b0    8bcb
-                         call               _jmp_addr_0x005dc8b0                          // 0x0066e6b2    e8f9e1f6ff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x0066e6b2    e8f9e1f6ff
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0066e6b7    8b0d5c19d000
                          mov.s              esi, eax                                      // 0x0066e6bd    8bf0
                          call               @MyInterface__5GGameFv@4                      // 0x0066e6bf    e88c71eeff

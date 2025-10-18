@@ -13,7 +13,7 @@
 .extern @InsertString__9SetupListFiPw@16
 .extern @SetNum__9HLineDataFi@12
 .extern _DrawTextWrap__10SetupThingFiiiiibPwiP9LH3DColorbb
-.extern _jmp_addr_0x005508d0
+.extern ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern _jmp_addr_0x00550a80
 .extern _jmp_addr_0x00555130
 .extern _jmp_addr_0x00566850
@@ -52,7 +52,7 @@ _jmp_addr_0x0056a6d0:    {disp32} mov       ecx, dword ptr [_game]              
                          push               edi                                           // 0x0056a6d8    57
                          xor.s              edi, edi                                      // 0x0056a6d9    33ff
                          push               edi                                           // 0x0056a6db    57
-                         call               _jmp_addr_0x005508d0                          // 0x0056a6dc    e8ef61feff
+                         call               ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z                          // 0x0056a6dc    e8ef61feff
                          test               eax, eax                                      // 0x0056a6e1    85c0
                          {disp8} mov        esi, dword ptr [esp + 0x10]                   // 0x0056a6e3    8b742410
                          mov                ebx, 0x00000001                               // 0x0056a6e7    bb01000000
@@ -75,7 +75,7 @@ _jmp_addr_0x0056a71e:    {disp32} mov       ecx, dword ptr [eax + 0x00000a44]   
                          {disp32} inc       dword ptr [ecx + 0x00001064]                  // 0x0056a724    ff8164100000
 _jmp_addr_0x0056a72a:    {disp32} mov       ecx, dword ptr [_game]                        // 0x0056a72a    8b0d5c19d000
                          push               eax                                           // 0x0056a730    50
-                         call               _jmp_addr_0x005508d0                          // 0x0056a731    e89a61feff
+                         call               ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z                          // 0x0056a731    e89a61feff
                          test               eax, eax                                      // 0x0056a736    85c0
                          {disp8} jne        _jmp_addr_0x0056a6ee                          // 0x0056a738    75b4
 _jmp_addr_0x0056a73a:    cmp                dword ptr [esi + 0x000008e0], ebx             // 0x0056a73a    399ee0080000

@@ -106,7 +106,7 @@
 .globl _jmp_addr_0x0050f7b0
 .globl _jmp_addr_0x0050f960
 .globl @__ct__5GDataFv@4
-.globl _jmp_addr_0x00510630
+.globl ?SetupDataTables@GGame@@QAEXXZ
 .globl @Rand__5GDataFl@20
 .globl _jmp_addr_0x005106b0
 .globl @Reset__5GDataFv@4
@@ -3024,7 +3024,8 @@ _jmp_addr_0x005105dd:    {disp8} mov        ecx, dword ptr [ebx + -0x04]        
 _jmp_addr_0x0051062a:    mov.s              eax, esi                                      // 0x0051062a    8bc6
                          pop                esi                                           // 0x0051062c    5e
                          ret                0x0004                                        // 0x0051062d    c20400
-_jmp_addr_0x00510630:    xor.s              ecx, ecx                                      // 0x00510630    33c9
+?SetupDataTables@GGame@@QAEXXZ:
+                         xor.s              ecx, ecx                                      // 0x00510630    33c9
                          mov                eax, 0x00d41678                               // 0x00510632    b87816d400
 _jmp_addr_0x00510637:    mov                dword ptr [eax], ecx                          // 0x00510637    8908
                          add                eax, 0x00000100                               // 0x00510639    0500010000

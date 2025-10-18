@@ -49,5 +49,7 @@ void __cdecl DrawAndClip__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl(D3DPRIMITIVETYP
 void __cdecl DrawAndClip2D__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl(D3DPRIMITIVETYPE primitive_type, uint32_t fvf, D3DTLVERTEX* vertices, uint32_t vertex_count, uint16_t* indices, uint32_t index_count);
 // win1.41 006419f0 mac 100d50d0 stop_draw_sprite_to_screen(void)
 void __cdecl stop_draw_sprite_to_screen__Fv(void);
+// win1.41 0054c160 mac inlined RenderLoadingFrame(char *)
+void __cdecl RenderLoadingFrame__FPc(char* param_1) asm("?RenderLoadingFrame@@YAXPAD@Z");
 
 #endif /* BW1_DECOMP_LH3D_RENDER_INCLUDED_H */

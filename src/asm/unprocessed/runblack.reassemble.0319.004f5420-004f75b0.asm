@@ -45,7 +45,7 @@
 .extern _jmp_addr_0x004f8ca0
 .extern _jmp_addr_0x004ff240
 .extern _jmp_addr_0x004ff5c0
-.extern _jmp_addr_0x005508a0
+.extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern _jmp_addr_0x00550ba0
 .extern @MyInterface__5GGameFv@4
 .extern _jmp_addr_0x00555880
@@ -1964,14 +1964,14 @@ _jmp_addr_0x004f6610:    {disp32} mov       ecx, dword ptr [_game]              
                          push               edi                                            // 0x004f6617    57
                          xor.s              edi, edi                                       // 0x004f6618    33ff
                          push               edi                                            // 0x004f661a    57
-                         call               _jmp_addr_0x005508a0                           // 0x004f661b    e880a20500
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z   // 0x004f661b    e880a20500
                          cmp.s              eax, edi                                       // 0x004f6620    3bc7
                          {disp8} je         _jmp_addr_0x004f663c                           // 0x004f6622    7418
 _jmp_addr_0x004f6624:    cmp                dword ptr [eax + 0x00000a4c], edi              // 0x004f6624    39b84c0a0000
                          {disp8} je         _jmp_addr_0x004f663c                           // 0x004f662a    7410
                          {disp32} mov       ecx, dword ptr [_game]                         // 0x004f662c    8b0d5c19d000
                          push               eax                                            // 0x004f6632    50
-                         call               _jmp_addr_0x005508a0                           // 0x004f6633    e868a20500
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z   // 0x004f6633    e868a20500
                          cmp.s              eax, edi                                       // 0x004f6638    3bc7
                          {disp8} jne        _jmp_addr_0x004f6624                           // 0x004f663a    75e8
 _jmp_addr_0x004f663c:    push               eax                                            // 0x004f663c    50

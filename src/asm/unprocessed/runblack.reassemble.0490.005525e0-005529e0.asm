@@ -7,12 +7,12 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x005508a0
+.extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern _jmp_addr_0x005529e0
 .extern @MyInterface__5GGameFv@4
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00635450
-.extern _jmp_addr_0x0064aac0
+.extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
 .extern @GetPlayer3DColor__7GPlayerFv@12
 .extern _jmp_addr_0x006de570
 .extern _jmp_addr_0x00845d30
@@ -82,7 +82,7 @@ _GetTribe__5GGameF10TRIBE_TYPE@4:    {disp8} mov      eax, dword ptr [esp + 0x04
                          {disp32} je      _jmp_addr_0x005529c7                    // 0x0055266b    0f8456030000
                          push             0x0                                     // 0x00552671    6a00
                          mov.s            ecx, esi                                // 0x00552673    8bce
-                         call             _jmp_addr_0x005508a0                    // 0x00552675    e826e2ffff
+                         call             ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z                    // 0x00552675    e826e2ffff
                          mov.s            ebp, eax                                // 0x0055267a    8be8
                          test             ebp, ebp                                // 0x0055267c    85ed
                          {disp32} je      _jmp_addr_0x005529c7                    // 0x0055267e    0f8443030000
@@ -97,7 +97,7 @@ _jmp_addr_0x00552684:    {disp32} mov     eax, dword ptr [ebp + 0x000008e0]     
                          {disp32} je      _jmp_addr_0x005529b5                    // 0x005526a5    0f840a030000
 _jmp_addr_0x005526ab:    push             0x0                                     // 0x005526ab    6a00
                          mov.s            ecx, ebp                                // 0x005526ad    8bcd
-                         call             _jmp_addr_0x0064aac0                    // 0x005526af    e80c840f00
+                         call             ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z                    // 0x005526af    e80c840f00
                          mov.s            ebx, eax                                // 0x005526b4    8bd8
                          test             ebx, ebx                                // 0x005526b6    85db
                          {disp32} je      _jmp_addr_0x005529b5                    // 0x005526b8    0f84f7020000
@@ -108,7 +108,7 @@ _jmp_addr_0x005526be:    mov.s            ecx, esi                              
                          cmp              dword ptr [ebp + 0x000008e0], 0x01      // 0x005526d1    83bde008000001
                          {disp8} jne      _jmp_addr_0x005526ef                    // 0x005526d8    7515
                          mov.s            ecx, ebx                                // 0x005526da    8bcb
-                         call             _jmp_addr_0x005dc8b0                    // 0x005526dc    e8cfa10800
+                         call             ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                    // 0x005526dc    e8cfa10800
                          {disp32} mov     ecx, dword ptr [eax + 0x000001bc]       // 0x005526e1    8b88bc010000
                          test             ecx, ecx                                // 0x005526e7    85c9
                          {disp32} je      _jmp_addr_0x0055299f                    // 0x005526e9    0f84b0020000
@@ -255,7 +255,7 @@ _jmp_addr_0x005526ef:    {disp32} mov     edx, dword ptr [ebx + 0x000000b0]     
                          {disp8} jmp      _jmp_addr_0x00552924                    // 0x00552920    eb02
 _jmp_addr_0x00552922:    mov.s            edi, esi                                // 0x00552922    8bfe
 _jmp_addr_0x00552924:    mov.s            ecx, ebx                                // 0x00552924    8bcb
-                         call             _jmp_addr_0x005dc8b0                    // 0x00552926    e8859f0800
+                         call             ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                    // 0x00552926    e8859f0800
                          {disp8} mov      ecx, dword ptr [eax + 0x2c]             // 0x0055292b    8b482c
                          test             ecx, ecx                                // 0x0055292e    85c9
                          {disp8} je       _jmp_addr_0x00552969                    // 0x00552930    7437
@@ -274,11 +274,11 @@ _jmp_addr_0x00552924:    mov.s            ecx, ebx                              
                          {disp8} lea      edx, dword ptr [esp + 0x28]             // 0x00552955    8d542428
                          push             edx                                     // 0x00552959    52
                          mov.s            ecx, ebx                                // 0x0055295a    8bcb
-                         call             _jmp_addr_0x005dc8b0                    // 0x0055295c    e84f9f0800
+                         call             ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                    // 0x0055295c    e84f9f0800
                          {disp8} mov      ecx, dword ptr [eax + 0x2c]             // 0x00552961    8b482c
                          call             _jmp_addr_0x00845d30                    // 0x00552964    e8c7332f00
 _jmp_addr_0x00552969:    mov.s            ecx, ebx                                // 0x00552969    8bcb
-                         call             _jmp_addr_0x005dc8b0                    // 0x0055296b    e8409f0800
+                         call             ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                    // 0x0055296b    e8409f0800
                          {disp8} mov      ecx, dword ptr [eax + 0x2c]             // 0x00552970    8b482c
                          test             ecx, ecx                                // 0x00552973    85c9
                          {disp8} je       _jmp_addr_0x0055299f                    // 0x00552975    7428
@@ -291,19 +291,19 @@ _jmp_addr_0x00552969:    mov.s            ecx, ebx                              
                          {disp8} mov      ecx, dword ptr [esp + 0x2c]             // 0x00552989    8b4c242c
                          {disp8} mov      dword ptr [eax + 0x08], ecx             // 0x0055298d    894808
                          mov.s            ecx, ebx                                // 0x00552990    8bcb
-                         call             _jmp_addr_0x005dc8b0                    // 0x00552992    e8199f0800
+                         call             ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                    // 0x00552992    e8199f0800
                          {disp8} mov      ecx, dword ptr [eax + 0x2c]             // 0x00552997    8b482c
                          call             _jmp_addr_0x005529e0                    // 0x0055299a    e841000000
 _jmp_addr_0x0055299f:    push             ebx                                     // 0x0055299f    53
                          mov.s            ecx, ebp                                // 0x005529a0    8bcd
-                         call             _jmp_addr_0x0064aac0                    // 0x005529a2    e819810f00
+                         call             ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z                    // 0x005529a2    e819810f00
                          {disp8} mov      esi, dword ptr [esp + 0x10]             // 0x005529a7    8b742410
                          mov.s            ebx, eax                                // 0x005529ab    8bd8
                          test             ebx, ebx                                // 0x005529ad    85db
                          {disp32} jne     _jmp_addr_0x005526be                    // 0x005529af    0f8509fdffff
 _jmp_addr_0x005529b5:    push             ebp                                     // 0x005529b5    55
                          mov.s            ecx, esi                                // 0x005529b6    8bce
-                         call             _jmp_addr_0x005508a0                    // 0x005529b8    e8e3deffff
+                         call             ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z                    // 0x005529b8    e8e3deffff
                          mov.s            ebp, eax                                // 0x005529bd    8be8
                          test             ebp, ebp                                // 0x005529bf    85ed
                          {disp32} jne     _jmp_addr_0x00552684                    // 0x005529c1    0f85bdfcffff

@@ -52,7 +52,7 @@
 .extern _jmp_addr_0x0054b190
 .extern @GetCamera__5GGameFv@4
 .extern _jmp_addr_0x0054ca90
-.extern _jmp_addr_0x005508a0
+.extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern @GetNextPlayerAndNeutral__5GGameFP7GPlayer@12
 .extern @GetPlayer__5GGameFUl@12
 .extern @ClearMap__5GGameFv@4
@@ -478,7 +478,7 @@ _jmp_addr_0x00555270:    {disp32} mov       byte ptr [ecx + 0x00250174], 0x01   
                          call               _jmp_addr_0x00826c50                          // 0x005552ac    e89f192d00
                          push               0x0                                           // 0x005552b1    6a00
                          mov.s              ecx, ebp                                      // 0x005552b3    8bcd
-                         call               _jmp_addr_0x005508a0                          // 0x005552b5    e8e6b5ffff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x005552b5    e8e6b5ffff
                          mov.s              edi, eax                                      // 0x005552ba    8bf8
                          test               edi, edi                                      // 0x005552bc    85ff
                          {disp32} je        _jmp_addr_0x00555384                          // 0x005552be    0f84c0000000
@@ -539,7 +539,7 @@ _jmp_addr_0x0055535c:    {disp8} mov        edx, dword ptr [esp + 0x10]         
                          {disp8} jne        _jmp_addr_0x00555327                          // 0x0055536e    75b7
 _jmp_addr_0x00555370:    push               edi                                           // 0x00555370    57
                          mov.s              ecx, ebp                                      // 0x00555371    8bcd
-                         call               _jmp_addr_0x005508a0                          // 0x00555373    e828b5ffff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x00555373    e828b5ffff
                          mov.s              edi, eax                                      // 0x00555378    8bf8
                          test               edi, edi                                      // 0x0055537a    85ff
                          {disp32} jne       _jmp_addr_0x005552c6                          // 0x0055537c    0f8544ffffff
@@ -1114,7 +1114,7 @@ _jmp_addr_0x00555a80:    sub                esp, 0x10                           
                          mov.s              esi, ecx                                      // 0x00555a85    8bf1
                          push               0x0                                           // 0x00555a87    6a00
                          {disp8} mov        dword ptr [esp + 0x0c], esi                   // 0x00555a89    8974240c
-                         call               _jmp_addr_0x005508a0                          // 0x00555a8d    e80eaeffff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x00555a8d    e80eaeffff
                          mov.s              edi, eax                                      // 0x00555a92    8bf8
                          test               edi, edi                                      // 0x00555a94    85ff
                          {disp32} je        _jmp_addr_0x00555b85                          // 0x00555a96    0f84e9000000
@@ -1185,7 +1185,7 @@ _jmp_addr_0x00555b5d:    push               0x0                                 
                          {disp8} mov        esi, dword ptr [esp + 0x10]                   // 0x00555b6d    8b742410
 _jmp_addr_0x00555b71:    push               edi                                           // 0x00555b71    57
                          mov.s              ecx, esi                                      // 0x00555b72    8bce
-                         call               _jmp_addr_0x005508a0                          // 0x00555b74    e827adffff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x00555b74    e827adffff
                          mov.s              edi, eax                                      // 0x00555b79    8bf8
                          test               edi, edi                                      // 0x00555b7b    85ff
                          {disp32} jne       _jmp_addr_0x00555a9e                          // 0x00555b7d    0f851bffffff

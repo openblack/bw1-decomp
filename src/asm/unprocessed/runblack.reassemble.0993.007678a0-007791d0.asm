@@ -111,7 +111,7 @@
 .extern _jmp_addr_0x00597400
 .extern _jmp_addr_0x005cd460
 .extern _jmp_addr_0x005cd490
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005e1740
 .extern _jmp_addr_0x005e17c0
 .extern _jmp_addr_0x005e1900
@@ -9181,7 +9181,7 @@ _jmp_addr_0x0076d000:    sub                esp, 0x14                           
                          {disp8} mov        dword ptr [esp + 0x18], ebx                     // 0x0076d025    895c2418
                          {disp8} mov        dword ptr [esp + 0x1c], ebx                     // 0x0076d029    895c241c
                          {disp8} mov        dword ptr [esp + 0x20], ebx                     // 0x0076d02d    895c2420
-                         call               _jmp_addr_0x005dc8b0                            // 0x0076d031    e87af8e6ff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                            // 0x0076d031    e87af8e6ff
                          {disp32} mov       edi, dword ptr [eax + 0x000003a0]               // 0x0076d036    8bb8a0030000
                          {disp8} fld        dword ptr [edi + 0x78]                          // 0x0076d03c    d94778
                          add                edi, 0x78                                       // 0x0076d03f    83c778
@@ -9514,7 +9514,7 @@ _jmp_addr_0x0076d3a2:    {disp8} mov        esi, dword ptr [edi + 0x38]         
                          cmp.s              esi, eax                                        // 0x0076d3aa    3bf0
                          {disp8} jne        _jmp_addr_0x0076d3d3                            // 0x0076d3ac    7525
                          mov.s              ecx, esi                                        // 0x0076d3ae    8bce
-                         call               _jmp_addr_0x005dc8b0                            // 0x0076d3b0    e8fbf4e6ff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                            // 0x0076d3b0    e8fbf4e6ff
                          add                eax, 0x000003f0                                 // 0x0076d3b5    05f0030000
                          push               eax                                             // 0x0076d3ba    50
                          {disp8} lea        edx, dword ptr [esp + 0x24]                     // 0x0076d3bb    8d542424

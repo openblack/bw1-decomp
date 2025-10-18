@@ -79,7 +79,7 @@
 .extern _jmp_addr_0x0050f780
 .extern _jmp_addr_0x0050f7b0
 .extern _jmp_addr_0x00510500
-.extern _jmp_addr_0x00510630
+.extern ?SetupDataTables@GGame@@QAEXXZ
 .extern _jmp_addr_0x00511210
 .extern _jmp_addr_0x00511250
 .extern _jmp_addr_0x00511d70
@@ -105,12 +105,12 @@
 .extern _jmp_addr_0x0053c450
 .extern _jmp_addr_0x0053c470
 .extern _jmp_addr_0x0053ce60
-.extern _jmp_addr_0x00550080
+.extern ?UnfinishInitialisation@GGame@@QAEXXZ
 .extern ?FinishInitialisation@GGame@@QAEXXZ
 .extern _jmp_addr_0x00550390
-.extern _jmp_addr_0x00550410
-.extern _jmp_addr_0x005508a0
-.extern _jmp_addr_0x005508d0
+.extern ?SetupPlayers@GGame@@QAEXXZ
+.extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
+.extern ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern _jmp_addr_0x00550980
 .extern _jmp_addr_0x00550ba0
 .extern _jmp_addr_0x00550dd0
@@ -212,7 +212,7 @@
 .extern _jmp_addr_0x005f3cc0
 .extern _jmp_addr_0x005f3ce0
 .extern _jmp_addr_0x005f3d90
-.extern _jmp_addr_0x005f4c90
+.extern ?StartTipOfTheDayText@@YAXXZ
 .extern _jmp_addr_0x005f4e40
 .extern _jmp_addr_0x005fa000
 .extern _jmp_addr_0x005fa070
@@ -257,7 +257,7 @@
 .extern _jmp_addr_0x00649340
 .extern _jmp_addr_0x00649a20
 .extern _jmp_addr_0x0064a9f0
-.extern _jmp_addr_0x0064aac0
+.extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
 .extern _jmp_addr_0x0064c140
 .extern _jmp_addr_0x0064c1a0
 .extern _jmp_addr_0x0064d0f0
@@ -412,7 +412,7 @@
 
 .globl _jmp_addr_0x0054a710
 .globl _SetTurnOffMouseMove__Fb
-.globl _jmp_addr_0x0054a780
+.globl ?InitStaticsValues@@YAXXZ
 .globl _jmp_addr_0x0054a940
 .globl _jmp_addr_0x0054aa40
 .globl _jmp_addr_0x0054ab00
@@ -427,7 +427,7 @@
 .globl @__ct__10GKeyBuffer@4
 .globl @__ct__9GSoundMapFv@4
 .globl @__ct__13GestureSystem@4
-.globl _jmp_addr_0x0054c160
+.globl ?RenderLoadingFrame@@YAXPAD@Z
 
 .globl _globl_ct_0x0054a310
 .globl _globl_ct_0x0054a600
@@ -1225,7 +1225,8 @@ _SetTurnOffMouseMove__Fb:{disp8} mov        al, byte ptr [esp + 0x04]           
                          {disp32} jmp       _jmp_addr_0x0054a710                          // 0x0054a779    e992ffffff
                          nop                                                              // 0x0054a77e    90
                          nop                                                              // 0x0054a77f    90
-_jmp_addr_0x0054a780:    push               ecx                                           // 0x0054a780    51
+?InitStaticsValues@@YAXXZ:
+                         push               ecx                                           // 0x0054a780    51
                          push               ebx                                           // 0x0054a781    53
                          push               ebp                                           // 0x0054a782    55
                          push               esi                                           // 0x0054a783    56
@@ -3291,7 +3292,8 @@ _jmp_addr_0x0054c150:    pop                edi                                 
                          nop                                                              // 0x0054c15d    90
                          nop                                                              // 0x0054c15e    90
                          nop                                                              // 0x0054c15f    90
-_jmp_addr_0x0054c160:    push               0x1                                           // 0x0054c160    6a01
+?RenderLoadingFrame@@YAXPAD@Z:
+                         push               0x1                                           // 0x0054c160    6a01
                          call               _RenderLoadingFrame__Fb                       // 0x0054c162    e8d98c0a00
                          add                esp, 0x04                                     // 0x0054c167    83c404
                          call               _jmp_addr_0x007dee00                          // 0x0054c16a    e8912c2900

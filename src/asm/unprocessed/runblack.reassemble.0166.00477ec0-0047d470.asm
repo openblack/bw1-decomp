@@ -100,7 +100,7 @@
 .extern _jmp_addr_0x00524fe0
 .extern _jmp_addr_0x00525720
 .extern _jmp_addr_0x0053b4a0
-.extern _jmp_addr_0x005509e0
+.extern ?GetPlayerFromReal@GGame@@QAEPAVGPlayer@@K@Z
 .extern _jmp_addr_0x00551580
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x0056fe70
@@ -2168,7 +2168,7 @@ _jmp_addr_0x004795fd:    push               esi                                 
                          {disp8} je         _jmp_addr_0x00479627                          // 0x0047960a    741b
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0047960c    8b0d5c19d000
                          push               eax                                           // 0x00479612    50
-                         call               _jmp_addr_0x005509e0                          // 0x00479613    e8c8730d00
+                         call               ?GetPlayerFromReal@GGame@@QAEPAVGPlayer@@K@Z  // 0x00479613    e8c8730d00
                          test               eax, eax                                      // 0x00479618    85c0
                          {disp8} je         _jmp_addr_0x00479627                          // 0x0047961a    740b
                          mov.s              ecx, eax                                      // 0x0047961c    8bc8

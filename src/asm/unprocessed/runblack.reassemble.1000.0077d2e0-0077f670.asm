@@ -54,7 +54,7 @@
 .extern _jmp_addr_0x0063a710
 .extern _jmp_addr_0x0063a940
 .extern _jmp_addr_0x00646950
-.extern _jmp_addr_0x0064aac0
+.extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
 .extern @IsNeutral__7GPlayerFv@4
 .extern @IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE@12
 .extern _jmp_addr_0x00719610
@@ -3463,7 +3463,7 @@ _jmp_addr_0x0077f490:    push               ebx                                 
                          {disp8} je         _jmp_addr_0x0077f4cd                          // 0x0077f49e    742d
                          push               0x0                                           // 0x0077f4a0    6a00
                          mov.s              ecx, edi                                      // 0x0077f4a2    8bcf
-                         call               _jmp_addr_0x0064aac0                          // 0x0077f4a4    e817b6ecff
+                         call               ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z                          // 0x0077f4a4    e817b6ecff
                          mov.s              esi, eax                                      // 0x0077f4a9    8bf0
                          test               esi, esi                                      // 0x0077f4ab    85f6
                          {disp8} je         _jmp_addr_0x0077f4cd                          // 0x0077f4ad    741e
@@ -3475,7 +3475,7 @@ _jmp_addr_0x0077f4af:    mov.s              ecx, esi                            
                          {disp8} je         _jmp_addr_0x0077f4cf                          // 0x0077f4bd    7410
 _jmp_addr_0x0077f4bf:    push               esi                                           // 0x0077f4bf    56
                          mov.s              ecx, edi                                      // 0x0077f4c0    8bcf
-                         call               _jmp_addr_0x0064aac0                          // 0x0077f4c2    e8f9b5ecff
+                         call               ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z                          // 0x0077f4c2    e8f9b5ecff
                          mov.s              esi, eax                                      // 0x0077f4c7    8bf0
                          test               esi, esi                                      // 0x0077f4c9    85f6
                          {disp8} jne        _jmp_addr_0x0077f4af                          // 0x0077f4cb    75e2

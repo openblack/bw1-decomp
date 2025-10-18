@@ -78,7 +78,7 @@
 .extern _jmp_addr_0x0050f780
 .extern _jmp_addr_0x0050f7b0
 .extern @__ct__5GDataFv@4
-.extern _jmp_addr_0x00510630
+.extern ?SetupDataTables@GGame@@QAEXXZ
 .extern _jmp_addr_0x00511210
 .extern _jmp_addr_0x00511250
 .extern _jmp_addr_0x00511d70
@@ -116,7 +116,7 @@
 .extern _jmp_addr_0x005f3cc0
 .extern _jmp_addr_0x005f3ce0
 .extern _jmp_addr_0x005f3d90
-.extern _jmp_addr_0x005f4c90
+.extern ?StartTipOfTheDayText@@YAXXZ
 .extern _RenderLoadingFrame__Fb
 .extern _jmp_addr_0x005fa000
 .extern _jmp_addr_0x005fa070
@@ -161,7 +161,7 @@
 .extern _jmp_addr_0x00649340
 .extern _ProcessPlayers__7GPlayerFv
 .extern _jmp_addr_0x0064a9f0
-.extern _jmp_addr_0x0064aac0
+.extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
 .extern _jmp_addr_0x0064c140
 .extern _jmp_addr_0x0064c1a0
 .extern _jmp_addr_0x0064d0f0
@@ -1287,7 +1287,7 @@ _jmp_addr_0x0054cec0:    ret                                                    
 ?DoNetworkStart@GGame@@QAEIXZ:    push               esi                                           // 0x0054ced0    56
                          push               0x00bec518                                    // 0x0054ced1    6818c5be00
                          mov.s              esi, ecx                                      // 0x0054ced6    8bf1
-                         call               _jmp_addr_0x0054c160                          // 0x0054ced8    e883f2ffff
+                         call               ?RenderLoadingFrame@@YAXPAD@Z                 // 0x0054ced8    e883f2ffff
                          {disp32} mov       dword ptr [esi + 0x00205b74], 0x3f800000      // 0x0054cedd    c786745b20000000803f
                          {disp32} mov       eax, dword ptr [_game]                        // 0x0054cee7    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00205b80]             // 0x0054ceec    8b88805b2000
@@ -1295,9 +1295,9 @@ _jmp_addr_0x0054cec0:    ret                                                    
                          inc                edx                                           // 0x0054cef8    42
                          push               0x00bec4f4                                    // 0x0054cef9    68f4c4be00
                          {disp32} mov       dword ptr [eax + 0x00205a44], edx             // 0x0054cefe    8990445a2000
-                         call               _jmp_addr_0x0054c160                          // 0x0054cf04    e857f2ffff
+                         call               ?RenderLoadingFrame@@YAXPAD@Z                 // 0x0054cf04    e857f2ffff
                          push               0x00bec4e0                                    // 0x0054cf09    68e0c4be00
-                         call               _jmp_addr_0x0054c160                          // 0x0054cf0e    e84df2ffff
+                         call               ?RenderLoadingFrame@@YAXPAD@Z                 // 0x0054cf0e    e84df2ffff
                          add                esp, 0x0c                                     // 0x0054cf13    83c40c
                          call               _jmp_addr_0x005751d0                          // 0x0054cf16    e8b5820200
                          pop                esi                                           // 0x0054cf1b    5e
@@ -1351,7 +1351,7 @@ _jmp_addr_0x0054cfa2:    xor.s              eax, eax                            
                          {disp32} mov       ecx, dword ptr [esi + 0x002502c0]             // 0x0054cfc3    8b8ec0022500
                          call               @Update__7GCameraFv@4                         // 0x0054cfc9    e8b24fefff
                          push               0x00bec548                                    // 0x0054cfce    6848c5be00
-                         call               _jmp_addr_0x0054c160                          // 0x0054cfd3    e888f1ffff
+                         call               ?RenderLoadingFrame@@YAXPAD@Z                 // 0x0054cfd3    e888f1ffff
                          {disp32} mov       ecx, dword ptr [esi + 0x00205b80]             // 0x0054cfd8    8b8e805b2000
                          add                esp, 0x04                                     // 0x0054cfde    83c404
                          call               dword ptr [rdata_bytes + 0x438]               // 0x0054cfe1    ff1538948a00

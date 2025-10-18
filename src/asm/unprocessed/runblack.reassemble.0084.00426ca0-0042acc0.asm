@@ -82,7 +82,7 @@
 .globl _jmp_addr_0x004287d0
 .globl _jmp_addr_0x00428850
 .globl ?InitAtmos@GAudio@@QAEXXZ
-.globl _jmp_addr_0x00428f90
+.globl ?ReleaseAtmosSoundBanks@GAudio@@QAEXXZ
 .globl _jmp_addr_0x004291b0
 .globl _jmp_addr_0x00429230
 .globl _jmp_addr_0x00429340
@@ -424,7 +424,7 @@ _jmp_addr_0x00426ff8:    push               ebx                                 
                          mov.s              ecx, edi                                             // 0x00426ffb    8bcf
                          call               _jmp_addr_0x0042a370                                 // 0x00426ffd    e86e330000
                          mov.s              ecx, edi                                             // 0x00427002    8bcf
-                         call               _jmp_addr_0x00428f90                                 // 0x00427004    e8871f0000
+                         call               ?ReleaseAtmosSoundBanks@GAudio@@QAEXXZ               // 0x00427004    e8871f0000
                          {disp32} mov       ebx, dword ptr [rdata_bytes + 0x714]                 // 0x00427009    8b1d14978a00
                          {disp8} lea        esi, dword ptr [edi + 0x2c]                          // 0x0042700f    8d772c
                          mov                ebp, 0x00000055                                      // 0x00427012    bd55000000
@@ -3196,7 +3196,8 @@ _jmp_addr_0x00428f84:    pop                ebx                                 
                          nop                                                                     // 0x00428f8d    90
                          nop                                                                     // 0x00428f8e    90
                          nop                                                                     // 0x00428f8f    90
-_jmp_addr_0x00428f90:    push               edi                                                  // 0x00428f90    57
+?ReleaseAtmosSoundBanks@GAudio@@QAEXXZ:
+                         push               edi                                                  // 0x00428f90    57
                          mov.s              edi, ecx                                             // 0x00428f91    8bf9
                          cmp                dword ptr [edi + 0x0000023c], 0x01                   // 0x00428f93    83bf3c02000001
                          {disp8} jne        _jmp_addr_0x00428fd5                                 // 0x00428f9a    7539

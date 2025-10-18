@@ -46,7 +46,7 @@
 .extern _jmp_addr_0x005d8a10
 .extern _jmp_addr_0x005d8a80
 .extern _jmp_addr_0x005d8ea0
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005ddc00
 .extern _jmp_addr_0x005ddc90
 .extern _jmp_addr_0x005df1b0
@@ -4324,7 +4324,7 @@ _jmp_addr_0x005e6b90:    push               esi                                 
                          push               0x80000000                                    // 0x005e6ba7    6800000080
                          push               0x7                                           // 0x005e6bac    6a07
                          {disp8} mov        dword ptr [esi + 0x24], 0x00000000            // 0x005e6bae    c7462400000000
-                         call               _jmp_addr_0x005dc8b0                          // 0x005e6bb5    e8f65cffff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x005e6bb5    e8f65cffff
                          mov.s              ecx, eax                                      // 0x005e6bba    8bc8
                          call               _jmp_addr_0x005d8a10                          // 0x005e6bbc    e84f1effff
 _jmp_addr_0x005e6bc1:    pop                esi                                           // 0x005e6bc1    5e
@@ -4641,7 +4641,7 @@ _jmp_addr_0x005e6f70:    sub                esp, 0x0c                           
                          push               0x1                                           // 0x005e6fb0    6a01
                          {disp8} lea        eax, dword ptr [esp + 0x14]                   // 0x005e6fb2    8d442414
                          push               eax                                           // 0x005e6fb6    50
-                         call               _jmp_addr_0x005dc8b0                          // 0x005e6fb7    e8f458ffff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x005e6fb7    e8f458ffff
                          mov.s              ecx, eax                                      // 0x005e6fbc    8bc8
                          call               _jmp_addr_0x005d8ea0                          // 0x005e6fbe    e8dd1effff
                          {disp32} mov       eax, dword ptr [ebp + 0x00005178]             // 0x005e6fc3    8b8578510000
@@ -4653,7 +4653,7 @@ _jmp_addr_0x005e6f70:    sub                esp, 0x0c                           
                          shl                edx, 4                                        // 0x005e6fdb    c1e204
                          {disp8} lea        eax, dword ptr [edx + eax * 0x1 + 0x24]       // 0x005e6fde    8d440224
                          push               eax                                           // 0x005e6fe2    50
-                         call               _jmp_addr_0x005dc8b0                          // 0x005e6fe3    e8c858ffff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x005e6fe3    e8c858ffff
                          {disp32} mov       ecx, dword ptr [eax + 0x00000198]             // 0x005e6fe8    8b8898010000
                          call               _jmp_addr_0x00848600                          // 0x005e6fee    e80d162600
                          mov                edx, dword ptr [edi]                          // 0x005e6ff3    8b17
@@ -4676,7 +4676,7 @@ _jmp_addr_0x005e6f70:    sub                esp, 0x0c                           
                          {disp8} jne        _jmp_addr_0x005e704a                          // 0x005e702b    751d
                          push               0x80000000                                    // 0x005e702d    6800000080
                          push               0x7                                           // 0x005e7032    6a07
-                         call               _jmp_addr_0x005dc8b0                          // 0x005e7034    e87758ffff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x005e7034    e87758ffff
                          mov.s              ecx, eax                                      // 0x005e7039    8bc8
                          call               _jmp_addr_0x005d8a10                          // 0x005e703b    e8d019ffff
                          pop                edi                                           // 0x005e7040    5f
@@ -4686,7 +4686,7 @@ _jmp_addr_0x005e6f70:    sub                esp, 0x0c                           
                          add                esp, 0x0c                                     // 0x005e7044    83c40c
                          ret                0x0008                                        // 0x005e7047    c20800
 _jmp_addr_0x005e704a:    push               0x7                                           // 0x005e704a    6a07
-                         call               _jmp_addr_0x005dc8b0                          // 0x005e704c    e85f58ffff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x005e704c    e85f58ffff
                          mov.s              ecx, eax                                      // 0x005e7051    8bc8
                          call               _jmp_addr_0x005d8a80                          // 0x005e7053    e8281affff
                          pop                edi                                           // 0x005e7058    5f
@@ -4721,7 +4721,7 @@ _jmp_addr_0x005e70b5:    {disp32} mov       edx, dword ptr [edi + 0x00000164]   
                          .byte              0x72, 0xed// {disp8} jb _jmp_addr_0x005e70b5  // 0x005e70c6    72ed
                          {disp8} mov        ecx, dword ptr [esi + 0x38]                   // 0x005e70c8    8b4e38
                          push               0x7                                           // 0x005e70cb    6a07
-                         call               _jmp_addr_0x005dc8b0                          // 0x005e70cd    e8de57ffff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x005e70cd    e8de57ffff
                          mov.s              ecx, eax                                      // 0x005e70d2    8bc8
                          call               _jmp_addr_0x005d8a80                          // 0x005e70d4    e8a719ffff
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005e70d9    8b0d5c19d000
@@ -4786,7 +4786,7 @@ _jmp_addr_0x005e7189:    {disp8} mov        ecx, dword ptr [esi + 0x38]         
                          push               0x80000000                                    // 0x005e718c    6800000080
                          push               0x7                                           // 0x005e7191    6a07
                          {disp8} mov        dword ptr [esi + 0x24], 0x00000000            // 0x005e7193    c7462400000000
-                         call               _jmp_addr_0x005dc8b0                          // 0x005e719a    e81157ffff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                          // 0x005e719a    e81157ffff
                          mov.s              ecx, eax                                      // 0x005e719f    8bc8
                          call               _jmp_addr_0x005d8a10                          // 0x005e71a1    e86a18ffff
                          pop                esi                                           // 0x005e71a6    5e

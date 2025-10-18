@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x0046f2b0
 .extern _jmp_addr_0x00519ad0
 .extern _jmp_addr_0x0053c470
-.extern _jmp_addr_0x005508a0
+.extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern _jmp_addr_0x00553a70
 .extern @GetPlayer3DColor__7GPlayerFv@12
 .extern _jmp_addr_0x007201d0
@@ -1725,7 +1725,7 @@ _jmp_addr_0x0079d830:    sub                esp, 0x2c                           
                          mov.s              edi, ecx                                      // 0x0079d836    8bf9
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0079d838    8b0d5c19d000
                          push               0x0                                           // 0x0079d83e    6a00
-                         call               _jmp_addr_0x005508a0                          // 0x0079d840    e85b30dbff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x0079d840    e85b30dbff
                          mov.s              ebp, eax                                      // 0x0079d845    8be8
                          test               ebp, ebp                                      // 0x0079d847    85ed
                          {disp32} je        _jmp_addr_0x0079da30                          // 0x0079d849    0f84e1010000
@@ -1853,7 +1853,7 @@ _jmp_addr_0x0079d928:    mov.s              edx, eax                            
                          call               _jmp_addr_0x0079da40                          // 0x0079da15    e826000000
 _jmp_addr_0x0079da1a:    {disp32} mov       ecx, dword ptr [_game]                        // 0x0079da1a    8b0d5c19d000
                          push               ebp                                           // 0x0079da20    55
-                         call               _jmp_addr_0x005508a0                          // 0x0079da21    e87a2edbff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x0079da21    e87a2edbff
                          mov.s              ebp, eax                                      // 0x0079da26    8be8
                          test               ebp, ebp                                      // 0x0079da28    85ed
                          {disp32} jne       _jmp_addr_0x0079d84f                          // 0x0079da2a    0f851ffeffff

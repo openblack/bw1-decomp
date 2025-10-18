@@ -46,7 +46,7 @@
 .extern _jmp_addr_0x00534f90
 .extern @AddPos__9GFootpathFRC9MapCoords@12
 .extern @__ct__6ForestFRC9MapCoordsUl@16
-.extern _jmp_addr_0x005508a0
+.extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern @GetNextPlayerAndNeutral__5GGameFP7GPlayer@12
 .extern @GetPlayer__5GGameFUl@12
 .extern @IsMultiplayerGame__5GGameCFv@4
@@ -3515,7 +3515,7 @@ _jmp_addr_0x00717805:    cmp.s              eax, ebx                            
                          {disp8} jne        _jmp_addr_0x00717b2c                          // 0x00717ae3    7547
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00717ae5    8b0d5c19d000
                          push               ebx                                           // 0x00717aeb    53
-                         call               _jmp_addr_0x005508a0                          // 0x00717aec    e8af8de3ff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x00717aec    e8af8de3ff
                          mov.s              esi, eax                                      // 0x00717af1    8bf0
                          cmp.s              esi, ebx                                      // 0x00717af3    3bf3
                          {disp32} je        _jmp_addr_0x00717e8a                          // 0x00717af5    0f848f030000
@@ -3527,7 +3527,7 @@ _jmp_addr_0x00717aff:    {disp32} mov       ecx, dword ptr [_game]              
                          call               _SetLandBalance__5GGameFUlfP7GPlayer@12       // 0x00717b08    e883dde3ff
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00717b0d    8b0d5c19d000
                          push               esi                                           // 0x00717b13    56
-                         call               _jmp_addr_0x005508a0                          // 0x00717b14    e8878de3ff
+                         call               ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z  // 0x00717b14    e8878de3ff
                          mov.s              esi, eax                                      // 0x00717b19    8bf0
                          cmp.s              esi, ebx                                      // 0x00717b1b    3bf3
                          {disp8} jne        _jmp_addr_0x00717aff                          // 0x00717b1d    75e0

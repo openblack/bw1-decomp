@@ -71,7 +71,7 @@
 .extern _jmp_addr_0x0056fef0
 .extern _jmp_addr_0x005cd560
 .extern _jmp_addr_0x005d8a10
-.extern _jmp_addr_0x005dc8b0
+.extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005e6540
 .extern @__ct__6LivingFRC9MapCoordsPC11GLivingInfo@16
 .extern @IsReadyForNewAnimation__6LivingFUl@12
@@ -7143,7 +7143,7 @@ _jmp_addr_0x0074b8a0:    {disp8} lea        esi, dword ptr [ebp + 0x14]         
                          push               0x80000000                                     // 0x0074b96d    6800000080
                          push               0x2e                                           // 0x0074b972    6a2e
                          mov.s              ecx, eax                                       // 0x0074b974    8bc8
-                         call               _jmp_addr_0x005dc8b0                           // 0x0074b976    e8350fe9ff
+                         call               ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ                           // 0x0074b976    e8350fe9ff
                          mov.s              ecx, eax                                       // 0x0074b97b    8bc8
                          call               _jmp_addr_0x005d8a10                           // 0x0074b97d    e88ed0e8ff
 _jmp_addr_0x0074b982:    {disp8} mov        dword ptr [esp + 0x18], 0x000003e8             // 0x0074b982    c7442418e8030000

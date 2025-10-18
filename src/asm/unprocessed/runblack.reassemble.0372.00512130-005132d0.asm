@@ -43,7 +43,7 @@
 .extern _jmp_addr_0x00513770
 .extern _jmp_addr_0x0053f3e0
 .extern _jmp_addr_0x0053f540
-.extern _jmp_addr_0x005508a0
+.extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern @GetPlayer__5GGameFUl@12
 .extern _jmp_addr_0x00550a80
 .extern @MyInterface__5GGameFv@4
@@ -92,7 +92,7 @@ start_0x00512130_0x005132d0:
                          test              edx, edx                                             // 0x00512150    85d2
                          {disp32} je       _jmp_addr_0x00512211                                 // 0x00512152    0f84b9000000
                          push              0x0                                                  // 0x00512158    6a00
-                         call              _jmp_addr_0x005508a0                                 // 0x0051215a    e841e70300
+                         call              ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z         // 0x0051215a    e841e70300
                          mov.s             ebp, eax                                             // 0x0051215f    8be8
                          test              ebp, ebp                                             // 0x00512161    85ed
                          {disp8} je        _jmp_addr_0x005121e4                                 // 0x00512163    747f
@@ -125,7 +125,7 @@ _jmp_addr_0x00512198:    {disp32} mov      edi, dword ptr [ecx + 0x00000618]    
                          {disp8} jne       _jmp_addr_0x00512198                                 // 0x005121d0    75c6
 _jmp_addr_0x005121d2:    {disp32} mov      ecx, dword ptr [_game]                               // 0x005121d2    8b0d5c19d000
                          push              ebp                                                  // 0x005121d8    55
-                         call              _jmp_addr_0x005508a0                                 // 0x005121d9    e8c2e60300
+                         call              ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z         // 0x005121d9    e8c2e60300
                          mov.s             ebp, eax                                             // 0x005121de    8be8
                          test              ebp, ebp                                             // 0x005121e0    85ed
                          {disp8} jne       _jmp_addr_0x00512165                                 // 0x005121e2    7581
