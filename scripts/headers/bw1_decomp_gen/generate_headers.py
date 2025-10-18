@@ -291,6 +291,66 @@ def build_list_template_headers(template_container_structs, template_container_m
     return consumed_template_container_structs
 
 
+def validate_db(db: dict) -> bool:
+    """Make sure the db is sound and there are no duplicate entries"""
+    is_valid = True
+    seen_typenames = dict()
+    seen_names = dict()
+    seen_addresses_win = dict()  # Should be good for functions, globals
+    seen_addresses_mac = dict()  # Should be good for functions, globals
+    KNOWN_MAC_LIB_EXE__FUNCTION_CONFLICTS = {0x100ae750, 0x100dd710, 0x101178b0, 0x10119960, 0x10164e30, 0x101daa00}
+    for t in db["types"]:
+        typename = t['type'].removeprefix("enum ").removeprefix("struct ").removeprefix("union ")
+        seen_typenames[typename] = seen_typenames.get(typename, 0) + 1
+        if t["kind"] == "ENUM_DECL":
+            e = t
+            for c in e["constants"]:
+                constant_name = c['name']
+                seen_names[constant_name] = seen_names.get(constant_name, 0) + 1
+    for f in db["functions"]:
+        decorated_name = f['decorated_name']
+        undecorated_name = f['undecorated_name']
+        mangled_name = f['mangled_name']
+        win_addr = f["win_addr"]
+        mac_addr = f["mac_addr"]
+        seen_names[decorated_name] = seen_names.get(decorated_name, 0) + 1
+        if undecorated_name != decorated_name:
+            seen_names[undecorated_name] = seen_names.get(undecorated_name, 0) + 1
+        if mangled_name and mangled_name != decorated_name and mangled_name != undecorated_name:
+            seen_names[mangled_name] = seen_names.get(mangled_name, 0) + 1
+        if win_addr is not None and win_addr > 0:
+            seen_addresses_win[win_addr] = seen_addresses_win.get(win_addr, 0) + 1
+        if mac_addr is not None and mac_addr > 0 and mac_addr not in KNOWN_MAC_LIB_EXE__FUNCTION_CONFLICTS:
+            seen_addresses_mac[mac_addr] = seen_addresses_mac.get(mac_addr, 0) + 1
+    for g in db["globals"]:
+        name = g["name"]
+        win_addr = g["win_addr"]
+        mac_addr = g["mac_addr"]
+        seen_names[name] = seen_names.get(name, 0) + 1
+        if win_addr is not None and win_addr > 0:
+            seen_addresses_win[win_addr] = seen_addresses_win.get(win_addr, 0) + 1
+        if mac_addr is not None and mac_addr > 0:
+            seen_addresses_mac[mac_addr] = seen_addresses_mac.get(mac_addr, 0) + 1
+
+    for n, c in sorted(seen_typenames.items(), key=lambda x: x[0]):
+        if c > 1:
+            print(f"Duplicate typename {n} seen {c} times", file=sys.stderr)
+            is_valid = False
+    for n, c in sorted(seen_names.items(), key=lambda x: x[0]):
+        if c > 1:
+            print(f"Duplicate name {n} seen {c} times", file=sys.stderr)
+            is_valid = False
+    for n, c in sorted(seen_addresses_win.items(), key=lambda x: x[0]):
+        if c > 1:
+            print(f"Duplicate global address on Windows 0x{n:08x}({n:10}) seen {c} times", file=sys.stderr)
+            is_valid = False
+    for n, c in sorted(seen_addresses_mac.items(), key=lambda x: x[0]):
+        if c > 1:
+            print(f"Duplicate global address on Mac 0x{n:08x}({n:10}) seen {c} times", file=sys.stderr)
+            is_valid = False
+    return is_valid
+
+
 if __name__ == "__main__":
     json_path = Path("extracted_reversing_data_bw_141.json")
     if len(sys.argv) == 2:
@@ -298,6 +358,8 @@ if __name__ == "__main__":
 
     tic = time.perf_counter()
     db = load(json_path.open())
+    if not validate_db(db):
+        raise ValueError("The database is invalid")
     projects_and_files = map_projects_to_object_files()
     primitives = []
     for decl in db['types']:
