@@ -1492,6 +1492,7 @@ ROOMMATE_CLASS_MAP = {
     "ConvertPoint2DToMapCoords__FRC7Point2D": "MapCoords",
     "ConvertPointToMapCoords__FRC7Point": "MapCoords",
     "RenderLoadingFrame__Fb": "LH3DRender",
+    "RenderLoadingFrame__FPc": "LH3DRender",
     "stop_draw_sprite_to_screen__Fv": "LH3DRender",
     "peerStartListingGames": "LHLobby",
     "LHJoypads": "LHJoypad",
