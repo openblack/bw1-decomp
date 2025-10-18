@@ -130,7 +130,7 @@
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _AddMobileObjectCheckSum__12MobileObjectFv
 .extern _DoWallHuggerLookahead__Fv
-.extern _jmp_addr_0x0061a150
+.extern ?ProcessButtons@CMouse@@QAEXXZ
 .extern _jmp_addr_0x0062d030
 .extern @IsInternetLobby__20MPFEConnectionStatusFv@4
 .extern _jmp_addr_0x00633480
@@ -361,7 +361,7 @@ _jmp_addr_0x0054c37e:    push               0x0                                 
                          test               eax, eax                                      // 0x0054c38e    85c0
                          {disp8} jne        _jmp_addr_0x0054c39d                          // 0x0054c390    750b
                          {disp32} lea       ecx, dword ptr [esi + 0x002502b8]             // 0x0054c392    8d8eb8022500
-                         call               _jmp_addr_0x0061a150                          // 0x0054c398    e8b3dd0c00
+                         call               ?ProcessButtons@CMouse@@QAEXXZ                // 0x0054c398    e8b3dd0c00
 _jmp_addr_0x0054c39d:    call               _jmp_addr_0x008415a0                          // 0x0054c39d    e8fe512f00
                          push               0x00e90650 /* _lpCriticalSection_00e90650 */  // 0x0054c3a2    685006e900
                          call               dword ptr [__imp__EnterCriticalSection@4]     // 0x0054c3a7    ff1580918a00

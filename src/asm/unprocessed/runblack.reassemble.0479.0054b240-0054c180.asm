@@ -226,7 +226,7 @@
 .extern _jmp_addr_0x00603160
 .extern _jmp_addr_0x00606fc0
 .extern _jmp_addr_0x00609a50
-.extern _jmp_addr_0x0061a150
+.extern ?ProcessButtons@CMouse@@QAEXXZ
 .extern _jmp_addr_0x0062d030
 .extern _jmp_addr_0x0062dac0
 .extern _jmp_addr_0x00633480

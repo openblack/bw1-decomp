@@ -231,7 +231,7 @@
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _AddMobileObjectCheckSum__12MobileObjectFv
 .extern _DoWallHuggerLookahead__Fv
-.extern _jmp_addr_0x0061a150
+.extern ?ProcessButtons@CMouse@@QAEXXZ
 .extern _jmp_addr_0x0062d030
 .extern @IsInternetLobby__20MPFEConnectionStatusFv@4
 .extern _jmp_addr_0x00633480

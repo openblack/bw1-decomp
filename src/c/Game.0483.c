@@ -84,7 +84,7 @@ bool __stdcall MouseHandler__5GGameFPv19LH_MOUSE_EVENT_TYPEUlUl(struct GGame* th
     asm("{disp32} mov       ecx, dword ptr [_game]");                         // 0x00550060    8b0d5c19d000
     asm("add                ecx, 0x002502b8");                                // 0x00550066    81c1b8022500
     asm("{disp32} mov       dword ptr [data_bytes + 0x33b9cc], 0x00000000");  // 0x0055006c    c705cc19d00000000000
-    asm("call               _jmp_addr_0x0061a110");                           // 0x00550076    e895a00c00
+    asm("call               ?ProcessPosition@CMouse@@QAEXXZ");                           // 0x00550076    e895a00c00
     asm("_jmp_addr_0x0055007b:");
     asm("xor.s              eax, eax");                                       // 0x0055007b    33c0
     asm("ret");                                                               // 0x0055007d    c3
