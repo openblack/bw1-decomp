@@ -1091,7 +1091,7 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
                                 break
                         if param_type.kind.name == "ELABORATED":
                             param_type = param_type.get_named_type()
-                        builtin_type_kinds = ["INT", "UCHAR", "CHAR_S", "VOID", "BOOL", "FLOAT", "LONG", "ULONG"]
+                        builtin_type_kinds = ["INT", "UCHAR", "CHAR_S", "VOID", "BOOL", "FLOAT", "LONG", "ULONG", "USHORT", "SHORT"]
                         declared_type_kinds = ["TYPEDEF", "RECORD", "ENUM", "FUNCTIONPROTO"]
                         if param_type.kind.name not in (
                                 builtin_type_kinds + declared_type_kinds) and param_type.get_pointee().kind.name != 'FUNCTIONPROTO':
