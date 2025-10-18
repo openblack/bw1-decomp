@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x00471130
 .extern _jmp_addr_0x00471170
 .extern @MyInterface__5GGameFv@4
-.extern _jmp_addr_0x005d9d80
+.extern ?SendMessageA@GInterface@@QAE_NW4INTERFACE_MESSAGE_TYPES@@PAULHCoord@@@Z
 .extern _jmp_addr_0x005d9dd0
 .extern _jmp_addr_0x00617140
 .extern _jmp_addr_0x0061ccb0
@@ -699,7 +699,7 @@ _jmp_addr_0x0061a110:    sub               esp, 0x08                            
                          push              0x0                                                  // 0x0061a139    6a00
                          call              @MyInterface__5GGameFv@4                             // 0x0061a13b    e810b7f3ff
                          mov.s             ecx, eax                                             // 0x0061a140    8bc8
-                         call              _jmp_addr_0x005d9d80                                 // 0x0061a142    e839fcfbff
+                         call              ?SendMessageA@GInterface@@QAE_NW4INTERFACE_MESSAGE_TYPES@@PAULHCoord@@@Z                                 // 0x0061a142    e839fcfbff
                          add               esp, 0x08                                            // 0x0061a147    83c408
                          ret                                                                    // 0x0061a14a    c3
                          call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                                 // 0x0061a14b    e8a976deff

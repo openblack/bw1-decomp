@@ -380,9 +380,9 @@
 .globl @UpdateAllLeashes__10GInterfaceFv@4
 .globl _jmp_addr_0x005d9310
 .globl _jmp_addr_0x005d95e0
-.globl _jmp_addr_0x005d9d80
+.globl ?SendMessageA@GInterface@@QAE_NW4INTERFACE_MESSAGE_TYPES@@PAULHCoord@@@Z
 .globl _jmp_addr_0x005d9dd0
-.globl _jmp_addr_0x005d9e80
+.globl ?Init@GInterfaceMessageBuffer@@QAEXG@Z
 .globl _jmp_addr_0x005da0c0
 .globl _jmp_addr_0x005da100
 .globl _jmp_addr_0x005da1a0
@@ -20218,7 +20218,8 @@ _jmp_addr_0x005d9d20:    mov.s              eax, ecx                            
                          nop                                                               // 0x005d9d7d    90
                          nop                                                               // 0x005d9d7e    90
                          nop                                                               // 0x005d9d7f    90
-_jmp_addr_0x005d9d80:    {disp8} mov        edx, dword ptr [esp + 0x04]                    // 0x005d9d80    8b542404
+?SendMessageA@GInterface@@QAE_NW4INTERFACE_MESSAGE_TYPES@@PAULHCoord@@@Z:
+                         {disp8} mov        edx, dword ptr [esp + 0x04]                    // 0x005d9d80    8b542404
                          {disp32} lea       eax, dword ptr [edx * 0x8 + 0x00000000]        // 0x005d9d84    8d04d500000000
                          sub.s              eax, edx                                       // 0x005d9d8b    2bc2
                          shl                eax, 3                                         // 0x005d9d8d    c1e003
@@ -20238,7 +20239,7 @@ _jmp_addr_0x005d9dab:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          push               eax                                            // 0x005d9db6    50
                          push               edx                                            // 0x005d9db7    52
                          add                ecx, 0x00000430                                // 0x005d9db8    81c130040000
-                         call               _jmp_addr_0x005d9f10                           // 0x005d9dbe    e84d010000
+                         call               ?Add@GInterfaceMessageBuffer@@QAE_NW4INTERFACE_MESSAGE_TYPES@@PAVGInterfaceCollide@@PAULHCoord@@@Z                           // 0x005d9dbe    e84d010000
 _jmp_addr_0x005d9dc3:    mov                eax, 0x00000001                                // 0x005d9dc3    b801000000
                          pop                esi                                            // 0x005d9dc8    5e
                          ret                0x0008                                         // 0x005d9dc9    c20800
@@ -20322,7 +20323,8 @@ _jmp_addr_0x005d9e6c:    mov.s              ecx, ebp                            
                          nop                                                               // 0x005d9e7d    90
                          nop                                                               // 0x005d9e7e    90
                          nop                                                               // 0x005d9e7f    90
-_jmp_addr_0x005d9e80:    push               ebx                                            // 0x005d9e80    53
+?Init@GInterfaceMessageBuffer@@QAEXG@Z:
+                         push               ebx                                            // 0x005d9e80    53
                          mov.s              ebx, ecx                                       // 0x005d9e81    8bd9
                          {disp8} mov        eax, dword ptr [ebx + 0x08]                    // 0x005d9e83    8b4308
                          push               edi                                            // 0x005d9e86    57
@@ -20379,7 +20381,8 @@ _jmp_addr_0x005d9efa:    {disp8} mov        ecx, dword ptr [ebx + 0x08]         
                          nop                                                               // 0x005d9f0d    90
                          nop                                                               // 0x005d9f0e    90
                          nop                                                               // 0x005d9f0f    90
-_jmp_addr_0x005d9f10:    xor.s              edx, edx                                       // 0x005d9f10    33d2
+?Add@GInterfaceMessageBuffer@@QAE_NW4INTERFACE_MESSAGE_TYPES@@PAVGInterfaceCollide@@PAULHCoord@@@Z:
+                         xor.s              edx, edx                                       // 0x005d9f10    33d2
                          {disp8} mov        dx, word ptr [ecx + 0x0e]                      // 0x005d9f12    668b510e
                          cmp                dx, word ptr [ecx + 0x0c]                      // 0x005d9f16    663b510c
                          {disp32} jae       _jmp_addr_0x005d9fa4                           // 0x005d9f1a    0f8384000000

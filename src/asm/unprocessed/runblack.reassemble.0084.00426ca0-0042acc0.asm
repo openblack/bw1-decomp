@@ -81,7 +81,7 @@
 .globl _jmp_addr_0x004287c0
 .globl _jmp_addr_0x004287d0
 .globl _jmp_addr_0x00428850
-.globl _jmp_addr_0x00428ef0
+.globl ?InitAtmos@GAudio@@QAEXXZ
 .globl _jmp_addr_0x00428f90
 .globl _jmp_addr_0x004291b0
 .globl _jmp_addr_0x00429230
@@ -3125,7 +3125,8 @@ _jmp_addr_0x00428eda:    pop                edi                                 
                          nop                                                                     // 0x00428eed    90
                          nop                                                                     // 0x00428eee    90
                          nop                                                                     // 0x00428eef    90
-_jmp_addr_0x00428ef0:    push               esi                                                  // 0x00428ef0    56
+?InitAtmos@GAudio@@QAEXXZ:
+                         push               esi                                                  // 0x00428ef0    56
                          mov.s              esi, ecx                                             // 0x00428ef1    8bf1
                          push               edi                                                  // 0x00428ef3    57
                          {disp32} mov       dword ptr [esi + 0x0000023c], 0x00000000             // 0x00428ef4    c7863c02000000000000
