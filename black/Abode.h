@@ -162,8 +162,8 @@ int __fastcall NumVillagersOfSex__5AbodeFv(struct Abode* this) asm("?NumVillager
 int __fastcall CalculateFoodNeededForDinner__5AbodeFv(struct Abode* this) asm("?CalculateFoodNeededForDinner@Abode@@QAEHXZ");
 // win1.41 00404600 mac 1032c5d0 Abode::IsEnoughFoodForDinner(void)
 bool __fastcall IsEnoughFoodForDinner__5AbodeFv(struct Abode* this) asm("?IsEnoughFoodForDinner@Abode@@QAE_NXZ");
-// win1.41 00404630 mac inlined Abode::GetOtherParent(Villager *)
-struct Villager* __fastcall GetOtherParent__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager) asm("?GetOtherParent@Abode@@QAEPAVVillager@@PAV2@@Z");
+// win1.41 00404630 mac 1032c250 Abode::GetOtherParent(Villager *)
+struct Villager* __fastcall GetSpouse__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager) asm("?GetSpouse@Abode@@QAEPAVVillager@@PAV2@@Z");
 // win1.41 00404660 mac 1032c3e0 Abode::GetRoomLeftForAdults(void)
 int __fastcall GetRoomLeftForAdults__5AbodeFv(struct Abode* this) asm("?GetRoomLeftForAdults@Abode@@QAEHXZ");
 // win1.41 00404680 mac 103e40f0 Abode::GetRoomLeftForChildren(void)

@@ -922,7 +922,7 @@ bool __fastcall IsEnoughFoodForDinner__5AbodeFv(struct Abode* this)
 }
 
 __attribute__((XOR32rr_REV))
-struct Villager* __fastcall GetOtherParent__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager)
+struct Villager* __fastcall GetSpouse__5AbodeFP8Villager(struct Abode* this, const void* edx, struct Villager* villager)
 {
     asm("{disp8} mov        edx, dword ptr [esp + 0x04]");                   // 0x00404630    8b542404
     asm("{disp8} mov        eax, dword ptr [edx + 0x28]");                   // 0x00404634    8b4228

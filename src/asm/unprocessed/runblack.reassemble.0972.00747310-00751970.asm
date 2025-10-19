@@ -11,7 +11,7 @@
 .extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
 .extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
 .extern ?RemoveDeletedVillagerFromAbode@Abode@@QAEXPAVVillager@@@Z
-.extern ?GetOtherParent@Abode@@QAEPAVVillager@@PAV2@@Z
+.extern ?GetSpouse@Abode@@QAEPAVVillager@@PAV2@@Z
 .extern ?GetRoomLeftForAdults@Abode@@QAEHXZ
 .extern ?ChildToAdult@Abode@@QAEXPAVVillager@@@Z
 .extern ?Find@GAbodeInfo@@SAPAV1@W4TRIBE_TYPE@@W4ABODE_NUMBER@@@Z
@@ -14447,7 +14447,7 @@ _jmp_addr_0x0075030a:    xor.s              eax, eax                            
                          mov.s              ecx, esi                                       // 0x0075033d    8bce
                          call               @GetAbode__8VillagerFv@4                       // 0x0075033f    e81c1e0000
                          mov.s              ecx, eax                                       // 0x00750344    8bc8
-                         call               ?GetOtherParent@Abode@@QAEPAVVillager@@PAV2@@Z // 0x00750346    e8e542cbff
+                         call               ?GetSpouse@Abode@@QAEPAVVillager@@PAV2@@Z      // 0x00750346    e8e542cbff
                          mov.s              esi, eax                                       // 0x0075034b    8bf0
                          test               esi, esi                                       // 0x0075034d    85f6
                          {disp8} je         _jmp_addr_0x00750361                           // 0x0075034f    7410
