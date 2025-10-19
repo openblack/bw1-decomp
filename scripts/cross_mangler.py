@@ -1,7 +1,7 @@
 import json
 from copy import copy
 
-from mac_unmangler import demangle, UnmangledDetails
+from mac_unmangler import UnmangledDetails
 from msvc_mangler import mangle_class, mangle_function
 
 EMBEDDED_ENUMS = {
@@ -10,6 +10,7 @@ EMBEDDED_ENUMS = {
 
 
 def mac_mangled_to_msvc_mangled(return_type: str, call_type: str, mac_mangled: str, custom_types_lut: dict[str, str]) -> str:
+    is_virtual = False  # Normally, all virtual functions are named
     if return_type in custom_types_lut:
         return_type = custom_types_lut[return_type]
     elif return_type.removesuffix(" *") in custom_types_lut:
@@ -22,10 +23,22 @@ def mac_mangled_to_msvc_mangled(return_type: str, call_type: str, mac_mangled: s
     if mac_unmangled.args != [UnmangledDetails.Arg([], "void")]:
         for i in mac_unmangled.args:
             i = copy(i)
-            i.typename = custom_types_lut.get(i.typename, i.typename)
-            t = str(i).replace("&", "*")
-            if t.count("const") == 1 and t.endswith(" const *"):
-                t = f"const {t.removesuffix(" const *")} *"
+            if type(i.typename) is str:
+                i.typename = custom_types_lut.get(i.typename, i.typename)
+                t = str(i).replace("&", "*")
+                if t.count("const") == 1 and t.endswith(" const *"):
+                    t = f"const {t.removesuffix(" const *")} *"
+            else:
+                datatype = copy(i.typename)
+                i.typename = datatype
+                if datatype.is_member:
+                    datatype.is_member = False
+                    if datatype.arg_types == [UnmangledDetails.Arg([], 'void')]:
+                        datatype.arg_types = []
+                    datatype.arg_types = [UnmangledDetails.Arg([UnmangledDetails.Arg.Qualifier.POINTER], datatype.class_type)] + datatype.arg_types
+                    for j in datatype.arg_types:
+                        j.typename = custom_types_lut.get(j.typename, j.typename)
+                t = str(i)
             argument_types.append(t)
     argument_names = [f"param_{i + 1}" for i in range(len(argument_types))]
 
@@ -54,7 +67,7 @@ public:
         function_definition = f"{return_type} {call_type} {mac_unmangled.get_post_namespace_signature()};"
         mangled_name = mangle_function(function_definition)
 
-    return mangled_name, mac_unmangled, argument_types, argument_names
+    return mangled_name, mac_unmangled, return_type, argument_types, argument_names
 
 
 if __name__ == "__main__":
@@ -70,5 +83,5 @@ if __name__ == "__main__":
 
     for line in fileinput.input():
         return_type, call_type, mac_mangled = line.strip().split(" ")
-        mangled_name, _, _, _ = mac_mangled_to_msvc_mangled(return_type, call_type, mac_mangled, custom_types_lut)
+        mangled_name, _, _, _, _ = mac_mangled_to_msvc_mangled(return_type, call_type, mac_mangled, custom_types_lut)
         print(mangled_name)

@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
+from typing import Union
 
 class UnmangledDetails:
     fundamental_types = {
@@ -21,7 +22,7 @@ class UnmangledDetails:
             REFERENCE = 1
             CONST = 2
         qualifiers: list[Qualifier]
-        typename: str
+        typename: Union[str,"UnmangledDetails.FunctionType"]
 
         def __str__(self):
             qualifier_map = {
@@ -42,13 +43,14 @@ class UnmangledDetails:
         arg_types: list['UnmangledDetails.Arg']
         is_member: bool = False
         class_type: str = ""
+        call_conv: str = "__cdecl"
 
         def __str__(self):
             args_str = ', '.join(map(str, self.arg_types))
             member_part = ""
             if self.is_member:
                 member_part = self.class_type + "::"
-            return f"{self.return_type} ({member_part}*)({args_str})"
+            return f"{self.return_type} ({self.call_conv} {member_part}*)({args_str})"
 
     @staticmethod
     def demangle_type(mangled: str) -> tuple[str, str]:
@@ -108,13 +110,13 @@ class UnmangledDetails:
             # Member function pointer
             elif mangled[0] == 'M':
                 func_type, mangled = UnmangledDetails.demangle_function_pointer(mangled[1:], True)
-                arg.typename = str(func_type)
+                arg.typename = func_type
                 args.append(arg)
                 arg = UnmangledDetails.Arg([], "")
             # Regular function pointer
             elif mangled[0] == 'F':
                 func_type, mangled = UnmangledDetails.demangle_function_pointer(mangled[:], False)
-                arg.typename = str(func_type)
+                arg.typename = func_type
                 args.append(arg)
                 arg = UnmangledDetails.Arg([], "")
             # Type name
@@ -194,7 +196,7 @@ class UnmangledDetails:
             else:
                 raise NotImplementedError(f"Unknown return type: {mangled[0]}")
 
-        func_type = UnmangledDetails.FunctionType(return_type, args, is_member, class_type)
+        func_type = UnmangledDetails.FunctionType(return_type, args, is_member, class_type, "__thiscall" if is_member else '__cdecl')
         return func_type, mangled
 
     def __init__(self, mangled: str):

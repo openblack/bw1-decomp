@@ -37,22 +37,13 @@ def insert_functions_from_csv(csv_path: Path, json_path: Path):
     new_entries = []
     with csv_path.open() as f:
         for line in csv.DictReader(f.readlines()):
-            is_virtual = False  # Normally, all virtual functions are named
             win_addr = fix_addr(line['win addr'])
             mac_addr = fix_addr(line['mac addr'])
             call_type = fix_calltype(line['call type'])
             mac_mangled = fix_mac_mangled(line['mac mangled name'])
             return_type = line['return type']
             
-            mangled_name, mac_unmangled, argument_types, argument_names = mac_mangled_to_msvc_mangled(return_type, call_type, mac_mangled, custom_types_lut)
-
-            if return_type in custom_types_lut:
-                return_type = custom_types_lut[return_type]
-            elif return_type.removesuffix(" *") in custom_types_lut:
-                return_type = custom_types_lut[return_type.removesuffix(" *")] + " *"
-            elif return_type.removesuffix("*") in custom_types_lut:
-                return_type = custom_types_lut[return_type.removesuffix("*")] + "*"
-            return_type = custom_types_lut.get(return_type, return_type)
+            mangled_name, mac_unmangled, return_type, argument_types, argument_names = mac_mangled_to_msvc_mangled(return_type, call_type, mac_mangled, custom_types_lut)
 
             print(f"Inserting {str(mac_unmangled)}")
             entry = dict(
