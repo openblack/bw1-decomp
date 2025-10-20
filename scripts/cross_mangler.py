@@ -36,8 +36,9 @@ def mac_mangled_to_msvc_mangled(return_type: str, call_type: str, mac_mangled: s
                     if datatype.arg_types == [UnmangledDetails.Arg([], 'void')]:
                         datatype.arg_types = []
                     datatype.arg_types = [UnmangledDetails.Arg([UnmangledDetails.Arg.Qualifier.POINTER], datatype.class_type)] + datatype.arg_types
-                    for j in datatype.arg_types:
-                        j.typename = custom_types_lut.get(j.typename, j.typename)
+                for j in datatype.arg_types:
+                    j.typename = custom_types_lut.get(j.typename, j.typename)
+                datatype.return_type = custom_types_lut.get(datatype.return_type, datatype.return_type)
                 t = str(i)
             argument_types.append(t)
     argument_names = [f"param_{i + 1}" for i in range(len(argument_types))]
