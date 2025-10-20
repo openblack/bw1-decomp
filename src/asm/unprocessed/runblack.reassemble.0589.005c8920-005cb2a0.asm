@@ -31,7 +31,7 @@
 .extern _jmp_addr_0x005d78d0
 .extern _jmp_addr_0x005d7e40
 .extern _jmp_addr_0x005dc130
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x006e9d10
 .extern _StartScript__7GScriptFPc@4
 .extern ?StopHelpScripts@GScript@@QAEXXZ
@@ -432,7 +432,7 @@ _jmp_addr_0x005c8c10:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          sub.s              eax, esi                                      // 0x005c8c27    2bc6
                          inc                eax                                           // 0x005c8c29    40
                          push               eax                                           // 0x005c8c2a    50
-                         call               _jmp_addr_0x006de570                          // 0x005c8c2b    e840591100
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x005c8c2b    e840591100
                          add                esp, 0x04                                     // 0x005c8c30    83c404
                          add.s              eax, esi                                      // 0x005c8c33    03c6
                          pop                esi                                           // 0x005c8c35    5e

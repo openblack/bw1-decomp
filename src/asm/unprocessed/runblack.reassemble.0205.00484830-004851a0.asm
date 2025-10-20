@@ -18,7 +18,7 @@
 .extern _jmp_addr_0x004ee2b0
 .extern @GetAnim__9MorphableFll@16
 .extern _GameRand__5GRandFl
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern  ??3@YAXPAX@Z
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
@@ -334,7 +334,7 @@ _jmp_addr_0x00484b2b:    {disp32} mov       eax, dword ptr [esi + 0x00004834]   
                          pop                esi                                      // 0x00484b56    5e
                          ret                0x0004                                   // 0x00484b57    c20400
 _jmp_addr_0x00484b5a:    push               0x2                                      // 0x00484b5a    6a02
-                         call               _jmp_addr_0x006de570                     // 0x00484b5c    e80f9a2500
+                         call               ?LocalRand@GRand@@SAIJ@Z                 // 0x00484b5c    e80f9a2500
                          add                esp, 0x04                                // 0x00484b61    83c404
                          push               eax                                      // 0x00484b64    50
                          {disp8} mov        eax, dword ptr [esp + 0x0c]              // 0x00484b65    8b44240c
@@ -406,7 +406,7 @@ _jmp_addr_0x00484bc2:    pop                edi                                 
                          pop                esi                                      // 0x00484bfe    5e
                          ret                0x0004                                   // 0x00484bff    c20400
 _jmp_addr_0x00484c02:    push               0x2                                      // 0x00484c02    6a02
-                         call               _jmp_addr_0x006de570                     // 0x00484c04    e867992500
+                         call               ?LocalRand@GRand@@SAIJ@Z                 // 0x00484c04    e867992500
                          add                esp, 0x04                                // 0x00484c09    83c404
                          push               eax                                      // 0x00484c0c    50
                          {disp8} mov        eax, dword ptr [esp + 0x0c]              // 0x00484c0d    8b44240c
@@ -514,7 +514,7 @@ _jmp_addr_0x00484ce0:    push               esi                                 
                          pop                esi                                      // 0x00484d0e    5e
                          ret                0x0004                                   // 0x00484d0f    c20400
 _jmp_addr_0x00484d12:    push               0x2                                      // 0x00484d12    6a02
-                         call               _jmp_addr_0x006de570                     // 0x00484d14    e857982500
+                         call               ?LocalRand@GRand@@SAIJ@Z                 // 0x00484d14    e857982500
                          add                esp, 0x04                                // 0x00484d19    83c404
                          push               eax                                      // 0x00484d1c    50
                          {disp8} mov        eax, dword ptr [esp + 0x0c]              // 0x00484d1d    8b44240c

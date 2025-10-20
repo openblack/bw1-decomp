@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x00646950
 .extern _jmp_addr_0x0064a9f0
 .extern _jmp_addr_0x0068e6e0
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x0071d8e0
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
@@ -793,7 +793,7 @@ _jmp_addr_0x00481fc0:    {disp32} mov       ecx, dword ptr [esi + 0x00005798]   
                          {disp32} mov       eax, dword ptr [esi + 0x0000546c]                    // 0x0048201b    8b866c540000
                          push               eax                                                  // 0x00482021    50
                          {disp32} mov       dword ptr [esi + 0x00005470], ebp                    // 0x00482022    89ae70540000
-                         call               _jmp_addr_0x006de570                                 // 0x00482028    e843c52500
+                         call               ?LocalRand@GRand@@SAIJ@Z                             // 0x00482028    e843c52500
                          {disp32} mov       ecx, dword ptr [esi + 0x0000546c]                    // 0x0048202d    8b8e6c540000
                          sar                ecx, 1                                               // 0x00482033    d1f9
                          add                esp, 0x04                                            // 0x00482035    83c404

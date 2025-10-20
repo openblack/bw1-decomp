@@ -58,8 +58,8 @@
 .extern ?GetPlayer@Rock@@UAEPAVGPlayer@@XZ
 .extern ?Save@Rock@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@Rock@@UAEIAAVGameOSFile@@@Z
-.extern _jmp_addr_0x00715130
-.extern _jmp_addr_0x00719610
+.extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x00730960
 .extern ?DebugText@Villager@@QAEXH@Z
 .extern _jmp_addr_0x0077b970
@@ -4607,7 +4607,7 @@ _jmp_addr_0x005114aa:    push               ebx                                 
                          call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x00511525    e856130f00
                          push               eax                                           // 0x0051152a    50
                          push               0x2b                                          // 0x0051152b    6a2b
-                         call               _jmp_addr_0x00715130                          // 0x0051152d    e8fe3b2000
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                          // 0x0051152d    e8fe3b2000
                          add                esp, 0x04                                     // 0x00511532    83c404
                          push               eax                                           // 0x00511535    50
                          {disp8} lea        eax, dword ptr [esp + 0x54]                   // 0x00511536    8d442454
@@ -4625,7 +4625,7 @@ _jmp_addr_0x005114aa:    push               ebx                                 
                          push               ecx                                           // 0x0051155a    51
                          push               edx                                           // 0x0051155b    52
                          push               esi                                           // 0x0051155c    56
-                         call               _jmp_addr_0x00719610                          // 0x0051155d    e8ae802000
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z  // 0x0051155d    e8ae802000
                          add                esp, 0x44                                     // 0x00511562    83c444
                          mov.s              ecx, esi                                      // 0x00511565    8bce
                          call               ?CheckAndSetSaved@GameThing@@QAE_NXZ          // 0x00511567    e884e90500

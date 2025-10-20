@@ -81,7 +81,7 @@
 .extern _jmp_addr_0x00633260
 .extern _jmp_addr_0x00735890
 .extern _jmp_addr_0x00735980
-.extern _jmp_addr_0x0074dc30
+.extern ?ConvertAngle3DToGame@GUtils@@SAIM@Z
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
@@ -4818,7 +4818,7 @@ _jmp_addr_0x00442de3:    ret                0x0008                              
                          call               _jmp_addr_0x00441e60                          // 0x00442df0    e86bf0ffff
                          push               ecx                                           // 0x00442df5    51
                          fstp               dword ptr [esp]                               // 0x00442df6    d91c24
-                         call               _jmp_addr_0x0074dc30                          // 0x00442df9    e832ae3000
+                         call               ?ConvertAngle3DToGame@GUtils@@SAIM@Z          // 0x00442df9    e832ae3000
                          add                esp, 0x04                                     // 0x00442dfe    83c404
                          ret                                                              // 0x00442e01    c3
                          nop                                                              // 0x00442e02    90

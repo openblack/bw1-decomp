@@ -20,7 +20,7 @@
 .extern _jmp_addr_0x006182f0
 .extern @GetAnim__9MorphableFll@16
 .extern _GameRand__5GRandFl
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x006e8210
 .extern _jmp_addr_0x007a1400
 .extern _atexit
@@ -1133,7 +1133,7 @@ _jmp_addr_0x00484310:    push               esi                                 
                          add                esp, 0x0c                                     // 0x0048432e    83c40c
                          {disp8} jmp        _jmp_addr_0x0048433d                          // 0x00484331    eb0a
 _jmp_addr_0x00484333:    push               0x2                                           // 0x00484333    6a02
-                         call               _jmp_addr_0x006de570                          // 0x00484335    e836a22500
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x00484335    e836a22500
                          add                esp, 0x04                                     // 0x0048433a    83c404
 _jmp_addr_0x0048433d:    {disp32} mov       edx, dword ptr [esi + 0x00004a90]             // 0x0048433d    8b96904a0000
                          xor.s              ecx, ecx                                      // 0x00484343    33c9

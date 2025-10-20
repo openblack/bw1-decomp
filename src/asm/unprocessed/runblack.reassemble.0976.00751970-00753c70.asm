@@ -40,8 +40,8 @@
 .extern _GameRand__5GRandFl
 .extern _GameFloatRand__5GRandFf
 .extern _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri
-.extern _jmp_addr_0x00715130
-.extern _jmp_addr_0x00719610
+.extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x0071ed40
 .extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073bab0
@@ -52,9 +52,9 @@
 .extern ?IsInStateOfEmergency@Town@@QAE_NXZ
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _GetPosFromAngle__6GUtilsFff
-.extern _jmp_addr_0x0074dc30
+.extern ?ConvertAngle3DToGame@GUtils@@SAIM@Z
 .extern _jmp_addr_0x0074dce0
-.extern _jmp_addr_0x0074ecc0
+.extern ?GetMidPoint@GUtils@@SAXAAUMapCoords@@0M@Z
 .extern _jmp_addr_0x0074fb80
 .extern @DeleteDependancys__8VillagerFv@4
 .extern ?GetGameTurnsSinceLastChecked@Villager@@QAEIXZ
@@ -414,7 +414,7 @@ _jmp_addr_0x00751ba9:    mov.s              ecx, esi                            
                          call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x00751c21    e85a0cebff
                          push               eax                                           // 0x00751c26    50
                          push               0x12                                          // 0x00751c27    6a12
-                         call               _jmp_addr_0x00715130                          // 0x00751c29    e80235fcff
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                          // 0x00751c29    e80235fcff
                          add                esp, 0x04                                     // 0x00751c2e    83c404
                          push               eax                                           // 0x00751c31    50
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                   // 0x00751c32    8d4c243c
@@ -459,7 +459,7 @@ _jmp_addr_0x00751c77:    mov                edx, dword ptr [esi]                
                          push               eax                                           // 0x00751ca3    50
                          push               edi                                           // 0x00751ca4    57
                          push               0x10                                          // 0x00751ca5    6a10
-_jmp_addr_0x00751ca7:    call               _jmp_addr_0x00715130                          // 0x00751ca7    e88434fcff
+_jmp_addr_0x00751ca7:    call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                          // 0x00751ca7    e88434fcff
                          add                esp, 0x04                                     // 0x00751cac    83c404
                          push               eax                                           // 0x00751caf    50
                          {disp8} lea        edx, dword ptr [esp + 0x3c]                   // 0x00751cb0    8d54243c
@@ -477,7 +477,7 @@ _jmp_addr_0x00751ca7:    call               _jmp_addr_0x00715130                
                          push               eax                                           // 0x00751cd4    50
                          push               ecx                                           // 0x00751cd5    51
 _jmp_addr_0x00751cd6:    push               esi                                           // 0x00751cd6    56
-                         call               _jmp_addr_0x00719610                          // 0x00751cd7    e83479fcff
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z  // 0x00751cd7    e83479fcff
                          add                esp, 0x28                                     // 0x00751cdc    83c428
 _jmp_addr_0x00751cdf:    pop                edi                                           // 0x00751cdf    5f
                          pop                esi                                           // 0x00751ce0    5e
@@ -1629,7 +1629,7 @@ _jmp_addr_0x007526db:    {disp8} mov        ecx, dword ptr [esp + 0x2c]         
                          {disp8} lea        edx, dword ptr [esp + 0x18]                   // 0x007526e9    8d542418
                          push               ebp                                           // 0x007526ed    55
                          push               edx                                           // 0x007526ee    52
-                         call               _jmp_addr_0x0074ecc0                          // 0x007526ef    e8ccc5ffff
+                         call               ?GetMidPoint@GUtils@@SAXAAUMapCoords@@0M@Z    // 0x007526ef    e8ccc5ffff
                          {disp8} mov        eax, dword ptr [esp + 0x40]                   // 0x007526f4    8b442440
                          add                esp, 0x10                                     // 0x007526f8    83c410
                          push               eax                                           // 0x007526fb    50
@@ -1643,7 +1643,7 @@ _jmp_addr_0x007526db:    {disp8} mov        ecx, dword ptr [esp + 0x2c]         
                          {disp8} lea        eax, dword ptr [esp + 0x24]                   // 0x0075270e    8d442424
                          push               ebx                                           // 0x00752712    53
                          push               eax                                           // 0x00752713    50
-                         call               _jmp_addr_0x0074ecc0                          // 0x00752714    e8a7c5ffff
+                         call               ?GetMidPoint@GUtils@@SAXAAUMapCoords@@0M@Z    // 0x00752714    e8a7c5ffff
                          mov                ecx, dword ptr [eax]                          // 0x00752719    8b08
                          {disp8} mov        dword ptr [esp + 0x20], ecx                   // 0x0075271b    894c2420
                          {disp8} mov        edx, dword ptr [eax + 0x04]                   // 0x0075271f    8b5004
@@ -1685,7 +1685,7 @@ _jmp_addr_0x007526db:    {disp8} mov        ecx, dword ptr [esp + 0x2c]         
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x00752774    d95c2410
                          {disp8} mov        edx, dword ptr [esp + 0x10]                   // 0x00752778    8b542410
                          push               edx                                           // 0x0075277c    52
-                         call               _jmp_addr_0x0074dc30                          // 0x0075277d    e8aeb4ffff
+                         call               ?ConvertAngle3DToGame@GUtils@@SAIM@Z          // 0x0075277d    e8aeb4ffff
                          add                esp, 0x0c                                     // 0x00752782    83c40c
                          push               eax                                           // 0x00752785    50
                          mov.s              ecx, esi                                      // 0x00752786    8bce

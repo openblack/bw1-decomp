@@ -62,7 +62,7 @@
 .extern _jmp_addr_0x007370b0
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Spiral__6GUtilsFRlRl
-.extern _jmp_addr_0x0074dc30
+.extern ?ConvertAngle3DToGame@GUtils@@SAIM@Z
 .extern _ConvertGameAngleTo3D__6GUtilsFl
 .extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
 .extern _jmp_addr_0x007a1400
@@ -399,7 +399,7 @@ _jmp_addr_0x0060da70:    mov                edx, dword ptr [esi]                
                          push               edi                                         // 0x0060dac8    57
                          call               @SetYAngle__6ObjectFf@12                    // 0x0060dac9    e892b70200
                          push               edi                                         // 0x0060dace    57
-                         call               _jmp_addr_0x0074dc30                        // 0x0060dacf    e85c011400
+                         call               ?ConvertAngle3DToGame@GUtils@@SAIM@Z        // 0x0060dacf    e85c011400
                          add                esp, 0x04                                   // 0x0060dad4    83c404
                          pop                edi                                         // 0x0060dad7    5f
                          {disp8} mov        word ptr [esi + 0x5c], ax                   // 0x0060dad8    6689465c

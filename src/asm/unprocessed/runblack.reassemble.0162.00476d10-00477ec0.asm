@@ -47,7 +47,7 @@
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x0074d360
 .extern _jmp_addr_0x0074d380
-.extern _jmp_addr_0x0074d420
+.extern ?GetXByAngleMetersDistance@GUtils@@SAXGM@Z
 .extern _jmp_addr_0x0074e290
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007faa50
@@ -1377,7 +1377,7 @@ _jmp_addr_0x00477a67:    {disp32} mov       eax, dword ptr [esi + 0x00000164]   
                          push               0x41200000                               // 0x00477ade    6800002041
                          mov.s              esi, eax                                 // 0x00477ae3    8bf0
                          push               esi                                      // 0x00477ae5    56
-                         call               _jmp_addr_0x0074d420                     // 0x00477ae6    e835592d00
+                         call               ?GetXByAngleMetersDistance@GUtils@@SAXGM@Z                     // 0x00477ae6    e835592d00
                          {disp8} mov        edi, dword ptr [esp + 0x1c]              // 0x00477aeb    8b7c241c
                          {disp8} mov        dword ptr [esp + 0x14], eax              // 0x00477aef    89442414
                          {disp8} fild       dword ptr [esp + 0x14]                   // 0x00477af3    db442414
@@ -1385,7 +1385,7 @@ _jmp_addr_0x00477a67:    {disp32} mov       eax, dword ptr [esi + 0x00000164]   
                          push               esi                                      // 0x00477afc    56
                          {disp8} mov        dword ptr [edi + 0x04], 0x00000000       // 0x00477afd    c7470400000000
                          fstp               dword ptr [edi]                          // 0x00477b04    d91f
-                         call               _jmp_addr_0x0074d420                     // 0x00477b06    e815592d00
+                         call               ?GetXByAngleMetersDistance@GUtils@@SAXGM@Z                     // 0x00477b06    e815592d00
                          {disp8} mov        dword ptr [esp + 0x24], eax              // 0x00477b0b    89442424
                          {disp8} fild       dword ptr [esp + 0x24]                   // 0x00477b0f    db442424
                          add                esp, 0x14                                // 0x00477b13    83c414

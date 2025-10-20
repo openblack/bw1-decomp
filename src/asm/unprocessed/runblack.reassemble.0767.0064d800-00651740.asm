@@ -34,7 +34,7 @@
 .extern _jmp_addr_0x006524b0
 .extern _jmp_addr_0x0068c1d0
 .extern _jmp_addr_0x0068c650
-.extern _jmp_addr_0x00719610
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x007337d0
 .extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x00741f30
@@ -170,7 +170,7 @@ _jmp_addr_0x0064d840:    sub                esp, 0x000000c8                     
                          push               ecx                                           // 0x0064d882    51
                          push               ebp                                           // 0x0064d883    55
                          push               ebx                                           // 0x0064d884    53
-                         call               _jmp_addr_0x00719610                          // 0x0064d885    e886bd0c00
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z  // 0x0064d885    e886bd0c00
                          {disp32} mov       ecx, dword ptr [ebx + 0x00000944]             // 0x0064d88a    8b8b44090000
                          add                esp, 0x1c                                     // 0x0064d890    83c41c
                          test               ecx, ecx                                      // 0x0064d893    85c9
@@ -197,7 +197,7 @@ _jmp_addr_0x0064d8a9:    {disp32} mov       eax, dword ptr [esi + 0x000005b4]   
                          push               edx                                           // 0x0064d8d2    52
                          push               ebp                                           // 0x0064d8d3    55
                          push               ebx                                           // 0x0064d8d4    53
-                         call               _jmp_addr_0x00719610                          // 0x0064d8d5    e836bd0c00
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z  // 0x0064d8d5    e836bd0c00
                          {disp32} mov       eax, dword ptr [esp + 0x000000fc]             // 0x0064d8da    8b8424fc000000
                          add                esp, 0x1c                                     // 0x0064d8e1    83c41c
                          push               eax                                           // 0x0064d8e4    50

@@ -118,8 +118,8 @@
 .extern ?Save@Rock@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@Rock@@UAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x006e8160
-.extern _jmp_addr_0x00715130
-.extern _jmp_addr_0x00719610
+.extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x0071bf70
 .extern _jmp_addr_0x0071ccc0
 .extern _jmp_addr_0x0071cd70

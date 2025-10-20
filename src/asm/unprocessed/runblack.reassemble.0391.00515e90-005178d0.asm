@@ -29,7 +29,7 @@
 .extern _jmp_addr_0x005d56c0
 .extern _jmp_addr_0x0063b040
 .extern _jmp_addr_0x0063b5d0
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x0071d8e0
 .extern _jmp_addr_0x00726d20
 .extern _jmp_addr_0x00726d30
@@ -323,7 +323,7 @@ _jmp_addr_0x00516137:    {disp32} mov       eax, dword ptr [_game]              
                          {disp32} fdivr     dword ptr [rdata_bytes + 0x2f704]             // 0x0051614e    d83d04878d00
                          call               _jmp_addr_0x007a1400                          // 0x00516154    e8a7b22800
                          push               eax                                           // 0x00516159    50
-                         call               _jmp_addr_0x006de570                          // 0x0051615a    e811841c00
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x0051615a    e811841c00
                          add                esp, 0x04                                     // 0x0051615f    83c404
                          cmp                eax, 0x01                                     // 0x00516162    83f801
                          {disp32} jne       _jmp_addr_0x00516288                          // 0x00516165    0f851d010000

@@ -7,6 +7,7 @@
 
 // Forward Declares
 
+struct GUtils;
 struct JustMapXZ;
 struct MapCoords;
 
@@ -42,6 +43,14 @@ float __stdcall GetDistanceModifier__6GUtilsFff(float param_1, float param_2);
 int __stdcall GetMapCellSpiralSizeFromRadius__6GUtilsFf(float param_1);
 // win1.41 0074f540 mac 100027c0 GUtils::GetIncrementSpiralSizeFromRadius(float, float)
 int __stdcall GetIncrementSpiralSizeFromRadius__6GUtilsFff(float param_1, float param_2);
+// win1.41 0074d420 mac 1010b7d0 GUtils::GetXByAngleMetersDistance(unsigned short, float)
+void __cdecl GetXByAngleMetersDistance__6GUtilsFUsf(struct GUtils* this, unsigned short param_1, float param_2) asm("?GetXByAngleMetersDistance@GUtils@@SAXGM@Z");
+// win1.41 0074ce10 mac 103cac30 GUtils::FastDistance(MapCoords const &, MapCoords const &)
+int __cdecl FastDistance__6GUtilsFRC9MapCoordsRC9MapCoords(struct GUtils* this, const struct MapCoords* param_1, const struct MapCoords* param_2) asm("?FastDistance@GUtils@@SAHABUMapCoords@@0@Z");
+// win1.41 0074ecc0 mac 10109320 GUtils::GetMidPoint(MapCoords &, MapCoords &, float)
+void __cdecl GetMidPoint__6GUtilsFR9MapCoordsR9MapCoordsf(struct GUtils* this, struct MapCoords* param_1, struct MapCoords* param_2, float param_3) asm("?GetMidPoint@GUtils@@SAXAAUMapCoords@@0M@Z");
+// win1.41 0074dc30 mac 1057b5b0 GUtils::ConvertAngle3DToGame(float)
+uint32_t __cdecl ConvertAngle3DToGame__6GUtilsFf(struct GUtils* this, float param_1) asm("?ConvertAngle3DToGame@GUtils@@SAIM@Z");
 // win1.41 0074f620 mac inlined FUN_0074f620
 float __cdecl FUN_0074f620(uint32_t param_1);
 // win1.41 008300a0 mac 1000f700 CHAR2WCHAR(char *)

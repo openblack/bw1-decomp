@@ -14,7 +14,7 @@
 .extern _jmp_addr_0x00635450
 .extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
 .extern @GetPlayer3DColor__7GPlayerFv@12
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x00845d30
 
 .globl _jmp_addr_0x005525e0
@@ -150,7 +150,7 @@ _jmp_addr_0x005526ef:    {disp32} mov     edx, dword ptr [ebx + 0x000000b0]     
                          shr              esi, 8                                  // 0x00552776    c1ee08
                          push             0x7                                     // 0x00552779    6a07
                          or.s             esi, eax                                // 0x0055277b    0bf0
-                         call             _jmp_addr_0x006de570                    // 0x0055277d    e8eebd1800
+                         call             ?LocalRand@GRand@@SAIJ@Z                // 0x0055277d    e8eebd1800
                          add              esp, 0x04                               // 0x00552782    83c404
                          cmp              eax, 0x03                               // 0x00552785    83f803
                          {disp32} ja      _jmp_addr_0x00552922                    // 0x00552788    0f8794010000
@@ -264,7 +264,7 @@ _jmp_addr_0x00552924:    mov.s            ecx, ebx                              
                          test             ecx, ecx                                // 0x0055292e    85c9
                          {disp8} je       _jmp_addr_0x00552969                    // 0x00552930    7437
                          push             0x2                                     // 0x00552932    6a02
-                         call             _jmp_addr_0x006de570                    // 0x00552934    e837bc1800
+                         call             ?LocalRand@GRand@@SAIJ@Z                // 0x00552934    e837bc1800
                          add              esp, 0x04                               // 0x00552939    83c404
                          neg              eax                                     // 0x0055293c    f7d8
                          sbb.s            eax, eax                                // 0x0055293e    1bc0

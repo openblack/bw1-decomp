@@ -57,7 +57,7 @@
 .extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
 .extern @IsNeutral__7GPlayerFv@4
 .extern @IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE@12
-.extern _jmp_addr_0x00719610
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern @__ct__9SpellIconFRC9MapCoordsPC14GSpellIconInfoPC14GSpellSeedInfofffi@36
 .extern _jmp_addr_0x00726080
 .extern ?ToBeDeleted@SpellIcon@@UAEXH@Z
@@ -2885,7 +2885,7 @@ _jmp_addr_0x0077ef5e:    {disp32} mov       edx, dword ptr [esp + 0x000000e0]   
                          push               ecx                                           // 0x0077ef79    51
                          push               edx                                           // 0x0077ef7a    52
                          push               esi                                           // 0x0077ef7b    56
-                         call               _jmp_addr_0x00719610                          // 0x0077ef7c    e88fa6f9ff
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z  // 0x0077ef7c    e88fa6f9ff
                          add                esp, 0x10                                     // 0x0077ef81    83c410
                          pop                edi                                           // 0x0077ef84    5f
                          pop                esi                                           // 0x0077ef85    5e

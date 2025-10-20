@@ -137,8 +137,8 @@
 .extern @GetInfo__8ReactionCFv@4
 .extern _jmp_addr_0x006e48a0
 .extern _jmp_addr_0x00711e10
-.extern _jmp_addr_0x00715130
-.extern _jmp_addr_0x00719610
+.extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x0071eb60
 .extern _jmp_addr_0x007436f0
 .extern _jmp_addr_0x0074cd50
@@ -418,7 +418,7 @@ _jmp_addr_0x00477fdf:    push               edi                                 
                          call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x00478017    e864a81800
                          push               eax                                           // 0x0047801c    50
                          push               0x2f                                          // 0x0047801d    6a2f
-                         call               _jmp_addr_0x00715130                          // 0x0047801f    e80cd12900
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                          // 0x0047801f    e80cd12900
                          add                esp, 0x04                                     // 0x00478024    83c404
                          push               eax                                           // 0x00478027    50
                          {disp8} lea        eax, dword ptr [esp + 0x38]                   // 0x00478028    8d442438
@@ -436,7 +436,7 @@ _jmp_addr_0x00477fdf:    push               edi                                 
                          push               ecx                                           // 0x0047804c    51
                          push               edx                                           // 0x0047804d    52
                          push               esi                                           // 0x0047804e    56
-                         call               _jmp_addr_0x00719610                          // 0x0047804f    e8bc152a00
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z  // 0x0047804f    e8bc152a00
                          add                esp, 0x28                                     // 0x00478054    83c428
                          pop                edi                                           // 0x00478057    5f
                          pop                esi                                           // 0x00478058    5e

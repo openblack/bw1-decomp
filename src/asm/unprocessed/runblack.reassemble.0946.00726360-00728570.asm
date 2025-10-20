@@ -181,14 +181,14 @@
 .extern _jmp_addr_0x006d0c20
 .extern _GameRand__5GRandFl
 .extern _GameFloatRand__5GRandFf
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x006de590
 .extern _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri
 .extern @GetInfo__8ReactionCFv@4
 .extern _jmp_addr_0x006e4750
 .extern _jmp_addr_0x006e48a0
-.extern _jmp_addr_0x00715130
-.extern _jmp_addr_0x00719610
+.extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x0071ab70
 .extern _jmp_addr_0x0071adf0
 .extern _jmp_addr_0x0071af50

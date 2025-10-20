@@ -87,8 +87,8 @@
 .extern _jmp_addr_0x0066cf10
 .extern _GameRand__5GRandFl
 .extern @__ct__4RockFRC9MapCoordsPC17GMobileStaticInfoP6ObjectP7GPlayerff@32
-.extern _jmp_addr_0x00715130
-.extern _jmp_addr_0x00719610
+.extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x0073e1f0
 .extern _jmp_addr_0x00741020
 .extern _GetDistance__6GUtilsFRC9MapCoordsRC9MapCoords
@@ -8063,7 +8063,7 @@ _jmp_addr_0x00606527:    mov                ecx, dword ptr [eax]                
                          call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x00606567    e814c3ffff
                          push               eax                                           // 0x0060656c    50
                          push               0x0                                           // 0x0060656d    6a00
-                         call               _jmp_addr_0x00715130                          // 0x0060656f    e8bceb1000
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                          // 0x0060656f    e8bceb1000
                          add                esp, 0x04                                     // 0x00606574    83c404
                          push               eax                                           // 0x00606577    50
                          {disp8} lea        eax, dword ptr [esp + 0x48]                   // 0x00606578    8d442448
@@ -8081,7 +8081,7 @@ _jmp_addr_0x00606527:    mov                ecx, dword ptr [eax]                
                          push               ecx                                           // 0x0060659c    51
                          push               edx                                           // 0x0060659d    52
                          push               esi                                           // 0x0060659e    56
-                         call               _jmp_addr_0x00719610                          // 0x0060659f    e86c301100
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z  // 0x0060659f    e86c301100
                          add                esp, 0x38                                     // 0x006065a4    83c438
                          pop                edi                                           // 0x006065a7    5f
                          pop                esi                                           // 0x006065a8    5e
@@ -9525,7 +9525,7 @@ _jmp_addr_0x006072ab:    mov                ecx, dword ptr [eax]                
                          call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x00607326    e855b5ffff
                          push               eax                                           // 0x0060732b    50
                          push               0x28                                          // 0x0060732c    6a28
-                         call               _jmp_addr_0x00715130                          // 0x0060732e    e8fddd1000
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                          // 0x0060732e    e8fddd1000
                          add                esp, 0x04                                     // 0x00607333    83c404
                          push               eax                                           // 0x00607336    50
                          {disp8} lea        eax, dword ptr [esp + 0x44]                   // 0x00607337    8d442444
@@ -9543,7 +9543,7 @@ _jmp_addr_0x006072ab:    mov                ecx, dword ptr [eax]                
                          push               ecx                                           // 0x0060735b    51
                          push               edx                                           // 0x0060735c    52
                          push               ebx                                           // 0x0060735d    53
-                         call               _jmp_addr_0x00719610                          // 0x0060735e    e8ad221100
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z  // 0x0060735e    e8ad221100
                          add                esp, 0x28                                     // 0x00607363    83c428
                          push               0x0                                           // 0x00607366    6a00
                          push               0x009c9698                                    // 0x00607368    6898969c00
@@ -11942,7 +11942,7 @@ _jmp_addr_0x00608919:    mov                ecx, dword ptr [eax]                
                          call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x006089b2    e8c99effff
                          push               eax                                           // 0x006089b7    50
                          push               0x2a                                          // 0x006089b8    6a2a
-                         call               _jmp_addr_0x00715130                          // 0x006089ba    e871c71000
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                          // 0x006089ba    e871c71000
                          add                esp, 0x04                                     // 0x006089bf    83c404
                          push               eax                                           // 0x006089c2    50
                          {disp8} lea        eax, dword ptr [esp + 0x60]                   // 0x006089c3    8d442460
@@ -11960,7 +11960,7 @@ _jmp_addr_0x00608919:    mov                ecx, dword ptr [eax]                
                          push               ecx                                           // 0x006089e3    51
                          push               edi                                           // 0x006089e4    57
                          push               esi                                           // 0x006089e5    56
-                         call               _jmp_addr_0x00719610                          // 0x006089e6    e8250c1100
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z  // 0x006089e6    e8250c1100
                          mov                edx, dword ptr [esi]                          // 0x006089eb    8b16
                          add                esp, 0x48                                     // 0x006089ed    83c448
                          mov.s              ecx, esi                                      // 0x006089f0    8bce

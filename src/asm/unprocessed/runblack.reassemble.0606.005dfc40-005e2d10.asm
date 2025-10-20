@@ -29,8 +29,8 @@
 .extern @GetX__7MapCellCFv@4
 .extern @GetZ__7MapCellCFv@4
 .extern _GameFloatRand__5GRandFf
-.extern _jmp_addr_0x00715130
-.extern _jmp_addr_0x00719610
+.extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x0074d480
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
@@ -3775,7 +3775,7 @@ _jmp_addr_0x005e2918:    fld                dword ptr [esi]                     
                          fstp               qword ptr [esp]                                // 0x005e292c    dd1c24
                          push               ebx                                            // 0x005e292f    53
                          push               0x5d                                           // 0x005e2930    6a5d
-                         call               _jmp_addr_0x00715130                           // 0x005e2932    e8f9271300
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                           // 0x005e2932    e8f9271300
                          add                esp, 0x04                                      // 0x005e2937    83c404
                          push               eax                                            // 0x005e293a    50
                          {disp8} lea        eax, dword ptr [esp + 0x20]                    // 0x005e293b    8d442420
@@ -3793,7 +3793,7 @@ _jmp_addr_0x005e2918:    fld                dword ptr [esi]                     
                          push               ecx                                            // 0x005e295b    51
                          push               edx                                            // 0x005e295c    52
                          push               0x00d1a280                                     // 0x005e295d    6880a2d100
-                         call               _jmp_addr_0x00719610                           // 0x005e2962    e8a96c1300
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z   // 0x005e2962    e8a96c1300
                          add                esp, 0x24                                      // 0x005e2967    83c424
                          mov                ecx, 0x00000001                                // 0x005e296a    b901000000
 _jmp_addr_0x005e296f:    add                esi, 0x04                                      // 0x005e296f    83c604
