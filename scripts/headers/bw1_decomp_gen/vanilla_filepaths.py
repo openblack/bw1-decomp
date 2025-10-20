@@ -1656,6 +1656,8 @@ ROOMMATE_CLASS_MAP = {
     "GPFootballInfo": "FootballInfo",
     "GPFootballPositionInfo": "FootballPositionInfo",
     "Waypoint": "WayPoint",
+    "AddSpecialRPObjects__FP8RPHolder": "RPHolder",
+    "CheckSquareFunction__FiiP8RPHolder": "RPHolder",
 }
 
 
