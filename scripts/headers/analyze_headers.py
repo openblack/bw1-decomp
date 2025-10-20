@@ -6,7 +6,6 @@ import re
 import sys
 from dataclasses import dataclass, asdict, field
 from pathlib import Path
-from typing import List, Tuple, Set, Optional, Dict, Union
 
 from clang.cindex import TranslationUnit, Diagnostic, Config, Token, TranslationUnitLoadError, conf
 
@@ -60,14 +59,14 @@ class FunctionMetadata:
     win_addr: str
     mac_addr: str
     decorated_name: str
-    undecorated_name: Optional[str] = None
-    mangled_name: Optional[str] = None
-    return_type: Optional[str] = None
-    call_type: Optional[str] = None
-    argument_types: List[str] = field(default_factory=list)
-    argument_names: List[str] = field(default_factory=list)
+    undecorated_name: str|None = None
+    mangled_name: str|None = None
+    return_type: str|None = None
+    call_type: str|None = None
+    argument_types: list[str] = field(default_factory=list)
+    argument_names: list[str] = field(default_factory=list)
     is_function_variadic: bool = False
-    inline_body: Optional[str] = None
+    inline_body: str|None = None
 
     def is_subtype(candidate, target, class_hierarchies):
         return candidate in class_hierarchies[target]
@@ -122,21 +121,16 @@ class TypeInfo:
     kind_name: str
     size: int
     location: Path
-    children: Union[
-        List[Tuple[str, Union[int, str]]],
-        List[Tuple[str, str, int]],
-        str,
-        Tuple[str, List[str], str]
-    ] = field(default_factory=list)
+    children: list[tuple[str, int|str]] | list[tuple[str, str, int]] | str | tuple[str, list[str], str] = field(default_factory=list)
 
 
 @dataclass
 class GlobalInfo:
     type_name: str
     win_addr: int
-    mac_addr: Optional[int]
-    decorated_name: Optional[str]
-    msvc_mangled_name: Optional[str]
+    mac_addr: int|None
+    decorated_name: str|None
+    msvc_mangled_name: str|None
 
 
 PATHS = [
@@ -157,7 +151,7 @@ def get_clang_resource_dir():
     return check_output([llvm_bin / 'clang', '-print-resource-dir']).strip().decode('utf-8')
 
 
-def parse_source(path: Optional[Path] = None, source: Optional[str] = None) -> TranslationUnit:
+def parse_source(path: Path|None = None, source: str|None = None) -> TranslationUnit:
     assert path or source
     system_include_paths = [
         Path("/usr/x86_64-w64-mingw32/include"),
@@ -189,7 +183,7 @@ def parse_source(path: Optional[Path] = None, source: Optional[str] = None) -> T
             sys.stderr.flush()
             raise
 
-    error_strings: List[str] = []
+    error_strings: list[str] = []
     for diagnostic in translation_unit.diagnostics:
         if diagnostic.severity >= Diagnostic.Error:
             error_strings.append(str(diagnostic))
@@ -203,8 +197,8 @@ def parse_source(path: Optional[Path] = None, source: Optional[str] = None) -> T
     return translation_unit
 
 
-def extract_function_pointers(struct_type) -> Dict[str, Tuple[TypeInfo, int]]:
-    function_map: Dict[str, TypeInfo] = {}
+def extract_function_pointers(struct_type) -> dict[str, tuple[TypeInfo, int]]:
+    function_map: dict[str, TypeInfo] = {}
     for t in struct_type.get_fields():
         underlying_type = t.type
         pointer_depth = 0
@@ -226,9 +220,9 @@ def extract_function_pointers(struct_type) -> Dict[str, Tuple[TypeInfo, int]]:
     return function_map
 
 
-def extract_type_info(tu: TranslationUnit) -> Tuple[bool, Dict[str, TypeInfo]]:
+def extract_type_info(tu: TranslationUnit) -> tuple[bool, dict[str, TypeInfo]]:
     found_issues = False
-    types: Dict[str, TypeInfo] = {}
+    types: dict[str, TypeInfo] = {}
     for c in tu.cursor.get_children():
         if c.kind.name in ["STRUCT_DECL", "UNION_DECL", "ENUM_DECL", "TYPEDEF_DECL"] and c.is_definition():
             struct_type = c.type
@@ -239,7 +233,7 @@ def extract_type_info(tu: TranslationUnit) -> Tuple[bool, Dict[str, TypeInfo]]:
                 pass
             name = struct_type.spelling
             kind_name: str = c.kind.name
-            children: List[Tuple[str, int] | Tuple[str, str, int]] | str | Tuple[str, List[str], str] = []
+            children: list[tuple[str, int] | tuple[str, str, int]] | str | tuple[str, list[str], str] = []
             if c.kind.name == "STRUCT_DECL":
                 extra_types = extract_function_pointers(struct_type)
                 types.update((f"{name.removeprefix("struct ")}__{k}", v[0]) for k, v in extra_types.items())
@@ -295,314 +289,7 @@ def extract_type_info(tu: TranslationUnit) -> Tuple[bool, Dict[str, TypeInfo]]:
     return found_issues, types
 
 
-def extract_globals_info(tu: TranslationUnit, known_types: Set[str]) -> Tuple[bool, Dict[str, GlobalInfo]]:
-    mac_rtti_lookup = {
-        "Ball": 0x107371dc,
-        "CreatureRoom": 0x1098e5f0,
-        "CameraModeFree": 0x1077708c,
-        "GTribeInfo": 0x1075e974,
-        "BaseInfo": 0x10745360,
-        "SpellSeedGraphic": 0x109dbe4c,
-        "GBallInfo": 0x10737af4,
-        "CreatureInfo": 0x1077e340,
-        "MobileWallHug": 0x10732c5c,
-        "GDanceInfo": 0x1099548c,
-        "MPFEChannelSelector": 0x109a250c,
-        "GLanguage": 0x10733c04,
-        "PileFood": 0x1074939c,
-        "StoragePit": 0x10747800,
-        "SingleMapFixed": 0x10740de0,
-        "GSpecialVillagerInfo": 0x1075b7e4,
-        "MobileStatic": 0x107387a4,
-        "VillagerName": 0x109e9588,
-        "DialogBoxImmersion": 0x109990a8,
-        "PictureRoomBase": 0x10746f04,
-        "DanceKeyFrame": 0x10997014,
-        "CameraModeNew3": 0x10732de0,
-        "GClimate": 0x109ea018,
-        "LoadingBox": 0x109ed8d4,
-        "SaveGameRoom": 0x109c207c,
-        "GInterfaceFlags": 0x1099e274,
-        "Heap": 0x10730a2c,
-        "CreatureBeliefList": 0x10787474,
-        "HandStateTug": 0x1099bc00,
-        "GTownInfo": 0x109e35e4,
-        "AllocatedBeliefList": 0x107874ac,
-        "Citadel": 0x10779c40,
-        "RegisterBox": 0x109ed854,
-        "SpellIcon": 0x10733a6c,
-        "SetupHSBarGraph": 0x10731040,
-        "Scaffold": 0x1075a2f8,
-        "SetupEdit": 0x10731154,
-        "PuzzleGame": 0x10756934,
-        "CreatureMentalDebug": 0x1078766c,
-        "ChannelBox": 0x109a1fb0,
-        "PSysManager": 0x109b86b8,
-        "Workshop": 0x1075a25c,
-        "TempleRoom": 0x10732ce8,
-        "GFootpathNode": 0x10742ff0,
-        "SpellShield": 0x1099f608,
-        "CitadelPart": 0x107339ec,
-        "CameraMode": 0x10732dcc,
-        "GFootpathLink": 0x10743230,
-        "HandStatePlayAnim": 0x1099b904,
-        "GAlignment": 0x1077e184,
-        "Reaction": 0x10759508,
-        "PhysicsObject": 0x10746ec0,
-        "DataForScriptRemind": 0x109a0de0,
-        "TownDesire": 0x109e5838,
-        "TerrainMapInfo": 0x10730b28,
-        "LandscapeVortex": 0x1099b714,
-        "GPlayer": 0x109bdcf4,
-        "SetupStaticText": 0x107312e0,
-        "Dance": 0x1074465c,
-        "CDBox": 0x109ed714,
-        "BigForest": 0x10783da4,
-        "Flock": 0x10742990,
-        "HelpProfile": 0x1099be34,
-        "WorshipTotem": 0x1073a768,
-        "GShowNeedsInfo": 0x1075b5a8,
-        "CHand": 0x1077dbd8,
-        "SetupColourPicker": 0x10730e58,
-        "Morphable": 0x1073d0fc,
-        "MagicFireBall": 0x109afc28,
-        "ShowNeeds": 0x1075b608,
-        "ChallengeRoom": 0x10777d4c,
-        "CreatureMimicState": 0x1078751c,
-        "CameraModeCtrInteract": 0x10777708,
-        "MultiplayerDatabase": 0x10745c84,
-        "GestureSystemData": 0x107330c0,
-        "InnerCamera": 0x10777d9c,
-        "Container": 0x10739750,
-        "ScriptMarker": 0x109c17cc,
-        "TerrainMapTypeInfo": 0x10730ad8,
-        "Town": 0x1077dcc8,
-        "MPFEChooseConnection": 0x109a2554,
-        "InterfaceHandState": 0x1099e2ac,
-        "GData": 0x10730b70,
-        "GFootpath": 0x10743350,
-        "HandStateCreature": 0x1073bc10,
-        "SkipBox": 0x109ed6d4,
-        "CreaturePreviousActions": 0x107875fc,
-        "CreatureAttitudeToPlayer": 0x10783e38,
-        "StandardBuildingSite": 0x10739334,
-        "PlannedMultiMapFixed": 0x107340b0,
-        "GJPSysInterface": 0x109b880c,
-        "SetupMultiList": 0x107311c0,
-        "FireFly": 0x1073f830,
-        "GKeyBuffer": 0x10733c44,
-        "GestureSystemDataList": 0x10733088,
-        "TownDesireFlags": 0x1098d0cc,
-        "CreatureObjectsInspected": 0x10787634,
-        "GFieldTypeInfo": 0x1073ed24,
-        "CreatureCommandState": 0x10787554,
-        "GBaseInfo": 0x10730abc,
-        "GStream": 0x1075dd20,
-        "SetupTabButton": 0x10730f08,
-        "CreatureMental": 0x1078743c,
-        "PotStructure": 0x10747844,
-        "StatsBox": 0x1099add0,
-        "CreatureDatabase": 0x10745cbc,
-        "HandStateCitadel": 0x1099b18c,
-        "GPrayerIconInfo": 0x1074a620,
-        "EffectValues": 0x10734728,
-        "GParticleContainer": 0x107461ec,
-        "RenderParticle": 0x109b6a34,
-        "GMobileStaticInfo": 0x109acc58,
-        "CitadelHeart": 0x1077b83c,
-        "SetupList": 0x107311a4,
-        "FishFarm": 0x107402f8,
-        "GScript": 0x109c38c8,
-        "InfluenceRing": 0x10744e50,
-        "CreatureExplorationMap": 0x1098b8d8,
-        "CreatureAgenda": 0x1078758c,
-        "HandStateNormal": 0x1099b8cc,
-        "SetupBigButton": 0x107310ac,
-        "CameraModeFollow": 0x1077789c,
-        "SpellWithObjects": 0x109a58f4,
-        "LHOSFile": 0x1099a66c,
-        "HelpText": 0x1099db6c,
-        "MapShield": 0x109def60,
-        "GestureSystem": 0x107330f8,
-        "PlannedTownCentre": 0x109e3cf0,
-        "MPFELogin": 0x109a3a28,
-        "GSingleMapFixedInfo": 0x10740ce8,
-        "CreaturePhysical": 0x1077e14c,
-        "WorshipSpellIcon": 0x10733ab0,
-        "CameraModeFollowHeading": 0x10777930,
-        "Reward": 0x10759768,
-        "BuildingSite": 0x107391b8,
-        "SetupCheckBox": 0x10730d88,
-        "FelledTree": 0x1073a888,
-        "Fragment": 0x10746eac,
-        "TotemStatue": 0x107871cc,
-        "HelpSystem": 0x1099cab4,
-        "SetupSlider": 0x10731254,
-        "DancePathInfo": 0x10744cf0,
-        "TattooEditor": 0x109ed754,
-        "SetupStaticTextNoHit": 0x1099b094,
-        "CreatureBeliefs": 0x109899cc,
-        "Villager": 0x10732cdc,
-        "SetupVBarGraph": 0x10730f60,
-        "GLeashStatus": 0x109a0a54,
-        "GameThingWithPos": 0x107313b0,
-        "DanceGroup": 0x10996e7c,
-        "Wonder": 0x107605fc,
-        "DialogBoxOptions": 0x109990e8,
-        "GWorshipSiteInfo": 0x109eb3b4,
-        "GStreetLight": 0x109e1864,
-        "WorshipSite": 0x10733a30,
-        "LocalBase": 0x1099bd98,
-        "StatsDatabase": 0x10745c98,
-        "GSLobbyBox": 0x109edd0c,
-        "Mist": 0x106f5f4c,
-        "Object": 0x107313d4,
-        "GAudio": 0x1077682c,
-        "MultiMapFixed": 0x107339b0,
-        "TownArtifact": 0x10736fe0,
-        "PSysBase": 0x10746188,
-        "ScriptHighlight": 0x109c45c8,
-        "SetupBox": 0x10731360,
-        "FireEffect": 0x1075c8a4,
-        "SetupPicture": 0x10730eb0,
-        "GBigForestInfo": 0x1073865c,
-        "GTotemStatueInfo": 0x109e33a8,
-        "PileResource": 0x107481fc,
-        "Fixed": 0x1073397c,
-        "ShowNeedsVisuals": 0x1075acf0,
-        "PSysInterface": 0x107461ac,
-        "TownCentre": 0x1077f15c,
-        "LHReleasedOSFile": 0x1099a680,
-        "SetupMP3Button": 0x10731104,
-        "GTerrainMap": 0x10730ba8,
-        "GMobileObjectInfo": 0x10736eec,
-        "WeatherThing": 0x109ea360,
-        "CameraModeDance": 0x10777774,
-        "Living": 0x10732c98,
-        "Cow": 0x1074b2d0,
-        "NewProfileBox": 0x109ed914,
-        "Mobile": 0x10732c28,
-        "GVirtualInfluence": 0x1075e9c4,
-        "SpecialVillager": 0x1073bc5c,
-        "Totem": 0x10755f88,
-        "DataPath": 0x109a0f04,
-        "GInterfaceCollide": 0x10733130,
-        "GInterface": 0x1099dd58,
-        "CreatureDamageMap": 0x1077e114,
-        "GameThing": 0x10731394,
-        "GStreetLantern": 0x109e0fa4,
-        "ProfileEditor": 0x109ed814,
-        "GSoundMap": 0x109d7980,
-        "MainMenu": 0x109ed7d4,
-        "HandStateCamera": 0x1099b154,
-        "GameOSFile": 0x1099a69c,
-        "SoundTag": 0x109d7a40,
-        "GVillagerStateTableInfo": 0x109e9f8c,
-        "TownStats": 0x109e3664,
-        "SetupControl": 0x10730d58,
-        "CreaturePlan": 0x1098d1c0,
-        "SetupHLineGraph": 0x10730fcc,
-        "DeadTree": 0x1073a834,
-        "GFootpathLinkSave": 0x10743110,
-        "LHDLL": 0x109c41fc,
-        "GVillagerInfo": 0x109e7800,
-        "Tree": 0x1075df20,
-        "HandStateInvisible": 0x1077db84,
-        "DialogBoxSaveMessage": 0x10999130,
-        "Rock": 0x107387e8,
-        "OneOffSpellSeed": 0x1099eba8,
-        "ValueSpinner": 0x10737b54,
-        "PHandFX": 0x109b139c,
-        "GInterfaceStatus": 0x1098d398,
-        "LoginBox": 0x109ed794,
-        "GTownDesireInfo": 0x109e57f0,
-        "GatheringBox": 0x1099afbc,
-        "GSpellIconInfo": 0x109dc3c4,
-        "ScriptDLL": 0x109c4210,
-        "GMagicEffectInfo": 0x1073d070,
-        "LobbyBox": 0x109edd54,
-        "AnimatedStatic": 0x10735450,
-        "GTreeInfo": 0x1075e054,
-        "CreatureSubAction": 0x1077e1bc,
-        "GFootpathFinder": 0x10742ed0,
-        "CreaturePreviousLesson": 0x107874e4,
-        "HandStateGrain": 0x1099b3c0,
-        "CreatureVisionState": 0x107873fc,
-        "StartGameBox": 0x109ed694,
-        "CreatureSubActionAgenda": 0x1077e1f4,
-        "HandStateTotem": 0x1099ba34,
-        "MPFEDatabase": 0x109a37c0,
-        "CreatureBelief": 0x10989878,
-        "Spell": 0x1075942c,
-        "PileWood": 0x10748250,
-        "GInterfaceMessageBuffer": 0x1099f8dc,
-        "CameraModePath": 0x10777078,
-        "GroupBehaviour": 0x10744630,
-        "GMagicInfo": 0x10776ff0,
-        "DialogBoxKeyBinding": 0x10998f98,
-        "Creche": 0x10994094,
-        "SetupButton": 0x10730d6c,
-        "TownSpellIcon": 0x109e5998,
-        "GObjectInfo": 0x10734630,
-        "ReactionInfo": 0x1075963c,
-        "HelpSpirit": 0x1099bee0,
-        "MPFELoginDatabase": 0x109a39c4,
-        "CreatureLearning": 0x107875c4,
-        "HandStateMultiPickUp": 0x1099b58c,
-        "CreatureDesires": 0x1098a9fc,
-        "CameraModeTwoObjects": 0x109c3938,
-        "GPlayerInfo": 0x10730be8,
-        "SkirmishGameBox": 0x109ed654,
-        "GArena": 0x10735f14,
-        "Whale": 0x1075fc5c,
-        "GCamera": 0x107770e8,
-        "HandStateHolding": 0x1099b3a4,
-        "Forest": 0x106f5e84,
-        "GEffectInfo": 0x1073d04c,
-        "LH3DStaticObject": 0x101ca668,
-        "LH3DSpriteObject": 0x101cc748,
-        "LH3DAnimatedObject": 0x101cc084,
-        "LH3DMist": 0x101cd2bc,
-        "LH3DComplexObject": 0x101cbdfc,
-        "LHFile": 0x101da9ec,
-        "LH3DCitadel": 0x101ca6c8,
-        "LH3DMeshedObject": 0x101ca644,
-        "Prss": 0x101cbc0c,
-        "LH3DStaticMorphableObject": 0x101ca694,
-        "LH3DObject": 0x101ca628,
-        "LHReleasedFile": 0x101daa00,
-        "Creature": 0x1077dda8,
-        "EndGameBox": 0x1099ad1c,
-        "Feature": 0x1073d268,
-        "Field": 0x1073ee70,
-        "GGame": 0x10732e00,
-        "SpellWater": 0x109dacc8,
-        "GWaterfall": 0x1075d4a0,
-        "MobileObject": 0x106f3288,
-        "HistoryBox": 0x109ed4ac,
-        "Football": 0x109993e8,
-        "BWGameSpy": 0x109edca4,
-        "Pot": 0x10747720,
-        "SpellSeed": 0x109dd91c,
-        "Animal": 0x10761cd0,
-        "MiniDialogBoxOptions": 0x10999048,
-        "Mist": 0x10745708,
-        "Forest": 0x107434e0,
-        "GGameInfo": 0x1099a584,
-        "Waypoint": 0x1075f65c,
-        "GGuidance": 0x109d783c,
-        "CreatureRoomCamera": 0x1098e6ec,
-        "SpellShield": 0x109e09bc,
-        "GameStats": 0x1099ab2c,
-        "WeatherInfo": 0x109ea14c,
-        "CameraModeCitadel": -1,
-        "GCameraEditor": -1,
-        "CameraModeNew2": -1,
-        "CameraModeNew": -1,
-        "CameraModeNew1": -1,
-        "CameraModeFlyAndClick": -1,
-        "MultiplayerConditionBox": -1,
-    }
+def extract_globals_info(tu: TranslationUnit, known_types: set[str]) -> tuple[bool, dict[str, GlobalInfo]]:
     mac_vftable_lookup = {
         "Ball": 0x107371e4,
         "CreatureRoom": 0x1098e5f8,
@@ -909,7 +596,7 @@ def extract_globals_info(tu: TranslationUnit, known_types: Set[str]) -> Tuple[bo
     }
     found_issues = False
     last_comment = None
-    global_addresses: Dict[str, GlobalInfo] = {}
+    global_addresses: dict[str, GlobalInfo] = {}
     for t in tu.get_tokens(extent=tu.cursor.extent):
         if t.kind.name == "COMMENT":
             last_comment = t
@@ -969,7 +656,7 @@ def extract_globals_info(tu: TranslationUnit, known_types: Set[str]) -> Tuple[bo
     return found_issues, global_addresses
 
 
-def extract_globals_in_header_info(tu: TranslationUnit) -> Tuple[bool, Dict[str, GlobalInfo]]:
+def extract_globals_in_header_info(tu: TranslationUnit) -> tuple[bool, dict[str, GlobalInfo]]:
     GLOBALS_TO_IGNORE = {'mod_added_globals'}
 
     globals_cursor = next(c for c in tu.cursor.get_children() if c.kind.name == "VAR_DECL" and c.spelling == "globals")
@@ -984,12 +671,12 @@ def extract_globals_in_header_info(tu: TranslationUnit) -> Tuple[bool, Dict[str,
                 value = next(j.get_tokens())
         literal_map[key] = value
 
-    types: Dict[str, TypeInfo] = {}
+    types: dict[str, TypeInfo] = {}
     extra_types = extract_function_pointers(globals_cursor.type.get_declaration().type)
     types.update((f"globals_funcptr__{k}_t", v[0]) for k, v in extra_types.items())
 
     found_issues = False
-    global_addresses: Dict[str, GlobalInfo] = {}
+    global_addresses: dict[str, GlobalInfo] = {}
     for identifier in globals_decl_cursor:
         if identifier.spelling in GLOBALS_TO_IGNORE:
             continue
@@ -1020,8 +707,8 @@ def extract_info_from_comment(string):
     return None
 
 
-def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_names: Set[str],
-                          function_metadata: List[FunctionMetadata]) -> bool:
+def extract_function_info(tu: TranslationUnit, known_types: set[str], decorated_names: set[str],
+                          function_metadata: list[FunctionMetadata]) -> bool:
     found_issues = False
 
     for t in tu.get_tokens(extent=tu.cursor.extent):
@@ -1132,10 +819,26 @@ def extract_function_info(tu: TranslationUnit, known_types: Set[str], decorated_
                         compound_statement = next(i for i in t.cursor.get_children() if i.kind.name == 'COMPOUND_STMT')
                         function_metadata[-1].inline_body = get_source_text_from_extent(tu, compound_statement.extent)
 
-
-
-
     return found_issues
+
+
+def extract_all_function_info(paths: list[Path], types: set[str]) -> tuple[bool, set[str], list[FunctionMetadata]]:
+    found_issues = False
+    decorated_names: set[str] = set()
+    function_metadata: list[FunctionMetadata] = []
+    for path in paths:
+        found_issues |= extract_function_info(parse_source(path=path), set(types), decorated_names, function_metadata)
+    return found_issues, decorated_names, function_metadata
+
+
+def extract_all_globals_info(paths: list[Path], types: set[str]) -> tuple[bool, dict[str, GlobalInfo]]:
+    found_issues = False
+    global_values: dict[str, GlobalInfo] = {}
+    for path in paths:
+        new_issues, g = extract_globals_info(parse_source(path=path), set(types))
+        global_values.update(g)
+        found_issues |= new_issues
+    return found_issues, global_values
 
 
 def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> bool:
@@ -1150,22 +853,15 @@ def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> b
     out_path = Path(out_path).absolute()
     os.chdir(header_path)
 
-    paths: List[Path] = list(filter(lambda x: x.name != "globals.h", itertools.chain(*(p.rglob("*.h") for p in PATHS))))
+    paths: list[Path] = list(filter(lambda x: x.name != "globals.h", itertools.chain(*(p.rglob("*.h") for p in PATHS))))
     include_all_headers_src = '\n'.join(f'#include "{p}"' for p in paths)
     header_includer = Path("src/c/_HeaderIncluder.c")
 
-    found_issues, types = extract_type_info(parse_source(source=include_all_headers_src))
+    found_issues_type_info, types = extract_type_info(parse_source(source=include_all_headers_src))
+    found_issues_function_info, decorated_names, function_metadata = extract_all_function_info(paths, types.keys())
+    found_issues_globals_info, global_values = extract_all_globals_info(paths, types.keys())
 
-    decorated_names: Set[str] = set()
-    function_metadata: List[FunctionMetadata] = []
-    for path in paths:
-        found_issues |= extract_function_info(parse_source(path=path), set(types.keys()), decorated_names, function_metadata)
-
-    global_values: Dict[str, GlobalInfo] = {}
-    for path in paths:
-        new_issues, g = extract_globals_info(parse_source(path=path), set(types.keys()))
-        global_values.update(g)
-        found_issues |= new_issues
+    found_issues = any((found_issues_type_info, found_issues_function_info, found_issues_globals_info))
 
     globals_src = include_all_headers_src + "\n" + Path("globals.h").open().read()
 
@@ -1177,7 +873,7 @@ def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> b
     # for global_name, (global_type, global_value) in global_values.items():
     #     print(f"{global_name}: {global_type} -> {hex(global_value)}")
 
-    result_types: List[Dict] = []
+    result_types: list[dict] = []
     for type_name, t in types.items():
         if t.location.is_absolute() or type_name in TYPES_TO_IGNORE:
             continue
@@ -1215,7 +911,7 @@ def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> b
             entry['signature'] = signature
         result_types.append(entry)
 
-    result_functions: List[Dict[str, List[Dict[str, str]] | str | int]] = []
+    result_functions: list[dict[str, list[dict[str, str]] | str | int]] = []
     for f in function_metadata:
         if f.undecorated_name is None:
             continue
@@ -1224,7 +920,7 @@ def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> b
         f.argument_types = list(map(fixup_type, f.argument_types))
         result_functions.append(asdict(f))
 
-    result_globals: List[Dict[str, str | int]] = [
+    result_globals: list[dict[str, str | int]] = [
         dict(name=global_name, type=fixup_type(g.type_name), win_addr=g.win_addr, mac_addr=g.mac_addr, decorated_name=g.decorated_name, msvc_mangled_name=g.msvc_mangled_name)
         for global_name, g in global_values.items()
     ]
