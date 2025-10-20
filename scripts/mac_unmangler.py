@@ -115,6 +115,8 @@ class UnmangledDetails:
                 arg = UnmangledDetails.Arg([], "")
             # Regular function pointer
             elif mangled[0] == 'F':
+                assert(arg.qualifiers[-1] == UnmangledDetails.Arg.Qualifier.POINTER)
+                arg.qualifiers.pop()
                 func_type, mangled = UnmangledDetails.demangle_function_pointer(mangled[:], False)
                 arg.typename = func_type
                 args.append(arg)
