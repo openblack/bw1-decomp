@@ -3,10 +3,33 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
+#include <stdint.h> /* For uint8_t */
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "PictureRoom.h" /* For struct PictureRoomBase */
+
+// Forward Declares
+
+struct GameOSFile;
+
+struct TempleChallenge
+{
+  uint8_t field_0x0[0xd8];
+};
+static_assert(sizeof(struct TempleChallenge) == 0xd8, "Data type is of wrong size");
+
+// Constructors
+
+// win1.41 00781210 mac 101b5750 TempleChallenge::TempleChallenge(GameOSFile &)
+struct TempleChallenge* __fastcall __ct__15TempleChallengeFR10GameOSFile(struct TempleChallenge* this, const void* edx, struct GameOSFile* param_1) asm("??0TempleChallenge@@QAE@AAVGameOSFile@@@Z");
+
+// Non-virtual methods
+
+// win1.41 00781460 mac 101b51f0 TempleChallenge::StartScript(int)
+void __fastcall StartScript__15TempleChallengeFi(struct TempleChallenge* this, const void* edx, int param_1) asm("?StartScript@TempleChallenge@@QAEXH@Z");
+// win1.41 007817a0 mac 101b4310 TempleChallenge::LoadChallenge(GameOSFile &)
+void __fastcall LoadChallenge__15TempleChallengeFR10GameOSFile(struct TempleChallenge* this, const void* edx, struct GameOSFile* param_1) asm("?LoadChallenge@TempleChallenge@@QAEXAAVGameOSFile@@@Z");
 
 struct ChallengeRoom
 {

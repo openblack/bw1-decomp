@@ -3125,11 +3125,12 @@ _jmp_addr_0x007811f0:    {disp32} fld       dword ptr [rdata_bytes + 0xf5ad0]   
                          nop                                                              // 0x0078120d    90
                          nop                                                              // 0x0078120e    90
                          nop                                                              // 0x0078120f    90
-_jmp_addr_0x00781210:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00781210    8b442404
+??0TempleChallenge@@QAE@AAVGameOSFile@@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00781210    8b442404
                          push               esi                                           // 0x00781214    56
                          mov.s              esi, ecx                                      // 0x00781215    8bf1
                          push               eax                                           // 0x00781217    50
-                         call               _jmp_addr_0x007817a0                          // 0x00781218    e883050000
+                         call               ?LoadChallenge@TempleChallenge@@QAEXAAVGameOSFile@@@Z                          // 0x00781218    e883050000
                          mov.s              eax, esi                                      // 0x0078121d    8bc6
                          pop                esi                                           // 0x0078121f    5e
                          ret                0x0004                                        // 0x00781220    c20400
@@ -3422,7 +3423,8 @@ _jmp_addr_0x00781456:    xor.s              eax, eax                            
                          nop                                                              // 0x0078145d    90
                          nop                                                              // 0x0078145e    90
                          nop                                                              // 0x0078145f    90
-_jmp_addr_0x00781460:    push               ebx                                           // 0x00781460    53
+?StartScript@TempleChallenge@@QAEXH@Z:
+                         push               ebx                                           // 0x00781460    53
                          mov.s              ebx, ecx                                      // 0x00781461    8bd9
                          {disp8} mov        eax, dword ptr [ebx + 0x70]                   // 0x00781463    8b4370
                          dec                eax                                           // 0x00781466    48
@@ -3689,7 +3691,8 @@ _jmp_addr_0x0078176a:    {disp8} mov        edx, dword ptr [edi + 0x70]         
                          pop                ebp                                           // 0x0078179b    5d
                          pop                ebx                                           // 0x0078179c    5b
                          ret                0x0004                                        // 0x0078179d    c20400
-_jmp_addr_0x007817a0:    {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x007817a0    a194c9be00
+?LoadChallenge@TempleChallenge@@QAEXAAVGameOSFile@@@Z:
+                         {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x007817a0    a194c9be00
                          push               ebx                                           // 0x007817a5    53
                          push               ebp                                           // 0x007817a6    55
                          push               esi                                           // 0x007817a7    56
@@ -4499,7 +4502,7 @@ _jmp_addr_0x00782165:    pop                esi                                 
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x40abf0]        // 0x00782192    8b0df00bdd00
                          push               0x1                                           // 0x00782198    6a01
                          {disp32} mov       dword ptr [data_bytes + 0x40abec], 0x00000000 // 0x0078219a    c705ec0bdd0000000000
-                         call               _jmp_addr_0x00781460                          // 0x007821a4    e8b7f2ffff
+                         call               ?StartScript@TempleChallenge@@QAEXH@Z         // 0x007821a4    e8b7f2ffff
 _jmp_addr_0x007821a9:    ret                                                              // 0x007821a9    c3
                          nop                                                              // 0x007821aa    90
                          nop                                                              // 0x007821ab    90
@@ -9864,7 +9867,7 @@ _jmp_addr_0x00784c44:    test               ecx, ecx                            
                          cmp                si, word ptr [ecx]                            // 0x00784c48    663b31
                          {disp8} jne        _jmp_addr_0x00784c1d                          // 0x00784c4b    75d0
                          push               0x0                                           // 0x00784c4d    6a00
-                         call               _jmp_addr_0x00781460                          // 0x00784c4f    e80cc8ffff
+                         call               ?StartScript@TempleChallenge@@QAEXH@Z         // 0x00784c4f    e80cc8ffff
                          mov                eax, 0x00000001                               // 0x00784c54    b801000000
                          pop                esi                                           // 0x00784c59    5e
                          ret                0x0004                                        // 0x00784c5a    c20400
@@ -9983,7 +9986,7 @@ _jmp_addr_0x00784d64:    push               0x00000be9                          
                          {disp8} je         _jmp_addr_0x00784dc9                          // 0x00784d7d    744a
                          push               edi                                           // 0x00784d7f    57
                          mov.s              ecx, eax                                      // 0x00784d80    8bc8
-                         call               _jmp_addr_0x00781210                          // 0x00784d82    e889c4ffff
+                         call               ??0TempleChallenge@@QAE@AAVGameOSFile@@@Z     // 0x00784d82    e889c4ffff
                          mov.s              esi, eax                                      // 0x00784d87    8bf0
                          test               esi, esi                                      // 0x00784d89    85f6
                          {disp8} je         _jmp_addr_0x00784dc9                          // 0x00784d8b    743c
