@@ -45,6 +45,9 @@ def insert_functions_from_csv(csv_path: Path, json_path: Path):
             
             mangled_name, mac_unmangled, return_type, argument_types, argument_names = mac_mangled_to_msvc_mangled(return_type, call_type, mac_mangled, custom_types_lut)
 
+            if call_type == "static":
+                call_type = '__cdecl'
+            
             print(f"Inserting {str(mac_unmangled)}", flush=True)
             entry = dict(
                 win_addr=win_addr,
