@@ -230,13 +230,13 @@
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x0074d3e0
 .extern _jmp_addr_0x0074d400
-.extern _jmp_addr_0x0074d420
+.extern ?GetXByAngleMetersDistance@GUtils@@SAXGM@Z
 .extern _jmp_addr_0x0074d450
 .extern _GetPosFromAngle__6GUtilsFff
 .extern _jmp_addr_0x0074d6a0
 .extern _Spiral__6GUtilsFRlRl
 .extern _jmp_addr_0x0074dbf0
-.extern _jmp_addr_0x0074dc30
+.extern ?ConvertAngle3DToGame@GUtils@@SAIM@Z
 .extern _jmp_addr_0x0074e1d0
 .extern _jmp_addr_0x0074e200
 .extern _jmp_addr_0x0074e4c0
@@ -2645,7 +2645,7 @@ _jmp_addr_0x0075840b:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          {disp8} mov        eax, dword ptr [eax + 0x44]                   // 0x0075842d    8b4044
                          push               eax                                           // 0x00758430    50
                          push               ebx                                           // 0x00758431    53
-                         call               _jmp_addr_0x0074d420                          // 0x00758432    e8e94fffff
+                         call               ?GetXByAngleMetersDistance@GUtils@@SAXGM@Z    // 0x00758432    e8e94fffff
                          add                dword ptr [esp + 0x1c], eax                   // 0x00758437    0144241c
                          add                esp, 0x08                                     // 0x0075843b    83c408
                          mov.s              ecx, edi                                      // 0x0075843e    8bcf
@@ -3942,7 +3942,7 @@ _jmp_addr_0x007590a0:    sub                esp, 0x0c                           
                          {disp8} fstp       dword ptr [esp + 0x24]                        // 0x0075913f    d95c2424
                          {disp8} mov        ecx, dword ptr [esp + 0x24]                   // 0x00759143    8b4c2424
                          push               ecx                                           // 0x00759147    51
-                         call               _jmp_addr_0x0074dc30                          // 0x00759148    e8e34affff
+                         call               ?ConvertAngle3DToGame@GUtils@@SAIM@Z          // 0x00759148    e8e34affff
                          add                esp, 0x0c                                     // 0x0075914d    83c40c
                          push               eax                                           // 0x00759150    50
                          mov.s              ecx, esi                                      // 0x00759151    8bce

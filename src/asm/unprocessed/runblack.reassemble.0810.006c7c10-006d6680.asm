@@ -153,7 +153,7 @@
 .extern _jmp_addr_0x006dbdd0
 .extern _jmp_addr_0x006dc270
 .extern _jmp_addr_0x006dd7d0
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x006de590
 .extern _jmp_addr_0x007216f0
 .extern _jmp_addr_0x0072db80
@@ -4889,7 +4889,7 @@ _jmp_addr_0x006ca845:    mov.s              ecx, esi                            
                          call               _jmp_addr_0x006ca870                          // 0x006ca84b    e820000000
                          push               0x20                                          // 0x006ca850    6a20
                          {disp8} mov        byte ptr [esi + 0x18], 0x00                   // 0x006ca852    c6461800
-                         call               _jmp_addr_0x006de570                          // 0x006ca856    e8153d0100
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x006ca856    e8153d0100
                          {disp8} mov        byte ptr [esi + 0x08], al                     // 0x006ca85b    884608
                          add                esp, 0x04                                     // 0x006ca85e    83c404
                          mov.s              eax, esi                                      // 0x006ca861    8bc6

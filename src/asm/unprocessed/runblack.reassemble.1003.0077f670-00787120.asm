@@ -65,7 +65,7 @@
 .extern ?ResolveLoad@Object@@UAEXXZ
 .extern @IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE@12
 .extern @GetPlayerColour__7GPlayerCFv@4
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x006de590
 .extern _StartScript__7GScriptFPc@4
 .extern ?PUSH@GScript@@QAEXPAXW4VMType@@@Z
@@ -12575,7 +12575,7 @@ _jmp_addr_0x00786e20:    cmp                dword ptr [edi + 0x000000fc], ebx   
                          cmp                dword ptr [edi + 0x00000100], ebx             // 0x00786e90    399f00010000
                          push               0x2                                           // 0x00786e96    6a02
                          {disp8} je         _jmp_addr_0x00786eb8                          // 0x00786e98    741e
-                         call               _jmp_addr_0x006de570                          // 0x00786e9a    e8d176f5ff
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x00786e9a    e8d176f5ff
                          {disp32} mov       ecx, dword ptr [edi + 0x000000fc]             // 0x00786e9f    8b8ffc000000
                          add                esp, 0x04                                     // 0x00786ea5    83c404
                          neg                eax                                           // 0x00786ea8    f7d8
@@ -12585,7 +12585,7 @@ _jmp_addr_0x00786e20:    cmp                dword ptr [edi + 0x000000fc], ebx   
                          push               0x1d                                          // 0x00786eaf    6a1d
                          call               _jmp_addr_0x004843a0                          // 0x00786eb1    e8ead4cfff
                          {disp8} jmp        _jmp_addr_0x00786ef2                          // 0x00786eb6    eb3a
-_jmp_addr_0x00786eb8:    call               _jmp_addr_0x006de570                          // 0x00786eb8    e8b376f5ff
+_jmp_addr_0x00786eb8:    call               ?LocalRand@GRand@@SAIJ@Z                      // 0x00786eb8    e8b376f5ff
                          {disp32} mov       ecx, dword ptr [edi + 0x000000fc]             // 0x00786ebd    8b8ffc000000
                          add                esp, 0x04                                     // 0x00786ec3    83c404
                          neg                eax                                           // 0x00786ec6    f7d8

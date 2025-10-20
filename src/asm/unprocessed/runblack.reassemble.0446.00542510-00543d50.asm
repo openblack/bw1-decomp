@@ -37,7 +37,7 @@
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005d8a10
 .extern _jmp_addr_0x005dea60
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern _LHLoadData__FPcPvUlPUl
@@ -631,7 +631,7 @@ _jmp_addr_0x00542c50:    sub                esp, 0x44                           
                          {disp32} mov       dword ptr [data_bytes + 0x30a6e0], eax        // 0x00542c8a    a3e006cd00
                          {disp8} jge        _jmp_addr_0x00542cd5                          // 0x00542c8f    7d44
                          push               0x3                                           // 0x00542c91    6a03
-                         call               _jmp_addr_0x006de570                          // 0x00542c93    e8d8b81900
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x00542c93    e8d8b81900
                          add                esp, 0x04                                     // 0x00542c98    83c404
                          sub.s              eax, ebx                                      // 0x00542c9b    2bc3
                          {disp8} je         _jmp_addr_0x00542cc6                          // 0x00542c9d    7427
@@ -659,7 +659,7 @@ _jmp_addr_0x00542cd5:    {disp32} mov       ecx, dword ptr [ebp + 0x0000320c]   
                          push               0x26                                          // 0x00542cea    6a26
                          call               _jmp_addr_0x00484310                          // 0x00542cec    e81f16f4ff
 _jmp_addr_0x00542cf1:    push               0x00004e20                                    // 0x00542cf1    68204e0000
-                         call               _jmp_addr_0x006de570                          // 0x00542cf6    e875b81900
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x00542cf6    e875b81900
                          add                esp, 0x04                                     // 0x00542cfb    83c404
                          add                eax, 0x00004e20                               // 0x00542cfe    05204e0000
                          {disp32} mov       dword ptr [data_bytes + 0x30a6e4], eax        // 0x00542d03    a3e406cd00
@@ -691,7 +691,7 @@ _jmp_addr_0x00542d08:    {disp8} mov        ecx, dword ptr [ebp + 0x04]         
                          test               byte ptr [data_bytes + 0x4bf304], 0x01        // 0x00542d66    f6050453e80001
                          {disp8} je         _jmp_addr_0x00542daa                          // 0x00542d6d    743b
                          push               0x00004e20                                    // 0x00542d6f    68204e0000
-                         call               _jmp_addr_0x006de570                          // 0x00542d74    e8f7b71900
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x00542d74    e8f7b71900
                          add                eax, 0x00004e20                               // 0x00542d79    05204e0000
                          {disp32} mov       dword ptr [data_bytes + 0x30a6e4], eax        // 0x00542d7e    a3e406cd00
                          {disp32} mov       dword ptr [data_bytes + 0x30a6e0], ebx        // 0x00542d83    891de006cd00
@@ -1180,7 +1180,7 @@ _jmp_addr_0x005433cc:    pop                esi                                 
                          {disp8} mov        eax, dword ptr [esi + 0x04]                   // 0x005433f2    8b4604
                          push               0x00004e20                                    // 0x005433f5    68204e0000
                          {disp8} mov        byte ptr [eax + 0x78], bl                     // 0x005433fa    885878
-                         call               _jmp_addr_0x006de570                          // 0x005433fd    e86eb11900
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x005433fd    e86eb11900
                          add                eax, 0x00004e20                               // 0x00543402    05204e0000
                          {disp32} mov       dword ptr [data_bytes + 0x30a6e4], eax        // 0x00543407    a3e406cd00
                          {disp32} mov       dword ptr [data_bytes + 0x30a6e0], ebx        // 0x0054340c    891de006cd00

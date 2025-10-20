@@ -25,7 +25,7 @@
 .extern _jmp_addr_0x0042a280
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x0064d6a0
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern ?ScriptErrorMessage@GScript@@QAEXPAD@Z
 .extern ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z
 .extern _jmp_addr_0x006f6bc0
@@ -1207,7 +1207,7 @@ _jmp_addr_0x00710350:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          mov.s            eax, ecx                                      // 0x007103e0    8bc1
                          ret                                                            // 0x007103e2    c3
                          push             0x64                                          // 0x007103e3    6a64
-                         call             _jmp_addr_0x006de570                          // 0x007103e5    e886e1fcff
+                         call             ?LocalRand@GRand@@SAIJ@Z                      // 0x007103e5    e886e1fcff
                          xor.s            edx, edx                                      // 0x007103ea    33d2
                          add              esp, 0x04                                     // 0x007103ec    83c404
                          cmp              eax, 0x32                                     // 0x007103ef    83f832

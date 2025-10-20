@@ -99,7 +99,7 @@
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x0074d650
 .extern _Spiral__6GUtilsFRlRl
-.extern _jmp_addr_0x0074dc30
+.extern ?ConvertAngle3DToGame@GUtils@@SAIM@Z
 .extern _SigmoidThreshold__6GUtilsFff
 .extern ?IsStateEntryFunctionSameAs@Villager@@QBE_NKK@Z
 .extern ?SetupMoveToPos@Villager@@QAE_NABUMapCoords@@W4VILLAGER_STATES@@@Z
@@ -12087,7 +12087,7 @@ _jmp_addr_0x005efa92:    call               _jmp_addr_0x007a1400                
                          {disp8} fstp       dword ptr [esp + 0x2c]                        // 0x005efad3    d95c242c
 _jmp_addr_0x005efad7:    {disp8} mov        eax, dword ptr [esp + 0x2c]                   // 0x005efad7    8b44242c
                          push               eax                                           // 0x005efadb    50
-                         call               _jmp_addr_0x0074dc30                          // 0x005efadc    e84fe11500
+                         call               ?ConvertAngle3DToGame@GUtils@@SAIM@Z          // 0x005efadc    e84fe11500
                          add                esp, 0x04                                     // 0x005efae1    83c404
                          push               eax                                           // 0x005efae4    50
                          mov.s              ecx, esi                                      // 0x005efae5    8bce

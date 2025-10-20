@@ -66,7 +66,7 @@
 .extern _jmp_addr_0x00739a60
 .extern ?AddPlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z
 .extern ?RemovePlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z
-.extern _jmp_addr_0x0074ce10
+.extern ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x0074e030
 .extern _jmp_addr_0x007630f0
@@ -2736,7 +2736,7 @@ _jmp_addr_0x00643c96:    lea                esi, dword ptr [eax + eax * 0x8]    
                          push               edx                                            // 0x00643cce    52
                          {disp8} lea        esi, dword ptr [ebp + 0x14]                    // 0x00643ccf    8d7514
                          push               esi                                            // 0x00643cd2    56
-                         call               _jmp_addr_0x0074ce10                           // 0x00643cd3    e838911000
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z     // 0x00643cd3    e838911000
                          {disp8} mov        ecx, dword ptr [esp + 0x2c]                    // 0x00643cd8    8b4c242c
                          {disp8} lea        edx, dword ptr [esp + 0x18]                    // 0x00643cdc    8d542418
                          push               edx                                            // 0x00643ce0    52
@@ -2798,7 +2798,7 @@ _jmp_addr_0x00643d3d:    mov                esi, dword ptr [ebx]                
                          push               eax                                            // 0x00643d76    50
                          {disp8} lea        eax, dword ptr [edi + 0x14]                    // 0x00643d77    8d4714
                          push               eax                                            // 0x00643d7a    50
-                         call               _jmp_addr_0x0074ce10                           // 0x00643d7b    e890901000
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z     // 0x00643d7b    e890901000
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                    // 0x00643d80    8b4c2418
                          add                esp, 0x08                                      // 0x00643d84    83c408
                          cmp.s              eax, ecx                                       // 0x00643d87    3bc1
@@ -2861,7 +2861,7 @@ _jmp_addr_0x00643ded:    mov                esi, dword ptr [ebx]                
                          push               eax                                            // 0x00643e26    50
                          {disp8} lea        eax, dword ptr [edi + 0x14]                    // 0x00643e27    8d4714
                          push               eax                                            // 0x00643e2a    50
-                         call               _jmp_addr_0x0074ce10                           // 0x00643e2b    e8e08f1000
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z     // 0x00643e2b    e8e08f1000
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                    // 0x00643e30    8b4c2418
                          add                esp, 0x08                                      // 0x00643e34    83c408
                          cmp.s              eax, ecx                                       // 0x00643e37    3bc1
@@ -2924,7 +2924,7 @@ _jmp_addr_0x00643e9d:    mov                esi, dword ptr [ebx]                
                          push               eax                                            // 0x00643ed6    50
                          {disp8} lea        eax, dword ptr [edi + 0x14]                    // 0x00643ed7    8d4714
                          push               eax                                            // 0x00643eda    50
-                         call               _jmp_addr_0x0074ce10                           // 0x00643edb    e8308f1000
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z     // 0x00643edb    e8308f1000
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                    // 0x00643ee0    8b4c2418
                          add                esp, 0x08                                      // 0x00643ee4    83c408
                          cmp.s              eax, ecx                                       // 0x00643ee7    3bc1
@@ -2987,7 +2987,7 @@ _jmp_addr_0x00643f4d:    mov                esi, dword ptr [ebx]                
                          push               eax                                            // 0x00643f86    50
                          {disp8} lea        eax, dword ptr [edi + 0x14]                    // 0x00643f87    8d4714
                          push               eax                                            // 0x00643f8a    50
-                         call               _jmp_addr_0x0074ce10                           // 0x00643f8b    e8808e1000
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z     // 0x00643f8b    e8808e1000
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                    // 0x00643f90    8b4c2418
                          add                esp, 0x08                                      // 0x00643f94    83c408
                          cmp.s              eax, ecx                                       // 0x00643f97    3bc1

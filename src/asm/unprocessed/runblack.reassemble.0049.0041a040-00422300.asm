@@ -83,8 +83,8 @@
 .extern _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri
 .extern @GetInfo__8ReactionCFv@4
 .extern _jmp_addr_0x006e4750
-.extern _jmp_addr_0x00715130
-.extern _jmp_addr_0x00719610
+.extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _GetDistance__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x0074cd50
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
@@ -525,7 +525,7 @@ _jmp_addr_0x0041a1bd:    mov                edx, dword ptr [esi]                
                          call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x0041a1e0    e89b861e00
                          push               eax                                           // 0x0041a1e5    50
                          push               0x19                                          // 0x0041a1e6    6a19
-                         call               _jmp_addr_0x00715130                          // 0x0041a1e8    e843af2f00
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                          // 0x0041a1e8    e843af2f00
                          add                esp, 0x04                                     // 0x0041a1ed    83c404
                          push               eax                                           // 0x0041a1f0    50
                          {disp8} lea        edx, dword ptr [esp + 0x44]                   // 0x0041a1f1    8d542444
@@ -543,7 +543,7 @@ _jmp_addr_0x0041a1bd:    mov                edx, dword ptr [esi]                
                          push               eax                                           // 0x0041a215    50
                          push               ecx                                           // 0x0041a216    51
                          push               esi                                           // 0x0041a217    56
-                         call               _jmp_addr_0x00719610                          // 0x0041a218    e8f3f32f00
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z  // 0x0041a218    e8f3f32f00
                          {disp8} mov        eax, dword ptr [esp + 0x3c]                   // 0x0041a21d    8b44243c
                          add                esp, 0x2c                                     // 0x0041a221    83c42c
                          pop                edi                                           // 0x0041a224    5f

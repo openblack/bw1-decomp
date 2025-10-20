@@ -23,7 +23,7 @@
 .extern ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z
 .extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
-.extern _jmp_addr_0x0074dc30
+.extern ?ConvertAngle3DToGame@GUtils@@SAIM@Z
 .extern _jmp_addr_0x0074e1d0
 .extern _jmp_addr_0x0074e200
 .extern _jmp_addr_0x007a1400
@@ -238,7 +238,7 @@ _jmp_addr_0x0050d404:    {disp32} fcomp     dword ptr [__real@40c90fdb]         
 _jmp_addr_0x0050d41b:    {disp8} fstp       dword ptr [esp + 0x10]                        // 0x0050d41b    d95c2410
 _jmp_addr_0x0050d41f:    {disp8} mov        edx, dword ptr [esp + 0x10]                   // 0x0050d41f    8b542410
                          push               edx                                           // 0x0050d423    52
-                         call               _jmp_addr_0x0074dc30                          // 0x0050d424    e807082400
+                         call               ?ConvertAngle3DToGame@GUtils@@SAIM@Z          // 0x0050d424    e807082400
                          {disp32} fild      dword ptr [eax * 0x4 + _cos_lookup_table]     // 0x0050d429    db0485141ec300
                          {disp8} fmul       dword ptr [esp + 0x04]                        // 0x0050d430    d84c2404
                          {disp32} fmul      dword ptr [rdata_bytes + 0x341c]              // 0x0050d434    d80d1cc48a00

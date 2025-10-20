@@ -63,7 +63,7 @@
 .extern _jmp_addr_0x007436f0
 .extern _jmp_addr_0x0074cd50
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
-.extern _jmp_addr_0x0074ce10
+.extern ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x0074d3e0
 .extern _jmp_addr_0x0074d400
@@ -1479,7 +1479,7 @@ _jmp_addr_0x005f1603:    {disp32} mov       al, byte ptr [data_bytes + 0x38a1b0]
                          push               eax                                           // 0x005f163a    50
                          add                ecx, 0x14                                     // 0x005f163b    83c114
                          push               ecx                                           // 0x005f163e    51
-                         call               _jmp_addr_0x0074ce10                          // 0x005f163f    e8ccb71500
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z    // 0x005f163f    e8ccb71500
                          add                esp, 0x08                                     // 0x005f1644    83c408
                          cmp                eax, 0x000927c0                               // 0x005f1647    3dc0270900
                          {disp8} jge        _jmp_addr_0x005f167a                          // 0x005f164c    7d2c

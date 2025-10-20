@@ -134,7 +134,7 @@
 
 .globl _jmp_addr_0x00715080
 .globl _jmp_addr_0x007150e0
-.globl _jmp_addr_0x00715130
+.globl ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
 .globl _jmp_addr_0x00715150
 
 start_0x00715080_0x00718060:
@@ -224,7 +224,8 @@ _jmp_addr_0x007150e0:    {disp32} fld       dword ptr [data_bytes + 0x25ad50]   
                          nop                                                              // 0x0071512d    90
                          nop                                                              // 0x0071512e    90
                          nop                                                              // 0x0071512f    90
-_jmp_addr_0x00715130:    {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x00715130    8b4c2404
+?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z:
+                         {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x00715130    8b4c2404
                          shl                ecx, 4                                        // 0x00715134    c1e104
                          push               0x00d99388                                    // 0x00715137    688893d900
                          add                ecx, 0x00c20f00                               // 0x0071513c    81c1000fc200

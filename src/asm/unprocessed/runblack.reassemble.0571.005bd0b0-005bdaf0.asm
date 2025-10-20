@@ -13,7 +13,7 @@
 .extern _jmp_addr_0x005bac10
 .extern _jmp_addr_0x005bf9d0
 .extern _jmp_addr_0x005c0310
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x0081b370
 .extern _jmp_addr_0x0081b450
@@ -525,7 +525,7 @@ _jmp_addr_0x005bd718:    {disp32} fld       dword ptr [esi + 0x00003514]        
                          and                ecx, 0x03                                     // 0x005bd77d    83e103
                          {disp8} jne        _jmp_addr_0x005bd795                          // 0x005bd780    7513
                          push               0x2                                           // 0x005bd782    6a02
-                         call               _jmp_addr_0x006de570                          // 0x005bd784    e8e70d1200
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x005bd784    e8e70d1200
                          add                esp, 0x04                                     // 0x005bd789    83c404
                          mov.s              ecx, eax                                      // 0x005bd78c    8bc8
                          neg                ecx                                           // 0x005bd78e    f7d9

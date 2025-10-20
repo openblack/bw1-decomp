@@ -44,8 +44,8 @@
 .extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x0063b740
-.extern _jmp_addr_0x00715130
-.extern _jmp_addr_0x00719610
+.extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli
 .extern @SetSpeed__8VillagerFli@16
@@ -395,7 +395,7 @@ _jmp_addr_0x00609614:    mov               ecx, dword ptr [eax]                 
                          call              ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x00609641    e83a92ffff
                          push              eax                                           // 0x00609646    50
                          push              0x4a                                          // 0x00609647    6a4a
-                         call              _jmp_addr_0x00715130                          // 0x00609649    e8e2ba1000
+                         call              ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                          // 0x00609649    e8e2ba1000
                          add               esp, 0x04                                     // 0x0060964e    83c404
                          push              eax                                           // 0x00609651    50
                          {disp8} lea       edx, dword ptr [esp + 0x2c]                   // 0x00609652    8d54242c
@@ -413,7 +413,7 @@ _jmp_addr_0x00609614:    mov               ecx, dword ptr [eax]                 
                          push              eax                                           // 0x00609676    50
                          push              ecx                                           // 0x00609677    51
                          push              esi                                           // 0x00609678    56
-                         call              _jmp_addr_0x00719610                          // 0x00609679    e892ff1000
+                         call              ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z  // 0x00609679    e892ff1000
                          add               esp, 0x20                                     // 0x0060967e    83c420
                          mov.s             ecx, esi                                      // 0x00609681    8bce
                          call              ?CheckAndSetSaved@GameThing@@QAE_NXZ          // 0x00609683    e86868f6ff

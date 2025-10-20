@@ -44,7 +44,7 @@
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern @GetPlayer3DColor__7GPlayerFv@12
 .extern _jmp_addr_0x0064d6a0
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x006f6aa0
 .extern _jmp_addr_0x0073bab0
 .extern _jmp_addr_0x0078eb20
@@ -4504,7 +4504,7 @@ _jmp_addr_0x00565110:    sub                esp, 0x10                           
                          {disp32} fmul      qword ptr [rdata_bytes + 0x1ec68]             // 0x00565132    dc0d687c8c00
                          call               _jmp_addr_0x007a1400                          // 0x00565138    e8c3c22300
                          push               eax                                           // 0x0056513d    50
-                         call               _jmp_addr_0x006de570                          // 0x0056513e    e82d941700
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x0056513e    e82d941700
                          {disp8} mov        dword ptr [esp + 0x04], eax                   // 0x00565143    89442404
                          {disp8} mov        dword ptr [esp + 0x08], 0x00000000            // 0x00565147    c744240800000000
                          {disp8} fild       qword ptr [esp + 0x04]                        // 0x0056514f    df6c2404

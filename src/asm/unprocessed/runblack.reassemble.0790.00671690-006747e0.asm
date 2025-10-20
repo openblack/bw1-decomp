@@ -61,7 +61,7 @@
 .extern _jmp_addr_0x006d0f70
 .extern _jmp_addr_0x006d1090
 .extern _GameRand__5GRandFl
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x0071d8e0
 .extern _jmp_addr_0x007201d0
 .extern _jmp_addr_0x007201e0
@@ -2032,7 +2032,7 @@ _jmp_addr_0x00672aa0:    ret                                                    
                          nop                                                              // 0x00672b0f    90
                          sub                esp, 0x08                                     // 0x00672b10    83ec08
                          push               0x0000ffff                                    // 0x00672b13    68ffff0000
-                         call               _jmp_addr_0x006de570                          // 0x00672b18    e853ba0600
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x00672b18    e853ba0600
                          {disp8} mov        dword ptr [esp + 0x04], eax                   // 0x00672b1d    89442404
                          {disp8} mov        dword ptr [esp + 0x08], 0x00000000            // 0x00672b21    c744240800000000
                          {disp8} fild       qword ptr [esp + 0x04]                        // 0x00672b29    df6c2404
@@ -2043,7 +2043,7 @@ _jmp_addr_0x00672aa0:    ret                                                    
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x00672b3b    e8b9ecd8ff
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00672b40    8b442404
                          push               eax                                           // 0x00672b44    50
-                         call               _jmp_addr_0x006de570                          // 0x00672b45    e826ba0600
+                         call               ?LocalRand@GRand@@SAIJ@Z                      // 0x00672b45    e826ba0600
                          add                esp, 0x04                                     // 0x00672b4a    83c404
                          ret                                                              // 0x00672b4d    c3
                          nop                                                              // 0x00672b4e    90

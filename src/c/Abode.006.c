@@ -155,7 +155,7 @@ size_t __fastcall SaveObject__5AbodeFR8LHOSFileRC9MapCoords(struct Object* this,
     asm("push               edi");                                           // 0x00405d15    57
     asm("push               0x7");                                           // 0x00405d16    6a07
     asm("_jmp_addr_0x00405d18:");
-    asm("call               _jmp_addr_0x00715130");                          // 0x00405d18    e813f43000
+    asm("call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z");                          // 0x00405d18    e813f43000
     asm("add                esp, 0x04");                                     // 0x00405d1d    83c404
     asm("push               eax");                                           // 0x00405d20    50
     asm("{disp8} lea        eax, dword ptr [esp + 0x50]");                   // 0x00405d21    8d442450
@@ -173,7 +173,7 @@ size_t __fastcall SaveObject__5AbodeFR8LHOSFileRC9MapCoords(struct Object* this,
     asm("push               ecx");                                           // 0x00405d45    51
     asm("push               edi");                                           // 0x00405d46    57
     asm("push               esi");                                           // 0x00405d47    56
-    asm("call               _jmp_addr_0x00719610");                          // 0x00405d48    e8c3383100
+    asm("call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z");                          // 0x00405d48    e8c3383100
     asm("add                esp, 0x34");                                     // 0x00405d4d    83c434
     asm("push               ebx");                                           // 0x00405d50    53
     asm("push               edi");                                           // 0x00405d51    57

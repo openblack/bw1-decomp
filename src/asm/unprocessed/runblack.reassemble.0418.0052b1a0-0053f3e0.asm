@@ -209,8 +209,8 @@
 .extern _GameFloatRand__5GRandFf
 .extern _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri
 .extern _jmp_addr_0x006e4750
-.extern _jmp_addr_0x00715130
-.extern _jmp_addr_0x00719610
+.extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x00719750
 .extern _jmp_addr_0x0072a2f0
 .extern @GetPowerUpFromMagicType__14GSpellSeedInfoCF10MAGIC_TYPE@12
@@ -229,7 +229,7 @@
 .extern _jmp_addr_0x0074c180
 .extern _jmp_addr_0x0074cd50
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
-.extern _jmp_addr_0x0074ce10
+.extern ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z
 .extern _GetPosFromAngle__6GUtilsFff
 .extern _jmp_addr_0x0074dce0
 .extern _SigmoidThreshold__6GUtilsFff
@@ -1228,7 +1228,7 @@ _jmp_addr_0x0052b684:    {disp32} fld       dword ptr [esi + 0x00ccfbac]        
                          call               @GetMagicInfoText__10GMagicInfoCFv@4                 // 0x0052b696    e855fd0c00
                          push               eax                                                  // 0x0052b69b    50
                          push               0x58                                                 // 0x0052b69c    6a58
-                         call               _jmp_addr_0x00715130                                 // 0x0052b69e    e88d9a1e00
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                                 // 0x0052b69e    e88d9a1e00
                          add                esp, 0x04                                            // 0x0052b6a3    83c404
                          push               eax                                                  // 0x0052b6a6    50
                          {disp8} lea        eax, dword ptr [esp + 0x20]                          // 0x0052b6a7    8d442420
@@ -1973,7 +1973,7 @@ _jmp_addr_0x0052bf47:    mov                ecx, dword ptr [eax]                
                          call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x0052bf68    e813690d00
                          push               eax                                                  // 0x0052bf6d    50
                          push               0x55                                                 // 0x0052bf6e    6a55
-                         call               _jmp_addr_0x00715130                                 // 0x0052bf70    e8bb911e00
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                                 // 0x0052bf70    e8bb911e00
                          add                esp, 0x04                                            // 0x0052bf75    83c404
                          push               eax                                                  // 0x0052bf78    50
                          {disp8} lea        edx, dword ptr [esp + 0x2c]                          // 0x0052bf79    8d54242c
@@ -1991,7 +1991,7 @@ _jmp_addr_0x0052bf47:    mov                ecx, dword ptr [eax]                
                          push               eax                                                  // 0x0052bf9d    50
                          push               ecx                                                  // 0x0052bf9e    51
                          push               esi                                                  // 0x0052bf9f    56
-                         call               _jmp_addr_0x00719610                                 // 0x0052bfa0    e86bd61e00
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z         // 0x0052bfa0    e86bd61e00
                          add                esp, 0x1c                                            // 0x0052bfa5    83c41c
                          pop                edi                                                  // 0x0052bfa8    5f
                          pop                esi                                                  // 0x0052bfa9    5e
@@ -3777,7 +3777,7 @@ _jmp_addr_0x0052cff9:    {disp8} mov        eax, dword ptr [esi + 0x28]         
                          call               ?ConvertToText@MapCoords@@QAEPADPAD@Z                // 0x0052d020    e85b580d00
                          push               eax                                                  // 0x0052d025    50
                          push               0x1f                                                 // 0x0052d026    6a1f
-                         call               _jmp_addr_0x00715130                                 // 0x0052d028    e803811e00
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                                 // 0x0052d028    e803811e00
                          add                esp, 0x04                                            // 0x0052d02d    83c404
                          push               eax                                                  // 0x0052d030    50
                          {disp32} lea       eax, dword ptr [esp + 0x00000094]                    // 0x0052d031    8d842494000000
@@ -3803,7 +3803,7 @@ _jmp_addr_0x0052d043:    {disp8} mov        eax, dword ptr [esi + 0x28]         
                          push               eax                                                  // 0x0052d06f    50
                          push               edi                                                  // 0x0052d070    57
                          push               0x20                                                 // 0x0052d071    6a20
-                         call               _jmp_addr_0x00715130                                 // 0x0052d073    e8b8801e00
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                                 // 0x0052d073    e8b8801e00
                          add                esp, 0x04                                            // 0x0052d078    83c404
                          push               eax                                                  // 0x0052d07b    50
                          {disp32} lea       eax, dword ptr [esp + 0x00000098]                    // 0x0052d07c    8d842498000000
@@ -3822,7 +3822,7 @@ _jmp_addr_0x0052d08c:    {disp32} mov       edx, dword ptr [esp + 0x00000154]   
                          push               ecx                                                  // 0x0052d0ac    51
                          push               edx                                                  // 0x0052d0ad    52
                          push               esi                                                  // 0x0052d0ae    56
-                         call               _jmp_addr_0x00719610                                 // 0x0052d0af    e85cc51e00
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z         // 0x0052d0af    e85cc51e00
                          add                esp, 0x10                                            // 0x0052d0b4    83c410
                          pop                edi                                                  // 0x0052d0b7    5f
                          pop                esi                                                  // 0x0052d0b8    5e
@@ -9521,7 +9521,7 @@ _jmp_addr_0x005303d6:    {disp8} mov        cx, word ptr [esi + 0x52]           
                          push               eax                                                  // 0x00530410    50
                          push               edx                                                  // 0x00530411    52
                          push               0x31                                                 // 0x00530412    6a31
-                         call               _jmp_addr_0x00715130                                 // 0x00530414    e8174d1e00
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                                 // 0x00530414    e8174d1e00
                          add                esp, 0x04                                            // 0x00530419    83c404
                          push               eax                                                  // 0x0053041c    50
                          {disp32} lea       eax, dword ptr [esp + 0x000000b0]                    // 0x0053041d    8d8424b0000000
@@ -9539,7 +9539,7 @@ _jmp_addr_0x005303d6:    {disp8} mov        cx, word ptr [esi + 0x52]           
                          push               ecx                                                  // 0x0053044a    51
                          push               edx                                                  // 0x0053044b    52
                          push               esi                                                  // 0x0053044c    56
-                         call               _jmp_addr_0x00719610                                 // 0x0053044d    e8be911e00
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z         // 0x0053044d    e8be911e00
                          add                esp, 0x30                                            // 0x00530452    83c430
                          pop                edi                                                  // 0x00530455    5f
 _jmp_addr_0x00530456:    mov.s              eax, ebx                                             // 0x00530456    8bc3
@@ -15216,7 +15216,7 @@ _jmp_addr_0x00534246:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          {disp8} lea        edx, dword ptr [ebx + 0x14]                          // 0x0053424d    8d5314
                          push               edi                                                  // 0x00534250    57
                          push               edx                                                  // 0x00534251    52
-                         call               _jmp_addr_0x0074ce10                                 // 0x00534252    e8b98b2100
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z           // 0x00534252    e8b98b2100
                          {disp8} mov        dword ptr [esp + 0x20], eax                          // 0x00534257    89442420
                          {disp8} mov        dword ptr [esp + 0x24], 0x00000000                   // 0x0053425b    c744242400000000
                          {disp8} fild       qword ptr [esp + 0x20]                               // 0x00534263    df6c2420
@@ -15224,7 +15224,7 @@ _jmp_addr_0x00534246:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          push               edi                                                  // 0x0053426a    57
                          push               eax                                                  // 0x0053426b    50
                          {disp8} fstp       dword ptr [esp + 0x24]                               // 0x0053426c    d95c2424
-                         call               _jmp_addr_0x0074ce10                                 // 0x00534270    e89b8b2100
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z           // 0x00534270    e89b8b2100
                          {disp8} mov        dword ptr [esp + 0x28], eax                          // 0x00534275    89442428
                          {disp8} mov        dword ptr [esp + 0x2c], 0x00000000                   // 0x00534279    c744242c00000000
                          {disp8} fild       qword ptr [esp + 0x28]                               // 0x00534281    df6c2428
@@ -15891,14 +15891,14 @@ _jmp_addr_0x00534984:    mov                eax, dword ptr [esi]                
                          push               eax                                                  // 0x0053498f    50
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                          // 0x00534990    8d4f14
                          push               ecx                                                  // 0x00534993    51
-                         call               _jmp_addr_0x0074ce10                                 // 0x00534994    e877842100
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z           // 0x00534994    e877842100
                          {disp8} mov        edx, dword ptr [esp + 0x18]                          // 0x00534999    8b542418
                          mov.s              ebp, eax                                             // 0x0053499d    8be8
                          {disp8} lea        eax, dword ptr [edx + 0x14]                          // 0x0053499f    8d4214
                          push               eax                                                  // 0x005349a2    50
                          {disp8} lea        eax, dword ptr [ebx + 0x14]                          // 0x005349a3    8d4314
                          push               eax                                                  // 0x005349a6    50
-                         call               _jmp_addr_0x0074ce10                                 // 0x005349a7    e864842100
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z           // 0x005349a7    e864842100
                          add                esp, 0x10                                            // 0x005349ac    83c410
                          cmp.s              eax, ebp                                             // 0x005349af    3bc5
                          {disp8} jae        _jmp_addr_0x005349c3                                 // 0x005349b1    7310
@@ -15929,7 +15929,7 @@ _jmp_addr_0x005349fe:    {disp8} mov        esi, dword ptr [ebx + 0x04]         
                          push               eax                                                  // 0x00534a04    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x00534a05    8d4e14
                          push               ecx                                                  // 0x00534a08    51
-                         call               _jmp_addr_0x0074ce10                                 // 0x00534a09    e802842100
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z           // 0x00534a09    e802842100
                          mov                edx, dword ptr [esi]                                 // 0x00534a0e    8b16
                          add                esp, 0x08                                            // 0x00534a10    83c408
                          mov.s              ecx, esi                                             // 0x00534a13    8bce
@@ -15955,7 +15955,7 @@ _jmp_addr_0x00534a4d:    {disp8} mov        esi, dword ptr [ebx + 0x04]         
                          {disp8} lea        eax, dword ptr [esi + 0x14]                          // 0x00534a50    8d4614
                          push               ebp                                                  // 0x00534a53    55
                          push               eax                                                  // 0x00534a54    50
-                         call               _jmp_addr_0x0074ce10                                 // 0x00534a55    e8b6832100
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z           // 0x00534a55    e8b6832100
                          mov                edx, dword ptr [esi]                                 // 0x00534a5a    8b16
                          add                esp, 0x08                                            // 0x00534a5c    83c408
                          mov.s              ecx, esi                                             // 0x00534a5f    8bce
@@ -16033,7 +16033,7 @@ _jmp_addr_0x00534b01:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          push               edx                                                  // 0x00534b1e    52
                          {disp8} lea        eax, dword ptr [esp + 0x20]                          // 0x00534b1f    8d442420
                          push               eax                                                  // 0x00534b23    50
-                         call               _jmp_addr_0x0074ce10                                 // 0x00534b24    e8e7822100
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z           // 0x00534b24    e8e7822100
                          mov                edi, dword ptr [esi]                                 // 0x00534b29    8b3e
                          add                esp, 0x08                                            // 0x00534b2b    83c408
                          test               edi, edi                                             // 0x00534b2e    85ff
@@ -16044,7 +16044,7 @@ _jmp_addr_0x00534b34:    {disp8} mov        ecx, dword ptr [edi + 0x04]         
                          push               ecx                                                  // 0x00534b3a    51
                          {disp8} lea        edx, dword ptr [esp + 0x20]                          // 0x00534b3b    8d542420
                          push               edx                                                  // 0x00534b3f    52
-                         call               _jmp_addr_0x0074ce10                                 // 0x00534b40    e8cb822100
+                         call               ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z           // 0x00534b40    e8cb822100
                          add                esp, 0x08                                            // 0x00534b45    83c408
                          cmp.s              ebx, eax                                             // 0x00534b48    3bd8
                          .byte              0x72, 0x37// {disp8} jb _jmp_addr_0x00534b83         // 0x00534b4a    7237
@@ -17373,7 +17373,7 @@ _jmp_addr_0x005355dd:    push               ebp                                 
                          call               _jmp_addr_0x00534f90                                 // 0x005355e2    e8a9f9ffff
                          push               eax                                                  // 0x005355e7    50
                          push               0x46                                                 // 0x005355e8    6a46
-                         call               _jmp_addr_0x00715130                                 // 0x005355ea    e841fb1d00
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                                 // 0x005355ea    e841fb1d00
                          add                esp, 0x04                                            // 0x005355ef    83c404
                          push               eax                                                  // 0x005355f2    50
                          {disp8} lea        eax, dword ptr [esp + 0x30]                          // 0x005355f3    8d442430
@@ -17391,7 +17391,7 @@ _jmp_addr_0x005355dd:    push               ebp                                 
                          push               ecx                                                  // 0x00535617    51
                          push               ebp                                                  // 0x00535618    55
                          push               ebx                                                  // 0x00535619    53
-                         call               _jmp_addr_0x00719610                                 // 0x0053561a    e8f13f1e00
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z         // 0x0053561a    e8f13f1e00
                          {disp8} mov        esi, dword ptr [ebx + 0x14]                          // 0x0053561f    8b7314
                          add                esp, 0x1c                                            // 0x00535622    83c41c
                          test               esi, esi                                             // 0x00535625    85f6
@@ -17425,7 +17425,7 @@ _jmp_addr_0x00535642:    {disp32} mov       edx, dword ptr [esp + 0x000000f8]   
                          call               _jmp_addr_0x00534f90                                 // 0x0053567f    e80cf9ffff
                          push               eax                                                  // 0x00535684    50
                          push               0x47                                                 // 0x00535685    6a47
-                         call               _jmp_addr_0x00715130                                 // 0x00535687    e8a4fa1d00
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                                 // 0x00535687    e8a4fa1d00
                          add                esp, 0x04                                            // 0x0053568c    83c404
                          push               eax                                                  // 0x0053568f    50
                          {disp8} lea        edx, dword ptr [esp + 0x34]                          // 0x00535690    8d542434
@@ -17442,7 +17442,7 @@ _jmp_addr_0x00535642:    {disp32} mov       edx, dword ptr [esp + 0x000000f8]   
                          push               eax                                                  // 0x005356ad    50
                          push               ebp                                                  // 0x005356ae    55
                          push               ebx                                                  // 0x005356af    53
-                         call               _jmp_addr_0x00719610                                 // 0x005356b0    e85b3f1e00
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z         // 0x005356b0    e85b3f1e00
                          {disp8} mov        eax, dword ptr [ebx + 0x14]                          // 0x005356b5    8b4314
                          add                esp, 0x20                                            // 0x005356b8    83c420
                          cmp.s              eax, esi                                             // 0x005356bb    3bc6
@@ -18818,7 +18818,7 @@ _jmp_addr_0x00536462:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          call               _jmp_addr_0x00534f90                                 // 0x0053646c    e81febffff
                          push               eax                                                  // 0x00536471    50
                          push               0x48                                                 // 0x00536472    6a48
-                         call               _jmp_addr_0x00715130                                 // 0x00536474    e8b7ec1d00
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                                 // 0x00536474    e8b7ec1d00
                          add                esp, 0x04                                            // 0x00536479    83c404
                          push               eax                                                  // 0x0053647c    50
                          {disp8} lea        eax, dword ptr [esp + 0x18]                          // 0x0053647d    8d442418
@@ -18835,7 +18835,7 @@ _jmp_addr_0x00536462:    {disp8} mov        ecx, dword ptr [esi + 0x04]         
                          push               ecx                                                  // 0x0053649a    51
                          push               ebp                                                  // 0x0053649b    55
                          push               ebx                                                  // 0x0053649c    53
-                         call               _jmp_addr_0x00719610                                 // 0x0053649d    e86e311e00
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z         // 0x0053649d    e86e311e00
                          add                esp, 0x1c                                            // 0x005364a2    83c41c
 _jmp_addr_0x005364a5:    mov                esi, dword ptr [esi]                                 // 0x005364a5    8b36
                          test               esi, esi                                             // 0x005364a7    85f6
@@ -25058,7 +25058,7 @@ _jmp_addr_0x0053a816:    {disp32} lea       ecx, dword ptr [esp + 0x000000e4]   
                          push               eax                                                  // 0x0053a829    50
                          push               edx                                                  // 0x0053a82a    52
                          push               0x1a                                                 // 0x0053a82b    6a1a
-                         call               _jmp_addr_0x00715130                                 // 0x0053a82d    e8fea81d00
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                                 // 0x0053a82d    e8fea81d00
                          add                esp, 0x04                                            // 0x0053a832    83c404
                          push               eax                                                  // 0x0053a835    50
                          {disp8} lea        eax, dword ptr [esp + 0x28]                          // 0x0053a836    8d442428
@@ -25076,7 +25076,7 @@ _jmp_addr_0x0053a816:    {disp32} lea       ecx, dword ptr [esp + 0x000000e4]   
                          push               ecx                                                  // 0x0053a85a    51
                          push               edi                                                  // 0x0053a85b    57
                          push               esi                                                  // 0x0053a85c    56
-                         call               _jmp_addr_0x00719610                                 // 0x0053a85d    e8aeed1d00
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z         // 0x0053a85d    e8aeed1d00
                          mov                edx, dword ptr [esi]                                 // 0x0053a862    8b16
                          add                esp, 0x20                                            // 0x0053a864    83c420
                          mov.s              ecx, esi                                             // 0x0053a867    8bce

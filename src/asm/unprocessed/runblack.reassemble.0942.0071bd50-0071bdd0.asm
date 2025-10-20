@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x006de570
+.extern ?LocalRand@GRand@@SAIJ@Z
 
 .globl ?GetSampleForAttack@Creature@@UAEIXZ
 
@@ -16,7 +16,7 @@ start_0x0071bd50_0x0071bdd0:
 // Snippet: asm, [0x0071bd50, 0x0071bda5)
 ?GetSampleForAttack@Creature@@UAEIXZ:
                          push           0xa                          // 0x0071bd50    6a0a
-                         call           _jmp_addr_0x006de570         // 0x0071bd52    e81928fcff
+                         call           ?LocalRand@GRand@@SAIJ@Z     // 0x0071bd52    e81928fcff
                          add            esp, 0x04                    // 0x0071bd57    83c404
                          cmp            eax, 0x09                    // 0x0071bd5a    83f809
                          {disp8} ja     _jmp_addr_0x0071bda2         // 0x0071bd5d    7743

@@ -90,8 +90,8 @@
 .extern _jmp_addr_0x006e9200
 .extern _jmp_addr_0x006e9d40
 .extern _jmp_addr_0x006eaa40
-.extern _jmp_addr_0x00715130
-.extern _jmp_addr_0x00719610
+.extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
+.extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x00719b90
 .extern @__ct__16ShowNeedsVisualsFRC9MapCoordsP9GameThingPC14GShowNeedsInfo@20
 .extern _jmp_addr_0x00719e80
@@ -5017,7 +5017,7 @@ _jmp_addr_0x0077c179:    mov                edx, dword ptr [eax]                
                          call               ?ConvertToText@MapCoords@@QAEPADPAD@Z         // 0x0077c23c    e83f66e8ff
                          push               eax                                           // 0x0077c241    50
                          push               0x16                                          // 0x0077c242    6a16
-                         call               _jmp_addr_0x00715130                          // 0x0077c244    e8e78ef9ff
+                         call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z                          // 0x0077c244    e8e78ef9ff
                          add                esp, 0x04                                     // 0x0077c249    83c404
                          push               eax                                           // 0x0077c24c    50
                          {disp8} lea        eax, dword ptr [esp + 0x5c]                   // 0x0077c24d    8d44245c
@@ -5034,7 +5034,7 @@ _jmp_addr_0x0077c179:    mov                edx, dword ptr [eax]                
                          push               ecx                                           // 0x0077c26a    51
                          push               ebp                                           // 0x0077c26b    55
                          push               esi                                           // 0x0077c26c    56
-                         call               _jmp_addr_0x00719610                          // 0x0077c26d    e89ed3f9ff
+                         call               ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z  // 0x0077c26d    e89ed3f9ff
                          {disp32} mov       edi, dword ptr [esp + 0x000001a4]             // 0x0077c272    8bbc24a4010000
                          {disp8} mov        ebx, dword ptr [esp + 0x4c]                   // 0x0077c279    8b5c244c
                          add                esp, 0x30                                     // 0x0077c27d    83c430

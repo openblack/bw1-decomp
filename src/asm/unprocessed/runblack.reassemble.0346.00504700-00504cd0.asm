@@ -32,7 +32,7 @@
 .extern _jmp_addr_0x0074cd50
 .extern _jmp_addr_0x0074d360
 .extern _jmp_addr_0x0074d380
-.extern _jmp_addr_0x0074dc30
+.extern ?ConvertAngle3DToGame@GUtils@@SAIM@Z
 .extern _jmp_addr_0x0074e2b0
 .extern _jmp_addr_0x007a1400
 .extern ___RTDynamicCast
@@ -166,7 +166,7 @@ _jmp_addr_0x005048b5:    and                ecx, 0x0000ffff                     
                          {disp8} fild       dword ptr [esp + 0x0c]                        // 0x005048bf    db44240c
                          push               ecx                                           // 0x005048c3    51
                          fstp               dword ptr [esp]                               // 0x005048c4    d91c24
-                         call               _jmp_addr_0x0074dc30                          // 0x005048c7    e864932400
+                         call               ?ConvertAngle3DToGame@GUtils@@SAIM@Z          // 0x005048c7    e864932400
                          push               eax                                           // 0x005048cc    50
                          call               _jmp_addr_0x0074e2b0                          // 0x005048cd    e8de992400
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x005048d2    d95c2414
