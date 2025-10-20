@@ -61,6 +61,11 @@ extern const struct GBaseInfoVftable __vt__9GBaseInfo asm("??_7GBaseInfo@@6B@");
 // win1.41 00436c30 mac 103e4630 GBaseInfo::GetInfoPtr(unsigned long)
 struct GBaseInfo* __cdecl GetInfoPtr__9GBaseInfoFUl(int index);
 
+// Constructors
+
+// win1.41 0042e5e0 mac 102f9af0 GBaseInfo::GBaseInfo(void)
+struct GBaseInfo* __fastcall __ct__9GBaseInfoFv(struct GBaseInfo* this) asm("??0GBaseInfo@@QAE@XZ");
+
 // Non-virtual methods
 
 // win1.41 00436bd0 mac 1035b720 GBaseInfo::SetInfoID(void)

@@ -29,6 +29,11 @@ struct RPHolder
 };
 static_assert(sizeof(struct RPHolder) == 0x6402c, "Data type is of wrong size");
 
+// Static methods
+
+// win1.41 0083b300 mac 1061e7c4 RPHolder::InitialiseSystem(void (__cdecl *)(int, int, struct RPHolder *), void (__cdecl *)(struct RPHolder *))
+void __cdecl InitialiseSystem__8RPHolderFPFiiP8RPHolder_vPFP8RPHolder_v(struct RPHolder* this, void (__cdecl* param_1)(int param_1, int param_2, struct RPHolder * param_3), void (__cdecl* param_2)(struct RPHolder * param_1)) asm("?InitialiseSystem@RPHolder@@QAEXP6AXHHPAV1@@ZP6AX0@Z@Z");
+
 // Constructors
 
 // win1.41 0083b2e0 mac 1061b374 RPHolder::RPHolder(void)
@@ -42,5 +47,10 @@ void __fastcall Empty__8RPHolderFv(struct RPHolder* this);
 uint32_t __fastcall GetSidePointOfStartObject__8RPHolderFiRC7Point2DR7Point2Di(struct RPHolder* this, const void* edx, int param_1, struct Point2D* param_2, struct Point2D* param_3, int param_4);
 // win1.41 0083bb60 mac 100ab580 RPHolder::GetFirstObject(Point2D const &, Point2D &, int, Point2D &, int &, float)
 int __fastcall GetFirstObject__8RPHolderFRC7Point2DR7Point2DiR7Point2DRif(struct RPHolder* this, const void* edx, struct Point2D* param_1, struct Point2D* param_2, int param_3, struct Point2D* param_4, int* param_5, float param_6);
+
+// win1.41 0054afb0 mac 105705d0 CheckSquareFunction(int, int, RPHolder *)
+void __cdecl CheckSquareFunction__FiiP8RPHolder(int param_1, int param_2, struct RPHolder* param_3) asm("?CheckSquareFunction@@YAXHHPAURPHolder@@@Z");
+// win1.41 0054af60 mac 100e4d00 AddSpecialRPObjects(RPHolder *)
+void __cdecl AddSpecialRPObjects__FP8RPHolder(struct RPHolder* param_1) asm("?AddSpecialRPObjects@@YAXPAURPHolder@@@Z");
 
 #endif /* BW1_DECOMP_RP_HOLDER_INCLUDED_H */

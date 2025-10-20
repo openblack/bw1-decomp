@@ -103,6 +103,11 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__4GMap asm("??_R2GMa
 // win1.41 009b1f18 mac inlined GMap::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__4GMap asm("??_R3GMap@@8");
 
+// Constructors
+
+// win1.41 00601080 mac 10552040 GMap::GMap(void)
+struct GMap* __fastcall __ct__4GMapFv(struct GMap* this) asm("??0GMap@@QAE@XZ");
+
 // Non-virtual methods
 
 // win1.41 00612660 mac 100fddf0 GMap::ToMap(long, long)

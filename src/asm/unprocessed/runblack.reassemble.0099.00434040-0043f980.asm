@@ -223,7 +223,7 @@
 .globl @__ct__6LHFileFv@4
 .globl @ResetData__6LHFile@4
 .globl @LoadBinary__10GAbodeInfoFP6LHFile@12
-.globl _jmp_addr_0x0042e5e0
+.globl ??0GBaseInfo@@QAE@XZ
 .globl @__ct__10GMagicInfoFv@4
 .globl @__ct__4BallFRC9MapCoordsPC9GBallInfo@16
 .globl ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z

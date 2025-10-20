@@ -58,7 +58,7 @@
 .extern ___nw__FUl
 .extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
 .extern _jmp_addr_0x00824b10
-.extern _jmp_addr_0x0082f2c0
+.extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
 
 .globl ?RunMessageSet@HelpSystem@@QAEIW4HELP_SYSTEM_MESSAGE_SET@@PAVGameThingWithPos@@@Z
@@ -3420,7 +3420,7 @@ _jmp_addr_0x005cad00:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          push               0x005cd020                                    // 0x005cad75    6820d05c00
                          push               0x1                                           // 0x005cad7a    6a01
                          push               0x00004e20                                    // 0x005cad7c    68204e0000
-                         call               _jmp_addr_0x0082f2c0                          // 0x005cad81    e83a452600
+                         call               ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z                          // 0x005cad81    e83a452600
                          add                esp, 0x10                                     // 0x005cad86    83c410
                          mov.s              eax, esi                                      // 0x005cad89    8bc6
                          pop                esi                                           // 0x005cad8b    5e

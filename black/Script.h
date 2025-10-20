@@ -52,6 +52,8 @@ extern const struct BaseVftable __vt__7GScript asm("??_7GScript@@6B@");
 
 // Static methods
 
+// win1.41 006eb100 mac 104d8610 GScript::Create(void)
+struct GScript* __cdecl Create__7GScriptFv(struct GScript* this) asm("?Create@GScript@@QAEPAV1@XZ");
 // win1.41 006eb710 mac 104d7e50 GScript::StartScript(char *)
 int __stdcall StartScript__7GScriptFPc(char* name);
 // win1.41 0070b220 mac 104fcda0 GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL)

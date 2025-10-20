@@ -159,7 +159,7 @@
 .extern _Random__Fff@8
 .extern _jmp_addr_0x0081e1f0
 .extern _jmp_addr_0x0081e590
-.extern _jmp_addr_0x0082f2c0
+.extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
 .extern _CHAR2WCHAR__FPc
@@ -12423,7 +12423,7 @@ _jmp_addr_0x00526449:    {disp8} mov        dword ptr [edi + 0x3c], ecx         
                          {disp8} mov        dword ptr [edi + 0x28], ebp                          // 0x00526459    896f28
                          {disp8} mov        dword ptr [edi + 0x30], 0x3f800000                   // 0x0052645c    c747300000803f
                          {disp8} mov        dword ptr [edi + 0x2c], ebp                          // 0x00526463    896f2c
-                         call               _jmp_addr_0x0082f2c0                                 // 0x00526466    e8558e3000
+                         call               ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z                                 // 0x00526466    e8558e3000
                          add                esp, 0x10                                            // 0x0052646b    83c410
                          pop                edi                                                  // 0x0052646e    5f
                          pop                esi                                                  // 0x0052646f    5e

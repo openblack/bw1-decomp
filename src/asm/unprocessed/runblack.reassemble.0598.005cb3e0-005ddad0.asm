@@ -94,7 +94,7 @@
 .extern _SetCursorOn__8FrontEndFv
 .extern _jmp_addr_0x0053c470
 .extern _SetTurnOffMouseMove__Fb
-.extern _jmp_addr_0x0054b820
+.extern ?SetZero@LH3DMapCoords@@QAEXXZ
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
@@ -4899,7 +4899,7 @@ _jmp_addr_0x005ce4ad:    mov.s              ecx, esi                            
                          call               @SetToZero__16GInterfaceStatusFP10GInterface@12// 0x005ce4e5    e816d50000
                          {disp32} lea       ecx, dword ptr [esi + 0x000003b8]              // 0x005ce4ea    8d8eb8030000
                          {disp32} mov       dword ptr [esi + 0x000003ac], 0x00000003       // 0x005ce4f0    c786ac03000003000000
-                         call               _jmp_addr_0x0054b820                           // 0x005ce4fa    e821d3f7ff
+                         call               ?SetZero@LH3DMapCoords@@QAEXXZ                 // 0x005ce4fa    e821d3f7ff
                          mov                ebp, 0x7f7fffff                                // 0x005ce4ff    bdffff7f7f
                          {disp32} lea       ecx, dword ptr [esi + 0x000003f0]              // 0x005ce504    8d8ef0030000
                          {disp32} mov       dword ptr [esi + 0x000003c4], ebp              // 0x005ce50a    89aec4030000
@@ -4909,7 +4909,7 @@ _jmp_addr_0x005ce4ad:    mov.s              ecx, esi                            
                          {disp32} mov       dword ptr [esi + 0x000003d4], ebp              // 0x005ce522    89aed4030000
                          {disp32} mov       dword ptr [esi + 0x000003d8], ebx              // 0x005ce528    899ed8030000
                          {disp32} mov       dword ptr [esi + 0x000003dc], ebp              // 0x005ce52e    89aedc030000
-                         call               _jmp_addr_0x0054b820                           // 0x005ce534    e8e7d2f7ff
+                         call               ?SetZero@LH3DMapCoords@@QAEXXZ                 // 0x005ce534    e8e7d2f7ff
                          {disp32} lea       ecx, dword ptr [esi + 0x000003b8]              // 0x005ce539    8d8eb8030000
                          {disp32} mov       dword ptr [esi + 0x000003fc], ebp              // 0x005ce53f    89aefc030000
                          {disp32} mov       dword ptr [esi + 0x00000400], ebx              // 0x005ce545    899e00040000
@@ -4918,7 +4918,7 @@ _jmp_addr_0x005ce4ad:    mov.s              ecx, esi                            
                          {disp32} mov       dword ptr [esi + 0x0000040c], ebp              // 0x005ce557    89ae0c040000
                          {disp32} mov       dword ptr [esi + 0x00000410], ebx              // 0x005ce55d    899e10040000
                          {disp32} mov       dword ptr [esi + 0x00000414], ebp              // 0x005ce563    89ae14040000
-                         call               _jmp_addr_0x0054b820                           // 0x005ce569    e8b2d2f7ff
+                         call               ?SetZero@LH3DMapCoords@@QAEXXZ                 // 0x005ce569    e8b2d2f7ff
                          {disp32} mov       dword ptr [esi + 0x000003c4], ebp              // 0x005ce56e    89aec4030000
                          {disp32} mov       dword ptr [esi + 0x000003c8], ebx              // 0x005ce574    899ec8030000
                          {disp32} mov       dword ptr [esi + 0x000003cc], ebp              // 0x005ce57a    89aecc030000
@@ -22127,7 +22127,7 @@ _jmp_addr_0x005db22d:    {disp32} mov       edx, dword ptr [esp + 0x000000d4]   
                          test               eax, eax                                       // 0x005db267    85c0
                          {disp8} je         _jmp_addr_0x005db2b2                           // 0x005db269    7447
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x005db26b    8d4c2420
-                         call               _jmp_addr_0x0054b820                           // 0x005db26f    e8ac05f7ff
+                         call               ?SetZero@LH3DMapCoords@@QAEXXZ                 // 0x005db26f    e8ac05f7ff
                          {disp32} mov       eax, dword ptr [esp + 0x000000c0]              // 0x005db274    8b8424c0000000
                          push               eax                                            // 0x005db27b    50
                          push               esi                                            // 0x005db27c    56

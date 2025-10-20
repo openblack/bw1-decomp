@@ -22,6 +22,11 @@ struct PathCreator
 };
 static_assert(sizeof(struct PathCreator) == 0x220, "Data type is of wrong size");
 
+// Constructors
+
+// win1.41 0078e8c0 mac 1017a270 PathCreator::PathCreator(void)
+struct PathCreator* __fastcall __ct__11PathCreatorFv(struct PathCreator* this) asm("??0PathCreator@@QAE@XZ");
+
 // Non-virtual methods
 
 // win1.41 0078eaa0 mac 1035b570 PathCreator::GetSaveGamePicturesPath__11PathCreatorFPc(char*)

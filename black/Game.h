@@ -218,6 +218,8 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this) asm("??0GGame@@QAE@X
 
 // win1.41 00510630 mac 100c09f0 GGame::SetupDataTables(void)
 void __fastcall SetupDataTables__5GGameFv(struct GGame* this) asm("?SetupDataTables@GGame@@QAEXXZ");
+// win1.41 0054bf20 mac 104eff40 GGame::ClearVariables(void)
+void __fastcall ClearVariables__5GGameFv(struct GGame* this) asm("?ClearVariables@GGame@@QAEXXZ");
 // win1.41 0054c180 mac 1003a410 GGame::GetCamera(void)
 struct GCamera* __fastcall GetCamera__5GGameFv(struct GGame* this) asm("?GetCamera@GGame@@QAEPAVGCamera@@XZ");
 // win1.41 0054c190 mac 101c8360 GGame::StartGame(void)

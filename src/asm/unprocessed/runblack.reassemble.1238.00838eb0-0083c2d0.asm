@@ -76,7 +76,7 @@
 .globl _jmp_addr_0x0083ade0
 .globl _jmp_addr_0x0083ae80
 .globl @__ct__8RPHolderFv@4
-.globl _jmp_addr_0x0083b300
+.globl ?InitialiseSystem@RPHolder@@QAEXP6AXHHPAV1@@ZP6AX0@Z@Z
 .globl _jmp_addr_0x0083b320
 .globl @Empty__8RPHolderFv@4
 .globl _jmp_addr_0x0083b380
@@ -3374,7 +3374,8 @@ _jmp_addr_0x0083b2c0:    {disp32} fld       dword ptr [rdata_bytes + 0xfaae4]   
                          nop                                                                // 0x0083b2fd    90
                          nop                                                                // 0x0083b2fe    90
                          nop                                                                // 0x0083b2ff    90
-_jmp_addr_0x0083b300:    {disp8} mov        eax, dword ptr [esp + 0x04]                     // 0x0083b300    8b442404
+?InitialiseSystem@RPHolder@@QAEXP6AXHHPAV1@@ZP6AX0@Z@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                     // 0x0083b300    8b442404
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                     // 0x0083b304    8b4c2408
                          {disp32} mov       dword ptr [data_bytes + 0x517d14], eax          // 0x0083b308    a314dded00
                          {disp32} mov       dword ptr [data_bytes + 0x517d18], ecx          // 0x0083b30d    890d18dded00

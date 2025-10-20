@@ -103,7 +103,7 @@
 .globl _jmp_addr_0x0050f630
 .globl _jmp_addr_0x0050f6c0
 .globl _jmp_addr_0x0050f780
-.globl _jmp_addr_0x0050f7b0
+.globl ?InitialiseBitmaps@DanceLight@@QAEXXZ
 .globl _jmp_addr_0x0050f960
 .globl @__ct__5GDataFv@4
 .globl ?SetupDataTables@GGame@@QAEXXZ
@@ -1748,7 +1748,8 @@ _jmp_addr_0x0050f795:    mov                dword ptr [esi], 0x00000000         
                          nop                                                              // 0x0050f7ad    90
                          nop                                                              // 0x0050f7ae    90
                          nop                                                              // 0x0050f7af    90
-_jmp_addr_0x0050f7b0:    sub                esp, 0x00000100                               // 0x0050f7b0    81ec00010000
+?InitialiseBitmaps@DanceLight@@QAEXXZ:
+                         sub                esp, 0x00000100                               // 0x0050f7b0    81ec00010000
                          push               esi                                           // 0x0050f7b6    56
                          push               edi                                           // 0x0050f7b7    57
                          mov                edi, 0x00cc5ee8                               // 0x0050f7b8    bfe85ecc00

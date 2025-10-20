@@ -174,7 +174,7 @@
 .globl _jmp_addr_0x00600d40
 .globl @__ct__12MobileObjectFv@4
 .globl _jmp_addr_0x00600e20
-.globl _jmp_addr_0x00601080
+.globl ??0GMap@@QAE@XZ     
 .globl _jmp_addr_0x006010f0
 .globl _jmp_addr_0x00601330
 .globl @Clean__7MapCellFv@4
@@ -8981,7 +8981,8 @@ _jmp_addr_0x00601060:    {disp32} fld       dword ptr [rdata_bytes + 0x87028]   
                          nop                                                              // 0x0060107d    90
                          nop                                                              // 0x0060107e    90
                          nop                                                              // 0x0060107f    90
-_jmp_addr_0x00601080:    mov.s              eax, ecx                                      // 0x00601080    8bc1
+??0GMap@@QAE@XZ:
+                         mov.s              eax, ecx                                      // 0x00601080    8bc1
                          push               esi                                           // 0x00601082    56
                          xor.s              esi, esi                                      // 0x00601083    33f6
 .att_syntax

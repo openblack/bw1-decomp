@@ -68,7 +68,7 @@
 .globl _jmp_addr_0x0082ee50
 .globl _jmp_addr_0x0082ee70
 .globl _StartFrame__10LH3DRenderFv
-.globl _jmp_addr_0x0082f2c0
+.globl ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .globl _jmp_addr_0x0082f3b0
 .globl _jmp_addr_0x0082f460
 .globl @DrawTriangle__10LH3DRenderFP8Vertex3DUlPUsUl@16
@@ -4358,7 +4358,8 @@ _jmp_addr_0x0082f2af:    pop                esi                                 
                          nop                                                               // 0x0082f2bd    90
                          nop                                                               // 0x0082f2be    90
                          nop                                                               // 0x0082f2bf    90
-_jmp_addr_0x0082f2c0:    cmp                dword ptr [data_bytes + 0x504600], 0x10        // 0x0082f2c0    833d00a6ec0010
+?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z:
+                         cmp                dword ptr [data_bytes + 0x504600], 0x10        // 0x0082f2c0    833d00a6ec0010
                          {disp32} jge       _jmp_addr_0x0082f3ae                           // 0x0082f2c7    0f8de1000000
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                    // 0x0082f2cd    8b44240c
                          test               eax, eax                                       // 0x0082f2d1    85c0

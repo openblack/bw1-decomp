@@ -68,7 +68,7 @@
 .extern @__ct__Q210NewCollide3ObjFP7LHPointfff@24
 .extern @__dt__Q210NewCollide3ObjFv@4
 .extern _StartFrame__10LH3DRenderFv
-.extern _jmp_addr_0x0082f2c0
+.extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
 .extern _jmp_addr_0x0082f460
 .extern @DrawTriangle__10LH3DRenderFP8Vertex3DUlPUsUl@16
@@ -725,7 +725,7 @@ _jmp_addr_0x0081e75a:    push               0x0                                 
                          {disp32} mov       dword ptr [data_bytes + 0x2721ac], 0x3e000000        // 0x0081e79a    c705ac81c3000000003e
                          {disp32} mov       dword ptr [data_bytes + 0x2721c8], 0x00000000        // 0x0081e7a4    c705c881c30000000000
                          {disp32} mov       dword ptr [data_bytes + 0x2721cc], 0x3e000000        // 0x0081e7ae    c705cc81c3000000003e
-                         call               _jmp_addr_0x0082f2c0                                 // 0x0081e7b8    e8030b0100
+                         call               ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z                                 // 0x0081e7b8    e8030b0100
                          add                esp, 0x10                                            // 0x0081e7bd    83c410
                          mov                eax, 0x00000001                                      // 0x0081e7c0    b801000000
                          ret                                                                     // 0x0081e7c5    c3

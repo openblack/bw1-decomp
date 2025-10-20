@@ -151,7 +151,7 @@
 .extern _Random__Fff@8
 .extern _jmp_addr_0x0081e1f0
 .extern _jmp_addr_0x0081f1a0
-.extern _jmp_addr_0x0082f2c0
+.extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
 .extern _jmp_addr_0x008379e0
@@ -4668,12 +4668,12 @@ _jmp_addr_0x005c2c84:    {disp8} mov        ecx, dword ptr [ebx + 0x08]         
                          {disp32} fld       dword ptr [eax + 0x000035bc]                   // 0x005c2cbd    d980bc350000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1dc98]              // 0x005c2cc3    d80d986c8c00
                          {disp32} fstp      dword ptr [eax + 0x000035bc]                   // 0x005c2cc9    d998bc350000
-                         call               _jmp_addr_0x0082f2c0                           // 0x005c2ccf    e8ecc52600
+                         call               ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z                           // 0x005c2ccf    e8ecc52600
                          push               ebx                                            // 0x005c2cd4    53
                          push               0x005c2e10                                     // 0x005c2cd5    68102e5c00
                          push               0x1                                            // 0x005c2cda    6a01
                          push               0x64                                           // 0x005c2cdc    6a64
-                         call               _jmp_addr_0x0082f2c0                           // 0x005c2cde    e8ddc52600
+                         call               ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z                           // 0x005c2cde    e8ddc52600
                          add                esp, 0x20                                      // 0x005c2ce3    83c420
                          xor.s              edi, edi                                       // 0x005c2ce6    33ff
                          mov.s              esi, ebp                                       // 0x005c2ce8    8bf5
