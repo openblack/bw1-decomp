@@ -51,7 +51,7 @@ class {mac_unmangled.type_name}
 {{
 public:
 {embedded_enums}
-{return_type if mac_unmangled.function_name not in ['__ct', '__dt'] else ''} \
+{'static' if call_type == 'static' else ''} {return_type if mac_unmangled.function_name not in ['__ct', '__dt'] else ''} \
 {mac_unmangled.get_post_namespace_signature()};
 }};
 """
@@ -82,6 +82,14 @@ if __name__ == "__main__":
     custom_types_lut = {i['type'].removeprefix("struct ").removeprefix("union ").removeprefix("enum "): i['type'] for i in data['types']}
 
     for line in fileinput.input():
-        return_type, call_type, mac_mangled = line.strip().split(" ")
+        line = line.strip()
+        is_static = line.startswith("static ")
+        if is_static and line.count(" ") == 3:  # started with static, has a call_type that we will override
+            line.removeprefix("static ")
+        return_type, call_type, mac_mangled = line.split(" ")
+        if return_type == 'static':
+            return_type, call_type = call_type, return_type
+        if is_static:
+            call_type = "static"
         mangled_name, _, _, _, _ = mac_mangled_to_msvc_mangled(return_type, call_type, mac_mangled, custom_types_lut)
         print(mangled_name)
