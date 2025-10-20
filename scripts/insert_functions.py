@@ -64,6 +64,9 @@ def insert_functions_from_csv(csv_path: Path, json_path: Path):
             if win_addr != -1:
                 set_function_name_in_repo_files(win_addr, mangled_name)
 
+    if not new_entries:
+        raise ValueError("No new entries to add.")
+
     data['functions'] += new_entries
     with json_path.open("w") as f:
         data = json.dump(data, f, indent=2)
