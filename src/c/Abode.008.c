@@ -476,7 +476,7 @@ void __fastcall ApplyEffectsDueToPhysicalDestruction__5AbodeFP6ObjectP7GPlayer(s
     asm("{disp8} je         _jmp_addr_0x00406786");                          // 0x0040676f    7415
     asm("push               ebx");                                           // 0x00406771    53
     asm("mov.s              ecx, edi");                                      // 0x00406772    8bcf
-    asm("call               _jmp_addr_0x0064d750");                          // 0x00406774    e8d76f2400
+    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z");                          // 0x00406774    e8d76f2400
     asm("test               eax, eax");                                      // 0x00406779    85c0
     asm("{disp8} je         _jmp_addr_0x00406786");                          // 0x0040677b    7409
     asm("{disp8} mov        ecx, dword ptr [ebx + 0x30]");                   // 0x0040677d    8b4b30
@@ -556,7 +556,7 @@ uint32_t __fastcall InterfaceTap__5AbodeFP16GInterfaceStatus(struct Object* this
     asm("{disp8} je         _jmp_addr_0x00406864");                          // 0x00406851    7411
     asm("_jmp_addr_0x00406853:");
     asm("mov.s              ecx, esi");                                      // 0x00406853    8bce
-    asm("call               _jmp_addr_0x00752b80");                          // 0x00406855    e826c33400
+    asm("call               ?SetStateWhenTappedOnAbode@Villager@@QAE_NXZ");                          // 0x00406855    e826c33400
     asm("{disp32} mov       esi, dword ptr [esi + 0x000000e4]");             // 0x0040685a    8bb6e4000000
     asm("test               esi, esi");                                      // 0x00406860    85f6
     asm("{disp8} jne        _jmp_addr_0x00406853");                          // 0x00406862    75ef
@@ -781,7 +781,7 @@ uint32_t __fastcall Save__5AbodeFR10GameOSFile(struct GameThing* this, const voi
     asm("{disp32} mov       eax, dword ptr [ebx + 0x00000098]");             // 0x00406ad6    8b8398000000
     asm("push               eax");                                           // 0x00406adc    50
     asm("mov.s              ecx, esi");                                      // 0x00406add    8bce
-    asm("call               _jmp_addr_0x00561e10");                          // 0x00406adf    e82cb31500
+    asm("call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z");                          // 0x00406adf    e82cb31500
     asm("cmp                dword ptr [data_bytes + 0x226990], ebp");        // 0x00406ae4    392d90c9be00
     asm("{disp32} je        _jmp_addr_0x00406c4b");                          // 0x00406aea    0f845b010000
     asm("{disp32} mov       ecx, dword ptr [ebx + 0x000000a4]");             // 0x00406af0    8b8ba4000000
@@ -810,7 +810,7 @@ uint32_t __fastcall Save__5AbodeFR10GameOSFile(struct GameThing* this, const voi
     asm("{disp32} je        _jmp_addr_0x00406c4b");                          // 0x00406b30    0f8415010000
     asm("push               edi");                                           // 0x00406b36    57
     asm("mov.s              ecx, esi");                                      // 0x00406b37    8bce
-    asm("call               _jmp_addr_0x00561e10");                          // 0x00406b39    e8d2b21500
+    asm("call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z");                          // 0x00406b39    e8d2b21500
     asm("{disp8} jmp        _jmp_addr_0x00406b0a");                          // 0x00406b3e    ebca
     asm("_jmp_addr_0x00406b40:");
     asm("{disp32} mov       dword ptr [data_bytes + 0x226990], 0x00000000"); // 0x00406b40    c70590c9be0000000000

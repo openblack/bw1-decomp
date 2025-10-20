@@ -403,6 +403,8 @@ int __fastcall MoveToPos__6LivingFv(struct Living* this);
 uint32_t __fastcall MoveToObject__6LivingFv(struct Living* this);
 // win1.41 005ec330 mac 10382cf0 Living::Flying(void)
 uint32_t __fastcall Flying__6LivingFv(struct Living* this);
+// win1.41 005ec520 mac 103826a0 Living::LookAtObject(GameThingWithPos *, unsigned long)
+uint32_t __fastcall LookAtObject__6LivingFP16GameThingWithPosUl(struct Living* this, const void* edx, struct GameThingWithPos* param_1, unsigned long param_2) asm("?LookAtObject@Living@@QAEIPAVGameThingWithPos@@K@Z");
 // win1.41 005ec550 mac 10382540 Living::LookAtPos(MapCoords const &, ulong)
 bool __fastcall LookAtPos__6LivingFRC9MapCoordsUl(struct Living* this, const void* edx, struct MapCoords* pos, int param_2);
 // win1.41 005ec960 mac 1004eb50 Living::IsReadyForNewAnimation(unsigned long)
@@ -411,6 +413,8 @@ bool __fastcall IsReadyForNewAnimation__6LivingFUl(const struct Living* this, co
 uint32_t __fastcall WaitForAnimation__6LivingFv(struct Living* this);
 // win1.41 005eca80 mac inlined Living::SetTopStateToFinal(void)
 void __fastcall SetTopStateToFinal__6LivingFv(struct Living* this);
+// win1.41 005ecac0 mac 10091bd0 Living::PlayAnimThenSetState(unsigned char, unsigned long)
+void __fastcall PlayAnimThenSetState__6LivingFUcUl(struct Living* this, const void* edx, unsigned char param_1, unsigned long param_2) asm("?PlayAnimThenSetState@Living@@QAEXEK@Z");
 // win1.41 005ecb10 mac 10053750 Living::SetStateAnim(void)
 void __fastcall SetStateAnim__6LivingFv(struct Living* this);
 // win1.41 005ecd00 mac 10380fd0 Living::MoveOnStructure(void)
@@ -437,14 +441,20 @@ int __fastcall SetupMoveOnFootpath__6LivingFP9GFootpathiUcP13GFootpathNode(struc
 void __fastcall SetupMoveToOnFootpath__6LivingFR16GameThingWithPosRC9MapCoordsUc(struct Living* this, const void* edx, struct GameThingWithPos* destination, struct MapCoords* arrive_position, uint8_t state);
 // win1.41 005edde0 mac 1037eef0 Living::MoveOnFootpath(void)
 int __fastcall MoveOnFootpath__6LivingFv(struct Living* this);
+// win1.41 005ee5f0 mac 1037e2a0 Living::SetFlock(Flock *)
+void __fastcall SetFlock__6LivingFP5Flock(struct Living* this, const void* edx, struct Flock* param_1) asm("?SetFlock@Living@@QAEXPAVFlock@@@Z");
 // win1.41 005ef010 mac 10065550 Living::PosWithinDomain(MapCoords const &, float)
 uint32_t __fastcall PosWithinDomain__6LivingFRC9MapCoordsf(struct Living* this, const void* edx, struct MapCoords* param_1, float param_2);
+// win1.41 005ef9c0 mac 10384160 Living::CalculateDancePosition(MapCoords const &, MapCoords *)
+bool __fastcall CalculateDancePosition__6LivingFRC9MapCoordsP9MapCoords(struct Living* this, const void* edx, const struct MapCoords* param_1, struct MapCoords* param_2) asm("?CalculateDancePosition@Living@@QAE_NABUMapCoords@@PAU2@@Z");
 // win1.41 005f1270 mac 1004b9b0 Living::ProcessReaction(void)
 void __fastcall ProcessReaction__6LivingFv(struct Living* this);
 // win1.41 005f2640 mac 10385e00 Living::GotoPickupBallReaction(void)
 uint32_t __fastcall GotoPickupBallReaction__6LivingFv(struct Living* this);
 // win1.41 005f27f0 mac 10056110 Living::GetTopState(void)
 enum VILLAGER_STATES __fastcall GetTopState__6LivingCFv(struct Living* this);
+// win1.41 005f2800 mac 1038a340 Living::SetupMoveToObject(Object *, unsigned char)
+bool __fastcall SetupMoveToObject__6LivingFP6ObjectUc(struct Living* this, const void* edx, struct Object* param_1, unsigned char param_2) asm("?SetupMoveToObject@Living@@QAE_NPAVObject@@E@Z");
 // win1.41 005f2830 mac 10029240 Living::SetupMoveToPos(MapCoords const &, unsigned char)
 uint32_t __fastcall SetupMoveToPos__6LivingFRC9MapCoordsUc(struct Living* this, const void* edx, const struct MapCoords* param_2, uint8_t param_3);
 // win1.41 005f2890 mac 10010f60 Living::SetupMoveToWithHug(MapCoords const &, unsigned char)

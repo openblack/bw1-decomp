@@ -273,6 +273,8 @@ void __fastcall __dt__9GameThingFv(struct GameThing* this, const void* edx, uint
 
 // win1.41 0056faa0 mac 10492500 GameThing::ProcessDead(int)
 void __fastcall ProcessDead__9GameThingFi(struct GameThing* this, const void* edx, int param_1);
+// win1.41 0056fef0 mac 103c2300 GameThing::CheckAndSetSaved(void)
+bool __fastcall CheckAndSetSaved__9GameThingFv(struct GameThing* this) asm("?CheckAndSetSaved@GameThing@@QAE_NXZ");
 
 // Override methods
 

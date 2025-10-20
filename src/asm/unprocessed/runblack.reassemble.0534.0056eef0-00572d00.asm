@@ -91,7 +91,7 @@
 .globl ?Get3DSoundPos@GameThingWithPos@@UAEHPAULHPoint@@@Z
 .globl _jmp_addr_0x0056fe70
 .globl ?GetUpdateOfBoredomValue@GameThingWithPos@@UAEMPAUReaction@@PAV1@@Z
-.globl _jmp_addr_0x0056fef0
+.globl ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .globl ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .globl ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
 .globl ?UseFootpathIfNecessary@GameThingWithPos@@QAEXPAVLiving@@ABUMapCoords@@E@Z
@@ -1650,7 +1650,8 @@ _jmp_addr_0x0056fe9c:    {disp32} fld       dword ptr [_rdata_float1p0]         
                          nop                                                              // 0x0056feed    90
                          nop                                                              // 0x0056feee    90
                          nop                                                              // 0x0056feef    90
-_jmp_addr_0x0056fef0:    {disp32} mov       ax, word ptr [data_bytes + 0x3d3710]          // 0x0056fef0    66a11097d900
+?CheckAndSetSaved@GameThing@@QAE_NXZ:
+                         {disp32} mov       ax, word ptr [data_bytes + 0x3d3710]          // 0x0056fef0    66a11097d900
                          cmp                ax, word ptr [ecx + 0x0c]                     // 0x0056fef6    663b410c
                          {disp8} je         _jmp_addr_0x0056ff06                          // 0x0056fefa    740a
                          {disp8} mov        word ptr [ecx + 0x0c], ax                     // 0x0056fefc    6689410c

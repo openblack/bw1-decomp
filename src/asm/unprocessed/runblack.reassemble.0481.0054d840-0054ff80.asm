@@ -212,7 +212,7 @@
 .extern _jmp_addr_0x005e7a40
 .extern _jmp_addr_0x005e7ce0
 .extern _jmp_addr_0x005e7d30
-.extern _jmp_addr_0x005e98b0
+.extern ?InitForGame@LHInetWeather@@QAEXXZ
 .extern _ProcessLiving__6LivingFv
 .extern _jmp_addr_0x005f3cc0
 .extern _jmp_addr_0x005f3ce0
@@ -3130,7 +3130,7 @@ _jmp_addr_0x0054ff09:    push               0x1                                 
                          call               _RenderLoadingFrame__Fb                       // 0x0054ff0b    e8304f0a00
                          add                esp, 0x04                                     // 0x0054ff10    83c404
                          mov                ecx, 0x00d01600                               // 0x0054ff13    b90016d000
-                         call               _jmp_addr_0x005e98b0                          // 0x0054ff18    e893990900
+                         call               ?InitForGame@LHInetWeather@@QAEXXZ            // 0x0054ff18    e893990900
                          {disp32} mov       dword ptr [data_bytes + 0x33b980], edi        // 0x0054ff1d    893d8019d000
                          {disp32} mov       byte ptr [data_bytes + 0x33b9c4], 0x00        // 0x0054ff23    c605c419d00000
                          mov                eax, 0x00000001                               // 0x0054ff2a    b801000000

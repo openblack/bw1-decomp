@@ -45,6 +45,13 @@ extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Foot
 // win1.41 008dd648 mac 109993f0 Football::`vftable'
 extern const struct AbodeVftable __vt__8Football asm("??_7Football@@6B@");
 
+// Non-virtual methods
+
+// win1.41 00531410 mac 102bd040 Football::GetBall(void)
+void* __fastcall GetBall__8FootballFv(struct Football* this) asm("?GetBall@Football@@QAEPAXXZ");
+// win1.41 00532c80 mac 102ba570 Football::GetGoalPosition(unsigned long)
+void __fastcall GetGoalPosition__8FootballFUl(struct Football* this, const void* edx, unsigned long param_1) asm("?GetGoalPosition@Football@@QAEXK@Z");
+
 // Override methods
 
 // win1.41 00531330 mac 102b8570 Football::_dt(void)

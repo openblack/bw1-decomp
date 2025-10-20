@@ -9,12 +9,12 @@
 
 .extern _jmp_addr_0x00436960
 .extern _jmp_addr_0x004637e0
-.extern _jmp_addr_0x00475730
+.extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
 .extern _jmp_addr_0x004c4f60
 .extern _jmp_addr_0x004c9fe0
 .extern _jmp_addr_0x004d7b50
 .extern _jmp_addr_0x004d7b80
-.extern _jmp_addr_0x004d7bd0
+.extern ?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z
 .extern _jmp_addr_0x004d7d90
 .extern _jmp_addr_0x004d7e80
 .extern _jmp_addr_0x004dc9f0
@@ -559,7 +559,7 @@ _jmp_addr_0x004d87f3:    {disp32} mov     eax, dword ptr [esi + 0x00020d18]     
                          push             0x1                                           // 0x004d8820    6a01
                          push             0x1                                           // 0x004d8822    6a01
                          push             0x00bdf3b4                                    // 0x004d8824    68b4f3bd00
-                         call             _jmp_addr_0x00475730                          // 0x004d8829    e802cff9ff
+                         call             ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z                          // 0x004d8829    e802cff9ff
 _jmp_addr_0x004d882e:    {disp32} mov     eax, dword ptr [esi + 0x00001c70]             // 0x004d882e    8b86701c0000
                          xor.s            ecx, ecx                                      // 0x004d8834    33c9
                          cmp.s            eax, ecx                                      // 0x004d8836    3bc1
@@ -1076,7 +1076,7 @@ _jmp_addr_0x004d8c94:    test             byte ptr [eax + 0x0a], 0x01           
 _jmp_addr_0x004d8d12:    {disp32} mov     ecx, dword ptr [edi + 0x00000164]             // 0x004d8d12    8b8f64010000
                          push             eax                                           // 0x004d8d18    50
                          push             edi                                           // 0x004d8d19    57
-                         call             _jmp_addr_0x004d7bd0                          // 0x004d8d1a    e8b1eeffff
+                         call             ?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z                          // 0x004d8d1a    e8b1eeffff
                          mov.s            ebp, eax                                      // 0x004d8d1f    8be8
 _jmp_addr_0x004d8d21:    {disp8} mov      ebx, dword ptr [esi + 0x14]                   // 0x004d8d21    8b5e14
                          test             ebx, ebx                                      // 0x004d8d24    85db

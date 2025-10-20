@@ -11,7 +11,7 @@
 .extern @GetCreature3D__8CreatureFv@4
 .extern _jmp_addr_0x0047a880
 .extern _jmp_addr_0x00480c60
-.extern _jmp_addr_0x004842d0
+.extern ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ
 .extern _jmp_addr_0x00484310
 .extern _jmp_addr_0x00484360
 .extern _jmp_addr_0x00484830
@@ -26,7 +26,7 @@
 .extern _jmp_addr_0x00507000
 .extern _jmp_addr_0x0050d460
 .extern _jmp_addr_0x0050d600
-.extern _jmp_addr_0x005ef9c0
+.extern ?CalculateDancePosition@Living@@QAE_NABUMapCoords@@PAU2@@Z
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x006e8160
 .extern _jmp_addr_0x0074cd50
@@ -55,7 +55,7 @@ start_0x00504700_0x00504cd0:
                          add                edx, 0x14                                     // 0x0050471f    83c214
                          push               edx                                           // 0x00504722    52
                          mov.s              ecx, esi                                      // 0x00504723    8bce
-                         call               _jmp_addr_0x005ef9c0                          // 0x00504725    e896b20e00
+                         call               ?CalculateDancePosition@Living@@QAE_NABUMapCoords@@PAU2@@Z                          // 0x00504725    e896b20e00
                          {disp8} lea        eax, dword ptr [esp + 0x20]                   // 0x0050472a    8d442420
                          push               eax                                           // 0x0050472e    50
                          {disp8} lea        ebx, dword ptr [esi + 0x14]                   // 0x0050472f    8d5e14
@@ -257,7 +257,7 @@ _jmp_addr_0x00504a04:    {disp8} lea        ecx, dword ptr [esp + 0x2c]         
                          {disp32} mov       edx, dword ptr [esi + 0x00000160]             // 0x00504a12    8b9660010000
                          {disp8} mov        ecx, dword ptr [edx + 0x58]                   // 0x00504a18    8b4a58
                          add                esp, 0x04                                     // 0x00504a1b    83c404
-                         call               _jmp_addr_0x004842d0                          // 0x00504a1e    e8adf8f7ff
+                         call               ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ // 0x00504a1e    e8adf8f7ff
                          test               eax, eax                                      // 0x00504a23    85c0
                          {disp32} jne       _jmp_addr_0x00504bd4                          // 0x00504a25    0f85a9010000
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x00504a2b    8b44240c

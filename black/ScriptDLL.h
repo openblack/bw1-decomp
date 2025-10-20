@@ -125,9 +125,15 @@ struct ScriptDLL* __fastcall __ct__9ScriptDLLFPCc(struct ScriptDLL* this, const 
 
 // win1.41 006f68c0 mac 104e8480 ScriptDLL::AutoStart(void)
 void __fastcall AutoStart__9ScriptDLLFv(struct ScriptDLL* this);
+// win1.41 006f68f0 mac 104e8410 ScriptDLL::StopTasksOfType(VMScriptType)
+void __fastcall StopTasksOfType__9ScriptDLLF12VMScriptType(struct ScriptDLL* this, const void* edx, enum VMScriptType param_1) asm("?StopTasksOfType@ScriptDLL@@QAEXW4VMScriptType@@@Z");
 // win1.41 006f6910 mac 104e83b0 ScriptDLL::StopAllTasks(void)
 void __fastcall StopAllTasks__9ScriptDLLFv(struct ScriptDLL* this);
 // win1.41 006f6920 mac 104e8350 ScriptDLL::LoadBinary(char const *)
 int __fastcall LoadBinary__9ScriptDLLFPCc(struct ScriptDLL* this, const void* edx, const char* path);
+// win1.41 006f6ba0 mac 10042e90 ScriptDLL::PUSH(void *, VMType)
+void __fastcall PUSH__9ScriptDLLFPv6VMType(struct ScriptDLL* this, const void* edx, void* param_1, enum VMType param_2) asm("?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z");
+// win1.41 006f6c50 mac 104e7d70 ScriptDLL::GetScriptType(unsigned long)
+void* __fastcall GetScriptType__9ScriptDLLFUl(struct ScriptDLL* this, const void* edx, unsigned long param_1) asm("?GetScriptType@ScriptDLL@@QAEPAXK@Z");
 
 #endif /* BW1_DECOMP_SCRIPT_DLL_INCLUDED_H */

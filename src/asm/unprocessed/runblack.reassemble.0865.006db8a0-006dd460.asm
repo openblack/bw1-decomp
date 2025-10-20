@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x0041fd30
 .extern ___nw__4BaseFUl
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x005d8dd0
 .extern _jmp_addr_0x005e6540
@@ -242,15 +242,15 @@ _jmp_addr_0x006dba2a:    {disp32} mov       ecx, dword ptr [esi + 0x00000214]   
 _jmp_addr_0x006dba40:    {disp8} mov        ecx, dword ptr [ebx + 0x74]                    // 0x006dba40    8b4b74
                          push               ecx                                            // 0x006dba43    51
                          mov.s              ecx, esi                                       // 0x006dba44    8bce
-                         call               _jmp_addr_0x00561e10                           // 0x006dba46    e8c563e8ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z     // 0x006dba46    e8c563e8ff
                          {disp8} mov        edx, dword ptr [ebx + 0x78]                    // 0x006dba4b    8b5378
                          push               edx                                            // 0x006dba4e    52
                          mov.s              ecx, esi                                       // 0x006dba4f    8bce
-                         call               _jmp_addr_0x00561e10                           // 0x006dba51    e8ba63e8ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z     // 0x006dba51    e8ba63e8ff
                          {disp8} mov        eax, dword ptr [ebx + 0x7c]                    // 0x006dba56    8b437c
                          push               eax                                            // 0x006dba59    50
                          mov.s              ecx, esi                                       // 0x006dba5a    8bce
-                         call               _jmp_addr_0x00561e10                           // 0x006dba5c    e8af63e8ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z     // 0x006dba5c    e8af63e8ff
                          pop                esi                                            // 0x006dba61    5e
                          mov                eax, 0x00000001                                // 0x006dba62    b801000000
                          pop                ebx                                            // 0x006dba67    5b

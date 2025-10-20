@@ -57,7 +57,7 @@
 .globl _jmp_addr_0x0060a9f0
 .globl _jmp_addr_0x0060aad0
 .globl @SetupMobileMoveToPos__13MobileWallHugFRC9MapCoords14MOVE_TO_STATES@16
-.globl _jmp_addr_0x0060acd0
+.globl ?SetupMobileMoveToObject@MobileWallHug@@QAEXPAVObject@@@Z
 .globl @AreWeThere__13MobileWallHugFf@12
 .globl _jmp_addr_0x0060adc0
 .globl @MoveTo__13MobileWallHugFv@4
@@ -568,7 +568,8 @@ _jmp_addr_0x0060acb8:    {disp8} mov        byte ptr [esi + 0x5e], bl           
                          nop                                                        // 0x0060accd    90
                          nop                                                        // 0x0060acce    90
                          nop                                                        // 0x0060accf    90
-_jmp_addr_0x0060acd0:    sub                esp, 0x0c                               // 0x0060acd0    83ec0c
+?SetupMobileMoveToObject@MobileWallHug@@QAEXPAVObject@@@Z:
+                         sub                esp, 0x0c                               // 0x0060acd0    83ec0c
                          push               esi                                     // 0x0060acd3    56
                          mov.s              esi, ecx                                // 0x0060acd4    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x14]             // 0x0060acd6    8b4c2414

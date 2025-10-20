@@ -34,7 +34,7 @@
 .extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _jmp_addr_0x0074d360
 .extern _jmp_addr_0x0074d380
-.extern _jmp_addr_0x007506c0
+.extern ?VillagerDead@Villager@@QAEXW4DEATH_REASON@@PAVGPlayer@@MH@Z
 .extern _jmp_addr_0x00771a80
 .extern _jmp_addr_0x007a1400
 .extern _sprintf
@@ -67,7 +67,7 @@ _jmp_addr_0x00475f60:    push               esi                                 
                          push               eax                                           // 0x00475f8f    50
                          push               0x0                                           // 0x00475f90    6a00
                          mov.s              ecx, esi                                      // 0x00475f92    8bce
-                         call               _jmp_addr_0x007506c0                          // 0x00475f94    e827a72d00
+                         call               ?VillagerDead@Villager@@QAEXW4DEATH_REASON@@PAVGPlayer@@MH@Z                          // 0x00475f94    e827a72d00
                          mov                edx, dword ptr [edi]                          // 0x00475f99    8b17
                          push               0x1                                           // 0x00475f9b    6a01
                          push               0x1                                           // 0x00475f9d    6a01

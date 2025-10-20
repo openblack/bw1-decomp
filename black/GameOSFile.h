@@ -74,6 +74,8 @@ void __fastcall ReadIt_u32___10GameOSFileFRUl(struct GameOSFile* this, const voi
 void __fastcall LoadInstance__10GameOSFileFPP9GameThing(struct GameOSFile* this, const void* edx, struct GameThing** out_thing);
 // win1.41 00561c60 mac 103049e0 GameOSFile::ResolveAllLoads(void)
 void __fastcall ResolveAllLoads__10GameOSFileFv(struct GameOSFile* this);
+// win1.41 00561e10 mac 10304650 GameOSFile::WritePtr(GameThing *)
+void __fastcall WritePtr__10GameOSFileFP9GameThing(struct GameOSFile* this, const void* edx, struct GameThing* param_1) asm("?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z");
 // win1.41 00562180 mac 10304470 GameOSFile::ReadPtr(GameThing **)
 void __fastcall ReadPtr__10GameOSFileFPP9GameThing(struct GameOSFile* this, const void* edx, struct GameThing** ptr);
 // win1.41 00563f00 mac 103008a0 GameOSFile::ReadInfo(GBaseInfo const **)

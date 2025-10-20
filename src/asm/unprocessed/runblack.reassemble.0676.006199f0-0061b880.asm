@@ -38,7 +38,7 @@
 .extern _jmp_addr_0x006239c0
 .extern @IsLanLobby__20MPFEConnectionStatusFv@4
 .extern @IsInternetLobby__20MPFEConnectionStatusFv@4
-.extern _jmp_addr_0x0063f830
+.extern ?ProcessBindableKeys@GGame@@QAEIW4LH_KEY@@0K@Z
 .extern _jmp_addr_0x007947c0
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
@@ -729,7 +729,7 @@ _jmp_addr_0x0061a17f:    test              al, 0x01                             
                          {disp32} mov      dword ptr [data_bytes + 0x286d04], ecx               // 0x0061a192    890d04cdc400
                          {disp32} mov      ecx, dword ptr [_game]                               // 0x0061a198    8b0d5c19d000
                          push              0x0                                                  // 0x0061a19e    6a00
-                         call              _jmp_addr_0x0063f830                                 // 0x0061a1a0    e88b560200
+                         call              ?ProcessBindableKeys@GGame@@QAEIW4LH_KEY@@0K@Z       // 0x0061a1a0    e88b560200
                          cmp.s             eax, ebp                                             // 0x0061a1a5    3bc5
                          {disp32} mov      al, byte ptr [data_bytes + 0x4bf350]                 // 0x0061a1a7    a05053e800
                          {disp8} jne       _jmp_addr_0x0061a1be                                 // 0x0061a1ac    7510
@@ -749,7 +749,7 @@ _jmp_addr_0x0061a1be:    test              al, 0x02                             
                          {disp32} mov      dword ptr [data_bytes + 0x286d04], ecx               // 0x0061a1cd    890d04cdc400
                          {disp32} mov      ecx, dword ptr [_game]                               // 0x0061a1d3    8b0d5c19d000
                          push              0x0                                                  // 0x0061a1d9    6a00
-                         call              _jmp_addr_0x0063f830                                 // 0x0061a1db    e850560200
+                         call              ?ProcessBindableKeys@GGame@@QAEIW4LH_KEY@@0K@Z       // 0x0061a1db    e850560200
                          cmp.s             eax, ebp                                             // 0x0061a1e0    3bc5
                          {disp32} mov      al, byte ptr [data_bytes + 0x4bf350]                 // 0x0061a1e2    a05053e800
                          {disp8} jne       _jmp_addr_0x0061a1f4                                 // 0x0061a1e7    750b
@@ -765,7 +765,7 @@ _jmp_addr_0x0061a1f4:    test              al, 0x40                             
                          push              0x2                                                  // 0x0061a1fe    6a02
                          push              0x0                                                  // 0x0061a200    6a00
                          push              0x0                                                  // 0x0061a202    6a00
-                         call              _jmp_addr_0x0063f830                                 // 0x0061a204    e827560200
+                         call              ?ProcessBindableKeys@GGame@@QAEIW4LH_KEY@@0K@Z       // 0x0061a204    e827560200
                          cmp.s             eax, ebp                                             // 0x0061a209    3bc5
                          {disp32} mov      al, byte ptr [data_bytes + 0x4bf350]                 // 0x0061a20b    a05053e800
                          {disp8} jne       _jmp_addr_0x0061a21d                                 // 0x0061a210    750b
@@ -783,7 +783,7 @@ _jmp_addr_0x0061a21d:    {disp32} mov      ecx, dword ptr [data_bytes + 0x4bf300
                          push              0x4                                                  // 0x0061a22f    6a04
                          push              0x0                                                  // 0x0061a231    6a00
                          push              0x0                                                  // 0x0061a233    6a00
-                         call              _jmp_addr_0x0063f830                                 // 0x0061a235    e8f6550200
+                         call              ?ProcessBindableKeys@GGame@@QAEIW4LH_KEY@@0K@Z       // 0x0061a235    e8f6550200
                          cmp.s             eax, ebp                                             // 0x0061a23a    3bc5
                          {disp8} jne       _jmp_addr_0x0061a293                                 // 0x0061a23c    7555
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x4bf300]               // 0x0061a23e    8b0d0053e800
@@ -799,7 +799,7 @@ _jmp_addr_0x0061a25e:    {disp32} mov      ecx, dword ptr [_game]               
                          push              0x3                                                  // 0x0061a264    6a03
                          push              0x0                                                  // 0x0061a266    6a00
                          push              0x0                                                  // 0x0061a268    6a00
-                         call              _jmp_addr_0x0063f830                                 // 0x0061a26a    e8c1550200
+                         call              ?ProcessBindableKeys@GGame@@QAEIW4LH_KEY@@0K@Z       // 0x0061a26a    e8c1550200
                          cmp.s             eax, ebp                                             // 0x0061a26f    3bc5
                          {disp8} jne       _jmp_addr_0x0061a293                                 // 0x0061a271    7520
                          {disp32} mov      edx, dword ptr [data_bytes + 0x4bf300]               // 0x0061a273    8b150053e800

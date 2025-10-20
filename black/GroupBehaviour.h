@@ -2,6 +2,7 @@
 #define BW1_DECOMP_GROUP_BEHAVIOUR_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <lionhead/lhlib/ver5.0/LHDynamicStack.h> /* For struct LHDynamicStack__Ul */
@@ -19,6 +20,8 @@ struct DanceGroup;
 struct DanceGroupActionArgument;
 struct GameOSFile;
 struct GroupBehaviour;
+struct Living;
+struct MapCoords;
 
 struct GroupBehaviourVftable
 {
@@ -89,6 +92,13 @@ extern const struct GroupBehaviourVftable __vt__14GroupBehaviour asm("??_7GroupB
 
 // win1.41 00596070 mac 100fad20 GroupBehaviour::GroupBehaviour(void)
 struct GroupBehaviour* __fastcall __ct__14GroupBehaviourFv(struct GroupBehaviour* this);
+
+// Non-virtual methods
+
+// win1.41 00597400 mac 100f8550 GroupBehaviour::FindDanceGroup(Living *)
+bool __fastcall FindDanceGroup__14GroupBehaviourFP6Living(struct GroupBehaviour* this, const void* edx, struct Living* param_1) asm("?FindDanceGroup@GroupBehaviour@@QAE_NPAVLiving@@@Z");
+// win1.41 00597f20 mac 100f68a0 GroupBehaviour::CalculateDancePosition(MapCoords const &, MapCoords *, DanceGroup *, unsigned long)
+void __fastcall CalculateDancePosition__14GroupBehaviourFRC9MapCoordsP9MapCoordsP10DanceGroupUl(struct GroupBehaviour* this, const void* edx, const struct MapCoords* param_1, struct MapCoords* param_2, struct DanceGroup* param_3, unsigned long param_4) asm("?CalculateDancePosition@GroupBehaviour@@QAEXABUMapCoords@@PAU2@PAVDanceGroup@@K@Z");
 
 // Override methods
 

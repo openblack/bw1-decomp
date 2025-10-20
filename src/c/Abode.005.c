@@ -156,7 +156,7 @@ void __fastcall ChildToAdult__5AbodeFP8Villager(struct Abode* this, const void* 
     asm("mov.s              ecx, esi");                                      // 0x00404d13    8bce
     asm("call               dword ptr [eax + 0x48]");                        // 0x00404d15    ff5048
     asm("mov.s              ecx, eax");                                      // 0x00404d18    8bc8
-    asm("call               _jmp_addr_0x0073af50");                          // 0x00404d1a    e831623300
+    asm("call               ?ChildToAdult@Town@@QAEXPAVVillager@@@Z");                          // 0x00404d1a    e831623300
     asm("_jmp_addr_0x00404d1f:");
     asm("pop                edi");                                           // 0x00404d1f    5f
     asm("pop                esi");                                           // 0x00404d20    5e

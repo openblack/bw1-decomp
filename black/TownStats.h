@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For VILLAGER_DISCIPLE_LAST */
+#include <chlasm/Enum.h> /* For VILLAGER_DISCIPLE_LAST, enum VILLAGER_DISCIPLE */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "Base.h" /* For struct Base */
@@ -81,10 +81,16 @@ extern const struct BaseVftable __vt__9TownStats asm("??_7TownStats@@6B@");
 
 // win1.41 007493c0 mac 10562b60 TownStats::Remove(Villager *)
 void __fastcall Remove__9TownStatsFP8Villager(struct TownStats* this, const void* edx, struct Villager* villager) asm("?Remove@TownStats@@QAEXPAVVillager@@@Z");
+// win1.41 00749490 mac 10562ac0 TownStats::ChildToAdult(Villager *)
+void __fastcall ChildToAdult__9TownStatsFP8Villager(struct TownStats* this, const void* edx, struct Villager* param_1) asm("?ChildToAdult@TownStats@@QAEXPAVVillager@@@Z");
 // win1.41 007494c0 mac 10562a10 TownStats::VillagerMoveOutOfAbode(Villager *)
 void __fastcall VillagerMoveOutOfAbode__9TownStatsFP8Villager(struct TownStats* this, const void* edx, struct Villager* villager) asm("?VillagerMoveOutOfAbode@TownStats@@QAEXPAVVillager@@@Z");
 // win1.41 00749a60 mac 10562330 TownStats::Add(PlannedMultiMapFixed *)
 void __fastcall Add__9TownStatsFP20PlannedMultiMapFixed(struct TownStats* this, const void* edx, struct PlannedMultiMapFixed* planned) asm("?Add@TownStats@@QAEXPAVPlannedMultiMapFixed@@@Z");
+// win1.41 00749c60 mac 10561dd0 TownStats::IncrementNumOfDisciples(VILLAGER_DISCIPLE)
+void __fastcall IncrementNumOfDisciples__9TownStatsF17VILLAGER_DISCIPLE(struct TownStats* this, const void* edx, enum VILLAGER_DISCIPLE param_1) asm("?IncrementNumOfDisciples@TownStats@@QAEXW4VILLAGER_DISCIPLE@@@Z");
+// win1.41 00749c80 mac 10561d60 TownStats::DecrementNumOfDisciples(VILLAGER_DISCIPLE)
+void __fastcall DecrementNumOfDisciples__9TownStatsF17VILLAGER_DISCIPLE(struct TownStats* this, const void* edx, enum VILLAGER_DISCIPLE param_1) asm("?DecrementNumOfDisciples@TownStats@@QAEXW4VILLAGER_DISCIPLE@@@Z");
 
 // Override methods
 

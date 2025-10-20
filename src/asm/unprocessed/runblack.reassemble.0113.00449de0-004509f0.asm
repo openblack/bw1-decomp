@@ -30,7 +30,7 @@
 .extern @GetFlockPos__5FlockFv@4
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _ProcessAllObjectsOnCells__Fv
 .extern _jmp_addr_0x00657fe0
@@ -5096,7 +5096,7 @@ _jmp_addr_0x0044d7b0:    {disp32} mov       eax, dword ptr [esi + 0x00000214]   
 _jmp_addr_0x0044d7c5:    {disp8} mov        edx, dword ptr [edi + 0x08]                   // 0x0044d7c5    8b5708
                          push               edx                                           // 0x0044d7c8    52
                          mov.s              ecx, esi                                      // 0x0044d7c9    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x0044d7cb    e840461100
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0044d7cb    e840461100
                          cmp                dword ptr [data_bytes + 0x226990], ebp        // 0x0044d7d0    392d90c9be00
                          {disp8} je         _jmp_addr_0x0044d806                          // 0x0044d7d6    742e
                          push               ebp                                           // 0x0044d7d8    55
@@ -5742,7 +5742,7 @@ _jmp_addr_0x0044df38:    {disp32} mov       ecx, dword ptr [esi + 0x00000214]   
 _jmp_addr_0x0044df4d:    {disp8} mov        ecx, dword ptr [edi + 0x08]                   // 0x0044df4d    8b4f08
                          push               ecx                                           // 0x0044df50    51
                          mov.s              ecx, esi                                      // 0x0044df51    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x0044df53    e8b83e1100
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0044df53    e8b83e1100
                          pop                edi                                           // 0x0044df58    5f
                          pop                esi                                           // 0x0044df59    5e
                          pop                ebp                                           // 0x0044df5a    5d

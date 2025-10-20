@@ -29,6 +29,11 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__8GJobInfo asm("??_R
 // win1.41 009b1800 mac inlined GJobInfo::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__8GJobInfo asm("??_R3GJobInfo@@8");
 
+// Non-virtual methods
+
+// win1.41 005e1740 mac 100fe450 GJobInfo::GetJobActivity(void) const
+uint32_t __fastcall GetJobActivity__8GJobInfoCFv(const struct GJobInfo* this) asm("?GetJobActivity@GJobInfo@@QBEIXZ");
+
 // Override methods
 
 // win1.41 005e1720 mac 100fe5c0 GJobInfo::_dt(void)

@@ -7,6 +7,7 @@
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "Base.h" /* For struct Base */
+#include "HelpSystem.h" /* For enum HELP_EVENT_TYPE */
 
 struct CameraHelpAccumulator
 {
@@ -49,6 +50,8 @@ struct HelpProfile* __cdecl Create__11HelpProfileFv(void);
 
 // Non-virtual methods
 
+// win1.41 005c46e0 mac 100895a0 HelpProfile::Trigger(HELP_EVENT_TYPE)
+void __fastcall Trigger__11HelpProfileF15HELP_EVENT_TYPE(struct HelpProfile* this, const void* edx, enum HELP_EVENT_TYPE param_1) asm("?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z");
 // win1.41 005c4770 mac 1034b310 HelpProfile::SetToZero(void)
 void __fastcall SetToZero__11HelpProfileFv(struct HelpProfile* this);
 

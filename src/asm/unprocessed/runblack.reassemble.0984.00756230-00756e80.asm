@@ -10,7 +10,7 @@
 .extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00438770
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
@@ -28,7 +28,7 @@
 .extern @GetMapChild__6ObjectFRC9MapCoords@12
 .extern ?ThrowObjectFromHand@Object@@UAEIPAVGInterfaceStatus@@H@Z
 .extern @SetLife__6ObjectFf@12
-.extern _jmp_addr_0x0064d750
+.extern ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
 .extern _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri
 .extern @GetInfo__8ReactionCFv@4
 .extern _jmp_addr_0x006e48a0
@@ -36,11 +36,11 @@
 .extern ?RemoveVillager@Town@@QAEXPAVVillager@@@Z
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Spiral__6GUtilsFRlRl
-.extern _jmp_addr_0x00751490
-.extern _jmp_addr_0x007514b0
-.extern _jmp_addr_0x00751e50
-.extern _jmp_addr_0x00752a90
-.extern _jmp_addr_0x00756000
+.extern ?PickupFood@Villager@@QAEXF@Z
+.extern ?PickupWood@Villager@@QAEXFE@Z
+.extern ?PopFromPrevious@Villager@@QAEXXZ
+.extern ?SetScaleForAge@Villager@@QAEXK@Z
+.extern ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z
 .extern _jmp_addr_0x00757180
 .extern @MakeChildOrphaned__8VillagerFP8Villager@12
 .extern _atexit
@@ -285,7 +285,7 @@ _jmp_addr_0x00756429:    mov                edx, dword ptr [esi]                
                          call               dword ptr [edx + 0x8d0]                       // 0x0075642d    ff92d0080000
                          push               eax                                           // 0x00756433    50
                          mov.s              ecx, esi                                      // 0x00756434    8bce
-                         call               _jmp_addr_0x00752a90                          // 0x00756436    e855c6ffff
+                         call               ?SetScaleForAge@Villager@@QAEXK@Z             // 0x00756436    e855c6ffff
                          pop                edi                                           // 0x0075643b    5f
                          pop                esi                                           // 0x0075643c    5e
                          pop                ebp                                           // 0x0075643d    5d
@@ -389,7 +389,7 @@ _jmp_addr_0x0075648f:    {disp32} mov       cl, byte ptr [esi + 0x0000008c]     
                          {disp8} jne        _jmp_addr_0x007564ff                          // 0x007564d9    7524
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x007564db    8b44240c
                          push               eax                                           // 0x007564df    50
-                         call               _jmp_addr_0x00751490                          // 0x007564e0    e8abafffff
+                         call               ?PickupFood@Villager@@QAEXF@Z                 // 0x007564e0    e8abafffff
                          {disp8} mov        al, byte ptr [esp + 0x14]                     // 0x007564e5    8a442414
                          test               al, al                                        // 0x007564e9    84c0
                          {disp8} je         _jmp_addr_0x00756512                          // 0x007564eb    7425
@@ -406,7 +406,7 @@ _jmp_addr_0x007564ff:    cmp                eax, 0x01                           
                          push               0x0                                           // 0x00756508    6a00
                          push               eax                                           // 0x0075650a    50
                          mov.s              ecx, esi                                      // 0x0075650b    8bce
-                         call               _jmp_addr_0x007514b0                          // 0x0075650d    e89eafffff
+                         call               ?PickupWood@Villager@@QAEXFE@Z                // 0x0075650d    e89eafffff
 _jmp_addr_0x00756512:    xor.s              eax, eax                                      // 0x00756512    33c0
                          pop                esi                                           // 0x00756514    5e
                          ret                0x0018                                        // 0x00756515    c21800
@@ -818,7 +818,7 @@ _jmp_addr_0x00756865:    {disp8} mov        dword ptr [esi + 0x2c], edi         
                          push               0x0                                           // 0x00756883    6a00
                          push               0x0                                           // 0x00756885    6a00
                          push               0x0                                           // 0x00756887    6a00
-                         call               _jmp_addr_0x00756000                          // 0x00756889    e872f7ffff
+                         call               ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z                          // 0x00756889    e872f7ffff
 _jmp_addr_0x0075688e:    {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x0075688e    8b442408
                          push               eax                                           // 0x00756892    50
                          mov.s              ecx, esi                                      // 0x00756893    8bce
@@ -871,11 +871,11 @@ _jmp_addr_0x007568d2:    pop                edi                                 
                          {disp8} mov        eax, dword ptr [esi + 0x28]                   // 0x007568f2    8b4628
                          push               eax                                           // 0x007568f5    50
                          mov.s              ecx, edi                                      // 0x007568f6    8bcf
-                         call               _jmp_addr_0x00561e10                          // 0x007568f8    e813b5e0ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x007568f8    e813b5e0ff
                          {disp8} mov        ecx, dword ptr [esi + 0x2c]                   // 0x007568fd    8b4e2c
                          push               ecx                                           // 0x00756900    51
                          mov.s              ecx, edi                                      // 0x00756901    8bcf
-                         call               _jmp_addr_0x00561e10                          // 0x00756903    e808b5e0ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x00756903    e808b5e0ff
                          pop                edi                                           // 0x00756908    5f
                          mov                eax, 0x00000001                               // 0x00756909    b801000000
                          pop                esi                                           // 0x0075690e    5e
@@ -1018,7 +1018,7 @@ _jmp_addr_0x00756a00:    push               esi                                 
                          test               byte ptr [eax + 0x24], 0x04                   // 0x00756a37    f6402404
                          {disp8} je         _jmp_addr_0x00756a44                          // 0x00756a3b    7407
 _jmp_addr_0x00756a3d:    mov.s              ecx, esi                                      // 0x00756a3d    8bce
-                         call               _jmp_addr_0x00751e50                          // 0x00756a3f    e80cb4ffff
+                         call               ?PopFromPrevious@Villager@@QAEXXZ             // 0x00756a3f    e80cb4ffff
 _jmp_addr_0x00756a44:    pop                esi                                           // 0x00756a44    5e
                          ret                                                              // 0x00756a45    c3
                          nop                                                              // 0x00756a46    90
@@ -1132,14 +1132,14 @@ _jmp_addr_0x00756ac1:    pop                esi                                 
                          mov.s              ecx, esi                                      // 0x00756b04    8bce
                          call               dword ptr [eax + 0x1c]                        // 0x00756b06    ff501c
                          mov.s              ecx, eax                                      // 0x00756b09    8bc8
-                         call               _jmp_addr_0x0064d750                          // 0x00756b0b    e8406cefff
+                         call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z                          // 0x00756b0b    e8406cefff
                          test               eax, eax                                      // 0x00756b10    85c0
                          {disp8} je         _jmp_addr_0x00756b21                          // 0x00756b12    740d
 _jmp_addr_0x00756b14:    push               0x0                                           // 0x00756b14    6a00
                          push               0x0                                           // 0x00756b16    6a00
                          push               0x0                                           // 0x00756b18    6a00
                          mov.s              ecx, esi                                      // 0x00756b1a    8bce
-                         call               _jmp_addr_0x00756000                          // 0x00756b1c    e8dff4ffff
+                         call               ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z                          // 0x00756b1c    e8dff4ffff
 _jmp_addr_0x00756b21:    push               edi                                           // 0x00756b21    57
                          push               ebx                                           // 0x00756b22    53
                          mov.s              ecx, esi                                      // 0x00756b23    8bce

@@ -207,7 +207,7 @@
 .extern _jmp_addr_0x005e7a40
 .extern _jmp_addr_0x005e7ce0
 .extern _jmp_addr_0x005e7d30
-.extern _jmp_addr_0x005e98b0
+.extern ?InitForGame@LHInetWeather@@QAEXXZ
 .extern _jmp_addr_0x005ec810
 .extern _jmp_addr_0x005f3cc0
 .extern _jmp_addr_0x005f3ce0

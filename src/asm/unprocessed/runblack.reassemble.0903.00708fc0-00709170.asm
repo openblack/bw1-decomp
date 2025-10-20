@@ -9,7 +9,7 @@
 
 .extern _jmp_addr_0x005dfc40
 .extern ?ScriptErrorMessage@GScript@@QAEXPAD@Z
-.extern _jmp_addr_0x006f6ba0
+.extern ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z
 .extern _jmp_addr_0x006f6bc0
 .extern _jmp_addr_0x0070d220
 .extern _jmp_addr_0x007a1400
@@ -32,7 +32,7 @@ start_0x00708fc0_0x00709170:
 _jmp_addr_0x00708fef:    {disp32} mov      ecx, dword ptr [_script_dll]           // 0x00708fef    8b0d105cd900
                          push              0x6                                    // 0x00708ff5    6a06
                          push              esi                                    // 0x00708ff7    56
-                         call              _jmp_addr_0x006f6ba0                   // 0x00708ff8    e8a3dbfeff
+                         call              ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z   // 0x00708ff8    e8a3dbfeff
                          pop               esi                                    // 0x00708ffd    5e
                          pop               ecx                                    // 0x00708ffe    59
                          ret                                                      // 0x00708fff    c3

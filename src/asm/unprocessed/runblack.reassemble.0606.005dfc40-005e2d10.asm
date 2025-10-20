@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x00557610
 .extern @SetVisualTimeCycle__9GGameInfoFfff@20
 .extern _jmp_addr_0x005576f0
-.extern _jmp_addr_0x00557a80
+.extern ?GetSeason@GGameInfo@@QAEIXZ
 .extern _jmp_addr_0x005de1e0
 .extern @GetX__7MapCellCFv@4
 .extern @GetZ__7MapCellCFv@4
@@ -83,7 +83,7 @@
 .globl _jmp_addr_0x005e03f0
 .globl _jmp_addr_0x005e1020
 .globl _jmp_addr_0x005e15b0
-.globl _jmp_addr_0x005e1740
+.globl ?GetJobActivity@GJobInfo@@QBEIXZ
 .globl _jmp_addr_0x005e17c0
 .globl _jmp_addr_0x005e1860
 .globl _jmp_addr_0x005e1890
@@ -2115,10 +2115,11 @@ _jmp_addr_0x005e171f:    ret                                                    
 _jmp_addr_0x005e173a:    mov.s              eax, esi                                       // 0x005e173a    8bc6
                          pop                esi                                            // 0x005e173c    5e
                          ret                0x0004                                         // 0x005e173d    c20400
-_jmp_addr_0x005e1740:    push               esi                                            // 0x005e1740    56
+?GetJobActivity@GJobInfo@@QBEIXZ:
+                         push               esi                                            // 0x005e1740    56
                          mov.s              esi, ecx                                       // 0x005e1741    8bf1
                          mov                ecx, OFFSET _GGameInfo_00d019f8                // 0x005e1743    b9f819d000
-                         call               _jmp_addr_0x00557a80                           // 0x005e1748    e83363f7ff
+                         call               ?GetSeason@GGameInfo@@QAEIXZ                   // 0x005e1748    e83363f7ff
                          {disp8} mov        eax, dword ptr [esi + eax * 0x4 + 0x28]        // 0x005e174d    8b448628
                          pop                esi                                            // 0x005e1751    5e
                          ret                                                               // 0x005e1752    c3

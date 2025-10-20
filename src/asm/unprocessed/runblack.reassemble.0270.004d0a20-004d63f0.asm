@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00437e90
-.extern _jmp_addr_0x00475730
+.extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
 .extern _jmp_addr_0x00477440
 .extern _jmp_addr_0x004774f0
 .extern _jmp_addr_0x004775d0
@@ -49,7 +49,7 @@
 .extern _jmp_addr_0x004d7810
 .extern _jmp_addr_0x004d78f0
 .extern _jmp_addr_0x004d7b80
-.extern _jmp_addr_0x004d7bd0
+.extern ?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z
 .extern _jmp_addr_0x004d8360
 .extern _jmp_addr_0x004d8a20
 .extern @Initialise__15CreatureBeliefsFv@4
@@ -91,7 +91,7 @@
 .extern _jmp_addr_0x004ff5c0
 .extern _jmp_addr_0x0052d360
 .extern _jmp_addr_0x005575e0
-.extern _jmp_addr_0x00557a80
+.extern ?GetSeason@GGameInfo@@QAEIXZ
 .extern _jmp_addr_0x005e17c0
 .extern @GetTopState__6LivingCFv@4
 .extern @GetNearestTown__9MapCoordsCFf@12
@@ -251,7 +251,7 @@ _jmp_addr_0x004d0ad3:    test               byte ptr [edi + 0x0a], 0x01         
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]                    // 0x004d0ad9    8b8e64010000
                          push               edi                                                  // 0x004d0adf    57
                          push               esi                                                  // 0x004d0ae0    56
-                         call               _jmp_addr_0x004d7bd0                                 // 0x004d0ae1    e8ea700000
+                         call               ?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z                                 // 0x004d0ae1    e8ea700000
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]                    // 0x004d0ae6    8b8e64010000
                          push               esi                                                  // 0x004d0aec    56
                          push               edi                                                  // 0x004d0aed    57
@@ -3173,7 +3173,7 @@ _jmp_addr_0x004d2b79:    xor.s              eax, eax                            
                          nop                                                                     // 0x004d2b9e    90
                          nop                                                                     // 0x004d2b9f    90
                          mov                ecx, OFFSET _GGameInfo_00d019f8                      // 0x004d2ba0    b9f819d000
-                         call               _jmp_addr_0x00557a80                                 // 0x004d2ba5    e8d64e0800
+                         call               ?GetSeason@GGameInfo@@QAEIXZ                         // 0x004d2ba5    e8d64e0800
                          sub                eax, 0x02                                            // 0x004d2baa    83e802
                          neg                eax                                                  // 0x004d2bad    f7d8
                          sbb.s              eax, eax                                             // 0x004d2baf    1bc0
@@ -4318,7 +4318,7 @@ _jmp_addr_0x004d36a0:    push               ebx                                 
                          push               0x1                                                  // 0x004d36eb    6a01
                          push               0x1                                                  // 0x004d36ed    6a01
                          push               0x009dd904                                           // 0x004d36ef    6804d99d00
-                         call               _jmp_addr_0x00475730                                 // 0x004d36f4    e83720faff
+                         call               ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z    // 0x004d36f4    e83720faff
                          mov.s              ecx, edi                                             // 0x004d36f9    8bcf
                          call               _jmp_addr_0x004ff5c0                                 // 0x004d36fb    e8c0be0200
                          pop                edi                                                  // 0x004d3700    5f

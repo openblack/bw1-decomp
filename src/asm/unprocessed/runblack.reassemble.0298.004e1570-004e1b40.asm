@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00475730
+.extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
 .extern @__ct__21CreatureActionContextFR15CreatureContextf@16
 .extern _jmp_addr_0x004d74a0
 .extern _jmp_addr_0x004dca60
@@ -27,7 +27,7 @@ _jmp_addr_0x004e1570:    push               esi                                 
                          {disp32} mov       ecx, dword ptr [esi + 0x00020d18]                    // 0x004e1575    8b8e180d0200
                          push               0x1                                                  // 0x004e157b    6a01
                          push               0x00bdf998                                           // 0x004e157d    6898f9bd00
-                         call               _jmp_addr_0x00475730                                 // 0x004e1582    e8a941f9ff
+                         call               ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z    // 0x004e1582    e8a941f9ff
                          {disp32} mov       ecx, dword ptr [esi + 0x00020d18]                    // 0x004e1587    8b8e180d0200
                          mov                eax, dword ptr [ecx]                                 // 0x004e158d    8b01
                          call               dword ptr [eax + 0x8c8]                              // 0x004e158f    ff90c8080000

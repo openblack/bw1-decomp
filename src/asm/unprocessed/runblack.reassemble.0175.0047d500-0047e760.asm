@@ -15,20 +15,20 @@
 .extern _jmp_addr_0x0047fa20
 .extern _jmp_addr_0x0047fa80
 .extern _jmp_addr_0x0048f750
-.extern _jmp_addr_0x004c44b0
+.extern ?ForceActivityAndForceAction@Creature@@QAEXAAVCreaturePlan@@HH@Z
 .extern _jmp_addr_0x004d7b80
-.extern _jmp_addr_0x004d7bd0
+.extern ?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z
 .extern _jmp_addr_0x004dce20
 .extern _jmp_addr_0x004e2890
 .extern _jmp_addr_0x004e28c0
-.extern _jmp_addr_0x004f1230
+.extern ??0CreaturePlan@@QAE@W4CREATURE_DESIRES@@W4CREATURE_ACTION@@PAVCreatureBelief@@22M@Z
 .extern _jmp_addr_0x004f12d0
 .extern _jmp_addr_0x004f12e0
 .extern _jmp_addr_0x004f5e60
 .extern _jmp_addr_0x004f5ea0
 .extern _jmp_addr_0x004f8ca0
-.extern _jmp_addr_0x004ff240
-.extern _jmp_addr_0x004ff3a0
+.extern ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z
+.extern ?AddMainSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z
 .extern _jmp_addr_0x004ff5c0
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern _jmp_addr_0x00555880
@@ -582,7 +582,7 @@ _jmp_addr_0x0047d9ef:    push               0x009cf9e0                          
                          push               edi                                           // 0x0047da13    57
                          push               esi                                           // 0x0047da14    56
                          mov.s              ebx, eax                                      // 0x0047da15    8bd8
-                         call               _jmp_addr_0x004d7bd0                          // 0x0047da17    e8b4a10500
+                         call               ?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z                          // 0x0047da17    e8b4a10500
                          push               0x3f800000                                    // 0x0047da1c    680000803f
                          push               0x0                                           // 0x0047da21    6a00
                          push               eax                                           // 0x0047da23    50
@@ -590,7 +590,7 @@ _jmp_addr_0x0047d9ef:    push               0x009cf9e0                          
                          push               ebx                                           // 0x0047da26    53
                          push               0x18                                          // 0x0047da27    6a18
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x0047da29    8d4c2424
-                         call               _jmp_addr_0x004f1230                          // 0x0047da2d    e8fe370700
+                         call               ??0CreaturePlan@@QAE@W4CREATURE_DESIRES@@W4CREATURE_ACTION@@PAVCreatureBelief@@22M@Z                          // 0x0047da2d    e8fe370700
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                   // 0x0047da32    8d4c240c
                          call               _jmp_addr_0x004f12e0                          // 0x0047da36    e8a5380700
                          test               eax, eax                                      // 0x0047da3b    85c0
@@ -602,7 +602,7 @@ _jmp_addr_0x0047d9ef:    push               0x009cf9e0                          
                          {disp8} lea        edx, dword ptr [esp + 0x18]                   // 0x0047da47    8d542418
                          push               edx                                           // 0x0047da4b    52
                          mov.s              ecx, esi                                      // 0x0047da4c    8bce
-                         call               _jmp_addr_0x004c44b0                          // 0x0047da4e    e85d6a0400
+                         call               ?ForceActivityAndForceAction@Creature@@QAEXAAVCreaturePlan@@HH@Z                          // 0x0047da4e    e85d6a0400
                          {disp32} mov       eax, dword ptr [esi + 0x00000164]             // 0x0047da53    8b8664010000
                          {disp32} mov       dword ptr [eax + 0x00001c14], ebx             // 0x0047da59    8998141c0000
                          {disp32} mov       ebp, dword ptr [esi + 0x00000164]             // 0x0047da5f    8bae64010000
@@ -861,7 +861,7 @@ _jmp_addr_0x0047dd4a:    {disp32} fst       dword ptr [ecx + 0x00004aa8]        
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]             // 0x0047dd6a    8b8e64010000
                          push               edi                                           // 0x0047dd70    57
                          push               esi                                           // 0x0047dd71    56
-                         call               _jmp_addr_0x004d7bd0                          // 0x0047dd72    e8599e0500
+                         call               ?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z                          // 0x0047dd72    e8599e0500
                          mov.s              ecx, esi                                      // 0x0047dd77    8bce
                          mov.s              ebx, eax                                      // 0x0047dd79    8bd8
                          mov                ebp, 0x00000027                               // 0x0047dd7b    bd27000000
@@ -879,14 +879,14 @@ _jmp_addr_0x0047dd9d:    push               0x3f800000                          
                          push               ebp                                           // 0x0047dda6    55
                          push               0x18                                          // 0x0047dda7    6a18
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x0047dda9    8d4c2428
-                         call               _jmp_addr_0x004f1230                          // 0x0047ddad    e87e340700
+                         call               ??0CreaturePlan@@QAE@W4CREATURE_DESIRES@@W4CREATURE_ACTION@@PAVCreatureBelief@@22M@Z                          // 0x0047ddad    e87e340700
                          mov                ebx, 0x00000001                               // 0x0047ddb2    bb01000000
                          push               ebx                                           // 0x0047ddb7    53
                          push               ebx                                           // 0x0047ddb8    53
                          {disp8} lea        eax, dword ptr [esp + 0x18]                   // 0x0047ddb9    8d442418
                          push               eax                                           // 0x0047ddbd    50
                          mov.s              ecx, esi                                      // 0x0047ddbe    8bce
-                         call               _jmp_addr_0x004c44b0                          // 0x0047ddc0    e8eb660400
+                         call               ?ForceActivityAndForceAction@Creature@@QAEXAAVCreaturePlan@@HH@Z                          // 0x0047ddc0    e8eb660400
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]             // 0x0047ddc5    8b8e64010000
                          {disp32} mov       dword ptr [ecx + 0x00001c14], ebx             // 0x0047ddcb    8999141c0000
                          {disp32} mov       eax, dword ptr [esi + 0x0000017c]             // 0x0047ddd1    8b867c010000
@@ -1166,7 +1166,7 @@ _jmp_addr_0x0047e060:    {disp32} mov       ecx, dword ptr [_game]              
                          push               eax                                           // 0x0047e0d2    50
                          push               0x9                                           // 0x0047e0d3    6a09
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x0047e0d5    8d4c2420
-                         call               _jmp_addr_0x004f1230                          // 0x0047e0d9    e852310700
+                         call               ??0CreaturePlan@@QAE@W4CREATURE_DESIRES@@W4CREATURE_ACTION@@PAVCreatureBelief@@22M@Z                          // 0x0047e0d9    e852310700
                          {disp8} fld        dword ptr [esp + 0x3c]                        // 0x0047e0de    d944243c
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x0047e0e2    d81d98a38a00
                          fnstsw             ax                                            // 0x0047e0e8    dfe0
@@ -1179,7 +1179,7 @@ _jmp_addr_0x0047e0ff:    push               0x1                                 
                          {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x0047e103    8d542410
                          push               edx                                           // 0x0047e107    52
                          mov.s              ecx, esi                                      // 0x0047e108    8bce
-                         call               _jmp_addr_0x004c44b0                          // 0x0047e10a    e8a1630400
+                         call               ?ForceActivityAndForceAction@Creature@@QAEXAAVCreaturePlan@@HH@Z                          // 0x0047e10a    e8a1630400
                          {disp32} mov       eax, dword ptr [esi + 0x00000164]             // 0x0047e10f    8b8664010000
                          {disp32} mov       dword ptr [eax + 0x00001c14], 0x00000001      // 0x0047e115    c780141c000001000000
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]             // 0x0047e11f    8b8e64010000
@@ -1278,7 +1278,7 @@ _jmp_addr_0x0047e21c:    sub                esp, 0x10                           
                          push               0x1f                                          // 0x0047e253    6a1f
                          add                ecx, 0x00000fa8                               // 0x0047e255    81c1a80f0000
                          {disp8} mov        dword ptr [ebx + 0x0c], edi                   // 0x0047e25b    897b0c
-                         call               _jmp_addr_0x004ff240                          // 0x0047e25e    e8dd0f0800
+                         call               ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z                          // 0x0047e25e    e8dd0f0800
 _jmp_addr_0x0047e263:    push               0x000016d7                                    // 0x0047e263    68d7160000
                          push               0x009cf9e0                                    // 0x0047e268    68e0f99c00
                          push               0x5                                           // 0x0047e26d    6a05
@@ -1355,7 +1355,7 @@ _jmp_addr_0x0047e327:    sub                esp, 0x10                           
                          push               eax                                           // 0x0047e355    50
                          push               0xd                                           // 0x0047e356    6a0d
                          add                ecx, 0x00000fa8                               // 0x0047e358    81c1a80f0000
-                         call               _jmp_addr_0x004ff3a0                          // 0x0047e35e    e83d100800
+                         call               ?AddMainSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z                          // 0x0047e35e    e83d100800
                          {disp32} jmp       _jmp_addr_0x0047e50a                          // 0x0047e363    e9a2010000
                          mov.s              ecx, esi                                      // 0x0047e368    8bce
                          call               _jmp_addr_0x0047d640                          // 0x0047e36a    e8d1f2ffff
@@ -1482,7 +1482,7 @@ _jmp_addr_0x0047e4f3:    push               eax                                 
                          push               0xa                                           // 0x0047e4f7    6a0a
 _jmp_addr_0x0047e4f9:    {disp32} mov       ecx, dword ptr [esi + 0x00000164]             // 0x0047e4f9    8b8e64010000
                          add                ecx, 0x00000fa8                               // 0x0047e4ff    81c1a80f0000
-                         call               _jmp_addr_0x004ff240                          // 0x0047e505    e8360d0800
+                         call               ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z                          // 0x0047e505    e8360d0800
 _jmp_addr_0x0047e50a:    {disp8} mov        ebx, dword ptr [esp + 0x10]                   // 0x0047e50a    8b5c2410
                          {disp8} mov        eax, dword ptr [esp + 0x14]                   // 0x0047e50e    8b442414
                          inc                ebx                                           // 0x0047e512    43
@@ -1531,7 +1531,7 @@ _jmp_addr_0x0047e571:    {disp8} mov        ecx, dword ptr [esp + 0x24]         
                          push               edi                                           // 0x0047e5a9    57
                          push               0x4                                           // 0x0047e5aa    6a04
                          add                ecx, 0x00000fa8                               // 0x0047e5ac    81c1a80f0000
-                         call               _jmp_addr_0x004ff240                          // 0x0047e5b2    e8890c0800
+                         call               ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z                          // 0x0047e5b2    e8890c0800
                          mov.s              ecx, esi                                      // 0x0047e5b7    8bce
                          call               _jmp_addr_0x0047d640                          // 0x0047e5b9    e882f0ffff
                          test               eax, eax                                      // 0x0047e5be    85c0
@@ -1584,7 +1584,7 @@ _jmp_addr_0x0047e62d:    {disp8} mov        edx, dword ptr [esp + 0x24]         
                          push               eax                                           // 0x0047e665    50
                          push               0x50                                          // 0x0047e666    6a50
                          add                ecx, 0x00000fa8                               // 0x0047e668    81c1a80f0000
-                         call               _jmp_addr_0x004ff240                          // 0x0047e66e    e8cd0b0800
+                         call               ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z                          // 0x0047e66e    e8cd0b0800
 _jmp_addr_0x0047e673:    push               0x0000170d                                    // 0x0047e673    680d170000
                          push               0x009cf9e0                                    // 0x0047e678    68e0f99c00
                          push               0x64                                          // 0x0047e67d    6a64
@@ -1627,7 +1627,7 @@ _jmp_addr_0x0047e6bb:    {disp8} mov        edx, dword ptr [esp + 0x24]         
                          push               eax                                           // 0x0047e6f4    50
                          push               0x5e                                          // 0x0047e6f5    6a5e
                          add                ecx, 0x00000fa8                               // 0x0047e6f7    81c1a80f0000
-                         call               _jmp_addr_0x004ff240                          // 0x0047e6fd    e83e0b0800
+                         call               ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z                          // 0x0047e6fd    e83e0b0800
 _jmp_addr_0x0047e702:    {disp32} mov       ebx, dword ptr [esi + 0x00000164]             // 0x0047e702    8b9e64010000
                          add                ebx, 0x000021d0                               // 0x0047e708    81c3d0210000
                          mov                eax, 0x00509050                               // 0x0047e70e    b850905000

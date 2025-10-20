@@ -21,11 +21,11 @@
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
-.extern _jmp_addr_0x00597400
+.extern ?FindDanceGroup@GroupBehaviour@@QAE_NPAVLiving@@@Z
 .extern _jmp_addr_0x005c4840
 .extern _jmp_addr_0x005c48e0
 .extern _jmp_addr_0x005c7b70
-.extern _jmp_addr_0x005ef9c0
+.extern ?CalculateDancePosition@Living@@QAE_NABUMapCoords@@PAU2@@Z
 .extern _jmp_addr_0x00604250
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
 .extern @GetLHPoint__9MapCoordsCFv@12
@@ -74,9 +74,9 @@
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _GetPosFromAngle__6GUtilsFff
 .extern @GetAbode__8VillagerFv@4
-.extern _jmp_addr_0x00752820
-.extern _jmp_addr_0x00756000
-.extern _jmp_addr_0x00763800
+.extern ?IsAvailableForWorshipSite@Villager@@QAE_NH@Z
+.extern ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z
+.extern ?SetupMoveToPos@Villager@@QAE_NABUMapCoords@@W4VILLAGER_STATES@@@Z
 .extern _jmp_addr_0x00779a50
 .extern _jmp_addr_0x00779af0
 .extern _jmp_addr_0x0077b960
@@ -1363,7 +1363,7 @@ _jmp_addr_0x0066a4dc:    test               ebp, ebp                            
                          {disp8} je         _jmp_addr_0x0066a548                          // 0x0066a4ec    745a
 _jmp_addr_0x0066a4ee:    push               0x0                                           // 0x0066a4ee    6a00
                          mov.s              ecx, esi                                      // 0x0066a4f0    8bce
-                         call               _jmp_addr_0x00752820                          // 0x0066a4f2    e829830e00
+                         call               ?IsAvailableForWorshipSite@Villager@@QAE_NH@Z // 0x0066a4f2    e829830e00
                          test               eax, eax                                      // 0x0066a4f7    85c0
                          {disp8} je         _jmp_addr_0x0066a53a                          // 0x0066a4f9    743f
                          mov                edx, dword ptr [esi]                          // 0x0066a4fb    8b16
@@ -1402,7 +1402,7 @@ _jmp_addr_0x0066a55a:    {disp32} mov       esi, dword ptr [esi + 0x00000768]   
                          {disp8} je         _jmp_addr_0x0066a5a9                          // 0x0066a562    7445
 _jmp_addr_0x0066a564:    push               0x0                                           // 0x0066a564    6a00
                          mov.s              ecx, esi                                      // 0x0066a566    8bce
-                         call               _jmp_addr_0x00752820                          // 0x0066a568    e8b3820e00
+                         call               ?IsAvailableForWorshipSite@Villager@@QAE_NH@Z // 0x0066a568    e8b3820e00
                          test               eax, eax                                      // 0x0066a56d    85c0
                          {disp8} je         _jmp_addr_0x0066a58b                          // 0x0066a56f    741a
                          {disp8} lea        eax, dword ptr [esi + 0x14]                   // 0x0066a571    8d4614
@@ -2542,7 +2542,7 @@ _jmp_addr_0x0066b135:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          push               edx                                           // 0x0066b1da    52
                          push               0x0                                           // 0x0066b1db    6a00
                          mov.s              ecx, edi                                      // 0x0066b1dd    8bcf
-                         call               _jmp_addr_0x00756000                          // 0x0066b1df    e81cae0e00
+                         call               ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z                          // 0x0066b1df    e81cae0e00
                          push               edi                                           // 0x0066b1e4    57
                          mov.s              ecx, esi                                      // 0x0066b1e5    8bce
                          call               _jmp_addr_0x00658aa0                          // 0x0066b1e7    e8b4d8feff
@@ -4888,7 +4888,7 @@ _jmp_addr_0x0066c95e:    {disp8} mov        ecx, dword ptr [edi + 0x40]         
                          test               ecx, ecx                                      // 0x0066c961    85c9
                          {disp8} je         _jmp_addr_0x0066c9ba                          // 0x0066c963    7455
                          push               ebx                                           // 0x0066c965    53
-                         call               _jmp_addr_0x00597400                          // 0x0066c966    e895aaf2ff
+                         call               ?FindDanceGroup@GroupBehaviour@@QAE_NPAVLiving@@@Z                          // 0x0066c966    e895aaf2ff
                          cmp                eax, 0x01                                     // 0x0066c96b    83f801
                          {disp8} jne        _jmp_addr_0x0066c9ba                          // 0x0066c96e    754a
                          {disp8} mov        ecx, dword ptr [edi + 0x40]                   // 0x0066c970    8b4f40
@@ -4900,12 +4900,12 @@ _jmp_addr_0x0066c95e:    {disp8} mov        ecx, dword ptr [edi + 0x40]         
                          {disp8} mov        dword ptr [esp + 0x14], 0x00000000            // 0x0066c97e    c744241400000000
                          {disp8} mov        dword ptr [esp + 0x18], 0x00000000            // 0x0066c986    c744241800000000
                          {disp8} mov        dword ptr [esp + 0x1c], 0x00000000            // 0x0066c98e    c744241c00000000
-                         call               _jmp_addr_0x005ef9c0                          // 0x0066c996    e82530f8ff
+                         call               ?CalculateDancePosition@Living@@QAE_NABUMapCoords@@PAU2@@Z                          // 0x0066c996    e82530f8ff
                          push               0x000000c1                                    // 0x0066c99b    68c1000000
                          {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x0066c9a0    8d542410
                          push               edx                                           // 0x0066c9a4    52
                          mov.s              ecx, ebx                                      // 0x0066c9a5    8bcb
-                         call               _jmp_addr_0x00763800                          // 0x0066c9a7    e8546e0f00
+                         call               ?SetupMoveToPos@Villager@@QAE_NABUMapCoords@@W4VILLAGER_STATES@@@Z                          // 0x0066c9a7    e8546e0f00
                          pop                edi                                           // 0x0066c9ac    5f
                          pop                esi                                           // 0x0066c9ad    5e
                          mov                eax, 0x00000001                               // 0x0066c9ae    b801000000

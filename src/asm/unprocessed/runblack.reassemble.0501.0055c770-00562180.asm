@@ -204,7 +204,7 @@
 .globl _jmp_addr_0x00561bc0
 .globl _jmp_addr_0x00561bf0
 .globl @ResolveAllLoads__10GameOSFileFv@4
-.globl _jmp_addr_0x00561e10
+.globl ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .globl _GetVillagerName__8VillagerFv
 .globl _IsClear__8BaseInfoCFv
 .globl _GetForest__4TreeFv
@@ -13237,7 +13237,8 @@ _jmp_addr_0x00561e08:    pop                edi                                 
                          nop                                                               // 0x00561e0d    90
                          nop                                                               // 0x00561e0e    90
                          nop                                                               // 0x00561e0f    90
-_jmp_addr_0x00561e10:    push               ecx                                            // 0x00561e10    51
+?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z:
+                         push               ecx                                            // 0x00561e10    51
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]         // 0x00561e11    a190c9be00
                          push               ebx                                            // 0x00561e16    53
                          push               ebp                                            // 0x00561e17    55

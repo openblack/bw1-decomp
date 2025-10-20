@@ -2,6 +2,7 @@
 #define BW1_DECOMP_CREATURE_MORPH_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
 #include <reversing_utils/re_common.h> /* For bool32_t */
@@ -3843,6 +3844,10 @@ struct LH3DCreature* __fastcall __ct__12LH3DCreatureFP8CreatureRC7LHPointPv(stru
 struct LHPoint* __fastcall GetBonePos__12LH3DCreatureFl(struct LH3DCreature* this, const void* edx, int index);
 // win1.41 004842b0 mac 101f4ce0 LH3DCreature::GetSafeBuffer(void)
 uint8_t* __fastcall GetSafeBuffer__12LH3DCreatureFv(struct LH3DCreature* this);
+// win1.41 004842d0 mac 101f4c90 LH3DCreature::IsPerformingBodyAction(void)
+bool __fastcall IsPerformingBodyAction__12LH3DCreatureFv(struct LH3DCreature* this) asm("?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ");
+// win1.41 0048b780 mac 101eb040 LH3DCreature::GetObjectActionStatus(void)
+uint32_t __fastcall GetObjectActionStatus__12LH3DCreatureFv(struct LH3DCreature* this) asm("?GetObjectActionStatus@LH3DCreature@@QAEIXZ");
 
 // Override methods
 

@@ -11,7 +11,7 @@
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004f5230
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x00562240
 .extern _jmp_addr_0x005622b0
@@ -872,7 +872,7 @@ _jmp_addr_0x005faae0:    {disp32} fld       dword ptr [__real@3e999999]         
                          {disp32} mov       eax, dword ptr [esi + 0x000000bc]             // 0x005fab12    8b86bc000000
                          push               eax                                           // 0x005fab18    50
                          mov.s              ecx, edi                                      // 0x005fab19    8bcf
-                         call               _jmp_addr_0x00561e10                          // 0x005fab1b    e8f072f6ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x005fab1b    e8f072f6ff
                          pop                edi                                           // 0x005fab20    5f
                          mov                eax, 0x00000001                               // 0x005fab21    b801000000
                          pop                esi                                           // 0x005fab26    5e

@@ -26,6 +26,7 @@
 // Forward Declares
 
 struct Creature;
+struct GameThingWithPos;
 
 struct CreatureInnatePersonality
 {
@@ -93,6 +94,11 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14CreatureMental asm("??_R4CreatureMental@@6B@");
 // win1.41 008cf8ac mac 10787444 CreatureMental::`vftable'
 extern const struct BaseVftable __vt__14CreatureMental asm("??_7CreatureMental@@6B@");
+
+// Non-virtual methods
+
+// win1.41 004d7bd0 mac 10253c90 CreatureMental::AddBeliefAboutObject(Creature *, GameThingWithPos *)
+void* __fastcall AddBeliefAboutObject__14CreatureMentalFP8CreatureP16GameThingWithPos(struct CreatureMental* this, const void* edx, struct Creature* param_1, struct GameThingWithPos* param_2) asm("?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z");
 
 // Override methods
 

@@ -47,6 +47,11 @@ extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12Cre
 // win1.41 008cc7cc mac 1098d1c8 CreaturePlan::`vftable'
 extern const struct BaseVftable __vt__12CreaturePlan asm("??_7CreaturePlan@@6B@");
 
+// Constructors
+
+// win1.41 004f1230 mac 10278a10 CreaturePlan::CreaturePlan(CREATURE_DESIRES, CREATURE_ACTION, CreatureBelief *, CreatureBelief *, CreatureBelief *, float)
+struct CreaturePlan* __fastcall __ct__12CreaturePlanF16CREATURE_DESIRES15CREATURE_ACTIONP14CreatureBeliefP14CreatureBeliefP14CreatureBelieff(struct CreaturePlan* this, const void* edx, enum CREATURE_DESIRES param_1, enum CREATURE_ACTION param_2, struct CreatureBelief* param_3, struct CreatureBelief* param_4, struct CreatureBelief* param_5, float param_6) asm("??0CreaturePlan@@QAE@W4CREATURE_DESIRES@@W4CREATURE_ACTION@@PAVCreatureBelief@@22M@Z");
+
 // Override methods
 
 // win1.41 00473b70 mac 10278860 CreaturePlan::_dt(void)

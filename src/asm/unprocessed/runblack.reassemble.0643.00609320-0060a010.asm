@@ -10,7 +10,7 @@
 .extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
 .extern ___nw__4BaseFUl
 .extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
-.extern _jmp_addr_0x0056fef0
+.extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern _jmp_addr_0x006055c0
 .extern @GetMetresDistanceSq__9MapCoordsCFRC9MapCoords@12
@@ -365,7 +365,7 @@ _jmp_addr_0x00609532:    pop               esi                                  
                          sub               esp, 0x00000144                               // 0x006095e0    81ec44010000
                          push              esi                                           // 0x006095e6    56
                          mov.s             esi, ecx                                      // 0x006095e7    8bf1
-                         call              _jmp_addr_0x0056fef0                          // 0x006095e9    e80269f6ff
+                         call              ?CheckAndSetSaved@GameThing@@QAE_NXZ          // 0x006095e9    e80269f6ff
                          test              eax, eax                                      // 0x006095ee    85c0
                          {disp32} je       _jmp_addr_0x00609693                          // 0x006095f0    0f849d000000
                          {disp32} mov      eax, dword ptr [esp + 0x00000150]             // 0x006095f6    8b842450010000
@@ -416,7 +416,7 @@ _jmp_addr_0x00609614:    mov               ecx, dword ptr [eax]                 
                          call              _jmp_addr_0x00719610                          // 0x00609679    e892ff1000
                          add               esp, 0x20                                     // 0x0060967e    83c420
                          mov.s             ecx, esi                                      // 0x00609681    8bce
-                         call              _jmp_addr_0x0056fef0                          // 0x00609683    e86868f6ff
+                         call              ?CheckAndSetSaved@GameThing@@QAE_NXZ          // 0x00609683    e86868f6ff
                          pop               edi                                           // 0x00609688    5f
                          pop               esi                                           // 0x00609689    5e
                          add               esp, 0x00000144                               // 0x0060968a    81c444010000

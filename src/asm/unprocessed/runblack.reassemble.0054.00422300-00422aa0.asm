@@ -16,7 +16,7 @@
 .extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
 .extern @AllocateMultiChild__13MultiMapFixedFv@4
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
-.extern _jmp_addr_0x0056fef0
+.extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern _jmp_addr_0x005c9090
 .extern _jmp_addr_0x005d56c0
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
@@ -346,7 +346,7 @@ _jmp_addr_0x0042263b:    mov.s             eax, edi                             
                          push              ebx                                           // 0x00422656    53
                          push              esi                                           // 0x00422657    56
                          mov.s             esi, ecx                                      // 0x00422658    8bf1
-                         call              _jmp_addr_0x0056fef0                          // 0x0042265a    e891d81400
+                         call              ?CheckAndSetSaved@GameThing@@QAE_NXZ          // 0x0042265a    e891d81400
                          mov.s             ebx, eax                                      // 0x0042265f    8bd8
                          test              ebx, ebx                                      // 0x00422661    85db
                          {disp32} je       _jmp_addr_0x0042273a                          // 0x00422663    0f84d1000000

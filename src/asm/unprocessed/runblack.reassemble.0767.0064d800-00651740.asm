@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x00543200
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x0056f910
 .extern @__ct__9GameThingFv@4
@@ -1086,7 +1086,7 @@ _jmp_addr_0x0064e1c1:    test               esi, esi                            
                          {disp8} je         _jmp_addr_0x0064e1eb                          // 0x0064e1d5    7414
                          push               esi                                           // 0x0064e1d7    56
                          mov.s              ecx, edi                                      // 0x0064e1d8    8bcf
-                         call               _jmp_addr_0x00561e10                          // 0x0064e1da    e8313cf1ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0064e1da    e8313cf1ff
                          {disp8} jmp        _jmp_addr_0x0064e1b2                          // 0x0064e1df    ebd1
 _jmp_addr_0x0064e1e1:    {disp32} mov       dword ptr [data_bytes + 0x226990], 0x00000000 // 0x0064e1e1    c70590c9be0000000000
 _jmp_addr_0x0064e1eb:    pop                esi                                           // 0x0064e1eb    5e
@@ -1151,7 +1151,7 @@ _jmp_addr_0x0064e261:    test               esi, esi                            
                          {disp8} je         _jmp_addr_0x0064e28b                          // 0x0064e275    7414
                          push               esi                                           // 0x0064e277    56
                          mov.s              ecx, edi                                      // 0x0064e278    8bcf
-                         call               _jmp_addr_0x00561e10                          // 0x0064e27a    e8913bf1ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0064e27a    e8913bf1ff
                          {disp8} jmp        _jmp_addr_0x0064e252                          // 0x0064e27f    ebd1
 _jmp_addr_0x0064e281:    {disp32} mov       dword ptr [data_bytes + 0x226990], 0x00000000 // 0x0064e281    c70590c9be0000000000
 _jmp_addr_0x0064e28b:    pop                esi                                           // 0x0064e28b    5e

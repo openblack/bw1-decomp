@@ -57,11 +57,11 @@
 .extern ?DoCreatureMimicAfterAddingResource@MultiMapFixed@@UAE_NW4RESOURCE_TYPE@@PAVGInterfaceStatus@@@Z
 .extern @GetNearestPathToQuick__13GFootpathLinkFRC9MapCoordsRC9MapCoordsfRiPP13GFootpathNode@28
 .extern _jmp_addr_0x00538ec0
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern @__ct__9GameThingFv@4
 .extern _jmp_addr_0x0056fa80
-.extern _jmp_addr_0x0056fef0
+.extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern @GetTopState__6LivingCFv@4
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @__ct__9MapCoordsFRC7LHPoint@12
@@ -198,7 +198,7 @@
 .globl @GetTotemPos__11WorshipSiteFv@12
 .globl _jmp_addr_0x0077cf70
 .globl _jmp_addr_0x0077d040
-.globl _jmp_addr_0x0077d0a0
+.globl ?RemoveVillagerFromWorshipCount@WorshipSite@@QAEXPAVVillager@@@Z
 .globl _jmp_addr_0x0077d110
 
 .globl _globl_ct_0x007791e0
@@ -1718,11 +1718,11 @@ _jmp_addr_0x00779f02:    {disp8} mov        ecx, dword ptr [esp + 0x14]         
                          push               edi                                           // 0x00779f5d    57
                          push               eax                                           // 0x00779f5e    50
                          mov.s              ecx, esi                                      // 0x00779f5f    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x00779f61    e8aa7edeff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x00779f61    e8aa7edeff
                          {disp32} mov       ecx, dword ptr [ebx + 0x000000d4]             // 0x00779f66    8b8bd4000000
                          push               ecx                                           // 0x00779f6c    51
                          mov.s              ecx, esi                                      // 0x00779f6d    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x00779f6f    e89c7edeff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x00779f6f    e89c7edeff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x00779f74    a190c9be00
                          xor.s              ebp, ebp                                      // 0x00779f79    33ed
                          cmp.s              eax, ebp                                      // 0x00779f7b    3bc5
@@ -1840,7 +1840,7 @@ _jmp_addr_0x0077a0e1:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          {disp8} mov        eax, dword ptr [edi + 0x04]                   // 0x0077a0f3    8b4704
                          push               eax                                           // 0x0077a0f6    50
                          mov.s              ecx, esi                                      // 0x0077a0f7    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x0077a0f9    e8127ddeff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0077a0f9    e8127ddeff
                          mov                edi, dword ptr [edi]                          // 0x0077a0fe    8b3f
                          test               edi, edi                                      // 0x0077a100    85ff
                          {disp8} jne        _jmp_addr_0x0077a0e1                          // 0x0077a102    75dd
@@ -4935,7 +4935,7 @@ _jmp_addr_0x0077c111:    {disp32} fld       dword ptr [eax + 0x000000f8]        
                          push               ebp                                           // 0x0077c127    55
                          push               esi                                           // 0x0077c128    56
                          mov.s              esi, ecx                                      // 0x0077c129    8bf1
-                         call               _jmp_addr_0x0056fef0                          // 0x0077c12b    e8c03ddfff
+                         call               ?CheckAndSetSaved@GameThing@@QAE_NXZ          // 0x0077c12b    e8c03ddfff
                          mov.s              ebx, eax                                      // 0x0077c130    8bd8
                          xor.s              ebp, ebp                                      // 0x0077c132    33ed
                          cmp.s              ebx, ebp                                      // 0x0077c134    3bdd
@@ -6594,7 +6594,8 @@ _jmp_addr_0x0077d08c:    pop                edi                                 
                          nop                                                              // 0x0077d09d    90
                          nop                                                              // 0x0077d09e    90
                          nop                                                              // 0x0077d09f    90
-_jmp_addr_0x0077d0a0:    push               edi                                           // 0x0077d0a0    57
+?RemoveVillagerFromWorshipCount@WorshipSite@@QAEXPAVVillager@@@Z:
+                         push               edi                                           // 0x0077d0a0    57
                          mov.s              edi, ecx                                      // 0x0077d0a1    8bf9
                          {disp32} mov       eax, dword ptr [edi + 0x000000c8]             // 0x0077d0a3    8b87c8000000
                          test               eax, eax                                      // 0x0077d0a9    85c0

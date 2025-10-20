@@ -37,7 +37,7 @@ size_t __fastcall SaveObject__5AbodeFR8LHOSFileRC9MapCoords(struct Object* this,
     asm("push               ebp");                                           // 0x00405bb6    55
     asm("push               esi");                                           // 0x00405bb7    56
     asm("mov.s              esi, ecx");                                      // 0x00405bb8    8bf1
-    asm("call               _jmp_addr_0x0056fef0");                          // 0x00405bba    e831a31600
+    asm("call               ?CheckAndSetSaved@GameThing@@QAE_NXZ");                          // 0x00405bba    e831a31600
     asm("mov.s              ebp, eax");                                      // 0x00405bbf    8be8
     asm("test               ebp, ebp");                                      // 0x00405bc1    85ed
     asm("{disp32} je        _jmp_addr_0x00405d68");                          // 0x00405bc3    0f849f010000
@@ -240,7 +240,7 @@ void __fastcall ReduceLife__5AbodeFfP7GPlayer(struct Object* this, const void* e
     asm("{disp8} je         _jmp_addr_0x00405e02");                          // 0x00405def    7411
     asm("_jmp_addr_0x00405df1:");
     asm("mov.s              ecx, edi");                                      // 0x00405df1    8bcf
-    asm("call               _jmp_addr_0x00752b80");                          // 0x00405df3    e888cd3400
+    asm("call               ?SetStateWhenTappedOnAbode@Villager@@QAE_NXZ");                          // 0x00405df3    e888cd3400
     asm("{disp32} mov       edi, dword ptr [edi + 0x000000e4]");             // 0x00405df8    8bbfe4000000
     asm("test               edi, edi");                                      // 0x00405dfe    85ff
     asm("{disp8} jne        _jmp_addr_0x00405df1");                          // 0x00405e00    75ef

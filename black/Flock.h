@@ -76,6 +76,8 @@ struct Flock* __fastcall __ct__5FlockFP6Living(struct Flock* this, const void* e
 
 // Non-virtual methods
 
+// win1.41 0052fc20 mac 100e6220 Flock::SetDomainCentrePos(MapCoords const &)
+void __fastcall SetDomainCentrePos__5FlockFRC9MapCoords(struct Flock* this, const void* edx, const struct MapCoords* param_1) asm("?SetDomainCentrePos@Flock@@QAEXABUMapCoords@@@Z");
 // win1.41 00530570 mac 100684b0 Flock::GetFlockPos(void)
 struct MapCoords* __fastcall GetFlockPos__5FlockFv(struct Flock* this);
 

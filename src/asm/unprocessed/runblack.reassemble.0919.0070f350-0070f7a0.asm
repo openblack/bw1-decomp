@@ -17,7 +17,7 @@
 .extern _jmp_addr_0x0070d220
 .extern _jmp_addr_0x0070d440
 .extern _jmp_addr_0x0070e820
-.extern _jmp_addr_0x007531d0
+.extern ?ReleaseFromScript@Villager@@QAEXXZ
 .extern _jmp_addr_0x00774340
 .extern _jmp_addr_0x007a1400
 .extern _atexit
@@ -415,14 +415,14 @@ _jmp_addr_0x0070f6ff:    mov                eax, dword ptr [esi]                
                          call               _jmp_addr_0x006f82c0                          // 0x0070f715    e8a68bfeff
                          add                esp, 0x08                                     // 0x0070f71a    83c408
                          mov.s              ecx, esi                                      // 0x0070f71d    8bce
-                         call               _jmp_addr_0x007531d0                          // 0x0070f71f    e8ac3a0400
+                         call               ?ReleaseFromScript@Villager@@QAEXXZ           // 0x0070f71f    e8ac3a0400
                          pop                edi                                           // 0x0070f724    5f
                          pop                esi                                           // 0x0070f725    5e
                          ret                                                              // 0x0070f726    c3
 _jmp_addr_0x0070f727:    call               _jmp_addr_0x006f82e0                          // 0x0070f727    e8b48bfeff
                          add                esp, 0x08                                     // 0x0070f72c    83c408
                          mov.s              ecx, esi                                      // 0x0070f72f    8bce
-                         call               _jmp_addr_0x007531d0                          // 0x0070f731    e89a3a0400
+                         call               ?ReleaseFromScript@Villager@@QAEXXZ           // 0x0070f731    e89a3a0400
                          pop                edi                                           // 0x0070f736    5f
                          pop                esi                                           // 0x0070f737    5e
                          ret                                                              // 0x0070f738    c3

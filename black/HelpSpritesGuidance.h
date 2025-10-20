@@ -29,6 +29,11 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__20GHelpSpritesGuida
 // win1.41 009b9130 mac inlined GHelpSpritesGuidance::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__20GHelpSpritesGuidance asm("??_R3GHelpSpritesGuidance@@8");
 
+// Non-virtual methods
+
+// win1.41 0071d300 mac 1050d290 GHelpSpritesGuidance::GetRandomSample(void) const
+uint32_t __fastcall GetRandomSample__20GHelpSpritesGuidanceCFv(const struct GHelpSpritesGuidance* this) asm("?GetRandomSample@GHelpSpritesGuidance@@QBEIXZ");
+
 // Override methods
 
 // win1.41 0071aa60 mac 1050d8c0 GHelpSpritesGuidance::_dt(void)

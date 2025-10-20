@@ -2,6 +2,7 @@
 #define BW1_DECOMP_TEMPLE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
 
 // Forward Declares
@@ -43,5 +44,10 @@ void __stdcall ProcessGameTurn__6TempleFv(void);
 
 // win1.41 00793ac0 mac 10537d50 Temple::Temple(void)
 struct Temple* __fastcall __ct__6TempleFv(struct Temple* this);
+
+// Non-virtual methods
+
+// win1.41 00794a20 mac 10536350 Temple::StartScript(unsigned long)
+bool __fastcall StartScript__6TempleFUl(struct Temple* this, const void* edx, unsigned long param_1) asm("?StartScript@Temple@@QAE_NK@Z");
 
 #endif /* BW1_DECOMP_TEMPLE_INCLUDED_H */

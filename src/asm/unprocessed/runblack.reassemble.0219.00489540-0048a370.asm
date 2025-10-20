@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x00484ec0
 .extern _jmp_addr_0x004867b0
 .extern _jmp_addr_0x004ebe10
-.extern _jmp_addr_0x005c46e0
+.extern ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z
 .extern @GetAnim__9MorphableFll@16
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x00841170
@@ -96,7 +96,7 @@ _jmp_addr_0x004895da:    cmp                eax, 0x17                           
                          {disp8} jne        _jmp_addr_0x00489639                                 // 0x0048962a    750d
                          {disp32} mov       ecx, dword ptr [edx + 0x00250060]                    // 0x0048962c    8b8a60002500
                          push               0x27                                                 // 0x00489632    6a27
-                         call               _jmp_addr_0x005c46e0                                 // 0x00489634    e8a7b01300
+                         call               ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z      // 0x00489634    e8a7b01300
 _jmp_addr_0x00489639:    mov.s              ecx, esi                                             // 0x00489639    8bce
                          call               _jmp_addr_0x00489930                                 // 0x0048963b    e8f0020000
                          {disp32} mov       eax, dword ptr [esi + 0x00004834]                    // 0x00489640    8b8634480000
@@ -156,7 +156,7 @@ _jmp_addr_0x004896da:    test               edi, 0x00004000                     
                          {disp8} jne        _jmp_addr_0x0048973b                                 // 0x0048972c    750d
                          {disp32} mov       ecx, dword ptr [edx + 0x00250060]                    // 0x0048972e    8b8a60002500
                          push               0x26                                                 // 0x00489734    6a26
-                         call               _jmp_addr_0x005c46e0                                 // 0x00489736    e8a5af1300
+                         call               ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z      // 0x00489736    e8a5af1300
 _jmp_addr_0x0048973b:    mov.s              ecx, esi                                             // 0x0048973b    8bce
                          call               _jmp_addr_0x00489930                                 // 0x0048973d    e8ee010000
                          pop                edi                                                  // 0x00489742    5f
@@ -182,7 +182,7 @@ _jmp_addr_0x00489748:    {disp32} mov       ecx, dword ptr [esi + 0x00004834]   
                          {disp32} jne       _jmp_addr_0x00489840                                 // 0x0048977e    0f85bc000000
                          {disp32} mov       ecx, dword ptr [edx + 0x00250060]                    // 0x00489784    8b8a60002500
                          push               0x24                                                 // 0x0048978a    6a24
-                         call               _jmp_addr_0x005c46e0                                 // 0x0048978c    e84faf1300
+                         call               ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z      // 0x0048978c    e84faf1300
                          {disp32} mov       eax, dword ptr [esi + 0x00004834]                    // 0x00489791    8b8634480000
                          test               eax, eax                                             // 0x00489797    85c0
                          {disp32} je        _jmp_addr_0x004898df                                 // 0x00489799    0f8440010000
@@ -255,7 +255,7 @@ _jmp_addr_0x004898ab:    {disp32} fld       dword ptr [ecx + 0x00017d04]        
 _jmp_addr_0x004898c8:    {disp32} mov       eax, dword ptr [_game]                               // 0x004898c8    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00250060]                    // 0x004898cd    8b8860002500
                          push               0x25                                                 // 0x004898d3    6a25
-                         call               _jmp_addr_0x005c46e0                                 // 0x004898d5    e806ae1300
+                         call               ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z      // 0x004898d5    e806ae1300
 _jmp_addr_0x004898da:    cmp                edi, 0x03                                            // 0x004898da    83ff03
                          {disp8} jne        _jmp_addr_0x004898f0                                 // 0x004898dd    7511
 _jmp_addr_0x004898df:    push               0x0                                                  // 0x004898df    6a00

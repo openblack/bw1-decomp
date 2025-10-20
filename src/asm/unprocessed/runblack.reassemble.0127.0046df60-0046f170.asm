@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x0046de40
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x00563400
 .extern _jmp_addr_0x00563410
@@ -1132,7 +1132,7 @@ _jmp_addr_0x0046eb41:    {disp32} mov       ecx, dword ptr [esi + 0x00000214]   
 _jmp_addr_0x0046eb56:    {disp32} mov       ecx, dword ptr [edi + 0x00004904]             // 0x0046eb56    8b8f04490000
                          push               ecx                                           // 0x0046eb5c    51
                          mov.s              ecx, esi                                      // 0x0046eb5d    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x0046eb5f    e8ac320f00
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0046eb5f    e8ac320f00
                          cmp                dword ptr [data_bytes + 0x226990], ebp        // 0x0046eb64    392d90c9be00
                          {disp32} je        _jmp_addr_0x0046ec8a                          // 0x0046eb6a    0f841a010000
                          push               ebp                                           // 0x0046eb70    55
@@ -1225,7 +1225,7 @@ _jmp_addr_0x0046ec8a:    {disp32} lea       ecx, dword ptr [edi + 0x0000494c]   
                          {disp32} mov       edx, dword ptr [edi + 0x00004950]             // 0x0046ec98    8b9750490000
                          push               edx                                           // 0x0046ec9e    52
                          mov.s              ecx, esi                                      // 0x0046ec9f    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x0046eca1    e86a310f00
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0046eca1    e86a310f00
                          cmp                dword ptr [data_bytes + 0x226990], ebp        // 0x0046eca6    392d90c9be00
                          {disp8} je         _jmp_addr_0x0046ecdd                          // 0x0046ecac    742f
                          push               ebp                                           // 0x0046ecae    55
