@@ -35,6 +35,11 @@ extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14Ter
 // win1.41 008df870 mac 10730b30 TerrainMapInfo::`vftable'
 extern const struct BaseInfoVftable __vt__14TerrainMapInfo asm("??_7TerrainMapInfo@@6B@");
 
+// Constructors
+
+// win1.41 0054bcd0 mac 100c9280 TerrainMapInfo::TerrainMapInfo(void)
+struct TerrainMapInfo* __fastcall __ct__14TerrainMapInfoFv(struct TerrainMapInfo* this) asm("??0TerrainMapInfo@@QAE@XZ");
+
 // Override methods
 
 // win1.41 0054be80 mac 101522e0 TerrainMapInfo::_dt(void)

@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x004286c0
 .extern _jmp_addr_0x00429e30
 .extern _jmp_addr_0x0042a210
-.extern _jmp_addr_0x0042e5e0
+.extern ??0GBaseInfo@@QAE@XZ
 .extern _jmp_addr_0x00435f30
 .extern _jmp_addr_0x004366f0
 .extern _jmp_addr_0x00436960
@@ -77,7 +77,7 @@
 .extern _jmp_addr_0x0050bb60
 .extern _jmp_addr_0x0050ccc0
 .extern _jmp_addr_0x0050f780
-.extern _jmp_addr_0x0050f7b0
+.extern ?InitialiseBitmaps@DanceLight@@QAEXXZ
 .extern _jmp_addr_0x00510500
 .extern ?SetupDataTables@GGame@@QAEXXZ
 .extern _jmp_addr_0x00511210
@@ -217,7 +217,7 @@
 .extern _jmp_addr_0x005fa000
 .extern _jmp_addr_0x005fa070
 .extern _jmp_addr_0x005fb040
-.extern _jmp_addr_0x00601080
+.extern ??0GMap@@QAE@XZ
 .extern _jmp_addr_0x006010f0
 .extern _jmp_addr_0x006014c0
 .extern _jmp_addr_0x006016d0
@@ -279,7 +279,7 @@
 .extern _jmp_addr_0x006ca6e0
 .extern _jmp_addr_0x006e3b50
 .extern _jmp_addr_0x006e6890
-.extern _jmp_addr_0x006eb100
+.extern ?Create@GScript@@QAEPAV1@XZ
 .extern _jmp_addr_0x006eb2d0
 .extern _jmp_addr_0x006eb6b0
 .extern _jmp_addr_0x006eb710
@@ -332,7 +332,7 @@
 .extern _jmp_addr_0x00775140
 .extern _jmp_addr_0x00775380
 .extern _jmp_addr_0x007899f0
-.extern _jmp_addr_0x0078e8c0
+.extern ??0PathCreator@@QAE@XZ
 .extern _jmp_addr_0x0078e9a0
 .extern _jmp_addr_0x0078e9b0
 .extern _jmp_addr_0x0078ea20
@@ -371,7 +371,7 @@
 .extern _jmp_addr_0x00825190
 .extern _jmp_addr_0x00826c90
 .extern _jmp_addr_0x0082f0e0
-.extern _jmp_addr_0x0082f2c0
+.extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
 .extern _jmp_addr_0x0082f460
 .extern _jmp_addr_0x00833cb0
@@ -381,7 +381,7 @@
 .extern _jmp_addr_0x008366a0
 .extern _jmp_addr_0x008367a0
 .extern @Release__11LH3DTextureFv@4
-.extern _jmp_addr_0x0083b300
+.extern ?InitialiseSystem@RPHolder@@QAEXP6AXHHPAV1@@ZP6AX0@Z@Z
 .extern _jmp_addr_0x0083b3e0
 .extern _jmp_addr_0x0083b450
 .extern _jmp_addr_0x0083e4f0
@@ -421,7 +421,7 @@
 .globl _jmp_addr_0x0054b180
 .globl _jmp_addr_0x0054b190
 .globl ??1GGame@@UAE@XZ
-.globl _jmp_addr_0x0054b820
+.globl ?SetZero@LH3DMapCoords@@QAEXXZ
 .globl @Reset__7LHTimerFUl@12
 .globl @__ct__10GKeyBuffer@4
 .globl @__ct__9GSoundMapFv@4
@@ -468,6 +468,8 @@
 .globl ??_GTerrainMapInfo@@UAEPAXI@Z
 .globl ??_GTerrainMapTypeInfo@@UAEPAXI@Z
 .globl ?ToBeDeleted@GGame@@UAEXH@Z
+.globl ?CheckSquareFunction@@YAXHHPAURPHolder@@@Z
+.globl ?AddSpecialRPObjects@@YAXPAURPHolder@@@Z
 
 start_0x0054a180_0x0054ff80:
 // Snippet: asm, [0x0054a180, 0x0054ff60)
@@ -1834,6 +1836,7 @@ _jmp_addr_0x0054af58:    pop                edi                                 
                          add                esp, 0x08                                     // 0x0054af5b    83c408
                          ret                                                              // 0x0054af5e    c3
                          nop                                                              // 0x0054af5f    90
+?AddSpecialRPObjects@@YAXPAURPHolder@@@Z:
                          push               ebx                                           // 0x0054af60    53
                          {disp8} mov        ebx, dword ptr [esp + 0x08]                   // 0x0054af61    8b5c2408
                          {disp32} mov       eax, dword ptr [ebx + 0x00050024]             // 0x0054af65    8b8324000500
@@ -1866,6 +1869,7 @@ _jmp_addr_0x0054afac:    pop                edi                                 
                          pop                esi                                           // 0x0054afad    5e
                          pop                ebx                                           // 0x0054afae    5b
                          ret                                                              // 0x0054afaf    c3
+?CheckSquareFunction@@YAXHHPAURPHolder@@@Z:
                          sub                esp, 0x1c                                     // 0x0054afb0    83ec1c
                          push               ebx                                           // 0x0054afb3    53
                          push               ebp                                           // 0x0054afb4    55

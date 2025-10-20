@@ -110,7 +110,7 @@
 .extern _jmp_addr_0x0087f980
 
 .globl _jmp_addr_0x0078e760
-.globl _jmp_addr_0x0078e8c0
+.globl ??0PathCreator@@QAE@XZ
 .globl _jmp_addr_0x0078e9a0
 .globl _jmp_addr_0x0078e9b0
 .globl _jmp_addr_0x0078ea00
@@ -353,7 +353,8 @@ _jmp_addr_0x0078e8b0:    {disp32} mov       dword ptr [data_bytes + 0x43bec4], 0
                          nop                                                              // 0x0078e8bd    90
                          nop                                                              // 0x0078e8be    90
                          nop                                                              // 0x0078e8bf    90
-_jmp_addr_0x0078e8c0:    sub                esp, 0x00000104                               // 0x0078e8c0    81ec04010000
+??0PathCreator@@QAE@XZ:
+                         sub                esp, 0x00000104                               // 0x0078e8c0    81ec04010000
                          push               ebx                                           // 0x0078e8c6    53
                          mov.s              ebx, ecx                                      // 0x0078e8c7    8bd9
                          push               esi                                           // 0x0078e8c9    56

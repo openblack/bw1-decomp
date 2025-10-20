@@ -30,6 +30,11 @@ extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17Ges
 // win1.41 008df7e0 mac 107330c8 GestureSystemData::`vftable'
 extern const struct BaseVftable __vt__17GestureSystemData asm("??_7GestureSystemData@@6B@");
 
+// Constructors
+
+// win1.41 0054baf0 mac inlined GestureSystemData::GestureSystemData(void)
+struct GestureSystemData* __fastcall __ct__17GestureSystemDataFv(struct GestureSystemData* this) asm("??0GestureSystemData@@QAE@XZ");
+
 // Override methods
 
 // win1.41 00579690 mac 1042dc90 GestureSystemData::_dt(void)

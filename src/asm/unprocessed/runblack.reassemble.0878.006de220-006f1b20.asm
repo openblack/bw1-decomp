@@ -432,7 +432,7 @@
 .globl _jmp_addr_0x006e9d40
 .globl _jmp_addr_0x006ea950
 .globl _jmp_addr_0x006eaa40
-.globl _jmp_addr_0x006eb100
+.globl ?Create@GScript@@QAEPAV1@XZ
 .globl _jmp_addr_0x006eb220
 .globl @Reset__7GScriptFi@12
 .globl @LoadBinary__7GScriptFPc@12
@@ -18330,7 +18330,8 @@ _jmp_addr_0x006eb0e0:    {disp32} fld       dword ptr [rdata_bytes + 0x9916c]   
                          nop                                                              // 0x006eb0fd    90
                          nop                                                              // 0x006eb0fe    90
                          nop                                                              // 0x006eb0ff    90
-_jmp_addr_0x006eb100:    push               esi                                           // 0x006eb100    56
+?Create@GScript@@QAEPAV1@XZ:
+                         push               esi                                           // 0x006eb100    56
                          push               0x2f                                          // 0x006eb101    6a2f
                          push               0x00c0c020                                    // 0x006eb103    6820c0c000
                          push               0x000000bc                                    // 0x006eb108    68bc000000

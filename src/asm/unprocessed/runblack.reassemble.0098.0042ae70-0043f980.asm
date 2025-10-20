@@ -222,7 +222,7 @@
 .globl @__ct__6LHFileFv@4
 .globl @ResetData__6LHFile@4
 .globl @LoadBinary__10GAbodeInfoFP6LHFile@12
-.globl _jmp_addr_0x0042e5e0
+.globl ??0GBaseInfo@@QAE@XZ
 .globl @__ct__10GMagicInfoFv@4
 .globl @__ct__4BallFRC9MapCoordsPC9GBallInfo@16
 .globl ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z
@@ -1241,7 +1241,7 @@ _jmp_addr_0x0042b883:    push               0x0000009f                          
                          test               esi, esi                                             // 0x0042b899    85f6
                          {disp8} je         _jmp_addr_0x0042b8ac                                 // 0x0042b89b    740f
                          mov.s              ecx, esi                                             // 0x0042b89d    8bce
-                         call               _jmp_addr_0x0042e5e0                                 // 0x0042b89f    e83c2d0000
+                         call               ??0GBaseInfo@@QAE@XZ                                 // 0x0042b89f    e83c2d0000
                          mov                dword ptr [esi], 0x008c4cbc                          // 0x0042b8a4    c706bc4c8c00
                          {disp8} jmp        _jmp_addr_0x0042b8ae                                 // 0x0042b8aa    eb02
 _jmp_addr_0x0042b8ac:    xor.s              esi, esi                                             // 0x0042b8ac    33f6
@@ -5126,7 +5126,7 @@ _jmp_addr_0x0042e490:    push               ebx                                 
                          ret                0x0004                                               // 0x0042e5db    c20400
                          nop                                                                     // 0x0042e5de    90
                          nop                                                                     // 0x0042e5df    90
-_jmp_addr_0x0042e5e0:    mov.s              eax, ecx                                             // 0x0042e5e0    8bc1
+??0GBaseInfo@@QAE@XZ:    mov.s              eax, ecx                                             // 0x0042e5e0    8bc1
                          xor.s              ecx, ecx                                             // 0x0042e5e2    33c9
                          {disp8} mov        dword ptr [eax + 0x04], ecx                          // 0x0042e5e4    894804
                          {disp8} mov        dword ptr [eax + 0x08], ecx                          // 0x0042e5e7    894808

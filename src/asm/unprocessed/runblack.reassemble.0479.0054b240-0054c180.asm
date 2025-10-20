@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x004286c0
 .extern _jmp_addr_0x00429e30
 .extern _jmp_addr_0x0042a210
-.extern _jmp_addr_0x0042e5e0
+.extern ??0GBaseInfo@@QAE@XZ
 .extern _jmp_addr_0x00435f30
 .extern _jmp_addr_0x004366f0
 .extern _jmp_addr_0x00436960
@@ -77,7 +77,7 @@
 .extern _jmp_addr_0x0050bb60
 .extern _jmp_addr_0x0050ccc0
 .extern _jmp_addr_0x0050f780
-.extern _jmp_addr_0x0050f7b0
+.extern ?InitialiseBitmaps@DanceLight@@QAEXXZ
 .extern _jmp_addr_0x00510500
 .extern ?SetupDataTables@GGame@@QAEXXZ
 .extern _jmp_addr_0x00511210
@@ -217,7 +217,7 @@
 .extern _jmp_addr_0x005fa000
 .extern _jmp_addr_0x005fa070
 .extern _jmp_addr_0x005fb040
-.extern _jmp_addr_0x00601080
+.extern ??0GMap@@QAE@XZ
 .extern _jmp_addr_0x006010f0
 .extern _jmp_addr_0x006014c0
 .extern _jmp_addr_0x006016d0
@@ -279,7 +279,7 @@
 .extern _jmp_addr_0x006ca6e0
 .extern _jmp_addr_0x006e3b50
 .extern _jmp_addr_0x006e6890
-.extern _jmp_addr_0x006eb100
+.extern ?Create@GScript@@QAEPAV1@XZ
 .extern _jmp_addr_0x006eb2d0
 .extern _jmp_addr_0x006eb6b0
 .extern _jmp_addr_0x006eb710
@@ -332,7 +332,7 @@
 .extern _jmp_addr_0x00775140
 .extern _jmp_addr_0x00775380
 .extern _jmp_addr_0x007899f0
-.extern _jmp_addr_0x0078e8c0
+.extern ??0PathCreator@@QAE@XZ
 .extern _jmp_addr_0x0078e9a0
 .extern _jmp_addr_0x0078e9b0
 .extern _jmp_addr_0x0078ea20
@@ -371,7 +371,7 @@
 .extern _jmp_addr_0x00825190
 .extern _jmp_addr_0x00826c90
 .extern _jmp_addr_0x0082f0e0
-.extern _jmp_addr_0x0082f2c0
+.extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
 .extern _jmp_addr_0x0082f460
 .extern _jmp_addr_0x00833cb0
@@ -381,7 +381,7 @@
 .extern _jmp_addr_0x008366a0
 .extern _jmp_addr_0x008367a0
 .extern @Release__11LH3DTextureFv@4
-.extern _jmp_addr_0x0083b300
+.extern ?InitialiseSystem@RPHolder@@QAEXP6AXHHPAV1@@ZP6AX0@Z@Z
 .extern _jmp_addr_0x0083b3e0
 .extern _jmp_addr_0x0083b450
 .extern _jmp_addr_0x0083e4f0
@@ -421,7 +421,7 @@
 .globl _jmp_addr_0x0054b180
 .globl _jmp_addr_0x0054b190
 .globl ??1GGame@@UAE@XZ
-.globl _jmp_addr_0x0054b820
+.globl ?SetZero@LH3DMapCoords@@QAEXXZ
 .globl @Reset__7LHTimerFUl@12
 .globl @__ct__10GKeyBuffer@4
 .globl @__ct__9GSoundMapFv@4
@@ -468,16 +468,17 @@
 .globl ??_GTerrainMapInfo@@UAEPAXI@Z
 .globl ??_GTerrainMapTypeInfo@@UAEPAXI@Z
 .globl ?ToBeDeleted@GGame@@UAEXH@Z
-.globl _jmp_addr_0x0054bb90
+.globl ??0GestureSystemResult@@QAE@XZ
 .globl _jmp_addr_0x0054b910
 .globl _jmp_addr_0x0054b8f0
-.globl _jmp_addr_0x0054bcd0
-.globl _jmp_addr_0x0054bf20
+.globl ??0TerrainMapInfo@@QAE@XZ
+.globl ?ClearVariables@GGame@@QAEXXZ
 .globl _jmp_addr_0x0054ba40
-.globl _jmp_addr_0x0054baa0
-.globl _jmp_addr_0x0054baf0
+.globl ??0GestureSystemDataList@@QAE@XZ
+.globl ??0GestureSystemData@@QAE@XZ
 
-_jmp_addr_0x0054b820:    xor.s              eax, eax                                      // 0x0054b820    33c0
+?SetZero@LH3DMapCoords@@QAEXXZ:
+                         xor.s              eax, eax                                      // 0x0054b820    33c0
                          mov                dword ptr [ecx], eax                          // 0x0054b822    8901
                          {disp8} mov        dword ptr [ecx + 0x04], eax                   // 0x0054b824    894104
                          {disp8} mov        dword ptr [ecx + 0x08], eax                   // 0x0054b827    894108
@@ -740,7 +741,8 @@ _jmp_addr_0x0054ba55:    mov                dword ptr [eax], 0x3d4ccccd         
                          nop                                                              // 0x0054ba9d    90
                          nop                                                              // 0x0054ba9e    90
                          nop                                                              // 0x0054ba9f    90
-_jmp_addr_0x0054baa0:    mov.s              eax, ecx                                      // 0x0054baa0    8bc1
+??0GestureSystemDataList@@QAE@XZ:
+                         mov.s              eax, ecx                                      // 0x0054baa0    8bc1
                          xor.s              ecx, ecx                                      // 0x0054baa2    33c9
                          {disp8} mov        dword ptr [eax + 0x04], ecx                   // 0x0054baa4    894804
                          mov                dword ptr [eax], 0x008df7c0                   // 0x0054baa7    c700c0f78d00
@@ -778,7 +780,8 @@ _jmp_addr_0x0054bae7:    mov.s              eax, esi                            
                          nop                                                              // 0x0054baed    90
                          nop                                                              // 0x0054baee    90
                          nop                                                              // 0x0054baef    90
-_jmp_addr_0x0054baf0:    push               esi                                           // 0x0054baf0    56
+??0GestureSystemData@@QAE@XZ:
+                         push               esi                                           // 0x0054baf0    56
                          mov.s              esi, ecx                                      // 0x0054baf1    8bf1
                          {disp8} mov        dword ptr [esi + 0x04], 0x00000000            // 0x0054baf3    c7460400000000
                          mov                dword ptr [esi], 0x008df7e0                   // 0x0054bafa    c706e0f78d00
@@ -840,7 +843,8 @@ _jmp_addr_0x0054bb83:    mov.s              eax, esi                            
                          nop                                                              // 0x0054bb8d    90
                          nop                                                              // 0x0054bb8e    90
                          nop                                                              // 0x0054bb8f    90
-_jmp_addr_0x0054bb90:    xor.s              eax, eax                                      // 0x0054bb90    33c0
+??0GestureSystemResult@@QAE@XZ:
+                         xor.s              eax, eax                                      // 0x0054bb90    33c0
                          mov                byte ptr [ecx], al                            // 0x0054bb92    8801
                          {disp8} mov        dword ptr [ecx + 0x04], eax                   // 0x0054bb94    894104
                          {disp8} mov        byte ptr [ecx + 0x09], al                     // 0x0054bb97    884109
@@ -944,7 +948,8 @@ _jmp_addr_0x0054bcb0:    push               esi                                 
                          nop                                                              // 0x0054bccd    90
                          nop                                                              // 0x0054bcce    90
                          nop                                                              // 0x0054bccf    90
-_jmp_addr_0x0054bcd0:    push               ebx                                           // 0x0054bcd0    53
+??0TerrainMapInfo@@QAE@XZ:
+                         push               ebx                                           // 0x0054bcd0    53
                          push               ebp                                           // 0x0054bcd1    55
                          push               esi                                           // 0x0054bcd2    56
                          mov.s              ebx, ecx                                      // 0x0054bcd3    8bd9
@@ -1199,7 +1204,8 @@ _jmp_addr_0x0054beb9:    pop                edi                                 
 _jmp_addr_0x0054bf1a:    mov.s              eax, esi                                      // 0x0054bf1a    8bc6
                          pop                esi                                           // 0x0054bf1c    5e
                          ret                0x0004                                        // 0x0054bf1d    c20400
-_jmp_addr_0x0054bf20:    xor.s              eax, eax                                      // 0x0054bf20    33c0
+?ClearVariables@GGame@@QAEXXZ:
+                         xor.s              eax, eax                                      // 0x0054bf20    33c0
                          {disp32} mov       byte ptr [ecx + 0x00250174], al               // 0x0054bf22    888174012500
                          {disp32} mov       dword ptr [ecx + 0x00250188], eax             // 0x0054bf28    898188012500
                          {disp32} mov       dword ptr [ecx + 0x00250194], eax             // 0x0054bf2e    898194012500

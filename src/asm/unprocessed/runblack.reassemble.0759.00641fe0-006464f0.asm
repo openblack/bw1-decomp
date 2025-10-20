@@ -123,7 +123,7 @@
 .extern ?Create@LH3DMesh@@SAPAV1@PBX_N@Z
 .extern _jmp_addr_0x00823ad0
 .extern _StartFrame__10LH3DRenderFv
-.extern _jmp_addr_0x0082f2c0
+.extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
 .extern _jmp_addr_0x0082f460
 .extern _jmp_addr_0x00830f60
@@ -1710,7 +1710,7 @@ _jmp_addr_0x006433b8:    {disp32} mov       eax, dword ptr [data_bytes + 0x2721f
                          push               0x006424e0                                     // 0x006433d2    68e0246400
                          push               edi                                            // 0x006433d7    57
                          push               0x000a0000                                     // 0x006433d8    6800000a00
-                         call               _jmp_addr_0x0082f2c0                           // 0x006433dd    e8debe1e00
+                         call               ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z                           // 0x006433dd    e8debe1e00
                          {disp32} mov       eax, dword ptr [data_bytes + 0x2389a4]         // 0x006433e2    a1a4e9bf00
                          add                esp, 0x14                                      // 0x006433e7    83c414
                          cmp.s              eax, ebx                                       // 0x006433ea    3bc3

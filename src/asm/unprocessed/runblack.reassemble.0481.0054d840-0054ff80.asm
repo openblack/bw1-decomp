@@ -27,7 +27,7 @@
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20
 .extern _load_variables
-.extern _jmp_addr_0x0042e5e0
+.extern ??0GBaseInfo@@QAE@XZ
 .extern _jmp_addr_0x00435f30
 .extern ___nw__4BaseFUl
 .extern _jmp_addr_0x00436960
@@ -77,7 +77,7 @@
 .extern _jmp_addr_0x0050bb60
 .extern _jmp_addr_0x0050ccc0
 .extern _jmp_addr_0x0050f780
-.extern _jmp_addr_0x0050f7b0
+.extern ?InitialiseBitmaps@DanceLight@@QAEXXZ
 .extern @__ct__5GDataFv@4
 .extern ?SetupDataTables@GGame@@QAEXXZ
 .extern _jmp_addr_0x00511210
@@ -222,7 +222,7 @@
 .extern _jmp_addr_0x005fa000
 .extern _jmp_addr_0x005fa070
 .extern _jmp_addr_0x005fb040
-.extern _jmp_addr_0x00601080
+.extern ??0GMap@@QAE@XZ
 .extern _jmp_addr_0x006010f0
 .extern _jmp_addr_0x006014c0
 .extern _jmp_addr_0x006016d0
@@ -283,7 +283,7 @@
 .extern _jmp_addr_0x006ca6e0
 .extern _jmp_addr_0x006e3b50
 .extern _jmp_addr_0x006e6890
-.extern _jmp_addr_0x006eb100
+.extern ?Create@GScript@@QAEPAV1@XZ
 .extern @Reset__7GScriptFi@12
 .extern @Process__7GScriptFv@4
 .extern _StartScript__7GScriptFPc@4
@@ -337,7 +337,7 @@
 .extern _jmp_addr_0x00775140
 .extern _jmp_addr_0x00775380
 .extern _jmp_addr_0x007899f0
-.extern _jmp_addr_0x0078e8c0
+.extern ??0PathCreator@@QAE@XZ
 .extern _jmp_addr_0x0078e9a0
 .extern _jmp_addr_0x0078e9b0
 .extern _jmp_addr_0x0078ea20
@@ -377,7 +377,7 @@
 .extern _jmp_addr_0x00825190
 .extern _jmp_addr_0x00826c90
 .extern _StartFrame__10LH3DRenderFv
-.extern _jmp_addr_0x0082f2c0
+.extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
 .extern _jmp_addr_0x0082f460
 .extern _jmp_addr_0x00833cb0
@@ -387,7 +387,7 @@
 .extern _jmp_addr_0x008366a0
 .extern _jmp_addr_0x008367a0
 .extern @Release__11LH3DTextureFv@4
-.extern _jmp_addr_0x0083b300
+.extern ?InitialiseSystem@RPHolder@@QAEXP6AXHHPAV1@@ZP6AX0@Z@Z
 .extern _jmp_addr_0x0083b3e0
 .extern _jmp_addr_0x0083b450
 .extern _jmp_addr_0x0083e4f0
