@@ -6,6 +6,7 @@ import re
 import sys
 from dataclasses import dataclass, asdict, field
 from pathlib import Path
+from concurrent.futures import ProcessPoolExecutor, as_completed
 
 from clang.cindex import TranslationUnit, Diagnostic, Config, Token, TranslationUnitLoadError, conf
 
@@ -822,22 +823,63 @@ def extract_function_info(tu: TranslationUnit, known_types: set[str], decorated_
     return found_issues
 
 
+PARALLELIZE_EXTRACTION = True
+
+
+def _extract_function_info_single(path: Path, types: set[str]) -> tuple[bool, set[str], list[FunctionMetadata]]:
+    decorated_names: set[str] = set()
+    function_metadata: list[FunctionMetadata] = []
+    found_issues = extract_function_info(
+        parse_source(path=path),
+        set(types),
+        decorated_names,
+        function_metadata,
+    )
+    return found_issues, decorated_names, function_metadata
+
+
+def _extract_globals_info_single(path: Path, types: set[str]) -> tuple[bool, dict[str, GlobalInfo]]:
+    new_issues, globals_info = extract_globals_info(parse_source(path=path), set(types))
+    return new_issues, globals_info
+
+
 def extract_all_function_info(paths: list[Path], types: set[str]) -> tuple[bool, set[str], list[FunctionMetadata]]:
     found_issues = False
     decorated_names: set[str] = set()
     function_metadata: list[FunctionMetadata] = []
-    for path in paths:
-        found_issues |= extract_function_info(parse_source(path=path), set(types), decorated_names, function_metadata)
+
+    if PARALLELIZE_EXTRACTION:
+        with ProcessPoolExecutor() as executor:
+            futures = {executor.submit(_extract_function_info_single, path, types): path for path in paths}
+            for future in as_completed(futures):
+                issues, names, meta = future.result()
+                found_issues |= issues
+                decorated_names |= names
+                function_metadata.extend(meta)
+    else:
+        for path in paths:
+            found_issues |= extract_function_info(parse_source(path=path), set(types), decorated_names, function_metadata)
+
     return found_issues, decorated_names, function_metadata
 
 
 def extract_all_globals_info(paths: list[Path], types: set[str]) -> tuple[bool, dict[str, GlobalInfo]]:
     found_issues = False
     global_values: dict[str, GlobalInfo] = {}
-    for path in paths:
-        new_issues, g = extract_globals_info(parse_source(path=path), set(types))
-        global_values.update(g)
-        found_issues |= new_issues
+
+    if PARALLELIZE_EXTRACTION:
+        with ProcessPoolExecutor() as executor:
+            futures = {executor.submit(_extract_globals_info_single, path, types): path for path in paths}
+            for future in as_completed(futures):
+                new_issues, g = future.result()
+                global_values.update(g)
+                found_issues |= new_issues
+    else:
+        for path in paths:
+            new_issues, g = extract_globals_info(parse_source(path=path), set(types))
+            global_values.update(g)
+            found_issues |= new_issues
+
     return found_issues, global_values
 
 
@@ -858,8 +900,8 @@ def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> b
     header_includer = Path("src/c/_HeaderIncluder.c")
 
     found_issues_type_info, types = extract_type_info(parse_source(source=include_all_headers_src))
-    found_issues_function_info, decorated_names, function_metadata = extract_all_function_info(paths, types.keys())
-    found_issues_globals_info, global_values = extract_all_globals_info(paths, types.keys())
+    found_issues_function_info, decorated_names, function_metadata = extract_all_function_info(paths, set(types.keys()))
+    found_issues_globals_info, global_values = extract_all_globals_info(paths, set(types.keys()))
 
     found_issues = any((found_issues_type_info, found_issues_function_info, found_issues_globals_info))
 
