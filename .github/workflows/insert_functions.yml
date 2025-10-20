@@ -6,7 +6,7 @@ on:
 
 jobs:
   insert-functions:
-    if: contains(github.event.issue.title, '[INSERT FUNCTIONS]')
+    if: contains(github.event.issue.labels.*.name, 'function-insert')
     runs-on: windows-latest
 
     steps:

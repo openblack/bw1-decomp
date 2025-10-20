@@ -1,0 +1,15 @@
+name: Insert Functions
+description: "Utility to have github automatically generate a PR that labels the provided functions."
+title: '[INSERT FUNCTIONS] '
+labels: ['function-insert']
+body:
+  - type: textarea
+    id: csv_block
+    attributes:
+      label: "CSV of functions"
+      description: "Fill the csv block below. Example entry: `0x0083b300,InitialiseSystem__8RPHolderFPFiiP8RPHolder_vPFP8RPHolder_v,1061e7c4,cdecl,void`"
+      value: |
+        ```csv
+        win addr,mac mangled name,mac addr,call type,return type
+        ...
+        ```
