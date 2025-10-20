@@ -62,6 +62,11 @@ extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__4Ball
 // win1.41 008c4f74 mac 107371e4 Ball::`vftable'
 extern const struct MobileVftable __vt__4Ball asm("??_7Ball@@6B@");
 
+// Static methods
+
+// win1.41 00435b90 mac 100b09f0 Ball::Create(MapCoords const &, GBallInfo const *, unsigned short, float, float)
+struct Ball* __stdcall Create__4BallFRC9MapCoordsPC9GBallInfoUsff(struct Ball* this, const struct MapCoords* param_1, const struct GBallInfo* param_2, unsigned short param_3, float param_4, float param_5) asm("?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z");
+
 // Constructors
 
 // win1.41 004359b0 mac 100b0df0 Ball::Ball(MapCoords const &, GBallInfo const *)

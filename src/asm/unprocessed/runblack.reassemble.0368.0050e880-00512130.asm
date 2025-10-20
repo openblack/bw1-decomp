@@ -18,7 +18,7 @@
 .extern _jmp_addr_0x00518050
 .extern ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z
 .extern @AllocateMultiChild__13MultiMapFixedFv@4
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x00563ea0
 .extern @ReadInfo__10GameOSFileFPPC9GBaseInfo@12
@@ -27,8 +27,8 @@
 .extern ?ToBeDeleted@GameThing@@UAEXH@Z
 .extern ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z
 .extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
-.extern _jmp_addr_0x0056fef0
-.extern _jmp_addr_0x00597f20
+.extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
+.extern ?CalculateDancePosition@GroupBehaviour@@QAEXABUMapCoords@@PAU2@PAVDanceGroup@@K@Z
 .extern _jmp_addr_0x005e6540
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern _jmp_addr_0x00605250
@@ -61,7 +61,7 @@
 .extern _jmp_addr_0x00715130
 .extern _jmp_addr_0x00719610
 .extern _jmp_addr_0x00730960
-.extern _jmp_addr_0x00750bb0
+.extern ?DebugText@Villager@@QAEXH@Z
 .extern _jmp_addr_0x0077b970
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
@@ -1210,7 +1210,7 @@ _jmp_addr_0x0050f262:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          {disp8} mov        eax, dword ptr [edi + 0x04]                   // 0x0050f274    8b4704
                          push               eax                                           // 0x0050f277    50
                          mov.s              ecx, esi                                      // 0x0050f278    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x0050f27a    e8912b0500
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0050f27a    e8912b0500
                          mov                edi, dword ptr [edi]                          // 0x0050f27f    8b3f
                          test               edi, edi                                      // 0x0050f281    85ff
                          {disp8} jne        _jmp_addr_0x0050f262                          // 0x0050f283    75dd
@@ -1697,7 +1697,7 @@ _jmp_addr_0x0050f718:    push               ebp                                 
                          push               eax                                           // 0x0050f71e    50
                          add                esi, 0x14                                     // 0x0050f71f    83c614
                          push               esi                                           // 0x0050f722    56
-                         call               _jmp_addr_0x00597f20                          // 0x0050f723    e8f8870800
+                         call               ?CalculateDancePosition@GroupBehaviour@@QAEXABUMapCoords@@PAU2@PAVDanceGroup@@K@Z                          // 0x0050f723    e8f8870800
                          {disp8} lea        esi, dword ptr [edi + 0x14]                   // 0x0050f728    8d7714
                          add                edi, 0x08                                     // 0x0050f72b    83c708
                          mov.s              ecx, esi                                      // 0x0050f72e    8bce
@@ -4529,7 +4529,7 @@ _jmp_addr_0x005113a5:    {disp32} mov       ecx, dword ptr [esi + 0x00000094]   
                          sub                esp, 0x00000144                               // 0x00511430    81ec44010000
                          push               esi                                           // 0x00511436    56
                          mov.s              esi, ecx                                      // 0x00511437    8bf1
-                         call               _jmp_addr_0x0056fef0                          // 0x00511439    e8b2ea0500
+                         call               ?CheckAndSetSaved@GameThing@@QAE_NXZ          // 0x00511439    e8b2ea0500
                          test               eax, eax                                      // 0x0051143e    85c0
                          {disp32} je        _jmp_addr_0x00511578                          // 0x00511440    0f8432010000
                          {disp32} mov       eax, dword ptr [esp + 0x00000150]             // 0x00511446    8b842450010000
@@ -4627,7 +4627,7 @@ _jmp_addr_0x005114aa:    push               ebx                                 
                          call               _jmp_addr_0x00719610                          // 0x0051155d    e8ae802000
                          add                esp, 0x44                                     // 0x00511562    83c444
                          mov.s              ecx, esi                                      // 0x00511565    8bce
-                         call               _jmp_addr_0x0056fef0                          // 0x00511567    e884e90500
+                         call               ?CheckAndSetSaved@GameThing@@QAE_NXZ          // 0x00511567    e884e90500
                          pop                edi                                           // 0x0051156c    5f
                          pop                ebx                                           // 0x0051156d    5b
                          pop                esi                                           // 0x0051156e    5e
@@ -5684,7 +5684,7 @@ _jmp_addr_0x00511fb7:    {disp8} mov        eax, dword ptr [ecx + 0x28]         
                          pop                esi                                           // 0x0051209f    5e
                          ret                0x0004                                        // 0x005120a0    c20400
                          push               0x0                                           // 0x005120a3    6a00
-                         call               _jmp_addr_0x00750bb0                          // 0x005120a5    e806eb2300
+                         call               ?DebugText@Villager@@QAEXH@Z                  // 0x005120a5    e806eb2300
                          mov                esi, 0x00cc5f2c                               // 0x005120aa    be2c5fcc00
                          mov.s              eax, esi                                      // 0x005120af    8bc6
                          pop                esi                                           // 0x005120b1    5e

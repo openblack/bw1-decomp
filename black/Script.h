@@ -10,6 +10,7 @@
 
 #include "Base.h" /* For struct Base */
 #include "BaseInfo.h" /* For struct GBaseInfo */
+#include "ScriptDLL.h" /* For enum VMScriptType, enum VMType */
 
 // Forward Declares
 
@@ -72,6 +73,10 @@ void __fastcall ProcessFade__7GScriptFb(struct GScript* this, const void* edx, b
 void __fastcall SetupScreenFadeTo__7GScriptFUcUcUcSc(struct GScript* this, const void* edx, uint8_t r, uint8_t g, uint8_t b, int8_t a);
 // win1.41 006ebbc0 mac 104d7300 GScript::CleanGameForScriptReboot(void)
 void __fastcall CleanGameForScriptReboot__7GScriptFv(struct GScript* this);
+// win1.41 006ec790 mac 104d6160 GScript::PUSH(void *, VMType)
+void __fastcall PUSH__7GScriptFPv6VMType(struct GScript* this, const void* edx, void* param_1, enum VMType param_2) asm("?PUSH@GScript@@QAEXPAXW4VMType@@@Z");
+// win1.41 006f0cc0 mac 104def10 GScript::StopScriptsOfType(VMScriptType)
+void __fastcall StopScriptsOfType__7GScriptF12VMScriptType(struct GScript* this, const void* edx, enum VMScriptType param_1) asm("?StopScriptsOfType@GScript@@QAEXW4VMScriptType@@@Z");
 // win1.41 006f62b0 mac 104e7c70 GScript::ScriptErrorMessage(char*)
 void __fastcall ScriptErrorMessage__7GScriptFPc(struct GScript* this, const void* edx, char* msg) asm("?ScriptErrorMessage@GScript@@QAEXPAD@Z");
 // win1.41 006f62c0 mac 100054c0 GScript::ScriptWarningMessage(char*)

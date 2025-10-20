@@ -222,6 +222,8 @@ void __fastcall SetupDataTables__5GGameFv(struct GGame* this) asm("?SetupDataTab
 struct GCamera* __fastcall GetCamera__5GGameFv(struct GGame* this) asm("?GetCamera@GGame@@QAEPAVGCamera@@XZ");
 // win1.41 0054c190 mac 101c8360 GGame::StartGame(void)
 void __fastcall StartGame__5GGameFv(struct GGame* this) asm("?StartGame@GGame@@QAEIXZ");
+// win1.41 0054c340 mac 10079850 GGame::ProcessFrameInputs(void)
+void __fastcall ProcessFrameInputs__5GGameFv(struct GGame* this) asm("?ProcessFrameInputs@GGame@@QAEXXZ");
 // win1.41 0054c3d0 mac 1001e260 GGame::ProcessGameInputs(void)
 void __fastcall ProcessGameInputs__5GGameFv(struct GGame* this) asm("?ProcessGameInputs@GGame@@QAEIXZ");
 // win1.41 0054c420 mac 10083f50 GGame::ProcessBufferedKeys(void)
@@ -312,6 +314,10 @@ void __fastcall SetLandBalance__5GGameFUlfP7GPlayer(struct GGame* this, const vo
 void __fastcall ResetAndStartPlaygroundGame__5GGameFPc(struct GGame* this, const void* edx, char* path) asm("?ResetAndStartPlaygroundGame@GGame@@QAEXPAD@Z");
 // win1.41 0063c3d0 mac 1001e1e0 GGame::ProcessOneSuperpacket(void)
 void __fastcall ProcessOneSuperpacket__5GGameFv(struct GGame* this) asm("?ProcessOneSuperpacket@GGame@@QAEXXZ");
+// win1.41 0063f830 mac 1009f340 GGame::ProcessBindableKeys(LH_KEY, LH_KEY, unsigned long)
+uint32_t __fastcall ProcessBindableKeys__5GGameF6LH_KEY6LH_KEYUl(struct GGame* this, const void* edx, enum LH_KEY param_1, enum LH_KEY param_2, unsigned long param_3) asm("?ProcessBindableKeys@GGame@@QAEIW4LH_KEY@@0K@Z");
+// win1.41 0063f940 mac 1009f4b0 GGame::DoAction(unsigned long)
+uint32_t __fastcall DoAction__5GGameFUl(struct GGame* this, const void* edx, unsigned long param_1) asm("?DoAction@GGame@@QAEIK@Z");
 
 // Override methods
 

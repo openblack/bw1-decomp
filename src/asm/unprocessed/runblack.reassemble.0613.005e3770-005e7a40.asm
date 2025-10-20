@@ -25,7 +25,7 @@
 .extern _jmp_addr_0x0046c2e0
 .extern @GetCreature3D__8CreatureFv@4
 .extern _jmp_addr_0x004cefc0
-.extern _jmp_addr_0x004d7bd0
+.extern ?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z
 .extern _jmp_addr_0x004dc2f0
 .extern _jmp_addr_0x004dc5b0
 .extern _jmp_addr_0x004dce20
@@ -37,7 +37,7 @@
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x005575a0
 .extern _jmp_addr_0x005575e0
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern @__ct__9GameThingFv@4
 .extern ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z
@@ -4540,7 +4540,7 @@ _jmp_addr_0x005e6dde:    push               0x0                                 
                          {disp8} mov        dword ptr [ebp + 0x0c], edi                   // 0x005e6e72    897d0c
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]             // 0x005e6e75    8b8e64010000
                          push               esi                                           // 0x005e6e7b    56
-                         call               _jmp_addr_0x004d7bd0                          // 0x005e6e7c    e84f0defff
+                         call               ?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z                          // 0x005e6e7c    e84f0defff
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]             // 0x005e6e81    8b8e64010000
                          {disp32} mov       dword ptr [ecx + 0x000021e0], eax             // 0x005e6e87    8981e0210000
 _jmp_addr_0x005e6e8d:    pop                edi                                           // 0x005e6e8d    5f
@@ -4946,7 +4946,7 @@ _jmp_addr_0x005e734e:    {disp32} mov       eax, dword ptr [esi + 0x00000214]   
 _jmp_addr_0x005e7363:    {disp8} mov        edx, dword ptr [edi + 0x24]                   // 0x005e7363    8b5724
                          push               edx                                           // 0x005e7366    52
                          mov.s              ecx, esi                                      // 0x005e7367    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x005e7369    e8a2aaf7ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x005e7369    e8a2aaf7ff
                          cmp                dword ptr [data_bytes + 0x226990], ebp        // 0x005e736e    392d90c9be00
                          {disp8} je         _jmp_addr_0x005e73da                          // 0x005e7374    7464
                          push               ebp                                           // 0x005e7376    55
@@ -4984,7 +4984,7 @@ _jmp_addr_0x005e73c5:    {disp32} mov       eax, dword ptr [esi + 0x00000214]   
 _jmp_addr_0x005e73da:    {disp8} mov        edx, dword ptr [edi + 0x38]                   // 0x005e73da    8b5738
                          push               edx                                           // 0x005e73dd    52
                          mov.s              ecx, esi                                      // 0x005e73de    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x005e73e0    e82baaf7ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x005e73e0    e82baaf7ff
                          cmp                dword ptr [data_bytes + 0x226990], ebp        // 0x005e73e5    392d90c9be00
                          {disp8} je         _jmp_addr_0x005e741b                          // 0x005e73eb    742e
                          push               ebp                                           // 0x005e73ed    55

@@ -35,7 +35,7 @@
 .extern _jmp_addr_0x005d03d0
 .extern _jmp_addr_0x005d0410
 .extern _jmp_addr_0x005d8a10
-.extern _jmp_addr_0x0063f830
+.extern ?ProcessBindableKeys@GGame@@QAEIW4LH_KEY@@0K@Z
 .extern _jmp_addr_0x006405f0
 .extern _jmp_addr_0x0066bcd0
 .extern _jmp_addr_0x0067d5d0
@@ -360,7 +360,7 @@ _jmp_addr_0x0063f306:    {disp8} mov      ecx, dword ptr [esp + 0x10]           
                          push             0x0                                           // 0x0063f30a    6a00
                          push             eax                                           // 0x0063f30c    50
                          push             esi                                           // 0x0063f30d    56
-                         call             _jmp_addr_0x0063f830                          // 0x0063f30e    e81d050000
+                         call             ?ProcessBindableKeys@GGame@@QAEIW4LH_KEY@@0K@Z// 0x0063f30e    e81d050000
                          cmp.s            eax, ebp                                      // 0x0063f313    3bc5
                          {disp32} je      _jmp_addr_0x0063f695                          // 0x0063f315    0f847a030000
                          {disp8} lea      eax, dword ptr [esi + -0x01]                  // 0x0063f31b    8d46ff

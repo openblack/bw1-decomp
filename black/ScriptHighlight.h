@@ -51,6 +51,13 @@ extern const struct ObjectVftable __vt__15ScriptHighlight asm("??_7ScriptHighlig
 // win1.41 0070a460 mac 10055f10 ScriptHighlight::ProcessHighlights(void)
 void __cdecl ProcessHighlights__15ScriptHighlightFv(void);
 
+// Non-virtual methods
+
+// win1.41 0070a630 mac 104fb550 ScriptHighlight::SetActivated(int)
+void __fastcall SetActivated__15ScriptHighlightFi(struct ScriptHighlight* this, const void* edx, int param_1) asm("?SetActivated@ScriptHighlight@@QAEXH@Z");
+// win1.41 0070ac20 mac 1004f0b0 ScriptHighlight::IsDidYouKnow(void)
+bool __fastcall IsDidYouKnow__15ScriptHighlightFv(struct ScriptHighlight* this) asm("?IsDidYouKnow@ScriptHighlight@@QAE_NXZ");
+
 // Override methods
 
 // win1.41 00709870 mac 104fc120 ScriptHighlight::_dt(void)

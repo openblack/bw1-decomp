@@ -38,7 +38,7 @@
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00555880
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x00562240
 .extern _jmp_addr_0x005622b0
@@ -48,7 +48,7 @@
 .extern ?ToBeDeleted@GameThing@@UAEXH@Z
 .extern ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z
 .extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
-.extern _jmp_addr_0x0056fef0
+.extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern _jmp_addr_0x005990a0
 .extern _jmp_addr_0x005990c0
 .extern _jmp_addr_0x005990f0
@@ -105,7 +105,7 @@
 .extern @GetPlayerNumber__7GPlayerCFv@4
 .extern @GetPlayer3DColor__7GPlayerFv@12
 .extern _jmp_addr_0x0064d5d0
-.extern _jmp_addr_0x0064d750
+.extern ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
 .extern @GetPlayerColour__7GPlayerCFv@4
 .extern _jmp_addr_0x0066cf10
 .extern _jmp_addr_0x0066d660
@@ -140,7 +140,7 @@
 .extern _GetPosFromAngle__6GUtilsFff
 .extern _SigmoidThreshold__6GUtilsFff
 .extern _GetDistanceModifier__6GUtilsFff@8
-.extern _jmp_addr_0x00753e20
+.extern ?GetResourceDropoffPos@Villager@@QAEPAVGameThingWithPos@@W4RESOURCE_TYPE@@@Z
 .extern _jmp_addr_0x00779690
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z

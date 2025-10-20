@@ -8,6 +8,11 @@
 
 #include "Base.h" /* For struct Base */
 
+// Forward Declares
+
+struct Creature;
+struct GameThingWithPos;
+
 struct CreatureBeliefList
 {
   struct Base super;  /* 0x0 */
@@ -31,6 +36,13 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__18CreatureBeliefList asm("??_R4CreatureBeliefList@@6B@");
 // win1.41 008cf90c mac 1078747c CreatureBeliefList::`vftable'
 extern const struct BaseVftable __vt__18CreatureBeliefList asm("??_7CreatureBeliefList@@6B@");
+
+// Non-virtual methods
+
+// win1.41 004d7bb0 mac 10253e30 CreatureBeliefList::GetBeliefAboutObject(GameThingWithPos *)
+void* __fastcall GetBeliefAboutObject__18CreatureBeliefListFP16GameThingWithPos(struct CreatureBeliefList* this, const void* edx, struct GameThingWithPos* param_1) asm("?GetBeliefAboutObject@CreatureBeliefList@@QAEPAXPAVGameThingWithPos@@@Z");
+// win1.41 004d7ce0 mac 10253b10 CreatureBeliefList::AddBeliefAboutObject(Creature *, GameThingWithPos *)
+void* __fastcall AddBeliefAboutObject__18CreatureBeliefListFP8CreatureP16GameThingWithPos(struct CreatureBeliefList* this, const void* edx, struct Creature* param_1, struct GameThingWithPos* param_2) asm("?AddBeliefAboutObject@CreatureBeliefList@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z");
 
 // Override methods
 

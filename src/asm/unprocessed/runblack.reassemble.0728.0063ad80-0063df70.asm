@@ -20,7 +20,7 @@
 .extern _jmp_addr_0x0046c0b0
 .extern @ToggleLeftRight__5CHandFv@4
 .extern _CreateCreature__8CreatureFRC9MapCoordsPC12CreatureInfoP7GPlayer
-.extern _jmp_addr_0x00475730
+.extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
 .extern @GetCreature3D__8CreatureFv@4
 .extern _jmp_addr_0x00479eb0
 .extern _jmp_addr_0x0047b010
@@ -3796,7 +3796,7 @@ _jmp_addr_0x0063d49c:    push               esi                                 
                          push               0x1                                            // 0x0063d4a5    6a01
                          push               0x00bfdfb4                                     // 0x0063d4a7    68b4dfbf00
                          mov.s              ecx, ebp                                       // 0x0063d4ac    8bcd
-                         call               _jmp_addr_0x00475730                           // 0x0063d4ae    e87d82e3ff
+                         call               ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z                           // 0x0063d4ae    e87d82e3ff
                          push               esi                                            // 0x0063d4b3    56
                          {disp8} jmp        _jmp_addr_0x0063d502                           // 0x0063d4b4    eb4c
                          mov.s              ecx, ebx                                       // 0x0063d4b6    8bcb
@@ -4268,7 +4268,7 @@ _jmp_addr_0x0063dadc:    push               0x1                                 
                          push               0x1                                            // 0x0063dade    6a01
                          push               0x00bfdf98                                     // 0x0063dae0    6898dfbf00
                          mov.s              ecx, esi                                       // 0x0063dae5    8bce
-                         call               _jmp_addr_0x00475730                           // 0x0063dae7    e8447ce3ff
+                         call               ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z                           // 0x0063dae7    e8447ce3ff
                          mov.s              ecx, esi                                       // 0x0063daec    8bce
                          call               @GetCreature3D__8CreatureFv@4                  // 0x0063daee    e85d9de3ff
                          mov.s              esi, eax                                       // 0x0063daf3    8bf0

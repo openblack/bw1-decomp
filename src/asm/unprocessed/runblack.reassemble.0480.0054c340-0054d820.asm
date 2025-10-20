@@ -111,7 +111,7 @@
 .extern _jmp_addr_0x005e7a40
 .extern _jmp_addr_0x005e7ce0
 .extern _jmp_addr_0x005e7d30
-.extern _jmp_addr_0x005e98b0
+.extern ?InitForGame@LHInetWeather@@QAEXXZ
 .extern _ProcessLiving__6LivingFv
 .extern _jmp_addr_0x005f3cc0
 .extern _jmp_addr_0x005f3ce0
@@ -334,7 +334,8 @@
 .globl _globl_ct_0x0054ceb0
 
 // Snippet: asm, [0x0054c340, 0x0054ff60)
-_jmp_addr_0x0054c340:    push               esi                                           // 0x0054c340    56
+?ProcessFrameInputs@GGame@@QAEXXZ:
+                         push               esi                                           // 0x0054c340    56
                          mov.s              esi, ecx                                      // 0x0054c341    8bf1
                          call               _jmp_addr_0x0050ccc0                          // 0x0054c343    e87809fcff
                          call               _jmp_addr_0x004df340                          // 0x0054c348    e8f32ff9ff
@@ -1612,7 +1613,7 @@ _jmp_addr_0x0054d3d8:    cmp                byte ptr [data_bytes + 0x226280], bl
                          mov.s              ecx, esi                                      // 0x0054d3e0    8bce
                          call               _jmp_addr_0x0054d7f0                          // 0x0054d3e2    e809040000
                          mov.s              ecx, esi                                      // 0x0054d3e7    8bce
-                         call               _jmp_addr_0x0054c340                          // 0x0054d3e9    e852efffff
+                         call               ?ProcessFrameInputs@GGame@@QAEXXZ             // 0x0054d3e9    e852efffff
                          call               _jmp_addr_0x00821750                          // 0x0054d3ee    e85d432d00
                          mov.s              ecx, esi                                      // 0x0054d3f3    8bce
                          call               _jmp_addr_0x0054d800                          // 0x0054d3f5    e806040000

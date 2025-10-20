@@ -32,7 +32,7 @@
 .extern _jmp_addr_0x00481390
 .extern _jmp_addr_0x004813d0
 .extern _jmp_addr_0x00482c90
-.extern _jmp_addr_0x004842d0
+.extern ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ
 .extern _jmp_addr_0x00484c20
 .extern _jmp_addr_0x00484c60
 .extern _jmp_addr_0x0048d7b0
@@ -19833,7 +19833,7 @@ _jmp_addr_0x005b1d90:    mov                ecx, 0x0000000a                     
                          call               _jmp_addr_0x00551040                          // 0x005b1dd0    e86bf2f9ff
 _jmp_addr_0x005b1dd5:    {disp8} mov        eax, dword ptr [ebx + 0x04]                   // 0x005b1dd5    8b4304
                          {disp32} mov       ecx, dword ptr [eax + 0x000049b8]             // 0x005b1dd8    8b88b8490000
-                         call               _jmp_addr_0x004842d0                          // 0x005b1dde    e8ed24edff
+                         call               ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ // 0x005b1dde    e8ed24edff
                          test               eax, eax                                      // 0x005b1de3    85c0
                          {disp8} je         _jmp_addr_0x005b1e06                          // 0x005b1de5    741f
                          {disp8} mov        ecx, dword ptr [ebx + 0x04]                   // 0x005b1de7    8b4b04
@@ -20100,7 +20100,7 @@ _jmp_addr_0x005b2154:    {disp32} fld       dword ptr [_rdata_float1p0]         
                          call               _jmp_addr_0x00480c60                          // 0x005b21af    e8aceaecff
                          {disp8} mov        eax, dword ptr [ebx + 0x04]                   // 0x005b21b4    8b4304
                          {disp32} mov       ecx, dword ptr [eax + 0x000049b8]             // 0x005b21b7    8b88b8490000
-                         call               _jmp_addr_0x004842d0                          // 0x005b21bd    e80e21edff
+                         call               ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ // 0x005b21bd    e80e21edff
                          test               eax, eax                                      // 0x005b21c2    85c0
                          {disp8} je         _jmp_addr_0x005b21e5                          // 0x005b21c4    741f
                          {disp8} mov        ecx, dword ptr [ebx + 0x04]                   // 0x005b21c6    8b4b04

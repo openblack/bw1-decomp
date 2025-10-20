@@ -37,11 +37,11 @@
 .extern _jmp_addr_0x00490860
 .extern _jmp_addr_0x00490950
 .extern _jmp_addr_0x00490960
-.extern _jmp_addr_0x004c44b0
-.extern _jmp_addr_0x004d7bd0
+.extern ?ForceActivityAndForceAction@Creature@@QAEXAAVCreaturePlan@@HH@Z
+.extern ?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z
 .extern _jmp_addr_0x004ebe10
 .extern _jmp_addr_0x004edbf0
-.extern _jmp_addr_0x004f1230
+.extern ??0CreaturePlan@@QAE@W4CREATURE_DESIRES@@W4CREATURE_ACTION@@PAVCreatureBelief@@22M@Z
 .extern _jmp_addr_0x004f12d0
 .extern _jmp_addr_0x004f81f0
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
@@ -92,7 +92,7 @@
 .globl _jmp_addr_0x0048a580
 .globl _jmp_addr_0x0048a5e0
 .globl _jmp_addr_0x0048b4b0
-.globl _jmp_addr_0x0048b780
+.globl ?GetObjectActionStatus@LH3DCreature@@QAEIXZ
 .globl _jmp_addr_0x0048b790
 .globl _jmp_addr_0x0048b970
 .globl _jmp_addr_0x0048bab0
@@ -1162,7 +1162,7 @@ _jmp_addr_0x0048b23e:    {disp32} mov       ecx, dword ptr [esi + 0x0000528c]   
                          mov.s              eax, ebx                                             // 0x0048b27d    8bc3
                          push               eax                                                  // 0x0048b27f    50
                          push               edi                                                  // 0x0048b280    57
-                         call               _jmp_addr_0x004d7bd0                                 // 0x0048b281    e84ac90400
+                         call               ?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z                                 // 0x0048b281    e84ac90400
                          {disp32} fld       dword ptr [esi + 0x0000009c]                         // 0x0048b286    d9869c000000
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x25fcc]                    // 0x0048b28c    d81dccef8c00
                          mov.s              ecx, eax                                             // 0x0048b292    8bc8
@@ -1178,13 +1178,13 @@ _jmp_addr_0x0048b2a5:    push               0x3f800000                          
                          push               edx                                                  // 0x0048b2ae    52
                          push               0x18                                                 // 0x0048b2af    6a18
                          {disp32} lea       ecx, dword ptr [esp + 0x000000f0]                    // 0x0048b2b1    8d8c24f0000000
-                         call               _jmp_addr_0x004f1230                                 // 0x0048b2b8    e8735f0600
+                         call               ??0CreaturePlan@@QAE@W4CREATURE_DESIRES@@W4CREATURE_ACTION@@PAVCreatureBelief@@22M@Z                                 // 0x0048b2b8    e8735f0600
                          push               0x1                                                  // 0x0048b2bd    6a01
                          push               0x1                                                  // 0x0048b2bf    6a01
                          {disp32} lea       ecx, dword ptr [esp + 0x000000e0]                    // 0x0048b2c1    8d8c24e0000000
                          push               ecx                                                  // 0x0048b2c8    51
                          mov.s              ecx, edi                                             // 0x0048b2c9    8bcf
-                         call               _jmp_addr_0x004c44b0                                 // 0x0048b2cb    e8e0910300
+                         call               ?ForceActivityAndForceAction@Creature@@QAEXAAVCreaturePlan@@HH@Z                                 // 0x0048b2cb    e8e0910300
                          {disp32} inc       dword ptr [edi + 0x0000017c]                         // 0x0048b2d0    ff877c010000
                          mov                edx, dword ptr [edi]                                 // 0x0048b2d6    8b17
                          mov.s              ecx, edi                                             // 0x0048b2d8    8bcf
@@ -1580,7 +1580,8 @@ _jmp_addr_0x0048b770:    pop                esi                                 
                          nop                                                                     // 0x0048b77d    90
                          nop                                                                     // 0x0048b77e    90
                          nop                                                                     // 0x0048b77f    90
-_jmp_addr_0x0048b780:    {disp32} mov       eax, dword ptr [ecx + 0x00004998]                    // 0x0048b780    8b8198490000
+?GetObjectActionStatus@LH3DCreature@@QAEIXZ:
+                         {disp32} mov       eax, dword ptr [ecx + 0x00004998]                    // 0x0048b780    8b8198490000
                          ret                                                                     // 0x0048b786    c3
                          nop                                                                     // 0x0048b787    90
                          nop                                                                     // 0x0048b788    90

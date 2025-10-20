@@ -87,6 +87,10 @@ void __fastcall AddTownSpells__11WorshipSiteFP4Town(struct WorshipSite* this, co
 void __fastcall AddSpellIconIfNecessary__11WorshipSiteF15SPELL_SEED_TYPE(struct WorshipSite* this, const void* edx, enum SPELL_SEED_TYPE seed_type);
 // win1.41 0077cf30 mac 105aeaa0 WorshipSite::GetTotemPos(void)
 struct MapCoords* __fastcall GetTotemPos__11WorshipSiteFv(struct WorshipSite* this, const void* edx, struct MapCoords* coords);
+// win1.41 0077d0a0 mac 105ae5c0 WorshipSite::RemoveVillagerFromWorshipCount(Villager *)
+void __fastcall RemoveVillagerFromWorshipCount__11WorshipSiteFP8Villager(struct WorshipSite* this, const void* edx, struct Villager* param_1) asm("?RemoveVillagerFromWorshipCount@WorshipSite@@QAEXPAVVillager@@@Z");
+// win1.41 0077e1d0 mac 105aba90 WorshipSite::RemoveVillagerRequestingToGoHome(Villager *)
+void __fastcall RemoveVillagerRequestingToGoHome__11WorshipSiteFP8Villager(struct WorshipSite* this, const void* edx, struct Villager* param_1) asm("?RemoveVillagerRequestingToGoHome@WorshipSite@@QAEXPAVVillager@@@Z");
 // win1.41 0077e260 mac 105aba40 WorshipSite::GetNumVillagersRequestingToGoHome(void)
 int __fastcall GetNumVillagersRequestingToGoHome__11WorshipSiteFv(struct WorshipSite* this);
 

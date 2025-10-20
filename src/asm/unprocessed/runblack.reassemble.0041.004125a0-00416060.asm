@@ -20,7 +20,7 @@
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern _jmp_addr_0x00555880
 .extern @GetPlayerNumber__7GPlayerCFv@4
-.extern _jmp_addr_0x0064d750
+.extern ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
 .extern _jmp_addr_0x0071ceb0
 .extern _jmp_addr_0x0072eec0
 .extern _jmp_addr_0x00741220
@@ -2443,7 +2443,7 @@ _jmp_addr_0x004141a0:    push               ebx                                 
                          {disp8} je         _jmp_addr_0x004141de                          // 0x004141b8    7424
                          push               edi                                           // 0x004141ba    57
                          mov.s              ecx, esi                                      // 0x004141bb    8bce
-                         call               _jmp_addr_0x0064d750                          // 0x004141bd    e88e952300
+                         call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z                          // 0x004141bd    e88e952300
                          test               eax, eax                                      // 0x004141c2    85c0
                          {disp8} je         _jmp_addr_0x004141de                          // 0x004141c4    7418
                          mov                eax, dword ptr [esi]                          // 0x004141c6    8b06

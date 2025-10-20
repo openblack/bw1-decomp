@@ -42,6 +42,11 @@ extern const struct GBaseInfoVftable __vt__10GTribeInfo asm("??_7GTribeInfo@@6B@
 // win1.41 0074c940 mac 10159bc0 GTribeInfo::GetTribeFromText(char const *)
 struct GTribeInfo* __cdecl GetTribeFromText__10GTribeInfoFPCc(const char* str);
 
+// Non-virtual methods
+
+// win1.41 00751aa0 mac 10159e50 GTribeInfo::GetTribeTextArray(void)
+char* __fastcall GetTribeTextArray__10GTribeInfoFv(struct GTribeInfo* this) asm("?GetTribeTextArray@GTribeInfo@@QAEPADXZ");
+
 // Override methods
 
 // win1.41 0074c920 mac 10159d30 GTribeInfo::_dt(void)

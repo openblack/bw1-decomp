@@ -40,7 +40,7 @@
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00555880
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern ?IsInteractable@GameThingWithPos@@UAE_NXZ
 .extern _jmp_addr_0x005d8a10
@@ -50,7 +50,7 @@
 .extern _jmp_addr_0x00637930
 .extern _jmp_addr_0x00647460
 .extern _jmp_addr_0x0064ab20
-.extern _jmp_addr_0x0064d750
+.extern ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
 .extern _jmp_addr_0x0064da80
 .extern _GameFloatRand__5GRandFf
 .extern _jmp_addr_0x0071d070
@@ -58,7 +58,7 @@
 .extern _GetPosFromAngle__6GUtilsFff
 .extern _FindNearestDrinkingWater__6GUtilsFR9MapCoordsR9MapCoordsf
 .extern @GetAbode__8VillagerFv@4
-.extern _jmp_addr_0x00752b80
+.extern ?SetStateWhenTappedOnAbode@Villager@@QAE_NXZ
 .extern ?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z
 .extern _jmp_addr_0x0076d4c0
 .extern @__ct__8FragMeshFR10GameOSFileP8LH3DMesh@16

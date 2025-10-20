@@ -13,7 +13,7 @@
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005dc8d0
 .extern @__ct__9MapCoordsFllf@20
-.extern _jmp_addr_0x00603490
+.extern ?GetFirstObjectMobile@MapCoords@@QBEPAVObject@@XZ
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
 .extern @GetMetresDistanceSq__9MapCoordsCFRC9MapCoords@12
 .extern _DoWallHuggerLookahead__Fv
@@ -565,7 +565,7 @@ _jmp_addr_0x0060dbef:    {disp8} mov        eax, dword ptr [esi + 0x04]         
                          {disp8} mov        dword ptr [esp + 0x14], eax                 // 0x0060dc55    89442414
                          {disp8} mov        dword ptr [esp + 0x64], eax                 // 0x0060dc59    89442464
 _jmp_addr_0x0060dc5d:    {disp32} lea       ecx, dword ptr [esp + 0x000000b0]           // 0x0060dc5d    8d8c24b0000000
-                         call               _jmp_addr_0x00603490                        // 0x0060dc64    e82758ffff
+                         call               ?GetFirstObjectMobile@MapCoords@@QBEPAVObject@@XZ                        // 0x0060dc64    e82758ffff
                          mov.s              esi, eax                                    // 0x0060dc69    8bf0
                          test               esi, esi                                    // 0x0060dc6b    85f6
                          {disp8} je         _jmp_addr_0x0060dca1                        // 0x0060dc6d    7432

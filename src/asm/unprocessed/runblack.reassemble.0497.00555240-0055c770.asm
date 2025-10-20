@@ -397,7 +397,7 @@
 .globl @GetYear__9GGameInfoFv@4
 .globl _jmp_addr_0x00557960
 .globl _jmp_addr_0x005579c0
-.globl _jmp_addr_0x00557a80
+.globl ?GetSeason@GGameInfo@@QAEIXZ
 .globl _jmp_addr_0x00557ae0
 .globl @Process__9GGameInfoFv@4
 .globl _jmp_addr_0x00557ba0
@@ -4296,7 +4296,8 @@ _jmp_addr_0x00557a12:    pop                ecx                                 
                          nop                                                              // 0x00557a7d    90
                          nop                                                              // 0x00557a7e    90
                          nop                                                              // 0x00557a7f    90
-_jmp_addr_0x00557a80:    sub                esp, 0x08                                     // 0x00557a80    83ec08
+?GetSeason@GGameInfo@@QAEIXZ:
+                         sub                esp, 0x08                                     // 0x00557a80    83ec08
                          call               @GetDaysFromStart__9GGameInfoFv@4             // 0x00557a83    e8b8feffff
                          {disp32} fld       dword ptr [rdata_bytes + 0x368dc]             // 0x00557a88    d905dcf88d00
                          call               __CIfmod                                      // 0x00557a8e    e8b7052700

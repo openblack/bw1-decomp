@@ -111,6 +111,8 @@ float __fastcall GetMetresDistanceSq__9MapCoordsCFRC9MapCoords(struct MapCoords*
 struct MapCoords* __fastcall __as__9MapCoordsFRC9MapCoords(struct MapCoords* this, const void* edx, const struct MapCoords* other);
 // win1.41 inlined mac 1004a1d0 MapCoords::Altitude(void) const
 float __fastcall Altitude__9MapCoordsCFv(const struct MapCoords* this);
+// win1.41 00603490 mac 105a3bb0 MapCoords::GetFirstObjectMobile(void) const
+struct Object* __fastcall GetFirstObjectMobile__9MapCoordsCFv(const struct MapCoords* this) asm("?GetFirstObjectMobile@MapCoords@@QBEPAVObject@@XZ");
 
 // win1.41 00535780 mac 100eda80 ConvertMapCoordsToPoint2D(MapCoords const &)
 struct Point2D* __cdecl ConvertMapCoordsToPoint2D__FRC9MapCoords(struct Point2D* param_1, const struct MapCoords* param_2);

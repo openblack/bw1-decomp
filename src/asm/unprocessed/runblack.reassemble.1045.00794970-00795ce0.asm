@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x00784990
 .extern _jmp_addr_0x007849a0
 .extern _jmp_addr_0x007849d0
-.extern _jmp_addr_0x00784c10
+.extern ?StartScript@ChallengeRoom@@QAE_NK@Z
 .extern _jmp_addr_0x0079a5d0
 .extern  ??3@YAXPAX@Z
 .extern _atexit
@@ -43,7 +43,7 @@
 .globl _jmp_addr_0x007949b0
 .globl _jmp_addr_0x007949e0
 .globl _jmp_addr_0x00794a00
-.globl _jmp_addr_0x00794a20
+.globl ?StartScript@Temple@@QAE_NK@Z
 .globl _ProcessGameTurn__6TempleFv@0
 .globl _jmp_addr_0x00794a80
 .globl _jmp_addr_0x00794d30
@@ -157,10 +157,11 @@ _jmp_addr_0x00794a00:    {disp8} mov        ecx, dword ptr [ecx + 0x1c]         
 _jmp_addr_0x00794a1b:    ret                0x000c                                        // 0x00794a1b    c20c00
                          nop                                                              // 0x00794a1e    90
                          nop                                                              // 0x00794a1f    90
-_jmp_addr_0x00794a20:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00794a20    8b442404
+?StartScript@Temple@@QAE_NK@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00794a20    8b442404
                          {disp8} mov        ecx, dword ptr [ecx + 0x08]                   // 0x00794a24    8b4908
                          push               eax                                           // 0x00794a27    50
-                         call               _jmp_addr_0x00784c10                          // 0x00794a28    e8e301ffff
+                         call               ?StartScript@ChallengeRoom@@QAE_NK@Z          // 0x00794a28    e8e301ffff
                          ret                0x0004                                        // 0x00794a2d    c20400
 _ProcessGameTurn__6TempleFv@0:    {disp32} mov       eax, dword ptr [_game]                        // 0x00794a30    a15c19d000
                          test               byte ptr [eax + 0x14], 0x04                   // 0x00794a35    f6401404

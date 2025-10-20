@@ -53,7 +53,7 @@
 .extern _jmp_addr_0x00558160
 .extern _ReadInfo__15PhysicsSaveInfoFR10GameOSFile
 .extern _LoadAllGame__10GameOSFileFPc
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x00563ea0
 .extern @ReadInfo__10GameOSFileFPPC9GBaseInfo@12
@@ -77,7 +77,7 @@
 .extern ?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEX_N@Z
 .extern _jmp_addr_0x0057e740
 .extern _jmp_addr_0x0057e760
-.extern _jmp_addr_0x005c46e0
+.extern ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z
 .extern _jmp_addr_0x005cd170
 .extern _jmp_addr_0x005d56c0
 .extern _jmp_addr_0x005dc130
@@ -100,7 +100,7 @@
 .extern @SetFirstObjectFixed__7MapCellFP6Object@12
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern @ToMap__9MapCoordsCFv@4
-.extern _jmp_addr_0x00603490
+.extern ?GetFirstObjectMobile@MapCoords@@QBEPAVObject@@XZ
 .extern @GetFirstObjectFixed__9MapCoordsCFv@4
 .extern @IsWater__9MapCoordsCFv@4
 .extern _jmp_addr_0x00603620
@@ -182,7 +182,7 @@
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
 .extern _GetPosFromAngle__6GUtilsFff
-.extern _jmp_addr_0x00750940
+.extern ?CreateDroppedResource@Villager@@QAEXPAULHPoint@@00@Z
 .extern _jmp_addr_0x00775460
 .extern _jmp_addr_0x00781060
 .extern _jmp_addr_0x00781070
@@ -8513,7 +8513,7 @@ _jmp_addr_0x006366fa:    call               @InBounds__9MapCoordsCFv@4          
                          test               eax, eax                                       // 0x006366ff    85c0
                          {disp8} je         _jmp_addr_0x006366f3                           // 0x00636701    74f0
                          mov.s              ecx, edi                                       // 0x00636703    8bcf
-                         call               _jmp_addr_0x00603490                           // 0x00636705    e886cdfcff
+                         call               ?GetFirstObjectMobile@MapCoords@@QBEPAVObject@@XZ                           // 0x00636705    e886cdfcff
                          mov.s              esi, eax                                       // 0x0063670a    8bf0
                          test               esi, esi                                       // 0x0063670c    85f6
                          {disp8} je         _jmp_addr_0x006366f3                           // 0x0063670e    74e3
@@ -9767,7 +9767,7 @@ _jmp_addr_0x006373de:    mov                eax, dword ptr [esi]                
                          push               0x0                                            // 0x006373f5    6a00
                          push               edx                                            // 0x006373f7    52
                          mov.s              ecx, esi                                       // 0x006373f8    8bce
-                         call               _jmp_addr_0x00750940                           // 0x006373fa    e841951100
+                         call               ?CreateDroppedResource@Villager@@QAEXPAULHPoint@@00@Z                           // 0x006373fa    e841951100
 _jmp_addr_0x006373ff:    xor.s              eax, eax                                       // 0x006373ff    33c0
                          test               edi, edi                                       // 0x00637401    85ff
                          {disp8} je         _jmp_addr_0x0063740c                           // 0x00637403    7407
@@ -11743,7 +11743,7 @@ _jmp_addr_0x00638527:    mov                edx, dword ptr [esi]                
                          {disp32} mov       eax, dword ptr [_game]                         // 0x00638615    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00250060]              // 0x0063861a    8b8860002500
                          push               0x4                                            // 0x00638620    6a04
-                         call               _jmp_addr_0x005c46e0                           // 0x00638622    e8b9c0f8ff
+                         call               ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z// 0x00638622    e8b9c0f8ff
 _jmp_addr_0x00638627:    {disp8} mov        ecx, dword ptr [esi + 0x50]                    // 0x00638627    8b4e50
                          {disp8} mov        edx, dword ptr [esi + 0x54]                    // 0x0063862a    8b5654
                          {disp8} mov        eax, dword ptr [esi + 0x58]                    // 0x0063862d    8b4658
@@ -14002,7 +14002,7 @@ _jmp_addr_0x00639cbe:    {disp32} mov       eax, dword ptr [ebx + 0x00000214]   
 _jmp_addr_0x00639cd3:    {disp8} mov        eax, dword ptr [esi + 0x44]                    // 0x00639cd3    8b4644
                          push               eax                                            // 0x00639cd6    50
                          mov.s              ecx, ebx                                       // 0x00639cd7    8bcb
-                         call               _jmp_addr_0x00561e10                           // 0x00639cd9    e83281f2ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z     // 0x00639cd9    e83281f2ff
                          test               byte ptr [esi + 0x24], 0x40                    // 0x00639cde    f6462440
                          {disp32} je        _jmp_addr_0x00639e92                           // 0x00639ce2    0f84aa010000
                          test               byte ptr [esi + 0x0a], 0x10                    // 0x00639ce8    f6460a10

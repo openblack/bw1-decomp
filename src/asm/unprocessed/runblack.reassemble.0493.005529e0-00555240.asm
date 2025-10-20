@@ -81,7 +81,7 @@
 .extern _jmp_addr_0x005575d0
 .extern _jmp_addr_0x00557610
 .extern @SetVisualTimeCycle__9GGameInfoFfff@20
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x00563440
 .extern _jmp_addr_0x00563620
@@ -151,7 +151,7 @@
 .extern _jmp_addr_0x0074dd70
 .extern _CreateChallengeFiles__13ChallengeRoomFPc@0
 .extern _jmp_addr_0x00784c70
-.extern _jmp_addr_0x00784d10
+.extern ?ChallengeLoad@ChallengeRoom@@QAEXAAVGameOSFile@@@Z
 .extern _jmp_addr_0x00784de0
 .extern _jmp_addr_0x0078ce70
 .extern _jmp_addr_0x0078d150
@@ -2078,7 +2078,7 @@ _jmp_addr_0x00554170:    {disp8} lea        edi, dword ptr [ebp + 0x18]         
                          mov                ebx, 0x00000008                               // 0x00554173    bb08000000
 _jmp_addr_0x00554178:    push               edi                                           // 0x00554178    57
                          mov.s              ecx, esi                                      // 0x00554179    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x0055417b    e890dc0000
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0055417b    e890dc0000
                          add                edi, 0x00000a60                               // 0x00554180    81c7600a0000
                          dec                ebx                                           // 0x00554186    4b
                          {disp8} jne        _jmp_addr_0x00554178                          // 0x00554187    75ef
@@ -2379,11 +2379,11 @@ _jmp_addr_0x0055459e:    {disp32} mov       eax, dword ptr [esi + 0x00000214]   
 _jmp_addr_0x005545b3:    {disp32} mov       eax, dword ptr [ebp + 0x002502c0]             // 0x005545b3    8b85c0022500
                          push               eax                                           // 0x005545b9    50
                          mov.s              ecx, esi                                      // 0x005545ba    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x005545bc    e84fd80000
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x005545bc    e84fd80000
                          {disp32} mov       ecx, dword ptr [ebp + 0x00250534]             // 0x005545c1    8b8d34052500
                          push               ecx                                           // 0x005545c7    51
                          mov.s              ecx, esi                                      // 0x005545c8    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x005545ca    e841d80000
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x005545ca    e841d80000
                          push               esi                                           // 0x005545cf    56
                          call               _jmp_addr_0x00455a10                          // 0x005545d0    e83b14f0ff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x005545d5    a190c9be00
@@ -3143,7 +3143,7 @@ _jmp_addr_0x00555018:    {disp32} mov       ecx, dword ptr [_global]            
                          {disp8} mov        ecx, dword ptr [eax + 0x08]                   // 0x00555045    8b4808
                          add                esp, 0x08                                     // 0x00555048    83c408
                          push               esi                                           // 0x0055504b    56
-                         call               _jmp_addr_0x00784d10                          // 0x0055504c    e8bffc2200
+                         call               ?ChallengeLoad@ChallengeRoom@@QAEXAAVGameOSFile@@@Z                          // 0x0055504c    e8bffc2200
                          add                ebp, 0x00250084                               // 0x00555051    81c584002500
                          push               ebp                                           // 0x00555057    55
                          mov.s              ecx, esi                                      // 0x00555058    8bce

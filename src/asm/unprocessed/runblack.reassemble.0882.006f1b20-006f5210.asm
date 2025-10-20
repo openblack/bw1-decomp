@@ -38,7 +38,7 @@
 .extern _jmp_addr_0x005551d0
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x0056fa70
-.extern _jmp_addr_0x00597400
+.extern ?FindDanceGroup@GroupBehaviour@@QAE_NPAVLiving@@@Z
 .extern _jmp_addr_0x005d06e0
 .extern _jmp_addr_0x005d0730
 .extern _jmp_addr_0x005dc130
@@ -59,7 +59,7 @@
 .extern ?ScriptErrorMessage@GScript@@QAEXPAD@Z
 .extern ?ScriptWarningMessage@GScript@@QAEXPAD@Z
 .extern _jmp_addr_0x006f6a10
-.extern _jmp_addr_0x006f6ba0
+.extern ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z
 .extern _jmp_addr_0x006f6bc0
 .extern _jmp_addr_0x006f7280
 .extern _jmp_addr_0x006f72e0
@@ -149,7 +149,7 @@ _jmp_addr_0x006f1ba5:    test               esi, esi                            
                          add                esp, 0x08                                            // 0x006f1bd8    83c408
                          push               0x4                                                  // 0x006f1bdb    6a04
                          push               eax                                                  // 0x006f1bdd    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f1bde    e8bd4f0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f1bde    e8bd4f0000
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f1be3    8b0d105cd900
                          call               _jmp_addr_0x006f6a10                                 // 0x006f1be9    e8224e0000
                          push               eax                                                  // 0x006f1bee    50
@@ -165,7 +165,7 @@ _jmp_addr_0x006f1bfc:    push               0x00c0cbf4                          
 _jmp_addr_0x006f1c09:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f1c09    8b0d105cd900
                          push               0x4                                                  // 0x006f1c0f    6a04
                          push               0x0                                                  // 0x006f1c11    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f1c13    e8884f0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f1c13    e8884f0000
                          pop                edi                                                  // 0x006f1c18    5f
                          pop                esi                                                  // 0x006f1c19    5e
                          add                esp, 0x10                                            // 0x006f1c1a    83c410
@@ -231,7 +231,7 @@ _jmp_addr_0x006f1c09:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          add                esp, 0x08                                            // 0x006f1cd1    83c408
                          push               0x4                                                  // 0x006f1cd4    6a04
                          push               eax                                                  // 0x006f1cd6    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f1cd7    e8c44e0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f1cd7    e8c44e0000
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f1cdc    8b0d105cd900
                          call               _jmp_addr_0x006f6a10                                 // 0x006f1ce2    e8294d0000
                          push               eax                                                  // 0x006f1ce7    50
@@ -247,7 +247,7 @@ _jmp_addr_0x006f1cf5:    push               0x00c0cc18                          
                          add                esp, 0x04                                            // 0x006f1d05    83c404
                          push               0x4                                                  // 0x006f1d08    6a04
                          push               0x0                                                  // 0x006f1d0a    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f1d0c    e88f4e0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f1d0c    e88f4e0000
                          pop                edi                                                  // 0x006f1d11    5f
                          pop                esi                                                  // 0x006f1d12    5e
                          add                esp, 0x1c                                            // 0x006f1d13    83c41c
@@ -283,7 +283,7 @@ _jmp_addr_0x006f1cf5:    push               0x00c0cc18                          
                          add                esp, 0x08                                            // 0x006f1d5a    83c408
                          push               0x4                                                  // 0x006f1d5d    6a04
                          push               eax                                                  // 0x006f1d5f    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f1d60    e83b4e0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f1d60    e83b4e0000
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f1d65    8b0d105cd900
                          call               _jmp_addr_0x006f6a10                                 // 0x006f1d6b    e8a04c0000
                          push               eax                                                  // 0x006f1d70    50
@@ -298,7 +298,7 @@ _jmp_addr_0x006f1d7b:    push               0x00c0cbf4                          
                          add                esp, 0x04                                            // 0x006f1d8b    83c404
                          push               0x4                                                  // 0x006f1d8e    6a04
                          push               0x0                                                  // 0x006f1d90    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f1d92    e8094e0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f1d92    e8094e0000
                          pop                esi                                                  // 0x006f1d97    5e
                          pop                ecx                                                  // 0x006f1d98    59
                          ret                                                                     // 0x006f1d99    c3
@@ -398,7 +398,7 @@ _jmp_addr_0x006f1d7b:    push               0x00c0cbf4                          
                          add                esp, 0x08                                            // 0x006f1ed1    83c408
                          push               0x4                                                  // 0x006f1ed4    6a04
                          push               eax                                                  // 0x006f1ed6    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f1ed7    e8c44c0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f1ed7    e8c44c0000
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f1edc    8b0d105cd900
                          call               _jmp_addr_0x006f6a10                                 // 0x006f1ee2    e8294b0000
                          push               eax                                                  // 0x006f1ee7    50
@@ -413,7 +413,7 @@ _jmp_addr_0x006f1ef4:    push               0x00c0cbf4                          
                          add                esp, 0x04                                            // 0x006f1f04    83c404
                          push               0x4                                                  // 0x006f1f07    6a04
                          push               0x0                                                  // 0x006f1f09    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f1f0b    e8904c0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f1f0b    e8904c0000
                          pop                esi                                                  // 0x006f1f10    5e
                          add                esp, 0x34                                            // 0x006f1f11    83c434
                          ret                                                                     // 0x006f1f14    c3
@@ -479,7 +479,7 @@ _jmp_addr_0x006f1fb1:    test               ebx, ebx                            
 _jmp_addr_0x006f1fba:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f1fba    8b0d105cd900
                          push               0x4                                                  // 0x006f1fc0    6a04
                          push               0x0                                                  // 0x006f1fc2    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f1fc4    e8d74b0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f1fc4    e8d74b0000
                          pop                edi                                                  // 0x006f1fc9    5f
                          pop                esi                                                  // 0x006f1fca    5e
                          pop                ebp                                                  // 0x006f1fcb    5d
@@ -576,7 +576,7 @@ _jmp_addr_0x006f2060:    push               0x00000243                          
                          {disp8} je         _jmp_addr_0x006f2127                                 // 0x006f210e    7417
                          push               esi                                                  // 0x006f2110    56
                          mov.s              ecx, ebp                                             // 0x006f2111    8bcd
-                         call               _jmp_addr_0x00597400                                 // 0x006f2113    e8e852eaff
+                         call               ?FindDanceGroup@GroupBehaviour@@QAE_NPAVLiving@@@Z   // 0x006f2113    e8e852eaff
                          push               0x5                                                  // 0x006f2118    6a05
                          push               esi                                                  // 0x006f211a    56
                          call               _jmp_addr_0x006f82e0                                 // 0x006f211b    e8c0610000
@@ -715,7 +715,7 @@ _jmp_addr_0x006f229e:    push               0x00c0cbf4                          
                          add                esp, 0x04                                            // 0x006f22ae    83c404
                          push               0x4                                                  // 0x006f22b1    6a04
                          push               0x0                                                  // 0x006f22b3    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f22b5    e8e6480000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f22b5    e8e6480000
                          pop                esi                                                  // 0x006f22ba    5e
                          add                esp, 0x1c                                            // 0x006f22bb    83c41c
                          ret                                                                     // 0x006f22be    c3
@@ -726,7 +726,7 @@ _jmp_addr_0x006f22bf:    push               0x1                                 
                          add                esp, 0x08                                            // 0x006f22cd    83c408
                          push               0x4                                                  // 0x006f22d0    6a04
                          push               eax                                                  // 0x006f22d2    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f22d3    e8c8480000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f22d3    e8c8480000
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f22d8    8b0d105cd900
                          call               _jmp_addr_0x006f6a10                                 // 0x006f22de    e82d470000
                          push               eax                                                  // 0x006f22e3    50
@@ -791,7 +791,7 @@ _jmp_addr_0x006f2376:    push               esi                                 
                          add                esp, 0x08                                            // 0x006f238e    83c408
                          push               0x4                                                  // 0x006f2391    6a04
                          push               eax                                                  // 0x006f2393    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2394    e807480000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2394    e807480000
                          pop                edi                                                  // 0x006f2399    5f
                          pop                esi                                                  // 0x006f239a    5e
                          pop                ebp                                                  // 0x006f239b    5d
@@ -807,7 +807,7 @@ _jmp_addr_0x006f23ae:    push               0x00c0ccd4                          
                          add                esp, 0x04                                            // 0x006f23be    83c404
                          push               0x4                                                  // 0x006f23c1    6a04
                          push               0x0                                                  // 0x006f23c3    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f23c5    e8d6470000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f23c5    e8d6470000
                          pop                edi                                                  // 0x006f23ca    5f
                          pop                esi                                                  // 0x006f23cb    5e
                          pop                ebp                                                  // 0x006f23cc    5d
@@ -853,7 +853,7 @@ _jmp_addr_0x006f23ae:    push               0x00c0ccd4                          
                          add                esp, 0x08                                            // 0x006f2423    83c408
                          push               0x4                                                  // 0x006f2426    6a04
                          push               eax                                                  // 0x006f2428    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2429    e872470000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2429    e872470000
                          pop                esi                                                  // 0x006f242e    5e
                          pop                ecx                                                  // 0x006f242f    59
                          ret                                                                     // 0x006f2430    c3
@@ -863,7 +863,7 @@ _jmp_addr_0x006f2431:    push               0x00c0ccfc                          
                          add                esp, 0x04                                            // 0x006f2441    83c404
                          push               0x4                                                  // 0x006f2444    6a04
                          push               0x0                                                  // 0x006f2446    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2448    e853470000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2448    e853470000
                          pop                esi                                                  // 0x006f244d    5e
                          pop                ecx                                                  // 0x006f244e    59
                          ret                                                                     // 0x006f244f    c3
@@ -983,7 +983,7 @@ _jmp_addr_0x006f259c:    push               edi                                 
                          push               0x4                                                  // 0x006f25b7    6a04
                          push               0x0                                                  // 0x006f25b9    6a00
 _jmp_addr_0x006f25bb:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f25bb    8b0d105cd900
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f25c1    e8da450000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f25c1    e8da450000
                          pop                edi                                                  // 0x006f25c6    5f
                          pop                esi                                                  // 0x006f25c7    5e
                          pop                ebp                                                  // 0x006f25c8    5d
@@ -1106,7 +1106,7 @@ _jmp_addr_0x006f2705:    add                esp, 0x18                           
                          add                esp, 0x08                                            // 0x006f271a    83c408
                          push               0x4                                                  // 0x006f271d    6a04
                          push               eax                                                  // 0x006f271f    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2720    e87b440000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2720    e87b440000
                          pop                edi                                                  // 0x006f2725    5f
                          pop                esi                                                  // 0x006f2726    5e
                          pop                ebp                                                  // 0x006f2727    5d
@@ -1122,7 +1122,7 @@ _jmp_addr_0x006f273a:    push               0x00c0cd2c                          
                          add                esp, 0x04                                            // 0x006f274a    83c404
                          push               0x4                                                  // 0x006f274d    6a04
                          push               0x0                                                  // 0x006f274f    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2751    e84a440000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2751    e84a440000
                          pop                edi                                                  // 0x006f2756    5f
                          pop                esi                                                  // 0x006f2757    5e
                          pop                ebp                                                  // 0x006f2758    5d
@@ -1153,13 +1153,13 @@ _jmp_addr_0x006f278e:    {disp32} mov       ecx, dword ptr [_game]              
                          add                esp, 0x08                                            // 0x006f27ab    83c408
                          push               0x4                                                  // 0x006f27ae    6a04
                          push               eax                                                  // 0x006f27b0    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f27b1    e8ea430000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f27b1    e8ea430000
                          pop                esi                                                  // 0x006f27b6    5e
                          ret                                                                     // 0x006f27b7    c3
 _jmp_addr_0x006f27b8:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f27b8    8b0d105cd900
                          push               0x4                                                  // 0x006f27be    6a04
                          push               0x0                                                  // 0x006f27c0    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f27c2    e8d9430000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f27c2    e8d9430000
                          pop                esi                                                  // 0x006f27c7    5e
                          ret                                                                     // 0x006f27c8    c3
                          nop                                                                     // 0x006f27c9    90
@@ -1193,13 +1193,13 @@ _jmp_addr_0x006f2805:    {disp32} mov       ecx, dword ptr [_game]              
                          add                esp, 0x08                                            // 0x006f2822    83c408
                          push               0x4                                                  // 0x006f2825    6a04
                          push               eax                                                  // 0x006f2827    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2828    e873430000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2828    e873430000
                          pop                esi                                                  // 0x006f282d    5e
                          ret                                                                     // 0x006f282e    c3
 _jmp_addr_0x006f282f:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f282f    8b0d105cd900
                          push               0x4                                                  // 0x006f2835    6a04
                          push               0x0                                                  // 0x006f2837    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2839    e862430000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2839    e862430000
                          pop                esi                                                  // 0x006f283e    5e
                          ret                                                                     // 0x006f283f    c3
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f2840    8b0d105cd900
@@ -1258,7 +1258,7 @@ _jmp_addr_0x006f28c6:    push               esi                                 
                          add                esp, 0x08                                            // 0x006f28de    83c408
                          push               0x4                                                  // 0x006f28e1    6a04
                          push               eax                                                  // 0x006f28e3    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f28e4    e8b7420000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f28e4    e8b7420000
                          pop                edi                                                  // 0x006f28e9    5f
                          pop                esi                                                  // 0x006f28ea    5e
                          pop                ebp                                                  // 0x006f28eb    5d
@@ -1274,7 +1274,7 @@ _jmp_addr_0x006f28fe:    push               0x00c0cd40                          
                          add                esp, 0x04                                            // 0x006f290e    83c404
                          push               0x4                                                  // 0x006f2911    6a04
                          push               0x0                                                  // 0x006f2913    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2915    e886420000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2915    e886420000
                          pop                edi                                                  // 0x006f291a    5f
                          pop                esi                                                  // 0x006f291b    5e
                          pop                ebp                                                  // 0x006f291c    5d
@@ -1351,7 +1351,7 @@ _jmp_addr_0x006f29b6:    push               esi                                 
                          add                esp, 0x08                                            // 0x006f29ce    83c408
                          push               0x4                                                  // 0x006f29d1    6a04
                          push               eax                                                  // 0x006f29d3    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f29d4    e8c7410000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f29d4    e8c7410000
                          pop                edi                                                  // 0x006f29d9    5f
                          pop                esi                                                  // 0x006f29da    5e
                          pop                ebp                                                  // 0x006f29db    5d
@@ -1367,7 +1367,7 @@ _jmp_addr_0x006f29ee:    push               0x00c0cd58                          
                          add                esp, 0x04                                            // 0x006f29fe    83c404
                          push               0x4                                                  // 0x006f2a01    6a04
                          push               0x0                                                  // 0x006f2a03    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2a05    e896410000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2a05    e896410000
                          pop                edi                                                  // 0x006f2a0a    5f
                          pop                esi                                                  // 0x006f2a0b    5e
                          pop                ebp                                                  // 0x006f2a0c    5d
@@ -1453,7 +1453,7 @@ _jmp_addr_0x006f29ee:    push               0x00c0cd58                          
                          add                esp, 0x04                                            // 0x006f2afa    83c404
                          push               0x4                                                  // 0x006f2afd    6a04
                          push               0x0                                                  // 0x006f2aff    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2b01    e89a400000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2b01    e89a400000
                          add                esp, 0x20                                            // 0x006f2b06    83c420
                          ret                                                                     // 0x006f2b09    c3
 _jmp_addr_0x006f2b0a:    push               0x0                                                  // 0x006f2b0a    6a00
@@ -1463,7 +1463,7 @@ _jmp_addr_0x006f2b0a:    push               0x0                                 
                          add                esp, 0x08                                            // 0x006f2b18    83c408
                          push               0x4                                                  // 0x006f2b1b    6a04
                          push               eax                                                  // 0x006f2b1d    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2b1e    e87d400000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2b1e    e87d400000
                          add                esp, 0x20                                            // 0x006f2b23    83c420
                          ret                                                                     // 0x006f2b26    c3
                          nop                                                                     // 0x006f2b27    90
@@ -1558,7 +1558,7 @@ _jmp_addr_0x006f2bb5:    test               esi, esi                            
                          add                esp, 0x08                                            // 0x006f2c30    83c408
                          push               0x4                                                  // 0x006f2c33    6a04
                          push               eax                                                  // 0x006f2c35    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2c36    e8653f0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2c36    e8653f0000
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f2c3b    8b0d105cd900
                          call               _jmp_addr_0x006f6a10                                 // 0x006f2c41    e8ca3d0000
                          push               eax                                                  // 0x006f2c46    50
@@ -1571,7 +1571,7 @@ _jmp_addr_0x006f2bb5:    test               esi, esi                            
 _jmp_addr_0x006f2c54:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f2c54    8b0d105cd900
                          push               0x4                                                  // 0x006f2c5a    6a04
                          push               0x0                                                  // 0x006f2c5c    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2c5e    e83d3f0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2c5e    e83d3f0000
                          pop                edi                                                  // 0x006f2c63    5f
                          pop                esi                                                  // 0x006f2c64    5e
                          add                esp, 0x1c                                            // 0x006f2c65    83c41c
@@ -1694,7 +1694,7 @@ _jmp_addr_0x006f2d41:    test               edi, edi                            
                          add                esp, 0x08                                            // 0x006f2dcc    83c408
                          push               0x4                                                  // 0x006f2dcf    6a04
                          push               eax                                                  // 0x006f2dd1    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2dd2    e8c93d0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2dd2    e8c93d0000
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f2dd7    8b0d105cd900
                          call               _jmp_addr_0x006f6a10                                 // 0x006f2ddd    e82e3c0000
                          push               eax                                                  // 0x006f2de2    50
@@ -1708,7 +1708,7 @@ _jmp_addr_0x006f2d41:    test               edi, edi                            
 _jmp_addr_0x006f2df1:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f2df1    8b0d105cd900
                          push               0x4                                                  // 0x006f2df7    6a04
                          push               0x0                                                  // 0x006f2df9    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2dfb    e8a03d0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2dfb    e8a03d0000
                          pop                edi                                                  // 0x006f2e00    5f
                          pop                esi                                                  // 0x006f2e01    5e
                          pop                ebx                                                  // 0x006f2e02    5b
@@ -1818,7 +1818,7 @@ _jmp_addr_0x006f2f23:    push               0x00c0cbf4                          
 _jmp_addr_0x006f2f30:    push               0x4                                                  // 0x006f2f30    6a04
                          push               0x0                                                  // 0x006f2f32    6a00
 _jmp_addr_0x006f2f34:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f2f34    8b0d105cd900
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f2f3a    e8613c0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f2f3a    e8613c0000
                          pop                edi                                                  // 0x006f2f3f    5f
                          pop                esi                                                  // 0x006f2f40    5e
                          pop                ebx                                                  // 0x006f2f41    5b
@@ -1893,7 +1893,7 @@ _jmp_addr_0x006f2f34:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          add                esp, 0x08                                            // 0x006f3017    83c408
                          push               0x4                                                  // 0x006f301a    6a04
                          push               eax                                                  // 0x006f301c    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f301d    e87e3b0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f301d    e87e3b0000
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f3022    8b0d105cd900
                          call               _jmp_addr_0x006f6a10                                 // 0x006f3028    e8e3390000
                          push               eax                                                  // 0x006f302d    50
@@ -1908,7 +1908,7 @@ _jmp_addr_0x006f303a:    push               0x00c0cd98                          
                          add                esp, 0x04                                            // 0x006f304a    83c404
                          push               0x4                                                  // 0x006f304d    6a04
                          push               0x0                                                  // 0x006f304f    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f3051    e84a3b0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f3051    e84a3b0000
                          pop                esi                                                  // 0x006f3056    5e
                          add                esp, 0x1c                                            // 0x006f3057    83c41c
                          ret                                                                     // 0x006f305a    c3
@@ -1951,7 +1951,7 @@ _jmp_addr_0x006f30be:    push               0x00c0cdb0                          
                          add                esp, 0x04                                            // 0x006f30ce    83c404
                          push               0x4                                                  // 0x006f30d1    6a04
                          push               0x0                                                  // 0x006f30d3    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f30d5    e8c63a0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f30d5    e8c63a0000
                          pop                esi                                                  // 0x006f30da    5e
                          pop                ecx                                                  // 0x006f30db    59
                          ret                                                                     // 0x006f30dc    c3
@@ -1962,7 +1962,7 @@ _jmp_addr_0x006f30dd:    push               0x0                                 
                          add                esp, 0x08                                            // 0x006f30eb    83c408
                          push               0x4                                                  // 0x006f30ee    6a04
                          push               eax                                                  // 0x006f30f0    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f30f1    e8aa3a0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f30f1    e8aa3a0000
                          pop                esi                                                  // 0x006f30f6    5e
                          pop                ecx                                                  // 0x006f30f7    59
                          ret                                                                     // 0x006f30f8    c3
@@ -2031,7 +2031,7 @@ _jmp_addr_0x006f3173:    mov                edx, dword ptr [esi]                
                          add                esp, 0x08                                            // 0x006f31a7    83c408
                          push               0x4                                                  // 0x006f31aa    6a04
                          push               eax                                                  // 0x006f31ac    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f31ad    e8ee390000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f31ad    e8ee390000
                          pop                edi                                                  // 0x006f31b2    5f
                          pop                esi                                                  // 0x006f31b3    5e
                          pop                ebp                                                  // 0x006f31b4    5d
@@ -2041,7 +2041,7 @@ _jmp_addr_0x006f3173:    mov                edx, dword ptr [esi]                
 _jmp_addr_0x006f31ba:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f31ba    8b0d105cd900
                          push               0x4                                                  // 0x006f31c0    6a04
                          push               0x0                                                  // 0x006f31c2    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f31c4    e8d7390000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f31c4    e8d7390000
                          pop                edi                                                  // 0x006f31c9    5f
                          pop                esi                                                  // 0x006f31ca    5e
                          pop                ebp                                                  // 0x006f31cb    5d
@@ -2156,13 +2156,13 @@ _jmp_addr_0x006f3307:    call               _jmp_addr_0x00646980                
                          add                esp, 0x08                                            // 0x006f3325    83c408
                          push               0x4                                                  // 0x006f3328    6a04
                          push               eax                                                  // 0x006f332a    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f332b    e870380000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f332b    e870380000
                          add                esp, 0x20                                            // 0x006f3330    83c420
                          ret                                                                     // 0x006f3333    c3
 _jmp_addr_0x006f3334:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f3334    8b0d105cd900
                          push               0x4                                                  // 0x006f333a    6a04
                          push               0x0                                                  // 0x006f333c    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f333e    e85d380000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f333e    e85d380000
                          add                esp, 0x20                                            // 0x006f3343    83c420
                          ret                                                                     // 0x006f3346    c3
                          nop                                                                     // 0x006f3347    90
@@ -2187,12 +2187,12 @@ _jmp_addr_0x006f3334:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          add                esp, 0x08                                            // 0x006f3374    83c408
                          push               0x4                                                  // 0x006f3377    6a04
                          push               eax                                                  // 0x006f3379    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f337a    e821380000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f337a    e821380000
                          ret                                                                     // 0x006f337f    c3
 _jmp_addr_0x006f3380:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f3380    8b0d105cd900
                          push               0x4                                                  // 0x006f3386    6a04
                          push               0x0                                                  // 0x006f3388    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f338a    e811380000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f338a    e811380000
                          ret                                                                     // 0x006f338f    c3
                          push               ecx                                                  // 0x006f3390    51
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f3391    8b0d105cd900
@@ -2221,14 +2221,14 @@ _jmp_addr_0x006f3380:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          add                esp, 0x08                                            // 0x006f33d7    83c408
                          push               0x4                                                  // 0x006f33da    6a04
                          push               eax                                                  // 0x006f33dc    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f33dd    e8be370000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f33dd    e8be370000
                          pop                esi                                                  // 0x006f33e2    5e
                          pop                ecx                                                  // 0x006f33e3    59
                          ret                                                                     // 0x006f33e4    c3
 _jmp_addr_0x006f33e5:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f33e5    8b0d105cd900
                          push               0x4                                                  // 0x006f33eb    6a04
                          push               0x0                                                  // 0x006f33ed    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f33ef    e8ac370000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f33ef    e8ac370000
                          pop                esi                                                  // 0x006f33f4    5e
                          pop                ecx                                                  // 0x006f33f5    59
                          ret                                                                     // 0x006f33f6    c3
@@ -2353,13 +2353,13 @@ _jmp_addr_0x006f3445:    xor.s              eax, eax                            
                          add                esp, 0x08                                            // 0x006f3564    83c408
                          push               0x4                                                  // 0x006f3567    6a04
                          push               eax                                                  // 0x006f3569    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f356a    e831360000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f356a    e831360000
                          add                esp, 0x1c                                            // 0x006f356f    83c41c
                          ret                                                                     // 0x006f3572    c3
 _jmp_addr_0x006f3573:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f3573    8b0d105cd900
                          push               0x4                                                  // 0x006f3579    6a04
                          push               0x0                                                  // 0x006f357b    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f357d    e81e360000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f357d    e81e360000
                          add                esp, 0x1c                                            // 0x006f3582    83c41c
                          ret                                                                     // 0x006f3585    c3
                          nop                                                                     // 0x006f3586    90
@@ -2425,7 +2425,7 @@ _jmp_addr_0x006f35e1:    test               esi, esi                            
                          add                esp, 0x08                                            // 0x006f3625    83c408
                          push               0x4                                                  // 0x006f3628    6a04
                          push               eax                                                  // 0x006f362a    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f362b    e870350000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f362b    e870350000
                          pop                edi                                                  // 0x006f3630    5f
                          pop                esi                                                  // 0x006f3631    5e
                          add                esp, 0x08                                            // 0x006f3632    83c408
@@ -2433,7 +2433,7 @@ _jmp_addr_0x006f35e1:    test               esi, esi                            
 _jmp_addr_0x006f3636:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f3636    8b0d105cd900
                          push               0x4                                                  // 0x006f363c    6a04
                          push               0x0                                                  // 0x006f363e    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f3640    e85b350000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f3640    e85b350000
                          pop                edi                                                  // 0x006f3645    5f
                          pop                esi                                                  // 0x006f3646    5e
                          add                esp, 0x08                                            // 0x006f3647    83c408
@@ -2689,7 +2689,7 @@ _jmp_addr_0x006f3892:    push               ebx                                 
                          add                esp, 0x08                                            // 0x006f38b4    83c408
                          push               0x4                                                  // 0x006f38b7    6a04
                          push               eax                                                  // 0x006f38b9    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f38ba    e8e1320000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f38ba    e8e1320000
                          pop                edi                                                  // 0x006f38bf    5f
                          pop                esi                                                  // 0x006f38c0    5e
                          pop                ebx                                                  // 0x006f38c1    5b
@@ -2701,7 +2701,7 @@ _jmp_addr_0x006f38cb:    call               ?ScriptErrorMessage@GScript@@QAEXPAD
                          add                esp, 0x04                                            // 0x006f38d6    83c404
                          push               0x4                                                  // 0x006f38d9    6a04
                          push               0x0                                                  // 0x006f38db    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f38dd    e8be320000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f38dd    e8be320000
                          pop                edi                                                  // 0x006f38e2    5f
                          pop                esi                                                  // 0x006f38e3    5e
                          pop                ebx                                                  // 0x006f38e4    5b
@@ -3203,7 +3203,7 @@ _jmp_addr_0x006f3db6:    push               edi                                 
 _jmp_addr_0x006f3dc2:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f3dc2    8b0d105cd900
                          push               0x4                                                  // 0x006f3dc8    6a04
                          push               edi                                                  // 0x006f3dca    57
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f3dcb    e8d02d0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f3dcb    e8d02d0000
                          pop                edi                                                  // 0x006f3dd0    5f
                          pop                esi                                                  // 0x006f3dd1    5e
                          add                esp, 0x00000410                                      // 0x006f3dd2    81c410040000
@@ -3254,14 +3254,14 @@ _jmp_addr_0x006f3dc2:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          add                esp, 0x04                                            // 0x006f3e56    83c404
                          push               0x6                                                  // 0x006f3e59    6a06
                          push               esi                                                  // 0x006f3e5b    56
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f3e5c    e83f2d0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f3e5c    e83f2d0000
 _jmp_addr_0x006f3e61:    {disp32} mov       eax, dword ptr [esi + 0x00000160]                    // 0x006f3e61    8b8660010000
                          cmp                dword ptr [eax + 0x28], edi                          // 0x006f3e67    397828
                          {disp8} jne        _jmp_addr_0x006f3e7f                                 // 0x006f3e6a    7513
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f3e6c    8b0d105cd900
                          push               0x6                                                  // 0x006f3e72    6a06
                          push               0x1                                                  // 0x006f3e74    6a01
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f3e76    e8252d0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f3e76    e8252d0000
                          pop                edi                                                  // 0x006f3e7b    5f
                          pop                esi                                                  // 0x006f3e7c    5e
                          pop                ecx                                                  // 0x006f3e7d    59
@@ -3283,7 +3283,7 @@ _jmp_addr_0x006f3e7f:    {disp32} mov       eax, dword ptr [esi + 0x00000164]   
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f3eb7    8b0d105cd900
                          push               0x6                                                  // 0x006f3ebd    6a06
                          push               0x1                                                  // 0x006f3ebf    6a01
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f3ec1    e8da2c0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f3ec1    e8da2c0000
                          pop                edi                                                  // 0x006f3ec6    5f
                          pop                esi                                                  // 0x006f3ec7    5e
                          pop                ecx                                                  // 0x006f3ec8    59
@@ -3294,7 +3294,7 @@ _jmp_addr_0x006f3eca:    push               0x00c0cebc                          
 _jmp_addr_0x006f3ed7:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f3ed7    8b0d105cd900
                          push               0x6                                                  // 0x006f3edd    6a06
                          push               0x0                                                  // 0x006f3edf    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f3ee1    e8ba2c0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f3ee1    e8ba2c0000
                          pop                edi                                                  // 0x006f3ee6    5f
                          pop                esi                                                  // 0x006f3ee7    5e
                          pop                ecx                                                  // 0x006f3ee8    59
@@ -3714,7 +3714,7 @@ _jmp_addr_0x006f4318:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          {disp8} mov        edx, dword ptr [esp + 0x00]                          // 0x006f4389    8b542400
                          push               0x2                                                  // 0x006f438d    6a02
                          push               edx                                                  // 0x006f438f    52
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f4390    e80b280000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f4390    e80b280000
                          pop                ecx                                                  // 0x006f4395    59
                          ret                                                                     // 0x006f4396    c3
 _jmp_addr_0x006f4397:    push               esi                                                  // 0x006f4397    56
@@ -3741,7 +3741,7 @@ _jmp_addr_0x006f43c2:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x006f43e3    8b442404
                          push               0x2                                                  // 0x006f43e7    6a02
                          push               eax                                                  // 0x006f43e9    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f43ea    e8b1270000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f43ea    e8b1270000
                          pop                esi                                                  // 0x006f43ef    5e
                          pop                ecx                                                  // 0x006f43f0    59
                          ret                                                                     // 0x006f43f1    c3
@@ -4332,7 +4332,7 @@ _jmp_addr_0x006f496c:    pop                edi                                 
 _jmp_addr_0x006f49ae:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f49ae    8b0d105cd900
                          push               0x6                                                  // 0x006f49b4    6a06
                          push               0x0                                                  // 0x006f49b6    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f49b8    e8e3210000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f49b8    e8e3210000
                          pop                esi                                                  // 0x006f49bd    5e
                          pop                ecx                                                  // 0x006f49be    59
                          ret                                                                     // 0x006f49bf    c3
@@ -4365,7 +4365,7 @@ _jmp_addr_0x006f49d8:    mov                eax, dword ptr [esi]                
                          neg                eax                                                  // 0x006f4a06    f7d8
                          push               0x6                                                  // 0x006f4a08    6a06
                          push               eax                                                  // 0x006f4a0a    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f4a0b    e890210000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f4a0b    e890210000
                          pop                esi                                                  // 0x006f4a10    5e
                          pop                ecx                                                  // 0x006f4a11    59
                          ret                                                                     // 0x006f4a12    c3
@@ -4568,7 +4568,7 @@ _jmp_addr_0x006f4be9:    mov                eax, dword ptr [esi]                
                          add                esp, 0x08                                            // 0x006f4c54    83c408
                          push               0x4                                                  // 0x006f4c57    6a04
                          push               eax                                                  // 0x006f4c59    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f4c5a    e8411f0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f4c5a    e8411f0000
                          pop                edi                                                  // 0x006f4c5f    5f
                          pop                esi                                                  // 0x006f4c60    5e
                          pop                ebp                                                  // 0x006f4c61    5d
@@ -4583,7 +4583,7 @@ _jmp_addr_0x006f4c67:    {disp8} mov        ecx, dword ptr [esp + 0x14]         
                          add                esp, 0x08                                            // 0x006f4c78    83c408
                          push               0x4                                                  // 0x006f4c7b    6a04
                          push               eax                                                  // 0x006f4c7d    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f4c7e    e81d1f0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f4c7e    e81d1f0000
                          pop                edi                                                  // 0x006f4c83    5f
                          pop                esi                                                  // 0x006f4c84    5e
                          pop                ebp                                                  // 0x006f4c85    5d
@@ -4596,7 +4596,7 @@ _jmp_addr_0x006f4c8b:    push               0x00c0cff0                          
                          add                esp, 0x04                                            // 0x006f4c9b    83c404
                          push               0x4                                                  // 0x006f4c9e    6a04
                          push               0x0                                                  // 0x006f4ca0    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f4ca2    e8f91e0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f4ca2    e8f91e0000
                          pop                edi                                                  // 0x006f4ca7    5f
                          pop                esi                                                  // 0x006f4ca8    5e
                          pop                ebp                                                  // 0x006f4ca9    5d
@@ -4676,7 +4676,7 @@ _jmp_addr_0x006f4d36:    pop                edi                                 
 _jmp_addr_0x006f4d6e:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f4d6e    8b0d105cd900
                          push               0x6                                                  // 0x006f4d74    6a06
                          push               0x0                                                  // 0x006f4d76    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f4d78    e8231e0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f4d78    e8231e0000
                          pop                esi                                                  // 0x006f4d7d    5e
                          pop                ecx                                                  // 0x006f4d7e    59
                          ret                                                                     // 0x006f4d7f    c3
@@ -4701,7 +4701,7 @@ _jmp_addr_0x006f4d98:    mov                eax, dword ptr [esi]                
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f4db1    8b0d105cd900
                          push               0x6                                                  // 0x006f4db7    6a06
                          push               eax                                                  // 0x006f4db9    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f4dba    e8e11d0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f4dba    e8e11d0000
                          pop                esi                                                  // 0x006f4dbf    5e
                          pop                ecx                                                  // 0x006f4dc0    59
                          ret                                                                     // 0x006f4dc1    c3
@@ -4997,7 +4997,7 @@ _jmp_addr_0x006f5069:    mov                eax, dword ptr [esi]                
 _jmp_addr_0x006f5090:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f5090    8b0d105cd900
                          push               0x6                                                  // 0x006f5096    6a06
                          push               0x0                                                  // 0x006f5098    6a00
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f509a    e8011b0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f509a    e8011b0000
                          pop                edi                                                  // 0x006f509f    5f
                          pop                esi                                                  // 0x006f50a0    5e
                          add                esp, 0x08                                            // 0x006f50a1    83c408
@@ -5012,7 +5012,7 @@ _jmp_addr_0x006f50a5:    mov.s              ecx, eax                            
                          push               0x6                                                  // 0x006f50bc    6a06
                          push               ecx                                                  // 0x006f50be    51
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f50bf    8b0d105cd900
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f50c5    e8d61a0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f50c5    e8d61a0000
                          pop                edi                                                  // 0x006f50ca    5f
                          pop                esi                                                  // 0x006f50cb    5e
                          add                esp, 0x08                                            // 0x006f50cc    83c408
@@ -5037,7 +5037,7 @@ _jmp_addr_0x006f50fe:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          {disp8} mov        edx, dword ptr [esp + 0x04]                          // 0x006f510c    8b542404
                          push               0x2                                                  // 0x006f5110    6a02
                          push               edx                                                  // 0x006f5112    52
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f5113    e8881a0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f5113    e8881a0000
                          pop                esi                                                  // 0x006f5118    5e
                          pop                ecx                                                  // 0x006f5119    59
                          ret                                                                     // 0x006f511a    c3
@@ -5064,7 +5064,7 @@ _jmp_addr_0x006f5133:    mov                eax, dword ptr [esi]                
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                          // 0x006f5157    8b4c2408
                          push               ecx                                                  // 0x006f515b    51
                          {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f515c    8b0d105cd900
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f5162    e8391a0000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f5162    e8391a0000
                          pop                esi                                                  // 0x006f5167    5e
                          pop                ecx                                                  // 0x006f5168    59
                          ret                                                                     // 0x006f5169    c3
@@ -5100,13 +5100,13 @@ _jmp_addr_0x006f51aa:    {disp32} mov       ecx, dword ptr [_game]              
                          push               0x6                                                  // 0x006f51bb    6a06
                          and                eax, 0x000000ff                                      // 0x006f51bd    25ff000000
                          push               eax                                                  // 0x006f51c2    50
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f51c3    e8d8190000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f51c3    e8d8190000
                          pop                ecx                                                  // 0x006f51c8    59
                          ret                                                                     // 0x006f51c9    c3
 _jmp_addr_0x006f51ca:    {disp32} mov       ecx, dword ptr [_script_dll]                         // 0x006f51ca    8b0d105cd900
                          push               0x6                                                  // 0x006f51d0    6a06
                          push               0x1                                                  // 0x006f51d2    6a01
-                         call               _jmp_addr_0x006f6ba0                                 // 0x006f51d4    e8c7190000
+                         call               ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z                 // 0x006f51d4    e8c7190000
                          pop                ecx                                                  // 0x006f51d9    59
                          ret                                                                     // 0x006f51da    c3
 

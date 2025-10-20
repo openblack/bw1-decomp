@@ -14,7 +14,7 @@
 .extern _jmp_addr_0x00436a90
 .extern @__ct__9MapCoordsFv@4
 .extern ?Draw@MobileObject@@UAEXXZ
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x00563400
 .extern _jmp_addr_0x00563410
@@ -772,7 +772,7 @@ _jmp_addr_0x0063e60e:    {disp32} mov      ecx, dword ptr [esi + 0x00000214]    
 _jmp_addr_0x0063e621:    {disp8} mov       ecx, dword ptr [edi + 0x28]                   // 0x0063e621    8b4f28
                          push              ecx                                           // 0x0063e624    51
                          mov.s             ecx, esi                                      // 0x0063e625    8bce
-                         call              _jmp_addr_0x00561e10                          // 0x0063e627    e8e437f2ff
+                         call              ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0063e627    e8e437f2ff
                          {disp8} lea       edx, dword ptr [edi + 0x2c]                   // 0x0063e62c    8d572c
                          push              edx                                           // 0x0063e62f    52
                          mov.s             ecx, esi                                      // 0x0063e630    8bce

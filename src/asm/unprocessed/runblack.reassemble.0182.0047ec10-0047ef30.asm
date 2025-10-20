@@ -9,7 +9,7 @@
 
 .extern _jmp_addr_0x004c9fe0
 .extern _jmp_addr_0x004dce20
-.extern _jmp_addr_0x004ff240
+.extern ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z
 .extern _GameRand__5GRandFl
 .extern ___nw__FUl
 
@@ -84,7 +84,7 @@ _jmp_addr_0x0047eca8:    sub                esp, 0x10                          /
                          {disp32} mov       ecx, dword ptr [eax + 0x00000164]  // 0x0047ecd6    8b8864010000
                          push               0x1f                               // 0x0047ecdc    6a1f
                          add                ecx, 0x00000fa8                    // 0x0047ecde    81c1a80f0000
-                         call               _jmp_addr_0x004ff240               // 0x0047ece4    e857050800
+                         call               ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z               // 0x0047ece4    e857050800
 _jmp_addr_0x0047ece9:    push               0x00001777                         // 0x0047ece9    6877170000
                          push               0x009cf9e0                         // 0x0047ecee    68e0f99c00
                          push               0x9                                // 0x0047ecf3    6a09
@@ -187,7 +187,7 @@ _jmp_addr_0x0047ee41:    sub                esp, 0x10                          /
                          {disp32} mov       ecx, dword ptr [eax + 0x00000164]  // 0x0047ee6b    8b8864010000
                          push               0xa                                // 0x0047ee71    6a0a
                          add                ecx, 0x00000fa8                    // 0x0047ee73    81c1a80f0000
-                         call               _jmp_addr_0x004ff240               // 0x0047ee79    e8c2030800
+                         call               ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z               // 0x0047ee79    e8c2030800
 _jmp_addr_0x0047ee7e:    {disp8} mov        eax, dword ptr [esp + 0x10]        // 0x0047ee7e    8b442410
                          {disp8} mov        ecx, dword ptr [esp + 0x14]        // 0x0047ee82    8b4c2414
                          inc                eax                                // 0x0047ee86    40

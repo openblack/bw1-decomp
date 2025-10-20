@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x0046e7b0
 .extern _jmp_addr_0x0046e890
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
-.extern _jmp_addr_0x005c46e0
+.extern ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z
 .extern _jmp_addr_0x005c9c60
 .extern _jmp_addr_0x005cd170
 .extern _jmp_addr_0x005cee30
@@ -478,7 +478,7 @@ _jmp_addr_0x007287dd:    pop                edi                                 
 _jmp_addr_0x0072884b:    {disp32} mov       edx, dword ptr [_game]                   // 0x0072884b    8b155c19d000
                          {disp32} mov       ecx, dword ptr [edx + 0x00250060]        // 0x00728851    8b8a60002500
                          push               0xc                                      // 0x00728857    6a0c
-_jmp_addr_0x00728859:    call               _jmp_addr_0x005c46e0                     // 0x00728859    e882bee9ff
+_jmp_addr_0x00728859:    call               ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z                     // 0x00728859    e882bee9ff
 _jmp_addr_0x0072885e:    mov.s              ecx, esi                                 // 0x0072885e    8bce
                          call               _jmp_addr_0x00728780                     // 0x00728860    e81bffffff
                          test               eax, eax                                 // 0x00728865    85c0
@@ -1730,7 +1730,7 @@ _jmp_addr_0x007293c2:    call               ?MyInterface@GGame@@QAEPAVGInterface
                          {disp32} mov       ecx, dword ptr [_game]                   // 0x007293d8    8b0d5c19d000
                          {disp32} mov       ecx, dword ptr [ecx + 0x00250060]        // 0x007293de    8b8960002500
                          push               0x9                                      // 0x007293e4    6a09
-_jmp_addr_0x007293e6:    call               _jmp_addr_0x005c46e0                     // 0x007293e6    e8f5b2e9ff
+_jmp_addr_0x007293e6:    call               ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z                     // 0x007293e6    e8f5b2e9ff
 _jmp_addr_0x007293eb:    mov.s              ecx, esi                                 // 0x007293eb    8bce
                          call               _jmp_addr_0x00729820                     // 0x007293ed    e82e040000
                          test               eax, eax                                 // 0x007293f2    85c0

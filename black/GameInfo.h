@@ -68,6 +68,8 @@ void __fastcall SetStartTime__9GGameInfoFlll(struct GGameInfo* this, const void*
 float __fastcall GetDaysFromStart__9GGameInfoFv(struct GGameInfo* this);
 // win1.41 00557950 mac 1008c390 GGameInfo::GetYear(void)
 float __fastcall GetYear__9GGameInfoFv(struct GGameInfo* this);
+// win1.41 00557a80 mac 10099e70 GGameInfo::GetSeason(void)
+uint32_t __fastcall GetSeason__9GGameInfoFv(struct GGameInfo* this) asm("?GetSeason@GGameInfo@@QAEIXZ");
 // win1.41 00557b60 mac 1008c3f0 GGameInfo::Process(void)
 void __fastcall Process__9GGameInfoFv(struct GGameInfo* this);
 // win1.41 00557bb0 mac 102fecf0 GGameInfo::SetVisualTimeCycleFromMapEditor(float, float, float)

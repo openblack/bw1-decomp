@@ -2,6 +2,7 @@
 #define BW1_DECOMP_CREATURE_AGENDA_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
@@ -81,6 +82,11 @@ extern const struct BaseVftable __vt__14CreatureAgenda asm("??_7CreatureAgenda@@
 
 // win1.41 004d34b0 mac 102471c0 CreatureAgenda::CreatureAgenda(Creature *, CreatureInfo const *)
 struct CreatureAgenda* __fastcall __ct__14CreatureAgendaFP8CreaturePC12CreatureInfo(struct CreatureAgenda* this, const void* edx, struct CreatureInfo* info);
+
+// Non-virtual methods
+
+// win1.41 004aca70 mac 10217d60 CreatureAgenda::ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long)
+bool __fastcall ConstructSubActionsForAttackerThrowBallAtGoal__14CreatureAgendaFUl(struct CreatureAgenda* this, const void* edx, unsigned long param_1) asm("?ConstructSubActionsForAttackerThrowBallAtGoal@CreatureAgenda@@QAE_NK@Z");
 
 // Override methods
 

@@ -8,10 +8,12 @@
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "Base.h" /* For struct Base */
+#include "CreatureAction.h" /* For enum CREATURE_SUB_STATE_ACTIONS */
 
 // Forward Declares
 
 struct Creature;
+struct SubArgument;
 
 struct CreatureSubAction
 {
@@ -95,6 +97,13 @@ extern const struct BaseVftable __vt__23CreatureSubActionAgenda asm("??_7Creatur
 
 // win1.41 004ff1b0 mac 1028cea0 CreatureSubActionAgenda::CreatureSubActionAgenda(Creature*)
 void __fastcall __ct__23CreatureSubActionAgendaFP8Creature(struct CreatureSubActionAgenda* this, const void* edx, struct Creature* creature);
+
+// Non-virtual methods
+
+// win1.41 004ff240 mac 1028cc30 CreatureSubActionAgenda::AddSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
+void __fastcall AddSubAction__23CreatureSubActionAgendaF26CREATURE_SUB_STATE_ACTIONSP11SubArgumentM8CreatureFPCvPvP9MapCoords_iM8CreatureFPCvPv_v(struct CreatureSubActionAgenda* this, const void* edx, enum CREATURE_SUB_STATE_ACTIONS param_1, struct SubArgument* param_2, int (__thiscall* param_3)(struct Creature * param_1, const void * param_2, void * param_3, struct MapCoords * param_4), void (__thiscall* param_4)(struct Creature * param_1, const void * param_2, void * param_3)) asm("?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z");
+// win1.41 004ff3a0 mac 1028cb10 CreatureSubActionAgenda::AddMainSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
+void __fastcall AddMainSubAction__23CreatureSubActionAgendaF26CREATURE_SUB_STATE_ACTIONSP11SubArgumentM8CreatureFPCvPvP9MapCoords_iM8CreatureFPCvPv_v(struct CreatureSubActionAgenda* this, const void* edx, enum CREATURE_SUB_STATE_ACTIONS param_1, struct SubArgument* param_2, int (__thiscall* param_3)(struct Creature * param_1, const void * param_2, void * param_3, struct MapCoords * param_4), void (__thiscall* param_4)(struct Creature * param_1, const void * param_2, void * param_3)) asm("?AddMainSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z");
 
 // Override methods
 

@@ -81,7 +81,7 @@
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x005575e0
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x00563ea0
 .extern @ReadInfo__10GameOSFileFPPC9GBaseInfo@12
@@ -90,7 +90,7 @@
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern _jmp_addr_0x0056fe70
-.extern _jmp_addr_0x0056fef0
+.extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .extern ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
@@ -103,8 +103,8 @@
 .extern _SetMaterialProperties__7GJUtilsFP8LH3DMeshRC18MaterialProperties
 .extern _jmp_addr_0x005b2f10
 .extern _jmp_addr_0x005b2fb0
-.extern _jmp_addr_0x005c8280
-.extern _jmp_addr_0x005c8ce0
+.extern ?TriggerCategory@HelpSystem@@QAEXW4HELP_SET_CATEGORY@@@Z
+.extern ?RunMessage@HelpSystem@@QAEIKKPAD@Z
 .extern _jmp_addr_0x005cd170
 .extern _jmp_addr_0x005ced10
 .extern _jmp_addr_0x005d1260
@@ -225,7 +225,7 @@
 .extern _jmp_addr_0x0074dc80
 .extern @__ct__8VillagerFRC9MapCoordsPC13GVillagerInfoUli@21
 .extern _jmp_addr_0x0074fbc0
-.extern _jmp_addr_0x007506c0
+.extern ?VillagerDead@Villager@@QAEXW4DEATH_REASON@@PAVGPlayer@@MH@Z
 .extern @ToBeDeleted__8VillagerFi@12
 .extern @SetAge__8VillagerFUl@12
 .extern ?Save@Villager@@UAEIAAVGameOSFile@@@Z
@@ -2722,7 +2722,7 @@ _jmp_addr_0x00727d8c:    {disp32} mov       eax, dword ptr [esi + 0x00000214]   
 _jmp_addr_0x00727da1:    {disp8} mov        edx, dword ptr [edi + 0x4c]                          // 0x00727da1    8b574c
                          push               edx                                                  // 0x00727da4    52
                          mov.s              ecx, esi                                             // 0x00727da5    8bce
-                         call               _jmp_addr_0x00561e10                                 // 0x00727da7    e864a0e3ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z           // 0x00727da7    e864a0e3ff
                          cmp                dword ptr [data_bytes + 0x226990], ebp               // 0x00727dac    392d90c9be00
                          {disp8} je         _jmp_addr_0x00727e18                                 // 0x00727db2    7464
                          push               ebp                                                  // 0x00727db4    55

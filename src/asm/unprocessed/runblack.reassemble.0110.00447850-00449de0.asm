@@ -17,7 +17,7 @@
 .extern _jmp_addr_0x0046ee60
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
-.extern _jmp_addr_0x005c46e0
+.extern ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern _atexit
@@ -2176,7 +2176,7 @@ _CameraHelpCallback__10CameraHelpF16CameraHelpReasonR7LHPointUl:    {disp8} mov 
                          push               eax                                           // 0x0044915f    50
                          {disp32} mov       eax, dword ptr [_game]                        // 0x00449160    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00250060]             // 0x00449165    8b8860002500
-                         call               _jmp_addr_0x005c46e0                          // 0x0044916b    e870b51700
+                         call               ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z                          // 0x0044916b    e870b51700
                          {disp8} mov        ebx, dword ptr [esp + 0x18]                   // 0x00449170    8b5c2418
                          xor.s              edi, edi                                      // 0x00449174    33ff
                          mov                esi, 0x00c5a320                               // 0x00449176    be20a3c500

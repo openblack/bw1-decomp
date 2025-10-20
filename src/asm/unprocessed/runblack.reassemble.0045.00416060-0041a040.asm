@@ -52,7 +52,7 @@
 .extern @ToBeDeleted__6LivingFi@12
 .extern _jmp_addr_0x005ec240
 .extern _jmp_addr_0x005ec480
-.extern _jmp_addr_0x005ecac0
+.extern ?PlayAnimThenSetState@Living@@QAEXEK@Z
 .extern @SetState__12LivingActionFUlUc@16
 .extern _jmp_addr_0x005ecf40
 .extern @IAmFlockLeader__6LivingFv@4
@@ -60,7 +60,7 @@
 .extern @GetFlockDistance__6LivingFv@4
 .extern _jmp_addr_0x005ed010
 .extern @SetAge__6LivingFUl@12
-.extern _jmp_addr_0x005ee5f0
+.extern ?SetFlock@Living@@QAEXPAVFlock@@@Z
 .extern @SetupMoveToPos__6LivingFRC9MapCoordsUc@13
 .extern @SetState__6LivingFUlUc@16
 .extern _jmp_addr_0x00602ff0
@@ -73,7 +73,7 @@
 .extern @InBounds__9MapCoordsCFv@4
 .extern @IsCloseToEqual__9MapCoordsCFRC9MapCoordsf@16
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
-.extern _jmp_addr_0x0060acd0
+.extern ?SetupMobileMoveToObject@MobileWallHug@@QAEXPAVObject@@@Z
 .extern @AreWeThere__13MobileWallHugFf@12
 .extern _jmp_addr_0x0060adc0
 .extern @MoveTo__13MobileWallHugFv@4
@@ -3867,7 +3867,7 @@ _jmp_addr_0x00417c02:    {disp32} mov       ecx, dword ptr [ebx + 0x000000b8]   
                          call               _jmp_addr_0x0052fb50                          // 0x00417c0f    e83c7f1100
                          push               0x0                                           // 0x00417c14    6a00
                          mov.s              ecx, ebx                                      // 0x00417c16    8bcb
-                         call               _jmp_addr_0x005ee5f0                          // 0x00417c18    e8d3691d00
+                         call               ?SetFlock@Living@@QAEXPAVFlock@@@Z            // 0x00417c18    e8d3691d00
 _jmp_addr_0x00417c1d:    pop                edi                                           // 0x00417c1d    5f
                          pop                ebx                                           // 0x00417c1e    5b
                          ret                                                              // 0x00417c1f    c3
@@ -4006,7 +4006,7 @@ _jmp_addr_0x00417c8b:    pop                edi                                 
 _jmp_addr_0x00417d65:    push               0x1                                           // 0x00417d65    6a01
                          push               0x30                                          // 0x00417d67    6a30
                          mov.s              ecx, esi                                      // 0x00417d69    8bce
-                         call               _jmp_addr_0x005ecac0                          // 0x00417d6b    e8504d1d00
+                         call               ?PlayAnimThenSetState@Living@@QAEXEK@Z        // 0x00417d6b    e8504d1d00
                          mov                eax, 0x00000001                               // 0x00417d70    b801000000
                          pop                esi                                           // 0x00417d75    5e
                          ret                                                              // 0x00417d76    c3
@@ -4526,7 +4526,7 @@ _jmp_addr_0x00418280:    push               esi                                 
                          push               0x1                                           // 0x004182b2    6a01
                          push               0x21                                          // 0x004182b4    6a21
                          mov.s              ecx, esi                                      // 0x004182b6    8bce
-                         call               _jmp_addr_0x005ecac0                          // 0x004182b8    e803481d00
+                         call               ?PlayAnimThenSetState@Living@@QAEXEK@Z        // 0x004182b8    e803481d00
                          mov                eax, 0x00000001                               // 0x004182bd    b801000000
                          pop                esi                                           // 0x004182c2    5e
                          ret                                                              // 0x004182c3    c3
@@ -4550,7 +4550,7 @@ _jmp_addr_0x004182d0:    push               esi                                 
                          push               0x1                                           // 0x004182de    6a01
                          {disp8} jne        _jmp_addr_0x00418303                          // 0x004182e0    7521
                          push               0x27                                          // 0x004182e2    6a27
-                         call               _jmp_addr_0x005ecac0                          // 0x004182e4    e8d7471d00
+                         call               ?PlayAnimThenSetState@Living@@QAEXEK@Z        // 0x004182e4    e8d7471d00
                          {disp32} mov       word ptr [esi + 0x000000e4], 0x0000           // 0x004182e9    66c786e40000000000
                          {disp32} mov       dword ptr [esi + 0x000000fc], 0x00000000      // 0x004182f2    c786fc00000000000000
                          mov                eax, 0x00000001                               // 0x004182fc    b801000000
@@ -4558,7 +4558,7 @@ _jmp_addr_0x004182d0:    push               esi                                 
                          ret                                                              // 0x00418302    c3
 _jmp_addr_0x00418303:    push               0x21                                          // 0x00418303    6a21
                          mov.s              ecx, esi                                      // 0x00418305    8bce
-                         call               _jmp_addr_0x005ecac0                          // 0x00418307    e8b4471d00
+                         call               ?PlayAnimThenSetState@Living@@QAEXEK@Z        // 0x00418307    e8b4471d00
                          mov                eax, 0x00000001                               // 0x0041830c    b801000000
                          pop                esi                                           // 0x00418311    5e
                          ret                                                              // 0x00418312    c3
@@ -4577,7 +4577,7 @@ _jmp_addr_0x00418303:    push               0x21                                
                          nop                                                              // 0x0041831f    90
                          push               0x1                                           // 0x00418320    6a01
                          push               0x2b                                          // 0x00418322    6a2b
-                         call               _jmp_addr_0x005ecac0                          // 0x00418324    e897471d00
+                         call               ?PlayAnimThenSetState@Living@@QAEXEK@Z        // 0x00418324    e897471d00
                          mov                eax, 0x00000001                               // 0x00418329    b801000000
                          ret                                                              // 0x0041832e    c3
                          nop                                                              // 0x0041832f    90
@@ -5379,7 +5379,7 @@ _jmp_addr_0x00418d20:    push               esi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x00418d22    8b7c240c
                          mov.s              esi, ecx                                      // 0x00418d26    8bf1
                          push               edi                                           // 0x00418d28    57
-                         call               _jmp_addr_0x0060acd0                          // 0x00418d29    e8a21f1f00
+                         call               ?SetupMobileMoveToObject@MobileWallHug@@QAEXPAVObject@@@Z                          // 0x00418d29    e8a21f1f00
                          push               0x0                                           // 0x00418d2e    6a00
                          push               0x009c8de8                                    // 0x00418d30    68e88d9c00
                          push               0x009c7f50                                    // 0x00418d35    68507f9c00

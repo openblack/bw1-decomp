@@ -5,7 +5,7 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For MAGIC_TYPE_LAST_142, TOWN_DESIRE_INFO_LAST, enum ABODE_TYPE, enum MAGIC_TYPE, enum TRIBE_TYPE */
+#include <chlasm/Enum.h> /* For MAGIC_TYPE_LAST_142, TOWN_DESIRE_INFO_LAST, enum ABODE_TYPE, enum LIVING_TYPE, enum MAGIC_TYPE, enum RESOURCE_TYPE, enum TRIBE_TYPE */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
 #include <reversing_utils/re_common.h> /* For bool32_t */
@@ -192,6 +192,8 @@ void __fastcall AddStructureToTown__4TownFP13MultiMapFixed(struct Town* this, co
 void __fastcall AddAbodeToTownStats__4TownFP5Abode(struct Town* this, const void* edx, struct Abode* abode) asm("?AddAbodeToTownStats@Town@@QAEXPAVAbode@@@Z");
 // win1.41 0073a090 mac 10556400 Town::AddVillagerToTown(Villager *)
 bool __fastcall AddVillagerToTown__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?AddVillagerToTown@Town@@QAE_NPAVVillager@@@Z");
+// win1.41 0073af50 mac 10555160 Town::ChildToAdult(Villager *)
+void __fastcall ChildToAdult__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* param_1) asm("?ChildToAdult@Town@@QAEXPAVVillager@@@Z");
 // win1.41 0073b370 mac 10554d60 Town::FindAbodeWithSpaceInTown(Villager *, float)
 struct Abode* __fastcall FindAbodeWithSpaceInTown__4TownFP8Villagerf(struct Town* this, const void* edx, struct Villager* villager, float min_score) asm("?FindAbodeWithSpaceInTown@Town@@QAEPAVAbode@@PAVVillager@@M@Z");
 // win1.41 0073b580 mac 10554bd0 Town::IsVillagerInHomelessList(Villager *)
@@ -224,12 +226,16 @@ struct TownSpellIcon* __fastcall GetNextSpellIcon__4TownFP13TownSpellIcon(const 
 bool __fastcall AddMagicTypesHeld__4TownF10MAGIC_TYPE(struct Town* this, const void* edx, enum MAGIC_TYPE type) asm("?AddMagicTypesHeld@Town@@QAE_NW4MAGIC_TYPE@@@Z");
 // win1.41 0073d630 mac 10550b00 Town::IsMagicTypeHeld(MAGIC_TYPE)
 bool __fastcall IsMagicTypeHeld__4TownF10MAGIC_TYPE(struct Town* this, const void* edx, enum MAGIC_TYPE type) asm("?IsMagicTypeHeld@Town@@QAE_NW4MAGIC_TYPE@@@Z");
+// win1.41 0073de30 mac 1054fb60 Town::GetFlock(LIVING_TYPE, int)
+bool __fastcall GetFlock__4TownF11LIVING_TYPEi(struct Town* this, const void* edx, enum LIVING_TYPE param_1, int param_2) asm("?GetFlock@Town@@QAE_NW4LIVING_TYPE@@H@Z");
 // win1.41 0073e1d0 mac 1054f6b0 Town::GetTotemStatue(void)
 struct TotemStatue* __fastcall GetTotemStatue__4TownFv(struct Town* this) asm("?GetTotemStatue@Town@@QAEPAVTotemStatue@@XZ");
 // win1.41 0073e210 mac 1054f460 Town::RemoveVillager(Villager *)
 void __fastcall RemoveVillager__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?RemoveVillager@Town@@QAEXPAVVillager@@@Z");
 // win1.41 0073e360 mac 1054f190 Town::RemoveVillagerOnWayToWorshipSite(Villager *)
 void __fastcall RemoveVillagerOnWayToWorshipSite__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?RemoveVillagerOnWayToWorshipSite@Town@@QAEXPAVVillager@@@Z");
+// win1.41 0073e900 mac 1054e460 Town::GetTemporaryResourceStorePotOrPos(MapCoords const &, MapCoords &, RESOURCE_TYPE)
+void* __fastcall GetTemporaryResourceStorePotOrPos__4TownFRC9MapCoordsR9MapCoords13RESOURCE_TYPE(struct Town* this, const void* edx, const struct MapCoords* param_1, struct MapCoords* param_2, enum RESOURCE_TYPE param_3) asm("?GetTemporaryResourceStorePotOrPos@Town@@QAEPAXABUMapCoords@@AAU2@W4RESOURCE_TYPE@@@Z");
 // win1.41 0073eb00 mac 1054dfe0 Town::AssignForestsToTown(void)
 void __fastcall AssignForestsToTown__4TownFv(struct Town* this) asm("?AssignForestsToTown@Town@@QAEXXZ");
 // win1.41 007408b0 mac 10008020 Town::GetCongregationPos(void)

@@ -49,7 +49,7 @@
 .extern _jmp_addr_0x00555270
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern @__ct__16GameThingWithPosFRC9MapCoords@12
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
@@ -3553,7 +3553,7 @@ _jmp_addr_0x007386f6:    mov                eax, 0x00000001                     
                          push               ebx                                            // 0x00738719    53
                          push               eax                                            // 0x0073871a    50
                          mov.s              ecx, esi                                       // 0x0073871b    8bce
-                         call               _jmp_addr_0x00561e10                           // 0x0073871d    e8ee96e2ff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z     // 0x0073871d    e8ee96e2ff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]         // 0x00738722    a190c9be00
                          test               eax, eax                                       // 0x00738727    85c0
                          {disp32} je        _jmp_addr_0x007387e3                           // 0x00738729    0f84b4000000

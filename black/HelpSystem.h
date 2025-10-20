@@ -11,6 +11,7 @@
 // Forward Declares
 
 struct Bubble;
+struct GameThingWithPos;
 struct HelpDudeControl;
 struct HelpSpirit;
 
@@ -154,6 +155,20 @@ void __fastcall ClearDialogueControl__10HelpSystemFv(struct HelpSystem* this);
 void __fastcall SetWideScreen__10HelpSystemFiUl(struct HelpSystem* this, const void* edx, int param_2, uint32_t param_3);
 // win1.41 005c6b60 mac 1001d4b0 HelpSystem::GetWideScreenPercentage(void) const
 float __fastcall GetWideScreenPercentage__10HelpSystemCFv(const struct HelpSystem* this);
+// win1.41 005c8280 mac 10351b90 HelpSystem::TriggerCategory(HELP_SET_CATEGORY)
+void __fastcall TriggerCategory__10HelpSystemF17HELP_SET_CATEGORY(struct HelpSystem* this, const void* edx, enum HELP_SET_CATEGORY param_1) asm("?TriggerCategory@HelpSystem@@QAEXW4HELP_SET_CATEGORY@@@Z");
+// win1.41 005c8b80 mac 10353090 HelpSystem::RunMessageSet(HELP_SYSTEM_MESSAGE_SET, GameThingWithPos *)
+uint32_t __fastcall RunMessageSet__10HelpSystemF23HELP_SYSTEM_MESSAGE_SETP16GameThingWithPos(struct HelpSystem* this, const void* edx, enum HELP_SYSTEM_MESSAGE_SET param_1, struct GameThingWithPos* param_2) asm("?RunMessageSet@HelpSystem@@QAEIW4HELP_SYSTEM_MESSAGE_SET@@PAVGameThingWithPos@@@Z");
+// win1.41 005c8c40 mac 10352f40 HelpSystem::StopHelpScriptsForNewHelp(void)
+uint32_t __fastcall StopHelpScriptsForNewHelp__10HelpSystemFv(struct HelpSystem* this) asm("?StopHelpScriptsForNewHelp@HelpSystem@@QAEIXZ");
+// win1.41 005c8c80 mac 10352ee0 HelpSystem::StopRunningScripts(void)
+uint32_t __fastcall StopRunningScripts__10HelpSystemFv(struct HelpSystem* this) asm("?StopRunningScripts@HelpSystem@@QAEIXZ");
+// win1.41 005c8ce0 mac 10352cf0 HelpSystem::RunMessage(unsigned long, unsigned long, char *)
+uint32_t __fastcall RunMessage__10HelpSystemFUlUlPc(struct HelpSystem* this, const void* edx, unsigned long param_1, unsigned long param_2, char* param_3) asm("?RunMessage@HelpSystem@@QAEIKKPAD@Z");
+// win1.41 005c94a0 mac 10353ce0 HelpSystem::GetHelpQueryOnGameThingWithPos(GameThingWithPos *)
+void __fastcall GetHelpQueryOnGameThingWithPos__10HelpSystemFP16GameThingWithPos(struct HelpSystem* this, const void* edx, struct GameThingWithPos* param_1) asm("?GetHelpQueryOnGameThingWithPos@HelpSystem@@QAEXPAVGameThingWithPos@@@Z");
+// win1.41 005c98e0 mac 10353970 HelpSystem::HelpQuery(void)
+void __fastcall HelpQuery__10HelpSystemFv(struct HelpSystem* this) asm("?HelpQuery@HelpSystem@@QAEXXZ");
 
 // Override methods
 

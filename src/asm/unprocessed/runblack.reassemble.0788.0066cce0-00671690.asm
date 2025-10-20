@@ -29,9 +29,9 @@
 .extern _jmp_addr_0x0052eac0
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00555880
-.extern _jmp_addr_0x00561e10
+.extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
-.extern _jmp_addr_0x0056fef0
+.extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern _jmp_addr_0x005c9c60
 .extern _jmp_addr_0x005dc130
 .extern _jmp_addr_0x005dc870
@@ -1123,7 +1123,7 @@ _jmp_addr_0x0066d541:    add                esp, 0x000000c8                     
                          push               ebx                                           // 0x0066d556    53
                          push               esi                                           // 0x0066d557    56
                          mov.s              esi, ecx                                      // 0x0066d558    8bf1
-                         call               _jmp_addr_0x0056fef0                          // 0x0066d55a    e89129f0ff
+                         call               ?CheckAndSetSaved@GameThing@@QAE_NXZ          // 0x0066d55a    e89129f0ff
                          mov.s              ebx, eax                                      // 0x0066d55f    8bd8
                          test               ebx, ebx                                      // 0x0066d561    85db
                          {disp32} je        _jmp_addr_0x0066d63f                          // 0x0066d563    0f84d6000000
@@ -1356,7 +1356,7 @@ _jmp_addr_0x0066d76e:    {disp32} mov       ecx, dword ptr [esi + 0x00000214]   
 _jmp_addr_0x0066d783:    {disp8} mov        ecx, dword ptr [edi + 0x6c]                   // 0x0066d783    8b4f6c
                          push               ecx                                           // 0x0066d786    51
                          mov.s              ecx, esi                                      // 0x0066d787    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x0066d789    e88246efff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0066d789    e88246efff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x0066d78e    a190c9be00
                          test               eax, eax                                      // 0x0066d793    85c0
                          {disp8} je         _jmp_addr_0x0066d804                          // 0x0066d795    746d
@@ -1688,11 +1688,11 @@ _jmp_addr_0x0066da77:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          {disp8} mov        eax, dword ptr [edi + 0x78]                   // 0x0066daa2    8b4778
                          push               eax                                           // 0x0066daa5    50
                          mov.s              ecx, esi                                      // 0x0066daa6    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x0066daa8    e86343efff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0066daa8    e86343efff
                          {disp8} mov        ecx, dword ptr [edi + 0x7c]                   // 0x0066daad    8b4f7c
                          push               ecx                                           // 0x0066dab0    51
                          mov.s              ecx, esi                                      // 0x0066dab1    8bce
-                         call               _jmp_addr_0x00561e10                          // 0x0066dab3    e85843efff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0066dab3    e85843efff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x0066dab8    a190c9be00
                          test               eax, eax                                      // 0x0066dabd    85c0
                          {disp8} je         _jmp_addr_0x0066daf5                          // 0x0066dabf    7434
@@ -4462,7 +4462,7 @@ _jmp_addr_0x0066f511:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          {disp32} mov       eax, dword ptr [esi + 0x000000b8]             // 0x0066f5b2    8b86b8000000
                          push               eax                                           // 0x0066f5b8    50
                          mov.s              ecx, edi                                      // 0x0066f5b9    8bcf
-                         call               _jmp_addr_0x00561e10                          // 0x0066f5bb    e85028efff
+                         call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z    // 0x0066f5bb    e85028efff
                          pop                edi                                           // 0x0066f5c0    5f
                          mov                eax, 0x00000001                               // 0x0066f5c1    b801000000
                          pop                esi                                           // 0x0066f5c6    5e

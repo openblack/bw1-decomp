@@ -47,7 +47,7 @@
 .globl _jmp_addr_0x00483fe0
 .globl _jmp_addr_0x00484260
 .globl @GetSafeBuffer__12LH3DCreatureFv@4
-.globl _jmp_addr_0x004842d0
+.globl ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ
 .globl _jmp_addr_0x004842e0
 .globl _jmp_addr_0x00484300
 .globl _jmp_addr_0x00484310
@@ -1090,7 +1090,8 @@ _jmp_addr_0x004842c1:    {disp32} mov       eax, dword ptr [ecx + 0x00005178]   
                          nop                                                              // 0x004842cd    90
                          nop                                                              // 0x004842ce    90
                          nop                                                              // 0x004842cf    90
-_jmp_addr_0x004842d0:    {disp32} mov       edx, dword ptr [ecx + 0x00004994]             // 0x004842d0    8b9194490000
+?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ:
+                         {disp32} mov       edx, dword ptr [ecx + 0x00004994]             // 0x004842d0    8b9194490000
                          xor.s              eax, eax                                      // 0x004842d6    33c0
                          test               edx, edx                                      // 0x004842d8    85d2
                          setne              al                                            // 0x004842da    0f95c0
@@ -1175,7 +1176,7 @@ _jmp_addr_0x00484398:    pop                edi                                 
 _jmp_addr_0x004843a0:    push               esi                                           // 0x004843a0    56
                          push               edi                                           // 0x004843a1    57
                          mov.s              esi, ecx                                      // 0x004843a2    8bf1
-                         call               _jmp_addr_0x004842d0                          // 0x004843a4    e827ffffff
+                         call               ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ // 0x004843a4    e827ffffff
                          test               eax, eax                                      // 0x004843a9    85c0
                          {disp8} jne        _jmp_addr_0x00484404                          // 0x004843ab    7557
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x004843ad    8b7c240c
@@ -1218,7 +1219,7 @@ _jmp_addr_0x00484410:    sub                esp, 0x0c                           
                          push               ebx                                           // 0x00484413    53
                          push               esi                                           // 0x00484414    56
                          mov.s              esi, ecx                                      // 0x00484415    8bf1
-                         call               _jmp_addr_0x004842d0                          // 0x00484417    e8b4feffff
+                         call               ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ // 0x00484417    e8b4feffff
                          test               eax, eax                                      // 0x0048441c    85c0
                          {disp32} jne       _jmp_addr_0x00484534                          // 0x0048441e    0f8510010000
                          xor.s              ebx, ebx                                      // 0x00484424    33db
@@ -1304,7 +1305,7 @@ _jmp_addr_0x00484534:    pop                esi                                 
                          nop                                                              // 0x0048453f    90
 _jmp_addr_0x00484540:    push               esi                                           // 0x00484540    56
                          mov.s              esi, ecx                                      // 0x00484541    8bf1
-                         call               _jmp_addr_0x004842d0                          // 0x00484543    e888fdffff
+                         call               ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ // 0x00484543    e888fdffff
                          test               eax, eax                                      // 0x00484548    85c0
                          {disp8} jne        _jmp_addr_0x00484589                          // 0x0048454a    753d
                          push               eax                                           // 0x0048454c    50
@@ -1334,7 +1335,7 @@ _jmp_addr_0x00484589:    xor.s              eax, eax                            
                          nop                                                              // 0x0048458f    90
 _jmp_addr_0x00484590:    push               esi                                           // 0x00484590    56
                          mov.s              esi, ecx                                      // 0x00484591    8bf1
-                         call               _jmp_addr_0x004842d0                          // 0x00484593    e838fdffff
+                         call               ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ // 0x00484593    e838fdffff
                          test               eax, eax                                      // 0x00484598    85c0
                          {disp8} jne        _jmp_addr_0x004845e1                          // 0x0048459a    7545
                          push               eax                                           // 0x0048459c    50

@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x0052b630
 .extern _jmp_addr_0x0052c7b0
 .extern @__ct__5FlockFRC9MapCoordsPC10GFlockInfoP7GPlayerUl@24
-.extern _jmp_addr_0x0052fc20
+.extern ?SetDomainCentrePos@Flock@@QAEXABUMapCoords@@@Z
 .extern @__ct__9GFootpathFP16GameThingWithPosP16GameThingWithPos@16
 .extern _jmp_addr_0x00534f90
 .extern @AddPos__9GFootpathFRC9MapCoords@12
@@ -96,7 +96,7 @@
 .extern ?SetWorshipPercentage@Town@@QAEXM@Z
 .extern ?AddMagicTypesHeld@Town@@QAE_NW4MAGIC_TYPE@@@Z
 .extern ?IsMagicTypeHeld@Town@@QAE_NW4MAGIC_TYPE@@@Z
-.extern _jmp_addr_0x0073e900
+.extern ?GetTemporaryResourceStorePotOrPos@Town@@QAEPAXABUMapCoords@@AAU2@W4RESOURCE_TYPE@@@Z
 .extern _jmp_addr_0x0073fda0
 .extern @AddSpell__10TownCentreF15SPELL_SEED_TYPE@12
 .extern _Create__17PlannedTownCentreFRC9MapCoordsPC10GAbodeInfoP4Townff
@@ -1718,7 +1718,7 @@ _jmp_addr_0x00716433:    {disp32} lea       edx, dword ptr [ebp + 0x00001000]   
                          add                esp, 0x08                                     // 0x00716447    83c408
                          push               eax                                           // 0x0071644a    50
                          mov.s              ecx, edi                                      // 0x0071644b    8bcf
-                         call               _jmp_addr_0x0052fc20                          // 0x0071644d    e8ce97e1ff
+                         call               ?SetDomainCentrePos@Flock@@QAEXABUMapCoords@@@Z                          // 0x0071644d    e8ce97e1ff
                          {disp32} mov       eax, dword ptr [ebp + 0x0000600c]             // 0x00716452    8b850c600000
                          test               eax, eax                                      // 0x00716458    85c0
                          {disp8} je         _jmp_addr_0x00716465                          // 0x0071645a    7409
@@ -2289,7 +2289,7 @@ _jmp_addr_0x00716a39:    {disp32} mov       dword ptr [_DAT_00d99380], eax      
                          {disp8} mov        dword ptr [esp + 0x40], ebx                   // 0x00716b91    895c2440
                          {disp8} mov        dword ptr [esp + 0x44], ebx                   // 0x00716b95    895c2444
                          {disp8} mov        dword ptr [esp + 0x48], 0x00000000            // 0x00716b99    c744244800000000
-                         call               _jmp_addr_0x0073e900                          // 0x00716ba1    e85a7d0200
+                         call               ?GetTemporaryResourceStorePotOrPos@Town@@QAEPAXABUMapCoords@@AAU2@W4RESOURCE_TYPE@@@Z                          // 0x00716ba1    e85a7d0200
                          push               0x1                                           // 0x00716ba6    6a01
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x00716ba8    8d4c2438
                          push               ecx                                           // 0x00716bac    51
@@ -2297,7 +2297,7 @@ _jmp_addr_0x00716a39:    {disp32} mov       dword ptr [_DAT_00d99380], eax      
                          push               edx                                           // 0x00716bb1    52
                          mov.s              ecx, edi                                      // 0x00716bb2    8bcf
                          mov.s              esi, eax                                      // 0x00716bb4    8bf0
-                         call               _jmp_addr_0x0073e900                          // 0x00716bb6    e8457d0200
+                         call               ?GetTemporaryResourceStorePotOrPos@Town@@QAEPAXABUMapCoords@@AAU2@W4RESOURCE_TYPE@@@Z                          // 0x00716bb6    e8457d0200
                          cmp.s              esi, ebx                                      // 0x00716bbb    3bf3
                          mov.s              edi, eax                                      // 0x00716bbd    8bf8
                          {disp8} je         _jmp_addr_0x00716bd7                          // 0x00716bbf    7416

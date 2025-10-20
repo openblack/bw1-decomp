@@ -62,4 +62,11 @@ bool __stdcall CreateChallengeFiles__13ChallengeRoomFPc(void);
 // win1.41 00781a60 mac 101b4180 ChallengeRoom::ChallengeRoom(void)
 struct ChallengeRoom* __fastcall __ct__13ChallengeRoomFv(struct ChallengeRoom* this);
 
+// Non-virtual methods
+
+// win1.41 00784c10 mac 101abd90 ChallengeRoom::StartScript(unsigned long)
+bool __fastcall StartScript__13ChallengeRoomFUl(struct ChallengeRoom* this, const void* edx, unsigned long param_1) asm("?StartScript@ChallengeRoom@@QAE_NK@Z");
+// win1.41 00784d10 mac 101aba10 ChallengeRoom::ChallengeLoad(GameOSFile &)
+void __fastcall ChallengeLoad__13ChallengeRoomFR10GameOSFile(struct ChallengeRoom* this, const void* edx, struct GameOSFile* param_1) asm("?ChallengeLoad@ChallengeRoom@@QAEXAAVGameOSFile@@@Z");
+
 #endif /* BW1_DECOMP_CHALLENGE_ROOM_INCLUDED_H */

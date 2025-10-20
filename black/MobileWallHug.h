@@ -142,6 +142,8 @@ struct MobileWallHug* __fastcall __ct__13MobileWallHugFv(struct MobileWallHug* t
 void __fastcall RebuildMoveByStep__13MobileWallHugFv(struct MobileWallHug* this);
 // win1.41 0060abc0 mac 1001c770 MobileWallHug::SetupMobileMoveToPos(MapCoords const &, MOVE_TO_STATES)
 void __fastcall SetupMobileMoveToPos__13MobileWallHugFRC9MapCoords14MOVE_TO_STATES(struct MobileWallHug* this, const void* edx, const struct MapCoords* coords, enum MOVE_TO_STATES move_to_state);
+// win1.41 0060acd0 mac 103c3ee0 MobileWallHug::SetupMobileMoveToObject(Object *)
+void __fastcall SetupMobileMoveToObject__13MobileWallHugFP6Object(struct MobileWallHug* this, const void* edx, struct Object* param_1) asm("?SetupMobileMoveToObject@MobileWallHug@@QAEXPAVObject@@@Z");
 // win1.41 0060ad40 mac 1005f4a0 MobileWallHug::AreWeThere(float)
 bool __fastcall AreWeThere__13MobileWallHugFf(struct MobileWallHug* this, const void* edx, float param_1);
 // win1.41 0060af20 mac 10047250 MobileWallHug::MoveTo(void)

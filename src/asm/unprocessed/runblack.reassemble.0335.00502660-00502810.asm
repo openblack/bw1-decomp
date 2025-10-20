@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00475730
+.extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
 .extern _jmp_addr_0x0047a880
 
 start_0x00502660_0x00502810:
@@ -87,7 +87,7 @@ start_0x00502660_0x00502810:
                          push              0x1                                           // 0x00502771    6a01
                          push              0x00be6540                                    // 0x00502773    684065be00
                          mov.s             ecx, esi                                      // 0x00502778    8bce
-                         call              _jmp_addr_0x00475730                          // 0x0050277a    e8b12ff7ff
+                         call              ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z                          // 0x0050277a    e8b12ff7ff
 _jmp_addr_0x0050277f:    mov               eax, 0x00000001                               // 0x0050277f    b801000000
                          pop               esi                                           // 0x00502784    5e
                          add               esp, 0x2c                                     // 0x00502785    83c42c

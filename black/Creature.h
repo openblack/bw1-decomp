@@ -7,7 +7,8 @@
 #include <uchar.h> /* For char16_t */
 
 #include <chlasm/AllMeshes.h> /* For enum ANIM_LIST */
-#include <chlasm/Enum.h> /* For enum EFFECT_TYPE, enum IMPRESSIVE_TYPE, enum REACTION */
+#include <chlasm/CreatureEnum.h> /* For enum CREATURE_ACTION */
+#include <chlasm/Enum.h> /* For enum CREATURE_DESIRES, enum EFFECT_TYPE, enum IMPRESSIVE_TYPE, enum REACTION */
 #include <chlasm/GStates.h> /* For enum VILLAGER_STATES */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
@@ -26,8 +27,10 @@ struct BookmarkGraphic;
 struct Bubble;
 struct Citadel;
 struct ControlHandUpdateInfo;
+struct CreatureBelief;
 struct CreatureMental;
 struct CreaturePhysical;
+struct CreaturePlan;
 struct CreatureReceiveSpell;
 struct Dance;
 struct EffectNumbers;
@@ -250,12 +253,26 @@ struct Creature* __fastcall __ct__8CreatureFv(struct Creature* this);
 
 // Non-virtual methods
 
+// win1.41 00475730 mac 101ddff0 Creature::FinishActionUnsuccessfully(char *, int, int)
+void __fastcall FinishActionUnsuccessfully__8CreatureFPcii(struct Creature* this, const void* edx, char* param_1, int param_2, int param_3) asm("?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z");
 // win1.41 00477850 mac 101daef0 Creature::GetCreature3D(void)
 struct LH3DCreature* __fastcall GetCreature3D__8CreatureFv(struct Creature* this);
 // win1.41 0047c650 mac 101d2500 Creature::SetAnimationTimeModify(bool value)
 void __fastcall SetAnimationTimeModify__8CreatureFb(struct Creature* this, const void* edx, bool value) asm("?SetAnimationTimeModify@Creature@@QAEX_N@Z");
+// win1.41 0047c690 mac 101d2420 Creature::IsOnHomeTeam(void)
+bool __fastcall IsOnHomeTeam__8CreatureFv(struct Creature* this) asm("?IsOnHomeTeam@Creature@@QAE_NXZ");
+// win1.41 004c4450 mac 10230ac0 Creature::ForceActivityAndForceAction(CREATURE_DESIRES, CreatureBelief *, CREATURE_ACTION, CreatureBelief *, CreatureBelief *, int, int)
+void __fastcall ForceActivityAndForceAction__8CreatureF16CREATURE_DESIRESP14CreatureBelief15CREATURE_ACTIONP14CreatureBeliefP14CreatureBeliefii(struct Creature* this, const void* edx, enum CREATURE_DESIRES param_1, struct CreatureBelief* param_2, enum CREATURE_ACTION param_3, struct CreatureBelief* param_4, struct CreatureBelief* param_5, int param_6, int param_7) asm("?ForceActivityAndForceAction@Creature@@QAEXW4CREATURE_DESIRES@@PAVCreatureBelief@@W4CREATURE_ACTION@@11HH@Z");
+// win1.41 004c44b0 mac 10230950 Creature::ForceActivityAndForceAction(CreaturePlan &, int, int)
+void __fastcall ForceActivityAndForceAction__8CreatureFR12CreaturePlanii(struct Creature* this, const void* edx, struct CreaturePlan* param_1, int param_2, int param_3) asm("?ForceActivityAndForceAction@Creature@@QAEXAAVCreaturePlan@@HH@Z");
+// win1.41 004ea670 mac 10279d20 Creature::DecideOnNewPlan(CreaturePlan &)
+void __fastcall DecideOnNewPlan__8CreatureFR12CreaturePlan(struct Creature* this, const void* edx, struct CreaturePlan* param_1) asm("?DecideOnNewPlan@Creature@@QAEXAAVCreaturePlan@@@Z");
 // win1.41 004f8b80 mac 1028a7b0 Creature::ProcessSpells(void)
 void __fastcall ProcessSpells__8CreatureFv(struct Creature* this);
+// win1.41 004ffdd0 mac 102a0fc0 Creature::SubStatePerformPickUpParameter(CreatureBelief *)
+uint32_t __fastcall SubStatePerformPickUpParameter__8CreatureFP14CreatureBelief(struct Creature* this, const void* edx, struct CreatureBelief* param_1) asm("?SubStatePerformPickUpParameter@Creature@@QAEIPAVCreatureBelief@@@Z");
+// win1.41 00501d10 mac 1029da30 Creature::SubStatePerformAddVillagersToDance(void)
+bool __fastcall SubStatePerformAddVillagersToDance__8CreatureFv(struct Creature* this) asm("?SubStatePerformAddVillagersToDance@Creature@@QAE_NXZ");
 
 // Override methods
 

@@ -7,11 +7,11 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00475730
+.extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
 .extern _jmp_addr_0x0047a500
 .extern _jmp_addr_0x0047a880
 .extern _jmp_addr_0x0047d740
-.extern _jmp_addr_0x004842d0
+.extern ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ
 .extern _jmp_addr_0x004842e0
 .extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
 
@@ -22,7 +22,7 @@ start_0x00501a70_0x00501bc0:
                          mov.s             esi, ecx                                 // 0x00501a72    8bf1
                          {disp32} mov      eax, dword ptr [esi + 0x00000160]        // 0x00501a74    8b8660010000
                          {disp8} mov       ecx, dword ptr [eax + 0x58]              // 0x00501a7a    8b4858
-                         call              _jmp_addr_0x004842d0                     // 0x00501a7d    e84e28f8ff
+                         call              ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ                     // 0x00501a7d    e84e28f8ff
                          test              eax, eax                                 // 0x00501a82    85c0
                          {disp8} jne       _jmp_addr_0x00501ae1                     // 0x00501a84    755b
                          {disp8} mov       ecx, dword ptr [esi + 0x28]              // 0x00501a86    8b4e28
@@ -114,7 +114,7 @@ _jmp_addr_0x00501b09:    mov.s             ecx, esi                             
                          push              0x1                                      // 0x00501b7e    6a01
                          push              0x00be6540                               // 0x00501b80    684065be00
                          mov.s             ecx, esi                                 // 0x00501b85    8bce
-                         call              _jmp_addr_0x00475730                     // 0x00501b87    e8a43bf7ff
+                         call              ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z                     // 0x00501b87    e8a43bf7ff
 _jmp_addr_0x00501b8c:    mov               eax, 0x00000001                          // 0x00501b8c    b801000000
                          pop               esi                                      // 0x00501b91    5e
                          add               esp, 0x18                                // 0x00501b92    83c418

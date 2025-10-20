@@ -12,8 +12,8 @@
 .extern @GetTopState__6LivingCFv@4
 .extern ?InitialisePhysicsFromHand@Object@@UAEIPAULHPoint@@0PAVGInterfaceStatus@@PAV1@H@Z
 .extern ?InitialisePhysics@Object@@UAEIPBULHPoint@@0PAV1@_NPAVGInterfaceStatus@@@Z
-.extern _jmp_addr_0x00750940
-.extern _jmp_addr_0x00756000
+.extern ?CreateDroppedResource@Villager@@QAEXPAULHPoint@@00@Z
+.extern ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z
 .extern _atexit
 .extern ___nw__FUl
 .extern _jmp_addr_0x007fb810
@@ -193,7 +193,7 @@ _jmp_addr_0x005efec8:    {disp32} mov       edx, dword ptr [edi + 0x0000010c]   
                          push               edx                                      // 0x005efed0    52
                          push               0x0                                      // 0x005efed1    6a00
                          mov.s              ecx, edi                                 // 0x005efed3    8bcf
-                         call               _jmp_addr_0x00756000                     // 0x005efed5    e826611600
+                         call               ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z                     // 0x005efed5    e826611600
 _jmp_addr_0x005efeda:    pop                edi                                      // 0x005efeda    5f
                          mov.s              eax, esi                                 // 0x005efedb    8bc6
                          pop                esi                                      // 0x005efedd    5e
@@ -223,7 +223,7 @@ _jmp_addr_0x005efeda:    pop                edi                                 
                          push               edi                                      // 0x005efefd    57
                          mov.s              esi, ecx                                 // 0x005efefe    8bf1
                          push               ebx                                      // 0x005eff00    53
-                         call               _jmp_addr_0x00750940                     // 0x005eff01    e83a0a1600
+                         call               ?CreateDroppedResource@Villager@@QAEXPAULHPoint@@00@Z                     // 0x005eff01    e83a0a1600
                          {disp8} mov        eax, dword ptr [esp + 0x24]              // 0x005eff06    8b442424
                          {disp8} mov        ecx, dword ptr [esp + 0x20]              // 0x005eff0a    8b4c2420
                          {disp8} mov        edx, dword ptr [esp + 0x1c]              // 0x005eff0e    8b54241c

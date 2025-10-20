@@ -342,7 +342,7 @@ uint32_t __fastcall Save__12PlannedAbodeFR10GameOSFile(struct GameThing* this, c
     asm("{disp8} mov        eax, dword ptr [esi + 0x48]");                   // 0x00405842    8b4648
     asm("push               eax");                                           // 0x00405845    50
     asm("mov.s              ecx, edi");                                      // 0x00405846    8bcf
-    asm("call               _jmp_addr_0x00561e10");                          // 0x00405848    e8c3c51500
+    asm("call               ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z");                          // 0x00405848    e8c3c51500
     asm("pop                edi");                                           // 0x0040584d    5f
     asm("mov                eax, 0x00000001");                               // 0x0040584e    b801000000
     asm("pop                esi");                                           // 0x00405853    5e
