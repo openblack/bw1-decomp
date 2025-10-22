@@ -42,18 +42,24 @@ def mac_mangled_to_msvc_mangled(return_type: str, call_type: str, mac_mangled: s
             argument_types.append(t)
     argument_names = [f"param_{i + 1}" for i in range(len(argument_types))]
 
+    if mac_unmangled.function_name == '__dt' and mac_unmangled.args == [UnmangledDetails.Arg([], "unsigned int")]:
+        call_type = 'virtual'
+
     if hasattr(mac_unmangled, "type_name"): # class function
 
         embedded_enums = "\n".join(f"enum {i} {{{i}_0}};" for i in EMBEDDED_ENUMS.get(mac_unmangled.type_name, []))
 
         class_definition = f"""\
+{('namespace ' + mac_unmangled.namespace + '{') if hasattr(mac_unmangled, "namespace") else ''}
 class {mac_unmangled.type_name}
 {{
 public:
 {embedded_enums}
 {call_type if call_type in {'static', 'virtual'} else ''} {return_type if mac_unmangled.function_name not in ['__ct', '__dt'] else ''} \
 {mac_unmangled.get_post_namespace_signature()};
-}};
+}}
+{('} // ' + mac_unmangled.namespace) if hasattr(mac_unmangled, "namespace") else ''}
+;
 """
         mangled_class = mangle_class(class_definition)
         mangled_name = mangled_class[0]
