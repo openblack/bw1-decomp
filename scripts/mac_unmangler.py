@@ -134,15 +134,22 @@ class UnmangledDetails:
                 arg = UnmangledDetails.Arg([], "")
             # Fundamental types
             else:
+                signed = False
                 unsigned = False
                 if mangled[0] == 'U':
                     unsigned = True
                     assert(UnmangledDetails.fundamental_types[mangled[1]] in unsignable_types)
-                fundamental_type = UnmangledDetails.fundamental_types.get(mangled[unsigned])
+                if mangled[0] == 'S':
+                    signed = True
+                    assert(UnmangledDetails.fundamental_types[mangled[1]] in unsignable_types)
+                fundamental_type = UnmangledDetails.fundamental_types.get(mangled[unsigned or signed])
                 assert(fundamental_type)
                 mangled = mangled[1:]
                 if unsigned:
                     fundamental_type = "unsigned " + fundamental_type
+                    mangled = mangled[1:]
+                if signed:
+                    fundamental_type = "signed " + fundamental_type
                     mangled = mangled[1:]
 
                 arg.typename = fundamental_type
