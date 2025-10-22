@@ -1658,6 +1658,7 @@ ROOMMATE_CLASS_MAP = {
     "Waypoint": "WayPoint",
     "AddSpecialRPObjects__FP8RPHolder": "RPHolder",
     "CheckSquareFunction__FiiP8RPHolder": "RPHolder",
+    "GFlockInfo": "Flock",
 }
 
 
