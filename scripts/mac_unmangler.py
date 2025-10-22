@@ -221,12 +221,23 @@ class UnmangledDetails:
         elif "__" in mangled and "___" not in mangled and mangled.count("__") == 1:
             self.function_name, mangled = tuple(mangled.split("__", 1))
         else:
-            raise NotImplementedError()
+            raise NotImplementedError(mangled)
 
         # Get the signature
         while mangled:
             if mangled[0] == 'Q':
-                raise NotImplementedError("demangle_qualified")
+                mangled = mangled[1:]
+                if mangled[0] == '_':
+                    raise NotImplementedError("demangle_qualified with more than 9 elements")
+                assert mangled[0].isdigit()
+                num_elems = int(mangled[0])
+                mangled = mangled[1:]
+                components = []
+                for _ in range(num_elems):
+                    type_name, mangled = self.demangle_type(mangled[:])
+                    components.append(type_name)
+                self.namespace = "::".join(components[:-1])
+                self.type_name = components[-1]
             elif mangled[0] == 'C':
                 self.isconst = True
                 mangled = mangled[1:]
@@ -243,12 +254,14 @@ class UnmangledDetails:
         if self.function_name == "__ct":
             function_name = self.type_name
         elif self.function_name == "__dt":
-            function_name = "~" + self.type_name
+            return f"~{self.type_name}()"
         else:
             function_name = self.function_name
         return f"{function_name}({', '.join(map(str, self.args))}){' const' if self.isconst else ''}"
 
     def __str__(self):
+        if hasattr(self, "namespace"):
+            return f"{self.namespace}::{self.type_name}::{self.get_post_namespace_signature()}"
         if hasattr(self, "type_name"):
             return f"{self.type_name}::{self.get_post_namespace_signature()}"
         else:
