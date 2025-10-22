@@ -10,7 +10,6 @@ EMBEDDED_ENUMS = {
 
 
 def mac_mangled_to_msvc_mangled(return_type: str, call_type: str, mac_mangled: str, custom_types_lut: dict[str, str]) -> str:
-    is_virtual = False  # Normally, all virtual functions are named
     if return_type in custom_types_lut:
         return_type = custom_types_lut[return_type]
     elif return_type.removesuffix(" *") in custom_types_lut:
@@ -52,7 +51,7 @@ class {mac_unmangled.type_name}
 {{
 public:
 {embedded_enums}
-{'static' if call_type == 'static' else ''} {return_type if mac_unmangled.function_name not in ['__ct', '__dt'] else ''} \
+{call_type if call_type in {'static', 'virtual'} else ''} {return_type if mac_unmangled.function_name not in ['__ct', '__dt'] else ''} \
 {mac_unmangled.get_post_namespace_signature()};
 }};
 """
@@ -87,16 +86,19 @@ if __name__ == "__main__":
             try:
                 line = line.strip()
                 is_static = line.startswith("static ")
-                if is_static and line.count(" ") == 3:  # started with static, has a call_type that we will override
-                    line.removeprefix("static ")
+                is_virtual = line.startswith("virtual ")
+                if (is_static or is_virtual) and line.count(" ") == 3:  # started with static, has a call_type that we will override
+                    line.removeprefix("static ").removeprefix("virtual ")
                 return_type, call_type, mac_mangled = line.split(" ")
             except ValueError as e:
                 print(e, file=sys.stderr)
                 continue
-            if return_type == 'static':
+            if return_type in {'static', 'virtual'}:
                 return_type, call_type = call_type, return_type
             if is_static:
                 call_type = "static"
+            if is_virtual:
+                call_type = "virtual"
             mangled_name, _, _, _, _ = mac_mangled_to_msvc_mangled(return_type, call_type, mac_mangled, custom_types_lut)
             print(mangled_name)
     except KeyboardInterrupt:
