@@ -7,6 +7,7 @@ class UnmangledDetails:
         "b": "bool",
         "v": "void",
         "c": "char",
+        "w": "wchar_t",
         "s": "short",
         "i": "int",
         "l": "long",
