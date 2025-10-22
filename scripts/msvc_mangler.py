@@ -48,6 +48,7 @@ def compile_code(code):
     source += "\n".join(f"class {i};" for i in CLASSES) + "\n"
     source += "\n".join(f"union {i};" for i in UNIONS) + "\n"
     source += "\n".join(f"enum {i} {{{i}_0}};" for i in ENUMS) + "\n"
+    source += "typedef uint32_t bool32_t;\n"
     source += code
     from clang.cindex import Index, CursorKind, Config, Diagnostic
     index = Index.create()
