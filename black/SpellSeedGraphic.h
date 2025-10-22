@@ -69,9 +69,9 @@ struct SpellSeedGraphic* __cdecl Create__16SpellSeedGraphicFRC9MapCoords15SPELL_
 // Non-virtual methods
 
 // win1.41 00727060 mac 10523210 SpellSeedGraphic::SetPowerUpType(POWER_UP_TYPE)
-void __fastcall SetPowerUpType__16SpellSeedGraphicF13POWER_UP_TYPE(struct SpellSeedGraphic* this, const void* edx, enum POWER_UP_TYPE type);
+void __fastcall SetPowerUpType__16SpellSeedGraphicF13POWER_UP_TYPE(struct SpellSeedGraphic* this, const void* edx, enum POWER_UP_TYPE type) asm("?SetPowerUpType@SpellSeedGraphic@@QAEXW4POWER_UP_TYPE@@@Z");
 // win1.41 00727080 mac 10523130 SpellSeedGraphic::CreatePUBand(void)
-void __fastcall CreatePUBand__16SpellSeedGraphicFv(struct SpellSeedGraphic* this);
+void __fastcall CreatePUBand__16SpellSeedGraphicFv(struct SpellSeedGraphic* this) asm("?CreatePUBand@SpellSeedGraphic@@QAEXXZ");
 
 // Override methods
 

@@ -47,13 +47,13 @@ void __fastcall InitAtmos__6GAudioFv(struct GAudio* this) asm("?InitAtmos@GAudio
 // win1.41 00428f90 mac 1017c710 GAudio::ReleaseAtmosSoundBanks(void)
 void __fastcall ReleaseAtmosSoundBanks__6GAudioFv(struct GAudio* this) asm("?ReleaseAtmosSoundBanks@GAudio@@QAEXXZ");
 // win1.41 00429d60 mac 100001c0 GAudio::PlaySoundEffect(Base *, unsigned long, unsigned long, unsigned long, int, int, AUDIO_SFX_BANK_TYPE)
-void __fastcall PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE(struct GAudio* this, const void* edx, struct Base* param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4, int param_5, int param_6, enum AUDIO_SFX_BANK_TYPE param_7);
+void __fastcall PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE(struct GAudio* this, const void* edx, struct Base* param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4, int param_5, int param_6, enum AUDIO_SFX_BANK_TYPE param_7) asm("?PlaySoundEffect@GAudio@@QAEXPAVBase@@KKKHHW4AUDIO_SFX_BANK_TYPE@@@Z");
 // win1.41 00429e30 mac 10020580 GAudio::PlaySoundEffect(LH_SamplePlayOptions *)
-uint32_t __fastcall PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions(struct GAudio* this, const void* edx, struct LH_SamplePlayOptions* options);
+uint32_t __fastcall PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions(struct GAudio* this, const void* edx, struct LH_SamplePlayOptions* options) asm("?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z");
 // win1.41 0042a210 mac 1017e7d0 GAudio::StopPlayingSoundEffect(unsigned long, unsigned long, AUDIO_SFX_BANK_TYPE) const
-void __fastcall StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE(const struct GAudio* this, const void* edx, uint32_t param_1, uint32_t param_2, enum AUDIO_SFX_BANK_TYPE type);
+void __fastcall StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE(const struct GAudio* this, const void* edx, uint32_t param_1, uint32_t param_2, enum AUDIO_SFX_BANK_TYPE type) asm("?StopPlayingSoundEffect@GAudio@@QBEXKKW4AUDIO_SFX_BANK_TYPE@@@Z");
 // win1.41 0042a330 mac 1017e410 GAudio::ReleaseLoopOnSoundEffect(Base *, unsigned long, AUDIO_SFX_BANK_TYPE) const
-void __fastcall ReleaseLoopOnSoundEffect__6GAudioCFP4BaseUl19AUDIO_SFX_BANK_TYPE(struct GAudio* this, const void* edx, struct Base* param_1, uint32_t param_2, enum AUDIO_SFX_BANK_TYPE type);
+void __fastcall ReleaseLoopOnSoundEffect__6GAudioCFP4BaseUl19AUDIO_SFX_BANK_TYPE(struct GAudio* this, const void* edx, struct Base* param_1, uint32_t param_2, enum AUDIO_SFX_BANK_TYPE type) asm("?ReleaseLoopOnSoundEffect@GAudio@@QBEXPAVBase@@KW4AUDIO_SFX_BANK_TYPE@@@Z");
 
 // Override methods
 

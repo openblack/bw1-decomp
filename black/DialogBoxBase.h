@@ -58,25 +58,25 @@ void __stdcall HideAll__13DialogBoxBaseFv(void);
 // Constructors
 
 // win1.41 005133a0 mac 102b2750 DialogBoxBase::DialogBoxBase(void)
-struct DialogBoxBase* __fastcall __ct__13DialogBoxBaseFv(struct DialogBoxBase* this);
+struct DialogBoxBase* __fastcall __ct__13DialogBoxBaseFv(struct DialogBoxBase* this) asm("??0DialogBoxBase@@QAE@XZ");
 
 // Override methods
 
 // win1.41 00513400 mac 102b24c0 DialogBoxBase::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-void __fastcall Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5));
+void __fastcall Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@DialogBoxBase@@UAEXKKP6AXHPAUSetupBox@@PAUSetupControl@@HH@Z@Z");
 // win1.41 00513590 mac 102b23a0 DialogBoxBase::Destroy(void)
-void __fastcall Destroy__13DialogBoxBaseFv(struct DialogBoxBase* this);
+void __fastcall Destroy__13DialogBoxBaseFv(struct DialogBoxBase* this) asm("?Destroy@DialogBoxBase@@UAEXXZ");
 // win1.41 005127d0 mac 100fd590 DialogBoxBase::InitSubDialogs(void)
-void __fastcall InitSubDialogs__13DialogBoxBaseFv(struct DialogBoxBase* this);
+void __fastcall InitSubDialogs__13DialogBoxBaseFv(struct DialogBoxBase* this) asm("?InitSubDialogs@DialogBoxBase@@UAEXXZ");
 // win1.41 005135f0 mac 102b22e0 DialogBoxBase::Show(void)
-void __fastcall Show__13DialogBoxBaseFv(struct DialogBoxBase* this);
+void __fastcall Show__13DialogBoxBaseFv(struct DialogBoxBase* this) asm("?Show@DialogBoxBase@@UAEXXZ");
 // win1.41 005127e0 mac 100fd5d0 DialogBoxBase::CloseNotification(void)
-bool __fastcall CloseNotification__13DialogBoxBaseFv(struct DialogBoxBase* this);
+bool __fastcall CloseNotification__13DialogBoxBaseFv(struct DialogBoxBase* this) asm("?CloseNotification@DialogBoxBase@@UAE_NXZ");
 // win1.41 005127f0 mac 10504080 DialogBoxBase::WantsKeyControl(void)
-bool __fastcall WantsKeyControl__13DialogBoxBaseFv(struct DialogBoxBase* this);
+bool __fastcall WantsKeyControl__13DialogBoxBaseFv(struct DialogBoxBase* this) asm("?WantsKeyControl@DialogBoxBase@@UAE_NXZ");
 // win1.41 00512800 mac 100fd610 DialogBoxBase::WantsMouseControl(void)
-bool __fastcall WantsMouseControl__13DialogBoxBaseFv(struct DialogBoxBase* this);
+bool __fastcall WantsMouseControl__13DialogBoxBaseFv(struct DialogBoxBase* this) asm("?WantsMouseControl@DialogBoxBase@@UAE_NXZ");
 // win1.41 00512810 mac 103c4090 DialogBoxBase::CanESCOut(void)
-void __fastcall CanESCOut__13DialogBoxBaseFv(struct DialogBoxBase* this);
+void __fastcall CanESCOut__13DialogBoxBaseFv(struct DialogBoxBase* this) asm("?CanESCOut@DialogBoxBase@@UAEXXZ");
 
 #endif /* BW1_DECOMP_DIALOG_BOX_BASE_INCLUDED_H */

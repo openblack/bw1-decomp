@@ -11,16 +11,16 @@
 .extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x005e6540
-.extern _DoesObjectTypeCountAsFixed__7MapCellF11OBJECT_TYPE
+.extern ?DoesObjectTypeCountAsFixed@MapCell@@SA_NW4OBJECT_TYPE@@@Z
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x00637cc0
 .extern _jmp_addr_0x00646950
 .extern @GetRealInterface__7GPlayerFUl@12
-.extern _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri
+.extern ?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z
 .extern _jmp_addr_0x0071b570
 .extern _jmp_addr_0x007a1400
 .extern _atexit
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x00823c90
 
@@ -32,7 +32,7 @@
 .extern ?ApplyWaterSpell@Object@@UAEMPAVSpellWater@@@Z
 .globl _jmp_addr_0x0063a940
 .globl ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
-.globl @GetAltitudeFondation__12Game3DObjectCFv@4
+.globl ?GetAltitudeFondation@Game3DObject@@QBEMXZ
 
 .globl _globl_ct_0x0063ab30
 .globl _globl_ct_0x0063ab60
@@ -59,7 +59,7 @@
                          {disp8} mov        eax, dword ptr [esi + 0x28]                   // 0x0063a643    8b4628
                          {disp8} mov        eax, dword ptr [eax + 0x10]                   // 0x0063a646    8b4010
                          push               eax                                           // 0x0063a649    50
-                         call               _DoesObjectTypeCountAsFixed__7MapCellF11OBJECT_TYPE                          // 0x0063a64a    e8c16efcff
+                         call               ?DoesObjectTypeCountAsFixed@MapCell@@SA_NW4OBJECT_TYPE@@@Z                   // 0x0063a64a    e8c16efcff
                          xor.s              ecx, ecx                                      // 0x0063a64f    33c9
                          {disp8} mov        cx, word ptr [esi + 0x24]                     // 0x0063a651    668b4e24
                          shl                eax, 0xf                                      // 0x0063a655    c1e00f
@@ -359,7 +359,7 @@ _jmp_addr_0x0063a810:    sub                esp, 0x44                           
                          push               eax                                           // 0x0063a901    50
                          push               0x22                                          // 0x0063a902    6a22
                          push               esi                                           // 0x0063a904    56
-                         call               _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri                          // 0x0063a905    e866940a00
+                         call               ?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z              // 0x0063a905    e866940a00
                          add                esp, 0x10                                     // 0x0063a90a    83c410
                          {disp32} mov       dword ptr [esi + 0x000000f0], eax             // 0x0063a90d    8986f0000000
 _jmp_addr_0x0063a913:    {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x0063a913    d90598a38a00
@@ -670,7 +670,7 @@ _jmp_addr_0x0063ab90:    {disp32} fld       dword ptr [rdata_bytes + 0x8830c]   
                          nop                                                              // 0x0063abbd    90
                          nop                                                              // 0x0063abbe    90
                          nop                                                              // 0x0063abbf    90
-@GetAltitudeFondation__12Game3DObjectCFv@4:    sub                esp, 0x24                                     // 0x0063abc0    83ec24
+?GetAltitudeFondation@Game3DObject@@QBEMXZ:    sub                esp, 0x24                                     // 0x0063abc0    83ec24
                          push               ebx                                           // 0x0063abc3    53
                          push               esi                                           // 0x0063abc4    56
                          push               edi                                           // 0x0063abc5    57
@@ -691,7 +691,7 @@ _jmp_addr_0x0063ab90:    {disp32} fld       dword ptr [rdata_bytes + 0x8830c]   
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x0063ac01    8d4c2418
                          {disp8} mov        dword ptr [esp + 0x1c], eax                   // 0x0063ac05    8944241c
                          {disp8} mov        dword ptr [esp + 0x20], 0x00000000            // 0x0063ac09    c744242000000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x0063ac11    e87a841c00
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0063ac11    e87a841c00
                          {disp8} fst        dword ptr [esp + 0x14]                        // 0x0063ac16    d9542414
                          {disp8} fstp       dword ptr [esp + 0x0c]                        // 0x0063ac1a    d95c240c
                          xor.s              ebx, ebx                                      // 0x0063ac1e    33db
@@ -777,7 +777,7 @@ _jmp_addr_0x0063acb6:    {disp8} fstp       dword ptr [esp + 0x20]              
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x0063ad22    8d4c2424
                          {disp8} mov        dword ptr [esp + 0x28], eax                   // 0x0063ad26    89442428
                          {disp8} mov        dword ptr [esp + 0x2c], 0x00000000            // 0x0063ad2a    c744242c00000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x0063ad32    e859831c00
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0063ad32    e859831c00
                          {disp8} fcom       dword ptr [esp + 0x0c]                        // 0x0063ad37    d854240c
                          fnstsw             ax                                            // 0x0063ad3b    dfe0
                          test               ah, 0x01                                      // 0x0063ad3d    f6c401

@@ -12,10 +12,10 @@
 .extern @__ct__12SetupControlFiiiiiPw@32
 .extern @__ct__10SetupButtonFiiiiiPwi@36
 .extern @__ct__9SetupEditFiiiiiPwi@33
-.extern @__ct__13DialogBoxBaseFv@4
+.extern ??0DialogBoxBase@@QAE@XZ
 .extern _jmp_addr_0x005133c0
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x0053b4a0
 .extern _jmp_addr_0x00714490
@@ -26,7 +26,7 @@
 .extern _wcslen
 .extern ___nw__FUl
 
-.globl @__ct__20DialogBoxSaveMessageFv@4
+.globl ??0DialogBoxSaveMessage@@QAE@XZ  
 .globl _jmp_addr_0x005159c0
 
 .globl _globl_ct_0x00515960
@@ -57,9 +57,10 @@ _jmp_addr_0x00515980:    push             0x00407870                            
                          nop                                                            // 0x0051598d    90
                          nop                                                            // 0x0051598e    90
                          nop                                                            // 0x0051598f    90
-@__ct__20DialogBoxSaveMessageFv@4:    push             esi                                           // 0x00515990    56
+??0DialogBoxSaveMessage@@QAE@XZ:
+                                      push             esi                                           // 0x00515990    56
                          mov.s            esi, ecx                                      // 0x00515991    8bf1
-                         call             @__ct__13DialogBoxBaseFv@4                    // 0x00515993    e808daffff
+                         call             ??0DialogBoxBase@@QAE@XZ                      // 0x00515993    e808daffff
                          xor.s            eax, eax                                      // 0x00515998    33c0
                          {disp8} mov      dword ptr [esi + 0x10], eax                   // 0x0051599a    894610
                          {disp8} mov      dword ptr [esi + 0x14], eax                   // 0x0051599d    894614
@@ -209,7 +210,7 @@ _jmp_addr_0x00515b67:    xor.s            eax, eax                              
                          ret              0x000c                                        // 0x00515b78    c20c00
                          call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00515b7b    e8f9bceeff
 ?Destroy@DialogBoxSaveMessage@@UAEXXZ:
-                         {disp32} jmp     @Destroy__13DialogBoxBaseFv@4                 // 0x00515b80    e90bdaffff
+                         {disp32} jmp     ?Destroy@DialogBoxBase@@UAEXXZ                // 0x00515b80    e90bdaffff
                          nop                                                            // 0x00515b85    90
                          nop                                                            // 0x00515b86    90
                          nop                                                            // 0x00515b87    90

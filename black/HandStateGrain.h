@@ -37,6 +37,6 @@ extern const struct HandStateVftable __vt__14HandStateGrain asm("??_7HandStateGr
 // Constructors
 
 // win1.41 005b2b80 mac 10339d60 HandStateGrain::HandStateGrain(CHand*)
-struct HandStateGrain* __fastcall __ct__14HandStateGrainFP5CHand(struct HandStateGrain* this, const void* edx, struct CHand* hand);
+struct HandStateGrain* __fastcall __ct__14HandStateGrainFP5CHand(struct HandStateGrain* this, const void* edx, struct CHand* hand) asm("??0HandStateGrain@@QAE@PAVCHand@@@Z");
 
 #endif /* BW1_DECOMP_HAND_STATE_GRAIN_INCLUDED_H */

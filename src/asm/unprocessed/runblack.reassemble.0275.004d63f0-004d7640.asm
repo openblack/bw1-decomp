@@ -36,7 +36,7 @@
 .globl _jmp_addr_0x004d69b0
 .globl _jmp_addr_0x004d6a50
 .globl _jmp_addr_0x004d6cd0
-.globl @__ct__22DecisionTreeCollectionFv@4
+.globl ??0DecisionTreeCollection@@QAE@XZ  
 .globl _jmp_addr_0x004d7290
 .globl _jmp_addr_0x004d72e0
 .globl _jmp_addr_0x004d74a0
@@ -1494,7 +1494,8 @@ _jmp_addr_0x004d7210:    ret                                                    
                          nop                                                        // 0x004d721d    90
                          nop                                                        // 0x004d721e    90
                          nop                                                        // 0x004d721f    90
-@__ct__22DecisionTreeCollectionFv@4:    push               ebx                                     // 0x004d7220    53
+??0DecisionTreeCollection@@QAE@XZ:
+                                        push               ebx                                     // 0x004d7220    53
                          push               esi                                     // 0x004d7221    56
                          mov.s              ebx, ecx                                // 0x004d7222    8bd9
                          push               edi                                     // 0x004d7224    57

@@ -85,25 +85,25 @@ extern const struct GameThingWithPosVftable __vt__16GInterfaceStatus asm("??_7GI
 // Static methods
 
 // win1.41 005cedc0 mac 1035acc0 GInterfaceStatus::SetActive(int)
-void __fastcall SetActive__10GInterfaceFi(struct GInterface* this, const void* edx, int param_1);
+void __fastcall SetActive__10GInterfaceFi(struct GInterface* this, const void* edx, int param_1) asm("?SetActive@GInterface@@SAXH@Z");
 // win1.41 005d29c0 mac 10026ad0 GInterfaceStatus::ResetActionState(void)
-void __fastcall ResetActionState__10GInterfaceFv(struct GInterface* this);
+void __fastcall ResetActionState__10GInterfaceFv(struct GInterface* this) asm("?ResetActionState@GInterface@@SAXXZ");
 
 // Constructors
 
 // win1.41 005db860 mac 1036f590 GInterfaceStatus::GInterfaceStatus(void)
-struct GInterfaceStatus* __fastcall __ct__16GInterfaceStatusFv(struct GInterfaceStatus* this);
+struct GInterfaceStatus* __fastcall __ct__16GInterfaceStatusFv(struct GInterfaceStatus* this) asm("??0GInterfaceStatus@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 005dba00 mac 1036f310 GInterfaceStatus::SetToZero(GInterface *)
-void __fastcall SetToZero__16GInterfaceStatusFP10GInterface(struct GInterfaceStatus* this, const void* edx, struct GInterface* param_1);
+void __fastcall SetToZero__16GInterfaceStatusFP10GInterface(struct GInterfaceStatus* this, const void* edx, struct GInterface* param_1) asm("?SetToZero@GInterfaceStatus@@QAEXPAVGInterface@@@Z");
 // win1.41 005dc2f0 mac 1007b2f0 GInterfaceStatus::IsSpaceInHands(void)
-bool __fastcall IsSpaceInHands__16GInterfaceStatusFv(struct GInterfaceStatus* this);
+bool __fastcall IsSpaceInHands__16GInterfaceStatusFv(struct GInterfaceStatus* this) asm("?IsSpaceInHands@GInterfaceStatus@@QAE_NXZ");
 // win1.41 005dc8b0 mac 10035b20 GInterfaceStatus::GetInterface(void)
 struct GInterface* __fastcall GetInterface__16GInterfaceStatusFv(struct GInterfaceStatus* this) asm("?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ");
 // win1.41 005dd1a0 mac 1036bf20 GInterfaceStatus::Init(unsigned char, GInterface *)
-void __fastcall Init__16GInterfaceStatusFUcP10GInterface(struct GInterfaceStatus* this, const void* edx, uint8_t player_number, struct GInterface* iface);
+void __fastcall Init__16GInterfaceStatusFUcP10GInterface(struct GInterfaceStatus* this, const void* edx, uint8_t player_number, struct GInterface* iface) asm("?Init@GInterfaceStatus@@QAEXEPAVGInterface@@@Z");
 
 // Override methods
 
@@ -114,7 +114,7 @@ void __fastcall ToBeDeleted__16GInterfaceStatusFi(struct Base* this, const void*
 // win1.41 005dbc20 mac 10058730 GInterfaceStatus::GetPlayer(void)
 struct GPlayer* __fastcall GetPlayer__16GInterfaceStatusFv(struct GameThing* this) asm("?GetPlayer@GInterfaceStatus@@UAEPAVGPlayer@@XZ");
 // win1.41 005dc8f0 mac 1036d0e0 GInterfaceStatus::UpdateSpellInfo(Spell *, PSysProcessInfo *)
-void __fastcall UpdateSpellInfo__16GInterfaceStatusFP5SpellP15PSysProcessInfo(struct GameThing* this, const void* edx, struct Spell* param_1, struct PSysProcessInfo* param_2);
+void __fastcall UpdateSpellInfo__16GInterfaceStatusFP5SpellP15PSysProcessInfo(struct GameThing* this, const void* edx, struct Spell* param_1, struct PSysProcessInfo* param_2) asm("?UpdateSpellInfo@GInterfaceStatus@@UAEXPAVSpell@@PAUPSysProcessInfo@@@Z");
 // win1.41 005db980 mac 1036be40 GInterfaceStatus::GetDebugText(void)
 char* __fastcall GetDebugText__16GInterfaceStatusFv(struct GameThing* this) asm("?GetDebugText@GInterfaceStatus@@UAEPADXZ");
 // win1.41 005dcdc0 mac 1036c160 GInterfaceStatus::Load(GameOSFile &)

@@ -35,7 +35,7 @@ static_assert(sizeof(struct LH3DSmoke) == 0x110, "Data type is of wrong size");
 // Static methods
 
 // win1.41 007f8b60 mac 100b4ab0 LH3DSmoke::Create(const LHPoint*)
-struct LH3DSmoke* __cdecl Create__9LH3DSmokeFPC7LHPoint(struct LHPoint* position);
+struct LH3DSmoke* __cdecl Create__9LH3DSmokeFPC7LHPoint(struct LHPoint* position) asm("?Create@LH3DSmoke@@SAPAV1@PBULHPoint@@@Z");
 
 // Non-virtual methods
 

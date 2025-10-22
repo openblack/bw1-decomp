@@ -52,7 +52,7 @@ extern const struct AbodeVftable __vt__5Totem asm("??_7Totem@@6B@");
 // Constructors
 
 // win1.41 00737390 mac 105435b0 Totem::Totem(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-struct Totem* __fastcall __ct__5TotemFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struct Totem* this, const void* edx, const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float param_4, float param_5, float param_6, int param_7);
+struct Totem* __fastcall __ct__5TotemFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struct Totem* this, const void* edx, const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float param_4, float param_5, float param_6, int param_7) asm("??0Totem@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");
 
 // Override methods
 

@@ -9,7 +9,7 @@
 
 .extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern _jmp_addr_0x005f04c0
-.extern @GetTopState__6LivingCFv@4
+.extern ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ
 .extern ?InitialisePhysicsFromHand@Object@@UAEIPAULHPoint@@0PAVGInterfaceStatus@@PAV1@H@Z
 .extern ?InitialisePhysics@Object@@UAEIPBULHPoint@@0PAV1@_NPAVGInterfaceStatus@@@Z
 .extern ?CreateDroppedResource@Villager@@QAEXPAULHPoint@@00@Z
@@ -65,7 +65,7 @@ _jmp_addr_0x005efd70:    push               0x00407870                          
                          mov.s              ecx, esi                                 // 0x005efd94    8bce
                          call               dword ptr [edx + 0xb08]                  // 0x005efd96    ff92080b0000
 _jmp_addr_0x005efd9c:    mov.s              ecx, esi                                 // 0x005efd9c    8bce
-                         call               @GetTopState__6LivingCFv@4               // 0x005efd9e    e84d2a0000
+                         call               ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ               // 0x005efd9e    e84d2a0000
                          cmp                al, 0x18                                 // 0x005efda3    3c18
                          {disp8} je         _jmp_addr_0x005efdb1                     // 0x005efda5    740a
                          mov                eax, dword ptr [esi]                     // 0x005efda7    8b06
@@ -113,11 +113,11 @@ _jmp_addr_0x005efe06:    mov.s              eax, edi                            
 ?InitialisePhysics@Living@@UAEIABULHPoint@@0PAVObject@@_NPAVGInterfaceStatus@@@Z:
                          push               esi                                      // 0x005efe10    56
                          mov.s              esi, ecx                                 // 0x005efe11    8bf1
-                         call               @GetTopState__6LivingCFv@4               // 0x005efe13    e8d8290000
+                         call               ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ               // 0x005efe13    e8d8290000
                          cmp                al, 0x0a                                 // 0x005efe18    3c0a
                          {disp8} je         _jmp_addr_0x005efe57                     // 0x005efe1a    743b
                          mov.s              ecx, esi                                 // 0x005efe1c    8bce
-                         call               @GetTopState__6LivingCFv@4               // 0x005efe1e    e8cd290000
+                         call               ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ               // 0x005efe1e    e8cd290000
                          cmp                al, 0x18                                 // 0x005efe23    3c18
                          {disp8} je         _jmp_addr_0x005efe31                     // 0x005efe25    740a
                          mov                eax, dword ptr [esi]                     // 0x005efe27    8b06

@@ -7,8 +7,8 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _GetCurrentActiveBox__8SetupBoxFv
-.extern _DrawTextWrap__10SetupThingFiiiiibPwiP9LH3DColorbb
+.extern ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ
+.extern ?DrawTextWrap@SetupThing@@SAMHHHHH_NPA_WHPAULH3DColor@@00@Z
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern @__ct__7LHPointFRC7LHPoint@12
@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x00795430
 .extern _jmp_addr_0x007954a0
 .extern _jmp_addr_0x007974c0
-.extern @__ct__11InnerCameraFv@4
+.extern ??0InnerCamera@@QAE@XZ
 .extern _jmp_addr_0x00797510
 .extern _jmp_addr_0x00797530
 .extern _jmp_addr_0x00797590
@@ -80,14 +80,14 @@
 .extern __wtoi
 .extern _wcsncat
 .extern ___nw__FUl
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Release__8LH3DMeshFv@4
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
 .extern @GetStringWidth__13GatheringTextFPwif@20
 .extern _jmp_addr_0x008379e0
-.extern @Release__11LH3DTextureFv@4
+.extern ?Release@LH3DTexture@@QAEXXZ
 .extern _jmp_addr_0x00838430
 .extern _jmp_addr_0x0083d860
 .extern _jmp_addr_0x0083dfe0
@@ -937,7 +937,7 @@ _jmp_addr_0x0079cf68:    {disp8} mov        eax, dword ptr [eax + 0x08]         
                          push               0x00000320                                    // 0x0079cf80    6820030000
                          push               0x0                                           // 0x0079cf85    6a00
                          push               0x0                                           // 0x0079cf87    6a00
-                         call               _DrawTextWrap__10SetupThingFiiiiibPwiP9LH3DColorbb                          // 0x0079cf89    e8c247c7ff
+                         call               ?DrawTextWrap@SetupThing@@SAMHHHHH_NPA_WHPAULH3DColor@@00@Z                 // 0x0079cf89    e8c247c7ff
                          fstp               st(0)                                         // 0x0079cf8e    ddd8
                          add                esp, 0x2c                                     // 0x0079cf90    83c42c
 _jmp_addr_0x0079cf93:    pop                esi                                           // 0x0079cf93    5e
@@ -1019,7 +1019,7 @@ _jmp_addr_0x0079cf93:    pop                esi                                 
                          test               ecx, ecx                                      // 0x0079d00f    85c9
                          {disp8} jne        _jmp_addr_0x0079d01d                          // 0x0079d011    750a
                          {disp32} mov       dword ptr [esi + 0x00000168], 0x00000000      // 0x0079d013    c7866801000000000000
-_jmp_addr_0x0079d01d:    call               _GetCurrentActiveBox__8SetupBoxFv             // 0x0079d01d    e8aeaec6ff
+_jmp_addr_0x0079d01d:    call               ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x0079d01d    e8aeaec6ff
                          test               eax, eax                                      // 0x0079d022    85c0
                          {disp8} jne        _jmp_addr_0x0079d09d                          // 0x0079d024    7577
                          {disp32} mov       ecx, dword ptr [esi + 0x000000c4]             // 0x0079d026    8b8ec4000000
@@ -1472,7 +1472,7 @@ _jmp_addr_0x0079d55b:    push               0x00000096                          
                          test               edi, edi                                      // 0x0079d574    85ff
                          {disp8} je         _jmp_addr_0x0079d589                          // 0x0079d576    7411
                          mov.s              ecx, edi                                      // 0x0079d578    8bcf
-                         call               @__ct__11InnerCameraFv@4                      // 0x0079d57a    e8719fffff
+                         call               ??0InnerCamera@@QAE@XZ                        // 0x0079d57a    e8719fffff
                          mov                dword ptr [edi], 0x0099efcc                   // 0x0079d57f    c707ccef9900
                          mov.s              ecx, edi                                      // 0x0079d585    8bcf
                          {disp8} jmp        _jmp_addr_0x0079d58b                          // 0x0079d587    eb02
@@ -1651,7 +1651,7 @@ _jmp_addr_0x0079d766:    {disp32} mov       eax, dword ptr [esi + 0x00000154]   
                          call               ??3@YAXPAX@Z                                  // 0x0079d76d    e826170100
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4741a4]        // 0x0079d772    8b0da4a1e300
                          add                esp, 0x04                                     // 0x0079d778    83c404
-                         call               @Release__11LH3DTextureFv@4                   // 0x0079d77b    e8c0a50900
+                         call               ?Release@LH3DTexture@@QAEXXZ                  // 0x0079d77b    e8c0a50900
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4741a8]        // 0x0079d780    8b0da8a1e300
                          {disp32} mov       dword ptr [data_bytes + 0x4741a4], edi        // 0x0079d786    893da4a1e300
                          {disp8} mov        dword ptr [ecx + 0x08], edi                   // 0x0079d78c    897908
@@ -2274,7 +2274,7 @@ _jmp_addr_0x0079ddf0:    sub                esp, 0x28                           
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x0079def3    8d4c2424
                          {disp8} mov        dword ptr [esp + 0x28], eax                   // 0x0079def7    89442428
                          {disp8} mov        dword ptr [esp + 0x2c], 0x00000000            // 0x0079defb    c744242c00000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x0079df03    e888510600
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0079df03    e888510600
                          {disp8} fsubr      dword ptr [esp + 0x10]                        // 0x0079df08    d86c2410
                          cmp                edi, -0x01                                    // 0x0079df0c    83ffff
                          {disp8} fstp       dword ptr [esp + 0x20]                        // 0x0079df0f    d95c2420

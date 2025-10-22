@@ -37,6 +37,6 @@ static_assert(sizeof(struct PhysOb) == 0x17c, "Data type is of wrong size");
 // Non-virtual methods
 
 // win1.41 007fb780 mac 10088820 PhysOb::Initialise(LH3DObject *, float)
-void __fastcall Initialise__6PhysObFP10LH3DObjectf(struct PhysOb* this, const void* edx, struct LH3DObject* obj, float param_3);
+void __fastcall Initialise__6PhysObFP10LH3DObjectf(struct PhysOb* this, const void* edx, struct LH3DObject* obj, float param_3) asm("?Initialise@PhysOb@@QAEXPAULH3DObject@@M@Z");
 
 #endif /* BW1_DECOMP_PHYS_OB_INCLUDED_H */

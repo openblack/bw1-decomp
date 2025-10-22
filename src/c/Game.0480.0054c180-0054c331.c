@@ -28,7 +28,7 @@ void __fastcall StartGame__5GGameFv(struct GGame* this)
     asm("                         {disp32} mov       ecx, dword ptr [edi + 0x0000e92c]");             // 0x0054c1ce    8b8f2ce90000
     asm("                         {disp8} mov        dword ptr [ecx + 0x08], ebx");                   // 0x0054c1d4    895908
     asm("                         {disp32} mov       ecx, dword ptr [edi + 0x0000e928]");             // 0x0054c1d7    8b8f28e90000
-    asm("                         call               @Release__11LH3DTextureFv@4");                   // 0x0054c1dd    e85ebb2e00
+    asm("                         call               ?Release@LH3DTexture@@QAEXXZ");                   // 0x0054c1dd    e85ebb2e00
     asm("                         push               edi");                                           // 0x0054c1e2    57
     asm("                         call               ??3@YAXPAX@Z");                                    // 0x0054c1e3    e8b02c2600
     asm("                         add                esp, 0x04");                                     // 0x0054c1e8    83c404

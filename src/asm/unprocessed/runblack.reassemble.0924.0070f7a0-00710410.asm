@@ -33,7 +33,7 @@
 .extern _jmp_addr_0x0070d220
 .extern _jmp_addr_0x0071a610
 .extern _jmp_addr_0x0071a640
-.extern _Create__8SoundTagFP16GameThingWithPosUlbUlUlii19AUDIO_SFX_BANK_TYPEi
+.extern ?Create@SoundTag@@SAPAV1@PAVGameThingWithPos@@K_NKKHHW4AUDIO_SFX_BANK_TYPE@@H@Z
 .extern _jmp_addr_0x0071ebe0
 .extern _jmp_addr_0x007a1400
 .extern _atexit
@@ -972,7 +972,7 @@ _jmp_addr_0x007100e8:    {disp32} mov     eax, dword ptr [_game]                
                          push             eax                                           // 0x007101b6    50
                          push             ebx                                           // 0x007101b7    53
                          push             esi                                           // 0x007101b8    56
-                         call             _Create__8SoundTagFP16GameThingWithPosUlbUlUlii19AUDIO_SFX_BANK_TYPEi                          // 0x007101b9    e882e60000
+                         call             ?Create@SoundTag@@SAPAV1@PAVGameThingWithPos@@K_NKKHHW4AUDIO_SFX_BANK_TYPE@@H@Z                // 0x007101b9    e882e60000
                          add              esp, 0x24                                     // 0x007101be    83c424
 _jmp_addr_0x007101c1:    pop              edi                                           // 0x007101c1    5f
                          pop              esi                                           // 0x007101c2    5e

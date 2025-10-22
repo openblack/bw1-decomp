@@ -53,12 +53,12 @@ extern const struct GMultiMapFixedInfoVftable __vt__9BigForest asm("??_7BigFores
 // Static methods
 
 // win1.41 00438ec0 mac 100b3590 BigForest::Create(MapCoords const &, GBigForestInfo const *, unsigned long, float, float)
-struct BigForest* __cdecl Create__9BigForestFRC9MapCoordsPC14GBigForestInfoUlff(struct MapCoords* coords, struct GBigForestInfo* info, uint32_t param_3, float param_4, float param_5);
+struct BigForest* __cdecl Create__9BigForestFRC9MapCoordsPC14GBigForestInfoUlff(struct MapCoords* coords, struct GBigForestInfo* info, uint32_t param_3, float param_4, float param_5) asm("?Create@BigForest@@SAPAV1@ABUMapCoords@@PBVGBigForestInfo@@KMM@Z");
 
 // Constructors
 
 // win1.41 00438ce0 mac 100b3a20 BigForest::BigForest(MapCoords const &, GBigForestInfo const *, unsigned long, float, float)
-struct BigForest* __fastcall __ct__9BigForestFRC9MapCoordsPC14GBigForestInfoUlff(struct BigForest* this, const void* edx, const struct MapCoords* coords, const struct GBigForestInfo* info, uint32_t param_3, float param_4, float param_5);
+struct BigForest* __fastcall __ct__9BigForestFRC9MapCoordsPC14GBigForestInfoUlff(struct BigForest* this, const void* edx, const struct MapCoords* coords, const struct GBigForestInfo* info, uint32_t param_3, float param_4, float param_5) asm("??0BigForest@@QAE@ABUMapCoords@@PBVGBigForestInfo@@KMM@Z");
 
 // Override methods
 
@@ -71,7 +71,7 @@ uint32_t __fastcall RemoveResource__9BigForestF13RESOURCE_TYPEUlP16GInterfaceSta
 // win1.41 00438e10 mac 100b25b0 BigForest::GetDebugText(void)
 char* __fastcall GetDebugText__9BigForestFv(struct GameThing* this) asm("?GetDebugText@BigForest@@UAEPADXZ");
 // win1.41 004394e0 mac 100b2760 BigForest::Load(GameOSFile &)
-bool __fastcall Load__9BigForestFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+bool __fastcall Load__9BigForestFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@BigForest@@UAE_NAAVGameOSFile@@@Z");
 // win1.41 00439470 mac 100b2840 BigForest::Save(GameOSFile &)
 uint32_t __fastcall Save__9BigForestFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@BigForest@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00438e00 mac 100b2570 BigForest::GetSaveType(void)

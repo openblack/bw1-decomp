@@ -39,7 +39,7 @@ extern const struct GameThingVftable __vt__7GStream asm("??_7GStream@@6B@");
 // Static methods
 
 // win1.41 00733ff0 mac 10154580 GStream::CreateAll(void)
-void __cdecl CreateAll__7GStreamFv(void);
+void __cdecl CreateAll__7GStreamFv(void) asm("?CreateAll@GStream@@SAXXZ");
 
 // Override methods
 

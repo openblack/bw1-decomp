@@ -52,9 +52,9 @@ extern const struct PotVftable __vt__8PileFood asm("??_7PileFood@@6B@");
 // Constructors
 
 // win1.41 0066dfe0 mac 1011a450 PileFood::PileFood(void)
-struct PileFood* __fastcall __ct__8PileFoodFv(struct PileFood* this);
+struct PileFood* __fastcall __ct__8PileFoodFv(struct PileFood* this) asm("??0PileFood@@QAE@XZ");
 // win1.41 0066e070 mac 1011a2b0 PileFood::PileFood(MapCoords const &, GPotInfo const *, unsigned long, MultiMapFixed *, Town *, int, float, float)
-struct PileFood* __fastcall __ct__8PileFoodFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff(struct PileFood* this, const void* edx, struct MapCoords* coords, struct GPotInfo* param_2, uint32_t param_3, struct MultiMapFixed* param_4, struct Town* param_5, int param_6, float param_7, float param_8);
+struct PileFood* __fastcall __ct__8PileFoodFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff(struct PileFood* this, const void* edx, struct MapCoords* coords, struct GPotInfo* param_2, uint32_t param_3, struct MultiMapFixed* param_4, struct Town* param_5, int param_6, float param_7, float param_8) asm("??0PileFood@@QAE@ABUMapCoords@@PBVGPotInfo@@KPAVMultiMapFixed@@PAVTown@@HMM@Z");
 
 // Override methods
 

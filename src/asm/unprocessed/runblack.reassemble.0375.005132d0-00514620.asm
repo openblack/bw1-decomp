@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x00407a20
 .extern _jmp_addr_0x00407a30
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
-.extern _GetCurrentActiveBox__8SetupBoxFv
+.extern ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ
 .extern @FindControl__8SetupBoxFi@12
 .extern _jmp_addr_0x00408240
 .extern @__ct__12SetupControlFiiiiiPw@32
@@ -31,15 +31,15 @@
 .extern _jmp_addr_0x0046f040
 .extern _jmp_addr_0x00514620
 .extern _jmp_addr_0x005148b0
-.extern @__ct__18DialogBoxImmersion@4
-.extern @__ct__20MiniDialogBoxOptions@4
+.extern ??0DialogBoxImmersion@@QAE@XZ
+.extern ??0MiniDialogBoxOptions@@QAE@XZ
 .extern _jmp_addr_0x0053f3e0
 .extern _jmp_addr_0x0053f540
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern _jmp_addr_0x005553f0
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005558d0
-.extern @SetActive__10GInterfaceFi@12
+.extern ?SetActive@GInterface@@SAXH@Z
 .extern _jmp_addr_0x0066bcd0
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
@@ -48,17 +48,17 @@
 .extern ___nw__FUl
 .extern @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20
 
-.globl @__ct__13DialogBoxBaseFv@4
+.globl ??0DialogBoxBase@@QAE@XZ  
 .globl _jmp_addr_0x005133c0
 .globl @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.globl @Destroy__13DialogBoxBaseFv@4
-.globl @Show__13DialogBoxBaseFv@4
+.globl ?Destroy@DialogBoxBase@@UAEXXZ
+.globl ?Show@DialogBoxBase@@UAEXXZ
 .globl _jmp_addr_0x00513640
 .globl _jmp_addr_0x00513680
 .globl _jmp_addr_0x005136b0
 .globl _HideAll__13DialogBoxBaseFv@0
 .globl _jmp_addr_0x00513770
-.globl @__ct__16DialogBoxOptionsFv@4
+.globl ??0DialogBoxOptions@@QAE@XZ  
 .globl _jmp_addr_0x00513850
 .globl _jmp_addr_0x00513e10
 .globl _jmp_addr_0x00513ea0
@@ -175,7 +175,8 @@ _jmp_addr_0x00513390:    push              0x00407870                           
                          nop                                                             // 0x0051339d    90
                          nop                                                             // 0x0051339e    90
                          nop                                                             // 0x0051339f    90
-@__ct__13DialogBoxBaseFv@4:    mov.s             eax, ecx                                      // 0x005133a0    8bc1
+??0DialogBoxBase@@QAE@XZ:
+                               mov.s             eax, ecx                                      // 0x005133a0    8bc1
                          mov               dword ptr [eax], 0x008d85c8                   // 0x005133a2    c700c8858d00
                          {disp8} mov       dword ptr [eax + 0x04], 0x00000000            // 0x005133a8    c7400400000000
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x300298]        // 0x005133af    8b0d9862cc00
@@ -333,7 +334,8 @@ _jmp_addr_0x00513565:    {disp8} mov       eax, dword ptr [esp + 0x28]          
                          nop                                                             // 0x0051358e    90
                          nop                                                             // 0x0051358f    90
 _Destroy__13DialogBoxBaseFv:
-@Destroy__13DialogBoxBaseFv@4:    push              esi                                           // 0x00513590    56
+?Destroy@DialogBoxBase@@UAEXXZ:
+                                  push              esi                                           // 0x00513590    56
                          {disp8} mov       esi, dword ptr [ecx + 0x04]                   // 0x00513591    8b7104
                          test              esi, esi                                      // 0x00513594    85f6
                          {disp8} je        _jmp_addr_0x005135ec                          // 0x00513596    7454
@@ -371,14 +373,15 @@ _jmp_addr_0x005135ec:    pop               esi                                  
                          nop                                                             // 0x005135ee    90
                          nop                                                             // 0x005135ef    90
 _Show__13DialogBoxBaseFv:
-@Show__13DialogBoxBaseFv@4:    cmp               dword ptr [data_bytes + 0x3002a0], 0x0f       // 0x005135f0    833da062cc000f
+?Show@DialogBoxBase@@UAEXXZ:
+                               cmp               dword ptr [data_bytes + 0x3002a0], 0x0f       // 0x005135f0    833da062cc000f
                          push              esi                                           // 0x005135f7    56
                          mov.s             esi, ecx                                      // 0x005135f8    8bf1
                          {disp8} jae       _jmp_addr_0x0051363b                          // 0x005135fa    733f
-                         call              _GetCurrentActiveBox__8SetupBoxFv             // 0x005135fc    e8cf48efff
+                         call              ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x005135fc    e8cf48efff
                          cmp               eax, dword ptr [esi + 0x04]                   // 0x00513601    3b4604
                          {disp8} je        _jmp_addr_0x0051363b                          // 0x00513604    7435
-                         call              _GetCurrentActiveBox__8SetupBoxFv             // 0x00513606    e8c548efff
+                         call              ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x00513606    e8c548efff
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x3002a0]        // 0x0051360b    8b0da062cc00
                          {disp32} mov      dword ptr [ecx * 0x4 + 0x00cc6258], eax       // 0x00513611    89048d5862cc00
                          inc               ecx                                           // 0x00513618    41
@@ -490,7 +493,7 @@ _HideAll__13DialogBoxBaseFv@0:    xor.s             eax, eax                    
                          {disp8} je        _jmp_addr_0x00513748                          // 0x00513737    740f
                          push              0x1                                           // 0x00513739    6a01
                          mov.s             ecx, eax                                      // 0x0051373b    8bc8
-                         call              @SetActive__10GInterfaceFi@12                 // 0x0051373d    e87eb60b00
+                         call              ?SetActive@GInterface@@SAXH@Z                 // 0x0051373d    e87eb60b00
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00513742    8b0d5c19d000
 _jmp_addr_0x00513748:    cmp               dword ptr [ecx + 0x00205a28], 0x01            // 0x00513748    83b9285a200001
                          {disp8} jne       _jmp_addr_0x00513761                          // 0x0051374f    7510
@@ -507,7 +510,7 @@ _jmp_addr_0x00513761:    {disp32} mov      dword ptr [data_bytes + 0x30029c], 0x
                          nop                                                             // 0x0051376f    90
 _jmp_addr_0x00513770:    push              esi                                           // 0x00513770    56
                          mov.s             esi, ecx                                      // 0x00513771    8bf1
-                         call              _GetCurrentActiveBox__8SetupBoxFv             // 0x00513773    e85847efff
+                         call              ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x00513773    e85847efff
                          sub               eax, dword ptr [esi + 0x04]                   // 0x00513778    2b4604
                          neg               eax                                           // 0x0051377b    f7d8
                          sbb.s             eax, eax                                      // 0x0051377d    1bc0
@@ -594,9 +597,10 @@ _jmp_addr_0x005137f0:    {disp32} fld      dword ptr [rdata_bytes + 0x2f614]    
                          nop                                                             // 0x0051380d    90
                          nop                                                             // 0x0051380e    90
                          nop                                                             // 0x0051380f    90
-@__ct__16DialogBoxOptionsFv@4:    push              esi                                           // 0x00513810    56
+??0DialogBoxOptions@@QAE@XZ:
+                                  push              esi                                           // 0x00513810    56
                          mov.s             esi, ecx                                      // 0x00513811    8bf1
-                         call              @__ct__13DialogBoxBaseFv@4                    // 0x00513813    e888fbffff
+                         call              ??0DialogBoxBase@@QAE@XZ                      // 0x00513813    e888fbffff
                          mov               dword ptr [esi], 0x008d861c                   // 0x00513818    c7061c868d00
                          mov.s             eax, esi                                      // 0x0051381e    8bc6
                          pop               esi                                           // 0x00513820    5e
@@ -1014,7 +1018,7 @@ _jmp_addr_0x00513d14:    {disp8} mov       dword ptr [esi + 0x44], eax          
                          cmp.s             eax, ebx                                      // 0x00513d3a    3bc3
                          {disp8} je        _jmp_addr_0x00513d47                          // 0x00513d3c    7409
                          mov.s             ecx, eax                                      // 0x00513d3e    8bc8
-                         call              @__ct__20MiniDialogBoxOptions@4               // 0x00513d40    e8db110000
+                         call              ??0MiniDialogBoxOptions@@QAE@XZ               // 0x00513d40    e8db110000
                          {disp8} jmp       _jmp_addr_0x00513d49                          // 0x00513d45    eb02
 _jmp_addr_0x00513d47:    xor.s             eax, eax                                      // 0x00513d47    33c0
 _jmp_addr_0x00513d49:    push              0x005140c0                                    // 0x00513d49    68c0405100
@@ -1032,7 +1036,7 @@ _jmp_addr_0x00513d49:    push              0x005140c0                           
                          cmp.s             eax, ebx                                      // 0x00513d72    3bc3
                          {disp8} je        _jmp_addr_0x00513d7f                          // 0x00513d74    7409
                          mov.s             ecx, eax                                      // 0x00513d76    8bc8
-                         call              @__ct__18DialogBoxImmersion@4                 // 0x00513d78    e8530c0000
+                         call              ??0DialogBoxImmersion@@QAE@XZ                 // 0x00513d78    e8530c0000
                          {disp8} jmp       _jmp_addr_0x00513d81                          // 0x00513d7d    eb02
 _jmp_addr_0x00513d7f:    xor.s             eax, eax                                      // 0x00513d7f    33c0
 _jmp_addr_0x00513d81:    push              0x00514da0                                    // 0x00513d81    68a04d5100
@@ -1050,7 +1054,7 @@ _jmp_addr_0x00513d81:    push              0x00514da0                           
 ?Destroy@DialogBoxOptions@@UAEXXZ:
                          push              esi                                           // 0x00513da0    56
                          mov.s             esi, ecx                                      // 0x00513da1    8bf1
-                         call              @Destroy__13DialogBoxBaseFv@4                 // 0x00513da3    e8e8f7ffff
+                         call              ?Destroy@DialogBoxBase@@UAEXXZ                // 0x00513da3    e8e8f7ffff
                          {disp8} mov       dword ptr [esi + 0x40], 0x00000000            // 0x00513da8    c7464000000000
                          pop               esi                                           // 0x00513daf    5e
                          ret                                                             // 0x00513db0    c3

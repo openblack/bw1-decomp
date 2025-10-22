@@ -45,11 +45,11 @@ extern const struct LH3DObjectVftable __vt__17LH3DComplexObject asm("??_7LH3DCom
 // Constructors
 
 // win1.41 inlined mac inlined LH3DComplexObject::LH3DComplexObject(void)
-struct LH3DComplexObject* __fastcall __ct__17LH3DComplexObjectFv(struct LH3DComplexObject* this);
+struct LH3DComplexObject* __fastcall __ct__17LH3DComplexObjectFv(struct LH3DComplexObject* this) asm("??0LH3DComplexObject@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 0080c020 mac 10081d10 LH3DComplexObject::CreateDynamicShadow
-void __fastcall CreateDynamicShadow__17LH3DComplexObjectFv(struct LH3DComplexObject* this);
+void __fastcall CreateDynamicShadow__17LH3DComplexObjectFv(struct LH3DComplexObject* this) asm("?CreateDynamicShadow@LH3DComplexObject@@QAEXXZ");
 
 #endif /* BW1_DECOMP_LH3D_COMPLEX_OBJECT_INCLUDED_H */

@@ -33,6 +33,6 @@ extern const struct LH3DObjectVftable __vt__18LH3DAnimatedObject asm("??_7LH3DAn
 // Constructors
 
 // win1.41 inlined mac inlined LH3DAnimatedObject::LH3DAnimatedObject(void)
-struct LH3DAnimatedObject* __fastcall __ct__18LH3DAnimatedObjectFv(struct LH3DAnimatedObject* this);
+struct LH3DAnimatedObject* __fastcall __ct__18LH3DAnimatedObjectFv(struct LH3DAnimatedObject* this) asm("??0LH3DAnimatedObject@@QAE@XZ");
 
 #endif /* BW1_DECOMP_LH3D_ANIMATED_OBJECT_INCLUDED_H */

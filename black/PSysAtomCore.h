@@ -25,7 +25,7 @@ static_assert(sizeof(struct AtomCollection) == 0x4, "Data type is of wrong size"
 // Non-virtual methods
 
 // win1.41 00674ed0 mac 100773a0 AtomCollection::GetAge(void)
-float __fastcall GetAge__14AtomCollectionFv(struct AtomCollection* this);
+float __fastcall GetAge__14AtomCollectionFv(struct AtomCollection* this) asm("?GetAge@AtomCollection@@QAEMXZ");
 // win1.41 00674880 mac 10423c00 AtomCollection::GetDebugText(void)
 char* __fastcall GetDebugText__14AtomCollectionFv(struct AtomCollection* this) asm("?GetDebugText@AtomCollection@@UAEPADXZ");
 // win1.41 00674890 mac 103e1fb0 AtomCollection::_dt(void)
@@ -40,7 +40,7 @@ static_assert(sizeof(struct UR_GesturingRecognised) == 0x4, "Data type is of wro
 // Non-virtual methods
 
 // win1.41 006884f0 mac 1007c960 UR_GesturingRecognised::ModifyAtomCollection(AtomCollection *) const
-uint32_t __fastcall ModifyAtomCollection__22UR_GesturingRecognisedCFP14AtomCollection(const struct UR_GesturingRecognised* this, const void* edx, struct AtomCollection* collection);
+uint32_t __fastcall ModifyAtomCollection__22UR_GesturingRecognisedCFP14AtomCollection(const struct UR_GesturingRecognised* this, const void* edx, struct AtomCollection* collection) asm("?ModifyAtomCollection@UR_GesturingRecognised@@QBEIPAUAtomCollection@@@Z");
 // win1.41 00688910 mac 10406f90 UR_GesturingRecognised::ModifySubCollection(AtomCollection *, UR_GesturingRecognised::AtomData *) const
 void __fastcall ModifySubCollection__22UR_GesturingRecognisedCFP14AtomCollectionPQ222UR_GesturingRecognised8AtomData(const struct UR_GesturingRecognised* this, const void* edx, struct AtomCollection* collection, struct Q222UR_GesturingRecognised8AtomData* data);
 

@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x004707f0
-.extern @__ct__13DialogBoxBaseFv@4
+.extern ??0DialogBoxBase@@QAE@XZ
 .extern _wcsncpy
 .extern _wcslen
 
@@ -18,7 +18,7 @@ start_0x00540260_0x005405b0:
 // Snippet: asm, [0x00540260, 0x00540579)
 @__vt__8LoginBoxFv@4:    push             esi                                           // 0x00540260    56
                          mov.s            esi, ecx                                      // 0x00540261    8bf1
-                         call             @__ct__13DialogBoxBaseFv@4                    // 0x00540263    e83831fdff
+                         call             ??0DialogBoxBase@@QAE@XZ                      // 0x00540263    e83831fdff
                          mov              dword ptr [esi], 0x008dec98                   // 0x00540268    c70698ec8d00
                          cmp              dword ptr [data_bytes + 0x351cac], 0x00000dc5 // 0x0054026e    813dac7cd100c50d0000
                          {disp8} ja       _jmp_addr_0x0054028b                          // 0x00540278    7711

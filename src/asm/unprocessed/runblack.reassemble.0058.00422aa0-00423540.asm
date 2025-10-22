@@ -24,7 +24,7 @@
 .globl _jmp_addr_0x00422df0
 .globl _jmp_addr_0x00422e30
 .globl _jmp_addr_0x004230d0
-.globl @SetPosition__10LH3DObjectFRC7LHPointff@16
+.globl ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
 .globl _jmp_addr_0x00423400
 
 .globl _globl_ct_0x00423110
@@ -717,7 +717,8 @@ _jmp_addr_0x00423130:    push               0x00407870                          
                          nop                                                              // 0x0042313d    90
                          nop                                                              // 0x0042313e    90
                          nop                                                              // 0x0042313f    90
-@SetPosition__10LH3DObjectFRC7LHPointff@16:    push               ecx                                           // 0x00423140    51
+?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z:
+                                               push               ecx                                           // 0x00423140    51
                          {disp8} fld        dword ptr [esp + 0x08]                        // 0x00423141    d9442408
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x00423145    d81d98a38a00
                          {disp8} fld        dword ptr [esp + 0x0c]                        // 0x0042314b    d944240c

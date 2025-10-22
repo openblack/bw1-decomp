@@ -110,7 +110,7 @@ static_assert(sizeof(struct ControlKey) == 0x108, "Data type is of wrong size");
 // Non-virtual methods
 
 // win1.41 0046efe0 mac inlined ControlKey::GetDisplayText(wchar_t*)
-void __fastcall GetDisplayText__10ControlKeyFPw(struct ControlKey* this, const void* edx, char16_t* out_text);
+void __fastcall GetDisplayText__10ControlKeyFPw(struct ControlKey* this, const void* edx, char16_t* out_text) asm("?GetDisplayText@ControlKey@@QAEXPA_W@Z");
 
 struct ControlMouse
 {
@@ -122,7 +122,7 @@ static_assert(sizeof(struct ControlMouse) == 0x104, "Data type is of wrong size"
 // Non-virtual methods
 
 // win1.41 0046f180 mac 101cc260 ControlMouse::GetDisplayText(wchar_t*)
-void __fastcall GetDisplayText__12ControlMouseFPw(struct ControlMouse* this, const void* edx, char16_t* out_text);
+void __fastcall GetDisplayText__12ControlMouseFPw(struct ControlMouse* this, const void* edx, char16_t* out_text) asm("?GetDisplayText@ControlMouse@@QAEXPA_W@Z");
 
 struct BindableAction
 {
@@ -135,16 +135,16 @@ static_assert(sizeof(struct BindableAction) == 0x30c, "Data type is of wrong siz
 // Static methods
 
 // win1.41 0046f3c0 mac 10090c30 BindableAction::IsKeyDown(LH_KEY)
-bool __cdecl IsKeyDown__14BindableActionF6LH_KEY(enum LH_KEY key);
+bool __cdecl IsKeyDown__14BindableActionF6LH_KEY(enum LH_KEY key) asm("?IsKeyDown@BindableAction@@SA_NW4LH_KEY@@@Z");
 
 // Constructors
 
 // win1.41 0046f1a0 mac 101cc4d0 BindableAction::BindableAction(void)
-struct BindableAction* __fastcall __ct__14BindableActionFv(struct BindableAction* this);
+struct BindableAction* __fastcall __ct__14BindableActionFv(struct BindableAction* this) asm("??0BindableAction@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 0046f4c0 mac 10090b80 BindableAction::IsKeyBeingPressed(void)
-bool __fastcall IsKeyBeingPressed__14BindableActionFv(struct BindableAction* this);
+bool __fastcall IsKeyBeingPressed__14BindableActionFv(struct BindableAction* this) asm("?IsKeyBeingPressed@BindableAction@@QAE_NXZ");
 
 #endif /* BW1_DECOMP_BINDABLE_ACTION_INCLUDED_H */

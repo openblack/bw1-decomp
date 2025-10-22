@@ -130,38 +130,38 @@ extern const struct GameThingVftable __vt__7GPlayer asm("??_7GPlayer@@6B@");
 // Static methods
 
 // win1.41 00649a20 mac 100620c0 GPlayer::ProcessPlayers(void)
-void __cdecl ProcessPlayers__7GPlayerFv(void);
+void __cdecl ProcessPlayers__7GPlayerFv(void) asm("?ProcessPlayers@GPlayer@@SAXXZ");
 // win1.41 0064ab90 mac 10495bf0 GPlayer::PostLoadCleanup(void)
-void __cdecl PostLoadCleanup__7GPlayerFv(void);
+void __cdecl PostLoadCleanup__7GPlayerFv(void) asm("?PostLoadCleanup@GPlayer@@SAXXZ");
 // win1.41 0064b5e0 mac 10494e00 GPlayer::GetPlayerFromText(char *)
-struct GPlayer* __cdecl GetPlayerFromText__7GPlayerFPc(const char* str);
+struct GPlayer* __cdecl GetPlayerFromText__7GPlayerFPc(const char* str) asm("?GetPlayerFromText@GPlayer@@SAPAV1@PAD@Z");
 
 // Non-virtual methods
 
 // win1.41 00649190 mac 10497020 GPlayer::Init(PLAYER_TYPE, unsigned char, wchar_t *, unsigned char)
-void __fastcall Init__7GPlayerF11PLAYER_TYPEUcPwUc(struct GPlayer* this, const void* edx, enum PLAYER_TYPE type, uint8_t player_number, char16_t* param_3, unsigned char param_4);
+void __fastcall Init__7GPlayerF11PLAYER_TYPEUcPwUc(struct GPlayer* this, const void* edx, enum PLAYER_TYPE type, uint8_t player_number, char16_t* param_3, unsigned char param_4) asm("?Init@GPlayer@@QAEXW4PLAYER_TYPE@@EPA_WE@Z");
 // win1.41 006494e0 mac 10036020 GPlayer::Process(void)
-void __fastcall Process__7GPlayerFv(struct GPlayer* this);
+void __fastcall Process__7GPlayerFv(struct GPlayer* this) asm("?Process@GPlayer@@QAEXXZ");
 // win1.41 0064a6b0 mac 104965e0 GPlayer::Birthday(void)
-void __fastcall Birthday__7GPlayerFv(struct GPlayer* this);
+void __fastcall Birthday__7GPlayerFv(struct GPlayer* this) asm("?Birthday@GPlayer@@QAEXXZ");
 // win1.41 0064a790 mac 1005c3d0 GPlayer::GetPlayerNumber(void) const
-uint8_t __fastcall GetPlayerNumber__7GPlayerCFv(const struct GPlayer* this);
+uint8_t __fastcall GetPlayerNumber__7GPlayerCFv(const struct GPlayer* this) asm("?GetPlayerNumber@GPlayer@@QBEEXZ");
 // win1.41 0064aac0 mac 10035b60 GPlayer::GetNextInterfaceStatus(GInterfaceStatus *)
 struct GInterfaceStatus* __fastcall GetNextInterfaceStatus__7GPlayerFP16GInterfaceStatus(struct GPlayer* this, const void* edx, struct GInterfaceStatus* param_1) asm("?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z");
 // win1.41 0064ac00 mac 100306d0 GPlayer::IsNeutral(void)
-bool __fastcall IsNeutral__7GPlayerFv(const struct GPlayer* this);
+bool __fastcall IsNeutral__7GPlayerFv(const struct GPlayer* this) asm("?IsNeutral@GPlayer@@QAE_NXZ");
 // win1.41 0064ad00 mac 1004d120 GPlayer::CalculateInfluencePower(void)
-float __fastcall CalculateInfluencePower__7GPlayerFv(struct GPlayer* this);
+float __fastcall CalculateInfluencePower__7GPlayerFv(struct GPlayer* this) asm("?CalculateInfluencePower@GPlayer@@QAEMXZ");
 // win1.41 0064b590 mac 10494ee0 GPlayer::GetPlayer3DColor(void)
-struct LH3DColor* __fastcall GetPlayer3DColor__7GPlayerFv(struct GPlayer* this, const void* edx, struct LH3DColor* color);
+struct LH3DColor* __fastcall GetPlayer3DColor__7GPlayerFv(struct GPlayer* this, const void* edx, struct LH3DColor* color) asm("?GetPlayer3DColor@GPlayer@@QAEPAULH3DColor@@XZ");
 // win1.41 0064c220 mac 10492490 GPlayer::IsMagicTypeEnabled(MAGIC_TYPE)
-bool32_t __fastcall IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE(struct GPlayer* this, const void* edx, enum MAGIC_TYPE type);
+bool32_t __fastcall IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE(struct GPlayer* this, const void* edx, enum MAGIC_TYPE type) asm("?IsMagicTypeEnabled@GPlayer@@QAEIW4MAGIC_TYPE@@@Z");
 // win1.41 0064d120 mac 10051520 GPlayer::GetRealInterface(unsigned long)
-struct GInterface* __fastcall GetRealInterface__7GPlayerFUl(struct GPlayer* this, const void* edx, int param_2);
+struct GInterface* __fastcall GetRealInterface__7GPlayerFUl(struct GPlayer* this, const void* edx, int param_2) asm("?GetRealInterface@GPlayer@@QAEPAVGInterface@@K@Z");
 // win1.41 0064d750 mac 10033320 GPlayer::IsMemberOfThisPlayer(GInterfaceStatus *)
 bool __fastcall IsMemberOfThisPlayer__7GPlayerFP16GInterfaceStatus(struct GPlayer* this, const void* edx, struct GInterfaceStatus* param_1) asm("?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 0064d800 mac 10021970 GPlayer::GetPlayerColour(void) const
-struct LH3DColor __fastcall GetPlayerColour__7GPlayerCFv(struct GPlayer* this);
+struct LH3DColor __fastcall GetPlayerColour__7GPlayerCFv(struct GPlayer* this) asm("?GetPlayerColour@GPlayer@@QBE?AULH3DColor@@XZ");
 
 // Override methods
 

@@ -32,7 +32,7 @@ extern const struct MultiplayerDatabaseVftable __vt__13StatsDatabase asm("??_7St
 // Constructors
 
 // win1.41 006338d0 mac 10109a30 StatsDatabase::StatsDatabase(void)
-struct StatsDatabase* __fastcall __ct__13StatsDatabaseFv(struct StatsDatabase* this);
+struct StatsDatabase* __fastcall __ct__13StatsDatabaseFv(struct StatsDatabase* this) asm("??0StatsDatabase@@QAE@XZ");
 
 // Override methods
 

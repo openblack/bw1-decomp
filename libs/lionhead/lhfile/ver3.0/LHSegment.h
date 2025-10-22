@@ -25,6 +25,6 @@ static_assert(sizeof(struct LHSegment) == 0x2c, "Data type is of wrong size");
 // Constructors
 
 // win1.41 inlined mac 1005c5c0 LHSegment::LHSegment(void)
-struct LHSegment* __fastcall __ct__9LHSegmentFv(struct LHSegment* this);
+struct LHSegment* __fastcall __ct__9LHSegmentFv(struct LHSegment* this) asm("??0LHSegment@@QAE@XZ");
 
 #endif /* BW1_DECOMP_LH_SEGMENT_INCLUDED_H */

@@ -82,12 +82,12 @@ extern const struct MultiMapFixedVftable __vt__5Field asm("??_7Field@@6B@");
 // Static methods
 
 // win1.41 00528280 mac 100d5130 Field::Create(MapCoords const &, GFieldTypeInfo const *, Town *, float, float, int)
-struct Field* __cdecl Create__5FieldFRC9MapCoordsPC14GFieldTypeInfoP4Townffi(struct MapCoords* coords, struct GFieldTypeInfo* type_info, struct Town* town, float param_4, float param_5, int param_6);
+struct Field* __cdecl Create__5FieldFRC9MapCoordsPC14GFieldTypeInfoP4Townffi(struct MapCoords* coords, struct GFieldTypeInfo* type_info, struct Town* town, float param_4, float param_5, int param_6) asm("?Create@Field@@SAPAV1@ABUMapCoords@@PBVGFieldTypeInfo@@PAVTown@@MMH@Z");
 
 // Constructors
 
 // win1.41 00527dd0 mac 100d5910 Field::Field(MapCoords const &, GFieldTypeInfo const *, GAbodeInfo const *, Town *, float, float, int)
-struct Field* __fastcall __ct__5FieldFRC9MapCoordsPC14GFieldTypeInfoPC10GAbodeInfoP4Townffi(struct Field* this, const void* edx, struct MapCoords* coords, struct GFieldTypeInfo* type_info, struct GAbodeInfo* abode_info, struct Town* town, float param_5, float param_6, int param_7);
+struct Field* __fastcall __ct__5FieldFRC9MapCoordsPC14GFieldTypeInfoPC10GAbodeInfoP4Townffi(struct Field* this, const void* edx, struct MapCoords* coords, struct GFieldTypeInfo* type_info, struct GAbodeInfo* abode_info, struct Town* town, float param_5, float param_6, int param_7) asm("??0Field@@QAE@ABUMapCoords@@PBVGFieldTypeInfo@@PBVGAbodeInfo@@PAVTown@@MMH@Z");
 
 // Override methods
 

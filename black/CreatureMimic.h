@@ -50,7 +50,7 @@ extern const struct BaseVftable __vt__18CreatureMimicState asm("??_7CreatureMimi
 // Constructors
 
 // win1.41 004e9d20 mac 1026fe50 CreatureMimicState::CreatureMimicState(void)
-void __fastcall __ct__18CreatureMimicStateFv(struct CreatureMimicState* this);
+void __fastcall __ct__18CreatureMimicStateFv(struct CreatureMimicState* this) asm("??0CreatureMimicState@@QAE@XZ");
 
 // Override methods
 

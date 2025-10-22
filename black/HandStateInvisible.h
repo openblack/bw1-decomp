@@ -36,7 +36,7 @@ extern const struct HandStateVftable __vt__18HandStateInvisible asm("??_7HandSta
 // Constructors
 
 // win1.41 inlined mac inlined HandStateInvisible::HandStateInvisible(CHand*)
-struct HandStateInvisible* __fastcall __ct__18HandStateInvisibleFP5CHand(struct HandStateInvisible* this, const void* edx, struct CHand* hand);
+struct HandStateInvisible* __fastcall __ct__18HandStateInvisibleFP5CHand(struct HandStateInvisible* this, const void* edx, struct CHand* hand) asm("??0HandStateInvisible@@QAE@PAVCHand@@@Z");
 
 // Override methods
 

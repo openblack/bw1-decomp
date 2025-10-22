@@ -14,7 +14,7 @@
 .extern @__ct__13SetupCheckBoxFiiibiPwi@33
 .extern _jmp_addr_0x004287c0
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x00633ae0
 .extern _jmp_addr_0x00633b30
@@ -278,7 +278,7 @@ _jmp_addr_0x00544023:    {disp8} mov      dword ptr [esi + 0x28], eax           
                          ret              0x000c                                        // 0x00544038    c20c00
                          call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054403b    e839d8ebff
 ?Destroy@CDBox@@UAEXXZ:
-                         call             @Destroy__13DialogBoxBaseFv@4                 // 0x00544040    e84bf5fcff
+                         call             ?Destroy@DialogBoxBase@@UAEXXZ                // 0x00544040    e84bf5fcff
                          {disp32} mov     dword ptr [data_bytes + 0x30ab7c], 0x00000000 // 0x00544045    c7057c0bcd0000000000
                          ret                                                            // 0x0054404f    c3
 ?InitControls@CDBox@@UAEXXZ:

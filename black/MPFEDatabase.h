@@ -43,13 +43,13 @@ extern const struct MPFEDatabaseVftable __vt__12MPFEDatabase asm("??_7MPFEDataba
 // Constructors
 
 // win1.41 0062e100 mac 103a3ce0 MPFEDatabase::MPFEDatabase(void)
-struct MPFEDatabase* __fastcall __ct__12MPFEDatabaseFv(struct MPFEDatabase* this);
+struct MPFEDatabase* __fastcall __ct__12MPFEDatabaseFv(struct MPFEDatabase* this) asm("??0MPFEDatabase@@QAE@XZ");
 
 // Override methods
 
 // win1.41 0062e4f0 mac 103a35b0 MPFEDatabase::DatabaseError(void)
-void __fastcall DatabaseError__12MPFEDatabaseFv(struct MPFEDatabase* this);
+void __fastcall DatabaseError__12MPFEDatabaseFv(struct MPFEDatabase* this) asm("?DatabaseError@MPFEDatabase@@UAEXXZ");
 // win1.41 0062e510 mac 103a3520 MPFEDatabase::DatabaseComplete(void)
-void __fastcall DatabaseComplete__12MPFEDatabaseFv(struct MPFEDatabase* this);
+void __fastcall DatabaseComplete__12MPFEDatabaseFv(struct MPFEDatabase* this) asm("?DatabaseComplete@MPFEDatabase@@UAEXXZ");
 
 #endif /* BW1_DECOMP_MPFE_DATABASE_INCLUDED_H */

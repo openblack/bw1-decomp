@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00407a30
-.extern _GetCurrentActiveBox__8SetupBoxFv
+.extern ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ
 .extern _jmp_addr_0x00407ef0
 .extern _jmp_addr_0x00408f80
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x0043a380
 .extern _jmp_addr_0x0043a390
 .extern _jmp_addr_0x0043aa60
-.extern @GetCreature3D__8CreatureFv@4
+.extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x00540020
 .extern _jmp_addr_0x0054ae20
@@ -96,7 +96,7 @@ _jmp_addr_0x0063ef20:    sub              esp, 0x08                             
                          {disp32} mov     ecx, dword ptr [eax + esi * 0x1 + 0x00000a64] // 0x0063ef41    8b8c30640a0000
                          test             ecx, ecx                                      // 0x0063ef48    85c9
                          {disp8} je       _jmp_addr_0x0063ef51                          // 0x0063ef4a    7405
-                         call             @GetCreature3D__8CreatureFv@4                 // 0x0063ef4c    e8ff88e3ff
+                         call             ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ                 // 0x0063ef4c    e8ff88e3ff
 _jmp_addr_0x0063ef51:    {disp32} mov     ecx, dword ptr [esi + 0x00205b80]             // 0x0063ef51    8b8e805b2000
                          {disp32} mov     esi, dword ptr [ecx + 0x00000094]             // 0x0063ef57    8bb194000000
                          {disp8} mov      eax, dword ptr [esp + 0x1c]                   // 0x0063ef5d    8b44241c
@@ -203,23 +203,23 @@ _jmp_addr_0x0063f0f0:    call             _jmp_addr_0x00407ef0                  
                          cmp              dword ptr [esp + 0x1c], 0x3c                  // 0x0063f0f5    837c241c3c
                          {disp32} jne     _jmp_addr_0x0063f1dd                          // 0x0063f0fa    0f85dd000000
                          xor.s            bl, bl                                        // 0x0063f100    32db
-                         call             _GetCurrentActiveBox__8SetupBoxFv             // 0x0063f102    e8c98ddcff
+                         call             ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x0063f102    e8c98ddcff
                          test             eax, eax                                      // 0x0063f107    85c0
                          {disp8} je       _jmp_addr_0x0063f146                          // 0x0063f109    743b
                          {disp32} mov     al, byte ptr [data_bytes + 0x286cec]          // 0x0063f10b    a0ecccc400
                          test             al, al                                        // 0x0063f110    84c0
                          {disp8} jne      _jmp_addr_0x0063f146                          // 0x0063f112    7532
                          mov              bl, 0x01                                      // 0x0063f114    b301
-                         call             _GetCurrentActiveBox__8SetupBoxFv             // 0x0063f116    e8b58ddcff
+                         call             ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x0063f116    e8b58ddcff
                          {disp8} mov      cl, byte ptr [eax + 0x64]                     // 0x0063f11b    8a4864
                          test             cl, cl                                        // 0x0063f11e    84c9
                          {disp8} jne      _jmp_addr_0x0063f146                          // 0x0063f120    7524
-                         call             _GetCurrentActiveBox__8SetupBoxFv             // 0x0063f122    e8a98ddcff
+                         call             ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x0063f122    e8a98ddcff
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x30a65c]        // 0x0063f127    8b0d5c06cd00
                          cmp              eax, dword ptr [ecx + 0x04]                   // 0x0063f12d    3b4104
                          {disp8} jne      _jmp_addr_0x0063f134                          // 0x0063f130    7502
                          xor.s            bl, bl                                        // 0x0063f132    32db
-_jmp_addr_0x0063f134:    call             _GetCurrentActiveBox__8SetupBoxFv             // 0x0063f134    e8978ddcff
+_jmp_addr_0x0063f134:    call             ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x0063f134    e8978ddcff
                          {disp32} mov     edx, dword ptr [data_bytes + 0x30a63c]        // 0x0063f139    8b153c06cd00
                          cmp              eax, dword ptr [edx + 0x04]                   // 0x0063f13f    3b4204
                          {disp8} jne      _jmp_addr_0x0063f146                          // 0x0063f142    7502
@@ -287,13 +287,13 @@ _jmp_addr_0x0063f211:    mov.s            edx, edi                              
                          and              edx, 0x0000ffff                               // 0x0063f213    81e2ffff0000
                          push             edx                                           // 0x0063f219    52
                          push             esi                                           // 0x0063f21a    56
-                         call             _GetCurrentActiveBox__8SetupBoxFv             // 0x0063f21b    e8b08cdcff
+                         call             ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x0063f21b    e8b08cdcff
                          mov.s            ecx, eax                                      // 0x0063f220    8bc8
                          call             _jmp_addr_0x00408f80                          // 0x0063f222    e8599ddcff
-                         call             _GetCurrentActiveBox__8SetupBoxFv             // 0x0063f227    e8a48cdcff
+                         call             ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x0063f227    e8a48cdcff
                          test             eax, eax                                      // 0x0063f22c    85c0
                          {disp8} je       _jmp_addr_0x0063f255                          // 0x0063f22e    7425
-                         call             _GetCurrentActiveBox__8SetupBoxFv             // 0x0063f230    e89b8cdcff
+                         call             ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x0063f230    e89b8cdcff
                          {disp32} mov     ecx, dword ptr [eax + 0x000000c8]             // 0x0063f235    8b88c8000000
                          test             ecx, ecx                                      // 0x0063f23b    85c9
                          {disp8} jne      _jmp_addr_0x0063f255                          // 0x0063f23d    7516

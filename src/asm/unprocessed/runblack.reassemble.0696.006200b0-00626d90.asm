@@ -71,8 +71,8 @@
 .extern _jmp_addr_0x0062cba0
 .extern _jmp_addr_0x0062d8f0
 .extern _jmp_addr_0x0062da90
-.extern @IsLanLobby__20MPFEConnectionStatusFv@4
-.extern @IsInternetLobby__20MPFEConnectionStatusFv@4
+.extern ?IsLanLobby@MPFEConnectionStatus@@QAE_NXZ
+.extern ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ
 .extern _jmp_addr_0x0062db80
 .extern _jmp_addr_0x0062dbd0
 .extern _jmp_addr_0x0062dc30
@@ -136,7 +136,7 @@
 .extern _jmp_addr_0x007753e0
 .extern _jmp_addr_0x007753f0
 .extern  ??3@YAXPAX@Z
-.extern _Exists__8LHOSFileFPc
+.extern ?Exists@LHOSFile@@SAIPAD@Z
 .extern _atexit
 .extern _wcscpy
 .extern _wcsncpy
@@ -3603,7 +3603,7 @@ _jmp_addr_0x00622845:    mov               eax, dword ptr [esi]                 
                          call              _jmp_addr_0x00626500                          // 0x00622852    e8a93c0000
                          {disp8} jmp       _jmp_addr_0x00622845                          // 0x00622857    ebec
 _jmp_addr_0x00622859:    mov               ecx, 0x00d40e20                               // 0x00622859    b9200ed400
-                         call              @IsInternetLobby__20MPFEConnectionStatusFv@4  // 0x0062285e    e85db20000
+                         call              ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ// 0x0062285e    e85db20000
                          test              al, al                                        // 0x00622863    84c0
                          {disp8} je        _jmp_addr_0x00622873                          // 0x00622865    740c
                          {disp32} mov      dword ptr [edi + 0x00000a60], 0x00c599fc      // 0x00622867    c787600a0000fc99c500
@@ -5495,7 +5495,7 @@ _jmp_addr_0x00623da2:    cmp               dword ptr [ebp + 0x00000ae0], edi    
                          and               ecx, 0x03                                     // 0x00623e09    83e103
                          rep movsb                                                       // 0x00623e0c    f3a4
                          mov               ecx, 0x00d40e20                               // 0x00623e0e    b9200ed400
-                         call              @IsLanLobby__20MPFEConnectionStatusFv@4       // 0x00623e13    e8989c0000
+                         call              ?IsLanLobby@MPFEConnectionStatus@@QAE_NXZ     // 0x00623e13    e8989c0000
                          test              al, al                                        // 0x00623e18    84c0
                          {disp32} je       _jmp_addr_0x00623f8e                          // 0x00623e1a    0f846e010000
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x37ae24]        // 0x00623e20    8b0d240ed400
@@ -5736,7 +5736,7 @@ _jmp_addr_0x006240f0:    {disp32} mov      al, byte ptr [data_bytes + 0x37a5fe] 
                          mov.s             ebx, ecx                                      // 0x006240f9    8bd9
                          {disp8} je        _jmp_addr_0x00624158                          // 0x006240fb    745b
                          mov               ecx, 0x00d40e20                               // 0x006240fd    b9200ed400
-                         call              @IsLanLobby__20MPFEConnectionStatusFv@4       // 0x00624102    e8a9990000
+                         call              ?IsLanLobby@MPFEConnectionStatus@@QAE_NXZ     // 0x00624102    e8a9990000
                          test              al, al                                        // 0x00624107    84c0
                          {disp8} jne       _jmp_addr_0x00624158                          // 0x00624109    754d
                          {disp32} mov      esi, dword ptr [ebx + 0x00000ad4]             // 0x0062410b    8bb3d40a0000
@@ -5848,7 +5848,7 @@ _jmp_addr_0x006241f0:    sub               esp, 0x00000814                      
                          mov.s             ecx, edi                                      // 0x00624216    8bcf
                          call              _jmp_addr_0x00624180                          // 0x00624218    e863ffffff
                          mov               ecx, 0x00d40e20                               // 0x0062421d    b9200ed400
-                         call              @IsLanLobby__20MPFEConnectionStatusFv@4       // 0x00624222    e889980000
+                         call              ?IsLanLobby@MPFEConnectionStatus@@QAE_NXZ     // 0x00624222    e889980000
                          test              al, al                                        // 0x00624227    84c0
                          {disp32} je       _jmp_addr_0x0062437b                          // 0x00624229    0f844c010000
                          push              0x0000037a                                    // 0x0062422f    687a030000
@@ -6700,7 +6700,7 @@ _jmp_addr_0x00624c54:    {disp32} mov      edx, dword ptr [rdata_bytes + 0x400] 
                          push              eax                                           // 0x00624c64    50
                          call              dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]   // 0x00624c65    ff155c938a00
                          push              eax                                           // 0x00624c6b    50
-                         call              _Exists__8LHOSFileFPc                         // 0x00624c6c    e82f7a1900
+                         call              ?Exists@LHOSFile@@SAIPAD@Z                    // 0x00624c6c    e82f7a1900
                          add               esp, 0x10                                     // 0x00624c71    83c410
                          neg               eax                                           // 0x00624c74    f7d8
                          sbb.s             al, al                                        // 0x00624c76    1ac0
@@ -7051,7 +7051,7 @@ _jmp_addr_0x006250d8:    {disp32} mov      eax, dword ptr [esp + 0x00000a20]    
                          {disp32} mov      dword ptr [edi + 0x00000110], 0xffffffff      // 0x006250f4    c78710010000ffffffff
                          {disp8} je        _jmp_addr_0x0062513a                          // 0x006250fe    743a
                          mov               ecx, 0x00d40e20                               // 0x00625100    b9200ed400
-                         call              @IsLanLobby__20MPFEConnectionStatusFv@4       // 0x00625105    e8a6890000
+                         call              ?IsLanLobby@MPFEConnectionStatus@@QAE_NXZ     // 0x00625105    e8a6890000
                          test              al, al                                        // 0x0062510a    84c0
                          {disp8} je        _jmp_addr_0x0062513a                          // 0x0062510c    742c
                          {disp8} lea       ecx, dword ptr [esp + 0x08]                   // 0x0062510e    8d4c2408
@@ -8107,7 +8107,7 @@ _jmp_addr_0x00625c93:    push              0x00bf46d8                           
 _jmp_addr_0x00625cf6:    {disp32} mov      eax, dword ptr [ebp + 0x0000183c]             // 0x00625cf6    8b853c180000
                          mov               ecx, 0x00d40e20                               // 0x00625cfc    b9200ed400
                          {disp32} mov      dword ptr [data_bytes + 0x35a4cc], eax        // 0x00625d01    a3cc04d200
-                         call              @IsInternetLobby__20MPFEConnectionStatusFv@4  // 0x00625d06    e8b57d0000
+                         call              ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ// 0x00625d06    e8b57d0000
                          test              al, al                                        // 0x00625d0b    84c0
                          {disp8} je        _jmp_addr_0x00625d1b                          // 0x00625d0d    740c
                          {disp32} mov      dword ptr [data_bytes + 0x35a4d0], edi        // 0x00625d0f    893dd004d200
@@ -9258,7 +9258,7 @@ _jmp_addr_0x00626790:    sub               esp, 0x00000204                      
                          push              edi                                           // 0x0062679b    57
                          mov               ecx, 0x00d40e20                               // 0x0062679c    b9200ed400
                          xor.s             bl, bl                                        // 0x006267a1    32db
-                         call              @IsInternetLobby__20MPFEConnectionStatusFv@4  // 0x006267a3    e818730000
+                         call              ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ// 0x006267a3    e818730000
                          test              al, al                                        // 0x006267a8    84c0
                          {disp8} je        _jmp_addr_0x006267c7                          // 0x006267aa    741b
                          {disp32} mov      eax, dword ptr [esi + 0x0000049c]             // 0x006267ac    8b869c040000
@@ -9549,7 +9549,7 @@ _jmp_addr_0x00626a70:    push              ebx                                  
                          cmp               ebx, -0x01                                    // 0x00626a9f    83fbff
                          {disp8} jne       _jmp_addr_0x00626abe                          // 0x00626aa2    751a
                          mov               ecx, 0x00d40e20                               // 0x00626aa4    b9200ed400
-                         call              @IsInternetLobby__20MPFEConnectionStatusFv@4  // 0x00626aa9    e812700000
+                         call              ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ// 0x00626aa9    e812700000
                          test              al, al                                        // 0x00626aae    84c0
                          {disp8} je        _jmp_addr_0x00626abe                          // 0x00626ab0    740c
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x379a98]        // 0x00626ab2    8b0d98fad300

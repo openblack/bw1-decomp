@@ -55,9 +55,9 @@ extern const struct RockVftable __vt__8Fragment asm("??_7Fragment@@6B@");
 // Constructors
 
 // win1.41 0076e900 mac 1015c440 Fragment::Fragment(void)
-struct Fragment* __fastcall __ct__8FragmentFv(struct Fragment* this);
+struct Fragment* __fastcall __ct__8FragmentFv(struct Fragment* this) asm("??0Fragment@@QAE@XZ");
 // win1.41 0076e9d0 mac 1015c250 Fragment::Fragment(MapCoords const &, FragMesh *, GPlayer *)
-struct Fragment* __fastcall __ct__8FragmentFRC9MapCoordsP8FragMeshP7GPlayer(struct Fragment* this, const void* edx, struct MapCoords* coords, struct FragMesh* frag_mesh, struct GPlayer* player);
+struct Fragment* __fastcall __ct__8FragmentFRC9MapCoordsP8FragMeshP7GPlayer(struct Fragment* this, const void* edx, struct MapCoords* coords, struct FragMesh* frag_mesh, struct GPlayer* player) asm("??0Fragment@@QAE@ABUMapCoords@@PAUFragMesh@@PAVGPlayer@@@Z");
 
 // Override methods
 

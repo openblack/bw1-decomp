@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x005fb490
 .extern _jmp_addr_0x005fb520
 .extern _jmp_addr_0x005fb5d0
-.extern @GetMagicEffectInfo__10GMagicInfoCFv@4
+.extern ?GetMagicEffectInfo@GMagicInfo@@QBEPAVGMagicEffectInfo@@XZ
 .extern _jmp_addr_0x005fb710
 .extern _jmp_addr_0x005fb7a0
 .extern _jmp_addr_0x005fb830
@@ -35,10 +35,10 @@
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x0063e540
 .extern _jmp_addr_0x0064ab20
-.extern @IsNeutral__7GPlayerFv@4
-.extern @GetPlayerColour__7GPlayerCFv@4
+.extern ?IsNeutral@GPlayer@@QAE_NXZ
+.extern ?GetPlayerColour@GPlayer@@QBE?AULH3DColor@@XZ
 .extern _jmp_addr_0x00682e10
-.extern _CreateTribalPowerColumn__10PSysHandFXF10TRIBE_TYPERC7LHPointUl
+.extern ?CreateTribalPowerColumn@PSysHandFX@@SAXW4TRIBE_TYPE@@ABULHPoint@@K@Z
 .extern _jmp_addr_0x0068f240
 .extern _jmp_addr_0x0071fa10
 .extern _jmp_addr_0x007201d0
@@ -57,7 +57,7 @@
 .extern _jmp_addr_0x0077f950
 .extern _jmp_addr_0x0077f9a0
 .extern ___RTDynamicCast
-.extern @GetAltitudeAndSetColorSpecular__10LH3DIslandFRC13LH3DMapCoordsPUlPUl@12
+.extern ?GetAltitudeAndSetColorSpecular@LH3DIsland@@SAMABULH3DMapCoords@@PAK1@Z
 
 .globl _jmp_addr_0x007285e0
 .globl _jmp_addr_0x00728620
@@ -132,7 +132,7 @@ start_0x00728570_0x00729c90:
                          mov.s              ecx, esi                                 // 0x00728590    8bce
                          call               _jmp_addr_0x00729800                     // 0x00728592    e869120000
                          mov.s              ecx, eax                                 // 0x00728597    8bc8
-                         call               @IsNeutral__7GPlayerFv@4                 // 0x00728599    e86226f2ff
+                         call               ?IsNeutral@GPlayer@@QAE_NXZ              // 0x00728599    e86226f2ff
                          test               eax, eax                                 // 0x0072859e    85c0
                          {disp8} je         _jmp_addr_0x007285ab                     // 0x007285a0    7409
                          mov                eax, 0x00000001                          // 0x007285a2    b801000000
@@ -1390,7 +1390,7 @@ _jmp_addr_0x00729020:    sub                esp, 0x18                           
                          {disp8} fstp       dword ptr [esp + 0x20]                   // 0x0072909a    d95c2420
                          {disp8} fld        dword ptr [esp + 0x14]                   // 0x0072909e    d9442414
                          {disp8} fstp       dword ptr [esp + 0x1c]                   // 0x007290a2    d95c241c
-                         call               @GetAltitudeAndSetColorSpecular__10LH3DIslandFRC13LH3DMapCoordsPUlPUl@12                     // 0x007290a6    e895a20d00
+                         call               ?GetAltitudeAndSetColorSpecular@LH3DIsland@@SAMABULH3DMapCoords@@PAK1@Z                      // 0x007290a6    e895a20d00
                          {disp8} fadd       dword ptr [esp + 0x18]                   // 0x007290ab    d8442418
                          {disp8} lea        edx, dword ptr [esp + 0x14]              // 0x007290af    8d542414
                          {disp8} lea        ecx, dword ptr [esi + 0x14]              // 0x007290b3    8d4e14
@@ -1650,12 +1650,12 @@ _jmp_addr_0x007292b3:    {disp8} mov        eax, dword ptr [esp + 0x1c]         
                          {disp8} fstp       dword ptr [esp + 0x10]                   // 0x007292d5    d95c2410
                          call               _jmp_addr_0x00729800                     // 0x007292d9    e822050000
                          mov.s              ecx, eax                                 // 0x007292de    8bc8
-                         call               @GetPlayerColour__7GPlayerCFv@4          // 0x007292e0    e81b45f2ff
+                         call               ?GetPlayerColour@GPlayer@@QBE?AULH3DColor@@XZ          // 0x007292e0    e81b45f2ff
                          push               eax                                      // 0x007292e5    50
                          {disp8} lea        eax, dword ptr [esp + 0x10]              // 0x007292e6    8d442410
                          push               eax                                      // 0x007292ea    50
                          push               edi                                      // 0x007292eb    57
-                         call               _CreateTribalPowerColumn__10PSysHandFXF10TRIBE_TYPERC7LHPointUl                     // 0x007292ec    e8ff4bf6ff
+                         call               ?CreateTribalPowerColumn@PSysHandFX@@SAXW4TRIBE_TYPE@@ABULHPoint@@K@Z               // 0x007292ec    e8ff4bf6ff
                          add                esp, 0x0c                                // 0x007292f1    83c40c
 _jmp_addr_0x007292f4:    {disp32} mov       ecx, dword ptr [_global]                 // 0x007292f4    8b0d203bcd00
                          push               0x9                                      // 0x007292fa    6a09
@@ -1830,7 +1830,7 @@ _jmp_addr_0x0072948b:    push               edi                                 
                          {disp8} mov        ebx, dword ptr [esp + 0x18]              // 0x007294e8    8b5c2418
                          mov.s              ecx, edi                                 // 0x007294ec    8bcf
                          {disp8} fstp       dword ptr [ebx + 0x08]                   // 0x007294ee    d95b08
-                         call               @GetMagicEffectInfo__10GMagicInfoCFv@4   // 0x007294f1    e88a21edff
+                         call               ?GetMagicEffectInfo@GMagicInfo@@QBEPAVGMagicEffectInfo@@XZ   // 0x007294f1    e88a21edff
                          {disp8} fld        dword ptr [eax + 0x74]                   // 0x007294f6    d94074
                          {disp32} fmul      dword ptr [esi + 0x00000088]             // 0x007294f9    d88e88000000
                          {disp8} fstp       dword ptr [ebx + 0x04]                   // 0x007294ff    d95b04
@@ -2394,7 +2394,7 @@ _jmp_addr_0x00729ad0:    push               esi                                 
                          mov.s              ecx, esi                                 // 0x00729ad9    8bce
                          call               _jmp_addr_0x007290f0                     // 0x00729adb    e810f6ffff
                          mov.s              ecx, eax                                 // 0x00729ae0    8bc8
-                         call               @GetMagicEffectInfo__10GMagicInfoCFv@4   // 0x00729ae2    e8991bedff
+                         call               ?GetMagicEffectInfo@GMagicInfo@@QBEPAVGMagicEffectInfo@@XZ   // 0x00729ae2    e8991bedff
                          mov.s              ecx, eax                                 // 0x00729ae7    8bc8
                          call               _jmp_addr_0x005fb710                     // 0x00729ae9    e8221cedff
                          pop                esi                                      // 0x00729aee    5e
@@ -2479,7 +2479,7 @@ _jmp_addr_0x00729b98:    {disp32} mov       ecx, dword ptr [_game]              
                          mov.s              ecx, esi                                 // 0x00729bba    8bce
                          call               _jmp_addr_0x007290f0                     // 0x00729bbc    e82ff5ffff
                          mov.s              ecx, eax                                 // 0x00729bc1    8bc8
-                         call               @GetMagicEffectInfo__10GMagicInfoCFv@4   // 0x00729bc3    e8b81aedff
+                         call               ?GetMagicEffectInfo@GMagicInfo@@QBEPAVGMagicEffectInfo@@XZ   // 0x00729bc3    e8b81aedff
                          {disp32} mov       ecx, dword ptr [eax + 0x00000110]        // 0x00729bc8    8b8810010000
                          push               ecx                                      // 0x00729bce    51
                          call               _jmp_addr_0x005c9c60                     // 0x00729bcf    e88c00eaff

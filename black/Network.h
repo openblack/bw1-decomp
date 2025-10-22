@@ -36,11 +36,11 @@ static_assert(sizeof(struct GNetwork) == 0x14, "Data type is of wrong size");
 // win1.41 006349f0 mac 1010bff0 GNetwork::ProcessOnePacket(void)
 bool __stdcall ProcessOnePacket__8GNetworkFv(struct GNetwork* this);
 // win1.41 006345e0 mac 10017240 GNetwork::ResetStateDebug(void)
-void __cdecl ResetStateDebug__8GNetworkFv(void);
+void __cdecl ResetStateDebug__8GNetworkFv(void) asm("?ResetStateDebug@GNetwork@@SAXXZ");
 
 // Non-virtual methods
 
 // win1.41 00635290 mac 100229f0 GNetwork::ProcessOneSuperpacket(void)
-uint32_t __fastcall ProcessOneSuperpacket__8GNetworkFv(struct GNetwork* this);
+uint32_t __fastcall ProcessOneSuperpacket__8GNetworkFv(struct GNetwork* this) asm("?ProcessOneSuperpacket@GNetwork@@QAEIXZ");
 
 #endif /* BW1_DECOMP_NETWORK_INCLUDED_H */

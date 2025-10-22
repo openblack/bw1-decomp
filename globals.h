@@ -311,7 +311,6 @@ static struct globals_t globals = {
     .g_delta_time__8LH3DTech = (uint32_t*)0x00c38134,
     .DAT_00c386d0 = (uint32_t*)0x00c386d0,
     .DAT_00c38714 = (uint32_t*)0x00c38714,
-    // End of data's non-virtual allocations
     .GAbodeInfo_ARRAY_00c3c690 = (struct GAbodeInfo (*)[147])0x00c3c690,
     .SetupThing = (struct SetupThing*)0x00c4cc80,
     .UINT_00c58604 = (uint32_t*)0x00c58604,

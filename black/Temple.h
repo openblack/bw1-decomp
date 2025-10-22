@@ -43,7 +43,7 @@ void __stdcall ProcessGameTurn__6TempleFv(void);
 // Constructors
 
 // win1.41 00793ac0 mac 10537d50 Temple::Temple(void)
-struct Temple* __fastcall __ct__6TempleFv(struct Temple* this);
+struct Temple* __fastcall __ct__6TempleFv(struct Temple* this) asm("??0Temple@@QAE@XZ");
 
 // Non-virtual methods
 

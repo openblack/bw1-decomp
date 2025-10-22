@@ -161,37 +161,37 @@ extern const struct CameraModeNew3Vftable __vt__14CameraModeNew3 asm("??_7Camera
 // win1.41 00458db0 mac 1007c250 CameraModeNew3::CalcPerpDistance(LHPoint &, LHPoint &, LHPoint &)
 float __stdcall CalcPerpDistance__14CameraModeNew3FR7LHPointR7LHPointR7LHPoint(struct LHPoint* param_1, struct LHPoint* param_2, struct LHPoint* param_3);
 // win1.41 00458f40 mac 10062a70 CameraModeNew3::FindBestAngle(float, float, LHPoint &, float &, float *)
-float __cdecl FindBestAngle__14CameraModeNew3FffR7LHPointRfPf(float param_1, float param_2, float* param_3, float* param_4, float* param_5);
+float __cdecl FindBestAngle__14CameraModeNew3FffR7LHPointRfPf(float param_1, float param_2, float* param_3, float* param_4, float* param_5) asm("?FindBestAngle@CameraModeNew3@@SAMMMAAULHPoint@@AAMPAM@Z");
 
 // Constructors
 
 // win1.41 004572e0 mac 101a6040 CameraModeNew3::CameraModeNew3(GCamera *)
-struct CameraModeNew3* __fastcall __ct__14CameraModeNew3FP7GCamera(struct CameraModeNew3* this, const void* edx, struct GCamera* camera);
+struct CameraModeNew3* __fastcall __ct__14CameraModeNew3FP7GCamera(struct CameraModeNew3* this, const void* edx, struct GCamera* camera) asm("??0CameraModeNew3@@QAE@PAVGCamera@@@Z");
 
 // Non-virtual methods
 
 // win1.41 00459230 mac 10025a60 CameraModeNew3::UpdateTricons(void)
-void __fastcall UpdateTricons__14CameraModeNew3Fv(struct CameraModeNew3* this);
+void __fastcall UpdateTricons__14CameraModeNew3Fv(struct CameraModeNew3* this) asm("?UpdateTricons@CameraModeNew3@@QAEXXZ");
 // win1.41 00459610 mac 101a4670 CameraModeNew3::UpdateClickParams(LHPoint &, LHPoint &, bool)
-void __fastcall UpdateClickParams__14CameraModeNew3FR7LHPointR7LHPointb(struct CameraModeNew3* this, const void* edx, const struct LHPoint* param_1, const struct LHPoint* param_2, bool param_3);
+void __fastcall UpdateClickParams__14CameraModeNew3FR7LHPointR7LHPointb(struct CameraModeNew3* this, const void* edx, const struct LHPoint* param_1, const struct LHPoint* param_2, bool param_3) asm("?UpdateClickParams@CameraModeNew3@@QAEXAAULHPoint@@0_N@Z");
 // win1.41 00459c30 mac 10037970 CameraModeNew3::
-float __fastcall GetAltitude__14CameraModeNew3FR7LHPoint(struct CameraModeNew3* this, const void* edx, struct LHPoint* param_1);
+float __fastcall GetAltitude__14CameraModeNew3FR7LHPoint(struct CameraModeNew3* this, const void* edx, struct LHPoint* param_1) asm("?GetAltitude@CameraModeNew3@@QAEMAAULHPoint@@@Z");
 // win1.41 00459d20 mac 101a4380 CameraModeNew3::SetAltitudeAndNormal(LHPoint &, LHPoint &)
-void __fastcall SetAltitudeAndNormal__14CameraModeNew3FR7LHPointR7LHPoint(struct CameraModeNew3* this, const void* edx, struct LHPoint* param_1, struct LHPoint* normal);
+void __fastcall SetAltitudeAndNormal__14CameraModeNew3FR7LHPointR7LHPoint(struct CameraModeNew3* this, const void* edx, struct LHPoint* param_1, struct LHPoint* normal) asm("?SetAltitudeAndNormal@CameraModeNew3@@QAEXAAULHPoint@@0@Z");
 // win1.41 00459f10 mac 1007e670 CameraModeNew3::DragFocusOntoLand(LHPoint &, LHPoint &)
-void __fastcall DragFocusOntoLand__14CameraModeNew3FR7LHPointR7LHPoint(struct CameraModeNew3* this, const void* edx, struct LHPoint* param_1, struct LHPoint* param_2);
+void __fastcall DragFocusOntoLand__14CameraModeNew3FR7LHPointR7LHPoint(struct CameraModeNew3* this, const void* edx, struct LHPoint* param_1, struct LHPoint* param_2) asm("?DragFocusOntoLand@CameraModeNew3@@QAEXAAULHPoint@@0@Z");
 // win1.41 0045a080 mac 101a3db0 CameraModeNew3::UpdateStrafe(LHPoint &, LHPoint &, float &, float &, float, unsigned long)
-bool __fastcall UpdateStrafe__14CameraModeNew3FR7LHPointR7LHPointRfRffUl(struct CameraModeNew3* this, const void* edx, struct LHPoint* param_1, struct LHPoint* param_2, float* param_3, float* param_4, float param_5, uint32_t param_6);
+bool __fastcall UpdateStrafe__14CameraModeNew3FR7LHPointR7LHPointRfRffUl(struct CameraModeNew3* this, const void* edx, struct LHPoint* param_1, struct LHPoint* param_2, float* param_3, float* param_4, float param_5, uint32_t param_6) asm("?UpdateStrafe@CameraModeNew3@@QAE_NAAULHPoint@@0AAM1MK@Z");
 // win1.41 0045a390 mac 100098e0 CameraModeNew3::WantToQuitFight(LHPoint, LHPoint, float)
-bool __fastcall WantToQuitFight__14CameraModeNew3F7LHPoint7LHPointf(struct CameraModeNew3* this, const void* edx, struct LHPoint param_1, struct LHPoint param_2, float param_3);
+bool __fastcall WantToQuitFight__14CameraModeNew3F7LHPoint7LHPointf(struct CameraModeNew3* this, const void* edx, struct LHPoint param_1, struct LHPoint param_2, float param_3) asm("?WantToQuitFight@CameraModeNew3@@QAE_NULHPoint@@0M@Z");
 // win1.41 0045a4d0 mac 101a3910 CameraModeNew3::StartFight(GArena *)
-void __fastcall StartFight__14CameraModeNew3FP6GArena(struct CameraModeNew3* this, const void* edx, struct GArena* arena);
+void __fastcall StartFight__14CameraModeNew3FP6GArena(struct CameraModeNew3* this, const void* edx, struct GArena* arena) asm("?StartFight@CameraModeNew3@@QAEXPAVGArena@@@Z");
 // win1.41 0045a830 mac inlined CameraModeNew3::EndFightNow(int)
-void __fastcall EndFightNow__14CameraModeNew3Fi(struct CameraModeNew3* this, const void* edx, int param_1);
+void __fastcall EndFightNow__14CameraModeNew3Fi(struct CameraModeNew3* this, const void* edx, int param_1) asm("?EndFightNow@CameraModeNew3@@QAEXH@Z");
 
 // Override methods
 
 // win1.41 0045a960 mac 1003a4f0 CameraModeNew3::Update(void)
-void __fastcall Update__14CameraModeNew3Fv(struct CameraMode* this);
+void __fastcall Update__14CameraModeNew3Fv(struct CameraMode* this) asm("?Update@CameraModeNew3@@UAEXXZ");
 
 #endif /* BW1_DECOMP_CAMERA_MODE_NEW3_INCLUDED_H */

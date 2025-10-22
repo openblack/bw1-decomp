@@ -29,8 +29,8 @@ static_assert(sizeof(struct LH3DPrimitive) == 0x30, "Data type is of wrong size"
 // Static methods
 
 // win1.41 00807f30 mac 1006ad00 LH3DPrimitive::ComputeBoundingBox(LHPoint&, LHPoint&, int&)
-void __fastcall ComputeBoundingBox__13LH3DPrimitiveFR7LHPointR7LHPointRi(struct LH3DPrimitive* this, struct LHPoint* maxima, struct LHPoint* minima, int* initialized);
+void __fastcall ComputeBoundingBox__13LH3DPrimitiveFR7LHPointR7LHPointRi(struct LH3DPrimitive* this, struct LHPoint* maxima, struct LHPoint* minima, int* initialized) asm("?ComputeBoundingBox@LH3DPrimitive@@SAXAAULHPoint@@0AAH@Z");
 // win1.41 0084ab50 mac 100a01f0 LH3DPrimitive::Create(unsigned char *, LH3DPrimitive *)
-void __fastcall Create__13LH3DPrimitiveFPUcP13LH3DPrimitive(const uint8_t* buffer, struct LH3DPrimitive* primitive);
+void __fastcall Create__13LH3DPrimitiveFPUcP13LH3DPrimitive(const uint8_t* buffer, struct LH3DPrimitive* primitive) asm("?Create@LH3DPrimitive@@SAXPAEPAV1@@Z");
 
 #endif /* BW1_DECOMP_LH3D_PRIMITIVE_INCLUDED_H */

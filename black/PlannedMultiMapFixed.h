@@ -68,7 +68,7 @@ extern const struct PlannedMultiMapFixedVftable __vt__20PlannedMultiMapFixed asm
 // Constructors
 
 // win1.41 00648780 mac 10115620 PlannedMultiMapFixed::PlannedMultiMapFixed(MapCoords const &, GMultiMapFixedInfo const *, float, float)
-struct PlannedMultiMapFixed* __fastcall __ct__20PlannedMultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfoff(struct PlannedMultiMapFixed* this, const void* edx, const struct MapCoords* coords, const struct GMultiMapFixedInfo* info, float param_3, float param_4);
+struct PlannedMultiMapFixed* __fastcall __ct__20PlannedMultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfoff(struct PlannedMultiMapFixed* this, const void* edx, const struct MapCoords* coords, const struct GMultiMapFixedInfo* info, float param_3, float param_4) asm("??0PlannedMultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MM@Z");
 
 // Non-virtual Destructors
 

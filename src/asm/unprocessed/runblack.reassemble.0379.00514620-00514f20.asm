@@ -11,12 +11,12 @@
 .extern @__ct__12SetupControlFiiiiiPw@32
 .extern @__ct__10SetupButtonFiiiiiPwi@36
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
-.extern _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf
+.extern ?DrawBox@SetupThing@@SAXHHHHMMMMPAULH3DMaterial@@PAULH3DColor@@HHH_NM@Z
 .extern _jmp_addr_0x0046e630
-.extern @__ct__13DialogBoxBaseFv@4
+.extern ??0DialogBoxBase@@QAE@XZ
 .extern _jmp_addr_0x005133c0
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x00513e10
 .extern _jmp_addr_0x00513ea0
@@ -31,7 +31,7 @@
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005c6ca0
 .extern _jmp_addr_0x005c6cf0
-.extern _SetCurrentProfile__13PlayerProfileFPw
+.extern ?SetCurrentProfile@PlayerProfile@@SAXPA_W@Z
 .extern _jmp_addr_0x0066b900
 .extern _jmp_addr_0x0066bad0
 .extern _jmp_addr_0x0066bcd0
@@ -40,7 +40,7 @@
 
 .globl _jmp_addr_0x00514620
 .globl _jmp_addr_0x005148b0
-.globl @__ct__18DialogBoxImmersion@4
+.globl ??0DialogBoxImmersion@@QAE@XZ
 .globl ?Init@DialogBoxImmersion@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
 .globl ?Destroy@DialogBoxImmersion@@UAEXXZ
 .globl ?InitControls@DialogBoxImmersion@@UAEXXZ
@@ -225,7 +225,7 @@ _jmp_addr_0x0051486f:    {disp8} mov       eax, dword ptr [esi + 0x54]          
                          call              _jmp_addr_0x00513eb0                          // 0x00514875    e836f6ffff
                          call              dword ptr [rdata_bytes + 0x60c]               // 0x0051487a    ff150c968a00
                          push              eax                                           // 0x00514880    50
-                         call              _SetCurrentProfile__13PlayerProfileFPw        // 0x00514881    e81a6f1500
+                         call              ?SetCurrentProfile@PlayerProfile@@SAXPA_W@Z   // 0x00514881    e81a6f1500
                          {disp8} lea       ecx, dword ptr [esp + 0x18]                   // 0x00514886    8d4c2418
                          push              ecx                                           // 0x0051488a    51
                          call              _jmp_addr_0x0066b900                          // 0x0051488b    e870701500
@@ -330,9 +330,9 @@ _jmp_addr_0x005149ba:    push              0x00d4bd38 /* _PlayerProfile_00d4bd38
                          nop                                                             // 0x005149cd    90
                          nop                                                             // 0x005149ce    90
                          nop                                                             // 0x005149cf    90
-@__ct__18DialogBoxImmersion@4:    push              esi                                           // 0x005149d0    56
+??0DialogBoxImmersion@@QAE@XZ:    push              esi                                           // 0x005149d0    56
                          mov.s             esi, ecx                                      // 0x005149d1    8bf1
-                         call              @__ct__13DialogBoxBaseFv@4                    // 0x005149d3    e8c8e9ffff
+                         call              ??0DialogBoxBase@@QAE@XZ                      // 0x005149d3    e8c8e9ffff
                          mov               dword ptr [esi], 0x008d8644                   // 0x005149d8    c70644868d00
                          mov.s             eax, esi                                      // 0x005149de    8bc6
                          pop               esi                                           // 0x005149e0    5e
@@ -642,7 +642,7 @@ _jmp_addr_0x00514cce:    {disp8} mov       dword ptr [edi + 0x24], eax          
                          nop                                                             // 0x00514d6e    90
                          nop                                                             // 0x00514d6f    90
 ?Destroy@DialogBoxImmersion@@UAEXXZ:
-                         {disp32} jmp      @Destroy__13DialogBoxBaseFv@4                 // 0x00514d70    e91be8ffff
+                         {disp32} jmp      ?Destroy@DialogBoxBase@@UAEXXZ                // 0x00514d70    e91be8ffff
                          nop                                                             // 0x00514d75    90
                          nop                                                             // 0x00514d76    90
                          nop                                                             // 0x00514d77    90
@@ -756,7 +756,7 @@ _jmp_addr_0x00514e39:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          {disp8} mov       byte ptr [esp + 0x5d], cl                     // 0x00514ea0    884c245d
                          {disp8} mov       byte ptr [esp + 0x5e], cl                     // 0x00514ea4    884c245e
                          {disp8} mov       byte ptr [esp + 0x5f], cl                     // 0x00514ea8    884c245f
-                         call              _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x00514eac    e8cfdaefff
+                         call              ?DrawBox@SetupThing@@SAXHHHHMMMMPAULH3DMaterial@@PAULH3DColor@@HHH_NM@Z                 // 0x00514eac    e8cfdaefff
                          add               esp, 0x3c                                     // 0x00514eb1    83c43c
                          pop               edi                                           // 0x00514eb4    5f
                          pop               esi                                           // 0x00514eb5    5e

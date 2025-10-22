@@ -39,15 +39,15 @@ extern const struct SetupListVftable __vt__14SetupMultiList asm("??_7SetupMultiL
 // Constructors
 
 // win1.41 0040b420 mac 1014cca0 SetupMultiList::SetupMultiList(int, int, int, int, int, int)
-struct SetupMultiList* __fastcall __ct__14SetupMultiListFiiiiii(struct SetupMultiList* this, const void* edx, int id, int x, int y, int width, int height, int size);
+struct SetupMultiList* __fastcall __ct__14SetupMultiListFiiiiii(struct SetupMultiList* this, const void* edx, int id, int x, int y, int width, int height, int size) asm("??0SetupMultiList@@QAE@HHHHHH@Z");
 
 // Override methods
 
 // win1.41 0040b560 mac 103e0950 SetupMultiList::Click(int, int)
-void __fastcall Click__14SetupMultiListFii(struct SetupControl* this, const void* edx, int x, int y);
+void __fastcall Click__14SetupMultiListFii(struct SetupControl* this, const void* edx, int x, int y) asm("?Click@SetupMultiList@@UAEXHH@Z");
 // win1.41 0040b4a0 mac 103f18b0 SetupMultiList::~SetupMultiList(void)
-void __fastcall __dt__14SetupMultiListFb(struct SetupControl* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupMultiListFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupMultiList@@QAEXXZ");
 // win1.41 0040b530 mac 1047e020 SetupMultiList::IsSelected(int)
-bool __fastcall IsSelected__14SetupMultiListFi(struct SetupList* this, const void* edx, int index);
+bool __fastcall IsSelected__14SetupMultiListFi(struct SetupList* this, const void* edx, int index) asm("?IsSelected@SetupMultiList@@UAE_NH@Z");
 
 #endif /* BW1_DECOMP_SETUP_MULTI_LIST_INCLUDED_H */

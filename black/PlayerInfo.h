@@ -106,6 +106,6 @@ static_assert(sizeof(struct PlayerInfo) == 0x8, "Data type is of wrong size");
 // Constructors
 
 // win1.41 00648d50 mac 10375150 PlayerInfo::PlayerInfo(void)
-void __fastcall __ct__10PlayerInfoFv(struct PlayerInfo* this);
+void __fastcall __ct__10PlayerInfoFv(struct PlayerInfo* this) asm("??0PlayerInfo@@QAE@XZ");
 
 #endif /* BW1_DECOMP_PLAYER_INFO_INCLUDED_H */

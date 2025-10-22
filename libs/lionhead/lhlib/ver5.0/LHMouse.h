@@ -277,20 +277,20 @@ static_assert(sizeof(struct LHMouse) == 0x168, "Data type is of wrong size");
 // Constructors
 
 // win1.41 007e4f20 mac 10145820 LHMouse::LHMouse(void)
-struct LHMouse* __fastcall __ct__7LHMouseFv(struct LHMouse* this);
+struct LHMouse* __fastcall __ct__7LHMouseFv(struct LHMouse* this) asm("??0LHMouse@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 007e4810 mac 10091970 LHMouse::DeltaPos(void)
-void __fastcall DeltaPos__7LHMouseFv(struct LHMouse* this);
+void __fastcall DeltaPos__7LHMouseFv(struct LHMouse* this) asm("?DeltaPos@LHMouse@@QAEXXZ");
 // win1.41 007e49a0 mac 10006f30 LHMouse::UpdateCurrentPos(LHCoord)
-void __fastcall UpdateCurrentPos__7LHMouseF7LHCoord(struct LHMouse* this, const void* edx, struct LHCoord coord);
+void __fastcall UpdateCurrentPos__7LHMouseF7LHCoord(struct LHMouse* this, const void* edx, struct LHCoord coord) asm("?UpdateCurrentPos@LHMouse@@QAEXULHCoord@@@Z");
 // win1.41 007e4e40 mac 101459e0 LHMouse::SetPosition(LHCoord *)
-bool __fastcall SetPosition__7LHMouseFP7LHCoord(struct LHMouse* this, const void* edx, struct LHCoord* position);
+bool __fastcall SetPosition__7LHMouseFP7LHCoord(struct LHMouse* this, const void* edx, struct LHCoord* position) asm("?SetPosition@LHMouse@@QAE_NPAULHCoord@@@Z");
 // win1.41 007e53b0 mac 10145190 LHMouse::SetCursor(void *, LH_MOUSE_IMAGE_TYPE, int)
-uint32_t __fastcall SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi(struct LHMouse* this, const void* edx, void* param_2, enum LH_MOUSE_IMAGE_TYPE mouse_image_type, int param_4);
+uint32_t __fastcall SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi(struct LHMouse* this, const void* edx, void* param_2, enum LH_MOUSE_IMAGE_TYPE mouse_image_type, int param_4) asm("?SetCursor@LHMouse@@QAEIPAXW4LH_MOUSE_IMAGE_TYPE@@H@Z");
 // win1.41 007e57c0 mac 1003fb90 LHMouse::Draw(LH_SCREEN_BUFFER, LH_MOUSE_EVENT_TYPE)
-void __fastcall Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE(struct LHMouse* this, const void* edx, enum LH_SCREEN_BUFFER buffer, enum LH_MOUSE_EVENT_TYPE event_type);
+void __fastcall Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE(struct LHMouse* this, const void* edx, enum LH_SCREEN_BUFFER buffer, enum LH_MOUSE_EVENT_TYPE event_type) asm("?Draw@LHMouse@@QAEXW4LH_SCREEN_BUFFER@@W4LH_MOUSE_EVENT_TYPE@@@Z");
 
 // win1.41 0054a770 mac 1007b120 SetTurnOffMouseMove(bool)
 void __cdecl SetTurnOffMouseMove__Fb(bool value);

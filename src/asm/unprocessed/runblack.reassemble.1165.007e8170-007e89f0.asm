@@ -10,7 +10,7 @@
 .extern _jmp_addr_0x00521a90
 .extern  ??3@YAXPAX@Z
 .extern @Open__16LHReleasedOSFileFPc12LH_FILE_MODE@16
-.extern @Close__8LHOSFileFv@4
+.extern ?Close@LHOSFile@@QAEIXZ
 .extern _jmp_addr_0x007bcad0
 .extern _jmp_addr_0x007bd0c0
 .extern ___nw__FUl
@@ -19,7 +19,7 @@
 .extern _jmp_addr_0x007ded40
 .extern _jmp_addr_0x007df850
 .extern _jmp_addr_0x007e3c20
-.extern @__ct__16LHReleasedOSFileFv@4
+.extern ??0LHReleasedOSFile@@QAE@XZ
 .extern _jmp_addr_0x007e71f0
 .extern @LoadOneLine__12LHScriptX_c_FR16LHReleasedOSFilePc@16
 .extern _jmp_addr_0x007e89f0
@@ -56,7 +56,7 @@ start_0x007e8170_0x007e89f0:
                          push              esi                                      // 0x007e818b    56
                          mov.s             esi, ecx                                 // 0x007e818c    8bf1
                          {disp8} lea       ecx, dword ptr [esp + 0x04]              // 0x007e818e    8d4c2404
-                         call              @__ct__16LHReleasedOSFileFv@4            // 0x007e8192    e879ebffff
+                         call              ??0LHReleasedOSFile@@QAE@XZ              // 0x007e8192    e879ebffff
                          xor.s             eax, eax                                 // 0x007e8197    33c0
                          push              0x2                                      // 0x007e8199    6a02
                          {disp32} mov      dword ptr [esp + 0x0000091c], eax        // 0x007e819b    8984241c090000
@@ -89,7 +89,7 @@ _jmp_addr_0x007e81e4:    {disp32} lea      ecx, dword ptr [esp + 0x00000110]    
                          test              al, al                                   // 0x007e81f8    84c0
                          {disp8} jne       _jmp_addr_0x007e81e4                     // 0x007e81fa    75e8
 _jmp_addr_0x007e81fc:    {disp8} lea       ecx, dword ptr [esp + 0x04]              // 0x007e81fc    8d4c2404
-                         call              @Close__8LHOSFileFv@4                    // 0x007e8200    e85b46fdff
+                         call              ?Close@LHOSFile@@QAEIXZ                  // 0x007e8200    e85b46fdff
 _jmp_addr_0x007e8205:    {disp8} lea       ecx, dword ptr [esp + 0x04]              // 0x007e8205    8d4c2404
                          {disp32} mov      dword ptr [esp + 0x00000918], 0xffffffff // 0x007e8209    c7842418090000ffffffff
                          call              _jmp_addr_0x007bcad0                     // 0x007e8214    e8b748fdff

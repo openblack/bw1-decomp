@@ -56,9 +56,9 @@ extern const struct MultiMapFixedVftable __vt__11CitadelPart asm("??_7CitadelPar
 // Constructors
 
 // win1.41 inlined mac 1030de40 CitadelPart::CitadelPart(void)
-struct CitadelPart* __fastcall __ct__11CitadelPartFv(struct CitadelPart* this);
+struct CitadelPart* __fastcall __ct__11CitadelPartFv(struct CitadelPart* this) asm("??0CitadelPart@@QAE@XZ");
 // win1.41 004693f0 mac 101c35b0 CitadelPart::CitadelPart(MapCoords const &, GCitadelPartInfo const *, Citadel *, float, float, float, int)
-struct CitadelPart* __fastcall __ct__11CitadelPartFRC9MapCoordsPC16GCitadelPartInfoP7Citadelfffi(struct CitadelPart* this, const void* edx, struct MapCoords* coords, struct GCitadelPartInfo* info, struct Citadel* citadel, float y_angle, float scale, float param_6, int param_7);
+struct CitadelPart* __fastcall __ct__11CitadelPartFRC9MapCoordsPC16GCitadelPartInfoP7Citadelfffi(struct CitadelPart* this, const void* edx, struct MapCoords* coords, struct GCitadelPartInfo* info, struct Citadel* citadel, float y_angle, float scale, float param_6, int param_7) asm("??0CitadelPart@@QAE@ABUMapCoords@@PBVGCitadelPartInfo@@PAVCitadel@@MMMH@Z");
 
 // Override methods
 
@@ -71,7 +71,7 @@ struct GPlayer* __fastcall GetPlayer__11CitadelPartFv(struct GameThing* this) as
 // win1.41 004694e0 mac 101c37f0 CitadelPart::GetDebugText(void)
 char* __fastcall GetDebugText__11CitadelPartFv(struct GameThing* this) asm("?GetDebugText@CitadelPart@@UAEPADXZ");
 // win1.41 004698b0 mac 101c2780 CitadelPart::Load(GameOSFile &)
-uint32_t __fastcall Load__11CitadelPartFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__11CitadelPartFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@CitadelPart@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00469830 mac 101c2870 CitadelPart::Save(GameOSFile &)
 uint32_t __fastcall Save__11CitadelPartFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@CitadelPart@@UAEIAAVGameOSFile@@@Z");
 // win1.41 004694d0 mac 101c37b0 CitadelPart::GetSaveType(void)

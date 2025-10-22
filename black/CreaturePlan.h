@@ -71,14 +71,14 @@ static_assert(sizeof(struct CreaturePlanState) == 0x830, "Data type is of wrong 
 // Constructors
 
 // win1.41 004f1380 mac 10278510 CreaturePlanState::CreaturePlanState(void)
-struct CreaturePlanState* __fastcall __ct__17CreaturePlanStateFv(struct CreaturePlanState* this);
+struct CreaturePlanState* __fastcall __ct__17CreaturePlanStateFv(struct CreaturePlanState* this) asm("??0CreaturePlanState@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 004f13e0 mac 10278490 CreaturePlanState::Initialise(CreatureMental *)
-void __fastcall Initialise__17CreaturePlanStateFP14CreatureMental(struct CreaturePlanState* this, const void* edx, struct CreatureMental* mental);
+void __fastcall Initialise__17CreaturePlanStateFP14CreatureMental(struct CreaturePlanState* this, const void* edx, struct CreatureMental* mental) asm("?Initialise@CreaturePlanState@@QAEXPAVCreatureMental@@@Z");
 // win1.41 004f1480 mac 10278340 CreaturePlanState::SetupRemainingGoalsToPlanFor(Creature *)
-void __fastcall SetupRemainingGoalsToPlanFor__17CreaturePlanStateFP8Creature(struct CreaturePlanState* this, const void* edx, struct Creature* creature);
+void __fastcall SetupRemainingGoalsToPlanFor__17CreaturePlanStateFP8Creature(struct CreaturePlanState* this, const void* edx, struct Creature* creature) asm("?SetupRemainingGoalsToPlanFor@CreaturePlanState@@QAEXPAVCreature@@@Z");
 
 struct CreatureTimeToWait
 {

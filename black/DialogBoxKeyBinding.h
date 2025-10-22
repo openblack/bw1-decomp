@@ -45,7 +45,7 @@ extern const struct DialogBoxBaseVftable __vt__19DialogBoxKeyBinding asm("??_7Di
 // Constructors
 
 // win1.41 005127b0 mac 102b1e90 DialogBoxKeyBinding::DialogBoxKeyBinding(void)
-struct DialogBoxKeyBinding* __fastcall __ct__19DialogBoxKeyBindingFv(struct DialogBoxKeyBinding* this);
+struct DialogBoxKeyBinding* __fastcall __ct__19DialogBoxKeyBindingFv(struct DialogBoxKeyBinding* this) asm("??0DialogBoxKeyBinding@@QAE@XZ");
 
 // Override methods
 
@@ -54,6 +54,6 @@ void __fastcall Init__19DialogBoxKeyBindingFUlUlPFiP8SetupBoxP12SetupControlii_v
 // win1.41 00512bc0 mac 102b1890 DialogBoxKeyBinding::Destroy(void)
 void __fastcall Destroy__19DialogBoxKeyBindingFv(struct DialogBoxBase* this) asm("?Destroy@DialogBoxKeyBinding@@UAEXXZ");
 // win1.41 00512bd0 mac 102b1750 DialogBoxKeyBinding::InitControls(void)
-void __fastcall InitControls__19DialogBoxKeyBindingFv(struct DialogBoxBase* this);
+void __fastcall InitControls__19DialogBoxKeyBindingFv(struct DialogBoxBase* this) asm("?InitControls@DialogBoxKeyBinding@@UAEXXZ");
 
 #endif /* BW1_DECOMP_DIALOG_BOX_KEY_BINDING_INCLUDED_H */

@@ -79,13 +79,13 @@ static_assert(sizeof(struct LHScreen) == 0x1b4, "Data type is of wrong size");
 // Constructors
 
 // win1.41 007dce20 mac 1014e500 LHScreen::LHScreen(void)
-struct LHScreen* __fastcall __ct__8LHScreenFv(struct LHScreen* this);
+struct LHScreen* __fastcall __ct__8LHScreenFv(struct LHScreen* this) asm("??0LHScreen@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 007dd8f0 mac 1014d890 LHScreen::~LHScreen(void)
-void __fastcall __dt__8LHScreenFv(struct LHScreen* this);
+void __fastcall __dt__8LHScreenFv(struct LHScreen* this) asm("??_DLHScreen@@QAEXXZ");
 // win1.41 007dd0d0 mac 1014e420 LHScreen::SetFullscreenMode(int)
-void __fastcall SetFullscreenMode__8LHScreenFi(struct LHScreen* this, const void* edx, int mode);
+void __fastcall SetFullscreenMode__8LHScreenFi(struct LHScreen* this, const void* edx, int mode) asm("?SetFullscreenMode@LHScreen@@QAEXH@Z");
 
 #endif /* BW1_DECOMP_LH_SCREEN_INCLUDED_H */

@@ -241,23 +241,23 @@ extern const struct MorphableVftable __vt__5CHand asm("??_7CHand@@6B@");
 // Constructors
 
 // win1.41 0046ba80 mac 101c8e00 CHand::CHand(LHPoint, GInterfaceStatus *)
-struct CHand* __fastcall __ct__5CHandF7LHPointP16GInterfaceStatus(struct CHand* this, const void* edx, struct LHPoint point, struct GInterfaceStatus* status);
+struct CHand* __fastcall __ct__5CHandF7LHPointP16GInterfaceStatus(struct CHand* this, const void* edx, struct LHPoint point, struct GInterfaceStatus* status) asm("??0CHand@@QAE@ULHPoint@@PAVGInterfaceStatus@@@Z");
 
 // Non-virtual methods
 
 // win1.41 0046c260 mac 101c86d0 CHand::ToggleLeftRight(void)
-void __fastcall ToggleLeftRight__5CHandFv(struct CHand* this);
+void __fastcall ToggleLeftRight__5CHandFv(struct CHand* this) asm("?ToggleLeftRight@CHand@@QAEXXZ");
 // win1.41 0046d2c0 mac 101c76b0 CHand::LoadBinary(char *, int)
 uint32_t __fastcall LoadBinary_5CHandFPci(struct CHand* this, const void* edx, char* filename, int param_1);
 // win1.41 0046ddd0 mac 101c6b10 CHand::ThrowObject(void)
-void __fastcall ThrowObject__5CHandFv(struct CHand* this);
+void __fastcall ThrowObject__5CHandFv(struct CHand* this) asm("?ThrowObject@CHand@@QAEXXZ");
 // win1.41 0046e4e0 mac 10081dd0 CHand::GameTurnUpdate()
-void __fastcall GameTurnUpdate__5CHandFv(struct CHand* this);
+void __fastcall GameTurnUpdate__5CHandFv(struct CHand* this) asm("?GameTurnUpdate@CHand@@QAEXXZ");
 
 // Override methods
 
 // win1.41 0046c4a0 mac 101c85f0 CHand::SetSize(float)
-void __fastcall SetSize__5CHandFf(struct Morphable* this, const void* edx, float size);
+void __fastcall SetSize__5CHandFf(struct Morphable* this, const void* edx, float size) asm("?SetSize@CHand@@UAEXM@Z");
 // win1.41 0046bf80 mac 101c8cf0 CHand::MorphTexture(void)
 void __fastcall MorphTexture__5CHandFv(struct Morphable* this) asm("?MorphTexture@CHand@@UAEXXZ");
 // win1.41 0046c350 mac 101c8670 CHand::UpdateTime(long)

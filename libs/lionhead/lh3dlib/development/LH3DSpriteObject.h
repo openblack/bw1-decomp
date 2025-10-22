@@ -28,6 +28,6 @@ extern const struct LH3DObjectVftable __vt__16LH3DSpriteObject asm("??_7LH3DSpri
 // Constructors
 
 // win1.41 00815380 mac 10078250 LH3DSpriteObject::LH3DSpriteObject(long)
-struct LH3DSpriteObject* __fastcall __ct__16LH3DSpriteObjectFl(struct LH3DSpriteObject* this, const void* edx, int type);
+struct LH3DSpriteObject* __fastcall __ct__16LH3DSpriteObjectFl(struct LH3DSpriteObject* this, const void* edx, int type) asm("??0LH3DSpriteObject@@QAE@J@Z");
 
 #endif /* BW1_DECOMP_LH3D_SPRITE_OBJECT_INCLUDED_H */

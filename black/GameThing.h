@@ -262,7 +262,7 @@ void __stdcall ProcessDeadList__9GameThingFi(int param_1);
 // Constructors
 
 // win1.41 0056fa10 mac 10088880 GameThing::GameThing(void)
-struct GameThing* __fastcall __ct__9GameThingFv(struct GameThing* this);
+struct GameThing* __fastcall __ct__9GameThingFv(struct GameThing* this) asm("??0GameThing@@QAE@XZ");
 
 // Non-virtual Destructors
 
@@ -272,7 +272,7 @@ void __fastcall __dt__9GameThingFv(struct GameThing* this, const void* edx, uint
 // Non-virtual methods
 
 // win1.41 0056faa0 mac 10492500 GameThing::ProcessDead(int)
-void __fastcall ProcessDead__9GameThingFi(struct GameThing* this, const void* edx, int param_1);
+void __fastcall ProcessDead__9GameThingFi(struct GameThing* this, const void* edx, int param_1) asm("?ProcessDead@GameThing@@QAEXH@Z");
 // win1.41 0056fef0 mac 103c2300 GameThing::CheckAndSetSaved(void)
 bool __fastcall CheckAndSetSaved__9GameThingFv(struct GameThing* this) asm("?CheckAndSetSaved@GameThing@@QAE_NXZ");
 

@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x00575d10
 .extern _jmp_addr_0x00575d20
 .extern _jmp_addr_0x0071ef70
-.extern @CanShowName__15SpecialVillagerFv@4
+.extern ?CanShowName@SpecialVillager@@QAE_NXZ
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern ___RTDynamicCast
@@ -414,7 +414,7 @@ _jmp_addr_0x00573259:    test              byte ptr [esi + 0x000000e0], 0x04    
                          test              edi, edi                                      // 0x0057327b    85ff
                          {disp8} je        _jmp_addr_0x005732cf                          // 0x0057327d    7450
                          mov.s             ecx, edi                                      // 0x0057327f    8bcf
-                         call              @CanShowName__15SpecialVillagerFv@4           // 0x00573281    e8eac11a00
+                         call              ?CanShowName@SpecialVillager@@QAE_NXZ         // 0x00573281    e8eac11a00
                          test              al, al                                        // 0x00573286    84c0
                          {disp8} je        _jmp_addr_0x005732cf                          // 0x00573288    7445
                          {disp32} mov      eax, dword ptr [ebx + 0x000000e8]             // 0x0057328a    8b83e8000000

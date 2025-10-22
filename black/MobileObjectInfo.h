@@ -39,7 +39,7 @@ extern const struct GBaseInfoVftable __vt__17GMobileObjectInfo asm("??_7GMobileO
 // Constructors
 
 // win1.41 inlined mac 100ad720 GMobileObjectInfo::GMobileObjectInfo(void)
-struct GMobileObjectInfo* __fastcall __ct__17GMobileObjectInfoFv(struct GMobileObjectInfo* this);
+struct GMobileObjectInfo* __fastcall __ct__17GMobileObjectInfoFv(struct GMobileObjectInfo* this) asm("??0GMobileObjectInfo@@QAE@XZ");
 
 // Override methods
 

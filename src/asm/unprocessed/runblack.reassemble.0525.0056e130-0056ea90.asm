@@ -14,7 +14,7 @@
 .extern @__ct__14SetupVBarGraphFiiiiiPw@32
 .extern @__ct__14SetupTabButtonFiiiiiPwiii@35
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x00555180
 .extern _jmp_addr_0x00555400
@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x00555a10
 .extern _jmp_addr_0x0056ea90
 .extern _jmp_addr_0x0056eaf0
-.extern @GetPlayerNumber__7GPlayerCFv@4
+.extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern _jmp_addr_0x0071d0b0
 .extern _jmp_addr_0x007a1400
 .extern _wcscpy
@@ -486,7 +486,7 @@ _jmp_addr_0x0056e710:    {disp32} mov      ecx, dword ptr [_game]               
                          nop                                                             // 0x0056e72e    90
                          nop                                                             // 0x0056e72f    90
 ?Destroy@EndGameBox@@UAEXXZ:
-                         call              @Destroy__13DialogBoxBaseFv@4                 // 0x0056e730    e85b4efaff
+                         call              ?Destroy@DialogBoxBase@@UAEXXZ                // 0x0056e730    e85b4efaff
                          {disp32} mov      dword ptr [data_bytes + 0x34006c], 0x00000000 // 0x0056e735    c7056c60d00000000000
                          ret                                                             // 0x0056e73f    c3
 ?InitControls@EndGameBox@@UAEXXZ:
@@ -520,7 +520,7 @@ _jmp_addr_0x0056e782:    {disp32} mov      ecx, dword ptr [_game]               
                          lea               eax, dword ptr [eax + edx * 0x2]              // 0x0056e796    8d0450
                          shl               eax, 5                                        // 0x0056e799    c1e005
                          {disp8} lea       ecx, dword ptr [eax + ecx * 0x1 + 0x18]       // 0x0056e79c    8d4c0818
-                         call              @GetPlayerNumber__7GPlayerCFv@4               // 0x0056e7a0    e8ebbf0d00
+                         call              ?GetPlayerNumber@GPlayer@@QBEEXZ              // 0x0056e7a0    e8ebbf0d00
                          cmp               eax, 0x04                                     // 0x0056e7a5    83f804
                          .byte             0x72, 0x51// {disp8} jb _jmp_addr_0x0056e7fb  // 0x0056e7a8    7251
                          mov               edi, 0x00000dc7                               // 0x0056e7aa    bfc70d0000
@@ -695,7 +695,7 @@ _jmp_addr_0x0056e9b5:    {disp8} mov       eax, dword ptr [eax + 0x08]          
                          lea               eax, dword ptr [eax + edx * 0x2]              // 0x0056e9ee    8d0450
                          shl               eax, 5                                        // 0x0056e9f1    c1e005
                          {disp8} lea       ecx, dword ptr [eax + ecx * 0x1 + 0x18]       // 0x0056e9f4    8d4c0818
-                         call              @GetPlayerNumber__7GPlayerCFv@4               // 0x0056e9f8    e893bd0d00
+                         call              ?GetPlayerNumber@GPlayer@@QBEEXZ              // 0x0056e9f8    e893bd0d00
                          cmp               eax, 0x04                                     // 0x0056e9fd    83f804
                          .byte             0x72, 0x12// {disp8} jb _jmp_addr_0x0056ea14  // 0x0056ea00    7212
                          {disp8} mov       ecx, dword ptr [esi + 0x34]                   // 0x0056ea02    8b4e34

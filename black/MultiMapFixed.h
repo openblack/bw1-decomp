@@ -53,7 +53,7 @@ static_assert(sizeof(struct MultiChild) == 0x8, "Data type is of wrong size");
 // Constructors
 
 // win1.41 inlined mac 100dc120 MultiChild::MultiChild(void)
-struct MultiChild* __fastcall __ct__10MultiChildFv(struct MultiChild* this);
+struct MultiChild* __fastcall __ct__10MultiChildFv(struct MultiChild* this) asm("??0MultiChild@@QAE@XZ");
 
 struct MultiChildList
 {
@@ -154,14 +154,14 @@ extern const struct MultiMapFixedVftable __vt__13MultiMapFixed asm("??_7MultiMap
 // Static methods
 
 // win1.41 0052dbc0 mac 10038060 MultiMapFixed::CompareMultiChilds(void const *, void const *)
-int __cdecl CompareMultiChilds__13MultiMapFixedFPCvPCv(struct MultiChild* param_1, struct MultiChild* param_2);
+int __cdecl CompareMultiChilds__13MultiMapFixedFPCvPCv(struct MultiChild* param_1, struct MultiChild* param_2) asm("?CompareMultiChilds@MultiMapFixed@@SAHPBX0@Z");
 
 // Constructors
 
 // win1.41 0052e1a0 mac 100e16a0 MultiMapFixed::MultiMapFixed(void)
-struct MultiMapFixed* __fastcall __ct__13MultiMapFixedFv(struct MultiMapFixed* this);
+struct MultiMapFixed* __fastcall __ct__13MultiMapFixedFv(struct MultiMapFixed* this) asm("??0MultiMapFixed@@QAE@XZ");
 // win1.41 0052e1e0 mac 100e1460 MultiMapFixed::MultiMapFixed(MapCoords const &, GMultiMapFixedInfo const *, float, float, float, int)
-struct MultiMapFixed* __fastcall __ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi(struct MultiMapFixed* this, const void* edx, const struct MapCoords* coords, const struct GMultiMapFixedInfo* info, float y_angle, float scale, float param_5, int param_6);
+struct MultiMapFixed* __fastcall __ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi(struct MultiMapFixed* this, const void* edx, const struct MapCoords* coords, const struct GMultiMapFixedInfo* info, float y_angle, float scale, float param_5, int param_6) asm("??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z");
 
 // Non-virtual Destructors
 
@@ -171,13 +171,13 @@ struct Base* __fastcall __dt__13MultiMapFixedFv(struct MultiMapFixed* this, cons
 // Non-virtual methods
 
 // win1.41 0052dc10 mac inlined MultiMapFixed::SortChildren(void)
-void __fastcall SortChildren__13MultiMapFixedFv(struct MultiMapFixed* this);
+void __fastcall SortChildren__13MultiMapFixedFv(struct MultiMapFixed* this) asm("?SortChildren@MultiMapFixed@@QAEXXZ");
 // win1.41 0052dc30 mac 100380f0 MultiMapFixed::SortedMultiChildFind(MapCell const &)
-struct MultiChild* __fastcall SortedMultiChildFind__13MultiMapFixedFRC7MapCell(struct MultiMapFixed* this, const void* edx, const struct MapCell* cell);
+struct MultiChild* __fastcall SortedMultiChildFind__13MultiMapFixedFRC7MapCell(struct MultiMapFixed* this, const void* edx, const struct MapCell* cell) asm("?SortedMultiChildFind@MultiMapFixed@@QAEPAUMultiChild@@ABUMapCell@@@Z");
 // win1.41 0052ea50 mac 100e0160 MultiMapFixed::AllocateMultiChild(void)
-void __fastcall AllocateMultiChild__13MultiMapFixedFv(struct MultiMapFixed* this);
+void __fastcall AllocateMultiChild__13MultiMapFixedFv(struct MultiMapFixed* this) asm("?AllocateMultiChild@MultiMapFixed@@QAEXXZ");
 // win1.41 0052f6d0 mac 100ddab0 MultiMapFixed::ReleaseCollideData(void)
-void __fastcall ReleaseCollideData__13MultiMapFixedFv(struct MultiMapFixed* this);
+void __fastcall ReleaseCollideData__13MultiMapFixedFv(struct MultiMapFixed* this) asm("?ReleaseCollideData@MultiMapFixed@@QAEXXZ");
 
 // Override methods
 
@@ -206,7 +206,7 @@ struct MultiMapFixed* __fastcall CastMultiMapFixed__13MultiMapFixedFv(struct Gam
 // win1.41 0052ef70 mac 1005fb60 MultiMapFixed::IsFunctional(void)
 bool __fastcall IsFunctional__13MultiMapFixedFv(struct GameThing* this) asm("?IsFunctional@MultiMapFixed@@UAE_NXZ");
 // win1.41 0052f310 mac 100de310 MultiMapFixed::Load(GameOSFile &)
-uint32_t __fastcall Load__13MultiMapFixedFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__13MultiMapFixedFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@MultiMapFixed@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0052f250 mac 100de470 MultiMapFixed::Save(GameOSFile &)
 uint32_t __fastcall Save__13MultiMapFixedFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z");
 // win1.41 00421fe0 mac 105b8ff0 MultiMapFixed::GetArrivePos(void)

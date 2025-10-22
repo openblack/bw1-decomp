@@ -59,7 +59,7 @@ extern const struct ObjectVftable __vt__16ShowNeedsVisuals asm("??_7ShowNeedsVis
 // Constructors
 
 // win1.41 00719d60 mac 10145700 ShowNeedsVisuals::ShowNeedsVisuals(const MapCoords&, GameThing*, const GShowNeedsInfo *)
-struct ShowNeedsVisuals* __fastcall __ct__16ShowNeedsVisualsFRC9MapCoordsP9GameThingPC14GShowNeedsInfo(struct ShowNeedsVisuals* this, const void* edx, struct MapCoords* coords, struct GameThing* game_thing, struct GShowNeedsInfo* info);
+struct ShowNeedsVisuals* __fastcall __ct__16ShowNeedsVisualsFRC9MapCoordsP9GameThingPC14GShowNeedsInfo(struct ShowNeedsVisuals* this, const void* edx, struct MapCoords* coords, struct GameThing* game_thing, struct GShowNeedsInfo* info) asm("??0ShowNeedsVisuals@@QAE@ABUMapCoords@@PAVGameThing@@PBVGShowNeedsInfo@@@Z");
 
 // Override methods
 

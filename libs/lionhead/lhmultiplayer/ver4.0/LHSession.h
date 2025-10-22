@@ -50,8 +50,8 @@ static_assert(sizeof(struct LHSession) == 0xb8, "Data type is of wrong size");
 // Non-virtual methods
 
 // win1.41 1001dab0 mac 10036a3c LHSession::IsSinglePlayer(void)
-bool __fastcall IsSinglePlayer__9LHSessionFv(struct LHSession* this);
+bool __fastcall IsSinglePlayer__9LHSessionFv(struct LHSession* this) asm("?IsSinglePlayer@LHSession@@QAE_NXZ");
 // win1.41 1001e5e0 mac inlined LHSession::NextPacketIsSuperpacket(void)
-bool __fastcall NextPacketIsSuperpacket__9LHSessionFv(struct LHSession* this);
+bool __fastcall NextPacketIsSuperpacket__9LHSessionFv(struct LHSession* this) asm("?NextPacketIsSuperpacket@LHSession@@QAE_NXZ");
 
 #endif /* BW1_DECOMP_LH_SESSION_INCLUDED_H */

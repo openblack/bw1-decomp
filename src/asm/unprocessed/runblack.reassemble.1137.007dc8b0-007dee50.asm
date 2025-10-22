@@ -47,7 +47,7 @@
 .extern _jmp_addr_0x0085db90
 .extern _jmp_addr_0x0085dd60
 .extern _jmp_addr_0x0087fc50
-.extern _LH3DRenderClose__6LHIlibFv
+.extern ?LH3DRenderClose@LHIlib@@SAHXZ
 .extern _jmp_addr_0x0087fc70
 .extern _jmp_addr_0x0087fc80
 .extern _jmp_DDRAW_DLL__DirectDrawEnumerateA
@@ -64,10 +64,10 @@
 .globl _jmp_addr_0x007dc920
 .globl _jmp_addr_0x007dcad0
 .globl _jmp_addr_0x007dcaf0
-.globl @__ct__8LHScreenFv@4
+.globl ??0LHScreen@@QAE@XZ 
 .globl _jmp_addr_0x007dd020
 .globl @SetFullscreenMode__8LHScreenFi@12
-.globl @__dt__8LHScreenFv@4
+.globl ??_DLHScreen@@QAEXXZ
 .globl _jmp_addr_0x007dd9c0
 .globl _jmp_addr_0x007dda90
 .globl _jmp_addr_0x007ddc40
@@ -581,7 +581,8 @@ _jmp_addr_0x007dce10:    ret                                                    
                          nop                                                              // 0x007dce1d    90
                          nop                                                              // 0x007dce1e    90
                          nop                                                              // 0x007dce1f    90
-@__ct__8LHScreenFv@4:    sub                esp, 0x0c                                     // 0x007dce20    83ec0c
+??0LHScreen@@QAE@XZ:
+                         sub                esp, 0x0c                                     // 0x007dce20    83ec0c
                          push               ebx                                           // 0x007dce23    53
                          {disp32} mov       ebx, dword ptr [__imp__GetTickCount@4]        // 0x007dce24    8b1dc4918a00
                          push               esi                                           // 0x007dce2a    56
@@ -1460,7 +1461,7 @@ _jmp_addr_0x007dd87e:    push               ecx                                 
                          push               0x00c3150c                                    // 0x007dd880    680c15c300
                          call               _Report3D__FPCce                              // 0x007dd885    e846e30300
                          add                esp, 0x0c                                     // 0x007dd88a    83c40c
-_jmp_addr_0x007dd88d:    call               _LH3DRenderClose__6LHIlibFv                   // 0x007dd88d    e8ce230a00
+_jmp_addr_0x007dd88d:    call               ?LH3DRenderClose@LHIlib@@SAHXZ                // 0x007dd88d    e8ce230a00
                          {disp8} mov        eax, dword ptr [esi + 0x60]                   // 0x007dd892    8b4660
                          test               eax, eax                                      // 0x007dd895    85c0
                          {disp8} je         _jmp_addr_0x007dd8a6                          // 0x007dd897    740d
@@ -1504,7 +1505,7 @@ _jmp_addr_0x007dd8e1:    pop                esi                                 
                          nop                                                              // 0x007dd8ed    90
                          nop                                                              // 0x007dd8ee    90
                          nop                                                              // 0x007dd8ef    90
-@__dt__8LHScreenFv@4:    push               esi                                           // 0x007dd8f0    56
+??_DLHScreen@@QAEXXZ:    push               esi                                           // 0x007dd8f0    56
                          mov.s              esi, ecx                                      // 0x007dd8f1    8bf1
                          call               _jmp_addr_0x007dd850                          // 0x007dd8f3    e858ffffff
                          mov                eax, dword ptr [esi]                          // 0x007dd8f8    8b06
@@ -1886,7 +1887,7 @@ _jmp_addr_0x007ddc40:    {disp32} mov       eax, dword ptr [data_bytes + 0x26b32
                          push               eax                                           // 0x007ddc67    50
                          call               _jmp_addr_0x007de2f0                          // 0x007ddc68    e883060000
                          call               _jmp_addr_0x007e48c0                          // 0x007ddc6d    e84e6c0000
-_jmp_addr_0x007ddc72:    call               _LH3DRenderClose__6LHIlibFv                   // 0x007ddc72    e8e91f0a00
+_jmp_addr_0x007ddc72:    call               ?LH3DRenderClose@LHIlib@@SAHXZ                // 0x007ddc72    e8e91f0a00
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                   // 0x007ddc77    8b4c2414
                          {disp8} mov        edx, dword ptr [esp + 0x10]                   // 0x007ddc7b    8b542410
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x007ddc7f    8b44240c

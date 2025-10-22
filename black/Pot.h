@@ -75,14 +75,14 @@ extern const struct PotVftable __vt__3Pot asm("??_7Pot@@6B@");
 // Constructors
 
 // win1.41 inlined mac 1030c590 Pot::Pot(void)
-struct Pot* __fastcall __ct__3PotFv(struct Pot* this);
+struct Pot* __fastcall __ct__3PotFv(struct Pot* this) asm("??0Pot@@QAE@XZ");
 // win1.41 0066ce60 mac 1011cef0 Pot::Pot(MapCoords const &, GPotInfo const *, unsigned long, Town *, float, float)
-struct Pot* __fastcall __ct__3PotFRC9MapCoordsPC8GPotInfoUlP4Townff(struct Pot* this, const void* edx, struct MapCoords* param_1, struct GPotInfo* param_2, uint32_t param_3, struct Town* param_4, float param_5, float param_6);
+struct Pot* __fastcall __ct__3PotFRC9MapCoordsPC8GPotInfoUlP4Townff(struct Pot* this, const void* edx, struct MapCoords* param_1, struct GPotInfo* param_2, uint32_t param_3, struct Town* param_4, float param_5, float param_6) asm("??0Pot@@QAE@ABUMapCoords@@PBVGPotInfo@@KPAVTown@@MM@Z");
 
 // Non-virtual methods
 
 // win1.41 0066cec0 mac 1011ceb0 Pot::SetToZero(void)
-void __fastcall SetToZero__3PotFv(struct Pot* this);
+void __fastcall SetToZero__3PotFv(struct Pot* this) asm("?SetToZero@Pot@@QAEXXZ");
 
 // Override methods
 

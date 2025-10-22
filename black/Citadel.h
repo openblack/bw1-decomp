@@ -64,14 +64,14 @@ extern const struct ContainerVftable __vt__7Citadel asm("??_7Citadel@@6B@");
 // Static methods
 
 // win1.41 00463240 mac 101b9230 Citadel::CreateCitadel(MapCoords const &, GCitadelHeartInfo const *, unsigned char, float, float)
-struct Citadel* __cdecl CreateCitadel__7CitadelFRC9MapCoordsPC17GCitadelHeartInfoUcff(struct MapCoords* coords, struct GCitadelHeartInfo* info, uint8_t param_3, float param_4, float param_5);
+struct Citadel* __cdecl CreateCitadel__7CitadelFRC9MapCoordsPC17GCitadelHeartInfoUcff(struct MapCoords* coords, struct GCitadelHeartInfo* info, uint8_t param_3, float param_4, float param_5) asm("?CreateCitadel@Citadel@@SAPAV1@ABUMapCoords@@PBVGCitadelHeartInfo@@EMM@Z");
 
 // Non-virtual methods
 
 // win1.41 00463130 mac 101b9680 Citadel::AddTown(Town*)
-void* __fastcall AddTown__7CitadelFP4Town(struct Citadel* this, const void* edx, struct Town* town);
+void* __fastcall AddTown__7CitadelFP4Town(struct Citadel* this, const void* edx, struct Town* town) asm("?AddTown@Citadel@@QAEPAXPAVTown@@@Z");
 // win1.41 00463220 mac 101b9420 Citadel::FindOrCreateWorshipSite(GTribeInfo const *)
-struct WorshipSite* __fastcall FindOrCreateWorshipSite__7CitadelFPC10GTribeInfo(struct Citadel* this, const void* edx, struct GTribeInfo* tribe_info);
+struct WorshipSite* __fastcall FindOrCreateWorshipSite__7CitadelFPC10GTribeInfo(struct Citadel* this, const void* edx, struct GTribeInfo* tribe_info) asm("?FindOrCreateWorshipSite@Citadel@@QAEPAVWorshipSite@@PBVGTribeInfo@@@Z");
 
 // Override methods
 
@@ -105,7 +105,7 @@ const char* __fastcall GetText__7CitadelFv(struct GameThingWithPos* this) asm("?
 uint32_t __fastcall IsCitadel__7CitadelFv(struct GameThingWithPos* this) asm("?IsCitadel@Citadel@@UAEIXZ");
 
 // win1.41 004699c0 mac 101c4740 CPController::Init(LH3DMesh*)
-void __cdecl Init__12CPControllerFP8LH3DMesh(struct LH3DMesh* mesh);
+void __cdecl Init__12CPControllerFP8LH3DMesh(struct LH3DMesh* mesh) asm("?Init@CPController@@SAXPAULH3DMesh@@@Z");
 // win1.41 00469990 mac 101c4ca0 CPController::Init(void)
 void __stdcall Init__12CPControllerFv(void);
 

@@ -7064,6 +7064,6 @@ static_assert(sizeof(struct LHNetEvent) == 0x7c, "Data type is of wrong size");
 // Non-virtual methods
 
 // win1.41 10016a80 mac 10101090 LHNetEvent::RawDecode(LHNetEvent * this, char * param_1, char * param_2)
-enum LH_RETURN __fastcall RawDecode__10LHNetEventFPcPc(struct LHNetEvent* this, const void* edx, const char* param_1, const char* param_2);
+enum LH_RETURN __fastcall RawDecode__10LHNetEventFPcPc(struct LHNetEvent* this, const void* edx, const char* param_1, const char* param_2) asm("?RawDecode@LHNetEvent@@QAE?AW4LH_RETURN@@PAD0@Z");
 
 #endif /* BW1_DECOMP_LH_NET_EVENT_INCLUDED_H */

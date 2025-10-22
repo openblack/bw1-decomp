@@ -36,7 +36,7 @@ extern const struct BaseVftable __vt__10GKeyBuffer asm("??_7GKeyBuffer@@6B@");
 // Constructors
 
 // win1.41 0054b930 mac inlined GKeyBuffer::GKeyBuffer(void)
-struct GKeyBuffer* __fastcall __ct__10GKeyBuffer(struct GKeyBuffer* this);
+struct GKeyBuffer* __fastcall __ct__10GKeyBuffer(struct GKeyBuffer* this) asm("??0GKeyBuffer@@QAE@XZ");
 
 // Override methods
 

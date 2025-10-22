@@ -76,18 +76,18 @@ extern const struct MultiMapFixedVftable __vt__9SpellIcon asm("??_7SpellIcon@@6B
 // Constructors
 
 // win1.41 00725ff0 mac 105257f0 SpellIcon::SpellIcon(const MapCoords &, const GSpellIconInfo *, const GSpellSeedInfo *, float, float, float, int)
-struct SpellIcon* __fastcall __ct__9SpellIconFRC9MapCoordsPC14GSpellIconInfoPC14GSpellSeedInfofffi(struct SpellIcon* this, const void* edx, const struct MapCoords* coords, const struct GSpellIconInfo* icon_info, const struct GSpellSeedInfo* seed_info, float y_angle, float scale, float param_6, int param_7);
+struct SpellIcon* __fastcall __ct__9SpellIconFRC9MapCoordsPC14GSpellIconInfoPC14GSpellSeedInfofffi(struct SpellIcon* this, const void* edx, const struct MapCoords* coords, const struct GSpellIconInfo* icon_info, const struct GSpellSeedInfo* seed_info, float y_angle, float scale, float param_6, int param_7) asm("??0SpellIcon@@QAE@ABUMapCoords@@PBVGSpellIconInfo@@PBVGSpellSeedInfo@@MMMH@Z");
 
 // Non-virtual methods
 
 // win1.41 007260f0 mac 10525590 SpellIcon::SetToZero(void)
-void __fastcall SetToZero__9SpellIconFv(struct SpellIcon* this);
+void __fastcall SetToZero__9SpellIconFv(struct SpellIcon* this) asm("?SetToZero@SpellIcon@@QAEXXZ");
 // win1.41 00726310 mac 10524d40 SpellIcon::IsSpellSeed(SPELL_SEED_TYPE)
-bool32_t __fastcall IsSpellSeed__9SpellIconF15SPELL_SEED_TYPE(struct SpellIcon* this, const void* edx, enum SPELL_SEED_TYPE type);
+bool32_t __fastcall IsSpellSeed__9SpellIconF15SPELL_SEED_TYPE(struct SpellIcon* this, const void* edx, enum SPELL_SEED_TYPE type) asm("?IsSpellSeed@SpellIcon@@QAEIW4SPELL_SEED_TYPE@@@Z");
 // win1.41 00726350 mac 10524e60 SpellIcon::GetSpellSeedInfo(void) const
-struct GSpellSeedInfo* __fastcall GetSpellSeedInfo__9SpellIconCFv(const struct SpellIcon* this);
+struct GSpellSeedInfo* __fastcall GetSpellSeedInfo__9SpellIconCFv(const struct SpellIcon* this) asm("?GetSpellSeedInfo@SpellIcon@@QBEPAVGSpellSeedInfo@@XZ");
 // win1.41 00726360 mac 10524cb0 SpellIcon::GetSpellSeedType(void)
-enum SPELL_SEED_TYPE __fastcall GetSpellSeedType__9SpellIconFv(struct SpellIcon* this);
+enum SPELL_SEED_TYPE __fastcall GetSpellSeedType__9SpellIconFv(struct SpellIcon* this) asm("?GetSpellSeedType@SpellIcon@@QAE?AW4SPELL_SEED_TYPE@@XZ");
 
 // Override methods
 

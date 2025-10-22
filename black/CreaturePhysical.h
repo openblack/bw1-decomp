@@ -93,7 +93,7 @@ extern const struct BaseVftable __vt__16CreaturePhysical asm("??_7CreaturePhysic
 // Constructors
 
 // win1.41 004ef2c0 mac 102767c0 CreaturePhysical::CreaturePhysical(MapCoords const &, unsigned short, CreatureInfo const *, Creature *)
-struct CreaturePhysical* __fastcall __ct__16CreaturePhysicalFRC9MapCoordsUsPC12CreatureInfoP8Creature(struct CreaturePhysical* this, const void* edx, const struct MapCoords* coords, uint16_t param_2, const struct CreatureInfo* info, struct Creature* creature);
+struct CreaturePhysical* __fastcall __ct__16CreaturePhysicalFRC9MapCoordsUsPC12CreatureInfoP8Creature(struct CreaturePhysical* this, const void* edx, const struct MapCoords* coords, uint16_t param_2, const struct CreatureInfo* info, struct Creature* creature) asm("??0CreaturePhysical@@QAE@ABUMapCoords@@GPBVCreatureInfo@@PAVCreature@@@Z");
 
 // Override methods
 

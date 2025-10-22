@@ -17,9 +17,9 @@ static_assert(sizeof(struct Config) == 0x110, "Data type is of wrong size");
 // Non-virtual methods
 
 // win1.41 0046b1f0 mac 100bf310 Config::Process(void)
-void __fastcall Process__6ConfigFv(struct Config* this);
+void __fastcall Process__6ConfigFv(struct Config* this) asm("?Process@Config@@QAEXXZ");
 // win1.41 0046b290 mac 100befa0 Config::ProcessOneGameTurn(void)
-void __fastcall ProcessOneGameTurn__6ConfigFv(struct Config* this);
+void __fastcall ProcessOneGameTurn__6ConfigFv(struct Config* this) asm("?ProcessOneGameTurn@Config@@QAEXXZ");
 
 // win1.41 0046b0b0 mac 100bf450 ConfigGetFPS(void)
 int __cdecl ConfigGetFPS__Fv(void);

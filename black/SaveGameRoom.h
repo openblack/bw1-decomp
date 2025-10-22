@@ -37,6 +37,6 @@ bool __stdcall CreateSaveGameFiles__12SaveGameRoomFPc(void);
 // Constructors
 
 // win1.41 0078f960 mac 104d5aa0 SaveGameRoom::SaveGameRoom(void)
-struct SaveGameRoom* __fastcall __ct__12SaveGameRoomFv(struct SaveGameRoom* this);
+struct SaveGameRoom* __fastcall __ct__12SaveGameRoomFv(struct SaveGameRoom* this) asm("??0SaveGameRoom@@QAE@XZ");
 
 #endif /* BW1_DECOMP_SAVE_GAME_ROOM_INCLUDED_H */

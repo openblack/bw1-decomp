@@ -12,13 +12,13 @@
 .extern @__ct__14SetupTabButtonFiiiiiPwiii@35
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _HideAll__13DialogBoxBaseFv@0
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern _jmp_addr_0x00564160
 .extern _jmp_addr_0x005de5e0
 .extern _jmp_addr_0x005de8b0
-.extern _SetCurrentProfile__13PlayerProfileFPw
+.extern ?SetCurrentProfile@PlayerProfile@@SAXPA_W@Z
 .extern _jmp_addr_0x0066b900
 .extern _jmp_addr_0x0066b9c0
 .extern _jmp_addr_0x0066bad0
@@ -337,7 +337,7 @@ _jmp_addr_0x0053faf3:    {disp8} mov       dword ptr [edi + 0x20], eax          
                          {disp32} mov      esi, dword ptr [rdata_bytes + 0x60c]          // 0x0053faff    8b350c968a00
                          call              esi                                           // 0x0053fb05    ffd6
                          push              eax                                           // 0x0053fb07    50
-                         call              _SetCurrentProfile__13PlayerProfileFPw        // 0x0053fb08    e893bc1200
+                         call              ?SetCurrentProfile@PlayerProfile@@SAXPA_W@Z   // 0x0053fb08    e893bc1200
                          call              esi                                           // 0x0053fb0d    ffd6
                          push              eax                                           // 0x0053fb0f    50
                          call              dword ptr [__imp__LHNetUseProfile__YAXPAG_Z@4]// 0x0053fb10    ff1548958a00
@@ -370,7 +370,7 @@ _jmp_addr_0x0053fb32:    push              0x0                                  
                          mov.s             esi, ecx                                      // 0x0053fb51    8bf1
                          call              _jmp_addr_0x005de8b0                          // 0x0053fb53    e858ed0900
                          mov.s             ecx, esi                                      // 0x0053fb58    8bce
-                         call              @Destroy__13DialogBoxBaseFv@4                 // 0x0053fb5a    e8313afdff
+                         call              ?Destroy@DialogBoxBase@@UAEXXZ                // 0x0053fb5a    e8313afdff
                          {disp32} mov      dword ptr [data_bytes + 0x30ab60], 0x00000000 // 0x0053fb5f    c705600bcd0000000000
                          pop               esi                                           // 0x0053fb69    5e
                          ret                                                             // 0x0053fb6a    c3
@@ -397,7 +397,7 @@ _jmp_addr_0x0053fb86:    {disp8} mov       ecx, dword ptr [eax + 0x08]          
                          mov.s             ebp, ecx                                      // 0x0053fbaa    8be9
                          call              dword ptr [rdata_bytes + 0x60c]               // 0x0053fbac    ff150c968a00
                          push              eax                                           // 0x0053fbb2    50
-                         call              _SetCurrentProfile__13PlayerProfileFPw        // 0x0053fbb3    e8e8bb1200
+                         call              ?SetCurrentProfile@PlayerProfile@@SAXPA_W@Z   // 0x0053fbb3    e8e8bb1200
                          {disp8} lea       eax, dword ptr [esp + 0x14]                   // 0x0053fbb8    8d442414
                          push              eax                                           // 0x0053fbbc    50
                          call              _jmp_addr_0x0066b900                          // 0x0053fbbd    e83ebd1200

@@ -45,7 +45,7 @@ extern const struct GameThingVftable __vt__8DataPath asm("??_7DataPath@@6B@");
 // Constructors
 
 // win1.41 005ef040 mac 1037d350 DataPath::DataPath(void)
-struct DataPath* __fastcall __ct__8DataPathFv(struct DataPath* this);
+struct DataPath* __fastcall __ct__8DataPathFv(struct DataPath* this) asm("??0DataPath@@QAE@XZ");
 
 // Override methods
 

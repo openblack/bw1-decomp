@@ -7,9 +7,9 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern ___nw__4BaseFUl
+.extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x0046af20
-.extern _CreateCreature__8CreatureFRC9MapCoordsPC12CreatureInfoP7GPlayer
+.extern ?CreateCreature@Creature@@SAPAV1@ABUMapCoords@@PBVCreatureInfo@@PAVGPlayer@@@Z
 .extern _jmp_addr_0x0054ae20
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern _jmp_addr_0x00550a80
@@ -22,10 +22,10 @@
 .extern @SetVisualTimeCycle__9GGameInfoFfff@20
 .extern @SetStartDate__9GGameInfoFlll@20
 .extern @SetStartTime__9GGameInfoFlll@20
-.extern @__ct__9GameThingFv@4
+.extern ??0GameThing@@QAE@XZ
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
 .extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
-.extern @SetToZero__16GameThingWithPosFv@4
+.extern ?SetToZero@GameThingWithPos@@QAEXXZ
 .extern _jmp_addr_0x005c6570
 .extern _jmp_addr_0x005c6590
 .extern _jmp_addr_0x005c65b0
@@ -61,13 +61,13 @@
 .extern ?GetScriptType@ScriptDLL@@QAEPAXK@Z
 .extern _jmp_addr_0x0070d220
 .extern _jmp_addr_0x00710350
-.extern _LoadMapFeatures__6GSetupFPc
+.extern ?LoadMapFeatures@GSetup@@SAXPAD@Z
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007aed24
 .extern _jmp_addr_0x007aed2a
 .extern  ??3@YAXPAX@Z
-.extern @__ct__8LHOSFileFv@4
-.extern _Exists__8LHOSFileFPc
+.extern ??0LHOSFile@@QAE@XZ
+.extern ?Exists@LHOSFile@@SAIPAD@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _jmp_addr_0x007be340
@@ -147,7 +147,7 @@
 .globl _jmp_addr_0x00714420
 .globl _jmp_addr_0x00714490
 .globl @ParseConfigFile__8SettingsFPc@12
-.globl @InitialiseToDefaults__8SettingsFv@4
+.globl ?InitialiseToDefaults@Settings@@QAEXXZ
 
 .globl _globl_ct_0x00710da0
 .globl _globl_ct_0x00710dd0
@@ -1772,21 +1772,21 @@ _jmp_addr_0x007115a0:    push               esi                                 
                          push               0xd                                           // 0x007115a2    6a0d
                          push               0x00c20b98                                    // 0x007115a4    68980bc200
                          push               0x30                                          // 0x007115a9    6a30
-                         call               ___nw__4BaseFUl                               // 0x007115ab    e84051d2ff
+                         call               ?__nw@Base@@SAPAXK@Z                          // 0x007115ab    e84051d2ff
                          mov.s              esi, eax                                      // 0x007115b0    8bf0
                          xor.s              edi, edi                                      // 0x007115b2    33ff
                          add                esp, 0x0c                                     // 0x007115b4    83c40c
                          cmp.s              esi, edi                                      // 0x007115b7    3bf7
                          {disp8} je         _jmp_addr_0x007115fa                          // 0x007115b9    743f
                          mov.s              ecx, esi                                      // 0x007115bb    8bce
-                         call               @__ct__9GameThingFv@4                         // 0x007115bd    e84ee4e5ff
+                         call               ??0GameThing@@QAE@XZ                          // 0x007115bd    e84ee4e5ff
                          {disp8} mov        dword ptr [esi + 0x14], edi                   // 0x007115c2    897e14
                          {disp8} mov        dword ptr [esi + 0x18], edi                   // 0x007115c5    897e18
                          {disp8} mov        dword ptr [esi + 0x1c], edi                   // 0x007115c8    897e1c
                          {disp8} mov        dword ptr [esi + 0x20], edi                   // 0x007115cb    897e20
                          mov.s              ecx, esi                                      // 0x007115ce    8bce
                          mov                dword ptr [esi], 0x008c31a0                   // 0x007115d0    c706a0318c00
-                         call               @SetToZero__16GameThingWithPosFv@4            // 0x007115d6    e8f5efe5ff
+                         call               ?SetToZero@GameThingWithPos@@QAEXXZ           // 0x007115d6    e8f5efe5ff
                          push               edi                                           // 0x007115db    57
                          mov.s              ecx, esi                                      // 0x007115dc    8bce
                          mov                dword ptr [esi], 0x008e0bac                   // 0x007115de    c706ac0b8e00
@@ -4282,7 +4282,7 @@ _jmp_addr_0x00712f20:    xor.s              eax, eax                            
                          call               _sprintf                                      // 0x00712f7c    e851280b00
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                   // 0x00712f81    8d4c2414
                          push               ecx                                           // 0x00712f85    51
-                         call               _Exists__8LHOSFileFPc                         // 0x00712f86    e815970a00
+                         call               ?Exists@LHOSFile@@SAIPAD@Z                    // 0x00712f86    e815970a00
                          add                esp, 0x10                                     // 0x00712f8b    83c410
                          test               eax, eax                                      // 0x00712f8e    85c0
                          {disp8} jne        _jmp_addr_0x00712f9e                          // 0x00712f90    750c
@@ -4297,7 +4297,7 @@ _jmp_addr_0x00712f9e:    push               edi                                 
                          call               _sprintf                                      // 0x00712fa9    e824280b00
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                   // 0x00712fae    8d4c2414
                          push               ecx                                           // 0x00712fb2    51
-                         call               _Exists__8LHOSFileFPc                         // 0x00712fb3    e8e8960a00
+                         call               ?Exists@LHOSFile@@SAIPAD@Z                    // 0x00712fb3    e8e8960a00
                          add                esp, 0x10                                     // 0x00712fb8    83c410
                          test               eax, eax                                      // 0x00712fbb    85c0
                          {disp8} jne        _jmp_addr_0x00712fcb                          // 0x00712fbd    750c
@@ -4473,7 +4473,7 @@ _jmp_addr_0x00713140:    sub                esp, 0x68                           
                          rep stosd                                                        // 0x0071315c    f3ab
                          {disp8} mov        edi, dword ptr [esp + 0x78]                   // 0x0071315e    8b7c2478
                          push               edi                                           // 0x00713162    57
-                         call               _Exists__8LHOSFileFPc                         // 0x00713163    e838950a00
+                         call               ?Exists@LHOSFile@@SAIPAD@Z                    // 0x00713163    e838950a00
                          add                esp, 0x04                                     // 0x00713168    83c404
                          test               eax, eax                                      // 0x0071316b    85c0
                          {disp32} jne       _jmp_addr_0x00713297                          // 0x0071316d    0f8524010000
@@ -6125,7 +6125,7 @@ _jmp_addr_0x00714130:    push               esi                                 
                          {disp8} mov        esi, dword ptr [esp + 0x08]                   // 0x00714131    8b742408
                          push               edi                                           // 0x00714135    57
                          push               esi                                           // 0x00714136    56
-                         call               _Exists__8LHOSFileFPc                         // 0x00714137    e864850a00
+                         call               ?Exists@LHOSFile@@SAIPAD@Z                    // 0x00714137    e864850a00
                          add                esp, 0x04                                     // 0x0071413c    83c404
                          test               eax, eax                                      // 0x0071413f    85c0
                          {disp8} jne        _jmp_addr_0x00714157                          // 0x00714141    7514
@@ -6369,7 +6369,7 @@ _jmp_addr_0x00714368:    push               eax                                 
                          call               _sprintf                                      // 0x0071437a    e853140b00
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x0071437f    8d4c2410
                          push               ecx                                           // 0x00714383    51
-                         call               _Exists__8LHOSFileFPc                         // 0x00714384    e817830a00
+                         call               ?Exists@LHOSFile@@SAIPAD@Z                    // 0x00714384    e817830a00
                          neg                eax                                           // 0x00714389    f7d8
                          sbb.s              eax, eax                                      // 0x0071438b    1bc0
                          inc                eax                                           // 0x0071438d    40
@@ -7130,7 +7130,7 @@ _jmp_addr_0x00714bf4:    push               edi                                 
                          add                esp, 0x00001008                               // 0x00714bff    81c408100000
                          ret                0x0004                                        // 0x00714c05    c20400
 _jmp_addr_0x00714c08:    mov.s              ecx, ebp                                      // 0x00714c08    8bcd
-                         call               @InitialiseToDefaults__8SettingsFv@4          // 0x00714c0a    e811000000
+                         call               ?InitialiseToDefaults@Settings@@QAEXXZ        // 0x00714c0a    e811000000
                          pop                edi                                           // 0x00714c0f    5f
                          pop                ebp                                           // 0x00714c10    5d
                          add                esp, 0x00001008                               // 0x00714c11    81c408100000
@@ -7141,7 +7141,8 @@ _jmp_addr_0x00714c08:    mov.s              ecx, ebp                            
                          nop                                                              // 0x00714c1d    90
                          nop                                                              // 0x00714c1e    90
                          nop                                                              // 0x00714c1f    90
-@InitialiseToDefaults__8SettingsFv@4:    push               0x00c20d3c                                    // 0x00714c20    683c0dc200
+?InitialiseToDefaults@Settings@@QAEXXZ:
+                                         push               0x00c20d3c                                    // 0x00714c20    683c0dc200
                          call               _jmp_addr_0x00714c30                          // 0x00714c25    e806000000
                          ret                                                              // 0x00714c2a    c3
                          nop                                                              // 0x00714c2b    90
@@ -7330,7 +7331,7 @@ _jmp_addr_0x00714cf0:    {disp32} fld       dword ptr [rdata_bytes + 0xae2b8]   
                          ret                                                              // 0x00714dca    c3
                          {disp8} mov        edx, dword ptr [esp + 0x18]                   // 0x00714dcb    8b542418
                          push               edx                                           // 0x00714dcf    52
-                         call               _LoadMapFeatures__6GSetupFPc                  // 0x00714dd0    e8db320000
+                         call               ?LoadMapFeatures@GSetup@@SAXPAD@Z             // 0x00714dd0    e8db320000
                          add                esp, 0x04                                     // 0x00714dd5    83c404
                          xor.s              eax, eax                                      // 0x00714dd8    33c0
                          pop                esi                                           // 0x00714dda    5e
@@ -7390,7 +7391,7 @@ _jmp_addr_0x00714cf0:    {disp32} fld       dword ptr [rdata_bytes + 0xae2b8]   
                          push               eax                                           // 0x00714e78    50
                          call               _jmp_addr_0x00602fc0                          // 0x00714e79    e842e1eeff
                          push               eax                                           // 0x00714e7e    50
-                         call               _CreateCreature__8CreatureFRC9MapCoordsPC12CreatureInfoP7GPlayer                          // 0x00714e7f    e8ccfcd5ff
+                         call               ?CreateCreature@Creature@@SAPAV1@ABUMapCoords@@PBVCreatureInfo@@PAVGPlayer@@@Z            // 0x00714e7f    e8ccfcd5ff
                          add                esp, 0x0c                                     // 0x00714e84    83c40c
                          xor.s              eax, eax                                      // 0x00714e87    33c0
                          pop                esi                                           // 0x00714e89    5e
@@ -7488,7 +7489,7 @@ _jmp_addr_0x00714cf0:    {disp32} fld       dword ptr [rdata_bytes + 0xae2b8]   
                          test               esi, esi                                      // 0x00714f9d    85f6
                          {disp8} je         _jmp_addr_0x00714fc8                          // 0x00714f9f    7427
                          mov.s              ecx, esi                                      // 0x00714fa1    8bce
-                         call               @__ct__8LHOSFileFv@4                          // 0x00714fa3    e8a8760a00
+                         call               ??0LHOSFile@@QAE@XZ                           // 0x00714fa3    e8a8760a00
                          mov.s              ecx, esi                                      // 0x00714fa8    8bce
                          mov                dword ptr [esi], 0x008c4d00                   // 0x00714faa    c706004d8c00
                          call               _jmp_addr_0x0046af20                          // 0x00714fb0    e86b5fd5ff

@@ -58,7 +58,7 @@ static_assert(sizeof(struct LH3DMesh) == 0x4c, "Data type is of wrong size");
 // Static methods
 
 // win1.41 inlined mac 103d9410 LH3DMesh::GetPackedMesh(long)
-struct LH3DMesh* __cdecl GetPackedMesh__8LH3DMeshFl(int index);
+struct LH3DMesh* __cdecl GetPackedMesh__8LH3DMeshFl(int index) asm("?GetPackedMesh@LH3DMesh@@SAPAV1@J@Z");
 // win1.41 00806460 mac 1006c720 LH3DMesh::Create(void* , int)
 struct LH3DMesh* __cdecl Create__8LH3DMeshFPvi(const void* buf, bool dont_care_about_texture) asm("?Create@LH3DMesh@@SAPAV1@PBX_N@Z");
 // win1.41 008067f0 mac 1006c640 LH3DMesh::CreateFromHD(char *, int)

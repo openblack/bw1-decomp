@@ -19,7 +19,7 @@
 
 .globl _jmp_addr_0x0046f170
 .globl @GetDisplayText__12ControlMouseFPw@12
-.globl @__ct__14BindableActionFv@4
+.globl ??0BindableAction@@QAE@XZ  
 .globl _jmp_addr_0x0046f1e0
 .globl _jmp_addr_0x0046f200
 .globl _jmp_addr_0x0046f220
@@ -28,11 +28,11 @@
 .globl _jmp_addr_0x0046f2b0
 .globl _jmp_addr_0x0046f2f0
 .globl _jmp_addr_0x0046f330
-.globl _IsKeyDown__14BindableActionF6LH_KEY
+.globl ?IsKeyDown@BindableAction@@SA_NW4LH_KEY@@@Z
 .globl _jmp_addr_0x0046f440
 .globl _jmp_addr_0x0046f460
 .globl _jmp_addr_0x0046f480
-.globl @IsKeyBeingPressed__14BindableActionFv@4
+.globl ?IsKeyBeingPressed@BindableAction@@QAE_NXZ
 .globl _jmp_addr_0x0046f500
 
 start_0x0046f170_0x0046f590:
@@ -54,7 +54,8 @@ _jmp_addr_0x0046f170:    mov              edx, dword ptr [ecx]                  
                          add              esp, 0x0c                                     // 0x0046f199    83c40c
 _jmp_addr_0x0046f19c:    ret              0x0004                                        // 0x0046f19c    c20400
                          nop                                                            // 0x0046f19f    90
-@__ct__14BindableActionFv@4:    push             esi                                           // 0x0046f1a0    56
+??0BindableAction@@QAE@XZ:
+                                push             esi                                           // 0x0046f1a0    56
                          mov.s            esi, ecx                                      // 0x0046f1a1    8bf1
                          {disp32} lea     ecx, dword ptr [esi + 0x00000100]             // 0x0046f1a3    8d8e00010000
                          call             _jmp_addr_0x0046ee30                          // 0x0046f1a9    e882fcffff
@@ -260,7 +261,8 @@ _jmp_addr_0x0046f3b2:    xor.s            eax, eax                              
 _jmp_addr_0x0046f3b5:    mov              eax, 0x00000001                               // 0x0046f3b5    b801000000
                          ret                                                            // 0x0046f3ba    c3
                          call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0046f3bb    e8b924f9ff
-_IsKeyDown__14BindableActionF6LH_KEY:    {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x0046f3c0    8b442404
+?IsKeyDown@BindableAction@@SA_NW4LH_KEY@@@Z:
+                                         {disp8} mov      eax, dword ptr [esp + 0x04]                   // 0x0046f3c0    8b442404
                          cmp              eax, 0x2a                                     // 0x0046f3c4    83f82a
                          {disp8} je       _jmp_addr_0x0046f3ce                          // 0x0046f3c7    7405
                          cmp              eax, 0x36                                     // 0x0046f3c9    83f836
@@ -366,20 +368,21 @@ _jmp_addr_0x0046f480:    {disp32} mov     eax, dword ptr [ecx + 0x00000100]     
 _jmp_addr_0x0046f4ba:    xor.s            eax, eax                                      // 0x0046f4ba    33c0
                          pop              esi                                           // 0x0046f4bc    5e
                          ret              0x0008                                        // 0x0046f4bd    c20800
-@IsKeyBeingPressed__14BindableActionFv@4:    {disp32} mov     eax, dword ptr [ecx + 0x00000100]             // 0x0046f4c0    8b8100010000
+?IsKeyBeingPressed@BindableAction@@QAE_NXZ:
+                                             {disp32} mov     eax, dword ptr [ecx + 0x00000100]             // 0x0046f4c0    8b8100010000
                          test             eax, eax                                      // 0x0046f4c6    85c0
                          push             esi                                           // 0x0046f4c8    56
                          {disp32} mov     esi, dword ptr [ecx + 0x00000184]             // 0x0046f4c9    8bb184010000
                          {disp8} je       _jmp_addr_0x0046f4f6                          // 0x0046f4cf    7425
                          push             eax                                           // 0x0046f4d1    50
-                         call             _IsKeyDown__14BindableActionF6LH_KEY          // 0x0046f4d2    e8e9feffff
+                         call             ?IsKeyDown@BindableAction@@SA_NW4LH_KEY@@@Z   // 0x0046f4d2    e8e9feffff
                          add              esp, 0x04                                     // 0x0046f4d7    83c404
                          test             eax, eax                                      // 0x0046f4da    85c0
                          {disp8} je       _jmp_addr_0x0046f4f6                          // 0x0046f4dc    7418
                          test             esi, esi                                      // 0x0046f4de    85f6
                          {disp8} je       _jmp_addr_0x0046f4ef                          // 0x0046f4e0    740d
                          push             esi                                           // 0x0046f4e2    56
-                         call             _IsKeyDown__14BindableActionF6LH_KEY          // 0x0046f4e3    e8d8feffff
+                         call             ?IsKeyDown@BindableAction@@SA_NW4LH_KEY@@@Z   // 0x0046f4e3    e8d8feffff
                          add              esp, 0x04                                     // 0x0046f4e8    83c404
                          test             eax, eax                                      // 0x0046f4eb    85c0
                          {disp8} je       _jmp_addr_0x0046f4f6                          // 0x0046f4ed    7407

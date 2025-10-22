@@ -55,7 +55,7 @@ extern const struct MultiMapFixedVftable __vt__12MobileStatic asm("??_7MobileSta
 // Constructors
 
 // win1.41 00608710 mac 103c0e60 MobileStatic::MobileStatic(MapCoords const &, GMobileStaticInfo const *, Object *, float, float)
-struct MobileStatic* __fastcall __ct__12MobileStaticFRC9MapCoordsPC17GMobileStaticInfoP6Objectff(struct MobileStatic* this, const void* edx, struct MapCoords* coords, struct GMobileStaticInfo* info, struct Object* param_3, float param_4, float param_5);
+struct MobileStatic* __fastcall __ct__12MobileStaticFRC9MapCoordsPC17GMobileStaticInfoP6Objectff(struct MobileStatic* this, const void* edx, struct MapCoords* coords, struct GMobileStaticInfo* info, struct Object* param_3, float param_4, float param_5) asm("??0MobileStatic@@QAE@ABUMapCoords@@PBVGMobileStaticInfo@@PAVObject@@MM@Z");
 
 // Override methods
 

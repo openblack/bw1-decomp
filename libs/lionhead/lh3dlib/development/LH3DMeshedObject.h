@@ -30,13 +30,13 @@ extern const struct LH3DObjectVftable __vt__16LH3DMeshedObject asm("??_7LH3DMesh
 // Static methods
 
 // win1.41 007f9d60 mac 10029180 LH3DMeshedObject::SetDrawWithGlobalAlpha(int) (this is fastcall, not thiscall)
-void __fastcall SetDrawWithGlobalAlpha__16LH3DMeshedObjectFi(struct LH3DMeshedObject* this, int value);
+void __fastcall SetDrawWithGlobalAlpha__16LH3DMeshedObjectFi(struct LH3DMeshedObject* this, int value) asm("?SetDrawWithGlobalAlpha@LH3DMeshedObject@@SAXH@Z");
 // win1.41 007f9fb0 mac 1000bf70 LH3DMeshedObject::GetDoorPos(LHPoint *) const (this is fastcall, not thiscall)
 bool __fastcall GetDoorPos__16LH3DMeshedObjectCFP7LHPoint(struct LH3DMeshedObject* this, struct LHPoint* out_point);
 
 // Constructors
 
 // win1.41 008164b0 mac 10076460 LH3DMeshedObject::LH3DMeshedObject(void)
-struct LH3DMeshedObject* __fastcall __ct__16LH3DMeshedObjectFv(struct LH3DMeshedObject* this);
+struct LH3DMeshedObject* __fastcall __ct__16LH3DMeshedObjectFv(struct LH3DMeshedObject* this) asm("??0LH3DMeshedObject@@QAE@XZ");
 
 #endif /* BW1_DECOMP_LH3D_MESHED_OBJECT_INCLUDED_H */

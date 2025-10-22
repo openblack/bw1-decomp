@@ -29,12 +29,12 @@ static_assert(sizeof(struct VBarData) == 0x8, "Data type is of wrong size");
 // Constructors
 
 // win1.41 inlined mac inlined VBarData::VBarData(const VBarData &)
-struct VBarData* __fastcall __ct__8VBarDataFRC8VBarData(struct VBarData* this, const void* edx, const struct VBarData* bar);
+struct VBarData* __fastcall __ct__8VBarDataFRC8VBarData(struct VBarData* this, const void* edx, const struct VBarData* bar) asm("??0VBarData@@QAE@ABV0@@Z");
 
 // Non-virtual methods
 
 // win1.41 inlined mac inlined VBarData::operator=(const VBarData &)
-struct VBarData* __fastcall __as__8VBarDataFRC8VBarData(struct VBarData* this, const void* edx, const struct VBarData* bar);
+struct VBarData* __fastcall __as__8VBarDataFRC8VBarData(struct VBarData* this, const void* edx, const struct VBarData* bar) asm("?__as@VBarData@@QAEPAV1@ABV1@@Z");
 
 DECLARE_LH_LINKED_LIST(VBarData);
 
@@ -77,28 +77,28 @@ extern const struct SetupVBarGraphVftable __vt__14SetupVBarGraph asm("??_7SetupV
 // Constructors
 
 // win1.41 0040ef00 mac 10354bc0 SetupVBarGraph::SetupVBarGraph(int, int, int, int, int, wchar_t *)
-struct SetupVBarGraph* __fastcall __ct__14SetupVBarGraphFiiiiiPw(struct SetupVBarGraph* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label);
+struct SetupVBarGraph* __fastcall __ct__14SetupVBarGraphFiiiiiPw(struct SetupVBarGraph* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label) asm("??0SetupVBarGraph@@QAE@HHHHHPA_W@Z");
 
 // Non-virtual methods
 
 // win1.41 0040f280 mac 103fccd0 SetupVBarGraph::AddBar(const VBarData &)
-void __fastcall AddBar__14SetupVBarGraphFRC8VBarData(struct SetupVBarGraph* this, const void* edx, const struct VBarData* bar);
+void __fastcall AddBar__14SetupVBarGraphFRC8VBarData(struct SetupVBarGraph* this, const void* edx, const struct VBarData* bar) asm("?AddBar@SetupVBarGraph@@QAEXABUVBarData@@@Z");
 // win1.41 0040f300 mac 10352240 SetupVBarGraph::SetBar(int, const VBarData &)
-void __fastcall SetBar__14SetupVBarGraphFiRC8VBarData(struct SetupVBarGraph* this, const void* edx, int index, const struct VBarData* bar);
+void __fastcall SetBar__14SetupVBarGraphFiRC8VBarData(struct SetupVBarGraph* this, const void* edx, int index, const struct VBarData* bar) asm("?SetBar@SetupVBarGraph@@QAEXHABUVBarData@@@Z");
 // win1.41 0040f350 mac 103f1500 SetupVBarGraph::GetBar(int, VBarData &)
-void __fastcall GetBar__14SetupVBarGraphFiR8VBarData(const struct SetupVBarGraph* this, const void* edx, int index, struct VBarData* result);
+void __fastcall GetBar__14SetupVBarGraphFiR8VBarData(const struct SetupVBarGraph* this, const void* edx, int index, struct VBarData* result) asm("?GetBar@SetupVBarGraph@@QAEXHAAUVBarData@@@Z");
 
 // Override methods
 
 // win1.41 0040e8b0 mac 10379480 SetupVBarGraph::Draw(bool, bool)
-void __fastcall Draw__14SetupVBarGraphFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__14SetupVBarGraphFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected) asm("?Draw@SetupVBarGraph@@UAEX_N0@Z");
 // win1.41 0040ef70 mac 10350e50 SetupVBarGraph::KeyDown(int, int)
-void __fastcall KeyDown__14SetupVBarGraphFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__14SetupVBarGraphFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod) asm("?KeyDown@SetupVBarGraph@@UAEXHH@Z");
 // win1.41 0040ef90 mac 103de920 SetupVBarGraph::~SetupVBarGraph(void)
-void __fastcall __dt__14SetupVBarGraphFb(struct SetupControl* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupVBarGraphFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupVBarGraph@@QAEXXZ");
 // win1.41 0040efb0 mac inlined SetupVBarGraph::Reset(vfoid)
-void __fastcall Reset__14SetupVBarGraphFv(struct SetupVBarGraph* this);
+void __fastcall Reset__14SetupVBarGraphFv(struct SetupVBarGraph* this) asm("?Reset@SetupVBarGraph@@UAEXXZ");
 // win1.41 0040f1b0 mac 10351240 SetupVBarGraph::SetScale(float)
-void __fastcall SetScale__14SetupVBarGraphFf(struct SetupVBarGraph* this, const void* edx, float scale);
+void __fastcall SetScale__14SetupVBarGraphFf(struct SetupVBarGraph* this, const void* edx, float scale) asm("?SetScale@SetupVBarGraph@@UAEXM@Z");
 
 #endif /* BW1_DECOMP_SETUP_V_BAR_GRAPH_INCLUDED_H */

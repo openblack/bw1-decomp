@@ -62,7 +62,7 @@ extern const struct BaseVftable __vt__16CreatureLearning asm("??_7CreatureLearni
 // Constructors
 
 // win1.41 004e0290 mac 10265060 CreatureLearning::CreatureLearning(Creature *)
-struct CreatureLearning* __fastcall __ct__16CreatureLearningFP8Creature(struct CreatureLearning* this, const void* edx, struct Creature* creature);
+struct CreatureLearning* __fastcall __ct__16CreatureLearningFP8Creature(struct CreatureLearning* this, const void* edx, struct Creature* creature) asm("??0CreatureLearning@@QAE@PAVCreature@@@Z");
 
 // Override methods
 

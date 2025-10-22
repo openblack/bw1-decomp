@@ -42,13 +42,13 @@ extern const struct SetupControlVftable __vt__14SetupMP3Button asm("??_7SetupMP3
 // Constructors
 
 // win1.41 inlined mac inlined SetupMP3Button::SetupMP3Button(int, int, int, int, int, wchar_t *, int, unsigned int)
-struct SetupMP3Button* __fastcall __ct__14SetupMP3ButtonFiiiiiPwiUi(struct SetupMP3Button* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label, int param_8, uint32_t param_9);
+struct SetupMP3Button* __fastcall __ct__14SetupMP3ButtonFiiiiiPwiUi(struct SetupMP3Button* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label, int param_8, uint32_t param_9) asm("??0SetupMP3Button@@QAE@HHHHHPA_WHI@Z");
 
 // Override methods
 
 // win1.41 0040cda0 mac 10426080 SetupMP3Button::Draw(bool, bool)
-void __fastcall Draw__14SetupMP3ButtonFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__14SetupMP3ButtonFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected) asm("?Draw@SetupMP3Button@@UAEX_N0@Z");
 // win1.41 00571f30 mac 103547d0 SetupMP3Button::~SetupMP3Button(void)
-void __fastcall __dt__14SetupMP3ButtonFb(struct SetupControl* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupMP3ButtonFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupMP3Button@@QAEXXZ");
 
 #endif /* BW1_DECOMP_SETUP_MP3_BUTTON_INCLUDED_H */

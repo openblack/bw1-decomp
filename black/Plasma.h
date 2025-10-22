@@ -28,10 +28,10 @@ static_assert(sizeof(struct Plasma) == 0xe930, "Data type is of wrong size");
 // Non-virtual methods
 
 // win1.41 0053c640 mac 105c4040 Plasma::Init(void)
-void __fastcall Init__6PlasmaFv(struct Plasma* this);
+void __fastcall Init__6PlasmaFv(struct Plasma* this) asm("?Init@Plasma@@QAEXXZ");
 // win1.41 0053c840 mac 105c3d50 Plasma::Render(int)
-void __fastcall Render__6PlasmaFi(struct Plasma* this, const void* edx, int param_1);
+void __fastcall Render__6PlasmaFi(struct Plasma* this, const void* edx, int param_1) asm("?Render@Plasma@@QAEXH@Z");
 // win1.41 inlined mac 100c9220 Plasma::Close(void)
-void __fastcall Close__6PlasmaFv(struct Plasma* this);
+void __fastcall Close__6PlasmaFv(struct Plasma* this) asm("?Close@Plasma@@QAEXXZ");
 
 #endif /* BW1_DECOMP_PLASMA_INCLUDED_H */

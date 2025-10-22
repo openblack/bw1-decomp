@@ -49,7 +49,7 @@ extern const struct DialogBoxBaseVftable __vt__9MPFELogin asm("??_7MPFELogin@@6B
 // Constructors
 
 // win1.41 00630580 mac 103a80e0 MPFELogin::MPFELogin(void)
-struct MPFELogin* __fastcall __ct__9MPFELoginFv(struct MPFELogin* this);
+struct MPFELogin* __fastcall __ct__9MPFELoginFv(struct MPFELogin* this) asm("??0MPFELogin@@QAE@XZ");
 
 // Override methods
 
@@ -84,7 +84,7 @@ extern const struct MPFEDatabaseVftable __vt__17MPFELoginDatabase asm("??_7MPFEL
 // Constructors
 
 // win1.41 00631050 mac 103a7490 MPFELoginDatabase::MPFELoginDatabase(void)
-struct MPFELoginDatabase* __fastcall __ct__17MPFELoginDatabaseFv(struct MPFELoginDatabase* this);
+struct MPFELoginDatabase* __fastcall __ct__17MPFELoginDatabaseFv(struct MPFELoginDatabase* this) asm("??0MPFELoginDatabase@@QAE@XZ");
 
 // win1.41 00630530 mac 103a8100 __sinit_MPFELogin_cpp
 void __cdecl __sinit_MPFELogin_cpp(void);

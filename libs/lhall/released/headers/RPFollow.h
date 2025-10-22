@@ -48,17 +48,17 @@ static_assert(sizeof(struct RPFollow) == 0x640c0, "Data type is of wrong size");
 // Constructors
 
 // win1.41 008639e0 mac 100aad00 RPFollow::RPFollow(void)
-struct RPFollow* __fastcall __ct__8RPFollowFv(struct RPFollow* this);
+struct RPFollow* __fastcall __ct__8RPFollowFv(struct RPFollow* this) asm("??0RPFollow@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00863ac0 mac 100aab50 RPFollow::Init(int, void (*)(int, int), void (*)(int, float, float), float (*)(int), int)
-void __fastcall Init__8RPFollowFiPFii_vPFiff_vPFi_fi(struct RPFollow* this, const void* edx, int param_1, void (__cdecl* param_2)(int param_1, int param_2), void (__cdecl* param_3)(int param_1, float param_2, float param_3), float (__cdecl* param_4)(int param_1), int param_5);
+void __fastcall Init__8RPFollowFiPFii_vPFiff_vPFi_fi(struct RPFollow* this, const void* edx, int param_1, void (__cdecl* param_2)(int param_1, int param_2), void (__cdecl* param_3)(int param_1, float param_2, float param_3), float (__cdecl* param_4)(int param_1), int param_5) asm("?Init@RPFollow@@QAEXHP6AXHH@ZP6AXHMM@ZP6AMH@ZH@Z");
 // win1.41 00863b70 mac 100aa690 RPFollow::SetDest(Point2D const &, float, float, float, float)
-void __fastcall SetDest__8RPFollowFRC7Point2Dffff(struct RPFollow* this, const void* edx, struct Point2D* param_1, float param_2, float param_3, float param_4, float param_5);
+void __fastcall SetDest__8RPFollowFRC7Point2Dffff(struct RPFollow* this, const void* edx, struct Point2D* param_1, float param_2, float param_3, float param_4, float param_5) asm("?SetDest@RPFollow@@QAEXABUPoint2D@@MMMM@Z");
 // win1.41 00864990 mac 100a95a0 RPFollow::MoveAlongRoute(void)
-void __fastcall MoveAlongRoute__8RPFollowFv(struct RPFollow* this);
+void __fastcall MoveAlongRoute__8RPFollowFv(struct RPFollow* this) asm("?MoveAlongRoute@RPFollow@@QAEXXZ");
 // win1.41 00864ba0 mac 100a92c0 RPFollow::FillPosAndHeading(Point2D &, float &, float)
-void __fastcall FillPosAndHeading__8RPFollowFR7Point2DRff(struct RPFollow* this, const void* edx, struct Point2D* param_1, float* param_2, float param_3);
+void __fastcall FillPosAndHeading__8RPFollowFR7Point2DRff(struct RPFollow* this, const void* edx, struct Point2D* param_1, float* param_2, float param_3) asm("?FillPosAndHeading@RPFollow@@QAEXAAUPoint2D@@AAMM@Z");
 
 #endif /* BW1_DECOMP_RP_FOLLOW_INCLUDED_H */

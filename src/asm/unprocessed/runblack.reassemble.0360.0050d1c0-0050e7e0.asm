@@ -18,11 +18,11 @@
 .extern _jmp_addr_0x0050e7e0
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
-.extern @__ct__9GameThingFv@4
+.extern ??0GameThing@@QAE@XZ
 .extern _jmp_addr_0x0056fa80
 .extern ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z
 .extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
-.extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
+.extern ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z
 .extern ?ConvertAngle3DToGame@GUtils@@SAIM@Z
 .extern _jmp_addr_0x0074e1d0
 .extern _jmp_addr_0x0074e200
@@ -260,7 +260,7 @@ _jmp_addr_0x0050d460:    sub                esp, 0x0c                           
                          {disp8} lea        ecx, dword ptr [esp + 0x00]                   // 0x0050d471    8d4c2400
                          push               ecx                                           // 0x0050d475    51
                          push               edx                                           // 0x0050d476    52
-                         call               _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x0050d477    e8c4fd2300
+                         call               ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z                               // 0x0050d477    e8c4fd2300
                          {disp8} mov        dword ptr [esp + 0x18], eax                   // 0x0050d47c    89442418
                          {disp8} fild       dword ptr [esp + 0x18]                        // 0x0050d480    db442418
                          add                esp, 0x14                                     // 0x0050d484    83c414
@@ -1706,7 +1706,7 @@ _jmp_addr_0x0050e320:    {disp32} fld       dword ptr [rdata_bytes + 0x2b5e8]   
                          nop                                                              // 0x0050e33f    90
 _jmp_addr_0x0050e340:    push               esi                                           // 0x0050e340    56
                          mov.s              esi, ecx                                      // 0x0050e341    8bf1
-                         call               @__ct__9GameThingFv@4                         // 0x0050e343    e8c8160600
+                         call               ??0GameThing@@QAE@XZ                          // 0x0050e343    e8c8160600
                          xor.s              eax, eax                                      // 0x0050e348    33c0
                          {disp8} mov        dword ptr [esi + 0x14], eax                   // 0x0050e34a    894614
                          {disp8} mov        dword ptr [esi + 0x18], eax                   // 0x0050e34d    894618
@@ -1794,7 +1794,7 @@ _jmp_addr_0x0050e3e0:    push               ebx                                 
                          push               esi                                           // 0x0050e3e2    56
                          push               edi                                           // 0x0050e3e3    57
                          mov.s              ebx, ecx                                      // 0x0050e3e4    8bd9
-                         call               @__ct__9GameThingFv@4                         // 0x0050e3e6    e825160600
+                         call               ??0GameThing@@QAE@XZ                          // 0x0050e3e6    e825160600
                          {disp8} mov        eax, dword ptr [esp + 0x14]                   // 0x0050e3eb    8b442414
                          xor.s              ebp, ebp                                      // 0x0050e3ef    33ed
                          {disp8} mov        dword ptr [ebx + 0x14], ebp                   // 0x0050e3f1    896b14

@@ -131,26 +131,26 @@ extern const struct MorphableVftable __vt__9Morphable asm("??_7Morphable@@6B@");
 // Static methods
 
 // win1.41 006186b0 mac 10107250 Morphable::LoadExtraTexture(void)
-uint32_t __fastcall LoadExtraTexture__9MorphableFv(void);
+uint32_t __fastcall LoadExtraTexture__9MorphableFv(void) asm("?LoadExtraTexture@Morphable@@SAIXZ");
 
 // Non-virtual methods
 
 // win1.41 00617310 mac 10108d10 Morphable::MorphInit(LHPoint &, long, void* )
-void __fastcall MorphInit__9MorphableFR7LHPointlPv(struct Morphable* this, const void* edx, struct LHPoint* point, long param_3, void* param_4);
+void __fastcall MorphInit__9MorphableFR7LHPointlPv(struct Morphable* this, const void* edx, struct LHPoint* point, long param_3, void* param_4) asm("?MorphInit@Morphable@@QAEXAAULHPoint@@JPAX@Z");
 // win1.41 00617470 mac 10108c30 Morphable::AddHairGroup()
-uint32_t __fastcall AddHairGroup__9MorphableFv(struct Morphable* this);
+uint32_t __fastcall AddHairGroup__9MorphableFv(struct Morphable* this) asm("?AddHairGroup@Morphable@@QAEIXZ");
 // win1.41 00617620 mac 10108960 Morphable::SelectMesh(long)
-void __fastcall SelectMesh__9MorphableFl(struct Morphable* this, const void* edx, int param_1);
+void __fastcall SelectMesh__9MorphableFl(struct Morphable* this, const void* edx, int param_1) asm("?SelectMesh@Morphable@@QAEXJ@Z");
 // win1.41 00617ae0 mac 10107f50 Morphable::ReadBinary(LHFile *, AnimInfo *, AnimInfo *)
-uint32_t __fastcall ReadBinary__9MorphableFP6LHFileP8AnimInfoP8AnimInfo(struct Morphable* this, const void* edx, struct LHFile* file, struct AnimInfo* info_1, struct AnimInfo* info_2);
+uint32_t __fastcall ReadBinary__9MorphableFP6LHFileP8AnimInfoP8AnimInfo(struct Morphable* this, const void* edx, struct LHFile* file, struct AnimInfo* info_1, struct AnimInfo* info_2) asm("?ReadBinary@Morphable@@QAEIPAVLHFile@@PAUAnimInfo@@1@Z");
 // win1.41 00617ee0 mac 10107a90 Morphable::ReadExtraDataBinary
-void __fastcall ReadExtraDataBinary__9MorphableFP6LHFileP8AnimInfoP8AnimInfol(struct Morphable* this, const void* edx, struct LHFile* param_1, struct AnimInfo* param_2, struct AnimInfo* param_3, long param_4);
+void __fastcall ReadExtraDataBinary__9MorphableFP6LHFileP8AnimInfoP8AnimInfol(struct Morphable* this, const void* edx, struct LHFile* param_1, struct AnimInfo* param_2, struct AnimInfo* param_3, long param_4) asm("?ReadExtraDataBinary@Morphable@@QAEXPAVLHFile@@PAUAnimInfo@@1J@Z");
 // win1.41 00618720 mac 10106d80 Morphable::LoadMesh(char*, long)
-uint32_t __fastcall LoadMesh__9MorphableFPcl(struct Morphable* this, const void* edx, char* param_2, int param_3);
+uint32_t __fastcall LoadMesh__9MorphableFPcl(struct Morphable* this, const void* edx, char* param_2, int param_3) asm("?LoadMesh@Morphable@@QAEIPADJ@Z");
 // win1.41 00619650 mac 10084860 Morphable::GetAnim(long, long)
-struct CAnim* __fastcall GetAnim__9MorphableFll(struct Morphable* this, const void* edx, long anim_index, long param_3);
+struct CAnim* __fastcall GetAnim__9MorphableFll(struct Morphable* this, const void* edx, long anim_index, long param_3) asm("?GetAnim@Morphable@@QAEPAUCAnim@@JJ@Z");
 // win1.41 00619690 mac 10084450 Morphable::GetSetAnim(long, long, long)
-struct CAnim* __fastcall GetSetAnim__9MorphableFlll(struct Morphable* this, const void* edx, long param_1, long param_2, long param_3);
+struct CAnim* __fastcall GetSetAnim__9MorphableFlll(struct Morphable* this, const void* edx, long param_1, long param_2, long param_3) asm("?GetSetAnim@Morphable@@QAEPAUCAnim@@JJJ@Z");
 
 // Override methods
 

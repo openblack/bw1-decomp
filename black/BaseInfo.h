@@ -59,7 +59,7 @@ extern const struct GBaseInfoVftable __vt__9GBaseInfo asm("??_7GBaseInfo@@6B@");
 // Static methods
 
 // win1.41 00436c30 mac 103e4630 GBaseInfo::GetInfoPtr(unsigned long)
-struct GBaseInfo* __cdecl GetInfoPtr__9GBaseInfoFUl(int index);
+struct GBaseInfo* __cdecl GetInfoPtr__9GBaseInfoFUl(int index) asm("?GetInfoPtr@GBaseInfo@@SAPAV1@K@Z");
 
 // Constructors
 
@@ -69,7 +69,7 @@ struct GBaseInfo* __fastcall __ct__9GBaseInfoFv(struct GBaseInfo* this) asm("??0
 // Non-virtual methods
 
 // win1.41 00436bd0 mac 1035b720 GBaseInfo::SetInfoID(void)
-void __fastcall SetInfoID__9GBaseInfoFv(struct GBaseInfo* this);
+void __fastcall SetInfoID__9GBaseInfoFv(struct GBaseInfo* this) asm("?SetInfoID@GBaseInfo@@QAEXXZ");
 
 // Override methods
 
@@ -114,16 +114,16 @@ extern const struct BaseInfoVftable __vt__8BaseInfo asm("??_7BaseInfo@@6B@");
 // Constructors
 
 // win1.41 inlined mac 1030cbf0 BaseInfo::BaseInfo(void)
-struct BaseInfo* __fastcall __ct__8BaseInfoFv(struct BaseInfo* this);
+struct BaseInfo* __fastcall __ct__8BaseInfoFv(struct BaseInfo* this) asm("??0BaseInfo@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00436bb0 mac 10001410 BaseInfo::Set(Base*)
-void __fastcall Set__8BaseInfoFP4Base(struct BaseInfo* this, const void* edx, struct Base* base);
+void __fastcall Set__8BaseInfoFP4Base(struct BaseInfo* this, const void* edx, struct Base* base) asm("?Set@BaseInfo@@QAEXPAVBase@@@Z");
 
 // Override methods
 
 // win1.41 0055c770 mac 10043c50 BaseInfo::IsClear(void) const
-bool __fastcall IsClear__8BaseInfoCFv(const struct BaseInfo* this);
+bool __fastcall IsClear__8BaseInfoCFv(const struct BaseInfo* this) asm("?IsClear@BaseInfo@@UBE_NXZ");
 
 #endif /* BW1_DECOMP_BASE_INFO_INCLUDED_H */

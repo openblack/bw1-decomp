@@ -61,7 +61,7 @@ extern const struct PotVftable __vt__12PileResource asm("??_7PileResource@@6B@")
 // Constructors
 
 // win1.41 0066ec70 mac 10117e50 PileResource::PileResource(MapCoords const &, GPotInfo const *, unsigned long, MultiMapFixed *, Town *, int, float, float)
-struct PileResource* __fastcall __ct__12PileResourceFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff(struct PileResource* this, const void* edx, struct MapCoords* param_1, struct GPotInfo* info, uint32_t param_3, struct MultiMapFixed* param_4, struct Town* param_5, int param_6, float param_7, float param_8);
+struct PileResource* __fastcall __ct__12PileResourceFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff(struct PileResource* this, const void* edx, struct MapCoords* param_1, struct GPotInfo* info, uint32_t param_3, struct MultiMapFixed* param_4, struct Town* param_5, int param_6, float param_7, float param_8) asm("??0PileResource@@QAE@ABUMapCoords@@PBVGPotInfo@@KPAVMultiMapFixed@@PAVTown@@HMM@Z");
 
 // Override methods
 

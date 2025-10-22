@@ -25,7 +25,6 @@ struct GameThingWithPosVftable;
 struct LHPoint;
 struct MobileWallHug;
 struct ObjectVftable;
-struct Point2D;
 struct Q210NewCollide3Obj;
 
 enum MOVE_TO_STATES
@@ -132,32 +131,32 @@ extern const struct MobileWallHugVftable __vt__13MobileWallHug asm("??_7MobileWa
 // Constructors
 
 // win1.41 inlined mac inlined MobileWallHug::MobileWallHug(MapCoords const &, GMobileWallHugInfo const *)
-struct MobileWallHug* __fastcall __ct__13MobileWallHugFRC9MapCoordsPC18GMobileWallHugInfo(struct MobileWallHug* this, const void* edx, struct MapCoords* coords, struct GMobileWallHugInfo* info);
+struct MobileWallHug* __fastcall __ct__13MobileWallHugFRC9MapCoordsPC18GMobileWallHugInfo(struct MobileWallHug* this, const void* edx, struct MapCoords* coords, struct GMobileWallHugInfo* info) asm("??0MobileWallHug@@QAE@ABUMapCoords@@PBVGMobileWallHugInfo@@@Z");
 // win1.41 00474890 mac 101e0bb0 MobileWallHug::MobileWallHug(void)
-struct MobileWallHug* __fastcall __ct__13MobileWallHugFv(struct MobileWallHug* this);
+struct MobileWallHug* __fastcall __ct__13MobileWallHugFv(struct MobileWallHug* this) asm("??0MobileWallHug@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00609d10 mac inlined MobileWallHug::RebuildMoveByStep(void)
-void __fastcall RebuildMoveByStep__13MobileWallHugFv(struct MobileWallHug* this);
+void __fastcall RebuildMoveByStep__13MobileWallHugFv(struct MobileWallHug* this) asm("?RebuildMoveByStep@MobileWallHug@@QAEXXZ");
 // win1.41 0060abc0 mac 1001c770 MobileWallHug::SetupMobileMoveToPos(MapCoords const &, MOVE_TO_STATES)
-void __fastcall SetupMobileMoveToPos__13MobileWallHugFRC9MapCoords14MOVE_TO_STATES(struct MobileWallHug* this, const void* edx, const struct MapCoords* coords, enum MOVE_TO_STATES move_to_state);
+void __fastcall SetupMobileMoveToPos__13MobileWallHugFRC9MapCoords14MOVE_TO_STATES(struct MobileWallHug* this, const void* edx, const struct MapCoords* coords, enum MOVE_TO_STATES move_to_state) asm("?SetupMobileMoveToPos@MobileWallHug@@QAEXABUMapCoords@@W4MOVE_TO_STATES@@@Z");
 // win1.41 0060acd0 mac 103c3ee0 MobileWallHug::SetupMobileMoveToObject(Object *)
 void __fastcall SetupMobileMoveToObject__13MobileWallHugFP6Object(struct MobileWallHug* this, const void* edx, struct Object* param_1) asm("?SetupMobileMoveToObject@MobileWallHug@@QAEXPAVObject@@@Z");
 // win1.41 0060ad40 mac 1005f4a0 MobileWallHug::AreWeThere(float)
-bool __fastcall AreWeThere__13MobileWallHugFf(struct MobileWallHug* this, const void* edx, float param_1);
+bool __fastcall AreWeThere__13MobileWallHugFf(struct MobileWallHug* this, const void* edx, float param_1) asm("?AreWeThere@MobileWallHug@@QAE_NM@Z");
 // win1.41 0060af20 mac 10047250 MobileWallHug::MoveTo(void)
-int __fastcall MoveTo__13MobileWallHugFv(struct MobileWallHug* this);
+int __fastcall MoveTo__13MobileWallHugFv(struct MobileWallHug* this) asm("?MoveTo@MobileWallHug@@QAEHXZ");
 // win1.41 0060bfa0 mac 103c3600 MobileWallHug::InitStepsXZ(void)
-void __fastcall InitStepsXZ__13MobileWallHugFv(struct MobileWallHug* this);
+void __fastcall InitStepsXZ__13MobileWallHugFv(struct MobileWallHug* this) asm("?InitStepsXZ@MobileWallHug@@QAEXXZ");
 // win1.41 0060ca50 mac 10076600 MobileWallHug::MoveToCircleHugLinearSquareSweep(MapCoords const &)
-uint32_t __fastcall MoveToCircleHugLinearSquareSweep__13MobileWallHugFRC9MapCoords(struct MobileWallHug* this, const void* edx, struct MapCoords* dest);
+uint32_t __fastcall MoveToCircleHugLinearSquareSweep__13MobileWallHugFRC9MapCoords(struct MobileWallHug* this, const void* edx, struct MapCoords* dest) asm("?MoveToCircleHugLinearSquareSweep@MobileWallHug@@QAEIABUMapCoords@@@Z");
 // win1.41 0060d800 mac 100382d0 MobileWallHug::MoveToCircleHug(void)
-int __fastcall MoveToCircleHug__13MobileWallHugFv(struct MobileWallHug* this);
+int __fastcall MoveToCircleHug__13MobileWallHugFv(struct MobileWallHug* this) asm("?MoveToCircleHug@MobileWallHug@@QAEHXZ");
 // win1.41 0060da90 mac 1004cce0 MobileWallHug::SetGameAngle(unsigned short)
-void __fastcall SetGameAngle__13MobileWallHugFUs(struct MobileWallHug* this, const void* edx, uint16_t angle);
+void __fastcall SetGameAngle__13MobileWallHugFUs(struct MobileWallHug* this, const void* edx, uint16_t angle) asm("?SetGameAngle@MobileWallHug@@QAEXG@Z");
 // win1.41 0060f760 mac 103c1910 MobileWallHug::SetToZero(void)
-void __fastcall SetToZero__13MobileWallHugFv(struct MobileWallHug* this);
+void __fastcall SetToZero__13MobileWallHugFv(struct MobileWallHug* this) asm("?SetToZero@MobileWallHug@@QAEXXZ");
 
 // Override methods
 
@@ -304,7 +303,7 @@ static_assert(sizeof(struct SubCollideBlockPos) == 0x4, "Data type is of wrong s
 // Non-virtual methods
 
 // win1.41 inlined mac inlined SubCollideBlockPos::operator<( const(SubCollideBlockPos const &))
-bool __fastcall __lt__18SubCollideBlockPosCFRC18SubCollideBlockPos(const struct SubCollideBlockPos* this, const void* edx, const struct SubCollideBlockPos* other);
+bool __fastcall __lt__18SubCollideBlockPosCFRC18SubCollideBlockPos(const struct SubCollideBlockPos* this, const void* edx, const struct SubCollideBlockPos* other) asm("?__lt@SubCollideBlockPos@@QBE_NABV1@@Z");
 
 struct std__map__SubCollideBlockPosPNewCollide3Obj_iterator
 {
@@ -348,7 +347,7 @@ static_assert(sizeof(struct CircleHugStateInfoT) == 0x54, "Data type is of wrong
 // Non-virtual methods
 
 // win1.41 0060d410 mac 10093270 CircleHugStateInfoT::fetch(MapCoords)
-struct Q210NewCollide3Obj* __fastcall fetch__19CircleHugStateInfoTF9MapCoords(struct CircleHugStateInfoT* this, const void* edx, struct MapCoords coords);
+struct Q210NewCollide3Obj* __fastcall fetch__19CircleHugStateInfoTF9MapCoords(struct CircleHugStateInfoT* this, const void* edx, struct MapCoords coords) asm("?fetch@CircleHugStateInfoT@@QAEPAUQ210NewCollide3Obj@@UMapCoords@@@Z");
 
 struct LinearSquareSweepStruct
 {
@@ -359,17 +358,12 @@ struct LinearSquareSweepStruct
 };
 static_assert(sizeof(struct LinearSquareSweepStruct) == 0x10, "Data type is of wrong size");
 
-// Constructors
-
-// win1.41 inlined mac inlined LinearSquareSweepStruct::LinearSquareSweepStruct(void) Guessed
-struct LinearSquareSweepStruct* __fastcall __ct__23LinearSquareSweepStructFPNewCollide3Obj7Point2D7Point2D(struct LinearSquareSweepStruct* this, const void* edx, struct Q210NewCollide3Obj* collide_obj, const struct Point2D* agent_position, const struct Point2D* step);
-
 // Non-virtual methods
 
 // win1.41 inlined mac inlined LinearSquareSweepStruct::Reset(void) Guessed
-void __fastcall Reset__23LinearSquareSweepStructFv(struct LinearSquareSweepStruct* this);
+void __fastcall Reset__23LinearSquareSweepStructFv(struct LinearSquareSweepStruct* this) asm("?Reset@LinearSquareSweepStruct@@QAEXXZ");
 // win1.41 inlined mac inlined LinearSquareSweepStruct::operator<(LinearSquareSweepStruct *) Guessed
-bool __fastcall __lt__23LinearSquareSweepStructFP23LinearSquareSweepStruct(struct LinearSquareSweepStruct* this, const void* edx, struct LinearSquareSweepStruct* other);
+bool __fastcall __lt__23LinearSquareSweepStructFP23LinearSquareSweepStruct(struct LinearSquareSweepStruct* this, const void* edx, struct LinearSquareSweepStruct* other) asm("?__lt@LinearSquareSweepStruct@@QAE_NPAV1@@Z");
 
 // win1.41 006111b0 mac 103c6e50 std::map<NewCollide::Obj*, std::set<MobileWallHug*>>::find(NewCollide::Obj**)
 void __fastcall find__std__map_pNewCollide_Obj_std_set_pMobileWallHug__FRCPQ210NewCollide3Obj(struct std__map__pQ210NewCollide3Obj__std__set__pMobileWallHug* this, const void* edx, struct std__map__pQ210NewCollide3Obj__std__set__pMobileWallHug_iterator** result, struct Q210NewCollide3Obj** key);
@@ -380,9 +374,9 @@ void __fastcall find_or_insert__std__map__SubCollideBlockPosPNewCollide3Obj(cons
 // win1.41 inlined mac inlined MobileWallHug_InCircleStuff<clockwise>::MoveToCircleHugCircleSquareSweep(MobileWallHug*, const MapCoords&)
 uint32_t __cdecl MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_clockwise_FP13MobileWallHugRC9MapCoords(struct MobileWallHug* this, const struct MapCoords* dest, bool clockwise);
 // win1.41 00614c40 mac 1005a760 MobileWallHug_InCircleStuff<0>::MoveToCircleHugCircleSquareSweep(MobileWallHug *, MapCoords const &)
-uint32_t __cdecl MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_0_FP13MobileWallHugRC9MapCoords(struct MobileWallHug* param_1, const struct MapCoords* param_2);
+uint32_t __cdecl MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_0_FP13MobileWallHugRC9MapCoords(struct MobileWallHug* param_1, const struct MapCoords* param_2) asm("?MoveToCircleHugCircleSquareSweep@MobileWallHug_InCircleStuff_0_@@SAIPAVMobileWallHug@@ABUMapCoords@@@Z");
 // win1.41 006159f0 mac 10059450 MobileWallHug_InCircleStuff<1>::MoveToCircleHugCircleSquareSweep(MobileWallHug *, MapCoords const &)
-uint32_t __cdecl MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_1_FP13MobileWallHugRC9MapCoords(struct MobileWallHug* param_1, const struct MapCoords* param_2);
+uint32_t __cdecl MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_1_FP13MobileWallHugRC9MapCoords(struct MobileWallHug* param_1, const struct MapCoords* param_2) asm("?MoveToCircleHugCircleSquareSweep@MobileWallHug_InCircleStuff_1_@@SAIPAVMobileWallHug@@ABUMapCoords@@@Z");
 // win1.41 00613790 mac inlined FUN_00613790
 void __fastcall FUN_00613790(struct std__set__pMobileWallHug_node** this);
 // win1.41 00609a50 mac 10013020 DoWallHuggerLookahead(void)

@@ -380,7 +380,7 @@
 .extern _jmp_addr_0x00836250
 .extern _jmp_addr_0x008366a0
 .extern _jmp_addr_0x008367a0
-.extern @Release__11LH3DTextureFv@4
+.extern ?Release@LH3DTexture@@QAEXXZ
 .extern ?InitialiseSystem@RPHolder@@QAEXP6AXHHPAV1@@ZP6AX0@Z@Z
 .extern _jmp_addr_0x0083b3e0
 .extern _jmp_addr_0x0083b450
@@ -423,9 +423,9 @@
 .globl ??1GGame@@UAE@XZ
 .globl ?SetZero@LH3DMapCoords@@QAEXXZ
 .globl @Reset__7LHTimerFUl@12
-.globl @__ct__10GKeyBuffer@4
-.globl @__ct__9GSoundMapFv@4
-.globl @__ct__13GestureSystem@4
+.globl ??0GKeyBuffer@@QAE@XZ
+.globl ??0GSoundMap@@QAE@XZ 
+.globl ??0GestureSystem@@QAE@XZ
 .globl ?RenderLoadingFrame@@YAXPAD@Z
 
 .globl _globl_ct_0x0054a310
@@ -487,7 +487,7 @@ start_0x0054a180_0x0054ff80:
                          {disp8} je         _jmp_addr_0x0054a1d1                          // 0x0054a19f    7430
                          push               edi                                           // 0x0054a1a1    57
                          mov.s              ecx, esi                                      // 0x0054a1a2    8bce
-                         call               @__ct__13DialogBoxBaseFv@4                    // 0x0054a1a4    e8f791fcff
+                         call               ??0DialogBoxBase@@QAE@XZ                      // 0x0054a1a4    e8f791fcff
                          {disp8} lea        edx, dword ptr [esi + 0x18]                   // 0x0054a1a9    8d5618
                          xor.s              eax, eax                                      // 0x0054a1ac    33c0
                          {disp32} lea       edi, dword ptr [edx + 0x000000c8]             // 0x0054a1ae    8dbac8000000
@@ -540,7 +540,7 @@ _jmp_addr_0x0054a1d3:    push               0x005471e0                          
                          {disp8} je         _jmp_addr_0x0054a25d                          // 0x0054a22f    742c
                          push               edi                                           // 0x0054a231    57
                          mov.s              ecx, esi                                      // 0x0054a232    8bce
-                         call               @__ct__13DialogBoxBaseFv@4                    // 0x0054a234    e86791fcff
+                         call               ??0DialogBoxBase@@QAE@XZ                      // 0x0054a234    e86791fcff
                          {disp8} lea        edx, dword ptr [esi + 0x14]                   // 0x0054a239    8d5614
                          xor.s              eax, eax                                      // 0x0054a23c    33c0
                          {disp32} lea       edi, dword ptr [edx + 0x000000c8]             // 0x0054a23e    8dbac8000000
@@ -758,7 +758,7 @@ _jmp_addr_0x0054a3dd:    mov.s              eax, esi                            
                          push               0xe                                           // 0x0054a3f1    6a0e
                          push               0x00bea940                                    // 0x0054a3f3    6840a9be00
                          push               0x54                                          // 0x0054a3f8    6a54
-                         call               ___nw__4BaseFUl                               // 0x0054a3fa    e8f1c2eeff
+                         call               ?__nw@Base@@SAPAXK@Z                          // 0x0054a3fa    e8f1c2eeff
                          mov.s              esi, eax                                      // 0x0054a3ff    8bf0
                          add                esp, 0x0c                                     // 0x0054a401    83c40c
                          test               esi, esi                                      // 0x0054a404    85f6
@@ -1205,7 +1205,7 @@ _jmp_addr_0x0054a710:    {disp32} mov       ecx, dword ptr [_game]              
                          test               eax, eax                                      // 0x0054a744    85c0
                          {disp8} je         _jmp_addr_0x0054a74a                          // 0x0054a746    7402
                          mov                bl, 0x01                                      // 0x0054a748    b301
-_jmp_addr_0x0054a74a:    call               _GetCurrentActiveBox__8SetupBoxFv             // 0x0054a74a    e881d7ebff
+_jmp_addr_0x0054a74a:    call               ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x0054a74a    e881d7ebff
                          test               eax, eax                                      // 0x0054a74f    85c0
                          {disp8} je         _jmp_addr_0x0054a765                          // 0x0054a751    7412
                          {disp32} mov       al, byte ptr [data_bytes + 0x286cee]          // 0x0054a753    a0eeccc400
@@ -1543,7 +1543,7 @@ _jmp_addr_0x0054ab20:    {disp32} mov       al, byte ptr [data_bytes + 0x380ab8]
                          call               _sprintf                                      // 0x0054ab80    e84dac2700
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x0054ab85    8d4c2424
                          push               ecx                                           // 0x0054ab89    51
-                         call               _Exists__8LHOSFileFPc                         // 0x0054ab8a    e8111b2700
+                         call               ?Exists@LHOSFile@@SAIPAD@Z                    // 0x0054ab8a    e8111b2700
                          add                esp, 0x18                                     // 0x0054ab8f    83c418
                          test               eax, eax                                      // 0x0054ab92    85c0
                          {disp8} je         _jmp_addr_0x0054abc4                          // 0x0054ab94    742e

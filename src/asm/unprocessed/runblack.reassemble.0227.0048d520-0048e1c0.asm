@@ -20,7 +20,7 @@
 .extern ?MorphAnims@Morphable@@UAEXXZ
 .extern ?MorphTexture@Morphable@@UAEXXZ
 .extern @GetAnim__9MorphableFll@16
-.extern @GetPlayerNumber__7GPlayerCFv@4
+.extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern _jmp_addr_0x0064a9f0
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x008465a0
@@ -65,7 +65,7 @@ _jmp_addr_0x0048d539:    ret                                                    
                          test               ebx, ebx                                      // 0x0048d55d    85db
                          {disp8} je         _jmp_addr_0x0048d56e                          // 0x0048d55f    740d
                          mov.s              ecx, ebx                                      // 0x0048d561    8bcb
-                         call               @GetPlayerNumber__7GPlayerCFv@4               // 0x0048d563    e828d21b00
+                         call               ?GetPlayerNumber@GPlayer@@QBEEXZ              // 0x0048d563    e828d21b00
                          mov.s              ebp, eax                                      // 0x0048d568    8be8
                          {disp8} jmp        _jmp_addr_0x0048d57e                          // 0x0048d56a    eb12
 _jmp_addr_0x0048d56c:    xor.s              ebx, ebx                                      // 0x0048d56c    33db

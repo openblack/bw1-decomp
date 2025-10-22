@@ -9,8 +9,8 @@
 
 .extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .extern ??$ReadIt@H@GameOSFile@@QAEXAAI@Z
-.extern _GetCurrentActiveBox__8SetupBoxFv
-.extern _SetCursorOn__8FrontEndFv
+.extern ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ
+.extern ?SetCursorOn@FrontEnd@@SAXXZ
 .extern _jmp_addr_0x0053c470
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
@@ -851,7 +851,7 @@ _jmp_addr_0x0078d716:    {disp32} mov      dword ptr [ebx + 0x00000124], eax    
 ?Update@GameOptionsRoom@@UAEXXZ:
                          push              esi                                           // 0x0078d860    56
                          mov.s             esi, ecx                                      // 0x0078d861    8bf1
-                         call              _GetCurrentActiveBox__8SetupBoxFv             // 0x0078d863    e868a6c7ff
+                         call              ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x0078d863    e868a6c7ff
                          test              eax, eax                                      // 0x0078d868    85c0
                          {disp8} jne       _jmp_addr_0x0078d8e4                          // 0x0078d86a    7578
                          {disp32} mov      eax, dword ptr [esi + 0x000000c4]             // 0x0078d86c    8b86c4000000
@@ -864,7 +864,7 @@ _jmp_addr_0x0078d716:    {disp32} mov      dword ptr [ebx + 0x00000124], eax    
                          {disp32} mov      edx, dword ptr [ecx + 0x000059b4]             // 0x0078d88b    8b91b4590000
                          cmp               dword ptr [edx + 0x1c], esi                   // 0x0078d891    39721c
                          {disp8} jne       _jmp_addr_0x0078d8ba                          // 0x0078d894    7524
-                         call              _SetCursorOn__8FrontEndFv                     // 0x0078d896    e8b5ebdaff
+                         call              ?SetCursorOn@FrontEnd@@SAXXZ                  // 0x0078d896    e8b5ebdaff
                          {disp32} mov      eax, dword ptr [_game]                        // 0x0078d89b    a15c19d000
                          {disp32} mov      ecx, dword ptr [eax + 0x00250304]             // 0x0078d8a0    8b8804032500
                          {disp8} mov       ecx, dword ptr [ecx + 0x60]                   // 0x0078d8a6    8b4960
@@ -969,7 +969,7 @@ _jmp_addr_0x0078d990:    push              0x00407870                           
                          nop                                                             // 0x0078d99d    90
                          nop                                                             // 0x0078d99e    90
                          nop                                                             // 0x0078d99f    90
-                         call              _GetCurrentActiveBox__8SetupBoxFv             // 0x0078d9a0    e82ba5c7ff
+                         call              ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x0078d9a0    e82ba5c7ff
                          test              eax, eax                                      // 0x0078d9a5    85c0
                          {disp8} jne       _jmp_addr_0x0078d9d1                          // 0x0078d9a7    7528
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x2641c0]        // 0x0078d9a9    8b0dc0a1c200

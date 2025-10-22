@@ -325,7 +325,7 @@ extern const struct GameThingWithPosVftable __vt__16GameThingWithPos asm("??_7Ga
 // Constructors
 
 // win1.41 0055d050 mac 101bb2c0 GameThingWithPos::GameThingWithPos(void)
-struct GameThingWithPos* __fastcall __ct__16GameThingWithPosFv(struct GameThingWithPos* this);
+struct GameThingWithPos* __fastcall __ct__16GameThingWithPosFv(struct GameThingWithPos* this) asm("??0GameThingWithPos@@QAE@XZ");
 
 // Non-virtual Destructors
 
@@ -335,7 +335,7 @@ void __fastcall __dt__16GameThingWithPosFv(struct GameThingWithPos* this, const 
 // Non-virtual methods
 
 // win1.41 005705d0 mac 10098a30 GameThingWithPos::SetToZero(void)
-void __fastcall SetToZero__16GameThingWithPosFv(struct GameThingWithPos* this);
+void __fastcall SetToZero__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?SetToZero@GameThingWithPos@@QAEXXZ");
 
 // Override methods
 

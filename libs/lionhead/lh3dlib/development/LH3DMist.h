@@ -31,6 +31,6 @@ extern const struct LH3DObjectVftable __vt__8LH3DMist asm("??_7LH3DMist@@6B@");
 // Constructors
 
 // win1.41 007f9560 mac 100b45b0 LH3DMist::LH3DMist(void)
-struct LH3DMist* __fastcall __ct__8LH3DMistFv(struct LH3DMist* this);
+struct LH3DMist* __fastcall __ct__8LH3DMistFv(struct LH3DMist* this) asm("??0LH3DMist@@QAE@XZ");
 
 #endif /* BW1_DECOMP_LH3D_MIST_INCLUDED_H */

@@ -38,7 +38,7 @@ extern const struct HandStateVftable __vt__14HandStateTotem asm("??_7HandStateTo
 // Constructors
 
 // win1.41 005b7670 mac 1033d4c0 HandStateTotem::HandStateTotem(CHand*)
-struct HandStateTotem* __fastcall __ct__14HandStateTotemFP5CHand(struct HandStateTotem* this, const void* edx, struct CHand* hand);
+struct HandStateTotem* __fastcall __ct__14HandStateTotemFP5CHand(struct HandStateTotem* this, const void* edx, struct CHand* hand) asm("??0HandStateTotem@@QAE@PAVCHand@@@Z");
 
 // Override methods
 

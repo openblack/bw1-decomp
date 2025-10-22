@@ -14,7 +14,7 @@
 .extern _jmp_addr_0x00837400
 .extern _jmp_addr_0x00838580
 .extern _jmp_addr_0x00839680
-.extern _Free__7LH3DMemFPv
+.extern ?Free@LH3DMem@@SAXPAX@Z
 .extern _jmp_addr_0x0085dac0
 .extern _jmp_addr_0x0085dc00
 .extern _jmp_addr_0x008704c0
@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x0087f980
 
 .globl _jmp_addr_0x00837d00
-.globl @Release__11LH3DTextureFv@4
+.globl ?Release@LH3DTexture@@QAEXXZ
 .globl _jmp_addr_0x00837df0
 
 start_0x00837cf0_0x00838430:
@@ -47,7 +47,7 @@ _jmp_addr_0x00837d00:    {disp32} mov      eax, dword ptr [data_bytes + 0x51745c
                          add               esp, 0x08                                      // 0x00837d16    83c408
                          test              ecx, ecx                                       // 0x00837d19    85c9
                          {disp8} je        _jmp_addr_0x00837d2c                           // 0x00837d1b    740f
-_jmp_addr_0x00837d1d:    call              @Release__11LH3DTextureFv@4                    // 0x00837d1d    e81e000000
+_jmp_addr_0x00837d1d:    call              ?Release@LH3DTexture@@QAEXXZ                   // 0x00837d1d    e81e000000
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x517460]         // 0x00837d22    8b0d60d4ed00
                          test              ecx, ecx                                       // 0x00837d28    85c9
                          {disp8} jne       _jmp_addr_0x00837d1d                           // 0x00837d2a    75f1
@@ -62,7 +62,8 @@ _jmp_addr_0x00837d2c:    {disp32} mov      dword ptr [data_bytes + 0x517460], 0x
                          nop                                                              // 0x00837d3d    90
                          nop                                                              // 0x00837d3e    90
                          nop                                                              // 0x00837d3f    90
-@Release__11LH3DTextureFv@4:    push              esi                                            // 0x00837d40    56
+?Release@LH3DTexture@@QAEXXZ:
+                                push              esi                                            // 0x00837d40    56
                          mov.s             esi, ecx                                       // 0x00837d41    8bf1
                          mov               eax, dword ptr [esi]                           // 0x00837d43    8b06
                          push              edi                                            // 0x00837d45    57
@@ -82,7 +83,7 @@ _jmp_addr_0x00837d64:    {disp32} mov      eax, dword ptr [esi + 0x0000012c]    
                          cmp.s             eax, edi                                       // 0x00837d6a    3bc7
                          {disp8} je        _jmp_addr_0x00837d7d                           // 0x00837d6c    740f
                          push              eax                                            // 0x00837d6e    50
-                         call              _Free__7LH3DMemFPv                             // 0x00837d6f    e8ecaf0000
+                         call              ?Free@LH3DMem@@SAXPAX@Z                        // 0x00837d6f    e8ecaf0000
                          add               esp, 0x04                                      // 0x00837d74    83c404
                          {disp32} mov      dword ptr [esi + 0x0000012c], edi              // 0x00837d77    89be2c010000
 _jmp_addr_0x00837d7d:    {disp32} mov      ecx, dword ptr [esi + 0x00000120]              // 0x00837d7d    8b8e20010000
@@ -114,7 +115,7 @@ _jmp_addr_0x00837dc6:    {disp8} mov       eax, dword ptr [esi + 0x0c]          
 _jmp_addr_0x00837dce:    dec               dword ptr [data_bytes + 0x51745c]              // 0x00837dce    ff0d5cd4ed00
                          push              esi                                            // 0x00837dd4    56
                          {disp8} mov       dword ptr [esi + 0x0c], edi                    // 0x00837dd5    897e0c
-                         call              _Free__7LH3DMemFPv                             // 0x00837dd8    e883af0000
+                         call              ?Free@LH3DMem@@SAXPAX@Z                        // 0x00837dd8    e883af0000
                          add               esp, 0x04                                      // 0x00837ddd    83c404
                          pop               edi                                            // 0x00837de0    5f
                          pop               esi                                            // 0x00837de1    5e

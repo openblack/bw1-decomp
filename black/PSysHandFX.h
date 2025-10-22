@@ -48,9 +48,9 @@ extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10PSysHan
 // Static methods
 
 // win1.41 0068c9d0 mac 1040e720 PSysHandFX::CreateHandFX(void)
-struct HandFX* __cdecl CreateHandFX__10PSysHandFXFv(void);
+struct HandFX* __cdecl CreateHandFX__10PSysHandFXFv(void) asm("?CreateHandFX@PSysHandFX@@SAPAUHandFX@@XZ");
 // win1.41 0068def0 mac 1040c1a0 PSysHandFX::CreateTribalPowerColumn(TRIBE_TYPE, LHPoint const &, unsigned long)
-void __cdecl CreateTribalPowerColumn__10PSysHandFXF10TRIBE_TYPERC7LHPointUl(enum TRIBE_TYPE type, struct LHPoint* param_2, uint32_t param_3);
+void __cdecl CreateTribalPowerColumn__10PSysHandFXF10TRIBE_TYPERC7LHPointUl(enum TRIBE_TYPE type, struct LHPoint* param_2, uint32_t param_3) asm("?CreateTribalPowerColumn@PSysHandFX@@SAXW4TRIBE_TYPE@@ABULHPoint@@K@Z");
 
 struct PHandFX
 {
@@ -79,30 +79,30 @@ extern const struct PSysHandFXVftable __vt__7PHandFX asm("??_7PHandFX@@6B@");
 // Constructors
 
 // win1.41 0068cb10 mac 1040e240 PHandFX::PHandFX(void)
-struct PHandFX* __fastcall __ct__7PHandFXFv(struct PHandFX* this);
+struct PHandFX* __fastcall __ct__7PHandFXFv(struct PHandFX* this) asm("??0PHandFX@@QAE@XZ");
 
 // Override methods
 
 // win1.41 0068d060 mac 1040e060 PHandFX::RemoveAllPermBands(void)
-void __fastcall RemoveAllPermBands__7PHandFXFv(struct PSysHandFX* this);
+void __fastcall RemoveAllPermBands__7PHandFXFv(struct PSysHandFX* this) asm("?RemoveAllPermBands@PHandFX@@UAEXXZ");
 // win1.41 0068ce90 mac 1040e0c0 PHandFX::DoRemoveFromHandVisual(void)
-void __fastcall DoRemoveFromHandVisual__7PHandFXFv(struct PSysHandFX* this);
+void __fastcall DoRemoveFromHandVisual__7PHandFXFv(struct PSysHandFX* this) asm("?DoRemoveFromHandVisual@PHandFX@@UAEXXZ");
 // win1.41 0068de20 mac 1040c300 PHandFX::AddSpellToHandVisuals(bool)
-void __fastcall AddSpellToHandVisuals__7PHandFXFb(struct PSysHandFX* this, const void* edx, bool param_1);
+void __fastcall AddSpellToHandVisuals__7PHandFXFb(struct PSysHandFX* this, const void* edx, bool param_1) asm("?AddSpellToHandVisuals@PHandFX@@UAEX_N@Z");
 // win1.41 0068dda0 mac 1040c460 PHandFX::SetPULevel(long, bool)
-void __fastcall SetPULevel__7PHandFXFlb(struct PSysHandFX* this, const void* edx, uint32_t param_1, bool param_2);
+void __fastcall SetPULevel__7PHandFXFlb(struct PSysHandFX* this, const void* edx, uint32_t param_1, bool param_2) asm("?SetPULevel@PHandFX@@UAEXJ_N@Z");
 // win1.41 0068dd60 mac 1001b7a0 PHandFX::DrawHandFX(void)
-void __fastcall DrawHandFX__7PHandFXFv(struct PSysHandFX* this);
+void __fastcall DrawHandFX__7PHandFXFv(struct PSysHandFX* this) asm("?DrawHandFX@PHandFX@@UAEXXZ");
 // win1.41 0068ccb0 mac 1040e200 PHandFX::GetPULevel(void)
-uint32_t __fastcall GetPULevel__7PHandFXFv(struct PSysHandFX* this);
+uint32_t __fastcall GetPULevel__7PHandFXFv(struct PSysHandFX* this) asm("?GetPULevel@PHandFX@@UAEIXZ");
 // win1.41 0068df20 mac 1040c000 PHandFX::StartTribalPowerRing(TRIBE_TYPE)
-void __fastcall StartTribalPowerRing__7PHandFXF10TRIBE_TYPE(struct PSysHandFX* this, const void* edx, enum TRIBE_TYPE tribe);
+void __fastcall StartTribalPowerRing__7PHandFXF10TRIBE_TYPE(struct PSysHandFX* this, const void* edx, enum TRIBE_TYPE tribe) asm("?StartTribalPowerRing@PHandFX@@UAEXW4TRIBE_TYPE@@@Z");
 // win1.41 0068dfa0 mac 1040bf70 PHandFX::StopTribalPowerRing(void)
-void __fastcall StopTribalPowerRing__7PHandFXFv(struct PSysHandFX* this);
+void __fastcall StopTribalPowerRing__7PHandFXFv(struct PSysHandFX* this) asm("?StopTribalPowerRing@PHandFX@@UAEXXZ");
 // win1.41 0068dfc0 mac 1040be00 PHandFX::ReleaseOrCreateTribalPowerRing(TRIBE_TYPE)
-void __fastcall ReleaseOrCreateTribalPowerRing__7PHandFXF10TRIBE_TYPE(struct PSysHandFX* this, const void* edx, enum TRIBE_TYPE tribe);
+void __fastcall ReleaseOrCreateTribalPowerRing__7PHandFXF10TRIBE_TYPE(struct PSysHandFX* this, const void* edx, enum TRIBE_TYPE tribe) asm("?ReleaseOrCreateTribalPowerRing@PHandFX@@UAEXW4TRIBE_TYPE@@@Z");
 // win1.41 0068ca10 mac 1040e670 PHandFX::Release(void)
-void __fastcall Release__7PHandFXFv(struct PSysHandFX* this);
+void __fastcall Release__7PHandFXFv(struct PSysHandFX* this) asm("?Release@PHandFX@@UAEXXZ");
 
 struct PHandFX__Band
 {

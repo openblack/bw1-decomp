@@ -46,19 +46,19 @@ extern const struct LHDLLVftable __vt__5LHDLL asm("??_7LHDLL@@6B@");
 // Static methods
 
 // win1.41 007ad230 mac 100db740 LHDLL::AddToInternalList(LHDLL*)
-struct LHDLL* __cdecl AddToInternalList__5LHDLLFP5LHDLL(struct LHDLL* param_1);
+struct LHDLL* __cdecl AddToInternalList__5LHDLLFP5LHDLL(struct LHDLL* param_1) asm("?AddToInternalList@LHDLL@@SAPAV1@PAV1@@Z");
 
 // Constructors
 
 // win1.41 007ad370 mac 1061e11c LHDLL::LHDLL(const char*)
-struct LHDLL* __fastcall __ct__5LHDLLFPCc(struct LHDLL* this, const void* edx, char* library_path);
+struct LHDLL* __fastcall __ct__5LHDLLFPCc(struct LHDLL* this, const void* edx, char* library_path) asm("??0LHDLL@@QAE@PBD@Z");
 
 // Non-virtual Destructors
 
 // win1.41 007ad4c0 mac 1061e14c LHDLL::~LHDLL(void)
-void __fastcall __dt__5LHDLLFv(struct LHDLL* this);
+void __fastcall __dt__5LHDLLFv(struct LHDLL* this) asm("??_DLHDLL@@QAEXXZ");
 
 // win1.41 0087fc60 mac 100d98b0 LHIlib::LH3DRenderClose(void)
-int __cdecl LH3DRenderClose__6LHIlibFv(void);
+int __cdecl LH3DRenderClose__6LHIlibFv(void) asm("?LH3DRenderClose@LHIlib@@SAHXZ");
 
 #endif /* BW1_DECOMP_LHDLL_INCLUDED_H */

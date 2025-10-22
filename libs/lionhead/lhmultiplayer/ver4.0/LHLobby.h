@@ -43,9 +43,9 @@ static_assert(sizeof(struct LHLobby) == 0x90, "Data type is of wrong size");
 // Non-virtual methods
 
 // win1.41 1000cb00 mac 100f0d70 LHLobby::OpenLocalLobby(LHMPServerStartInfo *)
-enum LH_RETURN __fastcall OpenLocalLobby__7LHLobbyFP19LHMPServerStartInfo(struct LHLobby* this, const void* edx, struct LHMPServerStartInfo* info);
+enum LH_RETURN __fastcall OpenLocalLobby__7LHLobbyFP19LHMPServerStartInfo(struct LHLobby* this, const void* edx, struct LHMPServerStartInfo* info) asm("?OpenLocalLobby@LHLobby@@QAE?AW4LH_RETURN@@PAULHMPServerStartInfo@@@Z");
 // win1.41 1000d440 mac 100efe80 LHLobby::ProcessLobbyPlayerList(LHNetEvent *)
-enum LH_RETURN __fastcall ProcessLobbyPlayerList__7LHLobbyFP10LHNetEvent(struct LHLobby* this, const void* edx, struct LHNetEvent* net_event);
+enum LH_RETURN __fastcall ProcessLobbyPlayerList__7LHLobbyFP10LHNetEvent(struct LHLobby* this, const void* edx, struct LHNetEvent* net_event) asm("?ProcessLobbyPlayerList@LHLobby@@QAE?AW4LH_RETURN@@PAULHNetEvent@@@Z");
 // win1.41 005ea900 mac 100ed350 LHLobby::_dt(void)
 void __fastcall __dt__7LHLobbyFv(struct LHLobby* this) asm("??_GLHLobby@@UAEPAXI@Z");
 // win1.41 007c549c mac 100eced0 LHLobby::Close(void)

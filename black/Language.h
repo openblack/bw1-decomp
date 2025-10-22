@@ -33,7 +33,7 @@ extern const struct BaseVftable __vt__9GLanguage asm("??_7GLanguage@@6B@");
 // Constructors
 
 // win1.41 005e6750 mac 1019cef0 GLanguage::GLanguage(void)
-void __fastcall __ct__9GLanguageFv(struct GLanguage* this);
+void __fastcall __ct__9GLanguageFv(struct GLanguage* this) asm("??0GLanguage@@QAE@XZ");
 
 // Override methods
 

@@ -56,7 +56,7 @@ extern const struct BaseVftable __vt__17GVirtualInfluence asm("??_7GVirtualInflu
 // Constructors
 
 // win1.41 0076cca0 mac 1015a6f0 GVirtualInfluence::GVirtualInfluence(GInterfaceStatus *)
-void __fastcall __ct__17GVirtualInfluenceFP16GInterfaceStatus(struct GVirtualInfluence* this, const void* edx, struct GInterfaceStatus* status);
+void __fastcall __ct__17GVirtualInfluenceFP16GInterfaceStatus(struct GVirtualInfluence* this, const void* edx, struct GInterfaceStatus* status) asm("??0GVirtualInfluence@@QAE@PAVGInterfaceStatus@@@Z");
 
 // Override methods
 

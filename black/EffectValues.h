@@ -48,10 +48,10 @@ extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12Eff
 // win1.41 008d8ba8 mac 10734730 EffectValues::`vftable'
 extern const struct GBaseInfoVftable __vt__12EffectValues asm("??_7EffectValues@@6B@");
 
-// Static methods
+// Constructors
 
 // win1.41 00525040 mac 100cc350 EffectValues::EffectValues(EFFECT_TYPE, float, GameThing *, float, GPlayer *)
-struct EffectValues* __fastcall __ct__12EffectValuesF11EFFECT_TYPEfP9GameThingfP7GPlayer(struct EffectValues* this, enum EFFECT_TYPE type, float value, struct GameThing* source, float param_4, struct GPlayer* player);
+struct EffectValues* __fastcall __ct__12EffectValuesF11EFFECT_TYPEfP9GameThingfP7GPlayer(struct EffectValues* this, const void* edx, enum EFFECT_TYPE type, float value, struct GameThing* source, float param_4, struct GPlayer* player) asm("??0EffectValues@@QAE@W4EFFECT_TYPE@@MPAVGameThing@@MPAVGPlayer@@@Z");
 
 // Override methods
 

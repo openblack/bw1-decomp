@@ -106,7 +106,7 @@ extern const struct BaseVftable __vt__15CreatureBeliefs asm("??_7CreatureBeliefs
 // Non-virtual methods
 
 // win1.41 004d8ea0 mac 10250c70 CreatureBeliefs::Initialise(void)
-void __fastcall Initialise__15CreatureBeliefsFv(struct CreatureBeliefs* this);
+void __fastcall Initialise__15CreatureBeliefsFv(struct CreatureBeliefs* this) asm("?Initialise@CreatureBeliefs@@QAEXXZ");
 
 // Override methods
 

@@ -118,19 +118,19 @@ extern const struct GameThingWithPosVftable __vt__10GInterface asm("??_7GInterfa
 // Non-virtual methods
 
 // win1.41 005ce4d0 mac 1035be80 GInterface::SetToZero(void)
-void __fastcall SetToZero__10GInterfaceFv(struct GInterface* this);
+void __fastcall SetToZero__10GInterfaceFv(struct GInterface* this) asm("?SetToZero@GInterface@@QAEXXZ");
 // win1.41 005ce670 mac 1035bd00 GInterface::Init(unsigned char)
-void __fastcall Init__10GInterfaceFUc(struct GInterface* this, const void* edx, uint8_t player_number);
+void __fastcall Init__10GInterfaceFUc(struct GInterface* this, const void* edx, uint8_t player_number) asm("?Init@GInterface@@QAEXE@Z");
 // win1.41 005ce7f0 mac 1035ba90 GInterface::InitLeash(void)
-void __fastcall InitLeash__10GInterfaceFv(struct GInterface* this);
+void __fastcall InitLeash__10GInterfaceFv(struct GInterface* this) asm("?InitLeash@GInterface@@QAEXXZ");
 // win1.41 005ce920 mac 1035b8b0 GInterface::SetupHand(void)
-void __fastcall SetupHand__10GInterfaceFv(struct GInterface* this);
+void __fastcall SetupHand__10GInterfaceFv(struct GInterface* this) asm("?SetupHand@GInterface@@QAEXXZ");
 // win1.41 005ceab0 mac 1007d9b0 GInterface::PostDrawProcess(void)
-void __fastcall PostDrawProcess__10GInterfaceFv(struct GInterface* this);
+void __fastcall PostDrawProcess__10GInterfaceFv(struct GInterface* this) asm("?PostDrawProcess@GInterface@@QAEXXZ");
 // win1.41 005cec10 mac 100254c0 GInterface::Process(void)
-void __fastcall Process__10GInterfaceFv(struct GInterface* this);
+void __fastcall Process__10GInterfaceFv(struct GInterface* this) asm("?Process@GInterface@@QAEXXZ");
 // win1.41 005d9130 mac 100315f0 GInterface::UpdateAllLeashes(void)
-void __fastcall UpdateAllLeashes__10GInterfaceFv(struct GInterface* this);
+void __fastcall UpdateAllLeashes__10GInterfaceFv(struct GInterface* this) asm("?UpdateAllLeashes@GInterface@@QAEXXZ");
 // win1.41 005d9d80 mac 10004300 GInterface::SendMessageA(INTERFACE_MESSAGE_TYPES, LHCoord *)
 bool __fastcall SendMessageA__10GInterfaceF23INTERFACE_MESSAGE_TYPESP7LHCoord(struct GInterface* this, const void* edx, enum INTERFACE_MESSAGE_TYPES param_1, struct LHCoord* param_2) asm("?SendMessageA@GInterface@@QAE_NW4INTERFACE_MESSAGE_TYPES@@PAULHCoord@@@Z");
 

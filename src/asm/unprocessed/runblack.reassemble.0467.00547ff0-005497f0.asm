@@ -17,9 +17,9 @@
 .extern @__ct__9SetupEditFiiiiiPwi@33
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
-.extern _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf
+.extern ?DrawBox@SetupThing@@SAXHHHHMMMMPAULH3DMaterial@@PAULH3DColor@@HHH_NM@Z
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x0053b4a0
 .extern _jmp_addr_0x005497f0
@@ -29,7 +29,7 @@
 .extern _jmp_addr_0x00712b20
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
-.extern _Exists__8LHOSFileFPc
+.extern ?Exists@LHOSFile@@SAIPAD@Z
 .extern _sprintf
 .extern _wcscpy
 .extern _wcsncpy
@@ -43,7 +43,7 @@
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
 .extern _CHAR2WCHAR__FPc
 .extern _jmp_addr_0x008379e0
-.extern @Release__11LH3DTextureFv@4
+.extern ?Release@LH3DTexture@@QAEXXZ
 .extern _jmp_addr_0x00839010
 .extern _jmp_addr_0x00870920
 .extern _jmp_addr_0x00870990
@@ -251,7 +251,7 @@ _jmp_addr_0x00548280:    {disp32} mov       dword ptr [edi + 0x000000a8], eax   
                          nop                                                              // 0x0054829e    90
                          nop                                                              // 0x0054829f    90
 ?Destroy@SetupOnlineLandscapes@@UAEXXZ:
-                         call               @Destroy__13DialogBoxBaseFv@4                 // 0x005482a0    e8ebb2fcff
+                         call               ?Destroy@DialogBoxBase@@UAEXXZ                // 0x005482a0    e8ebb2fcff
                          {disp32} mov       dword ptr [data_bytes + 0x30b670], 0x00000000 // 0x005482a5    c7057016cd0000000000
                          ret                                                              // 0x005482af    c3
 ?InitControls@SetupOnlineLandscapes@@UAEXXZ:
@@ -826,7 +826,7 @@ _jmp_addr_0x00548920:    push               esi                                 
                          {disp32} mov       ecx, dword ptr [esi + 0x00000080]             // 0x00548923    8b8e80000000
                          test               ecx, ecx                                      // 0x00548929    85c9
                          {disp8} je         _jmp_addr_0x0054893c                          // 0x0054892b    740f
-                         call               @Release__11LH3DTextureFv@4                   // 0x0054892d    e80ef42e00
+                         call               ?Release@LH3DTexture@@QAEXXZ                  // 0x0054892d    e80ef42e00
                          {disp32} mov       dword ptr [esi + 0x00000080], 0x00000000      // 0x00548932    c7868000000000000000
 _jmp_addr_0x0054893c:    {disp32} mov       eax, dword ptr [esi + 0x00000084]             // 0x0054893c    8b8684000000
                          test               eax, eax                                      // 0x00548942    85c0
@@ -903,14 +903,14 @@ _jmp_addr_0x00548a0a:    {disp8} lea        eax, dword ptr [esp + 0x10]         
                          call               _sprintf                                      // 0x00548a36    e897cd2700
                          {disp32} lea       ecx, dword ptr [esp + 0x000000a8]             // 0x00548a3b    8d8c24a8000000
                          push               ecx                                           // 0x00548a42    51
-                         call               _Exists__8LHOSFileFPc                         // 0x00548a43    e8583c2700
+                         call               ?Exists@LHOSFile@@SAIPAD@Z                    // 0x00548a43    e8583c2700
                          mov.s              ebx, eax                                      // 0x00548a48    8bd8
                          neg                ebx                                           // 0x00548a4a    f7db
                          {disp32} lea       edx, dword ptr [esp + 0x000001b0]             // 0x00548a4c    8d9424b0010000
                          sbb.s              bl, bl                                        // 0x00548a53    1adb
                          push               edx                                           // 0x00548a55    52
                          inc                bl                                            // 0x00548a56    fec3
-                         call               _Exists__8LHOSFileFPc                         // 0x00548a58    e8433c2700
+                         call               ?Exists@LHOSFile@@SAIPAD@Z                    // 0x00548a58    e8433c2700
                          add                esp, 0x14                                     // 0x00548a5d    83c414
                          test               eax, eax                                      // 0x00548a60    85c0
                          {disp8} jne        _jmp_addr_0x00548a68                          // 0x00548a62    7504
@@ -1507,7 +1507,7 @@ _jmp_addr_0x005492ec:    {disp32} lea       esi, dword ptr [edi + 0x000000c8]   
                          call               _sprintf                                      // 0x0054931c    e8b1c42700
                          {disp32} lea       ecx, dword ptr [esp + 0x00000124]             // 0x00549321    8d8c2424010000
                          push               ecx                                           // 0x00549328    51
-                         call               _Exists__8LHOSFileFPc                         // 0x00549329    e872332700
+                         call               ?Exists@LHOSFile@@SAIPAD@Z                    // 0x00549329    e872332700
                          add                esp, 0x10                                     // 0x0054932e    83c410
                          test               eax, eax                                      // 0x00549331    85c0
                          {disp32} je        _jmp_addr_0x005493fa                          // 0x00549333    0f84c1000000
@@ -1596,7 +1596,7 @@ _jmp_addr_0x0054942d:    {disp32} mov       eax, dword ptr [esp + 0x00000b24]   
                          push               0x00cd0b94                                    // 0x0054947b    68940bcd00
                          call               _sprintf                                      // 0x00549480    e84dc32700
                          push               0x00cd0b94                                    // 0x00549485    68940bcd00
-                         call               _Exists__8LHOSFileFPc                         // 0x0054948a    e811322700
+                         call               ?Exists@LHOSFile@@SAIPAD@Z                    // 0x0054948a    e811322700
                          add                esp, 0x10                                     // 0x0054948f    83c410
                          test               eax, eax                                      // 0x00549492    85c0
                          {disp32} jne       _jmp_addr_0x00549568                          // 0x00549494    0f85ce000000
@@ -1743,7 +1743,7 @@ _jmp_addr_0x00549629:    cmp                dword ptr [edx + 0x00000084], ebp   
                          push               0x00000262                                    // 0x0054968e    6862020000
                          push               0x50                                          // 0x00549693    6a50
                          push               0x0000015e                                    // 0x00549695    685e010000
-                         call               _DrawBox__10SetupThingFiiiiffffP12LH3DMaterialP9LH3DColoriiibf                          // 0x0054969a    e8e192ecff
+                         call               ?DrawBox@SetupThing@@SAXHHHHMMMMPAULH3DMaterial@@PAULH3DColor@@HHH_NM@Z                 // 0x0054969a    e8e192ecff
                          add                esp, 0x3c                                     // 0x0054969f    83c43c
                          pop                edi                                           // 0x005496a2    5f
                          pop                esi                                           // 0x005496a3    5e

@@ -46,7 +46,7 @@ extern const struct DialogBoxBaseVftable __vt__18DialogBoxImmersion asm("??_7Dia
 // Constructors
 
 // win1.41 005149d0 mac inlined DialogBoxImmersion::DialogBoxImmersion(void)
-struct DialogBoxImmersion* __fastcall __ct__18DialogBoxImmersion(struct DialogBoxImmersion* this);
+struct DialogBoxImmersion* __fastcall __ct__18DialogBoxImmersion(struct DialogBoxImmersion* this) asm("??0DialogBoxImmersion@@QAE@XZ");
 
 // Override methods
 

@@ -49,6 +49,6 @@ static_assert(sizeof(struct CreatureReceiveSpell) == 0x1d8, "Data type is of wro
 // Constructors
 
 // win1.41 004f5240 mac 102802a0 CreatureReceiveSpell::CreatureReceiveSpell(Creature *)
-struct CreatureReceiveSpell* __fastcall __ct__20CreatureReceiveSpellFP8Creature(struct CreatureReceiveSpell* this, const void* edx, struct Creature* creature);
+struct CreatureReceiveSpell* __fastcall __ct__20CreatureReceiveSpellFP8Creature(struct CreatureReceiveSpell* this, const void* edx, struct Creature* creature) asm("??0CreatureReceiveSpell@@QAE@PAVCreature@@@Z");
 
 #endif /* BW1_DECOMP_CREATURE_RECEIVE_SPELL_INCLUDED_H */

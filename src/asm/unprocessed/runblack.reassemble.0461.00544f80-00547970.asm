@@ -11,7 +11,7 @@
 .extern _GetMidTextSize__Fv
 .extern _GetSmallTextSize__Fv
 .extern _jmp_addr_0x00407a20
-.extern _GetCurrentActiveBox__8SetupBoxFv
+.extern ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ
 .extern _jmp_addr_0x00408100
 .extern _jmp_addr_0x00408f80
 .extern @__ct__12SetupControlFiiiiiPw@32
@@ -24,17 +24,17 @@
 .extern @__ct__9SetupEditFiiiiiPwi@33
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
 .extern @__ct__13SetupCheckBoxFiiibiPwi@33
-.extern _unadjust__10SetupThingFRiRi
+.extern ?unadjust@SetupThing@@SAMAAH0@Z
 .extern _jmp_addr_0x00447850
 .extern _jmp_addr_0x004707f0
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
 .extern _HideAll__13DialogBoxBaseFv@0
 .extern _jmp_addr_0x00513770
 .extern _jmp_addr_0x0053b4a0
-.extern _SetCursorOn__8FrontEndFv
-.extern @Init__6PlasmaFv@4
+.extern ?SetCursorOn@FrontEnd@@SAXXZ
+.extern ?Init@Plasma@@QAEXXZ
 .extern @Render__6PlasmaFi@12
 .extern _jmp_addr_0x0053ce60
 .extern _jmp_addr_0x00544b60
@@ -52,12 +52,12 @@
 .extern _jmp_addr_0x007de090
 .extern @CandidateList_GetSelectIdx__Q24slim5TbIMEFv@4
 .extern @CandidateList_SetViewWindow__Q24slim5TbIMEFUiUiUi@20
-.extern @UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint@8
-.extern _StartFrame__10LH3DRenderFv
+.extern ?UpdateCamera@LH3DTech@@SAXABULHPoint@@0@Z
+.extern ?StartFrame@LH3DRender@@SAXXZ
 .extern _jmp_addr_0x0082f460
 
 .globl _jmp_addr_0x00544f80
-.globl _JustDoABox__8FrontEndFP13DialogBoxBase
+.globl ?JustDoABox@FrontEnd@@SAXPAVDialogBoxBase@@@Z
 .globl _jmp_addr_0x005453d0
 .globl _jmp_addr_0x00545630
 .globl _jmp_addr_0x00545680
@@ -90,25 +90,26 @@ start_0x00544f80_0x00547970:
 // Snippet: asm, [0x00544f80, 0x0054791d)
 _jmp_addr_0x00544f80:    {disp32} mov       eax, dword ptr [data_bytes + 0x30ab1c]        // 0x00544f80    a11c0bcd00
                          push               eax                                           // 0x00544f85    50
-                         call               _JustDoABox__8FrontEndFP13DialogBoxBase       // 0x00544f86    e805000000
+                         call               ?JustDoABox@FrontEnd@@SAXPAVDialogBoxBase@@@Z // 0x00544f86    e805000000
                          pop                ecx                                           // 0x00544f8b    59
                          ret                                                              // 0x00544f8c    c3
                          nop                                                              // 0x00544f8d    90
                          nop                                                              // 0x00544f8e    90
                          nop                                                              // 0x00544f8f    90
-_JustDoABox__8FrontEndFP13DialogBoxBase:    sub                esp, 0x18                                     // 0x00544f90    83ec18
+?JustDoABox@FrontEnd@@SAXPAVDialogBoxBase@@@Z:
+                                            sub                esp, 0x18                                     // 0x00544f90    83ec18
                          push               ebx                                           // 0x00544f93    53
                          push               ebp                                           // 0x00544f94    55
                          push               esi                                           // 0x00544f95    56
                          push               edi                                           // 0x00544f96    57
                          {disp32} mov       dword ptr [data_bytes + 0x4f3950], 0x00000000 // 0x00544f97    c7055099eb0000000000
                          {disp32} mov       byte ptr [data_bytes + 0x2726d0], 0x00        // 0x00544fa1    c605d086c30000
-                         call               _StartFrame__10LH3DRenderFv                   // 0x00544fa8    e833a12e00
+                         call               ?StartFrame@LH3DRender@@SAXXZ                 // 0x00544fa8    e833a12e00
                          call               _jmp_addr_0x0082f460                          // 0x00544fad    e8aea42e00
                          {disp32} mov       byte ptr [data_bytes + 0x2726d0], 0x01        // 0x00544fb2    c605d086c30001
                          xor.s              bl, bl                                        // 0x00544fb9    32db
                          call               _HideAll__13DialogBoxBaseFv@0                 // 0x00544fbb    e820e7fcff
-                         call               _SetCursorOn__8FrontEndFv                     // 0x00544fc0    e88b74ffff
+                         call               ?SetCursorOn@FrontEnd@@SAXXZ                  // 0x00544fc0    e88b74ffff
                          call               _HideAll__13DialogBoxBaseFv@0                 // 0x00544fc5    e816e7fcff
                          {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x00544fca    8d542410
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                   // 0x00544fce    8d4c241c
@@ -118,7 +119,7 @@ _JustDoABox__8FrontEndFP13DialogBoxBase:    sub                esp, 0x18        
                          {disp8} mov        dword ptr [esp + 0x1c], 0x00000000            // 0x00544fea    c744241c00000000
                          {disp8} mov        dword ptr [esp + 0x20], 0x41a00000            // 0x00544ff2    c74424200000a041
                          {disp8} mov        dword ptr [esp + 0x24], 0xc1f00000            // 0x00544ffa    c74424240000f0c1
-                         call               @UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint@8                          // 0x00545002    e819492d00
+                         call               ?UpdateCamera@LH3DTech@@SAXABULHPoint@@0@Z                               // 0x00545002    e819492d00
                          {disp8} mov        ecx, dword ptr [esp + 0x2c]                   // 0x00545007    8b4c242c
                          mov                eax, dword ptr [ecx]                          // 0x0054500b    8b01
                          mov                ebp, 0x000003e7                               // 0x0054500d    bde7030000
@@ -129,8 +130,8 @@ _jmp_addr_0x00545015:    test               bl, bl                              
                          {disp32} jge       _jmp_addr_0x00545219                          // 0x0054501f    0f8df4010000
 _jmp_addr_0x00545025:    mov                edi, 0x00000001                               // 0x00545025    bf01000000
                          {disp32} mov       dword ptr [data_bytes + 0x27271c], edi        // 0x0054502a    893d1c87c300
-                         call               _StartFrame__10LH3DRenderFv                   // 0x00545030    e8aba02e00
-                         call               _GetCurrentActiveBox__8SetupBoxFv             // 0x00545035    e8962eecff
+                         call               ?StartFrame@LH3DRender@@SAXXZ                 // 0x00545030    e8aba02e00
+                         call               ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x00545035    e8962eecff
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0054503a    8b0d5c19d000
                          {disp32} mov       edx, dword ptr [?g_delta_time@LH3DTech@@2MA]  // 0x00545040    8b153481c300
                          mov.s              ebx, eax                                      // 0x00545046    8bd8
@@ -173,7 +174,7 @@ _jmp_addr_0x00545025:    mov                edi, 0x00000001                     
                          push               edx                                           // 0x005450cd    52
                          call               _jmp_addr_0x00401140                          // 0x005450ce    e86dc0ebff
                          mov.s              ecx, esi                                      // 0x005450d3    8bce
-                         call               @Init__6PlasmaFv@4                            // 0x005450d5    e86675ffff
+                         call               ?Init@Plasma@@QAEXXZ                          // 0x005450d5    e86675ffff
                          mov.s              ecx, esi                                      // 0x005450da    8bce
                          {disp8} jmp        _jmp_addr_0x005450e0                          // 0x005450dc    eb02
 _jmp_addr_0x005450de:    xor.s              ecx, ecx                                      // 0x005450de    33c9
@@ -188,12 +189,12 @@ _jmp_addr_0x005450e6:    push               edi                                 
                          mov.s              edi, eax                                      // 0x00545101    8bf8
                          and                esi, 0x000000ff                               // 0x00545103    81e6ff000000
                          {disp32} mov       dword ptr [data_bytes + 0x4bf474], 0x00000000 // 0x00545109    c7057454e80000000000
-                         call               _GetCurrentActiveBox__8SetupBoxFv             // 0x00545113    e8b82decff
+                         call               ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x00545113    e8b82decff
                          test               eax, eax                                      // 0x00545118    85c0
                          {disp8} je         _jmp_addr_0x0054512a                          // 0x0054511a    740e
                          push               esi                                           // 0x0054511c    56
                          push               edi                                           // 0x0054511d    57
-                         call               _GetCurrentActiveBox__8SetupBoxFv             // 0x0054511e    e8ad2decff
+                         call               ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ      // 0x0054511e    e8ad2decff
                          mov.s              ecx, eax                                      // 0x00545123    8bc8
                          call               _jmp_addr_0x00408f80                          // 0x00545125    e8563eecff
 _jmp_addr_0x0054512a:    test               bl, bl                                        // 0x0054512a    84db
@@ -393,7 +394,7 @@ _jmp_addr_0x0054538d:    xor.s              eax, eax                            
                          nop                                                              // 0x005453ae    90
                          nop                                                              // 0x005453af    90
 ?Destroy@HistoryBox@@UAEXXZ:
-                         call               @Destroy__13DialogBoxBaseFv@4                 // 0x005453b0    e8dbe1fcff
+                         call               ?Destroy@DialogBoxBase@@UAEXXZ                // 0x005453b0    e8dbe1fcff
                          {disp32} mov       dword ptr [data_bytes + 0x30ab90], 0x00000000 // 0x005453b5    c705900bcd0000000000
                          ret                                                              // 0x005453bf    c3
 ?InitControls@HistoryBox@@UAEXXZ:
@@ -501,7 +502,7 @@ _jmp_addr_0x00545486:    {disp32} mov       eax, dword ptr [data_bytes + 0x4bf2c
                          push               eax                                           // 0x005454a5    50
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x005454a6    8d4c2410
                          push               ecx                                           // 0x005454aa    51
-                         call               _unadjust__10SetupThingFRiRi                  // 0x005454ab    e880c7ecff
+                         call               ?unadjust@SetupThing@@SAMAAH0@Z               // 0x005454ab    e880c7ecff
                          fstp               st(0)                                         // 0x005454b0    ddd8
                          {disp8} mov        edx, dword ptr [esp + 0x0c]                   // 0x005454b2    8b54240c
                          {disp8} mov        eax, dword ptr [esp + 0x14]                   // 0x005454b6    8b442414
@@ -2719,7 +2720,7 @@ _jmp_addr_0x00546ce4:    {disp8} mov        edx, dword ptr [eax + 0x08]         
                          mov                edx, dword ptr [ecx]                          // 0x00546d0b    8b11
                          {disp8} jmp        dword ptr [edx + 0xc]                         // 0x00546d0d    ff620c
 ?Destroy@SetupLandscapeBox@@UAEXXZ:
-                         call               @Destroy__13DialogBoxBaseFv@4                 // 0x00546d10    e87bc8fcff
+                         call               ?Destroy@DialogBoxBase@@UAEXXZ                // 0x00546d10    e87bc8fcff
                          {disp32} mov       dword ptr [data_bytes + 0x30b664], 0x00000000 // 0x00546d15    c7056416cd0000000000
                          ret                                                              // 0x00546d1f    c3
 ?InitControls@SetupLandscapeBox@@UAEXXZ:

@@ -7,19 +7,19 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @__ct__9MapCoordsFv@4
-.extern _GetCell__10LH3DIslandFll
+.extern ??0MapCoords@@QAE@XZ
+.extern ?GetCell@LH3DIsland@@SAPAULandCell@@JJ@Z
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x00601bc0
 .extern @__ct__9MapCoordsFllf@20
 .extern _jmp_addr_0x006033b0
-.extern @GetFirstObjectFixed__9MapCoordsCFv@4
+.extern ?GetFirstObjectFixed@MapCoords@@QBEPAVObject@@XZ
 .extern ?Save@Mobile@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@Mobile@@UAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x0060a450
 .extern _jmp_addr_0x0060a5e0
-.extern @GetObjectPtr__13CircleHugInfoFv@4
+.extern ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ
 .extern @SetObjectPtr__13CircleHugInfoFPQ210NewCollide3ObjP13MobileWallHugb@17
 .extern @Init__20ObjectCircleIteratorFP6ObjectRC9MapCoords@16
 .extern _jmp_addr_0x0060d520
@@ -28,20 +28,20 @@
 .extern _jmp_addr_0x00610010
 .extern _jmp_addr_0x00610490
 .extern @DotProduct__7Point2DRP7Point2D@12
-.extern @GetNormSq__7Point2DFv@4
+.extern ?GetNormSq@Point2D@@QAEMXZ
 .extern @InBounds__4GMapCFll@16
-.extern _ConvertMapCoordToLandscapePoint__10GLandscapeFRC9MapCoordsR7LHPoint
+.extern ?ConvertMapCoordToLandscapePoint@GLandscape@@SAPAULHPoint@@ABUMapCoords@@AAU2@@Z
 .extern @find_or_insert__std__map__SubCollideBlockPosPNewCollide3Obj@16
 .extern @find__std__map__SubCollideBlockPosPNewCollide3Obj@16
 .extern _jmp_addr_0x00616750
 .extern _jmp_addr_0x006167a0
 .extern @GetMapChild__6ObjectFRC9MapCoords@12
-.extern _GameRand__5GRandFl
+.extern ?GameRand@GRand@@SAHJ@Z
 .extern _jmp_addr_0x007370b0
 .extern _jmp_addr_0x0074cd50
-.extern _GetAngleFromDXDZ__6GUtilsFll
-.extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
-.extern _ConvertWholeDistanceToMeters__6GUtilsFl
+.extern ?GetAngleFromDXDZ@GUtils@@SAGJJ@Z
+.extern ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z
+.extern ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z
 .extern _jmp_addr_0x0074dce0
 .extern _jmp_addr_0x0074e2b0
 .extern _jmp_addr_0x007a1400
@@ -49,13 +49,13 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern ___nw__FUl
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern @__ct__Q210NewCollide3ObjFfP7LHPoint@16
 
 .globl _jmp_addr_0x0060bbc0
 .globl _jmp_addr_0x0060bd00
 .globl _jmp_addr_0x0060bf90
-.globl @InitStepsXZ__13MobileWallHugFv@4
+.globl ?InitStepsXZ@MobileWallHug@@QAEXXZ
 .globl _jmp_addr_0x0060c000
 .globl _jmp_addr_0x0060c110
 .globl _jmp_addr_0x0060c180
@@ -159,14 +159,14 @@ _jmp_addr_0x0060bc22:    pop                edi                                 
                          {disp8} jle        _jmp_addr_0x0060bc78                          // 0x0060bc6a    7e0c
                          push               ebp                                           // 0x0060bc6c    55
                          push               edi                                           // 0x0060bc6d    57
-                         call               _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x0060bc6e    e8cd151400
+                         call               ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z                               // 0x0060bc6e    e8cd151400
                          add                esp, 0x08                                     // 0x0060bc73    83c408
                          {disp8} jmp        _jmp_addr_0x0060bcac                          // 0x0060bc76    eb34
 _jmp_addr_0x0060bc78:    cmp                eax, dword ptr [esp + 0x18]                   // 0x0060bc78    3b442418
                          {disp8} jge        _jmp_addr_0x0060bc8a                          // 0x0060bc7c    7d0c
                          push               edi                                           // 0x0060bc7e    57
                          push               ebp                                           // 0x0060bc7f    55
-                         call               _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x0060bc80    e8bb151400
+                         call               ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z                               // 0x0060bc80    e8bb151400
                          add                esp, 0x08                                     // 0x0060bc85    83c408
                          {disp8} jmp        _jmp_addr_0x0060bcac                          // 0x0060bc88    eb22
 _jmp_addr_0x0060bc8a:    push               0x00000438                                    // 0x0060bc8a    6838040000
@@ -174,7 +174,7 @@ _jmp_addr_0x0060bc8a:    push               0x00000438                          
 _jmp_addr_0x0060bc91:    push               0x0000043d                                    // 0x0060bc91    683d040000
 _jmp_addr_0x0060bc96:    push               0x00bf42a4                                    // 0x0060bc96    68a442bf00
                          push               0x00000080                                    // 0x0060bc9b    6880000000
-                         call               _GameRand__5GRandFl                           // 0x0060bca0    e86b280d00
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x0060bca0    e86b280d00
                          add                esp, 0x0c                                     // 0x0060bca5    83c40c
                          {disp8} lea        eax, dword ptr [ebx + eax * 0x1 + -0x40]      // 0x0060bca8    8d4403c0
 _jmp_addr_0x0060bcac:    mov                edx, dword ptr [esi]                          // 0x0060bcac    8b16
@@ -451,14 +451,15 @@ _jmp_addr_0x0060bf90:    {disp8} mov        eax, dword ptr [ecx + 0x28]         
                          {disp32} mov       eax, dword ptr [eax + 0x0000011c]             // 0x0060bf93    8b801c010000
                          ret                                                              // 0x0060bf99    c3
                          call               dword ptr [rdata_bytes + 0xe8]                // 0x0060bf9a    ff15e8908a00
-@InitStepsXZ__13MobileWallHugFv@4:    push               esi                                           // 0x0060bfa0    56
+?InitStepsXZ@MobileWallHug@@QAEXXZ:
+                                      push               esi                                           // 0x0060bfa0    56
                          mov.s              esi, ecx                                      // 0x0060bfa1    8bf1
                          mov                eax, dword ptr [esi]                          // 0x0060bfa3    8b06
                          call               dword ptr [eax + 0x860]                       // 0x0060bfa5    ff9060080000
                          push               eax                                           // 0x0060bfab    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x0060bfac    8d4e14
                          push               ecx                                           // 0x0060bfaf    51
-                         call               _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x0060bfb0    e88b121400
+                         call               ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z                               // 0x0060bfb0    e88b121400
                          mov                edx, dword ptr [esi]                          // 0x0060bfb5    8b16
                          add                esp, 0x08                                     // 0x0060bfb7    83c408
                          push               eax                                           // 0x0060bfba    50
@@ -491,7 +492,7 @@ _jmp_addr_0x0060c000:    push               esi                                 
                          {disp8} mov        ecx, dword ptr [esi + 0x64]                   // 0x0060c006    8b4e64
                          push               eax                                           // 0x0060c009    50
                          push               ecx                                           // 0x0060c00a    51
-                         call               _GetAngleFromDXDZ__6GUtilsFll                 // 0x0060c00b    e8f0111400
+                         call               ?GetAngleFromDXDZ@GUtils@@SAGJJ@Z             // 0x0060c00b    e8f0111400
                          add                esp, 0x08                                     // 0x0060c010    83c408
                          push               eax                                           // 0x0060c013    50
                          mov.s              ecx, esi                                      // 0x0060c014    8bce
@@ -542,7 +543,7 @@ _jmp_addr_0x0060c056:    {disp8} fild       dword ptr [ecx + 0x64]              
                          xor.s              eax, eax                                      // 0x0060c070    33c0
                          {disp8} mov        ax, word ptr [ecx + 0x5a]                     // 0x0060c072    668b415a
                          push               eax                                           // 0x0060c076    50
-                         call               _ConvertWholeDistanceToMeters__6GUtilsFl      // 0x0060c077    e8441c1400
+                         call               ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z  // 0x0060c077    e8441c1400
                          pop                ecx                                           // 0x0060c07c    59
                          ret                                                              // 0x0060c07d    c3
                          nop                                                              // 0x0060c07e    90
@@ -581,7 +582,7 @@ _jmp_addr_0x0060c056:    {disp8} fild       dword ptr [ecx + 0x64]              
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x0060c0b0    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x00000118]             // 0x0060c0b3    8b8018010000
                          push               eax                                           // 0x0060c0b9    50
-                         call               _ConvertWholeDistanceToMeters__6GUtilsFl      // 0x0060c0ba    e8011c1400
+                         call               ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z  // 0x0060c0ba    e8011c1400
                          pop                ecx                                           // 0x0060c0bf    59
                          ret                                                              // 0x0060c0c0    c3
                          nop                                                              // 0x0060c0c1    90
@@ -603,7 +604,7 @@ _jmp_addr_0x0060c056:    {disp8} fild       dword ptr [ecx + 0x64]              
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x0060c0d0    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x00000104]             // 0x0060c0d3    8b8004010000
                          push               eax                                           // 0x0060c0d9    50
-                         call               _ConvertWholeDistanceToMeters__6GUtilsFl      // 0x0060c0da    e8e11b1400
+                         call               ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z  // 0x0060c0da    e8e11b1400
                          pop                ecx                                           // 0x0060c0df    59
                          ret                                                              // 0x0060c0e0    c3
                          nop                                                              // 0x0060c0e1    90
@@ -625,7 +626,7 @@ _jmp_addr_0x0060c056:    {disp8} fild       dword ptr [ecx + 0x64]              
                          xor.s              eax, eax                                      // 0x0060c0f0    33c0
                          {disp8} mov        ax, word ptr [ecx + 0x5a]                     // 0x0060c0f2    668b415a
                          push               eax                                           // 0x0060c0f6    50
-                         call               _ConvertWholeDistanceToMeters__6GUtilsFl      // 0x0060c0f7    e8c41b1400
+                         call               ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z  // 0x0060c0f7    e8c41b1400
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2414]              // 0x0060c0fc    d80d14b48a00
                          add                esp, 0x04                                     // 0x0060c102    83c404
                          ret                                                              // 0x0060c105    c3
@@ -660,7 +661,7 @@ _jmp_addr_0x0060c110:    {disp8} fld        dword ptr [esp + 0x04]              
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x0060c140    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x00000118]             // 0x0060c143    8b8018010000
                          push               eax                                           // 0x0060c149    50
-                         call               _ConvertWholeDistanceToMeters__6GUtilsFl      // 0x0060c14a    e8711b1400
+                         call               ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z  // 0x0060c14a    e8711b1400
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2414]              // 0x0060c14f    d80d14b48a00
                          add                esp, 0x04                                     // 0x0060c155    83c404
                          ret                                                              // 0x0060c158    c3
@@ -675,7 +676,7 @@ _jmp_addr_0x0060c110:    {disp8} fld        dword ptr [esp + 0x04]              
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x0060c160    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x00000104]             // 0x0060c163    8b8004010000
                          push               eax                                           // 0x0060c169    50
-                         call               _ConvertWholeDistanceToMeters__6GUtilsFl      // 0x0060c16a    e8511b1400
+                         call               ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z  // 0x0060c16a    e8511b1400
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2414]              // 0x0060c16f    d80d14b48a00
                          add                esp, 0x04                                     // 0x0060c175    83c404
                          ret                                                              // 0x0060c178    c3
@@ -868,7 +869,7 @@ _jmp_addr_0x0060c32c:    mov                eax, dword ptr [eax]                
 _jmp_addr_0x0060c33e:    {disp8} mov        edx, dword ptr [esp + 0x2c]                   // 0x0060c33e    8b54242c
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x0060c342    8d4c2424
                          {disp8} mov        dword ptr [esp + 0x14], edx                   // 0x0060c346    89542414
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x0060c34a    e8416d1f00
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0060c34a    e8416d1f00
                          {disp8} fadd       dword ptr [esp + 0x14]                        // 0x0060c34f    d8442414
                          push               0x000000d7                                    // 0x0060c353    68d7000000
                          push               0x00bf42a4                                    // 0x0060c358    68a442bf00
@@ -1081,12 +1082,12 @@ _jmp_addr_0x0060c5c7:    {disp8} mov        eax, dword ptr [esp + 0x38]         
                          add.s              ecx, eax                                      // 0x0060c5d9    03c8
                          {disp32} mov       dword ptr [esi + 0x00000214], ecx             // 0x0060c5db    898e14020000
 _jmp_addr_0x0060c5e1:    {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x0060c5e1    8d4c2428
-                         call               @__ct__9MapCoordsFv@4                         // 0x0060c5e5    e87655e3ff
+                         call               ??0MapCoords@@QAE@XZ                          // 0x0060c5e5    e87655e3ff
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x0060c5ea    8d4c2420
                          {disp8} lea        ebx, dword ptr [edi + 0x70]                   // 0x0060c5ee    8d5f70
                          push               ecx                                           // 0x0060c5f1    51
                          mov.s              ecx, ebx                                      // 0x0060c5f2    8bcb
-                         call               @GetObjectPtr__13CircleHugInfoFv@4            // 0x0060c5f4    e867e0ffff
+                         call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ            // 0x0060c5f4    e867e0ffff
                          push               eax                                           // 0x0060c5f9    50
                          mov.s              ecx, ebx                                      // 0x0060c5fa    8bcb
                          call               _jmp_addr_0x0060a450                          // 0x0060c5fc    e84fdeffff
@@ -1346,7 +1347,7 @@ _jmp_addr_0x0060c8cb:    cmp                eax, 0x0000ffff                     
                          {disp8} jmp        _jmp_addr_0x0060c903                          // 0x0060c8fd    eb04
 _jmp_addr_0x0060c8ff:    {disp8} mov        word ptr [ebx + 0x76], ax                     // 0x0060c8ff    66894376
 _jmp_addr_0x0060c903:    {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x0060c903    8d4c2428
-                         call               @__ct__9MapCoordsFv@4                         // 0x0060c907    e85452e3ff
+                         call               ??0MapCoords@@QAE@XZ                          // 0x0060c907    e85452e3ff
                          {disp8} lea        edx, dword ptr [esp + 0x14]                   // 0x0060c90c    8d542414
                          push               edx                                           // 0x0060c910    52
                          mov.s              ecx, esi                                      // 0x0060c911    8bce
@@ -1482,7 +1483,7 @@ _jmp_addr_0x0060ca43:    pop                esi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x44]                   // 0x0060ca8f    8b7c2444
                          push               edi                                           // 0x0060ca93    57
                          mov.s              ecx, edi                                      // 0x0060ca94    8bcf
-                         call               @GetFirstObjectFixed__9MapCoordsCFv@4         // 0x0060ca96    e8156affff
+                         call               ?GetFirstObjectFixed@MapCoords@@QBEPAVObject@@XZ         // 0x0060ca96    e8156affff
                          push               eax                                           // 0x0060ca9b    50
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x0060ca9c    8d4c2438
                          call               @Init__20ObjectCircleIteratorFP6ObjectRC9MapCoords@16                          // 0x0060caa0    e8db070000
@@ -1629,7 +1630,7 @@ _jmp_addr_0x0060cc1a:    fld                dword ptr [esi]                     
                          {disp8} fld        dword ptr [esp + 0x4c]                        // 0x0060cc59    d944244c
                          {disp8} fmul       dword ptr [esp + 0x4c]                        // 0x0060cc5d    d84c244c
                          {disp8} fstp       dword ptr [esp + 0x18]                        // 0x0060cc61    d95c2418
-                         call               @GetNormSq__7Point2DFv@4                      // 0x0060cc65    e886490000
+                         call               ?GetNormSq@Point2D@@QAEMXZ                    // 0x0060cc65    e886490000
                          {disp8} fsubr      dword ptr [esp + 0x18]                        // 0x0060cc6a    d86c2418
                          {disp8} fld        dword ptr [ebx + 0x04]                        // 0x0060cc6e    d94304
                          {disp8} mov        dword ptr [ebx + 0x0c], esi                   // 0x0060cc71    89730c
@@ -2076,7 +2077,7 @@ _jmp_addr_0x0060d111:    {disp8} mov        esi, dword ptr [esp + 0x16]         
                          call               @InBounds__4GMapCFll@16                       // 0x0060d146    e845550000
                          push               edi                                           // 0x0060d14b    57
                          push               esi                                           // 0x0060d14c    56
-                         call               _GetCell__10LH3DIslandFll                     // 0x0060d14d    e84e99f0ff
+                         call               ?GetCell@LH3DIsland@@SAPAULandCell@@JJ@Z      // 0x0060d14d    e84e99f0ff
                          add                esp, 0x08                                     // 0x0060d152    83c408
                          test               eax, eax                                      // 0x0060d155    85c0
                          {disp8} je         _jmp_addr_0x0060d187                          // 0x0060d157    742e
@@ -2135,7 +2136,7 @@ _jmp_addr_0x0060d1f0:    {disp8} lea        ecx, dword ptr [esp + 0x14]         
                          push               ecx                                           // 0x0060d1f4    51
                          {disp8} lea        edx, dword ptr [esp + 0x24]                   // 0x0060d1f5    8d542424
                          push               edx                                           // 0x0060d1f9    52
-                         call               _ConvertMapCoordToLandscapePoint__10GLandscapeFRC9MapCoordsR7LHPoint                          // 0x0060d1fa    e851650000
+                         call               ?ConvertMapCoordToLandscapePoint@GLandscape@@SAPAULHPoint@@ABUMapCoords@@AAU2@@Z              // 0x0060d1fa    e851650000
                          push               0x000000d7                                    // 0x0060d1ff    68d7000000
                          push               0x00bf42a4                                    // 0x0060d204    68a442bf00
                          push               0x28                                          // 0x0060d209    6a28

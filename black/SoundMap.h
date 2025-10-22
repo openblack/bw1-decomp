@@ -40,7 +40,7 @@ extern const struct BaseVftable __vt__9GSoundMap asm("??_7GSoundMap@@6B@");
 // Constructors
 
 // win1.41 0054b9d0 mac inlined GSoundMap::GSoundMap(void)
-struct GSoundMap* __fastcall __ct__9GSoundMapFv(struct GSoundMap* this);
+struct GSoundMap* __fastcall __ct__9GSoundMapFv(struct GSoundMap* this) asm("??0GSoundMap@@QAE@XZ");
 
 // Override methods
 

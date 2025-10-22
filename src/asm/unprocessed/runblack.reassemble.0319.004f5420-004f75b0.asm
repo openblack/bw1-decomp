@@ -10,9 +10,9 @@
 .extern _jmp_addr_0x004146f0
 .extern _jmp_addr_0x0046c1b0
 .extern _jmp_addr_0x0046c2e0
-.extern _Create__8CreatureFRC9MapCoordsPC12CreatureInfoP7GPlayer
+.extern ?Create@Creature@@SAPAV1@ABUMapCoords@@PBVCreatureInfo@@PAVGPlayer@@@Z
 .extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
-.extern @GetCreature3D__8CreatureFv@4
+.extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
 .extern _jmp_addr_0x004798c0
 .extern _jmp_addr_0x0047ab90
 .extern _jmp_addr_0x0047db50
@@ -125,7 +125,7 @@ _jmp_addr_0x004f5420:    mov                eax, dword ptr [ecx]                
                          {disp32} mov       eax, dword ptr [esi + 0x00000164]              // 0x004f5441    8b8664010000
                          mov.s              ecx, esi                                       // 0x004f5447    8bce
                          {disp32} mov       dword ptr [eax + 0x00020ce4], 0x00000000       // 0x004f5449    c780e40c020000000000
-                         call               @GetCreature3D__8CreatureFv@4                  // 0x004f5453    e8f823f8ff
+                         call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ// 0x004f5453    e8f823f8ff
                          mov.s              ecx, eax                                       // 0x004f5458    8bc8
                          call               _jmp_addr_0x00484260                           // 0x004f545a    e801eef8ff
                          {disp32} mov       dword ptr [esi + 0x000012bc], 0x00000000       // 0x004f545f    c786bc12000000000000
@@ -1984,7 +1984,7 @@ _jmp_addr_0x004f663c:    push               eax                                 
                          {disp32} lea       ecx, dword ptr [eax * 0x4 + 0x00c60460]        // 0x004f6651    8d0c856004c600
                          push               ecx                                            // 0x004f6658    51
                          push               edx                                            // 0x004f6659    52
-                         call               _Create__8CreatureFRC9MapCoordsPC12CreatureInfoP7GPlayer                           // 0x004f665a    e8c1e3f7ff
+                         call               ?Create@Creature@@SAPAV1@ABUMapCoords@@PBVCreatureInfo@@PAVGPlayer@@@Z             // 0x004f665a    e8c1e3f7ff
                          {disp8} fld        dword ptr [esp + 0x1c]                         // 0x004f665f    d944241c
                          mov.s              esi, eax                                       // 0x004f6663    8bf0
                          {disp32} mov       ecx, dword ptr [esi + 0x00000160]              // 0x004f6665    8b8e60010000
@@ -2452,7 +2452,7 @@ _jmp_addr_0x004f6b60:    sub                esp, 0x14                           
                          fstp               st(0)                                          // 0x004f6b9c    ddd8
                          {disp32} fmul      dword ptr [__real@3e2aaaab]                    // 0x004f6b9e    d80d68b28a00
                          {disp8} fstp       dword ptr [esp + 0x10]                         // 0x004f6ba4    d95c2410
-                         call               @GetCreature3D__8CreatureFv@4                  // 0x004f6ba8    e8a30cf8ff
+                         call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ// 0x004f6ba8    e8a30cf8ff
                          {disp32} fld       dword ptr [eax + 0x00000090]                   // 0x004f6bad    d98090000000
                          mov                edx, dword ptr [esi]                           // 0x004f6bb3    8b16
                          {disp32} fmul      dword ptr [rdata_bytes + 0x19c40]              // 0x004f6bb5    d80d402c8c00

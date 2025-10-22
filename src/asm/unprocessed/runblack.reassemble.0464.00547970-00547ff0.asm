@@ -17,7 +17,7 @@
 .extern @__ct__9SetupEditFiiiiiPwi@33
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x007197f0
 .extern _jmp_addr_0x00719840
@@ -231,7 +231,7 @@ _jmp_addr_0x00547c1c:    {disp32} mov     dword ptr [edi + 0x00000450], ebx     
                          nop                                                            // 0x00547c2e    90
                          nop                                                            // 0x00547c2f    90
 ?Destroy@SpellSetupBox@@UAEXXZ:
-                         call             @Destroy__13DialogBoxBaseFv@4                 // 0x00547c30    e85bb9fcff
+                         call             ?Destroy@DialogBoxBase@@UAEXXZ                // 0x00547c30    e85bb9fcff
                          {disp32} mov     dword ptr [data_bytes + 0x30b668], 0x00000000 // 0x00547c35    c7056816cd0000000000
                          ret                                                            // 0x00547c3f    c3
 ?InitControls@SpellSetupBox@@UAEXXZ:

@@ -1500,7 +1500,7 @@ _jmp_addr_0x008a74b2:    ret                                                    
                          int3                                                     // 0x008a796f    cc
                          {disp8} mov      ecx, dword ptr [ebp + -0x10]            // 0x008a7970    8b4df0
                          add              ecx, 0x10                               // 0x008a7973    83c110
-                         {disp32} jmp     @__dt__8LHScreenFv@4                    // 0x008a7976    e9755ff3ff
+                         {disp32} jmp     ??_DLHScreen@@QAEXXZ                    // 0x008a7976    e9755ff3ff
                          mov              eax, 0x009be4f0                         // 0x008a797b    b8f0e49b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a7980    e92109f2ff
                          int3                                                     // 0x008a7985    cc
@@ -2579,7 +2579,7 @@ _jmp_addr_0x008a74b2:    ret                                                    
                          mov              eax, 0x009bef38                         // 0x008a8266    b838ef9b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a826b    e93600f2ff
                          {disp8} lea      ecx, dword ptr [ebp + -0x80]            // 0x008a8270    8d4d80
-                         {disp32} jmp     @__dt__5RPlanFv@4                       // 0x008a8273    e9785efcff
+                         {disp32} jmp     ??_DRPlan@@QAEXXZ                       // 0x008a8273    e9785efcff
                          {disp32} mov     eax, dword ptr [ebp + -0x00000088]      // 0x008a8278    8b8578ffffff
                          push             eax                                     // 0x008a827e    50
                          call             ??3@YAXPAX@Z                            // 0x008a827f    e8146cf0ff
@@ -2698,7 +2698,7 @@ _jmp_addr_0x008a74b2:    ret                                                    
                          int3                                                     // 0x008a837e    cc
                          int3                                                     // 0x008a837f    cc
                          {disp8} lea      ecx, dword ptr [ebp + -0x80]            // 0x008a8380    8d4d80
-                         {disp32} jmp     @__dt__5RPlanFv@4                       // 0x008a8383    e9685dfcff
+                         {disp32} jmp     ??_DRPlan@@QAEXXZ                       // 0x008a8383    e9685dfcff
                          {disp32} mov     eax, dword ptr [ebp + -0x0000009c]      // 0x008a8388    8b8564ffffff
                          push             eax                                     // 0x008a838e    50
                          call             ??3@YAXPAX@Z                            // 0x008a838f    e8046bf0ff
@@ -3215,7 +3215,7 @@ _jmp_addr_0x008a8921:    ret                                                    
                          int3                                                     // 0x008a892e    cc
                          int3                                                     // 0x008a892f    cc
                          {disp32} lea     ecx, dword ptr [ebp + -0x00000118]      // 0x008a8930    8d8de8feffff
-                         {disp32} jmp     @__dt__8LHOSFileFv@4                    // 0x008a8936    e9453df1ff
+                         {disp32} jmp     ??_DLHOSFile@@QAEXXZ                    // 0x008a8936    e9453df1ff
                          mov              eax, 0x009bf6c0                         // 0x008a893b    b8c0f69b00
                          {disp32} jmp     ___CxxFrameHandler                      // 0x008a8940    e961f9f1ff
                          {disp8} mov      ecx, dword ptr [esp + 0x04]             // 0x008a8945    8b4c2404

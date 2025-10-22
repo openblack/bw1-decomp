@@ -57,9 +57,9 @@ extern const struct MobileVftable __vt__6Mobile asm("??_7Mobile@@6B@");
 // Constructors
 
 // win1.41 0055c790 mac 100c0890 Mobile::Mobile(void)
-struct Mobile* __fastcall __ct__6MobileFv(struct Mobile* this);
+struct Mobile* __fastcall __ct__6MobileFv(struct Mobile* this) asm("??0Mobile@@QAE@XZ");
 // win1.41 005ec000 mac inlined Mobile::Mobile(MapCoords const &, GMobileInfo const *)
-struct Mobile* __fastcall __ct__6MobileFRC9MapCoordsPC11GMobileInfo(struct Mobile* this, const void* edx, struct MapCoords* coords, struct GMobileInfo* info);
+struct Mobile* __fastcall __ct__6MobileFRC9MapCoordsPC11GMobileInfo(struct Mobile* this, const void* edx, struct MapCoords* coords, struct GMobileInfo* info) asm("??0Mobile@@QAE@ABUMapCoords@@PBVGMobileInfo@@@Z");
 
 // Override methods
 

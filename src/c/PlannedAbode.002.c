@@ -37,7 +37,7 @@ struct PlannedAbode* __cdecl CreateNoInit__12PlannedAbodeFRC9MapCoordsPC10GAbode
     asm("push               0x0000054f");                                    // 0x004055c0    684f050000
     asm("push               0x009c7fbc");                                    // 0x004055c5    68bc7f9c00
     asm("push               0x4c");                                          // 0x004055ca    6a4c
-    asm("call               ___nw__4BaseFUl");                               // 0x004055cc    e81f110300
+    asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x004055cc    e81f110300
     asm("add                esp, 0x0c");                                     // 0x004055d1    83c40c
     asm("test               eax, eax");                                      // 0x004055d4    85c0
     asm("{disp8} je         _jmp_addr_0x004055f9");                          // 0x004055d6    7421
@@ -68,7 +68,7 @@ struct PlannedAbode* __cdecl Create__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4
     asm("push               0x00000557");                                    // 0x00405602    6857050000
     asm("push               0x009c7fbc");                                    // 0x00405607    68bc7f9c00
     asm("push               0x4c");                                          // 0x0040560c    6a4c
-    asm("call               ___nw__4BaseFUl");                               // 0x0040560e    e8dd100300
+    asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x0040560e    e8dd100300
     asm("{disp8} mov        edi, dword ptr [esp + 0x20]");                   // 0x00405613    8b7c2420
     asm("add                esp, 0x0c");                                     // 0x00405617    83c40c
     asm("test               eax, eax");                                      // 0x0040561a    85c0
@@ -112,7 +112,7 @@ struct PlannedAbode* __cdecl Create__12PlannedAbodeFP5Abode(struct Abode* abode)
     asm("push               0x00000560");                                    // 0x00405662    6860050000
     asm("push               0x009c7fbc");                                    // 0x00405667    68bc7f9c00
     asm("push               0x4c");                                          // 0x0040566c    6a4c
-    asm("call               ___nw__4BaseFUl");                               // 0x0040566e    e87d100300
+    asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x0040566e    e87d100300
     asm("{disp8} mov        edi, dword ptr [esp + 0x18]");                   // 0x00405673    8b7c2418
     asm("add                esp, 0x0c");                                     // 0x00405677    83c40c
     asm("test               eax, eax");                                      // 0x0040567a    85c0

@@ -108,7 +108,7 @@ extern const struct TempleRoomVftable __vt__10TempleRoom asm("??_7TempleRoom@@6B
 // Constructors
 
 // win1.41 00798870 mac 1053f350 TempleRoom::TempleRoom(const char*)
-struct TempleRoom* __fastcall __ct__10TempleRoomFPCc(struct TempleRoom* this, const void* edx, const char* name);
+struct TempleRoom* __fastcall __ct__10TempleRoomFPCc(struct TempleRoom* this, const void* edx, const char* name) asm("??0TempleRoom@@QAE@PBD@Z");
 
 struct InnerRoom
 {
@@ -129,6 +129,6 @@ static_assert(sizeof(struct InnerRoom) == 0x2c, "Data type is of wrong size");
 // Constructors
 
 // win1.41 00795030 mac 1053bfb0 InnerRoom::InnerRoom(void)
-struct InnerRoom* __fastcall __ct__9InnerRoomFv(struct InnerRoom* this);
+struct InnerRoom* __fastcall __ct__9InnerRoomFv(struct InnerRoom* this) asm("??0InnerRoom@@QAE@XZ");
 
 #endif /* BW1_DECOMP_TEMPLE_ROOM_INCLUDED_H */

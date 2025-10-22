@@ -19,7 +19,7 @@ static_assert(sizeof(struct FragVertex) == 0x14, "Data type is of wrong size");
 // Constructors
 
 // win1.41 0076d970 mac 1015ce60 FragVertex::FragVertex(void)
-struct FragVertex* __fastcall __ct__10FragVertexFv(struct FragVertex* this);
+struct FragVertex* __fastcall __ct__10FragVertexFv(struct FragVertex* this) asm("??0FragVertex@@QAE@XZ");
 
 struct FragTriangle
 {
@@ -40,7 +40,7 @@ static_assert(sizeof(struct FragPrimitive) == 0x14, "Data type is of wrong size"
 // Constructors
 
 // win1.41 0076d7a0 mac 1015de30 FragPrimitive::FragPrimitive(GameOSFile &, LH3DMesh *)
-struct FragPrimitive* __fastcall __ct__13FragPrimitiveFR10GameOSFileP8LH3DMesh(struct FragPrimitive* this, const void* edx, struct GameOSFile* file, struct LH3DMesh* mesh);
+struct FragPrimitive* __fastcall __ct__13FragPrimitiveFR10GameOSFileP8LH3DMesh(struct FragPrimitive* this, const void* edx, struct GameOSFile* file, struct LH3DMesh* mesh) asm("??0FragPrimitive@@QAE@AAVGameOSFile@@PAULH3DMesh@@@Z");
 
 struct FragMesh
 {
@@ -56,7 +56,7 @@ static_assert(sizeof(struct FragMesh) == 0x28, "Data type is of wrong size");
 // Constructors
 
 // win1.41 0076d520 mac 1015e3a0 FragMesh::FragMesh(GameOSFile &, LH3DMesh *)
-struct FragMesh* __fastcall __ct__8FragMeshFR10GameOSFileP8LH3DMesh(struct FragMesh* this, const void* edx, struct GameOSFile* file, struct LH3DMesh* mesh);
+struct FragMesh* __fastcall __ct__8FragMeshFR10GameOSFileP8LH3DMesh(struct FragMesh* this, const void* edx, struct GameOSFile* file, struct LH3DMesh* mesh) asm("??0FragMesh@@QAE@AAVGameOSFile@@PAULH3DMesh@@@Z");
 
 // Non-virtual methods
 

@@ -54,6 +54,6 @@ void __fastcall CreateOrJoinRoom__5BWLanFPwPwP18MPFEChannelDetails(struct LayerC
 // win1.41 004415b0 mac 1017fff0 BWLan::StartGame(void)
 void __fastcall StartGame__5BWLanFv(struct LayerCommunication* this) asm("?StartGame@BWLan@@UAEXXZ");
 // win1.41 00440ac0 mac 10180f20 BWLan::Connect(void)
-uint32_t __fastcall Connect__5BWLanFv(struct LayerCommunication* this);
+uint32_t __fastcall Connect__5BWLanFv(struct LayerCommunication* this) asm("?Connect@BWLan@@UAEIXZ");
 
 #endif /* BW1_DECOMP_BW_LAN_INCLUDED_H */

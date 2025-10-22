@@ -71,12 +71,12 @@ extern const struct BaseVftable __vt__10TownDesire asm("??_7TownDesire@@6B@");
 // Constructors
 
 // win1.41 00745710 mac 1055ead0 TownDesire::TownDesire(void)
-struct TownDesire* __fastcall __ct__10TownDesireFv(struct TownDesire* this);
+struct TownDesire* __fastcall __ct__10TownDesireFv(struct TownDesire* this) asm("??0TownDesire@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00745ae0 mac 1005c8d0 TownDesire::Process(void)
-void __fastcall Process__10TownDesireFv(struct TownDesire* this);
+void __fastcall Process__10TownDesireFv(struct TownDesire* this) asm("?Process@TownDesire@@QAEXXZ");
 
 // Override methods
 

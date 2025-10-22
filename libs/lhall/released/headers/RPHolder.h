@@ -37,16 +37,16 @@ void __cdecl InitialiseSystem__8RPHolderFPFiiP8RPHolder_vPFP8RPHolder_v(struct R
 // Constructors
 
 // win1.41 0083b2e0 mac 1061b374 RPHolder::RPHolder(void)
-struct RPHolder* __fastcall __ct__8RPHolderFv(struct RPHolder* this);
+struct RPHolder* __fastcall __ct__8RPHolderFv(struct RPHolder* this) asm("??0RPHolder@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 0083b330 mac 1061c58c RPHolder::Empty(void)
-void __fastcall Empty__8RPHolderFv(struct RPHolder* this);
+void __fastcall Empty__8RPHolderFv(struct RPHolder* this) asm("?Empty@RPHolder@@QAEXXZ");
 // win1.41 0083b860 mac 100ac020 RPHolder::GetSidePointOfStartObject(int, Point2D const &, Point2D &, int)
-uint32_t __fastcall GetSidePointOfStartObject__8RPHolderFiRC7Point2DR7Point2Di(struct RPHolder* this, const void* edx, int param_1, struct Point2D* param_2, struct Point2D* param_3, int param_4);
+uint32_t __fastcall GetSidePointOfStartObject__8RPHolderFiRC7Point2DR7Point2Di(struct RPHolder* this, const void* edx, int param_1, struct Point2D* param_2, struct Point2D* param_3, int param_4) asm("?GetSidePointOfStartObject@RPHolder@@QAEIHABUPoint2D@@AAU2@H@Z");
 // win1.41 0083bb60 mac 100ab580 RPHolder::GetFirstObject(Point2D const &, Point2D &, int, Point2D &, int &, float)
-int __fastcall GetFirstObject__8RPHolderFRC7Point2DR7Point2DiR7Point2DRif(struct RPHolder* this, const void* edx, struct Point2D* param_1, struct Point2D* param_2, int param_3, struct Point2D* param_4, int* param_5, float param_6);
+int __fastcall GetFirstObject__8RPHolderFRC7Point2DR7Point2DiR7Point2DRif(struct RPHolder* this, const void* edx, struct Point2D* param_1, struct Point2D* param_2, int param_3, struct Point2D* param_4, int* param_5, float param_6) asm("?GetFirstObject@RPHolder@@QAEHABUPoint2D@@AAU2@H1AAHM@Z");
 
 // win1.41 0054afb0 mac 105705d0 CheckSquareFunction(int, int, RPHolder *)
 void __cdecl CheckSquareFunction__FiiP8RPHolder(int param_1, int param_2, struct RPHolder* param_3) asm("?CheckSquareFunction@@YAXHHPAURPHolder@@@Z");

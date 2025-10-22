@@ -44,12 +44,12 @@ extern const struct VillagerVftable __vt__15SpecialVillager asm("??_7SpecialVill
 // Static methods
 
 // win1.41 0071f1a0 mac 10147420 SpecialVillager::Create(MapCoords const &, GVillagerInfo const *, unsigned long, int, GSpecialVillagerInfo *)
-struct SpecialVillager* __cdecl Create__15SpecialVillagerFRC9MapCoordsPC13GVillagerInfoUliP20GSpecialVillagerInfo(const struct MapCoords* coords, const struct GVillagerInfo* villager_info, uint32_t age, bool skeleton, struct GSpecialVillagerInfo* info);
+struct SpecialVillager* __cdecl Create__15SpecialVillagerFRC9MapCoordsPC13GVillagerInfoUliP20GSpecialVillagerInfo(const struct MapCoords* coords, const struct GVillagerInfo* villager_info, uint32_t age, bool skeleton, struct GSpecialVillagerInfo* info) asm("?Create@SpecialVillager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@KHPAVGSpecialVillagerInfo@@@Z");
 
 // Non-virtual methods
 
 // win1.41 0071f470 mac 101470a0 SpecialVillager::CanShowName(void)
-bool __fastcall CanShowName__15SpecialVillagerFv(struct SpecialVillager* this);
+bool __fastcall CanShowName__15SpecialVillagerFv(struct SpecialVillager* this) asm("?CanShowName@SpecialVillager@@QAE_NXZ");
 
 // Override methods
 

@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern  ??3@YAXPAX@Z
-.extern @__ct__8LHOSFileFv@4
+.extern ??0LHOSFile@@QAE@XZ
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern _jmp_addr_0x007bcad0
 .extern _wcscat
@@ -54,7 +54,7 @@
 .extern @LoadFile__12LHScriptX_c_FPcPl@16
 .extern _jmp_addr_0x007e8240
 .extern _jmp_addr_0x007e8a90
-.extern @DestroyVariables__12LHScriptX_c_Fv@4
+.extern ?DestroyVariables@LHScriptX_c_@@QAEXXZ
 .extern _jmp_addr_0x007e8d10
 .extern _jmp_addr_0x007eadb0
 .extern _jmp_addr_0x007eb870
@@ -83,7 +83,7 @@
 .globl _jmp_addr_0x007e69d0
 .globl _jmp_addr_0x007e6a30
 .globl _jmp_addr_0x007e6b40
-.globl @__ct__16LHReleasedOSFileFv@4
+.globl ??0LHReleasedOSFile@@QAE@XZ  
 .globl _jmp_addr_0x007e6d30
 .globl _jmp_addr_0x007e6d70
 .globl _jmp_addr_0x007e6da0
@@ -1310,7 +1310,7 @@ _jmp_addr_0x007e6b40:    push             ecx                                   
                          {disp8} lea      ecx, dword ptr [esp + 0x0c]                   // 0x007e6bd5    8d4c240c
                          call             _jmp_addr_0x007e73d0                          // 0x007e6bd9    e8f2070000
                          {disp32} lea     ecx, dword ptr [esp + 0x00000080]             // 0x007e6bde    8d8c2480000000
-                         call             @__ct__16LHReleasedOSFileFv@4                 // 0x007e6be5    e826010000
+                         call             ??0LHReleasedOSFile@@QAE@XZ                   // 0x007e6be5    e826010000
                          {disp32} lea     eax, dword ptr [esp + 0x00000080]             // 0x007e6bea    8d842480000000
                          push             0x0                                           // 0x007e6bf1    6a00
                          push             eax                                           // 0x007e6bf3    50
@@ -1400,9 +1400,10 @@ _jmp_addr_0x007e6b40:    push             ecx                                   
                          nop                                                            // 0x007e6d0d    90
                          nop                                                            // 0x007e6d0e    90
                          nop                                                            // 0x007e6d0f    90
-@__ct__16LHReleasedOSFileFv@4:    push             esi                                           // 0x007e6d10    56
+??0LHReleasedOSFile@@QAE@XZ:
+                                  push             esi                                           // 0x007e6d10    56
                          mov.s            esi, ecx                                      // 0x007e6d11    8bf1
-                         call             @__ct__8LHOSFileFv@4                          // 0x007e6d13    e83859fdff
+                         call             ??0LHOSFile@@QAE@XZ                           // 0x007e6d13    e83859fdff
                          mov              dword ptr [esi], 0x008c4d00                   // 0x007e6d18    c706004d8c00
                          mov.s            eax, esi                                      // 0x007e6d1e    8bc6
                          pop              esi                                           // 0x007e6d20    5e
@@ -2191,7 +2192,7 @@ _jmp_addr_0x007e7260:    sub              esp, 0x30                             
                          push             esi                                           // 0x007e7264    56
                          push             edi                                           // 0x007e7265    57
                          mov.s            ebx, ecx                                      // 0x007e7266    8bd9
-                         call             @DestroyVariables__12LHScriptX_c_Fv@4         // 0x007e7268    e8431a0000
+                         call             ?DestroyVariables@LHScriptX_c_@@QAEXXZ        // 0x007e7268    e8431a0000
                          {disp8} mov      eax, dword ptr [esp + 0x44]                   // 0x007e726d    8b442444
                          {disp8} mov      edx, dword ptr [esp + 0x4c]                   // 0x007e7271    8b54244c
                          mov              ecx, 0x0000000c                               // 0x007e7275    b90c000000
@@ -2231,7 +2232,7 @@ _jmp_addr_0x007e7260:    sub              esp, 0x30                             
                          push             esi                                           // 0x007e72c4    56
                          push             edi                                           // 0x007e72c5    57
                          mov.s            ebx, ecx                                      // 0x007e72c6    8bd9
-                         call             @DestroyVariables__12LHScriptX_c_Fv@4         // 0x007e72c8    e8e3190000
+                         call             ?DestroyVariables@LHScriptX_c_@@QAEXXZ        // 0x007e72c8    e8e3190000
                          {disp8} mov      eax, dword ptr [esp + 0x44]                   // 0x007e72cd    8b442444
                          {disp8} mov      edx, dword ptr [esp + 0x4c]                   // 0x007e72d1    8b54244c
                          mov              ecx, 0x0000000c                               // 0x007e72d5    b90c000000
@@ -2271,7 +2272,7 @@ _jmp_addr_0x007e7320:    sub              esp, 0x30                             
                          push             esi                                           // 0x007e7324    56
                          push             edi                                           // 0x007e7325    57
                          mov.s            ebx, ecx                                      // 0x007e7326    8bd9
-                         call             @DestroyVariables__12LHScriptX_c_Fv@4         // 0x007e7328    e883190000
+                         call             ?DestroyVariables@LHScriptX_c_@@QAEXXZ        // 0x007e7328    e883190000
                          {disp8} mov      edx, dword ptr [esp + 0x4c]                   // 0x007e732d    8b54244c
                          {disp8} mov      eax, dword ptr [esp + 0x44]                   // 0x007e7331    8b442444
                          mov              ecx, 0x0000000c                               // 0x007e7335    b90c000000
@@ -2307,7 +2308,7 @@ _jmp_addr_0x007e7380:    sub              esp, 0x30                             
                          push             esi                                           // 0x007e7384    56
                          push             edi                                           // 0x007e7385    57
                          mov.s            ebx, ecx                                      // 0x007e7386    8bd9
-                         call             @DestroyVariables__12LHScriptX_c_Fv@4         // 0x007e7388    e823190000
+                         call             ?DestroyVariables@LHScriptX_c_@@QAEXXZ        // 0x007e7388    e823190000
                          mov              ecx, 0x0000000c                               // 0x007e738d    b90c000000
                          mov.s            esi, ebx                                      // 0x007e7392    8bf3
                          {disp8} lea      edi, dword ptr [esp + 0x0c]                   // 0x007e7394    8d7c240c
@@ -2339,7 +2340,7 @@ _jmp_addr_0x007e7380:    sub              esp, 0x30                             
                          nop                                                            // 0x007e73cf    90
 _jmp_addr_0x007e73d0:    push             esi                                           // 0x007e73d0    56
                          mov.s            esi, ecx                                      // 0x007e73d1    8bf1
-                         call             @DestroyVariables__12LHScriptX_c_Fv@4         // 0x007e73d3    e8d8180000
+                         call             ?DestroyVariables@LHScriptX_c_@@QAEXXZ        // 0x007e73d3    e8d8180000
                          {disp8} mov      eax, dword ptr [esp + 0x08]                   // 0x007e73d8    8b442408
                          {disp8} mov      ecx, dword ptr [esp + 0x0c]                   // 0x007e73dc    8b4c240c
                          {disp8} mov      dword ptr [esi + 0x20], eax                   // 0x007e73e0    894620

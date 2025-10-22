@@ -9,9 +9,9 @@
 
 .extern _jmp_addr_0x00408240
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
-.extern @__ct__13DialogBoxBaseFv@4
+.extern ??0DialogBoxBase@@QAE@XZ
 .extern _jmp_addr_0x005133c0
-.extern @Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20
+.extern ?Init@MPFEChooseConnection@@SAXKKP6AXHPAUSetupBox@@PAUSetupControl@@HH@Z@Z
 .extern _jmp_addr_0x0062d1c0
 .extern _atexit
 .extern _wcscpy
@@ -125,7 +125,7 @@ _jmp_addr_0x0062acce:    ret                                                    
                          nop                                                             // 0x0062accf    90
 _jmp_addr_0x0062acd0:    push              esi                                           // 0x0062acd0    56
                          mov.s             esi, ecx                                      // 0x0062acd1    8bf1
-                         call              @__ct__13DialogBoxBaseFv@4                    // 0x0062acd3    e8c886eeff
+                         call              ??0DialogBoxBase@@QAE@XZ                      // 0x0062acd3    e8c886eeff
                          xor.s             eax, eax                                      // 0x0062acd8    33c0
                          push              0x0062b700                                    // 0x0062acda    6800b76200
                          push              0x000001f4                                    // 0x0062acdf    68f4010000
@@ -139,7 +139,7 @@ _jmp_addr_0x0062acd0:    push              esi                                  
                          {disp8} mov       dword ptr [esi + 0x20], eax                   // 0x0062ad01    894620
                          {disp32} mov      dword ptr [esi + 0x00000434], 0xffffffff      // 0x0062ad04    c78634040000ffffffff
                          {disp8} mov       dword ptr [esi + 0x24], eax                   // 0x0062ad0e    894624
-                         call              @Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20                          // 0x0062ad11    e81a030000
+                         call              ?Init@MPFEChooseConnection@@SAXKKP6AXHPAUSetupBox@@PAUSetupControl@@HH@Z@Z                     // 0x0062ad11    e81a030000
                          {disp8} mov       eax, dword ptr [esi + 0x04]                   // 0x0062ad16    8b4604
                          {disp32} mov      dword ptr [eax + 0x00000098], 0x00000001      // 0x0062ad19    c7809800000001000000
                          mov.s             eax, esi                                      // 0x0062ad23    8bc6

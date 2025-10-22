@@ -120,9 +120,9 @@ extern const struct SpellVftable __vt__5Spell asm("??_7Spell@@6B@");
 // Constructors
 
 // win1.41 0071fa30 mac 10519bb0 Spell::Spell(void)
-struct Spell* __fastcall __ct__5SpellFv(struct Spell* this);
+struct Spell* __fastcall __ct__5SpellFv(struct Spell* this) asm("??0Spell@@QAE@XZ");
 // win1.41 0071fb40 mac 105198a0 Spell::Spell(MAGIC_TYPE, GameThing *)
-struct Spell* __fastcall __ct__5SpellF10MAGIC_TYPEP9GameThing(struct Spell* this, const void* edx, enum MAGIC_TYPE type, struct GameThing* creator);
+struct Spell* __fastcall __ct__5SpellF10MAGIC_TYPEP9GameThing(struct Spell* this, const void* edx, enum MAGIC_TYPE type, struct GameThing* creator) asm("??0Spell@@QAE@W4MAGIC_TYPE@@PAVGameThing@@@Z");
 
 // Override methods
 

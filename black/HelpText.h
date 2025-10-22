@@ -54,7 +54,7 @@ extern const struct BaseVftable __vt__8HelpText asm("??_7HelpText@@6B@");
 // Constructors
 
 // win1.41 005cad40 mac 103579b0 HelpText::HelpText(LHRegion const &)
-struct HelpText* __fastcall __ct__8HelpTextFRC8LHRegion(struct HelpText* this, const void* edx, struct LHRegion* region);
+struct HelpText* __fastcall __ct__8HelpTextFRC8LHRegion(struct HelpText* this, const void* edx, struct LHRegion* region) asm("??0HelpText@@QAE@ABULHRegion@@@Z");
 
 // Override methods
 
@@ -71,6 +71,6 @@ static_assert(sizeof(struct HelpTextDataBase) == 0x8, "Data type is of wrong siz
 // Non-virtual methods
 
 // win1.41 inlined mac 100924c0 HelpTextDataBase::GetHelpText(unsigned long) const
-const char16_t* __fastcall GetHelpText__16HelpTextDataBaseCFUl(const struct HelpTextDataBase* this, const void* edx, uint32_t index);
+const char16_t* __fastcall GetHelpText__16HelpTextDataBaseCFUl(const struct HelpTextDataBase* this, const void* edx, uint32_t index) asm("?GetHelpText@HelpTextDataBase@@QBEPB_SK@Z");
 
 #endif /* BW1_DECOMP_HELP_TEXT_INCLUDED_H */

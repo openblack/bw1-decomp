@@ -12,14 +12,14 @@
 .extern @SetFocusControl__8SetupBoxFP12SetupControl@12
 .extern @__ct__12SetupControlFiiiiiPw@32
 .extern @AutoScroll__9SetupListFb@9
-.extern @UpdateHeights__9SetupListFv@4
+.extern ?UpdateHeights@SetupList@@QAEXXZ
 .extern @DeleteString__9SetupListFi@12
 .extern @InsertString__9SetupListFiPw@16
 .extern @__ct__9SetupEditFiiiiiPwi@33
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
 .extern @__ct__13SetupCheckBoxFiiibiPwi@33
-.extern _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl
-.extern @__ct__13DialogBoxBaseFv@4
+.extern ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z
+.extern ??0DialogBoxBase@@QAE@XZ
 .extern _jmp_addr_0x005133c0
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
 .extern _jmp_addr_0x00513640
@@ -31,12 +31,12 @@
 .extern _jmp_addr_0x00626790
 .extern _jmp_addr_0x00628c00
 .extern _jmp_addr_0x0062d8f0
-.extern @IsInternetLobby__20MPFEConnectionStatusFv@4
-.extern @__ct__17MPFELoginDatabaseFv@4
+.extern ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ
+.extern ??0MPFELoginDatabase@@QAE@XZ
 .extern _jmp_addr_0x00631070
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
-.extern _Exists__8LHOSFileFPc
+.extern ?Exists@LHOSFile@@SAIPAD@Z
 .extern _atexit
 .extern _wcscpy
 .extern _wcsncpy
@@ -57,7 +57,7 @@
 .globl _jmp_addr_0x006297b0
 .globl _jmp_addr_0x00629860
 .globl _jmp_addr_0x00629b50
-.globl @RefreshChannelList__19MPFEChannelSelectorFv@4
+.globl ?RefreshChannelList@MPFEChannelSelector@@QAEXXZ
 .globl _jmp_addr_0x0062a100
 .globl _jmp_addr_0x0062a220
 
@@ -212,7 +212,7 @@ _jmp_addr_0x00629860:    push              ecx                                  
                          {disp8} mov       dword ptr [esp + 0x10], ecx                    // 0x00629874    894c2410
                          {disp8} je        _jmp_addr_0x006298b7                           // 0x00629878    743d
 _jmp_addr_0x0062987a:    mov               ecx, 0x00d40e20                                // 0x0062987a    b9200ed400
-                         call              @IsInternetLobby__20MPFEConnectionStatusFv@4   // 0x0062987f    e83c420000
+                         call              ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ // 0x0062987f    e83c420000
                          sub               al, 0x00                                       // 0x00629884    2c00
                          {disp8} je        _jmp_addr_0x0062989c                           // 0x00629886    7414
                          dec               al                                             // 0x00629888    fec8
@@ -316,7 +316,7 @@ _jmp_addr_0x0062998b:    {disp8} mov       eax, dword ptr [ecx + 0x54]          
                          inc               eax                                            // 0x0062998e    40
                          {disp8} mov       dword ptr [ecx + 0x50], ebp                    // 0x0062998f    896950
                          {disp8} mov       dword ptr [ecx + 0x54], eax                    // 0x00629992    894154
-                         call              @RefreshChannelList__19MPFEChannelSelectorFv@4 // 0x00629995    e8b6020000
+                         call              ?RefreshChannelList@MPFEChannelSelector@@QAEXXZ// 0x00629995    e8b6020000
                          pop               edi                                            // 0x0062999a    5f
                          pop               esi                                            // 0x0062999b    5e
                          pop               ebp                                            // 0x0062999c    5d
@@ -326,7 +326,7 @@ _jmp_addr_0x0062998b:    {disp8} mov       eax, dword ptr [ecx + 0x54]          
 _jmp_addr_0x006299a2:    {disp8} mov       dword ptr [edi + 0x04], ebp                    // 0x006299a2    896f04
 _jmp_addr_0x006299a5:    {disp8} mov       ecx, dword ptr [esp + 0x10]                    // 0x006299a5    8b4c2410
                          {disp8} inc       dword ptr [ecx + 0x54]                         // 0x006299a9    ff4154
-                         call              @RefreshChannelList__19MPFEChannelSelectorFv@4 // 0x006299ac    e89f020000
+                         call              ?RefreshChannelList@MPFEChannelSelector@@QAEXXZ// 0x006299ac    e89f020000
 _jmp_addr_0x006299b1:    pop               edi                                            // 0x006299b1    5f
                          pop               esi                                            // 0x006299b2    5e
                          pop               ebp                                            // 0x006299b3    5d
@@ -492,7 +492,7 @@ _jmp_addr_0x00629b6f:    {disp8} mov       al, byte ptr [esp + 0x13]            
                          test              al, al                                         // 0x00629b73    84c0
                          {disp32} jne      _jmp_addr_0x00629c35                           // 0x00629b75    0f85ba000000
                          mov               ecx, 0x00d40e20                                // 0x00629b7b    b9200ed400
-                         call              @IsInternetLobby__20MPFEConnectionStatusFv@4   // 0x00629b80    e83b3f0000
+                         call              ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ // 0x00629b80    e83b3f0000
                          test              al, al                                         // 0x00629b85    84c0
                          {disp8} mov       eax, dword ptr [ebp + 0x00]                    // 0x00629b87    8b4500
                          {disp8} je        _jmp_addr_0x00629b9d                           // 0x00629b8a    7411
@@ -549,7 +549,7 @@ _jmp_addr_0x00629c2a:    {disp8} mov       ebp, dword ptr [ebp + 0x04]          
                          test              ebp, ebp                                       // 0x00629c2d    85ed
                          {disp32} jne      _jmp_addr_0x00629b6f                           // 0x00629c2f    0f853affffff
 _jmp_addr_0x00629c35:    {disp8} mov       ecx, dword ptr [esp + 0x14]                    // 0x00629c35    8b4c2414
-                         call              @RefreshChannelList__19MPFEChannelSelectorFv@4 // 0x00629c39    e812000000
+                         call              ?RefreshChannelList@MPFEChannelSelector@@QAEXXZ// 0x00629c39    e812000000
                          pop               edi                                            // 0x00629c3e    5f
                          pop               esi                                            // 0x00629c3f    5e
                          pop               ebp                                            // 0x00629c40    5d
@@ -564,7 +564,8 @@ _jmp_addr_0x00629c35:    {disp8} mov       ecx, dword ptr [esp + 0x14]          
                          nop                                                              // 0x00629c4d    90
                          nop                                                              // 0x00629c4e    90
                          nop                                                              // 0x00629c4f    90
-@RefreshChannelList__19MPFEChannelSelectorFv@4:    sub               esp, 0x0000020c                                // 0x00629c50    81ec0c020000
+?RefreshChannelList@MPFEChannelSelector@@QAEXXZ:
+                                                   sub               esp, 0x0000020c                                // 0x00629c50    81ec0c020000
                          push              ebx                                            // 0x00629c56    53
                          push              ebp                                            // 0x00629c57    55
                          mov.s             ebx, ecx                                       // 0x00629c58    8bd9
@@ -752,7 +753,7 @@ _jmp_addr_0x00629ee5:    {disp8} mov       ebp, dword ptr [ebp + 0x04]          
                          {disp32} jne      _jmp_addr_0x00629cc2                           // 0x00629eea    0f85d2fdffff
                          {disp8} mov       edi, dword ptr [esp + 0x10]                    // 0x00629ef0    8b7c2410
 _jmp_addr_0x00629ef4:    {disp8} mov       ecx, dword ptr [ebx + 0x28]                    // 0x00629ef4    8b4b28
-                         call              @UpdateHeights__9SetupListFv@4                 // 0x00629ef7    e8f40bdeff
+                         call              ?UpdateHeights@SetupList@@QAEXXZ               // 0x00629ef7    e8f40bdeff
                          {disp8} mov       eax, dword ptr [ebx + 0x28]                    // 0x00629efc    8b4328
                          {disp32} mov      ecx, dword ptr [eax + 0x00000250]              // 0x00629eff    8b8850020000
                          xor.s             esi, esi                                       // 0x00629f05    33f6
@@ -919,7 +920,7 @@ _jmp_addr_0x0062a100:    push              ebx                                  
                          {disp8} mov       ebx, dword ptr [esp + 0x18]                    // 0x0062a111    8b5c2418
                          {disp8} mov       ebp, dword ptr [esp + 0x14]                    // 0x0062a115    8b6c2414
 _jmp_addr_0x0062a119:    mov               ecx, 0x00d40e20                                // 0x0062a119    b9200ed400
-                         call              @IsInternetLobby__20MPFEConnectionStatusFv@4   // 0x0062a11e    e89d390000
+                         call              ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ // 0x0062a11e    e89d390000
                          test              al, al                                         // 0x0062a123    84c0
                          mov               eax, dword ptr [esi]                           // 0x0062a125    8b06
                          {disp8} je        _jmp_addr_0x0062a133                           // 0x0062a127    740a
@@ -937,7 +938,7 @@ _jmp_addr_0x0062a146:    {disp8} mov       esi, dword ptr [esi + 0x04]          
                          test              esi, esi                                       // 0x0062a149    85f6
                          {disp8} jne       _jmp_addr_0x0062a119                           // 0x0062a14b    75cc
                          mov.s             ecx, edi                                       // 0x0062a14d    8bcf
-                         call              @RefreshChannelList__19MPFEChannelSelectorFv@4 // 0x0062a14f    e8fcfaffff
+                         call              ?RefreshChannelList@MPFEChannelSelector@@QAEXXZ// 0x0062a14f    e8fcfaffff
                          pop               edi                                            // 0x0062a154    5f
                          pop               esi                                            // 0x0062a155    5e
                          pop               ebp                                            // 0x0062a156    5d
@@ -956,7 +957,7 @@ _jmp_addr_0x0062a168:    cmp               dword ptr [eax], esi                 
                          test              eax, eax                                       // 0x0062a171    85c0
                          {disp8} jne       _jmp_addr_0x0062a168                           // 0x0062a173    75f3
                          mov.s             ecx, edi                                       // 0x0062a175    8bcf
-                         call              @RefreshChannelList__19MPFEChannelSelectorFv@4 // 0x0062a177    e8d4faffff
+                         call              ?RefreshChannelList@MPFEChannelSelector@@QAEXXZ// 0x0062a177    e8d4faffff
                          pop               edi                                            // 0x0062a17c    5f
                          pop               esi                                            // 0x0062a17d    5e
                          pop               ebp                                            // 0x0062a17e    5d
@@ -975,7 +976,7 @@ _jmp_addr_0x0062a190:    cmp               dword ptr [eax], esi                 
                          test              eax, eax                                       // 0x0062a199    85c0
                          {disp8} jne       _jmp_addr_0x0062a190                           // 0x0062a19b    75f3
                          mov.s             ecx, edi                                       // 0x0062a19d    8bcf
-                         call              @RefreshChannelList__19MPFEChannelSelectorFv@4 // 0x0062a19f    e8acfaffff
+                         call              ?RefreshChannelList@MPFEChannelSelector@@QAEXXZ// 0x0062a19f    e8acfaffff
                          pop               edi                                            // 0x0062a1a4    5f
                          pop               esi                                            // 0x0062a1a5    5e
                          pop               ebp                                            // 0x0062a1a6    5d
@@ -995,7 +996,7 @@ _jmp_addr_0x0062a1bd:    push              eax                                  
                          dec               eax                                            // 0x0062a1c9    48
                          {disp8} mov       dword ptr [edi + 0x54], eax                    // 0x0062a1ca    894754
 _jmp_addr_0x0062a1cd:    mov.s             ecx, edi                                       // 0x0062a1cd    8bcf
-                         call              @RefreshChannelList__19MPFEChannelSelectorFv@4 // 0x0062a1cf    e87cfaffff
+                         call              ?RefreshChannelList@MPFEChannelSelector@@QAEXXZ// 0x0062a1cf    e87cfaffff
                          pop               edi                                            // 0x0062a1d4    5f
                          pop               esi                                            // 0x0062a1d5    5e
                          pop               ebp                                            // 0x0062a1d6    5d
@@ -1140,9 +1141,9 @@ _jmp_addr_0x0062a30e:    ret                                                    
                          nop                                                              // 0x0062a30f    90
 _jmp_addr_0x0062a310:    push              esi                                            // 0x0062a310    56
                          mov.s             esi, ecx                                       // 0x0062a311    8bf1
-                         call              @__ct__13DialogBoxBaseFv@4                     // 0x0062a313    e88890eeff
+                         call              ??0DialogBoxBase@@QAE@XZ                       // 0x0062a313    e88890eeff
                          {disp8} lea       ecx, dword ptr [esi + 0x40]                    // 0x0062a318    8d4e40
-                         call              @__ct__17MPFELoginDatabaseFv@4                 // 0x0062a31b    e8306d0000
+                         call              ??0MPFELoginDatabase@@QAE@XZ                   // 0x0062a31b    e8306d0000
                          push              0x0062ab10                                     // 0x0062a320    6810ab6200
                          push              0x000001f4                                     // 0x0062a325    68f4010000
                          push              0x0000030c                                     // 0x0062a32a    680c030000
@@ -1271,7 +1272,7 @@ _jmp_addr_0x0062a497:    {disp8} mov       edx, dword ptr [eax + 0x08]          
                          {disp8} mov       dword ptr [esi + 0x4c], 0x00000008             // 0x0062a4aa    c7464c08000000
                          push              0x00bec7a4                                     // 0x0062a4b1    68a4c7be00
                          {disp32} mov      byte ptr [ecx + 0x00000260], 0x01              // 0x0062a4b6    c6816002000001
-                         call              _Exists__8LHOSFileFPc                          // 0x0062a4bd    e8de211900
+                         call              ?Exists@LHOSFile@@SAIPAD@Z                     // 0x0062a4bd    e8de211900
                          {disp8} mov       ecx, dword ptr [esi + 0x34]                    // 0x0062a4c2    8b4e34
                          mov               edx, dword ptr [ecx]                           // 0x0062a4c5    8b11
                          add               esp, 0x0c                                      // 0x0062a4c7    83c40c
@@ -1803,7 +1804,7 @@ _jmp_addr_0x0062aab0:    ret                                                    
                          push              ecx                                            // 0x0062ab69    51
                          push              edx                                            // 0x0062ab6a    52
                          push              eax                                            // 0x0062ab6b    50
-                         call              _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl        // 0x0062ab6c    e84f87deff
+                         call              ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z           // 0x0062ab6c    e84f87deff
                          add               esp, 0x28                                      // 0x0062ab71    83c428
                          {disp32} mov      dword ptr [data_bytes + 0x2078], esi           // 0x0062ab74    893578809c00
                          pop               esi                                            // 0x0062ab7a    5e

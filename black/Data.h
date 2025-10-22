@@ -40,14 +40,14 @@ extern const struct BaseVftable __vt__5GData asm("??_7GData@@6B@");
 // Constructors
 
 // win1.41 00510500 mac 100c0a70 GData::GData(void)
-struct GData* __fastcall __ct__5GDataFv(struct GData* this);
+struct GData* __fastcall __ct__5GDataFv(struct GData* this) asm("??0GData@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00510650 mac 1002adb0 GData::Rand(long)
-uint32_t __fastcall Rand__5GDataFl(struct GData* this, const void* edx, uint32_t max, const char* src_file, uint32_t src_line);
+uint32_t __fastcall Rand__5GDataFl(struct GData* this, const void* edx, uint32_t max, const char* src_file, uint32_t src_line) asm("?Rand@GData@@QAEIJ@Z");
 // win1.41 00510750 mac 100c08f0 GData::Reset(void)
-void __fastcall Reset__5GDataFv(struct GData* this);
+void __fastcall Reset__5GDataFv(struct GData* this) asm("?Reset@GData@@QAEXXZ");
 
 // Override methods
 

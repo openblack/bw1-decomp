@@ -23,6 +23,6 @@ extern const struct LH3DObjectVftable __vt__16LH3DStaticObject asm("??_7LH3DStat
 // Constructors
 
 // win1.41 00816540 mac 100763e0 LH3DStaticObject::LH3DStaticObject(void)
-struct LH3DStaticObject* __fastcall __ct__16LH3DStaticObjectFv(struct LH3DStaticObject* this);
+struct LH3DStaticObject* __fastcall __ct__16LH3DStaticObjectFv(struct LH3DStaticObject* this) asm("??0LH3DStaticObject@@QAE@XZ");
 
 #endif /* BW1_DECOMP_LH3D_STATIC_OBJECT_INCLUDED_H */

@@ -33,7 +33,7 @@ extern const struct DialogBoxBaseVftable __vt__8LoginBox asm("??_7LoginBox@@6B@"
 // Constructors
 
 // win1.41 00540260 mac inlined LoginBox::LoginBox(void)
-struct LoginBox* __fastcall __ct__8LoginBoxFv(struct LoginBox* this);
+struct LoginBox* __fastcall __ct__8LoginBoxFv(struct LoginBox* this) asm("??0LoginBox@@QAE@XZ");
 
 // Override methods
 

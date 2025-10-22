@@ -42,11 +42,11 @@ static_assert(sizeof(struct LightSheet) == 0x60, "Data type is of wrong size");
 // Constructors
 
 // win1.41 0083e690 mac 100cddd0 LightSheet::LightSheet(void)
-void __fastcall __ct__10LightSheetFv(struct LightSheet* this);
+void __fastcall __ct__10LightSheetFv(struct LightSheet* this) asm("??0LightSheet@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 0083e610 mac 100cde20 LightSheet::PulseForceField(LHPoint, float)
-void __fastcall PulseForceField__10LightSheetF7LHPointf(struct LightSheet* this, const void* edx, struct LHPoint param_1, float param_2);
+void __fastcall PulseForceField__10LightSheetF7LHPointf(struct LightSheet* this, const void* edx, struct LHPoint param_1, float param_2) asm("?PulseForceField@LightSheet@@QAEXULHPoint@@M@Z");
 
 #endif /* BW1_DECOMP_LIGHT_SHEET_INCLUDED_H */

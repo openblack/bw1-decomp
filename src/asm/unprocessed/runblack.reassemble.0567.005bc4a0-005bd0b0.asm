@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x005bf810
 .extern _jmp_addr_0x005c2800
 .extern _jmp_addr_0x007a1400
-.extern @ProjectPoint__8LH3DTechFP7LHPointPiPiPf@16
+.extern ?ProjectPoint@LH3DTech@@SAIPAULHPoint@@PAH1PAM@Z
 .extern _jmp_addr_0x00839f10
 .extern _jmp_addr_0x0083a020
 .extern _jmp_addr_0x00860e00
@@ -124,7 +124,7 @@ _jmp_addr_0x005bc5b6:    {disp8} mov        ecx, dword ptr [esp + 0x28]         
                          mov.s              ecx, edi                                             // 0x005bc5ea    8bcf
                          {disp32} mov       dword ptr [esi + 0x00003678], eax                    // 0x005bc5ec    898678360000
                          {disp32} mov       byte ptr [esi + 0x000035a4], bl                      // 0x005bc5f2    889ea4350000
-                         call               @ProjectPoint__8LH3DTechFP7LHPointPiPiPf@16          // 0x005bc5f8    e893cd2500
+                         call               ?ProjectPoint@LH3DTech@@SAIPAULHPoint@@PAH1PAM@Z     // 0x005bc5f8    e893cd2500
                          cmp.s              eax, ebx                                             // 0x005bc5fd    3bc3
                          {disp32} mov       byte ptr [esi + 0x000035a4], bl                      // 0x005bc5ff    889ea4350000
                          {disp8} je         _jmp_addr_0x005bc62e                                 // 0x005bc605    7427

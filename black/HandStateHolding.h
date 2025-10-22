@@ -39,6 +39,6 @@ extern const struct HandStateVftable __vt__16HandStateHolding asm("??_7HandState
 // Constructors
 
 // win1.41 005b3aa0 mac 1033bba0 HandStateHolding::HandStateHolding(CHand*)
-struct HandStateHolding* __fastcall __ct__16HandStateHoldingFP5CHand(struct HandStateHolding* this, const void* edx, struct CHand* hand);
+struct HandStateHolding* __fastcall __ct__16HandStateHoldingFP5CHand(struct HandStateHolding* this, const void* edx, struct CHand* hand) asm("??0HandStateHolding@@QAE@PAVCHand@@@Z");
 
 #endif /* BW1_DECOMP_HAND_STATE_HOLDING_INCLUDED_H */

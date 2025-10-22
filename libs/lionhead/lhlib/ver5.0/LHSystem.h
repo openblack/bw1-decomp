@@ -116,7 +116,7 @@ static_assert(sizeof(struct LHSys) == 0x70d8, "Data type is of wrong size");
 // Constructors
 
 // win1.41 007db800 mac inlined LHSys::LHSys(void)
-struct LHSys* __fastcall __ct__5LHSysFv(struct LHSys* this);
+struct LHSys* __fastcall __ct__5LHSysFv(struct LHSys* this) asm("??0LHSys@@QAE@XZ");
 
 // win1.41 inlined mac 1015cd20 __sinit_LHSystem_cpp
 void __cdecl __sinit_LHSystem_cpp(void);

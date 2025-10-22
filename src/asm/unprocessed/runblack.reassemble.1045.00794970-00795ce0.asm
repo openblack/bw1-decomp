@@ -51,7 +51,7 @@
 .globl _jmp_addr_0x00794f30
 .globl _jmp_addr_0x00794f70
 .globl _jmp_addr_0x00794fb0
-.globl @__ct__9InnerRoomFv@4
+.globl ??0InnerRoom@@QAE@XZ 
 .globl _jmp_addr_0x00795090
 .globl _jmp_addr_0x007950b0
 .globl _jmp_addr_0x00795140
@@ -698,7 +698,8 @@ _jmp_addr_0x0079502c:    ret                                                    
                          nop                                                              // 0x0079502d    90
                          nop                                                              // 0x0079502e    90
                          nop                                                              // 0x0079502f    90
-@__ct__9InnerRoomFv@4:   sub                esp, 0x0c                                     // 0x00795030    83ec0c
+??0InnerRoom@@QAE@XZ:
+                         sub                esp, 0x0c                                     // 0x00795030    83ec0c
                          mov.s              eax, ecx                                      // 0x00795033    8bc1
                          {disp8} mov        dword ptr [esp + 0x00], 0x00000000            // 0x00795035    c744240000000000
                          {disp8} mov        edx, dword ptr [esp + 0x00]                   // 0x0079503d    8b542400

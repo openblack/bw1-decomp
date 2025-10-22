@@ -65,12 +65,12 @@ extern const struct MultiMapFixedVftable __vt__12WorshipTotem asm("??_7WorshipTo
 // Static methods
 
 // win1.41 00780930 mac 105b8440 WorshipTotem::Create(WorshipSite *)
-struct WorshipTotem* __cdecl Create__12WorshipTotemFP11WorshipSite(struct WorshipSite* site);
+struct WorshipTotem* __cdecl Create__12WorshipTotemFP11WorshipSite(struct WorshipSite* site) asm("?Create@WorshipTotem@@SAPAV1@PAVWorshipSite@@@Z");
 
 // Constructors
 
 // win1.41 00780840 mac 105b8640 WorshipTotem::WorshipTotem(WorshipSite *)
-struct WorshipTotem* __fastcall __ct__12WorshipTotemFP11WorshipSite(struct WorshipTotem* this, const void* edx, struct WorshipSite* site);
+struct WorshipTotem* __fastcall __ct__12WorshipTotemFP11WorshipSite(struct WorshipTotem* this, const void* edx, struct WorshipSite* site) asm("??0WorshipTotem@@QAE@PAVWorshipSite@@@Z");
 
 // Override methods
 

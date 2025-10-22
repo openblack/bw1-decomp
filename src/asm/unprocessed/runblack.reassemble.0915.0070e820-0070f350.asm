@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00477210
-.extern @GetCreature3D__8CreatureFv@4
+.extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
 .extern _jmp_addr_0x004f0100
 .extern _jmp_addr_0x0052edd0
 .extern _jmp_addr_0x00618c40
@@ -16,14 +16,14 @@
 .extern _jmp_addr_0x006da6d0
 .extern ?ScriptErrorMessage@GScript@@QAEXPAD@Z
 .extern _jmp_addr_0x00709c40
-.extern @GetWorshipSpeed__11TotemStatueFv@4
+.extern ?GetWorshipSpeed@TotemStatue@@QAEMXZ
 .extern @SetWorshipPercentage__11TotemStatueFf@12
 .extern _jmp_addr_0x0073b8e0
 .extern ?SetWorshipPercentage@Town@@QAEXM@Z
 .extern _jmp_addr_0x0073cd20
 .extern _jmp_addr_0x007a1400
 .extern ___RTDynamicCast
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 
 .globl _jmp_addr_0x0070e820
 
@@ -271,7 +271,7 @@ _jmp_addr_0x0070eac6:    mov                edx, dword ptr [esi]               /
                          mov.s              ecx, eax                           // 0x0070eae7    8bc8
                          call               ?SetWorshipPercentage@Town@@QAEXM@Z// 0x0070eae9    e872d50200
                          mov.s              ecx, esi                           // 0x0070eaee    8bce
-                         call               @GetWorshipSpeed__11TotemStatueFv@4// 0x0070eaf0    e86b970200
+                         call               ?GetWorshipSpeed@TotemStatue@@QAEMXZ// 0x0070eaf0    e86b970200
                          {disp32} fstp      dword ptr [esi + 0x00000088]       // 0x0070eaf5    d99e88000000
                          pop                edi                                // 0x0070eafb    5f
                          pop                esi                                // 0x0070eafc    5e
@@ -284,7 +284,7 @@ _jmp_addr_0x0070eb06:    {disp32} mov       edx, dword ptr [esp + 0x00000438]  /
                          mov.s              ecx, esi                           // 0x0070eb0e    8bce
                          call               @SetWorshipPercentage__11TotemStatueFf@12               // 0x0070eb10    e85b970200
                          mov.s              ecx, esi                           // 0x0070eb15    8bce
-                         call               @GetWorshipSpeed__11TotemStatueFv@4// 0x0070eb17    e844970200
+                         call               ?GetWorshipSpeed@TotemStatue@@QAEMXZ// 0x0070eb17    e844970200
                          {disp32} fstp      dword ptr [esi + 0x00000088]       // 0x0070eb1c    d99e88000000
                          pop                edi                                // 0x0070eb22    5f
                          pop                esi                                // 0x0070eb23    5e
@@ -602,7 +602,7 @@ _jmp_addr_0x0070ee2f:    {disp32} fld       dword ptr [esp + 0x00000438]       /
                          cmp.s              edi, ebx                           // 0x0070eee5    3bfb
                          {disp32} je        _jmp_addr_0x0070f287               // 0x0070eee7    0f849a030000
                          mov.s              ecx, edi                           // 0x0070eeed    8bcf
-                         call               @GetCreature3D__8CreatureFv@4      // 0x0070eeef    e85c89d6ff
+                         call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ      // 0x0070eeef    e85c89d6ff
                          {disp32} mov       edx, dword ptr [esp + 0x00000438]  // 0x0070eef4    8b942438040000
                          pop                edi                                // 0x0070eefb    5f
                          pop                esi                                // 0x0070eefc    5e
@@ -690,7 +690,7 @@ _jmp_addr_0x0070efb8:    {disp32} mov       ecx, dword ptr [esp + 0x00000438]  /
                          {disp8} mov        esi, dword ptr [esi + 0x40]        // 0x0070efff    8b7640
                          mov.s              ecx, edi                           // 0x0070f002    8bcf
                          {disp8} mov        dword ptr [esp + 0x18], eax        // 0x0070f004    89442418
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4               // 0x0070f008    e883400f00
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z             // 0x0070f008    e883400f00
                          {disp8} fadd       dword ptr [esp + 0x18]             // 0x0070f00d    d8442418
                          fild               dword ptr [edi]                    // 0x0070f011    db07
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]          // 0x0070f013    d80da4a38a00

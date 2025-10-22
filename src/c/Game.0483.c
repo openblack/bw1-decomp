@@ -767,7 +767,7 @@ void __fastcall Birthday__5GGameFv(struct GGame* this)
     asm("{disp8} je         _jmp_addr_0x00550816");                           // 0x005507ff    7415
     asm("_jmp_addr_0x00550801:");
     asm("mov.s              ecx, esi");                                       // 0x00550801    8bce
-    asm("call               @Birthday__7GPlayerFv@4");                        // 0x00550803    e8a89e0f00
+    asm("call               ?Birthday@GPlayer@@QAEXXZ");                        // 0x00550803    e8a89e0f00
     asm("push               esi");                                            // 0x00550808    56
     asm("mov.s              ecx, edi");                                       // 0x00550809    8bcf
     asm("call               ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z");  // 0x0055080b    e870010000

@@ -40,7 +40,7 @@ extern const struct HandStateVftable __vt__17HandStatePlayAnim asm("??_7HandStat
 // Constructors
 
 // win1.41 005b74f0 mac 1033cb50 HandStatePlayAnim::HandStatePlayAnim(CHand*)
-struct HandStatePlayAnim* __fastcall __ct__17HandStatePlayAnimFP5CHand(struct HandStatePlayAnim* this, const void* edx, struct CHand* hand);
+struct HandStatePlayAnim* __fastcall __ct__17HandStatePlayAnimFP5CHand(struct HandStatePlayAnim* this, const void* edx, struct CHand* hand) asm("??0HandStatePlayAnim@@QAE@PAVCHand@@@Z");
 
 // Override methods
 

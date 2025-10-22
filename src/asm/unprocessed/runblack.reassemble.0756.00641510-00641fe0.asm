@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x005356f0
 .extern _jmp_addr_0x00536670
 .extern _jmp_addr_0x00538900
-.extern _Init__8FrontEndFv
+.extern ?Init@FrontEnd@@SAXXZ
 .extern _jmp_addr_0x0053c480
 .extern _jmp_addr_0x0053ce70
 .extern _jmp_addr_0x00544f80
@@ -865,7 +865,7 @@ _jmp_addr_0x00641d99:    push              edi                                  
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00641daf    8b0d5c19d000
                          add               ecx, 0x00250310                               // 0x00641db5    81c110032500
                          call              _jmp_addr_0x0078e9b0                          // 0x00641dbb    e8f0cb1400
-                         call              _Init__8FrontEndFv                            // 0x00641dc0    e80b97efff
+                         call              ?Init@FrontEnd@@SAXXZ                         // 0x00641dc0    e80b97efff
                          cmp               byte ptr [_ARGS_NEWGAME], bl                  // 0x00641dc5    381db96ad400
                          mov               edi, 0x00000003                               // 0x00641dcb    bf03000000
                          {disp8} je        _jmp_addr_0x00641de5                          // 0x00641dd0    7413

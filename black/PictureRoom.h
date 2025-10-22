@@ -33,6 +33,6 @@ extern const struct TempleRoomVftable __vt__15PictureRoomBase asm("??_7PictureRo
 // Constructors
 
 // win1.41 0078f110 mac 10114a00 PictureRoomBase::PictureRoomBase(char const *)
-struct TempleRoom* __fastcall __ct__15PictureRoomBaseFPCc(struct PictureRoomBase* this, const void* edx, const char* param_1);
+struct TempleRoom* __fastcall __ct__15PictureRoomBaseFPCc(struct PictureRoomBase* this, const void* edx, const char* param_1) asm("??0PictureRoomBase@@QAE@PBD@Z");
 
 #endif /* BW1_DECOMP_PICTURE_ROOM_INCLUDED_H */

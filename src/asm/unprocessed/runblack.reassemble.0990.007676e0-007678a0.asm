@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @GetInfo__8ReactionCFv@4
+.extern ?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ
 .extern _jmp_addr_0x007436f0
 .extern _jmp_addr_0x0074cd50
 .extern _jmp_addr_0x007a1400
@@ -54,7 +54,7 @@ start_0x007676e0_0x007678a0:
                          {disp8} fstp       dword ptr [esp + 0x20]                   // 0x00767749    d95c2420
                          add                esp, 0x08                                // 0x0076774d    83c408
                          mov.s              ecx, ebx                                 // 0x00767750    8bcb
-                         call               @GetInfo__8ReactionCFv@4                 // 0x00767752    e8a9cff7ff
+                         call               ?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ// 0x00767752    e8a9cff7ff
                          {disp8} fld        dword ptr [esp + 0x18]                   // 0x00767757    d9442418
                          {disp8} fcomp      dword ptr [eax + 0x44]                   // 0x0076775b    d85844
                          fnstsw             ax                                       // 0x0076775e    dfe0

@@ -18,11 +18,11 @@ static_assert(sizeof(struct LH3DWay) == 0x1c, "Data type is of wrong size");
 // Non-virtual methods
 
 // win1.41 00842f10 mac 100d49e0 LH3DWay::Release(void)
-void __fastcall Release__7LH3DWayFv(struct LH3DWay* this);
+void __fastcall Release__7LH3DWayFv(struct LH3DWay* this) asm("?Release@LH3DWay@@QAEXXZ");
 // win1.41 00843500 mac 100d3ea0 LH3DWay::Draw(void)
-void __fastcall Draw__7LH3DWayFv(struct LH3DWay* this);
+void __fastcall Draw__7LH3DWayFv(struct LH3DWay* this) asm("?Draw@LH3DWay@@QAEXXZ");
 // win1.41 00844570 mac 100d2ad0 LH3DWay::AdjustPtr(void)
-void __fastcall AdjustPtr__7LH3DWayFv(struct LH3DWay* this);
+void __fastcall AdjustPtr__7LH3DWayFv(struct LH3DWay* this) asm("?AdjustPtr@LH3DWay@@QAEXXZ");
 
 struct Q27LH3DWay7Running
 {

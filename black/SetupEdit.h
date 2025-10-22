@@ -52,36 +52,36 @@ extern const struct SetupControlVftable __vt__9SetupEdit asm("??_7SetupEdit@@6B@
 // Constructors
 
 // win1.41 0040c220 mac 101bc370 SetupEdit::SetupEdit(int, int, int, int, int, wchar_t *, int)
-struct SetupEdit* __fastcall __ct__9SetupEditFiiiiiPwi(struct SetupEdit* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label, bool editable);
+struct SetupEdit* __fastcall __ct__9SetupEditFiiiiiPwi(struct SetupEdit* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label, bool editable) asm("??0SetupEdit@@QAE@HHHHHPA_WH@Z");
 
 // Non-virtual methods
 
 // win1.41 inlined mac inlined SetupEdit::ClampCursor(void)
-void __fastcall ClampCursor__9SetupEditFv(struct SetupEdit* this);
+void __fastcall ClampCursor__9SetupEditFv(struct SetupEdit* this) asm("?ClampCursor@SetupEdit@@QAEXXZ");
 // win1.41 inlined mac inlined SetupEdit::FixCursor(void)
-void __fastcall FixCursor__9SetupEditFv(struct SetupEdit* this);
+void __fastcall FixCursor__9SetupEditFv(struct SetupEdit* this) asm("?FixCursor@SetupEdit@@QAEXXZ");
 // win1.41 inlined mac inlined SetupEdit::FixSelect(void)
-void __fastcall FixSelect__9SetupEditFv(struct SetupEdit* this);
+void __fastcall FixSelect__9SetupEditFv(struct SetupEdit* this) asm("?FixSelect@SetupEdit@@QAEXXZ");
 // win1.41 0040c090 mac 103dc2c0 SetupEdit::CalcCharpos(int)
-int __fastcall CalcCharpos__9SetupEditFi(struct SetupEdit* this, const void* edx, int pos);
+int __fastcall CalcCharpos__9SetupEditFi(struct SetupEdit* this, const void* edx, int pos) asm("?CalcCharpos@SetupEdit@@QAEHH@Z");
 
 // Override methods
 
 // win1.41 0040c500 mac 100c1900 SetupEdit::SetFocus(bool)
-void __fastcall SetFocus__9SetupEditFb(struct SetupControl* this, const void* edx, bool focus);
+void __fastcall SetFocus__9SetupEditFb(struct SetupControl* this, const void* edx, bool focus) asm("?SetFocus@SetupEdit@@UAEX_N@Z");
 // win1.41 0040c580 mac 1055c840 SetupEdit::Draw(bool, bool)
-void __fastcall Draw__9SetupEditFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__9SetupEditFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected) asm("?Draw@SetupEdit@@UAEX_N0@Z");
 // win1.41 0040c150 mac 103dc010 SetupEdit::Drag(int, int)
-void __fastcall Drag__9SetupEditFii(struct SetupControl* this, const void* edx, int x, int y);
+void __fastcall Drag__9SetupEditFii(struct SetupControl* this, const void* edx, int x, int y) asm("?Drag@SetupEdit@@UAEXHH@Z");
 // win1.41 0040c170 mac 10430180 SetupEdit::MouseDown(int, int, bool)
-void __fastcall MouseDown__9SetupEditFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
+void __fastcall MouseDown__9SetupEditFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3) asm("?MouseDown@SetupEdit@@UAEXHH_N@Z");
 // win1.41 0040c1a0 mac 101178b0 SetupEdit::MouseUp(int, int, bool)
-void __fastcall MouseUp__9SetupEditFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
+void __fastcall MouseUp__9SetupEditFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3) asm("?MouseUp@SetupEdit@@UAEXHH_N@Z");
 // win1.41 0040baf0 mac 103813a0 SetupEdit::KeyDown(int)
-void __fastcall KeyDown__9SetupEditFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__9SetupEditFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod) asm("?KeyDown@SetupEdit@@UAEXHH@Z");
 // win1.41 0040b5f0 mac 103e3630 SetupEdit::Char(int)
-void __fastcall Char__9SetupEditFi(struct SetupControl* this, const void* edx, int character);
+void __fastcall Char__9SetupEditFi(struct SetupControl* this, const void* edx, int character) asm("?Char@SetupEdit@@UAEXH@Z");
 // win1.41 0040c560 mac 1035a3a0 SetupEdit::~SetupEdit(void)
-void __fastcall __dt__9SetupEditFb(struct SetupControl* this, const void* edx, bool param_1);
+void __fastcall __dt__9SetupEditFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupEdit@@QAEXXZ");
 
 #endif /* BW1_DECOMP_SETUP_EDIT_INCLUDED_H */

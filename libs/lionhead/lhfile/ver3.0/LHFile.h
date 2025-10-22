@@ -94,41 +94,41 @@ extern const struct LHFileVftable __vt__6LHFile asm("??_7LHFile@@6B@");
 // Constructors
 
 // win1.41 0042e110 mac 10183650 LHFile::LHFile(void)
-struct LHFile* __fastcall __ct__6LHFileFv(struct LHFile* this);
+struct LHFile* __fastcall __ct__6LHFileFv(struct LHFile* this) asm("??0LHFile@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 0042e160 mac 100cd100 LHFile::ResetData(void)
-uint32_t __fastcall ResetData__6LHFile(struct LHFile* this);
+uint32_t __fastcall ResetData__6LHFile(struct LHFile* this) asm("?ResetData@LHFile@@QAEIXZ");
 // win1.41 007bd390 mac 1061c61c LHFile::SetName(char const *)
-uint32_t __fastcall SetName__6LHFileFPCc(struct LHFile* this, const void* edx, const char* name);
+uint32_t __fastcall SetName__6LHFileFPCc(struct LHFile* this, const void* edx, const char* name) asm("?SetName@LHFile@@QAEIPBD@Z");
 // win1.41 007bd7d0 mac 10168870 LHFile::VerifyFile(void)
-uint32_t __fastcall VerifyFile__6LHFileFv(struct LHFile* this);
+uint32_t __fastcall VerifyFile__6LHFileFv(struct LHFile* this) asm("?VerifyFile@LHFile@@QAEIXZ");
 // win1.41 007bd9d0 mac 10168610 LHFile::AllocSegDataMem(LHSegment *)
-uint32_t __fastcall AllocSegDataMem__6LHFileFP9LHSegment(struct LHFile* this, const void* edx, struct LHSegment* segment);
+uint32_t __fastcall AllocSegDataMem__6LHFileFP9LHSegment(struct LHFile* this, const void* edx, struct LHSegment* segment) asm("?AllocSegDataMem@LHFile@@QAEIPAULHSegment@@@Z");
 // win1.41 007bdb20 mac 101681d0 LHFile::WriteSegmentHeader(char *)
-uint32_t __fastcall WriteSegmentHeader__6LHFileFPc(struct LHFile* this, const void* edx, char* segment_name);
+uint32_t __fastcall WriteSegmentHeader__6LHFileFPc(struct LHFile* this, const void* edx, char* segment_name) asm("?WriteSegmentHeader@LHFile@@QAEIPAD@Z");
 // win1.41 007bdbc0 mac 1061c64c LHFile::Close(void)
-uint32_t __fastcall Close__6LHFileFv(struct LHFile* this);
+uint32_t __fastcall Close__6LHFileFv(struct LHFile* this) asm("?Close@LHFile@@QAEIXZ");
 // win1.41 007bdc60 mac 10005210 LHFile::Lookup(char *)
-struct LHSegmentDesc* __fastcall Lookup__6LHFileFPc(struct LHFile* this, const void* edx, char* segment_name);
+struct LHSegmentDesc* __fastcall Lookup__6LHFileFPc(struct LHFile* this, const void* edx, char* segment_name) asm("?Lookup@LHFile@@QAEPAULHSegmentDesc@@PAD@Z");
 // win1.41 007bdcd0 mac 100050e0 LHFile::SetLHFilePointer(char *, long)
-uint32_t __fastcall SetLHFilePointer__6LHFileFPcl(struct LHFile* this, const void* edx, char* segment_name, int offset);
+uint32_t __fastcall SetLHFilePointer__6LHFileFPcl(struct LHFile* this, const void* edx, char* segment_name, int offset) asm("?SetLHFilePointer@LHFile@@QAEIPADJ@Z");
 // win1.41 007bddd0 mac 10167790 LHFile::GetSegment(char *, LHSegment *, int)
-uint32_t __fastcall GetSegment__6LHFileFPcP9LHSegmenti(struct LHFile* this, const void* edx, char* param_2, struct LHSegment* segment, int param_4);
+uint32_t __fastcall GetSegment__6LHFileFPcP9LHSegmenti(struct LHFile* this, const void* edx, char* param_2, struct LHSegment* segment, int param_4) asm("?GetSegment@LHFile@@QAEIPADPAULHSegment@@H@Z");
 // win1.41 007bdec0 mac 10004fe0 LHFile::OpenSegment(char *)
-uint32_t __fastcall OpenSegment__6LHFileFPc(struct LHFile* this, const void* edx, char* name);
+uint32_t __fastcall OpenSegment__6LHFileFPc(struct LHFile* this, const void* edx, char* name) asm("?OpenSegment@LHFile@@QAEIPAD@Z");
 // win1.41 007bdf50 mac 10004d90 LHFile::CloseSegment(void)
-uint32_t __fastcall CloseSegment__6LHFileFv(struct LHFile* this);
+uint32_t __fastcall CloseSegment__6LHFileFv(struct LHFile* this) asm("?CloseSegment@LHFile@@QAEIXZ");
 // win1.41 007be040 mac 10166bb0 LHFile::GetSegmentData(void* , unsigned long, long)
-uint32_t __fastcall GetSegmentData__6LHFileFPvUll(struct LHFile* this, const void* edx, void* data, size_t data_size, int offset);
+uint32_t __fastcall GetSegmentData__6LHFileFPvUll(struct LHFile* this, const void* edx, void* data, size_t data_size, int offset) asm("?GetSegmentData@LHFile@@QAEIPAXKJ@Z");
 // win1.41 007be120 mac 10004c90 LHFile::ReadData(void* , unsigned long)
-uint32_t __fastcall ReadData__6LHFileFPvUl(struct LHFile* this, const void* edx, void* data, size_t length);
+uint32_t __fastcall ReadData__6LHFileFPvUl(struct LHFile* this, const void* edx, void* data, size_t length) asm("?ReadData@LHFile@@QAEIPAXK@Z");
 
 // Override methods
 
 // win1.41 007bd500 mac 10168d60 LHFile::Open(LH_FILE_MODE)
-uint32_t __fastcall Open__6LHFileF12LH_FILE_MODE(struct LHFile* this, const void* edx, enum LH_FILE_MODE mode);
+uint32_t __fastcall Open__6LHFileF12LH_FILE_MODE(struct LHFile* this, const void* edx, enum LH_FILE_MODE mode) asm("?Open@LHFile@@UAEIW4LH_FILE_MODE@@@Z");
 
 // win1.41 007bc960 mac 101643e0 LHFileLength(char *, unsigned long *)
 uint32_t __cdecl LHFileLength__FPcPUl(const char* filename, size_t* size);

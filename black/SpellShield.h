@@ -47,7 +47,7 @@ extern const struct SpellWithObjectsVftable __vt__11SpellShield asm("??_7SpellSh
 // Non-virtual methods
 
 // win1.41 0072b820 mac 10532f60 SpellShield::GetMagicInfo(void) const
-struct GMagicInfo* __fastcall GetMagicInfo__11SpellShieldCFv(struct SpellShield* this);
+struct GMagicInfo* __fastcall GetMagicInfo__11SpellShieldCFv(struct SpellShield* this) asm("?GetMagicInfo@SpellShield@@QBEPAVGMagicInfo@@XZ");
 
 // Override methods
 

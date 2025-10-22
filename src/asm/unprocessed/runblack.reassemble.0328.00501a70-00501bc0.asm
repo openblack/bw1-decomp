@@ -13,7 +13,7 @@
 .extern _jmp_addr_0x0047d740
 .extern ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ
 .extern _jmp_addr_0x004842e0
-.extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
+.extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
 
 start_0x00501a70_0x00501bc0:
 // Snippet: asm, [0x00501a70, 0x00501b9d)
@@ -38,7 +38,7 @@ start_0x00501a70_0x00501bc0:
                          push              eax                                      // 0x00501ab1    50
                          {disp8} lea       edx, dword ptr [esi + 0x14]              // 0x00501ab2    8d5614
                          push              edx                                      // 0x00501ab5    52
-                         call              _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords                     // 0x00501ab6    e8b5b22400
+                         call              ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z                          // 0x00501ab6    e8b5b22400
                          {disp8} fcomp     dword ptr [esp + 0x0c]                   // 0x00501abb    d85c240c
                          add               esp, 0x08                                // 0x00501abf    83c408
                          fnstsw            ax                                       // 0x00501ac2    dfe0

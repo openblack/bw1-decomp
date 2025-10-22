@@ -58,13 +58,13 @@ static_assert(sizeof(struct Point2DCompare) == 0xc, "Data type is of wrong size"
 // Non-virtual methods
 
 // win1.41 0060f740 mac inlined Point2DCompare<0>::operator=(const Point2DCompare<0>*)
-struct Point2DCompare* __fastcall __as__17Point2DCompare_0_(struct Point2DCompare* this, const void* edx, struct Point2DCompare* other);
+struct Point2DCompare* __fastcall __as__17Point2DCompare_0_(struct Point2DCompare* this, const void* edx, struct Point2DCompare* other) asm("?__as@Point2DCompare_0_@@QAEPAUPoint2DCompare@@XZ");
 // win1.41 0060f720 mac inlined Point2DCompare<1>::operator=(const Point2DCompare<1>*)
-struct Point2DCompare* __fastcall __as__17Point2DCompare_1_(struct Point2DCompare* this, const void* edx, struct Point2DCompare* other);
+struct Point2DCompare* __fastcall __as__17Point2DCompare_1_(struct Point2DCompare* this, const void* edx, struct Point2DCompare* other) asm("?__as@Point2DCompare_1_@@QAEPAUPoint2DCompare@@XZ");
 // win1.41 006101f0 mac inlined Point2DCompare<0>::operator<(const Point2DCompare<0>*)
-bool __fastcall __lt__17Point2DCompare_FRC17Point2DCompare_0_(struct Point2DCompare* this, const void* edx, struct Point2DCompare* other);
+bool __fastcall __lt__17Point2DCompare_FRC17Point2DCompare_0_(struct Point2DCompare* this, const void* edx, struct Point2DCompare* other) asm("?__lt@Point2DCompare_0_@@QBE_NXZ");
 // win1.41 00610180 mac inlined Point2DCompare<1>::operator<(const Point2DCompare<1>*)
-bool __fastcall __lt__17Point2DCompare_FRC17Point2DCompare_1_(struct Point2DCompare* this, const void* edx, struct Point2DCompare* other);
+bool __fastcall __lt__17Point2DCompare_FRC17Point2DCompare_1_(struct Point2DCompare* this, const void* edx, struct Point2DCompare* other) asm("?__lt@Point2DCompare_1_@@QBE_NXZ");
 // win1.41 00610230 mac inlined Point2DCompare<0>::Resolve()
 void __fastcall Resolve__Point2DCompare_0_(struct Point2DCompare* this);
 // win1.41 006101c0 mac inlined Point2DCompare<1>::Resolve()
@@ -84,9 +84,9 @@ static_assert(sizeof(struct IntersectIntervalCircle) == 0x2c, "Data type is of w
 // Non-virtual methods
 
 // win1.41 006169f0 mac inlined IntersectIntervalCircle<0>::Resolve(void)
-void __fastcall Resolve__26IntersectIntervalCircle_0_Fv(struct IntersectIntervalCircle* this);
+void __fastcall Resolve__26IntersectIntervalCircle_0_Fv(struct IntersectIntervalCircle* this) asm("?Resolve@IntersectIntervalCircle_0_@@QAEXXZ");
 // win1.41 00616c70 mac inlined IntersectIntervalCircle<1>::Resolve(void)
-void __fastcall Resolve__26IntersectIntervalCircle_1_Fv(struct IntersectIntervalCircle* this);
+void __fastcall Resolve__26IntersectIntervalCircle_1_Fv(struct IntersectIntervalCircle* this) asm("?Resolve@IntersectIntervalCircle_1_@@QAEXXZ");
 
 struct CircleHugInfo
 {
@@ -100,12 +100,12 @@ static_assert(sizeof(struct CircleHugInfo) == 0x8, "Data type is of wrong size")
 // Constructors
 
 // win1.41 0060a640 mac 103c45d0 CircleHugInfo::CircleHugInfo(void)
-struct CircleHugInfo* __fastcall __ct__13CircleHugInfoFv(struct CircleHugInfo* this);
+struct CircleHugInfo* __fastcall __ct__13CircleHugInfoFv(struct CircleHugInfo* this) asm("??0CircleHugInfo@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 0060a660 mac 103c4590 CircleHugInfo::GetObjectPtr(void)
-struct Q210NewCollide3Obj* __fastcall GetObjectPtr__13CircleHugInfoFv(struct CircleHugInfo* this);
+struct Q210NewCollide3Obj* __fastcall GetObjectPtr__13CircleHugInfoFv(struct CircleHugInfo* this) asm("?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ");
 // win1.41 0060a770 mac 100260e0 CircleHugInfo::SetObjectPtr(NewCollide::Obj*, MobileWallHug*, bool)
 void __fastcall SetObjectPtr__13CircleHugInfoFPQ210NewCollide3ObjP13MobileWallHugb(struct CircleHugInfo* this, const void* edx, struct Q210NewCollide3Obj* param_2, struct MobileWallHug* param_3, bool param_4);
 
@@ -134,11 +134,11 @@ static_assert(sizeof(struct ObjectCircleIterator) == 0x10, "Data type is of wron
 // Non-virtual methods
 
 // win1.41 006159a0 mac 1005f630 ObjectCircleIterator::operator NewCollide::Obj
-struct Q210NewCollide3Obj* __fastcall __opPQ210NewCollide3Obj__20ObjectCircleIteratorFv(struct ObjectCircleIterator* this);
+struct Q210NewCollide3Obj* __fastcall __opPQ210NewCollide3Obj__20ObjectCircleIteratorFv(struct ObjectCircleIterator* this) asm("?__opPQ210NewCollide3Obj@ObjectCircleIterator@@QAEPAUQ210NewCollide3Obj@@XZ");
 // win1.41 0060d0a0 mac 100644a0 ObjectCircleIterator::Init(int, MapCoords const &)
-void __fastcall Init__20ObjectCircleIteratorFiRC9MapCoords(struct ObjectCircleIterator* this, const void* edx, enum ObjectCircleIteratorDirection direction, const struct MapCoords* coords);
+void __fastcall Init__20ObjectCircleIteratorFiRC9MapCoords(struct ObjectCircleIterator* this, const void* edx, enum ObjectCircleIteratorDirection direction, const struct MapCoords* coords) asm("?Init@ObjectCircleIterator@@QAEXHABUMapCoords@@@Z");
 // win1.41 0060d280 mac 100649d0 ObjectCircleIterator::Init(Object *, MapCoords const &)
-void __fastcall Init__20ObjectCircleIteratorFP6ObjectRC9MapCoords(struct ObjectCircleIterator* this, const void* edx, struct Object* obj, const struct MapCoords* coords);
+void __fastcall Init__20ObjectCircleIteratorFP6ObjectRC9MapCoords(struct ObjectCircleIterator* this, const void* edx, struct Object* obj, const struct MapCoords* coords) asm("?Init@ObjectCircleIterator@@QAEXPAVObject@@ABUMapCoords@@@Z");
 
 struct Q210NewCollide3Obj
 {
@@ -178,12 +178,12 @@ static_assert(sizeof(struct NewCollide) == 0x4, "Data type is of wrong size");
 // Constructors
 
 // win1.41 00829390 mac 100d9080 NewCollide::NewCollide(LH3DObject*)
-struct NewCollide* __fastcall __ct__10NewCollideFP10LH3DObject(struct NewCollide* this, const void* edx, struct LH3DObject* obj);
+struct NewCollide* __fastcall __ct__10NewCollideFP10LH3DObject(struct NewCollide* this, const void* edx, struct LH3DObject* obj) asm("??0NewCollide@@QAE@PAULH3DObject@@@Z");
 
 // Non-virtual methods
 
 // win1.41 0082aea0 mac 1061b35c NewCollide::~NewCollide(void)
-void __fastcall __dt__10NewCollideFv(struct NewCollide* this);
+void __fastcall __dt__10NewCollideFv(struct NewCollide* this) asm("??_DNewCollide@@QAEXXZ");
 
 struct NewCollideDescriptor
 {
@@ -202,15 +202,15 @@ static_assert(sizeof(struct NewCollideDescriptor) == 0x24, "Data type is of wron
 // Constructors
 
 // win1.41 0046a860 mac 101c5420 NewCollideDescriptor::NewCollideDescriptor(Object*)
-struct NewCollideDescriptor* __fastcall __ct__20NewCollideDescriptorFP6Object(struct NewCollideDescriptor* this, const void* edx, struct Object* obj);
+struct NewCollideDescriptor* __fastcall __ct__20NewCollideDescriptorFP6Object(struct NewCollideDescriptor* this, const void* edx, struct Object* obj) asm("??0NewCollideDescriptor@@QAE@PAVObject@@@Z");
 
 // Non-virtual methods
 
 // win1.41 0046aaf0 mac 101c5310 NewCollideDescriptor::~NewCollideDescriptor(void)
-void __fastcall __dt__20NewCollideDescriptorFv(struct NewCollideDescriptor* this);
+void __fastcall __dt__20NewCollideDescriptorFv(struct NewCollideDescriptor* this) asm("??_DNewCollideDescriptor@@QAEXXZ");
 // win1.41 0046ab10 mac 101c4f70 NewCollideDescriptor::Init(Game3DObject*)
-void __fastcall Init__20NewCollideDescriptorFP12Game3DObject(struct NewCollideDescriptor* this, const void* edx, struct Game3DObject* obj);
+void __fastcall Init__20NewCollideDescriptorFP12Game3DObject(struct NewCollideDescriptor* this, const void* edx, struct Game3DObject* obj) asm("?Init@NewCollideDescriptor@@QAEXPAUGame3DObject@@@Z");
 // win1.41 0046ad80 mac 101c4db0 NewCollideDescriptor::GetNext(void)
-struct MapCell* __fastcall GetNext__20NewCollideDescriptorFv(struct NewCollideDescriptor* this);
+struct MapCell* __fastcall GetNext__20NewCollideDescriptorFv(struct NewCollideDescriptor* this) asm("?GetNext@NewCollideDescriptor@@QAEPAUMapCell@@XZ");
 
 #endif /* BW1_DECOMP_COLLIDE_INCLUDED_H */

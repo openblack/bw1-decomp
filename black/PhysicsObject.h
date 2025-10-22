@@ -46,7 +46,7 @@ extern const struct BaseVftable __vt__13PhysicsObject asm("??_7PhysicsObject@@6B
 // Constructors
 
 // win1.41 00644330 mac 10113e20 PhysicsObject::PhysicsObject(void)
-struct PhysicsObject* __fastcall __ct__13PhysicsObjectFv(struct PhysicsObject* this);
+struct PhysicsObject* __fastcall __ct__13PhysicsObjectFv(struct PhysicsObject* this) asm("??0PhysicsObject@@QAE@XZ");
 
 // Override methods
 

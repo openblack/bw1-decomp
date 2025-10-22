@@ -100,10 +100,10 @@ static_assert(sizeof(struct FrontEnd) == 0x500, "Data type is of wrong size");
 // Static methods
 
 // win1.41 0053b4d0 mac 105c4d10 FrontEnd::Init(void)
-void __cdecl Init__8FrontEndFv(void);
+void __cdecl Init__8FrontEndFv(void) asm("?Init@FrontEnd@@SAXXZ");
 // win1.41 0053c450 mac 105c47d0 FrontEnd::SetCursorOn(void)
-void __cdecl SetCursorOn__8FrontEndFv(void);
+void __cdecl SetCursorOn__8FrontEndFv(void) asm("?SetCursorOn@FrontEnd@@SAXXZ");
 // win1.41 00544f90 mac 105b9c50 FrontEnd::JustDoABox(DialogBoxBase *)
-void __cdecl JustDoABox__8FrontEndFP13DialogBoxBase(struct DialogBoxBase* this);
+void __cdecl JustDoABox__8FrontEndFP13DialogBoxBase(struct DialogBoxBase* this) asm("?JustDoABox@FrontEnd@@SAXPAVDialogBoxBase@@@Z");
 
 #endif /* BW1_DECOMP_FRONT_END_INCLUDED_H */

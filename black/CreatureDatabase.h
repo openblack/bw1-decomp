@@ -32,7 +32,7 @@ extern const struct MultiplayerDatabaseVftable __vt__16CreatureDatabase asm("??_
 // Constructors
 
 // win1.41 006336b0 mac 10109d30 CreatureDatabase::CreatureDatabase(void)
-struct CreatureDatabase* __fastcall __ct__16CreatureDatabaseFv(struct CreatureDatabase* this);
+struct CreatureDatabase* __fastcall __ct__16CreatureDatabaseFv(struct CreatureDatabase* this) asm("??0CreatureDatabase@@QAE@XZ");
 
 // Override methods
 

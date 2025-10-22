@@ -71,7 +71,7 @@ extern const struct BaseVftable __vt__23GVillagerStateTableInfo asm("??_7GVillag
 // Static methods
 
 // win1.41 inlined mac 1004aff0 GVillagerStateTableInfo::GetInfo(void)
-struct GVillagerStateTableInfo* __cdecl GetInfo__23GVillagerStateTableInfoFv(void);
+struct GVillagerStateTableInfo* __cdecl GetInfo__23GVillagerStateTableInfoFv(void) asm("?GetInfo@GVillagerStateTableInfo@@SAPAV1@XZ");
 
 // Override methods
 

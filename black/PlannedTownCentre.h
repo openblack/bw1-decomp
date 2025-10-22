@@ -41,12 +41,12 @@ extern const struct PlannedMultiMapFixedVftable __vt__17PlannedTownCentre asm("?
 // Static methods
 
 // win1.41 007444d0 mac 1055a160 PlannedTownCentre::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float)
-struct PlannedTownCentre* __cdecl Create__17PlannedTownCentreFRC9MapCoordsPC10GAbodeInfoP4Townff(const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float param_4, float param_5);
+struct PlannedTownCentre* __cdecl Create__17PlannedTownCentreFRC9MapCoordsPC10GAbodeInfoP4Townff(const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float param_4, float param_5) asm("?Create@PlannedTownCentre@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MM@Z");
 
 // Constructors
 
 // win1.41 00744460 mac 1055a270 PlannedTownCentre::PlannedTownCentre(TownCentre*)
-struct PlannedTownCentre* __fastcall __ct__17PlannedTownCentreFP10TownCentre(struct PlannedTownCentre* this, const void* edx, const struct TownCentre* town_centre);
+struct PlannedTownCentre* __fastcall __ct__17PlannedTownCentreFP10TownCentre(struct PlannedTownCentre* this, const void* edx, const struct TownCentre* town_centre) asm("??0PlannedTownCentre@@QAE@PAVTownCentre@@@Z");
 
 // Override methods
 

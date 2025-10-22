@@ -26,9 +26,9 @@
 .extern _jmp_addr_0x0070d0f0
 .extern _jmp_addr_0x0070d220
 .extern _jmp_addr_0x007a1400
-.extern _AddToInternalList__5LHDLLFP5LHDLL
+.extern ?AddToInternalList@LHDLL@@SAPAV1@PAV1@@Z
 .extern @__ct__5LHDLLFPCc@12
-.extern @__dt__5LHDLLFv@4
+.extern ??_DLHDLL@@QAEXXZ
 .extern  ??3@YAXPAX@Z
 .extern _atexit
 .extern ___RTDynamicCast
@@ -39,14 +39,14 @@
 .globl @ResolveLoad__19ScriptCreatureCurseFP8Creature@12
 .globl ?ScriptErrorMessage@GScript@@QAEXPAD@Z
 .globl ?ScriptWarningMessage@GScript@@QAEXPAD@Z
-.globl _Create__9ScriptDLLFPCc
+.globl ?Create@ScriptDLL@@SAPAV1@PBD@Z
 .globl _jmp_addr_0x006f67f0
 .globl _jmp_addr_0x006f6840
 .globl _jmp_addr_0x006f6860
 .globl _jmp_addr_0x006f6880
-.globl @AutoStart__9ScriptDLLFv@4
+.globl ?AutoStart@ScriptDLL@@QAEXXZ
 .globl ?StopTasksOfType@ScriptDLL@@QAEXW4VMScriptType@@@Z
-.globl @StopAllTasks__9ScriptDLLFv@4
+.globl ?StopAllTasks@ScriptDLL@@QAEXXZ
 .globl @LoadBinary__9ScriptDLLFPCc@12
 .globl _jmp_addr_0x006f6960
 .globl _jmp_addr_0x006f6980
@@ -1808,7 +1808,8 @@ _jmp_addr_0x006f6310:    {disp32} mov       dword ptr [data_bytes + 0x3d0050], 0
                          nop                                                              // 0x006f631d    90
                          nop                                                              // 0x006f631e    90
                          nop                                                              // 0x006f631f    90
-_Create__9ScriptDLLFPCc: push               esi                                           // 0x006f6320    56
+?Create@ScriptDLL@@SAPAV1@PBD@Z:
+                         push               esi                                           // 0x006f6320    56
                          push               edi                                           // 0x006f6321    57
                          push               0x000000dc                                    // 0x006f6322    68dc000000
                          call               ??2@YAPAXI@Z                                  // 0x006f6327    e8c2010d00
@@ -1825,7 +1826,7 @@ _Create__9ScriptDLLFPCc: push               esi                                 
                          {disp8} jmp        _jmp_addr_0x006f6352                          // 0x006f634e    eb02
 _jmp_addr_0x006f6350:    xor.s              esi, esi                                      // 0x006f6350    33f6
 _jmp_addr_0x006f6352:    push               esi                                           // 0x006f6352    56
-                         call               _AddToInternalList__5LHDLLFP5LHDLL            // 0x006f6353    e8d86e0b00
+                         call               ?AddToInternalList@LHDLL@@SAPAV1@PAV1@@Z      // 0x006f6353    e8d86e0b00
                          mov.s              edi, eax                                      // 0x006f6358    8bf8
                          add                esp, 0x04                                     // 0x006f635a    83c404
                          cmp.s              edi, esi                                      // 0x006f635d    3bfe
@@ -1833,7 +1834,7 @@ _jmp_addr_0x006f6352:    push               esi                                 
                          test               esi, esi                                      // 0x006f6361    85f6
                          {disp8} je         _jmp_addr_0x006f6375                          // 0x006f6363    7410
                          mov.s              ecx, esi                                      // 0x006f6365    8bce
-                         call               @__dt__5LHDLLFv@4                             // 0x006f6367    e854710b00
+                         call               ??_DLHDLL@@QAEXXZ                             // 0x006f6367    e854710b00
                          push               esi                                           // 0x006f636c    56
                          call               ??3@YAXPAX@Z                                  // 0x006f636d    e8268b0b00
                          add                esp, 0x04                                     // 0x006f6372    83c404
@@ -2382,7 +2383,8 @@ _jmp_addr_0x006f6880:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x006f68bd    90
                          nop                                                              // 0x006f68be    90
                          nop                                                              // 0x006f68bf    90
-@AutoStart__9ScriptDLLFv@4:    {disp8} mov        eax, dword ptr [ecx + 0x0c]                   // 0x006f68c0    8b410c
+?AutoStart@ScriptDLL@@QAEXXZ:
+                               {disp8} mov        eax, dword ptr [ecx + 0x0c]                   // 0x006f68c0    8b410c
                          push               eax                                           // 0x006f68c3    50
                          call               dword ptr [ecx + 0x40]                        // 0x006f68c4    ff5140
                          add                esp, 0x04                                     // 0x006f68c7    83c404
@@ -2435,7 +2437,8 @@ _jmp_addr_0x006f6880:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x006f690d    90
                          nop                                                              // 0x006f690e    90
                          nop                                                              // 0x006f690f    90
-@StopAllTasks__9ScriptDLLFv@4:    {disp8} mov        eax, dword ptr [ecx + 0x0c]                   // 0x006f6910    8b410c
+?StopAllTasks@ScriptDLL@@QAEXXZ:
+                                  {disp8} mov        eax, dword ptr [ecx + 0x0c]                   // 0x006f6910    8b410c
                          push               eax                                           // 0x006f6913    50
                          call               dword ptr [ecx + 0x48]                        // 0x006f6914    ff5148
                          pop                ecx                                           // 0x006f6917    59

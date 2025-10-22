@@ -21,10 +21,10 @@
 .extern _jmp_addr_0x00428660
 .extern _jmp_addr_0x00428680
 .extern _jmp_addr_0x00428690
-.extern @__ct__13DialogBoxBaseFv@4
+.extern ??0DialogBoxBase@@QAE@XZ
 .extern _jmp_addr_0x005133c0
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
 .extern _HideAll__13DialogBoxBaseFv@0
 .extern _jmp_addr_0x00513eb0
@@ -38,7 +38,7 @@
 .extern _wcscpy
 .extern ___nw__FUl
 
-.globl @__ct__20MiniDialogBoxOptions@4
+.globl ??0MiniDialogBoxOptions@@QAE@XZ
 .globl ?Init@MiniDialogBoxOptions@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
 .globl ?Destroy@MiniDialogBoxOptions@@UAEXXZ
 .globl ?InitControls@MiniDialogBoxOptions@@UAEXXZ
@@ -46,9 +46,9 @@
 
 start_0x00514f20_0x00515960:
 // Snippet: asm, [0x00514f20, 0x0051593a)
-@__ct__20MiniDialogBoxOptions@4:    push              esi                                           // 0x00514f20    56
+??0MiniDialogBoxOptions@@QAE@XZ:    push              esi                                           // 0x00514f20    56
                          mov.s             esi, ecx                                      // 0x00514f21    8bf1
-                         call              @__ct__13DialogBoxBaseFv@4                    // 0x00514f23    e878e4ffff
+                         call              ??0DialogBoxBase@@QAE@XZ                      // 0x00514f23    e878e4ffff
                          mov               dword ptr [esi], 0x008d866c                   // 0x00514f28    c7066c868d00
                          mov.s             eax, esi                                      // 0x00514f2e    8bc6
                          pop               esi                                           // 0x00514f30    5e
@@ -610,7 +610,7 @@ _jmp_addr_0x0051567c:    ret                                                    
                          nop                                                             // 0x0051567e    90
                          nop                                                             // 0x0051567f    90
 ?Destroy@MiniDialogBoxOptions@@UAEXXZ:
-                         {disp32} jmp      @Destroy__13DialogBoxBaseFv@4                 // 0x00515680    e90bdfffff
+                         {disp32} jmp      ?Destroy@DialogBoxBase@@UAEXXZ                // 0x00515680    e90bdfffff
                          nop                                                             // 0x00515685    90
                          nop                                                             // 0x00515686    90
                          nop                                                             // 0x00515687    90

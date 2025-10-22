@@ -28,7 +28,7 @@
 .extern _jmp_addr_0x0046f440
 .extern _jmp_addr_0x0046f460
 .extern _jmp_addr_0x0046f480
-.extern @IsKeyBeingPressed__14BindableActionFv@4
+.extern ?IsKeyBeingPressed@BindableAction@@QAE_NXZ
 .extern _jmp_addr_0x0046f500
 .extern _jmp_addr_0x0046f590
 .extern _jmp_addr_0x0046f5f0
@@ -48,7 +48,7 @@
 .globl @GetText__10ControlMapFUlPw@16
 .globl _jmp_addr_0x00470a00
 .globl _jmp_addr_0x00470a60
-.globl @ProcessActionsPerformed__10ControlMapFv@4
+.globl ?ProcessActionsPerformed@ControlMap@@QAEXXZ
 .globl _jmp_addr_0x00470af0
 .globl _jmp_addr_0x00470b30
 .globl _jmp_addr_0x00470de0
@@ -1329,14 +1329,15 @@ _jmp_addr_0x00470a90:    push               esi                                 
                          nop                                                              // 0x00470aad    90
                          nop                                                              // 0x00470aae    90
                          nop                                                              // 0x00470aaf    90
-@ProcessActionsPerformed__10ControlMapFv@4:    push               ebx                                           // 0x00470ab0    53
+?ProcessActionsPerformed@ControlMap@@QAEXXZ:
+                                               push               ebx                                           // 0x00470ab0    53
                          push               esi                                           // 0x00470ab1    56
                          push               edi                                           // 0x00470ab2    57
                          mov.s              edi, ecx                                      // 0x00470ab3    8bf9
                          {disp32} lea       esi, dword ptr [edi + 0x0000648c]             // 0x00470ab5    8db78c640000
                          mov                ebx, 0x00000021                               // 0x00470abb    bb21000000
 _jmp_addr_0x00470ac0:    mov.s              ecx, edi                                      // 0x00470ac0    8bcf
-                         call               @IsKeyBeingPressed__14BindableActionFv@4      // 0x00470ac2    e8f9e9ffff
+                         call               ?IsKeyBeingPressed@BindableAction@@QAE_NXZ    // 0x00470ac2    e8f9e9ffff
                          test               eax, eax                                      // 0x00470ac7    85c0
                          {disp8} jne        _jmp_addr_0x00470ada                          // 0x00470ac9    750f
                          mov.s              ecx, edi                                      // 0x00470acb    8bcf
@@ -1443,7 +1444,7 @@ _jmp_addr_0x00470bd1:    {disp32} lea       ebx, dword ptr [edi + 0x00000618]   
                          add                esp, 0x10                                     // 0x00470bff    83c410
                          ret                                                              // 0x00470c02    c3
 _jmp_addr_0x00470c03:    mov.s              ecx, ebx                                      // 0x00470c03    8bcb
-                         call               @IsKeyBeingPressed__14BindableActionFv@4      // 0x00470c05    e8b6e8ffff
+                         call               ?IsKeyBeingPressed@BindableAction@@QAE_NXZ    // 0x00470c05    e8b6e8ffff
                          test               eax, eax                                      // 0x00470c0a    85c0
                          {disp32} je        _jmp_addr_0x00470db9                          // 0x00470c0c    0f84a7010000
                          cmp                dword ptr [edi + 0x00006510], ebp             // 0x00470c12    39af10650000
@@ -1619,7 +1620,7 @@ _jmp_addr_0x00470e20:    push               esi                                 
 _jmp_addr_0x00470e57:    test               eax, eax                                      // 0x00470e57    85c0
                          {disp8} je         _jmp_addr_0x00470e77                          // 0x00470e59    741c
                          {disp32} lea       ecx, dword ptr [esi + 0x00000618]             // 0x00470e5b    8d8e18060000
-                         call               @IsKeyBeingPressed__14BindableActionFv@4      // 0x00470e61    e85ae6ffff
+                         call               ?IsKeyBeingPressed@BindableAction@@QAE_NXZ    // 0x00470e61    e85ae6ffff
                          test               eax, eax                                      // 0x00470e66    85c0
                          {disp8} jne        _jmp_addr_0x00470e77                          // 0x00470e68    750d
                          {disp32} mov       dword ptr [esi + 0x00006510], eax             // 0x00470e6a    898610650000
@@ -1688,7 +1689,7 @@ _jmp_addr_0x00470f21:    {disp32} lea       ebx, dword ptr [edi + 0x0000030c]   
                          add                esp, 0x10                                     // 0x00470f4f    83c410
                          ret                                                              // 0x00470f52    c3
 _jmp_addr_0x00470f53:    mov.s              ecx, ebx                                      // 0x00470f53    8bcb
-                         call               @IsKeyBeingPressed__14BindableActionFv@4      // 0x00470f55    e866e5ffff
+                         call               ?IsKeyBeingPressed@BindableAction@@QAE_NXZ    // 0x00470f55    e866e5ffff
                          test               eax, eax                                      // 0x00470f5a    85c0
                          {disp32} je        _jmp_addr_0x00471109                          // 0x00470f5c    0f84a7010000
                          cmp                dword ptr [edi + 0x00006514], ebp             // 0x00470f62    39af14650000
@@ -1864,7 +1865,7 @@ _jmp_addr_0x00471170:    push               esi                                 
 _jmp_addr_0x004711a7:    test               eax, eax                                      // 0x004711a7    85c0
                          {disp8} je         _jmp_addr_0x004711c7                          // 0x004711a9    741c
                          {disp32} lea       ecx, dword ptr [esi + 0x0000030c]             // 0x004711ab    8d8e0c030000
-                         call               @IsKeyBeingPressed__14BindableActionFv@4      // 0x004711b1    e80ae3ffff
+                         call               ?IsKeyBeingPressed@BindableAction@@QAE_NXZ    // 0x004711b1    e80ae3ffff
                          test               eax, eax                                      // 0x004711b6    85c0
                          {disp8} jne        _jmp_addr_0x004711c7                          // 0x004711b8    750d
                          {disp32} mov       dword ptr [esi + 0x00006514], eax             // 0x004711ba    898614650000

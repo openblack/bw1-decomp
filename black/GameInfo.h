@@ -54,26 +54,26 @@ extern const struct BaseVftable __vt__9GGameInfo asm("??_7GGameInfo@@6B@");
 // Constructors
 
 // win1.41 00557730 mac 102ff6c0 GGameInfo::GGameInfo(void)
-struct GGameInfo* __fastcall __ct__9GGameInfoFv(struct GGameInfo* this);
+struct GGameInfo* __fastcall __ct__9GGameInfoFv(struct GGameInfo* this) asm("??0GGameInfo@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00557620 mac 102ff910 GGameInfo::SetVisualTimeCycle(float, float, float)
-void __fastcall SetVisualTimeCycle__9GGameInfoFfff(struct GGameInfo* this, const void* edx, float param_1, float param_2, float param_3);
+void __fastcall SetVisualTimeCycle__9GGameInfoFfff(struct GGameInfo* this, const void* edx, float param_1, float param_2, float param_3) asm("?SetVisualTimeCycle@GGameInfo@@QAEXMMM@Z");
 // win1.41 005577d0 mac 102ff520 GGameInfo::SetStartDate(long, long, long)
-void __fastcall SetStartDate__9GGameInfoFlll(struct GGameInfo* this, const void* edx, int year, int month, int day);
+void __fastcall SetStartDate__9GGameInfoFlll(struct GGameInfo* this, const void* edx, int year, int month, int day) asm("?SetStartDate@GGameInfo@@QAEXJJJ@Z");
 // win1.41 005577f0 mac 102ff380 GGameInfo::SetStartTime(long, long, long)
-void __fastcall SetStartTime__9GGameInfoFlll(struct GGameInfo* this, const void* edx, int hour, int minute, int second);
+void __fastcall SetStartTime__9GGameInfoFlll(struct GGameInfo* this, const void* edx, int hour, int minute, int second) asm("?SetStartTime@GGameInfo@@QAEXJJJ@Z");
 // win1.41 00557940 mac 100789f0 GGameInfo::GetDaysFromStart(void)
-float __fastcall GetDaysFromStart__9GGameInfoFv(struct GGameInfo* this);
+float __fastcall GetDaysFromStart__9GGameInfoFv(struct GGameInfo* this) asm("?GetDaysFromStart@GGameInfo@@QAEMXZ");
 // win1.41 00557950 mac 1008c390 GGameInfo::GetYear(void)
-float __fastcall GetYear__9GGameInfoFv(struct GGameInfo* this);
+float __fastcall GetYear__9GGameInfoFv(struct GGameInfo* this) asm("?GetYear@GGameInfo@@QAEMXZ");
 // win1.41 00557a80 mac 10099e70 GGameInfo::GetSeason(void)
 uint32_t __fastcall GetSeason__9GGameInfoFv(struct GGameInfo* this) asm("?GetSeason@GGameInfo@@QAEIXZ");
 // win1.41 00557b60 mac 1008c3f0 GGameInfo::Process(void)
-void __fastcall Process__9GGameInfoFv(struct GGameInfo* this);
+void __fastcall Process__9GGameInfoFv(struct GGameInfo* this) asm("?Process@GGameInfo@@QAEXXZ");
 // win1.41 00557bb0 mac 102fecf0 GGameInfo::SetVisualTimeCycleFromMapEditor(float, float, float)
-void __fastcall SetVisualTimeCycleFromMapEditor__9GGameInfoFfff(struct GGameInfo* this, const void* edx, float param_1, float param_2, float param_3);
+void __fastcall SetVisualTimeCycleFromMapEditor__9GGameInfoFfff(struct GGameInfo* this, const void* edx, float param_1, float param_2, float param_3) asm("?SetVisualTimeCycleFromMapEditor@GGameInfo@@QAEXMMM@Z");
 
 // Override methods
 

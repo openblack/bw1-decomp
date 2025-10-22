@@ -13,11 +13,11 @@ struct LHScriptPramX_c_;
 struct MapCoords;
 
 // win1.41 00715180 mac 105091d0 GSetup::FeatureMapCommandProcess<c>(long, LHScriptPramX<c> *)
-uint32_t __cdecl FeatureMapCommandProcess__6GSetupFlP16LHScriptPramX_c_(uint32_t op, struct LHScriptPramX_c_* script_param);
+uint32_t __cdecl FeatureMapCommandProcess__6GSetupFlP16LHScriptPramX_c_(uint32_t op, struct LHScriptPramX_c_* script_param) asm("?FeatureMapCommandProcess@GSetup@@SAIJPAULHScriptPramX_c_@@@Z");
 // win1.41 007180b0 mac 10508ff0 GSetup::LoadMapFeatures(char *)
-void __cdecl LoadMapFeatures__6GSetupFPc(char* map_path);
+void __cdecl LoadMapFeatures__6GSetupFPc(char* map_path) asm("?LoadMapFeatures@GSetup@@SAXPAD@Z");
 // win1.41 00718250 mac 10508f20 GSetup::GetScriptPos(char *)
-struct MapCoords* __cdecl GetScriptPos__6GSetupFPc(struct MapCoords* coords, const char* str);
+struct MapCoords* __cdecl GetScriptPos__6GSetupFPc(struct MapCoords* coords, const char* str) asm("?GetScriptPos@GSetup@@SAPAUMapCoords@@PAD@Z");
 // win1.41 00715130 mac 1050c350 GSetup::GetCommandAsText(SCRIPT_FEATURE_COMMANDS)
 char* __cdecl GetCommandAsText__6GSetupF23SCRIPT_FEATURE_COMMANDS(struct GSetup* this, enum SCRIPT_FEATURE_COMMANDS param_1) asm("?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z");
 // win1.41 00719610 mac 10507c70 GSetup::WriteToFile(void *, LHOSFile &, void *, unsigned long)

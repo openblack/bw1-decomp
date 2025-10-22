@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @GetCreature3D__8CreatureFv@4
+.extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
 .extern _jmp_addr_0x0048cbb0
 .extern _jmp_addr_0x0048e260
 .extern _jmp_addr_0x0048f280
@@ -19,7 +19,7 @@
 .extern _jmp_addr_0x00591010
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x0063ed40
-.extern @GetPlayerNumber__7GPlayerCFv@4
+.extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern _jmp_addr_0x0064a9f0
 .extern _jmp_addr_0x0078ea20
 .extern _fprintf
@@ -32,9 +32,9 @@
 .extern _jmp_addr_0x007de090
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x00814fd0
-.extern @UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint@8
+.extern ?UpdateCamera@LH3DTech@@SAXABULHPoint@@0@Z
 .extern _jmp_addr_0x0082ee70
-.extern _StartFrame__10LH3DRenderFv
+.extern ?StartFrame@LH3DRender@@SAXXZ
 .extern _jmp_addr_0x0082f460
 .extern _jmp_addr_0x00848350
 .extern _jmp_addr_0x0086a1b0
@@ -188,10 +188,10 @@ _jmp_addr_0x00640033:    push              0x4                                  
                          push              eax                                           // 0x0064010e    50
                          call              dword ptr [edx + 0x28]                        // 0x0064010f    ff5228
                          call              _jmp_addr_0x0082ee70                          // 0x00640112    e859ed1e00
-                         call              _StartFrame__10LH3DRenderFv                   // 0x00640117    e8c4ef1e00
+                         call              ?StartFrame@LH3DRender@@SAXXZ                 // 0x00640117    e8c4ef1e00
                          {disp8} lea       edx, dword ptr [esp + 0x70]                   // 0x0064011c    8d542470
                          {disp8} lea       ecx, dword ptr [esp + 0x64]                   // 0x00640120    8d4c2464
-                         call              @UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint@8                          // 0x00640124    e8f7971d00
+                         call              ?UpdateCamera@LH3DTech@@SAXABULHPoint@@0@Z                               // 0x00640124    e8f7971d00
 _jmp_addr_0x00640129:    push              ebp                                           // 0x00640129    55
                          xor.s             eax, eax                                      // 0x0064012a    33c0
                          mov               ecx, 0x0000020a                               // 0x0064012c    b90a020000
@@ -229,7 +229,7 @@ _jmp_addr_0x00640129:    push              ebp                                  
                          {disp32} mov      ecx, dword ptr [eax + 0x00000a4c]             // 0x006401a8    8b884c0a0000
                          test              ecx, ecx                                      // 0x006401ae    85c9
                          {disp32} je       _jmp_addr_0x00640390                          // 0x006401b0    0f84da010000
-                         call              @GetCreature3D__8CreatureFv@4                 // 0x006401b6    e89576e3ff
+                         call              ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ                 // 0x006401b6    e89576e3ff
                          mov.s             esi, eax                                      // 0x006401bb    8bf0
                          mov               eax, dword ptr [esi]                          // 0x006401bd    8b06
                          mov.s             ecx, esi                                      // 0x006401bf    8bce
@@ -640,7 +640,7 @@ _jmp_addr_0x0064065f:    push              ebp                                  
                          lea               eax, dword ptr [eax + edx * 0x2]              // 0x00640692    8d0450
                          shl               eax, 5                                        // 0x00640695    c1e005
                          {disp8} lea       ecx, dword ptr [eax + ecx * 0x1 + 0x18]       // 0x00640698    8d4c0818
-                         call              @GetPlayerNumber__7GPlayerCFv@4               // 0x0064069c    e8efa00000
+                         call              ?GetPlayerNumber@GPlayer@@QBEEXZ              // 0x0064069c    e8efa00000
                          push              esi                                           // 0x006406a1    56
                          push              0x4                                           // 0x006406a2    6a04
                          {disp8} lea       ecx, dword ptr [esp + 0x18]                   // 0x006406a4    8d4c2418
@@ -788,7 +788,7 @@ _jmp_addr_0x00640848:    {disp32} mov      ecx, dword ptr [_game]               
                          {disp32} je       _jmp_addr_0x00640b65                          // 0x00640874    0f84eb020000
                          cmp               dword ptr [ebx + 0x000008e0], ebp             // 0x0064087a    39abe0080000
                          {disp32} jne      _jmp_addr_0x00640b65                          // 0x00640880    0f85df020000
-                         call              @GetCreature3D__8CreatureFv@4                 // 0x00640886    e8c56fe3ff
+                         call              ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ                 // 0x00640886    e8c56fe3ff
                          mov.s             ecx, ebx                                      // 0x0064088b    8bcb
                          mov.s             edi, eax                                      // 0x0064088d    8bf8
                          call              _jmp_addr_0x0064a9f0                          // 0x0064088f    e85ca10000

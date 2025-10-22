@@ -203,7 +203,7 @@ extern const struct GameThingVftable __vt__5GGame asm("??_7GGame@@6B@");
 // Static methods
 
 // win1.41 0054cbd0 mac 101584c0 GGame::DoYesNoSkipTutorialRequestersIfNecessary(void)
-void __cdecl DoYesNoSkipTutorialRequestersIfNecessary__5GGameFv(void);
+void __cdecl DoYesNoSkipTutorialRequestersIfNecessary__5GGameFv(void) asm("?DoYesNoSkipTutorialRequestersIfNecessary@GGame@@SAXXZ");
 // win1.41 0054ff80 mac 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void *)
 void __stdcall KeyHandler__5GGameFUs6LH_KEYUsUsPv(struct GGame* this, unsigned short param_1, enum LH_KEY param_2, unsigned short param_3, unsigned short param_4, void* param_5) asm("?KeyHandler@GGame@@QAEXGW4LH_KEY@@GGPAX@Z");
 // win1.41 0054ffe0 mac 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)

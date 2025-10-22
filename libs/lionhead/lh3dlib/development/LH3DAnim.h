@@ -68,7 +68,7 @@ static_assert(sizeof(struct CFrame) == 0x8, "Data type is of wrong size");
 // Non-virtual methods
 
 // win1.41 00860c30 mac 100dc860 CFrame::ReadBinary(LHFile *, long, long)
-void __fastcall ReadBinary__6CFrameFP6LHFilell(struct CFrame* this, const void* edx, struct LHFile* file, long param_3, long param_4);
+void __fastcall ReadBinary__6CFrameFP6LHFilell(struct CFrame* this, const void* edx, struct LHFile* file, long param_3, long param_4) asm("?ReadBinary@CFrame@@QAEXPAVLHFile@@JJ@Z");
 
 struct CAnim
 {
@@ -88,20 +88,20 @@ static_assert(sizeof(struct CAnim) == 0x38, "Data type is of wrong size");
 // Constructors
 
 // win1.41 0085e480 mac 1061ff4c CAnim::CAnim(void)
-struct CAnim* __fastcall __ct__5CAnimFv(struct CAnim* this);
+struct CAnim* __fastcall __ct__5CAnimFv(struct CAnim* this) asm("??0CAnim@@QAE@XZ");
 // win1.41 0085e4c0 mac 1061bb54 CAnim::CAnim(CAnim *)
-struct CAnim* __fastcall __ct__5CAnimFP5CAnim(struct CAnim* this, const void* edx, struct CAnim* param_2);
+struct CAnim* __fastcall __ct__5CAnimFP5CAnim(struct CAnim* this, const void* edx, struct CAnim* param_2) asm("??0CAnim@@QAE@PAV0@@Z");
 // win1.41 0085ef40 mac 1061e2fc CAnim::CAnim(CAnim *, CFrame *, CAnim *, CFrame *, float, CAnim *, CFrame *, float)
-struct CAnim* __fastcall __ct__5CAnimFP5CAnimP6CFrameP5CAnimP6CFramefP5CAnimP6CFramef(struct CAnim* this, const void* edx, struct CAnim* param_2, struct CFrame* param_3, struct CAnim* param_4, struct CFrame* param_5, float param_6, struct CAnim* param_7, struct CFrame* param_8, float param_9);
+struct CAnim* __fastcall __ct__5CAnimFP5CAnimP6CFrameP5CAnimP6CFramefP5CAnimP6CFramef(struct CAnim* this, const void* edx, struct CAnim* param_2, struct CFrame* param_3, struct CAnim* param_4, struct CFrame* param_5, float param_6, struct CAnim* param_7, struct CFrame* param_8, float param_9) asm("??0CAnim@@QAE@PAV0@PAUCFrame@@01M01M@Z");
 
 // Non-virtual methods
 
 // win1.41 0085e4a0 mac 1061b7c4 CAnim::~CAnim(void)
-void __fastcall __dt__5CAnimFv(struct CAnim* this);
+void __fastcall __dt__5CAnimFv(struct CAnim* this) asm("??_DCAnim@@QAEXXZ");
 // win1.41 00861a00 mac 1061fa9c CAnim::AdjustForNewBasedOnStand(CAnim *, CAnim *)
-void __fastcall AdjustForNewBasedOnStand__5CAnimFP5CAnimP5CAnim(struct CAnim* this, const void* edx, struct CAnim* param_2, struct CAnim* param_3);
+void __fastcall AdjustForNewBasedOnStand__5CAnimFP5CAnimP5CAnim(struct CAnim* this, const void* edx, struct CAnim* param_2, struct CAnim* param_3) asm("?AdjustForNewBasedOnStand@CAnim@@QAEXPAV1@0@Z");
 // win1.41 00860860 mac 106200cc CAnim::ReadBinary(LHFile *)
-void __fastcall ReadBinary__5CAnimFP6LHFile(struct CAnim* this, const void* edx, struct LHFile* file);
+void __fastcall ReadBinary__5CAnimFP6LHFile(struct CAnim* this, const void* edx, struct LHFile* file) asm("?ReadBinary@CAnim@@QAEXPAVLHFile@@@Z");
 
 struct LH3DAnimSet
 {
@@ -114,12 +114,12 @@ static_assert(sizeof(struct LH3DAnimSet) == 0xae0, "Data type is of wrong size")
 // Constructors
 
 // win1.41 006170e0 mac 10109260 LH3DAnimSet::LH3DAnimSet(void)
-struct LH3DAnimSet* __fastcall __ct__11LH3DAnimSetFv(struct LH3DAnimSet* this);
+struct LH3DAnimSet* __fastcall __ct__11LH3DAnimSetFv(struct LH3DAnimSet* this) asm("??0LH3DAnimSet@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00619b80 mac 101059e0 LH3DAnimSet::ReadBinaryNew
-uint32_t __fastcall ReadBinaryNew__11LH3DAnimSetFP6LHFileP8AnimInfoP8AnimInfo(struct LH3DAnimSet* this, const void* edx, struct LHFile* param_2, struct AnimInfo* param_3, struct AnimInfo* param_4);
+uint32_t __fastcall ReadBinaryNew__11LH3DAnimSetFP6LHFileP8AnimInfoP8AnimInfo(struct LH3DAnimSet* this, const void* edx, struct LHFile* param_2, struct AnimInfo* param_3, struct AnimInfo* param_4) asm("?ReadBinaryNew@LH3DAnimSet@@QAEIPAVLHFile@@PAUAnimInfo@@1@Z");
 
 struct CatInfo
 {
@@ -146,7 +146,7 @@ static_assert(sizeof(struct AnimInfo) == 0x5468, "Data type is of wrong size");
 // Non-virtual methods
 
 // win1.41 004c4ab0 mac 10230d20 AnimInfo::Read(char *)
-uint32_t __fastcall Read__8AnimInfoFPc(struct AnimInfo* this, const void* edx, char* spec_filename);
+uint32_t __fastcall Read__8AnimInfoFPc(struct AnimInfo* this, const void* edx, char* spec_filename) asm("?Read@AnimInfo@@QAEIPAD@Z");
 
 struct LH3DAnim
 {
@@ -192,14 +192,14 @@ static_assert(sizeof(struct LH3DAnim) == 0x60, "Data type is of wrong size");
 // Static methods
 
 // win1.41 0083a1d0 mac 10129570 LH3DAnim::SetTransform(LH3DMatrix*, LH3DMesh*, LH3DMatrix*)
-float __cdecl SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix(struct LHMatrix* param_1, struct LH3DMesh* param_2, struct LHMatrix* param_3);
+float __cdecl SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix(struct LHMatrix* param_1, struct LH3DMesh* param_2, struct LHMatrix* param_3) asm("?SetTransform@LH3DAnim@@SAMPAULHMatrix@@PAULH3DMesh@@AAU2@@Z");
 // win1.41 0083aa30 mac 1061eac4 LH3DAnim::CreatePack(void)
 void __cdecl CreatePack__8LH3DAnimFv(void) asm("?CreatePack@LH3DAnim@@SAXXZ");
 
 // Non-virtual methods
 
 // win1.41 0083a6a0 mac 1001f930 LH3DAnim::GetListPtrFrames
-int __fastcall GetListPtrFrames__8LH3DAnimFv(struct LH3DAnim* this);
+int __fastcall GetListPtrFrames__8LH3DAnimFv(struct LH3DAnim* this) asm("?GetListPtrFrames@LH3DAnim@@QAEHXZ");
 
 struct ANM_BaseHeader
 {

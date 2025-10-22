@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @GetTopState__6LivingCFv@4
+.extern ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ
 .extern @SetupMoveToPos__6LivingFRC9MapCoordsUc@13
 .extern @__eq__9MapCoordsCFRC9MapCoords@12
 .extern _jmp_addr_0x006056b0
@@ -76,11 +76,11 @@ _jmp_addr_0x006d8b52:    {disp32} mov      ecx, dword ptr [esi + 0x000003f4]    
                          add               esp, 0x14                                     // 0x006d8b70    83c414
                          ret                                                             // 0x006d8b73    c3
 _jmp_addr_0x006d8b74:    {disp32} mov      ecx, dword ptr [esi + 0x000003fc]             // 0x006d8b74    8b8efc030000
-                         call              @GetTopState__6LivingCFv@4                    // 0x006d8b7a    e8719cf1ff
+                         call              ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ                    // 0x006d8b7a    e8719cf1ff
                          cmp               al, 0x01                                      // 0x006d8b7f    3c01
                          {disp32} je       _jmp_addr_0x006d9108                          // 0x006d8b81    0f8481050000
                          {disp32} mov      ecx, dword ptr [esi + 0x000003f4]             // 0x006d8b87    8b8ef4030000
-                         call              @GetTopState__6LivingCFv@4                    // 0x006d8b8d    e85e9cf1ff
+                         call              ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ                    // 0x006d8b8d    e85e9cf1ff
                          cmp               al, 0x01                                      // 0x006d8b92    3c01
                          {disp32} je       _jmp_addr_0x006d9108                          // 0x006d8b94    0f846e050000
                          cmp               word ptr [esi + 0x44], 0x02                   // 0x006d8b9a    66837e4402
@@ -145,11 +145,11 @@ _jmp_addr_0x006d8bed:    {disp32} mov      edx, dword ptr [esi + 0x000003e8]    
                          cmp               word ptr [data_bytes + 0x388eea], bx          // 0x006d8c60    66391deaeed400
                          {disp32} je       _jmp_addr_0x006d9226                          // 0x006d8c67    0f84b9050000
 _jmp_addr_0x006d8c6d:    {disp32} mov      ecx, dword ptr [esi + 0x000003fc]             // 0x006d8c6d    8b8efc030000
-                         call              @GetTopState__6LivingCFv@4                    // 0x006d8c73    e8789bf1ff
+                         call              ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ                    // 0x006d8c73    e8789bf1ff
                          cmp               al, 0x01                                      // 0x006d8c78    3c01
                          {disp32} je       _jmp_addr_0x006d9226                          // 0x006d8c7a    0f84a6050000
                          {disp32} mov      ecx, dword ptr [esi + 0x000003f4]             // 0x006d8c80    8b8ef4030000
-                         call              @GetTopState__6LivingCFv@4                    // 0x006d8c86    e8659bf1ff
+                         call              ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ                    // 0x006d8c86    e8659bf1ff
                          cmp               al, 0x01                                      // 0x006d8c8b    3c01
                          {disp32} je       _jmp_addr_0x006d9226                          // 0x006d8c8d    0f8493050000
                          {disp32} mov      eax, dword ptr [data_bytes + 0x388ee8]        // 0x006d8c93    a1e8eed400
