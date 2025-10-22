@@ -25,6 +25,6 @@ extern const struct LH3DObjectVftable __vt__25LH3DStaticMorphableObject asm("??_
 // Constructors
 
 // win1.41 inlined mac 100826b0 LH3DStaticMorphableObject::LH3DStaticMorphableObject(void)
-struct LH3DStaticMorphableObject* __fastcall __ct__25LH3DStaticMorphableObjectFv(struct LH3DStaticMorphableObject* this);
+struct LH3DStaticMorphableObject* __fastcall __ct__25LH3DStaticMorphableObjectFv(struct LH3DStaticMorphableObject* this) asm("??0LH3DStaticMorphableObject@@QAE@XZ");
 
 #endif /* BW1_DECOMP_LH3D_STATIC_MORPHABLE_OBJECT_INCLUDED_H */

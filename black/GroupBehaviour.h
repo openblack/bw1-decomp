@@ -91,7 +91,7 @@ extern const struct GroupBehaviourVftable __vt__14GroupBehaviour asm("??_7GroupB
 // Constructors
 
 // win1.41 00596070 mac 100fad20 GroupBehaviour::GroupBehaviour(void)
-struct GroupBehaviour* __fastcall __ct__14GroupBehaviourFv(struct GroupBehaviour* this);
+struct GroupBehaviour* __fastcall __ct__14GroupBehaviourFv(struct GroupBehaviour* this) asm("??0GroupBehaviour@@QAE@XZ");
 
 // Non-virtual methods
 
@@ -111,7 +111,7 @@ uint32_t __fastcall Load__14GroupBehaviourFR10GameOSFile(struct GameThing* this,
 // win1.41 00598240 mac 100f5a80 GroupBehaviour::Save(GameOSFile &)
 uint32_t __fastcall Save__14GroupBehaviourFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GroupBehaviour@@UAEIAAVGameOSFile@@@Z");
 // win1.41 005964a0 mac 106ffb98 GroupBehaviour::Process(void)
-void __fastcall Process__14GroupBehaviour(struct GroupBehaviour* this);
+void __fastcall Process__14GroupBehaviour(struct GroupBehaviour* this) asm("?Process@GroupBehaviour@@UAEXXZ");
 // win1.41 00596700 mac 100f90b0 GroupBehaviour::UpdateGroupBasedOnAction(DanceGroup *, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &, unsigned long)
 void __fastcall UpdateGroupBasedOnAction__14GroupBehaviourFP10DanceGroup23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgumentUl(struct GroupBehaviour* this, const void* edx, struct DanceGroup* dance_group, enum DANCE_GROUP_ACTION_TYPE action_type, const struct DanceGroupActionArgument* argument, uint32_t param_4);
 // win1.41 00597300 mac 100f8760 GroupBehaviour::AddAction(float, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
@@ -119,9 +119,9 @@ void __fastcall AddAction__14GroupBehaviourFfR18LHDynamicStack_Ul_23DANCE_GROUP_
 // win1.41 00597270 mac 100f8990 GroupBehaviour::AddAction(float, unsigned long, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
 void __fastcall AddAction__14GroupBehaviourFfUl23DANCE_GROUP_ACTION_TYPERC24DanceGroupActionArgument(struct GroupBehaviour* this, const void* edx, float param_1, uint32_t param_2, enum DANCE_GROUP_ACTION_TYPE action_type, struct DanceGroupActionArgument* arguments);
 // win1.41 005978e0 mac 100f6eb0 GroupBehaviour::LoadDance(char const *)
-void __fastcall LoadDance__14GroupBehaviourFPCc(struct GroupBehaviour* this, const void* edx, const char* param_1);
+void __fastcall LoadDance__14GroupBehaviourFPCc(struct GroupBehaviour* this, const void* edx, const char* param_1) asm("?LoadDance@GroupBehaviour@@UAEXPBD@Z");
 // win1.41 0050cc40 mac 100f4e30 GroupBehaviour::GetAngle(void)
-float __fastcall GetAngle__14GroupBehaviourFv(struct GroupBehaviour* this);
+float __fastcall GetAngle__14GroupBehaviourFv(struct GroupBehaviour* this) asm("?GetAngle@GroupBehaviour@@UAEMXZ");
 
 struct DanceEditState
 {

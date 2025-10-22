@@ -24,7 +24,7 @@
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
 .extern @SetSpeedUpFactor__7LHTimerFf@12
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x0053b4a0
 .extern _jmp_addr_0x005ea750
@@ -1393,7 +1393,7 @@ _jmp_addr_0x0054178c:    {disp8} mov        ecx, dword ptr [esi + 0x38]         
 _jmp_addr_0x0054181e:    {disp8} mov        dword ptr [esi + 0x54], 0x00000000            // 0x0054181e    c7465400000000
                          pop                edi                                           // 0x00541825    5f
 _jmp_addr_0x00541826:    mov.s              ecx, esi                                      // 0x00541826    8bce
-                         call               @Destroy__13DialogBoxBaseFv@4                 // 0x00541828    e8631dfdff
+                         call               ?Destroy@DialogBoxBase@@UAEXXZ                // 0x00541828    e8631dfdff
                          {disp32} mov       dword ptr [data_bytes + 0x30ab64], 0x00000000 // 0x0054182d    c705640bcd0000000000
                          pop                esi                                           // 0x00541837    5e
                          ret                                                              // 0x00541838    c3

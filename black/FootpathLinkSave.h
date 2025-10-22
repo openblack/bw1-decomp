@@ -41,12 +41,12 @@ extern const struct GameThingVftable __vt__17GFootpathLinkSave asm("??_7GFootpat
 // Constructors
 
 // win1.41 inlined mac inlined GFootpathLinkSave::GFootpathLinkSave(void)
-struct GFootpathLinkSave* __fastcall __ct__17GFootpathLinkSaveFv(struct GFootpathLinkSave* this);
+struct GFootpathLinkSave* __fastcall __ct__17GFootpathLinkSaveFv(struct GFootpathLinkSave* this) asm("??0GFootpathLinkSave@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00536fa0 mac inlined GFootpathLinkSave::FUN_00536fa0(void)
-void __fastcall FUN_00536fa0__17GFootpathLinkSaveFv(struct GFootpathLinkSave* this);
+void __fastcall FUN_00536fa0__17GFootpathLinkSaveFv(struct GFootpathLinkSave* this) asm("?FUN_00536fa0@GFootpathLinkSave@@QAEXXZ");
 
 // Override methods
 
@@ -55,6 +55,6 @@ void __fastcall __dt__17GFootpathLinkSaveFv(struct Base* this, const void* edx, 
 // win1.41 005371e0 mac 100ef0b0 GFootpathLinkSave::GetDebugText(void)
 char* __fastcall GetDebugText__17GFootpathLinkSaveFv(struct GameThing* this) asm("?GetDebugText@GFootpathLinkSave@@UAEPADXZ");
 // win1.41 005370a0 mac 100eb5c0 GFootpathLinkSave::Load(GameOSFile &)
-uint32_t __fastcall Load__17GFootpathLinkSaveFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__17GFootpathLinkSaveFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@GFootpathLinkSave@@UAEIAAVGameOSFile@@@Z");
 
 #endif /* BW1_DECOMP_FOOTPATH_LINK_SAVE_INCLUDED_H */

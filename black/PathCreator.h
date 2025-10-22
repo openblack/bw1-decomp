@@ -30,10 +30,10 @@ struct PathCreator* __fastcall __ct__11PathCreatorFv(struct PathCreator* this) a
 // Non-virtual methods
 
 // win1.41 0078eaa0 mac 1035b570 PathCreator::GetSaveGamePicturesPath__11PathCreatorFPc(char*)
-void __fastcall GetSaveGamePicturesPath__11PathCreatorFPc(struct PathCreator* this, const void* edx, char* path);
+void __fastcall GetSaveGamePicturesPath__11PathCreatorFPc(struct PathCreator* this, const void* edx, char* path) asm("?GetSaveGamePicturesPath@PathCreator@@QAEXPAD@Z");
 // win1.41 0078eae0 mac 101ca330 PathCreator::GetCurrentGamePath(char*)
-void __fastcall GetCurrentGamePath__11PathCreatorFPc(struct PathCreator* this, const void* edx, char* path);
+void __fastcall GetCurrentGamePath__11PathCreatorFPc(struct PathCreator* this, const void* edx, char* path) asm("?GetCurrentGamePath@PathCreator@@QAEXPAD@Z");
 // win1.41 0078efc0 mac 103655d0 PathCreator::CheckAndRecreateSaveGamePaths(void)
-bool __fastcall CheckAndRecreateSaveGamePaths__11PathCreatorFv(struct PathCreator* this);
+bool __fastcall CheckAndRecreateSaveGamePaths__11PathCreatorFv(struct PathCreator* this) asm("?CheckAndRecreateSaveGamePaths@PathCreator@@QAE_NXZ");
 
 #endif /* BW1_DECOMP_PATH_CREATOR_INCLUDED_H */

@@ -38,16 +38,16 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 // Static methods
 
 // win1.41 0072b090 mac 1052d6f0 GSpellSeedInfo::GetFirstSpellSeedForMagicType(MAGIC_TYPE)
-enum SPELL_SEED_TYPE __cdecl GetFirstSpellSeedForMagicType__14GSpellSeedInfoF10MAGIC_TYPE(enum MAGIC_TYPE magic_type);
+enum SPELL_SEED_TYPE __cdecl GetFirstSpellSeedForMagicType__14GSpellSeedInfoF10MAGIC_TYPE(enum MAGIC_TYPE magic_type) asm("?GetFirstSpellSeedForMagicType@GSpellSeedInfo@@SA?AW4SPELL_SEED_TYPE@@W4MAGIC_TYPE@@@Z");
 
 // Non-virtual methods
 
 // win1.41 0072af70 mac 1052dac0 GSpellSeedInfo::GetPowerUpFromMagicType(MAGIC_TYPE) const
-enum POWER_UP_TYPE __fastcall GetPowerUpFromMagicType__14GSpellSeedInfoCF10MAGIC_TYPE(struct GSpellSeedInfo* this, const void* edx, enum MAGIC_TYPE magic_type);
+enum POWER_UP_TYPE __fastcall GetPowerUpFromMagicType__14GSpellSeedInfoCF10MAGIC_TYPE(struct GSpellSeedInfo* this, const void* edx, enum MAGIC_TYPE magic_type) asm("?GetPowerUpFromMagicType@GSpellSeedInfo@@QBE?AW4POWER_UP_TYPE@@W4MAGIC_TYPE@@@Z");
 // win1.41 0072afc0 mac 1052d9d0 GSpellSeedInfo::GetMagicTypeFromPULevel(POWER_UP_TYPE) const
-enum MAGIC_TYPE __fastcall GetMagicTypeFromPULevel__14GSpellSeedInfoCF13POWER_UP_TYPE(const struct GSpellSeedInfo* this, const void* edx, enum POWER_UP_TYPE power_type);
+enum MAGIC_TYPE __fastcall GetMagicTypeFromPULevel__14GSpellSeedInfoCF13POWER_UP_TYPE(const struct GSpellSeedInfo* this, const void* edx, enum POWER_UP_TYPE power_type) asm("?GetMagicTypeFromPULevel@GSpellSeedInfo@@QBE?AW4MAGIC_TYPE@@W4POWER_UP_TYPE@@@Z");
 // win1.41 0072b060 mac inlined GSpellSeedInfo::SpellSeedIsOfMagicType(MAGIC_TYPE) const
-bool __fastcall SpellSeedIsOfMagicType__14GSpellSeedInfoCF10MAGIC_TYPE(const struct GSpellSeedInfo* this, const void* edx, enum MAGIC_TYPE type);
+bool __fastcall SpellSeedIsOfMagicType__14GSpellSeedInfoCF10MAGIC_TYPE(const struct GSpellSeedInfo* this, const void* edx, enum MAGIC_TYPE type) asm("?SpellSeedIsOfMagicType@GSpellSeedInfo@@QBE_NW4MAGIC_TYPE@@@Z");
 
 // Override methods
 

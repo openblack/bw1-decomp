@@ -65,14 +65,14 @@ extern const struct ObjectVftable __vt__7FireFly asm("??_7FireFly@@6B@");
 // Static methods
 
 // win1.41 0052a200 mac 100d9f20 FireFly::Create(MapCoords const &)
-struct FireFly* __cdecl Create__7FireFlyFRC9MapCoords(struct MapCoords* coord);
+struct FireFly* __cdecl Create__7FireFlyFRC9MapCoords(struct MapCoords* coord) asm("?Create@FireFly@@SAPAV1@ABUMapCoords@@@Z");
 
 // Constructors
 
 // win1.41 0052a280 mac 100d9e20 FireFly::FireFly(const MapCoords&)
-struct FireFly* __fastcall __ct__7FireFlyFRC9MapCoords(struct FireFly* this, const void* edx, struct MapCoords* coords);
+struct FireFly* __fastcall __ct__7FireFlyFRC9MapCoords(struct FireFly* this, const void* edx, struct MapCoords* coords) asm("??0FireFly@@QAE@ABUMapCoords@@@Z");
 // win1.41 0052a340 mac 100d9e04 FireFly::FireFly(void)
-struct FireFly* __fastcall __ct__7FireFlyFv(struct FireFly* this);
+struct FireFly* __fastcall __ct__7FireFlyFv(struct FireFly* this) asm("??0FireFly@@QAE@XZ");
 
 // Override methods
 

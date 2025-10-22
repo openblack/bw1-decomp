@@ -43,7 +43,7 @@ extern const struct GameThingVftable __vt__9GameStats asm("??_7GameStats@@6B@");
 // Constructors
 
 // win1.41 00564a40 mac 1031b7d0 GameStats::GameStats(void)
-struct GameStats* __fastcall __ct__9GameStatsFv(struct GameStats* this);
+struct GameStats* __fastcall __ct__9GameStatsFv(struct GameStats* this) asm("??0GameStats@@QAE@XZ");
 
 // Override methods
 

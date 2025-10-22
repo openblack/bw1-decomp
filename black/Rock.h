@@ -60,7 +60,7 @@ extern const struct RockVftable __vt__4Rock asm("??_7Rock@@6B@");
 // Constructors
 
 // win1.41 006e6f70 mac 1013dda0 Rock::Rock(MapCoords const &, GMobileStaticInfo const *, Object *, GPlayer *, float, float)
-struct Rock* __fastcall __ct__4RockFRC9MapCoordsPC17GMobileStaticInfoP6ObjectP7GPlayerff(struct Rock* this, const void* edx, struct MapCoords* coords, struct GMobileStaticInfo* info, struct Object* param_3, struct GPlayer* param_4, float param_5, float param_6);
+struct Rock* __fastcall __ct__4RockFRC9MapCoordsPC17GMobileStaticInfoP6ObjectP7GPlayerff(struct Rock* this, const void* edx, struct MapCoords* coords, struct GMobileStaticInfo* info, struct Object* param_3, struct GPlayer* param_4, float param_5, float param_6) asm("??0Rock@@QAE@ABUMapCoords@@PBVGMobileStaticInfo@@PAVObject@@PAVGPlayer@@MM@Z");
 
 // Override methods
 

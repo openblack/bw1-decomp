@@ -21,7 +21,7 @@ struct LHMatrix;
 struct Vertex3D;
 
 // win1.41 0082f810 mac 1002af30 LH3DRender::DrawTriangle(Vertex3D *, unsigned long, unsigned short *, unsigned long)
-void __fastcall DrawTriangle__10LH3DRenderFP8Vertex3DUlPUsUl(struct Vertex3D* vertices, uint32_t param_2, uint16_t* param_3, uint32_t param_4);
+void __fastcall DrawTriangle__10LH3DRenderFP8Vertex3DUlPUsUl(struct Vertex3D* vertices, uint32_t param_2, uint16_t* param_3, uint32_t param_4) asm("?DrawTriangle@LH3DRender@@SAXPAUVertex3D@@KPAGK@Z");
 // win1.41 00412940 mac 10046ae0 LH3DRender::SetRenderState(D3DRENDERSTATETYPE, unsigned long)
 int __cdecl SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl(D3DRENDERSTATETYPE type, uint32_t value);
 // win1.41 inlined mac inlined LH3DRender::GetRenderState(D3DRENDERSTATETYPE, unsigned long&)
@@ -31,15 +31,15 @@ void __cdecl SetD3DMatrix__10LH3DRenderFRQ29IndirectX10_D3DMATRIXR8LHMatrix(D3DM
 // win1.41 0082b2d0 mac inlined LH3DRender::SetProjMatrix(D3DMATRIX *, D3DMATRIX *, float, float, float)
 void __cdecl SetProjMatrix__10LH3DRenderFP9D3DMATRIXP9D3DMATRIXfff(D3DMATRIX* param_1, D3DMATRIX* projection, float near_plane, float far_plane, float fov);
 // win1.41 0082b570 mac 100a7970 LH3DRender::Close(void)
-int __cdecl Close__10LH3DRenderFv(void);
+int __cdecl Close__10LH3DRenderFv(void) asm("?Close@LH3DRender@@SAHXZ");
 // win1.41 0082b9c0 mac 1002dbb0 LH3DRender::SetTextureStageState(unsigned long, D3DTEXTURESTAGESTATETYPE, unsigned long)
 int __cdecl SetTextureStageState__10LH3DRenderFUl24D3DTEXTURESTAGESTATETYPEUl(uint32_t index, D3DTEXTURESTAGESTATETYPE type, uint32_t value);
 // win1.41 0082f0e0 mac 10013290 LH3DRender::StartFrame(void)
-void __cdecl StartFrame__10LH3DRenderFv(void);
+void __cdecl StartFrame__10LH3DRenderFv(void) asm("?StartFrame@LH3DRender@@SAXXZ");
 // win1.41 0082ff10 mac 10046bbc LH3DRender::SetD3DTillingOn(int)
-void __cdecl SetD3DTillingOn__10LH3DRenderFi(uint32_t index);
+void __cdecl SetD3DTillingOn__10LH3DRenderFi(uint32_t index) asm("?SetD3DTillingOn@LH3DRender@@SAXH@Z");
 // win1.41 0082ff50 mac 10046c4c LH3DRender::SetD3DTillingOff(int)
-void __cdecl SetD3DTillingOff__10LH3DRenderFi(uint32_t index);
+void __cdecl SetD3DTillingOff__10LH3DRenderFi(uint32_t index) asm("?SetD3DTillingOff@LH3DRender@@SAXH@Z");
 // win1.41 0082fd30 mac 100a1d90 LH3DRender::CreateMaterial(LH3DMaterial::RenderMode, LH3DTexture *)
 struct LH3DMaterial* __cdecl CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture(enum LH3DMaterial__RenderMode render_mode, struct LH3DTexture* texture);
 // win1.41 0082f2c0 mac 100a27d0 LH3DRender::RegisterFinishFrameCallback(unsigned long, bool, void (__cdecl *)(void *), void *)

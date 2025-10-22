@@ -54,12 +54,12 @@ extern const struct GameThingVftable __vt__8Reaction asm("??_7Reaction@@6B@");
 // Static methods
 
 // win1.41 006e3d70 mac 10136010 Reaction::CreateReaction(GameThingWithPos *, unsigned char, GPlayer *, int)
-struct Reaction* __cdecl CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri(struct GameThingWithPos* param_1, uint8_t param_2, struct GPlayer* player, int param_4);
+struct Reaction* __cdecl CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri(struct GameThingWithPos* param_1, uint8_t param_2, struct GPlayer* player, int param_4) asm("?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z");
 
 // Non-virtual methods
 
 // win1.41 006e4700 mac 1008c230 Reaction::GetInfo(void) const
-struct ReactionInfo* __fastcall GetInfo__8ReactionCFv(struct Reaction* this);
+struct ReactionInfo* __fastcall GetInfo__8ReactionCFv(struct Reaction* this) asm("?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ");
 
 // Override methods
 

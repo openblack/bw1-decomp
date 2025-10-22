@@ -72,17 +72,17 @@ extern const struct BaseVftable __vt__9GGuidance asm("??_7GGuidance@@6B@");
 // Static methods
 
 // win1.41 0071b020 mac 10082330 GGuidance::ProcessTownDesireSFX(GInterfaceStatus &)
-void __cdecl ProcessTownDesireSFX__9GGuidanceFR16GInterfaceStatus(struct GInterfaceStatus* status);
+void __cdecl ProcessTownDesireSFX__9GGuidanceFR16GInterfaceStatus(struct GInterfaceStatus* status) asm("?ProcessTownDesireSFX@GGuidance@@SAXAAVGInterfaceStatus@@@Z");
 
 // Constructors
 
 // win1.41 0071ab10 mac 105126b0 GGuidance::GGuidance(void)
-void __fastcall __ct__9GGuidanceFv(struct GGuidance* this);
+void __fastcall __ct__9GGuidanceFv(struct GGuidance* this) asm("??0GGuidance@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 0071ac70 mac 105122a0 GGuidance::Init(GInterfaceStatus&)
-void __fastcall Init__9GGuidanceFR16GInterfaceStatus(struct GGuidance* this, const void* edx, struct GInterfaceStatus* status);
+void __fastcall Init__9GGuidanceFR16GInterfaceStatus(struct GGuidance* this, const void* edx, struct GInterfaceStatus* status) asm("?Init@GGuidance@@QAEXAAVGInterfaceStatus@@@Z");
 // win1.41 0071cbe0 mac 1050e610 GGuidance::HelpSpritesLowOnPeople(Town &)
 void __fastcall HelpSpritesLowOnPeople__9GGuidanceFR4Town(struct GGuidance* this, const void* edx, struct Town* param_1) asm("?HelpSpritesLowOnPeople@GGuidance@@QAEXAAVTown@@@Z");
 

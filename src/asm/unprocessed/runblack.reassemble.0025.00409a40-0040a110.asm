@@ -8,10 +8,10 @@
 .extern rsrc_bytes
 
 .extern @__ct__12SetupControlFiiiiiPw@32
-.extern @__dt__12SetupControlFv@4
-.extern _DrawText__10SetupThingFiii11TEXTJUSTIFYPwiP9LH3DColori
-.extern _DrawBigButton__10SetupThingFiibbi7BBSTYLEbii
-.extern _DrawBevBox__10SetupThingFiiiiiiiUl
+.extern ??_DSetupControl@@QAEXXZ
+.extern ?DrawText@SetupThing@@SAMHHHW4TEXTJUSTIFY@@PA_WHPAULH3DColor@@H@Z
+.extern ?DrawBigButton@SetupThing@@SAXHH_N0HW4BBSTYLE@@0HH@Z
+.extern ?DrawBevBox@SetupThing@@SAXHHHHHHHK@Z
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern @CandidateList_GetSelectIdx__Q24slim5TbIMEFv@4
@@ -47,7 +47,7 @@ _Draw__11SetupSliderFbb:
                          push               ecx                                      // 0x00409a5c    51
                          push               edx                                      // 0x00409a5d    52
                          push               eax                                      // 0x00409a5e    50
-                         call               _DrawBevBox__10SetupThingFiiiiiiiUl      // 0x00409a5f    e8bca10000
+                         call               ?DrawBevBox@SetupThing@@SAXHHHHHHHK@Z    // 0x00409a5f    e8bca10000
                          {disp32} mov       ebp, dword ptr [esi + 0x0000024c]        // 0x00409a64    8bae4c020000
                          {disp8} mov        ecx, dword ptr [esi + 0x10]              // 0x00409a6a    8b4e10
                          {disp8} mov        ebx, dword ptr [esi + 0x08]              // 0x00409a6d    8b5e08
@@ -83,7 +83,7 @@ _Draw__11SetupSliderFbb:
                          lea                eax, dword ptr [ebx + ebp * 0x1]         // 0x00409abf    8d042b
                          push               eax                                      // 0x00409ac2    50
                          push               edi                                      // 0x00409ac3    57
-                         call               _DrawBevBox__10SetupThingFiiiiiiiUl      // 0x00409ac4    e857a10000
+                         call               ?DrawBevBox@SetupThing@@SAXHHHHHHHK@Z    // 0x00409ac4    e857a10000
                          {disp8} mov        al, byte ptr [esp + 0x3c]                // 0x00409ac9    8a44243c
                          add                esp, 0x20                                // 0x00409acd    83c420
                          add                ebp, 0x02                                // 0x00409ad0    83c502
@@ -129,7 +129,7 @@ _jmp_addr_0x00409b1d:    push               0x0000a000                          
                          push               eax                                      // 0x00409b38    50
                          add                edi, 0x03                                // 0x00409b39    83c703
                          push               edi                                      // 0x00409b3c    57
-                         call               _DrawBigButton__10SetupThingFiibbi7BBSTYLEbii                     // 0x00409b3d    e80e860000
+                         call               ?DrawBigButton@SetupThing@@SAXHH_N0HW4BBSTYLE@@0HH@Z              // 0x00409b3d    e80e860000
                          add                esp, 0x24                                // 0x00409b42    83c424
                          test               bl, bl                                   // 0x00409b45    84db
                          {disp8} mov        dword ptr [esp + 0x1c], 0x00c4ccf8       // 0x00409b47    c744241cf8ccc400
@@ -188,7 +188,7 @@ _jmp_addr_0x00409bd2:    cdq                                                    
                          sub.s              eax, edx                                 // 0x00409bd3    2bc2
                          sar                eax, 1                                   // 0x00409bd5    d1f8
                          push               eax                                      // 0x00409bd7    50
-                         call               _DrawText__10SetupThingFiii11TEXTJUSTIFYPwiP9LH3DColori                     // 0x00409bd8    e8d37d0000
+                         call               ?DrawText@SetupThing@@SAMHHHW4TEXTJUSTIFY@@PA_WHPAULH3DColor@@H@Z           // 0x00409bd8    e8d37d0000
                          add                esp, 0x20                                // 0x00409bdd    83c420
                          fstp               st(0)                                    // 0x00409be0    ddd8
                          pop                edi                                      // 0x00409be2    5f
@@ -243,7 +243,7 @@ _jmp_addr_0x00409bd2:    cdq                                                    
 ??_GSetupSlider@@UAEPAXI@Z:
                          push               esi                                      // 0x00409c50    56
                          mov.s              esi, ecx                                 // 0x00409c51    8bf1
-                         call               @__dt__12SetupControlFv@4                // 0x00409c53    e868f7ffff
+                         call               ??_DSetupControl@@QAEXXZ                 // 0x00409c53    e868f7ffff
                          test               byte ptr [esp + 0x08], 0x01              // 0x00409c58    f644240801
                          {disp8} je         _jmp_addr_0x00409c68                     // 0x00409c5d    7409
                          push               esi                                      // 0x00409c5f    56

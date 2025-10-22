@@ -29,16 +29,16 @@ static_assert(sizeof(struct LH3DSprite) == 0x34, "Data type is of wrong size");
 // Static methods
 
 // win1.41 008404a0 mac 100b64f0 LH3DSprite::Create(long, int)
-struct LH3DSprite* __fastcall Create__10LH3DSpriteFli(int param_1, int param_2);
+struct LH3DSprite* __fastcall Create__10LH3DSpriteFli(int param_1, int param_2) asm("?Create@LH3DSprite@@SAPAV1@JH@Z");
 
 // Non-virtual methods
 
 // win1.41 008404f0 mac 1000c7c0 LH3DSprite::SetToZero(void)
-void __fastcall SetToZero__10LH3DSpriteFv(struct LH3DSprite* this);
+void __fastcall SetToZero__10LH3DSpriteFv(struct LH3DSprite* this) asm("?SetToZero@LH3DSprite@@QAEXXZ");
 // win1.41 00840520 mac 100b6440 LH3DSprite::Release(void)
 void __fastcall Release__10LH3DSpriteFv(struct LH3DSprite* this) asm("?Release@LH3DSprite@@QAEXXZ");
 // win1.41 00840530 mac 1002a870 LH3DSprite::Draw(void)
-void __fastcall Draw__10LH3DSpriteFv(struct LH3DSprite* this);
+void __fastcall Draw__10LH3DSpriteFv(struct LH3DSprite* this) asm("?Draw@LH3DSprite@@QAEXXZ");
 
 union LHSprite__Texels
 {

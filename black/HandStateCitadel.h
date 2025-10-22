@@ -39,7 +39,7 @@ extern const struct HandStateVftable __vt__16HandStateCitadel asm("??_7HandState
 // Constructors
 
 // win1.41 005b0bf0 mac 103377e0 HandStateCitadel::HandStateCitadel(CHand*)
-struct HandStateCitadel* __fastcall __ct__16HandStateCitadelFP5CHand(struct HandStateCitadel* this, const void* edx, struct CHand* hand);
+struct HandStateCitadel* __fastcall __ct__16HandStateCitadelFP5CHand(struct HandStateCitadel* this, const void* edx, struct CHand* hand) asm("??0HandStateCitadel@@QAE@PAVCHand@@@Z");
 
 // Override methods
 

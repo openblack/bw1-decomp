@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
-.extern _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl
+.extern ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z
 .extern _HideAll__13DialogBoxBaseFv@0
 .extern _jmp_addr_0x00550ba0
 .extern _jmp_addr_0x005525e0
@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x00555a10
 .extern _jmp_addr_0x0056e130
 .extern _jmp_addr_0x00633620
-.extern @GetPlayerNumber__7GPlayerCFv@4
+.extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 
 .globl _jmp_addr_0x0056ea90
 .globl _jmp_addr_0x0056eaf0
@@ -128,7 +128,7 @@ _jmp_addr_0x0056eb67:    {disp8} mov      eax, dword ptr [esi + 0x38]           
                          lea              eax, dword ptr [eax + edx * 0x2]              // 0x0056eb84    8d0450
                          shl              eax, 5                                        // 0x0056eb87    c1e005
                          {disp8} lea      ecx, dword ptr [eax + ecx * 0x1 + 0x18]       // 0x0056eb8a    8d4c0818
-                         call             @GetPlayerNumber__7GPlayerCFv@4               // 0x0056eb8e    e8fdbb0d00
+                         call             ?GetPlayerNumber@GPlayer@@QBEEXZ              // 0x0056eb8e    e8fdbb0d00
                          cmp              eax, 0x04                                     // 0x0056eb93    83f804
                          .byte            0x72, 0x14// {disp8} jb _jmp_addr_0x0056ebac  // 0x0056eb96    7214
                          {disp8} mov      ecx, dword ptr [esi + 0x34]                   // 0x0056eb98    8b4e34
@@ -399,7 +399,7 @@ _jmp_addr_0x0056ee6e:    {disp8} mov      eax, dword ptr [ecx + 0x58]           
                          push             eax                                           // 0x0056eeae    50
                          push             ecx                                           // 0x0056eeaf    51
                          push             edx                                           // 0x0056eeb0    52
-                         call             _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl       // 0x0056eeb1    e80a44eaff
+                         call             ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z          // 0x0056eeb1    e80a44eaff
                          add              esp, 0x28                                     // 0x0056eeb6    83c428
                          {disp32} mov     dword ptr [data_bytes + 0x2078], edi          // 0x0056eeb9    893d78809c00
 _jmp_addr_0x0056eebf:    pop              edi                                           // 0x0056eebf    5f

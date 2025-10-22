@@ -8,10 +8,10 @@
 .extern rsrc_bytes
 
 .extern @__ct__12SetupControlFiiiiiPw@32
-.extern @__dt__12SetupControlFv@4
-.extern _GetTextWidth__10SetupThingFPwfif
-.extern _DrawText__10SetupThingFiii11TEXTJUSTIFYPwiP9LH3DColori
-.extern _DrawBevBox__10SetupThingFiiiiiiiUl
+.extern ??_DSetupControl@@QAEXXZ
+.extern ?GetTextWidth@SetupThing@@SAMPA_WMHM@Z
+.extern ?DrawText@SetupThing@@SAMHHHW4TEXTJUSTIFY@@PA_WHPAULH3DColor@@H@Z
+.extern ?DrawBevBox@SetupThing@@SAXHHHHHHHK@Z
 .extern  ??3@YAXPAX@Z
 
 .globl @Draw__11SetupButtonFbb@10
@@ -48,7 +48,7 @@ _Draw__11SetupButtonFbb:
                          push               edx                                      // 0x004097c6    52
                          push               eax                                      // 0x004097c7    50
                          push               ecx                                      // 0x004097c8    51
-                         call               _DrawBevBox__10SetupThingFiiiiiiiUl      // 0x004097c9    e852a40000
+                         call               ?DrawBevBox@SetupThing@@SAXHHHHHHHK@Z    // 0x004097c9    e852a40000
                          {disp8} mov        ebp, dword ptr [esi + 0x20]              // 0x004097ce    8b6e20
                          add                esp, 0x20                                // 0x004097d1    83c420
                          test               ebp, ebp                                 // 0x004097d4    85ed
@@ -67,7 +67,7 @@ _jmp_addr_0x004097f4:    {disp8} fild       dword ptr [esp + 0x14]              
                          push               ecx                                      // 0x004097ff    51
                          fstp               dword ptr [esp]                          // 0x00409800    d91c24
                          push               edi                                      // 0x00409803    57
-                         call               _GetTextWidth__10SetupThingFPwfif        // 0x00409804    e8177f0000
+                         call               ?GetTextWidth@SetupThing@@SAMPA_WMHM@Z   // 0x00409804    e8177f0000
                          {disp8} mov        eax, dword ptr [esi + 0x08]              // 0x00409809    8b4608
                          {disp8} mov        edx, dword ptr [esi + 0x10]              // 0x0040980c    8b5610
                          sub.s              edx, eax                                 // 0x0040980f    2bd0
@@ -126,7 +126,7 @@ _jmp_addr_0x00409855:    {disp8} mov        edi, dword ptr [esi + 0x10]         
                          add.s              eax, ecx                                 // 0x00409892    03c1
                          push               esi                                      // 0x00409894    56
                          push               eax                                      // 0x00409895    50
-                         call               _DrawText__10SetupThingFiii11TEXTJUSTIFYPwiP9LH3DColori                     // 0x00409896    e815810000
+                         call               ?DrawText@SetupThing@@SAMHHHW4TEXTJUSTIFY@@PA_WHPAULH3DColor@@H@Z           // 0x00409896    e815810000
                          add                esp, 0x20                                // 0x0040989b    83c420
                          pop                edi                                      // 0x0040989e    5f
                          fstp               st(0)                                    // 0x0040989f    ddd8
@@ -201,7 +201,7 @@ _jmp_addr_0x00409938:    ret                0x0008                              
 ??_GSetupButton@@UAEPAXI@Z:
                          push               esi                                      // 0x00409940    56
                          mov.s              esi, ecx                                 // 0x00409941    8bf1
-                         call               @__dt__12SetupControlFv@4                // 0x00409943    e878faffff
+                         call               ??_DSetupControl@@QAEXXZ                 // 0x00409943    e878faffff
                          test               byte ptr [esp + 0x08], 0x01              // 0x00409948    f644240801
                          {disp8} je         _jmp_addr_0x00409958                     // 0x0040994d    7409
                          push               esi                                      // 0x0040994f    56

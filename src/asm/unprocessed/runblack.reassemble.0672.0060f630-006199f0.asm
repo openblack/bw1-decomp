@@ -7,21 +7,21 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @__ct__9MapCoordsFv@4
+.extern ??0MapCoords@@QAE@XZ
 .extern @__as__7Point2DFRC7Point2D@12
 .extern _jmp_addr_0x0051f640
 .extern _jmp_addr_0x0051fa40
 .extern _jmp_addr_0x0051fa80
-.extern _SetCursorOn__8FrontEndFv
+.extern ?SetCursorOn@FrontEnd@@SAXXZ
 .extern _jmp_addr_0x005e1950
-.extern @GetFirstObjectFixed__9MapCoordsCFv@4
+.extern ?GetFirstObjectFixed@MapCoords@@QBEPAVObject@@XZ
 .extern @GetMetresDistanceSq__9MapCoordsCFRC9MapCoords@12
 .extern _jmp_addr_0x00609cc0
-.extern @RebuildMoveByStep__13MobileWallHugFv@4
-.extern @GetObjectPtr__13CircleHugInfoFv@4
+.extern ?RebuildMoveByStep@MobileWallHug@@QAEXXZ
+.extern ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ
 .extern @SetObjectPtr__13CircleHugInfoFPQ210NewCollide3ObjP13MobileWallHugb@17
 .extern _jmp_addr_0x0060a9f0
-.extern @InitStepsXZ__13MobileWallHugFv@4
+.extern ?InitStepsXZ@MobileWallHug@@QAEXXZ
 .extern _jmp_addr_0x0060c180
 .extern _jmp_addr_0x0060c3f0
 .extern @Init__20ObjectCircleIteratorFiRC9MapCoords@16
@@ -34,7 +34,7 @@
 .extern _jmp_addr_0x00619c90
 .extern _jmp_addr_0x00619da0
 .extern @GetMapChild__6ObjectFRC9MapCoords@12
-.extern _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
+.extern ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern ??0_Lockit@std@@QAE@XZ
@@ -44,9 +44,9 @@
 .extern _LHFileLength__FPcPUl
 .extern _LHLoadData__FPcPvUlPUl
 .extern _jmp_addr_0x007bda20
-.extern @Close__6LHFileFv@4
+.extern ?Close@LHFile@@QAEIXZ
 .extern @SetLHFilePointer__6LHFileFPcl@16
-.extern @CloseSegment__6LHFileFv@4
+.extern ?CloseSegment@LHFile@@QAEIXZ
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _atexit
@@ -58,7 +58,7 @@
 .extern _jmp_addr_0x007dee00
 .extern @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern ?Create@LH3DMesh@@SAPAV1@PBX_N@Z
 .extern @Release__8LH3DMeshFv@4
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
@@ -66,14 +66,14 @@
 .extern _jmp_addr_0x008379e0
 .extern _jmp_addr_0x00839010
 .extern _jmp_addr_0x0083a020
-.extern _SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix
-.extern _Alloc__7LH3DMemFl
-.extern _Free__7LH3DMemFPv
+.extern ?SetTransform@LH3DAnim@@SAMPAULHMatrix@@PAULH3DMesh@@AAU2@@Z
+.extern ?Alloc@LH3DMem@@SAPAXJ@Z
+.extern ?Free@LH3DMem@@SAXPAX@Z
 .extern @Init__9HairGroupFl@12
 .extern _jmp_addr_0x00848040
 .extern @ReadBinary__9HairGroupFP6LHFile@12
 .extern @Init__14LH3DObjectHairFlPP9HairGroup@16
-.extern @__ct__5CAnimFv@4
+.extern ??0CAnim@@QAE@XZ
 .extern _jmp_addr_0x0085e490
 .extern @__ct__5CAnimFP5CAnim@12
 .extern @__ct__5CAnimFP5CAnimP6CFrameP5CAnimP6CFramefP5CAnimP6CFramef@40
@@ -115,10 +115,10 @@
 .globl @Cross__7Point2DCFRC7Point2D@12
 .globl _jmp_addr_0x00611260
 .globl @DotProduct__7Point2DFP7Point2D@12
-.globl @Normalize__7Point2DFv@4
+.globl ?Normalize@Point2D@@QAEMXZ
 .globl _jmp_addr_0x006113a0
 .globl _jmp_addr_0x006113b0
-.globl @GetNormSq__7Point2DFv@4
+.globl ?GetNormSq@Point2D@@QAEMXZ
 .globl _jmp_addr_0x00611610
 .globl _jmp_addr_0x00611a10
 .globl _jmp_addr_0x00611ac0
@@ -137,7 +137,7 @@
 .globl _jmp_addr_0x00613410
 .globl _jmp_addr_0x00613690
 .globl _jmp_addr_0x006136f0
-.globl _ConvertMapCoordToLandscapePoint__10GLandscapeFRC9MapCoordsR7LHPoint
+.globl ?ConvertMapCoordToLandscapePoint@GLandscape@@SAPAULHPoint@@ABUMapCoords@@AAU2@@Z
 .globl @FUN_00613790@4
 .globl _jmp_addr_0x006137f0
 .globl @find_or_insert__std__map__SubCollideBlockPosPNewCollide3Obj@16
@@ -149,14 +149,14 @@
 .globl _jmp_addr_0x006145d0
 .globl _jmp_addr_0x00614600
 .globl _jmp_addr_0x00614630
-.globl _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_0_FP13MobileWallHugRC9MapCoords
-.globl @__opPQ210NewCollide3Obj__20ObjectCircleIteratorFv@4
+.globl ?MoveToCircleHugCircleSquareSweep@MobileWallHug_InCircleStuff_0_@@SAIPAVMobileWallHug@@ABUMapCoords@@@Z
+.globl ?__opPQ210NewCollide3Obj@ObjectCircleIterator@@QAEPAUQ210NewCollide3Obj@@XZ
 .globl @__eq__7Point2DFRC7Point2D@12
-.globl _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_1_FP13MobileWallHugRC9MapCoords
+.globl ?MoveToCircleHugCircleSquareSweep@MobileWallHug_InCircleStuff_1_@@SAIPAVMobileWallHug@@ABUMapCoords@@@Z
 .globl _jmp_addr_0x00616750
 .globl _jmp_addr_0x006167a0
 .globl _jmp_addr_0x006167f0
-.globl @Resolve__26IntersectIntervalCircle_1_Fv@4
+.globl ?Resolve@IntersectIntervalCircle_1_@@QAEXXZ
 .globl _jmp_addr_0x00616c70
 .globl _jmp_addr_0x00616d00
 .globl _jmp_addr_0x00616ef0
@@ -164,7 +164,7 @@
 .globl _jmp_addr_0x00617140
 .globl _jmp_addr_0x006171a0
 .globl @MorphInit__9MorphableFR7LHPointlPv@20
-.globl @AddHairGroup__9MorphableFv@4
+.globl ?AddHairGroup@Morphable@@QAEIXZ
 .globl @SelectMesh__9MorphableFl@12
 .globl _jmp_addr_0x006177e0
 .globl _jmp_addr_0x00617860
@@ -178,7 +178,7 @@
 .globl _jmp_addr_0x00618150
 .globl _jmp_addr_0x006182f0
 .globl ?LoadBase@Morphable@@UAEIPAD@Z
-.globl _Create__11LH3DTextureFPvUlUlP13TextureFormat
+.globl ?Create@LH3DTexture@@SAPAV1@PAXKKPAUTextureFormat@@@Z
 .globl @LoadMesh__9MorphableFPcl@16
 .globl _jmp_addr_0x00618b40
 .globl _jmp_addr_0x00618c40
@@ -200,7 +200,7 @@ _jmp_addr_0x0060f630:    sub                esp, 0x0c                           
                          mov.s              esi, ecx                                       // 0x0060f639    8bf1
                          push               edi                                            // 0x0060f63b    57
                          mov.s              ecx, ebx                                       // 0x0060f63c    8bcb
-                         call               @GetFirstObjectFixed__9MapCoordsCFv@4          // 0x0060f63e    e86d3effff
+                         call               ?GetFirstObjectFixed@MapCoords@@QBEPAVObject@@XZ          // 0x0060f63e    e86d3effff
                          mov.s              edi, eax                                       // 0x0060f643    8bf8
                          test               edi, edi                                       // 0x0060f645    85ff
                          {disp8} mov        dword ptr [esi + 0x08], 0x00000000             // 0x0060f647    c7460800000000
@@ -3028,7 +3028,7 @@ _jmp_addr_0x006112d8:    {disp32} mov       edi, dword ptr [_DAT_00d3eee4]      
                          nop                                                               // 0x0061132d    90
                          nop                                                               // 0x0061132e    90
                          nop                                                               // 0x0061132f    90
-@Normalize__7Point2DFv@4:sub                esp, 0x08                                      // 0x00611330    83ec08
+?Normalize@Point2D@@QAEMXZ:sub                esp, 0x08                                      // 0x00611330    83ec08
                          mov                eax, dword ptr [ecx]                           // 0x00611333    8b01
                          {disp8} mov        edx, dword ptr [ecx + 0x04]                    // 0x00611335    8b5104
                          {disp8} mov        dword ptr [esp + 0x00], eax                    // 0x00611338    89442400
@@ -3286,7 +3286,7 @@ _jmp_addr_0x006115da:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          nop                                                               // 0x006115ed    90
                          nop                                                               // 0x006115ee    90
                          nop                                                               // 0x006115ef    90
-@GetNormSq__7Point2DFv@4:{disp8} fld        dword ptr [ecx + 0x04]                         // 0x006115f0    d94104
+?GetNormSq@Point2D@@QAEMXZ:{disp8} fld        dword ptr [ecx + 0x04]                         // 0x006115f0    d94104
                          fld                dword ptr [ecx]                                // 0x006115f3    d901
                          fld                st(0)                                          // 0x006115f5    d9c0
                          fmul               st, st(1)                                      // 0x006115f7    d8c9
@@ -6549,12 +6549,13 @@ _jmp_addr_0x0061373a:    mov                dword ptr [ecx], eax                
                          nop                                                               // 0x0061374d    90
                          nop                                                               // 0x0061374e    90
                          nop                                                               // 0x0061374f    90
-_ConvertMapCoordToLandscapePoint__10GLandscapeFRC9MapCoordsR7LHPoint:    push               esi                                            // 0x00613750    56
+?ConvertMapCoordToLandscapePoint@GLandscape@@SAPAULHPoint@@ABUMapCoords@@AAU2@@Z:
+                                                                         push               esi                                            // 0x00613750    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x00613751    8b742408
                          {disp8} mov        eax, dword ptr [esi + 0x08]                    // 0x00613755    8b4608
                          mov.s              ecx, esi                                       // 0x00613758    8bce
                          {disp8} mov        dword ptr [esp + 0x08], eax                    // 0x0061375a    89442408
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4 // 0x0061375e    e82df91e00
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z // 0x0061375e    e82df91e00
                          {disp8} fadd       dword ptr [esp + 0x08]                         // 0x00613763    d8442408
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                    // 0x00613767    8b44240c
                          {disp8} fstp       dword ptr [eax + 0x04]                         // 0x0061376b    d95804
@@ -8711,7 +8712,8 @@ _jmp_addr_0x00614c31:    pop                esi                                 
                          nop                                                               // 0x00614c3d    90
                          nop                                                               // 0x00614c3e    90
                          nop                                                               // 0x00614c3f    90
-_MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_0_FP13MobileWallHugRC9MapCoords:    sub                esp, 0x00000080                                // 0x00614c40    81ec80000000
+?MoveToCircleHugCircleSquareSweep@MobileWallHug_InCircleStuff_0_@@SAIPAVMobileWallHug@@ABUMapCoords@@@Z:
+                                                                                                     sub                esp, 0x00000080                                // 0x00614c40    81ec80000000
                          push               ebx                                            // 0x00614c46    53
                          {disp32} mov       ebx, dword ptr [esp + 0x00000088]              // 0x00614c47    8b9c2488000000
                          push               ebp                                            // 0x00614c4e    55
@@ -8720,11 +8722,11 @@ _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_0_FP13MobileWal
                          {disp8} lea        esi, dword ptr [ebx + 0x70]                    // 0x00614c56    8d7370
                          push               edi                                            // 0x00614c59    57
                          mov.s              ecx, esi                                       // 0x00614c5a    8bce
-                         call               @GetObjectPtr__13CircleHugInfoFv@4             // 0x00614c5c    e8ff59ffff
+                         call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ             // 0x00614c5c    e8ff59ffff
                          {disp8} mov        eax, dword ptr [eax + 0x08]                    // 0x00614c61    8b4008
                          mov.s              ecx, esi                                       // 0x00614c64    8bce
                          {disp8} mov        dword ptr [esp + 0x24], eax                    // 0x00614c66    89442424
-                         call               @GetObjectPtr__13CircleHugInfoFv@4             // 0x00614c6a    e8f159ffff
+                         call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ             // 0x00614c6a    e8f159ffff
                          fld                dword ptr [eax]                                // 0x00614c6f    d900
                          {disp8} mov        ecx, dword ptr [esp + 0x24]                    // 0x00614c71    8b4c2424
                          {disp8} lea        eax, dword ptr [ebx + 0x14]                    // 0x00614c75    8d4314
@@ -8749,7 +8751,7 @@ _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_0_FP13MobileWal
                          {disp8} mov        edx, dword ptr [esp + 0x30]                    // 0x00614cb8    8b542430
                          {disp32} mov       dword ptr [data_bytes + 0x378e6c], edx         // 0x00614cbc    89156ceed300
                          {disp32} fstp      dword ptr [data_bytes + 0x378e68]              // 0x00614cc2    d91d68eed300
-                         call               @GetObjectPtr__13CircleHugInfoFv@4             // 0x00614cc8    e89359ffff
+                         call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ             // 0x00614cc8    e89359ffff
                          {disp8} fld        dword ptr [esp + 0x2c]                         // 0x00614ccd    d944242c
                          {disp8} mov        eax, dword ptr [eax + 0x0c]                    // 0x00614cd1    8b400c
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                    // 0x00614cd4    d81d98a38a00
@@ -8783,9 +8785,9 @@ _jmp_addr_0x00614d30:    {disp8} fdiv       dword ptr [esp + 0x14]              
                          {disp8} lea        ecx, dword ptr [esp + 0x68]                    // 0x00614d34    8d4c2468
                          {disp32} fsub      qword ptr [rdata_bytes + 0x6c440]              // 0x00614d38    dc2540549100
                          {disp8} fstp       dword ptr [esp + 0x28]                         // 0x00614d3e    d95c2428
-                         call               @__ct__9MapCoordsFv@4                          // 0x00614d42    e819cee2ff
+                         call               ??0MapCoords@@QAE@XZ                           // 0x00614d42    e819cee2ff
                          mov.s              ecx, esi                                       // 0x00614d47    8bce
-                         call               @GetObjectPtr__13CircleHugInfoFv@4             // 0x00614d49    e81259ffff
+                         call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ             // 0x00614d49    e81259ffff
                          mov.s              esi, eax                                       // 0x00614d4e    8bf0
                          fld                dword ptr [esi]                                // 0x00614d50    d906
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3400]               // 0x00614d52    d80d00c48a00
@@ -8818,7 +8820,7 @@ _jmp_addr_0x00614d30:    {disp8} fdiv       dword ptr [esp + 0x14]              
 _jmp_addr_0x00614dc2:    {disp32} mov       ebp, dword ptr [esp + 0x00000098]              // 0x00614dc2    8bac2498000000
                          push               ebp                                            // 0x00614dc9    55
                          mov.s              ecx, ebp                                       // 0x00614dca    8bcd
-                         call               @GetFirstObjectFixed__9MapCoordsCFv@4          // 0x00614dcc    e8dfe6feff
+                         call               ?GetFirstObjectFixed@MapCoords@@QBEPAVObject@@XZ          // 0x00614dcc    e8dfe6feff
                          push               eax                                            // 0x00614dd1    50
                          {disp32} lea       ecx, dword ptr [esp + 0x00000088]              // 0x00614dd2    8d8c2488000000
                          call               @Init__20ObjectCircleIteratorFP6ObjectRC9MapCoords@16                           // 0x00614dd9    e8a284ffff
@@ -8941,7 +8943,7 @@ _jmp_addr_0x00614f3f:    {disp8} mov        byte ptr [esi + 0x14], al           
                          {disp32} jmp       _jmp_addr_0x00615337                           // 0x00614f68    e9ca030000
 _jmp_addr_0x00614f6d:    {disp32} lea       ecx, dword ptr [esp + 0x00000080]              // 0x00614f6d    8d8c2480000000
                          {disp8} mov        dword ptr [esi + 0x20], edi                    // 0x00614f74    897e20
-                         call               @__opPQ210NewCollide3Obj__20ObjectCircleIteratorFv@4                           // 0x00614f77    e8240a0000
+                         call               ?__opPQ210NewCollide3Obj@ObjectCircleIterator@@QAEPAUQ210NewCollide3Obj@@XZ    // 0x00614f77    e8240a0000
                          mov.s              edi, eax                                       // 0x00614f7c    8bf8
                          {disp32} mov       eax, dword ptr [esp + 0x00000088]              // 0x00614f7e    8b842488000000
                          test               eax, eax                                       // 0x00614f85    85c0
@@ -9015,7 +9017,7 @@ _jmp_addr_0x00615043:    fld                dword ptr [esi]                     
                          mov.s              ecx, edi                                       // 0x00615059    8bcf
                          call               @Resolve__Point2DCompare_0_@4                  // 0x0061505b    e8d0b1ffff
                          mov.s              ecx, edi                                       // 0x00615060    8bcf
-                         call               @GetNormSq__7Point2DFv@4                       // 0x00615062    e889c5ffff
+                         call               ?GetNormSq@Point2D@@QAEMXZ                     // 0x00615062    e889c5ffff
                          {disp8} fadd       dword ptr [esp + 0x24]                         // 0x00615067    d8442424
                          {disp8} fld        dword ptr [esp + 0x18]                         // 0x0061506b    d9442418
                          mov.s              ecx, edi                                       // 0x0061506f    8bcf
@@ -9026,7 +9028,7 @@ _jmp_addr_0x00615043:    fld                dword ptr [esi]                     
                          {disp8} fstp       dword ptr [esi + 0x18]                         // 0x00615081    d95e18
                          {disp8} mov        eax, dword ptr [esi + 0x18]                    // 0x00615084    8b4618
                          {disp8} mov        dword ptr [esp + 0x18], eax                    // 0x00615087    89442418
-                         call               @GetNormSq__7Point2DFv@4                       // 0x0061508b    e860c5ffff
+                         call               ?GetNormSq@Point2D@@QAEMXZ                     // 0x0061508b    e860c5ffff
                          {disp8} fld        dword ptr [esp + 0x18]                         // 0x00615090    d9442418
                          {disp8} fmul       dword ptr [esp + 0x18]                         // 0x00615094    d84c2418
                          fsubp              st(1), st                                      // 0x00615098    dee9
@@ -9041,7 +9043,7 @@ _jmp_addr_0x00615043:    fld                dword ptr [esi]                     
                          test               eax, eax                                       // 0x006150b2    85c0
                          {disp8} je         _jmp_addr_0x006150bd                           // 0x006150b4    7407
                          mov.s              ecx, esi                                       // 0x006150b6    8bce
-                         call               @Resolve__26IntersectIntervalCircle_1_Fv@4     // 0x006150b8    e833190000
+                         call               ?Resolve@IntersectIntervalCircle_1_@@QAEXXZ    // 0x006150b8    e833190000
 _jmp_addr_0x006150bd:    {disp8} fld        dword ptr [esi + 0x1c]                         // 0x006150bd    d9461c
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                    // 0x006150c0    d81d98a38a00
                          fnstsw             ax                                             // 0x006150c6    dfe0
@@ -9084,7 +9086,7 @@ _jmp_addr_0x00615138:    {disp32} mov       eax, dword ptr [esp + 0x0000008c]   
                          {disp32} je        _jmp_addr_0x0061565e                           // 0x0061514c    0f840c050000
 _jmp_addr_0x00615152:    {disp32} lea       ecx, dword ptr [esp + 0x00000080]              // 0x00615152    8d8c2480000000
                          {disp8} mov        dword ptr [esi + 0x20], 0x00000000             // 0x00615159    c7462000000000
-                         call               @__opPQ210NewCollide3Obj__20ObjectCircleIteratorFv@4                           // 0x00615160    e83b080000
+                         call               ?__opPQ210NewCollide3Obj@ObjectCircleIterator@@QAEPAUQ210NewCollide3Obj@@XZ    // 0x00615160    e83b080000
                          mov.s              ebp, eax                                       // 0x00615165    8be8
                          {disp32} mov       eax, dword ptr [esp + 0x00000088]              // 0x00615167    8b842488000000
                          test               eax, eax                                       // 0x0061516e    85c0
@@ -9173,7 +9175,7 @@ _jmp_addr_0x00615223:    fld                dword ptr [esi]                     
                          {disp8} mov        dword ptr [esp + 0x18], edx                    // 0x0061526f    89542418
                          fstp               st(0)                                          // 0x00615273    ddd8
                          fstp               st(0)                                          // 0x00615275    ddd8
-                         call               @GetNormSq__7Point2DFv@4                       // 0x00615277    e874c3ffff
+                         call               ?GetNormSq@Point2D@@QAEMXZ                     // 0x00615277    e874c3ffff
                          {disp8} fld        dword ptr [esp + 0x18]                         // 0x0061527c    d9442418
                          {disp8} fmul       dword ptr [esp + 0x18]                         // 0x00615280    d84c2418
                          fsubp              st(1), st                                      // 0x00615284    dee9
@@ -9188,7 +9190,7 @@ _jmp_addr_0x00615223:    fld                dword ptr [esi]                     
                          test               eax, eax                                       // 0x0061529e    85c0
                          {disp8} je         _jmp_addr_0x006152a9                           // 0x006152a0    7407
                          mov.s              ecx, esi                                       // 0x006152a2    8bce
-                         call               @Resolve__26IntersectIntervalCircle_1_Fv@4     // 0x006152a4    e847170000
+                         call               ?Resolve@IntersectIntervalCircle_1_@@QAEXXZ    // 0x006152a4    e847170000
 _jmp_addr_0x006152a9:    {disp8} fld        dword ptr [esi + 0x1c]                         // 0x006152a9    d9461c
                          {disp32} mov       ebp, dword ptr [esp + 0x00000098]              // 0x006152ac    8bac2498000000
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                    // 0x006152b3    d81d98a38a00
@@ -9240,7 +9242,7 @@ _jmp_addr_0x0061533e:    {disp32} mov       eax, dword ptr [esp + 0x0000008c]   
                          {disp32} mov       ebp, dword ptr [esp + 0x00000098]              // 0x00615358    8bac2498000000
 _jmp_addr_0x0061535f:    {disp32} lea       ecx, dword ptr [esp + 0x00000080]              // 0x0061535f    8d8c2480000000
                          {disp8} mov        dword ptr [ebx + 0x20], 0x00000000             // 0x00615366    c7432000000000
-                         call               @__opPQ210NewCollide3Obj__20ObjectCircleIteratorFv@4                           // 0x0061536d    e82e060000
+                         call               ?__opPQ210NewCollide3Obj@ObjectCircleIterator@@QAEPAUQ210NewCollide3Obj@@XZ    // 0x0061536d    e82e060000
                          mov.s              edi, eax                                       // 0x00615372    8bf8
                          {disp32} mov       eax, dword ptr [esp + 0x00000088]              // 0x00615374    8b842488000000
                          test               eax, eax                                       // 0x0061537b    85c0
@@ -9312,7 +9314,7 @@ _jmp_addr_0x00615432:    fld                dword ptr [eax]                     
                          mov.s              ecx, edi                                       // 0x00615448    8bcf
                          call               @Resolve__Point2DCompare_0_@4                  // 0x0061544a    e8e1adffff
                          mov.s              ecx, edi                                       // 0x0061544f    8bcf
-                         call               @GetNormSq__7Point2DFv@4                       // 0x00615451    e89ac1ffff
+                         call               ?GetNormSq@Point2D@@QAEMXZ                     // 0x00615451    e89ac1ffff
                          {disp8} fadd       dword ptr [esp + 0x24]                         // 0x00615456    d8442424
                          {disp8} fld        dword ptr [esp + 0x1c]                         // 0x0061545a    d944241c
                          {disp8} fmul       dword ptr [esp + 0x1c]                         // 0x0061545e    d84c241c
@@ -9323,7 +9325,7 @@ _jmp_addr_0x00615432:    fld                dword ptr [eax]                     
                          {disp8} mov        ecx, dword ptr [ebx + 0x18]                    // 0x00615471    8b4b18
                          {disp8} mov        dword ptr [esp + 0x18], ecx                    // 0x00615474    894c2418
                          mov.s              ecx, edi                                       // 0x00615478    8bcf
-                         call               @GetNormSq__7Point2DFv@4                       // 0x0061547a    e871c1ffff
+                         call               ?GetNormSq@Point2D@@QAEMXZ                     // 0x0061547a    e871c1ffff
                          {disp8} fld        dword ptr [esp + 0x18]                         // 0x0061547f    d9442418
                          {disp8} fmul       dword ptr [esp + 0x18]                         // 0x00615483    d84c2418
                          fsubp              st(1), st                                      // 0x00615487    dee9
@@ -9338,7 +9340,7 @@ _jmp_addr_0x00615432:    fld                dword ptr [eax]                     
                          test               eax, eax                                       // 0x006154a1    85c0
                          {disp8} je         _jmp_addr_0x006154ac                           // 0x006154a3    7407
                          mov.s              ecx, ebx                                       // 0x006154a5    8bcb
-                         call               @Resolve__26IntersectIntervalCircle_1_Fv@4     // 0x006154a7    e844150000
+                         call               ?Resolve@IntersectIntervalCircle_1_@@QAEXXZ    // 0x006154a7    e844150000
 _jmp_addr_0x006154ac:    {disp8} fld        dword ptr [ebx + 0x1c]                         // 0x006154ac    d9431c
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                    // 0x006154af    d81d98a38a00
                          fnstsw             ax                                             // 0x006154b5    dfe0
@@ -9415,9 +9417,9 @@ _jmp_addr_0x006155a0:    push               esi                                 
                          test               eax, eax                                       // 0x006155b5    85c0
                          {disp8} jne        _jmp_addr_0x006155eb                           // 0x006155b7    7532
                          mov.s              ecx, ebx                                       // 0x006155b9    8bcb
-                         call               @Resolve__26IntersectIntervalCircle_1_Fv@4     // 0x006155bb    e830140000
+                         call               ?Resolve@IntersectIntervalCircle_1_@@QAEXXZ    // 0x006155bb    e830140000
                          mov.s              ecx, esi                                       // 0x006155c0    8bce
-                         call               @Resolve__26IntersectIntervalCircle_1_Fv@4     // 0x006155c2    e829140000
+                         call               ?Resolve@IntersectIntervalCircle_1_@@QAEXXZ    // 0x006155c2    e829140000
                          push               esi                                            // 0x006155c7    56
                          mov.s              ecx, edi                                       // 0x006155c8    8bcf
                          call               @__lt__17Point2DCompare_FRC17Point2DCompare_0_@12                           // 0x006155ca    e821acffff
@@ -9546,7 +9548,7 @@ _jmp_addr_0x00615727:    {disp8} lea        ecx, dword ptr [esp + 0x5c]         
                          call               @__as__17Point2DCompare_0_@12                  // 0x0061574c    e8ef9fffff
                          {disp8} mov        dword ptr [esi + 0x28], 0x00000000             // 0x00615751    c7462800000000
 _jmp_addr_0x00615758:    mov.s              ecx, edi                                       // 0x00615758    8bcf
-                         call               @Normalize__7Point2DFv@4                       // 0x0061575a    e8d1bbffff
+                         call               ?Normalize@Point2D@@QAEMXZ                     // 0x0061575a    e8d1bbffff
                          fstp               st(0)                                          // 0x0061575f    ddd8
                          {disp8} lea        eax, dword ptr [esp + 0x2c]                    // 0x00615761    8d44242c
                          push               eax                                            // 0x00615765    50
@@ -9604,7 +9606,7 @@ _jmp_addr_0x0061580d:    {disp8} fld        dword ptr [esp + 0x18]              
                          test               eax, eax                                       // 0x0061582c    85c0
                          {disp8} jne        _jmp_addr_0x00615874                           // 0x0061582e    7544
                          mov.s              ecx, ebp                                       // 0x00615830    8bcd
-                         call               @InitStepsXZ__13MobileWallHugFv@4              // 0x00615832    e86967ffff
+                         call               ?InitStepsXZ@MobileWallHug@@QAEXXZ             // 0x00615832    e86967ffff
                          push               ebp                                            // 0x00615837    55
                          {disp8} lea        ecx, dword ptr [ebp + 0x70]                    // 0x00615838    8d4d70
                          {disp8} mov        byte ptr [ebp + 0x78], 0x10                    // 0x0061583b    c6457810
@@ -9654,7 +9656,7 @@ _jmp_addr_0x00615874:    {disp8} mov        dl, byte ptr [esi + 0x24]           
 _jmp_addr_0x006158be:    {disp32} mov       ecx, dword ptr [esp + 0x00000098]              // 0x006158be    8b8c2498000000
                          push               ecx                                            // 0x006158c5    51
                          push               ebp                                            // 0x006158c6    55
-                         call               _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_0_FP13MobileWallHugRC9MapCoords                           // 0x006158c7    e874f3ffff
+                         call               ?MoveToCircleHugCircleSquareSweep@MobileWallHug_InCircleStuff_0_@@SAIPAVMobileWallHug@@ABUMapCoords@@@Z                    // 0x006158c7    e874f3ffff
                          mov.s              edi, eax                                       // 0x006158cc    8bf8
                          {disp32} mov       eax, dword ptr [data_bytes + 0x22e2cc]         // 0x006158ce    a1cc42bf00
                          inc                eax                                            // 0x006158d3    40
@@ -9697,7 +9699,7 @@ _jmp_addr_0x0061593b:    {disp8} lea        eax, dword ptr [esp + 0x74]         
                          push               eax                                            // 0x00615948    50
                          {disp8} lea        eax, dword ptr [ebx + 0x14]                    // 0x00615949    8d4314
                          push               eax                                            // 0x0061594c    50
-                         call               _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords                           // 0x0061594d    e8ee781300
+                         call               ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z                                // 0x0061594d    e8ee781300
                          {disp8} fld        dword ptr [esp + 0x30]                         // 0x00615952    d9442430
                          {disp32} fmul      dword ptr [rdata_bytes + 0x87688]              // 0x00615956    d80d88069300
                          add                esp, 0x08                                      // 0x0061595c    83c408
@@ -9711,7 +9713,7 @@ _jmp_addr_0x0061593b:    {disp8} lea        eax, dword ptr [esp + 0x74]         
                          mov.s              ecx, ebx                                       // 0x00615976    8bcb
                          call               @SetGameAngle__13MobileWallHugFUs@10           // 0x00615978    e81381ffff
                          mov.s              ecx, ebx                                       // 0x0061597d    8bcb
-                         call               @RebuildMoveByStep__13MobileWallHugFv@4        // 0x0061597f    e88c43ffff
+                         call               ?RebuildMoveByStep@MobileWallHug@@QAEXXZ       // 0x0061597f    e88c43ffff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x22e2cc]         // 0x00615984    a1cc42bf00
                          pop                edi                                            // 0x00615989    5f
                          pop                esi                                            // 0x0061598a    5e
@@ -9723,7 +9725,8 @@ _jmp_addr_0x0061593b:    {disp8} lea        eax, dword ptr [esp + 0x74]         
                          add                esp, 0x00000080                                // 0x00615998    81c480000000
                          ret                                                               // 0x0061599e    c3
                          nop                                                               // 0x0061599f    90
-@__opPQ210NewCollide3Obj__20ObjectCircleIteratorFv@4:    {disp8} mov        eax, dword ptr [ecx + 0x08]                    // 0x006159a0    8b4108
+?__opPQ210NewCollide3Obj@ObjectCircleIterator@@QAEPAUQ210NewCollide3Obj@@XZ:
+                                                         {disp8} mov        eax, dword ptr [ecx + 0x08]                    // 0x006159a0    8b4108
                          test               eax, eax                                       // 0x006159a3    85c0
                          {disp8} jne        _jmp_addr_0x006159bb                           // 0x006159a5    7514
                          {disp8} mov        eax, dword ptr [ecx + 0x04]                    // 0x006159a7    8b4104
@@ -9761,7 +9764,8 @@ _jmp_addr_0x006159e4:    xor.s              eax, eax                            
                          nop                                                               // 0x006159ed    90
                          nop                                                               // 0x006159ee    90
                          nop                                                               // 0x006159ef    90
-_MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_1_FP13MobileWallHugRC9MapCoords:    sub                esp, 0x00000080                                // 0x006159f0    81ec80000000
+?MoveToCircleHugCircleSquareSweep@MobileWallHug_InCircleStuff_1_@@SAIPAVMobileWallHug@@ABUMapCoords@@@Z:
+                                                                                                     sub                esp, 0x00000080                                // 0x006159f0    81ec80000000
                          push               ebx                                            // 0x006159f6    53
                          {disp32} mov       ebx, dword ptr [esp + 0x00000088]              // 0x006159f7    8b9c2488000000
                          push               ebp                                            // 0x006159fe    55
@@ -9770,11 +9774,11 @@ _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_1_FP13MobileWal
                          {disp8} lea        esi, dword ptr [ebx + 0x70]                    // 0x00615a06    8d7370
                          push               edi                                            // 0x00615a09    57
                          mov.s              ecx, esi                                       // 0x00615a0a    8bce
-                         call               @GetObjectPtr__13CircleHugInfoFv@4             // 0x00615a0c    e84f4cffff
+                         call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ             // 0x00615a0c    e84f4cffff
                          {disp8} mov        eax, dword ptr [eax + 0x08]                    // 0x00615a11    8b4008
                          mov.s              ecx, esi                                       // 0x00615a14    8bce
                          {disp8} mov        dword ptr [esp + 0x24], eax                    // 0x00615a16    89442424
-                         call               @GetObjectPtr__13CircleHugInfoFv@4             // 0x00615a1a    e8414cffff
+                         call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ             // 0x00615a1a    e8414cffff
                          fld                dword ptr [eax]                                // 0x00615a1f    d900
                          {disp8} mov        ecx, dword ptr [esp + 0x24]                    // 0x00615a21    8b4c2424
                          {disp8} lea        eax, dword ptr [ebx + 0x14]                    // 0x00615a25    8d4314
@@ -9799,7 +9803,7 @@ _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_1_FP13MobileWal
                          {disp8} mov        edx, dword ptr [esp + 0x30]                    // 0x00615a68    8b542430
                          {disp32} mov       dword ptr [data_bytes + 0x378e74], edx         // 0x00615a6c    891574eed300
                          {disp32} fstp      dword ptr [data_bytes + 0x378e70]              // 0x00615a72    d91d70eed300
-                         call               @GetObjectPtr__13CircleHugInfoFv@4             // 0x00615a78    e8e34bffff
+                         call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ             // 0x00615a78    e8e34bffff
                          {disp8} fld        dword ptr [esp + 0x2c]                         // 0x00615a7d    d944242c
                          {disp8} mov        eax, dword ptr [eax + 0x0c]                    // 0x00615a81    8b400c
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                    // 0x00615a84    d81d98a38a00
@@ -9833,9 +9837,9 @@ _jmp_addr_0x00615ae0:    {disp8} fdiv       dword ptr [esp + 0x14]              
                          {disp8} lea        ecx, dword ptr [esp + 0x68]                    // 0x00615ae4    8d4c2468
                          {disp32} fsub      qword ptr [rdata_bytes + 0x6c440]              // 0x00615ae8    dc2540549100
                          {disp8} fstp       dword ptr [esp + 0x28]                         // 0x00615aee    d95c2428
-                         call               @__ct__9MapCoordsFv@4                          // 0x00615af2    e869c0e2ff
+                         call               ??0MapCoords@@QAE@XZ                           // 0x00615af2    e869c0e2ff
                          mov.s              ecx, esi                                       // 0x00615af7    8bce
-                         call               @GetObjectPtr__13CircleHugInfoFv@4             // 0x00615af9    e8624bffff
+                         call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ             // 0x00615af9    e8624bffff
                          mov.s              esi, eax                                       // 0x00615afe    8bf0
                          fld                dword ptr [esi]                                // 0x00615b00    d906
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3400]               // 0x00615b02    d80d00c48a00
@@ -9868,7 +9872,7 @@ _jmp_addr_0x00615ae0:    {disp8} fdiv       dword ptr [esp + 0x14]              
 _jmp_addr_0x00615b72:    {disp32} mov       ebp, dword ptr [esp + 0x00000098]              // 0x00615b72    8bac2498000000
                          push               ebp                                            // 0x00615b79    55
                          mov.s              ecx, ebp                                       // 0x00615b7a    8bcd
-                         call               @GetFirstObjectFixed__9MapCoordsCFv@4          // 0x00615b7c    e82fd9feff
+                         call               ?GetFirstObjectFixed@MapCoords@@QBEPAVObject@@XZ          // 0x00615b7c    e82fd9feff
                          push               eax                                            // 0x00615b81    50
                          {disp32} lea       ecx, dword ptr [esp + 0x00000088]              // 0x00615b82    8d8c2488000000
                          call               @Init__20ObjectCircleIteratorFP6ObjectRC9MapCoords@16                           // 0x00615b89    e8f276ffff
@@ -9991,7 +9995,7 @@ _jmp_addr_0x00615cef:    {disp8} mov        byte ptr [esi + 0x14], al           
                          {disp32} jmp       _jmp_addr_0x006160e3                           // 0x00615d18    e9c6030000
 _jmp_addr_0x00615d1d:    {disp32} lea       ecx, dword ptr [esp + 0x00000080]              // 0x00615d1d    8d8c2480000000
                          {disp8} mov        dword ptr [esi + 0x20], edi                    // 0x00615d24    897e20
-                         call               @__opPQ210NewCollide3Obj__20ObjectCircleIteratorFv@4                           // 0x00615d27    e874fcffff
+                         call               ?__opPQ210NewCollide3Obj@ObjectCircleIterator@@QAEPAUQ210NewCollide3Obj@@XZ    // 0x00615d27    e874fcffff
                          mov.s              edi, eax                                       // 0x00615d2c    8bf8
                          {disp32} mov       eax, dword ptr [esp + 0x00000088]              // 0x00615d2e    8b842488000000
                          test               eax, eax                                       // 0x00615d35    85c0
@@ -10064,7 +10068,7 @@ _jmp_addr_0x00615df1:    fld                dword ptr [esi]                     
                          mov.s              ecx, edi                                       // 0x00615e07    8bcf
                          call               @Resolve__Point2DCompare_1_@4                  // 0x00615e09    e8b2a3ffff
                          mov.s              ecx, edi                                       // 0x00615e0e    8bcf
-                         call               @GetNormSq__7Point2DFv@4                       // 0x00615e10    e8dbb7ffff
+                         call               ?GetNormSq@Point2D@@QAEMXZ                     // 0x00615e10    e8dbb7ffff
                          {disp8} fadd       dword ptr [esp + 0x24]                         // 0x00615e15    d8442424
                          {disp8} fld        dword ptr [esp + 0x18]                         // 0x00615e19    d9442418
                          mov.s              ecx, edi                                       // 0x00615e1d    8bcf
@@ -10075,7 +10079,7 @@ _jmp_addr_0x00615df1:    fld                dword ptr [esi]                     
                          {disp8} fstp       dword ptr [esi + 0x18]                         // 0x00615e2f    d95e18
                          {disp8} mov        eax, dword ptr [esi + 0x18]                    // 0x00615e32    8b4618
                          {disp8} mov        dword ptr [esp + 0x18], eax                    // 0x00615e35    89442418
-                         call               @GetNormSq__7Point2DFv@4                       // 0x00615e39    e8b2b7ffff
+                         call               ?GetNormSq@Point2D@@QAEMXZ                     // 0x00615e39    e8b2b7ffff
                          {disp8} fld        dword ptr [esp + 0x18]                         // 0x00615e3e    d9442418
                          {disp8} fmul       dword ptr [esp + 0x18]                         // 0x00615e42    d84c2418
                          fsubp              st(1), st                                      // 0x00615e46    dee9
@@ -10133,7 +10137,7 @@ _jmp_addr_0x00615ee6:    {disp32} mov       eax, dword ptr [esp + 0x0000008c]   
                          {disp32} je        _jmp_addr_0x00616408                           // 0x00615efa    0f8408050000
 _jmp_addr_0x00615f00:    {disp32} lea       ecx, dword ptr [esp + 0x00000080]              // 0x00615f00    8d8c2480000000
                          {disp8} mov        dword ptr [esi + 0x20], 0x00000000             // 0x00615f07    c7462000000000
-                         call               @__opPQ210NewCollide3Obj__20ObjectCircleIteratorFv@4                           // 0x00615f0e    e88dfaffff
+                         call               ?__opPQ210NewCollide3Obj@ObjectCircleIterator@@QAEPAUQ210NewCollide3Obj@@XZ    // 0x00615f0e    e88dfaffff
                          mov.s              ebp, eax                                       // 0x00615f13    8be8
                          {disp32} mov       eax, dword ptr [esp + 0x00000088]              // 0x00615f15    8b842488000000
                          test               eax, eax                                       // 0x00615f1c    85c0
@@ -10221,7 +10225,7 @@ _jmp_addr_0x00615fcf:    fld                dword ptr [esi]                     
                          {disp8} mov        dword ptr [esp + 0x18], edx                    // 0x0061601b    89542418
                          fstp               st(0)                                          // 0x0061601f    ddd8
                          fstp               st(0)                                          // 0x00616021    ddd8
-                         call               @GetNormSq__7Point2DFv@4                       // 0x00616023    e8c8b5ffff
+                         call               ?GetNormSq@Point2D@@QAEMXZ                     // 0x00616023    e8c8b5ffff
                          {disp8} fld        dword ptr [esp + 0x18]                         // 0x00616028    d9442418
                          {disp8} fmul       dword ptr [esp + 0x18]                         // 0x0061602c    d84c2418
                          fsubp              st(1), st                                      // 0x00616030    dee9
@@ -10288,7 +10292,7 @@ _jmp_addr_0x006160ea:    {disp32} mov       eax, dword ptr [esp + 0x0000008c]   
                          {disp32} mov       ebp, dword ptr [esp + 0x00000098]              // 0x00616104    8bac2498000000
 _jmp_addr_0x0061610b:    {disp32} lea       ecx, dword ptr [esp + 0x00000080]              // 0x0061610b    8d8c2480000000
                          {disp8} mov        dword ptr [ebx + 0x20], 0x00000000             // 0x00616112    c7432000000000
-                         call               @__opPQ210NewCollide3Obj__20ObjectCircleIteratorFv@4                           // 0x00616119    e882f8ffff
+                         call               ?__opPQ210NewCollide3Obj@ObjectCircleIterator@@QAEPAUQ210NewCollide3Obj@@XZ    // 0x00616119    e882f8ffff
                          mov.s              edi, eax                                       // 0x0061611e    8bf8
                          {disp32} mov       eax, dword ptr [esp + 0x00000088]              // 0x00616120    8b842488000000
                          test               eax, eax                                       // 0x00616127    85c0
@@ -10359,7 +10363,7 @@ _jmp_addr_0x006161dc:    fld                dword ptr [eax]                     
                          mov.s              ecx, edi                                       // 0x006161f2    8bcf
                          call               @Resolve__Point2DCompare_1_@4                  // 0x006161f4    e8c79fffff
                          mov.s              ecx, edi                                       // 0x006161f9    8bcf
-                         call               @GetNormSq__7Point2DFv@4                       // 0x006161fb    e8f0b3ffff
+                         call               ?GetNormSq@Point2D@@QAEMXZ                     // 0x006161fb    e8f0b3ffff
                          {disp8} fadd       dword ptr [esp + 0x24]                         // 0x00616200    d8442424
                          {disp8} fld        dword ptr [esp + 0x1c]                         // 0x00616204    d944241c
                          {disp8} fmul       dword ptr [esp + 0x1c]                         // 0x00616208    d84c241c
@@ -10370,7 +10374,7 @@ _jmp_addr_0x006161dc:    fld                dword ptr [eax]                     
                          {disp8} mov        ecx, dword ptr [ebx + 0x18]                    // 0x0061621b    8b4b18
                          {disp8} mov        dword ptr [esp + 0x18], ecx                    // 0x0061621e    894c2418
                          mov.s              ecx, edi                                       // 0x00616222    8bcf
-                         call               @GetNormSq__7Point2DFv@4                       // 0x00616224    e8c7b3ffff
+                         call               ?GetNormSq@Point2D@@QAEMXZ                     // 0x00616224    e8c7b3ffff
                          {disp8} fld        dword ptr [esp + 0x18]                         // 0x00616229    d9442418
                          {disp8} fmul       dword ptr [esp + 0x18]                         // 0x0061622d    d84c2418
                          fsubp              st(1), st                                      // 0x00616231    dee9
@@ -10592,7 +10596,7 @@ _jmp_addr_0x006164cf:    {disp8} lea        ecx, dword ptr [esp + 0x5c]         
                          call               @__as__17Point2DCompare_1_@12                  // 0x006164f4    e82792ffff
                          {disp8} mov        dword ptr [esi + 0x28], 0x00000000             // 0x006164f9    c7462800000000
 _jmp_addr_0x00616500:    mov.s              ecx, edi                                       // 0x00616500    8bcf
-                         call               @Normalize__7Point2DFv@4                       // 0x00616502    e829aeffff
+                         call               ?Normalize@Point2D@@QAEMXZ                     // 0x00616502    e829aeffff
                          fstp               st(0)                                          // 0x00616507    ddd8
                          {disp8} lea        eax, dword ptr [esp + 0x2c]                    // 0x00616509    8d44242c
                          push               eax                                            // 0x0061650d    50
@@ -10650,7 +10654,7 @@ _jmp_addr_0x006165b5:    {disp8} fld        dword ptr [esp + 0x18]              
                          test               eax, eax                                       // 0x006165d4    85c0
                          {disp8} jne        _jmp_addr_0x0061661c                           // 0x006165d6    7544
                          mov.s              ecx, ebp                                       // 0x006165d8    8bcd
-                         call               @InitStepsXZ__13MobileWallHugFv@4              // 0x006165da    e8c159ffff
+                         call               ?InitStepsXZ@MobileWallHug@@QAEXXZ             // 0x006165da    e8c159ffff
                          push               ebp                                            // 0x006165df    55
                          {disp8} lea        ecx, dword ptr [ebp + 0x70]                    // 0x006165e0    8d4d70
                          {disp8} mov        byte ptr [ebp + 0x78], 0x10                    // 0x006165e3    c6457810
@@ -10700,7 +10704,7 @@ _jmp_addr_0x0061661c:    {disp8} mov        dl, byte ptr [esi + 0x24]           
 _jmp_addr_0x00616666:    {disp32} mov       ecx, dword ptr [esp + 0x00000098]              // 0x00616666    8b8c2498000000
                          push               ecx                                            // 0x0061666d    51
                          push               ebp                                            // 0x0061666e    55
-                         call               _MoveToCircleHugCircleSquareSweep__30MobileWallHug_InCircleStuff_1_FP13MobileWallHugRC9MapCoords                           // 0x0061666f    e87cf3ffff
+                         call               ?MoveToCircleHugCircleSquareSweep@MobileWallHug_InCircleStuff_1_@@SAIPAVMobileWallHug@@ABUMapCoords@@@Z                    // 0x0061666f    e87cf3ffff
                          mov.s              edi, eax                                       // 0x00616674    8bf8
                          {disp32} mov       eax, dword ptr [data_bytes + 0x22e2c8]         // 0x00616676    a1c842bf00
                          inc                eax                                            // 0x0061667b    40
@@ -10743,7 +10747,7 @@ _jmp_addr_0x006166e3:    {disp8} lea        eax, dword ptr [esp + 0x74]         
                          push               eax                                            // 0x006166f0    50
                          {disp8} lea        eax, dword ptr [ebx + 0x14]                    // 0x006166f1    8d4314
                          push               eax                                            // 0x006166f4    50
-                         call               _GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords                           // 0x006166f5    e8466b1300
+                         call               ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z                                // 0x006166f5    e8466b1300
                          {disp8} fld        dword ptr [esp + 0x30]                         // 0x006166fa    d9442430
                          {disp32} fmul      dword ptr [rdata_bytes + 0x87678]              // 0x006166fe    d80d78069300
                          add                esp, 0x08                                      // 0x00616704    83c408
@@ -10757,7 +10761,7 @@ _jmp_addr_0x006166e3:    {disp8} lea        eax, dword ptr [esp + 0x74]         
                          mov.s              ecx, ebx                                       // 0x0061671e    8bcb
                          call               @SetGameAngle__13MobileWallHugFUs@10           // 0x00616720    e86b73ffff
                          mov.s              ecx, ebx                                       // 0x00616725    8bcb
-                         call               @RebuildMoveByStep__13MobileWallHugFv@4        // 0x00616727    e8e435ffff
+                         call               ?RebuildMoveByStep@MobileWallHug@@QAEXXZ       // 0x00616727    e8e435ffff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x22e2c8]         // 0x0061672c    a1c842bf00
                          pop                edi                                            // 0x00616731    5f
                          pop                esi                                            // 0x00616732    5e
@@ -11063,7 +11067,8 @@ _jmp_addr_0x006169e6:    ret                                                    
                          nop                                                               // 0x006169ed    90
                          nop                                                               // 0x006169ee    90
                          nop                                                               // 0x006169ef    90
-@Resolve__26IntersectIntervalCircle_1_Fv@4:    push               ecx                                            // 0x006169f0    51
+?Resolve@IntersectIntervalCircle_1_@@QAEXXZ:
+                                               push               ecx                                            // 0x006169f0    51
                          fld                dword ptr [ecx]                                // 0x006169f1    d901
                          {disp8} fcomp      dword ptr [ecx + 0x0c]                         // 0x006169f3    d8590c
                          fnstsw             ax                                             // 0x006169f6    dfe0
@@ -11278,7 +11283,7 @@ _jmp_addr_0x00616c4c:    and                eax, 0x000000ff                     
                          {disp8} mov        dword ptr [esp + 0x24], eax                    // 0x00616c51    89442424
                          {disp8} je         _jmp_addr_0x00616c5e                           // 0x00616c55    7407
 _jmp_addr_0x00616c57:    mov.s              ecx, esi                                       // 0x00616c57    8bce
-                         call               @Resolve__26IntersectIntervalCircle_1_Fv@4     // 0x00616c59    e892fdffff
+                         call               ?Resolve@IntersectIntervalCircle_1_@@QAEXXZ    // 0x00616c59    e892fdffff
 _jmp_addr_0x00616c5e:    pop                edi                                            // 0x00616c5e    5f
                          pop                esi                                            // 0x00616c5f    5e
                          add                esp, 0x14                                      // 0x00616c60    83c414
@@ -12056,7 +12061,8 @@ _jmp_addr_0x0061742d:    {disp8} mov        dword ptr [eax + -0x10], ebx        
                          nop                                                               // 0x0061746d    90
                          nop                                                               // 0x0061746e    90
                          nop                                                               // 0x0061746f    90
-@AddHairGroup__9MorphableFv@4:    push               esi                                            // 0x00617470    56
+?AddHairGroup@Morphable@@QAEIXZ:
+                                  push               esi                                            // 0x00617470    56
                          mov.s              esi, ecx                                       // 0x00617471    8bf1
                          cmp                dword ptr [esi + 0x00004800], 0x08             // 0x00617473    83be0048000008
                          {disp8} jge        _jmp_addr_0x006174ea                           // 0x0061747a    7d6e
@@ -12278,7 +12284,7 @@ _jmp_addr_0x00617708:    {disp32} mov       ecx, dword ptr [ebx + 0x000047f4]   
                          push               edx                                            // 0x00617779    52
                          push               eax                                            // 0x0061777a    50
                          push               ecx                                            // 0x0061777b    51
-                         call               _SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix                           // 0x0061777c    e84f2a2200
+                         call               ?SetTransform@LH3DAnim@@SAMPAULHMatrix@@PAULH3DMesh@@AAU2@@Z                      // 0x0061777c    e84f2a2200
                          fstp               st(0)                                          // 0x00617781    ddd8
                          {disp32} mov       eax, dword ptr [ebx + 0x000047b8]              // 0x00617783    8b83b8470000
                          add                esp, 0x0c                                      // 0x00617789    83c40c
@@ -12348,7 +12354,7 @@ _jmp_addr_0x00617839:    {disp8} mov        dword ptr [eax + -0x20], 0x00000000 
                          {disp8} jne        _jmp_addr_0x00617839                           // 0x0061784a    75ed
                          cmp                dword ptr [ecx + 0x00000088], 0x01             // 0x0061784c    83b98800000001
                          {disp8} jne        _jmp_addr_0x0061785a                           // 0x00617853    7505
-                         {disp32} jmp       _SetCursorOn__8FrontEndFv                      // 0x00617855    e9f64bf2ff
+                         {disp32} jmp       ?SetCursorOn@FrontEnd@@SAXXZ                   // 0x00617855    e9f64bf2ff
 _jmp_addr_0x0061785a:    ret                                                               // 0x0061785a    c3
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x0061785b    e8999fdeff
 _jmp_addr_0x00617860:    {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00617860    8b442404
@@ -12760,7 +12766,7 @@ _jmp_addr_0x00617bf5:    test               ebp, ebp                            
                          {disp32} lea       ebx, dword ptr [edi + 0x00004804]              // 0x00617c11    8d9f04480000
                          mov.s              ebp, eax                                       // 0x00617c17    8be8
 _jmp_addr_0x00617c19:    mov.s              ecx, edi                                       // 0x00617c19    8bcf
-                         call               @AddHairGroup__9MorphableFv@4                  // 0x00617c1b    e850f8ffff
+                         call               ?AddHairGroup@Morphable@@QAEIXZ                // 0x00617c1b    e850f8ffff
                          mov                ecx, dword ptr [ebx]                           // 0x00617c20    8b0b
                          push               esi                                            // 0x00617c22    56
                          call               @ReadBinary__9HairGroupFP6LHFile@12            // 0x00617c23    e858052300
@@ -12878,7 +12884,7 @@ _jmp_addr_0x00617d43:    push               -0x1                                
                          {disp8} jle        _jmp_addr_0x00617d7a                           // 0x00617d59    7e1f
                          {disp32} lea       ebx, dword ptr [edi + 0x00004804]              // 0x00617d5b    8d9f04480000
 _jmp_addr_0x00617d61:    mov.s              ecx, edi                                       // 0x00617d61    8bcf
-                         call               @AddHairGroup__9MorphableFv@4                  // 0x00617d63    e808f7ffff
+                         call               ?AddHairGroup@Morphable@@QAEIXZ                // 0x00617d63    e808f7ffff
                          mov                ecx, dword ptr [ebx]                           // 0x00617d68    8b0b
                          push               esi                                            // 0x00617d6a    56
                          call               @ReadBinary__9HairGroupFP6LHFile@12            // 0x00617d6b    e810042300
@@ -12903,7 +12909,7 @@ _jmp_addr_0x00617d7a:    {disp8} mov        eax, dword ptr [esp + 0x60]         
 _jmp_addr_0x00617d9b:    mov.s              ecx, esi                                       // 0x00617d9b    8bce
                          call               @GetSegmentData__6LHFileFPvUll@20              // 0x00617d9d    e89e621a00
 _jmp_addr_0x00617da2:    mov.s              ecx, edi                                       // 0x00617da2    8bcf
-                         call               _Create__11LH3DTextureFPvUlUlP13TextureFormat  // 0x00617da4    e807090000
+                         call               ?Create@LH3DTexture@@SAPAV1@PAXKKPAUTextureFormat@@@Z  // 0x00617da4    e807090000
                          pop                edi                                            // 0x00617da9    5f
                          pop                esi                                            // 0x00617daa    5e
                          pop                ebp                                            // 0x00617dab    5d
@@ -12958,7 +12964,7 @@ _jmp_addr_0x00617e18:    push               0x0000021d                          
                          test               eax, eax                                       // 0x00617e2c    85c0
                          {disp8} je         _jmp_addr_0x00617e39                           // 0x00617e2e    7409
                          mov.s              ecx, eax                                       // 0x00617e30    8bc8
-                         call               @__ct__5CAnimFv@4                              // 0x00617e32    e849662400
+                         call               ??0CAnim@@QAE@XZ                               // 0x00617e32    e849662400
                          {disp8} jmp        _jmp_addr_0x00617e3b                           // 0x00617e37    eb02
 _jmp_addr_0x00617e39:    xor.s              eax, eax                                       // 0x00617e39    33c0
 _jmp_addr_0x00617e3b:    lea                edx, dword ptr [edi + ebp * 0x1]               // 0x00617e3b    8d142f
@@ -12982,9 +12988,9 @@ _jmp_addr_0x00617e53:    {disp8} mov        ecx, dword ptr [esp + 0x10]         
                          {disp32} jl        _jmp_addr_0x00617dd8                           // 0x00617e85    0f8c4dffffff
                          {disp8} lea        esi, dword ptr [ebx + 0x0c]                    // 0x00617e8b    8d730c
                          mov.s              ecx, esi                                       // 0x00617e8e    8bce
-                         call               @CloseSegment__6LHFileFv@4                     // 0x00617e90    e8bb601a00
+                         call               ?CloseSegment@LHFile@@QAEIXZ                   // 0x00617e90    e8bb601a00
                          mov.s              ecx, esi                                       // 0x00617e95    8bce
-                         call               @Close__6LHFileFv@4                            // 0x00617e97    e8245d1a00
+                         call               ?Close@LHFile@@QAEIXZ                          // 0x00617e97    e8245d1a00
                          pop                edi                                            // 0x00617e9c    5f
                          pop                esi                                            // 0x00617e9d    5e
                          pop                ebp                                            // 0x00617e9e    5d
@@ -13387,7 +13393,7 @@ _jmp_addr_0x006182f0:    sub                esp, 0x0c                           
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                    // 0x0061833d    8d4c2404
                          {disp8} mov        dword ptr [esp + 0x08], eax                    // 0x00618341    89442408
                          {disp8} mov        dword ptr [esp + 0x0c], 0x00000000             // 0x00618345    c744240c00000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4 // 0x0061834d    e83ead1e00
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z // 0x0061834d    e83ead1e00
                          {disp8} fstp       dword ptr [esi + 0x7c]                         // 0x00618352    d95e7c
                          pop                esi                                            // 0x00618355    5e
                          add                esp, 0x0c                                      // 0x00618356    83c40c
@@ -13477,7 +13483,7 @@ _jmp_addr_0x006182f0:    sub                esp, 0x0c                           
                          ret                0x0004                                         // 0x00618422    c20400
 _jmp_addr_0x00618425:    {disp8} mov        eax, dword ptr [esp + 0x10]                    // 0x00618425    8b442410
                          push               eax                                            // 0x00618429    50
-                         call               _Alloc__7LH3DMemFl                             // 0x0061842a    e8b1a82200
+                         call               ?Alloc@LH3DMem@@SAPAXJ@Z                       // 0x0061842a    e8b1a82200
                          {disp8} mov        edx, dword ptr [esp + 0x14]                    // 0x0061842f    8b542414
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x00618433    8d4c2420
                          push               ecx                                            // 0x00618437    51
@@ -13530,7 +13536,7 @@ _jmp_addr_0x0061848c:    {disp32} mov       edi, dword ptr [esp + 0x00000094]   
                          {disp8} jl         _jmp_addr_0x0061845d                           // 0x006184c8    7c93
                          {disp8} mov        eax, dword ptr [esp + 0x18]                    // 0x006184ca    8b442418
                          push               eax                                            // 0x006184ce    50
-                         call               _Free__7LH3DMemFPv                             // 0x006184cf    e88ca82200
+                         call               ?Free@LH3DMem@@SAXPAX@Z                        // 0x006184cf    e88ca82200
                          {disp32} mov       ecx, dword ptr [ebx + 0x000000b8]              // 0x006184d4    8b8bb8000000
                          {disp8} mov        edx, dword ptr [ecx + 0x10]                    // 0x006184da    8b5110
                          mov                eax, dword ptr [edx]                           // 0x006184dd    8b02
@@ -13597,7 +13603,7 @@ _jmp_addr_0x00618524:    {disp32} mov       eax, dword ptr [ebx + 0x000047b8]   
                          {disp8} mov        dword ptr [esp + 0x70], 0x3f800000             // 0x006185e5    c74424700000803f
                          {disp8} mov        dword ptr [esp + 0x60], 0x3f800000             // 0x006185ed    c74424600000803f
                          {disp8} mov        dword ptr [esp + 0x50], 0x3f800000             // 0x006185f5    c74424500000803f
-                         call               _SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix                           // 0x006185fd    e8ce1b2200
+                         call               ?SetTransform@LH3DAnim@@SAMPAULHMatrix@@PAULH3DMesh@@AAU2@@Z                      // 0x006185fd    e8ce1b2200
                          {disp32} fstp      dword ptr [ebx + 0x0000008c]                   // 0x00618602    d99b8c000000
                          {disp32} mov       eax, dword ptr [ebx + 0x000047b8]              // 0x00618608    8b83b8470000
                          add                esp, 0x30                                      // 0x0061860e    83c430
@@ -13629,7 +13635,7 @@ _jmp_addr_0x00618652:    {disp8} lea        ecx, dword ptr [esp + 0x50]         
                          push               0x00bf430c                                     // 0x00618657    680c43bf00
                          call               _jmp_addr_0x00617140                           // 0x0061865c    e8dfeaffff
                          push               edi                                            // 0x00618661    57
-                         call               _Free__7LH3DMemFPv                             // 0x00618662    e8f9a62200
+                         call               ?Free@LH3DMem@@SAXPAX@Z                        // 0x00618662    e8f9a62200
                          add                esp, 0x0c                                      // 0x00618667    83c40c
                          mov.s              ecx, esi                                       // 0x0061866a    8bce
                          call               @Release__8LH3DMeshFv@4                        // 0x0061866c    e88fe61e00
@@ -13645,7 +13651,7 @@ _jmp_addr_0x00618680:    {disp8} lea        edx, dword ptr [esp + 0x50]         
                          push               0x00bf42f4                                     // 0x00618685    68f442bf00
                          call               _jmp_addr_0x00617140                           // 0x0061868a    e8b1eaffff
                          push               edi                                            // 0x0061868f    57
-                         call               _Free__7LH3DMemFPv                             // 0x00618690    e8cba62200
+                         call               ?Free@LH3DMem@@SAXPAX@Z                        // 0x00618690    e8cba62200
                          add                esp, 0x0c                                      // 0x00618695    83c40c
                          pop                edi                                            // 0x00618698    5f
                          pop                esi                                            // 0x00618699    5e
@@ -13664,7 +13670,7 @@ _jmp_addr_0x00618680:    {disp8} lea        edx, dword ptr [esp + 0x50]         
                          nop                                                               // 0x006186ae    90
                          nop                                                               // 0x006186af    90
 
-_Create__11LH3DTextureFPvUlUlP13TextureFormat:
+?Create@LH3DTexture@@SAPAV1@PAXKKPAUTextureFormat@@@Z:
                          {disp32} mov       eax, dword ptr [_ape_hair]                     // 0x006186b0    a104f0d300
                          test               eax, eax                                       // 0x006186b5    85c0
                          {disp8} je         _jmp_addr_0x006186bc                           // 0x006186b7    7403
@@ -13784,7 +13790,7 @@ _jmp_addr_0x00618713:    {disp8} mov        byte ptr [eax + 0x04], 0x32         
                          ret                0x0008                                         // 0x006187ea    c20800
 _jmp_addr_0x006187ed:    {disp8} mov        eax, dword ptr [esp + 0x18]                    // 0x006187ed    8b442418
                          push               eax                                            // 0x006187f1    50
-                         call               _Alloc__7LH3DMemFl                             // 0x006187f2    e8e9a42200
+                         call               ?Alloc@LH3DMem@@SAPAXJ@Z                       // 0x006187f2    e8e9a42200
                          {disp8} mov        edx, dword ptr [esp + 0x1c]                    // 0x006187f7    8b54241c
                          {disp8} lea        ecx, dword ptr [esp + 0x50]                    // 0x006187fb    8d4c2450
                          push               ecx                                            // 0x006187ff    51
@@ -13836,7 +13842,7 @@ _jmp_addr_0x0061887c:    {disp8} mov        edx, dword ptr [ecx + 0x04]         
                          push               0x00bf43d4                                     // 0x00618889    68d443bf00
 _jmp_addr_0x0061888e:    call               _jmp_addr_0x00617140                           // 0x0061888e    e8ade8ffff
                          push               edi                                            // 0x00618893    57
-                         call               _Free__7LH3DMemFPv                             // 0x00618894    e8c7a42200
+                         call               ?Free@LH3DMem@@SAXPAX@Z                        // 0x00618894    e8c7a42200
                          add                esp, 0x0c                                      // 0x00618899    83c40c
                          mov.s              ecx, esi                                       // 0x0061889c    8bce
                          call               @Release__8LH3DMeshFv@4                        // 0x0061889e    e85de41e00
@@ -13898,7 +13904,7 @@ _jmp_addr_0x00618912:    {disp32} mov       edi, dword ptr [esp + 0x00000114]   
                          rep movsb                                                         // 0x00618947    f3a4
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                    // 0x00618949    8b4c2410
                          push               ecx                                            // 0x0061894d    51
-                         call               _Free__7LH3DMemFPv                             // 0x0061894e    e80da42200
+                         call               ?Free@LH3DMem@@SAXPAX@Z                        // 0x0061894e    e80da42200
                          {disp32} mov       eax, dword ptr [ebx + ebp * 0x4 + 0x000000b4]  // 0x00618953    8b84abb4000000
                          {disp32} mov       ecx, dword ptr [ebx + 0x000047f4]              // 0x0061895a    8b8bf4470000
                          {disp8} lea        edx, dword ptr [esp + 0x20]                    // 0x00618960    8d542420
@@ -13917,7 +13923,7 @@ _jmp_addr_0x00618912:    {disp32} mov       edi, dword ptr [esp + 0x00000114]   
                          {disp8} mov        dword ptr [esp + 0x4c], 0x3f800000             // 0x006189af    c744244c0000803f
                          {disp8} mov        dword ptr [esp + 0x3c], 0x3f800000             // 0x006189b7    c744243c0000803f
                          {disp8} mov        dword ptr [esp + 0x2c], 0x3f800000             // 0x006189bf    c744242c0000803f
-                         call               _SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix                           // 0x006189c7    e804182200
+                         call               ?SetTransform@LH3DAnim@@SAMPAULHMatrix@@PAULH3DMesh@@AAU2@@Z                      // 0x006189c7    e804182200
                          {disp32} mov       eax, dword ptr [ebx + 0x000047b8]              // 0x006189cc    8b83b8470000
                          fstp               st(0)                                          // 0x006189d2    ddd8
                          add                esp, 0x10                                      // 0x006189d4    83c410
@@ -13958,7 +13964,7 @@ _jmp_addr_0x00618a16:    {disp8} mov        eax, dword ptr [edx + 0x10]         
                          call               _jmp_addr_0x00617140                           // 0x00618a3d    e8fee6ffff
                          {disp8} mov        edx, dword ptr [esp + 0x28]                    // 0x00618a42    8b542428
                          push               edx                                            // 0x00618a46    52
-                         call               _Free__7LH3DMemFPv                             // 0x00618a47    e814a32200
+                         call               ?Free@LH3DMem@@SAXPAX@Z                        // 0x00618a47    e814a32200
                          add                esp, 0x1c                                      // 0x00618a4c    83c41c
                          mov.s              ecx, esi                                       // 0x00618a4f    8bce
                          call               @Release__8LH3DMeshFv@4                        // 0x00618a51    e8aae21e00
@@ -13975,7 +13981,7 @@ _jmp_addr_0x00618a65:    {disp8} lea        eax, dword ptr [esp + 0x50]         
                          call               _jmp_addr_0x00617140                           // 0x00618a6f    e8cce6ffff
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                    // 0x00618a74    8b4c2418
                          push               ecx                                            // 0x00618a78    51
-                         call               _Free__7LH3DMemFPv                             // 0x00618a79    e8e2a22200
+                         call               ?Free@LH3DMem@@SAXPAX@Z                        // 0x00618a79    e8e2a22200
                          add                esp, 0x0c                                      // 0x00618a7e    83c40c
                          mov.s              ecx, esi                                       // 0x00618a81    8bce
                          call               @Release__8LH3DMeshFv@4                        // 0x00618a83    e878e21e00
@@ -13991,7 +13997,7 @@ _jmp_addr_0x00618a97:    {disp8} lea        edx, dword ptr [esp + 0x50]         
                          push               0x00bf42f4                                     // 0x00618a9c    68f442bf00
                          call               _jmp_addr_0x00617140                           // 0x00618aa1    e89ae6ffff
                          push               edi                                            // 0x00618aa6    57
-                         call               _Free__7LH3DMemFPv                             // 0x00618aa7    e8b4a22200
+                         call               ?Free@LH3DMem@@SAXPAX@Z                        // 0x00618aa7    e8b4a22200
                          add                esp, 0x0c                                      // 0x00618aac    83c40c
                          pop                edi                                            // 0x00618aaf    5f
                          pop                esi                                            // 0x00618ab0    5e
@@ -14583,7 +14589,7 @@ _jmp_addr_0x00619199:    {disp32} mov       ecx, dword ptr [ebx + 0x000000b8]   
                          {disp8} mov        dword ptr [esp + 0x44], 0x3f800000             // 0x006191f4    c74424440000803f
                          {disp8} mov        dword ptr [esp + 0x34], 0x3f800000             // 0x006191fc    c74424340000803f
                          {disp8} mov        dword ptr [esp + 0x24], 0x3f800000             // 0x00619204    c74424240000803f
-                         call               _SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix                           // 0x0061920c    e8bf0f2200
+                         call               ?SetTransform@LH3DAnim@@SAMPAULHMatrix@@PAULH3DMesh@@AAU2@@Z                      // 0x0061920c    e8bf0f2200
                          fstp               st(0)                                          // 0x00619211    ddd8
                          {disp32} mov       ecx, dword ptr [ebx + edi * 0x4 + 0x000000b4]  // 0x00619213    8b8cbbb4000000
                          {disp32} mov       edx, dword ptr [ebx + 0x000047f4]              // 0x0061921a    8b93f4470000
@@ -14591,7 +14597,7 @@ _jmp_addr_0x00619199:    {disp32} mov       ecx, dword ptr [ebx + 0x000000b8]   
                          push               eax                                            // 0x00619224    50
                          push               ecx                                            // 0x00619225    51
                          push               edx                                            // 0x00619226    52
-                         call               _SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix                           // 0x00619227    e8a40f2200
+                         call               ?SetTransform@LH3DAnim@@SAMPAULHMatrix@@PAULH3DMesh@@AAU2@@Z                      // 0x00619227    e8a40f2200
                          fstp               st(0)                                          // 0x0061922c    ddd8
                          {disp32} mov       ecx, dword ptr [ebx + esi * 0x4 + 0x000000b4]  // 0x0061922e    8b8cb3b4000000
                          {disp32} mov       edx, dword ptr [ebx + 0x000047f8]              // 0x00619235    8b93f8470000
@@ -14599,7 +14605,7 @@ _jmp_addr_0x00619199:    {disp32} mov       ecx, dword ptr [ebx + 0x000000b8]   
                          push               eax                                            // 0x0061923f    50
                          push               ecx                                            // 0x00619240    51
                          push               edx                                            // 0x00619241    52
-                         call               _SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix                           // 0x00619242    e8890f2200
+                         call               ?SetTransform@LH3DAnim@@SAMPAULHMatrix@@PAULH3DMesh@@AAU2@@Z                      // 0x00619242    e8890f2200
                          fstp               st(0)                                          // 0x00619247    ddd8
                          {disp32} mov       eax, dword ptr [ebx + 0x000047b8]              // 0x00619249    8b83b8470000
                          add                esp, 0x24                                      // 0x0061924f    83c424
@@ -14775,7 +14781,7 @@ _jmp_addr_0x00619452:    {disp32} mov       eax, dword ptr [ebx + 0x00000098]   
                          push               ecx                                            // 0x0061946c    51
                          push               edx                                            // 0x0061946d    52
                          push               eax                                            // 0x0061946e    50
-                         call               _SetTransform__8LH3DAnimFP8LHMatrixP8LH3DMeshR8LHMatrix                           // 0x0061946f    e85c0d2200
+                         call               ?SetTransform@LH3DAnim@@SAMPAULHMatrix@@PAULH3DMesh@@AAU2@@Z                      // 0x0061946f    e85c0d2200
                          fstp               st(0)                                          // 0x00619474    ddd8
                          {disp32} mov       eax, dword ptr [ebx + 0x000047b8]              // 0x00619476    8b83b8470000
                          add                esp, 0x0c                                      // 0x0061947c    83c40c
@@ -15145,7 +15151,7 @@ _jmp_addr_0x006198a9:    push               0x00bf42d0                          
                          test               eax, eax                                       // 0x006198b8    85c0
                          {disp8} je         _jmp_addr_0x006198c5                           // 0x006198ba    7409
                          mov.s              ecx, eax                                       // 0x006198bc    8bc8
-                         call               @__ct__5CAnimFv@4                              // 0x006198be    e8bd4b2400
+                         call               ??0CAnim@@QAE@XZ                               // 0x006198be    e8bd4b2400
                          {disp8} jmp        _jmp_addr_0x006198c7                           // 0x006198c3    eb02
 _jmp_addr_0x006198c5:    xor.s              eax, eax                                       // 0x006198c5    33c0
 _jmp_addr_0x006198c7:    push               ebx                                            // 0x006198c7    53

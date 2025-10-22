@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x0047fa20
 .extern _jmp_addr_0x004842e0
 .extern _jmp_addr_0x00484300
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 
 start_0x00501950_0x00501a70:
 // Snippet: asm, [0x00501950, 0x00501a4d)
@@ -45,7 +45,7 @@ start_0x00501950_0x00501a70:
                          add               edi, 0x24                               // 0x00501995    83c724
                          mov.s             ecx, edi                                // 0x00501998    8bcf
                          {disp8} mov       dword ptr [esp + 0x08], edx             // 0x0050199a    89542408
-                         call              @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4                    // 0x0050199e    e8ed163000
+                         call              ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z                  // 0x0050199e    e8ed163000
                          {disp8} fadd      dword ptr [esp + 0x08]                  // 0x005019a3    d8442408
                          {disp8} lea       eax, dword ptr [esp + 0x18]             // 0x005019a7    8d442418
                          push              eax                                     // 0x005019ab    50

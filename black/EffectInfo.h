@@ -45,7 +45,7 @@ extern const struct BaseInfoVftable __vt__11GEffectInfo asm("??_7GEffectInfo@@6B
 // Constructors
 
 // win1.41 00524d40 mac 100cc740 GEffectInfo::GEffectInfo(void)
-struct GEffectInfo* __fastcall __ct__11GEffectInfoFv(struct GEffectInfo* this);
+struct GEffectInfo* __fastcall __ct__11GEffectInfoFv(struct GEffectInfo* this) asm("??0GEffectInfo@@QAE@XZ");
 
 // Override methods
 

@@ -22,8 +22,8 @@ static_assert(sizeof(struct LH3DSubMesh) == 0x14, "Data type is of wrong size");
 // Static methods
 
 // win1.41 0087fa00 mac 100bbe90 LH3DSubMesh::Create(unsigned char *, LH3DSubMesh *)
-void __cdecl Create__11LH3DSubMeshFPUcP11LH3DSubMesh(const uint8_t* buffer, struct LH3DSubMesh* submesh);
+void __cdecl Create__11LH3DSubMeshFPUcP11LH3DSubMesh(const uint8_t* buffer, struct LH3DSubMesh* submesh) asm("?Create@LH3DSubMesh@@SAXPAEPAV1@@Z");
 // win1.41 0087fb20 mac 100bbcb0 LH3DSubMesh::ComputeBoundingBox(LHPoint&, LHPoint&, int&)
-void __fastcall ComputeBoundingBox__11LH3DSubMeshFR7LHPointR7LHPointRi(struct LH3DSubMesh* this, struct LHPoint* maxima, struct LHPoint* minima, int* initialized);
+void __fastcall ComputeBoundingBox__11LH3DSubMeshFR7LHPointR7LHPointRi(struct LH3DSubMesh* this, struct LHPoint* maxima, struct LHPoint* minima, int* initialized) asm("?ComputeBoundingBox@LH3DSubMesh@@SAXAAULHPoint@@0AAH@Z");
 
 #endif /* BW1_DECOMP_LH3D_SUB_MESH_INCLUDED_H */

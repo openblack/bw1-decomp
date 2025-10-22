@@ -35,6 +35,6 @@ extern const struct HandStateVftable __vt__20HandStateMultiPickUp asm("??_7HandS
 // Constructors
 
 // win1.41 005b5730 mac 1033c330 HandStateMultiPickUp::HandStateMultiPickUp(CHand*)
-struct HandStateMultiPickUp* __fastcall __ct__20HandStateMultiPickUpFP5CHand(struct HandStateMultiPickUp* this, const void* edx, struct CHand* hand);
+struct HandStateMultiPickUp* __fastcall __ct__20HandStateMultiPickUpFP5CHand(struct HandStateMultiPickUp* this, const void* edx, struct CHand* hand) asm("??0HandStateMultiPickUp@@QAE@PAVCHand@@@Z");
 
 #endif /* BW1_DECOMP_HAND_STATE_MULTI_PICK_UP_INCLUDED_H */

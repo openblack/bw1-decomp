@@ -55,7 +55,7 @@ extern const struct DialogBoxBaseVftable __vt__20MiniDialogBoxOptions asm("??_7M
 // Constructors
 
 // win1.41 00514f20 mac inlined MiniDialogBoxOptions::MiniDialogBoxOptions(void)
-struct MiniDialogBoxOptions* __fastcall __ct__20MiniDialogBoxOptions(struct MiniDialogBoxOptions* this);
+struct MiniDialogBoxOptions* __fastcall __ct__20MiniDialogBoxOptions(struct MiniDialogBoxOptions* this) asm("??0MiniDialogBoxOptions@@QAE@XZ");
 
 // Override methods
 

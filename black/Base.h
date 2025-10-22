@@ -51,19 +51,19 @@ extern const struct BaseVftable __vt__4Base asm("??_7Base@@6B@");
 // Static methods
 
 // win1.41 004366f0 mac 1009ebc0 Base::operator new(unsigned long)
-void* __cdecl __nw__4BaseFUl(size_t size, const char* file_name, uint32_t line);
+void* __cdecl __nw__4BaseFUl(size_t size, const char* file_name, uint32_t line) asm("?__nw@Base@@SAPAXK@Z");
 // win1.41 00436970 mac 10425a80 Base::operator delete(void*, unsigned long)
 void __cdecl __dl__4BaseFPvUl(void* ptr, size_t size) asm("??3Base@@SAXPAXK@Z");
 
 // Constructors
 
 // win1.41 inlined mac 100a0450 Base::Base(void)
-struct Base* __fastcall __ct__4BaseFv(struct Base* this);
+struct Base* __fastcall __ct__4BaseFv(struct Base* this) asm("??0Base@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00436b20 mac 10001480 Base::SetInfo(BaseInfo*) const
-void __fastcall SetInfo__4BaseCFP8BaseInfo(const struct Base* this, const void* edx, struct BaseInfo* info);
+void __fastcall SetInfo__4BaseCFP8BaseInfo(const struct Base* this, const void* edx, struct BaseInfo* info) asm("?SetInfo@Base@@QBEXPAVBaseInfo@@@Z");
 
 // Override methods
 

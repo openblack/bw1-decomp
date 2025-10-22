@@ -330,14 +330,14 @@ extern const struct ObjectVftable __vt__6Object asm("??_7Object@@6B@");
 // Static methods
 
 // win1.41 006364c0 mac 103d93a0 Object::Get3DType(MESH_LIST)
-enum LH3DObject__ObjectType __cdecl Get3DType__6ObjectF9MESH_LIST(enum MESH_LIST index);
+enum LH3DObject__ObjectType __cdecl Get3DType__6ObjectF9MESH_LIST(enum MESH_LIST index) asm("?Get3DType@Object@@SA?AW4LH3DObject__ObjectType@@W4MESH_LIST@@@Z");
 
 // Constructors
 
 // win1.41 00636450 mac 103d9480 Object::Object(void)
-struct Object* __fastcall __ct__6ObjectFv(struct Object* this);
+struct Object* __fastcall __ct__6ObjectFv(struct Object* this) asm("??0Object@@QAE@XZ");
 // win1.41 00636520 mac 103d90d0 Object::Object(MapCoords const &, GObjectInfo const *)
-struct Object* __fastcall __ct__6ObjectFRC9MapCoordsPC11GObjectInfo(struct Object* this, const void* edx, const struct MapCoords* coords, const struct GObjectInfo* info);
+struct Object* __fastcall __ct__6ObjectFRC9MapCoordsPC11GObjectInfo(struct Object* this, const void* edx, const struct MapCoords* coords, const struct GObjectInfo* info) asm("??0Object@@QAE@ABUMapCoords@@PBVGObjectInfo@@@Z");
 
 // Non-virtual Destructors
 
@@ -349,7 +349,7 @@ void __fastcall __dt__6ObjectFv(struct Object* this, const void* edx, uint8_t pa
 // win1.41 00637e00 mac 103d5f70 Object::IsTouching(Object *, float)
 bool __fastcall IsTouching__6ObjectFP6Objectf(const struct Object* this, const void* edx, struct Object* param_1, float param_2) asm("?IsTouching@Object@@UAE_NPAV1@M@Z");
 // win1.41 00638560 mac 1005ba80 Object::GetMapChild(MapCoords const &)
-struct Object* __fastcall GetMapChild__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coord);
+struct Object* __fastcall GetMapChild__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coord) asm("?GetMapChild@Object@@QAEPAV1@ABUMapCoords@@@Z");
 
 // Override methods
 
@@ -372,7 +372,7 @@ bool __fastcall CanBecomeArtifact__6ObjectFv(struct GameThing* this) asm("?CanBe
 // win1.41 005190e0 mac 1008d3a0 Object::DrawInHand(GInterfaceStatus *)
 void __fastcall DrawInHand__6ObjectFP16GInterfaceStatus(struct GameThing* this, const void* edx, struct GInterfaceStatus* param_1) asm("?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z");
 // win1.41 00639eb0 mac 103d1b20 Object::Load(GameOSFile &)
-uint32_t __fastcall Load__6ObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__6ObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@Object@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00639b90 mac 103d1d50 Object::Save(GameOSFile &)
 uint32_t __fastcall Save__6ObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@Object@@UAEIPAVGameOSFile@@@Z");
 // win1.41 0063a020 mac 103d1940 Object::ResolveLoad(void)
@@ -554,7 +554,7 @@ void __fastcall SetLife__6ObjectFf(struct Object* this, const void* edx, float l
 // win1.41 00402610 mac 1005f530 Object::IsAlive(void)
 bool __fastcall IsAlive__6ObjectFv(struct Object* this) asm("?IsAlive@Object@@UAE_NXZ");
 // win1.41 00637810 mac 1004b140 Object::ReduceLife(float, GPlayer *)
-float __fastcall ReduceLife__6ObjectFfP7GPlayer(struct Object* this, const void* edx, float value, struct GPlayer* player);
+float __fastcall ReduceLife__6ObjectFfP7GPlayer(struct Object* this, const void* edx, float value, struct GPlayer* player) asm("?ReduceLife@Object@@UAEMMPAVGPlayer@@@Z");
 // win1.41 00637870 mac 103d6b50 Object::IncreaseLife(float)
 void __fastcall IncreaseLife__6ObjectFf(struct Object* this, const void* edx, float value) asm("?IncreaseLife@Object@@UAEXM@Z");
 // win1.41 0063aaf0 mac 103cff40 Object::GetSacrificeValue(void)

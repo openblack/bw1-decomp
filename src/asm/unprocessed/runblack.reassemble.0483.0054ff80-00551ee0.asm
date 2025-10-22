@@ -36,7 +36,7 @@
 .extern _jmp_addr_0x0063c3f0
 .extern _jmp_addr_0x00649110
 .extern @Init__7GPlayerF11PLAYER_TYPEUcPwUc@18
-.extern @Birthday__7GPlayerFv@4
+.extern ?Birthday@GPlayer@@QAEXXZ
 .extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
 .extern @GetRealInterface__7GPlayerFUl@12
 .extern _jmp_addr_0x007a1400

@@ -57,7 +57,7 @@ extern const struct BaseVftable __vt__15CreatureDesires asm("??_7CreatureDesires
 // Constructors
 
 // win1.41 004dbff0 mac 1025b030 CreatureDesires::__ct(Creature *, CreatureInfo const *)
-struct CreatureDesires* __fastcall __ct__15CreatureDesiresFP8CreaturePC12CreatureInfo(struct CreatureDesires* this, const void* edx, struct Creature* creature, const struct CreatureInfo* info);
+struct CreatureDesires* __fastcall __ct__15CreatureDesiresFP8CreaturePC12CreatureInfo(struct CreatureDesires* this, const void* edx, struct Creature* creature, const struct CreatureInfo* info) asm("??0CreatureDesires@@QAE@PAVCreature@@PBVCreatureInfo@@@Z");
 
 // Override methods
 

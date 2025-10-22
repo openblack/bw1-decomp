@@ -15,12 +15,12 @@
 .extern @__ct__13SetupCheckBoxFiiibiPwi@33
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
-.extern @Show__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
+.extern ?Show@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x00548990
 .extern  ??3@YAXPAX@Z
-.extern _Exists__8LHOSFileFPc
+.extern ?Exists@LHOSFile@@SAIPAD@Z
 .extern _atexit
 .extern _sprintf
 .extern _wcsncpy
@@ -69,7 +69,7 @@ _jmp_addr_0x00549900:    ret                                                    
                          push              0x0                                           // 0x00549920    6a00
                          call              dword ptr [edx + 8]                           // 0x00549922    ff5208
                          mov.s             ecx, esi                                      // 0x00549925    8bce
-                         call              @Show__13DialogBoxBaseFv@4                    // 0x00549927    e8c49cfcff
+                         call              ?Show@DialogBoxBase@@UAEXXZ                   // 0x00549927    e8c49cfcff
                          pop               esi                                           // 0x0054992c    5e
                          ret                                                             // 0x0054992d    c3
                          nop                                                             // 0x0054992e    90
@@ -128,10 +128,10 @@ _jmp_addr_0x005499b5:    {disp8} lea       eax, dword ptr [esp + 0x0c]          
                          call              _sprintf                                      // 0x005499e1    e8ecbd2700
                          {disp32} lea      ecx, dword ptr [esp + 0x00000418]             // 0x005499e6    8d8c2418040000
                          push              ecx                                           // 0x005499ed    51
-                         call              _Exists__8LHOSFileFPc                         // 0x005499ee    e8ad2c2700
+                         call              ?Exists@LHOSFile@@SAIPAD@Z                    // 0x005499ee    e8ad2c2700
                          {disp32} lea      edx, dword ptr [esp + 0x0000061c]             // 0x005499f3    8d94241c060000
                          push              edx                                           // 0x005499fa    52
-                         call              _Exists__8LHOSFileFPc                         // 0x005499fb    e8a02c2700
+                         call              ?Exists@LHOSFile@@SAIPAD@Z                    // 0x005499fb    e8a02c2700
                          add               esp, 0x14                                     // 0x00549a00    83c414
                          test              eax, eax                                      // 0x00549a03    85c0
                          {disp8} jne       _jmp_addr_0x00549a45                          // 0x00549a05    753e
@@ -625,7 +625,7 @@ _jmp_addr_0x00549f78:    pop               edi                                  
                          nop                                                             // 0x00549f7e    90
                          nop                                                             // 0x00549f7f    90
 ?Destroy@SetupMultiplayerMain@@UAEXXZ:
-                         call              @Destroy__13DialogBoxBaseFv@4                 // 0x00549f80    e80b96fcff
+                         call              ?Destroy@DialogBoxBase@@UAEXXZ                // 0x00549f80    e80b96fcff
                          {disp32} mov      dword ptr [data_bytes + 0x30b680], 0x00000000 // 0x00549f85    c7058016cd0000000000
                          ret                                                             // 0x00549f8f    c3
 ?InitControls@SetupMultiplayerMain@@UAEXXZ:

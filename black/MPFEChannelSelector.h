@@ -59,12 +59,12 @@ extern const struct DialogBoxBaseVftable __vt__19MPFEChannelSelector asm("??_7MP
 // Constructors
 
 // win1.41 00628330 mac 1039f0c0 MPFEChannelSelector::MPFEChannelSelector(void)
-struct MPFEChannelSelector* __fastcall __ct__19MPFEChannelSelectorFv(struct MPFEChannelSelector* this);
+struct MPFEChannelSelector* __fastcall __ct__19MPFEChannelSelectorFv(struct MPFEChannelSelector* this) asm("??0MPFEChannelSelector@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00629c50 mac 1039cab0 MPFEChannelSelector::RefreshChannelList(void)
-void __fastcall RefreshChannelList__19MPFEChannelSelectorFv(struct MPFEChannelSelector* this);
+void __fastcall RefreshChannelList__19MPFEChannelSelectorFv(struct MPFEChannelSelector* this) asm("?RefreshChannelList@MPFEChannelSelector@@QAEXXZ");
 
 // Override methods
 
@@ -75,6 +75,6 @@ void __fastcall Destroy__19MPFEChannelSelectorFv(struct DialogBoxBase* this) asm
 // win1.41 00628430 mac 1039e800 MPFEChannelSelector::Show(void)
 void __fastcall Show__19MPFEChannelSelectorFv(struct DialogBoxBase* this) asm("?Show@MPFEChannelSelector@@UAEXXZ");
 // win1.41 00628e30 mac 1039df20 MPFEChannelSelector::InitControls(void)
-void __fastcall InitControls__19MPFEChannelSelectorFv(struct DialogBoxBase* this);
+void __fastcall InitControls__19MPFEChannelSelectorFv(struct DialogBoxBase* this) asm("?InitControls@MPFEChannelSelector@@UAEXXZ");
 
 #endif /* BW1_DECOMP_MPFE_CHANNEL_SELECTOR_INCLUDED_H */

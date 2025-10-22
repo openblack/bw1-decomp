@@ -44,23 +44,23 @@ extern const struct SetupControlVftable __vt__17SetupColourPicker asm("??_7Setup
 // Constructors
 
 // win1.41 00410ac0 mac 103c6130 SetupColourPicker::SetupColourPicker(int, int, int, int, int, int, LH3DMaterial *)
-struct SetupColourPicker* __fastcall __ct__17SetupColourPickerFiiiiiiP12LH3DMaterial(struct SetupColourPicker* this, const void* edx, int id, int x, int y, int width, int height, bool brightness_slider, struct LH3DMaterial* material);
+struct SetupColourPicker* __fastcall __ct__17SetupColourPickerFiiiiiiP12LH3DMaterial(struct SetupColourPicker* this, const void* edx, int id, int x, int y, int width, int height, bool brightness_slider, struct LH3DMaterial* material) asm("??0SetupColourPicker@@QAE@HHHHHHPAULH3DMaterial@@@Z");
 
 // Override methods
 
 // win1.41 00410880 mac 10103e40 SetupColourPicker::Draw(bool, bool)
-void __fastcall Draw__17SetupColourPickerFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__17SetupColourPickerFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected) asm("?Draw@SetupColourPicker@@UAEX_N0@Z");
 // win1.41 00410810 mac 1023f300 SetupColourPicker::Drag(int, int)
-void __fastcall Drag__17SetupColourPickerFii(struct SetupControl* this, const void* edx, int x, int y);
+void __fastcall Drag__17SetupColourPickerFii(struct SetupControl* this, const void* edx, int x, int y) asm("?Drag@SetupColourPicker@@UAEXHH@Z");
 // win1.41 004107f0 mac 1030b070 SetupColourPicker::MouseDown(int, int, bool)
-void __fastcall MouseDown__17SetupColourPickerFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
+void __fastcall MouseDown__17SetupColourPickerFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3) asm("?MouseDown@SetupColourPicker@@UAEXHH_N@Z");
 // win1.41 00410800 mac 101119a0 SetupColourPicker::MouseUp(int, int, bool)
-void __fastcall MouseUp__17SetupColourPickerFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
+void __fastcall MouseUp__17SetupColourPickerFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3) asm("?MouseUp@SetupColourPicker@@UAEXHH_N@Z");
 // win1.41 00410b50 mac 100c8de0 SetupColourPicker::Click(int, int)
-void __fastcall Click__17SetupColourPickerFii(struct SetupControl* this, const void* edx, int x, int y);
+void __fastcall Click__17SetupColourPickerFii(struct SetupControl* this, const void* edx, int x, int y) asm("?Click@SetupColourPicker@@UAEXHH@Z");
 // win1.41 00410b30 mac 1034f250 SetupColourPicker::KeyDown(int, int)
-void __fastcall KeyDown__17SetupColourPickerFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__17SetupColourPickerFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod) asm("?KeyDown@SetupColourPicker@@UAEXHH@Z");
 // win1.41 00410b60 mac 10571d70 SetupColourPicker::~SetupColourPicker(void)
-void __fastcall __dt__17SetupColourPickerFb(struct SetupControl* this, const void* edx, bool param_1);
+void __fastcall __dt__17SetupColourPickerFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupColourPicker@@QAEXXZ");
 
 #endif /* BW1_DECOMP_SETUP_COLOUR_PICKER_INCLUDED_H */

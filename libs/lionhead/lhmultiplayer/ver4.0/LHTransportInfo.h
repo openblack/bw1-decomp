@@ -50,6 +50,6 @@ static_assert(sizeof(struct LHTransportInfo) == 0x74, "Data type is of wrong siz
 // Non-virtual methods
 
 // win1.41 100243b0 mac 1011b9e0 LHTransportInfo::DecodeFromBuffer(unsigned char *)
-uint8_t* __fastcall DecodeFromBuffer__15LHTransportInfoFPUc(struct LHTransportInfo* this, const void* edx, const uint8_t* data);
+uint8_t* __fastcall DecodeFromBuffer__15LHTransportInfoFPUc(struct LHTransportInfo* this, const void* edx, const uint8_t* data) asm("?DecodeFromBuffer@LHTransportInfo@@QAEPAEPAE@Z");
 
 #endif /* BW1_DECOMP_LH_TRANSPORT_INFO_INCLUDED_H */

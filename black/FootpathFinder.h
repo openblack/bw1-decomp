@@ -50,16 +50,16 @@ extern const struct GameThingVftable __vt__15GFootpathFinder asm("??_7GFootpathF
 // Constructors
 
 // win1.41 inlined mac inlined GFootpathFinder::GFootpathFinder(void)
-struct GFootpathFinder* __fastcall __ct__15GFootpathFinderFv(struct GFootpathFinder* this);
+struct GFootpathFinder* __fastcall __ct__15GFootpathFinderFv(struct GFootpathFinder* this) asm("??0GFootpathFinder@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00539040 mac 100e7dc0 GFootpathFinder::GameTurnProcess(void)
-void __fastcall GameTurnProcess__15GFootpathFinderFv(struct GFootpathFinder* this);
+void __fastcall GameTurnProcess__15GFootpathFinderFv(struct GFootpathFinder* this) asm("?GameTurnProcess@GFootpathFinder@@QAEXXZ");
 // win1.41 00539240 mac 100e7760 GFootpathFinder::Done(void)
-void __fastcall Done__15GFootpathFinderFv(struct GFootpathFinder* this);
+void __fastcall Done__15GFootpathFinderFv(struct GFootpathFinder* this) asm("?Done@GFootpathFinder@@QAEXXZ");
 // win1.41 005392f0 mac 100e7150 GFootpathFinder::Init(void)
-void __fastcall Init__15GFootpathFinderFv(struct GFootpathFinder* this);
+void __fastcall Init__15GFootpathFinderFv(struct GFootpathFinder* this) asm("?Init@GFootpathFinder@@QAEXXZ");
 
 // Override methods
 
@@ -70,7 +70,7 @@ void __fastcall ToBeDeleted__15GFootpathFinderFi(struct Base* this, const void* 
 // win1.41 00538fe0 mac 100e7110 GFootpathFinder::GetDebugText(void)
 char* __fastcall GetDebugText__15GFootpathFinderFv(struct GameThing* this) asm("?GetDebugText@GFootpathFinder@@UAEPADXZ");
 // win1.41 005390e0 mac 100e7ce0 GFootpathFinder::Load(GameOSFile &)
-uint32_t __fastcall Load__15GFootpathFinderFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__15GFootpathFinderFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@GFootpathFinder@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00539150 mac 100e7c00 GFootpathFinder::Save(GameOSFile &)
 uint32_t __fastcall Save__15GFootpathFinderFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GFootpathFinder@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00538fd0 mac 100e70d0 GFootpathFinder::GetSaveType(void)

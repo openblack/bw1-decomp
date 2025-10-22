@@ -97,7 +97,7 @@ static_assert(sizeof(struct TempleLeash) == 0x10, "Data type is of wrong size");
 // Constructors
 
 // win1.41 00464650 mac 101c1350 TempleLeash::TempleLeash(LH3DObject *, unsigned long)
-struct TempleLeash* __fastcall __ct__11TempleLeashFP10LH3DObjectUl(struct TempleLeash* this, const void* edx, struct LH3DObject* param_1, uint32_t param_2);
+struct TempleLeash* __fastcall __ct__11TempleLeashFP10LH3DObjectUl(struct TempleLeash* this, const void* edx, struct LH3DObject* param_1, uint32_t param_2) asm("??0TempleLeash@@QAE@PAULH3DObject@@K@Z");
 
 struct CitadelHeart
 {
@@ -146,23 +146,23 @@ extern const struct MultiMapFixedVftable __vt__12CitadelHeart asm("??_7CitadelHe
 // Static methods
 
 // win1.41 00464e20 mac 101c0960 CitadelHeart::Create(MapCoords const &, GCitadelHeartInfo const *, Citadel *, float, float, float, int)
-struct CitadelHeart* __cdecl Create__12CitadelHeartFRC9MapCoordsPC17GCitadelHeartInfoP7Citadelfffi(struct MapCoords* coords, struct GCitadelHeartInfo* info, struct Citadel* citadel, float param_4, float param_5, float param_6, int param_7);
+struct CitadelHeart* __cdecl Create__12CitadelHeartFRC9MapCoordsPC17GCitadelHeartInfoP7Citadelfffi(struct MapCoords* coords, struct GCitadelHeartInfo* info, struct Citadel* citadel, float param_4, float param_5, float param_6, int param_7) asm("?Create@CitadelHeart@@SAPAV1@ABUMapCoords@@PBVGCitadelHeartInfo@@PAVCitadel@@MMMH@Z");
 
 // Constructors
 
 // win1.41 inlined mac inlined CitadelHeart::CitadelHeart(void)
-struct CitadelHeart* __fastcall __ct__12CitadelHeartFv(struct CitadelHeart* this);
+struct CitadelHeart* __fastcall __ct__12CitadelHeartFv(struct CitadelHeart* this) asm("??0CitadelHeart@@QAE@XZ");
 // win1.41 004649b0 mac 101c0f90 CitadelHeart::__ct(MapCoords const &, GCitadelHeartInfo const *, Citadel *, float, float, float, int)
-struct CitadelHeart* __fastcall __ct__12CitadelHeartFRC9MapCoordsPC17GCitadelHeartInfoP7Citadelfffi(struct CitadelHeart* this, const void* edx, struct MapCoords* coords, struct GCitadelHeartInfo* info, struct Citadel* citadel, float param_4, float param_5, float param_6, int param_7);
+struct CitadelHeart* __fastcall __ct__12CitadelHeartFRC9MapCoordsPC17GCitadelHeartInfoP7Citadelfffi(struct CitadelHeart* this, const void* edx, struct MapCoords* coords, struct GCitadelHeartInfo* info, struct Citadel* citadel, float param_4, float param_5, float param_6, int param_7) asm("??0CitadelHeart@@QAE@ABUMapCoords@@PBVGCitadelHeartInfo@@PAVCitadel@@MMMH@Z");
 
 // Non-virtual methods
 
 // win1.41 00464950 mac 101c1180 CitadelHeart::CreateLeashes(void)
-void __fastcall CreateLeashes__12CitadelHeartFv(struct CitadelHeart* this);
+void __fastcall CreateLeashes__12CitadelHeartFv(struct CitadelHeart* this) asm("?CreateLeashes@CitadelHeart@@QAEXXZ");
 // win1.41 00464da0 mac 101c0af0 CitadelHeart::SetToZero(void)
-void __fastcall SetToZero__12CitadelHeartFv(struct CitadelHeart* this);
+void __fastcall SetToZero__12CitadelHeartFv(struct CitadelHeart* this) asm("?SetToZero@CitadelHeart@@QAEXXZ");
 // win1.41 00465110 mac 101c03b0 CitadelHeart::CreateBuiltWorshipSite(MapCoords const &, GWorshipSiteInfo const *, Citadel *, GTribeInfo const *)
-struct WorshipSite* __fastcall CreateBuiltWorshipSite__12CitadelHeartFRC9MapCoordsPC16GWorshipSiteInfoP7CitadelPC10GTribeInfo(struct CitadelHeart* this, const void* edx, const struct MapCoords* coords, const struct GWorshipSiteInfo* info, const struct Citadel* citadel, const struct GTribeInfo* tribe_info);
+struct WorshipSite* __fastcall CreateBuiltWorshipSite__12CitadelHeartFRC9MapCoordsPC16GWorshipSiteInfoP7CitadelPC10GTribeInfo(struct CitadelHeart* this, const void* edx, const struct MapCoords* coords, const struct GWorshipSiteInfo* info, const struct Citadel* citadel, const struct GTribeInfo* tribe_info) asm("?CreateBuiltWorshipSite@CitadelHeart@@QAEPAVWorshipSite@@ABUMapCoords@@PBVGWorshipSiteInfo@@PAVCitadel@@PBVGTribeInfo@@@Z");
 
 // Override methods
 
@@ -175,7 +175,7 @@ struct GPlayer* __fastcall GetPlayer__12CitadelHeartFv(struct GameThing* this) a
 // win1.41 00464bb0 mac 101c23c0 CitadelHeart::GetDebugText(void)
 char* __fastcall GetDebugText__12CitadelHeartFv(struct GameThing* this) asm("?GetDebugText@CitadelHeart@@UAEPADXZ");
 // win1.41 004657f0 mac 101bf6e0 CitadelHeart::Load(GameOSFile &)
-uint32_t __fastcall Load__12CitadelHeartFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+uint32_t __fastcall Load__12CitadelHeartFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@CitadelHeart@@UAEIAAVGameOSFile@@@Z");
 // win1.41 004655c0 mac 101bf9c0 CitadelHeart::Save(GameOSFile &)
 uint32_t __fastcall Save__12CitadelHeartFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@CitadelHeart@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00464ba0 mac 101c2380 CitadelHeart::GetSaveType(void)

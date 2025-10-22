@@ -18,7 +18,7 @@ static_assert(sizeof(struct CameraHelpAccumulator) == 0x10c, "Data type is of wr
 // Non-virtual methods
 
 // win1.41 00448f20 mac 1019cd90 CameraHelpAccumulator::Reset(void)
-void __fastcall Reset__21CameraHelpAccumulatorFv(struct CameraHelpAccumulator* this);
+void __fastcall Reset__21CameraHelpAccumulatorFv(struct CameraHelpAccumulator* this) asm("?Reset@CameraHelpAccumulator@@QAEXXZ");
 
 struct HelpProfile
 {
@@ -46,14 +46,14 @@ extern const struct BaseVftable __vt__11HelpProfile asm("??_7HelpProfile@@6B@");
 // Static methods
 
 // win1.41 005c4500 mac 1034b3b0 HelpProfile::Create(void)
-struct HelpProfile* __cdecl Create__11HelpProfileFv(void);
+struct HelpProfile* __cdecl Create__11HelpProfileFv(void) asm("?Create@HelpProfile@@SAPAV1@XZ");
 
 // Non-virtual methods
 
 // win1.41 005c46e0 mac 100895a0 HelpProfile::Trigger(HELP_EVENT_TYPE)
 void __fastcall Trigger__11HelpProfileF15HELP_EVENT_TYPE(struct HelpProfile* this, const void* edx, enum HELP_EVENT_TYPE param_1) asm("?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z");
 // win1.41 005c4770 mac 1034b310 HelpProfile::SetToZero(void)
-void __fastcall SetToZero__11HelpProfileFv(struct HelpProfile* this);
+void __fastcall SetToZero__11HelpProfileFv(struct HelpProfile* this) asm("?SetToZero@HelpProfile@@QAEXXZ");
 
 // Override methods
 

@@ -114,23 +114,23 @@ extern const struct LHDLLVftable __vt__9ScriptDLL asm("??_7ScriptDLL@@6B@");
 // Static methods
 
 // win1.41 006f6320 mac 104e8e70 ScriptDLL::Create(char const *)
-struct ScriptDLL* __cdecl Create__9ScriptDLLFPCc(char* library_path);
+struct ScriptDLL* __cdecl Create__9ScriptDLLFPCc(char* library_path) asm("?Create@ScriptDLL@@SAPAV1@PBD@Z");
 
 // Constructors
 
 // win1.41 inlined mac inlined ScriptDLL::ScriptDLL(const char*)
-struct ScriptDLL* __fastcall __ct__9ScriptDLLFPCc(struct ScriptDLL* this, const void* edx, char* library_path);
+struct ScriptDLL* __fastcall __ct__9ScriptDLLFPCc(struct ScriptDLL* this, const void* edx, char* library_path) asm("??0ScriptDLL@@QAE@PBD@Z");
 
 // Non-virtual methods
 
 // win1.41 006f68c0 mac 104e8480 ScriptDLL::AutoStart(void)
-void __fastcall AutoStart__9ScriptDLLFv(struct ScriptDLL* this);
+void __fastcall AutoStart__9ScriptDLLFv(struct ScriptDLL* this) asm("?AutoStart@ScriptDLL@@QAEXXZ");
 // win1.41 006f68f0 mac 104e8410 ScriptDLL::StopTasksOfType(VMScriptType)
 void __fastcall StopTasksOfType__9ScriptDLLF12VMScriptType(struct ScriptDLL* this, const void* edx, enum VMScriptType param_1) asm("?StopTasksOfType@ScriptDLL@@QAEXW4VMScriptType@@@Z");
 // win1.41 006f6910 mac 104e83b0 ScriptDLL::StopAllTasks(void)
-void __fastcall StopAllTasks__9ScriptDLLFv(struct ScriptDLL* this);
+void __fastcall StopAllTasks__9ScriptDLLFv(struct ScriptDLL* this) asm("?StopAllTasks@ScriptDLL@@QAEXXZ");
 // win1.41 006f6920 mac 104e8350 ScriptDLL::LoadBinary(char const *)
-int __fastcall LoadBinary__9ScriptDLLFPCc(struct ScriptDLL* this, const void* edx, const char* path);
+int __fastcall LoadBinary__9ScriptDLLFPCc(struct ScriptDLL* this, const void* edx, const char* path) asm("?LoadBinary@ScriptDLL@@QAEHPBD@Z");
 // win1.41 006f6ba0 mac 10042e90 ScriptDLL::PUSH(void *, VMType)
 void __fastcall PUSH__9ScriptDLLFPv6VMType(struct ScriptDLL* this, const void* edx, void* param_1, enum VMType param_2) asm("?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z");
 // win1.41 006f6c50 mac 104e7d70 ScriptDLL::GetScriptType(unsigned long)

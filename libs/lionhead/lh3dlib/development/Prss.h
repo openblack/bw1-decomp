@@ -53,11 +53,11 @@ extern const struct PrssVftable __vt__4Prss asm("??_7Prss@@6B@");
 // win1.41 00842130 mac 10063270 Prss::Terminate(void)
 void __fastcall Terminate__4PrssFv(struct Prss* this) asm("?Terminate@Prss@@UAEXXZ");
 // win1.41 00842160 mac 100631e0 Prss::PrssKey(LH_KEY, unsigned short)
-void __fastcall PrssKey__4PrssF6LH_KEYUs(struct Prss* this, const void* edx, enum LH_KEY key, uint16_t param_2);
+void __fastcall PrssKey__4PrssF6LH_KEYUs(struct Prss* this, const void* edx, enum LH_KEY key, uint16_t param_2) asm("?PrssKey@Prss@@UAEXW4LH_KEY@@G@Z");
 // win1.41 00842170 mac 10063170 Prss::PrssMouse(MouseInput *)
 void __fastcall PrssMouse__4PrssFP10MouseInput(struct Prss* this, const void* edx, struct MouseInput* param_1);
 // win1.41 004f7200 mac 10062140 Prss::StringFunction(long, char *, int)
-void __fastcall StringFunction__4PrssFlPci(struct Prss* this, const void* edx, int param_1, char* param_2, int param_3);
+void __fastcall StringFunction__4PrssFlPci(struct Prss* this, const void* edx, int param_1, char* param_2, int param_3) asm("?StringFunction@Prss@@UAEXJPADH@Z");
 
 // win1.41 008416e0 mac 100646e0 BMan_Check(Prss *, int, int, int)
 int __cdecl BMan_Check__FP4Prssiii(struct Prss* param_1, int param_2, int param_3, int param_4);

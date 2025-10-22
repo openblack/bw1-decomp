@@ -59,7 +59,7 @@ extern const struct EditorIconBaseVftable __vt__14EditorIconBase asm("??_7Editor
 // Static methods
 
 // win1.41 00520fe0 mac 102b7380 EditorIconBase::DrawOutlineBox
-void __cdecl DrawOutlineBox__14EditorIconBaseFP8LHRegionP9LH3DColor(struct LHRegion* param_1, struct LH3DColor* param_2);
+void __cdecl DrawOutlineBox__14EditorIconBaseFP8LHRegionP9LH3DColor(struct LHRegion* param_1, struct LH3DColor* param_2) asm("?DrawOutlineBox@EditorIconBase@@SAXPAULHRegion@@PAULH3DColor@@@Z");
 
 // Override methods
 

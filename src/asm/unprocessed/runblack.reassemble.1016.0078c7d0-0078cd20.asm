@@ -21,7 +21,7 @@
 .extern __strcmpi
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
 .extern _jmp_addr_0x008379e0
-.extern @Release__11LH3DTextureFv@4
+.extern ?Release@LH3DTexture@@QAEXXZ
 
 .globl _jmp_addr_0x0078cc10
 
@@ -275,31 +275,31 @@ _jmp_addr_0x0078caa7:    pop              ebp                                   
                          {disp32} mov     ecx, dword ptr [data_bytes + 0x437ddc] // 0x0078cac6    8b0ddcdddf00
                          cmp.s            ecx, esi                               // 0x0078cacc    3bce
                          {disp8} je       _jmp_addr_0x0078cad5                   // 0x0078cace    7405
-                         call             @Release__11LH3DTextureFv@4            // 0x0078cad0    e86bb20a00
+                         call             ?Release@LH3DTexture@@QAEXXZ           // 0x0078cad0    e86bb20a00
 _jmp_addr_0x0078cad5:    {disp32} mov     ecx, dword ptr [data_bytes + 0x433d18] // 0x0078cad5    8b0d189ddf00
                          cmp.s            ecx, esi                               // 0x0078cadb    3bce
                          {disp8} je       _jmp_addr_0x0078cae4                   // 0x0078cadd    7405
-                         call             @Release__11LH3DTextureFv@4            // 0x0078cadf    e85cb20a00
+                         call             ?Release@LH3DTexture@@QAEXXZ           // 0x0078cadf    e85cb20a00
 _jmp_addr_0x0078cae4:    {disp32} mov     ecx, dword ptr [data_bytes + 0x42fc54] // 0x0078cae4    8b0d545cdf00
                          cmp.s            ecx, esi                               // 0x0078caea    3bce
                          {disp8} je       _jmp_addr_0x0078caf3                   // 0x0078caec    7405
-                         call             @Release__11LH3DTextureFv@4            // 0x0078caee    e84db20a00
+                         call             ?Release@LH3DTexture@@QAEXXZ           // 0x0078caee    e84db20a00
 _jmp_addr_0x0078caf3:    {disp32} mov     ecx, dword ptr [data_bytes + 0x41fa04] // 0x0078caf3    8b0d045ade00
                          cmp.s            ecx, esi                               // 0x0078caf9    3bce
                          {disp8} je       _jmp_addr_0x0078cb02                   // 0x0078cafb    7405
-                         call             @Release__11LH3DTextureFv@4            // 0x0078cafd    e83eb20a00
+                         call             ?Release@LH3DTexture@@QAEXXZ           // 0x0078cafd    e83eb20a00
 _jmp_addr_0x0078cb02:    {disp32} mov     ecx, dword ptr [data_bytes + 0x42bb90] // 0x0078cb02    8b0d901bdf00
                          cmp.s            ecx, esi                               // 0x0078cb08    3bce
                          {disp8} je       _jmp_addr_0x0078cb11                   // 0x0078cb0a    7405
-                         call             @Release__11LH3DTextureFv@4            // 0x0078cb0c    e82fb20a00
+                         call             ?Release@LH3DTexture@@QAEXXZ           // 0x0078cb0c    e82fb20a00
 _jmp_addr_0x0078cb11:    {disp32} mov     ecx, dword ptr [data_bytes + 0x427acc] // 0x0078cb11    8b0dccdade00
                          cmp.s            ecx, esi                               // 0x0078cb17    3bce
                          {disp8} je       _jmp_addr_0x0078cb20                   // 0x0078cb19    7405
-                         call             @Release__11LH3DTextureFv@4            // 0x0078cb1b    e820b20a00
+                         call             ?Release@LH3DTexture@@QAEXXZ           // 0x0078cb1b    e820b20a00
 _jmp_addr_0x0078cb20:    {disp32} mov     ecx, dword ptr [data_bytes + 0x423a08] // 0x0078cb20    8b0d089ade00
                          cmp.s            ecx, esi                               // 0x0078cb26    3bce
                          {disp8} je       _jmp_addr_0x0078cb2f                   // 0x0078cb28    7405
-                         call             @Release__11LH3DTextureFv@4            // 0x0078cb2a    e811b20a00
+                         call             ?Release@LH3DTexture@@QAEXXZ           // 0x0078cb2a    e811b20a00
 _jmp_addr_0x0078cb2f:    {disp32} mov     eax, dword ptr [data_bytes + 0x43bdf8] // 0x0078cb2f    a1f81de000
                          cmp.s            eax, esi                               // 0x0078cb34    3bc6
                          {disp32} mov     dword ptr [data_bytes + 0x437ddc], esi // 0x0078cb36    8935dcdddf00

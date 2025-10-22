@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern ___nw__4BaseFUl
+.extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x004d42c0
 .extern _jmp_addr_0x004d4340
 .extern _jmp_addr_0x004d4bd0
@@ -23,7 +23,7 @@ _jmp_addr_0x004e14c0:    push             ebx                                   
                          push             0x00bdf960                                    // 0x004e14c8    6860f9bd00
                          push             0x14                                          // 0x004e14cd    6a14
                          mov.s            esi, ecx                                      // 0x004e14cf    8bf1
-                         call             ___nw__4BaseFUl                               // 0x004e14d1    e81a52f5ff
+                         call             ?__nw@Base@@SAPAXK@Z                          // 0x004e14d1    e81a52f5ff
                          {disp8} mov      edi, dword ptr [esp + 0x1c]                   // 0x004e14d6    8b7c241c
                          xor.s            ebx, ebx                                      // 0x004e14da    33db
                          add              esp, 0x0c                                     // 0x004e14dc    83c40c

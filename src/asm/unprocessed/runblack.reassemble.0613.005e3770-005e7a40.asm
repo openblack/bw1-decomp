@@ -10,12 +10,12 @@
 .extern ?PreDraw@Windmill@@QAEIXZ
 .extern _SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
-.extern ___nw__4BaseFUl
+.extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00439b90
 .extern _jmp_addr_0x0043a9e0
-.extern @__ct__9MapCoordsFv@4
+.extern ??0MapCoords@@QAE@XZ
 .extern _jmp_addr_0x00442b00
 .extern _jmp_addr_0x00442c20
 .extern @__ct__7LHPointFRC7LHPoint@12
@@ -23,14 +23,14 @@
 .extern _jmp_addr_0x00467360
 .extern _jmp_addr_0x0046c1b0
 .extern _jmp_addr_0x0046c2e0
-.extern @GetCreature3D__8CreatureFv@4
+.extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
 .extern _jmp_addr_0x004cefc0
 .extern ?AddBeliefAboutObject@CreatureMental@@QAEPAXPAVCreature@@PAVGameThingWithPos@@@Z
 .extern _jmp_addr_0x004dc2f0
 .extern _jmp_addr_0x004dc5b0
 .extern _jmp_addr_0x004dce20
 .extern _jmp_addr_0x004e0de0
-.extern _GetCell__10LH3DIslandFll
+.extern ?GetCell@LH3DIsland@@SAPAULandCell@@JJ@Z
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
@@ -39,10 +39,10 @@
 .extern _jmp_addr_0x005575e0
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
-.extern @__ct__9GameThingFv@4
+.extern ??0GameThing@@QAE@XZ
 .extern ?Save@GameThing@@QAEIAAVGGameOSFile@@@Z
 .extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
-.extern @SetToZero__16GameThingWithPosFv@4
+.extern ?SetToZero@GameThingWithPos@@QAEXXZ
 .extern _jmp_addr_0x005d8a10
 .extern _jmp_addr_0x005d8a80
 .extern _jmp_addr_0x005d8ea0
@@ -64,19 +64,19 @@
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x00646fe0
-.extern @GetPlayerNumber__7GPlayerCFv@4
+.extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern _jmp_addr_0x006e6770
 .extern _jmp_addr_0x006e7ba0
 .extern _jmp_addr_0x0070d8d0
 .extern _jmp_addr_0x0071d720
 .extern _jmp_addr_0x0071d800
-.extern _Create__8SoundTagFP16GameThingWithPosUlbUlUlii19AUDIO_SFX_BANK_TYPEi
+.extern ?Create@SoundTag@@SAPAV1@PAVGameThingWithPos@@K_NKKHHW4AUDIO_SFX_BANK_TYPE@@H@Z
 .extern _jmp_addr_0x007349e0
 .extern _jmp_addr_0x00735500
 .extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0074a7c0
-.extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
-.extern _GetPosFromAngle__6GUtilsFff
+.extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
+.extern ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z
 .extern _jmp_addr_0x00775120
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007ad1a0
@@ -97,14 +97,14 @@
 .extern _jmp_addr_0x007dee00
 .extern _jmp_addr_0x007e45f0
 .extern _jmp_addr_0x007feb30
-.extern _PreDraw__10LH3DIslandFv
+.extern ?PreDraw@LH3DIsland@@SAXXZ
 .extern _jmp_addr_0x007ff4f0
 .extern _jmp_addr_0x007ff610
 .extern _jmp_addr_0x00800c10
 .extern _jmp_addr_0x00801c90
 .extern _jmp_addr_0x00802550
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
-.extern _Create__10LH3DIslandFv
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?Create@LH3DIsland@@SAIXZ
 .extern _Release__10LH3DIslandFv@0
 .extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Release__8LH3DMeshFv@4
@@ -137,17 +137,17 @@
 .extern _jmp_addr_0x00828e50
 .extern _jmp_addr_0x008296d0
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
-.extern _SetD3DTillingOn__10LH3DRenderFi
-.extern _SetD3DTillingOff__10LH3DRenderFi
+.extern ?SetD3DTillingOn@LH3DRender@@SAXH@Z
+.extern ?SetD3DTillingOff@LH3DRender@@SAXH@Z
 .extern _jmp_addr_0x008379e0
-.extern @Release__11LH3DTextureFv@4
+.extern ?Release@LH3DTexture@@QAEXXZ
 .extern _jmp_addr_0x0083f310
 .extern _jmp_addr_0x0083f8b0
-.extern @Draw__10LH3DSpriteFv@4
+.extern ?Draw@LH3DSprite@@QAEXXZ
 .extern _jmp_addr_0x008413f0
 .extern _jmp_addr_0x00841430
 .extern _jmp_addr_0x00842150
-.extern _Alloc__7LH3DMemFl
+.extern ?Alloc@LH3DMem@@SAPAXJ@Z
 .extern _jmp_addr_0x008447b0
 .extern _jmp_addr_0x00844a20
 .extern _jmp_addr_0x00848600
@@ -158,7 +158,7 @@
 .extern _jmp_addr_0x00874850
 .extern _jmp_addr_0x00879930
 
-.globl _PreDraw__10GLandscapeFv
+.globl ?PreDraw@GLandscape@@SAIXZ
 .globl ?Draw@GLandscape@@QAEIXZ
 .globl _jmp_addr_0x005e5280
 .globl @Open__10GLandscapeFPc@12
@@ -169,7 +169,7 @@
 .globl _jmp_addr_0x005e5bd0
 .globl _ProcessAllObjectsOnCells__Fv
 .globl _jmp_addr_0x005e6540
-.globl @__ct__9GLanguageFv@4
+.globl ??0GLanguage@@QAE@XZ 
 .globl _jmp_addr_0x005e6790
 .globl _jmp_addr_0x005e67c0
 .globl _jmp_addr_0x005e6940
@@ -325,7 +325,7 @@ _jmp_addr_0x005e389e:    xor.s              ecx, ecx                            
                          push               0xc                                           // 0x005e3919    6a0c
                          push               eax                                           // 0x005e391b    50
                          {disp32} mov       dword ptr [data_bytes + 0x35432c], eax        // 0x005e391c    a32ca3d100
-                         call               _Create__8SoundTagFP16GameThingWithPosUlbUlUlii19AUDIO_SFX_BANK_TYPEi                          // 0x005e3921    e81aaf1300
+                         call               ?Create@SoundTag@@SAPAV1@PAVGameThingWithPos@@K_NKKHHW4AUDIO_SFX_BANK_TYPE@@H@Z                // 0x005e3921    e81aaf1300
                          add                esp, 0x28                                     // 0x005e3926    83c428
                          {disp32} mov       dword ptr [data_bytes + 0x354330], eax        // 0x005e3929    a330a3d100
 _jmp_addr_0x005e392e:    {disp32} fild      dword ptr [data_bytes + 0x4e3ec0]             // 0x005e392e    db05c09eea00
@@ -470,20 +470,20 @@ _jmp_addr_0x005e3aee:    cmp                dword ptr [data_bytes + 0x35431c], e
                          push               0x00000223                                    // 0x005e3b69    6823020000
                          push               0x00bf3528                                    // 0x005e3b6e    682835bf00
                          push               0x28                                          // 0x005e3b73    6a28
-                         call               ___nw__4BaseFUl                               // 0x005e3b75    e8762be5ff
+                         call               ?__nw@Base@@SAPAXK@Z                          // 0x005e3b75    e8762be5ff
                          mov.s              esi, eax                                      // 0x005e3b7a    8bf0
                          add                esp, 0x0c                                     // 0x005e3b7c    83c40c
                          cmp.s              esi, ebp                                      // 0x005e3b7f    3bf5
                          {disp8} je         _jmp_addr_0x005e3bc0                          // 0x005e3b81    743d
                          mov.s              ecx, esi                                      // 0x005e3b83    8bce
-                         call               @__ct__9GameThingFv@4                         // 0x005e3b85    e886bef8ff
+                         call               ??0GameThing@@QAE@XZ                          // 0x005e3b85    e886bef8ff
                          {disp8} lea        edi, dword ptr [esi + 0x14]                   // 0x005e3b8a    8d7e14
                          mov.s              ecx, edi                                      // 0x005e3b8d    8bcf
-                         call               @__ct__9MapCoordsFv@4                         // 0x005e3b8f    e8ccdfe5ff
+                         call               ??0MapCoords@@QAE@XZ                          // 0x005e3b8f    e8ccdfe5ff
                          {disp8} mov        dword ptr [esi + 0x20], ebp                   // 0x005e3b94    896e20
                          mov.s              ecx, esi                                      // 0x005e3b97    8bce
                          mov                dword ptr [esi], 0x008c31a0                   // 0x005e3b99    c706a0318c00
-                         call               @SetToZero__16GameThingWithPosFv@4            // 0x005e3b9f    e82ccaf8ff
+                         call               ?SetToZero@GameThingWithPos@@QAEXXZ           // 0x005e3b9f    e82ccaf8ff
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                   // 0x005e3ba4    8b4c2418
                          mov                dword ptr [edi], ecx                          // 0x005e3ba8    890f
                          {disp8} mov        edx, dword ptr [esp + 0x1c]                   // 0x005e3baa    8b54241c
@@ -503,7 +503,7 @@ _jmp_addr_0x005e3bc2:    push               ebp                                 
                          push               0xc                                           // 0x005e3bcc    6a0c
                          push               esi                                           // 0x005e3bce    56
                          {disp32} mov       dword ptr [data_bytes + 0x35432c], esi        // 0x005e3bcf    89352ca3d100
-                         call               _Create__8SoundTagFP16GameThingWithPosUlbUlUlii19AUDIO_SFX_BANK_TYPEi                          // 0x005e3bd5    e866ac1300
+                         call               ?Create@SoundTag@@SAPAV1@PAVGameThingWithPos@@K_NKKHHW4AUDIO_SFX_BANK_TYPE@@H@Z                // 0x005e3bd5    e866ac1300
                          {disp32} fld       dword ptr [data_bytes + 0x3542b0]             // 0x005e3bda    d905b0a2d100
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3408]              // 0x005e3be0    d80d08c48a00
                          add                esp, 0x24                                     // 0x005e3be6    83c424
@@ -518,7 +518,7 @@ _jmp_addr_0x005e3bc2:    push               ebp                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x005e3c14    8d4c2424
                          {disp8} mov        dword ptr [esp + 0x28], eax                   // 0x005e3c18    89442428
                          {disp8} mov        dword ptr [esp + 0x2c], 0x00000000            // 0x005e3c1c    c744242c00000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x005e3c24    e867f42100
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x005e3c24    e867f42100
                          {disp32} fstp      dword ptr [data_bytes + 0x3542b4]             // 0x005e3c29    d91db4a2d100
                          {disp32} mov       edx, dword ptr [data_bytes + 0x22d504]        // 0x005e3c2f    8b150435bf00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x35431c]        // 0x005e3c35    8b0d1ca3d100
@@ -605,7 +605,7 @@ _jmp_addr_0x005e3cea:    push               ebp                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x005e3d7d    8d4c2424
                          {disp8} mov        dword ptr [esp + 0x28], eax                   // 0x005e3d81    89442428
                          {disp8} mov        dword ptr [esp + 0x2c], 0x00000000            // 0x005e3d85    c744242c00000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x005e3d8d    e8fef22100
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x005e3d8d    e8fef22100
                          {disp32} fstp      dword ptr [data_bytes + 0x3542a4]             // 0x005e3d92    d91da4a2d100
                          {disp32} mov       edx, dword ptr [data_bytes + 0x22d50c]        // 0x005e3d98    8b150c35bf00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x354324]        // 0x005e3d9e    8b0d24a3d100
@@ -838,7 +838,7 @@ _jmp_addr_0x005e3f30:    {disp32} mov       dword ptr [data_bytes + 0x354360], 0
                          nop                                                              // 0x005e3f5d    90
                          nop                                                              // 0x005e3f5e    90
                          nop                                                              // 0x005e3f5f    90
-_PreDraw__10GLandscapeFv:call               _PreDraw__10LH3DIslandFv                      // 0x005e3f60    e86bb32100
+?PreDraw@GLandscape@@SAIXZ:call               ?PreDraw@LH3DIsland@@SAXXZ                    // 0x005e3f60    e86bb32100
                          mov                eax, 0x00000001                               // 0x005e3f65    b801000000
                          ret                                                              // 0x005e3f6a    c3
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005e3f6b    e889d8e1ff
@@ -964,7 +964,7 @@ _jmp_addr_0x005e40f4:    test               ebp, ebp                            
                          {disp8} mov        edx, dword ptr [esp + 0x18]                   // 0x005e40f8    8b542418
                          push               edx                                           // 0x005e40fc    52
                          push               edi                                           // 0x005e40fd    57
-                         call               _GetCell__10LH3DIslandFll                     // 0x005e40fe    e89d29f3ff
+                         call               ?GetCell@LH3DIsland@@SAPAULandCell@@JJ@Z      // 0x005e40fe    e89d29f3ff
                          add                esp, 0x08                                     // 0x005e4103    83c408
                          test               eax, eax                                      // 0x005e4106    85c0
                          {disp8} je         _jmp_addr_0x005e411d                          // 0x005e4108    7413
@@ -1966,7 +1966,7 @@ _jmp_addr_0x005e4f7d:    mov.s              ecx, esi                            
                          push               eax                                           // 0x005e4f92    50
                          {disp8} lea        ecx, dword ptr [esp + 0x5c]                   // 0x005e4f93    8d4c245c
                          push               ecx                                           // 0x005e4f97    51
-                         call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x005e4f98    e8d37d1600
+                         call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z                               // 0x005e4f98    e8d37d1600
                          {disp8} fcom       dword ptr [esp + 0x20]                        // 0x005e4f9d    d8542420
                          add                esp, 0x08                                     // 0x005e4fa1    83c408
                          fnstsw             ax                                            // 0x005e4fa4    dfe0
@@ -1996,7 +1996,7 @@ _jmp_addr_0x005e4fb5:    {disp32} mov       esi, dword ptr [esi + 0x0000075c]   
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x005e4fe2    8d4c2438
                          fstp               dword ptr [esp]                               // 0x005e4fe6    d91c24
                          push               ecx                                           // 0x005e4fe9    51
-                         call               _GetPosFromAngle__6GUtilsFff                  // 0x005e4fea    e891851600
+                         call               ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z // 0x005e4fea    e891851600
                          add                esp, 0x0c                                     // 0x005e4fef    83c40c
                          push               eax                                           // 0x005e4ff2    50
                          {disp8} lea        edx, dword ptr [esp + 0x50]                   // 0x005e4ff3    8d542450
@@ -2005,7 +2005,7 @@ _jmp_addr_0x005e4fb5:    {disp32} mov       esi, dword ptr [esi + 0x0000075c]   
                          call               @__pl__9MapCoordsCFRC9MapCoords@16            // 0x005e4ffb    e820050200
                          {disp8} lea        ecx, dword ptr [esp + 0x4c]                   // 0x005e5000    8d4c244c
                          {disp8} mov        dword ptr [esp + 0x54], 0x00000000            // 0x005e5004    c744245400000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x005e500c    e87fe02100
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x005e500c    e87fe02100
                          {disp8} fstp       dword ptr [esp + 0x40]                        // 0x005e5011    d95c2440
                          {disp8} fild       dword ptr [esp + 0x4c]                        // 0x005e5015    db44244c
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                   // 0x005e5019    8d4c243c
@@ -2043,7 +2043,7 @@ _jmp_addr_0x005e5092:    test               esi, esi                            
                          mov.s              edi, eax                                      // 0x005e5096    8bf8
                          {disp8} je         _jmp_addr_0x005e50c7                          // 0x005e5098    742d
 _jmp_addr_0x005e509a:    {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x005e509a    8d4e14
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x005e509d    e8eedf2100
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x005e509d    e8eedf2100
                          fstp               st(0)                                         // 0x005e50a2    ddd8
                          mov                eax, dword ptr [esi]                          // 0x005e50a4    8b06
                          push               edi                                           // 0x005e50a6    57
@@ -2189,7 +2189,7 @@ _jmp_addr_0x005e51c4:    {disp32} mov       eax, dword ptr [data_bytes + 0x4f3ab
                          or.s               ecx, esi                                      // 0x005e5261    0bce
                          {disp8} mov        dword ptr [eax + 0x28], ecx                   // 0x005e5263    894828
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4f3ab4]        // 0x005e5266    8b0db49aeb00
-                         call               @Draw__10LH3DSpriteFv@4                       // 0x005e526c    e8bfb22500
+                         call               ?Draw@LH3DSprite@@QAEXXZ                      // 0x005e526c    e8bfb22500
                          pop                edi                                           // 0x005e5271    5f
                          pop                esi                                           // 0x005e5272    5e
                          pop                ebx                                           // 0x005e5273    5b
@@ -2218,7 +2218,7 @@ _jmp_addr_0x005e5280:    push               esi                                 
                          call               ??3@YAXPAX@Z                                  // 0x005e52b1    e8e29b1c00
                          add                esp, 0x04                                     // 0x005e52b6    83c404
 _jmp_addr_0x005e52b9:    mov                ecx, dword ptr [esi]                          // 0x005e52b9    8b0e
-                         call               @Release__11LH3DTextureFv@4                   // 0x005e52bb    e8802a2500
+                         call               ?Release@LH3DTexture@@QAEXXZ                  // 0x005e52bb    e8802a2500
                          mov                dword ptr [esi], 0x00000000                   // 0x005e52c0    c70600000000
                          call               _jmp_addr_0x007dee00                          // 0x005e52c6    e8359b1f00
                          call               _jmp_addr_0x005ddc90                          // 0x005e52cb    e8c089ffff
@@ -2267,7 +2267,7 @@ _jmp_addr_0x005e52b9:    mov                ecx, dword ptr [esi]                
                          push               ebx                                           // 0x005e5332    53
                          call               _jmp_addr_0x00800c10                          // 0x005e5333    e8d8b82100
                          add                esp, 0x04                                     // 0x005e5338    83c404
-                         call               _Create__10LH3DIslandFv                       // 0x005e533b    e8c0e82100
+                         call               ?Create@LH3DIsland@@SAIXZ                     // 0x005e533b    e8c0e82100
                          xor.s              ebx, ebx                                      // 0x005e5340    33db
                          {disp8} mov        dword ptr [esp + 0x14], 0x45a00000            // 0x005e5342    c74424140000a045
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000            // 0x005e534a    c744241000000000
@@ -2361,7 +2361,7 @@ _jmp_addr_0x005e53fa:    add.s              ecx, edi                            
                          call               _LHFileLength__FPcPUl                         // 0x005e548c    e8cf741d00
                          {disp8} mov        edx, dword ptr [esp + 0x60]                   // 0x005e5491    8b542460
                          push               edx                                           // 0x005e5495    52
-                         call               _Alloc__7LH3DMemFl                            // 0x005e5496    e845d82500
+                         call               ?Alloc@LH3DMem@@SAPAXJ@Z                      // 0x005e5496    e845d82500
                          {disp8} mov        ecx, dword ptr [esp + 0x64]                   // 0x005e549b    8b4c2464
                          push               ebx                                           // 0x005e549f    53
                          push               ecx                                           // 0x005e54a0    51
@@ -2546,7 +2546,7 @@ _jmp_addr_0x005e56a3:    fld                dword ptr [esi]                     
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x005e56d6    8d4c2418
                          {disp8} mov        dword ptr [esp + 0x1c], eax                   // 0x005e56da    8944241c
                          {disp8} mov        dword ptr [esp + 0x20], 0x00000000            // 0x005e56de    c744242000000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x005e56e6    e8a5d92100
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x005e56e6    e8a5d92100
                          {disp8} fst        dword ptr [esi + 0x04]                        // 0x005e56eb    d95604
                          {disp8} mov        eax, dword ptr [esp + 0x44]                   // 0x005e56ee    8b442444
                          test               eax, eax                                      // 0x005e56f2    85c0
@@ -2682,7 +2682,7 @@ _jmp_addr_0x005e5830:    sub                esp, 0x20                           
                          {disp8} lea        ecx, dword ptr [esp + 0x08]                   // 0x005e589c    8d4c2408
                          {disp8} mov        dword ptr [esp + 0x0c], eax                   // 0x005e58a0    8944240c
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000            // 0x005e58a4    c744241000000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x005e58ac    e8dfd72100
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x005e58ac    e8dfd72100
                          {disp32} fadd      dword ptr [rdata_bytes + 0x2414]              // 0x005e58b1    d80514b48a00
                          {disp32} fld       dword ptr [data_bytes + 0x354374]             // 0x005e58b7    d90574a3d100
                          fcomp              st(1)                                         // 0x005e58bd    d8d9
@@ -3528,10 +3528,10 @@ _jmp_addr_0x005e638b:    pop                esi                                 
                          test               byte ptr [edi + 0x05], 0x04                   // 0x005e63ec    f6470504
                          {disp8} jne        _jmp_addr_0x005e63fa                          // 0x005e63f0    7508
                          push               ebx                                           // 0x005e63f2    53
-                         call               _SetD3DTillingOff__10LH3DRenderFi             // 0x005e63f3    e8589b2400
+                         call               ?SetD3DTillingOff@LH3DRender@@SAXH@Z          // 0x005e63f3    e8589b2400
                          {disp8} jmp        _jmp_addr_0x005e6400                          // 0x005e63f8    eb06
 _jmp_addr_0x005e63fa:    push               ebx                                           // 0x005e63fa    53
-                         call               _SetD3DTillingOn__10LH3DRenderFi              // 0x005e63fb    e8109b2400
+                         call               ?SetD3DTillingOn@LH3DRender@@SAXH@Z           // 0x005e63fb    e8109b2400
 _jmp_addr_0x005e6400:    xor.s              ecx, ecx                                      // 0x005e6400    33c9
                          {disp8} mov        cl, byte ptr [edi + 0x05]                     // 0x005e6402    8a4f05
                          not                cl                                            // 0x005e6405    f6d1
@@ -3852,7 +3852,8 @@ _globl_ct_0x005e6730:    {disp32} jmp       _jmp_addr_0x005e6740                
 _jmp_addr_0x005e6740:    {disp32} mov       dword ptr [data_bytes + 0x35a1a4], 0xffffffff // 0x005e6740    c705a401d200ffffffff
                          ret                                                              // 0x005e674a    c3
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005e674b    e8a9b0e1ff
-@__ct__9GLanguageFv@4:   mov.s              eax, ecx                                      // 0x005e6750    8bc1
+??0GLanguage@@QAE@XZ:
+                         mov.s              eax, ecx                                      // 0x005e6750    8bc1
                          xor.s              ecx, ecx                                      // 0x005e6752    33c9
                          {disp8} mov        dword ptr [eax + 0x04], ecx                   // 0x005e6754    894804
                          mov                dword ptr [eax], 0x0092b344                   // 0x005e6757    c70044b39200
@@ -4130,7 +4131,7 @@ _jmp_addr_0x005e6980:    push               esi                                 
                          pop                esi                                           // 0x005e6995    5e
                          ret                0x0004                                        // 0x005e6996    c20400
 _jmp_addr_0x005e6999:    {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x005e6999    8b4c2408
-                         call               @GetCreature3D__8CreatureFv@4                 // 0x005e699d    e8ae0ee9ff
+                         call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ                 // 0x005e699d    e8ae0ee9ff
                          {disp32} fld       dword ptr [eax + 0x00000090]                  // 0x005e69a2    d98090000000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x19c40]             // 0x005e69a8    d80d402c8c00
                          {disp32} fld       dword ptr [rdata_bytes + 0x82364]             // 0x005e69ae    d90564b39200
@@ -4200,12 +4201,12 @@ _jmp_addr_0x005e6a62:    add                ebx, 0x14                           
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                   // 0x005e6a65    8d4f14
                          push               ebx                                           // 0x005e6a68    53
                          push               ecx                                           // 0x005e6a69    51
-                         call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x005e6a6a    e801631600
+                         call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z                               // 0x005e6a6a    e801631600
                          {disp32} fmul      dword ptr [__real@3fc00000]                   // 0x005e6a6f    d80d4cb28a00
                          add                esp, 0x08                                     // 0x005e6a75    83c408
                          mov.s              ecx, edi                                      // 0x005e6a78    8bcf
                          {disp8} fstp       dword ptr [esi + 0x2c]                        // 0x005e6a7a    d95e2c
-                         call               @GetCreature3D__8CreatureFv@4                 // 0x005e6a7d    e8ce0de9ff
+                         call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ                 // 0x005e6a7d    e8ce0de9ff
                          {disp8} fld        dword ptr [esi + 0x2c]                        // 0x005e6a82    d9462c
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x2638c]             // 0x005e6a85    d81d8cf38c00
                          fnstsw             ax                                            // 0x005e6a8b    dfe0
@@ -4635,7 +4636,7 @@ _jmp_addr_0x005e6f70:    sub                esp, 0x0c                           
                          {disp32} je        _jmp_addr_0x005e7062                          // 0x005e6f97    0f84c5000000
                          mov.s              ecx, edi                                      // 0x005e6f9d    8bcf
                          {disp8} mov        dword ptr [esi + 0x14], 0x00000001            // 0x005e6f9f    c7461401000000
-                         call               @GetCreature3D__8CreatureFv@4                 // 0x005e6fa6    e8a508e9ff
+                         call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ                 // 0x005e6fa6    e8a508e9ff
                          {disp8} mov        ecx, dword ptr [esi + 0x38]                   // 0x005e6fab    8b4e38
                          mov.s              ebp, eax                                      // 0x005e6fae    8be8
                          push               0x1                                           // 0x005e6fb0    6a01
@@ -4709,7 +4710,7 @@ _jmp_addr_0x005e7062:    cmp                dword ptr [esi + 0x1c], 0x02        
 _jmp_addr_0x005e708b:    {disp32} mov       ecx, dword ptr [edi + 0x00000164]             // 0x005e708b    8b8f64010000
                          {disp32} mov       dword ptr [ecx + 0x00000700], ebp             // 0x005e7091    89a900070000
 _jmp_addr_0x005e7097:    mov.s              ecx, edi                                      // 0x005e7097    8bcf
-                         call               @GetCreature3D__8CreatureFv@4                 // 0x005e7099    e8b207e9ff
+                         call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ                 // 0x005e7099    e8b207e9ff
                          {disp32} mov       dword ptr [eax + 0x000048b0], ebx             // 0x005e709e    8998b0480000
                          {disp32} mov       dword ptr [edi + 0x00000380], ebx             // 0x005e70a4    899f80030000
                          {disp32} mov       dword ptr [edi + 0x000011b4], ebx             // 0x005e70aa    899fb4110000
@@ -4818,7 +4819,7 @@ _jmp_addr_0x005e71aa:    {disp8} mov        edx, dword ptr [esi + 0x14]         
                          mov                eax, dword ptr [ecx]                          // 0x005e71d1    8b01
                          call               dword ptr [eax + 0x1c]                        // 0x005e71d3    ff501c
                          mov.s              ecx, eax                                      // 0x005e71d6    8bc8
-                         call               @GetPlayerNumber__7GPlayerCFv@4               // 0x005e71d8    e8b3350600
+                         call               ?GetPlayerNumber@GPlayer@@QBEEXZ              // 0x005e71d8    e8b3350600
                          {disp8} mov        dword ptr [esp + 0x00], eax                   // 0x005e71dd    89442400
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226990]        // 0x005e71e1    a190c9be00
                          test               eax, eax                                      // 0x005e71e6    85c0

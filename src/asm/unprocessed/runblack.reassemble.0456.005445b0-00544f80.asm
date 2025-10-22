@@ -14,9 +14,9 @@
 .extern @DeleteString__9SetupListFi@12
 .extern @InsertString__9SetupListFiPw@16
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
-.extern _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl
+.extern ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
 .extern _HideAll__13DialogBoxBaseFv@0
 .extern _jmp_addr_0x00545680
@@ -158,7 +158,7 @@ _jmp_addr_0x00544722:    xor.s            eax, eax                              
                          nop                                                            // 0x0054472e    90
                          nop                                                            // 0x0054472f    90
 ?Destroy@StartGameBox@@UAEXXZ:
-                         call             @Destroy__13DialogBoxBaseFv@4                 // 0x00544730    e85beefcff
+                         call             ?Destroy@DialogBoxBase@@UAEXXZ                // 0x00544730    e85beefcff
                          {disp32} mov     dword ptr [data_bytes + 0x30ab84], 0x00000000 // 0x00544735    c705840bcd0000000000
                          ret                                                            // 0x0054473f    c3
 ?InitControls@StartGameBox@@UAEXXZ:
@@ -205,7 +205,7 @@ _jmp_addr_0x00544770:    {disp8} mov      eax, dword ptr [esp + 0x08]           
                          {disp8} mov      edx, dword ptr [eax + 0x08]                   // 0x005447c2    8b5008
                          push             ecx                                           // 0x005447c5    51
                          push             edx                                           // 0x005447c6    52
-                         call             _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl       // 0x005447c7    e8f4eaecff
+                         call             ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z          // 0x005447c7    e8f4eaecff
                          add              esp, 0x28                                     // 0x005447cc    83c428
                          {disp32} mov     dword ptr [data_bytes + 0x2078], esi          // 0x005447cf    893578809c00
                          pop              esi                                           // 0x005447d5    5e
@@ -559,7 +559,7 @@ _jmp_addr_0x00544b84:    pop              esi                                   
                          nop                                                            // 0x00544b8e    90
                          nop                                                            // 0x00544b8f    90
 ?Destroy@SkirmishGameBox@@UAEXXZ:
-                         call             @Destroy__13DialogBoxBaseFv@4                 // 0x00544b90    e8fbe9fcff
+                         call             ?Destroy@DialogBoxBase@@UAEXXZ                // 0x00544b90    e8fbe9fcff
                          {disp32} mov     dword ptr [data_bytes + 0x30ab88], 0x00000000 // 0x00544b95    c705880bcd0000000000
                          ret                                                            // 0x00544b9f    c3
 _jmp_addr_0x00544ba0:    {disp8} mov      edx, dword ptr [esp + 0x04]                   // 0x00544ba0    8b542404
@@ -859,7 +859,7 @@ _jmp_addr_0x00544eb0:    push             eax                                   
                          push             ecx                                           // 0x00544f33    51
                          push             edx                                           // 0x00544f34    52
                          push             eax                                           // 0x00544f35    50
-                         call             _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl       // 0x00544f36    e885e3ecff
+                         call             ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z          // 0x00544f36    e885e3ecff
                          add              esp, 0x28                                     // 0x00544f3b    83c428
                          {disp32} mov     dword ptr [data_bytes + 0x2078], esi          // 0x00544f3e    893578809c00
 _jmp_addr_0x00544f44:    pop              edi                                           // 0x00544f44    5f

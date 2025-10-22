@@ -67,19 +67,19 @@ extern const struct MultiMapFixedVftable __vt__11TotemStatue asm("??_7TotemStatu
 // Static methods
 
 // win1.41 00737cc0 mac 10545210 TotemStatue::Create(TownCentre *)
-struct TotemStatue* __cdecl Create__11TotemStatueFP10TownCentre(struct TownCentre* this);
+struct TotemStatue* __cdecl Create__11TotemStatueFP10TownCentre(struct TownCentre* this) asm("?Create@TotemStatue@@SAPAV1@PAVTownCentre@@@Z");
 
 // Constructors
 
 // win1.41 00737b20 mac 10545880 TotemStatue::TotemStatue(TownCentre *, GTotemStatueInfo const *)
-struct TotemStatue* __fastcall __ct__11TotemStatueFP10TownCentrePC16GTotemStatueInfo(struct TotemStatue* this, const void* edx, struct TownCentre* tc, struct GTotemStatueInfo* info);
+struct TotemStatue* __fastcall __ct__11TotemStatueFP10TownCentrePC16GTotemStatueInfo(struct TotemStatue* this, const void* edx, struct TownCentre* tc, struct GTotemStatueInfo* info) asm("??0TotemStatue@@QAE@PAVTownCentre@@PBVGTotemStatueInfo@@@Z");
 
 // Non-virtual methods
 
 // win1.41 00738260 mac 10544c70 TotemStatue::GetWorshipSpeed(void)
-float __fastcall GetWorshipSpeed__11TotemStatueFv(struct TotemStatue* this);
+float __fastcall GetWorshipSpeed__11TotemStatueFv(struct TotemStatue* this) asm("?GetWorshipSpeed@TotemStatue@@QAEMXZ");
 // win1.41 00738270 mac 10544b90 TotemStatue::SetWorshipPercentage(float)
-void __fastcall SetWorshipPercentage__11TotemStatueFf(struct TotemStatue* this, const void* edx, float percentage);
+void __fastcall SetWorshipPercentage__11TotemStatueFf(struct TotemStatue* this, const void* edx, float percentage) asm("?SetWorshipPercentage@TotemStatue@@QAEXM@Z");
 
 // Override methods
 

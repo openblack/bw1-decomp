@@ -45,14 +45,14 @@ enum MAGIC_TYPE __cdecl GetInfoFromText__10GMagicInfoFPCc(const char* text) asm(
 // Constructors
 
 // win1.41 00435520 mac 1018eec0 GMagicInfo::GMagicInfo(void)
-void __fastcall __ct__10GMagicInfoFv(struct GMagicInfo* this);
+void __fastcall __ct__10GMagicInfoFv(struct GMagicInfo* this) asm("??0GMagicInfo@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 005fb3f0 mac 103ae2c0 GMagicInfo::GetMagicInfoText(void) const
-const char* __fastcall GetMagicInfoText__10GMagicInfoCFv(const struct GMagicInfo* this);
+const char* __fastcall GetMagicInfoText__10GMagicInfoCFv(const struct GMagicInfo* this) asm("?GetMagicInfoText@GMagicInfo@@QBEPBDXZ");
 // win1.41 005fb680 mac 103adc30 GMagicInfo::GetMagicEffectInfo(void) const
-struct GMagicEffectInfo* __fastcall GetMagicEffectInfo__10GMagicInfoCFv(const struct GMagicInfo* this);
+struct GMagicEffectInfo* __fastcall GetMagicEffectInfo__10GMagicInfoCFv(const struct GMagicInfo* this) asm("?GetMagicEffectInfo@GMagicInfo@@QBEPAVGMagicEffectInfo@@XZ");
 
 // Override methods
 

@@ -16,7 +16,7 @@
 .extern @__ct__9SetupEditFiiiiiPwi@33
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
-.extern _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl
+.extern ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z
 .extern _jmp_addr_0x004707f0
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
 .extern _jmp_addr_0x005dd370
@@ -30,14 +30,15 @@
 .extern __chkstk
 .extern ___nw__FUl
 
-.globl @Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20
+.globl ?Init@MPFEChooseConnection@@SAXKKP6AXHPAUSetupBox@@PAUSetupControl@@HH@Z@Z
 .globl _Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v
 .globl ?Destroy@MPFEChooseConnection@@UAEXXZ
 
 start_0x0062b030_0x0062b830:
 // Snippet: asm, [0x0062b030, 0x0062b800)
 _Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v:
-@Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v@20:    {disp8} mov      eax, dword ptr [esp + 0x0c]                   // 0x0062b030    8b44240c
+?Init@MPFEChooseConnection@@SAXKKP6AXHPAUSetupBox@@PAUSetupControl@@HH@Z@Z:
+                                                                          {disp8} mov      eax, dword ptr [esp + 0x0c]                   // 0x0062b030    8b44240c
                          {disp8} mov      edx, dword ptr [esp + 0x04]                   // 0x0062b034    8b542404
                          push             edi                                           // 0x0062b038    57
                          mov.s            edi, ecx                                      // 0x0062b039    8bf9
@@ -600,7 +601,7 @@ _jmp_addr_0x0062b6f7:    add              esp, 0x00002820                       
                          push             ecx                                           // 0x0062b759    51
                          push             edx                                           // 0x0062b75a    52
                          push             eax                                           // 0x0062b75b    50
-                         call             _DrawBox__10SetupThingFiiiiUlUlUlUlUlUl       // 0x0062b75c    e85f7bdeff
+                         call             ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z          // 0x0062b75c    e85f7bdeff
                          add              esp, 0x28                                     // 0x0062b761    83c428
                          {disp32} mov     dword ptr [data_bytes + 0x2078], esi          // 0x0062b764    893578809c00
                          pop              esi                                           // 0x0062b76a    5e

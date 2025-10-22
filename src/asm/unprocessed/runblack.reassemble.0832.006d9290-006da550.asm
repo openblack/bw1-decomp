@@ -10,7 +10,7 @@
 .extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .extern ??$ReadIt@H@GameOSFile@@QAEXAAI@Z
 .extern _jmp_addr_0x00419d10
-.extern ___nw__4BaseFUl
+.extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x004640a0
 .extern _jmp_addr_0x004e9590
 .extern @__ct__5FlockFRC9MapCoordsPC10GFlockInfoP7GPlayerUl@24
@@ -24,9 +24,9 @@
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x00606380
 .extern _jmp_addr_0x006da550
-.extern _GameRand__5GRandFl
+.extern ?GameRand@GRand@@SAHJ@Z
 .extern _jmp_addr_0x007346e0
-.extern _Create__4TreeFRC9MapCoordsPC9GTreeInfoP6Forestfff
+.extern ?Create@Tree@@SAPAV1@ABUMapCoords@@PBVGTreeInfo@@PAVForest@@MMM@Z
 .extern _jmp_addr_0x007a1400
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
@@ -226,7 +226,7 @@ _jmp_addr_0x006d93e0:    sub               esp, 0x0c                            
                          push              0x0                                           // 0x006d9438    6a00
                          push              edi                                           // 0x006d943a    57
                          push              ecx                                           // 0x006d943b    51
-                         call              _Create__4TreeFRC9MapCoordsPC9GTreeInfoP6Forestfff                          // 0x006d943c    e89f0a0700
+                         call              ?Create@Tree@@SAPAV1@ABUMapCoords@@PBVGTreeInfo@@PAVForest@@MMM@Z           // 0x006d943c    e89f0a0700
                          add               esp, 0x18                                     // 0x006d9441    83c418
                          pop               edi                                           // 0x006d9444    5f
                          pop               esi                                           // 0x006d9445    5e
@@ -308,13 +308,13 @@ _jmp_addr_0x006d94bb:    push              edi                                  
 _jmp_addr_0x006d94e6:    push              0x0000068b                                    // 0x006d94e6    688b060000
                          push              0x00c09908                                    // 0x006d94eb    680899c000
                          push              0x3                                           // 0x006d94f0    6a03
-                         call              _GameRand__5GRandFl                           // 0x006d94f2    e819500000
+                         call              ?GameRand@GRand@@SAHJ@Z                       // 0x006d94f2    e819500000
                          add               esp, 0x0c                                     // 0x006d94f7    83c40c
                          push              eax                                           // 0x006d94fa    50
                          push              0x0000068b                                    // 0x006d94fb    688b060000
                          push              0x00c09908                                    // 0x006d9500    680899c000
                          push              0x3                                           // 0x006d9505    6a03
-                         call              _GameRand__5GRandFl                           // 0x006d9507    e804500000
+                         call              ?GameRand@GRand@@SAHJ@Z                       // 0x006d9507    e804500000
                          add               esp, 0x0c                                     // 0x006d950c    83c40c
                          push              eax                                           // 0x006d950f    50
                          mov.s             ecx, esi                                      // 0x006d9510    8bce
@@ -367,7 +367,7 @@ _jmp_addr_0x006d94e6:    push              0x0000068b                           
                          push              0x00c09908                                    // 0x006d95a6    680899c000
                          push              0x00000090                                    // 0x006d95ab    6890000000
                          {disp32} mov      dword ptr [esi + 0x000000e0], eax             // 0x006d95b0    8986e0000000
-                         call              ___nw__4BaseFUl                               // 0x006d95b6    e835d1d5ff
+                         call              ?__nw@Base@@SAPAXK@Z                          // 0x006d95b6    e835d1d5ff
                          mov.s             edi, eax                                      // 0x006d95bb    8bf8
                          xor.s             ebp, ebp                                      // 0x006d95bd    33ed
                          add               esp, 0x14                                     // 0x006d95bf    83c414

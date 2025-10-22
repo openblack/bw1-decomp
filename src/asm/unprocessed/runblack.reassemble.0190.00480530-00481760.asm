@@ -10,7 +10,7 @@
 .extern _jmp_addr_0x0047f3a0
 .extern _jmp_addr_0x00482d40
 .extern _jmp_addr_0x004831b0
-.extern @GetSafeBuffer__12LH3DCreatureFv@4
+.extern ?GetSafeBuffer@LH3DCreature@@QAEPAEXZ
 .extern ?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ
 .extern _jmp_addr_0x00484b00
 .extern _jmp_addr_0x00484ec0
@@ -35,7 +35,7 @@
 .extern ___RTDynamicCast
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x00845c20
 
 .globl _jmp_addr_0x00480530
@@ -900,7 +900,7 @@ _jmp_addr_0x00480ebe:    push               ebx                                 
                          {disp8} mov        eax, dword ptr [edi + 0x08]              // 0x00480ed1    8b4708
                          mov.s              ecx, edi                                 // 0x00480ed4    8bcf
                          {disp8} mov        dword ptr [esp + 0x24], eax              // 0x00480ed6    89442424
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4                     // 0x00480eda    e8b1213800
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z                   // 0x00480eda    e8b1213800
                          {disp8} fadd       dword ptr [esp + 0x24]                   // 0x00480edf    d8442424
                          push               0x0                                      // 0x00480ee3    6a00
                          push               0x009c8de8                               // 0x00480ee5    68e88d9c00
@@ -1339,7 +1339,7 @@ _jmp_addr_0x0048139e:    {disp32} mov       ecx, dword ptr [ecx + 0x000051f0]   
                          call               dword ptr [__imp__GetOpenFileNameA@4]    // 0x004813aa    ff1570998a00
 _jmp_addr_0x004813b0:    push               esi                                      // 0x004813b0    56
                          mov.s              esi, ecx                                 // 0x004813b1    8bf1
-                         call               @GetSafeBuffer__12LH3DCreatureFv@4       // 0x004813b3    e8f82e0000
+                         call               ?GetSafeBuffer@LH3DCreature@@QAEPAEXZ    // 0x004813b3    e8f82e0000
                          {disp32} mov       esi, dword ptr [esi + 0x000051b8]        // 0x004813b8    8bb6b8510000
                          lea                ecx, dword ptr [esi + esi * 0x2]         // 0x004813be    8d0c76
                          shl                ecx, 4                                   // 0x004813c1    c1e104
@@ -1349,7 +1349,7 @@ _jmp_addr_0x004813b0:    push               esi                                 
                          call               dword ptr [__imp__DirectDrawEnumerateA@4]// 0x004813ca    ff1528908a00
 _jmp_addr_0x004813d0:    push               esi                                      // 0x004813d0    56
                          mov.s              esi, ecx                                 // 0x004813d1    8bf1
-                         call               @GetSafeBuffer__12LH3DCreatureFv@4       // 0x004813d3    e8d82e0000
+                         call               ?GetSafeBuffer@LH3DCreature@@QAEPAEXZ    // 0x004813d3    e8d82e0000
                          {disp32} mov       esi, dword ptr [esi + 0x000051d8]        // 0x004813d8    8bb6d8510000
                          lea                ecx, dword ptr [esi + esi * 0x2]         // 0x004813de    8d0c76
                          shl                ecx, 4                                   // 0x004813e1    c1e104
@@ -1357,7 +1357,7 @@ _jmp_addr_0x004813d0:    push               esi                                 
                          pop                esi                                      // 0x004813e8    5e
                          ret                                                         // 0x004813e9    c3
                          call               dword ptr [__imp__DirectInputCreateA@4]  // 0x004813ea    ff1534908a00
-@GetBonePos__12LH3DCreatureFl@12:    call               @GetSafeBuffer__12LH3DCreatureFv@4       // 0x004813f0    e8bb2e0000
+@GetBonePos__12LH3DCreatureFl@12:    call               ?GetSafeBuffer@LH3DCreature@@QAEPAEXZ    // 0x004813f0    e8bb2e0000
                          {disp8} mov        ecx, dword ptr [esp + 0x04]              // 0x004813f5    8b4c2404
                          lea                ecx, dword ptr [ecx + ecx * 0x2]         // 0x004813f9    8d0c49
                          shl                ecx, 4                                   // 0x004813fc    c1e104

@@ -73,9 +73,9 @@ extern const struct FixedVftable __vt__11FixedObject asm("??_7Fixed@@6B@");
 // Constructors
 
 // win1.41 0052dd80 mac inlined FixedObject::FixedObject(void)
-struct Fixed* __fastcall __ct__11FixedObjectFv(struct Fixed* this);
+struct Fixed* __fastcall __ct__11FixedObjectFv(struct Fixed* this) asm("??0FixedObject@@QAE@XZ");
 // win1.41 0052ddc0 mac 100e1fb0 FixedObject::FixedObject(MapCoords const &, GObjectInfo const *, float, float)
-struct Fixed* __fastcall __ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff(struct Fixed* this, const void* edx, const struct MapCoords* coords, const struct GObjectInfo* info, float y_angle, float scale);
+struct Fixed* __fastcall __ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff(struct Fixed* this, const void* edx, const struct MapCoords* coords, const struct GObjectInfo* info, float y_angle, float scale) asm("??0FixedObject@@QAE@ABUMapCoords@@PBVGObjectInfo@@MM@Z");
 
 // Non-virtual Destructors
 
@@ -189,8 +189,8 @@ uint32_t __fastcall ApplyThisToMapCoord__14SingleMapFixedFP16GInterfaceStatusRC9
 // win1.41 0052eb20 mac 100e3350 SingleMapFixed::ApplyOnlyAfterReleased(void)
 uint32_t __fastcall ApplyOnlyAfterReleased__14SingleMapFixedFv(struct Object* this) asm("?ApplyOnlyAfterReleased@SingleMapFixed@@UAEIXZ");
 // win1.41 0052eb30 mac 10095a30 SingleMapFixed::GetCollideData(void)
-struct NewCollide* __fastcall GetCollideData__14SingleMapFixedFv(const struct Object* this);
+struct NewCollide* __fastcall GetCollideData__14SingleMapFixedFv(const struct Object* this) asm("?GetCollideData@SingleMapFixed@@UAEPAUNewCollide@@XZ");
 // win1.41 0052f510 mac 100dde20 SingleMapFixed::CreateCollideData(void)
-void __fastcall CreateCollideData__14SingleMapFixedFv(struct SingleMapFixed* this);
+void __fastcall CreateCollideData__14SingleMapFixedFv(struct SingleMapFixed* this) asm("?CreateCollideData@SingleMapFixed@@UAEXXZ");
 
 #endif /* BW1_DECOMP_FIXED_INCLUDED_H */

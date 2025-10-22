@@ -30,15 +30,15 @@
 .extern _jmp_addr_0x007dc8b0
 .extern _jmp_addr_0x007dc920
 .extern _jmp_addr_0x007dcaf0
-.extern @__ct__8LHScreenFv@4
-.extern @__dt__8LHScreenFv@4
+.extern ??0LHScreen@@QAE@XZ
+.extern ??_DLHScreen@@QAEXXZ
 .extern _jmp_addr_0x007de6f0
 .extern _jmp_addr_0x007de820
 .extern _jmp_addr_0x007de8d0
 .extern _jmp_addr_0x007dece0
 .extern _jmp_addr_0x007ded10
 .extern _jmp_addr_0x007e4b80
-.extern @__ct__7LHMouseFv@4
+.extern ??0LHMouse@@QAE@XZ
 .extern @Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16
 .extern _jmp_addr_0x007e5b20
 .extern _jmp_addr_0x007ef780
@@ -52,7 +52,7 @@
 .globl _jmp_addr_0x007db770
 .globl ___nw__FUl
 .globl _jmp_addr_0x007db7a0
-.globl @__ct__5LHSysFv@4
+.globl ??0LHSys@@QAE@XZ 
 .globl _jmp_addr_0x007db8a0
 .globl _jmp_addr_0x007db8e0
 .globl _jmp_addr_0x007db8f0
@@ -421,7 +421,7 @@ _globl_ct_0x007db7b0:    call              _jmp_addr_0x007db7c0                 
                          nop                                                              // 0x007db7be    90
                          nop                                                              // 0x007db7bf    90
 _jmp_addr_0x007db7c0:    mov               ecx, OFFSET _LHSys                             // 0x007db7c0    b94050e800
-                         {disp32} jmp      @__ct__5LHSysFv@4                              // 0x007db7c5    e936000000
+                         {disp32} jmp      ??0LHSys@@QAE@XZ                               // 0x007db7c5    e936000000
                          nop                                                              // 0x007db7ca    90
                          nop                                                              // 0x007db7cb    90
                          nop                                                              // 0x007db7cc    90
@@ -445,7 +445,7 @@ _jmp_addr_0x007db7d0:    push              0x007db7e0                           
                          nop                                                              // 0x007db7ee    90
                          nop                                                              // 0x007db7ef    90
 _jmp_addr_0x007db7f0:    add               ecx, 0x10                                      // 0x007db7f0    83c110
-                         {disp32} jmp      @__dt__8LHScreenFv@4                           // 0x007db7f3    e9f8200000
+                         {disp32} jmp      ??_DLHScreen@@QAEXXZ                           // 0x007db7f3    e9f8200000
                          nop                                                              // 0x007db7f8    90
                          nop                                                              // 0x007db7f9    90
                          nop                                                              // 0x007db7fa    90
@@ -454,7 +454,8 @@ _jmp_addr_0x007db7f0:    add               ecx, 0x10                            
                          nop                                                              // 0x007db7fd    90
                          nop                                                              // 0x007db7fe    90
                          nop                                                              // 0x007db7ff    90
-@__ct__5LHSysFv@4:       push              -0x1                                           // 0x007db800    6aff
+??0LHSys@@QAE@XZ:
+                         push              -0x1                                           // 0x007db800    6aff
                          push              0x008a797b                                     // 0x007db802    687b798a00
                          {disp32} mov      eax, fs:[0x0]                                  // 0x007db807    64a100000000
                          push              eax                                            // 0x007db80d    50
@@ -465,11 +466,11 @@ _jmp_addr_0x007db7f0:    add               ecx, 0x10                            
                          mov.s             esi, ecx                                       // 0x007db818    8bf1
                          {disp8} mov       dword ptr [esp + 0x08], esi                    // 0x007db81a    89742408
                          {disp8} lea       ecx, dword ptr [esi + 0x10]                    // 0x007db81e    8d4e10
-                         call              @__ct__8LHScreenFv@4                           // 0x007db821    e8fa150000
+                         call              ??0LHScreen@@QAE@XZ                            // 0x007db821    e8fa150000
                          xor.s             ebx, ebx                                       // 0x007db826    33db
                          {disp32} lea      ecx, dword ptr [esi + 0x000001c4]              // 0x007db828    8d8ec4010000
                          {disp8} mov       dword ptr [esp + 0x14], ebx                    // 0x007db82e    895c2414
-                         call              @__ct__7LHMouseFv@4                            // 0x007db832    e8e9960000
+                         call              ??0LHMouse@@QAE@XZ                             // 0x007db832    e8e9960000
                          push              0x00e8c118 /* _lpCriticalSection_00e8c118 */   // 0x007db837    6818c1e800
                          call              dword ptr [__imp__InitializeCriticalSection@4] // 0x007db83c    ff157c918a00
                          {disp32} lea      eax, dword ptr [esi + 0x000005ad]              // 0x007db842    8d86ad050000

@@ -47,9 +47,9 @@ extern const struct GameThingWithPosVftable __vt__13InfluenceRing asm("??_7Influ
 // Constructors
 
 // win1.41 005cd760 mac 100fd0a4 InfluenceRing::InfluenceRing(MapCoords const &, GPlayer *, float, int)
-struct InfluenceRing* __fastcall __ct__13InfluenceRingFRC9MapCoordsP7GPlayerfi(struct InfluenceRing* this, const void* edx, const struct MapCoords* coords, struct GPlayer* player, float param_4, int param_5);
+struct InfluenceRing* __fastcall __ct__13InfluenceRingFRC9MapCoordsP7GPlayerfi(struct InfluenceRing* this, const void* edx, const struct MapCoords* coords, struct GPlayer* player, float param_4, int param_5) asm("??0InfluenceRing@@QAE@ABUMapCoords@@PAVGPlayer@@MH@Z");
 // win1.41 005cd800 mac 100fce54 InfluenceRing::InfluenceRing(GameThingWithPos *, GPlayer *, float, int)
-struct InfluenceRing* __fastcall __ct__13InfluenceRingFP16GameThingWithPosP7GPlayerfi(struct InfluenceRing* this, const void* edx, struct GameThingWithPos* thing, struct GPlayer* player, float param_4, int param_5);
+struct InfluenceRing* __fastcall __ct__13InfluenceRingFP16GameThingWithPosP7GPlayerfi(struct InfluenceRing* this, const void* edx, struct GameThingWithPos* thing, struct GPlayer* player, float param_4, int param_5) asm("??0InfluenceRing@@QAE@PAVGameThingWithPos@@PAVGPlayer@@MH@Z");
 
 // Override methods
 

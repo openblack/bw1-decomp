@@ -147,7 +147,7 @@ extern const struct GObjectInfoVftable __vt__13GVillagerInfo asm("??_7GVillagerI
 // win1.41 007519e0 mac 1056df60 GVillagerInfo::GetInfoFromText(char *)
 int __cdecl GetInfoFromText__13GVillagerInfoFPc(char* text) asm("?GetInfoFromText@GVillagerInfo@@SAHPAD@Z");
 // win1.41 00752650 mac 1056be30 GVillagerInfo::Find(TRIBE_TYPE, VILLAGER_NUMBER)
-struct GVillagerInfo* __cdecl Find__13GVillagerInfoF10TRIBE_TYPE15VILLAGER_NUMBER(enum TRIBE_TYPE type, int villager_number);
+struct GVillagerInfo* __cdecl Find__13GVillagerInfoF10TRIBE_TYPE15VILLAGER_NUMBER(enum TRIBE_TYPE type, int villager_number) asm("?Find@GVillagerInfo@@SAPAV1@W4TRIBE_TYPE@@W4VILLAGER_NUMBER@@@Z");
 
 // Override methods
 

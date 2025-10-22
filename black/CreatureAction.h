@@ -47,7 +47,7 @@ static_assert(sizeof(struct CreatureActionContext) == 0x18, "Data type is of wro
 // Constructors
 
 // win1.41 004c3960 mac 10230320 CreatureActionContext::CreatureActionContext(CreatureContext &, float)
-struct CreatureActionContext* __fastcall __ct__21CreatureActionContextFR15CreatureContextf(struct CreatureActionContext* this, const void* edx, struct CreatureContext* context, float param_2);
+struct CreatureActionContext* __fastcall __ct__21CreatureActionContextFR15CreatureContextf(struct CreatureActionContext* this, const void* edx, struct CreatureContext* context, float param_2) asm("??0CreatureActionContext@@QAE@AAVCreatureContext@@M@Z");
 
 struct PreviousActionContextStack
 {
@@ -65,7 +65,7 @@ static_assert(sizeof(struct CreatureActionOpinions) == 0x520, "Data type is of w
 // Constructors
 
 // win1.41 004c3930 mac 102303a0 CreatureActionOpinions::CreatureActionOpinions(CreatureInfo const *)
-struct CreatureActionOpinions* __fastcall __ct__22CreatureActionOpinionsFPC12CreatureInfo(struct CreatureActionOpinions* this);
+struct CreatureActionOpinions* __fastcall __ct__22CreatureActionOpinionsFPC12CreatureInfo(struct CreatureActionOpinions* this) asm("??0CreatureActionOpinions@@QAE@PBVCreatureInfo@@@Z");
 
 struct CreaturePreviousActions
 {

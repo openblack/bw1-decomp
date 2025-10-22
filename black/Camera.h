@@ -59,33 +59,33 @@ extern const struct GameThingWithPosVftable __vt__7GCamera asm("??_7GCamera@@6B@
 // Static methods
 
 // win1.41 00441f20 mac 1019a070 GCamera::GetThingViewingDistance(GameThingWithPos *)
-float __cdecl GetThingViewingDistance__7GCameraFP16GameThingWithPos(struct GameThingWithPos* target);
+float __cdecl GetThingViewingDistance__7GCameraFP16GameThingWithPos(struct GameThingWithPos* target) asm("?GetThingViewingDistance@GCamera@@SAMPAVGameThingWithPos@@@Z");
 // win1.41 00442810 mac 10032670 GCamera::SetPointFromPointDistanceHeadingAndPitch(LHPoint *, LHPoint const &, float, float, float)
-void __cdecl SetPointFromPointDistanceHeadingAndPitch__7GCameraFP7LHPointRC7LHPointfff(struct LHPoint* param_1, const struct LHPoint* point, float distance, float heading, float pitch);
+void __cdecl SetPointFromPointDistanceHeadingAndPitch__7GCameraFP7LHPointRC7LHPointfff(struct LHPoint* param_1, const struct LHPoint* point, float distance, float heading, float pitch) asm("?SetPointFromPointDistanceHeadingAndPitch@GCamera@@SAXPAULHPoint@@ABU2@MMM@Z");
 // win1.41 004428d0 mac 1007dbf0 GCamera::GetHeadingAndPitchFromPoints(LHPoint const &, LHPoint const &, float *, float *)
-void __cdecl GetHeadingAndPitchFromPoints__7GCameraFRC7LHPointRC7LHPointPfPf(struct LHPoint* origin, struct LHPoint* heading, float* pitch, float* yaw);
+void __cdecl GetHeadingAndPitchFromPoints__7GCameraFRC7LHPointRC7LHPointPfPf(struct LHPoint* origin, struct LHPoint* heading, float* pitch, float* yaw) asm("?GetHeadingAndPitchFromPoints@GCamera@@SAXABULHPoint@@0PAM1@Z");
 
 // Constructors
 
 // win1.41 00441870 mac 1019a720 GCamera::Camera(MapCoords&)
-struct GCamera* __fastcall __ct__7GCameraFR9MapCoords(struct GCamera* this, const void* edx, struct MapCoords* coords);
+struct GCamera* __fastcall __ct__7GCameraFR9MapCoords(struct GCamera* this, const void* edx, struct MapCoords* coords) asm("??0GCamera@@QAE@AAUMapCoords@@@Z");
 
 // Non-virtual methods
 
 // win1.41 00441b70 mac 1019a650 GCamera::CantExitCurrentMode(void)
-bool __fastcall CantExitCurrentMode__7GCameraFv(struct GCamera* this);
+bool __fastcall CantExitCurrentMode__7GCameraFv(struct GCamera* this) asm("?CantExitCurrentMode@GCamera@@QAE_NXZ");
 // win1.41 00441cd0 mac 1019a420 GCamera::SwitchToViewMode(CameraMode *)
-void __fastcall SwitchToViewMode__7GCameraFP10CameraMode(struct GCamera* this, const void* edx, struct CameraMode* mode);
+void __fastcall SwitchToViewMode__7GCameraFP10CameraMode(struct GCamera* this, const void* edx, struct CameraMode* mode) asm("?SwitchToViewMode@GCamera@@QAEXPAVCameraMode@@@Z");
 // win1.41 00441d40 mac 1008de30 GCamera::CheckStackedModesForValidity(void)
-void __fastcall CheckStackedModesForValidity__7GCameraFv(struct GCamera* this);
+void __fastcall CheckStackedModesForValidity__7GCameraFv(struct GCamera* this) asm("?CheckStackedModesForValidity@GCamera@@QAEXXZ");
 // win1.41 00441f50 mac 1008f7f0 GCamera::Validate(void)
-void __fastcall Validate__7GCameraFv(struct GCamera* this);
+void __fastcall Validate__7GCameraFv(struct GCamera* this) asm("?Validate@GCamera@@QAEXXZ");
 // win1.41 00441f80 mac 1002cbd0 GCamera::Update(void)
-void __fastcall Update__7GCameraFv(struct GCamera* this);
+void __fastcall Update__7GCameraFv(struct GCamera* this) asm("?Update@GCamera@@QAEXXZ");
 // win1.41 00442ef0 mac 1002b280 GCamera::UpdateGameThingWithPosData(void)
-void __fastcall UpdateGameThingWithPosData__7GCameraFv(struct GCamera* this);
+void __fastcall UpdateGameThingWithPosData__7GCameraFv(struct GCamera* this) asm("?UpdateGameThingWithPosData@GCamera@@QAEXXZ");
 // win1.41 00443680 mac 10198790 GCamera::SetCameraFov(float, float)
-void __fastcall SetCameraFov__7GCameraFff(struct GCamera* this, const void* edx, float fov, float time);
+void __fastcall SetCameraFov__7GCameraFff(struct GCamera* this, const void* edx, float fov, float time) asm("?SetCameraFov@GCamera@@QAEXMM@Z");
 
 // Override methods
 

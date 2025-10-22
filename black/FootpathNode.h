@@ -43,16 +43,16 @@ extern const struct GameThingVftable __vt__13GFootpathNode asm("??_7GFootpathNod
 // Constructors
 
 // win1.41 inlined mac inlined GFootpathNode::GFootpathNode(void)
-struct GFootpathNode* __fastcall __ct__13GFootpathNodeFv(struct GFootpathNode* this);
+struct GFootpathNode* __fastcall __ct__13GFootpathNodeFv(struct GFootpathNode* this) asm("??0GFootpathNode@@QAE@XZ");
 // win1.41 00534cf0 mac 100eed50 GFootpathNode::GFootpathNode(MapCoords const &, int, int)
-struct GFootpathNode* __fastcall __ct__13GFootpathNodeFRC9MapCoordsii(struct GFootpathNode* this, const void* edx, struct MapCoords* coords, int param_2, int param_3);
+struct GFootpathNode* __fastcall __ct__13GFootpathNodeFRC9MapCoordsii(struct GFootpathNode* this, const void* edx, struct MapCoords* coords, int param_2, int param_3) asm("??0GFootpathNode@@QAE@ABUMapCoords@@HH@Z");
 
 // Non-virtual methods
 
 // win1.41 005389d0 mac 100e90a0 GFootpathNode::PurgeFollowerList(void)
-void __fastcall PurgeFollowerList__13GFootpathNodeFv(struct GFootpathNode* this);
+void __fastcall PurgeFollowerList__13GFootpathNodeFv(struct GFootpathNode* this) asm("?PurgeFollowerList@GFootpathNode@@QAEXXZ");
 // win1.41 00538b10 mac 100e8d10 GFootpathNode::ClearFromPreviousNode(void)
-void __fastcall ClearFromPreviousNode__13GFootpathNodeFv(struct GFootpathNode* this);
+void __fastcall ClearFromPreviousNode__13GFootpathNodeFv(struct GFootpathNode* this) asm("?ClearFromPreviousNode@GFootpathNode@@QAEXXZ");
 
 // Override methods
 

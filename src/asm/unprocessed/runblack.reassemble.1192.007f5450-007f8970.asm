@@ -42,7 +42,7 @@
 .extern _jmp_addr_0x007f8a20
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0081c780
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x0086cb80
@@ -3206,7 +3206,7 @@ _jmp_addr_0x007f732a:    {disp8} mov        edx, dword ptr [esp + 0x40]         
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                    // 0x007f7383    8d4c2418
                          {disp8} mov        dword ptr [esp + 0x1c], eax                    // 0x007f7387    8944241c
                          {disp8} mov        dword ptr [esp + 0x20], 0x00000000             // 0x007f738b    c744242000000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4 // 0x007f7393    e8f8bc0000
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z // 0x007f7393    e8f8bc0000
                          {disp8} fstp       dword ptr [esp + 0x44]                         // 0x007f7398    d95c2444
                          {disp8} mov        eax, dword ptr [edi + 0x04]                    // 0x007f739c    8b4704
                          test               eax, eax                                       // 0x007f739f    85c0
@@ -3350,7 +3350,7 @@ _jmp_addr_0x007f7510:    {disp8} fld        dword ptr [ebx + -0x04]             
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                    // 0x007f753c    8d4c2424
                          {disp8} mov        dword ptr [esp + 0x28], eax                    // 0x007f7540    89442428
                          {disp8} mov        dword ptr [esp + 0x2c], 0x00000000             // 0x007f7544    c744242c00000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4 // 0x007f754c    e83fbb0000
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z // 0x007f754c    e83fbb0000
                          {disp8} fld        dword ptr [esp + 0x44]                         // 0x007f7551    d9442444
                          fsub               st, st(1)                                      // 0x007f7555    d8e1
                          add                ebx, 0x14                                      // 0x007f7557    83c314

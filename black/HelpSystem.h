@@ -135,26 +135,26 @@ extern const struct BaseVftable __vt__10HelpSystem asm("??_7HelpSystem@@6B@");
 // Constructors
 
 // win1.41 005c5410 mac 103519a0 HelpSystem::HelpSystem(void)
-struct HelpSystem* __fastcall __ct__10HelpSystemFv(struct HelpSystem* this);
+struct HelpSystem* __fastcall __ct__10HelpSystemFv(struct HelpSystem* this) asm("??0HelpSystem@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 005c5460 mac 103518b0 HelpSystem::SetToZero(void)
-void __fastcall SetToZero__10HelpSystemFv(struct HelpSystem* this);
+void __fastcall SetToZero__10HelpSystemFv(struct HelpSystem* this) asm("?SetToZero@HelpSystem@@QAEXXZ");
 // win1.41 005c54e0 mac 103517f0 HelpSystem::ClearTextDisplayed(void)
-void __fastcall ClearTextDisplayed__10HelpSystemFv(struct HelpSystem* this);
+void __fastcall ClearTextDisplayed__10HelpSystemFv(struct HelpSystem* this) asm("?ClearTextDisplayed@HelpSystem@@QAEXXZ");
 // win1.41 005c5550 mac 10351760 HelpSystem::ClearAllText(void)
-void __fastcall ClearAllText__10HelpSystemFv(struct HelpSystem* this);
+void __fastcall ClearAllText__10HelpSystemFv(struct HelpSystem* this) asm("?ClearAllText@HelpSystem@@QAEXXZ");
 // win1.41 005c5580 mac 10351660 HelpSystem::Reset(void)
-void __fastcall Reset__10HelpSystemFv(struct HelpSystem* this);
+void __fastcall Reset__10HelpSystemFv(struct HelpSystem* this) asm("?Reset@HelpSystem@@QAEXXZ");
 // win1.41 005c5610 mac 103515b0 HelpSystem::ResetIcons(void)
-void __fastcall ResetIcons__10HelpSystemFv(struct HelpSystem* this);
+void __fastcall ResetIcons__10HelpSystemFv(struct HelpSystem* this) asm("?ResetIcons@HelpSystem@@QAEXXZ");
 // win1.41 005c67e0 mac 1034f730 HelpSystem::ClearDialogueControl(void)
-void __fastcall ClearDialogueControl__10HelpSystemFv(struct HelpSystem* this);
+void __fastcall ClearDialogueControl__10HelpSystemFv(struct HelpSystem* this) asm("?ClearDialogueControl@HelpSystem@@QAEXXZ");
 // win1.41 005c6ad0 mac 1034f2c0 HelpSystem::SetWideScreen(int, ulong)
-void __fastcall SetWideScreen__10HelpSystemFiUl(struct HelpSystem* this, const void* edx, int param_2, uint32_t param_3);
+void __fastcall SetWideScreen__10HelpSystemFiUl(struct HelpSystem* this, const void* edx, int param_2, uint32_t param_3) asm("?SetWideScreen@HelpSystem@@QAEXHK@Z");
 // win1.41 005c6b60 mac 1001d4b0 HelpSystem::GetWideScreenPercentage(void) const
-float __fastcall GetWideScreenPercentage__10HelpSystemCFv(const struct HelpSystem* this);
+float __fastcall GetWideScreenPercentage__10HelpSystemCFv(const struct HelpSystem* this) asm("?GetWideScreenPercentage@HelpSystem@@QBEMXZ");
 // win1.41 005c8280 mac 10351b90 HelpSystem::TriggerCategory(HELP_SET_CATEGORY)
 void __fastcall TriggerCategory__10HelpSystemF17HELP_SET_CATEGORY(struct HelpSystem* this, const void* edx, enum HELP_SET_CATEGORY param_1) asm("?TriggerCategory@HelpSystem@@QAEXW4HELP_SET_CATEGORY@@@Z");
 // win1.41 005c8b80 mac 10353090 HelpSystem::RunMessageSet(HELP_SYSTEM_MESSAGE_SET, GameThingWithPos *)

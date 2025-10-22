@@ -70,12 +70,12 @@ struct Ball* __stdcall Create__4BallFRC9MapCoordsPC9GBallInfoUsff(struct Ball* t
 // Constructors
 
 // win1.41 004359b0 mac 100b0df0 Ball::Ball(MapCoords const &, GBallInfo const *)
-struct Ball* __fastcall __ct__4BallFRC9MapCoordsPC9GBallInfo(struct Ball* this, const void* edx, const struct MapCoords* coords, const struct GBallInfo* info);
+struct Ball* __fastcall __ct__4BallFRC9MapCoordsPC9GBallInfo(struct Ball* this, const void* edx, const struct MapCoords* coords, const struct GBallInfo* info) asm("??0Ball@@QAE@ABUMapCoords@@PBVGBallInfo@@@Z");
 
 // Non-virtual methods
 
 // win1.41 004360e0 mac 100b04d0 Ball::IsBallFree(void)
-bool __fastcall IsBallFree__4BallFv(struct Ball* this);
+bool __fastcall IsBallFree__4BallFv(struct Ball* this) asm("?IsBallFree@Ball@@QAE_NXZ");
 
 // Override methods
 

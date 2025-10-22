@@ -126,7 +126,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 // Non-virtual methods
 
 // win1.41 00591370 mac 10059120 GlobalGameLists::Process(void)
-void __fastcall Process__15GlobalGameListsFv(struct GlobalGameLists* this);
+void __fastcall Process__15GlobalGameListsFv(struct GlobalGameLists* this) asm("?Process@GlobalGameLists@@QAEXXZ");
 
 // Override methods
 

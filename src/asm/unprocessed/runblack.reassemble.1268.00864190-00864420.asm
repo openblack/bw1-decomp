@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x00864420
 .extern @FillPosAndHeading__8RPFollowFR7Point2DRff@20
 .extern @GetLength__9RouteNodeFP7RPAvoid@12
-.extern @__dt__5RPlanFv@4
+.extern ??_DRPlan@@QAEXXZ
 
 .globl _jmp_addr_0x00864190
 .globl _jmp_addr_0x008641f0
@@ -34,7 +34,7 @@ _jmp_addr_0x008641a8:    mov                edi, dword ptr [ebx]                
                          test               edi, edi                                      // 0x008641aa    85ff
                          {disp8} je         _jmp_addr_0x008641be                          // 0x008641ac    7410
                          mov.s              ecx, edi                                      // 0x008641ae    8bcf
-                         call               @__dt__5RPlanFv@4                             // 0x008641b0    e83b9f0000
+                         call               ??_DRPlan@@QAEXXZ                             // 0x008641b0    e83b9f0000
                          push               edi                                           // 0x008641b5    57
                          call               ??3@YAXPAX@Z                                  // 0x008641b6    e8ddacf4ff
                          add                esp, 0x04                                     // 0x008641bb    83c404

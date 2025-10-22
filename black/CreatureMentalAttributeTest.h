@@ -45,7 +45,7 @@ static_assert(sizeof(struct AttributeTest) == 0x94, "Data type is of wrong size"
 // Constructors
 
 // win1.41 004d4c20 mac 1024fa20 AttributeTest::AttributeTest(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
-struct AttributeTest* __fastcall __ct__13AttributeTestF18DECISION_TREE_TYPE16CREATURE_DESIRES15CREATURE_ACTION(struct AttributeTest* this, const void* edx, enum DECISION_TREE_TYPE tree_type, enum CREATURE_DESIRES desire, enum CREATURE_ACTION action);
+struct AttributeTest* __fastcall __ct__13AttributeTestF18DECISION_TREE_TYPE16CREATURE_DESIRES15CREATURE_ACTION(struct AttributeTest* this, const void* edx, enum DECISION_TREE_TYPE tree_type, enum CREATURE_DESIRES desire, enum CREATURE_ACTION action) asm("??0AttributeTest@@QAE@W4DECISION_TREE_TYPE@@W4CREATURE_DESIRES@@W4CREATURE_ACTION@@@Z");
 
 DECLARE_LH_LINKED_LIST(AttributeTest);
 
@@ -64,7 +64,7 @@ static_assert(sizeof(struct DecisionTree) == 0x8, "Data type is of wrong size");
 // Constructors
 
 // win1.41 004d4380 mac 102506c0 DecisionTree::DecisionTree(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
-struct DecisionTree* __fastcall __ct__12DecisionTreeF18DECISION_TREE_TYPE16CREATURE_DESIRES15CREATURE_ACTION(struct DecisionTree* this, const void* edx, enum DECISION_TREE_TYPE tree_type, enum CREATURE_DESIRES desire, enum CREATURE_ACTION action);
+struct DecisionTree* __fastcall __ct__12DecisionTreeF18DECISION_TREE_TYPE16CREATURE_DESIRES15CREATURE_ACTION(struct DecisionTree* this, const void* edx, enum DECISION_TREE_TYPE tree_type, enum CREATURE_DESIRES desire, enum CREATURE_ACTION action) asm("??0DecisionTree@@QAE@W4DECISION_TREE_TYPE@@W4CREATURE_DESIRES@@W4CREATURE_ACTION@@@Z");
 
 struct DecisionTreeAgenda
 {
@@ -80,7 +80,7 @@ static_assert(sizeof(struct DecisionTreeAgenda) == 0x24, "Data type is of wrong 
 // Constructors
 
 // win1.41 004d43f0 mac 102505c0 DecisionTreeAgenda::DecisionTreeAgenda(DECISION_TREE_TYPE, CREATURE_DESIRES)
-struct DecisionTreeAgenda* __fastcall __ct__18DecisionTreeAgendaF18DECISION_TREE_TYPE16CREATURE_DESIRES(struct DecisionTreeAgenda* this, const void* edx, enum DECISION_TREE_TYPE tree_type, enum CREATURE_DESIRES desire);
+struct DecisionTreeAgenda* __fastcall __ct__18DecisionTreeAgendaF18DECISION_TREE_TYPE16CREATURE_DESIRES(struct DecisionTreeAgenda* this, const void* edx, enum DECISION_TREE_TYPE tree_type, enum CREATURE_DESIRES desire) asm("??0DecisionTreeAgenda@@QAE@W4DECISION_TREE_TYPE@@W4CREATURE_DESIRES@@@Z");
 
 struct DecisionTreeAgendas
 {
@@ -97,7 +97,7 @@ static_assert(sizeof(struct DecisionTreeCollection) == 0x140, "Data type is of w
 // Constructors
 
 // win1.41 004d7220 mac 1024c150 DecisionTreeCollection::DecisionTreeCollection(void)
-struct DecisionTreeCollection* __fastcall __ct__22DecisionTreeCollectionFv(struct DecisionTreeCollection* this);
+struct DecisionTreeCollection* __fastcall __ct__22DecisionTreeCollectionFv(struct DecisionTreeCollection* this) asm("??0DecisionTreeCollection@@QAE@XZ");
 
 struct Attribute
 {

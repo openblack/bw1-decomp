@@ -435,7 +435,7 @@ struct Abode* __cdecl Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii(c
     asm("push               ecx");                                      // 0x00402f8c    51
     asm("push               eax");                                      // 0x00402f8d    50
     asm("push               edx");                                      // 0x00402f8e    52
-    asm("call               _Create__10TownCentreFRC9MapCoordsPC10GAbodeInfoP4Townfffi");                     // 0x00402f8f    e8fc0c3400
+    asm("call               ?Create@TownCentre@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");                     // 0x00402f8f    e8fc0c3400
     asm("{disp32} jmp       _jmp_addr_0x0040306d");                     // 0x00402f94    e9d4000000
     asm("_jmp_addr_0x00402f99:");
     asm("{disp8} mov        ecx, dword ptr [esp + 0x28]");              // 0x00402f99    8b4c2428
@@ -502,7 +502,7 @@ struct Abode* __cdecl Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii(c
     asm("push               eax");                                      // 0x00403038    50
     asm("push               0x00ccf1c4");                               // 0x00403039    68c4f1cc00
     asm("push               ecx");                                      // 0x0040303e    51
-    asm("call               _Create__5FieldFRC9MapCoordsPC14GFieldTypeInfoP4Townffi");                     // 0x0040303f    e83c521200
+    asm("call               ?Create@Field@@SAPAV1@ABUMapCoords@@PBVGFieldTypeInfo@@PAVTown@@MMH@Z");                     // 0x0040303f    e83c521200
     asm("add                esp, 0x18");                                // 0x00403044    83c418
     asm("pop                esi");                                      // 0x00403047    5e
     asm("ret");                                                         // 0x00403048    c3
@@ -631,7 +631,7 @@ struct Abode* __cdecl CreateWithoutSpecial__5AbodeFRC9MapCoordsPC10GAbodeInfoP4T
     asm("push               0x0000013c");                                    // 0x00403192    683c010000
     asm("push               0x009c7fbc");                                    // 0x00403197    68bc7f9c00
     asm("push               0x000000c4");                                    // 0x0040319c    68c4000000
-    asm("call               ___nw__4BaseFUl");                               // 0x004031a1    e84a350300
+    asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x004031a1    e84a350300
     asm("add                esp, 0x0c");                                     // 0x004031a6    83c40c
     asm("test               eax, eax");                                      // 0x004031a9    85c0
     asm("{disp8} je         _jmp_addr_0x004031ed");                          // 0x004031ab    7440
@@ -689,7 +689,7 @@ void __fastcall CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords(struct Obje
     asm("test               eax, eax");                                      // 0x00403222    85c0
     asm("{disp8} je         _jmp_addr_0x0040326b");                          // 0x00403224    7445
     asm("push               edi");                                           // 0x00403226    57
-    asm("call               _Create__9LH3DSmokeFPC7LHPoint");                // 0x00403227    e834593f00
+    asm("call               ?Create@LH3DSmoke@@SAPAV1@PBULHPoint@@@Z");                // 0x00403227    e834593f00
     asm("add                esp, 0x04");                                     // 0x0040322c    83c404
     asm("cmp.s              eax, edi");                                      // 0x0040322f    3bc7
     asm("{disp32} mov       dword ptr [esi + 0x0000008c], eax");             // 0x00403231    89868c000000
@@ -733,13 +733,13 @@ void __fastcall CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords(struct Obje
     asm("{disp8} mov        dword ptr [esp + 0x2c], 0xbf4ccccd");            // 0x004032ab    c744242ccdcc4cbf
     asm("_jmp_addr_0x004032b3:");
     asm("{disp8} mov        ecx, dword ptr [esi + 0x40]");                   // 0x004032b3    8b4e40
-    asm("call               @GetAltitudeFondation__12Game3DObjectCFv@4");    // 0x004032b6    e805792300
+    asm("call               ?GetAltitudeFondation@Game3DObject@@QBEMXZ");    // 0x004032b6    e805792300
     asm("{disp8} fcomp      dword ptr [esp + 0x2c]");                        // 0x004032bb    d85c242c
     asm("fnstsw             ax");                                            // 0x004032bf    dfe0
     asm("test               ah, 0x41");                                      // 0x004032c1    f6c441
     asm("{disp8} jne        _jmp_addr_0x004032d0");                          // 0x004032c4    750a
     asm("{disp8} mov        ecx, dword ptr [esi + 0x40]");                   // 0x004032c6    8b4e40
-    asm("call               @GetAltitudeFondation__12Game3DObjectCFv@4");    // 0x004032c9    e8f2782300
+    asm("call               ?GetAltitudeFondation@Game3DObject@@QBEMXZ");    // 0x004032c9    e8f2782300
     asm("{disp8} jmp        _jmp_addr_0x004032d4");                          // 0x004032ce    eb04
     asm("_jmp_addr_0x004032d0:");
     asm("{disp8} fld        dword ptr [esp + 0x2c]");                        // 0x004032d0    d944242c
@@ -760,7 +760,7 @@ void __fastcall CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords(struct Obje
     asm("{disp8} mov        esi, dword ptr [esi + 0x40]");                   // 0x004032fa    8b7640
     asm("mov.s              ecx, ebx");                                      // 0x004032fd    8bcb
     asm("{disp8} mov        dword ptr [esp + 0x10], eax");                   // 0x004032ff    89442410
-    asm("call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4");// 0x00403303    e888fd3f00
+    asm("call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z");// 0x00403303    e888fd3f00
     asm("{disp8} fadd       dword ptr [esp + 0x10]");                        // 0x00403308    d8442410
     asm("{disp8} fstp       dword ptr [esp + 0x18]");                        // 0x0040330c    d95c2418
     asm("fild               dword ptr [ebx]");                               // 0x00403310    db03

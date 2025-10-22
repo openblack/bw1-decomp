@@ -23,13 +23,13 @@
 .extern @Update__11InnerCameraFP9InnerRoomfiiRC7LHCoordb@29
 .extern @Init__11InnerCameraFPc@12
 .extern @ReloadCamera__11InnerCameraFPc@12
-.extern @Close__11InnerCameraFv@4
+.extern ?Close@InnerCamera@@UAEXXZ
 .extern _jmp_addr_0x00797760
 .extern _jmp_addr_0x007a1400
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 .extern _atexit
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0086d4e0
 
 .globl _jmp_addr_0x0079f5d0
@@ -348,7 +348,7 @@ _jmp_addr_0x0079f950:    {disp32} mov       dword ptr [data_bytes + 0x4741f8], 0
                          pop                esi                                           // 0x0079fa2b    5e
                          ret                0x0004                                        // 0x0079fa2c    c20400
                          nop                                                              // 0x0079fa2f    90
-                         {disp32} jmp       @Close__11InnerCameraFv@4                     // 0x0079fa30    e96b7affff
+                         {disp32} jmp       ?Close@InnerCamera@@UAEXXZ                    // 0x0079fa30    e96b7affff
                          nop                                                              // 0x0079fa35    90
                          nop                                                              // 0x0079fa36    90
                          nop                                                              // 0x0079fa37    90
@@ -1198,7 +1198,7 @@ _jmp_addr_0x007a064d:    cmp                ebx, 0x02                           
                          {disp8} lea        ecx, dword ptr [esp + 0x30]                   // 0x007a06d3    8d4c2430
                          {disp8} mov        dword ptr [esp + 0x34], eax                   // 0x007a06d7    89442434
                          {disp8} mov        dword ptr [esp + 0x38], 0x00000000            // 0x007a06db    c744243800000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x007a06e3    e8a8290600
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x007a06e3    e8a8290600
                          {disp32} fstp      dword ptr [data_bytes + 0x43fff4]             // 0x007a06e8    d91df45fe000
                          {disp8} fld        dword ptr [esp + 0x1c]                        // 0x007a06ee    d944241c
                          {disp8} fmul       dword ptr [esp + 0x1c]                        // 0x007a06f2    d84c241c

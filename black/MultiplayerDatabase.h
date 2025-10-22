@@ -46,7 +46,7 @@ extern const struct MultiplayerDatabaseVftable __vt__19MultiplayerDatabase asm("
 // Constructors
 
 // win1.41 00633400 mac 1010a230 MultiplayerDatabase::MultiplayerDatabase(void)
-struct MultiplayerDatabase* __fastcall __ct__19MultiplayerDatabaseFv(struct MultiplayerDatabase* this);
+struct MultiplayerDatabase* __fastcall __ct__19MultiplayerDatabaseFv(struct MultiplayerDatabase* this) asm("??0MultiplayerDatabase@@QAE@XZ");
 
 // Override methods
 

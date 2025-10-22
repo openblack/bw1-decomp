@@ -63,7 +63,7 @@ struct Windmill* __cdecl Create__8WindmillFRC9MapCoordsPC10GAbodeInfoP4Townfffi(
     asm("push               0x000005c4");                                    // 0x00405891    68c4050000
     asm("push               0x009c7fbc");                                    // 0x00405896    68bc7f9c00
     asm("push               0x000000c4");                                    // 0x0040589b    68c4000000
-    asm("call               ___nw__4BaseFUl");                               // 0x004058a0    e84b0e0300
+    asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x004058a0    e84b0e0300
     asm("mov.s              esi, eax");                                      // 0x004058a5    8bf0
     asm("add                esp, 0x0c");                                     // 0x004058a7    83c40c
     asm("test               esi, esi");                                      // 0x004058aa    85f6
@@ -147,7 +147,7 @@ void __fastcall CallVirtualFunctionsForCreation__8WindmillFRC9MapCoords(struct O
     asm("push               0x0");                                           // 0x0040596f    6a00
     asm("push               0xd");                                           // 0x00405971    6a0d
     asm("push               esi");                                           // 0x00405973    56
-    asm("call               _Create__8SoundTagFP16GameThingWithPosUlbUlUlii19AUDIO_SFX_BANK_TYPEi");                          // 0x00405974    e8c78e3100
+    asm("call               ?Create@SoundTag@@SAPAV1@PAVGameThingWithPos@@K_NKKHHW4AUDIO_SFX_BANK_TYPE@@H@Z");                          // 0x00405974    e8c78e3100
     asm("add                esp, 0x24");                                     // 0x00405979    83c424
     asm("_jmp_addr_0x0040597c:");
     asm("pop                esi");                                           // 0x0040597c    5e

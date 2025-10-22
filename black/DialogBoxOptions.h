@@ -64,7 +64,7 @@ extern const struct DialogBoxBaseVftable __vt__16DialogBoxOptions asm("??_7Dialo
 // Constructors
 
 // win1.41 00513810 mac 102b5740 DialogBoxOptions::DialogBoxOptions(void)
-struct DialogBoxOptions* __fastcall __ct__16DialogBoxOptionsFv(struct DialogBoxOptions* this);
+struct DialogBoxOptions* __fastcall __ct__16DialogBoxOptionsFv(struct DialogBoxOptions* this) asm("??0DialogBoxOptions@@QAE@XZ");
 
 // Override methods
 

@@ -12,7 +12,7 @@
 .extern @AutoScroll__9SetupListFb@9
 .extern @InsertString__9SetupListFiPw@16
 .extern @SetNum__9HLineDataFi@12
-.extern _DrawTextWrap__10SetupThingFiiiiibPwiP9LH3DColorbb
+.extern ?DrawTextWrap@SetupThing@@SAMHHHHH_NPA_WHPAULH3DColor@@00@Z
 .extern ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern _jmp_addr_0x00550a80
 .extern _jmp_addr_0x00555130
@@ -523,7 +523,7 @@ _jmp_addr_0x0056ab2a:    call               _swprintf                           
                          push               eax                                           // 0x0056ab6d    50
                          sub.s              edx, ecx                                      // 0x0056ab6e    2bd1
                          push               edx                                           // 0x0056ab70    52
-                         call               _DrawTextWrap__10SetupThingFiiiiibPwiP9LH3DColorbb                          // 0x0056ab71    e8da6beaff
+                         call               ?DrawTextWrap@SetupThing@@SAMHHHHH_NPA_WHPAULH3DColor@@00@Z                 // 0x0056ab71    e8da6beaff
                          fstp               st(0)                                         // 0x0056ab76    ddd8
                          add                esp, 0x2c                                     // 0x0056ab78    83c42c
                          {disp8} jmp        _jmp_addr_0x0056ab85                          // 0x0056ab7b    eb08
@@ -575,7 +575,7 @@ _jmp_addr_0x0056aba5:    cmp                dword ptr [ebx + 0x2c], 0x02        
                          push               eax                                           // 0x0056ac00    50
                          sub.s              edx, ecx                                      // 0x0056ac01    2bd1
                          push               edx                                           // 0x0056ac03    52
-                         call               _DrawTextWrap__10SetupThingFiiiiibPwiP9LH3DColorbb                          // 0x0056ac04    e8476beaff
+                         call               ?DrawTextWrap@SetupThing@@SAMHHHHH_NPA_WHPAULH3DColor@@00@Z                 // 0x0056ac04    e8476beaff
                          fstp               st(0)                                         // 0x0056ac09    ddd8
                          add                esp, 0x2c                                     // 0x0056ac0b    83c42c
 _jmp_addr_0x0056ac0e:    {disp32} mov       eax, dword ptr [data_bytes + 0x340064]        // 0x0056ac0e    a16460d000
@@ -613,7 +613,7 @@ _jmp_addr_0x0056ac49:    {disp8} mov        ecx, dword ptr [eax + 0x08]         
                          sub.s              edi, eax                                      // 0x0056ac76    2bf8
                          push               ebx                                           // 0x0056ac78    53
                          push               edi                                           // 0x0056ac79    57
-                         call               _DrawTextWrap__10SetupThingFiiiiibPwiP9LH3DColorbb                          // 0x0056ac7a    e8d16aeaff
+                         call               ?DrawTextWrap@SetupThing@@SAMHHHHH_NPA_WHPAULH3DColor@@00@Z                 // 0x0056ac7a    e8d16aeaff
                          fstp               st(0)                                         // 0x0056ac7f    ddd8
                          add                esp, 0x2c                                     // 0x0056ac81    83c42c
 _jmp_addr_0x0056ac84:    mov                eax, 0x00000001                               // 0x0056ac84    b801000000

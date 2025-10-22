@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x007eb870
 
 .globl @SetPosition__7LHMouseFP7LHCoord@12
-.globl @__ct__7LHMouseFv@4
+.globl ??0LHMouse@@QAE@XZ 
 .globl _jmp_addr_0x007e5320
 .globl @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20
 .globl _jmp_addr_0x007e5550
@@ -108,7 +108,8 @@ _jmp_addr_0x007e4e93:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                       // 0x007e4f1d    90
                          nop                                                       // 0x007e4f1e    90
                          nop                                                       // 0x007e4f1f    90
-@__ct__7LHMouseFv@4:     push             ebx                                      // 0x007e4f20    53
+??0LHMouse@@QAE@XZ:
+                         push             ebx                                      // 0x007e4f20    53
                          push             esi                                      // 0x007e4f21    56
                          push             edi                                      // 0x007e4f22    57
                          mov.s            esi, ecx                                 // 0x007e4f23    8bf1

@@ -47,6 +47,6 @@ static_assert(sizeof(struct GDebug) == 0x2d2a8, "Data type is of wrong size");
 // Static methods
 
 // win1.41 00511da0 mac 1002c710 GDebug::SetMessage(unsigned short, char *,...)
-void __cdecl SetMessage__6GDebugFUsPce(struct GDebug* debug, uint16_t param_2, char* fmt, ... );
+void __cdecl SetMessage__6GDebugFUsPce(struct GDebug* debug, uint16_t param_2, char* fmt, ... ) asm("?SetMessage@GDebug@@SAXGPADZZ");
 
 #endif /* BW1_DECOMP_DEBUG_INCLUDED_H */

@@ -288,7 +288,7 @@ uint32_t __fastcall DoResourceAdding__5AbodeF13RESOURCE_TYPEUlP16GInterfaceStatu
     asm("mov.s              ebp, eax");                                      // 0x00404e5e    8be8
     asm("push               ebx");                                           // 0x00404e60    53
     asm("mov.s              ecx, ebp");                                      // 0x00404e61    8bcd
-    asm("call               @GetPlayerNumber__7GPlayerCFv@4");               // 0x00404e63    e828592400
+    asm("call               ?GetPlayerNumber@GPlayer@@QBEEXZ");               // 0x00404e63    e828592400
     asm("push               eax");                                           // 0x00404e68    50
     asm("mov.s              ecx, edi");                                      // 0x00404e69    8bcf
     asm("call               _jmp_addr_0x00740030");                          // 0x00404e6b    e8c0b13300
@@ -440,7 +440,7 @@ uint32_t __fastcall DoResourceRemoving__5AbodeF13RESOURCE_TYPEUlP16GInterfaceSta
     asm("push               ebx");                                           // 0x00404fc9    53
     asm("call               dword ptr [eax + 0x1c]");                        // 0x00404fca    ff501c
     asm("mov.s              ecx, eax");                                      // 0x00404fcd    8bc8
-    asm("call               @GetPlayerNumber__7GPlayerCFv@4");               // 0x00404fcf    e8bc572400
+    asm("call               ?GetPlayerNumber@GPlayer@@QBEEXZ");               // 0x00404fcf    e8bc572400
     asm("push               eax");                                           // 0x00404fd4    50
     asm("mov.s              ecx, edi");                                      // 0x00404fd5    8bcf
     asm("call               _jmp_addr_0x007400d0");                          // 0x00404fd7    e8f4b03300

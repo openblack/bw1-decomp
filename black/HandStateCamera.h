@@ -38,7 +38,7 @@ extern const struct HandStateVftable __vt__15HandStateCamera asm("??_7HandStateC
 // Constructors
 
 // win1.41 005b02b0 mac 10336ec0 HandStateCamera::HandStateCamera(CHand*)
-struct HandStateCamera* __fastcall __ct__15HandStateCameraFP5CHand(struct HandStateCamera* this, const void* edx, struct CHand* hand);
+struct HandStateCamera* __fastcall __ct__15HandStateCameraFP5CHand(struct HandStateCamera* this, const void* edx, struct CHand* hand) asm("??0HandStateCamera@@QAE@PAVCHand@@@Z");
 
 // Override methods
 

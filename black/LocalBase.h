@@ -33,12 +33,12 @@ extern const struct BaseVftable __vt__9LocalBase asm("??_7LocalBase@@6B@");
 // Static methods
 
 // win1.41 005f8790 mac 1009eb9c LocalBase::operator new(unsigned long)
-struct LocalBase* __cdecl __nw__9LocalBaseFUl(size_t size, const char* file_name, uint32_t line);
+struct LocalBase* __cdecl __nw__9LocalBaseFUl(size_t size, const char* file_name, uint32_t line) asm("?__nw@LocalBase@@SAPAV1@K@Z");
 
 // Constructors
 
 // win1.41 inlined mac 1034ab30 LocalBase::LocalBase(void)
-struct LocalBase* __fastcall __ct__9LocalBaseFv(struct LocalBase* this);
+struct LocalBase* __fastcall __ct__9LocalBaseFv(struct LocalBase* this) asm("??0LocalBase@@QAE@XZ");
 
 // Override methods
 

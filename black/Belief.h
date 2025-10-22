@@ -42,9 +42,9 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 // Non-virtual methods
 
 // win1.41 004387d0 mac 100b1700 GBelief::SetBelief(unsigned long, float)
-void __fastcall SetBelief__7GBeliefFUlf(struct GBelief* this, const void* edx, int index, float value);
+void __fastcall SetBelief__7GBeliefFUlf(struct GBelief* this, const void* edx, int index, float value) asm("?SetBelief@GBelief@@QAEXKM@Z");
 // win1.41 00438a00 mac 100b13e0 GBelief::SetBeliefInPlayerCap(GPlayer *, float)
-void __fastcall SetBeliefInPlayerCap__7GBeliefFP7GPlayerf(struct GBelief* this, const void* edx, struct GPlayer* player, float cap);
+void __fastcall SetBeliefInPlayerCap__7GBeliefFP7GPlayerf(struct GBelief* this, const void* edx, struct GPlayer* player, float cap) asm("?SetBeliefInPlayerCap@GBelief@@QAEXPAVGPlayer@@M@Z");
 
 // Override methods
 

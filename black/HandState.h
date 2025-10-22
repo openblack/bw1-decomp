@@ -70,15 +70,15 @@ extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9HandStat
 // Constructors
 
 // win1.41 inlined mac inlined HandState::HandState(CHand*)
-struct HandState* __fastcall __ct__9HandStateFP5CHand(struct HandState* this, const void* edx, struct CHand* hand);
+struct HandState* __fastcall __ct__9HandStateFP5CHand(struct HandState* this, const void* edx, struct CHand* hand) asm("??0HandState@@QAE@PAVCHand@@@Z");
 
 // Override methods
 
 // win1.41 0046e5e0 mac 101c6110 HandState::DrawTheHeldObject(void)
-void __fastcall DrawTheHeldObject__9HandStateFv(struct HandState* this);
+void __fastcall DrawTheHeldObject__9HandStateFv(struct HandState* this) asm("?DrawTheHeldObject@HandState@@UAEXXZ");
 // win1.41 005b02d0 mac 101c5590 HandState::Exit(void)
-void __fastcall Exit__9HandStateFv(struct HandState* this);
+void __fastcall Exit__9HandStateFv(struct HandState* this) asm("?Exit@HandState@@UAEXXZ");
 // win1.41 0046be80 mac 101a6900 HandState::AllowCameraTricons(void)
-bool __fastcall AllowCameraTricons__9HandStateFv(struct HandState* this);
+bool __fastcall AllowCameraTricons__9HandStateFv(struct HandState* this) asm("?AllowCameraTricons@HandState@@UAE_NXZ");
 
 #endif /* BW1_DECOMP_HAND_STATE_INCLUDED_H */

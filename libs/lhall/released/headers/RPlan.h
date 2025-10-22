@@ -46,19 +46,19 @@ static_assert(sizeof(struct RPlan) == 0x74, "Data type is of wrong size");
 // Constructors
 
 // win1.41 0086e0d0 mac 100aefe0 RPlan::RPlan(void)
-struct RPlan* __fastcall __ct__5RPlanFv(struct RPlan* this);
+struct RPlan* __fastcall __ct__5RPlanFv(struct RPlan* this) asm("??0RPlan@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 0086e100 mac 100aee30 RPlan::FreeRoutes(void)
-void __fastcall FreeRoutes__5RPlanFv(struct RPlan* this);
+void __fastcall FreeRoutes__5RPlanFv(struct RPlan* this) asm("?FreeRoutes@RPlan@@QAEXXZ");
 // win1.41 0086e200 mac 100aed70 RPlan::SetStart(Point2D const &, float, RPHolder *, int, int, int)
-void __fastcall SetStart__5RPlanFRC7Point2DfP8RPHolderiii(struct RPlan* this, const void* edx, struct Point2D* param_1, float param_2, struct RPHolder* holder, int param_4, int param_5, int param_6);
+void __fastcall SetStart__5RPlanFRC7Point2DfP8RPHolderiii(struct RPlan* this, const void* edx, struct Point2D* param_1, float param_2, struct RPHolder* holder, int param_4, int param_5, int param_6) asm("?SetStart@RPlan@@QAEXABUPoint2D@@MPAURPHolder@@HHH@Z");
 // win1.41 0086e250 mac 100ae750 RPlan::SetDest(Point2D const &, float, float, float, int, int, float, int)
-void __fastcall SetDest__5RPlanFRC7Point2Dfffiifi(struct RPlan* this, const void* edx, const struct Point2D* param_1, float param_2, float param_3, float param_4, int param_5, int param_6, float param_7, int param_8);
+void __fastcall SetDest__5RPlanFRC7Point2Dfffiifi(struct RPlan* this, const void* edx, const struct Point2D* param_1, float param_2, float param_3, float param_4, int param_5, int param_6, float param_7, int param_8) asm("?SetDest@RPlan@@QAEXABUPoint2D@@MMMHHMH@Z");
 // win1.41 0086e9a0 mac 1061b3ec RPlan::GameTurnUpdate(int)
-void __fastcall GameTurnUpdate__5RPlanFi(struct RPlan* this, const void* edx, int param_2);
+void __fastcall GameTurnUpdate__5RPlanFi(struct RPlan* this, const void* edx, int param_2) asm("?GameTurnUpdate@RPlan@@QAEXH@Z");
 // win1.41 0086e0f0 mac 100aef60 RPlan::~RPlan(void)
-void __fastcall __dt__5RPlanFv(struct RPlan* this);
+void __fastcall __dt__5RPlanFv(struct RPlan* this) asm("??_DRPlan@@QAEXXZ");
 
 #endif /* BW1_DECOMP_R_PLAN_INCLUDED_H */

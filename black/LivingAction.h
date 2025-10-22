@@ -37,14 +37,14 @@ static_assert(sizeof(struct LivingAction) == 0x6, "Data type is of wrong size");
 // Constructors
 
 // win1.41 005ecc70 mac 10381350 LivingAction::LivingAction(void)
-struct LivingAction* __fastcall __ct__12LivingActionFv(struct LivingAction* this);
+struct LivingAction* __fastcall __ct__12LivingActionFv(struct LivingAction* this) asm("??0LivingAction@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 005ecc90 mac 10072200 LivingAction::SetState(unsigned long, unsigned char)
-void __fastcall SetState__12LivingActionFUlUc(struct LivingAction* this, const void* edx, enum LIVING_ACTION_INDEX index, enum VILLAGER_STATES state);
+void __fastcall SetState__12LivingActionFUlUc(struct LivingAction* this, const void* edx, enum LIVING_ACTION_INDEX index, enum VILLAGER_STATES state) asm("?SetState@LivingAction@@QAEXKE@Z");
 // win1.41 inlined mac 1004c420 LivingAction::GetState(unsigned long) const
-enum VILLAGER_STATES __fastcall GetState__12LivingActionCFUl(const struct LivingAction* this, const void* edx, enum LIVING_ACTION_INDEX index);
+enum VILLAGER_STATES __fastcall GetState__12LivingActionCFUl(const struct LivingAction* this, const void* edx, enum LIVING_ACTION_INDEX index) asm("?GetState@LivingAction@@QBE?AW4VILLAGER_STATES@@K@Z");
 
 struct Living__StateTableSubEntry
 {

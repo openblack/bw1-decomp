@@ -65,21 +65,21 @@ extern const struct MultiMapFixedVftable __vt__16WorshipSpellIcon asm("??_7Worsh
 // Static methods
 
 // win1.41 0077f2b0 mac 105b6cf0 WorshipSpellIcon::Create(MapCoords const &, GSpellIconInfo const *, GSpellSeedInfo const *, WorshipSite *, short, float, int)
-struct WorshipSpellIcon* __cdecl Create__16WorshipSpellIconFRC9MapCoordsPC14GSpellIconInfoPC14GSpellSeedInfoP11WorshipSitesfi(struct MapCoords* coords, struct GSpellIconInfo* icon_info, struct GSpellSeedInfo* seed_info, struct WorshipSite* site, int16_t slot, float param_6, int param_7);
+struct WorshipSpellIcon* __cdecl Create__16WorshipSpellIconFRC9MapCoordsPC14GSpellIconInfoPC14GSpellSeedInfoP11WorshipSitesfi(struct MapCoords* coords, struct GSpellIconInfo* icon_info, struct GSpellSeedInfo* seed_info, struct WorshipSite* site, int16_t slot, float param_6, int param_7) asm("?Create@WorshipSpellIcon@@SAPAV1@ABUMapCoords@@PBVGSpellIconInfo@@PBVGSpellSeedInfo@@PAVWorshipSite@@FMH@Z");
 
 // Constructors
 
 // win1.41 0077f140 mac 105b7070 WorshipSpellIcon::WorshipSpellIcon(MapCoords const &, GSpellIconInfo const *, GSpellSeedInfo const *, WorshipSite *, short, float, int)
-struct WorshipSpellIcon* __fastcall __ct__16WorshipSpellIconFRC9MapCoordsPC14GSpellIconInfoPC14GSpellSeedInfoP11WorshipSitesfi(struct WorshipSpellIcon* this, const void* edx, const struct MapCoords* coords, const struct GSpellIconInfo* icon_info, const struct GSpellSeedInfo* seed_info, struct WorshipSite* site, int16_t slot, float param_6, int param_7);
+struct WorshipSpellIcon* __fastcall __ct__16WorshipSpellIconFRC9MapCoordsPC14GSpellIconInfoPC14GSpellSeedInfoP11WorshipSitesfi(struct WorshipSpellIcon* this, const void* edx, const struct MapCoords* coords, const struct GSpellIconInfo* icon_info, const struct GSpellSeedInfo* seed_info, struct WorshipSite* site, int16_t slot, float param_6, int param_7) asm("??0WorshipSpellIcon@@QAE@ABUMapCoords@@PBVGSpellIconInfo@@PBVGSpellSeedInfo@@PAVWorshipSite@@FMH@Z");
 
 // Non-virtual methods
 
 // win1.41 0077f1f0 mac inlined WorshipSpellIcon::SetZero(void)
 void __fastcall SetZero__16WorshipSpellIconFv(struct WorshipSpellIcon* this) asm("?SetZero@WorshipSpellIcon@@QAEXXZ");
 // win1.41 0077f320 mac 105b6bf0 WorshipSpellIcon::UpdateGraphicsWithPULevels(void)
-void __fastcall UpdateGraphicsWithPULevels__16WorshipSpellIconFv(struct WorshipSpellIcon* this);
+void __fastcall UpdateGraphicsWithPULevels__16WorshipSpellIconFv(struct WorshipSpellIcon* this) asm("?UpdateGraphicsWithPULevels@WorshipSpellIcon@@QAEXXZ");
 // win1.41 0077ff40 mac 105b4ff0 WorshipSpellIcon::StopRemoveFromPlayer(void)
-void __fastcall StopRemoveFromPlayer__16WorshipSpellIconFv(struct WorshipSpellIcon* this);
+void __fastcall StopRemoveFromPlayer__16WorshipSpellIconFv(struct WorshipSpellIcon* this) asm("?StopRemoveFromPlayer@WorshipSpellIcon@@QAEXXZ");
 
 // Override methods
 

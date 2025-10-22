@@ -23,7 +23,7 @@ static_assert(sizeof(struct CreatureInterestingThingToLookAt) == 0x20, "Data typ
 // Constructors
 
 // win1.41 004d1b90 mac 10242e40 CreatureInterestingThingToLookAt::CreatureInterestingThingToLookAt(void)
-struct CreatureInterestingThingToLookAt* __fastcall __ct__32CreatureInterestingThingToLookAtFv(struct CreatureInterestingThingToLookAt* this);
+struct CreatureInterestingThingToLookAt* __fastcall __ct__32CreatureInterestingThingToLookAtFv(struct CreatureInterestingThingToLookAt* this) asm("??0CreatureInterestingThingToLookAt@@QAE@XZ");
 
 struct CreatureVisionState
 {

@@ -49,7 +49,7 @@ extern const struct GameThingWithPosVftable __vt__4Mist asm("??_7Mist@@6B@");
 // Constructors
 
 // win1.41 00606270 mac 101056c0 Mist::Mist(MapCoords const &, float, unsigned long, float)
-struct MistListNode* __fastcall __ct__4MistFRC9MapCoordsfUlf(struct Mist* this, const void* edx, struct MapCoords* coords, float param_3, uint32_t param_4, float param_5);
+struct MistListNode* __fastcall __ct__4MistFRC9MapCoordsfUlf(struct Mist* this, const void* edx, struct MapCoords* coords, float param_3, uint32_t param_4, float param_5) asm("??0Mist@@QAE@ABUMapCoords@@MKM@Z");
 
 // Override methods
 

@@ -35,10 +35,10 @@ static_assert(sizeof(struct HairGroup) == 0x7c, "Data type is of wrong size");
 // Non-virtual methods
 
 // win1.41 00847b50 mac 10041060 HairGroup::DeleteHair(long)
-void __fastcall DeleteHair__9HairGroupFl(struct HairGroup* this, const void* edx, int param_1);
+void __fastcall DeleteHair__9HairGroupFl(struct HairGroup* this, const void* edx, int param_1) asm("?DeleteHair@HairGroup@@QAEXJ@Z");
 // win1.41 008479e0 mac 10041400 HairGroup::Init(long)
-void __fastcall Init__9HairGroupFl(struct HairGroup* this, const void* edx, long param_1);
+void __fastcall Init__9HairGroupFl(struct HairGroup* this, const void* edx, long param_1) asm("?Init@HairGroup@@QAEXJ@Z");
 // win1.41 00848180 mac 101376f0 HairGroup::ReadBinary(LHFile *)
-void __fastcall ReadBinary__9HairGroupFP6LHFile(struct HairGroup* this, const void* edx, struct LHFile* param_1);
+void __fastcall ReadBinary__9HairGroupFP6LHFile(struct HairGroup* this, const void* edx, struct LHFile* param_1) asm("?ReadBinary@HairGroup@@QAEXPAVLHFile@@@Z");
 
 #endif /* BW1_DECOMP_HAIR_GROUP_INCLUDED_H */

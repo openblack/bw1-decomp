@@ -33,7 +33,7 @@ extern const struct BaseVftable __vt__13GestureSystem asm("??_7GestureSystem@@6B
 // Constructors
 
 // win1.41 0054bb40 mac inlined GestureSystem::GestureSystem(void)
-struct GestureSystem* __fastcall __ct__13GestureSystem(struct GestureSystem* this);
+struct GestureSystem* __fastcall __ct__13GestureSystem(struct GestureSystem* this) asm("??0GestureSystem@@QAE@XZ");
 
 // Override methods
 

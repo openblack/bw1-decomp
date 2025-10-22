@@ -10,7 +10,7 @@
 .extern _jmp_addr_0x0047f1c0
 .extern _jmp_addr_0x0047f3a0
 .extern _jmp_addr_0x004813b0
-.extern @GetSafeBuffer__12LH3DCreatureFv@4
+.extern ?GetSafeBuffer@LH3DCreature@@QAEPAEXZ
 .extern _jmp_addr_0x004846e0
 .extern _jmp_addr_0x00484ec0
 .extern _jmp_addr_0x004875d0
@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x006182f0
 .extern ?MorphTexture@Morphable@@UAEXXZ
 .extern @GetAnim__9MorphableFll@16
-.extern _GameRand__5GRandFl
+.extern ?GameRand@GRand@@SAHJ@Z
 .extern _jmp_addr_0x006e8130
 .extern _jmp_addr_0x006e8160
 .extern _jmp_addr_0x007a1400
@@ -49,7 +49,7 @@
 .extern ___nw__FUl
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x00865020
 .extern _jmp_addr_0x00866a90
 .extern _jmp_addr_0x00867040
@@ -176,7 +176,7 @@ _jmp_addr_0x00485f40:    sub                esp, 0x1c                           
                          {disp8} lea        edi, dword ptr [ebx + 0x14]                          // 0x00485f55    8d7b14
                          mov.s              ecx, edi                                             // 0x00485f58    8bcf
                          {disp8} mov        dword ptr [esp + 0x30], eax                          // 0x00485f5a    89442430
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4       // 0x00485f5e    e82dd13700
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z     // 0x00485f5e    e82dd13700
                          {disp8} fadd       dword ptr [esp + 0x30]                               // 0x00485f63    d8442430
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                          // 0x00485f67    8d4c2420
                          push               ecx                                                  // 0x00485f6b    51
@@ -576,7 +576,7 @@ _jmp_addr_0x00486427:    {disp8} mov        edx, dword ptr [esp + 0x50]         
                          push               ecx                                                  // 0x00486444    51
                          push               edx                                                  // 0x00486445    52
                          mov.s              ecx, ebx                                             // 0x00486446    8bcb
-                         call               @GetSafeBuffer__12LH3DCreatureFv@4                   // 0x00486448    e863deffff
+                         call               ?GetSafeBuffer@LH3DCreature@@QAEPAEXZ                // 0x00486448    e863deffff
                          push               eax                                                  // 0x0048644d    50
                          push               esi                                                  // 0x0048644e    56
                          {disp8} lea        ecx, dword ptr [esp + 0x44]                          // 0x0048644f    8d4c2444
@@ -1171,7 +1171,7 @@ _jmp_addr_0x00486b0a:    push               0x0                                 
 _jmp_addr_0x00486bca:    push               0x000011d8                                           // 0x00486bca    68d8110000
                          push               0x009d1094                                           // 0x00486bcf    6894109d00
                          push               0x8                                                  // 0x00486bd4    6a08
-                         call               _GameRand__5GRandFl                                  // 0x00486bd6    e835792500
+                         call               ?GameRand@GRand@@SAHJ@Z                              // 0x00486bd6    e835792500
                          add                esp, 0x0c                                            // 0x00486bdb    83c40c
                          cmp                eax, 0x01                                            // 0x00486bde    83f801
                          {disp32} jne       _jmp_addr_0x004874f6                                 // 0x00486be1    0f850f090000

@@ -31,7 +31,7 @@
 .extern _jmp_addr_0x007fb3f0
 .extern _jmp_addr_0x007fb5c0
 .extern _jmp_addr_0x00801c90
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 
 .globl _jmp_addr_0x005bdda0
 
@@ -919,7 +919,7 @@ _jmp_addr_0x005be5fc:    {disp32} fld       dword ptr [ebx + 0x00003504]        
                          {disp8} mov        dword ptr [esp + 0x2c], eax                          // 0x005be828    8944242c
                          {disp8} mov        dword ptr [esp + 0x30], 0x00000000                   // 0x005be82c    c744243000000000
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                          // 0x005be834    8d4c2428
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4       // 0x005be838    e853482400
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z     // 0x005be838    e853482400
                          {disp32} fadd      dword ptr [rdata_bytes + 0x19c50]                    // 0x005be83d    d805502c8c00
                          {disp8} fld        dword ptr [esp + 0x20]                               // 0x005be843    d9442420
                          fcomp              st(1)                                                // 0x005be847    d8d9

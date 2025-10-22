@@ -47,6 +47,6 @@ struct LH3DHair* __fastcall __ct__LH3DHairFv(struct LH3DHair* this);
 // Non-virtual methods
 
 // win1.41 00847890 mac 100415b0 LH3DHair::ReadBinary(LHFile *, long, long, HairGroup *)
-void __fastcall ReadBinary__8LH3DHairFP6LHFilellP9HairGroup(struct LH3DHair* this, const void* edx, struct LHFile* param_2, uint32_t param_3, uint32_t param_4, struct HairGroup* param_5);
+void __fastcall ReadBinary__8LH3DHairFP6LHFilellP9HairGroup(struct LH3DHair* this, const void* edx, struct LHFile* param_2, uint32_t param_3, uint32_t param_4, struct HairGroup* param_5) asm("?ReadBinary@LH3DHair@@QAEXPAVLHFile@@JJPAUHairGroup@@@Z");
 
 #endif /* BW1_DECOMP_LH3D_HAIR_INCLUDED_H */

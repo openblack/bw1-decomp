@@ -20,11 +20,11 @@
 .extern _jmp_addr_0x007370b0
 .extern ___RTDynamicCast
 .extern ___nw__FUl
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern @__ct__Q210NewCollide3ObjFfP7LHPoint@16
 
 .globl @Init__20ObjectCircleIteratorFP6ObjectRC9MapCoords@16
-.globl _IsWater__10LH3DIslandFll
+.globl ?IsWater@LH3DIsland@@SA_NJJ@Z
 .globl @fetch__19CircleHugStateInfoTF9MapCoords@20
 .globl _jmp_addr_0x0060d520
 
@@ -94,7 +94,7 @@ _jmp_addr_0x0060d2e4:    {disp8} mov       eax, dword ptr [esp + 0x24]          
                          call              @ToMap__4GMapFll@16                         // 0x0060d336    e825530000
                          push              edi                                         // 0x0060d33b    57
                          push              ebx                                         // 0x0060d33c    53
-                         call              _IsWater__10LH3DIslandFll                   // 0x0060d33d    e85e000000
+                         call              ?IsWater@LH3DIsland@@SA_NJJ@Z               // 0x0060d33d    e85e000000
                          add               esp, 0x08                                   // 0x0060d342    83c408
                          test              eax, eax                                    // 0x0060d345    85c0
                          {disp8} je        _jmp_addr_0x0060d375                        // 0x0060d347    742c
@@ -135,7 +135,8 @@ _jmp_addr_0x0060d38f:    pop               edi                                  
                          add               esp, 0x0c                                   // 0x0060d395    83c40c
                          ret               0x0008                                      // 0x0060d398    c20800
                          call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                        // 0x0060d39b    e85944dfff
-_IsWater__10LH3DIslandFll:    {disp8} mov       ecx, dword ptr [esp + 0x04]                 // 0x0060d3a0    8b4c2404
+?IsWater@LH3DIsland@@SA_NJJ@Z:
+                              {disp8} mov       ecx, dword ptr [esp + 0x04]                 // 0x0060d3a0    8b4c2404
                          test              ecx, ecx                                    // 0x0060d3a4    85c9
                          push              esi                                         // 0x0060d3a6    56
                          {disp8} jl        _jmp_addr_0x0060d403                        // 0x0060d3a7    7c5a
@@ -221,7 +222,7 @@ _jmp_addr_0x0060d477:    mov               eax, dword ptr [eax]                 
 _jmp_addr_0x0060d489:    {disp8} mov       edx, dword ptr [esp + 0x34]                 // 0x0060d489    8b542434
                          {disp8} lea       ecx, dword ptr [esp + 0x2c]                 // 0x0060d48d    8d4c242c
                          {disp8} mov       dword ptr [esp + 0x14], edx                 // 0x0060d491    89542414
-                         call              @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4                        // 0x0060d495    e8f65b1f00
+                         call              ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z                      // 0x0060d495    e8f65b1f00
                          {disp8} fadd      dword ptr [esp + 0x14]                      // 0x0060d49a    d8442414
                          push              0x000000d7                                  // 0x0060d49e    68d7000000
                          push              0x00bf42a4                                  // 0x0060d4a3    68a442bf00

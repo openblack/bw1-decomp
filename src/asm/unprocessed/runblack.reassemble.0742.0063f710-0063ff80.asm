@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _GetCurrentActiveBox__8SetupBoxFv
+.extern ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ
 .extern _jmp_addr_0x00441c50
 .extern @__ct__16CameraModeFollowFP7GCameraP16GameThingWithPosfii@28
 .extern @__ct__14CameraModeNew3FP7GCamera@12
@@ -102,7 +102,7 @@ _jmp_addr_0x0063f7df:    push               0x0                                 
                          {disp8} je         _jmp_addr_0x0063f82d                           // 0x0063f7fa    7431
                          cmp                dword ptr [edi + 0x00205a28], 0x01             // 0x0063f7fc    83bf285a200001
                          {disp8} je         _jmp_addr_0x0063f822                           // 0x0063f803    741d
-                         call               _GetCurrentActiveBox__8SetupBoxFv              // 0x0063f805    e8c686dcff
+                         call               ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ       // 0x0063f805    e8c686dcff
                          test               eax, eax                                       // 0x0063f80a    85c0
                          {disp8} je         _jmp_addr_0x0063f817                           // 0x0063f80c    7409
                          {disp32} mov       al, byte ptr [data_bytes + 0x286cee]           // 0x0063f80e    a0eeccc400

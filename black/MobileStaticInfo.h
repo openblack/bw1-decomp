@@ -39,7 +39,7 @@ extern const struct GMultiMapFixedInfoVftable __vt__17GMobileStaticInfo asm("??_
 // Static methods
 
 // win1.41 005ff2f0 mac 103c1190 GMobileStaticInfo::GetInfo(void)
-struct GMobileStaticInfo* __cdecl GetInfo__17GMobileStaticInfoFv(void);
+struct GMobileStaticInfo* __cdecl GetInfo__17GMobileStaticInfoFv(void) asm("?GetInfo@GMobileStaticInfo@@SAPAV1@XZ");
 
 // Override methods
 

@@ -7,13 +7,13 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern @__ct__14BindableActionFv@4
+.extern ??0BindableAction@@QAE@XZ
 .extern _jmp_addr_0x0046f1e0
 
 .globl _jmp_addr_0x0046f590
 .globl _jmp_addr_0x0046f5f0
 .globl _jmp_addr_0x0046f660
-.globl @__ct__10ControlMapFv@4
+.globl ??0ControlMap@@QAE@XZ  
 .globl _jmp_addr_0x0046f730
 .globl _jmp_addr_0x0046f750
 
@@ -136,14 +136,15 @@ _jmp_addr_0x0046f6b3:    xor.s            eax, eax                              
                          nop                                                       // 0x0046f6bd    90
                          nop                                                       // 0x0046f6be    90
                          nop                                                       // 0x0046f6bf    90
-@__ct__10ControlMapFv@4: push             ebx                                      // 0x0046f6c0    53
+??0ControlMap@@QAE@XZ:
+                         push             ebx                                      // 0x0046f6c0    53
                          push             esi                                      // 0x0046f6c1    56
                          mov.s            esi, ecx                                 // 0x0046f6c2    8bf1
                          push             edi                                      // 0x0046f6c4    57
                          mov.s            edi, esi                                 // 0x0046f6c5    8bfe
                          mov              ebx, 0x00000021                          // 0x0046f6c7    bb21000000
 _jmp_addr_0x0046f6cc:    mov.s            ecx, edi                                 // 0x0046f6cc    8bcf
-                         call             @__ct__14BindableActionFv@4              // 0x0046f6ce    e8cdfaffff
+                         call             ??0BindableAction@@QAE@XZ                // 0x0046f6ce    e8cdfaffff
                          add              edi, 0x0000030c                          // 0x0046f6d3    81c70c030000
                          dec              ebx                                      // 0x0046f6d9    4b
                          {disp8} jne      _jmp_addr_0x0046f6cc                     // 0x0046f6da    75f0

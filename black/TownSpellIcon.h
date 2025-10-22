@@ -94,9 +94,9 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 // Non-virtual methods
 
 // win1.41 00748eb0 mac 105612c0 TownCentreSpellIcon::SetPULevel(POWER_UP_TYPE, bool)
-void __fastcall SetPULevel__19TownCentreSpellIconF13POWER_UP_TYPEb(struct TownCentreSpellIcon* this, const void* edx, enum POWER_UP_TYPE power_up_type, bool enabled);
+void __fastcall SetPULevel__19TownCentreSpellIconF13POWER_UP_TYPEb(struct TownCentreSpellIcon* this, const void* edx, enum POWER_UP_TYPE power_up_type, bool enabled) asm("?SetPULevel@TownCentreSpellIcon@@QAEXW4POWER_UP_TYPE@@_N@Z");
 // win1.41 00748ed0 mac 10561210 TownCentreSpellIcon::UpdateGraphicWithPULevels(void)
-void __fastcall UpdateGraphicWithPULevels__19TownCentreSpellIconFv(struct TownCentreSpellIcon* this);
+void __fastcall UpdateGraphicWithPULevels__19TownCentreSpellIconFv(struct TownCentreSpellIcon* this) asm("?UpdateGraphicWithPULevels@TownCentreSpellIcon@@QAEXXZ");
 
 // Override methods
 

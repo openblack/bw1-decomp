@@ -26,8 +26,8 @@ static_assert(sizeof(struct PlayerProfile) == 0x824, "Data type is of wrong size
 // Static methods
 
 // win1.41 0066b7a0 mac 104cbec0 PlayerProfile::SetCurrentProfile(wchar_t *)
-void __cdecl SetCurrentProfile__13PlayerProfileFPw(char16_t* name);
+void __cdecl SetCurrentProfile__13PlayerProfileFPw(char16_t* name) asm("?SetCurrentProfile@PlayerProfile@@SAXPA_W@Z");
 // win1.41 0066bfb0 mac 104cb130 PlayerProfile::ProfileExists(wchar_t *)
-uint32_t __cdecl ProfileExists__13PlayerProfileFPw(char16_t* name);
+uint32_t __cdecl ProfileExists__13PlayerProfileFPw(char16_t* name) asm("?ProfileExists@PlayerProfile@@SAIPA_W@Z");
 
 #endif /* BW1_DECOMP_PLAYER_PROFILE_INCLUDED_H */

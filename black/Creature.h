@@ -242,21 +242,21 @@ extern const struct LivingVftable __vt__8Creature asm("??_7Creature@@6B@");
 // Static methods
 
 // win1.41 00474a20 mac 101dfc60 Creature::Create(MapCoords const &, CreatureInfo const *, GPlayer *)
-struct Creature* __cdecl Create__8CreatureFRC9MapCoordsPC12CreatureInfoP7GPlayer(const struct MapCoords* coords, const struct GCreatureInfo* info, struct GPlayer* player);
+struct Creature* __cdecl Create__8CreatureFRC9MapCoordsPC12CreatureInfoP7GPlayer(const struct MapCoords* coords, const struct GCreatureInfo* info, struct GPlayer* player) asm("?Create@Creature@@SAPAV1@ABUMapCoords@@PBVCreatureInfo@@PAVGPlayer@@@Z");
 // win1.41 00474b50 mac 101dfb90 Creature::CreateCreature(MapCoords const &, CreatureInfo const *, GPlayer *)
-struct Creature* __cdecl CreateCreature__8CreatureFRC9MapCoordsPC12CreatureInfoP7GPlayer(const struct MapCoords* coords, const struct GCreatureInfo* info, struct GPlayer* player);
+struct Creature* __cdecl CreateCreature__8CreatureFRC9MapCoordsPC12CreatureInfoP7GPlayer(const struct MapCoords* coords, const struct GCreatureInfo* info, struct GPlayer* player) asm("?CreateCreature@Creature@@SAPAV1@ABUMapCoords@@PBVCreatureInfo@@PAVGPlayer@@@Z");
 
 // Constructors
 
 // win1.41 00474690 mac 101dfe30 Creature::Creature(void)
-struct Creature* __fastcall __ct__8CreatureFv(struct Creature* this);
+struct Creature* __fastcall __ct__8CreatureFv(struct Creature* this) asm("??0Creature@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00475730 mac 101ddff0 Creature::FinishActionUnsuccessfully(char *, int, int)
 void __fastcall FinishActionUnsuccessfully__8CreatureFPcii(struct Creature* this, const void* edx, char* param_1, int param_2, int param_3) asm("?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z");
 // win1.41 00477850 mac 101daef0 Creature::GetCreature3D(void)
-struct LH3DCreature* __fastcall GetCreature3D__8CreatureFv(struct Creature* this);
+struct LH3DCreature* __fastcall GetCreature3D__8CreatureFv(struct Creature* this) asm("?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ");
 // win1.41 0047c650 mac 101d2500 Creature::SetAnimationTimeModify(bool value)
 void __fastcall SetAnimationTimeModify__8CreatureFb(struct Creature* this, const void* edx, bool value) asm("?SetAnimationTimeModify@Creature@@QAEX_N@Z");
 // win1.41 0047c690 mac 101d2420 Creature::IsOnHomeTeam(void)
@@ -268,7 +268,7 @@ void __fastcall ForceActivityAndForceAction__8CreatureFR12CreaturePlanii(struct 
 // win1.41 004ea670 mac 10279d20 Creature::DecideOnNewPlan(CreaturePlan &)
 void __fastcall DecideOnNewPlan__8CreatureFR12CreaturePlan(struct Creature* this, const void* edx, struct CreaturePlan* param_1) asm("?DecideOnNewPlan@Creature@@QAEXAAVCreaturePlan@@@Z");
 // win1.41 004f8b80 mac 1028a7b0 Creature::ProcessSpells(void)
-void __fastcall ProcessSpells__8CreatureFv(struct Creature* this);
+void __fastcall ProcessSpells__8CreatureFv(struct Creature* this) asm("?ProcessSpells@Creature@@QAEXXZ");
 // win1.41 004ffdd0 mac 102a0fc0 Creature::SubStatePerformPickUpParameter(CreatureBelief *)
 uint32_t __fastcall SubStatePerformPickUpParameter__8CreatureFP14CreatureBelief(struct Creature* this, const void* edx, struct CreatureBelief* param_1) asm("?SubStatePerformPickUpParameter@Creature@@QAEIPAVCreatureBelief@@@Z");
 // win1.41 00501d10 mac 1029da30 Creature::SubStatePerformAddVillagersToDance(void)
@@ -427,7 +427,7 @@ void __fastcall ApplySingleEffect__8CreatureF11EFFECT_TYPEfP9GameThingRC9MapCoor
 // win1.41 00517910 mac 100c9670 Creature::Draw(void)
 void __fastcall Draw__8CreatureFv(struct Object* this) asm("?Draw@Creature@@UAEXXZ");
 // win1.41 00472dc0 mac 101e16f0 Creature::ProcessState(void)
-uint32_t __fastcall ProcessState__8CreatureFv(struct Object* this);
+uint32_t __fastcall ProcessState__8CreatureFv(struct Object* this) asm("?ProcessState@Creature@@UAEIXZ");
 // win1.41 00477ef0 mac 101da120 Creature::GetProjectileSpeed(void)
 float __fastcall GetProjectileSpeed__8CreatureFv(struct Object* this) asm("?GetProjectileSpeed@Creature@@UAEMXZ");
 // win1.41 00473fe0 mac 101e2fa0 Creature::CanBePickedUp(void)

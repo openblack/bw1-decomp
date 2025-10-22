@@ -43,12 +43,12 @@ extern const struct GameThingVftable __vt__9ShowNeeds asm("??_7ShowNeeds@@6B@");
 // Static methods
 
 // win1.41 00719b60 mac 10145cd0 ShowNeeds::Create(GameThingWithPos *)
-struct ShowNeeds* __cdecl Create__9ShowNeedsFP16GameThingWithPos(struct GameThingWithPos* game_thing);
+struct ShowNeeds* __cdecl Create__9ShowNeedsFP16GameThingWithPos(struct GameThingWithPos* game_thing) asm("?Create@ShowNeeds@@SAPAV1@PAVGameThingWithPos@@@Z");
 
 // Constructors
 
 // win1.41 00719ab0 mac 10145e60 ShowNeeds::ShowNeeds(GameThingWithPos *)
-struct ShowNeeds* __fastcall __ct__9ShowNeedsFP16GameThingWithPos(struct ShowNeeds* this, const void* edx, struct GameThingWithPos* game_thing);
+struct ShowNeeds* __fastcall __ct__9ShowNeedsFP16GameThingWithPos(struct ShowNeeds* this, const void* edx, struct GameThingWithPos* game_thing) asm("??0ShowNeeds@@QAE@PAVGameThingWithPos@@@Z");
 
 // Override methods
 

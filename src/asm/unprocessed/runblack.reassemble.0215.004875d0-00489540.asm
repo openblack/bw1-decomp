@@ -18,7 +18,7 @@
 .extern _jmp_addr_0x00483780
 .extern _jmp_addr_0x00483870
 .extern _jmp_addr_0x004839d0
-.extern @GetSafeBuffer__12LH3DCreatureFv@4
+.extern ?GetSafeBuffer@LH3DCreature@@QAEPAEXZ
 .extern _jmp_addr_0x004846e0
 .extern _jmp_addr_0x00484ec0
 .extern _jmp_addr_0x00486800
@@ -48,10 +48,10 @@
 .extern _jmp_addr_0x00646950
 .extern _jmp_addr_0x00646a00
 .extern _jmp_addr_0x0064a9f0
-.extern _GameRand__5GRandFl
-.extern _GameFloatRand__5GRandFf
+.extern ?GameRand@GRand@@SAHJ@Z
+.extern ?GameFloatRand@GRand@@SAMM@Z
 .extern ?LocalRand@GRand@@SAIJ@Z
-.extern _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri
+.extern ?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z
 .extern _jmp_addr_0x0071ea40
 .extern _jmp_addr_0x0071ed40
 .extern _jmp_addr_0x007a1400
@@ -62,13 +62,13 @@
 .extern ??1FragMesh@@QAE@XZ
 .extern _jmp_addr_0x007f7230
 .extern _jmp_addr_0x007f7d40
-.extern _Create__9LH3DSmokeFPC7LHPoint
+.extern ?Create@LH3DSmoke@@SAPAV1@PBULHPoint@@@Z
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
 .extern _jmp_addr_0x007fcb80
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0083a0e0
 .extern _jmp_addr_0x00845c20
 
@@ -156,19 +156,19 @@ _jmp_addr_0x0048765b:    mov.s              ecx, ebx                            
 _jmp_addr_0x004876d9:    push               0x000012f2                                    // 0x004876d9    68f2120000
                          push               0x009d1094                                    // 0x004876de    6894109d00
                          push               esi                                           // 0x004876e3    56
-                         call               _GameFloatRand__5GRandFf                      // 0x004876e4    e8476e2500
+                         call               ?GameFloatRand@GRand@@SAMM@Z                  // 0x004876e4    e8476e2500
                          {disp8} fsub       dword ptr [esp + 0x20]                        // 0x004876e9    d8642420
                          push               0x000012f2                                    // 0x004876ed    68f2120000
                          push               0x009d1094                                    // 0x004876f2    6894109d00
                          push               esi                                           // 0x004876f7    56
                          {disp8} fstp       dword ptr [esp + 0x34]                        // 0x004876f8    d95c2434
-                         call               _GameFloatRand__5GRandFf                      // 0x004876fc    e82f6e2500
+                         call               ?GameFloatRand@GRand@@SAMM@Z                  // 0x004876fc    e82f6e2500
                          {disp8} fsub       dword ptr [esp + 0x2c]                        // 0x00487701    d864242c
                          push               0x000012f2                                    // 0x00487705    68f2120000
                          push               0x009d1094                                    // 0x0048770a    6894109d00
                          push               esi                                           // 0x0048770f    56
                          {disp8} fstp       dword ptr [esp + 0x44]                        // 0x00487710    d95c2444
-                         call               _GameFloatRand__5GRandFf                      // 0x00487714    e8176e2500
+                         call               ?GameFloatRand@GRand@@SAMM@Z                  // 0x00487714    e8176e2500
                          {disp8} fsub       dword ptr [esp + 0x38]                        // 0x00487719    d8642438
                          {disp8} fadd       dword ptr [esp + 0x78]                        // 0x0048771d    d8442478
                          add                esp, 0x24                                     // 0x00487721    83c424
@@ -193,7 +193,7 @@ _jmp_addr_0x004876d9:    push               0x000012f2                          
                          dec                edi                                           // 0x00487764    4f
                          {disp32} jne       _jmp_addr_0x004876d9                          // 0x00487765    0f856effffff
                          push               ebp                                           // 0x0048776b    55
-                         call               _Create__9LH3DSmokeFPC7LHPoint                // 0x0048776c    e8ef133700
+                         call               ?Create@LH3DSmoke@@SAPAV1@PBULHPoint@@@Z      // 0x0048776c    e8ef133700
                          {disp32} mov       ecx, dword ptr [ebx + 0x00004834]             // 0x00487771    8b8b34480000
                          {disp32} mov       dword ptr [ecx + 0x0000109c], eax             // 0x00487777    89819c100000
                          {disp32} mov       edx, dword ptr [ebx + 0x00004834]             // 0x0048777d    8b9334480000
@@ -220,7 +220,7 @@ _jmp_addr_0x004877a4:    {disp32} fld       dword ptr [ebx + 0x0000009c]        
                          {disp32} mov       eax, dword ptr [ebx + 0x00004834]             // 0x004877c8    8b8334480000
                          push               0x19                                          // 0x004877ce    6a19
                          push               eax                                           // 0x004877d0    50
-                         call               _CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlayeri                          // 0x004877d1    e89ac52500
+                         call               ?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z              // 0x004877d1    e89ac52500
                          add                esp, 0x10                                     // 0x004877d6    83c410
                          pop                edi                                           // 0x004877d9    5f
                          pop                esi                                           // 0x004877da    5e
@@ -245,7 +245,7 @@ _jmp_addr_0x004877e7:    {disp8} fld        dword ptr [esp + 0x48]              
                          push               0x00001306                                    // 0x00487825    6806130000
                          push               0x009d1094                                    // 0x0048782a    6894109d00
                          push               0x40c90fdb                                    // 0x0048782f    68db0fc940
-                         call               _GameFloatRand__5GRandFf                      // 0x00487834    e8f76c2500
+                         call               ?GameFloatRand@GRand@@SAMM@Z                  // 0x00487834    e8f76c2500
                          add                esp, 0x08                                     // 0x00487839    83c408
                          fstp               dword ptr [esp]                               // 0x0048783c    d91c24
                          push               ebp                                           // 0x0048783f    55
@@ -593,7 +593,7 @@ _jmp_addr_0x00487caa:    {disp32} mov       ecx, dword ptr [esi + 0x00000098]   
                          push               edx                                           // 0x00487cbc    52
                          push               ecx                                           // 0x00487cbd    51
                          mov.s              ecx, esi                                      // 0x00487cbe    8bce
-                         call               @GetSafeBuffer__12LH3DCreatureFv@4            // 0x00487cc0    e8ebc5ffff
+                         call               ?GetSafeBuffer@LH3DCreature@@QAEPAEXZ         // 0x00487cc0    e8ebc5ffff
                          push               eax                                           // 0x00487cc5    50
                          call               _jmp_addr_0x0083a0e0                          // 0x00487cc6    e815243b00
                          add                esp, 0x10                                     // 0x00487ccb    83c410
@@ -1716,7 +1716,7 @@ _jmp_addr_0x00488be8:    {disp8} fld        dword ptr [esp + 0x10]              
                          {disp8} fstp       dword ptr [esp + 0x40]                        // 0x00488c89    d95c2440
                          {disp8} mov        ecx, dword ptr [esp + 0x40]                   // 0x00488c8d    8b4c2440
                          {disp8} mov        dword ptr [esp + 0x34], ecx                   // 0x00488c91    894c2434
-                         call               _GameRand__5GRandFl                           // 0x00488c95    e876582500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x00488c95    e876582500
                          sub                eax, 0x05                                     // 0x00488c9a    83e805
                          {disp8} mov        dword ptr [esp + 0x1c], eax                   // 0x00488c9d    8944241c
                          {disp8} mov        dword ptr [esp + 0x20], ebp                   // 0x00488ca1    896c2420
@@ -1726,7 +1726,7 @@ _jmp_addr_0x00488be8:    {disp8} fld        dword ptr [esp + 0x10]              
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3404]              // 0x00488cb3    d80d04c48a00
                          push               0x64                                          // 0x00488cb9    6a64
                          {disp8} fstp       dword ptr [esp + 0x54]                        // 0x00488cbb    d95c2454
-                         call               _GameRand__5GRandFl                           // 0x00488cbf    e84c582500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x00488cbf    e84c582500
                          {disp8} mov        dword ptr [esp + 0x28], eax                   // 0x00488cc4    89442428
                          {disp8} mov        dword ptr [esp + 0x2c], ebp                   // 0x00488cc8    896c242c
                          {disp8} fild       qword ptr [esp + 0x28]                        // 0x00488ccc    df6c2428
@@ -1735,7 +1735,7 @@ _jmp_addr_0x00488be8:    {disp8} fld        dword ptr [esp + 0x10]              
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1bb10]             // 0x00488cda    d80d104b8c00
                          push               0x64                                          // 0x00488ce0    6a64
                          {disp32} fstp      dword ptr [esp + 0x00000084]                  // 0x00488ce2    d99c2484000000
-                         call               _GameRand__5GRandFl                           // 0x00488ce9    e822582500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x00488ce9    e822582500
                          {disp8} mov        dword ptr [esp + 0x34], eax                   // 0x00488cee    89442434
                          {disp8} mov        dword ptr [esp + 0x38], ebp                   // 0x00488cf2    896c2438
                          {disp8} fild       qword ptr [esp + 0x34]                        // 0x00488cf6    df6c2434
@@ -1754,7 +1754,7 @@ _jmp_addr_0x00488be8:    {disp8} fld        dword ptr [esp + 0x10]              
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                   // 0x00488d35    8d4c242c
                          {disp8} mov        dword ptr [esp + 0x30], eax                   // 0x00488d39    89442430
                          {disp8} mov        dword ptr [esp + 0x34], 0x00000000            // 0x00488d3d    c744243400000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x00488d45    e846a33700
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00488d45    e846a33700
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x00488d4a    d95c241c
                          {disp8} fld        dword ptr [esp + 0x24]                        // 0x00488d4e    d9442424
                          {disp8} fcomp      dword ptr [esp + 0x1c]                        // 0x00488d52    d85c241c
@@ -2186,7 +2186,7 @@ _jmp_addr_0x0048932b:    {disp8} mov        eax, dword ptr [esp + 0x04]         
 _jmp_addr_0x0048932f:    push               0x00001606                                    // 0x0048932f    6806160000
                          push               0x009d1094                                    // 0x00489334    6894109d00
                          push               eax                                           // 0x00489339    50
-                         call               _GameRand__5GRandFl                           // 0x0048933a    e8d1512500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x0048933a    e8d1512500
                          add                esp, 0x0c                                     // 0x0048933f    83c40c
                          test               eax, eax                                      // 0x00489342    85c0
                          {disp32} jne       _jmp_addr_0x004894ed                          // 0x00489344    0f85a3010000
@@ -2201,21 +2201,21 @@ _jmp_addr_0x0048932f:    push               0x00001606                          
                          push               0x00001612                                    // 0x0048936b    6812160000
                          push               0x009d1094                                    // 0x00489370    6894109d00
                          push               0x5                                           // 0x00489375    6a05
-                         call               _GameRand__5GRandFl                           // 0x00489377    e894512500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x00489377    e894512500
                          add                esp, 0x0c                                     // 0x0048937c    83c40c
                          test               eax, eax                                      // 0x0048937f    85c0
                          {disp32} jne       _jmp_addr_0x00489488                          // 0x00489381    0f8501010000
 _jmp_addr_0x00489387:    push               0x00001619                                    // 0x00489387    6819160000
                          push               0x009d1094                                    // 0x0048938c    6894109d00
                          push               0x4                                           // 0x00489391    6a04
-                         call               _GameRand__5GRandFl                           // 0x00489393    e878512500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x00489393    e878512500
                          add                esp, 0x0c                                     // 0x00489398    83c40c
                          test               eax, eax                                      // 0x0048939b    85c0
                          {disp32} je        _jmp_addr_0x004894b0                          // 0x0048939d    0f840d010000
 _jmp_addr_0x004893a3:    push               0x00001667                                    // 0x004893a3    6867160000
                          push               0x009d1094                                    // 0x004893a8    6894109d00
                          push               0x3                                           // 0x004893ad    6a03
-                         call               _GameRand__5GRandFl                           // 0x004893af    e85c512500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x004893af    e85c512500
                          add                esp, 0x0c                                     // 0x004893b4    83c40c
                          sub                eax, 0x00                                     // 0x004893b7    83e800
                          {disp32} je        _jmp_addr_0x004894d3                          // 0x004893ba    0f8413010000
@@ -2237,14 +2237,14 @@ _jmp_addr_0x004893e1:    cmp                edx, 0x00000089                     
                          push               0x00001621                                    // 0x004893f2    6821160000
                          push               0x009d1094                                    // 0x004893f7    6894109d00
                          push               0x5                                           // 0x004893fc    6a05
-                         call               _GameRand__5GRandFl                           // 0x004893fe    e80d512500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x004893fe    e80d512500
                          add                esp, 0x0c                                     // 0x00489403    83c40c
                          test               eax, eax                                      // 0x00489406    85c0
                          {disp8} jne        _jmp_addr_0x00489488                          // 0x00489408    757e
 _jmp_addr_0x0048940a:    push               0x00001628                                    // 0x0048940a    6828160000
                          push               0x009d1094                                    // 0x0048940f    6894109d00
                          push               0x4                                           // 0x00489414    6a04
-                         call               _GameRand__5GRandFl                           // 0x00489416    e8f5502500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x00489416    e8f5502500
                          add                esp, 0x0c                                     // 0x0048941b    83c40c
                          cmp                eax, 0x03                                     // 0x0048941e    83f803
                          {disp32} ja        _jmp_addr_0x004894ed                          // 0x00489421    0f87c6000000
@@ -2254,21 +2254,21 @@ _jmp_addr_0x0048940a:    push               0x00001628                          
                          push               0x00001643                                    // 0x00489433    6843160000
                          push               0x009d1094                                    // 0x00489438    6894109d00
                          push               0x5                                           // 0x0048943d    6a05
-                         call               _GameRand__5GRandFl                           // 0x0048943f    e8cc502500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x0048943f    e8cc502500
                          add                esp, 0x0c                                     // 0x00489444    83c40c
                          test               eax, eax                                      // 0x00489447    85c0
                          {disp8} jne        _jmp_addr_0x00489488                          // 0x00489449    753d
 _jmp_addr_0x0048944b:    push               0x00001647                                    // 0x0048944b    6847160000
                          push               0x009d1094                                    // 0x00489450    6894109d00
                          push               0xa                                           // 0x00489455    6a0a
-                         call               _GameRand__5GRandFl                           // 0x00489457    e8b4502500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x00489457    e8b4502500
                          add                esp, 0x0c                                     // 0x0048945c    83c40c
                          cmp                eax, 0x01                                     // 0x0048945f    83f801
                          {disp32} jne       _jmp_addr_0x004894ed                          // 0x00489462    0f8585000000
                          push               0x00001649                                    // 0x00489468    6849160000
                          push               0x009d1094                                    // 0x0048946d    6894109d00
                          push               0x2                                           // 0x00489472    6a02
-                         call               _GameRand__5GRandFl                           // 0x00489474    e897502500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x00489474    e897502500
                          add                esp, 0x0c                                     // 0x00489479    83c40c
                          sub                eax, 0x00                                     // 0x0048947c    83e800
                          {disp32} je        _jmp_addr_0x004893a3                          // 0x0048947f    0f841effffff
@@ -2279,7 +2279,7 @@ _jmp_addr_0x00489488:    {disp32} mov       ecx, dword ptr [esi + 0x000049a8]   
                          push               0x0000165d                                    // 0x0048948f    685d160000
                          push               0x009d1094                                    // 0x00489494    6894109d00
                          push               0x3                                           // 0x00489499    6a03
-                         call               _GameRand__5GRandFl                           // 0x0048949b    e870502500
+                         call               ?GameRand@GRand@@SAHJ@Z                       // 0x0048949b    e870502500
                          add                esp, 0x0c                                     // 0x004894a0    83c40c
                          push               eax                                           // 0x004894a3    50
                          mov.s              ecx, esi                                      // 0x004894a4    8bce

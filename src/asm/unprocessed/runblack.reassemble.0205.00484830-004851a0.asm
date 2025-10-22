@@ -17,7 +17,7 @@
 .extern _jmp_addr_0x0048d930
 .extern _jmp_addr_0x004ee2b0
 .extern @GetAnim__9MorphableFll@16
-.extern _GameRand__5GRandFl
+.extern ?GameRand@GRand@@SAHJ@Z
 .extern ?LocalRand@GRand@@SAIJ@Z
 .extern  ??3@YAXPAX@Z
 .extern _jmp_addr_0x007faa50
@@ -324,7 +324,7 @@ _jmp_addr_0x00484b2b:    {disp32} mov       eax, dword ptr [esi + 0x00004834]   
                          push               0x00000d0a                               // 0x00484b35    680a0d0000
                          push               0x009d1094                               // 0x00484b3a    6894109d00
                          push               0x2                                      // 0x00484b3f    6a02
-                         call               _GameRand__5GRandFl                      // 0x00484b41    e8ca992500
+                         call               ?GameRand@GRand@@SAHJ@Z                  // 0x00484b41    e8ca992500
                          add                esp, 0x0c                                // 0x00484b46    83c40c
                          push               eax                                      // 0x00484b49    50
                          {disp8} mov        eax, dword ptr [esp + 0x0c]              // 0x00484b4a    8b44240c
@@ -396,7 +396,7 @@ _jmp_addr_0x00484bc2:    pop                edi                                 
                          push               0x00000d21                               // 0x00484bdd    68210d0000
                          push               0x009d1094                               // 0x00484be2    6894109d00
                          push               0x2                                      // 0x00484be7    6a02
-                         call               _GameRand__5GRandFl                      // 0x00484be9    e822992500
+                         call               ?GameRand@GRand@@SAHJ@Z                  // 0x00484be9    e822992500
                          add                esp, 0x0c                                // 0x00484bee    83c40c
                          push               eax                                      // 0x00484bf1    50
                          {disp8} mov        eax, dword ptr [esp + 0x0c]              // 0x00484bf2    8b44240c
@@ -504,7 +504,7 @@ _jmp_addr_0x00484ce0:    push               esi                                 
                          push               0x00000d4b                               // 0x00484ced    684b0d0000
                          push               0x009d1094                               // 0x00484cf2    6894109d00
                          push               0x2                                      // 0x00484cf7    6a02
-                         call               _GameRand__5GRandFl                      // 0x00484cf9    e812982500
+                         call               ?GameRand@GRand@@SAHJ@Z                  // 0x00484cf9    e812982500
                          add                esp, 0x0c                                // 0x00484cfe    83c40c
                          push               eax                                      // 0x00484d01    50
                          {disp8} mov        eax, dword ptr [esp + 0x0c]              // 0x00484d02    8b44240c
@@ -704,7 +704,7 @@ _jmp_addr_0x00484f1e:    mov.s              ecx, esi                            
 _jmp_addr_0x00484f41:    push               0x00000dbc                               // 0x00484f41    68bc0d0000
                          push               0x009d1094                               // 0x00484f46    6894109d00
                          push               0x7                                      // 0x00484f4b    6a07
-                         call               _GameRand__5GRandFl                      // 0x00484f4d    e8be952500
+                         call               ?GameRand@GRand@@SAHJ@Z                  // 0x00484f4d    e8be952500
                          add                esp, 0x0c                                // 0x00484f52    83c40c
                          add                eax, 0x00000093                          // 0x00484f55    0593000000
                          push               edi                                      // 0x00484f5a    57

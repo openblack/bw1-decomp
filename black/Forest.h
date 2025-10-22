@@ -65,14 +65,14 @@ extern const struct ForestVftable __vt__6Forest asm("??_7Forest@@6B@");
 // Constructors
 
 // win1.41 00539bd0 mac 100f2620 Forest::Forest(MapCoords const&, unsigned long)
-struct Forest* __fastcall __ct__6ForestFRC9MapCoordsUl(struct Forest* this, const void* edx, const struct MapCoords* coords, uint32_t param_2);
+struct Forest* __fastcall __ct__6ForestFRC9MapCoordsUl(struct Forest* this, const void* edx, const struct MapCoords* coords, uint32_t param_2) asm("??0Forest@@QAE@ABUMapCoords@@K@Z");
 
 // Non-virtual methods
 
 // win1.41 0053a310 mac 100f16f0 Forest::AddTree(Tree*)
-void __fastcall AddTree__6ForestFP4Tree(struct Forest* this, const void* edx, struct Tree* tree);
+void __fastcall AddTree__6ForestFP4Tree(struct Forest* this, const void* edx, struct Tree* tree) asm("?AddTree@Forest@@QAEXPAVTree@@@Z");
 // win1.41 0053abf0 mac 100f0a00 Forest::GetForestCentreTree(void)
-struct Tree* __fastcall GetForestCentreTree__6ForestFv(struct Forest* this);
+struct Tree* __fastcall GetForestCentreTree__6ForestFv(struct Forest* this) asm("?GetForestCentreTree@Forest@@QAEPAVTree@@XZ");
 
 // Override methods
 
@@ -97,7 +97,7 @@ bool __fastcall IsFunctional__6ForestFv(struct GameThing* this) asm("?IsFunction
 // win1.41 00539b10 mac 100ef7d0 Forest::GetDebugText(void)
 char* __fastcall GetDebugText__6ForestFv(struct GameThing* this) asm("?GetDebugText@Forest@@UAEPADXZ");
 // win1.41 0053b070 mac 100ef950 Forest::Load(GameOSFile &)
-bool __fastcall Load__6ForestFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file);
+bool __fastcall Load__6ForestFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@Forest@@UAE_NAAVGameOSFile@@@Z");
 // win1.41 0053ae40 mac 100efda0 Forest::Save(GameOSFile &)
 uint32_t __fastcall Save__6ForestFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@Forest@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00539b00 mac 100ef790 Forest::GetSaveType(void)

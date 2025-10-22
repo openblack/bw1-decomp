@@ -60,7 +60,7 @@ bool __stdcall CreateChallengeFiles__13ChallengeRoomFPc(void);
 // Constructors
 
 // win1.41 00781a60 mac 101b4180 ChallengeRoom::ChallengeRoom(void)
-struct ChallengeRoom* __fastcall __ct__13ChallengeRoomFv(struct ChallengeRoom* this);
+struct ChallengeRoom* __fastcall __ct__13ChallengeRoomFv(struct ChallengeRoom* this) asm("??0ChallengeRoom@@QAE@XZ");
 
 // Non-virtual methods
 

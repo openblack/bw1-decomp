@@ -38,13 +38,13 @@ extern const struct SetupControlVftable __vt__20SetupStaticTextNoHit asm("??_7Se
 // Constructors
 
 // win1.41 inlined mac 10327f40 SetupStaticTextNoHit::SetupStaticTextNoHit(int, int, int, int, int, wchar_t *, TEXTJUSTIFY)
-struct SetupStaticTextNoHit* __fastcall __ct__20SetupStaticTextNoHitFiiiiiPw11TEXTJUSTIFY(struct SetupStaticTextNoHit* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label, enum TEXTJUSTIFY text_justify);
+struct SetupStaticTextNoHit* __fastcall __ct__20SetupStaticTextNoHitFiiiiiPw11TEXTJUSTIFY(struct SetupStaticTextNoHit* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label, enum TEXTJUSTIFY text_justify) asm("??0SetupStaticTextNoHit@@QAE@HHHHHPA_WW4TEXTJUSTIFY@@@Z");
 
 // Override methods
 
 // win1.41 00571f00 mac 10328c60 SetupStaticTextNoHit::HitTest(int, int)
-bool __fastcall HitTest__20SetupStaticTextNoHitFii(struct SetupControl* this, const void* edx, int x, int y);
+bool __fastcall HitTest__20SetupStaticTextNoHitFii(struct SetupControl* this, const void* edx, int x, int y) asm("?HitTest@SetupStaticTextNoHit@@UAE_NHH@Z");
 // win1.41 00571f10 mac 10328bc0 SetupStaticTextNoHit::~SetupStaticTextNoHit(void)
-void __fastcall __dt__20SetupStaticTextNoHitFb(struct SetupControl* this, const void* edx, bool param_1);
+void __fastcall __dt__20SetupStaticTextNoHitFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupStaticTextNoHit@@QAEXXZ");
 
 #endif /* BW1_DECOMP_SETUP_STATIC_TEXT_NO_HIT_INCLUDED_H */

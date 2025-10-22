@@ -29,14 +29,14 @@ static_assert(sizeof(struct HLineData) == 0xc, "Data type is of wrong size");
 // Constructors
 
 // win1.41 inlined mac inlined HLineData::HLineData(void)
-struct HLineData* __fastcall __ct__9HLineDataFv(struct HLineData* this);
+struct HLineData* __fastcall __ct__9HLineDataFv(struct HLineData* this) asm("??0HLineData@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 inlined mac inlined HLineData::operator=(const HLineData&)
-struct HLineData* __fastcall __as__9HLineDataFRC9HLineData(struct HLineData* this, const void* edx, const struct HLineData* other);
+struct HLineData* __fastcall __as__9HLineDataFRC9HLineData(struct HLineData* this, const void* edx, const struct HLineData* other) asm("?__as@HLineData@@QAEPAV1@ABV1@@Z");
 // win1.41 0040da30 mac 10501060 HLineData::SetNum()
-void __fastcall SetNum__9HLineDataFi(struct HLineData* this, const void* edx, int num);
+void __fastcall SetNum__9HLineDataFi(struct HLineData* this, const void* edx, int num) asm("?SetNum@HLineData@@QAEXH@Z");
 
 DECLARE_LH_LINKED_LIST(HLineData);
 
@@ -79,27 +79,27 @@ extern const struct SetupHLineGraphVftable __vt__15SetupHLineGraph asm("??_7Setu
 // Constructors
 
 // win1.41 0040e510 mac 103dcbb0 SetupHLineGraph::SetupHLineGraph(int, int, int, int, int, wchar_t *, bool)
-struct SetupHLineGraph* __fastcall __ct__15SetupHLineGraphFiiiiiPwb(struct SetupHLineGraph* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label, bool percent_mode);
+struct SetupHLineGraph* __fastcall __ct__15SetupHLineGraphFiiiiiPwb(struct SetupHLineGraph* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label, bool percent_mode) asm("??0SetupHLineGraph@@QAE@HHHHHPA_W_N@Z");
 
 // Override methods
 
 // win1.41 0040dab0 mac 101180e0 SetupHLineGraph::Draw(bool, bool)
-void __fastcall Draw__15SetupHLineGraphFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__15SetupHLineGraphFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected) asm("?Draw@SetupHLineGraph@@UAEX_N0@Z");
 // win1.41 0040e5a0 mac 101585b0 SetupHLineGraph::MouseUp(int, int, bool)
-void __fastcall MouseUp__15SetupHLineGraphFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3);
+void __fastcall MouseUp__15SetupHLineGraphFiib(struct SetupControl* this, const void* edx, int x, int y, bool param_3) asm("?MouseUp@SetupHLineGraph@@UAEXHH_N@Z");
 // win1.41 0040e580 mac 10518860 SetupHLineGraph::KeyDown(int, int)
-void __fastcall KeyDown__15SetupHLineGraphFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__15SetupHLineGraphFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod) asm("?KeyDown@SetupHLineGraph@@UAEXHH@Z");
 // win1.41 0040e5c0 mac 0040e5c0 SetupHLineGraph::~SetupHLineGraph(void)
-void __fastcall __dt__15SetupHLineGraphFb(struct SetupControl* this, const void* edx, bool param_1);
+void __fastcall __dt__15SetupHLineGraphFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupHLineGraph@@QAEXXZ");
 // win1.41 0040e5e0 mac 102a7a10 SetupHLineGraph::Reset(void)
-void __fastcall Reset__15SetupHLineGraphFv(struct SetupHLineGraph* this);
+void __fastcall Reset__15SetupHLineGraphFv(struct SetupHLineGraph* this) asm("?Reset@SetupHLineGraph@@UAEXXZ");
 // win1.41 0040e650 mac 10211b80 SetupHLineGraph::SetScale(float, float, bool)
-void __fastcall SetScale__15SetupHLineGraphFffb(struct SetupHLineGraph* this, const void* edx, float max_point, float min_point, bool centered_at_zero);
+void __fastcall SetScale__15SetupHLineGraphFffb(struct SetupHLineGraph* this, const void* edx, float max_point, float min_point, bool centered_at_zero) asm("?SetScale@SetupHLineGraph@@UAEXMM_N@Z");
 // win1.41 0040e730 mac 1010ccb0 SetupHLineGraph::AddLine(HLineData &)
-void __fastcall AddLine__15SetupHLineGraphFR9HLineData(struct SetupHLineGraph* this, const void* edx, const struct HLineData* line);
+void __fastcall AddLine__15SetupHLineGraphFR9HLineData(struct SetupHLineGraph* this, const void* edx, const struct HLineData* line) asm("?AddLine@SetupHLineGraph@@UAEXAAUHLineData@@@Z");
 // win1.41 0040e7f0 mac 100c9eb0 SetupHLineGraph::SetLine(int, const HLineData &)
-void __fastcall SetLine__15SetupHLineGraphFiR9HLineData(struct SetupHLineGraph* this, const void* edx, int index, const struct HLineData* line);
+void __fastcall SetLine__15SetupHLineGraphFiR9HLineData(struct SetupHLineGraph* this, const void* edx, int index, const struct HLineData* line) asm("?SetLine@SetupHLineGraph@@UAEXHAAUHLineData@@@Z");
 // win1.41 0040e850 mac 10372050 SetupHLineGraph::GetLine(int, HLineData &)
-void __fastcall GetLine__15SetupHLineGraphFiR9HLineData(const struct SetupHLineGraph* this, const void* edx, int index, struct HLineData* result);
+void __fastcall GetLine__15SetupHLineGraphFiR9HLineData(const struct SetupHLineGraph* this, const void* edx, int index, struct HLineData* result) asm("?GetLine@SetupHLineGraph@@UAEXHAAUHLineData@@@Z");
 
 #endif /* BW1_DECOMP_SETUP_H_LINE_GRAPH_INCLUDED_H */

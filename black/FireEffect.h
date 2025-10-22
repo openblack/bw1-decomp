@@ -56,12 +56,12 @@ extern const struct GameThingVftable __vt__10FireEffect asm("??_7FireEffect@@6B@
 // Constructors
 
 // win1.41 0072ea80 mac 10150740 FireEffect::FireEffect(void)
-struct FireEffect* __fastcall __ct__10FireEffectFv(struct FireEffect* this);
+struct FireEffect* __fastcall __ct__10FireEffectFv(struct FireEffect* this) asm("??0FireEffect@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 00730ad0 mac 1014c5c0 FireEffect::CreateSprites(void)
-struct FireGraphic* __fastcall CreateSprites__10FireEffectFv(struct FireEffect* this);
+struct FireGraphic* __fastcall CreateSprites__10FireEffectFv(struct FireEffect* this) asm("?CreateSprites@FireEffect@@QAEPAVFireGraphic@@XZ");
 
 // Override methods
 

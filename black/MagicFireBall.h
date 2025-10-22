@@ -49,7 +49,7 @@ extern const struct ObjectVftable __vt__13MagicFireBall asm("??_7MagicFireBall@@
 // Constructors
 
 // win1.41 00682a20 mac 103fca90 MagicFireBall::MagicFireBall(void)
-struct MagicFireBall* __fastcall __ct__13MagicFireBallFv(struct MagicFireBall* this);
+struct MagicFireBall* __fastcall __ct__13MagicFireBallFv(struct MagicFireBall* this) asm("??0MagicFireBall@@QAE@XZ");
 
 // Override methods
 

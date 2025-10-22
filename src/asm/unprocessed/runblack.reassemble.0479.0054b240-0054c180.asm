@@ -380,7 +380,7 @@
 .extern _jmp_addr_0x00836250
 .extern _jmp_addr_0x008366a0
 .extern _jmp_addr_0x008367a0
-.extern @Release__11LH3DTextureFv@4
+.extern ?Release@LH3DTexture@@QAEXXZ
 .extern ?InitialiseSystem@RPHolder@@QAEXP6AXHHPAV1@@ZP6AX0@Z@Z
 .extern _jmp_addr_0x0083b3e0
 .extern _jmp_addr_0x0083b450
@@ -423,9 +423,9 @@
 .globl ??1GGame@@UAE@XZ
 .globl ?SetZero@LH3DMapCoords@@QAEXXZ
 .globl @Reset__7LHTimerFUl@12
-.globl @__ct__10GKeyBuffer@4
-.globl @__ct__9GSoundMapFv@4
-.globl @__ct__13GestureSystem@4
+.globl ??0GKeyBuffer@@QAE@XZ
+.globl ??0GSoundMap@@QAE@XZ 
+.globl ??0GestureSystem@@QAE@XZ
 .globl ?RenderLoadingFrame@@YAXPAD@Z
 
 .globl _globl_ct_0x0054a310
@@ -585,7 +585,7 @@ _jmp_addr_0x0054b910:    mov.s              eax, ecx                            
                          nop                                                              // 0x0054b92d    90
                          nop                                                              // 0x0054b92e    90
                          nop                                                              // 0x0054b92f    90
-@__ct__10GKeyBuffer@4:   mov.s              eax, ecx                                      // 0x0054b930    8bc1
+??0GKeyBuffer@@QAE@XZ:   mov.s              eax, ecx                                      // 0x0054b930    8bc1
                          xor.s              ecx, ecx                                      // 0x0054b932    33c9
                          {disp8} mov        dword ptr [eax + 0x04], ecx                   // 0x0054b934    894804
                          mov                dword ptr [eax], 0x008df780                   // 0x0054b937    c70080f78d00
@@ -662,7 +662,8 @@ _jmp_addr_0x0054b99a:    mov.s              eax, esi                            
                          nop                                                              // 0x0054b9cd    90
                          nop                                                              // 0x0054b9ce    90
                          nop                                                              // 0x0054b9cf    90
-@__ct__9GSoundMapFv@4:   xor.s              eax, eax                                      // 0x0054b9d0    33c0
+??0GSoundMap@@QAE@XZ:
+                         xor.s              eax, eax                                      // 0x0054b9d0    33c0
                          push               esi                                           // 0x0054b9d2    56
                          mov.s              esi, ecx                                      // 0x0054b9d3    8bf1
                          {disp8} mov        dword ptr [esi + 0x04], eax                   // 0x0054b9d5    894604
@@ -720,7 +721,7 @@ _jmp_addr_0x0054ba55:    mov                dword ptr [eax], 0x3d4ccccd         
                          .byte              0x72, 0xf0// {disp8} jb _jmp_addr_0x0054ba55  // 0x0054ba63    72f0
                          mov                edx, 0x00000001                               // 0x0054ba65    ba01000000
                          mov.s              ecx, edx                                      // 0x0054ba6a    8bca
-                         call               @Create__10LH3DSpriteFli@8                    // 0x0054ba6c    e82f4a2f00
+                         call               ?Create@LH3DSprite@@SAPAV1@JH@Z               // 0x0054ba6c    e82f4a2f00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbac4]        // 0x0054ba71    8b0dc41aea00
                          {disp32} mov       dword ptr [data_bytes + 0x4f3ab4], eax        // 0x0054ba77    a3b49aeb00
                          {disp8} mov        dword ptr [eax + 0x2c], ecx                   // 0x0054ba7c    89482c
@@ -816,7 +817,7 @@ _jmp_addr_0x0054bb33:    mov.s              eax, esi                            
                          nop                                                              // 0x0054bb3d    90
                          nop                                                              // 0x0054bb3e    90
                          nop                                                              // 0x0054bb3f    90
-@__ct__13GestureSystem@4:mov.s              eax, ecx                                      // 0x0054bb40    8bc1
+??0GestureSystem@@QAE@XZ:mov.s              eax, ecx                                      // 0x0054bb40    8bc1
                          {disp8} mov        dword ptr [eax + 0x04], 0x00000000            // 0x0054bb42    c7400400000000
                          mov                dword ptr [eax], 0x008df800                   // 0x0054bb49    c70000f88d00
                          {disp32} mov       dword ptr [eax + 0x00000c94], 0x00000001      // 0x0054bb4f    c780940c000001000000
@@ -1338,7 +1339,7 @@ _jmp_addr_0x0054c125:    {disp32} mov       edi, dword ptr [esi + 0x00250178]   
                          mov.s              ecx, edi                                      // 0x0054c12f    8bcf
                          call               _jmp_addr_0x0046b750                          // 0x0054c131    e81af6f1ff
                          mov.s              ecx, edi                                      // 0x0054c136    8bcf
-                         call               @__dt__8LHOSFileFv@4                          // 0x0054c138    e843052700
+                         call               ??_DLHOSFile@@QAEXXZ                          // 0x0054c138    e843052700
                          push               edi                                           // 0x0054c13d    57
                          call              ??3@YAXPAX@Z                                   // 0x0054c13e    e8552d2600
                          add                esp, 0x04                                     // 0x0054c143    83c404

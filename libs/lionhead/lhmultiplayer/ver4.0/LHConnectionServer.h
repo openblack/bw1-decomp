@@ -17,6 +17,6 @@ static_assert(sizeof(struct LHConnectionServer) == 0x4, "Data type is of wrong s
 // Non-virtual methods
 
 // win1.41 inlined mac 100e09b0 LHConnectionServer::ConnectToConnection(LHConnection *)
-uint32_t __fastcall ConnectToConnection__18LHConnectionServerFP12LHConnection(struct LHConnectionServer* this, const void* edx, struct LHConnection* connection);
+uint32_t __fastcall ConnectToConnection__18LHConnectionServerFP12LHConnection(struct LHConnectionServer* this, const void* edx, struct LHConnection* connection) asm("?ConnectToConnection@LHConnectionServer@@QAEIPAVLHConnection@@@Z");
 
 #endif /* BW1_DECOMP_LH_CONNECTION_SERVER_INCLUDED_H */

@@ -26,6 +26,6 @@ static_assert(sizeof(struct MeshIntersect) == 0x28, "Data type is of wrong size"
 // Non-virtual methods
 
 // win1.41 00867c20 mac 1061c70c MeshIntersect::ReadBinary(LHFile *)
-void __fastcall ReadBinary__13MeshIntersectFP6LHFile(struct MeshIntersect* this, const void* edx, struct LHFile* file);
+void __fastcall ReadBinary__13MeshIntersectFP6LHFile(struct MeshIntersect* this, const void* edx, struct LHFile* file) asm("?ReadBinary@MeshIntersect@@QAEXPAVLHFile@@@Z");
 
 #endif /* BW1_DECOMP_LH3D_MESH_INTERSECT_INCLUDED_H */

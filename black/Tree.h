@@ -70,12 +70,12 @@ extern const struct TreeVftable __vt__4Tree asm("??_7Tree@@6B@");
 // Static methods
 
 // win1.41 00749ee0 mac 10158ff0 Tree::Create(MapCoords const &, GTreeInfo const *, Forest *, float, float, float)
-struct Tree* __cdecl Create__4TreeFRC9MapCoordsPC9GTreeInfoP6Forestfff(struct MapCoords* coords, const struct GTreeInfo* info, struct Forest* forest, float param_4, float param_5, float param_6);
+struct Tree* __cdecl Create__4TreeFRC9MapCoordsPC9GTreeInfoP6Forestfff(struct MapCoords* coords, const struct GTreeInfo* info, struct Forest* forest, float param_4, float param_5, float param_6) asm("?Create@Tree@@SAPAV1@ABUMapCoords@@PBVGTreeInfo@@PAVForest@@MMM@Z");
 
 // Constructors
 
 // win1.41 00749e00 mac 101591d0 Tree::Tree(MapCoords const &, GTreeInfo const *, Forest *, float, float, float)
-struct Tree* __fastcall __ct__4TreeFRC9MapCoordsPC9GTreeInfoP6Forestfff(struct Tree* this, const void* edx, const struct MapCoords* coords, const struct GTreeInfo* info, struct Forest* forest, float param_4, float param_5, float param_6);
+struct Tree* __fastcall __ct__4TreeFRC9MapCoordsPC9GTreeInfoP6Forestfff(struct Tree* this, const void* edx, const struct MapCoords* coords, const struct GTreeInfo* info, struct Forest* forest, float param_4, float param_5, float param_6) asm("??0Tree@@QAE@ABUMapCoords@@PBVGTreeInfo@@PAVForest@@MMM@Z");
 
 // Override methods
 
@@ -214,13 +214,13 @@ uint32_t __fastcall GetCarriedTreeType__4TreeFv(struct Object* this) asm("?GetCa
 // win1.41 0074a9d0 mac 10158260 Tree::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__4TreeFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@Tree@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 // win1.41 0074c5f0 mac 101559c0 Tree::CreateCollideData(void)
-void __fastcall CreateCollideData__4TreeFv(struct SingleMapFixed* this);
+void __fastcall CreateCollideData__4TreeFv(struct SingleMapFixed* this) asm("?CreateCollideData@Tree@@UAEXXZ");
 // win1.41 0074b810 mac 10157550 Tree::GetWoodValueMultiplier(void)
-float __fastcall GetWoodValueMultiplier__4TreeFv(struct Tree* this);
+float __fastcall GetWoodValueMultiplier__4TreeFv(struct Tree* this) asm("?GetWoodValueMultiplier@Tree@@UAEMXZ");
 // win1.41 0055d910 mac 100f0c30 Tree::GetForest(void)
-struct Forest* __fastcall GetForest__4TreeFv(struct Tree* this);
+struct Forest* __fastcall GetForest__4TreeFv(struct Tree* this) asm("?GetForest@Tree@@UAEPAVForest@@XZ");
 // win1.41 0074c140 mac 10156370 Tree::SetOnFire(float)
-void __fastcall SetOnFire__4TreeFf(struct Tree* this, const void* edx, float param_1);
+void __fastcall SetOnFire__4TreeFf(struct Tree* this, const void* edx, float param_1) asm("?SetOnFire@Tree@@UAEXM@Z");
 
 DECLARE_LH_LINKED_LIST(Tree);
 

@@ -37,7 +37,7 @@ static_assert(sizeof(struct CreatureHelpState) == 0x98, "Data type is of wrong s
 // Constructors
 
 // win1.41 004c9c30 mac 1023b830 CreatureHelpState::CreatureHelpState(void)
-struct CreatureHelpState* __fastcall __ct__17CreatureHelpStateFv(struct CreatureHelpState* this);
+struct CreatureHelpState* __fastcall __ct__17CreatureHelpStateFv(struct CreatureHelpState* this) asm("??0CreatureHelpState@@QAE@XZ");
 
 struct CreatureHelpStackEntry
 {
@@ -52,7 +52,7 @@ static_assert(sizeof(struct CreatureHelpStackEntry) == 0x1c, "Data type is of wr
 // Constructors
 
 // win1.41 004ca6f0 mac 102389e0 CreatureHelpStackEntry::__ct(unsigned long, GameThingWithPos *, MapCoords const &)
-struct CreatureHelpStackEntry* __fastcall __ct__22CreatureHelpStackEntryFUlP16GameThingWithPosRC9MapCoords(struct CreatureHelpStackEntry* this, const void* edx, uint32_t param_2, struct GameThingWithPos* thing, const struct MapCoords* coord);
+struct CreatureHelpStackEntry* __fastcall __ct__22CreatureHelpStackEntryFUlP16GameThingWithPosRC9MapCoords(struct CreatureHelpStackEntry* this, const void* edx, uint32_t param_2, struct GameThingWithPos* thing, const struct MapCoords* coord) asm("??0CreatureHelpStackEntry@@QAE@KPAVGameThingWithPos@@ABUMapCoords@@@Z");
 
 DECLARE_LH_LINKED_LIST(CreatureHelpStackEntry);
 

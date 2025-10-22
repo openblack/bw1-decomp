@@ -14,9 +14,9 @@
 .extern @__ct__12SetupPictureFiiiP12LH3DMaterialiibib@38
 .extern @__ct__17SetupColourPickerFiiiiiiP12LH3DMaterial@33
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
-.extern _unadjust__10SetupThingFRiRi
-.extern _DrawBigButton__10SetupThingFiibbi7BBSTYLEbii
-.extern @GetCreature3D__8CreatureFv@4
+.extern ?unadjust@SetupThing@@SAMAAH0@Z
+.extern ?DrawBigButton@SetupThing@@SAXHH_N0HW4BBSTYLE@@0HH@Z
+.extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
 .extern _jmp_addr_0x0047d980
 .extern @__ct__12LH3DCreatureFP8CreatureRC7LHPointPv@20
 .extern _jmp_addr_0x00480240
@@ -30,7 +30,7 @@
 .extern _jmp_addr_0x0048f710
 .extern _jmp_addr_0x004e7310
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
-.extern @Destroy__13DialogBoxBaseFv@4
+.extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
 .extern _jmp_addr_0x00543d50
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
@@ -44,7 +44,7 @@
 .extern _atexit
 .extern ___nw__FUl
 .extern _jmp_addr_0x008190d0
-.extern @UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint@8
+.extern ?UpdateCamera@LH3DTech@@SAXABULHPoint@@0@Z
 .extern _jmp_addr_0x0081b370
 .extern _jmp_addr_0x00866640
 .extern _jmp_addr_0x00867400
@@ -284,7 +284,7 @@ _jmp_addr_0x0054278d:    push               ebx                                 
                          nop                                                              // 0x005427de    90
                          nop                                                              // 0x005427df    90
 ?Destroy@TattooEditor@@UAEXXZ:
-                         call               @Destroy__13DialogBoxBaseFv@4                 // 0x005427e0    e8ab0dfdff
+                         call               ?Destroy@DialogBoxBase@@UAEXXZ                // 0x005427e0    e8ab0dfdff
                          {disp32} mov       dword ptr [data_bytes + 0x30ab70], 0x00000000 // 0x005427e5    c705700bcd0000000000
                          ret                                                              // 0x005427ef    c3
 _jmp_addr_0x005427f0:    sub                esp, 0x0000011c                               // 0x005427f0    81ec1c010000
@@ -579,7 +579,7 @@ _jmp_addr_0x00542bbc:    cmp                dword ptr [esi + 0x0000320c], ebx   
                          push               ecx                                           // 0x00542bf5    51
                          sub                edx, 0x08                                     // 0x00542bf6    83ea08
                          push               edx                                           // 0x00542bf9    52
-                         call               _DrawBigButton__10SetupThingFiibbi7BBSTYLEbii // 0x00542bfa    e851f5ecff
+                         call               ?DrawBigButton@SetupThing@@SAXHH_N0HW4BBSTYLE@@0HH@Z // 0x00542bfa    e851f5ecff
                          add                esp, 0x24                                     // 0x00542bff    83c424
 _jmp_addr_0x00542c02:    pop                esi                                           // 0x00542c02    5e
                          pop                ebx                                           // 0x00542c03    5b
@@ -679,7 +679,7 @@ _jmp_addr_0x00542d08:    {disp8} mov        ecx, dword ptr [ebp + 0x04]         
                          push               eax                                           // 0x00542d41    50
                          {disp8} mov        dword ptr [esp + 0x38], ecx                   // 0x00542d42    894c2438
                          {disp8} mov        dword ptr [esp + 0x28], ecx                   // 0x00542d46    894c2428
-                         call               _unadjust__10SetupThingFRiRi                  // 0x00542d4a    e8e1eeecff
+                         call               ?unadjust@SetupThing@@SAMAAH0@Z               // 0x00542d4a    e8e1eeecff
                          fstp               st(0)                                         // 0x00542d4f    ddd8
                          {disp8} mov        ecx, dword ptr [esp + 0x28]                   // 0x00542d51    8b4c2428
                          {disp8} mov        edx, dword ptr [esp + 0x2c]                   // 0x00542d55    8b54242c
@@ -852,7 +852,7 @@ _jmp_addr_0x00542f83:    {disp32} mov       dword ptr [ebp + 0x00003220], eax   
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x00542f8e    8d4c2418
                          push               ecx                                           // 0x00542f92    51
                          {disp32} mov       dword ptr [ebp + 0x00003214], ebx             // 0x00542f93    899d14320000
-                         call               _unadjust__10SetupThingFRiRi                  // 0x00542f99    e892ececff
+                         call               ?unadjust@SetupThing@@SAMAAH0@Z               // 0x00542f99    e892ececff
                          fstp               st(0)                                         // 0x00542f9e    ddd8
                          {disp8} mov        edx, dword ptr [esp + 0x1c]                   // 0x00542fa0    8b54241c
                          {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x00542fa4    8b442420
@@ -1348,7 +1348,7 @@ _jmp_addr_0x005435fe:    {disp8} fld        dword ptr [esp + 0x1c]              
                          {disp8} je         _jmp_addr_0x005436b3                          // 0x00543668    7449
                          {disp8} lea        edx, dword ptr [esp + 0x1c]                   // 0x0054366a    8d54241c
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x0054366e    8d4c2410
-                         call               @UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint@8                          // 0x00543672    e8a9622d00
+                         call               ?UpdateCamera@LH3DTech@@SAXABULHPoint@@0@Z                               // 0x00543672    e8a9622d00
                          {disp8} mov        edx, dword ptr [esp + 0x10]                   // 0x00543677    8b542410
                          {disp8} mov        eax, dword ptr [esp + 0x14]                   // 0x0054367b    8b442414
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                   // 0x0054367f    8b4c2418
@@ -1818,7 +1818,7 @@ _jmp_addr_0x00543c8c:    xor.s              eax, eax                            
                          test               eax, eax                                      // 0x00543cf8    85c0
                          {disp8} je         _jmp_addr_0x00543d0a                          // 0x00543cfa    740e
                          mov.s              ecx, eax                                      // 0x00543cfc    8bc8
-                         call               @GetCreature3D__8CreatureFv@4                 // 0x00543cfe    e84d3bf3ff
+                         call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ                 // 0x00543cfe    e84d3bf3ff
                          mov                edx, dword ptr [eax]                          // 0x00543d03    8b10
                          mov.s              ecx, eax                                      // 0x00543d05    8bc8
                          call               dword ptr [edx + 0x10]                        // 0x00543d07    ff5210

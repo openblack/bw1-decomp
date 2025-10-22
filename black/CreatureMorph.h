@@ -3827,23 +3827,23 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 // Static methods
 
 // win1.41 0047f1f0 mac 101fc320 LH3DCreature::FollowerCallbackFunction(int, int)
-void __cdecl FollowerCallbackFunction__12LH3DCreatureFii(int param_1, int param_2);
+void __cdecl FollowerCallbackFunction__12LH3DCreatureFii(int param_1, int param_2) asm("?FollowerCallbackFunction@LH3DCreature@@SAXHH@Z");
 // win1.41 0047f260 mac 101fc1b0 LH3DCreature::FollowerCallbackPrepareAnims(int, float, float)
-void __cdecl FollowerCallbackPrepareAnims__12LH3DCreatureFiff(struct Creature* param_1, float param_2, float param_3);
+void __cdecl FollowerCallbackPrepareAnims__12LH3DCreatureFiff(struct Creature* param_1, float param_2, float param_3) asm("?FollowerCallbackPrepareAnims@LH3DCreature@@SAXHMM@Z");
 // win1.41 0047f280 mac 101fc130 LH3DCreature::FollowerCallbackGetStopDist(int)
-float __cdecl FollowerCallbackGetStopDist__12LH3DCreatureFi(struct Creature* param_1);
+float __cdecl FollowerCallbackGetStopDist__12LH3DCreatureFi(struct Creature* param_1) asm("?FollowerCallbackGetStopDist@LH3DCreature@@SAMH@Z");
 
 // Constructors
 
 // win1.41 0047f770 mac 101fb470 LH3DCreature::LH3DCreature(Creature *, LHPoint const &, void *)
-struct LH3DCreature* __fastcall __ct__12LH3DCreatureFP8CreatureRC7LHPointPv(struct LH3DCreature* this, const void* edx, struct Creature* creature, struct LHPoint* pos, void* param_3);
+struct LH3DCreature* __fastcall __ct__12LH3DCreatureFP8CreatureRC7LHPointPv(struct LH3DCreature* this, const void* edx, struct Creature* creature, struct LHPoint* pos, void* param_3) asm("??0LH3DCreature@@QAE@PAVCreature@@ABULHPoint@@PAX@Z");
 
 // Non-virtual methods
 
 // win1.41 004813f0 mac 101f8ba0 LH3DCreature::GetBonePos(long)
-struct LHPoint* __fastcall GetBonePos__12LH3DCreatureFl(struct LH3DCreature* this, const void* edx, int index);
+struct LHPoint* __fastcall GetBonePos__12LH3DCreatureFl(struct LH3DCreature* this, const void* edx, int index) asm("?GetBonePos@LH3DCreature@@QAEPAULHPoint@@J@Z");
 // win1.41 004842b0 mac 101f4ce0 LH3DCreature::GetSafeBuffer(void)
-uint8_t* __fastcall GetSafeBuffer__12LH3DCreatureFv(struct LH3DCreature* this);
+uint8_t* __fastcall GetSafeBuffer__12LH3DCreatureFv(struct LH3DCreature* this) asm("?GetSafeBuffer@LH3DCreature@@QAEPAEXZ");
 // win1.41 004842d0 mac 101f4c90 LH3DCreature::IsPerformingBodyAction(void)
 bool __fastcall IsPerformingBodyAction__12LH3DCreatureFv(struct LH3DCreature* this) asm("?IsPerformingBodyAction@LH3DCreature@@QAE_NXZ");
 // win1.41 0048b780 mac 101eb040 LH3DCreature::GetObjectActionStatus(void)
@@ -3852,6 +3852,6 @@ uint32_t __fastcall GetObjectActionStatus__12LH3DCreatureFv(struct LH3DCreature*
 // Override methods
 
 // win1.41 004eac90 mac 10274660 LH3DCreature::LoadBase(char *)
-uint32_t __fastcall LoadBase__12LH3DCreatureFPc(struct Morphable* this, const void* edx, char* path);
+uint32_t __fastcall LoadBase__12LH3DCreatureFPc(struct Morphable* this, const void* edx, char* path) asm("?LoadBase@LH3DCreature@@UAEIPAD@Z");
 
 #endif /* BW1_DECOMP_CREATURE_MORPH_INCLUDED_H */

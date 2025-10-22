@@ -11,8 +11,8 @@
 .extern _jmp_addr_0x004dce20
 .extern ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z
 .extern ?AddMainSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z
-.extern _GameRand__5GRandFl
-.extern _GameFloatRand__5GRandFf
+.extern ?GameRand@GRand@@SAHJ@Z
+.extern ?GameFloatRand@GRand@@SAMM@Z
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x0047e760
@@ -27,7 +27,7 @@ _jmp_addr_0x0047e760:    sub               esp, 0x18                          //
                          push              0x0000171b                         // 0x0047e767    681b170000
                          push              0x009cf9e0                         // 0x0047e76c    68e0f99c00
                          push              0x8                                // 0x0047e771    6a08
-                         call              _GameRand__5GRandFl                // 0x0047e773    e898fd2500
+                         call              ?GameRand@GRand@@SAHJ@Z            // 0x0047e773    e898fd2500
                          add               esp, 0x0c                          // 0x0047e778    83c40c
                          add               eax, 0x08                          // 0x0047e77b    83c008
                          {disp8} mov       dword ptr [esp + 0x14], eax        // 0x0047e77e    89442414
@@ -40,7 +40,7 @@ _jmp_addr_0x0047e760:    sub               esp, 0x18                          //
 _jmp_addr_0x0047e7a0:    push              0x00001720                         // 0x0047e7a0    6820170000
                          push              0x009cf9e0                         // 0x0047e7a5    68e0f99c00
                          push              0x3                                // 0x0047e7aa    6a03
-                         call              _GameRand__5GRandFl                // 0x0047e7ac    e85ffd2500
+                         call              ?GameRand@GRand@@SAHJ@Z            // 0x0047e7ac    e85ffd2500
                          add               esp, 0x0c                          // 0x0047e7b1    83c40c
                          sub               eax, 0x00                          // 0x0047e7b4    83e800
                          {disp8} je        _jmp_addr_0x0047e7cd               // 0x0047e7b7    7414
@@ -62,7 +62,7 @@ _jmp_addr_0x0047e7d8:    {disp8} mov       eax, dword ptr [esp + 0x10]        //
                          push              0x0000172d                         // 0x0047e7e0    682d170000
                          push              0x009cf9e0                         // 0x0047e7e5    68e0f99c00
                          push              0x2                                // 0x0047e7ea    6a02
-                         call              _GameRand__5GRandFl                // 0x0047e7ec    e81ffd2500
+                         call              ?GameRand@GRand@@SAHJ@Z            // 0x0047e7ec    e81ffd2500
                          add               esp, 0x0c                          // 0x0047e7f1    83c40c
                          test              eax, eax                           // 0x0047e7f4    85c0
                          {disp8} jne       _jmp_addr_0x0047e839               // 0x0047e7f6    7541
@@ -90,7 +90,7 @@ _jmp_addr_0x0047e7f8:    sub               esp, 0x10                          //
 _jmp_addr_0x0047e839:    push              0x00001731                         // 0x0047e839    6831170000
                          push              0x009cf9e0                         // 0x0047e83e    68e0f99c00
                          push              0xc                                // 0x0047e843    6a0c
-                         call              _GameRand__5GRandFl                // 0x0047e845    e8c6fc2500
+                         call              ?GameRand@GRand@@SAHJ@Z            // 0x0047e845    e8c6fc2500
                          add               esp, 0x0c                          // 0x0047e84a    83c40c
                          cmp               eax, 0x0b                          // 0x0047e84d    83f80b
                          {disp32} ja       _jmp_addr_0x0047ea06               // 0x0047e850    0f87b0010000
@@ -244,7 +244,7 @@ _jmp_addr_0x0047ea1b:    push              0x00001754                         //
                          push              0x00001754                         // 0x0047ea3e    6854170000
                          push              0x009cf9e0                         // 0x0047ea43    68e0f99c00
                          push              0x42700000                         // 0x0047ea48    6800007042
-                         call              _GameFloatRand__5GRandFf           // 0x0047ea4d    e8defa2500
+                         call              ?GameFloatRand@GRand@@SAMM@Z       // 0x0047ea4d    e8defa2500
                          {disp8} fstp      dword ptr [esi + 0x08]             // 0x0047ea52    d95e08
                          add               esp, 0x0c                          // 0x0047ea55    83c40c
                          mov               dword ptr [esi], 0x008cf050        // 0x0047ea58    c70650f08c00
@@ -320,7 +320,7 @@ _jmp_addr_0x0047eb01:    sub               esp, 0x10                          //
                          push              0x00001756                         // 0x0047eb3e    6856170000
                          push              0x009cf9e0                         // 0x0047eb43    68e0f99c00
                          push              0x64                               // 0x0047eb48    6a64
-                         call              _GameRand__5GRandFl                // 0x0047eb4a    e8c1f92500
+                         call              ?GameRand@GRand@@SAHJ@Z            // 0x0047eb4a    e8c1f92500
                          add               esp, 0x0c                          // 0x0047eb4f    83c40c
                          cmp               eax, 0x14                          // 0x0047eb52    83f814
                          {disp8} jbe       _jmp_addr_0x0047eb73               // 0x0047eb55    761c

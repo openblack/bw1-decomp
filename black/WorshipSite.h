@@ -76,23 +76,23 @@ extern const struct MultiMapFixedVftable __vt__11WorshipSite asm("??_7WorshipSit
 // Non-virtual methods
 
 // win1.41 0077afc0 mac 105b28e0 WorshipSite::GetSpellIconPosFromSlot(unsigned long, float)
-struct MapCoords* __fastcall GetSpellIconPosFromSlot__11WorshipSiteFUlf(struct WorshipSite* this, const void* edx, struct MapCoords* coords, uint32_t slot, float angle);
+struct MapCoords* __fastcall GetSpellIconPosFromSlot__11WorshipSiteFUlf(struct WorshipSite* this, const void* edx, struct MapCoords* coords, uint32_t slot, float angle) asm("?GetSpellIconPosFromSlot@WorshipSite@@QAEPAUMapCoords@@KM@Z");
 // win1.41 0077b080 mac 105b26e0 WorshipSite::GetSpellIconPos(short &)
-struct MapCoords* __fastcall GetSpellIconPos__11WorshipSiteFRs(struct WorshipSite* this, const void* edx, struct MapCoords* coords, int16_t* slot);
+struct MapCoords* __fastcall GetSpellIconPos__11WorshipSiteFRs(struct WorshipSite* this, const void* edx, struct MapCoords* coords, int16_t* slot) asm("?GetSpellIconPos@WorshipSite@@QAEPAUMapCoords@@AAF@Z");
 // win1.41 0077c430 mac 105b01e0 WorshipSite::AddSpellIcon(WorshipSpellIcon *)
-void __fastcall AddSpellIcon__11WorshipSiteFP16WorshipSpellIcon(struct WorshipSite* this, const void* edx, struct WorshipSpellIcon* icon);
+void __fastcall AddSpellIcon__11WorshipSiteFP16WorshipSpellIcon(struct WorshipSite* this, const void* edx, struct WorshipSpellIcon* icon) asm("?AddSpellIcon@WorshipSite@@QAEXPAVWorshipSpellIcon@@@Z");
 // win1.41 0077c910 mac 105af7f0 WorshipSite::AddTownSpells(Town *)
-void __fastcall AddTownSpells__11WorshipSiteFP4Town(struct WorshipSite* this, const void* edx, struct Town* town);
+void __fastcall AddTownSpells__11WorshipSiteFP4Town(struct WorshipSite* this, const void* edx, struct Town* town) asm("?AddTownSpells@WorshipSite@@QAEXPAVTown@@@Z");
 // win1.41 0077c9e0 mac 105af540 WorshipSite::AddSpellIconIfNecessary(SPELL_SEED_TYPE)
-void __fastcall AddSpellIconIfNecessary__11WorshipSiteF15SPELL_SEED_TYPE(struct WorshipSite* this, const void* edx, enum SPELL_SEED_TYPE seed_type);
+void __fastcall AddSpellIconIfNecessary__11WorshipSiteF15SPELL_SEED_TYPE(struct WorshipSite* this, const void* edx, enum SPELL_SEED_TYPE seed_type) asm("?AddSpellIconIfNecessary@WorshipSite@@QAEXW4SPELL_SEED_TYPE@@@Z");
 // win1.41 0077cf30 mac 105aeaa0 WorshipSite::GetTotemPos(void)
-struct MapCoords* __fastcall GetTotemPos__11WorshipSiteFv(struct WorshipSite* this, const void* edx, struct MapCoords* coords);
+struct MapCoords* __fastcall GetTotemPos__11WorshipSiteFv(struct WorshipSite* this, const void* edx, struct MapCoords* coords) asm("?GetTotemPos@WorshipSite@@QAEPAUMapCoords@@XZ");
 // win1.41 0077d0a0 mac 105ae5c0 WorshipSite::RemoveVillagerFromWorshipCount(Villager *)
 void __fastcall RemoveVillagerFromWorshipCount__11WorshipSiteFP8Villager(struct WorshipSite* this, const void* edx, struct Villager* param_1) asm("?RemoveVillagerFromWorshipCount@WorshipSite@@QAEXPAVVillager@@@Z");
 // win1.41 0077e1d0 mac 105aba90 WorshipSite::RemoveVillagerRequestingToGoHome(Villager *)
 void __fastcall RemoveVillagerRequestingToGoHome__11WorshipSiteFP8Villager(struct WorshipSite* this, const void* edx, struct Villager* param_1) asm("?RemoveVillagerRequestingToGoHome@WorshipSite@@QAEXPAVVillager@@@Z");
 // win1.41 0077e260 mac 105aba40 WorshipSite::GetNumVillagersRequestingToGoHome(void)
-int __fastcall GetNumVillagersRequestingToGoHome__11WorshipSiteFv(struct WorshipSite* this);
+int __fastcall GetNumVillagersRequestingToGoHome__11WorshipSiteFv(struct WorshipSite* this) asm("?GetNumVillagersRequestingToGoHome@WorshipSite@@QAEHXZ");
 
 // Override methods
 

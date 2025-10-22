@@ -37,7 +37,7 @@ extern const struct HandStateVftable __vt__17HandStateCreature asm("??_7HandStat
 // Constructors
 
 // win1.41 005b13d0 mac 10338f00 HandStateCreature::HandStateCreature(CHand*)
-struct HandStateCreature* __fastcall __ct__17HandStateCreatureFP5CHand(struct HandStateCreature* this, const void* edx, struct CHand* hand);
+struct HandStateCreature* __fastcall __ct__17HandStateCreatureFP5CHand(struct HandStateCreature* this, const void* edx, struct CHand* hand) asm("??0HandStateCreature@@QAE@PAVCHand@@@Z");
 
 // Override methods
 

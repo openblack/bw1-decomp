@@ -101,7 +101,7 @@ bool __fastcall IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town(const stru
 // win1.41 00405a60 mac inlined GAbodeInfo::GetDescription(void)
 const char* __fastcall GetDescription__10GAbodeInfoFv(struct GAbodeInfo* this) asm("?GetDescription@GAbodeInfo@@QAEPBDXZ");
 // win1.41 0042e520 mac inlined GAbodeInfo::LoadBinary(LHFile *)
-void __fastcall LoadBinary__10GAbodeInfoFP6LHFile(struct GAbodeInfo* this, const void* edx, struct LHFile* file);
+void __fastcall LoadBinary__10GAbodeInfoFP6LHFile(struct GAbodeInfo* this, const void* edx, struct LHFile* file) asm("?LoadBinary@GAbodeInfo@@QAEXPAVLHFile@@@Z");
 
 // Override methods
 

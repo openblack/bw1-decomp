@@ -18,10 +18,10 @@
 .extern _jmp_addr_0x004e2380
 .extern _jmp_addr_0x004e2890
 .extern _jmp_addr_0x004f12e0
-.extern @GetTopState__6LivingCFv@4
-.extern @IsNeutral__7GPlayerFv@4
+.extern ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ
+.extern ?IsNeutral@GPlayer@@QAE_NXZ
 .extern _jmp_addr_0x00745ea0
-.extern _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords
+.extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern _atexit
@@ -1215,7 +1215,7 @@ _jmp_addr_0x004d80c0:    push               ebx                                 
                          mov.s              ebx, eax                                      // 0x004d80d5    8bd8
                          add                esp, 0x14                                     // 0x004d80d7    83c414
                          mov.s              ecx, ebx                                      // 0x004d80da    8bcb
-                         call               @GetTopState__6LivingCFv@4                    // 0x004d80dc    e80fa71100
+                         call               ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ                    // 0x004d80dc    e80fa71100
                          and                eax, 0x000000ff                               // 0x004d80e1    25ff000000
                          mov.s              esi, eax                                      // 0x004d80e6    8bf0
                          cmp                esi, 0x17                                     // 0x004d80e8    83fe17
@@ -1229,7 +1229,7 @@ _jmp_addr_0x004d80f7:    cmp                esi, 0x21                           
                          push               ecx                                           // 0x004d8102    51
                          {disp8} lea        edx, dword ptr [ebx + 0x14]                   // 0x004d8103    8d5314
                          push               edx                                           // 0x004d8106    52
-                         call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x004d8107    e8644c2700
+                         call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z                               // 0x004d8107    e8644c2700
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x26300]             // 0x004d810c    d81d00f38c00
                          add                esp, 0x08                                     // 0x004d8112    83c408
                          fnstsw             ax                                            // 0x004d8115    dfe0
@@ -1274,7 +1274,7 @@ _jmp_addr_0x004d8171:    mov                edx, dword ptr [ebx]                
                          call               dword ptr [edx + 0x1c]                        // 0x004d8181    ff521c
                          mov.s              esi, eax                                      // 0x004d8184    8bf0
                          mov.s              ecx, esi                                      // 0x004d8186    8bce
-                         call               @IsNeutral__7GPlayerFv@4                      // 0x004d8188    e8732a1700
+                         call               ?IsNeutral@GPlayer@@QAE_NXZ                   // 0x004d8188    e8732a1700
                          test               eax, eax                                      // 0x004d818d    85c0
                          {disp8} jne        _jmp_addr_0x004d819c                          // 0x004d818f    750b
                          mov                eax, dword ptr [edi]                          // 0x004d8191    8b07

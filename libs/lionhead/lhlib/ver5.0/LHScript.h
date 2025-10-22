@@ -42,12 +42,12 @@ static_assert(sizeof(struct LHScriptX_c_) == 0x30, "Data type is of wrong size")
 // win1.41 007e72c0 mac 1061e38c LHScriptX<c>::Load(char *, LHScriptCommandX<c> *, LH_RETURN (*)(long, LHScriptPramX<c> *), long *)
 void __fastcall Load__12LHScriptX_c_FPcP19LHScriptCommandX_c_PFlP16LHScriptPramX_c__9LH_RETURNPl(struct LHScriptX_c_* this, const void* edx, const char* path, struct LHScriptCommandX_c_* command, enum LH_RETURN (__cdecl* callback)(int param_2, struct LHScriptPramX_c_ * param_3), long* param_4);
 // win1.41 007e7400 mac 1061cd3c LHScriptX<c>::LoadOneLine(LHReleasedOSFile &, char *)
-bool __fastcall LoadOneLine__12LHScriptX_c_FR16LHReleasedOSFilePc(struct LHScriptX_c_* this, const void* edx, struct LHReleasedOSFile* file, char* line);
+bool __fastcall LoadOneLine__12LHScriptX_c_FR16LHReleasedOSFilePc(struct LHScriptX_c_* this, const void* edx, struct LHReleasedOSFile* file, char* line) asm("?LoadOneLine@LHScriptX_c_@@QAE_NAAVLHReleasedOSFile@@PAD@Z");
 // win1.41 007e7540 mac 10150830 LHScriptX<c>::ScanLine(char *)
-uint32_t __fastcall ScanLine__12LHScriptX_c_FPc(struct LHScriptX_c_* this, const void* edx, char* line);
+uint32_t __fastcall ScanLine__12LHScriptX_c_FPc(struct LHScriptX_c_* this, const void* edx, char* line) asm("?ScanLine@LHScriptX_c_@@QAEIPAD@Z");
 // win1.41 007e8170 mac 10153040 LHScriptX<c>::LoadFile(char *, long *)
-uint32_t __fastcall LoadFile__12LHScriptX_c_FPcPl(struct LHScriptX_c_* this, const void* edx, const char* path, long* param_2);
+uint32_t __fastcall LoadFile__12LHScriptX_c_FPcPl(struct LHScriptX_c_* this, const void* edx, const char* path, long* param_2) asm("?LoadFile@LHScriptX_c_@@QAEIPADPAJ@Z");
 // win1.41 007e8cb0 mac 101533a0 LHScriptX<c>::DestroyVariables(void)
-void __fastcall DestroyVariables__12LHScriptX_c_Fv(struct LHScriptX_c_* this);
+void __fastcall DestroyVariables__12LHScriptX_c_Fv(struct LHScriptX_c_* this) asm("?DestroyVariables@LHScriptX_c_@@QAEXXZ");
 
 #endif /* BW1_DECOMP_LH_SCRIPT_INCLUDED_H */

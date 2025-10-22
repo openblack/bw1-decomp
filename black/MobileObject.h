@@ -72,14 +72,14 @@ extern const struct MobileObjectVftable __vt__12MobileObject asm("??_7MobileObje
 // Static methods
 
 // win1.41 00606fc0 mac 1008e240 MobileObject::AddMobileObjectCheckSum(void)
-void __cdecl AddMobileObjectCheckSum__12MobileObjectFv(void);
+void __cdecl AddMobileObjectCheckSum__12MobileObjectFv(void) asm("?AddMobileObjectCheckSum@MobileObject@@SAXXZ");
 
 // Constructors
 
 // win1.41 00600d80 mac 1011a5a0 MobileObject::MobileObject(void)
-struct MobileObject* __fastcall __ct__12MobileObjectFv(struct MobileObject* this);
+struct MobileObject* __fastcall __ct__12MobileObjectFv(struct MobileObject* this) asm("??0MobileObject@@QAE@XZ");
 // win1.41 00606e40 mac 103bde00 MobileObject::MobileObject(MapCoords const &, GMobileObjectInfo const *, Object *, float, float)
-struct MobileObject* __fastcall __ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff(const struct MobileObject* this, const void* edx, struct MapCoords* coords, const struct GMobileObjectInfo* info, struct Object* param_4, float param_5, float param_6);
+struct MobileObject* __fastcall __ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff(const struct MobileObject* this, const void* edx, struct MapCoords* coords, const struct GMobileObjectInfo* info, struct Object* param_4, float param_5, float param_6) asm("??0MobileObject@@QAE@ABUMapCoords@@PBVGMobileObjectInfo@@PAVObject@@MM@Z");
 
 // Override methods
 
@@ -132,7 +132,7 @@ uint32_t __fastcall MoveAlongPath__12MobileObjectFv(struct Object* this) asm("?M
 // win1.41 00607210 mac 103bd180 MobileObject::Create3DObject(void)
 void __fastcall Create3DObject__12MobileObjectFv(struct Object* this) asm("?Create3DObject@MobileObject@@UAEXXZ");
 // win1.41 00607250 mac 103bd0c0 MobileObject::InsertMapObjectToCell(MapCell *)
-void __fastcall InsertMapObjectToCell__12MobileObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell);
+void __fastcall InsertMapObjectToCell__12MobileObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* cell) asm("?InsertMapObjectToCell@MobileObject@@UAEXPAUMapCell@@@Z");
 // win1.41 00607260 mac 103bd050 MobileObject::RemoveMapObjectFromCell(MapCell *)
 void __fastcall RemoveMapObjectFromCell__12MobileObjectFP7MapCell(struct Object* this, const void* edx, struct MapCell* param_1) asm("?RemoveMapObjectFromCell@MobileObject@@UAEXPAUMapCell@@@Z");
 // win1.41 00607120 mac 103bd480 MobileObject::GetHoldType(void)

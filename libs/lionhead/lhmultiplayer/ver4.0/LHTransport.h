@@ -61,17 +61,17 @@ static_assert(sizeof(struct LHTransport) == 0x28, "Data type is of wrong size");
 // Static methods
 
 // win1.41 10022a70 mac 10119960 LHTransport::Create(LH_TRANSPORT_TYPE)
-struct LHTransport* __cdecl Create__11LHTransportF17LH_TRANSPORT_TYPE(enum LH_TRANSPORT_TYPE type);
+struct LHTransport* __cdecl Create__11LHTransportF17LH_TRANSPORT_TYPE(enum LH_TRANSPORT_TYPE type) asm("?Create@LHTransport@@SAPAV1@W4LH_TRANSPORT_TYPE@@@Z");
 
 // Non-virtual methods
 
 // win1.41 10022550 mac 1011b170 LHTransport::OpenConnectionToTransport(LHTransport *, void (*)(void *), void *)
-enum LH_RETURN __fastcall OpenConnectionToTransport__11LHTransportFP11LHTransportPFPv_vPv(struct LHTransport* this, const void* edx, struct LHTransport* param_1, void (__cdecl* param_2)(void * param_1), void* param_3);
+enum LH_RETURN __fastcall OpenConnectionToTransport__11LHTransportFP11LHTransportPFPv_vPv(struct LHTransport* this, const void* edx, struct LHTransport* param_1, void (__cdecl* param_2)(void * param_1), void* param_3) asm("?OpenConnectionToTransport@LHTransport@@QAE?AW4LH_RETURN@@PAV1@P6AXPAX@Z1@Z");
 
 // Override methods
 
 // win1.41 10022790 mac 1011acc0 LHTransport::Write(LHNetEvent *)
-void __fastcall Write__11LHTransportFP10LHNetEvent(struct LHTransport* this, const void* edx, struct LHNetEvent* net_event);
+void __fastcall Write__11LHTransportFP10LHNetEvent(struct LHTransport* this, const void* edx, struct LHNetEvent* net_event) asm("?Write@LHTransport@@UAEXPAULHNetEvent@@@Z");
 
 struct LHTransportRemote
 {
@@ -82,6 +82,6 @@ static_assert(sizeof(struct LHTransportRemote) == 0x1, "Data type is of wrong si
 // Non-virtual methods
 
 // win1.41 10023880 mac 101178b0 LHTransportRemote::RemoteTransportThread(void)
-void __fastcall RemoteTransportThread__17LHTransportRemoteFv(struct LHTransportRemote* this);
+void __fastcall RemoteTransportThread__17LHTransportRemoteFv(struct LHTransportRemote* this) asm("?RemoteTransportThread@LHTransportRemote@@QAEXXZ");
 
 #endif /* BW1_DECOMP_LH_TRANSPORT_INCLUDED_H */

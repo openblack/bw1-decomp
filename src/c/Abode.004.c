@@ -400,12 +400,12 @@ void __fastcall AddVillagerToAbode__5AbodeFP8Villager(struct Abode* this, const 
     asm("{disp8} jmp        _jmp_addr_0x00404154");                          // 0x004040dc    eb76
     asm("_jmp_addr_0x004040de:");
     asm("mov.s              ecx, esi");                                      // 0x004040de    8bce
-    asm("call               @GetAbode__8VillagerFv@4");                      // 0x004040e0    e87be03400
+    asm("call               ?GetAbode@Villager@@QAEPAVAbode@@XZ");                      // 0x004040e0    e87be03400
     asm("test               eax, eax");                                      // 0x004040e5    85c0
     asm("{disp8} je         _jmp_addr_0x004040fa");                          // 0x004040e7    7411
     asm("push               esi");                                           // 0x004040e9    56
     asm("mov.s              ecx, esi");                                      // 0x004040ea    8bce
-    asm("call               @GetAbode__8VillagerFv@4");                      // 0x004040ec    e86fe03400
+    asm("call               ?GetAbode@Villager@@QAEPAVAbode@@XZ");                      // 0x004040ec    e86fe03400
     asm("mov.s              ecx, eax");                                      // 0x004040f1    8bc8
     asm("call               ?RemoveAliveVillagerFromAbode@Abode@@QAEXPAVVillager@@@Z");  // 0x004040f3    e848020000
     asm("{disp8} jmp        _jmp_addr_0x0040415a");                          // 0x004040f8    eb60
@@ -855,7 +855,7 @@ int __fastcall NumVillagersOfSex__5AbodeFv(struct Abode* this)
     asm("{disp8} mov        ebx, dword ptr [esp + 0x10]");                   // 0x0040458f    8b5c2410
     asm("_jmp_addr_0x00404593:");
     asm("mov.s              ecx, esi");                                      // 0x00404593    8bce
-    asm("call               @IsVillagerAvailable__8VillagerFv@4");           // 0x00404595    e8f6dc3400
+    asm("call               ?IsVillagerAvailable@Villager@@QAE_NXZ");           // 0x00404595    e8f6dc3400
     asm("test               eax, eax");                                      // 0x0040459a    85c0
     asm("{disp8} je         _jmp_addr_0x004045aa");                          // 0x0040459c    740c
     asm("{disp8} mov        eax, dword ptr [esi + 0x28]");                   // 0x0040459e    8b4628
@@ -1166,7 +1166,7 @@ void __fastcall MakeFunctional__5AbodeFv(struct Abode* this)
     asm("push               0x000003fb");                                    // 0x00404892    68fb030000
     asm("push               0x009c7fbc");                                    // 0x00404897    68bc7f9c00
     asm("push               0x24");                                          // 0x0040489c    6a24
-    asm("call               ___nw__4BaseFUl");                               // 0x0040489e    e84d1e0300
+    asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x0040489e    e84d1e0300
     asm("add                esp, 0x0c");                                     // 0x004048a3    83c40c
     asm("test               eax, eax");                                      // 0x004048a6    85c0
     asm("{disp8} je         _jmp_addr_0x004048b9");                          // 0x004048a8    740f
@@ -1215,7 +1215,7 @@ void __fastcall MakeFunctional__5AbodeFv(struct Abode* this)
     asm("push               0x0");                                           // 0x00404910    6a00
     asm("push               eax");                                           // 0x00404912    50
     asm("push               edx");                                           // 0x00404913    52
-    asm("call               _AttemptRerenderFootpathWithCreatureRP__9GFootpathFP13GFootpathNodeP13GFootpathNodeRC9MapCoords");                          // 0x00404914    e8b73e1300
+    asm("call               ?AttemptRerenderFootpathWithCreatureRP@GFootpath@@SAIPAVGFootpathNode@@0ABUMapCoords@@@Z       ");                          // 0x00404914    e8b73e1300
     asm("add                esp, 0x0c");                                     // 0x00404919    83c40c
     asm("test               eax, eax");                                      // 0x0040491c    85c0
     asm("{disp8} jne        _jmp_addr_0x00404937");                          // 0x0040491e    7517

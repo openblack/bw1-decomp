@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x004714f0
 .extern _jmp_addr_0x00513640
 .extern _HideAll__13DialogBoxBaseFv@0
-.extern _SetCursorOn__8FrontEndFv
+.extern ?SetCursorOn@FrontEnd@@SAXXZ
 .extern _jmp_addr_0x0053c470
 .extern _jmp_addr_0x0053f740
 .extern _jmp_addr_0x0054ae20
@@ -160,7 +160,7 @@ _jmp_addr_0x0054003a:    mov              al, 0x01                              
                          {disp32} mov     ecx, dword ptr [_game]                        // 0x0054008a    8b0d5c19d000
                          {disp32} mov     ecx, dword ptr [ecx + 0x00250300]             // 0x00540090    8b8900032500
                          call             _jmp_addr_0x004713d0                          // 0x00540096    e83513f3ff
-                         call             _SetCursorOn__8FrontEndFv                     // 0x0054009b    e8b0c3ffff
+                         call             ?SetCursorOn@FrontEnd@@SAXXZ                  // 0x0054009b    e8b0c3ffff
                          {disp32} mov     ecx, dword ptr [_game]                        // 0x005400a0    8b0d5c19d000
                          {disp32} mov     byte ptr [data_bytes + 0x30ab00], 0x00        // 0x005400a6    c605000bcd0000
                          {disp32} mov     byte ptr [data_bytes + 0x30ab02], 0x00        // 0x005400ad    c605020bcd0000

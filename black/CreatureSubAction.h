@@ -46,7 +46,7 @@ extern const struct BaseVftable __vt__17CreatureSubAction asm("??_7CreatureSubAc
 // Constructors
 
 // win1.41 00473db0 mac 101e0720 CreatureSubAction::CreatureSubAction(void)
-void __fastcall __ct__17CreatureSubActionFv(struct CreatureSubAction* this);
+void __fastcall __ct__17CreatureSubActionFv(struct CreatureSubAction* this) asm("??0CreatureSubAction@@QAE@XZ");
 
 // Override methods
 
@@ -96,7 +96,7 @@ extern const struct BaseVftable __vt__23CreatureSubActionAgenda asm("??_7Creatur
 // Constructors
 
 // win1.41 004ff1b0 mac 1028cea0 CreatureSubActionAgenda::CreatureSubActionAgenda(Creature*)
-void __fastcall __ct__23CreatureSubActionAgendaFP8Creature(struct CreatureSubActionAgenda* this, const void* edx, struct Creature* creature);
+void __fastcall __ct__23CreatureSubActionAgendaFP8Creature(struct CreatureSubActionAgenda* this, const void* edx, struct Creature* creature) asm("??0CreatureSubActionAgenda@@QAE@PAVCreature@@@Z");
 
 // Non-virtual methods
 

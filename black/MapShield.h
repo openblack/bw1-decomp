@@ -62,7 +62,7 @@ extern const struct MapShieldVftable __vt__9MapShield asm("??_7MapShield@@6B@");
 // Constructors
 
 // win1.41 0072c070 mac 10531a30 MapShield::__ct(MapCoords const &, GMapShieldInfo *, SpellShield *)
-struct MapShield* __fastcall __ct__9MapShieldFRC9MapCoordsP14GMapShieldInfoP11SpellShield(struct MapShield* this, const void* edx, struct MapCoords* coords, struct GMapShieldInfo* info, struct SpellShield* spell);
+struct MapShield* __fastcall __ct__9MapShieldFRC9MapCoordsP14GMapShieldInfoP11SpellShield(struct MapShield* this, const void* edx, struct MapCoords* coords, struct GMapShieldInfo* info, struct SpellShield* spell) asm("??0MapShield@@QAE@ABUMapCoords@@PAVGMapShieldInfo@@PAVSpellShield@@@Z");
 
 // Override methods
 

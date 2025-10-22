@@ -57,24 +57,24 @@ struct GScript* __cdecl Create__7GScriptFv(struct GScript* this) asm("?Create@GS
 // win1.41 006eb710 mac 104d7e50 GScript::StartScript(char *)
 int __stdcall StartScript__7GScriptFPc(char* name);
 // win1.41 0070b220 mac 104fcda0 GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL)
-void __cdecl SetInterfaceInteraction__7GScriptF22SCRIPT_INTERFACE_LEVEL(enum SCRIPT_INTERFACE_LEVEL level);
+void __cdecl SetInterfaceInteraction__7GScriptF22SCRIPT_INTERFACE_LEVEL(enum SCRIPT_INTERFACE_LEVEL level) asm("?SetInterfaceInteraction@GScript@@SAXW4SCRIPT_INTERFACE_LEVEL@@@Z");
 // win1.41 0070d360 mac 10500750 GScript::DeleteAllScriptCreatedGameThings(void)
-void __cdecl DeleteAllScriptCreatedGameThings__7GScriptFv(void);
+void __cdecl DeleteAllScriptCreatedGameThings__7GScriptFv(void) asm("?DeleteAllScriptCreatedGameThings@GScript@@SAXXZ");
 
 // Non-virtual methods
 
 // win1.41 006eb2d0 mac 104d8160 GScript::Reset(int)
-void __fastcall Reset__7GScriptFi(struct GScript* this, const void* edx, int param_2);
+void __fastcall Reset__7GScriptFi(struct GScript* this, const void* edx, int param_2) asm("?Reset@GScript@@QAEXH@Z");
 // win1.41 006eb610 mac 104d8070 GScript::LoadBinary(char *)
-void __fastcall LoadBinary__7GScriptFPc(struct GScript* this, const void* edx, char* binary);
+void __fastcall LoadBinary__7GScriptFPc(struct GScript* this, const void* edx, char* binary) asm("?LoadBinary@GScript@@QAEXPAD@Z");
 // win1.41 006eb6b0 mac 1007ef10 GScript::Process(void)
-void __fastcall Process__7GScriptFv(struct GScript* this);
+void __fastcall Process__7GScriptFv(struct GScript* this) asm("?Process@GScript@@QAEXXZ");
 // win1.41 006eb9d0 mac 10082240 GScript::ProcessFade(bool)
-void __fastcall ProcessFade__7GScriptFb(struct GScript* this, const void* edx, bool param_1);
+void __fastcall ProcessFade__7GScriptFb(struct GScript* this, const void* edx, bool param_1) asm("?ProcessFade@GScript@@QAEX_N@Z");
 // win1.41 006eba90 mac 104d7670 GScript::SetupScreenFadeTo(uchar,uchar,uchar,char)
-void __fastcall SetupScreenFadeTo__7GScriptFUcUcUcSc(struct GScript* this, const void* edx, uint8_t r, uint8_t g, uint8_t b, int8_t a);
+void __fastcall SetupScreenFadeTo__7GScriptFUcUcUcSc(struct GScript* this, const void* edx, uint8_t r, uint8_t g, uint8_t b, int8_t a) asm("?SetupScreenFadeTo@GScript@@QAEXEEEC@Z");
 // win1.41 006ebbc0 mac 104d7300 GScript::CleanGameForScriptReboot(void)
-void __fastcall CleanGameForScriptReboot__7GScriptFv(struct GScript* this);
+void __fastcall CleanGameForScriptReboot__7GScriptFv(struct GScript* this) asm("?CleanGameForScriptReboot@GScript@@QAEXXZ");
 // win1.41 006ec790 mac 104d6160 GScript::PUSH(void *, VMType)
 void __fastcall PUSH__7GScriptFPv6VMType(struct GScript* this, const void* edx, void* param_1, enum VMType param_2) asm("?PUSH@GScript@@QAEXPAXW4VMType@@@Z");
 // win1.41 006f0cc0 mac 104def10 GScript::StopScriptsOfType(VMScriptType)

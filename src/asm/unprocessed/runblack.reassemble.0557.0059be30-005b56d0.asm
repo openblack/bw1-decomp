@@ -26,7 +26,7 @@
 .extern _jmp_addr_0x0046e160
 .extern _jmp_addr_0x0046e2f0
 .extern _jmp_addr_0x0046e5d0
-.extern @GetCreature3D__8CreatureFv@4
+.extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
 .extern _jmp_addr_0x00480810
 .extern _jmp_addr_0x00480c60
 .extern _jmp_addr_0x00481390
@@ -83,7 +83,7 @@
 .extern _jmp_addr_0x007fb180
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007fb5c0
-.extern @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4
+.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x00839f10
 .extern _jmp_addr_0x00860e00
 .extern _jmp_addr_0x00861ee0
@@ -18799,7 +18799,7 @@ _jmp_addr_0x005b0ef9:    mov                eax, dword ptr [edi]                
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x005b0f3c    8d4c2438
                          {disp8} mov        dword ptr [esp + 0x3c], eax                   // 0x005b0f40    8944243c
                          {disp8} mov        dword ptr [esp + 0x40], 0x00000000            // 0x005b0f44    c744244000000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x005b0f4c    e83f212500
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x005b0f4c    e83f212500
                          fstp               st(0)                                         // 0x005b0f51    ddd8
                          call               _jmp_addr_0x0046c040                          // 0x005b0f53    e8e8b0ebff
                          fstp               st(0)                                         // 0x005b0f58    ddd8
@@ -19741,7 +19741,7 @@ _jmp_addr_0x005b1c15:    {disp8} mov        esi, dword ptr [ebx + 0x04]         
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x005b1c47    8d4c2410
                          {disp8} mov        dword ptr [esp + 0x14], eax                   // 0x005b1c4b    89442414
                          {disp8} mov        dword ptr [esp + 0x18], 0x00000000            // 0x005b1c4f    c744241800000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x005b1c57    e834142500
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x005b1c57    e834142500
                          {disp8} mov        edx, dword ptr [ebx + 0x04]                   // 0x005b1c5c    8b5304
                          {disp8} fld        dword ptr [edx + 0x7c]                        // 0x005b1c5f    d9427c
                          fsub               st, st(1)                                     // 0x005b1c62    d8e1
@@ -21375,7 +21375,7 @@ _jmp_addr_0x005b3070:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} je         _jmp_addr_0x005b32ec                          // 0x005b32b4    7436
                          add                eax, 0x000001ec                               // 0x005b32b6    05ec010000
                          {disp8} jmp        _jmp_addr_0x005b32d8                          // 0x005b32bb    eb1b
-_jmp_addr_0x005b32bd:    call               @GetCreature3D__8CreatureFv@4                 // 0x005b32bd    e88e45ecff
+_jmp_addr_0x005b32bd:    call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ                 // 0x005b32bd    e88e45ecff
                          {disp32} mov       ecx, dword ptr [eax + 0x000051b8]             // 0x005b32c2    8b88b8510000
                          {disp32} mov       edx, dword ptr [eax + 0x000047f0]             // 0x005b32c8    8b90f0470000
                          lea                ecx, dword ptr [ecx + ecx * 0x2]              // 0x005b32ce    8d0c49
@@ -22428,7 +22428,7 @@ _jmp_addr_0x005b3e96:    test               ebp, ebp                            
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x005b3f2b    8d4c2420
                          {disp8} mov        dword ptr [esp + 0x24], eax                   // 0x005b3f2f    89442424
                          {disp8} mov        dword ptr [esp + 0x28], 0x00000000            // 0x005b3f33    c744242800000000
-                         call               @GetAltitude__10LH3DIslandFRC13LH3DMapCoords@4// 0x005b3f3b    e850f12400
+                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x005b3f3b    e850f12400
                          {disp8} fstp       dword ptr [esp + 0x30]                        // 0x005b3f40    d95c2430
                          {disp8} mov        edx, dword ptr [ebp + 0x00]                   // 0x005b3f44    8b5500
                          mov.s              ecx, ebp                                      // 0x005b3f47    8bcd
@@ -22484,7 +22484,7 @@ _jmp_addr_0x005b3fde:    {disp8} fadd       dword ptr [esp + 0x30]              
                          {disp32} mov       ecx, dword ptr [eax + 0x000049bc]             // 0x005b3fe9    8b88bc490000
                          test               ecx, ecx                                      // 0x005b3fef    85c9
                          {disp32} je        _jmp_addr_0x005b40f1                          // 0x005b3ff1    0f84fa000000
-                         call               @GetCreature3D__8CreatureFv@4                 // 0x005b3ff7    e85438ecff
+                         call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ                 // 0x005b3ff7    e85438ecff
                          cmp                dword ptr [eax + 0x00004994], 0x0f            // 0x005b3ffc    83b8944900000f
                          {disp32} jne       _jmp_addr_0x005b40f1                          // 0x005b4003    0f85e8000000
                          {disp32} fild      dword ptr [eax + 0x000048bc]                  // 0x005b4009    db80bc480000
@@ -22579,7 +22579,7 @@ _jmp_addr_0x005b40f1:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          {disp32} mov       dword ptr [eax + 0x000049b4], edi             // 0x005b416f    89b8b4490000
                          {disp8} mov        eax, dword ptr [esi + 0x04]                   // 0x005b4175    8b4604
                          {disp32} mov       ecx, dword ptr [eax + 0x000049b4]             // 0x005b4178    8b88b4490000
-                         call               @GetCreature3D__8CreatureFv@4                 // 0x005b417e    e8cd36ecff
+                         call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ                 // 0x005b417e    e8cd36ecff
                          {disp8} mov        ecx, dword ptr [esi + 0x04]                   // 0x005b4183    8b4e04
                          {disp32} mov       dword ptr [ecx + 0x000049b8], eax             // 0x005b4186    8981b8490000
 _jmp_addr_0x005b418c:    mov                eax, 0x0000044c                               // 0x005b418c    b84c040000

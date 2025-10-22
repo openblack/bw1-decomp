@@ -85,16 +85,16 @@ extern const struct BuildingSiteVftable __vt__12BuildingSite asm("??_7BuildingSi
 // Constructors
 
 // win1.41 0043b700 mac 100bd350 BuildingSite::BuildingSite(PlannedMultiMapFixed *)
-struct BuildingSite* __fastcall __ct__12BuildingSiteFP20PlannedMultiMapFixed(struct BuildingSite* this, const void* edx, struct PlannedMultiMapFixed* param_1);
+struct BuildingSite* __fastcall __ct__12BuildingSiteFP20PlannedMultiMapFixed(struct BuildingSite* this, const void* edx, struct PlannedMultiMapFixed* param_1) asm("??0BuildingSite@@QAE@PAVPlannedMultiMapFixed@@@Z");
 // win1.41 0043b7e0 mac 100bcec0 BuildingSite::BuildingSite(MultiMapFixed *)
-struct BuildingSite* __fastcall __ct__12BuildingSiteFP13MultiMapFixed(struct BuildingSite* this, const void* edx, struct MultiMapFixed* param_1);
+struct BuildingSite* __fastcall __ct__12BuildingSiteFP13MultiMapFixed(struct BuildingSite* this, const void* edx, struct MultiMapFixed* param_1) asm("??0BuildingSite@@QAE@PAVMultiMapFixed@@@Z");
 
 // Non-virtual methods
 
 // win1.41 0043bc70 mac 1005fd40 BuildingSite::GetBuilding(void)
-struct MultiMapFixed* __fastcall GetBuilding__12BuildingSiteFv(struct BuildingSite* this);
+struct MultiMapFixed* __fastcall GetBuilding__12BuildingSiteFv(struct BuildingSite* this) asm("?GetBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ");
 // win1.41 0043d080 mac 100b9660 BuildingSite::BuildBy(float)
-void __fastcall BuildBy__12BuildingSiteFf(struct BuildingSite* this, const void* edx, float param_1);
+void __fastcall BuildBy__12BuildingSiteFf(struct BuildingSite* this, const void* edx, float param_1) asm("?BuildBy@BuildingSite@@QAEXM@Z");
 
 // Override methods
 

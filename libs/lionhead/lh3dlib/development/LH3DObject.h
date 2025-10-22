@@ -226,13 +226,13 @@ extern const struct LH3DObjectVftable __vt__10LH3DObject asm("??_7LH3DObject@@6B
 // Static methods
 
 // win1.41 00423140 mac 10041480 LH3DObject::SetPosition(const LHPoint&, float, float)
-void __fastcall SetPosition__10LH3DObjectFRC7LHPointff(struct LH3DObject* this, struct LHPoint* point, float y_angle, float scale);
+void __fastcall SetPosition__10LH3DObjectFRC7LHPointff(struct LH3DObject* this, struct LHPoint* point, float y_angle, float scale) asm("?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z");
 // win1.41 0080b4d0 mac 10620204 LH3DObject::Create(LH3DObject::ObjectType)
 struct LH3DObject* __fastcall Create__10LH3DObjectFQ210LH3DObject10ObjectType(enum LH3DObject__ObjectType object_type);
 
 // Constructors
 
 // win1.41 inlined mac inlined LH3DObject::LH3DObject(void)
-struct LH3DObject* __fastcall __ct__10LH3DObjectFv(struct LH3DObject* this);
+struct LH3DObject* __fastcall __ct__10LH3DObjectFv(struct LH3DObject* this) asm("??0LH3DObject@@QAE@XZ");
 
 #endif /* BW1_DECOMP_LH3D_OBJECT_INCLUDED_H */

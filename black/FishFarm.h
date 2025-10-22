@@ -62,7 +62,7 @@ extern const struct MultiMapFixedVftable __vt__8FishFarm asm("??_7FishFarm@@6B@"
 // Constructors
 
 // win1.41 0052c360 mac 100dd070 FishFarm::FishFarm(MapCoords const &, GFishFarmInfo const *, Town *)
-struct FishFarm* __fastcall __ct__8FishFarmFRC9MapCoordsPC13GFishFarmInfoP4Town(struct FishFarm* this, const void* edx, struct MapCoords* coords, struct GFishFarmInfo* info, struct Town* town);
+struct FishFarm* __fastcall __ct__8FishFarmFRC9MapCoordsPC13GFishFarmInfoP4Town(struct FishFarm* this, const void* edx, struct MapCoords* coords, struct GFishFarmInfo* info, struct Town* town) asm("??0FishFarm@@QAE@ABUMapCoords@@PBVGFishFarmInfo@@PAVTown@@@Z");
 
 // Override methods
 

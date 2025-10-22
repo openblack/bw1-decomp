@@ -37,7 +37,7 @@ extern const struct DialogBoxBaseVftable __vt__20DialogBoxSaveMessage asm("??_7D
 // Constructors
 
 // win1.41 00515990 mac 102b6020 DialogBoxSaveMessage::DialogBoxSaveMessage(void)
-struct DialogBoxSaveMessage* __fastcall __ct__20DialogBoxSaveMessageFv(struct DialogBoxSaveMessage* this);
+struct DialogBoxSaveMessage* __fastcall __ct__20DialogBoxSaveMessageFv(struct DialogBoxSaveMessage* this) asm("??0DialogBoxSaveMessage@@QAE@XZ");
 
 // Override methods
 

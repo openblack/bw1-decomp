@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uint16_t, uint32_t */
+#include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
@@ -16,7 +16,6 @@
 struct Base;
 struct CitadelHeart;
 struct Creature;
-struct GFlockInfo;
 struct GPlayer;
 struct GameOSFile;
 struct GameThing;
@@ -24,6 +23,12 @@ struct GameThingWithPos;
 struct Living;
 struct LivingDLList;
 struct Town;
+
+struct GFlockInfo
+{
+  uint8_t field_0x0;
+};
+static_assert(sizeof(struct GFlockInfo) == 0x1, "Data type is of wrong size");
 
 struct Flock
 {
@@ -70,16 +75,16 @@ extern const struct GameThingWithPosVftable __vt__5Flock asm("??_7Flock@@6B@");
 // Constructors
 
 // win1.41 0052f780 mac 100e6ec0 Flock::Flock(MapCoords const &, GFlockInfo const *, GPlayer *, unsigned long)
-struct Flock* __fastcall __ct__5FlockFRC9MapCoordsPC10GFlockInfoP7GPlayerUl(struct Flock* this, const void* edx, struct MapCoords* coords, struct GFlockInfo* info, struct GPlayer* player, uint32_t param_4);
+struct Flock* __fastcall __ct__5FlockFRC9MapCoordsPC10GFlockInfoP7GPlayerUl(struct Flock* this, const void* edx, struct MapCoords* coords, struct GFlockInfo* info, struct GPlayer* player, uint32_t param_4) asm("??0Flock@@QAE@ABUMapCoords@@PBUGFlockInfo@@PAVGPlayer@@K@Z");
 // win1.41 100e6be0 mac 0052f950 Flock::Flock(Living*)
-struct Flock* __fastcall __ct__5FlockFP6Living(struct Flock* this, const void* edx, struct Living* param_1);
+struct Flock* __fastcall __ct__5FlockFP6Living(struct Flock* this, const void* edx, struct Living* param_1) asm("??0Flock@@QAE@PAVLiving@@@Z");
 
 // Non-virtual methods
 
 // win1.41 0052fc20 mac 100e6220 Flock::SetDomainCentrePos(MapCoords const &)
 void __fastcall SetDomainCentrePos__5FlockFRC9MapCoords(struct Flock* this, const void* edx, const struct MapCoords* param_1) asm("?SetDomainCentrePos@Flock@@QAEXABUMapCoords@@@Z");
 // win1.41 00530570 mac 100684b0 Flock::GetFlockPos(void)
-struct MapCoords* __fastcall GetFlockPos__5FlockFv(struct Flock* this);
+struct MapCoords* __fastcall GetFlockPos__5FlockFv(struct Flock* this) asm("?GetFlockPos@Flock@@QAEPAUMapCoords@@XZ");
 
 // Override methods
 

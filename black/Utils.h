@@ -14,29 +14,29 @@ struct MapCoords;
 // win1.41 00605cd0 mac inlined GUtils::GetDistanceInMetres_2(MapCoords const &, MapCoords const &)
 float __cdecl GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2(const struct MapCoords* this, const struct MapCoords* other);
 // win1.41 0074ccb0 mac 100495f0 GUtils::GetDistance(MapCoords const &, MapCoords const &)
-void __cdecl GetDistance__6GUtilsFRC9MapCoordsRC9MapCoords(struct MapCoords* param_1, struct MapCoords* param_2);
+void __cdecl GetDistance__6GUtilsFRC9MapCoordsRC9MapCoords(struct MapCoords* param_1, struct MapCoords* param_2) asm("?GetDistance@GUtils@@SAXABUMapCoords@@0@Z");
 // win1.41 0074cd70 mac 10049550 GUtils::GetDistanceInMetres(MapCoords const &, MapCoords const &)
-float __cdecl GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords(struct MapCoords* param_1, struct MapCoords* param_2);
+float __cdecl GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords(struct MapCoords* param_1, struct MapCoords* param_2) asm("?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z");
 // win1.41 0074d200 mac 1004ed70 GUtils::GetAngleFromDXDZ(long, long)
-uint16_t __cdecl GetAngleFromDXDZ__6GUtilsFll(long dx, long dz);
+uint16_t __cdecl GetAngleFromDXDZ__6GUtilsFll(long dx, long dz) asm("?GetAngleFromDXDZ@GUtils@@SAGJJ@Z");
 // win1.41 0074d240 mac 1004ede0 GUtils::GetAngleFromXZ(MapCoords const &, MapCoords const &)
-uint16_t __cdecl GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords(struct MapCoords* param_1, struct MapCoords* param_2);
+uint16_t __cdecl GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords(struct MapCoords* param_1, struct MapCoords* param_2) asm("?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z");
 // win1.41 0074d270 mac 100112f0 GUtils::Get3DAngleFromXZ(MapCoords const &, MapCoords const &)
-float __cdecl Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords(const struct MapCoords* param_1, const struct MapCoords* param_2);
+float __cdecl Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords(const struct MapCoords* param_1, const struct MapCoords* param_2) asm("?Get3DAngleFromXZ@GUtils@@SAMABUMapCoords@@0@Z");
 // win1.41 0074d580 mac 10061ba0 GUtils::GetPosFromAngle(float, float)
-struct MapCoords* __cdecl GetPosFromAngle__6GUtilsFff(struct MapCoords* coords, float angle, float radius);
+struct MapCoords* __cdecl GetPosFromAngle__6GUtilsFff(struct MapCoords* coords, float angle, float radius) asm("?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z");
 // win1.41 0074d7e0 mac 10049ad0 GUtils::Spiral(long &, long &)
-const struct JustMapXZ* __cdecl Spiral__6GUtilsFRlRl(int* param_1, int* param_2);
+const struct JustMapXZ* __cdecl Spiral__6GUtilsFRlRl(int* param_1, int* param_2) asm("?Spiral@GUtils@@SAPBUJustMapXZ@@AAJ0@Z");
 // win1.41 0074d810 mac 10021cd0 GUtils::SpiralIncrement(MapCoords &, long &, long &, float)
-void __cdecl SpiralIncrement__6GUtilsFR9MapCoordsRlRlf(struct MapCoords* param_1, int* param_2, int* param_3, float param_4);
+void __cdecl SpiralIncrement__6GUtilsFR9MapCoordsRlRlf(struct MapCoords* param_1, int* param_2, int* param_3, float param_4) asm("?SpiralIncrement@GUtils@@SAXAAUMapCoords@@AAJ1M@Z");
 // win1.41 0074dc50 mac 1004cd50 GUtils::ConvertGameAngleTo3D(long)
-float __cdecl ConvertGameAngleTo3D__6GUtilsFl(uint32_t angle);
+float __cdecl ConvertGameAngleTo3D__6GUtilsFl(uint32_t angle) asm("?ConvertGameAngleTo3D@GUtils@@SAMJ@Z");
 // win1.41 0074dcc0 mac 10032220 GUtils::ConvertWholeDistanceToMeters(long)
-float __cdecl ConvertWholeDistanceToMeters__6GUtilsFl(int param_1);
+float __cdecl ConvertWholeDistanceToMeters__6GUtilsFl(int param_1) asm("?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z");
 // win1.41 0074e3a0 mac 104fa7f0 GUtils::FindNearestDrinkingWater(MapCoords &, MapCoords &, float)
-bool __cdecl FindNearestDrinkingWater__6GUtilsFR9MapCoordsR9MapCoordsf(struct MapCoords* param_1, struct MapCoords* param_2, float max_dist);
+bool __cdecl FindNearestDrinkingWater__6GUtilsFR9MapCoordsR9MapCoordsf(struct MapCoords* param_1, struct MapCoords* param_2, float max_dist) asm("?FindNearestDrinkingWater@GUtils@@SA_NAAUMapCoords@@0M@Z");
 // win1.41 0074f170 mac 10067300 GUtils::SigmoidThreshold(float, float)
-float __cdecl SigmoidThreshold__6GUtilsFff(float param_1, float param_2);
+float __cdecl SigmoidThreshold__6GUtilsFff(float param_1, float param_2) asm("?SigmoidThreshold@GUtils@@SAMMM@Z");
 // win1.41 0074f290 mac 100673e0 GUtils::GetDistanceModifier(float float)
 float __stdcall GetDistanceModifier__6GUtilsFff(float param_1, float param_2);
 // win1.41 0074f520 mac 10022930 GUtils::GetMapCellSpiralSizeFromRadius(float)

@@ -71,18 +71,18 @@ extern const struct SetupBoxVftable __vt__8SetupBox asm("??_7SetupBox@@6B@");
 // Static methods
 
 // win1.41 00407ed0 mac 10075ef0 SetupBox::GetCurrentActiveBox(void)
-struct SetupBox* __cdecl GetCurrentActiveBox__8SetupBoxFv(void);
+struct SetupBox* __cdecl GetCurrentActiveBox__8SetupBoxFv(void) asm("?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ");
 
 // Non-virtual methods
 
 // win1.41 00408160 mac 1043c330 SetupBox::FindControl(int)
-struct SetupControl* __fastcall FindControl__8SetupBoxFi(struct SetupBox* this, const void* edx, int id);
+struct SetupControl* __fastcall FindControl__8SetupBoxFi(struct SetupBox* this, const void* edx, int id) asm("?FindControl@SetupBox@@QAEPAUSetupControl@@H@Z");
 // win1.41 00409140 mac 10598ed0 SetupBox::SetFocusControl(SetupControl *)
-void __fastcall SetFocusControl__8SetupBoxFP12SetupControl(struct SetupBox* this, const void* edx, struct SetupControl* widget);
+void __fastcall SetFocusControl__8SetupBoxFP12SetupControl(struct SetupBox* this, const void* edx, struct SetupControl* widget) asm("?SetFocusControl@SetupBox@@QAEXPAUSetupControl@@@Z");
 // win1.41 00411090 mac 1047e3e0 SetupBox::SetFocusNext(SetupBox *)
-void __fastcall SetFocusNext__8SetupBoxFv(struct SetupBox* this);
+void __fastcall SetFocusNext__8SetupBoxFv(struct SetupBox* this) asm("?SetFocusNext@SetupBox@@QAEXXZ");
 // win1.41 00411100 mac 10478e70 SetupBox::SetFocusPrev(SetupBox *)
-void __fastcall SetFocusPrev__8SetupBoxFv(struct SetupBox* this);
+void __fastcall SetFocusPrev__8SetupBoxFv(struct SetupBox* this) asm("?SetFocusPrev@SetupBox@@QAEXXZ");
 // win1.41 00411190 mac 100c3160 SetupBox::MessageBoxA(wchar_t*, MSGBOXSTYLE, ulong)
 void __fastcall MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl(struct SetupBox* this, const void* edx, const char16_t* param_2, uint32_t param_3, uint32_t param_4);
 

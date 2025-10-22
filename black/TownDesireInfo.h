@@ -63,7 +63,7 @@ extern const struct GBaseInfoVftable __vt__15GTownDesireInfo asm("??_7GTownDesir
 // Non-virtual methods
 
 // win1.41 00746580 mac 1005ebc0 GTownDesireInfo::GetDesireFunctions(void) const
-struct GTownDesireFunction* __fastcall GetDesireFunctions__15GTownDesireInfoCFv(const struct GTownDesireInfo* this);
+struct GTownDesireFunction* __fastcall GetDesireFunctions__15GTownDesireInfoCFv(const struct GTownDesireInfo* this) asm("?GetDesireFunctions@GTownDesireInfo@@QBEPAUGTownDesireFunction@@XZ");
 
 // Override methods
 

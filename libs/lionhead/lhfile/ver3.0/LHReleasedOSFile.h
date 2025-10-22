@@ -34,13 +34,13 @@ extern const struct LHOSFileVftable __vt__16LHReleasedOSFile asm("??_7LHReleased
 // Constructors
 
 // win1.41 007e6d10 mac inlined LHReleasedOSFile::LHReleasedOSFile(void)
-struct LHReleasedOSFile* __fastcall __ct__16LHReleasedOSFileFv(struct LHReleasedOSFile* this);
+struct LHReleasedOSFile* __fastcall __ct__16LHReleasedOSFileFv(struct LHReleasedOSFile* this) asm("??0LHReleasedOSFile@@QAE@XZ");
 
 // Override methods
 
 // win1.41 0042fd40 mac 1012d3f0 LHReleasedOSFile::~LHReleasedOSFile(void)
-void __fastcall __dt__16LHReleasedOSFileFv(struct LHOSFile* this, const void* edx, bool param_1);
+void __fastcall __dt__16LHReleasedOSFileFv(struct LHOSFile* this, const void* edx, bool param_1) asm("??_DLHReleasedOSFile@@QAEXXZ");
 // win1.41 007bc7e0 mac 10164a30 LHReleasedOSFile::Open(const char*, LH_FILE_MODE)
-uint32_t __fastcall Open__16LHReleasedOSFileFPc12LH_FILE_MODE(struct LHOSFile* this, const void* edx, const char* path, enum LH_FILE_MODE mode);
+uint32_t __fastcall Open__16LHReleasedOSFileFPc12LH_FILE_MODE(struct LHOSFile* this, const void* edx, const char* path, enum LH_FILE_MODE mode) asm("?Open@LHReleasedOSFile@@UAEIPADW4LH_FILE_MODE@@@Z");
 
 #endif /* BW1_DECOMP_LH_RELEASED_OS_FILE_INCLUDED_H */

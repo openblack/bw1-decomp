@@ -63,33 +63,33 @@ extern const struct MultiMapFixedVftable __vt__10TownCentre asm("??_7TownCentre@
 // Static methods
 
 // win1.41 00743c90 mac 1055b520 TownCentre::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-struct TownCentre* __cdecl Create__10TownCentreFRC9MapCoordsPC10GAbodeInfoP4Townfffi(const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float param_4, float param_5, float param_6, int param_7);
+struct TownCentre* __cdecl Create__10TownCentreFRC9MapCoordsPC10GAbodeInfoP4Townfffi(const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float param_4, float param_5, float param_6, int param_7) asm("?Create@TownCentre@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");
 // win1.41 007447f0 mac 1006eae0 TownCentre::DrawAll(void)
 void __stdcall DrawAll__10TownCentreFv(void);
 
 // Constructors
 
 // win1.41 00743a60 mac 1055bb20 TownCentre::TownCentre(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-struct TownCentre* __fastcall __ct__10TownCentreFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struct TownCentre* this, const void* edx, const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float param_4, float param_5, float param_6, int param_7);
+struct TownCentre* __fastcall __ct__10TownCentreFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struct TownCentre* this, const void* edx, const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float param_4, float param_5, float param_6, int param_7) asm("??0TownCentre@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");
 
 // Non-virtual methods
 
 // win1.41 0069bc10 mac 104274c0 TownCentre::CreatePSys(void)
-void __fastcall CreatePSys__10TownCentreFv(struct TownCentre* this);
+void __fastcall CreatePSys__10TownCentreFv(struct TownCentre* this) asm("?CreatePSys@TownCentre@@QAEXXZ");
 // win1.41 0069bcc0 mac 1002d390 TownCentre::ProcessPSys(void)
-void __fastcall ProcessPSys__10TownCentreFv(struct TownCentre* this);
+void __fastcall ProcessPSys__10TownCentreFv(struct TownCentre* this) asm("?ProcessPSys@TownCentre@@QAEXXZ");
 // win1.41 0069bd60 mac 10066090 TownCentre::DrawPSys(void)
-void __fastcall DrawPSys__10TownCentreFv(struct TownCentre* this);
+void __fastcall DrawPSys__10TownCentreFv(struct TownCentre* this) asm("?DrawPSys@TownCentre@@QAEXXZ");
 // win1.41 00743da0 mac 1055b260 TownCentre::CreateTotemIfNecessary(void)
-bool __fastcall CreateTotemIfNecessary__10TownCentreFv(struct TownCentre* this);
+bool __fastcall CreateTotemIfNecessary__10TownCentreFv(struct TownCentre* this) asm("?CreateTotemIfNecessary@TownCentre@@QAE_NXZ");
 // win1.41 00743f20 mac 1055af50 TownCentre::GetTotemPos(void)
-struct MapCoords* __fastcall GetTotemPos__10TownCentreFv(struct TownCentre* this, const void* edx, struct MapCoords* coords);
+struct MapCoords* __fastcall GetTotemPos__10TownCentreFv(struct TownCentre* this, const void* edx, struct MapCoords* coords) asm("?GetTotemPos@TownCentre@@QAEPAUMapCoords@@XZ");
 // win1.41 00743fa0 mac 1055ae80 TownCentre::FindSpellIcon(SPELL_SEED_TYPE)
-struct TownCentreSpellIcon* __fastcall FindSpellIcon__10TownCentreF15SPELL_SEED_TYPE(struct TownCentre* this, const void* edx, enum SPELL_SEED_TYPE type);
+struct TownCentreSpellIcon* __fastcall FindSpellIcon__10TownCentreF15SPELL_SEED_TYPE(struct TownCentre* this, const void* edx, enum SPELL_SEED_TYPE type) asm("?FindSpellIcon@TownCentre@@QAEPAVTownCentreSpellIcon@@W4SPELL_SEED_TYPE@@@Z");
 // win1.41 00744010 mac 1055ad20 TownCentre::AddPowerUp(SPELL_SEED_TYPE, POWER_UP_TYPE)
-void __fastcall AddPowerUp__10TownCentreF15SPELL_SEED_TYPE13POWER_UP_TYPE(struct TownCentre* this, const void* edx, enum SPELL_SEED_TYPE seed_type, enum POWER_UP_TYPE power_up_type);
+void __fastcall AddPowerUp__10TownCentreF15SPELL_SEED_TYPE13POWER_UP_TYPE(struct TownCentre* this, const void* edx, enum SPELL_SEED_TYPE seed_type, enum POWER_UP_TYPE power_up_type) asm("?AddPowerUp@TownCentre@@QAEXW4SPELL_SEED_TYPE@@W4POWER_UP_TYPE@@@Z");
 // win1.41 00744050 mac 1055aac0 TownCentre::AddSpell(SPELL_SEED_TYPE)
-bool __fastcall AddSpell__10TownCentreF15SPELL_SEED_TYPE(struct TownCentre* this, const void* edx, enum SPELL_SEED_TYPE seed_type);
+bool __fastcall AddSpell__10TownCentreF15SPELL_SEED_TYPE(struct TownCentre* this, const void* edx, enum SPELL_SEED_TYPE seed_type) asm("?AddSpell@TownCentre@@QAE_NW4SPELL_SEED_TYPE@@@Z");
 
 // Override methods
 
@@ -148,7 +148,7 @@ struct PlannedMultiMapFixed* __fastcall ConvertToPlanned__10TownCentreFv(struct 
 // win1.41 00743be0 mac 1055b650 TownCentre::DeleteDependancys(void)
 void __fastcall DeleteDependancys__10TownCentreFv(struct Abode* this) asm("?DeleteDependancys@TownCentre@@UAEXXZ");
 // win1.41 00743e80 mac 1055b020 TownCentre::MakeFunctional(void)
-void __fastcall MakeFunctional__10TownCentreFv(struct Abode* this);
+void __fastcall MakeFunctional__10TownCentreFv(struct Abode* this) asm("?MakeFunctional@TownCentre@@UAEXXZ");
 // win1.41 00744a00 mac 105599a0 TownCentre::StopBeingFunctional(GPlayer *)
 void __fastcall StopBeingFunctional__10TownCentreFP7GPlayer(struct Abode* this, const void* edx, struct GPlayer* param_1) asm("?StopBeingFunctional@TownCentre@@UAEXPAVGPlayer@@@Z");
 // win1.41 0055db30 mac 1055bd40 TownCentre::CausesTownEmergencyIfDamaged(void)

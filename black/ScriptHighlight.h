@@ -49,7 +49,7 @@ extern const struct ObjectVftable __vt__15ScriptHighlight asm("??_7ScriptHighlig
 // Static methods
 
 // win1.41 0070a460 mac 10055f10 ScriptHighlight::ProcessHighlights(void)
-void __cdecl ProcessHighlights__15ScriptHighlightFv(void);
+void __cdecl ProcessHighlights__15ScriptHighlightFv(void) asm("?ProcessHighlights@ScriptHighlight@@SAXXZ");
 
 // Non-virtual methods
 

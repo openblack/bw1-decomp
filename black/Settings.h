@@ -14,8 +14,8 @@ static_assert(sizeof(struct Settings) == 0x104, "Data type is of wrong size");
 // Non-virtual methods
 
 // win1.41 00714af0 mac 105e8db0 Settings::ParseConfigFile(char*)
-void __fastcall ParseConfigFile__8SettingsFPc(struct Settings* this, const void* edx, char* path);
+void __fastcall ParseConfigFile__8SettingsFPc(struct Settings* this, const void* edx, char* path) asm("?ParseConfigFile@Settings@@QAEXPAD@Z");
 // win1.41 00714c20 mac 105e8d50 Settings::InitialiseToDefaults(void)
-void __fastcall InitialiseToDefaults__8SettingsFv(struct Settings* this);
+void __fastcall InitialiseToDefaults__8SettingsFv(struct Settings* this) asm("?InitialiseToDefaults@Settings@@QAEXXZ");
 
 #endif /* BW1_DECOMP_SETTINGS_INCLUDED_H */

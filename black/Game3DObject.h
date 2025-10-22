@@ -28,10 +28,10 @@ struct Game3DObject* __cdecl Create__12Game3DObjectFRC9MapCoordsQ210LH3DObject10
 // Non-virtual methods
 
 // win1.41 0063abc0 mac 103da030 Game3DObject::GetAltitudeFondation(void) const
-float __fastcall GetAltitudeFondation__12Game3DObjectCFv(const struct Game3DObject* this);
+float __fastcall GetAltitudeFondation__12Game3DObjectCFv(const struct Game3DObject* this) asm("?GetAltitudeFondation@Game3DObject@@QBEMXZ");
 // win1.41 0063afe0 mac 10019840 Game3DObject::GetDoorPosition(MapCoords *) const
-bool __fastcall GetDoorPosition__12Game3DObjectCFP9MapCoords(const struct Game3DObject* this, const void* edx, struct MapCoords* position);
+bool __fastcall GetDoorPosition__12Game3DObjectCFP9MapCoords(const struct Game3DObject* this, const void* edx, struct MapCoords* position) asm("?GetDoorPosition@Game3DObject@@QBE_NPAUMapCoords@@@Z");
 // win1.41 0063b060 mac 103d9d50 Game3DObject::GetSpecialPos(unsigned long, MapCoords &) const
-bool __fastcall GetSpecialPos__12Game3DObjectCFUlR9MapCoords(const struct Game3DObject* this, const void* edx, uint32_t index, struct MapCoords* coords);
+bool __fastcall GetSpecialPos__12Game3DObjectCFUlR9MapCoords(const struct Game3DObject* this, const void* edx, uint32_t index, struct MapCoords* coords) asm("?GetSpecialPos@Game3DObject@@QBE_NKAAUMapCoords@@@Z");
 
 #endif /* BW1_DECOMP_GAME_3D_OBJECT_INCLUDED_H */

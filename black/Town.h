@@ -62,7 +62,7 @@ static_assert(sizeof(struct PlayerTownInteract) == 0x80, "Data type is of wrong 
 // Constructors
 
 // win1.41 0073e040 mac 1054fa10 PlayerTownInteract::PlayerTownInteract(void)
-struct PlayerTownInteract* __fastcall __ct__18PlayerTownInteractFv(struct PlayerTownInteract* this);
+struct PlayerTownInteract* __fastcall __ct__18PlayerTownInteractFv(struct PlayerTownInteract* this) asm("??0PlayerTownInteract@@QAE@XZ");
 
 struct Town
 {
@@ -171,18 +171,18 @@ extern const struct ContainerVftable __vt__4Town asm("??_7Town@@6B@");
 // Static methods
 
 // win1.41 0073b170 mac 10554ef0 Town::GetNearestTownToPos(MapCoords const &, TRIBE_TYPE, ABODE_TYPE, float)
-struct Town* __cdecl GetNearestTownToPos__4TownFRC9MapCoords10TRIBE_TYPE10ABODE_TYPEf(struct MapCoords* coords, enum TRIBE_TYPE tribe_type, enum ABODE_TYPE abode_type, float max_distance);
+struct Town* __cdecl GetNearestTownToPos__4TownFRC9MapCoords10TRIBE_TYPE10ABODE_TYPEf(struct MapCoords* coords, enum TRIBE_TYPE tribe_type, enum ABODE_TYPE abode_type, float max_distance) asm("?GetNearestTownToPos@Town@@SAPAV1@ABUMapCoords@@W4TRIBE_TYPE@@W4ABODE_TYPE@@M@Z");
 // win1.41 0073eac0 mac 1054e290 Town::AsssignTownFeature(void)
-void __cdecl AsssignTownFeature__4TownFv(void);
+void __cdecl AsssignTownFeature__4TownFv(void) asm("?AsssignTownFeature@Town@@SAXXZ");
 // win1.41 007412f0 mac 100233e0 Town::FindClearArea(MapCoords &, MapCoords &, float, float, float, int (Object::)(void const *, void const *), Object *)
-bool __cdecl FindClearArea__4TownFR9MapCoordsR9MapCoordsfffM6ObjectFPCvPCv_iP6Object(struct MapCoords* param_1, struct MapCoords* param_2, float param_3, float param_4, float param_5, bool (__fastcall* callback)(struct Object * param_1), int index, uint32_t param_8, uint32_t param_9, struct Object* obj);
+bool __cdecl FindClearArea__4TownFR9MapCoordsR9MapCoordsfffM6ObjectFPCvPCv_iP6Object(struct MapCoords* param_1, struct MapCoords* param_2, float param_3, float param_4, float param_5, bool (__fastcall* callback)(struct Object * param_1), int index, uint32_t param_8, uint32_t param_9, struct Object* obj) asm("?FindClearArea@Town@@SA_NAAUMapCoords@@0MMMP8Object@@AEHPBX1@ZPAV3@@Z");
 // win1.41 007413d0 mac 10038890 Town::CheckForClearArea(MapCoords &, float, int (Object::)(void const *, void const *), Object *)
-bool __cdecl CheckForClearArea__4TownFR9MapCoordsfM6ObjectFPCvPCv_iP6Object(struct MapCoords* param_1, float param_2, bool (__fastcall* callback)(struct Object * param_1), int index, uint32_t param_5, uint32_t param_6, struct Object* obj);
+bool __cdecl CheckForClearArea__4TownFR9MapCoordsfM6ObjectFPCvPCv_iP6Object(struct MapCoords* param_1, float param_2, bool (__fastcall* callback)(struct Object * param_1), int index, uint32_t param_5, uint32_t param_6, struct Object* obj) asm("?CheckForClearArea@Town@@SA_NAAUMapCoords@@MP8Object@@AEHPBX1@ZPAV3@@Z");
 
 // Constructors
 
 // win1.41 00739350 mac 105575b0 Town::__ct(MapCoords const &, GTownInfo const *, GPlayer *, TRIBE_TYPE, char *, unsigned long, int)
-struct Town* __fastcall __ct__4TownFRC9MapCoordsPC9GTownInfoP7GPlayer10TRIBE_TYPEPcUli(struct Town* this, const void* edx, struct MapCoords* coords, struct GTownInfo* info, struct GPlayer* player, enum TRIBE_TYPE tribe_type, char* param_5, uint32_t param_6, int param_7);
+struct Town* __fastcall __ct__4TownFRC9MapCoordsPC9GTownInfoP7GPlayer10TRIBE_TYPEPcUli(struct Town* this, const void* edx, struct MapCoords* coords, struct GTownInfo* info, struct GPlayer* player, enum TRIBE_TYPE tribe_type, char* param_5, uint32_t param_6, int param_7) asm("??0Town@@QAE@ABUMapCoords@@PBVGTownInfo@@PAVGPlayer@@W4TRIBE_TYPE@@PADKH@Z");
 
 // Non-virtual methods
 

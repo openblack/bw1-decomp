@@ -39,7 +39,7 @@ extern const struct HandStateVftable __vt__12HandStateTug asm("??_7HandStateTug@
 // Constructors
 
 // win1.41 005b7dd0 mac 1033e9e0 HandStateTug::HandStateTug(CHand*)
-struct HandStateTug* __fastcall __ct__12HandStateTugFP5CHand(struct HandStateTug* this, const void* edx, struct CHand* hand);
+struct HandStateTug* __fastcall __ct__12HandStateTugFP5CHand(struct HandStateTug* this, const void* edx, struct CHand* hand) asm("??0HandStateTug@@QAE@PAVCHand@@@Z");
 
 // Override methods
 

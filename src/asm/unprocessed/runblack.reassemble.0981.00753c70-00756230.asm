@@ -22,19 +22,19 @@
 .extern ?GetQueryLastEnumText@Object@@UAE?AW4HELP_TEXT@@XZ
 .extern ?GetFOVHelpMessageSet@Object@@UAEIXZ
 .extern ?GetFOVHelpCondition@Object@@UAEIXZ
-.extern _GameRand__5GRandFl
-.extern _GameFloatRand__5GRandFf
+.extern ?GameRand@GRand@@SAHJ@Z
+.extern ?GameFloatRand@GRand@@SAMM@Z
 .extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern ?GetTemporaryResourceStorePotOrPos@Town@@QAEPAXABUMapCoords@@AAU2@W4RESOURCE_TYPE@@@Z
 .extern ?GetCongregationPos@Town@@QAEPAUMapCoords@@PAU2@@Z
 .extern ?IncrementNumOfDisciples@TownStats@@QAEXW4VILLAGER_DISCIPLE@@@Z
 .extern ?DecrementNumOfDisciples@TownStats@@QAEXW4VILLAGER_DISCIPLE@@@Z
-.extern _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords
-.extern _GetPosFromAngle__6GUtilsFff
-.extern @DeleteDependancys__8VillagerFv@4
-.extern @DiscipleDecideWhatToDo__8VillagerFv@4
+.extern ?Get3DAngleFromXZ@GUtils@@SAMABUMapCoords@@0@Z
+.extern ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z
+.extern ?DeleteDependancys@Villager@@QAEXXZ
+.extern ?DiscipleDecideWhatToDo@Villager@@QAE_NXZ
 .extern ?GetStoragePit@Villager@@QAEPAVStoragePit@@XZ
-.extern @GetAbode__8VillagerFv@4
+.extern ?GetAbode@Villager@@QAEPAVAbode@@XZ
 .extern _jmp_addr_0x00761090
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
@@ -126,12 +126,12 @@ start_0x00753c70_0x00756230:
                          push              edi                                           // 0x00753ca8    57
                          push              eax                                           // 0x00753ca9    50
                          {disp8} fstp      dword ptr [esp + 0x10]                        // 0x00753caa    d95c2410
-                         call              _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x00753cae    e8bd95ffff
+                         call              ?Get3DAngleFromXZ@GUtils@@SAMABUMapCoords@@0@Z                               // 0x00753cae    e8bd95ffff
                          {disp8} fstp      dword ptr [esp + 0x14]                        // 0x00753cb3    d95c2414
                          push              0x00000b7c                                    // 0x00753cb7    687c0b0000
                          push              0x00c235dc                                    // 0x00753cbc    68dc35c200
                          push              0x3f490fdb                                    // 0x00753cc1    68db0f493f
-                         call              _GameFloatRand__5GRandFf                      // 0x00753cc6    e865a8f8ff
+                         call              ?GameFloatRand@GRand@@SAMM@Z                  // 0x00753cc6    e865a8f8ff
                          {disp32} fsub     dword ptr [rdata_bytes + 0x1dca0]             // 0x00753ccb    d825a06c8c00
                          add               esp, 0x14                                     // 0x00753cd1    83c414
                          push              0x00000b7d                                    // 0x00753cd4    687d0b0000
@@ -142,7 +142,7 @@ start_0x00753c70_0x00756230:
                          {disp8} fld       dword ptr [esp + 0x14]                        // 0x00753ce7    d9442414
                          {disp32} fmul     dword ptr [rdata_bytes + 0x56ec8]             // 0x00753ceb    d80dc8fe8f00
                          fstp              dword ptr [esp]                               // 0x00753cf1    d91c24
-                         call              _GameFloatRand__5GRandFf                      // 0x00753cf4    e837a8f8ff
+                         call              ?GameFloatRand@GRand@@SAMM@Z                  // 0x00753cf4    e837a8f8ff
                          {disp8} mov       ecx, dword ptr [esp + 0x18]                   // 0x00753cf9    8b4c2418
                          {disp8} fadd      dword ptr [esp + 0x14]                        // 0x00753cfd    d8442414
                          add               esp, 0x08                                     // 0x00753d01    83c408
@@ -150,7 +150,7 @@ start_0x00753c70_0x00756230:
                          fstp              dword ptr [esp]                               // 0x00753d08    d91c24
                          push              ecx                                           // 0x00753d0b    51
                          push              edx                                           // 0x00753d0c    52
-                         call              _GetPosFromAngle__6GUtilsFff                  // 0x00753d0d    e86e98ffff
+                         call              ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z // 0x00753d0d    e86e98ffff
                          add               esp, 0x0c                                     // 0x00753d12    83c40c
                          push              eax                                           // 0x00753d15    50
                          {disp8} lea       eax, dword ptr [esp + 0x2c]                   // 0x00753d16    8d44242c
@@ -187,7 +187,7 @@ _jmp_addr_0x00753d45:    pop               edi                                  
                          mov.s             ecx, esi                                      // 0x00753d68    8bce
                          {disp32} fmul     dword ptr [_rdata_float0p5]                   // 0x00753d6a    d80db4a38a00
                          {disp8} fstp      dword ptr [esp + 0x04]                        // 0x00753d70    d95c2404
-                         call              @GetAbode__8VillagerFv@4                      // 0x00753d74    e8e7e3ffff
+                         call              ?GetAbode@Villager@@QAEPAVAbode@@XZ           // 0x00753d74    e8e7e3ffff
                          test              eax, eax                                      // 0x00753d79    85c0
                          {disp8} je        _jmp_addr_0x00753dbb                          // 0x00753d7b    743e
                          {disp8} fld       dword ptr [esp + 0x04]                        // 0x00753d7d    d9442404
@@ -249,7 +249,7 @@ _jmp_addr_0x00753df3:    mov               eax, 0x00000001                      
 ?RemoveFromGame@Villager@@UAEIXZ:
                          push              esi                                           // 0x00753e00    56
                          mov.s             esi, ecx                                      // 0x00753e01    8bf1
-                         call              @DeleteDependancys__8VillagerFv@4             // 0x00753e03    e858bfffff
+                         call              ?DeleteDependancys@Villager@@QAEXXZ           // 0x00753e03    e858bfffff
                          mov.s             ecx, esi                                      // 0x00753e08    8bce
                          call              ?RemoveFromGame@Living@@UAEIXZ                // 0x00753e0a    e851a7e9ff
                          pop               esi                                           // 0x00753e0f    5e
@@ -561,7 +561,7 @@ _jmp_addr_0x007540bd:    xor.s             eax, eax                             
                          push              0x00000c35                                    // 0x007540e2    68350c0000
                          push              0x00c235dc                                    // 0x007540e7    68dc35c200
                          push              0xa                                           // 0x007540ec    6a0a
-                         call              _GameRand__5GRandFl                           // 0x007540ee    e81da4f8ff
+                         call              ?GameRand@GRand@@SAHJ@Z                       // 0x007540ee    e81da4f8ff
                          add               esp, 0x0c                                     // 0x007540f3    83c40c
                          {disp8} mov       word ptr [esi + 0x58], ax                     // 0x007540f6    66894658
 _jmp_addr_0x007540fa:    dec               word ptr [esi + 0x58]                         // 0x007540fa    66ff4e58
@@ -574,7 +574,7 @@ _jmp_addr_0x007540fa:    dec               word ptr [esi + 0x58]                
                          test              eax, eax                                      // 0x00754110    85c0
                          {disp8} je        _jmp_addr_0x0075412c                          // 0x00754112    7418
                          mov.s             ecx, esi                                      // 0x00754114    8bce
-                         call              @DiscipleDecideWhatToDo__8VillagerFv@4        // 0x00754116    e805d6ffff
+                         call              ?DiscipleDecideWhatToDo@Villager@@QAE_NXZ     // 0x00754116    e805d6ffff
                          test              eax, eax                                      // 0x0075411b    85c0
                          {disp8} jne       _jmp_addr_0x00754132                          // 0x0075411d    7513
                          {disp8} mov       word ptr [esi + 0x58], 0x012c                 // 0x0075411f    66c746582c01
@@ -636,19 +636,19 @@ _jmp_addr_0x00754174:    mov               eax, 0x00000001                      
                          {disp8} lea       edi, dword ptr [esi + 0x14]                   // 0x007541a6    8d7e14
                          push              ebx                                           // 0x007541a9    53
                          push              edi                                           // 0x007541aa    57
-                         call              _Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords                          // 0x007541ab    e8c090ffff
+                         call              ?Get3DAngleFromXZ@GUtils@@SAMABUMapCoords@@0@Z                               // 0x007541ab    e8c090ffff
                          {disp8} fstp      dword ptr [esp + 0x14]                        // 0x007541b0    d95c2414
                          push              0x00000c5b                                    // 0x007541b4    685b0c0000
                          push              0x00c235dc                                    // 0x007541b9    68dc35c200
                          push              0x3fc90fdb                                    // 0x007541be    68db0fc93f
-                         call              _GameFloatRand__5GRandFf                      // 0x007541c3    e868a3f8ff
+                         call              ?GameFloatRand@GRand@@SAMM@Z                  // 0x007541c3    e868a3f8ff
                          {disp32} fsub     dword ptr [rdata_bytes + 0x1dc9c]             // 0x007541c8    d8259c6c8c00
                          push              0x00000c5c                                    // 0x007541ce    685c0c0000
                          push              0x00c235dc                                    // 0x007541d3    68dc35c200
                          {disp8} fadd      dword ptr [esp + 0x28]                        // 0x007541d8    d8442428
                          push              0x40800000                                    // 0x007541dc    6800008040
                          {disp8} fstp      dword ptr [esp + 0x30]                        // 0x007541e1    d95c2430
-                         call              _GameFloatRand__5GRandFf                      // 0x007541e5    e846a3f8ff
+                         call              ?GameFloatRand@GRand@@SAMM@Z                  // 0x007541e5    e846a3f8ff
                          mov               edx, dword ptr [esi]                          // 0x007541ea    8b16
                          {disp8} fstp      dword ptr [esp + 0x2c]                        // 0x007541ec    d95c242c
                          add               esp, 0x20                                     // 0x007541f0    83c420
@@ -662,7 +662,7 @@ _jmp_addr_0x00754174:    mov               eax, 0x00000001                      
                          push              eax                                           // 0x0075420c    50
                          push              ecx                                           // 0x0075420d    51
                          push              edx                                           // 0x0075420e    52
-                         call              _GetPosFromAngle__6GUtilsFff                  // 0x0075420f    e86c93ffff
+                         call              ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z // 0x0075420f    e86c93ffff
                          add               esp, 0x0c                                     // 0x00754214    83c40c
                          push              eax                                           // 0x00754217    50
                          {disp8} lea       eax, dword ptr [esp + 0x24]                   // 0x00754218    8d442424
@@ -1348,7 +1348,7 @@ _jmp_addr_0x0075496f:    pop               edi                                  
 _jmp_addr_0x007549dc:    push              0x00000cdd                                    // 0x007549dc    68dd0c0000
                          push              0x00c235dc                                    // 0x007549e1    68dc35c200
                          push              0x14                                          // 0x007549e6    6a14
-                         call              _GameRand__5GRandFl                           // 0x007549e8    e8239bf8ff
+                         call              ?GameRand@GRand@@SAHJ@Z                       // 0x007549e8    e8239bf8ff
                          add               esp, 0x0c                                     // 0x007549ed    83c40c
                          inc               eax                                           // 0x007549f0    40
                          pop               edi                                           // 0x007549f1    5f

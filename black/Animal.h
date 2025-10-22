@@ -78,7 +78,7 @@ extern const struct LivingVftable __vt__6Animal asm("??_7Animal@@6B@");
 // Non-virtual methods
 
 // win1.41 0041abb0 mac 10087bd0 Animal::KeepFlockMemberWithinFlockArea(void)
-uint32_t __fastcall KeepFlockMemberWithinFlockArea__6AnimalFv(struct Animal* this);
+uint32_t __fastcall KeepFlockMemberWithinFlockArea__6AnimalFv(struct Animal* this) asm("?KeepFlockMemberWithinFlockArea@Animal@@QAEIXZ");
 
 // Override methods
 

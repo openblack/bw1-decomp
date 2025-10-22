@@ -88,12 +88,12 @@ extern const struct LandscapeVortexVftable __vt__15LandscapeVortex asm("??_7Land
 // Constructors
 
 // win1.41 005fe7a0 mac 103b69b0 LandscapeVortex::LandscapeVortex(void)
-struct LandscapeVortex* __fastcall __ct__15LandscapeVortexFv(struct LandscapeVortex* this);
+struct LandscapeVortex* __fastcall __ct__15LandscapeVortexFv(struct LandscapeVortex* this) asm("??0LandscapeVortex@@QAE@XZ");
 
 // Non-virtual methods
 
 // win1.41 005fd570 mac 103b8c60 LandscapeVortex::GetVortexInfo(void)
-struct GVortexInfo* __fastcall GetVortexInfo__15LandscapeVortexFv(struct LandscapeVortex* this);
+struct GVortexInfo* __fastcall GetVortexInfo__15LandscapeVortexFv(struct LandscapeVortex* this) asm("?GetVortexInfo@LandscapeVortex@@QAEPAVGVortexInfo@@XZ");
 
 // Override methods
 

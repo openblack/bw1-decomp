@@ -22,7 +22,7 @@ static_assert(sizeof(struct CreatureDesireSource) == 0x10, "Data type is of wron
 // Constructors
 
 // win1.41 004de150 mac 1025dac0 CreatureDesireSource::CreatureDesireSource(CREATURE_DESIRE_SOURCE, Creature* )
-struct CreatureDesireSource* __fastcall __ct__20CreatureDesireSourceF22CREATURE_DESIRE_SOURCEP8Creature(struct CreatureDesireSource* this, const void* edx, enum CREATURE_DESIRE_SOURCE type, struct Creature* creature);
+struct CreatureDesireSource* __fastcall __ct__20CreatureDesireSourceF22CREATURE_DESIRE_SOURCEP8Creature(struct CreatureDesireSource* this, const void* edx, enum CREATURE_DESIRE_SOURCE type, struct Creature* creature) asm("??0CreatureDesireSource@@QAE@W4CREATURE_DESIRE_SOURCE@@PAVCreature@@@Z");
 
 DECLARE_LH_LINKED_LIST(CreatureDesireSource);
 

@@ -43,7 +43,7 @@ extern const struct ObjectVftable __vt__10HelpSpirit asm("??_7HelpSpirit@@6B@");
 // Constructors
 
 // win1.41 005c4aa0 mac 1034c700 HelpSpirit::HelpSpirit(MapCoords const &, HELP_SPIRIT_TYPE)
-struct HelpSpirit* __fastcall __ct__10HelpSpiritFRC9MapCoords16HELP_SPIRIT_TYPE(struct HelpSpirit* this, const void* edx, const struct MapCoords* coords, enum HELP_SPIRIT_TYPE type);
+struct HelpSpirit* __fastcall __ct__10HelpSpiritFRC9MapCoords16HELP_SPIRIT_TYPE(struct HelpSpirit* this, const void* edx, const struct MapCoords* coords, enum HELP_SPIRIT_TYPE type) asm("??0HelpSpirit@@QAE@ABUMapCoords@@W4HELP_SPIRIT_TYPE@@@Z");
 
 // Override methods
 

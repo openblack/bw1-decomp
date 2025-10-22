@@ -81,7 +81,7 @@ extern const struct BaseVftable __vt__14CreatureAgenda asm("??_7CreatureAgenda@@
 // Constructors
 
 // win1.41 004d34b0 mac 102471c0 CreatureAgenda::CreatureAgenda(Creature *, CreatureInfo const *)
-struct CreatureAgenda* __fastcall __ct__14CreatureAgendaFP8CreaturePC12CreatureInfo(struct CreatureAgenda* this, const void* edx, struct CreatureInfo* info);
+struct CreatureAgenda* __fastcall __ct__14CreatureAgendaFP8CreaturePC12CreatureInfo(struct CreatureAgenda* this, const void* edx, struct CreatureInfo* info) asm("??0CreatureAgenda@@QAE@PAVCreature@@PBVCreatureInfo@@@Z");
 
 // Non-virtual methods
 

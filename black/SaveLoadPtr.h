@@ -16,7 +16,7 @@ static_assert(sizeof(struct GSaveLoadPtr) == 0x4, "Data type is of wrong size");
 // Constructors
 
 // win1.41 00562320 mac inlined GSaveLoadPtr::GSaveLoadPtr(void*)
-struct GSaveLoadPtr* __fastcall __ct__12GSaveLoadPtrFPv(struct GSaveLoadPtr* this, const void* edx, void* ptr);
+struct GSaveLoadPtr* __fastcall __ct__12GSaveLoadPtrFPv(struct GSaveLoadPtr* this, const void* edx, void* ptr) asm("??0GSaveLoadPtr@@QAE@PAX@Z");
 
 DECLARE_LH_LINKED_LIST(GSaveLoadPtr);
 

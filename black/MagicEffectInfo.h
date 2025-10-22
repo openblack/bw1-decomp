@@ -84,7 +84,7 @@ extern const struct GBaseInfoVftable __vt__16GMagicEffectInfo asm("??_7GMagicEff
 // Constructors
 
 // win1.41 00524e00 mac 100ccad0 GMagicEffectInfo::GMagicEffectInfo(void)
-struct GMagicEffectInfo* __fastcall __ct__16GMagicEffectInfoFv(struct GMagicEffectInfo* this);
+struct GMagicEffectInfo* __fastcall __ct__16GMagicEffectInfoFv(struct GMagicEffectInfo* this) asm("??0GMagicEffectInfo@@QAE@XZ");
 
 // Override methods
 

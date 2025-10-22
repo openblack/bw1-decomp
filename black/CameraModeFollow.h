@@ -48,11 +48,11 @@ extern const struct CameraModeVftable __vt__16CameraModeFollow asm("??_7CameraMo
 // Constructors
 
 // win1.41 0044b800 mac 101a00c0 CameraModeFollow::CameraModeFollow(GCamera *, GameThingWithPos *, float, int, int)
-struct CameraModeFollow* __fastcall __ct__16CameraModeFollowFP7GCameraP16GameThingWithPosfii(struct CameraModeFollow* this, const void* edx, struct GCamera* camera, struct GameThingWithPos* target, float param_3, int param_4, int param_5);
+struct CameraModeFollow* __fastcall __ct__16CameraModeFollowFP7GCameraP16GameThingWithPosfii(struct CameraModeFollow* this, const void* edx, struct GCamera* camera, struct GameThingWithPos* target, float param_3, int param_4, int param_5) asm("??0CameraModeFollow@@QAE@PAVGCamera@@PAVGameThingWithPos@@MHH@Z");
 
 // Non-virtual methods
 
 // win1.41 0044ba00 mac 1019ff80 CameraModeFollow::Set(GameThingWithPos *)
-void __fastcall Set__16CameraModeFollowFP16GameThingWithPos(struct CameraModeFollow* this, const void* edx, struct GameThingWithPos* target);
+void __fastcall Set__16CameraModeFollowFP16GameThingWithPos(struct CameraModeFollow* this, const void* edx, struct GameThingWithPos* target) asm("?Set@CameraModeFollow@@QAEXPAVGameThingWithPos@@@Z");
 
 #endif /* BW1_DECOMP_CAMERA_MODE_FOLLOW_INCLUDED_H */

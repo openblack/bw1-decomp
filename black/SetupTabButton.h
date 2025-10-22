@@ -44,15 +44,15 @@ extern const struct SetupControlVftable __vt__14SetupTabButton asm("??_7SetupTab
 // Constructors
 
 // win1.41 0040f5e0 mac 101995b0 SetupTabButton::SetupTabButton(int, int, int, int, int, wchar_t *, int, int, int)
-struct SetupTabButton* __fastcall __ct__14SetupTabButtonFiiiiiPwiii(struct SetupTabButton* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label, bool selected, bool first_in_row, bool last_in_row);
+struct SetupTabButton* __fastcall __ct__14SetupTabButtonFiiiiiPwiii(struct SetupTabButton* this, const void* edx, int id, int x, int y, int width, int height, const char16_t* label, bool selected, bool first_in_row, bool last_in_row) asm("??0SetupTabButton@@QAE@HHHHHPA_WHHH@Z");
 
 // Override methods
 
 // win1.41 0040f3a0 mac 104081c0 SetupTabButton::Draw(bool, bool)
-void __fastcall Draw__14SetupTabButtonFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected);
+void __fastcall Draw__14SetupTabButtonFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected) asm("?Draw@SetupTabButton@@UAEX_N0@Z");
 // win1.41 0040f670 mac 1037abd0 SetupTabButton::KeyDown(int, int)
-void __fastcall KeyDown__14SetupTabButtonFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod);
+void __fastcall KeyDown__14SetupTabButtonFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod) asm("?KeyDown@SetupTabButton@@UAEXHH@Z");
 // win1.41 0040f690 mac 10369440 SetupTabButton::~SetupTabButton(void)
-void __fastcall __dt__14SetupTabButtonFb(struct SetupControl* this, const void* edx, bool param_1);
+void __fastcall __dt__14SetupTabButtonFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupTabButton@@QAEXXZ");
 
 #endif /* BW1_DECOMP_SETUP_TAB_BUTTON_INCLUDED_H */
