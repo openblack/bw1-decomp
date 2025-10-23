@@ -2980,3 +2980,49 @@ bool __fastcall DiscipleDecideWhatToDo__8VillagerFv(struct Villager* this)
     // Snippet: db, [0x0075196c, 0x00751970)
     __builtin_unreachable();
 }
+
+__attribute__((XOR32rr_REV))
+bool __fastcall GetPrayerSite__8VillagerFv(struct Villager* this)
+{
+    return 0;
+}
+
+__attribute__((XOR32rr_REV))
+bool __fastcall RestartDance__8VillagerF15VILLAGER_STATES(struct Villager* this, const void* edx, enum VILLAGER_STATES param_1)
+{
+    asm("sub                esp, 0x0c");                                     // 0x00751980    83ec0c
+    asm("xor.s              eax, eax");                                      // 0x00751983    33c0
+    asm("push               esi");                                           // 0x00751985    56
+    asm("mov.s              esi, ecx");                                      // 0x00751986    8bf1
+    asm("{disp8} mov        dword ptr [esp + 0x04], eax");                   // 0x00751988    89442404
+    asm("{disp8} mov        dword ptr [esp + 0x08], eax");                   // 0x0075198c    89442408
+    asm("{disp8} mov        dword ptr [esp + 0x0c], eax");                   // 0x00751990    8944240c
+    asm("mov                eax, dword ptr [esi]");                          // 0x00751994    8b06
+    asm("call               dword ptr [eax + 0x978]");                       // 0x00751996    ff9078090000
+    asm("test               eax, eax");                                      // 0x0075199c    85c0
+    asm("{disp8} je         _jmp_addr_0x007519d6");                          // 0x0075199e    7436
+    asm("{disp32} mov       edx, dword ptr [esi + 0x000000d8]");             // 0x007519a0    8b96d8000000
+    asm("{disp8} mov        eax, dword ptr [edx + 0x14]");                   // 0x007519a6    8b4214
+    asm("{disp8} lea        ecx, dword ptr [esp + 0x04]");                   // 0x007519a9    8d4c2404
+    asm("push               ecx");                                           // 0x007519ad    51
+    asm("add                eax, 0x14");                                     // 0x007519ae    83c014
+    asm("push               eax");                                           // 0x007519b1    50
+    asm("mov.s              ecx, esi");                                      // 0x007519b2    8bce
+    asm("call               ?CalculateDancePosition@Living@@QAE_NABUMapCoords@@PAU2@@Z");                          // 0x007519b4    e807e0e9ff
+    asm("{disp8} mov        ecx, dword ptr [esp + 0x14]");                   // 0x007519b9    8b4c2414
+    asm("push               ecx");                                           // 0x007519bd    51
+    asm("{disp8} lea        edx, dword ptr [esp + 0x08]");                   // 0x007519be    8d542408
+    asm("push               edx");                                           // 0x007519c2    52
+    asm("mov.s              ecx, esi");                                      // 0x007519c3    8bce
+    asm("call               ?SetupMoveToPos@Villager@@QAE_NABUMapCoords@@W4VILLAGER_STATES@@@Z");                          // 0x007519c5    e8361e0100
+    asm("mov                eax, 0x00000001");                               // 0x007519ca    b801000000
+    asm("pop                esi");                                           // 0x007519cf    5e
+    asm("add                esp, 0x0c");                                     // 0x007519d0    83c40c
+    asm("ret                0x0004");                                        // 0x007519d3    c20400
+    asm("_jmp_addr_0x007519d6:");
+    asm("xor.s              eax, eax");                                      // 0x007519d6    33c0
+    asm("pop                esi");                                           // 0x007519d8    5e
+    asm("add                esp, 0x0c");                                     // 0x007519d9    83c40c
+    asm("ret                0x0004");                                        // 0x007519dc    c20400
+    __builtin_unreachable();
+}
