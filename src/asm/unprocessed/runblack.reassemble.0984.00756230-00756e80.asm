@@ -42,23 +42,21 @@
 .extern ?SetScaleForAge@Villager@@QAEXK@Z
 .extern ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z
 .extern _jmp_addr_0x00757180
-.extern @MakeChildOrphaned__8VillagerFP8Villager@12
+.extern ?MakeChildOrphaned@Villager@@QAEIPAV1@@Z
 .extern _atexit
 .extern ___RTDynamicCast
 
 .globl ?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z
-.globl @SetSkeleton__8VillagerFi@9
 .globl ?SetTown@Villager@@QAEXPAVTown@@@Z
 .globl ??0MissionaryControl@@QAE@XZ
 .globl _jmp_addr_0x00756760
 .globl _jmp_addr_0x007567e0
 .globl ?FindChildrenAndOrphanThem@Villager@@QAEXXZ
-
 .globl _globl_ct_0x00756c80
 .globl _globl_ct_0x00756cb0
 .globl _globl_ct_0x00756cd0
 .globl _globl_ct_0x00756d00
-.globl _SetSkeleton__8VillagerFi
+.globl ?SetSkeleton@Villager@@QAEXH@Z
 .globl ?InsertMapObject@Villager@@UAEXXZ
 .globl ?IsReachable@Villager@@UAE_NXZ
 .globl ?ValidForPlaceInHand@Villager@@UAEIPAVGInterfaceStatus@@@Z
@@ -159,8 +157,9 @@ _jmp_addr_0x007562aa:    push               esi                                 
                          nop                                                              // 0x007562bd    90
                          nop                                                              // 0x007562be    90
                          nop                                                              // 0x007562bf    90
-_SetSkeleton__8VillagerFi:
-@SetSkeleton__8VillagerFi@9:    {disp32} mov       al, byte ptr [data_bytes + 0x3e0bc4]          // 0x007562c0    a0c46bda00
+
+?SetSkeleton@Villager@@QAEXH@Z:
+                         {disp32} mov       al, byte ptr [data_bytes + 0x3e0bc4]          // 0x007562c0    a0c46bda00
                          test               al, 0x01                                      // 0x007562c5    a801
                          push               ebx                                           // 0x007562c7    53
                          push               ebp                                           // 0x007562c8    55
@@ -1232,7 +1231,7 @@ _jmp_addr_0x00756c05:    cmp                dword ptr [esi + 0x00000100], edi   
                          {disp8} jne        _jmp_addr_0x00756c15                          // 0x00756c0b    7508
                          push               edi                                           // 0x00756c0d    57
                          mov.s              ecx, esi                                      // 0x00756c0e    8bce
-                         call               @MakeChildOrphaned__8VillagerFP8Villager@12   // 0x00756c10    e8bb140000
+                         call               ?MakeChildOrphaned@Villager@@QAEIPAV1@@Z      // 0x00756c10    e8bb140000
 _jmp_addr_0x00756c15:    {disp32} mov       esi, dword ptr [esi + 0x000000e4]             // 0x00756c15    8bb6e4000000
                          test               esi, esi                                      // 0x00756c1b    85f6
                          {disp8} jne        _jmp_addr_0x00756c05                          // 0x00756c1d    75e6
@@ -1247,7 +1246,7 @@ _jmp_addr_0x00756c34:    cmp                dword ptr [esi + 0x00000100], edi   
                          {disp8} jne        _jmp_addr_0x00756c44                          // 0x00756c3a    7508
                          push               edi                                           // 0x00756c3c    57
                          mov.s              ecx, esi                                      // 0x00756c3d    8bce
-                         call               @MakeChildOrphaned__8VillagerFP8Villager@12   // 0x00756c3f    e88c140000
+                         call               ?MakeChildOrphaned@Villager@@QAEIPAV1@@Z      // 0x00756c3f    e88c140000
 _jmp_addr_0x00756c44:    {disp32} mov       esi, dword ptr [esi + 0x000000e4]             // 0x00756c44    8bb6e4000000
                          test               esi, esi                                      // 0x00756c4a    85f6
                          {disp8} jne        _jmp_addr_0x00756c34                          // 0x00756c4c    75e6

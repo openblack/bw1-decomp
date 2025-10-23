@@ -48,7 +48,7 @@
 .extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z
 .extern ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@KH@Z
-.extern @SetSpeed__8VillagerFli@16
+.extern ?SetSpeed@Villager@@QAEXJH@Z
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
 .extern ??0_Lockit@std@@QAE@XZ
@@ -880,7 +880,7 @@ _jmp_addr_0x00609b06:    {disp8} mov       edx, dword ptr [esp + 0x10]          
                          mov.s             ecx, esi                                      // 0x00609b7a    8bce
                          shl               eax, 2                                        // 0x00609b7c    c1e002
                          push              eax                                           // 0x00609b7f    50
-                         call              @SetSpeed__8VillagerFli@16                    // 0x00609b80    e84b731400
+                         call              ?SetSpeed@Villager@@QAEXJH@Z                  // 0x00609b80    e84b731400
                          mov.s             ecx, esi                                      // 0x00609b85    8bce
                          mov               ebp, 0x000005dc                               // 0x00609b87    bddc050000
                          call              ?MoveTo@MobileWallHug@@QAEHXZ                 // 0x00609b8c    e88f130000
@@ -1138,7 +1138,7 @@ _jmp_addr_0x00609df6:    push              0x0                                  
                          shl               ecx, 2                                        // 0x00609e53    c1e102
                          push              ecx                                           // 0x00609e56    51
                          mov.s             ecx, esi                                      // 0x00609e57    8bce
-                         call              @SetSpeed__8VillagerFli@16                    // 0x00609e59    e872701400
+                         call              ?SetSpeed@Villager@@QAEXJH@Z                  // 0x00609e59    e872701400
                          {disp8} mov       al, byte ptr [esp + 0x58]                     // 0x00609e5e    8a442458
                          test              al, al                                        // 0x00609e62    84c0
                          {disp32} je       _jmp_addr_0x00609f9c                          // 0x00609e64    0f8432010000

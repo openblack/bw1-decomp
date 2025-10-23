@@ -223,11 +223,10 @@
 .extern ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z
 .extern ?Spiral@GUtils@@SAPBUJustMapXZ@@AAJ0@Z
 .extern _jmp_addr_0x0074dc80
-.extern @__ct__8VillagerFRC9MapCoordsPC13GVillagerInfoUli@21
-.extern _jmp_addr_0x0074fbc0
+.extern ??0Villager@@QAE@ABUMapCoords@@PBVGVillagerInfo@@KH@Z
 .extern ?VillagerDead@Villager@@QAEXW4DEATH_REASON@@PAVGPlayer@@MH@Z
-.extern @ToBeDeleted__8VillagerFi@12
-.extern @SetAge__8VillagerFUl@12
+.extern ?ToBeDeleted@Villager@@UAEXH@Z
+.extern ?SetAge@Villager@@UAEXK@Z
 .extern ?Save@Villager@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@Villager@@UAEIAAVGameOSFile@@@Z
 .extern ?Add@VillagerName@@SAPAV1@MULHPoint@@PA_WAAULH3DColor@@@Z
