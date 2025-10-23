@@ -88,7 +88,7 @@
 .extern _jmp_addr_0x00748c50
 .extern _jmp_addr_0x00749ed0
 .extern ?SetToZero@Villager@@QAEXXZ
-.extern _jmp_addr_0x0074fbc0
+.extern ??1Villager@@UAE@XZ
 .extern _jmp_addr_0x007713d0
 .extern _jmp_addr_0x00773d10
 .extern _jmp_addr_0x00773ec0
@@ -205,7 +205,7 @@
 .globl _jmp_addr_0x00561bf0
 .globl ?ResolveAllLoads@GameOSFile@@QAEXXZ
 .globl ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
-.globl _GetVillagerName__8VillagerFv
+.globl ?GetVillagerName@Villager@@UAEPBDXZ
 .globl _IsClear__8BaseInfoCFv
 .globl _GetForest__4TreeFv
 .globl ??1PlannedMultiMapFixed@@UAE@XZ
@@ -1156,7 +1156,8 @@ _jmp_addr_0x0055c81a:    mov.s              eax, esi                            
                          nop                                                               // 0x0055ca3d    90
                          nop                                                               // 0x0055ca3e    90
                          nop                                                               // 0x0055ca3f    90
-_GetVillagerName__8VillagerFv:
+
+?GetVillagerName@Villager@@UAEPBDXZ:
                          xor.s              eax, eax                                       // 0x0055ca40    33c0
                          ret                                                               // 0x0055ca42    c3
                          nop                                                               // 0x0055ca43    90
@@ -1324,7 +1325,7 @@ _jmp_addr_0x0055ca5c:    xor.s              eax, eax                            
 ??_GVillager@@UAEPAXI@Z:
                          push               esi                                            // 0x0055cb40    56
                          mov.s              esi, ecx                                       // 0x0055cb41    8bf1
-                         call               _jmp_addr_0x0074fbc0                           // 0x0055cb43    e878301f00
+                         call               ??1Villager@@UAE@XZ                            // 0x0055cb43    e878301f00
                          test               byte ptr [esp + 0x08], 0x01                    // 0x0055cb48    f644240801
                          {disp8} je         _jmp_addr_0x0055cb5d                           // 0x0055cb4d    740e
                          push               0x00000130                                     // 0x0055cb4f    6830010000
