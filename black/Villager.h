@@ -153,6 +153,8 @@ uint32_t __fastcall CallValidate__8VillagerFUc(struct Villager* this, const void
 uint32_t __fastcall FootballWatchMatchAnimation__8VillagerFv(struct Villager* this) asm("?FootballWatchMatchAnimation@Villager@@QAEIXZ");
 // win1.41 0074fb20 mac 10571a20 Villager::SetToZero(void)
 void __fastcall SetToZero__8VillagerFv(struct Villager* this) asm("?SetToZero@Villager@@QAEXXZ");
+// win1.41 0074fb80 mac 10571950 Villager::InitialiseScale(unsigned long)
+void __fastcall InitialiseScale__8VillagerFUl(struct Villager* this, const void* edx, unsigned long param_1) asm("?InitialiseScale@Villager@@QAEXK@Z");
 // win1.41 0074fd60 mac 10571210 Villager::DeleteDependancys(void)
 void __fastcall DeleteDependancys__8VillagerFv(struct Villager* this) asm("?DeleteDependancys@Villager@@QAEXXZ");
 // win1.41 0074fec0 mac 105710c0 Villager::UnemployedJobs(void)
@@ -225,12 +227,16 @@ bool __fastcall GetResourceHeld__8VillagerFR13RESOURCE_TYPE(struct Villager* thi
 bool __fastcall CheckTakeResourcesToStoragePit__8VillagerFv(struct Villager* this) asm("?CheckTakeResourcesToStoragePit@Villager@@QAE_NXZ");
 // win1.41 00751720 mac 1056e1f0 Villager::DiscipleDecideWhatToDo(void)
 bool __fastcall DiscipleDecideWhatToDo__8VillagerFv(struct Villager* this) asm("?DiscipleDecideWhatToDo@Villager@@QAE_NXZ");
+// win1.41 00751970 mac 1056e1b0 Villager::GetPrayerSite(void)
+bool __fastcall GetPrayerSite__8VillagerFv(struct Villager* this) asm("?GetPrayerSite@Villager@@QAE_NXZ");
 // win1.41 00751980 mac 1056e0e0 Villager::RestartDance(VILLAGER_STATES)
 bool __fastcall RestartDance__8VillagerF15VILLAGER_STATES(struct Villager* this, const void* edx, enum VILLAGER_STATES param_1) asm("?RestartDance@Villager@@QAE_NW4VILLAGER_STATES@@@Z");
 // win1.41 00751ab0 mac 1056dea0 Villager::GetVillagerText(char *)
 char* __fastcall GetVillagerText__8VillagerFPc(struct Villager* this, const void* edx, char* param_1) asm("?GetVillagerText@Villager@@QAEPADPAD@Z");
 // win1.41 00751d20 mac 1056d6a0 Villager::GetJobInfo(unsigned char) const
 struct GJobInfo* __fastcall GetJobInfo__8VillagerCFUc(const struct Villager* this, const void* edx, unsigned char param_1) asm("?GetJobInfo@Villager@@QBEPAVGJobInfo@@E@Z");
+// win1.41 00751d40 mac inlined Villager::FUN00751d40(void)
+bool __fastcall FUN00751d40__8VillagerFv(struct Villager* this) asm("?FUN00751d40@Villager@@QAE_NXZ");
 // win1.41 00751e50 mac 1056d290 Villager::PopFromPrevious(void)
 void __fastcall PopFromPrevious__8VillagerFv(struct Villager* this) asm("?PopFromPrevious@Villager@@QAEXXZ");
 // win1.41 00751ea0 mac 1056d250 Villager::GetFootball(void)

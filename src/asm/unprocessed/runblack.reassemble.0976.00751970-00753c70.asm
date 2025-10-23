@@ -55,7 +55,7 @@
 .extern ?ConvertAngle3DToGame@GUtils@@SAIM@Z
 .extern _jmp_addr_0x0074dce0
 .extern ?GetMidPoint@GUtils@@SAXAAUMapCoords@@0M@Z
-.extern _jmp_addr_0x0074fb80
+.extern ?InitialiseScale@Villager@@QAEXK@Z
 .extern ?DeleteDependancys@Villager@@QAEXXZ
 .extern ?GetGameTurnsSinceLastChecked@Villager@@QAEIXZ
 .extern ?VillagerDead@Villager@@QAEXW4DEATH_REASON@@PAVGPlayer@@MH@Z
@@ -150,9 +150,12 @@
 .globl ?SetStateSpeed@Villager@@UAEXXZ
 .globl ?ExitDance@Villager@@QAE_NE@Z
 .globl ?RestartDance@Villager@@QAE_NW4VILLAGER_STATES@@@Z
+.globl ?GetPrayerSite@Villager@@QAE_NXZ
+.globl ?FUN00751d40@Villager@@QAE_NXZ
 
 start_0x00751970_0x00753c70:
 // Snippet: asm, [0x00751970, 0x00753c57)
+?GetPrayerSite@Villager@@QAE_NXZ:
                          xor.s              eax, eax                                      // 0x00751970    33c0
                          ret                                                              // 0x00751972    c3
                          nop                                                              // 0x00751973    90
@@ -530,6 +533,7 @@ _jmp_addr_0x00751d12:    xor.s              eax, eax                            
                          nop                                                              // 0x00751d3d    90
                          nop                                                              // 0x00751d3e    90
                          nop                                                              // 0x00751d3f    90
+?FUN00751d40@Villager@@QAE_NXZ:
                          xor.s              eax, eax                                      // 0x00751d40    33c0
                          ret                                                              // 0x00751d42    c3
                          nop                                                              // 0x00751d43    90
@@ -1959,7 +1963,7 @@ _jmp_addr_0x00752a57:    {disp8} mov        edx, dword ptr [edx + eax * 0x4 + 0x
                          call               dword ptr [ebp + 0xf4]                        // 0x00752a5c    ff95f4000000
 _jmp_addr_0x00752a62:    push               ebx                                           // 0x00752a62    53
                          mov.s              ecx, esi                                      // 0x00752a63    8bce
-                         call               _jmp_addr_0x0074fb80                          // 0x00752a65    e816d1ffff
+                         call               ?InitialiseScale@Villager@@QAEXK@Z            // 0x00752a65    e816d1ffff
                          push               ebx                                           // 0x00752a6a    53
                          mov.s              ecx, esi                                      // 0x00752a6b    8bce
                          call               ?SetScaleForAge@Villager@@QAEXK@Z             // 0x00752a6d    e81e000000
