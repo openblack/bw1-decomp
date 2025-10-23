@@ -39,7 +39,7 @@
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
 
-.globl @GetChillOutPos__8VillagerFR9MapCoords@12
+.globl ?GetChillOutPos@Villager@@QAEIAAUMapCoords@@@Z
 .globl ?GetResourceDropoffPos@Villager@@QAEPAVGameThingWithPos@@W4RESOURCE_TYPE@@@Z
 .globl ?SetDiscipleNothingToDo@Villager@@QAE_NXZ
 .globl ?Save@Villager@@UAEIAAVGameOSFile@@@Z
@@ -103,9 +103,8 @@
 .globl ?LoadInspectionReaction@Villager@@QAE_NAAVGameOSFile@@@Z
 .globl ?SaveMagicTreeReaction@Villager@@QAE_NAAVGameOSFile@@@Z
 
-start_0x00753c70_0x00756230:
-// Snippet: asm, [0x00753c70, 0x00756200)
-@GetChillOutPos__8VillagerFR9MapCoords@12:    sub               esp, 0x2c                                     // 0x00753c70    83ec2c
+?GetChillOutPos@Villager@@QAEIAAUMapCoords@@@Z:
+                         sub               esp, 0x2c                                     // 0x00753c70    83ec2c
                          push              esi                                           // 0x00753c73    56
                          push              edi                                           // 0x00753c74    57
                          mov.s             edi, ecx                                      // 0x00753c75    8bf9
