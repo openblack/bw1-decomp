@@ -373,7 +373,7 @@
 .globl _hypotenuse__Fll
 .globl @__ct__8VillagerFRC9MapCoordsPC13GVillagerInfoUli@21
 .globl ?SetToZero@Villager@@QAEXXZ
-.globl _jmp_addr_0x0074fb80
+.globl ?InitialiseScale@Villager@@QAEXK@Z
 .globl _jmp_addr_0x0074fbc0
 .globl ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@KH@Z
 .globl ?DeleteDependancys@Villager@@QAEXXZ
@@ -13698,7 +13698,8 @@ _jmp_addr_0x0074faf2:    push               ebx                                 
                          nop                                                               // 0x0074fb7d    90
                          nop                                                               // 0x0074fb7e    90
                          nop                                                               // 0x0074fb7f    90
-_jmp_addr_0x0074fb80:    {disp8} mov        eax, dword ptr [ecx + 0x28]                    // 0x0074fb80    8b4128
+?InitialiseScale@Villager@@QAEXK@Z:
+                         {disp8} mov        eax, dword ptr [ecx + 0x28]                    // 0x0074fb80    8b4128
                          {disp8} mov        edx, dword ptr [esp + 0x04]                    // 0x0074fb83    8b542404
                          push               esi                                            // 0x0074fb87    56
                          cmp                edx, dword ptr [eax + 0x00000138]              // 0x0074fb88    3b9038010000
