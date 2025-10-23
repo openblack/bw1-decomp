@@ -367,7 +367,8 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0962.00735c30-00736490.asm
     asm/unprocessed/runblack.reassemble.0965.00736490-0073a650.asm
     asm/unprocessed/runblack.reassemble.0970.0073a650-00747310.asm
-    asm/unprocessed/runblack.reassemble.0972.00747310-00751970.asm
+    asm/unprocessed/runblack.reassemble.0972.00747310-0074f950.asm
+    asm/unprocessed/runblack.reassemble.0973.0074f950-00751970.asm
     asm/unprocessed/runblack.reassemble.0976.00751970-00753c70.asm
     asm/unprocessed/runblack.reassemble.0981.00753c70-00756230.asm
     asm/unprocessed/runblack.reassemble.0984.00756230-00756e80.asm
