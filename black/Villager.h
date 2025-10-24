@@ -437,6 +437,8 @@ uint32_t __fastcall SaveShieldReaction__8VillagerFR10GameOSFile(struct Villager*
 uint32_t __fastcall LoadShieldReaction__8VillagerFR10GameOSFile(struct Villager* this, const void* edx, struct GameOSFile* param_1) asm("?LoadShieldReaction@Villager@@QAEIAAVGameOSFile@@@Z");
 // win1.41 00756000 mac 1000a990 Villager::SetVillagerDisciple(GameThing *, VILLAGER_DISCIPLE, int)
 uint32_t __fastcall SetVillagerDisciple__8VillagerFP9GameThing17VILLAGER_DISCIPLEi(struct Villager* this, const void* edx, struct GameThing* param_1, enum VILLAGER_DISCIPLE param_2, int param_3) asm("?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z");
+// win1.41 00756170 mac 10565770 Villager::ShowDiscipleIcon(VILLAGER_DISCIPLE)
+uint32_t __fastcall ShowDiscipleIcon__8VillagerF17VILLAGER_DISCIPLE(struct Villager* this, const void* edx, enum VILLAGER_DISCIPLE param_1) asm("?ShowDiscipleIcon@Villager@@QAEXW4VILLAGER_DISCIPLE@@@Z");
 // win1.41 00756240 mac 105655e0 Villager::ForceMoveVillagerToAbode(Abode*)
 void __fastcall ForceMoveVillagerToAbode__8VillagerFP5Abode(struct Villager* this, const void* edx, struct Abode* abode) asm("?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z");
 // win1.41 007562c0 mac 105652e0 Villager::SetSkeleton(int)

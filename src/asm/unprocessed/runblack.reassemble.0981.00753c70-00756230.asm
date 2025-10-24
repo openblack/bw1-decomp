@@ -45,7 +45,7 @@
 .globl ?Save@Villager@@UAEIAAVGameOSFile@@@Z
 .globl ?Load@Villager@@UAEIAAVGameOSFile@@@Z
 .globl ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z
-.globl _jmp_addr_0x00756170
+.globl ?ShowDiscipleIcon@Villager@@QAEXW4VILLAGER_DISCIPLE@@@Z
 .globl ?RemoveFromGame@Villager@@UAEIXZ
 .globl ?IsFinalState@Villager@@UAE_NW4VILLAGER_STATES@@@Z
 .globl ?GetQueryFirstEnumText@Villager@@UAE?AW4HELP_TEXT@@XZ
@@ -226,6 +226,8 @@ _jmp_addr_0x00753dbb:    xor.s             eax, eax                             
                          nop                                                             // 0x00753dcd    90
                          nop                                                             // 0x00753dce    90
                          nop                                                             // 0x00753dcf    90
+
+?VillagerCreated@Villager@@QAEIXZ:
                          xor.s             eax, eax                                      // 0x00753dd0    33c0
                          {disp8} mov       ax, word ptr [ecx + 0x58]                     // 0x00753dd2    668b4158
                          test              ax, ax                                        // 0x00753dd6    6685c0
@@ -3633,7 +3635,9 @@ _jmp_addr_0x00756168:    pop               edi                                  
                          xor.s             eax, eax                                      // 0x0075616a    33c0
                          pop               ebx                                           // 0x0075616c    5b
                          ret               0x0008                                        // 0x0075616d    c20800
-_jmp_addr_0x00756170:    {disp8} mov       eax, dword ptr [ecx + 0x40]                   // 0x00756170    8b4140
+
+?ShowDiscipleIcon@Villager@@QAEXW4VILLAGER_DISCIPLE@@@Z:
+                         {disp8} mov       eax, dword ptr [ecx + 0x40]                   // 0x00756170    8b4140
                          {disp8} mov       ecx, dword ptr [esp + 0x04]                   // 0x00756173    8b4c2404
                          {disp32} mov      dword ptr [data_bytes + 0x4f39e4], eax        // 0x00756177    a3e499eb00
                          {disp8} lea       eax, dword ptr [ecx + -0x01]                  // 0x0075617c    8d41ff

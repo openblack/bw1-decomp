@@ -246,7 +246,7 @@
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
 .extern ?Spiral@GUtils@@SAPBUJustMapXZ@@AAJ0@Z
 .extern ?IsWoman@Villager@@QAE_NXZ
-.extern _jmp_addr_0x00756170
+.extern ?ShowDiscipleIcon@Villager@@QAEXW4VILLAGER_DISCIPLE@@@Z
 .extern @__ct__17GVirtualInfluenceFP16GInterfaceStatus@12
 .extern _jmp_addr_0x0076cd40
 .extern _jmp_addr_0x0076d330
@@ -5296,7 +5296,7 @@ _jmp_addr_0x005cea47:    xor.s              edx, edx                            
                          {disp32} mov       dl, byte ptr [edi + 0x000000f2]                // 0x005cea49    8a97f2000000
                          mov.s              ecx, edi                                       // 0x005cea4f    8bcf
                          push               edx                                            // 0x005cea51    52
-                         call               _jmp_addr_0x00756170                           // 0x005cea52    e819771800
+                         call               ?ShowDiscipleIcon@Villager@@QAEXW4VILLAGER_DISCIPLE@@@Z                           // 0x005cea52    e819771800
 _jmp_addr_0x005cea57:    cmp                byte ptr [esi + 0x38], bl                      // 0x005cea57    385e38
                          {disp8} jne        _jmp_addr_0x005cea9d                           // 0x005cea5a    7541
                          {disp32} mov       dword ptr [esi + 0x000003f0], ebx              // 0x005cea5c    899ef0030000
