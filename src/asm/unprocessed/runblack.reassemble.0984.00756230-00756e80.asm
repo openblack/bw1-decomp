@@ -49,7 +49,7 @@
 .globl ?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z
 .globl @SetSkeleton__8VillagerFi@9
 .globl ?SetTown@Villager@@QAEXPAVTown@@@Z
-.globl _jmp_addr_0x007566c0
+.globl ??0MissionaryControl@@QAE@XZ
 .globl _jmp_addr_0x00756760
 .globl _jmp_addr_0x007567e0
 .globl ?FindChildrenAndOrphanThem@Villager@@QAEXXZ
@@ -598,7 +598,8 @@ _jmp_addr_0x007566ac:    pop                edi                                 
                          nop                                                              // 0x007566bd    90
                          nop                                                              // 0x007566be    90
                          nop                                                              // 0x007566bf    90
-_jmp_addr_0x007566c0:    push               esi                                           // 0x007566c0    56
+??0MissionaryControl@@QAE@XZ:
+                         push               esi                                           // 0x007566c0    56
                          push               edi                                           // 0x007566c1    57
                          mov.s              esi, ecx                                      // 0x007566c2    8bf1
                          call               ??0GameThing@@QAE@XZ                          // 0x007566c4    e84793e1ff
