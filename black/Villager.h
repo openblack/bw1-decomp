@@ -439,12 +439,22 @@ uint32_t __fastcall LoadShieldReaction__8VillagerFR10GameOSFile(struct Villager*
 uint32_t __fastcall SetVillagerDisciple__8VillagerFP9GameThing17VILLAGER_DISCIPLEi(struct Villager* this, const void* edx, struct GameThing* param_1, enum VILLAGER_DISCIPLE param_2, int param_3) asm("?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z");
 // win1.41 00756170 mac 10565770 Villager::ShowDiscipleIcon(VILLAGER_DISCIPLE)
 uint32_t __fastcall ShowDiscipleIcon__8VillagerF17VILLAGER_DISCIPLE(struct Villager* this, const void* edx, enum VILLAGER_DISCIPLE param_1) asm("?ShowDiscipleIcon@Villager@@QAEXW4VILLAGER_DISCIPLE@@@Z");
+// win1.41 00756230 mac 10565730 Villager::DebugValidateState(void)
+void __fastcall DebugValidateState__8VillagerFv(struct Villager* this) asm("?DebugValidateState@Villager@@QAEXXZ");
 // win1.41 00756240 mac 105655e0 Villager::ForceMoveVillagerToAbode(Abode*)
 void __fastcall ForceMoveVillagerToAbode__8VillagerFP5Abode(struct Villager* this, const void* edx, struct Abode* abode) asm("?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z");
 // win1.41 007562c0 mac 105652e0 Villager::SetSkeleton(int)
 void __fastcall SetSkeleton__8VillagerFi(struct Villager* this, const void* edx, bool32_t param_1) asm("?SetSkeleton@Villager@@QAEXH@Z");
 // win1.41 00756530 mac 10564fd0 Villager::SetTown(Town*)
 void __fastcall SetTown__8VillagerFP4Town(struct Villager* this, const void* edx, struct Town* town) asm("?SetTown@Villager@@QAEXPAVTown@@@Z");
+// win1.41 00756540 mac 10564f50 Villager::ScriptInCrowd(void)
+bool32_t __fastcall ScriptInCrowd__8VillagerFv(struct Villager* this) asm("?ScriptInCrowd@Villager@@QAE_NXZ");
+// win1.41 00756570 mac 10564f10 Villager::SaveLanded(GameOSFile &)
+bool32_t __fastcall SaveLanded__8VillagerFR10GameOSFile(struct Villager* this, const void* edx, struct GameOSFile* param_1) asm("?SaveLanded@Villager@@QAE_NAAVGameOSFile@@@Z");
+// win1.41 00756580 mac 10564ed0 Villager::LoadLanded(GameOSFile &)
+bool32_t __fastcall LoadLanded__8VillagerFR10GameOSFile(struct Villager* this, const void* edx, struct GameOSFile* param_1) asm("?LoadLanded@Villager@@QAE_NAAVGameOSFile@@@Z");
+// win1.41 00756590 mac inlined Villager::CallIntoAnimationFunction(VILLAGER_STATES)
+enum VILLAGER_STATES __fastcall LookAtPreviousStateReactToTownEmergency__8VillagerFv(struct Villager* this) asm("?LookAtPreviousStateReactToTownEmergency@Villager@@QAE?AW4VILLAGER_STATES@@XZ");
 // win1.41 00756be0 mac 10563bb0 Villager::FindChildrenAndOrphanThem(void)
 void __fastcall FindChildrenAndOrphanThem__8VillagerFv(struct Villager* this) asm("?FindChildrenAndOrphanThem@Villager@@QAEXXZ");
 // win1.41 007579f0 mac 10573ed0 Villager::ChildGotoCreche(void)
