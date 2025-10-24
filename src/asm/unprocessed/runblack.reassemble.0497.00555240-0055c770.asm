@@ -273,7 +273,7 @@
 .extern _jmp_addr_0x0074f210
 .extern _jmp_addr_0x0074f250
 .extern ?SetToZero@Villager@@QAEXXZ
-.extern _jmp_addr_0x007566c0
+.extern ??0MissionaryControl@@QAE@XZ
 .extern ??0Fragment@@QAE@XZ
 .extern _jmp_addr_0x0076f840
 .extern _jmp_addr_0x00770b70
@@ -8340,7 +8340,7 @@ _jmp_addr_0x0055b221:    push               0x00bec9e0                          
                          cmp.s              eax, ebx                                      // 0x0055b452    3bc3
                          {disp32} je        _jmp_addr_0x0055c2b4                          // 0x0055b454    0f845a0e0000
                          mov.s              ecx, eax                                      // 0x0055b45a    8bc8
-                         call               _jmp_addr_0x007566c0                          // 0x0055b45c    e85fb21f00
+                         call               ??0MissionaryControl@@QAE@XZ                  // 0x0055b45c    e85fb21f00
                          mov.s              esi, eax                                      // 0x0055b461    8bf0
                          {disp32} jmp       _jmp_addr_0x0055c2d0                          // 0x0055b463    e9680e0000
                          push               0x00000554                                    // 0x0055b468    6854050000

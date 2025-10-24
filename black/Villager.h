@@ -951,6 +951,11 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17MissionaryControl
 // win1.41 009b9db0 mac inlined MissionaryControl::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17MissionaryControl asm("??_R3MissionaryControl@@8");
 
+// Constructors
+
+// win1.41 007566c0 mac 10564b90 MissionaryControl::MissionaryControl(void)
+struct MissionaryControl* __fastcall __ct__17MissionaryControlFv(struct MissionaryControl* this) asm("??0MissionaryControl@@QAE@XZ");
+
 // Override methods
 
 // win1.41 00756740 mac 10564a00 MissionaryControl::_dt(void)
