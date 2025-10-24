@@ -828,7 +828,7 @@ void __fastcall SetStateCarriedObject__8VillagerFv(struct Villager* this)
     asm("cmp                edx, dword ptr [eax + 0x00000270]");              // 0x0075020b    3b9070020000
     asm("{disp8} jle        _jmp_addr_0x00750225");                           // 0x00750211    7e12
     asm("mov.s              ecx, esi");                                       // 0x00750213    8bce
-    asm("call               _jmp_addr_0x00753140");                           // 0x00750215    e8262f0000
+    asm("call               ?FUN_00753140@Villager@@QAEIXZ");                 // 0x00750215    e8262f0000
     asm("test               al, al");                                         // 0x0075021a    84c0
     asm("{disp8} jne        _jmp_addr_0x00750225");                           // 0x0075021c    7507
     asm("{disp32} mov       byte ptr [esi + 0x000000f1], 0x06");              // 0x0075021e    c686f100000006

@@ -247,6 +247,8 @@ struct GTribeInfo* __fastcall GetTribe__8VillagerFv(struct Villager* this) asm("
 struct StoragePit* __fastcall GetStoragePit__8VillagerFv(struct Villager* this) asm("?GetStoragePit@Villager@@QAEPAVStoragePit@@XZ");
 // win1.41 00751f40 mac 1056d040 Villager::GetVillagerAvailableState(void)
 enum VILLAGER_STATES __fastcall GetVillagerAvailableState__8VillagerFv(struct Villager* this) asm("?GetVillagerAvailableState@Villager@@QAE?AW4VILLAGER_STATES@@XZ");
+// win1.41 00751f70 mac inlined Villager::FUN_00751f70(void)
+enum VILLAGER_STATES __fastcall FUN_00751f70__8VillagerFv(struct Villager* this) asm("?FUN_00751f70@Villager@@QAE?AW4VILLAGER_STATES@@XZ");
 // win1.41 00751fa0 mac 100039f0 Villager::ArriveHome(void)
 void __fastcall ArriveHome__8VillagerFv(struct Villager* this) asm("?ArriveHome@Villager@@QAEXXZ");
 // win1.41 00751fd0 mac 1009fde0 Villager::LeaveHome(void)
@@ -291,6 +293,8 @@ bool __fastcall IsAtOrOnTheWayToWorshipSite__8VillagerFv(struct Villager* this) 
 void __fastcall SetScaleForAge__8VillagerFUl(struct Villager* this, const void* edx, unsigned long param_1) asm("?SetScaleForAge@Villager@@QAEXK@Z");
 // win1.41 00752b80 mac 1056b240 Villager::SetStateWhenTappedOnAbode(void)
 bool __fastcall SetStateWhenTappedOnAbode__8VillagerFv(struct Villager* this) asm("?SetStateWhenTappedOnAbode@Villager@@QAE_NXZ");
+// win1.41 00753140 mac inlined Villager::FUN_00753140(void)
+uint32_t __fastcall FUN_00753140__8VillagerFv(struct Villager* this) asm("?FUN_00753140@Villager@@QAEIXZ");
 // win1.41 007531a0 mac 1056a780 Villager::IsVagrant(void)
 bool __fastcall IsVagrant__8VillagerFv(struct Villager* this) asm("?IsVagrant@Villager@@QAE_NXZ");
 // win1.41 007531d0 mac 1056a480 Villager::ReleaseFromScript(void)
@@ -303,6 +307,8 @@ uint32_t __fastcall GetResourceFrom__8VillagerFP6Object13RESOURCE_TYPEs(struct V
 void __fastcall ProcessFoodSpeedup__8VillagerFv(struct Villager* this) asm("?ProcessFoodSpeedup@Villager@@QAEXXZ");
 // win1.41 00753470 mac 10569f30 Villager::FindPosOutsideAbode(Abode *)
 void __fastcall FindPosOutsideAbode__8VillagerFP5Abode(struct Villager* this, const void* edx, struct Abode* param_1) asm("?FindPosOutsideAbode@Villager@@QAEXPAVAbode@@@Z");
+// win1.41 00753540 mac inlined FUN_00753540::GetAbode(void)
+struct Abode* __fastcall FUN_00753540__8VillagerFv(const struct Villager* this) asm("?FUN_00753540@Villager@@QAEPAVAbode@@XZ");
 // win1.41 00753560 mac 1006a5f0 Villager::AdjustTownModifier(VILLAGER_STATES, int)
 void __fastcall AdjustTownModifier__8VillagerF15VILLAGER_STATESi(struct Villager* this, const void* edx, enum VILLAGER_STATES state, int param_2) asm("?AdjustTownModifier@Villager@@QAEXW4VILLAGER_STATES@@H@Z");
 // win1.41 00753760 mac 10058b20 Villager::SetStateSpeed(unsigned char)

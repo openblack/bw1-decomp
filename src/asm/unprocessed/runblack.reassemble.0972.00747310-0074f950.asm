@@ -188,7 +188,6 @@
 .extern ?IsWoman@Villager@@QAE_NXZ
 .extern ?SetAge@Villager@@UAEXK@Z
 .extern ?SetScaleForAge@Villager@@QAEXK@Z
-.extern _jmp_addr_0x00753140
 .extern ?ProcessFoodSpeedup@Villager@@QAEXXZ
 .extern ?SetState@Villager@@UAEXKE@Z
 .extern ?SetupNothingToDo@Villager@@QAEIXZ
