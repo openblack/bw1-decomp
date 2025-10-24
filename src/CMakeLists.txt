@@ -373,7 +373,7 @@ set(SOURCES_001
     c/TribeInfo.0976.c
     c/Villager.0976.c
     c/VillagerInfo.0977.c
-    asm/unprocessed/runblack.reassemble.0976.00751970-00753c70.asm
+    c/Villager.0977.c
     asm/unprocessed/runblack.reassemble.0981.00753c70-00756230.asm
     asm/unprocessed/runblack.reassemble.0984.00756230-00756e80.asm
     asm/unprocessed/runblack.reassemble.0987.00756e80-007676e0.asm
