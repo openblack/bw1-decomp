@@ -756,6 +756,7 @@ guessed_filepaths = {
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\PhysOb.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\Prss.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\Zoomer.h"),
+    BWPath(r"C:\DEV\Libs\LIONHEAD\LH3DLIB\DEVELOPMENT\LH3DVideo.cpp"),
 
     BWPath(r"C:\Dev\Libs\LIONHEAD\LHFILE\VER3.0\LHReleasedFile.h"),
     BWPath(r"C:\Dev\Libs\LIONHEAD\LHFILE\VER3.0\LHReleasedOSFile.h"),
