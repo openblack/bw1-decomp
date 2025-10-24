@@ -298,7 +298,7 @@ def validate_db(db: dict) -> bool:
     seen_names = dict()
     seen_addresses_win = dict()  # Should be good for functions, globals
     seen_addresses_mac = dict()  # Should be good for functions, globals
-    KNOWN_MAC_LIB_EXE__FUNCTION_CONFLICTS = {0x100ae750, 0x100dd710, 0x101178b0, 0x10119960, 0x10164e30, 0x101daa00}
+    KNOWN_MAC_LIB_EXE__FUNCTION_CONFLICTS = {0x100ae750, 0x100dd710, 0x101178b0, 0x10119960, 0x10164e30, 0x101daa00, 0x100cb730}
     for t in db["types"]:
         typename = t['type'].removeprefix("enum ").removeprefix("struct ").removeprefix("union ")
         seen_typenames[typename] = seen_typenames.get(typename, 0) + 1
