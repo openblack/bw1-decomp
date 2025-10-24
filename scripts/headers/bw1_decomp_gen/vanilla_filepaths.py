@@ -1458,6 +1458,8 @@ ROOMMATE_CLASS_MAP = {
     "SetTurnOffMouseMove__Fb": "LHMouse",
     "DrawAndClip__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl": "LH3DRender",
     "DrawAndClip2D__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl": "LH3DRender",
+    "DrawMouseCross__Fv": "LH3DRender",
+    "BMan_Display__Fv": "LH3DRender",
     "ConfigGetFPS__Fv": "Config",
     "Report3D__FPCce": "LH3DTech",
     "WinMain": "PCMain",
