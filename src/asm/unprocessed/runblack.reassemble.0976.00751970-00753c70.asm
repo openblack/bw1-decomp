@@ -107,7 +107,7 @@
 .globl ?IsAtOrOnTheWayToWorshipSite@Villager@@QAE_NXZ
 .globl ?SetScaleForAge@Villager@@QAEXK@Z
 .globl ?SetStateWhenTappedOnAbode@Villager@@QAE_NXZ
-.globl _jmp_addr_0x00753140
+.globl ?FUN_00753140@Villager@@QAEIXZ
 .globl ?IsVagrant@Villager@@QAE_NXZ
 .globl ?ReleaseFromScript@Villager@@QAEXXZ
 .globl ?TestSpecial@Villager@@QAEXXZ
@@ -150,6 +150,7 @@
 .globl ?GetPrayerSite@Villager@@QAE_NXZ
 .globl ?FUN00751d40@Villager@@QAE_NXZ
 
+?FUN_00751f70@Villager@@QAE?AW4VILLAGER_STATES@@XZ:
                          mov                eax, dword ptr [ecx]                          // 0x00751f70    8b01
                          call               dword ptr [eax + 0xb04]                       // 0x00751f72    ff90040b0000
                          and                eax, 0x000000ff                               // 0x00751f78    25ff000000
@@ -1939,7 +1940,9 @@ _jmp_addr_0x007530fa:    push               edi                                 
                          nop                                                              // 0x0075313d    90
                          nop                                                              // 0x0075313e    90
                          nop                                                              // 0x0075313f    90
-_jmp_addr_0x00753140:    push               ecx                                           // 0x00753140    51
+
+?FUN_00753140@Villager@@QAEIXZ:
+                         push               ecx                                           // 0x00753140    51
                          mov                eax, dword ptr [ecx]                          // 0x00753141    8b01
                          call               dword ptr [eax + 0xb04]                       // 0x00753143    ff90040b0000
                          {disp8} mov        byte ptr [esp + 0x00], al                     // 0x00753149    88442400
@@ -2344,6 +2347,8 @@ _jmp_addr_0x00753483:    mov                eax, dword ptr [esi]                
                          nop                                                              // 0x0075353d    90
                          nop                                                              // 0x0075353e    90
                          nop                                                              // 0x0075353f    90
+
+?FUN_00753540@Villager@@QAEPAVAbode@@XZ:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x30dc6c]        // 0x00753540    a16c3ccd00
                          test               eax, eax                                      // 0x00753545    85c0
                          push               esi                                           // 0x00753547    56
@@ -2926,6 +2931,4 @@ _jmp_addr_0x00753c3f:    mov                edx, dword ptr [esi]                
 .byte 0x02, 0x02, 0x02, 0x02      // 0x00753c68
 .byte 0x02                        // 0x00753c6c
 
-// Snippet: db, [0x00753c6d, 0x00753c70)
-.byte 0x90, 0x90, 0x90            // 0x00753c6d
 
