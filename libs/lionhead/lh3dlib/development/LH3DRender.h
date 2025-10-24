@@ -54,5 +54,9 @@ void __cdecl DrawAndClip2D__F16D3DPRIMITIVETYPEUlP8Vertex3DUlPUsUl(D3DPRIMITIVET
 void __cdecl stop_draw_sprite_to_screen__Fv(void);
 // win1.41 0054c160 mac inlined RenderLoadingFrame(char *)
 void __cdecl RenderLoadingFrame__FPc(char* param_1) asm("?RenderLoadingFrame@@YAXPAD@Z");
+// win1.41 00841c20 mac 10063840 BMan_Display(void)
+void __cdecl BMan_Display__Fv(void) asm("?BMan_Display@@YAXXZ");
+// win1.41 0054d6f0 mac 100a4900 DrawMouseCross(void)
+void __cdecl DrawMouseCross__Fv(void) asm("?DrawMouseCross@@YAXXZ");
 
 #endif /* BW1_DECOMP_LH3D_RENDER_INCLUDED_H */

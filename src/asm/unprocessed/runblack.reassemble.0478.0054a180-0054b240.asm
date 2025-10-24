@@ -216,7 +216,7 @@
 .extern _jmp_addr_0x005f4e40
 .extern _jmp_addr_0x005fa000
 .extern _jmp_addr_0x005fa070
-.extern _jmp_addr_0x005fb040
+.extern ?GetObjectFromHand@GMagicHand@@QBEPAVObject@@XZ
 .extern ??0GMap@@QAE@XZ
 .extern _jmp_addr_0x006010f0
 .extern _jmp_addr_0x006014c0
@@ -394,7 +394,7 @@
 .extern _jmp_addr_0x008415a0
 .extern _jmp_addr_0x00842030
 .extern _jmp_addr_0x00842050
-.extern _jmp_addr_0x00842b90
+.extern ?Dot@LH3DVideo@@QAEXJJJ@Z
 .extern _jmp_addr_0x00844c80
 .extern _jmp_addr_0x00844ca0
 .extern _jmp_addr_0x00844d00

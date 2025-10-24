@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x005cf200
 .extern _jmp_addr_0x005d8a10
 .extern _jmp_addr_0x005d8a80
-.extern _jmp_addr_0x005dc130
+.extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x0064d6a0
 .extern _jmp_addr_0x00670b60
@@ -791,7 +791,7 @@ _jmp_addr_0x00671dd9:    {disp32} mov       ebx, dword ptr [data_bytes + 0x4e3ec
                          cmp                eax, 0x01                                     // 0x00671e30    83f801
                          {disp8} je         _jmp_addr_0x00671e62                          // 0x00671e33    742d
                          {disp32} mov       ecx, dword ptr [ebp + 0x0000039c]             // 0x00671e35    8b8d9c030000
-                         call               _jmp_addr_0x005dc130                          // 0x00671e3b    e8f0a2f6ff
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                          // 0x00671e3b    e8f0a2f6ff
                          test               eax, eax                                      // 0x00671e40    85c0
                          {disp8} je         _jmp_addr_0x00671e5e                          // 0x00671e42    741a
                          mov                edx, dword ptr [eax]                          // 0x00671e44    8b10

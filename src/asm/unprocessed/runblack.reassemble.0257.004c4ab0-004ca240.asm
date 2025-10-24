@@ -70,7 +70,7 @@
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x005c6740
-.extern _jmp_addr_0x005dc130
+.extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
 .extern ?IsWater@MapCoords@@QBEIXZ
 .extern @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16
 .extern @GetLHPoint__9MapCoordsCFv@12
@@ -5118,11 +5118,11 @@ _jmp_addr_0x004c8314:    {disp32} mov       eax, dword ptr [esi + 0x00000164]   
                          mov.s              ecx, edi                                             // 0x004c8366    8bcf
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1c818]                    // 0x004c8368    d80d18588c00
                          {disp8} fstp       dword ptr [esp + 0x0c]                               // 0x004c836e    d95c240c
-                         call               _jmp_addr_0x005dc130                                 // 0x004c8372    e8b93d1100
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                                 // 0x004c8372    e8b93d1100
                          test               eax, eax                                             // 0x004c8377    85c0
                          {disp8} je         _jmp_addr_0x004c83c3                                 // 0x004c8379    7448
                          mov.s              ecx, edi                                             // 0x004c837b    8bcf
-                         call               _jmp_addr_0x005dc130                                 // 0x004c837d    e8ae3d1100
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                                 // 0x004c837d    e8ae3d1100
                          mov                edx, dword ptr [eax]                                 // 0x004c8382    8b10
                          mov.s              ecx, eax                                             // 0x004c8384    8bc8
                          call               dword ptr [edx + 0x64]                               // 0x004c8386    ff5264

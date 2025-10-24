@@ -34,6 +34,11 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__10GMagicHand asm("?
 // win1.41 009b1b08 mac inlined GMagicHand::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__10GMagicHand asm("??_R3GMagicHand@@8");
 
+// Non-virtual methods
+
+// win1.41 005fb040 mac 10075560 GMagicHand::GetObjectFromHand(void) const
+struct Object* __fastcall GetObjectFromHand__10GMagicHandCFv(const struct GMagicHand* this) asm("?GetObjectFromHand@GMagicHand@@QBEPAVObject@@XZ");
+
 // Override methods
 
 // win1.41 005faf40 mac 103ad580 GMagicHand::_dt(void)

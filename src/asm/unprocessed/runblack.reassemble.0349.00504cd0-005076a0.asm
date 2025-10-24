@@ -61,7 +61,7 @@
 .extern ?SubStatePerformPickUpParameter@Creature@@QAEIPAVCreatureBelief@@@Z
 .extern _jmp_addr_0x0050bb40
 .extern ?FindDanceGroup@GroupBehaviour@@QAE_NPAVLiving@@@Z
-.extern _jmp_addr_0x005dc130
+.extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
 .extern _jmp_addr_0x005e3260
 .extern _jmp_addr_0x005fc790
 .extern @__ct__9MapCoordsFRC7LHPoint@12
@@ -2908,7 +2908,7 @@ _jmp_addr_0x00506cde:    xor.s              eax, eax                            
 _jmp_addr_0x00506d15:    mov                eax, 0x00000001                                      // 0x00506d15    b801000000
                          pop                esi                                                  // 0x00506d1a    5e
                          ret                                                                     // 0x00506d1b    c3
-_jmp_addr_0x00506d1c:    call               _jmp_addr_0x005dc130                                 // 0x00506d1c    e80f540d00
+_jmp_addr_0x00506d1c:    call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                                 // 0x00506d1c    e80f540d00
                          test               eax, eax                                             // 0x00506d21    85c0
                          {disp8} je         _jmp_addr_0x00506d15                                 // 0x00506d23    74f0
                          {disp32} mov       edx, dword ptr [esi + 0x00000160]                    // 0x00506d25    8b9660010000

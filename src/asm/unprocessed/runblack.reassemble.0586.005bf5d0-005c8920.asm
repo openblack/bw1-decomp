@@ -280,6 +280,7 @@
 .globl ?GetBaseInfo@HelpSystemInfo@@UAEPAVGBaseInfo@@AAI@Z
 .globl ??_GHelpSystemInfo@@UAEPAXI@Z
 .globl ??_GHelpSystem@@UAEPAXI@Z
+.globl ?PostDrawProcess@HelpSystem@@QAEXXZ
 
 start_0x005bf5d0_0x005c8920:
 // Snippet: asm, [0x005bf5d0, 0x005c88d8)
@@ -9647,6 +9648,7 @@ _jmp_addr_0x005c5ea4:    pop                edi                                 
                          nop                                                               // 0x005c5ead    90
                          nop                                                               // 0x005c5eae    90
                          nop                                                               // 0x005c5eaf    90
+?PostDrawProcess@HelpSystem@@QAEXXZ:
 @FUN_005c5eb0@4:         {disp32} mov       dword ptr [ecx + 0x00000578], 0x00000001       // 0x005c5eb0    c7817805000001000000
                          ret                                                               // 0x005c5eba    c3
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x005c5ebb    e839b9e3ff

@@ -98,6 +98,8 @@ struct GInterfaceStatus* __fastcall __ct__16GInterfaceStatusFv(struct GInterface
 
 // win1.41 005dba00 mac 1036f310 GInterfaceStatus::SetToZero(GInterface *)
 void __fastcall SetToZero__16GInterfaceStatusFP10GInterface(struct GInterfaceStatus* this, const void* edx, struct GInterface* param_1) asm("?SetToZero@GInterfaceStatus@@QAEXPAVGInterface@@@Z");
+// win1.41 005dc130 mac 100755c0 GInterfaceStatus::GetFirstObjectInCurrentHand(void)
+struct Object* __fastcall GetFirstObjectInCurrentHand__16GInterfaceStatusFv(struct GInterfaceStatus* this) asm("?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ");
 // win1.41 005dc2f0 mac 1007b2f0 GInterfaceStatus::IsSpaceInHands(void)
 bool __fastcall IsSpaceInHands__16GInterfaceStatusFv(struct GInterfaceStatus* this) asm("?IsSpaceInHands@GInterfaceStatus@@QAE_NXZ");
 // win1.41 005dc8b0 mac 10035b20 GInterfaceStatus::GetInterface(void)

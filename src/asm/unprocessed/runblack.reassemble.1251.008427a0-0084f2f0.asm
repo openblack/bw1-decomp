@@ -85,7 +85,7 @@
 .extern ??_L@YGXPAXIHP6EX0@Z1@Z
 
 .globl _jmp_addr_0x00842b40
-.globl _jmp_addr_0x00842b90
+.globl ?Dot@LH3DVideo@@QAEXJJJ@Z
 .globl _jmp_addr_0x00842bb0
 .globl ?Alloc@LH3DMem@@SAPAXJ@Z
 .globl ?Free@LH3DMem@@SAXPAX@Z
@@ -515,7 +515,8 @@ _jmp_addr_0x00842b83:    {disp32} mov       dword ptr [data_bytes + 0x530524], 0
 _jmp_addr_0x00842b8d:    ret                                                               // 0x00842b8d    c3
                          nop                                                               // 0x00842b8e    90
                          nop                                                               // 0x00842b8f    90
-_jmp_addr_0x00842b90:    {disp32} mov       eax, dword ptr [data_bytes + 0x4bf0dc]         // 0x00842b90    a1dc50e800
+?Dot@LH3DVideo@@QAEXJJJ@Z:
+                         {disp32} mov       eax, dword ptr [data_bytes + 0x4bf0dc]         // 0x00842b90    a1dc50e800
                          imul               eax, dword ptr [esp + 0x08]                    // 0x00842b95    0faf442408
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                    // 0x00842b9a    8b4c2404
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4bf074]         // 0x00842b9e    8b157450e800
@@ -3112,7 +3113,7 @@ _jmp_addr_0x008448a9:    {disp8} mov        ecx, dword ptr [esp + 0x38]         
                          push               edx                                            // 0x008448b5    52
                          dec                eax                                            // 0x008448b6    48
                          push               eax                                            // 0x008448b7    50
-                         call               _jmp_addr_0x00842b90                           // 0x008448b8    e8d3e2ffff
+                         call               ?Dot@LH3DVideo@@QAEXJJJ@Z                      // 0x008448b8    e8d3e2ffff
                          {disp8} mov        eax, dword ptr [ebp + 0x04]                    // 0x008448bd    8b4504
                          add                esp, 0x0c                                      // 0x008448c0    83c40c
                          inc                edi                                            // 0x008448c3    47
@@ -3217,7 +3218,7 @@ _jmp_addr_0x008449fc:    {disp8} mov        eax, dword ptr [esp + 0x34]         
                          lea                edx, dword ptr [esi + ebx * 0x1]               // 0x00844a01    8d141e
                          push               edx                                            // 0x00844a04    52
                          push               eax                                            // 0x00844a05    50
-                         call               _jmp_addr_0x00842b90                           // 0x00844a06    e885e1ffff
+                         call               ?Dot@LH3DVideo@@QAEXJJJ@Z                      // 0x00844a06    e885e1ffff
                          {disp8} mov        eax, dword ptr [ebp + 0x04]                    // 0x00844a0b    8b4504
                          add                esp, 0x0c                                      // 0x00844a0e    83c40c
                          inc                esi                                            // 0x00844a11    46

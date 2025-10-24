@@ -41,7 +41,7 @@
 .extern ?FindDanceGroup@GroupBehaviour@@QAE_NPAVLiving@@@Z
 .extern _jmp_addr_0x005d06e0
 .extern _jmp_addr_0x005d0730
-.extern _jmp_addr_0x005dc130
+.extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005e6bd0
 .extern _jmp_addr_0x005e6ea0
@@ -1173,7 +1173,7 @@ _jmp_addr_0x006f27b8:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          push               esi                                                  // 0x006f27d6    56
                          call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ             // 0x006f27d7    e87430e6ff
                          {disp32} mov       ecx, dword ptr [eax + 0x0000039c]                    // 0x006f27dc    8b889c030000
-                         call               _jmp_addr_0x005dc130                                 // 0x006f27e2    e84999eeff
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                                 // 0x006f27e2    e84999eeff
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x006f27e7    8b0d5c19d000
                          mov.s              esi, eax                                             // 0x006f27ed    8bf0
                          call               ?IsMultiplayerGame@GGame@@QBE_NXZ                    // 0x006f27ef    e88c07e6ff

@@ -120,7 +120,7 @@
 .extern _RenderLoadingFrame__Fb
 .extern _jmp_addr_0x005fa000
 .extern _jmp_addr_0x005fa070
-.extern _jmp_addr_0x005fb040
+.extern ?GetObjectFromHand@GMagicHand@@QBEPAVObject@@XZ
 .extern ??0GMap@@QAE@XZ
 .extern _jmp_addr_0x006010f0
 .extern _jmp_addr_0x006014c0
@@ -298,7 +298,7 @@
 .extern _jmp_addr_0x008415a0
 .extern _jmp_addr_0x00842030
 .extern _jmp_addr_0x00842050
-.extern _jmp_addr_0x00842b90
+.extern ?Dot@LH3DVideo@@QAEXJJJ@Z
 .extern _jmp_addr_0x00844c80
 .extern _jmp_addr_0x00844ca0
 .extern _jmp_addr_0x00844d00
@@ -332,6 +332,7 @@
 .globl ?ProcessOneGameTurn@GGame@@QAEIXZ
 .globl _globl_ct_0x0054c6f0
 .globl _globl_ct_0x0054ceb0
+.globl ?DrawMouseCross@@YAXXZ
 
 // Snippet: asm, [0x0054c340, 0x0054ff60)
 ?ProcessFrameInputs@GGame@@QAEXXZ:
@@ -1816,6 +1817,7 @@ _jmp_addr_0x0054d6e5:    test               esi, esi                            
 _jmp_addr_0x0054d6e9:    pop                esi                                           // 0x0054d6e9    5e
                          ret                                                              // 0x0054d6ea    c3
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054d6eb    e88941ebff
+?DrawMouseCross@@YAXXZ:
 _FUN_0054d6f0:           sub                esp, 0x10                                     // 0x0054d6f0    83ec10
                          push               ebx                                           // 0x0054d6f3    53
                          {disp32} mov       ebx, dword ptr [data_bytes + 0x4bf2c4]        // 0x0054d6f4    8b1dc452e800
@@ -1847,55 +1849,55 @@ _FUN_0054d6f0:           sub                esp, 0x10                           
                          push               esi                                           // 0x0054d75d    56
                          push               ebx                                           // 0x0054d75e    53
                          push               edi                                           // 0x0054d75f    57
-                         call               _jmp_addr_0x00842b90                          // 0x0054d760    e82b542f00
+                         call               ?Dot@LH3DVideo@@QAEXJJJ@Z                     // 0x0054d760    e82b542f00
                          push               esi                                           // 0x0054d765    56
                          {disp8} lea        ebp, dword ptr [ebx + 0x01]                   // 0x0054d766    8d6b01
                          {disp8} lea        eax, dword ptr [edi + 0x01]                   // 0x0054d769    8d4701
                          push               ebp                                           // 0x0054d76c    55
                          push               eax                                           // 0x0054d76d    50
                          {disp8} mov        dword ptr [esp + 0x34], eax                   // 0x0054d76e    89442434
-                         call               _jmp_addr_0x00842b90                          // 0x0054d772    e819542f00
+                         call               ?Dot@LH3DVideo@@QAEXJJJ@Z                     // 0x0054d772    e819542f00
                          {disp8} lea        eax, dword ptr [ebx + 0x02]                   // 0x0054d777    8d4302
                          push               esi                                           // 0x0054d77a    56
                          {disp8} lea        ecx, dword ptr [edi + 0x02]                   // 0x0054d77b    8d4f02
                          push               eax                                           // 0x0054d77e    50
                          push               ecx                                           // 0x0054d77f    51
                          {disp8} mov        dword ptr [esp + 0x44], ecx                   // 0x0054d780    894c2444
-                         call               _jmp_addr_0x00842b90                          // 0x0054d784    e807542f00
+                         call               ?Dot@LH3DVideo@@QAEXJJJ@Z                     // 0x0054d784    e807542f00
                          push               esi                                           // 0x0054d789    56
                          {disp8} lea        eax, dword ptr [edi + -0x01]                  // 0x0054d78a    8d47ff
                          push               ebp                                           // 0x0054d78d    55
                          push               eax                                           // 0x0054d78e    50
                          {disp8} mov        dword ptr [esp + 0x54], eax                   // 0x0054d78f    89442454
-                         call               _jmp_addr_0x00842b90                          // 0x0054d793    e8f8532f00
+                         call               ?Dot@LH3DVideo@@QAEXJJJ@Z                     // 0x0054d793    e8f8532f00
                          push               esi                                           // 0x0054d798    56
                          {disp8} lea        eax, dword ptr [ebx + 0x02]                   // 0x0054d799    8d4302
                          push               eax                                           // 0x0054d79c    50
                          add                edi, -0x02                                    // 0x0054d79d    83c7fe
                          push               edi                                           // 0x0054d7a0    57
-                         call               _jmp_addr_0x00842b90                          // 0x0054d7a1    e8ea532f00
+                         call               ?Dot@LH3DVideo@@QAEXJJJ@Z                     // 0x0054d7a1    e8ea532f00
                          {disp8} mov        edx, dword ptr [esp + 0x58]                   // 0x0054d7a6    8b542458
                          add                esp, 0x48                                     // 0x0054d7aa    83c448
                          push               esi                                           // 0x0054d7ad    56
                          {disp8} lea        ebp, dword ptr [ebx + -0x01]                  // 0x0054d7ae    8d6bff
                          push               ebp                                           // 0x0054d7b1    55
                          push               edx                                           // 0x0054d7b2    52
-                         call               _jmp_addr_0x00842b90                          // 0x0054d7b3    e8d8532f00
+                         call               ?Dot@LH3DVideo@@QAEXJJJ@Z                     // 0x0054d7b3    e8d8532f00
                          {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x0054d7b8    8b442420
                          push               esi                                           // 0x0054d7bc    56
                          add                ebx, -0x02                                    // 0x0054d7bd    83c3fe
                          push               ebx                                           // 0x0054d7c0    53
                          push               eax                                           // 0x0054d7c1    50
-                         call               _jmp_addr_0x00842b90                          // 0x0054d7c2    e8c9532f00
+                         call               ?Dot@LH3DVideo@@QAEXJJJ@Z                     // 0x0054d7c2    e8c9532f00
                          {disp8} mov        ecx, dword ptr [esp + 0x30]                   // 0x0054d7c7    8b4c2430
                          push               esi                                           // 0x0054d7cb    56
                          push               ebp                                           // 0x0054d7cc    55
                          push               ecx                                           // 0x0054d7cd    51
-                         call               _jmp_addr_0x00842b90                          // 0x0054d7ce    e8bd532f00
+                         call               ?Dot@LH3DVideo@@QAEXJJJ@Z                     // 0x0054d7ce    e8bd532f00
                          push               esi                                           // 0x0054d7d3    56
                          push               ebx                                           // 0x0054d7d4    53
                          push               edi                                           // 0x0054d7d5    57
-                         call               _jmp_addr_0x00842b90                          // 0x0054d7d6    e8b5532f00
+                         call               ?Dot@LH3DVideo@@QAEXJJJ@Z                     // 0x0054d7d6    e8b5532f00
                          add                esp, 0x30                                     // 0x0054d7db    83c430
                          pop                esi                                           // 0x0054d7de    5e
                          pop                ebp                                           // 0x0054d7df    5d

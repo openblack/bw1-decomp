@@ -149,6 +149,8 @@ void __fastcall ClearAllText__10HelpSystemFv(struct HelpSystem* this) asm("?Clea
 void __fastcall Reset__10HelpSystemFv(struct HelpSystem* this) asm("?Reset@HelpSystem@@QAEXXZ");
 // win1.41 005c5610 mac 103515b0 HelpSystem::ResetIcons(void)
 void __fastcall ResetIcons__10HelpSystemFv(struct HelpSystem* this) asm("?ResetIcons@HelpSystem@@QAEXXZ");
+// win1.41 005c5eb0 mac 10091a40 HelpSystem::PostDrawProcess(void)
+void __fastcall PostDrawProcess__10HelpSystemFv(struct HelpSystem* this) asm("?PostDrawProcess@HelpSystem@@QAEXXZ");
 // win1.41 005c67e0 mac 1034f730 HelpSystem::ClearDialogueControl(void)
 void __fastcall ClearDialogueControl__10HelpSystemFv(struct HelpSystem* this) asm("?ClearDialogueControl@HelpSystem@@QAEXXZ");
 // win1.41 005c6ad0 mac 1034f2c0 HelpSystem::SetWideScreen(int, ulong)

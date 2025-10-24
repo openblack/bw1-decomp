@@ -221,7 +221,7 @@
 .extern _RenderLoadingFrame__Fb
 .extern _jmp_addr_0x005fa000
 .extern _jmp_addr_0x005fa070
-.extern _jmp_addr_0x005fb040
+.extern ?GetObjectFromHand@GMagicHand@@QBEPAVObject@@XZ
 .extern ??0GMap@@QAE@XZ
 .extern _jmp_addr_0x006010f0
 .extern _jmp_addr_0x006014c0
@@ -400,7 +400,7 @@
 .extern _jmp_addr_0x008415a0
 .extern _jmp_addr_0x00842030
 .extern _jmp_addr_0x00842050
-.extern _jmp_addr_0x00842b90
+.extern ?Dot@LH3DVideo@@QAEXJJJ@Z
 .extern _jmp_addr_0x00844c80
 .extern _jmp_addr_0x00844ca0
 .extern _jmp_addr_0x00844d00
@@ -939,7 +939,7 @@ _jmp_addr_0x0054df70:    mov.s              ecx, ebp                            
                          {disp8} lea        ecx, dword ptr [esi + ecx * 0x4 + 0x58]       // 0x0054df99    8d4c8e58
                          cmp.s              ecx, ebx                                      // 0x0054df9d    3bcb
                          {disp8} je         _jmp_addr_0x0054dfb5                          // 0x0054df9f    7414
-                         call               _jmp_addr_0x005fb040                          // 0x0054dfa1    e89ad00a00
+                         call               ?GetObjectFromHand@GMagicHand@@QBEPAVObject@@XZ                          // 0x0054dfa1    e89ad00a00
                          cmp.s              eax, ebx                                      // 0x0054dfa6    3bc3
                          {disp8} je         _jmp_addr_0x0054dfb5                          // 0x0054dfa8    740b
                          mov                edx, dword ptr [eax]                          // 0x0054dfaa    8b10
