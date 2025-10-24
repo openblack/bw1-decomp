@@ -65,7 +65,7 @@
 .globl _jmp_addr_0x005faf60
 .globl _jmp_addr_0x005faf80
 .globl _jmp_addr_0x005fafc0
-.globl _jmp_addr_0x005fb040
+.globl ?GetObjectFromHand@GMagicHand@@QBEPAVObject@@XZ
 .globl _jmp_addr_0x005fb060
 .globl _jmp_addr_0x005fb0b0
 .globl _jmp_addr_0x005fb130
@@ -1428,7 +1428,7 @@ _jmp_addr_0x005faf70:    xor.s              eax, eax                            
                          nop                                                              // 0x005faf7e    90
                          nop                                                              // 0x005faf7f    90
 _jmp_addr_0x005faf80:    push               esi                                           // 0x005faf80    56
-                         call               _jmp_addr_0x005fb040                          // 0x005faf81    e8ba000000
+                         call               ?GetObjectFromHand@GMagicHand@@QBEPAVObject@@XZ                          // 0x005faf81    e8ba000000
                          mov.s              esi, eax                                      // 0x005faf86    8bf0
                          test               esi, esi                                      // 0x005faf88    85f6
                          {disp8} je         _jmp_addr_0x005fafb3                          // 0x005faf8a    7427
@@ -1504,7 +1504,8 @@ _jmp_addr_0x005fb032:    xor.s              eax, eax                            
                          nop                                                              // 0x005fb03d    90
                          nop                                                              // 0x005fb03e    90
                          nop                                                              // 0x005fb03f    90
-_jmp_addr_0x005fb040:    xor.s              eax, eax                                      // 0x005fb040    33c0
+?GetObjectFromHand@GMagicHand@@QBEPAVObject@@XZ:
+                         xor.s              eax, eax                                      // 0x005fb040    33c0
                          {disp8} mov        al, byte ptr [ecx + 0x14]                     // 0x005fb042    8a4114
                          test               al, al                                        // 0x005fb045    84c0
                          {disp8} jbe        _jmp_addr_0x005fb053                          // 0x005fb047    760a

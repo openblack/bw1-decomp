@@ -125,10 +125,14 @@ void __fastcall Init__10GInterfaceFUc(struct GInterface* this, const void* edx, 
 void __fastcall InitLeash__10GInterfaceFv(struct GInterface* this) asm("?InitLeash@GInterface@@QAEXXZ");
 // win1.41 005ce920 mac 1035b8b0 GInterface::SetupHand(void)
 void __fastcall SetupHand__10GInterfaceFv(struct GInterface* this) asm("?SetupHand@GInterface@@QAEXXZ");
+// win1.41 005ce9e0 mac 1007b8b0 GInterface::PreDrawProcess(void)
+void __fastcall PreDrawProcess__10GInterfaceFv(struct GInterface* this) asm("?PreDrawProcess@GInterface@@QAEXXZ");
 // win1.41 005ceab0 mac 1007d9b0 GInterface::PostDrawProcess(void)
 void __fastcall PostDrawProcess__10GInterfaceFv(struct GInterface* this) asm("?PostDrawProcess@GInterface@@QAEXXZ");
 // win1.41 005cec10 mac 100254c0 GInterface::Process(void)
 void __fastcall Process__10GInterfaceFv(struct GInterface* this) asm("?Process@GInterface@@QAEXXZ");
+// win1.41 005d0610 mac 10084060 GInterface::UpdateHandRenderCollide(void)
+void __fastcall UpdateHandRenderCollide__10GInterfaceFv(struct GInterface* this) asm("?UpdateHandRenderCollide@GInterface@@QAEXXZ");
 // win1.41 005d9130 mac 100315f0 GInterface::UpdateAllLeashes(void)
 void __fastcall UpdateAllLeashes__10GInterfaceFv(struct GInterface* this) asm("?UpdateAllLeashes@GInterface@@QAEXXZ");
 // win1.41 005d9d80 mac 10004300 GInterface::SendMessageA(INTERFACE_MESSAGE_TYPES, LHCoord *)

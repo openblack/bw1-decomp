@@ -30,7 +30,7 @@
 .extern _jmp_addr_0x005c8720
 .extern _jmp_addr_0x005d78d0
 .extern _jmp_addr_0x005d7e40
-.extern _jmp_addr_0x005dc130
+.extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
 .extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x006e9d10
 .extern _StartScript__7GScriptFPc@4
@@ -1119,7 +1119,7 @@ _jmp_addr_0x005c9355:    pop                esi                                 
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005c9364    8b0d5c19d000
                          call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x005c936a    e8e1c4f8ff
                          {disp32} mov       ecx, dword ptr [eax + 0x0000039c]             // 0x005c936f    8b889c030000
-                         call               _jmp_addr_0x005dc130                          // 0x005c9375    e8b62d0100
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                          // 0x005c9375    e8b62d0100
                          mov.s              esi, eax                                      // 0x005c937a    8bf0
                          test               esi, esi                                      // 0x005c937c    85f6
                          {disp8} je         _jmp_addr_0x005c93f6                          // 0x005c937e    7476
@@ -1646,7 +1646,7 @@ _jmp_addr_0x005c98ca:    mov.s              ecx, edi                            
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005c98e3    8b0d5c19d000
                          call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x005c98e9    e862bff8ff
                          {disp32} mov       ecx, dword ptr [eax + 0x0000039c]             // 0x005c98ee    8b889c030000
-                         call               _jmp_addr_0x005dc130                          // 0x005c98f4    e837280100
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                          // 0x005c98f4    e837280100
                          test               eax, eax                                      // 0x005c98f9    85c0
                          {disp8} jne        _jmp_addr_0x005c9912                          // 0x005c98fb    7515
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005c98fd    8b0d5c19d000

@@ -68,7 +68,7 @@
 .extern _jmp_addr_0x004f8ca0
 .extern _jmp_addr_0x0056fa80
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
-.extern _jmp_addr_0x005dc130
+.extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
 .extern _jmp_addr_0x005ecc20
 .extern ?FleeFromSpellPriority@Living@@UAEEPAVReaction@@0@Z
 .extern ?NumGameTurnsToReactToCreatureFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z
@@ -9158,7 +9158,7 @@ _jmp_addr_0x004f361a:    pop                edi                                 
                          pop                ebp                                                  // 0x004f3675    5d
                          {disp8} jne        _jmp_addr_0x004f36a5                                 // 0x004f3676    752d
                          mov.s              ecx, esi                                             // 0x004f3678    8bce
-                         call               _jmp_addr_0x005dc130                                 // 0x004f367a    e8b18a0e00
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                                 // 0x004f367a    e8b18a0e00
                          mov.s              esi, eax                                             // 0x004f367f    8bf0
                          {disp8} mov        eax, dword ptr [ebx + 0x14]                          // 0x004f3681    8b4314
                          add                eax, 0x14                                            // 0x004f3684    83c014

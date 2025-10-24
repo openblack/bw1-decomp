@@ -80,7 +80,7 @@
 .extern ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z
 .extern _jmp_addr_0x005cd170
 .extern _jmp_addr_0x005d56c0
-.extern _jmp_addr_0x005dc130
+.extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005dd370
 .extern @Remove__9GameBlockFP6Object@12
@@ -6218,7 +6218,7 @@ _jmp_addr_0x00634c4b:    push               esi                                 
                          mov.s              ecx, edi                                       // 0x00634c4c    8bcf
                          call               _jmp_addr_0x0064bc60                           // 0x00634c4e    e80d700100
                          mov.s              ecx, esi                                       // 0x00634c53    8bce
-                         call               _jmp_addr_0x005dc130                           // 0x00634c55    e8d674faff
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                           // 0x00634c55    e8d674faff
                          mov.s              ebp, eax                                       // 0x00634c5a    8be8
                          test               ebp, ebp                                       // 0x00634c5c    85ed
                          {disp8} je         _jmp_addr_0x00634c76                           // 0x00634c5e    7416
@@ -14419,7 +14419,7 @@ _jmp_addr_0x0063a1ca:    push               esi                                 
                          mov.s              ecx, edi                                       // 0x0063a1d7    8bcf
                          call               @GetRealInterface__7GPlayerFUl@12              // 0x0063a1d9    e8422f0100
                          {disp32} mov       ecx, dword ptr [eax + 0x0000039c]              // 0x0063a1de    8b889c030000
-                         call               _jmp_addr_0x005dc130                           // 0x0063a1e4    e8471ffaff
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                           // 0x0063a1e4    e8471ffaff
                          cmp.s              eax, ebx                                       // 0x0063a1e9    3bc3
                          {disp8} je         _jmp_addr_0x0063a20b                           // 0x0063a1eb    741e
 _jmp_addr_0x0063a1ed:    inc                esi                                            // 0x0063a1ed    46

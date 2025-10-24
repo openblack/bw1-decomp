@@ -33,7 +33,7 @@
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern _jmp_addr_0x005c9c60
-.extern _jmp_addr_0x005dc130
+.extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
 .extern _jmp_addr_0x005dc870
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005e6540
@@ -2848,7 +2848,7 @@ _jmp_addr_0x0066e4dc:    pop                edi                                 
                          mov.s              esi, ecx                                      // 0x0066e52a    8bf1
                          push               edi                                           // 0x0066e52c    57
                          mov.s              ecx, ebx                                      // 0x0066e52d    8bcb
-                         call               _jmp_addr_0x005dc130                          // 0x0066e52f    e8fcdbf6ff
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                          // 0x0066e52f    e8fcdbf6ff
                          push               0x0                                           // 0x0066e534    6a00
                          push               0x009c8eb0                                    // 0x0066e536    68b08e9c00
                          push               0x009c7f50                                    // 0x0066e53b    68507f9c00
@@ -3166,7 +3166,7 @@ _jmp_addr_0x0066e823:    pop                edi                                 
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0066e88d    8b0d5c19d000
                          call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x0066e893    e8b86feeff
                          {disp32} mov       ecx, dword ptr [eax + 0x0000039c]             // 0x0066e898    8b889c030000
-                         call               _jmp_addr_0x005dc130                          // 0x0066e89e    e88dd8f6ff
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                          // 0x0066e89e    e88dd8f6ff
                          push               0x0                                           // 0x0066e8a3    6a00
                          push               0x009c8eb0                                    // 0x0066e8a5    68b08e9c00
                          push               0x009c7f50                                    // 0x0066e8aa    68507f9c00

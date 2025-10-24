@@ -123,6 +123,7 @@
 .globl ?DrawClouds@GWeather@@UAEXXZ
 .globl ?CalcAtmos@GWeather@@UAEXPAULHPoint@@PAUWeatherInfo@@@Z
 .globl ?DebugDraw@GWeather@@UAEXXZ
+.globl ?BMan_Display@@YAXXZ
 
 start_0x0083c2d0_0x00842030:
 // Snippet: asm, [0x0083c2d0, 0x00841fe2)
@@ -7660,6 +7661,7 @@ _jmp_addr_0x00841b81:    {disp8} mov        ebp, dword ptr [esp + 0x30]         
                          nop                                                               // 0x00841c1d    90
                          nop                                                               // 0x00841c1e    90
                          nop                                                               // 0x00841c1f    90
+?BMan_Display@@YAXXZ:
 _FUN_00841c20:           push               ebp                                            // 0x00841c20    55
                          mov.s              ebp, esp                                       // 0x00841c21    8bec
                          and                esp, 0xfffffff8                                // 0x00841c23    83e4f8

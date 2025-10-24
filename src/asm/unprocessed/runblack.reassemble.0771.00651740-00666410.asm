@@ -79,7 +79,7 @@
 .extern _jmp_addr_0x005cd630
 .extern _jmp_addr_0x005da1a0
 .extern _jmp_addr_0x005da400
-.extern _jmp_addr_0x005dc130
+.extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
 .extern ?IsSpaceInHands@GInterfaceStatus@@QAE_NXZ
 .extern _jmp_addr_0x005dc870
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
@@ -1785,7 +1785,7 @@ _jmp_addr_0x00652662:    {disp8} mov        ecx, dword ptr [eax + 0x18]         
                          mov.s              ecx, eax                                       // 0x006526b4    8bc8
                          call               _jmp_addr_0x0064a9f0                           // 0x006526b6    e83583ffff
                          mov.s              ecx, eax                                       // 0x006526bb    8bc8
-                         call               _jmp_addr_0x005dc130                           // 0x006526bd    e86e9af8ff
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                           // 0x006526bd    e86e9af8ff
                          mov.s              edi, eax                                       // 0x006526c2    8bf8
                          test               edi, edi                                       // 0x006526c4    85ff
                          {disp8} je         _jmp_addr_0x00652707                           // 0x006526c6    743f
@@ -5999,7 +5999,7 @@ _jmp_addr_0x00655170:    sub                esp, 0x10                           
                          mov.s              ecx, eax                                       // 0x00655181    8bc8
                          call               _jmp_addr_0x0064a9f0                           // 0x00655183    e86858ffff
                          mov.s              ecx, eax                                       // 0x00655188    8bc8
-                         call               _jmp_addr_0x005dc130                           // 0x0065518a    e8a16ff8ff
+                         call               ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ                           // 0x0065518a    e8a16ff8ff
                          {disp8} mov        ebp, dword ptr [esp + 0x24]                    // 0x0065518f    8b6c2424
                          mov.s              edi, eax                                       // 0x00655193    8bf8
                          test               edi, edi                                       // 0x00655195    85ff
