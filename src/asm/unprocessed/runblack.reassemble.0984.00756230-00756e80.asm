@@ -9,13 +9,13 @@
 
 .extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
 .extern ??3Base@@SAXPAXK@Z
-.extern _jmp_addr_0x00438770
+.extern ?DistanceChangeToBelief@GBelief@@SAMMM@Z
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern ??0GameThing@@QAE@XZ
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
-.extern _jmp_addr_0x0056fe70
+.extern ?GetBoredomMultiplier@GameThingWithPos@@QAEHPAVReaction@@@Z
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
 .extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern ?SetToZero@GameThingWithPos@@QAEXXZ
@@ -31,7 +31,7 @@
 .extern ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
 .extern ?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z
 .extern ?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ
-.extern _jmp_addr_0x006e48a0
+.extern ?GetDefaultReactionMultiplier@Reaction@@QAEMPAVLiving@@@Z
 .extern ?AddVillagerToTown@Town@@QAE_NPAVVillager@@@Z
 .extern ?RemoveVillager@Town@@QAEXPAVVillager@@@Z
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
@@ -901,7 +901,7 @@ _jmp_addr_0x00756912:    pop                edi                                 
                          mov.s              esi, ecx                                      // 0x0075692b    8bf1
                          push               edi                                           // 0x0075692d    57
                          mov.s              ecx, ebx                                      // 0x0075692e    8bcb
-                         call               _jmp_addr_0x006e48a0                          // 0x00756930    e86bdff8ff
+                         call               ?GetDefaultReactionMultiplier@Reaction@@QAEMPAVLiving@@@Z                          // 0x00756930    e86bdff8ff
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x00756935    d95c2410
                          mov.s              ecx, esi                                      // 0x00756939    8bce
                          call               _jmp_addr_0x007567c0                          // 0x0075693b    e880feffff
@@ -920,12 +920,12 @@ _jmp_addr_0x00756912:    pop                edi                                 
                          {disp8} mov        edx, dword ptr [esp + 0x10]                   // 0x00756966    8b542410
                          push               ecx                                           // 0x0075696a    51
                          push               edx                                           // 0x0075696b    52
-                         call               _jmp_addr_0x00438770                          // 0x0075696c    e8ff1dceff
+                         call               ?DistanceChangeToBelief@GBelief@@SAMMM@Z      // 0x0075696c    e8ff1dceff
                          {disp8} fstp       dword ptr [esp + 0x18]                        // 0x00756971    d95c2418
                          add                esp, 0x08                                     // 0x00756975    83c408
                          push               ebx                                           // 0x00756978    53
                          mov.s              ecx, edi                                      // 0x00756979    8bcf
-                         call               _jmp_addr_0x0056fe70                          // 0x0075697b    e8f094e1ff
+                         call               ?GetBoredomMultiplier@GameThingWithPos@@QAEHPAVReaction@@@Z                          // 0x0075697b    e8f094e1ff
                          {disp8} fmul       dword ptr [esp + 0x10]                        // 0x00756980    d84c2410
                          pop                edi                                           // 0x00756984    5f
                          pop                esi                                           // 0x00756985    5e

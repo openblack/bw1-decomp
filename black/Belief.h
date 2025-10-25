@@ -39,6 +39,11 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7GBelief asm("??_R2
 // win1.41 009b9b10 mac inlined GBelief::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7GBelief asm("??_R3GBelief@@8");
 
+// Static methods
+
+// win1.41 00438770 mac 100b1810 GBelief::DistanceChangeToBelief(float, float)
+float __cdecl DistanceChangeToBelief__7GBeliefFff(struct GBelief* this, float param_1, float param_2) asm("?DistanceChangeToBelief@GBelief@@SAMMM@Z");
+
 // Non-virtual methods
 
 // win1.41 004387d0 mac 100b1700 GBelief::SetBelief(unsigned long, float)

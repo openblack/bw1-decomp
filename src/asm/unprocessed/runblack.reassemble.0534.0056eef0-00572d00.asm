@@ -89,7 +89,7 @@
 .globl @GetSaveType__9GameThingFv@4
 .globl ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .globl ?Get3DSoundPos@GameThingWithPos@@UAEHPAULHPoint@@@Z
-.globl _jmp_addr_0x0056fe70
+.globl ?GetBoredomMultiplier@GameThingWithPos@@QAEHPAVReaction@@@Z
 .globl ?GetUpdateOfBoredomValue@GameThingWithPos@@UAEMPAUReaction@@PAV1@@Z
 .globl ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .globl ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
@@ -1572,7 +1572,8 @@ _jmp_addr_0x0056fdf2:    pop                ecx                                 
                          nop                                                              // 0x0056fe6d    90
                          nop                                                              // 0x0056fe6e    90
                          nop                                                              // 0x0056fe6f    90
-_jmp_addr_0x0056fe70:    push               esi                                           // 0x0056fe70    56
+?GetBoredomMultiplier@GameThingWithPos@@QAEHPAVReaction@@@Z:
+                         push               esi                                           // 0x0056fe70    56
                          mov.s              esi, ecx                                      // 0x0056fe71    8bf1
                          mov                eax, dword ptr [esi]                          // 0x0056fe73    8b06
                          call               dword ptr [eax + 0x48]                        // 0x0056fe75    ff5048
