@@ -221,7 +221,7 @@
 .extern ?IsAtOrOnTheWayToWorshipSite@Villager@@QAE_NXZ
 .extern ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z
 .extern ?SetTown@Villager@@QAEXPAVTown@@@Z
-.extern _jmp_addr_0x00756760
+.extern ??0MissionaryControl@@QAE@PAVVillager@@PAVGPlayer@@@Z
 .extern ?FindChildrenAndOrphanThem@Villager@@QAEXXZ
 .extern _jmp_addr_0x0076bae0
 .extern ?RemoveVillagerFromWorshipSite@Villager@@QAE_NXZ
@@ -10667,7 +10667,7 @@ _jmp_addr_0x00740fd0:    push               esi                                 
                          push               ecx                                                  // 0x00740ff3    51
                          push               edx                                                  // 0x00740ff4    52
                          mov.s              ecx, eax                                             // 0x00740ff5    8bc8
-                         call               _jmp_addr_0x00756760                                 // 0x00740ff7    e864570100
+                         call               ??0MissionaryControl@@QAE@PAVVillager@@PAVGPlayer@@@Z // 0x00740ff7    e864570100
                          {disp8} jmp        _jmp_addr_0x00741000                                 // 0x00740ffc    eb02
 _jmp_addr_0x00740ffe:    xor.s              eax, eax                                             // 0x00740ffe    33c0
 _jmp_addr_0x00741000:    {disp32} mov       ecx, dword ptr [esi + 0x0000099c]                    // 0x00741000    8b8e9c090000

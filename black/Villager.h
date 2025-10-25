@@ -43,6 +43,7 @@ struct GestureSystemPacketData;
 struct LHOSFile;
 struct LHPoint;
 struct MapCoords;
+struct MissionaryControl;
 struct ObjectVftable;
 struct PhysOb;
 struct PhysicsObject;
@@ -132,6 +133,8 @@ extern const struct VillagerVftable __vt__8Villager asm("??_7Villager@@6B@");
 struct Living__StateTableEntry* __cdecl GetStateTable__8VillagerFv(enum VILLAGER_STATES state) asm("?GetStateTable@Villager@@SAPAULiving__StateTableEntry@@XZ");
 // win1.41 0074fbe0 mac 10571750 Villager::Create(MapCoords const &, GVillagerInfo const *, unsigned long, int)
 struct Villager* __cdecl Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli(struct MapCoords* coords, struct GVillagerInfo* info, uint32_t age, bool skeleton) asm("?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@KH@Z");
+// win1.41 00756990 mac inlined Villager::FUN_00756990(void)
+void __fastcall FUN_00756990__8VillagerFv(struct MissionaryControl* this) asm("?FUN_00756990@Villager@@QAEXXZ");
 
 // Constructors
 
@@ -307,7 +310,7 @@ uint32_t __fastcall GetResourceFrom__8VillagerFP6Object13RESOURCE_TYPEs(struct V
 void __fastcall ProcessFoodSpeedup__8VillagerFv(struct Villager* this) asm("?ProcessFoodSpeedup@Villager@@QAEXXZ");
 // win1.41 00753470 mac 10569f30 Villager::FindPosOutsideAbode(Abode *)
 void __fastcall FindPosOutsideAbode__8VillagerFP5Abode(struct Villager* this, const void* edx, struct Abode* param_1) asm("?FindPosOutsideAbode@Villager@@QAEXPAVAbode@@@Z");
-// win1.41 00753540 mac inlined FUN_00753540::GetAbode(void)
+// win1.41 00753540 mac inlined Villager::FUN_00753540(void)
 struct Abode* __fastcall FUN_00753540__8VillagerFv(const struct Villager* this) asm("?FUN_00753540@Villager@@QAEPAVAbode@@XZ");
 // win1.41 00753560 mac 1006a5f0 Villager::AdjustTownModifier(VILLAGER_STATES, int)
 void __fastcall AdjustTownModifier__8VillagerF15VILLAGER_STATESi(struct Villager* this, const void* edx, enum VILLAGER_STATES state, int param_2) asm("?AdjustTownModifier@Villager@@QAEXW4VILLAGER_STATES@@H@Z");
@@ -445,6 +448,8 @@ void __fastcall DebugValidateState__8VillagerFv(struct Villager* this) asm("?Deb
 void __fastcall ForceMoveVillagerToAbode__8VillagerFP5Abode(struct Villager* this, const void* edx, struct Abode* abode) asm("?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z");
 // win1.41 007562c0 mac 105652e0 Villager::SetSkeleton(int)
 void __fastcall SetSkeleton__8VillagerFi(struct Villager* this, const void* edx, bool32_t param_1) asm("?SetSkeleton@Villager@@QAEXH@Z");
+// win1.41 00756520 mac 10565010 Villager::LookAtPreviousStateReactToTownEmergency(void)
+enum VILLAGER_STATES __fastcall LookAtPreviousStateReactToTownEmergency__8VillagerFv(struct Villager* this) asm("?LookAtPreviousStateReactToTownEmergency@Villager@@QAE?AW4VILLAGER_STATES@@XZ");
 // win1.41 00756530 mac 10564fd0 Villager::SetTown(Town*)
 void __fastcall SetTown__8VillagerFP4Town(struct Villager* this, const void* edx, struct Town* town) asm("?SetTown@Villager@@QAEXPAVTown@@@Z");
 // win1.41 00756540 mac 10564f50 Villager::ScriptInCrowd(void)
@@ -453,10 +458,26 @@ bool32_t __fastcall ScriptInCrowd__8VillagerFv(struct Villager* this) asm("?Scri
 bool32_t __fastcall SaveLanded__8VillagerFR10GameOSFile(struct Villager* this, const void* edx, struct GameOSFile* param_1) asm("?SaveLanded@Villager@@QAE_NAAVGameOSFile@@@Z");
 // win1.41 00756580 mac 10564ed0 Villager::LoadLanded(GameOSFile &)
 bool32_t __fastcall LoadLanded__8VillagerFR10GameOSFile(struct Villager* this, const void* edx, struct GameOSFile* param_1) asm("?LoadLanded@Villager@@QAE_NAAVGameOSFile@@@Z");
-// win1.41 00756590 mac inlined Villager::CallIntoAnimationFunction(VILLAGER_STATES)
-enum VILLAGER_STATES __fastcall LookAtPreviousStateReactToTownEmergency__8VillagerFv(struct Villager* this) asm("?LookAtPreviousStateReactToTownEmergency@Villager@@QAE?AW4VILLAGER_STATES@@XZ");
+// win1.41 007569a0 mac 10564420 Villager::MoveToObjectValidate(void)
+void __fastcall MoveToObjectValidate__8VillagerFv(struct Villager* this) asm("?MoveToObjectValidate@Villager@@QAEXXZ");
+// win1.41 007569d0 mac 10564390 Villager::MoveOnStructureValidate(void)
+void __fastcall MoveOnStructureValidate__8VillagerFv(struct Villager* this) asm("?MoveOnStructureValidate@Villager@@QAEXXZ");
+// win1.41 00756a00 mac 10564260 Villager::ReactionValidate(void)
+void __fastcall ReactionValidate__8VillagerFv(struct Villager* this) asm("?ReactionValidate@Villager@@QAEXXZ");
+// win1.41 00756a50 mac 10564180 Villager::SexValidate(void)
+void __fastcall SexValidate__8VillagerFv(struct Villager* this) asm("?SexValidate@Villager@@QAEXXZ");
+// win1.41 00756a80 mac 10564120 Villager::WallhugAndReactionValidate(void)
+void __fastcall WallhugAndReactionValidate__8VillagerFv(struct Villager* this) asm("?WallhugAndReactionValidate@Villager@@QAEXXZ");
+// win1.41 00756aa0 mac 10564040 Villager::ClosestObjectValidate(void)
+void __fastcall ClosestObjectValidate__8VillagerFv(struct Villager* this) asm("?ClosestObjectValidate@Villager@@QAEXXZ");
+// win1.41 00756bc0 mac inlined Villager::FUN_00756bc0(float)
+void __fastcall FUN_00756bc0__8VillagerFf(struct Villager* this, const void* edx, float param_1) asm("?FUN_00756bc0@Villager@@UAEXM@Z");
 // win1.41 00756be0 mac 10563bb0 Villager::FindChildrenAndOrphanThem(void)
 void __fastcall FindChildrenAndOrphanThem__8VillagerFv(struct Villager* this) asm("?FindChildrenAndOrphanThem@Villager@@QAEXXZ");
+// win1.41 00756d30 mac 10573250 Villager::InteractDecideWhatToDoForOtherVillager(void)
+void __fastcall InteractDecideWhatToDoForOtherVillager__8VillagerFv(struct Villager* this) asm("?InteractDecideWhatToDoForOtherVillager@Villager@@QAEXXZ");
+// win1.41 00756e10 mac 105731e0 Villager::InteractDecideWhatToDo(void)
+void __fastcall InteractDecideWhatToDo__8VillagerFv(struct Villager* this) asm("?InteractDecideWhatToDo@Villager@@QAEXXZ");
 // win1.41 007579f0 mac 10573ed0 Villager::ChildGotoCreche(void)
 uint32_t __fastcall ChildGotoCreche__8VillagerFv(struct Villager* this) asm("?ChildGotoCreche@Villager@@QAEIXZ");
 // win1.41 00757e80 mac 10084940 Villager::CheckChild(void)
@@ -973,11 +994,25 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 007566c0 mac 10564b90 MissionaryControl::MissionaryControl(void)
 struct MissionaryControl* __fastcall __ct__17MissionaryControlFv(struct MissionaryControl* this) asm("??0MissionaryControl@@QAE@XZ");
+// win1.41 00756760 mac 10564aa0 MissionaryControl::MissionaryControl(Villager *, GPlayer *)
+struct MissionaryControl* __fastcall __ct__17MissionaryControlFP8VillagerP7GPlayer(struct MissionaryControl* this, const void* edx, struct Villager* param_1, struct GPlayer* param_2) asm("??0MissionaryControl@@QAE@PAVVillager@@PAVGPlayer@@@Z");
+
+// Non-virtual Destructors
+
+// win1.41 007567b0 mac inlined MissionaryControl::_dt(void)
+void __fastcall __dt__17MissionaryControlFv(struct MissionaryControl* this) asm("??1MissionaryControl@@UAE@XZ");
+
+// Non-virtual methods
+
+// win1.41 007567c0 mac 10564970 MissionaryControl::GetImpressiveValue(void)
+float __fastcall GetImpressiveValue__17MissionaryControlFv(struct MissionaryControl* this) asm("?GetImpressiveValue@MissionaryControl@@QAEMXZ");
+// win1.41 007567e0 mac 105647f0 MissionaryControl::Process(void)
+void __fastcall Process__17MissionaryControlFv(struct MissionaryControl* this) asm("?Process@MissionaryControl@@QAEXXZ");
 
 // Override methods
 
-// win1.41 00756740 mac 10564a00 MissionaryControl::_dt(void)
-void __fastcall __dt__17MissionaryControlFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GMissionaryControl@@UAEPAXI@Z");
+// win1.41 00756740 mac 10564a00 MissionaryControl::_dt(unsigned int)
+void __fastcall __dt__17MissionaryControlFUi(struct Base* this, const void* edx, uint32_t param_1) asm("??_GMissionaryControl@@UAEPAXI@Z");
 // win1.41 00756870 mac 10564750 MissionaryControl::ToBeDeleted(int)
 void __fastcall ToBeDeleted__17MissionaryControlFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@MissionaryControl@@UAEXH@Z");
 // win1.41 00756700 mac 10494550 MissionaryControl::GetPlayer(void)

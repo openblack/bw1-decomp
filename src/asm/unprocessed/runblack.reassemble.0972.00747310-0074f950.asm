@@ -195,7 +195,7 @@
 .extern ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z
 .extern ?SetSkeleton@Villager@@QAEXH@Z
 .extern ?SetTown@Villager@@QAEXPAVTown@@@Z
-.extern _jmp_addr_0x007567e0
+.extern ?Process@MissionaryControl@@QAEXXZ
 .extern ?FindChildrenAndOrphanThem@Villager@@QAEXXZ
 .extern _jmp_addr_0x00757180
 .extern ?ChildDecideWhatToDo@Villager@@QAE_NXZ
@@ -616,7 +616,7 @@ _jmp_addr_0x0074749c:    add                edi, 0x04                           
                          {disp8} je         _jmp_addr_0x007474ff                           // 0x007474aa    7453
 _jmp_addr_0x007474ac:    {disp8} mov        ebx, dword ptr [edi + 0x30]                    // 0x007474ac    8b5f30
                          mov.s              ecx, edi                                       // 0x007474af    8bcf
-                         call               _jmp_addr_0x007567e0                           // 0x007474b1    e82af30000
+                         call               ?Process@MissionaryControl@@QAEXXZ             // 0x007474b1    e82af30000
                          mov                edx, dword ptr [edi]                           // 0x007474b6    8b17
                          mov.s              ecx, edi                                       // 0x007474b8    8bcf
                          call               dword ptr [edx + 0x2c]                         // 0x007474ba    ff522c
