@@ -406,7 +406,7 @@
 .globl _jmp_addr_0x006e47f0
 .globl _jmp_addr_0x006e4830
 .globl _jmp_addr_0x006e4870
-.globl _jmp_addr_0x006e48a0
+.globl ?GetDefaultReactionMultiplier@Reaction@@QAEMPAVLiving@@@Z
 .globl _jmp_addr_0x006e5620
 .globl _jmp_addr_0x006e58c0
 .globl _jmp_addr_0x006e6770
@@ -8277,7 +8277,8 @@ _jmp_addr_0x006e4891:    ret                                                    
                          nop                                                              // 0x006e489d    90
                          nop                                                              // 0x006e489e    90
                          nop                                                              // 0x006e489f    90
-_jmp_addr_0x006e48a0:    push               ecx                                           // 0x006e48a0    51
+?GetDefaultReactionMultiplier@Reaction@@QAEMPAVLiving@@@Z:
+                         push               ecx                                           // 0x006e48a0    51
                          mov.s              edx, ecx                                      // 0x006e48a1    8bd1
                          {disp8} mov        eax, dword ptr [edx + 0x24]                   // 0x006e48a3    8b4224
                          lea                eax, dword ptr [eax + eax * 0x2]              // 0x006e48a6    8d0440

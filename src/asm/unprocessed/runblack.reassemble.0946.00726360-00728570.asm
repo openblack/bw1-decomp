@@ -34,7 +34,7 @@
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004369d0
-.extern _jmp_addr_0x00438770
+.extern ?DistanceChangeToBelief@GBelief@@SAMMM@Z
 .extern _jmp_addr_0x0043dc00
 .extern ??0MapCoords@@QAE@XZ
 .extern @__ct__7LHPointFfff@20
@@ -89,7 +89,7 @@
 .extern ??0GameThing@@QAE@XZ
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
-.extern _jmp_addr_0x0056fe70
+.extern ?GetBoredomMultiplier@GameThingWithPos@@QAEHPAVReaction@@@Z
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .extern ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
@@ -186,7 +186,7 @@
 .extern ?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z
 .extern ?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ
 .extern _jmp_addr_0x006e4750
-.extern _jmp_addr_0x006e48a0
+.extern ?GetDefaultReactionMultiplier@Reaction@@QAEMPAVLiving@@@Z
 .extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
 .extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x0071ab70

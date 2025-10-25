@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x00414730
 .extern _jmp_addr_0x00436960
 .extern _jmp_addr_0x00436a70
-.extern _jmp_addr_0x00438770
+.extern ?DistanceChangeToBelief@GBelief@@SAMMM@Z
 .extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
 .extern _jmp_addr_0x00476fa0
 .extern _jmp_addr_0x00477210
@@ -103,7 +103,7 @@
 .extern ?GetPlayerFromReal@GGame@@QAEPAVGPlayer@@K@Z
 .extern _jmp_addr_0x00551580
 .extern _jmp_addr_0x00555880
-.extern _jmp_addr_0x0056fe70
+.extern ?GetBoredomMultiplier@GameThingWithPos@@QAEHPAVReaction@@@Z
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern _jmp_addr_0x00578060
 .extern _jmp_addr_0x005780f0
@@ -135,7 +135,7 @@
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?GameFloatRand@GRand@@SAMM@Z
 .extern ?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ
-.extern _jmp_addr_0x006e48a0
+.extern ?GetDefaultReactionMultiplier@Reaction@@QAEMPAVLiving@@@Z
 .extern _jmp_addr_0x00711e10
 .extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
 .extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
@@ -4569,7 +4569,7 @@ _jmp_addr_0x0047b1c0:    {disp32} mov       eax, dword ptr [ecx + 0x00000160]   
                          push               edi                                           // 0x0047b216    57
                          mov.s              ecx, ebp                                      // 0x0047b217    8bcd
                          mov.s              ebx, eax                                      // 0x0047b219    8bd8
-                         call               _jmp_addr_0x006e48a0                          // 0x0047b21b    e880962600
+                         call               ?GetDefaultReactionMultiplier@Reaction@@QAEMPAVLiving@@@Z                          // 0x0047b21b    e880962600
                          mov                edx, dword ptr [edi]                          // 0x0047b220    8b17
                          mov.s              eax, ebx                                      // 0x0047b222    8bc3
                          shl                eax, 4                                        // 0x0047b224    c1e004
@@ -4603,7 +4603,7 @@ _jmp_addr_0x0047b25a:    {disp8} lea        edx, dword ptr [esi + 0x14]         
                          {disp8} mov        edx, dword ptr [esp + 0x20]                   // 0x0047b278    8b542420
                          push               ecx                                           // 0x0047b27c    51
                          push               edx                                           // 0x0047b27d    52
-                         call               _jmp_addr_0x00438770                          // 0x0047b27e    e8edd4fbff
+                         call               ?DistanceChangeToBelief@GBelief@@SAMMM@Z      // 0x0047b27e    e8edd4fbff
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x0047b283    d95c241c
                          mov                eax, dword ptr [esi]                          // 0x0047b287    8b06
                          add                esp, 0x08                                     // 0x0047b289    83c408
@@ -4612,7 +4612,7 @@ _jmp_addr_0x0047b25a:    {disp8} lea        edx, dword ptr [esi + 0x14]         
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x0047b294    d95c2410
                          push               ebp                                           // 0x0047b298    55
                          mov.s              ecx, edi                                      // 0x0047b299    8bcf
-                         call               _jmp_addr_0x0056fe70                          // 0x0047b29b    e8d04b0f00
+                         call               ?GetBoredomMultiplier@GameThingWithPos@@QAEHPAVReaction@@@Z                          // 0x0047b29b    e8d04b0f00
                          {disp8} fstp       dword ptr [esp + 0x20]                        // 0x0047b2a0    d95c2420
                          mov.s              ecx, esi                                      // 0x0047b2a4    8bce
                          call               _jmp_addr_0x0047d590                          // 0x0047b2a6    e8e5220000

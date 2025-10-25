@@ -16,6 +16,7 @@ struct Base;
 struct GPlayer;
 struct GameOSFile;
 struct GameThingWithPos;
+struct Living;
 struct ReactionInfo;
 
 struct Reaction
@@ -60,6 +61,8 @@ struct Reaction* __cdecl CreateReaction__8ReactionFP16GameThingWithPosUcP7GPlaye
 
 // win1.41 006e4700 mac 1008c230 Reaction::GetInfo(void) const
 struct ReactionInfo* __fastcall GetInfo__8ReactionCFv(struct Reaction* this) asm("?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ");
+// win1.41 006e48a0 mac 10134d90 Reaction::GetDefaultReactionMultiplier(Living *)
+float __fastcall GetDefaultReactionMultiplier__8ReactionFP6Living(struct Reaction* this, const void* edx, struct Living* param_1) asm("?GetDefaultReactionMultiplier@Reaction@@QAEMPAVLiving@@@Z");
 
 // Override methods
 

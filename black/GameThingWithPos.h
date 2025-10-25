@@ -334,6 +334,8 @@ void __fastcall __dt__16GameThingWithPosFv(struct GameThingWithPos* this, const 
 
 // Non-virtual methods
 
+// win1.41 0056fe70 mac 103793b0 GameThingWithPos::GetBoredomMultiplier(Reaction *)
+int __fastcall GetBoredomMultiplier__16GameThingWithPosFP8Reaction(struct GameThingWithPos* this, const void* edx, struct Reaction* param_1) asm("?GetBoredomMultiplier@GameThingWithPos@@QAEHPAVReaction@@@Z");
 // win1.41 005705d0 mac 10098a30 GameThingWithPos::SetToZero(void)
 void __fastcall SetToZero__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?SetToZero@GameThingWithPos@@QAEXXZ");
 

@@ -36,7 +36,7 @@
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004369d0
-.extern _jmp_addr_0x00438770
+.extern ?DistanceChangeToBelief@GBelief@@SAMMM@Z
 .extern _jmp_addr_0x0043dc00
 .extern ??0MapCoords@@QAE@XZ
 .extern @__ct__7LHPointFfff@20
@@ -93,7 +93,7 @@
 .extern ??0GameThing@@QAE@XZ
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
-.extern _jmp_addr_0x0056fe70
+.extern ?GetBoredomMultiplier@GameThingWithPos@@QAEHPAVReaction@@@Z
 .extern ?GetUpdateOfBoredomValue@GameThingWithPos@@UAEMPAUReaction@@PAV1@@Z
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
@@ -191,7 +191,7 @@
 .extern ?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z
 .extern ?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ
 .extern _jmp_addr_0x006e4750
-.extern _jmp_addr_0x006e48a0
+.extern ?GetDefaultReactionMultiplier@Reaction@@QAEMPAVLiving@@@Z
 .extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
 .extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x0071ab70
@@ -9011,7 +9011,7 @@ _jmp_addr_0x0072162f:    ret                                                    
                          push               edi                                                  // 0x00721643    57
                          mov.s              ecx, ebx                                             // 0x00721644    8bcb
                          {disp8} mov        dword ptr [esp + 0x10], eax                          // 0x00721646    89442410
-                         call               _jmp_addr_0x006e48a0                                 // 0x0072164a    e85132fcff
+                         call               ?GetDefaultReactionMultiplier@Reaction@@QAEMPAVLiving@@@Z                                 // 0x0072164a    e85132fcff
                          {disp8} fstp       dword ptr [esp + 0x14]                               // 0x0072164f    d95c2414
                          mov.s              ecx, esi                                             // 0x00721653    8bce
                          call               _jmp_addr_0x00720730                                 // 0x00721655    e8d6f0ffff
@@ -9032,7 +9032,7 @@ _jmp_addr_0x0072162f:    ret                                                    
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                          // 0x0072168a    8b4c2414
                          push               eax                                                  // 0x0072168e    50
                          push               ecx                                                  // 0x0072168f    51
-                         call               _jmp_addr_0x00438770                                 // 0x00721690    e8db70d1ff
+                         call               ?DistanceChangeToBelief@GBelief@@SAMMM@Z             // 0x00721690    e8db70d1ff
                          {disp8} fstp       dword ptr [esp + 0x20]                               // 0x00721695    d95c2420
                          mov                edx, dword ptr [esi]                                 // 0x00721699    8b16
                          add                esp, 0x08                                            // 0x0072169b    83c408
@@ -9041,7 +9041,7 @@ _jmp_addr_0x0072162f:    ret                                                    
                          {disp8} fstp       dword ptr [esp + 0x14]                               // 0x007216a6    d95c2414
                          push               ebx                                                  // 0x007216aa    53
                          mov.s              ecx, edi                                             // 0x007216ab    8bcf
-                         call               _jmp_addr_0x0056fe70                                 // 0x007216ad    e8bee7e4ff
+                         call               ?GetBoredomMultiplier@GameThingWithPos@@QAEHPAVReaction@@@Z                                 // 0x007216ad    e8bee7e4ff
                          {disp8} fmul       dword ptr [esp + 0x14]                               // 0x007216b2    d84c2414
                          pop                edi                                                  // 0x007216b6    5f
                          pop                esi                                                  // 0x007216b7    5e

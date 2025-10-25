@@ -260,7 +260,7 @@
 .globl _jmp_addr_0x00437eb0
 .globl _jmp_addr_0x004380b0
 .globl _jmp_addr_0x004383d0
-.globl _jmp_addr_0x00438770
+.globl ?DistanceChangeToBelief@GBelief@@SAMMM@Z
 .globl _jmp_addr_0x00438790
 .globl @SetBelief__7GBeliefFUlf@16
 .globl _jmp_addr_0x00438910

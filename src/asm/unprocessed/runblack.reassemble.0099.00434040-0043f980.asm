@@ -261,7 +261,7 @@
 .globl _jmp_addr_0x00437eb0
 .globl _jmp_addr_0x004380b0
 .globl _jmp_addr_0x004383d0
-.globl _jmp_addr_0x00438770
+.globl ?DistanceChangeToBelief@GBelief@@SAMMM@Z
 .globl _jmp_addr_0x00438790
 .globl @SetBelief__7GBeliefFUlf@16
 .globl _jmp_addr_0x00438910
@@ -7323,7 +7323,8 @@ _jmp_addr_0x00438762:    pop                edi                                 
                          nop                                                                     // 0x0043876d    90
                          nop                                                                     // 0x0043876e    90
                          nop                                                                     // 0x0043876f    90
-_jmp_addr_0x00438770:    {disp8} fld        dword ptr [esp + 0x04]                               // 0x00438770    d9442404
+?DistanceChangeToBelief@GBelief@@SAMMM@Z:
+                         {disp8} fld        dword ptr [esp + 0x04]                               // 0x00438770    d9442404
                          push               ecx                                                  // 0x00438774    51
                          {disp8} fdiv       dword ptr [esp + 0x0c]                               // 0x00438775    d874240c
                          fchs                                                                    // 0x00438779    d9e0
