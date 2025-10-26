@@ -478,6 +478,8 @@ void __fastcall FindChildrenAndOrphanThem__8VillagerFv(struct Villager* this) as
 void __fastcall InteractDecideWhatToDoForOtherVillager__8VillagerFv(struct Villager* this) asm("?InteractDecideWhatToDoForOtherVillager@Villager@@QAEXXZ");
 // win1.41 00756e10 mac 105731e0 Villager::InteractDecideWhatToDo(void)
 void __fastcall InteractDecideWhatToDo__8VillagerFv(struct Villager* this) asm("?InteractDecideWhatToDo@Villager@@QAEXXZ");
+// win1.41 00756e20 mac 10573130 Villager::GetDiscipleInteractState(void)
+uint32_t __fastcall GetDiscipleInteractState__8VillagerFv(struct Villager* this) asm("?GetDiscipleInteractState@Villager@@QAEIXZ");
 // win1.41 007579f0 mac 10573ed0 Villager::ChildGotoCreche(void)
 uint32_t __fastcall ChildGotoCreche__8VillagerFv(struct Villager* this) asm("?ChildGotoCreche@Villager@@QAEIXZ");
 // win1.41 00757e80 mac 10084940 Villager::CheckChild(void)

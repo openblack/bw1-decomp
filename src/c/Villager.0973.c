@@ -2878,7 +2878,7 @@ bool __fastcall DiscipleDecideWhatToDo__8VillagerFv(struct Villager* this)
     asm("add                esp, 0x14");                                      // 0x0075185a    83c414
     asm("push               eax");                                            // 0x0075185d    50
     asm("mov.s              ecx, esi");                                       // 0x0075185e    8bce
-    asm("call               _jmp_addr_0x00757180");                           // 0x00751860    e81b590000
+    asm("call               ?CheckMoveHouse@Villager@@QAEIPAVObject@@@Z");    // 0x00751860    e81b590000
     asm("cmp                eax, 0x01");                                      // 0x00751865    83f801
     asm("{disp8} jne        _jmp_addr_0x007518e7");                           // 0x00751868    757d
     asm("mov                edx, dword ptr [esi]");                           // 0x0075186a    8b16

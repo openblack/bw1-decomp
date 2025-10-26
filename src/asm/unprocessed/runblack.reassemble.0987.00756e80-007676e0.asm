@@ -309,8 +309,8 @@
 .extern _jmp_addr_0x0083f310
 .extern _jmp_addr_0x0086a1b0
 
-.globl _jmp_addr_0x00756e80
-.globl _jmp_addr_0x00757180
+.globl ?FindCloseObjectsForInteract@Villager@@QAE_NPAV?$LHOrderedLinkedList@VSortedObject@@@@ABUMapCoords@@@Z
+.globl ?CheckMoveHouse@Villager@@QAEIPAVObject@@@Z
 .globl ?ChildGotoCreche@Villager@@QAEIXZ
 .globl ?CheckChild@Villager@@QAEIXZ
 .globl ?ChildDecideWhatToDo@Villager@@QAE_NXZ
@@ -466,9 +466,8 @@
 .globl ?SetupReactToCreature@Villager@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .globl ?ShowPoisoned@Villager@@QAE_NXZ
 
-start_0x00756e80_0x007676e0:
-// Snippet: asm, [0x00756e80, 0x007676c0)
-_jmp_addr_0x00756e80:    sub                esp, 0x48                                     // 0x00756e80    83ec48
+?FindCloseObjectsForInteract@Villager@@QAE_NPAV?$LHOrderedLinkedList@VSortedObject@@@@ABUMapCoords@@@Z:
+                         sub                esp, 0x48                                     // 0x00756e80    83ec48
                          {disp8} mov        eax, dword ptr [esp + 0x50]                   // 0x00756e83    8b442450
                          push               ebx                                           // 0x00756e87    53
                          {disp8} mov        ebx, dword ptr [esp + 0x50]                   // 0x00756e88    8b5c2450
@@ -701,7 +700,8 @@ _jmp_addr_0x00757148:    {disp8} lea        edx, dword ptr [esp + 0x38]         
                          nop                                                              // 0x0075717d    90
                          nop                                                              // 0x0075717e    90
                          nop                                                              // 0x0075717f    90
-_jmp_addr_0x00757180:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00757180    8b442404
+?CheckMoveHouse@Villager@@QAEIPAVObject@@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00757180    8b442404
                          push               esi                                           // 0x00757184    56
                          push               edi                                           // 0x00757185    57
                          push               0x0                                           // 0x00757186    6a00
@@ -1057,7 +1057,7 @@ _jmp_addr_0x007574ed:    mov                eax, dword ptr [esi]                
                          ret                                                              // 0x007574fa    c3
 _jmp_addr_0x007574fb:    push               edi                                           // 0x007574fb    57
                          mov.s              ecx, esi                                      // 0x007574fc    8bce
-                         call               _jmp_addr_0x00757180                          // 0x007574fe    e87dfcffff
+                         call               ?CheckMoveHouse@Villager@@QAEIPAVObject@@@Z   // 0x007574fe    e87dfcffff
                          cmp                eax, 0x01                                     // 0x00757503    83f801
                          {disp8} jne        _jmp_addr_0x0075750c                          // 0x00757506    7504
                          pop                edi                                           // 0x00757508    5f
@@ -14711,7 +14711,7 @@ _jmp_addr_0x0076075b:    push               0x1                                 
                          mov.s              ecx, esi                                      // 0x00760793    8bce
                          {disp8} mov        dword ptr [esp + 0x1c], edi                   // 0x00760795    897c241c
                          {disp8} mov        dword ptr [esp + 0x20], edi                   // 0x00760799    897c2420
-                         call               _jmp_addr_0x00756e80                          // 0x0076079d    e8de66ffff
+                         call               ?FindCloseObjectsForInteract@Villager@@QAE_NPAV?$LHOrderedLinkedList@VSortedObject@@@@ABUMapCoords@@@Z                          // 0x0076079d    e8de66ffff
                          test               eax, eax                                      // 0x007607a2    85c0
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                   // 0x007607a4    8b4c2414
                          {disp32} je        _jmp_addr_0x007608b7                          // 0x007607a8    0f8409010000
