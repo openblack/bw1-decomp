@@ -197,7 +197,6 @@
 .extern ?SetTown@Villager@@QAEXPAVTown@@@Z
 .extern ?Process@MissionaryControl@@QAEXXZ
 .extern ?FindChildrenAndOrphanThem@Villager@@QAEXXZ
-.extern _jmp_addr_0x00757180
 .extern ?ChildDecideWhatToDo@Villager@@QAE_NXZ
 .extern ?ChildBecomesAdult@Villager@@QAE_NXZ
 .extern _jmp_addr_0x00758340
