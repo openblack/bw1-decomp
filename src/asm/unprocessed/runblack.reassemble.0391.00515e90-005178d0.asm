@@ -23,7 +23,7 @@
 .extern ?Draw@MobileObject@@UAEXXZ
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
-.extern _jmp_addr_0x005575a0
+.extern ?GetVisualTime@GGameInfo@@QAEMXZ
 .extern _jmp_addr_0x005575e0
 .extern _jmp_addr_0x005c9090
 .extern _jmp_addr_0x005d56c0
@@ -50,7 +50,7 @@
 .extern _jmp_addr_0x008398a0
 .extern _jmp_addr_0x0083add0
 .extern _jmp_addr_0x00868c80
-.extern _jmp_addr_0x0086a1b0
+.extern ?Time2SkyType@LH3DSky@@QAEMM@Z
 
 .extern ?Draw@Abode@@UAEXXZ
 .globl _jmp_addr_0x005167d0
@@ -364,11 +364,11 @@ _jmp_addr_0x00516137:    {disp32} mov       eax, dword ptr [_game]              
                          test               ah, 0x01                                      // 0x005161db    f6c401
                          {disp32} je        _jmp_addr_0x00516288                          // 0x005161de    0f84a4000000
                          mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x005161e4    b9f819d000
-                         call               _jmp_addr_0x005575a0                          // 0x005161e9    e8b2130400
+                         call               ?GetVisualTime@GGameInfo@@QAEMXZ              // 0x005161e9    e8b2130400
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x005161ee    d95c2410
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                   // 0x005161f2    8b4c2410
                          push               ecx                                           // 0x005161f6    51
-                         call               _jmp_addr_0x0086a1b0                          // 0x005161f7    e8b43f3500
+                         call               ?Time2SkyType@LH3DSky@@QAEMM@Z                // 0x005161f7    e8b43f3500
                          {disp32} fcom      dword ptr [__real@3f333333]                   // 0x005161fc    d81538b28a00
                          add                esp, 0x04                                     // 0x00516202    83c404
                          {disp8} mov        dword ptr [esp + 0x2c], ebx                   // 0x00516205    895c242c

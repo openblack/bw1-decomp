@@ -43,7 +43,7 @@
 
 .globl _jmp_addr_0x0086a110
 .globl _jmp_addr_0x0086a160
-.globl _jmp_addr_0x0086a1b0
+.globl ?Time2SkyType@LH3DSky@@QAEMM@Z
 .globl _jmp_addr_0x0086a270
 .globl _jmp_addr_0x0086a2c0
 .globl _jmp_addr_0x0086a330
@@ -135,7 +135,8 @@ _jmp_addr_0x0086a160:    {disp32} mov       eax, dword ptr [data_bytes + 0x2735b
                          nop                                                               // 0x0086a1ad    90
                          nop                                                               // 0x0086a1ae    90
                          nop                                                               // 0x0086a1af    90
-_jmp_addr_0x0086a1b0:    push               ecx                                            // 0x0086a1b0    51
+?Time2SkyType@LH3DSky@@QAEMM@Z:
+                         push               ecx                                            // 0x0086a1b0    51
                          {disp8} fld        dword ptr [esp + 0x08]                         // 0x0086a1b1    d9442408
                          {disp8} mov        dword ptr [esp + 0x00], 0x00000000             // 0x0086a1b5    c744240000000000
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x261c0]              // 0x0086a1bd    d81dc0f18c00
@@ -243,7 +244,7 @@ _jmp_addr_0x0086a2f5:    {disp32} fsub      dword ptr [rdata_bytes + 0x2126c]   
 _jmp_addr_0x0086a30c:    {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x0086a30c    8b442404
                          {disp32} fstp      dword ptr [data_bytes + 0x5dc6c4]              // 0x0086a310    d91dc426fa00
                          push               eax                                            // 0x0086a316    50
-                         call               _jmp_addr_0x0086a1b0                           // 0x0086a317    e894feffff
+                         call               ?Time2SkyType@LH3DSky@@QAEMM@Z                 // 0x0086a317    e894feffff
                          {disp32} fstp      dword ptr [data_bytes + 0x5dc6bc]              // 0x0086a31c    d91dbc26fa00
                          add                esp, 0x04                                      // 0x0086a322    83c404
                          ret                                                               // 0x0086a325    c3
@@ -448,7 +449,7 @@ _jmp_addr_0x0086a530:    {disp8} lea        eax, dword ptr [esp + 0x14]         
                          push               esi                                            // 0x0086a57d    56
                          push               0x0                                            // 0x0086a57e    6a00
                          push               edi                                            // 0x0086a580    57
-                         call               _jmp_addr_0x0086a1b0                           // 0x0086a581    e82afcffff
+                         call               ?Time2SkyType@LH3DSky@@QAEMM@Z                 // 0x0086a581    e82afcffff
                          fstp               dword ptr [esp]                                // 0x0086a586    d91c24
                          call               _jmp_addr_0x0086b7f0                           // 0x0086a589    e862120000
                          {disp8} fld        dword ptr [esp + 0x38]                         // 0x0086a58e    d9442438

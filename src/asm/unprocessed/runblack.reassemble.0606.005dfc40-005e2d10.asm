@@ -65,7 +65,7 @@
 .extern ?Free@LH3DMem@@SAXPAX@Z
 .extern _jmp_addr_0x0086a110
 .extern _jmp_addr_0x0086a160
-.extern _jmp_addr_0x0086a1b0
+.extern ?Time2SkyType@LH3DSky@@QAEMM@Z
 .extern _jmp_addr_0x0086a270
 .extern _jmp_addr_0x0086a2c0
 .extern _jmp_addr_0x0086a330
@@ -3066,7 +3066,7 @@ _jmp_addr_0x005e1fe0:    push               ecx                                 
 _jmp_addr_0x005e201c:    {disp8} mov        ecx, dword ptr [esp + 0x00]                    // 0x005e201c    8b4c2400
                          push               ecx                                            // 0x005e2020    51
                          {disp32} mov       dword ptr [data_bytes + 0x22d388], 0x40200000  // 0x005e2021    c7058833bf0000002040
-                         call               _jmp_addr_0x0086a1b0                           // 0x005e202b    e880812800
+                         call               ?Time2SkyType@LH3DSky@@QAEMM@Z                 // 0x005e202b    e880812800
                          {disp32} fld       dword ptr [data_bytes + 0x22d390]              // 0x005e2030    d9059033bf00
                          {disp32} fsub      dword ptr [data_bytes + 0x22d38c]              // 0x005e2036    d8258c33bf00
                          add                esp, 0x04                                      // 0x005e203c    83c404

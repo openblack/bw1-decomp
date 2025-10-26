@@ -67,6 +67,8 @@ def replace_function_name_in_repo_files(source: str, destination: str):
 def insert_global_function_name_to_asm_file(addr: int, label: str):
     pattern = f"// 0x{addr:08x}"
     filename = get_grep_filename(pattern)
+    if not filename:
+        raise ValueError(f'Could not find pattern "{pattern}"')
     lines = open(filename).read().splitlines()
 
     # Insert `{label}:` before the line matching `// {addr}`

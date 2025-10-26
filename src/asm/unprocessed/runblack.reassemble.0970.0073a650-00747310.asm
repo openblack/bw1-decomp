@@ -358,7 +358,7 @@
 .globl _jmp_addr_0x0073fd40
 .globl _jmp_addr_0x0073fda0
 .globl _jmp_addr_0x0073fe60
-.globl _jmp_addr_0x0073ffd0
+.globl ?IsSpaceForNewVillager@Town@@QAE_NXZ
 .globl _jmp_addr_0x00740030
 .globl _jmp_addr_0x007400d0
 .globl _jmp_addr_0x00740180
@@ -9145,7 +9145,8 @@ _jmp_addr_0x0073ffbc:    pop                esi                                 
                          nop                                                                     // 0x0073ffcd    90
                          nop                                                                     // 0x0073ffce    90
                          nop                                                                     // 0x0073ffcf    90
-_jmp_addr_0x0073ffd0:    push               esi                                                  // 0x0073ffd0    56
+?IsSpaceForNewVillager@Town@@QAE_NXZ:
+                         push               esi                                                  // 0x0073ffd0    56
                          mov.s              esi, ecx                                             // 0x0073ffd1    8bf1
                          mov                eax, dword ptr [esi]                                 // 0x0073ffd3    8b06
                          push               edi                                                  // 0x0073ffd5    57
@@ -16484,7 +16485,7 @@ _jmp_addr_0x007448dd:    pop                esi                                 
                          mov.s              ecx, esi                                             // 0x00744916    8bce
                          call               dword ptr [edx + 0x48]                               // 0x00744918    ff5248
                          mov.s              ecx, eax                                             // 0x0074491b    8bc8
-                         call               _jmp_addr_0x0073ffd0                                 // 0x0074491d    e8aeb6ffff
+                         call               ?IsSpaceForNewVillager@Town@@QAE_NXZ                 // 0x0074491d    e8aeb6ffff
                          neg                al                                                   // 0x00744922    f6d8
                          pop                edi                                                  // 0x00744924    5f
                          pop                esi                                                  // 0x00744925    5e

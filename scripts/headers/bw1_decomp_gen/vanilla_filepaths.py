@@ -1293,6 +1293,7 @@ ROOMMATE_CLASS_MAP = {
     "LivingDLList": "Living",
     "DataForScriptRemind": "Living", # Validated in Create__19DataForScriptRemindFv
     "Villager__StateTable": "Villager",
+    "GetNextDstPromemade__FP6CrecheRlP9MapCoordsRC9MapCoords": "Villager",
     "Animal__StateTable": "Animal",
     "Cow": "AnimalCow",
     "Dove": "AnimalDove",
@@ -1484,6 +1485,7 @@ ROOMMATE_CLASS_MAP = {
     "Resolve__26IntersectIntervalCircle_1_Fv": "MobileWallHug",
     "MobileWallHug_InCircleStuff": "MobileWallHug",
     "get_villager_state_table": "Villager",
+    "SortedObject": "Villager",
     "CPController": "Citadel",
     "hypotenuse__Fll": "LHMath",
     "LHArcTan__Fll": "LHMath",

@@ -35,7 +35,7 @@
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00555880
-.extern _jmp_addr_0x005575a0
+.extern ?GetVisualTime@GGameInfo@@QAEMXZ
 .extern _jmp_addr_0x005575e0
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
@@ -151,7 +151,7 @@
 .extern _jmp_addr_0x008447b0
 .extern _jmp_addr_0x00844a20
 .extern _jmp_addr_0x00848600
-.extern _jmp_addr_0x0086a1b0
+.extern ?Time2SkyType@LH3DSky@@QAEMM@Z
 .extern _jmp_addr_0x0086d360
 .extern _jmp_addr_0x0086d460
 .extern _Release__13LH3DLandscapeFv@0
@@ -2694,10 +2694,10 @@ _jmp_addr_0x005e5830:    sub                esp, 0x20                           
 _jmp_addr_0x005e58ce:    fstp               st(0)                                         // 0x005e58ce    ddd8
 _jmp_addr_0x005e58d0:    push               esi                                           // 0x005e58d0    56
                          mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x005e58d1    b9f819d000
-                         call               _jmp_addr_0x005575a0                          // 0x005e58d6    e8c51cf7ff
+                         call               ?GetVisualTime@GGameInfo@@QAEMXZ              // 0x005e58d6    e8c51cf7ff
                          push               ecx                                           // 0x005e58db    51
                          fstp               dword ptr [esp]                               // 0x005e58dc    d91c24
-                         call               _jmp_addr_0x0086a1b0                          // 0x005e58df    e8cc482800
+                         call               ?Time2SkyType@LH3DSky@@QAEMM@Z                // 0x005e58df    e8cc482800
                          {disp32} mov       eax, dword ptr [data_bytes + 0x5dc6a4]        // 0x005e58e4    a1a426fa00
                          {disp8} fstp       dword ptr [esp + 0x0c]                        // 0x005e58e9    d95c240c
                          xor.s              edx, edx                                      // 0x005e58ed    33d2
