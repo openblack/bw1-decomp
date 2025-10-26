@@ -35,7 +35,7 @@
 .extern _jmp_addr_0x005302a0
 .extern ?GetFlockPos@Flock@@QAEPAUMapCoords@@XZ
 .extern _jmp_addr_0x0053ad00
-.extern _jmp_addr_0x005575a0
+.extern ?GetVisualTime@GGameInfo@@QAEMXZ
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
@@ -11767,7 +11767,7 @@ _jmp_addr_0x0041fe67:    mov.s              eax, edi                            
                          pop                esi                                           // 0x0041fe91    5e
                          ret                                                              // 0x0041fe92    c3
 _jmp_addr_0x0041fe93:    mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x0041fe93    b9f819d000
-                         call               _jmp_addr_0x005575a0                          // 0x0041fe98    e803771300
+                         call               ?GetVisualTime@GGameInfo@@QAEMXZ              // 0x0041fe98    e803771300
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x14c90]             // 0x0041fe9d    d81d90dc8b00
                          fnstsw             ax                                            // 0x0041fea3    dfe0
                          test               ah, 0x41                                      // 0x0041fea5    f6c441
@@ -14448,7 +14448,7 @@ _jmp_addr_0x00421a4b:    mov                eax, dword ptr [esi]                
                          cmp                eax, 0x01                                     // 0x00421a55    83f801
                          {disp32} jne       _jmp_addr_0x00421c3c                          // 0x00421a58    0f85de010000
                          mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00421a5e    b9f819d000
-                         call               _jmp_addr_0x005575a0                          // 0x00421a63    e8385b1300
+                         call               ?GetVisualTime@GGameInfo@@QAEMXZ              // 0x00421a63    e8385b1300
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x17d88]             // 0x00421a68    d81d880d8c00
                          fnstsw             ax                                            // 0x00421a6e    dfe0
                          test               ah, 0x41                                      // 0x00421a70    f6c441

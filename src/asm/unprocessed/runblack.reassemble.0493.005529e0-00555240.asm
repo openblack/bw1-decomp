@@ -77,7 +77,7 @@
 .extern _jmp_addr_0x00557020
 .extern _jmp_addr_0x00557070
 .extern _jmp_addr_0x00557100
-.extern _jmp_addr_0x005575a0
+.extern ?GetVisualTime@GGameInfo@@QAEMXZ
 .extern _jmp_addr_0x005575d0
 .extern _jmp_addr_0x00557610
 .extern @SetVisualTimeCycle__9GGameInfoFfff@20
@@ -2267,7 +2267,7 @@ _jmp_addr_0x005543f1:    {disp32} mov       eax, dword ptr [esi + 0x00000214]   
                          add.s              eax, ecx                                      // 0x005543fe    03c1
                          {disp32} mov       dword ptr [esi + 0x00000214], eax             // 0x00554400    898614020000
 _jmp_addr_0x00554406:    mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00554406    b9f819d000
-                         call               _jmp_addr_0x005575a0                          // 0x0055440b    e890310000
+                         call               ?GetVisualTime@GGameInfo@@QAEMXZ              // 0x0055440b    e890310000
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x00554410    d95c2414
                          cmp                dword ptr [data_bytes + 0x226990], ebx        // 0x00554414    391d90c9be00
                          {disp32} je        _jmp_addr_0x00554556                          // 0x0055441a    0f8436010000

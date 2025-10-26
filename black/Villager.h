@@ -11,6 +11,7 @@
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <lionhead/lhlib/ver5.0/LHOrderedLinkedList.h> /* For DECLARE_LH_ORDERED_LINKED_LIST */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
@@ -28,7 +29,9 @@ struct Base;
 struct BuildingSite;
 struct Citadel;
 struct Creature;
+struct Creche;
 struct EffectValues;
+struct Field;
 struct FireEffect;
 struct Football;
 struct GInterfaceStatus;
@@ -59,6 +62,14 @@ struct Villager__StateTable
   struct Living__StateTableEntry entries[VILLAGER_STATE_LAST_STATE];  /* 0x0 */
 };
 static_assert(sizeof(struct Villager__StateTable) == 0x8f70, "Data type is of wrong size");
+
+struct SortedObject
+{
+  uint8_t field_0x0;
+};
+static_assert(sizeof(struct SortedObject) == 0x1, "Data type is of wrong size");
+
+DECLARE_LH_ORDERED_LINKED_LIST(SortedObject);
 
 struct VillagerVftable
 {
@@ -480,16 +491,56 @@ void __fastcall InteractDecideWhatToDoForOtherVillager__8VillagerFv(struct Villa
 void __fastcall InteractDecideWhatToDo__8VillagerFv(struct Villager* this) asm("?InteractDecideWhatToDo@Villager@@QAEXXZ");
 // win1.41 00756e20 mac 10573130 Villager::GetDiscipleInteractState(void)
 uint32_t __fastcall GetDiscipleInteractState__8VillagerFv(struct Villager* this) asm("?GetDiscipleInteractState@Villager@@QAEIXZ");
+// win1.41 00756e80 mac 1002ae20 Villager::FindCloseObjectsForInteract(class LHOrderedLinkedList<class SortedObject> *, struct MapCoords const &)
+bool32_t __fastcall FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedList_12SortedObject_RC9MapCoords(struct Villager* this, const void* edx, struct LHOrderedLinkedList__SortedObject* param_1, const struct MapCoords* param_2) asm("?FindCloseObjectsForInteract@Villager@@QAE_NPAV?$LHOrderedLinkedList@VSortedObject@@@@ABUMapCoords@@@Z");
+// win1.41 00757180 mac 10572de0 Villager::CheckMoveHouse(Object *)
+bool32_t __fastcall CheckMoveHouse__8VillagerFP6Object(struct Villager* this, const void* edx, struct Object* object) asm("?CheckMoveHouse@Villager@@QAEIPAVObject@@@Z");
+// win1.41 00757210 mac 10572cf0 Villager::CheckMoveIntoTown(Town &)
+bool32_t __fastcall CheckMoveIntoTown__8VillagerFR4Town(struct Villager* this, const void* edx, struct Town* param_1) asm("?CheckMoveIntoTown@Villager@@QAEIAAVTown@@@Z");
+// win1.41 00757260 mac 10572cb0 Villager::CheckInteractWithAnimal(void)
+bool32_t __fastcall CheckInteractWithAnimal__8VillagerFv(struct Villager* this) asm("?CheckInteractWithAnimal@Villager@@QAEIXZ");
+// win1.41 00757270 mac 105729e0 Villager::CheckInteractWithWorshipSite(void)
+bool32_t __fastcall CheckInteractWithWorshipSite__8VillagerFv(struct Villager* this) asm("?CheckInteractWithWorshipSite@Villager@@QAEIXZ");
+// win1.41 00757420 mac 10572700 Villager::CheckInteractWithAbode(void)
+bool32_t __fastcall CheckInteractWithAbode__8VillagerFv(struct Villager* this) asm("?CheckInteractWithAbode@Villager@@QAEIXZ");
+// win1.41 00757590 mac 105725c0 Villager::CheckInteractWithField(void)
+bool32_t __fastcall CheckInteractWithField__8VillagerFv(struct Villager* this) asm("?CheckInteractWithField@Villager@@QAEIXZ");
+// win1.41 00757610 mac 10572480 Villager::CheckInteractWithFishFarm(void)
+bool32_t __fastcall CheckInteractWithFishFarm__8VillagerFv(struct Villager* this) asm("?CheckInteractWithFishFarm@Villager@@QAEIXZ");
+// win1.41 00757690 mac 10572350 Villager::CheckInteractWithTree(void)
+bool32_t __fastcall CheckInteractWithTree__8VillagerFv(struct Villager* this) asm("?CheckInteractWithTree@Villager@@QAEIXZ");
+// win1.41 00757720 mac 10572310 Villager::CheckInteractWithBall(void)
+bool32_t __fastcall CheckInteractWithBall__8VillagerFv(struct Villager* this) asm("?CheckInteractWithBall@Villager@@QAEIXZ");
+// win1.41 00757730 mac 105722d0 Villager::CheckInteractWithPot(void)
+bool32_t __fastcall CheckInteractWithPot__8VillagerFv(struct Villager* this) asm("?CheckInteractWithPot@Villager@@QAEIXZ");
+// win1.41 00757740 mac 10572290 Villager::CheckInteractWithRock(void)
+bool32_t __fastcall CheckInteractWithRock__8VillagerFv(struct Villager* this) asm("?CheckInteractWithRock@Villager@@QAEIXZ");
+// win1.41 00757750 mac 10572240 Villager::CheckInteractWithFootBall(void)
+bool32_t __fastcall CheckInteractWithFootBall__8VillagerFv(struct Villager* this) asm("?CheckInteractWithFootBall@Villager@@QAEIXZ");
+// win1.41 00757760 mac 105720a0 Villager::CheckInteractWithVillager(void)
+bool32_t __fastcall CheckInteractWithVillager__8VillagerFv(struct Villager* this) asm("?CheckInteractWithVillager@Villager@@QAEIXZ");
+// win1.41 00757820 mac 10572010 Villager::SetDiscipleFollower(VILLAGER_DISCIPLE)
+void __fastcall SetDiscipleFollower__8VillagerF17VILLAGER_DISCIPLE(struct Villager* this, const void* edx, enum VILLAGER_DISCIPLE param_1) asm("?SetDiscipleFollower@Villager@@QAEXW4VILLAGER_DISCIPLE@@@Z");
+// win1.41 00757850 mac 10571fc0 Villager::CheckInteractWithMagicLiving(void)
+bool32_t __fastcall CheckInteractWithMagicLiving__8VillagerFv(struct Villager* this) asm("?CheckInteractWithMagicLiving@Villager@@QAEIXZ");
+// win1.41 007578c0 mac 10573fc0 Villager::ChildFollowsMother(void)
+bool32_t __fastcall ChildFollowsMother__8VillagerFv(struct Villager* this) asm("?ChildFollowsMother@Villager@@QAEIXZ");
 // win1.41 007579f0 mac 10573ed0 Villager::ChildGotoCreche(void)
 uint32_t __fastcall ChildGotoCreche__8VillagerFv(struct Villager* this) asm("?ChildGotoCreche@Villager@@QAEIXZ");
+// win1.41 00757c90 mac 1006d8c0 Villager::ChildAtCreche(void)
+bool32_t __fastcall ChildAtCreche__8VillagerFv(struct Villager* this) asm("?ChildAtCreche@Villager@@QAEIXZ");
 // win1.41 00757e80 mac 10084940 Villager::CheckChild(void)
 uint32_t __fastcall CheckChild__8VillagerFv(struct Villager* this) asm("?CheckChild@Villager@@QAEIXZ");
 // win1.41 00757ec0 mac 10573a80 Villager::ChildDecideWhatToDo(void)
 bool32_t __fastcall ChildDecideWhatToDo__8VillagerFv(struct Villager* this) asm("?ChildDecideWhatToDo@Villager@@QAE_NXZ");
+// win1.41 00757f00 mac 10573a20 Villager::CheckChildActivity(void)
+bool32_t __fastcall CheckChildActivity__8VillagerFv(struct Villager* this) asm("?CheckChildActivity@Villager@@QAEIXZ");
 // win1.41 00757f10 mac 10573990 Villager::ChildBecomesAdult(void)
 bool32_t __fastcall ChildBecomesAdult__8VillagerFv(struct Villager* this) asm("?ChildBecomesAdult@Villager@@QAE_NXZ");
 // win1.41 00757f40 mac 10095500 Villager::IsMotherAlive(void)
 bool32_t __fastcall IsMotherAlive__8VillagerFv(struct Villager* this) asm("?IsMotherAlive@Villager@@QAE_NXZ");
+// win1.41 00757f90 mac 10573570 Villager::CheckNeedNewAbode(void)
+bool32_t __fastcall CheckNeedNewAbode__8VillagerFv(struct Villager* this) asm("?CheckNeedNewAbode@Villager@@QAEIXZ");
 // win1.41 00758080 mac 105734a0 Villager::MoveVillagerToAbode(Abode*)
 void __fastcall MoveVillagerToAbode__8VillagerFP5Abode(struct Villager* this, const void* edx, struct Abode* abode) asm("?MoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z");
 // win1.41 007580d0 mac 105733f0 Villager::MakeChildOrphaned(Villager *)
@@ -500,6 +551,8 @@ uint32_t __fastcall CheckNeededForTownDesire__8VillagerFv(struct Villager* this)
 uint32_t __fastcall ArrivesAtStoragePitForBuildingMaterials__8VillagerFv(struct Villager* this) asm("?ArrivesAtStoragePitForBuildingMaterials@Villager@@QAEIXZ");
 // win1.41 00758af0 mac 10575ab0 Villager::ArrivesAtBuildingSite(void)
 uint32_t __fastcall ArrivesAtBuildingSite__8VillagerFv(struct Villager* this) asm("?ArrivesAtBuildingSite@Villager@@QAEIXZ");
+// win1.41 00759c40 mac 10578150 Villager::SetFarmerGotoField(Field *, int)
+bool32_t __fastcall SetFarmerGotoField__8VillagerFP5Fieldi(struct Villager* this, const void* edx, struct Field* param_1, int param_2) asm("?SetFarmerGotoField@Villager@@QAEIPAVField@@H@Z");
 // win1.41 0075b940 mac 1057b620 Villager::ShowPoisoned(void)
 bool32_t __fastcall ShowPoisoned__8VillagerFv(struct Villager* this) asm("?ShowPoisoned@Villager@@QAE_NXZ");
 // win1.41 0075b990 mac 1000a640 Villager::ChangeStateToFindFoodToEat(void)
@@ -560,6 +613,8 @@ uint32_t __fastcall ArrivesAtHomeWithFood__8VillagerFv(struct Villager* this) as
 uint32_t __fastcall Drowning__8VillagerFv(struct Villager* this) asm("?Drowning@Villager@@QAEIXZ");
 // win1.41 0076a8d0 mac 1059a060 Villager::VagrantStart(void)
 uint32_t __fastcall VagrantStart__8VillagerFv(struct Villager* this) asm("?VagrantStart@Villager@@QAEIXZ");
+// win1.41 0076b030 mac 1000ab40 Villager::IsInACreaturesHand(void)
+bool32_t __fastcall IsInACreaturesHand__8VillagerFv(struct Villager* this) asm("?IsInACreaturesHand@Villager@@QAE_NXZ");
 // win1.41 0076b090 mac 1009deb0 Villager::SetupPauseForASecond(VILLAGER_STATES)
 uint32_t __fastcall SetupPauseForASecond__8VillagerF15VILLAGER_STATES(struct Villager* this, const void* edx, enum VILLAGER_STATES state) asm("?SetupPauseForASecond@Villager@@QAEIW4VILLAGER_STATES@@@Z");
 // win1.41 0076b3f0 mac 1001b410 Villager::GoAndChilloutOutsideHome(void)
@@ -1031,5 +1086,8 @@ uint32_t __fastcall GetSaveType__17MissionaryControlFv(struct GameThing* this) a
 float __fastcall GetImpressiveValue__17MissionaryControlFP6LivingP8Reaction(struct GameThingWithPos* this, const void* edx, struct Living* param_1, struct Reaction* param_2) asm("?GetImpressiveValue@MissionaryControl@@UAEMPAVLiving@@PAVReaction@@@Z");
 // win1.41 00756710 mac 105638f0 MissionaryControl::GetText(void)
 const char* __fastcall GetText__17MissionaryControlFv(struct GameThingWithPos* this) asm("?GetText@MissionaryControl@@UAEPBDXZ");
+
+// win1.41 00757a50 mac 1002ab10 GetNextDstPromemade(Creche *, long &, MapCoords *, MapCoords const &)
+void __cdecl GetNextDstPromemade__FP6CrecheRlP9MapCoordsRC9MapCoords(struct Creche* param_1, long* param_2, struct MapCoords* param_3, const struct MapCoords* param_4) asm("?GetNextDstPromemade@@YAXPAVCreche@@AAJPAUMapCoords@@ABU2@@Z");
 
 #endif /* BW1_DECOMP_VILLAGER_INCLUDED_H */

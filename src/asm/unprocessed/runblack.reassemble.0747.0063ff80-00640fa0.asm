@@ -15,7 +15,7 @@
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
-.extern _jmp_addr_0x005575a0
+.extern ?GetVisualTime@GGameInfo@@QAEMXZ
 .extern _jmp_addr_0x00591010
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x0063ed40
@@ -37,7 +37,7 @@
 .extern ?StartFrame@LH3DRender@@SAXXZ
 .extern ?FinishFrame@LH3DRender@@QAEXXZ
 .extern _jmp_addr_0x00848350
-.extern _jmp_addr_0x0086a1b0
+.extern ?Time2SkyType@LH3DSky@@QAEMM@Z
 
 .globl _jmp_addr_0x006405f0
 .globl _jmp_addr_0x00640cb0
@@ -682,11 +682,11 @@ _jmp_addr_0x0064065f:    push              ebp                                  
                          call              _fwrite                                       // 0x00640729    e8746e1800
                          add               esp, 0x20                                     // 0x0064072e    83c420
                          mov               ecx, OFFSET _GGameInfo_00d019f8               // 0x00640731    b9f819d000
-                         call              _jmp_addr_0x005575a0                          // 0x00640736    e8656ef1ff
+                         call              ?GetVisualTime@GGameInfo@@QAEMXZ              // 0x00640736    e8656ef1ff
                          {disp8} fstp      dword ptr [esp + 0x24]                        // 0x0064073b    d95c2424
                          {disp8} mov       ecx, dword ptr [esp + 0x24]                   // 0x0064073f    8b4c2424
                          push              ecx                                           // 0x00640743    51
-                         call              _jmp_addr_0x0086a1b0                          // 0x00640744    e8679a2200
+                         call              ?Time2SkyType@LH3DSky@@QAEMM@Z                // 0x00640744    e8679a2200
                          {disp8} fstp      dword ptr [esp + 0x54]                        // 0x00640749    d95c2454
                          {disp32} fld      dword ptr [data_bytes + 0x22d37c]             // 0x0064074d    d9057c33bf00
                          push              esi                                           // 0x00640753    56

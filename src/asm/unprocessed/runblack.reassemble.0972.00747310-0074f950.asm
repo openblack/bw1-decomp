@@ -64,7 +64,7 @@
 .extern _jmp_addr_0x00555240
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x00555880
-.extern _jmp_addr_0x005575a0
+.extern ?GetVisualTime@GGameInfo@@QAEMXZ
 .extern _jmp_addr_0x00557ae0
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
@@ -250,7 +250,7 @@
 .extern _jmp_addr_0x00841170
 .extern _jmp_addr_0x00841260
 .extern _jmp_addr_0x00841290
-.extern _jmp_addr_0x0086a1b0
+.extern ?Time2SkyType@LH3DSky@@QAEMM@Z
 
 .globl ?Process@Town@@QAEIXZ
 .globl ?ProcessTownEmergency@Town@@QAEXXZ
@@ -2509,11 +2509,11 @@ _jmp_addr_0x0074888d:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          push               esi                                            // 0x007488c1    56
                          mov.s              esi, ecx                                       // 0x007488c2    8bf1
                          mov                ecx, OFFSET _GGameInfo_00d019f8                // 0x007488c4    b9f819d000
-                         call               _jmp_addr_0x005575a0                           // 0x007488c9    e8d2ece0ff
+                         call               ?GetVisualTime@GGameInfo@@QAEMXZ               // 0x007488c9    e8d2ece0ff
                          {disp8} fstp       dword ptr [esp + 0x04]                         // 0x007488ce    d95c2404
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x007488d2    8b442404
                          push               eax                                            // 0x007488d6    50
-                         call               _jmp_addr_0x0086a1b0                           // 0x007488d7    e8d4181200
+                         call               ?Time2SkyType@LH3DSky@@QAEMM@Z                 // 0x007488d7    e8d4181200
                          {disp8} fstp       dword ptr [esp + 0x08]                         // 0x007488dc    d95c2408
                          {disp8} mov        eax, dword ptr [esi + 0x28]                    // 0x007488e0    8b4628
                          {disp32} fld       dword ptr [eax + 0x000000ec]                   // 0x007488e3    d980ec000000
@@ -2559,11 +2559,11 @@ _jmp_addr_0x0074895a:    pop                ecx                                 
                          push               esi                                            // 0x00748961    56
                          mov.s              esi, ecx                                       // 0x00748962    8bf1
                          mov                ecx, OFFSET _GGameInfo_00d019f8                // 0x00748964    b9f819d000
-                         call               _jmp_addr_0x005575a0                           // 0x00748969    e832ece0ff
+                         call               ?GetVisualTime@GGameInfo@@QAEMXZ               // 0x00748969    e832ece0ff
                          {disp8} fstp       dword ptr [esp + 0x04]                         // 0x0074896e    d95c2404
                          {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x00748972    8b442404
                          push               eax                                            // 0x00748976    50
-                         call               _jmp_addr_0x0086a1b0                           // 0x00748977    e834181200
+                         call               ?Time2SkyType@LH3DSky@@QAEMM@Z                 // 0x00748977    e834181200
                          {disp8} fstp       dword ptr [esp + 0x08]                         // 0x0074897c    d95c2408
                          add                esp, 0x04                                      // 0x00748980    83c404
                          push               0x0                                            // 0x00748983    6a00

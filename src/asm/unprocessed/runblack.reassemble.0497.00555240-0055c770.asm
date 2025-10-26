@@ -327,7 +327,7 @@
 .extern _jmp_addr_0x00845d00
 .extern ?SetDayNightTimes@LH3DSky@@SAXMMMM@Z
 .extern _jmp_addr_0x0086a110
-.extern _jmp_addr_0x0086a1b0
+.extern ?Time2SkyType@LH3DSky@@QAEMM@Z
 .extern ??0RPlan@@QAE@XZ
 
 .globl _jmp_addr_0x00555240
@@ -383,7 +383,7 @@
 .globl _jmp_addr_0x00557100
 .globl _jmp_addr_0x005571c0
 .globl _jmp_addr_0x00557400
-.globl _jmp_addr_0x005575a0
+.globl ?GetVisualTime@GGameInfo@@QAEMXZ
 .globl _jmp_addr_0x005575b0
 .globl _jmp_addr_0x005575d0
 .globl _jmp_addr_0x005575e0
@@ -3853,7 +3853,8 @@ _jmp_addr_0x00557580:    push               0x00557590                          
                          nop                                                              // 0x0055759d    90
                          nop                                                              // 0x0055759e    90
                          nop                                                              // 0x0055759f    90
-_jmp_addr_0x005575a0:    {disp32} fld       dword ptr [data_bytes + 0x22d380]             // 0x005575a0    d9058033bf00
+?GetVisualTime@GGameInfo@@QAEMXZ:
+                         {disp32} fld       dword ptr [data_bytes + 0x22d380]             // 0x005575a0    d9058033bf00
                          ret                                                              // 0x005575a6    c3
                          nop                                                              // 0x005575a7    90
                          nop                                                              // 0x005575a8    90
@@ -3892,10 +3893,10 @@ _jmp_addr_0x005575d0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x005575de    90
                          nop                                                              // 0x005575df    90
 _jmp_addr_0x005575e0:    mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x005575e0    b9f819d000
-                         call               _jmp_addr_0x005575a0                          // 0x005575e5    e8b6ffffff
+                         call               ?GetVisualTime@GGameInfo@@QAEMXZ              // 0x005575e5    e8b6ffffff
                          push               ecx                                           // 0x005575ea    51
                          fstp               dword ptr [esp]                               // 0x005575eb    d91c24
-                         call               _jmp_addr_0x0086a1b0                          // 0x005575ee    e8bd2b3100
+                         call               ?Time2SkyType@LH3DSky@@QAEMM@Z                // 0x005575ee    e8bd2b3100
                          {disp32} fcomp     qword ptr [rdata_bytes + 0x2f758]             // 0x005575f3    dc1d58878d00
                          add                esp, 0x04                                     // 0x005575f9    83c404
                          fnstsw             ax                                            // 0x005575fc    dfe0
@@ -4339,7 +4340,7 @@ _jmp_addr_0x00557acd:    mov                eax, 0x00000003                     
                          nop                                                              // 0x00557ade    90
                          nop                                                              // 0x00557adf    90
 _jmp_addr_0x00557ae0:    sub                esp, 0x08                                     // 0x00557ae0    83ec08
-                         call               _jmp_addr_0x005575a0                          // 0x00557ae3    e8b8faffff
+                         call               ?GetVisualTime@GGameInfo@@QAEMXZ              // 0x00557ae3    e8b8faffff
                          {disp32} fsubr     dword ptr [rdata_bytes + 0x2126c]             // 0x00557ae8    d82d6ca28c00
                          {disp8} fstp       dword ptr [esp + 0x00]                        // 0x00557aee    d95c2400
                          {disp32} fld       dword ptr [data_bytes + 0x5dc694]             // 0x00557af2    d9059426fa00

@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x00841170
 .extern @SetDest__8RPFollowFRC7Point2Dffff@28
 .extern _jmp_addr_0x00864190
-.extern _jmp_addr_0x0086a1b0
+.extern ?Time2SkyType@LH3DSky@@QAEMM@Z
 .extern ??_DRPlan@@QAEXXZ
 .extern ?GetHeading@Point2D@@QBEMXZ
 .extern @GetNormSq__7Point2DFv2@4
@@ -6867,7 +6867,7 @@ _jmp_addr_0x00869790:    {disp32} fld       dword ptr [data_bytes + 0x4f3970]   
 _jmp_addr_0x00869850:    {disp32} mov       eax, dword ptr [data_bytes + 0x5dc6c4]        // 0x00869850    a1c426fa00
                          sub                esp, 0x10                                     // 0x00869855    83ec10
                          push               eax                                           // 0x00869858    50
-                         call               _jmp_addr_0x0086a1b0                          // 0x00869859    e852090000
+                         call               ?Time2SkyType@LH3DSky@@QAEMM@Z                // 0x00869859    e852090000
                          {disp32} fsubr     dword ptr [rdata_bytes + 0x2478]              // 0x0086985e    d82d78b48a00
                          add                esp, 0x04                                     // 0x00869864    83c404
                          {disp32} fmul      dword ptr [rdata_bytes + 0x235c]              // 0x00869867    d80d5cb38a00

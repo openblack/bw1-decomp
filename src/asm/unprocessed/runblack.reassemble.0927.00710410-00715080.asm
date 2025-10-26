@@ -15,7 +15,7 @@
 .extern _jmp_addr_0x00550a80
 .extern _jmp_addr_0x00550c20
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
-.extern _jmp_addr_0x005575a0
+.extern ?GetVisualTime@GGameInfo@@QAEMXZ
 .extern _jmp_addr_0x005575b0
 .extern _jmp_addr_0x005575d0
 .extern _jmp_addr_0x00557610
@@ -1106,7 +1106,7 @@ _jmp_addr_0x00710e10:    {disp32} mov       dword ptr [data_bytes + 0x3d3028], 0
                          nop                                                              // 0x00710e5f    90
                          push               ecx                                           // 0x00710e60    51
                          mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00710e61    b9f819d000
-                         call               _jmp_addr_0x005575a0                          // 0x00710e66    e83567e4ff
+                         call               ?GetVisualTime@GGameInfo@@QAEMXZ              // 0x00710e66    e83567e4ff
                          push               ecx                                           // 0x00710e6b    51
                          fstp               dword ptr [esp]                               // 0x00710e6c    d91c24
                          call               _jmp_addr_0x0086a160                          // 0x00710e6f    e8ec921500
