@@ -1,5 +1,6 @@
 .venv
 .pytest_cache
+.vs
 .vscode
 generated_headers_output/
 build*/
