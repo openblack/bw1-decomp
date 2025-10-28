@@ -1662,6 +1662,12 @@ ROOMMATE_CLASS_MAP = {
     "AddSpecialRPObjects__FP8RPHolder": "RPHolder",
     "CheckSquareFunction__FiiP8RPHolder": "RPHolder",
     "GFlockInfo": "Flock",
+    "DoCitadelMultiplayer__Fv": "Game",
+    "MakeTipVideo__Fv": "LoadingScreen",
+    "PlayPreIntroVideo__Fv": "PCMain",
+    "PlayLogoScreens__Fv": "PCMain",
+    "start_system__Fv": "PCMain",
+    "FreeFonts__Fv": "PCMain",
 }
 
 
