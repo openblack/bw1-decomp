@@ -118,7 +118,7 @@
 .extern _jmp_addr_0x00749990
 .extern ?Get3DAngleFromXZ@GUtils@@SAMABUMapCoords@@0@Z
 .extern ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@KH@Z
-.extern _jmp_addr_0x00750b50
+.extern ?TownDeleted@Villager@@QAEXXZ
 .extern ?SetAbode@Villager@@QAEXPAVAbode@@@Z
 .extern ?GetAbode@Villager@@QAEPAVAbode@@XZ
 .extern ?SetTown@Villager@@QAEXPAVTown@@@Z
@@ -4921,7 +4921,7 @@ _jmp_addr_0x0073970d:    dec                dword ptr [esi + 0x0000076c]        
                          {disp32} mov       dword ptr [ecx + 0x000000e4], ebx              // 0x00739713    8999e4000000
 _jmp_addr_0x00739719:    test               byte ptr [ecx + 0x0a], 0x01                    // 0x00739719    f6410a01
                          {disp8} jne        _jmp_addr_0x00739724                           // 0x0073971d    7505
-                         call               _jmp_addr_0x00750b50                           // 0x0073971f    e82c740100
+                         call               ?TownDeleted@Villager@@QAEXXZ                  // 0x0073971f    e82c740100
 _jmp_addr_0x00739724:    {disp32} mov       ecx, dword ptr [esi + 0x00000768]              // 0x00739724    8b8e68070000
                          cmp.s              ecx, ebx                                       // 0x0073972a    3bcb
                          {disp8} jne        _jmp_addr_0x007396d3                           // 0x0073972c    75a5

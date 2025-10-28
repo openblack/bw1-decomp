@@ -25,7 +25,7 @@
 .extern ?GameFloatRand@GRand@@SAMM@Z
 .extern ?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
-.extern @SetSpeed__8VillagerFli@16
+.extern ?SetSpeed@Villager@@QAEXJH@Z
 .extern ?IsAvailableToBeSummonedByCreature@Villager@@QAE_NXZ
 .extern ?SetupMoveToPos@Villager@@QAE_NABUMapCoords@@W4VILLAGER_STATES@@@Z
 .extern ?StartWorshippingCreature@Villager@@QAE_NPAVCreature@@@Z
@@ -417,7 +417,7 @@ _jmp_addr_0x00501fb2:    {disp8} mov        esi, dword ptr [edi + 0x04]         
                          push               0x1                                           // 0x0050204d    6a01
                          push               ecx                                           // 0x0050204f    51
                          mov.s              ecx, esi                                      // 0x00502050    8bce
-                         call               @SetSpeed__8VillagerFli@16                    // 0x00502052    e879ee2400
+                         call               ?SetSpeed@Villager@@QAEXJH@Z                  // 0x00502052    e879ee2400
                          push               0x000000cc                                    // 0x00502057    68cc000000
                          {disp8} lea        edx, dword ptr [esp + 0x18]                   // 0x0050205c    8d542418
                          push               edx                                           // 0x00502060    52
@@ -429,7 +429,7 @@ _jmp_addr_0x00501fb2:    {disp8} mov        esi, dword ptr [edi + 0x04]         
                          push               0x1                                           // 0x00502073    6a01
                          push               ecx                                           // 0x00502075    51
                          mov.s              ecx, esi                                      // 0x00502076    8bce
-                         call               @SetSpeed__8VillagerFli@16                    // 0x00502078    e853ee2400
+                         call               ?SetSpeed@Villager@@QAEXJH@Z                  // 0x00502078    e853ee2400
                          mov                edi, dword ptr [edi]                          // 0x0050207d    8b3f
                          inc                ebx                                           // 0x0050207f    43
                          test               edi, edi                                      // 0x00502080    85ff
@@ -486,7 +486,7 @@ _jmp_addr_0x005020bd:    {disp8} mov        esi, dword ptr [edi + 0x04]         
                          push               0x1                                           // 0x00502118    6a01
                          push               ecx                                           // 0x0050211a    51
                          mov.s              ecx, esi                                      // 0x0050211b    8bce
-                         call               @SetSpeed__8VillagerFli@16                    // 0x0050211d    e8aeed2400
+                         call               ?SetSpeed@Villager@@QAEXJH@Z                  // 0x0050211d    e8aeed2400
                          {disp32} mov       eax, dword ptr [ebx + 0x00001074]             // 0x00502122    8b8374100000
                          cmp.s              eax, ebp                                      // 0x00502128    3bc5
                          push               0x000000cc                                    // 0x0050212a    68cc000000
@@ -507,7 +507,7 @@ _jmp_addr_0x0050214c:    {disp8} mov        edx, dword ptr [esi + 0x28]         
                          shl                eax, 1                                        // 0x00502157    d1e0
                          push               eax                                           // 0x00502159    50
                          mov.s              ecx, esi                                      // 0x0050215a    8bce
-                         call               @SetSpeed__8VillagerFli@16                    // 0x0050215c    e86fed2400
+                         call               ?SetSpeed@Villager@@QAEXJH@Z                  // 0x0050215c    e86fed2400
                          {disp8} inc        dword ptr [esp + 0x10]                        // 0x00502161    ff442410
 _jmp_addr_0x00502165:    mov                edi, dword ptr [edi]                          // 0x00502165    8b3f
                          cmp.s              edi, ebp                                      // 0x00502167    3bfd
