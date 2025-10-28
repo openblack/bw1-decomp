@@ -1667,6 +1667,7 @@ ROOMMATE_CLASS_MAP = {
     "PlayPreIntroVideo__Fv": "PCMain",
     "PlayLogoScreens__Fv": "PCMain",
     "start_system__Fv": "PCMain",
+    "free_system__Fv": "PCMain",
     "FreeFonts__Fv": "PCMain",
 }
 
