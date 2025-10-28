@@ -105,5 +105,9 @@ void __cdecl Init__8FrontEndFv(void) asm("?Init@FrontEnd@@SAXXZ");
 void __cdecl SetCursorOn__8FrontEndFv(void) asm("?SetCursorOn@FrontEnd@@SAXXZ");
 // win1.41 00544f90 mac 105b9c50 FrontEnd::JustDoABox(DialogBoxBase *)
 void __cdecl JustDoABox__8FrontEndFP13DialogBoxBase(struct DialogBoxBase* this) asm("?JustDoABox@FrontEnd@@SAXPAVDialogBoxBase@@@Z");
+// win1.41 0053ce70 mac 105c3cf0 FrontEnd::JustDoNewProfileBox(void)
+void __cdecl JustDoNewProfileBox__8FrontEndFv(struct FrontEnd* this) asm("?JustDoNewProfileBox@FrontEnd@@QAEXXZ");
+// win1.41 00544f80 mac 105ba050 FrontEnd::JustDoSkirmishGameBox(void)
+void __cdecl JustDoSkirmishGameBox__8FrontEndFv(struct FrontEnd* this) asm("?JustDoSkirmishGameBox@FrontEnd@@QAEXXZ");
 
 #endif /* BW1_DECOMP_FRONT_END_INCLUDED_H */

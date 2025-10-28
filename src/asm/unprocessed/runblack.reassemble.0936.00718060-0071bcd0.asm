@@ -115,11 +115,11 @@
 
 .globl ?LoadMapFeatures@GSetup@@SAXPAD@Z
 .globl ?GetScriptPos@GSetup@@SAPAUMapCoords@@PAD@Z
-.globl _jmp_addr_0x00718330
-.globl _jmp_addr_0x00718870
+.globl ?SaveAllMap@GSetup@@QAEHPAD@Z
+.globl ?SaveMapCell@GSetup@@QAEXAAVLHOSFile@@PAUMapCell@@AAK2222ABUMapCoords@@@Z
 .globl _jmp_addr_0x00718c10
 .globl _jmp_addr_0x007190b0
-.globl _jmp_addr_0x00719280
+.globl ?LoadTextScripts@GSetup@@QAEHXZ
 .globl ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .globl _jmp_addr_0x00719680
 .globl _jmp_addr_0x00719750
@@ -431,7 +431,8 @@ _jmp_addr_0x007182dc:    xor.s              eax, eax                            
                          nop                                                              // 0x0071832d    90
                          nop                                                              // 0x0071832e    90
                          nop                                                              // 0x0071832f    90
-_jmp_addr_0x00718330:    sub                esp, 0x00000120                               // 0x00718330    81ec20010000
+?SaveAllMap@GSetup@@QAEHPAD@Z:
+                         sub                esp, 0x00000120                               // 0x00718330    81ec20010000
                          push               ebx                                           // 0x00718336    53
                          push               ebp                                           // 0x00718337    55
                          push               edi                                           // 0x00718338    57
@@ -834,7 +835,7 @@ _jmp_addr_0x0071875e:    cmp.s              edi, eax                            
                          {disp8} lea        edx, dword ptr [esp + 0x3c]                   // 0x0071877c    8d54243c
                          push               edi                                           // 0x00718780    57
                          push               edx                                           // 0x00718781    52
-                         call               _jmp_addr_0x00718870                          // 0x00718782    e8e9000000
+                         call               ?SaveMapCell@GSetup@@QAEXAAVLHOSFile@@PAUMapCell@@AAK2222ABUMapCoords@@@Z                          // 0x00718782    e8e9000000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00718787    8b0d5c19d000
                          add                esp, 0x20                                     // 0x0071878d    83c420
                          add                edi, 0x08                                     // 0x00718790    83c708
@@ -918,7 +919,8 @@ _jmp_addr_0x0071884c:    {disp8} lea        ecx, dword ptr [esp + 0x24]         
                          ret                                                              // 0x0071886d    c3
                          nop                                                              // 0x0071886e    90
                          nop                                                              // 0x0071886f    90
-_jmp_addr_0x00718870:    push               ebx                                           // 0x00718870    53
+?SaveMapCell@GSetup@@QAEXAAVLHOSFile@@PAUMapCell@@AAK2222ABUMapCoords@@@Z:
+                         push               ebx                                           // 0x00718870    53
                          push               ebp                                           // 0x00718871    55
                          push               esi                                           // 0x00718872    56
                          {disp8} mov        esi, dword ptr [esp + 0x14]                   // 0x00718873    8b742414
@@ -1804,7 +1806,8 @@ _jmp_addr_0x0071926c:    mov                word ptr [eax], 0x0000              
                          nop                                                              // 0x0071927d    90
                          nop                                                              // 0x0071927e    90
                          nop                                                              // 0x0071927f    90
-_jmp_addr_0x00719280:    push               0x0                                           // 0x00719280    6a00
+?LoadTextScripts@GSetup@@QAEHXZ:
+                         push               0x0                                           // 0x00719280    6a00
                          push               0x007192e0                                    // 0x00719282    68e0927100
                          push               0x00c215a0                                    // 0x00719287    68a015c200
                          push               0x00c22110                                    // 0x0071928c    681021c200

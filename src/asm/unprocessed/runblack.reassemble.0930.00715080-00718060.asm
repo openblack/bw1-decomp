@@ -132,14 +132,15 @@
 .extern _jmp_addr_0x0083f4a0
 .extern _jmp_addr_0x0083f6f0
 
-.globl _jmp_addr_0x00715080
+.globl ?LoadMapScript@GSetup@@QAEHXZ
 .globl _jmp_addr_0x007150e0
 .globl ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
 .globl _jmp_addr_0x00715150
 
 start_0x00715080_0x00718060:
 // Snippet: asm, [0x00715080, 0x00717e97)
-_jmp_addr_0x00715080:    push               0x0                                           // 0x00715080    6a00
+?LoadMapScript@GSetup@@QAEHXZ:
+                         push               0x0                                           // 0x00715080    6a00
                          push               0x00714d10                                    // 0x00715082    68104d7100
                          push               0x00c20d60                                    // 0x00715087    68600dc200
                          push               0x00c22004                                    // 0x0071508c    680420c200

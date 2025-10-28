@@ -318,7 +318,7 @@
 .extern _jmp_addr_0x00826c50
 .extern _jmp_addr_0x00826fa0
 .extern ?StartFrame@LH3DRender@@SAXXZ
-.extern _jmp_addr_0x0082f460
+.extern ?FinishFrame@LH3DRender@@QAEXXZ
 .extern _jmp_addr_0x008357a0
 .extern _jmp_addr_0x00835ad0
 .extern ??0RPHolder@@QAE@XZ
@@ -336,7 +336,7 @@
 .globl _jmp_addr_0x005553a0
 .globl _jmp_addr_0x005553f0
 .globl _jmp_addr_0x00555400
-.globl _jmp_addr_0x00555530
+.globl ?DoCitadelMultiplayer@@YAXXZ
 .globl _jmp_addr_0x005557a0
 .globl _jmp_addr_0x005557d0
 .globl _jmp_addr_0x005557e0
@@ -650,7 +650,7 @@ _jmp_addr_0x00555410:    {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2
                          mov.s              ecx, eax                                      // 0x005554c1    8bc8
                          call               _jmp_addr_0x00408f80                          // 0x005554c3    e8b83aebff
 _jmp_addr_0x005554c8:    {disp32} mov       byte ptr [data_bytes + 0x2726d0], 0x01        // 0x005554c8    c605d086c30001
-                         call               _jmp_addr_0x0082f460                          // 0x005554cf    e88c9f2d00
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ               // 0x005554cf    e88c9f2d00
                          push               0x1                                           // 0x005554d4    6a01
                          mov                ecx, 0x00e85050                               // 0x005554d6    b95050e800
                          call               _jmp_addr_0x007de090                          // 0x005554db    e8b08b2800
@@ -680,7 +680,8 @@ _jmp_addr_0x005554c8:    {disp32} mov       byte ptr [data_bytes + 0x2726d0], 0x
                          nop                                                              // 0x0055552d    90
                          nop                                                              // 0x0055552e    90
                          nop                                                              // 0x0055552f    90
-_jmp_addr_0x00555530:    sub                esp, 0x18                                     // 0x00555530    83ec18
+?DoCitadelMultiplayer@@YAXXZ:
+                         sub                esp, 0x18                                     // 0x00555530    83ec18
                          push               ebx                                           // 0x00555533    53
                          {disp32} mov       byte ptr [data_bytes + 0x33b9d0], 0x01        // 0x00555534    c605d019d00001
                          {disp32} mov       byte ptr [data_bytes + 0x43ffe0], 0x01        // 0x0055553b    c605e05fe00001
@@ -4760,7 +4761,7 @@ _jmp_addr_0x00557de6:    push               0x0                                 
                          call               ?DrawTextWrap@SetupThing@@SAMHHHHH_NPA_WHPAULH3DColor@@00@Z                 // 0x00557f56    e8f597ebff
                          fstp               st(0)                                         // 0x00557f5b    ddd8
                          add                esp, 0x2c                                     // 0x00557f5d    83c42c
-                         call               _jmp_addr_0x0082f460                          // 0x00557f60    e8fb742d00
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ               // 0x00557f60    e8fb742d00
                          push               0x1                                           // 0x00557f65    6a01
                          mov                ecx, 0x00e85050                               // 0x00557f67    b95050e800
                          call               _jmp_addr_0x007de090                          // 0x00557f6c    e81f612800

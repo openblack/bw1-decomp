@@ -221,7 +221,7 @@
 .extern _jmp_addr_0x006f6d00
 .extern _jmp_addr_0x006f7280
 .extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
-.extern _jmp_addr_0x00719280
+.extern ?LoadTextScripts@GSetup@@QAEHXZ
 .extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern ??0GGuidance@@QAE@XZ
 .extern _jmp_addr_0x0071abf0
@@ -2770,7 +2770,7 @@ _jmp_addr_0x005cd001:    push               ebx                                 
                          add                esp, 0x04                                      // 0x005cd007    83c404
                          pop                ebx                                            // 0x005cd00a    5b
 _jmp_addr_0x005cd00b:    {disp8} mov        dword ptr [ebp + 0x04], 0x00000000             // 0x005cd00b    c7450400000000
-_jmp_addr_0x005cd012:    call               _jmp_addr_0x00719280                           // 0x005cd012    e869c21400
+_jmp_addr_0x005cd012:    call               ?LoadTextScripts@GSetup@@QAEHXZ                // 0x005cd012    e869c21400
                          pop                ebp                                            // 0x005cd017    5d
                          ret                                                               // 0x005cd018    c3
                          nop                                                               // 0x005cd019    90

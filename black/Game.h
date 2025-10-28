@@ -348,5 +348,7 @@ void __cdecl LoadAllAnimations__Fv(void) asm("?LoadAllAnimations@@YAXXZ");
 void __cdecl StartTipOfTheDayText__Fv(void) asm("?StartTipOfTheDayText@@YAXXZ");
 // win1.41 0054a780 mac 10174ba0 InitStaticsValues(void)
 void __cdecl InitStaticsValues__Fv(void) asm("?InitStaticsValues@@YAXXZ");
+// win1.41 00555530 mac 101beee0 DoCitadelMultiplayer(void)
+void __cdecl DoCitadelMultiplayer__Fv(void) asm("?DoCitadelMultiplayer@@YAXXZ");
 
 #endif /* BW1_DECOMP_GAME_INCLUDED_H */

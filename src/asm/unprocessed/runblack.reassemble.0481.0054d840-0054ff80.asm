@@ -215,7 +215,7 @@
 .extern ?InitForGame@LHInetWeather@@QAEXXZ
 .extern ?ProcessLiving@Living@@SAXXZ
 .extern _jmp_addr_0x005f3cc0
-.extern _jmp_addr_0x005f3ce0
+.extern ?MakeTipVideo@@YAXXZ
 .extern _jmp_addr_0x005f3d90
 .extern ?StartTipOfTheDayText@@YAXXZ
 .extern _RenderLoadingFrame__Fb
@@ -303,7 +303,7 @@
 .extern _jmp_addr_0x00713a30
 .extern @ParseConfigFile__8SettingsFPc@12
 .extern ?InitialiseToDefaults@Settings@@QAEXXZ
-.extern _jmp_addr_0x00715080
+.extern ?LoadMapScript@GSetup@@QAEHXZ
 .extern ?LoadMapFeatures@GSetup@@SAXPAD@Z
 .extern _jmp_addr_0x00719750
 .extern _jmp_addr_0x0071a560
@@ -379,7 +379,7 @@
 .extern ?StartFrame@LH3DRender@@SAXXZ
 .extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
-.extern _jmp_addr_0x0082f460
+.extern ?FinishFrame@LH3DRender@@QAEXXZ
 .extern _jmp_addr_0x00833cb0
 .extern _jmp_addr_0x008356e0
 .extern _jmp_addr_0x008357a0
@@ -1266,7 +1266,7 @@ _jmp_addr_0x0054e3e0:    cmp                eax, 0x02                           
                          push               0x0                                           // 0x0054e412    6a00
 _jmp_addr_0x0054e414:    call               _jmp_addr_0x00826c90                          // 0x0054e414    e877882d00
                          add                esp, 0x04                                     // 0x0054e419    83c404
-_jmp_addr_0x0054e41c:    call               _jmp_addr_0x0082f460                          // 0x0054e41c    e83f102e00
+_jmp_addr_0x0054e41c:    call               ?FinishFrame@LH3DRender@@QAEXXZ               // 0x0054e41c    e83f102e00
                          call               _jmp_addr_0x007627e0                          // 0x0054e421    e8ba432100
                          call               _jmp_addr_0x007dee00                          // 0x0054e426    e8d5092900
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x2c7c34]        // 0x0054e42b    8b0d34dcc800
@@ -2442,7 +2442,7 @@ _jmp_addr_0x0054f37a:    call               _jmp_addr_0x0071f8f0                
                          cmp                dword ptr [data_bytes + 0x36b8d4], edi        // 0x0054f445    393dd418d300
                          {disp8} jne        _jmp_addr_0x0054f457                          // 0x0054f44b    750a
                          call               ?StartTipOfTheDayText@@YAXXZ                  // 0x0054f44d    e83e580a00
-                         call               _jmp_addr_0x005f3ce0                          // 0x0054f452    e889480a00
+                         call               ?MakeTipVideo@@YAXXZ                          // 0x0054f452    e889480a00
 _jmp_addr_0x0054f457:    and                dword ptr [ebx + 0x14], 0xfffdfffb            // 0x0054f457    816314fbfffdff
                          {disp32} mov       dword ptr [ebx + 0x000059b0], edi             // 0x0054f45e    89bbb0590000
                          push               0x1                                           // 0x0054f464    6a01
@@ -2646,7 +2646,7 @@ _jmp_addr_0x0054f780:    {disp32} mov       dword ptr [ebx + 0x0025017c], 0x0000
                          call               dword ptr [edx + 4]                           // 0x0054f798    ff5204
 _jmp_addr_0x0054f79b:    {disp32} mov       dword ptr [ebx + 0x002502c0], 0x00000000      // 0x0054f79b    c783c002250000000000
                          {disp32} lea       ecx, dword ptr [ebx + 0x00205a58]             // 0x0054f7a5    8d8b585a2000
-                         call               _jmp_addr_0x00715080                          // 0x0054f7ab    e8d0581c00
+                         call               ?LoadMapScript@GSetup@@QAEHXZ                 // 0x0054f7ab    e8d0581c00
                          mov.s              ecx, ebx                                      // 0x0054f7b0    8bcb
                          call               ?OnNewGame@GGame@@QAEXXZ                      // 0x0054f7b2    e829410000
                          {disp32} jmp       _jmp_addr_0x0054fa8d                          // 0x0054f7b7    e9d1020000

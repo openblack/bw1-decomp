@@ -114,7 +114,7 @@
 .extern ?InitForGame@LHInetWeather@@QAEXXZ
 .extern ?ProcessLiving@Living@@SAXXZ
 .extern _jmp_addr_0x005f3cc0
-.extern _jmp_addr_0x005f3ce0
+.extern ?MakeTipVideo@@YAXXZ
 .extern _jmp_addr_0x005f3d90
 .extern ?StartTipOfTheDayText@@YAXXZ
 .extern _RenderLoadingFrame__Fb
@@ -203,7 +203,7 @@
 .extern _jmp_addr_0x00713a30
 .extern @ParseConfigFile__8SettingsFPc@12
 .extern ?InitialiseToDefaults@Settings@@QAEXXZ
-.extern _jmp_addr_0x00715080
+.extern ?LoadMapScript@GSetup@@QAEHXZ
 .extern ?LoadMapFeatures@GSetup@@SAXPAD@Z
 .extern _jmp_addr_0x00719750
 .extern _jmp_addr_0x0071a560
@@ -277,7 +277,7 @@
 .extern ?StartFrame@LH3DRender@@SAXXZ
 .extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
-.extern _jmp_addr_0x0082f460
+.extern ?FinishFrame@LH3DRender@@QAEXXZ
 .extern _jmp_addr_0x00833cb0
 .extern _jmp_addr_0x008356e0
 .extern _jmp_addr_0x008357a0
@@ -1482,7 +1482,7 @@ _jmp_addr_0x0054d193:    {disp8} mov        edi, dword ptr [eax + 0x08]         
                          call               ?DrawTextWrap@SetupThing@@SAMHHHHH_NPA_WHPAULH3DColor@@00@Z                 // 0x0054d1bd    e88e45ecff
                          fstp               st(0)                                         // 0x0054d1c2    ddd8
                          add                esp, 0x2c                                     // 0x0054d1c4    83c42c
-                         call               _jmp_addr_0x0082f460                          // 0x0054d1c7    e894222e00
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ               // 0x0054d1c7    e894222e00
                          mov.s              ecx, esi                                      // 0x0054d1cc    8bce
                          call               _jmp_addr_0x0054d800                          // 0x0054d1ce    e82d060000
                          {disp32} mov       ecx, dword ptr [esi + 0x00205b80]             // 0x0054d1d3    8b8e805b2000
@@ -1686,7 +1686,7 @@ _jmp_addr_0x0054d4d3:    {disp32} mov       dword ptr [data_bytes + 0x4e3ec0], e
                          push               -0x1                                          // 0x0054d51d    6aff
                          call               ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z          // 0x0054d51f    e89c5decff
                          add                esp, 0x28                                     // 0x0054d524    83c428
-                         call               _jmp_addr_0x0082f460                          // 0x0054d527    e8341f2e00
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ               // 0x0054d527    e8341f2e00
                          push               0x1                                           // 0x0054d52c    6a01
                          mov                ecx, 0x00e85050                               // 0x0054d52e    b95050e800
                          call               _jmp_addr_0x007de090                          // 0x0054d533    e8580b2900

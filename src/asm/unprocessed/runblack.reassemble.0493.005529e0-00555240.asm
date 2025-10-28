@@ -137,7 +137,7 @@
 .extern _jmp_addr_0x00711d90
 .extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
 .extern ?LoadMapFeatures@GSetup@@SAXPAD@Z
-.extern _jmp_addr_0x00718330
+.extern ?SaveAllMap@GSetup@@QAEHPAD@Z
 .extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x0071d6d0
 .extern _jmp_addr_0x0071d720
@@ -1043,7 +1043,7 @@ _jmp_addr_0x00553208:    {disp32} fld       dword ptr [esi + 0x00250078]        
                          shr                esi, 0xd                                      // 0x005532ff    c1ee0d
                          push               ecx                                           // 0x00553302    51
                          and                esi, 0x01                                     // 0x00553303    83e601
-                         call               _jmp_addr_0x00718330                          // 0x00553306    e825501c00
+                         call               ?SaveAllMap@GSetup@@QAEHPAD@Z                 // 0x00553306    e825501c00
                          {disp32} mov       edx, dword ptr [_game]                        // 0x0055330b    8b155c19d000
                          {disp32} mov       ecx, dword ptr [edx + 0x00205b80]             // 0x00553311    8b8a805b2000
                          {disp32} mov       eax, dword ptr [ecx + 0x000000cc]             // 0x00553317    8b81cc000000

@@ -99,7 +99,7 @@
 .globl _jmp_addr_0x00844280
 .globl ?AdjustPtr@LH3DWay@@QAEXXZ
 .globl _jmp_addr_0x00844620
-.globl _jmp_addr_0x00844650
+.globl ?FreeFonts@@YAXXZ   
 .globl _jmp_addr_0x00844690
 .globl _jmp_addr_0x008447b0
 .globl _jmp_addr_0x00844a20
@@ -2876,7 +2876,8 @@ _jmp_addr_0x0084462c:    mov                eax, dword ptr [esi]                
                          pop                esi                                            // 0x0084464d    5e
                          ret                                                               // 0x0084464e    c3
                          nop                                                               // 0x0084464f    90
-_jmp_addr_0x00844650:    push               esi                                            // 0x00844650    56
+?FreeFonts@@YAXXZ:
+                         push               esi                                            // 0x00844650    56
                          mov                esi, 0x00ef6768                                // 0x00844651    be6867ef00
 _jmp_addr_0x00844656:    mov.s              ecx, esi                                       // 0x00844656    8bce
                          call               _jmp_addr_0x00844670                           // 0x00844658    e813000000

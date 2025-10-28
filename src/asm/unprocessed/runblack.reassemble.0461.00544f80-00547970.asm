@@ -54,9 +54,9 @@
 .extern @CandidateList_SetViewWindow__Q24slim5TbIMEFUiUiUi@20
 .extern ?UpdateCamera@LH3DTech@@SAXABULHPoint@@0@Z
 .extern ?StartFrame@LH3DRender@@SAXXZ
-.extern _jmp_addr_0x0082f460
+.extern ?FinishFrame@LH3DRender@@QAEXXZ
 
-.globl _jmp_addr_0x00544f80
+.globl ?JustDoSkirmishGameBox@FrontEnd@@QAEXXZ
 .globl ?JustDoABox@FrontEnd@@SAXPAVDialogBoxBase@@@Z
 .globl _jmp_addr_0x005453d0
 .globl _jmp_addr_0x00545630
@@ -88,7 +88,8 @@
 
 start_0x00544f80_0x00547970:
 // Snippet: asm, [0x00544f80, 0x0054791d)
-_jmp_addr_0x00544f80:    {disp32} mov       eax, dword ptr [data_bytes + 0x30ab1c]        // 0x00544f80    a11c0bcd00
+?JustDoSkirmishGameBox@FrontEnd@@QAEXXZ:
+                         {disp32} mov       eax, dword ptr [data_bytes + 0x30ab1c]        // 0x00544f80    a11c0bcd00
                          push               eax                                           // 0x00544f85    50
                          call               ?JustDoABox@FrontEnd@@SAXPAVDialogBoxBase@@@Z // 0x00544f86    e805000000
                          pop                ecx                                           // 0x00544f8b    59
@@ -105,7 +106,7 @@ _jmp_addr_0x00544f80:    {disp32} mov       eax, dword ptr [data_bytes + 0x30ab1
                          {disp32} mov       dword ptr [data_bytes + 0x4f3950], 0x00000000 // 0x00544f97    c7055099eb0000000000
                          {disp32} mov       byte ptr [data_bytes + 0x2726d0], 0x00        // 0x00544fa1    c605d086c30000
                          call               ?StartFrame@LH3DRender@@SAXXZ                 // 0x00544fa8    e833a12e00
-                         call               _jmp_addr_0x0082f460                          // 0x00544fad    e8aea42e00
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ               // 0x00544fad    e8aea42e00
                          {disp32} mov       byte ptr [data_bytes + 0x2726d0], 0x01        // 0x00544fb2    c605d086c30001
                          xor.s              bl, bl                                        // 0x00544fb9    32db
                          call               _HideAll__13DialogBoxBaseFv@0                 // 0x00544fbb    e820e7fcff
@@ -256,7 +257,7 @@ _jmp_addr_0x0054518c:    {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2
                          {disp32} mov       dword ptr [data_bytes + 0x286d10], ecx        // 0x005451e7    890d10cdc400
                          {disp32} mov       byte ptr [data_bytes + 0x4bf350], al          // 0x005451ed    a25053e800
                          {disp32} mov       byte ptr [data_bytes + 0x2726d0], 0x01        // 0x005451f2    c605d086c30001
-                         call               _jmp_addr_0x0082f460                          // 0x005451f9    e862a22e00
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ               // 0x005451f9    e862a22e00
                          push               0x1                                           // 0x005451fe    6a01
                          mov                ecx, 0x00e85050                               // 0x00545200    b95050e800
                          {disp32} mov       byte ptr [data_bytes + 0x2726d0], 0x01        // 0x00545205    c605d086c30001
