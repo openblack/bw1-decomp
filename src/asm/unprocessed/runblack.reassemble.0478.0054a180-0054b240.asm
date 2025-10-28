@@ -210,7 +210,7 @@
 .extern ?InitForGame@LHInetWeather@@QAEXXZ
 .extern _jmp_addr_0x005ec810
 .extern _jmp_addr_0x005f3cc0
-.extern _jmp_addr_0x005f3ce0
+.extern ?MakeTipVideo@@YAXXZ
 .extern _jmp_addr_0x005f3d90
 .extern ?StartTipOfTheDayText@@YAXXZ
 .extern _jmp_addr_0x005f4e40
@@ -299,7 +299,7 @@
 .extern _jmp_addr_0x00713a30
 .extern _jmp_addr_0x00714af0
 .extern _jmp_addr_0x00714c20
-.extern _jmp_addr_0x00715080
+.extern ?LoadMapScript@GSetup@@QAEHXZ
 .extern _jmp_addr_0x007180b0
 .extern _jmp_addr_0x00719750
 .extern _jmp_addr_0x0071a560
@@ -373,7 +373,7 @@
 .extern _jmp_addr_0x0082f0e0
 .extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
-.extern _jmp_addr_0x0082f460
+.extern ?FinishFrame@LH3DRender@@QAEXXZ
 .extern _jmp_addr_0x00833cb0
 .extern _jmp_addr_0x008356e0
 .extern _jmp_addr_0x008357a0

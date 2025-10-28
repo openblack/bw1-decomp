@@ -70,7 +70,7 @@
 .extern ?StartFrame@LH3DRender@@SAXXZ
 .extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
-.extern _jmp_addr_0x0082f460
+.extern ?FinishFrame@LH3DRender@@QAEXXZ
 .extern ?DrawTriangle@LH3DRender@@SAXPAUVertex3D@@KPAGK@Z
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
 .extern ?SetD3DTillingOn@LH3DRender@@SAXH@Z
@@ -6042,7 +6042,7 @@ _jmp_addr_0x00822560:    sub                esp, 0x1c                           
                          {disp8} mov        byte ptr [eax + ecx * 0x1 + -0x01], 0x64             // 0x0082276a    c64408ff64
                          call               ?StartFrame@LH3DRender@@SAXXZ                        // 0x0082276f    e86cc90000
                          call               _jmp_addr_0x007ff610                                 // 0x00822774    e897cefdff
-                         call               _jmp_addr_0x0082f460                                 // 0x00822779    e8e2cc0000
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ                      // 0x00822779    e8e2cc0000
                          {disp8} mov        ecx, dword ptr [esi + 0x04]                          // 0x0082277e    8b4e04
                          push               ecx                                                  // 0x00822781    51
                          call               _jmp_addr_0x00801870                                 // 0x00822782    e8e9f0fdff
@@ -6253,7 +6253,7 @@ _jmp_addr_0x00822905:    add                esp, 0x00000404                     
                          rep movsb                                                               // 0x0082298b    f3a4
                          call               ?Create@LH3DIsland@@SAIXZ                            // 0x0082298d    e86e12feff
                          call               _jmp_addr_0x007ff610                                 // 0x00822992    e879ccfdff
-                         call               _jmp_addr_0x0082f460                                 // 0x00822997    e8c4ca0000
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ                      // 0x00822997    e8c4ca0000
                          {disp8} mov        eax, dword ptr [ebx + 0x04]                          // 0x0082299c    8b4304
                          push               eax                                                  // 0x0082299f    50
                          call               _jmp_addr_0x00801a70                                 // 0x008229a0    e8cbf0fdff

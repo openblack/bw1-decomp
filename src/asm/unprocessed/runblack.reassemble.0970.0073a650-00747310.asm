@@ -170,7 +170,7 @@
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?GameFloatRand@GRand@@SAMM@Z
 .extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
-.extern _jmp_addr_0x00718870
+.extern ?SaveMapCell@GSetup@@QAEXAAVLHOSFile@@PAUMapCell@@AAK2222ABUMapCoords@@@Z
 .extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x0071b7c0
 .extern _jmp_addr_0x0071c960
@@ -12373,7 +12373,7 @@ _jmp_addr_0x00742181:    push               ebx                                 
                          push               ecx                                                  // 0x0074219a    51
                          push               eax                                                  // 0x0074219b    50
                          push               ebp                                                  // 0x0074219c    55
-                         call               _jmp_addr_0x00718870                                 // 0x0074219d    e8ce66fdff
+                         call               ?SaveMapCell@GSetup@@QAEXAAVLHOSFile@@PAUMapCell@@AAK2222ABUMapCoords@@@Z                                 // 0x0074219d    e8ce66fdff
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x007421a2    8b0d5c19d000
                          {disp8} mov        edx, dword ptr [esp + 0x30]                          // 0x007421a8    8b542430
                          add                esp, 0x20                                            // 0x007421ac    83c420

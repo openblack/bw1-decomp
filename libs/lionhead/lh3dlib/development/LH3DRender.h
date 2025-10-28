@@ -44,6 +44,8 @@ void __cdecl SetD3DTillingOff__10LH3DRenderFi(uint32_t index) asm("?SetD3DTillin
 struct LH3DMaterial* __cdecl CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture(enum LH3DMaterial__RenderMode render_mode, struct LH3DTexture* texture);
 // win1.41 0082f2c0 mac 100a27d0 LH3DRender::RegisterFinishFrameCallback(unsigned long, bool, void (__cdecl *)(void *), void *)
 void __cdecl RegisterFinishFrameCallback__10LH3DRenderFUlbPFPv_vPv(struct LH3DRender* this, unsigned long param_1, bool param_2, void (__cdecl* param_3)(void * param_1), void* param_4) asm("?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z");
+// win1.41 0082f460 mac 1003699c LH3DRender::FinishFrame(void)
+void __cdecl FinishFrame__10LH3DRenderFv(struct LH3DRender* this) asm("?FinishFrame@LH3DRender@@QAEXXZ");
 // win1.41 005f4e40 mac 10100190 RenderLoadingFrame(bool)
 void __cdecl RenderLoadingFrame__Fb(bool param_1);
 // win1.41 0082a500 mac 10017228 DrawAndClip(D3DPRIMITIVETYPE, unsigned long, Vertex3D *, unsigned long, unsigned short *, unsigned long)

@@ -165,7 +165,7 @@
 .extern _jmp_addr_0x00712330
 .extern _jmp_addr_0x007123b0
 .extern _jmp_addr_0x00712430
-.extern _jmp_addr_0x00718330
+.extern ?SaveAllMap@GSetup@@QAEHPAD@Z
 .extern _jmp_addr_0x0071bf10
 .extern _jmp_addr_0x0071d0b0
 .extern _jmp_addr_0x0072eeb0
@@ -6408,7 +6408,7 @@ _jmp_addr_0x00634eb8:    {disp8} mov        eax, dword ptr [eax + 0x08]         
                          {disp32} je        _jmp_addr_0x006351f4                           // 0x00634f33    0f84bb020000
                          push               0x00bec7a4                                     // 0x00634f39    68a4c7be00
                          {disp32} mov       byte ptr [data_bytes + 0x33b834], 0x01         // 0x00634f3e    c6053418d00001
-                         call               _jmp_addr_0x00718330                           // 0x00634f45    e8e6330e00
+                         call               ?SaveAllMap@GSetup@@QAEHPAD@Z                  // 0x00634f45    e8e6330e00
                          push               0x009ce5d8                                     // 0x00634f4a    68d8e59c00
                          push               0x00bec7a4                                     // 0x00634f4f    68a4c7be00
                          {disp32} mov       byte ptr [data_bytes + 0x33b834], 0x00         // 0x00634f54    c6053418d00000

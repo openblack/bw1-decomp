@@ -35,7 +35,7 @@
 .extern ?UpdateCamera@LH3DTech@@SAXABULHPoint@@0@Z
 .extern _jmp_addr_0x0082ee70
 .extern ?StartFrame@LH3DRender@@SAXXZ
-.extern _jmp_addr_0x0082f460
+.extern ?FinishFrame@LH3DRender@@QAEXXZ
 .extern _jmp_addr_0x00848350
 .extern _jmp_addr_0x0086a1b0
 
@@ -564,7 +564,7 @@ _jmp_addr_0x00640560:    mov.s             ecx, ebx                             
                          mov.s             ecx, ebx                                      // 0x006405b2    8bcb
                          call              dword ptr [edx + 0x108]                       // 0x006405b4    ff9208010000
                          {disp32} jmp      _jmp_addr_0x00640129                          // 0x006405ba    e96afbffff
-_jmp_addr_0x006405bf:    call              _jmp_addr_0x0082f460                          // 0x006405bf    e89cee1e00
+_jmp_addr_0x006405bf:    call              ?FinishFrame@LH3DRender@@QAEXXZ               // 0x006405bf    e89cee1e00
                          push              0x1                                           // 0x006405c4    6a01
                          mov               ecx, 0x00e85050                               // 0x006405c6    b95050e800
                          call              _jmp_addr_0x007de090                          // 0x006405cb    e8c0da1900

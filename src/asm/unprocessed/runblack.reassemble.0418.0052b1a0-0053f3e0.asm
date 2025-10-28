@@ -284,7 +284,7 @@
 .extern @__ct__10NewCollideFP10LH3DObject@12
 .extern ??_DNewCollide@@QAEXXZ
 .extern ?StartFrame@LH3DRender@@SAXXZ
-.extern _jmp_addr_0x0082f460
+.extern ?FinishFrame@LH3DRender@@QAEXXZ
 .extern _CreateMaterial__10LH3DRenderFQ212LH3DMaterial10RenderModeP11LH3DTexture
 .extern _CHAR2WCHAR__FPc
 .extern @DrawTextRaw__13GatheringTextFPwiffffP9LH3DColoriP9LH3DColorff@52
@@ -467,7 +467,7 @@
 .globl @Render__6PlasmaFi@12
 .globl _jmp_addr_0x0053ce50
 .globl _jmp_addr_0x0053ce60
-.globl _jmp_addr_0x0053ce70
+.globl ?JustDoNewProfileBox@FrontEnd@@QAEXXZ
 
 .globl _globl_ct_0x0052c220
 .globl _globl_ct_0x0052c250
@@ -27890,7 +27890,7 @@ _jmp_addr_0x0053c9bc:    {disp8} fld        dword ptr [esp + 0x14]              
                          call               ?StartFrame@LH3DRender@@SAXXZ                        // 0x0053ca64    e877262f00
                          xor.s              ebx, ebx                                             // 0x0053ca69    33db
                          {disp32} mov       byte ptr [data_bytes + 0x2726d0], bl                 // 0x0053ca6b    881dd086c300
-                         call               _jmp_addr_0x0082f460                                 // 0x0053ca71    e8ea292f00
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ                      // 0x0053ca71    e8ea292f00
                          {disp32} mov       byte ptr [data_bytes + 0x2726d0], 0x01               // 0x0053ca76    c605d086c30001
                          call               _HideAll__13DialogBoxBaseFv@0                        // 0x0053ca7d    e85e6cfdff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x30a65c]               // 0x0053ca82    a15c06cd00
@@ -28122,7 +28122,7 @@ _jmp_addr_0x0053cda3:    {disp32} fild      dword ptr [?g_delta_time@LH3DTech@@2
                          {disp32} mov       dword ptr [data_bytes + 0x286d10], ecx               // 0x0053cdfe    890d10cdc400
                          {disp32} mov       byte ptr [data_bytes + 0x4bf350], al                 // 0x0053ce04    a25053e800
                          {disp32} mov       byte ptr [data_bytes + 0x2726d0], bl                 // 0x0053ce09    881dd086c300
-                         call               _jmp_addr_0x0082f460                                 // 0x0053ce0f    e84c262f00
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ                      // 0x0053ce0f    e84c262f00
                          mov                edi, 0x00000001                                      // 0x0053ce14    bf01000000
                          push               edi                                                  // 0x0053ce19    57
                          mov                ecx, 0x00e85050                                      // 0x0053ce1a    b95050e800
@@ -28161,7 +28161,8 @@ _jmp_addr_0x0053ce60:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp32} mov       dword ptr [data_bytes + 0x5df1d8], eax               // 0x0053ce64    a3d851fa00
                          ret                                                                     // 0x0053ce69    c3
                          call               dword ptr [__imp__DeleteFileA@4]                     // 0x0053ce6a    ff1528928a00
-_jmp_addr_0x0053ce70:    {disp32} mov       eax, dword ptr [data_bytes + 0x30a658]               // 0x0053ce70    a15806cd00
+?JustDoNewProfileBox@FrontEnd@@QAEXXZ:
+                         {disp32} mov       eax, dword ptr [data_bytes + 0x30a658]               // 0x0053ce70    a15806cd00
                          push               eax                                                  // 0x0053ce75    50
                          call               ?JustDoABox@FrontEnd@@SAXPAVDialogBoxBase@@@Z        // 0x0053ce76    e815810000
                          pop                ecx                                                  // 0x0053ce7b    59

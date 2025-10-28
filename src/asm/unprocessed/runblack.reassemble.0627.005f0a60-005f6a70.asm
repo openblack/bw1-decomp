@@ -100,7 +100,7 @@
 .extern _jmp_addr_0x007faaf0
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern ?StartFrame@LH3DRender@@SAXXZ
-.extern _jmp_addr_0x0082f460
+.extern ?FinishFrame@LH3DRender@@QAEXXZ
 .extern _CHAR2WCHAR__FPc
 .extern @GetStringWidth__13GatheringTextFPwif@20
 .extern @DrawText__13GatheringTextFPwfffffffffP9LH3DColoriii@64
@@ -144,7 +144,7 @@
 .globl _jmp_addr_0x005f3120
 .globl _jmp_addr_0x005f32f0
 .globl _jmp_addr_0x005f3cc0
-.globl _jmp_addr_0x005f3ce0
+.globl ?MakeTipVideo@@YAXXZ
 .globl _jmp_addr_0x005f3d90
 .globl ?StartTipOfTheDayText@@YAXXZ
 .globl _RenderLoadingFrame__Fb
@@ -5316,7 +5316,7 @@ _jmp_addr_0x005f3cc0:    push               0x1                                 
                          nop                                                              // 0x005f3cdd    90
                          nop                                                              // 0x005f3cde    90
                          nop                                                              // 0x005f3cdf    90
-_jmp_addr_0x005f3ce0:    push               esi                                           // 0x005f3ce0    56
+?MakeTipVideo@@YAXXZ:    push               esi                                           // 0x005f3ce0    56
                          {disp32} mov       esi, dword ptr [data_bytes + 0x36b8d4]        // 0x005f3ce1    8b35d418d300
                          test               esi, esi                                      // 0x005f3ce7    85f6
                          {disp8} je         _jmp_addr_0x005f3d05                          // 0x005f3ce9    741a
@@ -5361,9 +5361,9 @@ _jmp_addr_0x005f3d65:    {disp32} mov       ecx, dword ptr [data_bytes + 0x36b8d
                          call               ?StartFrame@LH3DRender@@SAXXZ                 // 0x005f3d70    e86bb32300
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x36b8d4]        // 0x005f3d75    8b0dd418d300
                          call               _jmp_addr_0x00845420                          // 0x005f3d7b    e8a0162500
-                         call               _jmp_addr_0x0082f460                          // 0x005f3d80    e8dbb62300
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ               // 0x005f3d80    e8dbb62300
                          call               ?StartFrame@LH3DRender@@SAXXZ                 // 0x005f3d85    e856b32300
-                         {disp32} jmp       _jmp_addr_0x0082f460                          // 0x005f3d8a    e9d1b62300
+                         {disp32} jmp       ?FinishFrame@LH3DRender@@QAEXXZ               // 0x005f3d8a    e9d1b62300
                          nop                                                              // 0x005f3d8f    90
 _jmp_addr_0x005f3d90:    push               esi                                           // 0x005f3d90    56
                          {disp32} mov       esi, dword ptr [data_bytes + 0x36b8d4]        // 0x005f3d91    8b35d418d300
@@ -5395,7 +5395,7 @@ _jmp_addr_0x005f3dc0:    {disp8} fld        dword ptr [esp + 0x04]              
                          {disp32} mov       eax, dword ptr [data_bytes + 0x36b8d4]        // 0x005f3ddb    a1d418d300
                          test               eax, eax                                      // 0x005f3de0    85c0
                          {disp8} jne        _jmp_addr_0x005f3df6                          // 0x005f3de2    7512
-                         call               _jmp_addr_0x005f3ce0                          // 0x005f3de4    e8f7feffff
+                         call               ?MakeTipVideo@@YAXXZ                          // 0x005f3de4    e8f7feffff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x36b8d4]        // 0x005f3de9    a1d418d300
                          test               eax, eax                                      // 0x005f3dee    85c0
                          {disp32} je        _jmp_addr_0x005f4c81                          // 0x005f3df0    0f848b0e0000
@@ -6498,7 +6498,7 @@ _jmp_addr_0x005f47e7:    {disp8} fild       dword ptr [esp + 0x24]              
                          call               ?DrawLine@SetupThing@@SAXHHHHKHMM@Z           // 0x005f4c64    e837d9e1ff
                          add                esp, 0x40                                     // 0x005f4c69    83c440
                          {disp32} mov       byte ptr [data_bytes + 0x2726d0], 0x00        // 0x005f4c6c    c605d086c30000
-                         call               _jmp_addr_0x0082f460                          // 0x005f4c73    e8e8a72300
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ               // 0x005f4c73    e8e8a72300
                          call               _jmp_addr_0x007dee00                          // 0x005f4c78    e883a11e00
                          pop                edi                                           // 0x005f4c7d    5f
                          pop                esi                                           // 0x005f4c7e    5e
@@ -6531,7 +6531,7 @@ _jmp_addr_0x005f4cb7:    {disp32} mov       ecx, dword ptr [data_bytes + 0x36b8d
                          test               ecx, ecx                                      // 0x005f4cbd    85c9
                          {disp32} mov       dword ptr [data_bytes + 0x36b8dc], eax        // 0x005f4cbf    a3dc18d300
                          {disp8} jne        _jmp_addr_0x005f4cd0                          // 0x005f4cc4    750a
-                         call               _jmp_addr_0x005f3ce0                          // 0x005f4cc6    e815f0ffff
+                         call               ?MakeTipVideo@@YAXXZ                          // 0x005f4cc6    e815f0ffff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x36b8dc]        // 0x005f4ccb    a1dc18d300
 _jmp_addr_0x005f4cd0:    {disp32} mov       ecx, dword ptr [data_bytes + 0x351cac]        // 0x005f4cd0    8b0dac7cd100
                          add                eax, 0x0000141f                               // 0x005f4cd6    051f140000
@@ -6868,7 +6868,7 @@ _jmp_addr_0x005f50a8:    {disp8} mov        esi, dword ptr [eax + 0x08]         
                          call               ?DrawTextWrap@SetupThing@@SAMHHHHH_NPA_WHPAULH3DColor@@00@Z                 // 0x005f512d    e81ec6e1ff
                          fstp               st(0)                                         // 0x005f5132    ddd8
                          add                esp, 0x2c                                     // 0x005f5134    83c42c
-                         call               _jmp_addr_0x0082f460                          // 0x005f5137    e824a32300
+                         call               ?FinishFrame@LH3DRender@@QAEXXZ               // 0x005f5137    e824a32300
 _jmp_addr_0x005f513c:    {disp8} mov        al, byte ptr [esp + 0x10]                     // 0x005f513c    8a442410
                          test               al, al                                        // 0x005f5140    84c0
                          pop                edi                                           // 0x005f5142    5f
