@@ -5,7 +5,7 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-#include <chlasm/Enum.h> /* For MAGIC_TYPE_LAST_142, TOWN_DESIRE_INFO_LAST, enum ABODE_TYPE, enum LIVING_TYPE, enum MAGIC_TYPE, enum RESOURCE_TYPE, enum TRIBE_TYPE */
+#include <chlasm/Enum.h> /* For MAGIC_TYPE_LAST_142, TOWN_DESIRE_INFO_LAST, enum ABODE_TYPE, enum LIVING_TYPE, enum MAGIC_TYPE, enum RESOURCE_TYPE, enum TOWN_DESIRE_INFO, enum TRIBE_TYPE */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
 #include <reversing_utils/re_common.h> /* For bool32_t */
@@ -33,6 +33,7 @@ struct Base;
 struct Citadel;
 struct Creature;
 struct Creche;
+struct GMultiMapFixedInfo;
 struct GPlayer;
 struct GTownInfo;
 struct GTribeInfo;
@@ -192,16 +193,34 @@ void __fastcall AddStructureToTown__4TownFP13MultiMapFixed(struct Town* this, co
 void __fastcall AddAbodeToTownStats__4TownFP5Abode(struct Town* this, const void* edx, struct Abode* abode) asm("?AddAbodeToTownStats@Town@@QAEXPAVAbode@@@Z");
 // win1.41 0073a090 mac 10556400 Town::AddVillagerToTown(Villager *)
 bool __fastcall AddVillagerToTown__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?AddVillagerToTown@Town@@QAE_NPAVVillager@@@Z");
+// win1.41 0073a140 mac 10007ca0 Town::GetBestPlanned(float &, ABODE_TYPE)
+struct PlannedMultiMapFixed* __fastcall GetBestPlanned__4TownFRf10ABODE_TYPE(struct Town* this, const void* edx, float* param_1, enum ABODE_TYPE param_2) asm("?GetBestPlanned@Town@@QAEPAVPlannedMultiMapFixed@@AAMW4ABODE_TYPE@@@Z");
+// win1.41 0073a1a0 mac 100896c0 Town::GetDesireToBeBuilt(GMultiMapFixedInfo const *, unsigned long)
+float __fastcall GetDesireToBeBuilt__4TownFPC18GMultiMapFixedInfoUl(struct Town* this, const void* edx, const struct GMultiMapFixedInfo* param_1, unsigned long param_2) asm("?GetDesireToBeBuilt@Town@@QAEMPBVGMultiMapFixedInfo@@K@Z");
+// win1.41 0073a650 mac 105561f0 Town::RequestBestPlanned(void)
+bool32_t __fastcall RequestBestPlanned__4TownFv(struct Town* this) asm("?RequestBestPlanned@Town@@QAEIXZ");
 // win1.41 0073af50 mac 10555160 Town::ChildToAdult(Villager *)
 void __fastcall ChildToAdult__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* param_1) asm("?ChildToAdult@Town@@QAEXPAVVillager@@@Z");
+// win1.41 0073b2d0 mac 10554e90 Town::IsHarvestTime(void)
+bool __fastcall IsHarvestTime__4TownFv(struct Town* this) asm("?IsHarvestTime@Town@@QAE_NXZ");
+// win1.41 0073b330 mac 1009ada0 Town::RequestANewAbode(ABODE_TYPE)
+bool32_t __fastcall RequestANewAbode__4TownF10ABODE_TYPE(struct Town* this, const void* edx, enum ABODE_TYPE param_1) asm("?RequestANewAbode@Town@@QAEIW4ABODE_TYPE@@@Z");
 // win1.41 0073b370 mac 10554d60 Town::FindAbodeWithSpaceInTown(Villager *, float)
 struct Abode* __fastcall FindAbodeWithSpaceInTown__4TownFP8Villagerf(struct Town* this, const void* edx, struct Villager* villager, float min_score) asm("?FindAbodeWithSpaceInTown@Town@@QAEPAVAbode@@PAVVillager@@M@Z");
+// win1.41 0073b3d0 mac 10554c70 Town::FindClosesFieldToWithFood(MapCoords const &)
+struct Field* __fastcall FindClosesFieldToWithFood__4TownFRC9MapCoords(struct Town* this, const void* edx, const struct MapCoords* param_1) asm("?FindClosesFieldToWithFood@Town@@QAEPAVField@@ABUMapCoords@@@Z");
 // win1.41 0073b580 mac 10554bd0 Town::IsVillagerInHomelessList(Villager *)
 bool32_t __fastcall IsVillagerInHomelessList__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?IsVillagerInHomelessList@Town@@QAE_NPAVVillager@@@Z");
 // win1.41 0073b5b0 mac 100572e0 Town::GetStoragePit(void)
 struct StoragePit* __fastcall GetStoragePit__4TownFv(struct Town* this) asm("?GetStoragePit@Town@@QAEPAVStoragePit@@XZ");
 // win1.41 0073b5d0 mac 10554b00 Town::Birthday(void)
 void __fastcall Birthday__4TownFv(struct Town* this) asm("?Birthday@Town@@QAEXXZ");
+// win1.41 0073b860 mac 10554610 Town::AddBuildingSite(PlannedMultiMapFixed *)
+struct BuildingSite* __fastcall AddBuildingSite__4TownFP20PlannedMultiMapFixed(struct Town* this, const void* edx, struct PlannedMultiMapFixed* param_1) asm("?AddBuildingSite@Town@@QAEPAVBuildingSite@@PAVPlannedMultiMapFixed@@@Z");
+// win1.41 0073b8a0 mac 10554530 Town::AddBuildingSiteNoFixedCheck(PlannedMultiMapFixed *)
+struct BuildingSite* __fastcall AddBuildingSiteNoFixedCheck__4TownFP20PlannedMultiMapFixed(struct Town* this, const void* edx, struct PlannedMultiMapFixed* param_1) asm("?AddBuildingSiteNoFixedCheck@Town@@QAEPAVBuildingSite@@PAVPlannedMultiMapFixed@@@Z");
+// win1.41 0073b910 mac 10554340 Town::AddBuildingSite(BuildingSite *)
+void __fastcall AddBuildingSite__4TownFP12BuildingSite(struct Town* this, const void* edx, struct BuildingSite* param_1) asm("?AddBuildingSite@Town@@QAEXPAVBuildingSite@@@Z");
 // win1.41 0073ba20 mac 10554100 Town::RemoveBuildingSite(MultiMapFixed *)
 uint32_t __fastcall RemoveBuildingSite__4TownFP13MultiMapFixed(struct Town* this, const void* edx, struct MultiMapFixed* param_1) asm("?RemoveBuildingSite@Town@@QAEIPAVMultiMapFixed@@@Z");
 // win1.41 0073ba70 mac 10554050 Town::SetBeliefInPlayer(GPlayer *, float)
@@ -214,6 +233,8 @@ void __fastcall AdjustWorshipersWorshipping__4TownFlii(struct Town* this, const 
 struct GTribeInfo* __fastcall GetTribe__4TownCFv(struct Town* this) asm("?GetTribe@Town@@QBEPAVGTribeInfo@@XZ");
 // win1.41 0073c860 mac 10092530 Town::GetWorshipersNeeded(int, int, int *)
 int __fastcall GetWorshipersNeeded__4TownFiiPi(struct Town* this, const void* edx, int param_1, int param_2, int* result) asm("?GetWorshipersNeeded@Town@@QAEHHHPAH@Z");
+// win1.41 0073cf00 mac 10551920 Town::IsBuildingSiteValid(BuildingSite *)
+bool32_t __fastcall IsBuildingSiteValid__4TownFP12BuildingSite(struct Town* this, const void* edx, struct BuildingSite* param_1) asm("?IsBuildingSiteValid@Town@@QAEIPAVBuildingSite@@@Z");
 // win1.41 0073d080 mac 105516a0 Town::AddPlanned(PlannedMultiMapFixed *)
 void __fastcall AddPlanned__4TownFP20PlannedMultiMapFixed(struct Town* this, const void* edx, struct PlannedMultiMapFixed* planned) asm("?AddPlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z");
 // win1.41 0073d0d0 mac 10551530 Town::RemovePlanned(PlannedMultiMapFixed *)
@@ -234,6 +255,8 @@ struct TotemStatue* __fastcall GetTotemStatue__4TownFv(struct Town* this) asm("?
 void __fastcall RemoveVillager__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?RemoveVillager@Town@@QAEXPAVVillager@@@Z");
 // win1.41 0073e360 mac 1054f190 Town::RemoveVillagerOnWayToWorshipSite(Villager *)
 void __fastcall RemoveVillagerOnWayToWorshipSite__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?RemoveVillagerOnWayToWorshipSite@Town@@QAEXPAVVillager@@@Z");
+// win1.41 0073e400 mac 10060840 Town::GetDesire(TOWN_DESIRE_INFO)
+float __fastcall GetDesire__4TownF16TOWN_DESIRE_INFO(struct Town* this, const void* edx, enum TOWN_DESIRE_INFO param_1) asm("?GetDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z");
 // win1.41 0073e900 mac 1054e460 Town::GetTemporaryResourceStorePotOrPos(MapCoords const &, MapCoords &, RESOURCE_TYPE)
 void* __fastcall GetTemporaryResourceStorePotOrPos__4TownFRC9MapCoordsR9MapCoords13RESOURCE_TYPE(struct Town* this, const void* edx, const struct MapCoords* param_1, struct MapCoords* param_2, enum RESOURCE_TYPE param_3) asm("?GetTemporaryResourceStorePotOrPos@Town@@QAEPAXABUMapCoords@@AAU2@W4RESOURCE_TYPE@@@Z");
 // win1.41 0073eb00 mac 1054dfe0 Town::AssignForestsToTown(void)

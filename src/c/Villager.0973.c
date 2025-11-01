@@ -2784,7 +2784,7 @@ bool __fastcall DiscipleDecideWhatToDo__8VillagerFv(struct Villager* this)
     asm("{disp32} je        _jmp_addr_0x007518e7");                           // 0x00751767    0f847a010000
     asm("push               0x0");                                            // 0x0075176d    6a00
     asm("mov.s              ecx, edi");                                       // 0x0075176f    8bcf
-    asm("call               _jmp_addr_0x00529350");                           // 0x00751771    e8da7bddff
+    asm("call               ?GetFieldActivity@Field@@QAEHH@Z");                           // 0x00751771    e8da7bddff
     asm("cmp                eax, 0x02");                                      // 0x00751776    83f802
     asm("{disp8} jne        _jmp_addr_0x007517a3");                           // 0x00751779    7528
     asm("{disp8} mov        eax, dword ptr [esi + 0x28]");                    // 0x0075177b    8b4628
@@ -2803,7 +2803,7 @@ bool __fastcall DiscipleDecideWhatToDo__8VillagerFv(struct Villager* this)
     asm("_jmp_addr_0x007517a3:");
     asm("push               edi");                                            // 0x007517a3    57
     asm("mov.s              ecx, esi");                                       // 0x007517a4    8bce
-    asm("call               _jmp_addr_0x00759c00");                           // 0x007517a6    e855840000
+    asm("call               ?VillagerBecomesFarmer@Villager@@QAEIPAVField@@@Z");                           // 0x007517a6    e855840000
     asm("cmp                eax, 0x01");                                      // 0x007517ab    83f801
     asm("{disp32} jne       _jmp_addr_0x007518e7");                           // 0x007517ae    0f8533010000
     asm("pop                edi");                                            // 0x007517b4    5f
@@ -2811,7 +2811,7 @@ bool __fastcall DiscipleDecideWhatToDo__8VillagerFv(struct Villager* this)
     asm("pop                ecx");                                            // 0x007517b6    59
     asm("ret");                                                               // 0x007517b7    c3
     asm("mov.s              ecx, esi");                                       // 0x007517b8    8bce
-    asm("call               _jmp_addr_0x0075f4a0");                           // 0x007517ba    e8e1dc0000
+    asm("call               ?CheckSatisfyWoodDesire@Villager@@QAEIXZ");                           // 0x007517ba    e8e1dc0000
     asm("cmp                eax, 0x01");                                      // 0x007517bf    83f801
     asm("{disp32} jne       _jmp_addr_0x007518e7");                           // 0x007517c2    0f851f010000
     asm("pop                edi");                                            // 0x007517c8    5f
@@ -2819,7 +2819,7 @@ bool __fastcall DiscipleDecideWhatToDo__8VillagerFv(struct Villager* this)
     asm("pop                ecx");                                            // 0x007517ca    59
     asm("ret");                                                               // 0x007517cb    c3
     asm("mov.s              ecx, esi");                                       // 0x007517cc    8bce
-    asm("call               _jmp_addr_0x0075b4c0");                           // 0x007517ce    e8ed9c0000
+    asm("call               ?FishermanLookForWater@Villager@@QAEIXZ");                           // 0x007517ce    e8ed9c0000
     asm("cmp                eax, 0x01");                                      // 0x007517d3    83f801
     asm("{disp32} jne       _jmp_addr_0x007518e7");                           // 0x007517d6    0f850b010000
     asm("pop                edi");                                            // 0x007517dc    5f
@@ -2827,7 +2827,7 @@ bool __fastcall DiscipleDecideWhatToDo__8VillagerFv(struct Villager* this)
     asm("pop                ecx");                                            // 0x007517de    59
     asm("ret");                                                               // 0x007517df    c3
     asm("mov.s              ecx, esi");                                       // 0x007517e0    8bce
-    asm("call               _jmp_addr_0x00758340");                           // 0x007517e2    e8596b0000
+    asm("call               ?CheckNeededForBuilding@Villager@@QAEIXZ");                           // 0x007517e2    e8596b0000
     asm("cmp                eax, 0x01");                                      // 0x007517e7    83f801
     asm("{disp32} jne       _jmp_addr_0x007518e7");                           // 0x007517ea    0f85f7000000
     asm("pop                edi");                                            // 0x007517f0    5f
@@ -2835,7 +2835,7 @@ bool __fastcall DiscipleDecideWhatToDo__8VillagerFv(struct Villager* this)
     asm("pop                ecx");                                            // 0x007517f2    59
     asm("ret");                                                               // 0x007517f3    c3
     asm("mov.s              ecx, esi");                                       // 0x007517f4    8bce
-    asm("call               _jmp_addr_0x00769ee0");                           // 0x007517f6    e8e5860100
+    asm("call               ?SetupBreederDisciple@Villager@@QAEIXZ");                           // 0x007517f6    e8e5860100
     asm("cmp                eax, 0x01");                                      // 0x007517fb    83f801
     asm("{disp32} jne       _jmp_addr_0x007518e7");                           // 0x007517fe    0f85e3000000
     asm("pop                edi");                                            // 0x00751804    5f
@@ -2843,7 +2843,7 @@ bool __fastcall DiscipleDecideWhatToDo__8VillagerFv(struct Villager* this)
     asm("pop                ecx");                                            // 0x00751806    59
     asm("ret");                                                               // 0x00751807    c3
     asm("mov.s              ecx, esi");                                       // 0x00751808    8bce
-    asm("call               _jmp_addr_0x007593a0");                           // 0x0075180a    e8917b0000
+    asm("call               ?CheckSatisfySupplyWorkshop@Villager@@QAEIXZ");                           // 0x0075180a    e8917b0000
     asm("test               eax, eax");                                       // 0x0075180f    85c0
     asm("{disp32} je        _jmp_addr_0x007518e7");                           // 0x00751811    0f84d0000000
     asm("pop                edi");                                            // 0x00751817    5f
@@ -2852,7 +2852,7 @@ bool __fastcall DiscipleDecideWhatToDo__8VillagerFv(struct Villager* this)
     asm("pop                ecx");                                            // 0x0075181e    59
     asm("ret");                                                               // 0x0075181f    c3
     asm("mov.s              ecx, esi");                                       // 0x00751820    8bce
-    asm("call               _jmp_addr_0x00769b80");                           // 0x00751822    e859830100
+    asm("call               ?CheckTrader@Villager@@QAEIXZ");                           // 0x00751822    e859830100
     asm("cmp                eax, 0x01");                                      // 0x00751827    83f801
     asm("{disp32} jne       _jmp_addr_0x007518e7");                           // 0x0075182a    0f85b7000000
     asm("pop                edi");                                            // 0x00751830    5f

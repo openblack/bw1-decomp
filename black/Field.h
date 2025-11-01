@@ -89,6 +89,15 @@ struct Field* __cdecl Create__5FieldFRC9MapCoordsPC14GFieldTypeInfoP4Townffi(str
 // win1.41 00527dd0 mac 100d5910 Field::Field(MapCoords const &, GFieldTypeInfo const *, GAbodeInfo const *, Town *, float, float, int)
 struct Field* __fastcall __ct__5FieldFRC9MapCoordsPC14GFieldTypeInfoPC10GAbodeInfoP4Townffi(struct Field* this, const void* edx, struct MapCoords* coords, struct GFieldTypeInfo* type_info, struct GAbodeInfo* abode_info, struct Town* town, float param_5, float param_6, int param_7) asm("??0Field@@QAE@ABUMapCoords@@PBVGFieldTypeInfo@@PBVGAbodeInfo@@PAVTown@@MMH@Z");
 
+// Non-virtual methods
+
+// win1.41 00529350 mac 10000690 Field::GetFieldActivity(int)
+int __fastcall GetFieldActivity__5FieldFi(struct Field* this, const void* edx, int param_1) asm("?GetFieldActivity@Field@@QAEHH@Z");
+// win1.41 00529500 mac 10000730 Field::GetPercentFull(void)
+float __fastcall GetPercentFull__5FieldFv(struct Field* this) asm("?GetPercentFull@Field@@QAEMXZ");
+// win1.41 00529700 mac 100d3310 Field::GetFoodValue(void)
+float __fastcall GetFoodValue__5FieldFv(struct Field* this) asm("?GetFoodValue@Field@@QAEMXZ");
+
 // Override methods
 
 // win1.41 00528090 mac 100d5ed0 Field::_dt(void)

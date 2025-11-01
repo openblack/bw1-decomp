@@ -11,7 +11,7 @@
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
-.extern _jmp_addr_0x0043c5f0
+.extern ?GetWoodNeededToBuild@BuildingSite@@QAEMXZ
 .extern _jmp_addr_0x004489d0
 .extern _jmp_addr_0x00448c00
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
@@ -2436,13 +2436,13 @@ _jmp_addr_0x005ca21d:    push               ebx                                 
                          {disp8} mov        ecx, dword ptr [edi + 0x74]                   // 0x005ca238    8b4f74
                          cmp.s              ecx, ebx                                      // 0x005ca23b    3bcb
                          {disp8} je         _jmp_addr_0x005ca27f                          // 0x005ca23d    7440
-                         call               _jmp_addr_0x0043c5f0                          // 0x005ca23f    e8ac23e7ff
+                         call               ?GetWoodNeededToBuild@BuildingSite@@QAEMXZ    // 0x005ca23f    e8ac23e7ff
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x005ca244    d81d98a38a00
                          fnstsw             ax                                            // 0x005ca24a    dfe0
                          test               ah, 0x41                                      // 0x005ca24c    f6c441
                          {disp8} jne        _jmp_addr_0x005ca25b                          // 0x005ca24f    750a
                          {disp8} mov        ecx, dword ptr [edi + 0x74]                   // 0x005ca251    8b4f74
-                         call               _jmp_addr_0x0043c5f0                          // 0x005ca254    e89723e7ff
+                         call               ?GetWoodNeededToBuild@BuildingSite@@QAEMXZ    // 0x005ca254    e89723e7ff
                          {disp8} jmp        _jmp_addr_0x005ca261                          // 0x005ca259    eb06
 _jmp_addr_0x005ca25b:    {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x005ca25b    d90598a38a00
 _jmp_addr_0x005ca261:    {disp8} mov        eax, dword ptr [esp + 0x10]                   // 0x005ca261    8b442410

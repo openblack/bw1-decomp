@@ -74,7 +74,7 @@
 .extern _jmp_addr_0x004f8a40
 .extern _jmp_addr_0x004f8ae0
 .extern _jmp_addr_0x004f8ca0
-.extern _jmp_addr_0x00529700
+.extern ?GetFoodValue@Field@@QAEMXZ
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
@@ -4942,7 +4942,7 @@ _jmp_addr_0x004e495e:    xor.s              eax, eax                            
                          nop                                                                // 0x004e496e    90
                          nop                                                                // 0x004e496f    90
 ?IsFieldWhichNeedsWatering@Field@@UAEIPAVCreature@@@Z:
-                         call               _jmp_addr_0x00529700                            // 0x004e4970    e88b4d0400
+                         call               ?GetFoodValue@Field@@QAEMXZ                     // 0x004e4970    e88b4d0400
                          {disp32} fcomp     dword ptr [_rdata_float0p0]                     // 0x004e4975    d81d98a38a00
                          fnstsw             ax                                              // 0x004e497b    dfe0
                          test               ah, 0x40                                        // 0x004e497d    f6c440

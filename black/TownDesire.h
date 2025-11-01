@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+struct GTownDesireInfo;
 struct Town;
 struct Villager;
 
@@ -77,6 +78,8 @@ struct TownDesire* __fastcall __ct__10TownDesireFv(struct TownDesire* this) asm(
 
 // win1.41 00745ae0 mac 1005c8d0 TownDesire::Process(void)
 void __fastcall Process__10TownDesireFv(struct TownDesire* this) asm("?Process@TownDesire@@QAEXXZ");
+// win1.41 00745f80 mac 1005d280 TownDesire::GetInfo(unsigned long) const
+struct GTownDesireInfo* __fastcall GetInfo__10TownDesireCFUl(const struct TownDesire* this, const void* edx, unsigned long param_1) asm("?GetInfo@TownDesire@@QBEPAVGTownDesireInfo@@K@Z");
 
 // Override methods
 

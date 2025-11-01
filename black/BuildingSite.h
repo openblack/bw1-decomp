@@ -9,6 +9,7 @@
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "GameThing.h" /* For struct GameThing, struct GameThingVftable */
@@ -93,6 +94,14 @@ struct BuildingSite* __fastcall __ct__12BuildingSiteFP13MultiMapFixed(struct Bui
 
 // win1.41 0043bc70 mac 1005fd40 BuildingSite::GetBuilding(void)
 struct MultiMapFixed* __fastcall GetBuilding__12BuildingSiteFv(struct BuildingSite* this) asm("?GetBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ");
+// win1.41 0043bca0 mac 1006caf0 BuildingSite::GetRootBuilding(void)
+struct MultiMapFixed* __fastcall GetRootBuilding__12BuildingSiteFv(struct BuildingSite* this) asm("?GetRootBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ");
+// win1.41 0043c0c0 mac 100bb810 BuildingSite::GetWoodValue(void)
+float __fastcall GetWoodValue__12BuildingSiteFv(struct BuildingSite* this) asm("?GetWoodValue@BuildingSite@@QAEMXZ");
+// win1.41 0043c5f0 mac 0043c5f0 BuildingSite::GetWoodNeededToBuild(void)
+float __fastcall GetWoodNeededToBuild__12BuildingSiteFv(struct BuildingSite* this) asm("?GetWoodNeededToBuild@BuildingSite@@QAEMXZ");
+// win1.41 0043c680 mac 100ba9d0 BuildingSite::ShouldIGetWood(Villager *)
+bool32_t __fastcall ShouldIGetWood__12BuildingSiteFP8Villager(struct BuildingSite* this, const void* edx, struct Villager* param_1) asm("?ShouldIGetWood@BuildingSite@@QAEIPAVVillager@@@Z");
 // win1.41 0043d080 mac 100b9660 BuildingSite::BuildBy(float)
 void __fastcall BuildBy__12BuildingSiteFf(struct BuildingSite* this, const void* edx, float param_1) asm("?BuildBy@BuildingSite@@QAEXM@Z");
 

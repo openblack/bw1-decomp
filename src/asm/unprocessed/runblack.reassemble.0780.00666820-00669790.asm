@@ -15,7 +15,7 @@
 .extern _jmp_addr_0x0043bd70
 .extern _jmp_addr_0x0043be00
 .extern _jmp_addr_0x0043c120
-.extern _jmp_addr_0x0043c5f0
+.extern ?GetWoodNeededToBuild@BuildingSite@@QAEMXZ
 .extern _jmp_addr_0x0043d100
 .extern _jmp_addr_0x0052d240
 .extern ?GetForestCentreTree@Forest@@QAEPAVTree@@XZ
@@ -66,7 +66,7 @@
 .extern _jmp_addr_0x007337d0
 .extern _jmp_addr_0x0073ae10
 .extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
-.extern _jmp_addr_0x0073e400
+.extern ?GetDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
 .extern _jmp_addr_0x0073e420
 .extern _jmp_addr_0x00740ed0
 .extern _jmp_addr_0x00741980
@@ -494,7 +494,7 @@ _jmp_addr_0x00666c38:    {disp8} fld        dword ptr [esp + 0x08]              
                          {disp8} je         _jmp_addr_0x00666cd8                     // 0x00666c66    7470
 _jmp_addr_0x00666c68:    push               0x0                                      // 0x00666c68    6a00
                          mov.s              ecx, esi                                 // 0x00666c6a    8bce
-                         call               _jmp_addr_0x0073e400                     // 0x00666c6c    e88f770d00
+                         call               ?GetDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z                     // 0x00666c6c    e88f770d00
                          {disp8} fcom       dword ptr [esp + 0x08]                   // 0x00666c71    d8542408
                          fnstsw             ax                                       // 0x00666c75    dfe0
                          test               ah, 0x41                                 // 0x00666c77    f6c441
@@ -711,7 +711,7 @@ _jmp_addr_0x00666ec6:    mov.s              ecx, esi                            
                          {disp8} je         _jmp_addr_0x00666eef                     // 0x00666ecf    741e
                          push               0x1                                      // 0x00666ed1    6a01
                          mov.s              ecx, esi                                 // 0x00666ed3    8bce
-                         call               _jmp_addr_0x0073e400                     // 0x00666ed5    e826750d00
+                         call               ?GetDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z                     // 0x00666ed5    e826750d00
                          {disp8} fcom       dword ptr [esp + 0x08]                   // 0x00666eda    d8542408
                          fnstsw             ax                                       // 0x00666ede    dfe0
                          test               ah, 0x41                                 // 0x00666ee0    f6c441
@@ -2050,7 +2050,7 @@ _jmp_addr_0x00667ccb:    {disp8} mov        esi, dword ptr [edi + 0x04]         
                          test               eax, eax                                 // 0x00667ce4    85c0
                          {disp32} je        _jmp_addr_0x00667dd3                     // 0x00667ce6    0f84e7000000
                          mov.s              ecx, esi                                 // 0x00667cec    8bce
-                         call               _jmp_addr_0x0043c5f0                     // 0x00667cee    e8fd48ddff
+                         call               ?GetWoodNeededToBuild@BuildingSite@@QAEMXZ                     // 0x00667cee    e8fd48ddff
                          {disp32} fcomp     dword ptr [_rdata_float0p0]              // 0x00667cf3    d81d98a38a00
                          fnstsw             ax                                       // 0x00667cf9    dfe0
                          test               ah, 0x41                                 // 0x00667cfb    f6c441
@@ -2074,7 +2074,7 @@ _jmp_addr_0x00667d27:    mov                eax, dword ptr [esi]                
                          {disp8} fild       qword ptr [esp + 0x20]                   // 0x00667d3b    df6c2420
                          mov.s              ecx, esi                                 // 0x00667d3f    8bce
                          {disp8} fstp       dword ptr [esp + 0x18]                   // 0x00667d41    d95c2418
-                         call               _jmp_addr_0x0043c5f0                     // 0x00667d45    e8a648ddff
+                         call               ?GetWoodNeededToBuild@BuildingSite@@QAEMXZ                     // 0x00667d45    e8a648ddff
                          {disp8} fdivr      dword ptr [esp + 0x18]                   // 0x00667d4a    d87c2418
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x1390]         // 0x00667d4e    d81d90a38a00
                          fnstsw             ax                                       // 0x00667d54    dfe0
@@ -2089,7 +2089,7 @@ _jmp_addr_0x00667d27:    mov                eax, dword ptr [esi]                
                          {disp8} fild       qword ptr [esp + 0x28]                   // 0x00667d6f    df6c2428
                          mov.s              ecx, esi                                 // 0x00667d73    8bce
                          {disp8} fstp       dword ptr [esp + 0x18]                   // 0x00667d75    d95c2418
-                         call               _jmp_addr_0x0043c5f0                     // 0x00667d79    e87248ddff
+                         call               ?GetWoodNeededToBuild@BuildingSite@@QAEMXZ                     // 0x00667d79    e87248ddff
                          {disp8} fdivr      dword ptr [esp + 0x18]                   // 0x00667d7e    d87c2418
                          {disp8} jmp        _jmp_addr_0x00667d8a                     // 0x00667d82    eb06
 _jmp_addr_0x00667d84:    {disp32} fld       dword ptr [rdata_bytes + 0x1390]         // 0x00667d84    d90590a38a00

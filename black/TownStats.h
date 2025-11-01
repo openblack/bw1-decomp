@@ -12,6 +12,7 @@
 // Forward Declares
 
 struct BaseVftable;
+struct BuildingSite;
 struct PlannedMultiMapFixed;
 struct Villager;
 
@@ -87,6 +88,8 @@ void __fastcall ChildToAdult__9TownStatsFP8Villager(struct TownStats* this, cons
 void __fastcall VillagerMoveOutOfAbode__9TownStatsFP8Villager(struct TownStats* this, const void* edx, struct Villager* villager) asm("?VillagerMoveOutOfAbode@TownStats@@QAEXPAVVillager@@@Z");
 // win1.41 00749a60 mac 10562330 TownStats::Add(PlannedMultiMapFixed *)
 void __fastcall Add__9TownStatsFP20PlannedMultiMapFixed(struct TownStats* this, const void* edx, struct PlannedMultiMapFixed* planned) asm("?Add@TownStats@@QAEXPAVPlannedMultiMapFixed@@@Z");
+// win1.41 00749aa0 mac 10562220 TownStats::Add(BuildingSite *)
+void __fastcall Add__9TownStatsFP12BuildingSite(struct TownStats* this, const void* edx, struct BuildingSite* param_1) asm("?Add@TownStats@@QAEXPAVBuildingSite@@@Z");
 // win1.41 00749c60 mac 10561dd0 TownStats::IncrementNumOfDisciples(VILLAGER_DISCIPLE)
 void __fastcall IncrementNumOfDisciples__9TownStatsF17VILLAGER_DISCIPLE(struct TownStats* this, const void* edx, enum VILLAGER_DISCIPLE param_1) asm("?IncrementNumOfDisciples@TownStats@@QAEXW4VILLAGER_DISCIPLE@@@Z");
 // win1.41 00749c80 mac 10561d60 TownStats::DecrementNumOfDisciples(VILLAGER_DISCIPLE)
