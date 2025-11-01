@@ -484,57 +484,6 @@
 .globl _jmp_addr_0x0075fd00
 .globl ?SetFarmerGotoField@Villager@@QAEIPAVField@@H@Z
 
-_globl_ct_0x00757860:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00757860    8a0d34c9fa00
-                         mov                al, 0x01                                      // 0x00757866    b001
-                         test               al, cl                                        // 0x00757868    84c8
-                         {disp8} jne        _jmp_addr_0x00757874                          // 0x0075786a    7508
-                         or.s               cl, al                                        // 0x0075786c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x0075786e    880d34c9fa00
-_jmp_addr_0x00757874:    {disp32} jmp       _jmp_addr_0x00757880                          // 0x00757874    e907000000
-                         nop                                                              // 0x00757879    90
-                         nop                                                              // 0x0075787a    90
-                         nop                                                              // 0x0075787b    90
-                         nop                                                              // 0x0075787c    90
-                         nop                                                              // 0x0075787d    90
-                         nop                                                              // 0x0075787e    90
-                         nop                                                              // 0x0075787f    90
-_jmp_addr_0x00757880:    push               0x00407870                                    // 0x00757880    6870784000
-                         call               _atexit                                       // 0x00757885    e807df0600
-                         pop                ecx                                           // 0x0075788a    59
-                         ret                                                              // 0x0075788b    c3
-                         nop                                                              // 0x0075788c    90
-                         nop                                                              // 0x0075788d    90
-                         nop                                                              // 0x0075788e    90
-                         nop                                                              // 0x0075788f    90
-_globl_ct_0x00757890:    {disp32} jmp       _jmp_addr_0x007578a0                          // 0x00757890    e90b000000
-                         nop                                                              // 0x00757895    90
-                         nop                                                              // 0x00757896    90
-                         nop                                                              // 0x00757897    90
-                         nop                                                              // 0x00757898    90
-                         nop                                                              // 0x00757899    90
-                         nop                                                              // 0x0075789a    90
-                         nop                                                              // 0x0075789b    90
-                         nop                                                              // 0x0075789c    90
-                         nop                                                              // 0x0075789d    90
-                         nop                                                              // 0x0075789e    90
-                         nop                                                              // 0x0075789f    90
-_jmp_addr_0x007578a0:    {disp32} fld       dword ptr [rdata_bytes + 0xf193c]             // 0x007578a0    d9053ca99900
-                         {disp32} fmul      dword ptr [rdata_bytes + 0xf1938]             // 0x007578a6    d80d38a99900
-                         {disp32} fstp      dword ptr [data_bytes + 0x3f3dd4]             // 0x007578ac    d91dd49ddb00
-                         ret                                                              // 0x007578b2    c3
-                         nop                                                              // 0x007578b3    90
-                         nop                                                              // 0x007578b4    90
-                         nop                                                              // 0x007578b5    90
-                         nop                                                              // 0x007578b6    90
-                         nop                                                              // 0x007578b7    90
-                         nop                                                              // 0x007578b8    90
-                         nop                                                              // 0x007578b9    90
-                         nop                                                              // 0x007578ba    90
-                         nop                                                              // 0x007578bb    90
-                         nop                                                              // 0x007578bc    90
-                         nop                                                              // 0x007578bd    90
-                         nop                                                              // 0x007578be    90
-                         nop                                                              // 0x007578bf    90
 ?ChildFollowsMother@Villager@@QAEIXZ:
                          sub                esp, 0x20                                     // 0x007578c0    83ec20
                          push               esi                                           // 0x007578c3    56
