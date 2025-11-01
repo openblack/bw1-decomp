@@ -131,7 +131,7 @@
 .extern _jmp_addr_0x0073b800
 .extern _jmp_addr_0x0073b990
 .extern _jmp_addr_0x0073e4b0
-.extern _jmp_addr_0x00745f80
+.extern ?GetInfo@TownDesire@@QBEPAVGTownDesireInfo@@K@Z
 .extern ?Create@Tree@@SAPAV1@ABUMapCoords@@PBVGTreeInfo@@PAVForest@@MMM@Z
 .extern _jmp_addr_0x0074cce0
 .extern _jmp_addr_0x0074cd50
@@ -300,7 +300,7 @@
 .globl _jmp_addr_0x0043bc00
 .globl _jmp_addr_0x0043bc60
 .globl ?GetBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ
-.globl _jmp_addr_0x0043bca0
+.globl ?GetRootBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ
 .globl _jmp_addr_0x0043bcb0
 .globl _jmp_addr_0x0043bd00
 .globl _jmp_addr_0x0043bd70
@@ -310,10 +310,10 @@
 .globl _jmp_addr_0x0043be90
 .globl _jmp_addr_0x0043bef0
 .globl _jmp_addr_0x0043bf20
-.globl _jmp_addr_0x0043c0c0
+.globl ?GetWoodValue@BuildingSite@@QAEMXZ
 .globl _jmp_addr_0x0043c120
-.globl _jmp_addr_0x0043c5f0
-.globl _jmp_addr_0x0043c680
+.globl ?GetWoodNeededToBuild@BuildingSite@@QAEMXZ
+.globl ?ShouldIGetWood@BuildingSite@@QAEIPAVVillager@@@Z
 .globl @BuildBy__12BuildingSiteFf@12
 .globl _jmp_addr_0x0043d0b0
 .globl _jmp_addr_0x0043d100

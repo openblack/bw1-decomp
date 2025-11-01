@@ -7,7 +7,7 @@
 .extern SELFMOD_bytes
 .extern rsrc_bytes
 
-.extern _jmp_addr_0x00529350
+.extern ?GetFieldActivity@Field@@QAEHH@Z
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
 .extern ?GetFootball@Villager@@QAEPAVFootball@@XZ
@@ -44,7 +44,7 @@ start_0x00423a80_0x004241b0:
                          nop                                                              // 0x00423a9f    90
                          {disp32} mov       ecx, dword ptr [ecx + 0x00000118]             // 0x00423aa0    8b8918010000
                          push               0x0                                           // 0x00423aa6    6a00
-                         call               _jmp_addr_0x00529350                          // 0x00423aa8    e8a3581000
+                         call               ?GetFieldActivity@Field@@QAEHH@Z              // 0x00423aa8    e8a3581000
                          dec                eax                                           // 0x00423aad    48
                          neg                eax                                           // 0x00423aae    f7d8
                          sbb.s              eax, eax                                      // 0x00423ab0    1bc0

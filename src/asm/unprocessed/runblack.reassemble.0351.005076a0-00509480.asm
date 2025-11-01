@@ -9,7 +9,7 @@
 
 .extern _jmp_addr_0x004146f0
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x0043c0c0
+.extern ?GetWoodValue@BuildingSite@@QAEMXZ
 .extern @BuildBy__12BuildingSiteFf@12
 .extern _jmp_addr_0x00477210
 .extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
@@ -1981,7 +1981,7 @@ _jmp_addr_0x00508c57:    xor.s              eax, eax                            
                          {disp8} fild       qword ptr [esp + 0x08]                        // 0x00508ce2    df6c2408
                          mov.s              ecx, esi                                      // 0x00508ce6    8bce
                          {disp8} fstp       dword ptr [esp + 0x08]                        // 0x00508ce8    d95c2408
-                         call               _jmp_addr_0x0043c0c0                          // 0x00508cec    e8cf33f3ff
+                         call               ?GetWoodValue@BuildingSite@@QAEMXZ            // 0x00508cec    e8cf33f3ff
                          {disp8} fdivr      dword ptr [esp + 0x08]                        // 0x00508cf1    d87c2408
                          mov                edx, dword ptr [esi]                          // 0x00508cf5    8b16
                          push               0x0                                           // 0x00508cf7    6a00

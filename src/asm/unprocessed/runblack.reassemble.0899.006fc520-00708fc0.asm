@@ -72,7 +72,7 @@
 .extern _jmp_addr_0x00715150
 .extern _jmp_addr_0x00722b20
 .extern _jmp_addr_0x00723030
-.extern _jmp_addr_0x0073b910
+.extern ?AddBuildingSite@Town@@QAEXPAVBuildingSite@@@Z
 .extern _jmp_addr_0x0073bab0
 .extern _jmp_addr_0x0073cb50
 .extern ?AddMagicTypesHeld@Town@@QAE_NW4MAGIC_TYPE@@@Z
@@ -5024,7 +5024,7 @@ _jmp_addr_0x006ffadf:    push               0x00c0db84                          
                          {disp8} je         _jmp_addr_0x006ffb84                          // 0x006ffb74    740e
                          push               eax                                           // 0x006ffb76    50
                          mov.s              ecx, esi                                      // 0x006ffb77    8bce
-                         call               _jmp_addr_0x0073b910                          // 0x006ffb79    e892bd0300
+                         call               ?AddBuildingSite@Town@@QAEXPAVBuildingSite@@@Z// 0x006ffb79    e892bd0300
                          pop                edi                                           // 0x006ffb7e    5f
                          pop                esi                                           // 0x006ffb7f    5e
                          add                esp, 0x08                                     // 0x006ffb80    83c408

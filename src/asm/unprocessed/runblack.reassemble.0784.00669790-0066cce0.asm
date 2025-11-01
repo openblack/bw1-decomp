@@ -60,7 +60,7 @@
 .extern _jmp_addr_0x0073ae10
 .extern _jmp_addr_0x0073bab0
 .extern _jmp_addr_0x0073d8d0
-.extern _jmp_addr_0x0073e400
+.extern ?GetDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
 .extern _jmp_addr_0x0073e420
 .extern _jmp_addr_0x00740c50
 .extern _jmp_addr_0x00740e80
@@ -2438,7 +2438,7 @@ _jmp_addr_0x0066b0bd:    fstp               st(0)                               
                          {disp8} mov        dword ptr [esp + 0x18], 0x3f800000            // 0x0066b0bf    c74424180000803f
 _jmp_addr_0x0066b0c7:    push               ecx                                           // 0x0066b0c7    51
                          mov.s              ecx, edi                                      // 0x0066b0c8    8bcf
-                         call               _jmp_addr_0x0073e400                          // 0x0066b0ca    e831330d00
+                         call               ?GetDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z   // 0x0066b0ca    e831330d00
                          {disp32} fld       dword ptr [_rdata_float1p0]                   // 0x0066b0cf    d90590a38a00
                          {disp8} fsub       dword ptr [esp + 0x18]                        // 0x0066b0d5    d8642418
                          fmulp              st(1), st                                     // 0x0066b0d9    dec9

@@ -35,7 +35,7 @@
 .extern _jmp_addr_0x004383d0
 .extern @SetBelief__7GBeliefFUlf@16
 .extern ?GetBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ
-.extern _jmp_addr_0x0043bca0
+.extern ?GetRootBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ
 .extern _jmp_addr_0x0043bcb0
 .extern _jmp_addr_0x0043bef0
 .extern _jmp_addr_0x0043bf20
@@ -302,7 +302,7 @@
 .extern @AddVillagerToTown__4TownFP8Villager@12
 .extern ?GetNearestTownToPos@Town@@SAPAV1@ABUMapCoords@@W4TRIBE_TYPE@@W4ABODE_TYPE@@M@Z
 .extern _jmp_addr_0x0073b7a0
-.extern _jmp_addr_0x0073b8a0
+.extern ?AddBuildingSiteNoFixedCheck@Town@@QAEPAVBuildingSite@@PAVPlannedMultiMapFixed@@@Z
 .extern ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ
 .extern ?AddMagicTypesHeld@Town@@QAE_NW4MAGIC_TYPE@@@Z
 .extern _jmp_addr_0x0073d8d0
@@ -15504,14 +15504,14 @@ _jmp_addr_0x006e911f:    mov                edx, dword ptr [edi]                
                          {disp8} mov        ecx, dword ptr [esi + 0x6c]                   // 0x006e9146    8b4e6c
                          push               ecx                                           // 0x006e9149    51
                          mov.s              ecx, ebp                                      // 0x006e914a    8bcd
-                         call               _jmp_addr_0x0073b8a0                          // 0x006e914c    e84f270500
+                         call               ?AddBuildingSiteNoFixedCheck@Town@@QAEPAVBuildingSite@@PAVPlannedMultiMapFixed@@@Z                          // 0x006e914c    e84f270500
                          mov.s              edi, eax                                      // 0x006e9151    8bf8
                          test               edi, edi                                      // 0x006e9153    85ff
                          {disp32} je        _jmp_addr_0x006e91f0                          // 0x006e9155    0f8495000000
                          cmp                dword ptr [esi + 0x00000090], -0x01           // 0x006e915b    83be90000000ff
                          {disp8} jne        _jmp_addr_0x006e9177                          // 0x006e9162    7513
                          mov.s              ecx, edi                                      // 0x006e9164    8bcf
-                         call               _jmp_addr_0x0043bca0                          // 0x006e9166    e8352bd5ff
+                         call               ?GetRootBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ                          // 0x006e9166    e8352bd5ff
                          mov                edx, dword ptr [eax]                          // 0x006e916b    8b10
                          push               0x1                                           // 0x006e916d    6a01
                          mov.s              ecx, eax                                      // 0x006e916f    8bc8
@@ -15531,7 +15531,7 @@ _jmp_addr_0x006e9177:    push               esi                                 
                          cmp                eax, 0x0a                                     // 0x006e919e    83f80a
                          {disp8} jne        _jmp_addr_0x006e91ca                          // 0x006e91a1    7527
                          mov.s              ecx, edi                                      // 0x006e91a3    8bcf
-                         call               _jmp_addr_0x0043bca0                          // 0x006e91a5    e8f62ad5ff
+                         call               ?GetRootBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ                          // 0x006e91a5    e8f62ad5ff
                          mov.s              edi, eax                                      // 0x006e91aa    8bf8
                          mov                edx, dword ptr [edi]                          // 0x006e91ac    8b17
                          push               ebx                                           // 0x006e91ae    53
@@ -15815,7 +15815,7 @@ _jmp_addr_0x006e94fa:    {disp8} mov        ebp, dword ptr [edi + 0x44]         
                          call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2                          // 0x006e9504    e8c7c7f1ff
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x006e9509    d95c2410
                          {disp8} mov        ecx, dword ptr [ebx + 0x68]                   // 0x006e950d    8b4b68
-                         call               _jmp_addr_0x0043bca0                          // 0x006e9510    e88b27d5ff
+                         call               ?GetRootBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ                          // 0x006e9510    e88b27d5ff
                          mov                edx, dword ptr [eax]                          // 0x006e9515    8b10
                          mov.s              ecx, eax                                      // 0x006e9517    8bc8
                          call               dword ptr [edx + 0x64]                        // 0x006e9519    ff5264
@@ -16008,7 +16008,7 @@ _jmp_addr_0x006e96d2:    mov                eax, 0x00000001                     
                          {disp8} mov        dword ptr [esi + 0x7c], eax                   // 0x006e9704    89467c
                          {disp32} mov       dword ptr [esi + 0x00000094], ebx             // 0x006e9707    899e94000000
                          {disp8} je         _jmp_addr_0x006e9716                          // 0x006e970d    7407
-                         call               _jmp_addr_0x0043bca0                          // 0x006e970f    e88c25d5ff
+                         call               ?GetRootBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ                          // 0x006e970f    e88c25d5ff
                          mov.s              ebx, eax                                      // 0x006e9714    8bd8
 _jmp_addr_0x006e9716:    xor.s              edi, edi                                      // 0x006e9716    33ff
                          test               ebx, ebx                                      // 0x006e9718    85db

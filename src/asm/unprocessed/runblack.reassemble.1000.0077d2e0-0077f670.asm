@@ -75,7 +75,7 @@
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
 .extern ?Get3DAngleFromXZ@GUtils@@SAMABUMapCoords@@0@Z
 .extern ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z
-.extern _jmp_addr_0x0075bba0
+.extern ?GetDesireForLife@Villager@@QAEXXZ
 .extern _jmp_addr_0x0077b960
 .extern @AddSpellIcon__11WorshipSiteFP16WorshipSpellIcon@12
 .extern _jmp_addr_0x0077c450
@@ -1476,10 +1476,10 @@ _jmp_addr_0x0077e116:    push               esi                                 
                          {disp8} je         _jmp_addr_0x0077e171                          // 0x0077e11f    7450
 _jmp_addr_0x0077e121:    mov                ebp, dword ptr [esi]                          // 0x0077e121    8b2e
                          mov.s              ecx, ebx                                      // 0x0077e123    8bcb
-                         call               _jmp_addr_0x0075bba0                          // 0x0077e125    e876dafdff
+                         call               ?GetDesireForLife@Villager@@QAEXXZ            // 0x0077e125    e876dafdff
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x0077e12a    d95c2414
                          mov.s              ecx, ebp                                      // 0x0077e12e    8bcd
-                         call               _jmp_addr_0x0075bba0                          // 0x0077e130    e86bdafdff
+                         call               ?GetDesireForLife@Villager@@QAEXXZ            // 0x0077e130    e86bdafdff
                          {disp8} fcomp      dword ptr [esp + 0x14]                        // 0x0077e135    d85c2414
                          fnstsw             ax                                            // 0x0077e139    dfe0
                          test               ah, 0x01                                      // 0x0077e13b    f6c401
@@ -2228,10 +2228,10 @@ _jmp_addr_0x0077e9a4:    {disp8} mov        eax, dword ptr [esp + 0x28]         
                          {disp8} je         _jmp_addr_0x0077e9f6                          // 0x0077e9ac    7448
 _jmp_addr_0x0077e9ae:    mov                ebx, dword ptr [esi]                          // 0x0077e9ae    8b1e
                          mov.s              ecx, ebp                                      // 0x0077e9b0    8bcd
-                         call               _jmp_addr_0x0075bba0                          // 0x0077e9b2    e8e9d1fdff
+                         call               ?GetDesireForLife@Villager@@QAEXXZ            // 0x0077e9b2    e8e9d1fdff
                          {disp8} fstp       dword ptr [esp + 0x20]                        // 0x0077e9b7    d95c2420
                          mov.s              ecx, ebx                                      // 0x0077e9bb    8bcb
-                         call               _jmp_addr_0x0075bba0                          // 0x0077e9bd    e8ded1fdff
+                         call               ?GetDesireForLife@Villager@@QAEXXZ            // 0x0077e9bd    e8ded1fdff
                          {disp8} fcomp      dword ptr [esp + 0x20]                        // 0x0077e9c2    d85c2420
                          fnstsw             ax                                            // 0x0077e9c6    dfe0
                          test               ah, 0x01                                      // 0x0077e9c8    f6c401

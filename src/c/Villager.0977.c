@@ -7200,7 +7200,7 @@ bool32_t __fastcall CheckInteractWithWorshipSite__8VillagerFv(struct Villager* t
     asm("{disp8} jne        _jmp_addr_0x0075730f");                          // 0x007572cf    753e
     asm("push               edi");                                           // 0x007572d1    57
     asm("mov.s              ecx, esi");                                      // 0x007572d2    8bce
-    asm("call               _jmp_addr_0x00758530");                          // 0x007572d4    e857120000
+    asm("call               ?SetupBuildingObject@Villager@@QAEIPAVMultiMapFixed@@@Z");                          // 0x007572d4    e857120000
     asm("cmp                eax, 0x01");                                     // 0x007572d9    83f801
     asm("{disp8} jne        _jmp_addr_0x0075730f");                          // 0x007572dc    7531
     asm("mov                eax, dword ptr [esi]");                          // 0x007572de    8b06
@@ -7271,7 +7271,7 @@ bool32_t __fastcall CheckInteractWithWorshipSite__8VillagerFv(struct Villager* t
     asm("call               _jmp_addr_0x004c80f0");                          // 0x0075738b    e8600dd7ff
     asm("_jmp_addr_0x00757390:");
     asm("mov.s              ecx, esi");                                      // 0x00757390    8bce
-    asm("call               _jmp_addr_0x0076ba60");                          // 0x00757392    e8c9460100
+    asm("call               ?CheckNeededForWorship@Villager@@QAEMXZ");                          // 0x00757392    e8c9460100
     asm("cmp                eax, 0x01");                                     // 0x00757397    83f801
     asm("{disp8} jne        _jmp_addr_0x007573a4");                          // 0x0075739a    7508
     asm("pop                edi");                                           // 0x0075739c    5f
@@ -7305,7 +7305,7 @@ bool32_t __fastcall CheckInteractWithWorshipSite__8VillagerFv(struct Villager* t
     asm("call               @SetWorshipPercentage__11TotemStatueFf@12");     // 0x007573f6    e8750efeff
     asm("_jmp_addr_0x007573fb:");
     asm("mov.s              ecx, esi");                                      // 0x007573fb    8bce
-    asm("call               _jmp_addr_0x0076ba60");                          // 0x007573fd    e85e460100
+    asm("call               ?CheckNeededForWorship@Villager@@QAEMXZ");                          // 0x007573fd    e85e460100
     asm("cmp                eax, 0x01");                                     // 0x00757402    83f801
     asm("{disp8} jne        _jmp_addr_0x0075740f");                          // 0x00757405    7508
     asm("pop                edi");                                           // 0x00757407    5f
@@ -7390,7 +7390,7 @@ bool32_t __fastcall CheckInteractWithAbode__8VillagerFv(struct Villager* this)
     asm("_jmp_addr_0x007574be:");
     asm("push               edi");                                           // 0x007574be    57
     asm("mov.s              ecx, esi");                                      // 0x007574bf    8bce
-    asm("call               _jmp_addr_0x00758530");                          // 0x007574c1    e86a100000
+    asm("call               ?SetupBuildingObject@Villager@@QAEIPAVMultiMapFixed@@@Z");                          // 0x007574c1    e86a100000
     asm("cmp                eax, 0x01");                                     // 0x007574c6    83f801
     asm("{disp8} jne        _jmp_addr_0x007574ed");                          // 0x007574c9    7522
     asm("mov                edx, dword ptr [esi]");                          // 0x007574cb    8b16

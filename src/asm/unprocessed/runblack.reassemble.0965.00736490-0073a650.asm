@@ -94,7 +94,7 @@
 .extern _jmp_addr_0x0073d650
 .extern _jmp_addr_0x0073d800
 .extern ??0PlayerTownInteract@@QAE@XZ
-.extern _jmp_addr_0x0073e400
+.extern ?GetDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
 .extern _jmp_addr_0x0073fd40
 .extern _jmp_addr_0x007401d0
 .extern _jmp_addr_0x00740430
@@ -111,7 +111,7 @@
 .extern ??0TownDesire@@QAE@XZ
 .extern _jmp_addr_0x00745760
 .extern _jmp_addr_0x00745770
-.extern _jmp_addr_0x00745f80
+.extern ?GetInfo@TownDesire@@QBEPAVGTownDesireInfo@@K@Z
 .extern _jmp_addr_0x007491f0
 .extern _jmp_addr_0x007492e0
 .extern _jmp_addr_0x007498c0
@@ -165,8 +165,8 @@
 .globl ?AddAbodeToTownStats@Town@@QAEXPAVAbode@@@Z
 .globl _jmp_addr_0x00739a60
 .globl ?AddVillagerToTown@Town@@QAE_NPAVVillager@@@Z
-.globl _jmp_addr_0x0073a140
-.globl _jmp_addr_0x0073a1a0
+.globl ?GetBestPlanned@Town@@QAEPAVPlannedMultiMapFixed@@AAMW4ABODE_TYPE@@@Z
+.globl ?GetDesireToBeBuilt@Town@@QAEMPBVGMultiMapFixedInfo@@K@Z
 
 .globl _globl_ct_0x00736f92
 .globl _globl_ct_0x00737310
@@ -5843,7 +5843,8 @@ _jmp_addr_0x0073a12f:    pop                edi                                 
                          nop                                                               // 0x0073a13d    90
                          nop                                                               // 0x0073a13e    90
                          nop                                                               // 0x0073a13f    90
-_jmp_addr_0x0073a140:    push               ebx                                            // 0x0073a140    53
+?GetBestPlanned@Town@@QAEPAVPlannedMultiMapFixed@@AAMW4ABODE_TYPE@@@Z:
+                         push               ebx                                            // 0x0073a140    53
                          push               ebp                                            // 0x0073a141    55
                          push               esi                                            // 0x0073a142    56
                          push               edi                                            // 0x0073a143    57
@@ -5864,7 +5865,7 @@ _jmp_addr_0x0073a158:    mov                eax, dword ptr [esi]                
                          push               0x0                                            // 0x0073a16d    6a00
                          push               eax                                            // 0x0073a16f    50
                          mov.s              ecx, ebx                                       // 0x0073a170    8bcb
-                         call               _jmp_addr_0x0073a1a0                           // 0x0073a172    e829000000
+                         call               ?GetDesireToBeBuilt@Town@@QAEMPBVGMultiMapFixedInfo@@K@Z                           // 0x0073a172    e829000000
                          fcom               dword ptr [edi]                                // 0x0073a177    d817
                          fnstsw             ax                                             // 0x0073a179    dfe0
                          test               ah, 0x41                                       // 0x0073a17b    f6c441
@@ -5890,7 +5891,8 @@ _jmp_addr_0x0073a18f:    pop                edi                                 
                          nop                                                               // 0x0073a19d    90
                          nop                                                               // 0x0073a19e    90
                          nop                                                               // 0x0073a19f    90
-_jmp_addr_0x0073a1a0:    sub                esp, 0x10                                      // 0x0073a1a0    83ec10
+?GetDesireToBeBuilt@Town@@QAEMPBVGMultiMapFixedInfo@@K@Z:
+                         sub                esp, 0x10                                      // 0x0073a1a0    83ec10
                          push               ebx                                            // 0x0073a1a3    53
                          push               ebp                                            // 0x0073a1a4    55
                          push               esi                                            // 0x0073a1a5    56
@@ -6073,13 +6075,13 @@ _jmp_addr_0x0073a446:    cmp                edi, 0x07                           
                          {disp8} jae        _jmp_addr_0x0073a489                           // 0x0073a44b    733c
                          push               0xe                                            // 0x0073a44d    6a0e
                          mov.s              ecx, esi                                       // 0x0073a44f    8bce
-                         call               _jmp_addr_0x0073e400                           // 0x0073a451    e8aa3f0000
+                         call               ?GetDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z    // 0x0073a451    e8aa3f0000
                          {disp8} fst        dword ptr [esp + 0x28]                         // 0x0073a456    d9542428
                          {disp8} fmul       dword ptr [esp + 0x10]                         // 0x0073a45a    d84c2410
                          push               0xe                                            // 0x0073a45e    6a0e
                          {disp8} lea        ecx, dword ptr [esi + 0x34]                    // 0x0073a460    8d4e34
                          {disp8} fstp       dword ptr [esp + 0x14]                         // 0x0073a463    d95c2414
-                         call               _jmp_addr_0x00745f80                           // 0x0073a467    e814bb0000
+                         call               ?GetInfo@TownDesire@@QBEPAVGTownDesireInfo@@K@Z// 0x0073a467    e814bb0000
                          {disp8} fld        dword ptr [esp + 0x28]                         // 0x0073a46c    d9442428
                          {disp8} fcomp      dword ptr [eax + 0x18]                         // 0x0073a470    d85818
                          fnstsw             ax                                             // 0x0073a473    dfe0
