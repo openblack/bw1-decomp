@@ -485,57 +485,6 @@
 .globl ?SetFarmerGotoField@Villager@@QAEIPAVField@@H@Z
 .globl ?MakeHomeless@Villager@@QAE_NXZ
 
-_globl_ct_0x00758120:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00758120    8a0d34c9fa00
-                         mov                al, 0x01                                      // 0x00758126    b001
-                         test               al, cl                                        // 0x00758128    84c8
-                         {disp8} jne        _jmp_addr_0x00758134                          // 0x0075812a    7508
-                         or.s               cl, al                                        // 0x0075812c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x0075812e    880d34c9fa00
-_jmp_addr_0x00758134:    {disp32} jmp       _jmp_addr_0x00758140                          // 0x00758134    e907000000
-                         nop                                                              // 0x00758139    90
-                         nop                                                              // 0x0075813a    90
-                         nop                                                              // 0x0075813b    90
-                         nop                                                              // 0x0075813c    90
-                         nop                                                              // 0x0075813d    90
-                         nop                                                              // 0x0075813e    90
-                         nop                                                              // 0x0075813f    90
-_jmp_addr_0x00758140:    push               0x00407870                                    // 0x00758140    6870784000
-                         call               _atexit                                       // 0x00758145    e847d60600
-                         pop                ecx                                           // 0x0075814a    59
-                         ret                                                              // 0x0075814b    c3
-                         nop                                                              // 0x0075814c    90
-                         nop                                                              // 0x0075814d    90
-                         nop                                                              // 0x0075814e    90
-                         nop                                                              // 0x0075814f    90
-_globl_ct_0x00758150:    {disp32} jmp       _jmp_addr_0x00758160                          // 0x00758150    e90b000000
-                         nop                                                              // 0x00758155    90
-                         nop                                                              // 0x00758156    90
-                         nop                                                              // 0x00758157    90
-                         nop                                                              // 0x00758158    90
-                         nop                                                              // 0x00758159    90
-                         nop                                                              // 0x0075815a    90
-                         nop                                                              // 0x0075815b    90
-                         nop                                                              // 0x0075815c    90
-                         nop                                                              // 0x0075815d    90
-                         nop                                                              // 0x0075815e    90
-                         nop                                                              // 0x0075815f    90
-_jmp_addr_0x00758160:    {disp32} fld       dword ptr [rdata_bytes + 0xf194c]             // 0x00758160    d9054ca99900
-                         {disp32} fmul      dword ptr [rdata_bytes + 0xf1948]             // 0x00758166    d80d48a99900
-                         {disp32} fstp      dword ptr [data_bytes + 0x3f3df0]             // 0x0075816c    d91df09ddb00
-                         ret                                                              // 0x00758172    c3
-                         nop                                                              // 0x00758173    90
-                         nop                                                              // 0x00758174    90
-                         nop                                                              // 0x00758175    90
-                         nop                                                              // 0x00758176    90
-                         nop                                                              // 0x00758177    90
-                         nop                                                              // 0x00758178    90
-                         nop                                                              // 0x00758179    90
-                         nop                                                              // 0x0075817a    90
-                         nop                                                              // 0x0075817b    90
-                         nop                                                              // 0x0075817c    90
-                         nop                                                              // 0x0075817d    90
-                         nop                                                              // 0x0075817e    90
-                         nop                                                              // 0x0075817f    90
 _jmp_addr_0x00758180:    push               esi                                           // 0x00758180    56
                          mov.s              esi, ecx                                      // 0x00758181    8bf1
                          mov                eax, dword ptr [esi]                          // 0x00758183    8b06
