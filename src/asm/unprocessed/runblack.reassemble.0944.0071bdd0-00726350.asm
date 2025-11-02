@@ -222,7 +222,7 @@
 .extern ?AddStructureToTown@Town@@QAEXPAVMultiMapFixed@@@Z
 .extern _jmp_addr_0x00739a60
 .extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
-.extern _jmp_addr_0x0073e420
+.extern ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
 .extern _jmp_addr_0x0074cd50
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
 .extern ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z
@@ -967,7 +967,7 @@ _jmp_addr_0x0071c1e2:    cmp.s              eax, ebx                            
                          {disp8} je         _jmp_addr_0x0071c201                                 // 0x0071c1e8    7417
                          push               0x3                                                  // 0x0071c1ea    6a03
                          mov.s              ecx, eax                                             // 0x0071c1ec    8bc8
-                         call               _jmp_addr_0x0073e420                                 // 0x0071c1ee    e82d220200
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z       // 0x0071c1ee    e82d220200
                          {disp32} fadd      dword ptr [esi + 0x000000a4]                         // 0x0071c1f3    d886a4000000
                          {disp32} fstp      dword ptr [esi + 0x000000a4]                         // 0x0071c1f9    d99ea4000000
                          {disp8} jmp        _jmp_addr_0x0071c1c0                                 // 0x0071c1ff    ebbf

@@ -256,7 +256,7 @@
 .globl _jmp_addr_0x00437a40
 .globl _jmp_addr_0x00437c00
 .globl _jmp_addr_0x00437dd0
-.globl _jmp_addr_0x00437e70
+.globl ?GetBeliefInPlayer@GBelief@@QAEMK@Z
 .globl _jmp_addr_0x00437e90
 .globl _jmp_addr_0x00437eb0
 .globl _jmp_addr_0x004380b0
@@ -305,8 +305,8 @@
 .globl _jmp_addr_0x0043bcb0
 .globl _jmp_addr_0x0043bd00
 .globl _jmp_addr_0x0043bd70
-.globl _jmp_addr_0x0043bde0
-.globl _jmp_addr_0x0043be00
+.globl ?GetClearAreaRadius@BuildingSite@@QAEMXZ
+.globl ?GetDesireToBeRepaired@BuildingSite@@QAEMXZ
 .globl _jmp_addr_0x0043be40
 .globl _jmp_addr_0x0043be90
 .globl _jmp_addr_0x0043bef0
@@ -6550,7 +6550,8 @@ _jmp_addr_0x00437e5b:    mov                edx, dword ptr [eax]                
                          .byte              0x72, 0xed// {disp8} jb _jmp_addr_0x00437e5b         // 0x00437e6c    72ed
                          ret                                                                     // 0x00437e6e    c3
                          nop                                                                     // 0x00437e6f    90
-_jmp_addr_0x00437e70:    {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00437e70    8b442404
+?GetBeliefInPlayer@GBelief@@QAEMK@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00437e70    8b442404
                          {disp8} fld        dword ptr [ecx + eax * 0x4 + 0x08]                   // 0x00437e74    d9448108
                          ret                0x0004                                               // 0x00437e78    c20400
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x00437e7b    e8f999fcff
@@ -7492,7 +7493,7 @@ _jmp_addr_0x0043893b:    mov.s              ecx, ebx                            
                          {disp8} je         _jmp_addr_0x0043897d                                 // 0x00438944    7437
                          push               esi                                                  // 0x00438946    56
                          mov.s              ecx, edi                                             // 0x00438947    8bcf
-                         call               _jmp_addr_0x00437e70                                 // 0x00438949    e822f5ffff
+                         call               ?GetBeliefInPlayer@GBelief@@QAEMK@Z                  // 0x00438949    e822f5ffff
                          {disp8} fstp       dword ptr [esp + 0x0c]                               // 0x0043894e    d95c240c
                          push               ebx                                                  // 0x00438952    53
                          mov.s              ecx, edi                                             // 0x00438953    8bcf
@@ -7505,7 +7506,7 @@ _jmp_addr_0x0043893b:    mov.s              ecx, ebx                            
                          push               esi                                                  // 0x00438969    56
                          {disp8} fstp       dword ptr [esp + 0x1c]                               // 0x0043896a    d95c241c
                          mov.s              ecx, edi                                             // 0x0043896e    8bcf
-                         call               _jmp_addr_0x00437e70                                 // 0x00438970    e8fbf4ffff
+                         call               ?GetBeliefInPlayer@GBelief@@QAEMK@Z                  // 0x00438970    e8fbf4ffff
                          {disp8} fstp       dword ptr [esp + 0x14]                               // 0x00438975    d95c2414
                          {disp8} jmp        _jmp_addr_0x0043897d                                 // 0x00438979    eb02
 _jmp_addr_0x0043897b:    fstp               st(0)                                                // 0x0043897b    ddd8
@@ -7553,14 +7554,14 @@ _jmp_addr_0x004389c4:    cmp.s              ebx, esi                            
                          {disp8} je         _jmp_addr_0x004389e7                                 // 0x004389c6    741f
                          push               esi                                                  // 0x004389c8    56
                          mov.s              ecx, edi                                             // 0x004389c9    8bcf
-                         call               _jmp_addr_0x00437e70                                 // 0x004389cb    e8a0f4ffff
+                         call               ?GetBeliefInPlayer@GBelief@@QAEMK@Z                  // 0x004389cb    e8a0f4ffff
                          {disp8} fcomp      dword ptr [esp + 0x0c]                               // 0x004389d0    d85c240c
                          fnstsw             ax                                                   // 0x004389d4    dfe0
                          test               ah, 0x41                                             // 0x004389d6    f6c441
                          {disp8} jne        _jmp_addr_0x004389e7                                 // 0x004389d9    750c
                          push               esi                                                  // 0x004389db    56
                          mov.s              ecx, edi                                             // 0x004389dc    8bcf
-                         call               _jmp_addr_0x00437e70                                 // 0x004389de    e88df4ffff
+                         call               ?GetBeliefInPlayer@GBelief@@QAEMK@Z                  // 0x004389de    e88df4ffff
                          {disp8} fstp       dword ptr [esp + 0x0c]                               // 0x004389e3    d95c240c
 _jmp_addr_0x004389e7:    inc                esi                                                  // 0x004389e7    46
                          cmp                esi, 0x08                                            // 0x004389e8    83fe08
@@ -12843,7 +12844,8 @@ _jmp_addr_0x0043bdcf:    add                esp, 0x08                           
                          nop                                                                     // 0x0043bddd    90
                          nop                                                                     // 0x0043bdde    90
                          nop                                                                     // 0x0043bddf    90
-_jmp_addr_0x0043bde0:    call               ?GetBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ   // 0x0043bde0    e88bfeffff
+?GetClearAreaRadius@BuildingSite@@QAEMXZ:
+                         call               ?GetBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ   // 0x0043bde0    e88bfeffff
                          mov                edx, dword ptr [eax]                                 // 0x0043bde5    8b10
                          mov.s              ecx, eax                                             // 0x0043bde7    8bc8
                          call               dword ptr [edx + 0x64]                               // 0x0043bde9    ff5264
@@ -12862,7 +12864,8 @@ _jmp_addr_0x0043bde0:    call               ?GetBuilding@BuildingSite@@QAEPAVMul
                          nop                                                                     // 0x0043bdfd    90
                          nop                                                                     // 0x0043bdfe    90
                          nop                                                                     // 0x0043bdff    90
-_jmp_addr_0x0043be00:    push               ecx                                                  // 0x0043be00    51
+?GetDesireToBeRepaired@BuildingSite@@QAEMXZ:
+                         push               ecx                                                  // 0x0043be00    51
                          push               esi                                                  // 0x0043be01    56
                          mov.s              esi, ecx                                             // 0x0043be02    8bf1
                          call               ?GetBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ   // 0x0043be04    e867feffff

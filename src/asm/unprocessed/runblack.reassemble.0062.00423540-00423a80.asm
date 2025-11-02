@@ -8,7 +8,7 @@
 .extern rsrc_bytes
 
 .extern _jmp_addr_0x00423400
-.extern _jmp_addr_0x005eca60
+.extern ?GetReaction@Living@@QAEXXZ
 .extern _jmp_addr_0x005fd5a0
 .extern ?IsWater@MapCoords@@QBEIXZ
 .extern ?GameRand@GRand@@SAHJ@Z
@@ -23,7 +23,7 @@ start_0x00423540_0x00423a80:
                          push               esi                                     // 0x00423545    56
                          push               edi                                     // 0x00423546    57
                          mov.s              esi, ecx                                // 0x00423547    8bf1
-                         call               _jmp_addr_0x005eca60                    // 0x00423549    e812951c00
+                         call               ?GetReaction@Living@@QAEXXZ             // 0x00423549    e812951c00
                          {disp32} mov       eax, dword ptr [esi + 0x000000bc]       // 0x0042354e    8b86bc000000
                          push               0x0                                     // 0x00423554    6a00
                          push               0x009c95e0                              // 0x00423556    68e0959c00

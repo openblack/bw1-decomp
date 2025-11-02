@@ -131,7 +131,7 @@
 .extern _jmp_addr_0x008786d0
 
 .globl @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16
-.globl _jmp_addr_0x00601690
+.globl ?FindFixedOnMap@MapCell@@QAEPAVFixed@@PAVObject@@@Z
 .globl _jmp_addr_0x006016d0
 .globl _jmp_addr_0x00601820
 .globl _jmp_addr_0x00601850
@@ -206,7 +206,7 @@
 .globl @__pl__9MapCoordsCFRC9MapCoords@16
 .globl _jmp_addr_0x006055c0
 .globl @__eq__9MapCoordsCFRC9MapCoords@12
-.globl _jmp_addr_0x006056b0
+.globl ?__ne@MapCoords@@QBE_NABV1@@Z
 .globl _jmp_addr_0x006057b0
 .globl _jmp_addr_0x00605870
 .globl _jmp_addr_0x006059a0
@@ -429,7 +429,8 @@ _jmp_addr_0x00601681:    pop                edi                                 
                          nop                                                              // 0x0060168d    90
                          nop                                                              // 0x0060168e    90
                          nop                                                              // 0x0060168f    90
-_jmp_addr_0x00601690:    push               esi                                           // 0x00601690    56
+?FindFixedOnMap@MapCell@@QAEPAVFixed@@PAVObject@@@Z:
+                         push               esi                                           // 0x00601690    56
                          mov.s              esi, ecx                                      // 0x00601691    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x00601693    8b4c2408
                          test               ecx, ecx                                      // 0x00601697    85c9
@@ -6641,7 +6642,8 @@ _jmp_addr_0x00605690:    {disp8} mov        eax, dword ptr [esp + 0x04]         
 _jmp_addr_0x006056aa:    xor.s              eax, eax                                      // 0x006056aa    33c0
                          ret                0x0004                                        // 0x006056ac    c20400
                          nop                                                              // 0x006056af    90
-_jmp_addr_0x006056b0:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x006056b0    8b442404
+?__ne@MapCoords@@QBE_NABV1@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x006056b0    8b442404
                          push               eax                                           // 0x006056b4    50
                          call               @__eq__9MapCoordsCFRC9MapCoords@12            // 0x006056b5    e8a6ffffff
                          neg                eax                                           // 0x006056ba    f7d8

@@ -50,7 +50,7 @@
 .extern _jmp_addr_0x004f12e0
 .extern _jmp_addr_0x004f4da0
 .extern _jmp_addr_0x004f8ca0
-.extern _jmp_addr_0x005295a0
+.extern ?RemoveFood@Field@@QAEMM@Z
 .extern _jmp_addr_0x00533bc0
 .extern _jmp_addr_0x00533c10
 .extern ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
@@ -1799,7 +1799,7 @@ _jmp_addr_0x00652662:    {disp8} mov        ecx, dword ptr [eax + 0x18]         
                          push               ecx                                            // 0x006526e6    51
                          mov.s              ecx, esi                                       // 0x006526e7    8bce
                          fstp               dword ptr [esp]                                // 0x006526e9    d91c24
-                         call               _jmp_addr_0x005295a0                           // 0x006526ec    e8af6eedff
+                         call               ?RemoveFood@Field@@QAEMM@Z                     // 0x006526ec    e8af6eedff
                          mov                eax, dword ptr [edi]                           // 0x006526f1    8b07
                          push               0x0                                            // 0x006526f3    6a00
                          push               0x0                                            // 0x006526f5    6a00

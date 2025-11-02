@@ -8,6 +8,7 @@
 #include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "Abode.h" /* For struct Abode */
@@ -91,10 +92,16 @@ struct Field* __fastcall __ct__5FieldFRC9MapCoordsPC14GFieldTypeInfoPC10GAbodeIn
 
 // Non-virtual methods
 
+// win1.41 005291a0 mac 100d3e50 Field::PlantCrop(MapCoords const &)
+bool32_t __fastcall PlantCrop__5FieldFRC9MapCoords(struct Field* this, const void* edx, const struct MapCoords* param_1) asm("?PlantCrop@Field@@QAEIABUMapCoords@@@Z");
+// win1.41 00529210 mac 100d3de0 Field::GetPlantCropPos(void)
+bool32_t __fastcall GetPlantCropPos__5FieldFv(struct Field* this) asm("?GetPlantCropPos@Field@@QAEIXZ");
 // win1.41 00529350 mac 10000690 Field::GetFieldActivity(int)
 int __fastcall GetFieldActivity__5FieldFi(struct Field* this, const void* edx, int param_1) asm("?GetFieldActivity@Field@@QAEHH@Z");
 // win1.41 00529500 mac 10000730 Field::GetPercentFull(void)
 float __fastcall GetPercentFull__5FieldFv(struct Field* this) asm("?GetPercentFull@Field@@QAEMXZ");
+// win1.41 005295a0 mac 100d3370 Field::RemoveFood(float)
+float __fastcall RemoveFood__5FieldFf(struct Field* this, const void* edx, float param_1) asm("?RemoveFood@Field@@QAEMM@Z");
 // win1.41 00529700 mac 100d3310 Field::GetFoodValue(void)
 float __fastcall GetFoodValue__5FieldFv(struct Field* this) asm("?GetFoodValue@Field@@QAEMXZ");
 

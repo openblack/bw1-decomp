@@ -784,7 +784,7 @@ uint32_t __fastcall WomanSpecial__8VillagerFv(struct Villager* this)
     asm("cmp                word ptr [esi + 0x000000f8], 0x00");             // 0x0075226a    6683bef800000000
     asm("{disp8} jg         _jmp_addr_0x0075227d");                          // 0x00752272    7f09
     asm("mov.s              ecx, esi");                                      // 0x00752274    8bce
-    asm("call               _jmp_addr_0x007621a0");                          // 0x00752276    e825ff0000
+    asm("call               ?HousewifeStartsGivingBirth@Villager@@QAEIXZ");                          // 0x00752276    e825ff0000
     asm("pop                esi");                                           // 0x0075227b    5e
     asm("ret");                                                              // 0x0075227c    c3
     asm("_jmp_addr_0x0075227d:");

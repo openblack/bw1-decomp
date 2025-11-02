@@ -61,7 +61,7 @@
 .extern _jmp_addr_0x0073bab0
 .extern _jmp_addr_0x0073d8d0
 .extern ?GetDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
-.extern _jmp_addr_0x0073e420
+.extern ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
 .extern _jmp_addr_0x00740c50
 .extern _jmp_addr_0x00740e80
 .extern _jmp_addr_0x00740ea0
@@ -78,7 +78,7 @@
 .extern ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z
 .extern ?SetupMoveToPos@Villager@@QAE_NABUMapCoords@@W4VILLAGER_STATES@@@Z
 .extern _jmp_addr_0x00779a50
-.extern _jmp_addr_0x00779af0
+.extern ?GetSpaceInStore@Workshop@@QAEHXZ
 .extern _jmp_addr_0x0077b960
 .extern _jmp_addr_0x0077ceb0
 .extern _jmp_addr_0x0077e400
@@ -215,7 +215,7 @@ _jmp_addr_0x00669838:    cmp                edi, 0x02                           
                          {disp8} ja         _jmp_addr_0x00669868                          // 0x00669843    7723
                          push               0x5                                           // 0x00669845    6a05
                          mov.s              ecx, esi                                      // 0x00669847    8bce
-                         call               _jmp_addr_0x0073e420                          // 0x00669849    e8d24b0d00
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x00669849    e8d24b0d00
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x0066984e    d95c2410
                          cmp                dword ptr [esi + 0x00000644], 0x000000af      // 0x00669852    81be44060000af000000
                          {disp8} jle        _jmp_addr_0x00669889                          // 0x0066985c    7e2b
@@ -225,7 +225,7 @@ _jmp_addr_0x00669868:    cmp                edi, 0x05                           
                          {disp8} jae        _jmp_addr_0x0066987c                          // 0x0066986b    730f
                          push               0x6                                           // 0x0066986d    6a06
                          mov.s              ecx, esi                                      // 0x0066986f    8bce
-                         call               _jmp_addr_0x0073e420                          // 0x00669871    e8aa4b0d00
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x00669871    e8aa4b0d00
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x00669876    d95c2410
                          {disp8} jmp        _jmp_addr_0x00669889                          // 0x0066987a    eb0d
 _jmp_addr_0x0066987c:    cmp                edi, 0x07                                     // 0x0066987c    83ff07
@@ -490,7 +490,7 @@ _jmp_addr_0x00669b71:    mov                edx, dword ptr [esi]                
                          test               eax, eax                                      // 0x00669b89    85c0
                          {disp8} je         _jmp_addr_0x00669bb2                          // 0x00669b8b    7425
                          mov.s              ecx, esi                                      // 0x00669b8d    8bce
-                         call               _jmp_addr_0x00779af0                          // 0x00669b8f    e85cff1000
+                         call               ?GetSpaceInStore@Workshop@@QAEHXZ             // 0x00669b8f    e85cff1000
                          test               eax, eax                                      // 0x00669b94    85c0
                          {disp8} je         _jmp_addr_0x00669bb2                          // 0x00669b96    741a
                          mov                edx, dword ptr [esi]                          // 0x00669b98    8b16
@@ -517,7 +517,7 @@ _jmp_addr_0x00669bd2:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          {disp32} mov       dword ptr [eax + 0x00000094], esi             // 0x00669bd6    89b094000000
                          {disp8} mov        edi, dword ptr [esi + 0x28]                   // 0x00669bdc    8b7e28
                          mov.s              ecx, esi                                      // 0x00669bdf    8bce
-                         call               _jmp_addr_0x00779af0                          // 0x00669be1    e80aff1000
+                         call               ?GetSpaceInStore@Workshop@@QAEHXZ             // 0x00669be1    e80aff1000
                          {disp8} mov        dword ptr [esp + 0x10], eax                   // 0x00669be6    89442410
                          {disp8} fild       dword ptr [esp + 0x10]                        // 0x00669bea    db442410
                          {disp32} fdiv      dword ptr [edi + 0x000001a8]                  // 0x00669bee    d8b7a8010000
@@ -716,11 +716,11 @@ _jmp_addr_0x00669d89:    pop                edi                                 
                          {disp8} lea        edi, dword ptr [ebp + 0x14]                   // 0x00669de4    8d7d14
 _jmp_addr_0x00669de7:    push               0x0                                           // 0x00669de7    6a00
                          mov.s              ecx, esi                                      // 0x00669de9    8bce
-                         call               _jmp_addr_0x0073e420                          // 0x00669deb    e830460d00
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x00669deb    e830460d00
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x00669df0    d95c2410
                          push               0x1                                           // 0x00669df4    6a01
                          mov.s              ecx, esi                                      // 0x00669df6    8bce
-                         call               _jmp_addr_0x0073e420                          // 0x00669df8    e823460d00
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x00669df8    e823460d00
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x00669dfd    d95c2414
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                   // 0x00669e01    8d44241c
                          push               eax                                           // 0x00669e05    50
@@ -2254,7 +2254,7 @@ _jmp_addr_0x0066ae48:    pop                edi                                 
                          {disp8} je         _jmp_addr_0x0066aece                          // 0x0066ae8b    7441
                          push               0x0                                           // 0x0066ae8d    6a00
                          mov.s              ecx, esi                                      // 0x0066ae8f    8bce
-                         call               _jmp_addr_0x0073e420                          // 0x0066ae91    e88a350d00
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x0066ae91    e88a350d00
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x0066ae96    d95c2410
                          mov                eax, dword ptr [edi]                          // 0x0066ae9a    8b07
                          mov.s              ecx, edi                                      // 0x0066ae9c    8bcf
@@ -2304,7 +2304,7 @@ _jmp_addr_0x0066aed4:    pop                edi                                 
                          {disp8} je         _jmp_addr_0x0066af4e                          // 0x0066af0b    7441
                          push               0x1                                           // 0x0066af0d    6a01
                          mov.s              ecx, esi                                      // 0x0066af0f    8bce
-                         call               _jmp_addr_0x0073e420                          // 0x0066af11    e80a350d00
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x0066af11    e80a350d00
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x0066af16    d95c2410
                          mov                eax, dword ptr [edi]                          // 0x0066af1a    8b07
                          mov.s              ecx, edi                                      // 0x0066af1c    8bcf

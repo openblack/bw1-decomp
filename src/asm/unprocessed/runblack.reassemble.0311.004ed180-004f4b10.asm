@@ -101,7 +101,7 @@
 .extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
 .extern _jmp_addr_0x007218f0
 .extern _jmp_addr_0x00721910
-.extern _jmp_addr_0x0073e420
+.extern ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
 .extern ?GetDistance@GUtils@@SAXABUMapCoords@@0@Z
 .extern _jmp_addr_0x0074cd50
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
@@ -4670,7 +4670,7 @@ _jmp_addr_0x004f0790:    {disp32} mov       eax, dword ptr [esi + 0x00000164]   
                          {disp32} mov       ecx, dword ptr [eax + 0x00020d1c]                    // 0x004f07b2    8b881c0d0200
                          push               ecx                                                  // 0x004f07b8    51
                          mov.s              ecx, edi                                             // 0x004f07b9    8bcf
-                         call               _jmp_addr_0x0073e420                                 // 0x004f07bb    e860dc2400
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z       // 0x004f07bb    e860dc2400
                          {disp32} fmul      dword ptr [rdata_bytes + 0x25fac]                    // 0x004f07c0    d80dacef8c00
                          {disp32} mov       edx, dword ptr [esi + 0x00000164]                    // 0x004f07c6    8b9664010000
                          {disp32} fstp      dword ptr [edx + 0x00020d28]                         // 0x004f07cc    d99a280d0200
@@ -6302,7 +6302,7 @@ _jmp_addr_0x004f1958:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          mov.s              ecx, ebx                                             // 0x004f195d    8bcb
                          {disp32} mov       dword ptr [esi + 0x00020d1c], eax                    // 0x004f195f    89861c0d0200
                          {disp32} mov       dword ptr [esi + 0x00020d20], ebp                    // 0x004f1965    89ae200d0200
-                         call               _jmp_addr_0x0073e420                                 // 0x004f196b    e8b0ca2400
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z       // 0x004f196b    e8b0ca2400
                          {disp32} fmul      dword ptr [rdata_bytes + 0x25fac]                    // 0x004f1970    d80dacef8c00
                          {disp32} fstp      dword ptr [esi + 0x00020d28]                         // 0x004f1976    d99e280d0200
 _jmp_addr_0x004f197c:    {disp32} mov       esi, dword ptr [esi + 0x00020d1c]                    // 0x004f197c    8bb61c0d0200

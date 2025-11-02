@@ -59,7 +59,7 @@
 .extern _jmp_addr_0x004ff9c0
 .extern _jmp_addr_0x004ff9f0
 .extern ?SubStatePerformPickUpParameter@Creature@@QAEIPAVCreatureBelief@@@Z
-.extern _jmp_addr_0x0050bb40
+.extern ?StartDance@Dance@@QAEXXZ
 .extern ?FindDanceGroup@GroupBehaviour@@QAE_NPAVLiving@@@Z
 .extern _jmp_addr_0x005dc130
 .extern _jmp_addr_0x005e3260
@@ -272,7 +272,7 @@ _jmp_addr_0x00504eb4:    dec                eax                                 
                          {disp32} mov       ecx, dword ptr [esi + 0x00001074]                    // 0x00504ec3    8b8e74100000
                          test               ecx, ecx                                             // 0x00504ec9    85c9
                          {disp8} je         _jmp_addr_0x00504edf                                 // 0x00504ecb    7412
-                         call               _jmp_addr_0x0050bb40                                 // 0x00504ecd    e86e6c0000
+                         call               ?StartDance@Dance@@QAEXXZ                            // 0x00504ecd    e86e6c0000
                          {disp32} mov       eax, dword ptr [esi + 0x00001074]                    // 0x00504ed2    8b8674100000
                          {disp8} mov        dword ptr [eax + 0x28], 0x00000000                   // 0x00504ed8    c7402800000000
 _jmp_addr_0x00504edf:    mov                eax, 0x00000002                                      // 0x00504edf    b802000000

@@ -1,5 +1,5 @@
-#ifndef BW1_DECOMP_VILLAGER_NAME_BLOCK_INCLUDED_H
-#define BW1_DECOMP_VILLAGER_NAME_BLOCK_INCLUDED_H
+#ifndef BW1_DECOMP_VILLAGER_NAMES_INCLUDED_H
+#define BW1_DECOMP_VILLAGER_NAMES_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
@@ -7,6 +7,7 @@
 
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "DrawingObject.h" /* For struct DrawingObject */
@@ -14,6 +15,29 @@
 // Forward Declares
 
 struct VillagerName;
+
+struct VillagerNameBlock
+{
+  uint8_t field_0x0[0x14];
+};
+static_assert(sizeof(struct VillagerNameBlock) == 0x14, "Data type is of wrong size");
+
+// Static methods
+
+// win1.41 00762720 mac 1058ba90 VillagerNameBlock::Alloc(void)
+struct VillagerName* __cdecl Alloc__17VillagerNameBlockFv(void) asm("?Alloc@VillagerNameBlock@@SAPAUVillagerName@@XZ");
+// win1.41 00762780 mac 1058b960 VillagerNameBlock::Delete(VillagerName *)
+void __cdecl Delete__17VillagerNameBlockFP12VillagerName(struct VillagerName* name) asm("?Delete@VillagerNameBlock@@SAXPAUVillagerName@@@Z");
+
+// Constructors
+
+// win1.41 00762820 mac inlined VillagerNameBlock::VillagerNameBlock(void)
+struct VillagerNameBlock* __fastcall __ct__17VillagerNameBlockFv(struct VillagerNameBlock* this) asm("??0VillagerNameBlock@@QAE@XZ");
+
+// Non-virtual methods
+
+// win1.41 007627e0 mac 10012bf0 VillagerNameBlock::DeleteAll(void)
+bool32_t __fastcall DeleteAll__17VillagerNameBlockFv(struct VillagerNameBlock* this) asm("?DeleteAll@VillagerNameBlock@@QAEIXZ");
 
 struct VillagerNameVftable
 {
@@ -64,14 +88,14 @@ extern const struct DrawingObjectVftable __vt__12VillagerName asm("??_7VillagerN
 // win1.41 007629e0 mac 1058b1a0 VillagerName::Add(float, LHPoint, wchar_t *, LH3DColor &)
 struct VillagerName* __cdecl Add__12VillagerNameFf7LHPointPwR9LH3DColor(float text_size, struct LHPoint point, const char16_t* text, const struct LH3DColor* p_color) asm("?Add@VillagerName@@SAPAV1@MULHPoint@@PA_WAAULH3DColor@@@Z");
 
+// Non-virtual methods
+
+// win1.41 00762dc0 mac 1058add0 VillagerName::Draw(void)
+void __fastcall Draw__12VillagerNameFv(struct VillagerName* this) asm("?Draw@VillagerName@@QAEXXZ");
+
 // Override methods
 
 // win1.41 007628a0 mac 100b5250 VillagerName::AddDrawing(void)
 void __fastcall AddDrawing__12VillagerNameFv(struct VillagerName* this) asm("?AddDrawing@VillagerName@@UAEXXZ");
 
-// win1.41 00762720 mac 1058ba90 VillagerNameBlock::Alloc(void)
-struct VillagerName* __cdecl Alloc__17VillagerNameBlockFv(void) asm("?Alloc@VillagerNameBlock@@SAPAUVillagerName@@XZ");
-// win1.41 00762780 mac 1058b960 VillagerNameBlock::Delete(VillagerName *)
-void __cdecl Delete__17VillagerNameBlockFP12VillagerName(struct VillagerName* name) asm("?Delete@VillagerNameBlock@@SAXPAUVillagerName@@@Z");
-
-#endif /* BW1_DECOMP_VILLAGER_NAME_BLOCK_INCLUDED_H */
+#endif /* BW1_DECOMP_VILLAGER_NAMES_INCLUDED_H */

@@ -329,8 +329,8 @@
 .extern _DrawAll__10TownCentreFv
 .extern _jmp_addr_0x0074cca0
 .extern ?Delete@VillagerNameBlock@@SAXPAUVillagerName@@@Z
-.extern _jmp_addr_0x007627e0
-.extern _jmp_addr_0x007635d0
+.extern ?DeleteAll@VillagerNameBlock@@QAEIXZ
+.extern ?DisplayHowImpressed@Town@@QAEIXZ
 .extern _jmp_addr_0x0076eaf0
 .extern _jmp_addr_0x00771be0
 .extern _jmp_addr_0x007741a0
@@ -1267,14 +1267,14 @@ _jmp_addr_0x0054e3e0:    cmp                eax, 0x02                           
 _jmp_addr_0x0054e414:    call               _jmp_addr_0x00826c90                          // 0x0054e414    e877882d00
                          add                esp, 0x04                                     // 0x0054e419    83c404
 _jmp_addr_0x0054e41c:    call               _jmp_addr_0x0082f460                          // 0x0054e41c    e83f102e00
-                         call               _jmp_addr_0x007627e0                          // 0x0054e421    e8ba432100
+                         call               ?DeleteAll@VillagerNameBlock@@QAEIXZ          // 0x0054e421    e8ba432100
                          call               _jmp_addr_0x007dee00                          // 0x0054e426    e8d5092900
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x2c7c34]        // 0x0054e42b    8b0d34dcc800
                          test               ecx, ecx                                      // 0x0054e431    85c9
                          {disp8} je         _jmp_addr_0x0054e43a                          // 0x0054e433    7405
                          call               _jmp_addr_0x004df2e0                          // 0x0054e435    e8a60ef9ff
 _jmp_addr_0x0054e43a:    call               _jmp_addr_0x004cefb0                          // 0x0054e43a    e8710bf8ff
-                         call               _jmp_addr_0x007635d0                          // 0x0054e43f    e88c512100
+                         call               ?DisplayHowImpressed@Town@@QAEIXZ             // 0x0054e43f    e88c512100
                          call               _jmp_addr_0x0064c1a0                          // 0x0054e444    e857dd0f00
                          {disp32} mov       ecx, dword ptr [esi + 0x00250090]             // 0x0054e449    8b8e90002500
                          {disp8} mov        eax, dword ptr [ecx + 0x08]                   // 0x0054e44f    8b4108

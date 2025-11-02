@@ -85,7 +85,7 @@
 .extern _jmp_addr_0x0073ae10
 .extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073bca0
-.extern _jmp_addr_0x0073e420
+.extern ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
 .extern ?AsssignTownFeature@Town@@SAXXZ
 .extern _jmp_addr_0x00741f30
 .extern _jmp_addr_0x0074cd50
@@ -4871,7 +4871,7 @@ _jmp_addr_0x0071b1c4:    {disp32} mov       ecx, dword ptr [_game]              
 _jmp_addr_0x0071b1fa:    mov                edx, dword ptr [edi]                          // 0x0071b1fa    8b17
                          push               edx                                           // 0x0071b1fc    52
                          mov.s              ecx, ebx                                      // 0x0071b1fd    8bcb
-                         call               _jmp_addr_0x0073e420                          // 0x0071b1ff    e81c320200
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x0071b1ff    e81c320200
                          {disp8} fstp       dword ptr [esp + 0x2c]                        // 0x0071b204    d95c242c
                          {disp8} mov        eax, dword ptr [edi + -0x04]                  // 0x0071b208    8b47fc
                          mov                ecx, dword ptr [edi]                          // 0x0071b20b    8b0f

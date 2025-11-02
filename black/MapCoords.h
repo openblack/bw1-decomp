@@ -2,6 +2,7 @@
 #define BW1_DECOMP_MAP_COORDS_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int16_t, int32_t, uint16_t, uint32_t */
 
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
@@ -113,6 +114,8 @@ struct MapCoords* __fastcall __as__9MapCoordsFRC9MapCoords(struct MapCoords* thi
 float __fastcall Altitude__9MapCoordsCFv(const struct MapCoords* this) asm("?Altitude@MapCoords@@QBEMXZ");
 // win1.41 00603490 mac 105a3bb0 MapCoords::GetFirstObjectMobile(void) const
 struct Object* __fastcall GetFirstObjectMobile__9MapCoordsCFv(const struct MapCoords* this) asm("?GetFirstObjectMobile@MapCoords@@QBEPAVObject@@XZ");
+// win1.41 006056b0 mac 10557130 MapCoords::__ne(MapCoords const &) const
+bool __fastcall __ne__9MapCoordsCFRC9MapCoords(const struct MapCoords* this, const void* edx, const struct MapCoords* param_1) asm("?__ne@MapCoords@@QBE_NABV1@@Z");
 
 // win1.41 00535780 mac 100eda80 ConvertMapCoordsToPoint2D(MapCoords const &)
 struct Point2D* __cdecl ConvertMapCoordsToPoint2D__FRC9MapCoords(struct Point2D* param_1, const struct MapCoords* param_2);

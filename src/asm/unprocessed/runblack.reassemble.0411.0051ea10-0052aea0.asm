@@ -252,13 +252,13 @@
 .globl _jmp_addr_0x00528340
 .globl _jmp_addr_0x005283e0
 .globl _jmp_addr_0x00528970
-.globl _jmp_addr_0x005291a0
-.globl _jmp_addr_0x00529210
+.globl ?PlantCrop@Field@@QAEIABUMapCoords@@@Z
+.globl ?GetPlantCropPos@Field@@QAEIXZ
 .globl _jmp_addr_0x00529240
 .globl ?GetFieldActivity@Field@@QAEHH@Z
 .globl _jmp_addr_0x005293a0
 .globl ?GetPercentFull@Field@@QAEMXZ
-.globl _jmp_addr_0x005295a0
+.globl ?RemoveFood@Field@@QAEMM@Z
 .globl ?GetFoodValue@Field@@QAEMXZ
 .globl _jmp_addr_0x0052a080
 .globl _jmp_addr_0x0052a0d0
@@ -16899,7 +16899,8 @@ _jmp_addr_0x00529188:    mov                eax, 0x00000001                     
                          nop                                                                     // 0x0052919d    90
                          nop                                                                     // 0x0052919e    90
                          nop                                                                     // 0x0052919f    90
-_jmp_addr_0x005291a0:    push               ecx                                                  // 0x005291a0    51
+?PlantCrop@Field@@QAEIABUMapCoords@@@Z:
+                         push               ecx                                                  // 0x005291a0    51
                          xor.s              edx, edx                                             // 0x005291a1    33d2
                          {disp32} mov       dl, byte ptr [ecx + 0x000000cc]                      // 0x005291a3    8a91cc000000
                          mov.s              eax, edx                                             // 0x005291a9    8bc2
@@ -16951,7 +16952,8 @@ _jmp_addr_0x005291dc:    xor.s              eax, eax                            
                          nop                                                                     // 0x0052920d    90
                          nop                                                                     // 0x0052920e    90
                          nop                                                                     // 0x0052920f    90
-_jmp_addr_0x00529210:    push               ecx                                                  // 0x00529210    51
+?GetPlantCropPos@Field@@QAEIXZ:
+                         push               ecx                                                  // 0x00529210    51
                          xor.s              eax, eax                                             // 0x00529211    33c0
                          {disp32} mov       al, byte ptr [ecx + 0x000000cc]                      // 0x00529213    8a81cc000000
                          {disp32} mov       ecx, dword ptr [ecx + 0x00000120]                    // 0x00529219    8b8920010000
@@ -17260,7 +17262,7 @@ _jmp_addr_0x0052956f:    {disp8} mov        dword ptr [esp + 0x08], edi         
                          push               ecx                                                  // 0x0052957f    51
                          mov.s              ecx, esi                                             // 0x00529580    8bce
                          fstp               dword ptr [esp]                                      // 0x00529582    d91c24
-                         call               _jmp_addr_0x005295a0                                 // 0x00529585    e816000000
+                         call               ?RemoveFood@Field@@QAEMM@Z                           // 0x00529585    e816000000
                          pop                edi                                                  // 0x0052958a    5f
                          xor.s              eax, eax                                             // 0x0052958b    33c0
                          pop                esi                                                  // 0x0052958d    5e
@@ -17278,7 +17280,8 @@ _jmp_addr_0x0052956f:    {disp8} mov        dword ptr [esp + 0x08], edi         
                          nop                                                                     // 0x0052959d    90
                          nop                                                                     // 0x0052959e    90
                          nop                                                                     // 0x0052959f    90
-_jmp_addr_0x005295a0:    sub                esp, 0x08                                            // 0x005295a0    83ec08
+?RemoveFood@Field@@QAEMM@Z:
+                         sub                esp, 0x08                                            // 0x005295a0    83ec08
                          push               ebx                                                  // 0x005295a3    53
                          push               ebp                                                  // 0x005295a4    55
                          push               esi                                                  // 0x005295a5    56
@@ -17495,7 +17498,7 @@ _jmp_addr_0x0052981c:    test               ebp, ebp                            
                          push               ecx                                                  // 0x00529828    51
                          mov.s              ecx, edi                                             // 0x00529829    8bcf
                          fstp               dword ptr [esp]                                      // 0x0052982b    d91c24
-                         call               _jmp_addr_0x005295a0                                 // 0x0052982e    e86dfdffff
+                         call               ?RemoveFood@Field@@QAEMM@Z                           // 0x0052982e    e86dfdffff
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                          // 0x00529833    8b4c2414
                          mov                eax, dword ptr [esi]                                 // 0x00529837    8b06
                          push               0x0                                                  // 0x00529839    6a00
@@ -17609,7 +17612,7 @@ _jmp_addr_0x00529952:    test               edi, edi                            
                          push               ecx                                                  // 0x00529966    51
                          mov.s              ecx, esi                                             // 0x00529967    8bce
                          fstp               dword ptr [esp]                                      // 0x00529969    d91c24
-                         call               _jmp_addr_0x005295a0                                 // 0x0052996c    e82ffcffff
+                         call               ?RemoveFood@Field@@QAEMM@Z                           // 0x0052996c    e82ffcffff
                          mov                edx, dword ptr [esi]                                 // 0x00529971    8b16
                          push               0x0                                                  // 0x00529973    6a00
                          push               0x3f800000                                           // 0x00529975    680000803f
@@ -18241,7 +18244,7 @@ _jmp_addr_0x0052a030:    xor.s              eax, eax                            
                          {disp32} fmul      dword ptr [eax + 0x00000130]                         // 0x0052a05a    d88830010000
                          push               ecx                                                  // 0x0052a060    51
                          fstp               dword ptr [esp]                                      // 0x0052a061    d91c24
-                         call               _jmp_addr_0x005295a0                                 // 0x0052a064    e837f5ffff
+                         call               ?RemoveFood@Field@@QAEMM@Z                           // 0x0052a064    e837f5ffff
                          {disp32} fld       dword ptr [_rdata_float1p0]                          // 0x0052a069    d90590a38a00
                          ret                0x0008                                               // 0x0052a06f    c20800
                          nop                                                                     // 0x0052a072    90

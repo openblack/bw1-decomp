@@ -39,7 +39,7 @@
 .extern ?GetScriptType@ScriptDLL@@QAEPAXK@Z
 .extern _jmp_addr_0x0070d0f0
 .extern _jmp_addr_0x00735330
-.extern _jmp_addr_0x0073e420
+.extern ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
 .extern _jmp_addr_0x00740ea0
 .extern _jmp_addr_0x00746ee0
 .extern _jmp_addr_0x007472b0
@@ -1422,7 +1422,7 @@ _jmp_addr_0x005c960e:    mov                eax, dword ptr [esi]                
                          {disp8} mov        eax, dword ptr [esi + 0x5c]                   // 0x005c9679    8b465c
                          push               eax                                           // 0x005c967c    50
                          mov.s              ecx, ebp                                      // 0x005c967d    8bcd
-                         call               _jmp_addr_0x0073e420                          // 0x005c967f    e89c4d1700
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x005c967f    e89c4d1700
                          {disp32} fcomp     dword ptr [_rdata_float1p0]                   // 0x005c9684    d81d90a38a00
                          fnstsw             ax                                            // 0x005c968a    dfe0
                          test               ah, 0x01                                      // 0x005c968c    f6c401
@@ -1430,7 +1430,7 @@ _jmp_addr_0x005c960e:    mov                eax, dword ptr [esi]                
                          {disp8} mov        eax, dword ptr [esi + 0x5c]                   // 0x005c9691    8b465c
                          push               eax                                           // 0x005c9694    50
                          mov.s              ecx, ebp                                      // 0x005c9695    8bcd
-                         call               _jmp_addr_0x0073e420                          // 0x005c9697    e8844d1700
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x005c9697    e8844d1700
                          {disp8} fstp       dword ptr [esp + 0x20]                        // 0x005c969c    d95c2420
                          {disp8} jmp        _jmp_addr_0x005c96aa                          // 0x005c96a0    eb08
 _jmp_addr_0x005c96a2:    {disp8} mov        dword ptr [esp + 0x20], 0x3f800000            // 0x005c96a2    c74424200000803f
@@ -2742,7 +2742,7 @@ _jmp_addr_0x005ca603:    cmp                eax, 0x00000efd                     
                          {disp8} mov        eax, dword ptr [esi + 0x5c]                   // 0x005ca652    8b465c
                          push               eax                                           // 0x005ca655    50
                          mov.s              ecx, edi                                      // 0x005ca656    8bcf
-                         call               _jmp_addr_0x0073e420                          // 0x005ca658    e8c33d1700
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x005ca658    e8c33d1700
                          {disp32} fcomp     dword ptr [_rdata_float1p0]                   // 0x005ca65d    d81d90a38a00
                          fnstsw             ax                                            // 0x005ca663    dfe0
                          test               ah, 0x01                                      // 0x005ca665    f6c401
@@ -2750,7 +2750,7 @@ _jmp_addr_0x005ca603:    cmp                eax, 0x00000efd                     
                          {disp8} mov        esi, dword ptr [esi + 0x5c]                   // 0x005ca66a    8b765c
                          push               esi                                           // 0x005ca66d    56
                          mov.s              ecx, edi                                      // 0x005ca66e    8bcf
-                         call               _jmp_addr_0x0073e420                          // 0x005ca670    e8ab3d1700
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x005ca670    e8ab3d1700
                          {disp8} jmp        _jmp_addr_0x005ca67d                          // 0x005ca675    eb06
 _jmp_addr_0x005ca677:    {disp32} fld       dword ptr [_rdata_float1p0]                   // 0x005ca677    d90590a38a00
 _jmp_addr_0x005ca67d:    {disp32} fmul      dword ptr [rdata_bytes + 0x241c]              // 0x005ca67d    d80d1cb48a00

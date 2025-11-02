@@ -45,6 +45,7 @@ struct StoragePit;
 struct TotemStatue;
 struct TownCentre;
 struct TownDesireFlags;
+struct Workshop;
 struct WorshipSite;
 
 struct PlayerTownInteract
@@ -235,6 +236,8 @@ struct GTribeInfo* __fastcall GetTribe__4TownCFv(struct Town* this) asm("?GetTri
 int __fastcall GetWorshipersNeeded__4TownFiiPi(struct Town* this, const void* edx, int param_1, int param_2, int* result) asm("?GetWorshipersNeeded@Town@@QAEHHHPAH@Z");
 // win1.41 0073cf00 mac 10551920 Town::IsBuildingSiteValid(BuildingSite *)
 bool32_t __fastcall IsBuildingSiteValid__4TownFP12BuildingSite(struct Town* this, const void* edx, struct BuildingSite* param_1) asm("?IsBuildingSiteValid@Town@@QAEIPAVBuildingSite@@@Z");
+// win1.41 0073cf60 mac 10097910 Town::GetBestBuildingSite(MapCoords const &, int)
+bool32_t __fastcall GetBestBuildingSite__4TownFRC9MapCoordsi(struct Town* this, const void* edx, const struct MapCoords* param_1, int param_2) asm("?GetBestBuildingSite@Town@@QAEIABUMapCoords@@H@Z");
 // win1.41 0073d080 mac 105516a0 Town::AddPlanned(PlannedMultiMapFixed *)
 void __fastcall AddPlanned__4TownFP20PlannedMultiMapFixed(struct Town* this, const void* edx, struct PlannedMultiMapFixed* planned) asm("?AddPlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z");
 // win1.41 0073d0d0 mac 10551530 Town::RemovePlanned(PlannedMultiMapFixed *)
@@ -257,10 +260,14 @@ void __fastcall RemoveVillager__4TownFP8Villager(struct Town* this, const void* 
 void __fastcall RemoveVillagerOnWayToWorshipSite__4TownFP8Villager(struct Town* this, const void* edx, struct Villager* villager) asm("?RemoveVillagerOnWayToWorshipSite@Town@@QAEXPAVVillager@@@Z");
 // win1.41 0073e400 mac 10060840 Town::GetDesire(TOWN_DESIRE_INFO)
 float __fastcall GetDesire__4TownF16TOWN_DESIRE_INFO(struct Town* this, const void* edx, enum TOWN_DESIRE_INFO param_1) asm("?GetDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z");
+// win1.41 0073e420 mac 10055140 Town::GetRawDesire(TOWN_DESIRE_INFO)
+float __fastcall GetRawDesire__4TownF16TOWN_DESIRE_INFO(struct Town* this, const void* edx, enum TOWN_DESIRE_INFO param_1) asm("?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z");
 // win1.41 0073e900 mac 1054e460 Town::GetTemporaryResourceStorePotOrPos(MapCoords const &, MapCoords &, RESOURCE_TYPE)
 void* __fastcall GetTemporaryResourceStorePotOrPos__4TownFRC9MapCoordsR9MapCoords13RESOURCE_TYPE(struct Town* this, const void* edx, const struct MapCoords* param_1, struct MapCoords* param_2, enum RESOURCE_TYPE param_3) asm("?GetTemporaryResourceStorePotOrPos@Town@@QAEPAXABUMapCoords@@AAU2@W4RESOURCE_TYPE@@@Z");
 // win1.41 0073eb00 mac 1054dfe0 Town::AssignForestsToTown(void)
 void __fastcall AssignForestsToTown__4TownFv(struct Town* this) asm("?AssignForestsToTown@Town@@QAEXXZ");
+// win1.41 00740250 mac 10549810 Town::GetBestWorkshop(MapCoords &, int, int)
+struct Workshop* __fastcall GetBestWorkshop__4TownFR9MapCoordsii(struct Town* this, const void* edx, struct MapCoords* param_1, int param_2, int param_3) asm("?GetBestWorkshop@Town@@QAEPAVWorkshop@@AAUMapCoords@@HH@Z");
 // win1.41 007408b0 mac 10008020 Town::GetCongregationPos(void)
 struct MapCoords* __fastcall GetCongregationPos__4TownFv(struct Town* this, const void* edx, struct MapCoords* coords) asm("?GetCongregationPos@Town@@QAEPAUMapCoords@@PAU2@@Z");
 // win1.41 00741b40 mac 105464d0 Town::MakeScenicForest(void)
@@ -275,6 +282,10 @@ void __fastcall ProcessTownEmergency__4TownFv(struct Town* this) asm("?ProcessTo
 bool __fastcall IsInStateOfEmergency__4TownFv(struct Town* this) asm("?IsInStateOfEmergency@Town@@QAE_NXZ");
 // win1.41 007479a0 mac 105602e0 Town::SetInStateOfEmergency(void)
 void __fastcall SetInStateOfEmergency__4TownFv(struct Town* this) asm("?SetInStateOfEmergency@Town@@QAEXXZ");
+// win1.41 00747ea0 mac 1055f880 Town::GetBestRepairBuildingSite(void)
+bool32_t __fastcall GetBestRepairBuildingSite__4TownFv(struct Town* this) asm("?GetBestRepairBuildingSite@Town@@QAEIXZ");
+// win1.41 007635d0 mac 10012ce0 Town::DisplayHowImpressed(void)
+bool32_t __fastcall DisplayHowImpressed__4TownFv(struct Town* this) asm("?DisplayHowImpressed@Town@@QAEIXZ");
 
 // Override methods
 

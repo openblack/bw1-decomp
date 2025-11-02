@@ -46,6 +46,15 @@ extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Work
 // win1.41 0099bb20 mac 106f651c Workshop::`vftable'
 extern const struct AbodeVftable __vt__8Workshop asm("??_7Workshop@@6B@");
 
+// Non-virtual methods
+
+// win1.41 00779af0 mac 10163550 Workshop::GetSpaceInStore(void)
+int __fastcall GetSpaceInStore__8WorkshopFv(struct Workshop* this) asm("?GetSpaceInStore@Workshop@@QAEHXZ");
+// win1.41 00779b60 mac 101633e0 Workshop::GetDesireToBeSupplied(void)
+float __fastcall GetDesireToBeSupplied__8WorkshopFv(struct Workshop* this) asm("?GetDesireToBeSupplied@Workshop@@QAEMXZ");
+// win1.41 00779b90 mac 101632f0 Workshop::GetVisualWoodDesire(void)
+float __fastcall GetVisualWoodDesire__8WorkshopFv(struct Workshop* this) asm("?GetVisualWoodDesire@Workshop@@QAEMXZ");
+
 // Override methods
 
 // win1.41 00779320 mac 101644f0 Workshop::_dt(void)

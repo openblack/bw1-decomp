@@ -13,7 +13,7 @@
 .extern _jmp_addr_0x00426ca0
 .extern _jmp_addr_0x004291b0
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00437e70
+.extern ?GetBeliefInPlayer@GBelief@@QAEMK@Z
 .extern _jmp_addr_0x00439d60
 .extern _jmp_addr_0x0043a3f0
 .extern _jmp_addr_0x0043a5e0
@@ -1279,14 +1279,14 @@ _jmp_addr_0x0055348c:    push               0x0                                 
                          mov.s              ecx, edi                                      // 0x00553641    8bcf
                          {disp8} fstp       dword ptr [esp + 0x18]                        // 0x00553643    d95c2418
                          mov.s              ebp, eax                                      // 0x00553647    8be8
-                         call               _jmp_addr_0x00437e70                          // 0x00553649    e82248eeff
+                         call               ?GetBeliefInPlayer@GBelief@@QAEMK@Z           // 0x00553649    e82248eeff
                          {disp8} fcomp      dword ptr [esp + 0x14]                        // 0x0055364e    d85c2414
                          fnstsw             ax                                            // 0x00553652    dfe0
                          test               ah, 0x01                                      // 0x00553654    f6c401
                          {disp8} je         _jmp_addr_0x00553663                          // 0x00553657    740a
                          push               esi                                           // 0x00553659    56
                          mov.s              ecx, edi                                      // 0x0055365a    8bcf
-                         call               _jmp_addr_0x00437e70                          // 0x0055365c    e80f48eeff
+                         call               ?GetBeliefInPlayer@GBelief@@QAEMK@Z           // 0x0055365c    e80f48eeff
                          {disp8} jmp        _jmp_addr_0x00553667                          // 0x00553661    eb04
 _jmp_addr_0x00553663:    {disp8} fld        dword ptr [esp + 0x14]                        // 0x00553663    d9442414
 _jmp_addr_0x00553667:    {disp8} mov        ebx, dword ptr [esp + 0x30]                   // 0x00553667    8b5c2430
@@ -1320,7 +1320,7 @@ _jmp_addr_0x00553667:    {disp8} mov        ebx, dword ptr [esp + 0x30]         
                          xor.s              ebx, ebx                                      // 0x005536c7    33db
 _jmp_addr_0x005536c9:    push               ebx                                           // 0x005536c9    53
                          mov.s              ecx, edi                                      // 0x005536ca    8bcf
-                         call               _jmp_addr_0x00437e70                          // 0x005536cc    e89f47eeff
+                         call               ?GetBeliefInPlayer@GBelief@@QAEMK@Z           // 0x005536cc    e89f47eeff
                          {disp8} fcomp      dword ptr [esp + 0x1c]                        // 0x005536d1    d85c241c
                          fnstsw             ax                                            // 0x005536d5    dfe0
                          test               ah, 0x41                                      // 0x005536d7    f6c441
@@ -1330,7 +1330,7 @@ _jmp_addr_0x005536c9:    push               ebx                                 
                          push               ebx                                           // 0x005536e0    53
                          mov.s              ecx, edi                                      // 0x005536e1    8bcf
                          {disp8} mov        byte ptr [esp + 0x24], bl                     // 0x005536e3    885c2424
-                         call               _jmp_addr_0x00437e70                          // 0x005536e7    e88447eeff
+                         call               ?GetBeliefInPlayer@GBelief@@QAEMK@Z           // 0x005536e7    e88447eeff
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x005536ec    d95c241c
 _jmp_addr_0x005536f0:    inc                ebx                                           // 0x005536f0    43
                          cmp                ebx, 0x08                                     // 0x005536f1    83fb08
@@ -1348,14 +1348,14 @@ _jmp_addr_0x005536f0:    inc                ebx                                 
                          push               esi                                           // 0x0055371d    56
                          mov.s              ecx, edi                                      // 0x0055371e    8bcf
                          mov.s              ebx, eax                                      // 0x00553720    8bd8
-                         call               _jmp_addr_0x00437e70                          // 0x00553722    e84947eeff
+                         call               ?GetBeliefInPlayer@GBelief@@QAEMK@Z           // 0x00553722    e84947eeff
                          {disp8} fcomp      dword ptr [esp + 0x14]                        // 0x00553727    d85c2414
                          fnstsw             ax                                            // 0x0055372b    dfe0
                          test               ah, 0x01                                      // 0x0055372d    f6c401
                          {disp8} je         _jmp_addr_0x0055373c                          // 0x00553730    740a
                          push               esi                                           // 0x00553732    56
                          mov.s              ecx, edi                                      // 0x00553733    8bcf
-                         call               _jmp_addr_0x00437e70                          // 0x00553735    e83647eeff
+                         call               ?GetBeliefInPlayer@GBelief@@QAEMK@Z           // 0x00553735    e83647eeff
                          {disp8} jmp        _jmp_addr_0x00553740                          // 0x0055373a    eb04
 _jmp_addr_0x0055373c:    {disp8} fld        dword ptr [esp + 0x14]                        // 0x0055373c    d9442414
 _jmp_addr_0x00553740:    {disp8} mov        edx, dword ptr [esp + 0x30]                   // 0x00553740    8b542430

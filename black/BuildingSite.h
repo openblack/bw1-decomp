@@ -96,6 +96,10 @@ struct BuildingSite* __fastcall __ct__12BuildingSiteFP13MultiMapFixed(struct Bui
 struct MultiMapFixed* __fastcall GetBuilding__12BuildingSiteFv(struct BuildingSite* this) asm("?GetBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ");
 // win1.41 0043bca0 mac 1006caf0 BuildingSite::GetRootBuilding(void)
 struct MultiMapFixed* __fastcall GetRootBuilding__12BuildingSiteFv(struct BuildingSite* this) asm("?GetRootBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ");
+// win1.41 0043bde0 mac 100bbf60 BuildingSite::GetClearAreaRadius(void)
+float __fastcall GetClearAreaRadius__12BuildingSiteFv(struct BuildingSite* this) asm("?GetClearAreaRadius@BuildingSite@@QAEMXZ");
+// win1.41 0043be00 mac 100bbeb0 BuildingSite::GetDesireToBeRepaired(void)
+float __fastcall GetDesireToBeRepaired__12BuildingSiteFv(struct BuildingSite* this) asm("?GetDesireToBeRepaired@BuildingSite@@QAEMXZ");
 // win1.41 0043c0c0 mac 100bb810 BuildingSite::GetWoodValue(void)
 float __fastcall GetWoodValue__12BuildingSiteFv(struct BuildingSite* this) asm("?GetWoodValue@BuildingSite@@QAEMXZ");
 // win1.41 0043c5f0 mac 0043c5f0 BuildingSite::GetWoodNeededToBuild(void)

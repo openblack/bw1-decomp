@@ -217,7 +217,7 @@
 .extern _jmp_addr_0x00735330
 .extern _jmp_addr_0x00739a60
 .extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
-.extern _jmp_addr_0x0073e420
+.extern ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
 .extern _jmp_addr_0x0074cd50
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
 .extern ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z

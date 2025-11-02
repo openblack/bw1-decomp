@@ -69,7 +69,7 @@
 .extern ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z
 .extern ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z
 .extern _jmp_addr_0x0074e030
-.extern _jmp_addr_0x007630f0
+.extern ?CheckPlaytimeAvailableToPlayPFootball@Villager@@QAEIXZ
 .extern _jmp_addr_0x007a1400
 .extern _jmp_addr_0x007ad2f0
 .extern  ??3@YAXPAX@Z
@@ -3207,7 +3207,7 @@ _jmp_addr_0x006441c7:    pop                edi                                 
                          nop                                                               // 0x006441ff    90
 ?AddPlaytimeVillager@PFootball@@UAE_NPAVVillager@@@Z:
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                    // 0x00644200    8b4c2404
-                         call               _jmp_addr_0x007630f0                           // 0x00644204    e8e7ee1100
+                         call               ?CheckPlaytimeAvailableToPlayPFootball@Villager@@QAEIXZ                           // 0x00644204    e8e7ee1100
                          ret                0x0004                                         // 0x00644209    c20400
                          nop                                                               // 0x0064420c    90
                          nop                                                               // 0x0064420d    90

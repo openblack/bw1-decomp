@@ -25,7 +25,7 @@
 .extern _jmp_addr_0x004f25d0
 .extern _jmp_addr_0x004f25f0
 .extern ?SetMessage@GDebug@@SAXGPADZZ
-.extern _jmp_addr_0x005eca60
+.extern ?GetReaction@Living@@QAEXXZ
 .extern @GetNearestTown__9MapCoordsCFf@12
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x0064da80
@@ -671,7 +671,7 @@ _jmp_addr_0x00476801:    push               eax                                 
                          test               eax, eax                                      // 0x0047681c    85c0
                          {disp8} je         _jmp_addr_0x0047684b                          // 0x0047681e    742b
                          mov.s              ecx, esi                                      // 0x00476820    8bce
-                         call               _jmp_addr_0x005eca60                          // 0x00476822    e839621700
+                         call               ?GetReaction@Living@@QAEXXZ                   // 0x00476822    e839621700
                          {disp8} mov        eax, dword ptr [eax + 0x24]                   // 0x00476827    8b4024
                          lea                edx, dword ptr [eax + eax * 0x2]              // 0x0047682a    8d1440
                          shl                edx, 6                                        // 0x0047682d    c1e206

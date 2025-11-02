@@ -49,7 +49,7 @@
 .extern ?IsWater@MapCoords@@QBEIXZ
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
 .extern _jmp_addr_0x006055c0
-.extern _jmp_addr_0x006056b0
+.extern ?__ne@MapCoords@@QBE_NABV1@@Z
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x00605c90
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z_2
@@ -3958,7 +3958,7 @@ _jmp_addr_0x004264f4:    {disp8} mov        ecx, dword ptr [esi + 0x14]         
                          {disp8} mov        ecx, dword ptr [esi + 0x2c]                   // 0x00426504    8b4e2c
                          push               eax                                           // 0x00426507    50
                          add                ecx, 0x14                                     // 0x00426508    83c114
-                         call               _jmp_addr_0x006056b0                          // 0x0042650b    e8a0f11d00
+                         call               ?__ne@MapCoords@@QBE_NABV1@@Z                 // 0x0042650b    e8a0f11d00
                          test               eax, eax                                      // 0x00426510    85c0
                          {disp8} je         _jmp_addr_0x00426568                          // 0x00426512    7454
                          {disp8} mov        ecx, dword ptr [esi + 0x14]                   // 0x00426514    8b4e14

@@ -1154,7 +1154,7 @@ int __fastcall CheckEveryTime__8VillagerFv(struct Villager* this)
     asm("cmp.s              edx, ebx");                                       // 0x00750544    3bd3
     asm("{disp8} jae        _jmp_addr_0x00750557");                           // 0x00750546    730f
     asm("mov.s              ecx, esi");                                       // 0x00750548    8bce
-    asm("call               _jmp_addr_0x00760ca0");                           // 0x0075054a    e851070100
+    asm("call               ?CheckDeathFromOldAge@Villager@@QAEIXZ");                           // 0x0075054a    e851070100
     asm("test               eax, eax");                                       // 0x0075054f    85c0
     asm("{disp32} jne       _jmp_addr_0x0075065c");                           // 0x00750551    0f8505010000
     asm("_jmp_addr_0x00750557:");
