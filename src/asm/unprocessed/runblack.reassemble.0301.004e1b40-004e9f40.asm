@@ -13,7 +13,7 @@
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
-.extern _jmp_addr_0x00437e70
+.extern ?GetBeliefInPlayer@GBelief@@QAEMK@Z
 .extern _jmp_addr_0x00437e90
 .extern _jmp_addr_0x004389b0
 .extern _jmp_addr_0x0043dc00
@@ -4689,7 +4689,7 @@ _jmp_addr_0x004e4741:    pop                edi                                 
                          {disp32} lea       ebp, dword ptr [edi + 0x00000798]               // 0x004e4778    8daf98070000
                          mov.s              ecx, ebp                                        // 0x004e477e    8bcd
                          push               ebx                                             // 0x004e4780    53
-                         call               _jmp_addr_0x00437e70                            // 0x004e4781    e8ea36f5ff
+                         call               ?GetBeliefInPlayer@GBelief@@QAEMK@Z             // 0x004e4781    e8ea36f5ff
                          {disp8} fstp       dword ptr [esp + 0x14]                          // 0x004e4786    d95c2414
                          push               ebx                                             // 0x004e478a    53
                          mov.s              ecx, ebp                                        // 0x004e478b    8bcd

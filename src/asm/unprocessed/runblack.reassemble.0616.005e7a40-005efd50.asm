@@ -181,7 +181,7 @@
 .globl _jmp_addr_0x005ec9d0
 .globl _jmp_addr_0x005ec9f0
 .globl _jmp_addr_0x005eca20
-.globl _jmp_addr_0x005eca60
+.globl ?GetReaction@Living@@QAEXXZ
 .globl ?SetTopStateToFinal@Living@@QAEXXZ
 .globl ?PlayAnimThenSetState@Living@@QAEXEK@Z
 .globl ?SetStateAnim@Living@@QAEXXZ
@@ -221,7 +221,7 @@
 .globl _jmp_addr_0x005ef8d0
 .globl ?RemoveFromDance@Living@@UAEXH@Z
 .globl ?CalculateDancePosition@Living@@QAE_NABUMapCoords@@PAU2@@Z
-.globl _jmp_addr_0x005ef9f0
+.globl ?PerformDance@Living@@QAEIABUMapCoords@@EK@Z
 
 .globl _globl_ct_0x005ea4b0
 .globl _globl_ct_0x005ea4e0
@@ -7522,7 +7522,8 @@ _jmp_addr_0x005eca39:    {disp8} fdiv       dword ptr [esp + 0x08]              
                          nop                                                              // 0x005eca5d    90
                          nop                                                              // 0x005eca5e    90
                          nop                                                              // 0x005eca5f    90
-_jmp_addr_0x005eca60:    {disp32} mov       ecx, dword ptr [ecx + 0x00000094]             // 0x005eca60    8b8994000000
+?GetReaction@Living@@QAEXXZ:
+                         {disp32} mov       ecx, dword ptr [ecx + 0x00000094]             // 0x005eca60    8b8994000000
                          push               0x0                                           // 0x005eca66    6a00
                          push               0x00beca78                                    // 0x005eca68    6878cabe00
                          push               0x00beca78                                    // 0x005eca6d    6878cabe00
@@ -9136,7 +9137,7 @@ _jmp_addr_0x005edac3:    pop                edi                                 
                          add                edx, 0x14                                     // 0x005edae6    83c214
                          push               edx                                           // 0x005edae9    52
                          mov.s              ecx, esi                                      // 0x005edaea    8bce
-                         call               _jmp_addr_0x005ef9f0                          // 0x005edaec    e8ff1e0000
+                         call               ?PerformDance@Living@@QAEIABUMapCoords@@EK@Z  // 0x005edaec    e8ff1e0000
                          {disp32} mov       eax, dword ptr [esi + 0x000000b0]             // 0x005edaf1    8b86b0000000
                          test               eax, eax                                      // 0x005edaf7    85c0
                          {disp8} jne        _jmp_addr_0x005edb06                          // 0x005edaf9    750b
@@ -12031,7 +12032,8 @@ _jmp_addr_0x005ef9b2:    pop                ebx                                 
                          nop                                                              // 0x005ef9ed    90
                          nop                                                              // 0x005ef9ee    90
                          nop                                                              // 0x005ef9ef    90
-_jmp_addr_0x005ef9f0:    sub                esp, 0x18                                     // 0x005ef9f0    83ec18
+?PerformDance@Living@@QAEIABUMapCoords@@EK@Z:
+                         sub                esp, 0x18                                     // 0x005ef9f0    83ec18
                          push               ebx                                           // 0x005ef9f3    53
                          push               ebp                                           // 0x005ef9f4    55
                          push               esi                                           // 0x005ef9f5    56

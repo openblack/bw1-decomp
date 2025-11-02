@@ -255,7 +255,7 @@
 .globl _jmp_addr_0x00437a40
 .globl _jmp_addr_0x00437c00
 .globl _jmp_addr_0x00437dd0
-.globl _jmp_addr_0x00437e70
+.globl ?GetBeliefInPlayer@GBelief@@QAEMK@Z
 .globl _jmp_addr_0x00437e90
 .globl _jmp_addr_0x00437eb0
 .globl _jmp_addr_0x004380b0
@@ -304,8 +304,8 @@
 .globl _jmp_addr_0x0043bcb0
 .globl _jmp_addr_0x0043bd00
 .globl _jmp_addr_0x0043bd70
-.globl _jmp_addr_0x0043bde0
-.globl _jmp_addr_0x0043be00
+.globl ?GetClearAreaRadius@BuildingSite@@QAEMXZ
+.globl ?GetDesireToBeRepaired@BuildingSite@@QAEMXZ
 .globl _jmp_addr_0x0043be40
 .globl _jmp_addr_0x0043be90
 .globl _jmp_addr_0x0043bef0

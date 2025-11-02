@@ -77,7 +77,7 @@
 .extern _jmp_addr_0x0073cb50
 .extern ?AddMagicTypesHeld@Town@@QAE_NW4MAGIC_TYPE@@@Z
 .extern _jmp_addr_0x0073d450
-.extern _jmp_addr_0x0073e420
+.extern ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
 .extern _jmp_addr_0x0073e670
 .extern _jmp_addr_0x00740bf0
 .extern _jmp_addr_0x00740d60
@@ -846,7 +846,7 @@ _jmp_addr_0x006fcd3c:    mov                eax, dword ptr [edi]                
                          {disp8} je         _jmp_addr_0x006fcd1e                          // 0x006fcd48    74d4
                          push               esi                                           // 0x006fcd4a    56
                          mov.s              ecx, edi                                      // 0x006fcd4b    8bcf
-                         call               _jmp_addr_0x0073e420                          // 0x006fcd4d    e8ce160400
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x006fcd4d    e8ce160400
                          {disp8} fstp       dword ptr [esp + 0x08]                        // 0x006fcd52    d95c2408
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x006fcd56    8b4c2408
                          push               0x2                                           // 0x006fcd5a    6a02

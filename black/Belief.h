@@ -46,6 +46,8 @@ float __cdecl DistanceChangeToBelief__7GBeliefFff(struct GBelief* this, float pa
 
 // Non-virtual methods
 
+// win1.41 00437e70 mac 00437e70 GBelief::GetBeliefInPlayer(unsigned long)
+float __fastcall GetBeliefInPlayer__7GBeliefFUl(struct GBelief* this, const void* edx, unsigned long param_1) asm("?GetBeliefInPlayer@GBelief@@QAEMK@Z");
 // win1.41 004387d0 mac 100b1700 GBelief::SetBelief(unsigned long, float)
 void __fastcall SetBelief__7GBeliefFUlf(struct GBelief* this, const void* edx, int index, float value) asm("?SetBelief@GBelief@@QAEXKM@Z");
 // win1.41 00438a00 mac 100b13e0 GBelief::SetBeliefInPlayerCap(GPlayer *, float)

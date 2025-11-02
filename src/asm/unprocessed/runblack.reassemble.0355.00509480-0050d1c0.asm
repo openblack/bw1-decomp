@@ -103,7 +103,7 @@
 .globl _jmp_addr_0x0050b310
 .globl @__ct__5DanceFRC9MapCoordsPC10GDanceInfoP16GameThingWithPosUliP4Town@32
 .globl _jmp_addr_0x0050baf0
-.globl _jmp_addr_0x0050bb40
+.globl ?StartDance@Dance@@QAEXXZ
 .globl _jmp_addr_0x0050bb60
 .globl _jmp_addr_0x0050beb0
 .globl _jmp_addr_0x0050bf20
@@ -3833,7 +3833,8 @@ _jmp_addr_0x0050bb21:    add                edi, 0x04                           
                          {disp32} mov       dword ptr [ecx + 0x000000fc], 0x00000000      // 0x0050bb30    c781fc00000000000000
                          ret                                                              // 0x0050bb3a    c3
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0050bb3b    e8395defff
-_jmp_addr_0x0050bb40:    {disp32} mov       dword ptr [ecx + 0x00000100], 0x00000000      // 0x0050bb40    c7810001000000000000
+?StartDance@Dance@@QAEXXZ:
+                         {disp32} mov       dword ptr [ecx + 0x00000100], 0x00000000      // 0x0050bb40    c7810001000000000000
                          {disp32} mov       eax, dword ptr [_game]                        // 0x0050bb4a    a15c19d000
                          {disp32} mov       edx, dword ptr [eax + 0x00205a40]             // 0x0050bb4f    8b90405a2000
                          {disp32} mov       dword ptr [ecx + 0x00000108], edx             // 0x0050bb55    899108010000
@@ -3916,7 +3917,7 @@ _jmp_addr_0x0050bc0d:    cmp                dword ptr [esi + 0x00000100], 0x01  
                          test               eax, eax                                      // 0x0050bc34    85c0
                          {disp8} je         _jmp_addr_0x0050bc41                          // 0x0050bc36    7409
                          mov.s              ecx, esi                                      // 0x0050bc38    8bce
-                         call               _jmp_addr_0x0050bb40                          // 0x0050bc3a    e801ffffff
+                         call               ?StartDance@Dance@@QAEXXZ                     // 0x0050bc3a    e801ffffff
                          {disp8} jmp        _jmp_addr_0x0050bc6b                          // 0x0050bc3f    eb2a
 _jmp_addr_0x0050bc41:    {disp32} mov       eax, dword ptr [esi + 0x00000104]             // 0x0050bc41    8b8604010000
                          cmp.s              eax, ebx                                      // 0x0050bc47    3bc3

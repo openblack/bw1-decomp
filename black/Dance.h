@@ -49,6 +49,11 @@ extern const struct GroupBehaviourVftable __vt__5Dance asm("??_7Dance@@6B@");
 // win1.41 0050b6a0 mac 102aa620 Dance::Dance(MapCoords const &, GDanceInfo const *, GameThingWithPos *, unsigned long, int, Town *)
 struct Dance* __fastcall __ct__5DanceFRC9MapCoordsPC10GDanceInfoP16GameThingWithPosUliP4Town(struct Dance* this, const void* edx, const struct MapCoords* param_1, struct GDanceInfo* info, const struct GameThingWithPos* param_3, uint32_t param_4, int param_5, struct Town* town) asm("??0Dance@@QAE@ABUMapCoords@@PBVGDanceInfo@@PAVGameThingWithPos@@KHPAVTown@@@Z");
 
+// Non-virtual methods
+
+// win1.41 0050bb40 mac 102a9d60 Dance::StartDance(void)
+void __fastcall StartDance__5DanceFv(struct Dance* this) asm("?StartDance@Dance@@QAEXXZ");
+
 // Override methods
 
 // win1.41 0050b770 mac 102aa200 Dance::_dt(void)

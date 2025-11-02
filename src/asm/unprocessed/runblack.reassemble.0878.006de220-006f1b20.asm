@@ -141,7 +141,7 @@
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005dfc40
 .extern _jmp_addr_0x005e17c0
-.extern _jmp_addr_0x005eca60
+.extern ?GetReaction@Living@@QAEXXZ
 .extern _jmp_addr_0x005f0fb0
 .extern _jmp_addr_0x005fa8b0
 .extern _jmp_addr_0x005fe6e0
@@ -309,7 +309,7 @@
 .extern _jmp_addr_0x0073daa0
 .extern _jmp_addr_0x0073daf0
 .extern ?RemoveVillager@Town@@QAEXPAVVillager@@@Z
-.extern _jmp_addr_0x0073e420
+.extern ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
 .extern ?AssignForestsToTown@Town@@QAEXXZ
 .extern _jmp_addr_0x00740300
 .extern _jmp_addr_0x00740340
@@ -332,7 +332,7 @@
 .extern _jmp_addr_0x007741f0
 .extern _jmp_addr_0x00774c50
 .extern _jmp_addr_0x00779610
-.extern _jmp_addr_0x00779af0
+.extern ?GetSpaceInStore@Workshop@@QAEHXZ
 .extern _jmp_addr_0x00779c10
 .extern _jmp_addr_0x00779c60
 .extern _jmp_addr_0x00779d30
@@ -7535,7 +7535,7 @@ _jmp_addr_0x006e411e:    {disp8} mov        eax, dword ptr [esp + 0x38]         
 _jmp_addr_0x006e4134:    {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x006e4134    8d4c2420
                          push               ecx                                           // 0x006e4138    51
                          mov.s              ecx, esi                                      // 0x006e4139    8bce
-                         call               _jmp_addr_0x005eca60                          // 0x006e413b    e82089f0ff
+                         call               ?GetReaction@Living@@QAEXXZ                   // 0x006e413b    e82089f0ff
                          mov.s              ecx, eax                                      // 0x006e4140    8bc8
                          call               _jmp_addr_0x006e45c0                          // 0x006e4142    e879040000
                          push               eax                                           // 0x006e4147    50
@@ -7552,7 +7552,7 @@ _jmp_addr_0x006e4134:    {disp8} lea        ecx, dword ptr [esp + 0x20]         
                          push               eax                                           // 0x006e4168    50
                          push               esi                                           // 0x006e4169    56
                          mov.s              ecx, esi                                      // 0x006e416a    8bce
-                         call               _jmp_addr_0x005eca60                          // 0x006e416c    e8ef88f0ff
+                         call               ?GetReaction@Living@@QAEXXZ                   // 0x006e416c    e8ef88f0ff
                          mov.s              ecx, eax                                      // 0x006e4171    8bc8
                          call               _jmp_addr_0x006e4620                          // 0x006e4173    e8a8040000
                          {disp8} mov        ecx, dword ptr [esp + 0x30]                   // 0x006e4178    8b4c2430
@@ -7571,7 +7571,7 @@ _jmp_addr_0x006e4134:    {disp8} lea        ecx, dword ptr [esp + 0x20]         
                          {disp8} mov        dword ptr [esp + 0x30], eax                   // 0x006e41a2    89442430
                          {disp8} fild       dword ptr [esp + 0x30]                        // 0x006e41a6    db442430
                          {disp8} fstp       dword ptr [esp + 0x30]                        // 0x006e41aa    d95c2430
-                         call               _jmp_addr_0x005eca60                          // 0x006e41ae    e8ad88f0ff
+                         call               ?GetReaction@Living@@QAEXXZ                   // 0x006e41ae    e8ad88f0ff
                          cmp                edi, dword ptr [eax + 0x24]                   // 0x006e41b3    3b7824
                          {disp8} jne        _jmp_addr_0x006e41d8                          // 0x006e41b6    7520
                          lea                edx, dword ptr [edi + edi * 0x2]              // 0x006e41b8    8d147f
@@ -8789,7 +8789,7 @@ _jmp_addr_0x006e4d64:    pop                edi                                 
                          {disp8} je         _jmp_addr_0x006e4e0f                          // 0x006e4dfd    7410
                          push               eax                                           // 0x006e4dff    50
                          mov.s              ecx, edi                                      // 0x006e4e00    8bcf
-                         call               _jmp_addr_0x0073e420                          // 0x006e4e02    e819960500
+                         call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z// 0x006e4e02    e819960500
                          {disp8} fmul       dword ptr [esp + 0x0c]                        // 0x006e4e07    d84c240c
                          {disp8} fstp       dword ptr [esp + 0x0c]                        // 0x006e4e0b    d95c240c
 _jmp_addr_0x006e4e0f:    mov                eax, dword ptr [esi]                          // 0x006e4e0f    8b06
@@ -16782,7 +16782,7 @@ _jmp_addr_0x006e9ea0:    sub                esp, 0x3c                           
                          test               ebx, ebx                                      // 0x006ea008    85db
                          {disp8} je         _jmp_addr_0x006ea062                          // 0x006ea00a    7456
                          mov.s              ecx, ebx                                      // 0x006ea00c    8bcb
-                         call               _jmp_addr_0x00779af0                          // 0x006ea00e    e8ddfa0800
+                         call               ?GetSpaceInStore@Workshop@@QAEHXZ             // 0x006ea00e    e8ddfa0800
                          test               eax, eax                                      // 0x006ea013    85c0
                          {disp8} je         _jmp_addr_0x006ea062                          // 0x006ea015    744b
                          mov.s              ecx, ebx                                      // 0x006ea017    8bcb

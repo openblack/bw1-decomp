@@ -44,7 +44,7 @@
 .extern _jmp_addr_0x005ec2a0
 .extern @IsReadyForNewAnimation__6LivingFUl@12
 .extern ?CallVirtualFunctionsForCreation@Living@@UAEXABUMapCoords@@@Z
-.extern _jmp_addr_0x005eca60
+.extern ?GetReaction@Living@@QAEXXZ
 .extern ?SetStateAnim@Living@@QAEXXZ
 .extern ?SetAnim__i@Living@@UAEXH@Z
 .extern _jmp_addr_0x005ecf40
@@ -12214,7 +12214,7 @@ _jmp_addr_0x00420227:    {disp32} mov       eax, dword ptr [esi + 0x000000bc]   
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x0042023a    d95c2410
                          add                esp, 0x08                                     // 0x0042023e    83c408
                          mov.s              ecx, esi                                      // 0x00420241    8bce
-                         call               _jmp_addr_0x005eca60                          // 0x00420243    e818c81c00
+                         call               ?GetReaction@Living@@QAEXXZ                   // 0x00420243    e818c81c00
                          mov.s              ecx, eax                                      // 0x00420248    8bc8
                          call               ?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ     // 0x0042024a    e8b1442c00
                          {disp8} fld        dword ptr [esp + 0x08]                        // 0x0042024f    d9442408
@@ -12231,7 +12231,7 @@ _jmp_addr_0x00420227:    {disp32} mov       eax, dword ptr [esi + 0x000000bc]   
                          add                esp, 0x40                                     // 0x0042026e    83c440
                          ret                                                              // 0x00420271    c3
 _jmp_addr_0x00420272:    mov.s              ecx, esi                                      // 0x00420272    8bce
-                         call               _jmp_addr_0x005eca60                          // 0x00420274    e8e7c71c00
+                         call               ?GetReaction@Living@@QAEXXZ                   // 0x00420274    e8e7c71c00
                          mov.s              ecx, eax                                      // 0x00420279    8bc8
                          call               ?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ     // 0x0042027b    e880442c00
                          {disp8} fld        dword ptr [eax + 0x40]                        // 0x00420280    d94040

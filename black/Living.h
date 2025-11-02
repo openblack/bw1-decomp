@@ -11,6 +11,7 @@
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "GameThing.h" /* For struct GameThing */
@@ -411,6 +412,8 @@ bool __fastcall LookAtPos__6LivingFRC9MapCoordsUl(struct Living* this, const voi
 bool __fastcall IsReadyForNewAnimation__6LivingFUl(const struct Living* this, const void* edx, uint32_t index) asm("?IsReadyForNewAnimation@Living@@QAE_NK@Z");
 // win1.41 005ec990 mac 10054e20 Living::WaitForAnimation(void)
 uint32_t __fastcall WaitForAnimation__6LivingFv(struct Living* this) asm("?WaitForAnimation@Living@@QAEIXZ");
+// win1.41 005eca60 mac 10381e30 Living::GetReaction(void)
+void __fastcall GetReaction__6LivingFv(struct Living* this) asm("?GetReaction@Living@@QAEXXZ");
 // win1.41 005eca80 mac inlined Living::SetTopStateToFinal(void)
 void __fastcall SetTopStateToFinal__6LivingFv(struct Living* this) asm("?SetTopStateToFinal@Living@@QAEXXZ");
 // win1.41 005ecac0 mac 10091bd0 Living::PlayAnimThenSetState(unsigned char, unsigned long)
@@ -447,8 +450,12 @@ void __fastcall SetFlock__6LivingFP5Flock(struct Living* this, const void* edx, 
 uint32_t __fastcall PosWithinDomain__6LivingFRC9MapCoordsf(struct Living* this, const void* edx, struct MapCoords* param_1, float param_2) asm("?PosWithinDomain@Living@@QAEIABUMapCoords@@M@Z");
 // win1.41 005ef9c0 mac 10384160 Living::CalculateDancePosition(MapCoords const &, MapCoords *)
 bool __fastcall CalculateDancePosition__6LivingFRC9MapCoordsP9MapCoords(struct Living* this, const void* edx, const struct MapCoords* param_1, struct MapCoords* param_2) asm("?CalculateDancePosition@Living@@QAE_NABUMapCoords@@PAU2@@Z");
+// win1.41 005ef9f0 mac 10383ce0 Living::PerformDance(MapCoords const &, unsigned char, unsigned long)
+bool32_t __fastcall PerformDance__6LivingFRC9MapCoordsUcUl(struct Living* this, const void* edx, const struct MapCoords* param_1, unsigned char param_2, unsigned long param_3) asm("?PerformDance@Living@@QAEIABUMapCoords@@EK@Z");
 // win1.41 005f1270 mac 1004b9b0 Living::ProcessReaction(void)
 void __fastcall ProcessReaction__6LivingFv(struct Living* this) asm("?ProcessReaction@Living@@QAEXXZ");
+// win1.41 005f1d90 mac 10386bd0 Living::FleeFromObjectIfComingTowardsMe(GameThingWithPos *, VILLAGER_STATES, VILLAGER_STATES)
+bool32_t __fastcall FleeFromObjectIfComingTowardsMe__6LivingFP16GameThingWithPos15VILLAGER_STATES15VILLAGER_STATES(struct Living* this, const void* edx, struct GameThingWithPos* param_1, enum VILLAGER_STATES param_2, enum VILLAGER_STATES param_3) asm("?FleeFromObjectIfComingTowardsMe@Living@@QAEIPAVGameThingWithPos@@W4VILLAGER_STATES@@1@Z");
 // win1.41 005f2640 mac 10385e00 Living::GotoPickupBallReaction(void)
 uint32_t __fastcall GotoPickupBallReaction__6LivingFv(struct Living* this) asm("?GotoPickupBallReaction@Living@@QAEIXZ");
 // win1.41 005f27f0 mac 10056110 Living::GetTopState(void)

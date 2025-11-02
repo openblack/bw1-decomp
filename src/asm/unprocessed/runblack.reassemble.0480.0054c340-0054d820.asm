@@ -228,8 +228,8 @@
 .extern _jmp_addr_0x00735540
 .extern _jmp_addr_0x0074cca0
 .extern ?Delete@VillagerNameBlock@@SAXPAUVillagerName@@@Z
-.extern _jmp_addr_0x007627e0
-.extern _jmp_addr_0x007635d0
+.extern ?DeleteAll@VillagerNameBlock@@QAEIXZ
+.extern ?DisplayHowImpressed@Town@@QAEIXZ
 .extern _jmp_addr_0x0076eaf0
 .extern _jmp_addr_0x00771be0
 .extern _jmp_addr_0x007741a0

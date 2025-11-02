@@ -544,7 +544,7 @@
 #include "black/ValueSpinner.h"
 #include "black/Villager.h"
 #include "black/VillagerInfo.h"
-#include "black/VillagerNameBlock.h"
+#include "black/VillagerNames.h"
 #include "black/VillagerStateTableInfo.h"
 #include "black/VirtualInfluence.h"
 #include "black/ViscousLiquid.h"

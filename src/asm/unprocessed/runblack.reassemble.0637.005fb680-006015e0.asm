@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x005da0c0
 .extern _jmp_addr_0x005dc870
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
-.extern _jmp_addr_0x005eca60
+.extern ?GetReaction@Living@@QAEXXZ
 .extern ?SetFlock@Living@@QAEXPAVFlock@@@Z
 .extern _jmp_addr_0x005fb400
 .extern _jmp_addr_0x005fb420
@@ -2607,7 +2607,7 @@ _jmp_addr_0x005fcbb7:    {disp8} mov        ecx, dword ptr [eax + 0x04]         
                          {disp8} jne        _jmp_addr_0x005fcbe2                          // 0x005fcbcf    7511
                          mov                ecx, dword ptr [esi]                          // 0x005fcbd1    8b0e
                          {disp32} mov       ebx, dword ptr [edi + 0x00000094]             // 0x005fcbd3    8b9f94000000
-                         call               _jmp_addr_0x005eca60                          // 0x005fcbd9    e882fefeff
+                         call               ?GetReaction@Living@@QAEXXZ                   // 0x005fcbd9    e882fefeff
                          cmp.s              eax, ebx                                      // 0x005fcbde    3bc3
                          {disp8} je         _jmp_addr_0x005fcc42                          // 0x005fcbe0    7460
 _jmp_addr_0x005fcbe2:    {disp8} mov        eax, dword ptr [esi + 0x0c]                   // 0x005fcbe2    8b460c

@@ -12,6 +12,7 @@
 
 // Forward Declares
 
+struct Fixed;
 struct Object;
 
 struct MapCell
@@ -40,6 +41,8 @@ struct Object* __fastcall FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object(struct 
 uint32_t __fastcall GetX__7MapCellCFv(const struct MapCell* this) asm("?GetX@MapCell@@QBEIXZ");
 // win1.41 00601ba0 mac 10054640 MapCell::GetZ(void) const
 uint32_t __fastcall GetZ__7MapCellCFv(const struct MapCell* this) asm("?GetZ@MapCell@@QBEIXZ");
+// win1.41 00601690 mac 10570500 MapCell::FindFixedOnMap(Object *)
+struct Fixed* __fastcall FindFixedOnMap__7MapCellFP6Object(struct MapCell* this, const void* edx, struct Object* param_1) asm("?FindFixedOnMap@MapCell@@QAEPAVFixed@@PAVObject@@@Z");
 
 struct MapCellIterator
 {

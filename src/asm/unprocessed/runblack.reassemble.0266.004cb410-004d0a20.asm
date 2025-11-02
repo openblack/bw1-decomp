@@ -13,7 +13,7 @@
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00436a70
-.extern _jmp_addr_0x00437e70
+.extern ?GetBeliefInPlayer@GBelief@@QAEMK@Z
 .extern _jmp_addr_0x004389b0
 .extern _jmp_addr_0x0046c1b0
 .extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
@@ -4753,7 +4753,7 @@ _jmp_addr_0x004ce4a4:    test               edi, edi                            
                          {disp32} lea       ebp, dword ptr [edi + 0x00000798]             // 0x004ce4fd    8daf98070000
                          mov.s              ecx, ebp                                      // 0x004ce503    8bcd
                          push               ebx                                           // 0x004ce505    53
-                         call               _jmp_addr_0x00437e70                          // 0x004ce506    e86599f6ff
+                         call               ?GetBeliefInPlayer@GBelief@@QAEMK@Z           // 0x004ce506    e86599f6ff
                          {disp8} fstp       dword ptr [esp + 0x18]                        // 0x004ce50b    d95c2418
                          push               ebx                                           // 0x004ce50f    53
                          mov.s              ecx, ebp                                      // 0x004ce510    8bcd
