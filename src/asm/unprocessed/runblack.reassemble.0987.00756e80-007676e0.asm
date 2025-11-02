@@ -498,37 +498,6 @@
 .globl ?VillagerGotoForest@Villager@@QAEIPAVForest@@W4VILLAGER_STATES@@@Z
 .globl ?DecideHowToGetWood@Villager@@QAEIHPAPAVBigForest@@PAPAVForest@@@Z
 
-_globl_ct_0x00759070:    {disp32} jmp       _jmp_addr_0x00759080                          // 0x00759070    e90b000000
-                         nop                                                              // 0x00759075    90
-                         nop                                                              // 0x00759076    90
-                         nop                                                              // 0x00759077    90
-                         nop                                                              // 0x00759078    90
-                         nop                                                              // 0x00759079    90
-                         nop                                                              // 0x0075907a    90
-                         nop                                                              // 0x0075907b    90
-                         nop                                                              // 0x0075907c    90
-                         nop                                                              // 0x0075907d    90
-                         nop                                                              // 0x0075907e    90
-                         nop                                                              // 0x0075907f    90
-_jmp_addr_0x00759080:    xor.s              eax, eax                                      // 0x00759080    33c0
-                         {disp32} mov       dword ptr [data_bytes + 0x3f3dd8], eax        // 0x00759082    a3d89ddb00
-                         {disp32} mov       dword ptr [data_bytes + 0x3f3ddc], eax        // 0x00759087    a3dc9ddb00
-                         {disp32} mov       dword ptr [data_bytes + 0x3f3de0], eax        // 0x0075908c    a3e09ddb00
-                         ret                                                              // 0x00759091    c3
-                         nop                                                              // 0x00759092    90
-                         nop                                                              // 0x00759093    90
-                         nop                                                              // 0x00759094    90
-                         nop                                                              // 0x00759095    90
-                         nop                                                              // 0x00759096    90
-                         nop                                                              // 0x00759097    90
-                         nop                                                              // 0x00759098    90
-                         nop                                                              // 0x00759099    90
-                         nop                                                              // 0x0075909a    90
-                         nop                                                              // 0x0075909b    90
-                         nop                                                              // 0x0075909c    90
-                         nop                                                              // 0x0075909d    90
-                         nop                                                              // 0x0075909e    90
-                         nop                                                              // 0x0075909f    90
 ?CheckForClearArea@Villager@@QAEIABUMapCoords@@M@Z:
                          sub                esp, 0x0c                                     // 0x007590a0    83ec0c
                          push               esi                                           // 0x007590a3    56

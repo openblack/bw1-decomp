@@ -10197,3 +10197,20 @@ bool32_t __fastcall ReenterBuildingState__8VillagerFv(struct Villager* this)
     asm("ret");                                                              // 0x00759068    c3
     __builtin_unreachable();
 }
+
+
+void __cdecl globl_ct_0x00759070(void)
+{
+    asm("{disp32} jmp       _FUN_00759080__8VillagerFv");                    // 0x00759070    e90b000000
+    __builtin_unreachable();
+}
+
+void __cdecl FUN_00759080__8VillagerFv(void)
+{
+    asm("xor.s              eax, eax");                                      // 0x00759080    33c0
+    asm("{disp32} mov       dword ptr [data_bytes + 0x3f3dd8], eax");        // 0x00759082    a3d89ddb00
+    asm("{disp32} mov       dword ptr [data_bytes + 0x3f3ddc], eax");        // 0x00759087    a3dc9ddb00
+    asm("{disp32} mov       dword ptr [data_bytes + 0x3f3de0], eax");        // 0x0075908c    a3e09ddb00
+    asm("ret");                                                              // 0x00759091    c3
+    __builtin_unreachable();
+}
