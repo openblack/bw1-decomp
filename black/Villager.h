@@ -77,6 +77,17 @@ struct Villager__StateTable
 };
 static_assert(sizeof(struct Villager__StateTable) == 0x8f70, "Data type is of wrong size");
 
+struct Glocation
+{
+  uint8_t field_0x0;
+};
+static_assert(sizeof(struct Glocation) == 0x1, "Data type is of wrong size");
+
+DECLARE_LH_ORDERED_LINKED_LIST(Glocation);
+
+// win1.41 0075a310 mac inlined LHOrderedLinkedList<Glocation>::Remove(Glocation *)
+void __fastcall Remove__31LHOrderedLinkedList_9Glocation_Fv(struct LHOrderedLinkedList__Glocation* this, const void* edx, struct Glocation* param_1) asm("?Remove@?$LHOrderedLinkedList@VGlocation@@@@QAEXPAVGlocation@@@Z");
+
 struct SortedObject
 {
   uint8_t field_0x0;

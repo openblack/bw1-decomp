@@ -1489,6 +1489,7 @@ ROOMMATE_CLASS_MAP = {
     "SortedObject": "Villager",
     "ChildBorn__FR8Villager": "Villager",
     "ClearAreaPoint": "Villager",
+    "Glocation": "Villager",
     "CPController": "Citadel",
     "hypotenuse__Fll": "LHMath",
     "LHArcTan__Fll": "LHMath",
