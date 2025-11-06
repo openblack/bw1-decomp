@@ -396,9 +396,6 @@
 .globl ?VillagerGotoForest@Villager@@QAEIPAVForest@@W4VILLAGER_STATES@@@Z
 .globl ?WaitForArtifactDance@Villager@@QAEIXZ
 .globl ?WaitForKickOff@Villager@@QAEIXZ
-.globl _globl_ct_0x00759810
-.globl _globl_ct_0x00759840
-.globl _globl_ct_0x00759870
 .globl _globl_ct_0x00759b90
 .globl _globl_ct_0x00759bc0
 .globl _globl_ct_0x0075a370
@@ -439,76 +436,6 @@
 .globl _jmp_addr_0x0075fd00
 .globl _AddDrawing__12VillagerNameFv
 
-_globl_ct_0x00759810:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00759810    8a0d34c9fa00
-                         mov                al, 0x01                                      // 0x00759816    b001
-                         test               al, cl                                        // 0x00759818    84c8
-                         {disp8} jne        _jmp_addr_0x00759824                          // 0x0075981a    7508
-                         or.s               cl, al                                        // 0x0075981c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x0075981e    880d34c9fa00
-_jmp_addr_0x00759824:    {disp32} jmp       _jmp_addr_0x00759830                          // 0x00759824    e907000000
-                         nop                                                              // 0x00759829    90
-                         nop                                                              // 0x0075982a    90
-                         nop                                                              // 0x0075982b    90
-                         nop                                                              // 0x0075982c    90
-                         nop                                                              // 0x0075982d    90
-                         nop                                                              // 0x0075982e    90
-                         nop                                                              // 0x0075982f    90
-_jmp_addr_0x00759830:    push               0x00407870                                    // 0x00759830    6870784000
-                         call               _atexit                                       // 0x00759835    e857bf0600
-                         pop                ecx                                           // 0x0075983a    59
-                         ret                                                              // 0x0075983b    c3
-                         nop                                                              // 0x0075983c    90
-                         nop                                                              // 0x0075983d    90
-                         nop                                                              // 0x0075983e    90
-                         nop                                                              // 0x0075983f    90
-_globl_ct_0x00759840:    {disp32} jmp       _jmp_addr_0x00759850                          // 0x00759840    e90b000000
-                         nop                                                              // 0x00759845    90
-                         nop                                                              // 0x00759846    90
-                         nop                                                              // 0x00759847    90
-                         nop                                                              // 0x00759848    90
-                         nop                                                              // 0x00759849    90
-                         nop                                                              // 0x0075984a    90
-                         nop                                                              // 0x0075984b    90
-                         nop                                                              // 0x0075984c    90
-                         nop                                                              // 0x0075984d    90
-                         nop                                                              // 0x0075984e    90
-                         nop                                                              // 0x0075984f    90
-_jmp_addr_0x00759850:    {disp32} fld       dword ptr [rdata_bytes + 0xf1954]             // 0x00759850    d90554a99900
-                         {disp32} fmul      dword ptr [rdata_bytes + 0xf1950]             // 0x00759856    d80d50a99900
-                         {disp32} fstp      dword ptr [data_bytes + 0x3f3df8]             // 0x0075985c    d91df89ddb00
-                         ret                                                              // 0x00759862    c3
-                         nop                                                              // 0x00759863    90
-                         nop                                                              // 0x00759864    90
-                         nop                                                              // 0x00759865    90
-                         nop                                                              // 0x00759866    90
-                         nop                                                              // 0x00759867    90
-                         nop                                                              // 0x00759868    90
-                         nop                                                              // 0x00759869    90
-                         nop                                                              // 0x0075986a    90
-                         nop                                                              // 0x0075986b    90
-                         nop                                                              // 0x0075986c    90
-                         nop                                                              // 0x0075986d    90
-                         nop                                                              // 0x0075986e    90
-                         nop                                                              // 0x0075986f    90
-_globl_ct_0x00759870:    {disp32} jmp       _jmp_addr_0x00759880                          // 0x00759870    e90b000000
-                         nop                                                              // 0x00759875    90
-                         nop                                                              // 0x00759876    90
-                         nop                                                              // 0x00759877    90
-                         nop                                                              // 0x00759878    90
-                         nop                                                              // 0x00759879    90
-                         nop                                                              // 0x0075987a    90
-                         nop                                                              // 0x0075987b    90
-                         nop                                                              // 0x0075987c    90
-                         nop                                                              // 0x0075987d    90
-                         nop                                                              // 0x0075987e    90
-                         nop                                                              // 0x0075987f    90
-_jmp_addr_0x00759880:    {disp32} mov       dword ptr [data_bytes + 0x3f3df4], 0xffffffff // 0x00759880    c705f49ddb00ffffffff
-                         ret                                                              // 0x0075988a    c3
-                         nop                                                              // 0x0075988b    90
-                         nop                                                              // 0x0075988c    90
-                         nop                                                              // 0x0075988d    90
-                         nop                                                              // 0x0075988e    90
-                         nop                                                              // 0x0075988f    90
                          sub                esp, 0x14                                     // 0x00759890    83ec14
                          push               ebx                                           // 0x00759893    53
                          push               esi                                           // 0x00759894    56

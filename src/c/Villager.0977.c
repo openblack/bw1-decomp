@@ -10918,3 +10918,53 @@ bool32_t __fastcall ExitBuilding__8VillagerFUc(struct Villager* this, const void
     asm("ret                0x0004");                                        // 0x0075980c    c20400
     __builtin_unreachable();
 }
+
+void __cdecl globl_ct_0x00759810(void)
+{
+    asm("{disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]");          // 0x00759810    8a0d34c9fa00
+    asm("mov                al, 0x01");                                      // 0x00759816    b001
+    asm("test               al, cl");                                        // 0x00759818    84c8
+    asm("{disp8} jne        _jmp_addr_0x00759824");                          // 0x0075981a    7508
+    asm("or.s               cl, al");                                        // 0x0075981c    0ac8
+    asm("{disp32} mov       byte ptr [data_bytes + 0x5e6934], cl");          // 0x0075981e    880d34c9fa00
+    asm("_jmp_addr_0x00759824:");
+    asm("{disp32} jmp       _crt_global_destruction_register_0x00759830");   // 0x00759824    e907000000
+    __builtin_unreachable();
+}
+
+void __cdecl crt_global_destruction_register_0x00759830(void)
+{
+    asm("push               0x00407870");                                    // 0x00759830    6870784000
+    asm("call               _atexit");                                       // 0x00759835    e857bf0600
+    asm("pop                ecx");                                           // 0x0075983a    59
+    asm("ret");                                                              // 0x0075983b    c3
+    __builtin_unreachable();
+}
+
+void __cdecl globl_ct_0x00759840(void)
+{
+    asm("{disp32} jmp       _FUN_00759850__8VillagerFv");                    // 0x00759840    e90b000000
+    __builtin_unreachable();
+}
+
+void __cdecl FUN_00759850__8VillagerFv(void)
+{
+    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf1954]");             // 0x00759850    d90554a99900
+    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1950]");             // 0x00759856    d80d50a99900
+    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3df8]");             // 0x0075985c    d91df89ddb00
+    asm("ret");                                                              // 0x00759862    c3
+    __builtin_unreachable();
+}
+
+void __cdecl globl_ct_0x00759870(void)
+{
+    asm("{disp32} jmp       _FUN_00759880__8VillagerFv");                    // 0x00759870    e90b000000
+    __builtin_unreachable();
+}
+
+void __cdecl FUN_00759880__8VillagerFv(void)
+{
+    asm("{disp32} mov       dword ptr [data_bytes + 0x3f3df4], 0xffffffff"); // 0x00759880    c705f49ddb00ffffffff
+    asm("ret");                                                              // 0x0075988a    c3
+    __builtin_unreachable();
+}
