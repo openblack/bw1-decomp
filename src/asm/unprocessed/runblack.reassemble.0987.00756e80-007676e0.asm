@@ -435,7 +435,14 @@
 .globl _jmp_addr_0x0075f930
 .globl _jmp_addr_0x0075fd00
 .globl _AddDrawing__12VillagerNameFv
+.globl ?FindImmediateNeighbour@Villager@@QAEPAV1@XZ
+.globl ?DanceForEditingPurposes@Villager@@QAEIXZ
+.globl ?DanceButNotWorship@Villager@@QAEIXZ
+.globl ?MoveToDancePos@Villager@@QAEIXZ
+.globl ?ControlledByCreature@Villager@@QAEIXZ
+.globl ?ExitControlledByCreature@Villager@@QAEIE@Z
 
+?FindImmediateNeighbour@Villager@@QAEPAV1@XZ:
                          sub                esp, 0x14                                     // 0x00759890    83ec14
                          push               ebx                                           // 0x00759893    53
                          push               esi                                           // 0x00759894    56
@@ -501,6 +508,7 @@ _jmp_addr_0x0075991a:    pop                edi                                 
                          nop                                                              // 0x0075992d    90
                          nop                                                              // 0x0075992e    90
                          nop                                                              // 0x0075992f    90
+?DanceForEditingPurposes@Villager@@QAEIXZ:
                          {disp32} mov       eax, dword ptr [ecx + 0x000000d8]             // 0x00759930    8b81d8000000
                          {disp8} mov        edx, dword ptr [eax + 0x5c]                   // 0x00759936    8b505c
                          {disp8} mov        eax, dword ptr [eax + 0x18]                   // 0x00759939    8b4018
@@ -526,6 +534,7 @@ _jmp_addr_0x0075991a:    pop                edi                                 
                          nop                                                              // 0x0075995d    90
                          nop                                                              // 0x0075995e    90
                          nop                                                              // 0x0075995f    90
+?DanceButNotWorship@Villager@@QAEIXZ:
                          {disp32} mov       eax, dword ptr [ecx + 0x000000d8]             // 0x00759960    8b81d8000000
                          {disp8} mov        edx, dword ptr [eax + 0x5c]                   // 0x00759966    8b505c
                          {disp8} mov        eax, dword ptr [eax + 0x18]                   // 0x00759969    8b4018
@@ -551,6 +560,7 @@ _jmp_addr_0x0075991a:    pop                edi                                 
                          nop                                                              // 0x0075998d    90
                          nop                                                              // 0x0075998e    90
                          nop                                                              // 0x0075998f    90
+?MoveToDancePos@Villager@@QAEIXZ:
                          sub                esp, 0x0c                                     // 0x00759990    83ec0c
                          push               esi                                           // 0x00759993    56
                          mov.s              esi, ecx                                      // 0x00759994    8bf1
@@ -596,6 +606,7 @@ _jmp_addr_0x007599e8:    mov.s              ecx, esi                            
                          nop                                                              // 0x007599fd    90
                          nop                                                              // 0x007599fe    90
                          nop                                                              // 0x007599ff    90
+?ControlledByCreature@Villager@@QAEIXZ:
                          sub                esp, 0x18                                     // 0x00759a00    83ec18
                          push               esi                                           // 0x00759a03    56
                          mov.s              esi, ecx                                      // 0x00759a04    8bf1
@@ -653,6 +664,7 @@ _jmp_addr_0x00759a7c:    pop                edi                                 
                          nop                                                              // 0x00759a8d    90
                          nop                                                              // 0x00759a8e    90
                          nop                                                              // 0x00759a8f    90
+?ExitControlledByCreature@Villager@@QAEIE@Z:
                          push               ebx                                           // 0x00759a90    53
                          {disp8} mov        ebx, dword ptr [esp + 0x08]                   // 0x00759a91    8b5c2408
                          cmp                bl, 0x18                                      // 0x00759a95    80fb18

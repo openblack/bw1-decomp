@@ -631,6 +631,18 @@ struct MapCoords* __fastcall GetPosForPushObject__8VillagerFP6ObjectR9MapCoords(
 bool32_t __fastcall EnterBuilding__8VillagerFUcUc(struct Villager* this, const void* edx, unsigned char param_1, unsigned char param_2) asm("?EnterBuilding@Villager@@QAEIEE@Z");
 // win1.41 007597b0 mac 10574130 Villager::ExitBuilding(unsigned char)
 bool32_t __fastcall ExitBuilding__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitBuilding@Villager@@QAEIE@Z");
+// win1.41 00759890 mac 105775d0 Villager::FindImmediateNeighbour(void)
+struct Villager* __fastcall FindImmediateNeighbour__8VillagerFv(struct Villager* this) asm("?FindImmediateNeighbour@Villager@@QAEPAV1@XZ");
+// win1.41 00759930 mac 10577560 Villager::DanceForEditingPurposes(void)
+bool32_t __fastcall DanceForEditingPurposes__8VillagerFv(struct Villager* this) asm("?DanceForEditingPurposes@Villager@@QAEIXZ");
+// win1.41 00759960 mac 105774f0 Villager::DanceButNotWorship(void)
+bool32_t __fastcall DanceButNotWorship__8VillagerFv(struct Villager* this) asm("?DanceButNotWorship@Villager@@QAEIXZ");
+// win1.41 00759990 mac 10577430 Villager::MoveToDancePos(void)
+bool32_t __fastcall MoveToDancePos__8VillagerFv(struct Villager* this) asm("?MoveToDancePos@Villager@@QAEIXZ");
+// win1.41 00759a00 mac 105772e0 Villager::ControlledByCreature(void)
+bool32_t __fastcall ControlledByCreature__8VillagerFv(struct Villager* this) asm("?ControlledByCreature@Villager@@QAEIXZ");
+// win1.41 00759a90 mac 105770d0 Villager::ExitControlledByCreature(unsigned char)
+bool32_t __fastcall ExitControlledByCreature__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitControlledByCreature@Villager@@QAEIE@Z");
 // win1.41 00759c00 mac 10578330 Villager::VillagerBecomesFarmer(Field *)
 bool32_t __fastcall VillagerBecomesFarmer__8VillagerFP5Field(struct Villager* this, const void* edx, struct Field* param_1) asm("?VillagerBecomesFarmer@Villager@@QAEIPAVField@@@Z");
 // win1.41 00759c40 mac 10578150 Villager::SetFarmerGotoField(Field *, int)
