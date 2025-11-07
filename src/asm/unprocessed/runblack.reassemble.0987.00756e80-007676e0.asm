@@ -396,8 +396,6 @@
 .globl ?VillagerGotoForest@Villager@@QAEIPAVForest@@W4VILLAGER_STATES@@@Z
 .globl ?WaitForArtifactDance@Villager@@QAEIXZ
 .globl ?WaitForKickOff@Villager@@QAEIXZ
-.globl _globl_ct_0x00759b90
-.globl _globl_ct_0x00759bc0
 .globl _globl_ct_0x0075a370
 .globl _globl_ct_0x0075a3a0
 .globl _globl_ct_0x0075b460
@@ -442,57 +440,6 @@
 .globl ?ControlledByCreature@Villager@@QAEIXZ
 .globl ?ExitControlledByCreature@Villager@@QAEIE@Z
 
-_globl_ct_0x00759b90:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00759b90    8a0d34c9fa00
-                         mov                al, 0x01                                      // 0x00759b96    b001
-                         test               al, cl                                        // 0x00759b98    84c8
-                         {disp8} jne        _jmp_addr_0x00759ba4                          // 0x00759b9a    7508
-                         or.s               cl, al                                        // 0x00759b9c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x00759b9e    880d34c9fa00
-_jmp_addr_0x00759ba4:    {disp32} jmp       _jmp_addr_0x00759bb0                          // 0x00759ba4    e907000000
-                         nop                                                              // 0x00759ba9    90
-                         nop                                                              // 0x00759baa    90
-                         nop                                                              // 0x00759bab    90
-                         nop                                                              // 0x00759bac    90
-                         nop                                                              // 0x00759bad    90
-                         nop                                                              // 0x00759bae    90
-                         nop                                                              // 0x00759baf    90
-_jmp_addr_0x00759bb0:    push               0x00407870                                    // 0x00759bb0    6870784000
-                         call               _atexit                                       // 0x00759bb5    e8d7bb0600
-                         pop                ecx                                           // 0x00759bba    59
-                         ret                                                              // 0x00759bbb    c3
-                         nop                                                              // 0x00759bbc    90
-                         nop                                                              // 0x00759bbd    90
-                         nop                                                              // 0x00759bbe    90
-                         nop                                                              // 0x00759bbf    90
-_globl_ct_0x00759bc0:    {disp32} jmp       _jmp_addr_0x00759bd0                          // 0x00759bc0    e90b000000
-                         nop                                                              // 0x00759bc5    90
-                         nop                                                              // 0x00759bc6    90
-                         nop                                                              // 0x00759bc7    90
-                         nop                                                              // 0x00759bc8    90
-                         nop                                                              // 0x00759bc9    90
-                         nop                                                              // 0x00759bca    90
-                         nop                                                              // 0x00759bcb    90
-                         nop                                                              // 0x00759bcc    90
-                         nop                                                              // 0x00759bcd    90
-                         nop                                                              // 0x00759bce    90
-                         nop                                                              // 0x00759bcf    90
-_jmp_addr_0x00759bd0:    {disp32} fld       dword ptr [rdata_bytes + 0xf195c]             // 0x00759bd0    d9055ca99900
-                         {disp32} fmul      dword ptr [rdata_bytes + 0xf1958]             // 0x00759bd6    d80d58a99900
-                         {disp32} fstp      dword ptr [data_bytes + 0x3f3dfc]             // 0x00759bdc    d91dfc9ddb00
-                         ret                                                              // 0x00759be2    c3
-                         nop                                                              // 0x00759be3    90
-                         nop                                                              // 0x00759be4    90
-                         nop                                                              // 0x00759be5    90
-                         nop                                                              // 0x00759be6    90
-                         nop                                                              // 0x00759be7    90
-                         nop                                                              // 0x00759be8    90
-                         nop                                                              // 0x00759be9    90
-                         nop                                                              // 0x00759bea    90
-                         nop                                                              // 0x00759beb    90
-                         nop                                                              // 0x00759bec    90
-                         nop                                                              // 0x00759bed    90
-                         nop                                                              // 0x00759bee    90
-                         nop                                                              // 0x00759bef    90
                          xor.s              eax, eax                                      // 0x00759bf0    33c0
                          ret                                                              // 0x00759bf2    c3
                          nop                                                              // 0x00759bf3    90
