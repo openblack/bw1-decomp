@@ -7,6 +7,7 @@ import sys
 from convert_function_body import convert_asm_to_c_body, get_required_attributes
 from pathlib import Path
 from parse_asm_functions import parse_functions_from_file
+from cleanup_imports_exports import clean_up_externs_and_globls
 
 def get_c_decl(mangled: str) -> str:
     result = subprocess.run(
@@ -22,8 +23,8 @@ def get_c_decl(mangled: str) -> str:
     match = re.search(rf' asm\("{re.escape(mangled)}"\);', decl)
     return decl[:match.start()]
 
-def process_text_mode(asm_path: str, max_iterations: int):
-    with open(asm_path, "r") as f:
+def process_text_mode(asm_path: Path, max_iterations: int):
+    with asm_path.open() as f:
         count = 0
         global_start_line = None
         global_end_line = None
@@ -104,7 +105,7 @@ def main():
     subparsers = parser.add_subparsers(dest='mode', help='Processing mode')
 
     text_parser = subparsers.add_parser('text', help='Process .text segment functions')
-    text_parser.add_argument('asm_path', help='Path to assembly file')
+    text_parser.add_argument('asm_path', type=Path, help='Path to assembly file')
     text_parser.add_argument('max_iterations', type=int, help='Maximum number of iterations')
 
     vtable_parser = subparsers.add_parser('vftable', help='Process Virtual Function Tables')
@@ -113,6 +114,7 @@ def main():
 
     if args.mode == 'text':
         process_text_mode(args.asm_path, args.max_iterations)
+        clean_up_externs_and_globls(args.asm_path)
     elif args.mode == 'vftable':
         process_vtable_mode()
     else:
