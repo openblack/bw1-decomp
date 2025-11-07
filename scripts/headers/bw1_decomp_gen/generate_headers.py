@@ -434,6 +434,15 @@ if __name__ == "__main__":
                 return True
         return False
 
+    def is_container_template_struct(x):
+        if type(x) is not Struct:
+            return False
+        return any(
+            x.name.startswith(prefix)
+            for prefixes in TEMPLATE_CONTAINER_STRUCTS_PREFIXES.values()
+            for prefix in prefixes
+        )
+
     def enum_name_to_potential_header_struct_name(type_name: str, num_stripped_suffixes) -> Optional[str]:
         if type_name.count("_") < num_stripped_suffixes:
             return None
@@ -473,7 +482,6 @@ if __name__ == "__main__":
         return False
 
     # Do some selecting
-    template_container_lists = {}
     (
         vftables,
         bases,
@@ -483,11 +491,7 @@ if __name__ == "__main__":
         to_ignore_enums,
         header_enums,
         remainder_enums,
-        template_container_lists['LHLinkedList<T*>'],
-        template_container_lists['LHLinkedList<T>'],
-        template_container_lists['LHListHead<T>'],
-        template_container_lists['LHDynamicStack<T>'],
-        template_container_lists['GJVector<T>'],
+        container_template_structs,
         member_function_pointers,
         to_ignore,
         remainder_primitives,
@@ -501,11 +505,7 @@ if __name__ == "__main__":
         lambda x: type(x) is Enum and is_ignore_struct(x),
         lambda x: type(x) is Enum and get_enum_header_name_key(x) is not None,
         lambda x: type(x) is Enum,
-        lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__p_") or x.name.startswith("LHLinkedNode__p_"),
-        lambda x: type(x) is Struct and x.name.startswith("LHLinkedList__") or x.name.startswith("LHLinkedNode__"),
-        lambda x: type(x) is Struct and x.name.startswith("LHListHead__"),
-        lambda x: type(x) is Struct and x.name.startswith("LHDynamicStack__"),
-        lambda x: type(x) is Struct and x.name.startswith("GJVector__"),
+        is_container_template_struct,
         lambda x: type(x) is FuncPtr and "__" in x.name and get_header_struct_name_key(x.name[::-1].split("__")[-1][::-1]) is not None,
         is_ignore_struct,
         lambda x: type(x) is Struct,
@@ -516,6 +516,7 @@ if __name__ == "__main__":
 
     function_proto_map = {i.name: i for i in vftable_function_prototypes + member_function_pointers}
     global_function_ptr_proto_map = {i.name: i for i in global_function_ptr_prototypes}
+    template_container_lists = {template_key: [s for s in container_template_structs if any(s.name.startswith(p) for p in prefixes)] for template_key, prefixes in TEMPLATE_CONTAINER_STRUCTS_PREFIXES.items()}
 
     template_container_structs = {}
     for name, prefixes in TEMPLATE_CONTAINER_STRUCTS_PREFIXES.items():
