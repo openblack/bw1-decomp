@@ -110,6 +110,8 @@ set(SOURCES_001
     asm/unprocessed/rdata.r.001-rtti.asm
     asm/unprocessed/data.001.009c7e80-00c2b1d0.asm
     asm/unprocessed/bss.000.asm
+    asm/unprocessed/bss.001.asm
+    asm/unprocessed/bss.002.asm
     asm/unprocessed/xdata.x.000.009bbdc8-009bc428.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
