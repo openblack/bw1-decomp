@@ -1,4 +1,5 @@
 import sys
+import re
 from pathlib import Path
 from typing import Iterable, Callable
 from collections import OrderedDict
@@ -6,26 +7,33 @@ from collections import OrderedDict
 from csnake_overrides import CSnakeFuncPtr
 from clang import cindex
 
+def to_macro_case(name: str) -> str:
+    s = re.sub('([a-z])([A-Z])', r'\1_\2', name)
+    s = re.sub('([A-Z]+)([A-Z][a-z])', r'\1_\2', s)
+    return s.upper()
 
-LH_COLLECTION_TEMPLATES = {"LHLinkedList", "LHListHead", "GJVector", "LHDynamicStack"}
 
+# Single source of truth: define templates with their prefixes
+CONTAINER_TEMPLATE_DECL = OrderedDict([
+    ('LHLinkedList', ['LHLinkedList__', 'LHLinkedNode__']),
+    ('LHListHead', ['LHListHead__']),
+    ('GJVector', ['GJVector__']),
+    ('LHDynamicStack', ['LHDynamicStack__']),
+    ('LHOrderedLinkedList', ['LHOrderedLinkedList__', 'OrderedNode__']),
+])
+
+# Derived collections
+LH_COLLECTION_TEMPLATES = set(CONTAINER_TEMPLATE_DECL.keys())
 
 CONTAINER_DECLARATION_MACROS = {
-    'LHLinkedList<T*>': "DECLARE_P_LH_LINKED_LIST",
-    'LHLinkedList<T>': "DECLARE_LH_LINKED_LIST",
-    'LHListHead<T>': "DECLARE_LH_LIST_HEAD",
-    'LHDynamicStack<T>': "DECLARE_LH_DYNAMIC_STACK",
-    'GJVector<T>': "DECLARE_GJ_VECTOR",
+    f"{template}<T>": f"DECLARE_{to_macro_case(template)}"
+    for template in CONTAINER_TEMPLATE_DECL
 }
 
-
-TEMPLATE_CONTAINER_STRUCTS_PREFIXES = OrderedDict({
-    'LHLinkedList<T*>': ['LHLinkedList__p_', 'LHLinkedNode__p_'],
-    'LHLinkedList<T>': ['LHLinkedList__', 'LHLinkedNode__'],
-    'LHListHead<T>': ['LHListHead__'],
-    'LHDynamicStack<T>': ['LHDynamicStack__'],
-    'GJVector<T>': ['GJVector__'],
-})
+TEMPLATE_CONTAINER_STRUCTS_PREFIXES = OrderedDict([
+    (f'{template}<T>', prefixes)
+    for template, prefixes in CONTAINER_TEMPLATE_DECL.items()
+])
 
 
 TYPE_SUBSTITUTION_MAP = {
