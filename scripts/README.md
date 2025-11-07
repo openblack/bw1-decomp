@@ -112,3 +112,11 @@ win addr,mac mangled name,mac addr,call type,return type
 ### Limitations
 
 It is difficult to unmangle and re-mangle functions with template parameters. It's also very difficult to know if a parameter is from template expansion or not. Additionally, you can't add template syntax to C headers so they must be manually renamed. As the number of templated functions is realitvely low, it's best to add these function manually.
+
+## ASM file import cleaner
+
+```bash
+python src/scripts/asm_to_c/cleanup_imports_exports.py src/asm/unprocessed/runblack.reassemble.0501.0055c770-0055c8a0.asm src/asm/unprocessed/runblack.reassemble.0502.0055c8a0-0055cb70.asm src/asm/unprocessed/runblack.reassemble.0503.0055cb70-00562180.asm
+```
+
+This script takes an arbitrary amount of paths to asm files and will scan the file for `.globl` and `.extern` directives for labels that are not present in each file. It then removes thse unused imports and exports.
