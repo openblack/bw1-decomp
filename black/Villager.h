@@ -654,6 +654,8 @@ bool32_t __fastcall MoveToDancePos__8VillagerFv(struct Villager* this) asm("?Mov
 bool32_t __fastcall ControlledByCreature__8VillagerFv(struct Villager* this) asm("?ControlledByCreature@Villager@@QAEIXZ");
 // win1.41 00759a90 mac 105770d0 Villager::ExitControlledByCreature(unsigned char)
 bool32_t __fastcall ExitControlledByCreature__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitControlledByCreature@Villager@@QAEIE@Z");
+// win1.41 00759bf0 mac 105783f0 Villager::FarmerLookForField(void)
+bool32_t __fastcall FarmerLookForField__8VillagerFv(struct Villager* this) asm("?FarmerLookForField@Villager@@QAEIXZ");
 // win1.41 00759c00 mac 10578330 Villager::VillagerBecomesFarmer(Field *)
 bool32_t __fastcall VillagerBecomesFarmer__8VillagerFP5Field(struct Villager* this, const void* edx, struct Field* param_1) asm("?VillagerBecomesFarmer@Villager@@QAEIPAVField@@@Z");
 // win1.41 00759c40 mac 10578150 Villager::SetFarmerGotoField(Field *, int)

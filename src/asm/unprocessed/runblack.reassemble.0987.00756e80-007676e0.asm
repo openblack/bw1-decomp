@@ -439,7 +439,9 @@
 .globl ?MoveToDancePos@Villager@@QAEIXZ
 .globl ?ControlledByCreature@Villager@@QAEIXZ
 .globl ?ExitControlledByCreature@Villager@@QAEIE@Z
+.globl ?FarmerLookForField@Villager@@QAEIXZ
 
+?FarmerLookForField@Villager@@QAEIXZ:
                          xor.s              eax, eax                                      // 0x00759bf0    33c0
                          ret                                                              // 0x00759bf2    c3
                          nop                                                              // 0x00759bf3    90
