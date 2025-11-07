@@ -12094,3 +12094,40 @@ void __fastcall Remove__31LHOrderedLinkedList_9Glocation_Fv(struct LHOrderedLink
     asm("ret                0x0004");                                        // 0x0075a35e    c20400
     __builtin_unreachable();
 }
+
+void __cdecl globl_ct_0x0075a370(void)
+{
+    asm("{disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]");          // 0x0075a370    8a0d34c9fa00
+    asm("mov                al, 0x01");                                      // 0x0075a376    b001
+    asm("test               al, cl");                                        // 0x0075a378    84c8
+    asm("{disp8} jne        _jmp_addr_0x0075a384");                          // 0x0075a37a    7508
+    asm("or.s               cl, al");                                        // 0x0075a37c    0ac8
+    asm("{disp32} mov       byte ptr [data_bytes + 0x5e6934], cl");          // 0x0075a37e    880d34c9fa00
+    asm("_jmp_addr_0x0075a384:");
+    asm("{disp32} jmp       _crt_global_destruction_register_0x0075a390");   // 0x0075a384    e907000000
+    __builtin_unreachable();
+}
+
+void __cdecl crt_global_destruction_register_0x0075a390(void)
+{
+    asm("push               0x00407870");                                    // 0x0075a390    6870784000
+    asm("call               _atexit");                                       // 0x0075a395    e8f7b30600
+    asm("pop                ecx");                                           // 0x0075a39a    59
+    asm("ret");                                                              // 0x0075a39b    c3
+    __builtin_unreachable();
+}
+
+void __cdecl globl_ct_0x0075a3a0(void)
+{
+    asm("{disp32} jmp       _FUN_0075a3b0__8VillagerFv");                    // 0x0075a3a0    e90b000000
+    __builtin_unreachable();
+}
+
+void __cdecl FUN_0075a3b0__8VillagerFv(void)
+{
+    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf1964]");             // 0x0075a3b0    d90564a99900
+    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1960]");             // 0x0075a3d6    d80d60a99900
+    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3e00]");             // 0x0075a3dc    d91d009edb00
+    asm("ret");                                                              // 0x0075a3c2    c3
+    __builtin_unreachable();
+}
