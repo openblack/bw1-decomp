@@ -13636,3 +13636,40 @@ bool __fastcall IsFireMan__8VillagerFv(struct Object* this)
     asm("ret");                                                              // 0x0075b45b    c3
     __builtin_unreachable();
 }
+
+void __cdecl globl_ct_0x0075b460(void)
+{
+    asm("{disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]");          // 0x0075b460    8a0d34c9fa00
+    asm("mov                al, 0x01");                                      // 0x0075b466    b001
+    asm("test               al, cl");                                        // 0x0075b468    84c8
+    asm("{disp8} jne        _jmp_addr_0x0075b474");                          // 0x0075b46a    7508
+    asm("or.s               cl, al");                                        // 0x0075b46c    0ac8
+    asm("{disp32} mov       byte ptr [data_bytes + 0x5e6934], cl");          // 0x0075b46e    880d34c9fa00
+    asm("_jmp_addr_0x0075b474:");
+    asm("{disp32} jmp       _crt_global_destruction_register_0x0075b480");   // 0x0075b474    e907000000
+    __builtin_unreachable();
+}
+
+void __cdecl crt_global_destruction_register_0x0075b480(void)
+{
+    asm("push               0x00407870");                                    // 0x0075b480    6870784000
+    asm("call               _atexit");                                       // 0x0075b485    e807a30600
+    asm("pop                ecx");                                           // 0x0075b48a    59
+    asm("ret");                                                              // 0x0075b48b    c3
+    __builtin_unreachable();
+}
+
+void __cdecl globl_ct_0x0075b490(void)
+{
+    asm("{disp32} jmp       _FUN_0075b4a0__8VillagerFv");                    // 0x0075b490    e90b000000
+    __builtin_unreachable();
+}
+
+void __cdecl FUN_0075b4a0__8VillagerFv(void)
+{
+    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf1974]");             // 0x0075b4a0    d90574a99900
+    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1970]");             // 0x0075b4a6    d80d70a99900
+    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3e04]");             // 0x0075b4ac    d91d049edb00
+    asm("ret");                                                              // 0x0075b4b2    c3
+    __builtin_unreachable();
+}
