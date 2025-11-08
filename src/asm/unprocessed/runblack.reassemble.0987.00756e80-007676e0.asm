@@ -384,12 +384,17 @@
 .globl _globl_ct_0x007675b0
 .globl _globl_ct_0x007675e0
 .globl _globl_ct_0x00767610
-.globl _jmp_addr_0x0075b560
+.globl ?VillagerBecomesFisherman@Villager@@QAEIPAVFishFarm@@@Z
 .globl _jmp_addr_0x0075bf20
 .globl _jmp_addr_0x0075d130
 .globl _jmp_addr_0x0075f930
 .globl _jmp_addr_0x0075fd00
 .globl _AddDrawing__12VillagerNameFv
+.globl ?VillagerBecomesFisherman@Villager@@QAEIXZ
+.globl ?FishermanArrivesAtFishing@Villager@@QAEIXZ
+.globl ?Fishing@Villager@@QAEIXZ
+.globl ?EnterFishing@Villager@@QAEIEE@Z
+.globl ?ExitFishing@Villager@@QAEIE@Z
 
 ?FishermanLookForWater@Villager@@QAEIXZ:
                          push               ecx                                           // 0x0075b4c0    51
@@ -412,7 +417,7 @@
                          {disp8} je         _jmp_addr_0x0075b4fd                          // 0x0075b4eb    7410
                          push               eax                                           // 0x0075b4ed    50
                          mov.s              ecx, esi                                      // 0x0075b4ee    8bce
-                         call               _jmp_addr_0x0075b560                          // 0x0075b4f0    e86b000000
+                         call               ?VillagerBecomesFisherman@Villager@@QAEIPAVFishFarm@@@Z                          // 0x0075b4f0    e86b000000
                          mov                eax, 0x00000001                               // 0x0075b4f5    b801000000
                          pop                esi                                           // 0x0075b4fa    5e
                          pop                ecx                                           // 0x0075b4fb    59
@@ -435,6 +440,7 @@ _jmp_addr_0x0075b4fd:    xor.s              eax, eax                            
                          nop                                                              // 0x0075b50d    90
                          nop                                                              // 0x0075b50e    90
                          nop                                                              // 0x0075b50f    90
+?VillagerBecomesFisherman@Villager@@QAEIXZ:
                          sub                esp, 0x0c                                     // 0x0075b510    83ec0c
                          push               esi                                           // 0x0075b513    56
                          mov.s              esi, ecx                                      // 0x0075b514    8bf1
@@ -471,7 +477,8 @@ _jmp_addr_0x0075b550:    xor.s              eax, eax                            
                          nop                                                              // 0x0075b55d    90
                          nop                                                              // 0x0075b55e    90
                          nop                                                              // 0x0075b55f    90
-_jmp_addr_0x0075b560:    sub                esp, 0x18                                     // 0x0075b560    83ec18
+?VillagerBecomesFisherman@Villager@@QAEIPAVFishFarm@@@Z:
+                         sub                esp, 0x18                                     // 0x0075b560    83ec18
                          push               esi                                           // 0x0075b563    56
                          mov.s              esi, ecx                                      // 0x0075b564    8bf1
                          mov                eax, dword ptr [esi]                          // 0x0075b566    8b06
@@ -507,12 +514,13 @@ _jmp_addr_0x0075b560:    sub                esp, 0x18                           
                          nop                                                              // 0x0075b5cd    90
                          nop                                                              // 0x0075b5ce    90
                          nop                                                              // 0x0075b5cf    90
+?FishermanArrivesAtFishing@Villager@@QAEIXZ:
                          sub                esp, 0x0c                                     // 0x0075b5d0    83ec0c
                          push               esi                                           // 0x0075b5d3    56
                          mov.s              esi, ecx                                      // 0x0075b5d4    8bf1
                          push               edi                                           // 0x0075b5d6    57
                          {disp32} mov       edi, dword ptr [esi + 0x00000118]             // 0x0075b5d7    8bbe18010000
-                         call               _jmp_addr_0x0075b670                          // 0x0075b5dd    e88e000000
+                         call               ?IsAtValidFishingPos@Villager@@QAEIXZ         // 0x0075b5dd    e88e000000
                          test               eax, eax                                      // 0x0075b5e2    85c0
                          mov                eax, dword ptr [edi]                          // 0x0075b5e4    8b07
                          {disp8} jne        _jmp_addr_0x0075b60f                          // 0x0075b5e6    7527
@@ -575,7 +583,8 @@ _jmp_addr_0x0075b64e:    push               0x1                                 
                          nop                                                              // 0x0075b66d    90
                          nop                                                              // 0x0075b66e    90
                          nop                                                              // 0x0075b66f    90
-_jmp_addr_0x0075b670:    {disp32} mov       eax, dword ptr [ecx + 0x00000118]             // 0x0075b670    8b8118010000
+?IsAtValidFishingPos@Villager@@QAEIXZ:
+                         {disp32} mov       eax, dword ptr [ecx + 0x00000118]             // 0x0075b670    8b8118010000
                          {disp8} mov        dx, word ptr [ecx + 0x16]                     // 0x0075b676    668b5116
                          cmp                dx, word ptr [eax + 0x16]                     // 0x0075b67a    663b5016
                          {disp8} jne        _jmp_addr_0x0075b690                          // 0x0075b67e    7510
@@ -599,6 +608,7 @@ _jmp_addr_0x0075b690:    xor.s              eax, eax                            
                          nop                                                              // 0x0075b69d    90
                          nop                                                              // 0x0075b69e    90
                          nop                                                              // 0x0075b69f    90
+?Fishing@Villager@@QAEIXZ:
                          sub                esp, 0x1c                                     // 0x0075b6a0    83ec1c
                          push               esi                                           // 0x0075b6a3    56
                          push               edi                                           // 0x0075b6a4    57
@@ -710,6 +720,7 @@ _jmp_addr_0x0075b80d:    pop                edi                                 
                          nop                                                              // 0x0075b81d    90
                          nop                                                              // 0x0075b81e    90
                          nop                                                              // 0x0075b81f    90
+?EnterFishing@Villager@@QAEIEE@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x08]                   // 0x0075b820    8b442408
                          push               esi                                           // 0x0075b824    56
                          mov.s              esi, ecx                                      // 0x0075b825    8bf1
@@ -749,6 +760,7 @@ _jmp_addr_0x0075b86f:    mov                eax, 0x00000001                     
                          nop                                                              // 0x0075b87d    90
                          nop                                                              // 0x0075b87e    90
                          nop                                                              // 0x0075b87f    90
+?ExitFishing@Villager@@QAEIE@Z:
                          push               esi                                           // 0x0075b880    56
                          mov.s              esi, ecx                                      // 0x0075b881    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x0075b883    8b4c2408

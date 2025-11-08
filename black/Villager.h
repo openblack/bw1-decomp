@@ -34,6 +34,7 @@ struct Creche;
 struct EffectValues;
 struct Field;
 struct FireEffect;
+struct FishFarm;
 struct Football;
 struct Forest;
 struct GInterfaceStatus;
@@ -706,6 +707,20 @@ bool32_t __fastcall OnFire__8VillagerFv(struct Villager* this) asm("?OnFire@Vill
 bool32_t __fastcall FinishBeingOnFire__8VillagerFv(struct Villager* this) asm("?FinishBeingOnFire@Villager@@QAEIXZ");
 // win1.41 0075b4c0 mac 1057a800 Villager::FishermanLookForWater(void)
 bool32_t __fastcall FishermanLookForWater__8VillagerFv(struct Villager* this) asm("?FishermanLookForWater@Villager@@QAEIXZ");
+// win1.41 0075b510 mac 1057a710 Villager::VillagerBecomesFisherman(void)
+bool32_t __fastcall VillagerBecomesFisherman__8VillagerFv(struct Villager* this) asm("?VillagerBecomesFisherman@Villager@@QAEIXZ");
+// win1.41 0075b560 mac 1057a5b0 Villager::VillagerBecomesFisherman(FishFarm *)
+bool32_t __fastcall VillagerBecomesFisherman__8VillagerFP8FishFarm(struct Villager* this, const void* edx, struct FishFarm* param_1) asm("?VillagerBecomesFisherman@Villager@@QAEIPAVFishFarm@@@Z");
+// win1.41 0075b5d0 mac 1057a410 Villager::FishermanArrivesAtFishing(void)
+bool32_t __fastcall FishermanArrivesAtFishing__8VillagerFv(struct Villager* this) asm("?FishermanArrivesAtFishing@Villager@@QAEIXZ");
+// win1.41 0075b670 mac 1057a390 Villager::IsAtValidFishingPos(void)
+bool32_t __fastcall IsAtValidFishingPos__8VillagerFv(struct Villager* this) asm("?IsAtValidFishingPos@Villager@@QAEIXZ");
+// win1.41 0075b6a0 mac 1001b120 Villager::Fishing(void)
+bool32_t __fastcall Fishing__8VillagerFv(struct Villager* this) asm("?Fishing@Villager@@QAEIXZ");
+// win1.41 0075b820 mac 1057a240 Villager::EnterFishing(unsigned char, unsigned char)
+bool32_t __fastcall EnterFishing__8VillagerFUcUc(struct Villager* this, const void* edx, unsigned char param_1, unsigned char param_2) asm("?EnterFishing@Villager@@QAEIEE@Z");
+// win1.41 0075b880 mac 1009acc0 Villager::ExitFishing(unsigned char)
+bool32_t __fastcall ExitFishing__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitFishing@Villager@@QAEIE@Z");
 // win1.41 0075b940 mac 1057b620 Villager::ShowPoisoned(void)
 bool32_t __fastcall ShowPoisoned__8VillagerFv(struct Villager* this) asm("?ShowPoisoned@Villager@@QAE_NXZ");
 // win1.41 0075b990 mac 1000a640 Villager::ChangeStateToFindFoodToEat(void)
