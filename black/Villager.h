@@ -86,7 +86,7 @@ static_assert(sizeof(struct Glocation) == 0x1, "Data type is of wrong size");
 DECLARE_LH_ORDERED_LINKED_LIST(Glocation);
 
 // win1.41 0075a310 mac inlined LHOrderedLinkedList<Glocation>::Remove(Glocation *)
-void __fastcall Remove__31LHOrderedLinkedList_9Glocation_Fv(struct LHOrderedLinkedList__Glocation* this, const void* edx, struct Glocation* param_1) asm("Remove__31LHOrderedLinkedList_9Glocation_Fv");
+void __fastcall Remove__31LHOrderedLinkedList_9Glocation_Fv(struct LHOrderedLinkedList__Glocation* this, const void* edx, struct Glocation* param_1);
 
 struct SortedObject
 {

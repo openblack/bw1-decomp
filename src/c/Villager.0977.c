@@ -11770,7 +11770,7 @@ bool32_t __fastcall CheckSatisfyFoodDesire__8VillagerFv(struct Villager* this)
     asm("mov                edx, dword ptr [eax]");                          // 0x0075a0a3    8b10
     asm("push               edx");                                           // 0x0075a0a5    52
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x0075a0a6    8d4c241c
-    asm("call               Remove__31LHOrderedLinkedList_9Glocation_Fv");   // 0x0075a0aa    e861020000
+    asm("call               @Remove__31LHOrderedLinkedList_9Glocation_Fv@12");   // 0x0075a0aa    e861020000
     asm("{disp8} mov        eax, dword ptr [esp + 0x18]");                   // 0x0075a0af    8b442418
     asm("test               eax, eax");                                      // 0x0075a0b3    85c0
     asm("{disp8} jne        _jmp_addr_0x0075a0a3");                          // 0x0075a0b5    75ec
@@ -11856,7 +11856,7 @@ bool32_t __fastcall CheckSatisfyFoodDesire__8VillagerFv(struct Villager* this)
     asm("mov                edx, dword ptr [eax]");                          // 0x0075a167    8b10
     asm("push               edx");                                           // 0x0075a169    52
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x0075a16a    8d4c241c
-    asm("call               Remove__31LHOrderedLinkedList_9Glocation_Fv");   // 0x0075a16e    e89d010000
+    asm("call               @Remove__31LHOrderedLinkedList_9Glocation_Fv@12");   // 0x0075a16e    e89d010000
     asm("{disp8} mov        eax, dword ptr [esp + 0x18]");                   // 0x0075a173    8b442418
     asm("test               eax, eax");                                      // 0x0075a177    85c0
     asm("{disp8} jne        _jmp_addr_0x0075a167");                          // 0x0075a179    75ec
