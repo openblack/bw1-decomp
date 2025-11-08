@@ -266,7 +266,7 @@
 .extern ?SetupBuildingObject@Villager@@QAEIPAVBuildingSite@@@Z
 .extern ?SetupBuildingObject@Villager@@QAEIPAVMultiMapFixed@@@Z
 .extern ?GetAmountOfFoodRequiredForMeal@Villager@@QAEIXZ
-.extern _jmp_addr_0x0075bf20
+.extern ?EatFoodHeld@Villager@@QAEIXZ
 .extern ?CheckNeededForSomething@Villager@@QAE_NXZ
 .extern ?GoHome@Villager@@QAE_NXZ
 .extern ?GetTentPos@Villager@@QAEPAVTown@@AAUMapCoords@@@Z
@@ -8625,7 +8625,7 @@ _jmp_addr_0x0076ca19:    pop                edi                                 
                          mov.s              ecx, esi                                        // 0x0076ca7f    8bce
                          call               ?GetResourceFrom@Villager@@QAEIPAVObject@@W4RESOURCE_TYPE@@F@Z                            // 0x0076ca81    e80a69feff
 _jmp_addr_0x0076ca86:    mov.s              ecx, esi                                        // 0x0076ca86    8bce
-                         call               _jmp_addr_0x0075bf20                            // 0x0076ca88    e893f4feff
+                         call               ?EatFoodHeld@Villager@@QAEIXZ                   // 0x0076ca88    e893f4feff
                          fstp               st(0)                                           // 0x0076ca8d    ddd8
                          push               0x1                                             // 0x0076ca8f    6a01
                          push               0x41                                            // 0x0076ca91    6a41

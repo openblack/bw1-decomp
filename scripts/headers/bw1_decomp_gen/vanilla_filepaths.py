@@ -1491,6 +1491,7 @@ ROOMMATE_CLASS_MAP = {
     "ClearAreaPoint": "Villager",
     "Glocation": "Villager",
     "GetViaPoint__FRC9MapCoordsRC9MapCoordsRC9MapCoordsfR9MapCoordsfPbPbf": "Villager",
+    "POWER_f___FfUl": "Villager",
     "CPController": "Citadel",
     "hypotenuse__Fll": "LHMath",
     "LHArcTan__Fll": "LHMath",
