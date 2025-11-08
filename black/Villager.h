@@ -725,6 +725,10 @@ bool32_t __fastcall ExitFishing__8VillagerFUc(struct Villager* this, const void*
 bool32_t __fastcall ShowPoisoned__8VillagerFv(struct Villager* this) asm("?ShowPoisoned@Villager@@QAE_NXZ");
 // win1.41 0075b990 mac 1000a640 Villager::ChangeStateToFindFoodToEat(void)
 bool32_t __fastcall ChangeStateToFindFoodToEat__8VillagerFv(struct Villager* this) asm("?ChangeStateToFindFoodToEat@Villager@@QAE_NXZ");
+// win1.41 0075baf0 mac 1057b4f0 Villager::CheckHungryAtHome(void)
+bool32_t __fastcall CheckHungryAtHome__8VillagerFv(struct Villager* this) asm("?CheckHungryAtHome@Villager@@QAEIXZ");
+// win1.41 0075bb00 mac 1057b400 Villager::GetDesireToPickupFood(void)
+bool32_t __fastcall GetDesireToPickupFood__8VillagerFv(struct Villager* this) asm("?GetDesireToPickupFood@Villager@@QAEIXZ");
 // win1.41 0075bb50 mac 10087950 Villager::GetDesireForFood(void)
 float __fastcall GetDesireForFood__8VillagerFv(struct Villager* this) asm("?GetDesireForFood@Villager@@QAEMXZ");
 // win1.41 0075bba0 mac 100214f0 Villager::GetDesireForLife(void)
@@ -737,6 +741,18 @@ uint32_t __fastcall GetAmountOfFoodRequiredForMeal__8VillagerFv(struct Villager*
 uint32_t __fastcall GetAmountOfFoodToEat__8VillagerFv(struct Villager* this) asm("?GetAmountOfFoodToEat@Villager@@QAEIXZ");
 // win1.41 0075bcc0 mac 100577f0 Villager::CheckHungry(void)
 bool32_t __fastcall CheckHungry__8VillagerFv(struct Villager* this) asm("?CheckHungry@Villager@@QAE_NXZ");
+// win1.41 0075bf00 mac 10096d50 Villager::CheckSatisfyOwnFoodDesire(void)
+bool32_t __fastcall CheckSatisfyOwnFoodDesire__8VillagerFv(struct Villager* this) asm("?CheckSatisfyOwnFoodDesire@Villager@@QAEIXZ");
+// win1.41 0075bf20 mac 1057ab30 Villager::EatFoodHeld(void)
+bool32_t __fastcall EatFoodHeld__8VillagerFv(struct Villager* this) asm("?EatFoodHeld@Villager@@QAEIXZ");
+// win1.41 0075c000 mac 1057aaa0 Villager::EatFood(void)
+bool32_t __fastcall EatFood__8VillagerFv(struct Villager* this) asm("?EatFood@Villager@@QAEIXZ");
+// win1.41 0075c040 mac 1057a9c0 Villager::GetFoodFromHome(unsigned long)
+bool32_t __fastcall GetFoodFromHome__8VillagerFUl(struct Villager* this, const void* edx, unsigned long param_1) asm("?GetFoodFromHome@Villager@@QAEIK@Z");
+// win1.41 0075c090 mac 1057a900 Villager::EatFoodAtHome(void)
+bool32_t __fastcall EatFoodAtHome__8VillagerFv(struct Villager* this) asm("?EatFoodAtHome@Villager@@QAEIXZ");
+// win1.41 0075c0f0 mac 1057a8c0 Villager::HomelessEatDinner(void)
+bool32_t __fastcall HomelessEatDinner__8VillagerFv(struct Villager* this) asm("?HomelessEatDinner@Villager@@QAEIXZ");
 // win1.41 0075f4a0 mac 10586060 Villager::CheckSatisfyWoodDesire(void)
 bool32_t __fastcall CheckSatisfyWoodDesire__8VillagerFv(struct Villager* this) asm("?CheckSatisfyWoodDesire@Villager@@QAEIXZ");
 // win1.41 0075f510 mac 10585d60 Villager::DecideHowToGetWood(int, BigForest * *, Forest * *)
@@ -1377,5 +1393,7 @@ struct Villager* __fastcall ChildBorn__FR8Villager(struct Villager* this) asm("?
 void __cdecl GetNextDstPromemade__FP6CrecheRlP9MapCoordsRC9MapCoords(struct Creche* param_1, long* param_2, struct MapCoords* param_3, const struct MapCoords* param_4) asm("?GetNextDstPromemade@@YAXPAVCreche@@AAJPAUMapCoords@@ABU2@@Z");
 // win1.41 0075a440 mac 10579b40 GetViaPoint(MapCoords const &, MapCoords const &, MapCoords const &, float, MapCoords &, float, bool *, bool *, float)
 float __stdcall GetViaPoint__FRC9MapCoordsRC9MapCoordsRC9MapCoordsfR9MapCoordsfPbPbf(const struct MapCoords* param_1, const struct MapCoords* param_2, const struct MapCoords* param_3, float param_4, struct MapCoords* param_5, float param_6, bool* param_7, bool* param_8, float param_9) asm("?GetViaPoint@@YGMABUMapCoords@@00MAAU1@MPA_N2M@Z");
+// win1.41 0075bb60 mac 10066f70 POWER<float>(float, ulong)
+float __cdecl POWER_f___FfUl(float param_0, uint32_t param_1) asm("??$POWER@M@@YAMMK@Z");
 
 #endif /* BW1_DECOMP_VILLAGER_INCLUDED_H */

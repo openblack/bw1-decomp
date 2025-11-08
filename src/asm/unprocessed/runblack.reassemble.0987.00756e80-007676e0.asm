@@ -375,11 +375,17 @@
 .globl _globl_ct_0x007675b0
 .globl _globl_ct_0x007675e0
 .globl _globl_ct_0x00767610
-.globl _jmp_addr_0x0075bf20
+.globl ?EatFoodHeld@Villager@@QAEIXZ
 .globl _jmp_addr_0x0075d130
 .globl _jmp_addr_0x0075f930
 .globl _jmp_addr_0x0075fd00
 .globl _AddDrawing__12VillagerNameFv
+.globl ?CheckHungryAtHome@Villager@@QAEIXZ
+.globl ?GetDesireToPickupFood@Villager@@QAEIXZ
+.globl ?ChangeStateToFindFoodToEat@Villager@@QAE_NXZ
+.globl ?EatFood@Villager@@QAEIXZ
+.globl ?EatFoodAtHome@Villager@@QAEIXZ
+.globl ?HomelessEatDinner@Villager@@QAEIXZ
 
 ?ShowPoisoned@Villager@@QAE_NXZ:
                          sub                esp, 0x0c                                     // 0x0075b940    83ec0c
@@ -555,6 +561,7 @@ _jmp_addr_0x0075bad1:    pop                edi                                 
                          {disp32} fsubr     qword ptr [__real@8@3fff8000000000000000]   // 0x0075bae8    dc2d80b68a00
                          ret                                                              // 0x0075baee    c3
                          nop                                                              // 0x0075baef    90
+?CheckHungryAtHome@Villager@@QAEIXZ:
                          mov                eax, 0x00000001                               // 0x0075baf0    b801000000
                          ret                                                              // 0x0075baf5    c3
                          nop                                                              // 0x0075baf6    90
@@ -567,6 +574,7 @@ _jmp_addr_0x0075bad1:    pop                edi                                 
                          nop                                                              // 0x0075bafd    90
                          nop                                                              // 0x0075bafe    90
                          nop                                                              // 0x0075baff    90
+?GetDesireToPickupFood@Villager@@QAEIXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x0075bb00    8b4128
                          {disp32} mov       cx, word ptr [ecx + 0x000000f4]               // 0x0075bb03    668b89f4000000
                          sub                esp, 0x08                                     // 0x0075bb0a    83ec08
@@ -593,12 +601,13 @@ _jmp_addr_0x0075bb41:    {disp32} fld       dword ptr [_rdata_float0p0]         
 ?GetDesireForFood@Villager@@QAEMXZ:
                                      {disp32} mov       eax, dword ptr [ecx + 0x000000e8]             // 0x0075bb50    8b81e8000000
                          push               eax                                           // 0x0075bb56    50
-                         call               _jmp_addr_0x0075bb60                          // 0x0075bb57    e804000000
+                         call               ??$POWER@M@@YAMMK@Z                           // 0x0075bb57    e804000000
                          ret                                                              // 0x0075bb5c    c3
                          nop                                                              // 0x0075bb5d    90
                          nop                                                              // 0x0075bb5e    90
                          nop                                                              // 0x0075bb5f    90
-_jmp_addr_0x0075bb60:    {disp8} fld        dword ptr [esp + 0x04]                        // 0x0075bb60    d9442404
+??$POWER@M@@YAMMK@Z:
+                         {disp8} fld        dword ptr [esp + 0x04]                        // 0x0075bb60    d9442404
                          {disp32} fcomp     dword ptr [_rdata_float1p0]                   // 0x0075bb64    d81d90a38a00
                          fnstsw             ax                                            // 0x0075bb6a    dfe0
                          test               ah, 0x01                                      // 0x0075bb6c    f6c401
@@ -920,7 +929,8 @@ _jmp_addr_0x0075beef:    pop                esi                                 
                          nop                                                              // 0x0075befd    90
                          nop                                                              // 0x0075befe    90
                          nop                                                              // 0x0075beff    90
-_jmp_addr_0x0075bf00:    push               esi                                           // 0x0075bf00    56
+?CheckSatisfyOwnFoodDesire@Villager@@QAEIXZ:
+                         push               esi                                           // 0x0075bf00    56
                          mov.s              esi, ecx                                      // 0x0075bf01    8bf1
                          call               ?IsHungry@Villager@@QAE_NXZ                   // 0x0075bf03    e8f866ffff
                          test               eax, eax                                      // 0x0075bf08    85c0
@@ -939,7 +949,8 @@ _jmp_addr_0x0075bf15:    xor.s              eax, eax                            
                          nop                                                              // 0x0075bf1d    90
                          nop                                                              // 0x0075bf1e    90
                          nop                                                              // 0x0075bf1f    90
-_jmp_addr_0x0075bf20:    sub                esp, 0x0c                                     // 0x0075bf20    83ec0c
+?EatFoodHeld@Villager@@QAEIXZ:
+                         sub                esp, 0x0c                                     // 0x0075bf20    83ec0c
                          push               esi                                           // 0x0075bf23    56
                          mov.s              esi, ecx                                      // 0x0075bf24    8bf1
                          call               ?GetAmountOfFoodToEat@Villager@@QAEIXZ        // 0x0075bf26    e8f5fcffff
@@ -1007,9 +1018,10 @@ _jmp_addr_0x0075bfee:    {disp32} fld       dword ptr [esi + 0x000000e8]        
                          nop                                                              // 0x0075bffd    90
                          nop                                                              // 0x0075bffe    90
                          nop                                                              // 0x0075bfff    90
+?EatFood@Villager@@QAEIXZ:
                          push               esi                                           // 0x0075c000    56
                          mov.s              esi, ecx                                      // 0x0075c001    8bf1
-                         call               _jmp_addr_0x0075bf20                          // 0x0075c003    e818ffffff
+                         call               ?EatFoodHeld@Villager@@QAEIXZ                 // 0x0075c003    e818ffffff
                          fstp               st(0)                                         // 0x0075c008    ddd8
                          mov                eax, dword ptr [esi]                          // 0x0075c00a    8b06
                          mov.s              ecx, esi                                      // 0x0075c00c    8bce
@@ -1040,7 +1052,8 @@ _jmp_addr_0x0075bfee:    {disp32} fld       dword ptr [esi + 0x000000e8]        
                          nop                                                              // 0x0075c03d    90
                          nop                                                              // 0x0075c03e    90
                          nop                                                              // 0x0075c03f    90
-_jmp_addr_0x0075c040:    push               esi                                           // 0x0075c040    56
+?GetFoodFromHome@Villager@@QAEIK@Z:
+                         push               esi                                           // 0x0075c040    56
                          push               edi                                           // 0x0075c041    57
                          mov.s              edi, ecx                                      // 0x0075c042    8bf9
                          call               ?GetAbode@Villager@@QAEPAVAbode@@XZ           // 0x0075c044    e81761ffff
@@ -1077,6 +1090,7 @@ _jmp_addr_0x0075c084:    pop                edi                                 
                          nop                                                              // 0x0075c08d    90
                          nop                                                              // 0x0075c08e    90
                          nop                                                              // 0x0075c08f    90
+?EatFoodAtHome@Villager@@QAEIXZ:
                          push               esi                                           // 0x0075c090    56
                          mov.s              esi, ecx                                      // 0x0075c091    8bf1
                          push               edi                                           // 0x0075c093    57
@@ -1088,9 +1102,9 @@ _jmp_addr_0x0075c084:    pop                edi                                 
                          {disp8} jle        _jmp_addr_0x0075c0b1                          // 0x0075c0a7    7e08
                          push               eax                                           // 0x0075c0a9    50
                          mov.s              ecx, esi                                      // 0x0075c0aa    8bce
-                         call               _jmp_addr_0x0075c040                          // 0x0075c0ac    e88fffffff
+                         call               ?GetFoodFromHome@Villager@@QAEIK@Z            // 0x0075c0ac    e88fffffff
 _jmp_addr_0x0075c0b1:    mov.s              ecx, esi                                      // 0x0075c0b1    8bce
-                         call               _jmp_addr_0x0075bf20                          // 0x0075c0b3    e868feffff
+                         call               ?EatFoodHeld@Villager@@QAEIXZ                 // 0x0075c0b3    e868feffff
                          fstp               st(0)                                         // 0x0075c0b8    ddd8
                          mov                edx, dword ptr [esi]                          // 0x0075c0ba    8b16
                          mov.s              ecx, esi                                      // 0x0075c0bc    8bce
@@ -1120,6 +1134,7 @@ _jmp_addr_0x0075c0b1:    mov.s              ecx, esi                            
                          nop                                                              // 0x0075c0ed    90
                          nop                                                              // 0x0075c0ee    90
                          nop                                                              // 0x0075c0ef    90
+?HomelessEatDinner@Villager@@QAEIXZ:
                          mov                eax, 0x00000001                               // 0x0075c0f0    b801000000
                          ret                                                              // 0x0075c0f5    c3
                          nop                                                              // 0x0075c0f6    90
@@ -6667,7 +6682,7 @@ _jmp_addr_0x0076002d:    {disp8} mov        eax, dword ptr [esi + 0x28]         
                          test               ah, 0x41                                      // 0x0076008b    f6c441
                          {disp8} jne        _jmp_addr_0x007600c2                          // 0x0076008e    7532
                          mov.s              ecx, esi                                      // 0x00760090    8bce
-                         call               _jmp_addr_0x0075bf00                          // 0x00760092    e869beffff
+                         call               ?CheckSatisfyOwnFoodDesire@Villager@@QAEIXZ   // 0x00760092    e869beffff
                          test               eax, eax                                      // 0x00760097    85c0
                          {disp8} je         _jmp_addr_0x007600a5                          // 0x00760099    740a
                          mov                eax, 0x00000001                               // 0x0076009b    b801000000
@@ -6703,7 +6718,7 @@ _jmp_addr_0x007600e8:    {disp8} fld        dword ptr [esp + 0x04]              
                          test               ah, 0x41                                      // 0x007600f4    f6c441
                          {disp8} jne        _jmp_addr_0x00760105                          // 0x007600f7    750c
                          mov.s              ecx, esi                                      // 0x007600f9    8bce
-                         call               _jmp_addr_0x0075bf00                          // 0x007600fb    e800beffff
+                         call               ?CheckSatisfyOwnFoodDesire@Villager@@QAEIXZ   // 0x007600fb    e800beffff
                          pop                esi                                           // 0x00760100    5e
                          pop                ecx                                           // 0x00760101    59
                          ret                0x0004                                        // 0x00760102    c20400
@@ -6757,7 +6772,7 @@ _jmp_addr_0x0076013f:    xor.s              eax, eax                            
                          {disp8} fstp       dword ptr [esp + 0x08]                        // 0x00760182    d95c2408
                          push               eax                                           // 0x00760186    50
                          mov.s              ecx, esi                                      // 0x00760187    8bce
-                         call               _jmp_addr_0x0075bb60                          // 0x00760189    e8d2b9ffff
+                         call               ??$POWER@M@@YAMMK@Z                           // 0x00760189    e8d2b9ffff
                          {disp8} fcomp      dword ptr [esp + 0x08]                        // 0x0076018e    d85c2408
                          fnstsw             ax                                            // 0x00760192    dfe0
                          test               ah, 0x01                                      // 0x00760194    f6c401
@@ -6780,7 +6795,7 @@ _jmp_addr_0x007601b5:    {disp8} mov        edi, dword ptr [esi + 0x28]         
                          push               ecx                                           // 0x007601cc    51
                          {disp8} fstp       dword ptr [esp + 0x0c]                        // 0x007601cd    d95c240c
                          mov.s              ecx, esi                                      // 0x007601d1    8bce
-                         call               _jmp_addr_0x0075bb60                          // 0x007601d3    e888b9ffff
+                         call               ??$POWER@M@@YAMMK@Z                           // 0x007601d3    e888b9ffff
                          {disp8} fcomp      dword ptr [esp + 0x08]                        // 0x007601d8    d85c2408
                          fnstsw             ax                                            // 0x007601dc    dfe0
                          test               ah, 0x01                                      // 0x007601de    f6c401
@@ -6794,7 +6809,7 @@ _jmp_addr_0x007601b5:    {disp8} mov        edi, dword ptr [esi + 0x28]         
 _jmp_addr_0x007601f6:    {disp32} mov       eax, dword ptr [eax + 0x000002c0]             // 0x007601f6    8b80c0020000
                          push               eax                                           // 0x007601fc    50
 _jmp_addr_0x007601fd:    mov.s              ecx, esi                                      // 0x007601fd    8bce
-                         call               _jmp_addr_0x0075bb60                          // 0x007601ff    e85cb9ffff
+                         call               ??$POWER@M@@YAMMK@Z                           // 0x007601ff    e85cb9ffff
 _jmp_addr_0x00760204:    {disp32} fmul      dword ptr [rdata_bytes + 0x1c844]             // 0x00760204    d80d44588c00
                          push               ecx                                           // 0x0076020a    51
                          mov.s              ecx, esi                                      // 0x0076020b    8bce
@@ -9778,7 +9793,7 @@ _jmp_addr_0x00761f87:    mov                edx, dword ptr [esi]                
                          dec                word ptr [esi + 0x58]                         // 0x00761fc3    66ff4e58
                          cmp                word ptr [esi + 0x58], 0x00                   // 0x00761fc7    66837e5800
                          {disp8} jne        _jmp_addr_0x00761fe1                          // 0x00761fcc    7513
-                         call               _jmp_addr_0x0075bf20                          // 0x00761fce    e84d9fffff
+                         call               ?EatFoodHeld@Villager@@QAEIXZ                 // 0x00761fce    e84d9fffff
                          fstp               st(0)                                         // 0x00761fd3    ddd8
                          mov                eax, dword ptr [esi]                          // 0x00761fd5    8b06
                          push               0x24                                          // 0x00761fd7    6a24
