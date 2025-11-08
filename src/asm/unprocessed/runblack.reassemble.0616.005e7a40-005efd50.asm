@@ -286,6 +286,7 @@
 .globl ?IsMovingForAnimation@PuzzleHorse@@UAE_NXZ
 .globl ?Save@DataForScriptRemind@@UAEIAAVGameOSFile@@@Z
 .globl ?Load@DataForScriptRemind@@UAEIAAVGameOSFile@@@Z
+.globl ?InvalidState@Living@@QAEIXZ
 
 start_0x005e7a40_0x005efd50:
 // Snippet: asm, [0x005e7a40, 0x005efd0d)
@@ -6544,6 +6545,7 @@ _jmp_addr_0x005ec1be:    pop                edi                                 
                          pop                ebp                                           // 0x005ec1c6    5d
                          ret                0x0004                                        // 0x005ec1c7    c20400
                          call               dword ptr [__imp__BinkOpenDirectSound@4]      // 0x005ec1ca    ff154c998a00
+?InvalidState@Living@@QAEIXZ:
                          xor.s              eax, eax                                      // 0x005ec1d0    33c0
                          ret                                                              // 0x005ec1d2    c3
                          nop                                                              // 0x005ec1d3    90

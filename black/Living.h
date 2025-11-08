@@ -397,7 +397,7 @@ uint32_t __fastcall StateInspectObjectReaction__6LivingFv(struct Living* this) a
 // win1.41 005ec030 mac 103834b0 Living::SetToZero(void)
 void __fastcall SetToZero__6LivingFv(struct Living* this) asm("?SetToZero@Living@@QAEXXZ");
 // win1.41 005ec1d0 mac 103831d0 Living::InvalidState(void)
-int __fastcall InvalidState__6LivingFv(struct Living* this) asm("?InvalidState@Living@@QAEHXZ");
+bool32_t __fastcall InvalidState__6LivingFv(struct Living* this) asm("?InvalidState@Living@@QAEIXZ");
 // win1.41 005ec270 mac 1004cf70 Living::MoveToPos(void)
 int __fastcall MoveToPos__6LivingFv(struct Living* this) asm("?MoveToPos@Living@@QAEHXZ");
 // win1.41 005ec2c0 mac 10382da0 Living::MoveToObject(void)

@@ -1493,6 +1493,7 @@ ROOMMATE_CLASS_MAP = {
     "ChildBorn__FR8Villager": "Villager",
     "ClearAreaPoint": "Villager",
     "Glocation": "Villager",
+    "GetViaPoint__FRC9MapCoordsRC9MapCoordsRC9MapCoordsfR9MapCoordsfPbPbf": "Villager",
     "CPController": "Citadel",
     "hypotenuse__Fll": "LHMath",
     "LHArcTan__Fll": "LHMath",

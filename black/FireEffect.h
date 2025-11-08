@@ -62,6 +62,8 @@ struct FireEffect* __fastcall __ct__10FireEffectFv(struct FireEffect* this) asm(
 
 // win1.41 00730ad0 mac 1014c5c0 FireEffect::CreateSprites(void)
 struct FireGraphic* __fastcall CreateSprites__10FireEffectFv(struct FireEffect* this) asm("?CreateSprites@FireEffect@@QAEPAVFireGraphic@@XZ");
+// win1.41 00732ae0 mac 10149240 FireEffect::GetFirstCaused(void)
+uint32_t __fastcall GetFirstCaused__10FireEffectFv(struct FireEffect* this) asm("?GetFirstCaused@FireEffect@@QAEIXZ");
 
 // Override methods
 
