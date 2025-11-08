@@ -7568,7 +7568,7 @@ bool32_t __fastcall CheckInteractWithFishFarm__8VillagerFv(struct Villager* this
     asm("{disp8} jne        _jmp_addr_0x00757682");                          // 0x00757646    753a
     asm("push               edi");                                           // 0x00757648    57
     asm("mov.s              ecx, esi");                                      // 0x00757649    8bce
-    asm("call               _jmp_addr_0x0075b560");                          // 0x0075764b    e8103f0000
+    asm("call               ?VillagerBecomesFisherman@Villager@@QAEIPAVFishFarm@@@Z");                          // 0x0075764b    e8103f0000
     asm("cmp                eax, 0x01");                                     // 0x00757650    83f801
     asm("{disp8} jne        _jmp_addr_0x00757682");                          // 0x00757653    752d
     asm("mov                eax, dword ptr [esi]");                          // 0x00757655    8b06
@@ -11871,7 +11871,7 @@ bool32_t __fastcall CheckSatisfyFoodDesire__8VillagerFv(struct Villager* this)
     asm("_jmp_addr_0x0075a188:");
     asm("push               eax");                                           // 0x0075a188    50
     asm("mov.s              ecx, ebx");                                      // 0x0075a189    8bcb
-    asm("call               _jmp_addr_0x0075b560");                          // 0x0075a18b    e8d0130000
+    asm("call               ?VillagerBecomesFisherman@Villager@@QAEIPAVFishFarm@@@Z");                          // 0x0075a18b    e8d0130000
     asm("cmp                eax, 0x01");                                     // 0x0075a190    83f801
     asm("{disp8} jne        _jmp_addr_0x0075a1f0");                          // 0x0075a193    755b
     asm("{disp8} mov        ecx, dword ptr [esp + 0x18]");                   // 0x0075a195    8b4c2418
