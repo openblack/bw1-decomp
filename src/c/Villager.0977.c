@@ -22869,3 +22869,73 @@ bool32_t __fastcall GoHomeFromWorship__8VillagerFv(struct Villager* this)
     asm("ret");                                                              // 0x00761b7f    c3
     __builtin_unreachable();
 }
+
+// Probably C:\\dev\\MP\\Black\\VillagerHousewife.cpp as per GameRand
+
+void __cdecl globl_ct_0x00761b80(void)
+{
+    asm("{disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]");          // 0x00761b80    8a0d34c9fa00
+    asm("mov                al, 0x01");                                      // 0x00761b86    b001
+    asm("test               al, cl");                                        // 0x00761b88    84c8
+    asm("{disp8} jne        _jmp_addr_0x00761b94");                          // 0x00761b8a    7508
+    asm("or.s               cl, al");                                        // 0x00761b8c    0ac8
+    asm("{disp32} mov       byte ptr [data_bytes + 0x5e6934], cl");          // 0x00761b8e    880d34c9fa00
+    asm("_jmp_addr_0x00761b94:");
+    asm("{disp32} jmp       _crt_global_destruction_register_0x00761ba0");   // 0x00761b94    e907000000
+    __builtin_unreachable();
+}
+
+void __cdecl crt_global_destruction_register_0x00761ba0(void)
+{
+    asm("push               0x00407870");                                    // 0x00761ba0    6870784000
+    asm("call               _atexit");                                       // 0x00761ba5    e8e73b0600
+    asm("pop                ecx");                                           // 0x00761baa    59
+    asm("ret");                                                              // 0x00761bab    c3
+    __builtin_unreachable();
+}
+
+void __cdecl FUN_00761bb0__8VillagerFv(void)
+{
+    asm("mov                eax, dword ptr [ecx]");                          // 0x00761bb0    8b01
+    asm("jmp                dword ptr [eax + 0x460]");                       // 0x00761bb2    ffa060040000
+    asm("int3");                                                             // 0x00761bb8    cc
+    asm("int3");                                                             // 0x00761bb9    cc
+    asm("int3");                                                             // 0x00761bba    cc
+    asm("int3");                                                             // 0x00761bbb    cc
+    asm("int3");                                                             // 0x00761bbc    cc
+    asm("int3");                                                             // 0x00761bbd    cc
+    asm("int3");                                                             // 0x00761bbe    cc
+    asm("int3");                                                             // 0x00761bbf    cc
+    __builtin_unreachable();
+}
+
+void __cdecl FUN_00761bc0__8VillagerFv(void)
+{
+    asm("mov                eax, dword ptr [ecx]");                          // 0x00761bc0    8b01
+    asm("jmp                dword ptr [eax + 0x338]");                       // 0x00761bc2    ffa038030000
+    asm("int3");                                                             // 0x00761bc8    cc
+    asm("int3");                                                             // 0x00761bc9    cc
+    asm("int3");                                                             // 0x00761bca    cc
+    asm("int3");                                                             // 0x00761bcb    cc
+    asm("int3");                                                             // 0x00761bcc    cc
+    asm("int3");                                                             // 0x00761bcd    cc
+    asm("int3");                                                             // 0x00761bce    cc
+    asm("int3");                                                             // 0x00761bcf    cc
+    __builtin_unreachable();
+
+}
+
+void __cdecl globl_ct_0x00761bd0(void)
+{
+    asm("{disp32} jmp       _FUN_00761be0__8VillagerFv");                    // 0x00761bd0    e90b000000
+    __builtin_unreachable();
+}
+
+void __cdecl FUN_00761be0__8VillagerFv(void)
+{
+    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf19a8]");             // 0x00761be0    d905a8a99900
+    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf19a4]");             // 0x00761be6    d80da4a99900
+    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3e1c]");             // 0x00761bec    d91d1c9edb00
+    asm("ret");                                                              // 0x00761bf2    c3
+    __builtin_unreachable();
+}
