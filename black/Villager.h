@@ -753,6 +753,138 @@ bool32_t __fastcall GetFoodFromHome__8VillagerFUl(struct Villager* this, const v
 bool32_t __fastcall EatFoodAtHome__8VillagerFv(struct Villager* this) asm("?EatFoodAtHome@Villager@@QAEIXZ");
 // win1.41 0075c0f0 mac 1057a8c0 Villager::HomelessEatDinner(void)
 bool32_t __fastcall HomelessEatDinner__8VillagerFv(struct Villager* this) asm("?HomelessEatDinner@Villager@@QAEIXZ");
+// win1.41 0075d130 mac 10584d00 Villager::AssignFootballSubState(void)
+void __fastcall AssignFootballSubState__8VillagerFv(struct Villager* this) asm("?AssignFootballSubState@Villager@@QAEXXZ");
+// win1.41 0075d170 mac 10583980 Villager::AssignFootballAttackerSubState(void)
+void __fastcall AssignFootballAttackerSubState__8VillagerFv(struct Villager* this) asm("?AssignFootballAttackerSubState@Villager@@QAEXXZ");
+// win1.41 0075d230 mac 10582f50 Villager::FootballAttacker(void)
+bool32_t __fastcall FootballAttacker__8VillagerFv(struct Villager* this) asm("?FootballAttacker@Villager@@QAEIXZ");
+// win1.41 0075d2d0 mac 10582d90 Villager::FootballAttackerShootProcess(Football *)
+void __fastcall FootballAttackerShootProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerShootProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075d3a0 mac 10582b70 Villager::FootballAttackerPassProcess(Football *)
+void __fastcall FootballAttackerPassProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerPassProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075d500 mac 10582920 Villager::FootballAttackerLobNearGoalProcess(Football *)
+void __fastcall FootballAttackerLobNearGoalProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerLobNearGoalProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075d670 mac 10582630 Villager::FootballAttackerDribbleProcess(Football *)
+void __fastcall FootballAttackerDribbleProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerDribbleProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075d850 mac 105823a0 Villager::FootballAttackerMoveToBePassedProcess(Football *)
+void __fastcall FootballAttackerMoveToBePassedProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerMoveToBePassedProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075da90 mac 105821f0 Villager::FootballAttackerGoToBallProcess(Football *)
+void __fastcall FootballAttackerGoToBallProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerGoToBallProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075db80 mac 105820e0 Villager::FootballAttackerGoHomeProcess(Football *)
+void __fastcall FootballAttackerGoHomeProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerGoHomeProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075dbd0 mac 10582010 Villager::FootballAttackerIdleProcess(Football *)
+void __fastcall FootballAttackerIdleProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerIdleProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075dc20 mac 10581dd0 Villager::FootballAttackerShootPriority(Football *)
+float __fastcall FootballAttackerShootPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerShootPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075dd80 mac 10581d30 Villager::FootballAttackerPassPriority(Football *)
+float __fastcall FootballAttackerPassPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerPassPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075ddc0 mac 10581cd0 Villager::FootballAttackerLobNearGoalPriority(Football *)
+float __fastcall FootballAttackerLobNearGoalPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerLobNearGoalPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075ddd0 mac 10581b90 Villager::FootballAttackerDribblePriority(Football *)
+float __fastcall FootballAttackerDribblePriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerDribblePriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075de70 mac 10581aa0 Villager::FootballAttackerMoveToBePassedPriority(Football *)
+float __fastcall FootballAttackerMoveToBePassedPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerMoveToBePassedPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075def0 mac 10581a40 Villager::FootballAttackerGoToBallPriority(Football *)
+float __fastcall FootballAttackerGoToBallPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerGoToBallPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075df00 mac 105818f0 Villager::FootballAttackerGoHomePriority(Football *)
+float __fastcall FootballAttackerGoHomePriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerGoHomePriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075dfb0 mac 10581740 Villager::FootballAttackerIdlePriority(Football *)
+float __fastcall FootballAttackerIdlePriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballAttackerIdlePriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075e0b0 mac 105803c0 Villager::AssignFootballDefenderSubState(void)
+void __fastcall AssignFootballDefenderSubState__8VillagerFv(struct Villager* this) asm("?AssignFootballDefenderSubState@Villager@@QAEXXZ");
+// win1.41 0075e170 mac 1057f990 Villager::FootballDefender(void)
+bool32_t __fastcall FootballDefender__8VillagerFv(struct Villager* this) asm("?FootballDefender@Villager@@QAEIXZ");
+// win1.41 0075e210 mac 1057f760 Villager::FootballDefenderSaveProcess(Football *)
+void __fastcall FootballDefenderSaveProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderSaveProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075e370 mac 1057f6f0 Villager::FootballDefenderClearProcess(Football *)
+void __fastcall FootballDefenderClearProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderClearProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075e380 mac 1057f400 Villager::FootballDefenderDribbleProcess(Football *)
+void __fastcall FootballDefenderDribbleProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderDribbleProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075e560 mac 1057f340 Villager::FootballDefenderMarkProcess(Football *)
+void __fastcall FootballDefenderMarkProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderMarkProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075e5a0 mac 1057f190 Villager::FootballDefenderGoToBallProcess(Football *)
+void __fastcall FootballDefenderGoToBallProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderGoToBallProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075e690 mac 1057f080 Villager::FootballDefenderGoHomeProcess(Football *)
+void __fastcall FootballDefenderGoHomeProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderGoHomeProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075e6e0 mac 1057efb0 Villager::FootballDefenderIdleProcess(Football *)
+void __fastcall FootballDefenderIdleProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderIdleProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075e730 mac 1057ed90 Villager::FootballDefenderPassProcess(Football *)
+void __fastcall FootballDefenderPassProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderPassProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075e890 mac 1057ed10 Villager::FootballDefenderSavePriority(Football *)
+float __fastcall FootballDefenderSavePriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderSavePriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075e8b0 mac 1057ec90 Villager::FootballDefenderClearPriority(Football *)
+float __fastcall FootballDefenderClearPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderClearPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075e8d0 mac 1057eb50 Villager::FootballDefenderDribblePriority(Football *)
+float __fastcall FootballDefenderDribblePriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderDribblePriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075e970 mac 1057eae0 Villager::FootballDefenderMarkPriority(Football *)
+float __fastcall FootballDefenderMarkPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderMarkPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075e990 mac 1057ea80 Villager::FootballDefenderGoToBallPriority(Football *)
+float __fastcall FootballDefenderGoToBallPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderGoToBallPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075e9a0 mac 1057ea10 Villager::FootballDefenderGoHomePriority(Football *)
+float __fastcall FootballDefenderGoHomePriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderGoHomePriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075e9b0 mac 1057e990 Villager::FootballDefenderIdlePriority(Football *)
+float __fastcall FootballDefenderIdlePriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderIdlePriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075e9d0 mac 1057e8f0 Villager::FootballDefenderPassPriority(Football *)
+float __fastcall FootballDefenderPassPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballDefenderPassPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075ea10 mac 1057dfd0 Villager::FootballGoalie(void)
+bool32_t __fastcall FootballGoalie__8VillagerFv(struct Villager* this) asm("?FootballGoalie@Villager@@QAEIXZ");
+// win1.41 0075eab0 mac 1057cde0 Villager::AssignFootballGoalieSubState(void)
+void __fastcall AssignFootballGoalieSubState__8VillagerFv(struct Villager* this) asm("?AssignFootballGoalieSubState@Villager@@QAEXXZ");
+// win1.41 0075eb70 mac 1057cc00 Villager::FootballGoalieSaveProcess(Football *)
+void __fastcall FootballGoalieSaveProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoalieSaveProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075ec50 mac 1057cb90 Villager::FootballGoalieClearProcess(Football *)
+void __fastcall FootballGoalieClearProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoalieClearProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075ec60 mac 1057ca90 Villager::FootballGoalieLookProcess(Football *)
+void __fastcall FootballGoalieLookProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoalieLookProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075ecd0 mac 1057c8e0 Villager::FootballGoalieGoToBallProcess(Football *)
+void __fastcall FootballGoalieGoToBallProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoalieGoToBallProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075edb0 mac 1057c7e0 Villager::FootballGoalieGoHomeProcess(Football *)
+void __fastcall FootballGoalieGoHomeProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoalieGoHomeProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075ee00 mac 1057c770 Villager::FootballGoalieIdleProcess(Football *)
+void __fastcall FootballGoalieIdleProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoalieIdleProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075ee10 mac 1057c4c0 Villager::FootballGoaliePassProcess(Football *)
+void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoaliePassProcess@Villager@@QAEXPAVFootball@@@Z");
+// win1.41 0075efc0 mac 1057c450 Villager::FootballGoalieSavePriority(Football *)
+float __fastcall FootballGoalieSavePriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoalieSavePriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075efe0 mac 1057c3e0 Villager::FootballGoalieClearPriority(Football *)
+float __fastcall FootballGoalieClearPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoalieClearPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075f000 mac 1057c370 Villager::FootballGoalieLookPriority(Football *)
+float __fastcall FootballGoalieLookPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoalieLookPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075f020 mac 1057c310 Villager::FootballGoalieGoToBallPriority(Football *)
+float __fastcall FootballGoalieGoToBallPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoalieGoToBallPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075f030 mac 1057c2a0 Villager::FootballGoalieGoHomePriority(Football *)
+float __fastcall FootballGoalieGoHomePriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoalieGoHomePriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075f040 mac 1057c230 Villager::FootballGoalieIdlePriority(Football *)
+float __fastcall FootballGoalieIdlePriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoalieIdlePriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075f060 mac 1057c190 Villager::FootballGoaliePassPriority(Football *)
+float __fastcall FootballGoaliePassPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballGoaliePassPriority@Villager@@QAEMPAVFootball@@@Z");
+// win1.41 0075f070 mac 1057c0c0 Villager::FootballerIsTouchingBallPrecondition(Football *)
+bool __fastcall FootballerIsTouchingBallPrecondition__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballerIsTouchingBallPrecondition@Villager@@QAE_NPAVFootball@@@Z");
+// win1.41 0075f0a0 mac 1057bff0 Villager::FootballerIsNotTouchingBallPrecondition(Football *)
+bool __fastcall FootballerIsNotTouchingBallPrecondition__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballerIsNotTouchingBallPrecondition@Villager@@QAE_NPAVFootball@@@Z");
+// win1.41 0075f0d0 mac 1057bf50 Villager::FootballerIsNearestBallPrecondition(Football *)
+bool __fastcall FootballerIsNearestBallPrecondition__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballerIsNearestBallPrecondition@Villager@@QAE_NPAVFootball@@@Z");
+// win1.41 0075f100 mac 1057bea0 Villager::FootballerIsNotNearestBallPrecondition(Football *)
+bool __fastcall FootballerIsNotNearestBallPrecondition__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballerIsNotNearestBallPrecondition@Villager@@QAE_NPAVFootball@@@Z");
+// win1.41 0075f130 mac 1057bda0 Villager::FootballerIsAtHomePrecondition(Football *)
+bool32_t __fastcall FootballerIsAtHomePrecondition__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballerIsAtHomePrecondition@Villager@@QAEIPAVFootball@@@Z");
+// win1.41 0075f190 mac 1057bc90 Villager::FootballerIsNotAtHomePrecondition(Football *)
+bool32_t __fastcall FootballerIsNotAtHomePrecondition__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballerIsNotAtHomePrecondition@Villager@@QAEIPAVFootball@@@Z");
+// win1.41 0075f1f0 mac 1057bbe0 Villager::FootballerIsQuiteNearBallPrecondition(Football *)
+bool32_t __fastcall FootballerIsQuiteNearBallPrecondition__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballerIsQuiteNearBallPrecondition@Villager@@QAEIPAVFootball@@@Z");
+// win1.41 0075f230 mac 1057bb30 Villager::FootballerIsNotQuiteNearBallPrecondition(Football *)
+bool32_t __fastcall FootballerIsNotQuiteNearBallPrecondition__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1) asm("?FootballerIsNotQuiteNearBallPrecondition@Villager@@QAEIPAVFootball@@@Z");
+// win1.41 0075f270 mac 1057ba80 Villager::StartMoveToPickUpBallForDeadBall(void)
+bool32_t __fastcall StartMoveToPickUpBallForDeadBall__8VillagerFv(struct Villager* this) asm("?StartMoveToPickUpBallForDeadBall@Villager@@QAEIXZ");
+// win1.41 0075f2c0 mac 1057b9e0 Villager::ArrivedAtPickUpBallForDeadBall(void)
+bool32_t __fastcall ArrivedAtPickUpBallForDeadBall__8VillagerFv(struct Villager* this) asm("?ArrivedAtPickUpBallForDeadBall@Villager@@QAEIXZ");
+// win1.41 0075f2f0 mac 1057b970 Villager::ArrivedAtPutDownBallForDeadBallStart(void)
+bool32_t __fastcall ArrivedAtPutDownBallForDeadBallStart__8VillagerFv(struct Villager* this) asm("?ArrivedAtPutDownBallForDeadBallStart@Villager@@QAEIXZ");
+// win1.41 0075f300 mac 1057b840 Villager::ArrivedAtPutDownBallForDeadBallEnd(void)
+bool32_t __fastcall ArrivedAtPutDownBallForDeadBallEnd__8VillagerFv(struct Villager* this) asm("?ArrivedAtPutDownBallForDeadBallEnd@Villager@@QAEIXZ");
+// win1.41 0075f380 mac 1057b700 Villager::FootballMoveToBall(void)
+bool32_t __fastcall FootballMoveToBall__8VillagerFv(struct Villager* this) asm("?FootballMoveToBall@Villager@@QAEIXZ");
 // win1.41 0075f4a0 mac 10586060 Villager::CheckSatisfyWoodDesire(void)
 bool32_t __fastcall CheckSatisfyWoodDesire__8VillagerFv(struct Villager* this) asm("?CheckSatisfyWoodDesire@Villager@@QAEIXZ");
 // win1.41 0075f510 mac 10585d60 Villager::DecideHowToGetWood(int, BigForest * *, Forest * *)

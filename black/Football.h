@@ -49,6 +49,8 @@ extern const struct AbodeVftable __vt__8Football asm("??_7Football@@6B@");
 
 // win1.41 00531410 mac 102bd040 Football::GetBall(void)
 void* __fastcall GetBall__8FootballFv(struct Football* this) asm("?GetBall@Football@@QAEPAXXZ");
+// win1.41 00532960 mac 102baa80 Football::IsPlayerOnHomeTeam(Villager *)
+bool __fastcall IsPlayerOnHomeTeam__8FootballFP8Villager(struct Football* this, const void* edx, struct Villager* param_1) asm("?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z");
 // win1.41 00532c80 mac 102ba570 Football::GetGoalPosition(unsigned long)
 void __fastcall GetGoalPosition__8FootballFUl(struct Football* this, const void* edx, unsigned long param_1) asm("?GetGoalPosition@Football@@QAEXK@Z");
 

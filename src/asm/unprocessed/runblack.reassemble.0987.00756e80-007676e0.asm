@@ -150,7 +150,7 @@
 .extern _jmp_addr_0x00521a90
 .extern _jmp_addr_0x005325d0
 .extern _jmp_addr_0x005326e0
-.extern _jmp_addr_0x00532960
+.extern ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z
 .extern _jmp_addr_0x00532eb0
 .extern _jmp_addr_0x00532f60
 .extern _jmp_addr_0x005347c0
@@ -358,12 +358,65 @@
 .globl _globl_ct_0x007675b0
 .globl _globl_ct_0x007675e0
 .globl _globl_ct_0x00767610
-.globl _jmp_addr_0x0075d130
+.globl ?AssignFootballSubState@Villager@@QAEXXZ
 .globl _jmp_addr_0x0075f930
 .globl _jmp_addr_0x0075fd00
 .globl _AddDrawing__12VillagerNameFv
+.globl ?FootballAttacker@Villager@@QAEIXZ
+.globl ?FootballAttackerShootProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballAttackerPassProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballAttackerLobNearGoalProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballAttackerDribbleProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballAttackerMoveToBePassedProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballAttackerGoHomeProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballAttackerIdleProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballAttackerShootPriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballAttackerPassPriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballAttackerLobNearGoalPriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballAttackerDribblePriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballAttackerMoveToBePassedPriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballAttackerGoToBallPriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballAttackerIdlePriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballDefender@Villager@@QAEIXZ
+.globl ?FootballDefenderClearProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballDefenderDribbleProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballDefenderMarkProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballDefenderGoHomeProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballDefenderIdleProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballDefenderPassProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballDefenderSavePriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballDefenderClearPriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballDefenderDribblePriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballDefenderMarkPriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballDefenderGoToBallPriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballDefenderIdlePriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballGoalie@Villager@@QAEIXZ
+.globl ?FootballGoalieClearProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballGoalieGoHomeProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballGoalieIdleProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballGoaliePassProcess@Villager@@QAEXPAVFootball@@@Z
+.globl ?FootballGoalieSavePriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballGoalieClearPriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballGoalieLookPriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballGoalieGoToBallPriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballGoalieIdlePriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballGoaliePassPriority@Villager@@QAEMPAVFootball@@@Z
+.globl ?FootballerIsTouchingBallPrecondition@Villager@@QAE_NPAVFootball@@@Z
+.globl ?FootballerIsNotTouchingBallPrecondition@Villager@@QAE_NPAVFootball@@@Z
+.globl ?FootballerIsNearestBallPrecondition@Villager@@QAE_NPAVFootball@@@Z
+.globl ?FootballerIsNotNearestBallPrecondition@Villager@@QAE_NPAVFootball@@@Z
+.globl ?FootballerIsAtHomePrecondition@Villager@@QAEIPAVFootball@@@Z
+.globl ?FootballerIsNotAtHomePrecondition@Villager@@QAEIPAVFootball@@@Z
+.globl ?FootballerIsQuiteNearBallPrecondition@Villager@@QAEIPAVFootball@@@Z
+.globl ?FootballerIsNotQuiteNearBallPrecondition@Villager@@QAEIPAVFootball@@@Z
+.globl ?StartMoveToPickUpBallForDeadBall@Villager@@QAEIXZ
+.globl ?ArrivedAtPickUpBallForDeadBall@Villager@@QAEIXZ
+.globl ?ArrivedAtPutDownBallForDeadBallStart@Villager@@QAEIXZ
+.globl ?ArrivedAtPutDownBallForDeadBallEnd@Villager@@QAEIXZ
+.globl ?FootballMoveToBall@Villager@@QAEIXZ
 
-_jmp_addr_0x0075d130:    push               esi                                           // 0x0075d130    56
+?AssignFootballSubState@Villager@@QAEXXZ:
+                         push               esi                                           // 0x0075d130    56
                          mov.s              esi, ecx                                      // 0x0075d131    8bf1
                          mov                eax, dword ptr [esi]                          // 0x0075d133    8b06
                          call               dword ptr [eax + 0xb04]                       // 0x0075d135    ff90040b0000
@@ -375,15 +428,15 @@ _jmp_addr_0x0075d130:    push               esi                                 
                          dec                eax                                           // 0x0075d148    48
                          {disp8} jne        _jmp_addr_0x0075d164                          // 0x0075d149    7519
                          mov.s              ecx, esi                                      // 0x0075d14b    8bce
-                         call               _jmp_addr_0x0075e0b0                          // 0x0075d14d    e85e0f0000
+                         call               ?AssignFootballDefenderSubState@Villager@@QAEXXZ                          // 0x0075d14d    e85e0f0000
                          pop                esi                                           // 0x0075d152    5e
                          ret                                                              // 0x0075d153    c3
 _jmp_addr_0x0075d154:    mov.s              ecx, esi                                      // 0x0075d154    8bce
-                         call               _jmp_addr_0x0075eab0                          // 0x0075d156    e855190000
+                         call               ?AssignFootballGoalieSubState@Villager@@QAEXXZ// 0x0075d156    e855190000
                          pop                esi                                           // 0x0075d15b    5e
                          ret                                                              // 0x0075d15c    c3
 _jmp_addr_0x0075d15d:    mov.s              ecx, esi                                      // 0x0075d15d    8bce
-                         call               _jmp_addr_0x0075d170                          // 0x0075d15f    e80c000000
+                         call               ?AssignFootballAttackerSubState@Villager@@QAEXXZ                          // 0x0075d15f    e80c000000
 _jmp_addr_0x0075d164:    pop                esi                                           // 0x0075d164    5e
                          ret                                                              // 0x0075d165    c3
                          nop                                                              // 0x0075d166    90
@@ -396,7 +449,8 @@ _jmp_addr_0x0075d164:    pop                esi                                 
                          nop                                                              // 0x0075d16d    90
                          nop                                                              // 0x0075d16e    90
                          nop                                                              // 0x0075d16f    90
-_jmp_addr_0x0075d170:    sub                esp, 0x08                                     // 0x0075d170    83ec08
+?AssignFootballAttackerSubState@Villager@@QAEXXZ:
+                         sub                esp, 0x08                                     // 0x0075d170    83ec08
                          push               edi                                           // 0x0075d173    57
                          mov.s              edi, ecx                                      // 0x0075d174    8bf9
                          {disp32} mov       al, byte ptr [edi + 0x00000118]               // 0x0075d176    8a8718010000
@@ -469,6 +523,7 @@ _jmp_addr_0x0075d21f:    pop                edi                                 
                          nop                                                              // 0x0075d22d    90
                          nop                                                              // 0x0075d22e    90
                          nop                                                              // 0x0075d22f    90
+?FootballAttacker@Villager@@QAEIXZ:
                          push               esi                                           // 0x0075d230    56
                          push               edi                                           // 0x0075d231    57
                          mov.s              esi, ecx                                      // 0x0075d232    8bf1
@@ -525,6 +580,7 @@ _jmp_addr_0x0075d2c3:    mov                edx, dword ptr [esi]                
                          pop                edi                                           // 0x0075d2cd    5f
                          pop                esi                                           // 0x0075d2ce    5e
                          ret                                                              // 0x0075d2cf    c3
+?FootballAttackerShootProcess@Villager@@QAEXPAVFootball@@@Z:
                          sub                esp, 0x0c                                     // 0x0075d2d0    83ec0c
                          push               ebx                                           // 0x0075d2d3    53
                          push               ebp                                           // 0x0075d2d4    55
@@ -556,7 +612,7 @@ _jmp_addr_0x0075d2c3:    mov                edx, dword ptr [esi]                
                          {disp8} jne        _jmp_addr_0x0075d388                          // 0x0075d31f    7567
                          push               esi                                           // 0x0075d321    56
                          mov.s              ecx, edi                                      // 0x0075d322    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075d324    e83756ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075d324    e83756ddff
                          push               eax                                           // 0x0075d329    50
                          {disp8} lea        eax, dword ptr [esp + 0x14]                   // 0x0075d32a    8d442414
                          push               eax                                           // 0x0075d32e    50
@@ -589,7 +645,7 @@ _jmp_addr_0x0075d2c3:    mov                edx, dword ptr [esi]                
                          ret                0x0004                                        // 0x0075d385    c20400
 _jmp_addr_0x0075d388:    push               edi                                           // 0x0075d388    57
                          mov.s              ecx, esi                                      // 0x0075d389    8bce
-                         call               _jmp_addr_0x0075da90                          // 0x0075d38b    e800070000
+                         call               ?FootballAttackerGoToBallProcess@Villager@@QAEXPAVFootball@@@Z                          // 0x0075d38b    e800070000
                          pop                edi                                           // 0x0075d390    5f
                          pop                esi                                           // 0x0075d391    5e
                          pop                ebp                                           // 0x0075d392    5d
@@ -602,6 +658,7 @@ _jmp_addr_0x0075d388:    push               edi                                 
                          nop                                                              // 0x0075d39d    90
                          nop                                                              // 0x0075d39e    90
                          nop                                                              // 0x0075d39f    90
+?FootballAttackerPassProcess@Villager@@QAEXPAVFootball@@@Z:
                          sub                esp, 0x0c                                     // 0x0075d3a0    83ec0c
                          push               ebx                                           // 0x0075d3a3    53
                          push               ebp                                           // 0x0075d3a4    55
@@ -639,7 +696,7 @@ _jmp_addr_0x0075d388:    push               edi                                 
                          {disp32} js        _jmp_addr_0x0075d4d8                          // 0x0075d400    0f88d2000000
                          push               esi                                           // 0x0075d406    56
                          mov.s              ecx, edi                                      // 0x0075d407    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075d409    e85255ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075d409    e85255ddff
                          neg                eax                                           // 0x0075d40e    f7d8
                          sbb.s              eax, eax                                      // 0x0075d410    1bc0
                          inc                eax                                           // 0x0075d412    40
@@ -715,7 +772,7 @@ _jmp_addr_0x0075d4d8:    pop                edi                                 
                          ret                0x0004                                        // 0x0075d4e6    c20400
 _jmp_addr_0x0075d4e9:    push               edi                                           // 0x0075d4e9    57
                          mov.s              ecx, esi                                      // 0x0075d4ea    8bce
-                         call               _jmp_addr_0x0075da90                          // 0x0075d4ec    e89f050000
+                         call               ?FootballAttackerGoToBallProcess@Villager@@QAEXPAVFootball@@@Z                          // 0x0075d4ec    e89f050000
                          pop                edi                                           // 0x0075d4f1    5f
                          pop                esi                                           // 0x0075d4f2    5e
                          pop                ebp                                           // 0x0075d4f3    5d
@@ -727,6 +784,7 @@ _jmp_addr_0x0075d4e9:    push               edi                                 
                          nop                                                              // 0x0075d4fd    90
                          nop                                                              // 0x0075d4fe    90
                          nop                                                              // 0x0075d4ff    90
+?FootballAttackerLobNearGoalProcess@Villager@@QAEXPAVFootball@@@Z:
                          sub                esp, 0x18                                     // 0x0075d500    83ec18
                          push               ebx                                           // 0x0075d503    53
                          push               ebp                                           // 0x0075d504    55
@@ -758,7 +816,7 @@ _jmp_addr_0x0075d4e9:    push               edi                                 
                          {disp32} jne       _jmp_addr_0x0075d659                          // 0x0075d54f    0f8504010000
                          push               esi                                           // 0x0075d555    56
                          mov.s              ecx, edi                                      // 0x0075d556    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075d558    e80354ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075d558    e80354ddff
                          push               eax                                           // 0x0075d55d    50
                          {disp8} lea        eax, dword ptr [esp + 0x14]                   // 0x0075d55e    8d442414
                          push               eax                                           // 0x0075d562    50
@@ -825,7 +883,7 @@ _jmp_addr_0x0075d4e9:    push               edi                                 
                          ret                0x0004                                        // 0x0075d656    c20400
 _jmp_addr_0x0075d659:    push               edi                                           // 0x0075d659    57
                          mov.s              ecx, esi                                      // 0x0075d65a    8bce
-                         call               _jmp_addr_0x0075da90                          // 0x0075d65c    e82f040000
+                         call               ?FootballAttackerGoToBallProcess@Villager@@QAEXPAVFootball@@@Z                          // 0x0075d65c    e82f040000
                          pop                edi                                           // 0x0075d661    5f
                          pop                esi                                           // 0x0075d662    5e
                          pop                ebp                                           // 0x0075d663    5d
@@ -837,6 +895,7 @@ _jmp_addr_0x0075d659:    push               edi                                 
                          nop                                                              // 0x0075d66d    90
                          nop                                                              // 0x0075d66e    90
                          nop                                                              // 0x0075d66f    90
+?FootballAttackerDribbleProcess@Villager@@QAEXPAVFootball@@@Z:
                          sub                esp, 0x50                                     // 0x0075d670    83ec50
                          push               ebx                                           // 0x0075d673    53
                          push               ebp                                           // 0x0075d674    55
@@ -874,7 +933,7 @@ _jmp_addr_0x0075d659:    push               edi                                 
                          push               ecx                                           // 0x0075d6d6    51
                          push               esi                                           // 0x0075d6d7    56
                          mov.s              ecx, edi                                      // 0x0075d6d8    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075d6da    e88152ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075d6da    e88152ddff
                          push               eax                                           // 0x0075d6df    50
                          {disp8} lea        edx, dword ptr [esp + 0x44]                   // 0x0075d6e0    8d542444
                          push               edx                                           // 0x0075d6e4    52
@@ -978,7 +1037,7 @@ _jmp_addr_0x0075d798:    {disp32} fmul      dword ptr [_rdata_float0p2]         
                          ret                0x0004                                        // 0x0075d839    c20400
 _jmp_addr_0x0075d83c:    push               edi                                           // 0x0075d83c    57
                          mov.s              ecx, esi                                      // 0x0075d83d    8bce
-                         call               _jmp_addr_0x0075da90                          // 0x0075d83f    e84c020000
+                         call               ?FootballAttackerGoToBallProcess@Villager@@QAEXPAVFootball@@@Z                          // 0x0075d83f    e84c020000
                          pop                edi                                           // 0x0075d844    5f
                          pop                esi                                           // 0x0075d845    5e
                          pop                ebp                                           // 0x0075d846    5d
@@ -987,6 +1046,7 @@ _jmp_addr_0x0075d83c:    push               edi                                 
                          ret                0x0004                                        // 0x0075d84b    c20400
                          nop                                                              // 0x0075d84e    90
                          nop                                                              // 0x0075d84f    90
+?FootballAttackerMoveToBePassedProcess@Villager@@QAEXPAVFootball@@@Z:
                          sub                esp, 0x3c                                     // 0x0075d850    83ec3c
                          push               ebx                                           // 0x0075d853    53
                          {disp8} mov        ebx, dword ptr [esp + 0x44]                   // 0x0075d854    8b5c2444
@@ -996,7 +1056,7 @@ _jmp_addr_0x0075d83c:    push               edi                                 
                          push               esi                                           // 0x0075d85c    56
                          mov.s              ecx, ebx                                      // 0x0075d85d    8bcb
                          {disp8} mov        word ptr [esi + 0x58], 0x0000                 // 0x0075d85f    66c746580000
-                         call               _jmp_addr_0x00532960                          // 0x0075d865    e8f650ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075d865    e8f650ddff
                          neg                eax                                           // 0x0075d86a    f7d8
                          sbb.s              eax, eax                                      // 0x0075d86c    1bc0
                          inc                eax                                           // 0x0075d86e    40
@@ -1020,7 +1080,7 @@ _jmp_addr_0x0075d83c:    push               edi                                 
                          {disp8} fild       dword ptr [edi + 0x04]                        // 0x0075d8a3    db4704
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]       // 0x0075d8a6    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x30]                        // 0x0075d8ac    d95c2430
-                         call               _jmp_addr_0x00532960                          // 0x0075d8b0    e8ab50ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075d8b0    e8ab50ddff
                          push               eax                                           // 0x0075d8b5    50
                          {disp8} lea        edx, dword ptr [esp + 0x40]                   // 0x0075d8b6    8d542440
                          push               edx                                           // 0x0075d8ba    52
@@ -1152,7 +1212,8 @@ _jmp_addr_0x0075d988:    push               0x000000f7                          
                          nop                                                              // 0x0075da8d    90
                          nop                                                              // 0x0075da8e    90
                          nop                                                              // 0x0075da8f    90
-_jmp_addr_0x0075da90:    sub                esp, 0x0c                                     // 0x0075da90    83ec0c
+?FootballAttackerGoToBallProcess@Villager@@QAEXPAVFootball@@@Z:
+                         sub                esp, 0x0c                                     // 0x0075da90    83ec0c
                          push               ebx                                           // 0x0075da93    53
                          push               ebp                                           // 0x0075da94    55
                          {disp8} mov        ebp, dword ptr [esp + 0x18]                   // 0x0075da95    8b6c2418
@@ -1247,6 +1308,7 @@ _jmp_addr_0x0075db57:    push               0x49                                
                          nop                                                              // 0x0075db7d    90
                          nop                                                              // 0x0075db7e    90
                          nop                                                              // 0x0075db7f    90
+?FootballAttackerGoHomeProcess@Villager@@QAEXPAVFootball@@@Z:
                          sub                esp, 0x0c                                     // 0x0075db80    83ec0c
                          push               esi                                           // 0x0075db83    56
                          push               edi                                           // 0x0075db84    57
@@ -1254,7 +1316,7 @@ _jmp_addr_0x0075db57:    push               0x49                                
                          mov.s              esi, ecx                                      // 0x0075db89    8bf1
                          push               esi                                           // 0x0075db8b    56
                          mov.s              ecx, edi                                      // 0x0075db8c    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075db8e    e8cd4dddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075db8e    e8cd4dddff
                          neg                eax                                           // 0x0075db93    f7d8
                          sbb.s              eax, eax                                      // 0x0075db95    1bc0
                          inc                eax                                           // 0x0075db97    40
@@ -1287,6 +1349,7 @@ _jmp_addr_0x0075db57:    push               0x49                                
                          nop                                                              // 0x0075dbcd    90
                          nop                                                              // 0x0075dbce    90
                          nop                                                              // 0x0075dbcf    90
+?FootballAttackerIdleProcess@Villager@@QAEXPAVFootball@@@Z:
                          push               esi                                           // 0x0075dbd0    56
                          push               edi                                           // 0x0075dbd1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x0075dbd2    8b7c240c
@@ -1299,7 +1362,7 @@ _jmp_addr_0x0075db57:    push               0x49                                
                          call               ?LookAtObject@Living@@QAEIPAVGameThingWithPos@@K@Z                          // 0x0075dbe4    e837e9e8ff
                          push               esi                                           // 0x0075dbe9    56
                          mov.s              ecx, edi                                      // 0x0075dbea    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075dbec    e86f4dddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075dbec    e86f4dddff
                          cmp                word ptr [esi + 0x58], 0x0258                 // 0x0075dbf1    66817e585802
                          {disp8} jge        _jmp_addr_0x0075dc06                          // 0x0075dbf7    7d0d
                          push               esi                                           // 0x0075dbf9    56
@@ -1325,6 +1388,7 @@ _jmp_addr_0x0075dc0d:    pop                edi                                 
                          nop                                                              // 0x0075dc1d    90
                          nop                                                              // 0x0075dc1e    90
                          nop                                                              // 0x0075dc1f    90
+?FootballAttackerShootPriority@Villager@@QAEMPAVFootball@@@Z:
                          sub                esp, 0x18                                     // 0x0075dc20    83ec18
                          push               ebx                                           // 0x0075dc23    53
                          push               esi                                           // 0x0075dc24    56
@@ -1333,7 +1397,7 @@ _jmp_addr_0x0075dc0d:    pop                edi                                 
                          mov.s              ebx, ecx                                      // 0x0075dc2a    8bd9
                          push               ebx                                           // 0x0075dc2c    53
                          mov.s              ecx, edi                                      // 0x0075dc2d    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075dc2f    e82c4dddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075dc2f    e82c4dddff
                          push               eax                                           // 0x0075dc34    50
                          {disp8} lea        eax, dword ptr [esp + 0x10]                   // 0x0075dc35    8d442410
                          push               eax                                           // 0x0075dc39    50
@@ -1381,7 +1445,7 @@ _jmp_addr_0x0075dcbe:    {disp8} lea        edx, dword ptr [esp + 0x0c]         
                          push               ebx                                           // 0x0075dccc    53
                          mov.s              ecx, edi                                      // 0x0075dccd    8bcf
                          mov.s              esi, eax                                      // 0x0075dccf    8bf0
-                         call               _jmp_addr_0x00532960                          // 0x0075dcd1    e88a4cddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075dcd1    e88a4cddff
                          neg                eax                                           // 0x0075dcd6    f7d8
                          sbb.s              eax, eax                                      // 0x0075dcd8    1bc0
                          inc                eax                                           // 0x0075dcda    40
@@ -1437,6 +1501,7 @@ _jmp_addr_0x0075dd71:    {disp8} fld        dword ptr [esp + 0x00]              
                          add                esp, 0x18                                     // 0x0075dd79    83c418
                          ret                0x0004                                        // 0x0075dd7c    c20400
                          nop                                                              // 0x0075dd7f    90
+?FootballAttackerPassPriority@Villager@@QAEMPAVFootball@@@Z:
                          push               ecx                                           // 0x0075dd80    51
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x0075dd81    8b4c2408
                          call               _jmp_addr_0x00534820                          // 0x0075dd85    e8966addff
@@ -1461,6 +1526,7 @@ _jmp_addr_0x0075ddad:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          nop                                                              // 0x0075ddbd    90
                          nop                                                              // 0x0075ddbe    90
                          nop                                                              // 0x0075ddbf    90
+?FootballAttackerLobNearGoalPriority@Villager@@QAEMPAVFootball@@@Z:
                          {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x0075ddc0    d90598a38a00
                          ret                0x0004                                        // 0x0075ddc6    c20400
                          nop                                                              // 0x0075ddc9    90
@@ -1470,6 +1536,7 @@ _jmp_addr_0x0075ddad:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          nop                                                              // 0x0075ddcd    90
                          nop                                                              // 0x0075ddce    90
                          nop                                                              // 0x0075ddcf    90
+?FootballAttackerDribblePriority@Villager@@QAEMPAVFootball@@@Z:
                          sub                esp, 0x0c                                     // 0x0075ddd0    83ec0c
                          push               esi                                           // 0x0075ddd3    56
                          push               edi                                           // 0x0075ddd4    57
@@ -1477,7 +1544,7 @@ _jmp_addr_0x0075ddad:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          mov.s              esi, ecx                                      // 0x0075ddd9    8bf1
                          push               esi                                           // 0x0075dddb    56
                          mov.s              ecx, edi                                      // 0x0075dddc    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075ddde    e87d4bddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075ddde    e87d4bddff
                          push               eax                                           // 0x0075dde3    50
                          {disp8} lea        eax, dword ptr [esp + 0x0c]                   // 0x0075dde4    8d44240c
                          push               eax                                           // 0x0075dde8    50
@@ -1526,6 +1593,7 @@ _jmp_addr_0x0075de65:    add                esp, 0x0c                           
                          nop                                                              // 0x0075de6d    90
                          nop                                                              // 0x0075de6e    90
                          nop                                                              // 0x0075de6f    90
+?FootballAttackerMoveToBePassedPriority@Villager@@QAEMPAVFootball@@@Z:
                          push               esi                                           // 0x0075de70    56
                          mov.s              esi, ecx                                      // 0x0075de71    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x0075de73    8b4c2408
@@ -1566,6 +1634,7 @@ _jmp_addr_0x0075ded7:    {disp32} fcom      dword ptr [__real@3e4ccccd]         
                          {disp32} fld       dword ptr [__real@3e4ccccd]                   // 0x0075dee6    d90544b28a00
 _jmp_addr_0x0075deec:    ret                0x0004                                        // 0x0075deec    c20400
                          nop                                                              // 0x0075deef    90
+?FootballAttackerGoToBallPriority@Villager@@QAEMPAVFootball@@@Z:
                          {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x0075def0    d90598a38a00
                          ret                0x0004                                        // 0x0075def6    c20400
                          nop                                                              // 0x0075def9    90
@@ -1575,14 +1644,15 @@ _jmp_addr_0x0075deec:    ret                0x0004                              
                          nop                                                              // 0x0075defd    90
                          nop                                                              // 0x0075defe    90
                          nop                                                              // 0x0075deff    90
-_jmp_addr_0x0075df00:    sub                esp, 0x0c                                     // 0x0075df00    83ec0c
+?FootballAttackerGoHomePriority@Villager@@QAEMPAVFootball@@@Z:
+                         sub                esp, 0x0c                                     // 0x0075df00    83ec0c
                          push               esi                                           // 0x0075df03    56
                          push               edi                                           // 0x0075df04    57
                          {disp8} mov        edi, dword ptr [esp + 0x18]                   // 0x0075df05    8b7c2418
                          mov.s              esi, ecx                                      // 0x0075df09    8bf1
                          push               esi                                           // 0x0075df0b    56
                          mov.s              ecx, edi                                      // 0x0075df0c    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075df0e    e84d4addff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075df0e    e84d4addff
                          neg                eax                                           // 0x0075df13    f7d8
                          sbb.s              eax, eax                                      // 0x0075df15    1bc0
                          inc                eax                                           // 0x0075df17    40
@@ -1645,6 +1715,7 @@ _jmp_addr_0x0075df9b:    add                esp, 0x0c                           
                          nop                                                              // 0x0075dfad    90
                          nop                                                              // 0x0075dfae    90
                          nop                                                              // 0x0075dfaf    90
+?FootballAttackerIdlePriority@Villager@@QAEMPAVFootball@@@Z:
                          sub                esp, 0x0c                                     // 0x0075dfb0    83ec0c
                          push               ebx                                           // 0x0075dfb3    53
                          {disp8} mov        ebx, dword ptr [esp + 0x14]                   // 0x0075dfb4    8b5c2414
@@ -1677,7 +1748,7 @@ _jmp_addr_0x0075dfff:    {disp32} fsub      dword ptr [rdata_bytes + 0x2414]    
                          mov.s              ecx, ebx                                      // 0x0075e006    8bcb
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2850c]             // 0x0075e008    d80d0c158d00
                          {disp8} fstp       dword ptr [esp + 0x20]                        // 0x0075e00e    d95c2420
-                         call               _jmp_addr_0x00532960                          // 0x0075e012    e84949ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075e012    e84949ddff
                          neg                eax                                           // 0x0075e017    f7d8
                          sbb.s              eax, eax                                      // 0x0075e019    1bc0
                          inc                eax                                           // 0x0075e01b    40
@@ -1730,7 +1801,8 @@ _jmp_addr_0x0075e0a7:    add                esp, 0x0c                           
                          nop                                                              // 0x0075e0ad    90
                          nop                                                              // 0x0075e0ae    90
                          nop                                                              // 0x0075e0af    90
-_jmp_addr_0x0075e0b0:    sub                esp, 0x08                                     // 0x0075e0b0    83ec08
+?AssignFootballDefenderSubState@Villager@@QAEXXZ:
+                         sub                esp, 0x08                                     // 0x0075e0b0    83ec08
                          push               edi                                           // 0x0075e0b3    57
                          mov.s              edi, ecx                                      // 0x0075e0b4    8bf9
                          {disp32} mov       al, byte ptr [edi + 0x00000118]               // 0x0075e0b6    8a8718010000
@@ -1803,6 +1875,7 @@ _jmp_addr_0x0075e15f:    pop                edi                                 
                          nop                                                              // 0x0075e16d    90
                          nop                                                              // 0x0075e16e    90
                          nop                                                              // 0x0075e16f    90
+?FootballDefender@Villager@@QAEIXZ:
                          push               esi                                           // 0x0075e170    56
                          push               edi                                           // 0x0075e171    57
                          mov.s              esi, ecx                                      // 0x0075e172    8bf1
@@ -1859,7 +1932,8 @@ _jmp_addr_0x0075e203:    mov                edx, dword ptr [esi]                
                          pop                edi                                           // 0x0075e20d    5f
                          pop                esi                                           // 0x0075e20e    5e
                          ret                                                              // 0x0075e20f    c3
-_jmp_addr_0x0075e210:    sub                esp, 0x18                                     // 0x0075e210    83ec18
+?FootballDefenderSaveProcess@Villager@@QAEXPAVFootball@@@Z:
+                         sub                esp, 0x18                                     // 0x0075e210    83ec18
                          push               ebx                                           // 0x0075e213    53
                          push               ebp                                           // 0x0075e214    55
                          push               esi                                           // 0x0075e215    56
@@ -1890,7 +1964,7 @@ _jmp_addr_0x0075e210:    sub                esp, 0x18                           
                          {disp32} jne       _jmp_addr_0x0075e35c                          // 0x0075e25f    0f85f7000000
                          push               esi                                           // 0x0075e265    56
                          mov.s              ecx, edi                                      // 0x0075e266    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075e268    e8f346ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075e268    e8f346ddff
                          push               eax                                           // 0x0075e26d    50
                          {disp8} lea        eax, dword ptr [esp + 0x14]                   // 0x0075e26e    8d442414
                          push               eax                                           // 0x0075e272    50
@@ -1952,7 +2026,7 @@ _jmp_addr_0x0075e210:    sub                esp, 0x18                           
                          ret                0x0004                                        // 0x0075e359    c20400
 _jmp_addr_0x0075e35c:    push               edi                                           // 0x0075e35c    57
                          mov.s              ecx, esi                                      // 0x0075e35d    8bce
-                         call               _jmp_addr_0x0075e5a0                          // 0x0075e35f    e83c020000
+                         call               ?FootballDefenderGoToBallProcess@Villager@@QAEXPAVFootball@@@Z                          // 0x0075e35f    e83c020000
                          pop                edi                                           // 0x0075e364    5f
                          pop                esi                                           // 0x0075e365    5e
                          pop                ebp                                           // 0x0075e366    5d
@@ -1961,13 +2035,15 @@ _jmp_addr_0x0075e35c:    push               edi                                 
                          ret                0x0004                                        // 0x0075e36b    c20400
                          nop                                                              // 0x0075e36e    90
                          nop                                                              // 0x0075e36f    90
+?FootballDefenderClearProcess@Villager@@QAEXPAVFootball@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0075e370    8b442404
                          push               eax                                           // 0x0075e374    50
-                         call               _jmp_addr_0x0075e210                          // 0x0075e375    e896feffff
+                         call               ?FootballDefenderSaveProcess@Villager@@QAEXPAVFootball@@@Z                          // 0x0075e375    e896feffff
                          ret                0x0004                                        // 0x0075e37a    c20400
                          nop                                                              // 0x0075e37d    90
                          nop                                                              // 0x0075e37e    90
                          nop                                                              // 0x0075e37f    90
+?FootballDefenderDribbleProcess@Villager@@QAEXPAVFootball@@@Z:
                          sub                esp, 0x50                                     // 0x0075e380    83ec50
                          push               ebx                                           // 0x0075e383    53
                          push               ebp                                           // 0x0075e384    55
@@ -2005,7 +2081,7 @@ _jmp_addr_0x0075e35c:    push               edi                                 
                          push               ecx                                           // 0x0075e3e6    51
                          push               esi                                           // 0x0075e3e7    56
                          mov.s              ecx, edi                                      // 0x0075e3e8    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075e3ea    e87145ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075e3ea    e87145ddff
                          push               eax                                           // 0x0075e3ef    50
                          {disp8} lea        edx, dword ptr [esp + 0x44]                   // 0x0075e3f0    8d542444
                          push               edx                                           // 0x0075e3f4    52
@@ -2109,7 +2185,7 @@ _jmp_addr_0x0075e4a8:    {disp32} fmul      dword ptr [_rdata_float0p2]         
                          ret                0x0004                                        // 0x0075e549    c20400
 _jmp_addr_0x0075e54c:    push               edi                                           // 0x0075e54c    57
                          mov.s              ecx, esi                                      // 0x0075e54d    8bce
-                         call               _jmp_addr_0x0075e5a0                          // 0x0075e54f    e84c000000
+                         call               ?FootballDefenderGoToBallProcess@Villager@@QAEXPAVFootball@@@Z                          // 0x0075e54f    e84c000000
                          pop                edi                                           // 0x0075e554    5f
                          pop                esi                                           // 0x0075e555    5e
                          pop                ebp                                           // 0x0075e556    5d
@@ -2118,13 +2194,14 @@ _jmp_addr_0x0075e54c:    push               edi                                 
                          ret                0x0004                                        // 0x0075e55b    c20400
                          nop                                                              // 0x0075e55e    90
                          nop                                                              // 0x0075e55f    90
+?FootballDefenderMarkProcess@Villager@@QAEXPAVFootball@@@Z:
                          push               esi                                           // 0x0075e560    56
                          push               edi                                           // 0x0075e561    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x0075e562    8b7c240c
                          mov.s              esi, ecx                                      // 0x0075e566    8bf1
                          push               esi                                           // 0x0075e568    56
                          mov.s              ecx, edi                                      // 0x0075e569    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075e56b    e8f043ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075e56b    e8f043ddff
                          {disp32} mov       eax, dword ptr [edi + eax * 0x4 + 0x00000244] // 0x0075e570    8b848744020000
                          test               eax, eax                                      // 0x0075e577    85c0
                          {disp8} je         _jmp_addr_0x0075e585                          // 0x0075e579    740a
@@ -2151,7 +2228,8 @@ _jmp_addr_0x0075e585:    pop                edi                                 
                          nop                                                              // 0x0075e59d    90
                          nop                                                              // 0x0075e59e    90
                          nop                                                              // 0x0075e59f    90
-_jmp_addr_0x0075e5a0:    sub                esp, 0x0c                                     // 0x0075e5a0    83ec0c
+?FootballDefenderGoToBallProcess@Villager@@QAEXPAVFootball@@@Z:
+                         sub                esp, 0x0c                                     // 0x0075e5a0    83ec0c
                          push               ebx                                           // 0x0075e5a3    53
                          push               ebp                                           // 0x0075e5a4    55
                          {disp8} mov        ebp, dword ptr [esp + 0x18]                   // 0x0075e5a5    8b6c2418
@@ -2246,6 +2324,7 @@ _jmp_addr_0x0075e667:    push               0x4b                                
                          nop                                                              // 0x0075e68d    90
                          nop                                                              // 0x0075e68e    90
                          nop                                                              // 0x0075e68f    90
+?FootballDefenderGoHomeProcess@Villager@@QAEXPAVFootball@@@Z:
                          sub                esp, 0x0c                                     // 0x0075e690    83ec0c
                          push               esi                                           // 0x0075e693    56
                          push               edi                                           // 0x0075e694    57
@@ -2253,7 +2332,7 @@ _jmp_addr_0x0075e667:    push               0x4b                                
                          mov.s              esi, ecx                                      // 0x0075e699    8bf1
                          push               esi                                           // 0x0075e69b    56
                          mov.s              ecx, edi                                      // 0x0075e69c    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075e69e    e8bd42ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075e69e    e8bd42ddff
                          neg                eax                                           // 0x0075e6a3    f7d8
                          sbb.s              eax, eax                                      // 0x0075e6a5    1bc0
                          inc                eax                                           // 0x0075e6a7    40
@@ -2286,6 +2365,7 @@ _jmp_addr_0x0075e667:    push               0x4b                                
                          nop                                                              // 0x0075e6dd    90
                          nop                                                              // 0x0075e6de    90
                          nop                                                              // 0x0075e6df    90
+?FootballDefenderIdleProcess@Villager@@QAEXPAVFootball@@@Z:
                          push               esi                                           // 0x0075e6e0    56
                          push               edi                                           // 0x0075e6e1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x0075e6e2    8b7c240c
@@ -2298,7 +2378,7 @@ _jmp_addr_0x0075e667:    push               0x4b                                
                          call               ?LookAtObject@Living@@QAEIPAVGameThingWithPos@@K@Z                          // 0x0075e6f4    e827dee8ff
                          push               esi                                           // 0x0075e6f9    56
                          mov.s              ecx, edi                                      // 0x0075e6fa    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075e6fc    e85f42ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075e6fc    e85f42ddff
                          cmp                word ptr [esi + 0x58], 0x0258                 // 0x0075e701    66817e585802
                          {disp8} jge        _jmp_addr_0x0075e716                          // 0x0075e707    7d0d
                          push               esi                                           // 0x0075e709    56
@@ -2324,6 +2404,7 @@ _jmp_addr_0x0075e71d:    pop                edi                                 
                          nop                                                              // 0x0075e72d    90
                          nop                                                              // 0x0075e72e    90
                          nop                                                              // 0x0075e72f    90
+?FootballDefenderPassProcess@Villager@@QAEXPAVFootball@@@Z:
                          sub                esp, 0x0c                                     // 0x0075e730    83ec0c
                          push               ebx                                           // 0x0075e733    53
                          push               ebp                                           // 0x0075e734    55
@@ -2361,7 +2442,7 @@ _jmp_addr_0x0075e71d:    pop                edi                                 
                          {disp32} js        _jmp_addr_0x0075e868                          // 0x0075e790    0f88d2000000
                          push               esi                                           // 0x0075e796    56
                          mov.s              ecx, edi                                      // 0x0075e797    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075e799    e8c241ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075e799    e8c241ddff
                          neg                eax                                           // 0x0075e79e    f7d8
                          sbb.s              eax, eax                                      // 0x0075e7a0    1bc0
                          inc                eax                                           // 0x0075e7a2    40
@@ -2437,7 +2518,7 @@ _jmp_addr_0x0075e868:    pop                edi                                 
                          ret                0x0004                                        // 0x0075e876    c20400
 _jmp_addr_0x0075e879:    push               edi                                           // 0x0075e879    57
                          mov.s              ecx, esi                                      // 0x0075e87a    8bce
-                         call               _jmp_addr_0x0075e5a0                          // 0x0075e87c    e81ffdffff
+                         call               ?FootballDefenderGoToBallProcess@Villager@@QAEXPAVFootball@@@Z                          // 0x0075e87c    e81ffdffff
                          pop                edi                                           // 0x0075e881    5f
                          pop                esi                                           // 0x0075e882    5e
                          pop                ebp                                           // 0x0075e883    5d
@@ -2449,6 +2530,7 @@ _jmp_addr_0x0075e879:    push               edi                                 
                          nop                                                              // 0x0075e88d    90
                          nop                                                              // 0x0075e88e    90
                          nop                                                              // 0x0075e88f    90
+?FootballDefenderSavePriority@Villager@@QAEMPAVFootball@@@Z:
                          push               0x00000267                                    // 0x0075e890    6867020000
                          push               0x00c2443c                                    // 0x0075e895    683c44c200
                          push               0x3e99999a                                    // 0x0075e89a    689a99993e
@@ -2456,6 +2538,7 @@ _jmp_addr_0x0075e879:    push               edi                                 
                          {disp32} fadd      dword ptr [__real@3f333333]                   // 0x0075e8a4    d80538b28a00
                          add                esp, 0x0c                                     // 0x0075e8aa    83c40c
                          ret                0x0004                                        // 0x0075e8ad    c20400
+?FootballDefenderClearPriority@Villager@@QAEMPAVFootball@@@Z:
                          push               0x0000026e                                    // 0x0075e8b0    686e020000
                          push               0x00c2443c                                    // 0x0075e8b5    683c44c200
                          push               0x3ecccccd                                    // 0x0075e8ba    68cdcccc3e
@@ -2463,6 +2546,7 @@ _jmp_addr_0x0075e879:    push               edi                                 
                          {disp32} fadd      dword ptr [rdata_bytes + 0x1ebdc]             // 0x0075e8c4    d805dc7b8c00
                          add                esp, 0x0c                                     // 0x0075e8ca    83c40c
                          ret                0x0004                                        // 0x0075e8cd    c20400
+?FootballDefenderDribblePriority@Villager@@QAEMPAVFootball@@@Z:
                          sub                esp, 0x0c                                     // 0x0075e8d0    83ec0c
                          push               esi                                           // 0x0075e8d3    56
                          push               edi                                           // 0x0075e8d4    57
@@ -2470,7 +2554,7 @@ _jmp_addr_0x0075e879:    push               edi                                 
                          mov.s              esi, ecx                                      // 0x0075e8d9    8bf1
                          push               esi                                           // 0x0075e8db    56
                          mov.s              ecx, edi                                      // 0x0075e8dc    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075e8de    e87d40ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075e8de    e87d40ddff
                          push               eax                                           // 0x0075e8e3    50
                          {disp8} lea        eax, dword ptr [esp + 0x0c]                   // 0x0075e8e4    8d44240c
                          push               eax                                           // 0x0075e8e8    50
@@ -2519,6 +2603,7 @@ _jmp_addr_0x0075e965:    add                esp, 0x0c                           
                          nop                                                              // 0x0075e96d    90
                          nop                                                              // 0x0075e96e    90
                          nop                                                              // 0x0075e96f    90
+?FootballDefenderMarkPriority@Villager@@QAEMPAVFootball@@@Z:
                          push               0x00000280                                    // 0x0075e970    6880020000
                          push               0x00c2443c                                    // 0x0075e975    683c44c200
                          push               0x3f800000                                    // 0x0075e97a    680000803f
@@ -2531,6 +2616,7 @@ _jmp_addr_0x0075e965:    add                esp, 0x0c                           
                          nop                                                              // 0x0075e98d    90
                          nop                                                              // 0x0075e98e    90
                          nop                                                              // 0x0075e98f    90
+?FootballDefenderGoToBallPriority@Villager@@QAEMPAVFootball@@@Z:
                          {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x0075e990    d90598a38a00
                          ret                0x0004                                        // 0x0075e996    c20400
                          nop                                                              // 0x0075e999    90
@@ -2540,16 +2626,18 @@ _jmp_addr_0x0075e965:    add                esp, 0x0c                           
                          nop                                                              // 0x0075e99d    90
                          nop                                                              // 0x0075e99e    90
                          nop                                                              // 0x0075e99f    90
-_jmp_addr_0x0075e9a0:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0075e9a0    8b442404
+?FootballDefenderGoHomePriority@Villager@@QAEMPAVFootball@@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0075e9a0    8b442404
                          push               eax                                           // 0x0075e9a4    50
-                         call               _jmp_addr_0x0075df00                          // 0x0075e9a5    e856f5ffff
+                         call               ?FootballAttackerGoHomePriority@Villager@@QAEMPAVFootball@@@Z                          // 0x0075e9a5    e856f5ffff
                          ret                0x0004                                        // 0x0075e9aa    c20400
                          nop                                                              // 0x0075e9ad    90
                          nop                                                              // 0x0075e9ae    90
                          nop                                                              // 0x0075e9af    90
+?FootballDefenderIdlePriority@Villager@@QAEMPAVFootball@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0075e9b0    8b442404
                          push               eax                                           // 0x0075e9b4    50
-                         call               _jmp_addr_0x0075e9a0                          // 0x0075e9b5    e8e6ffffff
+                         call               ?FootballDefenderGoHomePriority@Villager@@QAEMPAVFootball@@@Z                          // 0x0075e9b5    e8e6ffffff
                          {disp32} fsubr     dword ptr [_rdata_float1p0]                   // 0x0075e9ba    d82d90a38a00
                          ret                0x0004                                        // 0x0075e9c0    c20400
                          nop                                                              // 0x0075e9c3    90
@@ -2565,7 +2653,8 @@ _jmp_addr_0x0075e9a0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x0075e9cd    90
                          nop                                                              // 0x0075e9ce    90
                          nop                                                              // 0x0075e9cf    90
-_jmp_addr_0x0075e9d0:    push               ecx                                           // 0x0075e9d0    51
+?FootballDefenderPassPriority@Villager@@QAEMPAVFootball@@@Z:
+                         push               ecx                                           // 0x0075e9d0    51
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x0075e9d1    8b4c2408
                          call               _jmp_addr_0x00534820                          // 0x0075e9d5    e8465eddff
                          dec                eax                                           // 0x0075e9da    48
@@ -2589,6 +2678,7 @@ _jmp_addr_0x0075e9fd:    {disp32} fld       dword ptr [_rdata_float0p0]         
                          nop                                                              // 0x0075ea0d    90
                          nop                                                              // 0x0075ea0e    90
                          nop                                                              // 0x0075ea0f    90
+?FootballGoalie@Villager@@QAEIXZ:
                          push               esi                                           // 0x0075ea10    56
                          push               edi                                           // 0x0075ea11    57
                          mov.s              esi, ecx                                      // 0x0075ea12    8bf1
@@ -2645,7 +2735,8 @@ _jmp_addr_0x0075eaa3:    mov                edx, dword ptr [esi]                
                          pop                edi                                           // 0x0075eaad    5f
                          pop                esi                                           // 0x0075eaae    5e
                          ret                                                              // 0x0075eaaf    c3
-_jmp_addr_0x0075eab0:    sub                esp, 0x08                                     // 0x0075eab0    83ec08
+?AssignFootballGoalieSubState@Villager@@QAEXXZ:
+                         sub                esp, 0x08                                     // 0x0075eab0    83ec08
                          push               edi                                           // 0x0075eab3    57
                          mov.s              edi, ecx                                      // 0x0075eab4    8bf9
                          {disp32} mov       al, byte ptr [edi + 0x00000118]               // 0x0075eab6    8a8718010000
@@ -2718,7 +2809,8 @@ _jmp_addr_0x0075eb5f:    pop                edi                                 
                          nop                                                              // 0x0075eb6d    90
                          nop                                                              // 0x0075eb6e    90
                          nop                                                              // 0x0075eb6f    90
-_jmp_addr_0x0075eb70:    sub                esp, 0x0c                                     // 0x0075eb70    83ec0c
+?FootballGoalieSaveProcess@Villager@@QAEXPAVFootball@@@Z:
+                         sub                esp, 0x0c                                     // 0x0075eb70    83ec0c
                          push               ebx                                           // 0x0075eb73    53
                          push               ebp                                           // 0x0075eb74    55
                          push               esi                                           // 0x0075eb75    56
@@ -2784,7 +2876,7 @@ _jmp_addr_0x0075ebdd:    push               esi                                 
                          ret                0x0004                                        // 0x0075ec2f    c20400
 _jmp_addr_0x0075ec32:    push               edi                                           // 0x0075ec32    57
                          mov.s              ecx, esi                                      // 0x0075ec33    8bce
-                         call               _jmp_addr_0x0075ecd0                          // 0x0075ec35    e896000000
+                         call               ?FootballGoalieGoToBallProcess@Villager@@QAEXPAVFootball@@@Z                          // 0x0075ec35    e896000000
                          pop                edi                                           // 0x0075ec3a    5f
                          pop                esi                                           // 0x0075ec3b    5e
                          pop                ebp                                           // 0x0075ec3c    5d
@@ -2803,14 +2895,16 @@ _jmp_addr_0x0075ec32:    push               edi                                 
                          nop                                                              // 0x0075ec4d    90
                          nop                                                              // 0x0075ec4e    90
                          nop                                                              // 0x0075ec4f    90
+?FootballGoalieClearProcess@Villager@@QAEXPAVFootball@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0075ec50    8b442404
                          push               eax                                           // 0x0075ec54    50
-                         call               _jmp_addr_0x0075eb70                          // 0x0075ec55    e816ffffff
+                         call               ?FootballGoalieSaveProcess@Villager@@QAEXPAVFootball@@@Z                          // 0x0075ec55    e816ffffff
                          ret                0x0004                                        // 0x0075ec5a    c20400
                          nop                                                              // 0x0075ec5d    90
                          nop                                                              // 0x0075ec5e    90
                          nop                                                              // 0x0075ec5f    90
-_jmp_addr_0x0075ec60:    push               esi                                           // 0x0075ec60    56
+?FootballGoalieLookProcess@Villager@@QAEXPAVFootball@@@Z:
+                         push               esi                                           // 0x0075ec60    56
                          push               edi                                           // 0x0075ec61    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x0075ec62    8b7c240c
                          mov.s              esi, ecx                                      // 0x0075ec66    8bf1
@@ -2855,7 +2949,8 @@ _jmp_addr_0x0075ecbf:    pop                edi                                 
                          nop                                                              // 0x0075eccd    90
                          nop                                                              // 0x0075ecce    90
                          nop                                                              // 0x0075eccf    90
-_jmp_addr_0x0075ecd0:    sub                esp, 0x0c                                     // 0x0075ecd0    83ec0c
+?FootballGoalieGoToBallProcess@Villager@@QAEXPAVFootball@@@Z:
+                         sub                esp, 0x0c                                     // 0x0075ecd0    83ec0c
                          push               ebx                                           // 0x0075ecd3    53
                          push               ebp                                           // 0x0075ecd4    55
                          {disp8} mov        ebp, dword ptr [esp + 0x18]                   // 0x0075ecd5    8b6c2418
@@ -2938,6 +3033,7 @@ _jmp_addr_0x0075ed98:    push               0x4a                                
                          nop                                                              // 0x0075edad    90
                          nop                                                              // 0x0075edae    90
                          nop                                                              // 0x0075edaf    90
+?FootballGoalieGoHomeProcess@Villager@@QAEXPAVFootball@@@Z:
                          sub                esp, 0x0c                                     // 0x0075edb0    83ec0c
                          push               esi                                           // 0x0075edb3    56
                          push               edi                                           // 0x0075edb4    57
@@ -2945,7 +3041,7 @@ _jmp_addr_0x0075ed98:    push               0x4a                                
                          mov.s              esi, ecx                                      // 0x0075edb9    8bf1
                          push               esi                                           // 0x0075edbb    56
                          mov.s              ecx, edi                                      // 0x0075edbc    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075edbe    e89d3bddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075edbe    e89d3bddff
                          neg                eax                                           // 0x0075edc3    f7d8
                          sbb.s              eax, eax                                      // 0x0075edc5    1bc0
                          inc                eax                                           // 0x0075edc7    40
@@ -2978,13 +3074,15 @@ _jmp_addr_0x0075ed98:    push               0x4a                                
                          nop                                                              // 0x0075edfd    90
                          nop                                                              // 0x0075edfe    90
                          nop                                                              // 0x0075edff    90
+?FootballGoalieIdleProcess@Villager@@QAEXPAVFootball@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0075ee00    8b442404
                          push               eax                                           // 0x0075ee04    50
-                         call               _jmp_addr_0x0075ec60                          // 0x0075ee05    e856feffff
+                         call               ?FootballGoalieLookProcess@Villager@@QAEXPAVFootball@@@Z                          // 0x0075ee05    e856feffff
                          ret                0x0004                                        // 0x0075ee0a    c20400
                          nop                                                              // 0x0075ee0d    90
                          nop                                                              // 0x0075ee0e    90
                          nop                                                              // 0x0075ee0f    90
+?FootballGoaliePassProcess@Villager@@QAEXPAVFootball@@@Z:
                          sub                esp, 0x18                                     // 0x0075ee10    83ec18
                          push               ebx                                           // 0x0075ee13    53
                          push               ebp                                           // 0x0075ee14    55
@@ -2994,7 +3092,7 @@ _jmp_addr_0x0075ed98:    push               0x4a                                
                          mov.s              esi, ecx                                      // 0x0075ee1b    8bf1
                          push               esi                                           // 0x0075ee1d    56
                          mov.s              ecx, edi                                      // 0x0075ee1e    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075ee20    e83b3bddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075ee20    e83b3bddff
                          neg                eax                                           // 0x0075ee25    f7d8
                          sbb.s              eax, eax                                      // 0x0075ee27    1bc0
                          inc                eax                                           // 0x0075ee29    40
@@ -3051,7 +3149,7 @@ _jmp_addr_0x0075ee67:    mov.s              ecx, edi                            
                          {disp32} js        _jmp_addr_0x0075ef92                          // 0x0075eeba    0f88d2000000
                          push               esi                                           // 0x0075eec0    56
                          mov.s              ecx, edi                                      // 0x0075eec1    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075eec3    e8983addff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075eec3    e8983addff
                          neg                eax                                           // 0x0075eec8    f7d8
                          sbb.s              eax, eax                                      // 0x0075eeca    1bc0
                          inc                eax                                           // 0x0075eecc    40
@@ -3127,7 +3225,7 @@ _jmp_addr_0x0075ef92:    pop                edi                                 
                          ret                0x0004                                        // 0x0075efa0    c20400
 _jmp_addr_0x0075efa3:    push               edi                                           // 0x0075efa3    57
                          mov.s              ecx, esi                                      // 0x0075efa4    8bce
-                         call               _jmp_addr_0x0075ecd0                          // 0x0075efa6    e825fdffff
+                         call               ?FootballGoalieGoToBallProcess@Villager@@QAEXPAVFootball@@@Z                          // 0x0075efa6    e825fdffff
                          pop                edi                                           // 0x0075efab    5f
                          pop                esi                                           // 0x0075efac    5e
                          pop                ebp                                           // 0x0075efad    5d
@@ -3145,6 +3243,7 @@ _jmp_addr_0x0075efa3:    push               edi                                 
                          nop                                                              // 0x0075efbd    90
                          nop                                                              // 0x0075efbe    90
                          nop                                                              // 0x0075efbf    90
+?FootballGoalieSavePriority@Villager@@QAEMPAVFootball@@@Z:
                          push               0x00000360                                    // 0x0075efc0    6860030000
                          push               0x00c2443c                                    // 0x0075efc5    683c44c200
                          push               0x3f800000                                    // 0x0075efca    680000803f
@@ -3157,6 +3256,7 @@ _jmp_addr_0x0075efa3:    push               edi                                 
                          nop                                                              // 0x0075efdd    90
                          nop                                                              // 0x0075efde    90
                          nop                                                              // 0x0075efdf    90
+?FootballGoalieClearPriority@Villager@@QAEMPAVFootball@@@Z:
                          push               0x00000366                                    // 0x0075efe0    6866030000
                          push               0x00c2443c                                    // 0x0075efe5    683c44c200
                          push               0x3f800000                                    // 0x0075efea    680000803f
@@ -3169,6 +3269,7 @@ _jmp_addr_0x0075efa3:    push               edi                                 
                          nop                                                              // 0x0075effd    90
                          nop                                                              // 0x0075effe    90
                          nop                                                              // 0x0075efff    90
+?FootballGoalieLookPriority@Villager@@QAEMPAVFootball@@@Z:
                          push               0x0000036c                                    // 0x0075f000    686c030000
                          push               0x00c2443c                                    // 0x0075f005    683c44c200
                          push               0x3f800000                                    // 0x0075f00a    680000803f
@@ -3181,6 +3282,7 @@ _jmp_addr_0x0075efa3:    push               edi                                 
                          nop                                                              // 0x0075f01d    90
                          nop                                                              // 0x0075f01e    90
                          nop                                                              // 0x0075f01f    90
+?FootballGoalieGoToBallPriority@Villager@@QAEMPAVFootball@@@Z:
                          {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x0075f020    d90598a38a00
                          ret                0x0004                                        // 0x0075f026    c20400
                          nop                                                              // 0x0075f029    90
@@ -3190,16 +3292,18 @@ _jmp_addr_0x0075efa3:    push               edi                                 
                          nop                                                              // 0x0075f02d    90
                          nop                                                              // 0x0075f02e    90
                          nop                                                              // 0x0075f02f    90
-_jmp_addr_0x0075f030:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0075f030    8b442404
+?FootballGoalieGoHomePriority@Villager@@QAEMPAVFootball@@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0075f030    8b442404
                          push               eax                                           // 0x0075f034    50
-                         call               _jmp_addr_0x0075df00                          // 0x0075f035    e8c6eeffff
+                         call               ?FootballAttackerGoHomePriority@Villager@@QAEMPAVFootball@@@Z                          // 0x0075f035    e8c6eeffff
                          ret                0x0004                                        // 0x0075f03a    c20400
                          nop                                                              // 0x0075f03d    90
                          nop                                                              // 0x0075f03e    90
                          nop                                                              // 0x0075f03f    90
+?FootballGoalieIdlePriority@Villager@@QAEMPAVFootball@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0075f040    8b442404
                          push               eax                                           // 0x0075f044    50
-                         call               _jmp_addr_0x0075f030                          // 0x0075f045    e8e6ffffff
+                         call               ?FootballGoalieGoHomePriority@Villager@@QAEMPAVFootball@@@Z                          // 0x0075f045    e8e6ffffff
                          {disp32} fsubr     dword ptr [_rdata_float1p0]                   // 0x0075f04a    d82d90a38a00
                          ret                0x0004                                        // 0x0075f050    c20400
                          nop                                                              // 0x0075f053    90
@@ -3215,13 +3319,15 @@ _jmp_addr_0x0075f030:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x0075f05d    90
                          nop                                                              // 0x0075f05e    90
                          nop                                                              // 0x0075f05f    90
+?FootballGoaliePassPriority@Villager@@QAEMPAVFootball@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0075f060    8b442404
                          push               eax                                           // 0x0075f064    50
-                         call               _jmp_addr_0x0075e9d0                          // 0x0075f065    e866f9ffff
+                         call               ?FootballDefenderPassPriority@Villager@@QAEMPAVFootball@@@Z                          // 0x0075f065    e866f9ffff
                          ret                0x0004                                        // 0x0075f06a    c20400
                          nop                                                              // 0x0075f06d    90
                          nop                                                              // 0x0075f06e    90
                          nop                                                              // 0x0075f06f    90
+?FootballerIsTouchingBallPrecondition@Villager@@QAE_NPAVFootball@@@Z:
                          push               esi                                           // 0x0075f070    56
                          mov.s              esi, ecx                                      // 0x0075f071    8bf1
                          push               edi                                           // 0x0075f073    57
@@ -3246,6 +3352,7 @@ _jmp_addr_0x0075f030:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x0075f09d    90
                          nop                                                              // 0x0075f09e    90
                          nop                                                              // 0x0075f09f    90
+?FootballerIsNotTouchingBallPrecondition@Villager@@QAE_NPAVFootball@@@Z:
                          push               esi                                           // 0x0075f0a0    56
                          mov.s              esi, ecx                                      // 0x0075f0a1    8bf1
                          push               edi                                           // 0x0075f0a3    57
@@ -3268,13 +3375,14 @@ _jmp_addr_0x0075f030:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x0075f0cd    90
                          nop                                                              // 0x0075f0ce    90
                          nop                                                              // 0x0075f0cf    90
+?FootballerIsNearestBallPrecondition@Villager@@QAE_NPAVFootball@@@Z:
                          push               esi                                           // 0x0075f0d0    56
                          push               edi                                           // 0x0075f0d1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x0075f0d2    8b7c240c
                          mov.s              esi, ecx                                      // 0x0075f0d6    8bf1
                          push               esi                                           // 0x0075f0d8    56
                          mov.s              ecx, edi                                      // 0x0075f0d9    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075f0db    e88038ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075f0db    e88038ddff
                          push               esi                                           // 0x0075f0e0    56
                          mov.s              ecx, edi                                      // 0x0075f0e1    8bcf
                          call               _jmp_addr_0x005347c0                          // 0x0075f0e3    e8d856ddff
@@ -3298,13 +3406,14 @@ _jmp_addr_0x0075f030:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x0075f0fd    90
                          nop                                                              // 0x0075f0fe    90
                          nop                                                              // 0x0075f0ff    90
+?FootballerIsNotNearestBallPrecondition@Villager@@QAE_NPAVFootball@@@Z:
                          push               esi                                           // 0x0075f100    56
                          push               edi                                           // 0x0075f101    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x0075f102    8b7c240c
                          mov.s              esi, ecx                                      // 0x0075f106    8bf1
                          push               esi                                           // 0x0075f108    56
                          mov.s              ecx, edi                                      // 0x0075f109    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075f10b    e85038ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075f10b    e85038ddff
                          push               esi                                           // 0x0075f110    56
                          mov.s              ecx, edi                                      // 0x0075f111    8bcf
                          call               _jmp_addr_0x005347c0                          // 0x0075f113    e8a856ddff
@@ -3326,6 +3435,7 @@ _jmp_addr_0x0075f030:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x0075f12d    90
                          nop                                                              // 0x0075f12e    90
                          nop                                                              // 0x0075f12f    90
+?FootballerIsAtHomePrecondition@Villager@@QAEIPAVFootball@@@Z:
                          sub                esp, 0x0c                                     // 0x0075f130    83ec0c
                          push               esi                                           // 0x0075f133    56
                          push               edi                                           // 0x0075f134    57
@@ -3333,7 +3443,7 @@ _jmp_addr_0x0075f030:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          mov.s              esi, ecx                                      // 0x0075f139    8bf1
                          push               esi                                           // 0x0075f13b    56
                          mov.s              ecx, edi                                      // 0x0075f13c    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075f13e    e81d38ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075f13e    e81d38ddff
                          neg                eax                                           // 0x0075f143    f7d8
                          sbb.s              eax, eax                                      // 0x0075f145    1bc0
                          inc                eax                                           // 0x0075f147    40
@@ -3368,6 +3478,7 @@ _jmp_addr_0x0075f181:    xor.s              eax, eax                            
                          nop                                                              // 0x0075f18d    90
                          nop                                                              // 0x0075f18e    90
                          nop                                                              // 0x0075f18f    90
+?FootballerIsNotAtHomePrecondition@Villager@@QAEIPAVFootball@@@Z:
                          sub                esp, 0x0c                                     // 0x0075f190    83ec0c
                          push               esi                                           // 0x0075f193    56
                          push               edi                                           // 0x0075f194    57
@@ -3375,7 +3486,7 @@ _jmp_addr_0x0075f181:    xor.s              eax, eax                            
                          mov.s              esi, ecx                                      // 0x0075f199    8bf1
                          push               esi                                           // 0x0075f19b    56
                          mov.s              ecx, edi                                      // 0x0075f19c    8bcf
-                         call               _jmp_addr_0x00532960                          // 0x0075f19e    e8bd37ddff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z                          // 0x0075f19e    e8bd37ddff
                          neg                eax                                           // 0x0075f1a3    f7d8
                          sbb.s              eax, eax                                      // 0x0075f1a5    1bc0
                          inc                eax                                           // 0x0075f1a7    40
@@ -3410,6 +3521,7 @@ _jmp_addr_0x0075f1e1:    xor.s              eax, eax                            
                          nop                                                              // 0x0075f1ed    90
                          nop                                                              // 0x0075f1ee    90
                          nop                                                              // 0x0075f1ef    90
+?FootballerIsQuiteNearBallPrecondition@Villager@@QAEIPAVFootball@@@Z:
                          push               esi                                           // 0x0075f1f0    56
                          mov.s              esi, ecx                                      // 0x0075f1f1    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x0075f1f3    8b4c2408
@@ -3438,6 +3550,7 @@ _jmp_addr_0x0075f222:    xor.s              eax, eax                            
                          nop                                                              // 0x0075f22d    90
                          nop                                                              // 0x0075f22e    90
                          nop                                                              // 0x0075f22f    90
+?FootballerIsNotQuiteNearBallPrecondition@Villager@@QAEIPAVFootball@@@Z:
                          push               esi                                           // 0x0075f230    56
                          mov.s              esi, ecx                                      // 0x0075f231    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x0075f233    8b4c2408
@@ -3466,6 +3579,7 @@ _jmp_addr_0x0075f262:    xor.s              eax, eax                            
                          nop                                                              // 0x0075f26d    90
                          nop                                                              // 0x0075f26e    90
                          nop                                                              // 0x0075f26f    90
+?StartMoveToPickUpBallForDeadBall@Villager@@QAEIXZ:
                          push               esi                                           // 0x0075f270    56
                          mov.s              esi, ecx                                      // 0x0075f271    8bf1
                          call               ?GetFootball@Villager@@QAEPAVFootball@@XZ     // 0x0075f273    e8282cffff
@@ -3506,6 +3620,7 @@ _jmp_addr_0x0075f292:    mov.s              ecx, esi                            
                          nop                                                              // 0x0075f2bd    90
                          nop                                                              // 0x0075f2be    90
                          nop                                                              // 0x0075f2bf    90
+?ArrivedAtPickUpBallForDeadBall@Villager@@QAEIXZ:
                          push               esi                                           // 0x0075f2c0    56
                          mov.s              esi, ecx                                      // 0x0075f2c1    8bf1
                          call               ?GetFootball@Villager@@QAEPAVFootball@@XZ     // 0x0075f2c3    e8d82bffff
@@ -3531,12 +3646,14 @@ _jmp_addr_0x0075f292:    mov.s              ecx, esi                            
                          nop                                                              // 0x0075f2ed    90
                          nop                                                              // 0x0075f2ee    90
                          nop                                                              // 0x0075f2ef    90
+?ArrivedAtPutDownBallForDeadBallStart@Villager@@QAEIXZ:
                          push               0x1                                           // 0x0075f2f0    6a01
                          push               0x51                                          // 0x0075f2f2    6a51
                          call               ?PlayAnimThenSetState@Living@@QAEXEK@Z        // 0x0075f2f4    e8c7d7e8ff
                          mov                eax, 0x00000001                               // 0x0075f2f9    b801000000
                          ret                                                              // 0x0075f2fe    c3
                          nop                                                              // 0x0075f2ff    90
+?ArrivedAtPutDownBallForDeadBallEnd@Villager@@QAEIXZ:
                          push               ecx                                           // 0x0075f300    51
                          push               ebx                                           // 0x0075f301    53
                          push               ebp                                           // 0x0075f302    55
@@ -3589,6 +3706,7 @@ _jmp_addr_0x0075f360:    push               0x4f                                
                          ret                                                              // 0x0075f37d    c3
                          nop                                                              // 0x0075f37e    90
                          nop                                                              // 0x0075f37f    90
+?FootballMoveToBall@Villager@@QAEIXZ:
                          push               esi                                           // 0x0075f380    56
                          mov.s              esi, ecx                                      // 0x0075f381    8bf1
                          call               ?GetFootball@Villager@@QAEPAVFootball@@XZ     // 0x0075f383    e8182bffff
