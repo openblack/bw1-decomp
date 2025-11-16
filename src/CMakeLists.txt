@@ -374,6 +374,7 @@ set(SOURCES_001
     c/Villager.0976.c
     c/VillagerInfo.0977.c
     c/Villager.0977.c
+    c/VillagerLeader.c
     asm/unprocessed/runblack.reassemble.0987.00756e80-007676e0.asm
     asm/unprocessed/runblack.reassemble.0990.007676e0-007678a0.asm
     asm/unprocessed/runblack.reassemble.0993.007678a0-007791d0.asm
