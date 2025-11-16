@@ -390,6 +390,7 @@ set(SOURCES_001
     c/VillagerLeader.c
     c/Villagernames.c  # Case is matching vanilla's typo
     c/VillagerPlaytime.c
+    c/VillagerReaction.c
     asm/unprocessed/runblack.reassemble.0987.00756e80-007676e0.asm
     asm/unprocessed/runblack.reassemble.0990.007676e0-007678a0.asm
     asm/unprocessed/runblack.reassemble.0993.007678a0-007791d0.asm

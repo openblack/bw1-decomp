@@ -196,83 +196,10 @@
 .globl ?StopReacting@Villager@@UAEXXZ
 .globl ?StorePreviousState@Villager@@UAEXXZ
 .globl ?UpdateHowImpressed@Villager@@UAEXPAVReaction@@H@Z
-.globl _globl_ct_0x00763310
-.globl _globl_ct_0x00763340
-.globl _globl_ct_0x00763370
 .globl _globl_ct_0x007675b0
 .globl _globl_ct_0x007675e0
 .globl _globl_ct_0x00767610
 
-_globl_ct_0x00763310:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00763310    8a0d34c9fa00
-                         mov                al, 0x01                                      // 0x00763316    b001
-                         test               al, cl                                        // 0x00763318    84c8
-                         {disp8} jne        _jmp_addr_0x00763324                          // 0x0076331a    7508
-                         or.s               cl, al                                        // 0x0076331c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x0076331e    880d34c9fa00
-_jmp_addr_0x00763324:    {disp32} jmp       _jmp_addr_0x00763330                          // 0x00763324    e907000000
-                         nop                                                              // 0x00763329    90
-                         nop                                                              // 0x0076332a    90
-                         nop                                                              // 0x0076332b    90
-                         nop                                                              // 0x0076332c    90
-                         nop                                                              // 0x0076332d    90
-                         nop                                                              // 0x0076332e    90
-                         nop                                                              // 0x0076332f    90
-_jmp_addr_0x00763330:    push               0x00407870                                    // 0x00763330    6870784000
-                         call               _atexit                                       // 0x00763335    e857240600
-                         pop                ecx                                           // 0x0076333a    59
-                         ret                                                              // 0x0076333b    c3
-                         nop                                                              // 0x0076333c    90
-                         nop                                                              // 0x0076333d    90
-                         nop                                                              // 0x0076333e    90
-                         nop                                                              // 0x0076333f    90
-_globl_ct_0x00763340:    {disp32} jmp       _jmp_addr_0x00763350                          // 0x00763340    e90b000000
-                         nop                                                              // 0x00763345    90
-                         nop                                                              // 0x00763346    90
-                         nop                                                              // 0x00763347    90
-                         nop                                                              // 0x00763348    90
-                         nop                                                              // 0x00763349    90
-                         nop                                                              // 0x0076334a    90
-                         nop                                                              // 0x0076334b    90
-                         nop                                                              // 0x0076334c    90
-                         nop                                                              // 0x0076334d    90
-                         nop                                                              // 0x0076334e    90
-                         nop                                                              // 0x0076334f    90
-_jmp_addr_0x00763350:    {disp32} fld       dword ptr [rdata_bytes + 0xf19d8]             // 0x00763350    d905d8a99900
-                         {disp32} fmul      dword ptr [rdata_bytes + 0xf19d4]             // 0x00763356    d80dd4a99900
-                         {disp32} fstp      dword ptr [data_bytes + 0x3f3e34]             // 0x0076335c    d91d349edb00
-                         ret                                                              // 0x00763362    c3
-                         nop                                                              // 0x00763363    90
-                         nop                                                              // 0x00763364    90
-                         nop                                                              // 0x00763365    90
-                         nop                                                              // 0x00763366    90
-                         nop                                                              // 0x00763367    90
-                         nop                                                              // 0x00763368    90
-                         nop                                                              // 0x00763369    90
-                         nop                                                              // 0x0076336a    90
-                         nop                                                              // 0x0076336b    90
-                         nop                                                              // 0x0076336c    90
-                         nop                                                              // 0x0076336d    90
-                         nop                                                              // 0x0076336e    90
-                         nop                                                              // 0x0076336f    90
-_globl_ct_0x00763370:    {disp32} jmp       _jmp_addr_0x00763380                          // 0x00763370    e90b000000
-                         nop                                                              // 0x00763375    90
-                         nop                                                              // 0x00763376    90
-                         nop                                                              // 0x00763377    90
-                         nop                                                              // 0x00763378    90
-                         nop                                                              // 0x00763379    90
-                         nop                                                              // 0x0076337a    90
-                         nop                                                              // 0x0076337b    90
-                         nop                                                              // 0x0076337c    90
-                         nop                                                              // 0x0076337d    90
-                         nop                                                              // 0x0076337e    90
-                         nop                                                              // 0x0076337f    90
-_jmp_addr_0x00763380:    {disp32} mov       dword ptr [data_bytes + 0x3f3e30], 0xffffffff // 0x00763380    c705309edb00ffffffff
-                         ret                                                              // 0x0076338a    c3
-                         nop                                                              // 0x0076338b    90
-                         nop                                                              // 0x0076338c    90
-                         nop                                                              // 0x0076338d    90
-                         nop                                                              // 0x0076338e    90
-                         nop                                                              // 0x0076338f    90
 ?IsAvailableForReaction@Villager@@UAE_NW4REACTION@@@Z:
                          push               esi                                           // 0x00763390    56
                          mov.s              esi, ecx                                      // 0x00763391    8bf1
