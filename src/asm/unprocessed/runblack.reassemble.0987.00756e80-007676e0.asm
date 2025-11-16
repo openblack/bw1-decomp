@@ -273,6 +273,8 @@
 .globl _globl_ct_0x007675e0
 .globl _globl_ct_0x00767610
 .globl _AddDrawing__12VillagerNameFv
+.globl ?HousewifeGivenBirth@Villager@@QAEIXZ
+.globl ?CheckSatisfyForChildren@Villager@@QAEIXZ
 
 ?HousewifeLookForWork@Villager@@QAEIXZ:
                          call               ?GetAbode@Villager@@QAEPAVAbode@@XZ           // 0x00761c00    e85b05ffff
@@ -1133,6 +1135,8 @@ _jmp_addr_0x0076248b:    mov                eax, 0x00000001                     
                          nop                                                              // 0x0076249d    90
                          nop                                                              // 0x0076249e    90
                          nop                                                              // 0x0076249f    90
+
+?HousewifeGivenBirth@Villager@@QAEIXZ:
                          {disp32} mov       word ptr [ecx + 0x000000f8], 0x0000           // 0x007624a0    66c781f80000000000
                          {disp32} jmp       ?GoHome@Villager@@QAE_NXZ                     // 0x007624a9    e9c2ddffff
                          nop                                                              // 0x007624ae    90
@@ -1337,6 +1341,8 @@ _jmp_addr_0x00762640:    {disp8} mov        ecx, dword ptr [edi + 0x28]         
                          nop                                                              // 0x0076266d    90
                          nop                                                              // 0x0076266e    90
                          nop                                                              // 0x0076266f    90
+
+?CheckSatisfyForChildren@Villager@@QAEIXZ:
                          xor.s              eax, eax                                      // 0x00762670    33c0
                          ret                                                              // 0x00762672    c3
                          nop                                                              // 0x00762673    90
