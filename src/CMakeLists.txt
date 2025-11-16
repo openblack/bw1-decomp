@@ -374,6 +374,19 @@ set(SOURCES_001
     c/Villager.0976.c
     c/VillagerInfo.0977.c
     c/Villager.0977.c
+    c/VillagerCheck.c
+    c/VillagerChild.c
+    c/VillagerCivic.c
+    c/VillagerConstruction.c
+    c/VillagerDance.c
+    c/VillagerFarmer.c
+    c/VillagerFireman.c
+    c/VillagerFisherman.c
+    c/VillagerFood.c
+    c/VillagerFootball.c
+    c/VillagerForester.c
+    c/VillagerHome.c
+    c/VillagerHousewife.c
     c/VillagerLeader.c
     asm/unprocessed/runblack.reassemble.0987.00756e80-007676e0.asm
     asm/unprocessed/runblack.reassemble.0990.007676e0-007678a0.asm
