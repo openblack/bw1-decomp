@@ -1080,6 +1080,8 @@ bool32_t __fastcall HousewifeCalledToMakeDinner__8VillagerFv(struct Villager* th
 bool32_t __fastcall HousewifeAskForMeal__8VillagerFv(struct Villager* this) asm("?HousewifeAskForMeal@Villager@@QAEIXZ");
 // win1.41 00762670 mac 10589740 Villager::CheckSatisfyForChildren(void)
 bool32_t __fastcall CheckSatisfyForChildren__8VillagerFv(struct Villager* this) asm("?CheckSatisfyForChildren@Villager@@QAEIXZ");
+// win1.41 007626e0 mac 1058ad90 Villager::CheckLeaderNeeded(void)
+bool32_t __fastcall CheckLeaderNeeded__8VillagerFv(struct Villager* this) asm("?CheckLeaderNeeded@Villager@@QAEIXZ");
 // win1.41 007630e0 mac 1058c1c0 Villager::IsPlaytime(void)
 bool __fastcall IsPlaytime__8VillagerFv(struct Villager* this) asm("?IsPlaytime@Villager@@QAE_NXZ");
 // win1.41 007630f0 mac 1058c170 Villager::CheckPlaytimeAvailableToPlayPFootball(void)

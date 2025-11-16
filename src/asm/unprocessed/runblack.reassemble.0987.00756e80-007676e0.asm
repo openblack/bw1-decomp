@@ -241,6 +241,7 @@
 .globl _globl_ct_0x007675e0
 .globl _globl_ct_0x00767610
 .globl _AddDrawing__12VillagerNameFv
+.globl ?CheckLeaderNeeded@Villager@@QAEIXZ
 
 _globl_ct_0x00762680:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00762680    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x00762686    b001
@@ -293,6 +294,7 @@ _jmp_addr_0x007626c0:    {disp32} fld       dword ptr [rdata_bytes + 0xf19b4]   
                          nop                                                              // 0x007626dd    90
                          nop                                                              // 0x007626de    90
                          nop                                                              // 0x007626df    90
+?CheckLeaderNeeded@Villager@@QAEIXZ:
                          xor.s              eax, eax                                      // 0x007626e0    33c0
                          ret                                                              // 0x007626e2    c3
                          nop                                                              // 0x007626e3    90
