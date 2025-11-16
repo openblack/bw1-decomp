@@ -58,6 +58,7 @@ struct Pot;
 struct Reaction;
 struct StoragePit;
 struct Town;
+struct Tree;
 struct Villager;
 struct WorshipSite;
 
@@ -889,8 +890,38 @@ bool32_t __fastcall FootballMoveToBall__8VillagerFv(struct Villager* this) asm("
 bool32_t __fastcall CheckSatisfyWoodDesire__8VillagerFv(struct Villager* this) asm("?CheckSatisfyWoodDesire@Villager@@QAEIXZ");
 // win1.41 0075f510 mac 10585d60 Villager::DecideHowToGetWood(int, BigForest * *, Forest * *)
 uint32_t __fastcall DecideHowToGetWood__8VillagerFiPP9BigForestPP6Forest(struct Villager* this, const void* edx, int param_1, struct BigForest** param_2, struct Forest** param_3) asm("?DecideHowToGetWood@Villager@@QAEIHPAPAVBigForest@@PAPAVForest@@@Z");
+// win1.41 0075f710 mac 10585d00 Villager::ForesterGotoForest(void)
+bool32_t __fastcall ForesterGotoForest__8VillagerFv(struct Villager* this) asm("?ForesterGotoForest@Villager@@QAEIXZ");
 // win1.41 0075f720 mac 10585be0 Villager::VillagerGotoForest(Forest *, VILLAGER_STATES)
 bool32_t __fastcall VillagerGotoForest__8VillagerFP6Forest15VILLAGER_STATES(struct Villager* this, const void* edx, struct Forest* param_1, enum VILLAGER_STATES param_2) asm("?VillagerGotoForest@Villager@@QAEIPAVForest@@W4VILLAGER_STATES@@@Z");
+// win1.41 0075f7d0 mac 105859d0 Villager::ForesterMoveToForest(void)
+bool32_t __fastcall ForesterMoveToForest__8VillagerFv(struct Villager* this) asm("?ForesterMoveToForest@Villager@@QAEIXZ");
+// win1.41 0075f930 mac 10585830 Villager::ForesterArrivesAtForest(void)
+bool32_t __fastcall ForesterArrivesAtForest__8VillagerFv(struct Villager* this) asm("?ForesterArrivesAtForest@Villager@@QAEIXZ");
+// win1.41 0075f9e0 mac 10585660 Villager::ArrivesAtBigForest(void)
+bool32_t __fastcall ArrivesAtBigForest__8VillagerFv(struct Villager* this) asm("?ArrivesAtBigForest@Villager@@QAEIXZ");
+// win1.41 0075fab0 mac 10585610 Villager::ArrivesAtBigForestForBuilding(void)
+bool32_t __fastcall ArrivesAtBigForestForBuilding__8VillagerFv(struct Villager* this) asm("?ArrivesAtBigForestForBuilding@Villager@@QAEIXZ");
+// win1.41 0075fac0 mac 105854f0 Villager::ForesterChopsTree(void)
+bool32_t __fastcall ForesterChopsTree__8VillagerFv(struct Villager* this) asm("?ForesterChopsTree@Villager@@QAEIXZ");
+// win1.41 0075fb40 mac 10585480 Villager::ForesterChopsTreeForBuilding(void)
+bool32_t __fastcall ForesterChopsTreeForBuilding__8VillagerFv(struct Villager* this) asm("?ForesterChopsTreeForBuilding@Villager@@QAEIXZ");
+// win1.41 0075fb60 mac 105853f0 Villager::ForesterFinishedForestering(void)
+bool32_t __fastcall ForesterFinishedForestering__8VillagerFv(struct Villager* this) asm("?ForesterFinishedForestering@Villager@@QAEIXZ");
+// win1.41 0075fb90 mac 10585390 Villager::TakeWoodFromTreeForBuilding(void)
+bool32_t __fastcall TakeWoodFromTreeForBuilding__8VillagerFv(struct Villager* this) asm("?TakeWoodFromTreeForBuilding@Villager@@QAEIXZ");
+// win1.41 0075fba0 mac 10585340 Villager::TakeWoodFromPotForBuilding(void)
+bool32_t __fastcall TakeWoodFromPotForBuilding__8VillagerFv(struct Villager* this) asm("?TakeWoodFromPotForBuilding@Villager@@QAEIXZ");
+// win1.41 0075fbb0 mac 10585300 Villager::TakeWoodFromPot(void)
+bool32_t __fastcall TakeWoodFromPot__8VillagerFv(struct Villager* this) asm("?TakeWoodFromPot@Villager@@QAEIXZ");
+// win1.41 0075fbc0 mac 10585210 Villager::TakeWoodFromTree(void)
+bool32_t __fastcall TakeWoodFromTree__8VillagerFv(struct Villager* this) asm("?TakeWoodFromTree@Villager@@QAEIXZ");
+// win1.41 0075fc30 mac 10585080 Villager::GotWoodDecideWhatToDo(void)
+bool32_t __fastcall GotWoodDecideWhatToDo__8VillagerFv(struct Villager* this) asm("?GotWoodDecideWhatToDo@Villager@@QAEIXZ");
+// win1.41 0075fd00 mac 10584e30 Villager::FindTreeNearVillager(Tree * *)
+bool32_t __fastcall FindTreeNearVillager__8VillagerFPP4Tree(struct Villager* this, const void* edx, struct Tree* * param_1) asm("?FindTreeNearVillager@Villager@@QAEIPAPAVTree@@@Z");
+// win1.41 0075fe20 mac 10584dc0 Villager::ExitForesting(unsigned char)
+bool32_t __fastcall ExitForesting__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitForesting@Villager@@QAEIE@Z");
 // win1.41 0075ff80 mac 1000a8c0 Villager::CheckNeededForSomething(void)
 bool32_t __fastcall CheckNeededForSomething__8VillagerFv(struct Villager* this) asm("?CheckNeededForSomething@Villager@@QAE_NXZ");
 // win1.41 00760010 mac 10096ee0 Villager::CheckNeededForSpecial(void)

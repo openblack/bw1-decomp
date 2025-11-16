@@ -341,9 +341,18 @@
 .globl _globl_ct_0x007675b0
 .globl _globl_ct_0x007675e0
 .globl _globl_ct_0x00767610
-.globl _jmp_addr_0x0075f930
-.globl _jmp_addr_0x0075fd00
+.globl ?ForesterArrivesAtForest@Villager@@QAEIXZ
+.globl ?FindTreeNearVillager@Villager@@QAEIPAPAVTree@@@Z
 .globl _AddDrawing__12VillagerNameFv
+.globl ?ForesterGotoForest@Villager@@QAEIXZ
+.globl ?ForesterMoveToForest@Villager@@QAEIXZ
+.globl ?ArrivesAtBigForest@Villager@@QAEIXZ
+.globl ?ArrivesAtBigForestForBuilding@Villager@@QAEIXZ
+.globl ?ForesterChopsTree@Villager@@QAEIXZ
+.globl ?ForesterChopsTreeForBuilding@Villager@@QAEIXZ
+.globl ?TakeWoodFromTreeForBuilding@Villager@@QAEIXZ
+.globl ?TakeWoodFromPotForBuilding@Villager@@QAEIXZ
+.globl ?ExitForesting@Villager@@QAEIE@Z
 
 ?CheckSatisfyWoodDesire@Villager@@QAEIXZ:
                          sub                esp, 0x14                                     // 0x0075f4a0    83ec14
@@ -564,6 +573,7 @@ _jmp_addr_0x0075f702:    pop                edi                                 
                          nop                                                              // 0x0075f70d    90
                          nop                                                              // 0x0075f70e    90
                          nop                                                              // 0x0075f70f    90
+?ForesterGotoForest@Villager@@QAEIXZ:
                          {disp32} jmp       ?CheckSatisfyWoodDesire@Villager@@QAEIXZ      // 0x0075f710    e98bfdffff
                          nop                                                              // 0x0075f715    90
                          nop                                                              // 0x0075f716    90
@@ -644,6 +654,7 @@ _jmp_addr_0x0075f7b8:    pop                edi                                 
                          nop                                                              // 0x0075f7cd    90
                          nop                                                              // 0x0075f7ce    90
                          nop                                                              // 0x0075f7cf    90
+?ForesterMoveToForest@Villager@@QAEIXZ:
                          sub                esp, 0x44                                     // 0x0075f7d0    83ec44
                          push               edi                                           // 0x0075f7d3    57
                          mov.s              edi, ecx                                      // 0x0075f7d4    8bf9
@@ -769,12 +780,13 @@ _jmp_addr_0x0075f918:    mov                eax, 0x00000001                     
                          nop                                                              // 0x0075f92d    90
                          nop                                                              // 0x0075f92e    90
                          nop                                                              // 0x0075f92f    90
-_jmp_addr_0x0075f930:    sub                esp, 0x10                                     // 0x0075f930    83ec10
+?ForesterArrivesAtForest@Villager@@QAEIXZ:
+                         sub                esp, 0x10                                     // 0x0075f930    83ec10
                          push               esi                                           // 0x0075f933    56
                          {disp8} lea        eax, dword ptr [esp + 0x04]                   // 0x0075f934    8d442404
                          mov.s              esi, ecx                                      // 0x0075f938    8bf1
                          push               eax                                           // 0x0075f93a    50
-                         call               _jmp_addr_0x0075fd00                          // 0x0075f93b    e8c0030000
+                         call               ?FindTreeNearVillager@Villager@@QAEIPAPAVTree@@@Z                          // 0x0075f93b    e8c0030000
                          sub                eax, 0x00                                     // 0x0075f940    83e800
                          {disp8} je         _jmp_addr_0x0075f9a8                          // 0x0075f943    7463
                          dec                eax                                           // 0x0075f945    48
@@ -829,10 +841,11 @@ _jmp_addr_0x0075f9c8:    mov                eax, dword ptr [esi]                
                          mov.s              ecx, esi                                      // 0x0075f9cc    8bce
                          call               dword ptr [eax + 0x8e8]                       // 0x0075f9ce    ff90e8080000
                          mov.s              ecx, esi                                      // 0x0075f9d4    8bce
-                         call               _jmp_addr_0x0075fb60                          // 0x0075f9d6    e885010000
+                         call               ?ForesterFinishedForestering@Villager@@QAEIXZ // 0x0075f9d6    e885010000
                          pop                esi                                           // 0x0075f9db    5e
                          add                esp, 0x10                                     // 0x0075f9dc    83c410
                          ret                                                              // 0x0075f9df    c3
+?ArrivesAtBigForest@Villager@@QAEIXZ:
                          sub                esp, 0x0c                                     // 0x0075f9e0    83ec0c
                          push               ebx                                           // 0x0075f9e3    53
                          push               esi                                           // 0x0075f9e4    56
@@ -887,7 +900,7 @@ _jmp_addr_0x0075f9c8:    mov                eax, dword ptr [esi]                
                          mov.s              ecx, esi                                      // 0x0075fa5a    8bce
                          call               ?PickupWood@Villager@@QAEXFE@Z                // 0x0075fa5c    e84f1affff
                          mov.s              ecx, esi                                      // 0x0075fa61    8bce
-                         call               _jmp_addr_0x0075fc30                          // 0x0075fa63    e8c8010000
+                         call               ?GotWoodDecideWhatToDo@Villager@@QAEIXZ       // 0x0075fa63    e8c8010000
 _jmp_addr_0x0075fa68:    mov                edx, dword ptr [esi]                          // 0x0075fa68    8b16
                          push               0x000000a3                                    // 0x0075fa6a    68a3000000
                          mov.s              ecx, esi                                      // 0x0075fa6f    8bce
@@ -922,6 +935,7 @@ _jmp_addr_0x0075fa83:    mov                edx, dword ptr [esi]                
                          nop                                                              // 0x0075faad    90
                          nop                                                              // 0x0075faae    90
                          nop                                                              // 0x0075faaf    90
+?ArrivesAtBigForestForBuilding@Villager@@QAEIXZ:
                          mov                eax, 0x00000001                               // 0x0075fab0    b801000000
                          ret                                                              // 0x0075fab5    c3
                          nop                                                              // 0x0075fab6    90
@@ -934,6 +948,7 @@ _jmp_addr_0x0075fa83:    mov                edx, dword ptr [esi]                
                          nop                                                              // 0x0075fabd    90
                          nop                                                              // 0x0075fabe    90
                          nop                                                              // 0x0075fabf    90
+?ForesterChopsTree@Villager@@QAEIXZ:
                          push               ecx                                           // 0x0075fac0    51
                          push               esi                                           // 0x0075fac1    56
                          mov.s              esi, ecx                                      // 0x0075fac2    8bf1
@@ -942,7 +957,7 @@ _jmp_addr_0x0075fa83:    mov                edx, dword ptr [esi]                
                          {disp8} jne        _jmp_addr_0x0075fb03                          // 0x0075facc    7535
                          {disp8} lea        eax, dword ptr [esp + 0x04]                   // 0x0075face    8d442404
                          push               eax                                           // 0x0075fad2    50
-                         call               _jmp_addr_0x0075fd00                          // 0x0075fad3    e828020000
+                         call               ?FindTreeNearVillager@Villager@@QAEIPAPAVTree@@@Z                          // 0x0075fad3    e828020000
                          test               eax, eax                                      // 0x0075fad8    85c0
                          {disp8} je         _jmp_addr_0x0075fb03                          // 0x0075fada    7427
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x0075fadc    8b4c2404
@@ -982,6 +997,7 @@ _jmp_addr_0x0075fb33:    mov                eax, 0x00000001                     
                          nop                                                              // 0x0075fb3d    90
                          nop                                                              // 0x0075fb3e    90
                          nop                                                              // 0x0075fb3f    90
+?ForesterChopsTreeForBuilding@Villager@@QAEIXZ:
                          mov                eax, dword ptr [ecx]                          // 0x0075fb40    8b01
                          push               0x000000a3                                    // 0x0075fb42    68a3000000
                          call               dword ptr [eax + 0x8e8]                       // 0x0075fb47    ff90e8080000
@@ -1000,9 +1016,10 @@ _jmp_addr_0x0075fb33:    mov                eax, 0x00000001                     
                          nop                                                              // 0x0075fb5d    90
                          nop                                                              // 0x0075fb5e    90
                          nop                                                              // 0x0075fb5f    90
-_jmp_addr_0x0075fb60:    cmp                word ptr [ecx + 0x000000f6], 0x00             // 0x0075fb60    6683b9f600000000
+?ForesterFinishedForestering@Villager@@QAEIXZ:
+                         cmp                word ptr [ecx + 0x000000f6], 0x00             // 0x0075fb60    6683b9f600000000
                          {disp8} jle        _jmp_addr_0x0075fb6f                          // 0x0075fb68    7e05
-                         {disp32} jmp       _jmp_addr_0x0075fc30                          // 0x0075fb6a    e9c1000000
+                         {disp32} jmp       ?GotWoodDecideWhatToDo@Villager@@QAEIXZ       // 0x0075fb6a    e9c1000000
 _jmp_addr_0x0075fb6f:    mov                eax, dword ptr [ecx]                          // 0x0075fb6f    8b01
                          push               0x000000a3                                    // 0x0075fb71    68a3000000
                          call               dword ptr [eax + 0x8e8]                       // 0x0075fb76    ff90e8080000
@@ -1022,7 +1039,8 @@ _jmp_addr_0x0075fb6f:    mov                eax, dword ptr [ecx]                
                          nop                                                              // 0x0075fb8d    90
                          nop                                                              // 0x0075fb8e    90
                          nop                                                              // 0x0075fb8f    90
-                         {disp32} jmp       _jmp_addr_0x0075fbc0                          // 0x0075fb90    e92b000000
+?TakeWoodFromTreeForBuilding@Villager@@QAEIXZ:
+                         {disp32} jmp       ?TakeWoodFromTree@Villager@@QAEIXZ            // 0x0075fb90    e92b000000
                          nop                                                              // 0x0075fb95    90
                          nop                                                              // 0x0075fb96    90
                          nop                                                              // 0x0075fb97    90
@@ -1034,7 +1052,8 @@ _jmp_addr_0x0075fb6f:    mov                eax, dword ptr [ecx]                
                          nop                                                              // 0x0075fb9d    90
                          nop                                                              // 0x0075fb9e    90
                          nop                                                              // 0x0075fb9f    90
-                         {disp32} jmp       _jmp_addr_0x0075fbb0                          // 0x0075fba0    e90b000000
+?TakeWoodFromPotForBuilding@Villager@@QAEIXZ:
+                         {disp32} jmp       ?TakeWoodFromPot@Villager@@QAEIXZ             // 0x0075fba0    e90b000000
                          nop                                                              // 0x0075fba5    90
                          nop                                                              // 0x0075fba6    90
                          nop                                                              // 0x0075fba7    90
@@ -1046,7 +1065,8 @@ _jmp_addr_0x0075fb6f:    mov                eax, dword ptr [ecx]                
                          nop                                                              // 0x0075fbad    90
                          nop                                                              // 0x0075fbae    90
                          nop                                                              // 0x0075fbaf    90
-_jmp_addr_0x0075fbb0:    mov                eax, 0x00000001                               // 0x0075fbb0    b801000000
+?TakeWoodFromPot@Villager@@QAEIXZ:
+                         mov                eax, 0x00000001                               // 0x0075fbb0    b801000000
                          ret                                                              // 0x0075fbb5    c3
                          nop                                                              // 0x0075fbb6    90
                          nop                                                              // 0x0075fbb7    90
@@ -1058,12 +1078,13 @@ _jmp_addr_0x0075fbb0:    mov                eax, 0x00000001                     
                          nop                                                              // 0x0075fbbd    90
                          nop                                                              // 0x0075fbbe    90
                          nop                                                              // 0x0075fbbf    90
-_jmp_addr_0x0075fbc0:    push               ecx                                           // 0x0075fbc0    51
+?TakeWoodFromTree@Villager@@QAEIXZ:
+                         push               ecx                                           // 0x0075fbc0    51
                          push               esi                                           // 0x0075fbc1    56
                          {disp8} lea        eax, dword ptr [esp + 0x04]                   // 0x0075fbc2    8d442404
                          mov.s              esi, ecx                                      // 0x0075fbc6    8bf1
                          push               eax                                           // 0x0075fbc8    50
-                         call               _jmp_addr_0x0075fd00                          // 0x0075fbc9    e832010000
+                         call               ?FindTreeNearVillager@Villager@@QAEIPAPAVTree@@@Z                          // 0x0075fbc9    e832010000
                          test               eax, eax                                      // 0x0075fbce    85c0
                          mov                edx, dword ptr [esi]                          // 0x0075fbd0    8b16
                          {disp8} je         _jmp_addr_0x0075fc0c                          // 0x0075fbd2    7438
@@ -1085,7 +1106,7 @@ _jmp_addr_0x0075fbf6:    mov                eax, dword ptr [esi]                
                          mov.s              ecx, esi                                      // 0x0075fbfa    8bce
                          call               dword ptr [eax + 0x8e8]                       // 0x0075fbfc    ff90e8080000
                          mov.s              ecx, esi                                      // 0x0075fc02    8bce
-                         call               _jmp_addr_0x0075f930                          // 0x0075fc04    e827fdffff
+                         call               ?ForesterArrivesAtForest@Villager@@QAEIXZ     // 0x0075fc04    e827fdffff
                          pop                esi                                           // 0x0075fc09    5e
                          pop                ecx                                           // 0x0075fc0a    59
                          ret                                                              // 0x0075fc0b    c3
@@ -1111,7 +1132,8 @@ _jmp_addr_0x0075fc0c:    push               0x000000a3                          
                          nop                                                              // 0x0075fc2d    90
                          nop                                                              // 0x0075fc2e    90
                          nop                                                              // 0x0075fc2f    90
-_jmp_addr_0x0075fc30:    push               esi                                           // 0x0075fc30    56
+?GotWoodDecideWhatToDo@Villager@@QAEIXZ:
+                         push               esi                                           // 0x0075fc30    56
                          mov.s              esi, ecx                                      // 0x0075fc31    8bf1
                          cmp                word ptr [esi + 0x000000f6], 0x00             // 0x0075fc33    6683bef600000000
                          {disp32} jbe       _jmp_addr_0x0075fcdc                          // 0x0075fc3b    0f869b000000
@@ -1184,7 +1206,8 @@ _jmp_addr_0x0075fceb:    mov                eax, 0x00000001                     
                          nop                                                              // 0x0075fcfd    90
                          nop                                                              // 0x0075fcfe    90
                          nop                                                              // 0x0075fcff    90
-_jmp_addr_0x0075fd00:    sub                esp, 0x28                                     // 0x0075fd00    83ec28
+?FindTreeNearVillager@Villager@@QAEIPAPAVTree@@@Z:
+                         sub                esp, 0x28                                     // 0x0075fd00    83ec28
                          push               ebx                                           // 0x0075fd03    53
                          push               ebp                                           // 0x0075fd04    55
                          push               esi                                           // 0x0075fd05    56
@@ -1297,6 +1320,7 @@ _jmp_addr_0x0075fe05:    pop                edi                                 
                          nop                                                              // 0x0075fe1d    90
                          nop                                                              // 0x0075fe1e    90
                          nop                                                              // 0x0075fe1f    90
+?ExitForesting@Villager@@QAEIE@Z:
                          {disp32} mov       dword ptr [ecx + 0x00000118], 0x00000000      // 0x0075fe20    c7811801000000000000
                          mov                eax, 0x00000001                               // 0x0075fe2a    b801000000
                          ret                0x0004                                        // 0x0075fe2f    c20400
@@ -8723,7 +8747,7 @@ _jmp_addr_0x00764856:    mov                edx, dword ptr [edi]                
                          mov.s              ecx, esi                                      // 0x00764896    8bce
                          call               ?PickupWood@Villager@@QAEXFE@Z                // 0x00764898    e813ccfeff
 _jmp_addr_0x0076489d:    mov.s              ecx, esi                                      // 0x0076489d    8bce
-                         call               _jmp_addr_0x0075fc30                          // 0x0076489f    e88cb3ffff
+                         call               ?GotWoodDecideWhatToDo@Villager@@QAEIXZ       // 0x0076489f    e88cb3ffff
                          pop                edi                                           // 0x007648a4    5f
                          pop                esi                                           // 0x007648a5    5e
                          pop                ebx                                           // 0x007648a6    5b

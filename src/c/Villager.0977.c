@@ -7619,7 +7619,7 @@ bool32_t __fastcall CheckInteractWithTree__8VillagerFv(struct Villager* this)
     asm("{disp8} lea        eax, dword ptr [esp + 0x04]");                   // 0x007576b9    8d442404
     asm("push               eax");                                           // 0x007576bd    50
     asm("mov.s              ecx, esi");                                      // 0x007576be    8bce
-    asm("call               _jmp_addr_0x0075fd00");                          // 0x007576c0    e83b860000
+    asm("call               ?FindTreeNearVillager@Villager@@QAEIPAPAVTree@@@Z");                          // 0x007576c0    e83b860000
     asm("test               eax, eax");                                      // 0x007576c5    85c0
     asm("{disp8} je         _jmp_addr_0x00757703");                          // 0x007576c7    743a
     asm("mov                edx, dword ptr [esi]");                          // 0x007576c9    8b16
@@ -7642,7 +7642,7 @@ bool32_t __fastcall CheckInteractWithTree__8VillagerFv(struct Villager* this)
     asm("mov.s              ecx, esi");                                      // 0x007576f1    8bce
     asm("call               dword ptr [eax + 0x8e8]");                       // 0x007576f3    ff90e8080000
     asm("mov.s              ecx, esi");                                      // 0x007576f9    8bce
-    asm("call               _jmp_addr_0x0075f930");                          // 0x007576fb    e830820000
+    asm("call               ?ForesterArrivesAtForest@Villager@@QAEIXZ");                          // 0x007576fb    e830820000
     asm("pop                esi");                                           // 0x00757700    5e
     asm("pop                ecx");                                           // 0x00757701    59
     asm("ret");                                                              // 0x00757702    c3
