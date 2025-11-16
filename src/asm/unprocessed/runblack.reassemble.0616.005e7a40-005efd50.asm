@@ -86,7 +86,7 @@
 .extern ?ResolveLoad@Object@@UAEXXZ
 .extern @SetLife__6ObjectFf@12
 .extern _jmp_addr_0x0063a710
-.extern _jmp_addr_0x0063a810
+.extern ?CreateSmokyStuff@Object@@QAEIJMULH3DColor@@@Z
 .extern _jmp_addr_0x00644f00
 .extern _jmp_addr_0x00647460
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
@@ -6852,7 +6852,7 @@ _jmp_addr_0x005ec445:    push               ecx                                 
                          push               0x0                                           // 0x005ec44d    6a00
                          mov.s              ecx, esi                                      // 0x005ec44f    8bce
                          mov                dword ptr [eax], 0xffffffff                   // 0x005ec451    c700ffffffff
-                         call               _jmp_addr_0x0063a810                          // 0x005ec457    e8b4e30400
+                         call               ?CreateSmokyStuff@Object@@QAEIJMULH3DColor@@@Z // 0x005ec457    e8b4e30400
                          mov                eax, dword ptr [esi]                          // 0x005ec45c    8b06
                          push               0x0                                           // 0x005ec45e    6a00
                          mov.s              ecx, esi                                      // 0x005ec460    8bce

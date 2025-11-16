@@ -28,7 +28,7 @@
 .globl _jmp_addr_0x0063a6a0
 .globl _jmp_addr_0x0063a710
 .extern ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
-.globl _jmp_addr_0x0063a810
+.globl ?CreateSmokyStuff@Object@@QAEIJMULH3DColor@@@Z
 .extern ?ApplyWaterSpell@Object@@UAEMPAVSpellWater@@@Z
 .globl _jmp_addr_0x0063a940
 .globl ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
@@ -273,7 +273,8 @@ _jmp_addr_0x0063a7f8:    xor.s              eax, eax                            
                          nop                                                              // 0x0063a80d    90
                          nop                                                              // 0x0063a80e    90
                          nop                                                              // 0x0063a80f    90
-_jmp_addr_0x0063a810:    sub                esp, 0x44                                     // 0x0063a810    83ec44
+?CreateSmokyStuff@Object@@QAEIJMULH3DColor@@@Z:
+                         sub                esp, 0x44                                     // 0x0063a810    83ec44
                          push               esi                                           // 0x0063a813    56
                          mov.s              esi, ecx                                      // 0x0063a814    8bf1
                          mov                eax, dword ptr [esi]                          // 0x0063a816    8b06
