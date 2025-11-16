@@ -235,7 +235,7 @@
 .extern ?SigmoidThreshold@GUtils@@SAMMM@Z
 .extern ?StartMoveToObject@Villager@@QAE_NPAVObject@@W4VILLAGER_STATES@@@Z
 .extern ?GetFootball@Villager@@QAEPAVFootball@@XZ
-.extern _jmp_addr_0x0075d130
+.extern ?AssignFootballSubState@Villager@@QAEXXZ
 .extern ?GoHome@Villager@@QAE_NXZ
 .extern ?SetupMoveToPos@Villager@@QAE_NABUMapCoords@@W4VILLAGER_STATES@@@Z
 .extern _jmp_addr_0x0077db00
@@ -394,7 +394,7 @@
 .globl _jmp_addr_0x005326e0
 .globl _jmp_addr_0x00532730
 .globl _jmp_addr_0x00532810
-.globl _jmp_addr_0x00532960
+.globl ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z
 .globl ?GetGoalPosition@Football@@QAEXK@Z
 .globl _jmp_addr_0x00532eb0
 .globl _jmp_addr_0x00532f60
@@ -13103,7 +13103,8 @@ _jmp_addr_0x00532947:    cmp                ebx, 0x05                           
                          nop                                                                     // 0x0053295d    90
                          nop                                                                     // 0x0053295e    90
                          nop                                                                     // 0x0053295f    90
-_jmp_addr_0x00532960:    {disp32} mov       eax, dword ptr [ecx + 0x00000224]                    // 0x00532960    8b8124020000
+?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z:
+                         {disp32} mov       eax, dword ptr [ecx + 0x00000224]                    // 0x00532960    8b8124020000
                          test               eax, eax                                             // 0x00532966    85c0
                          {disp8} je         _jmp_addr_0x00532979                                 // 0x00532968    740f
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                          // 0x0053296a    8b4c2404
@@ -15656,7 +15657,7 @@ _jmp_addr_0x00534742:    {disp8} mov        edi, dword ptr [esi + 0x04]         
                          {disp32} mov       byte ptr [edi + 0x00000118], 0x01                    // 0x00534770    c6871801000001
                          {disp8} mov        edi, dword ptr [esp + 0x10]                          // 0x00534777    8b7c2410
 _jmp_addr_0x0053477b:    mov.s              ecx, edi                                             // 0x0053477b    8bcf
-                         call               _jmp_addr_0x0075d130                                 // 0x0053477d    e8ae892200
+                         call               ?AssignFootballSubState@Villager@@QAEXXZ             // 0x0053477d    e8ae892200
                          mov                esi, dword ptr [esi]                                 // 0x00534782    8b36
                          inc                ebx                                                  // 0x00534784    43
                          test               esi, esi                                             // 0x00534785    85f6
@@ -15684,7 +15685,7 @@ _jmp_addr_0x005347a0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          test               esi, esi                                             // 0x005347a7    85f6
                          {disp8} je         _jmp_addr_0x005347b9                                 // 0x005347a9    740e
 _jmp_addr_0x005347ab:    {disp8} mov        ecx, dword ptr [esi + 0x04]                          // 0x005347ab    8b4e04
-                         call               _jmp_addr_0x0075d130                                 // 0x005347ae    e87d892200
+                         call               ?AssignFootballSubState@Villager@@QAEXXZ             // 0x005347ae    e87d892200
                          mov                esi, dword ptr [esi]                                 // 0x005347b3    8b36
                          test               esi, esi                                             // 0x005347b5    85f6
                          {disp8} jne        _jmp_addr_0x005347ab                                 // 0x005347b7    75f2
@@ -15698,7 +15699,7 @@ _jmp_addr_0x005347c0:    push               esi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x005347c2    8b7c240c
                          mov.s              esi, ecx                                             // 0x005347c6    8bf1
                          push               edi                                                  // 0x005347c8    57
-                         call               _jmp_addr_0x00532960                                 // 0x005347c9    e892e1ffff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z   // 0x005347c9    e892e1ffff
                          test               eax, eax                                             // 0x005347ce    85c0
                          {disp8} je         _jmp_addr_0x005347f2                                 // 0x005347d0    7420
                          {disp32} mov       eax, dword ptr [esi + 0x00000224]                    // 0x005347d2    8b8624020000
@@ -15745,7 +15746,7 @@ _jmp_addr_0x00534820:    push               esi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x00534822    8b7c240c
                          mov.s              esi, ecx                                             // 0x00534826    8bf1
                          push               edi                                                  // 0x00534828    57
-                         call               _jmp_addr_0x00532960                                 // 0x00534829    e832e1ffff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z   // 0x00534829    e832e1ffff
                          xor.s              ecx, ecx                                             // 0x0053482e    33c9
                          xor.s              edx, edx                                             // 0x00534830    33d2
                          test               eax, eax                                             // 0x00534832    85c0
@@ -15802,7 +15803,7 @@ _jmp_addr_0x00534860:    sub                esp, 0x08                           
                          push               esi                                                  // 0x005348b4    56
                          mov.s              esi, ecx                                             // 0x005348b5    8bf1
                          push               eax                                                  // 0x005348b7    50
-                         call               _jmp_addr_0x00532960                                 // 0x005348b8    e8a3e0ffff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z   // 0x005348b8    e8a3e0ffff
                          test               eax, eax                                             // 0x005348bd    85c0
                          {disp32} lea       eax, dword ptr [esi + 0x00000224]                    // 0x005348bf    8d8624020000
                          {disp8} jne        _jmp_addr_0x005348cd                                 // 0x005348c5    7506
@@ -15828,7 +15829,7 @@ _jmp_addr_0x005348cd:    pop                esi                                 
                          push               esi                                                  // 0x005348e4    56
                          mov.s              esi, ecx                                             // 0x005348e5    8bf1
                          push               eax                                                  // 0x005348e7    50
-                         call               _jmp_addr_0x00532960                                 // 0x005348e8    e873e0ffff
+                         call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z   // 0x005348e8    e873e0ffff
                          test               eax, eax                                             // 0x005348ed    85c0
                          {disp32} lea       eax, dword ptr [esi + 0x0000022c]                    // 0x005348ef    8d862c020000
                          {disp8} jne        _jmp_addr_0x005348fd                                 // 0x005348f5    7506
