@@ -38,6 +38,10 @@ struct VillagerNameBlock* __fastcall __ct__17VillagerNameBlockFv(struct Villager
 
 // win1.41 007627e0 mac 10012bf0 VillagerNameBlock::DeleteAll(void)
 bool32_t __fastcall DeleteAll__17VillagerNameBlockFv(struct VillagerNameBlock* this) asm("?DeleteAll@VillagerNameBlock@@QAEIXZ");
+// win1.41 00762900 mac inlined VillagerNameBlock::~VillagerNameBlock()
+void __fastcall __dt__17VillagerNameBlockFv(struct VillagerNameBlock* this) asm("??_DVillagerNameBlock@@QAEXXZ");
+// win1.41 00762970 mac inlined VillagerNameBlock::FreeAll(void)
+void __fastcall FreeAll__17VillagerNameBlockFv(struct VillagerNameBlock* this) asm("?FreeAll@VillagerNameBlock@@QAEXXZ");
 
 struct VillagerNameVftable
 {

@@ -229,6 +229,7 @@
 .globl ?StorePreviousState@Villager@@UAEXXZ
 .globl ?UpdateHowImpressed@Villager@@UAEXPAVReaction@@H@Z
 .globl ?WaitForKickOff@Villager@@QAEIXZ
+.globl ?AddDrawing@VillagerName@@UAEXXZ
 .globl _globl_ct_0x007626f0
 .globl _globl_ct_0x00763080
 .globl _globl_ct_0x007630b0
@@ -238,7 +239,7 @@
 .globl _globl_ct_0x007675b0
 .globl _globl_ct_0x007675e0
 .globl _globl_ct_0x00767610
-.globl _AddDrawing__12VillagerNameFv
+.globl ??_DVillagerNameBlock@@QAEXXZ
 
 ?Alloc@VillagerNameBlock@@SAPAUVillagerName@@XZ:
                                   {disp32} mov       ecx, dword ptr [data_bytes + 0x3f3e24]        // 0x00762720    8b0d249edb00
@@ -312,7 +313,7 @@ _jmp_addr_0x007627b9:    {disp8} mov        ecx, dword ptr [esi + 0x08]         
                          test               esi, esi                                      // 0x007627c6    85f6
                          {disp8} je         _jmp_addr_0x007627da                          // 0x007627c8    7410
                          mov.s              ecx, esi                                      // 0x007627ca    8bce
-                         call               _jmp_addr_0x00762970                          // 0x007627cc    e89f010000
+                         call               ?FreeAll@VillagerNameBlock@@QAEXXZ            // 0x007627cc    e89f010000
                          push               esi                                           // 0x007627d1    56
                          call               ??3@YAXPAX@Z                                  // 0x007627d2    e8c1c60400
                          add                esp, 0x04                                     // 0x007627d7    83c404
@@ -328,7 +329,7 @@ _jmp_addr_0x007627da:    pop                edi                                 
                          test               esi, esi                                      // 0x007627e7    85f6
                          {disp8} je         _jmp_addr_0x00762805                          // 0x007627e9    741a
 _jmp_addr_0x007627eb:    mov.s              ecx, esi                                      // 0x007627eb    8bce
-                         call               _jmp_addr_0x00762970                          // 0x007627ed    e87e010000
+                         call               ?FreeAll@VillagerNameBlock@@QAEXXZ            // 0x007627ed    e87e010000
                          push               esi                                           // 0x007627f2    56
                          call               ??3@YAXPAX@Z                                  // 0x007627f3    e8a0c60400
                          {disp32} mov       esi, dword ptr [data_bytes + 0x3f3e24]        // 0x007627f8    8b35249edb00
@@ -397,7 +398,8 @@ _jmp_addr_0x00762882:    xor.s              edx, edx                            
                          nop                                                              // 0x0076289d    90
                          nop                                                              // 0x0076289e    90
                          nop                                                              // 0x0076289f    90
-_AddDrawing__12VillagerNameFv:
+
+?AddDrawing@VillagerName@@UAEXXZ:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x504644]        // 0x007628a0    a144a6ec00
                          test               eax, eax                                      // 0x007628a5    85c0
                          {disp8} je         _jmp_addr_0x007628fb                          // 0x007628a7    7452
@@ -430,6 +432,7 @@ _jmp_addr_0x007628fb:    ret                                                    
                          nop                                                              // 0x007628fd    90
                          nop                                                              // 0x007628fe    90
                          nop                                                              // 0x007628ff    90
+??_DVillagerNameBlock@@QAEXXZ:
                          {disp8} mov        dl, byte ptr [esp + 0x04]                     // 0x00762900    8a542404
                          test               dl, 0x02                                      // 0x00762904    f6c202
                          push               esi                                           // 0x00762907    56
@@ -477,7 +480,8 @@ _jmp_addr_0x00762961:    mov.s              eax, esi                            
                          nop                                                              // 0x0076296d    90
                          nop                                                              // 0x0076296e    90
                          nop                                                              // 0x0076296f    90
-_jmp_addr_0x00762970:    push               edi                                           // 0x00762970    57
+?FreeAll@VillagerNameBlock@@QAEXXZ:
+                         push               edi                                           // 0x00762970    57
                          mov.s              edi, ecx                                      // 0x00762971    8bf9
                          mov                edx, dword ptr [edi]                          // 0x00762973    8b17
                          test               edx, edx                                      // 0x00762975    85d2
