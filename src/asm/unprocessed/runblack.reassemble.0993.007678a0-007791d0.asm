@@ -178,7 +178,7 @@
 .extern ?ResolveLoad@Object@@UAEXXZ
 .extern _jmp_addr_0x0063a1b0
 .extern ?GetInHandImmersionTexture@Object@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
-.extern _jmp_addr_0x0063a810
+.extern ?CreateSmokyStuff@Object@@QAEIJMULH3DColor@@@Z
 .extern _jmp_addr_0x0064a9c0
 .extern @GetPlayer3DColor__7GPlayerFv@12
 .extern _jmp_addr_0x0064d6b0
@@ -4990,7 +4990,7 @@ _jmp_addr_0x0076a626:    test               byte ptr [esi + 0x25], 0x04         
                          push               0x0                                             // 0x0076a64f    6a00
                          mov.s              ecx, esi                                        // 0x0076a651    8bce
                          mov                dword ptr [eax], 0xffffffff                     // 0x0076a653    c700ffffffff
-                         call               _jmp_addr_0x0063a810                            // 0x0076a659    e8b201edff
+                         call               ?CreateSmokyStuff@Object@@QAEIJMULH3DColor@@@Z  // 0x0076a659    e8b201edff
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                     // 0x0076a65e    8d4e14
                          call               ?IsWater@MapCoords@@QBEIXZ                      // 0x0076a661    e84a8fe9ff
                          test               eax, eax                                        // 0x0076a666    85c0

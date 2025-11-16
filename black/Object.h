@@ -350,6 +350,8 @@ void __fastcall __dt__6ObjectFv(struct Object* this, const void* edx, uint8_t pa
 bool __fastcall IsTouching__6ObjectFP6Objectf(const struct Object* this, const void* edx, struct Object* param_1, float param_2) asm("?IsTouching@Object@@UAE_NPAV1@M@Z");
 // win1.41 00638560 mac 1005ba80 Object::GetMapChild(MapCoords const &)
 struct Object* __fastcall GetMapChild__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coord) asm("?GetMapChild@Object@@QAEPAV1@ABUMapCoords@@@Z");
+// win1.41 0063a810 mac 103d04b0 Object::CreateSmokyStuff(long, float, LH3DColor)
+bool32_t __fastcall CreateSmokyStuff__6ObjectFlf9LH3DColor(struct Object* this, const void* edx, long param_1, float param_2, struct LH3DColor param_3) asm("?CreateSmokyStuff@Object@@QAEIJMULH3DColor@@@Z");
 
 // Override methods
 
