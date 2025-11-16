@@ -1110,14 +1110,94 @@ bool32_t __fastcall SetupMoveToPos__8VillagerFRC9MapCoords15VILLAGER_STATES(stru
 bool32_t __fastcall FleeingFromPredatorReaction__8VillagerFv(struct Villager* this) asm("?FleeingFromPredatorReaction@Villager@@QAEIXZ");
 // win1.41 00763cb0 mac 10593430 Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos *)
 bool32_t __fastcall SetupGoAndHideInNearbyBuilding__8VillagerFP16GameThingWithPos(struct Villager* this, const void* edx, struct GameThingWithPos* param_1) asm("?SetupGoAndHideInNearbyBuilding@Villager@@QAEIPAVGameThingWithPos@@@Z");
+// win1.41 00763d90 mac 105931e0 Villager::GoAndHideInNearbyBuilding(void)
+bool32_t __fastcall GoAndHideInNearbyBuilding__8VillagerFv(struct Villager* this) asm("?GoAndHideInNearbyBuilding@Villager@@QAEIXZ");
 // win1.41 00763f00 mac 105930c0 Villager::GetAbodeToHideInAtPos(MapCoords const &)
 struct Abode* __fastcall GetAbodeToHideInAtPos__8VillagerFRC9MapCoords(struct Villager* this, const void* edx, const struct MapCoords* param_1) asm("?GetAbodeToHideInAtPos@Villager@@QAEPAVAbode@@ABUMapCoords@@@Z");
+// win1.41 00763f80 mac 10592f10 Villager::LookToSeeIfItIsSafe(void)
+bool32_t __fastcall LookToSeeIfItIsSafe__8VillagerFv(struct Villager* this) asm("?LookToSeeIfItIsSafe@Villager@@QAEIXZ");
+// win1.41 00764410 mac 105924a0 Villager::PerformInspectionReaction(void)
+bool32_t __fastcall PerformInspectionReaction__8VillagerFv(struct Villager* this) asm("?PerformInspectionReaction@Villager@@QAEIXZ");
+// win1.41 00764490 mac 10592220 Villager::ApproachObjectReaction(void)
+bool32_t __fastcall ApproachObjectReaction__8VillagerFv(struct Villager* this) asm("?ApproachObjectReaction@Villager@@QAEIXZ");
+// win1.41 00764610 mac 10592150 Villager::InitialiseTellOthersAboutObject(void)
+bool32_t __fastcall InitialiseTellOthersAboutObject__8VillagerFv(struct Villager* this) asm("?InitialiseTellOthersAboutObject@Villager@@QAEIXZ");
+// win1.41 00764650 mac 10592100 Villager::TellOthersAboutInterestingObject(void)
+bool32_t __fastcall TellOthersAboutInterestingObject__8VillagerFv(struct Villager* this) asm("?TellOthersAboutInterestingObject@Villager@@QAEIXZ");
+// win1.41 00764660 mac 105920b0 Villager::InitialiseLookAroundForVillagerToTell(void)
+bool32_t __fastcall InitialiseLookAroundForVillagerToTell__8VillagerFv(struct Villager* this) asm("?InitialiseLookAroundForVillagerToTell@Villager@@QAEIXZ");
+// win1.41 00764670 mac 10592060 Villager::LookAroundForVillagerToTell(void)
+bool32_t __fastcall LookAroundForVillagerToTell__8VillagerFv(struct Villager* this) asm("?LookAroundForVillagerToTell@Villager@@QAEIXZ");
+// win1.41 00764680 mac 10592020 Villager::ApproachVillagerToTalkTo(void)
+bool32_t __fastcall ApproachVillagerToTalkTo__8VillagerFv(struct Villager* this) asm("?ApproachVillagerToTalkTo@Villager@@QAEIXZ");
+// win1.41 00764690 mac 10591fd0 Villager::TellParticularVillagerAboutObject(void)
+bool32_t __fastcall TellParticularVillagerAboutObject__8VillagerFv(struct Villager* this) asm("?TellParticularVillagerAboutObject@Villager@@QAEIXZ");
+// win1.41 00764aa0 mac 10591600 Villager::InitialiseBewilderedByMagicTreeReaction(void)
+bool32_t __fastcall InitialiseBewilderedByMagicTreeReaction__8VillagerFv(struct Villager* this) asm("?InitialiseBewilderedByMagicTreeReaction@Villager@@QAEIXZ");
+// win1.41 00764b50 mac 10591340 Villager::PerformBewilderedByMagicTreeReaction(void)
+bool32_t __fastcall PerformBewilderedByMagicTreeReaction__8VillagerFv(struct Villager* this) asm("?PerformBewilderedByMagicTreeReaction@Villager@@QAEIXZ");
+// win1.41 00764d10 mac 10591260 Villager::TurnToFaceMagicTree(void)
+bool32_t __fastcall TurnToFaceMagicTree__8VillagerFv(struct Villager* this) asm("?TurnToFaceMagicTree@Villager@@QAEIXZ");
+// win1.41 00764d70 mac 10591140 Villager::LookAtMagicTree(void)
+bool32_t __fastcall LookAtMagicTree__8VillagerFv(struct Villager* this) asm("?LookAtMagicTree@Villager@@QAEIXZ");
+// win1.41 00765140 mac 10590b80 Villager::ApproachHandReaction(void)
+bool32_t __fastcall ApproachHandReaction__8VillagerFv(struct Villager* this) asm("?ApproachHandReaction@Villager@@QAEIXZ");
+// win1.41 007651a0 mac 10590a00 Villager::FindNearbyVillagerWhoIsntReacting(void)
+bool32_t __fastcall FindNearbyVillagerWhoIsntReacting__8VillagerFv(struct Villager* this) asm("?FindNearbyVillagerWhoIsntReacting@Villager@@QAEIXZ");
 // win1.41 00765320 mac 10590720 Villager::ArrivesAtPickupBallReaction(void)
-uint32_t __fastcall ArrivesAtPickupBallReaction__8VillagerFv(struct Villager* this) asm("?ArrivesAtPickupBallReaction@Villager@@QAEIXZ");
+bool32_t __fastcall ArrivesAtPickupBallReaction__8VillagerFv(struct Villager* this) asm("?ArrivesAtPickupBallReaction@Villager@@QAEIXZ");
+// win1.41 007653f0 mac 10590650 Villager::WatchFlyingObjectReaction(void)
+bool32_t __fastcall WatchFlyingObjectReaction__8VillagerFv(struct Villager* this) asm("?WatchFlyingObjectReaction@Villager@@QAEIXZ");
+// win1.41 00765450 mac 10590520 Villager::PointAtFlyingObjectReaction(void)
+bool32_t __fastcall PointAtFlyingObjectReaction__8VillagerFv(struct Villager* this) asm("?PointAtFlyingObjectReaction@Villager@@QAEIXZ");
+// win1.41 00765870 mac 1058fce0 Villager::ReactToFire(void)
+bool32_t __fastcall ReactToFire__8VillagerFv(struct Villager* this) asm("?ReactToFire@Villager@@QAEIXZ");
+// win1.41 00765e00 mac 1058f550 Villager::AmazedByMagicShieldReaction(void)
+bool32_t __fastcall AmazedByMagicShieldReaction__8VillagerFv(struct Villager* this) asm("?AmazedByMagicShieldReaction@Villager@@QAEIXZ");
+// win1.41 00766130 mac 1058f230 Villager::DanceWhileReacting(void)
+bool32_t __fastcall DanceWhileReacting__8VillagerFv(struct Villager* this) asm("?DanceWhileReacting@Villager@@QAEIXZ");
+// win1.41 007662f0 mac 1058eec0 Villager::GoToTeleportReaction(void)
+bool32_t __fastcall GoToTeleportReaction__8VillagerFv(struct Villager* this) asm("?GoToTeleportReaction@Villager@@QAEIXZ");
+// win1.41 00766380 mac 1058ee60 Villager::GoToTeleportReactionQuickly(void)
+bool32_t __fastcall GoToTeleportReactionQuickly__8VillagerFv(struct Villager* this) asm("?GoToTeleportReactionQuickly@Villager@@QAEIXZ");
+// win1.41 00766390 mac 1058ed70 Villager::ExitReactToTeleport(unsigned char)
+bool32_t __fastcall ExitReactToTeleport__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitReactToTeleport@Villager@@QAEIE@Z");
+// win1.41 007663f0 mac 1058eca0 Villager::TeleportReaction(void)
+bool32_t __fastcall TeleportReaction__8VillagerFv(struct Villager* this) asm("?TeleportReaction@Villager@@QAEIXZ");
+// win1.41 00766680 mac 1058e5f0 Villager::PointAtDeadPerson(void)
+bool32_t __fastcall PointAtDeadPerson__8VillagerFv(struct Villager* this) asm("?PointAtDeadPerson@Villager@@QAEIXZ");
+// win1.41 00766700 mac 1058e420 Villager::GoTowardsDeadPerson(void)
+bool32_t __fastcall GoTowardsDeadPerson__8VillagerFv(struct Villager* this) asm("?GoTowardsDeadPerson@Villager@@QAEIXZ");
+// win1.41 00766810 mac 1058e390 Villager::LookAtDeadPerson(void)
+bool32_t __fastcall LookAtDeadPerson__8VillagerFv(struct Villager* this) asm("?LookAtDeadPerson@Villager@@QAEIXZ");
+// win1.41 00766850 mac 1058e2b0 Villager::MournDeadPerson(void)
+bool32_t __fastcall MournDeadPerson__8VillagerFv(struct Villager* this) asm("?MournDeadPerson@Villager@@QAEIXZ");
+// win1.41 007668e0 mac 1058e1c0 Villager::FaintingReaction(void)
+bool32_t __fastcall FaintingReaction__8VillagerFv(struct Villager* this) asm("?FaintingReaction@Villager@@QAEIXZ");
+// win1.41 00766910 mac 1058e090 Villager::StartConfusedReaction(void)
+bool32_t __fastcall StartConfusedReaction__8VillagerFv(struct Villager* this) asm("?StartConfusedReaction@Villager@@QAEIXZ");
+// win1.41 00766930 mac 1058df30 Villager::ConfusedReaction(void)
+bool32_t __fastcall ConfusedReaction__8VillagerFv(struct Villager* this) asm("?ConfusedReaction@Villager@@QAEIXZ");
+// win1.41 00766a90 mac 1058dac0 Villager::CrowdReaction(void)
+bool32_t __fastcall CrowdReaction__8VillagerFv(struct Villager* this) asm("?CrowdReaction@Villager@@QAEIXZ");
+// win1.41 00766c60 mac 1058d970 Villager::MoveTowardsObjectToLookAt(void)
+bool32_t __fastcall MoveTowardsObjectToLookAt__8VillagerFv(struct Villager* this) asm("?MoveTowardsObjectToLookAt@Villager@@QAEIXZ");
+// win1.41 00766d00 mac 1058d890 Villager::InitialiseImpressedReaction(void)
+bool32_t __fastcall InitialiseImpressedReaction__8VillagerFv(struct Villager* this) asm("?InitialiseImpressedReaction@Villager@@QAEIXZ");
+// win1.41 00766d60 mac 1058d780 Villager::PerformImpressedReaction(void)
+bool32_t __fastcall PerformImpressedReaction__8VillagerFv(struct Villager* this) asm("?PerformImpressedReaction@Villager@@QAEIXZ");
+// win1.41 00766e50 mac 1058d3c0 Villager::InitialiseFightReaction(void)
+bool32_t __fastcall InitialiseFightReaction__8VillagerFv(struct Villager* this) asm("?InitialiseFightReaction@Villager@@QAEIXZ");
 // win1.41 00767280 mac 1058cc50 Villager::ReactToBreeder(void)
 bool32_t __fastcall ReactToBreeder__8VillagerFv(struct Villager* this) asm("?ReactToBreeder@Villager@@QAEIXZ");
 // win1.41 007672c0 mac 1058cba0 Villager::GoAndHaveSexWith(Villager *)
 bool32_t __fastcall GoAndHaveSexWith__8VillagerFP8Villager(struct Villager* this, const void* edx, struct Villager* param_1) asm("?GoAndHaveSexWith@Villager@@QAEIPAV1@@Z");
+// win1.41 007673a0 mac 1058c890 Villager::WaitForMate(void)
+bool32_t __fastcall WaitForMate__8VillagerFv(struct Villager* this) asm("?WaitForMate@Villager@@QAEIXZ");
+// win1.41 00767410 mac 1058c850 Villager::EnterDrowning(unsigned char, unsigned char)
+bool32_t __fastcall EnterDrowning__8VillagerFUcUc(struct Villager* this, const void* edx, unsigned char param_1, unsigned char param_2) asm("?EnterDrowning@Villager@@QAEIEE@Z");
+// win1.41 00767420 mac 1058c810 Villager::ExitDrowning(unsigned char)
+bool32_t __fastcall ExitDrowning__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitDrowning@Villager@@QAEIE@Z");
 // win1.41 00768c30 mac 105986f0 Villager::ShepherdLookForFlock(void)
 bool32_t __fastcall ShepherdLookForFlock__8VillagerFv(struct Villager* this) asm("?ShepherdLookForFlock@Villager@@QAE_NXZ");
 // win1.41 00768cc0 mac 105984c0 Villager::ShepherdMoveFlockToWater(void)
@@ -1146,6 +1226,8 @@ uint32_t __fastcall Drowning__8VillagerFv(struct Villager* this) asm("?Drowning@
 uint32_t __fastcall VagrantStart__8VillagerFv(struct Villager* this) asm("?VagrantStart@Villager@@QAEIXZ");
 // win1.41 0076b030 mac 1000ab40 Villager::IsInACreaturesHand(void)
 bool32_t __fastcall IsInACreaturesHand__8VillagerFv(struct Villager* this) asm("?IsInACreaturesHand@Villager@@QAE_NXZ");
+// win1.41 0076b060 mac 10599640 Villager::SetupWaitForCounter(unsigned short, VILLAGER_STATES)
+bool32_t __fastcall SetupWaitForCounter__8VillagerFUs15VILLAGER_STATES(struct Villager* this, const void* edx, unsigned short param_1, enum VILLAGER_STATES param_2) asm("?SetupWaitForCounter@Villager@@QAEIGW4VILLAGER_STATES@@@Z");
 // win1.41 0076b090 mac 1009deb0 Villager::SetupPauseForASecond(VILLAGER_STATES)
 uint32_t __fastcall SetupPauseForASecond__8VillagerF15VILLAGER_STATES(struct Villager* this, const void* edx, enum VILLAGER_STATES state) asm("?SetupPauseForASecond@Villager@@QAEIW4VILLAGER_STATES@@@Z");
 // win1.41 0076b3f0 mac 1001b410 Villager::GoAndChilloutOutsideHome(void)

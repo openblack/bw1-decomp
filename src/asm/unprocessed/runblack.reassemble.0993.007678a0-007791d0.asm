@@ -377,7 +377,7 @@
 .globl ?SetupBreederDisciple@Villager@@QAEIXZ
 .globl _jmp_addr_0x0076a8d0
 .globl _jmp_addr_0x0076aab0
-.globl _jmp_addr_0x0076b060
+.globl ?SetupWaitForCounter@Villager@@QAEIGW4VILLAGER_STATES@@@Z
 .globl ?SetupPauseForASecond@Villager@@QAEIW4VILLAGER_STATES@@@Z
 .globl _jmp_addr_0x0076b0d0
 .globl ?GetMeToMyChillOutPos@Villager@@QAEXP81@AEHPBXPAXAAUMapCoords@@@Z2MABU2@@Z
@@ -5906,7 +5906,8 @@ _jmp_addr_0x0076b050:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076b05d    90
                          nop                                                                // 0x0076b05e    90
                          nop                                                                // 0x0076b05f    90
-_jmp_addr_0x0076b060:    push               esi                                             // 0x0076b060    56
+?SetupWaitForCounter@Villager@@QAEIGW4VILLAGER_STATES@@@Z:
+                         push               esi                                             // 0x0076b060    56
                          mov.s              esi, ecx                                        // 0x0076b061    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x0c]                     // 0x0076b063    8b4c240c
                          mov                eax, dword ptr [esi]                            // 0x0076b067    8b06
