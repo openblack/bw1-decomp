@@ -519,7 +519,7 @@ void __fastcall InteractDecideWhatToDo__8VillagerFv(struct Villager* this) asm("
 // win1.41 00756e20 mac 10573130 Villager::GetDiscipleInteractState(void)
 uint32_t __fastcall GetDiscipleInteractState__8VillagerFv(struct Villager* this) asm("?GetDiscipleInteractState@Villager@@QAEIXZ");
 // win1.41 00756e80 mac 1002ae20 Villager::FindCloseObjectsForInteract(class LHOrderedLinkedList<class SortedObject> *, struct MapCoords const &)
-bool32_t __fastcall FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedList_12SortedObject_RC9MapCoords(struct Villager* this, const void* edx, struct LHOrderedLinkedList__SortedObject* param_1, const struct MapCoords* param_2) asm("?FindCloseObjectsForInteract@Villager@@QAE_NPAV?$LHOrderedLinkedList@VSortedObject@@@@ABUMapCoords@@@Z");
+bool32_t __fastcall FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedList_12SortedObject_RC9MapCoords(struct Villager* this, const void* edx, struct LHOrderedLinkedList__SortedObject* param_1, const struct MapCoords* param_2) asm("FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedList_12SortedObject_RC9MapCoords");
 // win1.41 00757180 mac 10572de0 Villager::CheckMoveHouse(Object *)
 bool32_t __fastcall CheckMoveHouse__8VillagerFP6Object(struct Villager* this, const void* edx, struct Object* object) asm("?CheckMoveHouse@Villager@@QAEIPAVObject@@@Z");
 // win1.41 00757210 mac 10572cf0 Villager::CheckMoveIntoTown(Town &)
