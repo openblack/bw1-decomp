@@ -261,8 +261,6 @@
 .globl ?HousewifeAskForMeal@Villager@@QAEIXZ
 .globl ?HousewifeGetsPregnant@Villager@@QAEIPAV1@@Z
 .globl ?WillHousewifeGetPregnant@Villager@@QAEIPAV1@@Z
-.globl _globl_ct_0x00761b80
-.globl _globl_ct_0x00761bd0
 .globl _globl_ct_0x00762680
 .globl _globl_ct_0x007626b0
 .globl _globl_ct_0x007626f0
@@ -276,77 +274,6 @@
 .globl _globl_ct_0x00767610
 .globl _AddDrawing__12VillagerNameFv
 
-_globl_ct_0x00761b80:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00761b80    8a0d34c9fa00
-                         mov                al, 0x01                                      // 0x00761b86    b001
-                         test               al, cl                                        // 0x00761b88    84c8
-                         {disp8} jne        _jmp_addr_0x00761b94                          // 0x00761b8a    7508
-                         or.s               cl, al                                        // 0x00761b8c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x00761b8e    880d34c9fa00
-_jmp_addr_0x00761b94:    {disp32} jmp       _jmp_addr_0x00761ba0                          // 0x00761b94    e907000000
-                         nop                                                              // 0x00761b99    90
-                         nop                                                              // 0x00761b9a    90
-                         nop                                                              // 0x00761b9b    90
-                         nop                                                              // 0x00761b9c    90
-                         nop                                                              // 0x00761b9d    90
-                         nop                                                              // 0x00761b9e    90
-                         nop                                                              // 0x00761b9f    90
-_jmp_addr_0x00761ba0:    push               0x00407870                                    // 0x00761ba0    6870784000
-                         call               _atexit                                       // 0x00761ba5    e8e73b0600
-                         pop                ecx                                           // 0x00761baa    59
-                         ret                                                              // 0x00761bab    c3
-                         nop                                                              // 0x00761bac    90
-                         nop                                                              // 0x00761bad    90
-                         nop                                                              // 0x00761bae    90
-                         nop                                                              // 0x00761baf    90
-                         mov                eax, dword ptr [ecx]                          // 0x00761bb0    8b01
-                         jmp                dword ptr [eax + 0x460]                       // 0x00761bb2    ffa060040000
-                         int3                                                             // 0x00761bb8    cc
-                         int3                                                             // 0x00761bb9    cc
-                         int3                                                             // 0x00761bba    cc
-                         int3                                                             // 0x00761bbb    cc
-                         int3                                                             // 0x00761bbc    cc
-                         int3                                                             // 0x00761bbd    cc
-                         int3                                                             // 0x00761bbe    cc
-                         int3                                                             // 0x00761bbf    cc
-                         mov                eax, dword ptr [ecx]                          // 0x00761bc0    8b01
-                         jmp                dword ptr [eax + 0x338]                       // 0x00761bc2    ffa038030000
-                         int3                                                             // 0x00761bc8    cc
-                         int3                                                             // 0x00761bc9    cc
-                         int3                                                             // 0x00761bca    cc
-                         int3                                                             // 0x00761bcb    cc
-                         int3                                                             // 0x00761bcc    cc
-                         int3                                                             // 0x00761bcd    cc
-                         int3                                                             // 0x00761bce    cc
-                         int3                                                             // 0x00761bcf    cc
-_globl_ct_0x00761bd0:    {disp32} jmp       _jmp_addr_0x00761be0                          // 0x00761bd0    e90b000000
-                         nop                                                              // 0x00761bd5    90
-                         nop                                                              // 0x00761bd6    90
-                         nop                                                              // 0x00761bd7    90
-                         nop                                                              // 0x00761bd8    90
-                         nop                                                              // 0x00761bd9    90
-                         nop                                                              // 0x00761bda    90
-                         nop                                                              // 0x00761bdb    90
-                         nop                                                              // 0x00761bdc    90
-                         nop                                                              // 0x00761bdd    90
-                         nop                                                              // 0x00761bde    90
-                         nop                                                              // 0x00761bdf    90
-_jmp_addr_0x00761be0:    {disp32} fld       dword ptr [rdata_bytes + 0xf19a8]             // 0x00761be0    d905a8a99900
-                         {disp32} fmul      dword ptr [rdata_bytes + 0xf19a4]             // 0x00761be6    d80da4a99900
-                         {disp32} fstp      dword ptr [data_bytes + 0x3f3e1c]             // 0x00761bec    d91d1c9edb00
-                         ret                                                              // 0x00761bf2    c3
-                         nop                                                              // 0x00761bf3    90
-                         nop                                                              // 0x00761bf4    90
-                         nop                                                              // 0x00761bf5    90
-                         nop                                                              // 0x00761bf6    90
-                         nop                                                              // 0x00761bf7    90
-                         nop                                                              // 0x00761bf8    90
-                         nop                                                              // 0x00761bf9    90
-                         nop                                                              // 0x00761bfa    90
-                         nop                                                              // 0x00761bfb    90
-                         nop                                                              // 0x00761bfc    90
-                         nop                                                              // 0x00761bfd    90
-                         nop                                                              // 0x00761bfe    90
-                         nop                                                              // 0x00761bff    90
 ?HousewifeLookForWork@Villager@@QAEIXZ:
                          call               ?GetAbode@Villager@@QAEPAVAbode@@XZ           // 0x00761c00    e85b05ffff
                          neg                eax                                           // 0x00761c05    f7d8
