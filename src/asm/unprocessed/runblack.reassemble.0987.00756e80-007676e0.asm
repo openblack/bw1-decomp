@@ -312,8 +312,6 @@
 .globl ?UpdateHowImpressed@Villager@@UAEXPAVReaction@@H@Z
 .globl ?WaitForArtifactDance@Villager@@QAEIXZ
 .globl ?WaitForKickOff@Villager@@QAEIXZ
-.globl _globl_ct_0x0075fe40
-.globl _globl_ct_0x0075fe70
 .globl _globl_ct_0x00761b80
 .globl _globl_ct_0x00761bd0
 .globl _globl_ct_0x00762680
@@ -329,57 +327,6 @@
 .globl _globl_ct_0x00767610
 .globl _AddDrawing__12VillagerNameFv
 
-_globl_ct_0x0075fe40:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x0075fe40    8a0d34c9fa00
-                         mov                al, 0x01                                      // 0x0075fe46    b001
-                         test               al, cl                                        // 0x0075fe48    84c8
-                         {disp8} jne        _jmp_addr_0x0075fe54                          // 0x0075fe4a    7508
-                         or.s               cl, al                                        // 0x0075fe4c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x0075fe4e    880d34c9fa00
-_jmp_addr_0x0075fe54:    {disp32} jmp       _jmp_addr_0x0075fe60                          // 0x0075fe54    e907000000
-                         nop                                                              // 0x0075fe59    90
-                         nop                                                              // 0x0075fe5a    90
-                         nop                                                              // 0x0075fe5b    90
-                         nop                                                              // 0x0075fe5c    90
-                         nop                                                              // 0x0075fe5d    90
-                         nop                                                              // 0x0075fe5e    90
-                         nop                                                              // 0x0075fe5f    90
-_jmp_addr_0x0075fe60:    push               0x00407870                                    // 0x0075fe60    6870784000
-                         call               _atexit                                       // 0x0075fe65    e827590600
-                         pop                ecx                                           // 0x0075fe6a    59
-                         ret                                                              // 0x0075fe6b    c3
-                         nop                                                              // 0x0075fe6c    90
-                         nop                                                              // 0x0075fe6d    90
-                         nop                                                              // 0x0075fe6e    90
-                         nop                                                              // 0x0075fe6f    90
-_globl_ct_0x0075fe70:    {disp32} jmp       _jmp_addr_0x0075fe80                          // 0x0075fe70    e90b000000
-                         nop                                                              // 0x0075fe75    90
-                         nop                                                              // 0x0075fe76    90
-                         nop                                                              // 0x0075fe77    90
-                         nop                                                              // 0x0075fe78    90
-                         nop                                                              // 0x0075fe79    90
-                         nop                                                              // 0x0075fe7a    90
-                         nop                                                              // 0x0075fe7b    90
-                         nop                                                              // 0x0075fe7c    90
-                         nop                                                              // 0x0075fe7d    90
-                         nop                                                              // 0x0075fe7e    90
-                         nop                                                              // 0x0075fe7f    90
-_jmp_addr_0x0075fe80:    {disp32} fld       dword ptr [rdata_bytes + 0xf1998]             // 0x0075fe80    d90598a99900
-                         {disp32} fmul      dword ptr [rdata_bytes + 0xf1994]             // 0x0075fe86    d80d94a99900
-                         {disp32} fstp      dword ptr [data_bytes + 0x3f3e18]             // 0x0075fe8c    d91d189edb00
-                         ret                                                              // 0x0075fe92    c3
-                         nop                                                              // 0x0075fe93    90
-                         nop                                                              // 0x0075fe94    90
-                         nop                                                              // 0x0075fe95    90
-                         nop                                                              // 0x0075fe96    90
-                         nop                                                              // 0x0075fe97    90
-                         nop                                                              // 0x0075fe98    90
-                         nop                                                              // 0x0075fe99    90
-                         nop                                                              // 0x0075fe9a    90
-                         nop                                                              // 0x0075fe9b    90
-                         nop                                                              // 0x0075fe9c    90
-                         nop                                                              // 0x0075fe9d    90
-                         nop                                                              // 0x0075fe9e    90
-                         nop                                                              // 0x0075fe9f    90
 _jmp_addr_0x0075fea0:    push               esi                                           // 0x0075fea0    56
                          mov.s              esi, ecx                                      // 0x0075fea1    8bf1
                          call               ?GetAbode@Villager@@QAEPAVAbode@@XZ           // 0x0075fea3    e8b822ffff
