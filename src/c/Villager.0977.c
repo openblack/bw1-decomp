@@ -19018,3 +19018,42 @@ bool32_t __fastcall FootballMoveToBall__8VillagerFv(struct Villager* this)
     asm("ret");                                                              // 0x0075f438    c3
     __builtin_unreachable();
 }
+
+// Probably VillagerForester.cpp
+
+void __cdecl globl_ct_0x0075f440(void)
+{
+    asm("{disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]");          // 0x0075f440    8a0d34c9fa00
+    asm("mov                al, 0x01");                                      // 0x0075f446    b001
+    asm("test               al, cl");                                        // 0x0075f448    84c8
+    asm("{disp8} jne        _jmp_addr_0x0075f454");                          // 0x0075f44a    7508
+    asm("or.s               cl, al");                                        // 0x0075f44c    0ac8
+    asm("{disp32} mov       byte ptr [data_bytes + 0x5e6934], cl");          // 0x0075f44e    880d34c9fa00
+    asm("_jmp_addr_0x0075f454:");
+    asm("{disp32} jmp       _crt_global_destruction_register_0x0075f460");   // 0x0075f454    e907000000
+    __builtin_unreachable();
+}
+
+void __cdecl crt_global_destruction_register_0x0075f460(void)
+{
+    asm("push               0x00407870");                                    // 0x0075f460    6870784000
+    asm("call               _atexit");                                       // 0x0075f465    e827630600
+    asm("pop                ecx");                                           // 0x0075f46a    59
+    asm("ret");                                                              // 0x0075f46b    c3
+    __builtin_unreachable();
+}
+
+void __cdecl globl_ct_0x0075f470(void)
+{
+    asm("{disp32} jmp       _FUN_0075f480__8VillagerFv");                    // 0x0075f470    e90b000000
+    __builtin_unreachable();
+}
+
+void __cdecl FUN_0075f480__8VillagerFv(void)
+{
+    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf1990]");             // 0x0075f480    d90590a99900
+    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf198c]");             // 0x0075f486    d80d8ca99900
+    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3e14]");             // 0x0075f48c    d91d149edb00
+    asm("ret");                                                              // 0x0075f492    c3
+    __builtin_unreachable();
+}

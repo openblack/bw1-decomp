@@ -326,8 +326,6 @@
 .globl ?VillagerGotoForest@Villager@@QAEIPAVForest@@W4VILLAGER_STATES@@@Z
 .globl ?WaitForArtifactDance@Villager@@QAEIXZ
 .globl ?WaitForKickOff@Villager@@QAEIXZ
-.globl _globl_ct_0x0075f440
-.globl _globl_ct_0x0075f470
 .globl _globl_ct_0x0075fe40
 .globl _globl_ct_0x0075fe70
 .globl _globl_ct_0x00761b80
@@ -347,57 +345,6 @@
 .globl _jmp_addr_0x0075fd00
 .globl _AddDrawing__12VillagerNameFv
 
-_globl_ct_0x0075f440:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x0075f440    8a0d34c9fa00
-                         mov                al, 0x01                                      // 0x0075f446    b001
-                         test               al, cl                                        // 0x0075f448    84c8
-                         {disp8} jne        _jmp_addr_0x0075f454                          // 0x0075f44a    7508
-                         or.s               cl, al                                        // 0x0075f44c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x0075f44e    880d34c9fa00
-_jmp_addr_0x0075f454:    {disp32} jmp       _jmp_addr_0x0075f460                          // 0x0075f454    e907000000
-                         nop                                                              // 0x0075f459    90
-                         nop                                                              // 0x0075f45a    90
-                         nop                                                              // 0x0075f45b    90
-                         nop                                                              // 0x0075f45c    90
-                         nop                                                              // 0x0075f45d    90
-                         nop                                                              // 0x0075f45e    90
-                         nop                                                              // 0x0075f45f    90
-_jmp_addr_0x0075f460:    push               0x00407870                                    // 0x0075f460    6870784000
-                         call               _atexit                                       // 0x0075f465    e827630600
-                         pop                ecx                                           // 0x0075f46a    59
-                         ret                                                              // 0x0075f46b    c3
-                         nop                                                              // 0x0075f46c    90
-                         nop                                                              // 0x0075f46d    90
-                         nop                                                              // 0x0075f46e    90
-                         nop                                                              // 0x0075f46f    90
-_globl_ct_0x0075f470:    {disp32} jmp       _jmp_addr_0x0075f480                          // 0x0075f470    e90b000000
-                         nop                                                              // 0x0075f475    90
-                         nop                                                              // 0x0075f476    90
-                         nop                                                              // 0x0075f477    90
-                         nop                                                              // 0x0075f478    90
-                         nop                                                              // 0x0075f479    90
-                         nop                                                              // 0x0075f47a    90
-                         nop                                                              // 0x0075f47b    90
-                         nop                                                              // 0x0075f47c    90
-                         nop                                                              // 0x0075f47d    90
-                         nop                                                              // 0x0075f47e    90
-                         nop                                                              // 0x0075f47f    90
-_jmp_addr_0x0075f480:    {disp32} fld       dword ptr [rdata_bytes + 0xf1990]             // 0x0075f480    d90590a99900
-                         {disp32} fmul      dword ptr [rdata_bytes + 0xf198c]             // 0x0075f486    d80d8ca99900
-                         {disp32} fstp      dword ptr [data_bytes + 0x3f3e14]             // 0x0075f48c    d91d149edb00
-                         ret                                                              // 0x0075f492    c3
-                         nop                                                              // 0x0075f493    90
-                         nop                                                              // 0x0075f494    90
-                         nop                                                              // 0x0075f495    90
-                         nop                                                              // 0x0075f496    90
-                         nop                                                              // 0x0075f497    90
-                         nop                                                              // 0x0075f498    90
-                         nop                                                              // 0x0075f499    90
-                         nop                                                              // 0x0075f49a    90
-                         nop                                                              // 0x0075f49b    90
-                         nop                                                              // 0x0075f49c    90
-                         nop                                                              // 0x0075f49d    90
-                         nop                                                              // 0x0075f49e    90
-                         nop                                                              // 0x0075f49f    90
 ?CheckSatisfyWoodDesire@Villager@@QAEIXZ:
                          sub                esp, 0x14                                     // 0x0075f4a0    83ec14
                          push               esi                                           // 0x0075f4a3    56
