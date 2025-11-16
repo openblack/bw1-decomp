@@ -22,13 +22,11 @@
 .extern ?Get3DAngleFromXZ@GUtils@@SAMABUMapCoords@@0@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z
-.extern ?GetBall@Football@@QAEPAXXZ
 .extern ?GetBeliefInPlayer@GBelief@@QAEMK@Z
 .extern ?GetDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
 .extern ?GetFirstObjectMobile@MapCoords@@QBEPAVObject@@XZ
 .extern ?GetFoodCapacity@Villager@@QAEHXZ
-.extern ?GetFootball@Villager@@QAEPAVFootball@@XZ
 .extern ?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ
 .extern ?GetInfo@TownDesire@@QBEPAVGTownDesireInfo@@K@Z
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
@@ -52,14 +50,12 @@
 .extern ?LookAtObject@Living@@QAEIPAVGameThingWithPos@@K@Z
 .extern ?LookingAtObjectReaction@PuzzleHorse@@UAE_NXZ
 .extern ?MakeVillagesMeet@Villager@@QAE_NPAV1@W4VILLAGER_STATES@@M@Z
-.extern ?MoveTo@MobileWallHug@@QAEHXZ
 .extern ?MoveToPos@Living@@QAEHXZ
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern ?NumGameTurnsBeforeReactingAgainToPredatorFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z
 .extern ?NumGameTurnsToReactToPredatorFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z
 .extern ?PerformDance@Living@@QAEIABUMapCoords@@EK@Z
 .extern ?PickupWood@Villager@@QAEXFE@Z
-.extern ?PlayAnimThenSetState@Living@@QAEXEK@Z
 .extern ?ReactToFlyingObjectPriority@Living@@UAEEPAVReaction@@0@Z
 .extern ?RemoveVillagerOnWayToWorshipSite@Town@@QAEXPAVVillager@@@Z
 .extern ?SetStateAnim@Living@@QAEXXZ
@@ -85,8 +81,6 @@
 .extern _jmp_addr_0x004df310
 .extern _jmp_addr_0x004df320
 .extern _jmp_addr_0x00521a90
-.extern _jmp_addr_0x005325d0
-.extern _jmp_addr_0x005326e0
 .extern _jmp_addr_0x0053a5b0
 .extern _jmp_addr_0x0053b4a0
 .extern _jmp_addr_0x005e1900
@@ -100,7 +94,6 @@
 .extern _jmp_addr_0x005fc6a0
 .extern _jmp_addr_0x005fc790
 .extern _jmp_addr_0x00603030
-.extern _jmp_addr_0x0060a9f0
 .extern _jmp_addr_0x00637cc0
 .extern _jmp_addr_0x00639410
 .extern _jmp_addr_0x00646950
@@ -134,20 +127,12 @@
 .globl ?AddReaction@Villager@@UAEXPAVReaction@@W4VILLAGER_STATES@@@Z
 .globl ?ArrivesAtFoodReaction@Villager@@UAE_NXZ
 .globl ?ArrivesAtWoodReaction@Villager@@UAE_NXZ
-.globl ?CheckPlaytimeAvailableToPlayPFootball@Villager@@QAEIXZ
-.globl ?CheckPlaytimeSettingUpPlayPFootball@Villager@@QAEIXZ
-.globl ?CheckSatisfyPlaytimeDesire@Villager@@QAEIXZ
 .globl ?DisplayHowImpressed@Town@@QAEIXZ
-.globl ?ExitFootball@Villager@@QAEIE@Z
 .globl ?FleeFromPredatorPriority@Villager@@UAEEPAVReaction@@0@Z
 .globl ?FleeingAndLookingAtObjectReaction@Villager@@UAE_NXZ
 .globl ?FleeingFromObjectReaction@Villager@@UAE_NXZ
 .globl ?FleeingFromPredatorReaction@Villager@@QAEIXZ
 .globl ?FollowingObjectReaction@Villager@@UAE_NXZ
-.globl ?FootballMatchPaused@Villager@@QAEIXZ
-.globl ?FootballMexicanWave@Villager@@QAEIXZ
-.globl ?FootballWalkToPosition@Villager@@QAEIXZ
-.globl ?FootballWatchMatch@Villager@@QAEIXZ
 .globl ?GoAndHaveSexWith@Villager@@QAEIPAV1@@Z
 .globl ?GotoFoodReaction@Villager@@UAE_NXZ
 .globl ?GotoWoodReaction@Villager@@UAE_NXZ
@@ -156,9 +141,7 @@
 .globl ?IsAvailableForReaction@Villager@@UAE_NW4REACTION@@@Z
 .globl ?IsInterestedInFoodObject@Villager@@UAE_NPAVObject@@@Z
 .globl ?IsInterestedInWoodObject@Villager@@UAE_NPAVObject@@@Z
-.globl ?IsPlaytime@Villager@@QAE_NXZ
 .globl ?LookingAtObjectReaction@Villager@@UAE_NXZ
-.globl ?MoveToFootballPitchConstruction@Villager@@QAEIXZ
 .globl ?NumGameTurnsBeforeReactingAgainToBurningObjectFunction@Villager@@UAEIPAVGameThingWithPos@@IM@Z
 .globl ?NumGameTurnsBeforeReactingAgainToPredatorFunction@Villager@@UAEIPAVGameThingWithPos@@IM@Z
 .globl ?NumGameTurnsBeforeReactingToShieldAgainFunction@Villager@@UAEIPAVGameThingWithPos@@IM@Z
@@ -213,7 +196,6 @@
 .globl ?StopReacting@Villager@@UAEXXZ
 .globl ?StorePreviousState@Villager@@UAEXXZ
 .globl ?UpdateHowImpressed@Villager@@UAEXPAVReaction@@H@Z
-.globl ?WaitForKickOff@Villager@@QAEIXZ
 .globl _globl_ct_0x00763310
 .globl _globl_ct_0x00763340
 .globl _globl_ct_0x00763370
@@ -221,283 +203,6 @@
 .globl _globl_ct_0x007675e0
 .globl _globl_ct_0x00767610
 
-?IsPlaytime@Villager@@QAE_NXZ:
-                         mov                eax, dword ptr [ecx]                          // 0x007630e0    8b01
-                         call               dword ptr [eax + 0x48]                        // 0x007630e2    ff5048
-                         neg                eax                                           // 0x007630e5    f7d8
-                         sbb.s              eax, eax                                      // 0x007630e7    1bc0
-                         neg                eax                                           // 0x007630e9    f7d8
-                         ret                                                              // 0x007630eb    c3
-                         nop                                                              // 0x007630ec    90
-                         nop                                                              // 0x007630ed    90
-                         nop                                                              // 0x007630ee    90
-                         nop                                                              // 0x007630ef    90
-?CheckPlaytimeAvailableToPlayPFootball@Villager@@QAEIXZ:
-                         mov                eax, 0x00000001                               // 0x007630f0    b801000000
-                         ret                                                              // 0x007630f5    c3
-                         nop                                                              // 0x007630f6    90
-                         nop                                                              // 0x007630f7    90
-                         nop                                                              // 0x007630f8    90
-                         nop                                                              // 0x007630f9    90
-                         nop                                                              // 0x007630fa    90
-                         nop                                                              // 0x007630fb    90
-                         nop                                                              // 0x007630fc    90
-                         nop                                                              // 0x007630fd    90
-                         nop                                                              // 0x007630fe    90
-                         nop                                                              // 0x007630ff    90
-?CheckPlaytimeSettingUpPlayPFootball@Villager@@QAEIXZ:
-                         mov                eax, 0x00000001                               // 0x00763100    b801000000
-                         ret                                                              // 0x00763105    c3
-                         nop                                                              // 0x00763106    90
-                         nop                                                              // 0x00763107    90
-                         nop                                                              // 0x00763108    90
-                         nop                                                              // 0x00763109    90
-                         nop                                                              // 0x0076310a    90
-                         nop                                                              // 0x0076310b    90
-                         nop                                                              // 0x0076310c    90
-                         nop                                                              // 0x0076310d    90
-                         nop                                                              // 0x0076310e    90
-                         nop                                                              // 0x0076310f    90
-?MoveToFootballPitchConstruction@Villager@@QAEIXZ:
-                         mov                eax, 0x00000001                               // 0x00763110    b801000000
-                         ret                                                              // 0x00763115    c3
-                         nop                                                              // 0x00763116    90
-                         nop                                                              // 0x00763117    90
-                         nop                                                              // 0x00763118    90
-                         nop                                                              // 0x00763119    90
-                         nop                                                              // 0x0076311a    90
-                         nop                                                              // 0x0076311b    90
-                         nop                                                              // 0x0076311c    90
-                         nop                                                              // 0x0076311d    90
-                         nop                                                              // 0x0076311e    90
-                         nop                                                              // 0x0076311f    90
-?FootballWalkToPosition@Villager@@QAEIXZ:
-                         call               ?MoveTo@MobileWallHug@@QAEHXZ                 // 0x00763120    e8fb7deaff
-                         mov                eax, 0x00000001                               // 0x00763125    b801000000
-                         ret                                                              // 0x0076312a    c3
-                         nop                                                              // 0x0076312b    90
-                         nop                                                              // 0x0076312c    90
-                         nop                                                              // 0x0076312d    90
-                         nop                                                              // 0x0076312e    90
-                         nop                                                              // 0x0076312f    90
-?CheckSatisfyPlaytimeDesire@Villager@@QAEIXZ:
-                         xor.s              eax, eax                                      // 0x00763130    33c0
-                         ret                                                              // 0x00763132    c3
-                         nop                                                              // 0x00763133    90
-                         nop                                                              // 0x00763134    90
-                         nop                                                              // 0x00763135    90
-                         nop                                                              // 0x00763136    90
-                         nop                                                              // 0x00763137    90
-                         nop                                                              // 0x00763138    90
-                         nop                                                              // 0x00763139    90
-                         nop                                                              // 0x0076313a    90
-                         nop                                                              // 0x0076313b    90
-                         nop                                                              // 0x0076313c    90
-                         nop                                                              // 0x0076313d    90
-                         nop                                                              // 0x0076313e    90
-                         nop                                                              // 0x0076313f    90
-?WaitForKickOff@Villager@@QAEIXZ:
-                         push               esi                                           // 0x00763140    56
-                         mov.s              esi, ecx                                      // 0x00763141    8bf1
-                         call               ?GetFootball@Villager@@QAEPAVFootball@@XZ     // 0x00763143    e858edfeff
-                         cmp                dword ptr [eax + 0x00000200], 0x01            // 0x00763148    83b80002000001
-                         {disp8} jne        _jmp_addr_0x0076315d                          // 0x0076314f    750c
-                         mov                eax, dword ptr [esi]                          // 0x00763151    8b06
-                         push               0x49                                          // 0x00763153    6a49
-                         mov.s              ecx, esi                                      // 0x00763155    8bce
-                         call               dword ptr [eax + 0x8e8]                       // 0x00763157    ff90e8080000
-_jmp_addr_0x0076315d:    mov                eax, 0x00000001                               // 0x0076315d    b801000000
-                         pop                esi                                           // 0x00763162    5e
-                         ret                                                              // 0x00763163    c3
-                         nop                                                              // 0x00763164    90
-                         nop                                                              // 0x00763165    90
-                         nop                                                              // 0x00763166    90
-                         nop                                                              // 0x00763167    90
-                         nop                                                              // 0x00763168    90
-                         nop                                                              // 0x00763169    90
-                         nop                                                              // 0x0076316a    90
-                         nop                                                              // 0x0076316b    90
-                         nop                                                              // 0x0076316c    90
-                         nop                                                              // 0x0076316d    90
-                         nop                                                              // 0x0076316e    90
-                         nop                                                              // 0x0076316f    90
-?FootballMatchPaused@Villager@@QAEIXZ:
-                         push               esi                                           // 0x00763170    56
-                         mov.s              esi, ecx                                      // 0x00763171    8bf1
-                         call               ?GetFootball@Villager@@QAEPAVFootball@@XZ     // 0x00763173    e828edfeff
-                         test               eax, eax                                      // 0x00763178    85c0
-                         {disp8} je         _jmp_addr_0x007631a6                          // 0x0076317a    742a
-                         mov.s              ecx, esi                                      // 0x0076317c    8bce
-                         call               ?GetFootball@Villager@@QAEPAVFootball@@XZ     // 0x0076317e    e81dedfeff
-                         mov.s              ecx, eax                                      // 0x00763183    8bc8
-                         call               ?GetBall@Football@@QAEPAXXZ                   // 0x00763185    e886e2dcff
-                         test               eax, eax                                      // 0x0076318a    85c0
-                         {disp8} je         _jmp_addr_0x007631a6                          // 0x0076318c    7418
-                         push               0x1                                           // 0x0076318e    6a01
-                         mov.s              ecx, esi                                      // 0x00763190    8bce
-                         call               ?GetFootball@Villager@@QAEPAVFootball@@XZ     // 0x00763192    e809edfeff
-                         mov.s              ecx, eax                                      // 0x00763197    8bc8
-                         call               ?GetBall@Football@@QAEPAXXZ                   // 0x00763199    e872e2dcff
-                         push               eax                                           // 0x0076319e    50
-                         mov.s              ecx, esi                                      // 0x0076319f    8bce
-                         call               ?LookAtObject@Living@@QAEIPAVGameThingWithPos@@K@Z                          // 0x007631a1    e87a93e8ff
-_jmp_addr_0x007631a6:    mov                eax, 0x00000001                               // 0x007631a6    b801000000
-                         pop                esi                                           // 0x007631ab    5e
-                         ret                                                              // 0x007631ac    c3
-                         nop                                                              // 0x007631ad    90
-                         nop                                                              // 0x007631ae    90
-                         nop                                                              // 0x007631af    90
-?FootballMexicanWave@Villager@@QAEIXZ:
-                         push               esi                                           // 0x007631b0    56
-                         mov.s              esi, ecx                                      // 0x007631b1    8bf1
-                         mov                eax, dword ptr [esi]                          // 0x007631b3    8b06
-                         call               dword ptr [eax + 0x48]                        // 0x007631b5    ff5048
-                         test               eax, eax                                      // 0x007631b8    85c0
-                         {disp8} jne        _jmp_addr_0x007631c8                          // 0x007631ba    750c
-                         mov                edx, dword ptr [esi]                          // 0x007631bc    8b16
-                         mov.s              ecx, esi                                      // 0x007631be    8bce
-                         call               dword ptr [edx + 0x8c8]                       // 0x007631c0    ff92c8080000
-                         pop                esi                                           // 0x007631c6    5e
-                         ret                                                              // 0x007631c7    c3
-_jmp_addr_0x007631c8:    mov.s              ecx, esi                                      // 0x007631c8    8bce
-                         call               ?GetFootball@Villager@@QAEPAVFootball@@XZ     // 0x007631ca    e8d1ecfeff
-                         push               0x2                                           // 0x007631cf    6a02
-                         push               eax                                           // 0x007631d1    50
-                         mov.s              ecx, esi                                      // 0x007631d2    8bce
-                         call               ?LookAtObject@Living@@QAEIPAVGameThingWithPos@@K@Z                          // 0x007631d4    e84793e8ff
-                         push               0x1                                           // 0x007631d9    6a01
-                         push               0x53                                          // 0x007631db    6a53
-                         mov.s              ecx, esi                                      // 0x007631dd    8bce
-                         call               ?PlayAnimThenSetState@Living@@QAEXEK@Z        // 0x007631df    e8dc98e8ff
-                         mov                eax, 0x00000001                               // 0x007631e4    b801000000
-                         pop                esi                                           // 0x007631e9    5e
-                         ret                                                              // 0x007631ea    c3
-                         nop                                                              // 0x007631eb    90
-                         nop                                                              // 0x007631ec    90
-                         nop                                                              // 0x007631ed    90
-                         nop                                                              // 0x007631ee    90
-                         nop                                                              // 0x007631ef    90
-?FootballWatchMatch@Villager@@QAEIXZ:
-                         push               esi                                           // 0x007631f0    56
-                         mov.s              esi, ecx                                      // 0x007631f1    8bf1
-                         mov                eax, dword ptr [esi]                          // 0x007631f3    8b06
-                         push               edi                                           // 0x007631f5    57
-                         call               dword ptr [eax + 0x48]                        // 0x007631f6    ff5048
-                         test               eax, eax                                      // 0x007631f9    85c0
-                         {disp8} jne        _jmp_addr_0x0076320a                          // 0x007631fb    750d
-                         mov                edx, dword ptr [esi]                          // 0x007631fd    8b16
-                         mov.s              ecx, esi                                      // 0x007631ff    8bce
-                         call               dword ptr [edx + 0x8c8]                       // 0x00763201    ff92c8080000
-                         pop                edi                                           // 0x00763207    5f
-                         pop                esi                                           // 0x00763208    5e
-                         ret                                                              // 0x00763209    c3
-_jmp_addr_0x0076320a:    mov.s              ecx, esi                                      // 0x0076320a    8bce
-                         call               ?GetFootball@Villager@@QAEPAVFootball@@XZ     // 0x0076320c    e88fecfeff
-                         mov.s              edi, eax                                      // 0x00763211    8bf8
-                         mov.s              ecx, edi                                      // 0x00763213    8bcf
-                         call               ?GetBall@Football@@QAEPAXXZ                   // 0x00763215    e8f6e1dcff
-                         test               eax, eax                                      // 0x0076321a    85c0
-                         {disp8} jne        _jmp_addr_0x0076322b                          // 0x0076321c    750d
-                         mov                eax, dword ptr [esi]                          // 0x0076321e    8b06
-                         mov.s              ecx, esi                                      // 0x00763220    8bce
-                         call               dword ptr [eax + 0x8c8]                       // 0x00763222    ff90c8080000
-                         pop                edi                                           // 0x00763228    5f
-                         pop                esi                                           // 0x00763229    5e
-                         ret                                                              // 0x0076322a    c3
-_jmp_addr_0x0076322b:    {disp32} mov       ecx, dword ptr [edi + 0x00000200]             // 0x0076322b    8b8f00020000
-                         test               ecx, ecx                                      // 0x00763231    85c9
-                         {disp8} jne        _jmp_addr_0x00763242                          // 0x00763233    750d
-                         push               0x1                                           // 0x00763235    6a01
-                         push               edi                                           // 0x00763237    57
-                         mov.s              ecx, esi                                      // 0x00763238    8bce
-                         call               ?LookAtObject@Living@@QAEIPAVGameThingWithPos@@K@Z                          // 0x0076323a    e8e192e8ff
-                         pop                edi                                           // 0x0076323f    5f
-                         pop                esi                                           // 0x00763240    5e
-                         ret                                                              // 0x00763241    c3
-_jmp_addr_0x00763242:    cmp                ecx, 0x01                                     // 0x00763242    83f901
-                         {disp8} jne        _jmp_addr_0x00763253                          // 0x00763245    750c
-                         push               ecx                                           // 0x00763247    51
-                         push               eax                                           // 0x00763248    50
-                         mov.s              ecx, esi                                      // 0x00763249    8bce
-                         call               ?LookAtObject@Living@@QAEIPAVGameThingWithPos@@K@Z                          // 0x0076324b    e8d092e8ff
-                         pop                edi                                           // 0x00763250    5f
-                         pop                esi                                           // 0x00763251    5e
-                         ret                                                              // 0x00763252    c3
-_jmp_addr_0x00763253:    cmp                ecx, 0x04                                     // 0x00763253    83f904
-                         {disp8} jne        _jmp_addr_0x00763277                          // 0x00763256    751f
-                         mov                edx, dword ptr [esi]                          // 0x00763258    8b16
-                         .byte              0x66, 0x81, 0xa6, 0xe0, 0x0, 0x0, 0x0, 0x7f, 0xff// and word ptr [esi + 0x000000e0], -0x0081 // 0x0076325a    6681a6e00000007fff
-                         mov.s              ecx, esi                                      // 0x00763263    8bce
-                         call               dword ptr [edx + 0x8c8]                       // 0x00763265    ff92c8080000
-                         cmp                eax, 0x01                                     // 0x0076326b    83f801
-                         {disp8} je         _jmp_addr_0x00763277                          // 0x0076326e    7407
-                         mov.s              ecx, esi                                      // 0x00763270    8bce
-                         call               ?GoHome@Villager@@QAE_NXZ                     // 0x00763272    e8f9cfffff
-_jmp_addr_0x00763277:    pop                edi                                           // 0x00763277    5f
-                         mov                eax, 0x00000001                               // 0x00763278    b801000000
-                         pop                esi                                           // 0x0076327d    5e
-                         ret                                                              // 0x0076327e    c3
-                         nop                                                              // 0x0076327f    90
-?ExitFootball@Villager@@QAEIE@Z:
-                         push               ebx                                           // 0x00763280    53
-                         push               esi                                           // 0x00763281    56
-                         mov.s              esi, ecx                                      // 0x00763282    8bf1
-                         push               esi                                           // 0x00763284    56
-                         {disp8} lea        ecx, dword ptr [esi + 0x70]                   // 0x00763285    8d4e70
-                         call               _jmp_addr_0x0060a9f0                          // 0x00763288    e86377eaff
-                         {disp8} mov        ebx, dword ptr [esp + 0x0c]                   // 0x0076328d    8b5c240c
-                         mov                eax, dword ptr [esi]                          // 0x00763291    8b06
-                         mov.s              ecx, ebx                                      // 0x00763293    8bcb
-                         and                ecx, 0x000000ff                               // 0x00763295    81e1ff000000
-                         push               ecx                                           // 0x0076329b    51
-                         mov.s              ecx, esi                                      // 0x0076329c    8bce
-                         call               dword ptr [eax + 0x96c]                       // 0x0076329e    ff906c090000
-                         test               eax, eax                                      // 0x007632a4    85c0
-                         {disp8} jne        _jmp_addr_0x007632f7                          // 0x007632a6    754f
-                         cmp                bl, 0x01                                      // 0x007632a8    80fb01
-                         {disp8} je         _jmp_addr_0x007632f7                          // 0x007632ab    744a
-                         cmp                bl, 0x02                                      // 0x007632ad    80fb02
-                         {disp8} je         _jmp_addr_0x007632f7                          // 0x007632b0    7445
-                         push               edi                                           // 0x007632b2    57
-                         mov.s              ecx, esi                                      // 0x007632b3    8bce
-                         call               ?GetFootball@Villager@@QAEPAVFootball@@XZ     // 0x007632b5    e8e6ebfeff
-                         mov.s              edi, eax                                      // 0x007632ba    8bf8
-                         cmp                dword ptr [edi + 0x00000254], esi             // 0x007632bc    39b754020000
-                         {disp8} jne        _jmp_addr_0x007632ce                          // 0x007632c2    750a
-                         {disp32} mov       dword ptr [edi + 0x00000254], 0x00000000      // 0x007632c4    c7875402000000000000
-_jmp_addr_0x007632ce:    push               esi                                           // 0x007632ce    56
-                         mov.s              ecx, edi                                      // 0x007632cf    8bcf
-                         call               _jmp_addr_0x005325d0                          // 0x007632d1    e8faf2dcff
-                         cmp                eax, 0x01                                     // 0x007632d6    83f801
-                         {disp8} je         _jmp_addr_0x007632e3                          // 0x007632d9    7408
-                         push               esi                                           // 0x007632db    56
-                         mov.s              ecx, edi                                      // 0x007632dc    8bcf
-                         call               _jmp_addr_0x005326e0                          // 0x007632de    e8fdf3dcff
-_jmp_addr_0x007632e3:    .byte              0x66, 0x81, 0xa6, 0xe0, 0x0, 0x0, 0x0, 0x7f, 0xff// and word ptr [esi + 0x000000e0], -0x0081 // 0x007632e3    6681a6e00000007fff
-                         pop                edi                                           // 0x007632ec    5f
-                         pop                esi                                           // 0x007632ed    5e
-                         mov                eax, 0x00000001                               // 0x007632ee    b801000000
-                         pop                ebx                                           // 0x007632f3    5b
-                         ret                0x0004                                        // 0x007632f4    c20400
-_jmp_addr_0x007632f7:    pop                esi                                           // 0x007632f7    5e
-                         mov                eax, 0x00000001                               // 0x007632f8    b801000000
-                         pop                ebx                                           // 0x007632fd    5b
-                         ret                0x0004                                        // 0x007632fe    c20400
-                         nop                                                              // 0x00763301    90
-                         nop                                                              // 0x00763302    90
-                         nop                                                              // 0x00763303    90
-                         nop                                                              // 0x00763304    90
-                         nop                                                              // 0x00763305    90
-                         nop                                                              // 0x00763306    90
-                         nop                                                              // 0x00763307    90
-                         nop                                                              // 0x00763308    90
-                         nop                                                              // 0x00763309    90
-                         nop                                                              // 0x0076330a    90
-                         nop                                                              // 0x0076330b    90
-                         nop                                                              // 0x0076330c    90
-                         nop                                                              // 0x0076330d    90
-                         nop                                                              // 0x0076330e    90
-                         nop                                                              // 0x0076330f    90
 _globl_ct_0x00763310:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00763310    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x00763316    b001
                          test               al, cl                                        // 0x00763318    84c8
