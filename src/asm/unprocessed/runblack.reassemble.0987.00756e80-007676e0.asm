@@ -240,28 +240,6 @@
 .globl _globl_ct_0x00767610
 .globl _AddDrawing__12VillagerNameFv
 
-_globl_ct_0x007626f0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x007626f0    8a0d34c9fa00
-                         mov                al, 0x01                                      // 0x007626f6    b001
-                         test               al, cl                                        // 0x007626f8    84c8
-                         {disp8} jne        _jmp_addr_0x00762704                          // 0x007626fa    7508
-                         or.s               cl, al                                        // 0x007626fc    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x007626fe    880d34c9fa00
-_jmp_addr_0x00762704:    {disp32} jmp       _jmp_addr_0x00762710                          // 0x00762704    e907000000
-                         nop                                                              // 0x00762709    90
-                         nop                                                              // 0x0076270a    90
-                         nop                                                              // 0x0076270b    90
-                         nop                                                              // 0x0076270c    90
-                         nop                                                              // 0x0076270d    90
-                         nop                                                              // 0x0076270e    90
-                         nop                                                              // 0x0076270f    90
-_jmp_addr_0x00762710:    push               0x00407870                                    // 0x00762710    6870784000
-                         call               _atexit                                       // 0x00762715    e877300600
-                         pop                ecx                                           // 0x0076271a    59
-                         ret                                                              // 0x0076271b    c3
-                         nop                                                              // 0x0076271c    90
-                         nop                                                              // 0x0076271d    90
-                         nop                                                              // 0x0076271e    90
-                         nop                                                              // 0x0076271f    90
 ?Alloc@VillagerNameBlock@@SAPAUVillagerName@@XZ:
                                   {disp32} mov       ecx, dword ptr [data_bytes + 0x3f3e24]        // 0x00762720    8b0d249edb00
                          test               ecx, ecx                                      // 0x00762726    85c9
