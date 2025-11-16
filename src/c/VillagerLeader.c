@@ -36,3 +36,9 @@ void __cdecl FUN_007626c0__8VillagerFv(void)
     asm("ret");                                                              // 0x007626d2    c3
     __builtin_unreachable();
 }
+
+__attribute__((XOR32rr_REV))
+bool32_t __fastcall CheckLeaderNeeded__8VillagerFv(struct Villager* this)
+{
+    return 0;
+}

@@ -229,8 +229,6 @@
 .globl ?StorePreviousState@Villager@@UAEXXZ
 .globl ?UpdateHowImpressed@Villager@@UAEXPAVReaction@@H@Z
 .globl ?WaitForKickOff@Villager@@QAEIXZ
-.globl _globl_ct_0x00762680
-.globl _globl_ct_0x007626b0
 .globl _globl_ct_0x007626f0
 .globl _globl_ct_0x00763080
 .globl _globl_ct_0x007630b0
@@ -241,24 +239,7 @@
 .globl _globl_ct_0x007675e0
 .globl _globl_ct_0x00767610
 .globl _AddDrawing__12VillagerNameFv
-.globl ?CheckLeaderNeeded@Villager@@QAEIXZ
 
-?CheckLeaderNeeded@Villager@@QAEIXZ:
-                         xor.s              eax, eax                                      // 0x007626e0    33c0
-                         ret                                                              // 0x007626e2    c3
-                         nop                                                              // 0x007626e3    90
-                         nop                                                              // 0x007626e4    90
-                         nop                                                              // 0x007626e5    90
-                         nop                                                              // 0x007626e6    90
-                         nop                                                              // 0x007626e7    90
-                         nop                                                              // 0x007626e8    90
-                         nop                                                              // 0x007626e9    90
-                         nop                                                              // 0x007626ea    90
-                         nop                                                              // 0x007626eb    90
-                         nop                                                              // 0x007626ec    90
-                         nop                                                              // 0x007626ed    90
-                         nop                                                              // 0x007626ee    90
-                         nop                                                              // 0x007626ef    90
 _globl_ct_0x007626f0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x007626f0    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x007626f6    b001
                          test               al, cl                                        // 0x007626f8    84c8
