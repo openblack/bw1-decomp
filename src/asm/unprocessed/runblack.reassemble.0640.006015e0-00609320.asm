@@ -193,7 +193,7 @@
 .globl _jmp_addr_0x00604c30
 .globl _jmp_addr_0x00604f40
 .globl _jmp_addr_0x00604f90
-.globl _jmp_addr_0x00604fe0
+.globl ?CollideCollideWithFixe@MapCoords@@QBEHXZ
 .globl _jmp_addr_0x00605050
 .globl _jmp_addr_0x006050d0
 .globl _jmp_addr_0x00605250
@@ -5879,7 +5879,8 @@ _jmp_addr_0x00604fcc:    pop                edi                                 
                          nop                                                              // 0x00604fdd    90
                          nop                                                              // 0x00604fde    90
                          nop                                                              // 0x00604fdf    90
-_jmp_addr_0x00604fe0:    push               esi                                           // 0x00604fe0    56
+?CollideCollideWithFixe@MapCoords@@QBEHXZ:
+                         push               esi                                           // 0x00604fe0    56
                          mov.s              esi, ecx                                      // 0x00604fe1    8bf1
                          call               ?ToMap@MapCoords@@QBEPAUMapCell@@XZ           // 0x00604fe3    e848e4ffff
                          test               eax, eax                                      // 0x00604fe8    85c0

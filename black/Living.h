@@ -34,6 +34,7 @@ struct GLivingInfo;
 struct GameOSFile;
 struct GameThingVftable;
 struct GestureSystemPacketData;
+struct JustMapXZ;
 struct LHPoint;
 struct Living;
 struct MapCoords;
@@ -41,6 +42,22 @@ struct ObjectVftable;
 struct PhysicsObject;
 struct Reaction;
 struct ReactionDoneWhen;
+
+struct LivingMapCell
+{
+  uint8_t field_0x0;
+};
+static_assert(sizeof(struct LivingMapCell) == 0x1, "Data type is of wrong size");
+
+// Constructors
+
+// win1.41 00767fe0 mac 10595660 LivingMapCell::LivingMapCell(JustMapXZ &)
+struct LivingMapCell* __fastcall __ct__13LivingMapCellFR9JustMapXZ(struct LivingMapCell* this, const void* edx, struct JustMapXZ* param_1) asm("??0LivingMapCell@@QAE@AAUJustMapXZ@@@Z");
+
+// Non-virtual methods
+
+// win1.41 007680d0 mac 105953b0 LivingMapCell::FindFreePosition(JustMapXZ &, MapCoords const &, MapCoords *)
+bool32_t __fastcall FindFreePosition__13LivingMapCellFR9JustMapXZRC9MapCoordsP9MapCoords(struct LivingMapCell* this, const void* edx, struct JustMapXZ* param_1, const struct MapCoords* param_2, struct MapCoords* param_3) asm("?FindFreePosition@LivingMapCell@@QAEIAAUJustMapXZ@@ABUMapCoords@@PAU3@@Z");
 
 struct DataForScriptRemind
 {

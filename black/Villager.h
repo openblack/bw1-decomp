@@ -1198,6 +1198,32 @@ bool32_t __fastcall WaitForMate__8VillagerFv(struct Villager* this) asm("?WaitFo
 bool32_t __fastcall EnterDrowning__8VillagerFUcUc(struct Villager* this, const void* edx, unsigned char param_1, unsigned char param_2) asm("?EnterDrowning@Villager@@QAEIEE@Z");
 // win1.41 00767420 mac 1058c810 Villager::ExitDrowning(unsigned char)
 bool32_t __fastcall ExitDrowning__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitDrowning@Villager@@QAEIE@Z");
+// win1.41 007678a0 mac 10596410 Villager::InspectCreatureReaction(void)
+bool32_t __fastcall InspectCreatureReaction__8VillagerFv(struct Villager* this) asm("?InspectCreatureReaction@Villager@@QAEIXZ");
+// win1.41 00767970 mac 105962d0 Villager::PerformInspectCreatureReaction(void)
+bool32_t __fastcall PerformInspectCreatureReaction__8VillagerFv(struct Villager* this) asm("?PerformInspectCreatureReaction@Villager@@QAEIXZ");
+// win1.41 00767a00 mac 10596080 Villager::ApproachCreatureReaction(void)
+bool32_t __fastcall ApproachCreatureReaction__8VillagerFv(struct Villager* this) asm("?ApproachCreatureReaction@Villager@@QAEIXZ");
+// win1.41 00767ba0 mac 10595f40 Villager::InitialiseRespectCreatureReaction(void)
+bool32_t __fastcall InitialiseRespectCreatureReaction__8VillagerFv(struct Villager* this) asm("?InitialiseRespectCreatureReaction@Villager@@QAEIXZ");
+// win1.41 00767c80 mac 10595e50 Villager::TurnToFaceCreatureReaction(void)
+bool32_t __fastcall TurnToFaceCreatureReaction__8VillagerFv(struct Villager* this) asm("?TurnToFaceCreatureReaction@Villager@@QAEIXZ");
+// win1.41 00767ce0 mac 10595cf0 Villager::PerformRespectCreatureReaction(void)
+bool32_t __fastcall PerformRespectCreatureReaction__8VillagerFv(struct Villager* this) asm("?PerformRespectCreatureReaction@Villager@@QAEIXZ");
+// win1.41 00767dc0 mac 10595c30 Villager::FinishRespectCreatureReaction(void)
+bool32_t __fastcall FinishRespectCreatureReaction__8VillagerFv(struct Villager* this) asm("?FinishRespectCreatureReaction@Villager@@QAEIXZ");
+// win1.41 00767e00 mac 10595a30 Villager::FleeingFromCreatureReaction(void)
+bool32_t __fastcall FleeingFromCreatureReaction__8VillagerFv(struct Villager* this) asm("?FleeingFromCreatureReaction@Villager@@QAEIXZ");
+// win1.41 00767f70 mac 10595930 Villager::MoveTowardsCreatureReaction(void)
+bool32_t __fastcall MoveTowardsCreatureReaction__8VillagerFv(struct Villager* this) asm("?MoveTowardsCreatureReaction@Villager@@QAEIXZ");
+// win1.41 007682a0 mac 10595080 Villager::CalculateNearestFreeDestination(MapCoords *)
+void __fastcall CalculateNearestFreeDestination__8VillagerFP9MapCoords(struct Villager* this, const void* edx, struct MapCoords* param_1) asm("?CalculateNearestFreeDestination@Villager@@QAEXPAUMapCoords@@@Z");
+// win1.41 007683f0 mac 10595020 Villager::UpdateAttitudeToCreature(void)
+void __fastcall UpdateAttitudeToCreature__8VillagerFv(struct Villager* this) asm("?UpdateAttitudeToCreature@Villager@@QAEXXZ");
+// win1.41 00768400 mac 10594e00 Villager::UpdateReactiveStateFromAttitudeToCreature(void)
+bool32_t __fastcall UpdateReactiveStateFromAttitudeToCreature__8VillagerFv(struct Villager* this) asm("?UpdateReactiveStateFromAttitudeToCreature@Villager@@QAEIXZ");
+// win1.41 00768510 mac 10594d70 Villager::SetupMoveToCreatureReaction(MapCoords const &, unsigned char)
+void __fastcall SetupMoveToCreatureReaction__8VillagerFRC9MapCoordsUc(struct Villager* this, const void* edx, const struct MapCoords* param_1, unsigned char param_2) asm("?SetupMoveToCreatureReaction@Villager@@QAEXABUMapCoords@@E@Z");
 // win1.41 00768c30 mac 105986f0 Villager::ShepherdLookForFlock(void)
 bool32_t __fastcall ShepherdLookForFlock__8VillagerFv(struct Villager* this) asm("?ShepherdLookForFlock@Villager@@QAE_NXZ");
 // win1.41 00768cc0 mac 105984c0 Villager::ShepherdMoveFlockToWater(void)
@@ -1246,6 +1272,26 @@ bool32_t __fastcall ExitAtWorshipSite__8VillagerFUc(struct Villager* this, const
 bool32_t __fastcall RemoveVillagerFromWorshipSite__8VillagerFv(struct Villager* this) asm("?RemoveVillagerFromWorshipSite@Villager@@QAE_NXZ");
 // win1.41 0076c6e0 mac 1059d310 Villager::StartWorshippingCreature(Creature *)
 bool32_t __fastcall StartWorshippingCreature__8VillagerFP8Creature(struct Villager* this, const void* edx, struct Creature* param_1) asm("?StartWorshippingCreature@Villager@@QAE_NPAVCreature@@@Z");
+// win1.41 0076c7c0 mac 1059d280 Villager::WorshippingCreature(void)
+bool32_t __fastcall WorshippingCreature__8VillagerFv(struct Villager* this) asm("?WorshippingCreature@Villager@@QAEIXZ");
+// win1.41 0076c800 mac 1059d130 Villager::ReduceVillagerLifeByChant(void)
+bool32_t __fastcall ReduceVillagerLifeByChant__8VillagerFv(struct Villager* this) asm("?ReduceVillagerLifeByChant@Villager@@QAEIXZ");
+// win1.41 0076c890 mac 1059d090 Villager::ProcessInWorship(void)
+bool32_t __fastcall ProcessInWorship__8VillagerFv(struct Villager* this) asm("?ProcessInWorship@Villager@@QAEIXZ");
+// win1.41 0076c9a0 mac 1059cd40 Villager::CheckAllowedToRestAtWorshipSite(int)
+bool32_t __fastcall CheckAllowedToRestAtWorshipSite__8VillagerFi(struct Villager* this, const void* edx, int param_1) asm("?CheckAllowedToRestAtWorshipSite@Villager@@QAEIH@Z");
+// win1.41 0076ca30 mac 1059cbd0 Villager::GetFoodAtWorshipSite(void)
+bool32_t __fastcall GetFoodAtWorshipSite__8VillagerFv(struct Villager* this) asm("?GetFoodAtWorshipSite@Villager@@QAEIXZ");
+// win1.41 0076cb00 mac 1059caa0 Villager::GotoAltarForRest(void)
+bool32_t __fastcall GotoAltarForRest__8VillagerFv(struct Villager* this) asm("?GotoAltarForRest@Villager@@QAEIXZ");
+// win1.41 0076cb80 mac 1059ca10 Villager::ArrivesAtAltarForRest(void)
+bool32_t __fastcall ArrivesAtAltarForRest__8VillagerFv(struct Villager* this) asm("?ArrivesAtAltarForRest@Villager@@QAEIXZ");
+// win1.41 0076cbb0 mac 1059c980 Villager::AtAltarRest(void)
+bool32_t __fastcall AtAltarRest__8VillagerFv(struct Villager* this) asm("?AtAltarRest@Villager@@QAEIXZ");
+// win1.41 0076cbe0 mac 1059c8f0 Villager::AtAltarFinishedRest(void)
+bool32_t __fastcall AtAltarFinishedRest__8VillagerFv(struct Villager* this) asm("?AtAltarFinishedRest@Villager@@QAEIXZ");
+// win1.41 0076cc00 mac 1059c880 Villager::CheckSatisfySuppyWorship(void)
+bool32_t __fastcall CheckSatisfySuppyWorship__8VillagerFv(struct Villager* this) asm("?CheckSatisfySuppyWorship@Villager@@QAEIXZ");
 
 // Override methods
 

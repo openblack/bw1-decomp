@@ -1677,6 +1677,7 @@ ROOMMATE_CLASS_MAP = {
     "start_system__Fv": "PCMain",
     "free_system__Fv": "PCMain",
     "FreeFonts__Fv": "PCMain",
+    "LivingMapCell": "Living",
 }
 
 

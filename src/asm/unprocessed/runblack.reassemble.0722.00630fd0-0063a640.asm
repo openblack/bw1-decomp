@@ -106,7 +106,7 @@
 .extern _jmp_addr_0x00603620
 .extern _jmp_addr_0x00603720
 .extern ?InBounds@MapCoords@@QBEIXZ
-.extern _jmp_addr_0x00604fe0
+.extern ?CollideCollideWithFixe@MapCoords@@QBEHXZ
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
 .extern _jmp_addr_0x00605cc0
 .extern _jmp_addr_0x0061cc80
@@ -12319,7 +12319,7 @@ _jmp_addr_0x00638c22:    mov                eax, dword ptr [esi]                
 _jmp_addr_0x00638c40:    push               esi                                            // 0x00638c40    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x00638c41    8b742408
                          mov.s              ecx, esi                                       // 0x00638c45    8bce
-                         call               _jmp_addr_0x00604fe0                           // 0x00638c47    e894c3fcff
+                         call               ?CollideCollideWithFixe@MapCoords@@QBEHXZ      // 0x00638c47    e894c3fcff
                          test               al, 0x08                                       // 0x00638c4c    a808
                          {disp8} je         _jmp_addr_0x00638c5f                           // 0x00638c4e    740f
                          mov.s              ecx, esi                                       // 0x00638c50    8bce

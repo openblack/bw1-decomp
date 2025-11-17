@@ -338,6 +338,12 @@ void __fastcall __dt__16GameThingWithPosFv(struct GameThingWithPos* this, const 
 int __fastcall GetBoredomMultiplier__16GameThingWithPosFP8Reaction(struct GameThingWithPos* this, const void* edx, struct Reaction* param_1) asm("?GetBoredomMultiplier@GameThingWithPos@@QAEHPAVReaction@@@Z");
 // win1.41 005705d0 mac 10098a30 GameThingWithPos::SetToZero(void)
 void __fastcall SetToZero__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?SetToZero@GameThingWithPos@@QAEXXZ");
+// win1.41 00768540 mac 10594d20 GameThingWithPos::AttitudeToCreatureNone(void)
+uint32_t __fastcall AttitudeToCreatureNone__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?AttitudeToCreatureNone@GameThingWithPos@@QAEIXZ");
+// win1.41 00768550 mac 00768550 GameThingWithPos::AttitudeToCreatureFear(void)
+uint32_t __fastcall AttitudeToCreatureFear__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?AttitudeToCreatureFear@GameThingWithPos@@QAEIXZ");
+// win1.41 00768560 mac 10594c80 GameThingWithPos::AttitudeToCreatureRespect(void)
+uint32_t __fastcall AttitudeToCreatureRespect__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?AttitudeToCreatureRespect@GameThingWithPos@@QAEIXZ");
 
 // Override methods
 

@@ -90,7 +90,7 @@
 .extern _jmp_addr_0x00603720
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16
-.extern _jmp_addr_0x00604fe0
+.extern ?CollideCollideWithFixe@MapCoords@@QBEHXZ
 .extern _jmp_addr_0x00605250
 .extern @__apl__9MapCoordsFRC9MapCoords@12
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
@@ -7843,7 +7843,7 @@ _SetOnFire__4TreeFf:
 _jmp_addr_0x0074c180:    push               esi                                            // 0x0074c180    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                    // 0x0074c181    8b742408
                          mov.s              ecx, esi                                       // 0x0074c185    8bce
-                         call               _jmp_addr_0x00604fe0                           // 0x0074c187    e8548eebff
+                         call               ?CollideCollideWithFixe@MapCoords@@QBEHXZ      // 0x0074c187    e8548eebff
                          test               al, 0x08                                       // 0x0074c18c    a808
                          {disp8} je         _jmp_addr_0x0074c19d                           // 0x0074c18e    740d
                          mov.s              ecx, esi                                       // 0x0074c190    8bce

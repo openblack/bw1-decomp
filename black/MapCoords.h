@@ -7,6 +7,7 @@
 
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
 #include <chlasm/Enum.h> /* For enum OBJECT_TYPE */
+#include <lionhead/lhlib/ver5.0/LHStack.h> /* For DECLARE_LH_STACK */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
 // Forward Declares
@@ -32,6 +33,11 @@ static_assert(sizeof(struct JustMapXZ) == 0x4, "Data type is of wrong size");
 struct JustMapXZ* __fastcall Init__9JustMapXZFUsUs(struct JustMapXZ* this, const void* edx, int16_t x, int16_t z) asm("?Init@JustMapXZ@@QAEPAV1@GG@Z");
 // win1.41 005e1920 mac 100fe800 JustMapXZ::Init(MapCell*)
 struct JustMapXZ* __fastcall Init__9JustMapXZFP7MapCell(struct JustMapXZ* this, const void* edx, struct MapCell* cell) asm("?Init@JustMapXZ@@QAEPAV1@PAUMapCell@@@Z");
+
+DECLARE_LH_STACK(JustMapXZ);
+
+// win1.41 007685a0 mac inlined LHStack<JustMapXZ>::Push(JustMapXZ *)
+void __fastcall Push__LHStack__JustMapXZFPJustMapXZ(struct LHStack__JustMapXZ* this, const void* edx, struct JustMapXZ* val);
 
 struct MapCoordsSplit
 {
@@ -116,6 +122,8 @@ float __fastcall Altitude__9MapCoordsCFv(const struct MapCoords* this) asm("?Alt
 struct Object* __fastcall GetFirstObjectMobile__9MapCoordsCFv(const struct MapCoords* this) asm("?GetFirstObjectMobile@MapCoords@@QBEPAVObject@@XZ");
 // win1.41 006056b0 mac 10557130 MapCoords::__ne(MapCoords const &) const
 bool __fastcall __ne__9MapCoordsCFRC9MapCoords(const struct MapCoords* this, const void* edx, const struct MapCoords* param_1) asm("?__ne@MapCoords@@QBE_NABV1@@Z");
+// win1.41 00604fe0 mac 10406220 MapCoords::CollideCollideWithFixe(void) const
+int __fastcall CollideCollideWithFixe__9MapCoordsCFv(const struct MapCoords* this) asm("?CollideCollideWithFixe@MapCoords@@QBEHXZ");
 
 // win1.41 00535780 mac 100eda80 ConvertMapCoordsToPoint2D(MapCoords const &)
 struct Point2D* __cdecl ConvertMapCoordsToPoint2D__FRC9MapCoords(struct Point2D* param_1, const struct MapCoords* param_2);
