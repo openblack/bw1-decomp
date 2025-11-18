@@ -18,6 +18,7 @@ CONTAINER_TEMPLATE_DECL = OrderedDict([
     ('LHLinkedList', ['LHLinkedList__', 'LHLinkedNode__']),
     ('LHListHead', ['LHListHead__']),
     ('GJVector', ['GJVector__']),
+    ('LHStack', ['LHStack__']),
     ('LHDynamicStack', ['LHDynamicStack__']),
     ('LHOrderedLinkedList', ['LHOrderedLinkedList__', 'OrderedNode__']),
 ])
