@@ -37,7 +37,7 @@ struct JustMapXZ* __fastcall Init__9JustMapXZFP7MapCell(struct JustMapXZ* this, 
 DECLARE_LH_STACK(JustMapXZ);
 
 // win1.41 007685a0 mac inlined LHStack<JustMapXZ>::Push(JustMapXZ *)
-void __fastcall Push__LHStack__JustMapXZFPJustMapXZ(struct LHStack__JustMapXZ* this, const void* edx, struct JustMapXZ* val);
+void __fastcall Push__LHStack__JustMapXZFPJustMapXZ(struct LHStack__JustMapXZ* this, const void* edx, struct JustMapXZ* val) asm("_Push__LHStack__JustMapXZFPJustMapXZ");
 
 struct MapCoordsSplit
 {
