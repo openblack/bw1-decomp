@@ -393,6 +393,7 @@ set(SOURCES_001
     c/VillagerReaction.c
     c/VillagerReactionToCreature.c
     c/VillagerScript.c
+    c/VillagerShepherd.c
     asm/unprocessed/runblack.reassemble.0993.007678a0-007791d0.asm
     asm/unprocessed/runblack.reassemble.0996.007791d0-0077d2e0.asm
     asm/unprocessed/runblack.reassemble.1000.0077d2e0-0077f670.asm
