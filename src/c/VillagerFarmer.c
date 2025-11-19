@@ -527,7 +527,7 @@ bool32_t __fastcall CheckSatisfyFoodDesire__8VillagerFv(struct Villager* this)
     asm("{disp32} jne       _jmp_addr_0x0075a1f4");                          // 0x0075a0dc    0f8512010000
     asm("push               eax");                                           // 0x0075a0e2    50
     asm("mov.s              ecx, ebx");                                      // 0x0075a0e3    8bcb
-    asm("call               _jmp_addr_0x00768be0");                          // 0x0075a0e5    e8f6ea0000
+    asm("call               ?VillagerBecomesShepherd@Villager@@QAEIPAVFlock@@@Z");                          // 0x0075a0e5    e8f6ea0000
     asm("cmp                eax, 0x01");                                     // 0x0075a0ea    83f801
     asm("{disp32} jne       _jmp_addr_0x0075a1f0");                          // 0x0075a0ed    0f85fd000000
     asm("{disp8} mov        ecx, dword ptr [esp + 0x18]");                   // 0x0075a0f3    8b4c2418

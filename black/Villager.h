@@ -35,6 +35,7 @@ struct EffectValues;
 struct Field;
 struct FireEffect;
 struct FishFarm;
+struct Flock;
 struct Football;
 struct Forest;
 struct GInterfaceStatus;
@@ -1240,12 +1241,40 @@ bool32_t __fastcall ScriptAnimation__8VillagerFv(struct Villager* this) asm("?Sc
 bool32_t __fastcall WeakOnGround__8VillagerFv(struct Villager* this) asm("?WeakOnGround@Villager@@QAEIXZ");
 // win1.41 00768a20 mac 105969d0 Villager::ScriptGoAndMoveAlongPath(void)
 bool32_t __fastcall ScriptGoAndMoveAlongPath__8VillagerFv(struct Villager* this) asm("?ScriptGoAndMoveAlongPath@Villager@@QAEIXZ");
+// win1.41 00768be0 mac 10598820 Villager::VillagerBecomesShepherd(Flock *)
+bool32_t __fastcall VillagerBecomesShepherd__8VillagerFP5Flock(struct Villager* this, const void* edx, struct Flock* param_1) asm("?VillagerBecomesShepherd@Villager@@QAEIPAVFlock@@@Z");
 // win1.41 00768c30 mac 105986f0 Villager::ShepherdLookForFlock(void)
 bool32_t __fastcall ShepherdLookForFlock__8VillagerFv(struct Villager* this) asm("?ShepherdLookForFlock@Villager@@QAE_NXZ");
+// win1.41 00768c90 mac 10598650 Villager::FindClosestFlockAnimal(void)
+bool32_t __fastcall FindClosestFlockAnimal__8VillagerFv(struct Villager* this) asm("?FindClosestFlockAnimal@Villager@@QAEIXZ");
 // win1.41 00768cc0 mac 105984c0 Villager::ShepherdMoveFlockToWater(void)
 bool32_t __fastcall ShepherdMoveFlockToWater__8VillagerFv(struct Villager* this) asm("?ShepherdMoveFlockToWater@Villager@@QAE_NXZ");
+// win1.41 00768dd0 mac 10006020 Villager::ShepherdWaitForFlock(void)
+bool32_t __fastcall ShepherdWaitForFlock__8VillagerFv(struct Villager* this) asm("?ShepherdWaitForFlock@Villager@@QAEIXZ");
 // win1.41 00768e30 mac 105981b0 Villager::ShepherdGotoFlock(void)
 bool32_t __fastcall ShepherdGotoFlock__8VillagerFv(struct Villager* this) asm("?ShepherdGotoFlock@Villager@@QAE_NXZ");
+// win1.41 00768ec0 mac 105980a0 Villager::ShepherdTakesControlOfFlock(void)
+bool32_t __fastcall ShepherdTakesControlOfFlock__8VillagerFv(struct Villager* this) asm("?ShepherdTakesControlOfFlock@Villager@@QAEIXZ");
+// win1.41 00768f20 mac 10597fd0 Villager::ShepherdReleasesControlOfFlock(void)
+bool32_t __fastcall ShepherdReleasesControlOfFlock__8VillagerFv(struct Villager* this) asm("?ShepherdReleasesControlOfFlock@Villager@@QAEIXZ");
+// win1.41 00768f50 mac 10597f10 Villager::ExitShepherding(unsigned char)
+bool32_t __fastcall ExitShepherding__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitShepherding@Villager@@QAEIE@Z");
+// win1.41 00768fb0 mac 10597d80 Villager::ShepherdDecideWhatToDoWithFlock(void)
+bool32_t __fastcall ShepherdDecideWhatToDoWithFlock__8VillagerFv(struct Villager* this) asm("?ShepherdDecideWhatToDoWithFlock@Villager@@QAEIXZ");
+// win1.41 00769070 mac 10597cc0 Villager::ShepherdMoveFlockBack(void)
+bool32_t __fastcall ShepherdMoveFlockBack__8VillagerFv(struct Villager* this) asm("?ShepherdMoveFlockBack@Villager@@QAEIXZ");
+// win1.41 007690d0 mac 10597c80 Villager::ShepherdMoveFlockToFood(void)
+bool32_t __fastcall ShepherdMoveFlockToFood__8VillagerFv(struct Villager* this) asm("?ShepherdMoveFlockToFood@Villager@@QAEIXZ");
+// win1.41 007690e0 mac 10597ae0 Villager::ShepherdTakeAnimalForSlaughter(void)
+bool32_t __fastcall ShepherdTakeAnimalForSlaughter__8VillagerFv(struct Villager* this) asm("?ShepherdTakeAnimalForSlaughter@Villager@@QAEIXZ");
+// win1.41 007691a0 mac 10026690 Villager::ShepherdCheckAnimalForSlaughter(void)
+bool32_t __fastcall ShepherdCheckAnimalForSlaughter__8VillagerFv(struct Villager* this) asm("?ShepherdCheckAnimalForSlaughter@Villager@@QAEIXZ");
+// win1.41 00769390 mac 10597830 Villager::ShepherdSlaughterAnimal(void)
+bool32_t __fastcall ShepherdSlaughterAnimal__8VillagerFv(struct Villager* this) asm("?ShepherdSlaughterAnimal@Villager@@QAEIXZ");
+// win1.41 00769430 mac 10006770 Villager::SlaughterAnimalIsClose(float, Living *)
+bool32_t __fastcall SlaughterAnimalIsClose__8VillagerFfP6Living(struct Villager* this, const void* edx, float param_1, struct Living* param_2) asm("?SlaughterAnimalIsClose@Villager@@QAEIMPAVLiving@@@Z");
+// win1.41 00769460 mac 105976d0 Villager::ShepherdFetchStray(void)
+bool32_t __fastcall ShepherdFetchStray__8VillagerFv(struct Villager* this) asm("?ShepherdFetchStray@Villager@@QAEIXZ");
 // win1.41 00769620 mac 10096900 Villager::GotoStoragePitForDropOff(void)
 uint32_t __fastcall GotoStoragePitForDropOff__8VillagerFv(struct Villager* this) asm("?GotoStoragePitForDropOff@Villager@@QAEIXZ");
 // win1.41 007696d0 mac 100062f0 Villager::ArrivesAtStoragePitForDropOff(void)

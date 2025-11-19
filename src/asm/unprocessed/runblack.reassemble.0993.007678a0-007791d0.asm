@@ -346,7 +346,7 @@
 .extern _jmp_addr_0x007a1400
 .extern ?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ
 
-.globl _jmp_addr_0x00768be0
+.globl ?VillagerBecomesShepherd@Villager@@QAEIPAVFlock@@@Z
 .globl ?GotoStoragePitForDropOff@Villager@@QAEIXZ
 .globl ?ArrivesAtStoragePitForDropOff@Villager@@QAEIXZ
 .globl ?ArrivesAtStoragePitForResource@Villager@@QAEIW4RESOURCE_TYPE@@KW4VILLAGER_STATES@@1@Z
@@ -560,9 +560,22 @@
 .globl ?ArrivesAtAltarForRest@Villager@@QAEIXZ
 .globl ?AtAltarRest@Villager@@QAEIXZ
 .globl ?CheckSatisfySuppyWorship@Villager@@QAEIXZ
+.globl ?FindClosestFlockAnimal@Villager@@QAEIXZ
+.globl ?ShepherdWaitForFlock@Villager@@QAEIXZ
+.globl ?ShepherdTakesControlOfFlock@Villager@@QAEIXZ
+.globl ?ShepherdReleasesControlOfFlock@Villager@@QAEIXZ
+.globl ?ExitShepherding@Villager@@QAEIE@Z
+.globl ?ShepherdDecideWhatToDoWithFlock@Villager@@QAEIXZ
+.globl ?ShepherdMoveFlockBack@Villager@@QAEIXZ
+.globl ?ShepherdMoveFlockToFood@Villager@@QAEIXZ
+.globl ?ShepherdTakeAnimalForSlaughter@Villager@@QAEIXZ
+.globl ?ShepherdCheckAnimalForSlaughter@Villager@@QAEIXZ
+.globl ?ShepherdSlaughterAnimal@Villager@@QAEIXZ
+.globl ?ShepherdFetchStray@Villager@@QAEIXZ
 
 // VillagerShepherd.cpp
-_jmp_addr_0x00768be0:    {disp8} mov        eax, dword ptr [esp + 0x04]                     // 0x00768be0    8b442404
+?VillagerBecomesShepherd@Villager@@QAEIPAVFlock@@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                     // 0x00768be0    8b442404
                          test               eax, eax                                        // 0x00768be4    85c0
                          push               esi                                             // 0x00768be6    56
                          mov.s              esi, ecx                                        // 0x00768be7    8bf1
@@ -642,6 +655,7 @@ _jmp_addr_0x00768c80:    pop                edi                                 
                          nop                                                                // 0x00768c8d    90
                          nop                                                                // 0x00768c8e    90
                          nop                                                                // 0x00768c8f    90
+?FindClosestFlockAnimal@Villager@@QAEIXZ:
                          push               esi                                             // 0x00768c90    56
                          push               edi                                             // 0x00768c91    57
                          mov.s              esi, ecx                                        // 0x00768c92    8bf1
@@ -759,6 +773,7 @@ _jmp_addr_0x00768dad:    mov                eax, dword ptr [esi]                
                          nop                                                                // 0x00768dcd    90
                          nop                                                                // 0x00768dce    90
                          nop                                                                // 0x00768dcf    90
+?ShepherdWaitForFlock@Villager@@QAEIXZ:
                          push               esi                                             // 0x00768dd0    56
                          mov.s              esi, ecx                                        // 0x00768dd1    8bf1
                          dec                word ptr [esi + 0x00000118]                     // 0x00768dd3    66ff8e18010000
@@ -851,6 +866,7 @@ _jmp_addr_0x00768ead:    pop                edi                                 
                          nop                                                                // 0x00768ebd    90
                          nop                                                                // 0x00768ebe    90
                          nop                                                                // 0x00768ebf    90
+?ShepherdTakesControlOfFlock@Villager@@QAEIXZ:
                          push               esi                                             // 0x00768ec0    56
                          push               edi                                             // 0x00768ec1    57
                          mov.s              edi, ecx                                        // 0x00768ec2    8bf9
@@ -890,6 +906,7 @@ _jmp_addr_0x00768f1a:    pop                edi                                 
                          pop                esi                                             // 0x00768f1d    5e
                          ret                                                                // 0x00768f1e    c3
                          nop                                                                // 0x00768f1f    90
+?ShepherdReleasesControlOfFlock@Villager@@QAEIXZ:
                          {disp32} mov       eax, dword ptr [ecx + 0x000000b8]               // 0x00768f20    8b81b8000000
                          test               eax, eax                                        // 0x00768f26    85c0
                          {disp8} je         _jmp_addr_0x00768f4c                            // 0x00768f28    7422
@@ -903,6 +920,7 @@ _jmp_addr_0x00768f1a:    pop                edi                                 
 _jmp_addr_0x00768f4c:    xor.s              eax, eax                                        // 0x00768f4c    33c0
                          ret                                                                // 0x00768f4e    c3
                          nop                                                                // 0x00768f4f    90
+?ExitShepherding@Villager@@QAEIE@Z:
                          push               edi                                             // 0x00768f50    57
                          mov.s              edi, ecx                                        // 0x00768f51    8bf9
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                     // 0x00768f53    8b4c2408
@@ -934,6 +952,7 @@ _jmp_addr_0x00768f93:    pop                esi                                 
 _jmp_addr_0x00768fa7:    mov                eax, 0x00000001                                 // 0x00768fa7    b801000000
                          pop                edi                                             // 0x00768fac    5f
                          ret                0x0004                                          // 0x00768fad    c20400
+?ShepherdDecideWhatToDoWithFlock@Villager@@QAEIXZ:
                          push               ecx                                             // 0x00768fb0    51
                          push               esi                                             // 0x00768fb1    56
                          mov.s              esi, ecx                                        // 0x00768fb2    8bf1
@@ -1003,6 +1022,7 @@ _jmp_addr_0x00769064:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076906d    90
                          nop                                                                // 0x0076906e    90
                          nop                                                                // 0x0076906f    90
+?ShepherdMoveFlockBack@Villager@@QAEIXZ:
                          push               ebx                                             // 0x00769070    53
                          mov.s              ebx, ecx                                        // 0x00769071    8bd9
                          push               esi                                             // 0x00769073    56
@@ -1047,6 +1067,7 @@ _jmp_addr_0x007690c5:    pop                esi                                 
                          nop                                                                // 0x007690cd    90
                          nop                                                                // 0x007690ce    90
                          nop                                                                // 0x007690cf    90
+?ShepherdMoveFlockToFood@Villager@@QAEIXZ:
                          mov                eax, 0x00000001                                 // 0x007690d0    b801000000
                          ret                                                                // 0x007690d5    c3
                          nop                                                                // 0x007690d6    90
@@ -1059,6 +1080,7 @@ _jmp_addr_0x007690c5:    pop                esi                                 
                          nop                                                                // 0x007690dd    90
                          nop                                                                // 0x007690de    90
                          nop                                                                // 0x007690df    90
+?ShepherdTakeAnimalForSlaughter@Villager@@QAEIXZ:
                          push               ebx                                             // 0x007690e0    53
                          push               esi                                             // 0x007690e1    56
                          mov.s              esi, ecx                                        // 0x007690e2    8bf1
@@ -1127,6 +1149,7 @@ _jmp_addr_0x00769180:    mov                edx, dword ptr [esi]                
                          nop                                                                // 0x0076919d    90
                          nop                                                                // 0x0076919e    90
                          nop                                                                // 0x0076919f    90
+?ShepherdCheckAnimalForSlaughter@Villager@@QAEIXZ:
                          sub                esp, 0x24                                       // 0x007691a0    83ec24
                          push               ebx                                             // 0x007691a3    53
                          push               esi                                             // 0x007691a4    56
@@ -1154,7 +1177,7 @@ _jmp_addr_0x00769180:    mov                edx, dword ptr [esi]                
 _jmp_addr_0x007691ef:    push               esi                                             // 0x007691ef    56
                          push               0x40c00000                                      // 0x007691f0    680000c040
                          mov.s              ecx, esi                                        // 0x007691f5    8bce
-                         call               _jmp_addr_0x00769430                            // 0x007691f7    e834020000
+                         call               ?SlaughterAnimalIsClose@Villager@@QAEIMPAVLiving@@@Z                            // 0x007691f7    e834020000
                          mov.s              ebx, eax                                        // 0x007691fc    8bd8
                          test               ebx, ebx                                        // 0x007691fe    85db
                          {disp32} je        _jmp_addr_0x00769332                            // 0x00769200    0f842c010000
@@ -1292,6 +1315,7 @@ _jmp_addr_0x0076937f:    pop                edi                                 
                          nop                                                                // 0x0076938d    90
                          nop                                                                // 0x0076938e    90
                          nop                                                                // 0x0076938f    90
+?ShepherdSlaughterAnimal@Villager@@QAEIXZ:
                          push               ebx                                             // 0x00769390    53
                          push               esi                                             // 0x00769391    56
                          mov.s              esi, ecx                                        // 0x00769392    8bf1
@@ -1305,7 +1329,7 @@ _jmp_addr_0x0076937f:    pop                edi                                 
                          push               edi                                             // 0x007693b1    57
                          push               esi                                             // 0x007693b2    56
                          push               0x40800000                                      // 0x007693b3    6800008040
-                         call               _jmp_addr_0x00769430                            // 0x007693b8    e873000000
+                         call               ?SlaughterAnimalIsClose@Villager@@QAEIMPAVLiving@@@Z                            // 0x007693b8    e873000000
                          mov.s              edi, eax                                        // 0x007693bd    8bf8
                          test               edi, edi                                        // 0x007693bf    85ff
                          {disp8} je         _jmp_addr_0x0076940e                            // 0x007693c1    744b
@@ -1350,7 +1374,8 @@ _jmp_addr_0x00769420:    pop                esi                                 
                          nop                                                                // 0x0076942d    90
                          nop                                                                // 0x0076942e    90
                          nop                                                                // 0x0076942f    90
-_jmp_addr_0x00769430:    mov.s              eax, ecx                                        // 0x00769430    8bc1
+?SlaughterAnimalIsClose@Villager@@QAEIMPAVLiving@@@Z:
+                         mov.s              eax, ecx                                        // 0x00769430    8bc1
                          {disp32} mov       ecx, dword ptr [eax + 0x000000b8]               // 0x00769432    8b88b8000000
                          test               ecx, ecx                                        // 0x00769438    85c9
                          {disp8} je         _jmp_addr_0x00769452                            // 0x0076943a    7416
@@ -1373,6 +1398,7 @@ _jmp_addr_0x00769452:    xor.s              eax, eax                            
                          nop                                                                // 0x0076945d    90
                          nop                                                                // 0x0076945e    90
                          nop                                                                // 0x0076945f    90
+?ShepherdFetchStray@Villager@@QAEIXZ:
                          mov                eax, 0x00000001                                 // 0x00769460    b801000000
                          ret                                                                // 0x00769465    c3
                          nop                                                                // 0x00769466    90
