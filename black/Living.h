@@ -485,6 +485,8 @@ uint32_t __fastcall SetupMoveToPos__6LivingFRC9MapCoordsUc(struct Living* this, 
 uint32_t __fastcall SetupMoveToWithHug__6LivingFRC9MapCoordsUc(struct Living* this, const void* edx, const struct MapCoords* coords, uint8_t state) asm("?SetupMoveToWithHug@Living@@QAEIABUMapCoords@@E@Z");
 // win1.41 006e44a0 mac 101358c0 Living::SetReactionDoneWhen(REACTION)
 void __fastcall SetReactionDoneWhen__6LivingF8REACTION(struct Living* this, const void* edx, enum REACTION reaction) asm("?SetReactionDoneWhen@Living@@QAEXW4REACTION@@@Z");
+// win1.41 00768640 mac 105975c0 Living::CannotExitState(unsigned char)
+bool32_t __fastcall CannotExitState__6LivingFUc(struct Living* this, const void* edx, unsigned char param_1) asm("?CannotExitState@Living@@QAEIE@Z");
 
 // Override methods
 

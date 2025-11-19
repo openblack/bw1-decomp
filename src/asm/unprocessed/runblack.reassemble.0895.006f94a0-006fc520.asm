@@ -70,7 +70,7 @@
 .extern _jmp_addr_0x0070d540
 .extern _jmp_addr_0x0073e560
 .extern ?Spiral@GUtils@@SAPBUJustMapXZ@@AAJ0@Z
-.extern _jmp_addr_0x007689d0
+.extern ?IsScriptAnimationComplete@Villager@@QAEIXZ
 .extern _jmp_addr_0x00774400
 .extern _jmp_addr_0x00774460
 .extern _jmp_addr_0x00774480
@@ -892,7 +892,7 @@ _jmp_addr_0x006f9e7f:    mov                edx, dword ptr [esi]                
                          test               eax, eax                                      // 0x006f9ea4    85c0
                          {disp8} je         _jmp_addr_0x006f9ec0                          // 0x006f9ea6    7418
                          mov.s              ecx, eax                                      // 0x006f9ea8    8bc8
-                         call               _jmp_addr_0x007689d0                          // 0x006f9eaa    e821eb0600
+                         call               ?IsScriptAnimationComplete@Villager@@QAEIXZ   // 0x006f9eaa    e821eb0600
                          {disp32} mov       ecx, dword ptr [_script_dll]                  // 0x006f9eaf    8b0d105cd900
                          push               0x6                                           // 0x006f9eb5    6a06
                          push               eax                                           // 0x006f9eb7    50

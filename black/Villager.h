@@ -1224,6 +1224,22 @@ void __fastcall UpdateAttitudeToCreature__8VillagerFv(struct Villager* this) asm
 bool32_t __fastcall UpdateReactiveStateFromAttitudeToCreature__8VillagerFv(struct Villager* this) asm("?UpdateReactiveStateFromAttitudeToCreature@Villager@@QAEIXZ");
 // win1.41 00768510 mac 10594d70 Villager::SetupMoveToCreatureReaction(MapCoords const &, unsigned char)
 void __fastcall SetupMoveToCreatureReaction__8VillagerFRC9MapCoordsUc(struct Villager* this, const void* edx, const struct MapCoords* param_1, unsigned char param_2) asm("?SetupMoveToCreatureReaction@Villager@@QAEXABUMapCoords@@E@Z");
+// win1.41 00768680 mac 105974b0 Villager::SetupScriptWanderToPos(MapCoords const &, float, unsigned short, unsigned short)
+bool32_t __fastcall SetupScriptWanderToPos__8VillagerFRC9MapCoordsfUsUs(struct Villager* this, const void* edx, const struct MapCoords* param_1, float param_2, unsigned short param_3, unsigned short param_4) asm("?SetupScriptWanderToPos@Villager@@QAEIABUMapCoords@@MGG@Z");
+// win1.41 007686d0 mac 10597370 Villager::SetupNewScriptWander(void)
+bool32_t __fastcall SetupNewScriptWander__8VillagerFv(struct Villager* this) asm("?SetupNewScriptWander@Villager@@QAEIXZ");
+// win1.41 007687f0 mac 105971a0 Villager::ScriptWanderAroundPos(void)
+bool32_t __fastcall ScriptWanderAroundPos__8VillagerFv(struct Villager* this) asm("?ScriptWanderAroundPos@Villager@@QAEIXZ");
+// win1.41 00768970 mac 10005f50 Villager::ScriptPlayAnim(void)
+bool32_t __fastcall ScriptPlayAnim__8VillagerFv(struct Villager* this) asm("?ScriptPlayAnim@Villager@@QAEIXZ");
+// win1.41 007689d0 mac 1000afa0 Villager::IsScriptAnimationComplete(void)
+bool32_t __fastcall IsScriptAnimationComplete__8VillagerFv(struct Villager* this) asm("?IsScriptAnimationComplete@Villager@@QAEIXZ");
+// win1.41 00768a00 mac 10596c60 Villager::ScriptAnimation(void)
+bool32_t __fastcall ScriptAnimation__8VillagerFv(struct Villager* this) asm("?ScriptAnimation@Villager@@QAEIXZ");
+// win1.41 00768a10 mac 10596c20 Villager::WeakOnGround(void)
+bool32_t __fastcall WeakOnGround__8VillagerFv(struct Villager* this) asm("?WeakOnGround@Villager@@QAEIXZ");
+// win1.41 00768a20 mac 105969d0 Villager::ScriptGoAndMoveAlongPath(void)
+bool32_t __fastcall ScriptGoAndMoveAlongPath__8VillagerFv(struct Villager* this) asm("?ScriptGoAndMoveAlongPath@Villager@@QAEIXZ");
 // win1.41 00768c30 mac 105986f0 Villager::ShepherdLookForFlock(void)
 bool32_t __fastcall ShepherdLookForFlock__8VillagerFv(struct Villager* this) asm("?ShepherdLookForFlock@Villager@@QAE_NXZ");
 // win1.41 00768cc0 mac 105984c0 Villager::ShepherdMoveFlockToWater(void)
