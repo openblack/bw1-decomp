@@ -449,57 +449,6 @@
 .globl ?CheckSatisfySuppyWorship@Villager@@QAEIXZ
 
 // VillagerTrader.cpp
-_globl_ct_0x0076b920:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]            // 0x0076b920    8a0d34c9fa00
-                         mov                al, 0x01                                        // 0x0076b926    b001
-                         test               al, cl                                          // 0x0076b928    84c8
-                         {disp8} jne        _jmp_addr_0x0076b934                            // 0x0076b92a    7508
-                         or.s               cl, al                                          // 0x0076b92c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl            // 0x0076b92e    880d34c9fa00
-_jmp_addr_0x0076b934:    {disp32} jmp       _jmp_addr_0x0076b940                            // 0x0076b934    e907000000
-                         nop                                                                // 0x0076b939    90
-                         nop                                                                // 0x0076b93a    90
-                         nop                                                                // 0x0076b93b    90
-                         nop                                                                // 0x0076b93c    90
-                         nop                                                                // 0x0076b93d    90
-                         nop                                                                // 0x0076b93e    90
-                         nop                                                                // 0x0076b93f    90
-_jmp_addr_0x0076b940:    push               0x00407870                                      // 0x0076b940    6870784000
-                         call               _atexit                                         // 0x0076b945    e8479e0500
-                         pop                ecx                                             // 0x0076b94a    59
-                         ret                                                                // 0x0076b94b    c3
-                         nop                                                                // 0x0076b94c    90
-                         nop                                                                // 0x0076b94d    90
-                         nop                                                                // 0x0076b94e    90
-                         nop                                                                // 0x0076b94f    90
-_globl_ct_0x0076b950:    {disp32} jmp       _jmp_addr_0x0076b960                            // 0x0076b950    e90b000000
-                         nop                                                                // 0x0076b955    90
-                         nop                                                                // 0x0076b956    90
-                         nop                                                                // 0x0076b957    90
-                         nop                                                                // 0x0076b958    90
-                         nop                                                                // 0x0076b959    90
-                         nop                                                                // 0x0076b95a    90
-                         nop                                                                // 0x0076b95b    90
-                         nop                                                                // 0x0076b95c    90
-                         nop                                                                // 0x0076b95d    90
-                         nop                                                                // 0x0076b95e    90
-                         nop                                                                // 0x0076b95f    90
-_jmp_addr_0x0076b960:    {disp32} fld       dword ptr [rdata_bytes + 0xf1a54]               // 0x0076b960    d90554aa9900
-                         {disp32} fmul      dword ptr [rdata_bytes + 0xf1a50]               // 0x0076b966    d80d50aa9900
-                         {disp32} fstp      dword ptr [data_bytes + 0x405168]               // 0x0076b96c    d91d68b1dc00
-                         ret                                                                // 0x0076b972    c3
-                         nop                                                                // 0x0076b973    90
-                         nop                                                                // 0x0076b974    90
-                         nop                                                                // 0x0076b975    90
-                         nop                                                                // 0x0076b976    90
-                         nop                                                                // 0x0076b977    90
-                         nop                                                                // 0x0076b978    90
-                         nop                                                                // 0x0076b979    90
-                         nop                                                                // 0x0076b97a    90
-                         nop                                                                // 0x0076b97b    90
-                         nop                                                                // 0x0076b97c    90
-                         nop                                                                // 0x0076b97d    90
-                         nop                                                                // 0x0076b97e    90
-                         nop                                                                // 0x0076b97f    90
                          mov                eax, 0x00000001                                 // 0x0076b980    b801000000
                          ret                                                                // 0x0076b985    c3
                          nop                                                                // 0x0076b986    90
