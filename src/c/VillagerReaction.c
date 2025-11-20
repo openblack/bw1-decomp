@@ -954,7 +954,7 @@ bool32_t __fastcall SetupGoAndHideInNearbyBuilding__8VillagerFP16GameThingWithPo
     asm("{disp8} lea        ecx, dword ptr [edi + 0x14]");                   // 0x00763d40    8d4f14
     asm("push               ecx");                                           // 0x00763d43    51
     asm("{disp32} lea       ecx, dword ptr [ebx + 0x00000110]");             // 0x00763d44    8d8b10010000
-    asm("call               _jmp_addr_0x005e1900");                          // 0x00763d4a    e8b1dbe7ff
+    asm("call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z");                          // 0x00763d4a    e8b1dbe7ff
     asm("push               0x000000ec");                                    // 0x00763d4f    68ec000000
     asm("{disp8} lea        eax, dword ptr [esp + 0x18]");                   // 0x00763d54    8d442418
     asm("{disp32} mov       dword ptr [ebx + 0x0000010c], esi");             // 0x00763d58    89b30c010000
@@ -3936,7 +3936,7 @@ void __fastcall SetupReactToMagicShield__8VillagerFP16GameThingWithPosP8Reaction
     asm("call               @__pl__9MapCoordsCFRC9MapCoords@16");            // 0x00765de3    e838f7e9ff
     asm("push               eax");                                           // 0x00765de8    50
     asm("{disp32} lea       ecx, dword ptr [edi + 0x0000010c]");             // 0x00765de9    8d8f0c010000
-    asm("call               _jmp_addr_0x005e1900");                          // 0x00765def    e80cbbe7ff
+    asm("call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z");                          // 0x00765def    e80cbbe7ff
     asm("pop                ebp");                                           // 0x00765df4    5d
     asm("pop                ebx");                                           // 0x00765df5    5b
     asm("_jmp_addr_0x00765df6:");
@@ -4028,7 +4028,7 @@ bool32_t __fastcall AmazedByMagicShieldReaction__8VillagerFv(struct Villager* th
     asm("call               @__pl__9MapCoordsCFRC9MapCoords@16");            // 0x00765eff    e81cf6e9ff
     asm("push               eax");                                           // 0x00765f04    50
     asm("mov.s              ecx, ebx");                                      // 0x00765f05    8bcb
-    asm("call               _jmp_addr_0x005e1900");                          // 0x00765f07    e8f4b9e7ff
+    asm("call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z");                          // 0x00765f07    e8f4b9e7ff
     asm("_jmp_addr_0x00765f0c:");
     asm("push               0x00000645");                                    // 0x00765f0c    6845060000
     asm("push               0x00c24588");                                    // 0x00765f11    688845c200
@@ -6080,7 +6080,7 @@ void __fastcall SetupReactToMagicShieldStruck__8VillagerFP16GameThingWithPosP8Re
     asm("{disp32} mov       dword ptr [esi + 0x00000094], ecx");             // 0x007674fd    898e94000000
     asm("push               edi");                                           // 0x00767503    57
     asm("{disp32} lea       ecx, dword ptr [esi + 0x0000010c]");             // 0x00767504    8d8e0c010000
-    asm("call               _jmp_addr_0x005e1900");                          // 0x0076750a    e8f1a3e7ff
+    asm("call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z");                          // 0x0076750a    e8f1a3e7ff
     asm("_jmp_addr_0x0076750f:");
     asm("pop                edi");                                           // 0x0076750f    5f
     asm("pop                esi");                                           // 0x00767510    5e
@@ -6095,7 +6095,7 @@ void __fastcall SetupReactToMagicShieldDestroyed__8VillagerFP16GameThingWithPosP
     asm("add                eax, 0x14");                                     // 0x00767528    83c014
     asm("push               eax");                                           // 0x0076752b    50
     asm("push               edx");                                           // 0x0076752c    52
-    asm("call               _jmp_addr_0x0076b0d0");                          // 0x0076752d    e89e3b0000
+    asm("call               ?SetupPanicReaction@Villager@@QAEIPAVReaction@@AAUMapCoords@@@Z");                          // 0x0076752d    e89e3b0000
     asm("ret                0x0008");                                        // 0x00767532    c20800
     __builtin_unreachable();
 }

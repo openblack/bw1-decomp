@@ -16,6 +16,7 @@ struct Game3DObject;
 struct LHPoint;
 struct MapCell;
 struct MapCellIterator;
+struct MapCoords;
 struct Object;
 struct Point2D;
 struct Town;
@@ -38,6 +39,18 @@ DECLARE_LH_STACK(JustMapXZ);
 
 // win1.41 007685a0 mac inlined LHStack<JustMapXZ>::Push(JustMapXZ *)
 void __fastcall Push__LHStack__JustMapXZFPJustMapXZ(struct LHStack__JustMapXZ* this, const void* edx, struct JustMapXZ* val) asm("_Push__LHStack__JustMapXZFPJustMapXZ");
+
+struct JustWholeMapXZ
+{
+  int32_t x;  /* 0x0 */
+  int32_t z;
+};
+static_assert(sizeof(struct JustWholeMapXZ) == 0x8, "Data type is of wrong size");
+
+// Non-virtual methods
+
+// win1.41 005e1900 mac 100fe880 JustWholeMapXZ::Init(MapCoords const &)
+void __fastcall Init__14JustWholeMapXZFRC9MapCoords(struct JustWholeMapXZ* this, const void* edx, const struct MapCoords* param_1) asm("?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z");
 
 struct MapCoordsSplit
 {

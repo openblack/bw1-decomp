@@ -100,7 +100,7 @@
 .extern _jmp_addr_0x005cd460
 .extern _jmp_addr_0x005cd490
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
-.extern _jmp_addr_0x005e1900
+.extern ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z
 .extern ?Dead@PuzzleHorse@@UAE_NXZ
 .extern ?LookAtObject@Living@@QAEIPAVGameThingWithPos@@K@Z
 .extern @LookAtPos__6LivingFRC9MapCoordsUl@16
@@ -328,11 +328,11 @@
 .globl ?ArrivesAtStoragePitForResource@Villager@@QAEIW4RESOURCE_TYPE@@KW4VILLAGER_STATES@@1@Z
 .globl ?CheckTrader@Villager@@QAEIXZ
 .globl ?SetupBreederDisciple@Villager@@QAEIXZ
-.globl _jmp_addr_0x0076a8d0
-.globl _jmp_addr_0x0076aab0
+.globl ?VagrantStart@Villager@@QAEIXZ
+.globl ?SetupInspectObject@Villager@@QAEIPAVObject@@@Z
 .globl ?SetupWaitForCounter@Villager@@QAEIGW4VILLAGER_STATES@@@Z
 .globl ?SetupPauseForASecond@Villager@@QAEIW4VILLAGER_STATES@@@Z
-.globl _jmp_addr_0x0076b0d0
+.globl ?SetupPanicReaction@Villager@@QAEIPAVReaction@@AAUMapCoords@@@Z
 .globl ?GetMeToMyChillOutPos@Villager@@QAEXP81@AEHPBXPAXAAUMapCoords@@@Z2MABU2@@Z
 .globl ?CheckNeededForWorship@Villager@@QAEMXZ
 .globl ?CheckWorshipActivity@Villager@@QAEMH@Z
@@ -528,6 +528,35 @@
 .globl ?ArrivesAtAltarForRest@Villager@@QAEIXZ
 .globl ?AtAltarRest@Villager@@QAEIXZ
 .globl ?CheckSatisfySuppyWorship@Villager@@QAEIXZ
+.globl ?GotoStoragePitForFood@Villager@@QAEIXZ
+.globl ?ArrivesAtStoragePitForFood@Villager@@QAEIXZ
+.globl ?ArrivesAtHomeWithFood@Villager@@QAEIXZ
+.globl ?CheckMissionary@Villager@@QAEIXZ
+.globl ?ArrivesAtStoragePitForTraderPickUp@Villager@@QAEIXZ
+.globl ?ArrivesAtStoragePitForTraderDropOff@Villager@@QAEIXZ
+.globl ?BreederDisciple@Villager@@QAEIXZ
+.globl ?MissionaryDisciple@Villager@@QAEIXZ
+.globl ?EnterBreeder@Villager@@QAEIEE@Z
+.globl ?ExitBreeder@Villager@@QAEIE@Z
+.globl ?Drowning@Villager@@QAEIXZ
+.globl ?MakeScaredStiff@Villager@@QAEIXZ
+.globl ?MornDeath@Villager@@QAEIXZ
+.globl ?EatOutside@Villager@@QAEIXZ
+.globl ?InspectObject@Villager@@QAEIXZ
+.globl ?EnterSex@Villager@@QAEIEE@Z
+.globl ?ExitSex@Villager@@QAEIE@Z
+.globl ?IsInACreaturesHand@Villager@@QAEIXZ
+.globl ?PauseForASecond@Villager@@QAEIXZ
+.globl ?PanicReaction@Villager@@QAEIXZ
+.globl ?GotoCongregateInTownAfterEmergency@Villager@@QAEIXZ
+.globl ?CongregateInTownAfterEmergency@Villager@@QAEIXZ
+.globl ?GoAndChilloutOutsideHome@Villager@@QAEIXZ
+.globl ?SitAndChillout@Villager@@QAEIXZ
+.globl ?EnterSitAndChillOut@Villager@@QAEIEE@Z
+.globl ?GoAndChilloutInTown@Villager@@QAEIXZ
+.globl ?ArrivesHomeFromWorship@Villager@@QAEIXZ
+.globl ?SleepInTentFromWorship@Villager@@QAEIXZ
+.globl ?BreederJustLanded@Villager@@QAEIXZ
 
 // VillagerStates.cpp
 ??_GGVillagerStateTableInfo@@UAEPAXI@Z:
@@ -538,7 +567,7 @@
                          {disp8} je         _jmp_addr_0x0076960d                            // 0x007695fd    740e
                          push               0x00000114                                      // 0x007695ff    6814010000
                          push               esi                                             // 0x00769604    56
-                         call               ??3Base@@SAXPAXK@Z                            // 0x00769605    e866d3ccff
+                         call               ??3Base@@SAXPAXK@Z                              // 0x00769605    e866d3ccff
                          add                esp, 0x08                                       // 0x0076960a    83c408
 _jmp_addr_0x0076960d:    mov.s              eax, esi                                        // 0x0076960d    8bc6
                          pop                esi                                             // 0x0076960f    5e
@@ -650,7 +679,7 @@ _jmp_addr_0x007696a9:    push               eax                                 
                          push               ecx                                             // 0x00769713    51
                          push               edi                                             // 0x00769714    57
                          mov.s              ecx, esi                                        // 0x00769715    8bce
-                         call               _jmp_addr_0x0076a3b0                            // 0x00769717    e8940c0000
+                         call               ?AtStructureAddResource@Villager@@QAEIPAVMultiMapFixed@@W4RESOURCE_TYPE@@AAK_N@Z                            // 0x00769717    e8940c0000
                          cmp                eax, 0x24                                       // 0x0076971c    83f824
                          {disp32} je        _jmp_addr_0x007697e6                            // 0x0076971f    0f84c1000000
                          mov                edx, dword ptr [edi]                            // 0x00769725    8b17
@@ -758,6 +787,7 @@ _jmp_addr_0x007697ff:    mov                edx, dword ptr [esi]                
                          nop                                                                // 0x0076982d    90
                          nop                                                                // 0x0076982e    90
                          nop                                                                // 0x0076982f    90
+?GotoStoragePitForFood@Villager@@QAEIXZ:
                          sub                esp, 0x0c                                       // 0x00769830    83ec0c
                          push               esi                                             // 0x00769833    56
                          mov.s              esi, ecx                                        // 0x00769834    8bf1
@@ -804,6 +834,7 @@ _jmp_addr_0x0076988a:    push               0x0                                 
                          pop                esi                                             // 0x007698ab    5e
                          add                esp, 0x0c                                       // 0x007698ac    83c40c
                          ret                                                                // 0x007698af    c3
+?ArrivesAtStoragePitForFood@Villager@@QAEIXZ:
                          push               esi                                             // 0x007698b0    56
                          push               0x000000a3                                      // 0x007698b1    68a3000000
                          mov.s              esi, ecx                                        // 0x007698b6    8bf1
@@ -863,7 +894,7 @@ _jmp_addr_0x0076993b:    cmp.s              ebx, ebp                            
                          call               ?GetStoragePit@Villager@@QAEPAVStoragePit@@XZ   // 0x00769944    e8c785feff
                          push               eax                                             // 0x00769949    50
                          mov.s              ecx, esi                                        // 0x0076994a    8bce
-                         call               _jmp_addr_0x0076a2f0                            // 0x0076994c    e89f090000
+                         call               ?AtStructureRemoveResource@Villager@@QAEIPAVMultiMapFixed@@W4RESOURCE_TYPE@@KPA_N@Z                            // 0x0076994c    e89f090000
                          cmp                eax, 0x24                                       // 0x00769951    83f824
                          {disp8} jne        _jmp_addr_0x00769960                            // 0x00769954    750a
                          pop                edi                                             // 0x00769956    5f
@@ -1036,6 +1067,7 @@ _jmp_addr_0x00769b10:    push               eax                                 
                          nop                                                                // 0x00769b2d    90
                          nop                                                                // 0x00769b2e    90
                          nop                                                                // 0x00769b2f    90
+?ArrivesAtHomeWithFood@Villager@@QAEIXZ:
                          push               edi                                             // 0x00769b30    57
                          mov.s              edi, ecx                                        // 0x00769b31    8bf9
                          call               ?GetAbode@Villager@@QAEPAVAbode@@XZ             // 0x00769b33    e82886feff
@@ -1107,7 +1139,7 @@ _jmp_addr_0x00769bcc:    {disp32} fcomp     dword ptr [_rdata_float0p0]         
                          {disp32} mov       dword ptr [esi + 0x00000118], 0x00000001        // 0x00769bd9    c7861801000001000000
                          push               0x1                                             // 0x00769be3    6a01
 _jmp_addr_0x00769be5:    mov.s              ecx, esi                                        // 0x00769be5    8bce
-                         call               _jmp_addr_0x00769c20                            // 0x00769be7    e834000000
+                         call               ?CheckTraderPickUpOrDropOff@Villager@@QAEIW4RESOURCE_TYPE@@@Z                            // 0x00769be7    e834000000
                          mov                edx, dword ptr [esi]                            // 0x00769bec    8b16
                          push               eax                                             // 0x00769bee    50
                          mov.s              ecx, esi                                        // 0x00769bef    8bce
@@ -1116,7 +1148,7 @@ _jmp_addr_0x00769be5:    mov.s              ecx, esi                            
                          pop                esi                                             // 0x00769bfc    5e
                          ret                                                                // 0x00769bfd    c3
 _jmp_addr_0x00769bfe:    mov.s              ecx, esi                                        // 0x00769bfe    8bce
-                         call               _jmp_addr_0x00769ea0                            // 0x00769c00    e89b020000
+                         call               ?SetTraderNothingToDo@Villager@@QAEIXZ          // 0x00769c00    e89b020000
                          pop                esi                                             // 0x00769c05    5e
                          ret                                                                // 0x00769c06    c3
                          nop                                                                // 0x00769c07    90
@@ -1128,6 +1160,7 @@ _jmp_addr_0x00769bfe:    mov.s              ecx, esi                            
                          nop                                                                // 0x00769c0d    90
                          nop                                                                // 0x00769c0e    90
                          nop                                                                // 0x00769c0f    90
+?CheckMissionary@Villager@@QAEIXZ:
                          xor.s              eax, eax                                        // 0x00769c10    33c0
                          ret                                                                // 0x00769c12    c3
                          nop                                                                // 0x00769c13    90
@@ -1143,7 +1176,8 @@ _jmp_addr_0x00769bfe:    mov.s              ecx, esi                            
                          nop                                                                // 0x00769c1d    90
                          nop                                                                // 0x00769c1e    90
                          nop                                                                // 0x00769c1f    90
-_jmp_addr_0x00769c20:    sub                esp, 0x24                                       // 0x00769c20    83ec24
+?CheckTraderPickUpOrDropOff@Villager@@QAEIW4RESOURCE_TYPE@@@Z:
+                         sub                esp, 0x24                                       // 0x00769c20    83ec24
                          {disp8} mov        eax, dword ptr [esp + 0x28]                     // 0x00769c23    8b442428
                          push               esi                                             // 0x00769c27    56
                          push               edi                                             // 0x00769c28    57
@@ -1233,6 +1267,7 @@ _jmp_addr_0x00769d0c:    add                esp, 0x24                           
                          nop                                                                // 0x00769d1d    90
                          nop                                                                // 0x00769d1e    90
                          nop                                                                // 0x00769d1f    90
+?ArrivesAtStoragePitForTraderPickUp@Villager@@QAEIXZ:
                          sub                esp, 0x14                                       // 0x00769d20    83ec14
                          push               esi                                             // 0x00769d23    56
                          mov.s              esi, ecx                                        // 0x00769d24    8bf1
@@ -1274,7 +1309,7 @@ _jmp_addr_0x00769d54:    {disp8} mov        dword ptr [esp + 0x08], eax         
                          test               eax, eax                                        // 0x00769da4    85c0
                          {disp8} jne        _jmp_addr_0x00769daf                            // 0x00769da6    7507
                          mov.s              ecx, esi                                        // 0x00769da8    8bce
-                         call               _jmp_addr_0x00769ea0                            // 0x00769daa    e8f1000000
+                         call               ?SetTraderNothingToDo@Villager@@QAEIXZ          // 0x00769daa    e8f1000000
 _jmp_addr_0x00769daf:    pop                esi                                             // 0x00769daf    5e
                          add                esp, 0x14                                       // 0x00769db0    83c414
                          ret                                                                // 0x00769db3    c3
@@ -1290,6 +1325,7 @@ _jmp_addr_0x00769daf:    pop                esi                                 
                          nop                                                                // 0x00769dbd    90
                          nop                                                                // 0x00769dbe    90
                          nop                                                                // 0x00769dbf    90
+?ArrivesAtStoragePitForTraderDropOff@Villager@@QAEIXZ:
                          sub                esp, 0x0c                                       // 0x00769dc0    83ec0c
                          push               ebx                                             // 0x00769dc3    53
                          push               ebp                                             // 0x00769dc4    55
@@ -1359,7 +1395,8 @@ _jmp_addr_0x00769e8b:    {disp8} mov        eax, dword ptr [esp + 0x14]         
                          nop                                                                // 0x00769e9d    90
                          nop                                                                // 0x00769e9e    90
                          nop                                                                // 0x00769e9f    90
-_jmp_addr_0x00769ea0:    push               esi                                             // 0x00769ea0    56
+?SetTraderNothingToDo@Villager@@QAEIXZ:
+                         push               esi                                             // 0x00769ea0    56
                          mov.s              esi, ecx                                        // 0x00769ea1    8bf1
                          mov                eax, dword ptr [esi]                            // 0x00769ea3    8b06
                          push               edi                                             // 0x00769ea5    57
@@ -1588,7 +1625,7 @@ _jmp_addr_0x0076a17b:    {disp8} lea        edx, dword ptr [esp + 0x14]         
                          push               edx                                             // 0x0076a17f    52
                          {disp32} lea       ecx, dword ptr [ebx + 0x0000011c]               // 0x0076a180    8d8b1c010000
                          {disp32} mov       dword ptr [ebx + 0x00000118], ebp               // 0x0076a186    89ab18010000
-                         call               _jmp_addr_0x005e1900                            // 0x0076a18c    e86f77e7ff
+                         call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z      // 0x0076a18c    e86f77e7ff
                          pop                esi                                             // 0x0076a191    5e
                          pop                ebp                                             // 0x0076a192    5d
                          mov                eax, 0x00000001                                 // 0x0076a193    b801000000
@@ -1611,6 +1648,7 @@ _jmp_addr_0x0076a19d:    pop                esi                                 
                          nop                                                                // 0x0076a1ad    90
                          nop                                                                // 0x0076a1ae    90
                          nop                                                                // 0x0076a1af    90
+?BreederDisciple@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076a1b0    56
                          mov.s              esi, ecx                                        // 0x0076a1b1    8bf1
                          call               ?IsPregnant@Villager@@QAE_NXZ                   // 0x0076a1b3    e85880feff
@@ -1635,7 +1673,7 @@ _jmp_addr_0x0076a19d:    pop                esi                                 
                          {disp32} lea       edx, dword ptr [esi + 0x0000011c]               // 0x0076a1eb    8d961c010000
                          push               edx                                             // 0x0076a1f1    52
                          mov.s              ecx, esi                                        // 0x0076a1f2    8bce
-                         call               _jmp_addr_0x0076acf0                            // 0x0076a1f4    e8f70a0000
+                         call               ?SetupWander@Villager@@QAEIAAUJustWholeMapXZ@@W4VILLAGER_STATES@@@Z                            // 0x0076a1f4    e8f70a0000
                          mov                eax, 0x00000001                                 // 0x0076a1f9    b801000000
                          pop                esi                                             // 0x0076a1fe    5e
                          ret                                                                // 0x0076a1ff    c3
@@ -1659,6 +1697,7 @@ _jmp_addr_0x0076a20c:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076a21d    90
                          nop                                                                // 0x0076a21e    90
                          nop                                                                // 0x0076a21f    90
+?MissionaryDisciple@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076a220    56
                          push               edi                                             // 0x0076a221    57
                          push               0x0                                             // 0x0076a222    6a00
@@ -1719,6 +1758,7 @@ _jmp_addr_0x0076a27b:    mov                eax, dword ptr [esi]                
                          nop                                                                // 0x0076a29d    90
                          nop                                                                // 0x0076a29e    90
                          nop                                                                // 0x0076a29f    90
+?EnterBreeder@Villager@@QAEIEE@Z:
                          {disp32} mov       eax, dword ptr [_game]                          // 0x0076a2a0    a15c19d000
                          push               esi                                             // 0x0076a2a5    56
                          mov.s              esi, ecx                                        // 0x0076a2a6    8bf1
@@ -1739,6 +1779,7 @@ _jmp_addr_0x0076a2c5:    mov                eax, 0x00000001                     
                          ret                0x0008                                          // 0x0076a2cb    c20800
                          nop                                                                // 0x0076a2ce    90
                          nop                                                                // 0x0076a2cf    90
+?ExitBreeder@Villager@@QAEIE@Z:
                          push               0x1e                                            // 0x0076a2d0    6a1e
                          push               ecx                                             // 0x0076a2d2    51
                          call               _jmp_addr_0x006e4780                            // 0x0076a2d3    e8a8a4f7ff
@@ -1758,7 +1799,8 @@ _jmp_addr_0x0076a2c5:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076a2ed    90
                          nop                                                                // 0x0076a2ee    90
                          nop                                                                // 0x0076a2ef    90
-_jmp_addr_0x0076a2f0:    sub                esp, 0x18                                       // 0x0076a2f0    83ec18
+?AtStructureRemoveResource@Villager@@QAEIPAVMultiMapFixed@@W4RESOURCE_TYPE@@KPA_N@Z:
+                         sub                esp, 0x18                                       // 0x0076a2f0    83ec18
                          push               ebx                                             // 0x0076a2f3    53
                          {disp8} mov        ebx, dword ptr [esp + 0x24]                     // 0x0076a2f4    8b5c2424
                          push               ebp                                             // 0x0076a2f8    55
@@ -1841,7 +1883,8 @@ _jmp_addr_0x0076a384:    mov                edx, dword ptr [esi]                
                          nop                                                                // 0x0076a3ad    90
                          nop                                                                // 0x0076a3ae    90
                          nop                                                                // 0x0076a3af    90
-_jmp_addr_0x0076a3b0:    sub                esp, 0x18                                       // 0x0076a3b0    83ec18
+?AtStructureAddResource@Villager@@QAEIPAVMultiMapFixed@@W4RESOURCE_TYPE@@AAK_N@Z:
+                         sub                esp, 0x18                                       // 0x0076a3b0    83ec18
                          push               ebx                                             // 0x0076a3b3    53
                          push               ebp                                             // 0x0076a3b4    55
                          push               esi                                             // 0x0076a3b5    56
@@ -2195,6 +2238,7 @@ _jmp_addr_0x0076a770:    mov.s              ecx, esi                            
                          nop                                                                // 0x0076a77d    90
                          nop                                                                // 0x0076a77e    90
                          nop                                                                // 0x0076a77f    90
+?Drowning@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076a780    56
                          mov.s              esi, ecx                                        // 0x0076a781    8bf1
                          test               byte ptr [esi + 0x25], 0x40                     // 0x0076a783    f6462540
@@ -2236,6 +2280,7 @@ _jmp_addr_0x0076a7d0:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076a7dd    90
                          nop                                                                // 0x0076a7de    90
                          nop                                                                // 0x0076a7df    90
+?MakeScaredStiff@Villager@@QAEIXZ:
                          sub                esp, 0x08                                       // 0x0076a7e0    83ec08
                          push               esi                                             // 0x0076a7e3    56
                          mov.s              esi, ecx                                        // 0x0076a7e4    8bf1
@@ -2283,7 +2328,7 @@ _jmp_addr_0x0076a886:    call               _jmp_addr_0x007a1400                
                          {disp8} mov        word ptr [esi + 0x58], ax                       // 0x0076a891    66894658
                          call               dword ptr [edx + 0x8e8]                         // 0x0076a895    ff92e8080000
                          mov.s              ecx, esi                                        // 0x0076a89b    8bce
-                         call               _jmp_addr_0x0076a8b0                            // 0x0076a89d    e80e000000
+                         call               ?ScaredStiff@Villager@@QAEIXZ                   // 0x0076a89d    e80e000000
                          mov                eax, 0x00000001                                 // 0x0076a8a2    b801000000
                          pop                esi                                             // 0x0076a8a7    5e
                          add                esp, 0x08                                       // 0x0076a8a8    83c408
@@ -2292,7 +2337,8 @@ _jmp_addr_0x0076a886:    call               _jmp_addr_0x007a1400                
                          nop                                                                // 0x0076a8ad    90
                          nop                                                                // 0x0076a8ae    90
                          nop                                                                // 0x0076a8af    90
-_jmp_addr_0x0076a8b0:    dec                word ptr [ecx + 0x58]                           // 0x0076a8b0    66ff4958
+?ScaredStiff@Villager@@QAEIXZ:
+                         dec                word ptr [ecx + 0x58]                           // 0x0076a8b0    66ff4958
                          cmp                word ptr [ecx + 0x58], 0x00                     // 0x0076a8b4    6683795800
                          {disp8} jne        _jmp_addr_0x0076a8c0                            // 0x0076a8b9    7505
                          call               ?GoHome@Villager@@QAE_NXZ                       // 0x0076a8bb    e8b059ffff
@@ -2308,7 +2354,8 @@ _jmp_addr_0x0076a8c0:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076a8cd    90
                          nop                                                                // 0x0076a8ce    90
                          nop                                                                // 0x0076a8cf    90
-_jmp_addr_0x0076a8d0:    sub                esp, 0x28                                       // 0x0076a8d0    83ec28
+?VagrantStart@Villager@@QAEIXZ:
+                         sub                esp, 0x28                                       // 0x0076a8d0    83ec28
                          push               ebx                                             // 0x0076a8d3    53
                          push               esi                                             // 0x0076a8d4    56
                          mov.s              esi, ecx                                        // 0x0076a8d5    8bf1
@@ -2436,6 +2483,7 @@ _jmp_addr_0x0076aa53:    pop                edi                                 
                          add                esp, 0x28                                       // 0x0076aa5b    83c428
                          ret                                                                // 0x0076aa5e    c3
                          nop                                                                // 0x0076aa5f    90
+?MornDeath@Villager@@QAEIXZ:
                          {disp32} jmp       ?GoHome@Villager@@QAE_NXZ                       // 0x0076aa60    e90b58ffff
                          nop                                                                // 0x0076aa65    90
                          nop                                                                // 0x0076aa66    90
@@ -2448,6 +2496,7 @@ _jmp_addr_0x0076aa53:    pop                edi                                 
                          nop                                                                // 0x0076aa6d    90
                          nop                                                                // 0x0076aa6e    90
                          nop                                                                // 0x0076aa6f    90
+?EatOutside@Villager@@QAEIXZ:
                          mov                eax, 0x00000001                                 // 0x0076aa70    b801000000
                          ret                                                                // 0x0076aa75    c3
                          nop                                                                // 0x0076aa76    90
@@ -2481,7 +2530,8 @@ _jmp_addr_0x0076aa53:    pop                edi                                 
                          nop                                                                // 0x0076aaad    90
                          nop                                                                // 0x0076aaae    90
                          nop                                                                // 0x0076aaaf    90
-_jmp_addr_0x0076aab0:    sub                esp, 0x3c                                       // 0x0076aab0    83ec3c
+?SetupInspectObject@Villager@@QAEIPAVObject@@@Z:
+                         sub                esp, 0x3c                                       // 0x0076aab0    83ec3c
                          push               ebx                                             // 0x0076aab3    53
                          push               esi                                             // 0x0076aab4    56
                          {disp8} mov        esi, dword ptr [esp + 0x48]                     // 0x0076aab5    8b742448
@@ -2606,6 +2656,7 @@ _jmp_addr_0x0076ac1f:    mov                edx, dword ptr [edi]                
                          nop                                                                // 0x0076ac3d    90
                          nop                                                                // 0x0076ac3e    90
                          nop                                                                // 0x0076ac3f    90
+?InspectObject@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076ac40    56
                          mov.s              esi, ecx                                        // 0x0076ac41    8bf1
                          push               edi                                             // 0x0076ac43    57
@@ -2679,6 +2730,7 @@ _jmp_addr_0x0076accd:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076acdd    90
                          nop                                                                // 0x0076acde    90
                          nop                                                                // 0x0076acdf    90
+?EnterSex@Villager@@QAEIEE@Z:
                          mov                eax, 0x00000001                                 // 0x0076ace0    b801000000
                          ret                0x0008                                          // 0x0076ace5    c20800
                          nop                                                                // 0x0076ace8    90
@@ -2689,7 +2741,8 @@ _jmp_addr_0x0076accd:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076aced    90
                          nop                                                                // 0x0076acee    90
                          nop                                                                // 0x0076acef    90
-_jmp_addr_0x0076acf0:    sub                esp, 0x10                                       // 0x0076acf0    83ec10
+?SetupWander@Villager@@QAEIAAUJustWholeMapXZ@@W4VILLAGER_STATES@@@Z:
+                         sub                esp, 0x10                                       // 0x0076acf0    83ec10
                          {disp8} mov        eax, dword ptr [esp + 0x14]                     // 0x0076acf3    8b442414
                          push               esi                                             // 0x0076acf7    56
                          mov.s              esi, ecx                                        // 0x0076acf8    8bf1
@@ -2732,6 +2785,7 @@ _jmp_addr_0x0076acf0:    sub                esp, 0x10                           
                          ret                0x0008                                          // 0x0076ad7b    c20800
                          nop                                                                // 0x0076ad7e    90
                          nop                                                                // 0x0076ad7f    90
+?ExitSex@Villager@@QAEIE@Z:
                          push               esi                                             // 0x0076ad80    56
                          mov.s              esi, ecx                                        // 0x0076ad81    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                     // 0x0076ad83    8b4c2408
@@ -2779,7 +2833,7 @@ _jmp_addr_0x0076add2:    mov                eax, 0x00000001                     
 _jmp_addr_0x0076adfd:    mov.s              ecx, esi                                        // 0x0076adfd    8bce
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000              // 0x0076adff    c744241000000000
                          {disp8} mov        dword ptr [esp + 0x14], 0x00000000              // 0x0076ae07    c744241400000000
-                         call               ?IsInACreaturesHand@Villager@@QAE_NXZ           // 0x0076ae0f    e81c020000
+                         call               ?IsInACreaturesHand@Villager@@QAEIXZ            // 0x0076ae0f    e81c020000
                          test               eax, eax                                        // 0x0076ae14    85c0
                          {disp32} jne       _jmp_addr_0x0076af79                            // 0x0076ae16    0f855d010000
                          {disp8} lea        eax, dword ptr [esi + 0x14]                     // 0x0076ae1c    8d4614
@@ -2995,7 +3049,7 @@ _jmp_addr_0x0076b024:    pop                edi                                 
                          nop                                                                // 0x0076b02e    90
                          nop                                                                // 0x0076b02f    90
 
-?IsInACreaturesHand@Villager@@QAE_NXZ:
+?IsInACreaturesHand@Villager@@QAEIXZ:
                          {disp32} mov       eax, dword ptr [_CreatureList]                  // 0x0076b030    a1f8fcc500
                          test               eax, eax                                        // 0x0076b035    85c0
                          {disp8} je         _jmp_addr_0x0076b04d                            // 0x0076b037    7414
@@ -3059,6 +3113,7 @@ _jmp_addr_0x0076b086:    xor.s              eax, eax                            
                          nop                                                                // 0x0076b0ad    90
                          nop                                                                // 0x0076b0ae    90
                          nop                                                                // 0x0076b0af    90
+?PauseForASecond@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076b0b0    56
                          mov.s              esi, ecx                                        // 0x0076b0b1    8bf1
                          push               0x1                                             // 0x0076b0b3    6a01
@@ -3074,7 +3129,8 @@ _jmp_addr_0x0076b0c5:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076b0cd    90
                          nop                                                                // 0x0076b0ce    90
                          nop                                                                // 0x0076b0cf    90
-_jmp_addr_0x0076b0d0:    sub                esp, 0x18                                       // 0x0076b0d0    83ec18
+?SetupPanicReaction@Villager@@QAEIPAVReaction@@AAUMapCoords@@@Z:
+                         sub                esp, 0x18                                       // 0x0076b0d0    83ec18
                          push               edi                                             // 0x0076b0d3    57
                          mov.s              edi, ecx                                        // 0x0076b0d4    8bf9
                          push               0x0                                             // 0x0076b0d6    6a00
@@ -3087,7 +3143,7 @@ _jmp_addr_0x0076b0d0:    sub                esp, 0x18                           
                          {disp8} mov        esi, dword ptr [esp + 0x30]                     // 0x0076b0e9    8b742430
                          push               esi                                             // 0x0076b0ed    56
                          {disp32} lea       ecx, dword ptr [edi + 0x0000010c]               // 0x0076b0ee    8d8f0c010000
-                         call               _jmp_addr_0x005e1900                            // 0x0076b0f4    e80768e7ff
+                         call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z      // 0x0076b0f4    e80768e7ff
                          {disp8} lea        ebx, dword ptr [edi + 0x14]                     // 0x0076b0f9    8d5f14
                          push               ebx                                             // 0x0076b0fc    53
                          push               esi                                             // 0x0076b0fd    56
@@ -3159,6 +3215,7 @@ _jmp_addr_0x0076b1ad:    pop                edi                                 
                          nop                                                                // 0x0076b1bd    90
                          nop                                                                // 0x0076b1be    90
                          nop                                                                // 0x0076b1bf    90
+?PanicReaction@Villager@@QAEIXZ:
                          sub                esp, 0x0c                                       // 0x0076b1c0    83ec0c
                          push               esi                                             // 0x0076b1c3    56
                          mov.s              esi, ecx                                        // 0x0076b1c4    8bf1
@@ -3184,6 +3241,7 @@ _jmp_addr_0x0076b1f2:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076b1fd    90
                          nop                                                                // 0x0076b1fe    90
                          nop                                                                // 0x0076b1ff    90
+?GotoCongregateInTownAfterEmergency@Villager@@QAEIXZ:
                          sub                esp, 0x18                                       // 0x0076b200    83ec18
                          push               esi                                             // 0x0076b203    56
                          mov.s              esi, ecx                                        // 0x0076b204    8bf1
@@ -3263,6 +3321,7 @@ _jmp_addr_0x0076b29c:    {disp32} fmul      dword ptr [rdata_bytes + 0x1e658]   
                          nop                                                                // 0x0076b2fd    90
                          nop                                                                // 0x0076b2fe    90
                          nop                                                                // 0x0076b2ff    90
+?CongregateInTownAfterEmergency@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076b300    56
                          mov.s              esi, ecx                                        // 0x0076b301    8bf1
                          mov                eax, dword ptr [esi]                            // 0x0076b303    8b06
@@ -3356,6 +3415,7 @@ _jmp_addr_0x0076b3e0:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076b3ed    90
                          nop                                                                // 0x0076b3ee    90
                          nop                                                                // 0x0076b3ef    90
+?GoAndChilloutOutsideHome@Villager@@QAEIXZ:
                          sub                esp, 0x28                                       // 0x0076b3f0    83ec28
                          push               ebx                                             // 0x0076b3f3    53
                          push               esi                                             // 0x0076b3f4    56
@@ -3440,6 +3500,7 @@ _jmp_addr_0x0076b4c1:    mov                edx, dword ptr [edi]                
                          nop                                                                // 0x0076b4dd    90
                          nop                                                                // 0x0076b4de    90
                          nop                                                                // 0x0076b4df    90
+?SitAndChillout@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076b4e0    56
                          mov.s              esi, ecx                                        // 0x0076b4e1    8bf1
                          xor.s              eax, eax                                        // 0x0076b4e3    33c0
@@ -3490,6 +3551,7 @@ _jmp_addr_0x0076b566:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076b56d    90
                          nop                                                                // 0x0076b56e    90
                          nop                                                                // 0x0076b56f    90
+?EnterSitAndChillOut@Villager@@QAEIEE@Z:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                     // 0x0076b570    8b4128
                          {disp32} mov       dx, word ptr [eax + 0x00000394]                 // 0x0076b573    668b9094030000
                          {disp8} mov        word ptr [ecx + 0x58], dx                       // 0x0076b57a    66895158
@@ -3505,6 +3567,7 @@ _jmp_addr_0x0076b566:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076b58d    90
                          nop                                                                // 0x0076b58e    90
                          nop                                                                // 0x0076b58f    90
+?GoAndChilloutInTown@Villager@@QAEIXZ:
                          sub                esp, 0x0c                                       // 0x0076b590    83ec0c
                          push               ebx                                             // 0x0076b593    53
                          push               ebp                                             // 0x0076b594    55
@@ -3733,6 +3796,7 @@ _jmp_addr_0x0076b7ce:    pop                edi                                 
                          nop                                                                // 0x0076b7dd    90
                          nop                                                                // 0x0076b7de    90
                          nop                                                                // 0x0076b7df    90
+?ArrivesHomeFromWorship@Villager@@QAEIXZ:
                          {disp32} jmp       ?ArrivesHome@Villager@@QAEIXZ                   // 0x0076b7e0    e94b51ffff
                          nop                                                                // 0x0076b7e5    90
                          nop                                                                // 0x0076b7e6    90
@@ -3745,6 +3809,7 @@ _jmp_addr_0x0076b7ce:    pop                edi                                 
                          nop                                                                // 0x0076b7ed    90
                          nop                                                                // 0x0076b7ee    90
                          nop                                                                // 0x0076b7ef    90
+?SleepInTentFromWorship@Villager@@QAEIXZ:
                          {disp32} jmp       ?SleepInTent@Villager@@QAEIXZ                   // 0x0076b7f0    e9eb62ffff
                          nop                                                                // 0x0076b7f5    90
                          nop                                                                // 0x0076b7f6    90
@@ -3757,6 +3822,7 @@ _jmp_addr_0x0076b7ce:    pop                edi                                 
                          nop                                                                // 0x0076b7fd    90
                          nop                                                                // 0x0076b7fe    90
                          nop                                                                // 0x0076b7ff    90
+?BreederJustLanded@Villager@@QAEIXZ:
                          sub                esp, 0x20                                       // 0x0076b800    83ec20
                          push               ebx                                             // 0x0076b803    53
                          mov.s              ebx, ecx                                        // 0x0076b804    8bd9
@@ -4971,7 +5037,7 @@ _jmp_addr_0x0076c2b8:    pop                edi                                 
                          call               dword ptr [edx + 0x30c]                         // 0x0076c2fd    ff920c030000
                          push               eax                                             // 0x0076c303    50
                          mov.s              ecx, esi                                        // 0x0076c304    8bce
-                         call               _jmp_addr_0x0076a3b0                            // 0x0076c306    e8a5e0ffff
+                         call               ?AtStructureAddResource@Villager@@QAEIPAVMultiMapFixed@@W4RESOURCE_TYPE@@AAK_N@Z                            // 0x0076c306    e8a5e0ffff
                          mov                edx, dword ptr [esi]                            // 0x0076c30b    8b16
                          mov.s              edi, eax                                        // 0x0076c30d    8bf8
                          {disp8} mov        eax, dword ptr [esp + 0x08]                     // 0x0076c30f    8b442408

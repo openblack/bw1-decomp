@@ -785,7 +785,7 @@ bool32_t __fastcall CheckNeedNewAbode__8VillagerFv(struct Villager* this)
     asm("ret");                                                              // 0x0075805f    c3
     asm("_jmp_addr_0x00758060:");
     asm("mov.s              ecx, esi");                                      // 0x00758060    8bce
-    asm("call               _jmp_addr_0x0076a8d0");                          // 0x00758062    e869280100
+    asm("call               ?VagrantStart@Villager@@QAEIXZ");                          // 0x00758062    e869280100
     asm("mov                eax, 0x00000001");                               // 0x00758067    b801000000
     asm("pop                esi");                                           // 0x0075806c    5e
     asm("pop                ecx");                                           // 0x0075806d    59

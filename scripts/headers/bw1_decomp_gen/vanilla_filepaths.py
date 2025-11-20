@@ -1179,6 +1179,7 @@ ROOMMATE_CLASS_MAP = {
     "LH3DMapCoordsFull": "LH3DMapCoords",
     "MapCoordsSplit": "MapCoords",
     "MapCoordsFull": "MapCoords",
+    "JustWholeMapXZ": "MapCoords",
     "JustMapXZ": "MapCoords",
     "LHScriptPramX_c_": "LHScript",
     "LHScriptCommandX_c_": "LHScript",

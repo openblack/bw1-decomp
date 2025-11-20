@@ -46,7 +46,7 @@
 .extern _jmp_addr_0x0052fb50
 .extern _jmp_addr_0x0052fe10
 .extern _jmp_addr_0x005e18e0
-.extern _jmp_addr_0x005e1900
+.extern ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x005e5bd0
 .extern @__ct__6LivingFRC9MapCoordsPC11GLivingInfo@16
 .extern @ToBeDeleted__6LivingFi@12
@@ -6460,7 +6460,7 @@ _jmp_addr_0x0041986b:    add.s              eax, eax                            
                          {disp8} jae        _jmp_addr_0x00419881                          // 0x0041986f    7310
                          push               ebx                                           // 0x00419871    53
                          mov.s              ecx, edi                                      // 0x00419872    8bcf
-                         call               _jmp_addr_0x005e1900                          // 0x00419874    e887801c00
+                         call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z    // 0x00419874    e887801c00
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000001            // 0x00419879    c744241001000000
 _jmp_addr_0x00419881:    {disp8} mov        eax, dword ptr [esp + 0x10]                   // 0x00419881    8b442410
                          pop                edi                                           // 0x00419885    5f

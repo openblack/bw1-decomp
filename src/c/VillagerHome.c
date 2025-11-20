@@ -949,7 +949,7 @@ bool32_t __fastcall Landed__8VillagerFv(struct Villager* this)
     asm("{disp8} mov        edx, dword ptr [esp + 0x10]");                   // 0x00760833    8b542410
     asm("push               edx");                                           // 0x00760837    52
     asm("mov.s              ecx, esi");                                      // 0x00760838    8bce
-    asm("call               _jmp_addr_0x0076aab0");                          // 0x0076083a    e871a20000
+    asm("call               ?SetupInspectObject@Villager@@QAEIPAVObject@@@Z");                          // 0x0076083a    e871a20000
     asm("{disp8} jmp        _jmp_addr_0x00760854");                          // 0x0076083f    eb13
     asm("_jmp_addr_0x00760841:");
     asm("mov                eax, dword ptr [esi]");                          // 0x00760841    8b06

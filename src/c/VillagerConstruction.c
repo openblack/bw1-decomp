@@ -93,7 +93,7 @@ bool32_t __fastcall CheckForClearArea__8VillagerFRC9MapCoordsf(struct Villager* 
     asm("call               @SetupMoveToWithHug__6LivingFRC9MapCoordsUc@13");// 0x0075919f    e8ec96e9ff
     asm("push               edi");                                           // 0x007591a4    57
     asm("{disp32} lea       ecx, dword ptr [esi + 0x00000118]");             // 0x007591a5    8d8e18010000
-    asm("call               _jmp_addr_0x005e1900");                          // 0x007591ab    e85087e8ff
+    asm("call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z");                          // 0x007591ab    e85087e8ff
     asm("{disp8} mov        ecx, dword ptr [esp + 0x1c]");                   // 0x007591b0    8b4c241c
     asm("pop                edi");                                           // 0x007591b4    5f
     asm("{disp32} mov       dword ptr [esi + 0x00000120], ecx");             // 0x007591b5    898e20010000

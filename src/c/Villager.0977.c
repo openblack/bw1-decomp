@@ -1142,7 +1142,7 @@ void __fastcall ReleaseFromScript__8VillagerFv(struct Villager* this)
     asm("mov.s              ecx, esi");                                      // 0x007532d4    8bce
     asm("call               dword ptr [eax + 0x8e8]");                       // 0x007532d6    ff90e8080000
     asm("mov.s              ecx, esi");                                      // 0x007532dc    8bce
-    asm("call               _jmp_addr_0x0076a8d0");                          // 0x007532de    e8ed750100
+    asm("call               ?VagrantStart@Villager@@QAEIXZ");                          // 0x007532de    e8ed750100
     asm("pop                esi");                                           // 0x007532e3    5e
     asm("pop                ecx");                                           // 0x007532e4    59
     asm("ret");                                                              // 0x007532e5    c3

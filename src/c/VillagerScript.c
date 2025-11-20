@@ -92,7 +92,7 @@ bool32_t __fastcall SetupScriptWanderToPos__8VillagerFRC9MapCoordsfUsUs(struct V
     asm("mov.s              esi, ecx");                                        // 0x00768685    8bf1
     asm("push               eax");                                             // 0x00768687    50
     asm("{disp32} lea       ecx, dword ptr [esi + 0x0000010c]");               // 0x00768688    8d8e0c010000
-    asm("call               _jmp_addr_0x005e1900");                            // 0x0076868e    e86d92e7ff
+    asm("call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z");                            // 0x0076868e    e86d92e7ff
     asm("{disp8} mov        ecx, dword ptr [esp + 0x0c]");                     // 0x00768693    8b4c240c
     asm("{disp8} mov        eax, dword ptr [esp + 0x14]");                     // 0x00768697    8b442414
     asm("{disp32} mov       dword ptr [esi + 0x00000118], ecx");               // 0x0076869b    898e18010000

@@ -370,7 +370,7 @@ bool32_t __fastcall SetupMoveAroundFire__8VillagerFRC9MapCoords15VILLAGER_STATES
     asm("push               edi");                                           // 0x0075a789    57
     asm("push               ecx");                                           // 0x0075a78a    51
     asm("{disp32} lea       ecx, dword ptr [esi + 0x0000010c]");             // 0x0075a78b    8d8e0c010000
-    asm("call               _jmp_addr_0x005e1900");                          // 0x0075a791    e86a71e8ff
+    asm("call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z");                          // 0x0075a791    e86a71e8ff
     asm("{disp8} mov        edi, dword ptr [esp + 0x10]");                   // 0x0075a796    8b7c2410
     asm("mov                edx, dword ptr [esi]");                          // 0x0075a79a    8b16
     asm("push               edi");                                           // 0x0075a79c    57
@@ -526,7 +526,7 @@ uint32_t __fastcall MoveAroundFire__8VillagerFv(struct Villager* this)
     asm("{disp8} mov        ecx, dword ptr [esp + 0x20]");                   // 0x0075a94a    8b4c2420
     asm("{disp8} mov        dword ptr [edi + 0x04], edx");                   // 0x0075a94e    895704
     asm("{disp8} mov        dword ptr [edi + 0x08], eax");                   // 0x0075a951    894708
-    asm("call               _jmp_addr_0x005e1900");                          // 0x0075a954    e8a76fe8ff
+    asm("call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z");                          // 0x0075a954    e8a76fe8ff
     asm("pop                edi");                                           // 0x0075a959    5f
     asm("pop                esi");                                           // 0x0075a95a    5e
     asm("pop                ebp");                                           // 0x0075a95b    5d
@@ -1311,7 +1311,7 @@ bool32_t __fastcall SetupOnFire__8VillagerFP10FireEffect(struct Villager* this, 
     asm("call               dword ptr [eax + 0x860]");                       // 0x0075b19e    ff9060080000
     asm("push               eax");                                           // 0x0075b1a4    50
     asm("{disp32} lea       ecx, dword ptr [esi + 0x0000010c]");             // 0x0075b1a5    8d8e0c010000
-    asm("call               _jmp_addr_0x005e1900");                          // 0x0075b1ab    e85067e8ff
+    asm("call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z");                          // 0x0075b1ab    e85067e8ff
     asm("mov                edx, dword ptr [esi]");                          // 0x0075b1b0    8b16
     asm("push               0x000000a3");                                    // 0x0075b1b2    68a3000000
     asm("mov.s              ecx, esi");                                      // 0x0075b1b7    8bce

@@ -88,7 +88,7 @@
 .globl _jmp_addr_0x005e1860
 .globl _jmp_addr_0x005e1890
 .globl _jmp_addr_0x005e18e0
-.globl _jmp_addr_0x005e1900
+.globl ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z
 .globl @Init__9JustMapXZFP7MapCell@12
 .globl _jmp_addr_0x005e1950
 .globl _jmp_addr_0x005e1a90
@@ -2331,7 +2331,8 @@ _jmp_addr_0x005e18e0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                               // 0x005e18fd    90
                          nop                                                               // 0x005e18fe    90
                          nop                                                               // 0x005e18ff    90
-_jmp_addr_0x005e1900:    {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x005e1900    8b442404
+?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x04]                    // 0x005e1900    8b442404
                          mov                edx, dword ptr [eax]                           // 0x005e1904    8b10
                          mov                dword ptr [ecx], edx                           // 0x005e1906    8911
                          {disp8} mov        eax, dword ptr [eax + 0x04]                    // 0x005e1908    8b4004

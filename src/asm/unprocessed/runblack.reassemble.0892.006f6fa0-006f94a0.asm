@@ -30,7 +30,7 @@
 .extern _jmp_addr_0x005c6100
 .extern _jmp_addr_0x005c64e0
 .extern @SetWideScreen__10HelpSystemFiUl@16
-.extern _jmp_addr_0x005e1900
+.extern ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x005e6540
 .extern @SetState__12LivingActionFUlUc@16
 .extern @SetupMoveToPos__6LivingFRC9MapCoordsUc@13
@@ -2130,7 +2130,7 @@ _jmp_addr_0x006f8447:    push               0x00c0d440                          
                          {disp8} lea        eax, dword ptr [esp + 0x04]                   // 0x006f849e    8d442404
                          push               eax                                           // 0x006f84a2    50
                          {disp32} lea       ecx, dword ptr [esi + 0x0000010c]             // 0x006f84a3    8d8e0c010000
-                         call               _jmp_addr_0x005e1900                          // 0x006f84a9    e85294eeff
+                         call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z    // 0x006f84a9    e85294eeff
 _jmp_addr_0x006f84ae:    xor.s              eax, eax                                      // 0x006f84ae    33c0
                          pop                esi                                           // 0x006f84b0    5e
                          add                esp, 0x0c                                     // 0x006f84b1    83c40c
@@ -2238,7 +2238,7 @@ _jmp_addr_0x006f85a9:    push               0x0                                 
                          {disp8} lea        eax, dword ptr [esp + 0x14]                   // 0x006f85d4    8d442414
                          push               eax                                           // 0x006f85d8    50
                          {disp32} lea       ecx, dword ptr [esi + 0x0000010c]             // 0x006f85d9    8d8e0c010000
-                         call               _jmp_addr_0x005e1900                          // 0x006f85df    e81c93eeff
+                         call               ?Init@JustWholeMapXZ@@QAEXABUMapCoords@@@Z    // 0x006f85df    e81c93eeff
                          pop                esi                                           // 0x006f85e4    5e
                          add                esp, 0x1c                                     // 0x006f85e5    83c41c
                          ret                                                              // 0x006f85e8    c3
