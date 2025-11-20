@@ -1368,6 +1368,18 @@ bool32_t __fastcall ArrivesHomeFromWorship__8VillagerFv(struct Villager* this) a
 bool32_t __fastcall SleepInTentFromWorship__8VillagerFv(struct Villager* this) asm("?SleepInTentFromWorship@Villager@@QAEIXZ");
 // win1.41 0076b800 mac 10598930 Villager::BreederJustLanded(void)
 bool32_t __fastcall BreederJustLanded__8VillagerFv(struct Villager* this) asm("?BreederJustLanded@Villager@@QAEIXZ");
+// win1.41 0076b980 mac 1059c830 Villager::ArrivesInAbodeToPickUpExcess(void)
+bool32_t __fastcall ArrivesInAbodeToPickUpExcess__8VillagerFv(struct Villager* this) asm("?ArrivesInAbodeToPickUpExcess@Villager@@QAEIXZ");
+// win1.41 0076b990 mac 1059c7f0 Villager::ArrivesInAbodeToTrade(void)
+bool32_t __fastcall ArrivesInAbodeToTrade__8VillagerFv(struct Villager* this) asm("?ArrivesInAbodeToTrade@Villager@@QAEIXZ");
+// win1.41 0076b9a0 mac 1059c7b0 Villager::SetupFoodForWoodTrade(long)
+void __fastcall SetupFoodForWoodTrade__8VillagerFl(struct Villager* this, const void* edx, long param_1) asm("?SetupFoodForWoodTrade@Villager@@QAEXJ@Z");
+// win1.41 0076b9b0 mac 1059c770 Villager::ExcessFood(void)
+bool32_t __fastcall ExcessFood__8VillagerFv(struct Villager* this) asm("?ExcessFood@Villager@@QAEIXZ");
+// win1.41 0076b9c0 mac 1059c730 Villager::SetupWoodForFoodTrade(long)
+void __fastcall SetupWoodForFoodTrade__8VillagerFl(struct Villager* this, const void* edx, long param_1) asm("?SetupWoodForFoodTrade@Villager@@QAEXJ@Z");
+// win1.41 0076b9d0 mac 1059c6f0 Villager::ExcessWood(void)
+bool32_t __fastcall ExcessWood__8VillagerFv(struct Villager* this) asm("?ExcessWood@Villager@@QAEIXZ");
 // win1.41 0076ba60 mac 10096dd0 Villager::CheckNeededForWorship(void)
 float __fastcall CheckNeededForWorship__8VillagerFv(struct Villager* this) asm("?CheckNeededForWorship@Villager@@QAEMXZ");
 // win1.41 0076bae0 mac 1059ec20 Villager::CheckWorshipActivity(int)

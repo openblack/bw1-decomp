@@ -447,8 +447,15 @@
 .globl ?ArrivesAtAltarForRest@Villager@@QAEIXZ
 .globl ?AtAltarRest@Villager@@QAEIXZ
 .globl ?CheckSatisfySuppyWorship@Villager@@QAEIXZ
+.globl ?ArrivesInAbodeToPickUpExcess@Villager@@QAEIXZ
+.globl ?ArrivesInAbodeToTrade@Villager@@QAEIXZ
+.globl ?SetupFoodForWoodTrade@Villager@@QAEXJ@Z
+.globl ?ExcessFood@Villager@@QAEIXZ
+.globl ?SetupWoodForFoodTrade@Villager@@QAEXJ@Z
+.globl ?ExcessWood@Villager@@QAEIXZ
 
 // VillagerTrader.cpp
+?ArrivesInAbodeToPickUpExcess@Villager@@QAEIXZ:
                          mov                eax, 0x00000001                                 // 0x0076b980    b801000000
                          ret                                                                // 0x0076b985    c3
                          nop                                                                // 0x0076b986    90
@@ -461,6 +468,7 @@
                          nop                                                                // 0x0076b98d    90
                          nop                                                                // 0x0076b98e    90
                          nop                                                                // 0x0076b98f    90
+?ArrivesInAbodeToTrade@Villager@@QAEIXZ:
                          mov                eax, 0x00000001                                 // 0x0076b990    b801000000
                          ret                                                                // 0x0076b995    c3
                          nop                                                                // 0x0076b996    90
@@ -473,6 +481,7 @@
                          nop                                                                // 0x0076b99d    90
                          nop                                                                // 0x0076b99e    90
                          nop                                                                // 0x0076b99f    90
+?SetupFoodForWoodTrade@Villager@@QAEXJ@Z:
                          ret                0x0004                                          // 0x0076b9a0    c20400
                          nop                                                                // 0x0076b9a3    90
                          nop                                                                // 0x0076b9a4    90
@@ -487,6 +496,7 @@
                          nop                                                                // 0x0076b9ad    90
                          nop                                                                // 0x0076b9ae    90
                          nop                                                                // 0x0076b9af    90
+?ExcessFood@Villager@@QAEIXZ:
                          mov                eax, 0x00000001                                 // 0x0076b9b0    b801000000
                          ret                                                                // 0x0076b9b5    c3
                          nop                                                                // 0x0076b9b6    90
@@ -499,6 +509,7 @@
                          nop                                                                // 0x0076b9bd    90
                          nop                                                                // 0x0076b9be    90
                          nop                                                                // 0x0076b9bf    90
+?SetupWoodForFoodTrade@Villager@@QAEXJ@Z:
                          ret                0x0004                                          // 0x0076b9c0    c20400
                          nop                                                                // 0x0076b9c3    90
                          nop                                                                // 0x0076b9c4    90
@@ -513,6 +524,7 @@
                          nop                                                                // 0x0076b9cd    90
                          nop                                                                // 0x0076b9ce    90
                          nop                                                                // 0x0076b9cf    90
+?ExcessWood@Villager@@QAEIXZ:
                          mov                eax, 0x00000001                                 // 0x0076b9d0    b801000000
                          ret                                                                // 0x0076b9d5    c3
                          nop                                                                // 0x0076b9d6    90
