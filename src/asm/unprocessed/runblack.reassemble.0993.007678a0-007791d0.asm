@@ -137,7 +137,6 @@
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?GameFloatRand@GRand@@SAMM@Z
 .extern @SetReactionDoneWhen__6LivingF8REACTION@12
-.extern ?GetInfo@Reaction@@QBEPAVReactionInfo@@XZ
 .extern _jmp_addr_0x006e4780
 .extern @__ct__4RockFRC9MapCoordsPC17GMobileStaticInfoP6ObjectP7GPlayerff@32
 .extern ?Save@Rock@@UAEIAAVGameOSFile@@@Z
@@ -337,8 +336,6 @@
 .globl ?Create@Wonder@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .globl ?SetZero@Wonder@@QAEXXZ
 
-.globl _globl_ct_0x0076b920
-.globl _globl_ct_0x0076b950
 .globl _globl_ct_0x0076b9e0
 .globl _globl_ct_0x0076ba10
 .globl _globl_ct_0x0076ba40
@@ -447,96 +444,6 @@
 .globl ?ArrivesAtAltarForRest@Villager@@QAEIXZ
 .globl ?AtAltarRest@Villager@@QAEIXZ
 .globl ?CheckSatisfySuppyWorship@Villager@@QAEIXZ
-.globl ?ArrivesInAbodeToPickUpExcess@Villager@@QAEIXZ
-.globl ?ArrivesInAbodeToTrade@Villager@@QAEIXZ
-.globl ?SetupFoodForWoodTrade@Villager@@QAEXJ@Z
-.globl ?ExcessFood@Villager@@QAEIXZ
-.globl ?SetupWoodForFoodTrade@Villager@@QAEXJ@Z
-.globl ?ExcessWood@Villager@@QAEIXZ
-
-// VillagerTrader.cpp
-?ArrivesInAbodeToPickUpExcess@Villager@@QAEIXZ:
-                         mov                eax, 0x00000001                                 // 0x0076b980    b801000000
-                         ret                                                                // 0x0076b985    c3
-                         nop                                                                // 0x0076b986    90
-                         nop                                                                // 0x0076b987    90
-                         nop                                                                // 0x0076b988    90
-                         nop                                                                // 0x0076b989    90
-                         nop                                                                // 0x0076b98a    90
-                         nop                                                                // 0x0076b98b    90
-                         nop                                                                // 0x0076b98c    90
-                         nop                                                                // 0x0076b98d    90
-                         nop                                                                // 0x0076b98e    90
-                         nop                                                                // 0x0076b98f    90
-?ArrivesInAbodeToTrade@Villager@@QAEIXZ:
-                         mov                eax, 0x00000001                                 // 0x0076b990    b801000000
-                         ret                                                                // 0x0076b995    c3
-                         nop                                                                // 0x0076b996    90
-                         nop                                                                // 0x0076b997    90
-                         nop                                                                // 0x0076b998    90
-                         nop                                                                // 0x0076b999    90
-                         nop                                                                // 0x0076b99a    90
-                         nop                                                                // 0x0076b99b    90
-                         nop                                                                // 0x0076b99c    90
-                         nop                                                                // 0x0076b99d    90
-                         nop                                                                // 0x0076b99e    90
-                         nop                                                                // 0x0076b99f    90
-?SetupFoodForWoodTrade@Villager@@QAEXJ@Z:
-                         ret                0x0004                                          // 0x0076b9a0    c20400
-                         nop                                                                // 0x0076b9a3    90
-                         nop                                                                // 0x0076b9a4    90
-                         nop                                                                // 0x0076b9a5    90
-                         nop                                                                // 0x0076b9a6    90
-                         nop                                                                // 0x0076b9a7    90
-                         nop                                                                // 0x0076b9a8    90
-                         nop                                                                // 0x0076b9a9    90
-                         nop                                                                // 0x0076b9aa    90
-                         nop                                                                // 0x0076b9ab    90
-                         nop                                                                // 0x0076b9ac    90
-                         nop                                                                // 0x0076b9ad    90
-                         nop                                                                // 0x0076b9ae    90
-                         nop                                                                // 0x0076b9af    90
-?ExcessFood@Villager@@QAEIXZ:
-                         mov                eax, 0x00000001                                 // 0x0076b9b0    b801000000
-                         ret                                                                // 0x0076b9b5    c3
-                         nop                                                                // 0x0076b9b6    90
-                         nop                                                                // 0x0076b9b7    90
-                         nop                                                                // 0x0076b9b8    90
-                         nop                                                                // 0x0076b9b9    90
-                         nop                                                                // 0x0076b9ba    90
-                         nop                                                                // 0x0076b9bb    90
-                         nop                                                                // 0x0076b9bc    90
-                         nop                                                                // 0x0076b9bd    90
-                         nop                                                                // 0x0076b9be    90
-                         nop                                                                // 0x0076b9bf    90
-?SetupWoodForFoodTrade@Villager@@QAEXJ@Z:
-                         ret                0x0004                                          // 0x0076b9c0    c20400
-                         nop                                                                // 0x0076b9c3    90
-                         nop                                                                // 0x0076b9c4    90
-                         nop                                                                // 0x0076b9c5    90
-                         nop                                                                // 0x0076b9c6    90
-                         nop                                                                // 0x0076b9c7    90
-                         nop                                                                // 0x0076b9c8    90
-                         nop                                                                // 0x0076b9c9    90
-                         nop                                                                // 0x0076b9ca    90
-                         nop                                                                // 0x0076b9cb    90
-                         nop                                                                // 0x0076b9cc    90
-                         nop                                                                // 0x0076b9cd    90
-                         nop                                                                // 0x0076b9ce    90
-                         nop                                                                // 0x0076b9cf    90
-?ExcessWood@Villager@@QAEIXZ:
-                         mov                eax, 0x00000001                                 // 0x0076b9d0    b801000000
-                         ret                                                                // 0x0076b9d5    c3
-                         nop                                                                // 0x0076b9d6    90
-                         nop                                                                // 0x0076b9d7    90
-                         nop                                                                // 0x0076b9d8    90
-                         nop                                                                // 0x0076b9d9    90
-                         nop                                                                // 0x0076b9da    90
-                         nop                                                                // 0x0076b9db    90
-                         nop                                                                // 0x0076b9dc    90
-                         nop                                                                // 0x0076b9dd    90
-                         nop                                                                // 0x0076b9de    90
-                         nop                                                                // 0x0076b9df    90
 
 // VillagerWorshipper.cpp
 _globl_ct_0x0076b9e0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]            // 0x0076b9e0    8a0d34c9fa00

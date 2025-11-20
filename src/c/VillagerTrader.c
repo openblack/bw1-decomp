@@ -36,3 +36,33 @@ void __cdecl FUN_0076b960__8VillagerFv(void)
     asm("ret");                                                              // 0x0076b972    c3
     __builtin_unreachable();
 }
+
+bool32_t __fastcall ArrivesInAbodeToPickUpExcess__8VillagerFv(struct Villager* this)
+{
+    return 1;
+}
+
+bool32_t __fastcall ArrivesInAbodeToTrade__8VillagerFv(struct Villager* this)
+{
+    return 1;
+}
+
+void __fastcall SetupFoodForWoodTrade__8VillagerFl(struct Villager* this, const void* edx, long param_1)
+{
+    return;
+}
+
+bool32_t __fastcall ExcessFood__8VillagerFv(struct Villager* this)
+{
+    return 1;
+}
+
+void __fastcall SetupWoodForFoodTrade__8VillagerFl(struct Villager* this, const void* edx, long param_1)
+{
+    return;
+}
+
+bool32_t __fastcall ExcessWood__8VillagerFv(struct Villager* this)
+{
+    return 1;
+}
