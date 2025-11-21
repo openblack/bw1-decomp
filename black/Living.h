@@ -164,8 +164,8 @@ struct LivingVftable
   void (__fastcall* SetAnim__i)(struct Living* this, const void* edx, int param_1);
   enum ANIM_LIST (__fastcall* GetAnimId)(struct Living* this);  /* 0x900 */
   uint32_t (__fastcall* CallExitStateFunction)(struct Living* this, const void* edx, enum VILLAGER_STATES state);
-  uint32_t (__fastcall* CallEntryStateFunctionUcUc)(struct Living* this, const void* edx, enum VILLAGER_STATES state_1, enum VILLAGER_STATES state_2);
-  uint32_t (__fastcall* CallEntryStateFunctionUc)(struct Living* this, const void* edx, enum VILLAGER_STATES state);
+  uint32_t (__fastcall* CallEntryStateFunction__UcUc)(struct Living* this, const void* edx, enum VILLAGER_STATES state_1, enum VILLAGER_STATES state_2);
+  uint32_t (__fastcall* CallEntryStateFunction__Uc)(struct Living* this, const void* edx, enum VILLAGER_STATES state);
   int (__fastcall* ExitReaction)(struct Living* this, const void* edx, enum VILLAGER_STATES state);  /* 0x910 */
   int (__fastcall* ExitInScript)(struct Living* this, const void* edx, enum VILLAGER_STATES state);
   int (__fastcall* ExitDanceInScript)(struct Living* this, const void* edx, enum VILLAGER_STATES state);
@@ -584,14 +584,22 @@ uint32_t __fastcall RemoveFromGame__6LivingFv(struct Object* this) asm("?RemoveF
 enum IMMERSION_EFFECT_TYPE __fastcall GetInHandImmersionTexture__6LivingFv(struct Object* this) asm("?GetInHandImmersionTexture@Living@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ");
 // win1.41 005f2710 mac 10385c50 Living::AmILikelyToMove(void)
 bool __fastcall AmILikelyToMove__6LivingFv(struct Living* this) asm("?AmILikelyToMove@Living@@UAE_NXZ");
+// win1.41 005ec3e0 mac 10382af0 Living::GetNumTurnsToDieOver(void)
+uint32_t __fastcall GetNumTurnsToDieOver__6LivingFv(struct Living* this) asm("?GetNumTurnsToDieOver@Living@@UAEIXZ");
 // win1.41 005ec1e0 mac 103830e0 Living::GetFinalDestPos(MapCoords *)
 void __fastcall GetFinalDestPos__6LivingFP9MapCoords(struct Living* this, const void* edx, struct MapCoords* result) asm("?GetFinalDestPos@Living@@UAEXPAUMapCoords@@@Z");
+// win1.41 005ec4b0 mac 10382830 Living::Downed(void)
+bool __fastcall Downed__6LivingFv(struct Living* this) asm("?Downed@Living@@UAE_NXZ");
 // win1.41 005ecdb0 mac 10380b40 Living::MoveInFlock(void)
 bool __fastcall MoveInFlock__6LivingFv(struct Living* this) asm("?MoveInFlock@Living@@UAE_NXZ");
 // win1.41 005f2630 mac 10385ed0 Living::ArrivesAtFoodReaction(void)
 bool __fastcall ArrivesAtFoodReaction__6LivingFv(struct Living* this) asm("?ArrivesAtFoodReaction@Living@@UAE_NXZ");
 // win1.41 00474940 mac 103838c0 Living::DecideWhatToDo(void)
 bool __fastcall DecideWhatToDo__6LivingFv(struct Living* this) asm("?DecideWhatToDo@Living@@UAE_NXZ");
+// win1.41 005ecaf0 mac 1004c540 Living::GetAge(void)
+uint32_t __fastcall GetAge__6LivingFv(struct Living* this) asm("?GetAge@Living@@UAEIXZ");
+// win1.41 005f26d0 mac 10385ce0 Living::LookAtFlyingObjectReaction(void)
+bool __fastcall LookAtFlyingObjectReaction__6LivingFv(struct Living* this) asm("?LookAtFlyingObjectReaction@Living@@UAE_NXZ");
 // win1.41 005f2980 mac 10076180 Living::SetCurrentAndDestinationState(unsigned char, unsigned char)
 uint32_t __fastcall SetCurrentAndDestinationState__6LivingFUcUc(struct Living* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination) asm("?SetCurrentAndDestinationState@Living@@UAEIEE@Z");
 // win1.41 005f28e0 mac 10075940 Living::SetTopState(unsigned char)

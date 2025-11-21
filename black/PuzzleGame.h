@@ -8,6 +8,7 @@
 #include <chlasm/Enum.h> /* For enum IMMERSION_EFFECT_TYPE */
 #include <chlasm/GStates.h> /* For enum VILLAGER_STATES */
 #include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "Animal.h" /* For struct Animal */
@@ -629,8 +630,6 @@ bool __fastcall CanBecomeAPhysicsObject__11PuzzleHorseFv(struct Object* this) as
 void __fastcall SetFoodSpeedup__11PuzzleHorseFb(struct Living* this, const void* edx, bool param_1) asm("?SetFoodSpeedup@PuzzleHorse@@UAEX_N@Z");
 // win1.41 00416fe0 mac inlined PuzzleHorse::IsFoodSpeedUp(void)
 bool __fastcall IsFoodSpeedUp__11PuzzleHorseFv(struct Living* this) asm("?IsFoodSpeedUp@PuzzleHorse@@UAE_NXZ");
-// win1.41 005ec3e0 mac inlined PuzzleHorse::GetNumTurnsToDieOver(void)
-uint32_t __fastcall GetNumTurnsToDieOver__11PuzzleHorseFv(struct Living* this) asm("?GetNumTurnsToDieOver@PuzzleHorse@@UAEIXZ");
 // win1.41 005f1d10 mac inlined PuzzleHorse::FleeingFromObjectReaction(void)
 bool __fastcall FleeingFromObjectReaction__11PuzzleHorseFv(struct Living* this) asm("?FleeingFromObjectReaction@PuzzleHorse@@UAE_NXZ");
 // win1.41 005f23a0 mac inlined PuzzleHorse::LookingAtObjectReaction(void)
@@ -645,8 +644,6 @@ bool __fastcall InspectObjectReaction__11PuzzleHorseFv(struct Living* this) asm(
 bool __fastcall Dying__11PuzzleHorseFv(struct Living* this) asm("?Dying@PuzzleHorse@@UAE_NXZ");
 // win1.41 005ec400 mac inlined PuzzleHorse::Dead(void)
 bool __fastcall Dead__11PuzzleHorseFv(struct Living* this) asm("?Dead@PuzzleHorse@@UAE_NXZ");
-// win1.41 005ec4b0 mac inlined PuzzleHorse::Downed(void)
-bool __fastcall Downed__11PuzzleHorseFv(struct Living* this) asm("?Downed@PuzzleHorse@@UAE_NXZ");
 // win1.41 005ec4d0 mac inlined PuzzleHorse::BeingEaten(void)
 bool __fastcall BeingEaten__11PuzzleHorseFv(struct Living* this) asm("?BeingEaten@PuzzleHorse@@UAE_NXZ");
 // win1.41 005f2550 mac inlined PuzzleHorse::GotoFoodReaction(void)
@@ -667,12 +664,8 @@ bool __fastcall InHand__11PuzzleHorseFv(struct Living* this) asm("?InHand@Puzzle
 bool __fastcall DecideWhatToDo__11PuzzleHorseFv(struct Living* this) asm("?DecideWhatToDo@PuzzleHorse@@UAE_NXZ");
 // win1.41 005ec8f0 mac inlined PuzzleHorse::Birthday(void)
 void __fastcall Birthday__11PuzzleHorseFv(struct Living* this) asm("?Birthday@PuzzleHorse@@UAEXXZ");
-// win1.41 005ecaf0 mac inlined PuzzleHorse::GetAge(void)
-uint32_t __fastcall GetAge__11PuzzleHorseFv(struct Living* this) asm("?GetAge@PuzzleHorse@@UAEIXZ");
 // win1.41 004179c0 mac inlined PuzzleHorse::SetAge(unsigned long)
 void __fastcall SetAge__11PuzzleHorseFUl(struct Living* this, const void* edx, uint32_t param_1) asm("?SetAge@PuzzleHorse@@UAEXI@Z");
-// win1.41 005f26d0 mac inlined PuzzleHorse::LookAtFlyingObjectReaction(void)
-bool __fastcall LookAtFlyingObjectReaction__11PuzzleHorseFv(struct Living* this) asm("?LookAtFlyingObjectReaction@PuzzleHorse@@UAE_NXZ");
 // win1.41 00417820 mac inlined PuzzleHorse::CallIntoAnimationFunction(VILLAGER_STATES)
 int __fastcall CallIntoAnimationFunction__11PuzzleHorseF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?CallIntoAnimationFunction@PuzzleHorse@@UAEHW4VILLAGER_STATES@@@Z");
 // win1.41 00417830 mac inlined PuzzleHorse::CallOutofAnimationFunction(VILLAGER_STATES)

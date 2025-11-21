@@ -247,14 +247,14 @@
 .globl ??_GLHLobby@@UAEPAXI@Z
 .globl ?MoveByTeleport@Living@@UAEXABUMapCoords@@@Z
 .globl ?SetDying@Living@@UAE_NXZ
-.globl ?GetNumTurnsToDieOver@PuzzleHorse@@UAEIXZ
+.globl ?GetNumTurnsToDieOver@Living@@UAEIXZ
 .globl ?Dying@PuzzleHorse@@UAE_NXZ
-.globl ?Downed@PuzzleHorse@@UAE_NXZ
+.globl ?Downed@Living@@UAE_NXZ
 .globl ?BeingEaten@PuzzleHorse@@UAE_NXZ
 .globl ?InHand@PuzzleHorse@@UAE_NXZ
 .globl ?Birthday@PuzzleHorse@@UAEXXZ
 .globl ?IsDeathState@Living@@UBE_NW4VILLAGER_STATES@@@Z
-.globl ?GetAge@PuzzleHorse@@UAEIXZ
+.globl ?GetAge@Living@@UAEIXZ
 .globl ?SetAnim__li@Living@@UAEXHH@Z
 .globl ?ExitReaction@Living@@UAEHW4VILLAGER_STATES@@@Z
 .globl ?MoveInFlock@Living@@UAE_NXZ
@@ -6801,7 +6801,7 @@ _jmp_addr_0x005ec3d7:    xor.s              eax, eax                            
                          pop                esi                                           // 0x005ec3d9    5e
                          ret                                                              // 0x005ec3da    c3
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005ec3db    e81954e1ff
-?GetNumTurnsToDieOver@PuzzleHorse@@UAEIXZ:
+?GetNumTurnsToDieOver@Living@@UAEIXZ:
                          mov                eax, 0x00000258                               // 0x005ec3e0    b858020000
                          ret                                                              // 0x005ec3e5    c3
                          nop                                                              // 0x005ec3e6    90
@@ -6899,7 +6899,7 @@ _jmp_addr_0x005ec480:    push               esi                                 
                          nop                                                              // 0x005ec4ad    90
                          nop                                                              // 0x005ec4ae    90
                          nop                                                              // 0x005ec4af    90
-?Downed@PuzzleHorse@@UAE_NXZ:
+?Downed@Living@@UAE_NXZ:
                          push               esi                                           // 0x005ec4b0    56
                          push               0x1                                           // 0x005ec4b1    6a01
                          mov.s              esi, ecx                                      // 0x005ec4b3    8bf1
@@ -7595,7 +7595,7 @@ _jmp_addr_0x005ecae2:    pop                edi                                 
                          nop                                                              // 0x005ecaed    90
                          nop                                                              // 0x005ecaee    90
                          nop                                                              // 0x005ecaef    90
-?GetAge@PuzzleHorse@@UAEIXZ:
+?GetAge@Living@@UAEIXZ:
                          {disp32} mov       eax, dword ptr [_game]                        // 0x005ecaf0    a15c19d000
                          {disp32} mov       eax, dword ptr [eax + 0x00205a40]             // 0x005ecaf5    8b80405a2000
                          sub                eax, dword ptr [ecx + 0x000000a0]             // 0x005ecafb    2b81a0000000

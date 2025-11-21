@@ -210,7 +210,7 @@
 .globl ?FleeingAndLookingAtObjectReaction@PuzzleHorse@@UAE_NXZ
 .globl ?InspectObjectReaction@PuzzleHorse@@UAE_NXZ
 .globl ?ArrivesAtFoodReaction@Living@@UAE_NXZ
-.globl ?LookAtFlyingObjectReaction@PuzzleHorse@@UAE_NXZ
+.globl ?LookAtFlyingObjectReaction@Living@@UAE_NXZ
 .globl ?AmILikelyToMove@Living@@UAE_NXZ
 .globl ?StandardNumGameTurnsBeforeReactingToWoodAgainFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z
 .globl ?Init@LobbyBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
@@ -3048,7 +3048,7 @@ _jmp_addr_0x005f2689:    mov                edx, dword ptr [esi]                
                          add                esp, 0x04                                     // 0x005f26c7    83c404
 _jmp_addr_0x005f26ca:    mov                eax, 0x00000001                               // 0x005f26ca    b801000000
                          ret                                                              // 0x005f26cf    c3
-?LookAtFlyingObjectReaction@PuzzleHorse@@UAE_NXZ:
+?LookAtFlyingObjectReaction@Living@@UAE_NXZ:
                          push               esi                                           // 0x005f26d0    56
                          mov.s              esi, ecx                                      // 0x005f26d1    8bf1
                          {disp32} mov       eax, dword ptr [esi + 0x000000bc]             // 0x005f26d3    8b86bc000000

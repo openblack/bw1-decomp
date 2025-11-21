@@ -924,7 +924,7 @@ uint32_t __fastcall CallExitStateFunction__8VillagerF15VILLAGER_STATES(struct Li
 }
 
 __attribute__((XOR32rr_REV))
-uint32_t __fastcall CallEntryStateFunction__8VillagerFUc(struct Living* this, const void* edx, enum VILLAGER_STATES state)
+uint32_t __fastcall CallEntryStateFunction__Uc__8VillagerFUc(struct Living* this, const void* edx, enum VILLAGER_STATES state)
 {
     asm("push               ecx");                                           // 0x007523d0    51
     asm("push               esi");                                           // 0x007523d1    56
@@ -973,7 +973,7 @@ uint32_t __fastcall CallEntryStateFunction__8VillagerFUc(struct Living* this, co
 }
 
 __attribute__((XOR32rr_REV))
-uint32_t __fastcall CallEntryStateFunction__8VillagerFUcUc(struct Living* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination)
+uint32_t __fastcall CallEntryStateFunction__UcUc__8VillagerFUcUc(struct Living* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination)
 {
     asm("push               ecx");                                           // 0x00752440    51
     asm("push               esi");                                           // 0x00752441    56
@@ -1034,7 +1034,7 @@ uint32_t __fastcall CallEntryStateFunction__8VillagerFUcUc(struct Living* this, 
 }
 
 __attribute__((XOR32rr_REV))
-bool __fastcall IsStateEntryFunctionSameAs__8VillagerCFUlUl(const struct Living* this, const void* edx, unsigned long param_1, unsigned long param_2)
+bool __fastcall IsStateEntryFunctionSameAs__8VillagerCFUlUl(const struct Villager* this, const void* edx, unsigned long param_1, unsigned long param_2)
 {
     asm("{disp8} mov        eax, dword ptr [esp + 0x04]");                   // 0x007524d0    8b442404
     asm("{disp8} mov        ecx, dword ptr [esp + 0x08]");                   // 0x007524d4    8b4c2408

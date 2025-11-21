@@ -173,9 +173,9 @@ enum ANIM_LIST __fastcall GetAnimId__6AnimalFv(struct Living* this) asm("?GetAni
 // win1.41 0041a2c0 mac inlined Animal::CallExitStateFunction(VILLAGER_STATES)
 uint32_t __fastcall CallExitStateFunction__6AnimalF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?CallExitStateFunction@Animal@@UAEIW4VILLAGER_STATES@@@Z");
 // win1.41 0041a370 mac inlined Animal::CallEntryStateFunctionUcUc(VILLAGER_STATES, VILLAGER_STATES)
-uint32_t __fastcall CallEntryStateFunctionUcUc__6AnimalF15VILLAGER_STATES15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1, enum VILLAGER_STATES param_2) asm("?CallEntryStateFunctionUcUc@Animal@@UAEIW4VILLAGER_STATES@@0@Z");
+uint32_t __fastcall CallEntryStateFunction__UcUc__6AnimalF15VILLAGER_STATES15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1, enum VILLAGER_STATES param_2) asm("?CallEntryStateFunctionUcUc@Animal@@UAEIW4VILLAGER_STATES@@0@Z");
 // win1.41 0041a310 mac inlined Animal::CallEntryStateFunctionUc(VILLAGER_STATES)
-uint32_t __fastcall CallEntryStateFunctionUc__6AnimalF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?CallEntryStateFunctionUc@Animal@@UAEIW4VILLAGER_STATES@@@Z");
+uint32_t __fastcall CallEntryStateFunction__Uc__6AnimalF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?CallEntryStateFunctionUc@Animal@@UAEIW4VILLAGER_STATES@@@Z");
 // win1.41 0041b170 mac inlined Animal::ExitReaction(VILLAGER_STATES)
 int __fastcall ExitReaction__6AnimalF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?ExitReaction@Animal@@UAEHW4VILLAGER_STATES@@@Z");
 // win1.41 00417570 mac inlined Animal::IsScriptState( const(VILLAGER_STATES))

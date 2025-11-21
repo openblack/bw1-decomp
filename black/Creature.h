@@ -12,6 +12,7 @@
 #include <chlasm/GStates.h> /* For enum VILLAGER_STATES */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <reversing_utils/re_common.h> /* For bool32_t */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "CreatureHelp.h" /* For struct CreatureHelpStackEntry, struct CreatureHelpState */
@@ -521,9 +522,9 @@ enum ANIM_LIST __fastcall GetAnimId__8CreatureFv(struct Living* this) asm("?GetA
 // win1.41 00473fa0 mac inlined Creature::CallExitStateFunction(VILLAGER_STATES)
 uint32_t __fastcall CallExitStateFunction__8CreatureF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?CallExitStateFunction@Creature@@UAEIW4VILLAGER_STATES@@@Z");
 // win1.41 00473fc0 mac inlined Creature::CallEntryStateFunctionUcUc(VILLAGER_STATES, VILLAGER_STATES)
-uint32_t __fastcall CallEntryStateFunctionUcUc__8CreatureF15VILLAGER_STATES15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1, enum VILLAGER_STATES param_2) asm("?CallEntryStateFunctionUcUc@Creature@@UAEIW4VILLAGER_STATES@@0@Z");
+uint32_t __fastcall CallEntryStateFunction__UcUc__8CreatureF15VILLAGER_STATES15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1, enum VILLAGER_STATES param_2) asm("?CallEntryStateFunctionUcUc@Creature@@UAEIW4VILLAGER_STATES@@0@Z");
 // win1.41 00473fb0 mac inlined Creature::CallEntryStateFunctionUc(VILLAGER_STATES)
-uint32_t __fastcall CallEntryStateFunctionUc__8CreatureF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?CallEntryStateFunctionUc@Creature@@UAEIW4VILLAGER_STATES@@@Z");
+uint32_t __fastcall CallEntryStateFunction__Uc__8CreatureF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?CallEntryStateFunctionUc@Creature@@UAEIW4VILLAGER_STATES@@@Z");
 // win1.41 0047c670 mac 101d2490 Creature::IsDancing(void)
 bool __fastcall IsDancing__8CreatureFv(struct Living* this) asm("?IsDancing@Creature@@UAE_NXZ");
 // win1.41 004f2820 mac 1027db00 Creature::IsAvailableForReaction(REACTION)

@@ -311,12 +311,8 @@ uint32_t __fastcall WomanSpecial__8VillagerFv(struct Villager* this) asm("?Woman
 bool __fastcall IsVillagerAvailable__8VillagerFv(struct Villager* this) asm("?IsVillagerAvailable@Villager@@QAE_NXZ");
 // win1.41 007522c0 mac 1056c7a0 Villager::IsAvailableToBeSummonedByCreature(void)
 bool __fastcall IsAvailableToBeSummonedByCreature__8VillagerFv(struct Villager* this) asm("?IsAvailableToBeSummonedByCreature@Villager@@QAE_NXZ");
-// win1.41 007523d0 mac 10075c50 Villager::CallEntryStateFunction(unsigned char)
-uint32_t __fastcall CallEntryStateFunction__8VillagerFUc(struct Living* this, const void* edx, enum VILLAGER_STATES state) asm("?CallEntryStateFunction@Villager@@QAE_NE@Z");
-// win1.41 00752440 mac 1007b1b0 Villager::CallEntryStateFunction(unsigned char, unsigned char)
-uint32_t __fastcall CallEntryStateFunction__8VillagerFUcUc(struct Living* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination) asm("?CallEntryStateFunction@Villager@@QAE_NEE@Z");
 // win1.41 007524d0 mac 1009d4c0 Villager::IsStateEntryFunctionSameAs(unsigned long, unsigned long) const
-bool __fastcall IsStateEntryFunctionSameAs__8VillagerCFUlUl(const struct Living* this, const void* edx, unsigned long param_1, unsigned long param_2) asm("?IsStateEntryFunctionSameAs@Villager@@QBE_NKK@Z");
+bool __fastcall IsStateEntryFunctionSameAs__8VillagerCFUlUl(const struct Villager* this, const void* edx, unsigned long param_1, unsigned long param_2) asm("?IsStateEntryFunctionSameAs@Villager@@QBE_NKK@Z");
 // win1.41 007525b0 mac 1056c220 Villager::IsReactiveState(unsigned long)
 bool __fastcall IsReactiveState__8VillagerFUl(struct Villager* this, const void* edx, unsigned long param_1) asm("?IsReactiveState@Villager@@QAE_NK@Z");
 // win1.41 00752600 mac 1001ff70 Villager::IsHungry(void)
@@ -487,8 +483,6 @@ uint32_t __fastcall ShowDiscipleIcon__8VillagerF17VILLAGER_DISCIPLE(struct Villa
 void __fastcall DebugValidateState__8VillagerFv(struct Villager* this) asm("?DebugValidateState@Villager@@QAEXXZ");
 // win1.41 00756240 mac 105655e0 Villager::ForceMoveVillagerToAbode(Abode*)
 void __fastcall ForceMoveVillagerToAbode__8VillagerFP5Abode(struct Villager* this, const void* edx, struct Abode* abode) asm("?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z");
-// win1.41 007562c0 mac 105652e0 Villager::SetSkeleton(int)
-void __fastcall SetSkeleton__8VillagerFi(struct GameThingWithPos* this, const void* edx, int index) asm("?SetSkeleton@Villager@@QAEXH@Z");
 // win1.41 00756520 mac 10565010 Villager::LookAtPreviousStateReactToTownEmergency(void)
 enum VILLAGER_STATES __fastcall LookAtPreviousStateReactToTownEmergency__8VillagerFv(struct Villager* this) asm("?LookAtPreviousStateReactToTownEmergency@Villager@@QAE?AW4VILLAGER_STATES@@XZ");
 // win1.41 00756530 mac 10564fd0 Villager::SetTown(Town*)
@@ -1386,7 +1380,7 @@ float __fastcall CheckNeededForWorship__8VillagerFv(struct Villager* this) asm("
 // win1.41 0076bae0 mac 1059ec20 Villager::CheckWorshipActivity(int)
 float __fastcall CheckWorshipActivity__8VillagerFi(struct Villager* this, const void* edx, int param_1) asm("?CheckWorshipActivity@Villager@@QAEMH@Z");
 // win1.41 0076bc20 mac 1059eaf0 Villager::CanIGetToTheWorshipSite(MagicTeleport * &)
-bool32_t __fastcall CanIGetToTheWorshipSite__8VillagerFRP13MagicTeleport(struct Villager* this, const void* edx, struct MagicTeleport* * param_1) asm("?CanIGetToTheWorshipSite@Villager@@QAEIAAPAVMagicTeleport@@@Z");
+bool32_t __fastcall CanIGetToTheWorshipSite__8VillagerFRP13MagicTeleport(struct Villager* this, const void* edx, struct MagicTeleport** param_1) asm("?CanIGetToTheWorshipSite@Villager@@QAEIAAPAVMagicTeleport@@@Z");
 // win1.41 0076bcc0 mac 1059e8f0 Villager::GotoWorshipSiteForWorship(void)
 bool32_t __fastcall GotoWorshipSiteForWorship__8VillagerFv(struct Villager* this) asm("?GotoWorshipSiteForWorship@Villager@@QAEIXZ");
 // win1.41 0076bda0 mac 1059e810 Villager::SetGotoWorshipSpeed(void)
@@ -1546,6 +1540,8 @@ uint32_t __fastcall IsMaleVillager__8VillagerFv(struct GameThingWithPos* this) a
 uint32_t __fastcall IsFemaleVillager__8VillagerFv(struct GameThingWithPos* this) asm("?IsFemaleVillager@Villager@@UAEIXZ");
 // win1.41 0055cb00 mac 1009a450 Villager::IsAChild(void)
 uint32_t __fastcall IsAChild__8VillagerFv(struct GameThingWithPos* this) asm("?IsAChild@Villager@@UAEIXZ");
+// win1.41 007562c0 mac 105652e0 Villager::SetSkeleton(int)
+void __fastcall SetSkeleton__8VillagerFi(struct GameThingWithPos* this, const void* edx, int index) asm("?SetSkeleton@Villager@@QAEXH@Z");
 // win1.41 00753f20 mac 10569710 Villager::GetQueryFirstEnumText(void)
 enum HELP_TEXT __fastcall GetQueryFirstEnumText__8VillagerFv(struct GameThingWithPos* this) asm("?GetQueryFirstEnumText@Villager@@UAE?AW4HELP_TEXT@@XZ");
 // win1.41 00753f90 mac 105695c0 Villager::GetQueryLastEnumText(void)
@@ -1686,6 +1682,10 @@ bool __fastcall IsFinalState__8VillagerF15VILLAGER_STATES(struct Living* this, c
 enum ANIM_LIST __fastcall GetAnimId__8VillagerFv(struct Living* this) asm("?GetAnimId@Villager@@UAE?AW4ANIM_LIST@@XZ");
 // win1.41 00752320 mac inlined Villager::CallExitStateFunction(VILLAGER_STATES)
 uint32_t __fastcall CallExitStateFunction__8VillagerF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?CallExitStateFunction@Villager@@UAEIW4VILLAGER_STATES@@@Z");
+// win1.41 00752440 mac 1007b1b0 Villager::CallEntryStateFunction(unsigned char, unsigned char)
+uint32_t __fastcall CallEntryStateFunction__UcUc__8VillagerFUcUc(struct Living* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination) asm("?CallEntryStateFunction@Villager@@QAE_NEE@Z");
+// win1.41 007523d0 mac 10075c50 Villager::CallEntryStateFunction(unsigned char)
+uint32_t __fastcall CallEntryStateFunction__Uc__8VillagerFUc(struct Living* this, const void* edx, enum VILLAGER_STATES state) asm("?CallEntryStateFunction@Villager@@QAE_NE@Z");
 // win1.41 007527a0 mac inlined Villager::ExitReaction(VILLAGER_STATES)
 int __fastcall ExitReaction__8VillagerF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?ExitReaction@Villager@@UAEHW4VILLAGER_STATES@@@Z");
 // win1.41 0076b000 mac inlined Villager::ExitInHand(VILLAGER_STATES)
