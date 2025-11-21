@@ -34,7 +34,7 @@
 .extern _jmp_addr_0x00555880
 .extern _jmp_addr_0x00555a10
 .extern _jmp_addr_0x005de010
-.extern @ReduceLife__6ObjectFfP7GPlayer@16
+.extern ?ReduceLife@Object@@UAEMMPAVGPlayer@@@Z
 .extern ?IncreaseLife@Object@@UAEXM@Z
 .extern ?GetQueryFirstEnumText@Object@@UAE?AW4HELP_TEXT@@XZ
 .extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
@@ -906,7 +906,7 @@ _jmp_addr_0x0047ddfd:    {disp8} mov        edx, dword ptr [esp + 0x3c]         
                          push               edx                                           // 0x0047de05    52
                          push               eax                                           // 0x0047de06    50
                          mov.s              ecx, edi                                      // 0x0047de07    8bcf
-                         call               @ReduceLife__6ObjectFfP7GPlayer@16            // 0x0047de09    e8029a1b00
+                         call               ?ReduceLife@Object@@UAEMMPAVGPlayer@@@Z       // 0x0047de09    e8029a1b00
                          pop                edi                                           // 0x0047de0e    5f
                          add                esp, 0x30                                     // 0x0047de0f    83c430
                          ret                0x0008                                        // 0x0047de12    c20800

@@ -239,11 +239,11 @@
 .globl _globl_ct_0x005ef850
 .globl _globl_ct_0x005ef880
 .globl _globl_ct_0x005ef8b0
-.globl _EnterMoveOnPath__6LivingFUcUc
+.globl ?EnterMoveOnPath@Living@@UAEIEE@Z
 .globl _ToBeDeleted__6LivingFi
 .globl _GetFinalDestPos__6LivingFP9MapCoords
 .globl _SetAge__6LivingFUl
-.globl _MoveAlongPath__6LivingFv
+.globl ?MoveAlongPath@Living@@UAEIXZ
 .globl ??_GLHLobby@@UAEPAXI@Z
 .globl ?MoveByTeleport@Living@@UAEXABUMapCoords@@@Z
 .globl ?SetDying@Living@@UAE_NXZ
@@ -9444,7 +9444,7 @@ _jmp_addr_0x005edd72:    {disp8} mov        ecx, dword ptr [esp + 0x28]         
                          nop                                                              // 0x005eddcd    90
                          nop                                                              // 0x005eddce    90
                          nop                                                              // 0x005eddcf    90
-_EnterMoveOnPath__6LivingFUcUc:
+?EnterMoveOnPath@Living@@UAEIEE@Z:
                          mov                eax, 0x00000001                               // 0x005eddd0    b801000000
                          ret                0x0008                                        // 0x005eddd5    c20800
                          nop                                                              // 0x005eddd8    90
@@ -9844,7 +9844,7 @@ _jmp_addr_0x005ee221:    xor.s              eax, eax                            
                          nop                                                              // 0x005ee22d    90
                          nop                                                              // 0x005ee22e    90
                          nop                                                              // 0x005ee22f    90
-_MoveAlongPath__6LivingFv:
+?MoveAlongPath@Living@@UAEIXZ:
                          sub                esp, 0x34                                     // 0x005ee230    83ec34
                          push               esi                                           // 0x005ee233    56
                          mov.s              esi, ecx                                      // 0x005ee234    8bf1

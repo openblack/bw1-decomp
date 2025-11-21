@@ -327,7 +327,6 @@
 .extern ?SetUpPhysOb@Object@@UAEXPAVPhysOb@@@Z
 .extern ?InteractsWithPhysicsObjects@Object@@UAE_NXZ
 .extern ?ReactToPhysicsImpact@Object@@UAEXPAVPhysicsObject@@_N@Z
-.globl @ReduceLife__6ObjectFfP7GPlayer@16
 .extern ?IncreaseLife@Object@@UAEXM@Z
 .extern ?DestroyedByEffect@Object@@UAEIPAVGPlayer@@M@Z
 .globl _jmp_addr_0x00637930
@@ -414,7 +413,7 @@
 .globl ?MoveMapObject@Object@@UAEIUMapCoords@@@Z
 .globl ?SetLife@Object@@UAEXM@Z
 .globl _Load__6ObjectFR10GameOSFile
-.globl _ReduceLife__6ObjectFfP7GPlayer
+.globl ?ReduceLife@Object@@UAEMMPAVGPlayer@@@Z
 .globl ?Create3DObject@Object@@UAEXXZ
 .globl ?InsertMapObjectToCell@Object@@UAEXPAUMapCell@@@Z
 .globl ?SetScale@Object@@UAEXM@Z
@@ -10234,8 +10233,8 @@ _jmp_addr_0x00637809:    pop                esi                                 
                          nop                                                               // 0x0063780d    90
                          nop                                                               // 0x0063780e    90
                          nop                                                               // 0x0063780f    90
-_ReduceLife__6ObjectFfP7GPlayer:
-@ReduceLife__6ObjectFfP7GPlayer@16:    push               esi                                            // 0x00637810    56
+?ReduceLife@Object@@UAEMMPAVGPlayer@@@Z:
+                         push               esi                                            // 0x00637810    56
                          mov.s              esi, ecx                                       // 0x00637811    8bf1
                          mov                eax, dword ptr [esi]                           // 0x00637813    8b06
                          call               dword ptr [eax + 0x11c]                        // 0x00637815    ff901c010000

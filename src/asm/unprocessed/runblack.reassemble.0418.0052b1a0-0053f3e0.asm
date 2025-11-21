@@ -174,7 +174,7 @@
 .extern ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z
 .extern ?EndPhysics@Object@@UAEXPAVPhysicsObject@@_N@Z
 .extern ?InterfaceSetInMagicHand@Object@@UAE_NPAVGInterfaceStatus@@@Z
-.extern @ReduceLife__6ObjectFfP7GPlayer@16
+.extern ?ReduceLife@Object@@UAEMMPAVGPlayer@@@Z
 .extern _jmp_addr_0x00637cc0
 .extern @GetMapChild__6ObjectFRC9MapCoords@12
 .extern @SetScale__6ObjectFf@12
@@ -7927,7 +7927,7 @@ _jmp_addr_0x0052f627:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          push               ecx                                                  // 0x0052f653    51
                          mov.s              ecx, esi                                             // 0x0052f654    8bce
                          fstp               dword ptr [esp]                                      // 0x0052f656    d91c24
-                         call               @ReduceLife__6ObjectFfP7GPlayer@16                   // 0x0052f659    e8b2811000
+                         call               ?ReduceLife@Object@@UAEMMPAVGPlayer@@@Z              // 0x0052f659    e8b2811000
                          fstp               st(0)                                                // 0x0052f65e    ddd8
 _jmp_addr_0x0052f660:    mov                edx, dword ptr [esi]                                 // 0x0052f660    8b16
                          mov.s              ecx, esi                                             // 0x0052f662    8bce
@@ -7939,7 +7939,7 @@ _jmp_addr_0x0052f66e:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          push               eax                                                  // 0x0052f676    50
                          push               ecx                                                  // 0x0052f677    51
                          mov.s              ecx, esi                                             // 0x0052f678    8bce
-                         call               @ReduceLife__6ObjectFfP7GPlayer@16                   // 0x0052f67a    e891811000
+                         call               ?ReduceLife@Object@@UAEMMPAVGPlayer@@@Z              // 0x0052f67a    e891811000
                          pop                esi                                                  // 0x0052f67f    5e
                          ret                0x0008                                               // 0x0052f680    c20800
                          nop                                                                     // 0x0052f683    90
