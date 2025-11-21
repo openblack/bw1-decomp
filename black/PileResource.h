@@ -88,9 +88,9 @@ void __fastcall CallVirtualFunctionsForCreation__12PileResourceFRC9MapCoords(str
 // win1.41 0055d680 mac 1011d530 PileResource::IsLockedInInteract(void)
 bool __fastcall IsLockedInInteract__12PileResourceFv(struct Object* this) asm("?IsLockedInInteract@PileResource@@UAE_NXZ");
 // win1.41 0066e4f0 mac 10119600 PileResource::ValidForLockedSelectProcess(GInterfaceStatus *)
-bool __fastcall ValidForLockedSelectProcess__12PileResourceFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@PileResource@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall ValidForLockedSelectProcess__12PileResourceFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@PileResource@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 0066e710 mac 10119060 PileResource::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
-bool __fastcall NetworkFriendlyStartLockedSelect__12PileResourceFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@PileResource@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall NetworkFriendlyStartLockedSelect__12PileResourceFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@PileResource@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 0066e830 mac 10118ff0 PileResource::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
 uint32_t __fastcall NetworkUnfriendlyLockedSelect__12PileResourceFP21ControlHandUpdateInfo(struct Object* this, const void* edx, struct ControlHandUpdateInfo* param_1) asm("?NetworkUnfriendlyLockedSelect@PileResource@@UAEIPAUControlHandUpdateInfo@@@Z");
 // win1.41 0066e840 mac 10118fa0 PileResource::NetworkUnfriendlyEndLockedSelect(void)

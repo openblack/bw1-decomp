@@ -5532,7 +5532,7 @@ void __fastcall ForceMoveVillagerToAbode__8VillagerFP5Abode(struct Villager* thi
 }
 
 __attribute__((XOR32rr_REV))
-void __fastcall SetSkeleton__8VillagerFi(struct Villager* this, const void* edx, bool32_t param_1)
+void __fastcall SetSkeleton__8VillagerFi(struct GameThingWithPos* this, const void* edx, int index)
 {
     asm("{disp32} mov       al, byte ptr [data_bytes + 0x3e0bc4]");          // 0x007562c0    a0c46bda00
     asm("test               al, 0x01");                                      // 0x007562c5    a801

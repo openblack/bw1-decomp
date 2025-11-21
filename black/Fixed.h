@@ -113,9 +113,9 @@ void __fastcall InsertMapObjectToCell__11FixedObjectFP7MapCell(struct Object* th
 // win1.41 00401450 mac 1057a200 FixedObject::CanBeCrushed(void)
 bool32_t __fastcall CanBeCrushed__11FixedObjectFv(struct Object* this) asm("?CanBeCrushed@Fixed@@UAE_NXZ");
 // win1.41 0052eb90 mac 100dff80 FixedObject::ValidForLockedSelectProcess(GInterfaceStatus *)
-bool __fastcall ValidForLockedSelectProcess__11FixedObjectFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* status) asm("?ValidForLockedSelectProcess@Fixed@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall ValidForLockedSelectProcess__11FixedObjectFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* status) asm("?ValidForLockedSelectProcess@Fixed@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 0052eba0 mac 100dff20 FixedObject::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
-bool __fastcall NetworkFriendlyStartLockedSelect__11FixedObjectFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* status) asm("?NetworkFriendlyStartLockedSelect@Fixed@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall NetworkFriendlyStartLockedSelect__11FixedObjectFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* status) asm("?NetworkFriendlyStartLockedSelect@Fixed@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 0052e0e0 mac 100e1840 FixedObject::InterfaceSetInMagicHand(GInterfaceStatus *)
 bool32_t __fastcall InterfaceSetInMagicHand__11FixedObjectFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* status) asm("?InterfaceSetInMagicHand@Fixed@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 0052df50 mac 100e1950 FixedObject::EndPhysics(PhysicsObject *, bool)

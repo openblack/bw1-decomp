@@ -156,7 +156,7 @@ struct LivingVftable
   int (__fastcall* SetCurrentAndDestinationState)(struct Living* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination);
   int (__fastcall* CallIntoAnimationFunction)(struct Living* this, const void* edx, enum VILLAGER_STATES state);  /* 0x8e0 */
   int (__fastcall* CallOutofAnimationFunction)(struct Living* this, const void* edx, enum VILLAGER_STATES state);
-  void (__fastcall* SetTopState)(struct Living* this, const void* edx, enum VILLAGER_STATES state);
+  int (__fastcall* SetTopState)(struct Living* this, const void* edx, enum VILLAGER_STATES state);
   void (__fastcall* StorePreviousState)(struct Living* this);
   void (__fastcall* SetStateSpeed)(struct Living* this);  /* 0x8f0 */
   bool (__fastcall* IsFinalState)(struct Living* this, const void* edx, enum VILLAGER_STATES state);

@@ -141,9 +141,9 @@ enum RESOURCE_TYPE __fastcall GetResourceType__8FishFarmFv(struct Object* this) 
 // win1.41 0052c590 mac 100dd920 FishFarm::IsLockedInInteract(void)
 bool __fastcall IsLockedInInteract__8FishFarmFv(struct Object* this) asm("?IsLockedInInteract@FishFarm@@UAE_NXZ");
 // win1.41 0052d750 mac 100dac90 FishFarm::ValidForLockedSelectProcess(GInterfaceStatus *)
-bool __fastcall ValidForLockedSelectProcess__8FishFarmFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@FishFarm@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall ValidForLockedSelectProcess__8FishFarmFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@FishFarm@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 0052d770 mac 100da990 FishFarm::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
-bool __fastcall NetworkFriendlyStartLockedSelect__8FishFarmFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@FishFarm@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall NetworkFriendlyStartLockedSelect__8FishFarmFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@FishFarm@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 0052d880 mac 100da930 FishFarm::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
 uint32_t __fastcall NetworkUnfriendlyLockedSelect__8FishFarmFP21ControlHandUpdateInfo(struct Object* this, const void* edx, struct ControlHandUpdateInfo* param_1) asm("?NetworkUnfriendlyLockedSelect@FishFarm@@UAEIPAUControlHandUpdateInfo@@@Z");
 // win1.41 0052d890 mac 100da8e0 FishFarm::NetworkUnfriendlyEndLockedSelect(void)

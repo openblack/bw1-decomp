@@ -192,9 +192,9 @@ bool __fastcall IsLockedInInteract__5FieldFv(struct Object* this) asm("?IsLocked
 // win1.41 00529290 mac inlined Field::IsTouching_2( const(MapCoords *))
 bool __fastcall IsTouching_2__5FieldCFP9MapCoords(const struct Object* this, const void* edx, struct MapCoords* param_1) asm("?IsTouching@Field@@UBE_NPAUMapCoords@@@Z");
 // win1.41 005299e0 mac 100d2a40 Field::ValidForLockedSelectProcess(GInterfaceStatus *)
-bool __fastcall ValidForLockedSelectProcess__5FieldFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@Field@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall ValidForLockedSelectProcess__5FieldFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@Field@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 00529900 mac 100d2ac0 Field::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
-bool __fastcall NetworkFriendlyStartLockedSelect__5FieldFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@Field@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall NetworkFriendlyStartLockedSelect__5FieldFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@Field@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 00529a20 mac 100d29b0 Field::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
 uint32_t __fastcall NetworkUnfriendlyLockedSelect__5FieldFP21ControlHandUpdateInfo(struct Object* this, const void* edx, struct ControlHandUpdateInfo* param_1) asm("?NetworkUnfriendlyLockedSelect@Field@@UAEIPAUControlHandUpdateInfo@@@Z");
 // win1.41 00529a60 mac 100d28b0 Field::NetworkUnfriendlyEndLockedSelect(void)

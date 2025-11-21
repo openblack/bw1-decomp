@@ -568,9 +568,9 @@ void __fastcall CallVirtualFunctionsForCreation__11PuzzleGrainFRC9MapCoords(stru
 // win1.41 00561a10 mac 10131e20 PuzzleGrain::GetFoodValue(FOOD_TYPE)
 float __fastcall GetFoodValue__11PuzzleGrainF9FOOD_TYPE(struct Object* this, const void* edx, enum FOOD_TYPE param_1) asm("?GetFoodValue@PuzzleGrain@@UAEMW4FOOD_TYPE@@@Z");
 // win1.41 00561940 mac 10131970 PuzzleGrain::ValidForLockedSelectProcess(GInterfaceStatus *)
-bool __fastcall ValidForLockedSelectProcess__11PuzzleGrainFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@PuzzleGrain@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall ValidForLockedSelectProcess__11PuzzleGrainFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@PuzzleGrain@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 00561950 mac 101319d0 PuzzleGrain::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
-bool __fastcall NetworkFriendlyStartLockedSelect__11PuzzleGrainFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@PuzzleGrain@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall NetworkFriendlyStartLockedSelect__11PuzzleGrainFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@PuzzleGrain@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 00561960 mac 10131a30 PuzzleGrain::NetworkUnfriendlyStartLockedSelect(void)
 uint32_t __fastcall NetworkUnfriendlyStartLockedSelect__11PuzzleGrainFv(struct Object* this) asm("?NetworkUnfriendlyStartLockedSelect@PuzzleGrain@@UAEIXZ");
 // win1.41 00561970 mac 10131a80 PuzzleGrain::IsReadyForNetworkUnfriendlyLockedSelect(void)
@@ -862,9 +862,9 @@ void __fastcall SetMaxHeight__11PuzzleTotemFf(struct GameThingWithPos* this, con
 // win1.41 005618a0 mac 10133620 PuzzleTotem::GetMaxHeight(void)
 float __fastcall GetMaxHeight__11PuzzleTotemFv(struct GameThingWithPos* this) asm("?GetMaxHeight@PuzzleTotem@@UAEMXZ");
 // win1.41 006da5d0 mac 10126540 PuzzleTotem::ValidForLockedSelectProcess(GInterfaceStatus *)
-bool __fastcall ValidForLockedSelectProcess__11PuzzleTotemFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@PuzzleTotem@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall ValidForLockedSelectProcess__11PuzzleTotemFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@PuzzleTotem@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 006da8a0 mac 10125f60 PuzzleTotem::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
-bool __fastcall NetworkFriendlyStartLockedSelect__11PuzzleTotemFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@PuzzleTotem@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall NetworkFriendlyStartLockedSelect__11PuzzleTotemFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@PuzzleTotem@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 006da8e0 mac 10125eb0 PuzzleTotem::NetworkUnfriendlyStartLockedSelect(void)
 uint32_t __fastcall NetworkUnfriendlyStartLockedSelect__11PuzzleTotemFv(struct Object* this) asm("?NetworkUnfriendlyStartLockedSelect@PuzzleTotem@@UAEIXZ");
 // win1.41 006da970 mac 10125ba0 PuzzleTotem::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)

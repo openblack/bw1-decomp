@@ -312,11 +312,11 @@ bool __fastcall IsVillagerAvailable__8VillagerFv(struct Villager* this) asm("?Is
 // win1.41 007522c0 mac 1056c7a0 Villager::IsAvailableToBeSummonedByCreature(void)
 bool __fastcall IsAvailableToBeSummonedByCreature__8VillagerFv(struct Villager* this) asm("?IsAvailableToBeSummonedByCreature@Villager@@QAE_NXZ");
 // win1.41 007523d0 mac 10075c50 Villager::CallEntryStateFunction(unsigned char)
-bool __fastcall CallEntryStateFunction__8VillagerFUc(struct Villager* this, const void* edx, enum VILLAGER_STATES state) asm("?CallEntryStateFunction@Villager@@QAE_NE@Z");
+uint32_t __fastcall CallEntryStateFunction__8VillagerFUc(struct Living* this, const void* edx, enum VILLAGER_STATES state) asm("?CallEntryStateFunction@Villager@@QAE_NE@Z");
 // win1.41 00752440 mac 1007b1b0 Villager::CallEntryStateFunction(unsigned char, unsigned char)
-bool __fastcall CallEntryStateFunction__8VillagerFUcUc(struct Villager* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination) asm("?CallEntryStateFunction@Villager@@QAE_NEE@Z");
+uint32_t __fastcall CallEntryStateFunction__8VillagerFUcUc(struct Living* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination) asm("?CallEntryStateFunction@Villager@@QAE_NEE@Z");
 // win1.41 007524d0 mac 1009d4c0 Villager::IsStateEntryFunctionSameAs(unsigned long, unsigned long) const
-bool __fastcall IsStateEntryFunctionSameAs__8VillagerCFUlUl(const struct Villager* this, const void* edx, unsigned long param_1, unsigned long param_2) asm("?IsStateEntryFunctionSameAs@Villager@@QBE_NKK@Z");
+bool __fastcall IsStateEntryFunctionSameAs__8VillagerCFUlUl(const struct Living* this, const void* edx, unsigned long param_1, unsigned long param_2) asm("?IsStateEntryFunctionSameAs@Villager@@QBE_NKK@Z");
 // win1.41 007525b0 mac 1056c220 Villager::IsReactiveState(unsigned long)
 bool __fastcall IsReactiveState__8VillagerFUl(struct Villager* this, const void* edx, unsigned long param_1) asm("?IsReactiveState@Villager@@QAE_NK@Z");
 // win1.41 00752600 mac 1001ff70 Villager::IsHungry(void)
@@ -488,7 +488,7 @@ void __fastcall DebugValidateState__8VillagerFv(struct Villager* this) asm("?Deb
 // win1.41 00756240 mac 105655e0 Villager::ForceMoveVillagerToAbode(Abode*)
 void __fastcall ForceMoveVillagerToAbode__8VillagerFP5Abode(struct Villager* this, const void* edx, struct Abode* abode) asm("?ForceMoveVillagerToAbode@Villager@@QAEXPAVAbode@@@Z");
 // win1.41 007562c0 mac 105652e0 Villager::SetSkeleton(int)
-void __fastcall SetSkeleton__8VillagerFi(struct Villager* this, const void* edx, bool32_t param_1) asm("?SetSkeleton@Villager@@QAEXH@Z");
+void __fastcall SetSkeleton__8VillagerFi(struct GameThingWithPos* this, const void* edx, int index) asm("?SetSkeleton@Villager@@QAEXH@Z");
 // win1.41 00756520 mac 10565010 Villager::LookAtPreviousStateReactToTownEmergency(void)
 enum VILLAGER_STATES __fastcall LookAtPreviousStateReactToTownEmergency__8VillagerFv(struct Villager* this) asm("?LookAtPreviousStateReactToTownEmergency@Villager@@QAE?AW4VILLAGER_STATES@@XZ");
 // win1.41 00756530 mac 10564fd0 Villager::SetTown(Town*)

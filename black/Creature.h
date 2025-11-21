@@ -437,9 +437,9 @@ float __fastcall GetWeight__8CreatureFv(struct Object* this) asm("?GetWeight@Cre
 // win1.41 004f8a10 mac 1028ac60 Creature::CanBeSuckedIntoVortex(LandscapeVortex *)
 bool __fastcall CanBeSuckedIntoVortex__8CreatureFP15LandscapeVortex(struct Object* this, const void* edx, struct LandscapeVortex* param_1) asm("?CanBeSuckedIntoVortex@Creature@@UAE_NPAVLandscapeVortex@@@Z");
 // win1.41 00476e10 mac 101dc300 Creature::ValidForLockedSelectProcess(GInterfaceStatus *)
-bool __fastcall ValidForLockedSelectProcess__8CreatureFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@Creature@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall ValidForLockedSelectProcess__8CreatureFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@Creature@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 00476e70 mac 101dc260 Creature::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
-bool __fastcall NetworkFriendlyStartLockedSelect__8CreatureFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@Creature@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall NetworkFriendlyStartLockedSelect__8CreatureFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@Creature@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 00476eb0 mac 101dc160 Creature::IsReadyForNetworkUnfriendlyLockedSelect(void)
 uint32_t __fastcall IsReadyForNetworkUnfriendlyLockedSelect__8CreatureFv(struct Object* this) asm("?IsReadyForNetworkUnfriendlyLockedSelect@Creature@@UAEIXZ");
 // win1.41 00476ec0 mac 101dc100 Creature::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)

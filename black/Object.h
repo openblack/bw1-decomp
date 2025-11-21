@@ -185,8 +185,8 @@ struct ObjectVftable
   void (__fastcall* EndOnFire)(struct Object* this);  /* 0x6c0 */
   float (__fastcall* GetDistanceFromObject_1)(struct Object* this, const void* edx, struct Object* param_1);
   float (__fastcall* GetTribalPower)(struct Object* this, const void* edx, enum TRIBE_TYPE param_1);
-  bool (__fastcall* ValidForLockedSelectProcess)(struct Object* this, const void* edx, struct GInterfaceStatus* status);
-  bool (__fastcall* NetworkFriendlyStartLockedSelect)(struct Object* this, const void* edx, struct GInterfaceStatus* status);  /* 0x6d0 */
+  bool32_t (__fastcall* ValidForLockedSelectProcess)(struct Object* this, const void* edx, struct GInterfaceStatus* status);
+  bool32_t (__fastcall* NetworkFriendlyStartLockedSelect)(struct Object* this, const void* edx, struct GInterfaceStatus* status);  /* 0x6d0 */
   bool32_t (__fastcall* NetworkUnfriendlyStartLockedSelect)(struct Object* this);
   bool32_t (__fastcall* IsReadyForNetworkUnfriendlyLockedSelect)(struct Object* this);
   bool32_t (__fastcall* NetworkUnfriendlyLockedSelect)(struct Object* this, const void* edx, struct ControlHandUpdateInfo* param_1);
@@ -510,7 +510,7 @@ bool __fastcall IsObjectInMap__6ObjectFP7MapCell(struct Object* this, const void
 // win1.41 006366b0 mac 103d8d10 Object::IsObjectInMapCheck(void)
 bool __fastcall IsObjectInMapCheck__6ObjectFv(struct Object* this) asm("?IsObjectInMapCheck@Object@@UAE_NXZ");
 // win1.41 00636a40 mac 1004d070 Object::MoveMapObject(MapCoords const &)
-uint32_t __fastcall MoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_2) asm("?MoveMapObject@Object@@UAEIUMapCoords@@@Z");
+int __fastcall MoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_2) asm("?MoveMapObject@Object@@UAEIUMapCoords@@@Z");
 // win1.41 00638040 mac 10055200 Object::ActualMoveMapObject(MapCoords const &)
 void __fastcall ActualMoveMapObject__6ObjectFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_2) asm("?ActualMoveMapObject@Object@@UAEXUMapCoords@@@Z");
 // win1.41 00402570 mac 103dca60 Object::GetPtr(void)
@@ -556,7 +556,7 @@ void __fastcall SetLife__6ObjectFf(struct Object* this, const void* edx, float l
 // win1.41 00402610 mac 1005f530 Object::IsAlive(void)
 bool __fastcall IsAlive__6ObjectFv(struct Object* this) asm("?IsAlive@Object@@UAE_NXZ");
 // win1.41 00637810 mac 1004b140 Object::ReduceLife(float, GPlayer *)
-float __fastcall ReduceLife__6ObjectFfP7GPlayer(struct Object* this, const void* edx, float value, struct GPlayer* player) asm("?ReduceLife@Object@@UAEMMPAVGPlayer@@@Z");
+void __fastcall ReduceLife__6ObjectFfP7GPlayer(struct Object* this, const void* edx, float value, struct GPlayer* player) asm("?ReduceLife@Object@@UAEMMPAVGPlayer@@@Z");
 // win1.41 00637870 mac 103d6b50 Object::IncreaseLife(float)
 void __fastcall IncreaseLife__6ObjectFf(struct Object* this, const void* edx, float value) asm("?IncreaseLife@Object@@UAEXM@Z");
 // win1.41 0063aaf0 mac 103cff40 Object::GetSacrificeValue(void)

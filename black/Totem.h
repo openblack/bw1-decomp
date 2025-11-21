@@ -83,9 +83,9 @@ void __fastcall Draw__5TotemFv(struct Object* this) asm("?Draw@Totem@@UAEXXZ");
 // win1.41 00737490 mac 10543360 Totem::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__5TotemFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@Totem@@UAEXABUMapCoords@@@Z");
 // win1.41 00737520 mac 10543140 Totem::ValidForLockedSelectProcess(GInterfaceStatus *)
-bool __fastcall ValidForLockedSelectProcess__5TotemFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@Totem@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall ValidForLockedSelectProcess__5TotemFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@Totem@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 00737570 mac 10543060 Totem::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
-bool __fastcall NetworkFriendlyStartLockedSelect__5TotemFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@Totem@@UAE_NPAVGInterfaceStatus@@@Z");
+bool32_t __fastcall NetworkFriendlyStartLockedSelect__5TotemFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?NetworkFriendlyStartLockedSelect@Totem@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 007375c0 mac 10542ff0 Totem::NetworkUnfriendlyStartLockedSelect(void)
 uint32_t __fastcall NetworkUnfriendlyStartLockedSelect__5TotemFv(struct Object* this) asm("?NetworkUnfriendlyStartLockedSelect@Totem@@UAEIXZ");
 // win1.41 00737610 mac 10542df0 Totem::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
