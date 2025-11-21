@@ -1585,7 +1585,7 @@ uint32_t __fastcall GetDiscipleStateIfInteractedWith__8VillagerFP16GInterfaceSta
 // win1.41 0074fc70 mac 10571530 Villager::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__8VillagerFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@Villager@@UAEXABUMapCoords@@@Z");
 // win1.41 0055c990 mac 10147d30 Villager::IsABeliever(void)
-bool __fastcall IsABeliever__8VillagerFv(struct Object* this) asm("?IsABeliever@Villager@@UAE_NXZ");
+bool32_t __fastcall IsABeliever__8VillagerFv(struct Object* this) asm("?IsABeliever@Villager@@UAE_NXZ");
 // win1.41 0076a4c0 mac 1059a990 Villager::SetDying(void)
 bool __fastcall SetDying__8VillagerFv(struct Object* this) asm("?SetDying@Villager@@UAE_NXZ");
 // win1.41 00753040 mac inlined Villager::IsTouching_2( const(MapCoords *))

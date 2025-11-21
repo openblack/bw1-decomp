@@ -163,7 +163,7 @@ struct ObjectVftable
   enum FOOD_TYPE (__fastcall* GetFoodType)(struct Object* this);
   float (__fastcall* GetImpressiveValue_1)(struct Object* this);
   bool (__fastcall* IsSpellSeedReturnPoint)(const struct Object* this);  /* 0x670 */
-  bool (__fastcall* IsABeliever)(struct Object* this);
+  bool32_t (__fastcall* IsABeliever)(struct Object* this);
   struct MultiMapFixed* (__fastcall* AsMultiMapFixed)(struct Object* this);
   float (__fastcall* ApplyWaterSpell)(struct Object* this, const void* edx, struct SpellWater* spell);
   bool (__fastcall* IsResourceStore)(struct Object* this, const void* edx, enum RESOURCE_TYPE type);  /* 0x680 */
@@ -650,7 +650,7 @@ float __fastcall GetImpressiveValue__6ObjectFv(struct Object* this) asm("?GetImp
 // win1.41 00402730 mac 1056f400 Object::IsSpellSeedReturnPoint( const(void))
 bool __fastcall IsSpellSeedReturnPoint__6ObjectCFv(const struct Object* this) asm("?IsSpellSeedReturnPoint@Object@@UAE_NXZ");
 // win1.41 00402740 mac 104d62b0 Object::IsABeliever(void)
-bool __fastcall IsABeliever__6ObjectFv(struct Object* this) asm("?IsABeliever@Object@@UAE_NXZ");
+bool32_t __fastcall IsABeliever__6ObjectFv(struct Object* this) asm("?IsABeliever@Object@@UAE_NXZ");
 // win1.41 004192c0 mac 100a9dc0 Object::AsMultiMapFixed(void)
 struct MultiMapFixed* __fastcall AsMultiMapFixed__6ObjectFv(struct Object* this) asm("?AsMultiMapFixed@Object@@UAEPAVMultiMapFixed@@XZ");
 // win1.41 0063a8e0 mac 103d0400 Object::ApplyWaterSpell(SpellWater *)
