@@ -68,22 +68,6 @@ _RTTIBaseClassDescriptor__\name:
     _RTTICompleteObjectLocator \name U 0
 .endm
 
-.align 8
-
-RTTIBaseClassArray Villager                                                                                        // [0x104530] 0x008a9000 + 0x104530 = 0x009ad530
-.long ??_R1A@?0A@A@Living@@8
-.long ??_R1A@?0A@A@MobileWallHug@@8
-.long ??_R1A@?0A@A@Mobile@@8
-.long ??_R1A@?0A@A@Object@@8                                                                                       // [0x104540] 0x008a9000 + 0x104540 = 0x009ad540
-.long ??_R1A@?0A@A@GameThingWithPos@@8
-.long ??_R1A@?0A@A@GameThing@@8
-.long ??_R1A@?0A@A@Base@@8
-.long 0x00000000                                                                                                   // [0x104550] 0x008a9000 + 0x104550 = 0x009ad550
-.long 0x00000000                                                                                                   // [0x104554] 0x008a9000 + 0x104554 = 0x009ad554
-
-RTTIClassHierarchyDescriptor Villager 8                                                                            // [0x104558] 0x008a9000 + 0x104558 = 0x009ad558
-RTTICompleteObjectLocator Villager                                                                                 // [0x104568] 0x008a9000 + 0x104568 = 0x009ad568
-
 .long 0x00000000                                                                                                   // [0x10457c] 0x008a9000 + 0x10457c = 0x009ad57c
 RTTIBaseClassDescriptor OneOffSpellSeed 6                                                                          // [0x104580] 0x008a9000 + 0x104580 = 0x009ad580
 RTTIBaseClassArray OneOffSpellSeed                                                                                 // [0x104598] 0x008a9000 + 0x104598 = 0x009ad598

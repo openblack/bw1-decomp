@@ -248,6 +248,7 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.0493.005529e0-00555240.asm
     asm/unprocessed/runblack.reassemble.0497.00555240-0055c770.asm
     asm/unprocessed/runblack.reassemble.0501.0055c770-0055c8a0.asm
+    c/Villager.0501.c
     c/Villager.0502.c
 
     asm/unprocessed/rdata.150-vftables.asm
