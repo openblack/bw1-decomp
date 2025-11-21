@@ -441,6 +441,21 @@
 .globl ?ArrivesAtAltarForRest@Villager@@QAEIXZ
 .globl ?AtAltarRest@Villager@@QAEIXZ
 .globl ?CheckSatisfySuppyWorship@Villager@@QAEIXZ
+.globl ?SetGotoWorshipSpeed@Villager@@QAEIXZ
+.globl ?ArrivesAtWorshipSiteForWorship@Villager@@QAEIXZ
+.globl ?CheckNeededForSupplyWorship@Villager@@QAEIXZ
+.globl ?ArrivesAtStoragePitForWorshipSupplies@Villager@@QAEIXZ
+.globl ?MoveToWorshipSiteWithSupplies@Villager@@QAEIXZ
+.globl ?ExitMoveToWorshipSiteWithSupplies@Villager@@QAEIE@Z
+.globl ?ExitMoveToWorshipSite@Villager@@QAEIE@Z
+.globl ?ExitGetFoodAtWorship@Villager@@QAEIE@Z
+.globl ?ArrivesAtWorshipSiteWithSupplies@Villager@@QAEIXZ
+.globl ?RestartWorshippingAtWorshipSite@Villager@@QAEIXZ
+.globl ?RestartWorshippingCreature@Villager@@QAEIXZ
+.globl ?HidingAtWorshipSite@Villager@@QAEIXZ
+.globl ?WorshippingAtWorshipSite@Villager@@QAEIXZ
+.globl ?CheckRequestGoHome@Villager@@QAEIXZ
+.globl ?GetFoodDesireAtWorshipSite@Villager@@QAEIXZ
 
 // VillagerWorshipper.cpp
 ?CheckNeededForWorship@Villager@@QAEMXZ:
@@ -453,7 +468,7 @@
                          {disp8} je         _jmp_addr_0x0076ba8e                            // 0x0076ba70    741c
                          push               edi                                             // 0x0076ba72    57
                          mov.s              ecx, esi                                        // 0x0076ba73    8bce
-                         call               _jmp_addr_0x0076c4c0                            // 0x0076ba75    e8460a0000
+                         call               ?StartWorshippingAtWorshipSite@Villager@@QAEIXZ // 0x0076ba75    e8460a0000
                          mov.s              edi, eax                                        // 0x0076ba7a    8bf8
                          cmp                edi, 0x01                                       // 0x0076ba7c    83ff01
                          {disp8} je         _jmp_addr_0x0076ba88                            // 0x0076ba7f    7407
@@ -545,18 +560,18 @@ _jmp_addr_0x0076bad7:    xor.s              eax, eax                            
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                     // 0x0076bb65    8d4c2410
                          push               ecx                                             // 0x0076bb69    51
                          mov.s              ecx, esi                                        // 0x0076bb6a    8bce
-                         call               _jmp_addr_0x0076bc20                            // 0x0076bb6c    e8af000000
+                         call               ?CanIGetToTheWorshipSite@Villager@@QAEIAAPAVMagicTeleport@@@Z                            // 0x0076bb6c    e8af000000
                          test               eax, eax                                        // 0x0076bb71    85c0
                          {disp8} jne        _jmp_addr_0x0076bb81                            // 0x0076bb73    750c
                          {disp8} mov        eax, dword ptr [esp + 0x18]                     // 0x0076bb75    8b442418
                          test               eax, eax                                        // 0x0076bb79    85c0
                          {disp32} jne       _jmp_addr_0x0076bc0d                            // 0x0076bb7b    0f858c000000
 _jmp_addr_0x0076bb81:    mov.s              ecx, esi                                        // 0x0076bb81    8bce
-                         call               _jmp_addr_0x0076c930                            // 0x0076bb83    e8a80d0000
+                         call               ?CheckNeededForWorshipSiteBuilding@Villager@@QAEIXZ                            // 0x0076bb83    e8a80d0000
                          cmp                eax, 0x01                                       // 0x0076bb88    83f801
                          {disp8} je         _jmp_addr_0x0076bb99                            // 0x0076bb8b    740c
                          mov.s              ecx, esi                                        // 0x0076bb8d    8bce
-                         call               _jmp_addr_0x0076bcc0                            // 0x0076bb8f    e82c010000
+                         call               ?GotoWorshipSiteForWorship@Villager@@QAEIXZ     // 0x0076bb8f    e82c010000
                          cmp                eax, 0x01                                       // 0x0076bb94    83f801
                          {disp8} jne        _jmp_addr_0x0076bc0d                            // 0x0076bb97    7574
 _jmp_addr_0x0076bb99:    {disp8} mov        eax, dword ptr [esp + 0x10]                     // 0x0076bb99    8b442410
@@ -618,7 +633,8 @@ _jmp_addr_0x0076bc0d:    pop                edi                                 
                          nop                                                                // 0x0076bc1d    90
                          nop                                                                // 0x0076bc1e    90
                          nop                                                                // 0x0076bc1f    90
-_jmp_addr_0x0076bc20:    push               ecx                                             // 0x0076bc20    51
+?CanIGetToTheWorshipSite@Villager@@QAEIAAPAVMagicTeleport@@@Z:
+                         push               ecx                                             // 0x0076bc20    51
                          push               ebx                                             // 0x0076bc21    53
                          push               ebp                                             // 0x0076bc22    55
                          push               esi                                             // 0x0076bc23    56
@@ -696,7 +712,8 @@ _jmp_addr_0x0076bcaa:    pop                edi                                 
                          nop                                                                // 0x0076bcbd    90
                          nop                                                                // 0x0076bcbe    90
                          nop                                                                // 0x0076bcbf    90
-_jmp_addr_0x0076bcc0:    sub                esp, 0x0c                                       // 0x0076bcc0    83ec0c
+?GotoWorshipSiteForWorship@Villager@@QAEIXZ:
+                         sub                esp, 0x0c                                       // 0x0076bcc0    83ec0c
                          push               ebx                                             // 0x0076bcc3    53
                          push               ebp                                             // 0x0076bcc4    55
                          push               esi                                             // 0x0076bcc5    56
@@ -782,6 +799,7 @@ _jmp_addr_0x0076bd8d:    pop                edi                                 
                          nop                                                                // 0x0076bd9d    90
                          nop                                                                // 0x0076bd9e    90
                          nop                                                                // 0x0076bd9f    90
+?SetGotoWorshipSpeed@Villager@@QAEIXZ:
                          push               ecx                                             // 0x0076bda0    51
                          push               esi                                             // 0x0076bda1    56
                          mov.s              esi, ecx                                        // 0x0076bda2    8bf1
@@ -816,6 +834,7 @@ _jmp_addr_0x0076bdea:    {disp8} fld        dword ptr [esp + 0x04]              
                          pop                esi                                             // 0x0076bdfd    5e
                          pop                ecx                                             // 0x0076bdfe    59
                          ret                                                                // 0x0076bdff    c3
+?ArrivesAtWorshipSiteForWorship@Villager@@QAEIXZ:
                          sub                esp, 0x0c                                       // 0x0076be00    83ec0c
                          push               esi                                             // 0x0076be03    56
                          mov.s              esi, ecx                                        // 0x0076be04    8bf1
@@ -856,13 +875,13 @@ _jmp_addr_0x0076be27:    {disp8} mov        dword ptr [esp + 0x08], eax         
                          cmp                edx, dword ptr [eax + 0x0000014c]               // 0x0076be70    3b904c010000
                          mov.s              ecx, esi                                        // 0x0076be76    8bce
                          {disp8} jae        _jmp_addr_0x0076be8a                            // 0x0076be78    7310
-                         call               _jmp_addr_0x0076c4c0                            // 0x0076be7a    e841060000
+                         call               ?StartWorshippingAtWorshipSite@Villager@@QAEIXZ // 0x0076be7a    e841060000
                          pop                edi                                             // 0x0076be7f    5f
                          mov                eax, 0x00000001                                 // 0x0076be80    b801000000
                          pop                esi                                             // 0x0076be85    5e
                          add                esp, 0x0c                                       // 0x0076be86    83c40c
                          ret                                                                // 0x0076be89    c3
-_jmp_addr_0x0076be8a:    call               _jmp_addr_0x0076c550                            // 0x0076be8a    e8c1060000
+_jmp_addr_0x0076be8a:    call               ?StartHidingAtWorshipSite@Villager@@QAEIXZ      // 0x0076be8a    e8c1060000
                          pop                edi                                             // 0x0076be8f    5f
                          mov                eax, 0x00000001                                 // 0x0076be90    b801000000
                          pop                esi                                             // 0x0076be95    5e
@@ -891,7 +910,8 @@ _jmp_addr_0x0076be9a:    push               0x3b                                
                          nop                                                                // 0x0076bebd    90
                          nop                                                                // 0x0076bebe    90
                          nop                                                                // 0x0076bebf    90
-_jmp_addr_0x0076bec0:    push               esi                                             // 0x0076bec0    56
+?CheckVillagerGoBackToTownFromWorship@Villager@@QAEIXZ:
+                         push               esi                                             // 0x0076bec0    56
                          mov.s              esi, ecx                                        // 0x0076bec1    8bf1
                          mov                eax, dword ptr [esi]                            // 0x0076bec3    8b06
                          push               edi                                             // 0x0076bec5    57
@@ -975,6 +995,7 @@ _jmp_addr_0x0076bf85:    pop                edi                                 
                          nop                                                                // 0x0076bf8d    90
                          nop                                                                // 0x0076bf8e    90
                          nop                                                                // 0x0076bf8f    90
+?CheckNeededForSupplyWorship@Villager@@QAEIXZ:
                          mov                eax, dword ptr [ecx]                            // 0x0076bf90    8b01
                          call               dword ptr [eax + 0x30c]                         // 0x0076bf92    ff900c030000
                          xor.s              eax, eax                                        // 0x0076bf98    33c0
@@ -984,7 +1005,8 @@ _jmp_addr_0x0076bf85:    pop                edi                                 
                          nop                                                                // 0x0076bf9d    90
                          nop                                                                // 0x0076bf9e    90
                          nop                                                                // 0x0076bf9f    90
-_jmp_addr_0x0076bfa0:    sub                esp, 0x0c                                       // 0x0076bfa0    83ec0c
+?GotoStoragePitForWorshipSupplies@Villager@@QAEIXZ:
+                         sub                esp, 0x0c                                       // 0x0076bfa0    83ec0c
                          push               ebx                                             // 0x0076bfa3    53
                          push               esi                                             // 0x0076bfa4    56
                          push               edi                                             // 0x0076bfa5    57
@@ -1050,7 +1072,7 @@ _jmp_addr_0x0076bfa0:    sub                esp, 0x0c                           
                          add                esp, 0x0c                                       // 0x0076c056    83c40c
                          ret                                                                // 0x0076c059    c3
 _jmp_addr_0x0076c05a:    mov.s              ecx, esi                                        // 0x0076c05a    8bce
-                         call               _jmp_addr_0x0076c100                            // 0x0076c05c    e89f000000
+                         call               ?GotoWorshipSiteWithSupplies@Villager@@QAEIXZ   // 0x0076c05c    e89f000000
                          pop                edi                                             // 0x0076c061    5f
                          pop                esi                                             // 0x0076c062    5e
                          pop                ebx                                             // 0x0076c063    5b
@@ -1077,6 +1099,7 @@ _jmp_addr_0x0076c068:    pop                edi                                 
                          nop                                                                // 0x0076c07d    90
                          nop                                                                // 0x0076c07e    90
                          nop                                                                // 0x0076c07f    90
+?ArrivesAtStoragePitForWorshipSupplies@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076c080    56
                          mov.s              esi, ecx                                        // 0x0076c081    8bf1
                          mov                eax, dword ptr [esi]                            // 0x0076c083    8b06
@@ -1096,7 +1119,7 @@ _jmp_addr_0x0076c068:    pop                edi                                 
                          cmp.s              eax, edi                                        // 0x0076c0ab    3bc7
                          mov.s              ecx, esi                                        // 0x0076c0ad    8bce
                          {disp8} jl         _jmp_addr_0x0076c0b9                            // 0x0076c0af    7c08
-                         call               _jmp_addr_0x0076c100                            // 0x0076c0b1    e84a000000
+                         call               ?GotoWorshipSiteWithSupplies@Villager@@QAEIXZ   // 0x0076c0b1    e84a000000
                          pop                edi                                             // 0x0076c0b6    5f
                          pop                esi                                             // 0x0076c0b7    5e
                          ret                                                                // 0x0076c0b8    c3
@@ -1136,7 +1159,8 @@ _jmp_addr_0x0076c0e7:    mov                edx, dword ptr [esi]                
                          nop                                                                // 0x0076c0fd    90
                          nop                                                                // 0x0076c0fe    90
                          nop                                                                // 0x0076c0ff    90
-_jmp_addr_0x0076c100:    xor.s              eax, eax                                        // 0x0076c100    33c0
+?GotoWorshipSiteWithSupplies@Villager@@QAEIXZ:
+                         xor.s              eax, eax                                        // 0x0076c100    33c0
                          ret                                                                // 0x0076c102    c3
                          nop                                                                // 0x0076c103    90
                          nop                                                                // 0x0076c104    90
@@ -1151,6 +1175,7 @@ _jmp_addr_0x0076c100:    xor.s              eax, eax                            
                          nop                                                                // 0x0076c10d    90
                          nop                                                                // 0x0076c10e    90
                          nop                                                                // 0x0076c10f    90
+?MoveToWorshipSiteWithSupplies@Villager@@QAEIXZ:
                          mov                eax, 0x00000001                                 // 0x0076c110    b801000000
                          ret                                                                // 0x0076c115    c3
                          nop                                                                // 0x0076c116    90
@@ -1163,6 +1188,7 @@ _jmp_addr_0x0076c100:    xor.s              eax, eax                            
                          nop                                                                // 0x0076c11d    90
                          nop                                                                // 0x0076c11e    90
                          nop                                                                // 0x0076c11f    90
+?ExitMoveToWorshipSiteWithSupplies@Villager@@QAEIE@Z:
                          push               esi                                             // 0x0076c120    56
                          mov.s              esi, ecx                                        // 0x0076c121    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                     // 0x0076c123    8b4c2408
@@ -1192,6 +1218,7 @@ _jmp_addr_0x0076c163:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076c16d    90
                          nop                                                                // 0x0076c16e    90
                          nop                                                                // 0x0076c16f    90
+?ExitMoveToWorshipSite@Villager@@QAEIE@Z:
                          push               esi                                             // 0x0076c170    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                     // 0x0076c171    8b742408
                          push               edi                                             // 0x0076c175    57
@@ -1296,6 +1323,7 @@ _jmp_addr_0x0076c272:    pop                edi                                 
                          ret                0x0004                                          // 0x0076c27b    c20400
                          nop                                                                // 0x0076c27e    90
                          nop                                                                // 0x0076c27f    90
+?ExitGetFoodAtWorship@Villager@@QAEIE@Z:
                          push               esi                                             // 0x0076c280    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                     // 0x0076c281    8b742408
                          push               edi                                             // 0x0076c285    57
@@ -1333,6 +1361,7 @@ _jmp_addr_0x0076c2b8:    pop                edi                                 
                          nop                                                                // 0x0076c2cd    90
                          nop                                                                // 0x0076c2ce    90
                          nop                                                                // 0x0076c2cf    90
+?ArrivesAtWorshipSiteWithSupplies@Villager@@QAEIXZ:
                          push               ecx                                             // 0x0076c2d0    51
                          push               esi                                             // 0x0076c2d1    56
                          mov.s              esi, ecx                                        // 0x0076c2d2    8bf1
@@ -1411,9 +1440,10 @@ _jmp_addr_0x0076c388:    xor.s              eax, eax                            
                          nop                                                                // 0x0076c38d    90
                          nop                                                                // 0x0076c38e    90
                          nop                                                                // 0x0076c38f    90
+?RestartWorshippingAtWorshipSite@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076c390    56
                          mov.s              esi, ecx                                        // 0x0076c391    8bf1
-                         call               _jmp_addr_0x0076c4c0                            // 0x0076c393    e828010000
+                         call               ?StartWorshippingAtWorshipSite@Villager@@QAEIXZ // 0x0076c393    e828010000
                          cmp                eax, 0x01                                       // 0x0076c398    83f801
                          {disp8} je         _jmp_addr_0x0076c3ac                            // 0x0076c39b    740f
                          mov                eax, dword ptr [esi]                            // 0x0076c39d    8b06
@@ -1436,6 +1466,7 @@ _jmp_addr_0x0076c3ac:    mov                eax, 0x00000001                     
                          nop                                                                // 0x0076c3bd    90
                          nop                                                                // 0x0076c3be    90
                          nop                                                                // 0x0076c3bf    90
+?RestartWorshippingCreature@Villager@@QAEIXZ:
                          {disp32} mov       eax, dword ptr [ecx + 0x000000d8]               // 0x0076c3c0    8b81d8000000
                          test               eax, eax                                        // 0x0076c3c6    85c0
                          {disp8} je         _jmp_addr_0x0076c3e0                            // 0x0076c3c8    7416
@@ -1455,7 +1486,8 @@ _jmp_addr_0x0076c3e0:    call               ?GoHome@Villager@@QAE_NXZ           
                          nop                                                                // 0x0076c3ed    90
                          nop                                                                // 0x0076c3ee    90
                          nop                                                                // 0x0076c3ef    90
-_jmp_addr_0x0076c3f0:    push               esi                                             // 0x0076c3f0    56
+?AddVillagerToWorshipSite@Villager@@QAEIXZ:
+                         push               esi                                             // 0x0076c3f0    56
                          mov.s              esi, ecx                                        // 0x0076c3f1    8bf1
                          test               byte ptr [esi + 0x000000e0], 0x02               // 0x0076c3f3    f686e000000002
                          {disp8} jne        _jmp_addr_0x0076c419                            // 0x0076c3fa    751d
@@ -1536,7 +1568,8 @@ _jmp_addr_0x0076c4a3:    .byte              0x66, 0x81, 0xa6, 0xe0, 0x0, 0x0, 0x
                          nop                                                                // 0x0076c4bd    90
                          nop                                                                // 0x0076c4be    90
                          nop                                                                // 0x0076c4bf    90
-_jmp_addr_0x0076c4c0:    sub                esp, 0x0c                                       // 0x0076c4c0    83ec0c
+?StartWorshippingAtWorshipSite@Villager@@QAEIXZ:
+                         sub                esp, 0x0c                                       // 0x0076c4c0    83ec0c
                          push               esi                                             // 0x0076c4c3    56
                          mov.s              esi, ecx                                        // 0x0076c4c4    8bf1
                          mov                eax, dword ptr [esi]                            // 0x0076c4c6    8b06
@@ -1575,7 +1608,7 @@ _jmp_addr_0x0076c4c0:    sub                esp, 0x0c                           
                          test               eax, eax                                        // 0x0076c531    85c0
                          {disp8} je         _jmp_addr_0x0076c547                            // 0x0076c533    7412
                          mov.s              ecx, esi                                        // 0x0076c535    8bce
-                         call               _jmp_addr_0x0076c3f0                            // 0x0076c537    e8b4feffff
+                         call               ?AddVillagerToWorshipSite@Villager@@QAEIXZ      // 0x0076c537    e8b4feffff
                          pop                edi                                             // 0x0076c53c    5f
                          mov                eax, 0x00000001                                 // 0x0076c53d    b801000000
                          pop                esi                                             // 0x0076c542    5e
@@ -1587,7 +1620,8 @@ _jmp_addr_0x0076c547:    pop                edi                                 
                          add                esp, 0x0c                                       // 0x0076c54b    83c40c
                          ret                                                                // 0x0076c54e    c3
                          nop                                                                // 0x0076c54f    90
-_jmp_addr_0x0076c550:    sub                esp, 0x18                                       // 0x0076c550    83ec18
+?StartHidingAtWorshipSite@Villager@@QAEIXZ:
+                         sub                esp, 0x18                                       // 0x0076c550    83ec18
                          push               esi                                             // 0x0076c553    56
                          mov.s              esi, ecx                                        // 0x0076c554    8bf1
                          mov                eax, dword ptr [esi]                            // 0x0076c556    8b06
@@ -1627,7 +1661,7 @@ _jmp_addr_0x0076c577:    {disp8} lea        ecx, dword ptr [esp + 0x14]         
                          test               eax, eax                                        // 0x0076c5bc    85c0
                          {disp8} je         _jmp_addr_0x0076c5d2                            // 0x0076c5be    7412
                          mov.s              ecx, esi                                        // 0x0076c5c0    8bce
-                         call               _jmp_addr_0x0076c3f0                            // 0x0076c5c2    e829feffff
+                         call               ?AddVillagerToWorshipSite@Villager@@QAEIXZ      // 0x0076c5c2    e829feffff
                          pop                edi                                             // 0x0076c5c7    5f
                          mov                eax, 0x00000001                                 // 0x0076c5c8    b801000000
                          pop                esi                                             // 0x0076c5cd    5e
@@ -1644,6 +1678,7 @@ _jmp_addr_0x0076c5d2:    pop                edi                                 
                          nop                                                                // 0x0076c5dd    90
                          nop                                                                // 0x0076c5de    90
                          nop                                                                // 0x0076c5df    90
+?HidingAtWorshipSite@Villager@@QAEIXZ:
                          sub                esp, 0x18                                       // 0x0076c5e0    83ec18
                          push               esi                                             // 0x0076c5e3    56
                          mov.s              esi, ecx                                        // 0x0076c5e4    8bf1
@@ -1701,6 +1736,7 @@ _jmp_addr_0x0076c662:    mov                eax, dword ptr [esi]                
                          nop                                                                // 0x0076c67d    90
                          nop                                                                // 0x0076c67e    90
                          nop                                                                // 0x0076c67f    90
+?WorshippingAtWorshipSite@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076c680    56
                          mov.s              esi, ecx                                        // 0x0076c681    8bf1
                          xor.s              eax, eax                                        // 0x0076c683    33c0
@@ -1904,7 +1940,7 @@ _jmp_addr_0x0076c881:    pop                edi                                 
 ?ProcessInWorship@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076c890    56
                          mov.s              esi, ecx                                        // 0x0076c891    8bf1
-                         call               _jmp_addr_0x0076bec0                            // 0x0076c893    e828f6ffff
+                         call               ?CheckVillagerGoBackToTownFromWorship@Villager@@QAEIXZ                            // 0x0076c893    e828f6ffff
                          cmp                eax, 0x01                                       // 0x0076c898    83f801
                          {disp8} jne        _jmp_addr_0x0076c8a4                            // 0x0076c89b    7507
                          mov                eax, 0x00000023                                 // 0x0076c89d    b823000000
@@ -1932,6 +1968,7 @@ _jmp_addr_0x0076c8b7:    push               0x1                                 
                          nop                                                                // 0x0076c8cd    90
                          nop                                                                // 0x0076c8ce    90
                          nop                                                                // 0x0076c8cf    90
+?CheckRequestGoHome@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076c8d0    56
                          mov.s              esi, ecx                                        // 0x0076c8d1    8bf1
                          mov                eax, dword ptr [esi]                            // 0x0076c8d3    8b06
@@ -1980,7 +2017,8 @@ _jmp_addr_0x0076c920:    pop                edi                                 
                          nop                                                                // 0x0076c92d    90
                          nop                                                                // 0x0076c92e    90
                          nop                                                                // 0x0076c92f    90
-_jmp_addr_0x0076c930:    push               esi                                             // 0x0076c930    56
+?CheckNeededForWorshipSiteBuilding@Villager@@QAEIXZ:
+                         push               esi                                             // 0x0076c930    56
                          mov.s              esi, ecx                                        // 0x0076c931    8bf1
                          mov                eax, dword ptr [esi]                            // 0x0076c933    8b06
                          push               edi                                             // 0x0076c935    57
@@ -2173,6 +2211,7 @@ _jmp_addr_0x0076cad1:    mov                edx, dword ptr [esi]                
                          nop                                                                // 0x0076caed    90
                          nop                                                                // 0x0076caee    90
                          nop                                                                // 0x0076caef    90
+?GetFoodDesireAtWorshipSite@Villager@@QAEIXZ:
                          {disp32} fld       dword ptr [_rdata_float1p0]                     // 0x0076caf0    d90590a38a00
                          ret                                                                // 0x0076caf6    c3
                          nop                                                                // 0x0076caf7    90
@@ -2289,7 +2328,7 @@ _jmp_addr_0x0076cbc8:    push               0x1                                 
 ?AtAltarFinishedRest@Villager@@QAEIXZ:
                          push               esi                                             // 0x0076cbe0    56
                          mov.s              esi, ecx                                        // 0x0076cbe1    8bf1
-                         call               _jmp_addr_0x0076c4c0                            // 0x0076cbe3    e8d8f8ffff
+                         call               ?StartWorshippingAtWorshipSite@Villager@@QAEIXZ // 0x0076cbe3    e8d8f8ffff
                          cmp                eax, 0x01                                       // 0x0076cbe8    83f801
                          {disp8} jne        _jmp_addr_0x0076cbef                            // 0x0076cbeb    7502
                          pop                esi                                             // 0x0076cbed    5e
@@ -2305,7 +2344,7 @@ _jmp_addr_0x0076cbef:    mov                eax, dword ptr [esi]                
                          nop                                                                // 0x0076cbfe    90
                          nop                                                                // 0x0076cbff    90
 ?CheckSatisfySuppyWorship@Villager@@QAEIXZ:
-                         call               _jmp_addr_0x0076bfa0                            // 0x0076cc00    e89bf3ffff
+                         call               ?GotoStoragePitForWorshipSupplies@Villager@@QAEIXZ                            // 0x0076cc00    e89bf3ffff
                          dec                eax                                             // 0x0076cc05    48
                          neg                eax                                             // 0x0076cc06    f7d8
                          sbb.s              eax, eax                                        // 0x0076cc08    1bc0

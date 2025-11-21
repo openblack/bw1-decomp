@@ -50,6 +50,7 @@ struct GestureSystemPacketData;
 struct JustWholeMapXZ;
 struct LHOSFile;
 struct LHPoint;
+struct MagicTeleport;
 struct MapCoords;
 struct MissionaryControl;
 struct MultiMapFixed;
@@ -1384,10 +1385,52 @@ bool32_t __fastcall ExcessWood__8VillagerFv(struct Villager* this) asm("?ExcessW
 float __fastcall CheckNeededForWorship__8VillagerFv(struct Villager* this) asm("?CheckNeededForWorship@Villager@@QAEMXZ");
 // win1.41 0076bae0 mac 1059ec20 Villager::CheckWorshipActivity(int)
 float __fastcall CheckWorshipActivity__8VillagerFi(struct Villager* this, const void* edx, int param_1) asm("?CheckWorshipActivity@Villager@@QAEMH@Z");
+// win1.41 0076bc20 mac 1059eaf0 Villager::CanIGetToTheWorshipSite(MagicTeleport * &)
+bool32_t __fastcall CanIGetToTheWorshipSite__8VillagerFRP13MagicTeleport(struct Villager* this, const void* edx, struct MagicTeleport* * param_1) asm("?CanIGetToTheWorshipSite@Villager@@QAEIAAPAVMagicTeleport@@@Z");
+// win1.41 0076bcc0 mac 1059e8f0 Villager::GotoWorshipSiteForWorship(void)
+bool32_t __fastcall GotoWorshipSiteForWorship__8VillagerFv(struct Villager* this) asm("?GotoWorshipSiteForWorship@Villager@@QAEIXZ");
+// win1.41 0076bda0 mac 1059e810 Villager::SetGotoWorshipSpeed(void)
+bool32_t __fastcall SetGotoWorshipSpeed__8VillagerFv(struct Villager* this) asm("?SetGotoWorshipSpeed@Villager@@QAEIXZ");
+// win1.41 0076be00 mac 1059e6f0 Villager::ArrivesAtWorshipSiteForWorship(void)
+bool32_t __fastcall ArrivesAtWorshipSiteForWorship__8VillagerFv(struct Villager* this) asm("?ArrivesAtWorshipSiteForWorship@Villager@@QAEIXZ");
+// win1.41 0076bec0 mac 1059e520 Villager::CheckVillagerGoBackToTownFromWorship(void)
+bool32_t __fastcall CheckVillagerGoBackToTownFromWorship__8VillagerFv(struct Villager* this) asm("?CheckVillagerGoBackToTownFromWorship@Villager@@QAEIXZ");
+// win1.41 0076bf90 mac 1059e4b0 Villager::CheckNeededForSupplyWorship(void)
+bool32_t __fastcall CheckNeededForSupplyWorship__8VillagerFv(struct Villager* this) asm("?CheckNeededForSupplyWorship@Villager@@QAEIXZ");
+// win1.41 0076bfa0 mac 1059e310 Villager::GotoStoragePitForWorshipSupplies(void)
+bool32_t __fastcall GotoStoragePitForWorshipSupplies__8VillagerFv(struct Villager* this) asm("?GotoStoragePitForWorshipSupplies@Villager@@QAEIXZ");
+// win1.41 0076c080 mac 1059e1e0 Villager::ArrivesAtStoragePitForWorshipSupplies(void)
+bool32_t __fastcall ArrivesAtStoragePitForWorshipSupplies__8VillagerFv(struct Villager* this) asm("?ArrivesAtStoragePitForWorshipSupplies@Villager@@QAEIXZ");
+// win1.41 0076c100 mac 1059e190 Villager::GotoWorshipSiteWithSupplies(void)
+bool32_t __fastcall GotoWorshipSiteWithSupplies__8VillagerFv(struct Villager* this) asm("?GotoWorshipSiteWithSupplies@Villager@@QAEIXZ");
+// win1.41 0076c110 mac 1059e140 Villager::MoveToWorshipSiteWithSupplies(void)
+bool32_t __fastcall MoveToWorshipSiteWithSupplies__8VillagerFv(struct Villager* this) asm("?MoveToWorshipSiteWithSupplies@Villager@@QAEIXZ");
+// win1.41 0076c120 mac 1059e070 Villager::ExitMoveToWorshipSiteWithSupplies(unsigned char)
+bool32_t __fastcall ExitMoveToWorshipSiteWithSupplies__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitMoveToWorshipSiteWithSupplies@Villager@@QAEIE@Z");
+// win1.41 0076c170 mac 1059df70 Villager::ExitMoveToWorshipSite(unsigned char)
+bool32_t __fastcall ExitMoveToWorshipSite__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitMoveToWorshipSite@Villager@@QAEIE@Z");
 // win1.41 0076c1f0 mac 1059de40 Villager::ExitAtWorshipSite(unsigned char)
 bool32_t __fastcall ExitAtWorshipSite__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitAtWorshipSite@Villager@@QAE_NE@Z");
+// win1.41 0076c280 mac 1059dd90 Villager::ExitGetFoodAtWorship(unsigned char)
+bool32_t __fastcall ExitGetFoodAtWorship__8VillagerFUc(struct Villager* this, const void* edx, unsigned char param_1) asm("?ExitGetFoodAtWorship@Villager@@QAEIE@Z");
+// win1.41 0076c2d0 mac 1059dc80 Villager::ArrivesAtWorshipSiteWithSupplies(void)
+bool32_t __fastcall ArrivesAtWorshipSiteWithSupplies__8VillagerFv(struct Villager* this) asm("?ArrivesAtWorshipSiteWithSupplies@Villager@@QAEIXZ");
+// win1.41 0076c390 mac 1059daf0 Villager::RestartWorshippingAtWorshipSite(void)
+bool32_t __fastcall RestartWorshippingAtWorshipSite__8VillagerFv(struct Villager* this) asm("?RestartWorshippingAtWorshipSite@Villager@@QAEIXZ");
+// win1.41 0076c3c0 mac 1059da60 Villager::RestartWorshippingCreature(void)
+bool32_t __fastcall RestartWorshippingCreature__8VillagerFv(struct Villager* this) asm("?RestartWorshippingCreature@Villager@@QAEIXZ");
+// win1.41 0076c3f0 mac 1059d990 Villager::AddVillagerToWorshipSite(void)
+bool32_t __fastcall AddVillagerToWorshipSite__8VillagerFv(struct Villager* this) asm("?AddVillagerToWorshipSite@Villager@@QAEIXZ");
 // win1.41 0076c440 mac 1059d850 Villager::RemoveVillagerFromWorshipSite(void)
 bool32_t __fastcall RemoveVillagerFromWorshipSite__8VillagerFv(struct Villager* this) asm("?RemoveVillagerFromWorshipSite@Villager@@QAE_NXZ");
+// win1.41 0076c4c0 mac 1059d740 Villager::StartWorshippingAtWorshipSite(void)
+bool32_t __fastcall StartWorshippingAtWorshipSite__8VillagerFv(struct Villager* this) asm("?StartWorshippingAtWorshipSite@Villager@@QAEIXZ");
+// win1.41 0076c550 mac 1059d640 Villager::StartHidingAtWorshipSite(void)
+bool32_t __fastcall StartHidingAtWorshipSite__8VillagerFv(struct Villager* this) asm("?StartHidingAtWorshipSite@Villager@@QAEIXZ");
+// win1.41 0076c5e0 mac 1059d530 Villager::HidingAtWorshipSite(void)
+bool32_t __fastcall HidingAtWorshipSite__8VillagerFv(struct Villager* this) asm("?HidingAtWorshipSite@Villager@@QAEIXZ");
+// win1.41 0076c680 mac 1059d470 Villager::WorshippingAtWorshipSite(void)
+bool32_t __fastcall WorshippingAtWorshipSite__8VillagerFv(struct Villager* this) asm("?WorshippingAtWorshipSite@Villager@@QAEIXZ");
 // win1.41 0076c6e0 mac 1059d310 Villager::StartWorshippingCreature(Creature *)
 bool32_t __fastcall StartWorshippingCreature__8VillagerFP8Creature(struct Villager* this, const void* edx, struct Creature* param_1) asm("?StartWorshippingCreature@Villager@@QAE_NPAVCreature@@@Z");
 // win1.41 0076c7c0 mac 1059d280 Villager::WorshippingCreature(void)
@@ -1396,10 +1439,16 @@ bool32_t __fastcall WorshippingCreature__8VillagerFv(struct Villager* this) asm(
 bool32_t __fastcall ReduceVillagerLifeByChant__8VillagerFv(struct Villager* this) asm("?ReduceVillagerLifeByChant@Villager@@QAEIXZ");
 // win1.41 0076c890 mac 1059d090 Villager::ProcessInWorship(void)
 bool32_t __fastcall ProcessInWorship__8VillagerFv(struct Villager* this) asm("?ProcessInWorship@Villager@@QAEIXZ");
+// win1.41 0076c8d0 mac 1059cfa0 Villager::CheckRequestGoHome(void)
+bool32_t __fastcall CheckRequestGoHome__8VillagerFv(struct Villager* this) asm("?CheckRequestGoHome@Villager@@QAEIXZ");
+// win1.41 0076c930 mac 1059ce60 Villager::CheckNeededForWorshipSiteBuilding(void)
+bool32_t __fastcall CheckNeededForWorshipSiteBuilding__8VillagerFv(struct Villager* this) asm("?CheckNeededForWorshipSiteBuilding@Villager@@QAEIXZ");
 // win1.41 0076c9a0 mac 1059cd40 Villager::CheckAllowedToRestAtWorshipSite(int)
 bool32_t __fastcall CheckAllowedToRestAtWorshipSite__8VillagerFi(struct Villager* this, const void* edx, int param_1) asm("?CheckAllowedToRestAtWorshipSite@Villager@@QAEIH@Z");
 // win1.41 0076ca30 mac 1059cbd0 Villager::GetFoodAtWorshipSite(void)
 bool32_t __fastcall GetFoodAtWorshipSite__8VillagerFv(struct Villager* this) asm("?GetFoodAtWorshipSite@Villager@@QAEIXZ");
+// win1.41 0076caf0 mac 1059cb80 Villager::GetFoodDesireAtWorshipSite(void)
+bool32_t __fastcall GetFoodDesireAtWorshipSite__8VillagerFv(struct Villager* this) asm("?GetFoodDesireAtWorshipSite@Villager@@QAEIXZ");
 // win1.41 0076cb00 mac 1059caa0 Villager::GotoAltarForRest(void)
 bool32_t __fastcall GotoAltarForRest__8VillagerFv(struct Villager* this) asm("?GotoAltarForRest@Villager@@QAEIXZ");
 // win1.41 0076cb80 mac 1059ca10 Villager::ArrivesAtAltarForRest(void)
