@@ -31,11 +31,7 @@ class UnmangledDetails:
                 UnmangledDetails.Arg.Qualifier.REFERENCE: "&",
                 UnmangledDetails.Arg.Qualifier.CONST: "const",
             }
-            # Rearrange qualifiers: move each const before its preceding ptr/ref
-            qualifiers = list(self.qualifiers)
-            for i in range(len(qualifiers) - 1, 0, -1):
-                if qualifiers[i] == UnmangledDetails.Arg.Qualifier.CONST and qualifiers[i-1] in (UnmangledDetails.Arg.Qualifier.POINTER, UnmangledDetails.Arg.Qualifier.REFERENCE):
-                    qualifiers[i], qualifiers[i-1] = qualifiers[i-1], qualifiers[i]
+            qualifiers = self.qualifiers[::-1]
             return f"{self.typename}{' ' if qualifiers else ''}{' '.join(map(lambda x: qualifier_map[x], qualifiers))}"
 
     @dataclass
