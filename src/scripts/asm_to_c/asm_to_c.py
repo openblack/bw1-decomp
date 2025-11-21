@@ -5,6 +5,7 @@ import subprocess
 import sys
 
 from convert_function_body import convert_asm_to_c_body, get_required_attributes
+from glob import glob
 from pathlib import Path
 from parse_asm_functions import parse_functions_from_file
 from cleanup_imports_exports import clean_up_externs_and_globls
@@ -55,13 +56,12 @@ def process_text_mode(asm_path: Path, max_iterations: int):
             if not (global_start_line <= lineno <= global_end_line):
                 f.write(line)
 
-def process_vtable_mode():
-    VFTABLE_FILENAME = "src/asm/unprocessed/rdata.003.008a99d0-0099f250.asm"
+def process_vtable_mode(filepath: Path):
     REVERSING_DATABASE_FILENAME = "extracted_reversing_data_bw_141.json"
     with open(REVERSING_DATABASE_FILENAME, "r") as f:
         db = json.load(f)
     mangled_lookup = {i["mangled_name"]: i["undecorated_name"] for i in db['functions']}
-    with open(VFTABLE_FILENAME, "r") as f:
+    with open(filepath, "r") as f:
         all_lines = f.readlines()
     first_vt_line = next(i for i, l in enumerate(all_lines) if l.startswith("VftableAndRTTI"))
     last_vt_line = next(i for i, l in enumerate(all_lines[first_vt_line:], start=first_vt_line) if l == "\n")
@@ -94,7 +94,7 @@ const struct {type_name}Vftable __vt__{len(type_name)}{type_name} = {{
         for i in c_entries:
             f.write(f"  {i},\n")
         f.write("};\n")
-    with open(VFTABLE_FILENAME, "w") as f:
+    with open(filepath, "w") as f:
         f.writelines(all_lines[:first_vt_line])
         f.writelines(all_lines[last_vt_line+1:])
     print(f"Wrote the vftable for {type_name} in {path}")
@@ -109,6 +109,7 @@ def main():
     text_parser.add_argument('max_iterations', type=int, help='Maximum number of iterations')
 
     vtable_parser = subparsers.add_parser('vftable', help='Process Virtual Function Tables')
+    vtable_parser.add_argument('asm_path', type=Path, help='Path to assembly file')
 
     args = parser.parse_args()
 
@@ -116,7 +117,7 @@ def main():
         process_text_mode(args.asm_path, args.max_iterations)
         clean_up_externs_and_globls(args.asm_path)
     elif args.mode == 'vftable':
-        process_vtable_mode()
+        process_vtable_mode(args.asm_path)
     else:
         parser.print_help()
         sys.exit(1)

@@ -1,8 +1,9 @@
 import subprocess
 from typing import Optional
 from pathlib import Path
+from glob import glob
 
-RTTI_DATA_FILE = Path("src/asm/unprocessed/rdata.003.008a99d0-0099f250.asm")
+VFTABLE_FILEPATHS = list(map(Path, glob("src/asm/unprocessed/rdata.*-vftables.asm")))
 
 def sed(pattern, replacement, path: Path):
     sep="/"
@@ -39,10 +40,11 @@ def git_sed(pattern: str, replacement: str, path: Optional[Path]=None):
         sed(pattern, replacement, f)
 
 def replace_function_name_in_repo_asm_rtti(source: str, destination: str):
-    sed(", " + source + ", ", "\\n.long " + destination + "\\n.long ", RTTI_DATA_FILE)
-    sed(", " + source, "\\n.long " + destination, RTTI_DATA_FILE)
-    sed(source + ", ", destination + "\\n.long ", RTTI_DATA_FILE)
-    git_sed(source, destination, RTTI_DATA_FILE)
+    for vftable_filepath in VFTABLE_FILEPATHS:
+        sed(", " + source + ", ", "\\n.long " + destination + "\\n.long ", vftable_filepath)
+        sed(", " + source, "\\n.long " + destination, vftable_filepath)
+        sed(source + ", ", destination + "\\n.long ", vftable_filepath)
+        git_sed(source, destination, vftable_filepath)
 
 def replace_function_name_in_repo_files(source: str, destination: str):
     replace_function_name_in_repo_asm_rtti(source, destination)

@@ -10,6 +10,7 @@ from clang.cindex import Index, CursorKind, Diagnostic, Config
 import sys
 import tempfile
 import rapidfuzz
+from glob import glob
 
 
 class ClangMSVCMangler:
@@ -249,46 +250,48 @@ def find_base_declaration(tree, vftables, func_addr, type_name):
 def build_vftable_addrs(vtable_function_count_map):
     literal_func_addrs = dict()
     class_vftables = dict()
-    with open("src/asm/unprocessed/rdata.003.008a99d0-0099f250.asm") as f:
-        lines = enumerate(f.readlines())
-        # Ignore all blank lines
-        lines = [(i, l) for i, l in lines if l.strip()]
-        for i in range(len(lines)):
-            l = lines[i][1]
-            if not l.startswith("VftableAndRTTI"):
-                continue
-            name = l.split()[1]
-            mangled_name = name
-            if "@std@" in mangled_name or mangled_name.endswith("@std"):
-                continue
-            class_vftable = list()
-            if name.startswith("?$"):
-                pre, post = name.split("@", 1)
-                template_args = list()
-                if post.endswith("@@"):
-                    if post.startswith("V"):
-                        template_args.append("class " + post[1:-2])
+    VFTABLE_FILEPATHS = list(map(Path, glob("src/asm/unprocessed/rdata.*-vftables.asm")))
+    for vftable_filepath in VFTABLE_FILEPATHS:
+        with vftable_filepath.open() as f:
+            lines = enumerate(f.readlines())
+            # Ignore all blank lines
+            lines = [(i, l) for i, l in lines if l.strip()]
+            for i in range(len(lines)):
+                l = lines[i][1]
+                if not l.startswith("VftableAndRTTI"):
+                    continue
+                name = l.split()[1]
+                mangled_name = name
+                if "@std@" in mangled_name or mangled_name.endswith("@std"):
+                    continue
+                class_vftable = list()
+                if name.startswith("?$"):
+                    pre, post = name.split("@", 1)
+                    template_args = list()
+                    if post.endswith("@@"):
+                        if post.startswith("V"):
+                            template_args.append("class " + post[1:-2])
+                        else:
+                            assert(False)
                     else:
-                        assert(False)
-                else:
-                    template_args_mangled = list(post)
-                    for a in template_args_mangled:
-                        template_args.append({"M": "float", "K": "unsigned long"}[a])
-                name = f"{pre.removeprefix("?$")}<{', '.join(template_args)}>"
-            elif "@" in name:
-                parts = name.split("@")
-                name = "::".join(parts[::-1])
-            # TODO: when building this map it should default to the parent's count
-            num_functions = vtable_function_count_map[name]
-            entry_lines = lines[i+1:i+1+num_functions]
-            num_commas = sum(map(lambda x: x[1].count(","), entry_lines))
-            entry_lines = lines[i+1:i+1+num_functions-num_commas]
-            for e in get_all_entries_in_lines(entry_lines):
-                e = e.split("//")[0].rstrip()
-                if e.startswith("0x"):
-                    literal_func_addrs[e] = name
-                class_vftable.append(e)
-            class_vftables[mangled_name] = class_vftable
+                        template_args_mangled = list(post)
+                        for a in template_args_mangled:
+                            template_args.append({"M": "float", "K": "unsigned long"}[a])
+                    name = f"{pre.removeprefix("?$")}<{', '.join(template_args)}>"
+                elif "@" in name:
+                    parts = name.split("@")
+                    name = "::".join(parts[::-1])
+                # TODO: when building this map it should default to the parent's count
+                num_functions = vtable_function_count_map[name]
+                entry_lines = lines[i+1:i+1+num_functions]
+                num_commas = sum(map(lambda x: x[1].count(","), entry_lines))
+                entry_lines = lines[i+1:i+1+num_functions-num_commas]
+                for e in get_all_entries_in_lines(entry_lines):
+                    e = e.split("//")[0].rstrip()
+                    if e.startswith("0x"):
+                        literal_func_addrs[e] = name
+                    class_vftable.append(e)
+                class_vftables[mangled_name] = class_vftable
     return class_vftables, literal_func_addrs
 
 
