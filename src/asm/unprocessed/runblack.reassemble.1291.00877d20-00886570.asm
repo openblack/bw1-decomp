@@ -8599,7 +8599,7 @@ _jmp_addr_0x0087df19:    fld                st(1)                               
                          {disp8} mov        dword ptr [esp + 0x48], eax                          // 0x0087df26    89442448
                          {disp8} fild       dword ptr [esp + 0x48]                               // 0x0087df2a    db442448
                          {disp8} fadd       dword ptr [esi + 0x04]                               // 0x0087df2e    d84604
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x9f0]                      // 0x0087df31    d80df0998a00
+                         {disp32} fmul      dword ptr [_abode_info_float_0x008a99f0]             // 0x0087df31    d80df0998a00
                          fld                st(2)                                                // 0x0087df37    d9c2
                          fsin                                                                    // 0x0087df39    d9fe
                          fld                st(2)                                                // 0x0087df3b    d9c2
@@ -8640,7 +8640,7 @@ _jmp_addr_0x0087df9b:    fld                st(1)                               
                          {disp8} mov        dword ptr [esp + 0x14], eax                          // 0x0087dfa8    89442414
                          {disp8} fild       dword ptr [esp + 0x14]                               // 0x0087dfac    db442414
                          {disp8} fadd       dword ptr [esi + 0x04]                               // 0x0087dfb0    d84604
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x9f0]                      // 0x0087dfb3    d80df0998a00
+                         {disp32} fmul      dword ptr [_abode_info_float_0x008a99f0]             // 0x0087dfb3    d80df0998a00
                          fld                st(2)                                                // 0x0087dfb9    d9c2
                          fsin                                                                    // 0x0087dfbb    d9fe
                          fld                st(2)                                                // 0x0087dfbd    d9c2

@@ -1876,6 +1876,10 @@ extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17Mission
 extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17MissionaryControl asm("??_R2MissionaryControl@@8");
 // win1.41 009b9db0 mac inlined MissionaryControl::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17MissionaryControl asm("??_R3MissionaryControl@@8");
+// win1.41 009b9dc0 mac 109e718c MissionaryControl::`RTTI Complete Object Locator'
+extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17MissionaryControl asm("??_R4MissionaryControl@@6B@");
+// win1.41 0099a424 mac 109e71b0 MissionaryControl::`vftable'
+extern const struct GameThingWithPosVftable __vt__17MissionaryControl asm("??_7MissionaryControl@@6B@");
 
 // Constructors
 

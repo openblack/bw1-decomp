@@ -5166,7 +5166,7 @@ _jmp_addr_0x005fe32e:    push               ecx                                 
                          lea                ecx, dword ptr [eax + edx * 0x4]              // 0x005fe348    8d0c90
                          lea                edx, dword ptr [eax + ecx * 0x8]              // 0x005fe34b    8d14c8
                          push               0x00000276                                    // 0x005fe34e    6876020000
-                         {disp32} lea       edi, dword ptr [edx * 0x4 + _GVillagerInfo_ARRAY_00da6be8]       // 0x005fe353    8d3c95e86bda00
+                         {disp32} lea       edi, dword ptr [edx * 0x4 + _VillagerInfos               ]       // 0x005fe353    8d3c95e86bda00
                          push               0x00bf403c                                    // 0x005fe35a    683c40bf00
                          {disp8} je         _jmp_addr_0x005fe36e                          // 0x005fe35f    740d
                          push               0x9                                           // 0x005fe361    6a09

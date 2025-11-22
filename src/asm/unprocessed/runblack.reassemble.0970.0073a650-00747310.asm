@@ -1424,7 +1424,7 @@ _jmp_addr_0x0073aff4:    add                eax, 0x04                           
                          sub.s              eax, ecx                                             // 0x0073b02c    2bc1
                          lea                edx, dword ptr [ecx + eax * 0x4]                     // 0x0073b02e    8d1481
                          lea                eax, dword ptr [ecx + edx * 0x8]                     // 0x0073b031    8d04d1
-                         {disp32} lea       eax, dword ptr [eax * 0x4 + _GVillagerInfo_ARRAY_00da6be8]              // 0x0073b034    8d0485e86bda00
+                         {disp32} lea       eax, dword ptr [eax * 0x4 + _VillagerInfos               ]              // 0x0073b034    8d0485e86bda00
                          ret                0x0004                                               // 0x0073b03b    c20400
                          nop                                                                     // 0x0073b03e    90
                          nop                                                                     // 0x0073b03f    90

@@ -1597,10 +1597,12 @@ enum     VILLAGER_INFO
     VILLAGER_INFO_SCULPTOR                          =  81 ,
     VILLAGER_INFO_CRUSADER                          =  82 ,
     VILLAGER_INFO_SAILOR_ACCORDIAN                  =  83 ,
+    VILLAGER_INFO_LAST                              =  84 ,
+
+    // Creature Isle???
     VILLAGER_INFO_MULE_HEAD                         =  84 ,
     VILLAGER_INFO_EGYPTIAN_BIG_EYES                 =  85 ,
     VILLAGER_INFO_GIANT                             =  86 ,
-    VILLAGER_INFO_LAST                              =  87 ,
 };
 
 //*****************************************************************************

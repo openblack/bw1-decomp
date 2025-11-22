@@ -4563,7 +4563,7 @@ _jmp_addr_0x00442a85:    {disp8} fadd       dword ptr [edx + 0x08]              
 _jmp_addr_0x00442b00:    sub                esp, 0x20                                     // 0x00442b00    83ec20
                          {disp32} fld       dword ptr [rdata_bytes + 0x1e0fc]             // 0x00442b03    d905fc708c00
                          {disp8} mov        ecx, dword ptr [esp + 0x24]                   // 0x00442b09    8b4c2424
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x9f0]               // 0x00442b0d    d80df0998a00
+                         {disp32} fmul      dword ptr [_abode_info_float_0x008a99f0]      // 0x00442b0d    d80df0998a00
                          {disp32} fmul      dword ptr [_rdata_float0p5]                   // 0x00442b13    d80db4a38a00
                          fld                dword ptr [ecx]                               // 0x00442b19    d901
                          fsub               st, st(1)                                     // 0x00442b1b    d8e1

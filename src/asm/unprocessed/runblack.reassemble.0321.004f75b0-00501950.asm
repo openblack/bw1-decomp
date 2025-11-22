@@ -8603,7 +8603,7 @@ _globl_ct_0x004ff960:    {disp32} jmp       _jmp_addr_0x004ff970                
                          nop                                                              // 0x004ff96e    90
                          nop                                                              // 0x004ff96f    90
 _jmp_addr_0x004ff970:    {disp32} fld       dword ptr [rdata_bytes + 0x2865c]             // 0x004ff970    d9055c168d00
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x9f0]               // 0x004ff976    d80df0998a00
+                         {disp32} fmul      dword ptr [_abode_info_float_0x008a99f0]      // 0x004ff976    d80df0998a00
                          {disp32} fstp      dword ptr [data_bytes + 0x2e7b1c]             // 0x004ff97c    d91d1cdbca00
                          ret                                                              // 0x004ff982    c3
                          nop                                                              // 0x004ff983    90

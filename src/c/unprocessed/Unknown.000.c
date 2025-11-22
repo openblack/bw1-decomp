@@ -12,14 +12,9 @@ void __cdecl globl_ct_0x00401040(void)
 __attribute__((noinline))
 void __cdecl jmp_addr_0x00401050(void)
 {
-    __asm__(
-        ".extern _abode_info_float_0x008a99e0\n"
-        ".extern _abode_info_float_0x008a99e4\n"
-        ".extern _abode_info_float_0x00c3c68c\n"
-        "{disp32} fld      dword ptr [_abode_info_float_0x008a99e4]\n"      // 0x00401050    d905e4998a00
-        "{disp32} fmul     dword ptr [_abode_info_float_0x008a99e0]\n"      // 0x00401056    d80de0998a00
-        "{disp32} fstp     dword ptr [_abode_info_float_0x00c3c68c]\n"      // 0x0040105c    d91d8cc6c300
-    );
+    __asm__("{disp32} fld  dword ptr [_abode_info_seconds_in_day_0x008a99e4]");  // 0x00401050    d905e4998a00
+    __asm__("{disp32} fmul dword ptr [_abode_info_num_days_in_year_0x008a99e0]");// 0x00401056    d80de0998a00
+    __asm__("{disp32} fstp dword ptr [_abode_info_seconds_in_year_0x00c3c68c]"); // 0x0040105c    d91d8cc6c300
 }
 
 void __cdecl globl_ct_0x00401070(void)
@@ -30,14 +25,9 @@ void __cdecl globl_ct_0x00401070(void)
 __attribute__((noinline))
 void __cdecl jmp_addr_0x00401080(void)
 {
-    __asm__(
-        ".extern _abode_info_float_0x008a99e8\n"
-        ".extern _abode_info_float_0x008a99f0\n"
-        ".extern _abode_info_float_0x00c3c688\n"
-        "{disp32} fld      dword ptr [_abode_info_float_0x008a99e8]\n"      // 0x00401050    d905e4998a00
-        "{disp32} fmul     dword ptr [_abode_info_float_0x008a99f0]\n"      // 0x00401056    d80de0998a00
-        "{disp32} fstp     dword ptr [_abode_info_float_0x00c3c688]\n"      // 0x0040105c    d91d8cc6c300
-    );
+    __asm__("{disp32} fld      dword ptr [_abode_info_float_0x008a99e8]");  // 0x00401050    d905e4998a00
+    __asm__("{disp32} fmul     dword ptr [_abode_info_float_0x008a99f0]");  // 0x00401056    d80de0998a00
+    __asm__("{disp32} fstp     dword ptr [_abode_info_float_0x00c3c688]");  // 0x0040105c    d91d8cc6c300
 }
 
 void __cdecl jmp_addr_0x004010a0(void)

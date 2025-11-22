@@ -1640,7 +1640,7 @@ _globl_ct_0x00647510:    {disp32} jmp       _jmp_addr_0x00647520                
                          nop                                                               // 0x0064751e    90
                          nop                                                               // 0x0064751f    90
 _jmp_addr_0x00647520:    {disp32} fld       dword ptr [rdata_bytes + 0x89bc0]              // 0x00647520    d905c02b9300
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x9f0]                // 0x00647526    d80df0998a00
+                         {disp32} fmul      dword ptr [_abode_info_float_0x008a99f0]       // 0x00647526    d80df0998a00
                          {disp32} fstp      dword ptr [data_bytes + 0x381830]              // 0x0064752c    d91d3078d400
                          ret                                                               // 0x00647532    c3
                          nop                                                               // 0x00647533    90
@@ -3189,7 +3189,7 @@ _globl_ct_0x00648720:    {disp32} jmp       _jmp_addr_0x00648730                
                          nop                                                               // 0x0064872e    90
                          nop                                                               // 0x0064872f    90
 _jmp_addr_0x00648730:    {disp32} fld       dword ptr [rdata_bytes + 0x89bc4]              // 0x00648730    d905c42b9300
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x9f0]                // 0x00648736    d80df0998a00
+                         {disp32} fmul      dword ptr [_abode_info_float_0x008a99f0]       // 0x00648736    d80df0998a00
                          {disp32} fstp      dword ptr [data_bytes + 0x38197c]              // 0x0064873c    d91d7c79d400
                          ret                                                               // 0x00648742    c3
                          nop                                                               // 0x00648743    90

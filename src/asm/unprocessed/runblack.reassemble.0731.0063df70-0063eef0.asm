@@ -1449,7 +1449,7 @@ _globl_ct_0x0063ec00:    {disp32} jmp      _jmp_addr_0x0063ec10                 
                          nop                                                             // 0x0063ec0e    90
                          nop                                                             // 0x0063ec0f    90
 _jmp_addr_0x0063ec10:    {disp32} fld      dword ptr [rdata_bytes + 0x88c20]             // 0x0063ec10    d905201c9300
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x9f0]               // 0x0063ec16    d80df0998a00
+                         {disp32} fmul     dword ptr [_abode_info_float_0x008a99f0]      // 0x0063ec16    d80df0998a00
                          {disp32} fstp     dword ptr [data_bytes + 0x380a50]             // 0x0063ec1c    d91d506ad400
                          ret                                                             // 0x0063ec22    c3
                          nop                                                             // 0x0063ec23    90

@@ -27097,7 +27097,7 @@ _jmp_addr_0x006f121a:    {disp8} lea        eax, dword ptr [ebx + -0x01]        
                          lea                eax, dword ptr [esi + edx * 0x4]              // 0x006f12ad    8d0496
                          lea                ecx, dword ptr [esi + eax * 0x8]              // 0x006f12b0    8d0cc6
                          {disp32} mov       edx, dword ptr [ecx * 0x4 + 0x00da6d20]       // 0x006f12b3    8b148d206dda00
-                         {disp32} lea       esi, dword ptr [ecx * 0x4 + _GVillagerInfo_ARRAY_00da6be8]       // 0x006f12ba    8d348de86bda00
+                         {disp32} lea       esi, dword ptr [ecx * 0x4 + _VillagerInfos               ]       // 0x006f12ba    8d348de86bda00
                          push               ebp                                           // 0x006f12c1    55
                          inc                edx                                           // 0x006f12c2    42
                          push               edx                                           // 0x006f12c3    52
@@ -27124,7 +27124,7 @@ _jmp_addr_0x006f121a:    {disp8} lea        eax, dword ptr [ebx + -0x01]        
                          push               ebp                                           // 0x006f1302    55
                          lea                eax, dword ptr [esi + edx * 0x8]              // 0x006f1303    8d04d6
                          push               0xa                                           // 0x006f1306    6a0a
-                         {disp32} lea       ecx, dword ptr [eax * 0x4 + _GVillagerInfo_ARRAY_00da6be8]       // 0x006f1308    8d0c85e86bda00
+                         {disp32} lea       ecx, dword ptr [eax * 0x4 + _VillagerInfos               ]       // 0x006f1308    8d0c85e86bda00
                          push               ecx                                           // 0x006f130f    51
                          {disp8} lea        edx, dword ptr [esp + 0x28]                   // 0x006f1310    8d542428
                          push               edx                                           // 0x006f1314    52

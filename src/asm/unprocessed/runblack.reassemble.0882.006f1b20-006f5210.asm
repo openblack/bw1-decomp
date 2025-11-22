@@ -1872,7 +1872,7 @@ _jmp_addr_0x006f2f34:    {disp32} mov       ecx, dword ptr [_script_dll]        
                          lea                edx, dword ptr [eax + ecx * 0x8]                     // 0x006f2fd4    8d14c8
                          {disp32} mov       ecx, dword ptr [edx * 0x4 + 0x00da6d20]              // 0x006f2fd7    8b0c95206dda00
                          add                esp, 0x0c                                            // 0x006f2fde    83c40c
-                         {disp32} lea       eax, dword ptr [edx * 0x4 + _GVillagerInfo_ARRAY_00da6be8]              // 0x006f2fe1    8d0495e86bda00
+                         {disp32} lea       eax, dword ptr [edx * 0x4 + _VillagerInfos               ]              // 0x006f2fe1    8d0495e86bda00
                          push               0x0                                                  // 0x006f2fe8    6a00
                          push               ecx                                                  // 0x006f2fea    51
                          push               eax                                                  // 0x006f2feb    50

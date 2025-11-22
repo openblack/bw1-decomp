@@ -6,13 +6,13 @@
 __attribute__((section(".data$Z"))) int abode_info_bool_00c3c680 = 0;
 __attribute__((section(".bss"))) float abode_info_float_0x00c3c684;
 __attribute__((section(".bss"))) float abode_info_float_0x00c3c688;
-__attribute__((section(".bss"))) float abode_info_float_0x00c3c68c;
+__attribute__((section(".bss"))) float abode_info_seconds_in_year_0x00c3c68c;
 __attribute__((section(".bss"))) struct GAbodeInfo AbodeInfos[0x93]; // 0x00c3c690-00c4cc68
 __attribute__((section(".bss"))) int abode_info_DAT_00c4cc68; // not actually data, it seems
 
 const float abode_info_float_0x008a99dc = 10.0f;
-const float abode_info_float_0x008a99e0 = 365.25f;
-const float abode_info_float_0x008a99e4 = 86400.0f;
+const float abode_info_num_days_in_year_0x008a99e0 = 365.25f;
+const float abode_info_seconds_in_day_0x008a99e4 = 86400.0f;
 const float abode_info_float_0x008a99e8 = 10.0f;
 const float abode_info_float_0x008a99ec = 1000.0f;
 const float abode_info_float_0x008a99f0 = 512.0f;

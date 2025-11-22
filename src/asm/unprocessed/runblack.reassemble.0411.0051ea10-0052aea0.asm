@@ -874,7 +874,7 @@ _globl_ct_0x0051ee90:    {disp32} jmp       _jmp_addr_0x0051eea0                
                          nop                                                                     // 0x0051ee9e    90
                          nop                                                                     // 0x0051ee9f    90
 _jmp_addr_0x0051eea0:    {disp32} fld       dword ptr [rdata_bytes + 0x2f790]                    // 0x0051eea0    d90590878d00
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x9f0]                      // 0x0051eea6    d80df0998a00
+                         {disp32} fmul      dword ptr [_abode_info_float_0x008a99f0]             // 0x0051eea6    d80df0998a00
                          {disp32} fstp      dword ptr [data_bytes + 0x300350]                    // 0x0051eeac    d91d5063cc00
                          ret                                                                     // 0x0051eeb2    c3
                          nop                                                                     // 0x0051eeb3    90
@@ -1403,7 +1403,7 @@ _jmp_addr_0x0051f491:    mov.s              eax, edi                            
                          {disp8} jne        _jmp_addr_0x0051f491                                 // 0x0051f4a6    75e9
 _jmp_addr_0x0051f4a8:    push               0x0                                                  // 0x0051f4a8    6a00
                          push               0x15                                                 // 0x0051f4aa    6a15
-                         push               0x00da6be8 /* _GVillagerInfo_ARRAY_00da6be8 */     // 0x0051f4ac    68e86bda00
+                         push               0x00da6be8 /* _VillagerInfos                */     // 0x0051f4ac    68e86bda00
                          add                ebp, 0x10                                            // 0x0051f4b1    83c510
                          push               ebp                                                  // 0x0051f4b4    55
                          call               ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@KH@Z  // 0x0051f4b5    e826072300

@@ -13552,7 +13552,7 @@ _jmp_addr_0x008026b0:    {disp8} fld        dword ptr [esp + 0x30]              
                          test               ah, 0x01                                       // 0x008026ba    f6c401
                          {disp8} je         _jmp_addr_0x008026d5                           // 0x008026bd    7416
                          fstp               st(0)                                          // 0x008026bf    ddd8
-                         {disp32} fld       dword ptr [rdata_bytes + 0x9f0]                // 0x008026c1    d905f0998a00
+                         {disp32} fld       dword ptr [_abode_info_float_0x008a99f0]       // 0x008026c1    d905f0998a00
                          {disp8} fsub       dword ptr [esp + 0x30]                         // 0x008026c7    d8642430
                          {disp8} fld        dword ptr [esp + 0x3c]                         // 0x008026cb    d944243c
                          {disp8} fsub       dword ptr [esp + 0x30]                         // 0x008026cf    d8642430
@@ -13570,7 +13570,7 @@ _jmp_addr_0x008026f2:    {disp8} fcomp      dword ptr [esp + 0x40]              
                          fnstsw             ax                                             // 0x008026f6    dfe0
                          test               ah, 0x01                                       // 0x008026f8    f6c401
                          {disp8} je         _jmp_addr_0x00802715                           // 0x008026fb    7418
-                         {disp32} fld       dword ptr [rdata_bytes + 0x9f0]                // 0x008026fd    d905f0998a00
+                         {disp32} fld       dword ptr [_abode_info_float_0x008a99f0]       // 0x008026fd    d905f0998a00
                          {disp8} fsub       dword ptr [esp + 0x34]                         // 0x00802703    d8642434
                          {disp8} fld        dword ptr [esp + 0x40]                         // 0x00802707    d9442440
                          {disp8} fsub       dword ptr [esp + 0x34]                         // 0x0080270b    d8642434

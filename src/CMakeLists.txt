@@ -400,6 +400,8 @@ set(SOURCES_001
     c/VillagerTrader.c
     c/VillagerWorshipper.c
 
+    asm/unprocessed/rdata.189-vftables.asm
+    asm/unprocessed/rdata.190-vftables.asm
     asm/unprocessed/bss.190.asm
     asm/unprocessed/data.190.asm
     asm/unprocessed/rdata.190-vftables.asm

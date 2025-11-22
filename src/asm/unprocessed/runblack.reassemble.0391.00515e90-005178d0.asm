@@ -1502,7 +1502,7 @@ _jmp_addr_0x00516ec6:    {disp8} fild       dword ptr [esp + 0x5c]              
                          fnstsw             ax                                            // 0x00516f38    dfe0
                          test               ah, 0x01                                      // 0x00516f3a    f6c401
                          {disp8} je         _jmp_addr_0x00516f65                          // 0x00516f3d    7426
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x9f0]               // 0x00516f3f    d80df0998a00
+                         {disp32} fmul      dword ptr [_abode_info_float_0x008a99f0]      // 0x00516f3f    d80df0998a00
                          call               _jmp_addr_0x007a1400                          // 0x00516f45    e8b6a42800
                          mov.s              ecx, eax                                      // 0x00516f4a    8bc8
                          shl                ecx, 8                                        // 0x00516f4c    c1e108

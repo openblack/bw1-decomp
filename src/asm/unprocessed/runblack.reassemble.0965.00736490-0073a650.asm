@@ -5514,7 +5514,7 @@ _jmp_addr_0x00739d50:    {disp32} mov       ecx, dword ptr [ecx + 0x000005b8]   
                          {disp8} mov        dword ptr [esp + 0x34], ecx                    // 0x00739d5e    894c2434
                          {disp8} lea        esi, dword ptr [esp + 0x48]                    // 0x00739d62    8d742448
                          mov                edi, 0x00000054                                // 0x00739d66    bf54000000
-_jmp_addr_0x00739d6b:    mov                edx, OFFSET _GVillagerInfo_ARRAY_00da6be8      // 0x00739d6b    bae86bda00
+_jmp_addr_0x00739d6b:    mov                edx, OFFSET _VillagerInfos                     // 0x00739d6b    bae86bda00
                          mov                ecx, 0x00da6e04                                // 0x00739d70    b9046eda00
 _jmp_addr_0x00739d75:    {disp8} mov        eax, dword ptr [esp + 0x34]                    // 0x00739d75    8b442434
                          cmp                dword ptr [ecx + -0x28], eax                   // 0x00739d79    3941d8

@@ -943,7 +943,7 @@ bool32_t __fastcall Landed__8VillagerFv(struct Villager* this)
     asm("mov.s              ecx, esi");                                      // 0x00760822    8bce
     asm("call               ?ChangeTribeIfRequired@Villager@@QAEIW4TRIBE_TYPE@@H@Z");                          // 0x00760824    e897100000
     asm("_jmp_addr_0x00760829:");
-    asm("{disp32} mov       eax, dword ptr [edi + _DiscipleInfo_ARRAY_0099a1f8]");             // 0x00760829    8b87f8a19900
+    asm("{disp32} mov       eax, dword ptr [edi + _DiscipleInfos]");         // 0x00760829    8b87f8a19900
     asm("test               eax, eax");                                      // 0x0076082f    85c0
     asm("{disp8} jne        _jmp_addr_0x00760841");                          // 0x00760831    750e
     asm("{disp8} mov        edx, dword ptr [esp + 0x10]");                   // 0x00760833    8b542410
@@ -954,7 +954,7 @@ bool32_t __fastcall Landed__8VillagerFv(struct Villager* this)
     asm("_jmp_addr_0x00760841:");
     asm("mov                eax, dword ptr [esi]");                          // 0x00760841    8b06
     asm("xor.s              ecx, ecx");                                      // 0x00760843    33c9
-    asm("{disp32} mov       cl, byte ptr [edi + _DiscipleInfo_ARRAY_0099a1f8]");               // 0x00760845    8a8ff8a19900
+    asm("{disp32} mov       cl, byte ptr [edi + _DiscipleInfos]");           // 0x00760845    8a8ff8a19900
     asm("push               ecx");                                           // 0x0076084b    51
     asm("mov.s              ecx, esi");                                      // 0x0076084c    8bce
     asm("call               dword ptr [eax + 0x8e8]");                       // 0x0076084e    ff90e8080000

@@ -3023,7 +3023,7 @@ _jmp_addr_0x006f6d00:    push               esi                                 
                          {disp32} mov       cl, byte ptr [eax + 0x006f6f78]               // 0x006f6d1d    8a88786f6f00
                          jmp                dword ptr [ecx*4 + 0x6f6f28]                  // 0x006f6d23    ff248d286f6f00
                          {disp8} mov        esi, dword ptr [esi + 0x28]                   // 0x006f6d2a    8b7628
-                         sub                esi, OFFSET _GVillagerInfo_ARRAY_00da6be8     // 0x006f6d2d    81eee86bda00
+                         sub                esi, OFFSET _VillagerInfos                    // 0x006f6d2d    81eee86bda00
                          mov                eax, 0x8ca29c05                               // 0x006f6d33    b8059ca28c
                          imul               esi                                           // 0x006f6d38    f7ee
                          mov.s              eax, edx                                      // 0x006f6d3a    8bc2

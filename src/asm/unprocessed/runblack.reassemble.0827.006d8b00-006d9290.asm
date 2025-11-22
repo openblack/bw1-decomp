@@ -339,7 +339,7 @@ _jmp_addr_0x006d8e86:    {disp8} mov       edx, dword ptr [esp + 0x10]          
                          {disp32} mov      dword ptr [esi + 0x000003e8], eax             // 0x006d8eb0    8986e8030000
                          {disp8} jmp       _jmp_addr_0x006d8ee8                          // 0x006d8eb6    eb30
                          {disp32} mov      eax, dword ptr [esi + 0x000003e4]             // 0x006d8eb8    8b86e4030000
-                         {disp32} fadd     dword ptr [rdata_bytes + 0x9f0]               // 0x006d8ebe    d805f0998a00
+                         {disp32} fadd     dword ptr [_abode_info_float_0x008a99f0]      // 0x006d8ebe    d805f0998a00
                          inc               eax                                           // 0x006d8ec4    40
                          {disp32} mov      dword ptr [esi + 0x000003e4], eax             // 0x006d8ec5    8986e4030000
                          {disp8} jmp       _jmp_addr_0x006d8ee8                          // 0x006d8ecb    eb1b
@@ -456,7 +456,7 @@ _jmp_addr_0x006d9031:    cmp               edi, 0x1b                            
                          {disp8} jmp       _jmp_addr_0x006d90c7                          // 0x006d9057    eb6e
                          fstp              st(0)                                         // 0x006d9059    ddd8
                          {disp32} fld      dword ptr [data_bytes + 0x388ee0]             // 0x006d905b    d905e0eed400
-                         {disp32} fadd     dword ptr [rdata_bytes + 0x9f0]               // 0x006d9061    d805f0998a00
+                         {disp32} fadd     dword ptr [_abode_info_float_0x008a99f0]      // 0x006d9061    d805f0998a00
                          {disp8} jmp       _jmp_addr_0x006d90c7                          // 0x006d9067    eb5e
                          fstp              st(0)                                         // 0x006d9069    ddd8
                          {disp32} fld      dword ptr [data_bytes + 0x388ee0]             // 0x006d906b    d905e0eed400

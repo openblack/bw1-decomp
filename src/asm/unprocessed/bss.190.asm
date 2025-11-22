@@ -1,7 +1,6 @@
 .intel_syntax noprefix
 .section .bss
 
-.globl _GVillagerInfo_ARRAY_00da6be8
 .globl _PTR_00db9e28
 .globl _GVillagerStateTableInfo_ARRAY_00db9e68
 .globl _GWorshipSiteInfo_ARRAY_00dcbd30
@@ -10,9 +9,8 @@
 .globl _g_info_transform
 .globl _DAT_00e83a20
 
-                                           .space 0x4                                                              // [0x3e0be4] 0x009c6000 + 0x3e0be4 = 0x00da6be4
-_GVillagerInfo_ARRAY_00da6be8:             .space 84 * 0x3a4                                                       // [0x3e0be8] 0x009c6000 + 0x3e0be8 = 0x00da6be8
-                                           .space 0x70                                                             // [0x3f3db8] 0x009c6000 + 0x3f3db8 = 0x00db9db8
+.align 16
+                                           .space 0x68                                                             // [0x3f3de0] 0x009c6000 + 0x3f3de0 = 0x00db9de0
 _PTR_00db9e28:                             .space 0x4                                                              // [0x3f3e28] 0x009c6000 + 0x3f3e28 = 0x00db9e28
                                            .space 0x3c                                                             // [0x3f3e2c] 0x009c6000 + 0x3f3e2c = 0x00db9e2c
 _GVillagerStateTableInfo_ARRAY_00db9e68:   .space 0xff * 0x114                                                     // [0x3f3e68] 0x009c6000 + 0x3f3e68 = 0x00db9e68

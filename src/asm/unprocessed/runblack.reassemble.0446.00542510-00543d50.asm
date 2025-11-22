@@ -1504,7 +1504,7 @@ _jmp_addr_0x00543890:    {disp8} mov        ecx, dword ptr [ebp + 0x64]         
                          fnstsw             ax                                            // 0x005438ab    dfe0
                          test               ah, 0x01                                      // 0x005438ad    f6c401
                          {disp8} je         _jmp_addr_0x00543904                          // 0x005438b0    7452
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x9f0]               // 0x005438b2    d80df0998a00
+                         {disp32} fmul      dword ptr [_abode_info_float_0x008a99f0]      // 0x005438b2    d80df0998a00
                          call               _jmp_addr_0x007a1400                          // 0x005438b8    e843db2500
                          mov.s              esi, edi                                      // 0x005438bd    8bf7
                          and                esi, 0x00ff0000                               // 0x005438bf    81e60000ff00
@@ -1525,7 +1525,7 @@ _jmp_addr_0x00543890:    {disp8} mov        ecx, dword ptr [ebp + 0x64]         
                          or.s               esi, edi                                      // 0x005438fd    0bf7
                          {disp32} jmp       _jmp_addr_0x00543986                          // 0x005438ff    e982000000
 _jmp_addr_0x00543904:    {disp32} fsub      dword ptr [_rdata_float0p5]                   // 0x00543904    d825b4a38a00
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x9f0]               // 0x0054390a    d80df0998a00
+                         {disp32} fmul      dword ptr [_abode_info_float_0x008a99f0]      // 0x0054390a    d80df0998a00
                          call               _jmp_addr_0x007a1400                          // 0x00543910    e8ebda2500
                          mov.s              ecx, edi                                      // 0x00543915    8bcf
                          and                ecx, 0x00ff0000                               // 0x00543917    81e10000ff00

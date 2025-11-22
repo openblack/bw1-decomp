@@ -28,6 +28,9 @@
 .globl _g_smoke_additif_mat
 .globl _g_view_configuration
 .globl _Direct3DDevice7
+.globl _DAT_00ed92e8
+.globl _DAT_00eb99e4
+.globl _DAT_00eb99e8
 
                                            .space 0xac8                                                            // [0x4be578] 0x009c6000 + 0x4be578 = 0x00e84578
 
@@ -97,7 +100,10 @@ _field_0x00ea9e90:                         .space 0x10                          
 _g_view_configuration:                     .space 4                                                                // [0x4e3ebc] 0x009c6000 + 0x4e3ebc = 0x00ea9ebc
 _DAT_00ea9ec0:                             .space 4                                                                // [0x4e3ec0] 0x009c6000 + 0x4e3ec0 = 0x00ea9ec0
 _merde_focus:                              .space 4                                                                // [0x4e3ec4] 0x009c6000 + 0x4e3ec4 = 0x00ea9ec4
-                                           .space 0x1e108                                                          // [0x4e3ec8] 0x009c6000 + 0x4e3ec8 = 0x00ea9ec8
+                                           .space 0xfb1c                                                           // [0x4e3ec8] 0x009c6000 + 0x4e3ec8 = 0x00ea9ec8
+_DAT_00eb99e4:                             .space 4                                                                // [0x4f39e4] 0x009c6000 + 0x4f39e4 = 0x00eb99e4
+_DAT_00eb99e8:                             .space 4                                                                // [0x4f39e8] 0x009c6000 + 0x4f39e8 = 0x00eb99e8
+                                           .space 0xe5e4                                                           // [0x4f39ec] 0x009c6000 + 0x4f39ec = 0x00eb99ec
 _g_d3d_view2proj:                          .space 0x40                                                             // [0x501fd0] 0x009c6000 + 0x501fd0 = 0x00ec7fd0
 _g_d3d_world2view:                         .space 0x40                                                             // [0x502010] 0x009c6000 + 0x502010 = 0x00ec8010
                                            .space 0x1a0                                                            // [0x502050] 0x009c6000 + 0x502050 = 0x00ec8050
@@ -114,7 +120,9 @@ _DAT_00eca64c:                             .space 4                             
 _DAT_00eca654:                             .space 4                                                                // [0x504654] 0x009c6000 + 0x504654 = 0x00eca654
                                            .space 0x26b0                                                           // [0x504658] 0x009c6000 + 0x504658 = 0x00eca658
 _game_font:                                .space 4                                                                // [0x506d08] 0x009c6000 + 0x506d08 = 0x00eccd08
-                                           .space 0x106d4                                                          // [0x506d0c] 0x009c6000 + 0x506d0c = 0x00eccd0c
+                                           .space 0xc5dc                                                           // [0x506d0c] 0x009c6000 + 0x506d0c = 0x00eccd0c
+_DAT_00ed92e8:                             .space 4                                                                // [0x5132e8] 0x009c6000 + 0x5132e8 = 0x00ed92e8
+                                           .space 0x40f8                                                           // [0x5132ec] 0x009c6000 + 0x5132ec = 0x00ed92ec
 _g_cached_tex_file:                        .space 0x6c                                                             // [0x5173e0] 0x009c6000 + 0x5173e0 = 0x00edd3e0
 ?first@LH3DTexture@@2PAV1@A:               .space 4                                                                // [0x51744c] 0x009c6000 + 0x51744c = 0x00edd44c
                                            .space 0x48                                                             // [0x517450] 0x009c6000 + 0x517450 = 0x00edd450

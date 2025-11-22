@@ -2505,7 +2505,7 @@ _jmp_addr_0x0042c969:    {disp8} lea        edx, dword ptr [esp + 0x1c]         
                          add                esi, 0x000001c8                                      // 0x0042c975    81c6c8010000
                          cmp                esi, OFFSET _AbodeInfos + 0x93 * 0x1c8               // 0x0042c97b    81fe68ccc400
                          .byte              0x72, 0xe6// {disp8} jb _jmp_addr_0x0042c969         // 0x0042c981    72e6
-                         mov                esi, OFFSET _GVillagerInfo_ARRAY_00da6be8            // 0x0042c983    bee86bda00
+                         mov                esi, OFFSET _VillagerInfos                           // 0x0042c983    bee86bda00
 _jmp_addr_0x0042c988:    {disp8} lea        ecx, dword ptr [esp + 0x1c]                          // 0x0042c988    8d4c241c
                          push               ecx                                                  // 0x0042c98c    51
                          mov.s              ecx, esi                                             // 0x0042c98d    8bce
@@ -2516,7 +2516,7 @@ _jmp_addr_0x0042c988:    {disp8} lea        ecx, dword ptr [esp + 0x1c]         
                          {disp32} jmp       _jmp_addr_0x0042ca69                                 // 0x0042c9a2    e9c2000000
 _jmp_addr_0x0042c9a7:    {disp32} inc       dword ptr [ebp + 0x0000211c]                         // 0x0042c9a7    ff851c210000
 _jmp_addr_0x0042c9ad:    xor.s              ebx, ebx                                             // 0x0042c9ad    33db
-                         {disp8} mov        dword ptr [esp + 0x10], OFFSET _GVillagerInfo_ARRAY_00da6be8                   // 0x0042c9af    c7442410e86bda00
+                         {disp8} mov        dword ptr [esp + 0x10], OFFSET _VillagerInfos        // 0x0042c9af    c7442410e86bda00
 _jmp_addr_0x0042c9b7:    push               esi                                                  // 0x0042c9b7    56
                          push               ebx                                                  // 0x0042c9b8    53
                          push               0x009cc328                                           // 0x0042c9b9    6828c39c00
