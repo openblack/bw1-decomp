@@ -108,10 +108,10 @@ set(SOURCES_001
     asm/unprocessed/text.x.001.asm
     asm/unprocessed/rdata.100-vftables.asm
     asm/unprocessed/rdata.r.100-rtti.asm
-    asm/unprocessed/data.001.009c7e80-00c2b1d0.asm
-    asm/unprocessed/bss.000.asm
+    asm/unprocessed/data.100.asm
+    asm/unprocessed/bss.100.asm
     c/unprocessed/bss.StateTables.c
-    asm/unprocessed/bss.002.asm
+    asm/unprocessed/bss.102.asm
     asm/unprocessed/xdata.x.000.009bbdc8-009bc428.asm
     asm/unprocessed/data1.asm
     asm/unprocessed/SELFMOD.asm
@@ -399,6 +399,12 @@ set(SOURCES_001
     c/VillagerStates.c
     c/VillagerTrader.c
     c/VillagerWorshipper.c
+
+    asm/unprocessed/bss.190.asm
+    asm/unprocessed/data.190.asm
+    asm/unprocessed/rdata.190-vftables.asm
+    asm/unprocessed/rdata.r.190-rtti.asm
+
     asm/unprocessed/runblack.reassemble.0993.007678a0-007791d0.asm
     asm/unprocessed/runblack.reassemble.0996.007791d0-0077d2e0.asm
     asm/unprocessed/runblack.reassemble.1000.0077d2e0-0077f670.asm
@@ -424,8 +430,8 @@ set(SOURCES_001
     asm/unprocessed/runblack.reassemble.1061.007aebb0-007aee98-jmp-table.asm
 )
 set(SOURCES_002
-    asm/unprocessed/bss.010.asm
-    asm/unprocessed/data.002.00c2b1e0-00c2bf5c.asm
+    asm/unprocessed/bss.200.asm
+    asm/unprocessed/data.200.asm
     asm/unprocessed/rdata.200.asm
     asm/unprocessed/rdata.r.200-libcpmt-rtti.asm
     asm/unprocessed/xdata.x.001.009bc428-009be430.asm
@@ -450,11 +456,11 @@ set(SOURCES_004
 )
 
 set(SOURCES_008
-    asm/unprocessed/bss.030.asm
+    asm/unprocessed/bss.300.asm
     asm/unprocessed/rdata.300.asm  # contains some d3d 7? data and some libjpeg data
     asm/unprocessed/rdata.r.300.009bb9b4-009bbdc8.asm
     asm/unprocessed/xdata.x.002.009be4f0-009c5564.asm  # contains some ddraw data
-    asm/unprocessed/data.003.00c2de20-00c30f70.asm
+    asm/unprocessed/data.300.asm
     asm/unprocessed/runblack.reassemble.1129.007db410-007dc8b0.asm
     asm/unprocessed/runblack.reassemble.1137.007dc8b0-007dee50.asm
     c/PCMain.1138.007dee50-007deef0.c
@@ -520,8 +526,8 @@ set(SOURCES_008
 )
 set(SOURCES_009
     asm/unprocessed/runblack.reassemble.1344.008a6460-008a6470-dll-jmp-table.asm
-    asm/unprocessed/data.004.00c30f70-00c3c680.asm
-    asm/unprocessed/data.005.00c3c680-00c3cff0.asm  # some libjpeg strings
+    asm/unprocessed/data.400.asm
+    asm/unprocessed/data.450.asm  # some libjpeg strings
 )
 
 add_library(runblack-reassembled-src-001 OBJECT ${SOURCES_001})
@@ -530,7 +536,7 @@ add_library(runblack-reassembled-zlib OBJECT ${SOURCES_ZLIB})
 add_library(runblack-reassembled-src-004 OBJECT ${SOURCES_004})
 add_library(runblack-reassembled-src-008 OBJECT ${SOURCES_008})
 add_library(runblack-reassembled-src-009 OBJECT ${SOURCES_009})
-add_library(runblack-reassembled-src-bss-005 OBJECT asm/unprocessed/bss.040.asm)
+add_library(runblack-reassembled-src-bss-005 OBJECT asm/unprocessed/bss.400.asm)
 
 add_library(runblack-reassembled-rc OBJECT
     res/winnt.rh
@@ -898,8 +904,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/bss.010.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/bss.010.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/bss.200.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/bss.200.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
@@ -907,8 +913,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/data.002.00c2b1e0-00c2bf5c.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/data.002.00c2b1e0-00c2bf5c.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/data.200.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/asm/unprocessed/data.200.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
@@ -961,8 +967,8 @@ add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
     COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/scripts/patch_coff_object_file.py
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-bss-005.dir/asm/unprocessed/bss.040.asm${OBJ_SUFFIX}"
-            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-bss-005.dir/asm/unprocessed/bss.040.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-bss-005.dir/asm/unprocessed/bss.400.asm${OBJ_SUFFIX}"
+            "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-bss-005.dir/asm/unprocessed/bss.400.asm${OBJ_SUFFIX}"
             "--no-pad"
 )
 
