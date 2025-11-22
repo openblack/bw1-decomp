@@ -1165,12 +1165,12 @@ _jmp_addr_0x004eabb6:    {disp8} mov        ecx, dword ptr [esi + 0x28]         
                          add                eax, 0x04                                     // 0x004eabdb    83c004
                          ret                                                              // 0x004eabde    c3
                          nop                                                              // 0x004eabdf    90
-_globl_ct_0x004eabe0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x004eabe0    8a0d34c9fa00
+_globl_ct_0x004eabe0:    {disp32} mov       cl, byte ptr [_DAT_00fac934]                  // 0x004eabe0    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x004eabe6    b001
                          test               al, cl                                        // 0x004eabe8    84c8
                          {disp8} jne        _jmp_addr_0x004eabf4                          // 0x004eabea    7508
                          or.s               cl, al                                        // 0x004eabec    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x004eabee    880d34c9fa00
+                         {disp32} mov       byte ptr [_DAT_00fac934], cl                  // 0x004eabee    880d34c9fa00
 _jmp_addr_0x004eabf4:    {disp32} jmp       _jmp_addr_0x004eac00                          // 0x004eabf4    e907000000
                          nop                                                              // 0x004eabf9    90
                          nop                                                              // 0x004eabfa    90

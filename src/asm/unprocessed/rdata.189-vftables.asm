@@ -7,10 +7,9 @@ __vt__\name:
 ??_7\name@@6B@:
 .endm
 
-.long 0x41200000, 0x40490fdb
-.float 365.25, 86400.0                                             // days in year and seconds in day              // [0xf192c] 0x008a9000 + 0xf192c = 0x0099a92c
 .long 0x41200000                                                                                                   // [0xf1934] 0x008a9000 + 0xf1934 = 0x0099a934
-.float 365.25, 86400.0                                             // days in year and seconds in day              // [0xf1938] 0x008a9000 + 0xf1938 = 0x0099a938
+.float 365.25
+.float 86400.0                                                     // days in year and seconds in day              // [0xf1938] 0x008a9000 + 0xf1938 = 0x0099a938
 .long 0x447a0000, 0x41200000                                                                                       // [0xf1940] 0x008a9000 + 0xf1940 = 0x0099a940
 .float 365.25, 86400.0                                             // days in year and seconds in day              // [0xf1948] 0x008a9000 + 0xf1948 = 0x0099a948
 .float 365.25, 86400.0                                             // days in year and seconds in day              // [0xf1950] 0x008a9000 + 0xf1950 = 0x0099a950

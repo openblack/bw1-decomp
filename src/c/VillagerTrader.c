@@ -2,12 +2,12 @@
 
 void __cdecl globl_ct_0x0076b920(void)
 {
-    asm("{disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]");          // 0x0076b920    8a0d34c9fa00
+    asm("{disp32} mov       cl, byte ptr [_DAT_00fac934]");                  // 0x0076b920    8a0d34c9fa00
     asm("mov                al, 0x01");                                      // 0x0076b926    b001
     asm("test               al, cl");                                        // 0x0076b928    84c8
     asm("{disp8} jne        _jmp_addr_0x0076b934");                          // 0x0076b92a    7508
     asm("or.s               cl, al");                                        // 0x0076b92c    0ac8
-    asm("{disp32} mov       byte ptr [data_bytes + 0x5e6934], cl");          // 0x0076b92e    880d34c9fa00
+    asm("{disp32} mov       byte ptr [_DAT_00fac934], cl");                  // 0x0076b92e    880d34c9fa00
     asm("_jmp_addr_0x0076b934:");
     asm("{disp32} jmp       _crt_global_destruction_register_0x0076b940");   // 0x0076b934    e907000000
     __builtin_unreachable();

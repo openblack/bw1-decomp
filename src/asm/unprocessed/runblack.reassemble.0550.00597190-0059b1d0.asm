@@ -2747,12 +2747,12 @@ _jmp_addr_0x00598de1:    mov                eax, 0x00000001                     
                          pop                ecx                                           // 0x00598de7    59
                          ret                0x0004                                        // 0x00598de8    c20400
                          call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x00598deb    e8098ae6ff
-_globl_ct_0x00598df0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00598df0    8a0d34c9fa00
+_globl_ct_0x00598df0:    {disp32} mov       cl, byte ptr [_DAT_00fac934]                  // 0x00598df0    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x00598df6    b001
                          test               al, cl                                        // 0x00598df8    84c8
                          {disp8} jne        _jmp_addr_0x00598e04                          // 0x00598dfa    7508
                          or.s               cl, al                                        // 0x00598dfc    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x00598dfe    880d34c9fa00
+                         {disp32} mov       byte ptr [_DAT_00fac934], cl                  // 0x00598dfe    880d34c9fa00
 _jmp_addr_0x00598e04:    {disp32} jmp       _jmp_addr_0x00598e10                          // 0x00598e04    e907000000
                          nop                                                              // 0x00598e09    90
                          nop                                                              // 0x00598e0a    90
@@ -3209,12 +3209,12 @@ _jmp_addr_0x005991a1:    {disp32} mov       eax, dword ptr [data_bytes + 0x3415b
                          nop                                                              // 0x0059921d    90
                          nop                                                              // 0x0059921e    90
                          nop                                                              // 0x0059921f    90
-_globl_ct_0x00599220:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00599220    8a0d34c9fa00
+_globl_ct_0x00599220:    {disp32} mov       cl, byte ptr [_DAT_00fac934]                  // 0x00599220    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x00599226    b001
                          test               al, cl                                        // 0x00599228    84c8
                          {disp8} jne        _jmp_addr_0x00599234                          // 0x0059922a    7508
                          or.s               cl, al                                        // 0x0059922c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x0059922e    880d34c9fa00
+                         {disp32} mov       byte ptr [_DAT_00fac934], cl                  // 0x0059922e    880d34c9fa00
 _jmp_addr_0x00599234:    {disp32} jmp       _jmp_addr_0x00599240                          // 0x00599234    e907000000
                          nop                                                              // 0x00599239    90
                          nop                                                              // 0x0059923a    90

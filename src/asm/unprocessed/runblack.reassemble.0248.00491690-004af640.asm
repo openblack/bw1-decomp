@@ -82,12 +82,12 @@
 
 start_0x00491690_0x004af640:
 // Snippet: asm, [0x00491690, 0x004af626)
-_globl_ct_0x00491690:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]           // 0x00491690    8a0d34c9fa00
+_globl_ct_0x00491690:    {disp32} mov       cl, byte ptr [_DAT_00fac934]                   // 0x00491690    8a0d34c9fa00
                          mov                al, 0x01                                       // 0x00491696    b001
                          test               al, cl                                         // 0x00491698    84c8
                          {disp8} jne        _jmp_addr_0x004916a4                           // 0x0049169a    7508
                          or.s               cl, al                                         // 0x0049169c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl           // 0x0049169e    880d34c9fa00
+                         {disp32} mov       byte ptr [_DAT_00fac934], cl                   // 0x0049169e    880d34c9fa00
 _jmp_addr_0x004916a4:    {disp32} jmp       _jmp_addr_0x004916b0                           // 0x004916a4    e907000000
                          nop                                                               // 0x004916a9    90
                          nop                                                               // 0x004916aa    90

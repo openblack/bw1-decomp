@@ -229,12 +229,12 @@ _jmp_addr_0x00549ad6:    pop               edi                                  
                          nop                                                             // 0x00549add    90
                          nop                                                             // 0x00549ade    90
                          nop                                                             // 0x00549adf    90
-_globl_ct_0x00549ae0:    {disp32} mov      cl, byte ptr [data_bytes + 0x5e6934]          // 0x00549ae0    8a0d34c9fa00
+_globl_ct_0x00549ae0:    {disp32} mov      cl, byte ptr [_DAT_00fac934]                  // 0x00549ae0    8a0d34c9fa00
                          mov               al, 0x01                                      // 0x00549ae6    b001
                          test              al, cl                                        // 0x00549ae8    84c8
                          {disp8} jne       _jmp_addr_0x00549af4                          // 0x00549aea    7508
                          or.s              cl, al                                        // 0x00549aec    0ac8
-                         {disp32} mov      byte ptr [data_bytes + 0x5e6934], cl          // 0x00549aee    880d34c9fa00
+                         {disp32} mov      byte ptr [_DAT_00fac934], cl                  // 0x00549aee    880d34c9fa00
 _jmp_addr_0x00549af4:    {disp32} jmp      _jmp_addr_0x00549b00                          // 0x00549af4    e907000000
                          nop                                                             // 0x00549af9    90
                          nop                                                             // 0x00549afa    90

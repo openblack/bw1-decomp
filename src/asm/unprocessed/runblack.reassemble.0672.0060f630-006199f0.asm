@@ -11688,12 +11688,12 @@ _jmp_addr_0x00617046:    push               edi                                 
                          nop                                                               // 0x0061705d    90
                          nop                                                               // 0x0061705e    90
                          nop                                                               // 0x0061705f    90
-_globl_ct_0x00617060:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]           // 0x00617060    8a0d34c9fa00
+_globl_ct_0x00617060:    {disp32} mov       cl, byte ptr [_DAT_00fac934]                   // 0x00617060    8a0d34c9fa00
                          mov                al, 0x01                                       // 0x00617066    b001
                          test               al, cl                                         // 0x00617068    84c8
                          {disp8} jne        _jmp_addr_0x00617074                           // 0x0061706a    7508
                          or.s               cl, al                                         // 0x0061706c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl           // 0x0061706e    880d34c9fa00
+                         {disp32} mov       byte ptr [_DAT_00fac934], cl                   // 0x0061706e    880d34c9fa00
 _jmp_addr_0x00617074:    {disp32} jmp       _jmp_addr_0x00617080                           // 0x00617074    e907000000
                          nop                                                               // 0x00617079    90
                          nop                                                               // 0x0061707a    90

@@ -2799,12 +2799,12 @@ _jmp_addr_0x00727e50:    {disp8} mov        ecx, dword ptr [esp + 0x04]         
                          cmp.s              ecx, edx                                             // 0x00727e5a    3bca
                          sete               al                                                   // 0x00727e5c    0f94c0
                          ret                                                                     // 0x00727e5f    c3
-_globl_ct_0x00727e60:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]                 // 0x00727e60    8a0d34c9fa00
+_globl_ct_0x00727e60:    {disp32} mov       cl, byte ptr [_DAT_00fac934]                         // 0x00727e60    8a0d34c9fa00
                          mov                al, 0x01                                             // 0x00727e66    b001
                          test               al, cl                                               // 0x00727e68    84c8
                          {disp8} jne        _jmp_addr_0x00727e74                                 // 0x00727e6a    7508
                          or.s               cl, al                                               // 0x00727e6c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl                 // 0x00727e6e    880d34c9fa00
+                         {disp32} mov       byte ptr [_DAT_00fac934], cl                         // 0x00727e6e    880d34c9fa00
 _jmp_addr_0x00727e74:    {disp32} jmp       _jmp_addr_0x00727e80                                 // 0x00727e74    e907000000
                          nop                                                                     // 0x00727e79    90
                          nop                                                                     // 0x00727e7a    90

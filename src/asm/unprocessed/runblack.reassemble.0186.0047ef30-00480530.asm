@@ -301,12 +301,12 @@ _jmp_addr_0x0047f106:    pop                edi                                 
                          nop                                                              // 0x0047f10d    90
                          nop                                                              // 0x0047f10e    90
                          nop                                                              // 0x0047f10f    90
-_globl_ct_0x0047f110:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x0047f110    8a0d34c9fa00
+_globl_ct_0x0047f110:    {disp32} mov       cl, byte ptr [_DAT_00fac934]                  // 0x0047f110    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x0047f116    b001
                          test               al, cl                                        // 0x0047f118    84c8
                          {disp8} jne        _jmp_addr_0x0047f124                          // 0x0047f11a    7508
                          or.s               cl, al                                        // 0x0047f11c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x0047f11e    880d34c9fa00
+                         {disp32} mov       byte ptr [_DAT_00fac934], cl                  // 0x0047f11e    880d34c9fa00
 _jmp_addr_0x0047f124:    {disp32} jmp       _jmp_addr_0x0047f130                          // 0x0047f124    e907000000
                          nop                                                              // 0x0047f129    90
                          nop                                                              // 0x0047f12a    90

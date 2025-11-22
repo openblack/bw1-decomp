@@ -327,12 +327,12 @@ _jmp_addr_0x00641815:    {disp32} mov      ecx, dword ptr [_game]               
                          call              _jmp_addr_0x00640cb0                          // 0x00641834    e877f4ffff
 _jmp_addr_0x00641839:    add               esp, 0x00000120                               // 0x00641839    81c420010000
                          ret                                                             // 0x0064183f    c3
-_globl_ct_0x00641840:    {disp32} mov      cl, byte ptr [data_bytes + 0x5e6934]          // 0x00641840    8a0d34c9fa00
+_globl_ct_0x00641840:    {disp32} mov      cl, byte ptr [_DAT_00fac934]                  // 0x00641840    8a0d34c9fa00
                          mov               al, 0x01                                      // 0x00641846    b001
                          test              al, cl                                        // 0x00641848    84c8
                          {disp8} jne       _jmp_addr_0x00641854                          // 0x0064184a    7508
                          or.s              cl, al                                        // 0x0064184c    0ac8
-                         {disp32} mov      byte ptr [data_bytes + 0x5e6934], cl          // 0x0064184e    880d34c9fa00
+                         {disp32} mov      byte ptr [_DAT_00fac934], cl                  // 0x0064184e    880d34c9fa00
 _jmp_addr_0x00641854:    {disp32} jmp      _jmp_addr_0x00641860                          // 0x00641854    e907000000
                          nop                                                             // 0x00641859    90
                          nop                                                             // 0x0064185a    90

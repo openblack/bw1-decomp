@@ -9,8 +9,7 @@
 .globl _g_info_transform
 .globl _DAT_00e83a20
 
-.align 16
-                                           .space 0x68                                                             // [0x3f3de0] 0x009c6000 + 0x3f3de0 = 0x00db9de0
+                                           .space 0x58                                                             // [0x3f3dd0] 0x009c6000 + 0x3f3dd0 = 0x00db9dd0
 _PTR_00db9e28:                             .space 0x4                                                              // [0x3f3e28] 0x009c6000 + 0x3f3e28 = 0x00db9e28
                                            .space 0x3c                                                             // [0x3f3e2c] 0x009c6000 + 0x3f3e2c = 0x00db9e2c
 _GVillagerStateTableInfo_ARRAY_00db9e68:   .space 0xff * 0x114                                                     // [0x3f3e68] 0x009c6000 + 0x3f3e68 = 0x00db9e68

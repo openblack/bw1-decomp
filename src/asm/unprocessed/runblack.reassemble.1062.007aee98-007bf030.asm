@@ -552,7 +552,7 @@ _jmp_addr_0x007af250:    push                 esi                               
 _jmp_addr_0x007af268:    push                 0x1                                              // 0x007af268    6a01
                          call                 ?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEX_N@Z                             // 0x007af26a    e821f3dcff
                          ret                                                                   // 0x007af26f    c3
-_globl_ct_0x007af270:    test                 byte ptr [data_bytes + 0x5e6934], 0x01           // 0x007af270    f60534c9fa0001
+_globl_ct_0x007af270:    test                 byte ptr [_DAT_00fac934],0x01                    // 0x007af270    f60534c9fa0001
                          {disp8} jne          _jmp_addr_0x007af280                             // 0x007af277    7507
                          or                   byte ptr [0xfac934], 1                           // 0x007af279    800d34c9fa0001
 _jmp_addr_0x007af280:    call                 _jmp_addr_0x007af29a                             // 0x007af280    e815000000
@@ -1492,7 +1492,7 @@ _jmp_addr_0x007afc9c:    push                 dword ptr [esi + 0x08]            
                          {disp32} mov         fs:[0x0], ecx                                    // 0x007afcca    64890d00000000
                          leave                                                                 // 0x007afcd1    c9
                          ret                                                                   // 0x007afcd2    c3
-_globl_ct_0x007afcd3:    test                 byte ptr [data_bytes + 0x5e6934], 0x01           // 0x007afcd3    f60534c9fa0001
+_globl_ct_0x007afcd3:    test                 byte ptr [_DAT_00fac934],0x01                    // 0x007afcd3    f60534c9fa0001
                          {disp8} jne          _jmp_addr_0x007afce3                             // 0x007afcda    7507
                          or                   byte ptr [0xfac934], 1                           // 0x007afcdc    800d34c9fa0001
 _jmp_addr_0x007afce3:    call                 _jmp_addr_0x007afcfd                             // 0x007afce3    e815000000
@@ -3839,7 +3839,7 @@ _jmp_addr_0x007b168c:    push                 0x1                               
                          ret                                                                   // 0x007b16ac    c3
 _jmp_addr_0x007b16ad:    mov                  dword ptr [ecx], 0x00900288                      // 0x007b16ad    c70188029000
                          ret                                                                   // 0x007b16b3    c3
-_globl_ct_0x007b16b4:    test                 byte ptr [data_bytes + 0x5e6934], 0x01           // 0x007b16b4    f60534c9fa0001
+_globl_ct_0x007b16b4:    test                 byte ptr [_DAT_00fac934],0x01                    // 0x007b16b4    f60534c9fa0001
                          {disp8} jne          _jmp_addr_0x007b16c4                             // 0x007b16bb    7507
                          or                   byte ptr [0xfac934], 1                           // 0x007b16bd    800d34c9fa0001
 _jmp_addr_0x007b16c4:    call                 _jmp_addr_0x007b16de                             // 0x007b16c4    e815000000
@@ -4294,7 +4294,7 @@ _jmp_addr_0x007b1c32:    xor.s                al, al                            
 _jmp_addr_0x007b1c34:    pop                  edi                                              // 0x007b1c34    5f
                          pop                  esi                                              // 0x007b1c35    5e
                          ret                                                                   // 0x007b1c36    c3
-_globl_ct_0x007b1c37:    test                 byte ptr [data_bytes + 0x5e6934], 0x01           // 0x007b1c37    f60534c9fa0001
+_globl_ct_0x007b1c37:    test                 byte ptr [_DAT_00fac934],0x01                    // 0x007b1c37    f60534c9fa0001
                          {disp8} jne          _jmp_addr_0x007b1c47                             // 0x007b1c3e    7507
                          or                   byte ptr [0xfac934], 1                           // 0x007b1c40    800d34c9fa0001
 _jmp_addr_0x007b1c47:    call                 _jmp_addr_0x007b1c61                             // 0x007b1c47    e815000000
@@ -5645,7 +5645,7 @@ _jmp_addr_0x007b2abc:    {disp8} lea          edx, dword ptr [ecx + 0x14]       
                          {disp8} mov          eax, dword ptr [ecx + 0x2c]                      // 0x007b2af8    8b412c
                          mov                  dword ptr [eax], edx                             // 0x007b2afb    8910
                          ret                                                                   // 0x007b2afd    c3
-_globl_ct_0x007b2afe:    test                 byte ptr [data_bytes + 0x5e6934], 0x01           // 0x007b2afe    f60534c9fa0001
+_globl_ct_0x007b2afe:    test                 byte ptr [_DAT_00fac934],0x01                    // 0x007b2afe    f60534c9fa0001
                          {disp8} jne          _jmp_addr_0x007b2b0e                             // 0x007b2b05    7507
                          or                   byte ptr [0xfac934], 1                           // 0x007b2b07    800d34c9fa0001
 _jmp_addr_0x007b2b0e:    call                 _jmp_addr_0x007b2b28                             // 0x007b2b0e    e815000000
@@ -6085,7 +6085,7 @@ _jmp_addr_0x007b2f87:    pop                  edi                               
                          ret                                                                   // 0x007b2f89    c3
 _jmp_addr_0x007b2f8a:    mov.s                eax, edi                                         // 0x007b2f8a    8bc7
                          {disp8} jmp          _jmp_addr_0x007b2f87                             // 0x007b2f8c    ebf9
-_globl_ct_0x007b2f8e:    test                 byte ptr [data_bytes + 0x5e6934], 0x01           // 0x007b2f8e    f60534c9fa0001
+_globl_ct_0x007b2f8e:    test                 byte ptr [_DAT_00fac934],0x01                    // 0x007b2f8e    f60534c9fa0001
                          {disp8} jne          _jmp_addr_0x007b2f9e                             // 0x007b2f95    7507
                          or                   byte ptr [0xfac934], 1                           // 0x007b2f97    800d34c9fa0001
 _jmp_addr_0x007b2f9e:    call                 _jmp_addr_0x007b2fb8                             // 0x007b2f9e    e815000000
@@ -19179,7 +19179,7 @@ _jmp_addr_0x007bc118:    and                  dword ptr [data_bytes + 0x4bdfcc],
                          {disp32} mov         fs:[0x0], ecx                                    // 0x007bc12e    64890d00000000
                          leave                                                                 // 0x007bc135    c9
                          ret                                                                   // 0x007bc136    c3
-_globl_ct_0x007bc137:    test                 byte ptr [data_bytes + 0x5e6934], 0x01           // 0x007bc137    f60534c9fa0001
+_globl_ct_0x007bc137:    test                 byte ptr [_DAT_00fac934],0x01                    // 0x007bc137    f60534c9fa0001
                          {disp8} jne          _jmp_addr_0x007bc147                             // 0x007bc13e    7507
                          or                   byte ptr [0xfac934], 1                           // 0x007bc140    800d34c9fa0001
 _jmp_addr_0x007bc147:    {disp32} jmp         _jmp_addr_0x007bc14c                             // 0x007bc147    e900000000

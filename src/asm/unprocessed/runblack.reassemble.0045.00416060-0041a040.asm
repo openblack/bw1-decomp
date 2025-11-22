@@ -1352,12 +1352,12 @@ _jmp_addr_0x00416c20:    push               ebx                                 
                          pop                ebx                                           // 0x00416c49    5b
                          ret                                                              // 0x00416c4a    c3
                          call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00416c4b    e829acfeff
-_globl_ct_0x00416c50:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00416c50    8a0d34c9fa00
+_globl_ct_0x00416c50:    {disp32} mov       cl, byte ptr [_DAT_00fac934]                  // 0x00416c50    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x00416c56    b001
                          test               al, cl                                        // 0x00416c58    84c8
                          {disp8} jne        _jmp_addr_0x00416c64                          // 0x00416c5a    7508
                          or.s               cl, al                                        // 0x00416c5c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x00416c5e    880d34c9fa00
+                         {disp32} mov       byte ptr [_DAT_00fac934], cl                  // 0x00416c5e    880d34c9fa00
 _jmp_addr_0x00416c64:    {disp32} jmp       _jmp_addr_0x00416c70                          // 0x00416c64    e907000000
                          nop                                                              // 0x00416c69    90
                          nop                                                              // 0x00416c6a    90

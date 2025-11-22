@@ -1,6 +1,7 @@
 .intel_syntax noprefix
 .section .bss
 
+.globl _DAT_00fac934
 .globl ___onexitend
 .globl ___setlc_active
 .globl ___unguarded_readlc_active
@@ -32,7 +33,9 @@
 .globl ___ismbcodepage
 .globl ___mbulinfo
 
-                                           .space 0xd4
+                                           .space 0xa8
+_DAT_00fac934:                             .space 1                                                                // [0x5e6934] 0x009c6000 + 0x5e6934 = 0x00fac934
+                                           .space 0x2b
 ___pioinfo:                                .space 0x100                                                            // [0x5e6960] 0x009c6000 + 0x5e6960 = 0x00fac960
 __nhandle:                                 .space 4                                                                // [0x5e6a60] 0x009c6000 + 0x5e6a60 = 0x00faca60
 ___mbcodepage:                             .space 4                                                                // [0x5e6a64] 0x009c6000 + 0x5e6a64 = 0x00faca64

@@ -16,6 +16,8 @@ __attribute__((section(".bss"))) uint8_t villager_byte_0x00da6bdc;
 __attribute__((section(".bss"))) float villager_float_0x00da6be0;
 __attribute__((section(".bss"))) float villager_seconds_in_year_0x00da6be4;
 __attribute__((section(".bss"))) struct GVillagerInfo VillagerInfos[VILLAGER_INFO_LAST]; // 00da6be8-00db9db8
+__attribute__((section(".bss"))) uint32_t villager_data_0x00db9db8;
+__attribute__((section(".bss"))) uint32_t villager_data_0x00db9dbc;
 
 const float villager_num_days_in_year_0x0099a1e4 = 365.25f;
 const float villager_seconds_in_day_0x0099a1e8 = 86400.0f;

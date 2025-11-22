@@ -71,12 +71,12 @@
 
 start_0x00515e90_0x005178d0:
 // Snippet: asm, [0x00515e90, 0x005178bf)
-_globl_ct_0x00515e90:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00515e90    8a0d34c9fa00
+_globl_ct_0x00515e90:    {disp32} mov       cl, byte ptr [_DAT_00fac934]                  // 0x00515e90    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x00515e96    b001
                          test               al, cl                                        // 0x00515e98    84c8
                          {disp8} jne        _jmp_addr_0x00515ea4                          // 0x00515e9a    7508
                          or.s               cl, al                                        // 0x00515e9c    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x00515e9e    880d34c9fa00
+                         {disp32} mov       byte ptr [_DAT_00fac934], cl                  // 0x00515e9e    880d34c9fa00
 _jmp_addr_0x00515ea4:    {disp32} jmp       _jmp_addr_0x00515eb0                          // 0x00515ea4    e907000000
                          nop                                                              // 0x00515ea9    90
                          nop                                                              // 0x00515eaa    90

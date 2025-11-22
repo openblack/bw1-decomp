@@ -205,12 +205,12 @@ _jmp_addr_0x00794a80:    {disp32} mov       ecx, dword ptr [_game]              
                          call               _StartScript__7GScriptFPc@4                   // 0x00794aa9    e8626cf5ff
 _jmp_addr_0x00794aae:    ret                                                              // 0x00794aae    c3
                          nop                                                              // 0x00794aaf    90
-_globl_ct_0x00794ab0:    {disp32} mov       cl, byte ptr [data_bytes + 0x5e6934]          // 0x00794ab0    8a0d34c9fa00
+_globl_ct_0x00794ab0:    {disp32} mov       cl, byte ptr [_DAT_00fac934]                  // 0x00794ab0    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x00794ab6    b001
                          test               al, cl                                        // 0x00794ab8    84c8
                          {disp8} jne        _jmp_addr_0x00794ac4                          // 0x00794aba    7508
                          or.s               cl, al                                        // 0x00794abc    0ac8
-                         {disp32} mov       byte ptr [data_bytes + 0x5e6934], cl          // 0x00794abe    880d34c9fa00
+                         {disp32} mov       byte ptr [_DAT_00fac934], cl                  // 0x00794abe    880d34c9fa00
 _jmp_addr_0x00794ac4:    {disp32} jmp       _jmp_addr_0x00794ad0                          // 0x00794ac4    e907000000
                          nop                                                              // 0x00794ac9    90
                          nop                                                              // 0x00794aca    90
