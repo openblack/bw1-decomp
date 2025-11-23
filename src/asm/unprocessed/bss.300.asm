@@ -31,6 +31,7 @@
 .globl _DAT_00ed92e8
 .globl _DAT_00eb99e4
 .globl _DAT_00eb99e8
+.globl _g_camera
 
                                            .space 0xac8                                                            // [0x4be578] 0x009c6000 + 0x4be578 = 0x00e84578
 

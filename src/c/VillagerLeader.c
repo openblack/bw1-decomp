@@ -1,5 +1,11 @@
 #include "Villager.h"
 
+const float villager_leader_float1000p0_0x0099a9ac = 1000.0f;
+const float villager_leader_num_days_in_year_0x0099a9b0 = 365.25f;
+const float villager_leader_seconds_in_day_0x0099a9b4 = 86400.0f;
+
+float villager_leader_seconds_in_year_0x00db9e20;
+
 void __cdecl globl_ct_0x00762680(void)
 {
     asm("{disp32} mov       cl, byte ptr [_DAT_00fac934]");                  // 0x00762680    8a0d34c9fa00
@@ -18,8 +24,6 @@ void __cdecl crt_global_destruction_register_0x007626a0(void)
     asm("push               0x00407870");                                    // 0x007626a0    6870784000
     asm("call               _atexit");                                       // 0x007626a5    e8e7300600
     asm("pop                ecx");                                           // 0x007626aa    59
-    asm("ret");                                                              // 0x007626ab    c3
-    __builtin_unreachable();
 }
 
 void __cdecl globl_ct_0x007626b0(void)
@@ -30,11 +34,9 @@ void __cdecl globl_ct_0x007626b0(void)
 
 void __cdecl FUN_007626c0__8VillagerFv(void)
 {
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf19b4]");             // 0x007626c0    d905b4a99900
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf19b0]");             // 0x007626c6    d80db0a99900
-    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3e20]");             // 0x007626cc    d91d209edb00
-    asm("ret");                                                              // 0x007626d2    c3
-    __builtin_unreachable();
+    asm("{disp32} fld  dword ptr [_villager_leader_seconds_in_day_0x0099a9b4]"); // 0x007626c0    d905b4a99900
+    asm("{disp32} fmul dword ptr [_villager_leader_num_days_in_year_0x0099a9b0]");      // 0x007626c6    d80db0a99900
+    asm("{disp32} fstp dword ptr [_villager_leader_seconds_in_year_0x00db9e20]");  // 0x007626cc    d91d209edb00
 }
 
 __attribute__((XOR32rr_REV))

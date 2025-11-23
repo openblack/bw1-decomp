@@ -75,6 +75,8 @@ void __fastcall SetInfoID__9GBaseInfoFv(struct GBaseInfo* this) asm("?SetInfoID@
 
 // win1.41 0042e600 mac 10429820 GBaseInfo::_dt(void)
 void __fastcall __dt__9GBaseInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGBaseInfo@@UAEPAXI@Z");
+// win1.41 004140b0 mac 10578110 GBaseInfo::GetDebugText(void) const
+const char* __fastcall GetDebugText__9GBaseInfoCFv(const struct GBaseInfo* this) asm("?GetDebugText@GBaseInfo@@UBEPBDXZ");
 // win1.41 00436c60 mac 1055df70 GBaseInfo::GetDebugColor(void) const
 struct LHColor* __fastcall GetDebugColor__9GBaseInfoCFv(const struct GBaseInfo* this, const void* edx, struct LHColor* color) asm("?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ");
 // win1.41 00401230 mac 101228b0 GBaseInfo::UpdateValue(void)

@@ -1,5 +1,14 @@
 #include "Villager.h"
 
+const float villager_trader_num_days_in_year_0x0099aa50 = 365.25f;
+const float villager_trader_seconds_in_day_0x0099aa54 = 86400.0f;
+const float villager_trader_float0p7_0x0099aa58 = 0.7f;
+
+uint32_t villager_trader_uint_0x00dcb160;
+uint32_t villager_trader_uint_0x00dcb164;
+float villager_trader_seconds_in_year_0x00dcb168;
+
+
 void __cdecl globl_ct_0x0076b920(void)
 {
     asm("{disp32} mov       cl, byte ptr [_DAT_00fac934]");                  // 0x0076b920    8a0d34c9fa00
@@ -18,8 +27,6 @@ void __cdecl crt_global_destruction_register_0x0076b940(void)
     asm("push               0x00407870");                                    // 0x0076b940    6870784000
     asm("call               _atexit");                                       // 0x0076b945    e8479e0500
     asm("pop                ecx");                                           // 0x0076b94a    59
-    asm("ret");                                                              // 0x0076b94b    c3
-    __builtin_unreachable();
 }
 
 void __cdecl globl_ct_0x0076b950(void)
@@ -30,11 +37,9 @@ void __cdecl globl_ct_0x0076b950(void)
 
 void __cdecl FUN_0076b960__8VillagerFv(void)
 {
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf1a54]");             // 0x0076b960    d90554aa9900
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1a50]");             // 0x0076b966    d80d50aa9900
-    asm("{disp32} fstp      dword ptr [data_bytes + 0x405168]");             // 0x0076b96c    d91d68b1dc00
-    asm("ret");                                                              // 0x0076b972    c3
-    __builtin_unreachable();
+    asm("{disp32} fld  dword ptr [_villager_trader_seconds_in_day_0x0099aa54]");   // 0x0076b960    d90554aa9900
+    asm("{disp32} fmul dword ptr [_villager_trader_num_days_in_year_0x0099aa50]"); // 0x0076b966    d80d50aa9900
+    asm("{disp32} fstp dword ptr [_villager_trader_seconds_in_year_0x00dcb168]");  // 0x0076b96c    d91d68b1dc00
 }
 
 bool32_t __fastcall ArrivesInAbodeToPickUpExcess__8VillagerFv(struct Villager* this)

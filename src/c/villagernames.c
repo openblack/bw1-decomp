@@ -1,5 +1,10 @@
 #include "VillagerNames.h"
 
+char s_Villagernames_cpp[] = "C:\\dev\\MP\\Black\\villagernames.cpp";
+
+struct VillagerNameBlock* CurrentVillagerNameBlock;
+void* PTR_00db9e28;
+
 void __cdecl globl_ct_0x007626f0(void)
 {
     asm("{disp32} mov       cl, byte ptr [_DAT_00fac934]");                  // 0x007626f0    8a0d34c9fa00
@@ -25,7 +30,7 @@ void __cdecl crt_global_destruction_register_0x00762710(void)
 __attribute__((XOR32rr_REV))
 struct VillagerName* __cdecl Alloc__17VillagerNameBlockFv(void)
 {
-    asm("{disp32} mov       ecx, dword ptr [data_bytes + 0x3f3e24]");        // 0x00762720    8b0d249edb00
+    asm("{disp32} mov       ecx, dword ptr [_CurrentVillagerNameBlock]");    // 0x00762720    8b0d249edb00
     asm("test               ecx, ecx");                                      // 0x00762726    85c9
     asm("push               esi");                                           // 0x00762728    56
     asm("{disp8} je         _jmp_addr_0x0076273a");                          // 0x00762729    740f
@@ -69,7 +74,7 @@ struct VillagerName* __cdecl Alloc__17VillagerNameBlockFv(void)
 void __cdecl Delete__17VillagerNameBlockFP12VillagerName(struct VillagerName* name)
 {
     asm("push               esi");                                           // 0x00762780    56
-    asm("{disp32} mov       esi, dword ptr [data_bytes + 0x3f3e24]");        // 0x00762781    8b35249edb00
+    asm("{disp32} mov       esi, dword ptr [_CurrentVillagerNameBlock]");    // 0x00762781    8b35249edb00
     asm("test               esi, esi");                                      // 0x00762787    85f6
     asm("push               edi");                                           // 0x00762789    57
     asm("{disp8} je         _jmp_addr_0x007627da");                          // 0x0076278a    744e
@@ -117,7 +122,7 @@ void __cdecl Delete__17VillagerNameBlockFP12VillagerName(struct VillagerName* na
 bool32_t __fastcall DeleteAll__17VillagerNameBlockFv(struct VillagerNameBlock* this)
 {
     asm("push               esi");                                           // 0x007627e0    56
-    asm("{disp32} mov       esi, dword ptr [data_bytes + 0x3f3e24]");        // 0x007627e1    8b35249edb00
+    asm("{disp32} mov       esi, dword ptr [_CurrentVillagerNameBlock]");    // 0x007627e1    8b35249edb00
     asm("test               esi, esi");                                      // 0x007627e7    85f6
     asm("{disp8} je         _jmp_addr_0x00762805");                          // 0x007627e9    741a
     asm("_jmp_addr_0x007627eb:");
@@ -125,7 +130,7 @@ bool32_t __fastcall DeleteAll__17VillagerNameBlockFv(struct VillagerNameBlock* t
     asm("call               ?FreeAll@VillagerNameBlock@@QAEXXZ");            // 0x007627ed    e87e010000
     asm("push               esi");                                           // 0x007627f2    56
     asm("call               ??3@YAXPAX@Z");                                  // 0x007627f3    e8a0c60400
-    asm("{disp32} mov       esi, dword ptr [data_bytes + 0x3f3e24]");        // 0x007627f8    8b35249edb00
+    asm("{disp32} mov       esi, dword ptr [_CurrentVillagerNameBlock]");    // 0x007627f8    8b35249edb00
     asm("add                esp, 0x04");                                     // 0x007627fe    83c404
     asm("test               esi, esi");                                      // 0x00762801    85f6
     asm("{disp8} jne        _jmp_addr_0x007627eb");                          // 0x00762803    75e6
@@ -161,7 +166,7 @@ struct VillagerNameBlock* __fastcall __ct__17VillagerNameBlockFv(struct Villager
     asm("dec                ecx");                                           // 0x0076286b    49
     asm("{disp8} jne        _jmp_addr_0x00762860");                          // 0x0076286c    75f2
     asm("mov                dword ptr [esi], edx");                          // 0x0076286e    8916
-    asm("{disp32} mov       eax, dword ptr [data_bytes + 0x3f3e24]");        // 0x00762870    a1249edb00
+    asm("{disp32} mov       eax, dword ptr [_CurrentVillagerNameBlock]");    // 0x00762870    a1249edb00
     asm("{disp8} mov        dword ptr [esi + 0x10], eax");                   // 0x00762875    894610
     asm("{disp32} mov       dword ptr [data_bytes + 0x3f3e24], esi");        // 0x00762878    8935249edb00
     asm("mov.s              eax, esi");                                      // 0x0076287e    8bc6
@@ -170,7 +175,7 @@ struct VillagerNameBlock* __fastcall __ct__17VillagerNameBlockFv(struct Villager
     asm("_jmp_addr_0x00762882:");
     asm("xor.s              edx, edx");                                      // 0x00762882    33d2
     asm("mov                dword ptr [esi], edx");                          // 0x00762884    8916
-    asm("{disp32} mov       eax, dword ptr [data_bytes + 0x3f3e24]");        // 0x00762886    a1249edb00
+    asm("{disp32} mov       eax, dword ptr [_CurrentVillagerNameBlock]");    // 0x00762886    a1249edb00
     asm("{disp8} mov        dword ptr [esi + 0x10], eax");                   // 0x0076288b    894610
     asm("{disp32} mov       dword ptr [data_bytes + 0x3f3e24], esi");        // 0x0076288e    8935249edb00
     asm("mov.s              eax, esi");                                      // 0x00762894    8bc6
@@ -212,6 +217,56 @@ void __fastcall AddDrawing__12VillagerNameFv(struct VillagerName* this)
     asm("ret");                                                              // 0x007628fb    c3
     __builtin_unreachable();
 }
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__12VillagerName = {
+    .pTypeDescriptor = &__RTTITypeDescriptor__12VillagerName,
+    .numContainedBases = 0x00000001,
+    .where = {
+        .mdisp = 0x00000000,
+        .pdisp = 0xFFFFFFFF,
+        .vdisp = 0x00000000,
+    },
+    .attributes = 0x0000000,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassArray __RTTIBaseClassArray__12VillagerName = {
+    .arrayOfBaseClassDescriptors = {
+        &__RTTIBaseClassDescriptor__12VillagerName,
+        &__RTTIBaseClassDescriptor__13DrawingObject,
+        NULL,
+    }
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__12VillagerName = {
+  .signature = 0x00000000,
+  .attributes = 0x00000000,
+  .numBaseClasses = 0x00000002,
+  .pBaseClassArray = &__RTTIBaseClassArray__12VillagerName,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12VillagerName = {
+  .signature = 0x00000000,
+  .offset = 0x00000000,
+  .cdOffset = 0x00000000,
+  .pTypeDescriptor = &__RTTITypeDescriptor__12VillagerName,
+  .pClassDescriptor = &__RTTIClassHierarchyDescriptor__12VillagerName,
+};
+
+const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__12VillagerName = &__RTTICompleteObjectLocator__12VillagerName;
+
+const struct VillagerNameVftable __vt__12VillagerName = {
+  AddDrawing__12VillagerNameFv,
+};
+
+struct RTTITypeDescriptor __RTTITypeDescriptor__12VillagerName = {
+    .pVFTable = &__vt__9type_info,
+    .spare = 0,
+    .name = ".?AUVillagerName@@",
+};
 
 void __fastcall __dt__17VillagerNameBlockFv(struct VillagerNameBlock* this)
 {
@@ -290,7 +345,7 @@ void __fastcall FreeAll__17VillagerNameBlockFv(struct VillagerNameBlock* this)
     asm("add                esp, 0x04");                                     // 0x007629ab    83c404
     asm("pop                esi");                                           // 0x007629ae    5e
     asm("_jmp_addr_0x007629af:");
-    asm("{disp32} mov       eax, dword ptr [data_bytes + 0x3f3e24]");        // 0x007629af    a1249edb00
+    asm("{disp32} mov       eax, dword ptr [_CurrentVillagerNameBlock]");    // 0x007629af    a1249edb00
     asm("cmp.s              eax, edi");                                      // 0x007629b4    3bc7
     asm("{disp8} jne        _jmp_addr_0x007629c3");                          // 0x007629b6    750b
     asm("{disp8} mov        edx, dword ptr [edi + 0x10]");                   // 0x007629b8    8b5710

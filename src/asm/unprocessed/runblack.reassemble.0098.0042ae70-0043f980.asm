@@ -3269,7 +3269,7 @@ _jmp_addr_0x0042d0ea:    {disp8} lea        eax, dword ptr [esp + 0x1c]         
                          push               edx                                                  // 0x0042d33d    52
                          push               ebx                                                  // 0x0042d33e    53
                          push               0x000000ff                                           // 0x0042d33f    68ff000000
-                         push               0x00db9e68 /* _GVillagerStateTableInfo_ARRAY_00db9e68 */ // 0x0042d344    68689edb00
+                         push               0x00db9e68 /* _GVillagerStateTableInfos */           // 0x0042d344    68689edb00
                          push               0x009cbcb4                                           // 0x0042d349    68b4bc9c00
                          push               ebp                                                  // 0x0042d34e    55
                          call               ??$LoadIt@VGVillagerStateTableInfo@@@@YAXPAVLoaderAnon@@PADPAVGVillagerStateTableInfo@@K_NPAVLHFile@@@Z  // 0x0042d34f    e8ac6b0000

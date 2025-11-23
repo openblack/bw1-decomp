@@ -1,24 +1,24 @@
 .intel_syntax noprefix
 .section .rdata$r,"dr"
 
-.macro _RTTIBaseClassDescriptor name num_base_classes type
+.macro _RTTIBaseClassDescriptor name num_base_classes type mdisp
     .global ??_R1A@?0A@A@\name@@8
 _RTTIBaseClassDescriptor__\name:
 ??_R1A@?0A@A@\name@@8:
     .long ??_R0?A\type\name@@@8
     .long \num_base_classes
-    .long 0x00000000
+    .long \mdisp
     .long 0xFFFFFFFF
     .long 0x00000000
     .long 0x00000000
 .endm
 
 .macro RTTIBaseClassDescriptor name num_base_classes
-    _RTTIBaseClassDescriptor \name \num_base_classes V
+    _RTTIBaseClassDescriptor \name \num_base_classes V 0x00000000
 .endm
 
 .macro RTTIBaseClassDescriptorStruct name num_base_classes
-    _RTTIBaseClassDescriptor \name \num_base_classes U
+    _RTTIBaseClassDescriptor \name \num_base_classes U 0x00000000
 .endm
 
 .macro RTTIBaseClassArray name
@@ -1110,9 +1110,7 @@ RTTIBaseClassArray GBeliefInfo                                                  
 RTTIClassHierarchyDescriptor GBeliefInfo 3                                                                         // [0xff3b0] 0x008a9000 + 0xff3b0 = 0x009a83b0
 RTTICompleteObjectLocator GBeliefInfo                                                                              // [0xff3c0] 0x008a9000 + 0xff3c0 = 0x009a83c0
 .long 0x00000000                                                                                                   // [0xff3d4] 0x008a9000 + 0xff3d4 = 0x009a83d4
-.byte 0x40, 0xd2, 0x9c, 0x00, 0x00, 0x00, 0x00, 0x00                                                               // [0xff3d8] 0x008a9000 + 0xff3d8 = 0x009a83d8
-.byte 0x04, 0x00, 0x00, 0x00, 0xff, 0xff, 0xff, 0xff                                                               // [0xff3e0] 0x008a9000 + 0xff3e0 = 0x009a83e0
-.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00                                                               // [0xff3e8] 0x008a9000 + 0xff3e8 = 0x009a83e8
+_RTTIBaseClassDescriptor DrawingObject 0 V 4                                                                       // [0xff3d8] 0x008a9000 + 0xff3d8 = 0x009a83d8
 RTTIBaseClassDescriptorStruct ValueSpinner 1                                                                       // [0xff3f0] 0x008a9000 + 0xff3f0 = 0x009a83f0
 RTTIBaseClassArray ValueSpinner                                                                                    // [0xff408] 0x008a9000 + 0xff408 = 0x009a8408
 .long 0x009a83d8

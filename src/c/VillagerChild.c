@@ -1,5 +1,14 @@
 #include "Villager.h"
 
+const float rdata_float10p0_0x0099a934 = 10.0f;
+const float villager_child_num_days_in_year_0x0099a938 = 365.25f;
+const float villager_child_seconds_in_day_0x0099a93c = 86400.0f;
+
+char s_VillagerChild_cpp[] = "C:\\dev\\MP\\Black\\VillagerChild.cpp";
+
+uint32_t villager_child_uint_0x00db9dd0;
+float villager_child_seconds_in_year_0x00db9dd4;
+
 void __cdecl globl_ct_0x00757860(void)
 {
     asm("{disp32} mov       cl, byte ptr [_DAT_00fac934]");                  // 0x00757860    8a0d34c9fa00
@@ -28,9 +37,9 @@ void __cdecl globl_ct_0x00757890(void)
 
 void __cdecl FUN_007578a0__8VillagerFv(void)
 {
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf193c]");             // 0x007578a0    d9053ca99900
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1938]");             // 0x007578a6    d80d38a99900
-    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3dd4]");             // 0x007578ac    d91dd49ddb00
+    asm("{disp32} fld  dword ptr [_villager_child_seconds_in_day_0x0099a93c]");   // 0x007578a0    d9053ca99900
+    asm("{disp32} fmul dword ptr [_villager_child_num_days_in_year_0x0099a938]"); // 0x007578a6    d80d38a99900
+    asm("{disp32} fstp dword ptr [_villager_child_seconds_in_year_0x00db9dd4]");        // 0x007578ac    d91dd49ddb00
 }
 
 bool32_t __fastcall ChildFollowsMother__8VillagerFv(struct Villager* this)
@@ -88,7 +97,7 @@ bool32_t __fastcall ChildFollowsMother__8VillagerFv(struct Villager* this)
     asm("push               0x40c90fdb");                                    // 0x00757970    68db0fc940
     asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00757975    e8b66bf8ff
     asm("{disp8} fstp       dword ptr [esp + 0x14]");                        // 0x0075797a    d95c2414
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf1934]");             // 0x0075797e    d90534a99900
+    asm("{disp32} fld       dword ptr [_rdata_float10p0_0x0099a934]");       // 0x0075797e    d90534a99900
     asm("{disp8} mov        ecx, dword ptr [esp + 0x14]");                   // 0x00757984    8b4c2414
     asm("{disp32} fmul      dword ptr [_rdata_float0p5]");                   // 0x00757988    d80db4a38a00
     asm("{disp8} lea        edx, dword ptr [esp + 0x24]");                   // 0x0075798e    8d542424
@@ -438,7 +447,7 @@ bool32_t __fastcall ChildAtCreche__8VillagerFv(struct Villager* this)
     asm("add                esp, 0x04");                                     // 0x00757cf4    83c404
     asm("cmp.s              edi, ebx");                                      // 0x00757cf7    3bfb
     asm("{disp32} je        _jmp_addr_0x00757e6b");                          // 0x00757cf9    0f846c010000
-    asm("{disp32} fcomp     qword ptr [rdata_bytes + 0x2f758]");             // 0x00757cff    dc1d58878d00
+    asm("{disp32} fcomp     qword ptr [__real@8@333333333333f33f]");         // 0x00757cff    dc1d58878d00
     asm("fnstsw             ax");                                            // 0x00757d05    dfe0
     asm("test               ah, 0x41");                                      // 0x00757d07    f6c441
     asm("{disp8} je         _jmp_addr_0x00757d1a");                          // 0x00757d0a    740e
@@ -507,9 +516,9 @@ bool32_t __fastcall ChildAtCreche__8VillagerFv(struct Villager* this)
     asm("{disp32} mov       ecx, dword ptr [_game]");                        // 0x00757dc0    8b0d5c19d000
     asm("call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ");           // 0x00757dc6    e8b543dfff
     asm("{disp8} fld        dword ptr [esp + 0x24]");                        // 0x00757dcb    d9442424
-    asm("{disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]");        // 0x00757dcf    8b0db81dea00
-    asm("{disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]");        // 0x00757dd5    8b15bc1dea00
-    asm("{disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]");        // 0x00757ddb    a1c01dea00
+    asm("{disp32} mov       ecx, dword ptr [_g_camera + 0]");                // 0x00757dcf    8b0db81dea00
+    asm("{disp32} mov       edx, dword ptr [_g_camera + 4]");                // 0x00757dd5    8b15bc1dea00
+    asm("{disp32} mov       eax, dword ptr [_g_camera + 8]");                // 0x00757ddb    a1c01dea00
     asm("{disp8} mov        dword ptr [esp + 0x18], ecx");                   // 0x00757de0    894c2418
     asm("{disp8} fsub       dword ptr [esp + 0x18]");                        // 0x00757de4    d8642418
     asm("{disp8} fld        dword ptr [esp + 0x28]");                        // 0x00757de8    d9442428

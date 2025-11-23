@@ -1,5 +1,14 @@
 #include "Villager.h"
 
+const float villager_fireman_num_days_in_year_0x0099a960 = 365.25f;
+const float villager_fireman_seconds_in_day_0x0099a964 = 86400.0f;
+const float villager_fireman_m8p0_0x0099a968 = -8.0f;
+const float villager_fireman_point_to_coord_0x0099a96c = 6553.6f;
+
+char s_VillagerFireman_cpp[] = "C:\\dev\\MP\\Black\\VillagerFireman.cpp";
+
+float villager_fireman_seconds_in_year_0x00db9e00;
+
 void __cdecl globl_ct_0x0075a370(void)
 {
     asm("{disp32} mov       cl, byte ptr [_DAT_00fac934]");                  // 0x0075a370    8a0d34c9fa00
@@ -30,11 +39,9 @@ void __cdecl globl_ct_0x0075a3a0(void)
 
 void __cdecl FUN_0075a3b0__8VillagerFv(void)
 {
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf1964]");             // 0x0075a3b0    d90564a99900
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1960]");             // 0x0075a3d6    d80d60a99900
-    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3e00]");             // 0x0075a3dc    d91d009edb00
-    asm("ret");                                                              // 0x0075a3c2    c3
-    __builtin_unreachable();
+    asm("{disp32} fld  dword ptr [_villager_fireman_seconds_in_day_0x0099a964]");   // 0x0075a3b0    d90564a99900
+    asm("{disp32} fmul dword ptr [_villager_fireman_num_days_in_year_0x0099a960]"); // 0x0075a3d6    d80d60a99900
+    asm("{disp32} fstp dword ptr [_villager_fireman_seconds_in_year_0x00db9e00]");  // 0x0075a3dc    d91d009edb00
 }
 
 __attribute__((XOR32rr_REV))
@@ -81,12 +88,12 @@ float __stdcall GetViaPoint__FRC9MapCoordsRC9MapCoordsRC9MapCoordsfR9MapCoordsfP
 {
     asm("{disp8} fld        dword ptr [esp + 0x10]");                        // 0x0075a440    d9442410
     asm("{disp8} mov        eax, dword ptr [esp + 0x20]");                   // 0x0075a444    8b442420
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf196c]");             // 0x0075a448    d80d6ca99900
+    asm("{disp32} fmul      dword ptr [_villager_fireman_point_to_coord_0x0099a96c]"); // 0x0075a448    d80d6ca99900
     asm("sub                esp, 0x14");                                     // 0x0075a44e    83ec14
     asm("test               eax, eax");                                      // 0x0075a451    85c0
     asm("{disp8} fstp       dword ptr [esp + 0x24]");                        // 0x0075a453    d95c2424
     asm("{disp8} fld        dword ptr [esp + 0x2c]");                        // 0x0075a457    d944242c
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf196c]");             // 0x0075a45b    d80d6ca99900
+    asm("{disp32} fmul      dword ptr [_villager_fireman_point_to_coord_0x0099a96c]"); // 0x0075a45b    d80d6ca99900
     asm("{disp8} fstp       dword ptr [esp + 0x2c]");                        // 0x0075a461    d95c242c
     asm("{disp8} je         _jmp_addr_0x0075a46a");                          // 0x0075a465    7403
     asm("mov                byte ptr [eax], 0x00");                          // 0x0075a467    c60000
@@ -855,7 +862,7 @@ bool32_t __fastcall PutOutFireByBeating__8VillagerFv(struct Villager* this)
     asm("add                esp, 0x4c");                                     // 0x0075acdb    83c44c
     asm("ret");                                                              // 0x0075acde    c3
     asm("_jmp_addr_0x0075acdf:");
-    asm("{disp32} mov       ecx, dword ptr [rdata_bytes + 0xf1968]");        // 0x0075acdf    8b0d68a99900
+    asm("{disp32} mov       ecx, dword ptr [_villager_fireman_m8p0_0x0099a968]"); // 0x0075acdf    8b0d68a99900
     asm("push               0x0");                                           // 0x0075ace5    6a00
     asm("push               0x3f800000");                                    // 0x0075ace7    680000803f
     asm("push               0x0");                                           // 0x0075acec    6a00

@@ -1,5 +1,11 @@
 #include "Villager.h"
 
+const float villager_worshipper_num_days_in_year_0x0099aa5c = 365.25f;
+const float villager_worshipper_seconds_in_day_0x0099aa60 = 86400.0f;
+
+uint32_t villager_worshipper_uint_0x00dcb16c;
+float villager_worshipper_seconds_in_year_0x00dcb170;
+
 void __cdecl globl_ct_0x0076b9e0(void)
 {
     asm("{disp32} mov       cl, byte ptr [_DAT_00fac934]");                  // 0x0076b9e0    8a0d34c9fa00
@@ -18,8 +24,6 @@ void __cdecl crt_global_destruction_register_0x0076ba00(void)
     asm("push               0x00407870");                                    // 0x0076ba00    6870784000
     asm("call               _atexit");                                       // 0x0076ba05    e8879d0500
     asm("pop                ecx");                                           // 0x0076ba0a    59
-    asm("ret");                                                              // 0x0076ba0b    c3
-    __builtin_unreachable();
 }
 
 void __cdecl globl_ct_0x0076ba10(void)
@@ -30,11 +34,9 @@ void __cdecl globl_ct_0x0076ba10(void)
 
 void __cdecl FUN_0076ba20__8VillagerFv(void)
 {
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf1a60]");             // 0x0076ba20    d90560aa9900
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1a5c]");             // 0x0076ba26    d80d5caa9900
-    asm("{disp32} fstp      dword ptr [data_bytes + 0x405170]");             // 0x0076ba2c    d91d70b1dc00
-    asm("ret");                                                              // 0x0076ba32    c3
-    __builtin_unreachable();
+    asm("{disp32} fld  dword ptr [_villager_worshipper_seconds_in_day_0x0099aa60]");   // 0x0076ba20    d90560aa9900
+    asm("{disp32} fmul dword ptr [_villager_worshipper_num_days_in_year_0x0099aa5c]"); // 0x0076ba26    d80d5caa9900
+    asm("{disp32} fstp dword ptr [_villager_worshipper_seconds_in_year_0x00dcb170]");  // 0x0076ba2c    d91d70b1dc00
 }
 
 void __cdecl globl_ct_0x0076ba40(void)
@@ -45,9 +47,7 @@ void __cdecl globl_ct_0x0076ba40(void)
 
 void __cdecl FUN_0076ba50__8VillagerFv(void)
 {
-    asm("{disp32} mov       dword ptr [data_bytes + 0x40516c], 0xffffffff");  // 0x0076ba50    c7056cb1dc00ffffffff
-    asm("ret");                                                              // 0x0076ba5a    c3
-    __builtin_unreachable();
+    asm("{disp32} mov dword ptr [_villager_worshipper_uint_0x00dcb16c], 0xffffffff");  // 0x0076ba50    c7056cb1dc00ffffffff
 }
 
 __attribute__((XOR32rr_REV))

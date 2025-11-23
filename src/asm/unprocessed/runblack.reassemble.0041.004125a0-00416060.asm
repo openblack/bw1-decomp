@@ -67,7 +67,7 @@
 .globl _globl_ct_0x00414070
 .globl _globl_ct_0x00414770
 
-.globl ?GetDebugText@Base@@UBEPBDXZ
+.globl ?GetDebugText@GBaseInfo@@UBEPBDXZ
 .globl ?GetPDMRegion@EditorIconBase@@UAIPAULHRegion@@XZ
 .globl ?GetTextRegion@EditorIconBase@@UAIPAULHRegion@@XZ
 .globl ?GetTextHandle@EditorIconBase@@UAIIXZ
@@ -2335,7 +2335,7 @@ _jmp_addr_0x0041408c:    movl               $??_7Base@@6B@, (%eax)              
                          nop                                                              // 0x004140ad    90
                          nop                                                              // 0x004140ae    90
                          nop                                                              // 0x004140af    90
-?GetDebugText@Base@@UBEPBDXZ:
+?GetDebugText@GBaseInfo@@UBEPBDXZ:
                          xor.s              eax, eax                                      // 0x004140b0    33c0
                          ret                                                              // 0x004140b2    c3
                          nop                                                              // 0x004140b3    90

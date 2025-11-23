@@ -6340,3 +6340,7 @@ RTTIBaseClassArray GTribeInfo                                                   
 .long ??_R1A@?0A@A@GBaseInfo@@8
 .long ??_R1A@?0A@A@Base@@8
 .long 0x00000000
+
+RTTIClassHierarchyDescriptor GTribeInfo 3                                                                          // [0x110cf8] 0x008a9000 + 0x110cf8 = 0x009b9cf8
+RTTICompleteObjectLocator GTribeInfo                                                                               // [0x110d08] 0x008a9000 + 0x110d08 = 0x009b9d08
+.long 0x00000000                                                                                                   // [0x110d1c] 0x008a9000 + 0x110d1c = 0x009b9d1c

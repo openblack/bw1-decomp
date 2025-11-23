@@ -1,5 +1,28 @@
 #include "Villager.h"
 #include "VillagerStateTableInfo.h"
+#include <float.h>
+
+const float villager_states_float_max_0x0099aa0c = FLT_MAX;
+const float villager_states_float10p0_0x0099aa10 = 10.0f;
+const float villager_states_float_pi_0x0099aa14 = 3.1415927f;
+const float villager_states_num_days_in_year_0x0099aa18 = 365.25f;
+const float villager_states_seconds_in_day_0x0099aa1c = 86400.0f;
+
+__attribute__((aligned(8))) struct RTTITypeDescriptor __RTTITypeDescriptor__23GVillagerStateTableInfo = {
+    .pVFTable = &__vt__9type_info,
+    .spare = 0,
+    .name = ".?AVGVillagerStateTableInfo@@",
+};
+__attribute__((aligned(4))) char s_VillagerStates_cpp[] = "C:\\dev\\MP\\Black\\VillagerStates.cpp";
+
+uint32_t villager_states_uint_0x00db9e58;
+float villager_states_seconds_in_year_0x00db9e5c;
+uint8_t villager_states_byte_0x00db9e60;
+uint32_t villager_states_uint_0x00db9e64;
+struct GVillagerStateTableInfo GVillagerStateTableInfos[VILLAGER_STATE_LAST_STATE];
+float villager_states_float_0x00dcb154;
+uint8_t villager_states_byte_0x00db9e58;
+float villager_states_half_pi_0x00dcb15c;
 
 void __cdecl globl_ct_0x00769470(void)
 {
@@ -19,8 +42,6 @@ void __cdecl crt_global_destruction_register_0x00769490(void)
     asm("push               0x00407870");                                    // 0x00769490    6870784000
     asm("call               _atexit");                                       // 0x00769495    e8f7c20500
     asm("pop                ecx");                                           // 0x0076949a    59
-    asm("ret");                                                              // 0x0076949b    c3
-    __builtin_unreachable();
 }
 
 void __cdecl globl_ct_0x007694a0(void)
@@ -31,9 +52,7 @@ void __cdecl globl_ct_0x007694a0(void)
 
 void __cdecl FUN_007694b0__8VillagerFv(void)
 {
-    asm("{disp32} mov       dword ptr [data_bytes + 0x405154], 0x3e000000");  // 0x007694b0    c70554b1dc000000003e
-    asm("ret");                                                              // 0x007694ba    c3
-    __builtin_unreachable();
+    asm("{disp32} mov dword ptr [_villager_states_float_0x00dcb154], 0x3e000000");  // 0x007694b0    c70554b1dc000000003e
 }
 
 void __cdecl globl_ct_0x007694c0(void)
@@ -44,11 +63,9 @@ void __cdecl globl_ct_0x007694c0(void)
 
 void __cdecl FUN_007694d0__8VillagerFv(void)
 {
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf1a14]");             // 0x007694d0    d90514aa9900
-    asm("{disp32} fmul      dword ptr [_rdata_float0p5]");                   // 0x007694d6    d80db4a38a00
-    asm("{disp32} fstp      dword ptr [data_bytes + 0x40515c]");             // 0x007694dc    d91d5cb1dc00
-    asm("ret");                                                              // 0x007694e2    c3
-    __builtin_unreachable();
+    asm("{disp32} fld  dword ptr [_villager_states_float_pi_0x0099aa14]"); // 0x007694d0    d90514aa9900
+    asm("{disp32} fmul dword ptr [_rdata_float0p5]");                      // 0x007694d6    d80db4a38a00
+    asm("{disp32} fstp dword ptr [_villager_states_half_pi_0x00dcb15c]");  // 0x007694dc    d91d5cb1dc00
 }
 
 void __cdecl globl_ct_0x007694f0(void)
@@ -59,11 +76,9 @@ void __cdecl globl_ct_0x007694f0(void)
 
 void __cdecl FUN_00769500__8VillagerFv(void)
 {
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf1a1c]");             // 0x00769500    d9051caa9900
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1a18]");             // 0x00769506    d80d18aa9900
-    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3e5c]");             // 0x0076950c    d91d5c9edb00
-    asm("ret");                                                              // 0x00769512    c3
-    __builtin_unreachable();
+    asm("{disp32} fld  dword ptr [_villager_states_seconds_in_day_0x0099aa1c]");   // 0x00769500    d9051caa9900
+    asm("{disp32} fmul dword ptr [_villager_states_num_days_in_year_0x0099aa18]"); // 0x00769506    d80d18aa9900
+    asm("{disp32} fstp dword ptr [_villager_states_seconds_in_year_0x00db9e5c]");  // 0x0076950c    d91d5c9edb00
 }
 
 void __cdecl globl_ct_0x00769520(void)
@@ -74,9 +89,7 @@ void __cdecl globl_ct_0x00769520(void)
 
 void __cdecl FUN_00769530__8VillagerFv(void)
 {
-    asm("{disp32} mov       dword ptr [data_bytes + 0x3f3e64], 0xffffffff");  // 0x00769530    c705649edb00ffffffff
-    asm("ret");                                                              // 0x0076953a    c3
-    __builtin_unreachable();
+    asm("{disp32} mov dword ptr [_villager_states_uint_0x00db9e64], 0xffffffff");  // 0x00769530    c705649edb00ffffffff
 }
 
 void __cdecl globl_ct_0x00769540(void)
@@ -88,7 +101,7 @@ void __cdecl globl_ct_0x00769540(void)
 
 void __cdecl FUN_00769550__8VillagerFv(void)
 {
-    asm("mov                eax, OFFSET _GVillagerStateTableInfo_ARRAY_00db9e68");  // 0x00769550    b8689edb00
+    asm("mov                eax, OFFSET _GVillagerStateTableInfos");         // 0x00769550    b8689edb00
     asm("mov                ecx, 0x000000ff");                               // 0x00769555    b9ff000000
     asm("xor.s              edx, edx");                                      // 0x0076955a    33d2
     asm("_jmp_addr_0x0076955c:");
@@ -99,15 +112,13 @@ void __cdecl FUN_00769550__8VillagerFv(void)
     asm("add                eax, 0x00000114");                               // 0x0076956e    0514010000
     asm("dec                ecx");                                           // 0x00769573    49
     asm("{disp8} jne        _jmp_addr_0x0076955c");                          // 0x00769574    75e6
-    asm("ret");                                                              // 0x00769576    c3
-    __builtin_unreachable();
 }
 
 struct GBaseInfo* __fastcall GetBaseInfo__23GVillagerStateTableInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1)
 {
     asm("{disp8} mov        eax, dword ptr [esp + 0x04]");                     // 0x00769580    8b442404
     asm("mov                dword ptr [eax], 0x000000ff");                     // 0x00769584    c700ff000000
-    asm("mov                eax, OFFSET _GVillagerStateTableInfo_ARRAY_00db9e68");  // 0x0076958a    b8689edb00
+    asm("mov                eax, OFFSET _GVillagerStateTableInfos");           // 0x0076958a    b8689edb00
     asm("ret                0x0004");                                          // 0x0076958f    c20400
     __builtin_unreachable();
 }
@@ -123,14 +134,14 @@ void __cdecl FUN_007695a0__8VillagerFv(void)
 
 void __cdecl FUN_007695b0__8VillagerFv(void)
 {
-    asm("{disp32} mov       cl, byte ptr [data_bytes + 0x3f3e60]");          // 0x007695b0    8a0d609edb00
+    asm("{disp32} mov       cl, byte ptr [_villager_states_byte_0x00db9e60]"); // 0x007695b0    8a0d609edb00
     asm("mov                al, 0x01");                                      // 0x007695b6    b001
     asm("test               al, cl");                                        // 0x007695b8    84c8
     asm("{disp8} jne        _jmp_addr_0x007695e2");                          // 0x007695ba    7526
     asm("push               esi");                                           // 0x007695bc    56
     asm("or.s               cl, al");                                        // 0x007695bd    0ac8
     asm("push               edi");                                           // 0x007695bf    57
-    asm("{disp32} mov       byte ptr [data_bytes + 0x3f3e60], cl");          // 0x007695c0    880d609edb00
+    asm("{disp32} mov       byte ptr [_villager_states_byte_0x00db9e60], cl"); // 0x007695c0    880d609edb00
     asm("mov                esi, 0x00dcb154");                               // 0x007695c6    be54b1dc00
     asm("mov                edi, 0x000000ff");                               // 0x007695cb    bfff000000
     asm("_jmp_addr_0x007695d0:");
@@ -161,6 +172,61 @@ void __fastcall __dt__23GVillagerStateTableInfoFv(struct Base* this, const void*
     asm("ret                0x0004");                                          // 0x00769610    c20400
     __builtin_unreachable();
 }
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__23GVillagerStateTableInfo = {
+    .pTypeDescriptor = &__RTTITypeDescriptor__23GVillagerStateTableInfo,
+    .numContainedBases = 0x00000002,
+    .where = {
+        .mdisp = 0x00000000,
+        .pdisp = 0xFFFFFFFF,
+        .vdisp = 0x00000000,
+    },
+    .attributes = 0x0000000,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassArray __RTTIBaseClassArray__23GVillagerStateTableInfo = {
+    .arrayOfBaseClassDescriptors = {
+        &__RTTIBaseClassDescriptor__23GVillagerStateTableInfo,
+        &__RTTIBaseClassDescriptor__9GBaseInfo,
+        &__RTTIBaseClassDescriptor__4Base,
+        NULL,
+    }
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__23GVillagerStateTableInfo = {
+  .signature = 0x00000000,
+  .attributes = 0x00000000,
+  .numBaseClasses = 0x00000003,
+  .pBaseClassArray = &__RTTIBaseClassArray__23GVillagerStateTableInfo,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__23GVillagerStateTableInfo = {
+  .signature = 0x00000000,
+  .offset = 0x00000000,
+  .cdOffset = 0x00000000,
+  .pTypeDescriptor = &__RTTITypeDescriptor__23GVillagerStateTableInfo,
+  .pClassDescriptor = &__RTTIClassHierarchyDescriptor__23GVillagerStateTableInfo,
+};
+
+const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__23GVillagerStateTableInfo = &__RTTICompleteObjectLocator__23GVillagerStateTableInfo;
+
+const struct GBaseInfoVftable __vt__23GVillagerStateTableInfo = {
+  Serialise__4BaseFR7Archive,
+  __dt__23GVillagerStateTableInfoFv,
+  Delete__4BaseFv,
+  ToBeDeleted__4BaseFi,
+  Get3DSoundPos__4BaseFP7LHPoint,
+  CleanUpForSerialisation__4BaseFv,
+  Dump__4BaseFv,
+  GetDebugText__9GBaseInfoCFv,
+  GetDebugColor__9GBaseInfoCFv,
+  GetBaseInfo__23GVillagerStateTableInfoFRUl,
+  UpdateValue__9GBaseInfoFfUlUl,
+};
 
 __attribute__((XOR32rr_REV))
 uint32_t __fastcall GotoStoragePitForDropOff__8VillagerFv(struct Villager* this)
@@ -1659,12 +1725,12 @@ bool __fastcall Dead__8VillagerFv(struct Living* this)
     asm("call               dword ptr [eax + 0xc]");                           // 0x0076a5ef    ff500c
     asm("{disp8} mov        dword ptr [esi + 0x44], 0x00000000");              // 0x0076a5f2    c7464400000000
     asm("_jmp_addr_0x0076a5f9:");
-    asm("{disp32} mov       al, byte ptr [data_bytes + 0x405158]");            // 0x0076a5f9    a058b1dc00
+    asm("{disp32} mov       al, byte ptr [_villager_states_byte_0x00db9e58]"); // 0x0076a5f9    a058b1dc00
     asm("test               al, 0x01");                                        // 0x0076a5fe    a801
     asm("{disp8} jne        _jmp_addr_0x0076a626");                            // 0x0076a600    7524
     asm("{disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]");          // 0x0076a602    8b0d34fee900
     asm("or                 al, 1");                                           // 0x0076a608    0c01
-    asm("{disp32} mov       byte ptr [data_bytes + 0x405158], al");            // 0x0076a60a    a258b1dc00
+    asm("{disp32} mov       byte ptr [_villager_states_byte_0x00db9e58], al"); // 0x0076a60a    a258b1dc00
     asm("mov                edx, dword ptr [ecx]");                            // 0x0076a60f    8b11
     asm("mov                eax, 0x000001ff");                                 // 0x0076a611    b8ff010000
     asm("cmp.s              edx, eax");                                        // 0x0076a616    3bd0
@@ -3363,7 +3429,7 @@ bool32_t __fastcall BreederJustLanded__8VillagerFv(struct Villager* this)
     asm("{disp8} mov        edx, dword ptr [eax + 0x04]");                     // 0x0076b80e    8b5004
     asm("{disp8} mov        eax, dword ptr [eax + 0x08]");                     // 0x0076b811    8b4008
     asm("{disp8} mov        dword ptr [esp + 0x1c], ecx");                     // 0x0076b814    894c241c
-    asm("{disp32} mov       ecx, dword ptr [rdata_bytes + 0xf1a0c]");          // 0x0076b818    8b0d0caa9900
+    asm("{disp32} mov       ecx, dword ptr [_villager_states_float_max_0x0099aa0c]"); // 0x0076b818    8b0d0caa9900
     asm("push               esi");                                             // 0x0076b81e    56
     asm("{disp8} mov        dword ptr [esp + 0x24], edx");                     // 0x0076b81f    89542424
     asm("mov                edx, dword ptr [ebx]");                            // 0x0076b823    8b13

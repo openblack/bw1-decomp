@@ -379,7 +379,6 @@ set(SOURCES_001
     c/VillagerCheck.c
     c/VillagerChild.c
     c/VillagerCivic.c
-    c/VillagerConstruction.c
     c/VillagerDance.c
     c/VillagerFarmer.c
     c/VillagerFireman.c
@@ -390,7 +389,7 @@ set(SOURCES_001
     c/VillagerHome.c
     c/VillagerHousewife.c
     c/VillagerLeader.c
-    c/Villagernames.c  # Case is matching vanilla's typo
+    c/villagernames.c  # Case is matching vanilla's typo
     c/VillagerPlaytime.c
     c/VillagerReaction.c
     c/VillagerReactionToCreature.c
@@ -400,12 +399,10 @@ set(SOURCES_001
     c/VillagerTrader.c
     c/VillagerWorshipper.c
 
-    asm/unprocessed/rdata.189-vftables.asm
-    asm/unprocessed/rdata.190-vftables.asm
-    asm/unprocessed/bss.190.asm
-    asm/unprocessed/data.190.asm
     asm/unprocessed/rdata.190-vftables.asm
     asm/unprocessed/rdata.r.190-rtti.asm
+    asm/unprocessed/data.190.asm
+    asm/unprocessed/bss.190.asm
 
     asm/unprocessed/runblack.reassemble.0993.007678a0-007791d0.asm
     asm/unprocessed/runblack.reassemble.0996.007791d0-0077d2e0.asm

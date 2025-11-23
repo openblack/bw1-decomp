@@ -1,5 +1,18 @@
 #include "Villager.h"
 #include "Town.h"
+#include <float.h>
+
+const float villager_reaction_float_max_0x0099a9cc = FLT_MAX;
+const float villager_reaction_float10p0_0x0099a9d0 = 10.0f;
+const float villager_reaction_num_days_in_year_0x0099a9d4 = 365.25f;
+const float villager_reaction_seconds_in_day_0x0099a9d8 = 86400.0f;
+const float villager_reaction_float0p7_0x0099a9dc = 0.7f;
+
+__attribute__((aligned(4))) char s_Religious_Belief_cpp[] = "Religious Belief";
+__attribute__((aligned(4))) char s_VillagerReaction_cpp[] = "C:\\dev\\MP\\Black\\VillagerReaction.cpp";
+
+uint32_t villager_reaction_uint_0x00db9e30;
+float villager_reaction_seconds_in_year_0x00db9e34;
 
 void __cdecl globl_ct_0x00763310(void)
 {
@@ -19,8 +32,6 @@ void __cdecl crt_global_destruction_register_0x00763330(void)
     asm("push               0x00407870");                                    // 0x00763330    6870784000
     asm("call               _atexit");                                       // 0x00763335    e857240600
     asm("pop                ecx");                                           // 0x0076333a    59
-    asm("ret");                                                              // 0x0076333b    c3
-    __builtin_unreachable();
 }
 
 void __cdecl globl_ct_0x00763340(void)
@@ -31,11 +42,9 @@ void __cdecl globl_ct_0x00763340(void)
 
 void __cdecl FUN_00763350__8VillagerFv(void)
 {
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf19d8]");             // 0x00763350    d905d8a99900
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf19d4]");             // 0x00763356    d80dd4a99900
-    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3e34]");             // 0x0076335c    d91d349edb00
-    asm("ret");                                                              // 0x00763362    c3
-    __builtin_unreachable();
+    asm("{disp32} fld  dword ptr [_villager_reaction_seconds_in_day_0x0099a9d8]");   // 0x00763350    d905d8a99900
+    asm("{disp32} fmul dword ptr [_villager_reaction_num_days_in_year_0x0099a9d4]"); // 0x00763356    d80dd4a99900
+    asm("{disp32} fstp dword ptr [_villager_reaction_seconds_in_year_0x00db9e34]");  // 0x0076335c    d91d349edb00
 }
 
 void __cdecl globl_ct_0x00763370(void)
@@ -46,9 +55,7 @@ void __cdecl globl_ct_0x00763370(void)
 
 void __cdecl FUN_00763380__8VillagerFv(void)
 {
-    asm("{disp32} mov       dword ptr [data_bytes + 0x3f3e30], 0xffffffff");  // 0x00763380    c705309edb00ffffffff
-    asm("ret");                                                              // 0x0076338a    c3
-    __builtin_unreachable();
+    asm("{disp32} mov dword ptr [_villager_reaction_uint_0x00db9e30], 0xffffffff");  // 0x00763380    c705309edb00ffffffff
 }
 
 __attribute__((XOR32rr_REV))
@@ -294,7 +301,7 @@ bool32_t __fastcall DisplayHowImpressed__4TownFv(struct Town* this)
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3400]");              // 0x00763615    d80d00c48a00
     asm("{disp8} mov        dword ptr [esp + 0x14], eax");                   // 0x0076361b    89442414
     asm("call               _jmp_addr_0x007a1400");                          // 0x0076361f    e8dcdd0300
-    asm("{disp32} mov       ecx, dword ptr [rdata_bytes + 0xf19cc]");        // 0x00763624    8b0dcca99900
+    asm("{disp32} mov       ecx, dword ptr [_villager_reaction_float_max_0x0099a9cc]"); // 0x00763624    8b0dcca99900
     asm("push               ecx");                                           // 0x0076362a    51
     asm("{disp8} lea        ecx, dword ptr [esp + 0x18]");                   // 0x0076362b    8d4c2418
     asm("{disp8} mov        dword ptr [esp + 0x1c], eax");                   // 0x0076362f    8944241c
@@ -3406,7 +3413,7 @@ uint8_t __fastcall ReactToFirePriority__8VillagerFP8ReactionP8Reaction(struct Li
     asm("add                esp, 0x0c");                                     // 0x007657ea    83c40c
     asm("ret                0x0008");                                        // 0x007657ed    c20800
     asm("_jmp_addr_0x007657f0:");
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf19d0]");             // 0x007657f0    d905d0a99900
+    asm("{disp32} fld       dword ptr [_villager_reaction_float10p0_0x0099a9d0]");             // 0x007657f0    d905d0a99900
     asm("{disp32} mov       ecx, dword ptr [esi + 0x00000114]");             // 0x007657f6    8b8e14010000
     asm("{disp32} fadd      dword ptr [data_bytes + 0x389ac4]");             // 0x007657fc    d805c4fad400
     asm("mov                eax, dword ptr [ecx]");                          // 0x00765802    8b01
@@ -5007,12 +5014,12 @@ bool32_t __fastcall ConfusedReaction__8VillagerFv(struct Villager* this)
     asm("{disp8} mov        dword ptr [esp + 0x1c], eax");                   // 0x0076696d    8944241c
     asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00766971    e8ba7bf7ff
     asm("{disp8} fild       dword ptr [esp + 0x14]");                        // 0x00766976    db442414
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf19d0]");             // 0x0076697a    d80dd0a99900
+    asm("{disp32} fmul      dword ptr [_villager_reaction_float10p0_0x0099a9d0]");             // 0x0076697a    d80dd0a99900
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x341c]");              // 0x00766980    d80d1cc48a00
     asm("faddp              st(1), st");                                     // 0x00766986    dec1
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x2414]");              // 0x00766988    d82514b48a00
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3408]");              // 0x0076698e    d80d08c48a00
-    asm("{disp32} fdiv      dword ptr [rdata_bytes + 0xf19d0]");             // 0x00766994    d835d0a99900
+    asm("{disp32} fdiv      dword ptr [_villager_reaction_float10p0_0x0099a9d0]");             // 0x00766994    d835d0a99900
     asm("call               _jmp_addr_0x007a1400");                          // 0x0076699a    e861aa0300
     asm("{disp8} mov        ecx, dword ptr [esp + 0x18]");                   // 0x0076699f    8b4c2418
     asm("push               0x000007a9");                                    // 0x007669a3    68a9070000
@@ -5023,12 +5030,12 @@ bool32_t __fastcall ConfusedReaction__8VillagerFv(struct Villager* this)
     asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x007669ba    e8717bf7ff
     asm("{disp8} fild       dword ptr [esp + 0x1c]");                        // 0x007669bf    db44241c
     asm("add                esp, 0x18");                                     // 0x007669c3    83c418
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf19d0]");             // 0x007669c6    d80dd0a99900
+    asm("{disp32} fmul      dword ptr [_villager_reaction_float10p0_0x0099a9d0]");             // 0x007669c6    d80dd0a99900
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x341c]");              // 0x007669cc    d80d1cc48a00
     asm("faddp              st(1), st");                                     // 0x007669d2    dec1
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x2414]");              // 0x007669d4    d82514b48a00
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3408]");              // 0x007669da    d80d08c48a00
-    asm("{disp32} fdiv      dword ptr [rdata_bytes + 0xf19d0]");             // 0x007669e0    d835d0a99900
+    asm("{disp32} fdiv      dword ptr [_villager_reaction_float10p0_0x0099a9d0]");             // 0x007669e0    d835d0a99900
     asm("call               _jmp_addr_0x007a1400");                          // 0x007669e6    e815aa0300
     asm("push               0x000000c3");                                    // 0x007669eb    68c3000000
     asm("{disp8} lea        edx, dword ptr [esp + 0x0c]");                   // 0x007669f0    8d54240c
@@ -5503,22 +5510,22 @@ bool32_t __fastcall InitialiseFightReaction__8VillagerFv(struct Villager* this)
     asm("{disp8} fmul       dword ptr [esp + 0x0c]");                        // 0x00766f15    d84c240c
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x341c]");              // 0x00766f19    d80d1cc48a00
     asm("{disp8} fild       dword ptr [esp + 0x10]");                        // 0x00766f1f    db442410
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf19d0]");             // 0x00766f23    d80dd0a99900
+    asm("{disp32} fmul      dword ptr [_villager_reaction_float10p0_0x0099a9d0]");             // 0x00766f23    d80dd0a99900
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x341c]");              // 0x00766f29    d80d1cc48a00
     asm("faddp              st(1), st");                                     // 0x00766f2f    dec1
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3408]");              // 0x00766f31    d80d08c48a00
-    asm("{disp32} fdiv      dword ptr [rdata_bytes + 0xf19d0]");             // 0x00766f37    d835d0a99900
+    asm("{disp32} fdiv      dword ptr [_villager_reaction_float10p0_0x0099a9d0]");             // 0x00766f37    d835d0a99900
     asm("call               _jmp_addr_0x007a1400");                          // 0x00766f3d    e8bea40300
     asm("{disp32} fild      dword ptr [esi + _sin_lookup_table]");           // 0x00766f42    db861416c300
     asm("{disp8} mov        dword ptr [esp + 0x10], eax");                   // 0x00766f48    89442410
     asm("{disp8} fmul       dword ptr [esp + 0x0c]");                        // 0x00766f4c    d84c240c
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x341c]");              // 0x00766f50    d80d1cc48a00
     asm("{disp8} fild       dword ptr [esp + 0x14]");                        // 0x00766f56    db442414
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf19d0]");             // 0x00766f5a    d80dd0a99900
+    asm("{disp32} fmul      dword ptr [_villager_reaction_float10p0_0x0099a9d0]");             // 0x00766f5a    d80dd0a99900
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x341c]");              // 0x00766f60    d80d1cc48a00
     asm("faddp              st(1), st");                                     // 0x00766f66    dec1
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3408]");              // 0x00766f68    d80d08c48a00
-    asm("{disp32} fdiv      dword ptr [rdata_bytes + 0xf19d0]");             // 0x00766f6e    d835d0a99900
+    asm("{disp32} fdiv      dword ptr [_villager_reaction_float10p0_0x0099a9d0]");             // 0x00766f6e    d835d0a99900
     asm("call               _jmp_addr_0x007a1400");                          // 0x00766f74    e887a40300
     asm("push               0x00000090");                                    // 0x00766f79    6890000000
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                   // 0x00766f7e    8d4c2414

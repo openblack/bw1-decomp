@@ -87,7 +87,7 @@ def process_vtable_mode(filepath: Path):
         f.write(f'''\
 #include "{type_name}.h"
 
-struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__{len(type_name)}{type_name} = &__RTTICompleteObjectLocator__{len(type_name)}{type_name};
+const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__{len(type_name)}{type_name} = &__RTTICompleteObjectLocator__{len(type_name)}{type_name};
 
 const struct {type_name}Vftable __vt__{len(type_name)}{type_name} = {{
 ''')

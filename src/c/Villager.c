@@ -235,6 +235,49 @@ void __fastcall __dt__13GVillagerInfoFv(struct Base* this, const void* edx, uint
     __builtin_unreachable();
 }
 
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13GVillagerInfo = {
+    .pTypeDescriptor = &__RTTITypeDescriptor__13GVillagerInfo,
+    .numContainedBases = 0x00000006,
+    .where = {
+        .mdisp = 0x00000000,
+        .pdisp = 0xFFFFFFFF,
+        .vdisp = 0x00000000,
+    },
+    .attributes = 0x0000000,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassArray __RTTIBaseClassArray__13GVillagerInfo = {
+    .arrayOfBaseClassDescriptors = {
+        &__RTTIBaseClassDescriptor__13GVillagerInfo,
+        &__RTTIBaseClassDescriptor__11GLivingInfo,
+        &__RTTIBaseClassDescriptor__18GMobileWallHugInfo,
+        &__RTTIBaseClassDescriptor__11GMobileInfo,
+        &__RTTIBaseClassDescriptor__11GObjectInfo,
+        &__RTTIBaseClassDescriptor__9GBaseInfo,
+        &__RTTIBaseClassDescriptor__4Base,
+        NULL,
+    }
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__13GVillagerInfo = {
+  .signature = 0x00000000,
+  .attributes = 0x00000000,
+  .numBaseClasses = 0x00000007,
+  .pBaseClassArray = &__RTTIBaseClassArray__13GVillagerInfo,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13GVillagerInfo = {
+  .signature = 0x00000000,
+  .offset = 0x00000000,
+  .cdOffset = 0x00000000,
+  .pTypeDescriptor = &__RTTITypeDescriptor__13GVillagerInfo,
+  .pClassDescriptor = &__RTTIClassHierarchyDescriptor__13GVillagerInfo,
+};
+
 const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__13GVillagerInfo = &__RTTICompleteObjectLocator__13GVillagerInfo;
 
 const struct GObjectInfoVftable __vt__13GVillagerInfo = {
@@ -1340,7 +1383,7 @@ int __fastcall CheckEveryTime__8VillagerFv(struct Villager* this)
     asm("sub.s              eax, ecx");                                       // 0x00750423    2bc1
     asm("test               byte ptr [esi + 0x25], 0x04");                    // 0x00750425    f6462504
     asm("lea                eax, dword ptr [eax + eax * 0x2]");               // 0x00750429    8d0440
-    asm("{disp32} lea       edi, dword ptr [eax * 0x4 + _GVillagerStateTableInfo_ARRAY_00db9e68]");        // 0x0075042c    8d3c85689edb00
+    asm("{disp32} lea       edi, dword ptr [eax * 0x4 + _GVillagerStateTableInfos]"); // 0x0075042c    8d3c85689edb00
     asm("{disp32} jne       _jmp_addr_0x0075065c");                           // 0x00750433    0f8523020000
     asm("{disp8} mov        eax, dword ptr [edi + 0x24]");                    // 0x00750439    8b4724
     asm("test               eax, eax");                                       // 0x0075043c    85c0
@@ -1358,7 +1401,7 @@ int __fastcall CheckEveryTime__8VillagerFv(struct Villager* this)
     asm("shl                eax, 3");                                         // 0x00750460    c1e003
     asm("sub.s              eax, ecx");                                       // 0x00750463    2bc1
     asm("lea                ecx, dword ptr [eax + eax * 0x2]");               // 0x00750465    8d0c40
-    asm("{disp32} lea       edi, dword ptr [ecx * 0x4 + _GVillagerStateTableInfo_ARRAY_00db9e68]");        // 0x00750468    8d3c8d689edb00
+    asm("{disp32} lea       edi, dword ptr [ecx * 0x4 + _GVillagerStateTableInfos]"); // 0x00750468    8d3c8d689edb00
     asm("{disp8} jmp        _jmp_addr_0x007504a1");                           // 0x0075046f    eb30
     asm("_jmp_addr_0x00750471:");
     asm("mov.s              ecx, esi");                                       // 0x00750471    8bce
@@ -10877,6 +10920,46 @@ void __fastcall FUN_00756990__8VillagerFv(struct MissionaryControl* this)
 {
     return;
 }
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__17MissionaryControl = {
+    .pTypeDescriptor = &__RTTITypeDescriptor__17MissionaryControl,
+    .numContainedBases = 0x00000003,
+    .where = {
+        .mdisp = 0x00000000,
+        .pdisp = 0xFFFFFFFF,
+        .vdisp = 0x00000000,
+    },
+    .attributes = 0x0000000,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIBaseClassArray __RTTIBaseClassArray__17MissionaryControl = {
+    .arrayOfBaseClassDescriptors = {
+        &__RTTIBaseClassDescriptor__17MissionaryControl,
+        &__RTTIBaseClassDescriptor__16GameThingWithPos,
+        &__RTTIBaseClassDescriptor__9GameThing,
+        &__RTTIBaseClassDescriptor__4Base,
+        NULL,
+    }
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17MissionaryControl = {
+  .signature = 0x00000000,
+  .attributes = 0x00000000,
+  .numBaseClasses = 0x00000004,
+  .pBaseClassArray = &__RTTIBaseClassArray__17MissionaryControl,
+};
+
+__attribute__((section(".rdata$r"), aligned(8)))
+const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17MissionaryControl = {
+  .signature = 0x00000000,
+  .offset = 0x00000000,
+  .cdOffset = 0x00000000,
+  .pTypeDescriptor = &__RTTITypeDescriptor__17MissionaryControl,
+  .pClassDescriptor = &__RTTIClassHierarchyDescriptor__17MissionaryControl,
+};
 
 const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__17MissionaryControl = &__RTTICompleteObjectLocator__17MissionaryControl;
 

@@ -68,51 +68,8 @@ _RTTIBaseClassDescriptor__\name:
     _RTTICompleteObjectLocator \name U 0
 .endm
 
-RTTIClassHierarchyDescriptor GTribeInfo 3                                                                          // [0x110cf8] 0x008a9000 + 0x110cf8 = 0x009b9cf8
-RTTICompleteObjectLocator GTribeInfo                                                                               // [0x110d08] 0x008a9000 + 0x110d08 = 0x009b9d08
-.long 0x00000000                                                                                                   // [0x110d1c] 0x008a9000 + 0x110d1c = 0x009b9d1c
-RTTIBaseClassDescriptor GVillagerInfo 6                                                                            // [0x110d20] 0x008a9000 + 0x110d20 = 0x009b9d20
-RTTIBaseClassArray GVillagerInfo                                                                                   // [0x110d38] 0x008a9000 + 0x110d38 = 0x009b9d38
-.long ??_R1A@?0A@A@GLivingInfo@@8
-.long ??_R1A@?0A@A@GMobileWallHugInfo@@8
-.long ??_R1A@?0A@A@GMobileInfo@@8
-.long ??_R1A@?0A@A@GObjectInfo@@8
-.long ??_R1A@?0A@A@GBaseInfo@@8
-.long ??_R1A@?0A@A@Base@@8
-.long 0x00000000
+.align 8
 
-RTTIClassHierarchyDescriptor GVillagerInfo 7                                                                       // [0x110d58] 0x008a9000 + 0x110d58 = 0x009b9d58
-RTTICompleteObjectLocator GVillagerInfo                                                                            // [0x110d68] 0x008a9000 + 0x110d68 = 0x009b9d68
-.long 0x00000000                                                                                                   // [0x110d7c] 0x008a9000 + 0x110d7c = 0x009b9d7c
-RTTIBaseClassDescriptor MissionaryControl 3                                                                        // [0x110d80] 0x008a9000 + 0x110d80 = 0x009b9d80
-RTTIBaseClassArray MissionaryControl                                                                               // [0x110d98] 0x008a9000 + 0x110d98 = 0x009b9d98
-.long ??_R1A@?0A@A@GameThingWithPos@@8
-.long ??_R1A@?0A@A@GameThing@@8
-.long ??_R1A@?0A@A@Base@@8
-.long 0x00000000
-
-.long 0x00000000                                                                                                   // [0x110dac] 0x008a9000 + 0x110dac = 0x009b9dac
-RTTIClassHierarchyDescriptor MissionaryControl 4                                                                   // [0x110db0] 0x008a9000 + 0x110db0 = 0x009b9db0
-RTTICompleteObjectLocator MissionaryControl                                                                        // [0x110dc0] 0x008a9000 + 0x110dc0 = 0x009b9dc0
-.long 0x00000000                                                                                                   // [0x110dd4] 0x008a9000 + 0x110dd4 = 0x009b9dd4
-RTTIBaseClassDescriptorStruct VillagerName 1                                                                       // [0x110dd8] 0x008a9000 + 0x110dd8 = 0x009b9dd8
-RTTIBaseClassArray VillagerName                                                                                    // [0x110df0] 0x008a9000 + 0x110df0 = 0x009b9df0
-.long 0x009a83d8
-.long 0x00000000
-
-.long 0x00000000                                                                                                   // [0x110dfc] 0x008a9000 + 0x110dfc = 0x009b9dfc
-RTTIClassHierarchyDescriptor VillagerName 2                                                                        // [0x110e00] 0x008a9000 + 0x110e00 = 0x009b9e00
-RTTICompleteObjectLocatorStruct VillagerName                                                                       // [0x110e10] 0x008a9000 + 0x110e10 = 0x009b9e10
-.long 0x00000000                                                                                                   // [0x110e24] 0x008a9000 + 0x110e24 = 0x009b9e24
-RTTIBaseClassDescriptor GVillagerStateTableInfo 2                                                                  // [0x110e28] 0x008a9000 + 0x110e28 = 0x009b9e28
-RTTIBaseClassArray GVillagerStateTableInfo                                                                         // [0x110e40] 0x008a9000 + 0x110e40 = 0x009b9e40
-.long ??_R1A@?0A@A@GBaseInfo@@8
-.long ??_R1A@?0A@A@Base@@8
-.long 0x00000000
-
-RTTIClassHierarchyDescriptor GVillagerStateTableInfo 3                                                             // [0x110e50] 0x008a9000 + 0x110e50 = 0x009b9e50
-RTTICompleteObjectLocator GVillagerStateTableInfo                                                                  // [0x110e60] 0x008a9000 + 0x110e60 = 0x009b9e60
-.long 0x00000000                                                                                                   // [0x110e74] 0x008a9000 + 0x110e74 = 0x009b9e74
 RTTIBaseClassDescriptor GVirtualInfluence 1                                                                        // [0x110e78] 0x008a9000 + 0x110e78 = 0x009b9e78
 RTTIBaseClassArray GVirtualInfluence                                                                               // [0x110e90] 0x008a9000 + 0x110e90 = 0x009b9e90
 .long ??_R1A@?0A@A@Base@@8

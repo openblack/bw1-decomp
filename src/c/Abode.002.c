@@ -25,7 +25,7 @@ const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5Abode = {
 __attribute__((section(".rdata$r"), aligned(8)))
 const struct RTTIBaseClassArray __RTTIBaseClassArray__5Abode = {
     .arrayOfBaseClassDescriptors = {
-        (void*)0x009a6438,
+        &__RTTIBaseClassDescriptor__5Abode,
         &__RTTIBaseClassDescriptor__13MultiMapFixed,
         &__RTTIBaseClassDescriptor__11FixedObject,
         &__RTTIBaseClassDescriptor__6Object,

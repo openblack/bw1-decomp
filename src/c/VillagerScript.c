@@ -1,5 +1,15 @@
 #include "Villager.h"
 
+const float villager_script_num_days_in_year_0x0099a9f8 = 365.25f;
+const float villager_script_seconds_in_day_0x0099a9fc = 86400.0f;
+const float villager_script_float0p7_0x0099aa00 = 0.7f;
+
+__attribute__((aligned(4))) char s_VillagerScript_cpp[] = "C:\\dev\\MP\\Black\\VillagerScript.cpp";
+
+uint32_t villager_script_uint_0x00db9e44;
+uint32_t villager_script_uint_0x00db9e48;
+float villager_script_seconds_in_year_0x00db9e4c;
+
 void __cdecl globl_ct_0x007685b0(void)
 {
     asm("{disp32} mov       cl, byte ptr [_DAT_00fac934]");                  // 0x007685b0    8a0d34c9fa00
@@ -18,8 +28,6 @@ void __cdecl crt_global_destruction_register_0x007685d0(void)
     asm("push               0x00407870");                                    // 0x007685d0    6870784000
     asm("call               _atexit");                                       // 0x007685d5    e8b7d10500
     asm("pop                ecx");                                           // 0x007685da    59
-    asm("ret");                                                              // 0x007685db    c3
-    __builtin_unreachable();
 }
 
 void __cdecl globl_ct_0x007685e0(void)
@@ -30,11 +38,9 @@ void __cdecl globl_ct_0x007685e0(void)
 
 void __cdecl FUN_007685f0__8VillagerFv(void)
 {
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf19fc]");             // 0x007685f0    d905fca99900
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf19f8]");             // 0x007685f6    d80df8a99900
-    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3e4c]");             // 0x007685fc    d91d4c9edb00
-    asm("ret");                                                              // 0x00768602    c3
-    __builtin_unreachable();
+    asm("{disp32} fld  dword ptr [_villager_script_seconds_in_day_0x0099a9fc]");   // 0x007685f0    d905fca99900
+    asm("{disp32} fmul dword ptr [_villager_script_num_days_in_year_0x0099a9f8]"); // 0x007685f6    d80df8a99900
+    asm("{disp32} fstp dword ptr [_villager_script_seconds_in_year_0x00db9e4c]");  // 0x007685fc    d91d4c9edb00
 }
 
 void __cdecl globl_ct_0x00768610(void)
@@ -45,9 +51,7 @@ void __cdecl globl_ct_0x00768610(void)
 
 void __cdecl FUN_00768620__8VillagerFv(void)
 {
-    asm("{disp32} mov       dword ptr [data_bytes + 0x3f3e48], 0xffffffff");  // 0x00768620    c705489edb00ffffffff
-    asm("ret");                                                              // 0x0076862a    c3
-    __builtin_unreachable();
+    asm("{disp32} mov dword ptr [_villager_script_uint_0x00db9e48], 0xffffffff");  // 0x00768620    c705489edb00ffffffff
 }
 
 uint32_t __fastcall IsReadyForNewScriptAction__8VillagerFv(struct GameThingWithPos* this)

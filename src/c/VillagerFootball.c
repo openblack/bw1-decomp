@@ -1,4 +1,40 @@
 #include "Villager.h"
+#include "Football.h"
+#include <stdint.h>
+
+const float villager_football_float10p0_0x0099a980 = 10.0f;
+const float villager_football_num_days_in_year_0x0099a984 = 365.25f;
+const float villager_football_seconds_in_day_0x0099a988 = 86400.0f;
+
+struct FootballerSubstateTableEntry FootballAttackerSubstateTable[_FOOTBALL_SUBSTATES_ATTACKER_COUNT] = {{"AttackerShoot"}};
+struct FootballerSubstateTableEntry FootballDefenderSubstateTable[_FOOTBALL_SUBSTATES_DEFENDER_COUNT] = {{"DefenderSave"}};
+struct FootballerSubstateTableEntry FootballGoalieSubstateTable[_FOOTBALL_SUBSTATES_GOALIE_COUNT] = {{"GoalieSave"}};
+
+__attribute__((aligned(4))) char s_AttackerIdle[] = "AttackerIdle";
+__attribute__((aligned(4))) char s_AttackerGoHome[] = "AttackerGoHome";
+__attribute__((aligned(4))) char s_AttackerGoToBall[] = "AttackerGoToBall";
+__attribute__((aligned(4))) char s_AttackerMoveToBePassed[] = "AttackerMoveToBePassed";
+__attribute__((aligned(4))) char s_AttackerDribble[] = "AttackerDribble";
+__attribute__((aligned(4))) char s_AttackerLobNearGoal[] = "AttackerLobNearGoal";
+__attribute__((aligned(4))) char s_AttackerPass[] = "AttackerPass";
+__attribute__((aligned(4))) char s_DefenderIdle[] = "DefenderIdle";
+__attribute__((aligned(4))) char s_DefenderGoHome[] = "DefenderGoHome";
+__attribute__((aligned(4))) char s_DefenderGoToBall[] = "DefenderGoToBall";
+__attribute__((aligned(4))) char s_DefenderMark[] = "DefenderMark";
+__attribute__((aligned(4))) char s_DefenderPass[] = "DefenderPass";
+__attribute__((aligned(4))) char s_DefenderDribble[] = "DefenderDribble";
+__attribute__((aligned(4))) char s_DefenderClear[] = "DefenderClear";
+__attribute__((aligned(4))) char s_GoalieIdle[] = "GoalieIdle";
+__attribute__((aligned(4))) char s_GoalieGoHome[] = "GoalieGoHome";
+__attribute__((aligned(4))) char s_GoalieGoToBall[] = "GoalieGoToBall";
+__attribute__((aligned(4))) char s_GoaliePass[] = "GoaliePass";
+__attribute__((aligned(4))) char s_GoalieLook[] = "GoalieLook";
+__attribute__((aligned(4))) char s_GoalieClear[] = "GoalieClear";
+
+__attribute__((aligned(4))) char s_VillagerFootball_cpp[] = "C:\\dev\\MP\\Black\\VillagerFootball.cpp";
+
+uint32_t villager_football_uint_0x00db9e0c;
+float villager_football_seconds_in_year_0x00db9e10;
 
 void __cdecl globl_ct_0x0075c100(void)
 {
@@ -18,8 +54,6 @@ void __cdecl crt_global_destruction_register_0x0075c120(void)
     asm("push               0x00407870");                                    // 0x0075c120    6870784000
     asm("call               _atexit");                                       // 0x0075c125    e867960600
     asm("pop                ecx");                                           // 0x0075c12a    59
-    asm("ret");                                                              // 0x0075c12b    c3
-    __builtin_unreachable();
 }
 
 void __cdecl globl_ct_0x0075c130(void)
@@ -30,11 +64,9 @@ void __cdecl globl_ct_0x0075c130(void)
 
 void __cdecl FUN_0075c140__8VillagerFv(void)
 {
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf1988]");             // 0x0075c140    d90588a99900
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1984]");             // 0x0075c146    d80d84a99900
-    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3e10]");             // 0x0075c14c    d91d109edb00
-    asm("ret");                                                              // 0x0075c152    c3
-    __builtin_unreachable();
+    asm("{disp32} fld  dword ptr [_villager_football_seconds_in_day_0x0099a988]");   // 0x0075c140    d90588a99900
+    asm("{disp32} fmul dword ptr [_villager_football_num_days_in_year_0x0099a984]"); // 0x0075c146    d80d84a99900
+    asm("{disp32} fstp dword ptr [_villager_football_seconds_in_year_0x00db9e10]");  // 0x0075c14c    d91d109edb00
 }
 
 void __cdecl globl_ct_0x0075c160(void)
@@ -45,9 +77,7 @@ void __cdecl globl_ct_0x0075c160(void)
 
 void __cdecl FUN_0075c170__8VillagerFv(void)
 {
-    asm("{disp32} mov       dword ptr [data_bytes + 0x3f3e0c], 0xffffffff");  // 0x0075c170    c7050c9edb00ffffffff
-    asm("ret");                                                              // 0x0075c17a    c3
-    __builtin_unreachable();
+    asm("{disp32} mov       dword ptr [_villager_football_uint_0x00db9e0c], 0xffffffff");  // 0x0075c170    c7050c9edb00ffffffff
 }
 
 void __cdecl globl_ct_0x0075c180(void)
@@ -1337,11 +1367,11 @@ void __fastcall FootballAttackerLobNearGoalProcess__8VillagerFP8Football(struct 
     asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075d579    e8b20ff8ff
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x2478]");              // 0x0075d57e    d82578b48a00
     asm("{disp8} fild       dword ptr [esp + 0x1c]");                        // 0x0075d584    db44241c
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1980]");             // 0x0075d588    d80d80a99900
+    asm("{disp32} fmul      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075d588    d80d80a99900
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x341c]");              // 0x0075d58e    d80d1cc48a00
     asm("fadd               st, st(1)");                                     // 0x0075d594    d8c1
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3408]");              // 0x0075d596    d80d08c48a00
-    asm("{disp32} fdiv      dword ptr [rdata_bytes + 0xf1980]");             // 0x0075d59c    d83580a99900
+    asm("{disp32} fdiv      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075d59c    d83580a99900
     asm("call               _jmp_addr_0x007a1400");                          // 0x0075d5a2    e8593e0400
     asm("fstp               st(0)");                                         // 0x0075d5a7    ddd8
     asm("push               0x000000c8");                                    // 0x0075d5a9    68c8000000
@@ -1352,11 +1382,11 @@ void __fastcall FootballAttackerLobNearGoalProcess__8VillagerFP8Football(struct 
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x2478]");              // 0x0075d5c1    d82578b48a00
     asm("{disp8} fild       dword ptr [esp + 0x2c]");                        // 0x0075d5c7    db44242c
     asm("add                esp, 0x18");                                     // 0x0075d5cb    83c418
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1980]");             // 0x0075d5ce    d80d80a99900
+    asm("{disp32} fmul      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075d5ce    d80d80a99900
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x341c]");              // 0x0075d5d4    d80d1cc48a00
     asm("fadd               st, st(1)");                                     // 0x0075d5da    d8c1
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3408]");              // 0x0075d5dc    d80d08c48a00
-    asm("{disp32} fdiv      dword ptr [rdata_bytes + 0xf1980]");             // 0x0075d5e2    d83580a99900
+    asm("{disp32} fdiv      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075d5e2    d83580a99900
     asm("call               _jmp_addr_0x007a1400");                          // 0x0075d5e8    e8133e0400
     asm("fstp               st(0)");                                         // 0x0075d5ed    ddd8
     asm("{disp8} mov        ecx, dword ptr [esp + 0x10]");                   // 0x0075d5ef    8b4c2410
@@ -2484,11 +2514,11 @@ void __fastcall FootballDefenderSaveProcess__8VillagerFP8Football(struct Village
     asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075e289    e8a202f8ff
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x26e4]");              // 0x0075e28e    d825e4b68a00
     asm("{disp8} fild       dword ptr [esp + 0x1c]");                        // 0x0075e294    db44241c
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1980]");             // 0x0075e298    d80d80a99900
+    asm("{disp32} fmul      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075e298    d80d80a99900
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x341c]");              // 0x0075e29e    d80d1cc48a00
     asm("fadd               st, st(1)");                                     // 0x0075e2a4    d8c1
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3408]");              // 0x0075e2a6    d80d08c48a00
-    asm("{disp32} fdiv      dword ptr [rdata_bytes + 0xf1980]");             // 0x0075e2ac    d83580a99900
+    asm("{disp32} fdiv      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075e2ac    d83580a99900
     asm("call               _jmp_addr_0x007a1400");                          // 0x0075e2b2    e849310400
     asm("fstp               st(0)");                                         // 0x0075e2b7    ddd8
     asm("push               0x000001ea");                                    // 0x0075e2b9    68ea010000
@@ -2499,11 +2529,11 @@ void __fastcall FootballDefenderSaveProcess__8VillagerFP8Football(struct Village
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x26e4]");              // 0x0075e2d1    d825e4b68a00
     asm("{disp8} fild       dword ptr [esp + 0x2c]");                        // 0x0075e2d7    db44242c
     asm("add                esp, 0x18");                                     // 0x0075e2db    83c418
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1980]");             // 0x0075e2de    d80d80a99900
+    asm("{disp32} fmul      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075e2de    d80d80a99900
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x341c]");              // 0x0075e2e4    d80d1cc48a00
     asm("fadd               st, st(1)");                                     // 0x0075e2ea    d8c1
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3408]");              // 0x0075e2ec    d80d08c48a00
-    asm("{disp32} fdiv      dword ptr [rdata_bytes + 0xf1980]");             // 0x0075e2f2    d83580a99900
+    asm("{disp32} fdiv      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075e2f2    d83580a99900
     asm("call               _jmp_addr_0x007a1400");                          // 0x0075e2f8    e803310400
     asm("fstp               st(0)");                                         // 0x0075e2fd    ddd8
     asm("{disp8} mov        ecx, dword ptr [esp + 0x10]");                   // 0x0075e2ff    8b4c2410

@@ -1073,7 +1073,7 @@ VftableAndRTTI GWeatherInfo                                                     
 .long ?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
 .long ?Dump@Base@@UAEXXZ
-.long ?GetDebugText@Base@@UBEPBDXZ
+.long ?GetDebugText@GBaseInfo@@UBEPBDXZ
 .long ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
 .long ?GetBaseInfo@GWeatherInfo@@UAEPAVGBaseInfo@@AAI@Z                                                                                                   // [0xf29dc] 0x008a9000 + 0xf29dc = 0x0099b9dc
 .long ?UpdateValue@GBaseInfo@@UAEXMKK@Z
@@ -1093,7 +1093,7 @@ VftableAndRTTI GClimateInfo                                                     
 .long ?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
 .long ?Dump@Base@@UAEXXZ
-.long ?GetDebugText@Base@@UBEPBDXZ
+.long ?GetDebugText@GBaseInfo@@UBEPBDXZ
 .long ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
 .long ?GetBaseInfo@GClimateInfo@@UAEPAVGBaseInfo@@AAI@Z                                                                                                   // [0xf2a24] 0x008a9000 + 0xf2a24 = 0x0099ba24
 .long ?UpdateValue@GBaseInfo@@UAEXMKK@Z
@@ -1109,7 +1109,7 @@ VftableAndRTTI GClimateRainInfo                                                 
 .long ?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
 .long ?Dump@Base@@UAEXXZ
-.long ?GetDebugText@Base@@UBEPBDXZ
+.long ?GetDebugText@GBaseInfo@@UBEPBDXZ
 .long ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
 .long ?GetBaseInfo@GClimateRainInfo@@UAEPAVGBaseInfo@@AAI@Z                                                                                                   // [0xf2a70] 0x008a9000 + 0xf2a70 = 0x0099ba70
 .long ?UpdateValue@GBaseInfo@@UAEXMKK@Z

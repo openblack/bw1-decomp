@@ -1295,6 +1295,7 @@ ROOMMATE_CLASS_MAP = {
     "LivingDLList": "Living",
     "DataForScriptRemind": "Living", # Validated in Create__19DataForScriptRemindFv
     "Villager__StateTable": "Villager",
+    "FootballerSubstateTableEntry": "Villager",
     "GetNextDstPromemade__FP6CrecheRlP9MapCoordsRC9MapCoords": "Villager",
     "Animal__StateTable": "Animal",
     "Cow": "AnimalCow",

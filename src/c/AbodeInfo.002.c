@@ -1,8 +1,6 @@
 #include "AbodeInfo.h"
 #include "SetupThing.h"
 
-
-
 __attribute__((section(".data$Z"))) int abode_info_bool_00c3c680 = 0;
 __attribute__((section(".bss"))) float abode_info_float_0x00c3c684;
 __attribute__((section(".bss"))) float abode_info_float_0x00c3c688;

@@ -1,5 +1,14 @@
 #include "Villager.h"
 
+const float villager_housewife_float1000p0_0x0099a99c = 1000.0f;
+const float villager_housewife_float10p0_0x0099a9a0 = 10.0f;
+const float villager_housewife_num_days_in_year_0x0099a9a4 = 365.25f;
+const float villager_housewife_seconds_in_day_0x0099a9a8 = 86400.0f;
+
+__attribute__((aligned(4))) char s_VillagerHousewife_cpp[] = "C:\\dev\\MP\\Black\\VillagerHousewife.cpp";
+
+float villager_housewife_seconds_in_year_0x00db9e1c;
+
 void __cdecl globl_ct_0x00761b80(void)
 {
     asm("{disp32} mov       cl, byte ptr [_DAT_00fac934]");                  // 0x00761b80    8a0d34c9fa00
@@ -18,8 +27,6 @@ void __cdecl crt_global_destruction_register_0x00761ba0(void)
     asm("push               0x00407870");                                    // 0x00761ba0    6870784000
     asm("call               _atexit");                                       // 0x00761ba5    e8e73b0600
     asm("pop                ecx");                                           // 0x00761baa    59
-    asm("ret");                                                              // 0x00761bab    c3
-    __builtin_unreachable();
 }
 
 void __cdecl FUN_00761bb0__8VillagerFv(void)
@@ -61,11 +68,9 @@ void __cdecl globl_ct_0x00761bd0(void)
 
 void __cdecl FUN_00761be0__8VillagerFv(void)
 {
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf19a8]");             // 0x00761be0    d905a8a99900
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf19a4]");             // 0x00761be6    d80da4a99900
-    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3e1c]");             // 0x00761bec    d91d1c9edb00
-    asm("ret");                                                              // 0x00761bf2    c3
-    __builtin_unreachable();
+    asm("{disp32} fld  dword ptr [_villager_housewife_seconds_in_day_0x0099a9a8]");   // 0x00761be0    d905a8a99900
+    asm("{disp32} fmul dword ptr [_villager_housewife_num_days_in_year_0x0099a9a4]"); // 0x00761be6    d80da4a99900
+    asm("{disp32} fstp dword ptr [_villager_housewife_seconds_in_year_0x00db9e1c]");  // 0x00761bec    d91d1c9edb00
 }
 
 bool32_t __fastcall HousewifeLookForWork__8VillagerFv(struct Villager* this)
@@ -575,7 +580,7 @@ bool32_t __fastcall HousewifeGossipsAroundStoragePit__8VillagerFv(struct Village
     asm("{disp8} fstp       dword ptr [esp + 0x0c]");                        // 0x007620dc    d95c240c
     asm("mov.s              ecx, esi");                                      // 0x007620e0    8bce
     asm("call               ?GetStoragePit@Villager@@QAEPAVStoragePit@@XZ"); // 0x007620e2    e829fefeff
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf19a0]");             // 0x007620e7    d905a0a99900
+    asm("{disp32} fld       dword ptr [_villager_housewife_float10p0_0x0099a9a0]"); // 0x007620e7    d905a0a99900
     asm("{disp32} fmul      dword ptr [_rdata_float0p5]");                   // 0x007620ed    d80db4a38a00
     asm("push               0x00000110");                                    // 0x007620f3    6810010000
     asm("push               0x00c2450c");                                    // 0x007620f8    680c45c200

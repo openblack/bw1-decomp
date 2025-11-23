@@ -1,5 +1,10 @@
 #include "Villager.h"
 
+const float villager_farmer_num_days_in_year_0x0099a958 = 365.25f;
+const float villager_farmer_seconds_in_day_0x0099a95c = 86400.0f;
+
+float villager_farmer_seconds_in_year_0x00db9dfc;
+
 void __cdecl globl_ct_0x00759b90(void)
 {
     asm("{disp32} mov       cl, byte ptr [_DAT_00fac934]");                  // 0x00759b90    8a0d34c9fa00
@@ -30,11 +35,9 @@ void __cdecl globl_ct_0x00759bc0(void)
 
 void __cdecl FUN_00759bd0__8VillagerFv(void)
 {
-    asm("{disp32} fld       dword ptr [rdata_bytes + 0xf195c]");             // 0x00759bd0    d9055ca99900
-    asm("{disp32} fmul      dword ptr [rdata_bytes + 0xf1958]");             // 0x00759bd6    d80d58a99900
-    asm("{disp32} fstp      dword ptr [data_bytes + 0x3f3dfc]");             // 0x00759bdc    d91dfc9ddb00
-    asm("ret");                                                              // 0x00759be2    c3
-    __builtin_unreachable();
+    asm("{disp32} fld  dword ptr [_villager_farmer_seconds_in_day_0x0099a95c]");   // 0x00759bd0    d9055ca99900
+    asm("{disp32} fmul dword ptr [_villager_farmer_num_days_in_year_0x0099a958]"); // 0x00759bd6    d80d58a99900
+    asm("{disp32} fstp dword ptr [_villager_farmer_seconds_in_year_0x00db9dfc]");  // 0x00759bdc    d91dfc9ddb00
 }
 
 __attribute__((XOR32rr_REV))

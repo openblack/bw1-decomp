@@ -66,7 +66,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 // win1.41 0099aa20 mac 109e9f8c GVillagerStateTableInfo::`RTTI Complete Object Locator'
 extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__23GVillagerStateTableInfo asm("??_R4GVillagerStateTableInfo@@6B@");
 // win1.41 0099aa24 mac 109e9f94 GVillagerStateTableInfo::`vftable'
-extern const struct BaseVftable __vt__23GVillagerStateTableInfo asm("??_7GVillagerStateTableInfo@@6B@");
+extern const struct GBaseInfoVftable __vt__23GVillagerStateTableInfo asm("??_7GVillagerStateTableInfo@@6B@");
 
 // Static methods
 

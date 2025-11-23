@@ -1186,7 +1186,7 @@ _jmp_addr_0x0051b540:    mov                edx, dword ptr [esi]                
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                          // 0x0051b55e    8d4c2434
                          lea                eax, dword ptr [eax + eax * 0x2]                     // 0x0051b562    8d0440
                          push               ecx                                                  // 0x0051b565    51
-                         {disp32} lea       ebp, dword ptr [eax * 0x4 + _GVillagerStateTableInfo_ARRAY_00db9e68]              // 0x0051b566    8d2c85689edb00
+                         {disp32} lea       ebp, dword ptr [eax * 0x4 + _GVillagerStateTableInfos] // 0x0051b566    8d2c85689edb00
                          call               _wcscpy                                              // 0x0051b56d    e844aa2a00
                          push               0x0                                                  // 0x0051b572    6a00
                          push               0x00be8f48                                           // 0x0051b574    68488fbe00

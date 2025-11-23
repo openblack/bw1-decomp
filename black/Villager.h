@@ -65,6 +65,29 @@ struct Tree;
 struct Villager;
 struct WorshipSite;
 
+struct FootballerSubstateTableEntry
+{
+  char name[0x20];  /* 0x0 */
+  char field_0x20[0x20];
+  bool32_t (__fastcall* Precondition)(struct Villager* this, const void* edx, struct Football* football);  /* 0x40 */
+  uint32_t field_0x44;
+  uint32_t field_0x48;
+  uint32_t field_0x4c;
+  uint32_t field_0x50;
+  uint32_t field_0x54;
+  uint32_t field_0x58;
+  int field_0x5c;
+  float (__fastcall* Priority)(struct Villager* this, const void* edx, struct Football* football);  /* 0x60 */
+  uint32_t field_0x64;
+  uint32_t field_0x68;
+  uint32_t field_0x6c;
+  void (__fastcall* Process)(struct Villager* this, const void* edx, struct Football* football);  /* 0x70 */
+  uint32_t field_0x74;
+  uint32_t field_0x78;
+  uint32_t field_0x7c;
+};
+static_assert(sizeof(struct FootballerSubstateTableEntry) == 0x80, "Data type is of wrong size");
+
 struct ClearAreaPoint
 {
   uint8_t field_0x0;
