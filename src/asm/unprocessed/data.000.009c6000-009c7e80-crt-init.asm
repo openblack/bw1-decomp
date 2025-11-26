@@ -1844,7 +1844,7 @@ ___xc_a:
 .long 0x00000000
 .long _globl_ct_0x007ae4b0                                                                                         // [0x1c80] 0x009c6000 + 0x1c80 = 0x009c7c80
 .long _globl_ct_0x007ad060
-.long _globl_ct_0x007af270
+.long 0x007af270 // _$E24 part of .CRT$XCU
 .long _globl_ct_0x007af883
 .long _globl_ct_0x007afcd3                                                                                         // [0x1c90] 0x009c6000 + 0x1c90 = 0x009c7c90
 .long _globl_ct_0x007b16b4

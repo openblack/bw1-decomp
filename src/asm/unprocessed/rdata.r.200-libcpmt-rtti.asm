@@ -69,33 +69,6 @@ _RTTIBaseClassDescriptor__\name:
     _RTTICompleteObjectLocator \name U 0
 .endm
 
-RTTIBaseClassDescriptor logic_error@std 1                                                                          // [0x111ce8] 0x008a9000 + 0x111ce8 = 0x009bace8
-RTTIBaseClassDescriptor length_error@std 2                                                                         // [0x111d00] 0x008a9000 + 0x111d00 = 0x009bad00
-RTTIBaseClassArray length_error@std                                                                                // [0x111d18] 0x008a9000 + 0x111d18 = 0x009bad18
-.long ??_R1A@?0A@A@logic_error@std@@8
-.long ??_R1A@?0A@A@exception@@8
-.long 0x00000000
-
-RTTIClassHierarchyDescriptor length_error@std 3                                                                    // [0x111d28] 0x008a9000 + 0x111d28 = 0x009bad28
-RTTICompleteObjectLocator length_error@std                                                                         // [0x111d38] 0x008a9000 + 0x111d38 = 0x009bad38
-.long 0x00000000                                                                                                   // [0x111d4c] 0x008a9000 + 0x111d4c = 0x009bad4c
-RTTIBaseClassArray logic_error@std                                                                                 // [0x111d50] 0x008a9000 + 0x111d50 = 0x009bad50
-.long ??_R1A@?0A@A@exception@@8
-.long 0x00000000
-
-.long 0x00000000                                                                                                   // [0x111d5c] 0x008a9000 + 0x111d5c = 0x009bad5c
-RTTIClassHierarchyDescriptor logic_error@std 2                                                                     // [0x111d60] 0x008a9000 + 0x111d60 = 0x009bad60
-RTTICompleteObjectLocator logic_error@std                                                                          // [0x111d70] 0x008a9000 + 0x111d70 = 0x009bad70
-.long 0x00000000                                                                                                   // [0x111d84] 0x008a9000 + 0x111d84 = 0x009bad84
-RTTIBaseClassDescriptor out_of_range@std 2                                                                         // [0x111d88] 0x008a9000 + 0x111d88 = 0x009bad88
-RTTIBaseClassArray out_of_range@std                                                                                // [0x111da0] 0x008a9000 + 0x111da0 = 0x009bada0
-.long ??_R1A@?0A@A@logic_error@std@@8
-.long ??_R1A@?0A@A@exception@@8
-.long 0x00000000
-
-RTTIClassHierarchyDescriptor out_of_range@std 3                                                                    // [0x111db0] 0x008a9000 + 0x111db0 = 0x009badb0
-RTTICompleteObjectLocator out_of_range@std                                                                         // [0x111dc0] 0x008a9000 + 0x111dc0 = 0x009badc0
-.long 0x00000000                                                                                                   // [0x111dd4] 0x008a9000 + 0x111dd4 = 0x009badd4
 RTTIBaseClassDescriptor runtime_error@std 1                                                                        // [0x111dd8] 0x008a9000 + 0x111dd8 = 0x009badd8
 RTTIBaseClassDescriptor failure@ios_base@std 2                                                                     // [0x111df0] 0x008a9000 + 0x111df0 = 0x009badf0
 RTTIBaseClassArray failure@ios_base@std                                                                            // [0x111e08] 0x008a9000 + 0x111e08 = 0x009bae08

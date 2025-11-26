@@ -15,7 +15,7 @@
 .extern _jmp_addr_0x00545d10
 .extern _jmp_addr_0x00545f00
 .extern _jmp_addr_0x00546120
-.extern _jmp_addr_0x0057e390
+.extern ?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z
 .extern ?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEX_N@Z
 .extern _jmp_addr_0x0057e760
 .extern _jmp_addr_0x005804d0
@@ -156,8 +156,8 @@
 .globl ??0_Lockit@std@@QAE@XZ
 .globl ??1_Lockit@std@@QAE@XZ
 .globl ?_Xlen@std@@YAXXZ
-.globl _jmp_addr_0x007af180
-.globl _jmp_addr_0x007af268
+.globl ?_Xran@std@@YAXXZ
+.globl ??1?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@XZ
 .globl ?clear@ios_base@std@@QAEXH_N@Z
 .globl _jmp_addr_0x007af647
 .globl _jmp_addr_0x007af78a
@@ -245,7 +245,6 @@
 .globl _globl_ct_0x007ac9d0
 .globl _globl_ct_0x007ae4b0
 .globl _globl_ct_0x007ad060
-.globl _globl_ct_0x007af270
 .globl _globl_ct_0x007af883
 .globl _globl_ct_0x007afcd3
 .globl _globl_ct_0x007b16b4
