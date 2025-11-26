@@ -3,7 +3,7 @@ description: 'Setup the correct version of clang to compile this recomp.'
 inputs:
   llvm_tag:
     description: 'LLVM tag to download'
-    default: 'bw1-decomp-011'
+    default: 'bw1-decomp-012'
 runs:
   using: "composite"
   steps:
