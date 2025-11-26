@@ -2433,7 +2433,7 @@ bool __fastcall InHand__8VillagerFv(struct Living* this)
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                     // 0x0076ae20    8d4c2414
     asm("push               ecx");                                             // 0x0076ae24    51
     asm("mov.s              ecx, esi");                                        // 0x0076ae25    8bce
-    asm("call               FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedList_12SortedObject_RC9MapCoords");                            // 0x0076ae27    e854c0feff
+    asm("call               @FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedList_12SortedObject_RC9MapCoords@16");                            // 0x0076ae27    e854c0feff
     asm("test               eax, eax");                                        // 0x0076ae2c    85c0
     asm("{disp32} je        _jmp_addr_0x0076af67");                            // 0x0076ae2e    0f8433010000
     asm("{disp8} mov        eax, dword ptr [esp + 0x10]");                     // 0x0076ae34    8b442410

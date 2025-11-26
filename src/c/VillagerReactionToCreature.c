@@ -1158,7 +1158,7 @@ void __fastcall CalculateNearestFreeDestination__8VillagerFP9MapCoords(struct Vi
     asm("{disp8} mov        dx, word ptr [esp + 0x1a]");                       // 0x007682fd    668b54241a
     asm("{disp8} lea        ecx, dword ptr [esp + 0x20]");                     // 0x00768302    8d4c2420
     asm("{disp8} mov        word ptr [eax + 0x02], dx");                       // 0x00768306    66895002
-    asm("call               _Push__LHStack__JustMapXZFPJustMapXZ");            // 0x0076830a    e891020000
+    asm("call               @Push__LHStack__JustMapXZFPJustMapXZ@12");         // 0x0076830a    e891020000
     asm("_jmp_addr_0x0076830f:");
     asm("{disp8} mov        eax, dword ptr [esp + 0x3c]");                     // 0x0076830f    8b44243c
     asm("dec                eax");                                             // 0x00768313    48
@@ -1174,7 +1174,7 @@ void __fastcall CalculateNearestFreeDestination__8VillagerFP9MapCoords(struct Vi
     asm("{disp8} mov        cx, word ptr [esp + 0x16]");                       // 0x00768335    668b4c2416
     asm("{disp8} mov        word ptr [eax + 0x02], cx");                       // 0x0076833a    66894802
     asm("{disp8} lea        ecx, dword ptr [esp + 0x44]");                     // 0x0076833e    8d4c2444
-    asm("call               _Push__LHStack__JustMapXZFPJustMapXZ");            // 0x00768342    e859020000
+    asm("call               @Push__LHStack__JustMapXZFPJustMapXZ@12");         // 0x00768342    e859020000
     asm("{disp8} lea        edx, dword ptr [esp + 0x10]");                     // 0x00768347    8d542410
     asm("push               edx");                                             // 0x0076834b    52
     asm("{disp8} lea        ecx, dword ptr [esp + 0x68]");                     // 0x0076834c    8d4c2468
@@ -1218,7 +1218,7 @@ void __fastcall CalculateNearestFreeDestination__8VillagerFP9MapCoords(struct Vi
     asm("{disp8} mov        word ptr [edx + 0x02], cx");                       // 0x007683b3    66894a02
     asm("{disp8} lea        ecx, dword ptr [esp + 0x20]");                     // 0x007683b7    8d4c2420
     asm("mov                word ptr [edx], ax");                              // 0x007683bb    668902
-    asm("call               _Push__LHStack__JustMapXZFPJustMapXZ");            // 0x007683be    e8dd010000
+    asm("call               @Push__LHStack__JustMapXZFPJustMapXZ@12");         // 0x007683be    e8dd010000
     asm("{disp8} mov        ebp, dword ptr [esp + 0x60]");                     // 0x007683c3    8b6c2460
     asm("_jmp_addr_0x007683c7:");
     asm("add                esi, 0x04");                                       // 0x007683c7    83c604

@@ -909,7 +909,7 @@ bool32_t __fastcall Landed__8VillagerFv(struct Villager* this)
     asm("mov.s              ecx, esi");                                      // 0x00760793    8bce
     asm("{disp8} mov        dword ptr [esp + 0x1c], edi");                   // 0x00760795    897c241c
     asm("{disp8} mov        dword ptr [esp + 0x20], edi");                   // 0x00760799    897c2420
-    asm("call               FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedList_12SortedObject_RC9MapCoords");                          // 0x0076079d    e8de66ffff
+    asm("call               @FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedList_12SortedObject_RC9MapCoords@16");                          // 0x0076079d    e8de66ffff
     asm("test               eax, eax");                                      // 0x007607a2    85c0
     asm("{disp8} mov        ecx, dword ptr [esp + 0x14]");                   // 0x007607a4    8b4c2414
     asm("{disp32} je        _jmp_addr_0x007608b7");                          // 0x007607a8    0f8409010000
