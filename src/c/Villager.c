@@ -278,7 +278,7 @@ const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__13GVillagerI
   .pClassDescriptor = &__RTTIClassHierarchyDescriptor__13GVillagerInfo,
 };
 
-const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__13GVillagerInfo = &__RTTICompleteObjectLocator__13GVillagerInfo;
+const struct RTTICompleteObjectLocator* const vftable_meta_ptr__13GVillagerInfo = &__RTTICompleteObjectLocator__13GVillagerInfo;
 
 const struct GObjectInfoVftable __vt__13GVillagerInfo = {
   Serialise__4BaseFR7Archive,
@@ -10961,7 +10961,7 @@ const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__17Missionary
   .pClassDescriptor = &__RTTIClassHierarchyDescriptor__17MissionaryControl,
 };
 
-const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__17MissionaryControl = &__RTTICompleteObjectLocator__17MissionaryControl;
+const struct RTTICompleteObjectLocator* const vftable_meta_ptr__17MissionaryControl = &__RTTICompleteObjectLocator__17MissionaryControl;
 
 const struct GameThingWithPosVftable __vt__17MissionaryControl = {
   Serialise__4BaseFR7Archive,

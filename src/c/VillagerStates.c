@@ -212,7 +212,7 @@ const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__23GVillagerS
   .pClassDescriptor = &__RTTIClassHierarchyDescriptor__23GVillagerStateTableInfo,
 };
 
-const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__23GVillagerStateTableInfo = &__RTTICompleteObjectLocator__23GVillagerStateTableInfo;
+const struct RTTICompleteObjectLocator* const vftable_meta_ptr__23GVillagerStateTableInfo = &__RTTICompleteObjectLocator__23GVillagerStateTableInfo;
 
 const struct GBaseInfoVftable __vt__23GVillagerStateTableInfo = {
   Serialise__4BaseFR7Archive,

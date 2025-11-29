@@ -256,7 +256,7 @@ const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12VillagerNa
   .pClassDescriptor = &__RTTIClassHierarchyDescriptor__12VillagerName,
 };
 
-const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__12VillagerName = &__RTTICompleteObjectLocator__12VillagerName;
+const struct RTTICompleteObjectLocator* const vftable_meta_ptr__12VillagerName = &__RTTICompleteObjectLocator__12VillagerName;
 
 const struct VillagerNameVftable __vt__12VillagerName = {
   AddDrawing__12VillagerNameFv,

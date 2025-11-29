@@ -155,7 +155,7 @@ void __fastcall CallVirtualFunctionsForCreation__8WindmillFRC9MapCoords(struct O
     __builtin_unreachable();
 }
 
-const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__8Windmill = &__RTTICompleteObjectLocator__8Windmill;
+const struct RTTICompleteObjectLocator* const vftable_meta_ptr__8Windmill = &__RTTICompleteObjectLocator__8Windmill;
 
 const struct AbodeVftable __vt__8Windmill = {
   Serialise__4BaseFR7Archive,

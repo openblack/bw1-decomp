@@ -10,7 +10,7 @@ const float rdata_float_0_33333334 asm("__real@3eaaaaab") = 0.33333334f;
 const float rdata_float_255_0 asm("__real@437f0000") = 255.0f;
 const float rdata_float_0_75 asm("__real@3f400000") = 0.75f;
 
-const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__12SetupControl = &__RTTICompleteObjectLocator__12SetupControl;
+const struct RTTICompleteObjectLocator* const vftable_meta_ptr__12SetupControl = &__RTTICompleteObjectLocator__12SetupControl;
 
 const struct SetupControlVftable __vt__12SetupControl = {
   SetToolTip__12SetupControlFUl,
