@@ -37,7 +37,7 @@ const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__4Base = {
     .attributes = 0x0000000,
 };
 
-const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__4Base = &__RTTICompleteObjectLocator__4Base;
+const struct RTTICompleteObjectLocator* const vftable_meta_ptr__4Base = &__RTTICompleteObjectLocator__4Base;
 
 const struct BaseVftable __vt__4Base = {
     Serialise__4BaseFR7Archive,

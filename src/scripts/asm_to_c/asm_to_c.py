@@ -91,7 +91,7 @@ def process_vtable_mode(filepath: Path):
         for header in extra_headers:
             f.write(f'#include "{header}"\n')
         f.write(f'''
-const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__{len(type_name)}{type_name} = &__RTTICompleteObjectLocator__{len(type_name)}{type_name};
+const struct RTTICompleteObjectLocator* const vftable_meta_ptr__{len(type_name)}{type_name} = &__RTTICompleteObjectLocator__{len(type_name)}{type_name};
 
 const struct {type_name}Vftable __vt__{len(type_name)}{type_name} = {{
 ''')

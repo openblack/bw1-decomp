@@ -32,7 +32,7 @@ const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Villager = 
   .pClassDescriptor = &__RTTIClassHierarchyDescriptor__8Villager,
 };
 
-const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__8Villager = &__RTTICompleteObjectLocator__8Villager;
+const struct RTTICompleteObjectLocator* const vftable_meta_ptr__8Villager = &__RTTICompleteObjectLocator__8Villager;
 
 const struct VillagerVftable __vt__8Villager = {
   Serialise__4BaseFR7Archive,

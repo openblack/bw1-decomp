@@ -40,7 +40,7 @@ struct GBaseInfo* __fastcall GetBaseInfo__10GAbodeInfoFRUl(struct GBaseInfo* thi
   __builtin_unreachable();
 }
 
-const struct RTTICompleteObjectLocator* const p__RTTICompleteObjectLocator__10GAbodeInfo = &__RTTICompleteObjectLocator__10GAbodeInfo;
+const struct RTTICompleteObjectLocator* const vftable_meta_ptr__10GAbodeInfo = &__RTTICompleteObjectLocator__10GAbodeInfo;
 
 const struct GMultiMapFixedInfoVftable __vt__10GAbodeInfo = {
     Serialise__4BaseFR7Archive,
