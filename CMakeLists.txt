@@ -587,7 +587,7 @@ function(add_patched_static_lib_object library_name src_obj)
         VERBATIM
         OUTPUT ${output_file}
         COMMAND ${LLVM_AR_EXECUTABLE} --format=coff --output "${CMAKE_CURRENT_BINARY_DIR}/${library_name}" x ${CMAKE_CURRENT_SOURCE_DIR}/src/lib/${library_name}.LIB ${src_obj}
-        COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/src/scripts/patch_coff_object_file.py ${input_file} ${tmp_output} ${PATCH_FLAGS}
+        COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/source_code/patch_coff_object_file.py ${input_file} ${tmp_output} ${PATCH_FLAGS}
         COMMAND ${LLVM_OBJCOPY_EXECUTABLE} ${WEAKEN_ARGS} ${DELETE_ARGS} ${tmp_output} ${output_file}
     )
 
@@ -903,7 +903,7 @@ target_link_libraries(runblack-reassembled
 add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/src/scripts/patch_coff_object_file.py
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/source_code/patch_coff_object_file.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/bss.200.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/bss.200.asm${OBJ_SUFFIX}"
             "--no-pad"
@@ -912,7 +912,7 @@ add_custom_command(
 add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/src/scripts/patch_coff_object_file.py
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/source_code/patch_coff_object_file.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/data.200.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/data.200.asm${OBJ_SUFFIX}"
             "--no-pad"
@@ -921,7 +921,7 @@ add_custom_command(
 add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/src/scripts/patch_coff_object_file.py
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/source_code/patch_coff_object_file.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/rdata.200.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/rdata.200.asm${OBJ_SUFFIX}"
             "--no-pad"
@@ -930,7 +930,7 @@ add_custom_command(
 add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/src/scripts/patch_coff_object_file.py
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/source_code/patch_coff_object_file.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/rdata.r.200-libcpmt-rtti.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/rdata.r.200-libcpmt-rtti.asm${OBJ_SUFFIX}"
             "--no-pad"
@@ -939,7 +939,7 @@ add_custom_command(
 add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/src/scripts/patch_coff_object_file.py
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/source_code/patch_coff_object_file.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/xdata.x.001.009bc428-009be430.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/xdata.x.001.009bc428-009be430.asm${OBJ_SUFFIX}"
             "--no-pad"
@@ -948,7 +948,7 @@ add_custom_command(
 add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/src/scripts/patch_coff_object_file.py
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/source_code/patch_coff_object_file.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/runblack.reassemble.1062.007aee98-007bf030.asm${OBJ_SUFFIX}"
             "--no-pad"
@@ -957,7 +957,7 @@ add_custom_command(
 add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/src/scripts/patch_coff_object_file.py
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/source_code/patch_coff_object_file.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/text.x.002.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-002.dir/src/asm/unprocessed/text.x.002.asm${OBJ_SUFFIX}"
             "--no-pad"
@@ -966,7 +966,7 @@ add_custom_command(
 add_custom_command(
     TARGET runblack-reassembled
     PRE_LINK
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/src/scripts/patch_coff_object_file.py
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/source_code/patch_coff_object_file.py
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-bss-005.dir/src/asm/unprocessed/bss.400.asm${OBJ_SUFFIX}"
             "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-reassembled-src-bss-005.dir/src/asm/unprocessed/bss.400.asm${OBJ_SUFFIX}"
             "--no-pad"
@@ -1021,7 +1021,7 @@ add_custom_command(
 add_custom_command(
     TARGET runblack-reassembled
     POST_BUILD
-    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/src/scripts/post_assemble_patch.py --input "$<TARGET_FILE:runblack-reassembled>" --output "$<TARGET_FILE:runblack-reassembled>" $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:"--debug"> $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:"--turn-off-fullscreen">
+    COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/scripts/source_code/post_assemble_patch.py --input "$<TARGET_FILE:runblack-reassembled>" --output "$<TARGET_FILE:runblack-reassembled>" $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:"--debug"> $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:"--turn-off-fullscreen">
     COMMENT "Patching PE header to match vanilla"
 )
 
