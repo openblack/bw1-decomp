@@ -10,5 +10,5 @@ runs:
 
     - name: Install Python dependencies
       shell: bash
-      run: pip install -r src/scripts/requirements.txt
+      run: pip install -r scripts/source_code/requirements.txt
 
