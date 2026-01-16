@@ -34,6 +34,7 @@ class SectionHeader(ctypes.LittleEndianStructure):
 
 class SymbolTableEntry(ctypes.LittleEndianStructure):
     _pack_ = 1
+    _layout_ = 'ms'
     _fields_ = [
         ("Name", ctypes.c_char * 8),
         ("Value", ctypes.c_uint32),
@@ -71,6 +72,7 @@ class AuxSectionDefinition(ctypes.LittleEndianStructure):
 
 class AuxSectionSymbol(ctypes.LittleEndianStructure):
     _pack_ = 1
+    _layout_ = 'ms'
     _fields_ = [
         ("Length", ctypes.c_uint32),           # Size of section
         ("NumberOfRelocations", ctypes.c_uint16),
