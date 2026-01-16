@@ -50,7 +50,7 @@ If either the assembler or linker are wrongly used, then the md5 sums will not m
 # Download the latest llvm-project from https://github.com/openblack/llvm-project/releases
 
 # from the bw1-decomp directory
-cmake -Ssrc -Bbuild -DLLVM_BINARIES_DIR=/path/to/the/latest/llvm-project
+cmake -S. -Bbuild -DLLVM_BINARIES_DIR=/path/to/the/latest/llvm-project
 cmake --build build
 ```
 
