@@ -10,20 +10,6 @@ runs:
     - name: Install Ninja
       uses: seanmiddleditch/gha-setup-ninja@master
 
-    - name: Download patched LLVM project
-      uses: robinraju/release-downloader@v1
-      with:
-        repository: 'openblack/llvm-project'
-        tag: ${{ inputs.llvm_tag }}
-        fileName: ${{ runner.os == 'Windows' && 'llvm-windows.zip' || 'llvm-ubuntu.zip' }}
-        extract: true
-        out-file-path: 'llvm'
-
-    - name: Ensure LLVM binaries are executable
-      if: ${{ runner.os != 'Windows' }}
-      shell: bash
-      run: chmod -R +x llvm/bin
-
     - if: ${{ runner.os == 'Windows' }}
       shell: bash
       run: C:/msys64/usr/bin/pacman -Sy --noconfirm mingw-w64-clang-x86_64-headers-git

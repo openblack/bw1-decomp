@@ -1,18 +1,64 @@
 cmake_minimum_required(VERSION 3.30)
 
+include(FetchContent)
+
+# Get Wibo for linux
+FetchContent_Declare(
+  wibo
+  URL      https://github.com/decompals/wibo/releases/download/1.0.3/wibo-i686
+  URL_HASH SHA256=9a6683b6ea596d1d658cf6ae723691993ab1dc92e2655356b01b3ce18826eeb6
+  DOWNLOAD_NO_EXTRACT TRUE
+)
+# Get MSVC 6.0 SP5 from decomp.me for C++
+FetchContent_Declare(
+  msvc_compiler
+  URL      https://github.com/OmniBlade/decomp.me/releases/download/msvcwin9x/msvc6.5.tar.gz
+  URL_HASH MD5=73e7cc13e078c56c7798c3f6686fbea4
+)
+# Get the MSVC 6.0 SP5 libs from decomp.me
+FetchContent_Declare(
+  msvcrt
+  URL      https://files.decomp.dev/msvcrt_20251015.zip
+  URL_HASH MD5=1f84931808879d1be51b36e91ecbda3f
+)
+FetchContent_MakeAvailable(wibo msvc_compiler msvcrt)
+
+find_package(Python3 REQUIRED)
+
+set(CMAKE_CXX_COMPILER ${Python3_EXECUTABLE})
+set(CMAKE_CXX_COMPILER_ARG1 "${CMAKE_CURRENT_SOURCE_DIR}/scripts/source_code/cl_wrapper.py ${CMAKE_BINARY_DIR}")
+set(CMAKE_CXX_COMPILER_WORKS ON)
+
 # Set the llvm utils before project so the toolchain selection has the right paths
-if (LLVM_BINARIES_DIR)
-    # CMAKE_EXECUTABLE_SUFFIX is set after project
-    if (CMAKE_HOST_WIN32)
-        set(LLVM_EXECUTABLE_SUFFIX ".exe")
+if (NOT LLVM_BINARIES_DIR)
+    # Get the custom llvm for openblack/bw1-decomp
+    set(LLVM_RELEASE_NAME "bw1-decomp-012")
+    if (CMAKE_HOST_LINUX)
+        FetchContent_Declare(
+            llvm_binaries
+            URL      https://github.com/openblack/llvm-project/releases/download/${LLVM_RELEASE_NAME}/llvm-ubuntu.zip
+            URL_HASH SHA256=b9bba0e6428f92c2a1c23a081fccf22247dee96bae27f62a454c1aff271a4dff
+        )
+    elseif (CMAKE_HOST_WIN32)
+        FetchContent_Declare(
+            llvm_binaries
+            URL      https://github.com/openblack/llvm-project/releases/download/${LLVM_RELEASE_NAME}/llvm-windows.zip
+            URL_HASH SHA256=d7ce3f74ba8fb60c4d036b3d2bb3e6b479d8cf28944b4986273042a5f431ac22
+        )
     endif()
-    set(CMAKE_ASM_COMPILER "${LLVM_BINARIES_DIR}/clang${LLVM_EXECUTABLE_SUFFIX}")
-    set(CMAKE_RC_COMPILER "${LLVM_BINARIES_DIR}/llvm-rc${LLVM_EXECUTABLE_SUFFIX}")
-    set(LLVM_STRIP_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-strip${LLVM_EXECUTABLE_SUFFIX}")
-    set(CMAKE_LINKER "${LLVM_BINARIES_DIR}/lld${LLVM_EXECUTABLE_SUFFIX}")
-    set(LLVM_AR_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-ar${LLVM_EXECUTABLE_SUFFIX}")
-    set(LLVM_OBJCOPY_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-objcopy${LLVM_EXECUTABLE_SUFFIX}")
+    FetchContent_MakeAvailable(llvm_binaries)
+    set(LLVM_BINARIES_DIR "${llvm_binaries_SOURCE_DIR}/bin")
 endif()
+# CMAKE_EXECUTABLE_SUFFIX is set after project
+if (CMAKE_HOST_WIN32)
+    set(LLVM_EXECUTABLE_SUFFIX ".exe")
+endif()
+set(CMAKE_ASM_COMPILER "${LLVM_BINARIES_DIR}/clang${LLVM_EXECUTABLE_SUFFIX}")
+set(CMAKE_RC_COMPILER "${LLVM_BINARIES_DIR}/llvm-rc${LLVM_EXECUTABLE_SUFFIX}")
+set(LLVM_STRIP_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-strip${LLVM_EXECUTABLE_SUFFIX}")
+set(CMAKE_LINKER "${LLVM_BINARIES_DIR}/lld${LLVM_EXECUTABLE_SUFFIX}")
+set(LLVM_AR_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-ar${LLVM_EXECUTABLE_SUFFIX}")
+set(LLVM_OBJCOPY_EXECUTABLE "${LLVM_BINARIES_DIR}/llvm-objcopy${LLVM_EXECUTABLE_SUFFIX}")
 
 if (CMAKE_HOST_WIN32)
     set(OBJ_SUFFIX ".obj")
@@ -20,7 +66,7 @@ else()
     set(OBJ_SUFFIX ".o")
 endif()
 
-project(bw1-decomp ASM C RC)
+project(bw1-decomp ASM C CXX RC)
 
 set(CMAKE_CONFIGURATION_TYPES "RelWithDebInfo;Release" CACHE STRING "Available build configurations" FORCE)
 
@@ -31,7 +77,7 @@ set(CMAKE_CONFIGURATION_TYPES "RelWithDebInfo;Release" CACHE STRING "Available b
 # If the wrong linker is used, sections may be placed in different virtual and physical offsets. This means the post process script will likely assign wrong offsets.
 # If either the assembler or linker are wrongly used, then the md5 sums will not match.
 
-set(CMAKE_ASM_LINK_EXECUTABLE "<CMAKE_LINKER> <FLAGS> <CMAKE_ASM_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> /out:<TARGET> <LINK_LIBRARIES>")
+set(CMAKE_ASM_LINK_EXECUTABLE "<CMAKE_LINKER> <FLAGS> <CMAKE_ASM_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> /out:<TARGET>")
 set(CMAKE_ASM_USE_RESPONSE_FILE_FOR_OBJECTS 1)
 
 set(CMAKE_ASM_USING_LINKER_DEFAULT "")
@@ -45,13 +91,16 @@ set(CMAKE_DEPFILE_FLAGS_ASM "")
 set(CMAKE_C_COMPILE_OPTIONS_MSVC_RUNTIME_LIBRARY_MultiThreadedDLL "")
 set(CMAKE_C_USING_LINKER_DEFAULT "")
 set(CMAKE_C_CREATE_CONSOLE_EXE "")
-set(CMAKE_C_FLAGS_DEBUG "")
+set(CMAKE_C_FLAGS_DEBUG "-g -gcodeview -fstandalone-debug -fno-eliminate-unused-debug-types")
 set(CMAKE_C_FLAGS_MINSIZEREL "")
-set(CMAKE_C_FLAGS_RELWITHDEBINFO "-O2")
+set(CMAKE_C_FLAGS_RELWITHDEBINFO "-g -gcodeview -fstandalone-debug -fno-eliminate-unused-debug-types -O2")
 set(CMAKE_C_FLAGS_RELEASE "-O3")
 set(CMAKE_DEPFILE_FLAGS_C "")
 
-find_package(Python3 REQUIRED)
+set(CMAKE_CXX_FLAGS_DEBUG "/Zi /TP /MT /GR")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/Zi /TP /MT /GR /O2")
+set(CMAKE_CXX_FLAGS_RELEASE "/TP /MT /GR /O2")
+
 find_program(LLVM_STRIP_EXECUTABLE NAMES llvm-strip REQUIRED)
 find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
 find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
@@ -870,20 +919,27 @@ target_compile_options(common_compile_options INTERFACE
     -m32
     -masm=intel
     -march=i386
-    $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:-g -gcodeview>
-    $<$<AND:$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>,$<OR:$<COMPILE_LANGUAGE:C>,$<COMPILE_LANGUAGE:CXX>>>:-fstandalone-debug -fno-eliminate-unused-debug-types>
 )
 target_include_directories(common_compile_options
     INTERFACE
-        C:/msys64/clang64/include
-        D:/msys64/clang64/include
-        /usr/x86_64-w64-mingw32/include
-        ${LLVM_BINARIES_DIR}/../include
+        $<IF:$<COMPILE_LANGUAGE:C>,${LLVM_BINARIES_DIR}/../include,>
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}/black
         ${CMAKE_CURRENT_SOURCE_DIR}/libs
 )
+if (CMAKE_HOST_WIN32)
+    target_include_directories(common_compile_options
+        INTERFACE
+            $<IF:$<COMPILE_LANGUAGE:C>,C:/msys64/clang64/include,>
+            $<IF:$<COMPILE_LANGUAGE:C>,D:/msys64/clang64/include,>
+    )
+else()
+    target_include_directories(common_compile_options
+        INTERFACE
+            $<IF:$<COMPILE_LANGUAGE:C>,/usr/x86_64-w64-mingw32/include,>
+    )
+endif()
 # Enforce a obj linking order
 target_link_libraries(runblack-reassembled
     PRIVATE
