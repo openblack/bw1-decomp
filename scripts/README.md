@@ -1,5 +1,16 @@
 # bw1-decomp utility scripts
 
+## CL.EXE Wrapper
+
+```
+# Compile cpp file
+python scripts/source/cl_wrapper.py [clang style compile args]
+```
+
+This script is sent to cmake to act like a clang compiler.
+Since msvc 6 is too old to be recongnized by cmake we get this script to intercept the compiler ID testing and do arg conversion.
+This also is able to do post-processing and run on linux/mac using wibo.
+
 ## Header Analyzer and Header Generator
 
 ```bash
