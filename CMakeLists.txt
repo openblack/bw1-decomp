@@ -163,10 +163,6 @@ set(SOURCES_ABODE
     src/c/Base.000.c
     src/c/BaseInfo.000.c
     src/c/AbodeInfo.002.c
-    src/c/Base.001.c
-    src/c/BaseInfo.001.c
-    src/c/ObjectInfo.000.c
-    src/c/MultiMapFixedInfo.000.c
     src/c/AbodeInfo.003.c
     src/c/Abode.000.c
     src/c/Fixed.000.c

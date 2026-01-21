@@ -2,8 +2,6 @@
 #ifndef __HELPTEXTENUMS_H__
 #define __HELPTEXTENUMS_H__
 
-#include <stdint.h>
-
 // Last Saved,#2001-11-15 15:25:14#,"Jonty Barnes"
 
 //*****************************************************************************

@@ -1,6 +1,45 @@
 #ifndef BW1_DECOMP_BASE_INCLUDED_H
 #define BW1_DECOMP_BASE_INCLUDED_H
 
+#ifdef __cplusplus
+
+typedef signed char int8_t;
+typedef unsigned char uint8_t;
+typedef signed short int int16_t;
+typedef unsigned short int uint16_t;
+typedef signed int int32_t;
+typedef unsigned int uint32_t;
+
+class Archive;
+struct LHPoint;
+struct MapCoords;
+
+void operator delete(void* ptr, size_t size);
+
+class Base
+{
+public:
+    //~Base() {}
+    Base()
+    {
+      destroyed = 0;
+      (&destroyed)[1] = 0;
+    }
+    virtual void Serialise(Archive& param_1) {}
+    virtual ~Base();
+    virtual void Delete() {if (this) delete this; }
+    virtual void ToBeDeleted(uint32_t param_1) { Delete(); }
+    virtual int Get3DSoundPos(LHPoint* param_1) { return 0;}
+    virtual void CleanUpForSerialisation() {}
+    virtual void Dump() {}
+    static void operator delete(void* ptr, size_t size) {
+        ::operator delete(ptr, /*sizeof(Base)*/8);
+    }
+    int destroyed;
+};
+
+#else
+
 #include <assert.h> /* For static_assert */
 #include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint32_t */
@@ -81,5 +120,7 @@ int __fastcall Get3DSoundPos__4BaseFP7LHPoint(struct Base* this, const void* edx
 void __fastcall CleanUpForSerialisation__4BaseFv(struct Base* this) asm("?CleanUpForSerialisation@Base@@UAEXXZ");
 // win1.41 00401200 mac 106fc7f0 Base::Dump(void)
 void __fastcall Dump__4BaseFv(struct Base* this) asm("?Dump@Base@@UAEXXZ");
+
+#endif
 
 #endif /* BW1_DECOMP_BASE_INCLUDED_H */
