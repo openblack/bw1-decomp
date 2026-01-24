@@ -512,7 +512,7 @@ set(SOURCES_008
     src/asm/unprocessed/data.300.asm
     src/asm/unprocessed/runblack.reassemble.1129.007db410-007dc8b0.asm
     src/asm/unprocessed/runblack.reassemble.1137.007dc8b0-007dee50.asm
-    src/c/PCMain.1138.007dee50-007deef0.c
+    src/cpp/PCMain.cpp
     src/asm/unprocessed/runblack.reassemble.1139.007dee50-007e4e40.asm
     src/asm/unprocessed/runblack.reassemble.1144.007e4e40-007e6070.asm
     src/asm/unprocessed/runblack.reassemble.1148.007e6070-007e7900.asm
