@@ -28,7 +28,6 @@
 .extern _jmp_addr_0x007db8f0
 .extern _jmp_addr_0x007db910
 .extern _jmp_addr_0x007db940
-.extern _jmp_addr_0x007dbed0
 .extern @Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16
 .extern _jmp_addr_0x007e67e0
 .extern _jmp_addr_0x007e6960
@@ -665,7 +664,7 @@ _jmp_addr_0x007dcf48:    push               edi                                 
                          push               0x009caff8                                    // 0x007dcf62    68f8af9c00
                          {disp32} mov       dword ptr [esi + 0x000001b0], edi             // 0x007dcf67    89beb0010000
                          {disp8} mov        dword ptr [esi + 0x18], edi                   // 0x007dcf6d    897e18
-                         call               dword ptr [__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z]               // 0x007dcf70    ff1544938a00
+                         call               dword ptr [__imp_?RegistryRetrieveULong@@YAHPBD0PAH@Z]               // 0x007dcf70    ff1544938a00
                          add                esp, 0x0c                                     // 0x007dcf76    83c40c
                          test               eax, eax                                      // 0x007dcf79    85c0
                          {disp8} jne        _jmp_addr_0x007dcf93                          // 0x007dcf7b    7516

@@ -203,7 +203,7 @@
 .globl __imp__InAssertDialog__3_NA@4
 .globl __imp__RegistryRetrieveDouble__YA_AW4LH_RETURN__PAD0PAN_Z@4
 .globl __imp__LH_DX_Errors__3PAULHErrorCode__A@4
-.globl __imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z
+.globl __imp_?RegistryRetrieveULong@@YAHPBD0PAH@Z
 .globl __imp__ClearError_LHLogger__QAEXXZ@4
 .globl __imp__LHSyslog__3VLHLogger__A@4
 .globl __imp__RegistrySetULong__YA_AW4LH_RETURN__PAD0K_Z@4
@@ -231,7 +231,7 @@
 .globl __imp__GetText_LHLogger__SAPADXZ@4
 .globl __imp__RegistrySetString__YA_AW4LH_RETURN__PAD00_Z@4
 .globl __imp__LHRegistryGetCurrentKey__YA_AW4LH_REG_KEY_TYPE__XZ@4
-.globl __imp__LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z@4
+.globl __imp_?LHRegistrySetCurrentKey@@YAXH@Z
 .globl __imp__RegistryRetrieveString__YA_AW4LH_RETURN__PAD00PAK_Z@4
 .globl __imp__RegistryRetrieveVal__YA_AW4LH_RETURN__PAD0PAEPAKK_Z@4
 .globl __imp__DecryptBlock_LHVersion__SAXPAEG_Z@4
@@ -814,7 +814,7 @@ __imp__UpdateStackInformation_LHDebugStack__QAEXXZ@4:                           
 __imp__InAssertDialog__3_NA@4:                                                                                                 .long 0x005c5024 // 0x008a9338 LHLogR.dll::InAssertDialog__3_NA
 __imp__RegistryRetrieveDouble__YA_AW4LH_RETURN__PAD0PAN_Z@4:                                                                   .long 0x005c508e // 0x008a933c LHLogR.dll::RegistryRetrieveDouble__YA_AW4LH_RETURN__PAD0PAN_Z
 __imp__LH_DX_Errors__3PAULHErrorCode__A@4:                                                                                     .long 0x005c50fc // 0x008a9340 LHLogR.dll::LH_DX_Errors__3PAULHErrorCode__A
-__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z:                                                                      .long 0x005c0c2e // 0x008a9344 LHLogR.dll::RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z
+__imp_?RegistryRetrieveULong@@YAHPBD0PAH@Z:                                                                                    .long 0x005c0c2e // 0x008a9344 LHLogR.dll::RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z
 __imp__ClearError_LHLogger__QAEXXZ@4:                                                                                          .long 0x005c4f6e // 0x008a9348 LHLogR.dll::ClearError_LHLogger__QAEXXZ
 __imp__LHSyslog__3VLHLogger__A@4:                                                                                              .long 0x005c4f8e // 0x008a934c LHLogR.dll::LHSyslog__3VLHLogger__A
 __imp__RegistrySetULong__YA_AW4LH_RETURN__PAD0K_Z@4:                                                                           .long 0x005c0c64 // 0x008a9350 LHLogR.dll::RegistrySetULong__YA_AW4LH_RETURN__PAD0K_Z
@@ -842,7 +842,7 @@ __imp__GetCode_LHLogger__SAKXZ@4:                                               
 __imp__GetText_LHLogger__SAPADXZ@4:                                                                                            .long 0x005c0ea6 // 0x008a93a8 LHLogR.dll::GetText_LHLogger__SAPADXZ
 __imp__RegistrySetString__YA_AW4LH_RETURN__PAD00_Z@4:                                                                          .long 0x005c0e76 // 0x008a93ac LHLogR.dll::RegistrySetString__YA_AW4LH_RETURN__PAD00_Z
 __imp__LHRegistryGetCurrentKey__YA_AW4LH_REG_KEY_TYPE__XZ@4:                                                                   .long 0x005c0e40 // 0x008a93b0 LHLogR.dll::LHRegistryGetCurrentKey__YA_AW4LH_REG_KEY_TYPE__XZ
-__imp__LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z@4:                                                                    .long 0x005c0e0a // 0x008a93b4 LHLogR.dll::LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z
+__imp_?LHRegistrySetCurrentKey@@YAXH@Z:                                                                                        .long 0x005c0e0a // 0x008a93b4 LHLogR.dll::LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z
 __imp__RegistryRetrieveString__YA_AW4LH_RETURN__PAD00PAK_Z@4:                                                                  .long 0x005c0dd2 // 0x008a93b8 LHLogR.dll::RegistryRetrieveString__YA_AW4LH_RETURN__PAD00PAK_Z
 __imp__RegistryRetrieveVal__YA_AW4LH_RETURN__PAD0PAEPAKK_Z@4:                                                                  .long 0x005c0d9a // 0x008a93bc LHLogR.dll::RegistryRetrieveVal__YA_AW4LH_RETURN__PAD0PAEPAKK_Z
 __imp__DecryptBlock_LHVersion__SAXPAEG_Z@4:                                                                                    .long 0x005c0d74 // 0x008a93c0 LHLogR.dll::DecryptBlock_LHVersion__SAXPAEG_Z

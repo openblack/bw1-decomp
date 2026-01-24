@@ -50,7 +50,7 @@
 .extern _tolower
 .extern _strrchr
 .extern __controlfp
-.extern _jmp_addr_0x007dbed0
+.extern ?jmp_addr_0x007dbed0@@YAXXZ
 .extern _jmp_addr_0x007dedd0
 .extern _jmp_addr_0x007dee00
 .extern _jmp_addr_0x007f4300
@@ -61,7 +61,7 @@
 .globl _stop_draw_sprite_to_screen__Fv
 .globl _IsACmdLineString__FPcPCc
 .globl _ScanParameters__Fv@0
-.globl _pc_main__Fv
+.globl ?pc_main__Fv@@YAHHQAPAD@Z
 
 .globl _globl_ct_0x00641840
 .globl _globl_ct_0x00641870
@@ -770,7 +770,9 @@ _jmp_addr_0x00641c51:    pop               edi                                  
                          nop                                                             // 0x00641c5d    90
                          nop                                                             // 0x00641c5e    90
                          nop                                                             // 0x00641c5f    90
-_pc_main__Fv:            push              ebp                                           // 0x00641c60    55
+
+?pc_main__Fv@@YAHHQAPAD@Z:
+                         push              ebp                                           // 0x00641c60    55
                          mov.s             ebp, esp                                      // 0x00641c61    8bec
                          sub               esp, 0x08                                     // 0x00641c63    83ec08
                          push              ebx                                           // 0x00641c66    53
@@ -813,7 +815,7 @@ _jmp_addr_0x00641cd0:    {disp8} lea       edx, dword ptr [ebp + -0x08]         
                          call              _jmp_addr_0x008a04f0                          // 0x00641cd8    e813e82500
                          cmp               dword ptr [ebp + -0x04], 0x00040007           // 0x00641cdd    817dfc07000400
                          {disp8} jae       _jmp_addr_0x00641d10                          // 0x00641ce4    732a
-                         call              _jmp_addr_0x007dbed0                          // 0x00641ce6    e8e5a11900
+                         call              ?jmp_addr_0x007dbed0@@YAXXZ                   // 0x00641ce6    e8e5a11900
                          push              0x00001000                                    // 0x00641ceb    6800100000
                          push              0x00bfea90                                    // 0x00641cf0    6890eabf00
                          push              0x00bfea58                                    // 0x00641cf5    6858eabf00
