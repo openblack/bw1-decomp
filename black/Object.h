@@ -1,6 +1,17 @@
 #ifndef BW1_DECOMP_OBJECT_INCLUDED_H
 #define BW1_DECOMP_OBJECT_INCLUDED_H
 
+#ifdef __cplusplus
+
+#include "GameThingWithPos.h"
+
+class Object: public GameThingWithPos
+{
+
+};
+
+#else 
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stddef.h> /* For size_t */
@@ -894,5 +905,7 @@ DECLARE_LH_LINKED_LIST(Object);
 
 // win1.41 005e2ff0 mac 103782a0 RequestChangeTexture(Object *)
 void __cdecl RequestChangeTexture__FP6Object(struct Object* param_1);
+
+#endif
 
 #endif /* BW1_DECOMP_OBJECT_INCLUDED_H */

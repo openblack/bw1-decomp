@@ -35,7 +35,7 @@ public:
   uint32_t handCondition;
   float foodValue;
   uint32_t woodValue;
-  uint32_t food_type;  /* 0x70 */
+  FOOD_TYPE food_type;  /* 0x70 */
   float defenceEffectBurn;
   float defenceEffectCrush;
   float defenceEffectHit;
@@ -184,17 +184,17 @@ extern const struct GObjectInfoVftable __vt__11GObjectInfo asm("??_7GObjectInfo@
 // win1.41 006363c0 mac 101cbbe0 GObjectInfo::_dt(void)
 void __fastcall __dt__11GObjectInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGObjectInfo@@UAEPAXI@Z");
 // win1.41 004012c0 mac 10511e08 GObjectInfo::GetDebugText(void)
-const char* __fastcall GetDebugText__11GObjectInfoCFv(const struct GBaseInfo* this) asm("?GetDebugText@GObjectInfo@@UBEPBDXZ");
+const char* __fastcall GetDebugText__11GObjectInfoCFv(const struct GBaseInfo* this) asm("?GetDebugText@GAbodeInfo@@UBEPBDXZ");
 // win1.41 0042b380 mac 104cc120 GObjectInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__11GObjectInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GObjectInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 0042b370 mac 1016ddf0 GObjectInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__11GObjectInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GObjectInfo@@UBEIXZ");
 // win1.41 00401290 mac 1016e3a0 GObjectInfo::GetMesh(TRIBE_TYPE) const
-uint32_t __fastcall GetMesh__11GObjectInfoCF10TRIBE_TYPE(const struct GObjectInfo* this, const void* edx, enum TRIBE_TYPE tribe) asm("?GetMesh@GObjectInfo@@UBE?AW4MeshId@@W4TRIBE_TYPE@@@Z");
+uint32_t __fastcall GetMesh__11GObjectInfoCF10TRIBE_TYPE(const struct GObjectInfo* this, const void* edx, enum TRIBE_TYPE tribe) asm("?GetMesh@GAbodeInfo@@UBEIW4TRIBE_TYPE@@@Z");
 // win1.41 004012a0 mac 1016de30 GObjectInfo::GetAlignmentType(void) const
-enum ALIGNMENT_TYPE __fastcall GetAlignmentType__11GObjectInfoCFv(const struct GObjectInfo* this) asm("?GetAlignmentType@GObjectInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ");
+enum ALIGNMENT_TYPE __fastcall GetAlignmentType__11GObjectInfoCFv(const struct GObjectInfo* this) asm("?GetAlignmentType@GAbodeInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ");
 // win1.41 004012b0 mac 100627a0 GObjectInfo::GetFoodType(void) const
-enum FOOD_TYPE __fastcall GetFoodType__11GObjectInfoCFv(const struct GObjectInfo* this) asm("?GetFoodType@GObjectInfo@@UBE?AW4FOOD_TYPE@@XZ");
+enum FOOD_TYPE __fastcall GetFoodType__11GObjectInfoCFv(const struct GObjectInfo* this) asm("?GetFoodType@GAbodeInfo@@UBE?AW4FOOD_TYPE@@XZ");
 
 #endif
 

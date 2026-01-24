@@ -1,6 +1,17 @@
 #ifndef BW1_DECOMP_MOBILE_INCLUDED_H
 #define BW1_DECOMP_MOBILE_INCLUDED_H
 
+#ifdef __cplusplus
+
+#include "Object.h"
+
+class Mobile: public Object
+{
+
+};
+
+#else
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint16_t, uint32_t */
@@ -79,5 +90,7 @@ uint32_t __fastcall ValidToApplyThisToMapCoord__6MobileFP16GInterfaceStatusRC9Ma
 uint32_t __fastcall ApplyThisToMapCoord__6MobileFP16GInterfaceStatusRC9MapCoordsP23GestureSystemPacketData(struct Object* this, const void* edx, struct GInterfaceStatus* param_1, const struct MapCoords* param_2, struct GestureSystemPacketData* param_3) asm("?ApplyThisToMapCoord@Mobile@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@PAUGestureSystemPacketData@@@Z");
 // win1.41 00416f60 mac 100add50 Mobile::ApplyOnlyAfterReleased(void)
 uint32_t __fastcall ApplyOnlyAfterReleased__6MobileFv(struct Object* this) asm("?ApplyOnlyAfterReleased@Mobile@@UAEIXZ");
+
+#endif
 
 #endif /* BW1_DECOMP_MOBILE_INCLUDED_H */

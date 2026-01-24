@@ -1,6 +1,20 @@
 #ifndef BW1_DECOMP_MULTI_MAP_FIXED_INCLUDED_H
 #define BW1_DECOMP_MULTI_MAP_FIXED_INCLUDED_H
 
+#ifdef __cplusplus
+
+#include "Fixed.h"
+
+class GMultiMapFixedInfo;
+
+class MultiMapFixed: public Fixed
+{
+public:
+    MultiMapFixed(const MapCoords& coords, const GMultiMapFixedInfo* info, float y_angle, float scale, float food, int wood);
+};
+
+#else 
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stddef.h> /* For size_t */
@@ -351,5 +365,7 @@ struct PlannedMultiMapFixed* __fastcall ConvertToPlanned__13MultiMapFixedFv(stru
 void __fastcall CreateCollideData__13MultiMapFixedFv(struct MultiMapFixed* this) asm("?CreateCollideData@MultiMapFixed@@UAEXXZ");
 
 DECLARE_LH_LINKED_LIST(MultiMapFixed);
+
+#endif
 
 #endif /* BW1_DECOMP_MULTI_MAP_FIXED_INCLUDED_H */

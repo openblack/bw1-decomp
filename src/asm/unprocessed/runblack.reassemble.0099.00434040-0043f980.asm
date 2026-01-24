@@ -420,7 +420,7 @@
 .globl _Connect__9BWGameSpyFv
 .globl ??_GLHReleasedOSFile@@UAEPAXI@Z
 .globl _Load__9BigForestFR10GameOSFile
-.globl ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
+.globl ?GetDebugColor@GBaseInfo@@UAEPAULHColor@@PAU2@@Z
 .globl ?IsRepaired@MultiMapFixed@@UAE_NXZ
 .globl ?IsBuilt@MultiMapFixed@@UAE_NXZ
 .globl ?ConvertToPlanned@MultiMapFixed@@UAEPAVPlannedMultiMapFixed@@XZ
@@ -4885,7 +4885,7 @@ _jmp_addr_0x00436c51:    ret                                                    
                          nop                                                                     // 0x00436c5d    90
                          nop                                                                     // 0x00436c5e    90
                          nop                                                                     // 0x00436c5f    90
-?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ:
+?GetDebugColor@GBaseInfo@@UAEPAULHColor@@PAU2@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x00436c60    8b442404
                          mov                cl, -0x01                                            // 0x00436c64    b1ff
                          mov                byte ptr [eax], cl                                   // 0x00436c66    8808

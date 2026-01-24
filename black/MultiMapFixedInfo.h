@@ -11,8 +11,8 @@ class GMultiMapFixedInfo : public GObjectInfo
 {
 public:
   virtual bool IsOkToCreateAtPos(const MapCoords* pos, float param_2, float param_3) const;  /* 0x3c */
-  virtual enum ABODE_TYPE GetAbodeType() const;  /* 0x40 */
-  virtual enum ABODE_NUMBER GetAbodeNumber() const;
+  virtual ABODE_TYPE GetAbodeType() const;  /* 0x40 */
+  virtual ABODE_NUMBER GetAbodeNumber() const;
 
   MESH_LIST editorMesh;  /* 0x100 */
   uint32_t woodRequiredPerBuild;

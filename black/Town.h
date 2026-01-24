@@ -1,6 +1,24 @@
 #ifndef BW1_DECOMP_TOWN_INCLUDED_H
 #define BW1_DECOMP_TOWN_INCLUDED_H
 
+#ifdef __cplusplus
+
+#include "Container.h"
+#include <lionhead/lhlib/ver5.0/LHListHead.h>
+
+class Abode;
+
+class Town : public Container
+{
+public:
+    // win1.41 007399a0 mac 10556850 Town::AddStructureToTown(MultiMapFixed *)
+    void AddStructureToTown(struct MultiMapFixed* structure);
+
+    LHListHead<Abode> abodes;
+};
+
+#else
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
@@ -353,5 +371,7 @@ uint32_t __fastcall GetScriptObjectType__4TownFv(struct GameThingWithPos* this) 
 DECLARE_LH_LINKED_LIST(Town);
 
 DECLARE_LH_LIST_HEAD(Town);
+
+#endif
 
 #endif /* BW1_DECOMP_TOWN_INCLUDED_H */

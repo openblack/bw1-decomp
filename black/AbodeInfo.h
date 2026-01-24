@@ -10,7 +10,27 @@
 class GAbodeInfo : public GMultiMapFixedInfo
 {
 public:
+  static GAbodeInfo AbodeInfos[0x93];
+
   GAbodeInfo(){}
+  // virtual ~GAbodeInfo(); // AbodeInfos::`dynamic atexit destructor' calls Base::~Base, not ~GAbodeInfo()
+
+  virtual uint32_t GetMesh() const { return meshId; };
+  virtual ABODE_TYPE GetAbodeType() const { return abodeType; };  /* 0x40 */
+  virtual ABODE_NUMBER GetAbodeNumber() const { return abodeNumber; }
+  virtual GBaseInfo* GetBaseInfo(uint32_t* param_1) 
+  {
+    *param_1 = sizeof(AbodeInfos) / sizeof(AbodeInfos[0]);
+    return AbodeInfos;
+  }
+  virtual uint32_t GetMesh(TRIBE_TYPE tribe) const { return TRIBE_TYPE_CELTIC; };
+  virtual ALIGNMENT_TYPE GetAlignmentType() const { return alignmentType; }
+  virtual FOOD_TYPE GetFoodType() const { return food_type; }
+  virtual const char* GetDebugText() const { return debugString; }
+
+  static void operator delete(void* ptr, size_t size) {
+      ::operator delete(ptr, /*sizeof(Base)*/0x1c8);
+  }
 
   ABODE_TYPE abodeType;  /* 0x120 */
   ABODE_NUMBER abodeNumber;

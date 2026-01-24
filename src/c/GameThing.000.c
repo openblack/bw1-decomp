@@ -34,7 +34,7 @@ float __fastcall CalculateInfluence__9GameThingFRC9MapCoords(struct GameThing* t
         // SEH code path?
         "push               ecx                                                         \n"  // 0x004017f9    51
         "push               eax                                                         \n"  // 0x004017fa    50
-        "call               ?GetAlignmentType@GObjectInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ + 4\n"  // 0x004017fb    e8a4faffff
+        "call               ?GetAlignmentType@GAbodeInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ + 4\n"  // 0x004017fb    e8a4faffff
     );
     __builtin_unreachable();
 }
@@ -98,7 +98,7 @@ float __fastcall GetVillagerActivityDesire__9GameThingFP8Villager(struct GameThi
         // SEH Code path?
         "push         ecx                                               \n"  // 0x00401879    51
         "push         eax                                               \n"  // 0x0040187a    50
-        "call         ?GetFoodType@GObjectInfo@@UBE?AW4FOOD_TYPE@@XZ + 4\n"  // 0x0040187b    e834faffff
+        "call         ?GetFoodType@GAbodeInfo@@UBE?AW4FOOD_TYPE@@XZ + 4\n"  // 0x0040187b    e834faffff
     );
     __builtin_unreachable();
 }

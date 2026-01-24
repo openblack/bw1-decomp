@@ -9,6 +9,7 @@ typedef signed short int int16_t;
 typedef unsigned short int uint16_t;
 typedef signed int int32_t;
 typedef unsigned int uint32_t;
+typedef uint32_t bool32_t;
 
 class Archive;
 struct LHPoint;
@@ -19,7 +20,7 @@ void operator delete(void* ptr, size_t size);
 class Base
 {
 public:
-    //~Base() {}
+    // ~Base() {}
     Base()
     {
       destroyed = 0;
@@ -111,9 +112,9 @@ void __fastcall Serialise__4BaseFR7Archive(struct Base* this, const void* edx, s
 // win1.41 00401210 mac 10082770 Base::~Base(void)
 void __fastcall __dt__4BaseFUi(struct Base* this, const void* edx, uint32_t param_1) asm("??_GBase@@UAEPAXI@Z");
 // win1.41 004011c0 mac 1056ecc0 Base::Delete(int)
-void __fastcall Delete__4BaseFv(struct Base* this) asm("?Delete@Base@@UAEXH@Z");
+void __fastcall Delete__4BaseFv(struct Base* this) asm("?Delete@Base@@UAEXXZ");
 // win1.41 004011d0 mac 1032b070 Base::ToBeDeleted(int)
-void __fastcall ToBeDeleted__4BaseFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@Base@@UAEXH@Z");
+void __fastcall ToBeDeleted__4BaseFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@Base@@UAEXI@Z");
 // win1.41 004011e0 mac 1032b3d0 Base::Get3DSoundPos(LHPoint*)
 int __fastcall Get3DSoundPos__4BaseFP7LHPoint(struct Base* this, const void* edx, struct LHPoint* param_1) asm("?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z");
 // win1.41 004011f0 mac 1032cbf0 Base::CleanUpForSerialisation(void)

@@ -1,6 +1,17 @@
 #ifndef BW1_DECOMP_FIXED_INCLUDED_H
 #define BW1_DECOMP_FIXED_INCLUDED_H
 
+#ifdef __cplusplus
+
+#include "Object.h"
+
+class Fixed: public Object
+{
+
+};
+
+#else 
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
@@ -192,5 +203,7 @@ uint32_t __fastcall ApplyOnlyAfterReleased__14SingleMapFixedFv(struct Object* th
 struct NewCollide* __fastcall GetCollideData__14SingleMapFixedFv(const struct Object* this) asm("?GetCollideData@SingleMapFixed@@UAEPAUNewCollide@@XZ");
 // win1.41 0052f510 mac 100dde20 SingleMapFixed::CreateCollideData(void)
 void __fastcall CreateCollideData__14SingleMapFixedFv(struct SingleMapFixed* this) asm("?CreateCollideData@SingleMapFixed@@UAEXXZ");
+
+#endif
 
 #endif /* BW1_DECOMP_FIXED_INCLUDED_H */

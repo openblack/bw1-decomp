@@ -16,7 +16,7 @@ int __cdecl GetInfoFromText__10GAbodeInfoFPc(const char* text)
     asm("push               esi");                                           // 0x00405a75    56
     asm("push               edi");                                           // 0x00405a76    57
     asm("{disp8} mov        dword ptr [esp + 0x14], 0x00000000");            // 0x00405a77    c744241400000000
-    asm("{disp8} mov        dword ptr [esp + 0x10], OFFSET _AbodeInfos");    // 0x00405a7f    c744241090c6c300
+    asm("{disp8} mov        dword ptr [esp + 0x10], OFFSET ?AbodeInfos@GAbodeInfo@@2PAV1@A");    // 0x00405a7f    c744241090c6c300
     asm("mov                ebp, 0x00da57b8");                               // 0x00405a87    bdb857da00
     asm("_jmp_addr_0x00405a8c:");
     asm("{disp8} mov        eax, dword ptr [ebp + 0x00]");                   // 0x00405a8c    8b4500
@@ -91,7 +91,7 @@ struct GAbodeInfo* __cdecl Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER(enum TR
     asm("{disp8} mov        esi, dword ptr [esp + 0x08]");                   // 0x00405b31    8b742408
     asm("push               edi");                                           // 0x00405b35    57
     asm("{disp8} mov        edi, dword ptr [esp + 0x10]");                   // 0x00405b36    8b7c2410
-    asm("mov                eax, OFFSET _AbodeInfos");                       // 0x00405b3a    b890c6c300
+    asm("mov                eax, OFFSET ?AbodeInfos@GAbodeInfo@@2PAV1@A");                       // 0x00405b3a    b890c6c300
     asm("mov                ecx, 0x00c3c7e8");                               // 0x00405b3f    b9e8c7c300
     asm("_jmp_addr_0x00405b44:");
     asm("mov                edx, dword ptr [ecx]");                          // 0x00405b44    8b11

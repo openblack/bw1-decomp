@@ -1,6 +1,18 @@
 #ifndef BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H
 #define BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H
 
+#if __cplusplus
+
+template<typename T>
+class LHListHead
+{
+  public:
+  T* head; // TODO: LHFastPointer<T>
+  uint32_t count;
+};
+
+#else
+
 #include <stdint.h> // For uint32_t
 
 // On ppc, there are two std::map for some reason
@@ -18,5 +30,7 @@ struct LHListHead__##T          \
   struct T* head;               \
   uint32_t count;               \
 }
+
+#endif
 
 #endif /* BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H */

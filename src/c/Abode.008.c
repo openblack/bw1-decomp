@@ -1905,8 +1905,8 @@ float __fastcall GetVillagerHealthTotal__5AbodeFv(struct Abode* this)
     asm("{disp32} mov       esi, dword ptr [ecx + 0x000000a0]");             // 0x004076c2    8bb1a0000000
     asm("test               esi, esi");                                      // 0x004076c8    85f6
     asm("{disp8} mov        dword ptr [esp + 0x04], 0x00000000");            // 0x004076ca    c744240400000000
-    asm("{disp8} je         _jmp_addr_0x004076f0");                          // 0x004076d2    741c
-    asm("_jmp_addr_0x004076d4:");
+    asm("{disp8} je         .L_jmp_addr_0x004076f0");                        // 0x004076d2    741c
+    asm(".L_jmp_addr_0x004076d4:");
     asm("mov                eax, dword ptr [esi]");                          // 0x004076d4    8b06
     asm("mov.s              ecx, esi");                                      // 0x004076d6    8bce
     asm("call               dword ptr [eax + 0x11c]");                       // 0x004076d8    ff901c010000
@@ -1914,8 +1914,8 @@ float __fastcall GetVillagerHealthTotal__5AbodeFv(struct Abode* this)
     asm("{disp32} mov       esi, dword ptr [esi + 0x000000e4]");             // 0x004076e2    8bb6e4000000
     asm("test               esi, esi");                                      // 0x004076e8    85f6
     asm("{disp8} fstp       dword ptr [esp + 0x04]");                        // 0x004076ea    d95c2404
-    asm("{disp8} jne        _jmp_addr_0x004076d4");                          // 0x004076ee    75e4
-    asm("_jmp_addr_0x004076f0:");
+    asm("{disp8} jne        .L_jmp_addr_0x004076d4");                        // 0x004076ee    75e4
+    asm(".L_jmp_addr_0x004076f0:");
     asm("{disp8} fld        dword ptr [esp + 0x04]");                        // 0x004076f0    d9442404
     asm("pop                esi");                                           // 0x004076f4    5e
     asm("pop                ecx");                                           // 0x004076f5    59

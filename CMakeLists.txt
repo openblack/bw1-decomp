@@ -159,11 +159,14 @@ endfunction()
 
 # Most likely all these functions and data are brought forward by Abode.cpp
 set(SOURCES_ABODE
+    # src/cpp/Abode.cpp
+
     src/c/AbodeInfo.001.c
     src/c/Base.000.c
     src/c/BaseInfo.000.c
     src/c/AbodeInfo.002.c
     src/c/AbodeInfo.003.c
+
     src/c/Abode.000.c
     src/c/Fixed.000.c
     src/c/MultiMapFixed.000.c
@@ -1119,6 +1122,9 @@ target_link_options(runblack-reassembled
         "/NODEFAULTLIB"
         "/OPT:NOREF"
         "/OPT:NOICF"
+        "/alternatename:??1Base@@UAE@XZ=??_GBase@@UAEPAXI@Z"
+        "/alternatename:??_EBase@@UAEPAXI@Z=??_GBase@@UAEPAXI@Z"
+        "/alternatename:??_EGAbodeInfo@@UAEPAXI@Z=??_GGAbodeInfo@@UAEPAXI@Z"
         "/alternatename:??_Etype_info@@UAEPAXI@Z=??_Gtype_info@@UAEPAXI@Z"
         "/alternatename:??_E__non_rtti_object@@UAEPAXI@Z=??_G__non_rtti_object@@UAEPAXI@Z"
         "/alternatename:??_Ebad_cast@@UAEPAXI@Z=??_Gbad_cast@@UAEPAXI@Z"

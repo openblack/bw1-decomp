@@ -9,7 +9,7 @@ void __cdecl crt_global_initialize_for_AbodeInfos__10GAbodeInfoFv(void)
 __attribute__((noinline))
 void __cdecl dynamic_initializer_for_AbodeInfos__10GAbodeInfoFv(void)
 {
-    asm("mov eax, OFFSET _AbodeInfos");                         // 0x00401180    b890c6c300
+    asm("mov eax, OFFSET ?AbodeInfos@GAbodeInfo@@2PAV1@A");                         // 0x00401180    b890c6c300
     asm("mov              ecx, 0x00000093");                    // 0x00401185    b993000000
     asm("xor.s            edx, edx");                           // 0x0040118a    33d2
 

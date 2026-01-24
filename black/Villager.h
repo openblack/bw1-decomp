@@ -1,6 +1,27 @@
 #ifndef BW1_DECOMP_VILLAGER_INCLUDED_H
 #define BW1_DECOMP_VILLAGER_INCLUDED_H
 
+#ifdef __cplusplus
+
+#include "Living.h"
+
+class Abode;
+
+class Villager: public Living
+{
+  public:
+    virtual bool32_t IsMaleVillager();
+    virtual bool32_t IsFemaleVillager();
+    
+    void ForceMoveVillagerToAbode(Abode* abode);
+
+
+    uint16_t field_0xe0;
+    Villager* next;
+};
+
+#else
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int16_t, uint16_t, uint32_t, uint8_t */
@@ -1952,5 +1973,7 @@ void __cdecl GetNextDstPromemade__FP6CrecheRlP9MapCoordsRC9MapCoords(struct Crec
 float __stdcall GetViaPoint__FRC9MapCoordsRC9MapCoordsRC9MapCoordsfR9MapCoordsfPbPbf(const struct MapCoords* param_1, const struct MapCoords* param_2, const struct MapCoords* param_3, float param_4, struct MapCoords* param_5, float param_6, bool* param_7, bool* param_8, float param_9) asm("?GetViaPoint@@YGMABUMapCoords@@00MAAU1@MPA_N2M@Z");
 // win1.41 0075bb60 mac 10066f70 POWER<float>(float, ulong)
 float __cdecl POWER_f___FfUl(float param_0, uint32_t param_1);
+
+#endif
 
 #endif /* BW1_DECOMP_VILLAGER_INCLUDED_H */

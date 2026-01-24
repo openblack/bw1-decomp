@@ -100,9 +100,9 @@ void __fastcall __dt__9GBaseInfoFv(struct Base* this, const void* edx, uint32_t 
 // win1.41 004140b0 mac 10578110 GBaseInfo::GetDebugText(void) const
 const char* __fastcall GetDebugText__9GBaseInfoCFv(const struct GBaseInfo* this) asm("?GetDebugText@GBaseInfo@@UBEPBDXZ");
 // win1.41 00436c60 mac 1055df70 GBaseInfo::GetDebugColor(void) const
-struct LHColor* __fastcall GetDebugColor__9GBaseInfoCFv(const struct GBaseInfo* this, const void* edx, struct LHColor* color) asm("?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ");
+struct LHColor* __fastcall GetDebugColor__9GBaseInfoCFv(const struct GBaseInfo* this, const void* edx, struct LHColor* color) asm("?GetDebugColor@GBaseInfo@@UAEPAULHColor@@PAU2@@Z");
 // win1.41 00401230 mac 101228b0 GBaseInfo::UpdateValue(void)
-void __fastcall UpdateValue__9GBaseInfoFfUlUl(struct GBaseInfo* this, const void* edx, float param_1, uint32_t param_2, uint32_t param_3) asm("?UpdateValue@GBaseInfo@@UAEXMKK@Z");
+void __fastcall UpdateValue__9GBaseInfoFfUlUl(struct GBaseInfo* this, const void* edx, float param_1, uint32_t param_2, uint32_t param_3) asm("?UpdateValue@GBaseInfo@@UAEXMII@Z");
 
 DECLARE_LH_LIST_HEAD(GBaseInfo);
 
