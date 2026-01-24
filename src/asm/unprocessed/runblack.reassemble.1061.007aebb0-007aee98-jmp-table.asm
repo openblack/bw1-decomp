@@ -101,7 +101,7 @@ _jmp_addr_0x007aed2a:    jmp                  dword ptr [__imp__GetOpenFileNameA
                          jmp                  dword ptr [__imp___Stop_CImmCompoundEffect__QAEHXZ@4]                                            // 0x007aedd8    ff25d0908a00
                          jmp                  dword ptr [__imp___ChangeBaseParamsPolar_CImmEffect__QAEHJKPAUFEELIT_ENVELOPE__KKKKK_Z@4]        // 0x007aedde    ff25d4908a00
                          jmp                  dword ptr [__imp___ChangeParameters_CImmPeriodic__QAEHKKKJJJKPAUFEELIT_ENVELOPE___Z@4]           // 0x007aede4    ff25d8908a00
-                         jmp                  dword ptr [__imp__RegistryRetrieveULong__YA_AW4LH_RETURN__PAD0PAK_Z]                             // 0x007aedea    ff2544938a00
+                         jmp                  dword ptr [__imp_?RegistryRetrieveULong@@YAHPBD0PAH@Z]                             // 0x007aedea    ff2544938a00
                          jmp                  dword ptr [__imp__RegistrySetULong__YA_AW4LH_RETURN__PAD0K_Z@4]                                  // 0x007aedf0    ff2550938a00
                          jmp                  dword ptr [__imp__GetCurrentStackString__YAPADXZ@4]                                              // 0x007aedf6    ff2554938a00
                          jmp                  dword ptr [__imp___0LHSPrintf__QAA_PADZZ@4]                                                      // 0x007aedfc    ff255c938a00
@@ -112,7 +112,7 @@ _jmp_addr_0x007aed2a:    jmp                  dword ptr [__imp__GetOpenFileNameA
                          jmp                  dword ptr [__imp__DecryptBlock_LHVersion__SAXPAEG_Z@4]                                           // 0x007aee1a    ff25c0938a00
                          jmp                  dword ptr [__imp__RegistryRetrieveVal__YA_AW4LH_RETURN__PAD0PAEPAKK_Z@4]                         // 0x007aee20    ff25bc938a00
                          jmp                  dword ptr [__imp__RegistryRetrieveString__YA_AW4LH_RETURN__PAD00PAK_Z@4]                         // 0x007aee26    ff25b8938a00
-                         jmp                  dword ptr [__imp__LHRegistrySetCurrentKey__YAXW4LH_REG_KEY_TYPE___Z@4]                           // 0x007aee2c    ff25b4938a00
+                         jmp                  dword ptr [__imp_?LHRegistrySetCurrentKey@@YAXH@Z]                           // 0x007aee2c    ff25b4938a00
                          jmp                  dword ptr [__imp__LHRegistryGetCurrentKey__YA_AW4LH_REG_KEY_TYPE__XZ@4]                          // 0x007aee32    ff25b0938a00
                          jmp                  dword ptr [__imp__RegistrySetString__YA_AW4LH_RETURN__PAD00_Z@4]                                 // 0x007aee38    ff25ac938a00
                          jmp                  dword ptr [__imp__GetText_LHLogger__SAPADXZ@4]                                                   // 0x007aee3e    ff25a8938a00
