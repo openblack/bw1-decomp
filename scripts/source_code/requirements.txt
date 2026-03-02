@@ -1,6 +1,7 @@
 pefile
 inflection
 libclang
+lief
 
 # https://gitlab.com/bwrsandman/csnake/-/tree/bwrsandman-master-patch-49783
 # csnake
