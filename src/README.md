@@ -47,14 +47,26 @@ If the wrong linker is used, sections may be placed in different virtual and phy
 If either the assembler or linker are wrongly used, then the md5 sums will not match.
 
 ```bash
-# Download the latest llvm-project from https://github.com/openblack/llvm-project/releases
-
 # from the bw1-decomp directory
-cmake -S. -Bbuild # optional for llvm debugging: -DLLVM_BINARIES_DIR=/path/to/the/latest/llvm-project
+
+# For the byte-exact reimplmentation
+cmake --preset release
+cmake --build --preset release
+
+# For stepping and debugging
+cmake --preset relwithdebinfo
+cmake --build --preset relwithdebinfo
+```
+
+If testing a different version of llvm. For example when patching it. Instead of configuring with a preset use
+```bash
+cmake -S. -Bbuild -DLLVM_BINARIES_DIR=/path/to/the/custom/llvm-project
 cmake --build build
 ```
 
 ### Supported versions
+
+Building the release preset will output a md5 sha code to validate that it is indeed byte-for-byte.
 
 | md5sum                             | version         |
 | ---------------------------------- | --------------- |
