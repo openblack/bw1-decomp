@@ -1,0 +1,68 @@
+{
+  "version": 10,
+  "cmakeMinimumRequired": {
+    "major": 4,
+    "minor": 1,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "release",
+      "displayName": "Byte-exact recompilation of vanilla.",
+      "description": "Release confiugration with Ninja that will generate md5sum=174b1a64e74b2321f3c38ccc8a511e78.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/cmake-build-presets/release",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "relwithdebinfo",
+      "displayName": "Offset-exact with Debug info.",
+      "description": "RelWithDebInfo confiugration with Ninja that will have some debug info.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/cmake-build-presets/welwithdebinfo",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "release",
+      "configurePreset": "release"
+    },
+    {
+      "name": "relwithdebinfo",
+      "configurePreset": "relwithdebinfo"
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "release",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "release"
+        },
+        {
+          "type": "build",
+          "name": "release"
+        }
+      ]
+    },
+    {
+      "name": "relwithdebinfo",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "relwithdebinfo"
+        },
+        {
+          "type": "build",
+          "name": "relwithdebinfo"
+        }
+      ]
+    }
+  ]
+}
