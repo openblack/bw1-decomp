@@ -32,18 +32,18 @@ set(CMAKE_CXX_COMPILER_WORKS ON)
 # Set the llvm utils before project so the toolchain selection has the right paths
 if (NOT LLVM_BINARIES_DIR)
     # Get the custom llvm for openblack/bw1-decomp
-    set(LLVM_RELEASE_NAME "bw1-decomp-012")
+    set(LLVM_RELEASE_NAME "bw1-decomp-013")
     if (CMAKE_HOST_LINUX)
         FetchContent_Declare(
             llvm_binaries
             URL      https://github.com/openblack/llvm-project/releases/download/${LLVM_RELEASE_NAME}/llvm-ubuntu.zip
-            URL_HASH SHA256=b9bba0e6428f92c2a1c23a081fccf22247dee96bae27f62a454c1aff271a4dff
+            URL_HASH SHA256=9eac81eb2a822ac5bd5ea9e1ce4c381e9e8a107c1e4c81435044600a8d02b1c9
         )
     elseif (CMAKE_HOST_WIN32)
         FetchContent_Declare(
             llvm_binaries
             URL      https://github.com/openblack/llvm-project/releases/download/${LLVM_RELEASE_NAME}/llvm-windows.zip
-            URL_HASH SHA256=d7ce3f74ba8fb60c4d036b3d2bb3e6b479d8cf28944b4986273042a5f431ac22
+            URL_HASH SHA256=081bdb64930018a383df224b0231c6e332528dea5fc99a243282f767cdba6c89
         )
     endif()
     FetchContent_MakeAvailable(llvm_binaries)
