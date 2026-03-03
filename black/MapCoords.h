@@ -1,6 +1,17 @@
 #ifndef BW1_DECOMP_MAP_COORDS_INCLUDED_H
 #define BW1_DECOMP_MAP_COORDS_INCLUDED_H
 
+#ifdef __cplusplus
+
+struct MapCoords
+{
+  unsigned int x;
+  unsigned int z;
+  float altitude;
+};
+
+#else
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int16_t, int32_t, uint16_t, uint32_t */
@@ -144,5 +155,7 @@ struct Point2D* __cdecl ConvertMapCoordsToPoint2D__FRC9MapCoords(struct Point2D*
 struct MapCoords* __cdecl ConvertPoint2DToMapCoords__FRC7Point2D(struct MapCoords* param_1, const struct Point2D* param_2);
 // win1.41 inlined mac inlined ConvertPointToMapCoords(Point2D const &)
 struct MapCoords* __cdecl ConvertPointToMapCoords__FRC7Point(struct MapCoords* param_1, const struct LHPoint* param_2);
+
+#endif
 
 #endif /* BW1_DECOMP_MAP_COORDS_INCLUDED_H */

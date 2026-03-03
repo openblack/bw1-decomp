@@ -1,6 +1,17 @@
 #ifndef BW1_DECOMP_CONTAINER_INCLUDED_H
 #define BW1_DECOMP_CONTAINER_INCLUDED_H
 
+#ifdef __cplusplus
+
+#include "GameThingWithPos.h"
+
+class Container : public GameThingWithPos
+{
+
+};
+
+#else
+
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
@@ -62,5 +73,7 @@ struct GPlayer* __fastcall GetPlayer__9ContainerFv(struct GameThing* this) asm("
 uint32_t __fastcall Load__9ContainerFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@Container@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0046b920 mac 100bf9d0 Container::Save(GameOSFile &)
 uint32_t __fastcall Save__9ContainerFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@Container@@UAEIAAVGameOSFile@@@Z");
+
+#endif
 
 #endif /* BW1_DECOMP_CONTAINER_INCLUDED_H */

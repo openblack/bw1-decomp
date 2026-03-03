@@ -1,6 +1,17 @@
 #ifndef BW1_DECOMP_MOBILE_WALL_HUG_INCLUDED_H
 #define BW1_DECOMP_MOBILE_WALL_HUG_INCLUDED_H
 
+#ifdef __cplusplus
+
+#include "Mobile.h"
+
+class MobileWallHug: public Mobile
+{
+
+};
+
+#else
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int16_t, int8_t, uint16_t, uint32_t, uint8_t */
@@ -383,5 +394,7 @@ void __fastcall FUN_00613790(struct std__set__pMobileWallHug_node** this);
 void __cdecl DoWallHuggerLookahead__Fv(void);
 // win1.41 006097c0 mac 103cb690 __sinit_MobileWallHug_cpp
 void __fastcall __sinit_MobileWallHug_cpp(void* this);
+
+#endif
 
 #endif /* BW1_DECOMP_MOBILE_WALL_HUG_INCLUDED_H */

@@ -105,23 +105,68 @@ find_program(LLVM_STRIP_EXECUTABLE NAMES llvm-strip REQUIRED)
 find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
 find_program(LLVM_OBJCOPY_EXECUTABLE NAMES llvm-objcopy REQUIRED)
 
-set(SOURCES_001
-    src/asm/unprocessed/data.000.009c6000-009c7e80-crt-init.asm
+function(generate_objdiff_json)
+    cmake_parse_arguments(ARG "" "TARGET;GROUP;OUT_FILE" "SOURCES" ${ARGN})
 
-    src/c/_HeaderIncluder.c
-    src/c/_CXXFuncs.c
-    src/asm/unprocessed/rdata.000.dllimports.asm
-    src/c/_DebugDirectory.c
-    src/c/unprocessed/Unknown.000.c
+    if(NOT ARG_TARGET OR NOT ARG_GROUP OR NOT ARG_SOURCES OR NOT ARG_OUT_FILE)
+        message(FATAL_ERROR "generate_objdiff_json requires TARGET, GROUP, SOURCES, OUT_FILE")
+    endif()
+
+    set(_cpp_src ${CMAKE_CURRENT_SOURCE_DIR}/src/cpp/${ARG_GROUP}.cpp)
+
+    set(_units "")
+    foreach(src IN LISTS ARG_SOURCES)
+        get_filename_component(name "${src}" NAME)
+        set(_target_obj "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/${ARG_TARGET}.dir/${src}${OBJ_SUFFIX}")
+        set(_base_obj "${CMAKE_CURRENT_BINARY_DIR}/CMakeFiles/runblack-objdiff-working-set.dir/src/cpp/${ARG_GROUP}.cpp${OBJ_SUFFIX}")
+
+        string(APPEND _units
+"    {
+      \"name\": \"${ARG_GROUP}.cpp-${name}\",
+      \"target_path\": \"${_target_obj}\",
+      \"base_path\": \"${_base_obj}\",
+      \"scratch\": {
+        \"platform\": \"win32\",
+        \"compiler\": \"msvc6.5\"
+      },
+      \"metadata\": {
+        \"source_path\": \"${_cpp_src}\"
+      }
+    },
+")
+    endforeach()
+
+    string(REGEX REPLACE ",\n$" "\n" _units "${_units}")
+
+    file(WRITE "${ARG_OUT_FILE}"
+"{\n\
+  \"custom_make\": \"ninja\",\n\
+  \"custom_args\": [],\n\
+  \"build_base\": true,\n\
+  \"build_target\": true,\n\
+  \"watch_patterns\": [\n\
+    \"*.c\",\n\
+    \"*.cpp\",\n\
+    \"*.h\",\n\
+    \"*.asm\"\n\
+  ],\n\
+  \"ignore_patterns\": [],\n\
+  \"units\": [\n${_units}  ]\n\
+}\n"
+    )
+    add_library(runblack-objdiff-working-set OBJECT ${_cpp_src})
+endfunction()
+
+# Most likely all these functions and data are brought forward by Abode.cpp
+set(SOURCES_ABODE
+    # src/cpp/Abode.cpp
+
     src/c/AbodeInfo.001.c
     src/c/Base.000.c
     src/c/BaseInfo.000.c
     src/c/AbodeInfo.002.c
-    src/c/Base.001.c
-    src/c/BaseInfo.001.c
-    src/c/ObjectInfo.000.c
-    src/c/MultiMapFixedInfo.000.c
     src/c/AbodeInfo.003.c
+
     src/c/Abode.000.c
     src/c/Fixed.000.c
     src/c/MultiMapFixed.000.c
@@ -151,9 +196,29 @@ set(SOURCES_001
     src/c/Abode.007.c
     src/c/PlannedAbode.004.c
     src/c/Abode.008.c
-    src/c/SetupControl.000.c
+)
+
+generate_objdiff_json(
+    TARGET runblack-reassembled-src-001
+    GROUP Abode
+    SOURCES ${SOURCES_ABODE}
+    OUT_FILE ${CMAKE_BINARY_DIR}/objdiff.json
+)
+
+set(SOURCES_001
+    src/asm/unprocessed/data.000.009c6000-009c7e80-crt-init.asm
+
+    src/c/_HeaderIncluder.c
+    src/c/_CXXFuncs.c                                 # text 00401000-00401031
+    src/asm/unprocessed/rdata.000.dllimports.asm
+    src/c/_DebugDirectory.c
+    src/c/unprocessed/Unknown.000.c                   # text 00401040-00401170
+
+    ${SOURCES_ABODE}                                  # text 00401170-004061a0
 
     src/asm/unprocessed/runblack.reassemble.0019.004061a0-004097a0.asm
+
+    src/c/SetupControl.000.c
 
     src/asm/unprocessed/text.x.001.asm
     src/asm/unprocessed/rdata.100-vftables.asm
@@ -1057,6 +1122,9 @@ target_link_options(runblack-reassembled
         "/NODEFAULTLIB"
         "/OPT:NOREF"
         "/OPT:NOICF"
+        "/alternatename:??1Base@@UAE@XZ=??_GBase@@UAEPAXI@Z"
+        "/alternatename:??_EBase@@UAEPAXI@Z=??_GBase@@UAEPAXI@Z"
+        "/alternatename:??_EGAbodeInfo@@UAEPAXI@Z=??_GGAbodeInfo@@UAEPAXI@Z"
         "/alternatename:??_Etype_info@@UAEPAXI@Z=??_Gtype_info@@UAEPAXI@Z"
         "/alternatename:??_E__non_rtti_object@@UAEPAXI@Z=??_G__non_rtti_object@@UAEPAXI@Z"
         "/alternatename:??_Ebad_cast@@UAEPAXI@Z=??_Gbad_cast@@UAEPAXI@Z"
@@ -1087,3 +1155,4 @@ add_custom_command(
     COMMAND ${CMAKE_COMMAND} -E md5sum "$<TARGET_FILE:runblack-reassembled>"
     COMMENT "Computing the md5sum"
 )
+

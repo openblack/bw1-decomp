@@ -7,11 +7,14 @@ struct Name
 {
   char string[0x20];  /* 0x0 */
 };
+#ifndef __cplusplus
 static_assert(sizeof(struct Name) == 0x20, "Data type is of wrong size");
 
 // Constructors
 
 // win1.41 0046d5e0 mac 101c7b50 Name::Name(void)
 struct Name* __fastcall __ct__4NameFv(struct Name* this) asm("??0Name@@QAE@XZ");
+
+#endif
 
 #endif /* BW1_DECOMP_NAME_INCLUDED_H */

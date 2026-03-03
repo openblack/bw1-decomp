@@ -12,8 +12,8 @@ __vt__\name:
 VftableAndRTTI GVirtualInfluence                                                                                   // [0xf1a6c] 0x008a9000 + 0xf1a6c = 0x0099aa6c
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
 .long ??_GGVirtualInfluence@@UAEPAXI@Z
-.long ?Delete@Base@@UAEXH@Z
-.long ?ToBeDeleted@Base@@UAEXH@Z
+.long ?Delete@Base@@UAEXXZ
+.long ?ToBeDeleted@Base@@UAEXI@Z
 .long ?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
 .long ?Dump@Base@@UAEXXZ
@@ -617,7 +617,7 @@ VftableAndRTTI Fragment                                                         
 VftableAndRTTI VortexSave                                                                                          // [0xf23a8] 0x008a9000 + 0xf23a8 = 0x0099b3a8
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
 .long ??_GVortexSave@@UAEPAXI@Z                                                                                                   // [0xf23b0] 0x008a9000 + 0xf23b0 = 0x0099b3b0
-.long ?Delete@Base@@UAEXH@Z
+.long ?Delete@Base@@UAEXXZ
 .long ?ToBeDeleted@GameThing@@UAEXH@Z
 .long ?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
@@ -682,7 +682,7 @@ VftableAndRTTI VortexSave                                                       
 VftableAndRTTI WayPoint                                                                                            // [0xf24a8] 0x008a9000 + 0xf24a8 = 0x0099b4a8
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
 .long ??_GWayPoint@@UAEPAXI@Z                                                                                                   // [0xf24b0] 0x008a9000 + 0xf24b0 = 0x0099b4b0
-.long ?Delete@Base@@UAEXH@Z
+.long ?Delete@Base@@UAEXXZ
 .long ?ToBeDeleted@WayPoint@@UAEXH@Z
 .long ?Get3DSoundPos@GameThingWithPos@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
@@ -1068,15 +1068,15 @@ VftableAndRTTI WayPoint                                                         
 VftableAndRTTI GWeatherInfo                                                                                        // [0xf29b4] 0x008a9000 + 0xf29b4 = 0x0099b9b4
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
 .long ??_GGWeatherInfo@@UAEPAXI@Z                                                                                                   // [0xf29bc] 0x008a9000 + 0xf29bc = 0x0099b9bc
-.long ?Delete@Base@@UAEXH@Z
-.long ?ToBeDeleted@Base@@UAEXH@Z
+.long ?Delete@Base@@UAEXXZ
+.long ?ToBeDeleted@Base@@UAEXI@Z
 .long ?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
 .long ?Dump@Base@@UAEXXZ
 .long ?GetDebugText@GBaseInfo@@UBEPBDXZ
-.long ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
+.long ?GetDebugColor@GBaseInfo@@UAEPAULHColor@@PAU2@@Z
 .long ?GetBaseInfo@GWeatherInfo@@UAEPAVGBaseInfo@@AAI@Z                                                                                                   // [0xf29dc] 0x008a9000 + 0xf29dc = 0x0099b9dc
-.long ?UpdateValue@GBaseInfo@@UAEXMKK@Z
+.long ?UpdateValue@GBaseInfo@@UAEXMII@Z
 
 VftableAndRTTI GWeather                                                                                            // [0xf29e4] 0x008a9000 + 0xf29e4 = 0x0099b9e4
 .long ?Update@GWeather@@UAEXM@Z
@@ -1088,15 +1088,15 @@ VftableAndRTTI GWeather                                                         
 VftableAndRTTI GClimateInfo                                                                                        // [0xf29fc] 0x008a9000 + 0xf29fc = 0x0099b9fc
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
 .long ??_GGClimateInfo@@UAEPAXI@Z                                                                                                   // [0xf2a04] 0x008a9000 + 0xf2a04 = 0x0099ba04
-.long ?Delete@Base@@UAEXH@Z
-.long ?ToBeDeleted@Base@@UAEXH@Z
+.long ?Delete@Base@@UAEXXZ
+.long ?ToBeDeleted@Base@@UAEXI@Z
 .long ?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
 .long ?Dump@Base@@UAEXXZ
 .long ?GetDebugText@GBaseInfo@@UBEPBDXZ
-.long ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
+.long ?GetDebugColor@GBaseInfo@@UAEPAULHColor@@PAU2@@Z
 .long ?GetBaseInfo@GClimateInfo@@UAEPAVGBaseInfo@@AAI@Z                                                                                                   // [0xf2a24] 0x008a9000 + 0xf2a24 = 0x0099ba24
-.long ?UpdateValue@GBaseInfo@@UAEXMKK@Z
+.long ?UpdateValue@GBaseInfo@@UAEXMII@Z
 .long 0x00000000                                                                                                   // [0xf2a2c] 0x008a9000 + 0xf2a2c = 0x0099ba2c
 .long 0x11111111, 0x3fb11111, 0x00000000, 0x403e0000                                                               // [0xf2a30] 0x008a9000 + 0xf2a30 = 0x0099ba30
 .float 365.25, 86400.0                                             // days in year and seconds in day              // [0xf2a40] 0x008a9000 + 0xf2a40 = 0x0099ba40
@@ -1104,15 +1104,15 @@ VftableAndRTTI GClimateInfo                                                     
 VftableAndRTTI GClimateRainInfo                                                                                    // [0xf2a48] 0x008a9000 + 0xf2a48 = 0x0099ba48
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
 .long ??_GGClimateRainInfo@@UAEPAXI@Z                                                                                                   // [0xf2a50] 0x008a9000 + 0xf2a50 = 0x0099ba50
-.long ?Delete@Base@@UAEXH@Z
-.long ?ToBeDeleted@Base@@UAEXH@Z
+.long ?Delete@Base@@UAEXXZ
+.long ?ToBeDeleted@Base@@UAEXI@Z
 .long ?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
 .long ?Dump@Base@@UAEXXZ
 .long ?GetDebugText@GBaseInfo@@UBEPBDXZ
-.long ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
+.long ?GetDebugColor@GBaseInfo@@UAEPAULHColor@@PAU2@@Z
 .long ?GetBaseInfo@GClimateRainInfo@@UAEPAVGBaseInfo@@AAI@Z                                                                                                   // [0xf2a70] 0x008a9000 + 0xf2a70 = 0x0099ba70
-.long ?UpdateValue@GBaseInfo@@UAEXMKK@Z
+.long ?UpdateValue@GBaseInfo@@UAEXMII@Z
 .long 0x47ae147b, 0x3f947ae1                                                                                       // [0xf2a78] 0x008a9000 + 0xf2a78 = 0x0099ba78
 .float 365.25, 86400.0                                             // days in year and seconds in day              // [0xf2a80] 0x008a9000 + 0xf2a80 = 0x0099ba80
 .float 365.25, 86400.0                                             // days in year and seconds in day              // [0xf2a88] 0x008a9000 + 0xf2a88 = 0x0099ba88
@@ -1735,19 +1735,19 @@ VftableAndRTTI Workshop                                                         
 VftableAndRTTI GWorshipSiteInfo                                                                                    // [0xf3474] 0x008a9000 + 0xf3474 = 0x0099c474
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
 .long ??_GGWorshipSiteInfo@@UAEPAXI@Z                                                                                                   // [0xf347c] 0x008a9000 + 0xf347c = 0x0099c47c
-.long ?Delete@Base@@UAEXH@Z
-.long ?ToBeDeleted@Base@@UAEXH@Z
+.long ?Delete@Base@@UAEXXZ
+.long ?ToBeDeleted@Base@@UAEXI@Z
 .long ?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
 .long ?Dump@Base@@UAEXXZ
-.long ?GetDebugText@GObjectInfo@@UBEPBDXZ
-.long ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
+.long ?GetDebugText@GAbodeInfo@@UBEPBDXZ
+.long ?GetDebugColor@GBaseInfo@@UAEPAULHColor@@PAU2@@Z
 .long ?GetBaseInfo@GWorshipSiteInfo@@UAEPAVGBaseInfo@@AAI@Z                                                                                                   // [0xf349c] 0x008a9000 + 0xf349c = 0x0099c49c
-.long ?UpdateValue@GBaseInfo@@UAEXMKK@Z
+.long ?UpdateValue@GBaseInfo@@UAEXMII@Z
 .long ?GetMesh@GWorshipSiteInfo@@UBEIXZ                                                                                                   // [0xf34a4] 0x008a9000 + 0xf34a4 = 0x0099c4a4
-.long ?GetMesh@GObjectInfo@@UBE?AW4MeshId@@W4TRIBE_TYPE@@@Z                                                                                                   // [0xf34a8] 0x008a9000 + 0xf34a8 = 0x0099c4a8
-.long ?GetAlignmentType@GObjectInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ                                                                                                   // [0xf34ac] 0x008a9000 + 0xf34ac = 0x0099c4ac
-.long ?GetFoodType@GObjectInfo@@UBE?AW4FOOD_TYPE@@XZ                                                                                                   // [0xf34b0] 0x008a9000 + 0xf34b0 = 0x0099c4b0
+.long ?GetMesh@GAbodeInfo@@UBEIW4TRIBE_TYPE@@@Z                                                                                                   // [0xf34a8] 0x008a9000 + 0xf34a8 = 0x0099c4a8
+.long ?GetAlignmentType@GAbodeInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ                                                                                                   // [0xf34ac] 0x008a9000 + 0xf34ac = 0x0099c4ac
+.long ?GetFoodType@GAbodeInfo@@UBE?AW4FOOD_TYPE@@XZ                                                                                                   // [0xf34b0] 0x008a9000 + 0xf34b0 = 0x0099c4b0
 .long ?IsOkToCreateAtPos@GMultiMapFixedInfo@@UBE_NABUMapCoords@@MM@Z                                                                                                   // [0xf34b4] 0x008a9000 + 0xf34b4 = 0x0099c4b4
 .long ?GetAbodeType@GWorshipSiteInfo@@UBE?AW4ABODE_TYPE@@XZ
 .long ?GetAbodeNumber@GFeatureInfo@@UBE?AW4ABODE_NUMBER@@XZ                                                                                       // [0xf34b8] 0x008a9000 + 0xf34b8 = 0x0099c4b8
@@ -1755,7 +1755,7 @@ VftableAndRTTI GWorshipSiteInfo                                                 
 VftableAndRTTI PlannedWorshipSite                                                                                  // [0xf34c0] 0x008a9000 + 0xf34c0 = 0x0099c4c0
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
 .long ??_GPlannedWorshipSite@@UAEPAXI@Z                                                                                                   // [0xf34c8] 0x008a9000 + 0xf34c8 = 0x0099c4c8
-.long ?Delete@Base@@UAEXH@Z
+.long ?Delete@Base@@UAEXXZ
 .long ?ToBeDeleted@PlannedCitadelPart@@UAEXH@Z
 .long ?Get3DSoundPos@GameThingWithPos@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
@@ -2142,19 +2142,19 @@ VftableAndRTTI PlannedWorshipSite                                               
 VftableAndRTTI GWorshipSiteUpgradeInfo                                                                             // [0xf39f0] 0x008a9000 + 0xf39f0 = 0x0099c9f0
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
 .long ??_GGWorshipSiteUpgradeInfo@@UAEPAXI@Z                                                                                                   // [0xf39f8] 0x008a9000 + 0xf39f8 = 0x0099c9f8
-.long ?Delete@Base@@UAEXH@Z
-.long ?ToBeDeleted@Base@@UAEXH@Z
+.long ?Delete@Base@@UAEXXZ
+.long ?ToBeDeleted@Base@@UAEXI@Z
 .long ?Get3DSoundPos@Base@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ
 .long ?Dump@Base@@UAEXXZ
-.long ?GetDebugText@GObjectInfo@@UBEPBDXZ
-.long ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
+.long ?GetDebugText@GAbodeInfo@@UBEPBDXZ
+.long ?GetDebugColor@GBaseInfo@@UAEPAULHColor@@PAU2@@Z
 .long ?GetBaseInfo@GWorshipSiteUpgradeInfo@@UAEPAVGBaseInfo@@AAI@Z                                                                                                   // [0xf3a18] 0x008a9000 + 0xf3a18 = 0x0099ca18
-.long ?UpdateValue@GBaseInfo@@UAEXMKK@Z
+.long ?UpdateValue@GBaseInfo@@UAEXMII@Z
 .long ?GetMesh@GFeatureInfo@@UBEIXZ                                                                                                   // [0xf3a20] 0x008a9000 + 0xf3a20 = 0x0099ca20
-.long ?GetMesh@GObjectInfo@@UBE?AW4MeshId@@W4TRIBE_TYPE@@@Z                                                                                                   // [0xf3a24] 0x008a9000 + 0xf3a24 = 0x0099ca24
-.long ?GetAlignmentType@GObjectInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ                                                                                                   // [0xf3a28] 0x008a9000 + 0xf3a28 = 0x0099ca28
-.long ?GetFoodType@GObjectInfo@@UBE?AW4FOOD_TYPE@@XZ                                                                                                   // [0xf3a2c] 0x008a9000 + 0xf3a2c = 0x0099ca2c
+.long ?GetMesh@GAbodeInfo@@UBEIW4TRIBE_TYPE@@@Z                                                                                                   // [0xf3a24] 0x008a9000 + 0xf3a24 = 0x0099ca24
+.long ?GetAlignmentType@GAbodeInfo@@UBE?AW4ALIGNMENT_TYPE@@XZ                                                                                                   // [0xf3a28] 0x008a9000 + 0xf3a28 = 0x0099ca28
+.long ?GetFoodType@GAbodeInfo@@UBE?AW4FOOD_TYPE@@XZ                                                                                                   // [0xf3a2c] 0x008a9000 + 0xf3a2c = 0x0099ca2c
 .long ?IsOkToCreateAtPos@GMultiMapFixedInfo@@UBE_NABUMapCoords@@MM@Z                                                                                                   // [0xf3a30] 0x008a9000 + 0xf3a30 = 0x0099ca30
 .long ?GetAbodeType@GFeatureInfo@@UBE?AW4ABODE_TYPE@@XZ
 .long ?GetAbodeNumber@GFeatureInfo@@UBE?AW4ABODE_NUMBER@@XZ                                                                                       // [0xf3a34] 0x008a9000 + 0xf3a34 = 0x0099ca34
@@ -2771,7 +2771,7 @@ VftableAndRTTI WorshipSiteUpgrade                                               
 VftableAndRTTI PlannedWorshipSiteUpgrade                                                                           // [0xf434c] 0x008a9000 + 0xf434c = 0x0099d34c
 .long ?Serialise@Base@@UAEXAAVArchive@@@Z
 .long ??_GPlannedWorshipSiteUpgrade@@UAEPAXI@Z                                                                                                   // [0xf4354] 0x008a9000 + 0xf4354 = 0x0099d354
-.long ?Delete@Base@@UAEXH@Z
+.long ?Delete@Base@@UAEXXZ
 .long ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .long ?Get3DSoundPos@GameThingWithPos@@UAEHPAULHPoint@@@Z
 .long ?CleanUpForSerialisation@Base@@UAEXXZ

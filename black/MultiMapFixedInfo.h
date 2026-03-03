@@ -1,6 +1,31 @@
 #ifndef BW1_DECOMP_MULTI_MAP_FIXED_INFO_INCLUDED_H
 #define BW1_DECOMP_MULTI_MAP_FIXED_INFO_INCLUDED_H
 
+#if __cplusplus
+
+#include "ObjectInfo.h"
+
+#include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
+
+class GMultiMapFixedInfo : public GObjectInfo
+{
+public:
+  virtual bool IsOkToCreateAtPos(const MapCoords* pos, float param_2, float param_3) const;  /* 0x3c */
+  virtual ABODE_TYPE GetAbodeType() const;  /* 0x40 */
+  virtual ABODE_NUMBER GetAbodeNumber() const;
+
+  MESH_LIST editorMesh;  /* 0x100 */
+  uint32_t woodRequiredPerBuild;
+  uint32_t timeToBuild;
+  uint32_t scaffoldsRequired;
+  uint32_t maxVillagerNeededToBuild;  /* 0x110 */
+  float desireToBeBuilt;
+  float desireToBeRepaired;
+  float influence;
+};
+
+#else
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
@@ -50,5 +75,7 @@ extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18GMultiM
 
 // win1.41 0052eb60 mac 100dffe0 GMultiMapFixedInfo::IsOkToCreateAtPos(const MapCoords&, float, float) const
 bool __fastcall IsOkToCreateAtPos__18GMultiMapFixedInfoCFRC9MapCoordsff(const struct GMultiMapFixedInfo* this, const void* edx, const struct MapCoords* pos, float param_2, float param_3) asm("?IsOkToCreateAtPos@GMultiMapFixedInfo@@UBE_NABUMapCoords@@MM@Z");
+
+#endif
 
 #endif /* BW1_DECOMP_MULTI_MAP_FIXED_INFO_INCLUDED_H */

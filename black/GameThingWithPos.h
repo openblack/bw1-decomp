@@ -1,6 +1,20 @@
 #ifndef BW1_DECOMP_GAME_THING_WITH_POS_INCLUDED_H
 #define BW1_DECOMP_GAME_THING_WITH_POS_INCLUDED_H
 
+#ifdef __cplusplus
+
+#include "GameThing.h"
+
+class GameThingWithPos: public GameThing
+{
+  public:
+  virtual float GetLife();
+  virtual bool32_t IsMaleVillager();
+  virtual bool32_t IsFemaleVillager();
+};
+
+#else 
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
@@ -875,5 +889,7 @@ void __fastcall GetSpellCastPos__16GameThingWithPosFv(struct GameThingWithPos* t
 void __fastcall CleanUpBeforeReset__16GameThingWithPosFv(struct GameThingWithPos* this) asm("?CleanUpBeforeReset@GameThingWithPos@@UAEXXZ");
 
 DECLARE_LH_LINKED_LIST(GameThingWithPos);
+
+#endif
 
 #endif /* BW1_DECOMP_GAME_THING_WITH_POS_INCLUDED_H */

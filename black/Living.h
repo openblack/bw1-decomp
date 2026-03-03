@@ -1,6 +1,17 @@
 #ifndef BW1_DECOMP_LIVING_INCLUDED_H
 #define BW1_DECOMP_LIVING_INCLUDED_H
 
+#ifdef __cplusplus
+
+#include "MobileWallHug.h"
+
+class Living: public MobileWallHug
+{
+
+};
+
+#else
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
@@ -876,5 +887,7 @@ bool __fastcall CanBeHealedByHealSpell__6LivingFv(struct Living* this) asm("?Can
 DECLARE_LH_LINKED_LIST(Living);
 
 DECLARE_LH_LIST_HEAD(Living);
+
+#endif
 
 #endif /* BW1_DECOMP_LIVING_INCLUDED_H */

@@ -1,6 +1,76 @@
 #ifndef BW1_DECOMP_ABODE_INFO_INCLUDED_H
 #define BW1_DECOMP_ABODE_INFO_INCLUDED_H
 
+#if __cplusplus
+
+#include "MultiMapFixedInfo.h"
+
+#include "Name.h"
+
+class GAbodeInfo : public GMultiMapFixedInfo
+{
+public:
+  static GAbodeInfo AbodeInfos[0x93];
+
+  GAbodeInfo(){}
+  // virtual ~GAbodeInfo(); // AbodeInfos::`dynamic atexit destructor' calls Base::~Base, not ~GAbodeInfo()
+
+  virtual uint32_t GetMesh() const { return meshId; };
+  virtual ABODE_TYPE GetAbodeType() const { return abodeType; };  /* 0x40 */
+  virtual ABODE_NUMBER GetAbodeNumber() const { return abodeNumber; }
+  virtual GBaseInfo* GetBaseInfo(uint32_t* param_1) 
+  {
+    *param_1 = sizeof(AbodeInfos) / sizeof(AbodeInfos[0]);
+    return AbodeInfos;
+  }
+  virtual uint32_t GetMesh(TRIBE_TYPE tribe) const { return TRIBE_TYPE_CELTIC; };
+  virtual ALIGNMENT_TYPE GetAlignmentType() const { return alignmentType; }
+  virtual FOOD_TYPE GetFoodType() const { return food_type; }
+  virtual const char* GetDebugText() const { return debugString; }
+
+  static void operator delete(void* ptr, size_t size) {
+      ::operator delete(ptr, /*sizeof(Base)*/0x1c8);
+  }
+
+  ABODE_TYPE abodeType;  /* 0x120 */
+  ABODE_NUMBER abodeNumber;
+  Name description;
+  uint32_t field_0x148;
+  uint32_t field_0x14c;
+  uint32_t field_0x150;
+  uint32_t field_0x154;
+  TRIBE_TYPE tribe_type;
+  uint32_t meshId;
+  uint32_t canBePhysicallyDamaged;  /* 0x160 */
+  float startLife;
+  uint32_t startStrength;
+  float startDefence;
+  uint32_t startInfluence;  /* 0x170 */
+  int maxVillagersInAbode;
+  int maxChildrenInAbode;
+  uint32_t startVillagersInAbode;
+  uint32_t startChildrenInAbode;  /* 0x180 */
+  uint32_t startFood;
+  uint32_t startFoodRAnd;
+  uint32_t startWood;
+  uint32_t startWoodRAnd;  /* 0x190 */
+  uint32_t howLongRuinLastsFor;
+  uint32_t potForResourceFood;
+  uint32_t potForResourceWood;
+  float percentTooCrowded;  /* 0x1a0 */
+  int producesMobileObject;
+  float maxNumMobileObjectsToProduce;
+  float timeEachMobileObjectTakesToProduce;
+  float emptyAbodeLifeReducer;  /* 0x1b0 */
+  int populationWhenNeeded;
+  float thresholdForStopBeingFunctional;
+  int toolTipsForBuild;
+  int didYouKnow;  /* 0x1c0 */
+  DYK_CATEGORY dykCategory;
+};
+
+#else
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
@@ -115,5 +185,7 @@ uint32_t __fastcall GetMesh__10GAbodeInfoCFv(const struct GObjectInfo* this) asm
 enum ABODE_TYPE __fastcall GetAbodeType__10GAbodeInfoCFv(const struct GMultiMapFixedInfo* this) asm("?GetAbodeType@GAbodeInfo@@UBE?AW4ABODE_TYPE@@XZ");
 // win1.41 00401260 mac 100984c0 GAbodeInfo::GetAbodeNumber() const
 enum ABODE_NUMBER __fastcall GetAbodeNumber__10GAbodeInfoCFv(const struct GMultiMapFixedInfo* this) asm("?GetAbodeNumber@GAbodeInfo@@UBE?AW4ABODE_NUMBER@@XZ");
+
+#endif
 
 #endif /* BW1_DECOMP_ABODE_INFO_INCLUDED_H */

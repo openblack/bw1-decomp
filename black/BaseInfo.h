@@ -1,6 +1,28 @@
 #ifndef BW1_DECOMP_BASE_INFO_INCLUDED_H
 #define BW1_DECOMP_BASE_INFO_INCLUDED_H
 
+#if __cplusplus
+
+#include "Base.h"
+
+struct LHColor;
+
+class GBaseInfo : public Base
+{
+public:
+  virtual const char* GetDebugText() const;
+  virtual LHColor* GetDebugColor(LHColor* color);
+  virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+  virtual void UpdateValue(float param_1, uint32_t param_2, uint32_t param_3)
+  {
+  }
+
+  GBaseInfo* next;
+  int index;
+};
+
+#else
+
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
@@ -78,9 +100,9 @@ void __fastcall __dt__9GBaseInfoFv(struct Base* this, const void* edx, uint32_t 
 // win1.41 004140b0 mac 10578110 GBaseInfo::GetDebugText(void) const
 const char* __fastcall GetDebugText__9GBaseInfoCFv(const struct GBaseInfo* this) asm("?GetDebugText@GBaseInfo@@UBEPBDXZ");
 // win1.41 00436c60 mac 1055df70 GBaseInfo::GetDebugColor(void) const
-struct LHColor* __fastcall GetDebugColor__9GBaseInfoCFv(const struct GBaseInfo* this, const void* edx, struct LHColor* color) asm("?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ");
+struct LHColor* __fastcall GetDebugColor__9GBaseInfoCFv(const struct GBaseInfo* this, const void* edx, struct LHColor* color) asm("?GetDebugColor@GBaseInfo@@UAEPAULHColor@@PAU2@@Z");
 // win1.41 00401230 mac 101228b0 GBaseInfo::UpdateValue(void)
-void __fastcall UpdateValue__9GBaseInfoFfUlUl(struct GBaseInfo* this, const void* edx, float param_1, uint32_t param_2, uint32_t param_3) asm("?UpdateValue@GBaseInfo@@UAEXMKK@Z");
+void __fastcall UpdateValue__9GBaseInfoFfUlUl(struct GBaseInfo* this, const void* edx, float param_1, uint32_t param_2, uint32_t param_3) asm("?UpdateValue@GBaseInfo@@UAEXMII@Z");
 
 DECLARE_LH_LIST_HEAD(GBaseInfo);
 
@@ -127,5 +149,7 @@ void __fastcall Set__8BaseInfoFP4Base(struct BaseInfo* this, const void* edx, st
 
 // win1.41 0055c770 mac 10043c50 BaseInfo::IsClear(void) const
 bool __fastcall IsClear__8BaseInfoCFv(const struct BaseInfo* this) asm("?IsClear@BaseInfo@@UBE_NXZ");
+
+#endif
 
 #endif /* BW1_DECOMP_BASE_INFO_INCLUDED_H */

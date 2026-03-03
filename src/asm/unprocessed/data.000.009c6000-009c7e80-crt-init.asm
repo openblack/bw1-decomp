@@ -37,7 +37,7 @@ ___xc_a:
 .long _globl_ct_0x00401040                                                                                         // [0x40] 0x009c6000 + 0x40 = 0x009c6040
 .long _globl_ct_0x00401070
 .long _globl_ct_0x00401120
-.long _crt_global_initialize_for_AbodeInfos__10GAbodeInfoFv
+.long 0x00401170
 .long _globl_ct_0x00407840                                                                                         // [0x50] 0x009c6000 + 0x50 = 0x009c6050
 .long _globl_ct_0x00407880
 .long _globl_ct_0x004078b0

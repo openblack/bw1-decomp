@@ -57,12 +57,12 @@ void __fastcall __dt__4BaseFUi(struct Base* this, const void* edx, uint32_t para
     asm("mov.s            esi, ecx");                          // 0x00401211    8bf1
     asm("call             _jmp_addr_0x00436960");              // 0x00401213    e848570300
     asm("test             byte ptr [esp + 0x08], 0x01");       // 0x00401218    f644240801
-    asm("{disp8} je       _jmp_addr_0x0040122a");              // 0x0040121d    740b
+    asm("{disp8} je       .L_jmp_addr_0x0040122a");              // 0x0040121d    740b
     asm("push             0x8");                               // 0x0040121f    6a08
     asm("push             esi");                               // 0x00401221    56
     asm("call             ??3Base@@SAXPAXK@Z");              // 0x00401222    e849570300
     asm("add              esp, 0x08");                         // 0x00401227    83c408
-    asm("_jmp_addr_0x0040122a:");
+    asm(".L_jmp_addr_0x0040122a:");
     asm("mov.s            eax, esi");                          // 0x0040122a    8bc6
     asm("pop              esi");                               // 0x0040122c    5e
 }
