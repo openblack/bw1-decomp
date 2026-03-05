@@ -1094,3 +1094,9 @@ add_custom_command(
     COMMAND ${CMAKE_COMMAND} -E md5sum "$<TARGET_FILE:runblack-reassembled>"
     COMMENT "Computing the md5sum"
 )
+
+if(OBJDIFF)
+    file(GLOB STAGING_FILES "src/staging/*")
+    add_library(runblack_objdiff_staging OBJECT ${STAGING_FILES})
+    target_link_libraries(runblack_objdiff_staging PRIVATE common_compile_options)
+endif()

@@ -9,7 +9,7 @@
     {
       "name": "release",
       "displayName": "Byte-exact recompilation of vanilla.",
-      "description": "Release confiugration with Ninja that will generate md5sum=174b1a64e74b2321f3c38ccc8a511e78.",
+      "description": "Release configuration with Ninja that will generate md5sum=174b1a64e74b2321f3c38ccc8a511e78.",
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/cmake-build-presets/release",
       "cacheVariables": {
@@ -19,11 +19,23 @@
     {
       "name": "relwithdebinfo",
       "displayName": "Offset-exact with Debug info.",
-      "description": "RelWithDebInfo confiugration with Ninja that will have some debug info.",
+      "description": "RelWithDebInfo configuration with Ninja that will have some debug info.",
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/cmake-build-presets/welwithdebinfo",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+      }
+    },
+    {
+      "name": "objdiff",
+      "displayName": "Configuration for running objdiff.",
+      "description": "Release configuration with Ninja that will generate md5sum=174b1a64e74b2321f3c38ccc8a511e78.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/cmake-build-presets/objdiff",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "OBJDIFF": "ON"
       }
     }
   ],
@@ -35,6 +47,10 @@
     {
       "name": "relwithdebinfo",
       "configurePreset": "relwithdebinfo"
+    },
+    {
+      "name": "objdiff",
+      "configurePreset": "objdiff"
     }
   ],
   "workflowPresets": [
@@ -61,6 +77,19 @@
         {
           "type": "build",
           "name": "relwithdebinfo"
+        }
+      ]
+    },
+    {
+      "name": "objdiff",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "objdiff"
+        },
+        {
+          "type": "build",
+          "name": "objdiff"
         }
       ]
     }
