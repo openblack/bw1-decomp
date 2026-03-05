@@ -935,6 +935,7 @@ target_include_directories(common_compile_options
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}/black
         ${CMAKE_CURRENT_SOURCE_DIR}/libs
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs/zlib
 )
 if (CMAKE_HOST_WIN32)
     target_include_directories(common_compile_options
