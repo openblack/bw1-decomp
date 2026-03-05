@@ -105,9 +105,9 @@ set(CMAKE_C_FLAGS_RELWITHDEBINFO "-g -gcodeview -fstandalone-debug -fno-eliminat
 set(CMAKE_C_FLAGS_RELEASE "-O3")
 set(CMAKE_DEPFILE_FLAGS_C "")
 
-set(CMAKE_CXX_FLAGS_DEBUG "/Zi /TP /MT /GR")
-set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/Zi /TP /MT /GR /O2")
-set(CMAKE_CXX_FLAGS_RELEASE "/TP /MT /GR /O2")
+set(CMAKE_CXX_FLAGS_DEBUG "/Zi /MT /GR")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/Zi /MT /GR /O2")
+set(CMAKE_CXX_FLAGS_RELEASE "/MT /GR /O2")
 
 find_program(LLVM_STRIP_EXECUTABLE NAMES llvm-strip REQUIRED)
 find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
@@ -1098,6 +1098,8 @@ add_custom_command(
 
 if(OBJDIFF)
     file(GLOB STAGING_FILES "src/staging/*")
+    # Force the msvc compiler even for zlib c files
+    set_source_files_properties(${STAGING_FILES} PROPERTIES LANGUAGE CXX)
     add_library(runblack_objdiff_staging OBJECT ${STAGING_FILES})
     target_link_libraries(runblack_objdiff_staging PRIVATE common_compile_options)
 endif()
