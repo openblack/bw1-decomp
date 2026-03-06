@@ -41,9 +41,9 @@ public:
     // win1.41 00560fd0 mac 10147cc0 SpecialVillager::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0071f5d0 mac 10146d20 SpecialVillager::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0071f560 mac 10146e00 SpecialVillager::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00560fc0 mac 10147c80 SpecialVillager::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0071f3d0 mac 1002d450 SpecialVillager::Draw(void)

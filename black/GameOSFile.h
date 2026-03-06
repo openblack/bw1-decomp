@@ -7,6 +7,7 @@
 
 #include <lionhead/lhfile/ver3.0/LHFile.h> /* For enum LH_FILE_MODE */
 #include <lionhead/lhfile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h>
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "GameThing.h" /* For struct GameThing */
@@ -37,8 +38,8 @@ public:
     uint32_t checksum;
     uint32_t field_0x218;
     uint32_t field_0x21c;
-    LHLinkedList__GSaveLoadPtr save_load_ptr_list; /* 0x220 */
-    LHLinkedList__GameThing game_thing_list;
+    LHLinkedList<GSaveLoadPtr> save_load_ptr_list; /* 0x220 */
+    LHLinkedList<GameThing> game_thing_list;
 
     // Override methods
 
@@ -63,11 +64,12 @@ public:
     // win1.41 inlined mac 104f2b44 GameOSFile::ReadIt<float>(float*)
     void ReadIt_f32_(float* out);
     // win1.41 00407700 mac 1010b3b0 GameOSFile::WriteIt<uint32_t>(uint32_t&)
-    void WriteIt_u32_(uint32_t* val);
+    template<typename T>
+    void WriteIt(T& val);
     // win1.41 00407750 mac 10331500 GameOSFile::ReadIt<int>(int&)
-    void ReadIt_i32_(int* out);
     // win1.41 004077a0 mac 10139ad0 GameOSFile::ReadIt<uint32_t>(uint32_t&)
-    void ReadIt_u32_(uint32_t* out);
+    template<typename T>
+    void ReadIt(T& out);
     // win1.41 00558dc0 mac 10304ef0 GameOSFile::LoadInstance(GameThing **)
     void LoadInstance(GameThing** out_thing);
     // win1.41 00561c60 mac 103049e0 GameOSFile::ResolveAllLoads(void)

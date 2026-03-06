@@ -4,6 +4,34 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct RouteNode;
+
+struct Route
+{
+    RouteNode* start; /* 0x0 */
+    RouteNode* end;
+    Route* next;
+    uint32_t field_0xc;
+
+    // Constructors
+
+    // win1.41 00869380 mac 100a8790 Route::Route(void)
+    Route();
+    // win1.41 008693a0 mac 100a8690 Route::Route(Route *)
+    Route(Route* other);
+
+    // Non-virtual methods
+
+    // win1.41 00869430 mac 100a85f0 Route::~Route(void)
+    ~Route();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct RouteNode;
@@ -28,5 +56,7 @@ struct Route* __fastcall __ct__5RouteFP5Route(struct Route* this, const void* ed
 
 // win1.41 00869430 mac 100a85f0 Route::~Route(void)
 void __fastcall __dt__5RouteFv(struct Route* this) asm("??_DRoute@@QAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ROUTE_INCLUDED_H */

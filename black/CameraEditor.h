@@ -24,6 +24,26 @@ struct LH3DWay;
 class GCameraEditor: public Prss
 {
 public:
+    struct InfoTrack
+    {
+        int field_0x0;
+        uint32_t field_0x4;
+        int field_0x8;
+        uint32_t field_0xc;
+        InfoTrack* next; /* 0x10 */
+        uint32_t field_0x14;
+        LHPoint field_0x18;
+        LHPoint field_0x24;
+        int field_0x30;
+        LH3DWay* field_0x34;
+        int32_t* field_0x38;
+
+        // Non-virtual methods
+
+        // win1.41 00446450 mac 1019b070 GCameraEditor::InfoTrack::Draw(void)
+        void Draw();
+    };
+
     uint8_t field_0x10[0x18];
 
     // Static methods

@@ -7,6 +7,20 @@
 
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
+#ifdef __cplusplus
+
+struct GSaveLoadPtr
+{
+    uintptr_t ptr; /* 0x0 */
+
+    // Constructors
+
+    // win1.41 00562320 mac inlined GSaveLoadPtr::GSaveLoadPtr(void*)
+    GSaveLoadPtr(void* ptr);
+};
+
+#else // __cplusplus
+
 struct GSaveLoadPtr
 {
   uintptr_t ptr;  /* 0x0 */
@@ -22,5 +36,7 @@ DECLARE_LH_LINKED_LIST(GSaveLoadPtr);
 
 // win1.41 00564420 mac inlined GSaveLoadPtrList::PushBack(GSaveLoadPtr *)
 bool __fastcall Push__GSaveLoadPtrListFP12GSaveLoadPtr(struct LHLinkedList__GSaveLoadPtr* this, const void* edx, struct GSaveLoadPtr* ptr);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SAVE_LOAD_PTR_INCLUDED_H */

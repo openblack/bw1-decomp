@@ -4,6 +4,24 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class LHConnection;
+
+struct LHConnectionServer
+{
+    uint32_t field_0x0;
+
+    // Non-virtual methods
+
+    // win1.41 inlined mac 100e09b0 LHConnectionServer::ConnectToConnection(LHConnection *)
+    uint32_t ConnectToConnection(LHConnection* connection);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LHConnection;
@@ -18,5 +36,7 @@ static_assert(sizeof(struct LHConnectionServer) == 0x4, "Data type is of wrong s
 
 // win1.41 inlined mac 100e09b0 LHConnectionServer::ConnectToConnection(LHConnection *)
 uint32_t __fastcall ConnectToConnection__18LHConnectionServerFP12LHConnection(struct LHConnectionServer* this, const void* edx, struct LHConnection* connection) asm("?ConnectToConnection@LHConnectionServer@@QAEIPAVLHConnection@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_CONNECTION_SERVER_INCLUDED_H */

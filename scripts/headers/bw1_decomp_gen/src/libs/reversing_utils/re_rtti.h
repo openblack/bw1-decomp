@@ -1,6 +1,8 @@
 #ifndef BW1_DECOMP_REVERSING_UTILS_RTTI_INCLUDED_H
 #define BW1_DECOMP_REVERSING_UTILS_RTTI_INCLUDED_H
 
+#ifndef __cplusplus
+
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -50,5 +52,7 @@ void* __cdecl __RTDynamicCast(void* intptr, size_t vf_delta, const struct RTTITy
 const char* __RTTypeName(const void* intptr);
 
 extern int __vt__9type_info asm("??_7type_info@@6B@");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_REVERSING_UTILS_RTTI_INCLUDED_H */

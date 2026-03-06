@@ -36,9 +36,9 @@ public:
     // win1.41 005faf30 mac 103acd80 GMagicHand::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005fb320 mac 103acdc0 GMagicHand::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 005fb2c0 mac 103ace90 GMagicHand::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 005faf20 mac 103acd40 GMagicHand::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

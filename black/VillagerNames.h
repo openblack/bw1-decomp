@@ -14,6 +14,34 @@
 
 #ifdef __cplusplus
 
+class VillagerName;
+
+struct VillagerNameBlock
+{
+    uint8_t field_0x0[0x14];
+
+    // Static methods
+
+    // win1.41 00762720 mac 1058ba90 VillagerNameBlock::Alloc(void)
+    static VillagerName* Alloc();
+    // win1.41 00762780 mac 1058b960 VillagerNameBlock::Delete(VillagerName *)
+    static void Delete(VillagerName* name);
+
+    // Constructors
+
+    // win1.41 00762820 mac inlined VillagerNameBlock::VillagerNameBlock(void)
+    VillagerNameBlock();
+
+    // Non-virtual methods
+
+    // win1.41 007627e0 mac 10012bf0 VillagerNameBlock::DeleteAll(void)
+    bool DeleteAll();
+    // win1.41 00762900 mac inlined VillagerNameBlock::~VillagerNameBlock()
+    ~VillagerNameBlock();
+    // win1.41 00762970 mac inlined VillagerNameBlock::FreeAll(void)
+    void FreeAll();
+};
+
 // win1.41 00c24558 mac inlined VillagerName::`RTTI Type Descriptor'
 // win1.41 009b9dd8 mac inlined VillagerName::`RTTI Base Class Descriptor'
 // win1.41 009b9df0 mac inlined VillagerName::`RTTI Base Class Array'
@@ -45,11 +73,6 @@ public:
 
     // win1.41 007628a0 mac 100b5250 VillagerName::AddDrawing(void)
     virtual void AddDrawing(); /* 0x0 */
-
-    // Override methods
-
-    // win1.41 007628a0 mac 100b5250 VillagerName::AddDrawing(void)
-    virtual void AddDrawing();
 
     // Static methods
 

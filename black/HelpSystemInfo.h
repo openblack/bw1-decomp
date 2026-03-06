@@ -27,7 +27,7 @@ public:
     // win1.41 005c53f0 mac 10351af0 HelpSystemInfo::_dt(void)
     virtual ~HelpSystemInfo();
     // win1.41 005c53a0 mac 10351aa0 HelpSystemInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

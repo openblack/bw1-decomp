@@ -18,6 +18,17 @@ class GameThingWithPos;
 struct LH_SamplePlayOptions;
 class Town;
 
+struct Q29GGuidance10LastThings
+{
+    GameThingWithPos* thing; /* 0x0 */
+    uint32_t turn;
+
+    // Constructors
+
+    // win1.41 0071aec0 mac 10511e30 GGuidance::LastThings::LastThings(GameThingWithPos *)
+    Q29GGuidance10LastThings(GameThingWithPos* thing);
+};
+
 // win1.41 00c22200 mac inlined GGuidance::`RTTI Type Descriptor'
 // win1.41 009b9158 mac inlined GGuidance::`RTTI Base Class Descriptor'
 // win1.41 009b9170 mac inlined GGuidance::`RTTI Base Class Array'

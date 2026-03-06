@@ -7,6 +7,36 @@
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint, struct Point2D */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LH3DMaterial;
+struct LH3DTexture;
+
+struct Plasma
+{
+    LHPoint points[0x4f7]; /* 0x0 */
+    Point2D uvs[0x4f7]; /* 0x3b94 */
+    uint32_t indices[0x3][0x960]; /* 0x634c */
+    LH3DColor colors[0x4f7]; /* 0xd3cc */
+    LHPoint field_0xe7a8[0x10];
+    LHPoint field_0xe868[0x10];
+    LH3DTexture* pin_texture; /* 0xe928 */
+    LH3DMaterial* pin_material;
+
+    // Non-virtual methods
+
+    // win1.41 0053c640 mac 105c4040 Plasma::Init(void)
+    void Init();
+    // win1.41 0053c840 mac 105c3d50 Plasma::Render(int)
+    void Render(int param_1);
+    // win1.41 inlined mac 100c9220 Plasma::Close(void)
+    void Close();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LH3DMaterial;
@@ -33,5 +63,7 @@ void __fastcall Init__6PlasmaFv(struct Plasma* this) asm("?Init@Plasma@@QAEXXZ")
 void __fastcall Render__6PlasmaFi(struct Plasma* this, const void* edx, int param_1) asm("?Render@Plasma@@QAEXH@Z");
 // win1.41 inlined mac 100c9220 Plasma::Close(void)
 void __fastcall Close__6PlasmaFv(struct Plasma* this) asm("?Close@Plasma@@QAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLASMA_INCLUDED_H */

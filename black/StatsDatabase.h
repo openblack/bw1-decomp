@@ -23,7 +23,7 @@ public:
     // Override methods
 
     // win1.41 006338f0 mac 10109920 StatsDatabase::Send(void)
-    virtual uint32_t Send();
+    virtual bool Send();
 
     // Constructors
 

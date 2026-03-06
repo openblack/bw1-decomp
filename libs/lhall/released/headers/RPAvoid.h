@@ -6,6 +6,23 @@
 
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct Point2D */
 
+#ifdef __cplusplus
+
+struct RPAvoid
+{
+    float field_0x0;
+    float field_0x4;
+    Point2D field_0x8;
+    float field_0x10;
+
+    // Non-virtual methods
+
+    // win1.41 008690a0 mac 100a8da0 RPAvoid::PointIsTotallyInside(Point2D const &, float)
+    uint32_t PointIsTotallyInside(const Point2D& param_1, float param_2);
+};
+
+#else // __cplusplus
+
 struct RPAvoid
 {
   float field_0x0;
@@ -19,5 +36,7 @@ static_assert(sizeof(struct RPAvoid) == 0x14, "Data type is of wrong size");
 
 // win1.41 008690a0 mac 100a8da0 RPAvoid::PointIsTotallyInside(Point2D const &, float)
 uint32_t __fastcall PointIsTotallyInside__7RPAvoidFRC7Point2Df(struct RPAvoid* this, const void* edx, struct Point2D* param_1, float param_2) asm("?PointIsTotallyInside@RPAvoid@@QAEIABUPoint2D@@M@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_RP_AVOID_INCLUDED_H */

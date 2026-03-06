@@ -25,6 +25,11 @@
 class SetupList: public SetupControl
 {
 public:
+  struct ListBoxDraw_t
+  {
+      uint32_t (__stdcall* function)(struct SetupList* widget, int value, int x_min, int y_min, int x_max, int y_max, int param_7, int style);  /* 0x0 */
+  };
+
     bool field_0x23c;
     int scrollback_width; /* 0x240 */
     bool field_0x244;
@@ -32,12 +37,12 @@ public:
     int field_0x24c;
     int num_items; /* 0x250 */
     int field_0x254;
-    char16_t (*) item_labels[0x100];
+    char16_t (*item_labels)[0x100];
     int* item_heights;
     uint32_t* field_0x260;
     uint32_t* field_0x264;
     LH3DColor* color;
-    SetupList__ListBoxDraw_t* ListBoxDraw;
+    ListBoxDraw_t* ListBoxDraw;
     int scroll_distance; /* 0x270 */
     bool show_scrollbar;
     int field_0x278;
@@ -55,29 +60,24 @@ public:
     uint8_t field_0x29c;
     SetupRect selection_rect; /* 0x2a0 */
 
-    // Virtual functions
-
-    // win1.41 0040a520 mac 104e2bb0 SetupList::IsSelected(int)
-    virtual bool IsSelected(int index); /* 0x34 */
-
     // Override methods
 
     // win1.41 0040a5c0 mac 10388e60 SetupList::Draw(bool, bool)
-    virtual void Draw(bool hovered, bool selected);
+    void Draw(bool hovered, bool selected);
     // win1.41 0040a110 mac 101c7fc0 SetupList::Drag(int, int)
-    virtual void Drag(int x, int y);
+    void Drag(int x, int y);
     // win1.41 0040a370 mac 10478900 SetupList::MouseDown(int, int, bool)
-    virtual void MouseDown(int x, int y, bool param_3);
+    void MouseDown(int x, int y, bool param_3);
     // win1.41 0040a3f0 mac 100c7610 SetupList::MouseUp(int, int, bool)
-    virtual void MouseUp(int x, int y, bool param_3);
+    void MouseUp(int x, int y, bool param_3);
     // win1.41 0040a360 mac 100b7170 SetupList::Click(int, int)
-    virtual void Click(int x, int y);
+    void Click(int x, int y);
     // win1.41 00409eb0 mac 103d24f0 SetupList::KeyDown(int, int)
-    virtual void KeyDown(LHKey key, LHKeyMod mod);
+    void KeyDown(enum LHKey key, enum LHKeyMod mod);
     // win1.41 0040a540 mac 1056c3d0 SetupList::~SetupList(void)
-    virtual ~SetupList();
+    ~SetupList();
     // win1.41 0040a520 mac 104e2bb0 SetupList::IsSelected(int)
-    virtual bool IsSelected(int index);
+    bool IsSelected(int index);
 
     // Constructors
 

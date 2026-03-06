@@ -18,6 +18,13 @@
 #include "Object.h" /* For struct Object */
 #include "Villager.h" /* For struct Villager */
 
+enum ABODE_EPP
+{
+  ABODE_EPP_LANTERN = 0x0,
+  ABODE_EPP_SCRIPT_HIGHLIGHT = 0x1,
+  _ABODE_EPP_COUNT = 0x2
+};
+
 #ifdef __cplusplus
 
 // Forward Declares
@@ -58,7 +65,7 @@ public:
     uint32_t field_0x94;
     Town* town;
     Abode* next;
-    LHListHead__Villager villagers; /* 0xa0 */
+    LHListHead<Villager> villagers; /* 0xa0 */
     Villager* male_female_villagers[0x2];
     uint32_t field_0xb0;
     uint8_t adult_count;
@@ -70,25 +77,6 @@ public:
     uint32_t resources[RESOURCE_TYPE_LAST];
 
     // Virtual functions
-
-    // win1.41 00404520 mac 1036d5a0 Abode::MoveAbodeToPlannedAbodes(void)
-    virtual void MoveAbodeToPlannedAbodes(); /* 0x90c */
-    // win1.41 00403f00 mac 100e33a0 Abode::DeleteDependancys(void)
-    virtual void DeleteDependancys(); /* 0x910 */
-    // win1.41 004047e0 mac 103c1e30 Abode::MakeFunctional(void)
-    virtual void MakeFunctional();
-    // win1.41 004073c0 mac 103b5600 Abode::StopBeingFunctional(GPlayer *)
-    virtual void StopBeingFunctional(GPlayer* param_1);
-    // win1.41 00401680 mac 10371be0 Abode::RestartBeingFunctional(void)
-    virtual void RestartBeingFunctional();
-    // win1.41 004016f0 mac 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
-    virtual bool CausesTownEmergencyIfDamaged(); /* 0x920 */
-    // win1.41 00407280 mac 100dcdb0 Abode::CanBeHiddenIn(void)
-    virtual bool CanBeHiddenIn();
-    // win1.41 00405f50 mac 103b5680 Abode::GetTribe(void)
-    virtual GTribeInfo* GetTribe();
-
-    // Override methods
 
     // win1.41 004017c0 mac 103d4980 Abode::_dt(unsigned int)
     virtual ~Abode();
@@ -119,9 +107,9 @@ public:
     // win1.41 004017b0 mac 10434340 Abode::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00406d20 mac 101a2920 Abode::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual bool Load(GameOSFile& file);
     // win1.41 00406a10 mac 103bd750 Abode::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* file);
+    virtual bool Save(GameOSFile& file);
     // win1.41 004017a0 mac 103e1790 Abode::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00401770 mac 1000c2b0 Abode::GetArrivePos(void)
@@ -163,17 +151,17 @@ public:
     // win1.41 00405ed0 mac 10112270 Abode::IncreaseLife(float)
     virtual void IncreaseLife(float value);
     // win1.41 00403f80 mac 10573770 Abode::DestroyedByEffect(GPlayer *, float)
-    virtual uint32_t DestroyedByEffect(GPlayer* player, float param_2);
+    virtual bool DestroyedByEffect(GPlayer* player, float param_2);
     // win1.41 00404440 mac 1004fcb0 Abode::Process(void)
     virtual uint32_t Process();
     // win1.41 00404aa0 mac 100ac700 Abode::GetMesh(void) const
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 00515f70 mac 10036a60 Abode::Draw(void)
     virtual void Draw();
     // win1.41 00407170 mac 1034ec40 Abode::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
     virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager);
     // win1.41 00403200 mac 10576c70 Abode::CallVirtualFunctionsForCreation(const MapCoords&)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00406820 mac 1049b920 Abode::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* status);
     // win1.41 00406830 mac 102fed90 Abode::InterfaceTap(GInterfaceStatus *)
@@ -183,7 +171,7 @@ public:
     // win1.41 00402dd0 mac 103bf110 Abode::SetUpPhysOb(PhysOb *)
     virtual void SetUpPhysOb(PhysOb* param_1);
     // win1.41 00406230 mac 1014cfd0 Abode::ChecksVerticesVObjects(void)
-    virtual uint32_t ChecksVerticesVObjects();
+    virtual bool ChecksVerticesVObjects();
     // win1.41 00406240 mac 104a8350 Abode::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 00406800 mac 1010ab50 Abode::CanBecomeAPhysicsObject(void)
@@ -193,7 +181,7 @@ public:
     // win1.41 00407420 mac 10351de0 Abode::DiscipleInHandNear(Villager &, GInterfaceStatus &)
     virtual void DiscipleInHandNear(Villager* param_1, GInterfaceStatus* status);
     // win1.41 00405bb0 mac 101ca440 Abode::SaveObject(LHOSFile &, MapCoords const &)
-    virtual size_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual size_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 00403ef0 mac 10589380 Abode::ShouldFootpathsGoRound(void)
     virtual bool ShouldFootpathsGoRound();
     // win1.41 004072a0 mac 10053220 Abode::GetInfluence(void)
@@ -235,9 +223,9 @@ public:
     // win1.41 00405050 mac 100a3330 Abode::ConvertToPlanned(void)
     virtual PlannedMultiMapFixed* ConvertToPlanned();
     // win1.41 00404520 mac 1036d5a0 Abode::MoveAbodeToPlannedAbodes(void)
-    virtual void MoveAbodeToPlannedAbodes();
+    virtual void MoveAbodeToPlannedAbodes(); /* 0x90c */
     // win1.41 00403f00 mac 100e33a0 Abode::DeleteDependancys(void)
-    virtual void DeleteDependancys();
+    virtual void DeleteDependancys(); /* 0x910 */
     // win1.41 004047e0 mac 103c1e30 Abode::MakeFunctional(void)
     virtual void MakeFunctional();
     // win1.41 004073c0 mac 103b5600 Abode::StopBeingFunctional(GPlayer *)
@@ -245,7 +233,7 @@ public:
     // win1.41 00401680 mac 10371be0 Abode::RestartBeingFunctional(void)
     virtual void RestartBeingFunctional();
     // win1.41 004016f0 mac 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
-    virtual bool CausesTownEmergencyIfDamaged();
+    virtual bool CausesTownEmergencyIfDamaged(); /* 0x920 */
     // win1.41 00407280 mac 100dcdb0 Abode::CanBeHiddenIn(void)
     virtual bool CanBeHiddenIn();
     // win1.41 00405f50 mac 103b5680 Abode::GetTribe(void)
@@ -261,12 +249,7 @@ public:
     // Constructors
 
     // win1.41 00401350 mac 1033b330 Abode::Abode(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-    Abode(const MapCoords* coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
-
-    // Non-virtual Destructors
-
-    // win1.41 00402b60 mac inlined Abode::_dt(void)
-    ~Abode();
+    Abode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
 
     // Non-virtual methods
 
@@ -315,17 +298,17 @@ public:
     // win1.41 00405d80 mac inlined Abode::FUN_00405d80(void)
     int FUN_00405d80();
     // win1.41 00405f40 mac 10177200 Abode::GetTribeType(void) const
-    TRIBE_TYPE GetTribeType();
+    TRIBE_TYPE GetTribeType() const;
     // win1.41 00405fa0 mac 10003a60 Abode::ArriveHome(void)
     void ArriveHome();
     // win1.41 00405fb0 mac 1009fda0 Abode::LeaveHome(void)
     void LeaveHome();
     // win1.41 00405fc0 mac 100cd2d0 Abode::GetNearestWaterPos(MapCoords &)
-    bool GetNearestWaterPos(MapCoords* coords);
+    bool GetNearestWaterPos(MapCoords& coords);
     // win1.41 00406640 mac 10172a50 Abode::ApplyEffectsDueToPhysicalDestruction(Object *, GPlayer *)
     void ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player);
     // win1.41 004069c0 mac 1036ee00 Abode::FindVillager( int (*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, ulong), SCRIPT_OBJECT_TYPE, ulong)
-    Villager* FindVillager(int (__cdecl*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, uint32_t) param_1, SCRIPT_OBJECT_TYPE param_2, uint32_t param_3);
+    Villager* FindVillager(int (__cdecl* param_1)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, uint32_t), SCRIPT_OBJECT_TYPE param_2, uint32_t param_3);
     // win1.41 00407020 mac inlined Abode::FindNearestDrinkingWater(float)
     void FindNearestDrinkingWater(float max_dist);
     // win1.41 004070d0 mac 104ed230 Abode::GetNumAdultsInAbode(void)
@@ -375,12 +358,6 @@ struct PhysicsObject;
 struct PlannedMultiMapFixed;
 struct Town;
 
-enum ABODE_EPP
-{
-  ABODE_EPP_LANTERN = 0x0,
-  ABODE_EPP_SCRIPT_HIGHLIGHT = 0x1,
-  _ABODE_EPP_COUNT = 0x2
-};
 static_assert(sizeof(enum ABODE_EPP) == 0x4, "Data type is of wrong size");
 
 static const char* ABODE_EPP_strs[_ABODE_EPP_COUNT] = {

@@ -1,3 +1,4 @@
+import argparse
 import json
 import subprocess
 import sys
@@ -17,9 +18,7 @@ zlib_c_files = {
     "zutil",
 }
 
-def configure_objdiff():
-    validating = False
-
+def configure_objdiff(validating: bool):
     subprocess.run(["cmake", "--workflow", "--preset", "objdiff"], check=True)
 
     current_dir = Path.cwd()
@@ -122,4 +121,8 @@ def configure_objdiff():
         json.dump(config, f, indent=2)
 
 if __name__ == "__main__":
-    exit(configure_objdiff())
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--validate", action="store_true",
+                        help="Skip validation of staging files")
+    args = parser.parse_args()
+    exit(configure_objdiff(validating=args.validate))

@@ -44,29 +44,12 @@ public:
 
     // Virtual functions
 
-    // win1.41 00469660 mac 100bd510 PlannedMultiMapFixed::CreatePlanned(float)
-    virtual MultiMapFixed* CreatePlanned(float param_1); /* 0x500 */
-    // win1.41 00465540 mac 100d1720 PlannedMultiMapFixed::CreatePlannedNoFixedCheck(float)
-    virtual MultiMapFixed* CreatePlannedNoFixedCheck(float param_1);
-    // win1.41 00648c50 mac 10114bf0 PlannedMultiMapFixed::PostCreatePlanned(MultiMapFixed&)
-    virtual void PostCreatePlanned(MultiMapFixed* param_1);
-    // win1.41 00465550 mac 100d1770 PlannedMultiMapFixed::IsCivic(void)
-    virtual bool IsCivic();
-    // win1.41 00465570 mac 100d17f0 PlannedMultiMapFixed::GetAbodeType(void)
-    virtual ABODE_TYPE GetAbodeType(); /* 0x510 */
-    // win1.41 00648910 mac 1006f570 PlannedMultiMapFixed::GetDesireToBeRepaired(void)
-    virtual float GetDesireToBeRepaired();
-    // win1.41 00648930 mac 10115260 PlannedMultiMapFixed::Draw(void)
-    virtual void Draw();
-
-    // Override methods
-
     // win1.41 0055cbe0 mac 10111890 PlannedMultiMapFixed::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00648af0 mac 10114cd0 PlannedMultiMapFixed::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual bool Load(GameOSFile& file);
     // win1.41 00648990 mac 10114ef0 PlannedMultiMapFixed::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* file);
+    virtual bool Save(GameOSFile& file);
     // win1.41 0055cbd0 mac inlined PlannedMultiMapFixed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 004050c0 mac 1017d1b0 PlannedMultiMapFixed::GetScale(void)
@@ -78,9 +61,9 @@ public:
     // win1.41 00465560 mac 100d17b0 PlannedMultiMapFixed::IsWonder(void)
     virtual bool IsWonder();
     // win1.41 00648950 mac inlined PlannedMultiMapFixed::CreateBuildingSite(void)
-    virtual bool32_t CreateBuildingSite();
+    virtual bool CreateBuildingSite();
     // win1.41 00469660 mac 100bd510 PlannedMultiMapFixed::CreatePlanned(float)
-    virtual MultiMapFixed* CreatePlanned(float param_1);
+    virtual MultiMapFixed* CreatePlanned(float param_1); /* 0x500 */
     // win1.41 00465540 mac 100d1720 PlannedMultiMapFixed::CreatePlannedNoFixedCheck(float)
     virtual MultiMapFixed* CreatePlannedNoFixedCheck(float param_1);
     // win1.41 00648c50 mac 10114bf0 PlannedMultiMapFixed::PostCreatePlanned(MultiMapFixed&)
@@ -88,7 +71,7 @@ public:
     // win1.41 00465550 mac 100d1770 PlannedMultiMapFixed::IsCivic(void)
     virtual bool IsCivic();
     // win1.41 00465570 mac 100d17f0 PlannedMultiMapFixed::GetAbodeType(void)
-    virtual ABODE_TYPE GetAbodeType();
+    virtual ABODE_TYPE GetAbodeType(); /* 0x510 */
     // win1.41 00648910 mac 1006f570 PlannedMultiMapFixed::GetDesireToBeRepaired(void)
     virtual float GetDesireToBeRepaired();
     // win1.41 00648930 mac 10115260 PlannedMultiMapFixed::Draw(void)

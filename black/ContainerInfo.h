@@ -33,7 +33,7 @@ public:
     // win1.41 0046b880 mac 100bfd60 GContainerInfo::_dt(void)
     virtual ~GContainerInfo();
     // win1.41 0046b820 mac 100bfe80 GContainerInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

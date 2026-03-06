@@ -11,12 +11,54 @@
 #include "BaseInfo.h" /* For struct GBaseInfo */
 #include "CreatureMorph.h" /* For struct LH3DCreature */
 
+enum CREATURE_SUB_STATE_ACTIONS
+{
+  CREATURE_SUB_STATE_ACTIONS_0 = 0x0,
+  _CREATURE_SUB_STATE_ACTIONS_COUNT = 0x1
+};
+
 #ifdef __cplusplus
 
 // Forward Declares
 
 class CreatureContext;
 class Morphable;
+
+struct CreatureActionContextStart
+{
+  uint32_t field_0x0;
+  struct CreatureActionContext* field_0x4;
+  uint32_t field_0x8;
+  uint32_t field_0xc;
+  uint32_t field_0x10;
+};
+
+struct CreatureActionContext
+{
+    CreatureActionContextStart start; /* 0x0 */
+    float field_0x14;
+
+    // Constructors
+
+    // win1.41 004c3960 mac 10230320 CreatureActionContext::CreatureActionContext(CreatureContext &, float)
+    CreatureActionContext(CreatureContext* context, float param_2);
+};
+
+struct PreviousActionContextStack
+{
+  uint32_t indexes[0x2][0x148];  /* 0x0 */
+  struct CreatureActionContext stack[0x148][0xa];  /* 0xa40 */
+};
+
+struct CreatureActionOpinions
+{
+    uint32_t entries[NUM_CREATURE_ACTIONS]; /* 0x0 */
+
+    // Constructors
+
+    // win1.41 004c3930 mac 102303a0 CreatureActionOpinions::CreatureActionOpinions(CreatureInfo const *)
+    CreatureActionOpinions();
+};
 
 // win1.41 00be02d8 mac inlined CreaturePreviousActions::`RTTI Type Descriptor'
 // win1.41 009ab390 mac inlined CreaturePreviousActions::`RTTI Base Class Descriptor'
@@ -62,7 +104,7 @@ public:
     // win1.41 004e2db0 mac 102676b0 CreatureActionKnownAboutEntry::_dt(void)
     virtual ~CreatureActionKnownAboutEntry();
     // win1.41 004e2d50 mac 10267920 CreatureActionKnownAboutEntry::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 // win1.41 00be9c18 mac inlined CreatureFalling::`RTTI Type Descriptor'
@@ -100,11 +142,6 @@ public:
 struct CreatureContext;
 struct Morphable;
 
-enum CREATURE_SUB_STATE_ACTIONS
-{
-  CREATURE_SUB_STATE_ACTIONS_0 = 0x0,
-  _CREATURE_SUB_STATE_ACTIONS_COUNT = 0x1
-};
 static_assert(sizeof(enum CREATURE_SUB_STATE_ACTIONS) == 0x4, "Data type is of wrong size");
 
 static const char* CREATURE_SUB_STATE_ACTIONS_strs[_CREATURE_SUB_STATE_ACTIONS_COUNT] = {

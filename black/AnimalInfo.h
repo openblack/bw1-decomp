@@ -29,9 +29,9 @@ public:
     // win1.41 00416da0 mac 1016c970 GAnimalInfo::_dt(void)
     virtual ~GAnimalInfo();
     // win1.41 00416d30 mac 1016cc70 GAnimalInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 00416d20 mac 1016cc30 GAnimalInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
 };
 
 #else // __cplusplus

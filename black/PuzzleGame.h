@@ -68,9 +68,9 @@ public:
     // win1.41 00561b60 mac 10133a40 PuzzleGame::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006d9d40 mac 10126ae0 PuzzleGame::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006d96c0 mac 10127440 PuzzleGame::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00561b50 mac 10133a00 PuzzleGame::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561b10 mac inlined PuzzleGame::GetPos( const(MapCoords *))
@@ -78,7 +78,7 @@ public:
     // win1.41 00561b30 mac 10133980 PuzzleGame::GetText(void)
     virtual const char* GetText();
     // win1.41 00561b40 mac 101339c0 PuzzleGame::IsPuzzleGame(void)
-    virtual uint32_t IsPuzzleGame();
+    virtual bool IsPuzzleGame();
 };
 
 // win1.41 00c099b0 mac inlined ChessGamePuzzle::`RTTI Type Descriptor'
@@ -169,9 +169,9 @@ public:
     // win1.41 00422190 mac inlined ChessPion::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00422bc0 mac inlined ChessPion::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00422aa0 mac inlined ChessPion::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00422180 mac inlined ChessPion::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00422770 mac inlined ChessPion::Draw(void)
@@ -183,13 +183,13 @@ public:
     // win1.41 004221e0 mac inlined ChessPion::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 004221d0 mac inlined ChessPion::ChecksVerticesVObjects(void)
-    virtual uint32_t ChecksVerticesVObjects();
+    virtual bool ChecksVerticesVObjects();
     // win1.41 00422ec0 mac inlined ChessPion::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 00422ed0 mac inlined ChessPion::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
+    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int, Point2D, float, int));
     // win1.41 006de260 mac inlined ChessPion::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 };
 
 // win1.41 00c09a30 mac inlined ChessQueen::`RTTI Type Descriptor'
@@ -255,7 +255,7 @@ public:
     // win1.41 004200c0 mac 10175480 PieceLion::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 004200e0 mac 10175500 PieceLion::CanBeFrighteningToCreature(Creature *)
-    virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
 };
 
 // win1.41 009c90d8 mac inlined PiecePig::`RTTI Type Descriptor'
@@ -331,7 +331,7 @@ public:
     // win1.41 0041bba0 mac 10164d40 PieceVillager::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0041bbc0 mac 101334a0 PieceVillager::CanBeFrighteningToCreature(Creature *)
-    virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
     // win1.41 0041cfd0 mac 1016d160 PieceVillager::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
@@ -353,7 +353,7 @@ public:
     // win1.41 00421d70 mac 10178320 PieceWolf::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00421d90 mac 10133030 PieceWolf::CanBeFrighteningToCreature(Creature *)
-    virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
 };
 
 // win1.41 00c09960 mac inlined PieceCow::`RTTI Type Descriptor'
@@ -380,7 +380,7 @@ public:
     // win1.41 006dd670 mac 10132310 PuzzleCow::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006dd4b0 mac inlined PuzzleCow::CanBeFrighteningToCreature(Creature *)
-    virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
     // win1.41 006dd690 mac 10132390 PuzzleCow::CanBecomeAPhysicsObject(void)
     virtual bool CanBecomeAPhysicsObject();
     // win1.41 0041c7e0 mac inlined PuzzleCow::StandAnimation(void)
@@ -402,15 +402,15 @@ public:
     // win1.41 00561910 mac 10131890 PuzzleGrain::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006dbe40 mac 10123450 PuzzleGrain::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006dbeb0 mac 10123370 PuzzleGrain::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00561900 mac 10131850 PuzzleGrain::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561920 mac 101318d0 PuzzleGrain::CanBeEatenByCreature(Creature *)
-    virtual uint32_t CanBeEatenByCreature(Creature* param_1);
+    virtual bool CanBeEatenByCreature(Creature* param_1);
     // win1.41 00561930 mac 10131920 PuzzleGrain::CanBePickedUpByCreature(Creature *)
-    virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+    virtual bool CanBePickedUpByCreature(Creature* param_1);
     // win1.41 00561a20 mac 10131e70 PuzzleGrain::Draw(void)
     virtual void Draw();
     // win1.41 00561a30 mac 10122f40 PuzzleGrain::CallVirtualFunctionsForCreation(MapCoords const &)
@@ -422,25 +422,25 @@ public:
     // win1.41 00561950 mac 101319d0 PuzzleGrain::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
     virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
     // win1.41 00561960 mac 10131a30 PuzzleGrain::NetworkUnfriendlyStartLockedSelect(void)
-    virtual uint32_t NetworkUnfriendlyStartLockedSelect();
+    virtual bool NetworkUnfriendlyStartLockedSelect();
     // win1.41 00561970 mac 10131a80 PuzzleGrain::IsReadyForNetworkUnfriendlyLockedSelect(void)
-    virtual uint32_t IsReadyForNetworkUnfriendlyLockedSelect();
+    virtual bool IsReadyForNetworkUnfriendlyLockedSelect();
     // win1.41 00561980 mac 10131ae0 PuzzleGrain::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
-    virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+    virtual bool NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
     // win1.41 00561990 mac 10131b40 PuzzleGrain::GetReadyForNetworkUnfriendlyEndLockedSelect(void)
-    virtual uint32_t GetReadyForNetworkUnfriendlyEndLockedSelect();
+    virtual bool GetReadyForNetworkUnfriendlyEndLockedSelect();
     // win1.41 005619a0 mac 10131ba0 PuzzleGrain::IsReadyForNetworkUnfriendlyEndLockedSelect(void)
-    virtual uint32_t IsReadyForNetworkUnfriendlyEndLockedSelect();
+    virtual bool IsReadyForNetworkUnfriendlyEndLockedSelect();
     // win1.41 005619b0 mac 10131c00 PuzzleGrain::NetworkUnfriendlyEndLockedSelect(void)
-    virtual uint32_t NetworkUnfriendlyEndLockedSelect();
+    virtual bool NetworkUnfriendlyEndLockedSelect();
     // win1.41 005619c0 mac 10131c50 PuzzleGrain::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
-    virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+    virtual bool NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
     // win1.41 005619d0 mac 10131cb0 PuzzleGrain::ValidAsInterfaceTarget(void)
-    virtual uint32_t ValidAsInterfaceTarget();
+    virtual bool ValidAsInterfaceTarget();
     // win1.41 005619f0 mac 10131d60 PuzzleGrain::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 00561a00 mac 10131dc0 PuzzleGrain::InterfaceSetOutMagicHand(GInterfaceStatus *)
-    virtual uint32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
+    virtual bool InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
     // win1.41 005619e0 mac 10131d00 PuzzleGrain::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
     // win1.41 00561a40 mac 10131ec0 PuzzleGrain::EndPhysics(PhysicsObject *, bool)
@@ -548,9 +548,9 @@ public:
     // win1.41 00561ae0 mac 10131770 PuzzleMobileObject::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006dbf20 mac 10123290 PuzzleMobileObject::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006dbf80 mac 101231b0 PuzzleMobileObject::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00561ad0 mac 10131730 PuzzleMobileObject::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006dc510 mac 10122590 PuzzleMobileObject::GetImmersionTexture(void)
@@ -638,9 +638,9 @@ public:
     // win1.41 00561890 mac 101335e0 PuzzleTotem::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006da740 mac 10126150 PuzzleTotem::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006da7f0 mac 10126020 PuzzleTotem::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00561880 mac 101335a0 PuzzleTotem::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006da710 mac 10126270 PuzzleTotem::SetMaxHeight(float)
@@ -648,17 +648,17 @@ public:
     // win1.41 005618a0 mac 10133620 PuzzleTotem::GetMaxHeight(void)
     virtual float GetMaxHeight();
     // win1.41 006da5d0 mac 10126540 PuzzleTotem::ValidForLockedSelectProcess(GInterfaceStatus *)
-    virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
+    virtual bool ValidForLockedSelectProcess(GInterfaceStatus* param_1);
     // win1.41 006da8a0 mac 10125f60 PuzzleTotem::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
-    virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
+    virtual bool NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
     // win1.41 006da8e0 mac 10125eb0 PuzzleTotem::NetworkUnfriendlyStartLockedSelect(void)
-    virtual uint32_t NetworkUnfriendlyStartLockedSelect();
+    virtual bool NetworkUnfriendlyStartLockedSelect();
     // win1.41 006da970 mac 10125ba0 PuzzleTotem::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
-    virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+    virtual bool NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
     // win1.41 006da920 mac 10125e00 PuzzleTotem::NetworkUnfriendlyEndLockedSelect(void)
-    virtual uint32_t NetworkUnfriendlyEndLockedSelect();
+    virtual bool NetworkUnfriendlyEndLockedSelect();
     // win1.41 006da960 mac 10125da0 PuzzleTotem::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
-    virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+    virtual bool NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
     // win1.41 006da5f0 mac 101264e0 PuzzleTotem::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
     // win1.41 006da610 mac 10126420 PuzzleTotem::InterfaceTap(GInterfaceStatus *)

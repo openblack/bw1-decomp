@@ -41,15 +41,15 @@ public:
     // win1.41 005fa9b0 mac 103abec0 MagicFood::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005fab40 mac 103abf00 MagicFood::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 005fab00 mac 103abf90 MagicFood::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 005fa9a0 mac 103abe80 MagicFood::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005fa990 mac 103abe40 MagicFood::GetImpressiveType(void)
     virtual IMPRESSIVE_TYPE GetImpressiveType();
     // win1.41 004e4a20 mac 105e43b0 MagicFood::IsAFoodPileOutsideStoragePit(Creature *)
-    virtual uint32_t IsAFoodPileOutsideStoragePit(Creature* param_1);
+    virtual bool IsAFoodPileOutsideStoragePit(Creature* param_1);
     // win1.41 005faab0 mac 103ac020 MagicFood::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
 };

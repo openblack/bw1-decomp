@@ -22,12 +22,12 @@ class LH3DMeshedObject: public LH3DObject
 public:
     LH3DMesh* mesh; /* 0x7c */
 
-    // Static methods
+    // Non-virtual methods
 
     // win1.41 007f9d60 mac 10029180 LH3DMeshedObject::SetDrawWithGlobalAlpha(int) (this is fastcall, not thiscall)
-    static void SetDrawWithGlobalAlpha(LH3DMeshedObject* this, int value);
+    void SetDrawWithGlobalAlpha(int value);
     // win1.41 007f9fb0 mac 1000bf70 LH3DMeshedObject::GetDoorPos(LHPoint *) const (this is fastcall, not thiscall)
-    static bool GetDoorPos(LH3DMeshedObject* this, LHPoint* out_point);
+    bool GetDoorPos(LHPoint* out_point) const;
 
     // Constructors
 

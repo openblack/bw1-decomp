@@ -29,10 +29,10 @@ public:
     // win1.41 0062b340 mac 1039f9c0 MPFEChooseConnection::Destroy(void)
     virtual void Destroy();
 
-    // Static methods
+    // Non-virtual methods
 
     // win1.41 0062b030 mac 1039fa00 MPFEChooseConnection::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-    static void Init(MPFEChannelSelector* this, const void* edx, uint32_t param_1, uint32_t param_2, void* callback);
+    void Init(uint32_t param_1, uint32_t param_2, void (* callback)(int, SetupBox *, SetupControl *, int, int));
 };
 
 #else // __cplusplus

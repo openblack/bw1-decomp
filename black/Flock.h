@@ -26,6 +26,11 @@ class Living;
 struct LivingDLList;
 class Town;
 
+struct GFlockInfo
+{
+  uint8_t field_0x0;
+};
+
 // win1.41 00be9ee8 mac inlined Flock::`RTTI Type Descriptor'
 // win1.41 009ac4e0 mac inlined Flock::`RTTI Base Class Descriptor'
 // win1.41 009ac4f8 mac inlined Flock::`RTTI Base Class Array'
@@ -68,9 +73,9 @@ public:
     // win1.41 0052f910 mac 100e37a0 Flock::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00530930 mac 100e3880 Flock::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 005305a0 mac 100e40b0 Flock::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0052f900 mac 100e3770 Flock::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0052f8a0 mac 100e3580 Flock::GetCreatureBeliefType(void)
@@ -84,11 +89,11 @@ public:
     // win1.41 0052f8f0 mac 100e3710 Flock::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
     virtual bool IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
     // win1.41 0052f8c0 mac 100e3600 Flock::IsSuitableForCreatureActivity(void)
-    virtual uint32_t IsSuitableForCreatureActivity();
+    virtual bool IsSuitableForCreatureActivity();
     // win1.41 0052f860 mac 100e34b0 Flock::IsFlock( const(void))
-    virtual uint32_t IsFlock();
+    virtual bool IsFlock();
     // win1.41 0052f880 mac 100e3510 Flock::IsScriptContainer( const(void))
-    virtual uint32_t IsScriptContainer();
+    virtual bool IsScriptContainer();
     // win1.41 0052f890 mac 100e3550 Flock::GetText(void)
     virtual const char* GetText();
     // win1.41 00530490 mac 100e4a70 Flock::GetScriptObjectType(void)

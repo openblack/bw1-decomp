@@ -30,9 +30,9 @@ public:
     uint32_t field_0x64058;
     int32_t field_0x6405c;
     uint32_t field_0x64060;
-    FuncPtr(name='RPFollow__field_0x64064', call_type='__cdecl', result='void', args=['int', 'int'], arg_labels=['param_0', 'param_1'], decorated_name='RPFollow__field_0x64064', indirection_level=1) field_0x64064;
-    FuncPtr(name='RPFollow__field_0x64068', call_type='__cdecl', result='void', args=['int', 'float', 'float'], arg_labels=['param_0', 'param_1', 'param_2'], decorated_name='RPFollow__field_0x64068', indirection_level=1) field_0x64068;
-    FuncPtr(name='RPFollow__field_0x6406c', call_type='__cdecl', result='float', args=['int'], arg_labels=['param_0'], decorated_name='RPFollow__field_0x6406c', indirection_level=1) field_0x6406c;
+    void (__cdecl* field_0x64064)(int param_0, int param_1);
+    void (__cdecl* field_0x64068)(int param_0, float param_1, float param_2);
+    float (__cdecl* field_0x6406c)(int param_0);
     RouteNode* field_0x64070;
     Point2D field_0x64074;
     float field_0x6407c;
@@ -53,13 +53,13 @@ public:
     // Non-virtual methods
 
     // win1.41 00863ac0 mac 100aab50 RPFollow::Init(int, void (*)(int, int), void (*)(int, float, float), float (*)(int), int)
-    void Init(int param_1, void (__cdecl*)(int, int) param_2, void (__cdecl*)(int, float, float) param_3, float (__cdecl*)(int) param_4, int param_5);
+    void Init(int param_1, void (__cdecl* param_2)(int, int), void (__cdecl* param_3)(int, float, float), float (__cdecl* param_4)(int), int param_5);
     // win1.41 00863b70 mac 100aa690 RPFollow::SetDest(Point2D const &, float, float, float, float)
-    void SetDest(Point2D* param_1, float param_2, float param_3, float param_4, float param_5);
+    void SetDest(const Point2D& param_1, float param_2, float param_3, float param_4, float param_5);
     // win1.41 00864990 mac 100a95a0 RPFollow::MoveAlongRoute(void)
     void MoveAlongRoute();
     // win1.41 00864ba0 mac 100a92c0 RPFollow::FillPosAndHeading(Point2D &, float &, float)
-    void FillPosAndHeading(Point2D* param_1, float* param_2, float param_3);
+    void FillPosAndHeading(const Point2D& param_1, float& param_2, float param_3);
 };
 
 #else // __cplusplus

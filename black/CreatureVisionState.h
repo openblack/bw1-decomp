@@ -11,6 +11,21 @@
 
 #ifdef __cplusplus
 
+struct CreatureInterestingThingToLookAt
+{
+    uint32_t field_0x0;
+    uint32_t field_0x4;
+    uint32_t field_0x8;
+    MapCoords coords;
+    uint32_t field_0x18;
+    uint32_t field_0x1c;
+
+    // Constructors
+
+    // win1.41 004d1b90 mac 10242e40 CreatureInterestingThingToLookAt::CreatureInterestingThingToLookAt(void)
+    CreatureInterestingThingToLookAt();
+};
+
 // win1.41 009dd7e8 mac inlined CreatureVisionState::`RTTI Type Descriptor'
 // win1.41 009aa270 mac inlined CreatureVisionState::`RTTI Base Class Descriptor'
 // win1.41 009aa288 mac inlined CreatureVisionState::`RTTI Base Class Array'

@@ -49,15 +49,15 @@ public:
     // win1.41 00531320 mac 102b8870 Football::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005336e0 mac 102b89e0 Football::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 005332a0 mac 102b9230 Football::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00531310 mac 102b8830 Football::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00531180 mac 102bd4d0 Football::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
     // win1.41 00531280 mac 102b8610 Football::IsFootball(void)
-    virtual uint32_t IsFootball();
+    virtual bool IsFootball();
     // win1.41 00531e40 mac 102bc020 Football::ReduceLife(float, GPlayer *)
     virtual void ReduceLife(float param_1, GPlayer* param_2);
     // win1.41 00533e40 mac 102be320 Football::Process(void)
@@ -67,7 +67,7 @@ public:
     // win1.41 00530f80 mac 102bd510 Football::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 005312e0 mac 102b8760 Football::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 00531930 mac 102bcad0 Football::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 005312f0 mac 102b87a0 Football::CreatureMustAvoid(Creature *)

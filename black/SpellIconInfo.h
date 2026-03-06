@@ -34,9 +34,9 @@ public:
     // win1.41 00725fb0 mac 10525b60 GSpellIconInfo::_dt(void)
     virtual ~GSpellIconInfo();
     // win1.41 00725f40 mac 10525c70 GSpellIconInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 00725f30 mac 10524c10 GSpellIconInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
 };
 
 #else // __cplusplus

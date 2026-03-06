@@ -20,6 +20,11 @@ struct LHMatrix;
 struct LHPoint;
 class RPFollow;
 
+struct LH3DCreature_field_0x5184
+{
+  uint8_t field_0x0;
+};
+
 // win1.41 009d1078 mac inlined LH3DCreature::`RTTI Type Descriptor'
 // win1.41 009a9910 mac inlined LH3DCreature::`RTTI Base Class Descriptor'
 // win1.41 009a9928 mac inlined LH3DCreature::`RTTI Base Class Array'

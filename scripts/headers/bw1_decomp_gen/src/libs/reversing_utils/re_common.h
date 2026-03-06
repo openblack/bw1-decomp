@@ -2,6 +2,16 @@
 #define BW1_DECOMP_REVERSING_UTILS_COMMON_INCLUDED_H
 
 #include <stdint.h> /* For uint32_t */
+
+struct vec2u16
+{
+  uint16_t x, y;
+};
+
+#ifdef __cplusplus
+
+#else // __cplusplus
+
 #include <math.h> /* For fmaxf, fminf */
 
 struct HWND__; typedef struct HWND__ *HWND;
@@ -9,11 +19,6 @@ struct HINSTANCE__; typedef struct HINSTANCE__ *HINSTANCE;
 typedef struct _RTL_CRITICAL_SECTION RTL_CRITICAL_SECTION;
 
 typedef uint32_t bool32_t;
-
-struct vec2u16
-{
-  uint16_t x, y;
-};
 
 inline float clampf(float a, float minimum, float maximum) {
   return fminf(fmaxf(a, minimum), maximum);
@@ -30,5 +35,7 @@ inline int clampi(int a, int minimum, int maximum) {
     return maximum;
   return a;
 }
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_REVERSING_UTILS_COMMON_INCLUDED_H */

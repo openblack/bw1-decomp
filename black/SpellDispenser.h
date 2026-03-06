@@ -37,15 +37,15 @@ public:
     // win1.41 00722fa0 mac 1051ac90 SpellDispenser::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00722e80 mac 1051acf0 SpellDispenser::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00722d50 mac 1051aeb0 SpellDispenser::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 007226f0 mac 1051aa40 SpellDispenser::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007226d0 mac 1051a9b0 SpellDispenser::IsSpellDispenser(void)
-    virtual uint32_t IsSpellDispenser();
+    virtual bool IsSpellDispenser();
     // win1.41 007226c0 mac 1051a970 SpellDispenser::IsActive( const(void))
-    virtual uint32_t IsActive();
+    virtual bool IsActive() const;
     // win1.41 00722fb0 mac 1051ac40 SpellDispenser::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 00722a70 mac 1051b590 SpellDispenser::Process(void)

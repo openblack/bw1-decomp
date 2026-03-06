@@ -11,6 +11,16 @@
 
 #ifdef __cplusplus
 
+struct CameraHelpAccumulator
+{
+    uint8_t field_0x0[0x10c];
+
+    // Non-virtual methods
+
+    // win1.41 00448f20 mac 1019cd90 CameraHelpAccumulator::Reset(void)
+    void Reset();
+};
+
 // win1.41 00bf0b98 mac inlined HelpProfile::`RTTI Type Descriptor'
 // win1.41 009b1248 mac inlined HelpProfile::`RTTI Base Class Descriptor'
 // win1.41 009b1260 mac inlined HelpProfile::`RTTI Base Class Array'

@@ -66,9 +66,9 @@ public:
     // win1.41 0077f100 mac 105b4440 WorshipSpellIcon::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007801f0 mac 105b4690 WorshipSpellIcon::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0077ff80 mac 105b4bc0 WorshipSpellIcon::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0077f0f0 mac 105b4400 WorshipSpellIcon::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0077f0a0 mac 10381d20 WorshipSpellIcon::GetWorshipSite(void)
@@ -80,9 +80,9 @@ public:
     // win1.41 0077f290 mac 105b6e40 WorshipSpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
     // win1.41 0077f0b0 mac 105b42c0 WorshipSpellIcon::IsEffectReceiver(EffectValues *)
-    virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+    virtual bool IsEffectReceiver(EffectValues* param_1);
     // win1.41 0077f0d0 mac 105b4360 WorshipSpellIcon::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
     // Static methods
 
@@ -129,7 +129,7 @@ public:
     // win1.41 006709d0 mac inlined PrayerIcon::Process(void)
     virtual uint32_t Process();
     // win1.41 00670950 mac inlined PrayerIcon::GetMesh( const(void))
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 006709f0 mac inlined PrayerIcon::Draw(void)
     virtual void Draw();
 };

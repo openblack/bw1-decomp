@@ -30,7 +30,7 @@ public:
     // win1.41 0050b670 mac 102a8e60 GDanceInfo::_dt(void)
     virtual ~GDanceInfo();
     // win1.41 0050b600 mac 102aa810 GDanceInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

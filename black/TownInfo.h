@@ -50,7 +50,7 @@ public:
     // win1.41 0073fd80 mac inlined GTownInfo::GetDebugColor( const(LHColor *))
     virtual LHColor* GetDebugColor(LHColor* param_1);
     // win1.41 00738f70 mac 10545ba0 GTownInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

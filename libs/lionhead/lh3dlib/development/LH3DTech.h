@@ -30,6 +30,31 @@ struct InfoTransform
   float inv_aspect_sqr_hypo_inv_times_inv_aspect;
   float inv_aspect_sqr_hypo_inv;
 };
+
+#ifdef __cplusplus
+
+struct LH3DTech
+{
+    // win1.41 00819030 mac 100c0920 LH3DTech::UpdateViewPort(long, long)
+    static void UpdateViewPort(int param_1, int param_2);
+    // win1.41 00819390 mac 10be2a38 LH3DTech::ProjectPoint(LHPoint *, int *, int *, float *)
+    static uint32_t ProjectPoint(struct LHPoint* param_1, int* param_2, int* param_3, float* param_4);
+    // win1.41 008195b0 mac 10011b20 LH3DTech::ChangeFov(float)
+    static void ChangeFov(float fov);
+    // win1.41 00819690 mac 10011d80 LH3DTech::UpdateWorldToCamera(LHMatrix &, LHPoint &, LHPoint &, bool)
+    static void UpdateWorldToCamera(LHMatrix& param_1_00, LHPoint& param_2_00, LHPoint& param_1, bool param_2);
+    // win1.41 inlined mac 10093230 LH3DTech::GetDeltaTime(void)
+    static uint32_t GetDeltaTime();
+    // win1.41 00819920 mac 10034c10 LH3DTech::UpdateCamera(LHPoint const &, LHPoint const &)
+    static void UpdateCamera(const LHPoint& param_1, const LHPoint& param_2);
+    // win1.41 00818c60 mac 100c0a80 LH3DTech::RenderInitialization(long, long)
+    static void RenderInitialization(int param_0, int param_1);
+    // win1.41 0081c5c0 mac 100337d0 LH3DTech::Draw3DScreenTriangle(long, LHPoint *, LH3DColor *, float *, long, long *, LH3DMaterial *, int)
+    static void Draw3DScreenTriangle(uint32_t num_points, LHPoint* positions, LH3DColor* colors, float* uvs, uint32_t num_indices, uint32_t* indices, LH3DMaterial* material, uint32_t param_8);  
+};
+
+#else // __cplusplus
+
 static_assert(sizeof(struct InfoTransform) == 0x3c, "Data type is of wrong size");
 
 // win1.41 00819030 mac 100c0920 LH3DTech::UpdateViewPort(long, long)
@@ -48,6 +73,9 @@ void __fastcall UpdateCamera__8LH3DTechFRC7LHPointRC7LHPoint(const struct LHPoin
 void __cdecl RenderInitialization__8LH3DTechFll(int param_0, int param_1) asm("?RenderInitialization@LH3DTech@@SAXJJ@Z");
 // win1.41 0081c5c0 mac 100337d0 LH3DTech::Draw3DScreenTriangle(long, LHPoint *, LH3DColor *, float *, long, long *, LH3DMaterial *, int)
 void __fastcall Draw3DScreenTriangle__8LH3DTechFlP7LHPointP9LH3DColorPflPlP12LH3DMateriali(uint32_t num_points, struct LHPoint* positions, struct LH3DColor* colors, float* uvs, uint32_t num_indices, uint32_t* indices, struct LH3DMaterial* material, uint32_t param_8) asm("?Draw3DScreenTriangle@LH3DTech@@SAXJPAULHPoint@@PAULH3DColor@@PAMJPAJPAULH3DMaterial@@H@Z");
+
+#endif // __cplusplus
+
 // win1.41 0081bbd0 mac 100be300 Report3D(char const *,...)
 void __cdecl Report3D__FPCce(const char* fmt, ... );
 

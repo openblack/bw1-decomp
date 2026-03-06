@@ -21,9 +21,9 @@ public:
     // Static methods
 
     // win1.41 0063abb0 mac 103da2c0 Game3DObject::Create(LH3DObject::ObjectType)
-    static Game3DObject* Create(LH3DObject__ObjectType type);
+    static Game3DObject* Create(ObjectType type);
     // win1.41 0063ad80 mac 103d9ee0 Game3DObject::Create(MapCoords const &, LH3DObject::ObjectType, MESH_LIST, float, float)
-    static Game3DObject* Create(const MapCoords* coords, LH3DObject__ObjectType type, MESH_LIST mesh, float param_4, float param_5);
+    static Game3DObject* Create(const MapCoords* coords, ObjectType type, MESH_LIST mesh, float param_4, float param_5);
 
     // Non-virtual methods
 

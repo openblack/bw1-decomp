@@ -50,6 +50,23 @@ class TownDesireFlags;
 class Workshop;
 class WorshipSite;
 
+struct PlayerTownInteract
+{
+    uint32_t field_0x0;
+    float field_0x4;
+    float field_0x8;
+    uint32_t field_0xc;
+    float field_0x10;
+    uint32_t field_0x14[0xa];
+    EffectValues effect_values; /* 0x3c */
+    uint32_t field_0x7c;
+
+    // Constructors
+
+    // win1.41 0073e040 mac 1054fa10 PlayerTownInteract::PlayerTownInteract(void)
+    PlayerTownInteract();
+};
+
 // win1.41 009cfa40 mac inlined Town::`RTTI Type Descriptor'
 // win1.41 009b9a90 mac inlined Town::`RTTI Base Class Descriptor'
 // win1.41 009b9aa8 mac inlined Town::`RTTI Base Class Array'
@@ -94,33 +111,33 @@ public:
     uint32_t field_0x748;
     Abode* abode_0x74c;
     uint32_t field_0x750;
-    LHListHead__Abode abode_list;
+    LHListHead<Abode> abode_list;
     Town* next;
     uint32_t field_0x760;
     uint32_t field_0x764;
-    LHLinkedList__Villager homeless_list;
+    LHLinkedList<Villager> homeless_list;
     uint32_t field_0x770;
     uint32_t field_0x774;
-    LHListHead__TownSpellIcon spell_icon_list;
-    LHLinkedList__Field field_list; /* 0x780 */
-    LHLinkedList__FishFarm fish_farms;
-    LHListHead__BuildingSite building_site_list; /* 0x790 */
+    LHListHead<TownSpellIcon> spell_icon_list;
+    LHLinkedList<Field> field_list; /* 0x780 */
+    LHLinkedList<FishFarm> fish_farms;
+    LHListHead<BuildingSite> building_site_list; /* 0x790 */
     GBelief belief;
     uint32_t field_0x968;
     uint32_t field_0x96c;
     uint32_t field_0x970;
     uint32_t field_0x974;
     uint32_t field_0x978;
-    LHLinkedList__Object playthings;
+    LHLinkedList<Object> playthings;
     uint32_t field_0x984;
     uint32_t field_0x988;
     uint32_t field_0x98c;
     uint32_t field_0x990;
-    LHLinkedList__TownArtifact artifacts;
+    LHLinkedList<TownArtifact> artifacts;
     uint32_t field_0x99c;
     uint32_t field_0x9a0;
     TownCentre* town_centre;
-    LHListHead__PlannedMultiMapFixed planned_list;
+    LHListHead<PlannedMultiMapFixed> planned_list;
     TownDesireFlags* town_desire_flags[TOWN_DESIRE_INFO_LAST]; /* 0x9b0 */
     uint32_t field_0x9f4;
     uint32_t field_0x9f8;
@@ -162,9 +179,9 @@ public:
     // win1.41 007392a0 mac 105594a0 Town::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0073f450 mac 1054aa80 Town::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0073ed30 mac 1054c770 Town::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00739290 mac 10559470 Town::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007412e0 mac 10547990 Town::ResolveLoad(void)
@@ -178,9 +195,9 @@ public:
     // win1.41 007391d0 mac 10559100 Town::GetOrigin(void)
     virtual uint32_t GetOrigin();
     // win1.41 00739250 mac inlined Town::IsTown_0(void)
-    virtual bool IsTown_0();
+    virtual bool IsTown();
     // win1.41 00739220 mac inlined Town::IsTown_1(Creature *)
-    virtual bool IsTown_1(Creature* param_1);
+    virtual bool IsTown(Creature* param_1);
     // win1.41 004e47f0 mac 105e4b50 Town::IsActivityObjectWhichAngerAppliesTo(Creature *)
     virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
     // win1.41 00739230 mac 105592e0 Town::IsActivityObjectWhichCompassionAppliesTo(Creature *)
@@ -190,15 +207,15 @@ public:
     // win1.41 004e4750 mac 105e4c40 Town::IsTownBelongingToAnotherPlayer(Creature *)
     virtual bool IsTownBelongingToAnotherPlayer(Creature* param_1);
     // win1.41 00739260 mac 105593a0 Town::IsSuitableForCreatureActivity(void)
-    virtual uint32_t IsSuitableForCreatureActivity();
+    virtual bool IsSuitableForCreatureActivity();
     // win1.41 00739270 mac 105593f0 Town::CanBePlayedWithByCreature(Creature *)
-    virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
+    virtual bool CanBePlayedWithByCreature(Creature* param_1);
     // win1.41 0073c940 mac 1006fa90 Town::GetWorshipSite(void)
     virtual WorshipSite* GetWorshipSite();
     // win1.41 004e4140 mac 105e5e00 Town::IsTownBelongingToOtherPlayer(Creature *)
-    virtual uint32_t IsTownBelongingToOtherPlayer(Creature* param_1);
+    virtual bool IsTownBelongingToOtherPlayer(Creature* param_1);
     // win1.41 00739210 mac 105591b0 Town::IsScriptContainer( const(void))
-    virtual uint32_t IsScriptContainer();
+    virtual bool IsScriptContainer();
     // win1.41 00739280 mac 10559440 Town::GetText(void)
     virtual const char* GetText();
     // win1.41 00747f00 mac 10065180 Town::CalculateDesireForFood(void)
@@ -213,9 +230,9 @@ public:
     // win1.41 0073eac0 mac 1054e290 Town::AsssignTownFeature(void)
     static void AsssignTownFeature();
     // win1.41 007412f0 mac 100233e0 Town::FindClearArea(MapCoords &, MapCoords &, float, float, float, int (Object::)(void const *, void const *), Object *)
-    static bool FindClearArea(MapCoords* param_1, MapCoords* param_2, float param_3, float param_4, float param_5, bool (__fastcall*)(Object *) callback, int index, uint32_t param_8, uint32_t param_9, Object* obj);
+    static bool FindClearArea(MapCoords& param_1, MapCoords& param_2, float param_3, float param_4, float param_5, int (*Town::callback)(const void*, const void*), Object* obj);
     // win1.41 007413d0 mac 10038890 Town::CheckForClearArea(MapCoords &, float, int (Object::)(void const *, void const *), Object *)
-    static bool CheckForClearArea(MapCoords* param_1, float param_2, bool (__fastcall*)(Object *) callback, int index, uint32_t param_5, uint32_t param_6, Object* obj);
+    static bool CheckForClearArea(MapCoords& param_1, float param_2, int (*Town::callback)(const void*, const void*), Object* obj);
 
     // Constructors
 

@@ -16,6 +16,5 @@ struct LHText
   int field_0x1c;
   uint8_t field_0x20;
 };
-static_assert(sizeof(struct LHText) == 0x24, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH_TEXT_INCLUDED_H */

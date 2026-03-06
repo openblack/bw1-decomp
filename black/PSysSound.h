@@ -34,9 +34,9 @@ public:
     // win1.41 006d0f40 mac 10486980 PSysSound::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006d13a0 mac 10486b50 PSysSound::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006d14a0 mac 104869c0 PSysSound::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 006d0f30 mac 10486940 PSysSound::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

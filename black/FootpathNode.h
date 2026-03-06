@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "GameThing.h" /* For struct GameThing */
@@ -29,7 +30,7 @@ public:
     uint8_t field_0x14;
     MapCoords coords;
     GFootpathNode* next; /* 0x24 */
-    LHLinkedList__Living followers;
+    LHLinkedList<Living> followers;
 
     // Override methods
 
@@ -40,9 +41,9 @@ public:
     // win1.41 00534d60 mac 100ef030 GFootpathNode::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00538c10 mac 100e86f0 GFootpathNode::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& file);
     // win1.41 00538d70 mac 100e83f0 GFootpathNode::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& file);
     // win1.41 00534d50 mac 100eeff0 GFootpathNode::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00538ea0 mac 100e83b0 GFootpathNode::ResolveLoad(void)

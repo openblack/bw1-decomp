@@ -41,9 +41,9 @@ public:
     // win1.41 00561410 mac 10535800 GStreetLight::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00735160 mac 105358a0 GStreetLight::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00735140 mac 10535910 GStreetLight::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00561400 mac 105357c0 GStreetLight::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00735180 mac 10535840 GStreetLight::ResolveLoad(void)
@@ -51,7 +51,7 @@ public:
     // win1.41 00735110 mac 10535980 GStreetLight::GetDistanceFromObject(MapCoords const &)
     virtual float GetDistanceFromObject(const MapCoords* param_1);
     // win1.41 005613f0 mac 10535780 GStreetLight::IsStreetLight(void)
-    virtual uint32_t IsStreetLight();
+    virtual bool IsStreetLight();
     // win1.41 005613e0 mac 10535740 GStreetLight::GetText(void)
     virtual const char* GetText();
 };

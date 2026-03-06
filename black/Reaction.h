@@ -58,9 +58,9 @@ public:
     // win1.41 0055c7f0 mac 101342c0 Reaction::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006e4ba0 mac 10134400 Reaction::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006e4990 mac 10134810 Reaction::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055c7e0 mac 10134280 Reaction::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

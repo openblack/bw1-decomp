@@ -29,7 +29,7 @@ struct MapCoords;
 class GFootpathLink: public GameThing
 {
 public:
-    LHLinkedList__GFootpath footpath_list; /* 0x14 */
+    LHLinkedList<GFootpath> footpath_list; /* 0x14 */
 
     // Override methods
 
@@ -44,9 +44,9 @@ public:
     // win1.41 0050cae0 mac 100ef1d0 GFootpathLink::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005365a0 mac 100eb8e0 GFootpathLink::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual bool Load(GameOSFile& file);
     // win1.41 005364f0 mac 100ebc00 GFootpathLink::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0050cad0 mac 100ef190 GFootpathLink::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

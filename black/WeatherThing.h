@@ -38,9 +38,9 @@ public:
     // win1.41 0055df50 mac 105a3fa0 WeatherThing::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007747e0 mac 105a3fe0 WeatherThing::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 007745c0 mac 105a4300 WeatherThing::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055df40 mac 105a3f60 WeatherThing::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007742e0 mac 105a4be0 WeatherThing::SetPos(MapCoords const &)
@@ -48,7 +48,7 @@ public:
     // win1.41 00774580 mac 105a4680 WeatherThing::SetSpeedInMetres(float, int)
     virtual void SetSpeedInMetres(float param_1, int param_2);
     // win1.41 0055df10 mac 105a3ea0 WeatherThing::IsWeather( const(void))
-    virtual uint32_t IsWeather();
+    virtual bool IsWeather();
     // win1.41 0055df30 mac 105a3f20 WeatherThing::GetText(void)
     virtual const char* GetText();
     // win1.41 00774360 mac 105a4b40 WeatherThing::GetScriptObjectType(void)

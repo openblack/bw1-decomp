@@ -7,6 +7,47 @@
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
 #include <lionhead/lhlib/ver5.0/GJVector.h> /* For DECLARE_GJ_VECTOR */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Creature;
+
+struct CreatureReceiveSpell
+{
+    struct TPerSpellData
+    {
+      uint32_t field_0x0;
+      uint32_t field_0x4;
+      uint32_t field_0x8;
+      uint32_t field_0xc;
+      uint32_t field_0x10;
+      uint32_t field_0x14;
+    };
+    struct QueueData
+    {
+      uint8_t field_0x0;
+    };
+    Creature* creature; /* 0x0 */
+    TPerSpellData data[0x10];
+    GJVector<QueueData> queue_data; /* 0x184 */
+    uint8_t field_0x194[0x8];
+    LHPoint field_0x19c;
+    LHPoint field_0x1a8;
+    LHPoint field_0x1b4;
+    LHPoint field_0x1c0;
+    float field_0x1cc;
+    uint32_t field_0x1d0;
+    uint8_t field_0x1d4;
+
+    // Constructors
+
+    // win1.41 004f5240 mac 102802a0 CreatureReceiveSpell::CreatureReceiveSpell(Creature *)
+    CreatureReceiveSpell(Creature* creature);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Creature;
@@ -50,5 +91,7 @@ static_assert(sizeof(struct CreatureReceiveSpell) == 0x1d8, "Data type is of wro
 
 // win1.41 004f5240 mac 102802a0 CreatureReceiveSpell::CreatureReceiveSpell(Creature *)
 struct CreatureReceiveSpell* __fastcall __ct__20CreatureReceiveSpellFP8Creature(struct CreatureReceiveSpell* this, const void* edx, struct Creature* creature) asm("??0CreatureReceiveSpell@@QAE@PAVCreature@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_RECEIVE_SPELL_INCLUDED_H */

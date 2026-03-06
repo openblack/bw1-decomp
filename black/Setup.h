@@ -3,7 +3,38 @@
 
 #include <stdint.h> /* For uint32_t */
 
+#include <lionhead/lhlib/ver5.0/LHScript.h>
 #include "Script.h" /* For enum SCRIPT_FEATURE_COMMANDS */
+
+#ifdef __cplusplus
+
+struct LHOSFile;
+struct MapCell;
+struct MapCoords;
+
+struct GSetup
+{
+    // win1.41 00715180 mac 105091d0 GSetup::FeatureMapCommandProcess<c>(long, LHScriptPramX<c> *)
+    uint32_t FeatureMapCommandProcess(uint32_t op, LHScriptPramX<char>* script_param);
+    // win1.41 007180b0 mac 10508ff0 GSetup::LoadMapFeatures(char *)
+    static void LoadMapFeatures(char* map_path);
+    // win1.41 00718250 mac 10508f20 GSetup::GetScriptPos(char *)
+    static MapCoords GetScriptPos(char* str);
+    // win1.41 00715130 mac 1050c350 GSetup::GetCommandAsText(SCRIPT_FEATURE_COMMANDS)
+    static char* GetCommandAsText(SCRIPT_FEATURE_COMMANDS param_1);
+    // win1.41 00719610 mac 10507c70 GSetup::WriteToFile(void *, LHOSFile &, void *, unsigned long)
+    static uint32_t WriteToFile(void* param_1, LHOSFile& param_2, void* param_3, uint32_t param_4);
+    // win1.41 00719280 mac 10507ce0 GSetup::LoadTextScripts(void)
+    static int LoadTextScripts();
+    // win1.41 00715080 mac 1050c3d0 GSetup::LoadMapScript(void)
+    static int LoadMapScript();
+    // win1.41 00718330 mac 10508550 GSetup::SaveAllMap(char *)
+    static int SaveAllMap(char* param_1);
+    // win1.41 00718870 mac 10508160 GSetup::SaveMapCell(LHOSFile &, MapCell *, unsigned long &, unsigned long &, unsigned long &, unsigned long &, unsigned long &, MapCoords const &)
+    static void SaveMapCell(LHOSFile& param_1, MapCell* param_2, uint32_t& param_3, uint32_t& param_4, uint32_t& param_5, uint32_t& param_6, uint32_t& param_7, const MapCoords& param_8);
+};
+
+#else // __cplusplus
 
 // Forward Declares
 
@@ -31,5 +62,7 @@ int __cdecl LoadMapScript__6GSetupFv(struct GSetup* this) asm("?LoadMapScript@GS
 int __cdecl SaveAllMap__6GSetupFPc(struct GSetup* this, char* param_1) asm("?SaveAllMap@GSetup@@QAEHPAD@Z");
 // win1.41 00718870 mac 10508160 GSetup::SaveMapCell(LHOSFile &, MapCell *, unsigned long &, unsigned long &, unsigned long &, unsigned long &, unsigned long &, MapCoords const &)
 void __cdecl SaveMapCell__6GSetupFR8LHOSFileP7MapCellRUlRUlRUlRUlRUlRC9MapCoords(struct GSetup* this, struct LHOSFile* param_1, struct MapCell* param_2, unsigned long* param_3, unsigned long* param_4, unsigned long* param_5, unsigned long* param_6, unsigned long* param_7, const struct MapCoords* param_8) asm("?SaveMapCell@GSetup@@QAEXAAVLHOSFile@@PAUMapCell@@AAK2222ABUMapCoords@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_INCLUDED_H */

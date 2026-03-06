@@ -3,6 +3,21 @@
 
 #include <assert.h> /* For static_assert */
 
+#ifdef __cplusplus
+
+struct LHCoord
+{
+    int x; /* 0x0 */
+    int y;
+
+    // Constructors
+
+    // win1.41 inlined mac 1006ebc0 LHCoord::LHCoord(LHCoord const &)
+    LHCoord(const LHCoord* other);
+};
+
+#else // __cplusplus
+
 struct LHCoord
 {
   int x;  /* 0x0 */
@@ -25,5 +40,7 @@ inline void __fastcall __ct__7LHCoordFRC7LHCoord(struct LHCoord* this, const voi
   : "eax", "ecx", "memory"
   );
 }
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_COORD_INCLUDED_H */

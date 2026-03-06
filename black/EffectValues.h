@@ -17,6 +17,11 @@
 class GPlayer;
 class GameThing;
 
+struct EffectNumbers
+{
+  float values[EFFECT_TYPE_LAST];  /* 0x0 */
+};
+
 // win1.41 00be9678 mac inlined EffectValues::`RTTI Type Descriptor'
 // win1.41 009abf70 mac inlined EffectValues::`RTTI Base Class Descriptor'
 // win1.41 009abf88 mac inlined EffectValues::`RTTI Base Class Array'

@@ -56,7 +56,7 @@ public:
     uint8_t field_0xcc[0xc];
     int field_0xd8;
     WorshipTotem* totem;
-    LHListHead__WorshipSpellIcon icon_list; /* 0xe0 */
+    LHListHead<WorshipSpellIcon> icon_list; /* 0xe0 */
     uint8_t field_0xe8[0x2c];
     float field_0x114;
     float field_0x118;
@@ -83,9 +83,9 @@ public:
     // win1.41 0077cd70 mac 105aef50 WorshipSite::GetShowNeedsPos(unsigned long, MapCoords *)
     virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
     // win1.41 0077d700 mac 105acc40 WorshipSite::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0077d2f0 mac 105ad890 WorshipSite::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055dcd0 mac 105b3fc0 WorshipSite::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0077daf0 mac 105acbf0 WorshipSite::ResolveLoad(void)
@@ -95,13 +95,13 @@ public:
     // win1.41 0055dc30 mac inlined WorshipSite::GetInteractPos(LHPoint *)
     virtual void GetInteractPos(LHPoint* param_1);
     // win1.41 0055dc80 mac 105b3e50 WorshipSite::IsSuitableForCreatureAction(void)
-    virtual uint32_t IsSuitableForCreatureAction();
+    virtual bool IsSuitableForCreatureAction();
     // win1.41 004e4b60 mac 105e3fa0 WorshipSite::CanHaveMagicFoodCastOnMe(Creature *)
-    virtual uint32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
+    virtual bool CanHaveMagicFoodCastOnMe(Creature* param_1);
     // win1.41 0055dca0 mac inlined WorshipSite::IsWorshipSite_1(void)
-    virtual uint32_t IsWorshipSite_1();
+    virtual bool IsWorshipSite();
     // win1.41 0055dc90 mac inlined WorshipSite::IsWorshipSite_0(Creature *)
-    virtual uint32_t IsWorshipSite_0(Creature* param_1);
+    virtual bool IsWorshipSite(Creature* param_1);
     // win1.41 0055dcb0 mac 105b3f30 WorshipSite::GetWorshipSite(void)
     virtual WorshipSite* GetWorshipSite();
     // win1.41 0077c310 mac 105b0430 WorshipSite::CalculateDesireForFood(void)
@@ -121,7 +121,7 @@ public:
     // win1.41 0077b1d0 mac 105b2440 WorshipSite::Process(void)
     virtual uint32_t Process();
     // win1.41 0055dcc0 mac 105b3f70 WorshipSite::GetMesh( const(void))
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 005193d0 mac 100c7a80 WorshipSite::Draw(void)
     virtual void Draw();
     // win1.41 0077de70 mac 105ac230 WorshipSite::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
@@ -143,11 +143,11 @@ public:
     // win1.41 0077ae30 mac 105b2cf0 WorshipSite::GetInspectObjectPos(Villager *, MapCoords *)
     virtual bool GetInspectObjectPos(Villager* param_1, MapCoords* param_2);
     // win1.41 0077cc90 mac 105aefc0 WorshipSite::GetSpecialPos(unsigned long, MapCoords *)
-    virtual uint32_t GetSpecialPos(uint32_t param_1, MapCoords* param_2);
+    virtual bool GetSpecialPos(uint32_t param_1, MapCoords* param_2);
     // win1.41 0077d000 mac 105ae860 WorshipSite::GetObjectCollide(void)
     virtual uint32_t GetObjectCollide();
     // win1.41 0077c120 mac 105b0620 WorshipSite::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 0077dc90 mac 105ac5f0 WorshipSite::GetNearestEdgeOfObject(Object *)
     virtual void GetNearestEdgeOfObject(Object* param_1);
     // win1.41 0077e460 mac inlined WorshipSite::GetResourceDropPosForComputerPlayer(MapCoords *)

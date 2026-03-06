@@ -42,25 +42,25 @@ public:
     // win1.41 0055ecc0 mac 10423d80 GJPSysInterface::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006944d0 mac 1041dae0 GJPSysInterface::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006cb060 mac 10485b50 GJPSysInterface::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055ecb0 mac 10423d40 GJPSysInterface::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006736b0 mac inlined GJPSysInterface::Process__1(PSysProcessInfo *const, unsigned int)
-    virtual uint32_t Process_1(const PSysProcessInfo* param_1, uint32_t param_2);
+    virtual uint32_t Process(const PSysProcessInfo* param_1, uint32_t param_2);
     // win1.41 00673690 mac inlined GJPSysInterface::Process(PSysProcessInfo *)
-    virtual void Process_2(PSysProcessInfo* param_1);
+    virtual void Process(PSysProcessInfo* param_1);
     // win1.41 0055eda0 mac inlined GJPSysInterface::Draw(float, bool)
-    virtual void Draw_1(float param_1, bool param_2);
+    virtual void Draw(float param_1, bool param_2);
     // win1.41 00673700 mac inlined GJPSysInterface::Draw(bool)
-    virtual void Draw_2(bool param_1);
+    virtual void Draw(bool param_1);
     // win1.41 0055edc0 mac 10026de0 GJPSysInterface::AddDrawing(float, LHPoint const &)
     virtual void AddDrawing(float param_1, const LHPoint* param_2);
     // win1.41 0055ed80 mac inlined GJPSysInterface::AddTarget__1(LHPoint const &)
-    virtual void AddTarget_1(const LHPoint* param_1);
+    virtual void AddTarget(const LHPoint& param_1);
     // win1.41 0055ed60 mac inlined GJPSysInterface::AddTarget(GameThing *)
-    virtual void AddTarget_2(GameThing* param_1);
+    virtual void AddTarget(GameThing* param_1);
     // win1.41 0055ecd0 mac 100a0c00 GJPSysInterface::CloseDown(void)
     virtual void CloseDown();
     // win1.41 0055ed30 mac 10017fc0 GJPSysInterface::SetMagnitude(float)

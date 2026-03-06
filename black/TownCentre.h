@@ -60,9 +60,9 @@ public:
     // win1.41 0055dba0 mac 1055bf20 TownCentre::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00744880 mac 10559dc0 TownCentre::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00744830 mac 10559e60 TownCentre::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055db90 mac 1055bee0 TownCentre::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007448c0 mac 10559d40 TownCentre::ResolveLoad(void)
@@ -70,13 +70,13 @@ public:
     // win1.41 007449e0 mac inlined TownCentre::GetArrivePos(MapCoords *)
     virtual MapCoords* GetArrivePos(MapCoords* param_1);
     // win1.41 0055db60 mac 1055be20 TownCentre::IsCastShadowAtNight(void)
-    virtual uint32_t IsCastShadowAtNight();
+    virtual bool IsCastShadowAtNight();
     // win1.41 0055db70 mac 1055be60 TownCentre::IsTownCentre(void)
-    virtual uint32_t IsTownCentre();
+    virtual bool IsTownCentre();
     // win1.41 0055db40 mac 1055bd90 TownCentre::CanActAsAContainer(Creature *)
-    virtual uint32_t CanActAsAContainer(Creature* param_1);
+    virtual bool CanActAsAContainer(Creature* param_1);
     // win1.41 0055db50 mac 1055bde0 TownCentre::IsStoragePit(Creature *)
-    virtual uint32_t IsStoragePit(Creature* param_1);
+    virtual bool IsStoragePit(Creature* param_1);
     // win1.41 007445d0 mac 10559f30 TownCentre::ReduceLife(float, GPlayer *)
     virtual void ReduceLife(float param_1, GPlayer* param_2);
     // win1.41 00744320 mac 1055a570 TownCentre::IncreaseLife(float)
@@ -90,7 +90,7 @@ public:
     // win1.41 00743cf0 mac 1055b3c0 TownCentre::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
     // win1.41 0055db20 mac 1055bd00 TownCentre::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 0055db10 mac 1055bcb0 TownCentre::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
     // win1.41 00743bc0 mac 1055b860 TownCentre::InteractsWithPhysicsObjects(void)
@@ -98,7 +98,7 @@ public:
     // win1.41 00744380 mac 1055a500 TownCentre::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 00744140 mac 1055a800 TownCentre::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
     // win1.41 00744940 mac inlined TownCentre::GetDoorPos(MapCoords *)
     virtual MapCoords* GetDoorPos(MapCoords* param_1);
     // win1.41 007443a0 mac 1055a470 TownCentre::AddToPlayer(void)
@@ -126,7 +126,7 @@ public:
     // Constructors
 
     // win1.41 00743a60 mac 1055bb20 TownCentre::TownCentre(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
-    TownCentre(const MapCoords* coords, const GAbodeInfo* info, Town* town, float param_4, float param_5, float param_6, int param_7);
+    TownCentre(const MapCoords& coords, const GAbodeInfo* info, Town* town, float param_4, float param_5, float param_6, int param_7);
 
     // Non-virtual methods
 

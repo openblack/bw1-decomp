@@ -30,6 +30,17 @@
 class Creature;
 class GameThingWithPos;
 
+struct CreatureInnatePersonality
+{
+  float field_0x0;
+  float field_0x4;
+  float field_0x8;
+  float field_0xc;
+  float field_0x10;
+  float field_0x14;
+  float field_0x18[0x3];
+};
+
 // win1.41 009dd858 mac inlined CreatureMental::`RTTI Type Descriptor'
 // win1.41 009aa310 mac inlined CreatureMental::`RTTI Base Class Descriptor'
 // win1.41 009aa328 mac inlined CreatureMental::`RTTI Base Class Array'

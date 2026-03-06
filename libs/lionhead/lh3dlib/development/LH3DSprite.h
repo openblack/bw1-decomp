@@ -7,6 +7,61 @@
 
 #include "LHPoint.h" /* For struct LHPoint */
 
+#ifdef __cplusplus
+
+struct LH3DSprite
+{
+    LHPoint pos; /* 0x0 */
+    float field_0xc;
+    float field_0x10;
+    float angle;
+    float field_0x18;
+    float field_0x1c;
+    float field_0x20;
+    float field_0x24;
+    uint32_t field_0x28;
+    float field_0x2c;
+    uint8_t field_0x30;
+    uint8_t field_0x31;
+    uint8_t field_0x32;
+    uint8_t field_0x33;
+
+    // Static methods
+
+    // win1.41 008404a0 mac 100b64f0 LH3DSprite::Create(long, int)
+    static LH3DSprite* Create(int param_1, int param_2);
+
+    // Non-virtual methods
+
+    // win1.41 008404f0 mac 1000c7c0 LH3DSprite::SetToZero(void)
+    void SetToZero();
+    // win1.41 00840520 mac 100b6440 LH3DSprite::Release(void)
+    void Release();
+    // win1.41 00840530 mac 1002a870 LH3DSprite::Draw(void)
+    void Draw();
+};
+
+struct LHSprite
+{
+  union Texels
+  {
+    uint16_t _16;
+    uint8_t _24[0x3];
+  };
+  uint16_t field_0x0;
+  uint16_t field_0x2;
+  Texels* texels;
+};
+
+struct LHSpriteList
+{
+  bool initialized;  /* 0x0 */
+  LHSprite* payload;
+  int32_t field_0x8;
+};
+
+#else // __cplusplus
+
 struct LH3DSprite
 {
   struct LHPoint pos;  /* 0x0 */
@@ -62,5 +117,7 @@ struct LHSpriteList
   int32_t field_0x8;
 };
 static_assert(sizeof(struct LHSpriteList) == 0xc, "Data type is of wrong size");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_SPRITE_INCLUDED_H */

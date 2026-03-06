@@ -931,6 +931,7 @@ target_compile_options(common_compile_options INTERFACE
 target_include_directories(common_compile_options
     INTERFACE
         $<IF:$<COMPILE_LANGUAGE:C>,${LLVM_BINARIES_DIR}/../include,>
+        $<IF:$<COMPILE_LANGUAGE:CXX>,${CMAKE_CURRENT_SOURCE_DIR}/libs/reversing_utils/stdlib_compat,>
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}/black

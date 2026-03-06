@@ -31,6 +31,14 @@ class GCamera;
 class CameraModeNew3: public CameraMode
 {
 public:
+    enum fight_status_t
+    {
+      CameraModeNew3_fight_status_t_0x0 = 0x0,
+      CameraModeNew3_fight_status_t_0x1 = 0x1,
+      CameraModeNew3_fight_status_t_0x2 = 0x2,
+      _CameraModeNew3_fight_status_t_COUNT = 0x3
+    };
+
     uint32_t field_0x8;
     LHPoint origin;
     LHPoint heading; /* 0x18 */
@@ -49,7 +57,7 @@ public:
     float fight_distance;
     int fight_time_left;
     int time_in_arena; /* 0x60 */
-    CameraModeNew3_fight_status_t fight_status;
+    fight_status_t fight_status;
     LHPoint field_0x68;
     float field_0x74;
     float elapsed_time;

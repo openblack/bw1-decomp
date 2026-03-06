@@ -34,7 +34,7 @@ public:
     // win1.41 0041f0b0 mac 10171400 Vulture::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0041f0d0 mac 10171480 Vulture::CanBeFrighteningToCreature(Creature *)
-    virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
 };
 
 #else // __cplusplus

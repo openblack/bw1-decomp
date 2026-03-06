@@ -28,7 +28,7 @@ public:
     // win1.41 0066cc40 mac 10117210 GPotInfo::_dt(void)
     virtual ~GPotInfo();
     // win1.41 0066cbd0 mac 1011d400 GPotInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

@@ -65,31 +65,6 @@ public:
     virtual void KeyDown(LHKey key, LHKeyMod mod);
     // win1.41 00409390 mac 105049b0 SetupControl::Char(int)
     virtual void Char(int character);
-    // win1.41 004093a0 mac 100c48e0 SetupControl::~SetupControl(bool)
-    virtual ~SetupControl(); /* 0x30 */
-
-    // Override methods
-
-    // win1.41 00409300 mac 105a3830 SetupControl::Hide(bool)
-    virtual void Hide(bool hidden);
-    // win1.41 00409180 mac 1032c7e0 SetupControl::SetFocus(bool)
-    virtual void SetFocus(bool focus);
-    // win1.41 00409310 mac 10310540 SetupControl::HitTest(int, int)
-    virtual bool HitTest(int x, int y);
-    // win1.41 00409340 mac inlined SetupControl::Drag(int, int)
-    virtual void Drag(int x, int y);
-    // win1.41 00409350 mac 100a6190 SetupControl::MouseDown(int, int, bool)
-    virtual void MouseDown(int x, int y, bool param_3);
-    // win1.41 00409360 mac 104faf30 SetupControl::MouseUp(int, int, bool)
-    virtual void MouseUp(int x, int y, bool param_3);
-    // win1.41 00409370 mac 103e3120 SetupControl::Click(int, int)
-    virtual void Click(int x, int y);
-    // win1.41 00409380 mac 100d4e40 SetupControl::KeyDown(int, int)
-    virtual void KeyDown(LHKey key, LHKeyMod mod);
-    // win1.41 00409390 mac 105049b0 SetupControl::Char(int)
-    virtual void Char(int character);
-    // win1.41 004093a0 mac 100c48e0 SetupControl::~SetupControl(bool)
-    virtual ~SetupControl();
 
     // Constructors
 

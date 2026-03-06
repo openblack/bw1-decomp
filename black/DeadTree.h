@@ -52,17 +52,17 @@ public:
     // win1.41 0071be30 mac 1050fb30 DeadTree::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // win1.41 00511630 mac 100c1a50 DeadTree::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 005115c0 mac 100c1b30 DeadTree::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 005109e0 mac 100c4120 DeadTree::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005109d0 mac inlined DeadTree::IsRock_0(void)
-    virtual uint32_t IsRock_0();
+    virtual bool IsRock();
     // win1.41 00510980 mac 100c0e80 DeadTree::IsAnyKindOfTree(void)
-    virtual uint32_t IsAnyKindOfTree();
+    virtual bool IsAnyKindOfTree();
     // win1.41 00510990 mac 100c0ec0 DeadTree::IsDeadTree(void)
-    virtual uint32_t IsDeadTree();
+    virtual bool IsDeadTree();
     // win1.41 005115b0 mac 100c1c10 DeadTree::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 005110d0 mac 100c2890 DeadTree::GetHoldType(void)
@@ -72,7 +72,7 @@ public:
     // win1.41 005110f0 mac 100c27d0 DeadTree::GetHoldLoweringMultiplier(void)
     virtual float GetHoldLoweringMultiplier();
     // win1.41 005109c0 mac 100c0fa0 DeadTree::HandShouldFeelWithMeshIntersect(void)
-    virtual uint32_t HandShouldFeelWithMeshIntersect();
+    virtual bool HandShouldFeelWithMeshIntersect();
     // win1.41 00510ce0 mac inlined DeadTree::GetDefaultFireCentrePos(LHPoint *)
     virtual LHPoint* GetDefaultFireCentrePos(LHPoint* param_1);
     // win1.41 00510e10 mac 100c2f40 DeadTree::GetDefaultFireRadius(void)
@@ -124,7 +124,7 @@ public:
     // win1.41 00511a20 mac 100c10e0 DeadTree::GetCarriedTreeType(void)
     virtual uint32_t GetCarriedTreeType();
     // win1.41 00511430 mac 100c1cd0 DeadTree::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 00510970 mac 100c0e20 DeadTree::GetInHandImmersionTexture(void)
     virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 };

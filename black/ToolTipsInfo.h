@@ -27,7 +27,7 @@ public:
     // win1.41 005c9a40 mac 10354310 GToolTipsInfo::_dt(void)
     virtual ~GToolTipsInfo();
     // win1.41 005c99e0 mac 10354720 GToolTipsInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

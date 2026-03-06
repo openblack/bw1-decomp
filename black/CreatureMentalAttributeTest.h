@@ -13,7 +13,80 @@
 #include "CreatureLearning.h" /* For struct CreatureLearningEpisode */
 #include "CreatureLessonChooser.h" /* For _LESSON_TYPE_COUNT */
 
+enum DECISION_TREE_TYPE
+{
+  DECISION_TREE_TYPE_0x0 = 0x0,
+  _DECISION_TREE_TYPE_COUNT = 0x1
+};
+
 #ifdef __cplusplus
+
+struct AttributeTest
+{
+    LHLinkedList<CreatureLearningEpisode> episodes; /* 0x0 */
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+    uint32_t field_0x10;
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    ATTRIBUTE_TYPE attribute_stack[0x18];
+    uint32_t field_0x7c;
+    uint32_t field_0x80;
+    uint32_t field_0x84;
+    uint32_t field_0x88;
+    uint32_t field_0x8c;
+    uint32_t field_0x90;
+
+    // Constructors
+
+    // win1.41 004d4c20 mac 1024fa20 AttributeTest::AttributeTest(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
+    AttributeTest(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
+};
+
+struct DecisionTreeNode
+{
+  struct AttributeTest* tests[0x2];  /* 0x0 */
+};
+
+struct DecisionTree
+{
+    DecisionTreeNode root; /* 0x0 */
+
+    // Constructors
+
+    // win1.41 004d4380 mac 102506c0 DecisionTree::DecisionTree(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
+    DecisionTree(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
+};
+
+struct DecisionTreeAgenda
+{
+    DECISION_TREE_TYPE tree_type; /* 0x0 */
+    CREATURE_DESIRES creature_desires;
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+    uint32_t field_0x10;
+    DecisionTree trees[0x2];
+
+    // Constructors
+
+    // win1.41 004d43f0 mac 102505c0 DecisionTreeAgenda::DecisionTreeAgenda(DECISION_TREE_TYPE, CREATURE_DESIRES)
+    DecisionTreeAgenda(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire);
+};
+
+struct DecisionTreeAgendas
+{
+  struct DecisionTreeAgenda* contents[0x28];  /* 0x0 */
+};
+
+struct DecisionTreeCollection
+{
+    DecisionTreeAgendas agendas[_LESSON_TYPE_COUNT]; /* 0x0 */
+
+    // Constructors
+
+    // win1.41 004d7220 mac 1024c150 DecisionTreeCollection::DecisionTreeCollection(void)
+    DecisionTreeCollection();
+};
 
 // win1.41 009dd3b8 mac inlined Attribute::`RTTI Type Descriptor'
 // win1.41 009a9ff0 mac inlined Attribute::`RTTI Base Class Descriptor'
@@ -353,11 +426,6 @@ public:
 
 #else // __cplusplus
 
-enum DECISION_TREE_TYPE
-{
-  DECISION_TREE_TYPE_0x0 = 0x0,
-  _DECISION_TREE_TYPE_COUNT = 0x1
-};
 static_assert(sizeof(enum DECISION_TREE_TYPE) == 0x4, "Data type is of wrong size");
 
 static const char* DECISION_TREE_TYPE_strs[_DECISION_TREE_TYPE_COUNT] = {

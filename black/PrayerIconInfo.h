@@ -32,7 +32,7 @@ public:
     // win1.41 00670770 mac 1011e8e0 GPrayerIconInfo::_dt(void)
     virtual ~GPrayerIconInfo();
     // win1.41 00670720 mac 1011eb60 GPrayerIconInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

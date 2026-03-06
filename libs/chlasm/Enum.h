@@ -2938,4 +2938,6 @@ enum     LOADER_VERSIONS
     LOADER_VERSIONS_LAST                            =  3 ,
 };
 
+enum FOOD_TYPE;
+
 #endif

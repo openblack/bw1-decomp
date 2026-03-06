@@ -47,13 +47,6 @@ public:
 
     // Virtual functions
 
-    virtual void SetSize(); /* 0x85c */
-    virtual bool IsPartOfStructure(); /* 0x860 */
-    virtual void SetSpeedUp(int speed);
-    virtual void SetMultiMapFixed(MultiMapFixed* multiMapFixed);
-
-    // Override methods
-
     // win1.41 0055d5c0 mac 1011c9c0 Pot::_dt(void)
     virtual ~Pot();
     // win1.41 0066d110 mac 1011c930 Pot::ToBeDeleted(int)
@@ -75,9 +68,9 @@ public:
     // win1.41 0071bde0 mac 1050fbf0 Pot::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // win1.41 0066d820 mac 1011b6c0 Pot::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& file);
     // win1.41 0066d730 mac 1011b830 Pot::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& file);
     // win1.41 0055d5a0 mac 10116350 Pot::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055d580 mac 101162d0 Pot::GetCreatureBeliefType(void)
@@ -85,11 +78,11 @@ public:
     // win1.41 0066f540 mac 10116750 Pot::GetOverwriteInteractableToolTip(void)
     virtual uint32_t GetOverwriteInteractableToolTip();
     // win1.41 0055d4e0 mac 1000ea20 Pot::IsPoisoned(void)
-    virtual uint32_t IsPoisoned();
+    virtual bool IsPoisoned();
     // win1.41 0055d4f0 mac 101161d0 Pot::IsSpeedUp(void)
-    virtual uint32_t IsSpeedUp();
+    virtual bool IsSpeedUp();
     // win1.41 0055d500 mac 10116210 Pot::IsPot(void)
-    virtual uint32_t IsPot();
+    virtual bool IsPot();
     // win1.41 0066f530 mac 101167d0 Pot::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 0051bb70 mac 100c5290 Pot::Draw(void)
@@ -119,7 +112,7 @@ public:
     // win1.41 0066d6d0 mac 1011ba60 Pot::EndOnFire(void)
     virtual void EndOnFire();
     // win1.41 0066d710 mac 1011b9b0 Pot::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 0066dd50 mac 1011aae0 Pot::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
     // win1.41 0066ddd0 mac 1011a930 Pot::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
@@ -127,7 +120,7 @@ public:
     // win1.41 0066de70 mac 1011a7e0 Pot::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
     virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2, GestureSystemPacketData* param_3);
     // win1.41 0066d650 mac 1011bcb0 Pot::IsEffectReceiver(EffectValues *)
-    virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+    virtual bool IsEffectReceiver(EffectValues* param_1);
     // win1.41 0066df00 mac 1011a620 Pot::InitialisePhysicsFromHand(LHPoint &, LHPoint &, GInterfaceStatus *, Object *, int)
     virtual uint32_t InitialisePhysicsFromHand(LHPoint* param_1, LHPoint* param_2, GInterfaceStatus* param_3, Object* param_4, int param_5);
     // win1.41 0066cef0 mac 1011cd80 Pot::GetPhysicsConstantsType(void)
@@ -141,7 +134,7 @@ public:
     // win1.41 0066e8f0 mac 10118e10 Pot::CanBecomeAPhysicsObject(void)
     virtual bool CanBecomeAPhysicsObject();
     // win1.41 0066d550 mac 1011bd00 Pot::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 0055d590 mac 10116310 Pot::IsAPotFromABuildingSite(void)
     virtual bool IsAPotFromABuildingSite();
 

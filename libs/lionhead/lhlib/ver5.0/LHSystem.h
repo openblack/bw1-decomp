@@ -5,6 +5,7 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 #include <uchar.h> /* For char16_t */
+#include <wchar.h> /* For wchar_t */
 
 #include <lionhead/lh3dlib/development/LHText.h> /* For struct LHText */
 #include <reversing_utils/re_common.h> /* For HINSTANCE, HWND, bool32_t */
@@ -13,6 +14,111 @@
 #include "LHMouse.h" /* For struct LHMouse */
 #include "LHScreen.h" /* For struct LHScreen */
 #include "LHScript.h" /* For struct LHScriptX_c_ */
+
+#ifdef __cplusplus
+
+namespace slim {
+
+struct TbIME_field_0x0_t
+{
+  uint32_t field_0x0;
+  uint32_t field_0x4;
+  char16_t field_0x8[0x100];
+  uint8_t field_0x208[0x618];
+  HWND field_0x820;
+  uint8_t field_0x824;
+  HIMC field_0x828;
+  uint32_t field_0x82c;
+  uint32_t field_0x830;
+  uint8_t field_0x834[0x100];
+  uint32_t field_0x934;
+  uint32_t field_0x938;
+  uint32_t field_0x93c;
+  uint32_t select_idx;  /* 0x940 */
+  uint8_t field_0x944;
+  uint32_t field_0x948;
+  uint32_t field_0x94c;
+  uint32_t field_0x950;
+  uint32_t field_0x954;
+  bool field_0x958;
+  uint32_t field_0x95c;
+};
+
+struct TbIME
+{
+    TbIME_field_0x0_t* field_0x0;
+
+    // Non-virtual methods
+
+    // win1.41 007f3d00 mac 101704a0 slim::TbIME::Activate(void* )
+    void Activate(HWND param_1);
+    // win1.41 007f3d10 mac 10170460 slim::TbIME::UnActivate(void)
+    void UnActivate();
+    // win1.41 007f3d50 mac 1061ec14 slim::TbIME::Composition_Get( (void))
+    wchar_t* Composition_Get();
+    // win1.41 007f3dc0 mac 1061e884 slim::TbIME::CandidateList_GetSelectIdx( (void)
+    uint32_t CandidateList_GetSelectIdx();
+    // win1.41 007f3de0 mac 1061e89c slim::TbIME::CandidateList_SetViewWindow( (unsigned int, unsigned int, unsigned int))
+    void CandidateList_SetViewWindow(uint32_t param_1, uint32_t param_2, uint32_t idx);
+};
+} // namespace slim
+
+struct LHSystem
+{
+  HINSTANCE instance;  /* 0x0 */
+  uint32_t field_0x4;
+  uint32_t field_0x8;
+  bool terminating;
+};
+
+struct FrameInfoLinkedList
+{
+  uint32_t field_0x0;
+  uint32_t field_0x4;
+};
+
+struct LHConvert
+{
+  uint8_t field_0x0[0x84];
+  struct FrameInfoLinkedList frame_info;  /* 0x84 */
+  uint32_t color;
+};
+
+struct LHSys
+{
+    LHSystem system; /* 0x0 */
+    LHScreen screen; /* 0x10 */
+    LHMouse mouse; /* 0x1c4 */
+    uint8_t field_0x32c[0x108];
+    uint32_t field_0x434;
+    uint8_t field_0x438[0x128];
+    uint32_t field_0x560[0x10];
+    uint32_t field_0x5a0;
+    uint32_t field_0x5a4;
+    LHJoypads joypads;
+    uint8_t field_0x82c[0x8];
+    LHConvert convert; /* 0x834 */
+    LHScriptX<char> script; /* 0x8c4 */
+    uint8_t field_0x8f4[0x6750];
+    LHText text; /* 0x7044 */
+    uint8_t field_0x7068[0x4c];
+    HWND window; /* 0x70b4 */
+    uint8_t field_0x70b8;
+    uint8_t field_0x70b9;
+    bool field_0x70ba;
+    uint8_t field_0x70bb;
+    uint32_t field_0x70bc;
+    uint32_t field_0x70c0;
+    slim::TbIME* field_0x70c4;
+    uint8_t field_0x70c8[0x10];
+
+    // Constructors
+
+    // win1.41 007db800 mac inlined LHSys::LHSys(void)
+    LHSys();
+};
+
+#else // __cplusplus
 
 struct Q24slim5TbIME_field_0x0_t
 {
@@ -120,5 +226,7 @@ struct LHSys* __fastcall __ct__5LHSysFv(struct LHSys* this) asm("??0LHSys@@QAE@X
 
 // win1.41 inlined mac 1015cd20 __sinit_LHSystem_cpp
 void __cdecl __sinit_LHSystem_cpp(void);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_SYSTEM_INCLUDED_H */

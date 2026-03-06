@@ -50,15 +50,6 @@ public:
 
     // Virtual functions
 
-    // win1.41 0074b810 mac 10157550 Tree::GetWoodValueMultiplier(void)
-    virtual void GetWoodValueMultiplier(); /* 0x868 */
-    // win1.41 0055d910 mac 100f0c30 Tree::GetForest(void)
-    virtual Forest* GetForest();
-    // win1.41 0074c140 mac 10156370 Tree::SetOnFire(float)
-    virtual void SetOnFire(float param_1); /* 0x870 */
-
-    // Override methods
-
     // win1.41 0055da40 mac 10159150 Tree::_dt(void)
     virtual ~Tree();
     // win1.41 0074a210 mac 10158a10 Tree::ToBeDeleted(int)
@@ -74,9 +65,9 @@ public:
     // win1.41 0071be20 mac 1050fb70 Tree::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // win1.41 0074c2a0 mac 10155f10 Tree::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0074c1b0 mac 10156080 Tree::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055da20 mac 10159b50 Tree::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055d950 mac 101597f0 Tree::GetCreatureBeliefType(void)
@@ -84,57 +75,57 @@ public:
     // win1.41 0074b790 mac 101576d0 Tree::GetOverwriteDropToolTip(void)
     virtual uint32_t GetOverwriteDropToolTip();
     // win1.41 0055da10 mac 10159b10 Tree::IsCastShadowAtNight(void)
-    virtual uint32_t IsCastShadowAtNight();
+    virtual bool IsCastShadowAtNight();
     // win1.41 0055d9a0 mac 10159950 Tree::CanBeAttackedByCreature(Creature *)
-    virtual uint32_t CanBeAttackedByCreature(Creature* param_1);
+    virtual bool CanBeAttackedByCreature(Creature* param_1);
     // win1.41 0055d930 mac 10159740 Tree::CanBePlayedWithByCreature(Creature *)
-    virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
+    virtual bool CanBePlayedWithByCreature(Creature* param_1);
     // win1.41 004e4a80 mac 105e4320 Tree::CanBePickedUpByCreature(Creature *)
-    virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+    virtual bool CanBePickedUpByCreature(Creature* param_1);
     // win1.41 0055d990 mac 10159900 Tree::CanBeDestroyedByStoning(Creature *)
-    virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
+    virtual bool CanBeDestroyedByStoning(Creature* param_1);
     // win1.41 0055d970 mac 10159870 Tree::CanBeUsedForBuilding(Creature *)
-    virtual uint32_t CanBeUsedForBuilding(Creature* param_1);
+    virtual bool CanBeUsedForBuilding(Creature* param_1);
     // win1.41 0055d980 mac 101598c0 Tree::CanBeUsedForRepair(Creature *)
-    virtual uint32_t CanBeUsedForRepair(Creature* param_1);
+    virtual bool CanBeUsedForRepair(Creature* param_1);
     // win1.41 0055d940 mac 10159790 Tree::BenefitsFromHavingWaterSprinkledOnIt(Creature *)
-    virtual uint32_t BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1);
-    // win1.41 0055d9d0 mac inlined Tree::IsTree_1(void)
-    virtual uint32_t IsTree_1();
-    // win1.41 0055d920 mac inlined Tree::IsTree_0(Creature *)
-    virtual uint32_t IsTree_0(Creature* param_1);
+    virtual bool BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1);
+    // win1.41 0055d9d0 mac inlined Tree::IsTree(void)
+    virtual bool IsTree();
+    // win1.41 0055d920 mac inlined Tree::IsTree(Creature *)
+    virtual bool IsTree(Creature* param_1);
     // win1.41 004e46e0 mac 105e4dc0 Tree::IsTreeNotTooNearPlannedForest(Creature *)
-    virtual uint32_t IsTreeNotTooNearPlannedForest(Creature* param_1);
+    virtual bool IsTreeNotTooNearPlannedForest(Creature* param_1);
     // win1.41 0074c0a0 mac 10156670 Tree::IsTreeBigEnoughForCreature(Creature *)
-    virtual uint32_t IsTreeBigEnoughForCreature(Creature* param_1);
+    virtual bool IsTreeBigEnoughForCreature(Creature* param_1);
     // win1.41 0055d9b0 mac 101599a0 Tree::CanBeThrownInTheSeaPlayfully(Creature *)
-    virtual uint32_t CanBeThrownInTheSeaPlayfully(Creature* param_1);
+    virtual bool CanBeThrownInTheSeaPlayfully(Creature* param_1);
     // win1.41 0055d960 mac 10159830 Tree::GetCreatureMimicType(void)
     virtual uint32_t GetCreatureMimicType();
     // win1.41 004d1b70 mac 10242f30 Tree::GetHowMuchCreatureWantsToLookAtMe(void)
     virtual float GetHowMuchCreatureWantsToLookAtMe();
     // win1.41 0055d9c0 mac 101599f0 Tree::IsAnyKindOfTree(void)
-    virtual uint32_t IsAnyKindOfTree();
+    virtual bool IsAnyKindOfTree();
     // win1.41 0074c130 mac 100036d0 Tree::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 0055d8d0 mac 10159590 Tree::GetReactionPower(void)
     virtual float GetReactionPower();
     // win1.41 0074c7f0 mac 10155720 Tree::BlocksTownClearArea( const(void))
-    virtual bool BlocksTownClearArea();
+    virtual bool BlocksTownClearArea() const;
     // win1.41 0074b600 mac 10157bd0 Tree::GetHoldType(void)
-    virtual HOLD_TYPE GetHoldType();
+    virtual enum HOLD_TYPE GetHoldType();
     // win1.41 0074b610 mac 10157b60 Tree::GetHoldRadius(void)
     virtual float GetHoldRadius();
     // win1.41 0074b620 mac 10157b10 Tree::GetHoldLoweringMultiplier(void)
     virtual float GetHoldLoweringMultiplier();
     // win1.41 0055d9e0 mac 10159a30 Tree::HandShouldFeelWithMeshIntersect(void)
-    virtual uint32_t HandShouldFeelWithMeshIntersect();
+    virtual bool HandShouldFeelWithMeshIntersect();
     // win1.41 0074a1e0 mac 10158bb0 Tree::SetLife(float)
     virtual void SetLife(float param_1);
     // win1.41 0074a290 mac 10158860 Tree::Process(void)
     virtual uint32_t Process();
     // win1.41 0055d8a0 mac 101594d0 Tree::GetMesh( const(void))
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 0074ab00 mac 10044ce0 Tree::Draw(void)
     virtual void Draw();
     // win1.41 0074b270 mac 10157fc0 Tree::DrawOutOfMap(bool)
@@ -148,19 +139,19 @@ public:
     // win1.41 0074c040 mac inlined Tree::GetWorkingPos(MapCoords *, Object *)
     virtual MapCoords* GetWorkingPos(MapCoords* param_1, Object* param_2);
     // win1.41 00749f70 mac 10158e00 Tree::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
     // win1.41 0074b7b0 mac 10157590 Tree::GetWoodValue(void)
     virtual float GetWoodValue();
     // win1.41 0074c390 mac 10155bd0 Tree::ApplyWaterSpell(SpellWater *)
     virtual float ApplyWaterSpell(SpellWater* param_1);
     // win1.41 0055d8f0 mac 10159620 Tree::IsResourceStore(RESOURCE_TYPE)
-    virtual bool IsResourceStore(RESOURCE_TYPE param_1);
+    virtual bool IsResourceStore(enum RESOURCE_TYPE param_1);
     // win1.41 0074b820 mac 10157510 Tree::GetResourceType(void)
     virtual RESOURCE_TYPE GetResourceType();
     // win1.41 0074b7a0 mac 10157670 Tree::GetDefaultResource(void)
     virtual int GetDefaultResource();
     // win1.41 0074b730 mac 10157710 Tree::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 0074bd50 mac 10156c80 Tree::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
     // win1.41 0074bda0 mac 10156910 Tree::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
@@ -184,7 +175,7 @@ public:
     // win1.41 0074c0e0 mac 10156590 Tree::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 0074a180 mac 10158cd0 Tree::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
+    virtual void AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int));
     // win1.41 0074a140 mac 10158d40 Tree::GetRoutePlanRadius(Creature *)
     virtual float GetRoutePlanRadius(Creature* param_1);
     // win1.41 0074b720 mac 10157800 Tree::IsARootedObject(void)
@@ -192,15 +183,15 @@ public:
     // win1.41 0055d900 mac 10159670 Tree::GetCarriedTreeType(void)
     virtual uint32_t GetCarriedTreeType();
     // win1.41 0074a9d0 mac 10158260 Tree::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
     // win1.41 0074c5f0 mac 101559c0 Tree::CreateCollideData(void)
     virtual void CreateCollideData();
     // win1.41 0074b810 mac 10157550 Tree::GetWoodValueMultiplier(void)
-    virtual float GetWoodValueMultiplier();
+    virtual float GetWoodValueMultiplier(); /* 0x868 */
     // win1.41 0055d910 mac 100f0c30 Tree::GetForest(void)
     virtual Forest* GetForest();
     // win1.41 0074c140 mac 10156370 Tree::SetOnFire(float)
-    virtual void SetOnFire(float param_1);
+    virtual void SetOnFire(float param_1); /* 0x870 */
 
     // Static methods
 

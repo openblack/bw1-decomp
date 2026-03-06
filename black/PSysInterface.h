@@ -30,15 +30,22 @@ class Spell;
 class PSysInterface: public PSysBase
 {
 public:
+    enum NET_GAME_TYPE
+    {
+      NET_GAME_TYPE_0 = 0x0,
+    };
+
     // Virtual functions
 
-    virtual uint32_t Process_1(const PSysProcessInfo* info, uint32_t param_3); /* 0xfc */
-    virtual void Process_2(PSysProcessInfo* info); /* 0x100 */
-    virtual void Draw_1(float param_1, bool param_2);
-    virtual void Draw_2(bool param_1);
+    // win1.41 0055ee30 mac 101109b0 PSysInterface::_dt(void)
+    virtual ~PSysInterface();
+    virtual uint32_t Process(const PSysProcessInfo* info, uint32_t param_3); /* 0xfc */
+    virtual void Process(PSysProcessInfo* info); /* 0x100 */
+    virtual void Draw(float param_1, bool param_2);
+    virtual void Draw(bool param_1);
     virtual void AddDrawing(float param_1, const LHPoint* param_2);
-    virtual void AddTarget_1(const LHPoint* target); /* 0x110 */
-    virtual void AddTarget_2(GameThing* target);
+    virtual void AddTarget(const LHPoint* target); /* 0x110 */
+    virtual void AddTarget(GameThing* target);
     virtual void CloseDown();
     virtual void SetMagnitude(float value);
     virtual void SetAge(float value); /* 0x120 */
@@ -47,15 +54,10 @@ public:
     virtual void SetAlpha(uint8_t value);
     virtual LHPoint* GetOrigin(); /* 0x130 */
 
-    // Override methods
-
-    // win1.41 0055ee30 mac 101109b0 PSysInterface::_dt(void)
-    virtual ~PSysInterface();
-
     // Static methods
 
     // win1.41 0068e910 mac 100053c0 PSysInterface::Create(Spell *, PARTICLE_TYPE, LHPoint const &, LHPoint const &, float, PSysInterface::NET_GAME_TYPE)
-    static PSysInterface* Create(Spell* spell, PARTICLE_TYPE particle_type, LHPoint* param_3, LHPoint* param_4, float param_5, PSysInterface__NET_GAME_TYPE game_type);
+    static PSysInterface* Create(Spell* spell, PARTICLE_TYPE particle_type, LHPoint* param_3, LHPoint* param_4, float param_5, PSysInterface::NET_GAME_TYPE game_type);
 };
 
 #else // __cplusplus

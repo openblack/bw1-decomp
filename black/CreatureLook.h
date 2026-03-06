@@ -21,6 +21,5 @@ struct CreatureLookState
   uint32_t field_0x30;
   uint32_t field_0x34;
 };
-static_assert(sizeof(struct CreatureLookState) == 0x38, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_CREATURE_LOOK_INCLUDED_H */

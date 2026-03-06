@@ -7,6 +7,28 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
+enum CAMERA_MODE_HAND_STATUS
+{
+  CAMERA_MODE_HAND_STATUS_NORMAL = 0x0,
+  CAMERA_MODE_HAND_STATUS_ZOOMING = 0x1,
+  CAMERA_MODE_HAND_STATUS_TILT_ON = 0x2,
+  CAMERA_MODE_HAND_STATUS_GRABBING_LAND = 0x3,
+  CAMERA_MODE_HAND_STATUS_PANNING = 0x4,
+  CAMERA_MODE_HAND_STATUS_TILTING = 0x5,
+  CAMERA_MODE_HAND_STATUS_0x6 = 0x6,
+  CAMERA_MODE_HAND_STATUS_0x7 = 0x7,
+  CAMERA_MODE_HAND_STATUS_0x8 = 0x8,
+  _CAMERA_MODE_HAND_STATUS_COUNT = 0x9
+};
+
+enum CAMERA_MODE_MOUSE_STATUS
+{
+  CAMERA_MODE_MOUSE_STATUS_NONE = 0x0,
+  CAMERA_MODE_MOUSE_STATUS_LEFT = 0x1,
+  CAMERA_MODE_MOUSE_STATUS_MIDDLE = 0x2,
+  _CAMERA_MODE_MOUSE_STATUS_COUNT = 0x3
+};
+
 #ifdef __cplusplus
 
 // Forward Declares
@@ -43,8 +65,8 @@ public:
     virtual void Delete(); /* 0x30 */
     virtual bool Arrived();
     virtual uint32_t GetSaveID();
-    virtual void Load(GameOSFile* param_2);
-    virtual void Save(GameOSFile* param_2); /* 0x40 */
+    virtual void Load(GameOSFile& param_2);
+    virtual void Save(GameOSFile& param_2); /* 0x40 */
     virtual const char* GetDebugName();
 };
 
@@ -57,19 +79,6 @@ struct GCamera;
 struct GameOSFile;
 struct LHCoord;
 
-enum CAMERA_MODE_HAND_STATUS
-{
-  CAMERA_MODE_HAND_STATUS_NORMAL = 0x0,
-  CAMERA_MODE_HAND_STATUS_ZOOMING = 0x1,
-  CAMERA_MODE_HAND_STATUS_TILT_ON = 0x2,
-  CAMERA_MODE_HAND_STATUS_GRABBING_LAND = 0x3,
-  CAMERA_MODE_HAND_STATUS_PANNING = 0x4,
-  CAMERA_MODE_HAND_STATUS_TILTING = 0x5,
-  CAMERA_MODE_HAND_STATUS_0x6 = 0x6,
-  CAMERA_MODE_HAND_STATUS_0x7 = 0x7,
-  CAMERA_MODE_HAND_STATUS_0x8 = 0x8,
-  _CAMERA_MODE_HAND_STATUS_COUNT = 0x9
-};
 static_assert(sizeof(enum CAMERA_MODE_HAND_STATUS) == 0x4, "Data type is of wrong size");
 
 static const char* CAMERA_MODE_HAND_STATUS_strs[_CAMERA_MODE_HAND_STATUS_COUNT] = {
@@ -84,13 +93,6 @@ static const char* CAMERA_MODE_HAND_STATUS_strs[_CAMERA_MODE_HAND_STATUS_COUNT] 
   "CAMERA_MODE_HAND_STATUS_0x8",
 };
 
-enum CAMERA_MODE_MOUSE_STATUS
-{
-  CAMERA_MODE_MOUSE_STATUS_NONE = 0x0,
-  CAMERA_MODE_MOUSE_STATUS_LEFT = 0x1,
-  CAMERA_MODE_MOUSE_STATUS_MIDDLE = 0x2,
-  _CAMERA_MODE_MOUSE_STATUS_COUNT = 0x3
-};
 static_assert(sizeof(enum CAMERA_MODE_MOUSE_STATUS) == 0x4, "Data type is of wrong size");
 
 static const char* CAMERA_MODE_MOUSE_STATUS_strs[_CAMERA_MODE_MOUSE_STATUS_COUNT] = {

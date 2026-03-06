@@ -7,6 +7,46 @@
 
 #include "LH3DColor.h" /* For struct LH3DColor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LH3DTexture;
+
+struct MaterialProperties
+{
+  bool field_0x0;
+  bool field_0x1;
+  bool cull;
+  bool field_0x3;
+  bool field_0x4;
+};
+
+struct LH3DMaterial
+{
+  enum RenderMode
+  {
+    RENDER_MODE_0x2 = 0x2,
+    RENDER_MODE_0x3 = 0x3,
+    RENDER_MODE_0x4 = 0x4,
+    RENDER_MODE_0x5 = 0x5,
+    RENDER_MODE_0x6 = 0x6,
+    RENDER_MODE_0x8 = 0x8,
+    RENDER_MODE_0x9 = 0x9,
+    RENDER_MODE_0xc = 0xc,
+    RENDER_MODE_0xd = 0xd,
+    RENDER_MODE_0x10 = 0x10,
+  };
+
+  RenderMode render_mode;  /* 0x0 */
+  uint8_t field_0x4;
+  uint8_t cull_mode;
+  LH3DTexture* texture;
+  LH3DColor color;
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LH3DTexture;
@@ -66,5 +106,7 @@ struct LH3DMaterial
   struct LH3DColor color;
 };
 static_assert(sizeof(struct LH3DMaterial) == 0x10, "Data type is of wrong size");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_MATERIAL_INCLUDED_H */

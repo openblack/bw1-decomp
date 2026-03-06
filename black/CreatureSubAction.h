@@ -15,6 +15,7 @@
 // Forward Declares
 
 class Creature;
+class MapCoords;
 class SubArgument;
 
 // win1.41 009cfa00 mac inlined CreatureSubAction::`RTTI Type Descriptor'
@@ -54,6 +55,10 @@ public:
 class CreatureSubActionAgenda: public Base
 {
 public:
+
+    typedef int (* CreatureSubActionAgenda::CreatureSubActionAgendaAddSubActionCB1)(Creature *, const void *, void *, MapCoords *);
+    typedef void (* CreatureSubActionAgenda::CreatureSubActionAgendaAddSubActionCB2)(Creature *, const void *, void *);
+
     uint32_t field_0x8;
     uint32_t field_0xc;
     uint32_t field_0x10;
@@ -87,9 +92,9 @@ public:
     // Non-virtual methods
 
     // win1.41 004ff240 mac 1028cc30 CreatureSubActionAgenda::AddSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
-    void AddSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2, int (__thiscall*)(Creature *, const void *, void *, MapCoords *) param_3, void (__thiscall*)(Creature *, const void *, void *) param_4);
+    void AddSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2, CreatureSubActionAgendaAddSubActionCB1 param_3, CreatureSubActionAgendaAddSubActionCB2 param_4);
     // win1.41 004ff3a0 mac 1028cb10 CreatureSubActionAgenda::AddMainSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
-    void AddMainSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2, int (__thiscall*)(Creature *, const void *, void *, MapCoords *) param_3, void (__thiscall*)(Creature *, const void *, void *) param_4);
+    void AddMainSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2, CreatureSubActionAgendaAddSubActionCB1 param_3, CreatureSubActionAgendaAddSubActionCB2 param_4);
 };
 
 #else // __cplusplus

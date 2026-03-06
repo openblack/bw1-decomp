@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "Base.h" /* For struct Base */
@@ -31,7 +32,7 @@ public:
     uint32_t field_0x148[0x28];
     uint32_t field_0x1e8[0x28];
     uint32_t field_0x288[0x28];
-    LHLinkedList__CreatureDesireSource source_lists[0x28]; /* 0x328 */
+    LHLinkedList<CreatureDesireSource> source_lists[0x28]; /* 0x328 */
     uint32_t field_0x468[0x28];
     uint32_t field_0x508[0x28];
     uint32_t field_0x5a8[0x28];
@@ -69,7 +70,7 @@ public:
     // win1.41 00491980 mac 1022e3c0 CreatureDesireActionEntry::_dt(void)
     virtual ~CreatureDesireActionEntry();
     // win1.41 00491910 mac 1022ed30 CreatureDesireActionEntry::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 // win1.41 009d7d90 mac inlined CreatureDesireAttributeEntry::`RTTI Type Descriptor'
@@ -85,7 +86,7 @@ public:
     // win1.41 00491b70 mac 1022e150 CreatureDesireAttributeEntry::_dt(void)
     virtual ~CreatureDesireAttributeEntry();
     // win1.41 00491b10 mac 1022edf0 CreatureDesireAttributeEntry::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 // win1.41 00bdf458 mac inlined CreatureDesireDependency::`RTTI Type Descriptor'
@@ -101,7 +102,7 @@ public:
     // win1.41 004db350 mac 10259590 CreatureDesireDependency::_dt(void)
     virtual ~CreatureDesireDependency();
     // win1.41 004db2e0 mac 1025c710 CreatureDesireDependency::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 // win1.41 00bdf480 mac inlined CreatureDesireForType::`RTTI Type Descriptor'
@@ -117,7 +118,7 @@ public:
     // win1.41 004db420 mac 1025ac00 CreatureDesireForType::_dt(void)
     virtual ~CreatureDesireForType();
     // win1.41 004db3c0 mac 1025c650 CreatureDesireForType::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 // win1.41 00bdf560 mac inlined CreatureDesireSourceTable::`RTTI Type Descriptor'
@@ -133,7 +134,7 @@ public:
     // win1.41 004dd1f0 mac 1025c960 CreatureDesireSourceTable::_dt(void)
     virtual ~CreatureDesireSourceTable();
     // win1.41 004dd180 mac 1025efa0 CreatureDesireSourceTable::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

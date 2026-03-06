@@ -27,7 +27,7 @@ public:
     // win1.41 0063e070 mac 101102f0 GSpotVisualInfo::_dt(void)
     virtual ~GSpotVisualInfo();
     // win1.41 0063e020 mac 10110f10 GSpotVisualInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

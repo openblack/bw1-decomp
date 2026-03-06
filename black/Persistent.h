@@ -29,17 +29,6 @@ public:
     virtual ~Persistent();
     // win1.41 00580a30 mac 102cb810 Persistent::DefineProperties(PropertyList *)
     virtual void DefineProperties(PropertyList* list);
-
-    // Override methods
-
-    // win1.41 00580a10 mac 102cb7a0 Persistent::VirtualFunc(void)
-    virtual void VirtualFunc();
-    // win1.41 00580a20 mac 102cb7e0 Persistent::OnLoaded(void)
-    virtual void OnLoaded();
-    // win1.41 00580a40 mac 102cbd80 Persistent::_dt(void)
-    virtual ~Persistent();
-    // win1.41 00580a30 mac 102cb810 Persistent::DefineProperties(PropertyList *)
-    virtual void DefineProperties(PropertyList* param_1);
 };
 
 // win1.41 00c021a0 mac inlined FloatProvider::`RTTI Type Descriptor'

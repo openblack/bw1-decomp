@@ -33,7 +33,7 @@ public:
     // win1.41 0074c920 mac 10159d30 GTribeInfo::_dt(void)
     virtual ~GTribeInfo();
     // win1.41 0074c8c0 mac 10159ef0 GTribeInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
     // Static methods
 

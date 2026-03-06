@@ -28,7 +28,7 @@ public:
     // win1.41 00425980 mac 100ad540 GArrowInfo::_dt(void)
     virtual ~GArrowInfo();
     // win1.41 00425930 mac 100ad830 GArrowInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

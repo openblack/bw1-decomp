@@ -72,13 +72,13 @@ public:
     // win1.41 00401320 mac 101ca240 GAbodeInfo::~GAbodeInfo(unsigned int)
     virtual ~GAbodeInfo();
     // win1.41 00401270 mac 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 00401240 mac 1019a370 GAbodeInfo::GetMesh() const
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
     // win1.41 00401250 mac 106fde70 GAbodeInfo::GetAbodeType() const
-    virtual ABODE_TYPE GetAbodeType();
+    virtual ABODE_TYPE GetAbodeType() const;
     // win1.41 00401260 mac 100984c0 GAbodeInfo::GetAbodeNumber() const
-    virtual ABODE_NUMBER GetAbodeNumber();
+    virtual ABODE_NUMBER GetAbodeNumber() const;
 
     // Static methods
 
@@ -90,7 +90,7 @@ public:
     // Non-virtual methods
 
     // win1.41 00404b10 mac 1015a260 GAbodeInfo::IsOkToCreateAtPos(MapCoords const &, float, float, Town *) const
-    bool IsOkToCreateAtPos(const MapCoords* coords, float param_2, float param_3, Town* town);
+    bool IsOkToCreateAtPos(const MapCoords& coords, float param_2, float param_3, Town* town) const;
     // win1.41 00405a60 mac inlined GAbodeInfo::GetDescription(void)
     const char* GetDescription();
     // win1.41 0042e520 mac inlined GAbodeInfo::LoadBinary(LHFile *)

@@ -12,6 +12,12 @@
 #include "BaseInfo.h" /* For struct GBaseInfo */
 #include "ScriptDLL.h" /* For enum VMScriptType, enum VMType */
 
+enum SCRIPT_FEATURE_COMMANDS
+{
+  SCRIPT_FEATURE_COMMANDS_0 = 0x0,
+  _SCRIPT_FEATURE_COMMANDS_COUNT = 0x1
+};
+
 #ifdef __cplusplus
 
 // Forward Declares
@@ -38,7 +44,7 @@ public:
     // Static methods
 
     // win1.41 006eb100 mac 104d8610 GScript::Create(void)
-    static GScript* Create(GScript* this);
+    static GScript* Create();
     // win1.41 006eb710 mac 104d7e50 GScript::StartScript(char *)
     static int StartScript(char* name);
     // win1.41 0070b220 mac 104fcda0 GScript::SetInterfaceInteraction(SCRIPT_INTERFACE_LEVEL)
@@ -69,7 +75,7 @@ public:
     // win1.41 006f62c0 mac 100054c0 GScript::ScriptWarningMessage(char*)
     void ScriptWarningMessage(char* msg);
     // win1.41 006f7410 mac 104ea250 GScript::FindInTown(GameThingWithPos*, int (*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, ulong), SCRIPT_OBJECT_TYPE, ulong)
-    Abode* FindInTown(GameThingWithPos* param_1, int (__cdecl*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, uint32_t) param_2, SCRIPT_OBJECT_TYPE param_3, uint32_t param_4);
+    Abode* FindInTown(GameThingWithPos* param_1, int (__cdecl* param_2)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, uint32_t), SCRIPT_OBJECT_TYPE param_3, uint32_t param_4);
 };
 
 // win1.41 00c0cde0 mac inlined GScriptOpposingCreature::`RTTI Type Descriptor'
@@ -85,7 +91,7 @@ public:
     // win1.41 006f3770 mac 104e3ad0 GScriptOpposingCreature::_dt(void)
     virtual ~GScriptOpposingCreature();
     // win1.41 006f3710 mac 104e7b10 GScriptOpposingCreature::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus
@@ -95,11 +101,6 @@ public:
 struct Abode;
 struct GameThingWithPos;
 
-enum SCRIPT_FEATURE_COMMANDS
-{
-  SCRIPT_FEATURE_COMMANDS_0 = 0x0,
-  _SCRIPT_FEATURE_COMMANDS_COUNT = 0x1
-};
 static_assert(sizeof(enum SCRIPT_FEATURE_COMMANDS) == 0x4, "Data type is of wrong size");
 
 static const char* SCRIPT_FEATURE_COMMANDS_strs[_SCRIPT_FEATURE_COMMANDS_COUNT] = {

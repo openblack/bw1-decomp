@@ -17,6 +17,46 @@
 class Fixed;
 class Object;
 
+struct MapCell
+{
+    Object* first_object_mobile; /* 0x0 */
+    Object* first_object_fixed;
+
+    // Static methods
+
+    // win1.41 00601510 mac 1000b040 MapCell::DoesObjectTypeCountAsFixed(OBJECT_TYPE)
+    static bool DoesObjectTypeCountAsFixed(OBJECT_TYPE type);
+
+    // Non-virtual methods
+
+    // win1.41 00601b60 mac 10054090 MapCell::SetFirstObjectMobile(Object *)
+    void SetFirstObjectMobile(Object* object);
+    // win1.41 00601b70 mac 104a6ee0 MapCell::SetFirstObjectFixed(Object *)
+    void SetFirstObjectFixed(Object* object);
+    // win1.41 00601380 mac 101cbfc0 MapCell::Clean(void)
+    void Clean();
+    // win1.41 006015e0 mac 100121f0 MapCell::FindTypeOnMap(OBJECT_TYPE, Object *) const
+    Object* FindTypeOnMap(OBJECT_TYPE type, Object* object);
+    // win1.41 00601b80 mac 100544d0 MapCell::GetX(void) const
+    uint32_t GetX();
+    // win1.41 00601ba0 mac 10054640 MapCell::GetZ(void) const
+    uint32_t GetZ();
+    // win1.41 00601690 mac 10570500 MapCell::FindFixedOnMap(Object *)
+    Fixed* FindFixedOnMap(Object* param_1);
+};
+
+struct MapCellIterator
+{
+    Object* object; /* 0x0 */
+    bool is_fixed;
+    MapCell* cell;
+
+    // Non-virtual methods
+
+    // win1.41 inlined mac 1002c620 MapCellIterator::MoveToMobileObsIfNeededAndPoss(void)
+    void MoveToMobileObsIfNeededAndPoss();
+};
+
 // win1.41 00bf4140 mac inlined GMap::`RTTI Type Descriptor'
 // win1.41 009b1ef0 mac inlined GMap::`RTTI Base Class Descriptor'
 // win1.41 009b1f08 mac inlined GMap::`RTTI Base Class Array'

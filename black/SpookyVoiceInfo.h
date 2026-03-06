@@ -27,7 +27,7 @@ public:
     // win1.41 0072e220 mac 10149010 GSpookyVoiceInfo::_dt(void)
     virtual ~GSpookyVoiceInfo();
     // win1.41 0072e1c0 mac 10149130 GSpookyVoiceInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

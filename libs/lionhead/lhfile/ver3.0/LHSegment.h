@@ -4,6 +4,22 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#ifdef __cplusplus
+
+struct LHSegment
+{
+    uint8_t name[0x21]; /* 0x0 */
+    uint32_t size; /* 0x24 */
+    uint8_t* buffer;
+
+    // Constructors
+
+    // win1.41 inlined mac 1005c5c0 LHSegment::LHSegment(void)
+    LHSegment();
+};
+
+#else // __cplusplus
+
 struct LHSegmentDesc
 {
   uint32_t field_0x0;
@@ -26,5 +42,7 @@ static_assert(sizeof(struct LHSegment) == 0x2c, "Data type is of wrong size");
 
 // win1.41 inlined mac 1005c5c0 LHSegment::LHSegment(void)
 struct LHSegment* __fastcall __ct__9LHSegmentFv(struct LHSegment* this) asm("??0LHSegment@@QAE@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_SEGMENT_INCLUDED_H */

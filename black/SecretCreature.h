@@ -19,11 +19,6 @@ public:
 
     // win1.41 00711d60 mac 101441a0 SecretCreature::_dt(void)
     virtual ~SecretCreature(); /* 0x0 */
-
-    // Override methods
-
-    // win1.41 00711d60 mac 101441a0 SecretCreature::_dt(void)
-    virtual ~SecretCreature();
 };
 
 #else // __cplusplus

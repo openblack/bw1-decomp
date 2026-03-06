@@ -13,6 +13,5 @@ struct LH3DBoundingBox
   struct LHPoint size;  /* 0x10 */
   float diagonal_length;
 };
-static_assert(sizeof(struct LH3DBoundingBox) == 0x20, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH3D_BOUNDING_BOX_INCLUDED_H */

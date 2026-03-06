@@ -62,17 +62,17 @@ public:
     // win1.41 00435ad0 mac 100affd0 Ball::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00436260 mac 100b0080 Ball::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00436110 mac 100b0260 Ball::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00435ac0 mac 100affa0 Ball::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00435ab0 mac 100aff50 Ball::CanBePickedUpByCreature(Creature *)
-    virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+    virtual bool CanBePickedUpByCreature(Creature* param_1);
     // win1.41 004363b0 mac 100b0040 Ball::IsToy(Creature *)
-    virtual uint32_t IsToy(Creature* param_1);
+    virtual bool IsToy(Creature* param_1);
     // win1.41 004363c0 mac 100b0000 Ball::IsToyBall(Creature *)
-    virtual uint32_t IsToyBall(Creature* param_1);
+    virtual bool IsToyBall(Creature* param_1);
     // win1.41 00436100 mac 100b0450 Ball::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 00435c30 mac 100b0970 Ball::Process(void)
@@ -85,7 +85,7 @@ public:
     // Static methods
 
     // win1.41 00435b90 mac 100b09f0 Ball::Create(MapCoords const &, GBallInfo const *, unsigned short, float, float)
-    static Ball* Create(Ball* this, const MapCoords* param_1, const GBallInfo* param_2, unsigned short param_3, float param_4, float param_5);
+    static Ball* Create(const MapCoords& param_1, const GBallInfo* param_2, unsigned short param_3, float param_4, float param_5);
 
     // Constructors
 

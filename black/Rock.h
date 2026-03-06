@@ -42,11 +42,6 @@ public:
 
     // Virtual functions
 
-    // win1.41 00439740 mac 100b3fc0 Rock::IsMovable(void)
-    virtual bool IsMovable(); /* 0x90c */
-
-    // Override methods
-
     // win1.41 005613a0 mac 100b4de0 Rock::_dt(void)
     virtual ~Rock();
     // win1.41 006e77a0 mac 1013d1f0 Rock::GetPlayer(void)
@@ -62,9 +57,9 @@ public:
     // win1.41 0071bcd0 mac 1050fda0 Rock::GetSampleForAttack(void)
     virtual uint32_t GetSampleForAttack();
     // win1.41 006e7870 mac 1013cfa0 Rock::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006e77b0 mac 1013d0c0 Rock::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00561380 mac 100c41e0 Rock::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006e79f0 mac 1013c460 Rock::PhysicsEditorCreate(int)
@@ -72,15 +67,15 @@ public:
     // win1.41 006e7a60 mac 1013c420 Rock::GetOverwriteTapToolTip(void)
     virtual uint32_t GetOverwriteTapToolTip();
     // win1.41 00439730 mac inlined Rock::IsRock_0(void)
-    virtual uint32_t IsRock_0();
+    virtual bool IsRock();
     // win1.41 00439760 mac 100b4030 Rock::CanBeAttackedByCreature(Creature *)
-    virtual uint32_t CanBeAttackedByCreature(Creature* param_1);
+    virtual bool CanBeAttackedByCreature(Creature* param_1);
     // win1.41 006e7a70 mac 1013c3c0 Rock::CanBePickedUpByCreature(Creature *)
-    virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+    virtual bool CanBePickedUpByCreature(Creature* param_1);
     // win1.41 00439750 mac 100b3ff0 Rock::GetCreatureMimicType(void)
     virtual uint32_t GetCreatureMimicType();
     // win1.41 006e7070 mac 1013dbc0 Rock::CanBeThrownByPlayer(void)
-    virtual uint32_t CanBeThrownByPlayer();
+    virtual bool CanBeThrownByPlayer();
     // win1.41 006e79e0 mac 1000ef30 Rock::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 006e7210 mac 1013d710 Rock::ActualMoveMapObject(MapCoords const &)
@@ -94,7 +89,7 @@ public:
     // win1.41 006e7090 mac 1013db10 Rock::GetDefaultResource(void)
     virtual int GetDefaultResource();
     // win1.41 006e7030 mac 1013dc40 Rock::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 006e7450 mac 1013d680 Rock::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
     // win1.41 006e7480 mac 1013d4e0 Rock::InterfaceTap(GInterfaceStatus *)
@@ -115,7 +110,7 @@ public:
     // Constructors
 
     // win1.41 006e6f70 mac 1013dda0 Rock::Rock(MapCoords const &, GMobileStaticInfo const *, Object *, GPlayer *, float, float)
-    Rock(MapCoords* coords, GMobileStaticInfo* info, Object* param_3, GPlayer* param_4, float param_5, float param_6);
+    Rock(const MapCoords& coords, const GMobileStaticInfo* info, Object* param_3, GPlayer* param_4, float param_5, float param_6);
 };
 
 #else // __cplusplus

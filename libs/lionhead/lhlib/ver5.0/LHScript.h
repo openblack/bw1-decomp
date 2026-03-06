@@ -5,6 +5,60 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class LHReleasedOSFile;
+
+enum LH_RETURN
+{
+    LH_RETURN_0,
+};
+
+template<typename T>
+struct LHScriptPramX
+{
+  T param_strs[0xc][0x800];  /* 0x0 */
+  int param_ints[0xc];  /* 0x6000 */
+  float param_floats[0xc];  /* 0x6030 */
+};
+
+template<typename T>
+struct LHScriptCommandX
+{
+  const T* function_name;  /* 0x0 */
+  uint8_t param_types[0xc];
+};
+
+template<typename T>
+struct LHScriptX
+{
+    int field_0x0;
+    int field_0x4;
+    char field_0x8[0x14];
+    int* field_0x1c;
+    LHScriptCommandX<T>* command; /* 0x20 */
+    LH_RETURN (__cdecl* callback)(int param_0, LHScriptPramX<T>* param_1);
+    int field_0x28;
+    int field_0x2c;
+
+    // Non-virtual methods
+
+    // win1.41 007e72c0 mac 1061e38c LHScriptX<char>::Load(char *, LHScriptCommandX<char> *, LH_RETURN (*)(long, LHScriptPramX<char> *), long *)
+    void Load(const char* path, LHScriptCommandX<T>* command, LH_RETURN (__cdecl* callback)(int, LHScriptPramX<T> *), long* param_4);
+    // win1.41 007e7400 mac 1061cd3c LHScriptX<char>::LoadOneLine(LHReleasedOSFile &, char *)
+    bool LoadOneLine(LHReleasedOSFile& file, char* line);
+    // win1.41 007e7540 mac 10150830 LHScriptX<char>::ScanLine(char *)
+    uint32_t ScanLine(char* line);
+    // win1.41 007e8170 mac 10153040 LHScriptX<char>::LoadFile(char *, long *)
+    uint32_t LoadFile(const char* path, long* param_2);
+    // win1.41 007e8cb0 mac 101533a0 LHScriptX<char>::DestroyVariables(void)
+    void DestroyVariables();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LHReleasedOSFile;
@@ -39,15 +93,17 @@ static_assert(sizeof(struct LHScriptX_c_) == 0x30, "Data type is of wrong size")
 
 // Non-virtual methods
 
-// win1.41 007e72c0 mac 1061e38c LHScriptX<c>::Load(char *, LHScriptCommandX<c> *, LH_RETURN (*)(long, LHScriptPramX<c> *), long *)
+// win1.41 007e72c0 mac 1061e38c LHScriptX<char>::Load(char *, LHScriptCommandX<char> *, LH_RETURN (*)(long, LHScriptPramX<char> *), long *)
 void __fastcall Load__12LHScriptX_c_FPcP19LHScriptCommandX_c_PFlP16LHScriptPramX_c__9LH_RETURNPl(struct LHScriptX_c_* this, const void* edx, const char* path, struct LHScriptCommandX_c_* command, enum LH_RETURN (__cdecl* callback)(int param_2, struct LHScriptPramX_c_ * param_3), long* param_4);
-// win1.41 007e7400 mac 1061cd3c LHScriptX<c>::LoadOneLine(LHReleasedOSFile &, char *)
+// win1.41 007e7400 mac 1061cd3c LHScriptX<char>::LoadOneLine(LHReleasedOSFile &, char *)
 bool __fastcall LoadOneLine__12LHScriptX_c_FR16LHReleasedOSFilePc(struct LHScriptX_c_* this, const void* edx, struct LHReleasedOSFile* file, char* line) asm("?LoadOneLine@LHScriptX_c_@@QAE_NAAVLHReleasedOSFile@@PAD@Z");
-// win1.41 007e7540 mac 10150830 LHScriptX<c>::ScanLine(char *)
+// win1.41 007e7540 mac 10150830 LHScriptX<char>::ScanLine(char *)
 uint32_t __fastcall ScanLine__12LHScriptX_c_FPc(struct LHScriptX_c_* this, const void* edx, char* line) asm("?ScanLine@LHScriptX_c_@@QAEIPAD@Z");
-// win1.41 007e8170 mac 10153040 LHScriptX<c>::LoadFile(char *, long *)
+// win1.41 007e8170 mac 10153040 LHScriptX<char>::LoadFile(char *, long *)
 uint32_t __fastcall LoadFile__12LHScriptX_c_FPcPl(struct LHScriptX_c_* this, const void* edx, const char* path, long* param_2) asm("?LoadFile@LHScriptX_c_@@QAEIPADPAJ@Z");
-// win1.41 007e8cb0 mac 101533a0 LHScriptX<c>::DestroyVariables(void)
+// win1.41 007e8cb0 mac 101533a0 LHScriptX<char>::DestroyVariables(void)
 void __fastcall DestroyVariables__12LHScriptX_c_Fv(struct LHScriptX_c_* this) asm("?DestroyVariables@LHScriptX_c_@@QAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_SCRIPT_INCLUDED_H */

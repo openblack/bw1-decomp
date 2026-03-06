@@ -37,9 +37,9 @@ public:
     // win1.41 00672ca0 mac 10423d00 PSysManager::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00694500 mac 1041d6f0 PSysManager::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006cb090 mac 104858d0 PSysManager::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00672c90 mac 10423cc0 PSysManager::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

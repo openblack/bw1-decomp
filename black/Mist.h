@@ -48,9 +48,9 @@ public:
     // win1.41 0055ebc0 mac 10104780 Mist::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00606a10 mac 10104820 Mist::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00606920 mac 10104980 Mist::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055ebb0 mac 10104750 Mist::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00606af0 mac 101047c0 Mist::ResolveLoad(void)
@@ -60,7 +60,7 @@ public:
     // win1.41 006067d0 mac 10104c90 Mist::GetDistanceFromObject(MapCoords const &)
     virtual float GetDistanceFromObject(const MapCoords* param_1);
     // win1.41 0055eb90 mac 101046e0 Mist::IsMist(void)
-    virtual uint32_t IsMist();
+    virtual bool IsMist();
     // win1.41 0055eb80 mac 101046b0 Mist::GetText(void)
     virtual const char* GetText();
     // win1.41 00606910 mac 10104af0 Mist::GetScriptObjectType(void)

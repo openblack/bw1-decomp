@@ -86,9 +86,9 @@ public:
     // win1.41 005db980 mac 1036be40 GInterfaceStatus::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005dcdc0 mac 1036c160 GInterfaceStatus::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 005dca50 mac 1036c810 GInterfaceStatus::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 005db970 mac 1036be00 GInterfaceStatus::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005dd130 mac 1036c080 GInterfaceStatus::SaveExtraData(GameOSFile &)
@@ -98,13 +98,6 @@ public:
     // win1.41 005db960 mac 1036bdc0 GInterfaceStatus::GetText(void)
     virtual const char* GetText();
 
-    // Static methods
-
-    // win1.41 005cedc0 mac 1035acc0 GInterfaceStatus::SetActive(int)
-    static void SetActive(GInterface* this, const void* edx, int param_1);
-    // win1.41 005d29c0 mac 10026ad0 GInterfaceStatus::ResetActionState(void)
-    static void ResetActionState(GInterface* this);
-
     // Constructors
 
     // win1.41 005db860 mac 1036f590 GInterfaceStatus::GInterfaceStatus(void)
@@ -112,8 +105,12 @@ public:
 
     // Non-virtual methods
 
+    // win1.41 005d29c0 mac 10026ad0 GInterfaceStatus::ResetActionState(void)
+    void ResetActionState();
     // win1.41 005dba00 mac 1036f310 GInterfaceStatus::SetToZero(GInterface *)
     void SetToZero(GInterface* param_1);
+    // win1.41 005cedc0 mac 1035acc0 GInterfaceStatus::SetActive(int)
+    void SetActive(int param_1);
     // win1.41 005dc130 mac 100755c0 GInterfaceStatus::GetFirstObjectInCurrentHand(void)
     Object* GetFirstObjectInCurrentHand();
     // win1.41 005dc2f0 mac 1007b2f0 GInterfaceStatus::IsSpaceInHands(void)

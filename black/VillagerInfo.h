@@ -10,6 +10,11 @@
 
 #include "LivingInfo.h" /* For struct GLivingInfo */
 
+struct AgeToScale
+{
+  float values[0x14];  /* 0x0 */
+};
+
 #ifdef __cplusplus
 
 // Forward Declares
@@ -120,9 +125,9 @@ public:
     // win1.41 0074f900 mac 1056bfe0 GVillagerInfo::_dt(void)
     virtual ~GVillagerInfo();
     // win1.41 0074f890 mac 10571e90 GVillagerInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 0074f880 mac 10571e50 GVillagerInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
 
     // Static methods
 
@@ -152,10 +157,6 @@ struct DiscipleInfo
 };
 static_assert(sizeof(struct DiscipleInfo) == 0x1c, "Data type is of wrong size");
 
-struct AgeToScale
-{
-  float values[0x14];  /* 0x0 */
-};
 static_assert(sizeof(struct AgeToScale) == 0x50, "Data type is of wrong size");
 
 struct GVillagerInfo

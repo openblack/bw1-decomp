@@ -27,7 +27,7 @@ public:
     // win1.41 0072ae00 mac 1052de00 GSpellSystemInfo::_dt(void)
     virtual ~GSpellSystemInfo();
     // win1.41 0072adb0 mac 1052dea0 GSpellSystemInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

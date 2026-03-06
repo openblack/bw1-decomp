@@ -20,6 +20,22 @@
 
 class SetupControl;
 
+struct VBarData
+{
+    LH3DColor color; /* 0x0 */
+    float value;
+
+    // Constructors
+
+    // win1.41 inlined mac inlined VBarData::VBarData(const VBarData &)
+    VBarData(const VBarData* bar);
+
+    // Non-virtual methods
+
+    // win1.41 inlined mac inlined VBarData::operator=(const VBarData &)
+    VBarData* operator=(const VBarData* bar);
+};
+
 // win1.41 009c8258 mac inlined SetupVBarGraph::`RTTI Type Descriptor'
 // win1.41 009a67e8 mac inlined SetupVBarGraph::`RTTI Base Class Descriptor'
 // win1.41 009a6800 mac inlined SetupVBarGraph::`RTTI Base Class Array'
@@ -30,32 +46,17 @@ class SetupVBarGraph: public SetupButton
 {
 public:
     Zoomer zoomer; /* 0x244 */
-    LHLinkedList__VBarData bar_data_list; /* 0x274 */
+    LHLinkedList<VBarData> bar_data_list; /* 0x274 */
     float max_point;
     float min_point; /* 0x280 */
 
     // Virtual functions
 
-    // win1.41 0040efb0 mac inlined SetupVBarGraph::Reset(vfoid)
-    virtual void Reset(); /* 0x34 */
     // win1.41 0040f1b0 mac 10351240 SetupVBarGraph::SetScale(float)
     virtual void SetScale(float scale);
     virtual void AddLine(const VBarData* line);
     virtual void SetLine(int index, const VBarData* line); /* 0x40 */
     virtual void GetLine(int index, VBarData* result);
-
-    // Override methods
-
-    // win1.41 0040e8b0 mac 10379480 SetupVBarGraph::Draw(bool, bool)
-    virtual void Draw(bool hovered, bool selected);
-    // win1.41 0040ef70 mac 10350e50 SetupVBarGraph::KeyDown(int, int)
-    virtual void KeyDown(LHKey key, LHKeyMod mod);
-    // win1.41 0040ef90 mac 103de920 SetupVBarGraph::~SetupVBarGraph(void)
-    virtual ~SetupVBarGraph();
-    // win1.41 0040efb0 mac inlined SetupVBarGraph::Reset(vfoid)
-    virtual void Reset();
-    // win1.41 0040f1b0 mac 10351240 SetupVBarGraph::SetScale(float)
-    virtual void SetScale(float scale);
 
     // Constructors
 
@@ -70,7 +71,20 @@ public:
     void SetBar(int index, const VBarData* bar);
     // win1.41 0040f350 mac 103f1500 SetupVBarGraph::GetBar(int, VBarData &)
     void GetBar(int index, VBarData* result);
-};
+
+    // Override methods
+
+    // win1.41 0040e8b0 mac 10379480 SetupVBarGraph::Draw(bool, bool)
+    void Draw(bool hovered, bool selected);
+    // win1.41 0040ef70 mac 10350e50 SetupVBarGraph::KeyDown(int, int)
+    void KeyDown(enum LHKey key, enum LHKeyMod mod);
+    // win1.41 0040ef90 mac 103de920 SetupVBarGraph::~SetupVBarGraph(void)
+    ~SetupVBarGraph();
+    // win1.41 0040efb0 mac inlined SetupVBarGraph::Reset(vfoid)
+    void Reset();
+    // win1.41 0040f1b0 mac 10351240 SetupVBarGraph::SetScale(float)
+    void SetScale(float max_point, float min_point, bool centered_at_zero);
+  };
 
 #else // __cplusplus
 

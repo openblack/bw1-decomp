@@ -31,6 +31,34 @@
 #include <stdint.h> /* For uin32_t */
 #include <stdlib.h> /* For malloc */
 
+#ifdef __cplusplus
+
+template<typename T>
+class LHLinkedNode {
+    LHLinkedNode<T>* next;
+    T* payload;
+};
+template<typename T>
+class LHLinkedList {
+    LHLinkedNode<T>* head;
+    uint32_t count;
+    inline LHLinkedNode<T>* GetStart()
+    {
+        return head.get();
+    }
+    inline bool Add(T* val)
+    {
+        if (!val) return false;
+        LHLinkedNode<T>* node = new LHLinkedNode<T>(val);
+        node->next = head;
+        head = node;
+        ++count;
+        return true;
+    }
+};
+
+#else // __cplusplus
+
 #define DECLARE_LH_LINKED_LIST(T)   \
 struct LHLinkedNode__##T            \
 {                                   \
@@ -59,5 +87,7 @@ inline bool __fastcall Add__LHLinkedList__##T##FP##T(struct LHLinkedList__##T* t
   ++this->count;                                                                                                     \
   return true;                                                                                                       \
 }
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_LINKED_LIST_INCLUDED_H */

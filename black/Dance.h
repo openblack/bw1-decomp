@@ -52,17 +52,17 @@ public:
     // win1.41 0050b760 mac 102a81f0 Dance::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0050c760 mac 102a85a0 Dance::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0050c480 mac 102a8960 Dance::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0050b750 mac 102a81c0 Dance::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0050cb40 mac inlined Dance::GetArrivePos(MapCoords *)
     virtual MapCoords* GetArrivePos(MapCoords* param_1);
     // win1.41 0050b730 mac 102a8160 Dance::IsDance( const(void))
-    virtual uint32_t IsDance();
+    virtual bool IsDance();
     // win1.41 0050b710 mac 102a80e0 Dance::IsScriptContainer( const(void))
-    virtual uint32_t IsScriptContainer();
+    virtual bool IsScriptContainer();
     // win1.41 0050b740 mac 102a8190 Dance::GetText(void)
     virtual const char* GetText();
     // win1.41 0050c3c0 mac 102a9110 Dance::GetScriptObjectType(void)

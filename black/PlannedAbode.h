@@ -17,7 +17,7 @@
 
 class Abode;
 class Base;
-class GMultiMapFixedInfo;
+class GAbodeInfo;
 struct GPlannedAbodeInfo;
 class GameOSFile;
 class GameThing;
@@ -48,9 +48,9 @@ public:
     // win1.41 00405100 mac 10179a00 PlannedAbode::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00405860 mac 10260310 PlannedAbode::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual bool Load(GameOSFile& file);
     // win1.41 00405830 mac 10350950 PlannedAbode::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* file);
+    virtual bool Save(GameOSFile& file);
     // win1.41 004050f0 mac 10531c20 PlannedAbode::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 004061a0 mac 104333f0 PlannedAbode::IsWonder(void)
@@ -67,9 +67,9 @@ public:
     // Static methods
 
     // win1.41 004055c0 mac 103e4530 PlannedAbode::CreateNoInit(MapCoords const &, GAbodeInfo const *, Town *, float, float)
-    static PlannedAbode* CreateNoInit(MapCoords* coords, GMultiMapFixedInfo* info, Town* town, float param_4, float param_5);
+    static PlannedAbode* CreateNoInit(MapCoords& coords, GAbodeInfo* info, Town* town, float param_4, float param_5);
     // win1.41 00405600 mac 10479fb0 PlannedAbode::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float)
-    static PlannedAbode* Create(MapCoords* coords, GMultiMapFixedInfo* info, Town* town, float param_4, float param_5);
+    static PlannedAbode* Create(MapCoords& coords, GAbodeInfo* info, Town* town, float param_4, float param_5);
     // win1.41 00405660 mac 1043fad0 PlannedAbode::Create(Abode*)
     static PlannedAbode* Create(Abode* abode);
     // win1.41 004056d0 mac 10007bf0 PlannedAbode::GetInfo(void)
@@ -78,7 +78,7 @@ public:
     // Constructors
 
     // win1.41 00405080 mac 103e51a0 PlannedAbode::PlannedAbode(MapCoords const &, GAbodeInfo const *, Town *, float, float)
-    PlannedAbode(const MapCoords* coords, const GMultiMapFixedInfo* info, Town* town, float param_4, float param_5);
+    PlannedAbode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float param_4, float param_5);
     // win1.41 00405580 mac 103e4ca0 PlannedAbode::PlannedAbode(Abode*)
     PlannedAbode(Abode* abode);
 

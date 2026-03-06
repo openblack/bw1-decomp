@@ -39,17 +39,6 @@ public:
     virtual void ClickFunction(int param_1, int param_2, int param_3);
     // win1.41 004f7200 mac 10062140 Prss::StringFunction(long, char *, int)
     virtual void StringFunction(int param_1, char* param_2, int param_3);
-
-    // Override methods
-
-    // win1.41 00842130 mac 10063270 Prss::Terminate(void)
-    virtual void Terminate();
-    // win1.41 00842160 mac 100631e0 Prss::PrssKey(LH_KEY, unsigned short)
-    virtual void PrssKey(LH_KEY key, uint16_t param_2);
-    // win1.41 00842170 mac 10063170 Prss::PrssMouse(MouseInput *)
-    virtual void PrssMouse(MouseInput* param_1);
-    // win1.41 004f7200 mac 10062140 Prss::StringFunction(long, char *, int)
-    virtual void StringFunction(int param_1, char* param_2, int param_3);
 };
 
 #else // __cplusplus

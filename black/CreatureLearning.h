@@ -76,19 +76,19 @@ public:
     virtual ~CreatureLearningEpisode();
 };
 
-// win1.41 00bdfab8 mac inlined CreatureLearningContext::`RTTI Type Descriptor'
-// win1.41 009aaef0 mac inlined CreatureLearningContext::`RTTI Base Class Descriptor'
-// win1.41 009aaf08 mac inlined CreatureLearningContext::`RTTI Base Class Array'
-// win1.41 009aaf18 mac inlined CreatureLearningContext::`RTTI Class Hierarchy Descriptor'
-class CreatureLearningContext: public Base
-{
-public:
+// // win1.41 00bdfab8 mac inlined CreatureLearningContext::`RTTI Type Descriptor'
+// // win1.41 009aaef0 mac inlined CreatureLearningContext::`RTTI Base Class Descriptor'
+// // win1.41 009aaf08 mac inlined CreatureLearningContext::`RTTI Base Class Array'
+// // win1.41 009aaf18 mac inlined CreatureLearningContext::`RTTI Class Hierarchy Descriptor'
+// class CreatureLearningContext: public Base
+// {
+// public:
 
-    // Override methods
+//     // Override methods
 
-    // win1.41 004e1d30 mac 10262750 CreatureLearningContext::_dt(void)
-    virtual ~CreatureLearningContext();
-};
+//     // win1.41 004e1d30 mac 10262750 CreatureLearningContext::_dt(void)
+//     virtual ~CreatureLearningContext();
+// };
 
 #else // __cplusplus
 

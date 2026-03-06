@@ -57,9 +57,9 @@ public:
     // win1.41 0072ead0 mac 10150910 FireEffect::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00730df0 mac 1014bcc0 FireEffect::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00730b00 mac 1014c110 FireEffect::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0072eac0 mac 101508d0 FireEffect::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007310d0 mac 1014bc70 FireEffect::ResolveLoad(void)

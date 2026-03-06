@@ -63,33 +63,33 @@ public:
     // win1.41 0055cd40 mac 101515a0 StoragePit::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00733920 mac 10151890 StoragePit::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 007338d0 mac 10151930 StoragePit::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055cd30 mac 10151560 StoragePit::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055ccb0 mac inlined StoragePit::GetArrivePos(MapCoords *)
     virtual MapCoords* GetArrivePos(MapCoords* param_1);
     // win1.41 0055ccf0 mac 10151430 StoragePit::IsCastShadowAtNight(void)
-    virtual uint32_t IsCastShadowAtNight();
+    virtual bool IsCastShadowAtNight();
     // win1.41 0055cd10 mac 101514c0 StoragePit::CanBeEatenByCreature(Creature *)
-    virtual uint32_t CanBeEatenByCreature(Creature* param_1);
+    virtual bool CanBeEatenByCreature(Creature* param_1);
     // win1.41 0055cd00 mac 10151470 StoragePit::CanActAsAContainer(Creature *)
-    virtual uint32_t CanActAsAContainer(Creature* param_1);
+    virtual bool CanActAsAContainer(Creature* param_1);
     // win1.41 004e4b50 mac 105e4020 StoragePit::CanHaveMagicFoodCastOnMe(Creature *)
-    virtual uint32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
+    virtual bool CanHaveMagicFoodCastOnMe(Creature* param_1);
     // win1.41 004e4b70 mac 105e3f50 StoragePit::CanHaveMagicWoodCastOnMe(Creature *)
-    virtual uint32_t CanHaveMagicWoodCastOnMe(Creature* param_1);
+    virtual bool CanHaveMagicWoodCastOnMe(Creature* param_1);
     // win1.41 004e4990 mac 105e4670 StoragePit::IsStoragePit(Creature *)
-    virtual uint32_t IsStoragePit(Creature* param_1);
+    virtual bool IsStoragePit(Creature* param_1);
     // win1.41 004e4d90 mac 105e3860 StoragePit::IsStoragePitWithFoodInIt(Creature *)
-    virtual uint32_t IsStoragePitWithFoodInIt(Creature* param_1);
+    virtual bool IsStoragePitWithFoodInIt(Creature* param_1);
     // win1.41 004e49a0 mac 105e4580 StoragePit::IsStoragePitBelongingToAnotherPlayer(Creature *)
-    virtual uint32_t IsStoragePitBelongingToAnotherPlayer(Creature* param_1);
+    virtual bool IsStoragePitBelongingToAnotherPlayer(Creature* param_1);
     // win1.41 004e49e0 mac 105e44a0 StoragePit::IsStoragePitBelongingToMyPlayer(Creature *)
-    virtual uint32_t IsStoragePitBelongingToMyPlayer(Creature* param_1);
+    virtual bool IsStoragePitBelongingToMyPlayer(Creature* param_1);
     // win1.41 007336b0 mac 10151ed0 StoragePit::IsPoisoned(void)
-    virtual uint32_t IsPoisoned();
+    virtual bool IsPoisoned();
     // win1.41 00519350 mac 1001a950 StoragePit::Draw(void)
     virtual void Draw();
     // win1.41 00733a20 mac 101515e0 StoragePit::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
@@ -97,7 +97,7 @@ public:
     // win1.41 00732e80 mac 10152d50 StoragePit::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 0055ccd0 mac 101513a0 StoragePit::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 0055cd20 mac 10151510 StoragePit::IsResourceStore(RESOURCE_TYPE)
     virtual bool IsResourceStore(RESOURCE_TYPE param_1);
     // win1.41 00733750 mac 10151c60 StoragePit::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)

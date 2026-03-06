@@ -42,11 +42,11 @@ public:
     // win1.41 00422140 mac 100a5490 Feature::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
     // win1.41 00422150 mac 100a54d0 Feature::CanBePickedUpByCreature(Creature *)
-    virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+    virtual bool CanBePickedUpByCreature(Creature* param_1);
     // win1.41 005276d0 mac 100d0c30 Feature::IsMushroom(Creature *)
-    virtual uint32_t IsMushroom(Creature* param_1);
+    virtual bool IsMushroom(Creature* param_1);
     // win1.41 004220e0 mac 100a5350 Feature::IsFeature(void)
-    virtual uint32_t IsFeature();
+    virtual bool IsFeature();
     // win1.41 005277d0 mac 100d0890 Feature::GetQueryFirstEnumText(void)
     virtual HELP_TEXT GetQueryFirstEnumText();
     // win1.41 00527820 mac 100d07b0 Feature::GetQueryLastEnumText(void)
@@ -54,11 +54,11 @@ public:
     // win1.41 005276c0 mac 10008370 Feature::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 004220d0 mac 100a52b0 Feature::GetMesh( const(void))
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 00518690 mac 100238a0 Feature::Draw(void)
     virtual void Draw();
     // win1.41 005275b0 mac 100d0dc0 Feature::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 };
 
 #else // __cplusplus

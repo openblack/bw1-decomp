@@ -5,6 +5,25 @@
 
 #include <chlasm/CreatureEnum.h> /* For enum CREATURE_TYPE */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LH3DSprite;
+
+struct BookmarkGraphic
+{
+    LH3DSprite* sprite; /* 0x0 */
+    CREATURE_TYPE type;
+
+    // Static methods
+
+    // win1.41 0043a7d0 mac 100b5760 BookmarkGraphic::Create(long, CREATURE_TYPE)
+    static BookmarkGraphic* Create(int param_1, CREATURE_TYPE type);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LH3DSprite;
@@ -20,5 +39,7 @@ static_assert(sizeof(struct BookmarkGraphic) == 0x8, "Data type is of wrong size
 
 // win1.41 0043a7d0 mac 100b5760 BookmarkGraphic::Create(long, CREATURE_TYPE)
 struct BookmarkGraphic* __cdecl Create__15BookmarkGraphicFl13CREATURE_TYPE(int param_1, enum CREATURE_TYPE type) asm("?Create@BookmarkGraphic@@SAPAV1@JW4CREATURE_TYPE@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_BOOKMARK_INCLUDED_H */

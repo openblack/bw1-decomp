@@ -25,7 +25,7 @@ public:
     // Override methods
 
     // win1.41 005441c0 mac 105bb390 SkipBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
     // win1.41 00544430 mac 105bb330 SkipBox::Destroy(void)
     virtual void Destroy();
     // win1.41 0053bd60 mac 105c5e80 SkipBox::CanESCOut(void)

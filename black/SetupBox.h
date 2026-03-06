@@ -44,7 +44,7 @@ public:
     uint32_t field_0xa4;
     uint32_t field_0xa8;
     uint32_t default_text_size;
-    FuncPtr(name='SetupBox__field_0xb0', call_type='__stdcall', result='void', args=['int', 'struct SetupBox*', 'struct SetupControl*', 'int', 'int'], arg_labels=['param_0', 'param_1', 'param_2', 'x', 'y'], decorated_name='SetupBox__field_0xb0', indirection_level=1) field_0xb0;
+    void (__stdcall* field_0xb0)(int param_0, SetupBox* param_1, SetupControl* param_2, int x, int y);
     uint32_t field_0xb4;
     uint32_t field_0xb8;
     SetupControl* field_0xbc;
