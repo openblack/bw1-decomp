@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf4888 mac inlined MPFEReplyToInviteMessage::`RTTI Type Descriptor'
+// win1.41 009b2278 mac inlined MPFEReplyToInviteMessage::`RTTI Base Class Descriptor'
+// win1.41 009b2290 mac inlined MPFEReplyToInviteMessage::`RTTI Base Class Array'
+// win1.41 009b22a0 mac inlined MPFEReplyToInviteMessage::`RTTI Class Hierarchy Descriptor'
+class MPFEReplyToInviteMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 006274f0 mac 10397500 MPFEReplyToInviteMessage::_dt(void)
+    virtual ~MPFEReplyToInviteMessage();
+};
+
+#else // __cplusplus
+
 struct MPFEReplyToInviteMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 006274f0 mac 10397500 MPFEReplyToInviteMessage::_dt(void)
 void __fastcall __dt__24MPFEReplyToInviteMessageFv(struct MPFEMessageObject* this) asm("??_GMPFEReplyToInviteMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_REPLY_TO_INVITE_MESSAGE_INCLUDED_H */

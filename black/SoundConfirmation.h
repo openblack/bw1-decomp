@@ -8,6 +8,24 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00c22188 mac inlined GConfirmation::`RTTI Type Descriptor'
+// win1.41 009b90b8 mac inlined GConfirmation::`RTTI Base Class Descriptor'
+// win1.41 009b90d0 mac inlined GConfirmation::`RTTI Base Class Array'
+// win1.41 009b90e0 mac inlined GConfirmation::`RTTI Class Hierarchy Descriptor'
+class GConfirmation: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 0071a4e0 mac 1050d010 GConfirmation::_dt(void)
+    virtual ~GConfirmation();
+};
+
+#else // __cplusplus
+
 struct GConfirmation
 {
   struct Base super;  /* 0x0 */
@@ -29,5 +47,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 0071a4e0 mac 1050d010 GConfirmation::_dt(void)
 void __fastcall __dt__13GConfirmationFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGConfirmation@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SOUND_CONFIRMATION_INCLUDED_H */

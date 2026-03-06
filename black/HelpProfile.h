@@ -9,6 +9,40 @@
 #include "Base.h" /* For struct Base */
 #include "HelpSystem.h" /* For enum HELP_EVENT_TYPE */
 
+#ifdef __cplusplus
+
+// win1.41 00bf0b98 mac inlined HelpProfile::`RTTI Type Descriptor'
+// win1.41 009b1248 mac inlined HelpProfile::`RTTI Base Class Descriptor'
+// win1.41 009b1260 mac inlined HelpProfile::`RTTI Base Class Array'
+// win1.41 009b1270 mac inlined HelpProfile::`RTTI Class Hierarchy Descriptor'
+// win1.41 00915454 mac 1099be34 HelpProfile::`RTTI Complete Object Locator'
+// win1.41 00915458 mac 1099be3c HelpProfile::`vftable'
+class HelpProfile: public Base
+{
+public:
+    CameraHelpAccumulator accumulators[0x31]; /* 0x8 */
+    uint32_t field_0x3354;
+
+    // Override methods
+
+    // win1.41 005c4560 mac 1034b480 HelpProfile::_dt(void)
+    virtual ~HelpProfile();
+
+    // Static methods
+
+    // win1.41 005c4500 mac 1034b3b0 HelpProfile::Create(void)
+    static HelpProfile* Create();
+
+    // Non-virtual methods
+
+    // win1.41 005c46e0 mac 100895a0 HelpProfile::Trigger(HELP_EVENT_TYPE)
+    void Trigger(HELP_EVENT_TYPE param_1);
+    // win1.41 005c4770 mac 1034b310 HelpProfile::SetToZero(void)
+    void SetToZero();
+};
+
+#else // __cplusplus
+
 struct CameraHelpAccumulator
 {
   uint8_t field_0x0[0x10c];
@@ -59,5 +93,7 @@ void __fastcall SetToZero__11HelpProfileFv(struct HelpProfile* this) asm("?SetTo
 
 // win1.41 005c4560 mac 1034b480 HelpProfile::_dt(void)
 void __fastcall __dt__11HelpProfileFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GHelpProfile@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HELP_PROFILE_INCLUDED_H */

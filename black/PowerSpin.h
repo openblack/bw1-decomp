@@ -7,6 +7,31 @@
 
 #include "DrawingObject.h" /* For struct DrawingObject */
 
+#ifdef __cplusplus
+
+// win1.41 00c02088 mac inlined PowerSpin::`RTTI Type Descriptor'
+// win1.41 009b34f0 mac inlined PowerSpin::`RTTI Base Class Descriptor'
+class PowerSpin: public DrawingObject
+{
+public:
+};
+
+// win1.41 00c020a0 mac inlined PowerSpinRunner::`RTTI Type Descriptor'
+// win1.41 009b3508 mac inlined PowerSpinRunner::`RTTI Base Class Descriptor'
+// win1.41 009b3520 mac inlined PowerSpinRunner::`RTTI Base Class Array'
+// win1.41 009b3530 mac inlined PowerSpinRunner::`RTTI Class Hierarchy Descriptor'
+class PowerSpinRunner: public PowerSpin
+{
+public:
+
+    // Override methods
+
+    // win1.41 0066fcb0 mac inlined PowerSpinRunner::DummyThereIsNoDrawingObjectVftableItsPureVirtualButCRequiresAValue(void)
+    virtual void DummyThereIsNoDrawingObjectVftableItsPureVirtualButCRequiresAValue();
+};
+
+#else // __cplusplus
+
 struct PowerSpin
 {
   struct DrawingObject super;  /* 0x0 */
@@ -41,5 +66,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 0066fcb0 mac inlined PowerSpinRunner::DummyThereIsNoDrawingObjectVftableItsPureVirtualButCRequiresAValue(void)
 void __fastcall DummyThereIsNoDrawingObjectVftableItsPureVirtualButCRequiresAValue__15PowerSpinRunnerFv(struct DrawingObject* this) asm("?DummyThereIsNoDrawingObjectVftableItsPureVirtualButCRequiresAValue@PowerSpinRunner@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_POWER_SPIN_INCLUDED_H */

@@ -8,6 +8,33 @@
 
 #include "HandState.h" /* For struct HandState */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CHand;
+
+// win1.41 00bf0158 mac inlined HandStateHolding::`RTTI Type Descriptor'
+// win1.41 009b0f78 mac inlined HandStateHolding::`RTTI Base Class Descriptor'
+// win1.41 009b0fe0 mac inlined HandStateHolding::`RTTI Base Class Array'
+// win1.41 009b0ff0 mac inlined HandStateHolding::`RTTI Class Hierarchy Descriptor'
+// win1.41 00900b3c mac 1099b3a4 HandStateHolding::`RTTI Complete Object Locator'
+// win1.41 00900b40 mac 1099b3b4 HandStateHolding::`vftable'
+class HandStateHolding: public HandState
+{
+public:
+    uintptr_t field_0x8;
+    uintptr_t field_0x10;
+    uint8_t field_0xC[0x134]; /* 0x10 */
+
+    // Constructors
+
+    // win1.41 005b3aa0 mac 1033bba0 HandStateHolding::HandStateHolding(CHand*)
+    HandStateHolding(CHand* hand);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CHand;
@@ -40,5 +67,7 @@ extern const struct HandStateVftable __vt__16HandStateHolding asm("??_7HandState
 
 // win1.41 005b3aa0 mac 1033bba0 HandStateHolding::HandStateHolding(CHand*)
 struct HandStateHolding* __fastcall __ct__16HandStateHoldingFP5CHand(struct HandStateHolding* this, const void* edx, struct CHand* hand) asm("??0HandStateHolding@@QAE@PAVCHand@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HAND_STATE_HOLDING_INCLUDED_H */

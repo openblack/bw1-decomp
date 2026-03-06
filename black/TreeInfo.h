@@ -8,6 +8,31 @@
 
 #include "SingleMapFixedInfo.h" /* For struct GSingleMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c22fa8 mac inlined GTreeInfo::`RTTI Type Descriptor'
+// win1.41 009b9c78 mac inlined GTreeInfo::`RTTI Base Class Descriptor'
+// win1.41 009b9c90 mac inlined GTreeInfo::`RTTI Base Class Array'
+// win1.41 009b9ca8 mac inlined GTreeInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 0099a120 mac 1075e054 GTreeInfo::`RTTI Complete Object Locator'
+// win1.41 0099a124 mac 1075e05c GTreeInfo::`vftable'
+class GTreeInfo: public GSingleMapFixedInfo
+{
+public:
+    uint8_t field_0x100[0x40];
+
+    // Override methods
+
+    // win1.41 00749dd0 mac 10155680 GTreeInfo::_dt(void)
+    virtual ~GTreeInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -38,5 +63,7 @@ extern const struct GObjectInfoVftable __vt__9GTreeInfo asm("??_7GTreeInfo@@6B@"
 
 // win1.41 00749dd0 mac 10155680 GTreeInfo::_dt(void)
 void __fastcall __dt__9GTreeInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGTreeInfo@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_TREE_INFO_INCLUDED_H */

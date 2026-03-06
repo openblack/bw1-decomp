@@ -10,6 +10,60 @@
 
 #include "MobileObject.h" /* For struct MobileObject */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+class GameThingWithPos;
+struct MapCoords;
+class Object;
+
+// win1.41 00bee188 mac inlined Whale::`RTTI Type Descriptor'
+// win1.41 009b0358 mac inlined Whale::`RTTI Base Class Descriptor'
+// win1.41 009b0370 mac inlined Whale::`RTTI Base Class Array'
+// win1.41 009b0390 mac inlined Whale::`RTTI Class Hierarchy Descriptor'
+// win1.41 008febe8 mac 1075fc5c Whale::`RTTI Complete Object Locator'
+// win1.41 008febec mac 1075fc64 Whale::`vftable'
+class Whale: public MobileObject
+{
+public:
+    uint8_t field_0x68[0xc];
+
+    // Override methods
+
+    // win1.41 005612c0 mac 1015fe80 Whale::_dt(void)
+    virtual ~Whale();
+    // win1.41 00774c00 mac 10160d10 Whale::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 005612b0 mac 10160000 Whale::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 007752c0 mac 10160090 Whale::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 007752a0 mac 101600f0 Whale::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 005612a0 mac 1015ffd0 Whale::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 007752e0 mac 10160040 Whale::ResolveLoad(void)
+    virtual void ResolveLoad();
+    // win1.41 00561280 mac 1015ff90 Whale::PhysicsEditorCreate(int)
+    virtual void PhysicsEditorCreate(int param_1);
+    // win1.41 00775280 mac 10160150 Whale::Process(void)
+    virtual uint32_t Process();
+    // win1.41 00774e10 mac 101609a0 Whale::Draw(void)
+    virtual void Draw();
+    // win1.41 00774ca0 mac 10160a20 Whale::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 00561270 mac 1015ff50 Whale::InteractsWithPhysicsObjects(void)
+    virtual bool InteractsWithPhysicsObjects();
+    // win1.41 00561290 mac 1015ff10 Whale::CanBecomeAPhysicsObject(void)
+    virtual bool CanBecomeAPhysicsObject();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -71,5 +125,7 @@ bool __fastcall InteractsWithPhysicsObjects__5WhaleFv(struct Object* this) asm("
 bool __fastcall CanBecomeAPhysicsObject__5WhaleFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Whale@@UAE_NXZ");
 
 DECLARE_LH_LIST_HEAD(Whale);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_WHALE_INCLUDED_H */

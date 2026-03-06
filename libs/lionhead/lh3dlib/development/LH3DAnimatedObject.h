@@ -8,6 +8,31 @@
 
 #include "LH3DMeshedObject.h" /* For struct LH3DMeshedObject */
 
+#ifdef __cplusplus
+
+// win1.41 009a329c mac 101cc084 LH3DAnimatedObject::`RTTI Complete Object Locator'
+// win1.41 009a32a0 mac 101cc08c LH3DAnimatedObject::`vftable'
+class LH3DAnimatedObject: public LH3DMeshedObject
+{
+public:
+    uint32_t current_anim; /* 0x80 */
+    uint32_t field_0x84;
+    uint32_t field_0x88;
+    uint32_t field_0x8c;
+    uint32_t field_0x90;
+    uint32_t field_0x94;
+    uint32_t field_0x98;
+    uint32_t field_0x9c;
+    uint32_t field_0xa0;
+
+    // Constructors
+
+    // win1.41 inlined mac inlined LH3DAnimatedObject::LH3DAnimatedObject(void)
+    LH3DAnimatedObject();
+};
+
+#else // __cplusplus
+
 struct LH3DAnimatedObject
 {
   struct LH3DMeshedObject super;  /* 0x0 */
@@ -34,5 +59,7 @@ extern const struct LH3DObjectVftable __vt__18LH3DAnimatedObject asm("??_7LH3DAn
 
 // win1.41 inlined mac inlined LH3DAnimatedObject::LH3DAnimatedObject(void)
 struct LH3DAnimatedObject* __fastcall __ct__18LH3DAnimatedObjectFv(struct LH3DAnimatedObject* this) asm("??0LH3DAnimatedObject@@QAE@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_ANIMATED_OBJECT_INCLUDED_H */

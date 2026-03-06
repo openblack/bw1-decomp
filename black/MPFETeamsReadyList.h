@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf49f8 mac inlined MPFETeamsReadyList::`RTTI Type Descriptor'
+// win1.41 009b2458 mac inlined MPFETeamsReadyList::`RTTI Base Class Descriptor'
+// win1.41 009b2470 mac inlined MPFETeamsReadyList::`RTTI Base Class Array'
+// win1.41 009b2480 mac inlined MPFETeamsReadyList::`RTTI Class Hierarchy Descriptor'
+class MPFETeamsReadyList: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00627ee0 mac inlined MPFETeamsReadyList::_dt(void)
+    virtual ~MPFETeamsReadyList();
+};
+
+#else // __cplusplus
+
 struct MPFETeamsReadyList
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00627ee0 mac inlined MPFETeamsReadyList::_dt(void)
 void __fastcall __dt__18MPFETeamsReadyListFv(struct MPFEMessageObject* this) asm("??_GMPFETeamsReadyList@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_TEAMS_READY_LIST_INCLUDED_H */

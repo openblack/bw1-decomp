@@ -4,6 +4,15 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uintptr_t */
 
+#ifdef __cplusplus
+
+class LHPacketisableObject
+{
+public:
+};
+
+#else // __cplusplus
+
 struct LHPacketisableObjectVftable
 {
   uintptr_t (__fastcall* GetEncodedLength)(void* param_0, const void* edx);  /* 0x0 */
@@ -18,5 +27,7 @@ struct LHPacketisableObject
   struct LHPacketisableObjectVftable* vftable;  /* 0x0 */
 };
 static_assert(sizeof(struct LHPacketisableObject) == 0x4, "Data type is of wrong size");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_PACKETISABLE_OBJECT_INCLUDED_H */

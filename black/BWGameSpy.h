@@ -8,6 +8,26 @@
 
 #include "LayerCommunication.h" /* For struct LayerCommunication */
 
+#ifdef __cplusplus
+
+// win1.41 009cd680 mac inlined BWGameSpy::`RTTI Type Descriptor'
+// win1.41 009a8700 mac inlined BWGameSpy::`RTTI Base Class Descriptor'
+// win1.41 009a8718 mac inlined BWGameSpy::`RTTI Base Class Array'
+// win1.41 009a8728 mac inlined BWGameSpy::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c7058 mac 109edca4 BWGameSpy::`RTTI Complete Object Locator'
+// win1.41 008c705c mac 109edcac BWGameSpy::`vftable'
+class BWGameSpy: public LayerCommunication
+{
+public:
+
+    // Override methods
+
+    // win1.41 0043e290 mac 105d1460 BWGameSpy::Connect(void)
+    virtual uint32_t Connect();
+};
+
+#else // __cplusplus
+
 struct BWGameSpy
 {
   struct LayerCommunication super;  /* 0x0 */
@@ -33,5 +53,7 @@ extern const struct LayerCommunicationVftable __vt__9BWGameSpy asm("??_7BWGameSp
 
 // win1.41 0043e290 mac 105d1460 BWGameSpy::Connect(void)
 uint32_t __fastcall Connect__9BWGameSpyFv(struct LayerCommunication* this) asm("?Connect@BWGameSpy@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_BW_GAME_SPY_INCLUDED_H */

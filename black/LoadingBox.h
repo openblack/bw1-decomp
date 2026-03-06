@@ -8,6 +8,30 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea2d8 mac inlined LoadingBox::`RTTI Type Descriptor'
+// win1.41 009ac7e0 mac inlined LoadingBox::`RTTI Base Class Descriptor'
+// win1.41 009ac7f8 mac inlined LoadingBox::`RTTI Base Class Array'
+// win1.41 009ac808 mac inlined LoadingBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008deb50 mac 109ed8d4 LoadingBox::`RTTI Complete Object Locator'
+// win1.41 008deb54 mac 109ed8dc LoadingBox::`vftable'
+class LoadingBox: public DialogBoxBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 0053d4c0 mac 105c34f0 LoadingBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 0053d4f0 mac 105c3490 LoadingBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0053d500 mac 105c3450 LoadingBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct LoadingBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -37,5 +61,7 @@ void __fastcall Init__10LoadingBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct D
 void __fastcall Destroy__10LoadingBoxFv(struct DialogBoxBase* this) asm("?Destroy@LoadingBox@@UAEXXZ");
 // win1.41 0053d500 mac 105c3450 LoadingBox::InitControls(void)
 void __fastcall InitControls__10LoadingBoxFv(struct DialogBoxBase* this) asm("?InitControls@LoadingBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LOADING_BOX_INCLUDED_H */

@@ -9,6 +9,61 @@
 
 #include "Object.h" /* For struct Object, struct ObjectVftable */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GInterfaceStatus;
+class GMobileInfo;
+class GameOSFile;
+class GameThing;
+struct GestureSystemPacketData;
+struct MapCoords;
+
+// win1.41 009c8db0 mac inlined Mobile::`RTTI Type Descriptor'
+// win1.41 009a6be8 mac inlined Mobile::`RTTI Base Class Descriptor'
+// win1.41 009a9688 mac inlined Mobile::`RTTI Base Class Array'
+// win1.41 009a96a0 mac inlined Mobile::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ce74c mac 10732c28 Mobile::`RTTI Complete Object Locator'
+// win1.41 008ce750 mac 10732c50 Mobile::`vftable'
+class Mobile: public Object
+{
+public:
+    uint16_t field_0x54;
+
+    // Virtual functions
+
+
+    // Override methods
+
+    // win1.41 004748e0 mac 100c0800 Mobile::_dt(void)
+    virtual ~Mobile();
+    // win1.41 00606c70 mac 103ba4e0 Mobile::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00606c10 mac 103ba5b0 Mobile::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 00606cd0 mac 103ba4a0 Mobile::BlocksTownClearArea( const(void))
+    virtual bool BlocksTownClearArea();
+    // win1.41 00425b00 mac 100adca0 Mobile::ValidForPlaceInHand(GInterfaceStatus *)
+    virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+    // win1.41 00416f50 mac 100adcf0 Mobile::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+    virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
+    // win1.41 00606bf0 mac 103ba690 Mobile::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
+    virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2, GestureSystemPacketData* param_3);
+    // win1.41 00416f60 mac 100add50 Mobile::ApplyOnlyAfterReleased(void)
+    virtual uint32_t ApplyOnlyAfterReleased();
+
+    // Constructors
+
+    // win1.41 0055c790 mac 100c0890 Mobile::Mobile(void)
+    Mobile();
+    // win1.41 005ec000 mac inlined Mobile::Mobile(MapCoords const &, GMobileInfo const *)
+    Mobile(MapCoords* coords, GMobileInfo* info);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -79,5 +134,7 @@ uint32_t __fastcall ValidToApplyThisToMapCoord__6MobileFP16GInterfaceStatusRC9Ma
 uint32_t __fastcall ApplyThisToMapCoord__6MobileFP16GInterfaceStatusRC9MapCoordsP23GestureSystemPacketData(struct Object* this, const void* edx, struct GInterfaceStatus* param_1, const struct MapCoords* param_2, struct GestureSystemPacketData* param_3) asm("?ApplyThisToMapCoord@Mobile@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@PAUGestureSystemPacketData@@@Z");
 // win1.41 00416f60 mac 100add50 Mobile::ApplyOnlyAfterReleased(void)
 uint32_t __fastcall ApplyOnlyAfterReleased__6MobileFv(struct Object* this) asm("?ApplyOnlyAfterReleased@Mobile@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MOBILE_INCLUDED_H */

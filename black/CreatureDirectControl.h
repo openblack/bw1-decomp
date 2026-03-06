@@ -8,6 +8,24 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 009d9810 mac inlined CreatureCommand::`RTTI Type Descriptor'
+// win1.41 009a9be0 mac inlined CreatureCommand::`RTTI Base Class Descriptor'
+// win1.41 009a9bf8 mac inlined CreatureCommand::`RTTI Base Class Array'
+// win1.41 009a9c08 mac inlined CreatureCommand::`RTTI Class Hierarchy Descriptor'
+class CreatureCommand: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 004c7420 mac inlined CreatureCommand::_dt(void)
+    virtual ~CreatureCommand();
+};
+
+#else // __cplusplus
+
 struct CreatureCommand
 {
   struct Base super;  /* 0x0 */
@@ -29,5 +47,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 004c7420 mac inlined CreatureCommand::_dt(void)
 void __fastcall __dt__15CreatureCommandFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureCommand@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_DIRECT_CONTROL_INCLUDED_H */

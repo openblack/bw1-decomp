@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf4c20 mac inlined MPFEChangeClanRequest::`RTTI Type Descriptor'
+// win1.41 009b2638 mac inlined MPFEChangeClanRequest::`RTTI Base Class Descriptor'
+// win1.41 009b2650 mac inlined MPFEChangeClanRequest::`RTTI Base Class Array'
+// win1.41 009b2660 mac inlined MPFEChangeClanRequest::`RTTI Class Hierarchy Descriptor'
+class MPFEChangeClanRequest: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 0062c160 mac 10397200 MPFEChangeClanRequest::_dt(void)
+    virtual ~MPFEChangeClanRequest();
+};
+
+#else // __cplusplus
+
 struct MPFEChangeClanRequest
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 0062c160 mac 10397200 MPFEChangeClanRequest::_dt(void)
 void __fastcall __dt__21MPFEChangeClanRequestFv(struct MPFEMessageObject* this) asm("??_GMPFEChangeClanRequest@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_CHANGE_CLAN_REQUEST_INCLUDED_H */

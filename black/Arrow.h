@@ -8,6 +8,32 @@
 
 #include "MobileObject.h" /* For struct MobileObject */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GPlayer;
+class GameThing;
+
+// win1.41 009c96b8 mac inlined Arrow::`RTTI Type Descriptor'
+// win1.41 009a7b78 mac inlined Arrow::`RTTI Base Class Descriptor'
+// win1.41 009a7b90 mac inlined Arrow::`RTTI Base Class Array'
+// win1.41 009a7bb0 mac inlined Arrow::`RTTI Class Hierarchy Descriptor'
+class Arrow: public MobileObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00425c00 mac inlined Arrow::_dt(void)
+    virtual ~Arrow();
+    // win1.41 00425bf0 mac inlined Arrow::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -37,5 +63,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__5ArrowFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GArrow@@UAEPAXI@Z");
 // win1.41 00425bf0 mac inlined Arrow::GetPlayer(void)
 struct GPlayer* __fastcall GetPlayer__5ArrowFv(struct GameThing* this) asm("?GetPlayer@Arrow@@UAEPAVGPlayer@@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ARROW_INCLUDED_H */

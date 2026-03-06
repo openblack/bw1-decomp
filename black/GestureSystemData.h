@@ -8,6 +8,32 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bec418 mac inlined GestureSystemData::`RTTI Type Descriptor'
+// win1.41 009ad1f0 mac inlined GestureSystemData::`RTTI Base Class Descriptor'
+// win1.41 009ad208 mac inlined GestureSystemData::`RTTI Base Class Array'
+// win1.41 009ad218 mac inlined GestureSystemData::`RTTI Class Hierarchy Descriptor'
+// win1.41 008df7dc mac 107330c0 GestureSystemData::`RTTI Complete Object Locator'
+// win1.41 008df7e0 mac 107330c8 GestureSystemData::`vftable'
+class GestureSystemData: public Base
+{
+public:
+    uint8_t field_0x8[0x654];
+
+    // Override methods
+
+    // win1.41 00579690 mac 1042dc90 GestureSystemData::_dt(void)
+    virtual ~GestureSystemData();
+
+    // Constructors
+
+    // win1.41 0054baf0 mac inlined GestureSystemData::GestureSystemData(void)
+    GestureSystemData();
+};
+
+#else // __cplusplus
+
 struct GestureSystemData
 {
   struct Base super;  /* 0x0 */
@@ -39,5 +65,7 @@ struct GestureSystemData* __fastcall __ct__17GestureSystemDataFv(struct GestureS
 
 // win1.41 00579690 mac 1042dc90 GestureSystemData::_dt(void)
 void __fastcall __dt__17GestureSystemDataFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGestureSystemData@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_GESTURE_SYSTEM_DATA_INCLUDED_H */

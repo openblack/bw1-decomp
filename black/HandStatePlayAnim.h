@@ -8,6 +8,41 @@
 
 #include "HandState.h" /* For struct HandState */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CHand;
+struct LHMatrix;
+
+// win1.41 00bf0220 mac inlined HandStatePlayAnim::`RTTI Type Descriptor'
+// win1.41 009b10b8 mac inlined HandStatePlayAnim::`RTTI Base Class Descriptor'
+// win1.41 009b10d0 mac inlined HandStatePlayAnim::`RTTI Base Class Array'
+// win1.41 009b10e0 mac inlined HandStatePlayAnim::`RTTI Class Hierarchy Descriptor'
+// win1.41 00900bc0 mac 1099b904 HandStatePlayAnim::`RTTI Complete Object Locator'
+// win1.41 00900bc4 mac 1099b90c HandStatePlayAnim::`vftable'
+class HandStatePlayAnim: public HandState
+{
+public:
+    uint8_t field_0x8[0x10];
+    uint32_t field_0x18;
+    uint32_t field_0x1C;
+
+    // Override methods
+
+    // win1.41 005b7510 mac 1033cb10 HandStatePlayAnim::Enter(void)
+    virtual void Enter();
+    // win1.41 005b7520 mac 1033c970 HandStatePlayAnim::Update(float, LHMatrix *)
+    virtual void Update(float param_1, LHMatrix* param_2);
+
+    // Constructors
+
+    // win1.41 005b74f0 mac 1033cb50 HandStatePlayAnim::HandStatePlayAnim(CHand*)
+    HandStatePlayAnim(CHand* hand);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CHand;
@@ -48,5 +83,7 @@ struct HandStatePlayAnim* __fastcall __ct__17HandStatePlayAnimFP5CHand(struct Ha
 void __fastcall Enter__17HandStatePlayAnimFv(struct HandState* this) asm("?Enter@HandStatePlayAnim@@UAEXXZ");
 // win1.41 005b7520 mac 1033c970 HandStatePlayAnim::Update(float, LHMatrix *)
 void __fastcall Update__17HandStatePlayAnimFfP8LHMatrix(struct HandState* this, const void* edx, float param_1, struct LHMatrix* param_2) asm("?Update@HandStatePlayAnim@@UAEXMPAULHMatrix@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HAND_STATE_PLAY_ANIM_INCLUDED_H */

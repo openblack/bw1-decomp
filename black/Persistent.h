@@ -5,6 +5,61 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct PropertyList;
+
+// win1.41 00bef860 mac inlined Persistent::`RTTI Type Descriptor'
+// win1.41 009b0798 mac inlined Persistent::`RTTI Base Class Descriptor'
+// win1.41 009b07b0 mac inlined Persistent::`RTTI Base Class Array'
+// win1.41 009b07b8 mac inlined Persistent::`RTTI Class Hierarchy Descriptor'
+// win1.41 009001dc mac 10999f78 Persistent::`vftable'
+class Persistent
+{
+public:
+    // Virtual functions
+
+    // win1.41 00580a10 mac 102cb7a0 Persistent::VirtualFunc(void)
+    virtual void VirtualFunc(); /* 0x0 */
+    // win1.41 00580a20 mac 102cb7e0 Persistent::OnLoaded(void)
+    virtual void OnLoaded();
+    // win1.41 00580a40 mac 102cbd80 Persistent::_dt(void)
+    virtual ~Persistent();
+    // win1.41 00580a30 mac 102cb810 Persistent::DefineProperties(PropertyList *)
+    virtual void DefineProperties(PropertyList* list);
+
+    // Override methods
+
+    // win1.41 00580a10 mac 102cb7a0 Persistent::VirtualFunc(void)
+    virtual void VirtualFunc();
+    // win1.41 00580a20 mac 102cb7e0 Persistent::OnLoaded(void)
+    virtual void OnLoaded();
+    // win1.41 00580a40 mac 102cbd80 Persistent::_dt(void)
+    virtual ~Persistent();
+    // win1.41 00580a30 mac 102cb810 Persistent::DefineProperties(PropertyList *)
+    virtual void DefineProperties(PropertyList* param_1);
+};
+
+// win1.41 00c021a0 mac inlined FloatProvider::`RTTI Type Descriptor'
+// win1.41 009b5f38 mac inlined FloatProvider::`RTTI Base Class Descriptor'
+// win1.41 009b5fa0 mac inlined FloatProvider::`RTTI Base Class Array'
+// win1.41 009b5fb0 mac inlined FloatProvider::`RTTI Class Hierarchy Descriptor'
+class FloatProvider: public Persistent
+{
+public:
+
+    // Override methods
+
+    // win1.41 006b80a0 mac 103e5a90 FloatProvider::_dt(void)
+    virtual ~FloatProvider();
+    // win1.41 006b8090 mac 103e5b20 FloatProvider::DefineProperties(PropertyList *)
+    virtual void DefineProperties(PropertyList* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Persistent;
@@ -72,5 +127,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__13FloatProviderFv(struct Persistent* this) asm("??_GFloatProvider@@UAEPAXI@Z");
 // win1.41 006b8090 mac 103e5b20 FloatProvider::DefineProperties(PropertyList *)
 void __fastcall DefineProperties__13FloatProviderFP12PropertyList(struct Persistent* this, const void* edx, struct PropertyList* param_1) asm("?DefineProperties@FloatProvider@@UAEXPAUPropertyList@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PERSISTENT_INCLUDED_H */

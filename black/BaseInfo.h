@@ -10,6 +10,96 @@
 
 #include "Base.h" /* For struct Base, struct BaseVftable */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LHColor;
+
+// win1.41 009c7e98 mac inlined GBaseInfo::`RTTI Type Descriptor'
+// win1.41 009a6320 mac inlined GBaseInfo::`RTTI Base Class Descriptor'
+// win1.41 009a8058 mac inlined GBaseInfo::`RTTI Base Class Array'
+// win1.41 009a8068 mac inlined GBaseInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c4d18 mac 10730abc GBaseInfo::`RTTI Complete Object Locator'
+// win1.41 008c4d1c mac 10730acc GBaseInfo::`vftable'
+class GBaseInfo: public Base
+{
+public:
+    GBaseInfo* next; /* 0x8 */
+    int index;
+
+    // Virtual functions
+
+    // win1.41 004140b0 mac 10578110 GBaseInfo::GetDebugText(void) const
+    virtual const char* GetDebugText(); /* 0x1c */
+    // win1.41 00436c60 mac 1055df70 GBaseInfo::GetDebugColor(void) const
+    virtual LHColor* GetDebugColor(LHColor* color); /* 0x20 */
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    // win1.41 00401230 mac 101228b0 GBaseInfo::UpdateValue(void)
+    virtual void UpdateValue(float param_1, uint32_t param_2, uint32_t param_3);
+
+    // Override methods
+
+    // win1.41 0042e600 mac 10429820 GBaseInfo::_dt(void)
+    virtual ~GBaseInfo();
+    // win1.41 004140b0 mac 10578110 GBaseInfo::GetDebugText(void) const
+    virtual const char* GetDebugText();
+    // win1.41 00436c60 mac 1055df70 GBaseInfo::GetDebugColor(void) const
+    virtual LHColor* GetDebugColor(LHColor* color);
+    // win1.41 00401230 mac 101228b0 GBaseInfo::UpdateValue(void)
+    virtual void UpdateValue(float param_1, uint32_t param_2, uint32_t param_3);
+
+    // Static methods
+
+    // win1.41 00436c30 mac 103e4630 GBaseInfo::GetInfoPtr(unsigned long)
+    static GBaseInfo* GetInfoPtr(int index);
+
+    // Constructors
+
+    // win1.41 0042e5e0 mac 102f9af0 GBaseInfo::GBaseInfo(void)
+    GBaseInfo();
+
+    // Non-virtual methods
+
+    // win1.41 00436bd0 mac 1035b720 GBaseInfo::SetInfoID(void)
+    void SetInfoID();
+};
+
+// win1.41 00becac0 mac inlined BaseInfo::`RTTI Type Descriptor'
+// win1.41 009ad938 mac inlined BaseInfo::`RTTI Base Class Descriptor'
+// win1.41 009ad950 mac inlined BaseInfo::`RTTI Base Class Array'
+// win1.41 009ad958 mac inlined BaseInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ea8cc mac 10745360 BaseInfo::`RTTI Complete Object Locator'
+// win1.41 008ea8d0 mac 10745368 BaseInfo::`vftable'
+class BaseInfo
+{
+public:
+    uint32_t unique_id; /* 0x4 */
+    uint32_t address_offset;
+
+    // Virtual functions
+
+    // win1.41 0055c770 mac 10043c50 BaseInfo::IsClear(void) const
+    virtual bool IsClear(); /* 0x0 */
+
+    // Override methods
+
+    // win1.41 0055c770 mac 10043c50 BaseInfo::IsClear(void) const
+    virtual bool IsClear();
+
+    // Constructors
+
+    // win1.41 inlined mac 1030cbf0 BaseInfo::BaseInfo(void)
+    BaseInfo();
+
+    // Non-virtual methods
+
+    // win1.41 00436bb0 mac 10001410 BaseInfo::Set(Base*)
+    void Set(Base* base);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct BaseInfo;
@@ -127,5 +217,7 @@ void __fastcall Set__8BaseInfoFP4Base(struct BaseInfo* this, const void* edx, st
 
 // win1.41 0055c770 mac 10043c50 BaseInfo::IsClear(void) const
 bool __fastcall IsClear__8BaseInfoCFv(const struct BaseInfo* this) asm("?IsClear@BaseInfo@@UBE_NXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_BASE_INFO_INCLUDED_H */

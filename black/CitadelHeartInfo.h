@@ -8,6 +8,40 @@
 
 #include "CitadelPartInfo.h" /* For struct GCitadelPartInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 009ce980 mac inlined GCitadelHeartInfo::`RTTI Type Descriptor'
+// win1.41 009a8e48 mac inlined GCitadelHeartInfo::`RTTI Base Class Descriptor'
+// win1.41 009a8e60 mac inlined GCitadelHeartInfo::`RTTI Base Class Array'
+// win1.41 009a8e80 mac inlined GCitadelHeartInfo::`RTTI Class Hierarchy Descriptor'
+class GCitadelHeartInfo: public GCitadelPartInfo
+{
+public:
+    uint32_t field_0x134;
+    uint32_t field_0x138;
+    uint32_t field_0x13c;
+    float field_0x140;
+    float field_0x144;
+    float field_0x148;
+    float field_0x14c;
+    float field_0x150;
+    float field_0x154;
+
+    // Override methods
+
+    // win1.41 004643e0 mac 101c1bf0 GCitadelHeartInfo::_dt(void)
+    virtual ~GCitadelHeartInfo();
+    // win1.41 00464390 mac 101c1de0 GCitadelHeartInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -45,5 +79,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__17GCitadelHeartInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGCitadelHeartInfo@@UAEPAXI@Z");
 // win1.41 00464390 mac 101c1de0 GCitadelHeartInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__17GCitadelHeartInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GCitadelHeartInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CITADEL_HEART_INFO_INCLUDED_H */

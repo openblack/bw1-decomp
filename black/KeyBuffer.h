@@ -8,6 +8,49 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bec3b0 mac inlined GKeyBuffer::`RTTI Type Descriptor'
+// win1.41 009ad100 mac inlined GKeyBuffer::`RTTI Base Class Descriptor'
+// win1.41 009ad118 mac inlined GKeyBuffer::`RTTI Base Class Array'
+// win1.41 009ad128 mac inlined GKeyBuffer::`RTTI Class Hierarchy Descriptor'
+// win1.41 008df77c mac 10733c44 GKeyBuffer::`RTTI Complete Object Locator'
+// win1.41 008df780 mac 10733c4c GKeyBuffer::`vftable'
+class GKeyBuffer: public Base
+{
+public:
+    uintptr_t field_0x8;
+    uint8_t field_0xc;
+    uint8_t field_0xd;
+    uint16_t buffered_keys;
+
+    // Override methods
+
+    // win1.41 0054b950 mac 10167a10 GKeyBuffer::_dt(void)
+    virtual ~GKeyBuffer();
+
+    // Constructors
+
+    // win1.41 0054b930 mac inlined GKeyBuffer::GKeyBuffer(void)
+    GKeyBuffer();
+};
+
+// win1.41 00bf3340 mac inlined GKeyInput::`RTTI Type Descriptor'
+// win1.41 009b1828 mac inlined GKeyInput::`RTTI Base Class Descriptor'
+// win1.41 009b1840 mac inlined GKeyInput::`RTTI Base Class Array'
+// win1.41 009b1850 mac inlined GKeyInput::`RTTI Class Hierarchy Descriptor'
+class GKeyInput: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 005e1b40 mac 1016c7e0 GKeyInput::_dt(void)
+    virtual ~GKeyInput();
+};
+
+#else // __cplusplus
+
 struct GKeyBuffer
 {
   struct Base super;  /* 0x0 */
@@ -64,5 +107,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 005e1b40 mac 1016c7e0 GKeyInput::_dt(void)
 void __fastcall __dt__9GKeyInputFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGKeyInput@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_KEY_BUFFER_INCLUDED_H */

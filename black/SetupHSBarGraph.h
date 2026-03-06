@@ -9,6 +9,39 @@
 
 #include "SetupVBarGraph.h" /* For struct SetupVBarGraph */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class SetupControl;
+
+// win1.41 00bef078 mac inlined SetupHSBarGraph::`RTTI Type Descriptor'
+// win1.41 009b04b8 mac inlined SetupHSBarGraph::`RTTI Base Class Descriptor'
+// win1.41 009b04d0 mac inlined SetupHSBarGraph::`RTTI Base Class Array'
+// win1.41 009b04e8 mac inlined SetupHSBarGraph::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ffee0 mac 10731040 SetupHSBarGraph::`RTTI Complete Object Locator'
+// win1.41 008ffee4 mac 10731048 SetupHSBarGraph::`vftable'
+class SetupHSBarGraph: public SetupVBarGraph
+{
+public:
+
+    // Override methods
+
+    // win1.41 0040d3c0 mac 100df500 SetupHSBarGraph::Draw(bool, bool)
+    virtual void Draw(bool hovered, bool selected);
+    // win1.41 0056d960 mac 100cd050 SetupHSBarGraph::~SetupHSBarGraph(void)
+    virtual ~SetupHSBarGraph();
+    // win1.41 0040d9a0 mac 10130720 SetupHSBarGraph::SetScale(float)
+    virtual void SetScale(float scale);
+
+    // Constructors
+
+    // win1.41 inlined mac inlined SetupHSBarGraph::SetupHSBarGraph(int, int, int, int, int, wchar_t *)
+    SetupHSBarGraph(int id, int x, int y, int width, int height, const char16_t* label);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SetupControl;
@@ -47,5 +80,7 @@ void __fastcall Draw__15SetupHSBarGraphFbb(struct SetupControl* this, const void
 void __fastcall __dt__15SetupHSBarGraphFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupHSBarGraph@@QAEXXZ");
 // win1.41 0040d9a0 mac 10130720 SetupHSBarGraph::SetScale(float)
 void __fastcall SetScale__15SetupHSBarGraphFf(struct SetupVBarGraph* this, const void* edx, float scale) asm("?SetScale@SetupHSBarGraph@@UAEXM@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_HS_BAR_GRAPH_INCLUDED_H */

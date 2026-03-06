@@ -9,6 +9,45 @@
 
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Creature;
+class GPlayer;
+class GameThing;
+class Object;
+class Town;
+
+// win1.41 00c02100 mac inlined PrayerSite::`RTTI Type Descriptor'
+// win1.41 009b3608 mac inlined PrayerSite::`RTTI Base Class Descriptor'
+// win1.41 009b3620 mac inlined PrayerSite::`RTTI Base Class Array'
+// win1.41 009b3640 mac inlined PrayerSite::`RTTI Class Hierarchy Descriptor'
+class PrayerSite: public MultiMapFixed
+{
+public:
+
+    // Override methods
+
+    // win1.41 00670800 mac inlined PrayerSite::_dt(void)
+    virtual ~PrayerSite();
+    // win1.41 00670830 mac inlined PrayerSite::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 006708c0 mac inlined PrayerSite::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 006708e0 mac inlined PrayerSite::GetTown(void)
+    virtual Town* GetTown();
+    // win1.41 006708b0 mac inlined PrayerSite::Process(void)
+    virtual uint32_t Process();
+    // win1.41 006707f0 mac inlined PrayerSite::GetMesh( const(void))
+    virtual int GetMesh();
+    // win1.41 00670a10 mac inlined PrayerSite::CreatureMustAvoid(Creature *)
+    virtual bool CreatureMustAvoid(Creature* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -51,5 +90,7 @@ uint32_t __fastcall Process__10PrayerSiteFv(struct Object* this) asm("?Process@P
 int __fastcall GetMesh__10PrayerSiteCFv(const struct Object* this) asm("?GetMesh@PrayerSite@@UBEHXZ");
 // win1.41 00670a10 mac inlined PrayerSite::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__10PrayerSiteFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@PrayerSite@@UAE_NPAVCreature@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PRAYER_SITE_INCLUDED_H */

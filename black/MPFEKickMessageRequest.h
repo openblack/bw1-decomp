@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf4900 mac inlined MPFEKickMessageRequest::`RTTI Type Descriptor'
+// win1.41 009b2318 mac inlined MPFEKickMessageRequest::`RTTI Base Class Descriptor'
+// win1.41 009b2330 mac inlined MPFEKickMessageRequest::`RTTI Base Class Array'
+// win1.41 009b2340 mac inlined MPFEKickMessageRequest::`RTTI Class Hierarchy Descriptor'
+class MPFEKickMessageRequest: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00627790 mac 10397a60 MPFEKickMessageRequest::_dt(void)
+    virtual ~MPFEKickMessageRequest();
+};
+
+#else // __cplusplus
+
 struct MPFEKickMessageRequest
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00627790 mac 10397a60 MPFEKickMessageRequest::_dt(void)
 void __fastcall __dt__22MPFEKickMessageRequestFv(struct MPFEMessageObject* this) asm("??_GMPFEKickMessageRequest@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_KICK_MESSAGE_REQUEST_INCLUDED_H */

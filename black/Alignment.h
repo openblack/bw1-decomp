@@ -8,6 +8,28 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 009cf998 mac inlined GAlignment::`RTTI Type Descriptor'
+// win1.41 009a94a0 mac inlined GAlignment::`RTTI Base Class Descriptor'
+// win1.41 009a94b8 mac inlined GAlignment::`RTTI Base Class Array'
+// win1.41 009a94c8 mac inlined GAlignment::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cc7ec mac 1077e184 GAlignment::`RTTI Complete Object Locator'
+// win1.41 008cc7f0 mac 1077e18c GAlignment::`vftable'
+class GAlignment: public Base
+{
+public:
+    float value; /* 0x8 */
+    float field_0xc;
+
+    // Override methods
+
+    // win1.41 004740e0 mac 101debf0 GAlignment::_dt(void)
+    virtual ~GAlignment();
+};
+
+#else // __cplusplus
+
 struct GAlignment
 {
   struct Base super;  /* 0x0 */
@@ -35,5 +57,7 @@ extern const struct BaseVftable __vt__10GAlignment asm("??_7GAlignment@@6B@");
 
 // win1.41 004740e0 mac 101debf0 GAlignment::_dt(void)
 void __fastcall __dt__10GAlignmentFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGAlignment@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ALIGNMENT_INCLUDED_H */

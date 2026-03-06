@@ -8,6 +8,31 @@
 
 #include "ObjectInfo.h" /* For struct GObjectInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 00bea908 mac inlined GFurnitureInfo::`RTTI Type Descriptor'
+// win1.41 009acf60 mac inlined GFurnitureInfo::`RTTI Base Class Descriptor'
+// win1.41 009acf78 mac inlined GFurnitureInfo::`RTTI Base Class Array'
+// win1.41 009acf90 mac inlined GFurnitureInfo::`RTTI Class Hierarchy Descriptor'
+class GFurnitureInfo: public GObjectInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 0054a3c0 mac 100f2b20 GFurnitureInfo::_dt(void)
+    virtual ~GFurnitureInfo();
+    // win1.41 0054a350 mac 100f2c30 GFurnitureInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -36,5 +61,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__14GFurnitureInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGFurnitureInfo@@UAEPAXI@Z");
 // win1.41 0054a350 mac 100f2c30 GFurnitureInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__14GFurnitureInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GFurnitureInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FURNITURE_INFO_INCLUDED_H */

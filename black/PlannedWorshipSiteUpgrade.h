@@ -8,6 +8,32 @@
 
 #include "PlannedFeature.h" /* For struct PlannedFeature */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class MultiMapFixed;
+class PlannedMultiMapFixed;
+
+// win1.41 00c24de0 mac inlined PlannedWorshipSiteUpgrade::`RTTI Type Descriptor'
+// win1.41 009ba448 mac inlined PlannedWorshipSiteUpgrade::`RTTI Base Class Descriptor'
+// win1.41 009ba460 mac inlined PlannedWorshipSiteUpgrade::`RTTI Base Class Array'
+// win1.41 009ba480 mac inlined PlannedWorshipSiteUpgrade::`RTTI Class Hierarchy Descriptor'
+class PlannedWorshipSiteUpgrade: public PlannedFeature
+{
+public:
+
+    // Override methods
+
+    // win1.41 0077ee70 mac inlined PlannedWorshipSiteUpgrade::_dt(void)
+    virtual ~PlannedWorshipSiteUpgrade();
+    // win1.41 0077eea0 mac inlined PlannedWorshipSiteUpgrade::CreatePlanned(float)
+    virtual MultiMapFixed* CreatePlanned(float param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -37,5 +63,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__25PlannedWorshipSiteUpgradeFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GPlannedWorshipSiteUpgrade@@UAEPAXI@Z");
 // win1.41 0077eea0 mac inlined PlannedWorshipSiteUpgrade::CreatePlanned(float)
 struct MultiMapFixed* __fastcall CreatePlanned__25PlannedWorshipSiteUpgradeFf(struct PlannedMultiMapFixed* this, const void* edx, float param_1) asm("?CreatePlanned@PlannedWorshipSiteUpgrade@@UAEPAVMultiMapFixed@@M@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLANNED_WORSHIP_SITE_UPGRADE_INCLUDED_H */

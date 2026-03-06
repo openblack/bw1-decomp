@@ -6,6 +6,26 @@
 #include <lionhead/lh3dlib/development/Prss.h> /* For struct Prss */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// win1.41 00c01ec8 mac inlined PlayerMessage::`RTTI Type Descriptor'
+// win1.41 009b32a8 mac inlined PlayerMessage::`RTTI Base Class Descriptor'
+// win1.41 009b32c0 mac inlined PlayerMessage::`RTTI Base Class Array'
+// win1.41 009b32d0 mac inlined PlayerMessage::`RTTI Class Hierarchy Descriptor'
+class PlayerMessage: public Prss
+{
+public:
+
+    // Override methods
+
+    // win1.41 0066b5e0 mac inlined PlayerMessage::ProcessTurn(void)
+    virtual int ProcessTurn();
+    // win1.41 0066b610 mac inlined PlayerMessage::Display(void)
+    virtual void Display();
+};
+
+#else // __cplusplus
+
 struct PlayerMessage
 {
   struct Prss super;  /* 0x0 */
@@ -29,5 +49,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 int __fastcall ProcessTurn__13PlayerMessageFv(struct Prss* this) asm("?ProcessTurn@PlayerMessage@@UAEHXZ");
 // win1.41 0066b610 mac inlined PlayerMessage::Display(void)
 void __fastcall Display__13PlayerMessageFv(struct Prss* this) asm("?Display@PlayerMessage@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLAYER_MESSAGE_INCLUDED_H */

@@ -9,6 +9,27 @@
 #include "Base.h" /* For struct Base */
 #include "HandState.h" /* For enum HAND_STATES */
 
+#ifdef __cplusplus
+
+// win1.41 00bf1b60 mac inlined InterfaceHandState::`RTTI Type Descriptor'
+// win1.41 009b15d8 mac inlined InterfaceHandState::`RTTI Base Class Descriptor'
+// win1.41 009b15f0 mac inlined InterfaceHandState::`RTTI Base Class Array'
+// win1.41 009b1600 mac inlined InterfaceHandState::`RTTI Class Hierarchy Descriptor'
+// win1.41 0092aae0 mac 1099e2ac InterfaceHandState::`RTTI Complete Object Locator'
+// win1.41 0092aae4 mac 1099e2b4 InterfaceHandState::`vftable'
+class InterfaceHandState: public Base
+{
+public:
+    HAND_STATES hand_state; /* 0x8 */
+
+    // Override methods
+
+    // win1.41 005ce360 mac 1035c790 InterfaceHandState::_dt(void)
+    virtual ~InterfaceHandState();
+};
+
+#else // __cplusplus
+
 struct InterfaceHandState
 {
   struct Base super;  /* 0x0 */
@@ -35,5 +56,7 @@ extern const struct BaseVftable __vt__18InterfaceHandState asm("??_7InterfaceHan
 
 // win1.41 005ce360 mac 1035c790 InterfaceHandState::_dt(void)
 void __fastcall __dt__18InterfaceHandStateFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GInterfaceHandState@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_INTERFACE_HAND_STATE_INCLUDED_H */

@@ -9,6 +9,42 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+
+// win1.41 00bed368 mac inlined GClimate::`RTTI Type Descriptor'
+// win1.41 009aeaf0 mac inlined GClimate::`RTTI Base Class Descriptor'
+// win1.41 009aeb08 mac inlined GClimate::`RTTI Base Class Array'
+// win1.41 009aeb18 mac inlined GClimate::`RTTI Class Hierarchy Descriptor'
+// win1.41 008f9f98 mac 109ea018 GClimate::`RTTI Complete Object Locator'
+// win1.41 008f9f9c mac 109ea020 GClimate::`vftable'
+class GClimate: public GameThing
+{
+public:
+    uint8_t field_0x14[0x74];
+
+    // Override methods
+
+    // win1.41 0055dee0 mac 105a2870 GClimate::_dt(void)
+    virtual ~GClimate();
+    // win1.41 007713e0 mac 105a2620 GClimate::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 0055ded0 mac 1059ef50 GClimate::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 007736e0 mac 1059ef90 GClimate::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00773320 mac 1059f860 GClimate::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055dec0 mac 1059ef10 GClimate::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -52,5 +88,7 @@ uint32_t __fastcall Save__8GClimateFR10GameOSFile(struct GameThing* this, const 
 uint32_t __fastcall GetSaveType__8GClimateFv(struct GameThing* this) asm("?GetSaveType@GClimate@@UAEIXZ");
 
 DECLARE_LH_LINKED_LIST(GClimate);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CLIMATE_INCLUDED_H */

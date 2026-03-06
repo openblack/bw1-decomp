@@ -8,6 +8,28 @@
 
 #include "Particle3DObj.h" /* For struct Particle3DObj */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c094e8 mac inlined Particle3DObjAnimTextured::`RTTI Type Descriptor'
+// win1.41 009b7eb0 mac inlined Particle3DObjAnimTextured::`RTTI Base Class Descriptor'
+// win1.41 009b7ec8 mac inlined Particle3DObjAnimTextured::`RTTI Base Class Array'
+// win1.41 009b7ee8 mac inlined Particle3DObjAnimTextured::`RTTI Class Hierarchy Descriptor'
+class Particle3DObjAnimTextured: public Particle3DObj
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c7e40 mac inlined Particle3DObjAnimTextured::_dt(void)
+    virtual ~Particle3DObjAnimTextured();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 006c7e40 mac inlined Particle3DObjAnimTextured::_dt(void)
 void __fastcall __dt__25Particle3DObjAnimTexturedFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GParticle3DObjAnimTextured@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PARTICLE_3D_OBJ_ANIM_TEXTURED_INCLUDED_H */

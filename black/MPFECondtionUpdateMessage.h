@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf4c78 mac inlined MPFECondtionUpdateMessage::`RTTI Type Descriptor'
+// win1.41 009b26d8 mac inlined MPFECondtionUpdateMessage::`RTTI Base Class Descriptor'
+// win1.41 009b26f0 mac inlined MPFECondtionUpdateMessage::`RTTI Base Class Array'
+// win1.41 009b2700 mac inlined MPFECondtionUpdateMessage::`RTTI Class Hierarchy Descriptor'
+class MPFECondtionUpdateMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 0062c860 mac inlined MPFECondtionUpdateMessage::_dt(void)
+    virtual ~MPFECondtionUpdateMessage();
+};
+
+#else // __cplusplus
+
 struct MPFECondtionUpdateMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 0062c860 mac inlined MPFECondtionUpdateMessage::_dt(void)
 void __fastcall __dt__25MPFECondtionUpdateMessageFv(struct MPFEMessageObject* this) asm("??_GMPFECondtionUpdateMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_CONDTION_UPDATE_MESSAGE_INCLUDED_H */

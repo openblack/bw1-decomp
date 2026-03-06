@@ -8,6 +8,140 @@
 
 #include "PSysBase.h" /* For struct PSysBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00bed628 mac inlined BaseAtomModifierData::`RTTI Type Descriptor'
+// win1.41 009aef10 mac inlined BaseAtomModifierData::`RTTI Base Class Descriptor'
+// win1.41 009aeff0 mac inlined BaseAtomModifierData::`RTTI Base Class Array'
+// win1.41 009af008 mac inlined BaseAtomModifierData::`RTTI Class Hierarchy Descriptor'
+class BaseAtomModifierData: public PSysBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f210 mac 1030ac30 BaseAtomModifierData::_dt(void)
+    virtual ~BaseAtomModifierData();
+    // win1.41 0055f200 mac 103ffe50 BaseAtomModifierData::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006947e0 mac 1041d650 BaseAtomModifierData::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 006cb340 mac 10485830 BaseAtomModifierData::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055f1f0 mac 103ffe10 BaseAtomModifierData::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 00bed678 mac inlined BaseCollectionModifierData::`RTTI Type Descriptor'
+// win1.41 009aef80 mac inlined BaseCollectionModifierData::`RTTI Base Class Descriptor'
+// win1.41 009af030 mac inlined BaseCollectionModifierData::`RTTI Base Class Array'
+// win1.41 009af048 mac inlined BaseCollectionModifierData::`RTTI Class Hierarchy Descriptor'
+class BaseCollectionModifierData: public PSysBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f2a0 mac 1030ae90 BaseCollectionModifierData::_dt(void)
+    virtual ~BaseCollectionModifierData();
+    // win1.41 0055f290 mac 103fffa0 BaseCollectionModifierData::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00694810 mac 1041d5a0 BaseCollectionModifierData::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 006cb370 mac 10485780 BaseCollectionModifierData::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055f280 mac 103fff50 BaseCollectionModifierData::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 00c09468 mac inlined DrawOffset::`RTTI Type Descriptor'
+// win1.41 009b7d30 mac inlined DrawOffset::`RTTI Base Class Descriptor'
+// win1.41 009b7d48 mac inlined DrawOffset::`RTTI Base Class Array'
+// win1.41 009b7d60 mac inlined DrawOffset::`RTTI Class Hierarchy Descriptor'
+class DrawOffset: public PSysBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c7550 mac 1047e1d0 DrawOffset::_dt(void)
+    virtual ~DrawOffset();
+    // win1.41 006c7540 mac 10423b80 DrawOffset::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00694d90 mac 1041cd70 DrawOffset::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 006cb8b0 mac 10484460 DrawOffset::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 006c7530 mac 10423b40 DrawOffset::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 00c094a8 mac inlined DrawOffsetDecay::`RTTI Type Descriptor'
+// win1.41 009b7de0 mac inlined DrawOffsetDecay::`RTTI Base Class Descriptor'
+// win1.41 009b7df8 mac inlined DrawOffsetDecay::`RTTI Base Class Array'
+// win1.41 009b7e10 mac inlined DrawOffsetDecay::`RTTI Class Hierarchy Descriptor'
+class DrawOffsetDecay: public DrawOffset
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c7820 mac 1047dcd0 DrawOffsetDecay::_dt(void)
+    virtual ~DrawOffsetDecay();
+    // win1.41 006c7810 mac 104239f0 DrawOffsetDecay::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00694ea0 mac 1041cc10 DrawOffsetDecay::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 006cb9c0 mac 10484300 DrawOffsetDecay::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 006c7800 mac 104239b0 DrawOffsetDecay::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 00c09488 mac inlined DrawOffsetLT::`RTTI Type Descriptor'
+// win1.41 009b7d88 mac inlined DrawOffsetLT::`RTTI Base Class Descriptor'
+// win1.41 009b7da0 mac inlined DrawOffsetLT::`RTTI Base Class Array'
+// win1.41 009b7db8 mac inlined DrawOffsetLT::`RTTI Class Hierarchy Descriptor'
+class DrawOffsetLT: public DrawOffset
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c75e0 mac 10423a30 DrawOffsetLT::_dt(void)
+    virtual ~DrawOffsetLT();
+    // win1.41 006c75d0 mac 10423b00 DrawOffsetLT::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00694df0 mac 1041ccd0 DrawOffsetLT::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 006cb910 mac 104843c0 DrawOffsetLT::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 006c75c0 mac 10423ac0 DrawOffsetLT::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 00c044b8 mac inlined GJAnimVolFX::`RTTI Type Descriptor'
+// win1.41 009b45d8 mac inlined GJAnimVolFX::`RTTI Base Class Descriptor'
+// win1.41 009b45f0 mac inlined GJAnimVolFX::`RTTI Base Class Array'
+// win1.41 009b4608 mac inlined GJAnimVolFX::`RTTI Class Hierarchy Descriptor'
+class GJAnimVolFX: public PSysBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 0069d2d0 mac inlined GJAnimVolFX::_dt(void)
+    virtual ~GJAnimVolFX();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -185,5 +319,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 0069d2d0 mac inlined GJAnimVolFX::_dt(void)
 void __fastcall __dt__11GJAnimVolFXFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGJAnimVolFX@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_P_SYS_MODIFIERS_INCLUDED_H */

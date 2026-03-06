@@ -8,6 +8,34 @@
 
 #include "LivingInfo.h" /* For struct GLivingInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+class GObjectInfo;
+
+// win1.41 009c8d68 mac inlined GAnimalInfo::`RTTI Type Descriptor'
+// win1.41 009a6b38 mac inlined GAnimalInfo::`RTTI Base Class Descriptor'
+// win1.41 009a6b50 mac inlined GAnimalInfo::`RTTI Base Class Array'
+// win1.41 009a6b70 mac inlined GAnimalInfo::`RTTI Class Hierarchy Descriptor'
+class GAnimalInfo: public GLivingInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00416da0 mac 1016c970 GAnimalInfo::_dt(void)
+    virtual ~GAnimalInfo();
+    // win1.41 00416d30 mac 1016cc70 GAnimalInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    // win1.41 00416d20 mac 1016cc30 GAnimalInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -39,5 +67,7 @@ void __fastcall __dt__11GAnimalInfoFv(struct Base* this, const void* edx, uint32
 struct GBaseInfo* __fastcall GetBaseInfo__11GAnimalInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GAnimalInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 00416d20 mac 1016cc30 GAnimalInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__11GAnimalInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GAnimalInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMAL_INFO_INCLUDED_H */

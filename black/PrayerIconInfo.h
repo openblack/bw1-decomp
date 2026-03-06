@@ -8,6 +8,35 @@
 
 #include "SingleMapFixedInfo.h" /* For struct GSingleMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 00c020e0 mac inlined GPrayerIconInfo::`RTTI Type Descriptor'
+// win1.41 009b35b0 mac inlined GPrayerIconInfo::`RTTI Base Class Descriptor'
+// win1.41 009b35c8 mac inlined GPrayerIconInfo::`RTTI Base Class Array'
+// win1.41 009b35e0 mac inlined GPrayerIconInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 009341c4 mac 1074a620 GPrayerIconInfo::`RTTI Complete Object Locator'
+// win1.41 009341c8 mac 1074a628 GPrayerIconInfo::`vftable'
+class GPrayerIconInfo: public GSingleMapFixedInfo
+{
+public:
+    uint32_t field_0x100;
+    uint32_t field_0x104;
+
+    // Override methods
+
+    // win1.41 00670770 mac 1011e8e0 GPrayerIconInfo::_dt(void)
+    virtual ~GPrayerIconInfo();
+    // win1.41 00670720 mac 1011eb60 GPrayerIconInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -42,5 +71,7 @@ extern const struct GSingleMapFixedInfoVftable __vt__15GPrayerIconInfo asm("??_7
 void __fastcall __dt__15GPrayerIconInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGPrayerIconInfo@@UAEPAXI@Z");
 // win1.41 00670720 mac 1011eb60 GPrayerIconInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__15GPrayerIconInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GPrayerIconInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PRAYER_ICON_INFO_INCLUDED_H */

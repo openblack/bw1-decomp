@@ -8,6 +8,46 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00bdf4d8 mac inlined CreatureDevelopmentDurationEntry::`RTTI Type Descriptor'
+// win1.41 009aabd0 mac inlined CreatureDevelopmentDurationEntry::`RTTI Base Class Descriptor'
+// win1.41 009aabe8 mac inlined CreatureDevelopmentDurationEntry::`RTTI Base Class Array'
+// win1.41 009aabf8 mac inlined CreatureDevelopmentDurationEntry::`RTTI Class Hierarchy Descriptor'
+class CreatureDevelopmentDurationEntry: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 004db5c0 mac 1025bfd0 CreatureDevelopmentDurationEntry::_dt(void)
+    virtual ~CreatureDevelopmentDurationEntry();
+    // win1.41 004db560 mac 1025c590 CreatureDevelopmentDurationEntry::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+// win1.41 00bdf4a8 mac inlined CreatureDevelopmentPhaseEntry::`RTTI Type Descriptor'
+// win1.41 009aab80 mac inlined CreatureDevelopmentPhaseEntry::`RTTI Base Class Descriptor'
+// win1.41 009aab98 mac inlined CreatureDevelopmentPhaseEntry::`RTTI Base Class Array'
+// win1.41 009aaba8 mac inlined CreatureDevelopmentPhaseEntry::`RTTI Class Hierarchy Descriptor'
+class CreatureDevelopmentPhaseEntry: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 004db4f0 mac 1025c220 CreatureDevelopmentPhaseEntry::_dt(void)
+    virtual ~CreatureDevelopmentPhaseEntry();
+    // win1.41 004db480 mac 1025c4d0 CreatureDevelopmentPhaseEntry::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -59,5 +99,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__29CreatureDevelopmentPhaseEntryFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureDevelopmentPhaseEntry@@UAEPAXI@Z");
 // win1.41 004db480 mac 1025c4d0 CreatureDevelopmentPhaseEntry::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__29CreatureDevelopmentPhaseEntryFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@CreatureDevelopmentPhaseEntry@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_DEVELOPMENT_INCLUDED_H */

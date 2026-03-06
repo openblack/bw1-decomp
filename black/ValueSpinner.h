@@ -12,6 +12,32 @@
 
 #include "DrawingObject.h" /* For struct DrawingObject */
 
+#ifdef __cplusplus
+
+// win1.41 009cd260 mac inlined ValueSpinner::`RTTI Type Descriptor'
+// win1.41 009a83f0 mac inlined ValueSpinner::`RTTI Base Class Descriptor'
+// win1.41 009a8408 mac inlined ValueSpinner::`RTTI Base Class Array'
+// win1.41 009a8418 mac inlined ValueSpinner::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c5898 mac 10737b54 ValueSpinner::`RTTI Complete Object Locator'
+// win1.41 008c589c mac 10737b5c ValueSpinner::`vftable'
+class ValueSpinner: public DrawingObject
+{
+public:
+    ValueSpinner* next; /* 0x4 */
+    LHPoint point;
+    uint32_t field_0x14;
+    float field_0x18;
+    LH3DColor color;
+    char16_t text[0x40]; /* 0x20 */
+
+    // Virtual functions
+
+    virtual void UpdatePosition(float param_1); /* 0x0 */
+    virtual ~ValueSpinner();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct ValueSpinner;
@@ -49,5 +75,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__12ValueSpinner asm("??_R4ValueSpinner@@6B@");
 // win1.41 008c589c mac 10737b5c ValueSpinner::`vftable'
 extern const struct ValueSpinnerVftable __vt__12ValueSpinner asm("??_7ValueSpinner@@6B@");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_VALUE_SPINNER_INCLUDED_H */

@@ -8,6 +8,35 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+
+// win1.41 009cea90 mac inlined PSysBase::`RTTI Type Descriptor'
+// win1.41 009a9050 mac inlined PSysBase::`RTTI Base Class Descriptor'
+// win1.41 009a9068 mac inlined PSysBase::`RTTI Base Class Array'
+// win1.41 009a9078 mac inlined PSysBase::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c9c30 mac 10746188 PSysBase::`RTTI Complete Object Locator'
+// win1.41 008c9c34 mac 106f5fd4 PSysBase::`vftable'
+class PSysBase: public GameThing
+{
+public:
+
+    // Override methods
+
+    // win1.41 00466500 mac 10086ed0 PSysBase::_dt(void)
+    virtual ~PSysBase();
+    // win1.41 004664f0 mac 10110ed0 PSysBase::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006944b0 mac 1041db80 PSysBase::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -42,5 +71,7 @@ void __fastcall __dt__8PSysBaseFv(struct Base* this, const void* edx, uint32_t p
 char* __fastcall GetDebugText__8PSysBaseFv(struct GameThing* this) asm("?GetDebugText@PSysBase@@UAEPADXZ");
 // win1.41 006944b0 mac 1041db80 PSysBase::Load(GameOSFile &)
 uint32_t __fastcall Load__8PSysBaseFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@PSysBase@@UAEIAAVGameOSFile@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_P_SYS_BASE_INCLUDED_H */

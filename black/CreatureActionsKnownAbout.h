@@ -8,6 +8,25 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bdfd80 mac inlined CreatureActionsKnownAbout::`RTTI Type Descriptor'
+// win1.41 009aaf40 mac inlined CreatureActionsKnownAbout::`RTTI Base Class Descriptor'
+// win1.41 009aaf58 mac inlined CreatureActionsKnownAbout::`RTTI Base Class Array'
+// win1.41 009aaf68 mac inlined CreatureActionsKnownAbout::`RTTI Class Hierarchy Descriptor'
+class CreatureActionsKnownAbout: public Base
+{
+public:
+    uint32_t field_0x8[0x2][0x2];
+
+    // Override methods
+
+    // win1.41 004e2230 mac 10266a40 CreatureActionsKnownAbout::_dt(void)
+    virtual ~CreatureActionsKnownAbout();
+};
+
+#else // __cplusplus
+
 struct CreatureActionsKnownAbout
 {
   struct Base super;  /* 0x0 */
@@ -30,5 +49,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 004e2230 mac 10266a40 CreatureActionsKnownAbout::_dt(void)
 void __fastcall __dt__25CreatureActionsKnownAboutFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureActionsKnownAbout@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_ACTIONS_KNOWN_ABOUT_INCLUDED_H */

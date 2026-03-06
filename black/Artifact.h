@@ -9,6 +9,53 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GPlayer;
+class GameOSFile;
+class Town;
+class Villager;
+
+// win1.41 009c96f8 mac inlined TownArtifact::`RTTI Type Descriptor'
+// win1.41 009a7bd8 mac inlined TownArtifact::`RTTI Base Class Descriptor'
+// win1.41 009a7bf0 mac inlined TownArtifact::`RTTI Base Class Array'
+// win1.41 009a7c00 mac inlined TownArtifact::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c47cc mac 10736fe0 TownArtifact::`RTTI Complete Object Locator'
+// win1.41 008c47d0 mac 10736fe8 TownArtifact::`vftable'
+class TownArtifact: public GameThing
+{
+public:
+    uint8_t field_0x14[0x2c];
+
+    // Override methods
+
+    // win1.41 00425d80 mac 100adf60 TownArtifact::_dt(void)
+    virtual ~TownArtifact();
+    // win1.41 00425e70 mac 100af950 TownArtifact::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00425d40 mac 100adff0 TownArtifact::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 00425d50 mac 100ae030 TownArtifact::SetPlayer(GPlayer *)
+    virtual void SetPlayer(GPlayer* param_1);
+    // win1.41 00425d60 mac 100ae070 TownArtifact::GetTown(void)
+    virtual Town* GetTown();
+    // win1.41 004262d0 mac 100aedc0 TownArtifact::GetVillagerActivityDesire(Villager *)
+    virtual float GetVillagerActivityDesire(Villager* param_1);
+    // win1.41 00426470 mac 100aeac0 TownArtifact::SetVillagerActivity(Villager *)
+    virtual uint32_t SetVillagerActivity(Villager* param_1);
+    // win1.41 004266c0 mac 100ae750 TownArtifact::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 004265a0 mac 100ae900 TownArtifact::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 00425d70 mac 100ae0b0 TownArtifact::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -63,5 +110,7 @@ uint32_t __fastcall Save__12TownArtifactFR10GameOSFile(struct GameThing* this, c
 uint32_t __fastcall GetSaveType__12TownArtifactFv(struct GameThing* this) asm("?GetSaveType@TownArtifact@@UAEIXZ");
 
 DECLARE_LH_LINKED_LIST(TownArtifact);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ARTIFACT_INCLUDED_H */

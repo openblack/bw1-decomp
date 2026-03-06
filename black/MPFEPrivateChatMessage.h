@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf47c0 mac inlined MPFEPrivateChatMessage::`RTTI Type Descriptor'
+// win1.41 009b2138 mac inlined MPFEPrivateChatMessage::`RTTI Base Class Descriptor'
+// win1.41 009b2150 mac inlined MPFEPrivateChatMessage::`RTTI Base Class Array'
+// win1.41 009b2160 mac inlined MPFEPrivateChatMessage::`RTTI Class Hierarchy Descriptor'
+class MPFEPrivateChatMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00626ed0 mac 10398140 MPFEPrivateChatMessage::_dt(void)
+    virtual ~MPFEPrivateChatMessage();
+};
+
+#else // __cplusplus
+
 struct MPFEPrivateChatMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00626ed0 mac 10398140 MPFEPrivateChatMessage::_dt(void)
 void __fastcall __dt__22MPFEPrivateChatMessageFv(struct MPFEMessageObject* this) asm("??_GMPFEPrivateChatMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_PRIVATE_CHAT_MESSAGE_INCLUDED_H */

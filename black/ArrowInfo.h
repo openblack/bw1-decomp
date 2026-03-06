@@ -8,6 +8,31 @@
 
 #include "MobileObjectInfo.h" /* For struct GMobileObjectInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 009c9678 mac inlined GArrowInfo::`RTTI Type Descriptor'
+// win1.41 009a7b00 mac inlined GArrowInfo::`RTTI Base Class Descriptor'
+// win1.41 009a7b18 mac inlined GArrowInfo::`RTTI Base Class Array'
+// win1.41 009a7b38 mac inlined GArrowInfo::`RTTI Class Hierarchy Descriptor'
+class GArrowInfo: public GMobileObjectInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00425980 mac 100ad540 GArrowInfo::_dt(void)
+    virtual ~GArrowInfo();
+    // win1.41 00425930 mac 100ad830 GArrowInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -36,5 +61,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__10GArrowInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGArrowInfo@@UAEPAXI@Z");
 // win1.41 00425930 mac 100ad830 GArrowInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__10GArrowInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GArrowInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ARROW_INFO_INCLUDED_H */

@@ -8,6 +8,31 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea348 mac inlined MultiplayerConditionBox::`RTTI Type Descriptor'
+// win1.41 009ac920 mac inlined MultiplayerConditionBox::`RTTI Base Class Descriptor'
+// win1.41 009ac938 mac inlined MultiplayerConditionBox::`RTTI Base Class Array'
+// win1.41 009ac948 mac inlined MultiplayerConditionBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008de9c0 mac inlined MultiplayerConditionBox::`RTTI Complete Object Locator'
+// win1.41 008de9c4 mac inlined MultiplayerConditionBox::`vftable'
+class MultiplayerConditionBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0x2c];
+
+    // Override methods
+
+    // win1.41 0056eef0 mac inlined MultiplayerConditionBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 0056f260 mac inlined MultiplayerConditionBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0056f460 mac inlined MultiplayerConditionBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct MultiplayerConditionBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -38,5 +63,7 @@ void __fastcall Init__23MultiplayerConditionBoxFUlUlPFiP8SetupBoxP12SetupControl
 void __fastcall Destroy__23MultiplayerConditionBoxFv(struct DialogBoxBase* this) asm("?Destroy@MultiplayerConditionBox@@UAEXXZ");
 // win1.41 0056f460 mac inlined MultiplayerConditionBox::InitControls(void)
 void __fastcall InitControls__23MultiplayerConditionBoxFv(struct DialogBoxBase* this) asm("?InitControls@MultiplayerConditionBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MULTIPLAYER_CONDITION_BOX_INCLUDED_H */

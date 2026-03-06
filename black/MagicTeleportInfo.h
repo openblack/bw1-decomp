@@ -8,6 +8,28 @@
 
 #include "MagicInfo.h" /* For struct GMagicInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 009cb9a8 mac inlined GMagicTeleportInfo::`RTTI Type Descriptor'
+// win1.41 009a7dc0 mac inlined GMagicTeleportInfo::`RTTI Base Class Descriptor'
+// win1.41 009a7dd8 mac inlined GMagicTeleportInfo::`RTTI Base Class Array'
+// win1.41 009a7df0 mac inlined GMagicTeleportInfo::`RTTI Class Hierarchy Descriptor'
+class GMagicTeleportInfo: public GMagicInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 004356c0 mac 103b2190 GMagicTeleportInfo::_dt(void)
+    virtual ~GMagicTeleportInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 004356c0 mac 103b2190 GMagicTeleportInfo::_dt(void)
 void __fastcall __dt__18GMagicTeleportInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMagicTeleportInfo@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_TELEPORT_INFO_INCLUDED_H */

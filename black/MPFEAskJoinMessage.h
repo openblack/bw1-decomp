@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf47f8 mac inlined MPFEAskJoinMessage::`RTTI Type Descriptor'
+// win1.41 009b2188 mac inlined MPFEAskJoinMessage::`RTTI Base Class Descriptor'
+// win1.41 009b21a0 mac inlined MPFEAskJoinMessage::`RTTI Base Class Array'
+// win1.41 009b21b0 mac inlined MPFEAskJoinMessage::`RTTI Class Hierarchy Descriptor'
+class MPFEAskJoinMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00626f90 mac 10397e50 MPFEAskJoinMessage::_dt(void)
+    virtual ~MPFEAskJoinMessage();
+};
+
+#else // __cplusplus
+
 struct MPFEAskJoinMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00626f90 mac 10397e50 MPFEAskJoinMessage::_dt(void)
 void __fastcall __dt__18MPFEAskJoinMessageFv(struct MPFEMessageObject* this) asm("??_GMPFEAskJoinMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_ASK_JOIN_MESSAGE_INCLUDED_H */

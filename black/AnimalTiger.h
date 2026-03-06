@@ -8,6 +8,36 @@
 
 #include "AnimalLion.h" /* For struct Lion */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+class Object;
+
+// win1.41 009c9440 mac inlined Tiger::`RTTI Type Descriptor'
+// win1.41 009a7768 mac inlined Tiger::`RTTI Base Class Descriptor'
+// win1.41 009a7780 mac inlined Tiger::`RTTI Base Class Array'
+// win1.41 009a77b0 mac inlined Tiger::`RTTI Class Hierarchy Descriptor'
+class Tiger: public Lion
+{
+public:
+
+    // Override methods
+
+    // win1.41 00421440 mac 10177fa0 Tiger::_dt(void)
+    virtual ~Tiger();
+    // win1.41 00421430 mac 10178060 Tiger::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00421420 mac 10178030 Tiger::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041c430 mac 1016f530 Tiger::StandAnimation(void)
+    virtual uint32_t StandAnimation();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -41,5 +71,7 @@ char* __fastcall GetDebugText__5TigerFv(struct GameThing* this) asm("?GetDebugTe
 uint32_t __fastcall GetSaveType__5TigerFv(struct GameThing* this) asm("?GetSaveType@Tiger@@UAEIXZ");
 // win1.41 0041c430 mac 1016f530 Tiger::StandAnimation(void)
 uint32_t __fastcall StandAnimation__5TigerFv(struct Object* this) asm("?StandAnimation@Tiger@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMAL_TIGER_INCLUDED_H */

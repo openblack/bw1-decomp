@@ -7,6 +7,90 @@
 #include <reversing_utils/re_common.h> /* For bool32_t */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct PersistenceStreamer;
+struct istream;
+
+// win1.41 00bef9e8 mac inlined Property::`RTTI Type Descriptor'
+// win1.41 009b0a60 mac inlined Property::`RTTI Base Class Descriptor'
+// win1.41 inlined mac 1099a22c Property::`vftable'
+class Property
+{
+public:
+    // Virtual functions
+
+    virtual const char* GetAsString(); /* 0x0 */
+    virtual const char* GetAsUserReadableString();
+    virtual bool32_t ReadProperty(istream* stream, PersistenceStreamer* streamer);
+};
+
+// win1.41 00befb40 mac inlined BoolProperty::`RTTI Type Descriptor'
+// win1.41 009b0c38 mac inlined BoolProperty::`RTTI Base Class Descriptor'
+// win1.41 009b0c50 mac inlined BoolProperty::`RTTI Base Class Array'
+// win1.41 009b0c60 mac inlined BoolProperty::`RTTI Class Hierarchy Descriptor'
+class BoolProperty: public Property
+{
+public:
+
+    // Override methods
+
+    // win1.41 00586220 mac 102dc140 BoolProperty::GetAsString(void)
+    virtual const char* GetAsString();
+    // win1.41 00586350 mac inlined BoolProperty::ReadProperty(istream *, PersistenceStreamer *)
+    virtual uint32_t ReadProperty(istream* param_1, PersistenceStreamer* param_2);
+};
+
+// win1.41 00befac0 mac inlined SoundActionProperty::`RTTI Type Descriptor'
+// win1.41 009b0b48 mac inlined SoundActionProperty::`RTTI Base Class Descriptor'
+// win1.41 009b0b60 mac inlined SoundActionProperty::`RTTI Base Class Array'
+// win1.41 009b0b70 mac inlined SoundActionProperty::`RTTI Class Hierarchy Descriptor'
+class SoundActionProperty: public Property
+{
+public:
+
+    // Override methods
+
+    // win1.41 00585740 mac 102dcd30 SoundActionProperty::GetAsString(void)
+    virtual const char* GetAsString();
+    // win1.41 00585a70 mac inlined SoundActionProperty::ReadProperty(istream *, PersistenceStreamer *)
+    virtual uint32_t ReadProperty(istream* param_1, PersistenceStreamer* param_2);
+};
+
+// win1.41 00befaf8 mac inlined StringProperty::`RTTI Type Descriptor'
+// win1.41 009b0b98 mac inlined StringProperty::`RTTI Base Class Descriptor'
+// win1.41 009b0bb0 mac inlined StringProperty::`RTTI Base Class Array'
+// win1.41 009b0bc0 mac inlined StringProperty::`RTTI Class Hierarchy Descriptor'
+class StringProperty: public Property
+{
+public:
+
+    // Override methods
+
+    // win1.41 005850d0 mac 102dd630 StringProperty::GetAsString(void)
+    virtual const char* GetAsString();
+    // win1.41 00585200 mac inlined StringProperty::ReadProperty(istream *, PersistenceStreamer *)
+    virtual uint32_t ReadProperty(istream* param_1, PersistenceStreamer* param_2);
+};
+
+// win1.41 00c04b70 mac inlined TPointerProperty::`RTTI Type Descriptor'
+// win1.41 009b5268 mac inlined TPointerProperty::`RTTI Base Class Descriptor'
+// win1.41 009b56e0 mac inlined TPointerProperty::`RTTI Base Class Array'
+// win1.41 009b56f0 mac inlined TPointerProperty::`RTTI Class Hierarchy Descriptor'
+class TPointerProperty: public Property
+{
+public:
+
+    // Override methods
+
+    // win1.41 00584630 mac inlined TPointerProperty::GetAsUserReadableString(void)
+    virtual const char* GetAsUserReadableString();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct PersistenceStreamer;
@@ -129,5 +213,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00584630 mac inlined TPointerProperty::GetAsUserReadableString(void)
 const char* __fastcall GetAsUserReadableString__16TPointerPropertyFv(struct Property* this) asm("?GetAsUserReadableString@TPointerProperty@@UAEPBDXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PROPERTY_INCLUDED_H */

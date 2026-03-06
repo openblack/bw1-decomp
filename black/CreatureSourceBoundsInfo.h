@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00bdf5b0 mac inlined CreatureSourceBoundsInfo::`RTTI Type Descriptor'
+// win1.41 009aad10 mac inlined CreatureSourceBoundsInfo::`RTTI Base Class Descriptor'
+// win1.41 009aad28 mac inlined CreatureSourceBoundsInfo::`RTTI Base Class Array'
+// win1.41 009aad38 mac inlined CreatureSourceBoundsInfo::`RTTI Class Hierarchy Descriptor'
+class CreatureSourceBoundsInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 004dd400 mac 1025eab0 CreatureSourceBoundsInfo::_dt(void)
+    virtual ~CreatureSourceBoundsInfo();
+    // win1.41 004dd3a0 mac 1025ee20 CreatureSourceBoundsInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__24CreatureSourceBoundsInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureSourceBoundsInfo@@UAEPAXI@Z");
 // win1.41 004dd3a0 mac 1025ee20 CreatureSourceBoundsInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__24CreatureSourceBoundsInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@CreatureSourceBoundsInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_SOURCE_BOUNDS_INFO_INCLUDED_H */

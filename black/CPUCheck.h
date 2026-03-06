@@ -6,6 +6,24 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// win1.41 009cee68 mac inlined CPUCheck::`RTTI Type Descriptor'
+// win1.41 009a9358 mac inlined CPUCheck::`RTTI Base Class Descriptor'
+// win1.41 009a9370 mac inlined CPUCheck::`RTTI Base Class Array'
+// win1.41 009a9378 mac inlined CPUCheck::`RTTI Class Hierarchy Descriptor'
+class CPUCheck
+{
+public:
+
+    // Override methods
+
+    // win1.41 00471a80 mac 100c00a0 CPUCheck::~CPUCheck(void)
+    virtual ~CPUCheck();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CPUCheck;
@@ -37,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00471a80 mac 100c00a0 CPUCheck::~CPUCheck(void)
 void __fastcall __dt__8CPUCheckFUi(struct CPUCheck* this, const void* edx, uint32_t param_1) asm("??GCPUCheck@@UAE@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CPU_CHECK_INCLUDED_H */

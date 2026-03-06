@@ -9,6 +9,68 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class GInterfaceStatus;
+class GameThingWithPos;
+struct LH_SamplePlayOptions;
+class Town;
+
+// win1.41 00c22200 mac inlined GGuidance::`RTTI Type Descriptor'
+// win1.41 009b9158 mac inlined GGuidance::`RTTI Base Class Descriptor'
+// win1.41 009b9170 mac inlined GGuidance::`RTTI Base Class Array'
+// win1.41 009b9180 mac inlined GGuidance::`RTTI Class Hierarchy Descriptor'
+// win1.41 009804a8 mac 109d783c GGuidance::`RTTI Complete Object Locator'
+// win1.41 009804ac mac 109d7844 GGuidance::`vftable'
+class GGuidance: public Base
+{
+public:
+    LH_SamplePlayOptions* play_options; /* 0x8 */
+    int field_0xc[0x21];
+    LHLinkedList__Q29GGuidance10LastThings lastThings; /* 0x90 */
+    uint32_t field_0x98;
+    uint32_t field_0x9c;
+    uint32_t field_0xa0;
+    uint32_t field_0xa4;
+    float field_0xa8;
+    uint32_t field_0xac;
+    uint32_t field_0xb0;
+    uint32_t field_0xb4;
+    uint32_t field_0xb8;
+    uint32_t field_0xbc;
+    uint32_t field_0xc0;
+    uint32_t field_0xc4;
+    uint32_t field_0xc8;
+    GInterfaceStatus* interface_status;
+    uint32_t field_0xd0[0x7];
+
+    // Override methods
+
+    // win1.41 0071ab30 mac 10512620 GGuidance::_dt(void)
+    virtual ~GGuidance();
+
+    // Static methods
+
+    // win1.41 0071b020 mac 10082330 GGuidance::ProcessTownDesireSFX(GInterfaceStatus &)
+    static void ProcessTownDesireSFX(GInterfaceStatus* status);
+
+    // Constructors
+
+    // win1.41 0071ab10 mac 105126b0 GGuidance::GGuidance(void)
+    GGuidance();
+
+    // Non-virtual methods
+
+    // win1.41 0071ac70 mac 105122a0 GGuidance::Init(GInterfaceStatus&)
+    void Init(GInterfaceStatus* status);
+    // win1.41 0071cbe0 mac 1050e610 GGuidance::HelpSpritesLowOnPeople(Town &)
+    void HelpSpritesLowOnPeople(Town* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct GInterfaceStatus;
@@ -90,5 +152,7 @@ void __fastcall HelpSpritesLowOnPeople__9GGuidanceFR4Town(struct GGuidance* this
 
 // win1.41 0071ab30 mac 10512620 GGuidance::_dt(void)
 void __fastcall __dt__9GGuidanceFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGGuidance@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SOUND_GUIDANCE_INCLUDED_H */

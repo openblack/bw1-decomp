@@ -8,6 +8,28 @@
 
 #include "Particle3DAnim.h" /* For struct Particle3DAnim */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c09558 mac inlined Particle3DAnimWithCamera::`RTTI Type Descriptor'
+// win1.41 009b8000 mac inlined Particle3DAnimWithCamera::`RTTI Base Class Descriptor'
+// win1.41 009b8018 mac inlined Particle3DAnimWithCamera::`RTTI Base Class Array'
+// win1.41 009b8038 mac inlined Particle3DAnimWithCamera::`RTTI Class Hierarchy Descriptor'
+class Particle3DAnimWithCamera: public Particle3DAnim
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c8680 mac inlined Particle3DAnimWithCamera::_dt(void)
+    virtual ~Particle3DAnimWithCamera();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 006c8680 mac inlined Particle3DAnimWithCamera::_dt(void)
 void __fastcall __dt__24Particle3DAnimWithCameraFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GParticle3DAnimWithCamera@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PARTICLE_3D_ANIM_WITH_CAMERA_INCLUDED_H */

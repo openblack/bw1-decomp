@@ -8,6 +8,36 @@
 #include <lionhead/lh3dlib/development/Prss.h> /* For struct Prss */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct MouseInput;
+
+// win1.41 00be9138 mac inlined EditorHug::`RTTI Type Descriptor'
+// win1.41 009abb68 mac inlined EditorHug::`RTTI Base Class Descriptor'
+// win1.41 009abb80 mac inlined EditorHug::`RTTI Base Class Array'
+// win1.41 009abb90 mac inlined EditorHug::`RTTI Class Hierarchy Descriptor'
+class EditorHug: public Prss
+{
+public:
+
+    // Override methods
+
+    // win1.41 0051f180 mac inlined EditorHug::ProcessTurn(void)
+    virtual int ProcessTurn();
+    // win1.41 0051f200 mac inlined EditorHug::Display(void)
+    virtual void Display();
+    // win1.41 0060db30 mac inlined EditorHug::PrssKey(LH_KEY, unsigned short)
+    virtual void PrssKey(LH_KEY param_1, uint16_t param_2);
+    // win1.41 0051f3b0 mac inlined EditorHug::PrssMouse(MouseInput *)
+    virtual void PrssMouse(MouseInput* param_1);
+    // win1.41 0051f5b0 mac inlined EditorHug::ClickFunction(int, int, int)
+    virtual void ClickFunction(int param_1, int param_2, int param_3);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct MouseInput;
@@ -41,5 +71,7 @@ void __fastcall PrssKey__9EditorHugF6LH_KEYUs(struct Prss* this, const void* edx
 void __fastcall PrssMouse__9EditorHugFP10MouseInput(struct Prss* this, const void* edx, struct MouseInput* param_1) asm("?PrssMouse@EditorHug@@UAEXPAUMouseInput@@@Z");
 // win1.41 0051f5b0 mac inlined EditorHug::ClickFunction(int, int, int)
 void __fastcall ClickFunction__9EditorHugFiii(struct Prss* this, const void* edx, int param_1, int param_2, int param_3) asm("?ClickFunction@EditorHug@@UAEXHHH@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_EDITOR_HUG_INCLUDED_H */

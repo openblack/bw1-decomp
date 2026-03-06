@@ -1,6 +1,7 @@
 import sys
 import os
 import csnake
+from collections import OrderedDict
 sys.path.append(os.path.dirname(__file__) + "/../bw1_decomp_gen")
 
 import unittest
@@ -765,3 +766,130 @@ static struct globals_t globals = {
 
 #endif /* BW1_DECOMP_TEST_HEADER_INCLUDED_H */
 """)
+
+
+class TestRTTIClassHeader(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        Header.set_header_guard_format("BW1_DECOMP_%s_INCLUDED_H")
+        Header.set_utility_header_import_map({})
+
+    def setUp(self):
+        super().setUp()
+        self.maxDiff = None
+        self.cw = CodeWriter()
+        self.path = Path("src/TestClass.h")
+
+    @staticmethod
+    def _rtti_entry(name, win_addr, mac_addr, type_name, decorated_name):
+        return {"name": name, "win_addr": win_addr, "mac_addr": mac_addr, "type": type_name, "decorated_name": decorated_name, "msvc_mangled_name": None}
+
+    def test_rtti_class_with_vftable_and_rtti(self):
+        vftable_struct = Vftable(Struct("TestClassVftable", 4, []))
+        vftable_struct.members = [
+            Vftable.Member("Foo", FuncPtr("TestClassVftable__Foo", "__thiscall", "int", ["struct TestClass*", "float"], ["this", "x"]), 0x0),
+            Vftable.Member("Bar", FuncPtr("TestClassVftable__Bar", "__thiscall", "float", ["struct TestClass*", "int"], ["this", "x"]), 0x4),
+        ]
+
+        struct = Struct("TestClass", 4, [
+            Struct.Member("vftable", "struct TestClassVftable*", 0x0),
+            Struct.Member("x", "char", 0x4),
+            Struct.Member("y", "char", 0x5),
+        ])
+        typedesc_map = {"TestClass": self._rtti_entry("__type_info__9TestClass", 0x00501000, 0x10101000, "struct RTTITypeDescriptor", "TestClass::RTTITypeDescriptor")}
+        locator_map = {"TestClass": self._rtti_entry("__locator__9TestClass", 0x00501010, 0x10101010, "struct RTTICompleteObjectLocator", "TestClass::RTTICompleteObjectLocator")}
+        vftable_map = {"TestClass": self._rtti_entry("__vt__9TestClass", 0x00501020, 0x10101020, "struct TestClassVftable", "TestClass::__vt__")}
+
+        rtti_class = RTTIClass(struct, vftable_map, typedesc_map, {}, {}, {}, locator_map, OrderedDict(), {}, {})
+        rtti_class.cplusplus_members = [
+            Struct.Member("a", "char", 0x4),
+            Struct.Member("b", "char", 0x5),
+        ]
+
+        header = Header(self.path, includes=[], structs=[vftable_struct, rtti_class])
+        header.build_include_list({})
+        header.to_code(self.cw)
+
+        self.assertEqual(self.cw.code, """\
+#ifndef BW1_DECOMP_TEST_CLASS_INCLUDED_H
+#define BW1_DECOMP_TEST_CLASS_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
+
+#ifdef __cplusplus
+
+// win1.41 00501000 mac 10101000 TestClass::RTTITypeDescriptor
+// win1.41 00501010 mac 10101010 TestClass::RTTICompleteObjectLocator
+// win1.41 00501020 mac 10101020 TestClass::__vt__
+class TestClass
+{
+public:
+    char a; /* 0x4 */
+    char b;
+
+    // Virtual functions
+
+    virtual int Foo(float x); /* 0x0 */
+    virtual float Bar(int x);
+};
+
+#else // __cplusplus
+
+// Forward Declares
+
+struct TestClass;
+
+struct TestClassVftable
+{
+    int (__fastcall* Foo)(struct TestClass* this, const void* edx, float x);  /* 0x0 */
+    float (__fastcall* Bar)(struct TestClass* this, const void* edx, int x);
+};
+static_assert(sizeof(struct TestClassVftable) == 0x4, "Data type is of wrong size");
+
+struct TestClass
+{
+    struct TestClassVftable* vftable;  /* 0x0 */
+    char x;
+    char y;
+};
+static_assert(sizeof(struct TestClass) == 0x4, "Data type is of wrong size");
+
+// Object Oriented datastructures
+
+// win1.41 00501000 mac 10101000 TestClass::RTTITypeDescriptor
+extern struct RTTITypeDescriptor __type_info__9TestClass;
+// win1.41 00501010 mac 10101010 TestClass::RTTICompleteObjectLocator
+extern const struct RTTICompleteObjectLocator __locator__9TestClass;
+// win1.41 00501020 mac 10101020 TestClass::__vt__
+extern const struct TestClassVftable __vt__9TestClass;
+
+#endif // __cplusplus
+
+#endif /* BW1_DECOMP_TEST_CLASS_INCLUDED_H */
+""")
+
+    def test_rtti_class_with_inheritance(self):
+        vftable_struct = Vftable(Struct("ChildClassVftable", 4, []))
+        vftable_struct.members = [
+            Vftable.Member("Foo", FuncPtr("ChildClassVftable__Foo", "__thiscall", "struct Base*", ["struct ChildClass*", "struct Other*"], ["this", "other"]), 0x0),
+        ]
+
+        struct = Struct("ChildClass", 8, [
+            Struct.Member("super", "struct Base", 0x0),
+            Struct.Member("x", "char", 0x4),
+        ])
+        vftable_map = {"ChildClass": self._rtti_entry("__vt__10ChildClass", 0x00502000, 0x10102000, "struct ChildClassVftable", "ChildClass::__vt__")}
+        rtti_class = RTTIClass(struct, vftable_map, {}, {}, {}, {}, {}, OrderedDict(), {}, {})
+        rtti_class.cplusplus_members = [
+            Struct.Member("super", "struct Base", 0x0),
+            Struct.Member("x", "char", 0x4),
+        ]
+
+        header = Header(self.path, includes=[], structs=[vftable_struct, rtti_class])
+        header.build_include_list({})
+        header.to_code(self.cw)
+
+        self.assertIn("class ChildClass: public Base", self.cw.code)
+        self.assertNotIn("super", self.cw.code.split("#else")[0])
+        self.assertIn("    char x;", self.cw.code)
+        self.assertIn("    virtual Base* Foo(Other* other);", self.cw.code)

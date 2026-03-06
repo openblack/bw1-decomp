@@ -7,6 +7,30 @@
 #include <reversing_utils/re_common.h> /* For bool32_t */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CreatureSubActionAgenda;
+struct LHPoint;
+class Object;
+
+// win1.41 009d03a8 mac inlined SubArgument::`RTTI Type Descriptor'
+// win1.41 009a9718 mac inlined SubArgument::`RTTI Base Class Descriptor'
+// win1.41 inlined mac 1077e3e4 SubArgument::`vftable'
+class SubArgument
+{
+public:
+    // Virtual functions
+
+    virtual void SetArgumentOfSubActionAgenda(CreatureSubActionAgenda* param_1, uint32_t param_2); /* 0x0 */
+    virtual bool32_t HasDestination();
+    virtual LHPoint* GetDestination();
+    virtual Object* GetObject();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CreatureSubActionAgenda;
@@ -37,5 +61,7 @@ extern struct RTTITypeDescriptor __RTTITypeDescriptor__11SubArgument asm("??_R0?
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11SubArgument asm("??_R1A@?0A@A@SubArgument@@8");
 // win1.41 inlined mac 1077e3e4 SubArgument::`vftable'
 extern const struct SubArgumentVftable __vt__11SubArgument asm("??_7SubArgument@@6B@");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SUB_ARGUMENT_INCLUDED_H */

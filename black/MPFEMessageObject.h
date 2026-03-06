@@ -5,6 +5,28 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct MPFEPlayerDetails;
+
+// win1.41 009cd8e0 mac inlined MPFEMessageObject::`RTTI Type Descriptor'
+// win1.41 009a8750 mac inlined MPFEMessageObject::`RTTI Base Class Descriptor'
+// win1.41 009a8768 mac inlined MPFEMessageObject::`RTTI Base Class Array'
+// win1.41 009a8770 mac inlined MPFEMessageObject::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c70a4 mac 109a2360 MPFEMessageObject::`vftable'
+class MPFEMessageObject
+{
+public:
+    // Virtual functions
+
+    virtual ~MPFEMessageObject(); /* 0x0 */
+    virtual void Send(MPFEPlayerDetails* details);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct MPFEMessageObject;
@@ -35,5 +57,7 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__17MPFEMessageObject
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__17MPFEMessageObject asm("??_R3MPFEMessageObject@@8");
 // win1.41 008c70a4 mac 109a2360 MPFEMessageObject::`vftable'
 extern const struct MPFEMessageObjectVftable __vt__17MPFEMessageObject asm("??_7MPFEMessageObject@@6B@");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_MESSAGE_OBJECT_INCLUDED_H */

@@ -8,6 +8,167 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bdf1e8 mac inlined CreatureBelief::`RTTI Type Descriptor'
+// win1.41 009aa9a0 mac inlined CreatureBelief::`RTTI Base Class Descriptor'
+// win1.41 009aaa08 mac inlined CreatureBelief::`RTTI Base Class Array'
+// win1.41 009aaa18 mac inlined CreatureBelief::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cfe0c mac 10989878 CreatureBelief::`RTTI Complete Object Locator'
+// win1.41 008cfe10 mac 10989880 CreatureBelief::`vftable'
+class CreatureBelief: public Base
+{
+public:
+    uint8_t field_0x8[0x44];
+
+    // Override methods
+
+    // win1.41 004d78d0 mac 10252070 CreatureBelief::_dt(void)
+    virtual ~CreatureBelief();
+};
+
+// win1.41 00bdf110 mac inlined CreatureBeliefAboutAbode::`RTTI Type Descriptor'
+// win1.41 009aa810 mac inlined CreatureBeliefAboutAbode::`RTTI Base Class Descriptor'
+// win1.41 009aa828 mac inlined CreatureBeliefAboutAbode::`RTTI Base Class Array'
+// win1.41 009aa838 mac inlined CreatureBeliefAboutAbode::`RTTI Class Hierarchy Descriptor'
+class CreatureBeliefAboutAbode: public CreatureBelief
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d6660 mac 10255910 CreatureBeliefAboutAbode::_dt(void)
+    virtual ~CreatureBeliefAboutAbode();
+};
+
+// win1.41 00bdf1b8 mac inlined CreatureBeliefAboutCitadel::`RTTI Type Descriptor'
+// win1.41 009aa950 mac inlined CreatureBeliefAboutCitadel::`RTTI Base Class Descriptor'
+// win1.41 009aa968 mac inlined CreatureBeliefAboutCitadel::`RTTI Base Class Array'
+// win1.41 009aa978 mac inlined CreatureBeliefAboutCitadel::`RTTI Class Hierarchy Descriptor'
+class CreatureBeliefAboutCitadel: public CreatureBelief
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d6570 mac 102557b0 CreatureBeliefAboutCitadel::_dt(void)
+    virtual ~CreatureBeliefAboutCitadel();
+};
+
+// win1.41 00bdf0b0 mac inlined CreatureBeliefAboutContext::`RTTI Type Descriptor'
+// win1.41 009aa770 mac inlined CreatureBeliefAboutContext::`RTTI Base Class Descriptor'
+// win1.41 009aa788 mac inlined CreatureBeliefAboutContext::`RTTI Base Class Array'
+// win1.41 009aa798 mac inlined CreatureBeliefAboutContext::`RTTI Class Hierarchy Descriptor'
+class CreatureBeliefAboutContext: public CreatureBelief
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d66c0 mac 10255710 CreatureBeliefAboutContext::_dt(void)
+    virtual ~CreatureBeliefAboutContext();
+};
+
+// win1.41 00bdf160 mac inlined CreatureBeliefAboutCreature::`RTTI Type Descriptor'
+// win1.41 009aa8b0 mac inlined CreatureBeliefAboutCreature::`RTTI Base Class Descriptor'
+// win1.41 009aa8c8 mac inlined CreatureBeliefAboutCreature::`RTTI Base Class Array'
+// win1.41 009aa8d8 mac inlined CreatureBeliefAboutCreature::`RTTI Class Hierarchy Descriptor'
+class CreatureBeliefAboutCreature: public CreatureBelief
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d65c0 mac 10255d30 CreatureBeliefAboutCreature::_dt(void)
+    virtual ~CreatureBeliefAboutCreature();
+};
+
+// win1.41 00bdf208 mac inlined CreatureBeliefAboutFlock::`RTTI Type Descriptor'
+// win1.41 009aa9b8 mac inlined CreatureBeliefAboutFlock::`RTTI Base Class Descriptor'
+// win1.41 009aa9d0 mac inlined CreatureBeliefAboutFlock::`RTTI Base Class Array'
+// win1.41 009aa9e0 mac inlined CreatureBeliefAboutFlock::`RTTI Class Hierarchy Descriptor'
+class CreatureBeliefAboutFlock: public CreatureBelief
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d6520 mac 10255e90 CreatureBeliefAboutFlock::_dt(void)
+    virtual ~CreatureBeliefAboutFlock();
+};
+
+// win1.41 00bdf138 mac inlined CreatureBeliefAboutForest::`RTTI Type Descriptor'
+// win1.41 009aa860 mac inlined CreatureBeliefAboutForest::`RTTI Base Class Descriptor'
+// win1.41 009aa878 mac inlined CreatureBeliefAboutForest::`RTTI Base Class Array'
+// win1.41 009aa888 mac inlined CreatureBeliefAboutForest::`RTTI Class Hierarchy Descriptor'
+class CreatureBeliefAboutForest: public CreatureBelief
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d6610 mac 10255bd0 CreatureBeliefAboutForest::_dt(void)
+    virtual ~CreatureBeliefAboutForest();
+};
+
+// win1.41 00bdf428 mac inlined CreatureBeliefAboutMobileObject::`RTTI Type Descriptor'
+// win1.41 009aaa90 mac inlined CreatureBeliefAboutMobileObject::`RTTI Base Class Descriptor'
+// win1.41 009aaaa8 mac inlined CreatureBeliefAboutMobileObject::`RTTI Base Class Array'
+// win1.41 009aaab8 mac inlined CreatureBeliefAboutMobileObject::`RTTI Class Hierarchy Descriptor'
+class CreatureBeliefAboutMobileObject: public CreatureBelief
+{
+public:
+
+    // Override methods
+
+    // win1.41 004da700 mac inlined CreatureBeliefAboutMobileObject::_dt(void)
+    virtual ~CreatureBeliefAboutMobileObject();
+};
+
+// win1.41 00bdf088 mac inlined CreatureBeliefAboutTown::`RTTI Type Descriptor'
+// win1.41 009aa720 mac inlined CreatureBeliefAboutTown::`RTTI Base Class Descriptor'
+// win1.41 009aa738 mac inlined CreatureBeliefAboutTown::`RTTI Base Class Array'
+// win1.41 009aa748 mac inlined CreatureBeliefAboutTown::`RTTI Class Hierarchy Descriptor'
+class CreatureBeliefAboutTown: public CreatureBelief
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d64d0 mac 10255ff0 CreatureBeliefAboutTown::_dt(void)
+    virtual ~CreatureBeliefAboutTown();
+};
+
+// win1.41 00bdf0e0 mac inlined CreatureBeliefAboutVillager::`RTTI Type Descriptor'
+// win1.41 009aa7c0 mac inlined CreatureBeliefAboutVillager::`RTTI Base Class Descriptor'
+// win1.41 009aa7d8 mac inlined CreatureBeliefAboutVillager::`RTTI Base Class Array'
+// win1.41 009aa7e8 mac inlined CreatureBeliefAboutVillager::`RTTI Class Hierarchy Descriptor'
+class CreatureBeliefAboutVillager: public CreatureBelief
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d6480 mac 10255a70 CreatureBeliefAboutVillager::_dt(void)
+    virtual ~CreatureBeliefAboutVillager();
+};
+
+// win1.41 00bdf190 mac inlined CreatureBeliefSmall::`RTTI Type Descriptor'
+// win1.41 009aa900 mac inlined CreatureBeliefSmall::`RTTI Base Class Descriptor'
+// win1.41 009aa918 mac inlined CreatureBeliefSmall::`RTTI Base Class Array'
+// win1.41 009aa928 mac inlined CreatureBeliefSmall::`RTTI Class Hierarchy Descriptor'
+class CreatureBeliefSmall: public CreatureBelief
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d6430 mac 10256140 CreatureBeliefSmall::_dt(void)
+    virtual ~CreatureBeliefSmall();
+};
+
+#else // __cplusplus
+
 struct CreatureBelief
 {
   struct Base super;  /* 0x0 */
@@ -254,5 +415,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 004d6430 mac 10256140 CreatureBeliefSmall::_dt(void)
 void __fastcall __dt__19CreatureBeliefSmallFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureBeliefSmall@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_BELIEF_INCLUDED_H */

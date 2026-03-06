@@ -9,6 +9,33 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea330 mac inlined MainMenu::`RTTI Type Descriptor'
+// win1.41 009ac8d0 mac inlined MainMenu::`RTTI Base Class Descriptor'
+// win1.41 009ac8e8 mac inlined MainMenu::`RTTI Base Class Array'
+// win1.41 009ac8f8 mac inlined MainMenu::`RTTI Class Hierarchy Descriptor'
+// win1.41 008dec40 mac 109ed7d4 MainMenu::`RTTI Complete Object Locator'
+// win1.41 008dec44 mac 109ed7dc MainMenu::`vftable'
+class MainMenu: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0x28];
+
+    // Override methods
+
+    // win1.41 0053f910 mac 105c0610 MainMenu::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 0053fb50 mac 105c05a0 MainMenu::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0053bd50 mac 105c5ef0 MainMenu::CanESCOut(void)
+    virtual bool CanESCOut();
+    // win1.41 0053fba0 mac 105bff40 MainMenu::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct MainMenu
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -41,5 +68,7 @@ void __fastcall Destroy__8MainMenuFv(struct DialogBoxBase* this) asm("?Destroy@M
 bool __fastcall CanESCOut__8MainMenuFv(struct DialogBoxBase* this) asm("?CanESCOut@MainMenu@@UAE_NXZ");
 // win1.41 0053fba0 mac 105bff40 MainMenu::InitControls(void)
 void __fastcall InitControls__8MainMenuFv(struct DialogBoxBase* this) asm("?InitControls@MainMenu@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAIN_MENU_INCLUDED_H */

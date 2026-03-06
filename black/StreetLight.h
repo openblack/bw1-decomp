@@ -9,6 +9,55 @@
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GPlayer;
+class GameOSFile;
+class GameThing;
+struct MapCoords;
+
+// win1.41 00becb18 mac inlined GStreetLight::`RTTI Type Descriptor'
+// win1.41 009ada30 mac inlined GStreetLight::`RTTI Base Class Descriptor'
+// win1.41 009ada48 mac inlined GStreetLight::`RTTI Base Class Array'
+// win1.41 009ada60 mac inlined GStreetLight::`RTTI Class Hierarchy Descriptor'
+// win1.41 008eb134 mac 109e1864 GStreetLight::`RTTI Complete Object Locator'
+// win1.41 008eb138 mac 109e186c GStreetLight::`vftable'
+class GStreetLight: public GameThingWithPos
+{
+public:
+    uint32_t field_0x28;
+
+    // Override methods
+
+    // win1.41 00561420 mac 10535660 GStreetLight::_dt(void)
+    virtual ~GStreetLight();
+    // win1.41 00734e00 mac 10535d70 GStreetLight::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 005613d0 mac 10535700 GStreetLight::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 00561410 mac 10535800 GStreetLight::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00735160 mac 105358a0 GStreetLight::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00735140 mac 10535910 GStreetLight::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 00561400 mac 105357c0 GStreetLight::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00735180 mac 10535840 GStreetLight::ResolveLoad(void)
+    virtual void ResolveLoad();
+    // win1.41 00735110 mac 10535980 GStreetLight::GetDistanceFromObject(MapCoords const &)
+    virtual float GetDistanceFromObject(const MapCoords* param_1);
+    // win1.41 005613f0 mac 10535780 GStreetLight::IsStreetLight(void)
+    virtual uint32_t IsStreetLight();
+    // win1.41 005613e0 mac 10535740 GStreetLight::GetText(void)
+    virtual const char* GetText();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -65,5 +114,7 @@ uint32_t __fastcall IsStreetLight__12GStreetLightFv(struct GameThingWithPos* thi
 const char* __fastcall GetText__12GStreetLightFv(struct GameThingWithPos* this) asm("?GetText@GStreetLight@@UAEPBDXZ");
 
 DECLARE_LH_LIST_HEAD(GStreetLight);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_STREET_LIGHT_INCLUDED_H */

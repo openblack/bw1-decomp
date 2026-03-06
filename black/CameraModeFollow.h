@@ -8,6 +8,47 @@
 
 #include "CameraMode.h" /* For struct CameraMode */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class GCamera;
+class GameThingWithPos;
+
+// win1.41 009cda20 mac inlined CameraModeFollow::`RTTI Type Descriptor'
+// win1.41 009a8a30 mac inlined CameraModeFollow::`RTTI Base Class Descriptor'
+// win1.41 009a8a48 mac inlined CameraModeFollow::`RTTI Base Class Array'
+// win1.41 009a8a58 mac inlined CameraModeFollow::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c7880 mac 1077789c CameraModeFollow::`RTTI Complete Object Locator'
+// win1.41 008c7884 mac 106f67fc CameraModeFollow::`vftable'
+class CameraModeFollow: public CameraMode
+{
+public:
+    GameThingWithPos* target; /* 0x8 */
+    float pitch;
+    float yaw; /* 0x10 */
+    float viewing_distance;
+    float field_0x18;
+    int field_0x1c;
+    int field_0x20;
+    uint8_t field_0x24[0x18];
+    int32_t field_0x3c;
+    int32_t field_0x40;
+    int32_t field_0x44;
+
+    // Constructors
+
+    // win1.41 0044b800 mac 101a00c0 CameraModeFollow::CameraModeFollow(GCamera *, GameThingWithPos *, float, int, int)
+    CameraModeFollow(GCamera* camera, GameThingWithPos* target, float param_3, int param_4, int param_5);
+
+    // Non-virtual methods
+
+    // win1.41 0044ba00 mac 1019ff80 CameraModeFollow::Set(GameThingWithPos *)
+    void Set(GameThingWithPos* target);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct GCamera;
@@ -54,5 +95,7 @@ struct CameraModeFollow* __fastcall __ct__16CameraModeFollowFP7GCameraP16GameThi
 
 // win1.41 0044ba00 mac 1019ff80 CameraModeFollow::Set(GameThingWithPos *)
 void __fastcall Set__16CameraModeFollowFP16GameThingWithPos(struct CameraModeFollow* this, const void* edx, struct GameThingWithPos* target) asm("?Set@CameraModeFollow@@QAEXPAVGameThingWithPos@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CAMERA_MODE_FOLLOW_INCLUDED_H */

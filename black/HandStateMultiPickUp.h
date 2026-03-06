@@ -7,6 +7,30 @@
 
 #include "HandState.h" /* For struct HandState */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CHand;
+
+// win1.41 00bf01a8 mac inlined HandStateMultiPickUp::`RTTI Type Descriptor'
+// win1.41 009b1018 mac inlined HandStateMultiPickUp::`RTTI Base Class Descriptor'
+// win1.41 009b1030 mac inlined HandStateMultiPickUp::`RTTI Base Class Array'
+// win1.41 009b1040 mac inlined HandStateMultiPickUp::`RTTI Class Hierarchy Descriptor'
+// win1.41 00900b68 mac 1099b58c HandStateMultiPickUp::`RTTI Complete Object Locator'
+// win1.41 00900b6c mac 1099b594 HandStateMultiPickUp::`vftable'
+class HandStateMultiPickUp: public HandState
+{
+public:
+
+    // Constructors
+
+    // win1.41 005b5730 mac 1033c330 HandStateMultiPickUp::HandStateMultiPickUp(CHand*)
+    HandStateMultiPickUp(CHand* hand);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CHand;
@@ -36,5 +60,7 @@ extern const struct HandStateVftable __vt__20HandStateMultiPickUp asm("??_7HandS
 
 // win1.41 005b5730 mac 1033c330 HandStateMultiPickUp::HandStateMultiPickUp(CHand*)
 struct HandStateMultiPickUp* __fastcall __ct__20HandStateMultiPickUpFP5CHand(struct HandStateMultiPickUp* this, const void* edx, struct CHand* hand) asm("??0HandStateMultiPickUp@@QAE@PAVCHand@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HAND_STATE_MULTI_PICK_UP_INCLUDED_H */

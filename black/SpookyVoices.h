@@ -8,6 +8,24 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00c228c8 mac inlined GSpookyVoices::`RTTI Type Descriptor'
+// win1.41 009b97d8 mac inlined GSpookyVoices::`RTTI Base Class Descriptor'
+// win1.41 009b97f0 mac inlined GSpookyVoices::`RTTI Base Class Array'
+// win1.41 009b9800 mac inlined GSpookyVoices::`RTTI Class Hierarchy Descriptor'
+class GSpookyVoices: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 0072e250 mac 10148e30 GSpookyVoices::_dt(void)
+    virtual ~GSpookyVoices();
+};
+
+#else // __cplusplus
+
 struct GSpookyVoices
 {
   struct Base super;  /* 0x0 */
@@ -29,5 +47,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 0072e250 mac 10148e30 GSpookyVoices::_dt(void)
 void __fastcall __dt__13GSpookyVoicesFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGSpookyVoices@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPOOKY_VOICES_INCLUDED_H */

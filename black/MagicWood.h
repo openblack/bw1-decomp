@@ -9,6 +9,51 @@
 
 #include "PileWood.h" /* For struct PileWood */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Creature;
+class GPlayer;
+class GameOSFile;
+class GameThing;
+class GameThingWithPos;
+struct MapCoords;
+class Object;
+
+// win1.41 00bf4110 mac inlined MagicWood::`RTTI Type Descriptor'
+// win1.41 009b1e80 mac inlined MagicWood::`RTTI Base Class Descriptor'
+// win1.41 009b1e98 mac inlined MagicWood::`RTTI Base Class Array'
+// win1.41 009b1ec8 mac inlined MagicWood::`RTTI Class Hierarchy Descriptor'
+class MagicWood: public PileWood
+{
+public:
+
+    // Override methods
+
+    // win1.41 00600df0 mac 103ba240 MagicWood::_dt(void)
+    virtual ~MagicWood();
+    // win1.41 00600da0 mac 103b9ed0 MagicWood::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 00600de0 mac 103b9fe0 MagicWood::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00600f60 mac 103ba020 MagicWood::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00600f20 mac 103ba0b0 MagicWood::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 00600dd0 mac 103b9fa0 MagicWood::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00600db0 mac 103b9f10 MagicWood::GetImpressiveType(void)
+    virtual IMPRESSIVE_TYPE GetImpressiveType();
+    // win1.41 00600dc0 mac 103b9f50 MagicWood::IsAWoodPileOutsideStoragePit(Creature *)
+    virtual uint32_t IsAWoodPileOutsideStoragePit(Creature* param_1);
+    // win1.41 00600f10 mac 103ba140 MagicWood::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -57,5 +102,7 @@ enum IMPRESSIVE_TYPE __fastcall GetImpressiveType__9MagicWoodFv(struct GameThing
 uint32_t __fastcall IsAWoodPileOutsideStoragePit__9MagicWoodFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsAWoodPileOutsideStoragePit@MagicWood@@UAEIPAVCreature@@@Z");
 // win1.41 00600f10 mac 103ba140 MagicWood::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__9MagicWoodFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@MagicWood@@UAEXABUMapCoords@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_WOOD_INCLUDED_H */

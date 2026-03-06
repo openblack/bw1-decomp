@@ -9,6 +9,57 @@
 
 #include "Abode.h" /* For struct Abode */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+class GameThingWithPos;
+struct MapCoords;
+class Object;
+
+// win1.41 00c225c0 mac inlined SpellDispenser::`RTTI Type Descriptor'
+// win1.41 009b9330 mac inlined SpellDispenser::`RTTI Base Class Descriptor'
+// win1.41 009b9348 mac inlined SpellDispenser::`RTTI Base Class Array'
+// win1.41 009b9370 mac inlined SpellDispenser::`RTTI Class Hierarchy Descriptor'
+class SpellDispenser: public Abode
+{
+public:
+
+    // Override methods
+
+    // win1.41 00722700 mac 1051a8e0 SpellDispenser::_dt(void)
+    virtual ~SpellDispenser();
+    // win1.41 007228a0 mac 1051b9e0 SpellDispenser::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00722fa0 mac 1051ac90 SpellDispenser::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00722e80 mac 1051acf0 SpellDispenser::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00722d50 mac 1051aeb0 SpellDispenser::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 007226f0 mac 1051aa40 SpellDispenser::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 007226d0 mac 1051a9b0 SpellDispenser::IsSpellDispenser(void)
+    virtual uint32_t IsSpellDispenser();
+    // win1.41 007226c0 mac 1051a970 SpellDispenser::IsActive( const(void))
+    virtual uint32_t IsActive();
+    // win1.41 00722fb0 mac 1051ac40 SpellDispenser::GetScriptObjectType(void)
+    virtual uint32_t GetScriptObjectType();
+    // win1.41 00722a70 mac 1051b590 SpellDispenser::Process(void)
+    virtual uint32_t Process();
+    // win1.41 00722940 mac 1051b6d0 SpellDispenser::Draw(void)
+    virtual void Draw();
+    // win1.41 007227d0 mac 1051ba80 SpellDispenser::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 007226e0 mac 1051a9f0 SpellDispenser::IsSpellSeedReturnPoint( const(void))
+    virtual bool IsSpellSeedReturnPoint();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -63,5 +114,7 @@ void __fastcall Draw__14SpellDispenserFv(struct Object* this) asm("?Draw@SpellDi
 void __fastcall CallVirtualFunctionsForCreation__14SpellDispenserFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@SpellDispenser@@UAEXABUMapCoords@@@Z");
 // win1.41 007226e0 mac 1051a9f0 SpellDispenser::IsSpellSeedReturnPoint( const(void))
 bool __fastcall IsSpellSeedReturnPoint__14SpellDispenserCFv(const struct Object* this) asm("?IsSpellSeedReturnPoint@SpellDispenser@@UBE_NXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPELL_DISPENSER_INCLUDED_H */

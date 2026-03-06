@@ -7,6 +7,22 @@
 
 #include "LH3DMeshedObject.h" /* For struct LH3DMeshedObject */
 
+#ifdef __cplusplus
+
+// win1.41 009a2970 mac 101ca668 LH3DStaticObject::`RTTI Complete Object Locator'
+// win1.41 009a2974 mac 101ca688 LH3DStaticObject::`vftable'
+class LH3DStaticObject: public LH3DMeshedObject
+{
+public:
+
+    // Constructors
+
+    // win1.41 00816540 mac 100763e0 LH3DStaticObject::LH3DStaticObject(void)
+    LH3DStaticObject();
+};
+
+#else // __cplusplus
+
 struct LH3DStaticObject
 {
   struct LH3DMeshedObject super;  /* 0x0 */
@@ -24,5 +40,7 @@ extern const struct LH3DObjectVftable __vt__16LH3DStaticObject asm("??_7LH3DStat
 
 // win1.41 00816540 mac 100763e0 LH3DStaticObject::LH3DStaticObject(void)
 struct LH3DStaticObject* __fastcall __ct__16LH3DStaticObjectFv(struct LH3DStaticObject* this) asm("??0LH3DStaticObject@@QAE@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_STATIC_OBJECT_INCLUDED_H */

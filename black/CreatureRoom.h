@@ -8,6 +8,34 @@
 
 #include "TempleRoom.h" /* For struct TempleRoom */
 
+#ifdef __cplusplus
+
+// win1.41 00c274c8 mac inlined CreatureRoom::`RTTI Type Descriptor'
+// win1.41 009ba5f8 mac inlined CreatureRoom::`RTTI Base Class Descriptor'
+// win1.41 009ba610 mac inlined CreatureRoom::`RTTI Base Class Array'
+// win1.41 009ba620 mac inlined CreatureRoom::`RTTI Class Hierarchy Descriptor'
+// win1.41 0099eb2c mac 1098e5f0 CreatureRoom::`RTTI Complete Object Locator'
+// win1.41 0099eb30 mac 1098e5f8 CreatureRoom::`vftable'
+class CreatureRoom: public TempleRoom
+{
+public:
+    uint8_t field_0xec[0x380];
+    uint32_t field_0x46c;
+    uint8_t field_0x470[0x68];
+
+    // Override methods
+
+    // win1.41 007878e0 mac 10284d70 CreatureRoom::InitEngine(void)
+    virtual void InitEngine();
+
+    // Constructors
+
+    // win1.41 007865e0 mac 10287800 CreatureRoom::CreatureRoom(void)
+    CreatureRoom();
+};
+
+#else // __cplusplus
+
 struct CreatureRoom
 {
   struct TempleRoom super;  /* 0x0 */
@@ -41,5 +69,7 @@ struct CreatureRoom* __fastcall __ct__12CreatureRoomFv(struct CreatureRoom* this
 
 // win1.41 007878e0 mac 10284d70 CreatureRoom::InitEngine(void)
 void __fastcall InitEngine__12CreatureRoomFv(struct TempleRoom* this) asm("?InitEngine@CreatureRoom@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_ROOM_INCLUDED_H */

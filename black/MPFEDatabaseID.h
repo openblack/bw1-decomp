@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf4978 mac inlined MPFEDatabaseID::`RTTI Type Descriptor'
+// win1.41 009b23b8 mac inlined MPFEDatabaseID::`RTTI Base Class Descriptor'
+// win1.41 009b23d0 mac inlined MPFEDatabaseID::`RTTI Base Class Array'
+// win1.41 009b23e0 mac inlined MPFEDatabaseID::`RTTI Class Hierarchy Descriptor'
+class MPFEDatabaseID: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00627b00 mac 1039bb00 MPFEDatabaseID::_dt(void)
+    virtual ~MPFEDatabaseID();
+};
+
+#else // __cplusplus
+
 struct MPFEDatabaseID
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00627b00 mac 1039bb00 MPFEDatabaseID::_dt(void)
 void __fastcall __dt__14MPFEDatabaseIDFv(struct MPFEMessageObject* this) asm("??_GMPFEDatabaseID@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_DATABASE_ID_INCLUDED_H */

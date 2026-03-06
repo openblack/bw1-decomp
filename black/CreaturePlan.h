@@ -10,6 +10,61 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Creature;
+class CreatureBelief;
+class CreatureMental;
+
+// win1.41 009cf928 mac inlined CreaturePlan::`RTTI Type Descriptor'
+// win1.41 009a9450 mac inlined CreaturePlan::`RTTI Base Class Descriptor'
+// win1.41 009a9468 mac inlined CreaturePlan::`RTTI Base Class Array'
+// win1.41 009a9478 mac inlined CreaturePlan::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cc7c8 mac 1098d1c0 CreaturePlan::`RTTI Complete Object Locator'
+// win1.41 008cc7cc mac 1098d1c8 CreaturePlan::`vftable'
+class CreaturePlan: public Base
+{
+public:
+    CREATURE_DESIRES creature_desire; /* 0x8 */
+    CreatureBelief* field_0xc;
+    CreatureBelief* field_0x10;
+    CreatureBelief* field_0x14;
+    CREATURE_ACTION creature_action;
+    float field_0x1c;
+    float field_0x20;
+    float field_0x24;
+    float field_0x28;
+    float field_0x2c;
+
+    // Override methods
+
+    // win1.41 00473b70 mac 10278860 CreaturePlan::_dt(void)
+    virtual ~CreaturePlan();
+
+    // Constructors
+
+    // win1.41 004f1230 mac 10278a10 CreaturePlan::CreaturePlan(CREATURE_DESIRES, CREATURE_ACTION, CreatureBelief *, CreatureBelief *, CreatureBelief *, float)
+    CreaturePlan(CREATURE_DESIRES param_1, CREATURE_ACTION param_2, CreatureBelief* param_3, CreatureBelief* param_4, CreatureBelief* param_5, float param_6);
+};
+
+// win1.41 00bdfe90 mac inlined CreatureTimeToWait::`RTTI Type Descriptor'
+// win1.41 009ab088 mac inlined CreatureTimeToWait::`RTTI Base Class Descriptor'
+// win1.41 009ab0a0 mac inlined CreatureTimeToWait::`RTTI Base Class Array'
+// win1.41 009ab0b0 mac inlined CreatureTimeToWait::`RTTI Class Hierarchy Descriptor'
+class CreatureTimeToWait: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 004e34e0 mac inlined CreatureTimeToWait::_dt(void)
+    virtual ~CreatureTimeToWait();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Creature;
@@ -101,5 +156,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 004e34e0 mac inlined CreatureTimeToWait::_dt(void)
 void __fastcall __dt__18CreatureTimeToWaitFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureTimeToWait@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_PLAN_INCLUDED_H */

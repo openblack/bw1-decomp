@@ -7,6 +7,52 @@
 
 #include "FuncT.h" /* For struct FuncT */
 
+#ifdef __cplusplus
+
+// win1.41 00c025a8 mac inlined TestFunnel::`RTTI Type Descriptor'
+// win1.41 009b3e40 mac inlined TestFunnel::`RTTI Base Class Descriptor'
+// win1.41 009b3e58 mac inlined TestFunnel::`RTTI Base Class Array'
+// win1.41 009b3e68 mac inlined TestFunnel::`RTTI Class Hierarchy Descriptor'
+class TestFunnel: public FuncT
+{
+public:
+
+    // Override methods
+
+    // win1.41 006868e0 mac 10402ae0 TestFunnel::Eval( const(float, float *, float *))
+    virtual void Eval(float param_1, float* param_2, float* param_3);
+};
+
+// win1.41 00c02588 mac inlined TestFunnelParab::`RTTI Type Descriptor'
+// win1.41 009b3df0 mac inlined TestFunnelParab::`RTTI Base Class Descriptor'
+// win1.41 009b3e08 mac inlined TestFunnelParab::`RTTI Base Class Array'
+// win1.41 009b3e18 mac inlined TestFunnelParab::`RTTI Class Hierarchy Descriptor'
+class TestFunnelParab: public FuncT
+{
+public:
+
+    // Override methods
+
+    // win1.41 00686910 mac 104029c0 TestFunnelParab::Eval( const(float, float *, float *))
+    virtual void Eval(float param_1, float* param_2, float* param_3);
+};
+
+// win1.41 00c02568 mac inlined TestFunnelSpout::`RTTI Type Descriptor'
+// win1.41 009b3da0 mac inlined TestFunnelSpout::`RTTI Base Class Descriptor'
+// win1.41 009b3db8 mac inlined TestFunnelSpout::`RTTI Base Class Array'
+// win1.41 009b3dc8 mac inlined TestFunnelSpout::`RTTI Class Hierarchy Descriptor'
+class TestFunnelSpout: public FuncT
+{
+public:
+
+    // Override methods
+
+    // win1.41 00686940 mac 10402a20 TestFunnelSpout::Eval( const(float, float *, float *))
+    virtual void Eval(float param_1, float* param_2, float* param_3);
+};
+
+#else // __cplusplus
+
 struct TestFunnel
 {
   struct FuncT super;  /* 0x0 */
@@ -72,5 +118,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00686940 mac 10402a20 TestFunnelSpout::Eval( const(float, float *, float *))
 void __fastcall Eval__15TestFunnelSpoutCFfPfPf(const struct FuncT* this, const void* edx, float param_1, float* param_2, float* param_3) asm("?Eval@TestFunnelSpout@@UBEXMPAM0@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_P_SYS_GEOM_INCLUDED_H */

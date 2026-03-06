@@ -9,6 +9,33 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea370 mac inlined EndGameBox::`RTTI Type Descriptor'
+// win1.41 009ac970 mac inlined EndGameBox::`RTTI Base Class Descriptor'
+// win1.41 009ac988 mac inlined EndGameBox::`RTTI Base Class Array'
+// win1.41 009ac998 mac inlined EndGameBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008de9e8 mac 1099ad1c EndGameBox::`RTTI Complete Object Locator'
+// win1.41 008de9ec mac 1099ad24 EndGameBox::`vftable'
+class EndGameBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0xac];
+
+    // Override methods
+
+    // win1.41 0056e160 mac 1031c660 EndGameBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 0056e730 mac 1031c600 EndGameBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0053be30 mac 1031ba50 EndGameBox::CanESCOut(void)
+    virtual bool CanESCOut();
+    // win1.41 0056e740 mac 1031c100 EndGameBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct EndGameBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -41,5 +68,7 @@ void __fastcall Destroy__10EndGameBoxFv(struct DialogBoxBase* this) asm("?Destro
 bool __fastcall CanESCOut__10EndGameBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@EndGameBox@@UAE_NXZ");
 // win1.41 0056e740 mac 1031c100 EndGameBox::InitControls(void)
 void __fastcall InitControls__10EndGameBoxFv(struct DialogBoxBase* this) asm("?InitControls@EndGameBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_END_GAME_BOX_INCLUDED_H */

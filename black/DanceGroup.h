@@ -8,6 +8,45 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GroupBehaviour;
+
+// win1.41 00be8298 mac inlined DanceGroup::`RTTI Type Descriptor'
+// win1.41 009ab6b0 mac inlined DanceGroup::`RTTI Base Class Descriptor'
+// win1.41 009ab6c8 mac inlined DanceGroup::`RTTI Base Class Array'
+// win1.41 009ab6d8 mac inlined DanceGroup::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d44cc mac 10996e7c DanceGroup::`RTTI Complete Object Locator'
+// win1.41 008d44d0 mac 10996e84 DanceGroup::`vftable'
+class DanceGroup: public GameThing
+{
+public:
+    uint8_t field_0x14[0x4];
+    GroupBehaviour* behaviour;
+    uint8_t field_0x1c[0x40];
+    uint32_t field_0x5c;
+    uint8_t field_0x60[0x11c];
+
+    // Override methods
+
+    // win1.41 0050cf00 mac 102aa590 DanceGroup::_dt(void)
+    virtual ~DanceGroup();
+    // win1.41 0050cef0 mac 102aaa60 DanceGroup::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0050d9c0 mac 102aab20 DanceGroup::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 0050d640 mac 102ab450 DanceGroup::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0050cee0 mac 102aaa20 DanceGroup::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -63,5 +102,7 @@ uint32_t __fastcall Load__10DanceGroupFR10GameOSFile(struct GameThing* this, con
 uint32_t __fastcall Save__10DanceGroupFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@DanceGroup@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0050cee0 mac 102aaa20 DanceGroup::GetSaveType(void)
 uint32_t __fastcall GetSaveType__10DanceGroupFv(struct GameThing* this) asm("?GetSaveType@DanceGroup@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_DANCE_GROUP_INCLUDED_H */

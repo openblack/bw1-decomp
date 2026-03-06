@@ -8,6 +8,55 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GInterfaceStatus;
+class GPlayer;
+class GameOSFile;
+
+// win1.41 00bf2a20 mac inlined GLeashStatus::`RTTI Type Descriptor'
+// win1.41 009b1738 mac inlined GLeashStatus::`RTTI Base Class Descriptor'
+// win1.41 009b1750 mac inlined GLeashStatus::`RTTI Base Class Array'
+// win1.41 009b1760 mac inlined GLeashStatus::`RTTI Class Hierarchy Descriptor'
+// win1.41 0092abcc mac 109a0a54 GLeashStatus::`RTTI Complete Object Locator'
+// win1.41 0092abd0 mac 109a0a5c GLeashStatus::`vftable'
+class GLeashStatus: public GameThing
+{
+public:
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    uint32_t field_0x1c;
+    uint32_t field_0x20;
+    uint32_t field_0x24;
+    uint32_t field_0x28;
+    uint32_t field_0x2c;
+    uint8_t player_number; /* 0x30 */
+    uint32_t field_0x34;
+    GInterfaceStatus* interface_status;
+
+    // Override methods
+
+    // win1.41 005db940 mac 1037aca0 GLeashStatus::_dt(void)
+    virtual ~GLeashStatus();
+    // win1.41 005e7630 mac 1037ae50 GLeashStatus::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 005e7430 mac 1037aeb0 GLeashStatus::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 005e7230 mac 1037b1a0 GLeashStatus::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 005db930 mac 1037ad30 GLeashStatus::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 005e71d0 mac 1037b4b0 GLeashStatus::SaveExtraData(GameOSFile &)
+    virtual void SaveExtraData(GameOSFile* param_1);
+    // win1.41 005e7650 mac 1037ae10 GLeashStatus::ResolveLoad(void)
+    virtual void ResolveLoad();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -62,5 +111,7 @@ uint32_t __fastcall GetSaveType__12GLeashStatusFv(struct GameThing* this) asm("?
 void __fastcall SaveExtraData__12GLeashStatusFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?SaveExtraData@GLeashStatus@@UAEXAAVGameOSFile@@@Z");
 // win1.41 005e7650 mac 1037ae10 GLeashStatus::ResolveLoad(void)
 void __fastcall ResolveLoad__12GLeashStatusFv(struct GameThing* this) asm("?ResolveLoad@GLeashStatus@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LEASH_STATUS_INCLUDED_H */

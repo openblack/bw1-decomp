@@ -8,6 +8,38 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 009dd830 mac inlined CreatureMentalDebug::`RTTI Type Descriptor'
+// win1.41 009aa2c0 mac inlined CreatureMentalDebug::`RTTI Base Class Descriptor'
+// win1.41 009aa2d8 mac inlined CreatureMentalDebug::`RTTI Base Class Array'
+// win1.41 009aa2e8 mac inlined CreatureMentalDebug::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cf8c8 mac 1078766c CreatureMentalDebug::`RTTI Complete Object Locator'
+// win1.41 008cf8cc mac 10787674 CreatureMentalDebug::`vftable'
+class CreatureMentalDebug: public Base
+{
+public:
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+    uint32_t field_0x10;
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    uint32_t field_0x1c;
+    uint32_t field_0x20;
+    uint32_t field_0x24;
+    uint32_t field_0x28;
+    uint8_t field_0x2c[0x10];
+    uint32_t field_0x3c;
+    uint8_t field_0x40[0xc];
+
+    // Override methods
+
+    // win1.41 004d2540 mac 10246630 CreatureMentalDebug::_dt(void)
+    virtual ~CreatureMentalDebug();
+};
+
+#else // __cplusplus
+
 struct CreatureMentalDebug
 {
   struct Base super;  /* 0x0 */
@@ -45,5 +77,7 @@ extern const struct BaseVftable __vt__19CreatureMentalDebug asm("??_7CreatureMen
 
 // win1.41 004d2540 mac 10246630 CreatureMentalDebug::_dt(void)
 void __fastcall __dt__19CreatureMentalDebugFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureMentalDebug@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_DEBUG_INCLUDED_H */

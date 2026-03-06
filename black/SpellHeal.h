@@ -8,6 +8,38 @@
 
 #include "Spell.h" /* For struct Spell */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+struct MapCoords;
+struct PSysProcessInfo;
+struct SpellCastData;
+
+// win1.41 00becaa8 mac inlined SpellHeal::`RTTI Type Descriptor'
+// win1.41 009ad860 mac inlined SpellHeal::`RTTI Base Class Descriptor'
+// win1.41 009ad878 mac inlined SpellHeal::`RTTI Base Class Array'
+// win1.41 009ad890 mac inlined SpellHeal::`RTTI Class Hierarchy Descriptor'
+class SpellHeal: public Spell
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055d1b0 mac 10533d20 SpellHeal::_dt(void)
+    virtual ~SpellHeal();
+    // win1.41 0055d1a0 mac 10533e00 SpellHeal::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0055d190 mac 10533dc0 SpellHeal::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0072d870 mac 1052ed50 SpellHeal::InitWithPos(GameThing *, MapCoords const &, SpellCastData *, PSysProcessInfo const &)
+    virtual int InitWithPos(GameThing* param_1, const MapCoords* param_2, SpellCastData* param_3, const PSysProcessInfo* param_4);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -43,5 +75,7 @@ char* __fastcall GetDebugText__9SpellHealFv(struct GameThing* this) asm("?GetDeb
 uint32_t __fastcall GetSaveType__9SpellHealFv(struct GameThing* this) asm("?GetSaveType@SpellHeal@@UAEIXZ");
 // win1.41 0072d870 mac 1052ed50 SpellHeal::InitWithPos(GameThing *, MapCoords const &, SpellCastData *, PSysProcessInfo const &)
 int __fastcall InitWithPos__9SpellHealFP9GameThingRC9MapCoordsP13SpellCastDataRC15PSysProcessInfo(struct Spell* this, const void* edx, struct GameThing* param_1, const struct MapCoords* param_2, struct SpellCastData* param_3, const struct PSysProcessInfo* param_4) asm("?InitWithPos@SpellHeal@@UAEHPAVGameThing@@ABUMapCoords@@PAVSpellCastData@@ABUPSysProcessInfo@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPELL_HEAL_INCLUDED_H */

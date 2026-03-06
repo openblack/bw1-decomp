@@ -8,6 +8,30 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea4b0 mac inlined SetupOnlineLandscapes::`RTTI Type Descriptor'
+// win1.41 009acc90 mac inlined SetupOnlineLandscapes::`RTTI Base Class Descriptor'
+// win1.41 009acca8 mac inlined SetupOnlineLandscapes::`RTTI Base Class Array'
+// win1.41 009accb8 mac inlined SetupOnlineLandscapes::`RTTI Class Hierarchy Descriptor'
+class SetupOnlineLandscapes: public DialogBoxBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 00547ff0 mac 105cbb10 SetupOnlineLandscapes::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 005482a0 mac 105cbaa0 SetupOnlineLandscapes::Destroy(void)
+    virtual void Destroy();
+    // win1.41 00549910 mac 105c9f10 SetupOnlineLandscapes::Show(void)
+    virtual void Show();
+    // win1.41 005482b0 mac 105cba40 SetupOnlineLandscapes::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct SetupOnlineLandscapes
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -35,5 +59,7 @@ void __fastcall Destroy__21SetupOnlineLandscapesFv(struct DialogBoxBase* this) a
 void __fastcall Show__21SetupOnlineLandscapesFv(struct DialogBoxBase* this) asm("?Show@SetupOnlineLandscapes@@UAEXXZ");
 // win1.41 005482b0 mac 105cba40 SetupOnlineLandscapes::InitControls(void)
 void __fastcall InitControls__21SetupOnlineLandscapesFv(struct DialogBoxBase* this) asm("?InitControls@SetupOnlineLandscapes@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_ONLINE_LANDSCAPES_INCLUDED_H */

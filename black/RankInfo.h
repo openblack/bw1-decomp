@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c09c30 mac inlined GRankInfo::`RTTI Type Descriptor'
+// win1.41 009b8ba8 mac inlined GRankInfo::`RTTI Base Class Descriptor'
+// win1.41 009b8bc0 mac inlined GRankInfo::`RTTI Base Class Array'
+// win1.41 009b8bd0 mac inlined GRankInfo::`RTTI Class Hierarchy Descriptor'
+class GRankInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 006e0870 mac 10133c10 GRankInfo::_dt(void)
+    virtual ~GRankInfo();
+    // win1.41 006e0810 mac 101340a0 GRankInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__9GRankInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGRankInfo@@UAEPAXI@Z");
 // win1.41 006e0810 mac 101340a0 GRankInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__9GRankInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GRankInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_RANK_INFO_INCLUDED_H */

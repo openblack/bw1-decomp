@@ -8,6 +8,38 @@
 
 #include "PSysRenderParticle.h" /* For struct RenderParticle */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00bed600 mac inlined ParticleChainJoint::`RTTI Type Descriptor'
+// win1.41 009aeeb8 mac inlined ParticleChainJoint::`RTTI Base Class Descriptor'
+// win1.41 009aeed0 mac inlined ParticleChainJoint::`RTTI Base Class Array'
+// win1.41 009aeee8 mac inlined ParticleChainJoint::`RTTI Class Hierarchy Descriptor'
+class ParticleChainJoint: public RenderParticle
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f0e0 mac 10422de0 ParticleChainJoint::_dt(void)
+    virtual ~ParticleChainJoint();
+    // win1.41 0055f0d0 mac 10422da0 ParticleChainJoint::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006959d0 mac 1041c0e0 ParticleChainJoint::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 006cc540 mac 10483800 ParticleChainJoint::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055f0c0 mac 10422d60 ParticleChainJoint::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -43,5 +75,7 @@ uint32_t __fastcall Load__18ParticleChainJointFR10GameOSFile(struct GameThing* t
 uint32_t __fastcall Save__18ParticleChainJointFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@ParticleChainJoint@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0055f0c0 mac 10422d60 ParticleChainJoint::GetSaveType(void)
 uint32_t __fastcall GetSaveType__18ParticleChainJointFv(struct GameThing* this) asm("?GetSaveType@ParticleChainJoint@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PARTICLE_CHAIN_JOINT_INCLUDED_H */

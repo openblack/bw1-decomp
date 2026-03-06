@@ -8,6 +8,36 @@
 
 #include "AnimalCow.h" /* For struct Cow */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+class Object;
+
+// win1.41 009c8fa8 mac inlined Sheep::`RTTI Type Descriptor'
+// win1.41 009a6d68 mac inlined Sheep::`RTTI Base Class Descriptor'
+// win1.41 009a6d80 mac inlined Sheep::`RTTI Base Class Array'
+// win1.41 009a6db0 mac inlined Sheep::`RTTI Class Hierarchy Descriptor'
+class Sheep: public Cow
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041d550 mac 10120ff0 Sheep::_dt(void)
+    virtual ~Sheep();
+    // win1.41 0041d540 mac 101711d0 Sheep::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041d530 mac 101711a0 Sheep::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041c8e0 mac 100a0150 Sheep::StandAnimation(void)
+    virtual uint32_t StandAnimation();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -41,5 +71,7 @@ char* __fastcall GetDebugText__5SheepFv(struct GameThing* this) asm("?GetDebugTe
 uint32_t __fastcall GetSaveType__5SheepFv(struct GameThing* this) asm("?GetSaveType@Sheep@@UAEIXZ");
 // win1.41 0041c8e0 mac 100a0150 Sheep::StandAnimation(void)
 uint32_t __fastcall StandAnimation__5SheepFv(struct Object* this) asm("?StandAnimation@Sheep@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMAL_SHEEP_INCLUDED_H */

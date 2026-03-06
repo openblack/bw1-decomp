@@ -9,6 +9,35 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Town;
+
+// win1.41 00c01fd0 mac inlined PlaytimeElement::`RTTI Type Descriptor'
+// win1.41 009b3398 mac inlined PlaytimeElement::`RTTI Base Class Descriptor'
+// win1.41 009b33b0 mac inlined PlaytimeElement::`RTTI Base Class Array'
+// win1.41 009b33c0 mac inlined PlaytimeElement::`RTTI Class Hierarchy Descriptor'
+class PlaytimeElement: public GameThing
+{
+public:
+
+    // Override methods
+
+    // win1.41 0066c3f0 mac inlined PlaytimeElement::_dt(void)
+    virtual ~PlaytimeElement();
+    // win1.41 0066c6b0 mac inlined PlaytimeElement::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 0066c3e0 mac inlined PlaytimeElement::GetTown(void)
+    virtual Town* GetTown();
+    // win1.41 0066c810 mac inlined PlaytimeElement::IsFunctional(void)
+    virtual bool IsFunctional();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -41,5 +70,7 @@ void __fastcall ToBeDeleted__15PlaytimeElementFi(struct Base* this, const void* 
 struct Town* __fastcall GetTown__15PlaytimeElementFv(struct GameThing* this) asm("?GetTown@PlaytimeElement@@UAEPAVTown@@XZ");
 // win1.41 0066c810 mac inlined PlaytimeElement::IsFunctional(void)
 bool __fastcall IsFunctional__15PlaytimeElementFv(struct GameThing* this) asm("?IsFunctional@PlaytimeElement@@UAE_NXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLAYTIME_DANCE_INCLUDED_H */

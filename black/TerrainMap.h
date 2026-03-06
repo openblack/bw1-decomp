@@ -9,6 +9,28 @@
 #include "Base.h" /* For struct Base */
 #include "TerrainMapInfo.h" /* For struct TerrainMapInfo */
 
+#ifdef __cplusplus
+
+// win1.41 00bec458 mac inlined GTerrainMap::`RTTI Type Descriptor'
+// win1.41 009ad290 mac inlined GTerrainMap::`RTTI Base Class Descriptor'
+// win1.41 009ad2a8 mac inlined GTerrainMap::`RTTI Base Class Array'
+// win1.41 009ad2b8 mac inlined GTerrainMap::`RTTI Class Hierarchy Descriptor'
+// win1.41 008df81c mac 10730ba8 GTerrainMap::`RTTI Complete Object Locator'
+// win1.41 008df820 mac 10730bb0 GTerrainMap::`vftable'
+class GTerrainMap: public Base
+{
+public:
+    TerrainMapInfo list[0x400]; /* 0x8 */
+    TerrainMapInfo map_info; /* 0x4a008 */
+
+    // Override methods
+
+    // win1.41 0054bd90 mac 1040fcc0 GTerrainMap::_dt(void)
+    virtual ~GTerrainMap();
+};
+
+#else // __cplusplus
+
 struct GTerrainMap
 {
   struct Base super;  /* 0x0 */
@@ -36,5 +58,7 @@ extern const struct BaseVftable __vt__11GTerrainMap asm("??_7GTerrainMap@@6B@");
 
 // win1.41 0054bd90 mac 1040fcc0 GTerrainMap::_dt(void)
 void __fastcall __dt__11GTerrainMapFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGTerrainMap@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_TERRAIN_MAP_INCLUDED_H */

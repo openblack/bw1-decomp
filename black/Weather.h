@@ -6,6 +6,37 @@
 #include <lionhead/lh3dlib/development/LH3DStorm.h> /* For struct LH3DStorm */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LHPoint;
+class WeatherInfo;
+
+// win1.41 00c24798 mac inlined GWeather::`RTTI Type Descriptor'
+// win1.41 009ba040 mac inlined GWeather::`RTTI Base Class Descriptor'
+// win1.41 009ba058 mac inlined GWeather::`RTTI Base Class Array'
+// win1.41 009ba068 mac inlined GWeather::`RTTI Class Hierarchy Descriptor'
+class GWeather: public LH3DStorm
+{
+public:
+
+    // Override methods
+
+    // win1.41 0083f900 mac inlined GWeather::Update(float)
+    virtual void Update(float param_1);
+    // win1.41 0083fc90 mac inlined GWeather::DrawClouds(void)
+    virtual void DrawClouds();
+    // win1.41 008402e0 mac inlined GWeather::DebugDraw(void)
+    virtual void DebugDraw();
+    // win1.41 008400e0 mac inlined GWeather::CalcAtmos(LHPoint *, WeatherInfo *)
+    virtual void CalcAtmos(LHPoint* param_1, WeatherInfo* param_2);
+    // win1.41 00770e80 mac 105a36f0 GWeather::_dt(void)
+    virtual ~GWeather();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LHPoint;
@@ -40,5 +71,7 @@ void __fastcall DebugDraw__8GWeatherFv(struct LH3DStorm* this) asm("?DebugDraw@G
 void __fastcall CalcAtmos__8GWeatherFP7LHPointP11WeatherInfo(struct LH3DStorm* this, const void* edx, struct LHPoint* param_1, struct WeatherInfo* param_2) asm("?CalcAtmos@GWeather@@UAEXPAULHPoint@@PAUWeatherInfo@@@Z");
 // win1.41 00770e80 mac 105a36f0 GWeather::_dt(void)
 void __fastcall __dt__8GWeatherFv(struct LH3DStorm* this) asm("??_GGWeather@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_WEATHER_INCLUDED_H */

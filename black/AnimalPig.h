@@ -8,6 +8,36 @@
 
 #include "AnimalCow.h" /* For struct Cow */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+class Object;
+
+// win1.41 009c90b8 mac inlined Pig::`RTTI Type Descriptor'
+// win1.41 009a7008 mac inlined Pig::`RTTI Base Class Descriptor'
+// win1.41 009a7020 mac inlined Pig::`RTTI Base Class Array'
+// win1.41 009a7050 mac inlined Pig::`RTTI Class Hierarchy Descriptor'
+class Pig: public Cow
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041d9d0 mac 101207f0 Pig::_dt(void)
+    virtual ~Pig();
+    // win1.41 0041d9c0 mac 10170ef0 Pig::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041d9b0 mac 10170ec0 Pig::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041cd90 mac 100a0190 Pig::StandAnimation(void)
+    virtual uint32_t StandAnimation();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -41,5 +71,7 @@ char* __fastcall GetDebugText__3PigFv(struct GameThing* this) asm("?GetDebugText
 uint32_t __fastcall GetSaveType__3PigFv(struct GameThing* this) asm("?GetSaveType@Pig@@UAEIXZ");
 // win1.41 0041cd90 mac 100a0190 Pig::StandAnimation(void)
 uint32_t __fastcall StandAnimation__3PigFv(struct Object* this) asm("?StandAnimation@Pig@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMAL_PIG_INCLUDED_H */

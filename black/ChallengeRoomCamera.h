@@ -7,6 +7,28 @@
 
 #include "InnerCamera.h" /* For struct InnerCamera */
 
+#ifdef __cplusplus
+
+// win1.41 00c28608 mac inlined ChallengeRoomCamera::`RTTI Type Descriptor'
+// win1.41 009baaf8 mac inlined ChallengeRoomCamera::`RTTI Base Class Descriptor'
+// win1.41 009bab10 mac inlined ChallengeRoomCamera::`RTTI Base Class Array'
+// win1.41 009bab20 mac inlined ChallengeRoomCamera::`RTTI Class Hierarchy Descriptor'
+class ChallengeRoomCamera: public InnerCamera
+{
+public:
+
+    // Override methods
+
+    // win1.41 00785300 mac 101b6a80 ChallengeRoomCamera::Init(char *)
+    virtual void Init(char* param_1);
+    // win1.41 00785250 mac 101b6c30 ChallengeRoomCamera::Reinit(void)
+    virtual void Reinit();
+    // win1.41 007854c0 mac 101b6a20 ChallengeRoomCamera::Close(void)
+    virtual void Close();
+};
+
+#else // __cplusplus
+
 struct ChallengeRoomCamera
 {
   struct InnerCamera super;  /* 0x0 */
@@ -32,5 +54,7 @@ void __fastcall Init__19ChallengeRoomCameraFPc(struct InnerCamera* this, const v
 void __fastcall Reinit__19ChallengeRoomCameraFv(struct InnerCamera* this) asm("?Reinit@ChallengeRoomCamera@@UAEXXZ");
 // win1.41 007854c0 mac 101b6a20 ChallengeRoomCamera::Close(void)
 void __fastcall Close__19ChallengeRoomCameraFv(struct InnerCamera* this) asm("?Close@ChallengeRoomCamera@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CHALLENGE_ROOM_CAMERA_INCLUDED_H */

@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00bf1ab8 mac inlined GInfluenceInfo::`RTTI Type Descriptor'
+// win1.41 009b1490 mac inlined GInfluenceInfo::`RTTI Base Class Descriptor'
+// win1.41 009b14a8 mac inlined GInfluenceInfo::`RTTI Base Class Array'
+// win1.41 009b14b8 mac inlined GInfluenceInfo::`RTTI Class Hierarchy Descriptor'
+class GInfluenceInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 005cd150 mac 100fd4f0 GInfluenceInfo::_dt(void)
+    virtual ~GInfluenceInfo();
+    // win1.41 005cd110 mac 100fd4a0 GInfluenceInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__14GInfluenceInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGInfluenceInfo@@UAEPAXI@Z");
 // win1.41 005cd110 mac 100fd4a0 GInfluenceInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__14GInfluenceInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GInfluenceInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_INFLUENCE_INFO_INCLUDED_H */

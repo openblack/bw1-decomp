@@ -7,6 +7,21 @@
 
 #include "CameraMode.h" /* For struct CameraMode */
 
+#ifdef __cplusplus
+
+// win1.41 009cd9e0 mac inlined CameraModePath::`RTTI Type Descriptor'
+// win1.41 009a8c60 mac inlined CameraModePath::`RTTI Base Class Descriptor'
+// win1.41 009a8c78 mac inlined CameraModePath::`RTTI Base Class Array'
+// win1.41 009a8c88 mac inlined CameraModePath::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c7d0c mac 10777078 CameraModePath::`RTTI Complete Object Locator'
+// win1.41 008c7d10 mac 106f677c CameraModePath::`vftable'
+class CameraModePath: public CameraMode
+{
+public:
+};
+
+#else // __cplusplus
+
 struct CameraModePath
 {
   struct CameraMode super;  /* 0x0 */
@@ -27,5 +42,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__14CameraModePath asm("??_R4CameraModePath@@6B@");
 // win1.41 008c7d10 mac 106f677c CameraModePath::`vftable'
 extern const struct CameraModeVftable __vt__14CameraModePath asm("??_7CameraModePath@@6B@");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CAMERA_MODE_PATH_INCLUDED_H */

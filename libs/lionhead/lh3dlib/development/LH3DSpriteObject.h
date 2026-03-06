@@ -7,6 +7,27 @@
 
 #include "LH3DObject.h" /* For struct LH3DObject */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LH3DSmoke;
+
+// win1.41 009a34cc mac 101cc748 LH3DSpriteObject::`RTTI Complete Object Locator'
+// win1.41 009a34d0 mac 101cc750 LH3DSpriteObject::`vftable'
+class LH3DSpriteObject: public LH3DObject
+{
+public:
+    LH3DSmoke* smoke; /* 0x7c */
+
+    // Constructors
+
+    // win1.41 00815380 mac 10078250 LH3DSpriteObject::LH3DSpriteObject(long)
+    LH3DSpriteObject(int type);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LH3DSmoke;
@@ -29,5 +50,7 @@ extern const struct LH3DObjectVftable __vt__16LH3DSpriteObject asm("??_7LH3DSpri
 
 // win1.41 00815380 mac 10078250 LH3DSpriteObject::LH3DSpriteObject(long)
 struct LH3DSpriteObject* __fastcall __ct__16LH3DSpriteObjectFl(struct LH3DSpriteObject* this, const void* edx, int type) asm("??0LH3DSpriteObject@@QAE@J@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_SPRITE_OBJECT_INCLUDED_H */

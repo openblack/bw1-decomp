@@ -8,6 +8,48 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GPlayer;
+
+// win1.41 00bee570 mac inlined GameStats::`RTTI Type Descriptor'
+// win1.41 009b0468 mac inlined GameStats::`RTTI Base Class Descriptor'
+// win1.41 009b0480 mac inlined GameStats::`RTTI Base Class Array'
+// win1.41 009b0490 mac inlined GameStats::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ffdbc mac 1099ab2c GameStats::`RTTI Complete Object Locator'
+// win1.41 008ffdc0 mac 1099ab34 GameStats::`vftable'
+class GameStats: public GameThing
+{
+public:
+    uint8_t field_0x14[0x94];
+    uint32_t wood_used; /* 0xa8 */
+    uint8_t graph_0[0x1f4];
+    uint8_t field_0x2a0[0x5e8];
+    uint8_t graph_1[0x1f4]; /* 0x888 */
+    uint8_t field_0xa7c[0x6ac];
+
+    // Override methods
+
+    // win1.41 00564b00 mac 1031b740 GameStats::_dt(void)
+    virtual ~GameStats();
+    // win1.41 00564ac0 mac 103109d0 GameStats::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 00564ad0 mac 10310a10 GameStats::SetPlayer(GPlayer *)
+    virtual void SetPlayer(GPlayer* param_1);
+    // win1.41 00564af0 mac 10310a90 GameStats::GetDebugText(void)
+    virtual char* GetDebugText();
+
+    // Constructors
+
+    // win1.41 00564a40 mac 1031b7d0 GameStats::GameStats(void)
+    GameStats();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -55,5 +97,7 @@ struct GPlayer* __fastcall GetPlayer__9GameStatsFv(struct GameThing* this) asm("
 void __fastcall SetPlayer__9GameStatsFP7GPlayer(struct GameThing* this, const void* edx, struct GPlayer* param_1) asm("?SetPlayer@GameStats@@UAEXPAVGPlayer@@@Z");
 // win1.41 00564af0 mac 10310a90 GameStats::GetDebugText(void)
 char* __fastcall GetDebugText__9GameStatsFv(struct GameThing* this) asm("?GetDebugText@GameStats@@UAEPADXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_GAME_STATS_INCLUDED_H */

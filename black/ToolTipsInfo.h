@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00bf19d0 mac inlined GToolTipsInfo::`RTTI Type Descriptor'
+// win1.41 009b13f0 mac inlined GToolTipsInfo::`RTTI Base Class Descriptor'
+// win1.41 009b1408 mac inlined GToolTipsInfo::`RTTI Base Class Array'
+// win1.41 009b1418 mac inlined GToolTipsInfo::`RTTI Class Hierarchy Descriptor'
+class GToolTipsInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 005c9a40 mac 10354310 GToolTipsInfo::_dt(void)
+    virtual ~GToolTipsInfo();
+    // win1.41 005c99e0 mac 10354720 GToolTipsInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__13GToolTipsInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGToolTipsInfo@@UAEPAXI@Z");
 // win1.41 005c99e0 mac 10354720 GToolTipsInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__13GToolTipsInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GToolTipsInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_TOOL_TIPS_INFO_INCLUDED_H */

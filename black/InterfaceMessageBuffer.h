@@ -10,6 +10,39 @@
 #include "Base.h" /* For struct Base */
 #include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class GInterfaceCollide;
+struct LHCoord;
+
+// win1.41 00bf1b88 mac inlined GInterfaceMessageBuffer::`RTTI Type Descriptor'
+// win1.41 009b1628 mac inlined GInterfaceMessageBuffer::`RTTI Base Class Descriptor'
+// win1.41 009b1640 mac inlined GInterfaceMessageBuffer::`RTTI Base Class Array'
+// win1.41 009b1650 mac inlined GInterfaceMessageBuffer::`RTTI Class Hierarchy Descriptor'
+// win1.41 0092aaa0 mac 1099f8dc GInterfaceMessageBuffer::`RTTI Complete Object Locator'
+// win1.41 0092aaa4 mac 1099f8e4 GInterfaceMessageBuffer::`vftable'
+class GInterfaceMessageBuffer: public Base
+{
+public:
+    uint8_t field_0x8[0xc];
+
+    // Override methods
+
+    // win1.41 005ce2a0 mac 10368cb0 GInterfaceMessageBuffer::_dt(void)
+    virtual ~GInterfaceMessageBuffer();
+
+    // Non-virtual methods
+
+    // win1.41 005d9e80 mac 10368b50 GInterfaceMessageBuffer::Init(unsigned short)
+    void Init(unsigned short param_1);
+    // win1.41 005d9f10 mac 1009c3b0 GInterfaceMessageBuffer::Add(INTERFACE_MESSAGE_TYPES, GInterfaceCollide *, LHCoord *)
+    bool Add(INTERFACE_MESSAGE_TYPES param_1, GInterfaceCollide* param_2, LHCoord* param_3);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct GInterfaceCollide;
@@ -48,5 +81,7 @@ bool __fastcall Add__23GInterfaceMessageBufferF23INTERFACE_MESSAGE_TYPESP17GInte
 
 // win1.41 005ce2a0 mac 10368cb0 GInterfaceMessageBuffer::_dt(void)
 void __fastcall __dt__23GInterfaceMessageBufferFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGInterfaceMessageBuffer@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_INTERFACE_MESSAGE_BUFFER_INCLUDED_H */

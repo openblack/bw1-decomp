@@ -9,6 +9,63 @@
 
 #include "Villager.h" /* For struct Villager */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GSpecialVillagerInfo;
+class GVillagerInfo;
+class GameOSFile;
+class GameThing;
+struct MapCoords;
+class Object;
+
+// win1.41 00be8f48 mac inlined SpecialVillager::`RTTI Type Descriptor'
+// win1.41 009ad8d0 mac inlined SpecialVillager::`RTTI Base Class Descriptor'
+// win1.41 009ad8e8 mac inlined SpecialVillager::`RTTI Base Class Array'
+// win1.41 009ad910 mac inlined SpecialVillager::`RTTI Class Hierarchy Descriptor'
+// win1.41 008e15b0 mac 1073bc5c SpecialVillager::`RTTI Complete Object Locator'
+// win1.41 008e15b4 mac 106f5d78 SpecialVillager::`vftable'
+class SpecialVillager: public Villager
+{
+public:
+    uint32_t field_0x134; /* 0x130 */
+
+    // Override methods
+
+    // win1.41 00560fe0 mac 10147590 SpecialVillager::_dt(void)
+    virtual ~SpecialVillager();
+    // win1.41 0071f0c0 mac 101477e0 SpecialVillager::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00560fd0 mac 10147cc0 SpecialVillager::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0071f5d0 mac 10146d20 SpecialVillager::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 0071f560 mac 10146e00 SpecialVillager::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 00560fc0 mac 10147c80 SpecialVillager::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0071f3d0 mac 1002d450 SpecialVillager::Draw(void)
+    virtual void Draw();
+    // win1.41 0071f490 mac 10147040 SpecialVillager::GetVillagerName(void)
+    virtual const char* GetVillagerName();
+    // win1.41 0071f240 mac 10068e20 SpecialVillager::DrawVillagerInfo(void)
+    virtual uint32_t DrawVillagerInfo();
+
+    // Static methods
+
+    // win1.41 0071f1a0 mac 10147420 SpecialVillager::Create(MapCoords const &, GVillagerInfo const *, unsigned long, int, GSpecialVillagerInfo *)
+    static SpecialVillager* Create(const MapCoords* coords, const GVillagerInfo* villager_info, uint32_t age, bool skeleton, GSpecialVillagerInfo* info);
+
+    // Non-virtual methods
+
+    // win1.41 0071f470 mac 101470a0 SpecialVillager::CanShowName(void)
+    bool CanShowName();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -71,5 +128,7 @@ void __fastcall Draw__15SpecialVillagerFv(struct Object* this) asm("?Draw@Specia
 const char* __fastcall GetVillagerName__15SpecialVillagerFv(struct Villager* this) asm("?GetVillagerName@SpecialVillager@@UAEPBDXZ");
 // win1.41 0071f240 mac 10068e20 SpecialVillager::DrawVillagerInfo(void)
 uint32_t __fastcall DrawVillagerInfo__15SpecialVillagerFv(struct Villager* this) asm("?DrawVillagerInfo@SpecialVillager@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPECIAL_VILLAGER_INCLUDED_H */

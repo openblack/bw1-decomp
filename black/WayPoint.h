@@ -9,6 +9,45 @@
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+
+// win1.41 00c24708 mac inlined WayPoint::`RTTI Type Descriptor'
+// win1.41 009b9f80 mac inlined WayPoint::`RTTI Base Class Descriptor'
+// win1.41 009b9f98 mac inlined WayPoint::`RTTI Base Class Array'
+// win1.41 009b9fb0 mac inlined WayPoint::`RTTI Class Hierarchy Descriptor'
+class WayPoint: public GameThingWithPos
+{
+public:
+
+    // Override methods
+
+    // win1.41 00770b50 mac 1015fc80 WayPoint::_dt(void)
+    virtual ~WayPoint();
+    // win1.41 00770c00 mac 1015fa00 WayPoint::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00770b30 mac 1015f750 WayPoint::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00770b20 mac 1015f710 WayPoint::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00770b40 mac 1015f790 WayPoint::GetText(void)
+    virtual const char* GetText();
+};
+
+// win1.41 0099b4a8 mac 1075f65c Waypoint::`RTTI Complete Object Locator'
+// win1.41 0099b4ac mac 1075f664 Waypoint::`vftable'
+class Waypoint: public GameThingWithPos
+{
+public:
+    uint8_t field_0x28[0x4];
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -59,5 +98,7 @@ extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__8Wayp
 extern const struct GameThingWithPosVftable __vt__8Waypoint asm("??_7Waypoint@@6B@");
 
 DECLARE_LH_LIST_HEAD(Waypoint);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_WAY_POINT_INCLUDED_H */

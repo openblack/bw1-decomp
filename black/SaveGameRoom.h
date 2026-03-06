@@ -8,6 +8,31 @@
 
 #include "PictureRoom.h" /* For struct PictureRoomBase */
 
+#ifdef __cplusplus
+
+// win1.41 00c286a0 mac inlined SaveGameRoom::`RTTI Type Descriptor'
+// win1.41 009bab48 mac inlined SaveGameRoom::`RTTI Base Class Descriptor'
+// win1.41 009bab60 mac inlined SaveGameRoom::`RTTI Base Class Array'
+// win1.41 009bab70 mac inlined SaveGameRoom::`RTTI Class Hierarchy Descriptor'
+// win1.41 0099edf8 mac 109c207c SaveGameRoom::`RTTI Complete Object Locator'
+// win1.41 0099edfc mac 109c2084 SaveGameRoom::`vftable'
+class SaveGameRoom: public PictureRoomBase
+{
+public:
+
+    // Static methods
+
+    // win1.41 007923a0 mac 104ce930 SaveGameRoom::CreateSaveGameFiles(char*)
+    static bool CreateSaveGameFiles();
+
+    // Constructors
+
+    // win1.41 0078f960 mac 104d5aa0 SaveGameRoom::SaveGameRoom(void)
+    SaveGameRoom();
+};
+
+#else // __cplusplus
+
 struct SaveGameRoom
 {
   struct PictureRoomBase super;  /* 0x0 */
@@ -38,5 +63,7 @@ bool __stdcall CreateSaveGameFiles__12SaveGameRoomFPc(void);
 
 // win1.41 0078f960 mac 104d5aa0 SaveGameRoom::SaveGameRoom(void)
 struct SaveGameRoom* __fastcall __ct__12SaveGameRoomFv(struct SaveGameRoom* this) asm("??0SaveGameRoom@@QAE@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SAVE_GAME_ROOM_INCLUDED_H */

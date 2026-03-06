@@ -7,6 +7,40 @@
 
 #include "HandState.h" /* For struct HandState */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CHand;
+struct LHMatrix;
+
+// win1.41 009cecf8 mac inlined HandStateInvisible::`RTTI Type Descriptor'
+// win1.41 009a9308 mac inlined HandStateInvisible::`RTTI Base Class Descriptor'
+// win1.41 009a9320 mac inlined HandStateInvisible::`RTTI Base Class Array'
+// win1.41 009a9330 mac inlined HandStateInvisible::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cbeb0 mac 1077db84 HandStateInvisible::`RTTI Complete Object Locator'
+// win1.41 008cbeb4 mac 1077db8c HandStateInvisible::`vftable'
+class HandStateInvisible: public HandState
+{
+public:
+
+    // Override methods
+
+    // win1.41 0046be90 mac 101c9440 HandStateInvisible::Enter(void)
+    virtual void Enter();
+    // win1.41 0046bed0 mac 101c9510 HandStateInvisible::Exit(void)
+    virtual void Exit();
+    // win1.41 0046bee0 mac 101c9570 HandStateInvisible::Update(float, LHMatrix *)
+    virtual void Update(float param_1, LHMatrix* param_2);
+
+    // Constructors
+
+    // win1.41 inlined mac inlined HandStateInvisible::HandStateInvisible(CHand*)
+    HandStateInvisible(CHand* hand);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CHand;
@@ -46,5 +80,7 @@ void __fastcall Enter__18HandStateInvisibleFv(struct HandState* this) asm("?Ente
 void __fastcall Exit__18HandStateInvisibleFv(struct HandState* this) asm("?Exit@HandStateInvisible@@UAEXXZ");
 // win1.41 0046bee0 mac 101c9570 HandStateInvisible::Update(float, LHMatrix *)
 void __fastcall Update__18HandStateInvisibleFfP8LHMatrix(struct HandState* this, const void* edx, float param_1, struct LHMatrix* param_2) asm("?Update@HandStateInvisible@@UAEXMPAULHMatrix@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HAND_STATE_INVISIBLE_INCLUDED_H */

@@ -8,6 +8,36 @@
 
 #include "AnimalCow.h" /* For struct Cow */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+class Object;
+
+// win1.41 009c9030 mac inlined Horse::`RTTI Type Descriptor'
+// win1.41 009a6eb8 mac inlined Horse::`RTTI Base Class Descriptor'
+// win1.41 009a6ed0 mac inlined Horse::`RTTI Base Class Array'
+// win1.41 009a6f00 mac inlined Horse::`RTTI Class Hierarchy Descriptor'
+class Horse: public Cow
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041d790 mac 10120c80 Horse::_dt(void)
+    virtual ~Horse();
+    // win1.41 0041d780 mac 10171060 Horse::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041d770 mac 10171030 Horse::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041cb40 mac 1016e1f0 Horse::StandAnimation(void)
+    virtual uint32_t StandAnimation();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -41,5 +71,7 @@ char* __fastcall GetDebugText__5HorseFv(struct GameThing* this) asm("?GetDebugTe
 uint32_t __fastcall GetSaveType__5HorseFv(struct GameThing* this) asm("?GetSaveType@Horse@@UAEIXZ");
 // win1.41 0041cb40 mac 1016e1f0 Horse::StandAnimation(void)
 uint32_t __fastcall StandAnimation__5HorseFv(struct Object* this) asm("?StandAnimation@Horse@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMAL_HORSE_INCLUDED_H */

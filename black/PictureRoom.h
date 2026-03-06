@@ -8,6 +8,27 @@
 
 #include "TempleRoom.h" /* For struct TempleRoom */
 
+#ifdef __cplusplus
+
+// win1.41 00c24e78 mac inlined PictureRoomBase::`RTTI Type Descriptor'
+// win1.41 009ba590 mac inlined PictureRoomBase::`RTTI Base Class Descriptor'
+// win1.41 009baac0 mac inlined PictureRoomBase::`RTTI Base Class Array'
+// win1.41 009baad0 mac inlined PictureRoomBase::`RTTI Class Hierarchy Descriptor'
+// win1.41 0099ed74 mac 10746f04 PictureRoomBase::`RTTI Complete Object Locator'
+// win1.41 0099ed78 mac 10746f0c PictureRoomBase::`vftable'
+class PictureRoomBase: public TempleRoom
+{
+public:
+    uint8_t field_0xec[0x74];
+
+    // Constructors
+
+    // win1.41 0078f110 mac 10114a00 PictureRoomBase::PictureRoomBase(char const *)
+    PictureRoomBase(const char* param_1);
+};
+
+#else // __cplusplus
+
 struct PictureRoomBase
 {
   struct TempleRoom super;  /* 0x0 */
@@ -34,5 +55,7 @@ extern const struct TempleRoomVftable __vt__15PictureRoomBase asm("??_7PictureRo
 
 // win1.41 0078f110 mac 10114a00 PictureRoomBase::PictureRoomBase(char const *)
 struct TempleRoom* __fastcall __ct__15PictureRoomBaseFPCc(struct PictureRoomBase* this, const void* edx, const char* param_1) asm("??0PictureRoomBase@@QAE@PBD@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PICTURE_ROOM_INCLUDED_H */

@@ -8,6 +8,28 @@
 
 #include "FeatureInfo.h" /* For struct GFeatureInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 009c9520 mac inlined GAnimatedStaticInfo::`RTTI Type Descriptor'
+// win1.41 009a78d0 mac inlined GAnimatedStaticInfo::`RTTI Base Class Descriptor'
+// win1.41 009a78e8 mac inlined GAnimatedStaticInfo::`RTTI Base Class Array'
+// win1.41 009a7908 mac inlined GAnimatedStaticInfo::`RTTI Class Hierarchy Descriptor'
+class GAnimatedStaticInfo: public GFeatureInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00421f20 mac 100a67f0 GAnimatedStaticInfo::_dt(void)
+    virtual ~GAnimatedStaticInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00421f20 mac 100a67f0 GAnimatedStaticInfo::_dt(void)
 void __fastcall __dt__19GAnimatedStaticInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGAnimatedStaticInfo@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMATED_STATIC_INFO_INCLUDED_H */

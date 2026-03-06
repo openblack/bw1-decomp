@@ -8,6 +8,22 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct IFeelit;
+struct IFeelitDevice;
+
+// win1.41 00bf2940 mac inlined CImmDevice::`RTTI Type Descriptor'
+// win1.41 009b1678 mac inlined CImmDevice::`RTTI Base Class Descriptor'
+class CImmDevice
+{
+public:
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CImmDevice;
@@ -44,5 +60,7 @@ static_assert(sizeof(struct CImmDevice) == 0x4, "Data type is of wrong size");
 extern struct RTTITypeDescriptor __RTTITypeDescriptor__10CImmDevice asm("??_R0?AVCImmDevice@@@8");
 // win1.41 009b1678 mac inlined CImmDevice::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__10CImmDevice asm("??_R1A@?0A@A@CImmDevice@@8");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_IMM_DEVICE_INCLUDED_H */

@@ -9,6 +9,56 @@
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+struct MapCoords;
+
+// win1.41 00becd00 mac inlined WeatherThing::`RTTI Type Descriptor'
+// win1.41 009ae018 mac inlined WeatherThing::`RTTI Base Class Descriptor'
+// win1.41 009ae030 mac inlined WeatherThing::`RTTI Base Class Array'
+// win1.41 009ae048 mac inlined WeatherThing::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ebc44 mac 109ea360 WeatherThing::`RTTI Complete Object Locator'
+// win1.41 008ebc48 mac 109ea368 WeatherThing::`vftable'
+class WeatherThing: public GameThingWithPos
+{
+public:
+    uint8_t field_0x28[0x60];
+
+    // Override methods
+
+    // win1.41 0055df60 mac 105a3e00 WeatherThing::_dt(void)
+    virtual ~WeatherThing();
+    // win1.41 00774130 mac 105a4f00 WeatherThing::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 0055df50 mac 105a3fa0 WeatherThing::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 007747e0 mac 105a3fe0 WeatherThing::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 007745c0 mac 105a4300 WeatherThing::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055df40 mac 105a3f60 WeatherThing::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 007742e0 mac 105a4be0 WeatherThing::SetPos(MapCoords const &)
+    virtual void SetPos(const MapCoords* param_1);
+    // win1.41 00774580 mac 105a4680 WeatherThing::SetSpeedInMetres(float, int)
+    virtual void SetSpeedInMetres(float param_1, int param_2);
+    // win1.41 0055df10 mac 105a3ea0 WeatherThing::IsWeather( const(void))
+    virtual uint32_t IsWeather();
+    // win1.41 0055df30 mac 105a3f20 WeatherThing::GetText(void)
+    virtual const char* GetText();
+    // win1.41 00774360 mac 105a4b40 WeatherThing::GetScriptObjectType(void)
+    virtual uint32_t GetScriptObjectType();
+    // win1.41 0055df20 mac 105a3ee0 WeatherThing::SetAffectedByWind(int)
+    virtual void SetAffectedByWind(int param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -66,5 +116,7 @@ uint32_t __fastcall GetScriptObjectType__12WeatherThingFv(struct GameThingWithPo
 void __fastcall SetAffectedByWind__12WeatherThingFi(struct GameThingWithPos* this, const void* edx, int param_1) asm("?SetAffectedByWind@WeatherThing@@UAEXH@Z");
 
 DECLARE_LH_LIST_HEAD(WeatherThing);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_WEATHER_THING_INCLUDED_H */

@@ -8,6 +8,31 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea428 mac inlined RegisterBox::`RTTI Type Descriptor'
+// win1.41 009acb50 mac inlined RegisterBox::`RTTI Base Class Descriptor'
+// win1.41 009acb68 mac inlined RegisterBox::`RTTI Base Class Array'
+// win1.41 009acb78 mac inlined RegisterBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008debc8 mac 109ed854 RegisterBox::`RTTI Complete Object Locator'
+// win1.41 008debcc mac 109ed85c RegisterBox::`vftable'
+class RegisterBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0x18];
+
+    // Override methods
+
+    // win1.41 0053d7d0 mac 105c2d30 RegisterBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 0053db00 mac 105c2cd0 RegisterBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0053db10 mac 105c2bd0 RegisterBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct RegisterBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -38,5 +63,7 @@ void __fastcall Init__11RegisterBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct 
 void __fastcall Destroy__11RegisterBoxFv(struct DialogBoxBase* this) asm("?Destroy@RegisterBox@@UAEXXZ");
 // win1.41 0053db10 mac 105c2bd0 RegisterBox::InitControls(void)
 void __fastcall InitControls__11RegisterBoxFv(struct DialogBoxBase* this) asm("?InitControls@RegisterBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_REGISTER_BOX_INCLUDED_H */

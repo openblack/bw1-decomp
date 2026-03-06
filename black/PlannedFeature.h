@@ -8,6 +8,41 @@
 
 #include "PlannedMultiMapFixed.h" /* For struct PlannedMultiMapFixed */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+class MultiMapFixed;
+
+// win1.41 00be9cb0 mac inlined PlannedFeature::`RTTI Type Descriptor'
+// win1.41 009ac058 mac inlined PlannedFeature::`RTTI Base Class Descriptor'
+// win1.41 009ac070 mac inlined PlannedFeature::`RTTI Base Class Array'
+// win1.41 009ac088 mac inlined PlannedFeature::`RTTI Class Hierarchy Descriptor'
+class PlannedFeature: public PlannedMultiMapFixed
+{
+public:
+
+    // Override methods
+
+    // win1.41 005274a0 mac 100d1600 PlannedFeature::_dt(void)
+    virtual ~PlannedFeature();
+    // win1.41 00527490 mac 100d16e0 PlannedFeature::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00527580 mac 100d0f60 PlannedFeature::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00527550 mac 100d0ff0 PlannedFeature::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 00527480 mac 100d16a0 PlannedFeature::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 005274d0 mac 100d1080 PlannedFeature::CreatePlanned(float)
+    virtual MultiMapFixed* CreatePlanned(float param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -46,5 +81,7 @@ uint32_t __fastcall Save__14PlannedFeatureFR10GameOSFile(struct GameThing* this,
 uint32_t __fastcall GetSaveType__14PlannedFeatureFv(struct GameThing* this) asm("?GetSaveType@PlannedFeature@@UAEIXZ");
 // win1.41 005274d0 mac 100d1080 PlannedFeature::CreatePlanned(float)
 struct MultiMapFixed* __fastcall CreatePlanned__14PlannedFeatureFf(struct PlannedMultiMapFixed* this, const void* edx, float param_1) asm("?CreatePlanned@PlannedFeature@@UAEPAVMultiMapFixed@@M@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLANNED_FEATURE_INCLUDED_H */

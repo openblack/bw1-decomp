@@ -8,6 +8,37 @@
 
 #include "HandState.h" /* For struct HandState */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CHand;
+
+// win1.41 00bf00a0 mac inlined HandStateCamera::`RTTI Type Descriptor'
+// win1.41 009b0e88 mac inlined HandStateCamera::`RTTI Base Class Descriptor'
+// win1.41 009b0ea0 mac inlined HandStateCamera::`RTTI Base Class Array'
+// win1.41 009b0eb0 mac inlined HandStateCamera::`RTTI Class Hierarchy Descriptor'
+// win1.41 00900a50 mac 1099b154 HandStateCamera::`RTTI Complete Object Locator'
+// win1.41 00900a54 mac 1099b15c HandStateCamera::`vftable'
+class HandStateCamera: public HandState
+{
+public:
+    uintptr_t field_0x8;
+    uint8_t field_0xC[0xcc];
+
+    // Override methods
+
+    // win1.41 005b02f0 mac 10336de0 HandStateCamera::Enter(void)
+    virtual void Enter();
+
+    // Constructors
+
+    // win1.41 005b02b0 mac 10336ec0 HandStateCamera::HandStateCamera(CHand*)
+    HandStateCamera(CHand* hand);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CHand;
@@ -44,5 +75,7 @@ struct HandStateCamera* __fastcall __ct__15HandStateCameraFP5CHand(struct HandSt
 
 // win1.41 005b02f0 mac 10336de0 HandStateCamera::Enter(void)
 void __fastcall Enter__15HandStateCameraFv(struct HandState* this) asm("?Enter@HandStateCamera@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HAND_STATE_CAMERA_INCLUDED_H */

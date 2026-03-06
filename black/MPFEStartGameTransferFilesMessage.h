@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bfd9d8 mac inlined MPFEStartGameTransferFilesMessage::`RTTI Type Descriptor'
+// win1.41 009b29b0 mac inlined MPFEStartGameTransferFilesMessage::`RTTI Base Class Descriptor'
+// win1.41 009b29c8 mac inlined MPFEStartGameTransferFilesMessage::`RTTI Base Class Array'
+// win1.41 009b29d8 mac inlined MPFEStartGameTransferFilesMessage::`RTTI Class Hierarchy Descriptor'
+class MPFEStartGameTransferFilesMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00630050 mac 103a6e30 MPFEStartGameTransferFilesMessage::_dt(void)
+    virtual ~MPFEStartGameTransferFilesMessage();
+};
+
+#else // __cplusplus
+
 struct MPFEStartGameTransferFilesMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00630050 mac 103a6e30 MPFEStartGameTransferFilesMessage::_dt(void)
 void __fastcall __dt__33MPFEStartGameTransferFilesMessageFv(struct MPFEMessageObject* this) asm("??_GMPFEStartGameTransferFilesMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_START_GAME_TRANSFER_FILES_MESSAGE_INCLUDED_H */

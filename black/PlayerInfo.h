@@ -8,6 +8,63 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c00b10 mac inlined CPDesireNodeInfo::`RTTI Type Descriptor'
+// win1.41 009b3260 mac inlined CPDesireNodeInfo::`RTTI Base Class Descriptor'
+// win1.41 009b3278 mac inlined CPDesireNodeInfo::`RTTI Base Class Array'
+// win1.41 009b3280 mac inlined CPDesireNodeInfo::`RTTI Class Hierarchy Descriptor'
+class CPDesireNodeInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00655b70 mac 104ab970 CPDesireNodeInfo::GetNumChildren(void)
+    virtual int GetNumChildren();
+};
+
+// win1.41 00bec370 mac inlined GPlayerInfo::`RTTI Type Descriptor'
+// win1.41 009ad060 mac inlined GPlayerInfo::`RTTI Base Class Descriptor'
+// win1.41 009ad078 mac inlined GPlayerInfo::`RTTI Base Class Array'
+// win1.41 009ad088 mac inlined GPlayerInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 008df72c mac 10730be8 GPlayerInfo::`RTTI Complete Object Locator'
+// win1.41 008df730 mac 10730bf0 GPlayerInfo::`vftable'
+class GPlayerInfo: public GBaseInfo
+{
+public:
+    float field_0x10;
+    float field_0x14;
+    float field_0x18;
+    float field_0x1c;
+    uint32_t field_0x20;
+    float field_0x24;
+    float field_0x28;
+    float field_0x2c;
+    float field_0x30;
+    float field_0x34;
+    float field_0x38;
+    float field_0x3c;
+    float field_0x40;
+    uint32_t field_0x44;
+    float field_0x48;
+    float field_0x4c;
+    uint8_t field_0x50[0x40];
+
+    // Override methods
+
+    // win1.41 0054be50 mac 104e7bd0 GPlayerInfo::_dt(void)
+    virtual ~GPlayerInfo();
+    // win1.41 0054b830 mac 1058eb00 GPlayerInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -107,5 +164,7 @@ static_assert(sizeof(struct PlayerInfo) == 0x8, "Data type is of wrong size");
 
 // win1.41 00648d50 mac 10375150 PlayerInfo::PlayerInfo(void)
 void __fastcall __ct__10PlayerInfoFv(struct PlayerInfo* this) asm("??0PlayerInfo@@QAE@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLAYER_INFO_INCLUDED_H */

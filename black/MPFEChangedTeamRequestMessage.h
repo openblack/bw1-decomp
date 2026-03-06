@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bfdca0 mac inlined MPFEChangedTeamRequestMessage::`RTTI Type Descriptor'
+// win1.41 009b2c30 mac inlined MPFEChangedTeamRequestMessage::`RTTI Base Class Descriptor'
+// win1.41 009b2c48 mac inlined MPFEChangedTeamRequestMessage::`RTTI Base Class Array'
+// win1.41 009b2c58 mac inlined MPFEChangedTeamRequestMessage::`RTTI Class Hierarchy Descriptor'
+class MPFEChangedTeamRequestMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00632d20 mac 10397440 MPFEChangedTeamRequestMessage::_dt(void)
+    virtual ~MPFEChangedTeamRequestMessage();
+};
+
+#else // __cplusplus
+
 struct MPFEChangedTeamRequestMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00632d20 mac 10397440 MPFEChangedTeamRequestMessage::_dt(void)
 void __fastcall __dt__29MPFEChangedTeamRequestMessageFv(struct MPFEMessageObject* this) asm("??_GMPFEChangedTeamRequestMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_CHANGED_TEAM_REQUEST_MESSAGE_INCLUDED_H */

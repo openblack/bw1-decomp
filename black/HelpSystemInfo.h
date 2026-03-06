@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00bf0c88 mac inlined HelpSystemInfo::`RTTI Type Descriptor'
+// win1.41 009b1350 mac inlined HelpSystemInfo::`RTTI Base Class Descriptor'
+// win1.41 009b1368 mac inlined HelpSystemInfo::`RTTI Base Class Array'
+// win1.41 009b1378 mac inlined HelpSystemInfo::`RTTI Class Hierarchy Descriptor'
+class HelpSystemInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 005c53f0 mac 10351af0 HelpSystemInfo::_dt(void)
+    virtual ~HelpSystemInfo();
+    // win1.41 005c53a0 mac 10351aa0 HelpSystemInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__14HelpSystemInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GHelpSystemInfo@@UAEPAXI@Z");
 // win1.41 005c53a0 mac 10351aa0 HelpSystemInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__14HelpSystemInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@HelpSystemInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HELP_SYSTEM_INFO_INCLUDED_H */

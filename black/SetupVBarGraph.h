@@ -14,6 +14,66 @@
 #include "SetupButton.h" /* For struct SetupButton */
 #include "SetupControl.h" /* For struct SetupControlVftable */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class SetupControl;
+
+// win1.41 009c8258 mac inlined SetupVBarGraph::`RTTI Type Descriptor'
+// win1.41 009a67e8 mac inlined SetupVBarGraph::`RTTI Base Class Descriptor'
+// win1.41 009a6800 mac inlined SetupVBarGraph::`RTTI Base Class Array'
+// win1.41 009a6810 mac inlined SetupVBarGraph::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ab47c mac 10730f60 SetupVBarGraph::`RTTI Complete Object Locator'
+// win1.41 008ab480 mac 10730f68 SetupVBarGraph::`vftable'
+class SetupVBarGraph: public SetupButton
+{
+public:
+    Zoomer zoomer; /* 0x244 */
+    LHLinkedList__VBarData bar_data_list; /* 0x274 */
+    float max_point;
+    float min_point; /* 0x280 */
+
+    // Virtual functions
+
+    // win1.41 0040efb0 mac inlined SetupVBarGraph::Reset(vfoid)
+    virtual void Reset(); /* 0x34 */
+    // win1.41 0040f1b0 mac 10351240 SetupVBarGraph::SetScale(float)
+    virtual void SetScale(float scale);
+    virtual void AddLine(const VBarData* line);
+    virtual void SetLine(int index, const VBarData* line); /* 0x40 */
+    virtual void GetLine(int index, VBarData* result);
+
+    // Override methods
+
+    // win1.41 0040e8b0 mac 10379480 SetupVBarGraph::Draw(bool, bool)
+    virtual void Draw(bool hovered, bool selected);
+    // win1.41 0040ef70 mac 10350e50 SetupVBarGraph::KeyDown(int, int)
+    virtual void KeyDown(LHKey key, LHKeyMod mod);
+    // win1.41 0040ef90 mac 103de920 SetupVBarGraph::~SetupVBarGraph(void)
+    virtual ~SetupVBarGraph();
+    // win1.41 0040efb0 mac inlined SetupVBarGraph::Reset(vfoid)
+    virtual void Reset();
+    // win1.41 0040f1b0 mac 10351240 SetupVBarGraph::SetScale(float)
+    virtual void SetScale(float scale);
+
+    // Constructors
+
+    // win1.41 0040ef00 mac 10354bc0 SetupVBarGraph::SetupVBarGraph(int, int, int, int, int, wchar_t *)
+    SetupVBarGraph(int id, int x, int y, int width, int height, const char16_t* label);
+
+    // Non-virtual methods
+
+    // win1.41 0040f280 mac 103fccd0 SetupVBarGraph::AddBar(const VBarData &)
+    void AddBar(const VBarData* bar);
+    // win1.41 0040f300 mac 10352240 SetupVBarGraph::SetBar(int, const VBarData &)
+    void SetBar(int index, const VBarData* bar);
+    // win1.41 0040f350 mac 103f1500 SetupVBarGraph::GetBar(int, VBarData &)
+    void GetBar(int index, VBarData* result);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SetupControl;
@@ -100,5 +160,7 @@ void __fastcall __dt__14SetupVBarGraphFb(struct SetupControl* this, const void* 
 void __fastcall Reset__14SetupVBarGraphFv(struct SetupVBarGraph* this) asm("?Reset@SetupVBarGraph@@UAEXXZ");
 // win1.41 0040f1b0 mac 10351240 SetupVBarGraph::SetScale(float)
 void __fastcall SetScale__14SetupVBarGraphFf(struct SetupVBarGraph* this, const void* edx, float scale) asm("?SetScale@SetupVBarGraph@@UAEXM@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_V_BAR_GRAPH_INCLUDED_H */

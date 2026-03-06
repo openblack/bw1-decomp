@@ -9,7 +9,8 @@ from inflection import underscore
 from pathlib import Path
 
 from csnake_overrides import CSnakeFuncPtr
-from structs import Composite
+from structs import Composite, RTTIClass
+from vftable import Vftable
 from functions import FuncPtr
 from utils import partition, extract_template_type, LH_COLLECTION_TEMPLATES, CONTAINER_DECLARATION_MACROS, FUNDAMENTAL_TYPES
 
@@ -134,6 +135,10 @@ class Header:
     @classmethod
     def set_utility_header_import_map(cls, value: dict[str, Path]):
         cls.UTILITY_HEADER_IMPORT_MAP = value
+
+    @classmethod
+    def set_rtti_class_names(cls, names: set[str]):
+        cls.RTTI_CLASS_NAMES = names
 
     def __hash__(self) -> int:
         return hash(self.header_path)
@@ -328,13 +333,56 @@ class Header:
         self.to_code_forward_declares(cw)
         self.to_code_struct_decl(cw)
 
+    def to_code_forward_declares_cplusplus(self, cw: csnake.CodeWriter):
+        # Exclude RTTIClasses defined in this header: they're emitted as `class Foo {}`
+        # so `struct Foo;` forward declares in the same TU would be a tag mismatch error.
+        rtti_names = {f"struct {s.name}" for s in self.structs if isinstance(s, RTTIClass)}
+        fwd = self.get_forward_declare_types() - rtti_names
+        if not fwd:
+            return
+        known_rtti = getattr(self.__class__, 'RTTI_CLASS_NAMES', set())
+        cw.add_line("// Forward Declares")
+        cw.add_line()
+        for f in sorted(fwd):
+            if f.startswith("struct ") and f.removeprefix("struct ") in known_rtti:
+                cw.add_line(f"class {f.removeprefix('struct ')};")
+            else:
+                cw.add_line(f"{f};")
+        cw.add_line()
+
+    def to_code_inner_cplusplus(self, cw: csnake.CodeWriter):
+        self.to_code_forward_declares_cplusplus(cw)
+        vftable_by_name = {s.name: s for s in self.structs if isinstance(s, Vftable)}
+        structs_by_name = {s.name: s for s in self.structs}
+        for s in self.structs:
+            if isinstance(s, RTTIClass):
+                vftable_name = s.vftable_type_name.removeprefix("struct ") if s.vftable_type_name else None
+                vftable = vftable_by_name.get(vftable_name)
+                s.to_code_cplusplus(cw, vftable, structs_by_name)
+                cw.add_line()
+
+    def to_code_inner_c(self, cw: csnake.CodeWriter):
+        self.to_code_forward_declares(cw)
+        self.to_code_struct_decl(cw)
+
     def to_code(self, cw: csnake.CodeWriter):
         guard = self.HEADER_GUARD_TEMPLATE % str.upper(underscore(self.path.stem).replace("lh3_d_", "LH3D_").replace("3_d_", "_3D_"))
         cw.start_if_def(guard, invert=True)
         cw.add_define(guard)
         cw.add_line()
 
-        self.to_code_inner(cw)
+        if any(isinstance(s, RTTIClass) for s in self.structs):
+            self.to_code_includes(cw)
+            cw.add_line("#ifdef __cplusplus")
+            cw.add_line()
+            self.to_code_inner_cplusplus(cw)
+            cw.add_line("#else // __cplusplus")
+            cw.add_line()
+            self.to_code_inner_c(cw)
+            cw.add_line("#endif // __cplusplus")
+            cw.add_line()
+        else:
+            self.to_code_inner(cw)
 
         cw.end_if_def()
         cw.add_line()

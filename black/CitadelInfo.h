@@ -8,6 +8,31 @@
 
 #include "ContainerInfo.h" /* For struct GContainerInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 009ce810 mac inlined GCitadelInfo::`RTTI Type Descriptor'
+// win1.41 009a8d68 mac inlined GCitadelInfo::`RTTI Base Class Descriptor'
+// win1.41 009a8d80 mac inlined GCitadelInfo::`RTTI Base Class Array'
+// win1.41 009a8d98 mac inlined GCitadelInfo::`RTTI Class Hierarchy Descriptor'
+class GCitadelInfo: public GContainerInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 004629d0 mac 101bb390 GCitadelInfo::_dt(void)
+    virtual ~GCitadelInfo();
+    // win1.41 00462980 mac 101bb430 GCitadelInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -36,5 +61,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__12GCitadelInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGCitadelInfo@@UAEPAXI@Z");
 // win1.41 00462980 mac 101bb430 GCitadelInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__12GCitadelInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GCitadelInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CITADEL_INFO_INCLUDED_H */

@@ -8,6 +8,26 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bf2a88 mac inlined IPSpecialDialog::`RTTI Type Descriptor'
+// win1.41 009b1788 mac inlined IPSpecialDialog::`RTTI Base Class Descriptor'
+// win1.41 009b17a0 mac inlined IPSpecialDialog::`RTTI Base Class Array'
+// win1.41 009b17b0 mac inlined IPSpecialDialog::`RTTI Class Hierarchy Descriptor'
+class IPSpecialDialog: public DialogBoxBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 005dd4a0 mac 100fdfa0 IPSpecialDialog::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 005dd620 mac 100fdf50 IPSpecialDialog::Destroy(void)
+    virtual void Destroy();
+};
+
+#else // __cplusplus
+
 struct IPSpecialDialog
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -31,5 +51,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall Init__15IPSpecialDialogFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@IPSpecialDialog@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 005dd620 mac 100fdf50 IPSpecialDialog::Destroy(void)
 void __fastcall Destroy__15IPSpecialDialogFv(struct DialogBoxBase* this) asm("?Destroy@IPSpecialDialog@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_IP_SPECIAL_DIALOG_INCLUDED_H */

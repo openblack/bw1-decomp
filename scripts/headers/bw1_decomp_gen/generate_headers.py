@@ -196,6 +196,7 @@ def build_struct_headers(header_structs, header_map, vftable_map, helper_base_ma
                 if t.name in helper_base_map:
                     structs.append(helper_base_map[t.name])
                 new_struct = RTTIClass(t, vftable_address_look_up, rtti_typedesc_address_look_up, rtti_base_class_desc_address_look_up, rtti_base_class_array_address_look_up, rtti_class_hierarchy_desc_address_look_up, rtti_locator_address_look_up, virtual_table_function_arg_map, class_method_look_up, class_static_method_look_up)
+                new_struct.cplusplus_members = [m for m in t.members if m.name != "vftable"]
                 consumed_vftable_addresses.add(new_struct.vftable_win_address)
             else:
                 new_struct = t
@@ -571,6 +572,8 @@ if __name__ == "__main__":
     for v in consumed_template_container_structs.values():
         consumed_template_container_structs_flat |= v
 
+    Header.set_rtti_class_names({s.name for h in header_map.values() for s in h.structs if isinstance(s, RTTIClass)})
+
     headers: list[Header] = list(header_map.values())
 
     # Create header for globals_t with actual addresses
@@ -600,11 +603,16 @@ if __name__ == "__main__":
 
     output_path = Path(os.getcwd())
     if output_path.exists():
-        generated_subpaths =  [Path("black"), Path("libs")]
-        for p in generated_subpaths:
-            subpath = output_path / p
-            if subpath.exists():
-                shutil.rmtree(subpath)
+        for subpath in (output_path / Path("black"), output_path / Path("libs")):
+            if not subpath.exists():
+                continue
+            for child in subpath.iterdir():
+                if child.name == "zlib":
+                    continue
+                if child.is_dir():
+                    shutil.rmtree(child)
+                else:
+                    child.unlink()
 
     wrote_headers = 0
     wrote_bytes = 0

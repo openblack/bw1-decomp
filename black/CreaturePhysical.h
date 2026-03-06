@@ -8,6 +8,82 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Creature;
+class CreatureInfo;
+class LH3DCreature;
+struct MapCoords;
+
+// win1.41 00be01f8 mac inlined CreatureDamageMap::`RTTI Type Descriptor'
+// win1.41 009ab340 mac inlined CreatureDamageMap::`RTTI Base Class Descriptor'
+// win1.41 009ab358 mac inlined CreatureDamageMap::`RTTI Base Class Array'
+// win1.41 009ab368 mac inlined CreatureDamageMap::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d14ec mac 1077e114 CreatureDamageMap::`RTTI Complete Object Locator'
+// win1.41 008d14f0 mac 1077e11c CreatureDamageMap::`vftable'
+class CreatureDamageMap: public Base
+{
+public:
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+
+    // Override methods
+
+    // win1.41 004ef4a0 mac 101e28f0 CreatureDamageMap::_dt(void)
+    virtual ~CreatureDamageMap();
+};
+
+// win1.41 00be01d8 mac inlined CreaturePhysical::`RTTI Type Descriptor'
+// win1.41 009ab2f0 mac inlined CreaturePhysical::`RTTI Base Class Descriptor'
+// win1.41 009ab308 mac inlined CreaturePhysical::`RTTI Base Class Array'
+// win1.41 009ab318 mac inlined CreaturePhysical::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d14cc mac 1077e14c CreaturePhysical::`RTTI Complete Object Locator'
+// win1.41 008d14d0 mac 1077e154 CreaturePhysical::`vftable'
+class CreaturePhysical: public Base
+{
+public:
+    uint32_t field_0x8;
+    float strength;
+    uint32_t field_0x10;
+    float field_0x14;
+    float field_0x18;
+    uint32_t field_0x1c;
+    uint32_t field_0x20;
+    uint16_t field_0x24;
+    uint8_t field_0x26;
+    uint8_t field_0x27;
+    uint32_t field_0x28;
+    uint32_t field_0x2c;
+    float field_0x30;
+    uint32_t field_0x34;
+    uint32_t field_0x38;
+    float field_0x3c;
+    uint32_t field_0x40;
+    uint32_t field_0x44;
+    float field_0x48;
+    uint32_t field_0x4c;
+    uint32_t field_0x50;
+    Creature* creature;
+    LH3DCreature* creature_3d;
+    CreatureDamageMap damage_map;
+    uint8_t* field_0x6c;
+    uint32_t field_0x70;
+
+    // Override methods
+
+    // win1.41 004ef4c0 mac 101defb0 CreaturePhysical::_dt(void)
+    virtual ~CreaturePhysical();
+
+    // Constructors
+
+    // win1.41 004ef2c0 mac 102767c0 CreaturePhysical::CreaturePhysical(MapCoords const &, unsigned short, CreatureInfo const *, Creature *)
+    CreaturePhysical(const MapCoords* coords, uint16_t param_2, const CreatureInfo* info, Creature* creature);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Creature;
@@ -99,5 +175,7 @@ struct CreaturePhysical* __fastcall __ct__16CreaturePhysicalFRC9MapCoordsUsPC12C
 
 // win1.41 004ef4c0 mac 101defb0 CreaturePhysical::_dt(void)
 void __fastcall __dt__16CreaturePhysicalFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreaturePhysical@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_PHYSICAL_INCLUDED_H */

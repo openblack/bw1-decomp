@@ -9,6 +9,208 @@
 #include "GameThing.h" /* For struct GameThing */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GPlayer;
+class GameOSFile;
+
+// win1.41 00bed468 mac inlined GComputerAttitudeToPlayer::`RTTI Type Descriptor'
+// win1.41 009aec38 mac inlined GComputerAttitudeToPlayer::`RTTI Base Class Descriptor'
+// win1.41 009aec50 mac inlined GComputerAttitudeToPlayer::`RTTI Base Class Array'
+// win1.41 009aec60 mac inlined GComputerAttitudeToPlayer::`RTTI Class Hierarchy Descriptor'
+class GComputerAttitudeToPlayer: public GameThing
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055e310 mac 104a4ad0 GComputerAttitudeToPlayer::_dt(void)
+    virtual ~GComputerAttitudeToPlayer();
+    // win1.41 0055e300 mac 104a4bc0 GComputerAttitudeToPlayer::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006587d0 mac 104a5760 GComputerAttitudeToPlayer::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00658830 mac 104a5670 GComputerAttitudeToPlayer::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055e2f0 mac 104a4b70 GComputerAttitudeToPlayer::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 00becd68 mac inlined GComputerPlayer::`RTTI Type Descriptor'
+// win1.41 009ae160 mac inlined GComputerPlayer::`RTTI Base Class Descriptor'
+// win1.41 009ae178 mac inlined GComputerPlayer::`RTTI Base Class Array'
+// win1.41 009ae190 mac inlined GComputerPlayer::`RTTI Class Hierarchy Descriptor'
+class GComputerPlayer: public GameThingWithPos
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055e3d0 mac 104975d0 GComputerPlayer::_dt(void)
+    virtual ~GComputerPlayer();
+    // win1.41 00656f20 mac 104a8fe0 GComputerPlayer::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 0055e3b0 mac 10381df0 GComputerPlayer::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 0055e380 mac 104abef0 GComputerPlayer::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006579a0 mac 104a7010 GComputerPlayer::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00657640 mac 104a7bc0 GComputerPlayer::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055e370 mac 104abeb0 GComputerPlayer::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00657cd0 mac 104a6f30 GComputerPlayer::SaveExtraData(GameOSFile &)
+    virtual void SaveExtraData(GameOSFile* param_1);
+    // win1.41 0055e390 mac 104abf30 GComputerPlayer::SetSpeedInMetres(float, int)
+    virtual void SetSpeedInMetres(float param_1, int param_2);
+    // win1.41 0055e3a0 mac 104abf90 GComputerPlayer::GetText(void)
+    virtual const char* GetText();
+    // win1.41 0055e3c0 mac 104abff0 GComputerPlayer::IsComputerPlayer(void)
+    virtual uint32_t IsComputerPlayer();
+    // win1.41 006587b0 mac 104a5850 GComputerPlayer::GetScriptObjectType(void)
+    virtual uint32_t GetScriptObjectType();
+};
+
+// win1.41 00bee2d0 mac inlined GComputerPlayerQueue::`RTTI Type Descriptor'
+// win1.41 009b0418 mac inlined GComputerPlayerQueue::`RTTI Base Class Descriptor'
+// win1.41 009b0430 mac inlined GComputerPlayerQueue::`RTTI Base Class Array'
+// win1.41 009b0440 mac inlined GComputerPlayerQueue::`RTTI Class Hierarchy Descriptor'
+class GComputerPlayerQueue: public GameThing
+{
+public:
+
+    // Override methods
+
+    // win1.41 00561c30 mac 104bf6b0 GComputerPlayerQueue::_dt(void)
+    virtual ~GComputerPlayerQueue();
+    // win1.41 00561c20 mac 104be870 GComputerPlayerQueue::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00664660 mac 104beaa0 GComputerPlayerQueue::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00664530 mac 104bed40 GComputerPlayerQueue::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 00561c10 mac 104be830 GComputerPlayerQueue::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 00becd20 mac inlined GComputerSeen::`RTTI Type Descriptor'
+// win1.41 009ae070 mac inlined GComputerSeen::`RTTI Base Class Descriptor'
+// win1.41 009ae088 mac inlined GComputerSeen::`RTTI Base Class Array'
+// win1.41 009ae098 mac inlined GComputerSeen::`RTTI Class Hierarchy Descriptor'
+class GComputerSeen: public GameThing
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055e350 mac 104ac030 GComputerSeen::_dt(void)
+    virtual ~GComputerSeen();
+    // win1.41 0055e340 mac 104ac100 GComputerSeen::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00656bf0 mac 104a9840 GComputerSeen::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00656b80 mac 104a9930 GComputerSeen::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055e330 mac 104ac0c0 GComputerSeen::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 00becbd0 mac inlined GComputerSpellCast::`RTTI Type Descriptor'
+// win1.41 009adc78 mac inlined GComputerSpellCast::`RTTI Base Class Descriptor'
+// win1.41 009adc90 mac inlined GComputerSpellCast::`RTTI Base Class Array'
+// win1.41 009adca0 mac inlined GComputerSpellCast::`RTTI Class Hierarchy Descriptor'
+class GComputerSpellCast: public GameThing
+{
+public:
+
+    // Override methods
+
+    // win1.41 005614b0 mac 104c1010 GComputerSpellCast::_dt(void)
+    virtual ~GComputerSpellCast();
+    // win1.41 005614a0 mac 104c0fd0 GComputerSpellCast::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00665c00 mac 104c2930 GComputerSpellCast::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00665b90 mac 104c2a20 GComputerSpellCast::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 00561490 mac 104c0f90 GComputerSpellCast::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 00bed438 mac inlined PlayerActionState::`RTTI Type Descriptor'
+// win1.41 009aebe0 mac inlined PlayerActionState::`RTTI Base Class Descriptor'
+// win1.41 009aebf8 mac inlined PlayerActionState::`RTTI Base Class Array'
+// win1.41 009aec10 mac inlined PlayerActionState::`RTTI Class Hierarchy Descriptor'
+class PlayerActionState: public GameThingWithPos
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055e2a0 mac 1049d580 PlayerActionState::_dt(void)
+    virtual ~PlayerActionState();
+    // win1.41 00650100 mac 1049be30 PlayerActionState::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 006508e0 mac 1049aee0 PlayerActionState::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 00651a20 mac 10498ce0 PlayerActionState::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00651740 mac 104993e0 PlayerActionState::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055e290 mac 1049d660 PlayerActionState::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00651d20 mac 10498c00 PlayerActionState::SaveExtraData(GameOSFile &)
+    virtual void SaveExtraData(GameOSFile* param_1);
+    // win1.41 0055e280 mac 1049d620 PlayerActionState::GetText(void)
+    virtual const char* GetText();
+};
+
+// win1.41 00bed418 mac inlined PlayerSubAction::`RTTI Type Descriptor'
+// win1.41 009aeb90 mac inlined PlayerSubAction::`RTTI Base Class Descriptor'
+// win1.41 009aeba8 mac inlined PlayerSubAction::`RTTI Base Class Array'
+// win1.41 009aebb8 mac inlined PlayerSubAction::`RTTI Class Hierarchy Descriptor'
+class PlayerSubAction: public GameThing
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055e210 mac 1049a870 PlayerSubAction::_dt(void)
+    virtual ~PlayerSubAction();
+    // win1.41 00651e70 mac 104985c0 PlayerSubAction::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00651d80 mac 10498a40 PlayerSubAction::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055e200 mac 1049d540 PlayerSubAction::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 00bed3f0 mac inlined PlayerSubActionArgument::`RTTI Type Descriptor'
+// win1.41 009aeb40 mac inlined PlayerSubActionArgument::`RTTI Base Class Descriptor'
+// win1.41 009aeb58 mac inlined PlayerSubActionArgument::`RTTI Base Class Array'
+// win1.41 009aeb68 mac inlined PlayerSubActionArgument::`RTTI Class Hierarchy Descriptor'
+class PlayerSubActionArgument: public GameThing
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055e1c0 mac 10497ca0 PlayerSubActionArgument::_dt(void)
+    virtual ~PlayerSubActionArgument();
+    // win1.41 00652140 mac 10497ea0 PlayerSubActionArgument::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00651f80 mac 10498220 PlayerSubActionArgument::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055e1b0 mac 10497c50 PlayerSubActionArgument::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -270,5 +472,7 @@ uint32_t __fastcall Load__23PlayerSubActionArgumentFR10GameOSFile(struct GameThi
 uint32_t __fastcall Save__23PlayerSubActionArgumentFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@PlayerSubActionArgument@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0055e1b0 mac 10497c50 PlayerSubActionArgument::GetSaveType(void)
 uint32_t __fastcall GetSaveType__23PlayerSubActionArgumentFv(struct GameThing* this) asm("?GetSaveType@PlayerSubActionArgument@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLAYER_COMPUTER_INCLUDED_H */

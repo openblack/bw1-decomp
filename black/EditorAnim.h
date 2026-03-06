@@ -8,6 +8,30 @@
 #include <lionhead/lh3dlib/development/Prss.h> /* For struct Prss */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// win1.41 00be8f68 mac inlined AnimEdit::`RTTI Type Descriptor'
+// win1.41 009abae8 mac inlined AnimEdit::`RTTI Base Class Descriptor'
+// win1.41 009abb00 mac inlined AnimEdit::`RTTI Base Class Array'
+// win1.41 009abb10 mac inlined AnimEdit::`RTTI Class Hierarchy Descriptor'
+class AnimEdit: public Prss
+{
+public:
+
+    // Override methods
+
+    // win1.41 0051cde0 mac inlined AnimEdit::ProcessTurn(void)
+    virtual int ProcessTurn();
+    // win1.41 0051d460 mac inlined AnimEdit::Display(void)
+    virtual void Display();
+    // win1.41 0051de20 mac inlined AnimEdit::PrssKey(LH_KEY, unsigned short)
+    virtual void PrssKey(LH_KEY param_1, uint16_t param_2);
+    // win1.41 0051e370 mac inlined AnimEdit::ClickFunction(int, int, int)
+    virtual void ClickFunction(int param_1, int param_2, int param_3);
+};
+
+#else // __cplusplus
+
 struct AnimEdit
 {
   struct Prss super;  /* 0x0 */
@@ -35,5 +59,7 @@ void __fastcall Display__8AnimEditFv(struct Prss* this) asm("?Display@AnimEdit@@
 void __fastcall PrssKey__8AnimEditF6LH_KEYUs(struct Prss* this, const void* edx, enum LH_KEY param_1, uint16_t param_2) asm("?PrssKey@AnimEdit@@UAEXW4LH_KEY@@G@Z");
 // win1.41 0051e370 mac inlined AnimEdit::ClickFunction(int, int, int)
 void __fastcall ClickFunction__8AnimEditFiii(struct Prss* this, const void* edx, int param_1, int param_2, int param_3) asm("?ClickFunction@AnimEdit@@UAEXHHH@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_EDITOR_ANIM_INCLUDED_H */

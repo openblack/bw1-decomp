@@ -8,6 +8,39 @@
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GPlayer;
+class GameThing;
+class Town;
+
+// win1.41 00bf41c8 mac inlined Meeting::`RTTI Type Descriptor'
+// win1.41 009b1f40 mac inlined Meeting::`RTTI Base Class Descriptor'
+// win1.41 009b1f58 mac inlined Meeting::`RTTI Base Class Array'
+// win1.41 009b1f70 mac inlined Meeting::`RTTI Class Hierarchy Descriptor'
+class Meeting: public GameThingWithPos
+{
+public:
+
+    // Override methods
+
+    // win1.41 00606160 mac inlined Meeting::_dt(void)
+    virtual ~Meeting();
+    // win1.41 00606180 mac inlined Meeting::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00606230 mac inlined Meeting::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 00606150 mac inlined Meeting::RemoveDance(void)
+    virtual void RemoveDance();
+    // win1.41 00606140 mac inlined Meeting::GetTown(void)
+    virtual Town* GetTown();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -44,5 +77,7 @@ struct GPlayer* __fastcall GetPlayer__7MeetingFv(struct GameThing* this) asm("?G
 void __fastcall RemoveDance__7MeetingFv(struct GameThing* this) asm("?RemoveDance@Meeting@@UAEXXZ");
 // win1.41 00606140 mac inlined Meeting::GetTown(void)
 struct Town* __fastcall GetTown__7MeetingFv(struct GameThing* this) asm("?GetTown@Meeting@@UAEPAVTown@@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MEETING_INCLUDED_H */

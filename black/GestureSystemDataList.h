@@ -9,6 +9,37 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bec3f0 mac inlined GestureSystemDataList::`RTTI Type Descriptor'
+// win1.41 009ad1a0 mac inlined GestureSystemDataList::`RTTI Base Class Descriptor'
+// win1.41 009ad1b8 mac inlined GestureSystemDataList::`RTTI Base Class Array'
+// win1.41 009ad1c8 mac inlined GestureSystemDataList::`RTTI Class Hierarchy Descriptor'
+// win1.41 008df7bc mac 10733088 GestureSystemDataList::`RTTI Complete Object Locator'
+// win1.41 008df7c0 mac 10733090 GestureSystemDataList::`vftable'
+class GestureSystemDataList: public Base
+{
+public:
+    uint8_t field_0x8[0x8];
+
+    // Override methods
+
+    // win1.41 0054bac0 mac 100d4da0 GestureSystemDataList::_dt(void)
+    virtual ~GestureSystemDataList();
+
+    // Constructors
+
+    // win1.41 0054baa0 mac inlined GestureSystemDataList::GestureSystemDataList(void)
+    GestureSystemDataList();
+
+    // Non-virtual methods
+
+    // win1.41 00579af0 mac 1032b530 GestureSystemDataList::Load(char *)
+    bool Load(char* param_1);
+};
+
+#else // __cplusplus
+
 struct GestureSystemDataList
 {
   struct Base super;  /* 0x0 */
@@ -45,5 +76,7 @@ bool __fastcall Load__21GestureSystemDataListFPc(struct GestureSystemDataList* t
 
 // win1.41 0054bac0 mac 100d4da0 GestureSystemDataList::_dt(void)
 void __fastcall __dt__21GestureSystemDataListFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGestureSystemDataList@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_GESTURE_SYSTEM_DATA_LIST_INCLUDED_H */

@@ -9,6 +9,53 @@
 
 #include "Feature.h" /* For struct Feature */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GPlayer;
+class GameThing;
+class GameThingWithPos;
+class LHOSFile;
+struct MapCoords;
+class MultiMapFixed;
+class Object;
+class PlannedMultiMapFixed;
+class WorshipSite;
+
+// win1.41 00c24d90 mac inlined WorshipSiteUpgrade::`RTTI Type Descriptor'
+// win1.41 009ba3e0 mac inlined WorshipSiteUpgrade::`RTTI Base Class Descriptor'
+// win1.41 009ba3f8 mac inlined WorshipSiteUpgrade::`RTTI Base Class Array'
+// win1.41 009ba420 mac inlined WorshipSiteUpgrade::`RTTI Class Hierarchy Descriptor'
+class WorshipSiteUpgrade: public Feature
+{
+public:
+
+    // Override methods
+
+    // win1.41 0077ec70 mac inlined WorshipSiteUpgrade::_dt(void)
+    virtual ~WorshipSiteUpgrade();
+    // win1.41 0077eca0 mac inlined WorshipSiteUpgrade::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 0077ed80 mac inlined WorshipSiteUpgrade::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 0077ec60 mac inlined WorshipSiteUpgrade::GetWorshipSite(void)
+    virtual WorshipSite* GetWorshipSite();
+    // win1.41 0077ef30 mac inlined WorshipSiteUpgrade::SaveObject(LHOSFile &, MapCoords const &)
+    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    // win1.41 004220f0 mac inlined WorshipSiteUpgrade::IsRepaired(void)
+    virtual bool IsRepaired();
+    // win1.41 00422110 mac inlined WorshipSiteUpgrade::IsBuilt(void)
+    virtual bool IsBuilt();
+    // win1.41 00527790 mac inlined WorshipSiteUpgrade::IsDrawBuilding(void)
+    virtual bool IsDrawBuilding();
+    // win1.41 0077edd0 mac inlined WorshipSiteUpgrade::ConvertToPlanned(void)
+    virtual PlannedMultiMapFixed* ConvertToPlanned();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -59,5 +106,7 @@ bool __fastcall IsBuilt__18WorshipSiteUpgradeFv(struct MultiMapFixed* this) asm(
 bool __fastcall IsDrawBuilding__18WorshipSiteUpgradeFv(struct MultiMapFixed* this) asm("?IsDrawBuilding@WorshipSiteUpgrade@@UAE_NXZ");
 // win1.41 0077edd0 mac inlined WorshipSiteUpgrade::ConvertToPlanned(void)
 struct PlannedMultiMapFixed* __fastcall ConvertToPlanned__18WorshipSiteUpgradeFv(struct MultiMapFixed* this) asm("?ConvertToPlanned@WorshipSiteUpgrade@@UAEPAVPlannedMultiMapFixed@@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_UPGRADE_INCLUDED_H */

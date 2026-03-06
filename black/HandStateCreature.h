@@ -8,6 +8,36 @@
 
 #include "HandState.h" /* For struct HandState */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CHand;
+
+// win1.41 00be8ed8 mac inlined HandStateCreature::`RTTI Type Descriptor'
+// win1.41 009b0f28 mac inlined HandStateCreature::`RTTI Base Class Descriptor'
+// win1.41 009b0f40 mac inlined HandStateCreature::`RTTI Base Class Array'
+// win1.41 009b0f50 mac inlined HandStateCreature::`RTTI Class Hierarchy Descriptor'
+// win1.41 00900aa8 mac 1073bc10 HandStateCreature::`RTTI Complete Object Locator'
+// win1.41 00900aac mac 106f5d68 HandStateCreature::`vftable'
+class HandStateCreature: public HandState
+{
+public:
+    uint8_t field_0x8[0x118];
+
+    // Override methods
+
+    // win1.41 005b13f0 mac 10338c40 HandStateCreature::Enter(void)
+    virtual void Enter();
+
+    // Constructors
+
+    // win1.41 005b13d0 mac 10338f00 HandStateCreature::HandStateCreature(CHand*)
+    HandStateCreature(CHand* hand);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CHand;
@@ -43,5 +73,7 @@ struct HandStateCreature* __fastcall __ct__17HandStateCreatureFP5CHand(struct Ha
 
 // win1.41 005b13f0 mac 10338c40 HandStateCreature::Enter(void)
 void __fastcall Enter__17HandStateCreatureFv(struct HandState* this) asm("?Enter@HandStateCreature@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HAND_STATE_CREATURE_INCLUDED_H */

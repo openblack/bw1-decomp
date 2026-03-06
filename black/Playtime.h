@@ -8,6 +8,28 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c01fb8 mac inlined Playtime::`RTTI Type Descriptor'
+// win1.41 009b3348 mac inlined Playtime::`RTTI Base Class Descriptor'
+// win1.41 009b3360 mac inlined Playtime::`RTTI Base Class Array'
+// win1.41 009b3370 mac inlined Playtime::`RTTI Class Hierarchy Descriptor'
+class Playtime: public GameThing
+{
+public:
+
+    // Override methods
+
+    // win1.41 0066c410 mac inlined Playtime::_dt(void)
+    virtual ~Playtime();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 0066c410 mac inlined Playtime::_dt(void)
 void __fastcall __dt__8PlaytimeFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GPlaytime@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLAYTIME_INCLUDED_H */

@@ -8,6 +8,35 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class MPFEChannelSelector;
+
+// win1.41 00bf4b00 mac inlined MPFEChooseConnection::`RTTI Type Descriptor'
+// win1.41 009b2598 mac inlined MPFEChooseConnection::`RTTI Base Class Descriptor'
+// win1.41 009b25b0 mac inlined MPFEChooseConnection::`RTTI Base Class Array'
+// win1.41 009b25c0 mac inlined MPFEChooseConnection::`RTTI Class Hierarchy Descriptor'
+// win1.41 009307d4 mac 109a2554 MPFEChooseConnection::`RTTI Complete Object Locator'
+// win1.41 009307d8 mac 109a255c MPFEChooseConnection::`vftable'
+class MPFEChooseConnection: public DialogBoxBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 0062b340 mac 1039f9c0 MPFEChooseConnection::Destroy(void)
+    virtual void Destroy();
+
+    // Static methods
+
+    // win1.41 0062b030 mac 1039fa00 MPFEChooseConnection::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    static void Init(MPFEChannelSelector* this, const void* edx, uint32_t param_1, uint32_t param_2, void* callback);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct MPFEChannelSelector;
@@ -42,5 +71,7 @@ void __fastcall Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_
 
 // win1.41 0062b340 mac 1039f9c0 MPFEChooseConnection::Destroy(void)
 void __fastcall Destroy__20MPFEChooseConnectionFv(struct DialogBoxBase* this) asm("?Destroy@MPFEChooseConnection@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_CHOOSE_CONNECTION_INCLUDED_H */

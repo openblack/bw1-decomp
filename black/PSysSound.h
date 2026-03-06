@@ -8,6 +8,41 @@
 
 #include "PSysBase.h" /* For struct PSysBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+struct LHPoint;
+
+// win1.41 00c09760 mac inlined PSysSound::`RTTI Type Descriptor'
+// win1.41 009b83f0 mac inlined PSysSound::`RTTI Base Class Descriptor'
+// win1.41 009b8408 mac inlined PSysSound::`RTTI Base Class Array'
+// win1.41 009b8420 mac inlined PSysSound::`RTTI Class Hierarchy Descriptor'
+class PSysSound: public PSysBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 006d0f50 mac 10486f90 PSysSound::_dt(void)
+    virtual ~PSysSound();
+    // win1.41 006d1000 mac 10486ea0 PSysSound::Get3DSoundPos(LHPoint *)
+    virtual int Get3DSoundPos(LHPoint* param_1);
+    // win1.41 006d0f40 mac 10486980 PSysSound::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006d13a0 mac 10486b50 PSysSound::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 006d14a0 mac 104869c0 PSysSound::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 006d0f30 mac 10486940 PSysSound::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -46,5 +81,7 @@ uint32_t __fastcall Load__9PSysSoundFR10GameOSFile(struct GameThing* this, const
 uint32_t __fastcall Save__9PSysSoundFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@PSysSound@@UAEIAAVGameOSFile@@@Z");
 // win1.41 006d0f30 mac 10486940 PSysSound::GetSaveType(void)
 uint32_t __fastcall GetSaveType__9PSysSoundFv(struct GameThing* this) asm("?GetSaveType@PSysSound@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_P_SYS_SOUND_INCLUDED_H */

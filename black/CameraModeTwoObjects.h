@@ -9,6 +9,40 @@
 
 #include "CameraMode.h" /* For struct CameraMode */
 
+#ifdef __cplusplus
+
+// win1.41 009ce790 mac inlined CameraModeTwoObjects::`RTTI Type Descriptor'
+// win1.41 009a8d00 mac inlined CameraModeTwoObjects::`RTTI Base Class Descriptor'
+// win1.41 009a8d18 mac inlined CameraModeTwoObjects::`RTTI Base Class Array'
+// win1.41 009a8d28 mac inlined CameraModeTwoObjects::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c7dcc mac 109c3938 CameraModeTwoObjects::`RTTI Complete Object Locator'
+// win1.41 008c7dd0 mac 106fa538 CameraModeTwoObjects::`vftable'
+class CameraModeTwoObjects: public CameraMode
+{
+public:
+
+    // Override methods
+
+    // win1.41 00461c70 mac 101aa520 CameraModeTwoObjects::_dt(void)
+    virtual ~CameraModeTwoObjects();
+    // win1.41 0044a290 mac inlined CameraModeTwoObjects::CanPlayerGestureWhenCameraMoving(void)
+    virtual bool CanPlayerGestureWhenCameraMoving();
+    // win1.41 00461de0 mac 101aa880 CameraModeTwoObjects::Update(void)
+    virtual void Update();
+    // win1.41 0044a2b0 mac inlined CameraModeTwoObjects::Validate(void)
+    virtual void Validate();
+    // win1.41 0044a390 mac inlined CameraModeTwoObjects::Restart(void)
+    virtual void Restart();
+    // win1.41 00461d90 mac 101aac60 CameraModeTwoObjects::IsStillValid(void)
+    virtual bool IsStillValid();
+    // win1.41 0044a2d0 mac inlined CameraModeTwoObjects::Cleanup(void)
+    virtual void Cleanup();
+    // win1.41 0044a2e0 mac inlined CameraModeTwoObjects::CanExist(void)
+    virtual bool CanExist();
+};
+
+#else // __cplusplus
+
 struct CameraModeTwoObjects
 {
   struct CameraMode super;  /* 0x0 */
@@ -48,5 +82,7 @@ bool __fastcall IsStillValid__20CameraModeTwoObjectsFv(struct CameraMode* this) 
 void __fastcall Cleanup__20CameraModeTwoObjectsFv(struct CameraMode* this) asm("?Cleanup@CameraModeTwoObjects@@UAEXXZ");
 // win1.41 0044a2e0 mac inlined CameraModeTwoObjects::CanExist(void)
 bool __fastcall CanExist__20CameraModeTwoObjectsFv(struct CameraMode* this) asm("?CanExist@CameraModeTwoObjects@@UAE_NXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CAMERA_MODE_TWO_OBJECTS_INCLUDED_H */

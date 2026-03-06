@@ -8,6 +8,31 @@
 
 #include "MobileObjectInfo.h" /* For struct GMobileObjectInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 00c02018 mac inlined GPotInfo::`RTTI Type Descriptor'
+// win1.41 009b33e8 mac inlined GPotInfo::`RTTI Base Class Descriptor'
+// win1.41 009b3400 mac inlined GPotInfo::`RTTI Base Class Array'
+// win1.41 009b3420 mac inlined GPotInfo::`RTTI Class Hierarchy Descriptor'
+class GPotInfo: public GMobileObjectInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 0066cc40 mac 10117210 GPotInfo::_dt(void)
+    virtual ~GPotInfo();
+    // win1.41 0066cbd0 mac 1011d400 GPotInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -36,5 +61,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__8GPotInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGPotInfo@@UAEPAXI@Z");
 // win1.41 0066cbd0 mac 1011d400 GPotInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__8GPotInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GPotInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_POT_INFO_INCLUDED_H */

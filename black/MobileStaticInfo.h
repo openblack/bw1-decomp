@@ -8,6 +8,42 @@
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+class GObjectInfo;
+
+// win1.41 00bf4260 mac inlined GMobileStaticInfo::`RTTI Type Descriptor'
+// win1.41 009b2028 mac inlined GMobileStaticInfo::`RTTI Base Class Descriptor'
+// win1.41 009b2040 mac inlined GMobileStaticInfo::`RTTI Base Class Array'
+// win1.41 009b2058 mac inlined GMobileStaticInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 00930608 mac 109acc58 GMobileStaticInfo::`RTTI Complete Object Locator'
+// win1.41 0093060c mac 109acc60 GMobileStaticInfo::`vftable'
+class GMobileStaticInfo: public GMultiMapFixedInfo
+{
+public:
+    uint8_t field_0x120[0xc];
+
+    // Override methods
+
+    // win1.41 00608560 mac 103be790 GMobileStaticInfo::_dt(void)
+    virtual ~GMobileStaticInfo();
+    // win1.41 006084f0 mac 103c1240 GMobileStaticInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    // win1.41 006084e0 mac 10050090 GMobileStaticInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh();
+
+    // Static methods
+
+    // win1.41 005ff2f0 mac 103c1190 GMobileStaticInfo::GetInfo(void)
+    static GMobileStaticInfo* GetInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -49,5 +85,7 @@ void __fastcall __dt__17GMobileStaticInfoFv(struct Base* this, const void* edx, 
 struct GBaseInfo* __fastcall GetBaseInfo__17GMobileStaticInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GMobileStaticInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 006084e0 mac 10050090 GMobileStaticInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__17GMobileStaticInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GMobileStaticInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MOBILE_STATIC_INFO_INCLUDED_H */

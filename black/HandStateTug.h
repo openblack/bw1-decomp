@@ -8,6 +8,42 @@
 
 #include "HandState.h" /* For struct HandState */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CHand;
+struct LHMatrix;
+
+// win1.41 00bf0260 mac inlined HandStateTug::`RTTI Type Descriptor'
+// win1.41 009b1158 mac inlined HandStateTug::`RTTI Base Class Descriptor'
+// win1.41 009b1170 mac inlined HandStateTug::`RTTI Base Class Array'
+// win1.41 009b1180 mac inlined HandStateTug::`RTTI Class Hierarchy Descriptor'
+// win1.41 00900c18 mac 1099bc00 HandStateTug::`RTTI Complete Object Locator'
+// win1.41 00900c1c mac 1099bc08 HandStateTug::`vftable'
+class HandStateTug: public HandState
+{
+public:
+    uintptr_t field_0x8;
+    uint8_t field_0xC[0x140];
+
+    // Override methods
+
+    // win1.41 005b7df0 mac 1033e740 HandStateTug::Enter(void)
+    virtual void Enter();
+    // win1.41 005b8e40 mac 1033d5e0 HandStateTug::DrawTheHeldObject(void)
+    virtual void DrawTheHeldObject();
+    // win1.41 005b8070 mac 1033d650 HandStateTug::Update(float, LHMatrix *)
+    virtual void Update(float param_1, LHMatrix* param_2);
+
+    // Constructors
+
+    // win1.41 005b7dd0 mac 1033e9e0 HandStateTug::HandStateTug(CHand*)
+    HandStateTug(CHand* hand);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CHand;
@@ -49,5 +85,7 @@ void __fastcall Enter__12HandStateTugFv(struct HandState* this) asm("?Enter@Hand
 void __fastcall DrawTheHeldObject__12HandStateTugFv(struct HandState* this) asm("?DrawTheHeldObject@HandStateTug@@UAEXXZ");
 // win1.41 005b8070 mac 1033d650 HandStateTug::Update(float, LHMatrix *)
 void __fastcall Update__12HandStateTugFfP8LHMatrix(struct HandState* this, const void* edx, float param_1, struct LHMatrix* param_2) asm("?Update@HandStateTug@@UAEXMPAULHMatrix@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HAND_STATE_TUG_INCLUDED_H */

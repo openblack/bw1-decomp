@@ -10,6 +10,105 @@
 
 #include "PSysBase.h" /* For struct PSysBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+struct HandFX;
+struct LHPoint;
+
+// win1.41 00c028f8 mac inlined PSysHandFX::`RTTI Type Descriptor'
+// win1.41 009b4160 mac inlined PSysHandFX::`RTTI Base Class Descriptor'
+class PSysHandFX
+{
+public:
+
+    // Static methods
+
+    // win1.41 0068c9d0 mac 1040e720 PSysHandFX::CreateHandFX(void)
+    static HandFX* CreateHandFX();
+    // win1.41 0068def0 mac 1040c1a0 PSysHandFX::CreateTribalPowerColumn(TRIBE_TYPE, LHPoint const &, unsigned long)
+    static void CreateTribalPowerColumn(TRIBE_TYPE type, LHPoint* param_2, uint32_t param_3);
+};
+
+// win1.41 00c02918 mac inlined PHandFX::`RTTI Type Descriptor'
+// win1.41 009b4178 mac inlined PHandFX::`RTTI Base Class Descriptor'
+// win1.41 009b4190 mac inlined PHandFX::`RTTI Base Class Array'
+// win1.41 009b41a0 mac inlined PHandFX::`RTTI Class Hierarchy Descriptor'
+// win1.41 00936c18 mac 109b139c PHandFX::`RTTI Complete Object Locator'
+// win1.41 00936c1c mac 109b13a4 PHandFX::`vftable'
+class PHandFX: public PSysHandFX
+{
+public:
+    uint8_t field_0x4[0x44];
+    uint32_t power_up_level; /* 0x48 */
+    uint8_t field_0x4c[0x28];
+
+    // Virtual functions
+
+    // win1.41 0068d060 mac 1040e060 PHandFX::RemoveAllPermBands(void)
+    virtual void RemoveAllPermBands(); /* 0x0 */
+    // win1.41 0068ce90 mac 1040e0c0 PHandFX::DoRemoveFromHandVisual(void)
+    virtual void DoRemoveFromHandVisual();
+    // win1.41 0068de20 mac 1040c300 PHandFX::AddSpellToHandVisuals(bool)
+    virtual void AddSpellToHandVisuals(bool param_1);
+    // win1.41 0068dda0 mac 1040c460 PHandFX::SetPULevel(long, bool)
+    virtual void SetPULevel(uint32_t param_1, bool param_2);
+    // win1.41 0068dd60 mac 1001b7a0 PHandFX::DrawHandFX(void)
+    virtual void DrawHandFX(); /* 0x10 */
+    // win1.41 0068ccb0 mac 1040e200 PHandFX::GetPULevel(void)
+    virtual uint32_t GetPULevel();
+    // win1.41 0068df20 mac 1040c000 PHandFX::StartTribalPowerRing(TRIBE_TYPE)
+    virtual void StartTribalPowerRing(TRIBE_TYPE tribe);
+    // win1.41 0068dfa0 mac 1040bf70 PHandFX::StopTribalPowerRing(void)
+    virtual void StopTribalPowerRing();
+    // win1.41 0068dfc0 mac 1040be00 PHandFX::ReleaseOrCreateTribalPowerRing(TRIBE_TYPE)
+    virtual void ReleaseOrCreateTribalPowerRing(TRIBE_TYPE tribe); /* 0x20 */
+    // win1.41 0068ca10 mac 1040e670 PHandFX::Release(void)
+    virtual void Release();
+
+    // Override methods
+
+    // win1.41 0068d060 mac 1040e060 PHandFX::RemoveAllPermBands(void)
+    virtual void RemoveAllPermBands();
+    // win1.41 0068ce90 mac 1040e0c0 PHandFX::DoRemoveFromHandVisual(void)
+    virtual void DoRemoveFromHandVisual();
+    // win1.41 0068de20 mac 1040c300 PHandFX::AddSpellToHandVisuals(bool)
+    virtual void AddSpellToHandVisuals(bool param_1);
+    // win1.41 0068dda0 mac 1040c460 PHandFX::SetPULevel(long, bool)
+    virtual void SetPULevel(uint32_t param_1, bool param_2);
+    // win1.41 0068dd60 mac 1001b7a0 PHandFX::DrawHandFX(void)
+    virtual void DrawHandFX();
+    // win1.41 0068ccb0 mac 1040e200 PHandFX::GetPULevel(void)
+    virtual uint32_t GetPULevel();
+    // win1.41 0068df20 mac 1040c000 PHandFX::StartTribalPowerRing(TRIBE_TYPE)
+    virtual void StartTribalPowerRing(TRIBE_TYPE tribe);
+    // win1.41 0068dfa0 mac 1040bf70 PHandFX::StopTribalPowerRing(void)
+    virtual void StopTribalPowerRing();
+    // win1.41 0068dfc0 mac 1040be00 PHandFX::ReleaseOrCreateTribalPowerRing(TRIBE_TYPE)
+    virtual void ReleaseOrCreateTribalPowerRing(TRIBE_TYPE tribe);
+    // win1.41 0068ca10 mac 1040e670 PHandFX::Release(void)
+    virtual void Release();
+
+    // Constructors
+
+    // win1.41 0068cb10 mac 1040e240 PHandFX::PHandFX(void)
+    PHandFX();
+};
+
+class PHandFX__Band: public PSysBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 0068cac0 mac inlined PHandFX::Band::_dt( (void))
+    virtual ~PHandFX__Band();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -114,5 +213,7 @@ static_assert(sizeof(struct PHandFX__Band) == 0x14, "Data type is of wrong size"
 
 // win1.41 0068cac0 mac inlined PHandFX::Band::_dt( (void))
 void __fastcall __dt__Q27PHandFX4BandFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GBand@PHandFX@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_P_SYS_HAND_FX_INCLUDED_H */
