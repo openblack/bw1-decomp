@@ -42,9 +42,9 @@ public:
     // win1.41 00561460 mac 105347c0 GStreetLantern::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00734be0 mac 10534ab0 GStreetLantern::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00734c90 mac 10534980 GStreetLantern::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00561450 mac 10534780 GStreetLantern::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561440 mac 10534740 GStreetLantern::IsStreetLantern(void)

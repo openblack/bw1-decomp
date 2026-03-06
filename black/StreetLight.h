@@ -41,9 +41,9 @@ public:
     // win1.41 00561410 mac 10535800 GStreetLight::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00735160 mac 105358a0 GStreetLight::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00735140 mac 10535910 GStreetLight::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00561400 mac 105357c0 GStreetLight::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00735180 mac 10535840 GStreetLight::ResolveLoad(void)

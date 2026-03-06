@@ -39,9 +39,9 @@ public:
     // win1.41 0043d710 mac 100be260 StandardBuildingSite::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0043d890 mac 100b7ec0 StandardBuildingSite::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0043d850 mac 100b7f60 StandardBuildingSite::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0043d700 mac 100be220 StandardBuildingSite::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0043d8d0 mac 10077e70 StandardBuildingSite::Process(void)

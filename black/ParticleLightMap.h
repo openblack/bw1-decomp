@@ -31,7 +31,7 @@ public:
     // win1.41 006ca440 mac 10423650 ParticleLightMap::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00695180 mac 1041c890 ParticleLightMap::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
 };
 
 #else // __cplusplus

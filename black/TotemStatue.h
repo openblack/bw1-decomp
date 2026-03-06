@@ -69,9 +69,9 @@ public:
     // win1.41 00561170 mac 10543f30 TotemStatue::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00738800 mac 10544120 TotemStatue::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00738700 mac 105442e0 TotemStatue::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00561160 mac 10543ef0 TotemStatue::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00738940 mac 105440b0 TotemStatue::ResolveLoad(void)

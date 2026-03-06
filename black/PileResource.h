@@ -57,9 +57,9 @@ public:
     // win1.41 0066d330 mac 10003c80 PileResource::JustAddResource(RESOURCE_TYPE, unsigned long, bool)
     virtual uint32_t JustAddResource(RESOURCE_TYPE param_1, uint32_t param_2, bool param_3);
     // win1.41 0066f690 mac 101163b0 PileResource::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0066f620 mac 10116490 PileResource::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0066e3d0 mac 10119880 PileResource::GetLife(void)
     virtual float GetLife();
     // win1.41 0066e3c0 mac inlined PileResource::IsField_1(Creature *)

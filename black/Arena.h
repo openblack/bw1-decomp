@@ -46,9 +46,9 @@ public:
     // win1.41 004247b0 mac 100ad420 GArena::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004251d0 mac 100aa860 GArena::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 004250d0 mac 100aa9e0 GArena::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 004247a0 mac 100ad3e0 GArena::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00424790 mac 100ad3a0 GArena::GetText(void)
@@ -72,9 +72,9 @@ public:
     // win1.41 00425330 mac 100a9c90 ArenaSpellIcon::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004257d0 mac 100a9ef0 ArenaSpellIcon::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 004256e0 mac 100aa070 ArenaSpellIcon::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00425320 mac 100a9c50 ArenaSpellIcon::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00425540 mac 100aa340 ArenaSpellIcon::Create3DObject(void)
@@ -84,7 +84,7 @@ public:
     // win1.41 00425420 mac 100aa4a0 ArenaSpellIcon::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 004256d0 mac 100aa200 ArenaSpellIcon::IsEffectReceiver(EffectValues *)
-    virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+    virtual bool32_t IsEffectReceiver(EffectValues* param_1);
     // win1.41 00425310 mac 100a9c00 ArenaSpellIcon::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 00425300 mac 100a9bb0 ArenaSpellIcon::SaveObject(LHOSFile &, MapCoords const &)

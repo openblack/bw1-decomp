@@ -1,6 +1,8 @@
 #ifndef BW1_DECOMP_REVERSING_UTILS_COMMON_INCLUDED_H
 #define BW1_DECOMP_REVERSING_UTILS_COMMON_INCLUDED_H
 
+#ifndef __cplusplus
+
 #include <stdint.h> /* For uint32_t */
 #include <math.h> /* For fmaxf, fminf */
 
@@ -30,5 +32,7 @@ inline int clampi(int a, int minimum, int maximum) {
     return maximum;
   return a;
 }
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_REVERSING_UTILS_COMMON_INCLUDED_H */

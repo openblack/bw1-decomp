@@ -16,6 +16,29 @@
 
 class GameThingWithPos;
 
+struct CreaturePerceivedPlayerDesires_field_0x15c
+{
+  uint8_t field_0x0[0x20];
+};
+
+struct CreaturePerceivedPlayerDesires
+{
+  uint32_t field_0x0[0x28];
+  uint32_t field_0xa0[0x11];
+  uint8_t field_0xe4[0x78];
+  struct CreaturePerceivedPlayerDesires_field_0x15c field_0x15c[0x28];
+  uint8_t field_0x65c[0xf00];
+  struct CreaturePerceivedPlayerDesires_field_0x15c field_0x155c[0x11];
+};
+
+struct CreatureAttitudeToPlayer_field_0x1da4
+{
+  enum DETECTED_PLAYER_ACTION detected_action;  /* 0x0 */
+  struct GameThingWithPos* game_thing;
+  uint32_t field_0x8;
+  enum MAGIC_TYPE magic_type;
+};
+
 // win1.41 009d9b58 mac inlined CreatureAttitudeToPlayer::`RTTI Type Descriptor'
 // win1.41 009a9c30 mac inlined CreatureAttitudeToPlayer::`RTTI Base Class Descriptor'
 // win1.41 009a9c48 mac inlined CreatureAttitudeToPlayer::`RTTI Base Class Array'

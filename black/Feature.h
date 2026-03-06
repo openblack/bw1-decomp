@@ -42,11 +42,11 @@ public:
     // win1.41 00422140 mac 100a5490 Feature::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
     // win1.41 00422150 mac 100a54d0 Feature::CanBePickedUpByCreature(Creature *)
-    virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+    virtual bool CanBePickedUpByCreature(Creature* param_1);
     // win1.41 005276d0 mac 100d0c30 Feature::IsMushroom(Creature *)
-    virtual uint32_t IsMushroom(Creature* param_1);
+    virtual bool IsMushroom(Creature* param_1);
     // win1.41 004220e0 mac 100a5350 Feature::IsFeature(void)
-    virtual uint32_t IsFeature();
+    virtual bool IsFeature();
     // win1.41 005277d0 mac 100d0890 Feature::GetQueryFirstEnumText(void)
     virtual HELP_TEXT GetQueryFirstEnumText();
     // win1.41 00527820 mac 100d07b0 Feature::GetQueryLastEnumText(void)

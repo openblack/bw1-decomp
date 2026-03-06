@@ -37,9 +37,9 @@ public:
     // win1.41 00467e50 mac 101c2000 PlannedTownCitadelHeart::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00467ff0 mac 101bd570 PlannedTownCitadelHeart::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00467fc0 mac 101bd610 PlannedTownCitadelHeart::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00467e40 mac 101c1fb0 PlannedTownCitadelHeart::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00467e20 mac 101c1f20 PlannedTownCitadelHeart::IsWonder(void)

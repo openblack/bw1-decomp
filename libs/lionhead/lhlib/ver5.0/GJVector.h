@@ -3,6 +3,18 @@
 
 #include <stdint.h> // For uint32_t
 
+#ifdef __cplusplus
+
+template<typename T>
+class GJVector {
+    uint32_t field_0x0;
+    uint32_t field_0x4;
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+};
+
+#elif // __cplusplus
+
 /// Every template of the form
 ///   template<typename T>
 ///   class GJVector<T> {
@@ -21,5 +33,7 @@ struct GJVector__##T         \
   uint32_t field_0x8;        \
   uint32_t field_0xc;        \
 }
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_GJ_VECTOR_INCLUDED_H */

@@ -68,9 +68,9 @@ public:
     // win1.41 0052c5b0 mac 100dd9a0 FishFarm::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0052d4f0 mac 100daf80 FishFarm::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0052d3b0 mac 100db1a0 FishFarm::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0052c5a0 mac 100dd960 FishFarm::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0052c490 mac inlined FishFarm::GetArrivePos(MapCoords *)

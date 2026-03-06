@@ -63,9 +63,9 @@ public:
     // win1.41 0055cd40 mac 101515a0 StoragePit::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00733920 mac 10151890 StoragePit::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 007338d0 mac 10151930 StoragePit::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055cd30 mac 10151560 StoragePit::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055ccb0 mac inlined StoragePit::GetArrivePos(MapCoords *)
@@ -97,7 +97,7 @@ public:
     // win1.41 00732e80 mac 10152d50 StoragePit::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 0055ccd0 mac 101513a0 StoragePit::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 0055cd20 mac 10151510 StoragePit::IsResourceStore(RESOURCE_TYPE)
     virtual bool IsResourceStore(RESOURCE_TYPE param_1);
     // win1.41 00733750 mac 10151c60 StoragePit::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)

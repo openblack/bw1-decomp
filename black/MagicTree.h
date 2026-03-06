@@ -39,9 +39,9 @@ public:
     // win1.41 005fcf20 mac 103b23b0 MagicTree::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005fd1c0 mac 103b23f0 MagicTree::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 005fd110 mac 103b2510 MagicTree::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 005fcf10 mac 103b2370 MagicTree::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005fcf00 mac 103b2330 MagicTree::GetImpressiveType(void)

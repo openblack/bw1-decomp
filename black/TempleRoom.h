@@ -76,6 +76,26 @@ public:
     TempleRoom(const char* name);
 };
 
+struct InnerRoom
+{
+    uint32_t field_0x0;
+    uint32_t field_0x4;
+    uint32_t field_0x8;
+    float field_0xc;
+    uint8_t field_0x10;
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    uint32_t field_0x1c;
+    uint32_t field_0x20;
+    uint32_t field_0x24;
+    uint32_t field_0x28;
+
+    // Constructors
+
+    // win1.41 00795030 mac 1053bfb0 InnerRoom::InnerRoom(void)
+    InnerRoom();
+};
+
 #else // __cplusplus
 
 // Forward Declares

@@ -28,13 +28,6 @@ public:
     // win1.41 0062e750 mac 103a4970 MPFEDownloads::FileError(void)
     virtual void FileError(); /* 0x10 */
 
-    // Override methods
-
-    // win1.41 0062e740 mac 103a49b0 MPFEDownloads::FileCompleted(void)
-    virtual void FileCompleted();
-    // win1.41 0062e750 mac 103a4970 MPFEDownloads::FileError(void)
-    virtual void FileError();
-
     // Constructors
 
     // win1.41 0062e580 mac 103a4cc0 MPFEDownloads::MPFEDownloads(void)

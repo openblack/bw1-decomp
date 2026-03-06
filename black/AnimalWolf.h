@@ -41,9 +41,9 @@ public:
     // win1.41 004208d0 mac 10176ab0 SpellWolf::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004210b0 mac 10176d80 SpellWolf::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 004211d0 mac 10176bb0 SpellWolf::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 004208c0 mac 10176a70 SpellWolf::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0051c560 mac 100c4a10 SpellWolf::Draw(void)

@@ -55,7 +55,7 @@ public:
     // win1.41 006081e0 mac 103bb330 FieldCrop::SetLife(float)
     virtual void SetLife(float param_1);
     // win1.41 006083e0 mac 103bac40 FieldCrop::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 00608360 mac 103bae90 FieldCrop::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
     // win1.41 00608390 mac 103badc0 FieldCrop::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)

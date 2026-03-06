@@ -49,6 +49,28 @@ public:
     CreaturePlan(CREATURE_DESIRES param_1, CREATURE_ACTION param_2, CreatureBelief* param_3, CreatureBelief* param_4, CreatureBelief* param_5, float param_6);
 };
 
+struct CreaturePlanState
+{
+    CreaturePlan plans[0x28]; /* 0x0 */
+    uint32_t field_0x780;
+    uint32_t field_0x784;
+    CREATURE_DESIRES desires[0x28];
+    uint32_t field_0x788; /* 0x828 */
+    int desire_count;
+
+    // Constructors
+
+    // win1.41 004f1380 mac 10278510 CreaturePlanState::CreaturePlanState(void)
+    CreaturePlanState();
+
+    // Non-virtual methods
+
+    // win1.41 004f13e0 mac 10278490 CreaturePlanState::Initialise(CreatureMental *)
+    void Initialise(CreatureMental* mental);
+    // win1.41 004f1480 mac 10278340 CreaturePlanState::SetupRemainingGoalsToPlanFor(Creature *)
+    void SetupRemainingGoalsToPlanFor(Creature* creature);
+};
+
 // win1.41 00bdfe90 mac inlined CreatureTimeToWait::`RTTI Type Descriptor'
 // win1.41 009ab088 mac inlined CreatureTimeToWait::`RTTI Base Class Descriptor'
 // win1.41 009ab0a0 mac inlined CreatureTimeToWait::`RTTI Base Class Array'

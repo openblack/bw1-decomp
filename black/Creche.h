@@ -50,7 +50,7 @@ public:
     // win1.41 0050ab90 mac 102a3d80 Creche::ReduceLife(float, GPlayer *)
     virtual void ReduceLife(float param_1, GPlayer* param_2);
     // win1.41 0050a9d0 mac 102a3cd0 Creche::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 0050aa50 mac 102a3fd0 Creche::DeleteDependancys(void)
     virtual void DeleteDependancys();
     // win1.41 0050ab50 mac 102a3de0 Creche::MakeFunctional(void)

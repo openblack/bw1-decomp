@@ -30,9 +30,6 @@ public:
     GContainerInfo* info; /* 0x28 */
     GPlayer* owner;
 
-    // Virtual functions
-
-
     // Override methods
 
     // win1.41 0046b900 mac 100bf890 Container::_dt(void)
@@ -40,9 +37,9 @@ public:
     // win1.41 00462a50 mac 1005c760 Container::GetPlayer(void)
     virtual GPlayer* GetPlayer();
     // win1.41 0046b960 mac 100bf930 Container::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0046b920 mac 100bf9d0 Container::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
 };
 
 #else // __cplusplus

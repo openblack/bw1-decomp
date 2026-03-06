@@ -62,9 +62,9 @@ public:
     // win1.41 0052a300 mac 100d66d0 FireFly::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0052bbc0 mac 100d6850 FireFly::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0052b870 mac 100d7020 FireFly::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0052a2f0 mac 100d6690 FireFly::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0052a1d0 mac 100da180 FireFly::IsMoving( const(void))

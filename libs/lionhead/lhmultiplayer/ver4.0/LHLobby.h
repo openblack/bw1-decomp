@@ -5,6 +5,33 @@
 
 #include "LHConnection.h" /* For struct LHConnection */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LHMPServerStartInfo;
+struct LHNetEvent;
+
+struct LHLobby
+{
+    LHConnection connection; /* 0x0 */
+
+    // Non-virtual methods
+
+    // win1.41 1000cb00 mac 100f0d70 LHLobby::OpenLocalLobby(LHMPServerStartInfo *)
+    LH_RETURN OpenLocalLobby(LHMPServerStartInfo* info);
+    // win1.41 1000d440 mac 100efe80 LHLobby::ProcessLobbyPlayerList(LHNetEvent *)
+    LH_RETURN ProcessLobbyPlayerList(LHNetEvent* net_event);
+    // win1.41 005ea900 mac 100ed350 LHLobby::_dt(void)
+    void _dt();
+    // win1.41 007c549c mac 100eced0 LHLobby::Close(void)
+    void Close();
+    // win1.41 007c54a2 mac 100f05c0 LHLobby::ProcessEvent(LHNetEvent *)
+    LH_RETURN ProcessEvent(LHNetEvent* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LHMPServerStartInfo;
@@ -55,5 +82,7 @@ enum LH_RETURN __fastcall ProcessEvent__7LHLobbyFP10LHNetEvent(struct LHLobby* t
 
 // win1.41 00885740 mac 1019b710 peerStartListingGames
 void __cdecl peerStartListingGames(int** param_1, int param_2, int param_3);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_LOBBY_INCLUDED_H */

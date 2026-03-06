@@ -15,6 +15,23 @@
 
 class GameOSFile;
 
+struct TempleChallenge
+{
+    uint8_t field_0x0[0xd8];
+
+    // Constructors
+
+    // win1.41 00781210 mac 101b5750 TempleChallenge::TempleChallenge(GameOSFile &)
+    TempleChallenge(GameOSFile* param_1);
+
+    // Non-virtual methods
+
+    // win1.41 00781460 mac 101b51f0 TempleChallenge::StartScript(int)
+    void StartScript(int param_1);
+    // win1.41 007817a0 mac 101b4310 TempleChallenge::LoadChallenge(GameOSFile &)
+    void LoadChallenge(GameOSFile* param_1);
+};
+
 // win1.41 00c24e98 mac inlined ChallengeRoom::`RTTI Type Descriptor'
 // win1.41 009ba5a8 mac inlined ChallengeRoom::`RTTI Base Class Descriptor'
 // win1.41 009ba5c0 mac inlined ChallengeRoom::`RTTI Base Class Array'

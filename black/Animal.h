@@ -69,9 +69,9 @@ public:
     // win1.41 0071be10 mac 1050fbb0 Animal::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // win1.41 0041b710 mac 10165620 Animal::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0041b460 mac 101659a0 Animal::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0041b9a0 mac 101655d0 Animal::ResolveLoad(void)
     virtual void ResolveLoad();
     // win1.41 00417840 mac 1012f3a0 Animal::GetCreatureBeliefType(void)

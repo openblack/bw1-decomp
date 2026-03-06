@@ -50,9 +50,9 @@ public:
     // win1.41 00682b40 mac 103fd410 MagicFireBall::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00683320 mac 103fb710 MagicFireBall::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 006832b0 mac 103fb800 MagicFireBall::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00682b30 mac 103fd3d0 MagicFireBall::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00682a50 mac 103fcf70 MagicFireBall::IsMagicFireBall(void)

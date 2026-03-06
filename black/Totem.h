@@ -51,9 +51,9 @@ public:
     // win1.41 00561570 mac 105427e0 Totem::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00737800 mac 10542950 Totem::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 007378b0 mac 10542820 Totem::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00561560 mac 105427b0 Totem::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561530 mac 101337e0 Totem::IsCastShadowAtNight(void)

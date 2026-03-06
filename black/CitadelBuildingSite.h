@@ -45,9 +45,9 @@ public:
     // win1.41 0043d1a0 mac 100be380 CitadelBuildingSite::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0043d620 mac 100b8580 CitadelBuildingSite::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0043d5e0 mac 100b8620 CitadelBuildingSite::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0043d190 mac 100be340 CitadelBuildingSite::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0043d660 mac 100b84d0 CitadelBuildingSite::Process(void)

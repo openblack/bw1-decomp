@@ -28,6 +28,17 @@ enum CameraHelpReason
   CameraHelpReason_0x308 = 0x308,
   _CameraHelpReason_COUNT = 0x309
 };
+
+#ifdef __cplusplus
+
+class CameraHelp
+{
+public:
+    void CameraHelpCallback(CameraHelpReason reason, LHPoint* point, uint32_t param_3);
+};
+
+#else // __cplusplus
+
 static_assert(sizeof(enum CameraHelpReason) == 0x4, "Data type is of wrong size");
 
 static const char* CameraHelpReason_strs[_CameraHelpReason_COUNT] = {
@@ -812,5 +823,7 @@ static const char* CameraHelpReason_strs[_CameraHelpReason_COUNT] = {
 
 // win1.41 00449140 mac 100018f0 CameraHelp::CameraHelpCallback(CameraHelpReason, LHPoint &, unsigned long)
 void __cdecl CameraHelpCallback__10CameraHelpF16CameraHelpReasonR7LHPointUl(enum CameraHelpReason reason, struct LHPoint* point, uint32_t param_3) asm("?CameraHelpCallback@CameraHelp@@SAXW4CameraHelpReason@@AAULHPoint@@K@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CAMERA_HELP_INCLUDED_H */

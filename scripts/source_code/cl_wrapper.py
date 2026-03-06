@@ -92,7 +92,7 @@ def wrap_cl_call_with_wibo(argv):
     env = os.environ.copy()
     env["WINEPATH"] = msvcrt.as_posix()
 
-    commands = [wibo_exe.as_posix(), cl_path.as_posix(), "/nologo", f"/I{msvc_base.as_posix()}/Include"]
+    commands = ["wine", cl_path.as_posix(), "/nologo", f"/I{msvc_base.as_posix()}/Include"]
 
     args = []
     for a in argv[2:]:

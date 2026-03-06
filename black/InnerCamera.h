@@ -106,33 +106,6 @@ public:
     // win1.41 007974d0 mac 10539320 InnerCamera::__dt(void)
     virtual ~InnerCamera();
 
-    // Override methods
-
-    // win1.41 00797420 mac 10539420 InnerCamera::ReloadCamera(char *)
-    virtual void ReloadCamera(char* param_1);
-    // win1.41 00796920 mac 10539d10 InnerCamera::PreDraw(void)
-    virtual void PreDraw();
-    // win1.41 00797140 mac 10539520 InnerCamera::Init(char *)
-    virtual void Init(char* param_1);
-    // win1.41 007885f0 mac 10287a60 InnerCamera::Reinit(void)
-    virtual void Reinit();
-    // win1.41 007974a0 mac 105393b0 InnerCamera::Close(void)
-    virtual void Close();
-    // win1.41 007969e0 mac 10539ae0 InnerCamera::CalcDoorHit(InnerRoom *, LHCoord, float, bool)
-    virtual uint32_t CalcDoorHit(InnerRoom* param_1, LHCoord param_2, float param_3, bool param_4);
-    // win1.41 00796b60 mac 10539710 InnerCamera::Update(InnerRoom *, float, int, int, LHCoord const &, bool)
-    virtual void Update(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord* param_5, bool param_6);
-    // win1.41 00795ce0 mac 10539fe0 InnerCamera::UpdateMain(InnerRoom *, float, int, int, LHCoord const &, bool)
-    virtual void UpdateMain(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord* param_5, bool param_6);
-    // win1.41 007965f0 mac 10539e30 InnerCamera::UpdateState(InnerRoom *, float, int, int, LHCoord const &, bool)
-    virtual void UpdateState(InnerRoom* param_1, float param_2, int param_3, int param_4, const LHCoord* param_5, bool param_6);
-    // win1.41 00795570 mac 1053b120 InnerCamera::FocusOnSubMesh(LH3DMesh *, int, float, float, float)
-    virtual void FocusOnSubMesh(LH3DMesh* param_1, int param_2, float param_3, float param_4, float param_5);
-    // win1.41 007957c0 mac 1053ada0 InnerCamera::TriggerIntro(bool, Zoomer3d *, Zoomer3d *)
-    virtual void TriggerIntro(bool param_1, Zoomer3d* param_2, Zoomer3d* param_3);
-    // win1.41 007974d0 mac 10539320 InnerCamera::__dt(void)
-    virtual ~InnerCamera();
-
     // Constructors
 
     // win1.41 007974f0 mac 10539250 InnerCamera::InnerCamera(void)

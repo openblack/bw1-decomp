@@ -60,25 +60,6 @@ public:
     // win1.41 0040a520 mac 104e2bb0 SetupList::IsSelected(int)
     virtual bool IsSelected(int index); /* 0x34 */
 
-    // Override methods
-
-    // win1.41 0040a5c0 mac 10388e60 SetupList::Draw(bool, bool)
-    virtual void Draw(bool hovered, bool selected);
-    // win1.41 0040a110 mac 101c7fc0 SetupList::Drag(int, int)
-    virtual void Drag(int x, int y);
-    // win1.41 0040a370 mac 10478900 SetupList::MouseDown(int, int, bool)
-    virtual void MouseDown(int x, int y, bool param_3);
-    // win1.41 0040a3f0 mac 100c7610 SetupList::MouseUp(int, int, bool)
-    virtual void MouseUp(int x, int y, bool param_3);
-    // win1.41 0040a360 mac 100b7170 SetupList::Click(int, int)
-    virtual void Click(int x, int y);
-    // win1.41 00409eb0 mac 103d24f0 SetupList::KeyDown(int, int)
-    virtual void KeyDown(LHKey key, LHKeyMod mod);
-    // win1.41 0040a540 mac 1056c3d0 SetupList::~SetupList(void)
-    virtual ~SetupList();
-    // win1.41 0040a520 mac 104e2bb0 SetupList::IsSelected(int)
-    virtual bool IsSelected(int index);
-
     // Constructors
 
     // win1.41 0040a450 mac 10494bc0 SetupList::SetupList(int, int, int, int, int)

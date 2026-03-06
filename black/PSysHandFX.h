@@ -68,29 +68,6 @@ public:
     // win1.41 0068ca10 mac 1040e670 PHandFX::Release(void)
     virtual void Release();
 
-    // Override methods
-
-    // win1.41 0068d060 mac 1040e060 PHandFX::RemoveAllPermBands(void)
-    virtual void RemoveAllPermBands();
-    // win1.41 0068ce90 mac 1040e0c0 PHandFX::DoRemoveFromHandVisual(void)
-    virtual void DoRemoveFromHandVisual();
-    // win1.41 0068de20 mac 1040c300 PHandFX::AddSpellToHandVisuals(bool)
-    virtual void AddSpellToHandVisuals(bool param_1);
-    // win1.41 0068dda0 mac 1040c460 PHandFX::SetPULevel(long, bool)
-    virtual void SetPULevel(uint32_t param_1, bool param_2);
-    // win1.41 0068dd60 mac 1001b7a0 PHandFX::DrawHandFX(void)
-    virtual void DrawHandFX();
-    // win1.41 0068ccb0 mac 1040e200 PHandFX::GetPULevel(void)
-    virtual uint32_t GetPULevel();
-    // win1.41 0068df20 mac 1040c000 PHandFX::StartTribalPowerRing(TRIBE_TYPE)
-    virtual void StartTribalPowerRing(TRIBE_TYPE tribe);
-    // win1.41 0068dfa0 mac 1040bf70 PHandFX::StopTribalPowerRing(void)
-    virtual void StopTribalPowerRing();
-    // win1.41 0068dfc0 mac 1040be00 PHandFX::ReleaseOrCreateTribalPowerRing(TRIBE_TYPE)
-    virtual void ReleaseOrCreateTribalPowerRing(TRIBE_TYPE tribe);
-    // win1.41 0068ca10 mac 1040e670 PHandFX::Release(void)
-    virtual void Release();
-
     // Constructors
 
     // win1.41 0068cb10 mac 1040e240 PHandFX::PHandFX(void)

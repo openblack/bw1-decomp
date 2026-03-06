@@ -46,9 +46,9 @@ public:
     // win1.41 006e5680 mac 10138f70 Reward::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006e6c70 mac 10139000 Reward::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 006e69c0 mac 10139380 Reward::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 006e5670 mac 10138f30 Reward::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006e6f00 mac 10138fb0 Reward::ResolveLoad(void)

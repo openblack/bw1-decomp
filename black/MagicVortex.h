@@ -72,59 +72,6 @@ public:
     virtual void SetFlockParams(const MapCoords* coords, float param_2, float param_3, Flock* flock); /* 0x910 */
     virtual bool IsVillagerBeingThrownByThisVortex(Villager* villager);
 
-    // Override methods
-
-    // win1.41 005fe7f0 mac 103b7ce0 LandscapeVortex::_dt(void)
-    virtual ~LandscapeVortex();
-    // win1.41 005fe8f0 mac 103b63a0 LandscapeVortex::ToBeDeleted(int)
-    virtual void ToBeDeleted(int param_1);
-    // win1.41 00600210 mac 103b3c80 LandscapeVortex::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00600000 mac 103b4050 LandscapeVortex::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 005fd610 mac 103b93a0 LandscapeVortex::PhysicsEditorCreate(int)
-    virtual void PhysicsEditorCreate(int param_1);
-    // win1.41 005fd620 mac 103b93e0 LandscapeVortex::CanBePickedUpByCreature(Creature *)
-    virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
-    // win1.41 005fd630 mac 103b9430 LandscapeVortex::CanBeSetOnFire(Creature *)
-    virtual uint32_t CanBeSetOnFire(Creature* param_1);
-    // win1.41 005fd640 mac 103b9480 LandscapeVortex::CanBeStompedOnByCreature(Creature *)
-    virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
-    // win1.41 005fd650 mac 103b94e0 LandscapeVortex::CanBeThrownByCreature(Creature *)
-    virtual uint32_t CanBeThrownByCreature(Creature* param_1);
-    // win1.41 005fd660 mac 103b9530 LandscapeVortex::CanBePutInAStoragePit(Creature *)
-    virtual uint32_t CanBePutInAStoragePit(Creature* param_1);
-    // win1.41 005fd670 mac 103b9580 LandscapeVortex::CanBeDestroyedByStoning(Creature *)
-    virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
-    // win1.41 005fd680 mac 103b95d0 LandscapeVortex::CanBeStonedAndEatenByCreature(Creature *)
-    virtual uint32_t CanBeStonedAndEatenByCreature(Creature* param_1);
-    // win1.41 005fd690 mac 103b9630 LandscapeVortex::CanBeExaminedByCreature(Creature *)
-    virtual uint32_t CanBeExaminedByCreature(Creature* param_1);
-    // win1.41 005fd6a0 mac 103b9680 LandscapeVortex::CanBeFoughtByCreature(Creature *)
-    virtual uint32_t CanBeFoughtByCreature(Creature* param_1);
-    // win1.41 005fd6b0 mac 103b96d0 LandscapeVortex::CanActAsAContainer(Creature *)
-    virtual uint32_t CanActAsAContainer(Creature* param_1);
-    // win1.41 005ffff0 mac 103b4430 LandscapeVortex::GetScriptObjectType(void)
-    virtual uint32_t GetScriptObjectType();
-    // win1.41 005fedf0 mac 103b5d50 LandscapeVortex::Create3DObject(void)
-    virtual void Create3DObject();
-    // win1.41 005fd600 mac 103b9350 LandscapeVortex::HandShouldFeelWithMeshIntersect(void)
-    virtual uint32_t HandShouldFeelWithMeshIntersect();
-    // win1.41 005fee20 mac 103b5d10 LandscapeVortex::GetMesh( const(void))
-    virtual int GetMesh();
-    // win1.41 005ffdc0 mac 103b4900 LandscapeVortex::Draw(void)
-    virtual void Draw();
-    // win1.41 005fee30 mac 103b5770 LandscapeVortex::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
-    // win1.41 005ff300 mac 103b5710 LandscapeVortex::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
-    // win1.41 005fffa0 mac 103b4580 LandscapeVortex::IsEffectReceiver(EffectValues *)
-    virtual uint32_t IsEffectReceiver(EffectValues* param_1);
-    // win1.41 005fff80 mac 103b4620 LandscapeVortex::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
-    // win1.41 005fff90 mac 103b45d0 LandscapeVortex::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
-
     // Constructors
 
     // win1.41 005fe7a0 mac 103b69b0 LandscapeVortex::LandscapeVortex(void)
@@ -153,9 +100,9 @@ public:
     // win1.41 005fd7a0 mac 103b99f0 LandscapeVortexIn::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00600550 mac 103b3a80 LandscapeVortexIn::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00600460 mac 103b3b80 LandscapeVortexIn::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 005fd790 mac 103b99b0 LandscapeVortexIn::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005fd970 mac 103b8540 LandscapeVortexIn::GetPhysicsConstantsType(void)
@@ -187,9 +134,9 @@ public:
     // win1.41 005fddd0 mac 103b98a0 LandscapeVortexOut::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00600880 mac 103b3300 LandscapeVortexOut::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00600630 mac 103b3690 LandscapeVortexOut::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 005fddc0 mac 103b9860 LandscapeVortexOut::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005fdfe0 mac 103b77f0 LandscapeVortexOut::SetTown(Town *)

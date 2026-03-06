@@ -48,9 +48,9 @@ public:
     // win1.41 00405100 mac 10179a00 PlannedAbode::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00405860 mac 10260310 PlannedAbode::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual bool Load(GameOSFile* file);
     // win1.41 00405830 mac 10350950 PlannedAbode::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* file);
+    virtual bool Save(GameOSFile* file);
     // win1.41 004050f0 mac 10531c20 PlannedAbode::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 004061a0 mac 104333f0 PlannedAbode::IsWonder(void)

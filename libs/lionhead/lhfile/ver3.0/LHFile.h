@@ -10,10 +10,22 @@
 
 #ifdef __cplusplus
 
+enum LH_FILE_MODE
+{
+};
+
+enum LH_SEEK_MODE
+{
+};
+
 // Forward Declares
 
 struct LHSegment;
 struct LHSegmentDesc;
+
+
+typedef uint32_t (__cdecl* LHFileReadCB)(void* param_0, size_t param_1, void* param_2);
+typedef uint32_t (__cdecl* LHFileSetFilePointerCB)(uint32_t param_0, uint32_t param_1, void* param_2);
 
 // win1.41 009cb970 mac inlined LHFile::`RTTI Type Descriptor'
 // win1.41 009a7d58 mac inlined LHFile::`RTTI Base Class Descriptor'
@@ -32,8 +44,8 @@ public:
     uint32_t field_0x38;
     uint32_t field_0x3c;
     uint32_t field_0x40;
-    FuncPtr(name='LHFile__custom_read_function', call_type='__cdecl', result='uint32_t', args=['void*', 'size_t', 'void*'], arg_labels=['param_0', 'param_1', 'param_2'], decorated_name='LHFile__custom_read_function', indirection_level=1) custom_read_function;
-    FuncPtr(name='LHFile__custom_set_file_pointer_function', call_type='__cdecl', result='uint32_t', args=['uint32_t', 'uint32_t', 'void*'], arg_labels=['param_0', 'param_1', 'param_2'], decorated_name='LHFile__custom_set_file_pointer_function', indirection_level=1) custom_set_file_pointer_function;
+    LHFileReadCB custom_read_function;
+    LHFileSetFilePointerCB custom_set_file_pointer_function;
     void* custom_read_function_user_data;
     LH_FILE_MODE file_mode; /* 0x50 */
     bool segment_opened;
@@ -47,11 +59,6 @@ public:
 
     // win1.41 007bd500 mac 10168d60 LHFile::Open(LH_FILE_MODE)
     virtual uint32_t Open(LH_FILE_MODE param_1); /* 0x0 */
-
-    // Override methods
-
-    // win1.41 007bd500 mac 10168d60 LHFile::Open(LH_FILE_MODE)
-    virtual uint32_t Open(LH_FILE_MODE mode);
 
     // Constructors
 

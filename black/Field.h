@@ -86,9 +86,9 @@ public:
     // win1.41 00528080 mac 100d6570 Field::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00529d60 mac 100d1eb0 Field::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00529b10 mac 100d23a0 Field::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00528070 mac 100d6540 Field::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00529330 mac inlined Field::GetArrivePos(MapCoords *)

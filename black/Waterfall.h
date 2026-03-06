@@ -39,9 +39,9 @@ public:
     // win1.41 0055de50 mac 10153430 GWaterfall::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00734660 mac 10153470 GWaterfall::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00734650 mac 101534b0 GWaterfall::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055de40 mac 101533f0 GWaterfall::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007341b0 mac 10154110 GWaterfall::CallVirtualFunctionsForCreation(MapCoords const &)

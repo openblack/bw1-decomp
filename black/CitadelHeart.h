@@ -72,7 +72,7 @@ public:
     // win1.41 00464880 mac 101c2690 LeashObj::GetQueryLastEnumText(void)
     virtual HELP_TEXT GetQueryLastEnumText();
     // win1.41 00464850 mac 101c2590 LeashObj::ValidAsInterfaceLeashTarget(void)
-    virtual uint32_t ValidAsInterfaceLeashTarget();
+    virtual bool ValidAsInterfaceLeashTarget();
     // win1.41 00464450 mac 101c1a60 LeashObj::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
     // win1.41 00464490 mac 101c18f0 LeashObj::InterfaceTap(GInterfaceStatus *)
@@ -80,6 +80,19 @@ public:
     // win1.41 00464840 mac 101c2540 LeashObj::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 };
+
+struct TempleLeash
+{
+    int field_0x0;
+    LeashObj* leashes[LEASH_TYPE_LAST];
+
+    // Constructors
+
+    // win1.41 00464650 mac 101c1350 TempleLeash::TempleLeash(LH3DObject *, unsigned long)
+    TempleLeash(LH3DObject* param_1, uint32_t param_2);
+};
+
+typedef void (__cdecl* AddRoutePlanCB)(int, Point2D, float, int);
 
 // win1.41 009ce8a8 mac inlined CitadelHeart::`RTTI Type Descriptor'
 // win1.41 009a8f18 mac inlined CitadelHeart::`RTTI Base Class Descriptor'
@@ -125,17 +138,17 @@ public:
     // win1.41 00464bb0 mac 101c23c0 CitadelHeart::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004657f0 mac 101bf6e0 CitadelHeart::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* file);
+    virtual bool Load(GameOSFile* file);
     // win1.41 004655c0 mac 101bf9c0 CitadelHeart::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00464ba0 mac 101c2380 CitadelHeart::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00465a10 mac 101bf690 CitadelHeart::ResolveLoad(void)
     virtual void ResolveLoad();
     // win1.41 00464b80 mac 101c2250 CitadelHeart::IsCitadelHeart(void)
-    virtual uint32_t IsCitadelHeart();
+    virtual bool IsCitadelHeart();
     // win1.41 00468dc0 mac 101bbf10 CitadelHeart::CreateBuildingSite(void)
-    virtual uint32_t CreateBuildingSite();
+    virtual bool CreateBuildingSite();
     // win1.41 004680b0 mac 101bd410 CitadelHeart::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 00464b20 mac inlined CitadelHeart::SetSpecularColor(LH3DColor)
@@ -155,7 +168,7 @@ public:
     // win1.41 004675a0 mac 101be430 CitadelHeart::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
     // win1.41 00464b40 mac 101be8a0 CitadelHeart::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 00467b60 mac 101bdef0 CitadelHeart::GetPhysicsConstantsType(void)
     virtual uint32_t GetPhysicsConstantsType();
     // win1.41 00467b70 mac 101bde40 CitadelHeart::SetUpPhysOb(PhysOb *)
@@ -167,7 +180,7 @@ public:
     // win1.41 00467bb0 mac 101bdc10 CitadelHeart::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 004680d0 mac 101bceb0 CitadelHeart::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
+    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, AddRoutePlanCB param_4);
     // win1.41 004680c0 mac 101bd390 CitadelHeart::GetRoutePlanRadius(Creature *)
     virtual float GetRoutePlanRadius(Creature* param_1);
     // win1.41 00464b50 mac 101c2180 CitadelHeart::GetObjectCollide(void)

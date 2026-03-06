@@ -63,6 +63,16 @@ public:
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
+struct PlayerInfo
+{
+    uint8_t field_0x0[0x8];
+
+    // Constructors
+
+    // win1.41 00648d50 mac 10375150 PlayerInfo::PlayerInfo(void)
+    PlayerInfo();
+};
+
 #else // __cplusplus
 
 // Forward Declares

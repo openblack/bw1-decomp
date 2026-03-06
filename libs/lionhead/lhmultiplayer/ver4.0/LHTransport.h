@@ -47,6 +47,16 @@ public:
     LH_RETURN OpenConnectionToTransport(LHTransport* param_1, void (__cdecl*)(void *) param_2, void* param_3);
 };
 
+struct LHTransportRemote
+{
+    uint8_t field_0x0;
+
+    // Non-virtual methods
+
+    // win1.41 10023880 mac 101178b0 LHTransportRemote::RemoteTransportThread(void)
+    void RemoteTransportThread();
+};
+
 #else // __cplusplus
 
 // Forward Declares

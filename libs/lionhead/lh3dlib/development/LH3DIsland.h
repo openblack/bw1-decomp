@@ -5,6 +5,34 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LH3DColor;
+struct LH3DMapCoords;
+struct LH3DMaterial;
+struct LH3DTexture;
+
+struct LandCell
+{
+    uint8_t r; /* 0x0 */
+    uint8_t g;
+    uint8_t b;
+    uint8_t luminosity;
+    uint8_t altitude;
+    uint8_t saveColor;
+    uint8_t properties;
+    uint8_t flags;
+
+    // Non-virtual methods
+
+    // win1.41 inlined mac 1000cd10 LandCell::IsWater(void)
+    bool IsWater();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LH3DColor;
@@ -68,5 +96,7 @@ float __fastcall GetAltitudeAndSetColorSpecular__10LH3DIslandFRC13LH3DMapCoordsP
 bool __stdcall Release__10LH3DIslandFv(void);
 // win1.41 007ff2d0 mac 10022e10 LH3DIsland::PreDraw(void)
 void __cdecl PreDraw__10LH3DIslandFv(void) asm("?PreDraw@LH3DIsland@@SAXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_ISLAND_INCLUDED_H */

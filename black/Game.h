@@ -12,7 +12,7 @@
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "CreatureDatabase.h" /* For struct CreatureDatabase */
-#include "Data.h" /* For struct GData */
+#include "black/Data.h" /* For struct GData */
 #include "GameThing.h" /* For struct GameThing */
 #include "GlobalGameLists.h" /* For struct GlobalGameLists */
 #include "KeyBuffer.h" /* For struct GKeyBuffer */
@@ -181,7 +181,7 @@ public:
     // win1.41 0054b9c0 mac 10496160 GGame::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00554830 mac 10354cc0 GGame::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00554090 mac 104935a0 GGame::Save(GameOSFile &)
     virtual int Save(GameOSFile* file);
     // win1.41 0054b9b0 mac 10512c00 GGame::GetSaveType(void)

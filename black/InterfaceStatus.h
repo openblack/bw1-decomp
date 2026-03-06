@@ -86,9 +86,9 @@ public:
     // win1.41 005db980 mac 1036be40 GInterfaceStatus::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005dcdc0 mac 1036c160 GInterfaceStatus::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 005dca50 mac 1036c810 GInterfaceStatus::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 005db970 mac 1036be00 GInterfaceStatus::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005dd130 mac 1036c080 GInterfaceStatus::SaveExtraData(GameOSFile &)

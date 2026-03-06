@@ -27,6 +27,15 @@ struct LH3DObjectHair;
 class LHFile;
 struct LHMatrix;
 
+struct Morphable_field_0x4314_t
+{
+  uint32_t field_0x0;
+  uint32_t field_0x4;
+  uint32_t field_0x8;
+  uint32_t field_0xc;
+  struct Morphable_field_0x4314_t* next;  /* 0x10 */
+};
+
 // win1.41 009cecb0 mac inlined Morphable::`RTTI Type Descriptor'
 // win1.41 009a9288 mac inlined Morphable::`RTTI Base Class Descriptor'
 // win1.41 009a9250 mac inlined Morphable::`RTTI Base Class Array'
@@ -109,17 +118,6 @@ public:
     virtual bool AddForDrawing();
     virtual bool LoadBinary(char* param_2, int param_3); /* 0x20 */
     virtual void SaveBinary(char* buffer);
-
-    // Override methods
-
-    // win1.41 00617eb0 mac 10107d70 Morphable::SetAnimTime(long, long)
-    virtual void SetAnimTime(int param_1, int param_2);
-    // win1.41 00618360 mac 101073d0 Morphable::LoadBase(char *)
-    virtual uint32_t LoadBase(char* param_1);
-    // win1.41 00619100 mac 101063f0 Morphable::MorphAnims(void)
-    virtual void MorphAnims();
-    // win1.41 00619500 mac 101061c0 Morphable::MorphTexture(void)
-    virtual void MorphTexture();
 
     // Static methods
 

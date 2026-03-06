@@ -27,13 +27,6 @@ public:
     // win1.41 0062e510 mac 103a3520 MPFEDatabase::DatabaseComplete(void)
     virtual void DatabaseComplete();
 
-    // Override methods
-
-    // win1.41 0062e4f0 mac 103a35b0 MPFEDatabase::DatabaseError(void)
-    virtual void DatabaseError();
-    // win1.41 0062e510 mac 103a3520 MPFEDatabase::DatabaseComplete(void)
-    virtual void DatabaseComplete();
-
     // Constructors
 
     // win1.41 0062e100 mac 103a3ce0 MPFEDatabase::MPFEDatabase(void)

@@ -56,9 +56,9 @@ public:
     // win1.41 0055e140 mac 1013e6d0 Scaffold::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006ea3d0 mac 10140100 Scaffold::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 006ea240 mac 10140340 Scaffold::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055e130 mac 1013e690 Scaffold::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006ea560 mac 1013ffc0 Scaffold::ResolveLoad(void)

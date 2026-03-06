@@ -85,23 +85,6 @@ public:
     virtual ALIGNMENT_TYPE GetAlignmentType();
     // win1.41 004012b0 mac 100627a0 GObjectInfo::GetFoodType(void) const
     virtual FOOD_TYPE GetFoodType();
-
-    // Override methods
-
-    // win1.41 006363c0 mac 101cbbe0 GObjectInfo::_dt(void)
-    virtual ~GObjectInfo();
-    // win1.41 004012c0 mac 10511e08 GObjectInfo::GetDebugText(void)
-    virtual const char* GetDebugText();
-    // win1.41 0042b380 mac 104cc120 GObjectInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
-    // win1.41 0042b370 mac 1016ddf0 GObjectInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
-    // win1.41 00401290 mac 1016e3a0 GObjectInfo::GetMesh(TRIBE_TYPE) const
-    virtual uint32_t GetMesh(TRIBE_TYPE tribe);
-    // win1.41 004012a0 mac 1016de30 GObjectInfo::GetAlignmentType(void) const
-    virtual ALIGNMENT_TYPE GetAlignmentType();
-    // win1.41 004012b0 mac 100627a0 GObjectInfo::GetFoodType(void) const
-    virtual FOOD_TYPE GetFoodType();
 };
 
 #else // __cplusplus

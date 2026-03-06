@@ -257,9 +257,9 @@ public:
     // win1.41 0071bd50 mac 1050fcd0 Creature::GetSampleForAttack(void)
     virtual uint32_t GetSampleForAttack();
     // win1.41 004e5ff0 mac 1026b130 Creature::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 004e4ea0 mac 1026c9c0 Creature::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 004740c0 mac 101e33f0 Creature::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 004e6ab0 mac 1026aa90 Creature::ResolveLoad(void)
@@ -612,9 +612,9 @@ public:
     // win1.41 0050b360 mac 100c0320 Creed::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0050b4e0 mac 100c03b0 Creed::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0050b4c0 mac 100c0410 Creed::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0050b350 mac 100c02f0 Creed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0050b4a0 mac 100c0470 Creed::SetScale(float)

@@ -40,9 +40,9 @@ public:
     // win1.41 00426f90 mac 101791e0 GAudio::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00428480 mac 10179710 GAudio::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00428310 mac 10179bd0 GAudio::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00426f80 mac 101791a0 GAudio::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

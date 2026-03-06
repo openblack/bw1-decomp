@@ -31,6 +31,22 @@ class Object;
 class SpellSeedGraphic;
 class WorshipSite;
 
+struct Q29SpellIcon13TChargingData
+{
+    uint8_t field_0x0;
+    LightSheet light_sheet;
+    uint32_t field_0x64;
+    uint32_t field_0x68;
+    uint32_t field_0x6c;
+    int field_0x70;
+    uint32_t field_0x74;
+
+    // Constructors
+
+    // win1.41 00726690 mac 10524570 SpellIcon::TChargingData::TChargingData(void)
+    Q29SpellIcon13TChargingData();
+};
+
 // win1.41 00beceb0 mac inlined SpellIcon::`RTTI Type Descriptor'
 // win1.41 009ae7f8 mac inlined SpellIcon::`RTTI Base Class Descriptor'
 // win1.41 009ae9a8 mac inlined SpellIcon::`RTTI Base Class Array'
@@ -62,9 +78,9 @@ public:
     // win1.41 0055d470 mac 10526050 SpellIcon::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00727a00 mac 10521bb0 SpellIcon::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00727940 mac 10521ce0 SpellIcon::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055d460 mac 10526010 SpellIcon::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055d420 mac 10525ee0 SpellIcon::GetCreatureBeliefType(void)

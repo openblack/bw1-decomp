@@ -30,9 +30,9 @@ public:
     // win1.41 00429310 mac 1017c980 ThingMusicInfo::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00429ae0 mac 1017c9c0 ThingMusicInfo::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00429950 mac 1017cc10 ThingMusicInfo::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00429300 mac 1017c940 ThingMusicInfo::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

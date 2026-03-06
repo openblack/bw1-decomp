@@ -3,6 +3,30 @@
 
 #include <assert.h> /* For static_assert */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LHPoint;
+
+struct LHMatrix
+{
+    float m[0xc]; /* 0x0 */
+
+    // Non-virtual methods
+
+    // win1.41 00403500 mac 100417d0 LHMatrix::SetIdentityMatrix(void)
+    void SetIdentityMatrix();
+    // win1.41 00403530 mac inlined LHMatrix::Translation(const LHPoint&)
+    void Translation(const LHPoint* translation);
+    // win1.41 00403570 mac inlined LHMatrix::PostTranslation(const LHPoint&)
+    void PostTranslation(const LHPoint* translation);
+    // win1.41 007fb290 mac 1004f05c LHMatrix::SetInverse(LHMatrix const &)
+    void SetInverse(const LHMatrix* r);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LHPoint;
@@ -26,5 +50,7 @@ void __fastcall PostTranslation__8LHMatrixFRC7LHPoint(struct LHMatrix* this, str
 void __fastcall SetIdentity__8LHMatrixFv(struct LHMatrix* this) asm("?SetIdentity@LHMatrix@@QAEXXZ");
 // win1.41 007fb290 mac 1004f05c LHMatrix::SetInverse(LHMatrix const &)
 void __fastcall SetInverse__8LHMatrixFRC8LHMatrix(struct LHMatrix* this, const void* edx, const struct LHMatrix* r) asm("?SetInverse@LHMatrix@@QAEXAAU1@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_MATRIX_INCLUDED_H */

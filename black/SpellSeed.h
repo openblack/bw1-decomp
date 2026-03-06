@@ -45,9 +45,9 @@ public:
     // win1.41 00727fb0 mac 1052cdf0 SpellSeed::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00729fb0 mac 10527d30 SpellSeed::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00729ca0 mac 10528230 SpellSeed::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00727fa0 mac 1052cdb0 SpellSeed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00727f70 mac 1052cce0 SpellSeed::GetCreatureBeliefType(void)

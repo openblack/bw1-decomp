@@ -15,6 +15,63 @@
 
 #ifdef __cplusplus
 
+struct AttributeTest
+{
+    LHLinkedList__CreatureLearningEpisode episodes; /* 0x0 */
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+    uint32_t field_0x10;
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    ATTRIBUTE_TYPE attribute_stack[0x18];
+    uint32_t field_0x7c;
+    uint32_t field_0x80;
+    uint32_t field_0x84;
+    uint32_t field_0x88;
+    uint32_t field_0x8c;
+    uint32_t field_0x90;
+
+    // Constructors
+
+    // win1.41 004d4c20 mac 1024fa20 AttributeTest::AttributeTest(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
+    AttributeTest(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
+};
+
+struct DecisionTree
+{
+    DecisionTreeNode root; /* 0x0 */
+
+    // Constructors
+
+    // win1.41 004d4380 mac 102506c0 DecisionTree::DecisionTree(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
+    DecisionTree(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
+};
+
+struct DecisionTreeAgenda
+{
+    DECISION_TREE_TYPE tree_type; /* 0x0 */
+    CREATURE_DESIRES creature_desires;
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+    uint32_t field_0x10;
+    DecisionTree trees[0x2];
+
+    // Constructors
+
+    // win1.41 004d43f0 mac 102505c0 DecisionTreeAgenda::DecisionTreeAgenda(DECISION_TREE_TYPE, CREATURE_DESIRES)
+    DecisionTreeAgenda(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire);
+};
+
+struct DecisionTreeCollection
+{
+    DecisionTreeAgendas agendas[_LESSON_TYPE_COUNT]; /* 0x0 */
+
+    // Constructors
+
+    // win1.41 004d7220 mac 1024c150 DecisionTreeCollection::DecisionTreeCollection(void)
+    DecisionTreeCollection();
+};
+
 // win1.41 009dd3b8 mac inlined Attribute::`RTTI Type Descriptor'
 // win1.41 009a9ff0 mac inlined Attribute::`RTTI Base Class Descriptor'
 // win1.41 009aa058 mac inlined Attribute::`RTTI Base Class Array'

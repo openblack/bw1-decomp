@@ -28,13 +28,6 @@ public:
     // win1.41 007bc730 mac 10164b40 LHOSFile::Open(const char*, LH_FILE_MODE)
     virtual uint32_t Open(const char* path, LH_FILE_MODE mode);
 
-    // Override methods
-
-    // win1.41 007bc660 mac 10164ef0 LHOSFile::~LHOSFile(bool)
-    virtual ~LHOSFile();
-    // win1.41 007bc730 mac 10164b40 LHOSFile::Open(const char*, LH_FILE_MODE)
-    virtual uint32_t Open(const char* path, LH_FILE_MODE mode);
-
     // Static methods
 
     // win1.41 007bc6a0 mac 10164e30 LHOSFile::Exists(const char*)
@@ -48,7 +41,7 @@ public:
     // Non-virtual Destructors
 
     // win1.41 007bc680 mac inlined LHOSFile::~LHOSFile(void)
-    ~LHOSFile();
+    //~LHOSFile();
 
     // Non-virtual methods
 

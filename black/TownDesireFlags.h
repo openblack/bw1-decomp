@@ -46,9 +46,9 @@ public:
     // win1.41 0055dad0 mac 1055c0c0 TownDesireFlags::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00747030 mac 1055c440 TownDesireFlags::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00746f10 mac 1055c600 TownDesireFlags::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055dac0 mac 1055c080 TownDesireFlags::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055daa0 mac 1055bff0 TownDesireFlags::IsTownDesireFlag(void)

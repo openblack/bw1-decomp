@@ -52,9 +52,9 @@ public:
     // win1.41 0071be30 mac 1050fb30 DeadTree::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // win1.41 00511630 mac 100c1a50 DeadTree::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 005115c0 mac 100c1b30 DeadTree::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 005109e0 mac 100c4120 DeadTree::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005109d0 mac inlined DeadTree::IsRock_0(void)

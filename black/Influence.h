@@ -48,9 +48,9 @@ public:
     // win1.41 0055ec60 mac 100fbe70 InfluenceRing::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005cdd40 mac 100fbeb0 InfluenceRing::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 005cdc60 mac 100fc000 InfluenceRing::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055ec50 mac 100fbe30 InfluenceRing::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055ebf0 mac 100fbcc0 InfluenceRing::SetPos(MapCoords const &)

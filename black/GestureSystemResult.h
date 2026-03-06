@@ -4,6 +4,25 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
 
+#ifdef __cplusplus
+
+struct GestureSystemResult
+{
+    uint8_t field_0x0;
+
+    // Constructors
+
+    // win1.41 0054bb90 mac inlined GestureSystemResult::GestureSystemResult(void)
+    GestureSystemResult();
+
+    // Non-virtual methods
+
+    // win1.41 inlined mac 100938a0 GestureSystemResult::SetToZero(void)
+    void SetToZero();
+};
+
+#else // __cplusplus
+
 struct GestureSystemResult
 {
   uint8_t field_0x0;
@@ -19,5 +38,7 @@ struct GestureSystemResult* __fastcall __ct__19GestureSystemResultFv(struct Gest
 
 // win1.41 inlined mac 100938a0 GestureSystemResult::SetToZero(void)
 void __fastcall SetToZero__19GestureSystemResultFv(struct GestureSystemResult* this) asm("?SetToZero@GestureSystemResult@@QAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_GESTURE_SYSTEM_RESULT_INCLUDED_H */

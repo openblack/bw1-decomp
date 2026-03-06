@@ -47,11 +47,6 @@ public:
     virtual void SetAlpha(uint8_t value);
     virtual LHPoint* GetOrigin(); /* 0x130 */
 
-    // Override methods
-
-    // win1.41 0055ee30 mac 101109b0 PSysInterface::_dt(void)
-    virtual ~PSysInterface();
-
     // Static methods
 
     // win1.41 0068e910 mac 100053c0 PSysInterface::Create(Spell *, PARTICLE_TYPE, LHPoint const &, LHPoint const &, float, PSysInterface::NET_GAME_TYPE)

@@ -60,9 +60,9 @@ public:
     // win1.41 0055dba0 mac 1055bf20 TownCentre::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00744880 mac 10559dc0 TownCentre::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00744830 mac 10559e60 TownCentre::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055db90 mac 1055bee0 TownCentre::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007448c0 mac 10559d40 TownCentre::ResolveLoad(void)
@@ -90,7 +90,7 @@ public:
     // win1.41 00743cf0 mac 1055b3c0 TownCentre::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
     // win1.41 0055db20 mac 1055bd00 TownCentre::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 0055db10 mac 1055bcb0 TownCentre::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
     // win1.41 00743bc0 mac 1055b860 TownCentre::InteractsWithPhysicsObjects(void)

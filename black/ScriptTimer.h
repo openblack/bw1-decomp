@@ -31,9 +31,9 @@ public:
     // win1.41 00561320 mac 10506350 ScriptTimer::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007117b0 mac 10506390 ScriptTimer::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00711700 mac 105064b0 ScriptTimer::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00561310 mac 10506310 ScriptTimer::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561300 mac 105062c0 ScriptTimer::IsDeletedWhenReleasedFromScript(void)

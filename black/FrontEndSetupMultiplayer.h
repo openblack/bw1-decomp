@@ -21,7 +21,7 @@ public:
     // Override methods
 
     // win1.41 00546280 mac 105cd3c0 SetupLandscapeBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback* param_3);
     // win1.41 00546d10 mac 105cd360 SetupLandscapeBox::Destroy(void)
     virtual void Destroy();
     // win1.41 0054a210 mac 105cdd70 SetupLandscapeBox::InitSubDialogs(void)

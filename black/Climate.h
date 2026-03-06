@@ -36,9 +36,9 @@ public:
     // win1.41 0055ded0 mac 1059ef50 GClimate::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007736e0 mac 1059ef90 GClimate::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00773320 mac 1059f860 GClimate::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055dec0 mac 1059ef10 GClimate::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

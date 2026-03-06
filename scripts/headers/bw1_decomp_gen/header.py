@@ -9,7 +9,7 @@ from inflection import underscore
 from pathlib import Path
 
 from csnake_overrides import CSnakeFuncPtr
-from structs import Composite, RTTIClass
+from structs import Composite, RTTIClass, Struct
 from vftable import Vftable
 from functions import FuncPtr
 from utils import partition, extract_template_type, LH_COLLECTION_TEMPLATES, CONTAINER_DECLARATION_MACROS, FUNDAMENTAL_TYPES
@@ -48,6 +48,7 @@ C_STDLIB_HEADER_IMPORT_MAP = {
     "uint32_t": "stdint.h",
     "uint64_t": "stdint.h",
     "uintptr_t": "stdint.h",
+    "wchar_t": "wchar.h",
     "char16_t": "uchar.h",
     "IDirectDraw7": "ddraw.h",
     "IDirectDrawSurface7": "ddraw.h",
@@ -360,6 +361,9 @@ class Header:
                 vftable = vftable_by_name.get(vftable_name)
                 s.to_code_cplusplus(cw, vftable, structs_by_name)
                 cw.add_line()
+            elif isinstance(s, Struct) and s.all_methods:
+                s.to_code_cplusplus(cw)
+                cw.add_line()
 
     def to_code_inner_c(self, cw: csnake.CodeWriter):
         self.to_code_forward_declares(cw)
@@ -371,7 +375,8 @@ class Header:
         cw.add_define(guard)
         cw.add_line()
 
-        if any(isinstance(s, RTTIClass) for s in self.structs):
+        if any(isinstance(s, RTTIClass) for s in self.structs) or \
+                any(isinstance(s, Struct) and s.all_methods for s in self.structs):
             self.to_code_includes(cw)
             cw.add_line("#ifdef __cplusplus")
             cw.add_line()

@@ -6,6 +6,41 @@
 
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct Point2D */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct RPAvoid;
+
+struct RouteNode
+{
+    Point2D start; /* 0x0 */
+    Point2D end;
+    int field_0x10;
+    int field_0x14;
+    uint32_t field_0x18;
+    int field_0x1c;
+    float field_0x20;
+    RouteNode* next;
+    RouteNode* prev;
+
+    // Constructors
+
+    // win1.41 00869100 mac 100a8ca0 RouteNode::RouteNode()
+    RouteNode(RouteNode* param_1);
+    // win1.41 00869150 mac 100a8c10 RouteNode::RouteNode(RouteNode *, int, Point2D const &, Point2D const &, int, int)
+    RouteNode(RouteNode* param_1, int param_2, Point2D* param_3, Point2D* param_4, int param_5, int param_6);
+
+    // Non-virtual methods
+
+    // win1.41 008691a0 mac 100a8ba0 RouteNode::GetLength(RPAvoid* )
+    float GetLength(RPAvoid* target);
+    // win1.41 008691c0 mac 100a89f0 RouteNode::GetArcLength(RPAvoid* )
+    float GetArcLength(RPAvoid* target);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct RPAvoid;
@@ -37,5 +72,7 @@ struct RouteNode* __fastcall __ct__9RouteNodeFP9RouteNodeiRC7Point2DRC7Point2Dii
 float __fastcall GetLength__9RouteNodeFP7RPAvoid(struct RouteNode* this, const void* edx, struct RPAvoid* target) asm("?GetLength@RouteNode@@QAEMPAURPAvoid@@@Z");
 // win1.41 008691c0 mac 100a89f0 RouteNode::GetArcLength(RPAvoid* )
 float __fastcall GetArcLength__9RouteNodeFP7RPAvoid(struct RouteNode* this, const void* edx, struct RPAvoid* target) asm("?GetArcLength@RouteNode@@QAEMPAURPAvoid@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ROUTE_NODE_INCLUDED_H */

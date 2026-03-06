@@ -50,9 +50,9 @@ public:
     // win1.41 0055d160 mac 105263d0 OneOffSpellSeed::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0072aa20 mac 10526a70 OneOffSpellSeed::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0072a930 mac 10526be0 OneOffSpellSeed::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055d150 mac 10526390 OneOffSpellSeed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0072ac50 mac 10526640 OneOffSpellSeed::GetOverwritePickUpToolTip(void)

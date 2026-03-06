@@ -83,9 +83,9 @@ public:
     // win1.41 0077cd70 mac 105aef50 WorshipSite::GetShowNeedsPos(unsigned long, MapCoords *)
     virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
     // win1.41 0077d700 mac 105acc40 WorshipSite::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0077d2f0 mac 105ad890 WorshipSite::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055dcd0 mac 105b3fc0 WorshipSite::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0077daf0 mac 105acbf0 WorshipSite::ResolveLoad(void)

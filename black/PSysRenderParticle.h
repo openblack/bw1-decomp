@@ -34,9 +34,9 @@ public:
     // win1.41 0055ef60 mac 10423970 RenderParticle::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00694fb0 mac 1041cb70 RenderParticle::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 006cbad0 mac 10484260 RenderParticle::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055ef50 mac 10423930 RenderParticle::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

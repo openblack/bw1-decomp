@@ -25,6 +25,20 @@ struct MapCoords;
 class Object;
 class WorshipSite;
 
+struct Q212WorshipTotem13TChargingData
+{
+    uint8_t field_0x0;
+    LightSheet light_sheet;
+    uint32_t field_0x64;
+    uint32_t field_0x68;
+    uint32_t field_0x6c;
+
+    // Constructors
+
+    // win1.41 00780af0 mac inlined WorshipTotem::TChargingData::TChargingData(void)
+    Q212WorshipTotem13TChargingData();
+};
+
 // win1.41 009c8ee8 mac inlined WorshipTotem::`RTTI Type Descriptor'
 // win1.41 009ba510 mac inlined WorshipTotem::`RTTI Base Class Descriptor'
 // win1.41 009ba528 mac inlined WorshipTotem::`RTTI Base Class Array'
@@ -47,9 +61,9 @@ public:
     // win1.41 00780800 mac 105b7760 WorshipTotem::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00780f10 mac 105b7910 WorshipTotem::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00780f90 mac 105b7820 WorshipTotem::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 007807f0 mac 105b7720 WorshipTotem::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00780f00 mac 105b7a00 WorshipTotem::ResolveLoad(void)
@@ -75,7 +89,7 @@ public:
     // win1.41 00780ab0 mac 105b81d0 WorshipTotem::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
     // win1.41 007807d0 mac 105b7690 WorshipTotem::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 00780790 mac 105b7570 WorshipTotem::IsSpellSeedReturnPoint( const(void))
     virtual bool IsSpellSeedReturnPoint();
     // win1.41 007807a0 mac 105b75c0 WorshipTotem::IsEffectReceiver(EffectValues *)

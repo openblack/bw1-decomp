@@ -44,9 +44,9 @@ public:
     // win1.41 0072cb10 mac 10533f80 PhysicalShield::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0072c410 mac 10530bd0 PhysicalShield::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0072c700 mac 10530750 PhysicalShield::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0072cb00 mac 10533f40 PhysicalShield::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0072d7f0 mac 1052ee20 PhysicalShield::GetImpressiveValue(Living *, Reaction *)
@@ -60,7 +60,7 @@ public:
     // win1.41 0072ccb0 mac 10530110 PhysicalShield::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 0072ce50 mac 1052fe80 PhysicalShield::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 0072d170 mac 1052f8a0 PhysicalShield::SetDying(void)
     virtual bool SetDying();
     // win1.41 0072cc80 mac 10530260 PhysicalShield::IsEffectReceiver(EffectValues *)

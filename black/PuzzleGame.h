@@ -68,9 +68,9 @@ public:
     // win1.41 00561b60 mac 10133a40 PuzzleGame::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006d9d40 mac 10126ae0 PuzzleGame::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 006d96c0 mac 10127440 PuzzleGame::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00561b50 mac 10133a00 PuzzleGame::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561b10 mac inlined PuzzleGame::GetPos( const(MapCoords *))
@@ -169,9 +169,9 @@ public:
     // win1.41 00422190 mac inlined ChessPion::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00422bc0 mac inlined ChessPion::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00422aa0 mac inlined ChessPion::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00422180 mac inlined ChessPion::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00422770 mac inlined ChessPion::Draw(void)
@@ -402,9 +402,9 @@ public:
     // win1.41 00561910 mac 10131890 PuzzleGrain::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006dbe40 mac 10123450 PuzzleGrain::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 006dbeb0 mac 10123370 PuzzleGrain::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00561900 mac 10131850 PuzzleGrain::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561920 mac 101318d0 PuzzleGrain::CanBeEatenByCreature(Creature *)
@@ -548,9 +548,9 @@ public:
     // win1.41 00561ae0 mac 10131770 PuzzleMobileObject::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006dbf20 mac 10123290 PuzzleMobileObject::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 006dbf80 mac 101231b0 PuzzleMobileObject::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00561ad0 mac 10131730 PuzzleMobileObject::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006dc510 mac 10122590 PuzzleMobileObject::GetImmersionTexture(void)
@@ -638,9 +638,9 @@ public:
     // win1.41 00561890 mac 101335e0 PuzzleTotem::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006da740 mac 10126150 PuzzleTotem::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 006da7f0 mac 10126020 PuzzleTotem::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00561880 mac 101335a0 PuzzleTotem::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006da710 mac 10126270 PuzzleTotem::SetMaxHeight(float)

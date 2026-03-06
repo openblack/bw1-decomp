@@ -50,6 +50,23 @@ class TownDesireFlags;
 class Workshop;
 class WorshipSite;
 
+struct PlayerTownInteract
+{
+    uint32_t field_0x0;
+    float field_0x4;
+    float field_0x8;
+    uint32_t field_0xc;
+    float field_0x10;
+    uint32_t field_0x14[0xa];
+    EffectValues effect_values; /* 0x3c */
+    uint32_t field_0x7c;
+
+    // Constructors
+
+    // win1.41 0073e040 mac 1054fa10 PlayerTownInteract::PlayerTownInteract(void)
+    PlayerTownInteract();
+};
+
 // win1.41 009cfa40 mac inlined Town::`RTTI Type Descriptor'
 // win1.41 009b9a90 mac inlined Town::`RTTI Base Class Descriptor'
 // win1.41 009b9aa8 mac inlined Town::`RTTI Base Class Array'
@@ -162,9 +179,9 @@ public:
     // win1.41 007392a0 mac 105594a0 Town::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0073f450 mac 1054aa80 Town::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0073ed30 mac 1054c770 Town::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00739290 mac 10559470 Town::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007412e0 mac 10547990 Town::ResolveLoad(void)

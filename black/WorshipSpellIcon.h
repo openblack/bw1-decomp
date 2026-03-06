@@ -66,9 +66,9 @@ public:
     // win1.41 0077f100 mac 105b4440 WorshipSpellIcon::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007801f0 mac 105b4690 WorshipSpellIcon::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0077ff80 mac 105b4bc0 WorshipSpellIcon::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0077f0f0 mac 105b4400 WorshipSpellIcon::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0077f0a0 mac 10381d20 WorshipSpellIcon::GetWorshipSite(void)

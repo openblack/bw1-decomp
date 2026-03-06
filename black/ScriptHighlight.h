@@ -46,9 +46,9 @@ public:
     // win1.41 00709860 mac 104fa730 ScriptHighlight::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0070a8f0 mac 104fb050 ScriptHighlight::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0070a760 mac 104fb290 ScriptHighlight::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00709850 mac 104fa6f0 ScriptHighlight::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00709760 mac 104fa210 ScriptHighlight::PhysicsEditorCreate(int)

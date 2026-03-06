@@ -40,9 +40,9 @@ public:
     // win1.41 00534d60 mac 100ef030 GFootpathNode::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00538c10 mac 100e86f0 GFootpathNode::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00538d70 mac 100e83f0 GFootpathNode::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00534d50 mac 100eeff0 GFootpathNode::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00538ea0 mac 100e83b0 GFootpathNode::ResolveLoad(void)

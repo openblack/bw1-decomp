@@ -12,6 +12,66 @@
 #include "GatheringText.h" /* For enum TEXTJUSTIFY */
 #include "SetupRect.h" /* For struct SetupRect */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct GatheringText;
+struct LH3DMaterial;
+
+struct SetupThing
+{
+    LH3DMaterial* ui_shadow_material; /* 0x0 */
+    uint8_t field_0x4[0x34];
+    SetupRect SetupRect_00c4ccb8; /* 0x38 */
+    uint8_t field_0x48[0x10];
+    LH3DColor LH3DColor_ARRAY_00c4ccd8[0x5]; /* 0x58 */
+    uint8_t field_0x6c[0xc];
+    LH3DColor LH3DColor_00c4ccf8; /* 0x78 */
+    uint8_t field_0x7c[0x4];
+    bool32_t DAT_00c4cd00; /* 0x80 */
+    uint8_t field_0x84[0x18];
+    uint8_t SetupBox; /* 0x9c */
+    uint8_t field_0xa0[0xc];
+    GatheringText* PTR_00c4cd2c; /* 0xac */
+    char16_t WCHAR_00c4cd30[0x4]; /* 0xb0 */
+
+    // Static methods
+
+    // win1.41 00411690 mac 10135530 SetupThing::GetTextHeight(int, int, int, int, int, bool, wchar_t *, int)
+    static float GetTextHeight(int param_1, int param_2, int param_3, int param_4, int param_5, bool param_6, const char16_t* text, int param_8);
+    // win1.41 00411720 mac 1016ab60 SetupThing::GetTextWidth(wchar_t *, float, int, float)
+    static float GetTextWidth(const char16_t* text, float size, int param_3, float param_4);
+    // win1.41 00411750 mac 1016d490 SetupThing::DrawTextWrap(int, int, int, int, int, bool, wchar_t *, int, LH3DColor *, bool, bool)
+    static float DrawTextWrap(int x_min, int y_min, int x_max, int y_max, int param_5, bool param_6, const char16_t* text, int param_8, const LH3DColor* color, bool param_10, bool param_11);
+    // win1.41 004119b0 mac 103e1a40 SetupThing::DrawText(int, int, int, TEXTJUSTIFY, wchar_t *, int, LH3DColor *, int)
+    static float DrawText(int x, int y, int width, TEXTJUSTIFY justify, const char16_t* text, int size, const LH3DColor* p_color, int param_8);
+    // win1.41 00411b40 mac 103e4a50 SetupThing::adjust(int &, int &)
+    static float adjust(int* x, int* y);
+    // win1.41 00411c30 mac 104f62a0 SetupThing::unadjust(int &, int &)
+    static float unadjust(int* x, int* y);
+    // win1.41 00411e70 mac 104f2b70 SetupThing::adjusty(int)
+    static int adjusty(int y);
+    // win1.41 00412030 mac 10174f00 SetupThing::unadjustsize(float)
+    static float unadjustsize(float size);
+    // win1.41 00412150 mac 105882d0 SetupThing::DrawBigButton(int, int, bool, bool, int, BBSTYLE, bool, int, int)
+    static void DrawBigButton(int x, int y, bool centered, bool interacted, int size, BBSTYLE style, bool shadowed, int clip_y_start, int clip_y_end);
+    // win1.41 004125a0 mac 101a2290 SetupThing::DrawLine(int, int, int, int, unsigned long, int, float, float)
+    static void DrawLine(int param_1, int param_2, int param_3, int param_4, LH3DColor color, int adjust, float param_7, float inv_w);
+    // win1.41 00412980 mac 10048980 SetupThing::DrawBox(int, int, int, int, float, float, float, float, LH3DMaterial *, LH3DColor *, int, int, int, bool, float)
+    static void DrawBox(int x_min, int y_min, int x_max, int y_max, float u_min, float v_min, float u_max, float v_max, LH3DMaterial* material, const LH3DColor* color, int adjust, int clip_y_start, int clip_y_end, bool depth_test, float inv_w);
+    // win1.41 00412eb0 mac 1010f3e0 SetupThing::DrawQuad(int, int, int, int, int, int, int, int, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long)
+    static void DrawQuad(int x_1, int y_1, int x_2, int y_2, int x_3, int y_3, int x_4, int y_4, LH3DColor color_1, LH3DColor color_2, LH3DColor color_3, LH3DColor color_4, uint32_t use_alpha, uint32_t adjust);
+    // win1.41 004132c0 mac 1035b610 SetupThing::DrawBox(int, int, int, int, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long)
+    static void DrawBox(int x_min, int y_min, int x_max, int y_max, LH3DColor color_1, LH3DColor color_2, LH3DColor color_3, LH3DColor color_4, uint32_t use_alpha, uint32_t adjust);
+    // win1.41 00413360 mac 1013c530 SetupThing::DrawTab(int, int, int, int, int, int, int, wchar_t *, int, int)
+    static void DrawTab(int x_min, int y_min, int x_max, int y_max, bool selected, bool first_in_row, bool last_in_row, const char16_t* label, LH3DColor color, bool no_blend);
+    // win1.41 00413c20 mac 10594590 SetupThing::DrawBevBox(int, int, int, int, int, int, int, unsigned long)
+    static void DrawBevBox(int x_min, int y_min, int x_max, int y_max, uint32_t style, uint32_t outline_thickness, uint32_t horizontal_outline, LH3DColor color);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct GatheringText;
@@ -119,5 +179,7 @@ void __cdecl DrawBox__10SetupThingFiiiiUlUlUlUlUlUl(int x_min, int y_min, int x_
 void __cdecl DrawTab__10SetupThingFiiiiiiiPwii(int x_min, int y_min, int x_max, int y_max, bool selected, bool first_in_row, bool last_in_row, const char16_t* label, struct LH3DColor color, bool no_blend) asm("?DrawTab@SetupThing@@SAXHHHHHHHPA_WHH@Z");
 // win1.41 00413c20 mac 10594590 SetupThing::DrawBevBox(int, int, int, int, int, int, int, unsigned long)
 void __cdecl DrawBevBox__10SetupThingFiiiiiiiUl(int x_min, int y_min, int x_max, int y_max, uint32_t style, uint32_t outline_thickness, uint32_t horizontal_outline, struct LH3DColor color) asm("?DrawBevBox@SetupThing@@SAXHHHHHHHK@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_THING_INCLUDED_H */

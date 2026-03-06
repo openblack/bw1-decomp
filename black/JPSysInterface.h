@@ -42,9 +42,9 @@ public:
     // win1.41 0055ecc0 mac 10423d80 GJPSysInterface::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006944d0 mac 1041dae0 GJPSysInterface::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 006cb060 mac 10485b50 GJPSysInterface::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055ecb0 mac 10423d40 GJPSysInterface::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006736b0 mac inlined GJPSysInterface::Process__1(PSysProcessInfo *const, unsigned int)

@@ -4,6 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
+#include <wchar.h> /* For wchar_t */
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
 

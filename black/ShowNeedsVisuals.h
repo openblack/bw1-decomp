@@ -58,9 +58,9 @@ public:
     // win1.41 0055ddc0 mac 10144af0 ShowNeedsVisuals::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0071a320 mac 10144bb0 ShowNeedsVisuals::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0071a230 mac 10144d30 ShowNeedsVisuals::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055ddb0 mac 10144ab0 ShowNeedsVisuals::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0071a410 mac 10144b40 ShowNeedsVisuals::ResolveLoad(void)

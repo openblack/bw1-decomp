@@ -53,6 +53,17 @@ public:
     HelpText(LHRegion* region);
 };
 
+struct HelpTextDataBase
+{
+    HelpText* array; /* 0x0 */
+    uint32_t count;
+
+    // Non-virtual methods
+
+    // win1.41 inlined mac 100924c0 HelpTextDataBase::GetHelpText(unsigned long) const
+    const char16_t* GetHelpText(uint32_t index);
+};
+
 #else // __cplusplus
 
 struct HelpText

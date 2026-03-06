@@ -56,9 +56,9 @@ public:
     // win1.41 0055d750 mac 103b9760 MobileStatic::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00608590 mac 103c1060 MobileStatic::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00608650 mac 103c0f20 MobileStatic::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055d740 mac 103b9720 MobileStatic::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055d720 mac 103af140 MobileStatic::PhysicsEditorCreate(int)

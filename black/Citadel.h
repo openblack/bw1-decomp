@@ -5,6 +5,7 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <lionhead/lhlib/ver5.0/LHListHead.h> /* For DECLARE_LH_LIST_HEAD */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "CitadelPart.h" /* For struct CitadelPart */
@@ -39,7 +40,7 @@ class Citadel: public Container
 public:
     CitadelHeart* heart; /* 0x30 */
     WorshipSite* worship_sites[0x6];
-    LHListHead__CitadelPart part_list; /* 0x4c */
+    LHListHead<CitadelPart> part_list; /* 0x4c */
     uint32_t field_0x54;
     uint32_t field_0x58;
     uint32_t field_0x5c;
@@ -61,9 +62,9 @@ public:
     // win1.41 00462ad0 mac 101b6ff0 Citadel::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00463dc0 mac 101b71d0 Citadel::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00463b00 mac 101b7db0 Citadel::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 00462ac0 mac 101b6fb0 Citadel::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00462a60 mac 101b6e50 Citadel::GetCreatureBeliefType(void)
@@ -75,13 +76,13 @@ public:
     // win1.41 004e40e0 mac 105e5f60 Citadel::IsActivityObjectWhichAngerAppliesTo(Creature *)
     virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
     // win1.41 00462a90 mac 101b6f00 Citadel::IsSuitableForCreatureActivity(void)
-    virtual uint32_t IsSuitableForCreatureActivity();
+    virtual bool IsSuitableForCreatureActivity();
     // win1.41 004d1b50 mac 10242fd0 Citadel::GetHowMuchCreatureWantsToLookAtMe(void)
     virtual float GetHowMuchCreatureWantsToLookAtMe();
     // win1.41 00462aa0 mac 101b6f50 Citadel::GetText(void)
     virtual const char* GetText();
     // win1.41 00462ab0 mac 101b6f80 Citadel::IsCitadel(void)
-    virtual uint32_t IsCitadel();
+    virtual bool IsCitadel();
 
     // Static methods
 

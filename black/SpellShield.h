@@ -48,9 +48,9 @@ public:
     // win1.41 0072b470 mac 10534380 SpellShield::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0072bb40 mac 105324f0 SpellShield::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 0072bc40 mac 10532270 SpellShield::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0072b460 mac 10534340 SpellShield::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0072ba80 mac 10532920 SpellShield::GetImpressiveValue(Living *, Reaction *)

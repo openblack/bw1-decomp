@@ -7,6 +7,33 @@
 
 #include <chlasm/GStates.h> /* For enum VILLAGER_STATES */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Living;
+
+struct LivingAction
+{
+    uint8_t states[_LIVING_ACTION_INDEX_COUNT]; /* 0x0 */
+    uint8_t field_0x3;
+    uint16_t turns_since_state_change;
+
+    // Constructors
+
+    // win1.41 005ecc70 mac 10381350 LivingAction::LivingAction(void)
+    LivingAction();
+
+    // Non-virtual methods
+
+    // win1.41 005ecc90 mac 10072200 LivingAction::SetState(unsigned long, unsigned char)
+    void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
+    // win1.41 inlined mac 1004c420 LivingAction::GetState(unsigned long) const
+    VILLAGER_STATES GetState(LIVING_ACTION_INDEX index);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Living;
@@ -86,5 +113,7 @@ struct Living__StateTableEntry
   struct Living__StateTableSubEntry validate;  /* 0x80 */
 };
 static_assert(sizeof(struct Living__StateTableEntry) == 0x90, "Data type is of wrong size");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LIVING_ACTION_INCLUDED_H */

@@ -62,33 +62,33 @@ public:
 };
 
 // win1.41 009dd368 mac inlined CreatureLearningEpisode::`RTTI Type Descriptor'
-// win1.41 009a9f50 mac inlined CreatureLearningEpisode::`RTTI Base Class Descriptor'
-// win1.41 009a9f68 mac inlined CreatureLearningEpisode::`RTTI Base Class Array'
-// win1.41 009a9f78 mac inlined CreatureLearningEpisode::`RTTI Class Hierarchy Descriptor'
-class CreatureLearningEpisode: public Base
-{
-public:
-    uint8_t field_0x8[0xc];
+// // win1.41 009a9f50 mac inlined CreatureLearningEpisode::`RTTI Base Class Descriptor'
+// // win1.41 009a9f68 mac inlined CreatureLearningEpisode::`RTTI Base Class Array'
+// // win1.41 009a9f78 mac inlined CreatureLearningEpisode::`RTTI Class Hierarchy Descriptor'
+// class CreatureLearningEpisode: public Base
+// {
+// public:
+//     uint8_t field_0x8[0xc];
 
-    // Override methods
+//     // Override methods
 
-    // win1.41 004cbc00 mac 10250410 CreatureLearningEpisode::_dt(void)
-    virtual ~CreatureLearningEpisode();
-};
+//     // win1.41 004cbc00 mac 10250410 CreatureLearningEpisode::_dt(void)
+//     virtual ~CreatureLearningEpisode();
+// };
 
-// win1.41 00bdfab8 mac inlined CreatureLearningContext::`RTTI Type Descriptor'
-// win1.41 009aaef0 mac inlined CreatureLearningContext::`RTTI Base Class Descriptor'
-// win1.41 009aaf08 mac inlined CreatureLearningContext::`RTTI Base Class Array'
-// win1.41 009aaf18 mac inlined CreatureLearningContext::`RTTI Class Hierarchy Descriptor'
-class CreatureLearningContext: public Base
-{
-public:
+// // win1.41 00bdfab8 mac inlined CreatureLearningContext::`RTTI Type Descriptor'
+// // win1.41 009aaef0 mac inlined CreatureLearningContext::`RTTI Base Class Descriptor'
+// // win1.41 009aaf08 mac inlined CreatureLearningContext::`RTTI Base Class Array'
+// // win1.41 009aaf18 mac inlined CreatureLearningContext::`RTTI Class Hierarchy Descriptor'
+// class CreatureLearningContext: public Base
+// {
+// public:
 
-    // Override methods
+//     // Override methods
 
-    // win1.41 004e1d30 mac 10262750 CreatureLearningContext::_dt(void)
-    virtual ~CreatureLearningContext();
-};
+//     // win1.41 004e1d30 mac 10262750 CreatureLearningContext::_dt(void)
+//     virtual ~CreatureLearningContext();
+// };
 
 #else // __cplusplus
 

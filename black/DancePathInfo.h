@@ -25,7 +25,7 @@ class DancePathInfo: public GameThing
 public:
     uint8_t field_0x14;
     uint8_t field_0x15[0x3];
-    uint8_t (*) field_0x18[0xc];
+    uint8_t (* field_0x18)[0xc];
     uint32_t field_0x1c;
 
     // Override methods

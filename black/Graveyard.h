@@ -39,9 +39,9 @@ public:
     // win1.41 0055e000 mac 100f4550 Graveyard::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00595f50 mac 100f4590 Graveyard::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00595ee0 mac 100f4670 Graveyard::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 0055dff0 mac 100f4510 Graveyard::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055df90 mac inlined Graveyard::GetArrivePos(MapCoords *)
@@ -53,7 +53,7 @@ public:
     // win1.41 00595dd0 mac 100f4a40 Graveyard::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 0055dfb0 mac 100f4400 Graveyard::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 00595cd0 mac 100f4d60 Graveyard::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 00595ce0 mac 100f4c10 Graveyard::DeleteDependancys(void)

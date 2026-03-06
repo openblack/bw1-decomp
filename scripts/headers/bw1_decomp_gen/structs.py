@@ -194,6 +194,103 @@ class Struct(Composite):
                 f.to_code(cw)
             cw.add_line()
 
+    def to_code_cplusplus(self, cw: csnake.CodeWriter):
+        def cpp_type(t):
+            if not isinstance(t, str):
+                return t
+            return re.sub(r'\b(struct|union|enum)\s+', '', t)
+
+        def _cpp_param(label, a):
+            if hasattr(a, 'get_declaration'):
+                decl = a.get_declaration(label) if label else a.get_type_only()
+                return re.sub(r'\b(struct|union|enum)\s+', '', decl)
+            a_str = cpp_type(a) if isinstance(a, str) else str(a)
+            return f"{a_str} {label}" if label else a_str
+
+        def _member_params(f):
+            params = []
+            for i, (l, a) in enumerate(zip(f.arg_labels, f.args)):
+                if i == 0:  # skip 'this'
+                    continue
+                if l == "edx":  # skip synthetic edx (fastcall)
+                    continue
+                effective_l = l if l else f"param_{i}"
+                params.append(_cpp_param(effective_l, a))
+            if f.is_function_variadic:
+                params.append("...")
+            return ", ".join(params)
+
+        def _static_params(f):
+            params = []
+            for i, (l, a) in enumerate(zip(f.arg_labels, f.args)):
+                effective_l = l if l else f"param_{i}"
+                params.append(_cpp_param(effective_l, a))
+            if f.is_function_variadic:
+                params.append("...")
+            return ", ".join(params)
+
+        def _method_name(f):
+            """Extract C++ method name from decorated_name, falling back to mangled name."""
+            dn = f.decorated_name
+            paren = dn.find('(')
+            if paren < 0:
+                name = f.name
+                if "__" in name:
+                    name = name[::-1].split("__", maxsplit=1)[-1][::-1]
+                return name
+            scope_end = dn.rfind('::', 0, paren)
+            return dn[scope_end + 2:paren] if scope_end >= 0 else dn[:paren]
+
+        cw.add_line(f"struct {self.name}")
+        cw.add_line("{")
+
+        last_offset = -1
+        for m in self.members:
+            offset_comment = ""
+            if last_offset < 0 or m.offset - last_offset >= 0x10:
+                hoffset = f"{m.offset:08x}" if m.offset > 0x400000 else f"{m.offset:x}"
+                if hoffset not in m.name:
+                    offset_comment = f" /* 0x{hoffset} */"
+                last_offset = m.offset - (m.offset % 0x10)
+            t = cpp_type(m.data_type)
+            n = m.name
+            if isinstance(t, str) and '[' in t:
+                base, array_part = t.split('[', 1)
+                def _to_hex(d):
+                    try:
+                        return hex(int(d, 0))
+                    except (ValueError, TypeError):
+                        return d
+                dims = ''.join(f"[{_to_hex(d)}]" for d in array_part.replace(']', '').split('[') if d)
+                t, n = base.strip(), f"{n}{dims}"
+            cw.add_line(f"    {t} {n};{offset_comment}")
+
+        def _method_section(section_label, funcs, decl_fn):
+            if not funcs:
+                return
+            cw.add_line()
+            cw.add_line(f"    // {section_label}")
+            cw.add_line()
+            for f in funcs:
+                win_str = f"{f.win_addr:08x}" if f.win_addr >= 0 else "inlined"
+                mac_str = f"{f.mac_addr:08x}" if f.mac_addr >= 0 else "inlined"
+                cw.add_line(f"    // win1.41 {win_str} mac {mac_str} {f.decorated_name}")
+                cw.add_line(f"    {decl_fn(f)}")
+
+        _method_section("Static methods", self.static_methods,
+            lambda f: f"static {cpp_type(f.result)} {_method_name(f)}({_static_params(f)});")
+
+        _method_section("Constructors", self.constructors,
+            lambda f: f"{self.name}({_member_params(f)});")
+
+        _method_section("Non-virtual Destructors", self.destructors,
+            lambda f: f"~{self.name}();")
+
+        _method_section("Non-virtual methods", self.methods,
+            lambda f: f"{cpp_type(f.result)} {_method_name(f)}({_member_params(f)});")
+
+        cw.add_line("};")
+
     def to_code(self, cw: csnake.CodeWriter):
         self.to_code_data(cw)
         self.to_code_methods(cw)
@@ -676,7 +773,11 @@ class RTTIClass(Struct):
                 return f"virtual ~{self.name}();"
             return f"virtual {cpp_type(f.result)} {simple}({_member_params(f)});"
 
-        _method_section("Override methods", self.method_overrides, _override_decl)
+        # Only emit Override methods when the class has no own vftable (uses
+        # an inherited one). When the class has its own vftable, all overrides
+        # are already annotated with address comments in // Virtual functions.
+        if vftable is None:
+            _method_section("Override methods", self.method_overrides, _override_decl)
 
         _method_section("Static methods", self.static_methods,
             lambda f: f"static {cpp_type(f.result)} {_simple_name(f.name)}({_static_params(f)});")

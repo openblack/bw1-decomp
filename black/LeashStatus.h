@@ -44,9 +44,9 @@ public:
     // win1.41 005e7630 mac 1037ae50 GLeashStatus::GetPlayer(void)
     virtual GPlayer* GetPlayer();
     // win1.41 005e7430 mac 1037aeb0 GLeashStatus::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 005e7230 mac 1037b1a0 GLeashStatus::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 005db930 mac 1037ad30 GLeashStatus::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005e71d0 mac 1037b4b0 GLeashStatus::SaveExtraData(GameOSFile &)

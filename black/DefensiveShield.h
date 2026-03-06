@@ -31,9 +31,9 @@ public:
     // win1.41 006d0ac0 mac 1041dc20 DefensiveShield::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00699ca0 mac 10417a80 DefensiveShield::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 006d0680 mac 1047f460 DefensiveShield::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 006d0ab0 mac 1041dbe0 DefensiveShield::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

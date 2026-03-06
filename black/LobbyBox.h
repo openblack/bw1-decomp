@@ -24,7 +24,7 @@ public:
     // Override methods
 
     // win1.41 005f5250 mac 105d7ac0 LobbyBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
-    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback* param_3);
     // win1.41 005f5a40 mac 105d7a60 LobbyBox::Destroy(void)
     virtual void Destroy();
     // win1.41 005f5a50 mac 105d78e0 LobbyBox::InitControls(void)

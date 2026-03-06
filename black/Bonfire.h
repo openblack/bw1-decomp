@@ -39,9 +39,9 @@ public:
     // win1.41 004397f0 mac 100b3ec0 Bonfire::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00439a00 mac 100b4800 Bonfire::Load(GameOSFile &)
-    virtual uint32_t Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile* param_1);
     // win1.41 00439990 mac 100b48d0 Bonfire::Save(GameOSFile &)
-    virtual uint32_t Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile* param_1);
     // win1.41 004397e0 mac 100b3e80 Bonfire::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 004397c0 mac 100b3dd0 Bonfire::PhysicsEditorCreate(int)

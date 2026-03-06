@@ -24,13 +24,6 @@ public:
     // win1.41 00643400 mac 1013ae40 Heap::GetActualMemoryRequired( const(unsigned long))
     virtual void GetActualMemoryRequired(uint32_t param_1);
 
-    // Override methods
-
-    // win1.41 007e1020 mac 1013ab30 Heap::SetToZero(void)
-    virtual void SetToZero();
-    // win1.41 00643400 mac 1013ae40 Heap::GetActualMemoryRequired( const(unsigned long))
-    virtual void GetActualMemoryRequired(uint32_t param_1);
-
     // Non-virtual methods
 
     // win1.41 007e1160 mac 1013a820 Heap::New(int)
