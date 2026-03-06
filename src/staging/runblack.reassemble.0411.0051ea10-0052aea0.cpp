@@ -84,7 +84,7 @@ GEffectInfo::GEffectInfo()
 }
 
 // win1.41 00524d70 mac 100ccc90 GEffectInfo::GetBaseInfo(unsigned long &)
-GBaseInfo* GEffectInfo::GetBaseInfo(uint32_t* param_1)
+GBaseInfo* GEffectInfo::GetBaseInfo(uint32_t& param_1)
 {
     return 0;
 }
@@ -100,7 +100,7 @@ GMagicEffectInfo::GMagicEffectInfo()
 }
 
 // win1.41 00524e30 mac 100ccbe0 GMagicEffectInfo::GetBaseInfo(unsigned long &)
-GBaseInfo* GMagicEffectInfo::GetBaseInfo(uint32_t* param_1)
+GBaseInfo* GMagicEffectInfo::GetBaseInfo(uint32_t& param_1)
 {
     return 0;
 }
@@ -161,7 +161,7 @@ bool PlannedFeature::Load(GameOSFile& file)
 }
 
 // win1.41 005275b0 mac 100d0dc0 Feature::SaveObject(LHOSFile &, MapCoords const &)
-uint32_t Feature::SaveObject(LHOSFile* param_1, const MapCoords* param_2)
+uint32_t Feature::SaveObject(LHOSFile& file, const MapCoords& coords)
 {
     return 0;
 }
@@ -173,7 +173,7 @@ uint32_t Feature::GetScriptObjectType()
 }
 
 // win1.41 005276d0 mac 100d0c30 Feature::IsMushroom(Creature *)
-uint32_t Feature::IsMushroom(Creature* param_1)
+bool Feature::IsMushroom(Creature* param_1)
 {
     return 0;
 }
@@ -197,7 +197,7 @@ HELP_TEXT Feature::GetQueryLastEnumText()
 }
 
 // win1.41 005278b0 mac 100d15c0 GFlowersInfo::GetMesh( const(void))
-uint32_t GFlowersInfo::GetMesh()
+uint32_t GFlowersInfo::GetMesh() const
 {
     return 0;
 }
@@ -208,9 +208,9 @@ GFlowersInfo::~GFlowersInfo()
 }
 
 // win1.41 00527980 mac 100d00c0 Flowers::Get3DType(void)
-LH3DObject__ObjectType Flowers::Get3DType()
+LH3DObject::ObjectType Flowers::Get3DType()
 {
-    return (LH3DObject__ObjectType)0;
+    return (LH3DObject::ObjectType)0;
 }
 
 // win1.41 00527990 mac 100d00f0 Flowers::GetSaveType(void)
@@ -236,7 +236,7 @@ void Flowers::CallVirtualFunctionsForCreation(const MapCoords* param_1)
 }
 
 // win1.41 00527a80 mac 100d0170 Flowers::SaveObject(LHOSFile &, MapCoords const &)
-uint32_t Flowers::SaveObject(LHOSFile* param_1, const MapCoords* param_2)
+uint32_t Flowers::SaveObject(LHOSFile& file, const MapCoords& coords)
 {
     return 0;
 }
@@ -247,7 +247,7 @@ GFieldInfo::~GFieldInfo()
 }
 
 // win1.41 00527d30 mac 100d18c0 GFieldTypeInfo::GetBaseInfo(unsigned long &)
-GBaseInfo* GFieldTypeInfo::GetBaseInfo(uint32_t* param_1)
+GBaseInfo* GFieldTypeInfo::GetBaseInfo(uint32_t& param_1)
 {
     return 0;
 }
@@ -257,10 +257,10 @@ GFieldTypeInfo::~GFieldTypeInfo()
 {
 }
 
-// win1.41 00527dd0 mac 100d5910 Field::Field(MapCoords const &, GFieldTypeInfo const *, GAbodeInfo const *, Town *, float, float, int)
-Field::Field(MapCoords* coords, GFieldTypeInfo* type_info, GAbodeInfo* abode_info, Town* town, float param_5, float param_6, int param_7)
-{
-}
+// // win1.41 00527dd0 mac 100d5910 Field::Field(MapCoords const &, GFieldTypeInfo const *, GAbodeInfo const *, Town *, float, float, int)
+// Field::Field(MapCoords* coords, GFieldTypeInfo* type_info, GAbodeInfo* abode_info, Town* town, float param_5, float param_6, int param_7)
+// {
+// }
 
 // win1.41 00527f20 mac 100d5fa0 Field::GetCreatureBeliefType(void)
 uint32_t Field::GetCreatureBeliefType()
@@ -268,86 +268,86 @@ uint32_t Field::GetCreatureBeliefType()
     return 0;
 }
 
-// win1.41 00527f30 mac inlined Field::IsField_1(Creature *)
-uint32_t Field::IsField_1(Creature* param_1)
+// win1.41 00527f30 mac inlined Field::IsField(Creature *)
+bool Field::IsField(Creature* param_1)
 {
     return 0;
 }
 
-// win1.41 00527f40 mac inlined Field::IsField_0(void)
-uint32_t Field::IsField_0()
+// win1.41 00527f40 mac inlined Field::IsField(void)
+bool Field::IsField()
 {
     return 0;
 }
 
 // win1.41 00527f50 mac 100d6050 Field::BenefitsFromHavingWaterSprinkledOnIt(Creature *)
-uint32_t Field::BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1)
+bool Field::BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527f60 mac 100d60d0 Field::CanBePoodOn(Creature *)
-uint32_t Field::CanBePoodOn(Creature* param_1)
+bool Field::CanBePoodOn(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527f70 mac 100d6110 Field::CanBePickedUpByCreature(Creature *)
-uint32_t Field::CanBePickedUpByCreature(Creature* param_1)
+bool Field::CanBePickedUpByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527f80 mac 100d6160 Field::CanBeStompedOnByCreature(Creature *)
-uint32_t Field::CanBeStompedOnByCreature(Creature* param_1)
+bool Field::CanBeStompedOnByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527f90 mac 100d61b0 Field::CanBeGivenToVillager(Creature *)
-uint32_t Field::CanBeGivenToVillager(Creature* param_1)
+bool Field::CanBeGivenToVillager(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527fa0 mac 100d6200 Field::CanBePutInAStoragePit(Creature *)
-uint32_t Field::CanBePutInAStoragePit(Creature* param_1)
+bool Field::CanBePutInAStoragePit(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527fb0 mac 100d6250 Field::CanBeDestroyedByStoning(Creature *)
-uint32_t Field::CanBeDestroyedByStoning(Creature* param_1)
+bool Field::CanBeDestroyedByStoning(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527fc0 mac 100d62a0 Field::CanBeExaminedByCreature(Creature *)
-uint32_t Field::CanBeExaminedByCreature(Creature* param_1)
+bool Field::CanBeExaminedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527fd0 mac 100d62f0 Field::CanBeEatenByCreature(Creature *)
-uint32_t Field::CanBeEatenByCreature(Creature* param_1)
+bool Field::CanBeEatenByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527fe0 mac 100d6340 Field::CanBeSleptNextToByCreature(Creature *)
-uint32_t Field::CanBeSleptNextToByCreature(Creature* param_1)
+bool Field::CanBeSleptNextToByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527ff0 mac 100d6390 Field::IsBeingBuilt(Creature *)
-uint32_t Field::IsBeingBuilt(Creature* param_1)
+bool Field::IsBeingBuilt(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00528000 mac 100d63d0 Field::NeedsRepair(Creature *)
-uint32_t Field::NeedsRepair(Creature* param_1)
+bool Field::NeedsRepair(Creature* param_1)
 {
     return 0;
 }
@@ -371,7 +371,7 @@ bool Field::CanBecomeAPhysicsObject()
 }
 
 // win1.41 00528040 mac 100d6490 Field::IsTuggable(void)
-uint32_t Field::IsTuggable()
+bool Field::IsTuggable()
 {
     return 0;
 }
@@ -427,7 +427,7 @@ void Field::GetFireGPHXDrawn(bool* param_1, bool* param_2, bool* param_3, bool* 
 }
 
 // win1.41 00528900 mac 100d4c80 Field::IsEffectReceiver(EffectValues *)
-uint32_t Field::IsEffectReceiver(EffectValues* param_1)
+bool Field::IsEffectReceiver(EffectValues* param_1)
 {
     return 0;
 }
@@ -462,7 +462,7 @@ MapCoords* Field::GetDoorPos(MapCoords* param_1)
 }
 
 // win1.41 00528ce0 mac 100d4250 Field::SaveObject(LHOSFile &, MapCoords const &)
-uint32_t Field::SaveObject(LHOSFile* param_1, const MapCoords* param_2)
+uint32_t Field::SaveObject(LHOSFile& file, const MapCoords& coords)
 {
     return 0;
 }
@@ -480,7 +480,7 @@ float Field::Get2DRadius()
 }
 
 // win1.41 00528ef0 mac 100d40d0 Field::ValidForPlaceInHand(GInterfaceStatus *)
-uint32_t Field::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool Field::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -534,7 +534,7 @@ float Field::GetPercentFull()
 }
 
 // win1.41 00529520 mac 100d3560 Field::InterfaceSetInMagicHand(GInterfaceStatus *)
-uint32_t Field::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool Field::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -570,19 +570,19 @@ bool32_t Field::ValidForLockedSelectProcess(GInterfaceStatus* param_1)
 }
 
 // win1.41 00529a20 mac 100d29b0 Field::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
-uint32_t Field::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
+bool Field::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
 {
     return 0;
 }
 
 // win1.41 00529a60 mac 100d28b0 Field::NetworkUnfriendlyEndLockedSelect(void)
-uint32_t Field::NetworkUnfriendlyEndLockedSelect()
+bool Field::NetworkUnfriendlyEndLockedSelect()
 {
     return 0;
 }
 
 // win1.41 00529af0 mac 100d2830 Field::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
-uint32_t Field::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
+bool Field::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -606,7 +606,7 @@ uint32_t Field::GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Vill
 }
 
 // win1.41 00529ff0 mac inlined Field::CanBeDestroyedBySpell_1(Spell *)
-uint32_t Field::CanBeDestroyedBySpell_1(Spell* param_1)
+bool Field::CanBeDestroyedBySpell(Spell* param_1)
 {
     return 0;
 }
@@ -618,7 +618,7 @@ uint32_t Field::GetOverwriteInteractableToolTip()
 }
 
 // win1.41 0052a010 mac 100d1c70 Field::DestroyedByEffect(GPlayer *, float)
-uint32_t Field::DestroyedByEffect(GPlayer* param_1, float param_2)
+bool Field::DestroyedByEffect(GPlayer* param_1, float param_2)
 {
     return 0;
 }
