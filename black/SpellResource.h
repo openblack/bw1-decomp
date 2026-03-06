@@ -8,6 +8,43 @@
 
 #include "Spell.h" /* For struct Spell */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+struct SpellEventInfo;
+
+// win1.41 00becdc8 mac inlined SpellResource::`RTTI Type Descriptor'
+// win1.41 009ae2f8 mac inlined SpellResource::`RTTI Base Class Descriptor'
+// win1.41 009ae310 mac inlined SpellResource::`RTTI Base Class Array'
+// win1.41 009ae328 mac inlined SpellResource::`RTTI Class Hierarchy Descriptor'
+class SpellResource: public Spell
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055cfd0 mac 1051fdd0 SpellResource::_dt(void)
+    virtual ~SpellResource();
+    // win1.41 0055cfc0 mac 1051feb0 SpellResource::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 007252f0 mac 1051f230 SpellResource::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00725350 mac 1051f150 SpellResource::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055cfb0 mac 1051fe70 SpellResource::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00724c90 mac 1051fc70 SpellResource::HasEnoughChantsAndLifeForRecast(void)
+    virtual void HasEnoughChantsAndLifeForRecast();
+    // win1.41 00724d80 mac 1051f9d0 SpellResource::SpellEvent(SpellEventInfo const &)
+    virtual void SpellEvent(const SpellEventInfo* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -48,5 +85,7 @@ uint32_t __fastcall GetSaveType__13SpellResourceFv(struct GameThing* this) asm("
 void __fastcall HasEnoughChantsAndLifeForRecast__13SpellResourceFv(struct Spell* this) asm("?HasEnoughChantsAndLifeForRecast@SpellResource@@UAEXXZ");
 // win1.41 00724d80 mac 1051f9d0 SpellResource::SpellEvent(SpellEventInfo const &)
 void __fastcall SpellEvent__13SpellResourceFRC14SpellEventInfo(struct Spell* this, const void* edx, const struct SpellEventInfo* param_1) asm("?SpellEvent@SpellResource@@UAEXABVSpellEventInfo@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPELL_RESOURCE_INCLUDED_H */

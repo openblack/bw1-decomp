@@ -8,6 +8,35 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c221d8 mac inlined GHelpSpritesGuidance::`RTTI Type Descriptor'
+// win1.41 009b9108 mac inlined GHelpSpritesGuidance::`RTTI Base Class Descriptor'
+// win1.41 009b9120 mac inlined GHelpSpritesGuidance::`RTTI Base Class Array'
+// win1.41 009b9130 mac inlined GHelpSpritesGuidance::`RTTI Class Hierarchy Descriptor'
+class GHelpSpritesGuidance: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 0071aa60 mac 1050d8c0 GHelpSpritesGuidance::_dt(void)
+    virtual ~GHelpSpritesGuidance();
+    // win1.41 0071a9f0 mac 105128d0 GHelpSpritesGuidance::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+
+    // Non-virtual methods
+
+    // win1.41 0071d300 mac 1050d290 GHelpSpritesGuidance::GetRandomSample(void) const
+    uint32_t GetRandomSample();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -40,5 +69,7 @@ uint32_t __fastcall GetRandomSample__20GHelpSpritesGuidanceCFv(const struct GHel
 void __fastcall __dt__20GHelpSpritesGuidanceFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGHelpSpritesGuidance@@UAEPAXI@Z");
 // win1.41 0071a9f0 mac 105128d0 GHelpSpritesGuidance::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__20GHelpSpritesGuidanceFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GHelpSpritesGuidance@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HELP_SPRITES_GUIDANCE_INCLUDED_H */

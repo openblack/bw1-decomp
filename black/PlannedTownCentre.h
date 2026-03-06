@@ -8,6 +8,49 @@
 
 #include "PlannedAbode.h" /* For struct PlannedAbode */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GAbodeInfo;
+class GameThing;
+struct MapCoords;
+class Town;
+class TownCentre;
+
+// win1.41 00bece38 mac inlined PlannedTownCentre::`RTTI Type Descriptor'
+// win1.41 009ae5b8 mac inlined PlannedTownCentre::`RTTI Base Class Descriptor'
+// win1.41 009ae5d0 mac inlined PlannedTownCentre::`RTTI Base Class Array'
+// win1.41 009ae5f0 mac inlined PlannedTownCentre::`RTTI Class Hierarchy Descriptor'
+// win1.41 008e46d8 mac 109e3cf0 PlannedTownCentre::`RTTI Complete Object Locator'
+// win1.41 008e46dc mac 109e3cf8 PlannedTownCentre::`vftable'
+class PlannedTownCentre: public PlannedAbode
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055dc10 mac 10559840 PlannedTownCentre::_dt(void)
+    virtual ~PlannedTownCentre();
+    // win1.41 0055dc00 mac 10559960 PlannedTownCentre::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0055dbf0 mac 10559920 PlannedTownCentre::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+
+    // Static methods
+
+    // win1.41 007444d0 mac 1055a160 PlannedTownCentre::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float)
+    static PlannedTownCentre* Create(const MapCoords* coords, const GAbodeInfo* info, Town* town, float param_4, float param_5);
+
+    // Constructors
+
+    // win1.41 00744460 mac 1055a270 PlannedTownCentre::PlannedTownCentre(TownCentre*)
+    PlannedTownCentre(const TownCentre* town_centre);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -56,5 +99,7 @@ void __fastcall __dt__17PlannedTownCentreFv(struct Base* this, const void* edx, 
 char* __fastcall GetDebugText__17PlannedTownCentreFv(struct GameThing* this) asm("?GetDebugText@PlannedTownCentre@@UAEPADXZ");
 // win1.41 0055dbf0 mac 10559920 PlannedTownCentre::GetSaveType(void)
 uint32_t __fastcall GetSaveType__17PlannedTownCentreFv(struct GameThing* this) asm("?GetSaveType@PlannedTownCentre@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLANNED_TOWN_CENTRE_INCLUDED_H */

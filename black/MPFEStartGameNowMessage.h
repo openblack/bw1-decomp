@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bfda08 mac inlined MPFEStartGameNowMessage::`RTTI Type Descriptor'
+// win1.41 009b2a00 mac inlined MPFEStartGameNowMessage::`RTTI Base Class Descriptor'
+// win1.41 009b2a18 mac inlined MPFEStartGameNowMessage::`RTTI Base Class Array'
+// win1.41 009b2a28 mac inlined MPFEStartGameNowMessage::`RTTI Class Hierarchy Descriptor'
+class MPFEStartGameNowMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00630170 mac 10396930 MPFEStartGameNowMessage::_dt(void)
+    virtual ~MPFEStartGameNowMessage();
+};
+
+#else // __cplusplus
+
 struct MPFEStartGameNowMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00630170 mac 10396930 MPFEStartGameNowMessage::_dt(void)
 void __fastcall __dt__23MPFEStartGameNowMessageFv(struct MPFEMessageObject* this) asm("??_GMPFEStartGameNowMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_START_GAME_NOW_MESSAGE_INCLUDED_H */

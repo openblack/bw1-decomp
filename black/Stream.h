@@ -9,6 +9,49 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+
+// win1.41 00becbf8 mac inlined GStream::`RTTI Type Descriptor'
+// win1.41 009adcc8 mac inlined GStream::`RTTI Base Class Descriptor'
+// win1.41 009adce0 mac inlined GStream::`RTTI Base Class Array'
+// win1.41 009adcf0 mac inlined GStream::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ebb44 mac 1075dd20 GStream::`RTTI Complete Object Locator'
+// win1.41 008ebb48 mac 1075dd28 GStream::`vftable'
+class GStream: public GameThing
+{
+public:
+    uint8_t field_0x14[0x14];
+
+    // Override methods
+
+    // win1.41 0055de20 mac 101549b0 GStream::_dt(void)
+    virtual ~GStream();
+    // win1.41 00733b10 mac 10154cf0 GStream::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 0055de10 mac 10155220 GStream::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 007344e0 mac 10153560 GStream::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00734380 mac 10153ac0 GStream::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055de00 mac 101551e0 GStream::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00734640 mac 101534f0 GStream::ResolveLoad(void)
+    virtual void ResolveLoad();
+
+    // Static methods
+
+    // win1.41 00733ff0 mac 10154580 GStream::CreateAll(void)
+    static void CreateAll();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -59,5 +102,7 @@ uint32_t __fastcall GetSaveType__7GStreamFv(struct GameThing* this) asm("?GetSav
 void __fastcall ResolveLoad__7GStreamFv(struct GameThing* this) asm("?ResolveLoad@GStream@@UAEXXZ");
 
 DECLARE_LH_LIST_HEAD(GStream);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_STREAM_INCLUDED_H */

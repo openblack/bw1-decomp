@@ -8,6 +8,44 @@
 
 #include "PSysBase.h" /* For struct PSysBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GPlayer;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00c02208 mac inlined PSysManager::`RTTI Type Descriptor'
+// win1.41 009b3768 mac inlined PSysManager::`RTTI Base Class Descriptor'
+// win1.41 009b3780 mac inlined PSysManager::`RTTI Base Class Array'
+// win1.41 009b3798 mac inlined PSysManager::`RTTI Class Hierarchy Descriptor'
+// win1.41 009353bc mac 109b86b8 PSysManager::`RTTI Complete Object Locator'
+// win1.41 009353c0 mac 109b86c0 PSysManager::`vftable'
+class PSysManager: public PSysBase
+{
+public:
+    uint8_t field_0x14[0xd0];
+
+    // Override methods
+
+    // win1.41 00672cb0 mac 103dcfb0 PSysManager::_dt(void)
+    virtual ~PSysManager();
+    // win1.41 006735c0 mac 103dc100 PSysManager::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 00672ca0 mac 10423d00 PSysManager::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00694500 mac 1041d6f0 PSysManager::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 006cb090 mac 104858d0 PSysManager::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 00672c90 mac 10423cc0 PSysManager::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -51,5 +89,7 @@ uint32_t __fastcall Load__11PSysManagerFR10GameOSFile(struct GameThing* this, co
 uint32_t __fastcall Save__11PSysManagerFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@PSysManager@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00672c90 mac 10423cc0 PSysManager::GetSaveType(void)
 uint32_t __fastcall GetSaveType__11PSysManagerFv(struct GameThing* this) asm("?GetSaveType@PSysManager@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_P_SYS_MANAGER_INCLUDED_H */

@@ -23,6 +23,70 @@
 #include "CreatureVisionState.h" /* For struct CreatureVisionState */
 #include "MapCoords.h" /* For struct MapCoords */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Creature;
+class GameThingWithPos;
+
+// win1.41 009dd858 mac inlined CreatureMental::`RTTI Type Descriptor'
+// win1.41 009aa310 mac inlined CreatureMental::`RTTI Base Class Descriptor'
+// win1.41 009aa328 mac inlined CreatureMental::`RTTI Base Class Array'
+// win1.41 009aa338 mac inlined CreatureMental::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cf8a8 mac 1078743c CreatureMental::`RTTI Complete Object Locator'
+// win1.41 008cf8ac mac 10787444 CreatureMental::`vftable'
+class CreatureMental: public Base
+{
+public:
+    CreatureDesires desires; /* 0x8 */
+    CreatureAgenda agenda; /* 0x710 */
+    CreatureBeliefs beliefs; /* 0x2208 */
+    DecisionTreeCollection decision_tree_collection; /* 0x2478 */
+    CreatureActionOpinions action_opinions; /* 0x25b8 */
+    CreatureLearning learning; /* 0x2ad8 */
+    CreatureAttitudeToPlayer attitude_to_player; /* 0x18c40 */
+    uint32_t field_0x1a9f4;
+    uint32_t field_0x1a9f8;
+    CreatureActionsKnownAbout actions_known_about;
+    CreatureInnatePersonality innate_personality; /* 0x1aa14 */
+    CreatureVisionState vision_state; /* 0x1aa38 */
+    CreatureExplorationMap exploration_map; /* 0x1aa80 */
+    uint8_t field_0x1ca98[0x400];
+    CreaturePreviousActions previous_actions; /* 0x1ce98 */
+    CreatureLookState look_state; /* 0x1d3c0 */
+    uint8_t field_0x1d3f8[0x14];
+    CreatureFaceState face_state; /* 0x1d40c */
+    CreatureObjectsInspected objects_inspected; /* 0x1d418 */
+    uint32_t field_0x1d480;
+    uint32_t field_0x1d484;
+    uint32_t field_0x1d488;
+    MapCoords field_0x1d48c[0x1e][0x28];
+    CreatureMentalDebug debug; /* 0x20ccc */
+    Creature* creature; /* 0x20d18 */
+    int field_0x20d1c;
+    uint32_t field_0x20d20;
+    uint32_t field_0x20d24;
+    uint32_t field_0x20d28;
+    uint32_t field_0x20d2c;
+    uint32_t field_0x20d230; /* 0x20d30 */
+    uint32_t field_0x20d234;
+    uint32_t field_0x20d238;
+    uint32_t field_0x20d23c;
+
+    // Override methods
+
+    // win1.41 004d2560 mac 10245b60 CreatureMental::_dt(void)
+    virtual ~CreatureMental();
+
+    // Non-virtual methods
+
+    // win1.41 004d7bd0 mac 10253c90 CreatureMental::AddBeliefAboutObject(Creature *, GameThingWithPos *)
+    void* AddBeliefAboutObject(Creature* param_1, GameThingWithPos* param_2);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Creature;
@@ -104,5 +168,7 @@ void* __fastcall AddBeliefAboutObject__14CreatureMentalFP8CreatureP16GameThingWi
 
 // win1.41 004d2560 mac 10245b60 CreatureMental::_dt(void)
 void __fastcall __dt__14CreatureMentalFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureMental@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_INCLUDED_H */

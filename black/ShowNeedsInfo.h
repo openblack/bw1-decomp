@@ -8,6 +8,36 @@
 
 #include "ObjectInfo.h" /* For struct GObjectInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 00c22148 mac inlined GShowNeedsInfo::`RTTI Type Descriptor'
+// win1.41 009b9060 mac inlined GShowNeedsInfo::`RTTI Base Class Descriptor'
+// win1.41 009b9078 mac inlined GShowNeedsInfo::`RTTI Base Class Array'
+// win1.41 009b9090 mac inlined GShowNeedsInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 009572c4 mac 1075b5a8 GShowNeedsInfo::`RTTI Complete Object Locator'
+// win1.41 009572c8 mac 1075b5b0 GShowNeedsInfo::`vftable'
+class GShowNeedsInfo: public GObjectInfo
+{
+public:
+    uint8_t field_0x100[0x14];
+
+    // Override methods
+
+    // win1.41 00719a80 mac 10146040 GShowNeedsInfo::_dt(void)
+    virtual ~GShowNeedsInfo();
+    // win1.41 00719a10 mac 101461f0 GShowNeedsInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    // win1.41 00719a00 mac 10144960 GShowNeedsInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -43,5 +73,7 @@ void __fastcall __dt__14GShowNeedsInfoFv(struct Base* this, const void* edx, uin
 struct GBaseInfo* __fastcall GetBaseInfo__14GShowNeedsInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GShowNeedsInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 00719a00 mac 10144960 GShowNeedsInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__14GShowNeedsInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GShowNeedsInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SHOW_NEEDS_INFO_INCLUDED_H */

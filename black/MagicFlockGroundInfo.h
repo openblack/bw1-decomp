@@ -8,6 +8,28 @@
 
 #include "MagicInfo.h" /* For struct GMagicInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 009cd008 mac inlined GMagicFlockGroundInfo::`RTTI Type Descriptor'
+// win1.41 009a8198 mac inlined GMagicFlockGroundInfo::`RTTI Base Class Descriptor'
+// win1.41 009a81b0 mac inlined GMagicFlockGroundInfo::`RTTI Base Class Array'
+// win1.41 009a81c8 mac inlined GMagicFlockGroundInfo::`RTTI Class Hierarchy Descriptor'
+class GMagicFlockGroundInfo: public GMagicInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 004357e0 mac 1051ece0 GMagicFlockGroundInfo::_dt(void)
+    virtual ~GMagicFlockGroundInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 004357e0 mac 1051ece0 GMagicFlockGroundInfo::_dt(void)
 void __fastcall __dt__21GMagicFlockGroundInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMagicFlockGroundInfo@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_FLOCK_GROUND_INFO_INCLUDED_H */

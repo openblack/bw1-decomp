@@ -8,6 +8,41 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c22528 mac inlined GSpecialVillagerInfo::`RTTI Type Descriptor'
+// win1.41 009b9248 mac inlined GSpecialVillagerInfo::`RTTI Base Class Descriptor'
+// win1.41 009b9260 mac inlined GSpecialVillagerInfo::`RTTI Base Class Array'
+// win1.41 009b9270 mac inlined GSpecialVillagerInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 00980564 mac 1075b7e4 GSpecialVillagerInfo::`RTTI Complete Object Locator'
+// win1.41 00980568 mac 1075b7ec GSpecialVillagerInfo::`vftable'
+class GSpecialVillagerInfo: public GBaseInfo
+{
+public:
+    char name[0x30]; /* 0x10 */
+    uint32_t field_0x40;
+    uint32_t field_0x44;
+    uint32_t field_0x48;
+    uint32_t field_0x4c;
+    uint32_t field_0x50;
+    int field_0x54;
+    uint32_t field_0x58;
+    uint32_t field_0x5c;
+
+    // Override methods
+
+    // win1.41 0071f880 mac 10146650 GSpecialVillagerInfo::_dt(void)
+    virtual ~GSpecialVillagerInfo();
+    // win1.41 0071ee80 mac 101463b0 GSpecialVillagerInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -48,5 +83,7 @@ extern const struct GBaseInfoVftable __vt__20GSpecialVillagerInfo asm("??_7GSpec
 void __fastcall __dt__20GSpecialVillagerInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGSpecialVillagerInfo@@UAEPAXI@Z");
 // win1.41 0071ee80 mac 101463b0 GSpecialVillagerInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__20GSpecialVillagerInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GSpecialVillagerInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPECIAL_VILLAGER_INFO_INCLUDED_H */

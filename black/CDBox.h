@@ -8,6 +8,31 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea2f8 mac inlined CDBox::`RTTI Type Descriptor'
+// win1.41 009ac830 mac inlined CDBox::`RTTI Base Class Descriptor'
+// win1.41 009ac848 mac inlined CDBox::`RTTI Base Class Array'
+// win1.41 009ac858 mac inlined CDBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008deb00 mac 109ed714 CDBox::`RTTI Complete Object Locator'
+// win1.41 008deb04 mac 109ed71c CDBox::`vftable'
+class CDBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0x24];
+
+    // Override methods
+
+    // win1.41 00543d80 mac 105bb960 CDBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 00544040 mac 105bb910 CDBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 00544050 mac 105bb850 CDBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct CDBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -38,5 +63,7 @@ void __fastcall Init__5CDBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogB
 void __fastcall Destroy__5CDBoxFv(struct DialogBoxBase* this) asm("?Destroy@CDBox@@UAEXXZ");
 // win1.41 00544050 mac 105bb850 CDBox::InitControls(void)
 void __fastcall InitControls__5CDBoxFv(struct DialogBoxBase* this) asm("?InitControls@CDBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CD_BOX_INCLUDED_H */

@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 009d7d18 mac inlined CreatureActionInfo::`RTTI Type Descriptor'
+// win1.41 009a9960 mac inlined CreatureActionInfo::`RTTI Base Class Descriptor'
+// win1.41 009a9978 mac inlined CreatureActionInfo::`RTTI Base Class Array'
+// win1.41 009a9988 mac inlined CreatureActionInfo::`RTTI Class Hierarchy Descriptor'
+class CreatureActionInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 004917c0 mac 1022eaa0 CreatureActionInfo::_dt(void)
+    virtual ~CreatureActionInfo();
+    // win1.41 00491750 mac 1022ebc0 CreatureActionInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__18CreatureActionInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureActionInfo@@UAEPAXI@Z");
 // win1.41 00491750 mac 1022ebc0 CreatureActionInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__18CreatureActionInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@CreatureActionInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_ACTION_INFO_INCLUDED_H */

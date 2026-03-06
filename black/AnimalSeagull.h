@@ -8,6 +8,36 @@
 
 #include "AnimalDove.h" /* For struct Dove */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+class Object;
+
+// win1.41 009c9260 mac inlined Seagull::`RTTI Type Descriptor'
+// win1.41 009a73f0 mac inlined Seagull::`RTTI Base Class Descriptor'
+// win1.41 009a7408 mac inlined Seagull::`RTTI Base Class Array'
+// win1.41 009a7438 mac inlined Seagull::`RTTI Class Hierarchy Descriptor'
+class Seagull: public Dove
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041ee60 mac 101716c0 Seagull::_dt(void)
+    virtual ~Seagull();
+    // win1.41 0041ee50 mac 10171790 Seagull::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041ee40 mac 10171750 Seagull::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041bff0 mac 10170260 Seagull::StandAnimation(void)
+    virtual uint32_t StandAnimation();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -41,5 +71,7 @@ char* __fastcall GetDebugText__7SeagullFv(struct GameThing* this) asm("?GetDebug
 uint32_t __fastcall GetSaveType__7SeagullFv(struct GameThing* this) asm("?GetSaveType@Seagull@@UAEIXZ");
 // win1.41 0041bff0 mac 10170260 Seagull::StandAnimation(void)
 uint32_t __fastcall StandAnimation__7SeagullFv(struct Object* this) asm("?StandAnimation@Seagull@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMAL_SEAGULL_INCLUDED_H */

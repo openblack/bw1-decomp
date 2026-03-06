@@ -11,6 +11,35 @@
 #include "CreatureAction.h" /* For struct CreatureActionContextStart */
 #include "CreaturePlan.h" /* For struct CreaturePlan */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Creature;
+
+// win1.41 009dd720 mac inlined CreatureContext::`RTTI Type Descriptor'
+// win1.41 009aa220 mac inlined CreatureContext::`RTTI Base Class Descriptor'
+// win1.41 009aa238 mac inlined CreatureContext::`RTTI Base Class Array'
+// win1.41 009aa248 mac inlined CreatureContext::`RTTI Class Hierarchy Descriptor'
+class CreatureContext: public Base
+{
+public:
+    CreaturePlan plan; /* 0x8 */
+    uint8_t field_0x38[0xc];
+    int field_0x44;
+    uint8_t field_0x48[0xc];
+    uint32_t field_0x54;
+    CREATURE_DESIRE_SOURCE desire_source;
+    CreatureActionContextStart field_0x5c;
+
+    // Override methods
+
+    // win1.41 004cfe60 mac 101da7e0 CreatureContext::_dt(void)
+    virtual ~CreatureContext();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Creature;
@@ -53,5 +82,7 @@ struct PreviousContextStack
   struct CreatureContext contexts[0x5];
 };
 static_assert(sizeof(struct PreviousContextStack) == 0x258, "Data type is of wrong size");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_CONTEXT_INCLUDED_H */

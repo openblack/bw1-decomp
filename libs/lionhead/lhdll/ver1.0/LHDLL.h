@@ -6,6 +6,51 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class LHTransport;
+
+// win1.41 00c0d108 mac inlined LHDLL::`RTTI Type Descriptor'
+// win1.41 009b8ea8 mac inlined LHDLL::`RTTI Base Class Descriptor'
+// win1.41 0099f010 mac 109c41fc LHDLL::`RTTI Complete Object Locator'
+// win1.41 0099f014 mac 109c4204 LHDLL::`vftable'
+class LHDLL
+{
+public:
+    uint8_t field_0x4;
+    void* hmodule;
+    LHTransport* transport;
+    int field_0x10;
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    uint32_t field_0x1c;
+    char* library_path; /* 0x20 */
+
+    // Virtual functions
+
+    virtual uint32_t GetAPI(); /* 0x0 */
+    virtual uint32_t ResetAPI();
+
+    // Static methods
+
+    // win1.41 007ad230 mac 100db740 LHDLL::AddToInternalList(LHDLL*)
+    static LHDLL* AddToInternalList(LHDLL* param_1);
+
+    // Constructors
+
+    // win1.41 007ad370 mac 1061e11c LHDLL::LHDLL(const char*)
+    LHDLL(char* library_path);
+
+    // Non-virtual Destructors
+
+    // win1.41 007ad4c0 mac 1061e14c LHDLL::~LHDLL(void)
+    ~LHDLL();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LHDLL;
@@ -60,5 +105,7 @@ void __fastcall __dt__5LHDLLFv(struct LHDLL* this) asm("??_DLHDLL@@QAEXXZ");
 
 // win1.41 0087fc60 mac 100d98b0 LHIlib::LH3DRenderClose(void)
 int __cdecl LH3DRenderClose__6LHIlibFv(void) asm("?LH3DRenderClose@LHIlib@@SAHXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LHDLL_INCLUDED_H */

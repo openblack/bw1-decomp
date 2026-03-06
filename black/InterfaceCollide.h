@@ -9,6 +9,40 @@
 #include "Base.h" /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct Bubble;
+struct Leash;
+class Object;
+
+// win1.41 00bf1b40 mac inlined GInterfaceCollide::`RTTI Type Descriptor'
+// win1.41 009b1588 mac inlined GInterfaceCollide::`RTTI Base Class Descriptor'
+// win1.41 009b15a0 mac inlined GInterfaceCollide::`RTTI Base Class Array'
+// win1.41 009b15b0 mac inlined GInterfaceCollide::`RTTI Class Hierarchy Descriptor'
+// win1.41 0092aac0 mac 10733130 GInterfaceCollide::`RTTI Complete Object Locator'
+// win1.41 0092aac4 mac 10733138 GInterfaceCollide::`vftable'
+class GInterfaceCollide: public Base
+{
+public:
+    MapCoords pos; /* 0x8 */
+    float pos_distance; /* 0x14 */
+    Object* object;
+    float object_distance;
+    Bubble* bubble; /* 0x20 */
+    float bubble_distance;
+    Leash* leash;
+    float leash_distance;
+
+    // Override methods
+
+    // win1.41 005ce380 mac 1017a1d0 GInterfaceCollide::_dt(void)
+    virtual ~GInterfaceCollide();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Bubble;
@@ -48,5 +82,7 @@ extern const struct BaseVftable __vt__17GInterfaceCollide asm("??_7GInterfaceCol
 
 // win1.41 005ce380 mac 1017a1d0 GInterfaceCollide::_dt(void)
 void __fastcall __dt__17GInterfaceCollideFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGInterfaceCollide@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_INTERFACE_COLLIDE_INCLUDED_H */

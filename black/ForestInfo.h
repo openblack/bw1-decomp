@@ -8,6 +8,28 @@
 
 #include "ContainerInfo.h" /* For struct GContainerInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00bea240 mac inlined GForestInfo::`RTTI Type Descriptor'
+// win1.41 009ac730 mac inlined GForestInfo::`RTTI Base Class Descriptor'
+// win1.41 009ac748 mac inlined GForestInfo::`RTTI Base Class Array'
+// win1.41 009ac760 mac inlined GForestInfo::`RTTI Class Hierarchy Descriptor'
+class GForestInfo: public GContainerInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 005399c0 mac 100f2980 GForestInfo::_dt(void)
+    virtual ~GForestInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 005399c0 mac 100f2980 GForestInfo::_dt(void)
 void __fastcall __dt__11GForestInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGForestInfo@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FOREST_INFO_INCLUDED_H */

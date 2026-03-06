@@ -10,6 +10,37 @@
 #include "GatheringText.h" /* For enum TEXTJUSTIFY */
 #include "SetupStaticText.h" /* For struct SetupStaticText */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class SetupControl;
+
+// win1.41 00bef140 mac inlined SetupStaticTextNoHit::`RTTI Type Descriptor'
+// win1.41 009b0598 mac inlined SetupStaticTextNoHit::`RTTI Base Class Descriptor'
+// win1.41 009b05b0 mac inlined SetupStaticTextNoHit::`RTTI Base Class Array'
+// win1.41 009b05c0 mac inlined SetupStaticTextNoHit::`RTTI Class Hierarchy Descriptor'
+// win1.41 00900094 mac 1099b094 SetupStaticTextNoHit::`RTTI Complete Object Locator'
+// win1.41 00900098 mac 1099b09c SetupStaticTextNoHit::`vftable'
+class SetupStaticTextNoHit: public SetupStaticText
+{
+public:
+
+    // Override methods
+
+    // win1.41 00571f00 mac 10328c60 SetupStaticTextNoHit::HitTest(int, int)
+    virtual bool HitTest(int x, int y);
+    // win1.41 00571f10 mac 10328bc0 SetupStaticTextNoHit::~SetupStaticTextNoHit(void)
+    virtual ~SetupStaticTextNoHit();
+
+    // Constructors
+
+    // win1.41 inlined mac 10327f40 SetupStaticTextNoHit::SetupStaticTextNoHit(int, int, int, int, int, wchar_t *, TEXTJUSTIFY)
+    SetupStaticTextNoHit(int id, int x, int y, int width, int height, const char16_t* label, TEXTJUSTIFY text_justify);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SetupControl;
@@ -46,5 +77,7 @@ struct SetupStaticTextNoHit* __fastcall __ct__20SetupStaticTextNoHitFiiiiiPw11TE
 bool __fastcall HitTest__20SetupStaticTextNoHitFii(struct SetupControl* this, const void* edx, int x, int y) asm("?HitTest@SetupStaticTextNoHit@@UAE_NHH@Z");
 // win1.41 00571f10 mac 10328bc0 SetupStaticTextNoHit::~SetupStaticTextNoHit(void)
 void __fastcall __dt__20SetupStaticTextNoHitFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupStaticTextNoHit@@QAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_STATIC_TEXT_NO_HIT_INCLUDED_H */

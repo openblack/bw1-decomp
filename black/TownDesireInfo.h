@@ -11,6 +11,61 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GPrayerIconInfo;
+struct GTownDesireFunction;
+
+// win1.41 00c22c98 mac inlined GTownDesireInfo::`RTTI Type Descriptor'
+// win1.41 009b9bd8 mac inlined GTownDesireInfo::`RTTI Base Class Descriptor'
+// win1.41 009b9bf0 mac inlined GTownDesireInfo::`RTTI Base Class Array'
+// win1.41 009b9c00 mac inlined GTownDesireInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 0099a094 mac 109e57f0 GTownDesireInfo::`RTTI Complete Object Locator'
+// win1.41 0099a098 mac 109e57f8 GTownDesireInfo::`vftable'
+class GTownDesireInfo: public GBaseInfo
+{
+public:
+    GPrayerIconInfo* associatedPrayerSite; /* 0x10 */
+    float showsAfterPercent;
+    float desireTriggersVillagerAction;
+    float desireTriggersVillagerEmergencyAction;
+    VILLAGER_BASIC_INFO associatedVillagerBirth[0x3]; /* 0x20 */
+    MESH_LIST worshipSiteMesh;
+    int worshipSiteSlot; /* 0x30 */
+    float worshipSiteScale;
+    float desireToBeliefScale;
+    float desireAffectsBeliefAfter;
+    float desireBuildWonderReducer; /* 0x40 */
+    float desireValueGreaterCausesDecayInBelief;
+    float desireToBeliefThresholdDecay;
+    float desireAffectsAlignmentAfter;
+    float howImportantDesireIsToAlignment; /* 0x50 */
+    uint32_t maxTimeForAlignmentChange;
+    float tribeMultiplier[0x9];
+    HELP_TEXT helpStartEnum; /* 0x7c */
+    HELP_TEXT helpEndEnum; /* 0x80 */
+    HELP_TEXT helpStatEnum;
+    uint32_t helpMessage;
+    uint32_t helpCondition;
+
+    // Override methods
+
+    // win1.41 00744b90 mac 1055d6c0 GTownDesireInfo::_dt(void)
+    virtual ~GTownDesireInfo();
+    // win1.41 00744b20 mac 1055ef20 GTownDesireInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+
+    // Non-virtual methods
+
+    // win1.41 00746580 mac 1005ebc0 GTownDesireInfo::GetDesireFunctions(void) const
+    GTownDesireFunction* GetDesireFunctions();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -71,5 +126,7 @@ struct GTownDesireFunction* __fastcall GetDesireFunctions__15GTownDesireInfoCFv(
 void __fastcall __dt__15GTownDesireInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGTownDesireInfo@@UAEPAXI@Z");
 // win1.41 00744b20 mac 1055ef20 GTownDesireInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__15GTownDesireInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GTownDesireInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_INFO_INCLUDED_H */

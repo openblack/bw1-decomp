@@ -12,6 +12,43 @@
 
 #include "SetupButton.h" /* For struct SetupButton */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class SetupControl;
+
+// win1.41 009c8278 mac inlined SetupTabButton::`RTTI Type Descriptor'
+// win1.41 009a6838 mac inlined SetupTabButton::`RTTI Base Class Descriptor'
+// win1.41 009a6850 mac inlined SetupTabButton::`RTTI Base Class Array'
+// win1.41 009a6860 mac inlined SetupTabButton::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ab4cc mac 10730f08 SetupTabButton::`RTTI Complete Object Locator'
+// win1.41 008ab4d0 mac 10730f10 SetupTabButton::`vftable'
+class SetupTabButton: public SetupButton
+{
+public:
+    bool32_t selected; /* 0x244 */
+    bool32_t first_in_row;
+    bool32_t last_in_row;
+    LH3DColor color; /* 0x250 */
+
+    // Override methods
+
+    // win1.41 0040f3a0 mac 104081c0 SetupTabButton::Draw(bool, bool)
+    virtual void Draw(bool hovered, bool selected);
+    // win1.41 0040f670 mac 1037abd0 SetupTabButton::KeyDown(int, int)
+    virtual void KeyDown(LHKey key, LHKeyMod mod);
+    // win1.41 0040f690 mac 10369440 SetupTabButton::~SetupTabButton(void)
+    virtual ~SetupTabButton();
+
+    // Constructors
+
+    // win1.41 0040f5e0 mac 101995b0 SetupTabButton::SetupTabButton(int, int, int, int, int, wchar_t *, int, int, int)
+    SetupTabButton(int id, int x, int y, int width, int height, const char16_t* label, bool selected, bool first_in_row, bool last_in_row);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SetupControl;
@@ -54,5 +91,7 @@ void __fastcall Draw__14SetupTabButtonFbb(struct SetupControl* this, const void*
 void __fastcall KeyDown__14SetupTabButtonFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod) asm("?KeyDown@SetupTabButton@@UAEXHH@Z");
 // win1.41 0040f690 mac 10369440 SetupTabButton::~SetupTabButton(void)
 void __fastcall __dt__14SetupTabButtonFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupTabButton@@QAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_TAB_BUTTON_INCLUDED_H */

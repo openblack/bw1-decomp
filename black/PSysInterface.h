@@ -11,6 +11,55 @@
 #include "GameThing.h" /* For struct GameThingVftable */
 #include "PSysBase.h" /* For struct PSysBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+struct LHPoint;
+struct PSysProcessInfo;
+class Spell;
+
+// win1.41 00bed500 mac inlined PSysInterface::`RTTI Type Descriptor'
+// win1.41 009aec88 mac inlined PSysInterface::`RTTI Base Class Descriptor'
+// win1.41 009aecf8 mac inlined PSysInterface::`RTTI Base Class Array'
+// win1.41 009aed10 mac inlined PSysInterface::`RTTI Class Hierarchy Descriptor'
+// win1.41 008fa9d4 mac 107461ac PSysInterface::`RTTI Complete Object Locator'
+// win1.41 008fa9d8 mac 106f5fd8 PSysInterface::`vftable'
+class PSysInterface: public PSysBase
+{
+public:
+    // Virtual functions
+
+    virtual uint32_t Process_1(const PSysProcessInfo* info, uint32_t param_3); /* 0xfc */
+    virtual void Process_2(PSysProcessInfo* info); /* 0x100 */
+    virtual void Draw_1(float param_1, bool param_2);
+    virtual void Draw_2(bool param_1);
+    virtual void AddDrawing(float param_1, const LHPoint* param_2);
+    virtual void AddTarget_1(const LHPoint* target); /* 0x110 */
+    virtual void AddTarget_2(GameThing* target);
+    virtual void CloseDown();
+    virtual void SetMagnitude(float value);
+    virtual void SetAge(float value); /* 0x120 */
+    virtual void SetOrigin(const LHPoint* value);
+    virtual void SetOriginAndMoveAllAtoms(const LHPoint* value);
+    virtual void SetAlpha(uint8_t value);
+    virtual LHPoint* GetOrigin(); /* 0x130 */
+
+    // Override methods
+
+    // win1.41 0055ee30 mac 101109b0 PSysInterface::_dt(void)
+    virtual ~PSysInterface();
+
+    // Static methods
+
+    // win1.41 0068e910 mac 100053c0 PSysInterface::Create(Spell *, PARTICLE_TYPE, LHPoint const &, LHPoint const &, float, PSysInterface::NET_GAME_TYPE)
+    static PSysInterface* Create(Spell* spell, PARTICLE_TYPE particle_type, LHPoint* param_3, LHPoint* param_4, float param_5, PSysInterface__NET_GAME_TYPE game_type);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -88,5 +137,7 @@ struct PSysInterface* __cdecl Create__13PSysInterfaceFP5Spell13PARTICLE_TYPERC7L
 
 // win1.41 0055ee30 mac 101109b0 PSysInterface::_dt(void)
 void __fastcall __dt__13PSysInterfaceFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GPSysInterface@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_P_SYS_INTERFACE_INCLUDED_H */

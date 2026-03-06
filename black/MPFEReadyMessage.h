@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf49d8 mac inlined MPFEReadyMessage::`RTTI Type Descriptor'
+// win1.41 009b2408 mac inlined MPFEReadyMessage::`RTTI Base Class Descriptor'
+// win1.41 009b2420 mac inlined MPFEReadyMessage::`RTTI Base Class Array'
+// win1.41 009b2430 mac inlined MPFEReadyMessage::`RTTI Class Hierarchy Descriptor'
+class MPFEReadyMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00627d80 mac inlined MPFEReadyMessage::_dt(void)
+    virtual ~MPFEReadyMessage();
+};
+
+#else // __cplusplus
+
 struct MPFEReadyMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00627d80 mac inlined MPFEReadyMessage::_dt(void)
 void __fastcall __dt__16MPFEReadyMessageFv(struct MPFEMessageObject* this) asm("??_GMPFEReadyMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_READY_MESSAGE_INCLUDED_H */

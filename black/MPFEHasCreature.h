@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf4a20 mac inlined MPFEHasCreature::`RTTI Type Descriptor'
+// win1.41 009b24a8 mac inlined MPFEHasCreature::`RTTI Base Class Descriptor'
+// win1.41 009b24c0 mac inlined MPFEHasCreature::`RTTI Base Class Array'
+// win1.41 009b24d0 mac inlined MPFEHasCreature::`RTTI Class Hierarchy Descriptor'
+class MPFEHasCreature: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00628010 mac inlined MPFEHasCreature::_dt(void)
+    virtual ~MPFEHasCreature();
+};
+
+#else // __cplusplus
+
 struct MPFEHasCreature
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00628010 mac inlined MPFEHasCreature::_dt(void)
 void __fastcall __dt__15MPFEHasCreatureFv(struct MPFEMessageObject* this) asm("??_GMPFEHasCreature@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_HAS_CREATURE_INCLUDED_H */

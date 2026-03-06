@@ -10,6 +10,57 @@
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GPlayer;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00becd40 mac inlined GParticleContainer::`RTTI Type Descriptor'
+// win1.41 009ae108 mac inlined GParticleContainer::`RTTI Base Class Descriptor'
+// win1.41 009ae120 mac inlined GParticleContainer::`RTTI Base Class Array'
+// win1.41 009ae138 mac inlined GParticleContainer::`RTTI Class Hierarchy Descriptor'
+// win1.41 008e2a10 mac 107461ec GParticleContainer::`RTTI Complete Object Locator'
+// win1.41 008e2a14 mac 107461f4 GParticleContainer::`vftable'
+class GParticleContainer: public GameThingWithPos
+{
+public:
+    GameThingWithPos* thing; /* 0x28 */
+    uint32_t field_0x2c;
+    uint32_t field_0x30;
+    float field_0x34;
+    bool field_0x38;
+    GParticleContainer* next;
+
+    // Override methods
+
+    // win1.41 00560f80 mac 1010fd40 GParticleContainer::_dt(void)
+    virtual ~GParticleContainer();
+    // win1.41 0063e1d0 mac 10110830 GParticleContainer::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 0063e3c0 mac 10000fb0 GParticleContainer::SetPlayer(GPlayer *)
+    virtual void SetPlayer(GPlayer* param_1);
+    // win1.41 00560f70 mac 1010feb0 GParticleContainer::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0063e6d0 mac 1010ff00 GParticleContainer::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 0063e5d0 mac 101100b0 GParticleContainer::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 00560f60 mac 1010fe70 GParticleContainer::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0063e3f0 mac 10110510 GParticleContainer::SetScale(float)
+    virtual void SetScale(float param_1);
+    // win1.41 00560f40 mac 1010fde0 GParticleContainer::GetText(void)
+    virtual const char* GetText();
+    // win1.41 00560f50 mac 1010fe20 GParticleContainer::IsParticleContainer(void)
+    virtual uint32_t IsParticleContainer();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -68,5 +119,7 @@ const char* __fastcall GetText__18GParticleContainerFv(struct GameThingWithPos* 
 uint32_t __fastcall IsParticleContainer__18GParticleContainerFv(struct GameThingWithPos* this) asm("?IsParticleContainer@GParticleContainer@@UAEIXZ");
 
 DECLARE_LH_LIST_HEAD(GParticleContainer);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PARTICLE_CONTAINER_INCLUDED_H */

@@ -9,6 +9,71 @@
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GPlayer;
+class GameOSFile;
+class GameThing;
+struct MapCoords;
+struct MistListNode;
+
+// win1.41 00becc88 mac inlined Mist::`RTTI Type Descriptor'
+// win1.41 009adea0 mac inlined Mist::`RTTI Base Class Descriptor'
+// win1.41 009adeb8 mac inlined Mist::`RTTI Base Class Array'
+// win1.41 009aded0 mac inlined Mist::`RTTI Class Hierarchy Descriptor'
+// win1.41 008eb63c mac 10745708 Mist::`RTTI Complete Object Locator'
+// win1.41 008eb640 mac 10745710 Mist::`vftable'
+class Mist: public GameThingWithPos
+{
+public:
+    uint32_t field_0x28;
+    float field_0x2c;
+    uint32_t field_0x30;
+    float field_0x34;
+    uint8_t field_0x38[0x14];
+    uint32_t field_0x4c;
+    Mist* next; /* 0x50 */
+
+    // Override methods
+
+    // win1.41 0055ebd0 mac 101045f0 Mist::_dt(void)
+    virtual ~Mist();
+    // win1.41 00606300 mac 10105480 Mist::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 0055eb70 mac 10104680 Mist::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 0055ebc0 mac 10104780 Mist::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00606a10 mac 10104820 Mist::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00606920 mac 10104980 Mist::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055ebb0 mac 10104750 Mist::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00606af0 mac 101047c0 Mist::ResolveLoad(void)
+    virtual void ResolveLoad();
+    // win1.41 0055eba0 mac 10104710 Mist::GetCreatureBeliefType(void)
+    virtual uint32_t GetCreatureBeliefType();
+    // win1.41 006067d0 mac 10104c90 Mist::GetDistanceFromObject(MapCoords const &)
+    virtual float GetDistanceFromObject(const MapCoords* param_1);
+    // win1.41 0055eb90 mac 101046e0 Mist::IsMist(void)
+    virtual uint32_t IsMist();
+    // win1.41 0055eb80 mac 101046b0 Mist::GetText(void)
+    virtual const char* GetText();
+    // win1.41 00606910 mac 10104af0 Mist::GetScriptObjectType(void)
+    virtual uint32_t GetScriptObjectType();
+
+    // Constructors
+
+    // win1.41 00606270 mac 101056c0 Mist::Mist(MapCoords const &, float, unsigned long, float)
+    Mist(MapCoords* coords, float param_3, uint32_t param_4, float param_5);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -81,5 +146,7 @@ const char* __fastcall GetText__4MistFv(struct GameThingWithPos* this) asm("?Get
 uint32_t __fastcall GetScriptObjectType__4MistFv(struct GameThingWithPos* this) asm("?GetScriptObjectType@Mist@@UAEIXZ");
 
 DECLARE_LH_LIST_HEAD(Mist);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MIST_INCLUDED_H */

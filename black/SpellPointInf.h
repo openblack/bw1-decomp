@@ -8,6 +8,38 @@
 
 #include "PSysBase.h" /* For struct PSysBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00bed730 mac inlined SpellPointInf::`RTTI Type Descriptor'
+// win1.41 009af120 mac inlined SpellPointInf::`RTTI Base Class Descriptor'
+// win1.41 009af138 mac inlined SpellPointInf::`RTTI Base Class Array'
+// win1.41 009af150 mac inlined SpellPointInf::`RTTI Class Hierarchy Descriptor'
+class SpellPointInf: public PSysBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f450 mac 1041f870 SpellPointInf::_dt(void)
+    virtual ~SpellPointInf();
+    // win1.41 0055f440 mac 1041f940 SpellPointInf::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00698240 mac 104192e0 SpellPointInf::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 006ced60 mac 10480d70 SpellPointInf::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055f430 mac 1041f900 SpellPointInf::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -43,5 +75,7 @@ uint32_t __fastcall Load__13SpellPointInfFR10GameOSFile(struct GameThing* this, 
 uint32_t __fastcall Save__13SpellPointInfFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@SpellPointInf@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0055f430 mac 1041f900 SpellPointInf::GetSaveType(void)
 uint32_t __fastcall GetSaveType__13SpellPointInfFv(struct GameThing* this) asm("?GetSaveType@SpellPointInf@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPELL_POINT_INF_INCLUDED_H */

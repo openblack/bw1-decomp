@@ -8,6 +8,29 @@
 
 #include "LH3DStaticObject.h" /* For struct LH3DStaticObject */
 
+#ifdef __cplusplus
+
+// win1.41 009a22e4 mac 101cd2bc LH3DMist::`RTTI Complete Object Locator'
+// win1.41 009a22e8 mac 101cd2c4 LH3DMist::`vftable'
+class LH3DMist: public LH3DStaticObject
+{
+public:
+    uint32_t field_0x80;
+    uint32_t field_0x84;
+    float field_0x88;
+    float field_0x8c;
+    uint32_t field_0x90;
+    LH3DMist* next;
+    uint32_t field_0x98;
+
+    // Constructors
+
+    // win1.41 007f9560 mac 100b45b0 LH3DMist::LH3DMist(void)
+    LH3DMist();
+};
+
+#else // __cplusplus
+
 struct LH3DMist
 {
   struct LH3DStaticObject super;  /* 0x0 */
@@ -32,5 +55,7 @@ extern const struct LH3DObjectVftable __vt__8LH3DMist asm("??_7LH3DMist@@6B@");
 
 // win1.41 007f9560 mac 100b45b0 LH3DMist::LH3DMist(void)
 struct LH3DMist* __fastcall __ct__8LH3DMistFv(struct LH3DMist* this) asm("??0LH3DMist@@QAE@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_MIST_INCLUDED_H */

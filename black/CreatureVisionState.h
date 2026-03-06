@@ -9,6 +9,35 @@
 #include "Base.h" /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */
 
+#ifdef __cplusplus
+
+// win1.41 009dd7e8 mac inlined CreatureVisionState::`RTTI Type Descriptor'
+// win1.41 009aa270 mac inlined CreatureVisionState::`RTTI Base Class Descriptor'
+// win1.41 009aa288 mac inlined CreatureVisionState::`RTTI Base Class Array'
+// win1.41 009aa298 mac inlined CreatureVisionState::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cf87c mac 107873fc CreatureVisionState::`RTTI Complete Object Locator'
+// win1.41 008cf880 mac 10787404 CreatureVisionState::`vftable'
+class CreatureVisionState: public Base
+{
+public:
+    CreatureInterestingThingToLookAt thing_to_look_at; /* 0x8 */
+    uint32_t field_0x28;
+    uint32_t field_0x2c;
+    uint32_t field_0x30;
+    uint32_t field_0x34;
+    uint32_t field_0x38;
+    uint32_t field_0x3c;
+    uint32_t field_0x40;
+    uint32_t field_0x44;
+
+    // Override methods
+
+    // win1.41 004d0370 mac 10245880 CreatureVisionState::_dt(void)
+    virtual ~CreatureVisionState();
+};
+
+#else // __cplusplus
+
 struct CreatureInterestingThingToLookAt
 {
   uint32_t field_0x0;
@@ -59,5 +88,7 @@ extern const struct BaseVftable __vt__19CreatureVisionState asm("??_7CreatureVis
 
 // win1.41 004d0370 mac 10245880 CreatureVisionState::_dt(void)
 void __fastcall __dt__19CreatureVisionStateFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureVisionState@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_VISION_STATE_INCLUDED_H */

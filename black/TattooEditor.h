@@ -9,6 +9,33 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea490 mac inlined TattooEditor::`RTTI Type Descriptor'
+// win1.41 009acc40 mac inlined TattooEditor::`RTTI Base Class Descriptor'
+// win1.41 009acc58 mac inlined TattooEditor::`RTTI Base Class Array'
+// win1.41 009acc68 mac inlined TattooEditor::`RTTI Class Hierarchy Descriptor'
+// win1.41 008debf0 mac 109ed754 TattooEditor::`RTTI Complete Object Locator'
+// win1.41 008debf4 mac 109ed75c TattooEditor::`vftable'
+class TattooEditor: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0x3218];
+
+    // Override methods
+
+    // win1.41 00542510 mac 105bdae0 TattooEditor::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 005427e0 mac 105bda80 TattooEditor::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0053bd20 mac 105c5eb0 TattooEditor::CanESCOut(void)
+    virtual bool CanESCOut();
+    // win1.41 005433e0 mac 105bc900 TattooEditor::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct TattooEditor
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -41,5 +68,7 @@ void __fastcall Destroy__12TattooEditorFv(struct DialogBoxBase* this) asm("?Dest
 bool __fastcall CanESCOut__12TattooEditorFv(struct DialogBoxBase* this) asm("?CanESCOut@TattooEditor@@UAE_NXZ");
 // win1.41 005433e0 mac 105bc900 TattooEditor::InitControls(void)
 void __fastcall InitControls__12TattooEditorFv(struct DialogBoxBase* this) asm("?InitControls@TattooEditor@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_TATTOO_EDITOR_INCLUDED_H */

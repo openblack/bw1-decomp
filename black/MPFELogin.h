@@ -9,6 +9,67 @@
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 #include "MPFEDatabase.h" /* For struct MPFEDatabase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class SetupBigButton;
+class SetupEdit;
+class SetupStaticText;
+
+// win1.41 00bfda80 mac inlined MPFELogin::`RTTI Type Descriptor'
+// win1.41 009b2af0 mac inlined MPFELogin::`RTTI Base Class Descriptor'
+// win1.41 009b2b08 mac inlined MPFELogin::`RTTI Base Class Array'
+// win1.41 009b2b18 mac inlined MPFELogin::`RTTI Class Hierarchy Descriptor'
+// win1.41 00930964 mac 109a3a28 MPFELogin::`RTTI Complete Object Locator'
+// win1.41 00930968 mac 109a3a30 MPFELogin::`vftable'
+class MPFELogin: public DialogBoxBase
+{
+public:
+    SetupBigButton* left_arrow_button; /* 0x10 */
+    SetupBigButton* right_arrow_button;
+    SetupEdit* edit;
+    SetupEdit* edit2;
+    SetupStaticText* text1; /* 0x20 */
+    SetupStaticText* text2;
+    SetupStaticText* text3;
+    MPFEDatabase database;
+    void* field_0x38;
+    char field_0x3c[0x20];
+
+    // Override methods
+
+    // win1.41 006307f0 mac 103a7750 MPFELogin::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 00630d60 mac 103a7720 MPFELogin::Destroy(void)
+    virtual void Destroy();
+    // win1.41 00630610 mac 103a7d90 MPFELogin::InitControls(void)
+    virtual void InitControls();
+
+    // Constructors
+
+    // win1.41 00630580 mac 103a80e0 MPFELogin::MPFELogin(void)
+    MPFELogin();
+};
+
+// win1.41 00bfdb38 mac inlined MPFELoginDatabase::`RTTI Type Descriptor'
+// win1.41 009b2b40 mac inlined MPFELoginDatabase::`RTTI Base Class Descriptor'
+// win1.41 009b2b58 mac inlined MPFELoginDatabase::`RTTI Base Class Array'
+// win1.41 009b2b68 mac inlined MPFELoginDatabase::`RTTI Class Hierarchy Descriptor'
+// win1.41 0093098c mac 109a39c4 MPFELoginDatabase::`RTTI Complete Object Locator'
+// win1.41 00930990 mac 109a39cc MPFELoginDatabase::`vftable'
+class MPFELoginDatabase: public MPFEDatabase
+{
+public:
+
+    // Constructors
+
+    // win1.41 00631050 mac 103a7490 MPFELoginDatabase::MPFELoginDatabase(void)
+    MPFELoginDatabase();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SetupBigButton;
@@ -88,5 +149,7 @@ struct MPFELoginDatabase* __fastcall __ct__17MPFELoginDatabaseFv(struct MPFELogi
 
 // win1.41 00630530 mac 103a8100 __sinit_MPFELogin_cpp
 void __cdecl __sinit_MPFELogin_cpp(void);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_LOGIN_INCLUDED_H */

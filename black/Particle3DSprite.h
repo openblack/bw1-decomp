@@ -8,6 +8,34 @@
 
 #include "PSysRenderParticle.h" /* For struct RenderParticle */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00bed5e0 mac inlined Particle3DSprite::`RTTI Type Descriptor'
+// win1.41 009aee60 mac inlined Particle3DSprite::`RTTI Base Class Descriptor'
+// win1.41 009aee78 mac inlined Particle3DSprite::`RTTI Base Class Array'
+// win1.41 009aee90 mac inlined Particle3DSprite::`RTTI Class Hierarchy Descriptor'
+class Particle3DSprite: public RenderParticle
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f070 mac inlined Particle3DSprite::_dt(void)
+    virtual ~Particle3DSprite();
+    // win1.41 0055f050 mac inlined Particle3DSprite::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00695ac0 mac inlined Particle3DSprite::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -39,5 +67,7 @@ void __fastcall __dt__16Particle3DSpriteFv(struct Base* this, const void* edx, u
 char* __fastcall GetDebugText__16Particle3DSpriteFv(struct GameThing* this) asm("?GetDebugText@Particle3DSprite@@UAEPADXZ");
 // win1.41 00695ac0 mac inlined Particle3DSprite::Load(GameOSFile &)
 uint32_t __fastcall Load__16Particle3DSpriteFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@Particle3DSprite@@UAEIAAVGameOSFile@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PARTICLE_3D_SPRITE_INCLUDED_H */

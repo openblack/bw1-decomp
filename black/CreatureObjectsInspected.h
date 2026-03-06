@@ -8,6 +8,27 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bdfeb8 mac inlined CreatureObjectsInspected::`RTTI Type Descriptor'
+// win1.41 009ab0d8 mac inlined CreatureObjectsInspected::`RTTI Base Class Descriptor'
+// win1.41 009ab0f0 mac inlined CreatureObjectsInspected::`RTTI Base Class Array'
+// win1.41 009ab100 mac inlined CreatureObjectsInspected::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d0544 mac 10787634 CreatureObjectsInspected::`RTTI Complete Object Locator'
+// win1.41 008d0548 mac 1078763c CreatureObjectsInspected::`vftable'
+class CreatureObjectsInspected: public Base
+{
+public:
+    uint32_t field_0x8[0x18];
+
+    // Override methods
+
+    // win1.41 004e3520 mac 102466c0 CreatureObjectsInspected::_dt(void)
+    virtual ~CreatureObjectsInspected();
+};
+
+#else // __cplusplus
+
 struct CreatureObjectsInspected
 {
   struct Base super;  /* 0x0 */
@@ -34,5 +55,7 @@ extern const struct BaseVftable __vt__24CreatureObjectsInspected asm("??_7Creatu
 
 // win1.41 004e3520 mac 102466c0 CreatureObjectsInspected::_dt(void)
 void __fastcall __dt__24CreatureObjectsInspectedFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureObjectsInspected@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_OBJECTS_INSPECTED_INCLUDED_H */

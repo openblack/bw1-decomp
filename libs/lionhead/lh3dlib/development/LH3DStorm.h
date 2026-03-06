@@ -5,6 +5,30 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LHPoint;
+class WeatherInfo;
+
+// win1.41 00c24780 mac inlined LH3DStorm::`RTTI Type Descriptor'
+// win1.41 009ba028 mac inlined LH3DStorm::`RTTI Base Class Descriptor'
+// win1.41 009a3b00 mac 101cd534 LH3DStorm::`vftable'
+class LH3DStorm
+{
+public:
+    // Virtual functions
+
+    virtual void Update(float param_1); /* 0x0 */
+    virtual void DrawClouds();
+    virtual void DebugDraw();
+    virtual void CalcAtmos(LHPoint* point, WeatherInfo* info);
+    virtual ~LH3DStorm(); /* 0x10 */
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LH3DStorm;
@@ -35,5 +59,7 @@ extern struct RTTITypeDescriptor __RTTITypeDescriptor__9LH3DStorm asm("??_R0?AUL
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9LH3DStorm asm("??_R1A@?0A@A@LH3DStorm@@8");
 // win1.41 009a3b00 mac 101cd534 LH3DStorm::`vftable'
 extern const struct LH3DStormVftable __vt__9LH3DStorm asm("??_7LH3DStorm@@6B@");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_STORM_INCLUDED_H */

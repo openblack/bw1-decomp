@@ -9,6 +9,37 @@
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+struct MapCoords;
+
+// win1.41 00be9d48 mac inlined GFieldTypeInfo::`RTTI Type Descriptor'
+// win1.41 009ac1d0 mac inlined GFieldTypeInfo::`RTTI Base Class Descriptor'
+// win1.41 009ac1e8 mac inlined GFieldTypeInfo::`RTTI Base Class Array'
+// win1.41 009ac200 mac inlined GFieldTypeInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d9b2c mac 1073ed24 GFieldTypeInfo::`RTTI Complete Object Locator'
+// win1.41 008d9b30 mac 1073ed2c GFieldTypeInfo::`vftable'
+class GFieldTypeInfo: public GMultiMapFixedInfo
+{
+public:
+    uint8_t field_0x20[0x34]; /* 0x120 */
+
+    // Override methods
+
+    // win1.41 00527da0 mac 100d1a40 GFieldTypeInfo::_dt(void)
+    virtual ~GFieldTypeInfo();
+    // win1.41 00527d30 mac 100d18c0 GFieldTypeInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    // win1.41 00528e50 mac 100d4190 GFieldTypeInfo::IsOkToCreateAtPos( const(MapCoords const &, float, float))
+    virtual bool IsOkToCreateAtPos(const MapCoords* param_1, float param_2, float param_3);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -48,5 +79,7 @@ bool __fastcall IsOkToCreateAtPos__14GFieldTypeInfoCFRC9MapCoordsff(const struct
 
 // win1.41 00527cf0 mac inlined __sinit_GFieldTypeInfo_cpp
 void __cdecl __sinit_GFieldTypeInfo_cpp(void);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FIELD_TYPE_INFO_INCLUDED_H */

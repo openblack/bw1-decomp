@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bfd930 mac inlined MPFEStartGameOkayToStartMessage::`RTTI Type Descriptor'
+// win1.41 009b2910 mac inlined MPFEStartGameOkayToStartMessage::`RTTI Base Class Descriptor'
+// win1.41 009b2928 mac inlined MPFEStartGameOkayToStartMessage::`RTTI Base Class Array'
+// win1.41 009b2938 mac inlined MPFEStartGameOkayToStartMessage::`RTTI Class Hierarchy Descriptor'
+class MPFEStartGameOkayToStartMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 0062fb90 mac 10393eb0 MPFEStartGameOkayToStartMessage::_dt(void)
+    virtual ~MPFEStartGameOkayToStartMessage();
+};
+
+#else // __cplusplus
+
 struct MPFEStartGameOkayToStartMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 0062fb90 mac 10393eb0 MPFEStartGameOkayToStartMessage::_dt(void)
 void __fastcall __dt__31MPFEStartGameOkayToStartMessageFv(struct MPFEMessageObject* this) asm("??_GMPFEStartGameOkayToStartMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_START_GAME_OKAY_TO_START_MESSAGE_INCLUDED_H */

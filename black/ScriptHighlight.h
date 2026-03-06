@@ -10,6 +10,115 @@
 
 #include "Fixed.h" /* For struct SingleMapFixed */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Creature;
+class EffectValues;
+class GInterfaceStatus;
+class GameOSFile;
+class GameThing;
+class GameThingWithPos;
+struct LHPoint;
+struct MapCoords;
+class Object;
+struct RPHolder;
+
+// win1.41 00c0d850 mac inlined ScriptHighlight::`RTTI Type Descriptor'
+// win1.41 009b8f68 mac inlined ScriptHighlight::`RTTI Base Class Descriptor'
+// win1.41 009b8f80 mac inlined ScriptHighlight::`RTTI Base Class Array'
+// win1.41 009b8fa0 mac inlined ScriptHighlight::`RTTI Class Hierarchy Descriptor'
+// win1.41 00942288 mac 109c45c8 ScriptHighlight::`RTTI Complete Object Locator'
+// win1.41 0094228c mac 106fa600 ScriptHighlight::`vftable'
+class ScriptHighlight: public SingleMapFixed
+{
+public:
+    uint8_t field_0x5c[0x30];
+
+    // Override methods
+
+    // win1.41 00709870 mac 104fc120 ScriptHighlight::_dt(void)
+    virtual ~ScriptHighlight();
+    // win1.41 00709980 mac 104fbf60 ScriptHighlight::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00709860 mac 104fa730 ScriptHighlight::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0070a8f0 mac 104fb050 ScriptHighlight::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 0070a760 mac 104fb290 ScriptHighlight::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 00709850 mac 104fa6f0 ScriptHighlight::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00709760 mac 104fa210 ScriptHighlight::PhysicsEditorCreate(int)
+    virtual void PhysicsEditorCreate(int param_1);
+    // win1.41 0070ae10 mac 104fa8c0 ScriptHighlight::GetOverwriteTapToolTip(void)
+    virtual uint32_t GetOverwriteTapToolTip();
+    // win1.41 007097a0 mac 104fa370 ScriptHighlight::CanBeSleptNextToByCreature(Creature *)
+    virtual uint32_t CanBeSleptNextToByCreature(Creature* param_1);
+    // win1.41 00709830 mac 104fa640 ScriptHighlight::CanBePickedUpByCreature(Creature *)
+    virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+    // win1.41 007097c0 mac 104fa420 ScriptHighlight::CanBeSetOnFire(Creature *)
+    virtual uint32_t CanBeSetOnFire(Creature* param_1);
+    // win1.41 007097b0 mac 104fa3d0 ScriptHighlight::CanBeDestroyedByStoning(Creature *)
+    virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
+    // win1.41 00709750 mac 104fa1d0 ScriptHighlight::IsActive( const(void))
+    virtual uint32_t IsActive();
+    // win1.41 0070aa70 mac 104faf70 ScriptHighlight::ForDrawFXGetNumVertices(void)
+    virtual int ForDrawFXGetNumVertices();
+    // win1.41 0070aac0 mac 104facf0 ScriptHighlight::ForDrawFXGetVertexPos(long, LHPoint *)
+    virtual void ForDrawFXGetVertexPos(int param_1, LHPoint* param_2);
+    // win1.41 00709740 mac 104fa180 ScriptHighlight::IsScriptHighlight(void)
+    virtual uint32_t IsScriptHighlight();
+    // win1.41 0070ae30 mac 100083b0 ScriptHighlight::GetScriptObjectType(void)
+    virtual uint32_t GetScriptObjectType();
+    // win1.41 0070a580 mac 10055e10 ScriptHighlight::Process(void)
+    virtual uint32_t Process();
+    // win1.41 00709c60 mac 10043ec0 ScriptHighlight::Draw(void)
+    virtual void Draw();
+    // win1.41 007097d0 mac 104fa470 ScriptHighlight::CanBeCrushed(void)
+    virtual uint32_t CanBeCrushed();
+    // win1.41 00709aa0 mac 104fbb00 ScriptHighlight::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 00709800 mac 104fa550 ScriptHighlight::ValidAsInterfaceTarget(void)
+    virtual uint32_t ValidAsInterfaceTarget();
+    // win1.41 00709770 mac 104fa250 ScriptHighlight::ValidForPlaceInHand(GInterfaceStatus *)
+    virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+    // win1.41 00709840 mac 104fa690 ScriptHighlight::InterfaceMustBeInInfluenceForInteraction(void)
+    virtual uint32_t InterfaceMustBeInInfluenceForInteraction();
+    // win1.41 00709790 mac 104fa300 ScriptHighlight::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+    virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
+    // win1.41 00709780 mac 104fa2b0 ScriptHighlight::ApplyOnlyAfterReleased(void)
+    virtual uint32_t ApplyOnlyAfterReleased();
+    // win1.41 0070add0 mac 104fa940 ScriptHighlight::InterfaceValidToTap(GInterfaceStatus *)
+    virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
+    // win1.41 0070ac70 mac 104faa10 ScriptHighlight::InterfaceTap(GInterfaceStatus *)
+    virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
+    // win1.41 007097e0 mac 104fa4b0 ScriptHighlight::IsEffectReceiver(EffectValues *)
+    virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+    // win1.41 00709820 mac 104fa5f0 ScriptHighlight::InteractsWithPhysicsObjects(void)
+    virtual bool InteractsWithPhysicsObjects();
+    // win1.41 00709810 mac 104fa5a0 ScriptHighlight::CanBecomeAPhysicsObject(void)
+    virtual bool CanBecomeAPhysicsObject();
+    // win1.41 0070ae40 mac 104fa770 ScriptHighlight::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
+
+    // Static methods
+
+    // win1.41 0070a460 mac 10055f10 ScriptHighlight::ProcessHighlights(void)
+    static void ProcessHighlights();
+
+    // Non-virtual methods
+
+    // win1.41 0070a630 mac 104fb550 ScriptHighlight::SetActivated(int)
+    void SetActivated(int param_1);
+    // win1.41 0070ac20 mac 1004f0b0 ScriptHighlight::IsDidYouKnow(void)
+    bool IsDidYouKnow();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -126,5 +235,7 @@ bool __fastcall CanBecomeAPhysicsObject__15ScriptHighlightFv(struct Object* this
 void __fastcall AddToRoutePlan__15ScriptHighlightFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int param_1, struct Point2D param_2, float param_3, int param_4)) asm("?AddToRoutePlan@ScriptHighlight@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 
 DECLARE_LH_LIST_HEAD(ScriptHighlight);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SCRIPT_HIGHLIGHT_INCLUDED_H */

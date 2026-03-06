@@ -8,6 +8,39 @@
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+class GObjectInfo;
+
+// win1.41 00c22668 mac inlined GSpellIconInfo::`RTTI Type Descriptor'
+// win1.41 009b9398 mac inlined GSpellIconInfo::`RTTI Base Class Descriptor'
+// win1.41 009b93b0 mac inlined GSpellIconInfo::`RTTI Base Class Array'
+// win1.41 009b93c8 mac inlined GSpellIconInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 00981a54 mac 109dc3c4 GSpellIconInfo::`RTTI Complete Object Locator'
+// win1.41 00981a58 mac 109dc3cc GSpellIconInfo::`vftable'
+class GSpellIconInfo: public GMultiMapFixedInfo
+{
+public:
+    uint32_t field_0x120;
+    uint32_t field_0x124;
+    uint32_t field_0x128;
+
+    // Override methods
+
+    // win1.41 00725fb0 mac 10525b60 GSpellIconInfo::_dt(void)
+    virtual ~GSpellIconInfo();
+    // win1.41 00725f40 mac 10525c70 GSpellIconInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    // win1.41 00725f30 mac 10524c10 GSpellIconInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -46,5 +79,7 @@ void __fastcall __dt__14GSpellIconInfoFv(struct Base* this, const void* edx, uin
 struct GBaseInfo* __fastcall GetBaseInfo__14GSpellIconInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GSpellIconInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 00725f30 mac 10524c10 GSpellIconInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__14GSpellIconInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GSpellIconInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPELL_ICON_INFO_INCLUDED_H */

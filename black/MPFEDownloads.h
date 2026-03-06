@@ -6,6 +6,43 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// win1.41 00bf4668 mac inlined MPFEDownloads::`RTTI Type Descriptor'
+// win1.41 009b2080 mac inlined MPFEDownloads::`RTTI Base Class Descriptor'
+// win1.41 009b27bc mac inlined MPFEDownloads::`RTTI Base Class Array'
+// win1.41 009b27c8 mac inlined MPFEDownloads::`RTTI Class Hierarchy Descriptor'
+// win1.41 00930878 mac 106f4b80 MPFEDownloads::`vftable'
+class MPFEDownloads
+{
+public:
+    uint8_t field_0x4[0x27c];
+
+    // Virtual functions
+
+    virtual void GetFileNumber(uint32_t param_1); /* 0x0 */
+    virtual void Refresh();
+    virtual void Stop();
+    // win1.41 0062e740 mac 103a49b0 MPFEDownloads::FileCompleted(void)
+    virtual void FileCompleted();
+    // win1.41 0062e750 mac 103a4970 MPFEDownloads::FileError(void)
+    virtual void FileError(); /* 0x10 */
+
+    // Override methods
+
+    // win1.41 0062e740 mac 103a49b0 MPFEDownloads::FileCompleted(void)
+    virtual void FileCompleted();
+    // win1.41 0062e750 mac 103a4970 MPFEDownloads::FileError(void)
+    virtual void FileError();
+
+    // Constructors
+
+    // win1.41 0062e580 mac 103a4cc0 MPFEDownloads::MPFEDownloads(void)
+    MPFEDownloads();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct MPFEDownloads;
@@ -51,5 +88,7 @@ struct MPFEDownloads* __fastcall __ct__13MPFEDownloadsFv(struct MPFEDownloads* t
 void __fastcall FileCompleted__13MPFEDownloadsFv(struct MPFEDownloads* this) asm("?FileCompleted@MPFEDownloads@@UAEXXZ");
 // win1.41 0062e750 mac 103a4970 MPFEDownloads::FileError(void)
 void __fastcall FileError__13MPFEDownloadsFv(struct MPFEDownloads* this) asm("?FileError@MPFEDownloads@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_DOWNLOADS_INCLUDED_H */

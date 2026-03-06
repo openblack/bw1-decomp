@@ -8,6 +8,30 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea8c8 mac inlined SetupLandscapeBox::`RTTI Type Descriptor'
+// win1.41 009acec0 mac inlined SetupLandscapeBox::`RTTI Base Class Descriptor'
+// win1.41 009aced8 mac inlined SetupLandscapeBox::`RTTI Base Class Array'
+// win1.41 009acee8 mac inlined SetupLandscapeBox::`RTTI Class Hierarchy Descriptor'
+class SetupLandscapeBox: public DialogBoxBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 00546280 mac 105cd3c0 SetupLandscapeBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 00546d10 mac 105cd360 SetupLandscapeBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0054a210 mac 105cdd70 SetupLandscapeBox::InitSubDialogs(void)
+    virtual void InitSubDialogs();
+    // win1.41 00546d20 mac 105cce40 SetupLandscapeBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct SetupLandscapeBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -35,5 +59,7 @@ void __fastcall Destroy__17SetupLandscapeBoxFv(struct DialogBoxBase* this) asm("
 void __fastcall InitSubDialogs__17SetupLandscapeBoxFv(struct DialogBoxBase* this) asm("?InitSubDialogs@SetupLandscapeBox@@UAEXXZ");
 // win1.41 00546d20 mac 105cce40 SetupLandscapeBox::InitControls(void)
 void __fastcall InitControls__17SetupLandscapeBoxFv(struct DialogBoxBase* this) asm("?InitControls@SetupLandscapeBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FRONT_END_SETUP_MULTIPLAYER_INCLUDED_H */

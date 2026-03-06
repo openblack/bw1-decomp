@@ -8,6 +8,34 @@
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+class GObjectInfo;
+
+// win1.41 00bfed10 mac inlined GPFootballInfo::`RTTI Type Descriptor'
+// win1.41 009b3060 mac inlined GPFootballInfo::`RTTI Base Class Descriptor'
+// win1.41 009b3078 mac inlined GPFootballInfo::`RTTI Base Class Array'
+// win1.41 009b3090 mac inlined GPFootballInfo::`RTTI Class Hierarchy Descriptor'
+class GPFootballInfo: public GMultiMapFixedInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00643620 mac 10111690 GPFootballInfo::_dt(void)
+    virtual ~GPFootballInfo();
+    // win1.41 006435d0 mac 10111730 GPFootballInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    // win1.41 006435c0 mac 10111320 GPFootballInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -39,5 +67,7 @@ void __fastcall __dt__14GPFootballInfoFv(struct Base* this, const void* edx, uin
 struct GBaseInfo* __fastcall GetBaseInfo__14GPFootballInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GPFootballInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 006435c0 mac 10111320 GPFootballInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__14GPFootballInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GPFootballInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FOOTBALL_INFO_INCLUDED_H */

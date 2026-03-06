@@ -8,6 +8,31 @@
 
 #include "FeatureInfo.h" /* For struct GFeatureInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GObjectInfo;
+
+// win1.41 00be9ce0 mac inlined GFlowersInfo::`RTTI Type Descriptor'
+// win1.41 009ac0b0 mac inlined GFlowersInfo::`RTTI Base Class Descriptor'
+// win1.41 009ac0c8 mac inlined GFlowersInfo::`RTTI Base Class Array'
+// win1.41 009ac0e8 mac inlined GFlowersInfo::`RTTI Class Hierarchy Descriptor'
+class GFlowersInfo: public GFeatureInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00527910 mac 100d06a0 GFlowersInfo::_dt(void)
+    virtual ~GFlowersInfo();
+    // win1.41 005278b0 mac 100d15c0 GFlowersInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -36,5 +61,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__12GFlowersInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGFlowersInfo@@UAEPAXI@Z");
 // win1.41 005278b0 mac 100d15c0 GFlowersInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__12GFlowersInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GFlowersInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FLOWERS_INFO_INCLUDED_H */

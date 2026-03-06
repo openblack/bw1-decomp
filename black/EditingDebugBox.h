@@ -8,6 +8,28 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea4f8 mac inlined EditingDebugBox::`RTTI Type Descriptor'
+// win1.41 009acd30 mac inlined EditingDebugBox::`RTTI Base Class Descriptor'
+// win1.41 009acd48 mac inlined EditingDebugBox::`RTTI Base Class Array'
+// win1.41 009acd58 mac inlined EditingDebugBox::`RTTI Class Hierarchy Descriptor'
+class EditingDebugBox: public DialogBoxBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 0053d520 mac 105c3250 EditingDebugBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 0053d6f0 mac 105c31f0 EditingDebugBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0053d700 mac 105c3130 EditingDebugBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct EditingDebugBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -33,5 +55,7 @@ void __fastcall Init__15EditingDebugBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(str
 void __fastcall Destroy__15EditingDebugBoxFv(struct DialogBoxBase* this) asm("?Destroy@EditingDebugBox@@UAEXXZ");
 // win1.41 0053d700 mac 105c3130 EditingDebugBox::InitControls(void)
 void __fastcall InitControls__15EditingDebugBoxFv(struct DialogBoxBase* this) asm("?InitControls@EditingDebugBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_EDITING_DEBUG_BOX_INCLUDED_H */

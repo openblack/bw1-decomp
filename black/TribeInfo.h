@@ -9,6 +9,45 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c23060 mac inlined GTribeInfo::`RTTI Type Descriptor'
+// win1.41 009b9cd0 mac inlined GTribeInfo::`RTTI Base Class Descriptor'
+// win1.41 009b9ce8 mac inlined GTribeInfo::`RTTI Base Class Array'
+// win1.41 009b9cf8 mac inlined GTribeInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 0099a18c mac 1075e974 GTribeInfo::`RTTI Complete Object Locator'
+// win1.41 0099a190 mac 1075e97c GTribeInfo::`vftable'
+class GTribeInfo: public GBaseInfo
+{
+public:
+    TRIBE_TYPE type; /* 0x10 */
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+
+    // Override methods
+
+    // win1.41 0074c920 mac 10159d30 GTribeInfo::_dt(void)
+    virtual ~GTribeInfo();
+    // win1.41 0074c8c0 mac 10159ef0 GTribeInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+
+    // Static methods
+
+    // win1.41 0074c940 mac 10159bc0 GTribeInfo::GetTribeFromText(char const *)
+    static GTribeInfo* GetTribeFromText(const char* str);
+
+    // Non-virtual methods
+
+    // win1.41 00751aa0 mac 10159e50 GTribeInfo::GetTribeTextArray(void)
+    char* GetTribeTextArray();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -53,5 +92,7 @@ char* __fastcall GetTribeTextArray__10GTribeInfoFv(struct GTribeInfo* this) asm(
 void __fastcall __dt__10GTribeInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGTribeInfo@@UAEPAXI@Z");
 // win1.41 0074c8c0 mac 10159ef0 GTribeInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__10GTribeInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GTribeInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_TRIBE_INFO_INCLUDED_H */

@@ -8,6 +8,45 @@
 
 #include "SpellFlock.h" /* For struct SpellFlock */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+class Spell;
+
+// win1.41 00beca00 mac inlined SpellFlockFlying::`RTTI Type Descriptor'
+// win1.41 009ad4d0 mac inlined SpellFlockFlying::`RTTI Base Class Descriptor'
+// win1.41 009ad4e8 mac inlined SpellFlockFlying::`RTTI Base Class Array'
+// win1.41 009ad508 mac inlined SpellFlockFlying::`RTTI Class Hierarchy Descriptor'
+class SpellFlockFlying: public SpellFlock
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055d2a0 mac 1051dac0 SpellFlockFlying::_dt(void)
+    virtual ~SpellFlockFlying();
+    // win1.41 0055d290 mac 1051ec90 SpellFlockFlying::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 007249d0 mac 1051c220 SpellFlockFlying::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 00724ac0 mac 1051c0a0 SpellFlockFlying::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055d280 mac 1051ec50 SpellFlockFlying::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00723a30 mac 1051d940 SpellFlockFlying::GetParticleType(void)
+    virtual void GetParticleType();
+    // win1.41 00724100 mac 1051cea0 SpellFlockFlying::Draw(void)
+    virtual void Draw();
+    // win1.41 00723bc0 mac 1051d040 SpellFlockFlying::Process(void)
+    virtual uint32_t Process();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -50,5 +89,7 @@ void __fastcall GetParticleType__16SpellFlockFlyingFv(struct Spell* this) asm("?
 void __fastcall Draw__16SpellFlockFlyingFv(struct Spell* this) asm("?Draw@SpellFlockFlying@@UAEXXZ");
 // win1.41 00723bc0 mac 1051d040 SpellFlockFlying::Process(void)
 uint32_t __fastcall Process__16SpellFlockFlyingFv(struct Spell* this) asm("?Process@SpellFlockFlying@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPELL_FLOCK_FLYING_INCLUDED_H */

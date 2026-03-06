@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf48d0 mac inlined MPFECancelStartMessage::`RTTI Type Descriptor'
+// win1.41 009b22c8 mac inlined MPFECancelStartMessage::`RTTI Base Class Descriptor'
+// win1.41 009b22e0 mac inlined MPFECancelStartMessage::`RTTI Base Class Array'
+// win1.41 009b22f0 mac inlined MPFECancelStartMessage::`RTTI Class Hierarchy Descriptor'
+class MPFECancelStartMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00627640 mac 1039ba50 MPFECancelStartMessage::_dt(void)
+    virtual ~MPFECancelStartMessage();
+};
+
+#else // __cplusplus
+
 struct MPFECancelStartMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00627640 mac 1039ba50 MPFECancelStartMessage::_dt(void)
 void __fastcall __dt__22MPFECancelStartMessageFv(struct MPFEMessageObject* this) asm("??_GMPFECancelStartMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_CANCEL_START_MESSAGE_INCLUDED_H */

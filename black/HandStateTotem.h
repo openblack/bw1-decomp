@@ -8,6 +8,41 @@
 
 #include "HandState.h" /* For struct HandState */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CHand;
+struct LHMatrix;
+
+// win1.41 00bf0240 mac inlined HandStateTotem::`RTTI Type Descriptor'
+// win1.41 009b1108 mac inlined HandStateTotem::`RTTI Base Class Descriptor'
+// win1.41 009b1120 mac inlined HandStateTotem::`RTTI Base Class Array'
+// win1.41 009b1130 mac inlined HandStateTotem::`RTTI Class Hierarchy Descriptor'
+// win1.41 00900be0 mac 1099ba34 HandStateTotem::`RTTI Complete Object Locator'
+// win1.41 00900be4 mac 1099ba3c HandStateTotem::`vftable'
+class HandStateTotem: public HandState
+{
+public:
+    uint8_t field_0x8[0xa4];
+
+    // Override methods
+
+    // win1.41 005b7690 mac 1033d350 HandStateTotem::Enter(void)
+    virtual void Enter();
+    // win1.41 005b7790 mac 1033d310 HandStateTotem::Exit(void)
+    virtual void Exit();
+    // win1.41 005b77a0 mac 1033cd20 HandStateTotem::Update(float, LHMatrix *)
+    virtual void Update(float param_1, LHMatrix* param_2);
+
+    // Constructors
+
+    // win1.41 005b7670 mac 1033d4c0 HandStateTotem::HandStateTotem(CHand*)
+    HandStateTotem(CHand* hand);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CHand;
@@ -48,5 +83,7 @@ void __fastcall Enter__14HandStateTotemFv(struct HandState* this) asm("?Enter@Ha
 void __fastcall Exit__14HandStateTotemFv(struct HandState* this) asm("?Exit@HandStateTotem@@UAEXXZ");
 // win1.41 005b77a0 mac 1033cd20 HandStateTotem::Update(float, LHMatrix *)
 void __fastcall Update__14HandStateTotemFfP8LHMatrix(struct HandState* this, const void* edx, float param_1, struct LHMatrix* param_2) asm("?Update@HandStateTotem@@UAEXMPAULHMatrix@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HAND_STATE_TOTEM_INCLUDED_H */

@@ -8,6 +8,31 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea3e8 mac inlined SkirmishGameBox::`RTTI Type Descriptor'
+// win1.41 009acab0 mac inlined SkirmishGameBox::`RTTI Base Class Descriptor'
+// win1.41 009acac8 mac inlined SkirmishGameBox::`RTTI Base Class Array'
+// win1.41 009acad8 mac inlined SkirmishGameBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008de948 mac 109ed654 SkirmishGameBox::`RTTI Complete Object Locator'
+// win1.41 008de94c mac 109ed65c SkirmishGameBox::`vftable'
+class SkirmishGameBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0x22c];
+
+    // Override methods
+
+    // win1.41 00544820 mac 105baab0 SkirmishGameBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 00544b90 mac 105ba740 SkirmishGameBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 00544bd0 mac 105ba3e0 SkirmishGameBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct SkirmishGameBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -38,5 +63,7 @@ void __fastcall Init__15SkirmishGameBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(str
 void __fastcall Destroy__15SkirmishGameBoxFv(struct DialogBoxBase* this) asm("?Destroy@SkirmishGameBox@@UAEXXZ");
 // win1.41 00544bd0 mac 105ba3e0 SkirmishGameBox::InitControls(void)
 void __fastcall InitControls__15SkirmishGameBoxFv(struct DialogBoxBase* this) asm("?InitControls@SkirmishGameBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SKIRMISH_GAME_BOX_INCLUDED_H */

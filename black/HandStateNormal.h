@@ -8,6 +8,40 @@
 
 #include "HandState.h" /* For struct HandState */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CHand;
+struct LHMatrix;
+
+// win1.41 00bf01e0 mac inlined HandStateNormal::`RTTI Type Descriptor'
+// win1.41 009b1068 mac inlined HandStateNormal::`RTTI Base Class Descriptor'
+// win1.41 009b1080 mac inlined HandStateNormal::`RTTI Base Class Array'
+// win1.41 009b1090 mac inlined HandStateNormal::`RTTI Class Hierarchy Descriptor'
+// win1.41 00900b9c mac 1099b8cc HandStateNormal::`RTTI Complete Object Locator'
+// win1.41 00900ba0 mac 1099b8d4 HandStateNormal::`vftable'
+class HandStateNormal: public HandState
+{
+public:
+    uintptr_t field_0x8;
+    uintptr_t field_0xC;
+
+    // Override methods
+
+    // win1.41 005b5d00 mac 1033c7a0 HandStateNormal::Enter(void)
+    virtual void Enter();
+    // win1.41 005b71a0 mac 100792d0 HandStateNormal::Update(float, LHMatrix *)
+    virtual void Update(float param_1, LHMatrix* param_2);
+
+    // Constructors
+
+    // win1.41 005b5c70 mac 1033c8a0 HandStateNormal::HandStateNormal(CHand*)
+    HandStateNormal(CHand* hand);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CHand;
@@ -47,5 +81,7 @@ struct HandStateNormal* __fastcall __ct__15HandStateNormalFP5CHand(struct HandSt
 void __fastcall Enter__15HandStateNormalFv(struct HandState* this) asm("?Enter@HandStateNormal@@UAEXXZ");
 // win1.41 005b71a0 mac 100792d0 HandStateNormal::Update(float, LHMatrix *)
 void __fastcall Update__15HandStateNormalFfP8LHMatrix(struct HandState* this, const void* edx, float param_1, struct LHMatrix* param_2) asm("?Update@HandStateNormal@@UAEXMPAULHMatrix@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HAND_STATE_NORMAL_INCLUDED_H */

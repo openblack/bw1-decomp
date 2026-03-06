@@ -6,6 +6,42 @@
 #include <reversing_utils/re_common.h> /* For bool32_t */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// win1.41 00bfd810 mac inlined MPFEDatabase::`RTTI Type Descriptor'
+// win1.41 009b2778 mac inlined MPFEDatabase::`RTTI Base Class Descriptor'
+// win1.41 009b2790 mac inlined MPFEDatabase::`RTTI Base Class Array'
+// win1.41 009b2798 mac inlined MPFEDatabase::`RTTI Class Hierarchy Descriptor'
+// win1.41 00930868 mac 109a37c0 MPFEDatabase::`RTTI Complete Object Locator'
+// win1.41 0093086c mac 109a37c8 MPFEDatabase::`vftable'
+class MPFEDatabase
+{
+public:
+    float progress_percentage; /* 0x4 */
+    bool32_t populated;
+
+    // Virtual functions
+
+    // win1.41 0062e4f0 mac 103a35b0 MPFEDatabase::DatabaseError(void)
+    virtual void DatabaseError(); /* 0x0 */
+    // win1.41 0062e510 mac 103a3520 MPFEDatabase::DatabaseComplete(void)
+    virtual void DatabaseComplete();
+
+    // Override methods
+
+    // win1.41 0062e4f0 mac 103a35b0 MPFEDatabase::DatabaseError(void)
+    virtual void DatabaseError();
+    // win1.41 0062e510 mac 103a3520 MPFEDatabase::DatabaseComplete(void)
+    virtual void DatabaseComplete();
+
+    // Constructors
+
+    // win1.41 0062e100 mac 103a3ce0 MPFEDatabase::MPFEDatabase(void)
+    MPFEDatabase();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct MPFEDatabase;
@@ -51,5 +87,7 @@ struct MPFEDatabase* __fastcall __ct__12MPFEDatabaseFv(struct MPFEDatabase* this
 void __fastcall DatabaseError__12MPFEDatabaseFv(struct MPFEDatabase* this) asm("?DatabaseError@MPFEDatabase@@UAEXXZ");
 // win1.41 0062e510 mac 103a3520 MPFEDatabase::DatabaseComplete(void)
 void __fastcall DatabaseComplete__12MPFEDatabaseFv(struct MPFEDatabase* this) asm("?DatabaseComplete@MPFEDatabase@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_DATABASE_INCLUDED_H */

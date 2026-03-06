@@ -8,6 +8,31 @@
 
 #include "MultiplayerDatabase.h" /* For struct MultiplayerDatabase */
 
+#ifdef __cplusplus
+
+// win1.41 00bfddd8 mac inlined StatsDatabase::`RTTI Type Descriptor'
+// win1.41 009b2db8 mac inlined StatsDatabase::`RTTI Base Class Descriptor'
+// win1.41 009b2dd0 mac inlined StatsDatabase::`RTTI Base Class Array'
+// win1.41 009b2de0 mac inlined StatsDatabase::`RTTI Class Hierarchy Descriptor'
+// win1.41 00930a08 mac 10745c98 StatsDatabase::`RTTI Complete Object Locator'
+// win1.41 00930a0c mac 10745ca0 StatsDatabase::`vftable'
+class StatsDatabase: public MultiplayerDatabase
+{
+public:
+
+    // Override methods
+
+    // win1.41 006338f0 mac 10109920 StatsDatabase::Send(void)
+    virtual uint32_t Send();
+
+    // Constructors
+
+    // win1.41 006338d0 mac 10109a30 StatsDatabase::StatsDatabase(void)
+    StatsDatabase();
+};
+
+#else // __cplusplus
+
 struct StatsDatabase
 {
   struct MultiplayerDatabase super;  /* 0x0 */
@@ -38,5 +63,7 @@ struct StatsDatabase* __fastcall __ct__13StatsDatabaseFv(struct StatsDatabase* t
 
 // win1.41 006338f0 mac 10109920 StatsDatabase::Send(void)
 uint32_t __fastcall Send__13StatsDatabaseFv(struct MultiplayerDatabase* this) asm("?Send@StatsDatabase@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_STATS_DATABASE_INCLUDED_H */

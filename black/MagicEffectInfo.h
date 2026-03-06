@@ -8,6 +8,85 @@
 
 #include "EffectInfo.h" /* For struct GEffectInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 00be9658 mac inlined GMagicEffectInfo::`RTTI Type Descriptor'
+// win1.41 009abf18 mac inlined GMagicEffectInfo::`RTTI Base Class Descriptor'
+// win1.41 009abf30 mac inlined GMagicEffectInfo::`RTTI Base Class Array'
+// win1.41 009abf48 mac inlined GMagicEffectInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d8b74 mac 1073d070 GMagicEffectInfo::`RTTI Complete Object Locator'
+// win1.41 008d8b78 mac 1073d078 GMagicEffectInfo::`vftable'
+class GMagicEffectInfo: public GEffectInfo
+{
+public:
+    char name[0x30]; /* 0x34 */
+    uint32_t field_0x64;
+    uint32_t field_0x68;
+    uint32_t field_0x6c;
+    uint32_t field_0x70;
+    float field_0x74;
+    float field_0x78;
+    float field_0x7c;
+    float field_0x80;
+    float field_0x84;
+    uint32_t field_0x88;
+    uint32_t field_0x8c;
+    uint32_t field_0x90;
+    int field_0x94;
+    uint32_t field_0x98;
+    uint32_t field_0x9c;
+    int field_0xa0;
+    uint32_t field_0xa4;
+    float field_0xa8;
+    float field_0xac;
+    float field_0xb0;
+    float field_0xb4;
+    float field_0xb8;
+    float field_0xbc;
+    float field_0xc0;
+    float field_0xc4;
+    float field_0xc8;
+    uint32_t field_0xcc;
+    uint32_t field_0xd0;
+    uint32_t field_0xd4;
+    uint32_t field_0xd8;
+    uint32_t field_0xdc;
+    uint32_t field_0xe0;
+    uint32_t field_0xe4;
+    uint32_t field_0xe8;
+    uint32_t field_0xec;
+    uint32_t field_0xf0;
+    uint32_t field_0xf4;
+    uint32_t field_0xf8;
+    uint32_t field_0xfc;
+    uint32_t field_0x100;
+    uint32_t field_0x104;
+    uint32_t field_0x108;
+    uint32_t field_0x10c;
+    uint32_t field_0x110;
+    float field_0x114;
+    float field_0x118;
+
+    // Override methods
+
+    // win1.41 00524ea0 mac 100cca30 GMagicEffectInfo::_dt(void)
+    virtual ~GMagicEffectInfo();
+    // win1.41 00524e30 mac 100ccbe0 GMagicEffectInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+
+    // Constructors
+
+    // win1.41 00524e00 mac 100ccad0 GMagicEffectInfo::GMagicEffectInfo(void)
+    GMagicEffectInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -92,5 +171,7 @@ struct GMagicEffectInfo* __fastcall __ct__16GMagicEffectInfoFv(struct GMagicEffe
 void __fastcall __dt__16GMagicEffectInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMagicEffectInfo@@UAEPAXI@Z");
 // win1.41 00524e30 mac 100ccbe0 GMagicEffectInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__16GMagicEffectInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GMagicEffectInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_EFFECT_INFO_INCLUDED_H */

@@ -8,6 +8,37 @@
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+class GObjectInfo;
+
+// win1.41 00c22b48 mac inlined GTotemStatueInfo::`RTTI Type Descriptor'
+// win1.41 009b9990 mac inlined GTotemStatueInfo::`RTTI Base Class Descriptor'
+// win1.41 009b99a8 mac inlined GTotemStatueInfo::`RTTI Base Class Array'
+// win1.41 009b99c0 mac inlined GTotemStatueInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 00999a44 mac 109e33a8 GTotemStatueInfo::`RTTI Complete Object Locator'
+// win1.41 00999a48 mac 109e33b0 GTotemStatueInfo::`vftable'
+class GTotemStatueInfo: public GMultiMapFixedInfo
+{
+public:
+    uint32_t field_0x120;
+
+    // Override methods
+
+    // win1.41 00737af0 mac 10545400 GTotemStatueInfo::_dt(void)
+    virtual ~GTotemStatueInfo();
+    // win1.41 00737a80 mac 10545af0 GTotemStatueInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    // win1.41 00737a70 mac 10543c90 GTotemStatueInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -44,5 +75,7 @@ void __fastcall __dt__16GTotemStatueInfoFv(struct Base* this, const void* edx, u
 struct GBaseInfo* __fastcall GetBaseInfo__16GTotemStatueInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GTotemStatueInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 00737a70 mac 10543c90 GTotemStatueInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__16GTotemStatueInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GTotemStatueInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_TOTEM_STATUE_INFO_INCLUDED_H */

@@ -12,6 +12,42 @@
 #include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
 #include "PictureRoom.h" /* For struct PictureRoomBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class TempleRoom;
+
+// win1.41 00c282c0 mac inlined GameOptionsRoom::`RTTI Type Descriptor'
+// win1.41 009ba758 mac inlined GameOptionsRoom::`RTTI Base Class Descriptor'
+// win1.41 009ba770 mac inlined GameOptionsRoom::`RTTI Base Class Array'
+// win1.41 009ba780 mac inlined GameOptionsRoom::`RTTI Class Hierarchy Descriptor'
+class GameOptionsRoom: public PictureRoomBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 0078d8f0 mac 102ffdb0 GameOptionsRoom::IsAvailable(void)
+    virtual bool IsAvailable();
+    // win1.41 0079a230 mac inlined GameOptionsRoom::DrawAdditional(bool)
+    virtual void DrawAdditional(bool param_1);
+    // win1.41 00799f80 mac inlined GameOptionsRoom::PreDraw(void)
+    virtual void PreDraw();
+    // win1.41 0078d810 mac 10300060 GameOptionsRoom::Draw(void)
+    virtual void Draw();
+    // win1.41 00799ed0 mac inlined GameOptionsRoom::DrawHand(void)
+    virtual void DrawHand();
+    // win1.41 0078d860 mac 102ffe70 GameOptionsRoom::Update(void)
+    virtual void Update();
+    // win1.41 0078d820 mac 102fffd0 GameOptionsRoom::UpdateMouse(LHCoord, INTERFACE_MESSAGE_TYPES)
+    virtual void UpdateMouse(LHCoord param_1, INTERFACE_MESSAGE_TYPES param_2);
+    // win1.41 0078d840 mac 102fff70 GameOptionsRoom::UpdateKeyboard(LH_KEY, unsigned short)
+    virtual void UpdateKeyboard(LH_KEY param_1, uint16_t param_2);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct TempleRoom;
@@ -51,5 +87,7 @@ void __fastcall Update__15GameOptionsRoomFv(struct TempleRoom* this) asm("?Updat
 void __fastcall UpdateMouse__15GameOptionsRoomF7LHCoord23INTERFACE_MESSAGE_TYPES(struct TempleRoom* this, const void* edx, struct LHCoord param_1, enum INTERFACE_MESSAGE_TYPES param_2) asm("?UpdateMouse@GameOptionsRoom@@UAEXULHCoord@@W4INTERFACE_MESSAGE_TYPES@@@Z");
 // win1.41 0078d840 mac 102fff70 GameOptionsRoom::UpdateKeyboard(LH_KEY, unsigned short)
 void __fastcall UpdateKeyboard__15GameOptionsRoomF6LH_KEYUs(struct TempleRoom* this, const void* edx, enum LH_KEY param_1, uint16_t param_2) asm("?UpdateKeyboard@GameOptionsRoom@@UAEXW4LH_KEY@@G@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_GAME_OPTIONS_ROOM_INCLUDED_H */

@@ -8,6 +8,28 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bdf938 mac inlined CreaturePreviousLesson::`RTTI Type Descriptor'
+// win1.41 009aaea0 mac inlined CreaturePreviousLesson::`RTTI Base Class Descriptor'
+// win1.41 009aaeb8 mac inlined CreaturePreviousLesson::`RTTI Base Class Array'
+// win1.41 009aaec8 mac inlined CreaturePreviousLesson::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d042c mac 107874e4 CreaturePreviousLesson::`RTTI Complete Object Locator'
+// win1.41 008d0430 mac 107874ec CreaturePreviousLesson::`vftable'
+class CreaturePreviousLesson: public Base
+{
+public:
+    uint32_t field_0x8;
+    uint8_t field_0xc[0x1200];
+
+    // Override methods
+
+    // win1.41 004e03a0 mac 10245f80 CreaturePreviousLesson::_dt(void)
+    virtual ~CreaturePreviousLesson();
+};
+
+#else // __cplusplus
+
 struct CreaturePreviousLesson
 {
   struct Base super;  /* 0x0 */
@@ -35,5 +57,7 @@ extern const struct BaseVftable __vt__22CreaturePreviousLesson asm("??_7Creature
 
 // win1.41 004e03a0 mac 10245f80 CreaturePreviousLesson::_dt(void)
 void __fastcall __dt__22CreaturePreviousLessonFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreaturePreviousLesson@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_PREVIOUS_LESSON_INCLUDED_H */

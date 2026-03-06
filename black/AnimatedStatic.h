@@ -9,6 +9,40 @@
 
 #include "Feature.h" /* For struct Feature */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class LHOSFile;
+struct MapCoords;
+class Object;
+
+// win1.41 009c9560 mac inlined AnimatedStatic::`RTTI Type Descriptor'
+// win1.41 009a7948 mac inlined AnimatedStatic::`RTTI Base Class Descriptor'
+// win1.41 009a7960 mac inlined AnimatedStatic::`RTTI Base Class Array'
+// win1.41 009a7988 mac inlined AnimatedStatic::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c1a0c mac 10735450 AnimatedStatic::`RTTI Complete Object Locator'
+// win1.41 008c1a10 mac 10735458 AnimatedStatic::`vftable'
+class AnimatedStatic: public Feature
+{
+public:
+    uint8_t field_0x7c[0x1c];
+
+    // Override methods
+
+    // win1.41 004221a0 mac 100a5e20 AnimatedStatic::_dt(void)
+    virtual ~AnimatedStatic();
+    // win1.41 004225a0 mac 100a6cb0 AnimatedStatic::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00422300 mac 100a6f10 AnimatedStatic::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 00422650 mac 100a6a10 AnimatedStatic::SaveObject(LHOSFile &, MapCoords const &)
+    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -50,5 +84,7 @@ void __fastcall CallVirtualFunctionsForCreation__14AnimatedStaticFRC9MapCoords(s
 uint32_t __fastcall SaveObject__14AnimatedStaticFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@AnimatedStatic@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 
 DECLARE_LH_LINKED_LIST(AnimatedStatic);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMATED_STATIC_INCLUDED_H */

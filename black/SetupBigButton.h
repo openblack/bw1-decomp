@@ -13,6 +13,44 @@
 #include "SetupRect.h" /* For struct SetupRect */
 #include "SetupThing.h" /* For enum BBSTYLE */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class SetupControl;
+
+// win1.41 009c81e8 mac inlined SetupBigButton::`RTTI Type Descriptor'
+// win1.41 009a6748 mac inlined SetupBigButton::`RTTI Base Class Descriptor'
+// win1.41 009a6760 mac inlined SetupBigButton::`RTTI Base Class Array'
+// win1.41 009a6770 mac inlined SetupBigButton::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ab3dc mac 107310ac SetupBigButton::`RTTI Complete Object Locator'
+// win1.41 008ab3e0 mac 107310b4 SetupBigButton::`vftable'
+class SetupBigButton: public SetupButton
+{
+public:
+    uint32_t text_position; /* 0x244 */
+    BBSTYLE style;
+    SetupRect inner_rect;
+
+    // Override methods
+
+    // win1.41 0040d310 mac 101670b0 SetupBigButton::HitTest(int, int)
+    virtual bool HitTest(int x, int y);
+    // win1.41 0040ceb0 mac 103deac0 SetupBigButton::Draw(bool, bool)
+    virtual void Draw(bool hovered, bool selected);
+    // win1.41 0040d2f0 mac 101689f0 SetupBigButton::KeyDown(int, int)
+    virtual void KeyDown(LHKey key, LHKeyMod mod);
+    // win1.41 0040d360 mac 1010fca0 SetupBigButton::~SetupBigButton(void)
+    virtual ~SetupBigButton();
+
+    // Constructors
+
+    // win1.41 0040d260 mac 100fd210 SetupBigButton::SetupBigButton(int, int, int, wchar_t *, int, int, int)
+    SetupBigButton(int id, int x, int y, const char16_t* label, int size, uint32_t text_position, BBSTYLE style);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SetupControl;
@@ -56,5 +94,7 @@ void __fastcall Draw__14SetupBigButtonFbb(struct SetupControl* this, const void*
 void __fastcall KeyDown__14SetupBigButtonFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod) asm("?KeyDown@SetupBigButton@@UAEXHH@Z");
 // win1.41 0040d360 mac 1010fca0 SetupBigButton::~SetupBigButton(void)
 void __fastcall __dt__14SetupBigButtonFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupBigButton@@QAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_BIG_BUTTON_INCLUDED_H */

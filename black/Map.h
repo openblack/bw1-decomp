@@ -10,6 +10,73 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Fixed;
+class Object;
+
+// win1.41 00bf4140 mac inlined GMap::`RTTI Type Descriptor'
+// win1.41 009b1ef0 mac inlined GMap::`RTTI Base Class Descriptor'
+// win1.41 009b1f08 mac inlined GMap::`RTTI Base Class Array'
+// win1.41 009b1f18 mac inlined GMap::`RTTI Class Hierarchy Descriptor'
+class GMap: public Base
+{
+public:
+    uint8_t field_0x8;
+    uint8_t field_0x9;
+    uint8_t field_0xa;
+    uint8_t field_0xb;
+    uint32_t cell_extent_zx[0x2];
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    uint32_t field_0x1c;
+    uint32_t field_0x20;
+    uint32_t field_0x24;
+    uint32_t field_0x28;
+    uint32_t field_0x2c;
+    uint32_t field_0x30;
+    uint32_t field_0x34;
+    uint32_t field_0x38;
+    uint8_t field_0x3c;
+    uint8_t field_0x3d;
+    uint8_t field_0x3e;
+    uint8_t field_0x3f;
+    uint32_t field_0x40;
+    MapCell cells[0x200][0x200];
+    uint16_t count_0x200044;
+    uint8_t field_0x200046;
+    uint8_t field_0x200047;
+    uint8_t field_0x200048;
+    uint8_t field_0x200049;
+    uint8_t field_0x20004a;
+    uint8_t field_0x20004b;
+    uint8_t field_0x20004c;
+    uint8_t field_0x20004d;
+    uint8_t field_0x20004e;
+    uint8_t field_0x20004f;
+
+    // Override methods
+
+    // win1.41 006010c0 mac 1055f620 GMap::_dt(void)
+    virtual ~GMap();
+
+    // Constructors
+
+    // win1.41 00601080 mac 10552040 GMap::GMap(void)
+    GMap();
+
+    // Non-virtual methods
+
+    // win1.41 00612660 mac 100fddf0 GMap::ToMap(long, long)
+    MapCell* ToMap(uint32_t cell_x, uint32_t cell_z);
+    // win1.41 00612690 mac 10049c10 GMap::InBounds(long, long)
+    bool InBounds(uint32_t x, uint32_t z);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Fixed;
@@ -122,5 +189,7 @@ bool __fastcall InBounds__4GMapCFll(struct GMap* this, const void* edx, uint32_t
 
 // win1.41 006010c0 mac 1055f620 GMap::_dt(void)
 void __fastcall __dt__4GMapFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMap@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAP_INCLUDED_H */

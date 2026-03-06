@@ -11,6 +11,40 @@
 
 #include "SetupButton.h" /* For struct SetupButton */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class SetupControl;
+
+// win1.41 00bef120 mac inlined SetupMP3Button::`RTTI Type Descriptor'
+// win1.41 009b0548 mac inlined SetupMP3Button::`RTTI Base Class Descriptor'
+// win1.41 009b0560 mac inlined SetupMP3Button::`RTTI Base Class Array'
+// win1.41 009b0570 mac inlined SetupMP3Button::`RTTI Class Hierarchy Descriptor'
+// win1.41 0090005c mac 10731104 SetupMP3Button::`RTTI Complete Object Locator'
+// win1.41 00900060 mac 1073110c SetupMP3Button::`vftable'
+class SetupMP3Button: public SetupButton
+{
+public:
+    uint32_t field_0x244;
+    uint32_t field_0x248;
+    LH3DColor color;
+
+    // Override methods
+
+    // win1.41 0040cda0 mac 10426080 SetupMP3Button::Draw(bool, bool)
+    virtual void Draw(bool hovered, bool selected);
+    // win1.41 00571f30 mac 103547d0 SetupMP3Button::~SetupMP3Button(void)
+    virtual ~SetupMP3Button();
+
+    // Constructors
+
+    // win1.41 inlined mac inlined SetupMP3Button::SetupMP3Button(int, int, int, int, int, wchar_t *, int, unsigned int)
+    SetupMP3Button(int id, int x, int y, int width, int height, const char16_t* label, int param_8, uint32_t param_9);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SetupControl;
@@ -50,5 +84,7 @@ struct SetupMP3Button* __fastcall __ct__14SetupMP3ButtonFiiiiiPwiUi(struct Setup
 void __fastcall Draw__14SetupMP3ButtonFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected) asm("?Draw@SetupMP3Button@@UAEX_N0@Z");
 // win1.41 00571f30 mac 103547d0 SetupMP3Button::~SetupMP3Button(void)
 void __fastcall __dt__14SetupMP3ButtonFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupMP3Button@@QAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_MP3_BUTTON_INCLUDED_H */

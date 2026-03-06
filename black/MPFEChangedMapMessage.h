@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bfdb58 mac inlined MPFEChangedMapMessage::`RTTI Type Descriptor'
+// win1.41 009b2b90 mac inlined MPFEChangedMapMessage::`RTTI Base Class Descriptor'
+// win1.41 009b2ba8 mac inlined MPFEChangedMapMessage::`RTTI Base Class Array'
+// win1.41 009b2bb8 mac inlined MPFEChangedMapMessage::`RTTI Class Hierarchy Descriptor'
+class MPFEChangedMapMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00631270 mac 103969e0 MPFEChangedMapMessage::_dt(void)
+    virtual ~MPFEChangedMapMessage();
+};
+
+#else // __cplusplus
+
 struct MPFEChangedMapMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00631270 mac 103969e0 MPFEChangedMapMessage::_dt(void)
 void __fastcall __dt__21MPFEChangedMapMessageFv(struct MPFEMessageObject* this) asm("??_GMPFEChangedMapMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_CHANGED_MAP_MESSAGE_INCLUDED_H */

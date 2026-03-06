@@ -8,6 +8,31 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea3c8 mac inlined ChannelBox::`RTTI Type Descriptor'
+// win1.41 009aca60 mac inlined ChannelBox::`RTTI Base Class Descriptor'
+// win1.41 009aca78 mac inlined ChannelBox::`RTTI Base Class Array'
+// win1.41 009aca88 mac inlined ChannelBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008dea38 mac 109a1fb0 ChannelBox::`RTTI Complete Object Locator'
+// win1.41 008dea3c mac 109a1fb8 ChannelBox::`vftable'
+class ChannelBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0xac4];
+
+    // Override methods
+
+    // win1.41 0061bcd0 mac 1038f640 ChannelBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
+    // win1.41 0061ca50 mac 1038f5e0 ChannelBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0061ca60 mac 1038f2f0 ChannelBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct ChannelBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -38,5 +63,7 @@ void __fastcall Init__10ChannelBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct D
 void __fastcall Destroy__10ChannelBoxFv(struct DialogBoxBase* this) asm("?Destroy@ChannelBox@@UAEXXZ");
 // win1.41 0061ca60 mac 1038f2f0 ChannelBox::InitControls(void)
 void __fastcall InitControls__10ChannelBoxFv(struct DialogBoxBase* this) asm("?InitControls@ChannelBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CHANNEL_BOX_INCLUDED_H */

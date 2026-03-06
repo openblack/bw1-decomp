@@ -8,6 +8,62 @@
 
 #include "RPHolder.h" /* For struct RPHolder */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct RPlan;
+struct RouteNode;
+
+class RPFollow: public RPHolder
+{
+public:
+    Point2D field_0x6402c;
+    float field_0x64034;
+    float field_0x64038;
+    float field_0x6403c;
+    float field_0x64040;
+    Point2D field_0x64044;
+    float field_0x6404c;
+    float field_0x64050;
+    uint32_t field_0x64054;
+    uint32_t field_0x64058;
+    int32_t field_0x6405c;
+    uint32_t field_0x64060;
+    FuncPtr(name='RPFollow__field_0x64064', call_type='__cdecl', result='void', args=['int', 'int'], arg_labels=['param_0', 'param_1'], decorated_name='RPFollow__field_0x64064', indirection_level=1) field_0x64064;
+    FuncPtr(name='RPFollow__field_0x64068', call_type='__cdecl', result='void', args=['int', 'float', 'float'], arg_labels=['param_0', 'param_1', 'param_2'], decorated_name='RPFollow__field_0x64068', indirection_level=1) field_0x64068;
+    FuncPtr(name='RPFollow__field_0x6406c', call_type='__cdecl', result='float', args=['int'], arg_labels=['param_0'], decorated_name='RPFollow__field_0x6406c', indirection_level=1) field_0x6406c;
+    RouteNode* field_0x64070;
+    Point2D field_0x64074;
+    float field_0x6407c;
+    float field_0x64080;
+    float field_0x64084;
+    uint32_t field_0x64088;
+    RPlan* field_0x6408c;
+    RPlan* field_0x64090[0x5];
+    RouteNode* field_0x640a4[0x5];
+    int field_0x640b8;
+    int field_0x640bc;
+
+    // Constructors
+
+    // win1.41 008639e0 mac 100aad00 RPFollow::RPFollow(void)
+    RPFollow();
+
+    // Non-virtual methods
+
+    // win1.41 00863ac0 mac 100aab50 RPFollow::Init(int, void (*)(int, int), void (*)(int, float, float), float (*)(int), int)
+    void Init(int param_1, void (__cdecl*)(int, int) param_2, void (__cdecl*)(int, float, float) param_3, float (__cdecl*)(int) param_4, int param_5);
+    // win1.41 00863b70 mac 100aa690 RPFollow::SetDest(Point2D const &, float, float, float, float)
+    void SetDest(Point2D* param_1, float param_2, float param_3, float param_4, float param_5);
+    // win1.41 00864990 mac 100a95a0 RPFollow::MoveAlongRoute(void)
+    void MoveAlongRoute();
+    // win1.41 00864ba0 mac 100a92c0 RPFollow::FillPosAndHeading(Point2D &, float &, float)
+    void FillPosAndHeading(Point2D* param_1, float* param_2, float param_3);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct RPlan;
@@ -60,5 +116,7 @@ void __fastcall SetDest__8RPFollowFRC7Point2Dffff(struct RPFollow* this, const v
 void __fastcall MoveAlongRoute__8RPFollowFv(struct RPFollow* this) asm("?MoveAlongRoute@RPFollow@@QAEXXZ");
 // win1.41 00864ba0 mac 100a92c0 RPFollow::FillPosAndHeading(Point2D &, float &, float)
 void __fastcall FillPosAndHeading__8RPFollowFR7Point2DRff(struct RPFollow* this, const void* edx, struct Point2D* param_1, float* param_2, float param_3) asm("?FillPosAndHeading@RPFollow@@QAEXAAUPoint2D@@AAMM@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_RP_FOLLOW_INCLUDED_H */

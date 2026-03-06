@@ -8,6 +8,34 @@
 
 #include "LivingInfo.h" /* For struct GLivingInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+class GObjectInfo;
+
+// win1.41 00bf3ea0 mac inlined GMagicLivingInfo::`RTTI Type Descriptor'
+// win1.41 009b1b30 mac inlined GMagicLivingInfo::`RTTI Base Class Descriptor'
+// win1.41 009b1b48 mac inlined GMagicLivingInfo::`RTTI Base Class Array'
+// win1.41 009b1b68 mac inlined GMagicLivingInfo::`RTTI Class Hierarchy Descriptor'
+class GMagicLivingInfo: public GLivingInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 005fb980 mac inlined GMagicLivingInfo::_dt(void)
+    virtual ~GMagicLivingInfo();
+    // win1.41 005fb910 mac inlined GMagicLivingInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    // win1.41 005fb900 mac inlined GMagicLivingInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -39,5 +67,7 @@ void __fastcall __dt__16GMagicLivingInfoFv(struct Base* this, const void* edx, u
 struct GBaseInfo* __fastcall GetBaseInfo__16GMagicLivingInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GMagicLivingInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 005fb900 mac inlined GMagicLivingInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__16GMagicLivingInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GMagicLivingInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_LIVING_INFO_INCLUDED_H */

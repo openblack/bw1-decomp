@@ -2,10 +2,11 @@ import unittest
 import sys
 import os
 import csnake
+from collections import OrderedDict
 sys.path.append(os.path.dirname(__file__) + "/../bw1_decomp_gen")
 
 from vftable import Vftable
-from structs import Struct
+from structs import Struct, RTTIClass
 from functions import FuncPtr
 
 
@@ -46,3 +47,39 @@ struct TestStructVftable
 {
     void (__fastcall* Foo)(struct TestStruct* this, const void* edx, void (*foo)(int param_1, float param_2, int param_3));  /* 0x0 */
 };""")
+
+
+class TestRTTIClass(unittest.TestCase):
+    def _make_rtti_entry(self, name, win_addr, mac_addr, type_name, decorated_name):
+        return {"name": name, "win_addr": win_addr, "mac_addr": mac_addr, "type": type_name, "decorated_name": decorated_name, "msvc_mangled_name": None}
+
+    def test_get_types_no_rtti(self):
+        struct = Struct("TestClass", 4, [Struct.Member("vftable", "struct TestClassVftable*", 0x0)])
+        s = RTTIClass(struct, {}, {}, {}, {}, {}, {}, OrderedDict(), {}, {})
+        self.assertSetEqual(s.get_types(), {"struct TestClass", "struct TestClassVftable*"})
+
+    def DISABLED_test_get_types_no_rtti_cplusplus(self):
+        struct = Struct("TestClass", 4, [Struct.Member("vftable", "struct TestClassVftable*", 0x0)])
+        s = RTTIClass(struct, {}, {}, {}, {}, {}, {}, OrderedDict(), {}, {})
+        self.assertSetEqual(s.get_types(cplusplus=True), {"class TestClass"})
+
+    def test_get_types_with_rtti(self):
+        struct = Struct("TestClass", 4, [Struct.Member("vftable", "struct TestClassVftable*", 0x0)])
+        typedesc_map = {"TestClass": self._make_rtti_entry("__type_info__TestClass", 0x00401000, 0x10001000, "RTTITypeDescriptor", "TestClass::RTTITypeDescriptor")}
+        locator_map = {"TestClass": self._make_rtti_entry("__locator__TestClass", 0x00401010, 0x10001010, "RTTICompleteObjectLocator", "TestClass::RTTICompleteObjectLocator")}
+        s = RTTIClass(struct, {}, typedesc_map, {}, {}, {}, locator_map, OrderedDict(), {}, {})
+        self.assertSetEqual(s.get_types(), {
+            "struct TestClass",
+            "struct TestClassVftable*",
+            "struct RTTITypeDescriptor",
+            "struct RTTICompleteObjectLocator",
+        })
+
+    def DISABLED_test_get_types_with_rtti_cplusplus(self):
+        struct = Struct("TestClass", 4, [Struct.Member("vftable", "struct TestClassVftable*", 0x0)])
+        typedesc_map = {"TestClass": self._make_rtti_entry("__type_info__TestClass", 0x00401000, 0x10001000, "RTTITypeDescriptor", "TestClass::RTTITypeDescriptor")}
+        locator_map = {"TestClass": self._make_rtti_entry("__locator__TestClass", 0x00401010, 0x10001010, "RTTICompleteObjectLocator", "TestClass::RTTICompleteObjectLocator")}
+        s = RTTIClass(struct, {}, typedesc_map, {}, {}, {}, locator_map, OrderedDict(), {}, {})
+        self.assertSetEqual(s.get_types(cplusplus=True), {
+            "class TestClass",
+        })

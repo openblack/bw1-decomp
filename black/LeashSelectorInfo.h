@@ -8,6 +8,28 @@
 
 #include "ObjectInfo.h" /* For struct GObjectInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 009cb948 mac inlined GLeashSelectorInfo::`RTTI Type Descriptor'
+// win1.41 009a7cc8 mac inlined GLeashSelectorInfo::`RTTI Base Class Descriptor'
+// win1.41 009a7ce0 mac inlined GLeashSelectorInfo::`RTTI Base Class Array'
+// win1.41 009a7cf8 mac inlined GLeashSelectorInfo::`RTTI Class Hierarchy Descriptor'
+class GLeashSelectorInfo: public GObjectInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 0042b3d0 mac 10182f90 GLeashSelectorInfo::_dt(void)
+    virtual ~GLeashSelectorInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 0042b3d0 mac 10182f90 GLeashSelectorInfo::_dt(void)
 void __fastcall __dt__18GLeashSelectorInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGLeashSelectorInfo@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LEASH_SELECTOR_INFO_INCLUDED_H */

@@ -7,6 +7,53 @@
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct MouseInput;
+
+// win1.41 009cdc28 mac inlined Prss::`RTTI Type Descriptor'
+// win1.41 009a8840 mac inlined Prss::`RTTI Base Class Descriptor'
+// win1.41 009abb34 mac inlined Prss::`RTTI Base Class Array'
+// win1.41 009abb40 mac inlined Prss::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d87b4 mac 101cbc0c Prss::`RTTI Complete Object Locator'
+// win1.41 008d87b8 mac 101cbc14 Prss::`vftable'
+class Prss
+{
+public:
+    uint32_t field_0x4;
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+
+    // Virtual functions
+
+    virtual int ProcessTurn(); /* 0x0 */
+    virtual void Display();
+    // win1.41 00842130 mac 10063270 Prss::Terminate(void)
+    virtual void Terminate();
+    // win1.41 00842160 mac 100631e0 Prss::PrssKey(LH_KEY, unsigned short)
+    virtual void PrssKey(LH_KEY key, uint16_t param_2);
+    // win1.41 00842170 mac 10063170 Prss::PrssMouse(MouseInput *)
+    virtual void PrssMouse(MouseInput* param_1); /* 0x10 */
+    virtual void ClickFunction(int param_1, int param_2, int param_3);
+    // win1.41 004f7200 mac 10062140 Prss::StringFunction(long, char *, int)
+    virtual void StringFunction(int param_1, char* param_2, int param_3);
+
+    // Override methods
+
+    // win1.41 00842130 mac 10063270 Prss::Terminate(void)
+    virtual void Terminate();
+    // win1.41 00842160 mac 100631e0 Prss::PrssKey(LH_KEY, unsigned short)
+    virtual void PrssKey(LH_KEY key, uint16_t param_2);
+    // win1.41 00842170 mac 10063170 Prss::PrssMouse(MouseInput *)
+    virtual void PrssMouse(MouseInput* param_1);
+    // win1.41 004f7200 mac 10062140 Prss::StringFunction(long, char *, int)
+    virtual void StringFunction(int param_1, char* param_2, int param_3);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct MouseInput;
@@ -61,5 +108,7 @@ void __fastcall StringFunction__4PrssFlPci(struct Prss* this, const void* edx, i
 
 // win1.41 008416e0 mac 100646e0 BMan_Check(Prss *, int, int, int)
 int __cdecl BMan_Check__FP4Prssiii(struct Prss* param_1, int param_2, int param_3, int param_4);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PRSS_INCLUDED_H */

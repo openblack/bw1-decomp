@@ -8,6 +8,32 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bf3600 mac inlined GLanguage::`RTTI Type Descriptor'
+// win1.41 009b1878 mac inlined GLanguage::`RTTI Base Class Descriptor'
+// win1.41 009b1890 mac inlined GLanguage::`RTTI Base Class Array'
+// win1.41 009b18a0 mac inlined GLanguage::`RTTI Class Hierarchy Descriptor'
+// win1.41 0092b340 mac 10733c04 GLanguage::`RTTI Complete Object Locator'
+// win1.41 0092b344 mac 10733c0c GLanguage::`vftable'
+class GLanguage: public Base
+{
+public:
+    uint32_t field_0x8;
+
+    // Override methods
+
+    // win1.41 005e6770 mac 1017a5a0 GLanguage::_dt(void)
+    virtual ~GLanguage();
+
+    // Constructors
+
+    // win1.41 005e6750 mac 1019cef0 GLanguage::GLanguage(void)
+    GLanguage();
+};
+
+#else // __cplusplus
+
 struct GLanguage
 {
   struct Base super;  /* 0x0 */
@@ -39,5 +65,7 @@ void __fastcall __ct__9GLanguageFv(struct GLanguage* this) asm("??0GLanguage@@QA
 
 // win1.41 005e6770 mac 1017a5a0 GLanguage::_dt(void)
 void __fastcall __dt__9GLanguageFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGLanguage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LANGUAGE_INCLUDED_H */

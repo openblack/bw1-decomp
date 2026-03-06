@@ -13,6 +13,85 @@
 #include "CreatureContext.h" /* For struct PreviousContextStack */
 #include "CreaturePreviousLesson.h" /* For struct CreaturePreviousLesson */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Creature;
+
+// win1.41 00bdf918 mac inlined CreatureLearning::`RTTI Type Descriptor'
+// win1.41 009aae50 mac inlined CreatureLearning::`RTTI Base Class Descriptor'
+// win1.41 009aae68 mac inlined CreatureLearning::`RTTI Base Class Array'
+// win1.41 009aae78 mac inlined CreatureLearning::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d040c mac 107875c4 CreatureLearning::`RTTI Complete Object Locator'
+// win1.41 008d0410 mac 107875cc CreatureLearning::`vftable'
+class CreatureLearning: public Base
+{
+public:
+    PreviousContextStack previous_context_stack; /* 0x8 */
+    PreviousActionContextStack previous_action_context_stack; /* 0x260 */
+    CreaturePreviousLesson previous_lesson; /* 0x14020 */
+    uint32_t field_0x1522c;
+    uint32_t field_0x15230[0x6];
+    uint32_t field_0x15248[0x6];
+    uint32_t field_0x15260[0x2a];
+    uint32_t field_0x15308[0x2a];
+    uint32_t field_0x153b0[NUM_CREATURE_ACTIONS];
+    uint32_t field_0x158d0[0x2d];
+    uint32_t field_0x15984[0x2d];
+    uint32_t field_0x15a38[0x2d];
+    uint32_t field_0x15aec;
+    uint32_t field_0x15af0;
+    uint32_t field_0x15af4;
+    uint32_t field_0x15af8[0x2][0x28];
+    uint32_t field_0x15c38;
+    uint32_t field_0x15c3c;
+    uint32_t field_0x15c40[NUM_CREATURE_ACTIONS];
+    Creature* field_0x16160;
+    uint32_t field_0x16164;
+
+    // Override methods
+
+    // win1.41 004e03d0 mac 10246a10 CreatureLearning::_dt(void)
+    virtual ~CreatureLearning();
+
+    // Constructors
+
+    // win1.41 004e0290 mac 10265060 CreatureLearning::CreatureLearning(Creature *)
+    CreatureLearning(Creature* creature);
+};
+
+// win1.41 009dd368 mac inlined CreatureLearningEpisode::`RTTI Type Descriptor'
+// win1.41 009a9f50 mac inlined CreatureLearningEpisode::`RTTI Base Class Descriptor'
+// win1.41 009a9f68 mac inlined CreatureLearningEpisode::`RTTI Base Class Array'
+// win1.41 009a9f78 mac inlined CreatureLearningEpisode::`RTTI Class Hierarchy Descriptor'
+class CreatureLearningEpisode: public Base
+{
+public:
+    uint8_t field_0x8[0xc];
+
+    // Override methods
+
+    // win1.41 004cbc00 mac 10250410 CreatureLearningEpisode::_dt(void)
+    virtual ~CreatureLearningEpisode();
+};
+
+// win1.41 00bdfab8 mac inlined CreatureLearningContext::`RTTI Type Descriptor'
+// win1.41 009aaef0 mac inlined CreatureLearningContext::`RTTI Base Class Descriptor'
+// win1.41 009aaf08 mac inlined CreatureLearningContext::`RTTI Base Class Array'
+// win1.41 009aaf18 mac inlined CreatureLearningContext::`RTTI Class Hierarchy Descriptor'
+class CreatureLearningContext: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 004e1d30 mac 10262750 CreatureLearningContext::_dt(void)
+    virtual ~CreatureLearningContext();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Creature;
@@ -115,5 +194,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 004e1d30 mac 10262750 CreatureLearningContext::_dt(void)
 void __fastcall __dt__23CreatureLearningContextFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureLearningContext@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_LEARNING_INCLUDED_H */

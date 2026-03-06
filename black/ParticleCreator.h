@@ -7,6 +7,30 @@
 
 #include "Persistent.h" /* For struct Persistent */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct PropertyList;
+
+// win1.41 00c02180 mac inlined ParticleCreator::`RTTI Type Descriptor'
+// win1.41 009b4d68 mac inlined ParticleCreator::`RTTI Base Class Descriptor'
+// win1.41 009b4ed0 mac inlined ParticleCreator::`RTTI Base Class Array'
+// win1.41 009b4ee0 mac inlined ParticleCreator::`RTTI Class Hierarchy Descriptor'
+class ParticleCreator: public Persistent
+{
+public:
+
+    // Override methods
+
+    // win1.41 006a9400 mac 103dfee0 ParticleCreator::_dt(void)
+    virtual ~ParticleCreator();
+    // win1.41 006b34c0 mac 10457740 ParticleCreator::DefineProperties(PropertyList *)
+    virtual void DefineProperties(PropertyList* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct PropertyList;
@@ -34,5 +58,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__15ParticleCreatorFv(struct Persistent* this) asm("??_GParticleCreator@@UAEPAXI@Z");
 // win1.41 006b34c0 mac 10457740 ParticleCreator::DefineProperties(PropertyList *)
 void __fastcall DefineProperties__15ParticleCreatorFP12PropertyList(struct Persistent* this, const void* edx, struct PropertyList* param_1) asm("?DefineProperties@ParticleCreator@@UAEXPAUPropertyList@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PARTICLE_CREATOR_INCLUDED_H */

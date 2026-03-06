@@ -8,6 +8,31 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 009dd8e0 mac inlined CreatureCommandState::`RTTI Type Descriptor'
+// win1.41 009aa450 mac inlined CreatureCommandState::`RTTI Base Class Descriptor'
+// win1.41 009aa468 mac inlined CreatureCommandState::`RTTI Base Class Array'
+// win1.41 009aa478 mac inlined CreatureCommandState::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cf96c mac 10787554 CreatureCommandState::`RTTI Complete Object Locator'
+// win1.41 008cf970 mac 1078755c CreatureCommandState::`vftable'
+class CreatureCommandState: public Base
+{
+public:
+    uint8_t field_0x8[0x14];
+    uint32_t field_0x1c;
+    uint32_t field_0x20;
+    uint32_t field_0x24;
+    int field_0x28;
+
+    // Override methods
+
+    // win1.41 004d35e0 mac 10245e50 CreatureCommandState::_dt(void)
+    virtual ~CreatureCommandState();
+};
+
+#else // __cplusplus
+
 struct CreatureCommandState
 {
   struct Base super;  /* 0x0 */
@@ -38,5 +63,7 @@ extern const struct BaseVftable __vt__20CreatureCommandState asm("??_7CreatureCo
 
 // win1.41 004d35e0 mac 10245e50 CreatureCommandState::_dt(void)
 void __fastcall __dt__20CreatureCommandStateFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureCommandState@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_COMMAND_STATE_INCLUDED_H */

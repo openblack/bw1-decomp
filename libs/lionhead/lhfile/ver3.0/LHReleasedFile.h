@@ -8,6 +8,33 @@
 
 #include "LHFile.h" /* For enum LH_FILE_MODE, struct LHFile */
 
+#ifdef __cplusplus
+
+// win1.41 009cb988 mac inlined LHReleasedFile::`RTTI Type Descriptor'
+// win1.41 009a7d70 mac inlined LHReleasedFile::`RTTI Base Class Descriptor'
+// win1.41 009a7d88 mac inlined LHReleasedFile::`RTTI Base Class Array'
+// win1.41 009a7d98 mac inlined LHReleasedFile::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c4d08 mac 101daa00 LHReleasedFile::`RTTI Complete Object Locator'
+// win1.41 008c4d0c mac 101daa08 LHReleasedFile::`vftable'
+class LHReleasedFile: public LHFile
+{
+public:
+
+    // Override methods
+
+    // win1.41 007bd730 mac 1061c784 LHReleasedFile::Open(LH_FILE_MODE)
+    virtual uint32_t Open(LH_FILE_MODE mode);
+
+    // Constructors
+
+    // win1.41 0047f6d0 mac 101c9350 LHReleasedFile::LHReleasedFile
+    LHReleasedFile();
+    // win1.41 00837350 mac inlined LHReleasedFile::LHReleasedFile(char const *)
+    LHReleasedFile(const char* name);
+};
+
+#else // __cplusplus
+
 struct LHReleasedFile
 {
   struct LHFile super;  /* 0x0 */
@@ -40,5 +67,7 @@ struct LHReleasedFile* __fastcall __ct__14LHReleasedFileFPCc(struct LHReleasedFi
 
 // win1.41 007bd730 mac 1061c784 LHReleasedFile::Open(LH_FILE_MODE)
 uint32_t __fastcall Open__14LHReleasedFileF12LH_FILE_MODE(struct LHFile* this, const void* edx, enum LH_FILE_MODE mode) asm("?Open@LHReleasedFile@@UAEIW4LH_FILE_MODE@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_RELEASED_FILE_INCLUDED_H */

@@ -8,6 +8,31 @@
 
 #include "HandStateHolding.h" /* For struct HandStateHolding */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CHand;
+
+// win1.41 00bf0178 mac inlined HandStateGrain::`RTTI Type Descriptor'
+// win1.41 009b0f90 mac inlined HandStateGrain::`RTTI Base Class Descriptor'
+// win1.41 009b0fa8 mac inlined HandStateGrain::`RTTI Base Class Array'
+// win1.41 009b0fb8 mac inlined HandStateGrain::`RTTI Class Hierarchy Descriptor'
+// win1.41 00900afc mac 1099b3c0 HandStateGrain::`RTTI Complete Object Locator'
+// win1.41 00900b00 mac 1099b3c8 HandStateGrain::`vftable'
+class HandStateGrain: public HandStateHolding
+{
+public:
+    uint8_t field_0x8[0xe4]; /* 0x144 */
+
+    // Constructors
+
+    // win1.41 005b2b80 mac 10339d60 HandStateGrain::HandStateGrain(CHand*)
+    HandStateGrain(CHand* hand);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CHand;
@@ -38,5 +63,7 @@ extern const struct HandStateVftable __vt__14HandStateGrain asm("??_7HandStateGr
 
 // win1.41 005b2b80 mac 10339d60 HandStateGrain::HandStateGrain(CHand*)
 struct HandStateGrain* __fastcall __ct__14HandStateGrainFP5CHand(struct HandStateGrain* this, const void* edx, struct CHand* hand) asm("??0HandStateGrain@@QAE@PAVCHand@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HAND_STATE_GRAIN_INCLUDED_H */

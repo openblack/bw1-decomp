@@ -9,6 +9,59 @@
 #include "Base.h" /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */
 
+#ifdef __cplusplus
+
+// win1.41 00bdf8b0 mac inlined CreatureExplorationMap::`RTTI Type Descriptor'
+// win1.41 009aae00 mac inlined CreatureExplorationMap::`RTTI Base Class Descriptor'
+// win1.41 009aae18 mac inlined CreatureExplorationMap::`RTTI Base Class Array'
+// win1.41 009aae28 mac inlined CreatureExplorationMap::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d00dc mac 1098b8d8 CreatureExplorationMap::`RTTI Complete Object Locator'
+// win1.41 008d00e0 mac 1098b8e0 CreatureExplorationMap::`vftable'
+class CreatureExplorationMap: public Base
+{
+public:
+    uint32_t field_0x8;
+    MapCoords coords;
+    uint16_t field_0x18[0x40][0x40];
+
+    // Override methods
+
+    // win1.41 004df5c0 mac 10246800 CreatureExplorationMap::_dt(void)
+    virtual ~CreatureExplorationMap();
+};
+
+// win1.41 00bdf850 mac inlined CreatureExplorationRegionEntry::`RTTI Type Descriptor'
+// win1.41 009aad60 mac inlined CreatureExplorationRegionEntry::`RTTI Base Class Descriptor'
+// win1.41 009aad78 mac inlined CreatureExplorationRegionEntry::`RTTI Base Class Array'
+// win1.41 009aad88 mac inlined CreatureExplorationRegionEntry::`RTTI Class Hierarchy Descriptor'
+class CreatureExplorationRegionEntry: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 004df430 mac 10260660 CreatureExplorationRegionEntry::_dt(void)
+    virtual ~CreatureExplorationRegionEntry();
+};
+
+// win1.41 00bdf880 mac inlined CreatureGlobalExplorationMap::`RTTI Type Descriptor'
+// win1.41 009aadb0 mac inlined CreatureGlobalExplorationMap::`RTTI Base Class Descriptor'
+// win1.41 009aadc8 mac inlined CreatureGlobalExplorationMap::`RTTI Base Class Array'
+// win1.41 009aadd8 mac inlined CreatureGlobalExplorationMap::`RTTI Class Hierarchy Descriptor'
+class CreatureGlobalExplorationMap: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 004df450 mac 102605a0 CreatureGlobalExplorationMap::_dt(void)
+    virtual ~CreatureGlobalExplorationMap();
+    // win1.41 004dfbd0 mac 10260d20 CreatureGlobalExplorationMap::Dump(void)
+    virtual void Dump();
+};
+
+#else // __cplusplus
+
 struct CreatureExplorationMap
 {
   struct Base super;  /* 0x0 */
@@ -83,5 +136,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__28CreatureGlobalExplorationMapFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureGlobalExplorationMap@@UAEPAXI@Z");
 // win1.41 004dfbd0 mac 10260d20 CreatureGlobalExplorationMap::Dump(void)
 void __fastcall Dump__28CreatureGlobalExplorationMapFv(struct Base* this) asm("?Dump@CreatureGlobalExplorationMap@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_EXPLORATION_MAP_INCLUDED_H */

@@ -10,6 +10,62 @@
 
 #include "LHFile.h" /* For enum LH_FILE_MODE, enum LH_SEEK_MODE */
 
+#ifdef __cplusplus
+
+// win1.41 009cba58 mac inlined LHOSFile::`RTTI Type Descriptor'
+// win1.41 009a7f38 mac inlined LHOSFile::`RTTI Base Class Descriptor'
+// win1.41 0099f868 mac 1099a66c LHOSFile::`RTTI Complete Object Locator'
+// win1.41 0099f86c mac 1099a674 LHOSFile::`vftable'
+class LHOSFile
+{
+public:
+    void* handle; /* 0x4 */
+
+    // Virtual functions
+
+    // win1.41 007bc660 mac 10164ef0 LHOSFile::~LHOSFile(bool)
+    virtual ~LHOSFile(); /* 0x0 */
+    // win1.41 007bc730 mac 10164b40 LHOSFile::Open(const char*, LH_FILE_MODE)
+    virtual uint32_t Open(const char* path, LH_FILE_MODE mode);
+
+    // Override methods
+
+    // win1.41 007bc660 mac 10164ef0 LHOSFile::~LHOSFile(bool)
+    virtual ~LHOSFile();
+    // win1.41 007bc730 mac 10164b40 LHOSFile::Open(const char*, LH_FILE_MODE)
+    virtual uint32_t Open(const char* path, LH_FILE_MODE mode);
+
+    // Static methods
+
+    // win1.41 007bc6a0 mac 10164e30 LHOSFile::Exists(const char*)
+    static uint32_t Exists(const char* path);
+
+    // Constructors
+
+    // win1.41 007bc650 mac 10164fc0 LHOSFile::LHOSFile(void)
+    LHOSFile();
+
+    // Non-virtual Destructors
+
+    // win1.41 007bc680 mac inlined LHOSFile::~LHOSFile(void)
+    ~LHOSFile();
+
+    // Non-virtual methods
+
+    // win1.41 0046b720 mac inlined LHOSFile::Write(char *const)
+    uint32_t Write(const char* str);
+    // win1.41 007bc860 mac 1061b68c LHOSFile::Close(void)
+    uint32_t Close();
+    // win1.41 007bc880 mac 1061beb4 LHOSFile::Seek(long, LH_SEEK_MODE, unsigned long *)
+    uint32_t Seek(size_t pos, LH_SEEK_MODE mode, uint32_t* starting_point);
+    // win1.41 007bc8e0 mac 1061cc94 LHOSFile::Read(void* , unsigned long, unsigned long *)
+    uint32_t Read(void* buffer, size_t size, size_t* read);
+    // win1.41 007bc920 mac 1061bbb4 LHOSFile::Write(void* , unsigned long, unsigned long *)
+    uint32_t Write(const void* data, uint32_t len, uint32_t* written);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LHOSFile;
@@ -73,5 +129,7 @@ uint32_t __fastcall Write__8LHOSFileFPvUlPUl(struct LHOSFile* this, const void* 
 void __fastcall __dt__8LHOSFileFb(struct LHOSFile* this, const void* edx, bool param_2);
 // win1.41 007bc730 mac 10164b40 LHOSFile::Open(const char*, LH_FILE_MODE)
 uint32_t __fastcall Open__8LHOSFileFPc12LH_FILE_MODE(struct LHOSFile* this, const void* edx, const char* path, enum LH_FILE_MODE mode) asm("?Open@LHOSFile@@UAEIPADW4LH_FILE_MODE@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LHOS_FILE_INCLUDED_H */

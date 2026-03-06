@@ -8,6 +8,33 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00be6878 mac inlined GDanceInfo::`RTTI Type Descriptor'
+// win1.41 009ab548 mac inlined GDanceInfo::`RTTI Base Class Descriptor'
+// win1.41 009ab560 mac inlined GDanceInfo::`RTTI Base Class Array'
+// win1.41 009ab570 mac inlined GDanceInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d3934 mac 1099548c GDanceInfo::`RTTI Complete Object Locator'
+// win1.41 008d3938 mac 10995494 GDanceInfo::`vftable'
+class GDanceInfo: public GBaseInfo
+{
+public:
+    uint8_t field_0x10[0xa0];
+
+    // Override methods
+
+    // win1.41 0050b670 mac 102a8e60 GDanceInfo::_dt(void)
+    virtual ~GDanceInfo();
+    // win1.41 0050b600 mac 102aa810 GDanceInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -40,5 +67,7 @@ extern const struct GBaseInfoVftable __vt__10GDanceInfo asm("??_7GDanceInfo@@6B@
 void __fastcall __dt__10GDanceInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGDanceInfo@@UAEPAXI@Z");
 // win1.41 0050b600 mac 102aa810 GDanceInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__10GDanceInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GDanceInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_DANCE_INFO_INCLUDED_H */

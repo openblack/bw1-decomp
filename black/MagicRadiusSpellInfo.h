@@ -8,6 +8,28 @@
 
 #include "MagicInfo.h" /* For struct GMagicInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 009cbab0 mac inlined GMagicRadiusSpellInfo::`RTTI Type Descriptor'
+// win1.41 009a7fb8 mac inlined GMagicRadiusSpellInfo::`RTTI Base Class Descriptor'
+// win1.41 009a8288 mac inlined GMagicRadiusSpellInfo::`RTTI Base Class Array'
+// win1.41 009a82a0 mac inlined GMagicRadiusSpellInfo::`RTTI Class Hierarchy Descriptor'
+class GMagicRadiusSpellInfo: public GMagicInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00435850 mac 10190190 GMagicRadiusSpellInfo::_dt(void)
+    virtual ~GMagicRadiusSpellInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00435850 mac 10190190 GMagicRadiusSpellInfo::_dt(void)
 void __fastcall __dt__21GMagicRadiusSpellInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMagicRadiusSpellInfo@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_RADIUS_SPELL_INFO_INCLUDED_H */

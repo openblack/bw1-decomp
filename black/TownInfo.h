@@ -8,6 +8,53 @@
 
 #include "ContainerInfo.h" /* For struct GContainerInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+struct LHColor;
+
+// win1.41 00c22b88 mac inlined GTownInfo::`RTTI Type Descriptor'
+// win1.41 009b99e8 mac inlined GTownInfo::`RTTI Base Class Descriptor'
+// win1.41 009b9a00 mac inlined GTownInfo::`RTTI Base Class Array'
+// win1.41 009b9a18 mac inlined GTownInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 00999ab0 mac 109e35e4 GTownInfo::`RTTI Complete Object Locator'
+// win1.41 00999ab4 mac 109e35ec GTownInfo::`vftable'
+class GTownInfo: public GContainerInfo
+{
+public:
+    float field_0x148;
+    float field_0x14c;
+    uint32_t field_0x150;
+    float field_0x154;
+    float field_0x158;
+    float field_0x15c;
+    uint32_t field_0x160;
+    float field_0x164;
+    uint32_t field_0x168;
+    float field_0x16c;
+    float field_0x170;
+    float field_0x174;
+    float field_0x178;
+    float field_0x17c;
+    float field_0x180;
+    float field_0x184;
+    float field_0x188;
+
+    // Override methods
+
+    // win1.41 00738fc0 mac 10545c00 GTownInfo::_dt(void)
+    virtual ~GTownInfo();
+    // win1.41 0073fd80 mac inlined GTownInfo::GetDebugColor( const(LHColor *))
+    virtual LHColor* GetDebugColor(LHColor* param_1);
+    // win1.41 00738f70 mac 10545ba0 GTownInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -60,5 +107,7 @@ void __fastcall __dt__9GTownInfoFv(struct Base* this, const void* edx, uint32_t 
 struct LHColor* __fastcall GetDebugColor__9GTownInfoCFP7LHColor(const struct GBaseInfo* this, const void* edx, struct LHColor* param_1) asm("?GetDebugColor@GTownInfo@@UBEPAULHColor@@PAU2@@Z");
 // win1.41 00738f70 mac 10545ba0 GTownInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__9GTownInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GTownInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_TOWN_INFO_INCLUDED_H */

@@ -11,6 +11,73 @@
 
 #include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+enum BINDABLE_ACTIONS;
+class InnerCamera;
+struct InnerRoom;
+struct Zoomer3d;
+
+// win1.41 00bec570 mac inlined TempleRoom::`RTTI Type Descriptor'
+// win1.41 009ba578 mac inlined TempleRoom::`RTTI Base Class Descriptor'
+// win1.41 009babc4 mac inlined TempleRoom::`RTTI Base Class Array'
+// win1.41 009babd0 mac inlined TempleRoom::`RTTI Class Hierarchy Descriptor'
+// win1.41 0099eec0 mac 10732ce8 TempleRoom::`RTTI Complete Object Locator'
+// win1.41 0099eec4 mac 106f5af8 TempleRoom::`vftable'
+class TempleRoom
+{
+public:
+    char name[0x20]; /* 0x4 */
+    uint32_t field_0x24;
+    uint32_t field_0x28;
+    uint32_t field_0x2c;
+    uint32_t field_0x30;
+    int32_t field_0x34;
+    int32_t field_0x38;
+    uint8_t field_0x3c[0x40];
+    uint32_t field_0x7c;
+    uint8_t field_0x80[0x40];
+    InnerRoom* inner_room; /* 0xc0 */
+    InnerCamera* camera;
+    int32_t field_0xc8;
+    uint8_t field_0xcc[0x4];
+    uint32_t field_0xd0;
+    uint32_t field_0xd4;
+    uint32_t field_0xd8;
+    uint32_t field_0xdc;
+    uint32_t field_0xe0;
+    float field_0xe4;
+    float field_0xe8;
+
+    // Virtual functions
+
+    virtual bool IsAvailable(); /* 0x0 */
+    virtual void DrawAdditional(bool param);
+    virtual void PreDraw();
+    virtual void Draw();
+    virtual void DrawHand(); /* 0x10 */
+    virtual void Update();
+    virtual void UpdateMouse(LHCoord coord, INTERFACE_MESSAGE_TYPES message_type);
+    virtual void UpdateKeyboard(LH_KEY key, uint16_t param);
+    virtual void TriggerIntroCamera(bool param, Zoomer3d* zoomer1, Zoomer3d* zoomer2); /* 0x20 */
+    virtual void InitEngine_0();
+    virtual void InitEngine_1(char* param1, char* param2, char* param3, char* param4);
+    virtual void CloseEngine();
+    virtual void CalculateTooltipsInsideCitadel(BINDABLE_ACTIONS* actions); /* 0x30 */
+    virtual void PreToolTipProcess();
+    virtual void PostToolTipProcess();
+    virtual void OnEnterRoom();
+
+    // Constructors
+
+    // win1.41 00798870 mac 1053f350 TempleRoom::TempleRoom(const char*)
+    TempleRoom(const char* name);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 enum BINDABLE_ACTIONS;
@@ -130,5 +197,7 @@ static_assert(sizeof(struct InnerRoom) == 0x2c, "Data type is of wrong size");
 
 // win1.41 00795030 mac 1053bfb0 InnerRoom::InnerRoom(void)
 struct InnerRoom* __fastcall __ct__9InnerRoomFv(struct InnerRoom* this) asm("??0InnerRoom@@QAE@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_TEMPLE_ROOM_INCLUDED_H */

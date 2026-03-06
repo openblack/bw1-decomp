@@ -8,6 +8,41 @@
 
 #include "PSysBase.h" /* For struct PSysBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00bed540 mac inlined RenderParticle::`RTTI Type Descriptor'
+// win1.41 009aed38 mac inlined RenderParticle::`RTTI Base Class Descriptor'
+// win1.41 009aeda8 mac inlined RenderParticle::`RTTI Base Class Array'
+// win1.41 009aedc0 mac inlined RenderParticle::`RTTI Class Hierarchy Descriptor'
+// win1.41 008fac38 mac 109b6a34 RenderParticle::`RTTI Complete Object Locator'
+// win1.41 008fac3c mac 109b6a54 RenderParticle::`vftable'
+class RenderParticle: public PSysBase
+{
+public:
+    uint32_t field_0x14;
+
+    // Override methods
+
+    // win1.41 0055ef70 mac 1030afe0 RenderParticle::_dt(void)
+    virtual ~RenderParticle();
+    // win1.41 0055ef60 mac 10423970 RenderParticle::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00694fb0 mac 1041cb70 RenderParticle::Load(GameOSFile &)
+    virtual uint32_t Load(GameOSFile* param_1);
+    // win1.41 006cbad0 mac 10484260 RenderParticle::Save(GameOSFile &)
+    virtual uint32_t Save(GameOSFile* param_1);
+    // win1.41 0055ef50 mac 10423930 RenderParticle::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -48,5 +83,7 @@ uint32_t __fastcall Load__14RenderParticleFR10GameOSFile(struct GameThing* this,
 uint32_t __fastcall Save__14RenderParticleFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@RenderParticle@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0055ef50 mac 10423930 RenderParticle::GetSaveType(void)
 uint32_t __fastcall GetSaveType__14RenderParticleFv(struct GameThing* this) asm("?GetSaveType@RenderParticle@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_P_SYS_RENDER_PARTICLE_INCLUDED_H */

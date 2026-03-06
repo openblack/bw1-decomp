@@ -4,6 +4,30 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LHPacket;
+class LHTransportInfo;
+
+class LHSocket
+{
+public:
+    uint32_t field_0x4;
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+    uint8_t ip_bin[0x4]; /* 0x10 */
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    char** name;
+    uint32_t send_bytes_total; /* 0x20 */
+    uint32_t send_bytes;
+    uint32_t connection_status;
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LHPacket;
@@ -40,5 +64,7 @@ struct LHSocket
   uint32_t connection_status;
 };
 static_assert(sizeof(struct LHSocket) == 0x2c, "Data type is of wrong size");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_SOCKET_INCLUDED_H */

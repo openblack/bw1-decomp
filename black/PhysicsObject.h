@@ -8,6 +8,45 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bfeec0 mac inlined PhysicsObject::`RTTI Type Descriptor'
+// win1.41 009b31c0 mac inlined PhysicsObject::`RTTI Base Class Descriptor'
+// win1.41 009b31d8 mac inlined PhysicsObject::`RTTI Base Class Array'
+// win1.41 009b31e8 mac inlined PhysicsObject::`RTTI Class Hierarchy Descriptor'
+// win1.41 00932b90 mac 10746ec0 PhysicsObject::`RTTI Complete Object Locator'
+// win1.41 00932b94 mac 10746ec8 PhysicsObject::`vftable'
+class PhysicsObject: public Base
+{
+public:
+    uint8_t field_0x8[0x1a0];
+    float field_0x1a8;
+    uint32_t field_0x1ac;
+    uint32_t field_0x1b0;
+    uint32_t field_0x1b4;
+    float field_0x1b8;
+    uint32_t field_0x1bc;
+    uint32_t field_0x1c0;
+    uint32_t field_0x1c4;
+    float field_0x1c8;
+    uint32_t field_0x1cc;
+    uint32_t field_0x1d0;
+    uint32_t field_0x1d4;
+    uint32_t field_0x1d8;
+
+    // Override methods
+
+    // win1.41 00644d70 mac 10113d90 PhysicsObject::_dt(void)
+    virtual ~PhysicsObject();
+
+    // Constructors
+
+    // win1.41 00644330 mac 10113e20 PhysicsObject::PhysicsObject(void)
+    PhysicsObject();
+};
+
+#else // __cplusplus
+
 struct PhysicsObject
 {
   struct Base super;  /* 0x0 */
@@ -52,5 +91,7 @@ struct PhysicsObject* __fastcall __ct__13PhysicsObjectFv(struct PhysicsObject* t
 
 // win1.41 00644d70 mac 10113d90 PhysicsObject::_dt(void)
 void __fastcall __dt__13PhysicsObjectFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GPhysicsObject@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PHYSICS_OBJECT_INCLUDED_H */
