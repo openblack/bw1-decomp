@@ -27,7 +27,7 @@ public:
     // win1.41 0066c330 mac 10115d70 GPlaytimeInfo::_dt(void)
     virtual ~GPlaytimeInfo();
     // win1.41 0066c2d0 mac 10115f30 GPlaytimeInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

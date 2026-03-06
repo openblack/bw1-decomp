@@ -33,9 +33,9 @@ public:
     // win1.41 00465590 mac 101c2130 PlannedCitadelPart::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00469720 mac 101c2e30 PlannedCitadelPart::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 004696f0 mac 101c2ed0 PlannedCitadelPart::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00465580 mac 101c20f0 PlannedCitadelPart::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

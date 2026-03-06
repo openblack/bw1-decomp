@@ -36,7 +36,7 @@ public:
     // win1.41 005371e0 mac 100ef0b0 GFootpathLinkSave::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005370a0 mac 100eb5c0 GFootpathLinkSave::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* file);
+    virtual bool Load(GameOSFile& file);
 
     // Constructors
 

@@ -18,6 +18,18 @@ class GTownDesireInfo;
 class Town;
 class Villager;
 
+struct TownDesire__field_0x8
+{
+  uint8_t field_0x0[0x8];
+};
+
+struct DesireSort
+{
+  uint32_t field_0x0;
+  float field_0x4;
+  enum TOWN_DESIRE_INFO field_0x8;
+};
+
 // win1.41 00c22d68 mac inlined TownDesire::`RTTI Type Descriptor'
 // win1.41 009b9c28 mac inlined TownDesire::`RTTI Base Class Descriptor'
 // win1.41 009b9c40 mac inlined TownDesire::`RTTI Base Class Array'

@@ -44,11 +44,11 @@ public:
     // win1.41 0077a920 mac 105b0900 GWorshipSiteInfo::_dt(void)
     virtual ~GWorshipSiteInfo();
     // win1.41 0077a8b0 mac 105b3c70 GWorshipSiteInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 00464370 mac inlined GWorshipSiteInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
     // win1.41 00464380 mac inlined GWorshipSiteInfo::GetAbodeType( const(void))
-    virtual ABODE_TYPE GetAbodeType();
+    virtual ABODE_TYPE GetAbodeType() const;
 };
 
 #else // __cplusplus

@@ -47,7 +47,7 @@ public:
     // win1.41 00472c80 mac 101d2300 CreatureInfo::_dt(void)
     virtual ~CreatureInfo();
     // win1.41 00472c10 mac 101e2980 CreatureInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

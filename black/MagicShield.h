@@ -36,9 +36,9 @@ public:
     // win1.41 0072c220 mac 10534190 MagicShield::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0072c3d0 mac 10531080 MagicShield::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0072c3f0 mac 10531020 MagicShield::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0072c210 mac 10534150 MagicShield::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0072c300 mac 10531370 MagicShield::Draw(void)
@@ -50,7 +50,7 @@ public:
     // win1.41 0072c320 mac 105312c0 MagicShield::SetDying(void)
     virtual bool SetDying();
     // win1.41 0072c310 mac 10531320 MagicShield::IsEffectReceiver(EffectValues *)
-    virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+    virtual bool IsEffectReceiver(EffectValues* param_1);
     // win1.41 0072c330 mac 10531270 MagicShield::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 0072c2e0 mac 105313e0 MagicShield::ProcessShield(void)

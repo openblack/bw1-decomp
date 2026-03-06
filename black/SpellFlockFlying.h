@@ -32,9 +32,9 @@ public:
     // win1.41 0055d290 mac 1051ec90 SpellFlockFlying::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007249d0 mac 1051c220 SpellFlockFlying::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00724ac0 mac 1051c0a0 SpellFlockFlying::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055d280 mac 1051ec50 SpellFlockFlying::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00723a30 mac 1051d940 SpellFlockFlying::GetParticleType(void)

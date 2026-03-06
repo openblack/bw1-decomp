@@ -78,7 +78,7 @@ public:
     // win1.41 00464490 mac 101c18f0 LeashObj::InterfaceTap(GInterfaceStatus *)
     virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
     // win1.41 00464840 mac 101c2540 LeashObj::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 };
 
 struct TempleLeash
@@ -138,9 +138,9 @@ public:
     // win1.41 00464bb0 mac 101c23c0 CitadelHeart::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004657f0 mac 101bf6e0 CitadelHeart::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* file);
+    virtual bool Load(GameOSFile& file);
     // win1.41 004655c0 mac 101bf9c0 CitadelHeart::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00464ba0 mac 101c2380 CitadelHeart::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00465a10 mac 101bf690 CitadelHeart::ResolveLoad(void)
@@ -158,7 +158,7 @@ public:
     // win1.41 00468c30 mac 101bc080 CitadelHeart::GetActualObjectToEffect(GPlayer *, bool)
     virtual void* GetActualObjectToEffect(GPlayer* param_1, bool param_2);
     // win1.41 00468da0 mac 101bc010 CitadelHeart::DestroyedByEffect(GPlayer *, float)
-    virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
+    virtual bool DestroyedByEffect(GPlayer* param_1, float param_2);
     // win1.41 004665a0 mac 1008a6f0 CitadelHeart::Process(void)
     virtual uint32_t Process();
     // win1.41 00464b90 mac 10011680 CitadelHeart::Draw(void)
@@ -176,7 +176,7 @@ public:
     // win1.41 00467b40 mac 101bdf40 CitadelHeart::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 00467b30 mac 101bdfc0 CitadelHeart::ChecksVerticesVObjects(void)
-    virtual uint32_t ChecksVerticesVObjects();
+    virtual bool ChecksVerticesVObjects();
     // win1.41 00467bb0 mac 101bdc10 CitadelHeart::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 004680d0 mac 101bceb0 CitadelHeart::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
@@ -186,7 +186,7 @@ public:
     // win1.41 00464b50 mac 101c2180 CitadelHeart::GetObjectCollide(void)
     virtual uint32_t GetObjectCollide();
     // win1.41 004673a0 mac 101be8e0 CitadelHeart::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 00464b70 mac 101c2200 CitadelHeart::ShouldFootpathsGoRound(void)
     virtual bool ShouldFootpathsGoRound();
     // win1.41 00467d10 mac inlined CitadelHeart::GetDoorPos(MapCoords *)

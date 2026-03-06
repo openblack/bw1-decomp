@@ -32,9 +32,9 @@ public:
     // win1.41 00737af0 mac 10545400 GTotemStatueInfo::_dt(void)
     virtual ~GTotemStatueInfo();
     // win1.41 00737a80 mac 10545af0 GTotemStatueInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 00737a70 mac 10543c90 GTotemStatueInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
 };
 
 #else // __cplusplus

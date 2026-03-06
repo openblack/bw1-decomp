@@ -33,9 +33,9 @@ public:
     // win1.41 0072aee0 mac 1052d120 GSpellSeedInfo::_dt(void)
     virtual ~GSpellSeedInfo();
     // win1.41 0072ae70 mac 1052df40 GSpellSeedInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 0072ae60 mac 1052df00 GSpellSeedInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
 
     // Static methods
 

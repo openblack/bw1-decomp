@@ -43,7 +43,7 @@ public:
     // win1.41 0077ec60 mac inlined WorshipSiteUpgrade::GetWorshipSite(void)
     virtual WorshipSite* GetWorshipSite();
     // win1.41 0077ef30 mac inlined WorshipSiteUpgrade::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 004220f0 mac inlined WorshipSiteUpgrade::IsRepaired(void)
     virtual bool IsRepaired();
     // win1.41 00422110 mac inlined WorshipSiteUpgrade::IsBuilt(void)

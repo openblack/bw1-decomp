@@ -36,9 +36,9 @@ public:
     // win1.41 0055de10 mac 10155220 GStream::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007344e0 mac 10153560 GStream::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00734380 mac 10153ac0 GStream::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055de00 mac 101551e0 GStream::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00734640 mac 101534f0 GStream::ResolveLoad(void)

@@ -34,7 +34,7 @@ public:
     // win1.41 0054a450 mac inlined Furniture::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0054a440 mac inlined Furniture::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 };
 
 #else // __cplusplus

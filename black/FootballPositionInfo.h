@@ -27,7 +27,7 @@ public:
     // win1.41 00530f60 mac 102bcb80 GFootballPositionInfo::_dt(void)
     virtual ~GFootballPositionInfo();
     // win1.41 00530f00 mac 102bd7f0 GFootballPositionInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 // win1.41 00bfed30 mac inlined GPFootballPositionInfo::`RTTI Type Descriptor'
@@ -43,7 +43,7 @@ public:
     // win1.41 006436f0 mac 101113c0 GPFootballPositionInfo::_dt(void)
     virtual ~GPFootballPositionInfo();
     // win1.41 00643690 mac 10111790 GPFootballPositionInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

@@ -32,9 +32,9 @@ public:
     // win1.41 00608560 mac 103be790 GMobileStaticInfo::_dt(void)
     virtual ~GMobileStaticInfo();
     // win1.41 006084f0 mac 103c1240 GMobileStaticInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 006084e0 mac 10050090 GMobileStaticInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
 
     // Static methods
 

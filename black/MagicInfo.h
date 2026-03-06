@@ -33,7 +33,7 @@ public:
     // win1.41 00435680 mac 1018ee20 GMagicInfo::_dt(void)
     virtual ~GMagicInfo();
     // win1.41 0042d700 mac 101980a0 GMagicInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
     // Static methods
 

@@ -32,7 +32,7 @@ public:
     // win1.41 004664f0 mac 10110ed0 PSysBase::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006944b0 mac 1041db80 PSysBase::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
 };
 
 #else // __cplusplus

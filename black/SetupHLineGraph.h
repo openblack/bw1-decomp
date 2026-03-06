@@ -47,23 +47,31 @@ struct HLineData
 class SetupHLineGraph: public SetupButton
 {
 public:
-    LHLinkedList__HLineData line_data_list; /* 0x244 */
+    LHLinkedList<HLineData> line_data_list; /* 0x244 */
     float max_point;
     float min_point; /* 0x250 */
     bool percent_mode;
 
-    // Virtual functions
+    // Override methods
 
+    // win1.41 0040dab0 mac 101180e0 SetupHLineGraph::Draw(bool, bool)
+    void Draw(bool hovered, bool selected);
+    // win1.41 0040e5a0 mac 101585b0 SetupHLineGraph::MouseUp(int, int, bool)
+    void MouseUp(int x, int y, bool param_3);
+    // win1.41 0040e580 mac 10518860 SetupHLineGraph::KeyDown(int, int)
+    void KeyDown(enum LHKey key, enum LHKeyMod mod);
+    // win1.41 0040e5c0 mac 0040e5c0 SetupHLineGraph::~SetupHLineGraph(void)
+    ~SetupHLineGraph();
     // win1.41 0040e5e0 mac 102a7a10 SetupHLineGraph::Reset(void)
-    virtual void Reset(); /* 0x34 */
+    void Reset();
     // win1.41 0040e650 mac 10211b80 SetupHLineGraph::SetScale(float, float, bool)
-    virtual void SetScale(float max_point, float min_point, bool centered_at_zero);
+    void SetScale(float max_point, float min_point, bool centered_at_zero);
     // win1.41 0040e730 mac 1010ccb0 SetupHLineGraph::AddLine(HLineData &)
-    virtual void AddLine(const HLineData* line);
+    void AddLine(const struct HLineData* line);
     // win1.41 0040e7f0 mac 100c9eb0 SetupHLineGraph::SetLine(int, const HLineData &)
-    virtual void SetLine(int index, const HLineData* line); /* 0x40 */
+    void SetLine(int index, const struct HLineData* line);
     // win1.41 0040e850 mac 10372050 SetupHLineGraph::GetLine(int, HLineData &)
-    virtual void GetLine(int index, HLineData* result);
+    void GetLine(int index, struct HLineData* result);
 
     // Constructors
 

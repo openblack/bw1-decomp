@@ -69,17 +69,17 @@ public:
     // win1.41 0071be10 mac 1050fbb0 Animal::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // win1.41 0041b710 mac 10165620 Animal::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0041b460 mac 101659a0 Animal::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0041b9a0 mac 101655d0 Animal::ResolveLoad(void)
     virtual void ResolveLoad();
     // win1.41 00417840 mac 1012f3a0 Animal::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
     // win1.41 00417870 mac 1012f470 Animal::CanBeGivenToTown(Creature *)
-    virtual uint32_t CanBeGivenToTown(Creature* param_1);
+    virtual bool CanBeGivenToTown(Creature* param_1);
     // win1.41 004e4ae0 mac 105e41a0 Animal::IsAnimalBelongingToOtherPlayer(Creature *)
-    virtual uint32_t IsAnimalBelongingToOtherPlayer(Creature* param_1);
+    virtual bool IsAnimalBelongingToOtherPlayer(Creature* param_1);
     // win1.41 004eabd0 mac 1026e380 Animal::GetCreatureMimicType(void)
     virtual uint32_t GetCreatureMimicType();
     // win1.41 004d1b20 mac 102430c0 Animal::GetHowMuchCreatureWantsToLookAtMe(void)
@@ -87,7 +87,7 @@ public:
     // win1.41 00417890 mac 1012f720 Animal::GetDeathReason(void)
     virtual DEATH_REASON GetDeathReason();
     // win1.41 00417880 mac 1004f080 Animal::IsAnimal(void)
-    virtual uint32_t IsAnimal();
+    virtual bool IsAnimal();
     // win1.41 0041b200 mac 101662b0 Animal::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 00419310 mac 101696e0 Animal::GetHoldType(void)
@@ -95,11 +95,11 @@ public:
     // win1.41 00419320 mac 10169690 Animal::GetHoldLoweringMultiplier(void)
     virtual float GetHoldLoweringMultiplier();
     // win1.41 0041b1b0 mac 101666a0 Animal::DestroyedByEffect(GPlayer *, float)
-    virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
+    virtual bool DestroyedByEffect(GPlayer* param_1, float param_2);
     // win1.41 00417700 mac 1012eed0 Animal::ProcessBySpell(Spell *)
     virtual uint32_t ProcessBySpell(Spell* param_1);
     // win1.41 00417540 mac 1012e540 Animal::GetMesh( const(void))
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 00417550 mac inlined Animal::GetDetailMesh(int)
     virtual int GetDetailMesh(int param_1);
     // win1.41 0051c310 mac 100419a0 Animal::Draw(void)
@@ -113,9 +113,9 @@ public:
     // win1.41 0041bc80 mac 10164dc0 Animal::GetDefaultResource(void)
     virtual int GetDefaultResource();
     // win1.41 00419b40 mac 10168830 Animal::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 00419b60 mac 10168730 Animal::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 0041b320 mac 10166000 Animal::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
     // win1.41 0041b360 mac 10165e60 Animal::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
@@ -131,7 +131,7 @@ public:
     // win1.41 00417860 mac 1012f430 Animal::GetTastiness(void)
     virtual uint32_t GetTastiness();
     // win1.41 0041a130 mac 10167d20 Animal::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 00417780 mac 1012f0d0 Animal::StandAnimation(void)
     virtual uint32_t StandAnimation();
     // win1.41 00417fe0 mac 10084290 Animal::SetSpeed(long)
@@ -153,9 +153,9 @@ public:
     // win1.41 0041a2c0 mac inlined Animal::CallExitStateFunction(VILLAGER_STATES)
     virtual uint32_t CallExitStateFunction(VILLAGER_STATES param_1);
     // win1.41 0041a370 mac inlined Animal::CallEntryStateFunctionUcUc(VILLAGER_STATES, VILLAGER_STATES)
-    virtual uint32_t CallEntryStateFunction__UcUc(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
+    virtual uint32_t CallEntryStateFunction(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
     // win1.41 0041a310 mac inlined Animal::CallEntryStateFunctionUc(VILLAGER_STATES)
-    virtual uint32_t CallEntryStateFunction__Uc(VILLAGER_STATES param_1);
+    virtual uint32_t CallEntryStateFunction(VILLAGER_STATES param_1);
     // win1.41 0041b170 mac inlined Animal::ExitReaction(VILLAGER_STATES)
     virtual int ExitReaction(VILLAGER_STATES param_1);
     // win1.41 00417570 mac inlined Animal::IsScriptState( const(VILLAGER_STATES))

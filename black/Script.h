@@ -85,7 +85,7 @@ public:
     // win1.41 006f3770 mac 104e3ad0 GScriptOpposingCreature::_dt(void)
     virtual ~GScriptOpposingCreature();
     // win1.41 006f3710 mac 104e7b10 GScriptOpposingCreature::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

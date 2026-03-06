@@ -76,8 +76,116 @@ public:
     float y_angle;
     float scale; /* 0x50 */
 
-    // Virtual functions
+    // Override methods
 
+    // win1.41 006366a0 mac 103d8e50 Object::Delete(void)
+    virtual void Delete();
+    // win1.41 00636670 mac 103d8eb0 Object::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00639b70 mac 103d2180 Object::GetDrawImportance(void)
+    virtual float GetDrawImportance();
+    // win1.41 00419950 mac 100a9ec0 Object::GetTown(void)
+    virtual Town* GetTown();
+    // win1.41 00638110 mac 103d55b0 Object::GetRadius(void)
+    virtual float GetRadius();
+    // win1.41 00638180 mac 10038d20 Object::Get2DRadius(void)
+    virtual float Get2DRadius();
+    // win1.41 00639520 mac 103d3550 Object::GetResource(RESOURCE_TYPE)
+    virtual uint32_t GetResource(RESOURCE_TYPE type);
+    // win1.41 0063a7d0 mac 103d06c0 Object::CanBecomeArtifact(void)
+    virtual bool CanBecomeArtifact();
+    // win1.41 005190e0 mac 1008d3a0 Object::DrawInHand(GInterfaceStatus *)
+    virtual void DrawInHand(GInterfaceStatus* param_1);
+    // win1.41 00639eb0 mac 103d1b20 Object::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& file);
+    // win1.41 00639b90 mac 103d1d50 Object::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& file);
+    // win1.41 0063a020 mac 103d1940 Object::ResolveLoad(void)
+    virtual void ResolveLoad();
+    // win1.41 00402600 mac 1004b110 Object::GetLife(void)
+    virtual float GetLife();
+    // win1.41 00402520 mac 10044cb0 Object::GetScale(void)
+    virtual float GetScale();
+    // win1.41 00639200 mac 103d3c80 Object::SetScale(float)
+    virtual void SetScale(float scale);
+    // win1.41 004027c0 mac 1016ea00 Object::GetDistanceFromObject(MapCoords &)
+    virtual float GetDistanceFromObject(const MapCoords* target);
+    // win1.41 006394e0 mac 103d35f0 Object::GetPhysicsMovementDirection(LHPoint *)
+    virtual void GetPhysicsMovementDirection(LHPoint* pos);
+    // win1.41 00402710 mac 10032610 Object::IsMoving( const(void))
+    virtual bool IsMoving() const;
+    // win1.41 006392b0 mac 10037930 Object::IsObjectInMap(void)
+    virtual bool IsObjectInMap();
+    // win1.41 0063a780 mac 103d07e0 Object::IsDrowning(void)
+    virtual bool IsDrowning();
+    // win1.41 006377f0 mac 103d6d80 Object::CleanupWhenDeleted(int)
+    virtual void CleanupWhenDeleted(int param_1);
+    // win1.41 00639860 mac 103d2e30 Object::GetImpressiveValue(Living *, Reaction *)
+    virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
+    // win1.41 00639940 mac 103d2cf0 Object::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
+    virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
+    // win1.41 00638550 mac 103d5010 Object::IsBuildingMaterial(void)
+    virtual bool32_t IsBuildingMaterial();
+    // win1.41 00402a20 mac 103db180 Object::IsSuitableForCreatureAction(void)
+    virtual bool32_t IsSuitableForCreatureAction();
+    // win1.41 004e48c0 mac 105e4960 Object::CanBeEatenByCreature(Creature *)
+    virtual bool32_t CanBeEatenByCreature(Creature* creature);
+    // win1.41 00402a40 mac 100db5e0 Object::CanBeAttackedByCreature(Creature *)
+    virtual bool32_t CanBeAttackedByCreature(Creature* creature);
+    // win1.41 00425c60 mac 100ade90 Object::CanBeFrighteningToCreature(Creature *)
+    virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
+    // win1.41 00402a80 mac 1056cf30 Object::CanBeHelpedByCreature(Creature *)
+    virtual bool32_t CanBeHelpedByCreature(Creature* creature);
+    // win1.41 00402a60 mac 100b95a0 Object::CanBePlayedWithByCreature(Creature *)
+    virtual bool32_t CanBePlayedWithByCreature(Creature* creature);
+    // win1.41 00402a70 mac 105a25d0 Object::CanBeImpressedByCreature(Creature *)
+    virtual bool32_t CanBeImpressedByCreature(Creature* creature);
+    // win1.41 004e3b40 mac 105e70f0 Object::CanBeInspectedByCreature(Creature *)
+    virtual bool32_t CanBeInspectedByCreature(Creature* creature);
+    // win1.41 004e3eb0 mac 105e66c0 Object::CanBePoodUponByCreature(Creature *)
+    virtual bool32_t CanBePoodUponByCreature(Creature* creature);
+    // win1.41 004e3a20 mac 105e7240 Object::CanBePickedUpByCreature(Creature *)
+    virtual bool32_t CanBePickedUpByCreature(Creature* creature);
+    // win1.41 004e3b00 mac 105e7170 Object::CanBeStrokedByCreature(Creature *)
+    virtual bool32_t CanBeStrokedByCreature(Creature* creature);
+    // win1.41 004e3c10 mac 105e6e70 Object::CanBeStompedOnByCreature(Creature *)
+    virtual bool32_t CanBeStompedOnByCreature(Creature* creature);
+    // win1.41 004e3cf0 mac 105e6cb0 Object::CanBeThrownByCreature(Creature *)
+    virtual bool32_t CanBeThrownByCreature(Creature* creature);
+    // win1.41 004e3d40 mac 105e6b50 Object::CanBePutInAStoragePit(Creature *)
+    virtual bool32_t CanBePutInAStoragePit(Creature* creature);
+    // win1.41 00402a90 mac 103e4d10 Object::CanBeExaminedByCreature(Creature *)
+    virtual bool32_t CanBeExaminedByCreature(Creature* creature);
+    // win1.41 00402aa0 mac 1054f410 Object::IsOnFire(Creature *)
+    virtual bool32_t IsOnFire(Creature* creature);
+    // win1.41 004e3d90 mac 105e6a70 Object::CanBePutInFoodPile(Creature *)
+    virtual bool32_t CanBePutInFoodPile(Creature* creature);
+    // win1.41 004e3dd0 mac 105e69a0 Object::CanBePutInWoodPile(Creature *)
+    virtual bool32_t CanBePutInWoodPile(Creature* creature);
+    // win1.41 004e3bb0 mac 105e6f50 Object::CanBeBroughtBackToCitadel(Creature *)
+    virtual bool32_t CanBeBroughtBackToCitadel(Creature* creature);
+    // win1.41 00402a30 mac 100ba330 Object::CanBePoodOn(Creature *)
+    virtual bool32_t CanBePoodOn(Creature* creature);
+    // win1.41 004e4320 mac 105e56c0 Object::CanBeKickedByCreature(Creature *)
+    virtual bool32_t CanBeKickedByCreature(Creature* creature);
+    // win1.41 0063b8d0 mac 103da7f0 Object::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)
+    virtual void CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos);
+    // win1.41 00402b40 mac 1016dc30 Object::GetText(void)
+    virtual const char* GetText();
+    // win1.41 00638120 mac 10030760 Object::GetHeight(void)
+    virtual float GetHeight();
+    // win1.41 00639b20 mac 103d2290 Object::SetInScript(int)
+    virtual void SetInScript(int param_1);
+    // win1.41 004029f0 mac 100219d0 Object::IsObject( const(void))
+    virtual bool32_t IsObject();
+    // win1.41 00638580 mac 103d4f70 Object::GetQueryFirstEnumText(void)
+    virtual HELP_TEXT GetQueryFirstEnumText();
+    // win1.41 00638590 mac 103d4f10 Object::GetQueryLastEnumText(void)
+    virtual HELP_TEXT GetQueryLastEnumText();
+    // win1.41 006385a0 mac 1004c960 Object::GetFOVHelpMessageSet(void)
+    virtual uint32_t GetFOVHelpMessageSet();
+    // win1.41 006385b0 mac 103d4d50 Object::GetFOVHelpCondition(void)
+    virtual uint32_t GetFOVHelpCondition();
     // win1.41 0063ab20 mac 103cfe90 Object::DestroyedByBeam(void)
     virtual void DestroyedByBeam(); /* 0x500 */
     // win1.41 004024f0 mac 10055b70 Object::GetXAngle(void)
@@ -119,8 +227,9 @@ public:
     // win1.41 00636830 mac 10053ed0 Object::InsertMapObjectToCell(MapCell *)
     virtual void InsertMapObjectToCell(MapCell* param_1);
     // win1.41 006368d0 mac 10053bc0 Object::RemoveMapObjectFromCell(MapCell *)
-    virtual void RemoveMapObjectFromCell(MapCell* param_1); /* 0x550 */
-    virtual bool IsObjectInMap_1(MapCell* cell);
+    virtual void RemoveMapObjectFromCell(MapCell* cell);
+    // win1.41 006367d0 mac 10054140 Object::IsObjectInMap(MapCell *)
+    virtual bool IsObjectInMap(MapCell* cell);
     // win1.41 006366b0 mac 103d8d10 Object::IsObjectInMapCheck(void)
     virtual bool IsObjectInMapCheck();
     // win1.41 00636a40 mac 1004d070 Object::MoveMapObject(MapCoords const &)
@@ -202,7 +311,7 @@ public:
     // win1.41 00639ac0 mac 103d2490 Object::GetDefaultFireRadius(void)
     virtual float GetDefaultFireRadius();
     // win1.41 006378e0 mac 103d6ad0 Object::DestroyedByEffect(GPlayer *, float)
-    virtual uint32_t DestroyedByEffect(GPlayer* player, float param_2);
+    virtual bool DestroyedByEffect(GPlayer* player, float param_2);
     // win1.41 00418fc0 mac 100a9d90 Object::Process(void)
     virtual uint32_t Process();
     // win1.41 00402650 mac 10368aa0 Object::ProcessBySpell(Spell *)
@@ -210,9 +319,9 @@ public:
     // win1.41 00637ff0 mac 103d57e0 Object::ApplySingleEffect(EFFECT_TYPE, float, GameThing *, MapCoords const &)
     virtual void ApplySingleEffect(EFFECT_TYPE param_1, float param_2, GameThing* param_3, const MapCoords* param_4);
     // win1.41 00425340 mac 10368d70 Object::GetMesh( const(void))
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 00402660 mac 10368ae0 Object::GetDetailMesh( const(DETAIL_LEVEL))
-    virtual int GetDetailMesh(int detail);
+    virtual int GetDetailMesh(int detail) const;
     // win1.41 004648b0 mac 100e33f0 Object::Draw(void)
     virtual void Draw(); /* 0x610 */
     // win1.41 0051c820 mac 1001aa40 Object::DrawOutOfMap(bool)
@@ -258,8 +367,9 @@ public:
     // win1.41 006395c0 mac 103d3390 Object::GetWoodValue(void)
     virtual float GetWoodValue();
     // win1.41 00402700 mac 10062630 Object::GetFoodType(void)
-    virtual FOOD_TYPE GetFoodType();
-    virtual float GetImpressiveValue_1();
+    FOOD_TYPE GetFoodType();
+    // win1.41 00639390 mac 103d3840 Object::GetImpressiveValue(void)
+    float GetImpressiveValue();
     // win1.41 00402730 mac 1056f400 Object::IsSpellSeedReturnPoint( const(void))
     virtual bool IsSpellSeedReturnPoint(); /* 0x670 */
     // win1.41 00402740 mac 104d62b0 Object::IsABeliever(void)
@@ -291,15 +401,17 @@ public:
     // win1.41 00636ab0 mac 103d8820 Object::IsAttackable(Object *)
     virtual bool IsAttackable(Object* param_1);
     // win1.41 00636af0 mac 103d8770 Object::IsAllied(Object *)
-    virtual bool IsAllied(Object* param_1);
-    virtual bool IsTouching_1(MapCoords* param_1, MapCoords* param_2); /* 0x6b0 */
-    virtual bool IsTouching_2(MapCoords* param_1);
-    virtual bool IsTouching_3(Object* param_1, float param_2);
+    virtual bool IsAllied(Object* param_1) const;
+    // win1.41 00637e60 mac 103d5970 Object::IsTouching(MapCoords const &, MapCoords const &)
+    virtual bool IsTouching(MapCoords* param_1, MapCoords* param_2) const;
+    // win1.41 00637e30 mac 103d5ef0 Object::IsTouching(MapCoords const &)
+    virtual bool IsTouching(MapCoords* param_1) const;
     // win1.41 00419300 mac 100a9e50 Object::StartOnFire(void)
     virtual void StartOnFire();
     // win1.41 004027b0 mac 100a8170 Object::EndOnFire(void)
-    virtual void EndOnFire(); /* 0x6c0 */
-    virtual float GetDistanceFromObject_1(Object* param_1);
+    virtual void EndOnFire();
+    // win1.41 00637fb0 mac 103d58a0 Object::GetDistanceFromObject(Object *)
+    virtual float GetDistanceFromObject(Object* param_1);
     // win1.41 006399d0 mac 10003b20 Object::GetTribalPower(TRIBE_TYPE)
     virtual float GetTribalPower(TRIBE_TYPE param_1);
     // win1.41 00419330 mac 100addd0 Object::ValidForLockedSelectProcess(GInterfaceStatus *)
@@ -387,8 +499,9 @@ public:
     // win1.41 004029d0 mac 101cbb80 Object::FightThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t FightThisToObject(GInterfaceStatus* status, Object* param_2); /* 0x770 */
     // win1.41 004029e0 mac 100068d0 Object::IsEffectReceiver(EffectValues *)
-    virtual bool32_t IsEffectReceiver(EffectValues* param_1);
-    virtual bool32_t CanBeDestroyedBySpell_1(Spell* param_1);
+    virtual bool IsEffectReceiver(EffectValues* param_1);
+    // win1.41 00639960 mac 103d2ba0 Object::CanBeDestroyedBySpell(Spell *)
+    virtual bool CanBeDestroyedBySpell(Spell* param_1);
     // win1.41 00638cf0 mac 103d3f30 Object::GetImportance(void)
     virtual float GetImportance();
     // win1.41 00636f00 mac 103d7760 Object::CanBeDestroyedBySpell_2(void)
@@ -408,11 +521,11 @@ public:
     // win1.41 006377b0 mac 103d6f30 Object::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 00419890 mac 100a9e80 Object::ChecksVerticesVObjects(void)
-    virtual uint32_t ChecksVerticesVObjects(); /* 0x7a0 */
+    virtual bool ChecksVerticesVObjects(); /* 0x7a0 */
     // win1.41 006377d0 mac 103d6e50 Object::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object *)
     virtual void ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
     // win1.41 00402a00 mac 100b06b0 Object::PhysicallyDestroysAbodes(void)
-    virtual uint32_t PhysicallyDestroysAbodes();
+    virtual bool PhysicallyDestroysAbodes();
     // win1.41 006377c0 mac 103d6ee0 Object::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 006377e0 mac 103d6e10 Object::CanBecomeAPhysicsObject(void)
@@ -467,15 +580,17 @@ public:
     virtual float CalculateForceAppliedBy(Living* param_1); /* 0x810 */
     // win1.41 00402ae0 mac 102fd140 Object::IsPushable(void)
     virtual bool IsPushable();
-    virtual void PushObject_1(Living* param_1, MapCoords* param_2);
-    virtual void PushObject_2(Living* param_1);
+    // win1.41 006397c0 mac 103d2f90 Object::PushObject(Living *, MapCoords &)
+    virtual void PushObject(Living* param_1, MapCoords* param_2);
+    // win1.41 00639640 mac 103d30f0 Object::PushObject(Living *)
+    virtual void PushObject(Living* param_1);
     // win1.41 00402af0 mac 1016eb20 Object::GetCarriedTreeType(void)
     virtual uint32_t GetCarriedTreeType(); /* 0x820 */
     // win1.41 00402b00 mac 105069f0 Object::GetFacingPitch(void)
     virtual float GetFacingPitch();
     // win1.41 00402b10 mac 1058c010 Object::SetHeadPos(MapCoords *)
     virtual void SetHeadPos(MapCoords* param_1);
-    virtual size_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual size_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 00402b30 mac 1016e7f0 Object::IsAPotFromABuildingSite(void)
     virtual bool IsAPotFromABuildingSite(); /* 0x830 */
     // win1.41 00636cd0 mac 103d8340 Object::GetNearestEdgeOfObject(Object *)

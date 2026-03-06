@@ -42,13 +42,13 @@ public:
     // win1.41 00561460 mac 105347c0 GStreetLantern::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00734be0 mac 10534ab0 GStreetLantern::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00734c90 mac 10534980 GStreetLantern::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00561450 mac 10534780 GStreetLantern::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561440 mac 10534740 GStreetLantern::IsStreetLantern(void)
-    virtual uint32_t IsStreetLantern();
+    virtual bool IsStreetLantern();
     // win1.41 00734d40 mac 10003680 GStreetLantern::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 00734a70 mac 1002d8c0 GStreetLantern::Draw(void)
@@ -60,7 +60,7 @@ public:
     // win1.41 00734d50 mac 10534800 GStreetLantern::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 00734b10 mac 10534be0 GStreetLantern::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
 #else // __cplusplus

@@ -54,11 +54,11 @@ public:
     // win1.41 005276c0 mac 10008370 Feature::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 004220d0 mac 100a52b0 Feature::GetMesh( const(void))
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 00518690 mac 100238a0 Feature::Draw(void)
     virtual void Draw();
     // win1.41 005275b0 mac 100d0dc0 Feature::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 };
 
 #else // __cplusplus

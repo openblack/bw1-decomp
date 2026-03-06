@@ -16,7 +16,7 @@ struct GGlobal
 {
     GAudio* audio; /* 0x0 */
     GDebug debug;
-    FuncPtr(name='GGlobal__field_0x2d2ac', call_type='__cdecl', result='void*', args=[], arg_labels=[], decorated_name='GGlobal__field_0x2d2ac', indirection_level=1) field_0x2d2ac;
+    void* (__cdecl* field_0x2d2ac)( void );
     uint32_t field_0x2d2b0;
     uint32_t field_0x2d2b4;
     uint32_t field_0x2d2b8;
@@ -30,7 +30,7 @@ struct GGlobal
     uint32_t field_0x2d2d8;
     uint32_t field_0x2d2dc;
     uint32_t field_0x2d2e0;
-    FuncPtr(name='GGlobal__field_0x2d2e4', call_type='__cdecl', result='void*', args=[], arg_labels=[], decorated_name='GGlobal__field_0x2d2e4', indirection_level=1) field_0x2d2e4;
+    void* (__cdecl* field_0x2d2e4)( void );
     uint8_t field_0x2d2e8[0xc];
     char current_directory[0x100]; /* 0x2d2f4 */
     uint8_t field_0x2d3f4[0x10c];

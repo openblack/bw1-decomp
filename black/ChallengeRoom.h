@@ -57,7 +57,7 @@ public:
     // win1.41 00784c10 mac 101abd90 ChallengeRoom::StartScript(unsigned long)
     bool StartScript(unsigned long param_1);
     // win1.41 00784d10 mac 101aba10 ChallengeRoom::ChallengeLoad(GameOSFile &)
-    void ChallengeLoad(GameOSFile* param_1);
+    void ChallengeLoad(GameOSFile& param_1);
 };
 
 #else // __cplusplus

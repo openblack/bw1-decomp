@@ -38,7 +38,7 @@ public:
     // win1.41 00422300 mac 100a6f10 AnimatedStatic::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 00422650 mac 100a6a10 AnimatedStatic::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 };
 
 #else // __cplusplus

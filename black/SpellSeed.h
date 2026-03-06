@@ -45,9 +45,9 @@ public:
     // win1.41 00727fb0 mac 1052cdf0 SpellSeed::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00729fb0 mac 10527d30 SpellSeed::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00729ca0 mac 10528230 SpellSeed::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00727fa0 mac 1052cdb0 SpellSeed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00727f70 mac 1052cce0 SpellSeed::GetCreatureBeliefType(void)
@@ -61,7 +61,7 @@ public:
     // win1.41 00728a00 mac 1052af90 SpellSeed::GetWorshipSite(void)
     virtual WorshipSite* GetWorshipSite();
     // win1.41 00727f50 mac 1052cc60 SpellSeed::IsSpellSeed(void)
-    virtual uint32_t IsSpellSeed();
+    virtual bool IsSpellSeed();
     // win1.41 00729c90 mac 10528780 SpellSeed::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 00728f30 mac 1052a420 SpellSeed::InsertMapObject(void)
@@ -77,9 +77,9 @@ public:
     // win1.41 00728670 mac 1052b8f0 SpellSeed::GetHoldYRotate(void)
     virtual float GetHoldYRotate();
     // win1.41 00727f60 mac 1052cc90 SpellSeed::HandShouldFeelWithMeshIntersect(void)
-    virtual uint32_t HandShouldFeelWithMeshIntersect();
+    virtual bool HandShouldFeelWithMeshIntersect();
     // win1.41 00729850 mac 10529210 SpellSeed::GetMesh( const(void))
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 00518710 mac 100c8c10 SpellSeed::Draw(void)
     virtual void Draw();
     // win1.41 005190a0 mac 100c7ef0 SpellSeed::DrawOutOfMap(bool)
@@ -89,13 +89,13 @@ public:
     // win1.41 00728360 mac 1052bef0 SpellSeed::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 00728580 mac 1052bba0 SpellSeed::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 00728810 mac 1052b1f0 SpellSeed::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 00728940 mac 1052b0d0 SpellSeed::InterfaceSetOutMagicHand(GInterfaceStatus *)
-    virtual uint32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
+    virtual bool InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
     // win1.41 00728760 mac 1052b4f0 SpellSeed::ValidToRemoveFromHand(GInterfaceStatus *, MapCoords const &)
-    virtual uint32_t ValidToRemoveFromHand(GInterfaceStatus* param_1, const MapCoords* param_2);
+    virtual bool ValidToRemoveFromHand(GInterfaceStatus* param_1, const MapCoords* param_2);
     // win1.41 00728f00 mac 1052a460 SpellSeed::RemoveFromHand(GInterfaceStatus *, MapCoords const &)
     virtual uint32_t RemoveFromHand(GInterfaceStatus* param_1, const MapCoords* param_2);
     // win1.41 007286d0 mac 1052b6d0 SpellSeed::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
@@ -111,19 +111,19 @@ public:
     // win1.41 00728eb0 mac 1052a500 SpellSeed::ApplyUnlockProcess(GInterfaceStatus *)
     virtual uint32_t ApplyUnlockProcess(GInterfaceStatus* param_1);
     // win1.41 007286a0 mac 1052b830 SpellSeed::IsInterfacePowerUpWhenInHand( const(void))
-    virtual uint32_t IsInterfacePowerUpWhenInHand();
+    virtual bool IsInterfacePowerUpWhenInHand() const;
     // win1.41 007286b0 mac 1052b7c0 SpellSeed::ApplyOnlyAfterRecSystem(void)
     virtual uint32_t ApplyOnlyAfterRecSystem();
     // win1.41 0072acd0 mac 10526410 SpellSeed::ThrowObjectFromHand(GInterfaceStatus *, int)
     virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* param_1, int param_2);
     // win1.41 00728f50 mac 1052a390 SpellSeed::IsEffectReceiver(EffectValues *)
-    virtual uint32_t IsEffectReceiver(EffectValues* param_1);
+    virtual bool IsEffectReceiver(EffectValues* param_1);
     // win1.41 00728570 mac 1052bca0 SpellSeed::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 00729930 mac 10528d60 SpellSeed::ProcessInHand(void)
     virtual bool ProcessInHand();
     // win1.41 00727f90 mac 1052cd60 SpellSeed::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
     // win1.41 0072a2d0 mac 10527cc0 SpellSeed::GetInHandImmersionTexture(void)
     virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 };

@@ -4,6 +4,21 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
+enum LH_RETURN
+{
+  LH_RETURN_0 = 0x0,
+};
+
+enum LH_TRANSPORT_TYPE
+{
+  LH_TRANSPORT_TYPE_BASE = 0x1,
+  LH_TRANSPORT_TYPE_SYNC = 0x2,
+  LH_TRANSPORT_TYPE_ASYNC = 0x3,
+  LH_TRANSPORT_TYPE_TCP = 0x4,
+  LH_TRANSPORT_TYPE_UDP = 0x5,
+  _LH_TRANSPORT_TYPE_COUNT = 0x6
+};
+
 #ifdef __cplusplus
 
 class LHTransportInfo
@@ -26,15 +41,6 @@ public:
 
 struct LHTransportInfo;
 
-enum LH_TRANSPORT_TYPE
-{
-  LH_TRANSPORT_TYPE_BASE = 0x1,
-  LH_TRANSPORT_TYPE_SYNC = 0x2,
-  LH_TRANSPORT_TYPE_ASYNC = 0x3,
-  LH_TRANSPORT_TYPE_TCP = 0x4,
-  LH_TRANSPORT_TYPE_UDP = 0x5,
-  _LH_TRANSPORT_TYPE_COUNT = 0x6
-};
 static_assert(sizeof(enum LH_TRANSPORT_TYPE) == 0x4, "Data type is of wrong size");
 
 static const char* LH_TRANSPORT_TYPE_strs[_LH_TRANSPORT_TYPE_COUNT] = {

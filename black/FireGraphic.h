@@ -31,7 +31,7 @@ public:
         // win1.41 00731a90 mac inlined FireGraphic::SpritePos::_dt( (void))
         virtual ~SpritePos();
         // win1.41 006cb040 mac inlined FireGraphic::SpritePos::Save( (GameOSFile &))
-        virtual bool Save(GameOSFile* param_1);
+        virtual bool Save(GameOSFile& param_1);
         // win1.41 004664e0 mac inlined FireGraphic::SpritePos::GetSaveType( (void))
         virtual uint32_t GetSaveType();
     };

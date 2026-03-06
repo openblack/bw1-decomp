@@ -68,12 +68,22 @@ public:
 
     // Virtual functions
 
+    // win1.41 00596190 mac 100fa600 GroupBehaviour::_dt(void)
+    virtual ~GroupBehaviour();
+    // win1.41 00596320 mac 100fa080 GroupBehaviour::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 005985c0 mac 100f4e70 GroupBehaviour::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& file);
+    // win1.41 00598240 mac 100f5a80 GroupBehaviour::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& file);
     // win1.41 005964a0 mac 106ffb98 GroupBehaviour::Process(void)
     virtual void Process(); /* 0x500 */
     // win1.41 00596700 mac 100f90b0 GroupBehaviour::UpdateGroupBasedOnAction(DanceGroup *, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &, unsigned long)
     virtual void UpdateGroupBasedOnAction(DanceGroup* dance_group, DANCE_GROUP_ACTION_TYPE action_type, const DanceGroupActionArgument* argument, uint32_t param_4);
-    virtual void AddAction_0(float param_1, LHDynamicStack__Ul* stack, DANCE_GROUP_ACTION_TYPE action_type, const DanceGroupActionArgument* argument);
-    virtual void AddAction_1(float param_1, uint32_t param_2, DANCE_GROUP_ACTION_TYPE action_type, DanceGroupActionArgument* arguments);
+    // win1.41 00597300 mac 100f8760 GroupBehaviour::AddAction(float, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
+    virtual void AddAction(float param_1, LHDynamicStack<uint32_t>& stack, DANCE_GROUP_ACTION_TYPE action_type, const DanceGroupActionArgument* argument);
+    // win1.41 00597270 mac 100f8990 GroupBehaviour::AddAction(float, unsigned long, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
+    virtual void AddAction(float param_1, uint32_t param_2, DANCE_GROUP_ACTION_TYPE action_type, DanceGroupActionArgument* arguments);
     // win1.41 005978e0 mac 100f6eb0 GroupBehaviour::LoadDance(char const *)
     virtual void LoadDance(const char* param_1); /* 0x510 */
     // win1.41 0050cc40 mac 100f4e30 GroupBehaviour::GetAngle(void)
@@ -123,9 +133,9 @@ public:
     // win1.41 0050e390 mac 102aee40 DanceKeyAction::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0050ea00 mac 102ae600 DanceKeyAction::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0050e880 mac 102ae810 DanceKeyAction::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0050e380 mac 102aee00 DanceKeyAction::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

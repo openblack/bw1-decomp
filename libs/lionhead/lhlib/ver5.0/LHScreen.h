@@ -2,18 +2,29 @@
 #define BW1_DECOMP_LH_SCREEN_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#ifdef __clang__
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpragma-pack"
 #pragma clang diagnostic ignored "-Wmacro-redefined"
 #pragma clang diagnostic ignored "-Wmissing-declarations"
+#endif // __clang__
 #include <ddraw.h> /* For IDirectDraw7, IDirectDrawClipper, IDirectDrawSurface7 */
+#ifdef __clang__
 #pragma clang diagnostic pop
+#endif // __clang__
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
 
 #include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
 #include <lionhead/lh3dlib/development/LHRegion.h> /* For struct LHRegion */
 #include <reversing_utils/re_common.h> /* For HWND */
+
+enum LH_SCREEN_BUFFER
+{
+  LH_SCREEN_BUFFER_0x0 = 0x0,
+  LH_SCREEN_BUFFER_0x1 = 0x1,
+  _LH_SCREEN_BUFFER_COUNT = 0x2
+};
 
 #ifdef __cplusplus
 
@@ -71,7 +82,7 @@ struct LHScreen
     // Non-virtual methods
 
     // win1.41 007dd8f0 mac 1014d890 LHScreen::~LHScreen(void)
-    void ~LHScreen();
+    ~LHScreen();
     // win1.41 007dd0d0 mac 1014e420 LHScreen::SetFullscreenMode(int)
     void SetFullscreenMode(int mode);
 };
@@ -82,12 +93,6 @@ struct LHScreen
 
 struct LHDDEnum;
 
-enum LH_SCREEN_BUFFER
-{
-  LH_SCREEN_BUFFER_0x0 = 0x0,
-  LH_SCREEN_BUFFER_0x1 = 0x1,
-  _LH_SCREEN_BUFFER_COUNT = 0x2
-};
 static_assert(sizeof(enum LH_SCREEN_BUFFER) == 0x4, "Data type is of wrong size");
 
 static const char* LH_SCREEN_BUFFER_strs[_LH_SCREEN_BUFFER_COUNT] = {

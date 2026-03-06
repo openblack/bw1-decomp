@@ -30,7 +30,7 @@ public:
     // win1.41 0052c330 mac 100da430 GFishFarmInfo::_dt(void)
     virtual ~GFishFarmInfo();
     // win1.41 0052c2e0 mac 100da3d0 GFishFarmInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 0052d100 mac 100db8c0 GFishFarmInfo::IsOkToCreateAtPos( const(MapCoords const &, float, float))
     virtual bool IsOkToCreateAtPos(const MapCoords* param_1, float param_2, float param_3);
 };

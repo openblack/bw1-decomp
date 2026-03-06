@@ -51,15 +51,15 @@ public:
     // win1.41 0055e060 mac 10561d20 TownSpellIcon::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00748fb0 mac 10560fa0 TownSpellIcon::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00748f70 mac 10561030 TownSpellIcon::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055e050 mac 10561ce0 TownSpellIcon::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00748f00 mac 10561170 TownSpellIcon::GetWorshipSite(void)
     virtual WorshipSite* GetWorshipSite();
     // win1.41 00748be0 mac 105619b0 TownSpellIcon::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 };
 
 // win1.41 00becee8 mac inlined TownCentreSpellIcon::`RTTI Type Descriptor'
@@ -81,9 +81,9 @@ public:
     // win1.41 0055e0b0 mac 10560a80 TownCentreSpellIcon::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007490e0 mac 10560b00 TownCentreSpellIcon::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00748ff0 mac 10560d50 TownCentreSpellIcon::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055e0a0 mac 10560a40 TownCentreSpellIcon::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00519640 mac 100c7a30 TownCentreSpellIcon::Draw(void)

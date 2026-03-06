@@ -38,7 +38,7 @@ public:
     // win1.41 00524dd0 mac 100cc6a0 GEffectInfo::_dt(void)
     virtual ~GEffectInfo();
     // win1.41 00524d70 mac 100ccc90 GEffectInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
     // Constructors
 

@@ -56,7 +56,7 @@ public:
     // win1.41 00744b90 mac 1055d6c0 GTownDesireInfo::_dt(void)
     virtual ~GTownDesireInfo();
     // win1.41 00744b20 mac 1055ef20 GTownDesireInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
     // Non-virtual methods
 

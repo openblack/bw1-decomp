@@ -37,13 +37,13 @@ public:
     // win1.41 006438e0 mac inlined PFootball::GetPlayer(void)
     virtual GPlayer* GetPlayer();
     // win1.41 00643940 mac inlined PFootball::GetMesh( const(void))
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 00643fd0 mac inlined PFootball::Draw(void)
     virtual void Draw();
     // win1.41 00644030 mac inlined PFootball::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 00643980 mac inlined PFootball::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 00643950 mac inlined PFootball::IsPlaytimeStructure(void)
     virtual bool IsPlaytimeStructure();
     // win1.41 00643960 mac inlined PFootball::IsPlaytimeStarted(void)

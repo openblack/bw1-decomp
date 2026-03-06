@@ -28,9 +28,9 @@ public:
     // win1.41 0076f870 mac 1015f3f0 VortexSave::_dt(void)
     virtual ~VortexSave();
     // win1.41 0076fdc0 mac 1015e890 VortexSave::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0076fb40 mac 1015ed90 VortexSave::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0076f860 mac 1015e730 VortexSave::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0076ffe0 mac 1015e770 VortexSave::ResolveLoad(void)

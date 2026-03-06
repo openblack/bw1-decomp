@@ -4,6 +4,18 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int32_t, uint16_t, uint32_t */
 
+struct LH3DMapCoordsSplit
+{
+  uint16_t cell;  /* 0x0 */
+  uint16_t map;
+};
+
+union LH3DMapCoordsFull
+{
+  int32_t full;
+  struct LH3DMapCoordsSplit split;
+};
+
 #ifdef __cplusplus
 
 struct LH3DMapCoords
@@ -48,18 +60,8 @@ struct LH3DMapCoords
 
 #else // __cplusplus
 
-struct LH3DMapCoordsSplit
-{
-  uint16_t cell;  /* 0x0 */
-  uint16_t map;
-};
 static_assert(sizeof(struct LH3DMapCoordsSplit) == 0x4, "Data type is of wrong size");
 
-union LH3DMapCoordsFull
-{
-  int32_t full;
-  struct LH3DMapCoordsSplit split;
-};
 static_assert(sizeof(union LH3DMapCoordsFull) == 0x4, "Data type is of wrong size");
 
 struct LH3DMapCoords

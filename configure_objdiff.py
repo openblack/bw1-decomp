@@ -17,9 +17,7 @@ zlib_c_files = {
     "zutil",
 }
 
-def configure_objdiff():
-    validating = False
-
+def configure_objdiff(validating: bool):
     subprocess.run(["cmake", "--workflow", "--preset", "objdiff"], check=True)
 
     current_dir = Path.cwd()
@@ -114,4 +112,4 @@ def configure_objdiff():
         json.dump(config, f, indent=2)
     
 if __name__ == "__main__":
-    exit(configure_objdiff())
+    exit(configure_objdiff(validating=True))

@@ -52,13 +52,13 @@ public:
     // win1.41 00438e10 mac 100b25b0 BigForest::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004394e0 mac 100b2760 BigForest::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* file);
+    virtual bool Load(GameOSFile& file);
     // win1.41 00439470 mac 100b2840 BigForest::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00438e00 mac 100b2570 BigForest::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00438df0 mac 100b24d0 BigForest::GetMesh( const(void))
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 00438f60 mac 10020e40 BigForest::Draw(void)
     virtual void Draw();
     // win1.41 00439550 mac 100b2690 BigForest::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
@@ -84,7 +84,7 @@ public:
     // win1.41 00438de0 mac 100b2470 BigForest::GetCarriedTreeType(void)
     virtual uint32_t GetCarriedTreeType();
     // win1.41 00438f70 mac 100b3190 BigForest::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
     // Static methods
 

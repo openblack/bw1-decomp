@@ -13,11 +13,17 @@
 #include "CreatureLearning.h" /* For struct CreatureLearningEpisode */
 #include "CreatureLessonChooser.h" /* For _LESSON_TYPE_COUNT */
 
+enum DECISION_TREE_TYPE
+{
+  DECISION_TREE_TYPE_0x0 = 0x0,
+  _DECISION_TREE_TYPE_COUNT = 0x1
+};
+
 #ifdef __cplusplus
 
 struct AttributeTest
 {
-    LHLinkedList__CreatureLearningEpisode episodes; /* 0x0 */
+    LHLinkedList<CreatureLearningEpisode> episodes; /* 0x0 */
     uint32_t field_0x8;
     uint32_t field_0xc;
     uint32_t field_0x10;
@@ -35,6 +41,11 @@ struct AttributeTest
 
     // win1.41 004d4c20 mac 1024fa20 AttributeTest::AttributeTest(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
     AttributeTest(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
+};
+
+struct DecisionTreeNode
+{
+  struct AttributeTest* tests[0x2];  /* 0x0 */
 };
 
 struct DecisionTree
@@ -60,6 +71,11 @@ struct DecisionTreeAgenda
 
     // win1.41 004d43f0 mac 102505c0 DecisionTreeAgenda::DecisionTreeAgenda(DECISION_TREE_TYPE, CREATURE_DESIRES)
     DecisionTreeAgenda(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire);
+};
+
+struct DecisionTreeAgendas
+{
+  struct DecisionTreeAgenda* contents[0x28];  /* 0x0 */
 };
 
 struct DecisionTreeCollection
@@ -410,11 +426,6 @@ public:
 
 #else // __cplusplus
 
-enum DECISION_TREE_TYPE
-{
-  DECISION_TREE_TYPE_0x0 = 0x0,
-  _DECISION_TREE_TYPE_COUNT = 0x1
-};
 static_assert(sizeof(enum DECISION_TREE_TYPE) == 0x4, "Data type is of wrong size");
 
 static const char* DECISION_TREE_TYPE_strs[_DECISION_TREE_TYPE_COUNT] = {

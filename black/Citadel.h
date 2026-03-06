@@ -62,9 +62,9 @@ public:
     // win1.41 00462ad0 mac 101b6ff0 Citadel::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00463dc0 mac 101b71d0 Citadel::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00463b00 mac 101b7db0 Citadel::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00462ac0 mac 101b6fb0 Citadel::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00462a60 mac 101b6e50 Citadel::GetCreatureBeliefType(void)

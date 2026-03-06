@@ -35,7 +35,7 @@ public:
     // win1.41 0041ef00 mac 10171c90 Bat::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0041ef20 mac 10171d00 Bat::CanBeFrighteningToCreature(Creature *)
-    virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
     // win1.41 0041be40 mac 101708a0 Bat::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
@@ -57,7 +57,7 @@ public:
     // win1.41 0041efe0 mac 10171af0 SpellBat::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0041f000 mac 10171b70 SpellBat::CanBeFrighteningToCreature(Creature *)
-    virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
     // win1.41 0041bea0 mac 10170720 SpellBat::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };

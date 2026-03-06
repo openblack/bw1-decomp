@@ -7,6 +7,14 @@
 
 #include <chlasm/GStates.h> /* For enum VILLAGER_STATES */
 
+enum LIVING_ACTION_INDEX
+{
+  LIVING_ACTION_INDEX_TOP = 0x0,
+  LIVING_ACTION_INDEX_FINAL = 0x1,
+  LIVING_ACTION_INDEX_PREVIOUS = 0x2,
+  _LIVING_ACTION_INDEX_COUNT = 0x3
+};
+
 #ifdef __cplusplus
 
 // Forward Declares
@@ -37,14 +45,6 @@ struct LivingAction
 // Forward Declares
 
 struct Living;
-
-enum LIVING_ACTION_INDEX
-{
-  LIVING_ACTION_INDEX_TOP = 0x0,
-  LIVING_ACTION_INDEX_FINAL = 0x1,
-  LIVING_ACTION_INDEX_PREVIOUS = 0x2,
-  _LIVING_ACTION_INDEX_COUNT = 0x3
-};
 static_assert(sizeof(enum LIVING_ACTION_INDEX) == 0x4, "Data type is of wrong size");
 
 static const char* LIVING_ACTION_INDEX_strs[_LIVING_ACTION_INDEX_COUNT] = {

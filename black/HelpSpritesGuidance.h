@@ -27,7 +27,7 @@ public:
     // win1.41 0071aa60 mac 1050d8c0 GHelpSpritesGuidance::_dt(void)
     virtual ~GHelpSpritesGuidance();
     // win1.41 0071a9f0 mac 105128d0 GHelpSpritesGuidance::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
     // Non-virtual methods
 

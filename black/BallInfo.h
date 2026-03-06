@@ -31,7 +31,7 @@ public:
     // win1.41 00435980 mac 100b0ff0 GBallInfo::_dt(void)
     virtual ~GBallInfo();
     // win1.41 00435930 mac 100b1090 GBallInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 // win1.41 00bfe048 mac inlined GPBallInfo::`RTTI Type Descriptor'
@@ -47,7 +47,7 @@ public:
     // win1.41 0063e8c0 mac 10110ff0 GPBallInfo::_dt(void)
     virtual ~GPBallInfo();
     // win1.41 0063e870 mac 10111090 GPBallInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

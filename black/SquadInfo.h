@@ -27,7 +27,7 @@ public:
     // win1.41 006e07b0 mac 10133d90 GSquadInfo::_dt(void)
     virtual ~GSquadInfo();
     // win1.41 006e0750 mac 10133ff0 GSquadInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

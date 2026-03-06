@@ -51,13 +51,13 @@ public:
     // win1.41 0066e030 mac 1011d5f0 PileFood::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0066f5e0 mac 10116570 PileFood::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0066f5a0 mac 10116600 PileFood::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0066e020 mac 1011d5b0 PileFood::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055d690 mac 1011d570 PileFood::IsPileFood(void)
-    virtual uint32_t IsPileFood();
+    virtual bool IsPileFood();
     // win1.41 0066e2a0 mac 10119c00 PileFood::GetQueryFirstEnumText(void)
     virtual HELP_TEXT GetQueryFirstEnumText();
     // win1.41 0066e2d0 mac 10119b60 PileFood::GetQueryLastEnumText(void)

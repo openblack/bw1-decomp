@@ -40,9 +40,9 @@ public:
     // win1.41 005ef080 mac 10383880 DataPath::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005eeec0 mac 1037d3e0 DataPath::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 005eed30 mac 1037d620 DataPath::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 005ef070 mac 10383840 DataPath::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

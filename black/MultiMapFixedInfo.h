@@ -34,7 +34,7 @@ public:
     // Override methods
 
     // win1.41 0052eb60 mac 100dffe0 GMultiMapFixedInfo::IsOkToCreateAtPos(const MapCoords&, float, float) const
-    virtual bool IsOkToCreateAtPos(const MapCoords* pos, float param_2, float param_3);
+    virtual bool IsOkToCreateAtPos(const MapCoords& pos, float param_2, float param_3);
 };
 
 #else // __cplusplus

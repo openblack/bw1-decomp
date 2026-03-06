@@ -28,7 +28,7 @@ public:
     // win1.41 006e54b0 mac 1013b160 GRewardInfo::_dt(void)
     virtual ~GRewardInfo();
     // win1.41 006e5440 mac 1013c260 GRewardInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

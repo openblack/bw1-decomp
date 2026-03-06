@@ -51,6 +51,8 @@ public:
 
     // Virtual functions
 
+    // win1.41 0056fb70 mac 10380a20 GameThing::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
     // win1.41 00570130 mac 10364e60 GameThing::GetPlayer(void)
     virtual GPlayer* GetPlayer(); /* 0x1c */
     // win1.41 00570150 mac 10359980 GameThing::SetPlayer(GPlayer *)
@@ -61,8 +63,10 @@ public:
     virtual void RemoveDance();
     // win1.41 00401810 mac 100512d0 GameThing::IsAvailable(void)
     virtual bool IsAvailable();
-    virtual bool IsCreature_0(Creature* param_1); /* 0x30 */
-    virtual bool IsCreature_1();
+    // win1.41 00401820 mac 10494880 GameThing::IsCreature(Creature *)
+    virtual bool IsCreature(Creature* param_1); /* 0x30 */
+    // win1.41 00401830 mac 1002c400 GameThing::IsCreature(void)
+    virtual bool IsCreature();
     // win1.41 00401840 mac 104948c0 GameThing::IsCreatureNotTooNear(Creature *)
     virtual bool IsCreatureNotTooNear(Creature* param_1);
     // win1.41 00405130 mac 10169a70 GameThing::GetDrawImportance(void)
@@ -152,9 +156,9 @@ public:
     // win1.41 00401930 mac 1017a550 GameThing::GetShowNeedsPos(unsigned long, MapCoords *)
     virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
     // win1.41 0056fcf0 mac 103807f0 GameThing::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* file);
+    virtual bool Load(GameOSFile& file);
     // win1.41 0056fbe0 mac 101724b0 GameThing::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* file);
+    virtual bool Save(GameOSFile& file);
     // win1.41 0056fd90 mac 101361c0 GameThing::GetSaveType(void)
     virtual uint32_t GetSaveType(); /* 0xf0 */
     // win1.41 0056fda0 mac 100bc180 GameThing::SaveExtraData(GameOSFile &)

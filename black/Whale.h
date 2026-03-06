@@ -41,9 +41,9 @@ public:
     // win1.41 005612b0 mac 10160000 Whale::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007752c0 mac 10160090 Whale::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 007752a0 mac 101600f0 Whale::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 005612a0 mac 1015ffd0 Whale::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007752e0 mac 10160040 Whale::ResolveLoad(void)

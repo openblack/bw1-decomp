@@ -104,11 +104,11 @@ struct FrontEnd
     // win1.41 0053c450 mac 105c47d0 FrontEnd::SetCursorOn(void)
     static void SetCursorOn();
     // win1.41 00544f90 mac 105b9c50 FrontEnd::JustDoABox(DialogBoxBase *)
-    static void JustDoABox(DialogBoxBase* this);
+    static void JustDoABox(DialogBoxBase* box);
     // win1.41 0053ce70 mac 105c3cf0 FrontEnd::JustDoNewProfileBox(void)
-    static void JustDoNewProfileBox(FrontEnd* this);
+    static void JustDoNewProfileBox(FrontEnd* box);
     // win1.41 00544f80 mac 105ba050 FrontEnd::JustDoSkirmishGameBox(void)
-    static void JustDoSkirmishGameBox(FrontEnd* this);
+    static void JustDoSkirmishGameBox(FrontEnd* box);
 };
 
 #else // __cplusplus

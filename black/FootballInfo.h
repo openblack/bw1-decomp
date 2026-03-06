@@ -29,9 +29,9 @@ public:
     // win1.41 00643620 mac 10111690 GPFootballInfo::_dt(void)
     virtual ~GPFootballInfo();
     // win1.41 006435d0 mac 10111730 GPFootballInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 006435c0 mac 10111320 GPFootballInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
 };
 
 #else // __cplusplus

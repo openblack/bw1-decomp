@@ -25,9 +25,9 @@ public:
     // win1.41 00560940 mac inlined UR_Tornado::CollectionData::GetDebugText( (void))
     virtual char* GetDebugText();
     // win1.41 00699150 mac inlined UR_Tornado::CollectionData::Load( (GameOSFile &))
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006cfc40 mac inlined UR_Tornado::CollectionData::Save( (GameOSFile &))
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00560930 mac inlined UR_Tornado::CollectionData::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };
@@ -43,9 +43,9 @@ public:
     // win1.41 00560990 mac inlined UR_Tornado::DebrisCollectionData::GetDebugText( (void))
     virtual char* GetDebugText();
     // win1.41 00698f10 mac inlined UR_Tornado::DebrisCollectionData::Load( (GameOSFile &))
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006cf9f0 mac inlined UR_Tornado::DebrisCollectionData::Save( (GameOSFile &))
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00560980 mac inlined UR_Tornado::DebrisCollectionData::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };
@@ -61,9 +61,9 @@ public:
     // win1.41 00560a30 mac inlined UR_Tornado::FlyingAtomData::GetDebugText( (void))
     virtual char* GetDebugText();
     // win1.41 00699070 mac inlined UR_Tornado::FlyingAtomData::Load( (GameOSFile &))
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006cfb50 mac inlined UR_Tornado::FlyingAtomData::Save( (GameOSFile &))
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00560a20 mac inlined UR_Tornado::FlyingAtomData::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };
@@ -79,9 +79,9 @@ public:
     // win1.41 005609e0 mac inlined UR_Tornado::FlyingCollectionData::GetDebugText( (void))
     virtual char* GetDebugText();
     // win1.41 00698fc0 mac inlined UR_Tornado::FlyingCollectionData::Load( (GameOSFile &))
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006cfaa0 mac inlined UR_Tornado::FlyingCollectionData::Save( (GameOSFile &))
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 005609d0 mac inlined UR_Tornado::FlyingCollectionData::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };

@@ -8,6 +8,12 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+enum PLAYER_TYPE
+{
+  PLAYER_TYPE_0 = 0x0,
+  _PLAYER_TYPE_COUNT = 0x1
+};
+
 #ifdef __cplusplus
 
 // Forward Declares
@@ -60,7 +66,7 @@ public:
     // win1.41 0054be50 mac 104e7bd0 GPlayerInfo::_dt(void)
     virtual ~GPlayerInfo();
     // win1.41 0054b830 mac 1058eb00 GPlayerInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 struct PlayerInfo
@@ -80,11 +86,6 @@ struct PlayerInfo
 struct Base;
 struct CPDesireNodeInfo;
 
-enum PLAYER_TYPE
-{
-  PLAYER_TYPE_0 = 0x0,
-  _PLAYER_TYPE_COUNT = 0x1
-};
 static_assert(sizeof(enum PLAYER_TYPE) == 0x4, "Data type is of wrong size");
 
 static const char* PLAYER_TYPE_strs[_PLAYER_TYPE_COUNT] = {

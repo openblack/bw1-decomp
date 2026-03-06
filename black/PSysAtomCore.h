@@ -61,9 +61,9 @@ public:
     // win1.41 006739e0 mac 10423c80 AtomCore::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00694840 mac 1041d1f0 AtomCore::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006cb3a0 mac 10484ec0 AtomCore::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 006739d0 mac 10423c40 AtomCore::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
@@ -89,9 +89,9 @@ public:
     // win1.41 0055f390 mac inlined UR_Plasma::AtomData::GetDebugText( (void))
     virtual char* GetDebugText();
     // win1.41 00696570 mac inlined UR_Plasma::AtomData::Load( (GameOSFile &))
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006cd0c0 mac inlined UR_Plasma::AtomData::Save( (GameOSFile &))
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055f380 mac inlined UR_Plasma::AtomData::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };
@@ -107,9 +107,9 @@ public:
     // win1.41 0055f340 mac inlined UR_Plasma::SubCollectionData::GetDebugText( (void))
     virtual char* GetDebugText();
     // win1.41 006963e0 mac inlined UR_Plasma::SubCollectionData::Load( (GameOSFile &))
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006ccf60 mac inlined UR_Plasma::SubCollectionData::Save( (GameOSFile &))
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055f330 mac inlined UR_Plasma::SubCollectionData::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };

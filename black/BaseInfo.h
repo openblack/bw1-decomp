@@ -34,7 +34,7 @@ public:
     virtual const char* GetDebugText(); /* 0x1c */
     // win1.41 00436c60 mac 1055df70 GBaseInfo::GetDebugColor(void) const
     virtual LHColor* GetDebugColor(LHColor* color); /* 0x20 */
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 00401230 mac 101228b0 GBaseInfo::UpdateValue(void)
     virtual void UpdateValue(float param_1, uint32_t param_2, uint32_t param_3);
 

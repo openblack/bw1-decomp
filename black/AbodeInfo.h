@@ -72,9 +72,9 @@ public:
     // win1.41 00401320 mac 101ca240 GAbodeInfo::~GAbodeInfo(unsigned int)
     virtual ~GAbodeInfo();
     // win1.41 00401270 mac 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 00401240 mac 1019a370 GAbodeInfo::GetMesh() const
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
     // win1.41 00401250 mac 106fde70 GAbodeInfo::GetAbodeType() const
     virtual ABODE_TYPE GetAbodeType();
     // win1.41 00401260 mac 100984c0 GAbodeInfo::GetAbodeNumber() const

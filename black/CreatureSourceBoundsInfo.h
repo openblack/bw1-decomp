@@ -27,7 +27,7 @@ public:
     // win1.41 004dd400 mac 1025eab0 CreatureSourceBoundsInfo::_dt(void)
     virtual ~CreatureSourceBoundsInfo();
     // win1.41 004dd3a0 mac 1025ee20 CreatureSourceBoundsInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

@@ -82,6 +82,64 @@ public:
 
     // Virtual functions
 
+    // win1.41 0071fb10 mac 1030e5c0 Spell::_dt(void)
+    virtual ~Spell();
+    // win1.41 0071fd90 mac 105195a0 Spell::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 0055cdf0 mac 100d40a0 Spell::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 0055cdc0 mac 103b1c30 Spell::IsFunctional(void)
+    virtual bool IsFunctional();
+    // win1.41 0071fb00 mac 10514e70 Spell::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0071bc30 mac 1050fe70 Spell::GetSampleForAttack(void)
+    virtual uint32_t GetSampleForAttack();
+    // win1.41 00721cd0 mac 10514eb0 Spell::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 00721930 mac 105155b0 Spell::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0071faf0 mac 10514e40 Spell::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0055cec0 mac 103b1fa0 Spell::GetCreatureBeliefType(void)
+    virtual uint32_t GetCreatureBeliefType();
+    // win1.41 0055ceb0 mac 103b1f60 Spell::GetCreatureBeliefListType(void)
+    virtual uint32_t GetCreatureBeliefListType();
+    // win1.41 0055cef0 mac 103b2070 Spell::GetOrigin(void)
+    virtual uint32_t GetOrigin();
+    // win1.41 0055cdb0 mac 103b1c00 Spell::GetLife(void)
+    virtual float GetLife();
+    // win1.41 00721340 mac 10516b00 Spell::GetMovementDirection(LHPoint *)
+    virtual void GetMovementDirection(LHPoint* param_1);
+    // win1.41 007202b0 mac 10518bd0 Spell::GetImpressiveType(void)
+    virtual IMPRESSIVE_TYPE GetImpressiveType();
+    // win1.41 0055cf20 mac 103b2120 Spell::GetImpressiveIntensity(IMPRESSIVE_TYPE)
+    virtual float GetImpressiveIntensity(IMPRESSIVE_TYPE param_1);
+    // win1.41 00721630 mac 10516340 Spell::GetImpressiveValue(Living *, Reaction *)
+    virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
+    // win1.41 007216d0 mac 105162d0 Spell::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
+    virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
+    // win1.41 0055cee0 mac 103b2030 Spell::IsSuitableForCreatureAction(void)
+    virtual bool IsSuitableForCreatureAction();
+    // win1.41 0055ced0 mac 103b1fe0 Spell::CanBeFrighteningToCreature(Creature *)
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
+    // win1.41 00720240 mac 10518ca0 Spell::GetWorshipSite(void)
+    virtual WorshipSite* GetWorshipSite();
+    // win1.41 0055ce50 mac 103b1df0 Spell::IsSpell( const(void))
+    virtual bool IsSpell() const;
+    // win1.41 0055cf00 mac 103b20a0 Spell::GetText(void)
+    virtual const char* GetText();
+    // win1.41 007218a0 mac 10515fb0 Spell::GetQueryFirstEnumText(void)
+    virtual HELP_TEXT GetQueryFirstEnumText();
+    // win1.41 007218b0 mac 10515f40 Spell::GetQueryLastEnumText(void)
+    virtual HELP_TEXT GetQueryLastEnumText();
+    // win1.41 007218c0 mac 10515ed0 Spell::GetFOVHelpMessageSet(void)
+    virtual uint32_t GetFOVHelpMessageSet();
+    // win1.41 007218d0 mac 10515e60 Spell::GetFOVHelpCondition(void)
+    virtual uint32_t GetFOVHelpCondition();
+    // win1.41 0055cf10 mac 103b20d0 Spell::GetReactionPower(void)
+    virtual float GetReactionPower();
+    // win1.41 0055cd80 mac inlined Spell::GetSpellCastPos(MapCoords *)
+    virtual void GetSpellCastPos(MapCoords* param_1);
     // win1.41 00721370 mac 10516a00 Spell::ProcessSpellSeed(void)
     virtual void ProcessSpellSeed(); /* 0x500 */
     // win1.41 00720130 mac 105190d0 Spell::GetParticleType(void)
@@ -105,13 +163,13 @@ public:
     // win1.41 00720710 mac 10518300 Spell::Process(void)
     virtual uint32_t Process();
     // win1.41 00720f40 mac 105172a0 Spell::SpellEvent(SpellEventInfo const &)
-    virtual void SpellEvent(const SpellEventInfo* param_1);
+    virtual void SpellEvent(const SpellEventInfo& param_1);
     // win1.41 0055ce40 mac 10280a00 Spell::CloseDown(void)
     virtual void CloseDown(); /* 0x530 */
     // win1.41 0071fe50 mac 10519200 Spell::InitWithPos(GameThing *, MapCoords const &, SpellCastData *, PSysProcessInfo const &)
-    virtual int InitWithPos(GameThing* param_1, const MapCoords* param_2, SpellCastData* param_3, const PSysProcessInfo* param_4);
+    virtual int InitWithPos(GameThing* param_1, const MapCoords& param_2, SpellCastData* param_3, const PSysProcessInfo& param_4);
     // win1.41 007200e0 mac 10519120 Spell::InitWithObject(GameThing *, Object *, SpellCastData *, PSysProcessInfo const &)
-    virtual int InitWithObject(GameThing* param_1, Object* param_2, SpellCastData* param_3, const PSysProcessInfo* param_4);
+    virtual int InitWithObject(GameThing* param_1, Object* param_2, SpellCastData* param_3, const PSysProcessInfo& param_4);
     // win1.41 00720810 mac 10518100 Spell::CalculateCostToMaintain(void)
     virtual float CalculateCostToMaintain();
     // win1.41 0055ce60 mac 103b1e20 Spell::AdjustSpellSeedPos(MapCoords *)

@@ -31,9 +31,9 @@ public:
     // win1.41 0055ef00 mac inlined Particle3DPnt::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00695010 mac inlined Particle3DPnt::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006cbb30 mac inlined Particle3DPnt::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055eef0 mac inlined Particle3DPnt::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

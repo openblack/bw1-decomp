@@ -62,9 +62,9 @@ public:
     // win1.41 00435ad0 mac 100affd0 Ball::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00436260 mac 100b0080 Ball::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00436110 mac 100b0260 Ball::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00435ac0 mac 100affa0 Ball::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00435ab0 mac 100aff50 Ball::CanBePickedUpByCreature(Creature *)
@@ -85,7 +85,7 @@ public:
     // Static methods
 
     // win1.41 00435b90 mac 100b09f0 Ball::Create(MapCoords const &, GBallInfo const *, unsigned short, float, float)
-    static Ball* Create(const MapCoords* param_1, const GBallInfo* param_2, unsigned short param_3, float param_4, float param_5);
+    static Ball* Create(const MapCoords& param_1, const GBallInfo* param_2, unsigned short param_3, float param_4, float param_5);
 
     // Constructors
 

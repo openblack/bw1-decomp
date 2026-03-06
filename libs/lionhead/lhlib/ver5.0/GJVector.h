@@ -13,7 +13,7 @@ class GJVector {
     uint32_t field_0xc;
 };
 
-#elif // __cplusplus
+#else // __cplusplus
 
 /// Every template of the form
 ///   template<typename T>

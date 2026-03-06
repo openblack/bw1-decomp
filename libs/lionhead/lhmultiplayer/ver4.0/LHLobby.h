@@ -23,7 +23,7 @@ struct LHLobby
     // win1.41 1000d440 mac 100efe80 LHLobby::ProcessLobbyPlayerList(LHNetEvent *)
     LH_RETURN ProcessLobbyPlayerList(LHNetEvent* net_event);
     // win1.41 005ea900 mac 100ed350 LHLobby::_dt(void)
-    void _dt();
+    ~LHLobby();
     // win1.41 007c549c mac 100eced0 LHLobby::Close(void)
     void Close();
     // win1.41 007c54a2 mac 100f05c0 LHLobby::ProcessEvent(LHNetEvent *)

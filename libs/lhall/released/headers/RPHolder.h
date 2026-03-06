@@ -32,7 +32,7 @@ struct RPHolder
     // Static methods
 
     // win1.41 0083b300 mac 1061e7c4 RPHolder::InitialiseSystem(void (__cdecl *)(int, int, struct RPHolder *), void (__cdecl *)(struct RPHolder *))
-    static void InitialiseSystem(RPHolder* this, void (__cdecl*)(int, int, RPHolder *) param_1, void (__cdecl*)(RPHolder *) param_2);
+    static void InitialiseSystem(void (__cdecl* param_1)(int, int, RPHolder *), void (__cdecl* param_2)(RPHolder *));
 
     // Constructors
 

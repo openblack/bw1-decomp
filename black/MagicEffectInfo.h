@@ -77,7 +77,7 @@ public:
     // win1.41 00524ea0 mac 100cca30 GMagicEffectInfo::_dt(void)
     virtual ~GMagicEffectInfo();
     // win1.41 00524e30 mac 100ccbe0 GMagicEffectInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 
     // Constructors
 

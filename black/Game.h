@@ -28,6 +28,18 @@
 #include "StatsDatabase.h" /* For struct StatsDatabase */
 #include "TerrainMap.h" /* For struct GTerrainMap */
 
+enum GAME_MODE
+{
+  GAME_MODE_RUNNING = 0x0,
+  GAME_MODE_1 = 0x1,
+  GAME_MODE_2 = 0x2,
+  GAME_MODE_ONLINE = 0x3,
+  GAME_MODE_4 = 0x4,
+  GAME_MODE_SKIRMISH = 0x5,
+  GAME_MODE_QUITTING = 0x6,
+  _GAME_MODE_COUNT = 0x7
+};
+
 #ifdef __cplusplus
 
 // Forward Declares
@@ -181,9 +193,9 @@ public:
     // win1.41 0054b9c0 mac 10496160 GGame::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00554830 mac 10354cc0 GGame::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& file);
     // win1.41 00554090 mac 104935a0 GGame::Save(GameOSFile &)
-    virtual int Save(GameOSFile* file);
+    virtual bool Save(GameOSFile& file);
     // win1.41 0054b9b0 mac 10512c00 GGame::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00555080 mac 100c76b0 GGame::ResolveLoad(void)
@@ -194,9 +206,9 @@ public:
     // win1.41 0054cbd0 mac 101584c0 GGame::DoYesNoSkipTutorialRequestersIfNecessary(void)
     static void DoYesNoSkipTutorialRequestersIfNecessary();
     // win1.41 0054ff80 mac 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void *)
-    static void KeyHandler(GGame* this, unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4, void* param_5);
+    static void KeyHandler(unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4, void* param_5);
     // win1.41 0054ffe0 mac 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
-    static bool MouseHandler(GGame* this, void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4);
+    static bool MouseHandler(void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4);
 
     // Constructors
 
@@ -233,7 +245,7 @@ public:
     void ProcessGameCode();
     // win1.41 0054d850 mac 10079980 GGame::ProcessGraphicsEngine(unsigned long, unsigned long)
     void ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2);
-    // win1.41 0054da80 mac 10033dd0 GGame::ProcessGraphicsEngine(void)
+    // win1.41 0054da80 mac 10033dd0 GGame::Process3dEngine(void)
     void Process3dEngine();
     // win1.41 0054e4f0 mac 10083c70 GGame::StartTurn(void)
     void StartTurn();
@@ -339,17 +351,6 @@ struct Settings;
 struct Temple;
 struct Town;
 
-enum GAME_MODE
-{
-  GAME_MODE_RUNNING = 0x0,
-  GAME_MODE_1 = 0x1,
-  GAME_MODE_2 = 0x2,
-  GAME_MODE_ONLINE = 0x3,
-  GAME_MODE_4 = 0x4,
-  GAME_MODE_SKIRMISH = 0x5,
-  GAME_MODE_QUITTING = 0x6,
-  _GAME_MODE_COUNT = 0x7
-};
 static_assert(sizeof(enum GAME_MODE) == 0x4, "Data type is of wrong size");
 
 static const char* GAME_MODE_strs[_GAME_MODE_COUNT] = {

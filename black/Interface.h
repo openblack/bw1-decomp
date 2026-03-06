@@ -119,9 +119,9 @@ public:
     // win1.41 005ce300 mac 10357e40 GInterface::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005d04d0 mac 10358550 GInterface::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 005d0490 mac 103585e0 GInterface::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 005ce2f0 mac 10357e00 GInterface::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005d0590 mac 103581e0 GInterface::SaveExtraData(GameOSFile &)
@@ -129,7 +129,7 @@ public:
     // win1.41 005d0510 mac 10358340 GInterface::ResolveLoad(void)
     virtual void ResolveLoad();
     // win1.41 005ce2e0 mac 10074680 GInterface::IsActive( const(void))
-    virtual uint32_t IsActive();
+    virtual bool IsActive();
     // win1.41 005ce2d0 mac 10357dc0 GInterface::GetText(void)
     virtual const char* GetText();
 

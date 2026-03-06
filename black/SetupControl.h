@@ -65,8 +65,6 @@ public:
     virtual void KeyDown(LHKey key, LHKeyMod mod);
     // win1.41 00409390 mac 105049b0 SetupControl::Char(int)
     virtual void Char(int character);
-    // win1.41 004093a0 mac 100c48e0 SetupControl::~SetupControl(bool)
-    virtual ~SetupControl(); /* 0x30 */
 
     // Constructors
 

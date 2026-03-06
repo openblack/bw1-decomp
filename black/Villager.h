@@ -65,6 +65,11 @@ class Town;
 class Tree;
 class WorshipSite;
 
+struct SortedObject
+{
+  uint8_t field_0x0;
+};
+
 struct ClearAreaPoint
 {
     uint8_t field_0x0;
@@ -111,6 +116,398 @@ public:
 
     // Virtual functions
 
+    // win1.41 0055cb40 mac 10571890 Villager::_dt(unsigned int)
+    virtual void __dt(uint32_t param_1);
+    // win1.41 007521b0 mac 1056caa0 Villager::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 007502f0 mac 10064390 Villager::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 00751d50 mac 10054860 Villager::IsAvailable(void)
+    virtual bool IsAvailable();
+    // win1.41 00751f00 mac 10064360 Villager::GetTown(void)
+    virtual Town* GetTown();
+    // win1.41 007564d0 mac 10565060 Villager::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
+    virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4, const MapCoords* param_5, int param_6);
+    // win1.41 00751cf0 mac 100199f0 Villager::IsFunctional(void)
+    virtual bool IsFunctional();
+    // win1.41 0055cb30 mac 10571f80 Villager::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00754580 mac 10568980 Villager::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 00754280 mac 10568d70 Villager::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055cb20 mac 10571f40 Villager::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00754870 mac 10568900 Villager::ResolveLoad(void)
+    virtual void ResolveLoad();
+    // win1.41 0055ca70 mac 10148010 Villager::GetCreatureBeliefType(void)
+    virtual uint32_t GetCreatureBeliefType();
+    // win1.41 00751db0 mac 1056d490 Villager::GetCitadel(void)
+    virtual Citadel* GetCitadel();
+    // win1.41 00753110 mac 1056a8c0 Villager::SetSpeedInMetres(float, int)
+    virtual void SetSpeedInMetres(float param_1, int param_2);
+    // win1.41 00756b30 mac 10563e60 Villager::IsDrowning(void)
+    virtual bool IsDrowning();
+    // win1.41 004e4c90 mac 105e3c40 Villager::CanBeHealedByCreature(Creature *)
+    virtual bool CanBeHealedByCreature(Creature* param_1);
+    // win1.41 0055caa0 mac 10148110 Villager::CanBeHelpedByCreature(Creature *)
+    virtual bool CanBeHelpedByCreature(Creature* param_1);
+    // win1.41 0055ca80 mac 10148050 Villager::CanBeImpressedByCreature(Creature *)
+    virtual bool CanBeImpressedByCreature(Creature* param_1);
+    // win1.41 0055ca90 mac 101480d0 Villager::CanReceiveGifts(Creature *)
+    virtual bool CanReceiveGifts(Creature* param_1);
+    // win1.41 004e4b40 mac 105e4090 Villager::CanHaveMagicFoodCastOnMe(Creature *)
+    virtual bool CanHaveMagicFoodCastOnMe(Creature* param_1);
+    // win1.41 0055cab0 mac 1006d800 Villager::IsVillager(Creature *)
+    virtual bool IsVillager(Creature* param_1);
+    // win1.41 004e4d50 mac 105e3950 Villager::IsVillagerFarFromHome(Creature *)
+    virtual bool IsVillagerFarFromHome(Creature* param_1);
+    // win1.41 004e4510 mac 105e5100 Villager::IsVillagerInTownWithoutManyBreeders(Creature *)
+    virtual bool IsVillagerInTownWithoutManyBreeders(Creature* param_1);
+    // win1.41 004e46d0 mac 105e4e90 Villager::IsVillagerNotWorshipping(Creature *)
+    virtual bool IsVillagerNotWorshipping(Creature* param_1);
+    // win1.41 004e4b10 mac 105e40e0 Villager::IsVillagerBelongingToOtherPlayer(Creature *)
+    virtual bool IsVillagerBelongingToOtherPlayer(Creature* param_1);
+    // win1.41 004e4840 mac 105e4a70 Villager::IsVillagerWhoHasNotBeenImpressedRecently(Creature *)
+    virtual bool IsVillagerWhoHasNotBeenImpressedRecently(Creature* param_1);
+    // win1.41 004e4890 mac 105e49d0 Villager::IsVillagerWhoHasNotBeenDancedWithRecently(Creature *)
+    virtual bool IsVillagerWhoHasNotBeenDancedWithRecently(Creature* param_1);
+    // win1.41 004e3e20 mac 105e68c0 Villager::DoesVillagerBelongToATownWhichIsAlreadyImpressed(Creature *)
+    virtual bool DoesVillagerBelongToATownWhichIsAlreadyImpressed(Creature* param_1);
+    // win1.41 0076c340 mac 1059db90 Villager::GetWorshipSite(void)
+    virtual WorshipSite* GetWorshipSite();
+    // win1.41 004e3b60 mac 105e7030 Villager::IsDoingSomethingInteresting(Creature *)
+    virtual bool IsDoingSomethingInteresting(Creature* param_1);
+    // win1.41 00532db0 mac 102ba4d0 Villager::IsPlayingFootball(Creature *)
+    virtual bool IsPlayingFootball(Creature* param_1);
+    // win1.41 00532e00 mac 102ba3f0 Villager::IsPlayingFootballAndMySideHasJustScored(Creature *)
+    virtual bool IsPlayingFootballAndMySideHasJustScored(Creature* param_1);
+    // win1.41 00532e50 mac 102ba300 Villager::IsPlayingFootballAndOtherSideHasJustScored(Creature *)
+    virtual bool IsPlayingFootballAndOtherSideHasJustScored(Creature* param_1);
+    // win1.41 004eaba0 mac 1026e3f0 Villager::GetCreatureMimicType(void)
+    virtual uint32_t GetCreatureMimicType();
+    // win1.41 004d1b40 mac 10243020 Villager::GetHowMuchCreatureWantsToLookAtMe(void)
+    virtual float GetHowMuchCreatureWantsToLookAtMe();
+    // win1.41 0063b9b0 mac 103da4e0 Villager::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)
+    virtual void CalculateWhereIWillBeAfterNSeconds(float param_1, LHPoint* param_2);
+    // win1.41 00768630 mac 10597660 Villager::IsReadyForNewScriptAction(void)
+    virtual bool IsReadyForNewScriptAction();
+    // win1.41 0055cb10 mac 10148200 Villager::GetDeathReason(void)
+    virtual DEATH_REASON GetDeathReason();
+    // win1.41 0055cac0 mac 10478e10 Villager::IsMaleVillager(void)
+    virtual bool IsMaleVillager();
+    // win1.41 0055cae0 mac 1033bc40 Villager::IsFemaleVillager(void)
+    virtual bool IsFemaleVillager();
+    // win1.41 0055cb00 mac 1009a450 Villager::IsAChild(void)
+    virtual bool IsAChild();
+    // win1.41 007562c0 mac 105652e0 Villager::SetSkeleton(int)
+    virtual void SetSkeleton(int index);
+    // win1.41 00753f20 mac 10569710 Villager::GetQueryFirstEnumText(void)
+    virtual HELP_TEXT GetQueryFirstEnumText();
+    // win1.41 00753f90 mac 105695c0 Villager::GetQueryLastEnumText(void)
+    virtual HELP_TEXT GetQueryLastEnumText();
+    // win1.41 00754050 mac 10032e70 Villager::GetFOVHelpMessageSet(void)
+    virtual uint32_t GetFOVHelpMessageSet();
+    // win1.41 00754060 mac 10569510 Villager::GetFOVHelpCondition(void)
+    virtual uint32_t GetFOVHelpCondition();
+    // win1.41 00753020 mac 10005a00 Villager::GetScriptObjectType(void)
+    virtual uint32_t GetScriptObjectType();
+    // win1.41 00756460 mac 10094080 Villager::IsReachable(void)
+    virtual bool IsReachable();
+    // win1.41 00756450 mac 1005f5e0 Villager::InsertMapObject(void)
+    virtual void InsertMapObject();
+    // win1.41 00750310 mac 10097630 Villager::GetHoldType(void)
+    virtual HOLD_TYPE GetHoldType();
+    // win1.41 00750320 mac 1009a310 Villager::GetHoldLoweringMultiplier(void)
+    virtual float GetHoldLoweringMultiplier();
+    // win1.41 00756b40 mac 1004b210 Villager::SetLife(float)
+    virtual void SetLife(float param_1);
+    // win1.41 00753460 mac 1056a0d0 Villager::IncreaseLife(float)
+    virtual void IncreaseLife(float param_1);
+    // win1.41 007502d0 mac 10570c30 Villager::DestroyedByEffect(GPlayer *, float)
+    virtual bool DestroyedByEffect(GPlayer* param_1, float param_2);
+    // win1.41 0055c9c0 mac 10147dd0 Villager::GetMesh( const(void))
+    virtual int GetMesh() const;
+    // win1.41 0055c9d0 mac inlined Villager::GetDetailMesh(int)
+    virtual int GetDetailMesh(int param_1);
+    // win1.41 0051b940 mac 1004c6c0 Villager::Draw(void)
+    virtual void Draw();
+    // win1.41 0074ff70 mac 1004b3c0 Villager::ProcessState(void)
+    virtual uint32_t ProcessState();
+    // win1.41 0055ca50 mac 10147fb0 Villager::CanBePickedUp(void)
+    virtual bool CanBePickedUp();
+    // win1.41 007560e0 mac 10565860 Villager::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
+    virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
+    // win1.41 0074fc70 mac 10571530 Villager::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 0055c990 mac 10147d30 Villager::IsABeliever(void)
+    virtual bool32_t IsABeliever();
+    // win1.41 0076a4c0 mac 1059a990 Villager::SetDying(void)
+    virtual bool SetDying();
+    // win1.41 00753040 mac inlined Villager::IsTouching_2( const(MapCoords *))
+    virtual bool IsTouching(MapCoords* param_1) const;
+    // win1.41 0055c9a0 mac inlined Villager::IsTouching_3( const(Object *, float))
+    virtual bool IsTouching(Object* param_1, float param_2) const;
+    // win1.41 007564a0 mac 105651b0 Villager::ValidForPlaceInHand(GInterfaceStatus *)
+    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    // win1.41 00753080 mac 1056a940 Villager::InterfaceSetInMagicHand(GInterfaceStatus *)
+    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    // win1.41 00752bd0 mac 100a0960 Villager::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
+    virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
+    // win1.41 00752c40 mac 1056ac90 Villager::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
+    virtual uint32_t ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, GestureSystemPacketData* param_3);
+    // win1.41 00756ae0 mac 10563ed0 Villager::ThrowObjectFromHand(GInterfaceStatus *, int)
+    virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* param_1, int param_2);
+    // win1.41 00751d70 mac 1000aef0 Villager::IsEffectReceiver(EffectValues *)
+    virtual bool IsEffectReceiver(EffectValues* param_1);
+    // win1.41 0076aa80 mac 10599f40 Villager::GetImportance(void)
+    virtual float GetImportance();
+    // win1.41 005efe90 mac 10385750 Villager::InitialisePhysicsFromHand(LHPoint &, LHPoint &, GInterfaceStatus *, Object *, int)
+    virtual uint32_t InitialisePhysicsFromHand(LHPoint* param_1, LHPoint* param_2, GInterfaceStatus* param_3, Object* param_4, int param_5);
+    // win1.41 005efef0 mac 10385670 Villager::InitialisePhysics(LHPoint const &, LHPoint const &, Object *, bool, GInterfaceStatus *)
+    virtual uint32_t InitialisePhysics(const LHPoint* param_1, const LHPoint* param_2, Object* param_3, bool param_4, GInterfaceStatus* param_5);
+    // win1.41 005eff30 mac 10385630 Villager::GetPhysicsConstantsType(void)
+    virtual uint32_t GetPhysicsConstantsType();
+    // win1.41 005eff40 mac 103850b0 Villager::SetUpPhysOb(PhysOb *)
+    virtual void SetUpPhysOb(PhysOb* param_1);
+    // win1.41 005f0a60 mac 103846d0 Villager::EndPhysics(PhysicsObject *, bool)
+    virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+    // win1.41 007564c0 mac 10565140 Villager::CanBecomeAPhysicsObject(void)
+    virtual bool CanBecomeAPhysicsObject();
+    // win1.41 00750ab0 mac 1056fb10 Villager::HasSunk(void)
+    virtual bool HasSunk();
+    // win1.41 0075b400 mac 10578430 Villager::IsFireMan(void)
+    virtual bool IsFireMan();
+    // win1.41 00753e00 mac 10569a30 Villager::RemoveFromGame(void)
+    virtual uint32_t RemoveFromGame();
+    // win1.41 0055ca30 mac 10147f70 Villager::GetTastiness(void)
+    virtual uint32_t GetTastiness();
+    // win1.41 00751af0 mac 1056dae0 Villager::SaveObject(LHOSFile &, MapCoords const &)
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+    // win1.41 00753410 mac 1056a150 Villager::SetFoodSpeedup(bool)
+    virtual void SetFoodSpeedup(bool param_1);
+    // win1.41 0055c980 mac 10051310 Villager::IsFoodSpeedUp(void)
+    virtual bool IsFoodSpeedUp();
+    // win1.41 00756ad0 mac 10563fe0 Villager::GetFinalDestPos(MapCoords *)
+    virtual MapCoords* GetFinalDestPos(MapCoords* param_1);
+    // win1.41 00763b00 mac 10593810 Villager::FleeingFromObjectReaction(void)
+    virtual bool FleeingFromObjectReaction();
+    // win1.41 007642c0 mac 105927e0 Villager::LookingAtObjectReaction(void)
+    virtual bool LookingAtObjectReaction();
+    // win1.41 00764310 mac 10592770 Villager::FleeingAndLookingAtObjectReaction(void)
+    virtual bool FleeingAndLookingAtObjectReaction();
+    // win1.41 00764320 mac 105926d0 Villager::FollowingObjectReaction(void)
+    virtual bool FollowingObjectReaction();
+    // win1.41 00764350 mac 105925b0 Villager::InspectObjectReaction(void)
+    virtual bool InspectObjectReaction();
+    // win1.41 0076a570 mac 1059a890 Villager::Dying(void)
+    virtual bool Dying();
+    // win1.41 0076a5e0 mac 1059a580 Villager::Dead(void)
+    virtual bool Dead();
+    // win1.41 0076b380 mac 10598f90 Villager::BeingEaten(void)
+    virtual bool BeingEaten();
+    // win1.41 007646a0 mac 10591f20 Villager::GotoFoodReaction(void)
+    virtual bool GotoFoodReaction();
+    // win1.41 007646d0 mac 10591e40 Villager::GotoWoodReaction(void)
+    virtual bool GotoWoodReaction();
+    // win1.41 00756c60 mac 1004d520 Villager::IsMovingForAnimation(void)
+    virtual bool IsMovingForAnimation();
+    // win1.41 00764920 mac 10591770 Villager::ArrivesAtFoodReaction(void)
+    virtual bool ArrivesAtFoodReaction();
+    // win1.41 00764720 mac 10591b50 Villager::ArrivesAtWoodReaction(void)
+    virtual bool ArrivesAtWoodReaction();
+    // win1.41 0076ade0 mac 1000abe0 Villager::InHand(void)
+    virtual bool InHand();
+    // win1.41 007515c0 mac 10098ff0 Villager::DecideWhatToDo(void)
+    virtual bool DecideWhatToDo();
+    // win1.41 00751040 mac 1056f5e0 Villager::Birthday(void)
+    virtual void Birthday();
+    // win1.41 007528c0 mac 1056b4c0 Villager::SetAge(unsigned long)
+    virtual void SetAge(uint32_t age);
+    // win1.41 007520e0 mac 10087ab0 Villager::SetCurrentAndDestinationState(unsigned char, unsigned char)
+    virtual int SetCurrentAndDestinationState(VILLAGER_STATES current, VILLAGER_STATES destination);
+    // win1.41 00756590 mac inlined Villager::CallIntoAnimationFunction(VILLAGER_STATES)
+    virtual int CallIntoAnimationFunction(VILLAGER_STATES param_1);
+    // win1.41 00756620 mac inlined Villager::CallOutofAnimationFunction(VILLAGER_STATES)
+    virtual int CallOutofAnimationFunction(VILLAGER_STATES param_1);
+    // win1.41 00752010 mac 1007bba0 Villager::SetTopState(unsigned char)
+    virtual int SetTopState(VILLAGER_STATES state);
+    // win1.41 00763470 mac 10594430 Villager::StorePreviousState(void)
+    virtual void StorePreviousState();
+    // win1.41 00753740 mac 10075d50 Villager::SetStateSpeed(void)
+    virtual void SetStateSpeed();
+    // win1.41 00753f00 mac inlined Villager::IsFinalState(VILLAGER_STATES)
+    virtual bool IsFinalState(VILLAGER_STATES param_1);
+    // win1.41 00750110 mac 10066490 Villager::GetAnimId(void)
+    virtual ANIM_LIST GetAnimId();
+    // win1.41 00752320 mac inlined Villager::CallExitStateFunction(VILLAGER_STATES)
+    virtual uint32_t CallExitStateFunction(VILLAGER_STATES param_1);
+    // win1.41 00752440 mac 1007b1b0 Villager::CallEntryStateFunction(unsigned char, unsigned char)
+    virtual uint32_t CallEntryStateFunction__UcUc(VILLAGER_STATES current, VILLAGER_STATES destination);
+    // win1.41 007523d0 mac 10075c50 Villager::CallEntryStateFunction(unsigned char)
+    virtual uint32_t CallEntryStateFunction__Uc(VILLAGER_STATES state);
+    // win1.41 007527a0 mac inlined Villager::ExitReaction(VILLAGER_STATES)
+    virtual int ExitReaction(VILLAGER_STATES param_1);
+    // win1.41 0076b000 mac inlined Villager::ExitInHand(VILLAGER_STATES)
+    virtual int ExitInHand(VILLAGER_STATES param_1);
+    // win1.41 0076acb0 mac inlined Villager::ExitInFlying(VILLAGER_STATES)
+    virtual int ExitInFlying(VILLAGER_STATES param_1);
+    // win1.41 00753690 mac 1006a4d0 Villager::SetState(unsigned long, unsigned char)
+    virtual void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
+    // win1.41 0076afe0 mac inlined Villager::EnterInHand(VILLAGER_STATES, VILLAGER_STATES)
+    virtual uint32_t EnterInHand(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
+    // win1.41 0055c9f0 mac inlined Villager::IsScriptState( const(VILLAGER_STATES))
+    virtual bool IsScriptState(VILLAGER_STATES param_1) const;
+    // win1.41 0055ca10 mac inlined Villager::IsScriptInterruptableState( const(VILLAGER_STATES))
+    virtual bool IsScriptInterruptableState(VILLAGER_STATES param_1) const;
+    // win1.41 00752530 mac inlined Villager::IsStateExitFunctionSameAs( const(VILLAGER_STATES))
+    virtual bool IsStateExitFunctionSameAs(VILLAGER_STATES param_1) const;
+    // win1.41 007528b0 mac 1056b830 Villager::DebugShowTime(unsigned long, unsigned char, unsigned char)
+    virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
+    // win1.41 00764df0 mac 10590f30 Villager::IsInterestedInFoodObject(Object *)
+    virtual bool IsInterestedInFoodObject(Object* param_1);
+    // win1.41 00764f60 mac 10590c40 Villager::IsInterestedInWoodObject(Object *)
+    virtual bool IsInterestedInWoodObject(Object* param_1);
+    // win1.41 00763390 mac 10021260 Villager::IsAvailableForReaction(REACTION)
+    virtual bool IsAvailableForReaction(REACTION param_1);
+    // win1.41 00763410 mac 1000edf0 Villager::IsAvailableForBeliefButNotReaction(REACTION)
+    virtual bool IsAvailableForBeliefButNotReaction(REACTION param_1);
+    // win1.41 007634c0 mac 100072a0 Villager::UpdateHowImpressed(Reaction *, int)
+    virtual void UpdateHowImpressed(Reaction* param_1, int param_2);
+    // win1.41 00763440 mac inlined Villager::AddReaction(Reaction *, VILLAGER_STATES)
+    virtual void AddReaction(Reaction* param_1, VILLAGER_STATES param_2);
+    // win1.41 007637d0 mac 105941a0 Villager::StopReacting(void)
+    virtual void StopReacting();
+    // win1.41 00751e10 mac 1056d350 Villager::ResetStateAfterReacting(void)
+    virtual void ResetStateAfterReacting();
+    // win1.41 00763aa0 mac 105939d0 Villager::SetupLookAtObject(GameThingWithPos *, Reaction *)
+    virtual void SetupLookAtObject(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00763ac0 mac 10593960 Villager::SetupLookAtSpell(GameThingWithPos *, Reaction *)
+    virtual void SetupLookAtSpell(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00763ae0 mac 105938e0 Villager::SetupLookAtNiceSpell(GameThingWithPos *, Reaction *)
+    virtual void SetupLookAtNiceSpell(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00767630 mac 10596820 Villager::SetupReactToCreature(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToCreature(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00765b70 mac 1058fc00 Villager::SetupReactToWood(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToWood(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00763820 mac 10593f50 Villager::SetupReactToMagicTree(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToMagicTree(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 007639d0 mac 10593a40 Villager::SetupReactToFlyingObject(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToFlyingObject(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00765540 mac 10590390 Villager::SetupReactToFire(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToFire(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00765c60 mac 1058f820 Villager::SetupReactToMagicShield(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToMagicShield(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00766010 mac 1058f360 Villager::SetupReactToNewBuilding(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToNewBuilding(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00766e30 mac 1058d620 Villager::SetupReactToFight(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToFight(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00766250 mac 1058f020 Villager::SetupReactToTeleport(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToTeleport(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 007665b0 mac 1058e7d0 Villager::SetupReactToDeath(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToDeath(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00766620 mac 1058e6f0 Villager::SetupReactToDroppedByHand(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToDroppedByHand(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 007668c0 mac 1058e200 Villager::SetupReactToFainting(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToFainting(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 007668f0 mac 1058e110 Villager::SetupReactToConfused(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToConfused(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00766a20 mac 1058de00 Villager::SetupReactToFallingTree(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToFallingTree(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00766a60 mac 1058dce0 Villager::SetupReactToCrowd(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToCrowd(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 007671e0 mac 1058ce20 Villager::SetupReactToBreeder(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToBreeder(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00763990 mac 10593b90 Villager::SetupFleeFromPredator(GameThingWithPos *, Reaction *)
+    virtual void SetupFleeFromPredator(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00766fd0 mac 1058cfd0 Villager::SetupReactToTownCelebration(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToTownCelebration(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 007672f0 mac 1058cae0 Villager::SetupReactToVillagerInHand(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToVillagerInHand(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00767490 mac 1058c650 Villager::SetupReactToBurningObjectInHand(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToBurningObjectInHand(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 007674b0 mac 1058c4f0 Villager::SetupReactToMagicShieldStruck(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToMagicShieldStruck(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 00767520 mac 1058c460 Villager::SetupReactToMagicShieldDestroyed(GameThingWithPos *, Reaction *)
+    virtual void SetupReactToMagicShieldDestroyed(GameThingWithPos* param_1, Reaction* param_2);
+    // win1.41 007676e0 mac 10596540 Villager::ReactToCreaturePriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToCreaturePriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00765260 mac 105908a0 Villager::ReactToFlyingObjectPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToFlyingObjectPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00765610 mac 10590060 Villager::ReactToFirePriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToFirePriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00765bb0 mac 1058fa80 Villager::ReactToMagicShieldPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToMagicShieldPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00766df0 mac 1058d6d0 Villager::ReactToFightPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToFightPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00766200 mac 1058f150 Villager::ReactToTeleportPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToTeleportPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00766440 mac 1058eb60 Villager::ReactToDeathPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToDeathPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 007664b0 mac 1058e910 Villager::ReactToDroppedByHandPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToDroppedByHandPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00766a10 mac 1058deb0 Villager::ReactToFallingTreePriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToFallingTreePriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00766a50 mac 1058dd90 Villager::ReactToCrowdPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToCrowdPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00767210 mac 1058ccf0 Villager::ReactToBreederPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToBreederPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00767180 mac 1058ced0 Villager::ReactToTownCelebrationPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToTownCelebrationPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00763850 mac 10593d10 Villager::FleeFromPredatorPriority(Reaction *, Reaction *)
+    virtual uint8_t FleeFromPredatorPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00767320 mac 1058c970 Villager::ReactToVillagerInHandPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToVillagerInHandPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00767430 mac 1058c710 Villager::ReactToBurningObjectInHandPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToBurningObjectInHandPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00767540 mac 1058c2b0 Villager::ReactToMagicShieldStruckPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToMagicShieldStruckPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 007675a0 mac 1058c230 Villager::ReactToMagicShieldDestroyedPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToMagicShieldDestroyedPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 00763980 mac 10593c90 Villager::ReactToScaffoldPriority(Reaction *, Reaction *)
+    virtual uint8_t ReactToScaffoldPriority(Reaction* param_1, Reaction* param_2);
+    // win1.41 007640a0 mac 10592e20 Villager::NumGameTurnsToReactToPredatorFunction(GameThingWithPos *, unsigned long, float)
+    virtual uint32_t NumGameTurnsToReactToPredatorFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
+    // win1.41 007640e0 mac 10592d30 Villager::NumGameTurnsBeforeReactingAgainToPredatorFunction(GameThingWithPos *, unsigned long, float)
+    virtual uint32_t NumGameTurnsBeforeReactingAgainToPredatorFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
+    // win1.41 007648d0 mac 10591a30 Villager::StandardNumGameTurnsBeforeReactingToWoodAgainFunction(GameThingWithPos *, unsigned long, float)
+    virtual uint32_t StandardNumGameTurnsBeforeReactingToWoodAgainFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
+    // win1.41 00764110 mac 10592ca0 Villager::NumGameTurnsToReactToBurningObjectFunction(GameThingWithPos *, unsigned long, float)
+    virtual uint32_t NumGameTurnsToReactToBurningObjectFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
+    // win1.41 00764130 mac 10592b70 Villager::NumGameTurnsBeforeReactingAgainToBurningObjectFunction(GameThingWithPos *, unsigned long, float)
+    virtual uint32_t NumGameTurnsBeforeReactingAgainToBurningObjectFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
+    // win1.41 007641a0 mac 10592a30 Villager::NumGameTurnsToReactToShieldFunction(GameThingWithPos *, unsigned long, float)
+    virtual uint32_t NumGameTurnsToReactToShieldFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
+    // win1.41 00764230 mac 105928c0 Villager::NumGameTurnsBeforeReactingToShieldAgainFunction(GameThingWithPos *, unsigned long, float)
+    virtual uint32_t NumGameTurnsBeforeReactingToShieldAgainFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
+    // win1.41 0055c970 mac 10064ef0 Villager::IsChild(void)
+    virtual bool IsChild();
+    // win1.41 00751dd0 mac 1004ec00 Villager::GetFinalState(void) const
+    virtual VILLAGER_STATES GetFinalState() const;
+    // win1.41 00751510 mac 1056ec00 Villager::RemoveFromDance(int)
+    virtual void RemoveFromDance(int param_1);
+    // win1.41 00759b80 mac 10577060 Villager::SetStateAfterFinishingDance(void)
+    virtual void SetStateAfterFinishingDance();
+    // win1.41 0075bae0 mac 1057b530 Villager::CalculateLifeDesire(void)
+    virtual float CalculateLifeDesire();
+    // win1.41 004174a0 mac inlined Villager::MoveAllowedForChessGame(void)
+    virtual bool MoveAllowedForChessGame();
+    // win1.41 004174b0 mac inlined Villager::AttackAllowedForChessGame(void)
+    virtual bool AttackAllowedForChessGame();
+    // win1.41 004174c0 mac inlined Villager::AddToBoxPositionForChessGame(int, int)
+    virtual void AddToBoxPositionForChessGame(int param_1, int param_2);
+    // win1.41 004174d0 mac inlined Villager::GetBoxXForChessGame(void)
+    virtual int GetBoxXForChessGame();
+    // win1.41 004174e0 mac inlined Villager::GetBoxZForChessGame(void)
+    virtual int GetBoxZForChessGame();
+    // win1.41 004174f0 mac inlined Villager::SetBoxXForChessGame(int)
+    virtual void SetBoxXForChessGame(int param_1);
+    // win1.41 00417500 mac inlined Villager::SetBoxZForChessGame(int)
+    virtual void SetBoxZForChessGame(int param_1);
+    // win1.41 00417510 mac inlined Villager::GetTeamForChessGame(void)
+    virtual uint32_t GetTeamForChessGame();
+    // win1.41 00473ee0 mac inlined Villager::IsPosValidForTurnAngle(MapCoords const &)
+    virtual bool IsPosValidForTurnAngle(const MapCoords* param_1);
     // win1.41 0055ca40 mac 100c54f0 Villager::GetVillagerName(void)
     virtual const char* GetVillagerName(); /* 0xb40 */
     // win1.41 0051b510 mac 10057c40 Villager::DrawVillagerInfo(void)
@@ -119,11 +516,11 @@ public:
     // Static methods
 
     // win1.41 inlined mac 1061e41c Villager::GetStateTable(void)
-    static Living__StateTableEntry* GetStateTable(VILLAGER_STATES state);
+    static Living::StateTableEntry* GetStateTable(VILLAGER_STATES state);
     // win1.41 0074fbe0 mac 10571750 Villager::Create(MapCoords const &, GVillagerInfo const *, unsigned long, int)
     static Villager* Create(MapCoords* coords, GVillagerInfo* info, uint32_t age, bool skeleton);
     // win1.41 00756990 mac inlined Villager::FUN_00756990(void)
-    static void FUN_00756990(MissionaryControl* this);
+    static void FUN_00756990(class MissionaryControl* param_1);
 
     // Constructors
 
@@ -464,7 +861,7 @@ public:
     // win1.41 00756e20 mac 10573130 Villager::GetDiscipleInteractState(void)
     uint32_t GetDiscipleInteractState();
     // win1.41 00756e80 mac 1002ae20 Villager::FindCloseObjectsForInteract(class LHOrderedLinkedList<class SortedObject> *, struct MapCoords const &)
-    bool32_t FindCloseObjectsForInteract(LHOrderedLinkedList__SortedObject* param_1, const MapCoords* param_2);
+    bool32_t FindCloseObjectsForInteract(LHOrderedLinkedList<SortedObject>* param_1, const MapCoords* param_2);
     // win1.41 00757180 mac 10572de0 Villager::CheckMoveHouse(Object *)
     bool32_t CheckMoveHouse(Object* object);
     // win1.41 00757210 mac 10572cf0 Villager::CheckMoveIntoTown(Town &)
@@ -1304,7 +1701,7 @@ public:
     // win1.41 0076b590 mac 10598c80 Villager::GoAndChilloutInTown(void)
     bool32_t GoAndChilloutInTown();
     // win1.41 0076b610 mac 100118e0 Villager::GetMeToMyChillOutPos(int (Villager::)(void const *, void* , MapCoords &), MapCoords &, float, MapCoords const &)
-    void GetMeToMyChillOutPos(int (__fastcall*)(const Villager *, const void *, MapCoords *) callback, const void* unused_1, const void* unused_2, const void* unused_3, MapCoords* param_5, float param_6, MapCoords* param_7);
+    void GetMeToMyChillOutPos(int (* callback)(MapCoords *), const void* unused_1, const void* unused_2, const void* unused_3, MapCoords* param_5, float param_6, MapCoords* param_7);
     // win1.41 0076b7e0 mac 10598b40 Villager::ArrivesHomeFromWorship(void)
     bool32_t ArrivesHomeFromWorship();
     // win1.41 0076b7f0 mac 10598ae0 Villager::SleepInTentFromWorship(void)
@@ -1424,9 +1821,9 @@ public:
     // win1.41 00756730 mac 10563970 MissionaryControl::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007568a0 mac 105646b0 MissionaryControl::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 007568e0 mac 10564610 MissionaryControl::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00756720 mac 10563930 MissionaryControl::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00756920 mac 10564510 MissionaryControl::GetImpressiveValue(Living *, Reaction *)
@@ -1443,8 +1840,8 @@ public:
 
     // Non-virtual Destructors
 
-    // win1.41 007567b0 mac inlined MissionaryControl::_dt(void)
-    ~MissionaryControl();
+    // // win1.41 007567b0 mac inlined MissionaryControl::_dt(void)
+    // ~MissionaryControl();
 
     // Non-virtual methods
 

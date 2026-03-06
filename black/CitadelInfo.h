@@ -28,7 +28,7 @@ public:
     // win1.41 004629d0 mac 101bb390 GCitadelInfo::_dt(void)
     virtual ~GCitadelInfo();
     // win1.41 00462980 mac 101bb430 GCitadelInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

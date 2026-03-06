@@ -39,9 +39,9 @@ public:
     // win1.41 004397f0 mac 100b3ec0 Bonfire::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00439a00 mac 100b4800 Bonfire::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00439990 mac 100b48d0 Bonfire::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 004397e0 mac 100b3e80 Bonfire::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 004397c0 mac 100b3dd0 Bonfire::PhysicsEditorCreate(int)
@@ -53,7 +53,7 @@ public:
     // win1.41 00439840 mac 100b4c70 Bonfire::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 00439790 mac 100b3cf0 Bonfire::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 00439780 mac 100b3ca0 Bonfire::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
     // win1.41 004397b0 mac 100b3d80 Bonfire::InteractsWithPhysicsObjects(void)
@@ -63,7 +63,7 @@ public:
     // win1.41 004397a0 mac 100b3d40 Bonfire::CanBecomeAPhysicsObject(void)
     virtual bool CanBecomeAPhysicsObject();
     // win1.41 004398a0 mac 100b49b0 Bonfire::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
     // win1.41 004397d0 mac 100b3e20 Bonfire::GetInHandImmersionTexture(void)
     virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
 };

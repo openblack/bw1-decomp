@@ -28,7 +28,7 @@ public:
     // win1.41 00527910 mac 100d06a0 GFlowersInfo::_dt(void)
     virtual ~GFlowersInfo();
     // win1.41 005278b0 mac 100d15c0 GFlowersInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
 };
 
 #else // __cplusplus

@@ -59,7 +59,7 @@ struct RPlan
     // win1.41 0086e9a0 mac 1061b3ec RPlan::GameTurnUpdate(int)
     void GameTurnUpdate(int param_2);
     // win1.41 0086e0f0 mac 100aef60 RPlan::~RPlan(void)
-    void ~RPlan();
+    ~RPlan();
 };
 
 #else // __cplusplus

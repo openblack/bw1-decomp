@@ -104,7 +104,7 @@ public:
     // win1.41 004e2db0 mac 102676b0 CreatureActionKnownAboutEntry::_dt(void)
     virtual ~CreatureActionKnownAboutEntry();
     // win1.41 004e2d50 mac 10267920 CreatureActionKnownAboutEntry::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 // win1.41 00be9c18 mac inlined CreatureFalling::`RTTI Type Descriptor'

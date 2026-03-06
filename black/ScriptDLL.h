@@ -7,6 +7,18 @@
 #include <lionhead/lhdll/ver1.0/LHDLL.h> /* For struct LHDLL */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
+enum VMType
+{
+  VMType_0 = 0x0,
+  _VMType_COUNT = 0x1
+};
+
+enum VMScriptType
+{
+  VMScriptType_0 = 0x0,
+  _VMScriptType_COUNT = 0x1
+};
+
 #ifdef __cplusplus
 
 // Forward Declares
@@ -22,52 +34,52 @@ class LHTransport;
 class ScriptDLL: public LHDLL
 {
 public:
-    uint32_t field_0x24;
-    uint32_t field_0x28;
-    uint32_t field_0x2c;
-    uint32_t field_0x30;
-    uintptr_t ParseFile;
-    uintptr_t StartScript;
-    uintptr_t FindScript;
-    FuncPtr(name='ScriptDLL__AutoStart', call_type='__cdecl', result='void', args=['struct LHTransport*'], arg_labels=['transport'], decorated_name='ScriptDLL__AutoStart', indirection_level=1) AutoStart; /* 0x40 */
-    uintptr_t StopTask;
-    uintptr_t StopAllTasks;
-    uintptr_t StopTasksOfType;
-    uintptr_t POP; /* 0x50 */
-    uintptr_t PUSH;
-    uintptr_t STRING;
-    FuncPtr(name='ScriptDLL__LoadBinary', call_type='__cdecl', result='int', args=['struct LHTransport*', 'const char*'], arg_labels=['transport', 'path'], decorated_name='ScriptDLL__LoadBinary', indirection_level=1) LoadBinary;
-    uintptr_t SaveBinary; /* 0x60 */
-    uintptr_t SaveState;
-    uintptr_t RestoreState;
-    uintptr_t Reboot;
-    uint32_t NumTasks; /* 0x70 */
-    uint32_t LineNumber;
-    uint32_t TaskNumber;
-    uint32_t TaskName;
-    uint32_t TaskFilename; /* 0x80 */
-    uint32_t GetTaskFilename;
-    uint32_t GetTaskName;
-    uint32_t OpCode;
-    uint32_t GetCurrentScriptType; /* 0x90 */
-    uint32_t GetScriptInstructionCount;
-    uint32_t Mode;
-    uint32_t Type;
-    uint32_t Value; /* 0xa0 */
-    uint32_t OpCodeName;
-    uint32_t StopScripts;
-    uint32_t GetScriptID;
-    uint32_t Version; /* 0xb0 */
-    uint32_t CodeSize;
-    uint32_t GetNextTask;
-    uint32_t GetPreviousTask;
-    uint32_t GetHighestRunningTask; /* 0xc0 */
-    uint32_t GetFirstRunningTaskId;
-    uint32_t LoopTaskVariables;
-    uint32_t LoopGlobalVariables;
-    uint32_t GetScriptType; /* 0xd0 */
-    uint32_t GetGlobalVariableValue;
-    uint32_t field_0xd8;
+    uint32_t field_0x24_ptr;
+    uint32_t field_0x28_ptr;
+    uint32_t field_0x2c_ptr;
+    uint32_t field_0x30_ptr;
+    uintptr_t ParseFile_ptr;
+    uintptr_t StartScript_ptr;
+    uintptr_t FindScript_ptr;
+    void (__cdecl* AutoStart_ptr)(struct LHTransport* transport); /* 0x40 */
+    uintptr_t StopTask_ptr;
+    uintptr_t StopAllTasks_ptr;
+    uintptr_t StopTasksOfType_ptr;
+    uintptr_t POP_ptr; /* 0x50 */
+    uintptr_t PUSH_ptr;
+    uintptr_t STRING_ptr;
+    int (__cdecl* LoadBinary_ptr)(struct LHTransport* transport, const char* path);
+    uintptr_t SaveBinary_ptr; /* 0x60 */
+    uintptr_t SaveState_ptr;
+    uintptr_t RestoreState_ptr;
+    uintptr_t Reboot_ptr;
+    uint32_t NumTasks_ptr; /* 0x70 */
+    uint32_t LineNumber_ptr;
+    uint32_t TaskNumber_ptr;
+    uint32_t TaskName_ptr;
+    uint32_t TaskFilename_ptr; /* 0x80 */
+    uint32_t GetTaskFilename_ptr;
+    uint32_t GetTaskName_ptr;
+    uint32_t OpCode_ptr;
+    uint32_t GetCurrentScriptType_ptr; /* 0x90 */
+    uint32_t GetScriptInstructionCount_ptr;
+    uint32_t Mode_ptr;
+    uint32_t Type_ptr;
+    uint32_t Value_ptr; /* 0xa0 */
+    uint32_t OpCodeName_ptr;
+    uint32_t StopScripts_ptr;
+    uint32_t GetScriptID_ptr;
+    uint32_t Version_ptr; /* 0xb0 */
+    uint32_t CodeSize_ptr;
+    uint32_t GetNextTask_ptr;
+    uint32_t GetPreviousTask_ptr;
+    uint32_t GetHighestRunningTask_ptr; /* 0xc0 */
+    uint32_t GetFirstRunningTaskId_ptr;
+    uint32_t LoopTaskVariables_ptr;
+    uint32_t LoopGlobalVariables_ptr;
+    uint32_t GetScriptType_ptr; /* 0xd0 */
+    uint32_t GetGlobalVariableValue_ptr;
+    uint32_t field_0xd8_ptr;
 
     // Static methods
 
@@ -101,21 +113,10 @@ public:
 
 struct LHTransport;
 
-enum VMType
-{
-  VMType_0 = 0x0,
-  _VMType_COUNT = 0x1
-};
 static_assert(sizeof(enum VMType) == 0x4, "Data type is of wrong size");
 
 static const char* VMType_strs[_VMType_COUNT] = {
   "VMType_0",
-};
-
-enum VMScriptType
-{
-  VMScriptType_0 = 0x0,
-  _VMScriptType_COUNT = 0x1
 };
 static_assert(sizeof(enum VMScriptType) == 0x4, "Data type is of wrong size");
 

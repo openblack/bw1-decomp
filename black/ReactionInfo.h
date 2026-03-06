@@ -51,7 +51,7 @@ public:
     // win1.41 006e0e60 mac 10135410 ReactionInfo::_dt(void)
     virtual ~ReactionInfo();
     // win1.41 006e0e00 mac 101368d0 ReactionInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

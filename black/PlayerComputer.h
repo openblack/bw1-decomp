@@ -32,9 +32,9 @@ public:
     // win1.41 0055e300 mac 104a4bc0 GComputerAttitudeToPlayer::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006587d0 mac 104a5760 GComputerAttitudeToPlayer::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00658830 mac 104a5670 GComputerAttitudeToPlayer::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055e2f0 mac 104a4b70 GComputerAttitudeToPlayer::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
@@ -58,9 +58,9 @@ public:
     // win1.41 0055e380 mac 104abef0 GComputerPlayer::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006579a0 mac 104a7010 GComputerPlayer::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00657640 mac 104a7bc0 GComputerPlayer::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055e370 mac 104abeb0 GComputerPlayer::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00657cd0 mac 104a6f30 GComputerPlayer::SaveExtraData(GameOSFile &)
@@ -90,9 +90,9 @@ public:
     // win1.41 00561c20 mac 104be870 GComputerPlayerQueue::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00664660 mac 104beaa0 GComputerPlayerQueue::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00664530 mac 104bed40 GComputerPlayerQueue::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00561c10 mac 104be830 GComputerPlayerQueue::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
@@ -112,9 +112,9 @@ public:
     // win1.41 0055e340 mac 104ac100 GComputerSeen::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00656bf0 mac 104a9840 GComputerSeen::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00656b80 mac 104a9930 GComputerSeen::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055e330 mac 104ac0c0 GComputerSeen::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
@@ -134,9 +134,9 @@ public:
     // win1.41 005614a0 mac 104c0fd0 GComputerSpellCast::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00665c00 mac 104c2930 GComputerSpellCast::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00665b90 mac 104c2a20 GComputerSpellCast::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00561490 mac 104c0f90 GComputerSpellCast::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
@@ -158,9 +158,9 @@ public:
     // win1.41 006508e0 mac 1049aee0 PlayerActionState::GetPlayer(void)
     virtual GPlayer* GetPlayer();
     // win1.41 00651a20 mac 10498ce0 PlayerActionState::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00651740 mac 104993e0 PlayerActionState::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055e290 mac 1049d660 PlayerActionState::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00651d20 mac 10498c00 PlayerActionState::SaveExtraData(GameOSFile &)
@@ -182,9 +182,9 @@ public:
     // win1.41 0055e210 mac 1049a870 PlayerSubAction::_dt(void)
     virtual ~PlayerSubAction();
     // win1.41 00651e70 mac 104985c0 PlayerSubAction::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00651d80 mac 10498a40 PlayerSubAction::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055e200 mac 1049d540 PlayerSubAction::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
@@ -202,9 +202,9 @@ public:
     // win1.41 0055e1c0 mac 10497ca0 PlayerSubActionArgument::_dt(void)
     virtual ~PlayerSubActionArgument();
     // win1.41 00652140 mac 10497ea0 PlayerSubActionArgument::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00651f80 mac 10498220 PlayerSubActionArgument::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055e1b0 mac 10497c50 PlayerSubActionArgument::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

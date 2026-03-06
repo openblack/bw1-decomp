@@ -8,13 +8,13 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
-#ifdef __cplusplus
-
 enum DANCE_GROUP_ACTION_TYPE
 {
   DANCE_GROUP_ACTION_TYPE_0 = 0x0,
   _DANCE_GROUP_ACTION_TYPE_COUNT = 0x1
 };
+
+#ifdef __cplusplus
 
 // Forward Declares
 
@@ -44,9 +44,9 @@ public:
     // win1.41 0050cef0 mac 102aaa60 DanceGroup::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0050d9c0 mac 102aab20 DanceGroup::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0050d640 mac 102ab450 DanceGroup::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0050cee0 mac 102aaa20 DanceGroup::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

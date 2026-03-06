@@ -37,9 +37,9 @@ public:
     // win1.41 0055d210 mac 10520090 SpellForest::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00725d50 mac 105200d0 SpellForest::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00725c90 mac 10520200 SpellForest::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055d200 mac 10520050 SpellForest::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00725730 mac 10520d80 SpellForest::HasEnoughChantsAndLifeForRecast(void)

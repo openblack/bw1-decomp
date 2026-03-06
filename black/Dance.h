@@ -52,9 +52,9 @@ public:
     // win1.41 0050b760 mac 102a81f0 Dance::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0050c760 mac 102a85a0 Dance::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0050c480 mac 102a8960 Dance::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0050b750 mac 102a81c0 Dance::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0050cb40 mac inlined Dance::GetArrivePos(MapCoords *)

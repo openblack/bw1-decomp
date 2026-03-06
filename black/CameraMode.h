@@ -7,14 +7,6 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
-#ifdef __cplusplus
-
-// Forward Declares
-
-class GCamera;
-class GameOSFile;
-struct LHCoord;
-
 enum CAMERA_MODE_HAND_STATUS
 {
   CAMERA_MODE_HAND_STATUS_NORMAL = 0x0,
@@ -36,6 +28,14 @@ enum CAMERA_MODE_MOUSE_STATUS
   CAMERA_MODE_MOUSE_STATUS_MIDDLE = 0x2,
   _CAMERA_MODE_MOUSE_STATUS_COUNT = 0x3
 };
+
+#ifdef __cplusplus
+
+// Forward Declares
+
+class GCamera;
+class GameOSFile;
+struct LHCoord;
 
 // win1.41 009cd390 mac inlined CameraMode::`RTTI Type Descriptor'
 // win1.41 009a88a8 mac inlined CameraMode::`RTTI Base Class Descriptor'
@@ -65,8 +65,8 @@ public:
     virtual void Delete(); /* 0x30 */
     virtual bool Arrived();
     virtual uint32_t GetSaveID();
-    virtual void Load(GameOSFile* param_2);
-    virtual void Save(GameOSFile* param_2); /* 0x40 */
+    virtual void Load(GameOSFile& param_2);
+    virtual void Save(GameOSFile& param_2); /* 0x40 */
     virtual const char* GetDebugName();
 };
 

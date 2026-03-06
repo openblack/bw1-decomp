@@ -47,7 +47,7 @@ public:
     // win1.41 00468ef0 mac 101bbce0 CitadelEntrance::InterfaceTap(GInterfaceStatus *)
     virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
     // win1.41 00468e50 mac 101bb520 CitadelEntrance::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 };
 
 #else // __cplusplus

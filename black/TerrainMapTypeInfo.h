@@ -33,7 +33,7 @@ public:
     // win1.41 0054bf00 mac 10512cc0 TerrainMapTypeInfo::_dt(void)
     virtual ~TerrainMapTypeInfo();
     // win1.41 0054bd70 mac 10588760 TerrainMapTypeInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

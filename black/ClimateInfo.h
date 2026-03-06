@@ -27,7 +27,7 @@ public:
     // win1.41 00770ff0 mac 105a16b0 GClimateInfo::_dt(void)
     virtual ~GClimateInfo();
     // win1.41 00770f80 mac 105a3780 GClimateInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

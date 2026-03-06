@@ -32,9 +32,9 @@ public:
     // win1.41 0055cfc0 mac 1051feb0 SpellResource::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007252f0 mac 1051f230 SpellResource::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00725350 mac 1051f150 SpellResource::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055cfb0 mac 1051fe70 SpellResource::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00724c90 mac 1051fc70 SpellResource::HasEnoughChantsAndLifeForRecast(void)

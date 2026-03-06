@@ -6,6 +6,16 @@
 #include <stdint.h> /* For uint8_t */
 #include <uchar.h> /* For char16_t */
 
+enum TEXTJUSTIFY
+{
+  TEXTJUSTIFY_LEFT = 0x0,
+  TEXTJUSTIFY_CENTRE = 0x1,
+  TEXTJUSTIFY_RIGHT = 0x2,
+  TEXTJUSTIFY_LEFT_BREAK = 0x3,
+  TEXTJUSTIFY_CENTRE_BREAK = 0x4,
+  _TEXTJUSTIFY_COUNT = 0x5
+};
+
 #ifdef __cplusplus
 
 // Forward Declares
@@ -32,15 +42,6 @@ struct GatheringText
 
 struct LH3DColor;
 
-enum TEXTJUSTIFY
-{
-  TEXTJUSTIFY_LEFT = 0x0,
-  TEXTJUSTIFY_CENTRE = 0x1,
-  TEXTJUSTIFY_RIGHT = 0x2,
-  TEXTJUSTIFY_LEFT_BREAK = 0x3,
-  TEXTJUSTIFY_CENTRE_BREAK = 0x4,
-  _TEXTJUSTIFY_COUNT = 0x5
-};
 static_assert(sizeof(enum TEXTJUSTIFY) == 0x4, "Data type is of wrong size");
 
 static const char* TEXTJUSTIFY_strs[_TEXTJUSTIFY_COUNT] = {

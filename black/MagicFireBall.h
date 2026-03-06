@@ -50,33 +50,33 @@ public:
     // win1.41 00682b40 mac 103fd410 MagicFireBall::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00683320 mac 103fb710 MagicFireBall::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006832b0 mac 103fb800 MagicFireBall::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00682b30 mac 103fd3d0 MagicFireBall::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00682a50 mac 103fcf70 MagicFireBall::IsMagicFireBall(void)
-    virtual uint32_t IsMagicFireBall();
+    virtual bool IsMagicFireBall();
     // win1.41 00682a80 mac 103fd050 MagicFireBall::CanBePickedUpByCreature(Creature *)
-    virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+    virtual bool CanBePickedUpByCreature(Creature* param_1);
     // win1.41 00682a90 mac 103fd0a0 MagicFireBall::CanBeSetOnFire(Creature *)
-    virtual uint32_t CanBeSetOnFire(Creature* param_1);
+    virtual bool CanBeSetOnFire(Creature* param_1);
     // win1.41 00682aa0 mac 103fd0f0 MagicFireBall::CanBeStompedOnByCreature(Creature *)
-    virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
+    virtual bool CanBeStompedOnByCreature(Creature* param_1);
     // win1.41 00682ab0 mac 103fd140 MagicFireBall::CanBeThrownByCreature(Creature *)
-    virtual uint32_t CanBeThrownByCreature(Creature* param_1);
+    virtual bool CanBeThrownByCreature(Creature* param_1);
     // win1.41 00682ac0 mac 103fd190 MagicFireBall::CanBePutInAStoragePit(Creature *)
-    virtual uint32_t CanBePutInAStoragePit(Creature* param_1);
+    virtual bool CanBePutInAStoragePit(Creature* param_1);
     // win1.41 00682ad0 mac 103fd1e0 MagicFireBall::CanBeDestroyedByStoning(Creature *)
-    virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
+    virtual bool CanBeDestroyedByStoning(Creature* param_1);
     // win1.41 00682ae0 mac 103fd230 MagicFireBall::CanBeStonedAndEatenByCreature(Creature *)
-    virtual uint32_t CanBeStonedAndEatenByCreature(Creature* param_1);
+    virtual bool CanBeStonedAndEatenByCreature(Creature* param_1);
     // win1.41 00682af0 mac 103fd290 MagicFireBall::CanBeExaminedByCreature(Creature *)
-    virtual uint32_t CanBeExaminedByCreature(Creature* param_1);
+    virtual bool CanBeExaminedByCreature(Creature* param_1);
     // win1.41 00682b00 mac 103fd2e0 MagicFireBall::CanBeFoughtByCreature(Creature *)
-    virtual uint32_t CanBeFoughtByCreature(Creature* param_1);
+    virtual bool CanBeFoughtByCreature(Creature* param_1);
     // win1.41 00682b10 mac 103fd330 MagicFireBall::CanActAsAContainer(Creature *)
-    virtual uint32_t CanActAsAContainer(Creature* param_1);
+    virtual bool CanActAsAContainer(Creature* param_1);
     // win1.41 00682d30 mac 103fc650 MagicFireBall::GetHeight(void)
     virtual float GetHeight();
     // win1.41 00682d10 mac 103fc710 MagicFireBall::InsertMapObject(void)
@@ -90,11 +90,11 @@ public:
     // win1.41 00682f20 mac 103fc010 MagicFireBall::Draw(void)
     virtual void Draw();
     // win1.41 00682dd0 mac 103fc3d0 MagicFireBall::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 00682e80 mac 103fc040 MagicFireBall::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 00682a40 mac 103fcf30 MagicFireBall::IsTuggable(void)
-    virtual uint32_t IsTuggable();
+    virtual bool IsTuggable();
     // win1.41 00682e40 mac 103fc2d0 MagicFireBall::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
     // win1.41 00682e50 mac 103fc190 MagicFireBall::InterfaceTap(GInterfaceStatus *)
@@ -104,7 +104,7 @@ public:
     // win1.41 00682a70 mac 103fd000 MagicFireBall::CanBecomeAPhysicsObject(void)
     virtual bool CanBecomeAPhysicsObject();
     // win1.41 00682b20 mac 103fd380 MagicFireBall::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
     // Constructors
 

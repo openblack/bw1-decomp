@@ -56,9 +56,9 @@ public:
     // win1.41 0055d750 mac 103b9760 MobileStatic::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00608590 mac 103c1060 MobileStatic::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00608650 mac 103c0f20 MobileStatic::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055d740 mac 103b9720 MobileStatic::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055d720 mac 103af140 MobileStatic::PhysicsEditorCreate(int)
@@ -66,37 +66,37 @@ public:
     // win1.41 00608b10 mac 103c03d0 MobileStatic::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
     // win1.41 00439700 mac 100b4650 MobileStatic::IsCastShadowAtNight(void)
-    virtual uint32_t IsCastShadowAtNight();
+    virtual bool IsCastShadowAtNight();
     // win1.41 004e48d0 mac 105e48e0 MobileStatic::CanBeEatenByCreature(Creature *)
-    virtual uint32_t CanBeEatenByCreature(Creature* param_1);
+    virtual bool CanBeEatenByCreature(Creature* param_1);
     // win1.41 00439640 mac 100b4190 MobileStatic::CanBePlayedWithByCreature(Creature *)
-    virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
+    virtual bool CanBePlayedWithByCreature(Creature* param_1);
     // win1.41 004e4cc0 mac 105e3bc0 MobileStatic::CanBePickedUpByCreature(Creature *)
-    virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+    virtual bool CanBePickedUpByCreature(Creature* param_1);
     // win1.41 00439630 mac 100b4140 MobileStatic::CanBeStompedOnByCreature(Creature *)
-    virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
+    virtual bool CanBeStompedOnByCreature(Creature* param_1);
     // win1.41 004e4c40 mac 105e3cd0 MobileStatic::IsToyAwayFromHome(Creature *)
-    virtual uint32_t IsToyAwayFromHome(Creature* param_1);
+    virtual bool IsToyAwayFromHome(Creature* param_1);
     // win1.41 00609020 mac 103bf7d0 MobileStatic::IsToy(Creature *)
-    virtual uint32_t IsToy(Creature* param_1);
+    virtual bool IsToy(Creature* param_1);
     // win1.41 00609050 mac 103bf750 MobileStatic::IsToyBall(Creature *)
-    virtual uint32_t IsToyBall(Creature* param_1);
+    virtual bool IsToyBall(Creature* param_1);
     // win1.41 00609070 mac 103bf6d0 MobileStatic::IsToyDie(Creature *)
-    virtual uint32_t IsToyDie(Creature* param_1);
+    virtual bool IsToyDie(Creature* param_1);
     // win1.41 00609090 mac 103bf650 MobileStatic::IsToyCuddly(Creature *)
-    virtual uint32_t IsToyCuddly(Creature* param_1);
+    virtual bool IsToyCuddly(Creature* param_1);
     // win1.41 00609110 mac 1004d490 MobileStatic::IsFence(void)
-    virtual uint32_t IsFence();
+    virtual bool IsFence();
     // win1.41 004396d0 mac 100b4580 MobileStatic::CanBeUsedForThrowingDamageByCreature(Creature *)
-    virtual uint32_t CanBeUsedForThrowingDamageByCreature(Creature* param_1);
+    virtual bool CanBeUsedForThrowingDamageByCreature(Creature* param_1);
     // win1.41 00439650 mac 100b41e0 MobileStatic::CanBeThrownInTheSeaPlayfully(Creature *)
-    virtual uint32_t CanBeThrownInTheSeaPlayfully(Creature* param_1);
+    virtual bool CanBeThrownInTheSeaPlayfully(Creature* param_1);
     // win1.41 0055d710 mac 103af0f0 MobileStatic::GetCreatureMimicType(void)
     virtual uint32_t GetCreatureMimicType();
     // win1.41 004d1af0 mac 10243160 MobileStatic::GetHowMuchCreatureWantsToLookAtMe(void)
     virtual float GetHowMuchCreatureWantsToLookAtMe();
     // win1.41 004396f0 mac 100b4610 MobileStatic::IsMobileStatic(void)
-    virtual uint32_t IsMobileStatic();
+    virtual bool IsMobileStatic();
     // win1.41 00609330 mac 10008460 MobileStatic::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 00439610 mac 100b40c0 MobileStatic::GetXAngle(void)
@@ -114,7 +114,7 @@ public:
     // win1.41 00609230 mac 10097510 MobileStatic::GetHoldLoweringMultiplier(void)
     virtual float GetHoldLoweringMultiplier();
     // win1.41 00439680 mac 100b42d0 MobileStatic::GetMesh( const(void))
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 00517f60 mac 10042f50 MobileStatic::Draw(void)
     virtual void Draw();
     // win1.41 00439670 mac 100b4280 MobileStatic::CanBePickedUp(void)
@@ -128,7 +128,7 @@ public:
     // win1.41 006096d0 mac 103be450 MobileStatic::GetDefaultResource(void)
     virtual int GetDefaultResource();
     // win1.41 0055d730 mac 103c12f0 MobileStatic::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 00608bb0 mac 103c0120 MobileStatic::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
     // win1.41 00608c30 mac 103bff70 MobileStatic::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
@@ -146,9 +146,9 @@ public:
     // win1.41 006090b0 mac 103bf550 MobileStatic::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 00609260 mac 103beff0 MobileStatic::ChecksVerticesVObjects(void)
-    virtual uint32_t ChecksVerticesVObjects();
+    virtual bool ChecksVerticesVObjects();
     // win1.41 00609210 mac 103bf080 MobileStatic::PhysicallyDestroysAbodes(void)
-    virtual uint32_t PhysicallyDestroysAbodes();
+    virtual bool PhysicallyDestroysAbodes();
     // win1.41 00608fc0 mac 103bf8c0 MobileStatic::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 00609320 mac 103bee30 MobileStatic::CanBecomeAPhysicsObject(void)
@@ -156,13 +156,13 @@ public:
     // win1.41 00609010 mac 103bf860 MobileStatic::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 00608ac0 mac 103c0450 MobileStatic::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
+    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int, Point2D, float, int));
     // win1.41 00439690 mac 100b4420 MobileStatic::IsSolidToNewAbode(void)
-    virtual uint32_t IsSolidToNewAbode();
+    virtual bool IsSolidToNewAbode();
     // win1.41 00439660 mac 100b4240 MobileStatic::GetTastiness(void)
     virtual uint32_t GetTastiness();
     // win1.41 006088e0 mac 103c0530 MobileStatic::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 
     // Constructors
 
@@ -193,7 +193,7 @@ public:
     // win1.41 006093a0 mac 103beb00 GBaseOnly::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 006095e0 mac 103be5b0 GBaseOnly::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 };
 
 #else // __cplusplus

@@ -16,6 +16,19 @@
 #include "PlayerInfo.h" /* For enum PLAYER_TYPE */
 #include "Town.h" /* For struct Town */
 
+enum PLAYER_NAME
+{
+  PLAYER_NAME_PLAYER_ONE = 0x0,
+  PLAYER_NAME_PLAYER_TWO = 0x1,
+  PLAYER_NAME_PLAYER_THREE = 0x2,
+  PLAYER_NAME_PLAYER_FOUR = 0x3,
+  PLAYER_NAME_PLAYER_FIVE = 0x4,
+  PLAYER_NAME_PLAYER_SIX = 0x5,
+  PLAYER_NAME_PLAYER_SEVEN = 0x6,
+  PLAYER_NAME_NEUTRAL = 0x7,
+  _PLAYER_NAME_COUNT = 0x8
+};
+
 #ifdef __cplusplus
 
 // Forward Declares
@@ -89,7 +102,7 @@ public:
     GameStats* game_stats; /* 0xa44 */
     Citadel* citadel;
     Creature* creature;
-    LHListHead__Town towns; /* 0xa50 */
+    LHListHead<Town> towns; /* 0xa50 */
     uint32_t field_0xa58;
     uint32_t field_0xa5c;
 
@@ -163,18 +176,6 @@ struct GameStats;
 struct PSysProcessInfo;
 struct Spell;
 
-enum PLAYER_NAME
-{
-  PLAYER_NAME_PLAYER_ONE = 0x0,
-  PLAYER_NAME_PLAYER_TWO = 0x1,
-  PLAYER_NAME_PLAYER_THREE = 0x2,
-  PLAYER_NAME_PLAYER_FOUR = 0x3,
-  PLAYER_NAME_PLAYER_FIVE = 0x4,
-  PLAYER_NAME_PLAYER_SIX = 0x5,
-  PLAYER_NAME_PLAYER_SEVEN = 0x6,
-  PLAYER_NAME_NEUTRAL = 0x7,
-  _PLAYER_NAME_COUNT = 0x8
-};
 static_assert(sizeof(enum PLAYER_NAME) == 0x4, "Data type is of wrong size");
 
 static const char* PLAYER_NAME_strs[_PLAYER_NAME_COUNT] = {

@@ -34,9 +34,9 @@ public:
     // win1.41 0055d010 mac 1051ef50 SpellWater::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007253b0 mac 1051f070 SpellWater::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00725420 mac 1051ef90 SpellWater::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055d000 mac 1051ef10 SpellWater::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00724ed0 mac 1051f310 SpellWater::Process(void)

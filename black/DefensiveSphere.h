@@ -31,9 +31,9 @@ public:
     // win1.41 006d0cf0 mac 10417650 DefensiveSphere::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00699cd0 mac 104179f0 DefensiveSphere::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006d06b0 mac 1047f3d0 DefensiveSphere::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 006d0ce0 mac 10417610 DefensiveSphere::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

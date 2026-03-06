@@ -31,9 +31,9 @@ public:
     // win1.41 0055d820 mac 103b2cb0 VortexObjectInfo::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00600bf0 mac 103b2d00 VortexObjectInfo::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00600ad0 mac 103b3000 VortexObjectInfo::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055d810 mac 103b2c70 VortexObjectInfo::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

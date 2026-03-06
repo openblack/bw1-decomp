@@ -27,7 +27,7 @@ public:
     // win1.41 00437db0 mac 100b22b0 GBeliefInfo::_dt(void)
     virtual ~GBeliefInfo();
     // win1.41 00437d60 mac 100b2260 GBeliefInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

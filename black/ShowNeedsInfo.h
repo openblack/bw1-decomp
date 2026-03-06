@@ -31,9 +31,9 @@ public:
     // win1.41 00719a80 mac 10146040 GShowNeedsInfo::_dt(void)
     virtual ~GShowNeedsInfo();
     // win1.41 00719a10 mac 101461f0 GShowNeedsInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 00719a00 mac 10144960 GShowNeedsInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
 };
 
 #else // __cplusplus

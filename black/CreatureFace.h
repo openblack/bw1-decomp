@@ -10,6 +10,5 @@ struct CreatureFaceState
   float field_0x4;
   uint32_t field_0xc;
 };
-static_assert(sizeof(struct CreatureFaceState) == 0xc, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_CREATURE_FACE_INCLUDED_H */

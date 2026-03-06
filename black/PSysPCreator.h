@@ -91,7 +91,7 @@ public:
     // win1.41 006c8120 mac 104230f0 RenderParticleGameObjectRef::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006957e0 mac 1041c390 RenderParticleGameObjectRef::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
 };
 
 // win1.41 00bed5b0 mac inlined RenderParticleGoldenShower::`RTTI Type Descriptor'

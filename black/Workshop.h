@@ -52,23 +52,23 @@ public:
     // win1.41 0077a630 mac 10161f20 Workshop::GetShowNeedsPos(unsigned long, MapCoords *)
     virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
     // win1.41 0077a130 mac 101625f0 Workshop::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00779f40 mac 101629d0 Workshop::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00779300 mac 10164920 Workshop::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0077a330 mac 101625a0 Workshop::ResolveLoad(void)
     virtual void ResolveLoad();
     // win1.41 007792e0 mac 10164890 Workshop::CanActAsAContainer(Creature *)
-    virtual uint32_t CanActAsAContainer(Creature* param_1);
+    virtual bool CanActAsAContainer(Creature* param_1);
     // win1.41 007792f0 mac 101648e0 Workshop::IsStoragePit(Creature *)
-    virtual uint32_t IsStoragePit(Creature* param_1);
+    virtual bool IsStoragePit(Creature* param_1);
     // win1.41 007792c0 mac inlined Workshop::IsWorkshop_0(void)
-    virtual uint32_t IsWorkshop_0();
+    virtual bool IsWorkshop();
     // win1.41 007792d0 mac inlined Workshop::IsWorkshop_1(Creature *)
-    virtual uint32_t IsWorkshop_1(Creature* param_1);
+    virtual bool IsWorkshop(Creature* param_1);
     // win1.41 0077a6d0 mac 10161cd0 Workshop::CreateBuildingSite(void)
-    virtual uint32_t CreateBuildingSite();
+    virtual bool CreateBuildingSite();
     // win1.41 0077a610 mac 10161f90 Workshop::ScaffoldMoved(Scaffold *)
     virtual void ScaffoldMoved(Scaffold* param_1);
     // win1.41 007797f0 mac 10163a50 Workshop::Process(void)

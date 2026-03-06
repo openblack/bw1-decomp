@@ -31,9 +31,9 @@ public:
     // win1.41 0055f440 mac 1041f940 SpellPointInf::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00698240 mac 104192e0 SpellPointInf::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006ced60 mac 10480d70 SpellPointInf::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055f430 mac 1041f900 SpellPointInf::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

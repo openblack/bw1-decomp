@@ -41,7 +41,7 @@ public:
     // win1.41 006708b0 mac inlined PrayerSite::Process(void)
     virtual uint32_t Process();
     // win1.41 006707f0 mac inlined PrayerSite::GetMesh( const(void))
-    virtual int GetMesh();
+    virtual int GetMesh() const;
     // win1.41 00670a10 mac inlined PrayerSite::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
 };

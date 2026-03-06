@@ -15,6 +15,11 @@
 
 class GameThingWithPos;
 
+struct CreatureHelpState__field_0x88
+{
+  uint8_t field_0x0;
+};
+
 struct CreatureHelpState
 {
     uint32_t field_0x0;
@@ -24,7 +29,7 @@ struct CreatureHelpState
     uint32_t field_0x10[0xc];
     uint32_t field_0x40[0xc];
     uint32_t field_0x70[0x6];
-    GJVector__CreatureHelpState__field_0x88 field_0x88;
+    GJVector<CreatureHelpState__field_0x88*> field_0x88;
 
     // Constructors
 

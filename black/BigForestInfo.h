@@ -31,7 +31,7 @@ public:
     // win1.41 00438cb0 mac 100b33d0 GBigForestInfo::_dt(void)
     virtual ~GBigForestInfo();
     // win1.41 00438c50 mac 100b2530 GBigForestInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
 };
 
 #else // __cplusplus

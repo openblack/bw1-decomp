@@ -49,15 +49,15 @@ public:
     // win1.41 00531320 mac 102b8870 Football::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005336e0 mac 102b89e0 Football::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 005332a0 mac 102b9230 Football::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00531310 mac 102b8830 Football::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00531180 mac 102bd4d0 Football::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
     // win1.41 00531280 mac 102b8610 Football::IsFootball(void)
-    virtual uint32_t IsFootball();
+    virtual bool IsFootball();
     // win1.41 00531e40 mac 102bc020 Football::ReduceLife(float, GPlayer *)
     virtual void ReduceLife(float param_1, GPlayer* param_2);
     // win1.41 00533e40 mac 102be320 Football::Process(void)

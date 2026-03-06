@@ -38,9 +38,9 @@ public:
     // win1.41 0050ebc0 mac 102ace60 DanceKeyFrame::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0050f2f0 mac 102acea0 DanceKeyFrame::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 0050f1c0 mac 102ad2b0 DanceKeyFrame::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0050ebb0 mac 102ace20 DanceKeyFrame::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

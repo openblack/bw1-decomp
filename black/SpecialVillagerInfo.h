@@ -38,7 +38,7 @@ public:
     // win1.41 0071f880 mac 10146650 GSpecialVillagerInfo::_dt(void)
     virtual ~GSpecialVillagerInfo();
     // win1.41 0071ee80 mac 101463b0 GSpecialVillagerInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

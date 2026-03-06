@@ -27,7 +27,7 @@ public:
     // win1.41 005cd150 mac 100fd4f0 GInfluenceInfo::_dt(void)
     virtual ~GInfluenceInfo();
     // win1.41 005cd110 mac 100fd4a0 GInfluenceInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
 };
 
 #else // __cplusplus

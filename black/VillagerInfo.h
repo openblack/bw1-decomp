@@ -120,9 +120,9 @@ public:
     // win1.41 0074f900 mac 1056bfe0 GVillagerInfo::_dt(void)
     virtual ~GVillagerInfo();
     // win1.41 0074f890 mac 10571e90 GVillagerInfo::GetBaseInfo(unsigned long &)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 0074f880 mac 10571e50 GVillagerInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual uint32_t GetMesh() const;
 
     // Static methods
 

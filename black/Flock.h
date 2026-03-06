@@ -73,9 +73,9 @@ public:
     // win1.41 0052f910 mac 100e37a0 Flock::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00530930 mac 100e3880 Flock::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 005305a0 mac 100e40b0 Flock::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0052f900 mac 100e3770 Flock::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0052f8a0 mac 100e3580 Flock::GetCreatureBeliefType(void)

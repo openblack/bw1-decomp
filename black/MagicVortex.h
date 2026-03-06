@@ -100,9 +100,9 @@ public:
     // win1.41 005fd7a0 mac 103b99f0 LandscapeVortexIn::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00600550 mac 103b3a80 LandscapeVortexIn::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00600460 mac 103b3b80 LandscapeVortexIn::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 005fd790 mac 103b99b0 LandscapeVortexIn::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005fd970 mac 103b8540 LandscapeVortexIn::GetPhysicsConstantsType(void)
@@ -134,9 +134,9 @@ public:
     // win1.41 005fddd0 mac 103b98a0 LandscapeVortexOut::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00600880 mac 103b3300 LandscapeVortexOut::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00600630 mac 103b3690 LandscapeVortexOut::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 005fddc0 mac 103b9860 LandscapeVortexOut::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005fdfe0 mac 103b77f0 LandscapeVortexOut::SetTown(Town *)

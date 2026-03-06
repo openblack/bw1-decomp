@@ -31,9 +31,9 @@ public:
     // win1.41 0055f0d0 mac 10422da0 ParticleChainJoint::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006959d0 mac 1041c0e0 ParticleChainJoint::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006cc540 mac 10483800 ParticleChainJoint::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055f0c0 mac 10422d60 ParticleChainJoint::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

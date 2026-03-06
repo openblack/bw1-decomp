@@ -32,14 +32,13 @@ struct GNetwork
     LHSession* session; /* 0x10 */
 
     // Static methods
-
-    // win1.41 006349f0 mac 1010bff0 GNetwork::ProcessOnePacket(void)
-    static bool ProcessOnePacket(GNetwork* this);
     // win1.41 006345e0 mac 10017240 GNetwork::ResetStateDebug(void)
     static void ResetStateDebug();
 
     // Non-virtual methods
 
+    // win1.41 006349f0 mac 1010bff0 GNetwork::ProcessOnePacket(void)
+    bool ProcessOnePacket();
     // win1.41 00635290 mac 100229f0 GNetwork::ProcessOneSuperpacket(void)
     uint32_t ProcessOneSuperpacket();
 };

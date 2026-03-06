@@ -39,15 +39,15 @@ public:
     // win1.41 00600de0 mac 103b9fe0 MagicWood::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00600f60 mac 103ba020 MagicWood::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00600f20 mac 103ba0b0 MagicWood::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00600dd0 mac 103b9fa0 MagicWood::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00600db0 mac 103b9f10 MagicWood::GetImpressiveType(void)
     virtual IMPRESSIVE_TYPE GetImpressiveType();
     // win1.41 00600dc0 mac 103b9f50 MagicWood::IsAWoodPileOutsideStoragePit(Creature *)
-    virtual uint32_t IsAWoodPileOutsideStoragePit(Creature* param_1);
+    virtual bool IsAWoodPileOutsideStoragePit(Creature* param_1);
     // win1.41 00600f10 mac 103ba140 MagicWood::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
 };

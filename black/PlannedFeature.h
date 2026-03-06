@@ -32,9 +32,9 @@ public:
     // win1.41 00527490 mac 100d16e0 PlannedFeature::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00527580 mac 100d0f60 PlannedFeature::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 00527550 mac 100d0ff0 PlannedFeature::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00527480 mac 100d16a0 PlannedFeature::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005274d0 mac 100d1080 PlannedFeature::CreatePlanned(float)

@@ -56,9 +56,9 @@ public:
     // win1.41 0055e140 mac 1013e6d0 Scaffold::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006ea3d0 mac 10140100 Scaffold::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 006ea240 mac 10140340 Scaffold::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 0055e130 mac 1013e690 Scaffold::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006ea560 mac 1013ffc0 Scaffold::ResolveLoad(void)
@@ -72,13 +72,13 @@ public:
     // win1.41 006ea9e0 mac 1013f670 Scaffold::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
     virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
     // win1.41 004e3fc0 mac 105e6330 Scaffold::CanBePickedUpByCreature(Creature *)
-    virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
+    virtual bool CanBePickedUpByCreature(Creature* param_1);
     // win1.41 004e3ff0 mac 105e6220 Scaffold::CanBeStolenByCreature(Creature *)
-    virtual uint32_t CanBeStolenByCreature(Creature* param_1);
+    virtual bool CanBeStolenByCreature(Creature* param_1);
     // win1.41 004e4070 mac 105e6100 Scaffold::IsStealableScaffold(Creature *)
-    virtual uint32_t IsStealableScaffold(Creature* param_1);
+    virtual bool IsStealableScaffold(Creature* param_1);
     // win1.41 0055e100 mac 1013e5d0 Scaffold::IsScaffold(void)
-    virtual uint32_t IsScaffold();
+    virtual bool IsScaffold();
     // win1.41 006eab60 mac 1013f280 Scaffold::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 006e9890 mac 10141590 Scaffold::ActualMoveMapObject(MapCoords const &)
@@ -96,11 +96,11 @@ public:
     // win1.41 006e9d30 mac 10140dd0 Scaffold::GetDefaultResource(void)
     virtual int GetDefaultResource();
     // win1.41 006e96a0 mac 10141b10 Scaffold::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 006e96e0 mac 101419a0 Scaffold::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 006e9770 mac 10141720 Scaffold::InterfaceSetOutMagicHand(GInterfaceStatus *)
-    virtual uint32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
+    virtual bool InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
     // win1.41 006e9900 mac 101413a0 Scaffold::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
     // win1.41 006e99e0 mac 10141130 Scaffold::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
@@ -128,7 +128,7 @@ public:
     // win1.41 006e8570 mac 101436c0 Scaffold::ProcessInHand(void)
     virtual bool ProcessInHand();
     // win1.41 006eaf30 mac 1013e710 Scaffold::SaveObject(LHOSFile &, MapCoords const &)
-    virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };
 
 #else // __cplusplus

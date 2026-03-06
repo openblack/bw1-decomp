@@ -47,9 +47,9 @@ public:
     // win1.41 00426470 mac 100aeac0 TownArtifact::SetVillagerActivity(Villager *)
     virtual uint32_t SetVillagerActivity(Villager* param_1);
     // win1.41 004266c0 mac 100ae750 TownArtifact::Load(GameOSFile &)
-    virtual bool Load(GameOSFile* param_1);
+    virtual bool Load(GameOSFile& param_1);
     // win1.41 004265a0 mac 100ae900 TownArtifact::Save(GameOSFile &)
-    virtual bool Save(GameOSFile* param_1);
+    virtual bool Save(GameOSFile& param_1);
     // win1.41 00425d70 mac 100ae0b0 TownArtifact::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
