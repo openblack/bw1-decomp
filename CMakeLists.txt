@@ -2,6 +2,14 @@ cmake_minimum_required(VERSION 3.30)
 
 include(FetchContent)
 
+# Get Headers for clang to compile C
+# TODO: Remove when we get rid of C code
+FetchContent_Declare(
+  clang_headers
+  URL      https://mirror.msys2.org/mingw/clang64/mingw-w64-clang-x86_64-headers-13.0.0.r560.g3197fc7d6-1-any.pkg.tar.zst
+  URL_HASH SHA256=f7e428cf2433ba84e85ad71bff7b8aba7521befc96697c971fe78cabd0ccc063
+)
+
 # Get Wibo for linux
 FetchContent_Declare(
   wibo
@@ -21,7 +29,7 @@ FetchContent_Declare(
   URL      https://files.decomp.dev/msvcrt_20251015.zip
   URL_HASH MD5=1f84931808879d1be51b36e91ecbda3f
 )
-FetchContent_MakeAvailable(wibo msvc_compiler msvcrt)
+FetchContent_MakeAvailable(clang_headers wibo msvc_compiler msvcrt)
 
 find_package(Python3 REQUIRED)
 
@@ -931,8 +939,7 @@ target_include_directories(common_compile_options
 if (CMAKE_HOST_WIN32)
     target_include_directories(common_compile_options
         INTERFACE
-            $<IF:$<COMPILE_LANGUAGE:C>,C:/msys64/clang64/include,>
-            $<IF:$<COMPILE_LANGUAGE:C>,D:/msys64/clang64/include,>
+            $<IF:$<COMPILE_LANGUAGE:C>,${clang_headers_SOURCE_DIR}/clang64/include,>
     )
 else()
     target_include_directories(common_compile_options
