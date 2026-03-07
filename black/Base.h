@@ -7,6 +7,62 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct Archive;
+class BaseInfo;
+struct LHPoint;
+
+// win1.41 009c7e80 mac inlined Base::`RTTI Type Descriptor'
+// win1.41 009a6308 mac inlined Base::`RTTI Base Class Descriptor'
+// win1.41 009a62d8 mac inlined Base::`RTTI Base Class Array'
+// win1.41 009a62e0 mac inlined Base::`RTTI Class Hierarchy Descriptor'
+// win1.41 009a62f0 mac 10733fb4 Base::`RTTI Complete Object Locator'
+// win1.41 008a9a44 mac 10734004 Base::`vftable'
+class Base
+{
+public:
+    uint32_t destroyed; /* 0x4 */
+
+    // Virtual functions
+
+    // win1.41 004011b0 mac 101228f0 Base::Serialise(Archive&)
+    virtual void Serialise(Archive* param_1); /* 0x0 */
+    // win1.41 00401210 mac 10082770 Base::~Base(void)
+    virtual ~Base();
+    // win1.41 004011c0 mac 1056ecc0 Base::Delete(int)
+    virtual void Delete();
+    // win1.41 004011d0 mac 1032b070 Base::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 004011e0 mac 1032b3d0 Base::Get3DSoundPos(LHPoint*)
+    virtual int Get3DSoundPos(LHPoint* pos); /* 0x10 */
+    // win1.41 004011f0 mac 1032cbf0 Base::CleanUpForSerialisation(void)
+    virtual void CleanUpForSerialisation();
+    // win1.41 00401200 mac 106fc7f0 Base::Dump(void)
+    virtual void Dump();
+
+    // Static methods
+
+    // win1.41 004366f0 mac 1009ebc0 Base::operator new(unsigned long)
+    static void* __nw(size_t size, const char* file_name, uint32_t line);
+    // win1.41 00436970 mac 10425a80 Base::operator delete(void*, unsigned long)
+    static void __dl(void* ptr, size_t size);
+
+    // Constructors
+
+    // win1.41 inlined mac 100a0450 Base::Base(void)
+    Base();
+
+    // Non-virtual methods
+
+    // win1.41 00436b20 mac 10001480 Base::SetInfo(BaseInfo*) const
+    void SetInfo(BaseInfo* info);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Archive;
@@ -81,5 +137,7 @@ int __fastcall Get3DSoundPos__4BaseFP7LHPoint(struct Base* this, const void* edx
 void __fastcall CleanUpForSerialisation__4BaseFv(struct Base* this) asm("?CleanUpForSerialisation@Base@@UAEXXZ");
 // win1.41 00401200 mac 106fc7f0 Base::Dump(void)
 void __fastcall Dump__4BaseFv(struct Base* this) asm("?Dump@Base@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_BASE_INCLUDED_H */

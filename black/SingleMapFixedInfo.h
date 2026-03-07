@@ -8,6 +8,34 @@
 
 #include "ObjectInfo.h" /* For struct GObjectInfo, struct GObjectInfoVftable */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 00be9e88 mac inlined GSingleMapFixedInfo::`RTTI Type Descriptor'
+// win1.41 009ac3a0 mac inlined GSingleMapFixedInfo::`RTTI Base Class Descriptor'
+// win1.41 009ac3b8 mac inlined GSingleMapFixedInfo::`RTTI Base Class Array'
+// win1.41 009ac3d0 mac inlined GSingleMapFixedInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 008db6d8 mac 10740ce8 GSingleMapFixedInfo::`RTTI Complete Object Locator'
+// win1.41 008db6dc mac 10740cf0 GSingleMapFixedInfo::`vftable'
+class GSingleMapFixedInfo: public GObjectInfo
+{
+public:
+    // Virtual functions
+
+    // win1.41 0052dd50 mac 100e2210 GSingleMapFixedInfo::_dt(void)
+    virtual ~GSingleMapFixedInfo();
+    // win1.41 0052dce0 mac 100e3150 GSingleMapFixedInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+    // win1.41 0052dcd0 mac 100c3840 GSingleMapFixedInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh() const;
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -55,5 +83,7 @@ void __fastcall __dt__19GSingleMapFixedInfoFv(struct Base* this, const void* edx
 struct GBaseInfo* __fastcall GetBaseInfo__19GSingleMapFixedInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GSingleMapFixedInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 0052dcd0 mac 100c3840 GSingleMapFixedInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__19GSingleMapFixedInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GSingleMapFixedInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SINGLE_MAP_FIXED_INFO_INCLUDED_H */

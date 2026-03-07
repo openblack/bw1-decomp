@@ -8,6 +8,46 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00be9638 mac inlined GEffectInfo::`RTTI Type Descriptor'
+// win1.41 009abec8 mac inlined GEffectInfo::`RTTI Base Class Descriptor'
+// win1.41 009abee0 mac inlined GEffectInfo::`RTTI Base Class Array'
+// win1.41 009abef0 mac inlined GEffectInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d8b44 mac 1073d04c GEffectInfo::`RTTI Complete Object Locator'
+// win1.41 008d8b48 mac 1073d064 GEffectInfo::`vftable'
+class GEffectInfo: public GBaseInfo
+{
+public:
+    float field_0x10;
+    float field_0x14;
+    float field_0x18;
+    float field_0x1c;
+    uint32_t field_0x20;
+    float field_0x24;
+    uint32_t field_0x28;
+    float field_0x2c;
+    uint32_t field_0x30;
+
+    // Override methods
+
+    // win1.41 00524dd0 mac 100cc6a0 GEffectInfo::_dt(void)
+    virtual ~GEffectInfo();
+    // win1.41 00524d70 mac 100ccc90 GEffectInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+
+    // Constructors
+
+    // win1.41 00524d40 mac 100cc740 GEffectInfo::GEffectInfo(void)
+    GEffectInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -53,5 +93,7 @@ struct GEffectInfo* __fastcall __ct__11GEffectInfoFv(struct GEffectInfo* this) a
 void __fastcall __dt__11GEffectInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGEffectInfo@@UAEPAXI@Z");
 // win1.41 00524d70 mac 100ccc90 GEffectInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__11GEffectInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GEffectInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_EFFECT_INFO_INCLUDED_H */

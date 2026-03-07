@@ -11,6 +11,100 @@
 
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Citadel;
+class Creature;
+class GCitadelPartInfo;
+class GPlayer;
+class GameOSFile;
+class GameThing;
+class GameThingWithPos;
+class LHOSFile;
+struct MapCoords;
+class Object;
+class PhysicsObject;
+class PlannedMultiMapFixed;
+class Spell;
+
+// win1.41 009ce888 mac inlined CitadelPart::`RTTI Type Descriptor'
+// win1.41 009a8f00 mac inlined CitadelPart::`RTTI Base Class Descriptor'
+// win1.41 009a9150 mac inlined CitadelPart::`RTTI Base Class Array'
+// win1.41 009a9170 mac inlined CitadelPart::`RTTI Class Hierarchy Descriptor'
+// win1.41 008caafc mac 107339ec CitadelPart::`RTTI Complete Object Locator'
+// win1.41 008cab00 mac 10733a24 CitadelPart::`vftable'
+class CitadelPart: public MultiMapFixed
+{
+public:
+    float field_0x7c;
+    Citadel* citadel; /* 0x80 */
+    CitadelPart* next;
+    GameThing* game_thing_0x88;
+
+    // Override methods
+
+    // win1.41 00469500 mac 101c3520 CitadelPart::_dt(void)
+    virtual ~CitadelPart();
+    // win1.41 00469540 mac 101c3320 CitadelPart::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00469750 mac 10075f70 CitadelPart::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 004694e0 mac 101c37f0 CitadelPart::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 004698b0 mac 101c2780 CitadelPart::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& file);
+    // win1.41 00469830 mac 101c2870 CitadelPart::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 004694d0 mac 101c37b0 CitadelPart::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00464aa0 mac 101c2460 CitadelPart::GetCreatureBeliefType(void)
+    virtual uint32_t GetCreatureBeliefType();
+    // win1.41 00464a80 mac 1008aa80 CitadelPart::GetCitadel(void)
+    virtual Citadel* GetCitadel();
+    // win1.41 00464b00 mac inlined CitadelPart::IsCitadelPart_0(void)
+    virtual bool IsCitadelPart();
+    // win1.41 00464b10 mac inlined CitadelPart::IsCitadelPart_1(Creature *)
+    virtual bool IsCitadelPart(Creature* param_1);
+    // win1.41 00469780 mac 101c2a50 CitadelPart::GetActualObjectToEffect(GPlayer *, bool)
+    virtual void* GetActualObjectToEffect(GPlayer* param_1, bool param_2);
+    // win1.41 004695c0 mac 101c32d0 CitadelPart::DestroyedByEffect(GPlayer *, float)
+    virtual bool DestroyedByEffect(GPlayer* param_1, float param_2);
+    // win1.41 00469490 mac 101ba510 CitadelPart::Process(void)
+    virtual uint32_t Process();
+    // win1.41 00464a90 mac 101c2400 CitadelPart::GetMesh( const(void))
+    virtual int GetMesh() const;
+    // win1.41 00469760 mac 101c2b70 CitadelPart::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 004694b0 mac 101c3720 CitadelPart::Get3DType(void)
+    virtual LH3DObject::ObjectType Get3DType();
+    // win1.41 004695d0 mac inlined CitadelPart::CanBeDestroyedBySpell_1(Spell *)
+    virtual bool CanBeDestroyedBySpell(Spell* param_1);
+    // win1.41 004697f0 mac 101c2970 CitadelPart::ReactToPhysicsImpact(PhysicsObject *, bool)
+    virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+    // win1.41 004694c0 mac 101c3760 CitadelPart::SaveObject(LHOSFile &, MapCoords const &)
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
+    // win1.41 004694f0 mac 101c3830 CitadelPart::ShouldFootpathsGoRound(void)
+    virtual bool ShouldFootpathsGoRound();
+    // win1.41 00464ab0 mac 101c08e0 CitadelPart::IsRepaired(void)
+    virtual bool IsRepaired();
+    // win1.41 00464ad0 mac 10081060 CitadelPart::IsBuilt(void)
+    virtual bool IsBuilt();
+    // win1.41 004694a0 mac 101b91f0 CitadelPart::ConvertToPlanned(void)
+    virtual PlannedMultiMapFixed* ConvertToPlanned();
+
+    // Constructors
+
+    // win1.41 inlined mac 1030de40 CitadelPart::CitadelPart(void)
+    CitadelPart();
+    // win1.41 004693f0 mac 101c35b0 CitadelPart::CitadelPart(MapCoords const &, GCitadelPartInfo const *, Citadel *, float, float, float, int)
+    CitadelPart(MapCoords* coords, GCitadelPartInfo* info, Citadel* citadel, float y_angle, float scale, float param_6, int param_7);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -112,5 +206,7 @@ bool __fastcall IsBuilt__11CitadelPartFv(struct MultiMapFixed* this) asm("?IsBui
 struct PlannedMultiMapFixed* __fastcall ConvertToPlanned__11CitadelPartFv(struct MultiMapFixed* this) asm("?ConvertToPlanned@CitadelPart@@UAEPAVPlannedMultiMapFixed@@XZ");
 
 DECLARE_LH_LIST_HEAD(CitadelPart);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CITADEL_PART_INCLUDED_H */

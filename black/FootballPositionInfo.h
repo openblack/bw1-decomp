@@ -8,6 +8,46 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00be9f48 mac inlined GFootballPositionInfo::`RTTI Type Descriptor'
+// win1.41 009ac538 mac inlined GFootballPositionInfo::`RTTI Base Class Descriptor'
+// win1.41 009ac550 mac inlined GFootballPositionInfo::`RTTI Base Class Array'
+// win1.41 009ac560 mac inlined GFootballPositionInfo::`RTTI Class Hierarchy Descriptor'
+class GFootballPositionInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00530f60 mac 102bcb80 GFootballPositionInfo::_dt(void)
+    virtual ~GFootballPositionInfo();
+    // win1.41 00530f00 mac 102bd7f0 GFootballPositionInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+// win1.41 00bfed30 mac inlined GPFootballPositionInfo::`RTTI Type Descriptor'
+// win1.41 009b30b8 mac inlined GPFootballPositionInfo::`RTTI Base Class Descriptor'
+// win1.41 009b30d0 mac inlined GPFootballPositionInfo::`RTTI Base Class Array'
+// win1.41 009b30e0 mac inlined GPFootballPositionInfo::`RTTI Class Hierarchy Descriptor'
+class GPFootballPositionInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 006436f0 mac 101113c0 GPFootballPositionInfo::_dt(void)
+    virtual ~GPFootballPositionInfo();
+    // win1.41 00643690 mac 10111790 GPFootballPositionInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -59,5 +99,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__22GPFootballPositionInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGPFootballPositionInfo@@UAEPAXI@Z");
 // win1.41 00643690 mac 10111790 GPFootballPositionInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__22GPFootballPositionInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GPFootballPositionInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FOOTBALL_POSITION_INFO_INCLUDED_H */

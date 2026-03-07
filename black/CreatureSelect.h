@@ -6,6 +6,28 @@
 #include <lionhead/lh3dlib/development/Prss.h> /* For struct Prss */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// win1.41 00be0a98 mac inlined CreatureSelect::`RTTI Type Descriptor'
+// win1.41 009ab3e0 mac inlined CreatureSelect::`RTTI Base Class Descriptor'
+// win1.41 009ab3f8 mac inlined CreatureSelect::`RTTI Base Class Array'
+// win1.41 009ab408 mac inlined CreatureSelect::`RTTI Class Hierarchy Descriptor'
+class CreatureSelect: public Prss
+{
+public:
+
+    // Override methods
+
+    // win1.41 004f7210 mac inlined CreatureSelect::ProcessTurn(void)
+    virtual int ProcessTurn();
+    // win1.41 004f7250 mac inlined CreatureSelect::Display(void)
+    virtual void Display();
+    // win1.41 004f74d0 mac inlined CreatureSelect::ClickFunction(int, int, int)
+    virtual void ClickFunction(int param_1, int param_2, int param_3);
+};
+
+#else // __cplusplus
+
 struct CreatureSelect
 {
   struct Prss super;  /* 0x0 */
@@ -31,5 +53,7 @@ int __fastcall ProcessTurn__14CreatureSelectFv(struct Prss* this) asm("?ProcessT
 void __fastcall Display__14CreatureSelectFv(struct Prss* this) asm("?Display@CreatureSelect@@UAEXXZ");
 // win1.41 004f74d0 mac inlined CreatureSelect::ClickFunction(int, int, int)
 void __fastcall ClickFunction__14CreatureSelectFiii(struct Prss* this, const void* edx, int param_1, int param_2, int param_3) asm("?ClickFunction@CreatureSelect@@UAEXHHH@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_SELECT_INCLUDED_H */

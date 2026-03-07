@@ -8,6 +8,38 @@
 
 #include "PSysBase.h" /* For struct PSysBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00c095a8 mac inlined Chain::`RTTI Type Descriptor'
+// win1.41 009b8078 mac inlined Chain::`RTTI Base Class Descriptor'
+// win1.41 009b8090 mac inlined Chain::`RTTI Base Class Array'
+// win1.41 009b80a8 mac inlined Chain::`RTTI Class Hierarchy Descriptor'
+class Chain: public PSysBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c8810 mac 1047b970 Chain::_dt(void)
+    virtual ~Chain();
+    // win1.41 006c8800 mac 10422b00 Chain::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00695c10 mac 1041bda0 Chain::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cc780 mac 10483590 Chain::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 006c87f0 mac 10422ad0 Chain::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -43,5 +75,7 @@ uint32_t __fastcall Load__5ChainFR10GameOSFile(struct GameThing* this, const voi
 uint32_t __fastcall Save__5ChainFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@Chain@@UAEIAAVGameOSFile@@@Z");
 // win1.41 006c87f0 mac 10422ad0 Chain::GetSaveType(void)
 uint32_t __fastcall GetSaveType__5ChainFv(struct GameThing* this) asm("?GetSaveType@Chain@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CHAIN_INCLUDED_H */

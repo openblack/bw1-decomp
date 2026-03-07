@@ -8,6 +8,36 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 009ce7f0 mac inlined GContainerInfo::`RTTI Type Descriptor'
+// win1.41 009a8d50 mac inlined GContainerInfo::`RTTI Base Class Descriptor'
+// win1.41 009a91d8 mac inlined GContainerInfo::`RTTI Base Class Array'
+// win1.41 009a91e8 mac inlined GContainerInfo::`RTTI Class Hierarchy Descriptor'
+class GContainerInfo: public GBaseInfo
+{
+public:
+    uint32_t field_0x10;
+    uint8_t field_0x14[0xfc];
+    uint32_t field_0x110;
+    uint8_t field_0x114[0x2c];
+    float field_0x140;
+    float field_0x144;
+
+    // Override methods
+
+    // win1.41 0046b880 mac 100bfd60 GContainerInfo::_dt(void)
+    virtual ~GContainerInfo();
+    // win1.41 0046b820 mac 100bfe80 GContainerInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -41,5 +71,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__14GContainerInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGContainerInfo@@UAEPAXI@Z");
 // win1.41 0046b820 mac 100bfe80 GContainerInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__14GContainerInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GContainerInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CONTAINER_INFO_INCLUDED_H */

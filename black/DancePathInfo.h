@@ -8,6 +8,34 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00beff20 mac inlined DancePathInfo::`RTTI Type Descriptor'
+// win1.41 009b0df8 mac inlined DancePathInfo::`RTTI Base Class Descriptor'
+// win1.41 009b0e10 mac inlined DancePathInfo::`RTTI Base Class Array'
+// win1.41 009b0e20 mac inlined DancePathInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 00900910 mac 10744cf0 DancePathInfo::`RTTI Complete Object Locator'
+// win1.41 00900914 mac 10744cf8 DancePathInfo::`vftable'
+class DancePathInfo: public GameThing
+{
+public:
+    uint8_t field_0x14;
+    uint8_t field_0x15[0x3];
+    uint8_t (* field_0x18)[0xc];
+    uint32_t field_0x1c;
+
+    // Override methods
+
+    // win1.41 005961c0 mac 100fafe0 DancePathInfo::_dt(void)
+    virtual ~DancePathInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -41,5 +69,7 @@ extern const struct GameThingVftable __vt__13DancePathInfo asm("??_7DancePathInf
 
 // win1.41 005961c0 mac 100fafe0 DancePathInfo::_dt(void)
 void __fastcall __dt__13DancePathInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GDancePathInfo@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_DANCE_PATH_INFO_INCLUDED_H */

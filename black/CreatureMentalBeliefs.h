@@ -8,6 +8,85 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Creature;
+class GameThingWithPos;
+
+// win1.41 009dd898 mac inlined CreatureBeliefList::`RTTI Type Descriptor'
+// win1.41 009aa3b0 mac inlined CreatureBeliefList::`RTTI Base Class Descriptor'
+// win1.41 009aa3c8 mac inlined CreatureBeliefList::`RTTI Base Class Array'
+// win1.41 009aa3d8 mac inlined CreatureBeliefList::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cf908 mac 10787474 CreatureBeliefList::`RTTI Complete Object Locator'
+// win1.41 008cf90c mac 1078747c CreatureBeliefList::`vftable'
+class CreatureBeliefList: public Base
+{
+public:
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+    uint32_t field_0x10;
+
+    // Override methods
+
+    // win1.41 004d24f0 mac 10246b60 CreatureBeliefList::_dt(void)
+    virtual ~CreatureBeliefList();
+
+    // Non-virtual methods
+
+    // win1.41 004d7bb0 mac 10253e30 CreatureBeliefList::GetBeliefAboutObject(GameThingWithPos *)
+    void* GetBeliefAboutObject(GameThingWithPos* param_1);
+    // win1.41 004d7ce0 mac 10253b10 CreatureBeliefList::AddBeliefAboutObject(Creature *, GameThingWithPos *)
+    void* AddBeliefAboutObject(Creature* param_1, GameThingWithPos* param_2);
+};
+
+// win1.41 00bdf390 mac inlined AllocatedBeliefList::`RTTI Type Descriptor'
+// win1.41 009aaa40 mac inlined AllocatedBeliefList::`RTTI Base Class Descriptor'
+// win1.41 009aaa58 mac inlined AllocatedBeliefList::`RTTI Base Class Array'
+// win1.41 009aaa68 mac inlined AllocatedBeliefList::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cfe54 mac 107874ac AllocatedBeliefList::`RTTI Complete Object Locator'
+// win1.41 008cfe58 mac 107874b4 AllocatedBeliefList::`vftable'
+class AllocatedBeliefList: public Base
+{
+public:
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+    uint32_t field_0x10;
+    uint32_t field_0x14;
+
+    // Override methods
+
+    // win1.41 004d7910 mac 10246ad0 AllocatedBeliefList::_dt(void)
+    virtual ~AllocatedBeliefList();
+};
+
+// win1.41 009dd878 mac inlined CreatureBeliefs::`RTTI Type Descriptor'
+// win1.41 009aa360 mac inlined CreatureBeliefs::`RTTI Base Class Descriptor'
+// win1.41 009aa378 mac inlined CreatureBeliefs::`RTTI Base Class Array'
+// win1.41 009aa388 mac inlined CreatureBeliefs::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cf8e8 mac 109899cc CreatureBeliefs::`RTTI Complete Object Locator'
+// win1.41 008cf8ec mac 109899d4 CreatureBeliefs::`vftable'
+class CreatureBeliefs: public Base
+{
+public:
+    CreatureBeliefList lists[0x2]; /* 0x8 */
+    AllocatedBeliefList allocated_list; /* 0x30 */
+    uint8_t field_0x48[0x228];
+
+    // Override methods
+
+    // win1.41 004d2510 mac 10252390 CreatureBeliefs::_dt(void)
+    virtual ~CreatureBeliefs();
+
+    // Non-virtual methods
+
+    // win1.41 004d8ea0 mac 10250c70 CreatureBeliefs::Initialise(void)
+    void Initialise();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Creature;
@@ -112,5 +191,7 @@ void __fastcall Initialise__15CreatureBeliefsFv(struct CreatureBeliefs* this) as
 
 // win1.41 004d2510 mac 10252390 CreatureBeliefs::_dt(void)
 void __fastcall __dt__15CreatureBeliefsFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureBeliefs@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_BELIEFS_INCLUDED_H */

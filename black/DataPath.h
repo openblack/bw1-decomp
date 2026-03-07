@@ -8,6 +8,52 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+struct ScriptedCamera;
+
+// win1.41 00bf3ab0 mac inlined DataPath::`RTTI Type Descriptor'
+// win1.41 009b19d0 mac inlined DataPath::`RTTI Base Class Descriptor'
+// win1.41 009b19e8 mac inlined DataPath::`RTTI Base Class Array'
+// win1.41 009b19f8 mac inlined DataPath::`RTTI Class Hierarchy Descriptor'
+// win1.41 0092b418 mac 109a0f04 DataPath::`RTTI Complete Object Locator'
+// win1.41 0092b41c mac 109a0f0c DataPath::`vftable'
+class DataPath: public GameThing
+{
+public:
+    ScriptedCamera* scripted_camera; /* 0x14 */
+    int32_t track_no;
+    float field_0x1c;
+    uint32_t field_0x20;
+    float field_0x24;
+    float field_0x28;
+    float field_0x2c;
+
+    // Override methods
+
+    // win1.41 005ef090 mac 1037d2b0 DataPath::_dt(void)
+    virtual ~DataPath();
+    // win1.41 005ef080 mac 10383880 DataPath::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 005eeec0 mac 1037d3e0 DataPath::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 005eed30 mac 1037d620 DataPath::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 005ef070 mac 10383840 DataPath::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+
+    // Constructors
+
+    // win1.41 005ef040 mac 1037d350 DataPath::DataPath(void)
+    DataPath();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -59,5 +105,7 @@ uint32_t __fastcall Load__8DataPathFR10GameOSFile(struct GameThing* this, const 
 uint32_t __fastcall Save__8DataPathFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@DataPath@@UAEIAAVGameOSFile@@@Z");
 // win1.41 005ef070 mac 10383840 DataPath::GetSaveType(void)
 uint32_t __fastcall GetSaveType__8DataPathFv(struct GameThing* this) asm("?GetSaveType@DataPath@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_DATA_PATH_INCLUDED_H */

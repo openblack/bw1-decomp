@@ -10,6 +10,48 @@
 #include "DanceGroup.h" /* For enum DANCE_GROUP_ACTION_TYPE */
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+struct DanceGroupActionArgument;
+class GameOSFile;
+
+// win1.41 00be83c8 mac inlined DanceKeyFrame::`RTTI Type Descriptor'
+// win1.41 009ab750 mac inlined DanceKeyFrame::`RTTI Base Class Descriptor'
+// win1.41 009ab768 mac inlined DanceKeyFrame::`RTTI Base Class Array'
+// win1.41 009ab778 mac inlined DanceKeyFrame::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d46ec mac 10997014 DanceKeyFrame::`RTTI Complete Object Locator'
+// win1.41 008d46f0 mac 1099701c DanceKeyFrame::`vftable'
+class DanceKeyFrame: public GameThing
+{
+public:
+    uint8_t field_0x14[0x10];
+
+    // Override methods
+
+    // win1.41 0050ebd0 mac 100f7ab0 DanceKeyFrame::_dt(void)
+    virtual ~DanceKeyFrame();
+    // win1.41 0050ebf0 mac 102ae1e0 DanceKeyFrame::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 0050ebc0 mac 102ace60 DanceKeyFrame::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0050f2f0 mac 102acea0 DanceKeyFrame::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 0050f1c0 mac 102ad2b0 DanceKeyFrame::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0050ebb0 mac 102ace20 DanceKeyFrame::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+
+    // Constructors
+
+    // win1.41 0050eb60 mac 102ae450 DanceKeyFrame::DanceKeyFrame(long, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
+    DanceKeyFrame(int param_1, LHDynamicStack__Ul* stack, DANCE_GROUP_ACTION_TYPE action_type, const DanceGroupActionArgument* arguments);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -57,5 +99,7 @@ uint32_t __fastcall Load__13DanceKeyFrameFR10GameOSFile(struct GameThing* this, 
 uint32_t __fastcall Save__13DanceKeyFrameFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@DanceKeyFrame@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0050ebb0 mac 102ace20 DanceKeyFrame::GetSaveType(void)
 uint32_t __fastcall GetSaveType__13DanceKeyFrameFv(struct GameThing* this) asm("?GetSaveType@DanceKeyFrame@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_DANCE_KEY_INCLUDED_H */

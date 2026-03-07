@@ -10,6 +10,83 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GFootpathNode;
+class GameOSFile;
+class GameThingWithPos;
+struct MapCoords;
+class MultiMapFixed;
+struct Point2D;
+struct RPHolder;
+struct RPlan;
+
+// win1.41 00bea170 mac inlined GFootpath::`RTTI Type Descriptor'
+// win1.41 009ac640 mac inlined GFootpath::`RTTI Base Class Descriptor'
+// win1.41 009ac658 mac inlined GFootpath::`RTTI Base Class Array'
+// win1.41 009ac668 mac inlined GFootpath::`RTTI Class Hierarchy Descriptor'
+// win1.41 008de0b8 mac 10743350 GFootpath::`RTTI Complete Object Locator'
+// win1.41 008de0bc mac 10743358 GFootpath::`vftable'
+class GFootpath: public GameThing
+{
+public:
+    GFootpathNode* nodes; /* 0x14 */
+    int node_count;
+    GFootpath* next;
+    uint32_t field_0x20;
+
+    // Override methods
+
+    // win1.41 00534e00 mac 100eeb80 GFootpath::_dt(void)
+    virtual ~GFootpath();
+    // win1.41 00534f00 mac 100ee7a0 GFootpath::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00534df0 mac 100ef250 GFootpath::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00535f10 mac 100ecb10 GFootpath::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 00535e00 mac 100ece10 GFootpath::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00534de0 mac 100ef210 GFootpath::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+
+    // Static methods
+
+    // win1.41 00535a80 mac inlined GFootpath::FUN_00535a80(Point2D *, MultiMapFixed *, float, float)
+    static void FUN_00535a80(Point2D* param_1, MultiMapFixed* param_2, float point_x, float point_y);
+    // win1.41 00537290 mac 100ea6f0 GFootpath::SendFootpathsAroundObsticle(float, MapCoords const &)
+    static void SendFootpathsAroundObsticle(float radius, MapCoords* coords);
+    // win1.41 00538340 mac 100e95b0 GFootpath::ConvertCreaturePlanToFootpath(RPHolder &, RPlan &, GFootpathNode *, GFootpathNode *, MapCoords const &)
+    static void ConvertCreaturePlanToFootpath(RPHolder* holder, RPlan* plan, GFootpathNode* start, GFootpathNode* end, MapCoords* coord);
+    // win1.41 005387d0 mac 100e93a0 GFootpath::AttemptRerenderFootpathWithCreatureRP(GFootpathNode *, GFootpathNode *, MapCoords const &)
+    static uint32_t AttemptRerenderFootpathWithCreatureRP(GFootpathNode* start, GFootpathNode* end, MapCoords* coord);
+
+    // Constructors
+
+    // win1.41 00534dc0 mac 100eecb0 GFootpath::GFootpath(void)
+    GFootpath();
+    // win1.41 00534eb0 mac 100ee9b0 GFootpath::GFootpath(GameThingWithPos *, GameThingWithPos *)
+    GFootpath(GameThingWithPos* param_2, GameThingWithPos* param_3);
+
+    // Non-virtual methods
+
+    // win1.41 00534fc0 mac 100ee4c0 GFootpath::AddPos(MapCoords const &)
+    void AddPos(MapCoords* coords);
+    // win1.41 005351a0 mac 100ee290 GFootpath::GetNextNode(GFootpathNode *, int)
+    GFootpathNode* GetNextNode(GFootpathNode* node, int backwards);
+    // win1.41 005351f0 mac 100ee190 GFootpath::GetNextPos(MapCoords const &, GFootpathNode *&, MapCoords &, int, float)
+    uint32_t GetNextPos(MapCoords* current_pos, GFootpathNode** next_node, MapCoords* next_pos, int backwards, float max_t);
+    // win1.41 00535270 mac 100ee0d0 GFootpath::GetNextPos(GFootpathNode *&, MapCoords &, int)
+    uint32_t GetNextPos(GFootpathNode** next_node, MapCoords* next_pos, int backwards);
+    // win1.41 005352c0 mac 100edfa0 GFootpath::GetNearestPos(MapCoords const &, int)
+    GFootpathNode* GetNearestPos(const MapCoords* coords, int param_3);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -96,5 +173,7 @@ uint32_t __fastcall GetSaveType__9GFootpathFv(struct GameThing* this) asm("?GetS
 DECLARE_LH_LINKED_LIST(GFootpath);
 
 DECLARE_LH_LIST_HEAD(GFootpath);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FOOTPATH_INCLUDED_H */

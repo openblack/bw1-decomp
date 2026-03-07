@@ -8,6 +8,40 @@
 
 #include "Animal.h" /* For struct Animal */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Creature;
+class GameThing;
+class GameThingWithPos;
+class Object;
+
+// win1.41 009c9300 mac inlined Lion::`RTTI Type Descriptor'
+// win1.41 009a75b0 mac inlined Lion::`RTTI Base Class Descriptor'
+// win1.41 009a7638 mac inlined Lion::`RTTI Base Class Array'
+// win1.41 009a7660 mac inlined Lion::`RTTI Class Hierarchy Descriptor'
+class Lion: public Animal
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041fd90 mac 10175be0 Lion::_dt(void)
+    virtual ~Lion();
+    // win1.41 0041fd80 mac 10175d40 Lion::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041fd70 mac 10175d10 Lion::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041fc70 mac 10171320 Lion::CanBeFrighteningToCreature(Creature *)
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
+    // win1.41 0041c1a0 mac 1016fc50 Lion::StandAnimation(void)
+    virtual uint32_t StandAnimation();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -45,5 +79,7 @@ uint32_t __fastcall GetSaveType__4LionFv(struct GameThing* this) asm("?GetSaveTy
 uint32_t __fastcall CanBeFrighteningToCreature__4LionFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?CanBeFrighteningToCreature@Lion@@UAEIPAVCreature@@@Z");
 // win1.41 0041c1a0 mac 1016fc50 Lion::StandAnimation(void)
 uint32_t __fastcall StandAnimation__4LionFv(struct Object* this) asm("?StandAnimation@Lion@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMAL_LION_INCLUDED_H */

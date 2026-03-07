@@ -8,6 +8,46 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00be8988 mac inlined GData::`RTTI Type Descriptor'
+// win1.41 009ab7a0 mac inlined GData::`RTTI Base Class Descriptor'
+// win1.41 009ab7b8 mac inlined GData::`RTTI Base Class Array'
+// win1.41 009ab7c8 mac inlined GData::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d6030 mac 10730b70 GData::`RTTI Complete Object Locator'
+// win1.41 008d6034 mac 10730b78 GData::`vftable'
+class GData: public Base
+{
+public:
+    uint32_t rand_seed; /* 0x8 */
+    uint32_t field_0xc;
+    uint32_t game_turn; /* 0x10 */
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    uint32_t field_0x1c;
+    uint32_t field_0x20;
+    uint32_t field_0x24;
+
+    // Override methods
+
+    // win1.41 00510610 mac 1056c340 GData::_dt(void)
+    virtual ~GData();
+
+    // Constructors
+
+    // win1.41 00510500 mac 100c0a70 GData::GData(void)
+    GData();
+
+    // Non-virtual methods
+
+    // win1.41 00510650 mac 1002adb0 GData::Rand(long)
+    uint32_t Rand(uint32_t max, const char* src_file, uint32_t src_line);
+    // win1.41 00510750 mac 100c08f0 GData::Reset(void)
+    void Reset();
+};
+
+#else // __cplusplus
+
 struct GData
 {
   struct Base super;  /* 0x0 */
@@ -53,5 +93,7 @@ void __fastcall Reset__5GDataFv(struct GData* this) asm("?Reset@GData@@QAEXXZ");
 
 // win1.41 00510610 mac 1056c340 GData::_dt(void)
 void __fastcall __dt__5GDataFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGData@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_DATA_INCLUDED_H */

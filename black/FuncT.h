@@ -5,6 +5,17 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// win1.41 00c025c8 mac inlined FuncT::`RTTI Type Descriptor'
+// win1.41 009b3e90 mac inlined FuncT::`RTTI Base Class Descriptor'
+class FuncT
+{
+public:
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct FuncT;
@@ -27,5 +38,7 @@ static_assert(sizeof(struct FuncT) == 0x4, "Data type is of wrong size");
 extern struct RTTITypeDescriptor __RTTITypeDescriptor__5FuncT asm("??_R0?AVFuncT@@@8");
 // win1.41 009b3e90 mac inlined FuncT::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__5FuncT asm("??_R1A@?0A@A@FuncT@@8");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FUNC_T_INCLUDED_H */

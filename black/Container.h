@@ -8,6 +8,42 @@
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GContainerInfo;
+class GPlayer;
+class GameOSFile;
+class GameThing;
+
+// win1.41 009ce830 mac inlined Container::`RTTI Type Descriptor'
+// win1.41 009a8dc0 mac inlined Container::`RTTI Base Class Descriptor'
+// win1.41 009a9210 mac inlined Container::`RTTI Base Class Array'
+// win1.41 009a9228 mac inlined Container::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cb97c mac 10739750 Container::`RTTI Complete Object Locator'
+// win1.41 008cb980 mac 10739758 Container::`vftable'
+class Container: public GameThingWithPos
+{
+public:
+    GContainerInfo* info; /* 0x28 */
+    GPlayer* owner;
+
+    // Override methods
+
+    // win1.41 0046b900 mac 100bf890 Container::_dt(void)
+    virtual ~Container();
+    // win1.41 00462a50 mac 1005c760 Container::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 0046b960 mac 100bf930 Container::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 0046b920 mac 100bf9d0 Container::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -62,5 +98,7 @@ struct GPlayer* __fastcall GetPlayer__9ContainerFv(struct GameThing* this) asm("
 uint32_t __fastcall Load__9ContainerFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@Container@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0046b920 mac 100bf9d0 Container::Save(GameOSFile &)
 uint32_t __fastcall Save__9ContainerFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@Container@@UAEIAAVGameOSFile@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CONTAINER_INCLUDED_H */

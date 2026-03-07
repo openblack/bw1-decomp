@@ -10,6 +10,61 @@
 
 #include "Object.h" /* For struct Object */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Creature;
+class GameOSFile;
+class GameThing;
+class GameThingWithPos;
+class LHOSFile;
+struct MapCoords;
+
+// win1.41 00becaf8 mac inlined GStreetLantern::`RTTI Type Descriptor'
+// win1.41 009ad9d8 mac inlined GStreetLantern::`RTTI Base Class Descriptor'
+// win1.41 009ad9f0 mac inlined GStreetLantern::`RTTI Base Class Array'
+// win1.41 009ada08 mac inlined GStreetLantern::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ea8d4 mac 109e0fa4 GStreetLantern::`RTTI Complete Object Locator'
+// win1.41 008ea8d8 mac 109e0fac GStreetLantern::`vftable'
+class GStreetLantern: public Object
+{
+public:
+    uint8_t field_0x54[0x10];
+
+    // Override methods
+
+    // win1.41 00561470 mac 105353e0 GStreetLantern::_dt(void)
+    virtual ~GStreetLantern();
+    // win1.41 00734ab0 mac 10534d50 GStreetLantern::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00561460 mac 105347c0 GStreetLantern::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00734be0 mac 10534ab0 GStreetLantern::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 00734c90 mac 10534980 GStreetLantern::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00561450 mac 10534780 GStreetLantern::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00561440 mac 10534740 GStreetLantern::IsStreetLantern(void)
+    virtual bool IsStreetLantern();
+    // win1.41 00734d40 mac 10003680 GStreetLantern::GetScriptObjectType(void)
+    virtual uint32_t GetScriptObjectType();
+    // win1.41 00734a70 mac 1002d8c0 GStreetLantern::Draw(void)
+    virtual void Draw();
+    // win1.41 00734810 mac 105350a0 GStreetLantern::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 007349d0 mac 10535050 GStreetLantern::InteractsWithPhysicsObjects(void)
+    virtual bool InteractsWithPhysicsObjects();
+    // win1.41 00734d50 mac 10534800 GStreetLantern::CreatureMustAvoid(Creature *)
+    virtual bool CreatureMustAvoid(Creature* param_1);
+    // win1.41 00734b10 mac 10534be0 GStreetLantern::SaveObject(LHOSFile &, MapCoords const &)
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -72,5 +127,7 @@ bool __fastcall CreatureMustAvoid__14GStreetLanternFP8Creature(struct Object* th
 uint32_t __fastcall SaveObject__14GStreetLanternFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@GStreetLantern@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 
 DECLARE_LH_LIST_HEAD(GStreetLantern);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_STREET_LANTERN_INCLUDED_H */

@@ -8,6 +8,31 @@
 
 #include "CitadelPartInfo.h" /* For struct GCitadelPartInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 00be0178 mac inlined GCreaturePenInfo::`RTTI Type Descriptor'
+// win1.41 009ab1c8 mac inlined GCreaturePenInfo::`RTTI Base Class Descriptor'
+// win1.41 009ab1e0 mac inlined GCreaturePenInfo::`RTTI Base Class Array'
+// win1.41 009ab200 mac inlined GCreaturePenInfo::`RTTI Class Hierarchy Descriptor'
+class GCreaturePenInfo: public GCitadelPartInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 004eee30 mac 10274c20 GCreaturePenInfo::_dt(void)
+    virtual ~GCreaturePenInfo();
+    // win1.41 004eedc0 mac 102755a0 GCreaturePenInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -36,5 +61,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__16GCreaturePenInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGCreaturePenInfo@@UAEPAXI@Z");
 // win1.41 004eedc0 mac 102755a0 GCreaturePenInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__16GCreaturePenInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GCreaturePenInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_PEN_INFO_INCLUDED_H */

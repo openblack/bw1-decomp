@@ -9,6 +9,51 @@
 
 #include "Object.h" /* For struct Object */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GInterfaceStatus;
+class LHOSFile;
+struct MapCoords;
+
+// win1.41 00bf0c08 mac inlined HelpSpirit::`RTTI Type Descriptor'
+// win1.41 009b12f8 mac inlined HelpSpirit::`RTTI Base Class Descriptor'
+// win1.41 009b1310 mac inlined HelpSpirit::`RTTI Base Class Array'
+// win1.41 009b1328 mac inlined HelpSpirit::`RTTI Class Hierarchy Descriptor'
+// win1.41 009154b4 mac 1099bee0 HelpSpirit::`RTTI Complete Object Locator'
+// win1.41 009154b8 mac 1099bee8 HelpSpirit::`vftable'
+class HelpSpirit: public Object
+{
+public:
+    uint32_t field_0x54;
+    HELP_SPIRIT_TYPE type;
+    uint8_t field_0x5c[0x8];
+
+    // Override methods
+
+    // win1.41 005c4b10 mac 1034b510 HelpSpirit::_dt(void)
+    virtual ~HelpSpirit();
+    // win1.41 005c4b00 mac 1034b640 HelpSpirit::Create3DObject(void)
+    virtual void Create3DObject();
+    // win1.41 005c5270 mac 10083340 HelpSpirit::Process(void)
+    virtual uint32_t Process();
+    // win1.41 005c4b90 mac 1034c540 HelpSpirit::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 005c4af0 mac 1034b5f0 HelpSpirit::ValidForPlaceInHand(GInterfaceStatus *)
+    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    // win1.41 005c4ae0 mac 1034b5a0 HelpSpirit::SaveObject(LHOSFile &, MapCoords const &)
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
+
+    // Constructors
+
+    // win1.41 005c4aa0 mac 1034c700 HelpSpirit::HelpSpirit(MapCoords const &, HELP_SPIRIT_TYPE)
+    HelpSpirit(const MapCoords* coords, HELP_SPIRIT_TYPE type);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -59,5 +104,7 @@ void __fastcall CallVirtualFunctionsForCreation__10HelpSpiritFRC9MapCoords(struc
 uint32_t __fastcall ValidForPlaceInHand__10HelpSpiritFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForPlaceInHand@HelpSpirit@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 005c4ae0 mac 1034b5a0 HelpSpirit::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__10HelpSpiritFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@HelpSpirit@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HELP_SPIRIT_INCLUDED_H */

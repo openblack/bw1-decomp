@@ -8,6 +8,76 @@
 
 #include "SpellWithObjects.h" /* For struct SpellWithObjects */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GMagicInfo;
+class GameOSFile;
+class GameThing;
+class GameThingWithPos;
+class Living;
+struct MapCoords;
+struct PSysProcessInfo;
+class Reaction;
+class Spell;
+struct SpellCastData;
+
+// win1.41 00c22778 mac inlined SpellShield::`RTTI Type Descriptor'
+// win1.41 009b9548 mac inlined SpellShield::`RTTI Base Class Descriptor'
+// win1.41 009b9560 mac inlined SpellShield::`RTTI Base Class Array'
+// win1.41 009b9580 mac inlined SpellShield::`RTTI Class Hierarchy Descriptor'
+// win1.41 009828d4 mac 109e09bc SpellShield::`RTTI Complete Object Locator'
+// win1.41 009828d8 mac 109e09c4 SpellShield::`vftable'
+class SpellShield: public SpellWithObjects
+{
+public:
+    uint8_t field_0xf4[0x18];
+
+    // Override methods
+
+    // win1.41 0072b480 mac 10534250 SpellShield::_dt(void)
+    virtual ~SpellShield();
+    // win1.41 0072b500 mac 105334e0 SpellShield::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 0072b450 mac 105321c0 SpellShield::GetRadius(void)
+    virtual float GetRadius();
+    // win1.41 0072b440 mac 10532220 SpellShield::Get2DRadius(void)
+    virtual float Get2DRadius();
+    // win1.41 0072b470 mac 10534380 SpellShield::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0072bb40 mac 105324f0 SpellShield::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 0072bc40 mac 10532270 SpellShield::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0072b460 mac 10534340 SpellShield::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0072ba80 mac 10532920 SpellShield::GetImpressiveValue(Living *, Reaction *)
+    virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
+    // win1.41 0072b430 mac 10534300 SpellShield::IsSpellShield(void)
+    virtual uint32_t IsSpellShield();
+    // win1.41 0072b780 mac 105330f0 SpellShield::UpdateStruckReaction(void)
+    virtual void UpdateStruckReaction();
+    // win1.41 0072b7c0 mac 10533050 SpellShield::SetUpDestroyedReaction(void)
+    virtual void SetUpDestroyedReaction();
+    // win1.41 0072b750 mac 105331a0 SpellShield::Process(void)
+    virtual uint32_t Process();
+    // win1.41 0072b840 mac 10532f10 SpellShield::CloseDown(void)
+    virtual void CloseDown();
+    // win1.41 0072b5f0 mac 10533230 SpellShield::InitWithPos(GameThing *, MapCoords const &, SpellCastData *, PSysProcessInfo const &)
+    virtual int InitWithPos(GameThing* param_1, const MapCoords* param_2, SpellCastData* param_3, const PSysProcessInfo* param_4);
+    // win1.41 0072b7f0 mac 10532fb0 SpellShield::CalculateCostToMaintain(void)
+    virtual float CalculateCostToMaintain();
+
+    // Non-virtual methods
+
+    // win1.41 0072b820 mac 10532f60 SpellShield::GetMagicInfo(void) const
+    GMagicInfo* GetMagicInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -83,5 +153,7 @@ void __fastcall CloseDown__11SpellShieldFv(struct Spell* this) asm("?CloseDown@S
 int __fastcall InitWithPos__11SpellShieldFP9GameThingRC9MapCoordsP13SpellCastDataRC15PSysProcessInfo(struct Spell* this, const void* edx, struct GameThing* param_1, const struct MapCoords* param_2, struct SpellCastData* param_3, const struct PSysProcessInfo* param_4) asm("?InitWithPos@SpellShield@@UAEHPAVGameThing@@ABUMapCoords@@PAVSpellCastData@@ABUPSysProcessInfo@@@Z");
 // win1.41 0072b7f0 mac 10532fb0 SpellShield::CalculateCostToMaintain(void)
 float __fastcall CalculateCostToMaintain__11SpellShieldFv(struct Spell* this) asm("?CalculateCostToMaintain@SpellShield@@UAEMXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPELL_SHIELD_INCLUDED_H */

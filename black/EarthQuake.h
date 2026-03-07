@@ -10,8 +10,15 @@ struct EarthQuake
 {
   uint8_t field_0x0;
 };
+
+#ifdef __cplusplus
+
+#else // __cplusplus
+
 static_assert(sizeof(struct EarthQuake) == 0x1, "Data type is of wrong size");
 
 DECLARE_LH_LIST_HEAD(EarthQuake);
+
+#endif //  __cplusplus
 
 #endif /* BW1_DECOMP_EARTH_QUAKE_INCLUDED_H */

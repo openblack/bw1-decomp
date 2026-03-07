@@ -14,6 +14,92 @@
 #include "SetupControl.h" /* For struct SetupControl, struct SetupControlVftable */
 #include "SetupRect.h" /* For struct SetupRect */
 
+#ifdef __cplusplus
+
+// win1.41 009c8178 mac inlined SetupList::`RTTI Type Descriptor'
+// win1.41 009a6658 mac inlined SetupList::`RTTI Base Class Descriptor'
+// win1.41 009a6670 mac inlined SetupList::`RTTI Base Class Array'
+// win1.41 009a6680 mac inlined SetupList::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ab320 mac 107311a4 SetupList::`RTTI Complete Object Locator'
+// win1.41 008ab324 mac 107311b4 SetupList::`vftable'
+class SetupList: public SetupControl
+{
+public:
+  struct ListBoxDraw_t
+  {
+      uint32_t (__stdcall* function)(struct SetupList* widget, int value, int x_min, int y_min, int x_max, int y_max, int param_7, int style);  /* 0x0 */
+  };
+
+    bool field_0x23c;
+    int scrollback_width; /* 0x240 */
+    bool field_0x244;
+    int selected_index;
+    int field_0x24c;
+    int num_items; /* 0x250 */
+    int field_0x254;
+    char16_t (*item_labels)[0x100];
+    int* item_heights;
+    uint32_t* field_0x260;
+    uint32_t* field_0x264;
+    LH3DColor* color;
+    ListBoxDraw_t* ListBoxDraw;
+    int scroll_distance; /* 0x270 */
+    bool show_scrollbar;
+    int field_0x278;
+    int scroll_position;
+    int field_0x280;
+    bool field_0x284;
+    bool field_0x285;
+    LHCoord drag_start;
+    bool use_color_background; /* 0x290 */
+    bool draw_highlight_box;
+    uint8_t field_0x292;
+    uint8_t field_0x293;
+    LH3DColor box_outline_color;
+    LH3DColor selection_color;
+    uint8_t field_0x29c;
+    SetupRect selection_rect; /* 0x2a0 */
+
+    // Override methods
+
+    // win1.41 0040a5c0 mac 10388e60 SetupList::Draw(bool, bool)
+    void Draw(bool hovered, bool selected);
+    // win1.41 0040a110 mac 101c7fc0 SetupList::Drag(int, int)
+    void Drag(int x, int y);
+    // win1.41 0040a370 mac 10478900 SetupList::MouseDown(int, int, bool)
+    void MouseDown(int x, int y, bool param_3);
+    // win1.41 0040a3f0 mac 100c7610 SetupList::MouseUp(int, int, bool)
+    void MouseUp(int x, int y, bool param_3);
+    // win1.41 0040a360 mac 100b7170 SetupList::Click(int, int)
+    void Click(int x, int y);
+    // win1.41 00409eb0 mac 103d24f0 SetupList::KeyDown(int, int)
+    void KeyDown(enum LHKey key, enum LHKeyMod mod);
+    // win1.41 0040a540 mac 1056c3d0 SetupList::~SetupList(void)
+    ~SetupList();
+    // win1.41 0040a520 mac 104e2bb0 SetupList::IsSelected(int)
+    bool IsSelected(int index);
+
+    // Constructors
+
+    // win1.41 0040a450 mac 10494bc0 SetupList::SetupList(int, int, int, int, int)
+    SetupList(int id, int x, int y, int width, int height);
+
+    // Non-virtual methods
+
+    // win1.41 00409dd0 mac 10594000 SetupList::AutoScroll(bool)
+    void AutoScroll(bool param_1);
+    // win1.41 0040aaf0 mac 1056d710 SetupList::UpdateHeights(void)
+    void UpdateHeights();
+    // win1.41 0040ad60 mac 10169200 SetupList::DeleteString(int)
+    void DeleteString(int index);
+    // win1.41 0040ae70 mac 10112d20 SetupList::InsertString(int, wchar_t *)
+    void InsertString(int index, const char16_t* text);
+    // win1.41 0040b050 mac 104ea7a0 SetupList::SetNum(int)
+    void SetNum(int num);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SetupList;
@@ -117,5 +203,7 @@ void __fastcall KeyDown__9SetupListFii(struct SetupControl* this, const void* ed
 void __fastcall __dt__9SetupListFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupList@@QAEXXZ");
 // win1.41 0040a520 mac 104e2bb0 SetupList::IsSelected(int)
 bool __fastcall IsSelected__9SetupListFi(struct SetupList* this, const void* edx, int index) asm("?IsSelected@SetupList@@UAE_NH@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_LIST_INCLUDED_H */

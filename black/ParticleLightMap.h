@@ -8,6 +8,34 @@
 
 #include "PSysRenderParticle.h" /* For struct RenderParticle */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00c09690 mac inlined ParticleLightMap::`RTTI Type Descriptor'
+// win1.41 009b8290 mac inlined ParticleLightMap::`RTTI Base Class Descriptor'
+// win1.41 009b82a8 mac inlined ParticleLightMap::`RTTI Base Class Array'
+// win1.41 009b82c0 mac inlined ParticleLightMap::`RTTI Class Hierarchy Descriptor'
+class ParticleLightMap: public RenderParticle
+{
+public:
+
+    // Override methods
+
+    // win1.41 006ca450 mac 10423560 ParticleLightMap::_dt(void)
+    virtual ~ParticleLightMap();
+    // win1.41 006ca440 mac 10423650 ParticleLightMap::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00695180 mac 1041c890 ParticleLightMap::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -39,5 +67,7 @@ void __fastcall __dt__16ParticleLightMapFv(struct Base* this, const void* edx, u
 char* __fastcall GetDebugText__16ParticleLightMapFv(struct GameThing* this) asm("?GetDebugText@ParticleLightMap@@UAEPADXZ");
 // win1.41 00695180 mac 1041c890 ParticleLightMap::Load(GameOSFile &)
 uint32_t __fastcall Load__16ParticleLightMapFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@ParticleLightMap@@UAEIAAVGameOSFile@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PARTICLE_LIGHT_MAP_INCLUDED_H */

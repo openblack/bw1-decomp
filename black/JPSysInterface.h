@@ -9,6 +9,76 @@
 
 #include "PSysInterface.h" /* For struct PSysInterface */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GPlayer;
+class GameOSFile;
+class GameThing;
+struct LHPoint;
+class PSysBase;
+class PSysManager;
+struct PSysProcessInfo;
+
+// win1.41 00bed520 mac inlined GJPSysInterface::`RTTI Type Descriptor'
+// win1.41 009aeca0 mac inlined GJPSysInterface::`RTTI Base Class Descriptor'
+// win1.41 009aecb8 mac inlined GJPSysInterface::`RTTI Base Class Array'
+// win1.41 009aecd0 mac inlined GJPSysInterface::`RTTI Class Hierarchy Descriptor'
+// win1.41 008fa89c mac 109b880c GJPSysInterface::`RTTI Complete Object Locator'
+// win1.41 008fa8a0 mac 109b8814 GJPSysInterface::`vftable'
+class GJPSysInterface: public PSysInterface
+{
+public:
+    PSysManager* manager; /* 0x14 */
+
+    // Override methods
+
+    // win1.41 0055ede0 mac 103b65b0 GJPSysInterface::_dt(void)
+    virtual ~GJPSysInterface();
+    // win1.41 0055ed20 mac 10001030 GJPSysInterface::SetPlayer(GPlayer *)
+    virtual void SetPlayer(GPlayer* param_1);
+    // win1.41 0055ecc0 mac 10423d80 GJPSysInterface::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006944d0 mac 1041dae0 GJPSysInterface::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cb060 mac 10485b50 GJPSysInterface::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055ecb0 mac 10423d40 GJPSysInterface::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 006736b0 mac inlined GJPSysInterface::Process__1(PSysProcessInfo *const, unsigned int)
+    virtual uint32_t Process(const PSysProcessInfo* param_1, uint32_t param_2);
+    // win1.41 00673690 mac inlined GJPSysInterface::Process(PSysProcessInfo *)
+    virtual void Process(PSysProcessInfo* param_1);
+    // win1.41 0055eda0 mac inlined GJPSysInterface::Draw(float, bool)
+    virtual void Draw(float param_1, bool param_2);
+    // win1.41 00673700 mac inlined GJPSysInterface::Draw(bool)
+    virtual void Draw(bool param_1);
+    // win1.41 0055edc0 mac 10026de0 GJPSysInterface::AddDrawing(float, LHPoint const &)
+    virtual void AddDrawing(float param_1, const LHPoint* param_2);
+    // win1.41 0055ed80 mac inlined GJPSysInterface::AddTarget__1(LHPoint const &)
+    virtual void AddTarget(const LHPoint& param_1);
+    // win1.41 0055ed60 mac inlined GJPSysInterface::AddTarget(GameThing *)
+    virtual void AddTarget(GameThing* param_1);
+    // win1.41 0055ecd0 mac 100a0c00 GJPSysInterface::CloseDown(void)
+    virtual void CloseDown();
+    // win1.41 0055ed30 mac 10017fc0 GJPSysInterface::SetMagnitude(float)
+    virtual void SetMagnitude(float param_1);
+    // win1.41 0055ed40 mac 10424080 GJPSysInterface::SetAge(float)
+    virtual void SetAge(float param_1);
+    // win1.41 0055ecf0 mac 100722f0 GJPSysInterface::SetOrigin(LHPoint const &)
+    virtual void SetOrigin(const LHPoint* param_1);
+    // win1.41 0055ed00 mac 10423f20 GJPSysInterface::SetOriginAndMoveAllAtoms(LHPoint const &)
+    virtual void SetOriginAndMoveAllAtoms(const LHPoint* param_1);
+    // win1.41 0055ed50 mac 104240c0 GJPSysInterface::SetAlpha(unsigned char)
+    virtual void SetAlpha(uint8_t param_1);
+    // win1.41 0055ed10 mac 10026c40 GJPSysInterface::GetOrigin(void)
+    virtual LHPoint* GetOrigin();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -84,5 +154,7 @@ void __fastcall SetOriginAndMoveAllAtoms__15GJPSysInterfaceFRC7LHPoint(struct PS
 void __fastcall SetAlpha__15GJPSysInterfaceFUc(struct PSysInterface* this, const void* edx, uint8_t param_1) asm("?SetAlpha@GJPSysInterface@@UAEXE@Z");
 // win1.41 0055ed10 mac 10026c40 GJPSysInterface::GetOrigin(void)
 struct LHPoint* __fastcall GetOrigin__15GJPSysInterfaceFv(struct PSysInterface* this) asm("?GetOrigin@GJPSysInterface@@UAEPAULHPoint@@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_JP_SYS_INTERFACE_INCLUDED_H */

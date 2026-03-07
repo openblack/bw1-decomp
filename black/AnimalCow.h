@@ -9,6 +9,42 @@
 
 #include "Animal.h" /* For struct Animal */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Creature;
+class GameThing;
+class GameThingWithPos;
+class Living;
+
+// win1.41 009c8f68 mac inlined Cow::`RTTI Type Descriptor'
+// win1.41 009a6d00 mac inlined Cow::`RTTI Base Class Descriptor'
+// win1.41 009a6d18 mac inlined Cow::`RTTI Base Class Array'
+// win1.41 009a6d40 mac inlined Cow::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ad058 mac 1074b2d0 Cow::`RTTI Complete Object Locator'
+// win1.41 008ad05c mac 1074b318 Cow::`vftable'
+class Cow: public Animal
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041d120 mac 101206f0 Cow::_dt(void)
+    virtual ~Cow();
+    // win1.41 0041d100 mac 10171d80 Cow::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041d0f0 mac 10171d50 Cow::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041d110 mac 1012e4c0 Cow::IsCow(Creature *)
+    virtual bool IsCow(Creature* param_1);
+    // win1.41 0041d1b0 mac 1000e870 Cow::DecideWhatToDo(void)
+    virtual bool DecideWhatToDo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -50,5 +86,7 @@ uint32_t __fastcall GetSaveType__3CowFv(struct GameThing* this) asm("?GetSaveTyp
 uint32_t __fastcall IsCow__3CowFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsCow@Cow@@UAEIPAVCreature@@@Z");
 // win1.41 0041d1b0 mac 1000e870 Cow::DecideWhatToDo(void)
 bool __fastcall DecideWhatToDo__3CowFv(struct Living* this) asm("?DecideWhatToDo@Cow@@UAE_NXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMAL_COW_INCLUDED_H */

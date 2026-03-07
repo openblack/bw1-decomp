@@ -8,6 +8,43 @@
 
 #include "Spell.h" /* For struct Spell */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00bece70 mac inlined SpellWater::`RTTI Type Descriptor'
+// win1.41 009ae678 mac inlined SpellWater::`RTTI Base Class Descriptor'
+// win1.41 009ae690 mac inlined SpellWater::`RTTI Base Class Array'
+// win1.41 009ae6a8 mac inlined SpellWater::`RTTI Class Hierarchy Descriptor'
+// win1.41 008f5538 mac 109dacc8 SpellWater::`RTTI Complete Object Locator'
+// win1.41 008f553c mac 109dacd0 SpellWater::`vftable'
+class SpellWater: public Spell
+{
+public:
+    uint8_t field_0xec[0x8];
+
+    // Override methods
+
+    // win1.41 0055d020 mac 1051ee70 SpellWater::_dt(void)
+    virtual ~SpellWater();
+    // win1.41 0055d010 mac 1051ef50 SpellWater::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 007253b0 mac 1051f070 SpellWater::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 00725420 mac 1051ef90 SpellWater::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055d000 mac 1051ef10 SpellWater::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00724ed0 mac 1051f310 SpellWater::Process(void)
+    virtual uint32_t Process();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -50,5 +87,7 @@ uint32_t __fastcall Save__10SpellWaterFR10GameOSFile(struct GameThing* this, con
 uint32_t __fastcall GetSaveType__10SpellWaterFv(struct GameThing* this) asm("?GetSaveType@SpellWater@@UAEIXZ");
 // win1.41 00724ed0 mac 1051f310 SpellWater::Process(void)
 uint32_t __fastcall Process__10SpellWaterFv(struct Spell* this) asm("?Process@SpellWater@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPELL_WATER_INCLUDED_H */

@@ -6,12 +6,6 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
 
-// Forward Declares
-
-struct CHand;
-struct HandState;
-struct LHMatrix;
-
 enum HAND_STATES
 {
   HAND_STATE_INVISIBLE = 0x0,
@@ -27,6 +21,44 @@ enum HAND_STATES
   HAND_STATE_CITADEL = 0xa,
   _HAND_STATES_COUNT = 0xb
 };
+
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CHand;
+struct LHMatrix;
+
+// win1.41 009cece0 mac inlined HandState::`RTTI Type Descriptor'
+// win1.41 009a92f0 mac inlined HandState::`RTTI Base Class Descriptor'
+class HandState
+{
+public:
+    CHand* hand; /* 0x4 */
+
+    // Override methods
+
+    // win1.41 0046e5e0 mac 101c6110 HandState::DrawTheHeldObject(void)
+    virtual void DrawTheHeldObject();
+    // win1.41 005b02d0 mac 101c5590 HandState::Exit(void)
+    virtual void Exit();
+    // win1.41 0046be80 mac 101a6900 HandState::AllowCameraTricons(void)
+    virtual bool AllowCameraTricons();
+
+    // Constructors
+
+    // win1.41 inlined mac inlined HandState::HandState(CHand*)
+    HandState(CHand* hand);
+};
+
+#else // __cplusplus
+
+// Forward Declares
+
+struct CHand;
+struct HandState;
+struct LHMatrix;
+
 static_assert(sizeof(enum HAND_STATES) == 0x4, "Data type is of wrong size");
 
 static const char* HAND_STATES_strs[_HAND_STATES_COUNT] = {
@@ -80,5 +112,7 @@ void __fastcall DrawTheHeldObject__9HandStateFv(struct HandState* this) asm("?Dr
 void __fastcall Exit__9HandStateFv(struct HandState* this) asm("?Exit@HandState@@UAEXXZ");
 // win1.41 0046be80 mac 101a6900 HandState::AllowCameraTricons(void)
 bool __fastcall AllowCameraTricons__9HandStateFv(struct HandState* this) asm("?AllowCameraTricons@HandState@@UAE_NXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HAND_STATE_INCLUDED_H */

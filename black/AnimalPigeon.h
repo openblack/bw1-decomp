@@ -8,6 +8,36 @@
 
 #include "AnimalDove.h" /* For struct Dove */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+class Object;
+
+// win1.41 009c9238 mac inlined Pigeon::`RTTI Type Descriptor'
+// win1.41 009a7380 mac inlined Pigeon::`RTTI Base Class Descriptor'
+// win1.41 009a7398 mac inlined Pigeon::`RTTI Base Class Array'
+// win1.41 009a73c8 mac inlined Pigeon::`RTTI Class Hierarchy Descriptor'
+class Pigeon: public Dove
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041eda0 mac 101717d0 Pigeon::_dt(void)
+    virtual ~Pigeon();
+    // win1.41 0041ed90 mac 101718a0 Pigeon::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041ed80 mac 10171860 Pigeon::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041bf80 mac 101703f0 Pigeon::StandAnimation(void)
+    virtual uint32_t StandAnimation();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -41,5 +71,7 @@ char* __fastcall GetDebugText__6PigeonFv(struct GameThing* this) asm("?GetDebugT
 uint32_t __fastcall GetSaveType__6PigeonFv(struct GameThing* this) asm("?GetSaveType@Pigeon@@UAEIXZ");
 // win1.41 0041bf80 mac 101703f0 Pigeon::StandAnimation(void)
 uint32_t __fastcall StandAnimation__6PigeonFv(struct Object* this) asm("?StandAnimation@Pigeon@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMAL_PIGEON_INCLUDED_H */

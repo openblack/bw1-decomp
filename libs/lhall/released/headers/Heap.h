@@ -6,6 +6,72 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// win1.41 00bfec28 mac inlined Heap::`RTTI Type Descriptor'
+// win1.41 009b3018 mac inlined Heap::`RTTI Base Class Descriptor'
+// win1.41 009b3030 mac inlined Heap::`RTTI Base Class Array'
+// win1.41 009b3038 mac inlined Heap::`RTTI Class Hierarchy Descriptor'
+// win1.41 00931cc4 mac 10730a2c Heap::`RTTI Complete Object Locator'
+// win1.41 00931cc8 mac 10730a34 Heap::`vftable'
+class Heap
+{
+public:
+    // Virtual functions
+
+    // win1.41 007e1020 mac 1013ab30 Heap::SetToZero(void)
+    virtual void SetToZero(); /* 0x0 */
+    // win1.41 00643400 mac 1013ae40 Heap::GetActualMemoryRequired( const(unsigned long))
+    virtual void GetActualMemoryRequired(uint32_t param_1);
+
+    // Non-virtual methods
+
+    // win1.41 007e1160 mac 1013a820 Heap::New(int)
+    void* New(int size);
+};
+
+// win1.41 00bfebd0 mac inlined HeapWithPools::`RTTI Type Descriptor'
+// win1.41 009b2f90 mac inlined HeapWithPools::`RTTI Base Class Descriptor'
+class HeapWithPools: public Heap
+{
+public:
+
+    // Non-virtual methods
+
+    // win1.41 007e20d0 mac 100404e0 HeapWithPools::New(int)
+    void* New(int size);
+};
+
+// win1.41 00bfebf0 mac inlined UniqueKeyHeap::`RTTI Type Descriptor'
+// win1.41 009b2fa8 mac inlined UniqueKeyHeap::`RTTI Base Class Descriptor'
+class UniqueKeyHeap: public HeapWithPools
+{
+public:
+
+    // Non-virtual methods
+
+    // win1.41 007e1830 mac 100405b0 UniqueKeyHeap::New(int)
+    void* New(int size);
+};
+
+// win1.41 00bfec10 mac inlined HeapStore::`RTTI Type Descriptor'
+// win1.41 009b2fc0 mac inlined HeapStore::`RTTI Base Class Descriptor'
+// win1.41 009b2fd8 mac inlined HeapStore::`RTTI Base Class Array'
+// win1.41 009b2ff0 mac inlined HeapStore::`RTTI Class Hierarchy Descriptor'
+class HeapStore: public UniqueKeyHeap
+{
+public:
+
+    // Override methods
+
+    // win1.41 007e1780 mac inlined HeapStore::SetToZero(void)
+    virtual void SetToZero();
+    // win1.41 00643410 mac inlined HeapStore::GetActualMemoryRequired( const(unsigned long))
+    virtual void GetActualMemoryRequired(uint32_t param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Heap;
@@ -109,5 +175,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall SetToZero__9HeapStoreFv(struct Heap* this) asm("?SetToZero@HeapStore@@UAEXXZ");
 // win1.41 00643410 mac inlined HeapStore::GetActualMemoryRequired( const(unsigned long))
 void __fastcall GetActualMemoryRequired__9HeapStoreCFUl(const struct Heap* this, const void* edx, uint32_t param_1) asm("?GetActualMemoryRequired@HeapStore@@UBEXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HEAP_INCLUDED_H */

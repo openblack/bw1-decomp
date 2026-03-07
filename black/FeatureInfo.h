@@ -9,6 +9,38 @@
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+class GObjectInfo;
+
+// win1.41 009c9500 mac inlined GFeatureInfo::`RTTI Type Descriptor'
+// win1.41 009a78b8 mac inlined GFeatureInfo::`RTTI Base Class Descriptor'
+// win1.41 009ac018 mac inlined GFeatureInfo::`RTTI Base Class Array'
+// win1.41 009ac030 mac inlined GFeatureInfo::`RTTI Class Hierarchy Descriptor'
+class GFeatureInfo: public GMultiMapFixedInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00527320 mac 100a6900 GFeatureInfo::_dt(void)
+    virtual ~GFeatureInfo();
+    // win1.41 00421eb0 mac 100a7c10 GFeatureInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+    // win1.41 00421ea0 mac 100a5310 GFeatureInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh() const;
+    // win1.41 00421e80 mac inlined GFeatureInfo::GetAbodeType( const(void))
+    virtual ABODE_TYPE GetAbodeType();
+    // win1.41 00421e90 mac inlined GFeatureInfo::GetAbodeNumber( const(void))
+    virtual ABODE_NUMBER GetAbodeNumber();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -44,5 +76,7 @@ uint32_t __fastcall GetMesh__12GFeatureInfoCFv(const struct GObjectInfo* this) a
 enum ABODE_TYPE __fastcall GetAbodeType__12GFeatureInfoCFv(const struct GMultiMapFixedInfo* this) asm("?GetAbodeType@GFeatureInfo@@UBE?AW4ABODE_TYPE@@XZ");
 // win1.41 00421e90 mac inlined GFeatureInfo::GetAbodeNumber( const(void))
 enum ABODE_NUMBER __fastcall GetAbodeNumber__12GFeatureInfoCFv(const struct GMultiMapFixedInfo* this) asm("?GetAbodeNumber@GFeatureInfo@@UBE?AW4ABODE_NUMBER@@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FEATURE_INFO_INCLUDED_H */

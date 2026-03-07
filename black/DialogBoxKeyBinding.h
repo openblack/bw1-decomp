@@ -8,6 +8,48 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class SetupList;
+
+// win1.41 00be8c00 mac inlined DialogBoxKeyBinding::`RTTI Type Descriptor'
+// win1.41 009ab8e0 mac inlined DialogBoxKeyBinding::`RTTI Base Class Descriptor'
+// win1.41 009ab8f8 mac inlined DialogBoxKeyBinding::`RTTI Base Class Array'
+// win1.41 009ab908 mac inlined DialogBoxKeyBinding::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d859c mac 10998f98 DialogBoxKeyBinding::`RTTI Complete Object Locator'
+// win1.41 008d85a0 mac 10998fa0 DialogBoxKeyBinding::`vftable'
+class DialogBoxKeyBinding: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10;
+    uint8_t field_0x11;
+    uint8_t field_0x12;
+    uint8_t field_0x13;
+    uint8_t field_0x14;
+    uint8_t field_0x15;
+    uint8_t field_0x16;
+    uint8_t field_0x17;
+    SetupList* list;
+
+    // Override methods
+
+    // win1.41 005129d0 mac 102b18f0 DialogBoxKeyBinding::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 00512bc0 mac 102b1890 DialogBoxKeyBinding::Destroy(void)
+    virtual void Destroy();
+    // win1.41 00512bd0 mac 102b1750 DialogBoxKeyBinding::InitControls(void)
+    virtual void InitControls();
+
+    // Constructors
+
+    // win1.41 005127b0 mac 102b1e90 DialogBoxKeyBinding::DialogBoxKeyBinding(void)
+    DialogBoxKeyBinding();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SetupList;
@@ -55,5 +97,7 @@ void __fastcall Init__19DialogBoxKeyBindingFUlUlPFiP8SetupBoxP12SetupControlii_v
 void __fastcall Destroy__19DialogBoxKeyBindingFv(struct DialogBoxBase* this) asm("?Destroy@DialogBoxKeyBinding@@UAEXXZ");
 // win1.41 00512bd0 mac 102b1750 DialogBoxKeyBinding::InitControls(void)
 void __fastcall InitControls__19DialogBoxKeyBindingFv(struct DialogBoxBase* this) asm("?InitControls@DialogBoxKeyBinding@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_DIALOG_BOX_KEY_BINDING_INCLUDED_H */

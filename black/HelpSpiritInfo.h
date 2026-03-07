@@ -8,6 +8,31 @@
 
 #include "LivingInfo.h" /* For struct GLivingInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 00bf0be8 mac inlined HelpSpiritInfo::`RTTI Type Descriptor'
+// win1.41 009b1298 mac inlined HelpSpiritInfo::`RTTI Base Class Descriptor'
+// win1.41 009b12b0 mac inlined HelpSpiritInfo::`RTTI Base Class Array'
+// win1.41 009b12d0 mac inlined HelpSpiritInfo::`RTTI Class Hierarchy Descriptor'
+class HelpSpiritInfo: public GLivingInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 005c4a70 mac 1034c8b0 HelpSpiritInfo::_dt(void)
+    virtual ~HelpSpiritInfo();
+    // win1.41 005c4a00 mac 1034c9c0 HelpSpiritInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -36,5 +61,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__14HelpSpiritInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GHelpSpiritInfo@@UAEPAXI@Z");
 // win1.41 005c4a00 mac 1034c9c0 HelpSpiritInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__14HelpSpiritInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@HelpSpiritInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HELP_SPIRIT_INFO_INCLUDED_H */

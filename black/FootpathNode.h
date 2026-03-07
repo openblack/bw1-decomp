@@ -4,11 +4,67 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
 #include "GameThing.h" /* For struct GameThing */
 #include "Living.h" /* For struct Living */
 #include "MapCoords.h" /* For struct MapCoords */
+
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+
+// win1.41 00bea140 mac inlined GFootpathNode::`RTTI Type Descriptor'
+// win1.41 009ac5f0 mac inlined GFootpathNode::`RTTI Base Class Descriptor'
+// win1.41 009ac608 mac inlined GFootpathNode::`RTTI Base Class Array'
+// win1.41 009ac618 mac inlined GFootpathNode::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ddfb8 mac 10742ff0 GFootpathNode::`RTTI Complete Object Locator'
+// win1.41 008ddfbc mac 10742ff8 GFootpathNode::`vftable'
+class GFootpathNode: public GameThing
+{
+public:
+    uint8_t field_0x14;
+    MapCoords coords;
+    GFootpathNode* next; /* 0x24 */
+    LHLinkedList<Living> followers;
+
+    // Override methods
+
+    // win1.41 00534d70 mac 100eef60 GFootpathNode::_dt(void)
+    virtual ~GFootpathNode();
+    // win1.41 00538970 mac 100e91f0 GFootpathNode::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00534d60 mac 100ef030 GFootpathNode::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00538c10 mac 100e86f0 GFootpathNode::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& file);
+    // win1.41 00538d70 mac 100e83f0 GFootpathNode::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& file);
+    // win1.41 00534d50 mac 100eeff0 GFootpathNode::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00538ea0 mac 100e83b0 GFootpathNode::ResolveLoad(void)
+    virtual void ResolveLoad();
+
+    // Constructors
+
+    // win1.41 inlined mac inlined GFootpathNode::GFootpathNode(void)
+    GFootpathNode();
+    // win1.41 00534cf0 mac 100eed50 GFootpathNode::GFootpathNode(MapCoords const &, int, int)
+    GFootpathNode(MapCoords* coords, int param_2, int param_3);
+
+    // Non-virtual methods
+
+    // win1.41 005389d0 mac 100e90a0 GFootpathNode::PurgeFollowerList(void)
+    void PurgeFollowerList();
+    // win1.41 00538b10 mac 100e8d10 GFootpathNode::ClearFromPreviousNode(void)
+    void ClearFromPreviousNode();
+};
+
+#else // __cplusplus
 
 // Forward Declares
 
@@ -70,5 +126,7 @@ uint32_t __fastcall Save__13GFootpathNodeFR10GameOSFile(struct GameThing* this, 
 uint32_t __fastcall GetSaveType__13GFootpathNodeFv(struct GameThing* this) asm("?GetSaveType@GFootpathNode@@UAEIXZ");
 // win1.41 00538ea0 mac 100e83b0 GFootpathNode::ResolveLoad(void)
 void __fastcall ResolveLoad__13GFootpathNodeFv(struct GameThing* this) asm("?ResolveLoad@GFootpathNode@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FOOTPATH_NODE_INCLUDED_H */

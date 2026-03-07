@@ -8,6 +8,23 @@
 
 #include "LH3DStaticObject.h" /* For struct LH3DStaticObject */
 
+#ifdef __cplusplus
+
+// win1.41 009a2e30 mac 101ca694 LH3DStaticMorphableObject::`RTTI Complete Object Locator'
+// win1.41 009a2e34 mac 101ca6bc LH3DStaticMorphableObject::`vftable'
+class LH3DStaticMorphableObject: public LH3DStaticObject
+{
+public:
+    uint32_t field_0x80;
+
+    // Constructors
+
+    // win1.41 inlined mac 100826b0 LH3DStaticMorphableObject::LH3DStaticMorphableObject(void)
+    LH3DStaticMorphableObject();
+};
+
+#else // __cplusplus
+
 struct LH3DStaticMorphableObject
 {
   struct LH3DStaticObject super;  /* 0x0 */
@@ -26,5 +43,7 @@ extern const struct LH3DObjectVftable __vt__25LH3DStaticMorphableObject asm("??_
 
 // win1.41 inlined mac 100826b0 LH3DStaticMorphableObject::LH3DStaticMorphableObject(void)
 struct LH3DStaticMorphableObject* __fastcall __ct__25LH3DStaticMorphableObjectFv(struct LH3DStaticMorphableObject* this) asm("??0LH3DStaticMorphableObject@@QAE@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_STATIC_MORPHABLE_OBJECT_INCLUDED_H */

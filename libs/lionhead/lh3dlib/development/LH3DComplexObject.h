@@ -8,6 +8,48 @@
 
 #include "LH3DStaticObject.h" /* For struct LH3DStaticObject */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LH3DObjectHair;
+struct LHMatrix;
+
+// win1.41 009a3064 mac 101cbdfc LH3DComplexObject::`RTTI Complete Object Locator'
+// win1.41 009a3068 mac 101cbe04 LH3DComplexObject::`vftable'
+class LH3DComplexObject: public LH3DStaticObject
+{
+public:
+    LHMatrix* matrix_0x80;
+    uint32_t* field_0x84;
+    LH3DObjectHair* hair;
+    uint32_t field_0x8c;
+    uint32_t field_0x90;
+    uint32_t field_0x94;
+    uint32_t field_0x98;
+    uint32_t field_0x9c;
+    uint32_t field_0xa0;
+    uint32_t field_0xa4;
+    uint32_t field_0xa8;
+    uint32_t field_0xac;
+    LH3DComplexObject* next; /* 0xb0 */
+    uint32_t field_0xb4;
+    uint32_t field_0xb8;
+    uint32_t field_0xbc;
+
+    // Constructors
+
+    // win1.41 inlined mac inlined LH3DComplexObject::LH3DComplexObject(void)
+    LH3DComplexObject();
+
+    // Non-virtual methods
+
+    // win1.41 0080c020 mac 10081d10 LH3DComplexObject::CreateDynamicShadow
+    void CreateDynamicShadow();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LH3DObjectHair;
@@ -51,5 +93,7 @@ struct LH3DComplexObject* __fastcall __ct__17LH3DComplexObjectFv(struct LH3DComp
 
 // win1.41 0080c020 mac 10081d10 LH3DComplexObject::CreateDynamicShadow
 void __fastcall CreateDynamicShadow__17LH3DComplexObjectFv(struct LH3DComplexObject* this) asm("?CreateDynamicShadow@LH3DComplexObject@@QAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_COMPLEX_OBJECT_INCLUDED_H */

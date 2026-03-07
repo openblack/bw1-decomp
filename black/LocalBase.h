@@ -9,6 +9,36 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bf0738 mac inlined LocalBase::`RTTI Type Descriptor'
+// win1.41 009b11e0 mac inlined LocalBase::`RTTI Base Class Descriptor'
+// win1.41 009b11a8 mac inlined LocalBase::`RTTI Base Class Array'
+// win1.41 009b11b8 mac inlined LocalBase::`RTTI Class Hierarchy Descriptor'
+// win1.41 008a9a40 mac 1099bd98 LocalBase::`RTTI Complete Object Locator'
+// win1.41 00900d24 mac 1099bda8 LocalBase::`vftable'
+class LocalBase: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 005c2150 mac 1033f600 LocalBase::_dt(void)
+    virtual ~LocalBase();
+
+    // Static methods
+
+    // win1.41 005f8790 mac 1009eb9c LocalBase::operator new(unsigned long)
+    static LocalBase* __nw(size_t size, const char* file_name, uint32_t line);
+
+    // Constructors
+
+    // win1.41 inlined mac 1034ab30 LocalBase::LocalBase(void)
+    LocalBase();
+};
+
+#else // __cplusplus
+
 struct LocalBase
 {
   struct Base super;  /* 0x0 */
@@ -44,5 +74,7 @@ struct LocalBase* __fastcall __ct__9LocalBaseFv(struct LocalBase* this) asm("??0
 
 // win1.41 005c2150 mac 1033f600 LocalBase::_dt(void)
 void __fastcall __dt__9LocalBaseFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GLocalBase@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LOCAL_BASE_INCLUDED_H */

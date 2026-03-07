@@ -5,6 +5,17 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// win1.41 009cd240 mac inlined DrawingObject::`RTTI Type Descriptor'
+// win1.41 009a83d8 mac inlined DrawingObject::`RTTI Base Class Descriptor'
+class DrawingObject
+{
+public:
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct DrawingObject;
@@ -27,5 +38,7 @@ static_assert(sizeof(struct DrawingObject) == 0x4, "Data type is of wrong size")
 extern struct RTTITypeDescriptor __RTTITypeDescriptor__13DrawingObject asm("??_R0?AVDrawingObject@@@8");
 // win1.41 009a83d8 mac inlined DrawingObject::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__13DrawingObject asm("??_R1A@?0A@A@DrawingObject@@8");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_DRAWING_OBJECT_INCLUDED_H */

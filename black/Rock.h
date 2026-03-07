@@ -11,6 +11,110 @@
 #include "MobileStatic.h" /* For struct MobileStatic */
 #include "MultiMapFixed.h" /* For struct MultiMapFixedVftable */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Creature;
+class GInterfaceStatus;
+class GMobileStaticInfo;
+class GPlayer;
+class GameOSFile;
+class GameThing;
+class GameThingWithPos;
+struct MapCoords;
+class Object;
+class PhysicsObject;
+
+// win1.41 009cd328 mac inlined Rock::`RTTI Type Descriptor'
+// win1.41 009a8510 mac inlined Rock::`RTTI Base Class Descriptor'
+// win1.41 009ae568 mac inlined Rock::`RTTI Base Class Array'
+// win1.41 009ae590 mac inlined Rock::`RTTI Class Hierarchy Descriptor'
+// win1.41 008e20fc mac 107387e8 Rock::`RTTI Complete Object Locator'
+// win1.41 008e2100 mac 10738828 Rock::`vftable'
+class Rock: public MobileStatic
+{
+public:
+    uint32_t field_0x88;
+    float field_0x8c;
+    GPlayer* player; /* 0x90 */
+
+    // Virtual functions
+
+    // win1.41 005613a0 mac 100b4de0 Rock::_dt(void)
+    virtual ~Rock();
+    // win1.41 006e77a0 mac 1013d1f0 Rock::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 00439720 mac 100b3f50 Rock::SetPlayer(GPlayer *)
+    virtual void SetPlayer(GPlayer* param_1);
+    // win1.41 006e7170 mac 1013d800 Rock::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
+    virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4, const MapCoords* param_5, int param_6);
+    // win1.41 006e70d0 mac 1013d970 Rock::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
+    virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
+    // win1.41 00561390 mac 100c4210 Rock::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0071bcd0 mac 1050fda0 Rock::GetSampleForAttack(void)
+    virtual uint32_t GetSampleForAttack();
+    // win1.41 006e7870 mac 1013cfa0 Rock::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006e77b0 mac 1013d0c0 Rock::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00561380 mac 100c41e0 Rock::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 006e79f0 mac 1013c460 Rock::PhysicsEditorCreate(int)
+    virtual void PhysicsEditorCreate(int param_1);
+    // win1.41 006e7a60 mac 1013c420 Rock::GetOverwriteTapToolTip(void)
+    virtual uint32_t GetOverwriteTapToolTip();
+    // win1.41 00439730 mac inlined Rock::IsRock_0(void)
+    virtual bool IsRock();
+    // win1.41 00439760 mac 100b4030 Rock::CanBeAttackedByCreature(Creature *)
+    virtual bool CanBeAttackedByCreature(Creature* param_1);
+    // win1.41 006e7a70 mac 1013c3c0 Rock::CanBePickedUpByCreature(Creature *)
+    virtual bool CanBePickedUpByCreature(Creature* param_1);
+    // win1.41 00439750 mac 100b3ff0 Rock::GetCreatureMimicType(void)
+    virtual uint32_t GetCreatureMimicType();
+    // win1.41 006e7070 mac 1013dbc0 Rock::CanBeThrownByPlayer(void)
+    virtual bool CanBeThrownByPlayer();
+    // win1.41 006e79e0 mac 1000ef30 Rock::GetScriptObjectType(void)
+    virtual uint32_t GetScriptObjectType();
+    // win1.41 006e7210 mac 1013d710 Rock::ActualMoveMapObject(MapCoords const &)
+    virtual void ActualMoveMapObject(const MapCoords* param_1);
+    // win1.41 00517f10 mac 10042fe0 Rock::Draw(void)
+    virtual void Draw();
+    // win1.41 00439710 mac 100b3f00 Rock::IsResourceStore(RESOURCE_TYPE)
+    virtual bool IsResourceStore(RESOURCE_TYPE param_1);
+    // win1.41 006e70c0 mac 1013dad0 Rock::GetResourceType(void)
+    virtual RESOURCE_TYPE GetResourceType();
+    // win1.41 006e7090 mac 1013db10 Rock::GetDefaultResource(void)
+    virtual int GetDefaultResource();
+    // win1.41 006e7030 mac 1013dc40 Rock::ValidForPlaceInHand(GInterfaceStatus *)
+    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    // win1.41 006e7450 mac 1013d680 Rock::InterfaceValidToTap(GInterfaceStatus *)
+    virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
+    // win1.41 006e7480 mac 1013d4e0 Rock::InterfaceTap(GInterfaceStatus *)
+    virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
+    // win1.41 006e6ff0 mac 1013dd60 Rock::GetPhysicsConstantsType(void)
+    virtual uint32_t GetPhysicsConstantsType();
+    // win1.41 006e7000 mac 1013dd00 Rock::EndPhysics(PhysicsObject *, bool)
+    virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+    // win1.41 00561370 mac 100c41a0 Rock::InteractsWithPhysicsObjects(void)
+    virtual bool InteractsWithPhysicsObjects();
+    // win1.41 006e7930 mac 1013ce40 Rock::ReactToPhysicsImpact(PhysicsObject *, bool)
+    virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+    // win1.41 00439770 mac 100b4080 Rock::ShouldFootpathsGoRound(void)
+    virtual bool ShouldFootpathsGoRound();
+    // win1.41 00439740 mac 100b3fc0 Rock::IsMovable(void)
+    virtual bool IsMovable();
+
+    // Constructors
+
+    // win1.41 006e6f70 mac 1013dda0 Rock::Rock(MapCoords const &, GMobileStaticInfo const *, Object *, GPlayer *, float, float)
+    Rock(MapCoords* coords, GMobileStaticInfo* info, Object* param_3, GPlayer* param_4, float param_5, float param_6);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -128,5 +232,7 @@ void __fastcall ReactToPhysicsImpact__4RockFP13PhysicsObjectb(struct Object* thi
 bool __fastcall ShouldFootpathsGoRound__4RockFv(struct Object* this) asm("?ShouldFootpathsGoRound@Rock@@UAE_NXZ");
 // win1.41 00439740 mac 100b3fc0 Rock::IsMovable(void)
 bool __fastcall IsMovable__4RockFv(struct Rock* this) asm("?IsMovable@Rock@@UAE_NXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ROCK_INCLUDED_H */

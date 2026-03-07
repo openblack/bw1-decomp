@@ -8,6 +8,28 @@
 
 #include "MagicInfo.h" /* For struct GMagicInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 009cb9d0 mac inlined GMagicForestInfo::`RTTI Type Descriptor'
+// win1.41 009a7e18 mac inlined GMagicForestInfo::`RTTI Base Class Descriptor'
+// win1.41 009a7e30 mac inlined GMagicForestInfo::`RTTI Base Class Array'
+// win1.41 009a7e48 mac inlined GMagicForestInfo::`RTTI Class Hierarchy Descriptor'
+class GMagicForestInfo: public GMagicInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 004356e0 mac 103ac990 GMagicForestInfo::_dt(void)
+    virtual ~GMagicForestInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 004356e0 mac 103ac990 GMagicForestInfo::_dt(void)
 void __fastcall __dt__16GMagicForestInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMagicForestInfo@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_FOREST_INFO_INCLUDED_H */

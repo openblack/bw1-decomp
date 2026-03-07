@@ -8,6 +8,23 @@
 
 #include "LHPlayer.h" /* For struct LHPlayer */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class LHConnection;
+
+class LHServerPlayer: public LHPlayer
+{
+public:
+    uint8_t field_0x200[0x10];
+    LHConnection* connection; /* 0x210 */
+    uint32_t field_0x214;
+    bool32_t runs_message_server;
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LHConnection;
@@ -21,5 +38,7 @@ struct LHServerPlayer
   bool32_t runs_message_server;
 };
 static_assert(sizeof(struct LHServerPlayer) == 0x21c, "Data type is of wrong size");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_SERVER_PLAYER_INCLUDED_H */

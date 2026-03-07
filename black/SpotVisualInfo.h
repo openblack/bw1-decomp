@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00bfe000 mac inlined GSpotVisualInfo::`RTTI Type Descriptor'
+// win1.41 009b2e80 mac inlined GSpotVisualInfo::`RTTI Base Class Descriptor'
+// win1.41 009b2e98 mac inlined GSpotVisualInfo::`RTTI Base Class Array'
+// win1.41 009b2ea8 mac inlined GSpotVisualInfo::`RTTI Class Hierarchy Descriptor'
+class GSpotVisualInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 0063e070 mac 101102f0 GSpotVisualInfo::_dt(void)
+    virtual ~GSpotVisualInfo();
+    // win1.41 0063e020 mac 10110f10 GSpotVisualInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__15GSpotVisualInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGSpotVisualInfo@@UAEPAXI@Z");
 // win1.41 0063e020 mac 10110f10 GSpotVisualInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__15GSpotVisualInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GSpotVisualInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPOT_VISUAL_INFO_INCLUDED_H */

@@ -8,6 +8,31 @@
 
 #include "ObjectInfo.h" /* For struct GObjectInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 00c023c0 mac inlined GMagicFireBallInfo::`RTTI Type Descriptor'
+// win1.41 009b3ac8 mac inlined GMagicFireBallInfo::`RTTI Base Class Descriptor'
+// win1.41 009b3ae0 mac inlined GMagicFireBallInfo::`RTTI Base Class Array'
+// win1.41 009b3af8 mac inlined GMagicFireBallInfo::`RTTI Class Hierarchy Descriptor'
+class GMagicFireBallInfo: public GObjectInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00682910 mac 103fbe00 GMagicFireBallInfo::_dt(void)
+    virtual ~GMagicFireBallInfo();
+    // win1.41 006828a0 mac 103fce80 GMagicFireBallInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -36,5 +61,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__18GMagicFireBallInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMagicFireBallInfo@@UAEPAXI@Z");
 // win1.41 006828a0 mac 103fce80 GMagicFireBallInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__18GMagicFireBallInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GMagicFireBallInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_FIRE_BALL_INFO_INCLUDED_H */

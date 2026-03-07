@@ -8,6 +8,58 @@
 #include <lionhead/lh3dlib/development/Prss.h> /* For struct Prss */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct GCameraEditor__CameraBin;
+struct LH3DWay;
+
+// win1.41 009cdc40 mac inlined GCameraEditor::`RTTI Type Descriptor'
+// win1.41 009a8858 mac inlined GCameraEditor::`RTTI Base Class Descriptor'
+// win1.41 009a8870 mac inlined GCameraEditor::`RTTI Base Class Array'
+// win1.41 009a8880 mac inlined GCameraEditor::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c7638 mac inlined GCameraEditor::`RTTI Complete Object Locator'
+// win1.41 008c763c mac inlined GCameraEditor::`vftable'
+class GCameraEditor: public Prss
+{
+public:
+    struct InfoTrack
+    {
+        int field_0x0;
+        uint32_t field_0x4;
+        int field_0x8;
+        uint32_t field_0xc;
+        InfoTrack* next; /* 0x10 */
+        uint32_t field_0x14;
+        LHPoint field_0x18;
+        LHPoint field_0x24;
+        int field_0x30;
+        LH3DWay* field_0x34;
+        int32_t* field_0x38;
+
+        // Non-virtual methods
+
+        // win1.41 00446450 mac 1019b070 GCameraEditor::InfoTrack::Draw(void)
+        void Draw();
+    };
+
+    uint8_t field_0x10[0x18];
+
+    // Static methods
+
+    // win1.41 00445050 mac 1019bdb0 GCameraEditor::FinalDraw(void)
+    static void FinalDraw();
+    // win1.41 00445530 mac 1019b6c0 GCameraEditor::CreateSegFile(void)
+    static void CreateSegFile();
+    // win1.41 00445e10 mac 1019b440 GCameraEditor::Draw3DPart(void)
+    static void Draw3DPart();
+    // win1.41 00446fe0 mac 1019adf0 GCameraEditor::LoadCameraFromHD(long, GCameraEditor::CameraBin &)
+    static void LoadCameraFromHD(int param_1, GCameraEditor__CameraBin* param_2);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct GCameraEditor__CameraBin;
@@ -66,5 +118,7 @@ static_assert(sizeof(struct Q213GCameraEditor9InfoTrack) == 0x3c, "Data type is 
 
 // win1.41 00446450 mac 1019b070 GCameraEditor::InfoTrack::Draw(void)
 void __fastcall Draw__Q213GCameraEditor9InfoTrackFv(struct Q213GCameraEditor9InfoTrack* this);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CAMERA_EDITOR_INCLUDED_H */

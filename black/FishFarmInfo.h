@@ -9,6 +9,34 @@
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+struct MapCoords;
+
+// win1.41 00be9e08 mac inlined GFishFarmInfo::`RTTI Type Descriptor'
+// win1.41 009ac2e8 mac inlined GFishFarmInfo::`RTTI Base Class Descriptor'
+// win1.41 009ac300 mac inlined GFishFarmInfo::`RTTI Base Class Array'
+// win1.41 009ac318 mac inlined GFishFarmInfo::`RTTI Class Hierarchy Descriptor'
+class GFishFarmInfo: public GMultiMapFixedInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 0052c330 mac 100da430 GFishFarmInfo::_dt(void)
+    virtual ~GFishFarmInfo();
+    // win1.41 0052c2e0 mac 100da3d0 GFishFarmInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+    // win1.41 0052d100 mac 100db8c0 GFishFarmInfo::IsOkToCreateAtPos( const(MapCoords const &, float, float))
+    virtual bool IsOkToCreateAtPos(const MapCoords* param_1, float param_2, float param_3);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -40,5 +68,7 @@ void __fastcall __dt__13GFishFarmInfoFv(struct Base* this, const void* edx, uint
 struct GBaseInfo* __fastcall GetBaseInfo__13GFishFarmInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GFishFarmInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 0052d100 mac 100db8c0 GFishFarmInfo::IsOkToCreateAtPos( const(MapCoords const &, float, float))
 bool __fastcall IsOkToCreateAtPos__13GFishFarmInfoCFRC9MapCoordsff(const struct GMultiMapFixedInfo* this, const void* edx, const struct MapCoords* param_1, float param_2, float param_3) asm("?IsOkToCreateAtPos@GFishFarmInfo@@UBE_NABUMapCoords@@MM@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FISH_FARM_INFO_INCLUDED_H */

@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bfda30 mac inlined MPFEDisconnectNowMessage::`RTTI Type Descriptor'
+// win1.41 009b2a50 mac inlined MPFEDisconnectNowMessage::`RTTI Base Class Descriptor'
+// win1.41 009b2a68 mac inlined MPFEDisconnectNowMessage::`RTTI Base Class Array'
+// win1.41 009b2a78 mac inlined MPFEDisconnectNowMessage::`RTTI Class Hierarchy Descriptor'
+class MPFEDisconnectNowMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 006302c0 mac 10393c20 MPFEDisconnectNowMessage::_dt(void)
+    virtual ~MPFEDisconnectNowMessage();
+};
+
+#else // __cplusplus
+
 struct MPFEDisconnectNowMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 006302c0 mac 10393c20 MPFEDisconnectNowMessage::_dt(void)
 void __fastcall __dt__24MPFEDisconnectNowMessageFv(struct MPFEMessageObject* this) asm("??_GMPFEDisconnectNowMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_DISCONNECT_NOW_MESSAGE_INCLUDED_H */

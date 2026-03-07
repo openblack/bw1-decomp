@@ -10,6 +10,47 @@
 #include "Base.h" /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class GPlayer;
+class GameThing;
+
+struct EffectNumbers
+{
+  float values[EFFECT_TYPE_LAST];  /* 0x0 */
+};
+
+// win1.41 00be9678 mac inlined EffectValues::`RTTI Type Descriptor'
+// win1.41 009abf70 mac inlined EffectValues::`RTTI Base Class Descriptor'
+// win1.41 009abf88 mac inlined EffectValues::`RTTI Base Class Array'
+// win1.41 009abf98 mac inlined EffectValues::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d8ba4 mac 10734728 EffectValues::`RTTI Complete Object Locator'
+// win1.41 008d8ba8 mac 10734730 EffectValues::`vftable'
+class EffectValues: public Base
+{
+public:
+    EffectNumbers numbers; /* 0x8 */
+    float field_0x24;
+    GameThing* applied_by;
+    MapCoords coords;
+    uint32_t field_0x38;
+    GPlayer* player;
+
+    // Override methods
+
+    // win1.41 00524f40 mac 10412ff0 EffectValues::_dt(void)
+    virtual ~EffectValues();
+
+    // Constructors
+
+    // win1.41 00525040 mac 100cc350 EffectValues::EffectValues(EFFECT_TYPE, float, GameThing *, float, GPlayer *)
+    EffectValues(EFFECT_TYPE type, float value, GameThing* source, float param_4, GPlayer* player);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct GPlayer;
@@ -57,5 +98,7 @@ struct EffectValues* __fastcall __ct__12EffectValuesF11EFFECT_TYPEfP9GameThingfP
 
 // win1.41 00524f40 mac 10412ff0 EffectValues::_dt(void)
 void __fastcall __dt__12EffectValuesFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GEffectValues@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_EFFECT_VALUES_INCLUDED_H */

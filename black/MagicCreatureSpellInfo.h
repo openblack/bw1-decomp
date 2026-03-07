@@ -8,6 +8,28 @@
 
 #include "MagicInfo.h" /* For struct GMagicInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 009cd030 mac inlined GMagicCreatureSpellInfo::`RTTI Type Descriptor'
+// win1.41 009a81f0 mac inlined GMagicCreatureSpellInfo::`RTTI Base Class Descriptor'
+// win1.41 009a8208 mac inlined GMagicCreatureSpellInfo::`RTTI Base Class Array'
+// win1.41 009a8220 mac inlined GMagicCreatureSpellInfo::`RTTI Class Hierarchy Descriptor'
+class GMagicCreatureSpellInfo: public GMagicInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00435800 mac 103aba10 GMagicCreatureSpellInfo::_dt(void)
+    virtual ~GMagicCreatureSpellInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00435800 mac 103aba10 GMagicCreatureSpellInfo::_dt(void)
 void __fastcall __dt__23GMagicCreatureSpellInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMagicCreatureSpellInfo@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_CREATURE_SPELL_INFO_INCLUDED_H */

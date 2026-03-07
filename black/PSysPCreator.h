@@ -8,6 +8,140 @@
 
 #include "PSysRenderParticle.h" /* For struct RenderParticle */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00c09510 mac inlined RenderParticleCreatureRef::`RTTI Type Descriptor'
+// win1.41 009b7f10 mac inlined RenderParticleCreatureRef::`RTTI Base Class Descriptor'
+// win1.41 009b7f28 mac inlined RenderParticleCreatureRef::`RTTI Base Class Array'
+// win1.41 009b7f40 mac inlined RenderParticleCreatureRef::`RTTI Class Hierarchy Descriptor'
+class RenderParticleCreatureRef: public RenderParticle
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c7ee0 mac 10423140 RenderParticleCreatureRef::_dt(void)
+    virtual ~RenderParticleCreatureRef();
+    // win1.41 006c7ec0 mac 10423240 RenderParticleCreatureRef::GetDebugText(void)
+    virtual char* GetDebugText();
+};
+
+// win1.41 00c095c0 mac inlined RenderParticleGJMesh::`RTTI Type Descriptor'
+// win1.41 009b80d0 mac inlined RenderParticleGJMesh::`RTTI Base Class Descriptor'
+// win1.41 009b80e8 mac inlined RenderParticleGJMesh::`RTTI Base Class Array'
+// win1.41 009b8100 mac inlined RenderParticleGJMesh::`RTTI Class Hierarchy Descriptor'
+class RenderParticleGJMesh: public RenderParticle
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c8ac0 mac 1047b4f0 RenderParticleGJMesh::_dt(void)
+    virtual ~RenderParticleGJMesh();
+};
+
+// win1.41 00c095e8 mac inlined RenderParticleGJMeshRotatingUV::`RTTI Type Descriptor'
+// win1.41 009b8128 mac inlined RenderParticleGJMeshRotatingUV::`RTTI Base Class Descriptor'
+// win1.41 009b8140 mac inlined RenderParticleGJMeshRotatingUV::`RTTI Base Class Array'
+// win1.41 009b8160 mac inlined RenderParticleGJMeshRotatingUV::`RTTI Class Hierarchy Descriptor'
+class RenderParticleGJMeshRotatingUV: public RenderParticleGJMesh
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c8b90 mac 1047b340 RenderParticleGJMeshRotatingUV::_dt(void)
+    virtual ~RenderParticleGJMeshRotatingUV();
+};
+
+// win1.41 00c09668 mac inlined RenderParticleGameObject::`RTTI Type Descriptor'
+// win1.41 009b8238 mac inlined RenderParticleGameObject::`RTTI Base Class Descriptor'
+// win1.41 009b8250 mac inlined RenderParticleGameObject::`RTTI Base Class Array'
+// win1.41 009b8268 mac inlined RenderParticleGameObject::`RTTI Class Hierarchy Descriptor'
+class RenderParticleGameObject: public RenderParticle
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c9ed0 mac 10479800 RenderParticleGameObject::_dt(void)
+    virtual ~RenderParticleGameObject();
+    // win1.41 006c9ec0 mac 10422f20 RenderParticleGameObject::GetDebugText(void)
+    virtual char* GetDebugText();
+};
+
+// win1.41 00bed580 mac inlined RenderParticleGameObjectRef::`RTTI Type Descriptor'
+// win1.41 009aede8 mac inlined RenderParticleGameObjectRef::`RTTI Base Class Descriptor'
+// win1.41 009b7f68 mac inlined RenderParticleGameObjectRef::`RTTI Base Class Array'
+// win1.41 009b7f80 mac inlined RenderParticleGameObjectRef::`RTTI Class Hierarchy Descriptor'
+class RenderParticleGameObjectRef: public RenderParticle
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c8130 mac 1047ca40 RenderParticleGameObjectRef::_dt(void)
+    virtual ~RenderParticleGameObjectRef();
+    // win1.41 006c8120 mac 104230f0 RenderParticleGameObjectRef::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006957e0 mac 1041c390 RenderParticleGameObjectRef::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+};
+
+// win1.41 00bed5b0 mac inlined RenderParticleGoldenShower::`RTTI Type Descriptor'
+// win1.41 009aee00 mac inlined RenderParticleGoldenShower::`RTTI Base Class Descriptor'
+// win1.41 009aee18 mac inlined RenderParticleGoldenShower::`RTTI Base Class Array'
+// win1.41 009aee38 mac inlined RenderParticleGoldenShower::`RTTI Class Hierarchy Descriptor'
+class RenderParticleGoldenShower: public RenderParticleGameObjectRef
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055efe0 mac 1047cc80 RenderParticleGoldenShower::_dt(void)
+    virtual ~RenderParticleGoldenShower();
+    // win1.41 0055efd0 mac 10423050 RenderParticleGoldenShower::GetDebugText(void)
+    virtual char* GetDebugText();
+};
+
+// win1.41 00c09618 mac inlined RenderParticleMist::`RTTI Type Descriptor'
+// win1.41 009b8188 mac inlined RenderParticleMist::`RTTI Base Class Descriptor'
+// win1.41 009b81a0 mac inlined RenderParticleMist::`RTTI Base Class Array'
+// win1.41 009b81b8 mac inlined RenderParticleMist::`RTTI Class Hierarchy Descriptor'
+class RenderParticleMist: public RenderParticle
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c9cc0 mac 1047a330 RenderParticleMist::_dt(void)
+    virtual ~RenderParticleMist();
+    // win1.41 006c9cb0 mac 104236d0 RenderParticleMist::GetDebugText(void)
+    virtual char* GetDebugText();
+};
+
+// win1.41 00c096b0 mac inlined RenderParticleVolBlendMesh::`RTTI Type Descriptor'
+// win1.41 009b82e8 mac inlined RenderParticleVolBlendMesh::`RTTI Base Class Descriptor'
+// win1.41 009b8300 mac inlined RenderParticleVolBlendMesh::`RTTI Base Class Array'
+// win1.41 009b8318 mac inlined RenderParticleVolBlendMesh::`RTTI Class Hierarchy Descriptor'
+class RenderParticleVolBlendMesh: public RenderParticle
+{
+public:
+
+    // Override methods
+
+    // win1.41 006ca750 mac 10478c70 RenderParticleVolBlendMesh::_dt(void)
+    virtual ~RenderParticleVolBlendMesh();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -201,5 +335,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 006ca750 mac 10478c70 RenderParticleVolBlendMesh::_dt(void)
 void __fastcall __dt__26RenderParticleVolBlendMeshFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GRenderParticleVolBlendMesh@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_P_SYS_P_CREATOR_INCLUDED_H */

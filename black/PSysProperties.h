@@ -9,6 +9,1182 @@
 #include "PSysBase.h" /* For struct PSysBase */
 #include "PSysModifiers.h" /* For struct BaseAtomModifierData, struct BaseCollectionModifierData */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+class AR_FadeOutOnceConditionTrue__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f640 mac inlined AR_FadeOutOnceConditionTrue::AtomData::_dt( (void))
+    virtual ~AR_FadeOutOnceConditionTrue__AtomData();
+    // win1.41 0055f630 mac inlined AR_FadeOutOnceConditionTrue::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696b00 mac inlined AR_FadeOutOnceConditionTrue::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cd660 mac inlined AR_FadeOutOnceConditionTrue::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f620 mac inlined AR_FadeOutOnceConditionTrue::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class AddSoundToAtom__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f6c0 mac inlined AddSoundToAtom::AtomData::_dt( (void))
+    virtual ~AddSoundToAtom__AtomData();
+    // win1.41 0055f6b0 mac inlined AddSoundToAtom::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696c10 mac inlined AddSoundToAtom::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cd770 mac inlined AddSoundToAtom::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f6a0 mac inlined AddSoundToAtom::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class AddSubCollectionsToAtom__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055fc10 mac inlined AddSubCollectionsToAtom::AtomData::_dt( (void))
+    virtual ~AddSubCollectionsToAtom__AtomData();
+    // win1.41 0055fc00 mac inlined AddSubCollectionsToAtom::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696f30 mac inlined AddSubCollectionsToAtom::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cdaa0 mac inlined AddSubCollectionsToAtom::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055fbf0 mac inlined AddSubCollectionsToAtom::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class AttatchFireBallToAtom__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f7c0 mac inlined AttatchFireBallToAtom::AtomData::_dt( (void))
+    virtual ~AttatchFireBallToAtom__AtomData();
+    // win1.41 0055f7b0 mac inlined AttatchFireBallToAtom::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696a50 mac inlined AttatchFireBallToAtom::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cd5b0 mac inlined AttatchFireBallToAtom::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f7a0 mac inlined AttatchFireBallToAtom::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class CheckShieldDeflections__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055fd10 mac inlined CheckShieldDeflections::AtomData::_dt( (void))
+    virtual ~CheckShieldDeflections__AtomData();
+    // win1.41 0055fd00 mac inlined CheckShieldDeflections::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00698980 mac inlined CheckShieldDeflections::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cf460 mac inlined CheckShieldDeflections::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055fcf0 mac inlined CheckShieldDeflections::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class CreateNewBaseAtom__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055fc90 mac inlined CreateNewBaseAtom::AtomData::_dt( (void))
+    virtual ~CreateNewBaseAtom__AtomData();
+    // win1.41 0055fc80 mac inlined CreateNewBaseAtom::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696f90 mac inlined CreateNewBaseAtom::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cdb00 mac inlined CreateNewBaseAtom::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055fc70 mac inlined CreateNewBaseAtom::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class ER_BurstFromParentAtom__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055ff10 mac inlined ER_BurstFromParentAtom::CollectionData::_dt( (void))
+    virtual ~ER_BurstFromParentAtom__CollectionData();
+    // win1.41 0055ff00 mac inlined ER_BurstFromParentAtom::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 006995c0 mac inlined ER_BurstFromParentAtom::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006d00d0 mac inlined ER_BurstFromParentAtom::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055fef0 mac inlined ER_BurstFromParentAtom::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class ER_EmitFromParentAtom__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560090 mac inlined ER_EmitFromParentAtom::CollectionData::_dt( (void))
+    virtual ~ER_EmitFromParentAtom__CollectionData();
+    // win1.41 00560080 mac inlined ER_EmitFromParentAtom::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 006996a0 mac inlined ER_EmitFromParentAtom::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006d01b0 mac inlined ER_EmitFromParentAtom::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560070 mac inlined ER_EmitFromParentAtom::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class ER_GlintsOnTarget__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560010 mac inlined ER_GlintsOnTarget::AtomData::_dt( (void))
+    virtual ~ER_GlintsOnTarget__AtomData();
+    // win1.41 0055ffd0 mac inlined ER_GlintsOnTarget::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 006970e0 mac inlined ER_GlintsOnTarget::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cdc50 mac inlined ER_GlintsOnTarget::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055ffc0 mac inlined ER_GlintsOnTarget::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class ER_GlintsOnTarget__ParentAtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055ffe0 mac inlined ER_GlintsOnTarget::ParentAtomData::_dt( (void))
+    virtual ~ER_GlintsOnTarget__ParentAtomData();
+    // win1.41 0055ff80 mac inlined ER_GlintsOnTarget::ParentAtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696ff0 mac inlined ER_GlintsOnTarget::ParentAtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cdb60 mac inlined ER_GlintsOnTarget::ParentAtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055ff70 mac inlined ER_GlintsOnTarget::ParentAtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class ER_MultiPickup__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 006a7bb0 mac inlined ER_MultiPickup::AtomData::_dt( (void))
+    virtual ~ER_MultiPickup__AtomData();
+};
+
+class ER_MultiPickup__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 006a7b80 mac inlined ER_MultiPickup::CollectionData::_dt( (void))
+    virtual ~ER_MultiPickup__CollectionData();
+};
+
+class EmitterRule__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055fd90 mac inlined EmitterRule::CollectionData::_dt( (void))
+    virtual ~EmitterRule__CollectionData();
+    // win1.41 0055fd80 mac inlined EmitterRule::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 006993d0 mac inlined EmitterRule::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cfee0 mac inlined EmitterRule::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055fd70 mac inlined EmitterRule::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class EmitterRuleLightningSprite__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055fe10 mac inlined EmitterRuleLightningSprite::CollectionData::_dt( (void))
+    virtual ~EmitterRuleLightningSprite__CollectionData();
+    // win1.41 0055fe00 mac inlined EmitterRuleLightningSprite::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00699ac0 mac inlined EmitterRuleLightningSprite::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006d0490 mac inlined EmitterRuleLightningSprite::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055fdf0 mac inlined EmitterRuleLightningSprite::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class LightningForkFlicker__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 005603b0 mac inlined LightningForkFlicker::CollectionData::_dt( (void))
+    virtual ~LightningForkFlicker__CollectionData();
+    // win1.41 005603a0 mac inlined LightningForkFlicker::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00699a60 mac inlined LightningForkFlicker::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006d0430 mac inlined LightningForkFlicker::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560390 mac inlined LightningForkFlicker::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class RemoveRuleAfterConditionTrue__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560430 mac inlined RemoveRuleAfterConditionTrue::AtomData::_dt( (void))
+    virtual ~RemoveRuleAfterConditionTrue__AtomData();
+    // win1.41 00560420 mac inlined RemoveRuleAfterConditionTrue::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00697480 mac inlined RemoveRuleAfterConditionTrue::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cdff0 mac inlined RemoveRuleAfterConditionTrue::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560410 mac inlined RemoveRuleAfterConditionTrue::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class RemoveSoundFromAtom__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f740 mac inlined RemoveSoundFromAtom::AtomData::_dt( (void))
+    virtual ~RemoveSoundFromAtom__AtomData();
+    // win1.41 0055f730 mac inlined RemoveSoundFromAtom::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696c70 mac inlined RemoveSoundFromAtom::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cd7d0 mac inlined RemoveSoundFromAtom::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f720 mac inlined RemoveSoundFromAtom::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_AddDefensiveSphere__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f9a0 mac inlined UR_AddDefensiveSphere::CollectionData::_dt( (void))
+    virtual ~UR_AddDefensiveSphere__CollectionData();
+    // win1.41 0055f990 mac inlined UR_AddDefensiveSphere::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00697bb0 mac inlined UR_AddDefensiveSphere::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ce6a0 mac inlined UR_AddDefensiveSphere::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f980 mac inlined UR_AddDefensiveSphere::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_Articulate__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00685620 mac inlined UR_Articulate::AtomData::_dt( (void))
+    virtual ~UR_Articulate__AtomData();
+};
+
+class UR_Articulate__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 006855f0 mac inlined UR_Articulate::CollectionData::_dt( (void))
+    virtual ~UR_Articulate__CollectionData();
+};
+
+class UR_AtomsAtEPTarget__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560e90 mac inlined UR_AtomsAtEPTarget::CollectionData::_dt( (void))
+    virtual ~UR_AtomsAtEPTarget__CollectionData();
+    // win1.41 00560e80 mac inlined UR_AtomsAtEPTarget::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00697800 mac inlined UR_AtomsAtEPTarget::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ce340 mac inlined UR_AtomsAtEPTarget::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560e70 mac inlined UR_AtomsAtEPTarget::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_BankedTurning__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f8b0 mac inlined UR_BankedTurning::AtomData::_dt( (void))
+    virtual ~UR_BankedTurning__AtomData();
+    // win1.41 0055f8a0 mac inlined UR_BankedTurning::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696d30 mac inlined UR_BankedTurning::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cd890 mac inlined UR_BankedTurning::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f890 mac inlined UR_BankedTurning::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_BeliefSprite__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f540 mac inlined UR_BeliefSprite::AtomData::_dt( (void))
+    virtual ~UR_BeliefSprite__AtomData();
+    // win1.41 0055f530 mac inlined UR_BeliefSprite::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00695f20 mac inlined UR_BeliefSprite::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cca70 mac inlined UR_BeliefSprite::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f520 mac inlined UR_BeliefSprite::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_CloudGather__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560be0 mac inlined UR_CloudGather::AtomData::_dt( (void))
+    virtual ~UR_CloudGather__AtomData();
+    // win1.41 00560bb0 mac inlined UR_CloudGather::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00698da0 mac inlined UR_CloudGather::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cf870 mac inlined UR_CloudGather::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560ba0 mac inlined UR_CloudGather::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_CloudGather__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560bc0 mac inlined UR_CloudGather::CollectionData::_dt( (void))
+    virtual ~UR_CloudGather__CollectionData();
+    // win1.41 00560b50 mac inlined UR_CloudGather::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00698b30 mac inlined UR_CloudGather::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cf610 mac inlined UR_CloudGather::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560b40 mac inlined UR_CloudGather::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_CloudMoverNew__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560c60 mac inlined UR_CloudMoverNew::CollectionData::_dt( (void))
+    virtual ~UR_CloudMoverNew__CollectionData();
+    // win1.41 00560c50 mac inlined UR_CloudMoverNew::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00697c20 mac inlined UR_CloudMoverNew::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ce710 mac inlined UR_CloudMoverNew::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560c40 mac inlined UR_CloudMoverNew::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_CreatureSpell__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 005605b0 mac inlined UR_CreatureSpell::CollectionData::_dt( (void))
+    virtual ~UR_CreatureSpell__CollectionData();
+    // win1.41 005605a0 mac inlined UR_CreatureSpell::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00698030 mac inlined UR_CreatureSpell::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ceb40 mac inlined UR_CreatureSpell::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560590 mac inlined UR_CreatureSpell::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_CreatureSpellCompassion__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560870 mac inlined UR_CreatureSpellCompassion::CollectionData::_dt( (void))
+    virtual ~UR_CreatureSpellCompassion__CollectionData();
+    // win1.41 00560860 mac inlined UR_CreatureSpellCompassion::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00697c80 mac inlined UR_CreatureSpellCompassion::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ce770 mac inlined UR_CreatureSpellCompassion::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560850 mac inlined UR_CreatureSpellCompassion::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_CreatureSpellFreeze__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 005606b0 mac inlined UR_CreatureSpellFreeze::CollectionData::_dt( (void))
+    virtual ~UR_CreatureSpellFreeze__CollectionData();
+    // win1.41 005606a0 mac inlined UR_CreatureSpellFreeze::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00698140 mac inlined UR_CreatureSpellFreeze::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cec50 mac inlined UR_CreatureSpellFreeze::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560690 mac inlined UR_CreatureSpellFreeze::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_CreatureSpellGeneric__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 005607f0 mac inlined UR_CreatureSpellGeneric::AtomData::_dt( (void))
+    virtual ~UR_CreatureSpellGeneric__AtomData();
+    // win1.41 005607b0 mac inlined UR_CreatureSpellGeneric::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00697d60 mac inlined UR_CreatureSpellGeneric::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ce850 mac inlined UR_CreatureSpellGeneric::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 005607a0 mac inlined UR_CreatureSpellGeneric::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_CreatureSpellGeneric__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 005607c0 mac inlined UR_CreatureSpellGeneric::CollectionData::_dt( (void))
+    virtual ~UR_CreatureSpellGeneric__CollectionData();
+    // win1.41 00560750 mac inlined UR_CreatureSpellGeneric::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00697ea0 mac inlined UR_CreatureSpellGeneric::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ce9a0 mac inlined UR_CreatureSpellGeneric::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560740 mac inlined UR_CreatureSpellGeneric::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_CreatureSpellItch__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560630 mac inlined UR_CreatureSpellItch::CollectionData::_dt( (void))
+    virtual ~UR_CreatureSpellItch__CollectionData();
+    // win1.41 00560620 mac inlined UR_CreatureSpellItch::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 006980e0 mac inlined UR_CreatureSpellItch::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cebf0 mac inlined UR_CreatureSpellItch::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560610 mac inlined UR_CreatureSpellItch::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_Explosion__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560d90 mac inlined UR_Explosion::AtomData::_dt( (void))
+    virtual ~UR_Explosion__AtomData();
+    // win1.41 00560d80 mac inlined UR_Explosion::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00698770 mac inlined UR_Explosion::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cf250 mac inlined UR_Explosion::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560d70 mac inlined UR_Explosion::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_Explosion__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0067e1b0 mac inlined UR_Explosion::CollectionData::_dt( (void))
+    virtual ~UR_Explosion__CollectionData();
+    // win1.41 0067e1a0 mac inlined UR_Explosion::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 006984d0 mac inlined UR_Explosion::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cf000 mac inlined UR_Explosion::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0067e190 mac inlined UR_Explosion::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_Flocking__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560f10 mac inlined UR_Flocking::CollectionData::_dt( (void))
+    virtual ~UR_Flocking__CollectionData();
+    // win1.41 00560f00 mac inlined UR_Flocking::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 006987d0 mac inlined UR_Flocking::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cf2b0 mac inlined UR_Flocking::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560ef0 mac inlined UR_Flocking::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_FollowTargets__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560290 mac inlined UR_FollowTargets::AtomData::_dt( (void))
+    virtual ~UR_FollowTargets__AtomData();
+    // win1.41 00560250 mac inlined UR_FollowTargets::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00697600 mac inlined UR_FollowTargets::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ce170 mac inlined UR_FollowTargets::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560240 mac inlined UR_FollowTargets::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_FollowTargets__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560260 mac inlined UR_FollowTargets::CollectionData::_dt( (void))
+    virtual ~UR_FollowTargets__CollectionData();
+    // win1.41 00560200 mac inlined UR_FollowTargets::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00699780 mac inlined UR_FollowTargets::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006d0290 mac inlined UR_FollowTargets::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 005601f0 mac inlined UR_FollowTargets::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_ForestPath__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055fb10 mac inlined UR_ForestPath::AtomData::_dt( (void))
+    virtual ~UR_ForestPath__AtomData();
+    // win1.41 0055fb00 mac inlined UR_ForestPath::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00698a20 mac inlined UR_ForestPath::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cf500 mac inlined UR_ForestPath::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055faf0 mac inlined UR_ForestPath::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_HandSprinkle__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f930 mac inlined UR_HandSprinkle::CollectionData::_dt( (void))
+    virtual ~UR_HandSprinkle__CollectionData();
+    // win1.41 0055f920 mac inlined UR_HandSprinkle::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00699c00 mac inlined UR_HandSprinkle::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006d05e0 mac inlined UR_HandSprinkle::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f910 mac inlined UR_HandSprinkle::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_HealSpellChakra__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 006a0980 mac inlined UR_HealSpellChakra::AtomData::_dt( (void))
+    virtual ~UR_HealSpellChakra__AtomData();
+    // win1.41 006a0970 mac inlined UR_HealSpellChakra::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00697140 mac inlined UR_HealSpellChakra::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cdcb0 mac inlined UR_HealSpellChakra::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 006a0960 mac inlined UR_HealSpellChakra::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_InitialSpin__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560190 mac inlined UR_InitialSpin::AtomData::_dt( (void))
+    virtual ~UR_InitialSpin__AtomData();
+    // win1.41 00560180 mac inlined UR_InitialSpin::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 006973e0 mac inlined UR_InitialSpin::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cdf50 mac inlined UR_InitialSpin::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560170 mac inlined UR_InitialSpin::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_LightSheetOnObject__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0069c820 mac inlined UR_LightSheetOnObject::AtomData::_dt( (void))
+    virtual ~UR_LightSheetOnObject__AtomData();
+    // win1.41 0069c810 mac inlined UR_LightSheetOnObject::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696790 mac inlined UR_LightSheetOnObject::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cd2f0 mac inlined UR_LightSheetOnObject::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0069c800 mac inlined UR_LightSheetOnObject::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_LightSheetOnObject__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f5c0 mac inlined UR_LightSheetOnObject::CollectionData::_dt( (void))
+    virtual ~UR_LightSheetOnObject__CollectionData();
+    // win1.41 0055f5b0 mac inlined UR_LightSheetOnObject::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 006967f0 mac inlined UR_LightSheetOnObject::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cd350 mac inlined UR_LightSheetOnObject::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f5a0 mac inlined UR_LightSheetOnObject::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_LightningStrike__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00693a40 mac inlined UR_LightningStrike::AtomData::_dt( (void))
+    virtual ~UR_LightningStrike__AtomData();
+};
+
+// win1.41 00c04280 mac inlined UR_Lightning_CollectionData::`RTTI Type Descriptor'
+// win1.41 009b41c8 mac inlined UR_Lightning_CollectionData::`RTTI Base Class Descriptor'
+// win1.41 009b41e0 mac inlined UR_Lightning_CollectionData::`RTTI Base Class Array'
+// win1.41 009b41f8 mac inlined UR_Lightning_CollectionData::`RTTI Class Hierarchy Descriptor'
+class UR_Lightning_CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0068ff20 mac inlined UR_Lightning_CollectionData::_dt(void)
+    virtual ~UR_Lightning_CollectionData();
+    // win1.41 0068ff10 mac inlined UR_Lightning_CollectionData::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00697870 mac inlined UR_Lightning_CollectionData::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ce3b0 mac inlined UR_Lightning_CollectionData::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0068ff00 mac inlined UR_Lightning_CollectionData::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+class UR_ManaPathNew__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f4c0 mac inlined UR_ManaPathNew::AtomData::_dt( (void))
+    virtual ~UR_ManaPathNew__AtomData();
+    // win1.41 0055f4b0 mac inlined UR_ManaPathNew::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00695fc0 mac inlined UR_ManaPathNew::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ccb10 mac inlined UR_ManaPathNew::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f4a0 mac inlined UR_ManaPathNew::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_ObjectArcer__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 006935e0 mac inlined UR_ObjectArcer::AtomData::_dt( (void))
+    virtual ~UR_ObjectArcer__AtomData();
+};
+
+class UR_OrientSpriteWithRandomAngle__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 005604b0 mac inlined UR_OrientSpriteWithRandomAngle::AtomData::_dt( (void))
+    virtual ~UR_OrientSpriteWithRandomAngle__AtomData();
+    // win1.41 005604a0 mac inlined UR_OrientSpriteWithRandomAngle::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 006972a0 mac inlined UR_OrientSpriteWithRandomAngle::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cde10 mac inlined UR_OrientSpriteWithRandomAngle::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560490 mac inlined UR_OrientSpriteWithRandomAngle::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_OrientSpriteWithVelocity__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560e10 mac inlined UR_OrientSpriteWithVelocity::AtomData::_dt( (void))
+    virtual ~UR_OrientSpriteWithVelocity__AtomData();
+    // win1.41 00560e00 mac inlined UR_OrientSpriteWithVelocity::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696940 mac inlined UR_OrientSpriteWithVelocity::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cd4a0 mac inlined UR_OrientSpriteWithVelocity::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560df0 mac inlined UR_OrientSpriteWithVelocity::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_OrientWithVelocity__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560530 mac inlined UR_OrientWithVelocity::AtomData::_dt( (void))
+    virtual ~UR_OrientWithVelocity__AtomData();
+    // win1.41 00560520 mac inlined UR_OrientWithVelocity::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00697520 mac inlined UR_OrientWithVelocity::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ce090 mac inlined UR_OrientWithVelocity::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560510 mac inlined UR_OrientWithVelocity::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 009cea70 mac inlined UR_PlasmaInf::`RTTI Type Descriptor'
+// win1.41 009a8ff8 mac inlined UR_PlasmaInf::`RTTI Base Class Descriptor'
+// win1.41 009a9010 mac inlined UR_PlasmaInf::`RTTI Base Class Array'
+// win1.41 009a9028 mac inlined UR_PlasmaInf::`RTTI Class Hierarchy Descriptor'
+class UR_PlasmaInf: public PSysBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 00466540 mac inlined UR_PlasmaInf::_dt(void)
+    virtual ~UR_PlasmaInf();
+    // win1.41 00466530 mac inlined UR_PlasmaInf::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00696200 mac inlined UR_PlasmaInf::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ccd60 mac inlined UR_PlasmaInf::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00466520 mac inlined UR_PlasmaInf::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+class UR_RingSpin__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 006879d0 mac inlined UR_RingSpin::CollectionData::_dt( (void))
+    virtual ~UR_RingSpin__CollectionData();
+};
+
+class UR_Rope__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00684410 mac inlined UR_Rope::CollectionData::_dt( (void))
+    virtual ~UR_Rope__CollectionData();
+};
+
+class UR_SideSpin__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560110 mac inlined UR_SideSpin::AtomData::_dt( (void))
+    virtual ~UR_SideSpin__AtomData();
+    // win1.41 00560100 mac inlined UR_SideSpin::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00697340 mac inlined UR_SideSpin::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cdeb0 mac inlined UR_SideSpin::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 005600f0 mac inlined UR_SideSpin::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_SimpleBeam__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f1c0 mac inlined UR_SimpleBeam::AtomData::_dt( (void))
+    virtual ~UR_SimpleBeam__AtomData();
+    // win1.41 0055f150 mac inlined UR_SimpleBeam::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696850 mac inlined UR_SimpleBeam::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cd3b0 mac inlined UR_SimpleBeam::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f140 mac inlined UR_SimpleBeam::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_SimpleBeam__SubCollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f240 mac inlined UR_SimpleBeam::SubCollectionData::_dt( (void))
+    virtual ~UR_SimpleBeam__SubCollectionData();
+    // win1.41 0055f1b0 mac inlined UR_SimpleBeam::SubCollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00697670 mac inlined UR_SimpleBeam::SubCollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006ce1e0 mac inlined UR_SimpleBeam::SubCollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f1a0 mac inlined UR_SimpleBeam::SubCollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_SphereSurfaceTracer__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055fa90 mac inlined UR_SphereSurfaceTracer::AtomData::_dt( (void))
+    virtual ~UR_SphereSurfaceTracer__AtomData();
+    // win1.41 0055fa80 mac inlined UR_SphereSurfaceTracer::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00698870 mac inlined UR_SphereSurfaceTracer::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cf350 mac inlined UR_SphereSurfaceTracer::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055fa70 mac inlined UR_SphereSurfaceTracer::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_StormCast__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 006d5fd0 mac inlined UR_StormCast::AtomData::_dt( (void))
+    virtual ~UR_StormCast__AtomData();
+};
+
+class UR_StormCast__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 006d5fa0 mac inlined UR_StormCast::CollectionData::_dt( (void))
+    virtual ~UR_StormCast__CollectionData();
+};
+
+class UR_TownCentreBelief__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0069c720 mac inlined UR_TownCentreBelief::AtomData::_dt( (void))
+    virtual ~UR_TownCentreBelief__AtomData();
+};
+
+class UR_TownCentreBelief__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0069c6f0 mac inlined UR_TownCentreBelief::CollectionData::_dt( (void))
+    virtual ~UR_TownCentreBelief__CollectionData();
+};
+
+class UR_Trail__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560320 mac inlined UR_Trail::CollectionData::_dt( (void))
+    virtual ~UR_Trail__CollectionData();
+    // win1.41 00560310 mac inlined UR_Trail::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 006997e0 mac inlined UR_Trail::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006d02f0 mac inlined UR_Trail::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560300 mac inlined UR_Trail::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_VapourEndEffect__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055fb90 mac inlined UR_VapourEndEffect::AtomData::_dt( (void))
+    virtual ~UR_VapourEndEffect__AtomData();
+    // win1.41 0055fb80 mac inlined UR_VapourEndEffect::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696ed0 mac inlined UR_VapourEndEffect::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cda40 mac inlined UR_VapourEndEffect::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055fb70 mac inlined UR_VapourEndEffect::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_VolFXOnObject__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0069ccf0 mac inlined UR_VolFXOnObject::AtomData::_dt( (void))
+    virtual ~UR_VolFXOnObject__AtomData();
+    // win1.41 0069cce0 mac inlined UR_VolFXOnObject::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696720 mac inlined UR_VolFXOnObject::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cd280 mac inlined UR_VolFXOnObject::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0069ccd0 mac inlined UR_VolFXOnObject::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_VortexAttract__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00560d10 mac inlined UR_VortexAttract::AtomData::_dt( (void))
+    virtual ~UR_VortexAttract__AtomData();
+    // win1.41 00560d00 mac inlined UR_VortexAttract::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00698350 mac inlined UR_VortexAttract::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cee70 mac inlined UR_VortexAttract::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00560cf0 mac inlined UR_VortexAttract::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UR_WillowWisp__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055fe90 mac inlined UR_WillowWisp::CollectionData::_dt( (void))
+    virtual ~UR_WillowWisp__CollectionData();
+    // win1.41 0055fe80 mac inlined UR_WillowWisp::CollectionData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 006994b0 mac inlined UR_WillowWisp::CollectionData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cffc0 mac inlined UR_WillowWisp::CollectionData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055fe70 mac inlined UR_WillowWisp::CollectionData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UpdateRuleGravityWithFloor__AtomDataRipple: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055f830 mac inlined UpdateRuleGravityWithFloor::AtomDataRipple::_dt( (void))
+    virtual ~UpdateRuleGravityWithFloor__AtomDataRipple();
+    // win1.41 0055f820 mac inlined UpdateRuleGravityWithFloor::AtomDataRipple::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696cd0 mac inlined UpdateRuleGravityWithFloor::AtomDataRipple::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cd830 mac inlined UpdateRuleGravityWithFloor::AtomDataRipple::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f810 mac inlined UpdateRuleGravityWithFloor::AtomDataRipple::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class UpdateRuleShieldSpark__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055fa10 mac inlined UpdateRuleShieldSpark::AtomData::_dt( (void))
+    virtual ~UpdateRuleShieldSpark__AtomData();
+    // win1.41 0055fa00 mac inlined UpdateRuleShieldSpark::AtomData::GetDebugText( (void))
+    virtual char* GetDebugText();
+    // win1.41 00696d90 mac inlined UpdateRuleShieldSpark::AtomData::Load( (GameOSFile &))
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cd8f0 mac inlined UpdateRuleShieldSpark::AtomData::Save( (GameOSFile &))
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055f9f0 mac inlined UpdateRuleShieldSpark::AtomData::GetSaveType( (void))
+    virtual uint32_t GetSaveType();
+};
+
+class ZR_ChainGesture__AtomData: public BaseAtomModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0068a300 mac inlined ZR_ChainGesture::AtomData::_dt( (void))
+    virtual ~ZR_ChainGesture__AtomData();
+};
+
+class ZR_ChainGesture__ParentCollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 0068a2d0 mac inlined ZR_ChainGesture::ParentCollectionData::_dt( (void))
+    virtual ~ZR_ChainGesture__ParentCollectionData();
+};
+
+class ZR_SurfRevol__CollectionData: public BaseCollectionModifierData
+{
+public:
+
+    // Override methods
+
+    // win1.41 00686180 mac inlined ZR_SurfRevol::CollectionData::_dt( (void))
+    virtual ~ZR_SurfRevol__CollectionData();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -1265,5 +2441,7 @@ static_assert(sizeof(struct ZR_SurfRevol__CollectionData) == 0x14, "Data type is
 
 // win1.41 00686180 mac inlined ZR_SurfRevol::CollectionData::_dt( (void))
 void __fastcall __dt__Q212ZR_SurfRevol14CollectionDataFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCollectionData@ZR_SurfRevol@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_P_SYS_PROPERTIES_INCLUDED_H */

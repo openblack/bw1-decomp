@@ -3,6 +3,16 @@
 
 #include <stdint.h> // For uint32_t
 
+#ifdef __cplusplus
+
+template<typename T> // Must have T.next and must be T*
+class LHListHead {
+    T* head;
+    uint32_t count;
+};
+
+#else // __cplusplus
+
 // On ppc, there are two std::map for some reason
 /// Every template of the form
 ///   template<typename T> // Must have T.next and must be T*
@@ -18,5 +28,7 @@ struct LHListHead__##T          \
   struct T* head;               \
   uint32_t count;               \
 }
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_LIST_HEAD_INCLUDED_H */

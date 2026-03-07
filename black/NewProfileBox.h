@@ -9,6 +9,33 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea310 mac inlined NewProfileBox::`RTTI Type Descriptor'
+// win1.41 009ac880 mac inlined NewProfileBox::`RTTI Base Class Descriptor'
+// win1.41 009ac898 mac inlined NewProfileBox::`RTTI Base Class Array'
+// win1.41 009ac8a8 mac inlined NewProfileBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008dec18 mac 109ed914 NewProfileBox::`RTTI Complete Object Locator'
+// win1.41 008dec1c mac 109ed91c NewProfileBox::`vftable'
+class NewProfileBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0x14];
+
+    // Override methods
+
+    // win1.41 0053ce80 mac 105c3a30 NewProfileBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 0053d150 mac 105c39d0 NewProfileBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0053bd10 mac 105c5f90 NewProfileBox::CanESCOut(void)
+    virtual bool CanESCOut();
+    // win1.41 0053d160 mac 105c3890 NewProfileBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct NewProfileBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -41,5 +68,7 @@ void __fastcall Destroy__13NewProfileBoxFv(struct DialogBoxBase* this) asm("?Des
 bool __fastcall CanESCOut__13NewProfileBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@NewProfileBox@@UAE_NXZ");
 // win1.41 0053d160 mac 105c3890 NewProfileBox::InitControls(void)
 void __fastcall InitControls__13NewProfileBoxFv(struct DialogBoxBase* this) asm("?InitControls@NewProfileBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_NEW_PROFILE_BOX_INCLUDED_H */

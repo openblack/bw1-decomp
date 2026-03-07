@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c247d0 mac inlined GClimateInfo::`RTTI Type Descriptor'
+// win1.41 009ba090 mac inlined GClimateInfo::`RTTI Base Class Descriptor'
+// win1.41 009ba0a8 mac inlined GClimateInfo::`RTTI Base Class Array'
+// win1.41 009ba0b8 mac inlined GClimateInfo::`RTTI Class Hierarchy Descriptor'
+class GClimateInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00770ff0 mac 105a16b0 GClimateInfo::_dt(void)
+    virtual ~GClimateInfo();
+    // win1.41 00770f80 mac 105a3780 GClimateInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__12GClimateInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGClimateInfo@@UAEPAXI@Z");
 // win1.41 00770f80 mac 105a3780 GClimateInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__12GClimateInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GClimateInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CLIMATE_INFO_INCLUDED_H */

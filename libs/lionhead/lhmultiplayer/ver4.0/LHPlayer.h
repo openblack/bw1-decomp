@@ -8,6 +8,26 @@
 #include "LHPacketisableObject.h" /* For struct LHPacketisableObject */
 #include "LHTransportInfo.h" /* For struct LHTransportInfo */
 
+#ifdef __cplusplus
+
+class LHPlayer: public LHPacketisableObject
+{
+public:
+    char user_filename[0x104]; /* 0x4 */
+    void* user_data; /* 0x108 */
+    uint32_t user_data_len;
+    char16_t name[0x32]; /* 0x110 */
+    uint32_t player_id; /* 0x174 */
+    uint32_t user_id;
+    void* system_data;
+    LHTransportInfo transport_info; /* 0x180 */
+    uint32_t field_0x1f4;
+    uint32_t field_0x1f8;
+    uint32_t field_0x1fc;
+};
+
+#else // __cplusplus
+
 struct LHPlayer
 {
   struct LHPacketisableObject super;  /* 0x0 */
@@ -24,5 +44,7 @@ struct LHPlayer
   uint32_t field_0x1fc;
 };
 static_assert(sizeof(struct LHPlayer) == 0x200, "Data type is of wrong size");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH_PLAYER_INCLUDED_H */

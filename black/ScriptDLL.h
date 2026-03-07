@@ -7,25 +7,116 @@
 #include <lionhead/lhdll/ver1.0/LHDLL.h> /* For struct LHDLL */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
-// Forward Declares
-
-struct LHTransport;
-
 enum VMType
 {
   VMType_0 = 0x0,
   _VMType_COUNT = 0x1
-};
-static_assert(sizeof(enum VMType) == 0x4, "Data type is of wrong size");
-
-static const char* VMType_strs[_VMType_COUNT] = {
-  "VMType_0",
 };
 
 enum VMScriptType
 {
   VMScriptType_0 = 0x0,
   _VMScriptType_COUNT = 0x1
+};
+
+#ifdef __cplusplus
+
+// Forward Declares
+
+class LHTransport;
+
+// win1.41 00c0d120 mac inlined ScriptDLL::`RTTI Type Descriptor'
+// win1.41 009b8ec0 mac inlined ScriptDLL::`RTTI Base Class Descriptor'
+// win1.41 009b8ed8 mac inlined ScriptDLL::`RTTI Base Class Array'
+// win1.41 009b8ee8 mac inlined ScriptDLL::`RTTI Class Hierarchy Descriptor'
+// win1.41 009421fc mac 109c4210 ScriptDLL::`RTTI Complete Object Locator'
+// win1.41 00942200 mac 109c4218 ScriptDLL::`vftable'
+class ScriptDLL: public LHDLL
+{
+public:
+    uint32_t field_0x24_ptr;
+    uint32_t field_0x28_ptr;
+    uint32_t field_0x2c_ptr;
+    uint32_t field_0x30_ptr;
+    uintptr_t ParseFile_ptr;
+    uintptr_t StartScript_ptr;
+    uintptr_t FindScript_ptr;
+    void (__cdecl* AutoStart_ptr)(struct LHTransport* transport); /* 0x40 */
+    uintptr_t StopTask_ptr;
+    uintptr_t StopAllTasks_ptr;
+    uintptr_t StopTasksOfType_ptr;
+    uintptr_t POP_ptr; /* 0x50 */
+    uintptr_t PUSH_ptr;
+    uintptr_t STRING_ptr;
+    int (__cdecl* LoadBinary_ptr)(struct LHTransport* transport, const char* path);
+    uintptr_t SaveBinary_ptr; /* 0x60 */
+    uintptr_t SaveState_ptr;
+    uintptr_t RestoreState_ptr;
+    uintptr_t Reboot_ptr;
+    uint32_t NumTasks_ptr; /* 0x70 */
+    uint32_t LineNumber_ptr;
+    uint32_t TaskNumber_ptr;
+    uint32_t TaskName_ptr;
+    uint32_t TaskFilename_ptr; /* 0x80 */
+    uint32_t GetTaskFilename_ptr;
+    uint32_t GetTaskName_ptr;
+    uint32_t OpCode_ptr;
+    uint32_t GetCurrentScriptType_ptr; /* 0x90 */
+    uint32_t GetScriptInstructionCount_ptr;
+    uint32_t Mode_ptr;
+    uint32_t Type_ptr;
+    uint32_t Value_ptr; /* 0xa0 */
+    uint32_t OpCodeName_ptr;
+    uint32_t StopScripts_ptr;
+    uint32_t GetScriptID_ptr;
+    uint32_t Version_ptr; /* 0xb0 */
+    uint32_t CodeSize_ptr;
+    uint32_t GetNextTask_ptr;
+    uint32_t GetPreviousTask_ptr;
+    uint32_t GetHighestRunningTask_ptr; /* 0xc0 */
+    uint32_t GetFirstRunningTaskId_ptr;
+    uint32_t LoopTaskVariables_ptr;
+    uint32_t LoopGlobalVariables_ptr;
+    uint32_t GetScriptType_ptr; /* 0xd0 */
+    uint32_t GetGlobalVariableValue_ptr;
+    uint32_t field_0xd8_ptr;
+
+    // Static methods
+
+    // win1.41 006f6320 mac 104e8e70 ScriptDLL::Create(char const *)
+    static ScriptDLL* Create(char* library_path);
+
+    // Constructors
+
+    // win1.41 inlined mac inlined ScriptDLL::ScriptDLL(const char*)
+    ScriptDLL(char* library_path);
+
+    // Non-virtual methods
+
+    // win1.41 006f68c0 mac 104e8480 ScriptDLL::AutoStart(void)
+    void AutoStart();
+    // win1.41 006f68f0 mac 104e8410 ScriptDLL::StopTasksOfType(VMScriptType)
+    void StopTasksOfType(VMScriptType param_1);
+    // win1.41 006f6910 mac 104e83b0 ScriptDLL::StopAllTasks(void)
+    void StopAllTasks();
+    // win1.41 006f6920 mac 104e8350 ScriptDLL::LoadBinary(char const *)
+    int LoadBinary(const char* path);
+    // win1.41 006f6ba0 mac 10042e90 ScriptDLL::PUSH(void *, VMType)
+    void PUSH(void* param_1, VMType param_2);
+    // win1.41 006f6c50 mac 104e7d70 ScriptDLL::GetScriptType(unsigned long)
+    void* GetScriptType(unsigned long param_1);
+};
+
+#else // __cplusplus
+
+// Forward Declares
+
+struct LHTransport;
+
+static_assert(sizeof(enum VMType) == 0x4, "Data type is of wrong size");
+
+static const char* VMType_strs[_VMType_COUNT] = {
+  "VMType_0",
 };
 static_assert(sizeof(enum VMScriptType) == 0x4, "Data type is of wrong size");
 
@@ -135,5 +226,7 @@ int __fastcall LoadBinary__9ScriptDLLFPCc(struct ScriptDLL* this, const void* ed
 void __fastcall PUSH__9ScriptDLLFPv6VMType(struct ScriptDLL* this, const void* edx, void* param_1, enum VMType param_2) asm("?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z");
 // win1.41 006f6c50 mac 104e7d70 ScriptDLL::GetScriptType(unsigned long)
 void* __fastcall GetScriptType__9ScriptDLLFUl(struct ScriptDLL* this, const void* edx, unsigned long param_1) asm("?GetScriptType@ScriptDLL@@QAEPAXK@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SCRIPT_DLL_INCLUDED_H */

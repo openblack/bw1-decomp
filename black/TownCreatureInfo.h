@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c22c00 mac inlined TownCreatureInfo::`RTTI Type Descriptor'
+// win1.41 009b9b38 mac inlined TownCreatureInfo::`RTTI Base Class Descriptor'
+// win1.41 009b9b50 mac inlined TownCreatureInfo::`RTTI Base Class Array'
+// win1.41 009b9b60 mac inlined TownCreatureInfo::`RTTI Class Hierarchy Descriptor'
+class TownCreatureInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 007437d0 mac 10557190 TownCreatureInfo::_dt(void)
+    virtual ~TownCreatureInfo();
+    // win1.41 007437c0 mac 10558ea0 TownCreatureInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__16TownCreatureInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GTownCreatureInfo@@UAEPAXI@Z");
 // win1.41 007437c0 mac 10558ea0 TownCreatureInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__16TownCreatureInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@TownCreatureInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_TOWN_CREATURE_INFO_INCLUDED_H */

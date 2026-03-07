@@ -8,6 +8,35 @@
 
 #include "DeadTree.h" /* For struct DeadTree */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+
+// win1.41 00be8a50 mac inlined FelledTree::`RTTI Type Descriptor'
+// win1.41 009ab858 mac inlined FelledTree::`RTTI Base Class Descriptor'
+// win1.41 009ab870 mac inlined FelledTree::`RTTI Base Class Array'
+// win1.41 009ab8a0 mac inlined FelledTree::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d6978 mac 1073a888 FelledTree::`RTTI Complete Object Locator'
+// win1.41 008d697c mac 1073a890 FelledTree::`vftable'
+class FelledTree: public DeadTree
+{
+public:
+
+    // Override methods
+
+    // win1.41 005118e0 mac 100c0cc0 FelledTree::_dt(void)
+    virtual ~FelledTree();
+    // win1.41 005118d0 mac 100c0de0 FelledTree::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 005118c0 mac 100c0da0 FelledTree::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -42,5 +71,7 @@ void __fastcall __dt__10FelledTreeFv(struct Base* this, const void* edx, uint32_
 char* __fastcall GetDebugText__10FelledTreeFv(struct GameThing* this) asm("?GetDebugText@FelledTree@@UAEPADXZ");
 // win1.41 005118c0 mac 100c0da0 FelledTree::GetSaveType(void)
 uint32_t __fastcall GetSaveType__10FelledTreeFv(struct GameThing* this) asm("?GetSaveType@FelledTree@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FELLED_TREE_INCLUDED_H */

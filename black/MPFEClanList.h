@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf4bb8 mac inlined MPFEClanList::`RTTI Type Descriptor'
+// win1.41 009b25e8 mac inlined MPFEClanList::`RTTI Base Class Descriptor'
+// win1.41 009b2600 mac inlined MPFEClanList::`RTTI Base Class Array'
+// win1.41 009b2610 mac inlined MPFEClanList::`RTTI Class Hierarchy Descriptor'
+class MPFEClanList: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 0062bf30 mac 10396a90 MPFEClanList::_dt(void)
+    virtual ~MPFEClanList();
+};
+
+#else // __cplusplus
+
 struct MPFEClanList
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 0062bf30 mac 10396a90 MPFEClanList::_dt(void)
 void __fastcall __dt__12MPFEClanListFv(struct MPFEMessageObject* this) asm("??_GMPFEClanList@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_CLAN_LIST_INCLUDED_H */

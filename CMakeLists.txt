@@ -105,9 +105,9 @@ set(CMAKE_C_FLAGS_RELWITHDEBINFO "-g -gcodeview -fstandalone-debug -fno-eliminat
 set(CMAKE_C_FLAGS_RELEASE "-O3")
 set(CMAKE_DEPFILE_FLAGS_C "")
 
-set(CMAKE_CXX_FLAGS_DEBUG "/Zi /TP /MT /GR")
-set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/Zi /TP /MT /GR /O2")
-set(CMAKE_CXX_FLAGS_RELEASE "/TP /MT /GR /O2")
+set(CMAKE_CXX_FLAGS_DEBUG "/Zi /MT /GR")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/Zi /MT /GR /O2")
+set(CMAKE_CXX_FLAGS_RELEASE "/MT /GR /O2")
 
 find_program(LLVM_STRIP_EXECUTABLE NAMES llvm-strip REQUIRED)
 find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
@@ -931,10 +931,12 @@ target_compile_options(common_compile_options INTERFACE
 target_include_directories(common_compile_options
     INTERFACE
         $<IF:$<COMPILE_LANGUAGE:C>,${LLVM_BINARIES_DIR}/../include,>
+        $<IF:$<COMPILE_LANGUAGE:CXX>,${CMAKE_CURRENT_SOURCE_DIR}/libs/reversing_utils/stdlib_compat,>
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/src
         ${CMAKE_CURRENT_SOURCE_DIR}/black
         ${CMAKE_CURRENT_SOURCE_DIR}/libs
+        ${CMAKE_CURRENT_SOURCE_DIR}/libs/zlib
 )
 if (CMAKE_HOST_WIN32)
     target_include_directories(common_compile_options
@@ -1094,3 +1096,11 @@ add_custom_command(
     COMMAND ${CMAKE_COMMAND} -E md5sum "$<TARGET_FILE:runblack-reassembled>"
     COMMENT "Computing the md5sum"
 )
+
+if(OBJDIFF)
+    file(GLOB STAGING_FILES "src/staging/*")
+    # Force the msvc compiler even for zlib c files
+    set_source_files_properties(${STAGING_FILES} PROPERTIES LANGUAGE CXX)
+    add_library(runblack_objdiff_staging OBJECT ${STAGING_FILES})
+    target_link_libraries(runblack_objdiff_staging PRIVATE common_compile_options)
+endif()

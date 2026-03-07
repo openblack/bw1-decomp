@@ -12,6 +12,117 @@
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "MagicHand.h" /* For struct GMagicHand */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GGuidance;
+class GInterface;
+class GLeashStatus;
+class GPlayer;
+class GVirtualInfluence;
+class GameOSFile;
+class GameThing;
+class Object;
+struct PSysProcessInfo;
+class Spell;
+
+// win1.41 00be0340 mac inlined GInterfaceStatus::`RTTI Type Descriptor'
+// win1.41 009b16e0 mac inlined GInterfaceStatus::`RTTI Base Class Descriptor'
+// win1.41 009b16f8 mac inlined GInterfaceStatus::`RTTI Base Class Array'
+// win1.41 009b1710 mac inlined GInterfaceStatus::`RTTI Class Hierarchy Descriptor'
+// win1.41 0092accc mac 1098d398 GInterfaceStatus::`RTTI Complete Object Locator'
+// win1.41 0092acd0 mac 106f8170 GInterfaceStatus::`vftable'
+class GInterfaceStatus: public GameThingWithPos
+{
+public:
+    uint8_t player_number; /* 0x28 */
+    GInterface* iface;
+    GGuidance* guidance; /* 0x30 */
+    uint32_t field_0x34;
+    uint32_t field_0x38;
+    uint32_t field_0x3c;
+    uint32_t field_0x40;
+    uint8_t field_0x44[0x14];
+    GMagicHand magic_hand[0x2]; /* 0x58 */
+    bool hand_holding_something; /* 0x90 */
+    LHCoord field_0x94;
+    uint32_t field_0x9c;
+    uint32_t field_0xa0;
+    LHPoint field_0xa4;
+    LHPoint camera_pos; /* 0xb0 */
+    LHPoint camera_foc;
+    LHPoint field_0xc8;
+    LHPoint field_0xd4;
+    uint32_t field_0xe0;
+    uint32_t field_0xe4;
+    LHPoint field_0xe8;
+    float field_0xf4;
+    float field_0xf8;
+    float field_0xfc;
+    float field_0x100;
+    float field_0x104;
+    float field_0x108;
+    LHPoint hand_velocity;
+    float field_0x118;
+    uint32_t field_0x11c;
+    Object* last_dropped_object; /* 0x120 */
+    uint32_t field_0x124;
+    GLeashStatus* leash_status;
+    GVirtualInfluence* influence;
+    float field_0x130;
+
+    // Override methods
+
+    // win1.41 005db990 mac 1036f480 GInterfaceStatus::_dt(void)
+    virtual ~GInterfaceStatus();
+    // win1.41 005dbb00 mac 1036f260 GInterfaceStatus::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 005dbc20 mac 10058730 GInterfaceStatus::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 005dc8f0 mac 1036d0e0 GInterfaceStatus::UpdateSpellInfo(Spell *, PSysProcessInfo *)
+    virtual void UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2);
+    // win1.41 005db980 mac 1036be40 GInterfaceStatus::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 005dcdc0 mac 1036c160 GInterfaceStatus::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 005dca50 mac 1036c810 GInterfaceStatus::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 005db970 mac 1036be00 GInterfaceStatus::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 005dd130 mac 1036c080 GInterfaceStatus::SaveExtraData(GameOSFile &)
+    virtual void SaveExtraData(GameOSFile* param_1);
+    // win1.41 005dd190 mac 1036c020 GInterfaceStatus::ResolveLoad(void)
+    virtual void ResolveLoad();
+    // win1.41 005db960 mac 1036bdc0 GInterfaceStatus::GetText(void)
+    virtual const char* GetText();
+
+    // Constructors
+
+    // win1.41 005db860 mac 1036f590 GInterfaceStatus::GInterfaceStatus(void)
+    GInterfaceStatus();
+
+    // Non-virtual methods
+
+    // win1.41 005d29c0 mac 10026ad0 GInterfaceStatus::ResetActionState(void)
+    void ResetActionState();
+    // win1.41 005dba00 mac 1036f310 GInterfaceStatus::SetToZero(GInterface *)
+    void SetToZero(GInterface* param_1);
+    // win1.41 005cedc0 mac 1035acc0 GInterfaceStatus::SetActive(int)
+    void SetActive(int param_1);
+    // win1.41 005dc130 mac 100755c0 GInterfaceStatus::GetFirstObjectInCurrentHand(void)
+    Object* GetFirstObjectInCurrentHand();
+    // win1.41 005dc2f0 mac 1007b2f0 GInterfaceStatus::IsSpaceInHands(void)
+    bool IsSpaceInHands();
+    // win1.41 005dc8b0 mac 10035b20 GInterfaceStatus::GetInterface(void)
+    GInterface* GetInterface();
+    // win1.41 005dd1a0 mac 1036bf20 GInterfaceStatus::Init(unsigned char, GInterface *)
+    void Init(uint8_t player_number, GInterface* iface);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -131,5 +242,7 @@ void __fastcall SaveExtraData__16GInterfaceStatusFR10GameOSFile(struct GameThing
 void __fastcall ResolveLoad__16GInterfaceStatusFv(struct GameThing* this) asm("?ResolveLoad@GInterfaceStatus@@UAEXXZ");
 // win1.41 005db960 mac 1036bdc0 GInterfaceStatus::GetText(void)
 const char* __fastcall GetText__16GInterfaceStatusFv(struct GameThingWithPos* this) asm("?GetText@GInterfaceStatus@@UAEPBDXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_INTERFACE_STATUS_INCLUDED_H */

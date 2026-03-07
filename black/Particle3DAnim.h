@@ -8,6 +8,31 @@
 
 #include "PSysRenderParticle.h" /* For struct RenderParticle */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+
+// win1.41 00c09538 mac inlined Particle3DAnim::`RTTI Type Descriptor'
+// win1.41 009b7fa8 mac inlined Particle3DAnim::`RTTI Base Class Descriptor'
+// win1.41 009b7fc0 mac inlined Particle3DAnim::`RTTI Base Class Array'
+// win1.41 009b7fd8 mac inlined Particle3DAnim::`RTTI Class Hierarchy Descriptor'
+class Particle3DAnim: public RenderParticle
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c85a0 mac inlined Particle3DAnim::_dt(void)
+    virtual ~Particle3DAnim();
+    // win1.41 006c8580 mac inlined Particle3DAnim::GetDebugText(void)
+    virtual char* GetDebugText();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -36,5 +61,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__14Particle3DAnimFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GParticle3DAnim@@UAEPAXI@Z");
 // win1.41 006c8580 mac inlined Particle3DAnim::GetDebugText(void)
 char* __fastcall GetDebugText__14Particle3DAnimFv(struct GameThing* this) asm("?GetDebugText@Particle3DAnim@@UAEPADXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PARTICLE_3D_ANIM_INCLUDED_H */

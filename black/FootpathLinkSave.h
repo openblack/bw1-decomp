@@ -9,6 +9,48 @@
 #include "GameThing.h" /* For struct GameThing */
 #include "MapCoords.h" /* For struct MapCoords */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GFootpathLink;
+class GameOSFile;
+
+// win1.41 00bea1c0 mac inlined GFootpathLinkSave::`RTTI Type Descriptor'
+// win1.41 009ac690 mac inlined GFootpathLinkSave::`RTTI Base Class Descriptor'
+// win1.41 009ac6a8 mac inlined GFootpathLinkSave::`RTTI Base Class Array'
+// win1.41 009ac6b8 mac inlined GFootpathLinkSave::`RTTI Class Hierarchy Descriptor'
+// win1.41 008de1c0 mac 10743110 GFootpathLinkSave::`RTTI Complete Object Locator'
+// win1.41 008de1c4 mac 10743118 GFootpathLinkSave::`vftable'
+class GFootpathLinkSave: public GameThing
+{
+public:
+    GFootpathLink* link; /* 0x14 */
+    MapCoords coords;
+
+    // Override methods
+
+    // win1.41 005371f0 mac 100eb6b0 GFootpathLinkSave::_dt(void)
+    virtual ~GFootpathLinkSave();
+    // win1.41 005371e0 mac 100ef0b0 GFootpathLinkSave::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 005370a0 mac 100eb5c0 GFootpathLinkSave::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& file);
+
+    // Constructors
+
+    // win1.41 inlined mac inlined GFootpathLinkSave::GFootpathLinkSave(void)
+    GFootpathLinkSave();
+
+    // Non-virtual methods
+
+    // win1.41 00536fa0 mac inlined GFootpathLinkSave::FUN_00536fa0(void)
+    void FUN_00536fa0();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -56,5 +98,7 @@ void __fastcall __dt__17GFootpathLinkSaveFv(struct Base* this, const void* edx, 
 char* __fastcall GetDebugText__17GFootpathLinkSaveFv(struct GameThing* this) asm("?GetDebugText@GFootpathLinkSave@@UAEPADXZ");
 // win1.41 005370a0 mac 100eb5c0 GFootpathLinkSave::Load(GameOSFile &)
 uint32_t __fastcall Load__17GFootpathLinkSaveFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@GFootpathLinkSave@@UAEIAAVGameOSFile@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FOOTPATH_LINK_SAVE_INCLUDED_H */

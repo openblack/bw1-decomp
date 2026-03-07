@@ -8,6 +8,52 @@
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00becf10 mac inlined ScriptMarker::`RTTI Type Descriptor'
+// win1.41 009ae890 mac inlined ScriptMarker::`RTTI Base Class Descriptor'
+// win1.41 009ae8a8 mac inlined ScriptMarker::`RTTI Base Class Array'
+// win1.41 009ae8c0 mac inlined ScriptMarker::`RTTI Class Hierarchy Descriptor'
+// win1.41 008e10ac mac 109c17cc ScriptMarker::`RTTI Complete Object Locator'
+// win1.41 008e10b0 mac 106fa474 ScriptMarker::`vftable'
+class ScriptMarker: public GameThingWithPos
+{
+public:
+
+    // Override methods
+
+    // win1.41 00561070 mac 10501430 ScriptMarker::_dt(void)
+    virtual ~ScriptMarker();
+    // win1.41 0070d970 mac 10501740 ScriptMarker::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00561060 mac 10501620 ScriptMarker::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0070d9f0 mac 10501660 ScriptMarker::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 0070d9d0 mac 105016d0 ScriptMarker::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00561050 mac 105015e0 ScriptMarker::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00561030 mac 10501550 ScriptMarker::PhysicsEditorCreate(int)
+    virtual void PhysicsEditorCreate(int param_1);
+    // win1.41 00561040 mac 10501590 ScriptMarker::IsDeletedWhenReleasedFromScript(void)
+    virtual bool IsDeletedWhenReleasedFromScript();
+    // win1.41 00561010 mac 105014d0 ScriptMarker::GetText(void)
+    virtual const char* GetText();
+    // win1.41 00561020 mac 10501510 ScriptMarker::IsScriptMarker(void)
+    virtual bool IsScriptMarker();
+    // win1.41 0070d960 mac 10501850 ScriptMarker::GetScriptObjectType(void)
+    virtual uint32_t GetScriptObjectType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -59,5 +105,7 @@ const char* __fastcall GetText__12ScriptMarkerFv(struct GameThingWithPos* this) 
 uint32_t __fastcall IsScriptMarker__12ScriptMarkerFv(struct GameThingWithPos* this) asm("?IsScriptMarker@ScriptMarker@@UAEIXZ");
 // win1.41 0070d960 mac 10501850 ScriptMarker::GetScriptObjectType(void)
 uint32_t __fastcall GetScriptObjectType__12ScriptMarkerFv(struct GameThingWithPos* this) asm("?GetScriptObjectType@ScriptMarker@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SCRIPT_MARKER_INCLUDED_H */

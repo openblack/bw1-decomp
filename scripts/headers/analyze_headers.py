@@ -152,6 +152,37 @@ def get_clang_resource_dir():
     return check_output([llvm_bin / 'clang', '-print-resource-dir']).strip().decode('utf-8')
 
 
+def strip_cplusplus_blocks(source: str) -> str:
+    """Blank out lines between #ifdef __cplusplus and #else/#endif, preserving line numbers."""
+    lines = source.split('\n')
+    result = []
+    in_cpp_block = False
+    depth = 0
+    for line in lines:
+        stripped = line.strip()
+        if not in_cpp_block:
+            if stripped == '#ifdef __cplusplus':
+                in_cpp_block = True
+                depth = 0
+            result.append(line)
+        else:
+            if stripped.startswith('#if'):
+                depth += 1
+                result.append('')
+            elif stripped.startswith('#else') and depth == 0:
+                in_cpp_block = False
+                result.append(line)
+            elif stripped.startswith('#endif') and depth == 0:
+                in_cpp_block = False
+                result.append(line)
+            elif stripped.startswith('#endif'):
+                depth -= 1
+                result.append('')
+            else:
+                result.append('')
+    return '\n'.join(result)
+
+
 def parse_source(path: Path|None = None, source: str|None = None) -> TranslationUnit:
     assert path or source
     system_include_paths = [
@@ -169,7 +200,14 @@ def parse_source(path: Path|None = None, source: str|None = None) -> Translation
         args.append(f"-I{p.as_posix()}")
     for warning in ignored_warnings:
         args.append(f"-Wno-{warning}")
-    if source:
+    if path and source:
+        try:
+            translation_unit = TranslationUnit.from_source(path.as_posix(), args=args, unsaved_files=[(path.as_posix(), source)])
+        except TranslationUnitLoadError as e:
+            sys.stderr.write(f"{path.as_posix()}: {e}\n")
+            sys.stderr.flush()
+            raise
+    elif source:
         try:
             translation_unit = TranslationUnit.from_source('tmp.c', args=args, unsaved_files=[('tmp.c', source)])
         except TranslationUnitLoadError as e:
@@ -829,8 +867,9 @@ PARALLELIZE_EXTRACTION = True
 def _extract_function_info_single(path: Path, types: set[str]) -> tuple[bool, set[str], list[FunctionMetadata]]:
     decorated_names: set[str] = set()
     function_metadata: list[FunctionMetadata] = []
+    source = strip_cplusplus_blocks(path.read_text())
     found_issues = extract_function_info(
-        parse_source(path=path),
+        parse_source(path=path, source=source),
         set(types),
         decorated_names,
         function_metadata,
@@ -839,7 +878,8 @@ def _extract_function_info_single(path: Path, types: set[str]) -> tuple[bool, se
 
 
 def _extract_globals_info_single(path: Path, types: set[str]) -> tuple[bool, dict[str, GlobalInfo]]:
-    new_issues, globals_info = extract_globals_info(parse_source(path=path), set(types))
+    source = strip_cplusplus_blocks(path.read_text())
+    new_issues, globals_info = extract_globals_info(parse_source(path=path, source=source), set(types))
     return new_issues, globals_info
 
 
@@ -858,7 +898,8 @@ def extract_all_function_info(paths: list[Path], types: set[str]) -> tuple[bool,
                 function_metadata.extend(meta)
     else:
         for path in paths:
-            found_issues |= extract_function_info(parse_source(path=path), set(types), decorated_names, function_metadata)
+            source = strip_cplusplus_blocks(path.read_text())
+            found_issues |= extract_function_info(parse_source(path=path, source=source), set(types), decorated_names, function_metadata)
 
     return found_issues, decorated_names, function_metadata
 
@@ -876,7 +917,8 @@ def extract_all_globals_info(paths: list[Path], types: set[str]) -> tuple[bool, 
                 found_issues |= new_issues
     else:
         for path in paths:
-            new_issues, g = extract_globals_info(parse_source(path=path), set(types))
+            source = strip_cplusplus_blocks(path.read_text())
+            new_issues, g = extract_globals_info(parse_source(path=path, source=source), set(types))
             global_values.update(g)
             found_issues |= new_issues
 
@@ -895,7 +937,7 @@ def main(header_path=None, out_path="extracted_reversing_data_bw_141.json") -> b
     out_path = Path(out_path).absolute()
     os.chdir(header_path)
 
-    paths: list[Path] = list(filter(lambda x: x.name != "globals.h", itertools.chain(*(p.rglob("*.h") for p in PATHS))))
+    paths: list[Path] = list(filter(lambda x: x.name != "globals.h" and Path("libs/zlib") not in x.parents, itertools.chain(*(p.rglob("*.h") for p in PATHS))))
     include_all_headers_src = '\n'.join(f'#include "{p}"' for p in paths)
     header_includer = Path("src/c/_HeaderIncluder.c")
 

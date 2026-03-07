@@ -8,6 +8,35 @@
 
 #include "LH3DObject.h" /* For struct LH3DObject */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LH3DMesh;
+struct LHPoint;
+
+// win1.41 009a2744 mac 101ca644 LH3DMeshedObject::`RTTI Complete Object Locator'
+// win1.41 009a2748 mac 101ca65c LH3DMeshedObject::`vftable'
+class LH3DMeshedObject: public LH3DObject
+{
+public:
+    LH3DMesh* mesh; /* 0x7c */
+
+    // Static methods
+
+    // win1.41 007f9d60 mac 10029180 LH3DMeshedObject::SetDrawWithGlobalAlpha(int) (this is fastcall, not thiscall)
+    static void SetDrawWithGlobalAlpha(LH3DMeshedObject* this, int value);
+    // win1.41 007f9fb0 mac 1000bf70 LH3DMeshedObject::GetDoorPos(LHPoint *) const (this is fastcall, not thiscall)
+    static bool GetDoorPos(LH3DMeshedObject* this, LHPoint* out_point);
+
+    // Constructors
+
+    // win1.41 008164b0 mac 10076460 LH3DMeshedObject::LH3DMeshedObject(void)
+    LH3DMeshedObject();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LH3DMesh;
@@ -38,5 +67,7 @@ bool __fastcall GetDoorPos__16LH3DMeshedObjectCFP7LHPoint(struct LH3DMeshedObjec
 
 // win1.41 008164b0 mac 10076460 LH3DMeshedObject::LH3DMeshedObject(void)
 struct LH3DMeshedObject* __fastcall __ct__16LH3DMeshedObjectFv(struct LH3DMeshedObject* this) asm("??0LH3DMeshedObject@@QAE@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_MESHED_OBJECT_INCLUDED_H */

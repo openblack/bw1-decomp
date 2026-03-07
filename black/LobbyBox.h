@@ -8,6 +8,31 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea550 mac inlined LobbyBox::`RTTI Type Descriptor'
+// win1.41 009ace20 mac inlined LobbyBox::`RTTI Base Class Descriptor'
+// win1.41 009ace38 mac inlined LobbyBox::`RTTI Base Class Array'
+// win1.41 009ace48 mac inlined LobbyBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008deba0 mac 109edd54 LobbyBox::`RTTI Complete Object Locator'
+// win1.41 008deba4 mac 109edd5c LobbyBox::`vftable'
+class LobbyBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0x7c];
+
+    // Override methods
+
+    // win1.41 005f5250 mac 105d7ac0 LobbyBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 005f5a40 mac 105d7a60 LobbyBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 005f5a50 mac 105d78e0 LobbyBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct LobbyBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -38,5 +63,7 @@ void __fastcall Init__8LobbyBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct Dial
 void __fastcall Destroy__8LobbyBoxFv(struct DialogBoxBase* this) asm("?Destroy@LobbyBox@@UAEXXZ");
 // win1.41 005f5a50 mac 105d78e0 LobbyBox::InitControls(void)
 void __fastcall InitControls__8LobbyBoxFv(struct DialogBoxBase* this) asm("?InitControls@LobbyBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LOBBY_BOX_INCLUDED_H */

@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c223b0 mac inlined GSoundInfo::`RTTI Type Descriptor'
+// win1.41 009b91a8 mac inlined GSoundInfo::`RTTI Base Class Descriptor'
+// win1.41 009b91c0 mac inlined GSoundInfo::`RTTI Base Class Array'
+// win1.41 009b91d0 mac inlined GSoundInfo::`RTTI Class Hierarchy Descriptor'
+class GSoundInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 0071d6b0 mac 105135d0 GSoundInfo::_dt(void)
+    virtual ~GSoundInfo();
+    // win1.41 0071d660 mac 10513590 GSoundInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__10GSoundInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGSoundInfo@@UAEPAXI@Z");
 // win1.41 0071d660 mac 10513590 GSoundInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__10GSoundInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GSoundInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SOUND_INFO_INCLUDED_H */

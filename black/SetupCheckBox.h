@@ -13,6 +13,47 @@
 #include "SetupRect.h" /* For struct SetupRect */
 #include "SetupThing.h" /* For enum BBSTYLE */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class SetupControl;
+
+// win1.41 009c82d8 mac inlined SetupCheckBox::`RTTI Type Descriptor'
+// win1.41 009a6928 mac inlined SetupCheckBox::`RTTI Base Class Descriptor'
+// win1.41 009a6940 mac inlined SetupCheckBox::`RTTI Base Class Array'
+// win1.41 009a6950 mac inlined SetupCheckBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ab584 mac 10730d88 SetupCheckBox::`RTTI Complete Object Locator'
+// win1.41 008ab588 mac 10730d90 SetupCheckBox::`vftable'
+class SetupCheckBox: public SetupButton
+{
+public:
+    uint32_t text_position; /* 0x244 */
+    BBSTYLE style;
+    bool checked;
+    SetupRect inner_rect; /* 0x250 */
+
+    // Override methods
+
+    // win1.41 00410f90 mac 10112370 SetupCheckBox::HitTest(int, int)
+    virtual bool HitTest(int x, int y);
+    // win1.41 00410b80 mac 103c4a20 SetupCheckBox::Draw(bool, bool)
+    virtual void Draw(bool hovered, bool selected);
+    // win1.41 00411020 mac 103dbde0 SetupCheckBox::Click(int, int)
+    virtual void Click(int x, int y);
+    // win1.41 00411050 mac 10599580 SetupCheckBox::KeyDown(int, int)
+    virtual void KeyDown(LHKey key, LHKeyMod mod);
+    // win1.41 00411070 mac 105893e0 SetupCheckBox::~SetupCheckBox(void)
+    virtual ~SetupCheckBox();
+
+    // Constructors
+
+    // win1.41 00410f10 mac 1058b890 SetupCheckBox::SetupCheckBox(int, int, int, bool, int, wchar_t *, int)
+    SetupCheckBox(int id, int x, int y, bool checked, BBSTYLE style, const char16_t* label, int size);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SetupControl;
@@ -59,5 +100,7 @@ void __fastcall Click__13SetupCheckBoxFii(struct SetupControl* this, const void*
 void __fastcall KeyDown__13SetupCheckBoxFii(struct SetupControl* this, const void* edx, enum LHKey key, enum LHKeyMod mod) asm("?KeyDown@SetupCheckBox@@UAEXHH@Z");
 // win1.41 00411070 mac 105893e0 SetupCheckBox::~SetupCheckBox(void)
 void __fastcall __dt__13SetupCheckBoxFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupCheckBox@@QAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_CHECK_BOX_INCLUDED_H */

@@ -8,6 +8,31 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea518 mac inlined GSLobbyBox::`RTTI Type Descriptor'
+// win1.41 009acd80 mac inlined GSLobbyBox::`RTTI Base Class Descriptor'
+// win1.41 009acd98 mac inlined GSLobbyBox::`RTTI Base Class Array'
+// win1.41 009acda8 mac inlined GSLobbyBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008deb78 mac 109edd0c GSLobbyBox::`RTTI Complete Object Locator'
+// win1.41 008deb7c mac 109edd14 GSLobbyBox::`vftable'
+class GSLobbyBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0x2a4];
+
+    // Override methods
+
+    // win1.41 00599740 mac 105d3580 GSLobbyBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 0059a250 mac 105d3340 GSLobbyBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0059a0a0 mac 105d33a0 GSLobbyBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct GSLobbyBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -38,5 +63,7 @@ void __fastcall Init__10GSLobbyBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct D
 void __fastcall Destroy__10GSLobbyBoxFv(struct DialogBoxBase* this) asm("?Destroy@GSLobbyBox@@UAEXXZ");
 // win1.41 0059a0a0 mac 105d33a0 GSLobbyBox::InitControls(void)
 void __fastcall InitControls__10GSLobbyBoxFv(struct DialogBoxBase* this) asm("?InitControls@GSLobbyBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_S_LOBBY_BOX_INCLUDED_H */

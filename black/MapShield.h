@@ -10,6 +10,50 @@
 
 #include "Fixed.h" /* For struct SingleMapFixed, struct SingleMapFixedVftable */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Creature;
+class GInterfaceStatus;
+class GMagicInfo;
+class GMapShieldInfo;
+class GPlayer;
+class GameOSFile;
+class GameThing;
+class LHOSFile;
+struct MapCoords;
+class Object;
+class SpellShield;
+
+// win1.41 00c227e8 mac inlined MapShield::`RTTI Type Descriptor'
+// win1.41 009b9600 mac inlined MapShield::`RTTI Base Class Descriptor'
+// win1.41 009b9618 mac inlined MapShield::`RTTI Base Class Array'
+// win1.41 009b9638 mac inlined MapShield::`RTTI Class Hierarchy Descriptor'
+// win1.41 00982e70 mac 109def60 MapShield::`RTTI Complete Object Locator'
+// win1.41 00982e74 mac 109def98 MapShield::`vftable'
+class MapShield: public SingleMapFixed
+{
+public:
+    MapShield* next; /* 0x5c */
+    SpellShield* spell; /* 0x60 */
+    GMagicInfo* spell_info;
+
+    // Virtual functions
+
+    virtual void ProcessShield(); /* 0x868 */
+    virtual void DrawShield();
+    virtual bool IsPointDefinietlyWithinShieldVolume(const MapCoords* point); /* 0x870 */
+
+    // Constructors
+
+    // win1.41 0072c070 mac 10531a30 MapShield::__ct(MapCoords const &, GMapShieldInfo *, SpellShield *)
+    MapShield(MapCoords* coords, GMapShieldInfo* info, SpellShield* spell);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -98,5 +142,7 @@ bool __fastcall CreatureMustAvoid__9MapShieldFP8Creature(struct Object* this, co
 uint32_t __fastcall SaveObject__9MapShieldFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@MapShield@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 
 DECLARE_LH_LIST_HEAD(MapShield);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAP_SHIELD_INCLUDED_H */

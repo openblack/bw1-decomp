@@ -8,6 +8,50 @@
 
 #include "MobileObjectInfo.h" /* For struct GMobileObjectInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 009cd058 mac inlined GBallInfo::`RTTI Type Descriptor'
+// win1.41 009a82c8 mac inlined GBallInfo::`RTTI Base Class Descriptor'
+// win1.41 009a82e0 mac inlined GBallInfo::`RTTI Base Class Array'
+// win1.41 009a8300 mac inlined GBallInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c4f30 mac 10737af4 GBallInfo::`RTTI Complete Object Locator'
+// win1.41 008c4f34 mac 10737afc GBallInfo::`vftable'
+class GBallInfo: public GMobileObjectInfo
+{
+public:
+    uint8_t field_0x114[0x2c];
+
+    // Override methods
+
+    // win1.41 00435980 mac 100b0ff0 GBallInfo::_dt(void)
+    virtual ~GBallInfo();
+    // win1.41 00435930 mac 100b1090 GBallInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+// win1.41 00bfe048 mac inlined GPBallInfo::`RTTI Type Descriptor'
+// win1.41 009b2ed0 mac inlined GPBallInfo::`RTTI Base Class Descriptor'
+// win1.41 009b2ee8 mac inlined GPBallInfo::`RTTI Base Class Array'
+// win1.41 009b2f08 mac inlined GPBallInfo::`RTTI Class Hierarchy Descriptor'
+class GPBallInfo: public GMobileObjectInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 0063e8c0 mac 10110ff0 GPBallInfo::_dt(void)
+    virtual ~GPBallInfo();
+    // win1.41 0063e870 mac 10111090 GPBallInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -65,5 +109,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__10GPBallInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGPBallInfo@@UAEPAXI@Z");
 // win1.41 0063e870 mac 10111090 GPBallInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__10GPBallInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GPBallInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_BALL_INFO_INCLUDED_H */

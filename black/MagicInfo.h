@@ -9,6 +9,52 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GMagicEffectInfo;
+
+// win1.41 009cba90 mac inlined GMagicInfo::`RTTI Type Descriptor'
+// win1.41 009a7fa0 mac inlined GMagicInfo::`RTTI Base Class Descriptor'
+// win1.41 009a7d20 mac inlined GMagicInfo::`RTTI Base Class Array'
+// win1.41 009a7d30 mac inlined GMagicInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c4cb8 mac 10776ff0 GMagicInfo::`RTTI Complete Object Locator'
+// win1.41 008c4cbc mac 10777008 GMagicInfo::`vftable'
+class GMagicInfo: public GBaseInfo
+{
+public:
+    int field_0x10;
+    uint8_t field_0x14[0x44];
+
+    // Override methods
+
+    // win1.41 00435680 mac 1018ee20 GMagicInfo::_dt(void)
+    virtual ~GMagicInfo();
+    // win1.41 0042d700 mac 101980a0 GMagicInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+
+    // Static methods
+
+    // win1.41 005fb3b0 mac 103ae320 GMagicInfo::GetInfoFromText(char const *)
+    static MAGIC_TYPE GetInfoFromText(const char* text);
+
+    // Constructors
+
+    // win1.41 00435520 mac 1018eec0 GMagicInfo::GMagicInfo(void)
+    GMagicInfo();
+
+    // Non-virtual methods
+
+    // win1.41 005fb3f0 mac 103ae2c0 GMagicInfo::GetMagicInfoText(void) const
+    const char* GetMagicInfoText();
+    // win1.41 005fb680 mac 103adc30 GMagicInfo::GetMagicEffectInfo(void) const
+    GMagicEffectInfo* GetMagicEffectInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -60,5 +106,7 @@ struct GMagicEffectInfo* __fastcall GetMagicEffectInfo__10GMagicInfoCFv(const st
 void __fastcall __dt__10GMagicInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMagicInfo@@UAEPAXI@Z");
 // win1.41 0042d700 mac 101980a0 GMagicInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__10GMagicInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GMagicInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_INFO_INCLUDED_H */

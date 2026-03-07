@@ -8,6 +8,37 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+
+// win1.41 00c246a8 mac inlined VortexSave::`RTTI Type Descriptor'
+// win1.41 009b9f30 mac inlined VortexSave::`RTTI Base Class Descriptor'
+// win1.41 009b9f48 mac inlined VortexSave::`RTTI Base Class Array'
+// win1.41 009b9f58 mac inlined VortexSave::`RTTI Class Hierarchy Descriptor'
+class VortexSave: public GameThing
+{
+public:
+
+    // Override methods
+
+    // win1.41 0076f870 mac 1015f3f0 VortexSave::_dt(void)
+    virtual ~VortexSave();
+    // win1.41 0076fdc0 mac 1015e890 VortexSave::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 0076fb40 mac 1015ed90 VortexSave::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0076f860 mac 1015e730 VortexSave::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0076ffe0 mac 1015e770 VortexSave::ResolveLoad(void)
+    virtual void ResolveLoad();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -42,5 +73,7 @@ uint32_t __fastcall Save__10VortexSaveFR10GameOSFile(struct GameThing* this, con
 uint32_t __fastcall GetSaveType__10VortexSaveFv(struct GameThing* this) asm("?GetSaveType@VortexSave@@UAEIXZ");
 // win1.41 0076ffe0 mac 1015e770 VortexSave::ResolveLoad(void)
 void __fastcall ResolveLoad__10VortexSaveFv(struct GameThing* this) asm("?ResolveLoad@VortexSave@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_VORTEX_SAVE_INCLUDED_H */

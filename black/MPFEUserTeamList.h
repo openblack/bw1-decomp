@@ -7,6 +7,30 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct MPFEPlayerDetails;
+
+// win1.41 00bfdcd0 mac inlined MPFEUserTeamList::`RTTI Type Descriptor'
+// win1.41 009b2c80 mac inlined MPFEUserTeamList::`RTTI Base Class Descriptor'
+// win1.41 009b2c98 mac inlined MPFEUserTeamList::`RTTI Base Class Array'
+// win1.41 009b2ca8 mac inlined MPFEUserTeamList::`RTTI Class Hierarchy Descriptor'
+class MPFEUserTeamList: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00633050 mac 10396090 MPFEUserTeamList::_dt(void)
+    virtual ~MPFEUserTeamList();
+    // win1.41 00626a00 mac inlined MPFEUserTeamList::Send(MPFEPlayerDetails *)
+    virtual void Send(MPFEPlayerDetails* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct MPFEPlayerDetails;
@@ -34,5 +58,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__16MPFEUserTeamListFv(struct MPFEMessageObject* this) asm("??_GMPFEUserTeamList@@UAEPAXI@Z");
 // win1.41 00626a00 mac inlined MPFEUserTeamList::Send(MPFEPlayerDetails *)
 void __fastcall Send__16MPFEUserTeamListFP17MPFEPlayerDetails(struct MPFEMessageObject* this, const void* edx, struct MPFEPlayerDetails* param_1) asm("?Send@MPFEUserTeamList@@UAEXPAUMPFEPlayerDetails@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_USER_TEAM_LIST_INCLUDED_H */

@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c228a8 mac inlined GSpookyVoiceInfo::`RTTI Type Descriptor'
+// win1.41 009b9788 mac inlined GSpookyVoiceInfo::`RTTI Base Class Descriptor'
+// win1.41 009b97a0 mac inlined GSpookyVoiceInfo::`RTTI Base Class Array'
+// win1.41 009b97b0 mac inlined GSpookyVoiceInfo::`RTTI Class Hierarchy Descriptor'
+class GSpookyVoiceInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 0072e220 mac 10149010 GSpookyVoiceInfo::_dt(void)
+    virtual ~GSpookyVoiceInfo();
+    // win1.41 0072e1c0 mac 10149130 GSpookyVoiceInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__16GSpookyVoiceInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGSpookyVoiceInfo@@UAEPAXI@Z");
 // win1.41 0072e1c0 mac 10149130 GSpookyVoiceInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__16GSpookyVoiceInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GSpookyVoiceInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPOOKY_VOICE_INFO_INCLUDED_H */

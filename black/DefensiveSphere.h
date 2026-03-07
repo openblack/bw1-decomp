@@ -8,6 +8,38 @@
 
 #include "DefensiveShield.h" /* For struct DefensiveShield */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00c09740 mac inlined DefensiveSphere::`RTTI Type Descriptor'
+// win1.41 009b8398 mac inlined DefensiveSphere::`RTTI Base Class Descriptor'
+// win1.41 009b83b0 mac inlined DefensiveSphere::`RTTI Base Class Array'
+// win1.41 009b83c8 mac inlined DefensiveSphere::`RTTI Class Hierarchy Descriptor'
+class DefensiveSphere: public DefensiveShield
+{
+public:
+
+    // Override methods
+
+    // win1.41 006d0d00 mac 10417570 DefensiveSphere::_dt(void)
+    virtual ~DefensiveSphere();
+    // win1.41 006d0cf0 mac 10417650 DefensiveSphere::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00699cd0 mac 104179f0 DefensiveSphere::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006d06b0 mac 1047f3d0 DefensiveSphere::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 006d0ce0 mac 10417610 DefensiveSphere::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -43,5 +75,7 @@ uint32_t __fastcall Load__15DefensiveSphereFR10GameOSFile(struct GameThing* this
 uint32_t __fastcall Save__15DefensiveSphereFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@DefensiveSphere@@UAEIAAVGameOSFile@@@Z");
 // win1.41 006d0ce0 mac 10417610 DefensiveSphere::GetSaveType(void)
 uint32_t __fastcall GetSaveType__15DefensiveSphereFv(struct GameThing* this) asm("?GetSaveType@DefensiveSphere@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_DEFENSIVE_SPHERE_INCLUDED_H */

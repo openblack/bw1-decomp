@@ -4,8 +4,25 @@
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
+#include <wchar.h> /* For wchar_t */
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassDescriptor, struct RTTITypeDescriptor */
+
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct MPFEChannelDetails;
+struct MPFEPlayerDetails;
+
+// win1.41 009cd658 mac inlined LayerCommunication::`RTTI Type Descriptor'
+// win1.41 009a86e8 mac inlined LayerCommunication::`RTTI Base Class Descriptor'
+class LayerCommunication
+{
+public:
+};
+
+#else // __cplusplus
 
 // Forward Declares
 
@@ -47,5 +64,7 @@ static_assert(sizeof(struct LayerCommunication) == 0x4, "Data type is of wrong s
 extern struct RTTITypeDescriptor __RTTITypeDescriptor__18LayerCommunication asm("??_R0?AVLayerCommunication@@@8");
 // win1.41 009a86e8 mac inlined LayerCommunication::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__18LayerCommunication asm("??_R1A@?0A@A@LayerCommunication@@8");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LAYER_COMMUNICATION_INCLUDED_H */

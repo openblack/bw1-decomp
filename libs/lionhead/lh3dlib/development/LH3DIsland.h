@@ -5,6 +5,52 @@
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct LH3DColor;
+struct LH3DMapCoords;
+struct LH3DMaterial;
+struct LH3DTexture;
+
+struct LandCell
+{
+    uint8_t r; /* 0x0 */
+    uint8_t g;
+    uint8_t b;
+    uint8_t luminosity;
+    uint8_t altitude;
+    uint8_t saveColor;
+    uint8_t properties;
+    uint8_t flags;
+
+    // Non-virtual methods
+
+    // win1.41 inlined mac 1000cd10 LandCell::IsWater(void)
+    bool IsWater();
+};
+
+struct LH3DIsland
+{
+    // win1.41 00803c00 mac 10046910 LH3DIsland::Create(void)
+    static uint32_t Create();
+    // win1.41 00516aa0 mac 100484b0 LH3DIsland::GetCell(long, long)
+    static LandCell* GetCell(int x, int z);
+    // win1.41 0060d3a0 mac inlined LH3DIsland::IsWater(long, long)
+    static bool IsWater(int x, int y);
+    // win1.41 00803090 mac 10048554 LH3DIsland::GetAltitude(LH3DMapCoords const &)
+    static float GetAltitude(const struct LH3DMapCoords* coords);
+    // win1.41 00803340 mac 10048110 LH3DIsland::GetAltitudeAndSetColorSpecular(LH3DMapCoords const &, ulong *, ulong *)
+    static float GetAltitudeAndSetColorSpecular(const struct LH3DMapCoords* coords, struct LH3DColor* param_2, struct LH3DColor* param_3);
+    // win1.41 00804790 mac 1061cc34 LH3DIsland::Release(void)
+    static bool Release();
+    // win1.41 007ff2d0 mac 10022e10 LH3DIsland::PreDraw(void)
+    static void PreDraw();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct LH3DColor;
@@ -68,5 +114,7 @@ float __fastcall GetAltitudeAndSetColorSpecular__10LH3DIslandFRC13LH3DMapCoordsP
 bool __stdcall Release__10LH3DIslandFv(void);
 // win1.41 007ff2d0 mac 10022e10 LH3DIsland::PreDraw(void)
 void __cdecl PreDraw__10LH3DIslandFv(void) asm("?PreDraw@LH3DIsland@@SAXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_ISLAND_INCLUDED_H */

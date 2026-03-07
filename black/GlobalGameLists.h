@@ -57,6 +57,80 @@
 #include "WeatherThing.h" /* For struct WeatherThing */
 #include "Whale.h" /* For struct Whale */
 
+#ifdef __cplusplus
+
+// win1.41 00bec390 mac inlined GlobalGameLists::`RTTI Type Descriptor'
+// win1.41 009ad0b0 mac inlined GlobalGameLists::`RTTI Base Class Descriptor'
+// win1.41 009ad0c8 mac inlined GlobalGameLists::`RTTI Base Class Array'
+// win1.41 009ad0d8 mac inlined GlobalGameLists::`RTTI Class Hierarchy Descriptor'
+class GlobalGameLists: public Base
+{
+public:
+    LHListHead<Ball> balls; /* 0x8 */
+    LHListHead<Forest> forests; /* 0x10 */
+    LHListHead<Living> living_list;
+    LHListHead<Spell> spells; /* 0x20 */
+    LHListHead<GParticleContainer> particle_containers;
+    LHListHead<Dance> dances; /* 0x30 */
+    LHListHead<Reaction> reactions;
+    LHLinkedList<MobileObject> mobile_objects; /* 0x40 */
+    LHLinkedList<GFootpathFinder> footpath_finder;
+    LHListHead<EarthQuake> earthquakes; /* 0x50 */
+    LHListHead<Villager> villagers_without_town;
+    LHListHead<Field> fields; /* 0x60 */
+    LHListHead<FishFarm> fish_farms;
+    LHListHead<FireEffect> fire_effects; /* 0x70 */
+    LHListHead<SoundTag> sound_tags;
+    LHListHead<Mist> mist; /* 0x80 */
+    LHListHead<GStreetLight> street_lights;
+    LHListHead<GStreetLantern> street_lanterns; /* 0x90 */
+    LHListHead<PileFood> food_piles;
+    LHLinkedList<Flock> flocks; /* 0xa0 */
+    LHListHead<InfluenceRing> influence_ring_list;
+    LHListHead<WeatherThing> weather_things; /* 0xb0 */
+    LHListHead<GStream> streams;
+    LHListHead<GFootpath> footpaths; /* 0xc0 */
+    LHListHead<GWaterfall> waterfalls;
+    LHListHead<Waypoint> waypoints; /* 0xd0 */
+    LHListHead<GArena> arenas;
+    LHLinkedList<Town> town_list; /* 0xe0 */
+    LHLinkedList<GameThingWithPos> game_thing_with_pos;
+    LHListHead<ScriptHighlight> script_highlights; /* 0xf0 */
+    LHListHead<MagicFireBall> magic_fire_balls;
+    LHListHead<MapShield> map_shields; /* 0x100 */
+    LHLinkedList<BuildingSite> building_sites;
+    LHLinkedList<MultiMapFixed> multi_map_fixed; /* 0x110 */
+    LHLinkedList<AnimatedStatic> animated_statics;
+    LHListHead<GPlayer> players; /* 0x120 */
+    LHLinkedList<Reward> rewards;
+    LHLinkedList<Object> objects; /* 0x130 */
+    LHLinkedList<Tree> trees;
+    LHListHead<BigForest> big_forests; /* 0x140 */
+    LHListHead<GBaseInfo> base_infos;
+    LHLinkedList<GClimate> climates; /* 0x150 */
+    LHLinkedList<TownCentre> town_centres;
+    LHListHead<Whale> whales; /* 0x160 */
+    LHListHead<FireFly> fire_flies;
+    LHListHead<PuzzleGame> puzzle_game; /* 0x170 */
+    LHListHead<GameThing> game_things;
+    LHLinkedList<TownArtifact> town_artifacts; /* 0x180 */
+    LHLinkedList<Fragment> fragments;
+
+    // Override methods
+
+    // win1.41 0054b970 mac 10547350 GlobalGameLists::_dt(void)
+    virtual ~GlobalGameLists();
+    // win1.41 005914d0 mac 10336280 GlobalGameLists::Dump(void)
+    virtual void Dump();
+
+    // Non-virtual methods
+
+    // win1.41 00591370 mac 10059120 GlobalGameLists::Process(void)
+    void Process();
+};
+
+#else // __cplusplus
+
 struct GlobalGameLists
 {
   struct Base super;  /* 0x0 */
@@ -134,5 +208,7 @@ void __fastcall Process__15GlobalGameListsFv(struct GlobalGameLists* this) asm("
 void __fastcall __dt__15GlobalGameListsFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGlobalGameLists@@UAEPAXI@Z");
 // win1.41 005914d0 mac 10336280 GlobalGameLists::Dump(void)
 void __fastcall Dump__15GlobalGameListsFv(struct Base* this) asm("?Dump@GlobalGameLists@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_GLOBAL_GAME_LISTS_INCLUDED_H */

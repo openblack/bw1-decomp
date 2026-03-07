@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c22738 mac inlined GSpellSystemInfo::`RTTI Type Descriptor'
+// win1.41 009b94a0 mac inlined GSpellSystemInfo::`RTTI Base Class Descriptor'
+// win1.41 009b94b8 mac inlined GSpellSystemInfo::`RTTI Base Class Array'
+// win1.41 009b94c8 mac inlined GSpellSystemInfo::`RTTI Class Hierarchy Descriptor'
+class GSpellSystemInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 0072ae00 mac 1052de00 GSpellSystemInfo::_dt(void)
+    virtual ~GSpellSystemInfo();
+    // win1.41 0072adb0 mac 1052dea0 GSpellSystemInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__16GSpellSystemInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGSpellSystemInfo@@UAEPAXI@Z");
 // win1.41 0072adb0 mac 1052dea0 GSpellSystemInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__16GSpellSystemInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GSpellSystemInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPELL_SYSTEM_INFO_INCLUDED_H */

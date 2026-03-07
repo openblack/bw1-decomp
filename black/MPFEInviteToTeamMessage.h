@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bf4860 mac inlined MPFEInviteToTeamMessage::`RTTI Type Descriptor'
+// win1.41 009b2228 mac inlined MPFEInviteToTeamMessage::`RTTI Base Class Descriptor'
+// win1.41 009b2240 mac inlined MPFEInviteToTeamMessage::`RTTI Base Class Array'
+// win1.41 009b2250 mac inlined MPFEInviteToTeamMessage::`RTTI Class Hierarchy Descriptor'
+class MPFEInviteToTeamMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00627410 mac 103977c0 MPFEInviteToTeamMessage::_dt(void)
+    virtual ~MPFEInviteToTeamMessage();
+};
+
+#else // __cplusplus
+
 struct MPFEInviteToTeamMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00627410 mac 103977c0 MPFEInviteToTeamMessage::_dt(void)
 void __fastcall __dt__23MPFEInviteToTeamMessageFv(struct MPFEMessageObject* this) asm("??_GMPFEInviteToTeamMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_INVITE_TO_TEAM_MESSAGE_INCLUDED_H */

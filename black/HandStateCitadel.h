@@ -8,6 +8,40 @@
 
 #include "HandState.h" /* For struct HandState */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CHand;
+struct LHMatrix;
+
+// win1.41 00bf00c0 mac inlined HandStateCitadel::`RTTI Type Descriptor'
+// win1.41 009b0ed8 mac inlined HandStateCitadel::`RTTI Base Class Descriptor'
+// win1.41 009b0ef0 mac inlined HandStateCitadel::`RTTI Base Class Array'
+// win1.41 009b0f00 mac inlined HandStateCitadel::`RTTI Class Hierarchy Descriptor'
+// win1.41 00900a7c mac 1099b18c HandStateCitadel::`RTTI Complete Object Locator'
+// win1.41 00900a80 mac 1099b194 HandStateCitadel::`vftable'
+class HandStateCitadel: public HandState
+{
+public:
+    uint32_t field_0x8;
+    uint8_t field_0xC[0xc4];
+
+    // Override methods
+
+    // win1.41 005b0c10 mac 10337710 HandStateCitadel::Enter(void)
+    virtual void Enter();
+    // win1.41 005b0d00 mac 10336f60 HandStateCitadel::Update(float, LHMatrix *)
+    virtual void Update(float param_1, LHMatrix* param_2);
+
+    // Constructors
+
+    // win1.41 005b0bf0 mac 103377e0 HandStateCitadel::HandStateCitadel(CHand*)
+    HandStateCitadel(CHand* hand);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CHand;
@@ -47,5 +81,7 @@ struct HandStateCitadel* __fastcall __ct__16HandStateCitadelFP5CHand(struct Hand
 void __fastcall Enter__16HandStateCitadelFv(struct HandState* this) asm("?Enter@HandStateCitadel@@UAEXXZ");
 // win1.41 005b0d00 mac 10336f60 HandStateCitadel::Update(float, LHMatrix *)
 void __fastcall Update__16HandStateCitadelFfP8LHMatrix(struct HandState* this, const void* edx, float param_1, struct LHMatrix* param_2) asm("?Update@HandStateCitadel@@UAEXMPAULHMatrix@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HAND_STATE_CITADEL_INCLUDED_H */

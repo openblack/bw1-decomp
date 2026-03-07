@@ -8,6 +8,29 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea470 mac inlined GatheringBox::`RTTI Type Descriptor'
+// win1.41 009acbf0 mac inlined GatheringBox::`RTTI Base Class Descriptor'
+// win1.41 009acc08 mac inlined GatheringBox::`RTTI Base Class Array'
+// win1.41 009acc18 mac inlined GatheringBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008deb28 mac 1099afbc GatheringBox::`RTTI Complete Object Locator'
+// win1.41 008deb2c mac 1099afc4 GatheringBox::`vftable'
+class GatheringBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0xe0];
+
+    // Override methods
+
+    // win1.41 00570e90 mac 10326ea0 GatheringBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 00572530 mac 103266d0 GatheringBox::Destroy(void)
+    virtual void Destroy();
+};
+
+#else // __cplusplus
+
 struct GatheringBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -36,5 +59,7 @@ extern const struct DialogBoxBaseVftable __vt__12GatheringBox asm("??_7Gathering
 void __fastcall Init__12GatheringBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@GatheringBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 00572530 mac 103266d0 GatheringBox::Destroy(void)
 void __fastcall Destroy__12GatheringBoxFv(struct DialogBoxBase* this) asm("?Destroy@GatheringBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_GATHERING_BOX_INCLUDED_H */

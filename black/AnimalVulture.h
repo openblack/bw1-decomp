@@ -8,6 +8,37 @@
 
 #include "AnimalDove.h" /* For struct Dove */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Creature;
+class GameThing;
+class GameThingWithPos;
+
+// win1.41 009c92d8 mac inlined Vulture::`RTTI Type Descriptor'
+// win1.41 009a7540 mac inlined Vulture::`RTTI Base Class Descriptor'
+// win1.41 009a7558 mac inlined Vulture::`RTTI Base Class Array'
+// win1.41 009a7588 mac inlined Vulture::`RTTI Class Hierarchy Descriptor'
+class Vulture: public Dove
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041f0e0 mac 10171370 Vulture::_dt(void)
+    virtual ~Vulture();
+    // win1.41 0041f0c0 mac 10171440 Vulture::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041f0b0 mac 10171400 Vulture::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041f0d0 mac 10171480 Vulture::CanBeFrighteningToCreature(Creature *)
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -42,5 +73,7 @@ char* __fastcall GetDebugText__7VultureFv(struct GameThing* this) asm("?GetDebug
 uint32_t __fastcall GetSaveType__7VultureFv(struct GameThing* this) asm("?GetSaveType@Vulture@@UAEIXZ");
 // win1.41 0041f0d0 mac 10171480 Vulture::CanBeFrighteningToCreature(Creature *)
 uint32_t __fastcall CanBeFrighteningToCreature__7VultureFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?CanBeFrighteningToCreature@Vulture@@UAEIPAVCreature@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMAL_VULTURE_INCLUDED_H */

@@ -10,6 +10,59 @@
 
 #include "MapShield.h" /* For struct MapShield */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class EffectValues;
+class GameOSFile;
+class GameThing;
+struct MapCoords;
+class Object;
+
+// win1.41 00c22810 mac inlined MagicShield::`RTTI Type Descriptor'
+// win1.41 009b9660 mac inlined MagicShield::`RTTI Base Class Descriptor'
+// win1.41 009b9678 mac inlined MagicShield::`RTTI Base Class Array'
+// win1.41 009b96a0 mac inlined MagicShield::`RTTI Class Hierarchy Descriptor'
+class MagicShield: public MapShield
+{
+public:
+
+    // Override methods
+
+    // win1.41 0072c230 mac 105340b0 MagicShield::_dt(void)
+    virtual ~MagicShield();
+    // win1.41 0072c220 mac 10534190 MagicShield::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0072c3d0 mac 10531080 MagicShield::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 0072c3f0 mac 10531020 MagicShield::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0072c210 mac 10534150 MagicShield::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0072c300 mac 10531370 MagicShield::Draw(void)
+    virtual void Draw();
+    // win1.41 0072c2a0 mac 10531420 MagicShield::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 0072c340 mac 10531220 MagicShield::Get3DType(void)
+    virtual LH3DObject::ObjectType Get3DType();
+    // win1.41 0072c320 mac 105312c0 MagicShield::SetDying(void)
+    virtual bool SetDying();
+    // win1.41 0072c310 mac 10531320 MagicShield::IsEffectReceiver(EffectValues *)
+    virtual bool IsEffectReceiver(EffectValues* param_1);
+    // win1.41 0072c330 mac 10531270 MagicShield::InteractsWithPhysicsObjects(void)
+    virtual bool InteractsWithPhysicsObjects();
+    // win1.41 0072c2e0 mac 105313e0 MagicShield::ProcessShield(void)
+    virtual void ProcessShield();
+    // win1.41 0072c2f0 mac 105313a0 MagicShield::DrawShield(void)
+    virtual void DrawShield();
+    // win1.41 0072b850 mac 10532df0 MagicShield::IsPointDefinietlyWithinShieldVolume(MapCoords const &)
+    virtual bool IsPointDefinietlyWithinShieldVolume(const MapCoords* param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -66,5 +119,7 @@ void __fastcall ProcessShield__11MagicShieldFv(struct MapShield* this) asm("?Pro
 void __fastcall DrawShield__11MagicShieldFv(struct MapShield* this) asm("?DrawShield@MagicShield@@UAEXXZ");
 // win1.41 0072b850 mac 10532df0 MagicShield::IsPointDefinietlyWithinShieldVolume(MapCoords const &)
 bool __fastcall IsPointDefinietlyWithinShieldVolume__11MagicShieldFRC9MapCoords(struct MapShield* this, const void* edx, const struct MapCoords* param_1) asm("?IsPointDefinietlyWithinShieldVolume@MagicShield@@UAE_NPBUMapCoords@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_SHIELD_INCLUDED_H */

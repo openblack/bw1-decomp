@@ -8,6 +8,38 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 0099b9b4 mac 109ea14c WeatherInfo::`RTTI Complete Object Locator'
+// win1.41 0099b9b8 mac 109ea154 WeatherInfo::`vftable'
+class WeatherInfo: public GBaseInfo
+{
+public:
+    uint8_t field_0x10[0x54];
+};
+
+// win1.41 00c24760 mac inlined GWeatherInfo::`RTTI Type Descriptor'
+// win1.41 009b9fd8 mac inlined GWeatherInfo::`RTTI Base Class Descriptor'
+// win1.41 009b9ff0 mac inlined GWeatherInfo::`RTTI Base Class Array'
+// win1.41 009ba000 mac inlined GWeatherInfo::`RTTI Class Hierarchy Descriptor'
+class GWeatherInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00770e30 mac 105a3520 GWeatherInfo::_dt(void)
+    virtual ~GWeatherInfo();
+    // win1.41 00770dd0 mac 105a3640 GWeatherInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -49,5 +81,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__12GWeatherInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGWeatherInfo@@UAEPAXI@Z");
 // win1.41 00770dd0 mac 105a3640 GWeatherInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__12GWeatherInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GWeatherInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_WEATHER_INFO_INCLUDED_H */

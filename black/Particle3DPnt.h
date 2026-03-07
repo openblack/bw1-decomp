@@ -8,6 +8,38 @@
 
 #include "PSysRenderParticle.h" /* For struct RenderParticle */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00bed560 mac inlined Particle3DPnt::`RTTI Type Descriptor'
+// win1.41 009aed50 mac inlined Particle3DPnt::`RTTI Base Class Descriptor'
+// win1.41 009aed68 mac inlined Particle3DPnt::`RTTI Base Class Array'
+// win1.41 009aed80 mac inlined Particle3DPnt::`RTTI Class Hierarchy Descriptor'
+class Particle3DPnt: public RenderParticle
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055ef20 mac inlined Particle3DPnt::_dt(void)
+    virtual ~Particle3DPnt();
+    // win1.41 0055ef00 mac inlined Particle3DPnt::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00695010 mac inlined Particle3DPnt::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006cbb30 mac inlined Particle3DPnt::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055eef0 mac inlined Particle3DPnt::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -43,5 +75,7 @@ uint32_t __fastcall Load__13Particle3DPntFR10GameOSFile(struct GameThing* this, 
 uint32_t __fastcall Save__13Particle3DPntFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@Particle3DPnt@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0055eef0 mac inlined Particle3DPnt::GetSaveType(void)
 uint32_t __fastcall GetSaveType__13Particle3DPntFv(struct GameThing* this) asm("?GetSaveType@Particle3DPnt@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PARTICLE_3D_PNT_INCLUDED_H */

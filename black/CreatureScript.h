@@ -8,6 +8,68 @@
 
 #include "SubArgument.h" /* For struct SubArgument */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CreatureSubActionAgenda;
+struct LHPoint;
+class Object;
+
+// win1.41 009d06c8 mac inlined SubArgumentInteger::`RTTI Type Descriptor'
+// win1.41 009a98c0 mac inlined SubArgumentInteger::`RTTI Base Class Descriptor'
+// win1.41 009a98d8 mac inlined SubArgumentInteger::`RTTI Base Class Array'
+// win1.41 009a98e8 mac inlined SubArgumentInteger::`RTTI Class Hierarchy Descriptor'
+class SubArgumentInteger: public SubArgument
+{
+public:
+
+    // Override methods
+
+    // win1.41 004ff6f0 mac 10290fd0 SubArgumentInteger::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)
+    virtual void SetArgumentOfSubActionAgenda(CreatureSubActionAgenda* param_1, uint32_t param_2);
+};
+
+// win1.41 009d95a8 mac inlined SubArgumentObjectAndInteger::`RTTI Type Descriptor'
+// win1.41 009a9af0 mac inlined SubArgumentObjectAndInteger::`RTTI Base Class Descriptor'
+// win1.41 009a9b08 mac inlined SubArgumentObjectAndInteger::`RTTI Base Class Array'
+// win1.41 009a9b18 mac inlined SubArgumentObjectAndInteger::`RTTI Class Hierarchy Descriptor'
+class SubArgumentObjectAndInteger: public SubArgument
+{
+public:
+
+    // Override methods
+
+    // win1.41 004ff6d0 mac 10291050 SubArgumentObjectAndInteger::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)
+    virtual void SetArgumentOfSubActionAgenda(CreatureSubActionAgenda* param_1, uint32_t param_2);
+    // win1.41 0047c880 mac inlined SubArgumentObjectAndInteger::HasDestination(void)
+    virtual uint32_t HasDestination();
+    // win1.41 0047c890 mac inlined SubArgumentObjectAndInteger::GetDestination(void)
+    virtual LHPoint* GetDestination();
+};
+
+// win1.41 009d03c8 mac inlined SubArgumentPoint::`RTTI Type Descriptor'
+// win1.41 009a9730 mac inlined SubArgumentPoint::`RTTI Base Class Descriptor'
+// win1.41 009a9748 mac inlined SubArgumentPoint::`RTTI Base Class Array'
+// win1.41 009a9758 mac inlined SubArgumentPoint::`RTTI Class Hierarchy Descriptor'
+class SubArgumentPoint: public SubArgument
+{
+public:
+
+    // Override methods
+
+    // win1.41 004ff780 mac 10290e40 SubArgumentPoint::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)
+    virtual void SetArgumentOfSubActionAgenda(CreatureSubActionAgenda* param_1, uint32_t param_2);
+    // win1.41 004791c0 mac 102914c0 SubArgumentPoint::HasDestination(void)
+    virtual uint32_t HasDestination();
+    // win1.41 004791d0 mac 10291500 SubArgumentPoint::GetDestination(void)
+    virtual LHPoint* GetDestination();
+    // win1.41 004791b0 mac inlined SubArgumentPoint::GetObject(void)
+    virtual Object* GetObject();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct CreatureSubActionAgenda;
@@ -89,5 +151,7 @@ uint32_t __fastcall HasDestination__16SubArgumentPointFv(struct SubArgument* thi
 struct LHPoint* __fastcall GetDestination__16SubArgumentPointFv(struct SubArgument* this) asm("?GetDestination@SubArgumentPoint@@UAEPAULHPoint@@XZ");
 // win1.41 004791b0 mac inlined SubArgumentPoint::GetObject(void)
 struct Object* __fastcall GetObject__16SubArgumentPointFv(struct SubArgument* this) asm("?GetObject@SubArgumentPoint@@UAEPAVObject@@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_SCRIPT_INCLUDED_H */

@@ -8,6 +8,18 @@
 
 #include "ObjectInfo.h" /* For struct GObjectInfo */
 
+#ifdef __cplusplus
+
+// win1.41 009c8d00 mac inlined GMobileInfo::`RTTI Type Descriptor'
+// win1.41 009a6af0 mac inlined GMobileInfo::`RTTI Base Class Descriptor'
+class GMobileInfo: public GObjectInfo
+{
+public:
+    uint32_t field_0x100;
+};
+
+#else // __cplusplus
+
 struct GMobileInfo
 {
   struct GObjectInfo super;  /* 0x0 */
@@ -21,5 +33,7 @@ static_assert(sizeof(struct GMobileInfo) == 0x104, "Data type is of wrong size")
 extern struct RTTITypeDescriptor __RTTITypeDescriptor__11GMobileInfo asm("??_R0?AVGMobileInfo@@@8");
 // win1.41 009a6af0 mac inlined GMobileInfo::`RTTI Base Class Descriptor'
 extern const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__11GMobileInfo asm("??_R1A@?0A@A@GMobileInfo@@8");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MOBILE_INFO_INCLUDED_H */

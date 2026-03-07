@@ -9,6 +9,38 @@
 #include "BaseInfo.h" /* For struct GBaseInfo */
 #include "TerrainMapTypeInfo.h" /* For struct TerrainMapTypeInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00bec478 mac inlined TerrainMapInfo::`RTTI Type Descriptor'
+// win1.41 009ad2e0 mac inlined TerrainMapInfo::`RTTI Base Class Descriptor'
+// win1.41 009ad2f8 mac inlined TerrainMapInfo::`RTTI Base Class Array'
+// win1.41 009ad308 mac inlined TerrainMapInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 008df86c mac 10730b28 TerrainMapInfo::`RTTI Complete Object Locator'
+// win1.41 008df870 mac 10730b30 TerrainMapInfo::`vftable'
+class TerrainMapInfo: public GBaseInfo
+{
+public:
+    TerrainMapTypeInfo type_info[0xe]; /* 0x10 */
+
+    // Override methods
+
+    // win1.41 0054be80 mac 101522e0 TerrainMapInfo::_dt(void)
+    virtual ~TerrainMapInfo();
+    // win1.41 0054bd80 mac 1032d1b0 TerrainMapInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+
+    // Constructors
+
+    // win1.41 0054bcd0 mac 100c9280 TerrainMapInfo::TerrainMapInfo(void)
+    TerrainMapInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -46,5 +78,7 @@ struct TerrainMapInfo* __fastcall __ct__14TerrainMapInfoFv(struct TerrainMapInfo
 void __fastcall __dt__14TerrainMapInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GTerrainMapInfo@@UAEPAXI@Z");
 // win1.41 0054bd80 mac 1032d1b0 TerrainMapInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__14TerrainMapInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@TerrainMapInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_TERRAIN_MAP_INFO_INCLUDED_H */

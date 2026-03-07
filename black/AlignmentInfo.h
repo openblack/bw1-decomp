@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 009c8340 mac inlined GAlignmentInfo::`RTTI Type Descriptor'
+// win1.41 009a69c8 mac inlined GAlignmentInfo::`RTTI Base Class Descriptor'
+// win1.41 009a69e0 mac inlined GAlignmentInfo::`RTTI Base Class Array'
+// win1.41 009a69f0 mac inlined GAlignmentInfo::`RTTI Class Hierarchy Descriptor'
+class GAlignmentInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00414120 mac 100a42b0 GAlignmentInfo::_dt(void)
+    virtual ~GAlignmentInfo();
+    // win1.41 004140c0 mac 100a4bb0 GAlignmentInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__14GAlignmentInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGAlignmentInfo@@UAEPAXI@Z");
 // win1.41 004140c0 mac 100a4bb0 GAlignmentInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__14GAlignmentInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GAlignmentInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ALIGNMENT_INFO_INCLUDED_H */

@@ -8,6 +8,28 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea8e8 mac inlined SpellSetupBox::`RTTI Type Descriptor'
+// win1.41 009acf10 mac inlined SpellSetupBox::`RTTI Base Class Descriptor'
+// win1.41 009acf28 mac inlined SpellSetupBox::`RTTI Base Class Array'
+// win1.41 009acf38 mac inlined SpellSetupBox::`RTTI Class Hierarchy Descriptor'
+class SpellSetupBox: public DialogBoxBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 00547970 mac 105cc310 SpellSetupBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 00547c30 mac 105cc2b0 SpellSetupBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 00547c40 mac 105cc120 SpellSetupBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct SpellSetupBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -33,5 +55,7 @@ void __fastcall Init__13SpellSetupBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struc
 void __fastcall Destroy__13SpellSetupBoxFv(struct DialogBoxBase* this) asm("?Destroy@SpellSetupBox@@UAEXXZ");
 // win1.41 00547c40 mac 105cc120 SpellSetupBox::InitControls(void)
 void __fastcall InitControls__13SpellSetupBoxFv(struct DialogBoxBase* this) asm("?InitControls@SpellSetupBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPELL_SETUP_BOX_INCLUDED_H */

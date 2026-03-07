@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c09c10 mac inlined GSquadInfo::`RTTI Type Descriptor'
+// win1.41 009b8b58 mac inlined GSquadInfo::`RTTI Base Class Descriptor'
+// win1.41 009b8b70 mac inlined GSquadInfo::`RTTI Base Class Array'
+// win1.41 009b8b80 mac inlined GSquadInfo::`RTTI Class Hierarchy Descriptor'
+class GSquadInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 006e07b0 mac 10133d90 GSquadInfo::_dt(void)
+    virtual ~GSquadInfo();
+    // win1.41 006e0750 mac 10133ff0 GSquadInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__10GSquadInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGSquadInfo@@UAEPAXI@Z");
 // win1.41 006e0750 mac 10133ff0 GSquadInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__10GSquadInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GSquadInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SQUAD_INFO_INCLUDED_H */

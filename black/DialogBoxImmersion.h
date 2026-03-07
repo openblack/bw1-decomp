@@ -8,6 +8,49 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class SetupBigButton;
+class SetupButton;
+class SetupStaticText;
+
+// win1.41 00be8da0 mac inlined DialogBoxImmersion::`RTTI Type Descriptor'
+// win1.41 009ab9f8 mac inlined DialogBoxImmersion::`RTTI Base Class Descriptor'
+// win1.41 009aba10 mac inlined DialogBoxImmersion::`RTTI Base Class Array'
+// win1.41 009aba20 mac inlined DialogBoxImmersion::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d8640 mac 109990a8 DialogBoxImmersion::`RTTI Complete Object Locator'
+// win1.41 008d8644 mac 109990b0 DialogBoxImmersion::`vftable'
+class DialogBoxImmersion: public DialogBoxBase
+{
+public:
+    SetupStaticText* field_0x10;
+    SetupStaticText* field_0x14;
+    SetupBigButton* field_0x18;
+    SetupBigButton* field_0x1c;
+    SetupButton* field_0x20;
+    SetupBigButton* field_0x24;
+    uint32_t field_0x28;
+    uint32_t field_0x2c;
+
+    // Override methods
+
+    // win1.41 00514a80 mac 102b39f0 DialogBoxImmersion::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 00514d70 mac 102b3990 DialogBoxImmersion::Destroy(void)
+    virtual void Destroy();
+    // win1.41 00514d80 mac 102b3920 DialogBoxImmersion::InitControls(void)
+    virtual void InitControls();
+
+    // Constructors
+
+    // win1.41 005149d0 mac inlined DialogBoxImmersion::DialogBoxImmersion(void)
+    DialogBoxImmersion();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SetupBigButton;
@@ -56,5 +99,7 @@ void __fastcall Init__18DialogBoxImmersionFUlUlPFiP8SetupBoxP12SetupControlii_v(
 void __fastcall Destroy__18DialogBoxImmersionFv(struct DialogBoxBase* this) asm("?Destroy@DialogBoxImmersion@@UAEXXZ");
 // win1.41 00514d80 mac 102b3920 DialogBoxImmersion::InitControls(void)
 void __fastcall InitControls__18DialogBoxImmersionFv(struct DialogBoxBase* this) asm("?InitControls@DialogBoxImmersion@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_DIALOG_BOX_IMMERSION_INCLUDED_H */

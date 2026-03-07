@@ -8,6 +8,42 @@
 
 #include "PSysBase.h" /* For struct PSysBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00c22990 mac inlined FireGraphic::`RTTI Type Descriptor'
+// win1.41 009b9890 mac inlined FireGraphic::`RTTI Base Class Descriptor'
+// win1.41 009b98a8 mac inlined FireGraphic::`RTTI Base Class Array'
+// win1.41 009b98c0 mac inlined FireGraphic::`RTTI Class Hierarchy Descriptor'
+class FireGraphic: public PSysBase
+{
+public:
+    class SpritePos: public PSysBase
+    {
+    public:
+        // Override methods
+
+        // win1.41 00731a90 mac inlined FireGraphic::SpritePos::_dt( (void))
+        virtual ~SpritePos();
+        // win1.41 006cb040 mac inlined FireGraphic::SpritePos::Save( (GameOSFile &))
+        virtual bool Save(GameOSFile& param_1);
+        // win1.41 004664e0 mac inlined FireGraphic::SpritePos::GetSaveType( (void))
+        virtual uint32_t GetSaveType();
+    };
+
+    // Override methods
+
+    // win1.41 00731390 mac 1014b860 FireGraphic::_dt(void)
+    virtual ~FireGraphic();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -50,5 +86,7 @@ void __fastcall __dt__Q211FireGraphic9SpritePosFv(struct Base* this, const void*
 uint32_t __fastcall Save__Q211FireGraphic9SpritePosFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@SpritePos@FireGraphic@@UAEIAAVGameOSFile@@@Z");
 // win1.41 004664e0 mac inlined FireGraphic::SpritePos::GetSaveType( (void))
 uint32_t __fastcall GetSaveType__Q211FireGraphic9SpritePosFv(struct GameThing* this) asm("?GetSaveType@SpritePos@FireGraphic@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FIRE_GRAPHIC_INCLUDED_H */

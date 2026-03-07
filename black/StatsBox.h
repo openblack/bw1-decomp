@@ -8,6 +8,31 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea390 mac inlined StatsBox::`RTTI Type Descriptor'
+// win1.41 009ac9c0 mac inlined StatsBox::`RTTI Base Class Descriptor'
+// win1.41 009ac9d8 mac inlined StatsBox::`RTTI Base Class Array'
+// win1.41 009ac9e8 mac inlined StatsBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008dea10 mac 1099add0 StatsBox::`RTTI Complete Object Locator'
+// win1.41 008dea14 mac 1099add8 StatsBox::`vftable'
+class StatsBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0x64];
+
+    // Override methods
+
+    // win1.41 0056d370 mac 1031d8a0 StatsBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 0056d980 mac 1031d840 StatsBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0056d990 mac 1031d780 StatsBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct StatsBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -38,5 +63,7 @@ void __fastcall Init__8StatsBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct Dial
 void __fastcall Destroy__8StatsBoxFv(struct DialogBoxBase* this) asm("?Destroy@StatsBox@@UAEXXZ");
 // win1.41 0056d990 mac 1031d780 StatsBox::InitControls(void)
 void __fastcall InitControls__8StatsBoxFv(struct DialogBoxBase* this) asm("?InitControls@StatsBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_STATS_BOX_INCLUDED_H */

@@ -7,6 +7,24 @@
 
 #include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
 
+#ifdef __cplusplus
+
+// win1.41 00bfd8c8 mac inlined MPFEFileTransferMessage::`RTTI Type Descriptor'
+// win1.41 009b2870 mac inlined MPFEFileTransferMessage::`RTTI Base Class Descriptor'
+// win1.41 009b2888 mac inlined MPFEFileTransferMessage::`RTTI Base Class Array'
+// win1.41 009b2898 mac inlined MPFEFileTransferMessage::`RTTI Class Hierarchy Descriptor'
+class MPFEFileTransferMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 0062f4a0 mac 103a5220 MPFEFileTransferMessage::_dt(void)
+    virtual ~MPFEFileTransferMessage();
+};
+
+#else // __cplusplus
+
 struct MPFEFileTransferMessage
 {
   struct MPFEMessageObject super;  /* 0x0 */
@@ -28,5 +46,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 0062f4a0 mac 103a5220 MPFEFileTransferMessage::_dt(void)
 void __fastcall __dt__23MPFEFileTransferMessageFv(struct MPFEMessageObject* this) asm("??_GMPFEFileTransferMessage@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MPFE_FILE_TRANSFER_MESSAGE_INCLUDED_H */

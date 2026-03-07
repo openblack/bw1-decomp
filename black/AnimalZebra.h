@@ -8,6 +8,36 @@
 
 #include "AnimalCow.h" /* For struct Cow */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+class Object;
+
+// win1.41 009c9090 mac inlined Zebra::`RTTI Type Descriptor'
+// win1.41 009a6f98 mac inlined Zebra::`RTTI Base Class Descriptor'
+// win1.41 009a6fb0 mac inlined Zebra::`RTTI Base Class Array'
+// win1.41 009a6fe0 mac inlined Zebra::`RTTI Class Hierarchy Descriptor'
+class Zebra: public Cow
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041d920 mac 10170f30 Zebra::_dt(void)
+    virtual ~Zebra();
+    // win1.41 0041d910 mac 10170ff0 Zebra::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041d900 mac 10170fc0 Zebra::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041cc30 mac 1016df70 Zebra::StandAnimation(void)
+    virtual uint32_t StandAnimation();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -41,5 +71,7 @@ char* __fastcall GetDebugText__5ZebraFv(struct GameThing* this) asm("?GetDebugTe
 uint32_t __fastcall GetSaveType__5ZebraFv(struct GameThing* this) asm("?GetSaveType@Zebra@@UAEIXZ");
 // win1.41 0041cc30 mac 1016df70 Zebra::StandAnimation(void)
 uint32_t __fastcall StandAnimation__5ZebraFv(struct Object* this) asm("?StandAnimation@Zebra@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMAL_ZEBRA_INCLUDED_H */

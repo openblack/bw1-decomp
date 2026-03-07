@@ -4,10 +4,54 @@
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
+#include <wchar.h> /* For wchar_t */
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
 #include "LayerCommunication.h" /* For struct LayerCommunication */
+
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct MPFEChannelDetails;
+struct MPFEPlayerDetails;
+
+// win1.41 009cd970 mac inlined BWLan::`RTTI Type Descriptor'
+// win1.41 009a8798 mac inlined BWLan::`RTTI Base Class Descriptor'
+// win1.41 009a87b0 mac inlined BWLan::`RTTI Base Class Array'
+// win1.41 009a87c0 mac inlined BWLan::`RTTI Class Hierarchy Descriptor'
+class BWLan: public LayerCommunication
+{
+public:
+
+    // Override methods
+
+    // win1.41 004408e0 mac inlined BWLan::SendMessageW(wchar_t *, bool, MPFEPlayerDetails *)
+    virtual void SendMessageW(wchar_t* param_1, bool param_2, MPFEPlayerDetails* param_3);
+    // win1.41 00440840 mac 10181470 BWLan::SendMessageA(char const *, bool, MPFEPlayerDetails *)
+    virtual void SendMessageA(const char* param_1, bool param_2, MPFEPlayerDetails* param_3);
+    // win1.41 004409f0 mac 101812f0 BWLan::LeaveMainRoom(void)
+    virtual void LeaveMainRoom();
+    // win1.41 00440930 mac 10181350 BWLan::LeaveGameChannel(void)
+    virtual void LeaveGameChannel();
+    // win1.41 00440a00 mac 10181130 BWLan::BeginPlayerEnumeration(void)
+    virtual void BeginPlayerEnumeration();
+    // win1.41 004414b0 mac 10180190 BWLan::PopulateChannelPlayers(MPFEChannelDetails *)
+    virtual void PopulateChannelPlayers(MPFEChannelDetails* param_1);
+    // win1.41 00440830 mac 1017feb0 BWLan::Process(void)
+    virtual void Process();
+    // win1.41 00441380 mac 101804a0 BWLan::InitialiseLobbyState(void)
+    virtual void InitialiseLobbyState();
+    // win1.41 00441500 mac 10180020 BWLan::CreateOrJoinRoom(wchar_t *, wchar_t *, MPFEChannelDetails *)
+    virtual void CreateOrJoinRoom(wchar_t* param_1, wchar_t* param_2, MPFEChannelDetails* param_3);
+    // win1.41 004415b0 mac 1017fff0 BWLan::StartGame(void)
+    virtual void StartGame();
+    // win1.41 00440ac0 mac 10180f20 BWLan::Connect(void)
+    virtual uint32_t Connect();
+};
+
+#else // __cplusplus
 
 // Forward Declares
 
@@ -55,5 +99,7 @@ void __fastcall CreateOrJoinRoom__5BWLanFPwPwP18MPFEChannelDetails(struct LayerC
 void __fastcall StartGame__5BWLanFv(struct LayerCommunication* this) asm("?StartGame@BWLan@@UAEXXZ");
 // win1.41 00440ac0 mac 10180f20 BWLan::Connect(void)
 uint32_t __fastcall Connect__5BWLanFv(struct LayerCommunication* this) asm("?Connect@BWLan@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_BW_LAN_INCLUDED_H */

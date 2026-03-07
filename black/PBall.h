@@ -8,6 +8,33 @@
 
 #include "MobileObject.h" /* For struct MobileObject */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Object;
+
+// win1.41 00bfe068 mac inlined PBall::`RTTI Type Descriptor'
+// win1.41 009b2f30 mac inlined PBall::`RTTI Base Class Descriptor'
+// win1.41 009b2f48 mac inlined PBall::`RTTI Base Class Array'
+// win1.41 009b2f68 mac inlined PBall::`RTTI Class Hierarchy Descriptor'
+class PBall: public MobileObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 0063e950 mac inlined PBall::_dt(void)
+    virtual ~PBall();
+    // win1.41 0063e990 mac inlined PBall::Process(void)
+    virtual uint32_t Process();
+    // win1.41 0063e980 mac inlined PBall::Draw(void)
+    virtual void Draw();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -38,5 +65,7 @@ void __fastcall __dt__5PBallFv(struct Base* this, const void* edx, uint32_t para
 uint32_t __fastcall Process__5PBallFv(struct Object* this) asm("?Process@PBall@@UAEIXZ");
 // win1.41 0063e980 mac inlined PBall::Draw(void)
 void __fastcall Draw__5PBallFv(struct Object* this) asm("?Draw@PBall@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_P_BALL_INCLUDED_H */

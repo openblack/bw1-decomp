@@ -7,6 +7,21 @@
 
 #include "CameraMode.h" /* For struct CameraMode */
 
+#ifdef __cplusplus
+
+// win1.41 009ce0f8 mac inlined CameraModeFlyAndClick::`RTTI Type Descriptor'
+// win1.41 009a89e0 mac inlined CameraModeFlyAndClick::`RTTI Base Class Descriptor'
+// win1.41 009a89f8 mac inlined CameraModeFlyAndClick::`RTTI Base Class Array'
+// win1.41 009a8a08 mac inlined CameraModeFlyAndClick::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c7810 mac inlined CameraModeFlyAndClick::`RTTI Complete Object Locator'
+// win1.41 008c7814 mac inlined CameraModeFlyAndClick::`vftable'
+class CameraModeFlyAndClick: public CameraMode
+{
+public:
+};
+
+#else // __cplusplus
+
 struct CameraModeFlyAndClick
 {
   struct CameraMode super;  /* 0x0 */
@@ -27,5 +42,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__21CameraModeFlyAndClick asm("??_R4CameraModeFlyAndClick@@6B@");
 // win1.41 008c7814 mac inlined CameraModeFlyAndClick::`vftable'
 extern const struct CameraModeVftable __vt__21CameraModeFlyAndClick asm("??_7CameraModeFlyAndClick@@6B@");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CAMERA_MODE_FLY_AND_CLICK_INCLUDED_H */

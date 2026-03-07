@@ -11,16 +11,137 @@
 #include "BaseInfo.h" /* For struct GBaseInfo */
 #include "CreatureMorph.h" /* For struct LH3DCreature */
 
-// Forward Declares
-
-struct CreatureContext;
-struct Morphable;
-
 enum CREATURE_SUB_STATE_ACTIONS
 {
   CREATURE_SUB_STATE_ACTIONS_0 = 0x0,
   _CREATURE_SUB_STATE_ACTIONS_COUNT = 0x1
 };
+
+#ifdef __cplusplus
+
+// Forward Declares
+
+class CreatureContext;
+class Morphable;
+
+struct CreatureActionContextStart
+{
+  uint32_t field_0x0;
+  struct CreatureActionContext* field_0x4;
+  uint32_t field_0x8;
+  uint32_t field_0xc;
+  uint32_t field_0x10;
+};
+
+struct CreatureActionContext
+{
+    CreatureActionContextStart start; /* 0x0 */
+    float field_0x14;
+
+    // Constructors
+
+    // win1.41 004c3960 mac 10230320 CreatureActionContext::CreatureActionContext(CreatureContext &, float)
+    CreatureActionContext(CreatureContext* context, float param_2);
+};
+
+struct PreviousActionContextStack
+{
+  uint32_t indexes[0x2][0x148];  /* 0x0 */
+  struct CreatureActionContext stack[0x148][0xa];  /* 0xa40 */
+};
+
+struct CreatureActionOpinions
+{
+    uint32_t entries[NUM_CREATURE_ACTIONS]; /* 0x0 */
+
+    // Constructors
+
+    // win1.41 004c3930 mac 102303a0 CreatureActionOpinions::CreatureActionOpinions(CreatureInfo const *)
+    CreatureActionOpinions();
+};
+
+// win1.41 00be02d8 mac inlined CreaturePreviousActions::`RTTI Type Descriptor'
+// win1.41 009ab390 mac inlined CreaturePreviousActions::`RTTI Base Class Descriptor'
+// win1.41 009ab3a8 mac inlined CreaturePreviousActions::`RTTI Base Class Array'
+// win1.41 009ab3b8 mac inlined CreaturePreviousActions::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d1548 mac 107875fc CreaturePreviousActions::`RTTI Complete Object Locator'
+// win1.41 008d154c mac 10787604 CreaturePreviousActions::`vftable'
+class CreaturePreviousActions: public Base
+{
+public:
+    float field_0x8[NUM_CREATURE_ACTIONS];
+
+    // Override methods
+
+    // win1.41 004f2040 mac 10246760 CreaturePreviousActions::_dt(void)
+    virtual ~CreaturePreviousActions();
+};
+
+// win1.41 00bdfda8 mac inlined CreatureActionKnownAbout::`RTTI Type Descriptor'
+// win1.41 009aaf90 mac inlined CreatureActionKnownAbout::`RTTI Base Class Descriptor'
+// win1.41 009aafa8 mac inlined CreatureActionKnownAbout::`RTTI Base Class Array'
+// win1.41 009aafb8 mac inlined CreatureActionKnownAbout::`RTTI Class Hierarchy Descriptor'
+class CreatureActionKnownAbout: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 004e29b0 mac 10266bf0 CreatureActionKnownAbout::_dt(void)
+    virtual ~CreatureActionKnownAbout();
+};
+
+// win1.41 00bdfe00 mac inlined CreatureActionKnownAboutEntry::`RTTI Type Descriptor'
+// win1.41 009aafe0 mac inlined CreatureActionKnownAboutEntry::`RTTI Base Class Descriptor'
+// win1.41 009aaff8 mac inlined CreatureActionKnownAboutEntry::`RTTI Base Class Array'
+// win1.41 009ab008 mac inlined CreatureActionKnownAboutEntry::`RTTI Class Hierarchy Descriptor'
+class CreatureActionKnownAboutEntry: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 004e2db0 mac 102676b0 CreatureActionKnownAboutEntry::_dt(void)
+    virtual ~CreatureActionKnownAboutEntry();
+    // win1.41 004e2d50 mac 10267920 CreatureActionKnownAboutEntry::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+// win1.41 00be9c18 mac inlined CreatureFalling::`RTTI Type Descriptor'
+// win1.41 009abfc0 mac inlined CreatureFalling::`RTTI Base Class Descriptor'
+// win1.41 009abfd8 mac inlined CreatureFalling::`RTTI Base Class Array'
+// win1.41 009abff0 mac inlined CreatureFalling::`RTTI Class Hierarchy Descriptor'
+class CreatureFalling: public LH3DCreature
+{
+public:
+
+    // Override methods
+
+    // win1.41 004803d0 mac inlined CreatureFalling::SetAnimTime(long, long)
+    virtual void SetAnimTime(int param_1, int param_2);
+};
+
+// win1.41 00bdfe30 mac inlined CreatureMagicActionKnownAboutEntry::`RTTI Type Descriptor'
+// win1.41 009ab030 mac inlined CreatureMagicActionKnownAboutEntry::`RTTI Base Class Descriptor'
+// win1.41 009ab048 mac inlined CreatureMagicActionKnownAboutEntry::`RTTI Base Class Array'
+// win1.41 009ab060 mac inlined CreatureMagicActionKnownAboutEntry::`RTTI Class Hierarchy Descriptor'
+class CreatureMagicActionKnownAboutEntry: public CreatureActionKnownAboutEntry
+{
+public:
+
+    // Override methods
+
+    // win1.41 004e2e50 mac 10267580 CreatureMagicActionKnownAboutEntry::_dt(void)
+    virtual ~CreatureMagicActionKnownAboutEntry();
+};
+
+#else // __cplusplus
+
+// Forward Declares
+
+struct CreatureContext;
+struct Morphable;
+
 static_assert(sizeof(enum CREATURE_SUB_STATE_ACTIONS) == 0x4, "Data type is of wrong size");
 
 static const char* CREATURE_SUB_STATE_ACTIONS_strs[_CREATURE_SUB_STATE_ACTIONS_COUNT] = {
@@ -183,5 +304,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 004e2e50 mac 10267580 CreatureMagicActionKnownAboutEntry::_dt(void)
 void __fastcall __dt__34CreatureMagicActionKnownAboutEntryFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureMagicActionKnownAboutEntry@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_ACTION_INCLUDED_H */

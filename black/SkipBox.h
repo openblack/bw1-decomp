@@ -9,6 +9,33 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea538 mac inlined SkipBox::`RTTI Type Descriptor'
+// win1.41 009acdd0 mac inlined SkipBox::`RTTI Base Class Descriptor'
+// win1.41 009acde8 mac inlined SkipBox::`RTTI Base Class Array'
+// win1.41 009acdf8 mac inlined SkipBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008dead8 mac 109ed6d4 SkipBox::`RTTI Complete Object Locator'
+// win1.41 008deadc mac 109ed6dc SkipBox::`vftable'
+class SkipBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0x14];
+
+    // Override methods
+
+    // win1.41 005441c0 mac 105bb390 SkipBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 00544430 mac 105bb330 SkipBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0053bd60 mac 105c5e80 SkipBox::CanESCOut(void)
+    virtual bool CanESCOut();
+    // win1.41 00544440 mac 105bb270 SkipBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct SkipBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -41,5 +68,7 @@ void __fastcall Destroy__7SkipBoxFv(struct DialogBoxBase* this) asm("?Destroy@Sk
 bool __fastcall CanESCOut__7SkipBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@SkipBox@@UAE_NXZ");
 // win1.41 00544440 mac 105bb270 SkipBox::InitControls(void)
 void __fastcall InitControls__7SkipBoxFv(struct DialogBoxBase* this) asm("?InitControls@SkipBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SKIP_BOX_INCLUDED_H */

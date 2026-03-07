@@ -8,6 +8,42 @@
 
 #include "MobileInfo.h" /* For struct GMobileInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+class GObjectInfo;
+
+// win1.41 009c9658 mac inlined GMobileObjectInfo::`RTTI Type Descriptor'
+// win1.41 009a7ae8 mac inlined GMobileObjectInfo::`RTTI Base Class Descriptor'
+// win1.41 009b1fe8 mac inlined GMobileObjectInfo::`RTTI Base Class Array'
+// win1.41 009b2000 mac inlined GMobileObjectInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 009305c8 mac 10736eec GMobileObjectInfo::`RTTI Complete Object Locator'
+// win1.41 009305cc mac 10736ef4 GMobileObjectInfo::`vftable'
+class GMobileObjectInfo: public GMobileInfo
+{
+public:
+    uint8_t field_0x104[0x10];
+
+    // Override methods
+
+    // win1.41 00606e10 mac 100ad680 GMobileObjectInfo::_dt(void)
+    virtual ~GMobileObjectInfo();
+    // win1.41 00606da0 mac 100ad7d0 GMobileObjectInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+    // win1.41 00425920 mac 100ad790 GMobileObjectInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh() const;
+
+    // Constructors
+
+    // win1.41 inlined mac 100ad720 GMobileObjectInfo::GMobileObjectInfo(void)
+    GMobileObjectInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -49,5 +85,7 @@ void __fastcall __dt__17GMobileObjectInfoFv(struct Base* this, const void* edx, 
 struct GBaseInfo* __fastcall GetBaseInfo__17GMobileObjectInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GMobileObjectInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 00425920 mac 100ad790 GMobileObjectInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__17GMobileObjectInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GMobileObjectInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MOBILE_OBJECT_INFO_INCLUDED_H */

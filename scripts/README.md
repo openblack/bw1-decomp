@@ -124,6 +124,18 @@ win addr,mac mangled name,mac addr,call type,return type
 
 It is difficult to unmangle and re-mangle functions with template parameters. It's also very difficult to know if a parameter is from template expansion or not. Additionally, you can't add template syntax to C headers so they must be manually renamed. As the number of templated functions is realitvely low, it's best to add these function manually.
 
+## Stub Generator
+
+```bash
+python scripts/source_code/generate_stubs.py [extracted_reversing_data_bw_141.json] [src/staging]
+```
+
+This script generates empty C++ stub implementations for all functions in the reversing database. For each header file that has associated functions, it produces a corresponding `.cpp` file in `src/staging/` containing one empty stub per function, sorted in ascending address order.
+
+Each stub includes an address comment (`// win1.41 ... mac ...`) matching the style used in the headers, making it easy to cross-reference with the assembly and understand which stubs remain to be implemented.
+
+The script maps function class names to their header files (including stripping the internal `G` prefix used by Watcom's name mangling), derives C++ signatures from the type information in the database, and correctly handles constructors, destructors, and varying calling conventions.
+
 ## ASM file import cleaner
 
 ```bash

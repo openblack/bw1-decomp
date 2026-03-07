@@ -9,6 +9,30 @@
 #include "GatheringText.h" /* For enum TEXTJUSTIFY */
 #include "SetupControl.h" /* For struct SetupControl */
 
+#ifdef __cplusplus
+
+// win1.41 009c82f8 mac inlined SetupStaticText::`RTTI Type Descriptor'
+// win1.41 009a6978 mac inlined SetupStaticText::`RTTI Base Class Descriptor'
+// win1.41 009a6990 mac inlined SetupStaticText::`RTTI Base Class Array'
+// win1.41 009a69a0 mac inlined SetupStaticText::`RTTI Class Hierarchy Descriptor'
+// win1.41 008ab5bc mac 107312e0 SetupStaticText::`RTTI Complete Object Locator'
+// win1.41 008ab5c0 mac 107312e8 SetupStaticText::`vftable'
+class SetupStaticText: public SetupControl
+{
+public:
+    TEXTJUSTIFY text_justify; /* 0x23c */
+    int display_text_size; /* 0x240 */
+
+    // Override methods
+
+    // win1.41 00409430 mac 105436e0 SetupStaticText::Draw(bool, bool)
+    virtual void Draw(bool hovered, bool selected);
+    // win1.41 00411670 mac 100cb300 SetupStaticText::~SetupStaticText(void)
+    virtual ~SetupStaticText();
+};
+
+#else // __cplusplus
+
 struct SetupStaticText
 {
   struct SetupControl super;  /* 0x0 */
@@ -38,5 +62,7 @@ extern const struct SetupControlVftable __vt__15SetupStaticText asm("??_7SetupSt
 void __fastcall Draw__15SetupStaticTextFbb(struct SetupControl* this, const void* edx, bool hovered, bool selected) asm("?Draw@SetupStaticText@@UAEX_N0@Z");
 // win1.41 00411670 mac 100cb300 SetupStaticText::~SetupStaticText(void)
 void __fastcall __dt__15SetupStaticTextFb(struct SetupControl* this, const void* edx, bool param_1) asm("??_DSetupStaticText@@QAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_STATIC_TEXT_INCLUDED_H */

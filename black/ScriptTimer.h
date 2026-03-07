@@ -8,6 +8,46 @@
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00bece00 mac inlined ScriptTimer::`RTTI Type Descriptor'
+// win1.41 009ae3b8 mac inlined ScriptTimer::`RTTI Base Class Descriptor'
+// win1.41 009ae3d0 mac inlined ScriptTimer::`RTTI Base Class Array'
+// win1.41 009ae3e8 mac inlined ScriptTimer::`RTTI Class Hierarchy Descriptor'
+class ScriptTimer: public GameThingWithPos
+{
+public:
+
+    // Override methods
+
+    // win1.41 00561330 mac 10506140 ScriptTimer::_dt(void)
+    virtual ~ScriptTimer();
+    // win1.41 00561320 mac 10506350 ScriptTimer::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 007117b0 mac 10506390 ScriptTimer::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 00711700 mac 105064b0 ScriptTimer::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00561310 mac 10506310 ScriptTimer::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00561300 mac 105062c0 ScriptTimer::IsDeletedWhenReleasedFromScript(void)
+    virtual bool IsDeletedWhenReleasedFromScript();
+    // win1.41 005612e0 mac 105061e0 ScriptTimer::GetText(void)
+    virtual const char* GetText();
+    // win1.41 005612f0 mac 1002b150 ScriptTimer::IsScriptTimer(void)
+    virtual bool IsScriptTimer();
+    // win1.41 00711600 mac 10506a30 ScriptTimer::GetScriptObjectType(void)
+    virtual uint32_t GetScriptObjectType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -51,5 +91,7 @@ const char* __fastcall GetText__11ScriptTimerFv(struct GameThingWithPos* this) a
 uint32_t __fastcall IsScriptTimer__11ScriptTimerFv(struct GameThingWithPos* this) asm("?IsScriptTimer@ScriptTimer@@UAEIXZ");
 // win1.41 00711600 mac 10506a30 ScriptTimer::GetScriptObjectType(void)
 uint32_t __fastcall GetScriptObjectType__11ScriptTimerFv(struct GameThingWithPos* this) asm("?GetScriptObjectType@ScriptTimer@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SCRIPT_TIMER_INCLUDED_H */

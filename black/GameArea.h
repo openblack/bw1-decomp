@@ -8,6 +8,24 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bec930 mac inlined GameArea::`RTTI Type Descriptor'
+// win1.41 009ad380 mac inlined GameArea::`RTTI Base Class Descriptor'
+// win1.41 009ad398 mac inlined GameArea::`RTTI Base Class Array'
+// win1.41 009ad3a8 mac inlined GameArea::`RTTI Class Hierarchy Descriptor'
+class GameArea: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 00557220 mac 102fe950 GameArea::_dt(void)
+    virtual ~GameArea();
+};
+
+#else // __cplusplus
+
 struct GameArea
 {
   struct Base super;  /* 0x0 */
@@ -29,5 +47,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00557220 mac 102fe950 GameArea::_dt(void)
 void __fastcall __dt__8GameAreaFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGameArea@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_GAME_AREA_INCLUDED_H */

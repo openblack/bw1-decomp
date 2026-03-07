@@ -8,6 +8,32 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bec438 mac inlined GestureSystem::`RTTI Type Descriptor'
+// win1.41 009ad240 mac inlined GestureSystem::`RTTI Base Class Descriptor'
+// win1.41 009ad258 mac inlined GestureSystem::`RTTI Base Class Array'
+// win1.41 009ad268 mac inlined GestureSystem::`RTTI Class Hierarchy Descriptor'
+// win1.41 008df7fc mac 107330f8 GestureSystem::`RTTI Complete Object Locator'
+// win1.41 008df800 mac 10733100 GestureSystem::`vftable'
+class GestureSystem: public Base
+{
+public:
+    uint8_t field_0x8[0xc98];
+
+    // Override methods
+
+    // win1.41 0054bb60 mac 1042dc00 GestureSystem::_dt(void)
+    virtual ~GestureSystem();
+
+    // Constructors
+
+    // win1.41 0054bb40 mac inlined GestureSystem::GestureSystem(void)
+    GestureSystem();
+};
+
+#else // __cplusplus
+
 struct GestureSystem
 {
   struct Base super;  /* 0x0 */
@@ -45,5 +71,7 @@ struct GestureSystemPacketData
   uint8_t field_0x0;
 };
 static_assert(sizeof(struct GestureSystemPacketData) == 0x1, "Data type is of wrong size");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_GESTURE_SYSTEM_INCLUDED_H */

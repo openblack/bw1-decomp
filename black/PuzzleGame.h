@@ -26,6 +26,673 @@
 #include "PileFood.h" /* For struct PileFood */
 #include "Totem.h" /* For struct Totem */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Abode;
+class Base;
+struct ControlHandUpdateInfo;
+class Creature;
+class GInterfaceStatus;
+class GPlayer;
+class GameOSFile;
+class GameThing;
+class LHOSFile;
+class Living;
+struct MapCoords;
+class MultiMapFixed;
+class Object;
+struct PhysOb;
+class PhysicsObject;
+class PlannedMultiMapFixed;
+struct RPHolder;
+
+// win1.41 00becad8 mac inlined PuzzleGame::`RTTI Type Descriptor'
+// win1.41 009ad980 mac inlined PuzzleGame::`RTTI Base Class Descriptor'
+// win1.41 009ad998 mac inlined PuzzleGame::`RTTI Base Class Array'
+// win1.41 009ad9b0 mac inlined PuzzleGame::`RTTI Class Hierarchy Descriptor'
+// win1.41 008f2334 mac 10756934 PuzzleGame::`RTTI Complete Object Locator'
+// win1.41 008f2338 mac 1075693c PuzzleGame::`vftable'
+class PuzzleGame: public GameThingWithPos
+{
+public:
+    uint8_t field_0x0x28[0x560];
+
+    // Override methods
+
+    // win1.41 00561b70 mac 10133820 PuzzleGame::_dt(void)
+    virtual ~PuzzleGame();
+    // win1.41 006d6ff0 mac 1012bfa0 PuzzleGame::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00561b60 mac 10133a40 PuzzleGame::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006d9d40 mac 10126ae0 PuzzleGame::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006d96c0 mac 10127440 PuzzleGame::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00561b50 mac 10133a00 PuzzleGame::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00561b10 mac inlined PuzzleGame::GetPos( const(MapCoords *))
+    virtual MapCoords* GetPos(MapCoords* param_1);
+    // win1.41 00561b30 mac 10133980 PuzzleGame::GetText(void)
+    virtual const char* GetText();
+    // win1.41 00561b40 mac 101339c0 PuzzleGame::IsPuzzleGame(void)
+    virtual bool IsPuzzleGame();
+};
+
+// win1.41 00c099b0 mac inlined ChessGamePuzzle::`RTTI Type Descriptor'
+// win1.41 009b8848 mac inlined ChessGamePuzzle::`RTTI Base Class Descriptor'
+// win1.41 009b8860 mac inlined ChessGamePuzzle::`RTTI Base Class Array'
+// win1.41 009b8878 mac inlined ChessGamePuzzle::`RTTI Class Hierarchy Descriptor'
+class ChessGamePuzzle: public GameThingWithPos
+{
+public:
+
+    // Override methods
+
+    // win1.41 006dddb0 mac inlined ChessGamePuzzle::_dt(void)
+    virtual ~ChessGamePuzzle();
+    // win1.41 006dde30 mac inlined ChessGamePuzzle::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 006ddda0 mac inlined ChessGamePuzzle::GetText(void)
+    virtual const char* GetText();
+};
+
+// win1.41 00c09a70 mac inlined ChessPiece::`RTTI Type Descriptor'
+// win1.41 009b8ad0 mac inlined ChessPiece::`RTTI Base Class Descriptor'
+class ChessPiece: public AnimatedStatic
+{
+public:
+};
+
+// win1.41 00c09a90 mac inlined ChessKing::`RTTI Type Descriptor'
+// win1.41 009b8ae8 mac inlined ChessKing::`RTTI Base Class Descriptor'
+// win1.41 009b8b00 mac inlined ChessKing::`RTTI Base Class Array'
+// win1.41 009b8b30 mac inlined ChessKing::`RTTI Class Hierarchy Descriptor'
+class ChessKing: public ChessPiece
+{
+public:
+
+    // Override methods
+
+    // win1.41 006de3c0 mac inlined ChessKing::_dt(void)
+    virtual ~ChessKing();
+};
+
+// win1.41 00c09a50 mac inlined ChessKnight::`RTTI Type Descriptor'
+// win1.41 009b8a60 mac inlined ChessKnight::`RTTI Base Class Descriptor'
+// win1.41 009b8a78 mac inlined ChessKnight::`RTTI Base Class Array'
+// win1.41 009b8aa8 mac inlined ChessKnight::`RTTI Class Hierarchy Descriptor'
+class ChessKnight: public ChessPiece
+{
+public:
+
+    // Override methods
+
+    // win1.41 006de300 mac inlined ChessKnight::_dt(void)
+    virtual ~ChessKnight();
+};
+
+// win1.41 00c099f8 mac inlined ChessMad::`RTTI Type Descriptor'
+// win1.41 009b8910 mac inlined ChessMad::`RTTI Base Class Descriptor'
+// win1.41 009b8928 mac inlined ChessMad::`RTTI Base Class Array'
+// win1.41 009b8958 mac inlined ChessMad::`RTTI Class Hierarchy Descriptor'
+class ChessMad: public ChessPiece
+{
+public:
+
+    // Override methods
+
+    // win1.41 006de340 mac inlined ChessMad::_dt(void)
+    virtual ~ChessMad();
+    // win1.41 005273d0 mac inlined ChessMad::ConvertToPlanned(void)
+    virtual PlannedMultiMapFixed* ConvertToPlanned();
+};
+
+// win1.41 00c099e0 mac inlined ChessPion::`RTTI Type Descriptor'
+// win1.41 009b88a0 mac inlined ChessPion::`RTTI Base Class Descriptor'
+// win1.41 009b88b8 mac inlined ChessPion::`RTTI Base Class Array'
+// win1.41 009b88e8 mac inlined ChessPion::`RTTI Class Hierarchy Descriptor'
+class ChessPion: public ChessPiece
+{
+public:
+
+    // Override methods
+
+    // win1.41 006de280 mac inlined ChessPion::_dt(void)
+    virtual ~ChessPion();
+    // win1.41 006dde40 mac inlined ChessPion::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 005273b0 mac inlined ChessPion::GetPlayer(void)
+    virtual GPlayer* GetPlayer();
+    // win1.41 00422190 mac inlined ChessPion::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00422bc0 mac inlined ChessPion::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 00422aa0 mac inlined ChessPion::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00422180 mac inlined ChessPion::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00422770 mac inlined ChessPion::Draw(void)
+    virtual void Draw();
+    // win1.41 006dde50 mac inlined ChessPion::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 00422210 mac inlined ChessPion::SetUpPhysOb(PhysOb *)
+    virtual void SetUpPhysOb(PhysOb* param_1);
+    // win1.41 004221e0 mac inlined ChessPion::InteractsWithPhysicsObjects(void)
+    virtual bool InteractsWithPhysicsObjects();
+    // win1.41 004221d0 mac inlined ChessPion::ChecksVerticesVObjects(void)
+    virtual bool ChecksVerticesVObjects();
+    // win1.41 00422ec0 mac inlined ChessPion::CreatureMustAvoid(Creature *)
+    virtual bool CreatureMustAvoid(Creature* param_1);
+    // win1.41 00422ed0 mac inlined ChessPion::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int, Point2D, float, int));
+    // win1.41 006de260 mac inlined ChessPion::SaveObject(LHOSFile &, MapCoords const &)
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
+};
+
+// win1.41 00c09a30 mac inlined ChessQueen::`RTTI Type Descriptor'
+// win1.41 009b89f0 mac inlined ChessQueen::`RTTI Base Class Descriptor'
+// win1.41 009b8a08 mac inlined ChessQueen::`RTTI Base Class Array'
+// win1.41 009b8a38 mac inlined ChessQueen::`RTTI Class Hierarchy Descriptor'
+class ChessQueen: public ChessPiece
+{
+public:
+
+    // Override methods
+
+    // win1.41 006de380 mac inlined ChessQueen::_dt(void)
+    virtual ~ChessQueen();
+};
+
+// win1.41 00c09a10 mac inlined ChessTower::`RTTI Type Descriptor'
+// win1.41 009b8980 mac inlined ChessTower::`RTTI Base Class Descriptor'
+// win1.41 009b8998 mac inlined ChessTower::`RTTI Base Class Array'
+// win1.41 009b89c8 mac inlined ChessTower::`RTTI Class Hierarchy Descriptor'
+class ChessTower: public ChessPiece
+{
+public:
+
+    // Override methods
+
+    // win1.41 006de2c0 mac inlined ChessTower::_dt(void)
+    virtual ~ChessTower();
+};
+
+// win1.41 009c9058 mac inlined PieceHorse::`RTTI Type Descriptor'
+// win1.41 009a6f28 mac inlined PieceHorse::`RTTI Base Class Descriptor'
+// win1.41 009a6f40 mac inlined PieceHorse::`RTTI Base Class Array'
+// win1.41 009a6f70 mac inlined PieceHorse::`RTTI Class Hierarchy Descriptor'
+class PieceHorse: public Horse
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041d870 mac 10120b50 PieceHorse::_dt(void)
+    virtual ~PieceHorse();
+    // win1.41 0041d860 mac 101311e0 PieceHorse::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041d850 mac 101311a0 PieceHorse::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 009c9398 mac inlined PieceLion::`RTTI Type Descriptor'
+// win1.41 009a7688 mac inlined PieceLion::`RTTI Base Class Descriptor'
+// win1.41 009a76a0 mac inlined PieceLion::`RTTI Base Class Array'
+// win1.41 009a76d0 mac inlined PieceLion::`RTTI Class Hierarchy Descriptor'
+class PieceLion: public Lion
+{
+public:
+
+    // Override methods
+
+    // win1.41 004200f0 mac 10175360 PieceLion::_dt(void)
+    virtual ~PieceLion();
+    // win1.41 004200d0 mac 101754c0 PieceLion::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 004200c0 mac 10175480 PieceLion::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 004200e0 mac 10175500 PieceLion::CanBeFrighteningToCreature(Creature *)
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
+};
+
+// win1.41 009c90d8 mac inlined PiecePig::`RTTI Type Descriptor'
+// win1.41 009a7078 mac inlined PiecePig::`RTTI Base Class Descriptor'
+// win1.41 009a7090 mac inlined PiecePig::`RTTI Base Class Array'
+// win1.41 009a70c0 mac inlined PiecePig::`RTTI Class Hierarchy Descriptor'
+class PiecePig: public Pig
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041dab0 mac 10120660 PiecePig::_dt(void)
+    virtual ~PiecePig();
+    // win1.41 0041daa0 mac 101315f0 PiecePig::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041da90 mac 101315b0 PiecePig::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041da70 mac 10131530 PiecePig::DecideWhatToDo(void)
+    virtual bool DecideWhatToDo();
+};
+
+// win1.41 009c8fd0 mac inlined PieceSheep::`RTTI Type Descriptor'
+// win1.41 009a6dd8 mac inlined PieceSheep::`RTTI Base Class Descriptor'
+// win1.41 009a6df0 mac inlined PieceSheep::`RTTI Base Class Array'
+// win1.41 009a6e20 mac inlined PieceSheep::`RTTI Class Hierarchy Descriptor'
+class PieceSheep: public Sheep
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041d630 mac 10120ec0 PieceSheep::_dt(void)
+    virtual ~PieceSheep();
+    // win1.41 0041d620 mac 1012e440 PieceSheep::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041d610 mac 1012e400 PieceSheep::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 009c9138 mac inlined PieceTortoise::`RTTI Type Descriptor'
+// win1.41 009a7158 mac inlined PieceTortoise::`RTTI Base Class Descriptor'
+// win1.41 009a7170 mac inlined PieceTortoise::`RTTI Base Class Array'
+// win1.41 009a71a0 mac inlined PieceTortoise::`RTTI Class Hierarchy Descriptor'
+class PieceTortoise: public Tortoise
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041dc40 mac 10120880 PieceTortoise::_dt(void)
+    virtual ~PieceTortoise();
+    // win1.41 0041dc30 mac 101314b0 PieceTortoise::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041dc20 mac 10131470 PieceTortoise::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+// win1.41 009c8f08 mac inlined PieceVillager::`RTTI Type Descriptor'
+// win1.41 009a6c98 mac inlined PieceVillager::`RTTI Base Class Descriptor'
+// win1.41 009a6cb0 mac inlined PieceVillager::`RTTI Base Class Array'
+// win1.41 009a6cd8 mac inlined PieceVillager::`RTTI Class Hierarchy Descriptor'
+class PieceVillager: public Animal
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041bbd0 mac 10124c60 PieceVillager::_dt(void)
+    virtual ~PieceVillager();
+    // win1.41 0041bbb0 mac 10164d80 PieceVillager::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041bba0 mac 10164d40 PieceVillager::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041bbc0 mac 101334a0 PieceVillager::CanBeFrighteningToCreature(Creature *)
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
+    // win1.41 0041cfd0 mac 1016d160 PieceVillager::StandAnimation(void)
+    virtual uint32_t StandAnimation();
+};
+
+// win1.41 009c94d0 mac inlined PieceWolf::`RTTI Type Descriptor'
+// win1.41 009a7848 mac inlined PieceWolf::`RTTI Base Class Descriptor'
+// win1.41 009a7860 mac inlined PieceWolf::`RTTI Base Class Array'
+// win1.41 009a7890 mac inlined PieceWolf::`RTTI Class Hierarchy Descriptor'
+class PieceWolf: public Wolf
+{
+public:
+
+    // Override methods
+
+    // win1.41 00421da0 mac 10120d10 PieceWolf::_dt(void)
+    virtual ~PieceWolf();
+    // win1.41 00421d80 mac 10178360 PieceWolf::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00421d70 mac 10178320 PieceWolf::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00421d90 mac 10133030 PieceWolf::CanBeFrighteningToCreature(Creature *)
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
+};
+
+// win1.41 00c09960 mac inlined PieceCow::`RTTI Type Descriptor'
+// win1.41 009b8748 mac inlined PieceCow::`RTTI Base Class Descriptor'
+class PieceCow: public Cow
+{
+public:
+};
+
+// win1.41 00c09978 mac inlined PuzzleCow::`RTTI Type Descriptor'
+// win1.41 009b8760 mac inlined PuzzleCow::`RTTI Base Class Descriptor'
+// win1.41 009b8778 mac inlined PuzzleCow::`RTTI Base Class Array'
+// win1.41 009b87a8 mac inlined PuzzleCow::`RTTI Class Hierarchy Descriptor'
+class PuzzleCow: public PieceCow
+{
+public:
+
+    // Override methods
+
+    // win1.41 006dd6f0 mac 10132270 PuzzleCow::_dt(void)
+    virtual ~PuzzleCow();
+    // win1.41 006dd680 mac 10132350 PuzzleCow::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006dd670 mac 10132310 PuzzleCow::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 006dd4b0 mac inlined PuzzleCow::CanBeFrighteningToCreature(Creature *)
+    virtual bool CanBeFrighteningToCreature(Creature* param_1);
+    // win1.41 006dd690 mac 10132390 PuzzleCow::CanBecomeAPhysicsObject(void)
+    virtual bool CanBecomeAPhysicsObject();
+    // win1.41 0041c7e0 mac inlined PuzzleCow::StandAnimation(void)
+    virtual uint32_t StandAnimation();
+};
+
+// win1.41 00beca58 mac inlined PuzzleGrain::`RTTI Type Descriptor'
+// win1.41 009ad5f8 mac inlined PuzzleGrain::`RTTI Base Class Descriptor'
+// win1.41 009ad610 mac inlined PuzzleGrain::`RTTI Base Class Array'
+// win1.41 009ad640 mac inlined PuzzleGrain::`RTTI Class Hierarchy Descriptor'
+class PuzzleGrain: public PileFood
+{
+public:
+
+    // Override methods
+
+    // win1.41 00561a70 mac 101317c0 PuzzleGrain::_dt(void)
+    virtual ~PuzzleGrain();
+    // win1.41 00561910 mac 10131890 PuzzleGrain::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006dbe40 mac 10123450 PuzzleGrain::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006dbeb0 mac 10123370 PuzzleGrain::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00561900 mac 10131850 PuzzleGrain::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00561920 mac 101318d0 PuzzleGrain::CanBeEatenByCreature(Creature *)
+    virtual bool CanBeEatenByCreature(Creature* param_1);
+    // win1.41 00561930 mac 10131920 PuzzleGrain::CanBePickedUpByCreature(Creature *)
+    virtual bool CanBePickedUpByCreature(Creature* param_1);
+    // win1.41 00561a20 mac 10131e70 PuzzleGrain::Draw(void)
+    virtual void Draw();
+    // win1.41 00561a30 mac 10122f40 PuzzleGrain::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 00561a10 mac 10131e20 PuzzleGrain::GetFoodValue(FOOD_TYPE)
+    virtual float GetFoodValue(FOOD_TYPE param_1);
+    // win1.41 00561940 mac 10131970 PuzzleGrain::ValidForLockedSelectProcess(GInterfaceStatus *)
+    virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
+    // win1.41 00561950 mac 101319d0 PuzzleGrain::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
+    virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
+    // win1.41 00561960 mac 10131a30 PuzzleGrain::NetworkUnfriendlyStartLockedSelect(void)
+    virtual bool NetworkUnfriendlyStartLockedSelect();
+    // win1.41 00561970 mac 10131a80 PuzzleGrain::IsReadyForNetworkUnfriendlyLockedSelect(void)
+    virtual bool IsReadyForNetworkUnfriendlyLockedSelect();
+    // win1.41 00561980 mac 10131ae0 PuzzleGrain::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
+    virtual bool NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+    // win1.41 00561990 mac 10131b40 PuzzleGrain::GetReadyForNetworkUnfriendlyEndLockedSelect(void)
+    virtual bool GetReadyForNetworkUnfriendlyEndLockedSelect();
+    // win1.41 005619a0 mac 10131ba0 PuzzleGrain::IsReadyForNetworkUnfriendlyEndLockedSelect(void)
+    virtual bool IsReadyForNetworkUnfriendlyEndLockedSelect();
+    // win1.41 005619b0 mac 10131c00 PuzzleGrain::NetworkUnfriendlyEndLockedSelect(void)
+    virtual bool NetworkUnfriendlyEndLockedSelect();
+    // win1.41 005619c0 mac 10131c50 PuzzleGrain::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
+    virtual bool NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+    // win1.41 005619d0 mac 10131cb0 PuzzleGrain::ValidAsInterfaceTarget(void)
+    virtual bool ValidAsInterfaceTarget();
+    // win1.41 005619f0 mac 10131d60 PuzzleGrain::InterfaceSetInMagicHand(GInterfaceStatus *)
+    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    // win1.41 00561a00 mac 10131dc0 PuzzleGrain::InterfaceSetOutMagicHand(GInterfaceStatus *)
+    virtual bool InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
+    // win1.41 005619e0 mac 10131d00 PuzzleGrain::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
+    virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
+    // win1.41 00561a40 mac 10131ec0 PuzzleGrain::EndPhysics(PhysicsObject *, bool)
+    virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+    // win1.41 00561a60 mac 10131f20 PuzzleGrain::CanBecomeAPhysicsObject(void)
+    virtual bool CanBecomeAPhysicsObject();
+    // win1.41 006dc550 mac 10122550 PuzzleGrain::GetImmersionTexture(void)
+    virtual IMMERSION_EFFECT_TYPE GetImmersionTexture();
+};
+
+// win1.41 00c09990 mac inlined PuzzleHorse::`RTTI Type Descriptor'
+// win1.41 009b87d0 mac inlined PuzzleHorse::`RTTI Base Class Descriptor'
+// win1.41 009b87e8 mac inlined PuzzleHorse::`RTTI Base Class Array'
+// win1.41 009b8820 mac inlined PuzzleHorse::`RTTI Class Hierarchy Descriptor'
+class PuzzleHorse: public PieceHorse
+{
+public:
+
+    // Override methods
+
+    // win1.41 006dd590 mac 101327b0 PuzzleHorse::_dt(void)
+    virtual ~PuzzleHorse();
+    // win1.41 006dd520 mac 10132850 PuzzleHorse::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006dd530 mac 10132890 PuzzleHorse::CanBecomeAPhysicsObject(void)
+    virtual bool CanBecomeAPhysicsObject();
+    // win1.41 00416fd0 mac inlined PuzzleHorse::SetFoodSpeedup(bool)
+    virtual void SetFoodSpeedup(bool param_1);
+    // win1.41 00416fe0 mac inlined PuzzleHorse::IsFoodSpeedUp(void)
+    virtual bool IsFoodSpeedUp();
+    // win1.41 005f1d10 mac inlined PuzzleHorse::FleeingFromObjectReaction(void)
+    virtual bool FleeingFromObjectReaction();
+    // win1.41 005f23a0 mac inlined PuzzleHorse::LookingAtObjectReaction(void)
+    virtual bool LookingAtObjectReaction();
+    // win1.41 005f2420 mac inlined PuzzleHorse::FleeingAndLookingAtObjectReaction(void)
+    virtual bool FleeingAndLookingAtObjectReaction();
+    // win1.41 005f2430 mac inlined PuzzleHorse::FollowingObjectReaction(void)
+    virtual bool FollowingObjectReaction();
+    // win1.41 005f2540 mac inlined PuzzleHorse::InspectObjectReaction(void)
+    virtual bool InspectObjectReaction();
+    // win1.41 005ec3f0 mac inlined PuzzleHorse::Dying(void)
+    virtual bool Dying();
+    // win1.41 005ec400 mac inlined PuzzleHorse::Dead(void)
+    virtual bool Dead();
+    // win1.41 005ec4d0 mac inlined PuzzleHorse::BeingEaten(void)
+    virtual bool BeingEaten();
+    // win1.41 005f2550 mac inlined PuzzleHorse::GotoFoodReaction(void)
+    virtual bool GotoFoodReaction();
+    // win1.41 005f25c0 mac inlined PuzzleHorse::GotoWoodReaction(void)
+    virtual bool GotoWoodReaction();
+    // win1.41 0041a9f0 mac inlined PuzzleHorse::MoveInFlock(void)
+    virtual bool MoveInFlock();
+    // win1.41 005ef350 mac inlined PuzzleHorse::IsMovingForAnimation(void)
+    virtual bool IsMovingForAnimation();
+    // win1.41 0041a0a0 mac inlined PuzzleHorse::ArrivesAtFoodReaction(void)
+    virtual bool ArrivesAtFoodReaction();
+    // win1.41 00417030 mac inlined PuzzleHorse::ArrivesAtWoodReaction(void)
+    virtual bool ArrivesAtWoodReaction();
+    // win1.41 005ec620 mac inlined PuzzleHorse::InHand(void)
+    virtual bool InHand();
+    // win1.41 006db120 mac 10124e30 PuzzleHorse::DecideWhatToDo(void)
+    virtual bool DecideWhatToDo();
+    // win1.41 005ec8f0 mac inlined PuzzleHorse::Birthday(void)
+    virtual void Birthday();
+    // win1.41 004179c0 mac inlined PuzzleHorse::SetAge(unsigned long)
+    virtual void SetAge(uint32_t param_1);
+    // win1.41 00417820 mac inlined PuzzleHorse::CallIntoAnimationFunction(VILLAGER_STATES)
+    virtual int CallIntoAnimationFunction(VILLAGER_STATES param_1);
+    // win1.41 00417830 mac inlined PuzzleHorse::CallOutofAnimationFunction(VILLAGER_STATES)
+    virtual int CallOutofAnimationFunction(VILLAGER_STATES param_1);
+};
+
+// win1.41 00becb38 mac inlined PuzzleLion::`RTTI Type Descriptor'
+// win1.41 009adaf0 mac inlined PuzzleLion::`RTTI Base Class Descriptor'
+// win1.41 009adb08 mac inlined PuzzleLion::`RTTI Base Class Array'
+// win1.41 009adb40 mac inlined PuzzleLion::`RTTI Class Hierarchy Descriptor'
+class PuzzleLion: public PieceWolf
+{
+public:
+
+    // Override methods
+
+    // win1.41 00561630 mac 10132cf0 PuzzleLion::_dt(void)
+    virtual ~PuzzleLion();
+    // win1.41 005615c0 mac 10132dd0 PuzzleLion::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 005615b0 mac 10132d90 PuzzleLion::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 005615d0 mac 10132e10 PuzzleLion::CanBecomeAPhysicsObject(void)
+    virtual bool CanBecomeAPhysicsObject();
+};
+
+// win1.41 00bee278 mac inlined PuzzleMobileObject::`RTTI Type Descriptor'
+// win1.41 009b03b8 mac inlined PuzzleMobileObject::`RTTI Base Class Descriptor'
+// win1.41 009b03d0 mac inlined PuzzleMobileObject::`RTTI Base Class Array'
+// win1.41 009b03f0 mac inlined PuzzleMobileObject::`RTTI Class Hierarchy Descriptor'
+class PuzzleMobileObject: public MobileObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00561af0 mac 10131630 PuzzleMobileObject::_dt(void)
+    virtual ~PuzzleMobileObject();
+    // win1.41 00561ae0 mac 10131770 PuzzleMobileObject::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006dbf20 mac 10123290 PuzzleMobileObject::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006dbf80 mac 101231b0 PuzzleMobileObject::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00561ad0 mac 10131730 PuzzleMobileObject::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 006dc510 mac 10122590 PuzzleMobileObject::GetImmersionTexture(void)
+    virtual IMMERSION_EFFECT_TYPE GetImmersionTexture();
+    // win1.41 00561ac0 mac 101316c0 PuzzleMobileObject::GetInHandImmersionTexture(void)
+    virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
+};
+
+// win1.41 00c09928 mac inlined PuzzlePig::`RTTI Type Descriptor'
+// win1.41 009b8658 mac inlined PuzzlePig::`RTTI Base Class Descriptor'
+// win1.41 009b8670 mac inlined PuzzlePig::`RTTI Base Class Array'
+// win1.41 009b86a8 mac inlined PuzzlePig::`RTTI Class Hierarchy Descriptor'
+class PuzzlePig: public PiecePig
+{
+public:
+
+    // Override methods
+
+    // win1.41 006dd7a0 mac 10132510 PuzzlePig::_dt(void)
+    virtual ~PuzzlePig();
+    // win1.41 006dd730 mac 101325f0 PuzzlePig::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006dd720 mac 101325b0 PuzzlePig::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 006dd740 mac 10132630 PuzzlePig::CanBecomeAPhysicsObject(void)
+    virtual bool CanBecomeAPhysicsObject();
+    // win1.41 006db130 mac 10124df0 PuzzlePig::DecideWhatToDo(void)
+    virtual bool DecideWhatToDo();
+};
+
+// win1.41 00becd88 mac inlined PuzzleSheep::`RTTI Type Descriptor'
+// win1.41 009ae1b8 mac inlined PuzzleSheep::`RTTI Base Class Descriptor'
+// win1.41 009ae1d0 mac inlined PuzzleSheep::`RTTI Base Class Array'
+// win1.41 009ae208 mac inlined PuzzleSheep::`RTTI Class Hierarchy Descriptor'
+class PuzzleSheep: public PieceSheep
+{
+public:
+
+    // Override methods
+
+    // win1.41 005617c0 mac 10132a30 PuzzleSheep::_dt(void)
+    virtual ~PuzzleSheep();
+    // win1.41 00561750 mac 10132b10 PuzzleSheep::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00561740 mac 10132ad0 PuzzleSheep::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00561760 mac 10132b50 PuzzleSheep::CanBecomeAPhysicsObject(void)
+    virtual bool CanBecomeAPhysicsObject();
+    // win1.41 006db110 mac 10124e70 PuzzleSheep::DecideWhatToDo(void)
+    virtual bool DecideWhatToDo();
+};
+
+// win1.41 00c09940 mac inlined PuzzleTortoise::`RTTI Type Descriptor'
+// win1.41 009b86d0 mac inlined PuzzleTortoise::`RTTI Base Class Descriptor'
+// win1.41 009b86e8 mac inlined PuzzleTortoise::`RTTI Base Class Array'
+// win1.41 009b8720 mac inlined PuzzleTortoise::`RTTI Class Hierarchy Descriptor'
+class PuzzleTortoise: public PieceTortoise
+{
+public:
+
+    // Override methods
+
+    // win1.41 006dd640 mac 10131f70 PuzzleTortoise::_dt(void)
+    virtual ~PuzzleTortoise();
+    // win1.41 006dd5d0 mac 10132050 PuzzleTortoise::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006dd5c0 mac 10132010 PuzzleTortoise::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 006dd5e0 mac 10132090 PuzzleTortoise::CanBecomeAPhysicsObject(void)
+    virtual bool CanBecomeAPhysicsObject();
+};
+
+// win1.41 00be6758 mac inlined PuzzleTotem::`RTTI Type Descriptor'
+// win1.41 009ae900 mac inlined PuzzleTotem::`RTTI Base Class Descriptor'
+// win1.41 009ae918 mac inlined PuzzleTotem::`RTTI Base Class Array'
+// win1.41 009ae940 mac inlined PuzzleTotem::`RTTI Class Hierarchy Descriptor'
+class PuzzleTotem: public Totem
+{
+public:
+
+    // Override methods
+
+    // win1.41 005618d0 mac 10133500 PuzzleTotem::_dt(void)
+    virtual ~PuzzleTotem();
+    // win1.41 00561890 mac 101335e0 PuzzleTotem::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 006da740 mac 10126150 PuzzleTotem::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 006da7f0 mac 10126020 PuzzleTotem::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00561880 mac 101335a0 PuzzleTotem::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 006da710 mac 10126270 PuzzleTotem::SetMaxHeight(float)
+    virtual void SetMaxHeight(float param_1);
+    // win1.41 005618a0 mac 10133620 PuzzleTotem::GetMaxHeight(void)
+    virtual float GetMaxHeight();
+    // win1.41 006da5d0 mac 10126540 PuzzleTotem::ValidForLockedSelectProcess(GInterfaceStatus *)
+    virtual bool ValidForLockedSelectProcess(GInterfaceStatus* param_1);
+    // win1.41 006da8a0 mac 10125f60 PuzzleTotem::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
+    virtual bool NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
+    // win1.41 006da8e0 mac 10125eb0 PuzzleTotem::NetworkUnfriendlyStartLockedSelect(void)
+    virtual bool NetworkUnfriendlyStartLockedSelect();
+    // win1.41 006da970 mac 10125ba0 PuzzleTotem::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
+    virtual bool NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+    // win1.41 006da920 mac 10125e00 PuzzleTotem::NetworkUnfriendlyEndLockedSelect(void)
+    virtual bool NetworkUnfriendlyEndLockedSelect();
+    // win1.41 006da960 mac 10125da0 PuzzleTotem::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
+    virtual bool NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+    // win1.41 006da5f0 mac 101264e0 PuzzleTotem::InterfaceValidToTap(GInterfaceStatus *)
+    virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
+    // win1.41 006da610 mac 10126420 PuzzleTotem::InterfaceTap(GInterfaceStatus *)
+    virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
+    // win1.41 005618b0 mac 10133680 PuzzleTotem::ReactToPhysicsImpact(PhysicsObject *, bool)
+    virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+    // win1.41 00737450 mac inlined PuzzleTotem::DeleteDependancys(void)
+    virtual void DeleteDependancys();
+    // win1.41 007377d0 mac inlined PuzzleTotem::MakeFunctional(void)
+    virtual void MakeFunctional();
+};
+
+// win1.41 00becc68 mac inlined PuzzleVillager::`RTTI Type Descriptor'
+// win1.41 009ade30 mac inlined PuzzleVillager::`RTTI Base Class Descriptor'
+// win1.41 009ade48 mac inlined PuzzleVillager::`RTTI Base Class Array'
+// win1.41 009ade78 mac inlined PuzzleVillager::`RTTI Class Hierarchy Descriptor'
+class PuzzleVillager: public PieceVillager
+{
+public:
+
+    // Override methods
+
+    // win1.41 00561710 mac 101330c0 PuzzleVillager::_dt(void)
+    virtual ~PuzzleVillager();
+    // win1.41 00561670 mac 101331a0 PuzzleVillager::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00561660 mac 10133160 PuzzleVillager::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 00561680 mac 101331e0 PuzzleVillager::CanBecomeAPhysicsObject(void)
+    virtual bool CanBecomeAPhysicsObject();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Abode;
@@ -904,5 +1571,7 @@ char* __fastcall GetDebugText__14PuzzleVillagerFv(struct GameThing* this) asm("?
 uint32_t __fastcall GetSaveType__14PuzzleVillagerFv(struct GameThing* this) asm("?GetSaveType@PuzzleVillager@@UAEIXZ");
 // win1.41 00561680 mac 101331e0 PuzzleVillager::CanBecomeAPhysicsObject(void)
 bool __fastcall CanBecomeAPhysicsObject__14PuzzleVillagerFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleVillager@@UAE_NXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PUZZLE_GAME_INCLUDED_H */

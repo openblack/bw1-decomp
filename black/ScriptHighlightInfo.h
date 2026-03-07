@@ -8,6 +8,31 @@
 
 #include "SingleMapFixedInfo.h" /* For struct GSingleMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 00c205b8 mac inlined GScriptHighlightInfo::`RTTI Type Descriptor'
+// win1.41 009b8f10 mac inlined GScriptHighlightInfo::`RTTI Base Class Descriptor'
+// win1.41 009b8f28 mac inlined GScriptHighlightInfo::`RTTI Base Class Array'
+// win1.41 009b8f40 mac inlined GScriptHighlightInfo::`RTTI Class Hierarchy Descriptor'
+class GScriptHighlightInfo: public GSingleMapFixedInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 007096b0 mac 104fb990 GScriptHighlightInfo::_dt(void)
+    virtual ~GScriptHighlightInfo();
+    // win1.41 00709640 mac 104fc510 GScriptHighlightInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -36,5 +61,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__20GScriptHighlightInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGScriptHighlightInfo@@UAEPAXI@Z");
 // win1.41 00709640 mac 104fc510 GScriptHighlightInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__20GScriptHighlightInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GScriptHighlightInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SCRIPT_HIGHLIGHT_INFO_INCLUDED_H */

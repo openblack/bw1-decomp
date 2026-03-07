@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 009cf900 mac inlined DifferentCreatureInfo::`RTTI Type Descriptor'
+// win1.41 009a9400 mac inlined DifferentCreatureInfo::`RTTI Base Class Descriptor'
+// win1.41 009a9418 mac inlined DifferentCreatureInfo::`RTTI Base Class Array'
+// win1.41 009a9428 mac inlined DifferentCreatureInfo::`RTTI Class Hierarchy Descriptor'
+class DifferentCreatureInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00472d50 mac 101d2170 DifferentCreatureInfo::_dt(void)
+    virtual ~DifferentCreatureInfo();
+    // win1.41 00472cf0 mac 101e2a50 DifferentCreatureInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__21DifferentCreatureInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GDifferentCreatureInfo@@UAEPAXI@Z");
 // win1.41 00472cf0 mac 101e2a50 DifferentCreatureInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__21DifferentCreatureInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@DifferentCreatureInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_DIFFERENT_CREATURE_INFO_INCLUDED_H */

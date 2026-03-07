@@ -8,6 +8,38 @@
 
 #include "PSysBase.h" /* For struct PSysBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00bed2a8 mac inlined VortexObjectInfo::`RTTI Type Descriptor'
+// win1.41 009aea98 mac inlined VortexObjectInfo::`RTTI Base Class Descriptor'
+// win1.41 009aeab0 mac inlined VortexObjectInfo::`RTTI Base Class Array'
+// win1.41 009aeac8 mac inlined VortexObjectInfo::`RTTI Class Hierarchy Descriptor'
+class VortexObjectInfo: public PSysBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055d830 mac 103b2be0 VortexObjectInfo::_dt(void)
+    virtual ~VortexObjectInfo();
+    // win1.41 0055d820 mac 103b2cb0 VortexObjectInfo::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00600bf0 mac 103b2d00 VortexObjectInfo::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 00600ad0 mac 103b3000 VortexObjectInfo::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055d810 mac 103b2c70 VortexObjectInfo::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -43,5 +75,7 @@ uint32_t __fastcall Load__16VortexObjectInfoFR10GameOSFile(struct GameThing* thi
 uint32_t __fastcall Save__16VortexObjectInfoFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@VortexObjectInfo@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0055d810 mac 103b2c70 VortexObjectInfo::GetSaveType(void)
 uint32_t __fastcall GetSaveType__16VortexObjectInfoFv(struct GameThing* this) asm("?GetSaveType@VortexObjectInfo@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_VORTEX_OBJECT_INFO_INCLUDED_H */

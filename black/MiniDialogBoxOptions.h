@@ -9,6 +9,59 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class SetupBigButton;
+class SetupButton;
+class SetupCheckBox;
+class SetupSlider;
+class SetupStaticText;
+
+// win1.41 00be8dc8 mac inlined MiniDialogBoxOptions::`RTTI Type Descriptor'
+// win1.41 009aba48 mac inlined MiniDialogBoxOptions::`RTTI Base Class Descriptor'
+// win1.41 009aba60 mac inlined MiniDialogBoxOptions::`RTTI Base Class Array'
+// win1.41 009aba70 mac inlined MiniDialogBoxOptions::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d8668 mac 10999048 MiniDialogBoxOptions::`RTTI Complete Object Locator'
+// win1.41 008d866c mac 10999050 MiniDialogBoxOptions::`vftable'
+class MiniDialogBoxOptions: public DialogBoxBase
+{
+public:
+    SetupSlider* field_0x10;
+    SetupSlider* field_0x14;
+    SetupBigButton* field_0x18;
+    SetupBigButton* field_0x1c;
+    SetupBigButton* field_0x20;
+    SetupBigButton* field_0x24;
+    SetupStaticText* field_0x28;
+    SetupStaticText* field_0x2c;
+    SetupStaticText* field_0x30;
+    SetupCheckBox* field_0x34;
+    SetupCheckBox* field_0x38;
+    uint32_t field_0x3c;
+    uint32_t field_0x40;
+    SetupButton* field_0x44;
+
+    // Override methods
+
+    // win1.41 00514f50 mac 102b2b00 MiniDialogBoxOptions::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 00515680 mac 102b2aa0 MiniDialogBoxOptions::Destroy(void)
+    virtual void Destroy();
+    // win1.41 00515810 mac 102b27a0 MiniDialogBoxOptions::CanESCOut(void)
+    virtual bool CanESCOut();
+    // win1.41 00515690 mac 102b2800 MiniDialogBoxOptions::InitControls(void)
+    virtual void InitControls();
+
+    // Constructors
+
+    // win1.41 00514f20 mac inlined MiniDialogBoxOptions::MiniDialogBoxOptions(void)
+    MiniDialogBoxOptions();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SetupBigButton;
@@ -67,5 +120,7 @@ void __fastcall Destroy__20MiniDialogBoxOptionsFv(struct DialogBoxBase* this) as
 bool __fastcall CanESCOut__20MiniDialogBoxOptionsFv(struct DialogBoxBase* this) asm("?CanESCOut@MiniDialogBoxOptions@@UAE_NXZ");
 // win1.41 00515690 mac 102b2800 MiniDialogBoxOptions::InitControls(void)
 void __fastcall InitControls__20MiniDialogBoxOptionsFv(struct DialogBoxBase* this) asm("?InitControls@MiniDialogBoxOptions@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MINI_DIALOG_BOX_OPTIONS_INCLUDED_H */

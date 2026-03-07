@@ -8,6 +8,30 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea448 mac inlined SetupMultiplayerMain::`RTTI Type Descriptor'
+// win1.41 009acba0 mac inlined SetupMultiplayerMain::`RTTI Base Class Descriptor'
+// win1.41 009acbb8 mac inlined SetupMultiplayerMain::`RTTI Base Class Array'
+// win1.41 009acbc8 mac inlined SetupMultiplayerMain::`RTTI Class Hierarchy Descriptor'
+class SetupMultiplayerMain: public DialogBoxBase
+{
+public:
+
+    // Override methods
+
+    // win1.41 00549b60 mac 105ce270 SetupMultiplayerMain::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 00549f80 mac 105ce210 SetupMultiplayerMain::Destroy(void)
+    virtual void Destroy();
+    // win1.41 0054a180 mac 105cde40 SetupMultiplayerMain::InitSubDialogs(void)
+    virtual void InitSubDialogs();
+    // win1.41 00549f90 mac 105ce110 SetupMultiplayerMain::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct SetupMultiplayerMain
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -35,5 +59,7 @@ void __fastcall Destroy__20SetupMultiplayerMainFv(struct DialogBoxBase* this) as
 void __fastcall InitSubDialogs__20SetupMultiplayerMainFv(struct DialogBoxBase* this) asm("?InitSubDialogs@SetupMultiplayerMain@@UAEXXZ");
 // win1.41 00549f90 mac 105ce110 SetupMultiplayerMain::InitControls(void)
 void __fastcall InitControls__20SetupMultiplayerMainFv(struct DialogBoxBase* this) asm("?InitControls@SetupMultiplayerMain@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SETUP_MULTIPLAYER_MAIN_INCLUDED_H */

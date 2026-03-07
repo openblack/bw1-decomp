@@ -8,6 +8,28 @@
 
 #include "PSysRenderParticle.h" /* For struct RenderParticle */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c09640 mac inlined ParticlePlayerSymbol::`RTTI Type Descriptor'
+// win1.41 009b81e0 mac inlined ParticlePlayerSymbol::`RTTI Base Class Descriptor'
+// win1.41 009b81f8 mac inlined ParticlePlayerSymbol::`RTTI Base Class Array'
+// win1.41 009b8210 mac inlined ParticlePlayerSymbol::`RTTI Class Hierarchy Descriptor'
+class ParticlePlayerSymbol: public RenderParticle
+{
+public:
+
+    // Override methods
+
+    // win1.41 006c9d50 mac 1047a0b0 ParticlePlayerSymbol::_dt(void)
+    virtual ~ParticlePlayerSymbol();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 006c9d50 mac 1047a0b0 ParticlePlayerSymbol::_dt(void)
 void __fastcall __dt__20ParticlePlayerSymbolFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GParticlePlayerSymbol@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PARTICLE_PLAYER_SYMBOL_INCLUDED_H */

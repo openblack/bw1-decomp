@@ -9,6 +9,47 @@
 
 #include "GameThing.h" /* For struct GameThing */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class Object;
+
+// win1.41 00bf3e58 mac inlined GMagicHand::`RTTI Type Descriptor'
+// win1.41 009b1ae0 mac inlined GMagicHand::`RTTI Base Class Descriptor'
+// win1.41 009b1af8 mac inlined GMagicHand::`RTTI Base Class Array'
+// win1.41 009b1b08 mac inlined GMagicHand::`RTTI Class Hierarchy Descriptor'
+class GMagicHand: public GameThing
+{
+public:
+    bool has_object_in_hand; /* 0x14 */
+    Object* object_in_hand;
+
+    // Override methods
+
+    // win1.41 005faf40 mac 103ad580 GMagicHand::_dt(void)
+    virtual ~GMagicHand();
+    // win1.41 005fb2a0 mac 103acf80 GMagicHand::CleanUpForSerialisation(void)
+    virtual void CleanUpForSerialisation();
+    // win1.41 005faf30 mac 103acd80 GMagicHand::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 005fb320 mac 103acdc0 GMagicHand::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 005fb2c0 mac 103ace90 GMagicHand::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 005faf20 mac 103acd40 GMagicHand::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+
+    // Non-virtual methods
+
+    // win1.41 005fb040 mac 10075560 GMagicHand::GetObjectFromHand(void) const
+    Object* GetObjectFromHand();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -53,5 +94,7 @@ uint32_t __fastcall Load__10GMagicHandFR10GameOSFile(struct GameThing* this, con
 uint32_t __fastcall Save__10GMagicHandFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@GMagicHand@@UAEIAAVGameOSFile@@@Z");
 // win1.41 005faf20 mac 103acd40 GMagicHand::GetSaveType(void)
 uint32_t __fastcall GetSaveType__10GMagicHandFv(struct GameThing* this) asm("?GetSaveType@GMagicHand@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_HAND_INCLUDED_H */

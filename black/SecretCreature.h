@@ -5,6 +5,24 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTITypeDescriptor */
 
+#ifdef __cplusplus
+
+// win1.41 00c20bb8 mac inlined SecretCreature::`RTTI Type Descriptor'
+// win1.41 009b9018 mac inlined SecretCreature::`RTTI Base Class Descriptor'
+// win1.41 009b9030 mac inlined SecretCreature::`RTTI Base Class Array'
+// win1.41 009b9038 mac inlined SecretCreature::`RTTI Class Hierarchy Descriptor'
+// win1.41 0095726c mac 1075ac64 SecretCreature::`vftable'
+class SecretCreature
+{
+public:
+    // Virtual functions
+
+    // win1.41 00711d60 mac 101441a0 SecretCreature::_dt(void)
+    virtual ~SecretCreature(); /* 0x0 */
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct SecretCreature;
@@ -38,5 +56,7 @@ extern const struct SecretCreatureVftable __vt__14SecretCreature asm("??_7Secret
 
 // win1.41 00711d60 mac 101441a0 SecretCreature::_dt(void)
 void __fastcall __dt__14SecretCreatureFv(struct SecretCreature* this) asm("??_GSecretCreature@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SECRET_CREATURE_INCLUDED_H */

@@ -7,13 +7,6 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
-// Forward Declares
-
-struct CameraMode;
-struct GCamera;
-struct GameOSFile;
-struct LHCoord;
-
 enum CAMERA_MODE_HAND_STATUS
 {
   CAMERA_MODE_HAND_STATUS_NORMAL = 0x0,
@@ -27,6 +20,65 @@ enum CAMERA_MODE_HAND_STATUS
   CAMERA_MODE_HAND_STATUS_0x8 = 0x8,
   _CAMERA_MODE_HAND_STATUS_COUNT = 0x9
 };
+
+enum CAMERA_MODE_MOUSE_STATUS
+{
+  CAMERA_MODE_MOUSE_STATUS_NONE = 0x0,
+  CAMERA_MODE_MOUSE_STATUS_LEFT = 0x1,
+  CAMERA_MODE_MOUSE_STATUS_MIDDLE = 0x2,
+  _CAMERA_MODE_MOUSE_STATUS_COUNT = 0x3
+};
+
+#ifdef __cplusplus
+
+// Forward Declares
+
+class GCamera;
+class GameOSFile;
+struct LHCoord;
+
+// win1.41 009cd390 mac inlined CameraMode::`RTTI Type Descriptor'
+// win1.41 009a88a8 mac inlined CameraMode::`RTTI Base Class Descriptor'
+// win1.41 009a890c mac inlined CameraMode::`RTTI Base Class Array'
+// win1.41 009a8918 mac inlined CameraMode::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c76dc mac 10732dcc CameraMode::`RTTI Complete Object Locator'
+// win1.41 008c76e0 mac 106f5b10 CameraMode::`vftable'
+class CameraMode
+{
+public:
+    GCamera* camera; /* 0x4 */
+
+    // Virtual functions
+
+    virtual ~CameraMode(); /* 0x0 */
+    virtual bool CanPlayerGestureWhenCameraMoving();
+    virtual void Update();
+    virtual void Validate();
+    virtual void Restart(); /* 0x10 */
+    virtual bool IsStillValid();
+    virtual void Cleanup();
+    virtual bool CanExist();
+    virtual bool MouseIsLocked(); /* 0x20 */
+    virtual void GetMousePos(LHCoord* pos);
+    virtual void ProcessKeyMovement(uint16_t param_2);
+    virtual void ProcessMouseMovement();
+    virtual void Delete(); /* 0x30 */
+    virtual bool Arrived();
+    virtual uint32_t GetSaveID();
+    virtual void Load(GameOSFile& param_2);
+    virtual void Save(GameOSFile& param_2); /* 0x40 */
+    virtual const char* GetDebugName();
+};
+
+#else // __cplusplus
+
+// Forward Declares
+
+struct CameraMode;
+struct GCamera;
+struct GameOSFile;
+struct LHCoord;
+
 static_assert(sizeof(enum CAMERA_MODE_HAND_STATUS) == 0x4, "Data type is of wrong size");
 
 static const char* CAMERA_MODE_HAND_STATUS_strs[_CAMERA_MODE_HAND_STATUS_COUNT] = {
@@ -41,13 +93,6 @@ static const char* CAMERA_MODE_HAND_STATUS_strs[_CAMERA_MODE_HAND_STATUS_COUNT] 
   "CAMERA_MODE_HAND_STATUS_0x8",
 };
 
-enum CAMERA_MODE_MOUSE_STATUS
-{
-  CAMERA_MODE_MOUSE_STATUS_NONE = 0x0,
-  CAMERA_MODE_MOUSE_STATUS_LEFT = 0x1,
-  CAMERA_MODE_MOUSE_STATUS_MIDDLE = 0x2,
-  _CAMERA_MODE_MOUSE_STATUS_COUNT = 0x3
-};
 static_assert(sizeof(enum CAMERA_MODE_MOUSE_STATUS) == 0x4, "Data type is of wrong size");
 
 static const char* CAMERA_MODE_MOUSE_STATUS_strs[_CAMERA_MODE_MOUSE_STATUS_COUNT] = {
@@ -100,5 +145,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__10CameraMode asm("??_R4CameraMode@@6B@");
 // win1.41 008c76e0 mac 106f5b10 CameraMode::`vftable'
 extern const struct CameraModeVftable __vt__10CameraMode asm("??_7CameraMode@@6B@");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CAMERA_MODE_INCLUDED_H */

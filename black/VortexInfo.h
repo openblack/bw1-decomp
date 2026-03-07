@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00bf4020 mac inlined GVortexInfo::`RTTI Type Descriptor'
+// win1.41 009b1c60 mac inlined GVortexInfo::`RTTI Base Class Descriptor'
+// win1.41 009b1c78 mac inlined GVortexInfo::`RTTI Base Class Array'
+// win1.41 009b1c88 mac inlined GVortexInfo::`RTTI Class Hierarchy Descriptor'
+class GVortexInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 005fd3f0 mac 103b8d80 GVortexInfo::_dt(void)
+    virtual ~GVortexInfo();
+    // win1.41 005fd390 mac 103b9150 GVortexInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__11GVortexInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGVortexInfo@@UAEPAXI@Z");
 // win1.41 005fd390 mac 103b9150 GVortexInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__11GVortexInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GVortexInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_VORTEX_INFO_INCLUDED_H */

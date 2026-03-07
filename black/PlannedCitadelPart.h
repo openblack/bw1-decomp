@@ -8,6 +8,40 @@
 
 #include "PlannedMultiMapFixed.h" /* For struct PlannedMultiMapFixed */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 009cea10 mac inlined PlannedCitadelPart::`RTTI Type Descriptor'
+// win1.41 009a8f80 mac inlined PlannedCitadelPart::`RTTI Base Class Descriptor'
+// win1.41 009a9198 mac inlined PlannedCitadelPart::`RTTI Base Class Array'
+// win1.41 009a91b0 mac inlined PlannedCitadelPart::`RTTI Class Hierarchy Descriptor'
+class PlannedCitadelPart: public PlannedMultiMapFixed
+{
+public:
+
+    // Override methods
+
+    // win1.41 00469670 mac 101bff10 PlannedCitadelPart::_dt(void)
+    virtual ~PlannedCitadelPart();
+    // win1.41 00469690 mac 101c2f70 PlannedCitadelPart::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 00465590 mac 101c2130 PlannedCitadelPart::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00469720 mac 101c2e30 PlannedCitadelPart::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 004696f0 mac 101c2ed0 PlannedCitadelPart::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 00465580 mac 101c20f0 PlannedCitadelPart::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -45,5 +79,7 @@ uint32_t __fastcall Load__18PlannedCitadelPartFR10GameOSFile(struct GameThing* t
 uint32_t __fastcall Save__18PlannedCitadelPartFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@PlannedCitadelPart@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00465580 mac 101c20f0 PlannedCitadelPart::GetSaveType(void)
 uint32_t __fastcall GetSaveType__18PlannedCitadelPartFv(struct GameThing* this) asm("?GetSaveType@PlannedCitadelPart@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLANNED_CITADEL_PART_INCLUDED_H */

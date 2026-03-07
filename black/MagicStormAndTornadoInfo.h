@@ -8,6 +8,28 @@
 
 #include "MagicRadiusSpellInfo.h" /* For struct GMagicRadiusSpellInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 009cbad8 mac inlined GMagicStormAndTornadoInfo::`RTTI Type Descriptor'
+// win1.41 009a7fd0 mac inlined GMagicStormAndTornadoInfo::`RTTI Base Class Descriptor'
+// win1.41 009a7fe8 mac inlined GMagicStormAndTornadoInfo::`RTTI Base Class Array'
+// win1.41 009a8000 mac inlined GMagicStormAndTornadoInfo::`RTTI Class Hierarchy Descriptor'
+class GMagicStormAndTornadoInfo: public GMagicRadiusSpellInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 00435740 mac 103aebf0 GMagicStormAndTornadoInfo::_dt(void)
+    virtual ~GMagicStormAndTornadoInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 00435740 mac 103aebf0 GMagicStormAndTornadoInfo::_dt(void)
 void __fastcall __dt__25GMagicStormAndTornadoInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMagicStormAndTornadoInfo@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_STORM_AND_TORNADO_INFO_INCLUDED_H */

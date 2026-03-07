@@ -10,6 +10,62 @@
 
 #include "Abode.h" /* For struct Abode */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Creature;
+class GameOSFile;
+class GameThing;
+class GameThingWithPos;
+struct MapCoords;
+class Object;
+
+// win1.41 00becde8 mac inlined Graveyard::`RTTI Type Descriptor'
+// win1.41 009ae350 mac inlined Graveyard::`RTTI Base Class Descriptor'
+// win1.41 009ae368 mac inlined Graveyard::`RTTI Base Class Array'
+// win1.41 009ae390 mac inlined Graveyard::`RTTI Class Hierarchy Descriptor'
+class Graveyard: public Abode
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055e010 mac 100f42d0 Graveyard::_dt(void)
+    virtual ~Graveyard();
+    // win1.41 00595cb0 mac 100f4db0 Graveyard::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 0055e000 mac 100f4550 Graveyard::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00595f50 mac 100f4590 Graveyard::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 00595ee0 mac 100f4670 Graveyard::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0055dff0 mac 100f4510 Graveyard::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0055df90 mac inlined Graveyard::GetArrivePos(MapCoords *)
+    virtual MapCoords* GetArrivePos(MapCoords* param_1);
+    // win1.41 0055dfd0 mac 100f4480 Graveyard::CanActAsAContainer(Creature *)
+    virtual bool CanActAsAContainer(Creature* param_1);
+    // win1.41 0055dfe0 mac 100f44d0 Graveyard::IsStoragePit(Creature *)
+    virtual bool IsStoragePit(Creature* param_1);
+    // win1.41 00595dd0 mac 100f4a40 Graveyard::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 0055dfb0 mac 100f4400 Graveyard::Get3DType(void)
+    virtual LH3DObject::ObjectType Get3DType();
+    // win1.41 00595cd0 mac 100f4d60 Graveyard::InteractsWithPhysicsObjects(void)
+    virtual bool InteractsWithPhysicsObjects();
+    // win1.41 00595ce0 mac 100f4c10 Graveyard::DeleteDependancys(void)
+    virtual void DeleteDependancys();
+    // win1.41 00595e00 mac 100f4870 Graveyard::MakeFunctional(void)
+    virtual void MakeFunctional();
+    // win1.41 0055dfc0 mac 100f4440 Graveyard::CanBeHiddenIn(void)
+    virtual bool CanBeHiddenIn();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -69,5 +125,7 @@ void __fastcall DeleteDependancys__9GraveyardFv(struct Abode* this) asm("?Delete
 void __fastcall MakeFunctional__9GraveyardFv(struct Abode* this) asm("?MakeFunctional@Graveyard@@UAEXXZ");
 // win1.41 0055dfc0 mac 100f4440 Graveyard::CanBeHiddenIn(void)
 bool __fastcall CanBeHiddenIn__9GraveyardFv(struct Abode* this) asm("?CanBeHiddenIn@Graveyard@@UAE_NXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_GRAVEYARD_INCLUDED_H */

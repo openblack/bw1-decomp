@@ -8,6 +8,24 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00c09c68 mac inlined Rank::`RTTI Type Descriptor'
+// win1.41 009b8bf8 mac inlined Rank::`RTTI Base Class Descriptor'
+// win1.41 009b8c10 mac inlined Rank::`RTTI Base Class Array'
+// win1.41 009b8c20 mac inlined Rank::`RTTI Class Hierarchy Descriptor'
+class Rank: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 006e0b80 mac inlined Rank::_dt(void)
+    virtual ~Rank();
+};
+
+#else // __cplusplus
+
 struct Rank
 {
   struct Base super;  /* 0x0 */
@@ -29,5 +47,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 006e0b80 mac inlined Rank::_dt(void)
 void __fastcall __dt__4RankFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GRank@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_RANK_INCLUDED_H */

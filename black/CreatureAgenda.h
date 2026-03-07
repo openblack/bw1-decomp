@@ -13,6 +13,80 @@
 #include "CreaturePlan.h" /* For struct CreaturePlan, struct CreaturePlanState */
 #include "CreatureSubAction.h" /* For struct CreatureSubActionAgenda */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Creature;
+class CreatureBelief;
+class CreatureInfo;
+
+// win1.41 009dd8c0 mac inlined CreatureAgenda::`RTTI Type Descriptor'
+// win1.41 009aa400 mac inlined CreatureAgenda::`RTTI Base Class Descriptor'
+// win1.41 009aa418 mac inlined CreatureAgenda::`RTTI Base Class Array'
+// win1.41 009aa428 mac inlined CreatureAgenda::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cf94c mac 1078758c CreatureAgenda::`RTTI Complete Object Locator'
+// win1.41 008cf950 mac 10787594 CreatureAgenda::`vftable'
+class CreatureAgenda: public Base
+{
+public:
+    CreaturePlanState plan_state; /* 0x8 */
+    CreaturePlan plans[0x2]; /* 0x838 */
+    CreatureSubActionAgenda sub_action_agenda; /* 0x898 */
+    CreatureCommandState command_state; /* 0x14e8 */
+    Creature* creature; /* 0x1514 */
+    uint32_t field_0x1518;
+    uint32_t field_0x151c;
+    CreatureMimicState mimic_state; /* 0x1520 */
+    uint32_t field_0x155c;
+    CreatureBelief* belief; /* 0x1560 */
+    uint32_t field_0x1564;
+    uint32_t field_0x1568;
+    uint32_t field_0x156c;
+    uint32_t field_0x1570;
+    uint32_t field_0x1574;
+    uint32_t field_0x1578;
+    uint32_t field_0x157c;
+    uint32_t field_0x1580;
+    uint32_t field_0x1584;
+    uint32_t field_0x1588;
+    uint8_t field_0x158c[0x520];
+    uint32_t field_0x1aac;
+    uint32_t field_0x1ab0;
+    uint8_t field_0x1ab4[0xc];
+    uint32_t field_0x1ac0;
+    uint32_t field_0x1ac4;
+    uint32_t field_0x1ac8;
+    int32_t field_0x1acc;
+    uint32_t field_0x1ad0;
+    uint32_t field_0x1ad4;
+    uint32_t field_0x1ad8;
+    uint32_t field_0x1adc;
+    uint32_t field_0x1ae0;
+    uint32_t field_0x1ae4;
+    uint32_t field_0x1ae8;
+    uint32_t field_0x1aec;
+    uint32_t field_0x1af0;
+    uint32_t field_0x1af4;
+
+    // Override methods
+
+    // win1.41 004d3600 mac 10246c50 CreatureAgenda::_dt(void)
+    virtual ~CreatureAgenda();
+
+    // Constructors
+
+    // win1.41 004d34b0 mac 102471c0 CreatureAgenda::CreatureAgenda(Creature *, CreatureInfo const *)
+    CreatureAgenda(CreatureInfo* info);
+
+    // Non-virtual methods
+
+    // win1.41 004aca70 mac 10217d60 CreatureAgenda::ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long)
+    bool ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Creature;
@@ -92,5 +166,7 @@ bool __fastcall ConstructSubActionsForAttackerThrowBallAtGoal__14CreatureAgendaF
 
 // win1.41 004d3600 mac 10246c50 CreatureAgenda::_dt(void)
 void __fastcall __dt__14CreatureAgendaFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureAgenda@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_AGENDA_INCLUDED_H */

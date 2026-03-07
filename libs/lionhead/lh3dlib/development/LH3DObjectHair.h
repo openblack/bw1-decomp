@@ -3,6 +3,25 @@
 
 #include <assert.h> /* For static_assert */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+struct HairGroup;
+
+struct LH3DObjectHair
+{
+    long hair_count; /* 0x0 */
+    HairGroup** hairs;
+
+    // Non-virtual methods
+
+    // win1.41 00848340 mac 10137b70 LH3DObjectHair::Init(long, HairGroup **)
+    void Init(long param_2, HairGroup** param_3);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct HairGroup;
@@ -18,5 +37,7 @@ static_assert(sizeof(struct LH3DObjectHair) == 0x8, "Data type is of wrong size"
 
 // win1.41 00848340 mac 10137b70 LH3DObjectHair::Init(long, HairGroup **)
 void __fastcall Init__14LH3DObjectHairFlPP9HairGroup(struct LH3DObjectHair* this, const void* edx, long param_2, struct HairGroup** param_3) asm("?Init@LH3DObjectHair@@QAEXJPAPAUHairGroup@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_LH3D_OBJECT_HAIR_INCLUDED_H */

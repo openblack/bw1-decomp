@@ -9,6 +9,48 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class GPlayer;
+
+// win1.41 00c22bb8 mac inlined GBelief::`RTTI Type Descriptor'
+// win1.41 009b9ae8 mac inlined GBelief::`RTTI Base Class Descriptor'
+// win1.41 009b9b00 mac inlined GBelief::`RTTI Base Class Array'
+// win1.41 009b9b10 mac inlined GBelief::`RTTI Class Hierarchy Descriptor'
+class GBelief: public Base
+{
+public:
+    float belief_in_player[0x8]; /* 0x8 */
+    uint32_t field_0x28[0x8];
+    float field_0x48[0x8];
+    float belief_in_player_max[0x8]; /* 0x68 */
+    uint32_t field_0x88[0x8];
+    float field_0xa8[0x8];
+    float field_0xc8[0x8];
+    float boredom_multiplier[NUM_REACTION_FUNCTIONS]; /* 0xe8 */
+    float field_0x18c[0x11];
+
+    // Override methods
+
+    // win1.41 00739320 mac 105581c0 GBelief::_dt(void)
+    virtual ~GBelief();
+
+    // Non-virtual methods
+
+    // win1.41 00437e70 mac 00437e70 GBelief::GetBeliefInPlayer(unsigned long)
+    float GetBeliefInPlayer(unsigned long param_1);
+    // win1.41 00438770 mac 100b1810 GBelief::DistanceChangeToBelief(float, float)
+    float DistanceChangeToBelief(float param_1, float param_2);
+    // win1.41 004387d0 mac 100b1700 GBelief::SetBelief(unsigned long, float)
+    void SetBelief(int index, float value);
+    // win1.41 00438a00 mac 100b13e0 GBelief::SetBeliefInPlayerCap(GPlayer *, float)
+    void SetBeliefInPlayerCap(GPlayer* player, float cap);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct GPlayer;
@@ -39,15 +81,12 @@ extern const struct RTTIBaseClassArray __RTTIBaseClassArray__7GBelief asm("??_R2
 // win1.41 009b9b10 mac inlined GBelief::`RTTI Class Hierarchy Descriptor'
 extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor__7GBelief asm("??_R3GBelief@@8");
 
-// Static methods
-
-// win1.41 00438770 mac 100b1810 GBelief::DistanceChangeToBelief(float, float)
-float __cdecl DistanceChangeToBelief__7GBeliefFff(struct GBelief* this, float param_1, float param_2) asm("?DistanceChangeToBelief@GBelief@@SAMMM@Z");
-
 // Non-virtual methods
 
 // win1.41 00437e70 mac 00437e70 GBelief::GetBeliefInPlayer(unsigned long)
 float __fastcall GetBeliefInPlayer__7GBeliefFUl(struct GBelief* this, const void* edx, unsigned long param_1) asm("?GetBeliefInPlayer@GBelief@@QAEMK@Z");
+// win1.41 00438770 mac 100b1810 GBelief::DistanceChangeToBelief(float, float)
+float __fastcall DistanceChangeToBelief__7GBeliefFff(struct GBelief* this, const void* edx, float param_1, float param_2) asm("?DistanceChangeToBelief@GBelief@@SAMMM@Z");
 // win1.41 004387d0 mac 100b1700 GBelief::SetBelief(unsigned long, float)
 void __fastcall SetBelief__7GBeliefFUlf(struct GBelief* this, const void* edx, int index, float value) asm("?SetBelief@GBelief@@QAEXKM@Z");
 // win1.41 00438a00 mac 100b13e0 GBelief::SetBeliefInPlayerCap(GPlayer *, float)
@@ -57,5 +96,7 @@ void __fastcall SetBeliefInPlayerCap__7GBeliefFP7GPlayerf(struct GBelief* this, 
 
 // win1.41 00739320 mac 105581c0 GBelief::_dt(void)
 void __fastcall __dt__7GBeliefFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGBelief@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_BELIEF_INCLUDED_H */

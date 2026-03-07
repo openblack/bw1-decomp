@@ -9,6 +9,59 @@
 
 #include "PictureRoom.h" /* For struct PictureRoomBase */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class GameOSFile;
+
+struct TempleChallenge
+{
+    uint8_t field_0x0[0xd8];
+
+    // Constructors
+
+    // win1.41 00781210 mac 101b5750 TempleChallenge::TempleChallenge(GameOSFile &)
+    TempleChallenge(GameOSFile* param_1);
+
+    // Non-virtual methods
+
+    // win1.41 00781460 mac 101b51f0 TempleChallenge::StartScript(int)
+    void StartScript(int param_1);
+    // win1.41 007817a0 mac 101b4310 TempleChallenge::LoadChallenge(GameOSFile &)
+    void LoadChallenge(GameOSFile* param_1);
+};
+
+// win1.41 00c24e98 mac inlined ChallengeRoom::`RTTI Type Descriptor'
+// win1.41 009ba5a8 mac inlined ChallengeRoom::`RTTI Base Class Descriptor'
+// win1.41 009ba5c0 mac inlined ChallengeRoom::`RTTI Base Class Array'
+// win1.41 009ba5d0 mac inlined ChallengeRoom::`RTTI Class Hierarchy Descriptor'
+// win1.41 0099ead4 mac 10777d4c ChallengeRoom::`RTTI Complete Object Locator'
+// win1.41 0099ead8 mac 10777d54 ChallengeRoom::`vftable'
+class ChallengeRoom: public PictureRoomBase
+{
+public:
+
+    // Static methods
+
+    // win1.41 00784b30 mac 101abfe0 ChallengeRoom::CreateChallengeFiles(char*)
+    static bool CreateChallengeFiles();
+
+    // Constructors
+
+    // win1.41 00781a60 mac 101b4180 ChallengeRoom::ChallengeRoom(void)
+    ChallengeRoom();
+
+    // Non-virtual methods
+
+    // win1.41 00784c10 mac 101abd90 ChallengeRoom::StartScript(unsigned long)
+    bool StartScript(unsigned long param_1);
+    // win1.41 00784d10 mac 101aba10 ChallengeRoom::ChallengeLoad(GameOSFile &)
+    void ChallengeLoad(GameOSFile& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct GameOSFile;
@@ -68,5 +121,7 @@ struct ChallengeRoom* __fastcall __ct__13ChallengeRoomFv(struct ChallengeRoom* t
 bool __fastcall StartScript__13ChallengeRoomFUl(struct ChallengeRoom* this, const void* edx, unsigned long param_1) asm("?StartScript@ChallengeRoom@@QAE_NK@Z");
 // win1.41 00784d10 mac 101aba10 ChallengeRoom::ChallengeLoad(GameOSFile &)
 void __fastcall ChallengeLoad__13ChallengeRoomFR10GameOSFile(struct ChallengeRoom* this, const void* edx, struct GameOSFile* param_1) asm("?ChallengeLoad@ChallengeRoom@@QAEXAAVGameOSFile@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CHALLENGE_ROOM_INCLUDED_H */

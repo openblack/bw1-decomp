@@ -8,6 +8,34 @@
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GObjectInfo;
+
+// win1.41 009cd2a0 mac inlined GBigForestInfo::`RTTI Type Descriptor'
+// win1.41 009a8440 mac inlined GBigForestInfo::`RTTI Base Class Descriptor'
+// win1.41 009a8458 mac inlined GBigForestInfo::`RTTI Base Class Array'
+// win1.41 009a8470 mac inlined GBigForestInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c58b4 mac 1073865c GBigForestInfo::`RTTI Complete Object Locator'
+// win1.41 008c58b8 mac 10738664 GBigForestInfo::`vftable'
+class GBigForestInfo: public GMultiMapFixedInfo
+{
+public:
+    uint8_t field_0x120[0x8];
+
+    // Override methods
+
+    // win1.41 00438cb0 mac 100b33d0 GBigForestInfo::_dt(void)
+    virtual ~GBigForestInfo();
+    // win1.41 00438c50 mac 100b2530 GBigForestInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh() const;
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -41,5 +69,7 @@ extern const struct GMultiMapFixedInfoVftable __vt__14GBigForestInfo asm("??_7GB
 void __fastcall __dt__14GBigForestInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGBigForestInfo@@UAEPAXI@Z");
 // win1.41 00438c50 mac 100b2530 GBigForestInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__14GBigForestInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GBigForestInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_BIG_FOREST_INFO_INCLUDED_H */

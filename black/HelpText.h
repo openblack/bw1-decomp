@@ -11,6 +11,61 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// win1.41 00bf1a50 mac inlined HelpText::`RTTI Type Descriptor'
+// win1.41 009b1440 mac inlined HelpText::`RTTI Base Class Descriptor'
+// win1.41 009b1458 mac inlined HelpText::`RTTI Base Class Array'
+// win1.41 009b1468 mac inlined HelpText::`RTTI Class Hierarchy Descriptor'
+// win1.41 0092a51c mac 1099db6c HelpText::`RTTI Complete Object Locator'
+// win1.41 0092a520 mac 1099db74 HelpText::`vftable'
+class HelpText: public Base
+{
+public:
+    const char16_t* str; /* 0x8 */
+    uint32_t field_0xc;
+    uint32_t field_0x10;
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    LH3DColor field_0x1c;
+    LH3DColor field_0x20;
+    LHRegion field_0x24;
+    uint32_t field_0x34[0x4][0x6];
+    uint32_t field_0x94;
+    uint32_t field_0x98;
+    float field_0x9c;
+    float field_0xa0;
+    uint32_t field_0xa4;
+    uint32_t field_0xa8;
+    uint32_t field_0xac;
+    uint32_t field_0xb0;
+    uint32_t field_0xb4;
+    uint32_t field_0xb8;
+
+    // Override methods
+
+    // win1.41 005cad90 mac 103575a0 HelpText::_dt(void)
+    virtual ~HelpText();
+
+    // Constructors
+
+    // win1.41 005cad40 mac 103579b0 HelpText::HelpText(LHRegion const &)
+    HelpText(LHRegion* region);
+};
+
+struct HelpTextDataBase
+{
+    HelpText* array; /* 0x0 */
+    uint32_t count;
+
+    // Non-virtual methods
+
+    // win1.41 inlined mac 100924c0 HelpTextDataBase::GetHelpText(unsigned long) const
+    const char16_t* GetHelpText(uint32_t index);
+};
+
+#else // __cplusplus
+
 struct HelpText
 {
   struct Base super;  /* 0x0 */
@@ -72,5 +127,7 @@ static_assert(sizeof(struct HelpTextDataBase) == 0x8, "Data type is of wrong siz
 
 // win1.41 inlined mac 100924c0 HelpTextDataBase::GetHelpText(unsigned long) const
 const char16_t* __fastcall GetHelpText__16HelpTextDataBaseCFUl(const struct HelpTextDataBase* this, const void* edx, uint32_t index) asm("?GetHelpText@HelpTextDataBase@@QBEPB_SK@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HELP_TEXT_INCLUDED_H */

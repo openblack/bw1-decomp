@@ -10,6 +10,50 @@
 
 #include "ObjectInfo.h" /* For struct GObjectInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+
+// win1.41 00c22758 mac inlined GSpellSeedInfo::`RTTI Type Descriptor'
+// win1.41 009b94f0 mac inlined GSpellSeedInfo::`RTTI Base Class Descriptor'
+// win1.41 009b9508 mac inlined GSpellSeedInfo::`RTTI Base Class Array'
+// win1.41 009b9520 mac inlined GSpellSeedInfo::`RTTI Class Hierarchy Descriptor'
+class GSpellSeedInfo: public GObjectInfo
+{
+public:
+    uint8_t field_0x100[0x24];
+    MAGIC_TYPE magic_types[0x4]; /* 0x124 */
+    uint8_t field_0x134[0x5c];
+
+    // Override methods
+
+    // win1.41 0072aee0 mac 1052d120 GSpellSeedInfo::_dt(void)
+    virtual ~GSpellSeedInfo();
+    // win1.41 0072ae70 mac 1052df40 GSpellSeedInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+    // win1.41 0072ae60 mac 1052df00 GSpellSeedInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh() const;
+
+    // Static methods
+
+    // win1.41 0072b090 mac 1052d6f0 GSpellSeedInfo::GetFirstSpellSeedForMagicType(MAGIC_TYPE)
+    static SPELL_SEED_TYPE GetFirstSpellSeedForMagicType(MAGIC_TYPE magic_type);
+
+    // Non-virtual methods
+
+    // win1.41 0072af70 mac 1052dac0 GSpellSeedInfo::GetPowerUpFromMagicType(MAGIC_TYPE) const
+    POWER_UP_TYPE GetPowerUpFromMagicType(MAGIC_TYPE magic_type);
+    // win1.41 0072afc0 mac 1052d9d0 GSpellSeedInfo::GetMagicTypeFromPULevel(POWER_UP_TYPE) const
+    MAGIC_TYPE GetMagicTypeFromPULevel(POWER_UP_TYPE power_type);
+    // win1.41 0072b060 mac inlined GSpellSeedInfo::SpellSeedIsOfMagicType(MAGIC_TYPE) const
+    bool SpellSeedIsOfMagicType(MAGIC_TYPE type);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -57,5 +101,7 @@ void __fastcall __dt__14GSpellSeedInfoFv(struct Base* this, const void* edx, uin
 struct GBaseInfo* __fastcall GetBaseInfo__14GSpellSeedInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GSpellSeedInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 0072ae60 mac 1052df00 GSpellSeedInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__14GSpellSeedInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GSpellSeedInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SPELL_SEED_INFO_INCLUDED_H */

@@ -9,6 +9,50 @@
 
 #include "CitadelPartInfo.h" /* For struct GCitadelPartInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+class GMultiMapFixedInfo;
+class GObjectInfo;
+
+// win1.41 00c24cf0 mac inlined GWorshipSiteInfo::`RTTI Type Descriptor'
+// win1.41 009ba2c0 mac inlined GWorshipSiteInfo::`RTTI Base Class Descriptor'
+// win1.41 009ba2d8 mac inlined GWorshipSiteInfo::`RTTI Base Class Array'
+// win1.41 009ba2f8 mac inlined GWorshipSiteInfo::`RTTI Class Hierarchy Descriptor'
+// win1.41 0099c474 mac 109eb3b4 GWorshipSiteInfo::`RTTI Complete Object Locator'
+// win1.41 0099c478 mac 109eb3bc GWorshipSiteInfo::`vftable'
+class GWorshipSiteInfo: public GCitadelPartInfo
+{
+public:
+    float field_0x134;
+    uint32_t field_0x138;
+    uint32_t field_0x13c;
+    uint32_t field_0x140;
+    float field_0x144;
+    float field_0x148;
+    uint32_t field_0x14c;
+    float field_0x150;
+    float field_0x154;
+    uint32_t field_0x158;
+    float field_0x15c;
+
+    // Override methods
+
+    // win1.41 0077a920 mac 105b0900 GWorshipSiteInfo::_dt(void)
+    virtual ~GWorshipSiteInfo();
+    // win1.41 0077a8b0 mac 105b3c70 GWorshipSiteInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+    // win1.41 00464370 mac inlined GWorshipSiteInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh() const;
+    // win1.41 00464380 mac inlined GWorshipSiteInfo::GetAbodeType( const(void))
+    virtual ABODE_TYPE GetAbodeType() const;
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -58,5 +102,7 @@ struct GBaseInfo* __fastcall GetBaseInfo__16GWorshipSiteInfoFRUl(struct GBaseInf
 uint32_t __fastcall GetMesh__16GWorshipSiteInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GWorshipSiteInfo@@UBEIXZ");
 // win1.41 00464380 mac inlined GWorshipSiteInfo::GetAbodeType( const(void))
 enum ABODE_TYPE __fastcall GetAbodeType__16GWorshipSiteInfoCFv(const struct GMultiMapFixedInfo* this) asm("?GetAbodeType@GWorshipSiteInfo@@UBE?AW4ABODE_TYPE@@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_WORSHIP_SITE_INFO_INCLUDED_H */

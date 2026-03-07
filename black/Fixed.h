@@ -10,6 +10,76 @@
 
 #include "Object.h" /* For struct Object, struct ObjectVftable */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Creature;
+class GInterfaceStatus;
+class GObjectInfo;
+class GameOSFile;
+class GameThing;
+struct GameThingVftable;
+class GameThingWithPos;
+struct GameThingWithPosVftable;
+struct GestureSystemPacketData;
+struct MapCell;
+struct MapCoords;
+struct NewCollide;
+class PhysicsObject;
+class Villager;
+
+// win1.41 009c7f68 mac inlined FixedObject::`RTTI Type Descriptor'
+// win1.41 009a6408 mac inlined FixedObject::`RTTI Base Class Descriptor'
+// win1.41 009ac3f8 mac inlined FixedObject::`RTTI Base Class Array'
+// win1.41 009ac410 mac inlined FixedObject::`RTTI Class Hierarchy Descriptor'
+// win1.41 009ac420 mac 1073397c FixedObject::`RTTI Complete Object Locator'
+// win1.41 008db71c mac 107339a4 FixedObject::`vftable'
+class Fixed: public Object
+{
+public:
+    GameThing* town_artifact; /* 0x54 */
+
+    // Virtual functions
+
+    // win1.41 0052dee0 mac 100e1c70 FixedObject::InsertMapObjectToCellAssumeFixed(MapCell *)
+    virtual void InsertMapObjectToCellAssumeFixed(MapCell* cell); /* 0x85c */
+    // win1.41 004252f0 mac 100a9cd0 FixedObject::IsObjectFullyInMap(void)
+    virtual bool IsObjectFullyInMap(); /* 0x860 */
+
+    // Constructors
+
+    // win1.41 0052dd80 mac inlined FixedObject::FixedObject(void)
+    Fixed();
+    // win1.41 0052ddc0 mac 100e1fb0 FixedObject::FixedObject(MapCoords const &, GObjectInfo const *, float, float)
+    Fixed(const MapCoords* coords, const GObjectInfo* info, float y_angle, float scale);
+
+    // Non-virtual Destructors
+
+    // win1.41 0052dda0 mac 100e1f20 FixedObject::_dt(void)
+    ~Fixed();
+};
+
+// win1.41 00be9ec8 mac inlined SingleMapFixed::`RTTI Type Descriptor'
+// win1.41 009ac480 mac inlined SingleMapFixed::`RTTI Base Class Descriptor'
+// win1.41 009ac498 mac inlined SingleMapFixed::`RTTI Base Class Array'
+// win1.41 009ac4b8 mac inlined SingleMapFixed::`RTTI Class Hierarchy Descriptor'
+// win1.41 008dc890 mac 10740de0 SingleMapFixed::`RTTI Complete Object Locator'
+// win1.41 008dc894 mac 10740de8 SingleMapFixed::`vftable'
+class SingleMapFixed: public Fixed
+{
+public:
+    NewCollide* collide_data; /* 0x58 */
+
+    // Virtual functions
+
+    // win1.41 0052f510 mac 100dde20 SingleMapFixed::CreateCollideData(void)
+    virtual void CreateCollideData(); /* 0x864 */
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -192,5 +262,7 @@ uint32_t __fastcall ApplyOnlyAfterReleased__14SingleMapFixedFv(struct Object* th
 struct NewCollide* __fastcall GetCollideData__14SingleMapFixedFv(const struct Object* this) asm("?GetCollideData@SingleMapFixed@@UAEPAUNewCollide@@XZ");
 // win1.41 0052f510 mac 100dde20 SingleMapFixed::CreateCollideData(void)
 void __fastcall CreateCollideData__14SingleMapFixedFv(struct SingleMapFixed* this) asm("?CreateCollideData@SingleMapFixed@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FIXED_INCLUDED_H */

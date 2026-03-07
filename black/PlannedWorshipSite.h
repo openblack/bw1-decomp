@@ -8,6 +8,38 @@
 
 #include "PlannedCitadelPart.h" /* For struct PlannedCitadelPart */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameOSFile;
+class GameThing;
+
+// win1.41 00c24d30 mac inlined PlannedWorshipSite::`RTTI Type Descriptor'
+// win1.41 009ba320 mac inlined PlannedWorshipSite::`RTTI Base Class Descriptor'
+// win1.41 009ba338 mac inlined PlannedWorshipSite::`RTTI Base Class Array'
+// win1.41 009ba358 mac inlined PlannedWorshipSite::`RTTI Class Hierarchy Descriptor'
+class PlannedWorshipSite: public PlannedCitadelPart
+{
+public:
+
+    // Override methods
+
+    // win1.41 0077bf10 mac 105ab030 PlannedWorshipSite::_dt(void)
+    virtual ~PlannedWorshipSite();
+    // win1.41 0077bf00 mac 105ab150 PlannedWorshipSite::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0077bf90 mac 105b0dc0 PlannedWorshipSite::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 0077bf30 mac 105b0ea0 PlannedWorshipSite::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 0077bef0 mac 105ab110 PlannedWorshipSite::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -43,5 +75,7 @@ uint32_t __fastcall Load__18PlannedWorshipSiteFR10GameOSFile(struct GameThing* t
 uint32_t __fastcall Save__18PlannedWorshipSiteFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Save@PlannedWorshipSite@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0077bef0 mac 105ab110 PlannedWorshipSite::GetSaveType(void)
 uint32_t __fastcall GetSaveType__18PlannedWorshipSiteFv(struct GameThing* this) asm("?GetSaveType@PlannedWorshipSite@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLANNED_WORSHIP_SITE_INCLUDED_H */

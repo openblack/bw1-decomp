@@ -10,6 +10,95 @@
 #include "Base.h" /* For struct Base */
 #include "CreatureAction.h" /* For enum CREATURE_SUB_STATE_ACTIONS */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Creature;
+class MapCoords;
+class SubArgument;
+
+// win1.41 009cfa00 mac inlined CreatureSubAction::`RTTI Type Descriptor'
+// win1.41 009a95a8 mac inlined CreatureSubAction::`RTTI Base Class Descriptor'
+// win1.41 009a95c0 mac inlined CreatureSubAction::`RTTI Base Class Array'
+// win1.41 009a95d0 mac inlined CreatureSubAction::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cd370 mac 1077e1bc CreatureSubAction::`RTTI Complete Object Locator'
+// win1.41 008cd374 mac 1077e1c4 CreatureSubAction::`vftable'
+class CreatureSubAction: public Base
+{
+public:
+    uint8_t field_0x8[0x4];
+    uint32_t field_0xc;
+    uint8_t field_0x10[0x4];
+    LHPoint field_0x14;
+    uint8_t field_0x20[0xc];
+    uint32_t field_0x2c;
+    uint8_t field_0x30[0x30];
+
+    // Override methods
+
+    // win1.41 00473dd0 mac 101deb60 CreatureSubAction::_dt(void)
+    virtual ~CreatureSubAction();
+
+    // Constructors
+
+    // win1.41 00473db0 mac 101e0720 CreatureSubAction::CreatureSubAction(void)
+    CreatureSubAction();
+};
+
+// win1.41 009cf9b8 mac inlined CreatureSubActionAgenda::`RTTI Type Descriptor'
+// win1.41 009a9558 mac inlined CreatureSubActionAgenda::`RTTI Base Class Descriptor'
+// win1.41 009a9570 mac inlined CreatureSubActionAgenda::`RTTI Base Class Array'
+// win1.41 009a9580 mac inlined CreatureSubActionAgenda::`RTTI Class Hierarchy Descriptor'
+// win1.41 008cd350 mac 1077e1f4 CreatureSubActionAgenda::`RTTI Complete Object Locator'
+// win1.41 008cd354 mac 1077e1fc CreatureSubActionAgenda::`vftable'
+class CreatureSubActionAgenda: public Base
+{
+public:
+
+    typedef int (* CreatureSubActionAgenda::CreatureSubActionAgendaAddSubActionCB1)(Creature *, const void *, void *, MapCoords *);
+    typedef void (* CreatureSubActionAgenda::CreatureSubActionAgendaAddSubActionCB2)(Creature *, const void *, void *);
+
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+    uint32_t field_0x10;
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    int field_0x1c;
+    uint32_t field_0x20;
+    uint32_t field_0x24;
+    CreatureSubAction sub_actions[0x20];
+    Creature* creature; /* 0xc28 */
+    uint32_t field_0xc2c;
+    uint32_t field_0xc30;
+    uint32_t field_0xc34;
+    uint32_t field_0xc38;
+    uint32_t field_0xc3c;
+    uint32_t field_0xc40;
+    uint32_t field_0xc44;
+    uint32_t field_0xc48;
+    uint32_t field_0xc4c;
+
+    // Override methods
+
+    // win1.41 00473df0 mac 101e0670 CreatureSubActionAgenda::_dt(void)
+    virtual ~CreatureSubActionAgenda();
+
+    // Constructors
+
+    // win1.41 004ff1b0 mac 1028cea0 CreatureSubActionAgenda::CreatureSubActionAgenda(Creature*)
+    CreatureSubActionAgenda(Creature* creature);
+
+    // Non-virtual methods
+
+    // win1.41 004ff240 mac 1028cc30 CreatureSubActionAgenda::AddSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
+    void AddSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2, CreatureSubActionAgendaAddSubActionCB1 param_3, CreatureSubActionAgendaAddSubActionCB2 param_4);
+    // win1.41 004ff3a0 mac 1028cb10 CreatureSubActionAgenda::AddMainSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
+    void AddMainSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2, CreatureSubActionAgendaAddSubActionCB1 param_3, CreatureSubActionAgendaAddSubActionCB2 param_4);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Creature;
@@ -109,5 +198,7 @@ void __fastcall AddMainSubAction__23CreatureSubActionAgendaF26CREATURE_SUB_STATE
 
 // win1.41 00473df0 mac 101e0670 CreatureSubActionAgenda::_dt(void)
 void __fastcall __dt__23CreatureSubActionAgendaFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GCreatureSubActionAgenda@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_SUB_ACTION_INCLUDED_H */

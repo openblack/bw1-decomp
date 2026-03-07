@@ -8,6 +8,28 @@
 
 #include "SingleMapFixedInfo.h" /* For struct GSingleMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c227a8 mac inlined GMapShieldInfo::`RTTI Type Descriptor'
+// win1.41 009b95a8 mac inlined GMapShieldInfo::`RTTI Base Class Descriptor'
+// win1.41 009b95c0 mac inlined GMapShieldInfo::`RTTI Base Class Array'
+// win1.41 009b95d8 mac inlined GMapShieldInfo::`RTTI Class Hierarchy Descriptor'
+class GMapShieldInfo: public GSingleMapFixedInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 0072bdf0 mac 10531f60 GMapShieldInfo::_dt(void)
+    virtual ~GMapShieldInfo();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -33,5 +55,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 0072bdf0 mac 10531f60 GMapShieldInfo::_dt(void)
 void __fastcall __dt__14GMapShieldInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGMapShieldInfo@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAP_SHIELD_INFO_INCLUDED_H */

@@ -9,6 +9,43 @@
 
 #include "MobileObject.h" /* For struct MobileObject */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+class GameThingWithPos;
+class Object;
+
+// win1.41 00beca90 mac inlined Poo::`RTTI Type Descriptor'
+// win1.41 009ad710 mac inlined Poo::`RTTI Base Class Descriptor'
+// win1.41 009ad728 mac inlined Poo::`RTTI Base Class Array'
+// win1.41 009ad748 mac inlined Poo::`RTTI Class Hierarchy Descriptor'
+class Poo: public MobileObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 0055d0c0 mac 103be130 Poo::_dt(void)
+    virtual ~Poo();
+    // win1.41 0055d0b0 mac 103be1e0 Poo::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0055d0a0 mac 103be1b0 Poo::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 006083c0 mac 103bad80 Poo::GetScriptObjectType(void)
+    virtual uint32_t GetScriptObjectType();
+    // win1.41 006079d0 mac 103bc130 Poo::InsertMapObject(void)
+    virtual void InsertMapObject();
+    // win1.41 006083d0 mac 103bad50 Poo::GetHoldType(void)
+    virtual HOLD_TYPE GetHoldType();
+    // win1.41 006079c0 mac 103bc180 Poo::GetPhysicsConstantsType(void)
+    virtual uint32_t GetPhysicsConstantsType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -49,5 +86,7 @@ void __fastcall InsertMapObject__3PooFv(struct Object* this) asm("?InsertMapObje
 enum HOLD_TYPE __fastcall GetHoldType__3PooFv(struct Object* this) asm("?GetHoldType@Poo@@UAE?AW4HOLD_TYPE@@XZ");
 // win1.41 006079c0 mac 103bc180 Poo::GetPhysicsConstantsType(void)
 uint32_t __fastcall GetPhysicsConstantsType__3PooFv(struct Object* this) asm("?GetPhysicsConstantsType@Poo@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_POO_INCLUDED_H */

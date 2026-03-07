@@ -9,6 +9,37 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00bea3a8 mac inlined HistoryBox::`RTTI Type Descriptor'
+// win1.41 009aca10 mac inlined HistoryBox::`RTTI Base Class Descriptor'
+// win1.41 009aca28 mac inlined HistoryBox::`RTTI Base Class Array'
+// win1.41 009aca38 mac inlined HistoryBox::`RTTI Class Hierarchy Descriptor'
+// win1.41 008de970 mac 109ed4ac HistoryBox::`RTTI Complete Object Locator'
+// win1.41 008de974 mac 109ed4b4 HistoryBox::`vftable'
+class HistoryBox: public DialogBoxBase
+{
+public:
+    uint8_t field_0x10[0xc];
+
+    // Override methods
+
+    // win1.41 00545230 mac 105b9ac0 HistoryBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 005453b0 mac 105b9a60 HistoryBox::Destroy(void)
+    virtual void Destroy();
+    // win1.41 00545460 mac 105b98b0 HistoryBox::WantsKeyControl(void)
+    virtual bool WantsKeyControl();
+    // win1.41 00545470 mac 105b97c0 HistoryBox::WantsMouseControl(void)
+    virtual bool WantsMouseControl();
+    // win1.41 005454f0 mac 105b9780 HistoryBox::CanESCOut(void)
+    virtual bool CanESCOut();
+    // win1.41 005453c0 mac 105b9a20 HistoryBox::InitControls(void)
+    virtual void InitControls();
+};
+
+#else // __cplusplus
+
 struct HistoryBox
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -45,5 +76,7 @@ bool __fastcall WantsMouseControl__10HistoryBoxFv(struct DialogBoxBase* this) as
 bool __fastcall CanESCOut__10HistoryBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@HistoryBox@@UAE_NXZ");
 // win1.41 005453c0 mac 105b9a20 HistoryBox::InitControls(void)
 void __fastcall InitControls__10HistoryBoxFv(struct DialogBoxBase* this) asm("?InitControls@HistoryBox@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_HISTORY_BOX_INCLUDED_H */

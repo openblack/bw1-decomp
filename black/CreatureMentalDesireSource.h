@@ -6,6 +6,27 @@
 #include <chlasm/CreatureEnum.h> /* For enum CREATURE_DESIRE_SOURCE */
 #include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Creature;
+
+struct CreatureDesireSource
+{
+    float value; /* 0x0 */
+    float field_0x4;
+    float field_0x8;
+    CREATURE_DESIRE_SOURCE type;
+
+    // Constructors
+
+    // win1.41 004de150 mac 1025dac0 CreatureDesireSource::CreatureDesireSource(CREATURE_DESIRE_SOURCE, Creature* )
+    CreatureDesireSource(CREATURE_DESIRE_SOURCE type, Creature* creature);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Creature;
@@ -25,5 +46,7 @@ static_assert(sizeof(struct CreatureDesireSource) == 0x10, "Data type is of wron
 struct CreatureDesireSource* __fastcall __ct__20CreatureDesireSourceF22CREATURE_DESIRE_SOURCEP8Creature(struct CreatureDesireSource* this, const void* edx, enum CREATURE_DESIRE_SOURCE type, struct Creature* creature) asm("??0CreatureDesireSource@@QAE@W4CREATURE_DESIRE_SOURCE@@PAVCreature@@@Z");
 
 DECLARE_LH_LINKED_LIST(CreatureDesireSource);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_DESIRE_SOURCE_INCLUDED_H */

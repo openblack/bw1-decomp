@@ -8,6 +8,36 @@
 
 #include "AnimalCow.h" /* For struct Cow */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+class Object;
+
+// win1.41 009c9008 mac inlined Goat::`RTTI Type Descriptor'
+// win1.41 009a6e48 mac inlined Goat::`RTTI Base Class Descriptor'
+// win1.41 009a6e60 mac inlined Goat::`RTTI Base Class Array'
+// win1.41 009a6e90 mac inlined Goat::`RTTI Class Hierarchy Descriptor'
+class Goat: public Cow
+{
+public:
+
+    // Override methods
+
+    // win1.41 0041d6e0 mac 101710a0 Goat::_dt(void)
+    virtual ~Goat();
+    // win1.41 0041d6d0 mac 10171160 Goat::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0041d6c0 mac 10171130 Goat::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0041c9d0 mac 1016e580 Goat::StandAnimation(void)
+    virtual uint32_t StandAnimation();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -41,5 +71,7 @@ char* __fastcall GetDebugText__4GoatFv(struct GameThing* this) asm("?GetDebugTex
 uint32_t __fastcall GetSaveType__4GoatFv(struct GameThing* this) asm("?GetSaveType@Goat@@UAEIXZ");
 // win1.41 0041c9d0 mac 1016e580 Goat::StandAnimation(void)
 uint32_t __fastcall StandAnimation__4GoatFv(struct Object* this) asm("?StandAnimation@Goat@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_ANIMAL_GOAT_INCLUDED_H */

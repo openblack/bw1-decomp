@@ -7,6 +7,21 @@
 
 #include "CameraMode.h" /* For struct CameraMode */
 
+#ifdef __cplusplus
+
+// win1.41 009ce0d0 mac inlined CameraModeDance::`RTTI Type Descriptor'
+// win1.41 009a8990 mac inlined CameraModeDance::`RTTI Base Class Descriptor'
+// win1.41 009a89a8 mac inlined CameraModeDance::`RTTI Base Class Array'
+// win1.41 009a89b8 mac inlined CameraModeDance::`RTTI Class Hierarchy Descriptor'
+// win1.41 008c779c mac 10777774 CameraModeDance::`RTTI Complete Object Locator'
+// win1.41 008c77a0 mac 1077777c CameraModeDance::`vftable'
+class CameraModeDance: public CameraMode
+{
+public:
+};
+
+#else // __cplusplus
+
 struct CameraModeDance
 {
   struct CameraMode super;  /* 0x0 */
@@ -27,5 +42,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 extern const struct RTTICompleteObjectLocator __RTTICompleteObjectLocator__15CameraModeDance asm("??_R4CameraModeDance@@6B@");
 // win1.41 008c77a0 mac 1077777c CameraModeDance::`vftable'
 extern const struct CameraModeVftable __vt__15CameraModeDance asm("??_7CameraModeDance@@6B@");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CAMERA_MODE_DANCE_INCLUDED_H */

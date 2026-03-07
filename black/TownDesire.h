@@ -10,6 +10,74 @@
 
 #include "Base.h" /* For struct Base */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class GTownDesireInfo;
+class Town;
+class Villager;
+
+struct TownDesire__field_0x8
+{
+  uint8_t field_0x0[0x8];
+};
+
+struct DesireSort
+{
+  uint32_t field_0x0;
+  float field_0x4;
+  enum TOWN_DESIRE_INFO field_0x8;
+};
+
+// win1.41 00c22d68 mac inlined TownDesire::`RTTI Type Descriptor'
+// win1.41 009b9c28 mac inlined TownDesire::`RTTI Base Class Descriptor'
+// win1.41 009b9c40 mac inlined TownDesire::`RTTI Base Class Array'
+// win1.41 009b9c50 mac inlined TownDesire::`RTTI Class Hierarchy Descriptor'
+// win1.41 0099a0c4 mac 109e5838 TownDesire::`RTTI Complete Object Locator'
+// win1.41 0099a0c8 mac 109e5840 TownDesire::`vftable'
+class TownDesire: public Base
+{
+public:
+    TownDesire__field_0x8 field_0x8[TOWN_DESIRE_INFO_LAST];
+    float field_0x90[TOWN_DESIRE_INFO_LAST];
+    float field_0xd4[TOWN_DESIRE_INFO_LAST];
+    float field_0x118[TOWN_DESIRE_INFO_LAST];
+    uint32_t field_0x15fc; /* 0x15c */
+    Town* town; /* 0x160 */
+    float field_0x164;
+    float field_0x168[TOWN_DESIRE_INFO_LAST];
+    uint32_t field_0x1ac[TOWN_DESIRE_INFO_LAST];
+    uint32_t field_0x1f0[TOWN_DESIRE_INFO_LAST];
+    uint32_t field_0x234[TOWN_DESIRE_INFO_LAST];
+    DesireSort sorts[TOWN_DESIRE_INFO_LAST]; /* 0x278 */
+    DesireSort sorts2[TOWN_DESIRE_INFO_LAST]; /* 0x344 */
+    uint32_t field_0x410[TOWN_DESIRE_INFO_LAST];
+    float field_0x454[TOWN_DESIRE_INFO_LAST];
+    uint32_t field_0x498[TOWN_DESIRE_INFO_LAST];
+    float field_0x4dc[TOWN_DESIRE_INFO_LAST];
+    uint32_t field_0x520[TOWN_DESIRE_INFO_LAST];
+
+    // Override methods
+
+    // win1.41 00745730 mac 1055ea40 TownDesire::_dt(void)
+    virtual ~TownDesire();
+
+    // Constructors
+
+    // win1.41 00745710 mac 1055ead0 TownDesire::TownDesire(void)
+    TownDesire();
+
+    // Non-virtual methods
+
+    // win1.41 00745ae0 mac 1005c8d0 TownDesire::Process(void)
+    void Process();
+    // win1.41 00745f80 mac 1005d280 TownDesire::GetInfo(unsigned long) const
+    GTownDesireInfo* GetInfo(unsigned long param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct GTownDesireInfo;
@@ -116,5 +184,7 @@ struct GTownDesireFunction
   uint32_t field_0x64;
 };
 static_assert(sizeof(struct GTownDesireFunction) == 0x68, "Data type is of wrong size");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_TOWN_DESIRE_INCLUDED_H */

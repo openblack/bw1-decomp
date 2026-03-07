@@ -18,6 +18,414 @@ enum DECISION_TREE_TYPE
   DECISION_TREE_TYPE_0x0 = 0x0,
   _DECISION_TREE_TYPE_COUNT = 0x1
 };
+
+#ifdef __cplusplus
+
+struct AttributeTest
+{
+    LHLinkedList<CreatureLearningEpisode> episodes; /* 0x0 */
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+    uint32_t field_0x10;
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    ATTRIBUTE_TYPE attribute_stack[0x18];
+    uint32_t field_0x7c;
+    uint32_t field_0x80;
+    uint32_t field_0x84;
+    uint32_t field_0x88;
+    uint32_t field_0x8c;
+    uint32_t field_0x90;
+
+    // Constructors
+
+    // win1.41 004d4c20 mac 1024fa20 AttributeTest::AttributeTest(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
+    AttributeTest(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
+};
+
+struct DecisionTreeNode
+{
+  struct AttributeTest* tests[0x2];  /* 0x0 */
+};
+
+struct DecisionTree
+{
+    DecisionTreeNode root; /* 0x0 */
+
+    // Constructors
+
+    // win1.41 004d4380 mac 102506c0 DecisionTree::DecisionTree(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
+    DecisionTree(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
+};
+
+struct DecisionTreeAgenda
+{
+    DECISION_TREE_TYPE tree_type; /* 0x0 */
+    CREATURE_DESIRES creature_desires;
+    uint32_t field_0x8;
+    uint32_t field_0xc;
+    uint32_t field_0x10;
+    DecisionTree trees[0x2];
+
+    // Constructors
+
+    // win1.41 004d43f0 mac 102505c0 DecisionTreeAgenda::DecisionTreeAgenda(DECISION_TREE_TYPE, CREATURE_DESIRES)
+    DecisionTreeAgenda(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire);
+};
+
+struct DecisionTreeAgendas
+{
+  struct DecisionTreeAgenda* contents[0x28];  /* 0x0 */
+};
+
+struct DecisionTreeCollection
+{
+    DecisionTreeAgendas agendas[_LESSON_TYPE_COUNT]; /* 0x0 */
+
+    // Constructors
+
+    // win1.41 004d7220 mac 1024c150 DecisionTreeCollection::DecisionTreeCollection(void)
+    DecisionTreeCollection();
+};
+
+// win1.41 009dd3b8 mac inlined Attribute::`RTTI Type Descriptor'
+// win1.41 009a9ff0 mac inlined Attribute::`RTTI Base Class Descriptor'
+// win1.41 009aa058 mac inlined Attribute::`RTTI Base Class Array'
+// win1.41 009aa068 mac inlined Attribute::`RTTI Class Hierarchy Descriptor'
+class Attribute: public Base
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cb750 mac 1023cc80 Attribute::_dt(void)
+    virtual ~Attribute();
+};
+
+// win1.41 00bdeef0 mac inlined AttributeAbodeBeingBuilt::`RTTI Type Descriptor'
+// win1.41 009aa5e0 mac inlined AttributeAbodeBeingBuilt::`RTTI Base Class Descriptor'
+// win1.41 009aa5f8 mac inlined AttributeAbodeBeingBuilt::`RTTI Base Class Array'
+// win1.41 009aa608 mac inlined AttributeAbodeBeingBuilt::`RTTI Class Hierarchy Descriptor'
+class AttributeAbodeBeingBuilt: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d6090 mac 10249c80 AttributeAbodeBeingBuilt::_dt(void)
+    virtual ~AttributeAbodeBeingBuilt();
+};
+
+// win1.41 00bdef48 mac inlined AttributeAbodeType::`RTTI Type Descriptor'
+// win1.41 009aa680 mac inlined AttributeAbodeType::`RTTI Base Class Descriptor'
+// win1.41 009aa698 mac inlined AttributeAbodeType::`RTTI Base Class Array'
+// win1.41 009aa6a8 mac inlined AttributeAbodeType::`RTTI Class Hierarchy Descriptor'
+class AttributeAbodeType: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d6020 mac 10249e60 AttributeAbodeType::_dt(void)
+    virtual ~AttributeAbodeType();
+};
+
+// win1.41 009dd300 mac inlined AttributeAllegiance::`RTTI Type Descriptor'
+// win1.41 009a9e60 mac inlined AttributeAllegiance::`RTTI Base Class Descriptor'
+// win1.41 009a9e78 mac inlined AttributeAllegiance::`RTTI Base Class Array'
+// win1.41 009a9e88 mac inlined AttributeAllegiance::`RTTI Class Hierarchy Descriptor'
+class AttributeAllegiance: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cb7c0 mac 1024bad0 AttributeAllegiance::_dt(void)
+    virtual ~AttributeAllegiance();
+};
+
+// win1.41 009dd270 mac inlined AttributeAnimate::`RTTI Type Descriptor'
+// win1.41 009a9d20 mac inlined AttributeAnimate::`RTTI Base Class Descriptor'
+// win1.41 009a9d38 mac inlined AttributeAnimate::`RTTI Base Class Array'
+// win1.41 009a9d48 mac inlined AttributeAnimate::`RTTI Class Hierarchy Descriptor'
+class AttributeAnimate: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cb8b0 mac 1024b770 AttributeAnimate::_dt(void)
+    virtual ~AttributeAnimate();
+};
+
+// win1.41 00bdef18 mac inlined AttributeCreatureDominantDesire::`RTTI Type Descriptor'
+// win1.41 009aa630 mac inlined AttributeCreatureDominantDesire::`RTTI Base Class Descriptor'
+// win1.41 009aa648 mac inlined AttributeCreatureDominantDesire::`RTTI Base Class Array'
+// win1.41 009aa658 mac inlined AttributeCreatureDominantDesire::`RTTI Class Hierarchy Descriptor'
+class AttributeCreatureDominantDesire: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d5da0 mac 1024abd0 AttributeCreatureDominantDesire::_dt(void)
+    virtual ~AttributeCreatureDominantDesire();
+};
+
+// win1.41 00bdeec8 mac inlined AttributeCreatureHeight::`RTTI Type Descriptor'
+// win1.41 009aa590 mac inlined AttributeCreatureHeight::`RTTI Base Class Descriptor'
+// win1.41 009aa5a8 mac inlined AttributeCreatureHeight::`RTTI Base Class Array'
+// win1.41 009aa5b8 mac inlined AttributeCreatureHeight::`RTTI Class Hierarchy Descriptor'
+class AttributeCreatureHeight: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d5e10 mac 1024aa00 AttributeCreatureHeight::_dt(void)
+    virtual ~AttributeCreatureHeight();
+};
+
+// win1.41 00bdee98 mac inlined AttributeCreatureSpellKnowledge::`RTTI Type Descriptor'
+// win1.41 009aa540 mac inlined AttributeCreatureSpellKnowledge::`RTTI Base Class Descriptor'
+// win1.41 009aa558 mac inlined AttributeCreatureSpellKnowledge::`RTTI Base Class Array'
+// win1.41 009aa568 mac inlined AttributeCreatureSpellKnowledge::`RTTI Class Hierarchy Descriptor'
+class AttributeCreatureSpellKnowledge: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d5e70 mac 1024a860 AttributeCreatureSpellKnowledge::_dt(void)
+    virtual ~AttributeCreatureSpellKnowledge();
+};
+
+// win1.41 009dd248 mac inlined AttributeCreatureType::`RTTI Type Descriptor'
+// win1.41 009a9cd0 mac inlined AttributeCreatureType::`RTTI Base Class Descriptor'
+// win1.41 009a9ce8 mac inlined AttributeCreatureType::`RTTI Base Class Array'
+// win1.41 009a9cf8 mac inlined AttributeCreatureType::`RTTI Class Hierarchy Descriptor'
+class AttributeCreatureType: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cbbe0 mac 10247480 AttributeCreatureType::_dt(void)
+    virtual ~AttributeCreatureType();
+};
+
+// win1.41 00bdee68 mac inlined AttributeCreatureWhatHeIsCarrying::`RTTI Type Descriptor'
+// win1.41 009aa4f0 mac inlined AttributeCreatureWhatHeIsCarrying::`RTTI Base Class Descriptor'
+// win1.41 009aa508 mac inlined AttributeCreatureWhatHeIsCarrying::`RTTI Base Class Array'
+// win1.41 009aa518 mac inlined AttributeCreatureWhatHeIsCarrying::`RTTI Class Hierarchy Descriptor'
+class AttributeCreatureWhatHeIsCarrying: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d5ed0 mac 1024a6c0 AttributeCreatureWhatHeIsCarrying::_dt(void)
+    virtual ~AttributeCreatureWhatHeIsCarrying();
+};
+
+// win1.41 00bdee40 mac inlined AttributeForestSize::`RTTI Type Descriptor'
+// win1.41 009aa4a0 mac inlined AttributeForestSize::`RTTI Base Class Descriptor'
+// win1.41 009aa4b8 mac inlined AttributeForestSize::`RTTI Base Class Array'
+// win1.41 009aa4c8 mac inlined AttributeForestSize::`RTTI Class Hierarchy Descriptor'
+class AttributeForestSize: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d5f40 mac 1024a510 AttributeForestSize::_dt(void)
+    virtual ~AttributeForestSize();
+};
+
+// win1.41 009dd290 mac inlined AttributeIsHarderThanMe::`RTTI Type Descriptor'
+// win1.41 009a9d70 mac inlined AttributeIsHarderThanMe::`RTTI Base Class Descriptor'
+// win1.41 009a9d88 mac inlined AttributeIsHarderThanMe::`RTTI Base Class Array'
+// win1.41 009a9d98 mac inlined AttributeIsHarderThanMe::`RTTI Class Hierarchy Descriptor'
+class AttributeIsHarderThanMe: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cbb80 mac 102497e0 AttributeIsHarderThanMe::_dt(void)
+    virtual ~AttributeIsHarderThanMe();
+};
+
+// win1.41 009dd3d0 mac inlined AttributeLife::`RTTI Type Descriptor'
+// win1.41 009aa008 mac inlined AttributeLife::`RTTI Base Class Descriptor'
+// win1.41 009aa020 mac inlined AttributeLife::`RTTI Base Class Array'
+// win1.41 009aa030 mac inlined AttributeLife::`RTTI Class Hierarchy Descriptor'
+class AttributeLife: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cb980 mac 1024b470 AttributeLife::_dt(void)
+    virtual ~AttributeLife();
+};
+
+// win1.41 00bdef70 mac inlined AttributeMobileObjectType::`RTTI Type Descriptor'
+// win1.41 009aa6d0 mac inlined AttributeMobileObjectType::`RTTI Base Class Descriptor'
+// win1.41 009aa6e8 mac inlined AttributeMobileObjectType::`RTTI Base Class Array'
+// win1.41 009aa6f8 mac inlined AttributeMobileObjectType::`RTTI Class Hierarchy Descriptor'
+class AttributeMobileObjectType: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004d5fb0 mac 1024a010 AttributeMobileObjectType::_dt(void)
+    virtual ~AttributeMobileObjectType();
+};
+
+// win1.41 009dd348 mac inlined AttributeOnFire::`RTTI Type Descriptor'
+// win1.41 009a9f00 mac inlined AttributeOnFire::`RTTI Base Class Descriptor'
+// win1.41 009a9f18 mac inlined AttributeOnFire::`RTTI Base Class Array'
+// win1.41 009a9f28 mac inlined AttributeOnFire::`RTTI Class Hierarchy Descriptor'
+class AttributeOnFire: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cbac0 mac 10249ad0 AttributeOnFire::_dt(void)
+    virtual ~AttributeOnFire();
+};
+
+// win1.41 009dd2b8 mac inlined AttributeOrigin::`RTTI Type Descriptor'
+// win1.41 009a9dc0 mac inlined AttributeOrigin::`RTTI Base Class Descriptor'
+// win1.41 009a9dd8 mac inlined AttributeOrigin::`RTTI Base Class Array'
+// win1.41 009a9de8 mac inlined AttributeOrigin::`RTTI Class Hierarchy Descriptor'
+class AttributeOrigin: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cb830 mac 1024b920 AttributeOrigin::_dt(void)
+    virtual ~AttributeOrigin();
+};
+
+// win1.41 009dd2d8 mac inlined AttributePlayerNumber::`RTTI Type Descriptor'
+// win1.41 009a9e10 mac inlined AttributePlayerNumber::`RTTI Base Class Descriptor'
+// win1.41 009a9e28 mac inlined AttributePlayerNumber::`RTTI Base Class Array'
+// win1.41 009a9e38 mac inlined AttributePlayerNumber::`RTTI Class Hierarchy Descriptor'
+class AttributePlayerNumber: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cbb20 mac 10249960 AttributePlayerNumber::_dt(void)
+    virtual ~AttributePlayerNumber();
+};
+
+// win1.41 009dd328 mac inlined AttributeSex::`RTTI Type Descriptor'
+// win1.41 009a9eb0 mac inlined AttributeSex::`RTTI Base Class Descriptor'
+// win1.41 009a9ec8 mac inlined AttributeSex::`RTTI Base Class Array'
+// win1.41 009a9ed8 mac inlined AttributeSex::`RTTI Class Hierarchy Descriptor'
+class AttributeSex: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cba50 mac 1024a200 AttributeSex::_dt(void)
+    virtual ~AttributeSex();
+};
+
+// win1.41 009dd4c8 mac inlined AttributeTownReligiousBeliefInYou::`RTTI Type Descriptor'
+// win1.41 009aa0e0 mac inlined AttributeTownReligiousBeliefInYou::`RTTI Base Class Descriptor'
+// win1.41 009aa0f8 mac inlined AttributeTownReligiousBeliefInYou::`RTTI Base Class Array'
+// win1.41 009aa108 mac inlined AttributeTownReligiousBeliefInYou::`RTTI Class Hierarchy Descriptor'
+class AttributeTownReligiousBeliefInYou: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cd710 mac 1024b0c0 AttributeTownReligiousBeliefInYou::_dt(void)
+    virtual ~AttributeTownReligiousBeliefInYou();
+};
+
+// win1.41 009dd518 mac inlined AttributeTownSize::`RTTI Type Descriptor'
+// win1.41 009aa180 mac inlined AttributeTownSize::`RTTI Base Class Descriptor'
+// win1.41 009aa198 mac inlined AttributeTownSize::`RTTI Base Class Array'
+// win1.41 009aa1a8 mac inlined AttributeTownSize::`RTTI Class Hierarchy Descriptor'
+class AttributeTownSize: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cd7e0 mac 1024ad70 AttributeTownSize::_dt(void)
+    virtual ~AttributeTownSize();
+};
+
+// win1.41 009dd4f8 mac inlined AttributeTribe::`RTTI Type Descriptor'
+// win1.41 009aa130 mac inlined AttributeTribe::`RTTI Base Class Descriptor'
+// win1.41 009aa148 mac inlined AttributeTribe::`RTTI Base Class Array'
+// win1.41 009aa158 mac inlined AttributeTribe::`RTTI Class Hierarchy Descriptor'
+class AttributeTribe: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cd6a0 mac 1024b2c0 AttributeTribe::_dt(void)
+    virtual ~AttributeTribe();
+};
+
+// win1.41 009dd228 mac inlined AttributeType::`RTTI Type Descriptor'
+// win1.41 009a9c80 mac inlined AttributeType::`RTTI Base Class Descriptor'
+// win1.41 009a9c98 mac inlined AttributeType::`RTTI Base Class Array'
+// win1.41 009a9ca8 mac inlined AttributeType::`RTTI Class Hierarchy Descriptor'
+class AttributeType: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cb910 mac 1024b610 AttributeType::_dt(void)
+    virtual ~AttributeType();
+};
+
+// win1.41 009dd390 mac inlined AttributeVillagerJob::`RTTI Type Descriptor'
+// win1.41 009a9fa0 mac inlined AttributeVillagerJob::`RTTI Base Class Descriptor'
+// win1.41 009a9fb8 mac inlined AttributeVillagerJob::`RTTI Base Class Array'
+// win1.41 009a9fc8 mac inlined AttributeVillagerJob::`RTTI Class Hierarchy Descriptor'
+class AttributeVillagerJob: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cb9e0 mac 1024a3a0 AttributeVillagerJob::_dt(void)
+    virtual ~AttributeVillagerJob();
+};
+
+// win1.41 009dd498 mac inlined AttributeWhatTownNeedsMost::`RTTI Type Descriptor'
+// win1.41 009aa090 mac inlined AttributeWhatTownNeedsMost::`RTTI Base Class Descriptor'
+// win1.41 009aa0a8 mac inlined AttributeWhatTownNeedsMost::`RTTI Base Class Array'
+// win1.41 009aa0b8 mac inlined AttributeWhatTownNeedsMost::`RTTI Class Hierarchy Descriptor'
+class AttributeWhatTownNeedsMost: public Attribute
+{
+public:
+
+    // Override methods
+
+    // win1.41 004cd770 mac 1024af20 AttributeWhatTownNeedsMost::_dt(void)
+    virtual ~AttributeWhatTownNeedsMost();
+};
+
+#else // __cplusplus
+
 static_assert(sizeof(enum DECISION_TREE_TYPE) == 0x4, "Data type is of wrong size");
 
 static const char* DECISION_TREE_TYPE_strs[_DECISION_TREE_TYPE_COUNT] = {
@@ -626,5 +1034,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 
 // win1.41 004cd770 mac 1024af20 AttributeWhatTownNeedsMost::_dt(void)
 void __fastcall __dt__26AttributeWhatTownNeedsMostFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GAttributeWhatTownNeedsMost@@UAEPAXI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_CREATURE_MENTAL_ATTRIBUTE_TEST_INCLUDED_H */

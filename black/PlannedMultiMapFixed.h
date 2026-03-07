@@ -12,6 +12,84 @@
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class GFootpathLink;
+class GMultiMapFixedInfo;
+class GObjectInfo;
+class GameOSFile;
+class GameThing;
+struct MapCoords;
+class MultiMapFixed;
+
+// win1.41 009c7fd8 mac inlined PlannedMultiMapFixed::`RTTI Type Descriptor'
+// win1.41 009a6498 mac inlined PlannedMultiMapFixed::`RTTI Base Class Descriptor'
+// win1.41 009ae968 mac inlined PlannedMultiMapFixed::`RTTI Base Class Array'
+// win1.41 009ae980 mac inlined PlannedMultiMapFixed::`RTTI Class Hierarchy Descriptor'
+// win1.41 008f3150 mac 107340b0 PlannedMultiMapFixed::`RTTI Complete Object Locator'
+// win1.41 008f3154 mac 107340d0 PlannedMultiMapFixed::`vftable'
+class PlannedMultiMapFixed: public GameThingWithPos
+{
+public:
+    float field_0x28;
+    float scale;
+    uint32_t field_0x30;
+    uint32_t field_0x34;
+    GFootpathLink* footpath_link;
+    int creation_turn;
+    GObjectInfo* info; /* 0x40 */
+    PlannedMultiMapFixed* next;
+
+    // Virtual functions
+
+    // win1.41 0055cbe0 mac 10111890 PlannedMultiMapFixed::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00648af0 mac 10114cd0 PlannedMultiMapFixed::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& file);
+    // win1.41 00648990 mac 10114ef0 PlannedMultiMapFixed::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& file);
+    // win1.41 0055cbd0 mac inlined PlannedMultiMapFixed::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 004050c0 mac 1017d1b0 PlannedMultiMapFixed::GetScale(void)
+    virtual float GetScale();
+    // win1.41 004050d0 mac 103509e0 PlannedMultiMapFixed::SetScale(float)
+    virtual void SetScale(float scale);
+    // win1.41 00648940 mac 10115200 PlannedMultiMapFixed::GetText(void)
+    virtual const char* GetText();
+    // win1.41 00465560 mac 100d17b0 PlannedMultiMapFixed::IsWonder(void)
+    virtual bool IsWonder();
+    // win1.41 00648950 mac inlined PlannedMultiMapFixed::CreateBuildingSite(void)
+    virtual bool CreateBuildingSite();
+    // win1.41 00469660 mac 100bd510 PlannedMultiMapFixed::CreatePlanned(float)
+    virtual MultiMapFixed* CreatePlanned(float param_1); /* 0x500 */
+    // win1.41 00465540 mac 100d1720 PlannedMultiMapFixed::CreatePlannedNoFixedCheck(float)
+    virtual MultiMapFixed* CreatePlannedNoFixedCheck(float param_1);
+    // win1.41 00648c50 mac 10114bf0 PlannedMultiMapFixed::PostCreatePlanned(MultiMapFixed&)
+    virtual void PostCreatePlanned(MultiMapFixed* param_1);
+    // win1.41 00465550 mac 100d1770 PlannedMultiMapFixed::IsCivic(void)
+    virtual bool IsCivic();
+    // win1.41 00465570 mac 100d17f0 PlannedMultiMapFixed::GetAbodeType(void)
+    virtual ABODE_TYPE GetAbodeType(); /* 0x510 */
+    // win1.41 00648910 mac 1006f570 PlannedMultiMapFixed::GetDesireToBeRepaired(void)
+    virtual float GetDesireToBeRepaired();
+    // win1.41 00648930 mac 10115260 PlannedMultiMapFixed::Draw(void)
+    virtual void Draw();
+
+    // Constructors
+
+    // win1.41 00648780 mac 10115620 PlannedMultiMapFixed::PlannedMultiMapFixed(MapCoords const &, GMultiMapFixedInfo const *, float, float)
+    PlannedMultiMapFixed(const MapCoords* coords, const GMultiMapFixedInfo* info, float param_3, float param_4);
+
+    // Non-virtual Destructors
+
+    // win1.41 0055cbf0 mac 103e4400 PlannedMultiMapFixed::~PlannedMultiMapFixed(void)
+    ~PlannedMultiMapFixed();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct GFootpathLink;
@@ -111,5 +189,7 @@ float __fastcall GetDesireToBeRepaired__20PlannedMultiMapFixedFv(struct PlannedM
 void __fastcall Draw__20PlannedMultiMapFixedFv(struct PlannedMultiMapFixed* this) asm("?Draw@PlannedMultiMapFixed@@QAEXXZ");
 
 DECLARE_LH_LIST_HEAD(PlannedMultiMapFixed);
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLANNED_MULTI_MAP_FIXED_INCLUDED_H */

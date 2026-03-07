@@ -8,6 +8,30 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+
+// win1.41 00c01f98 mac inlined GPlaytimeInfo::`RTTI Type Descriptor'
+// win1.41 009b32f8 mac inlined GPlaytimeInfo::`RTTI Base Class Descriptor'
+// win1.41 009b3310 mac inlined GPlaytimeInfo::`RTTI Base Class Array'
+// win1.41 009b3320 mac inlined GPlaytimeInfo::`RTTI Class Hierarchy Descriptor'
+class GPlaytimeInfo: public GBaseInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 0066c330 mac 10115d70 GPlaytimeInfo::_dt(void)
+    virtual ~GPlaytimeInfo();
+    // win1.41 0066c2d0 mac 10115f30 GPlaytimeInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -35,5 +59,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 void __fastcall __dt__13GPlaytimeInfoFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGPlaytimeInfo@@UAEPAXI@Z");
 // win1.41 0066c2d0 mac 10115f30 GPlaytimeInfo::GetBaseInfo(unsigned long &)
 struct GBaseInfo* __fastcall GetBaseInfo__13GPlaytimeInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GPlaytimeInfo@@UAEPAVGBaseInfo@@AAI@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLAYTIME_INFO_INCLUDED_H */

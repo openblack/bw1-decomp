@@ -8,6 +8,38 @@
 
 #include "DialogBoxBase.h" /* For struct DialogBoxBase */
 
+#ifdef __cplusplus
+
+// win1.41 00be8df0 mac inlined DialogBoxSaveMessage::`RTTI Type Descriptor'
+// win1.41 009aba98 mac inlined DialogBoxSaveMessage::`RTTI Base Class Descriptor'
+// win1.41 009abab0 mac inlined DialogBoxSaveMessage::`RTTI Base Class Array'
+// win1.41 009abac0 mac inlined DialogBoxSaveMessage::`RTTI Class Hierarchy Descriptor'
+// win1.41 008d8694 mac 10999130 DialogBoxSaveMessage::`RTTI Complete Object Locator'
+// win1.41 008d8698 mac 10999138 DialogBoxSaveMessage::`vftable'
+class DialogBoxSaveMessage: public DialogBoxBase
+{
+public:
+    uint32_t field_0x10;
+    uint32_t field_0x14;
+    uint32_t field_0x18;
+    uint32_t field_0x1c;
+    uint32_t field_0x20;
+
+    // Override methods
+
+    // win1.41 005159d0 mac 102b5db0 DialogBoxSaveMessage::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    virtual void Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3);
+    // win1.41 00515b80 mac 102b5d50 DialogBoxSaveMessage::Destroy(void)
+    virtual void Destroy();
+
+    // Constructors
+
+    // win1.41 00515990 mac 102b6020 DialogBoxSaveMessage::DialogBoxSaveMessage(void)
+    DialogBoxSaveMessage();
+};
+
+#else // __cplusplus
+
 struct DialogBoxSaveMessage
 {
   struct DialogBoxBase super;  /* 0x0 */
@@ -45,5 +77,7 @@ struct DialogBoxSaveMessage* __fastcall __ct__20DialogBoxSaveMessageFv(struct Di
 void __fastcall Init__20DialogBoxSaveMessageFUlUlPFiP8SetupBoxP12SetupControlii_v(struct DialogBoxBase* this, const void* edx, uint32_t param_1, uint32_t param_2, void (__stdcall* param_3)(int param_1, struct SetupBox * param_2, struct SetupControl * param_3, int param_4, int param_5)) asm("?Init@DialogBoxSaveMessage@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z");
 // win1.41 00515b80 mac 102b5d50 DialogBoxSaveMessage::Destroy(void)
 void __fastcall Destroy__20DialogBoxSaveMessageFv(struct DialogBoxBase* this) asm("?Destroy@DialogBoxSaveMessage@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_DIALOG_BOX_SAVE_MESSAGE_INCLUDED_H */

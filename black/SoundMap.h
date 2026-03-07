@@ -10,6 +10,39 @@
 #include "Base.h" /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */
 
+#ifdef __cplusplus
+
+// win1.41 00bec3d8 mac inlined GSoundMap::`RTTI Type Descriptor'
+// win1.41 009ad150 mac inlined GSoundMap::`RTTI Base Class Descriptor'
+// win1.41 009ad168 mac inlined GSoundMap::`RTTI Base Class Array'
+// win1.41 009ad178 mac inlined GSoundMap::`RTTI Class Hierarchy Descriptor'
+// win1.41 008df79c mac 109d7980 GSoundMap::`RTTI Complete Object Locator'
+// win1.41 008df7a0 mac 109d7988 GSoundMap::`vftable'
+class GSoundMap: public Base
+{
+public:
+    uint8_t field_0x8[0xc][0xe];
+    uint16_t field_0xb0;
+    uint32_t field_0xb4[0xe];
+    LHPoint field_0xec;
+    MapCoords field_0xf8;
+    uint8_t field_0xfc[0xc]; /* 0x104 */
+
+    // Override methods
+
+    // win1.41 0054ba10 mac 100cb590 GSoundMap::_dt(void)
+    virtual ~GSoundMap();
+    // win1.41 0071d990 mac 10068330 GSoundMap::Dump(void)
+    virtual void Dump();
+
+    // Constructors
+
+    // win1.41 0054b9d0 mac inlined GSoundMap::GSoundMap(void)
+    GSoundMap();
+};
+
+#else // __cplusplus
+
 struct GSoundMap
 {
   struct Base super;  /* 0x0 */
@@ -48,5 +81,7 @@ struct GSoundMap* __fastcall __ct__9GSoundMapFv(struct GSoundMap* this) asm("??0
 void __fastcall __dt__9GSoundMapFv(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGSoundMap@@UAEPAXI@Z");
 // win1.41 0071d990 mac 10068330 GSoundMap::Dump(void)
 void __fastcall Dump__9GSoundMapFv(struct Base* this) asm("?Dump@GSoundMap@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_SOUND_MAP_INCLUDED_H */

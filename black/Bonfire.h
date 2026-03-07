@@ -10,6 +10,66 @@
 
 #include "Rock.h" /* For struct Rock */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GInterfaceStatus;
+class GameOSFile;
+class GameThing;
+class GameThingWithPos;
+class LHOSFile;
+struct MapCoords;
+class Object;
+class PhysicsObject;
+
+// win1.41 009cd340 mac inlined Bonfire::`RTTI Type Descriptor'
+// win1.41 009a8528 mac inlined Bonfire::`RTTI Base Class Descriptor'
+// win1.41 009a8540 mac inlined Bonfire::`RTTI Base Class Array'
+// win1.41 009a8568 mac inlined Bonfire::`RTTI Class Hierarchy Descriptor'
+class Bonfire: public Rock
+{
+public:
+
+    // Override methods
+
+    // win1.41 00439800 mac 100b3c10 Bonfire::_dt(void)
+    virtual ~Bonfire();
+    // win1.41 004397f0 mac 100b3ec0 Bonfire::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00439a00 mac 100b4800 Bonfire::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 00439990 mac 100b48d0 Bonfire::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 004397e0 mac 100b3e80 Bonfire::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 004397c0 mac 100b3dd0 Bonfire::PhysicsEditorCreate(int)
+    virtual void PhysicsEditorCreate(int param_1);
+    // win1.41 00439a70 mac 100b47a0 Bonfire::GetScriptObjectType(void)
+    virtual uint32_t GetScriptObjectType();
+    // win1.41 00439a90 mac 1001a450 Bonfire::Draw(void)
+    virtual void Draw();
+    // win1.41 00439840 mac 100b4c70 Bonfire::CallVirtualFunctionsForCreation(MapCoords const &)
+    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    // win1.41 00439790 mac 100b3cf0 Bonfire::ValidForPlaceInHand(GInterfaceStatus *)
+    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    // win1.41 00439780 mac 100b3ca0 Bonfire::InterfaceValidToTap(GInterfaceStatus *)
+    virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
+    // win1.41 004397b0 mac 100b3d80 Bonfire::InteractsWithPhysicsObjects(void)
+    virtual bool InteractsWithPhysicsObjects();
+    // win1.41 00439a80 mac 100b4750 Bonfire::ReactToPhysicsImpact(PhysicsObject *, bool)
+    virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+    // win1.41 004397a0 mac 100b3d40 Bonfire::CanBecomeAPhysicsObject(void)
+    virtual bool CanBecomeAPhysicsObject();
+    // win1.41 004398a0 mac 100b49b0 Bonfire::SaveObject(LHOSFile &, MapCoords const &)
+    virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
+    // win1.41 004397d0 mac 100b3e20 Bonfire::GetInHandImmersionTexture(void)
+    virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -73,5 +133,7 @@ bool __fastcall CanBecomeAPhysicsObject__7BonfireFv(struct Object* this) asm("?C
 uint32_t __fastcall SaveObject__7BonfireFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@Bonfire@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 // win1.41 004397d0 mac 100b3e20 Bonfire::GetInHandImmersionTexture(void)
 enum IMMERSION_EFFECT_TYPE __fastcall GetInHandImmersionTexture__7BonfireFv(struct Object* this) asm("?GetInHandImmersionTexture@Bonfire@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_BONFIRE_INCLUDED_H */

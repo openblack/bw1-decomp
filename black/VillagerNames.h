@@ -12,6 +12,79 @@
 
 #include "DrawingObject.h" /* For struct DrawingObject */
 
+#ifdef __cplusplus
+
+struct VillagerNameBlock
+{
+    uint8_t field_0x0[0x14];
+
+    // Static methods
+
+    // win1.41 00762720 mac 1058ba90 VillagerNameBlock::Alloc(void)
+    static VillagerName* Alloc();
+    // win1.41 00762780 mac 1058b960 VillagerNameBlock::Delete(VillagerName *)
+    static void Delete(VillagerName* name);
+
+    // Constructors
+
+    // win1.41 00762820 mac inlined VillagerNameBlock::VillagerNameBlock(void)
+    VillagerNameBlock();
+
+    // Non-virtual methods
+
+    // win1.41 007627e0 mac 10012bf0 VillagerNameBlock::DeleteAll(void)
+    bool32_t DeleteAll();
+    // win1.41 00762900 mac inlined VillagerNameBlock::~VillagerNameBlock()
+    void ~VillagerNameBlock();
+    // win1.41 00762970 mac inlined VillagerNameBlock::FreeAll(void)
+    void FreeAll();
+};
+
+// win1.41 00c24558 mac inlined VillagerName::`RTTI Type Descriptor'
+// win1.41 009b9dd8 mac inlined VillagerName::`RTTI Base Class Descriptor'
+// win1.41 009b9df0 mac inlined VillagerName::`RTTI Base Class Array'
+// win1.41 009b9e00 mac inlined VillagerName::`RTTI Class Hierarchy Descriptor'
+// win1.41 0099a9b8 mac 109e9588 VillagerName::`RTTI Complete Object Locator'
+// win1.41 0099a9bc mac 109e9590 VillagerName::`vftable'
+class VillagerName: public DrawingObject
+{
+public:
+    float left; /* 0x4 */
+    float top;
+    float right;
+    float bottom; /* 0x10 */
+    float arrow_x;
+    float arrow_y;
+    float depth;
+    float text_size; /* 0x20 */
+    float field_0x24;
+    int num_lines;
+    float text_padding;
+    char16_t field_0x30[0x100];
+    uint8_t field_0x230[0x200];
+    char16_t* lines[0x8]; /* 0x430 */
+    LH3DColor color; /* 0x450 */
+    LHPoint point;
+    VillagerName* next; /* 0x460 */
+
+    // Virtual functions
+
+    // win1.41 007628a0 mac 100b5250 VillagerName::AddDrawing(void)
+    virtual void AddDrawing(); /* 0x0 */
+
+    // Static methods
+
+    // win1.41 007629e0 mac 1058b1a0 VillagerName::Add(float, LHPoint, wchar_t *, LH3DColor &)
+    static VillagerName* Add(float text_size, LHPoint point, const char16_t* text, const LH3DColor* p_color);
+
+    // Non-virtual methods
+
+    // win1.41 00762dc0 mac 1058add0 VillagerName::Draw(void)
+    void Draw();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct VillagerName;
@@ -101,5 +174,7 @@ void __fastcall Draw__12VillagerNameFv(struct VillagerName* this) asm("?Draw@Vil
 
 // win1.41 007628a0 mac 100b5250 VillagerName::AddDrawing(void)
 void __fastcall AddDrawing__12VillagerNameFv(struct VillagerName* this) asm("?AddDrawing@VillagerName@@UAEXXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_VILLAGER_NAMES_INCLUDED_H */

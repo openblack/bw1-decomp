@@ -8,6 +8,34 @@
 
 #include "MultiMapFixedInfo.h" /* For struct GMultiMapFixedInfo */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GBaseInfo;
+class GObjectInfo;
+
+// win1.41 00c020c0 mac inlined GPrayerSiteInfo::`RTTI Type Descriptor'
+// win1.41 009b3558 mac inlined GPrayerSiteInfo::`RTTI Base Class Descriptor'
+// win1.41 009b3570 mac inlined GPrayerSiteInfo::`RTTI Base Class Array'
+// win1.41 009b3588 mac inlined GPrayerSiteInfo::`RTTI Class Hierarchy Descriptor'
+class GPrayerSiteInfo: public GMultiMapFixedInfo
+{
+public:
+
+    // Override methods
+
+    // win1.41 006706c0 mac 1011ea20 GPrayerSiteInfo::_dt(void)
+    virtual ~GPrayerSiteInfo();
+    // win1.41 00670670 mac 1011eb00 GPrayerSiteInfo::GetBaseInfo(unsigned long &)
+    virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
+    // win1.41 00670660 mac 1011eac0 GPrayerSiteInfo::GetMesh( const(void))
+    virtual uint32_t GetMesh() const;
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -39,5 +67,7 @@ void __fastcall __dt__15GPrayerSiteInfoFv(struct Base* this, const void* edx, ui
 struct GBaseInfo* __fastcall GetBaseInfo__15GPrayerSiteInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GPrayerSiteInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 00670660 mac 1011eac0 GPrayerSiteInfo::GetMesh( const(void))
 uint32_t __fastcall GetMesh__15GPrayerSiteInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GPrayerSiteInfo@@UBEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PRAYER_SITE_INFO_INCLUDED_H */

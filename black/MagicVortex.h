@@ -11,6 +11,158 @@
 #include "MobileStatic.h" /* For struct MobileStatic */
 #include "MultiMapFixed.h" /* For struct MultiMapFixedVftable */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class Creature;
+class EffectValues;
+class Flock;
+class GInterfaceStatus;
+class GVortexInfo;
+class GameOSFile;
+class GameThing;
+class GameThingWithPos;
+struct MapCoords;
+class MultiMapFixed;
+class Object;
+class PhysicsObject;
+class Town;
+class Villager;
+
+// win1.41 00bf0200 mac inlined LandscapeVortex::`RTTI Type Descriptor'
+// win1.41 009b1cc8 mac inlined LandscapeVortex::`RTTI Base Class Descriptor'
+// win1.41 009b1e30 mac inlined LandscapeVortex::`RTTI Base Class Array'
+// win1.41 009b1e58 mac inlined LandscapeVortex::`RTTI Class Hierarchy Descriptor'
+// win1.41 0092ee7c mac 1099b714 LandscapeVortex::`RTTI Complete Object Locator'
+// win1.41 0092ee80 mac 106f8abc LandscapeVortex::`vftable'
+class LandscapeVortex: public MobileStatic
+{
+public:
+    LandscapeVortex* next; /* 0x88 */
+    float field_0x8c;
+    float field_0x90;
+    uint32_t field_0x94;
+    uint32_t field_0x98;
+    uint32_t field_0x9c;
+    uint32_t field_0xa0;
+    uint32_t field_0xa4;
+    uint32_t field_0xa8;
+    uint32_t field_0xac;
+    uint32_t field_0xb0;
+    uint32_t field_0xb4;
+    uint8_t field_0xb8;
+    uint32_t field_0xbc;
+    uint32_t field_0xc0;
+    uint32_t field_0xc4;
+    uint32_t field_0xc8;
+    uint32_t field_0xcc;
+    uint32_t field_0xd0;
+    uint32_t field_0xd4;
+    uint32_t field_0xd8;
+    uint32_t field_0xdc;
+    VORTEX_TYPE type; /* 0xe0 */
+    uint32_t field_0xe4;
+    float field_0xe8;
+
+    // Virtual functions
+
+    virtual void ProcessContentsOfVortex(); /* 0x90c */
+    virtual void SetFlockParams(const MapCoords* coords, float param_2, float param_3, Flock* flock); /* 0x910 */
+    virtual bool IsVillagerBeingThrownByThisVortex(Villager* villager);
+
+    // Constructors
+
+    // win1.41 005fe7a0 mac 103b69b0 LandscapeVortex::LandscapeVortex(void)
+    LandscapeVortex();
+
+    // Non-virtual methods
+
+    // win1.41 005fd570 mac 103b8c60 LandscapeVortex::GetVortexInfo(void)
+    GVortexInfo* GetVortexInfo();
+};
+
+// win1.41 00bf4098 mac inlined LandscapeVortexIn::`RTTI Type Descriptor'
+// win1.41 009b1d50 mac inlined LandscapeVortexIn::`RTTI Base Class Descriptor'
+// win1.41 009b1d68 mac inlined LandscapeVortexIn::`RTTI Base Class Array'
+// win1.41 009b1d98 mac inlined LandscapeVortexIn::`RTTI Class Hierarchy Descriptor'
+class LandscapeVortexIn: public LandscapeVortex
+{
+public:
+
+    // Override methods
+
+    // win1.41 005fd7b0 mac 103b98f0 LandscapeVortexIn::_dt(void)
+    virtual ~LandscapeVortexIn();
+    // win1.41 005fd860 mac 103b8770 LandscapeVortexIn::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 005fd7a0 mac 103b99f0 LandscapeVortexIn::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00600550 mac 103b3a80 LandscapeVortexIn::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 00600460 mac 103b3b80 LandscapeVortexIn::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 005fd790 mac 103b99b0 LandscapeVortexIn::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 005fd970 mac 103b8540 LandscapeVortexIn::GetPhysicsConstantsType(void)
+    virtual uint32_t GetPhysicsConstantsType();
+    // win1.41 005fd8c0 mac 103b8720 LandscapeVortexIn::InteractsWithPhysicsObjects(void)
+    virtual bool InteractsWithPhysicsObjects();
+    // win1.41 005fd8d0 mac 103b86b0 LandscapeVortexIn::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object *)
+    virtual void ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
+    // win1.41 005fd8e0 mac 103b8590 LandscapeVortexIn::ReactToPhysicsImpact(PhysicsObject *, bool)
+    virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
+    // win1.41 005fd980 mac 103b84a0 LandscapeVortexIn::CreatureMustAvoid(Creature *)
+    virtual bool CreatureMustAvoid(Creature* param_1);
+};
+
+// win1.41 00bf40d8 mac inlined LandscapeVortexOut::`RTTI Type Descriptor'
+// win1.41 009b1dc0 mac inlined LandscapeVortexOut::`RTTI Base Class Descriptor'
+// win1.41 009b1dd8 mac inlined LandscapeVortexOut::`RTTI Base Class Array'
+// win1.41 009b1e08 mac inlined LandscapeVortexOut::`RTTI Class Hierarchy Descriptor'
+class LandscapeVortexOut: public LandscapeVortex
+{
+public:
+
+    // Override methods
+
+    // win1.41 005fdde0 mac 103b97a0 LandscapeVortexOut::_dt(void)
+    virtual ~LandscapeVortexOut();
+    // win1.41 005fdf10 mac 103b78f0 LandscapeVortexOut::ToBeDeleted(int)
+    virtual void ToBeDeleted(int param_1);
+    // win1.41 005fddd0 mac 103b98a0 LandscapeVortexOut::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 00600880 mac 103b3300 LandscapeVortexOut::Load(GameOSFile &)
+    virtual bool Load(GameOSFile& param_1);
+    // win1.41 00600630 mac 103b3690 LandscapeVortexOut::Save(GameOSFile &)
+    virtual bool Save(GameOSFile& param_1);
+    // win1.41 005fddc0 mac 103b9860 LandscapeVortexOut::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 005fdfe0 mac 103b77f0 LandscapeVortexOut::SetTown(Town *)
+    virtual void SetTown(Town* param_1);
+};
+
+// win1.41 00bf4060 mac inlined LandscapeVortexVolc::`RTTI Type Descriptor'
+// win1.41 009b1ce0 mac inlined LandscapeVortexVolc::`RTTI Base Class Descriptor'
+// win1.41 009b1cf8 mac inlined LandscapeVortexVolc::`RTTI Base Class Array'
+// win1.41 009b1d28 mac inlined LandscapeVortexVolc::`RTTI Class Hierarchy Descriptor'
+class LandscapeVortexVolc: public LandscapeVortex
+{
+public:
+
+    // Override methods
+
+    // win1.41 005fd700 mac 103b9200 LandscapeVortexVolc::_dt(void)
+    virtual ~LandscapeVortexVolc();
+    // win1.41 005fd6f0 mac 103b9300 LandscapeVortexVolc::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 005fd6e0 mac 103b92c0 LandscapeVortexVolc::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -249,5 +401,7 @@ void __fastcall __dt__19LandscapeVortexVolcFv(struct Base* this, const void* edx
 char* __fastcall GetDebugText__19LandscapeVortexVolcFv(struct GameThing* this) asm("?GetDebugText@LandscapeVortexVolc@@UAEPADXZ");
 // win1.41 005fd6e0 mac 103b92c0 LandscapeVortexVolc::GetSaveType(void)
 uint32_t __fastcall GetSaveType__19LandscapeVortexVolcFv(struct GameThing* this) asm("?GetSaveType@LandscapeVortexVolc@@UAEIXZ");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_MAGIC_VORTEX_INCLUDED_H */

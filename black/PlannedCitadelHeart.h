@@ -8,6 +8,35 @@
 
 #include "PlannedCitadelPart.h" /* For struct PlannedCitadelPart */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThingWithPos;
+class MultiMapFixed;
+class PlannedMultiMapFixed;
+
+// win1.41 009cea38 mac inlined PlannedCitadelHeart::`RTTI Type Descriptor'
+// win1.41 009a8f98 mac inlined PlannedCitadelHeart::`RTTI Base Class Descriptor'
+// win1.41 009a8fb0 mac inlined PlannedCitadelHeart::`RTTI Base Class Array'
+// win1.41 009a8fd0 mac inlined PlannedCitadelHeart::`RTTI Class Hierarchy Descriptor'
+class PlannedCitadelHeart: public PlannedCitadelPart
+{
+public:
+
+    // Override methods
+
+    // win1.41 004655a0 mac 101c2050 PlannedCitadelHeart::_dt(void)
+    virtual ~PlannedCitadelHeart();
+    // win1.41 00468df0 mac 101bbe50 PlannedCitadelHeart::CreateBuildingSite(void)
+    virtual bool CreateBuildingSite();
+    // win1.41 00465a20 mac 101bf550 PlannedCitadelHeart::CreatePlanned(float)
+    virtual MultiMapFixed* CreatePlanned(float param_1);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -40,5 +69,7 @@ void __fastcall __dt__19PlannedCitadelHeartFv(struct Base* this, const void* edx
 uint32_t __fastcall CreateBuildingSite__19PlannedCitadelHeartFv(struct GameThingWithPos* this) asm("?CreateBuildingSite@PlannedCitadelHeart@@UAEIXZ");
 // win1.41 00465a20 mac 101bf550 PlannedCitadelHeart::CreatePlanned(float)
 struct MultiMapFixed* __fastcall CreatePlanned__19PlannedCitadelHeartFf(struct PlannedMultiMapFixed* this, const void* edx, float param_1) asm("?CreatePlanned@PlannedCitadelHeart@@UAEPAVMultiMapFixed@@M@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_PLANNED_CITADEL_HEART_INCLUDED_H */

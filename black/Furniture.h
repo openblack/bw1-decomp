@@ -8,6 +8,37 @@
 
 #include "Object.h" /* For struct Object */
 
+#ifdef __cplusplus
+
+// Forward Declares
+
+class Base;
+class GameThing;
+class LHOSFile;
+struct MapCoords;
+
+// win1.41 00bea928 mac inlined Furniture::`RTTI Type Descriptor'
+// win1.41 009acfb8 mac inlined Furniture::`RTTI Base Class Descriptor'
+// win1.41 009acfd0 mac inlined Furniture::`RTTI Base Class Array'
+// win1.41 009acfe8 mac inlined Furniture::`RTTI Class Hierarchy Descriptor'
+class Furniture: public Object
+{
+public:
+
+    // Override methods
+
+    // win1.41 0054a470 mac inlined Furniture::_dt(void)
+    virtual ~Furniture();
+    // win1.41 0054a460 mac inlined Furniture::GetDebugText(void)
+    virtual char* GetDebugText();
+    // win1.41 0054a450 mac inlined Furniture::GetSaveType(void)
+    virtual uint32_t GetSaveType();
+    // win1.41 0054a440 mac inlined Furniture::SaveObject(LHOSFile &, MapCoords const &)
+    virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
+};
+
+#else // __cplusplus
+
 // Forward Declares
 
 struct Base;
@@ -42,5 +73,7 @@ char* __fastcall GetDebugText__9FurnitureFv(struct GameThing* this) asm("?GetDeb
 uint32_t __fastcall GetSaveType__9FurnitureFv(struct GameThing* this) asm("?GetSaveType@Furniture@@UAEIXZ");
 // win1.41 0054a440 mac inlined Furniture::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__9FurnitureFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@Furniture@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
+
+#endif // __cplusplus
 
 #endif /* BW1_DECOMP_FURNITURE_INCLUDED_H */
