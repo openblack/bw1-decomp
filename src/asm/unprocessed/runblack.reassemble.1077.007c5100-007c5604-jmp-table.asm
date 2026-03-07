@@ -221,3 +221,5 @@ _jmp_addr_0x007c5394:    jmp              dword ptr [__imp__GetIPAddress__YAPADX
                          jmp              dword ptr [__imp__LHNetDeleteProfile__YA_AW4LH_RETURN__PAG_Z@4]                                                                            // 0x007c55f2    ff25dc958a00
                          jmp              dword ptr [__imp__LHNetCheckProfileExists__YAHPAG_Z@4]                                                                                     // 0x007c55f8    ff25e0958a00
                          jmp              dword ptr [__imp__GetContactNames_LHMail__QAE_NPAK_Z@4]                                                                                    // 0x007c55fe    ff25e4958a00
+
+

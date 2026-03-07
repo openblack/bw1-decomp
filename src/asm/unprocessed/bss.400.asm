@@ -69,3 +69,5 @@ ___env_initialized:                        .space 4                             
 ___mbctype_initialized:                    .space 0x4
 ___onexitend:                              .space 4                                                                // [0x5e7cd8] 0x009c6000 + 0x5e7cd8 = 0x00fadcd8
 ___onexitbegin:                            .space 4                                                                // [0x5e7cdc] 0x009c6000 + 0x5e7cdc = 0x00fadcdc
+
+

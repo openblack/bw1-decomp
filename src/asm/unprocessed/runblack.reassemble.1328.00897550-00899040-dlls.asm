@@ -47,3 +47,5 @@ _jmp_WEARASR_DLL__Dialup__Connect:                 jmp                dword ptr 
                                                    int3                                                                                               // 0x0089844d    cc
                                                    int3                                                                                               // 0x0089844e    cc
                                                    int3                                                                                               // 0x0089844f    cc
+
+

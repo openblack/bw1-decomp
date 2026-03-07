@@ -130,3 +130,5 @@ _jmp_addr_0x007aed2a:    jmp                  dword ptr [__imp__GetOpenFileNameA
                          jmp                  dword ptr [__imp__RawLogT_LHLogger__QAEXPAD_Z@4]                                                 // 0x007aee86    ff256c938a00
                          jmp                  dword ptr [__imp__CreateLogTextS_LHLogger__SAHPAVLHSPrintf__PAD1K1ZZ@4]                          // 0x007aee8c    ff2568938a00
                          jmp                  dword ptr [__imp__FindLHLogger_LHLogger__SAPAV1_PADK_Z@4]                                        // 0x007aee92    ff2564938a00
+
+

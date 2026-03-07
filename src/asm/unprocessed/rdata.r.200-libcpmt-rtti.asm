@@ -394,3 +394,5 @@ RTTIBaseClassArray ?$_Mpunct@D@std                                              
 RTTIClassHierarchyDescriptor ?$_Mpunct@D@std 3                                                                     // [0x112828] 0x008a9000 + 0x112828 = 0x009bb828
 RTTICompleteObjectLocator ?$_Mpunct@D@std                                                                          // [0x112838] 0x008a9000 + 0x112838 = 0x009bb838
 .long 0x00000000                                                                                                   // [0x11284c] 0x008a9000 + 0x11284c = 0x009bb84c
+
+

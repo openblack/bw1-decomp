@@ -17,7 +17,7 @@ start_0x004241b0_0x00424210:
                          call           ?GameRand@GRand@@SAHJ@Z      // 0x004241bc    e84fa32b00
                          add            esp, 0x0c                    // 0x004241c1    83c40c
                          cmp            eax, 0x05                    // 0x004241c4    83f805
-                         {disp8} ja     _jmp_addr_0x004241ee         // 0x004241c7    7725
+                         {disp8} ja     .Lbl_addr_0x004241ee         // 0x004241c7    7725
                          jmp            dword ptr [eax*4 + 0x4241f4] // 0x004241c9    ff2485f4414200
                          mov            eax, 0x000000cc              // 0x004241d0    b8cc000000
                          ret                                         // 0x004241d5    c3
@@ -29,7 +29,7 @@ start_0x004241b0_0x00424210:
                          ret                                         // 0x004241e7    c3
                          mov            eax, 0x000000ea              // 0x004241e8    b8ea000000
                          ret                                         // 0x004241ed    c3
-_jmp_addr_0x004241ee:    mov            eax, 0x00000181              // 0x004241ee    b881010000
+.Lbl_addr_0x004241ee:    mov            eax, 0x00000181              // 0x004241ee    b881010000
                          ret                                         // 0x004241f3    c3
 
 // Snippet: jmptbl, [0x004241f4, 0x0042420c)
@@ -42,4 +42,5 @@ _jmp_addr_0x004241ee:    mov            eax, 0x00000181              // 0x004241
 
 // Snippet: db, [0x0042420c, 0x00424210)
 .byte 0x90, 0x90, 0x90, 0x90      // 0x0042420c
+
 

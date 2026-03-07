@@ -142,3 +142,5 @@ _g_cached_tex_file:                        .space 0x6c                          
 ?g_current_sub_mesh@LH3DSubMesh@@2HA:      .space 4                                                                // [0x5e33bc] 0x009c6000 + 0x5e33bc = 0x00fa93bc
 // End of lh.lib ??
                                            .space 0x34bc                                                           // [0x5e33c0] 0x009c6000 + 0x5e33c0 = 0x00fa93c0
+
+

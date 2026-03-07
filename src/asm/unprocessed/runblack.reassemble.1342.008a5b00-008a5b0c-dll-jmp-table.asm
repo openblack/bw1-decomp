@@ -9,3 +9,5 @@
 _jmp_addr_0x008a5b00:
                          jmp              dword ptr [__imp__DirectInputCreateA@4]                                         // 0x008a5b00    ff2534908a00
                          jmp              dword ptr [__imp__LHWaveGetQMixerDirectSoundObject_LH_AudioSystem__QAEPAXXZ@4]  // 0x008a5b06    ff25c4968a00
+
+
