@@ -92,7 +92,7 @@ def wrap_cl_call_with_wibo(argv):
     env = os.environ.copy()
     env["WINEPATH"] = msvcrt.as_posix()
 
-    commands = [wibo_exe.as_posix(), cl_path.as_posix(), "/nologo", f"/I{msvc_base.as_posix()}/Include"]
+    commands = [wibo_exe.as_posix(), cl_path.as_posix(), "/nologo"]
 
     args = []
     for a in argv[2:]:
@@ -107,6 +107,7 @@ def wrap_cl_call_with_wibo(argv):
             subs[os.path.basename(c[2:]) + '\r\n'] = ''
 
     commands += clang_to_msvc_commands(args, True)
+    commands.insert(-2, f"/I{msvc_base.as_posix()}/Include")
 
     # print(' '.join(argv) + ' => ' + ' '.join(commands))
     project_root = pathlib.Path(__file__).parent.parent.parent
