@@ -131,3 +131,5 @@ _JustMapXZ_ARRAY_00da59fc:                 .space 0x10                          
 _UINT_ARRAY_00da5a10:                      .space 4 * 0x400                                                        // [0x3dfa10] 0x009c6000 + 0x3dfa10 = 0x00da5a10
                                            .space 0x100                                                            // [0x3e0a10] 0x009c6000 + 0x3e0a10 = 0x00da6a10
                                            .space 0xb0                                                             // [0x3e0b10] 0x009c6000 + 0x3e0b10 = 0x00da6b10
+
+

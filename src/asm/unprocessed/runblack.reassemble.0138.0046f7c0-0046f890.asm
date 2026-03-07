@@ -14,13 +14,13 @@ start_0x0046f7c0_0x0046f890:
 _jmp_addr_0x0046f7c0:    {disp8} mov      eax, dword ptr [esp + 0x04]     // 0x0046f7c0    8b442404
                          dec              eax                             // 0x0046f7c4    48
                          cmp              eax, 0x0000009b                 // 0x0046f7c5    3d9b000000
-                         {disp8} ja       _jmp_addr_0x0046f7de            // 0x0046f7ca    7712
+                         {disp8} ja       .Lbl_addr_0x0046f7de            // 0x0046f7ca    7712
                          xor.s            ecx, ecx                        // 0x0046f7cc    33c9
                          {disp32} mov     cl, byte ptr [eax + 0x0046f7ec] // 0x0046f7ce    8a88ecf74600
                          jmp              dword ptr [ecx*4 + 0x46f7e4]    // 0x0046f7d4    ff248de4f74600
                          xor.s            eax, eax                        // 0x0046f7db    33c0
                          ret                                              // 0x0046f7dd    c3
-_jmp_addr_0x0046f7de:    mov              eax, 0x00000001                 // 0x0046f7de    b801000000
+.Lbl_addr_0x0046f7de:    mov              eax, 0x00000001                 // 0x0046f7de    b801000000
                          ret                                              // 0x0046f7e3    c3
 
 // Snippet: jmptbl, [0x0046f7e4, 0x0046f7ec)
@@ -71,4 +71,5 @@ _jmp_addr_0x0046f7de:    mov              eax, 0x00000001                 // 0x0
 // Snippet: db, [0x0046f888, 0x0046f890)
 .byte 0x90, 0x90, 0x90, 0x90      // 0x0046f888
 .byte 0x90, 0x90, 0x90, 0x90      // 0x0046f88c
+
 

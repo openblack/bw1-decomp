@@ -3550,3 +3550,5 @@ RTTIBaseClassArray SpellFlockFlying                                             
 RTTIClassHierarchyDescriptor SpellFlockFlying 7                                                                    // [0x104508] 0x008a9000 + 0x104508 = 0x009ad508
 RTTICompleteObjectLocator SpellFlockFlying                                                                         // [0x104518] 0x008a9000 + 0x104518 = 0x009ad518
 .long 0x00000000                                                                                                   // [0x10452c] 0x008a9000 + 0x10452c = 0x009ad52c
+
+

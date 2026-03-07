@@ -133,34 +133,34 @@ _jmp_addr_0x0078dce0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          cmp              eax, 0x03                              // 0x0078ddd8    83f803
                          push             esi                                    // 0x0078dddb    56
                          mov.s            esi, ecx                               // 0x0078dddc    8bf1
-                         {disp8} ja       _jmp_addr_0x0078de3e                   // 0x0078ddde    775e
+                         {disp8} ja       .Lbl_addr_0x0078de3e                   // 0x0078ddde    775e
                          jmp              dword ptr [eax*4 + 0x78de48]           // 0x0078dde0    ff248548de7800
                          {disp8} mov      eax, dword ptr [esi + 0x18]            // 0x0078dde7    8b4618
                          test             eax, eax                               // 0x0078ddea    85c0
-                         {disp8} jne      _jmp_addr_0x0078de16                   // 0x0078ddec    7528
+                         {disp8} jne      .Lbl_addr_0x0078de16                   // 0x0078ddec    7528
                          {disp32} mov     ecx, dword ptr [_game]                 // 0x0078ddee    8b0d5c19d000
                          call             ?MyInterface@GGame@@QAEPAVGInterface@@XZ               // 0x0078ddf4    e8577adcff
                          test             eax, eax                               // 0x0078ddf9    85c0
-                         {disp8} je       _jmp_addr_0x0078de16                   // 0x0078ddfb    7419
+                         {disp8} je       .Lbl_addr_0x0078de16                   // 0x0078ddfb    7419
                          {disp32} mov     ecx, dword ptr [_game]                 // 0x0078ddfd    8b0d5c19d000
                          push             0x80000000                             // 0x0078de03    6800000080
                          push             0x2c                                   // 0x0078de08    6a2c
                          call             ?MyInterface@GGame@@QAEPAVGInterface@@XZ               // 0x0078de0a    e8417adcff
                          mov.s            ecx, eax                               // 0x0078de0f    8bc8
                          call             _jmp_addr_0x005d8a10                   // 0x0078de11    e8faabe4ff
-_jmp_addr_0x0078de16:    {disp8} mov      dword ptr [esi + 0x18], 0x00000001     // 0x0078de16    c7461801000000
+.Lbl_addr_0x0078de16:    {disp8} mov      dword ptr [esi + 0x18], 0x00000001     // 0x0078de16    c7461801000000
                          pop              esi                                    // 0x0078de1d    5e
                          add              esp, 0x24                              // 0x0078de1e    83c424
                          ret              0x0010                                 // 0x0078de21    c21000
                          {disp8} mov      eax, dword ptr [esp + 0x38]            // 0x0078de24    8b442438
                          test             eax, eax                               // 0x0078de28    85c0
                          {disp8} mov      dword ptr [esi + 0x18], 0x00000000     // 0x0078de2a    c7461800000000
-                         {disp8} je       _jmp_addr_0x0078de3e                   // 0x0078de31    740b
+                         {disp8} je       .Lbl_addr_0x0078de3e                   // 0x0078de31    740b
                          {disp8} lea      ecx, dword ptr [esp + 0x04]            // 0x0078de33    8d4c2404
                          push             ecx                                    // 0x0078de37    51
                          call             dword ptr [esi + 0x10]                 // 0x0078de38    ff5610
                          add              esp, 0x04                              // 0x0078de3b    83c404
-_jmp_addr_0x0078de3e:    pop              esi                                    // 0x0078de3e    5e
+.Lbl_addr_0x0078de3e:    pop              esi                                    // 0x0078de3e    5e
                          add              esp, 0x24                              // 0x0078de3f    83c424
                          ret              0x0010                                 // 0x0078de42    c21000
 
@@ -176,4 +176,5 @@ _jmp_addr_0x0078de3e:    pop              esi                                   
 // Snippet: db, [0x0078de58, 0x0078de60)
 .byte 0x90, 0x90, 0x90, 0x90      // 0x0078de58
 .byte 0x90, 0x90, 0x90, 0x90      // 0x0078de5c
+
 

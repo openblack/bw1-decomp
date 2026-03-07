@@ -508,3 +508,5 @@ RTTIBaseClassArray WorldRoomCamera                                              
 RTTIClassHierarchyDescriptor WorldRoomCamera 2                                                                     // [0x111cc0] 0x008a9000 + 0x111cc0 = 0x009bacc0
 RTTICompleteObjectLocatorStruct WorldRoomCamera                                                                    // [0x111cd0] 0x008a9000 + 0x111cd0 = 0x009bacd0
 .long 0x00000000                                                                                                   // [0x111ce4] 0x008a9000 + 0x111ce4 = 0x009bace4
+
+

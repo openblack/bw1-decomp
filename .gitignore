@@ -5,6 +5,7 @@
 generated_headers_output/
 build*/
 cmake-build-presets/
+_deps/
 *.pyc
 *$py.class
 extracted_reversing_data_bw_141.json

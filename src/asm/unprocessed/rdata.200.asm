@@ -194,3 +194,5 @@ VftableAndRTTI ?$_Mpunct@D@std                                                  
 .long ___dt__8LHOSFileFb
 .long _Open__8LHOSFileFPc12LH_FILE_MODE
 .long 0x00000000                                                                                                   // [0xf6874] 0x008a9000 + 0xf6874 = 0x0099f874
+
+

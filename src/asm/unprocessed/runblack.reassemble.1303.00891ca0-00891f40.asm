@@ -20,7 +20,7 @@ _jmp_addr_0x00891ca0:    push            esi                          // 0x00891
                          mov             eax, dword ptr [esi]         // 0x00891ca6    8b06
                          {disp8} mov     edi, dword ptr [esi + 0x0c]  // 0x00891ca8    8b7e0c
                          cmp             eax, 0x1b                    // 0x00891cab    83f81b
-                         {disp32} ja     _jmp_addr_0x00891ebd         // 0x00891cae    0f8709020000
+                         {disp32} ja     .Lbl_addr_0x00891ebd         // 0x00891cae    0f8709020000
                          jmp             dword ptr [eax*4 + 0x891ecc] // 0x00891cb4    ff2485cc1e8900
                          {disp8} mov     eax, dword ptr [esi + 0x08]  // 0x00891cbb    8b4608
                          {disp8} mov     edx, dword ptr [esp + 0x0c]  // 0x00891cbe    8b54240c
@@ -266,7 +266,7 @@ _jmp_addr_0x00891ca0:    push            esi                          // 0x00891
                          push            ecx                          // 0x00891eb6    51
                          call            dword ptr [esi + 4]          // 0x00891eb7    ff5604
                          add             esp, 0x18                    // 0x00891eba    83c418
-_jmp_addr_0x00891ebd:    push            esi                          // 0x00891ebd    56
+.Lbl_addr_0x00891ebd:    push            esi                          // 0x00891ebd    56
                          call            _jmp_addr_0x00890d60         // 0x00891ebe    e89deeffff
                          add             esp, 0x04                    // 0x00891ec3    83c404
                          pop             edi                          // 0x00891ec6    5f
@@ -308,4 +308,5 @@ _jmp_addr_0x00891ebd:    push            esi                          // 0x00891
 
 // Snippet: db, [0x00891f3c, 0x00891f40)
 .byte 0x90, 0x90, 0x90, 0x90      // 0x00891f3c
+
 

@@ -4622,3 +4622,5 @@ VftableAndRTTI WorldRoomCamera                                                  
 .long 0x5959df7f, 0x11d12911, 0x200049b0, 0x9a2630af                                                               // [0xf6220] 0x008a9000 + 0xf6220 = 0x0099f220
 .long 0x5959df82, 0x11d12911, 0x200049b0, 0x9a2630af                                                               // [0xf6230] 0x008a9000 + 0xf6230 = 0x0099f230
 .long 0x5959df7e, 0x11d12911, 0x200049b0, 0x9a2630af                                                               // [0xf6240] 0x008a9000 + 0xf6240 = 0x0099f240
+
+

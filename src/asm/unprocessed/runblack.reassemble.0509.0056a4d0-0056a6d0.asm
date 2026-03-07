@@ -14,7 +14,7 @@ start_0x0056a4d0_0x0056a6d0:
 _jmp_addr_0x0056a4d0:    {disp8} mov      eax, dword ptr [esp + 0x04]  // 0x0056a4d0    8b442404
                          dec              eax                          // 0x0056a4d4    48
                          cmp              eax, 0x28                    // 0x0056a4d5    83f828
-                         {disp32} ja      _jmp_addr_0x0056a626         // 0x0056a4d8    0f8748010000
+                         {disp32} ja      .Lbl_addr_0x0056a626         // 0x0056a4d8    0f8748010000
                          jmp              dword ptr [eax*4 + 0x56a62c] // 0x0056a4de    ff24852ca65600
                          {disp32} inc     dword ptr [ecx + 0x00001090] // 0x0056a4e5    ff8190100000
                          ret              0x0004                       // 0x0056a4eb    c20400
@@ -87,7 +87,7 @@ _jmp_addr_0x0056a4d0:    {disp8} mov      eax, dword ptr [esp + 0x04]  // 0x0056
                          {disp32} inc     dword ptr [ecx + 0x00001118] // 0x0056a617    ff8118110000
                          ret              0x0004                       // 0x0056a61d    c20400
                          {disp32} inc     dword ptr [ecx + 0x0000111c] // 0x0056a620    ff811c110000
-_jmp_addr_0x0056a626:    ret              0x0004                       // 0x0056a626    c20400
+.Lbl_addr_0x0056a626:    ret              0x0004                       // 0x0056a626    c20400
 
 // Snippet: db, [0x0056a629, 0x0056a62c)
 .byte 0x8d, 0x49, 0x00            // 0x0056a629
@@ -134,4 +134,5 @@ _jmp_addr_0x0056a626:    ret              0x0004                       // 0x0056
 .byte 0x26, 0xa6, 0x56, 0x00      // 0x0056a6c4
 .byte 0x26, 0xa6, 0x56, 0x00      // 0x0056a6c8
 .byte 0x20, 0xa6, 0x56, 0x00      // 0x0056a6cc
+
 

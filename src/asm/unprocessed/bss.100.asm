@@ -55,3 +55,6 @@ _game:                                     .space 4                             
                                            .space 0x98                                                             // [0x33b960] 0x009c6000 + 0x33b960 = 0x00d01960
 _GGameInfo_00d019f8:                       .space 0x58                                                             // [0x33b9f8] 0x009c6000 + 0x33b9f8 = 0x00d019f8
                                            .space 0x7748                                                           // [0x33ba50] 0x009c6000 + 0x33ba50 = 0x00d01a50
+
+
+

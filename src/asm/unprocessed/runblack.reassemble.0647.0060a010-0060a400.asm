@@ -83,7 +83,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          push             edi                              // 0x0060a0bd    57
                          add              eax, -0x0d                       // 0x0060a0be    83c0f3
                          cmp              eax, 0x05                        // 0x0060a0c1    83f805
-                         {disp32} ja      _jmp_addr_0x0060a3dd             // 0x0060a0c4    0f8713030000
+                         {disp32} ja      .Lbl_addr_0x0060a3dd             // 0x0060a0c4    0f8713030000
                          jmp              dword ptr [eax*4 + 0x60a3e8]     // 0x0060a0ca    ff2485e8a36000
                          {disp8} lea      eax, dword ptr [esi + 0x14]      // 0x0060a0d1    8d4614
                          mov              ecx, dword ptr [eax]             // 0x0060a0d4    8b08
@@ -224,7 +224,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          {disp8} mov      word ptr [esi + 0x5c], ax        // 0x0060a264    6689465c
                          call             ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ             // 0x0060a268    e8f3030000
                          test             eax, eax                         // 0x0060a26d    85c0
-                         {disp32} je      _jmp_addr_0x0060a3dd             // 0x0060a26f    0f8468010000
+                         {disp32} je      .Lbl_addr_0x0060a3dd             // 0x0060a26f    0f8468010000
                          mov              edx, dword ptr [esi]             // 0x0060a275    8b16
                          {disp8} lea      eax, dword ptr [esp + 0x14]      // 0x0060a277    8d442414
                          push             eax                              // 0x0060a27b    50
@@ -284,7 +284,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          {disp8} mov      word ptr [esi + 0x5c], ax        // 0x0060a317    6689465c
                          call             ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ             // 0x0060a31b    e840030000
                          test             eax, eax                         // 0x0060a320    85c0
-                         {disp32} je      _jmp_addr_0x0060a3dd             // 0x0060a322    0f84b5000000
+                         {disp32} je      .Lbl_addr_0x0060a3dd             // 0x0060a322    0f84b5000000
                          mov              edx, dword ptr [esi]             // 0x0060a328    8b16
                          {disp8} lea      eax, dword ptr [esp + 0x20]      // 0x0060a32a    8d442420
                          push             eax                              // 0x0060a32e    50
@@ -348,7 +348,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          push             esi                              // 0x0060a3d3    56
                          {disp8} mov      byte ptr [esi + 0x5e], 0x12      // 0x0060a3d4    c6465e12
                          call             _jmp_addr_0x0060a030             // 0x0060a3d8    e853fcffff
-_jmp_addr_0x0060a3dd:    pop              edi                              // 0x0060a3dd    5f
+.Lbl_addr_0x0060a3dd:    pop              edi                              // 0x0060a3dd    5f
                          pop              esi                              // 0x0060a3de    5e
                          add              esp, 0x24                        // 0x0060a3df    83c424
                          ret              0x0004                           // 0x0060a3e2    c20400
@@ -363,4 +363,5 @@ _jmp_addr_0x0060a3dd:    pop              edi                              // 0x
 .byte 0x96, 0xa2, 0x60, 0x00      // 0x0060a3f4
 .byte 0xd3, 0xa3, 0x60, 0x00      // 0x0060a3f8
 .byte 0x49, 0xa3, 0x60, 0x00      // 0x0060a3fc
+
 
