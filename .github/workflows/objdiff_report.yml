@@ -1,0 +1,32 @@
+name: Objdiff Report
+
+on: [push, pull_request]
+
+jobs:
+  objdiff_report:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - uses: ./.github/actions/python_prep
+
+    - uses: ./.github/actions/clang_prep
+
+    - name: Download objdiff-cli
+      run: |
+        curl -L https://github.com/encounter/objdiff/releases/download/v3.6.1/objdiff-cli-linux-x86_64 -o objdiff-cli
+        chmod +x objdiff-cli
+
+    - name: Configure objdiff
+      run: python configure_objdiff.py
+
+    - name: Run objdiff report
+      run: ./objdiff-cli -C cmake-build-presets/objdiff report generate -o report.json
+
+    - name: Upload objdiff report
+      uses: actions/upload-artifact@v4
+      with:
+        name: WIN32_1.20_EN_report
+        path: cmake-build-presets/objdiff/report.json
