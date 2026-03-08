@@ -47,7 +47,10 @@ def configure_objdiff(validating: bool):
         if file.is_relative_to(cpp_staging_dir):
             # Don't want to include staging files
             pass
-        elif file.suffix in {".rc", ".cpp"} or file.is_relative_to(current_dir / "libs"):
+        elif file.suffix == ".rc":
+            # rc files are not supported by objdiff
+            pass
+        elif file.suffix == ".cpp" or file.is_relative_to(current_dir / "libs"):
             # These are considered done so compare them with themselves
             file_relative = file.relative_to(current_dir)
             file_dir = file_relative.parent
@@ -74,16 +77,18 @@ def configure_objdiff(validating: bool):
                     continue
             file_relative = file.relative_to(current_dir)
             file_dir = file_relative.parent
-            units.append({
-                "name": (file_dir.relative_to("src/") / file.stem).as_posix(),
-                "target_path": (output).as_posix(),
-                "base_path": (cpp_staging_build_dir / f"{file.stem}{source_suffix}{obj_suffix}").relative_to(cmake_build_dir).as_posix(),
-                "scratch": scratch_details,
-                "metadata": {
-                    # "complete": False,
-                    "source_path": (cpp_staging_dir / f"{file.stem}{source_suffix}").as_posix(),
-                },
-            })
+            base_path = cpp_staging_build_dir / f"{file.stem}{source_suffix}{obj_suffix}"
+            if base_path.exists():
+                units.append({
+                    "name": (file_dir.relative_to("src/") / file.stem).as_posix(),
+                    "target_path": output.as_posix(),
+                    "base_path": base_path.relative_to(cmake_build_dir).as_posix(),
+                    "scratch": scratch_details,
+                    "metadata": {
+                        # "complete": False,
+                        "source_path": (cpp_staging_dir / f"{file.stem}{source_suffix}").as_posix(),
+                    },
+                })
         else:
             if validating:
                 print(f'Unexpected source type: "{file}" -> "{output}"', file=sys.stderr)
