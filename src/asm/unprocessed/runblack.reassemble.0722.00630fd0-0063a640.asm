@@ -315,7 +315,6 @@
 .extern ?Delete@Object@@UAEXH@Z
 .globl @InsertMapObject__6ObjectFv@4
 .globl @RemoveMapObject__6ObjectFv@4
-.extern ?IsObjectInMap@Object@@UAE_NPAUMapCell@@@Z
 .globl @InsertMapObjectToCell__6ObjectFP7MapCell@12
 .globl @RemoveMapObjectFromCell__6ObjectFP7MapCell@12
 .globl @MoveMapObject__6ObjectFRC9MapCoords@12

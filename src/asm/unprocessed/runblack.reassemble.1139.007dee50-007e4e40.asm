@@ -59,7 +59,6 @@
 .extern ??_M@YGXPAXIHP6EX0@Z@Z
 .extern _jmp_addr_0x00fc1285
 
-.globl _WinMain@16
 .globl _jmp_addr_0x007df060
 .globl _jmp_addr_0x007df430
 .globl _jmp_addr_0x007df850

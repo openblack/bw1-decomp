@@ -218,12 +218,6 @@
 .extern _jmp_addr_0x00887820
 .extern _jmp_addr_0x00887a00
 
-.globl _jmp_addr_0x0042ae70
-.globl _load_variables
-.globl ??0LHFile@@QAE@XZ 
-.globl ?ResetData@LHFile@@QAEIXZ
-.globl @LoadBinary__10GAbodeInfoFP6LHFile@12
-.globl ??0GBaseInfo@@QAE@XZ
 .globl ??0GMagicInfo@@QAE@XZ  
 .globl @__ct__4BallFRC9MapCoordsPC9GBallInfo@16
 .globl ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z
@@ -333,10 +327,6 @@
 .globl ?MSeconds@LHTimer@@QAEHXZ
 .globl @SetSpeedUpFactor__7LHTimerFf@12
 
-.globl _globl_ct_0x0042b2c0
-.globl _globl_ct_0x0042b2f0
-.globl _globl_ct_0x0042b320
-.globl _globl_ct_0x0042b340
 .globl _globl_ct_0x00435870
 .globl _globl_ct_0x004358a0
 .globl _globl_ct_0x004358d0
@@ -395,11 +385,9 @@
 .globl _jmp_addr_0x00435560
 .globl _jmp_addr_0x00434680
 .globl _jmp_addr_0x004348f0
-.globl _jmp_addr_0x0042e980
 .globl _jmp_addr_0x00435540
 .globl _jmp_addr_0x00434040
 .globl _jmp_addr_0x004350a0
-.globl _jmp_addr_0x0042e230
 .globl _jmp_addr_0x004355c0
 .globl _jmp_addr_0x004351d0
 .globl _jmp_addr_0x00434320
@@ -418,13 +406,11 @@
 .globl _jmp_addr_0x00435300
 
 .globl _Connect__9BWGameSpyFv
-.globl ??_GLHReleasedOSFile@@UAEPAXI@Z
 .globl _Load__9BigForestFR10GameOSFile
 .globl ?GetDebugColor@GBaseInfo@@UBE?AVLHColor@@XZ
 .globl ?IsRepaired@MultiMapFixed@@UAE_NXZ
 .globl ?IsBuilt@MultiMapFixed@@UAE_NXZ
 .globl ?ConvertToPlanned@MultiMapFixed@@UAEPAVPlannedMultiMapFixed@@XZ
-.globl ??$LoadIt@VGVillagerStateTableInfo@@@@YAXPAVLoaderAnon@@PADPAVGVillagerStateTableInfo@@K_NPAVLHFile@@@Z
 .globl ??_GGMagicInfo@@UAEPAXI@Z
 .globl ??_GGMagicHealInfo@@UAEPAXI@Z
 .globl ??_GGMagicTeleportInfo@@UAEPAXI@Z

@@ -420,14 +420,6 @@
 .globl _jmp_addr_0x0054ae20
 .globl _jmp_addr_0x0054b180
 .globl _jmp_addr_0x0054b190
-.globl ??1GGame@@UAE@XZ
-.globl ?SetZero@LH3DMapCoords@@QAEXXZ
-.globl @Reset__7LHTimerFUl@12
-.globl ??0GKeyBuffer@@QAE@XZ
-.globl ??0GSoundMap@@QAE@XZ 
-.globl ??0GestureSystem@@QAE@XZ
-.globl ?RenderLoadingFrame@@YAXPAD@Z
-
 .globl _globl_ct_0x0054a310
 .globl _globl_ct_0x0054a600
 .globl _globl_ct_0x0054a6d0
@@ -452,22 +444,6 @@
 .globl ?GetSaveType@Furniture@@UAEIXZ
 .globl ?GetDebugText@Furniture@@UAEPADXZ
 .globl ??_GFurniture@@UAEPAXI@Z
-.globl ?GetBaseInfo@GPlayerInfo@@UAEPAVGBaseInfo@@AAI@Z
-.globl ??_GGKeyBuffer@@UAEPAXI@Z
-.globl ??_GGlobalGameLists@@UAEPAXI@Z
-.globl ?IsAvailable@GGame@@UAE_NXZ
-.globl ?GetSaveType@GGame@@UAEIXZ
-.globl ?GetDebugText@GGame@@UAEPADXZ
-.globl ??_GGSoundMap@@UAEPAXI@Z
-.globl ??_GGestureSystemDataList@@UAEPAXI@Z
-.globl ??_GGestureSystem@@UAEPAXI@Z
-.globl ?GetBaseInfo@TerrainMapTypeInfo@@UAEPAVGBaseInfo@@AAI@Z
-.globl ?GetBaseInfo@TerrainMapInfo@@UAEPAVGBaseInfo@@AAI@Z
-.globl ??_GGTerrainMap@@UAEPAXI@Z
-.globl ??_GGPlayerInfo@@UAEPAXI@Z
-.globl ??_GTerrainMapInfo@@UAEPAXI@Z
-.globl ??_GTerrainMapTypeInfo@@UAEPAXI@Z
-.globl ?ToBeDeleted@GGame@@UAEXH@Z
 .globl ?CheckSquareFunction@@YAXHHPAURPHolder@@@Z
 .globl ?AddSpecialRPObjects@@YAXPAURPHolder@@@Z
 

@@ -55,9 +55,6 @@ _debug_text_\name:
     RTTI_Class_Type_Descriptor_And_Reflection Piece\name "Animal: \name for Puzzle"
 .endm
 
-.globl ??_R0?AVexception@@@8
-.globl __NLG_Destination
-
 .globl _WIN_MAIN_BETA_PATCH_MSG_BOX_TITLE
 .globl _WIN_MAIN_BETA_PATCH_REG_KEY
 .globl _WIN_MAIN_LIONHEAD_REG_ADDR

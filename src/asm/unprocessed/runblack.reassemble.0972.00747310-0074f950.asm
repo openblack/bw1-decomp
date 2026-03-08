@@ -330,9 +330,6 @@
 .globl _globl_ct_0x0074e440
 .globl _globl_ct_0x0074f560
 .globl _globl_ct_0x0074f780
-.globl _globl_ct_0x0074f7d0
-.globl _globl_ct_0x0074f800
-.globl _globl_ct_0x0074f830
 .globl _SetOnFire__4TreeFf
 .globl _CreateCollideData__4TreeFv
 .globl _GetWoodValueMultiplier__4TreeFv

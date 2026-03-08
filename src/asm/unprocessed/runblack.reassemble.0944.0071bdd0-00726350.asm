@@ -432,11 +432,6 @@
 .globl _globl_ct_0x00725e40
 .globl _globl_ct_0x00725e70
 .globl _globl_ct_0x00725ef0
-.globl _globl_ct_0x00726d70
-.globl _globl_ct_0x00727e60
-.globl _globl_ct_0x00727e90
-.globl _globl_ct_0x00727ec0
-.globl _globl_ct_0x00727ef0
 .globl ?GetGuidanceResourceType@GameThing@@UAEIXZ
 .globl ?GetGuidanceResourceType@Pot@@UAEIXZ
 .globl ?GetGuidanceResourceType@Animal@@UAEIXZ

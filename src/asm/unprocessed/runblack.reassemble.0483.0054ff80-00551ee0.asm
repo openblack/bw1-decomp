@@ -52,18 +52,6 @@
 .extern _CHAR2WCHAR__FPc
 .extern ?CreatePack@LH3DMesh@@SAXXZ
 
-.globl ?UnfinishInitialisation@GGame@@QAEXXZ
-.globl ?FinishInitialisation@GGame@@QAEXXZ
-.globl ?LoadFiles@GGame@@QAE_NXZ
-.globl ?SetupPlayers@GGame@@QAEXXZ
-.globl ?Birthday@GGame@@QAEXXZ
-.globl ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
-.globl ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
-.globl ?GetNextActivePlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z
-.globl ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z
-.globl ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
-.globl ?GetPlayerFromReal@GGame@@QAEPAVGPlayer@@K@Z
-.globl ?GetPlayerInterfaceFromReal@GGame@@QAEPAVGInterface@@K@Z
 .globl _jmp_addr_0x00550a80
 .globl _jmp_addr_0x00550ba0
 .globl _jmp_addr_0x00550be0
@@ -87,14 +75,6 @@
 .globl _jmp_addr_0x00551580
 .globl _jmp_addr_0x005515d0
 .globl _jmp_addr_0x00551630
-.globl ?Dump@GGame@@UAEXXZ
-.globl ?KeyHandler@GGame@@QAEXGW4LH_KEY@@GGPAX@Z
-.globl ?MouseHandler@GGame@@QAE_NPAXW4LH_MOUSE_EVENT_TYPE@@KK@Z
-.globl ?LoopThroughPlayers@GGame@@QAEXXZ
-.globl ?MyPlayerID@GGame@@QAEHK@Z
-.globl ?GetNextPlayerWithNoCreature@GGame@@QAEPAVGPlayer@@PAV2@@Z
-.globl ?GetPlayer@GGame@@QAEPAVGPlayer@@W4PLAYER_NAME@@@Z
-
 _jmp_addr_0x00550a80:    {disp32} mov       ecx, dword ptr [_game]                         // 0x00550a80    8b0d5c19d000
                          push               esi                                            // 0x00550a86    56
                          xor.s              esi, esi                                       // 0x00550a87    33f6

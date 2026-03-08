@@ -410,16 +410,6 @@
 .extern _jmp_addr_0x0086c560
 .extern _jmp_addr_0x00871f00
 
-.globl _jmp_addr_0x0054a710
-.globl _SetTurnOffMouseMove__Fb
-.globl ?InitStaticsValues@@YAXXZ
-.globl _jmp_addr_0x0054a940
-.globl _jmp_addr_0x0054aa40
-.globl _jmp_addr_0x0054ab00
-.globl _jmp_addr_0x0054ab20
-.globl _jmp_addr_0x0054ae20
-.globl _jmp_addr_0x0054b180
-.globl _jmp_addr_0x0054b190
 .globl ??1GGame@@UAE@XZ
 .globl ?SetZero@LH3DMapCoords@@QAEXXZ
 .globl @Reset__7LHTimerFUl@12
@@ -428,30 +418,6 @@
 .globl ??0GestureSystem@@QAE@XZ
 .globl ?RenderLoadingFrame@@YAXPAD@Z
 
-.globl _globl_ct_0x0054a310
-.globl _globl_ct_0x0054a600
-.globl _globl_ct_0x0054a6d0
-.globl _globl_ct_0x0054a4a0
-.globl _globl_ct_0x0054a4d0
-.globl _globl_ct_0x0054a640
-.globl _globl_ct_0x0054a290
-.globl _globl_ct_0x0054a520
-.globl _globl_ct_0x0054a4f0
-.globl _globl_ct_0x0054a2c0
-.globl _globl_ct_0x0054a550
-.globl _globl_ct_0x0054a2e0
-.globl _globl_ct_0x0054a620
-.globl _globl_ct_0x0054a580
-.globl _globl_ct_0x0054a5a0
-.globl _globl_ct_0x0054a5d0
-.globl ?InitSubDialogs@SetupMultiplayerMain@@UAEXXZ
-.globl ?InitSubDialogs@SetupLandscapeBox@@UAEXXZ
-.globl ?GetBaseInfo@GFurnitureInfo@@UAEPAVGBaseInfo@@AAI@Z
-.globl ??_GGFurnitureInfo@@UAEPAXI@Z
-.globl ?SaveObject@Furniture@@UAEIAAULHOSFile@@ABUMapCoords@@@Z
-.globl ?GetSaveType@Furniture@@UAEIXZ
-.globl ?GetDebugText@Furniture@@UAEPADXZ
-.globl ??_GFurniture@@UAEPAXI@Z
 .globl ?GetBaseInfo@GPlayerInfo@@UAEPAVGBaseInfo@@AAI@Z
 .globl ??_GGKeyBuffer@@UAEPAXI@Z
 .globl ??_GGlobalGameLists@@UAEPAXI@Z
