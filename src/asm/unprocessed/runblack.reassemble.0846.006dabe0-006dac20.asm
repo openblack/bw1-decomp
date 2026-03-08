@@ -14,7 +14,7 @@ start_0x006dabe0_0x006dac20:
 _jmp_addr_0x006dabe0:    {disp8} mov     ecx, dword ptr [ecx + 0x48]  // 0x006dabe0    8b4948
                          {disp8} lea     eax, dword ptr [ecx + -0x0a] // 0x006dabe3    8d41f6
                          cmp             eax, 0x03                    // 0x006dabe6    83f803
-                         {disp8} ja      _jmp_addr_0x006dac04         // 0x006dabe9    7719
+                         {disp8} ja      .Lbl_addr_0x006dac04         // 0x006dabe9    7719
                          jmp             dword ptr [eax*4 + 0x6dac08] // 0x006dabeb    ff248508ac6d00
                          mov             eax, 0x00000002              // 0x006dabf2    b802000000
                          ret                                          // 0x006dabf7    c3
@@ -22,7 +22,7 @@ _jmp_addr_0x006dabe0:    {disp8} mov     ecx, dword ptr [ecx + 0x48]  // 0x006da
                          ret                                          // 0x006dabfd    c3
                          mov             eax, 0x00000006              // 0x006dabfe    b806000000
                          ret                                          // 0x006dac03    c3
-_jmp_addr_0x006dac04:    xor.s           eax, eax                     // 0x006dac04    33c0
+.Lbl_addr_0x006dac04:    xor.s           eax, eax                     // 0x006dac04    33c0
                          ret                                          // 0x006dac06    c3
 
 // Snippet: db, [0x006dac07, 0x006dac08)

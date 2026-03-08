@@ -19,7 +19,7 @@ start_0x0071bd50_0x0071bdd0:
                          call           ?LocalRand@GRand@@SAIJ@Z     // 0x0071bd52    e81928fcff
                          add            esp, 0x04                    // 0x0071bd57    83c404
                          cmp            eax, 0x09                    // 0x0071bd5a    83f809
-                         {disp8} ja     _jmp_addr_0x0071bda2         // 0x0071bd5d    7743
+                         {disp8} ja     .Lbl_addr_0x0071bda2         // 0x0071bd5d    7743
                          jmp            dword ptr [eax*4 + 0x71bda8] // 0x0071bd5f    ff2485a8bd7100
                          mov            eax, 0x00001338              // 0x0071bd66    b838130000
                          ret                                         // 0x0071bd6b    c3
@@ -41,7 +41,7 @@ start_0x0071bd50_0x0071bdd0:
                          ret                                         // 0x0071bd9b    c3
                          mov            eax, 0x00001341              // 0x0071bd9c    b841130000
                          ret                                         // 0x0071bda1    c3
-_jmp_addr_0x0071bda2:    xor.s          eax, eax                     // 0x0071bda2    33c0
+.Lbl_addr_0x0071bda2:    xor.s          eax, eax                     // 0x0071bda2    33c0
                          ret                                         // 0x0071bda4    c3
 
 // Snippet: db, [0x0071bda5, 0x0071bda8)

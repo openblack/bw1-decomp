@@ -693,13 +693,13 @@ _jmp_addr_0x008a30a0:    movaps            xmm7, xmm0                           
                          mulps             xmm2, xmm4                                      // 0x008a32db    0f59d4
                          addps             xmm4, xmm4                                      // 0x008a32de    0f58e4
                          subps             xmm4, xmm2                                      // 0x008a32e1    0f5ce2
-                         {disp32} jne      _jmp_addr_0x008a32f9                            // 0x008a32e4    0f850f000000
+                         {disp32} jne      .Lbl_addr_0x008a32f9                            // 0x008a32e4    0f850f000000
                          xorps             xmm4, xmm1                                      // 0x008a32ea    0f57e1
                          andps             xmm0, xmm5                                      // 0x008a32ed    0f54c5
                          andnps            xmm5, xmm4                                      // 0x008a32f0    0f55ec
                          orps              xmm0, xmm5                                      // 0x008a32f3    0f56c5
                          ret               0x0010                                          // 0x008a32f6    c21000
-_jmp_addr_0x008a32f9:    movaps            xmm7, xmm1                                      // 0x008a32f9    0f28f9
+.Lbl_addr_0x008a32f9:    movaps            xmm7, xmm1                                      // 0x008a32f9    0f28f9
                          movaps            xmm3, xmmword ptr [data_bytes + 0x2762c0]       // 0x008a32fc    0f281dc0c2c300
                          andps             xmm1, xmm0                                      // 0x008a3303    0f54c8
                          orps              xmm3, xmm1                                      // 0x008a3306    0f56d9
@@ -771,13 +771,13 @@ _jmp_addr_0x008a32f9:    movaps            xmm7, xmm1                           
                          mulps             xmm2, xmm4                                      // 0x008a341d    0f59d4
                          addps             xmm4, xmm4                                      // 0x008a3420    0f58e4
                          subps             xmm4, xmm2                                      // 0x008a3423    0f5ce2
-                         {disp32} jne      _jmp_addr_0x008a343b                            // 0x008a3426    0f850f000000
+                         {disp32} jne      .Lbl_addr_0x008a343b                            // 0x008a3426    0f850f000000
                          xorps             xmm4, xmm1                                      // 0x008a342c    0f57e1
                          andps             xmm0, xmm5                                      // 0x008a342f    0f54c5
                          andnps            xmm5, xmm4                                      // 0x008a3432    0f55ec
                          orps              xmm0, xmm5                                      // 0x008a3435    0f56c5
                          ret               0x0010                                          // 0x008a3438    c21000
-_jmp_addr_0x008a343b:    movaps            xmm7, xmm1                                      // 0x008a343b    0f28f9
+.Lbl_addr_0x008a343b:    movaps            xmm7, xmm1                                      // 0x008a343b    0f28f9
                          movaps            xmm3, xmmword ptr [data_bytes + 0x2762c0]       // 0x008a343e    0f281dc0c2c300
                          andps             xmm1, xmm0                                      // 0x008a3445    0f54c8
                          orps              xmm3, xmm1                                      // 0x008a3448    0f56d9
@@ -840,25 +840,25 @@ _jmp_addr_0x008a343b:    movaps            xmm7, xmm1                           
                          addss             xmm4, xmm4                                      // 0x008a3552    f30f58e4
                          subss             xmm4, xmm3                                      // 0x008a3556    f30f5ce3
                          mulss             xmm2, xmm4                                      // 0x008a355a    f30f59d4
-                         {disp32} je       _jmp_addr_0x008a35ab                            // 0x008a355e    0f8447000000
+                         {disp32} je       .Lbl_addr_0x008a35ab                            // 0x008a355e    0f8447000000
                          addss             xmm2, xmm0                                      // 0x008a3564    f30f58d0
                          comiss            xmm6, xmm1                                      // 0x008a3568    0f2ff1
                          rcpss             xmm4, xmm2                                      // 0x008a356b    f30f53e2
                          movss             xmm0, dword ptr [data_bytes + 0x276620]         // 0x008a356f    f30f100520c6c300
-                         {disp32} je       _jmp_addr_0x008a3593                            // 0x008a3577    0f8416000000
+                         {disp32} je       .Lbl_addr_0x008a3593                            // 0x008a3577    0f8416000000
                          mulss             xmm2, xmm4                                      // 0x008a357d    f30f59d4
                          mulss             xmm2, xmm4                                      // 0x008a3581    f30f59d4
                          addss             xmm4, xmm4                                      // 0x008a3585    f30f58e4
                          subss             xmm4, xmm2                                      // 0x008a3589    f30f5ce2
                          xorps             xmm0, xmm4                                      // 0x008a358d    0f57c4
                          ret               0x0010                                          // 0x008a3590    c21000
-_jmp_addr_0x008a3593:    movss             xmm1, dword ptr [data_bytes + 0x2762c0]         // 0x008a3593    f30f100dc0c2c300
+.Lbl_addr_0x008a3593:    movss             xmm1, dword ptr [data_bytes + 0x2762c0]         // 0x008a3593    f30f100dc0c2c300
                          movss             xmm3, xmm0                                      // 0x008a359b    f30f10d8
                          andps             xmm0, xmm2                                      // 0x008a359f    0f54c2
                          orps              xmm0, xmm1                                      // 0x008a35a2    0f56c1
                          xorps             xmm0, xmm3                                      // 0x008a35a5    0f57c3
                          ret               0x0010                                          // 0x008a35a8    c21000
-_jmp_addr_0x008a35ab:    addss             xmm0, xmm2                                      // 0x008a35ab    f30f58c2
+.Lbl_addr_0x008a35ab:    addss             xmm0, xmm2                                      // 0x008a35ab    f30f58c2
                          ret               0x0010                                          // 0x008a35af    c21000
                          .byte             0x8d, 0xb4, 0x26, 0x0, 0x0, 0x0, 0x0// {disp32} lea esi, dword ptr [esi + 0x00000000] // 0x008a35b2    8db42600000000
                          .byte             0x8d, 0xbc, 0x27, 0x0, 0x0, 0x0, 0x0// {disp32} lea edi, dword ptr [edi + 0x00000000] // 0x008a35b9    8dbc2700000000
@@ -907,25 +907,25 @@ _jmp_addr_0x008a35ab:    addss             xmm0, xmm2                           
                          test              eax, 0x00000002                                 // 0x008a368a    a902000000
                          subss             xmm4, xmm3                                      // 0x008a368f    f30f5ce3
                          mulss             xmm2, xmm4                                      // 0x008a3693    f30f59d4
-                         {disp32} je       _jmp_addr_0x008a36e3                            // 0x008a3697    0f8446000000
+                         {disp32} je       .Lbl_addr_0x008a36e3                            // 0x008a3697    0f8446000000
                          addss             xmm2, xmm0                                      // 0x008a369d    f30f58d0
                          comiss            xmm6, xmm1                                      // 0x008a36a1    0f2ff1
                          rcpss             xmm4, xmm2                                      // 0x008a36a4    f30f53e2
                          movss             xmm0, dword ptr [data_bytes + 0x276620]         // 0x008a36a8    f30f100520c6c300
-                         {disp32} je       _jmp_addr_0x008a36cc                            // 0x008a36b0    0f8416000000
+                         {disp32} je       .Lbl_addr_0x008a36cc                            // 0x008a36b0    0f8416000000
                          mulss             xmm2, xmm4                                      // 0x008a36b6    f30f59d4
                          mulss             xmm2, xmm4                                      // 0x008a36ba    f30f59d4
                          addss             xmm4, xmm4                                      // 0x008a36be    f30f58e4
                          subss             xmm4, xmm2                                      // 0x008a36c2    f30f5ce2
                          xorps             xmm0, xmm4                                      // 0x008a36c6    0f57c4
                          ret               0x0010                                          // 0x008a36c9    c21000
-_jmp_addr_0x008a36cc:    movss             xmm1, dword ptr [data_bytes + 0x2762c0]         // 0x008a36cc    f30f100dc0c2c300
+.Lbl_addr_0x008a36cc:    movss             xmm1, dword ptr [data_bytes + 0x2762c0]         // 0x008a36cc    f30f100dc0c2c300
                          movaps            xmm3, xmm0                                      // 0x008a36d4    0f28d8
                          andps             xmm0, xmm2                                      // 0x008a36d7    0f54c2
                          orps              xmm0, xmm1                                      // 0x008a36da    0f56c1
                          xorps             xmm0, xmm3                                      // 0x008a36dd    0f57c3
                          ret               0x0010                                          // 0x008a36e0    c21000
-_jmp_addr_0x008a36e3:    addss             xmm0, xmm2                                      // 0x008a36e3    f30f58c2
+.Lbl_addr_0x008a36e3:    addss             xmm0, xmm2                                      // 0x008a36e3    f30f58c2
                          ret               0x0010                                          // 0x008a36e7    c21000
                          {disp32} lea      esi, dword ptr [esi + 0x00000000]               // 0x008a36ea    8db600000000
 

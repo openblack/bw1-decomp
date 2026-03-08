@@ -30,7 +30,7 @@ _jmp_addr_0x007e9df0:    mov             al, 0x20                     // 0x007e9
 _jmp_addr_0x007e9e00:    {disp8} mov     eax, dword ptr [esp + 0x08]  // 0x007e9e00    8b442408
                          and             eax, 0x000000ff              // 0x007e9e04    25ff000000
                          cmp             eax, 0x07                    // 0x007e9e09    83f807
-                         {disp8} ja      _jmp_addr_0x007e9e81         // 0x007e9e0c    7773
+                         {disp8} ja      .Lbl_addr_0x007e9e81         // 0x007e9e0c    7773
                          jmp             dword ptr [eax*4 + 0x7e9e88] // 0x007e9e0e    ff2485889e7e00
                          {disp8} mov     ecx, dword ptr [esp + 0x04]  // 0x007e9e15    8b4c2404
                          {disp8} mov     edx, dword ptr [esp + 0x0c]  // 0x007e9e19    8b54240c
@@ -68,7 +68,7 @@ _jmp_addr_0x007e9e00:    {disp8} mov     eax, dword ptr [esp + 0x08]  // 0x007e9
                          cmp.s           edx, ecx                     // 0x007e9e79    3bd1
                          setge           al                           // 0x007e9e7b    0f9dc0
                          ret             0x000c                       // 0x007e9e7e    c20c00
-_jmp_addr_0x007e9e81:    xor.s           al, al                       // 0x007e9e81    32c0
+.Lbl_addr_0x007e9e81:    xor.s           al, al                       // 0x007e9e81    32c0
                          ret             0x000c                       // 0x007e9e83    c20c00
 
 // Snippet: db, [0x007e9e86, 0x007e9e88)

@@ -16,11 +16,11 @@ start_0x00735bf0_0x00735c30:
                          push            eax                          // 0x00735bf8    50
                          call            _jmp_addr_0x00737180         // 0x00735bf9    e882150000
                          cmp             eax, 0x04                    // 0x00735bfe    83f804
-                         {disp8} ja      _jmp_addr_0x00735c0f         // 0x00735c01    770c
+                         {disp8} ja      .Lbl_addr_0x00735c0f         // 0x00735c01    770c
                          jmp             dword ptr [eax*4 + 0x735c14] // 0x00735c03    ff2485145c7300
                          mov             al, 0x01                     // 0x00735c0a    b001
                          ret             0x000c                       // 0x00735c0c    c20c00
-_jmp_addr_0x00735c0f:    xor.s           al, al                       // 0x00735c0f    32c0
+.Lbl_addr_0x00735c0f:    xor.s           al, al                       // 0x00735c0f    32c0
                          ret             0x000c                       // 0x00735c11    c20c00
 
 // Snippet: jmptbl, [0x00735c14, 0x00735c28)
