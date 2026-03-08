@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern _jmp_addr_0x0046e7b0

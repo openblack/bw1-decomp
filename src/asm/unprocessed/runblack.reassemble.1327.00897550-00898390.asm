@@ -1,7 +1,6 @@
 .intel_syntax noprefix
 .align 16
 
-.extern rdata_bytes
 .extern data_bytes
 
 .extern _malloc
@@ -21,19 +20,6 @@
 .extern _jmp_addr_0x0088a8e0
 .extern _jmp_addr_0x0088a8f0
 .extern _jmp_addr_0x0088a910
-.extern _jmp_addr_0x008a507e
-.extern _jmp_addr_0x008a5096
-.extern _jmp_addr_0x008a50a8
-.extern _jmp_addr_0x008a50b4
-.extern _jmp_addr_0x008a50ba
-.extern _jmp_addr_0x008a50c0
-.extern _jmp_addr_0x008a50c6
-.extern _jmp_addr_0x008a50cc
-.extern _jmp_addr_0x008a50d2
-.extern _jmp_addr_0x008a50d8
-.extern _jmp_addr_0x008a50f0
-.extern _jmp_addr_0x008a50f6
-
 .globl _jmp_addr_0x00897740
 .globl _jmp_addr_0x00897940
 .globl _jmp_addr_0x008979a0

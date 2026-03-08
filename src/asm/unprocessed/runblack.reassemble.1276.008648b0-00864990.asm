@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?MoveAlongRoute@RPFollow@@QAEXXZ
 .extern @GetLength__9RouteNodeFP7RPAvoid@12
 

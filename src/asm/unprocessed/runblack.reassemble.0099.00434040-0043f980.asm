@@ -3,21 +3,14 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
-.extern _jmp_addr_0x0042a6d0
 .extern _jmp_addr_0x0043f980
 .extern _jmp_addr_0x0043ff00
 .extern _jmp_addr_0x004401f0
 .extern _GetNumPeopleInRoom__9BWGameSpyFv
 .extern @__ct__14CameraModeNew3FP7GCamera@12
 .extern _jmp_addr_0x00463610
-.extern _jmp_addr_0x0047c6b0
-.extern _jmp_addr_0x004c48b0
 .extern _jmp_addr_0x00513640
 .extern _HideAll__13DialogBoxBaseFv@0
 .extern ?Draw@Rock@@UAEXXZ
@@ -57,9 +50,7 @@
 .extern _jmp_addr_0x005c9c60
 .extern _jmp_addr_0x005dc870
 .extern @SetupMoveToWithHug__6LivingFRC9MapCoordsUc@13
-.extern _jmp_addr_0x005f2af0
 .extern _jmp_addr_0x005f3120
-.extern _jmp_addr_0x005f32f0
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x00603720
@@ -69,7 +60,6 @@
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
 .extern _jmp_addr_0x006055c0
 .extern @GetLHPoint__9MapCoordsCFv@12
-.extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z_2
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
 .extern _jmp_addr_0x00606ed0
 .extern ?Save@MobileObject@@UAEIAAVGameOSFile@@@Z
@@ -125,8 +115,6 @@
 .extern _jmp_addr_0x0071ccc0
 .extern _jmp_addr_0x0071cd70
 .extern _jmp_addr_0x0071cdf0
-.extern ?GetFirstSpellSeedForMagicType@GSpellSeedInfo@@SA?AW4SPELL_SEED_TYPE@@W4MAGIC_TYPE@@@Z
-.extern _jmp_addr_0x0072b100
 .extern ?GetStoragePit@Town@@QAEPAVStoragePit@@XZ
 .extern _jmp_addr_0x0073b7a0
 .extern _jmp_addr_0x0073b800
@@ -147,18 +135,8 @@
 .extern  ??3@YAXPAX@Z
 .extern ??0_Lockit@std@@QAE@XZ
 .extern ??1_Lockit@std@@QAE@XZ
-.extern ??0LHOSFile@@QAE@XZ
-.extern ??_DLHOSFile@@QAEXXZ
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern @Write__8LHOSFileFPvUlPUl@20
-.extern _jmp_addr_0x007bcb10
-.extern _jmp_addr_0x007bcba0
-.extern _jmp_addr_0x007bcc00
-.extern @SetName__6LHFileFPCc@12
-.extern @Open__14LHReleasedFileF12LH_FILE_MODE@12
-.extern _jmp_addr_0x007bda20
-.extern ?Close@LHFile@@QAEIXZ
-.extern @OpenSegment__6LHFileFPc@12
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _atexit
@@ -169,9 +147,7 @@
 .extern _wcsncpy
 .extern ??2@YAPAXI@Z
 .extern _atoi
-.extern _malloc
 .extern __unlink
-.extern _getenv
 .extern _fprintf
 .extern _fopen
 .extern _fclose

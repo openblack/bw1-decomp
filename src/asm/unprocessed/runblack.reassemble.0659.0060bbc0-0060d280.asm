@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ??0MapCoords@@QAE@XZ
 .extern ?GetCell@LH3DIsland@@SAPAULandCell@@JJ@Z
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z

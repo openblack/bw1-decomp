@@ -1,12 +1,6 @@
 .intel_syntax noprefix
 .align 16
 
-.extern rdata_bytes
-.extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern _jmp_addr_0x005cb190
 .extern _jmp_addr_0x005cb1d0
 .extern _jmp_addr_0x005cb3e0

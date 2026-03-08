@@ -1,12 +1,7 @@
 .intel_syntax noprefix
 .align 16
 
-.extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern @FindControl__8SetupBoxFi@12
 .extern _HideAll__13DialogBoxBaseFv@0
 .extern _wcscpy

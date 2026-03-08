@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern @AutoScroll__9SetupListFb@9
 .extern @DeleteString__9SetupListFi@12
 .extern @InsertString__9SetupListFiPw@16

@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
 .extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
@@ -60,7 +56,6 @@
 .extern _jmp_addr_0x00604c30
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
 .extern @GetLHPoint__9MapCoordsCFv@12
-.extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z_2
 .extern ?Load@MobileStatic@@UAEIAAVGameOSFile@@@Z
 .extern ?Save@MobileStatic@@UAEIAAVGameOSFile@@@Z
 .extern @__ct__12MobileStaticFRC9MapCoordsPC17GMobileStaticInfoP6Objectff@28

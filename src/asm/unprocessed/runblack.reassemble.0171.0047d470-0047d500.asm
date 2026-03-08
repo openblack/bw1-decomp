@@ -1,12 +1,6 @@
 .intel_syntax noprefix
 .align 16
 
-.extern rdata_bytes
-.extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
 
 .globl _jmp_addr_0x0047d470

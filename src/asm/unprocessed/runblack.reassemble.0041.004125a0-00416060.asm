@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?adjust@SetupThing@@SAMAAH0@Z
 .extern ?adjusty@SetupThing@@SAHH@Z
 .extern _jmp_addr_0x00416750

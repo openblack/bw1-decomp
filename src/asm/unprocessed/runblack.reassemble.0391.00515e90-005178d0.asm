@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?FUN_004046a0@Abode@@QAEXH@Z
 .extern ?DrawPercentFull@Abode@@QAEXH@Z
 .extern ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ

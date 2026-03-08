@@ -3,13 +3,8 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ??0MapCoords@@QAE@XZ
 .extern @__ct__9MapCoordsFllf@20
-.extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z_2
 .extern @GetMetresDistanceSq__9MapCoordsCFRC9MapCoords@12
 .extern _jmp_addr_0x00609ca0
 .extern ?RebuildMoveByStep@MobileWallHug@@QAEXXZ

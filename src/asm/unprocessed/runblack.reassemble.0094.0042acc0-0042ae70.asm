@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern _jmp_addr_0x005bd210
 
 .globl _jmp_addr_0x0042acc0

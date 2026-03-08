@@ -3,11 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
-.extern @SetSpeedUpFactor__7LHTimerFf@12
 .extern _jmp_addr_0x00449650
 .extern _jmp_addr_0x007a1400
 .extern  ??3@YAXPAX@Z
@@ -19,19 +14,7 @@
 .extern _fprintf
 .extern __chkstk
 .extern _rand
-.extern _strncpy
-.extern _strstr
-.extern _tolower
-.extern __controlfp
 .extern ___nw__FUl
-.extern _jmp_addr_0x007db8e0
-.extern _jmp_addr_0x007db8f0
-.extern _jmp_addr_0x007db910
-.extern _jmp_addr_0x007db940
-.extern @Draw__7LHMouseF16LH_SCREEN_BUFFER19LH_MOUSE_EVENT_TYPE@16
-.extern _jmp_addr_0x007e67e0
-.extern _jmp_addr_0x007e6960
-.extern _jmp_addr_0x007e69b0
 .extern _jmp_addr_0x007eab90
 .extern _jmp_addr_0x007eac00
 .extern _jmp_addr_0x007eadb0
@@ -40,25 +23,7 @@
 .extern _jmp_addr_0x007ee050
 .extern _jmp_addr_0x007ee540
 .extern _jmp_addr_0x007efcf0
-.extern _Report3D__FPCce
-.extern _jmp_addr_0x0082cd80
-.extern _jmp_addr_0x0082d3f0
-.extern _jmp_addr_0x0085db90
-.extern _jmp_addr_0x0085dd60
-.extern _jmp_addr_0x0087fc50
-.extern ?LH3DRenderClose@LHIlib@@SAHXZ
-.extern _jmp_addr_0x0087fc70
-.extern _jmp_addr_0x0087fc80
-.extern _jmp_DDRAW_DLL__DirectDrawEnumerateA
-.extern _jmp_DDRAW_DLL__DirectDrawCreateEx
-.extern _jmp_DDRAW_DLL__DirectDrawCreate
-.extern _jmp_addr_0x008a5440
-.extern _jmp_addr_0x008a5480
-.extern _jmp_addr_0x008a5590
 .extern _jmp_addr_0x008a5b00
-.extern ??_M@YGXPAXIHP6EX0@Z@Z
-.extern _jmp_addr_0x00fc1285
-
 .globl _jmp_addr_0x007df060
 .globl _jmp_addr_0x007df430
 .globl _jmp_addr_0x007df850

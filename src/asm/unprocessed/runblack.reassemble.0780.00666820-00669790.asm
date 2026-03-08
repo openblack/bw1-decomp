@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x0043bbb0
 .extern _jmp_addr_0x0043bbd0
@@ -26,7 +22,6 @@
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
 .extern @GetLHPoint__9MapCoordsCFv@12
-.extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z_2
 .extern _jmp_addr_0x0064a9f0
 .extern ?IsNeutral@GPlayer@@QAE_NXZ
 .extern @IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE@12

@@ -12,7 +12,6 @@
 .extern ?GetTribeType@Abode@@QAE?AW4TRIBE_TYPE@@XZ
 .extern _jmp_addr_0x004141f0
 .extern _jmp_addr_0x004145a0
-.extern _jmp_addr_0x0041bce0
 .extern _jmp_addr_0x00425fb0
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern _jmp_addr_0x0042a4b0

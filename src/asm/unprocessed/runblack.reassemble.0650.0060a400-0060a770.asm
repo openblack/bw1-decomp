@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?GetFirstObjectFixed@MapCoords@@QBEPAVObject@@XZ
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
 .extern @SetObjectPtr__13CircleHugInfoFPQ210NewCollide3ObjP13MobileWallHugb@17

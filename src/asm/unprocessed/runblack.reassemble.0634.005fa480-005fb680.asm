@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004f5230

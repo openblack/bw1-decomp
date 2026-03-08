@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ??0MapCoords@@QAE@XZ
 .extern ?SetMessage@GDebug@@SAXGPADZZ

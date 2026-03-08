@@ -11,8 +11,6 @@
 .extern ??0CircleHugInfo@@QAE@XZ
 .extern ??0Object@@QAE@XZ
 .extern _jmp_addr_0x006e3a60
-.extern  ??3@YAXPAX@Z
-
 .globl ??0Mobile@@QAE@XZ
 .globl ??0Living@@QAE@XZ
 .globl _IsClear__8BaseInfoCFv

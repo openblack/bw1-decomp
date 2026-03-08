@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ??$ReadIt@H@GameOSFile@@QAEXAAH@Z
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern ?__nw@Base@@SAPAXK@Z
@@ -52,7 +48,6 @@
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern _jmp_addr_0x006055c0
 .extern @GetLHPoint__9MapCoordsCFv@12
-.extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z_2
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
 .extern ?ToBeDeleted@MobileObject@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@MobileObject@@UAEXABUMapCoords@@@Z

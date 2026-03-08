@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern @InsertString__9SetupListFiPw@16
 .extern _jmp_addr_0x0043dff0
 .extern _jmp_addr_0x005356f0

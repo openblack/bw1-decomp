@@ -133,7 +133,6 @@
 .extern ?Load@Rock@@UAEIAAVGameOSFile@@@Z
 .extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
 .extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
-.extern _jmp_addr_0x0074cd50
 .extern _jmp_addr_0x0074cde0
 .extern ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z
 .extern _jmp_addr_0x0074d010

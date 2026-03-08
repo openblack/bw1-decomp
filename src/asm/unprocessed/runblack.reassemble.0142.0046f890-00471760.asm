@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern @SetSpeedUpFactor__7LHTimerFf@12
 .extern _jmp_addr_0x0046ee30
 .extern _jmp_addr_0x0046ee50

@@ -3,30 +3,10 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern _atexit
-.extern _malloc
 .extern _free
-.extern __chkstk
-.extern __errno
-.extern ___doserrno
 .extern _strncpy
-.extern _strchr
 .extern _calloc
-.extern __tolower_lk
-.extern _strlen
-.extern _memset
-.extern __lock
-.extern __unlock
-.extern __write_lk
-.extern __lseek_lk
-.extern _strcpy
-.extern __get_osfhandle
-.extern __lock_fhandle
-.extern __unlock_fhandle
 .extern _jmp_addr_0x007dc8b0
 .extern _jmp_addr_0x007dc920
 .extern _jmp_addr_0x007dcaf0

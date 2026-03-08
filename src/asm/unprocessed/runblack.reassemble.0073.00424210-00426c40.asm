@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern _jmp_addr_0x004279a0
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
@@ -52,7 +48,6 @@
 .extern ?__ne@MapCoords@@QBE_NABV1@@Z
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x00605c90
-.extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z_2
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
 .extern _jmp_addr_0x00606ed0
 .extern ?ToBeDeleted@Object@@UAEXH@Z

@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern ?GetSizeNameData@LH3DMesh@@QAEIXZ
 .extern ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ
@@ -60,7 +56,6 @@
 .extern _jmp_addr_0x005dc890
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005fb830
-.extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z_2
 .extern ?Get3DType@Object@@UAE?AW4LH3DObject__ObjectType@@XZ
 .extern ?ResolveLoad@Object@@UAEXXZ
 .extern @IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE@12

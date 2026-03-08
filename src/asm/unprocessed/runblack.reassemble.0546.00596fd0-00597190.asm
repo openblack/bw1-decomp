@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern @IsReadyForNewAnimation__6LivingFUl@12
 
 .globl _jmp_addr_0x00596fd0

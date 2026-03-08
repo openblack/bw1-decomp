@@ -37,12 +37,6 @@
 .extern _jmp_addr_0x007f3e40
 .extern _jmp_addr_0x007f40c0
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
-.extern ?ReactToPhysicsImpact@Abode@@UAEXPAVPhysicsObject@@_N@Z
-.extern ?Save@Abode@@UAEIPAVGameOSFile@@@Z
-.extern ?Load@Abode@@UAEIPAVGameOSFile@@@Z
-.extern ?GetDiscipleStateIfInteractedWith@Abode@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z
-.extern ?StopBeingFunctional@Abode@@UAEXPAVGPlayer@@@Z
-
 .globl ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .globl _WriteIt_u32___10GameOSFileFRUl
 .globl ??$ReadIt@H@GameOSFile@@QAEXAAH@Z

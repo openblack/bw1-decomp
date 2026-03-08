@@ -2,13 +2,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
-.extern _jmp_addr_0x00460680
-.extern _jmp_addr_0x004607d0
-.extern _jmp_addr_0x0053ce50
 .extern _jmp_addr_0x00545920
 .extern _jmp_addr_0x00545990
 .extern _jmp_addr_0x00545d10
@@ -84,8 +77,6 @@
 .extern _strncpy
 .extern _strstr
 .extern _realloc
-.extern _strrchr
-.extern _exit
 .extern _ungetc
 .extern _fgetpos
 .extern _fsetpos
@@ -110,19 +101,6 @@
 .extern __Gettnames
 .extern __Strftime
 .extern ___crtCompareStringA
-.extern _jmp_addr_0x007faff0
-.extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
-.extern ?DrawTriangle@LH3DRender@@SAXPAUVertex3D@@KPAGK@Z
-.extern _jmp_addr_0x0082feb0
-.extern _jmp_addr_0x0082fed0
-.extern ?SetD3DTillingOn@LH3DRender@@SAXH@Z
-.extern ?SetD3DTillingOff@LH3DRender@@SAXH@Z
-.extern _jmp_addr_0x00875c60
-.extern _jmp_addr_0x00876910
-.extern _jmp_addr_0x00878f70
-.extern _jmp_addr_0x008790f0
-.extern _jmp_addr_0x008a2610
-
 .globl ?_Xlen@std@@YAXXZ
 .globl _jmp_addr_0x007af180
 .globl _jmp_addr_0x007af268

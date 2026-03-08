@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern @StartFight__14CameraModeNew3FP6GArena@12
 .extern _jmp_addr_0x0045a800
 .extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z

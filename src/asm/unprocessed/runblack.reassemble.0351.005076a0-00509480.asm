@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern _jmp_addr_0x004146f0
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ?GetWoodValue@BuildingSite@@QAEMXZ

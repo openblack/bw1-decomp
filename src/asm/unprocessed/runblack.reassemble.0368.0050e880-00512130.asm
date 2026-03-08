@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?FUN_004046a0@Abode@@QAEXH@Z
 .extern _jmp_addr_0x00419a60
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12

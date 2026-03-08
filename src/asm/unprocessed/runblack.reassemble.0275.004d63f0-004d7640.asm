@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ??3Base@@SAXPAXK@Z
 .extern @__ct__18DecisionTreeAgendaF18DECISION_TREE_TYPE16CREATURE_DESIRES@16
 .extern _jmp_addr_0x004d4490

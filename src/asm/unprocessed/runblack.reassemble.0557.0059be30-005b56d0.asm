@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
 .extern @DeleteString__9SetupListFi@12
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20

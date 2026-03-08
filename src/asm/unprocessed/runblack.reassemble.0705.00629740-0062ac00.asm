@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern _GetMidTextSize__Fv
 .extern _jmp_addr_0x00407a20
 .extern @SetFocusControl__8SetupBoxFP12SetupControl@12

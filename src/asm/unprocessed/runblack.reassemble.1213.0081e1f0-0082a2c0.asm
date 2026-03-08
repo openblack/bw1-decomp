@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?GetSizeUV2Data@LH3DMesh@@QAEIXZ
 .extern ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ
 .extern ?GetSizeNameData_dup1@LH3DMesh@@QAEIXZ
@@ -53,7 +49,6 @@
 .extern _jmp_addr_0x00804860
 .extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Release__8LH3DMeshFv@4
-.extern ?CreatePack@LH3DMesh@@SAXXZ@0
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x00819490
 .extern _jmp_addr_0x0081a760

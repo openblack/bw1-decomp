@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern _sprintf
 .extern _memmove
 .extern _atoi
@@ -69,21 +65,6 @@
 .extern _jmp_addr_0x0088cb40
 .extern _jmp_addr_0x0088d070
 .extern _jmp_addr_0x0088d150
-.extern _jmp_addr_0x008a507e
-.extern _jmp_addr_0x008a5096
-.extern _jmp_addr_0x008a50b4
-.extern _jmp_addr_0x008a50c0
-.extern _jmp_addr_0x008a50c6
-.extern _jmp_addr_0x008a50cc
-.extern _jmp_addr_0x008a50d2
-.extern _jmp_addr_0x008a50d8
-.extern _jmp_addr_0x008a50de
-.extern _jmp_addr_0x008a50e4
-.extern _jmp_addr_0x008a50ea
-.extern _jmp_addr_0x008a50f0
-.extern _jmp_addr_0x008a50f6
-.extern _jmp_addr_0x008a50fc
-
 .globl _jmp_addr_0x0088d540
 .globl _jmp_addr_0x0088d640
 .globl _jmp_addr_0x0088d6e0

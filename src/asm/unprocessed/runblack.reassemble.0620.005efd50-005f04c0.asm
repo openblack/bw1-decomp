@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?SetIdentity@LHMatrix@@QAEXXZ
 .extern _jmp_addr_0x005f04c0
 .extern ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ

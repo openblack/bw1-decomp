@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?GetSizeFootprintData@LH3DMesh@@QAEIXZ
 .extern ?GetSizeUV2Data@LH3DMesh@@QAEIXZ
 .extern ?GetSizeUV2Data_dup1@LH3DMesh@@QAEIXZ

@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern _jmp_addr_0x00474c50
 .extern _jmp_addr_0x00475450
 .extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
@@ -74,7 +70,6 @@
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x00605cc0
-.extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z_2
 .extern _jmp_addr_0x00639a60
 .extern _jmp_addr_0x0063e370
 .extern _jmp_addr_0x0063e380

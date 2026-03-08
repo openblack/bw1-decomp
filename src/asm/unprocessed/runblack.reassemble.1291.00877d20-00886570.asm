@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?GetSizeFootprintData@LH3DMesh@@QAEIXZ
 .extern ?GetSizeUV2Data@LH3DMesh@@QAEIXZ
 .extern ?GetSizeNameData@LH3DMesh@@QAEIXZ
@@ -168,7 +164,6 @@
 .extern _jmp_addr_0x0088fad0
 .extern _jmp_addr_0x0088fb40
 .extern _jmp_addr_0x0088fbf0
-.extern _jmp_addr_0x008a507e
 .extern ??_L@YGXPAXIHP6EX0@Z1@Z
 
 .globl _jmp_addr_0x00877d20

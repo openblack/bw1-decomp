@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern  ??3@YAXPAX@Z
 .extern ??2@YAPAXI@Z
 .extern @FillPosAndHeading__8RPFollowFR7Point2DRff@20

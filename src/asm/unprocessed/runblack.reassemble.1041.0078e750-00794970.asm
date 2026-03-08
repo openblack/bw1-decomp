@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern _NeedsBiggerText__Fv
 .extern _jmp_addr_0x00407a30
 .extern ?GetCurrentActiveBox@SetupBox@@SAPAV1@XZ

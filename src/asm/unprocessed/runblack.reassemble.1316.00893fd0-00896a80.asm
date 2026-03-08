@@ -1,12 +1,6 @@
 .intel_syntax noprefix
 .align 16
 
-.extern rdata_bytes
-.extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern _sprintf
 .extern _atoi
 .extern _malloc
@@ -63,17 +57,6 @@
 .extern _jmp_addr_0x00896b80
 .extern _jmp_addr_0x00897010
 .extern _jmp_addr_0x008974c0
-.extern _jmp_addr_0x008a507e
-.extern _jmp_addr_0x008a5096
-.extern _jmp_addr_0x008a50b4
-.extern _jmp_addr_0x008a50c6
-.extern _jmp_addr_0x008a50cc
-.extern _jmp_addr_0x008a50d2
-.extern _jmp_addr_0x008a50d8
-.extern _jmp_addr_0x008a50de
-.extern _jmp_addr_0x008a50ea
-.extern _jmp_addr_0x008a50fc
-
 .globl _jmp_addr_0x00896090
 .globl _jmp_addr_0x008961b0
 .globl _jmp_addr_0x00896210

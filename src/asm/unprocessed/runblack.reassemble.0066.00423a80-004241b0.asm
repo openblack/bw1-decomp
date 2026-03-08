@@ -3,10 +3,6 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern ?GetFieldActivity@Field@@QAEHH@Z
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z

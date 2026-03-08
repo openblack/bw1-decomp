@@ -1,8 +1,6 @@
 .intel_syntax noprefix
 .align 16
 
-.extern rdata_bytes
-
 .extern  ??3@YAXPAX@Z
 .extern _sprintf
 .extern _fprintf

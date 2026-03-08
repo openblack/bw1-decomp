@@ -1,7 +1,6 @@
 .intel_syntax noprefix
 .align 16
 
-.extern rdata_bytes
 .extern data_bytes
 
 .extern _inflate_blocks_reset

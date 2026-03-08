@@ -1,12 +1,7 @@
 .intel_syntax noprefix
 .align 16
 
-.extern rdata_bytes
 .extern data_bytes
-.extern data1_bytes
-.extern SELFMOD_bytes
-.extern rsrc_bytes
-
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
 .extern ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z
 .extern _HideAll__13DialogBoxBaseFv@0
