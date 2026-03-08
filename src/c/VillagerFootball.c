@@ -41,10 +41,10 @@ void __cdecl globl_ct_0x0075c100(void)
     asm("{disp32} mov       cl, byte ptr [_DAT_00fac934]");                  // 0x0075c100    8a0d34c9fa00
     asm("mov                al, 0x01");                                      // 0x0075c106    b001
     asm("test               al, cl");                                        // 0x0075c108    84c8
-    asm("{disp8} jne        _jmp_addr_0x0075c114");                          // 0x0075c10a    7508
+    asm("{disp8} jne        LAB__addr_0x0075c114");                          // 0x0075c10a    7508
     asm("or.s               cl, al");                                        // 0x0075c10c    0ac8
     asm("{disp32} mov       byte ptr [_DAT_00fac934], cl");                  // 0x0075c10e    880d34c9fa00
-    asm("_jmp_addr_0x0075c114:");
+    asm("LAB__addr_0x0075c114:");
     asm("{disp32} jmp       _crt_global_destruction_register_0x0075c120");   // 0x0075c114    e907000000
     __builtin_unreachable();
 }
@@ -950,24 +950,24 @@ void __fastcall AssignFootballSubState__8VillagerFv(struct Villager* this)
     asm("call               dword ptr [eax + 0xb04]");                       // 0x0075d135    ff90040b0000
     asm("and                eax, 0x000000ff");                               // 0x0075d13b    25ff000000
     asm("sub                eax, 0x49");                                     // 0x0075d140    83e849
-    asm("{disp8} je         _jmp_addr_0x0075d15d");                          // 0x0075d143    7418
+    asm("{disp8} je         LAB__addr_0x0075d15d");                          // 0x0075d143    7418
     asm("dec                eax");                                           // 0x0075d145    48
-    asm("{disp8} je         _jmp_addr_0x0075d154");                          // 0x0075d146    740c
+    asm("{disp8} je         LAB__addr_0x0075d154");                          // 0x0075d146    740c
     asm("dec                eax");                                           // 0x0075d148    48
-    asm("{disp8} jne        _jmp_addr_0x0075d164");                          // 0x0075d149    7519
+    asm("{disp8} jne        LAB__addr_0x0075d164");                          // 0x0075d149    7519
     asm("mov.s              ecx, esi");                                      // 0x0075d14b    8bce
     asm("call               ?AssignFootballDefenderSubState@Villager@@QAEXXZ");                          // 0x0075d14d    e85e0f0000
     asm("pop                esi");                                           // 0x0075d152    5e
     asm("ret");                                                              // 0x0075d153    c3
-    asm("_jmp_addr_0x0075d154:");
+    asm("LAB__addr_0x0075d154:");
     asm("mov.s              ecx, esi");                                      // 0x0075d154    8bce
     asm("call               ?AssignFootballGoalieSubState@Villager@@QAEXXZ");// 0x0075d156    e855190000
     asm("pop                esi");                                           // 0x0075d15b    5e
     asm("ret");                                                              // 0x0075d15c    c3
-    asm("_jmp_addr_0x0075d15d:");
+    asm("LAB__addr_0x0075d15d:");
     asm("mov.s              ecx, esi");                                      // 0x0075d15d    8bce
     asm("call               ?AssignFootballAttackerSubState@Villager@@QAEXXZ");                          // 0x0075d15f    e80c000000
-    asm("_jmp_addr_0x0075d164:");
+    asm("LAB__addr_0x0075d164:");
     asm("pop                esi");                                           // 0x0075d164    5e
     asm("ret");                                                              // 0x0075d165    c3
     __builtin_unreachable();
@@ -981,7 +981,7 @@ void __fastcall AssignFootballAttackerSubState__8VillagerFv(struct Villager* thi
     asm("mov.s              edi, ecx");                                      // 0x0075d174    8bf9
     asm("{disp32} mov       al, byte ptr [edi + 0x00000118]");               // 0x0075d176    8a8718010000
     asm("test               al, al");                                        // 0x0075d17c    84c0
-    asm("{disp32} je        _jmp_addr_0x0075d21f");                          // 0x0075d17e    0f849b000000
+    asm("{disp32} je        LAB__addr_0x0075d21f");                          // 0x0075d17e    0f849b000000
     asm("push               ebx");                                           // 0x0075d184    53
     asm("push               ebp");                                           // 0x0075d185    55
     asm("push               esi");                                           // 0x0075d186    56
@@ -989,7 +989,7 @@ void __fastcall AssignFootballAttackerSubState__8VillagerFv(struct Villager* thi
     asm("{disp8} mov        dword ptr [esp + 0x10], 0xb8d1b717");            // 0x0075d18f    c744241017b7d1b8
     asm("xor.s              ebx, ebx");                                      // 0x0075d197    33db
     asm("mov                esi, 0x00c237bc");                               // 0x0075d199    bebc37c200
-    asm("_jmp_addr_0x0075d19e:");
+    asm("LAB__addr_0x0075d19e:");
     asm("mov.s              ecx, edi");                                      // 0x0075d19e    8bcf
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075d1a0    e8fb4cffff
     asm("mov                ecx, dword ptr [esi]");                          // 0x0075d1a5    8b0e
@@ -999,7 +999,7 @@ void __fastcall AssignFootballAttackerSubState__8VillagerFv(struct Villager* thi
     asm("mov.s              ebp, eax");                                      // 0x0075d1ad    8be8
     asm("{disp8} mov        eax, dword ptr [esi + 0x0c]");                   // 0x0075d1af    8b460c
     asm("test               eax, eax");                                      // 0x0075d1b2    85c0
-    asm("{disp8} je         _jmp_addr_0x0075d1ca");                          // 0x0075d1b4    7414
+    asm("{disp8} je         LAB__addr_0x0075d1ca");                          // 0x0075d1b4    7414
     asm("mov.s              ecx, edi");                                      // 0x0075d1b6    8bcf
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075d1b8    e8e34cffff
     asm("{disp8} mov        ecx, dword ptr [esi + 0x10]");                   // 0x0075d1bd    8b4e10
@@ -1007,10 +1007,10 @@ void __fastcall AssignFootballAttackerSubState__8VillagerFv(struct Villager* thi
     asm("add.s              ecx, edi");                                      // 0x0075d1c1    03cf
     asm("call               dword ptr [esi + 0xc]");                         // 0x0075d1c3    ff560c
     asm("test               eax, eax");                                      // 0x0075d1c6    85c0
-    asm("{disp8} je         _jmp_addr_0x0075d1f5");                          // 0x0075d1c8    742b
-    asm("_jmp_addr_0x0075d1ca:");
+    asm("{disp8} je         LAB__addr_0x0075d1f5");                          // 0x0075d1c8    742b
+    asm("LAB__addr_0x0075d1ca:");
     asm("test               ebp, ebp");                                      // 0x0075d1ca    85ed
-    asm("{disp8} je         _jmp_addr_0x0075d1f5");                          // 0x0075d1cc    7427
+    asm("{disp8} je         LAB__addr_0x0075d1f5");                          // 0x0075d1cc    7427
     asm("mov.s              ecx, edi");                                      // 0x0075d1ce    8bcf
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075d1d0    e8cb4cffff
     asm("{disp8} mov        ecx, dword ptr [esi + 0x20]");                   // 0x0075d1d5    8b4e20
@@ -1020,17 +1020,17 @@ void __fastcall AssignFootballAttackerSubState__8VillagerFv(struct Villager* thi
     asm("{disp8} fcom       dword ptr [esp + 0x10]");                        // 0x0075d1de    d8542410
     asm("fnstsw             ax");                                            // 0x0075d1e2    dfe0
     asm("test               ah, 0x41");                                      // 0x0075d1e4    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075d1f3");                          // 0x0075d1e7    750a
+    asm("{disp8} jne        LAB__addr_0x0075d1f3");                          // 0x0075d1e7    750a
     asm("{disp8} fstp       dword ptr [esp + 0x10]");                        // 0x0075d1e9    d95c2410
     asm("{disp8} mov        dword ptr [esp + 0x14], ebx");                   // 0x0075d1ed    895c2414
-    asm("{disp8} jmp        _jmp_addr_0x0075d1f5");                          // 0x0075d1f1    eb02
-    asm("_jmp_addr_0x0075d1f3:");
+    asm("{disp8} jmp        LAB__addr_0x0075d1f5");                          // 0x0075d1f1    eb02
+    asm("LAB__addr_0x0075d1f3:");
     asm("fstp               st(0)");                                         // 0x0075d1f3    ddd8
-    asm("_jmp_addr_0x0075d1f5:");
+    asm("LAB__addr_0x0075d1f5:");
     asm("add                esi, 0x00000080");                               // 0x0075d1f5    81c680000000
     asm("inc                ebx");                                           // 0x0075d1fb    43
     asm("cmp                esi, 0x00c23bbc");                               // 0x0075d1fc    81febc3bc200
-    asm(".byte              0x72, 0x9a");// {disp8} jb _jmp_addr_0x0075d19e  // 0x0075d202    729a
+    asm(".byte              0x72, 0x9a");// {disp8} jb LAB__addr_0x0075d19e  // 0x0075d202    729a
     asm("{disp8} mov        al, byte ptr [esp + 0x14]");                     // 0x0075d204    8a442414
     asm("pop                esi");                                           // 0x0075d208    5e
     asm("{disp32} mov       byte ptr [edi + 0x0000008f], al");               // 0x0075d209    88878f000000
@@ -1038,7 +1038,7 @@ void __fastcall AssignFootballAttackerSubState__8VillagerFv(struct Villager* thi
     asm("{disp32} mov       byte ptr [edi + 0x00000118], 0x00");             // 0x0075d210    c6871801000000
     asm("{disp32} mov       byte ptr [edi + 0x00000119], 0x00");             // 0x0075d217    c6871901000000
     asm("pop                ebx");                                           // 0x0075d21e    5b
-    asm("_jmp_addr_0x0075d21f:");
+    asm("LAB__addr_0x0075d21f:");
     asm("pop                edi");                                           // 0x0075d21f    5f
     asm("add                esp, 0x08");                                     // 0x0075d220    83c408
     asm("ret");                                                              // 0x0075d223    c3
@@ -1053,26 +1053,26 @@ bool32_t __fastcall FootballAttacker__8VillagerFv(struct Villager* this)
     asm("mov.s              esi, ecx");                                      // 0x0075d232    8bf1
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075d234    e8674cffff
     asm("test               eax, eax");                                      // 0x0075d239    85c0
-    asm("{disp32} je        _jmp_addr_0x0075d2c3");                          // 0x0075d23b    0f8482000000
+    asm("{disp32} je        LAB__addr_0x0075d2c3");                          // 0x0075d23b    0f8482000000
     asm("mov.s              ecx, esi");                                      // 0x0075d241    8bce
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075d243    e8584cffff
     asm("mov.s              ecx, eax");                                      // 0x0075d248    8bc8
     asm("call               ?GetBall@Football@@QAEPAXXZ");                   // 0x0075d24a    e8c141ddff
     asm("test               eax, eax");                                      // 0x0075d24f    85c0
-    asm("{disp8} je         _jmp_addr_0x0075d2c3");                          // 0x0075d251    7470
+    asm("{disp8} je         LAB__addr_0x0075d2c3");                          // 0x0075d251    7470
     asm("{disp8} mov        ax, word ptr [esi + 0x58]");                     // 0x0075d253    668b4658
     asm("cmp                ax, 0x0001");                                    // 0x0075d257    663d0100
-    asm("{disp8} jl         _jmp_addr_0x0075d2b6");                          // 0x0075d25b    7c59
+    asm("{disp8} jl         LAB__addr_0x0075d2b6");                          // 0x0075d25b    7c59
     asm("xor.s              eax, eax");                                      // 0x0075d25d    33c0
     asm("{disp32} mov       al, byte ptr [esi + 0x0000008f]");               // 0x0075d25f    8a868f000000
     asm("mov.s              edi, eax");                                      // 0x0075d265    8bf8
     asm("cmp                edi, 0x08");                                     // 0x0075d267    83ff08
-    asm(".byte              0x72, 0x8");// {disp8} jb _jmp_addr_0x0075d274   // 0x0075d26a    7208
+    asm(".byte              0x72, 0x8");// {disp8} jb LAB__addr_0x0075d274   // 0x0075d26a    7208
     asm("pop                edi");                                           // 0x0075d26c    5f
     asm("mov                eax, 0x00000001");                               // 0x0075d26d    b801000000
     asm("pop                esi");                                           // 0x0075d272    5e
     asm("ret");                                                              // 0x0075d273    c3
-    asm("_jmp_addr_0x0075d274:");
+    asm("LAB__addr_0x0075d274:");
     asm("mov.s              ecx, esi");                                      // 0x0075d274    8bce
     asm("shl                edi, 7");                                        // 0x0075d276    c1e707
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075d279    e8224cffff
@@ -1087,21 +1087,21 @@ bool32_t __fastcall FootballAttacker__8VillagerFv(struct Villager* this)
     asm("add.s              ecx, esi");                                      // 0x0075d29b    03ce
     asm("call               dword ptr [edi + data_bytes + 0x25d7b8]");       // 0x0075d29d    ff97b837c200
     asm("test               eax, eax");                                      // 0x0075d2a3    85c0
-    asm("{disp8} jne        _jmp_addr_0x0075d2bb");                          // 0x0075d2a5    7514
+    asm("{disp8} jne        LAB__addr_0x0075d2bb");                          // 0x0075d2a5    7514
     asm("pop                edi");                                           // 0x0075d2a7    5f
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075d2a8    c6861801000001
     asm("mov                eax, 0x00000001");                               // 0x0075d2af    b801000000
     asm("pop                esi");                                           // 0x0075d2b4    5e
     asm("ret");                                                              // 0x0075d2b5    c3
-    asm("_jmp_addr_0x0075d2b6:");
+    asm("LAB__addr_0x0075d2b6:");
     asm("inc                eax");                                           // 0x0075d2b6    40
     asm("{disp8} mov        word ptr [esi + 0x58], ax");                     // 0x0075d2b7    66894658
-    asm("_jmp_addr_0x0075d2bb:");
+    asm("LAB__addr_0x0075d2bb:");
     asm("pop                edi");                                           // 0x0075d2bb    5f
     asm("mov                eax, 0x00000001");                               // 0x0075d2bc    b801000000
     asm("pop                esi");                                           // 0x0075d2c1    5e
     asm("ret");                                                              // 0x0075d2c2    c3
-    asm("_jmp_addr_0x0075d2c3:");
+    asm("LAB__addr_0x0075d2c3:");
     asm("mov                edx, dword ptr [esi]");                          // 0x0075d2c3    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075d2c5    8bce
     asm("call               dword ptr [edx + 0x8c8]");                       // 0x0075d2c7    ff92c8080000
@@ -1132,7 +1132,7 @@ void __fastcall FootballAttackerShootProcess__8VillagerFP8Football(struct Villag
     asm("mov.s              ecx, esi");                                      // 0x0075d2f5    8bce
     asm("call               dword ptr [ebp + 0x6b8]");                       // 0x0075d2f7    ff95b8060000
     asm("test               eax, eax");                                      // 0x0075d2fd    85c0
-    asm("{disp32} je        _jmp_addr_0x0075d388");                          // 0x0075d2ff    0f8483000000
+    asm("{disp32} je        LAB__addr_0x0075d388");                          // 0x0075d2ff    0f8483000000
     asm("{disp8} mov        eax, dword ptr [ebx + 0x1c]");                   // 0x0075d305    8b431c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075d308    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075d30a    8bce
@@ -1141,7 +1141,7 @@ void __fastcall FootballAttackerShootProcess__8VillagerFP8Football(struct Villag
     asm("{disp8} fcomp      dword ptr [esp + 0x20]");                        // 0x0075d316    d85c2420
     asm("fnstsw             ax");                                            // 0x0075d31a    dfe0
     asm("test               ah, 0x41");                                      // 0x0075d31c    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075d388");                          // 0x0075d31f    7567
+    asm("{disp8} jne        LAB__addr_0x0075d388");                          // 0x0075d31f    7567
     asm("push               esi");                                           // 0x0075d321    56
     asm("mov.s              ecx, edi");                                      // 0x0075d322    8bcf
     asm("call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z");                          // 0x0075d324    e83756ddff
@@ -1175,7 +1175,7 @@ void __fastcall FootballAttackerShootProcess__8VillagerFP8Football(struct Villag
     asm("pop                ebx");                                           // 0x0075d381    5b
     asm("add                esp, 0x0c");                                     // 0x0075d382    83c40c
     asm("ret                0x0004");                                        // 0x0075d385    c20400
-    asm("_jmp_addr_0x0075d388:");
+    asm("LAB__addr_0x0075d388:");
     asm("push               edi");                                           // 0x0075d388    57
     asm("mov.s              ecx, esi");                                      // 0x0075d389    8bce
     asm("call               ?FootballAttackerGoToBallProcess@Villager@@QAEXPAVFootball@@@Z");                          // 0x0075d38b    e800070000
@@ -1210,7 +1210,7 @@ void __fastcall FootballAttackerPassProcess__8VillagerFP8Football(struct Village
     asm("mov.s              ecx, esi");                                      // 0x0075d3c5    8bce
     asm("call               dword ptr [ebx + 0x6b8]");                       // 0x0075d3c7    ff93b8060000
     asm("test               eax, eax");                                      // 0x0075d3cd    85c0
-    asm("{disp32} je        _jmp_addr_0x0075d4e9");                          // 0x0075d3cf    0f8414010000
+    asm("{disp32} je        LAB__addr_0x0075d4e9");                          // 0x0075d3cf    0f8414010000
     asm("{disp8} mov        eax, dword ptr [ebp + 0x1c]");                   // 0x0075d3d5    8b451c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075d3d8    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075d3da    8bce
@@ -1219,13 +1219,13 @@ void __fastcall FootballAttackerPassProcess__8VillagerFP8Football(struct Village
     asm("{disp8} fcomp      dword ptr [esp + 0x20]");                        // 0x0075d3e6    d85c2420
     asm("fnstsw             ax");                                            // 0x0075d3ea    dfe0
     asm("test               ah, 0x41");                                      // 0x0075d3ec    f6c441
-    asm("{disp32} jne       _jmp_addr_0x0075d4e9");                          // 0x0075d3ef    0f85f4000000
+    asm("{disp32} jne       LAB__addr_0x0075d4e9");                          // 0x0075d3ef    0f85f4000000
     asm("push               esi");                                           // 0x0075d3f5    56
     asm("mov.s              ecx, edi");                                      // 0x0075d3f6    8bcf
     asm("call               _jmp_addr_0x00534820");                          // 0x0075d3f8    e82374ddff
     asm("mov.s              ebx, eax");                                      // 0x0075d3fd    8bd8
     asm("dec                ebx");                                           // 0x0075d3ff    4b
-    asm("{disp32} js        _jmp_addr_0x0075d4d8");                          // 0x0075d400    0f88d2000000
+    asm("{disp32} js        LAB__addr_0x0075d4d8");                          // 0x0075d400    0f88d2000000
     asm("push               esi");                                           // 0x0075d406    56
     asm("mov.s              ecx, edi");                                      // 0x0075d407    8bcf
     asm("call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z");                          // 0x0075d409    e85255ddff
@@ -1235,27 +1235,27 @@ void __fastcall FootballAttackerPassProcess__8VillagerFP8Football(struct Village
     asm("{disp32} mov       ecx, dword ptr [edi + eax * 0x8 + 0x00000238]"); // 0x0075d413    8b8cc738020000
     asm("test               ecx, ecx");                                      // 0x0075d41a    85c9
     asm("{disp32} lea       eax, dword ptr [edi + eax * 0x8 + 0x00000234]"); // 0x0075d41c    8d84c734020000
-    asm("{disp8} jbe        _jmp_addr_0x0075d43c");                          // 0x0075d423    7617
+    asm("{disp8} jbe        LAB__addr_0x0075d43c");                          // 0x0075d423    7617
     asm("mov                eax, dword ptr [eax]");                          // 0x0075d425    8b00
     asm("test               eax, eax");                                      // 0x0075d427    85c0
-    asm("{disp8} je         _jmp_addr_0x0075d43c");                          // 0x0075d429    7411
+    asm("{disp8} je         LAB__addr_0x0075d43c");                          // 0x0075d429    7411
     asm("cmp.s              ebx, ecx");                                      // 0x0075d42b    3bd9
-    asm("{disp8} jge        _jmp_addr_0x0075d43c");                          // 0x0075d42d    7d0d
+    asm("{disp8} jge        LAB__addr_0x0075d43c");                          // 0x0075d42d    7d0d
     asm("test               ebx, ebx");                                      // 0x0075d42f    85db
-    asm("{disp8} jle        _jmp_addr_0x0075d438");                          // 0x0075d431    7e05
-    asm("_jmp_addr_0x0075d433:");
+    asm("{disp8} jle        LAB__addr_0x0075d438");                          // 0x0075d431    7e05
+    asm("LAB__addr_0x0075d433:");
     asm("dec                ebx");                                           // 0x0075d433    4b
     asm("mov                eax, dword ptr [eax]");                          // 0x0075d434    8b00
-    asm("{disp8} jne        _jmp_addr_0x0075d433");                          // 0x0075d436    75fb
-    asm("_jmp_addr_0x0075d438:");
+    asm("{disp8} jne        LAB__addr_0x0075d433");                          // 0x0075d436    75fb
+    asm("LAB__addr_0x0075d438:");
     asm("test               eax, eax");                                      // 0x0075d438    85c0
-    asm("{disp8} jne        _jmp_addr_0x0075d440");                          // 0x0075d43a    7504
-    asm("_jmp_addr_0x0075d43c:");
+    asm("{disp8} jne        LAB__addr_0x0075d440");                          // 0x0075d43a    7504
+    asm("LAB__addr_0x0075d43c:");
     asm("xor.s              edi, edi");                                      // 0x0075d43c    33ff
-    asm("{disp8} jmp        _jmp_addr_0x0075d443");                          // 0x0075d43e    eb03
-    asm("_jmp_addr_0x0075d440:");
+    asm("{disp8} jmp        LAB__addr_0x0075d443");                          // 0x0075d43e    eb03
+    asm("LAB__addr_0x0075d440:");
     asm("{disp8} mov        edi, dword ptr [eax + 0x04]");                   // 0x0075d440    8b7804
-    asm("_jmp_addr_0x0075d443:");
+    asm("LAB__addr_0x0075d443:");
     asm("{disp8} lea        eax, dword ptr [edi + 0x14]");                   // 0x0075d443    8d4714
     asm("mov                ecx, dword ptr [eax]");                          // 0x0075d446    8b08
     asm("{disp8} mov        dword ptr [esp + 0x10], ecx");                   // 0x0075d448    894c2410
@@ -1267,7 +1267,7 @@ void __fastcall FootballAttackerPassProcess__8VillagerFP8Football(struct Village
     asm("mov.s              ecx, edi");                                      // 0x0075d45c    8bcf
     asm("call               dword ptr [edx + 0x174]");                       // 0x0075d45e    ff9274010000
     asm("test               eax, eax");                                      // 0x0075d464    85c0
-    asm("{disp8} je         _jmp_addr_0x0075d486");                          // 0x0075d466    741e
+    asm("{disp8} je         LAB__addr_0x0075d486");                          // 0x0075d466    741e
     asm("mov                eax, dword ptr [edi]");                          // 0x0075d468    8b07
     asm("mov.s              ecx, edi");                                      // 0x0075d46a    8bcf
     asm("call               dword ptr [eax + 0x860]");                       // 0x0075d46c    ff9060080000
@@ -1277,7 +1277,7 @@ void __fastcall FootballAttackerPassProcess__8VillagerFP8Football(struct Village
     asm("{disp8} mov        dword ptr [esp + 0x14], edx");                   // 0x0075d47b    89542414
     asm("{disp8} mov        eax, dword ptr [eax + 0x08]");                   // 0x0075d47f    8b4008
     asm("{disp8} mov        dword ptr [esp + 0x18], eax");                   // 0x0075d482    89442418
-    asm("_jmp_addr_0x0075d486:");
+    asm("LAB__addr_0x0075d486:");
     asm("{disp8} lea        ecx, dword ptr [esp + 0x10]");                   // 0x0075d486    8d4c2410
     asm("push               ecx");                                           // 0x0075d48a    51
     asm("{disp8} lea        edx, dword ptr [ebp + 0x14]");                   // 0x0075d48b    8d5514
@@ -1287,7 +1287,7 @@ void __fastcall FootballAttackerPassProcess__8VillagerFP8Football(struct Village
     asm("add                esp, 0x08");                                     // 0x0075d49a    83c408
     asm("fnstsw             ax");                                            // 0x0075d49d    dfe0
     asm("test               ah, 0x41");                                      // 0x0075d49f    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075d4d8");                          // 0x0075d4a2    7534
+    asm("{disp8} jne        LAB__addr_0x0075d4d8");                          // 0x0075d4a2    7534
     asm("push               0x1");                                           // 0x0075d4a4    6a01
     asm("push               0x000000b5");                                    // 0x0075d4a6    68b5000000
     asm("push               0x00c2443c");                                    // 0x0075d4ab    683c44c200
@@ -1301,7 +1301,7 @@ void __fastcall FootballAttackerPassProcess__8VillagerFP8Football(struct Village
     asm("mov.s              ecx, ebp");                                      // 0x0075d4cb    8bcd
     asm("call               _jmp_addr_0x00435c40");                          // 0x0075d4cd    e86e87cdff
     asm("{disp8} mov        word ptr [esi + 0x58], 0x0000");                 // 0x0075d4d2    66c746580000
-    asm("_jmp_addr_0x0075d4d8:");
+    asm("LAB__addr_0x0075d4d8:");
     asm("pop                edi");                                           // 0x0075d4d8    5f
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075d4d9    c6861801000001
     asm("pop                esi");                                           // 0x0075d4e0    5e
@@ -1309,7 +1309,7 @@ void __fastcall FootballAttackerPassProcess__8VillagerFP8Football(struct Village
     asm("pop                ebx");                                           // 0x0075d4e2    5b
     asm("add                esp, 0x0c");                                     // 0x0075d4e3    83c40c
     asm("ret                0x0004");                                        // 0x0075d4e6    c20400
-    asm("_jmp_addr_0x0075d4e9:");
+    asm("LAB__addr_0x0075d4e9:");
     asm("push               edi");                                           // 0x0075d4e9    57
     asm("mov.s              ecx, esi");                                      // 0x0075d4ea    8bce
     asm("call               ?FootballAttackerGoToBallProcess@Villager@@QAEXPAVFootball@@@Z");                          // 0x0075d4ec    e89f050000
@@ -1343,7 +1343,7 @@ void __fastcall FootballAttackerLobNearGoalProcess__8VillagerFP8Football(struct 
     asm("mov.s              ecx, esi");                                      // 0x0075d525    8bce
     asm("call               dword ptr [ebp + 0x6b8]");                       // 0x0075d527    ff95b8060000
     asm("test               eax, eax");                                      // 0x0075d52d    85c0
-    asm("{disp32} je        _jmp_addr_0x0075d659");                          // 0x0075d52f    0f8424010000
+    asm("{disp32} je        LAB__addr_0x0075d659");                          // 0x0075d52f    0f8424010000
     asm("{disp8} mov        eax, dword ptr [ebx + 0x1c]");                   // 0x0075d535    8b431c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075d538    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075d53a    8bce
@@ -1352,7 +1352,7 @@ void __fastcall FootballAttackerLobNearGoalProcess__8VillagerFP8Football(struct 
     asm("{disp8} fcomp      dword ptr [esp + 0x2c]");                        // 0x0075d546    d85c242c
     asm("fnstsw             ax");                                            // 0x0075d54a    dfe0
     asm("test               ah, 0x41");                                      // 0x0075d54c    f6c441
-    asm("{disp32} jne       _jmp_addr_0x0075d659");                          // 0x0075d54f    0f8504010000
+    asm("{disp32} jne       LAB__addr_0x0075d659");                          // 0x0075d54f    0f8504010000
     asm("push               esi");                                           // 0x0075d555    56
     asm("mov.s              ecx, edi");                                      // 0x0075d556    8bcf
     asm("call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z");                          // 0x0075d558    e80354ddff
@@ -1420,7 +1420,7 @@ void __fastcall FootballAttackerLobNearGoalProcess__8VillagerFP8Football(struct 
     asm("pop                ebx");                                           // 0x0075d652    5b
     asm("add                esp, 0x18");                                     // 0x0075d653    83c418
     asm("ret                0x0004");                                        // 0x0075d656    c20400
-    asm("_jmp_addr_0x0075d659:");
+    asm("LAB__addr_0x0075d659:");
     asm("push               edi");                                           // 0x0075d659    57
     asm("mov.s              ecx, esi");                                      // 0x0075d65a    8bce
     asm("call               ?FootballAttackerGoToBallProcess@Villager@@QAEXPAVFootball@@@Z");                          // 0x0075d65c    e82f040000
@@ -1454,7 +1454,7 @@ void __fastcall FootballAttackerDribbleProcess__8VillagerFP8Football(struct Vill
     asm("mov.s              ecx, esi");                                      // 0x0075d695    8bce
     asm("call               dword ptr [ebp + 0x6b8]");                       // 0x0075d697    ff95b8060000
     asm("test               eax, eax");                                      // 0x0075d69d    85c0
-    asm("{disp32} je        _jmp_addr_0x0075d83c");                          // 0x0075d69f    0f8497010000
+    asm("{disp32} je        LAB__addr_0x0075d83c");                          // 0x0075d69f    0f8497010000
     asm("{disp8} mov        eax, dword ptr [ebx + 0x1c]");                   // 0x0075d6a5    8b431c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075d6a8    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075d6aa    8bce
@@ -1463,7 +1463,7 @@ void __fastcall FootballAttackerDribbleProcess__8VillagerFP8Football(struct Vill
     asm("{disp8} fcomp      dword ptr [esp + 0x64]");                        // 0x0075d6b6    d85c2464
     asm("fnstsw             ax");                                            // 0x0075d6ba    dfe0
     asm("test               ah, 0x41");                                      // 0x0075d6bc    f6c441
-    asm("{disp32} jne       _jmp_addr_0x0075d83c");                          // 0x0075d6bf    0f8577010000
+    asm("{disp32} jne       LAB__addr_0x0075d83c");                          // 0x0075d6bf    0f8577010000
     asm("{disp8} lea        eax, dword ptr [esp + 0x24]");                   // 0x0075d6c5    8d442424
     asm("push               eax");                                           // 0x0075d6c9    50
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x0075d6ca    8d4e14
@@ -1503,18 +1503,18 @@ void __fastcall FootballAttackerDribbleProcess__8VillagerFP8Football(struct Vill
     asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075d73b    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075d741    dfe0
     asm("test               ah, 0x40");                                      // 0x0075d743    f6c440
-    asm("{disp8} je         _jmp_addr_0x0075d76a");                          // 0x0075d746    7422
+    asm("{disp8} je         LAB__addr_0x0075d76a");                          // 0x0075d746    7422
     asm("{disp8} fld        dword ptr [esp + 0x1c]");                        // 0x0075d748    d944241c
     asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075d74c    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075d752    dfe0
     asm("test               ah, 0x40");                                      // 0x0075d754    f6c440
-    asm("{disp8} je         _jmp_addr_0x0075d76a");                          // 0x0075d757    7411
+    asm("{disp8} je         LAB__addr_0x0075d76a");                          // 0x0075d757    7411
     asm("{disp8} fld        dword ptr [esp + 0x20]");                        // 0x0075d759    d9442420
     asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075d75d    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075d763    dfe0
     asm("test               ah, 0x40");                                      // 0x0075d765    f6c440
-    asm("{disp8} jne        _jmp_addr_0x0075d798");                          // 0x0075d768    752e
-    asm("_jmp_addr_0x0075d76a:");
+    asm("{disp8} jne        LAB__addr_0x0075d798");                          // 0x0075d768    752e
+    asm("LAB__addr_0x0075d76a:");
     asm("{disp8} fld        dword ptr [esp + 0x64]");                        // 0x0075d76a    d9442464
     asm("{disp8} fadd       dword ptr [esp + 0x10]");                        // 0x0075d76e    d8442410
     asm("{disp8} fadd       dword ptr [esp + 0x14]");                        // 0x0075d772    d8442414
@@ -1529,7 +1529,7 @@ void __fastcall FootballAttackerDribbleProcess__8VillagerFP8Football(struct Vill
     asm("fmul               st, st(1)");                                     // 0x0075d790    d8c9
     asm("{disp8} fstp       dword ptr [esp + 0x20]");                        // 0x0075d792    d95c2420
     asm("fstp               st(0)");                                         // 0x0075d796    ddd8
-    asm("_jmp_addr_0x0075d798:");
+    asm("LAB__addr_0x0075d798:");
     asm("{disp32} fmul      dword ptr [_rdata_float0p2]");                   // 0x0075d798    d80daca38a00
     asm("{disp8} lea        eax, dword ptr [esp + 0x48]");                   // 0x0075d79e    8d442448
     asm("push               eax");                                           // 0x0075d7a2    50
@@ -1576,7 +1576,7 @@ void __fastcall FootballAttackerDribbleProcess__8VillagerFP8Football(struct Vill
     asm("pop                ebx");                                           // 0x0075d835    5b
     asm("add                esp, 0x50");                                     // 0x0075d836    83c450
     asm("ret                0x0004");                                        // 0x0075d839    c20400
-    asm("_jmp_addr_0x0075d83c:");
+    asm("LAB__addr_0x0075d83c:");
     asm("push               edi");                                           // 0x0075d83c    57
     asm("mov.s              ecx, esi");                                      // 0x0075d83d    8bce
     asm("call               ?FootballAttackerGoToBallProcess@Villager@@QAEXPAVFootball@@@Z");                          // 0x0075d83f    e84c020000
@@ -1656,18 +1656,18 @@ void __fastcall FootballAttackerMoveToBePassedProcess__8VillagerFP8Football(stru
     asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075d919    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075d91f    dfe0
     asm("test               ah, 0x40");                                      // 0x0075d921    f6c440
-    asm("{disp8} je         _jmp_addr_0x0075d948");                          // 0x0075d924    7422
+    asm("{disp8} je         LAB__addr_0x0075d948");                          // 0x0075d924    7422
     asm("{disp8} fld        dword ptr [esp + 0x10]");                        // 0x0075d926    d9442410
     asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075d92a    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075d930    dfe0
     asm("test               ah, 0x40");                                      // 0x0075d932    f6c440
-    asm("{disp8} je         _jmp_addr_0x0075d948");                          // 0x0075d935    7411
+    asm("{disp8} je         LAB__addr_0x0075d948");                          // 0x0075d935    7411
     asm("{disp8} fld        dword ptr [esp + 0x18]");                        // 0x0075d937    d9442418
     asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075d93b    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075d941    dfe0
     asm("test               ah, 0x40");                                      // 0x0075d943    f6c440
-    asm("{disp8} jne        _jmp_addr_0x0075d988");                          // 0x0075d946    7540
-    asm("_jmp_addr_0x0075d948:");
+    asm("{disp8} jne        LAB__addr_0x0075d988");                          // 0x0075d946    7540
+    asm("LAB__addr_0x0075d948:");
     asm("{disp8} fld        dword ptr [esp + 0x10]");                        // 0x0075d948    d9442410
     asm("{disp8} fmul       dword ptr [esp + 0x10]");                        // 0x0075d94c    d84c2410
     asm("{disp8} fld        dword ptr [esp + 0x18]");                        // 0x0075d950    d9442418
@@ -1686,7 +1686,7 @@ void __fastcall FootballAttackerMoveToBePassedProcess__8VillagerFP8Football(stru
     asm("{disp8} fstp       dword ptr [esp + 0x10]");                        // 0x0075d97c    d95c2410
     asm("{disp8} fmul       dword ptr [esp + 0x18]");                        // 0x0075d980    d84c2418
     asm("{disp8} fstp       dword ptr [esp + 0x14]");                        // 0x0075d984    d95c2414
-    asm("_jmp_addr_0x0075d988:");
+    asm("LAB__addr_0x0075d988:");
     asm("push               0x000000f7");                                    // 0x0075d988    68f7000000
     asm("push               0x00c2443c");                                    // 0x0075d98d    683c44c200
     asm("push               0x3e4ccccd");                                    // 0x0075d992    68cdcc4c3e
@@ -1778,7 +1778,7 @@ void __fastcall FootballAttackerGoToBallProcess__8VillagerFP8Football(struct Vil
     asm("mov.s              ecx, esi");                                      // 0x0075dab5    8bce
     asm("call               dword ptr [edi + 0x6b8]");                       // 0x0075dab7    ff97b8060000
     asm("test               eax, eax");                                      // 0x0075dabd    85c0
-    asm("{disp8} je         _jmp_addr_0x0075daee");                          // 0x0075dabf    742d
+    asm("{disp8} je         LAB__addr_0x0075daee");                          // 0x0075dabf    742d
     asm("{disp8} mov        eax, dword ptr [ebx + 0x1c]");                   // 0x0075dac1    8b431c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075dac4    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075dac6    8bce
@@ -1787,7 +1787,7 @@ void __fastcall FootballAttackerGoToBallProcess__8VillagerFP8Football(struct Vil
     asm("{disp8} fcomp      dword ptr [esp + 0x20]");                        // 0x0075dad2    d85c2420
     asm("fnstsw             ax");                                            // 0x0075dad6    dfe0
     asm("test               ah, 0x41");                                      // 0x0075dad8    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075daee");                          // 0x0075dadb    7511
+    asm("{disp8} jne        LAB__addr_0x0075daee");                          // 0x0075dadb    7511
     asm("pop                edi");                                           // 0x0075dadd    5f
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075dade    c6861801000001
     asm("pop                esi");                                           // 0x0075dae5    5e
@@ -1795,18 +1795,18 @@ void __fastcall FootballAttackerGoToBallProcess__8VillagerFP8Football(struct Vil
     asm("pop                ebx");                                           // 0x0075dae7    5b
     asm("add                esp, 0x0c");                                     // 0x0075dae8    83c40c
     asm("ret                0x0004");                                        // 0x0075daeb    c20400
-    asm("_jmp_addr_0x0075daee:");
+    asm("LAB__addr_0x0075daee:");
     asm("mov.s              ecx, ebp");                                      // 0x0075daee    8bcd
     asm("call               ?GetBall@Football@@QAEPAXXZ");                   // 0x0075daf0    e81b39ddff
     asm("test               byte ptr [eax + 0x24], 0x40");                   // 0x0075daf5    f6402440
-    asm("{disp8} je         _jmp_addr_0x0075db57");                          // 0x0075daf9    745c
+    asm("{disp8} je         LAB__addr_0x0075db57");                          // 0x0075daf9    745c
     asm("push               0x00000109");                                    // 0x0075dafb    6809010000
     asm("push               0x00c2443c");                                    // 0x0075db00    683c44c200
     asm("push               0x3");                                           // 0x0075db05    6a03
     asm("call               ?GameRand@GRand@@SAHJ@Z");                       // 0x0075db07    e8040af8ff
     asm("add                esp, 0x0c");                                     // 0x0075db0c    83c40c
     asm("test               eax, eax");                                      // 0x0075db0f    85c0
-    asm("{disp8} je         _jmp_addr_0x0075db57");                          // 0x0075db11    7444
+    asm("{disp8} je         LAB__addr_0x0075db57");                          // 0x0075db11    7444
     asm("add                ebx, 0x00000084");                               // 0x0075db13    81c384000000
     asm("mov                eax, dword ptr [ebx]");                          // 0x0075db19    8b03
     asm("{disp8} mov        ecx, dword ptr [ebx + 0x04]");                   // 0x0075db1b    8b4b04
@@ -1829,7 +1829,7 @@ void __fastcall FootballAttackerGoToBallProcess__8VillagerFP8Football(struct Vil
     asm("pop                ebx");                                           // 0x0075db50    5b
     asm("add                esp, 0x0c");                                     // 0x0075db51    83c40c
     asm("ret                0x0004");                                        // 0x0075db54    c20400
-    asm("_jmp_addr_0x0075db57:");
+    asm("LAB__addr_0x0075db57:");
     asm("push               0x49");                                          // 0x0075db57    6a49
     asm("mov.s              ecx, ebp");                                      // 0x0075db59    8bcd
     asm("call               ?GetBall@Football@@QAEPAXXZ");                   // 0x0075db5b    e8b038ddff
@@ -1893,15 +1893,15 @@ void __fastcall FootballAttackerIdleProcess__8VillagerFP8Football(struct Village
     asm("mov.s              ecx, edi");                                      // 0x0075dbea    8bcf
     asm("call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z");                          // 0x0075dbec    e86f4dddff
     asm("cmp                word ptr [esi + 0x58], 0x0258");                 // 0x0075dbf1    66817e585802
-    asm("{disp8} jge        _jmp_addr_0x0075dc06");                          // 0x0075dbf7    7d0d
+    asm("{disp8} jge        LAB__addr_0x0075dc06");                          // 0x0075dbf7    7d0d
     asm("push               esi");                                           // 0x0075dbf9    56
     asm("mov.s              ecx, edi");                                      // 0x0075dbfa    8bcf
     asm("call               _jmp_addr_0x005347c0");                          // 0x0075dbfc    e8bf6bddff
     asm("cmp                eax, 0x02");                                     // 0x0075dc01    83f802
-    asm("{disp8} jae        _jmp_addr_0x0075dc0d");                          // 0x0075dc04    7307
-    asm("_jmp_addr_0x0075dc06:");
+    asm("{disp8} jae        LAB__addr_0x0075dc0d");                          // 0x0075dc04    7307
+    asm("LAB__addr_0x0075dc06:");
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075dc06    c6861801000001
-    asm("_jmp_addr_0x0075dc0d:");
+    asm("LAB__addr_0x0075dc0d:");
     asm("pop                edi");                                           // 0x0075dc0d    5f
     asm("pop                esi");                                           // 0x0075dc0e    5e
     asm("ret                0x0004");                                        // 0x0075dc0f    c20400
@@ -1934,35 +1934,35 @@ float __fastcall FootballAttackerShootPriority__8VillagerFP8Football(struct Vill
     asm("add                esp, 0x08");                                     // 0x0075dc55    83c408
     asm("fnstsw             ax");                                            // 0x0075dc58    dfe0
     asm("test               ah, 0x01");                                      // 0x0075dc5a    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075dc69");                          // 0x0075dc5d    740a
+    asm("{disp8} je         LAB__addr_0x0075dc69");                          // 0x0075dc5d    740a
     asm("fstp               st(0)");                                         // 0x0075dc5f    ddd8
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075dc61    d90598a38a00
-    asm("{disp8} jmp        _jmp_addr_0x0075dc7e");                          // 0x0075dc67    eb15
-    asm("_jmp_addr_0x0075dc69:");
+    asm("{disp8} jmp        LAB__addr_0x0075dc7e");                          // 0x0075dc67    eb15
+    asm("LAB__addr_0x0075dc69:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x26300]");             // 0x0075dc69    d81500f38c00
     asm("fnstsw             ax");                                            // 0x0075dc6f    dfe0
     asm("test               ah, 0x41");                                      // 0x0075dc71    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075dc7e");                          // 0x0075dc74    7508
+    asm("{disp8} jne        LAB__addr_0x0075dc7e");                          // 0x0075dc74    7508
     asm("fstp               st(0)");                                         // 0x0075dc76    ddd8
     asm("{disp32} fld       dword ptr [rdata_bytes + 0x26300]");             // 0x0075dc78    d90500f38c00
-    asm("_jmp_addr_0x0075dc7e:");
+    asm("LAB__addr_0x0075dc7e:");
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x2850c]");             // 0x0075dc7e    d80d0c158d00
     asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075dc84    d82d90a38a00
     asm("{disp8} fst        dword ptr [esp + 0x28]");                        // 0x0075dc8a    d9542428
     asm("{disp32} fcomp     dword ptr [__real@3dcccccd]");                   // 0x0075dc8e    d81d2cb28a00
     asm("fnstsw             ax");                                            // 0x0075dc94    dfe0
     asm("test               ah, 0x01");                                      // 0x0075dc96    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075dca5");                          // 0x0075dc99    740a
+    asm("{disp8} je         LAB__addr_0x0075dca5");                          // 0x0075dc99    740a
     asm("{disp8} mov        dword ptr [esp + 0x28], 0x3dcccccd");            // 0x0075dc9b    c7442428cdcccc3d
-    asm("{disp8} jmp        _jmp_addr_0x0075dcbe");                          // 0x0075dca3    eb19
-    asm("_jmp_addr_0x0075dca5:");
+    asm("{disp8} jmp        LAB__addr_0x0075dcbe");                          // 0x0075dca3    eb19
+    asm("LAB__addr_0x0075dca5:");
     asm("{disp8} fld        dword ptr [esp + 0x28]");                        // 0x0075dca5    d9442428
     asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x0075dca9    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x0075dcaf    dfe0
     asm("test               ah, 0x41");                                      // 0x0075dcb1    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075dcbe");                          // 0x0075dcb4    7508
+    asm("{disp8} jne        LAB__addr_0x0075dcbe");                          // 0x0075dcb4    7508
     asm("{disp8} mov        dword ptr [esp + 0x28], 0x3f800000");            // 0x0075dcb6    c74424280000803f
-    asm("_jmp_addr_0x0075dcbe:");
+    asm("LAB__addr_0x0075dcbe:");
     asm("{disp8} lea        edx, dword ptr [esp + 0x0c]");                   // 0x0075dcbe    8d54240c
     asm("push               edx");                                           // 0x0075dcc2    52
     asm("push               esi");                                           // 0x0075dcc3    56
@@ -1995,11 +1995,11 @@ float __fastcall FootballAttackerShootPriority__8VillagerFP8Football(struct Vill
     asm("cmp                eax, 0x00000400");                               // 0x0075dd04    3d00040000
     asm("pop                esi");                                           // 0x0075dd09    5e
     asm("pop                ebx");                                           // 0x0075dd0a    5b
-    asm("{disp8} jbe        _jmp_addr_0x0075dd16");                          // 0x0075dd0b    7609
+    asm("{disp8} jbe        LAB__addr_0x0075dd16");                          // 0x0075dd0b    7609
     asm("mov                ecx, 0x00000800");                               // 0x0075dd0d    b900080000
     asm("sub.s              ecx, eax");                                      // 0x0075dd12    2bc8
     asm("mov.s              eax, ecx");                                      // 0x0075dd14    8bc1
-    asm("_jmp_addr_0x0075dd16:");
+    asm("LAB__addr_0x0075dd16:");
     asm("shr                eax, 0xb");                                      // 0x0075dd16    c1e80b
     asm("{disp8} mov        dword ptr [esp + 0x00], eax");                   // 0x0075dd19    89442400
     asm("{disp8} mov        dword ptr [esp + 0x04], 0x00000000");            // 0x0075dd1d    c744240400000000
@@ -2009,22 +2009,22 @@ float __fastcall FootballAttackerShootPriority__8VillagerFP8Football(struct Vill
     asm("{disp32} fcomp     dword ptr [__real@3dcccccd]");                   // 0x0075dd33    d81d2cb28a00
     asm("fnstsw             ax");                                            // 0x0075dd39    dfe0
     asm("test               ah, 0x01");                                      // 0x0075dd3b    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075dd50");                          // 0x0075dd3e    7410
+    asm("{disp8} je         LAB__addr_0x0075dd50");                          // 0x0075dd3e    7410
     asm("{disp32} fld       dword ptr [__real@3dcccccd]");                   // 0x0075dd40    d9052cb28a00
     asm("{disp8} fmul       dword ptr [esp + 0x1c]");                        // 0x0075dd46    d84c241c
     asm("add                esp, 0x18");                                     // 0x0075dd4a    83c418
     asm("ret                0x0004");                                        // 0x0075dd4d    c20400
-    asm("_jmp_addr_0x0075dd50:");
+    asm("LAB__addr_0x0075dd50:");
     asm("{disp8} fld        dword ptr [esp + 0x00]");                        // 0x0075dd50    d9442400
     asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x0075dd54    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x0075dd5a    dfe0
     asm("test               ah, 0x41");                                      // 0x0075dd5c    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075dd71");                          // 0x0075dd5f    7510
+    asm("{disp8} jne        LAB__addr_0x0075dd71");                          // 0x0075dd5f    7510
     asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075dd61    d90590a38a00
     asm("{disp8} fmul       dword ptr [esp + 0x1c]");                        // 0x0075dd67    d84c241c
     asm("add                esp, 0x18");                                     // 0x0075dd6b    83c418
     asm("ret                0x0004");                                        // 0x0075dd6e    c20400
-    asm("_jmp_addr_0x0075dd71:");
+    asm("LAB__addr_0x0075dd71:");
     asm("{disp8} fld        dword ptr [esp + 0x00]");                        // 0x0075dd71    d9442400
     asm("{disp8} fmul       dword ptr [esp + 0x1c]");                        // 0x0075dd75    d84c241c
     asm("add                esp, 0x18");                                     // 0x0075dd79    83c418
@@ -2038,7 +2038,7 @@ float __fastcall FootballAttackerPassPriority__8VillagerFP8Football(struct Villa
     asm("{disp8} mov        ecx, dword ptr [esp + 0x08]");                   // 0x0075dd81    8b4c2408
     asm("call               _jmp_addr_0x00534820");                          // 0x0075dd85    e8966addff
     asm("dec                eax");                                           // 0x0075dd8a    48
-    asm("{disp8} js         _jmp_addr_0x0075ddad");                          // 0x0075dd8b    7820
+    asm("{disp8} js         LAB__addr_0x0075ddad");                          // 0x0075dd8b    7820
     asm("push               0x0000014b");                                    // 0x0075dd8d    684b010000
     asm("push               0x00c2443c");                                    // 0x0075dd92    683c44c200
     asm("push               0x3e4ccccd");                                    // 0x0075dd97    68cdcc4c3e
@@ -2046,7 +2046,7 @@ float __fastcall FootballAttackerPassPriority__8VillagerFP8Football(struct Villa
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x1ba04]");             // 0x0075dda1    d805044a8c00
     asm("add                esp, 0x0c");                                     // 0x0075dda7    83c40c
     asm("ret                0x0004");                                        // 0x0075ddaa    c20400
-    asm("_jmp_addr_0x0075ddad:");
+    asm("LAB__addr_0x0075ddad:");
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075ddad    d90598a38a00
     asm("ret                0x0004");                                        // 0x0075ddb3    c20400
     __builtin_unreachable();
@@ -2085,35 +2085,35 @@ float __fastcall FootballAttackerDribblePriority__8VillagerFP8Football(struct Vi
     asm("pop                esi");                                           // 0x0075de08    5e
     asm("fnstsw             ax");                                            // 0x0075de09    dfe0
     asm("test               ah, 0x01");                                      // 0x0075de0b    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075de1a");                          // 0x0075de0e    740a
+    asm("{disp8} je         LAB__addr_0x0075de1a");                          // 0x0075de0e    740a
     asm("fstp               st(0)");                                         // 0x0075de10    ddd8
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075de12    d90598a38a00
-    asm("{disp8} jmp        _jmp_addr_0x0075de2f");                          // 0x0075de18    eb15
-    asm("_jmp_addr_0x0075de1a:");
+    asm("{disp8} jmp        LAB__addr_0x0075de2f");                          // 0x0075de18    eb15
+    asm("LAB__addr_0x0075de1a:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x26300]");             // 0x0075de1a    d81500f38c00
     asm("fnstsw             ax");                                            // 0x0075de20    dfe0
     asm("test               ah, 0x41");                                      // 0x0075de22    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075de2f");                          // 0x0075de25    7508
+    asm("{disp8} jne        LAB__addr_0x0075de2f");                          // 0x0075de25    7508
     asm("fstp               st(0)");                                         // 0x0075de27    ddd8
     asm("{disp32} fld       dword ptr [rdata_bytes + 0x26300]");             // 0x0075de29    d90500f38c00
-    asm("_jmp_addr_0x0075de2f:");
+    asm("LAB__addr_0x0075de2f:");
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x2850c]");             // 0x0075de2f    d80d0c158d00
     asm("{disp32} fcom      dword ptr [__real@3dcccccd]");                   // 0x0075de35    d8152cb28a00
     asm("fnstsw             ax");                                            // 0x0075de3b    dfe0
     asm("test               ah, 0x01");                                      // 0x0075de3d    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075de50");                          // 0x0075de40    740e
+    asm("{disp8} je         LAB__addr_0x0075de50");                          // 0x0075de40    740e
     asm("fstp               st(0)");                                         // 0x0075de42    ddd8
     asm("{disp32} fld       dword ptr [__real@3dcccccd]");                   // 0x0075de44    d9052cb28a00
     asm("add                esp, 0x0c");                                     // 0x0075de4a    83c40c
     asm("ret                0x0004");                                        // 0x0075de4d    c20400
-    asm("_jmp_addr_0x0075de50:");
+    asm("LAB__addr_0x0075de50:");
     asm("{disp32} fcom      dword ptr [_rdata_float1p0]");                   // 0x0075de50    d81590a38a00
     asm("fnstsw             ax");                                            // 0x0075de56    dfe0
     asm("test               ah, 0x41");                                      // 0x0075de58    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075de65");                          // 0x0075de5b    7508
+    asm("{disp8} jne        LAB__addr_0x0075de65");                          // 0x0075de5b    7508
     asm("fstp               st(0)");                                         // 0x0075de5d    ddd8
     asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075de5f    d90590a38a00
-    asm("_jmp_addr_0x0075de65:");
+    asm("LAB__addr_0x0075de65:");
     asm("add                esp, 0x0c");                                     // 0x0075de65    83c40c
     asm("ret                0x0004");                                        // 0x0075de68    c20400
     __builtin_unreachable();
@@ -2135,34 +2135,34 @@ float __fastcall FootballAttackerMoveToBePassedPriority__8VillagerFP8Football(st
     asm("pop                esi");                                           // 0x0075de92    5e
     asm("fnstsw             ax");                                            // 0x0075de93    dfe0
     asm("test               ah, 0x01");                                      // 0x0075de95    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075dea4");                          // 0x0075de98    740a
+    asm("{disp8} je         LAB__addr_0x0075dea4");                          // 0x0075de98    740a
     asm("fstp               st(0)");                                         // 0x0075de9a    ddd8
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075de9c    d90598a38a00
-    asm("{disp8} jmp        _jmp_addr_0x0075deb9");                          // 0x0075dea2    eb15
-    asm("_jmp_addr_0x0075dea4:");
+    asm("{disp8} jmp        LAB__addr_0x0075deb9");                          // 0x0075dea2    eb15
+    asm("LAB__addr_0x0075dea4:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x1e658]");             // 0x0075dea4    d81558768c00
     asm("fnstsw             ax");                                            // 0x0075deaa    dfe0
     asm("test               ah, 0x41");                                      // 0x0075deac    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075deb9");                          // 0x0075deaf    7508
+    asm("{disp8} jne        LAB__addr_0x0075deb9");                          // 0x0075deaf    7508
     asm("fstp               st(0)");                                         // 0x0075deb1    ddd8
     asm("{disp32} fld       dword ptr [rdata_bytes + 0x1e658]");             // 0x0075deb3    d90558768c00
-    asm("_jmp_addr_0x0075deb9:");
+    asm("LAB__addr_0x0075deb9:");
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x1ebd4]");             // 0x0075deb9    d80dd47b8c00
     asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075debf    d81598a38a00
     asm("fnstsw             ax");                                            // 0x0075dec5    dfe0
     asm("test               ah, 0x01");                                      // 0x0075dec7    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075ded7");                          // 0x0075deca    740b
+    asm("{disp8} je         LAB__addr_0x0075ded7");                          // 0x0075deca    740b
     asm("fstp               st(0)");                                         // 0x0075decc    ddd8
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075dece    d90598a38a00
     asm("ret                0x0004");                                        // 0x0075ded4    c20400
-    asm("_jmp_addr_0x0075ded7:");
+    asm("LAB__addr_0x0075ded7:");
     asm("{disp32} fcom      dword ptr [__real@3e4ccccd]");                   // 0x0075ded7    d81544b28a00
     asm("fnstsw             ax");                                            // 0x0075dedd    dfe0
     asm("test               ah, 0x41");                                      // 0x0075dedf    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075deec");                          // 0x0075dee2    7508
+    asm("{disp8} jne        LAB__addr_0x0075deec");                          // 0x0075dee2    7508
     asm("fstp               st(0)");                                         // 0x0075dee4    ddd8
     asm("{disp32} fld       dword ptr [__real@3e4ccccd]");                   // 0x0075dee6    d90544b28a00
-    asm("_jmp_addr_0x0075deec:");
+    asm("LAB__addr_0x0075deec:");
     asm("ret                0x0004");                                        // 0x0075deec    c20400
     __builtin_unreachable();
 }
@@ -2204,35 +2204,35 @@ float __fastcall FootballAttackerGoHomePriority__8VillagerFP8Football(struct Vil
     asm("pop                esi");                                           // 0x0075df3e    5e
     asm("fnstsw             ax");                                            // 0x0075df3f    dfe0
     asm("test               ah, 0x01");                                      // 0x0075df41    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075df50");                          // 0x0075df44    740a
+    asm("{disp8} je         LAB__addr_0x0075df50");                          // 0x0075df44    740a
     asm("fstp               st(0)");                                         // 0x0075df46    ddd8
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075df48    d90598a38a00
-    asm("{disp8} jmp        _jmp_addr_0x0075df65");                          // 0x0075df4e    eb15
-    asm("_jmp_addr_0x0075df50:");
+    asm("{disp8} jmp        LAB__addr_0x0075df65");                          // 0x0075df4e    eb15
+    asm("LAB__addr_0x0075df50:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x1e658]");             // 0x0075df50    d81558768c00
     asm("fnstsw             ax");                                            // 0x0075df56    dfe0
     asm("test               ah, 0x41");                                      // 0x0075df58    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075df65");                          // 0x0075df5b    7508
+    asm("{disp8} jne        LAB__addr_0x0075df65");                          // 0x0075df5b    7508
     asm("fstp               st(0)");                                         // 0x0075df5d    ddd8
     asm("{disp32} fld       dword ptr [rdata_bytes + 0x1e658]");             // 0x0075df5f    d90558768c00
-    asm("_jmp_addr_0x0075df65:");
+    asm("LAB__addr_0x0075df65:");
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x1ebd4]");             // 0x0075df65    d80dd47b8c00
     asm("{disp32} fcom      dword ptr [__real@3dcccccd]");                   // 0x0075df6b    d8152cb28a00
     asm("fnstsw             ax");                                            // 0x0075df71    dfe0
     asm("test               ah, 0x01");                                      // 0x0075df73    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075df86");                          // 0x0075df76    740e
+    asm("{disp8} je         LAB__addr_0x0075df86");                          // 0x0075df76    740e
     asm("fstp               st(0)");                                         // 0x0075df78    ddd8
     asm("{disp32} fld       dword ptr [__real@3dcccccd]");                   // 0x0075df7a    d9052cb28a00
     asm("add                esp, 0x0c");                                     // 0x0075df80    83c40c
     asm("ret                0x0004");                                        // 0x0075df83    c20400
-    asm("_jmp_addr_0x0075df86:");
+    asm("LAB__addr_0x0075df86:");
     asm("{disp32} fcom      dword ptr [_rdata_float1p0]");                   // 0x0075df86    d81590a38a00
     asm("fnstsw             ax");                                            // 0x0075df8c    dfe0
     asm("test               ah, 0x41");                                      // 0x0075df8e    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075df9b");                          // 0x0075df91    7508
+    asm("{disp8} jne        LAB__addr_0x0075df9b");                          // 0x0075df91    7508
     asm("fstp               st(0)");                                         // 0x0075df93    ddd8
     asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075df95    d90590a38a00
-    asm("_jmp_addr_0x0075df9b:");
+    asm("LAB__addr_0x0075df9b:");
     asm("add                esp, 0x0c");                                     // 0x0075df9b    83c40c
     asm("ret                0x0004");                                        // 0x0075df9e    c20400
     __builtin_unreachable();
@@ -2257,18 +2257,18 @@ float __fastcall FootballAttackerIdlePriority__8VillagerFP8Football(struct Villa
     asm("add                esp, 0x08");                                     // 0x0075dfd6    83c408
     asm("fnstsw             ax");                                            // 0x0075dfd9    dfe0
     asm("test               ah, 0x01");                                      // 0x0075dfdb    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075dfea");                          // 0x0075dfde    740a
+    asm("{disp8} je         LAB__addr_0x0075dfea");                          // 0x0075dfde    740a
     asm("fstp               st(0)");                                         // 0x0075dfe0    ddd8
     asm("{disp32} fld       dword ptr [rdata_bytes + 0x2414]");              // 0x0075dfe2    d90514b48a00
-    asm("{disp8} jmp        _jmp_addr_0x0075dfff");                          // 0x0075dfe8    eb15
-    asm("_jmp_addr_0x0075dfea:");
+    asm("{disp8} jmp        LAB__addr_0x0075dfff");                          // 0x0075dfe8    eb15
+    asm("LAB__addr_0x0075dfea:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x26300]");             // 0x0075dfea    d81500f38c00
     asm("fnstsw             ax");                                            // 0x0075dff0    dfe0
     asm("test               ah, 0x41");                                      // 0x0075dff2    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075dfff");                          // 0x0075dff5    7508
+    asm("{disp8} jne        LAB__addr_0x0075dfff");                          // 0x0075dff5    7508
     asm("fstp               st(0)");                                         // 0x0075dff7    ddd8
     asm("{disp32} fld       dword ptr [rdata_bytes + 0x26300]");             // 0x0075dff9    d90500f38c00
-    asm("_jmp_addr_0x0075dfff:");
+    asm("LAB__addr_0x0075dfff:");
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x2414]");              // 0x0075dfff    d82514b48a00
     asm("push               esi");                                           // 0x0075e005    56
     asm("mov.s              ecx, ebx");                                      // 0x0075e006    8bcb
@@ -2295,37 +2295,37 @@ float __fastcall FootballAttackerIdlePriority__8VillagerFP8Football(struct Villa
     asm("fnstsw             ax");                                            // 0x0075e040    dfe0
     asm("pop                ebx");                                           // 0x0075e042    5b
     asm("test               ah, 0x01");                                      // 0x0075e043    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075e052");                          // 0x0075e046    740a
+    asm("{disp8} je         LAB__addr_0x0075e052");                          // 0x0075e046    740a
     asm("fstp               st(0)");                                         // 0x0075e048    ddd8
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075e04a    d90598a38a00
-    asm("{disp8} jmp        _jmp_addr_0x0075e067");                          // 0x0075e050    eb15
-    asm("_jmp_addr_0x0075e052:");
+    asm("{disp8} jmp        LAB__addr_0x0075e067");                          // 0x0075e050    eb15
+    asm("LAB__addr_0x0075e052:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x2414]");              // 0x0075e052    d81514b48a00
     asm("fnstsw             ax");                                            // 0x0075e058    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e05a    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075e067");                          // 0x0075e05d    7508
+    asm("{disp8} jne        LAB__addr_0x0075e067");                          // 0x0075e05d    7508
     asm("fstp               st(0)");                                         // 0x0075e05f    ddd8
     asm("{disp32} fld       dword ptr [rdata_bytes + 0x2414]");              // 0x0075e061    d90514b48a00
-    asm("_jmp_addr_0x0075e067:");
+    asm("LAB__addr_0x0075e067:");
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3404]");              // 0x0075e067    d80d04c48a00
     asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075e06d    d82d90a38a00
     asm("{disp8} fmul       dword ptr [esp + 0x10]");                        // 0x0075e073    d84c2410
     asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075e077    d81598a38a00
     asm("fnstsw             ax");                                            // 0x0075e07d    dfe0
     asm("test               ah, 0x01");                                      // 0x0075e07f    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075e092");                          // 0x0075e082    740e
+    asm("{disp8} je         LAB__addr_0x0075e092");                          // 0x0075e082    740e
     asm("fstp               st(0)");                                         // 0x0075e084    ddd8
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075e086    d90598a38a00
     asm("add                esp, 0x0c");                                     // 0x0075e08c    83c40c
     asm("ret                0x0004");                                        // 0x0075e08f    c20400
-    asm("_jmp_addr_0x0075e092:");
+    asm("LAB__addr_0x0075e092:");
     asm("{disp32} fcom      dword ptr [_rdata_float1p0]");                   // 0x0075e092    d81590a38a00
     asm("fnstsw             ax");                                            // 0x0075e098    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e09a    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075e0a7");                          // 0x0075e09d    7508
+    asm("{disp8} jne        LAB__addr_0x0075e0a7");                          // 0x0075e09d    7508
     asm("fstp               st(0)");                                         // 0x0075e09f    ddd8
     asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075e0a1    d90590a38a00
-    asm("_jmp_addr_0x0075e0a7:");
+    asm("LAB__addr_0x0075e0a7:");
     asm("add                esp, 0x0c");                                     // 0x0075e0a7    83c40c
     asm("ret                0x0004");                                        // 0x0075e0aa    c20400
     __builtin_unreachable();
@@ -2339,7 +2339,7 @@ void __fastcall AssignFootballDefenderSubState__8VillagerFv(struct Villager* thi
     asm("mov.s              edi, ecx");                                      // 0x0075e0b4    8bf9
     asm("{disp32} mov       al, byte ptr [edi + 0x00000118]");               // 0x0075e0b6    8a8718010000
     asm("test               al, al");                                        // 0x0075e0bc    84c0
-    asm("{disp32} je        _jmp_addr_0x0075e15f");                          // 0x0075e0be    0f849b000000
+    asm("{disp32} je        LAB__addr_0x0075e15f");                          // 0x0075e0be    0f849b000000
     asm("push               ebx");                                           // 0x0075e0c4    53
     asm("push               ebp");                                           // 0x0075e0c5    55
     asm("push               esi");                                           // 0x0075e0c6    56
@@ -2347,7 +2347,7 @@ void __fastcall AssignFootballDefenderSubState__8VillagerFv(struct Villager* thi
     asm("{disp8} mov        dword ptr [esp + 0x10], 0xb8d1b717");            // 0x0075e0cf    c744241017b7d1b8
     asm("xor.s              ebx, ebx");                                      // 0x0075e0d7    33db
     asm("mov                esi, 0x00c23bbc");                               // 0x0075e0d9    bebc3bc200
-    asm("_jmp_addr_0x0075e0de:");
+    asm("LAB__addr_0x0075e0de:");
     asm("mov.s              ecx, edi");                                      // 0x0075e0de    8bcf
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075e0e0    e8bb3dffff
     asm("mov                ecx, dword ptr [esi]");                          // 0x0075e0e5    8b0e
@@ -2357,7 +2357,7 @@ void __fastcall AssignFootballDefenderSubState__8VillagerFv(struct Villager* thi
     asm("mov.s              ebp, eax");                                      // 0x0075e0ed    8be8
     asm("{disp8} mov        eax, dword ptr [esi + 0x0c]");                   // 0x0075e0ef    8b460c
     asm("test               eax, eax");                                      // 0x0075e0f2    85c0
-    asm("{disp8} je         _jmp_addr_0x0075e10a");                          // 0x0075e0f4    7414
+    asm("{disp8} je         LAB__addr_0x0075e10a");                          // 0x0075e0f4    7414
     asm("mov.s              ecx, edi");                                      // 0x0075e0f6    8bcf
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075e0f8    e8a33dffff
     asm("{disp8} mov        ecx, dword ptr [esi + 0x10]");                   // 0x0075e0fd    8b4e10
@@ -2365,10 +2365,10 @@ void __fastcall AssignFootballDefenderSubState__8VillagerFv(struct Villager* thi
     asm("add.s              ecx, edi");                                      // 0x0075e101    03cf
     asm("call               dword ptr [esi + 0xc]");                         // 0x0075e103    ff560c
     asm("test               eax, eax");                                      // 0x0075e106    85c0
-    asm("{disp8} je         _jmp_addr_0x0075e135");                          // 0x0075e108    742b
-    asm("_jmp_addr_0x0075e10a:");
+    asm("{disp8} je         LAB__addr_0x0075e135");                          // 0x0075e108    742b
+    asm("LAB__addr_0x0075e10a:");
     asm("test               ebp, ebp");                                      // 0x0075e10a    85ed
-    asm("{disp8} je         _jmp_addr_0x0075e135");                          // 0x0075e10c    7427
+    asm("{disp8} je         LAB__addr_0x0075e135");                          // 0x0075e10c    7427
     asm("mov.s              ecx, edi");                                      // 0x0075e10e    8bcf
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075e110    e88b3dffff
     asm("{disp8} mov        ecx, dword ptr [esi + 0x20]");                   // 0x0075e115    8b4e20
@@ -2378,17 +2378,17 @@ void __fastcall AssignFootballDefenderSubState__8VillagerFv(struct Villager* thi
     asm("{disp8} fcom       dword ptr [esp + 0x10]");                        // 0x0075e11e    d8542410
     asm("fnstsw             ax");                                            // 0x0075e122    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e124    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075e133");                          // 0x0075e127    750a
+    asm("{disp8} jne        LAB__addr_0x0075e133");                          // 0x0075e127    750a
     asm("{disp8} fstp       dword ptr [esp + 0x10]");                        // 0x0075e129    d95c2410
     asm("{disp8} mov        dword ptr [esp + 0x14], ebx");                   // 0x0075e12d    895c2414
-    asm("{disp8} jmp        _jmp_addr_0x0075e135");                          // 0x0075e131    eb02
-    asm("_jmp_addr_0x0075e133:");
+    asm("{disp8} jmp        LAB__addr_0x0075e135");                          // 0x0075e131    eb02
+    asm("LAB__addr_0x0075e133:");
     asm("fstp               st(0)");                                         // 0x0075e133    ddd8
-    asm("_jmp_addr_0x0075e135:");
+    asm("LAB__addr_0x0075e135:");
     asm("add                esi, 0x00000080");                               // 0x0075e135    81c680000000
     asm("inc                ebx");                                           // 0x0075e13b    43
     asm("cmp                esi, 0x00c23fbc");                               // 0x0075e13c    81febc3fc200
-    asm(".byte              0x72, 0x9a");// {disp8} jb _jmp_addr_0x0075e0de  // 0x0075e142    729a
+    asm(".byte              0x72, 0x9a");// {disp8} jb LAB__addr_0x0075e0de  // 0x0075e142    729a
     asm("{disp8} mov        al, byte ptr [esp + 0x14]");                     // 0x0075e144    8a442414
     asm("pop                esi");                                           // 0x0075e148    5e
     asm("{disp32} mov       byte ptr [edi + 0x0000008f], al");               // 0x0075e149    88878f000000
@@ -2396,7 +2396,7 @@ void __fastcall AssignFootballDefenderSubState__8VillagerFv(struct Villager* thi
     asm("{disp32} mov       byte ptr [edi + 0x00000118], 0x00");             // 0x0075e150    c6871801000000
     asm("{disp32} mov       byte ptr [edi + 0x00000119], 0x00");             // 0x0075e157    c6871901000000
     asm("pop                ebx");                                           // 0x0075e15e    5b
-    asm("_jmp_addr_0x0075e15f:");
+    asm("LAB__addr_0x0075e15f:");
     asm("pop                edi");                                           // 0x0075e15f    5f
     asm("add                esp, 0x08");                                     // 0x0075e160    83c408
     asm("ret");                                                              // 0x0075e163    c3
@@ -2411,26 +2411,26 @@ bool32_t __fastcall FootballDefender__8VillagerFv(struct Villager* this)
     asm("mov.s              esi, ecx");                                      // 0x0075e172    8bf1
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075e174    e8273dffff
     asm("test               eax, eax");                                      // 0x0075e179    85c0
-    asm("{disp32} je        _jmp_addr_0x0075e203");                          // 0x0075e17b    0f8482000000
+    asm("{disp32} je        LAB__addr_0x0075e203");                          // 0x0075e17b    0f8482000000
     asm("mov.s              ecx, esi");                                      // 0x0075e181    8bce
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075e183    e8183dffff
     asm("mov.s              ecx, eax");                                      // 0x0075e188    8bc8
     asm("call               ?GetBall@Football@@QAEPAXXZ");                   // 0x0075e18a    e88132ddff
     asm("test               eax, eax");                                      // 0x0075e18f    85c0
-    asm("{disp8} je         _jmp_addr_0x0075e203");                          // 0x0075e191    7470
+    asm("{disp8} je         LAB__addr_0x0075e203");                          // 0x0075e191    7470
     asm("{disp8} mov        ax, word ptr [esi + 0x58]");                     // 0x0075e193    668b4658
     asm("cmp                ax, 0x0001");                                    // 0x0075e197    663d0100
-    asm("{disp8} jl         _jmp_addr_0x0075e1f6");                          // 0x0075e19b    7c59
+    asm("{disp8} jl         LAB__addr_0x0075e1f6");                          // 0x0075e19b    7c59
     asm("xor.s              eax, eax");                                      // 0x0075e19d    33c0
     asm("{disp32} mov       al, byte ptr [esi + 0x0000008f]");               // 0x0075e19f    8a868f000000
     asm("mov.s              edi, eax");                                      // 0x0075e1a5    8bf8
     asm("cmp                edi, 0x08");                                     // 0x0075e1a7    83ff08
-    asm(".byte              0x72, 0x8");// {disp8} jb _jmp_addr_0x0075e1b4   // 0x0075e1aa    7208
+    asm(".byte              0x72, 0x8");// {disp8} jb LAB__addr_0x0075e1b4   // 0x0075e1aa    7208
     asm("pop                edi");                                           // 0x0075e1ac    5f
     asm("mov                eax, 0x00000001");                               // 0x0075e1ad    b801000000
     asm("pop                esi");                                           // 0x0075e1b2    5e
     asm("ret");                                                              // 0x0075e1b3    c3
-    asm("_jmp_addr_0x0075e1b4:");
+    asm("LAB__addr_0x0075e1b4:");
     asm("mov.s              ecx, esi");                                      // 0x0075e1b4    8bce
     asm("shl                edi, 7");                                        // 0x0075e1b6    c1e707
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075e1b9    e8e23cffff
@@ -2445,21 +2445,21 @@ bool32_t __fastcall FootballDefender__8VillagerFv(struct Villager* this)
     asm("add.s              ecx, esi");                                      // 0x0075e1db    03ce
     asm("call               dword ptr [edi + data_bytes + 0x25dbb8]");       // 0x0075e1dd    ff97b83bc200
     asm("test               eax, eax");                                      // 0x0075e1e3    85c0
-    asm("{disp8} jne        _jmp_addr_0x0075e1fb");                          // 0x0075e1e5    7514
+    asm("{disp8} jne        LAB__addr_0x0075e1fb");                          // 0x0075e1e5    7514
     asm("pop                edi");                                           // 0x0075e1e7    5f
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075e1e8    c6861801000001
     asm("mov                eax, 0x00000001");                               // 0x0075e1ef    b801000000
     asm("pop                esi");                                           // 0x0075e1f4    5e
     asm("ret");                                                              // 0x0075e1f5    c3
-    asm("_jmp_addr_0x0075e1f6:");
+    asm("LAB__addr_0x0075e1f6:");
     asm("inc                eax");                                           // 0x0075e1f6    40
     asm("{disp8} mov        word ptr [esi + 0x58], ax");                     // 0x0075e1f7    66894658
-    asm("_jmp_addr_0x0075e1fb:");
+    asm("LAB__addr_0x0075e1fb:");
     asm("pop                edi");                                           // 0x0075e1fb    5f
     asm("mov                eax, 0x00000001");                               // 0x0075e1fc    b801000000
     asm("pop                esi");                                           // 0x0075e201    5e
     asm("ret");                                                              // 0x0075e202    c3
-    asm("_jmp_addr_0x0075e203:");
+    asm("LAB__addr_0x0075e203:");
     asm("mov                edx, dword ptr [esi]");                          // 0x0075e203    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075e205    8bce
     asm("call               dword ptr [edx + 0x8c8]");                       // 0x0075e207    ff92c8080000
@@ -2490,7 +2490,7 @@ void __fastcall FootballDefenderSaveProcess__8VillagerFP8Football(struct Village
     asm("mov.s              ecx, esi");                                      // 0x0075e235    8bce
     asm("call               dword ptr [ebp + 0x6b8]");                       // 0x0075e237    ff95b8060000
     asm("test               eax, eax");                                      // 0x0075e23d    85c0
-    asm("{disp32} je        _jmp_addr_0x0075e35c");                          // 0x0075e23f    0f8417010000
+    asm("{disp32} je        LAB__addr_0x0075e35c");                          // 0x0075e23f    0f8417010000
     asm("{disp8} mov        eax, dword ptr [ebx + 0x1c]");                   // 0x0075e245    8b431c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075e248    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075e24a    8bce
@@ -2499,7 +2499,7 @@ void __fastcall FootballDefenderSaveProcess__8VillagerFP8Football(struct Village
     asm("{disp8} fcomp      dword ptr [esp + 0x2c]");                        // 0x0075e256    d85c242c
     asm("fnstsw             ax");                                            // 0x0075e25a    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e25c    f6c441
-    asm("{disp32} jne       _jmp_addr_0x0075e35c");                          // 0x0075e25f    0f85f7000000
+    asm("{disp32} jne       LAB__addr_0x0075e35c");                          // 0x0075e25f    0f85f7000000
     asm("push               esi");                                           // 0x0075e265    56
     asm("mov.s              ecx, edi");                                      // 0x0075e266    8bcf
     asm("call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z");                          // 0x0075e268    e8f346ddff
@@ -2562,7 +2562,7 @@ void __fastcall FootballDefenderSaveProcess__8VillagerFP8Football(struct Village
     asm("pop                ebx");                                           // 0x0075e355    5b
     asm("add                esp, 0x18");                                     // 0x0075e356    83c418
     asm("ret                0x0004");                                        // 0x0075e359    c20400
-    asm("_jmp_addr_0x0075e35c:");
+    asm("LAB__addr_0x0075e35c:");
     asm("push               edi");                                           // 0x0075e35c    57
     asm("mov.s              ecx, esi");                                      // 0x0075e35d    8bce
     asm("call               ?FootballDefenderGoToBallProcess@Villager@@QAEXPAVFootball@@@Z");                          // 0x0075e35f    e83c020000
@@ -2605,7 +2605,7 @@ void __fastcall FootballDefenderDribbleProcess__8VillagerFP8Football(struct Vill
     asm("mov.s              ecx, esi");                                      // 0x0075e3a5    8bce
     asm("call               dword ptr [ebp + 0x6b8]");                       // 0x0075e3a7    ff95b8060000
     asm("test               eax, eax");                                      // 0x0075e3ad    85c0
-    asm("{disp32} je        _jmp_addr_0x0075e54c");                          // 0x0075e3af    0f8497010000
+    asm("{disp32} je        LAB__addr_0x0075e54c");                          // 0x0075e3af    0f8497010000
     asm("{disp8} mov        eax, dword ptr [ebx + 0x1c]");                   // 0x0075e3b5    8b431c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075e3b8    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075e3ba    8bce
@@ -2614,7 +2614,7 @@ void __fastcall FootballDefenderDribbleProcess__8VillagerFP8Football(struct Vill
     asm("{disp8} fcomp      dword ptr [esp + 0x64]");                        // 0x0075e3c6    d85c2464
     asm("fnstsw             ax");                                            // 0x0075e3ca    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e3cc    f6c441
-    asm("{disp32} jne       _jmp_addr_0x0075e54c");                          // 0x0075e3cf    0f8577010000
+    asm("{disp32} jne       LAB__addr_0x0075e54c");                          // 0x0075e3cf    0f8577010000
     asm("{disp8} lea        eax, dword ptr [esp + 0x24]");                   // 0x0075e3d5    8d442424
     asm("push               eax");                                           // 0x0075e3d9    50
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x0075e3da    8d4e14
@@ -2654,18 +2654,18 @@ void __fastcall FootballDefenderDribbleProcess__8VillagerFP8Football(struct Vill
     asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075e44b    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075e451    dfe0
     asm("test               ah, 0x40");                                      // 0x0075e453    f6c440
-    asm("{disp8} je         _jmp_addr_0x0075e47a");                          // 0x0075e456    7422
+    asm("{disp8} je         LAB__addr_0x0075e47a");                          // 0x0075e456    7422
     asm("{disp8} fld        dword ptr [esp + 0x1c]");                        // 0x0075e458    d944241c
     asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075e45c    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075e462    dfe0
     asm("test               ah, 0x40");                                      // 0x0075e464    f6c440
-    asm("{disp8} je         _jmp_addr_0x0075e47a");                          // 0x0075e467    7411
+    asm("{disp8} je         LAB__addr_0x0075e47a");                          // 0x0075e467    7411
     asm("{disp8} fld        dword ptr [esp + 0x20]");                        // 0x0075e469    d9442420
     asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075e46d    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075e473    dfe0
     asm("test               ah, 0x40");                                      // 0x0075e475    f6c440
-    asm("{disp8} jne        _jmp_addr_0x0075e4a8");                          // 0x0075e478    752e
-    asm("_jmp_addr_0x0075e47a:");
+    asm("{disp8} jne        LAB__addr_0x0075e4a8");                          // 0x0075e478    752e
+    asm("LAB__addr_0x0075e47a:");
     asm("{disp8} fld        dword ptr [esp + 0x64]");                        // 0x0075e47a    d9442464
     asm("{disp8} fadd       dword ptr [esp + 0x10]");                        // 0x0075e47e    d8442410
     asm("{disp8} fadd       dword ptr [esp + 0x14]");                        // 0x0075e482    d8442414
@@ -2680,7 +2680,7 @@ void __fastcall FootballDefenderDribbleProcess__8VillagerFP8Football(struct Vill
     asm("fmul               st, st(1)");                                     // 0x0075e4a0    d8c9
     asm("{disp8} fstp       dword ptr [esp + 0x20]");                        // 0x0075e4a2    d95c2420
     asm("fstp               st(0)");                                         // 0x0075e4a6    ddd8
-    asm("_jmp_addr_0x0075e4a8:");
+    asm("LAB__addr_0x0075e4a8:");
     asm("{disp32} fmul      dword ptr [_rdata_float0p2]");                   // 0x0075e4a8    d80daca38a00
     asm("{disp8} lea        eax, dword ptr [esp + 0x48]");                   // 0x0075e4ae    8d442448
     asm("push               eax");                                           // 0x0075e4b2    50
@@ -2727,7 +2727,7 @@ void __fastcall FootballDefenderDribbleProcess__8VillagerFP8Football(struct Vill
     asm("pop                ebx");                                           // 0x0075e545    5b
     asm("add                esp, 0x50");                                     // 0x0075e546    83c450
     asm("ret                0x0004");                                        // 0x0075e549    c20400
-    asm("_jmp_addr_0x0075e54c:");
+    asm("LAB__addr_0x0075e54c:");
     asm("push               edi");                                           // 0x0075e54c    57
     asm("mov.s              ecx, esi");                                      // 0x0075e54d    8bce
     asm("call               ?FootballDefenderGoToBallProcess@Villager@@QAEXPAVFootball@@@Z");                          // 0x0075e54f    e84c000000
@@ -2751,12 +2751,12 @@ void __fastcall FootballDefenderMarkProcess__8VillagerFP8Football(struct Village
     asm("call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z");                          // 0x0075e56b    e8f043ddff
     asm("{disp32} mov       eax, dword ptr [edi + eax * 0x4 + 0x00000244]"); // 0x0075e570    8b848744020000
     asm("test               eax, eax");                                      // 0x0075e577    85c0
-    asm("{disp8} je         _jmp_addr_0x0075e585");                          // 0x0075e579    740a
+    asm("{disp8} je         LAB__addr_0x0075e585");                          // 0x0075e579    740a
     asm("push               0x4b");                                          // 0x0075e57b    6a4b
     asm("push               eax");                                           // 0x0075e57d    50
     asm("mov.s              ecx, esi");                                      // 0x0075e57e    8bce
     asm("call               ?StartMoveToObject@Villager@@QAE_NPAVObject@@W4VILLAGER_STATES@@@Z");                          // 0x0075e580    e80b2cffff
-    asm("_jmp_addr_0x0075e585:");
+    asm("LAB__addr_0x0075e585:");
     asm("pop                edi");                                           // 0x0075e585    5f
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075e586    c6861801000001
     asm("pop                esi");                                           // 0x0075e58d    5e
@@ -2785,7 +2785,7 @@ void __fastcall FootballDefenderGoToBallProcess__8VillagerFP8Football(struct Vil
     asm("mov.s              ecx, esi");                                      // 0x0075e5c5    8bce
     asm("call               dword ptr [edi + 0x6b8]");                       // 0x0075e5c7    ff97b8060000
     asm("test               eax, eax");                                      // 0x0075e5cd    85c0
-    asm("{disp8} je         _jmp_addr_0x0075e5fe");                          // 0x0075e5cf    742d
+    asm("{disp8} je         LAB__addr_0x0075e5fe");                          // 0x0075e5cf    742d
     asm("{disp8} mov        eax, dword ptr [ebx + 0x1c]");                   // 0x0075e5d1    8b431c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075e5d4    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075e5d6    8bce
@@ -2794,7 +2794,7 @@ void __fastcall FootballDefenderGoToBallProcess__8VillagerFP8Football(struct Vil
     asm("{disp8} fcomp      dword ptr [esp + 0x20]");                        // 0x0075e5e2    d85c2420
     asm("fnstsw             ax");                                            // 0x0075e5e6    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e5e8    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075e5fe");                          // 0x0075e5eb    7511
+    asm("{disp8} jne        LAB__addr_0x0075e5fe");                          // 0x0075e5eb    7511
     asm("pop                edi");                                           // 0x0075e5ed    5f
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075e5ee    c6861801000001
     asm("pop                esi");                                           // 0x0075e5f5    5e
@@ -2802,18 +2802,18 @@ void __fastcall FootballDefenderGoToBallProcess__8VillagerFP8Football(struct Vil
     asm("pop                ebx");                                           // 0x0075e5f7    5b
     asm("add                esp, 0x0c");                                     // 0x0075e5f8    83c40c
     asm("ret                0x0004");                                        // 0x0075e5fb    c20400
-    asm("_jmp_addr_0x0075e5fe:");
+    asm("LAB__addr_0x0075e5fe:");
     asm("mov.s              ecx, ebp");                                      // 0x0075e5fe    8bcd
     asm("call               ?GetBall@Football@@QAEPAXXZ");                   // 0x0075e600    e80b2eddff
     asm("test               byte ptr [eax + 0x24], 0x40");                   // 0x0075e605    f6402440
-    asm("{disp8} je         _jmp_addr_0x0075e667");                          // 0x0075e609    745c
+    asm("{disp8} je         LAB__addr_0x0075e667");                          // 0x0075e609    745c
     asm("push               0x00000225");                                    // 0x0075e60b    6825020000
     asm("push               0x00c2443c");                                    // 0x0075e610    683c44c200
     asm("push               0x3");                                           // 0x0075e615    6a03
     asm("call               ?GameRand@GRand@@SAHJ@Z");                       // 0x0075e617    e8f4fef7ff
     asm("add                esp, 0x0c");                                     // 0x0075e61c    83c40c
     asm("test               eax, eax");                                      // 0x0075e61f    85c0
-    asm("{disp8} je         _jmp_addr_0x0075e667");                          // 0x0075e621    7444
+    asm("{disp8} je         LAB__addr_0x0075e667");                          // 0x0075e621    7444
     asm("add                ebx, 0x00000084");                               // 0x0075e623    81c384000000
     asm("mov                eax, dword ptr [ebx]");                          // 0x0075e629    8b03
     asm("{disp8} mov        ecx, dword ptr [ebx + 0x04]");                   // 0x0075e62b    8b4b04
@@ -2836,7 +2836,7 @@ void __fastcall FootballDefenderGoToBallProcess__8VillagerFP8Football(struct Vil
     asm("pop                ebx");                                           // 0x0075e660    5b
     asm("add                esp, 0x0c");                                     // 0x0075e661    83c40c
     asm("ret                0x0004");                                        // 0x0075e664    c20400
-    asm("_jmp_addr_0x0075e667:");
+    asm("LAB__addr_0x0075e667:");
     asm("push               0x4b");                                          // 0x0075e667    6a4b
     asm("mov.s              ecx, ebp");                                      // 0x0075e669    8bcd
     asm("call               ?GetBall@Football@@QAEPAXXZ");                   // 0x0075e66b    e8a02dddff
@@ -2900,15 +2900,15 @@ void __fastcall FootballDefenderIdleProcess__8VillagerFP8Football(struct Village
     asm("mov.s              ecx, edi");                                      // 0x0075e6fa    8bcf
     asm("call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z");                          // 0x0075e6fc    e85f42ddff
     asm("cmp                word ptr [esi + 0x58], 0x0258");                 // 0x0075e701    66817e585802
-    asm("{disp8} jge        _jmp_addr_0x0075e716");                          // 0x0075e707    7d0d
+    asm("{disp8} jge        LAB__addr_0x0075e716");                          // 0x0075e707    7d0d
     asm("push               esi");                                           // 0x0075e709    56
     asm("mov.s              ecx, edi");                                      // 0x0075e70a    8bcf
     asm("call               _jmp_addr_0x005347c0");                          // 0x0075e70c    e8af60ddff
     asm("cmp                eax, 0x02");                                     // 0x0075e711    83f802
-    asm("{disp8} jae        _jmp_addr_0x0075e71d");                          // 0x0075e714    7307
-    asm("_jmp_addr_0x0075e716:");
+    asm("{disp8} jae        LAB__addr_0x0075e71d");                          // 0x0075e714    7307
+    asm("LAB__addr_0x0075e716:");
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075e716    c6861801000001
-    asm("_jmp_addr_0x0075e71d:");
+    asm("LAB__addr_0x0075e71d:");
     asm("pop                edi");                                           // 0x0075e71d    5f
     asm("pop                esi");                                           // 0x0075e71e    5e
     asm("ret                0x0004");                                        // 0x0075e71f    c20400
@@ -2937,7 +2937,7 @@ void __fastcall FootballDefenderPassProcess__8VillagerFP8Football(struct Village
     asm("mov.s              ecx, esi");                                      // 0x0075e755    8bce
     asm("call               dword ptr [ebx + 0x6b8]");                       // 0x0075e757    ff93b8060000
     asm("test               eax, eax");                                      // 0x0075e75d    85c0
-    asm("{disp32} je        _jmp_addr_0x0075e879");                          // 0x0075e75f    0f8414010000
+    asm("{disp32} je        LAB__addr_0x0075e879");                          // 0x0075e75f    0f8414010000
     asm("{disp8} mov        eax, dword ptr [ebp + 0x1c]");                   // 0x0075e765    8b451c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075e768    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075e76a    8bce
@@ -2946,13 +2946,13 @@ void __fastcall FootballDefenderPassProcess__8VillagerFP8Football(struct Village
     asm("{disp8} fcomp      dword ptr [esp + 0x20]");                        // 0x0075e776    d85c2420
     asm("fnstsw             ax");                                            // 0x0075e77a    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e77c    f6c441
-    asm("{disp32} jne       _jmp_addr_0x0075e879");                          // 0x0075e77f    0f85f4000000
+    asm("{disp32} jne       LAB__addr_0x0075e879");                          // 0x0075e77f    0f85f4000000
     asm("push               esi");                                           // 0x0075e785    56
     asm("mov.s              ecx, edi");                                      // 0x0075e786    8bcf
     asm("call               _jmp_addr_0x00534820");                          // 0x0075e788    e89360ddff
     asm("mov.s              ebx, eax");                                      // 0x0075e78d    8bd8
     asm("dec                ebx");                                           // 0x0075e78f    4b
-    asm("{disp32} js        _jmp_addr_0x0075e868");                          // 0x0075e790    0f88d2000000
+    asm("{disp32} js        LAB__addr_0x0075e868");                          // 0x0075e790    0f88d2000000
     asm("push               esi");                                           // 0x0075e796    56
     asm("mov.s              ecx, edi");                                      // 0x0075e797    8bcf
     asm("call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z");                          // 0x0075e799    e8c241ddff
@@ -2962,27 +2962,27 @@ void __fastcall FootballDefenderPassProcess__8VillagerFP8Football(struct Village
     asm("{disp32} mov       ecx, dword ptr [edi + eax * 0x8 + 0x00000238]"); // 0x0075e7a3    8b8cc738020000
     asm("test               ecx, ecx");                                      // 0x0075e7aa    85c9
     asm("{disp32} lea       eax, dword ptr [edi + eax * 0x8 + 0x00000234]"); // 0x0075e7ac    8d84c734020000
-    asm("{disp8} jbe        _jmp_addr_0x0075e7cc");                          // 0x0075e7b3    7617
+    asm("{disp8} jbe        LAB__addr_0x0075e7cc");                          // 0x0075e7b3    7617
     asm("mov                eax, dword ptr [eax]");                          // 0x0075e7b5    8b00
     asm("test               eax, eax");                                      // 0x0075e7b7    85c0
-    asm("{disp8} je         _jmp_addr_0x0075e7cc");                          // 0x0075e7b9    7411
+    asm("{disp8} je         LAB__addr_0x0075e7cc");                          // 0x0075e7b9    7411
     asm("cmp.s              ebx, ecx");                                      // 0x0075e7bb    3bd9
-    asm("{disp8} jge        _jmp_addr_0x0075e7cc");                          // 0x0075e7bd    7d0d
+    asm("{disp8} jge        LAB__addr_0x0075e7cc");                          // 0x0075e7bd    7d0d
     asm("test               ebx, ebx");                                      // 0x0075e7bf    85db
-    asm("{disp8} jle        _jmp_addr_0x0075e7c8");                          // 0x0075e7c1    7e05
-    asm("_jmp_addr_0x0075e7c3:");
+    asm("{disp8} jle        LAB__addr_0x0075e7c8");                          // 0x0075e7c1    7e05
+    asm("LAB__addr_0x0075e7c3:");
     asm("dec                ebx");                                           // 0x0075e7c3    4b
     asm("mov                eax, dword ptr [eax]");                          // 0x0075e7c4    8b00
-    asm("{disp8} jne        _jmp_addr_0x0075e7c3");                          // 0x0075e7c6    75fb
-    asm("_jmp_addr_0x0075e7c8:");
+    asm("{disp8} jne        LAB__addr_0x0075e7c3");                          // 0x0075e7c6    75fb
+    asm("LAB__addr_0x0075e7c8:");
     asm("test               eax, eax");                                      // 0x0075e7c8    85c0
-    asm("{disp8} jne        _jmp_addr_0x0075e7d0");                          // 0x0075e7ca    7504
-    asm("_jmp_addr_0x0075e7cc:");
+    asm("{disp8} jne        LAB__addr_0x0075e7d0");                          // 0x0075e7ca    7504
+    asm("LAB__addr_0x0075e7cc:");
     asm("xor.s              edi, edi");                                      // 0x0075e7cc    33ff
-    asm("{disp8} jmp        _jmp_addr_0x0075e7d3");                          // 0x0075e7ce    eb03
-    asm("_jmp_addr_0x0075e7d0:");
+    asm("{disp8} jmp        LAB__addr_0x0075e7d3");                          // 0x0075e7ce    eb03
+    asm("LAB__addr_0x0075e7d0:");
     asm("{disp8} mov        edi, dword ptr [eax + 0x04]");                   // 0x0075e7d0    8b7804
-    asm("_jmp_addr_0x0075e7d3:");
+    asm("LAB__addr_0x0075e7d3:");
     asm("{disp8} lea        eax, dword ptr [edi + 0x14]");                   // 0x0075e7d3    8d4714
     asm("mov                ecx, dword ptr [eax]");                          // 0x0075e7d6    8b08
     asm("{disp8} mov        dword ptr [esp + 0x10], ecx");                   // 0x0075e7d8    894c2410
@@ -2994,7 +2994,7 @@ void __fastcall FootballDefenderPassProcess__8VillagerFP8Football(struct Village
     asm("mov.s              ecx, edi");                                      // 0x0075e7ec    8bcf
     asm("call               dword ptr [edx + 0x174]");                       // 0x0075e7ee    ff9274010000
     asm("test               eax, eax");                                      // 0x0075e7f4    85c0
-    asm("{disp8} je         _jmp_addr_0x0075e816");                          // 0x0075e7f6    741e
+    asm("{disp8} je         LAB__addr_0x0075e816");                          // 0x0075e7f6    741e
     asm("mov                eax, dword ptr [edi]");                          // 0x0075e7f8    8b07
     asm("mov.s              ecx, edi");                                      // 0x0075e7fa    8bcf
     asm("call               dword ptr [eax + 0x860]");                       // 0x0075e7fc    ff9060080000
@@ -3004,7 +3004,7 @@ void __fastcall FootballDefenderPassProcess__8VillagerFP8Football(struct Village
     asm("{disp8} mov        dword ptr [esp + 0x14], edx");                   // 0x0075e80b    89542414
     asm("{disp8} mov        eax, dword ptr [eax + 0x08]");                   // 0x0075e80f    8b4008
     asm("{disp8} mov        dword ptr [esp + 0x18], eax");                   // 0x0075e812    89442418
-    asm("_jmp_addr_0x0075e816:");
+    asm("LAB__addr_0x0075e816:");
     asm("{disp8} lea        ecx, dword ptr [esp + 0x10]");                   // 0x0075e816    8d4c2410
     asm("push               ecx");                                           // 0x0075e81a    51
     asm("{disp8} lea        edx, dword ptr [ebp + 0x14]");                   // 0x0075e81b    8d5514
@@ -3014,7 +3014,7 @@ void __fastcall FootballDefenderPassProcess__8VillagerFP8Football(struct Village
     asm("add                esp, 0x08");                                     // 0x0075e82a    83c408
     asm("fnstsw             ax");                                            // 0x0075e82d    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e82f    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075e868");                          // 0x0075e832    7534
+    asm("{disp8} jne        LAB__addr_0x0075e868");                          // 0x0075e832    7534
     asm("push               0x1");                                           // 0x0075e834    6a01
     asm("push               0x00000255");                                    // 0x0075e836    6855020000
     asm("push               0x00c2443c");                                    // 0x0075e83b    683c44c200
@@ -3028,7 +3028,7 @@ void __fastcall FootballDefenderPassProcess__8VillagerFP8Football(struct Village
     asm("mov.s              ecx, ebp");                                      // 0x0075e85b    8bcd
     asm("call               _jmp_addr_0x00435c40");                          // 0x0075e85d    e8de73cdff
     asm("{disp8} mov        word ptr [esi + 0x58], 0x0000");                 // 0x0075e862    66c746580000
-    asm("_jmp_addr_0x0075e868:");
+    asm("LAB__addr_0x0075e868:");
     asm("pop                edi");                                           // 0x0075e868    5f
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075e869    c6861801000001
     asm("pop                esi");                                           // 0x0075e870    5e
@@ -3036,7 +3036,7 @@ void __fastcall FootballDefenderPassProcess__8VillagerFP8Football(struct Village
     asm("pop                ebx");                                           // 0x0075e872    5b
     asm("add                esp, 0x0c");                                     // 0x0075e873    83c40c
     asm("ret                0x0004");                                        // 0x0075e876    c20400
-    asm("_jmp_addr_0x0075e879:");
+    asm("LAB__addr_0x0075e879:");
     asm("push               edi");                                           // 0x0075e879    57
     asm("mov.s              ecx, esi");                                      // 0x0075e87a    8bce
     asm("call               ?FootballDefenderGoToBallProcess@Villager@@QAEXPAVFootball@@@Z");                          // 0x0075e87c    e81ffdffff
@@ -3099,35 +3099,35 @@ float __fastcall FootballDefenderDribblePriority__8VillagerFP8Football(struct Vi
     asm("pop                esi");                                           // 0x0075e908    5e
     asm("fnstsw             ax");                                            // 0x0075e909    dfe0
     asm("test               ah, 0x01");                                      // 0x0075e90b    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075e91a");                          // 0x0075e90e    740a
+    asm("{disp8} je         LAB__addr_0x0075e91a");                          // 0x0075e90e    740a
     asm("fstp               st(0)");                                         // 0x0075e910    ddd8
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075e912    d90598a38a00
-    asm("{disp8} jmp        _jmp_addr_0x0075e92f");                          // 0x0075e918    eb15
-    asm("_jmp_addr_0x0075e91a:");
+    asm("{disp8} jmp        LAB__addr_0x0075e92f");                          // 0x0075e918    eb15
+    asm("LAB__addr_0x0075e91a:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x26300]");             // 0x0075e91a    d81500f38c00
     asm("fnstsw             ax");                                            // 0x0075e920    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e922    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075e92f");                          // 0x0075e925    7508
+    asm("{disp8} jne        LAB__addr_0x0075e92f");                          // 0x0075e925    7508
     asm("fstp               st(0)");                                         // 0x0075e927    ddd8
     asm("{disp32} fld       dword ptr [rdata_bytes + 0x26300]");             // 0x0075e929    d90500f38c00
-    asm("_jmp_addr_0x0075e92f:");
+    asm("LAB__addr_0x0075e92f:");
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x2850c]");             // 0x0075e92f    d80d0c158d00
     asm("{disp32} fcom      dword ptr [__real@3dcccccd]");                   // 0x0075e935    d8152cb28a00
     asm("fnstsw             ax");                                            // 0x0075e93b    dfe0
     asm("test               ah, 0x01");                                      // 0x0075e93d    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075e950");                          // 0x0075e940    740e
+    asm("{disp8} je         LAB__addr_0x0075e950");                          // 0x0075e940    740e
     asm("fstp               st(0)");                                         // 0x0075e942    ddd8
     asm("{disp32} fld       dword ptr [__real@3dcccccd]");                   // 0x0075e944    d9052cb28a00
     asm("add                esp, 0x0c");                                     // 0x0075e94a    83c40c
     asm("ret                0x0004");                                        // 0x0075e94d    c20400
-    asm("_jmp_addr_0x0075e950:");
+    asm("LAB__addr_0x0075e950:");
     asm("{disp32} fcom      dword ptr [_rdata_float1p0]");                   // 0x0075e950    d81590a38a00
     asm("fnstsw             ax");                                            // 0x0075e956    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e958    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075e965");                          // 0x0075e95b    7508
+    asm("{disp8} jne        LAB__addr_0x0075e965");                          // 0x0075e95b    7508
     asm("fstp               st(0)");                                         // 0x0075e95d    ddd8
     asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075e95f    d90590a38a00
-    asm("_jmp_addr_0x0075e965:");
+    asm("LAB__addr_0x0075e965:");
     asm("add                esp, 0x0c");                                     // 0x0075e965    83c40c
     asm("ret                0x0004");                                        // 0x0075e968    c20400
     __builtin_unreachable();
@@ -3176,7 +3176,7 @@ float __fastcall FootballDefenderPassPriority__8VillagerFP8Football(struct Villa
     asm("{disp8} mov        ecx, dword ptr [esp + 0x08]");                   // 0x0075e9d1    8b4c2408
     asm("call               _jmp_addr_0x00534820");                          // 0x0075e9d5    e8465eddff
     asm("dec                eax");                                           // 0x0075e9da    48
-    asm("{disp8} js         _jmp_addr_0x0075e9fd");                          // 0x0075e9db    7820
+    asm("{disp8} js         LAB__addr_0x0075e9fd");                          // 0x0075e9db    7820
     asm("push               0x0000029e");                                    // 0x0075e9dd    689e020000
     asm("push               0x00c2443c");                                    // 0x0075e9e2    683c44c200
     asm("push               0x3e4ccccd");                                    // 0x0075e9e7    68cdcc4c3e
@@ -3184,7 +3184,7 @@ float __fastcall FootballDefenderPassPriority__8VillagerFP8Football(struct Villa
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x1ba04]");             // 0x0075e9f1    d805044a8c00
     asm("add                esp, 0x0c");                                     // 0x0075e9f7    83c40c
     asm("ret                0x0004");                                        // 0x0075e9fa    c20400
-    asm("_jmp_addr_0x0075e9fd:");
+    asm("LAB__addr_0x0075e9fd:");
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075e9fd    d90598a38a00
     asm("ret                0x0004");                                        // 0x0075ea03    c20400
     __builtin_unreachable();
@@ -3198,26 +3198,26 @@ bool32_t __fastcall FootballGoalie__8VillagerFv(struct Villager* this)
     asm("mov.s              esi, ecx");                                      // 0x0075ea12    8bf1
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075ea14    e88734ffff
     asm("test               eax, eax");                                      // 0x0075ea19    85c0
-    asm("{disp32} je        _jmp_addr_0x0075eaa3");                          // 0x0075ea1b    0f8482000000
+    asm("{disp32} je        LAB__addr_0x0075eaa3");                          // 0x0075ea1b    0f8482000000
     asm("mov.s              ecx, esi");                                      // 0x0075ea21    8bce
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075ea23    e87834ffff
     asm("mov.s              ecx, eax");                                      // 0x0075ea28    8bc8
     asm("call               ?GetBall@Football@@QAEPAXXZ");                   // 0x0075ea2a    e8e129ddff
     asm("test               eax, eax");                                      // 0x0075ea2f    85c0
-    asm("{disp8} je         _jmp_addr_0x0075eaa3");                          // 0x0075ea31    7470
+    asm("{disp8} je         LAB__addr_0x0075eaa3");                          // 0x0075ea31    7470
     asm("{disp8} mov        ax, word ptr [esi + 0x58]");                     // 0x0075ea33    668b4658
     asm("cmp                ax, 0x0001");                                    // 0x0075ea37    663d0100
-    asm("{disp8} jl         _jmp_addr_0x0075ea96");                          // 0x0075ea3b    7c59
+    asm("{disp8} jl         LAB__addr_0x0075ea96");                          // 0x0075ea3b    7c59
     asm("xor.s              eax, eax");                                      // 0x0075ea3d    33c0
     asm("{disp32} mov       al, byte ptr [esi + 0x0000008f]");               // 0x0075ea3f    8a868f000000
     asm("mov.s              edi, eax");                                      // 0x0075ea45    8bf8
     asm("cmp                edi, 0x07");                                     // 0x0075ea47    83ff07
-    asm(".byte              0x72, 0x8");// {disp8} jb _jmp_addr_0x0075ea54   // 0x0075ea4a    7208
+    asm(".byte              0x72, 0x8");// {disp8} jb LAB__addr_0x0075ea54   // 0x0075ea4a    7208
     asm("pop                edi");                                           // 0x0075ea4c    5f
     asm("mov                eax, 0x00000001");                               // 0x0075ea4d    b801000000
     asm("pop                esi");                                           // 0x0075ea52    5e
     asm("ret");                                                              // 0x0075ea53    c3
-    asm("_jmp_addr_0x0075ea54:");
+    asm("LAB__addr_0x0075ea54:");
     asm("mov.s              ecx, esi");                                      // 0x0075ea54    8bce
     asm("shl                edi, 7");                                        // 0x0075ea56    c1e707
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075ea59    e84234ffff
@@ -3232,21 +3232,21 @@ bool32_t __fastcall FootballGoalie__8VillagerFv(struct Villager* this)
     asm("add.s              ecx, esi");                                      // 0x0075ea7b    03ce
     asm("call               dword ptr [edi + data_bytes + 0x25dfb8]");       // 0x0075ea7d    ff97b83fc200
     asm("test               eax, eax");                                      // 0x0075ea83    85c0
-    asm("{disp8} jne        _jmp_addr_0x0075ea9b");                          // 0x0075ea85    7514
+    asm("{disp8} jne        LAB__addr_0x0075ea9b");                          // 0x0075ea85    7514
     asm("pop                edi");                                           // 0x0075ea87    5f
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075ea88    c6861801000001
     asm("mov                eax, 0x00000001");                               // 0x0075ea8f    b801000000
     asm("pop                esi");                                           // 0x0075ea94    5e
     asm("ret");                                                              // 0x0075ea95    c3
-    asm("_jmp_addr_0x0075ea96:");
+    asm("LAB__addr_0x0075ea96:");
     asm("inc                eax");                                           // 0x0075ea96    40
     asm("{disp8} mov        word ptr [esi + 0x58], ax");                     // 0x0075ea97    66894658
-    asm("_jmp_addr_0x0075ea9b:");
+    asm("LAB__addr_0x0075ea9b:");
     asm("pop                edi");                                           // 0x0075ea9b    5f
     asm("mov                eax, 0x00000001");                               // 0x0075ea9c    b801000000
     asm("pop                esi");                                           // 0x0075eaa1    5e
     asm("ret");                                                              // 0x0075eaa2    c3
-    asm("_jmp_addr_0x0075eaa3:");
+    asm("LAB__addr_0x0075eaa3:");
     asm("mov                edx, dword ptr [esi]");                          // 0x0075eaa3    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075eaa5    8bce
     asm("call               dword ptr [edx + 0x8c8]");                       // 0x0075eaa7    ff92c8080000
@@ -3264,7 +3264,7 @@ void __fastcall AssignFootballGoalieSubState__8VillagerFv(struct Villager* this)
     asm("mov.s              edi, ecx");                                      // 0x0075eab4    8bf9
     asm("{disp32} mov       al, byte ptr [edi + 0x00000118]");               // 0x0075eab6    8a8718010000
     asm("test               al, al");                                        // 0x0075eabc    84c0
-    asm("{disp32} je        _jmp_addr_0x0075eb5f");                          // 0x0075eabe    0f849b000000
+    asm("{disp32} je        LAB__addr_0x0075eb5f");                          // 0x0075eabe    0f849b000000
     asm("push               ebx");                                           // 0x0075eac4    53
     asm("push               ebp");                                           // 0x0075eac5    55
     asm("push               esi");                                           // 0x0075eac6    56
@@ -3272,7 +3272,7 @@ void __fastcall AssignFootballGoalieSubState__8VillagerFv(struct Villager* this)
     asm("{disp8} mov        dword ptr [esp + 0x10], 0xb8d1b717");            // 0x0075eacf    c744241017b7d1b8
     asm("xor.s              ebx, ebx");                                      // 0x0075ead7    33db
     asm("mov                esi, 0x00c23fbc");                               // 0x0075ead9    bebc3fc200
-    asm("_jmp_addr_0x0075eade:");
+    asm("LAB__addr_0x0075eade:");
     asm("mov.s              ecx, edi");                                      // 0x0075eade    8bcf
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075eae0    e8bb33ffff
     asm("mov                ecx, dword ptr [esi]");                          // 0x0075eae5    8b0e
@@ -3282,7 +3282,7 @@ void __fastcall AssignFootballGoalieSubState__8VillagerFv(struct Villager* this)
     asm("mov.s              ebp, eax");                                      // 0x0075eaed    8be8
     asm("{disp8} mov        eax, dword ptr [esi + 0x0c]");                   // 0x0075eaef    8b460c
     asm("test               eax, eax");                                      // 0x0075eaf2    85c0
-    asm("{disp8} je         _jmp_addr_0x0075eb0a");                          // 0x0075eaf4    7414
+    asm("{disp8} je         LAB__addr_0x0075eb0a");                          // 0x0075eaf4    7414
     asm("mov.s              ecx, edi");                                      // 0x0075eaf6    8bcf
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075eaf8    e8a333ffff
     asm("{disp8} mov        ecx, dword ptr [esi + 0x10]");                   // 0x0075eafd    8b4e10
@@ -3290,10 +3290,10 @@ void __fastcall AssignFootballGoalieSubState__8VillagerFv(struct Villager* this)
     asm("add.s              ecx, edi");                                      // 0x0075eb01    03cf
     asm("call               dword ptr [esi + 0xc]");                         // 0x0075eb03    ff560c
     asm("test               eax, eax");                                      // 0x0075eb06    85c0
-    asm("{disp8} je         _jmp_addr_0x0075eb35");                          // 0x0075eb08    742b
-    asm("_jmp_addr_0x0075eb0a:");
+    asm("{disp8} je         LAB__addr_0x0075eb35");                          // 0x0075eb08    742b
+    asm("LAB__addr_0x0075eb0a:");
     asm("test               ebp, ebp");                                      // 0x0075eb0a    85ed
-    asm("{disp8} je         _jmp_addr_0x0075eb35");                          // 0x0075eb0c    7427
+    asm("{disp8} je         LAB__addr_0x0075eb35");                          // 0x0075eb0c    7427
     asm("mov.s              ecx, edi");                                      // 0x0075eb0e    8bcf
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075eb10    e88b33ffff
     asm("{disp8} mov        ecx, dword ptr [esi + 0x20]");                   // 0x0075eb15    8b4e20
@@ -3303,17 +3303,17 @@ void __fastcall AssignFootballGoalieSubState__8VillagerFv(struct Villager* this)
     asm("{disp8} fcom       dword ptr [esp + 0x10]");                        // 0x0075eb1e    d8542410
     asm("fnstsw             ax");                                            // 0x0075eb22    dfe0
     asm("test               ah, 0x41");                                      // 0x0075eb24    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075eb33");                          // 0x0075eb27    750a
+    asm("{disp8} jne        LAB__addr_0x0075eb33");                          // 0x0075eb27    750a
     asm("{disp8} fstp       dword ptr [esp + 0x10]");                        // 0x0075eb29    d95c2410
     asm("{disp8} mov        dword ptr [esp + 0x14], ebx");                   // 0x0075eb2d    895c2414
-    asm("{disp8} jmp        _jmp_addr_0x0075eb35");                          // 0x0075eb31    eb02
-    asm("_jmp_addr_0x0075eb33:");
+    asm("{disp8} jmp        LAB__addr_0x0075eb35");                          // 0x0075eb31    eb02
+    asm("LAB__addr_0x0075eb33:");
     asm("fstp               st(0)");                                         // 0x0075eb33    ddd8
-    asm("_jmp_addr_0x0075eb35:");
+    asm("LAB__addr_0x0075eb35:");
     asm("add                esi, 0x00000080");                               // 0x0075eb35    81c680000000
     asm("inc                ebx");                                           // 0x0075eb3b    43
     asm("cmp                esi, 0x00c2433c");                               // 0x0075eb3c    81fe3c43c200
-    asm(".byte              0x72, 0x9a");// {disp8} jb _jmp_addr_0x0075eade  // 0x0075eb42    729a
+    asm(".byte              0x72, 0x9a");// {disp8} jb LAB__addr_0x0075eade  // 0x0075eb42    729a
     asm("{disp8} mov        al, byte ptr [esp + 0x14]");                     // 0x0075eb44    8a442414
     asm("pop                esi");                                           // 0x0075eb48    5e
     asm("{disp32} mov       byte ptr [edi + 0x0000008f], al");               // 0x0075eb49    88878f000000
@@ -3321,7 +3321,7 @@ void __fastcall AssignFootballGoalieSubState__8VillagerFv(struct Villager* this)
     asm("{disp32} mov       byte ptr [edi + 0x00000118], 0x00");             // 0x0075eb50    c6871801000000
     asm("{disp32} mov       byte ptr [edi + 0x00000119], 0x00");             // 0x0075eb57    c6871901000000
     asm("pop                ebx");                                           // 0x0075eb5e    5b
-    asm("_jmp_addr_0x0075eb5f:");
+    asm("LAB__addr_0x0075eb5f:");
     asm("pop                edi");                                           // 0x0075eb5f    5f
     asm("add                esp, 0x08");                                     // 0x0075eb60    83c408
     asm("ret");                                                              // 0x0075eb63    c3
@@ -3349,7 +3349,7 @@ void __fastcall FootballGoalieSaveProcess__8VillagerFP8Football(struct Villager*
     asm("mov.s              ecx, esi");                                      // 0x0075eb95    8bce
     asm("call               dword ptr [ebx + 0x6b8]");                       // 0x0075eb97    ff93b8060000
     asm("test               eax, eax");                                      // 0x0075eb9d    85c0
-    asm("{disp32} je        _jmp_addr_0x0075ec32");                          // 0x0075eb9f    0f848d000000
+    asm("{disp32} je        LAB__addr_0x0075ec32");                          // 0x0075eb9f    0f848d000000
     asm("{disp8} mov        eax, dword ptr [ebp + 0x1c]");                   // 0x0075eba5    8b451c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075eba8    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075ebaa    8bce
@@ -3358,7 +3358,7 @@ void __fastcall FootballGoalieSaveProcess__8VillagerFP8Football(struct Villager*
     asm("{disp8} fcomp      dword ptr [esp + 0x20]");                        // 0x0075ebb6    d85c2420
     asm("fnstsw             ax");                                            // 0x0075ebba    dfe0
     asm("test               ah, 0x41");                                      // 0x0075ebbc    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075ec32");                          // 0x0075ebbf    7571
+    asm("{disp8} jne        LAB__addr_0x0075ec32");                          // 0x0075ebbf    7571
     asm("{disp8} lea        eax, dword ptr [edi + 0x14]");                   // 0x0075ebc1    8d4714
     asm("mov                ecx, dword ptr [eax]");                          // 0x0075ebc4    8b08
     asm("{disp8} mov        edx, dword ptr [eax + 0x04]");                   // 0x0075ebc6    8b5004
@@ -3367,14 +3367,14 @@ void __fastcall FootballGoalieSaveProcess__8VillagerFP8Football(struct Villager*
     asm("{disp8} mov        dword ptr [esp + 0x14], edx");                   // 0x0075ebd0    89542414
     asm("{disp8} mov        dword ptr [esp + 0x18], eax");                   // 0x0075ebd4    89442418
     asm("mov                ebx, 0x00000003");                               // 0x0075ebd8    bb03000000
-    asm("_jmp_addr_0x0075ebdd:");
+    asm("LAB__addr_0x0075ebdd:");
     asm("push               esi");                                           // 0x0075ebdd    56
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                   // 0x0075ebde    8d4c2414
     asm("push               ecx");                                           // 0x0075ebe2    51
     asm("mov.s              ecx, edi");                                      // 0x0075ebe3    8bcf
     asm("call               _jmp_addr_0x00532eb0");                          // 0x0075ebe5    e8c642ddff
     asm("dec                ebx");                                           // 0x0075ebea    4b
-    asm("{disp8} jne        _jmp_addr_0x0075ebdd");                          // 0x0075ebeb    75f0
+    asm("{disp8} jne        LAB__addr_0x0075ebdd");                          // 0x0075ebeb    75f0
     asm("push               0x1");                                           // 0x0075ebed    6a01
     asm("push               0x000002f5");                                    // 0x0075ebef    68f5020000
     asm("push               0x00c2443c");                                    // 0x0075ebf4    683c44c200
@@ -3395,7 +3395,7 @@ void __fastcall FootballGoalieSaveProcess__8VillagerFP8Football(struct Villager*
     asm("pop                ebx");                                           // 0x0075ec2b    5b
     asm("add                esp, 0x0c");                                     // 0x0075ec2c    83c40c
     asm("ret                0x0004");                                        // 0x0075ec2f    c20400
-    asm("_jmp_addr_0x0075ec32:");
+    asm("LAB__addr_0x0075ec32:");
     asm("push               edi");                                           // 0x0075ec32    57
     asm("mov.s              ecx, esi");                                      // 0x0075ec33    8bce
     asm("call               ?FootballGoalieGoToBallProcess@Villager@@QAEXPAVFootball@@@Z");                          // 0x0075ec35    e896000000
@@ -3434,9 +3434,9 @@ void __fastcall FootballGoalieLookProcess__8VillagerFP8Football(struct Villager*
     asm("mov.s              al, cl");                                        // 0x0075ec81    8ac1
     asm("cmp                al, 0x14");                                      // 0x0075ec83    3c14
     asm("{disp32} mov       byte ptr [esi + 0x00000119], cl");               // 0x0075ec85    888e19010000
-    asm("{disp8} jbe        _jmp_addr_0x0075ec94");                          // 0x0075ec8b    7607
+    asm("{disp8} jbe        LAB__addr_0x0075ec94");                          // 0x0075ec8b    7607
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075ec8d    c6861801000001
-    asm("_jmp_addr_0x0075ec94:");
+    asm("LAB__addr_0x0075ec94:");
     asm("mov.s              ecx, edi");                                      // 0x0075ec94    8bcf
     asm("call               ?GetBall@Football@@QAEPAXXZ");                   // 0x0075ec96    e87527ddff
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x0075ec9b    8d4e14
@@ -3448,9 +3448,9 @@ void __fastcall FootballGoalieLookProcess__8VillagerFP8Football(struct Villager*
     asm("add                esp, 0x08");                                     // 0x0075ecae    83c408
     asm("fnstsw             ax");                                            // 0x0075ecb1    dfe0
     asm("test               ah, 0x01");                                      // 0x0075ecb3    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075ecbf");                          // 0x0075ecb6    7407
+    asm("{disp8} je         LAB__addr_0x0075ecbf");                          // 0x0075ecb6    7407
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075ecb8    c6861801000001
-    asm("_jmp_addr_0x0075ecbf:");
+    asm("LAB__addr_0x0075ecbf:");
     asm("pop                edi");                                           // 0x0075ecbf    5f
     asm("pop                esi");                                           // 0x0075ecc0    5e
     asm("ret                0x0004");                                        // 0x0075ecc1    c20400
@@ -3478,7 +3478,7 @@ void __fastcall FootballGoalieGoToBallProcess__8VillagerFP8Football(struct Villa
     asm("mov.s              ecx, esi");                                      // 0x0075ecf5    8bce
     asm("call               dword ptr [ebx + 0x6b8]");                       // 0x0075ecf7    ff93b8060000
     asm("test               eax, eax");                                      // 0x0075ecfd    85c0
-    asm("{disp8} je         _jmp_addr_0x0075ed2e");                          // 0x0075ecff    742d
+    asm("{disp8} je         LAB__addr_0x0075ed2e");                          // 0x0075ecff    742d
     asm("{disp8} mov        eax, dword ptr [edi + 0x1c]");                   // 0x0075ed01    8b471c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075ed04    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075ed06    8bce
@@ -3487,7 +3487,7 @@ void __fastcall FootballGoalieGoToBallProcess__8VillagerFP8Football(struct Villa
     asm("{disp8} fcomp      dword ptr [esp + 0x20]");                        // 0x0075ed12    d85c2420
     asm("fnstsw             ax");                                            // 0x0075ed16    dfe0
     asm("test               ah, 0x41");                                      // 0x0075ed18    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075ed2e");                          // 0x0075ed1b    7511
+    asm("{disp8} jne        LAB__addr_0x0075ed2e");                          // 0x0075ed1b    7511
     asm("pop                edi");                                           // 0x0075ed1d    5f
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075ed1e    c6861801000001
     asm("pop                esi");                                           // 0x0075ed25    5e
@@ -3495,18 +3495,18 @@ void __fastcall FootballGoalieGoToBallProcess__8VillagerFP8Football(struct Villa
     asm("pop                ebx");                                           // 0x0075ed27    5b
     asm("add                esp, 0x0c");                                     // 0x0075ed28    83c40c
     asm("ret                0x0004");                                        // 0x0075ed2b    c20400
-    asm("_jmp_addr_0x0075ed2e:");
+    asm("LAB__addr_0x0075ed2e:");
     asm("mov.s              ecx, ebp");                                      // 0x0075ed2e    8bcd
     asm("call               ?GetBall@Football@@QAEPAXXZ");                   // 0x0075ed30    e8db26ddff
     asm("test               byte ptr [eax + 0x24], 0x40");                   // 0x0075ed35    f6402440
-    asm("{disp8} je         _jmp_addr_0x0075ed98");                          // 0x0075ed39    745d
+    asm("{disp8} je         LAB__addr_0x0075ed98");                          // 0x0075ed39    745d
     asm("push               0x0000031c");                                    // 0x0075ed3b    681c030000
     asm("push               0x00c2443c");                                    // 0x0075ed40    683c44c200
     asm("push               0xa");                                           // 0x0075ed45    6a0a
     asm("call               ?GameRand@GRand@@SAHJ@Z");                       // 0x0075ed47    e8c4f7f7ff
     asm("add                esp, 0x0c");                                     // 0x0075ed4c    83c40c
     asm("cmp                eax, 0x08");                                     // 0x0075ed4f    83f808
-    asm(".byte              0x72, 0x44");// {disp8} jb _jmp_addr_0x0075ed98  // 0x0075ed52    7244
+    asm(".byte              0x72, 0x44");// {disp8} jb LAB__addr_0x0075ed98  // 0x0075ed52    7244
     asm("add                edi, 0x00000084");                               // 0x0075ed54    81c784000000
     asm("mov                eax, dword ptr [edi]");                          // 0x0075ed5a    8b07
     asm("{disp8} mov        ecx, dword ptr [edi + 0x04]");                   // 0x0075ed5c    8b4f04
@@ -3529,7 +3529,7 @@ void __fastcall FootballGoalieGoToBallProcess__8VillagerFP8Football(struct Villa
     asm("pop                ebx");                                           // 0x0075ed91    5b
     asm("add                esp, 0x0c");                                     // 0x0075ed92    83c40c
     asm("ret                0x0004");                                        // 0x0075ed95    c20400
-    asm("_jmp_addr_0x0075ed98:");
+    asm("LAB__addr_0x0075ed98:");
     asm("push               0x4a");                                          // 0x0075ed98    6a4a
     asm("push               edi");                                           // 0x0075ed9a    57
     asm("mov.s              ecx, esi");                                      // 0x0075ed9b    8bce
@@ -3614,7 +3614,7 @@ void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager*
     asm("add                esp, 0x08");                                     // 0x0075ee4c    83c408
     asm("fnstsw             ax");                                            // 0x0075ee4f    dfe0
     asm("test               ah, 0x41");                                      // 0x0075ee51    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075ee67");                          // 0x0075ee54    7511
+    asm("{disp8} jne        LAB__addr_0x0075ee67");                          // 0x0075ee54    7511
     asm("pop                edi");                                           // 0x0075ee56    5f
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075ee57    c6861801000001
     asm("pop                esi");                                           // 0x0075ee5e    5e
@@ -3622,7 +3622,7 @@ void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager*
     asm("pop                ebx");                                           // 0x0075ee60    5b
     asm("add                esp, 0x18");                                     // 0x0075ee61    83c418
     asm("ret                0x0004");                                        // 0x0075ee64    c20400
-    asm("_jmp_addr_0x0075ee67:");
+    asm("LAB__addr_0x0075ee67:");
     asm("mov.s              ecx, edi");                                      // 0x0075ee67    8bcf
     asm("call               ?GetBall@Football@@QAEPAXXZ");                   // 0x0075ee69    e8a225ddff
     asm("mov                ebx, dword ptr [esi]");                          // 0x0075ee6e    8b1e
@@ -3635,7 +3635,7 @@ void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager*
     asm("mov.s              ecx, esi");                                      // 0x0075ee7f    8bce
     asm("call               dword ptr [ebx + 0x6b8]");                       // 0x0075ee81    ff93b8060000
     asm("test               eax, eax");                                      // 0x0075ee87    85c0
-    asm("{disp32} je        _jmp_addr_0x0075efa3");                          // 0x0075ee89    0f8414010000
+    asm("{disp32} je        LAB__addr_0x0075efa3");                          // 0x0075ee89    0f8414010000
     asm("{disp8} mov        eax, dword ptr [ebp + 0x1c]");                   // 0x0075ee8f    8b451c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075ee92    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075ee94    8bce
@@ -3644,13 +3644,13 @@ void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager*
     asm("{disp8} fcomp      dword ptr [esp + 0x2c]");                        // 0x0075eea0    d85c242c
     asm("fnstsw             ax");                                            // 0x0075eea4    dfe0
     asm("test               ah, 0x41");                                      // 0x0075eea6    f6c441
-    asm("{disp32} jne       _jmp_addr_0x0075efa3");                          // 0x0075eea9    0f85f4000000
+    asm("{disp32} jne       LAB__addr_0x0075efa3");                          // 0x0075eea9    0f85f4000000
     asm("push               esi");                                           // 0x0075eeaf    56
     asm("mov.s              ecx, edi");                                      // 0x0075eeb0    8bcf
     asm("call               _jmp_addr_0x00534820");                          // 0x0075eeb2    e86959ddff
     asm("mov.s              ebx, eax");                                      // 0x0075eeb7    8bd8
     asm("dec                ebx");                                           // 0x0075eeb9    4b
-    asm("{disp32} js        _jmp_addr_0x0075ef92");                          // 0x0075eeba    0f88d2000000
+    asm("{disp32} js        LAB__addr_0x0075ef92");                          // 0x0075eeba    0f88d2000000
     asm("push               esi");                                           // 0x0075eec0    56
     asm("mov.s              ecx, edi");                                      // 0x0075eec1    8bcf
     asm("call               ?IsPlayerOnHomeTeam@Football@@QAE_NPAVVillager@@@Z");                          // 0x0075eec3    e8983addff
@@ -3660,27 +3660,27 @@ void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager*
     asm("{disp32} mov       ecx, dword ptr [edi + eax * 0x8 + 0x00000238]"); // 0x0075eecd    8b8cc738020000
     asm("test               ecx, ecx");                                      // 0x0075eed4    85c9
     asm("{disp32} lea       eax, dword ptr [edi + eax * 0x8 + 0x00000234]"); // 0x0075eed6    8d84c734020000
-    asm("{disp8} jbe        _jmp_addr_0x0075eef6");                          // 0x0075eedd    7617
+    asm("{disp8} jbe        LAB__addr_0x0075eef6");                          // 0x0075eedd    7617
     asm("mov                eax, dword ptr [eax]");                          // 0x0075eedf    8b00
     asm("test               eax, eax");                                      // 0x0075eee1    85c0
-    asm("{disp8} je         _jmp_addr_0x0075eef6");                          // 0x0075eee3    7411
+    asm("{disp8} je         LAB__addr_0x0075eef6");                          // 0x0075eee3    7411
     asm("cmp.s              ebx, ecx");                                      // 0x0075eee5    3bd9
-    asm("{disp8} jge        _jmp_addr_0x0075eef6");                          // 0x0075eee7    7d0d
+    asm("{disp8} jge        LAB__addr_0x0075eef6");                          // 0x0075eee7    7d0d
     asm("test               ebx, ebx");                                      // 0x0075eee9    85db
-    asm("{disp8} jle        _jmp_addr_0x0075eef2");                          // 0x0075eeeb    7e05
-    asm("_jmp_addr_0x0075eeed:");
+    asm("{disp8} jle        LAB__addr_0x0075eef2");                          // 0x0075eeeb    7e05
+    asm("LAB__addr_0x0075eeed:");
     asm("dec                ebx");                                           // 0x0075eeed    4b
     asm("mov                eax, dword ptr [eax]");                          // 0x0075eeee    8b00
-    asm("{disp8} jne        _jmp_addr_0x0075eeed");                          // 0x0075eef0    75fb
-    asm("_jmp_addr_0x0075eef2:");
+    asm("{disp8} jne        LAB__addr_0x0075eeed");                          // 0x0075eef0    75fb
+    asm("LAB__addr_0x0075eef2:");
     asm("test               eax, eax");                                      // 0x0075eef2    85c0
-    asm("{disp8} jne        _jmp_addr_0x0075eefa");                          // 0x0075eef4    7504
-    asm("_jmp_addr_0x0075eef6:");
+    asm("{disp8} jne        LAB__addr_0x0075eefa");                          // 0x0075eef4    7504
+    asm("LAB__addr_0x0075eef6:");
     asm("xor.s              edi, edi");                                      // 0x0075eef6    33ff
-    asm("{disp8} jmp        _jmp_addr_0x0075eefd");                          // 0x0075eef8    eb03
-    asm("_jmp_addr_0x0075eefa:");
+    asm("{disp8} jmp        LAB__addr_0x0075eefd");                          // 0x0075eef8    eb03
+    asm("LAB__addr_0x0075eefa:");
     asm("{disp8} mov        edi, dword ptr [eax + 0x04]");                   // 0x0075eefa    8b7804
-    asm("_jmp_addr_0x0075eefd:");
+    asm("LAB__addr_0x0075eefd:");
     asm("{disp8} lea        eax, dword ptr [edi + 0x14]");                   // 0x0075eefd    8d4714
     asm("mov                ecx, dword ptr [eax]");                          // 0x0075ef00    8b08
     asm("{disp8} mov        dword ptr [esp + 0x10], ecx");                   // 0x0075ef02    894c2410
@@ -3692,7 +3692,7 @@ void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager*
     asm("mov.s              ecx, edi");                                      // 0x0075ef16    8bcf
     asm("call               dword ptr [edx + 0x174]");                       // 0x0075ef18    ff9274010000
     asm("test               eax, eax");                                      // 0x0075ef1e    85c0
-    asm("{disp8} je         _jmp_addr_0x0075ef40");                          // 0x0075ef20    741e
+    asm("{disp8} je         LAB__addr_0x0075ef40");                          // 0x0075ef20    741e
     asm("mov                eax, dword ptr [edi]");                          // 0x0075ef22    8b07
     asm("mov.s              ecx, edi");                                      // 0x0075ef24    8bcf
     asm("call               dword ptr [eax + 0x860]");                       // 0x0075ef26    ff9060080000
@@ -3702,7 +3702,7 @@ void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager*
     asm("{disp8} mov        dword ptr [esp + 0x14], edx");                   // 0x0075ef35    89542414
     asm("{disp8} mov        eax, dword ptr [eax + 0x08]");                   // 0x0075ef39    8b4008
     asm("{disp8} mov        dword ptr [esp + 0x18], eax");                   // 0x0075ef3c    89442418
-    asm("_jmp_addr_0x0075ef40:");
+    asm("LAB__addr_0x0075ef40:");
     asm("{disp8} lea        ecx, dword ptr [esp + 0x10]");                   // 0x0075ef40    8d4c2410
     asm("push               ecx");                                           // 0x0075ef44    51
     asm("{disp8} lea        edx, dword ptr [ebp + 0x14]");                   // 0x0075ef45    8d5514
@@ -3712,7 +3712,7 @@ void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager*
     asm("add                esp, 0x08");                                     // 0x0075ef54    83c408
     asm("fnstsw             ax");                                            // 0x0075ef57    dfe0
     asm("test               ah, 0x41");                                      // 0x0075ef59    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075ef92");                          // 0x0075ef5c    7534
+    asm("{disp8} jne        LAB__addr_0x0075ef92");                          // 0x0075ef5c    7534
     asm("push               0x1");                                           // 0x0075ef5e    6a01
     asm("push               0x0000034e");                                    // 0x0075ef60    684e030000
     asm("push               0x00c2443c");                                    // 0x0075ef65    683c44c200
@@ -3726,7 +3726,7 @@ void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager*
     asm("mov.s              ecx, ebp");                                      // 0x0075ef85    8bcd
     asm("call               _jmp_addr_0x00435c40");                          // 0x0075ef87    e8b46ccdff
     asm("{disp8} mov        word ptr [esi + 0x58], 0x0000");                 // 0x0075ef8c    66c746580000
-    asm("_jmp_addr_0x0075ef92:");
+    asm("LAB__addr_0x0075ef92:");
     asm("pop                edi");                                           // 0x0075ef92    5f
     asm("{disp32} mov       byte ptr [esi + 0x00000118], 0x01");             // 0x0075ef93    c6861801000001
     asm("pop                esi");                                           // 0x0075ef9a    5e
@@ -3734,7 +3734,7 @@ void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager*
     asm("pop                ebx");                                           // 0x0075ef9c    5b
     asm("add                esp, 0x18");                                     // 0x0075ef9d    83c418
     asm("ret                0x0004");                                        // 0x0075efa0    c20400
-    asm("_jmp_addr_0x0075efa3:");
+    asm("LAB__addr_0x0075efa3:");
     asm("push               edi");                                           // 0x0075efa3    57
     asm("mov.s              ecx, esi");                                      // 0x0075efa4    8bce
     asm("call               ?FootballGoalieGoToBallProcess@Villager@@QAEXPAVFootball@@@Z");                          // 0x0075efa6    e825fdffff
@@ -3933,11 +3933,11 @@ bool32_t __fastcall FootballerIsAtHomePrecondition__8VillagerFP8Football(struct 
     asm("pop                esi");                                           // 0x0075f16e    5e
     asm("fnstsw             ax");                                            // 0x0075f16f    dfe0
     asm("test               ah, 0x01");                                      // 0x0075f171    f6c401
-    asm("{disp8} je         _jmp_addr_0x0075f181");                          // 0x0075f174    740b
+    asm("{disp8} je         LAB__addr_0x0075f181");                          // 0x0075f174    740b
     asm("mov                eax, 0x00000001");                               // 0x0075f176    b801000000
     asm("add                esp, 0x0c");                                     // 0x0075f17b    83c40c
     asm("ret                0x0004");                                        // 0x0075f17e    c20400
-    asm("_jmp_addr_0x0075f181:");
+    asm("LAB__addr_0x0075f181:");
     asm("xor.s              eax, eax");                                      // 0x0075f181    33c0
     asm("add                esp, 0x0c");                                     // 0x0075f183    83c40c
     asm("ret                0x0004");                                        // 0x0075f186    c20400
@@ -3975,11 +3975,11 @@ bool32_t __fastcall FootballerIsNotAtHomePrecondition__8VillagerFP8Football(stru
     asm("pop                esi");                                           // 0x0075f1ce    5e
     asm("fnstsw             ax");                                            // 0x0075f1cf    dfe0
     asm("test               ah, 0x41");                                      // 0x0075f1d1    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075f1e1");                          // 0x0075f1d4    750b
+    asm("{disp8} jne        LAB__addr_0x0075f1e1");                          // 0x0075f1d4    750b
     asm("mov                eax, 0x00000001");                               // 0x0075f1d6    b801000000
     asm("add                esp, 0x0c");                                     // 0x0075f1db    83c40c
     asm("ret                0x0004");                                        // 0x0075f1de    c20400
-    asm("_jmp_addr_0x0075f1e1:");
+    asm("LAB__addr_0x0075f1e1:");
     asm("xor.s              eax, eax");                                      // 0x0075f1e1    33c0
     asm("add                esp, 0x0c");                                     // 0x0075f1e3    83c40c
     asm("ret                0x0004");                                        // 0x0075f1e6    c20400
@@ -4003,10 +4003,10 @@ bool32_t __fastcall FootballerIsQuiteNearBallPrecondition__8VillagerFP8Football(
     asm("pop                esi");                                           // 0x0075f212    5e
     asm("fnstsw             ax");                                            // 0x0075f213    dfe0
     asm("test               ah, 0x41");                                      // 0x0075f215    f6c441
-    asm("{disp8} je         _jmp_addr_0x0075f222");                          // 0x0075f218    7408
+    asm("{disp8} je         LAB__addr_0x0075f222");                          // 0x0075f218    7408
     asm("mov                eax, 0x00000001");                               // 0x0075f21a    b801000000
     asm("ret                0x0004");                                        // 0x0075f21f    c20400
-    asm("_jmp_addr_0x0075f222:");
+    asm("LAB__addr_0x0075f222:");
     asm("xor.s              eax, eax");                                      // 0x0075f222    33c0
     asm("ret                0x0004");                                        // 0x0075f224    c20400
     __builtin_unreachable();
@@ -4029,10 +4029,10 @@ bool32_t __fastcall FootballerIsNotQuiteNearBallPrecondition__8VillagerFP8Footba
     asm("pop                esi");                                           // 0x0075f252    5e
     asm("fnstsw             ax");                                            // 0x0075f253    dfe0
     asm("test               ah, 0x41");                                      // 0x0075f255    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075f262");                          // 0x0075f258    7508
+    asm("{disp8} jne        LAB__addr_0x0075f262");                          // 0x0075f258    7508
     asm("mov                eax, 0x00000001");                               // 0x0075f25a    b801000000
     asm("ret                0x0004");                                        // 0x0075f25f    c20400
-    asm("_jmp_addr_0x0075f262:");
+    asm("LAB__addr_0x0075f262:");
     asm("xor.s              eax, eax");                                      // 0x0075f262    33c0
     asm("ret                0x0004");                                        // 0x0075f264    c20400
     __builtin_unreachable();
@@ -4045,18 +4045,18 @@ bool32_t __fastcall StartMoveToPickUpBallForDeadBall__8VillagerFv(struct Village
     asm("mov.s              esi, ecx");                                      // 0x0075f271    8bf1
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075f273    e8282cffff
     asm("test               eax, eax");                                      // 0x0075f278    85c0
-    asm("{disp8} je         _jmp_addr_0x0075f28e");                          // 0x0075f27a    7412
+    asm("{disp8} je         LAB__addr_0x0075f28e");                          // 0x0075f27a    7412
     asm("mov.s              ecx, esi");                                      // 0x0075f27c    8bce
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075f27e    e81d2cffff
     asm("mov.s              ecx, eax");                                      // 0x0075f283    8bc8
     asm("call               ?GetBall@Football@@QAEPAXXZ");                   // 0x0075f285    e88621ddff
     asm("test               eax, eax");                                      // 0x0075f28a    85c0
-    asm("{disp8} jne        _jmp_addr_0x0075f292");                          // 0x0075f28c    7504
-    asm("_jmp_addr_0x0075f28e:");
+    asm("{disp8} jne        LAB__addr_0x0075f292");                          // 0x0075f28c    7504
+    asm("LAB__addr_0x0075f28e:");
     asm("xor.s              eax, eax");                                      // 0x0075f28e    33c0
     asm("pop                esi");                                           // 0x0075f290    5e
     asm("ret");                                                              // 0x0075f291    c3
-    asm("_jmp_addr_0x0075f292:");
+    asm("LAB__addr_0x0075f292:");
     asm("mov.s              ecx, esi");                                      // 0x0075f292    8bce
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075f294    e8072cffff
     asm("mov.s              ecx, eax");                                      // 0x0075f299    8bc8
@@ -4122,7 +4122,7 @@ bool32_t __fastcall ArrivedAtPutDownBallForDeadBallEnd__8VillagerFv(struct Villa
     asm("mov.s              ecx, esi");                                      // 0x0075f326    8bce
     asm("call               dword ptr [ebp + 0x6b8]");                       // 0x0075f328    ff95b8060000
     asm("test               eax, eax");                                      // 0x0075f32e    85c0
-    asm("{disp8} je         _jmp_addr_0x0075f360");                          // 0x0075f330    742e
+    asm("{disp8} je         LAB__addr_0x0075f360");                          // 0x0075f330    742e
     asm("{disp8} mov        eax, dword ptr [edi + 0x1c]");                   // 0x0075f332    8b471c
     asm("mov                edx, dword ptr [esi]");                          // 0x0075f335    8b16
     asm("mov.s              ecx, esi");                                      // 0x0075f337    8bce
@@ -4131,14 +4131,14 @@ bool32_t __fastcall ArrivedAtPutDownBallForDeadBallEnd__8VillagerFv(struct Villa
     asm("{disp8} fcomp      dword ptr [esp + 0x10]");                        // 0x0075f343    d85c2410
     asm("fnstsw             ax");                                            // 0x0075f347    dfe0
     asm("test               ah, 0x41");                                      // 0x0075f349    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075f360");                          // 0x0075f34c    7512
+    asm("{disp8} jne        LAB__addr_0x0075f360");                          // 0x0075f34c    7512
     asm("push               0x0");                                           // 0x0075f34e    6a00
     asm("push               0x41200000");                                    // 0x0075f350    6800002041
     asm("{disp8} lea        eax, dword ptr [ebx + 0x14]");                   // 0x0075f355    8d4314
     asm("push               eax");                                           // 0x0075f358    50
     asm("mov.s              ecx, edi");                                      // 0x0075f359    8bcf
     asm("call               _jmp_addr_0x00435c40");                          // 0x0075f35b    e8e068cdff
-    asm("_jmp_addr_0x0075f360:");
+    asm("LAB__addr_0x0075f360:");
     asm("push               0x4f");                                          // 0x0075f360    6a4f
     asm("push               edi");                                           // 0x0075f362    57
     asm("mov.s              ecx, esi");                                      // 0x0075f363    8bce
@@ -4162,13 +4162,13 @@ bool32_t __fastcall FootballMoveToBall__8VillagerFv(struct Villager* this)
     asm("mov.s              esi, ecx");                                      // 0x0075f381    8bf1
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075f383    e8182bffff
     asm("test               eax, eax");                                      // 0x0075f388    85c0
-    asm("{disp32} je        _jmp_addr_0x0075f42d");                          // 0x0075f38a    0f849d000000
+    asm("{disp32} je        LAB__addr_0x0075f42d");                          // 0x0075f38a    0f849d000000
     asm("mov.s              ecx, esi");                                      // 0x0075f390    8bce
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075f392    e8092bffff
     asm("mov.s              ecx, eax");                                      // 0x0075f397    8bc8
     asm("call               ?GetBall@Football@@QAEPAXXZ");                   // 0x0075f399    e87220ddff
     asm("test               eax, eax");                                      // 0x0075f39e    85c0
-    asm("{disp32} je        _jmp_addr_0x0075f42d");                          // 0x0075f3a0    0f8487000000
+    asm("{disp32} je        LAB__addr_0x0075f42d");                          // 0x0075f3a0    0f8487000000
     asm("mov.s              ecx, esi");                                      // 0x0075f3a6    8bce
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075f3a8    e8f32affff
     asm("mov.s              ecx, eax");                                      // 0x0075f3ad    8bc8
@@ -4177,7 +4177,7 @@ bool32_t __fastcall FootballMoveToBall__8VillagerFv(struct Villager* this)
     asm("mov.s              ecx, eax");                                      // 0x0075f3b6    8bc8
     asm("call               dword ptr [edx + 0x2c]");                        // 0x0075f3b8    ff522c
     asm("cmp                eax, 0x01");                                     // 0x0075f3bb    83f801
-    asm("{disp8} jne        _jmp_addr_0x0075f42d");                          // 0x0075f3be    756d
+    asm("{disp8} jne        LAB__addr_0x0075f42d");                          // 0x0075f3be    756d
     asm("push               edi");                                           // 0x0075f3c0    57
     asm("mov.s              ecx, esi");                                      // 0x0075f3c1    8bce
     asm("call               ?GetFootball@Villager@@QAEPAVFootball@@XZ");     // 0x0075f3c3    e8d82affff
@@ -4194,7 +4194,7 @@ bool32_t __fastcall FootballMoveToBall__8VillagerFv(struct Villager* this)
     asm("add                esp, 0x08");                                     // 0x0075f3ec    83c408
     asm("fnstsw             ax");                                            // 0x0075f3ef    dfe0
     asm("test               ah, 0x41");                                      // 0x0075f3f1    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0075f413");                          // 0x0075f3f4    751d
+    asm("{disp8} jne        LAB__addr_0x0075f413");                          // 0x0075f3f4    751d
     asm("mov                edx, dword ptr [edi]");                          // 0x0075f3f6    8b17
     asm("{disp32} lea       ecx, dword ptr [esi + 0x00000080]");             // 0x0075f3f8    8d8e80000000
     asm("mov                dword ptr [ecx], edx");                          // 0x0075f3fe    8911
@@ -4204,20 +4204,20 @@ bool32_t __fastcall FootballMoveToBall__8VillagerFv(struct Villager* this)
     asm("{disp8} mov        dword ptr [ecx + 0x08], edx");                   // 0x0075f409    895108
     asm("mov.s              ecx, esi");                                      // 0x0075f40c    8bce
     asm("call               ?InitStepsXZ@MobileWallHug@@QAEXXZ");            // 0x0075f40e    e88dcbeaff
-    asm("_jmp_addr_0x0075f413:");
+    asm("LAB__addr_0x0075f413:");
     asm("mov.s              ecx, esi");                                      // 0x0075f413    8bce
     asm("call               ?MoveTo@MobileWallHug@@QAEHXZ");                 // 0x0075f415    e806bbeaff
     asm("mov.s              edi, eax");                                      // 0x0075f41a    8bf8
     asm("cmp                edi, 0x0a");                                     // 0x0075f41c    83ff0a
-    asm("{disp8} jne        _jmp_addr_0x0075f428");                          // 0x0075f41f    7507
+    asm("{disp8} jne        LAB__addr_0x0075f428");                          // 0x0075f41f    7507
     asm("mov.s              ecx, esi");                                      // 0x0075f421    8bce
     asm("call               ?SetTopStateToFinal@Living@@QAEXXZ");            // 0x0075f423    e858d6e8ff
-    asm("_jmp_addr_0x0075f428:");
+    asm("LAB__addr_0x0075f428:");
     asm("mov.s              eax, edi");                                      // 0x0075f428    8bc7
     asm("pop                edi");                                           // 0x0075f42a    5f
     asm("pop                esi");                                           // 0x0075f42b    5e
     asm("ret");                                                              // 0x0075f42c    c3
-    asm("_jmp_addr_0x0075f42d:");
+    asm("LAB__addr_0x0075f42d:");
     asm("mov                eax, dword ptr [esi]");                          // 0x0075f42d    8b06
     asm("mov.s              ecx, esi");                                      // 0x0075f42f    8bce
     asm("call               dword ptr [eax + 0x8c8]");                       // 0x0075f431    ff90c8080000

@@ -6,31 +6,31 @@ bool __fastcall IsCivic__12PlannedAbodeFv(struct PlannedMultiMapFixed* this)
     asm("call             ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ");              // 0x004060c0    e80bf6ffff
     asm("{disp32} mov     eax, dword ptr [eax + 0x00000120]"); // 0x004060c5    8b8020010000
     asm("cmp              eax, 0x00000100");                   // 0x004060cb    3d00010000
-    asm("{disp8} jg       _jmp_addr_0x004060eb");              // 0x004060d0    7f19
-    asm("{disp8} je       _jmp_addr_0x0040610f");              // 0x004060d2    743b
+    asm("{disp8} jg       LAB__addr_0x004060eb");              // 0x004060d0    7f19
+    asm("{disp8} je       LAB__addr_0x0040610f");              // 0x004060d2    743b
     asm("add              eax, -0x14");                        // 0x004060d4    83c0ec
     asm("cmp              eax, 0x70");                         // 0x004060d7    83f870
-    asm("{disp8} ja       _jmp_addr_0x0040610c");              // 0x004060da    7730
+    asm("{disp8} ja       LAB__addr_0x0040610c");              // 0x004060da    7730
     asm("xor.s            ecx, ecx");                          // 0x004060dc    33c9
     asm("{disp32} mov     cl, byte ptr [eax + 0x00406120]");   // 0x004060de    8a8820614000
     asm("jmp              dword ptr [ecx*4 + 0x406118]");      // 0x004060e4    ff248d18614000
-    asm("_jmp_addr_0x004060eb:");
+    asm("LAB__addr_0x004060eb:");
     asm("cmp              eax, 0x00001004");                   // 0x004060eb    3d04100000
-    asm("{disp8} jg       _jmp_addr_0x00406105");              // 0x004060f0    7f13
-    asm("{disp8} je       _jmp_addr_0x0040610f");              // 0x004060f2    741b
+    asm("{disp8} jg       LAB__addr_0x00406105");              // 0x004060f0    7f13
+    asm("{disp8} je       LAB__addr_0x0040610f");              // 0x004060f2    741b
     asm("cmp              eax, 0x00000204");                   // 0x004060f4    3d04020000
-    asm("{disp8} je       _jmp_addr_0x0040610f");              // 0x004060f9    7414
+    asm("{disp8} je       LAB__addr_0x0040610f");              // 0x004060f9    7414
     asm("cmp              eax, 0x00000404");                   // 0x004060fb    3d04040000
-    asm("{disp8} je       _jmp_addr_0x0040610f");              // 0x00406100    740d
+    asm("{disp8} je       LAB__addr_0x0040610f");              // 0x00406100    740d
     asm("xor.s            eax, eax");                          // 0x00406102    33c0
     asm("ret");                                                // 0x00406104    c3
-    asm("_jmp_addr_0x00406105:");
+    asm("LAB__addr_0x00406105:");
     asm("cmp              eax, 0x00002004");                   // 0x00406105    3d04200000
-    asm("{disp8} je       _jmp_addr_0x0040610f");              // 0x0040610a    7403
-    asm("_jmp_addr_0x0040610c:");
+    asm("{disp8} je       LAB__addr_0x0040610f");              // 0x0040610a    7403
+    asm("LAB__addr_0x0040610c:");
     asm("xor.s            eax, eax");                          // 0x0040610c    33c0
     asm("ret");                                                // 0x0040610e    c3
-    asm("_jmp_addr_0x0040610f:");
+    asm("LAB__addr_0x0040610f:");
     asm("mov              eax, 0x00000001");                   // 0x0040610f    b801000000
     asm("ret");                                                // 0x00406114    c3
     // Snippet: db, [0x00406115, 0x00406118)

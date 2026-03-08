@@ -146,10 +146,10 @@ __attribute__((XOR32rr_REV))
 bool __fastcall CanBePickedUp__8VillagerFv(struct Object* this)
 {
     asm("test               byte ptr [ecx + 0x000000e0], 0x04");              // 0x0055ca50    f681e000000004
-    asm("{disp8} je         _jmp_addr_0x0055ca5c");                           // 0x0055ca57    7403
+    asm("{disp8} je         LAB__addr_0x0055ca5c");                           // 0x0055ca57    7403
     asm("xor.s              eax, eax");                                       // 0x0055ca59    33c0
     asm("ret");                                                               // 0x0055ca5b    c3
-    asm("_jmp_addr_0x0055ca5c:");
+    asm("LAB__addr_0x0055ca5c:");
     asm("xor.s              eax, eax");                                       // 0x0055ca5c    33c0
     asm("{disp8} mov        ax, word ptr [ecx + 0x24]");                      // 0x0055ca5e    668b4124
     asm("not                ax");                                             // 0x0055ca62    66f7d0
@@ -260,12 +260,12 @@ void __fastcall __dt__8VillagerFUi(struct Base* this, const void* edx, uint32_t 
     asm("mov.s              esi, ecx");                                       // 0x0055cb41    8bf1
     asm("call               ??1Villager@@UAE@XZ");                            // 0x0055cb43    e878301f00
     asm("test               byte ptr [esp + 0x08], 0x01");                    // 0x0055cb48    f644240801
-    asm("{disp8} je         _jmp_addr_0x0055cb5d");                           // 0x0055cb4d    740e
+    asm("{disp8} je         LAB__addr_0x0055cb5d");                           // 0x0055cb4d    740e
     asm("push               0x00000130");                                     // 0x0055cb4f    6830010000
     asm("push               esi");                                            // 0x0055cb54    56
     asm("call               ??3Base@@SAXPAXK@Z");                           // 0x0055cb55    e8169eedff
     asm("add                esp, 0x08");                                      // 0x0055cb5a    83c408
-    asm("_jmp_addr_0x0055cb5d:");
+    asm("LAB__addr_0x0055cb5d:");
     asm("mov.s              eax, esi");                                       // 0x0055cb5d    8bc6
     asm("pop                esi");                                            // 0x0055cb5f    5e
     asm("ret                0x0004");                                         // 0x0055cb60    c20400

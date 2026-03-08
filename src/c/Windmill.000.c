@@ -67,7 +67,7 @@ struct Windmill* __cdecl Create__8WindmillFRC9MapCoordsPC10GAbodeInfoP4Townfffi(
     asm("mov.s              esi, eax");                                      // 0x004058a5    8bf0
     asm("add                esp, 0x0c");                                     // 0x004058a7    83c40c
     asm("test               esi, esi");                                      // 0x004058aa    85f6
-    asm("{disp8} je         _jmp_addr_0x004058ed");                          // 0x004058ac    743f
+    asm("{disp8} je         LAB__addr_0x004058ed");                          // 0x004058ac    743f
     asm("{disp8} mov        eax, dword ptr [esp + 0x20]");                   // 0x004058ae    8b442420
     asm("{disp8} mov        ecx, dword ptr [esp + 0x1c]");                   // 0x004058b2    8b4c241c
     asm("{disp8} mov        edx, dword ptr [esp + 0x18]");                   // 0x004058b6    8b542418
@@ -93,7 +93,7 @@ struct Windmill* __cdecl Create__8WindmillFRC9MapCoordsPC10GAbodeInfoP4Townfffi(
     asm("mov.s              eax, esi");                                      // 0x004058e9    8bc6
     asm("pop                esi");                                           // 0x004058eb    5e
     asm("ret");                                                              // 0x004058ec    c3
-    asm("_jmp_addr_0x004058ed:");
+    asm("LAB__addr_0x004058ed:");
     asm("xor.s              eax, eax");                                      // 0x004058ed    33c0
     asm("pop                esi");                                           // 0x004058ef    5e
     asm("ret");                                                              // 0x004058f0    c3
@@ -116,12 +116,12 @@ void __fastcall __dt__8WindmillFv(struct Base* this, const void* edx, uint32_t p
     asm("mov.s              esi, ecx");                                      // 0x00405921    8bf1
     asm("call               ??1Abode@@UAE@XZ");                              // 0x00405923    e838d2ffff
     asm("test               byte ptr [esp + 0x08], 0x01");                   // 0x00405928    f644240801
-    asm("{disp8} je         _jmp_addr_0x0040593d");                          // 0x0040592d    740e
+    asm("{disp8} je         LAB__addr_0x0040593d");                          // 0x0040592d    740e
     asm("push               0x000000c4");                                    // 0x0040592f    68c4000000
     asm("push               esi");                                           // 0x00405934    56
     asm("call               ??3Base@@SAXPAXK@Z");                          // 0x00405935    e836100300
     asm("add                esp, 0x08");                                     // 0x0040593a    83c408
-    asm("_jmp_addr_0x0040593d:");
+    asm("LAB__addr_0x0040593d:");
     asm("mov.s              eax, esi");                                      // 0x0040593d    8bc6
     asm("pop                esi");                                           // 0x0040593f    5e
     asm("ret                0x0004");                                        // 0x00405940    c20400
@@ -137,7 +137,7 @@ void __fastcall CallVirtualFunctionsForCreation__8WindmillFRC9MapCoords(struct O
     asm("push               eax");                                           // 0x00405957    50
     asm("call               ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z");  // 0x00405958    e8a3d8ffff
     asm("test               byte ptr [esi + 0x0a], 0x01");                   // 0x0040595d    f6460a01
-    asm("{disp8} jne        _jmp_addr_0x0040597c");                          // 0x00405961    7519
+    asm("{disp8} jne        LAB__addr_0x0040597c");                          // 0x00405961    7519
     asm("push               0x0");                                           // 0x00405963    6a00
     asm("push               0x1");                                           // 0x00405965    6a01
     asm("push               0x1");                                           // 0x00405967    6a01
@@ -149,7 +149,7 @@ void __fastcall CallVirtualFunctionsForCreation__8WindmillFRC9MapCoords(struct O
     asm("push               esi");                                           // 0x00405973    56
     asm("call               ?Create@SoundTag@@SAPAV1@PAVGameThingWithPos@@K_NKKHHW4AUDIO_SFX_BANK_TYPE@@H@Z");                          // 0x00405974    e8c78e3100
     asm("add                esp, 0x24");                                     // 0x00405979    83c424
-    asm("_jmp_addr_0x0040597c:");
+    asm("LAB__addr_0x0040597c:");
     asm("pop                esi");                                           // 0x0040597c    5e
     asm("ret                0x0004");                                        // 0x0040597d    c20400
     __builtin_unreachable();
@@ -768,9 +768,9 @@ void __fastcall Open__8WindmillFv(struct Windmill* this)
     asm("mov                esi, dword ptr [edx]");                          // 0x00405993    8b32
     asm("mov                ecx, 0x00000085");                               // 0x00405995    b985000000
     asm("cmp.s              esi, ecx");                                      // 0x0040599a    3bf1
-    asm("{disp8} jg         _jmp_addr_0x004059a0");                          // 0x0040599c    7f02
+    asm("{disp8} jg         LAB__addr_0x004059a0");                          // 0x0040599c    7f02
     asm("xor.s              ecx, ecx");                                      // 0x0040599e    33c9
-    asm("_jmp_addr_0x004059a0:");
+    asm("LAB__addr_0x004059a0:");
     asm("{disp8} mov        edx, dword ptr [edx + ecx * 0x4 + 0x04]");       // 0x004059a0    8b548a04
     asm("mov                esi, dword ptr [eax]");                          // 0x004059a4    8b30
     asm("push               0x0");                                           // 0x004059a6    6a00
@@ -789,11 +789,11 @@ void __fastcall Close__8WindmillFv(struct Windmill* this)
 {
     asm("{disp32} mov       ecx, dword ptr [_windmill_lh3d_object_00c4cc70]");        // 0x004059d0    8b0d70ccc400
     asm("test               ecx, ecx");                                      // 0x004059d6    85c9
-    asm("{disp8} je         _jmp_addr_0x004059e9");                          // 0x004059d8    740f
+    asm("{disp8} je         LAB__addr_0x004059e9");                          // 0x004059d8    740f
     asm("mov                eax, dword ptr [ecx]");                          // 0x004059da    8b01
     asm("call               dword ptr [eax + 4]");                           // 0x004059dc    ff5004
     asm("{disp32} mov       dword ptr [_windmill_lh3d_object_00c4cc70], 0x00000000"); // 0x004059df    c70570ccc40000000000
-    asm("_jmp_addr_0x004059e9:");
+    asm("LAB__addr_0x004059e9:");
     asm("ret");                                                              // 0x004059e9    c3
     asm("call               dword ptr [__imp__RegSetValueExA@4]");           // 0x004059ea    ff1514908a00
     __builtin_unreachable();
@@ -817,16 +817,16 @@ void __fastcall PreDraw__8WindmillFv(struct Windmill* this)
     asm("{disp32} fst       dword ptr [_windmill_float_00c4cc78]");          // 0x00405a2e    d91578ccc400
     asm("fnstsw             ax");                                            // 0x00405a34    dfe0
     asm("test               ah, 0x41");                                      // 0x00405a36    f6c441
-    asm("{disp8} jne        _jmp_addr_0x00405a55");                          // 0x00405a39    751a
-    asm("_jmp_addr_0x00405a3b:");
+    asm("{disp8} jne        LAB__addr_0x00405a55");                          // 0x00405a39    751a
+    asm("LAB__addr_0x00405a3b:");
     asm("{disp32} fsub      dword ptr [__real@40c90fdb]     ");              // 0x00405a3b    d82510b28a00
     asm("{disp32} fcom      dword ptr [__real@40c90fdb]     ");              // 0x00405a41    d81510b28a00
     asm("fnstsw             ax");                                            // 0x00405a47    dfe0
     asm("test               ah, 0x41");                                      // 0x00405a49    f6c441
-    asm("{disp8} je         _jmp_addr_0x00405a3b");                          // 0x00405a4c    74ed
+    asm("{disp8} je         LAB__addr_0x00405a3b");                          // 0x00405a4c    74ed
     asm("{disp32} fstp      dword ptr [_windmill_float_00c4cc78]");          // 0x00405a4e    d91d78ccc400
     asm("ret");                                                              // 0x00405a54    c3
-    asm("_jmp_addr_0x00405a55:");
+    asm("LAB__addr_0x00405a55:");
     asm("fstp               st(0)");                                         // 0x00405a55    ddd8
     asm("ret");                                                              // 0x00405a57    c3
     __builtin_unreachable();

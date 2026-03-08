@@ -146,16 +146,16 @@ bool __fastcall IsAlive__6ObjectFv(struct Object* this)
     asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");              // 0x0040261b    d81d98a38a00
     asm("fnstsw             ax");                                       // 0x00402621    dfe0
     asm("test               ah, 0x41");                                 // 0x00402623    f6c441
-    asm("{disp8} jne        _jmp_addr_0x0040263a");                     // 0x00402626    7512
+    asm("{disp8} jne        LAB__addr_0x0040263a");                     // 0x00402626    7512
     asm("mov                edx, dword ptr [esi]");                     // 0x00402628    8b16
     asm("mov.s              ecx, esi");                                 // 0x0040262a    8bce
     asm("call               dword ptr [edx + 0x2c]");                   // 0x0040262c    ff522c
     asm("test               eax, eax");                                 // 0x0040262f    85c0
-    asm("{disp8} je         _jmp_addr_0x0040263a");                     // 0x00402631    7407
+    asm("{disp8} je         LAB__addr_0x0040263a");                     // 0x00402631    7407
     asm("mov                eax, 0x00000001");                          // 0x00402633    b801000000
     asm("pop                esi");                                      // 0x00402638    5e
     asm("ret");                                                         // 0x00402639    c3
-    asm("_jmp_addr_0x0040263a:");
+    asm("LAB__addr_0x0040263a:");
     asm("xor.s              eax, eax");                                 // 0x0040263a    33c0
     asm("pop                esi");                                      // 0x0040263c    5e
     asm("ret");                                                         // 0x0040263d    c3
@@ -222,12 +222,12 @@ float __fastcall GetFoodValue__6ObjectF9FOOD_TYPE(struct Object* this, const voi
     asm("mov                eax, dword ptr [esi]");                     // 0x004026d3    8b06
     asm("call               dword ptr [eax + 0x668]");                  // 0x004026d5    ff9068060000
     asm("test               dword ptr [esp + 0x08], eax");              // 0x004026db    85442408
-    asm("{disp8} je         _jmp_addr_0x004026eb");                     // 0x004026df    740a
+    asm("{disp8} je         LAB__addr_0x004026eb");                     // 0x004026df    740a
     asm("{disp8} mov        ecx, dword ptr [esi + 0x28]");              // 0x004026e1    8b4e28
     asm("{disp8} fld        dword ptr [ecx + 0x68]");                   // 0x004026e4    d94168
     asm("pop                esi");                                      // 0x004026e7    5e
     asm("ret                0x0004");                                   // 0x004026e8    c20400
-    asm("_jmp_addr_0x004026eb:");
+    asm("LAB__addr_0x004026eb:");
     asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x004026eb    d90598a38a00
     asm("pop                esi");                                      // 0x004026f1    5e
     asm("ret                0x0004");                                   // 0x004026f2    c20400
@@ -247,13 +247,13 @@ bool __fastcall IsMoving__6ObjectCFv(const struct GameThingWithPos* this)
 {
     asm("{disp8} mov        eax, dword ptr [ecx + 0x14]");              // 0x00402710    8b4114
     asm("cmp                eax, dword ptr [ecx + 0x2c]");              // 0x00402713    3b412c
-    asm("{disp8} jne        _jmp_addr_0x00402723");                     // 0x00402716    750b
+    asm("{disp8} jne        LAB__addr_0x00402723");                     // 0x00402716    750b
     asm("{disp8} mov        edx, dword ptr [ecx + 0x18]");              // 0x00402718    8b5118
     asm("cmp                edx, dword ptr [ecx + 0x30]");              // 0x0040271b    3b5130
-    asm("{disp8} jne        _jmp_addr_0x00402723");                     // 0x0040271e    7503
+    asm("{disp8} jne        LAB__addr_0x00402723");                     // 0x0040271e    7503
     asm("xor.s              eax, eax");                                 // 0x00402720    33c0
     asm("ret");                                                         // 0x00402722    c3
-    asm("_jmp_addr_0x00402723:");
+    asm("LAB__addr_0x00402723:");
     asm("mov                eax, 0x00000001");                          // 0x00402723    b801000000
     asm("ret");                                                         // 0x00402728    c3
     __builtin_unreachable();
@@ -552,12 +552,12 @@ bool32_t __fastcall CanBeAttackedByCreature__6ObjectFP8Creature(struct GameThing
     asm("{disp8} mov        eax, dword ptr [ecx + 0x28]");              // 0x00402a40    8b4128
     asm("{disp32} mov       edx, dword ptr [eax + 0x000000c4]");        // 0x00402a43    8b90c4000000
     asm("test               edx, edx");                                 // 0x00402a49    85d2
-    asm("{disp8} je         _jmp_addr_0x00402a5b");                     // 0x00402a4b    740e
+    asm("{disp8} je         LAB__addr_0x00402a5b");                     // 0x00402a4b    740e
     asm("cmp                dword ptr [esp + 0x04], ecx");              // 0x00402a4d    394c2404
-    asm("{disp8} je         _jmp_addr_0x00402a5b");                     // 0x00402a51    7408
+    asm("{disp8} je         LAB__addr_0x00402a5b");                     // 0x00402a51    7408
     asm("mov                eax, 0x00000001");                          // 0x00402a53    b801000000
     asm("ret                0x0004");                                   // 0x00402a58    c20400
-    asm("_jmp_addr_0x00402a5b:");
+    asm("LAB__addr_0x00402a5b:");
     asm("xor.s              eax, eax");                                 // 0x00402a5b    33c0
     asm("ret                0x0004");                                   // 0x00402a5d    c20400
     __builtin_unreachable();

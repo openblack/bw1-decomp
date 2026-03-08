@@ -11,12 +11,12 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("call               ??0GameThing@@QAE@XZ ");                         // 0x0054b246    e8c5470200
     asm("{disp8} lea        edi, dword ptr [esi + 0x18]");                   // 0x0054b24b    8d7e18
     asm("mov                ebx, 0x00000008");                               // 0x0054b24e    bb08000000
-    asm("_jmp_addr_0x0054b253:");
+    asm("LAB__addr_0x0054b253:");
     asm("mov.s              ecx, edi");                                      // 0x0054b253    8bcf
     asm("call               _jmp_addr_0x00648da0");                          // 0x0054b255    e846db0f00
     asm("add                edi, 0x00000a60");                               // 0x0054b25a    81c7600a0000
     asm("dec                ebx");                                           // 0x0054b260    4b
-    asm("{disp8} jne        _jmp_addr_0x0054b253");                          // 0x0054b261    75f0
+    asm("{disp8} jne        LAB__addr_0x0054b253");                          // 0x0054b261    75f0
     asm("{disp32} lea       ecx, dword ptr [esi + 0x0000597c]");             // 0x0054b263    8d8e7c590000
     asm("call               ??0StatsDatabase@@QAE@XZ  ");                    // 0x0054b269    e862860e00
     asm("{disp32} lea       ecx, dword ptr [esi + 0x0000598c]");             // 0x0054b26e    8d8e8c590000
@@ -213,13 +213,13 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x0054b689    e862b0eeff
     asm("add                esp, 0x0c");                                     // 0x0054b68e    83c40c
     asm("cmp.s              eax, ebx");                                      // 0x0054b691    3bc3
-    asm("{disp8} je         _jmp_addr_0x0054b69e");                          // 0x0054b693    7409
+    asm("{disp8} je         LAB__addr_0x0054b69e");                          // 0x0054b693    7409
     asm("mov.s              ecx, eax");                                      // 0x0054b695    8bc8
     asm("call               ??0GSoundMap@@QAE@XZ ");                         // 0x0054b697    e834030000
-    asm("{disp8} jmp        _jmp_addr_0x0054b6a0");                          // 0x0054b69c    eb02
-    asm("_jmp_addr_0x0054b69e:");
+    asm("{disp8} jmp        LAB__addr_0x0054b6a0");                          // 0x0054b69c    eb02
+    asm("LAB__addr_0x0054b69e:");
     asm("xor.s              eax, eax");                                      // 0x0054b69e    33c0
-    asm("_jmp_addr_0x0054b6a0:");
+    asm("LAB__addr_0x0054b6a0:");
     asm("{disp32} mov       dword ptr [esi + 0x00250058], eax");             // 0x0054b6a0    898658002500
     asm("{disp32} mov       dword ptr [esi + 0x0025005c], ebx");             // 0x0054b6a6    899e5c002500
     asm("{disp32} mov       dword ptr [esi + 0x00250060], ebx");             // 0x0054b6ac    899e60002500
@@ -231,13 +231,13 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x0054b6c9    e822b0eeff
     asm("add                esp, 0x0c");                                     // 0x0054b6ce    83c40c
     asm("cmp.s              eax, ebx");                                      // 0x0054b6d1    3bc3
-    asm("{disp8} je         _jmp_addr_0x0054b6de");                          // 0x0054b6d3    7409
+    asm("{disp8} je         LAB__addr_0x0054b6de");                          // 0x0054b6d3    7409
     asm("mov.s              ecx, eax");                                      // 0x0054b6d5    8bc8
     asm("call               ??0GestureSystemDataList@@QAE@XZ");                          // 0x0054b6d7    e8c4030000
-    asm("{disp8} jmp        _jmp_addr_0x0054b6e0");                          // 0x0054b6dc    eb02
-    asm("_jmp_addr_0x0054b6de:");
+    asm("{disp8} jmp        LAB__addr_0x0054b6e0");                          // 0x0054b6dc    eb02
+    asm("LAB__addr_0x0054b6de:");
     asm("xor.s              eax, eax");                                      // 0x0054b6de    33c0
-    asm("_jmp_addr_0x0054b6e0:");
+    asm("LAB__addr_0x0054b6e0:");
     asm("push               0x00000405");                                    // 0x0054b6e0    6805040000
     asm("push               0x00bec32c");                                    // 0x0054b6e5    682cc3be00
     asm("push               0x0000065c");                                    // 0x0054b6ea    685c060000
@@ -245,13 +245,13 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x0054b6f5    e8f6afeeff
     asm("add                esp, 0x0c");                                     // 0x0054b6fa    83c40c
     asm("cmp.s              eax, ebx");                                      // 0x0054b6fd    3bc3
-    asm("{disp8} je         _jmp_addr_0x0054b70a");                          // 0x0054b6ff    7409
+    asm("{disp8} je         LAB__addr_0x0054b70a");                          // 0x0054b6ff    7409
     asm("mov.s              ecx, eax");                                      // 0x0054b701    8bc8
     asm("call               ??0GestureSystemData@@QAE@XZ");                          // 0x0054b703    e8e8030000
-    asm("{disp8} jmp        _jmp_addr_0x0054b70c");                          // 0x0054b708    eb02
-    asm("_jmp_addr_0x0054b70a:");
+    asm("{disp8} jmp        LAB__addr_0x0054b70c");                          // 0x0054b708    eb02
+    asm("LAB__addr_0x0054b70a:");
     asm("xor.s              eax, eax");                                      // 0x0054b70a    33c0
-    asm("_jmp_addr_0x0054b70c:");
+    asm("LAB__addr_0x0054b70c:");
     asm("push               0x00000406");                                    // 0x0054b70c    6806040000
     asm("push               0x00bec32c");                                    // 0x0054b711    682cc3be00
     asm("push               0x00000c98");                                    // 0x0054b716    68980c0000
@@ -259,13 +259,13 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x0054b721    e8caafeeff
     asm("add                esp, 0x0c");                                     // 0x0054b726    83c40c
     asm("cmp.s              eax, ebx");                                      // 0x0054b729    3bc3
-    asm("{disp8} je         _jmp_addr_0x0054b736");                          // 0x0054b72b    7409
+    asm("{disp8} je         LAB__addr_0x0054b736");                          // 0x0054b72b    7409
     asm("mov.s              ecx, eax");                                      // 0x0054b72d    8bc8
     asm("call               ??0GestureSystem@@QAE@XZ");                      // 0x0054b72f    e80c040000
-    asm("{disp8} jmp        _jmp_addr_0x0054b738");                          // 0x0054b734    eb02
-    asm("_jmp_addr_0x0054b736:");
+    asm("{disp8} jmp        LAB__addr_0x0054b738");                          // 0x0054b734    eb02
+    asm("LAB__addr_0x0054b736:");
     asm("xor.s              eax, eax");                                      // 0x0054b736    33c0
-    asm("_jmp_addr_0x0054b738:");
+    asm("LAB__addr_0x0054b738:");
     asm("push               0x00000407");                                    // 0x0054b738    6807040000
     asm("push               0x00bec32c");                                    // 0x0054b73d    682cc3be00
     asm("push               0xc");                                           // 0x0054b742    6a0c
@@ -274,13 +274,13 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("mov.s              edi, eax");                                      // 0x0054b74f    8bf8
     asm("add                esp, 0x0c");                                     // 0x0054b751    83c40c
     asm("cmp.s              edi, ebx");                                      // 0x0054b754    3bfb
-    asm("{disp8} je         _jmp_addr_0x0054b761");                          // 0x0054b756    7409
+    asm("{disp8} je         LAB__addr_0x0054b761");                          // 0x0054b756    7409
     asm("mov.s              ecx, edi");                                      // 0x0054b758    8bcf
     asm("call               ??0GestureSystemResult@@QAE@XZ");                          // 0x0054b75a    e831040000
-    asm("{disp8} jmp        _jmp_addr_0x0054b763");                          // 0x0054b75f    eb02
-    asm("_jmp_addr_0x0054b761:");
+    asm("{disp8} jmp        LAB__addr_0x0054b763");                          // 0x0054b75f    eb02
+    asm("LAB__addr_0x0054b761:");
     asm("xor.s              edi, edi");                                      // 0x0054b761    33ff
-    asm("_jmp_addr_0x0054b763:");
+    asm("LAB__addr_0x0054b763:");
     asm("push               0x00000408");                                    // 0x0054b763    6808040000
     asm("push               0x00bec32c");                                    // 0x0054b768    682cc3be00
     asm("push               0x00000104");                                    // 0x0054b76d    6804010000
@@ -289,13 +289,13 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("mov.s              edi, eax");                                      // 0x0054b77d    8bf8
     asm("add                esp, 0x0c");                                     // 0x0054b77f    83c40c
     asm("cmp.s              edi, ebx");                                      // 0x0054b782    3bfb
-    asm("{disp8} je         _jmp_addr_0x0054b78f");                          // 0x0054b784    7409
+    asm("{disp8} je         LAB__addr_0x0054b78f");                          // 0x0054b784    7409
     asm("mov.s              ecx, edi");                                      // 0x0054b786    8bcf
     asm("call               ?InitialiseToDefaults@Settings@@QAEXXZ");          // 0x0054b788    e893941c00
-    asm("{disp8} jmp        _jmp_addr_0x0054b791");                          // 0x0054b78d    eb02
-    asm("_jmp_addr_0x0054b78f:");
+    asm("{disp8} jmp        LAB__addr_0x0054b791");                          // 0x0054b78d    eb02
+    asm("LAB__addr_0x0054b78f:");
     asm("xor.s              edi, edi");                                      // 0x0054b78f    33ff
-    asm("_jmp_addr_0x0054b791:");
+    asm("LAB__addr_0x0054b791:");
     asm("mov.s              ecx, ebp");                                      // 0x0054b791    8bcd
     asm("{disp32} mov       dword ptr [esi + 0x00250074], edi");             // 0x0054b793    89be74002500
     asm("call               ?SetZero@LH3DMapCoords@@QAEXXZ");                          // 0x0054b799    e882000000

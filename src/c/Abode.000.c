@@ -627,14 +627,14 @@ struct Abode* __fastcall __ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struc
     asm("call               ?SetZero@Abode@@QAEXXZ");                                           // 0x004013ad    e80e180000
     asm("{disp8} mov        ecx, dword ptr [esp + 0x14]");                                      // 0x004013b2    8b4c2414
     asm("cmp.s              ecx, edi");                                                         // 0x004013b6    3bcf
-    asm("{disp8} je         _jmp_addr_0x004013d4");                                             // 0x004013b8    741a
+    asm("{disp8} je         LAB__addr_0x004013d4");                                             // 0x004013b8    741a
     asm("push               esi");                                                              // 0x004013ba    56
     asm("call               ?AddStructureToTown@Town@@QAEXPAVMultiMapFixed@@@Z");               // 0x004013bb    e8e0853300
     asm("{disp32} mov       eax, dword ptr [esi + 0x00000098]");                                // 0x004013c0    8b8698000000
     asm("{disp32} mov       cl, byte ptr [eax + 0x00000758]");                                  // 0x004013c6    8a8858070000
     asm("dec                cl");                                                               // 0x004013cc    fec9
     asm("{disp32} mov       byte ptr [esi + 0x000000b8], cl");                                  // 0x004013ce    888eb8000000
-    asm("_jmp_addr_0x004013d4:");
+    asm("LAB__addr_0x004013d4:");
     asm("{disp32} mov       eax, dword ptr [_game]");                                           // 0x004013d4    a15c19d000
     asm("or                 byte ptr [eax + 0x59c0], 1");                                       // 0x004013d9    8088c059000001
     asm("push               0x43480000");                                                       // 0x004013e0    6800004843

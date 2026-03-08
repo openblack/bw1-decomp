@@ -23,10 +23,10 @@ void __fastcall Init__12PlannedAbodeFP4Town(struct PlannedAbode* this, const voi
     asm("{disp8} mov        ecx, dword ptr [esp + 0x04]");                   // 0x004055a2    8b4c2404
     asm("test               ecx, ecx");                                      // 0x004055a6    85c9
     asm("{disp8} mov        dword ptr [eax + 0x48], ecx");                   // 0x004055a8    894848
-    asm("{disp8} je         _jmp_addr_0x004055b3");                          // 0x004055ab    7406
+    asm("{disp8} je         LAB__addr_0x004055b3");                          // 0x004055ab    7406
     asm("push               eax");                                           // 0x004055ad    50
     asm("call               ?AddPlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z"); // 0x004055ae    e8cd7a3300
-    asm("_jmp_addr_0x004055b3:");
+    asm("LAB__addr_0x004055b3:");
     asm("ret                0x0004");                                        // 0x004055b3    c20400
     __builtin_unreachable();
 }
@@ -40,7 +40,7 @@ struct PlannedAbode* __cdecl CreateNoInit__12PlannedAbodeFRC9MapCoordsPC10GAbode
     asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x004055cc    e81f110300
     asm("add                esp, 0x0c");                                     // 0x004055d1    83c40c
     asm("test               eax, eax");                                      // 0x004055d4    85c0
-    asm("{disp8} je         _jmp_addr_0x004055f9");                          // 0x004055d6    7421
+    asm("{disp8} je         LAB__addr_0x004055f9");                          // 0x004055d6    7421
     asm("{disp8} mov        ecx, dword ptr [esp + 0x14]");                   // 0x004055d8    8b4c2414
     asm("{disp8} mov        edx, dword ptr [esp + 0x10]");                   // 0x004055dc    8b542410
     asm("push               ecx");                                           // 0x004055e0    51
@@ -54,7 +54,7 @@ struct PlannedAbode* __cdecl CreateNoInit__12PlannedAbodeFRC9MapCoordsPC10GAbode
     asm("mov.s              ecx, eax");                                      // 0x004055f1    8bc8
     asm("call               ??0PlannedAbode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");  // 0x004055f3    e888faffff
     asm("ret");                                                              // 0x004055f8    c3
-    asm("_jmp_addr_0x004055f9:");
+    asm("LAB__addr_0x004055f9:");
     asm("xor.s              eax, eax");                                      // 0x004055f9    33c0
     asm("ret");                                                              // 0x004055fb    c3
     __builtin_unreachable();
@@ -72,7 +72,7 @@ struct PlannedAbode* __cdecl Create__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4
     asm("{disp8} mov        edi, dword ptr [esp + 0x20]");                   // 0x00405613    8b7c2420
     asm("add                esp, 0x0c");                                     // 0x00405617    83c40c
     asm("test               eax, eax");                                      // 0x0040561a    85c0
-    asm("{disp8} je         _jmp_addr_0x00405649");                          // 0x0040561c    742b
+    asm("{disp8} je         LAB__addr_0x00405649");                          // 0x0040561c    742b
     asm("{disp8} mov        ecx, dword ptr [esp + 0x1c]");                   // 0x0040561e    8b4c241c
     asm("{disp8} mov        edx, dword ptr [esp + 0x18]");                   // 0x00405622    8b542418
     asm("push               ecx");                                           // 0x00405626    51
@@ -92,7 +92,7 @@ struct PlannedAbode* __cdecl Create__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4
     asm("mov.s              eax, esi");                                      // 0x00405645    8bc6
     asm("pop                esi");                                           // 0x00405647    5e
     asm("ret");                                                              // 0x00405648    c3
-    asm("_jmp_addr_0x00405649:");
+    asm("LAB__addr_0x00405649:");
     asm("xor.s              esi, esi");                                      // 0x00405649    33f6
     asm("push               edi");                                           // 0x0040564b    57
     asm("mov.s              ecx, esi");                                      // 0x0040564c    8bce
@@ -116,15 +116,15 @@ struct PlannedAbode* __cdecl Create__12PlannedAbodeFP5Abode(struct Abode* abode)
     asm("{disp8} mov        edi, dword ptr [esp + 0x18]");                   // 0x00405673    8b7c2418
     asm("add                esp, 0x0c");                                     // 0x00405677    83c40c
     asm("test               eax, eax");                                      // 0x0040567a    85c0
-    asm("{disp8} je         _jmp_addr_0x0040568a");                          // 0x0040567c    740c
+    asm("{disp8} je         LAB__addr_0x0040568a");                          // 0x0040567c    740c
     asm("push               edi");                                           // 0x0040567e    57
     asm("mov.s              ecx, eax");                                      // 0x0040567f    8bc8
     asm("call               ??0PlannedAbode@@QAE@PAVAbode@@@Z");             // 0x00405681    e8fafeffff
     asm("mov.s              esi, eax");                                      // 0x00405686    8bf0
-    asm("{disp8} jmp        _jmp_addr_0x0040568c");                          // 0x00405688    eb02
-    asm("_jmp_addr_0x0040568a:");
+    asm("{disp8} jmp        LAB__addr_0x0040568c");                          // 0x00405688    eb02
+    asm("LAB__addr_0x0040568a:");
     asm("xor.s              esi, esi");                                      // 0x0040568a    33f6
-    asm("_jmp_addr_0x0040568c:");
+    asm("LAB__addr_0x0040568c:");
     asm("{disp8} mov        eax, dword ptr [edi + 0x64]");                   // 0x0040568c    8b4764
     asm("{disp8} mov        dword ptr [esi + 0x38], eax");                   // 0x0040568f    894638
     asm("mov                edx, dword ptr [edi]");                          // 0x00405692    8b17
@@ -147,10 +147,10 @@ void __fastcall ToBeDeleted__12PlannedAbodeFi(struct Base* this, const void* edx
     asm("mov.s              esi, ecx");                                      // 0x004056b1    8bf1
     asm("{disp8} mov        ecx, dword ptr [esi + 0x48]");                   // 0x004056b3    8b4e48
     asm("test               ecx, ecx");                                      // 0x004056b6    85c9
-    asm("{disp8} je         _jmp_addr_0x004056c0");                          // 0x004056b8    7406
+    asm("{disp8} je         LAB__addr_0x004056c0");                          // 0x004056b8    7406
     asm("push               esi");                                           // 0x004056ba    56
     asm("call               ?RemovePlanned@Town@@QAEXPAVPlannedMultiMapFixed@@@Z");  // 0x004056bb    e8107a3300
-    asm("_jmp_addr_0x004056c0:");
+    asm("LAB__addr_0x004056c0:");
     asm("{disp8} mov        eax, dword ptr [esp + 0x08]");                   // 0x004056c0    8b442408
     asm("push               eax");                                           // 0x004056c4    50
     asm("mov.s              ecx, esi");                                      // 0x004056c5    8bce
@@ -219,7 +219,7 @@ struct MultiMapFixed* __fastcall CreatePlanned__12PlannedAbodeFf(struct PlannedM
     asm("mov.s              ecx, eax");                                      // 0x0040573d    8bc8
     asm("call               ?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z");  // 0x0040573f    e8ccf3ffff
     asm("test               eax, eax");                                      // 0x00405744    85c0
-    asm("{disp8} je         _jmp_addr_0x0040575c");                          // 0x00405746    7414
+    asm("{disp8} je         LAB__addr_0x0040575c");                          // 0x00405746    7414
     asm("{disp8} mov        eax, dword ptr [esp + 0x0c]");                   // 0x00405748    8b44240c
     asm("mov                edx, dword ptr [esi]");                          // 0x0040574c    8b16
     asm("push               eax");                                           // 0x0040574e    50
@@ -228,7 +228,7 @@ struct MultiMapFixed* __fastcall CreatePlanned__12PlannedAbodeFf(struct PlannedM
     asm("pop                esi");                                           // 0x00405757    5e
     asm("pop                ecx");                                           // 0x00405758    59
     asm("ret                0x0004");                                        // 0x00405759    c20400
-    asm("_jmp_addr_0x0040575c:");
+    asm("LAB__addr_0x0040575c:");
     asm("xor.s              eax, eax");                                      // 0x0040575c    33c0
     asm("pop                esi");                                           // 0x0040575e    5e
     asm("pop                ecx");                                           // 0x0040575f    59
@@ -269,16 +269,16 @@ struct MultiMapFixed* __fastcall CreatePlannedNoFixedCheck__12PlannedAbodeFf(str
     asm("mov.s              edi, eax");                                      // 0x004057b1    8bf8
     asm("add                esp, 0x28");                                     // 0x004057b3    83c428
     asm("test               edi, edi");                                      // 0x004057b6    85ff
-    asm("{disp8} je         _jmp_addr_0x004057e1");                          // 0x004057b8    7427
+    asm("{disp8} je         LAB__addr_0x004057e1");                          // 0x004057b8    7427
     asm("mov                edx, dword ptr [esi]");                          // 0x004057ba    8b16
     asm("push               edi");                                           // 0x004057bc    57
     asm("mov.s              ecx, esi");                                      // 0x004057bd    8bce
     asm("call               dword ptr [edx + 0x508]");                       // 0x004057bf    ff9208050000
     asm("{disp8} mov        eax, dword ptr [esi + 0x30]");                   // 0x004057c5    8b4630
     asm("test               eax, eax");                                      // 0x004057c8    85c0
-    asm("{disp8} je         _jmp_addr_0x004057d0");                          // 0x004057ca    7404
+    asm("{disp8} je         LAB__addr_0x004057d0");                          // 0x004057ca    7404
     asm("or                 byte ptr [edi + 0x58], 4");                      // 0x004057cc    804f5804
-    asm("_jmp_addr_0x004057d0:");
+    asm("LAB__addr_0x004057d0:");
     asm("mov                eax, dword ptr [esi]");                          // 0x004057d0    8b06
     asm("push               0x0");                                           // 0x004057d2    6a00
     asm("mov.s              ecx, esi");                                      // 0x004057d4    8bce
@@ -288,7 +288,7 @@ struct MultiMapFixed* __fastcall CreatePlannedNoFixedCheck__12PlannedAbodeFf(str
     asm("pop                esi");                                           // 0x004057dc    5e
     asm("pop                ecx");                                           // 0x004057dd    59
     asm("ret                0x0004");                                        // 0x004057de    c20400
-    asm("_jmp_addr_0x004057e1:");
+    asm("LAB__addr_0x004057e1:");
     asm("pop                edi");                                           // 0x004057e1    5f
     asm("xor.s              eax, eax");                                      // 0x004057e2    33c0
     asm("pop                esi");                                           // 0x004057e4    5e
@@ -338,7 +338,7 @@ uint32_t __fastcall Save__12PlannedAbodeFR10GameOSFile(struct GameThing* this, c
     asm("push               edi");                                           // 0x00405838    57
     asm("call               ?Save@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z");  // 0x00405839    e852312400
     asm("test               eax, eax");                                      // 0x0040583e    85c0
-    asm("{disp8} je         _jmp_addr_0x00405857");                          // 0x00405840    7415
+    asm("{disp8} je         LAB__addr_0x00405857");                          // 0x00405840    7415
     asm("{disp8} mov        eax, dword ptr [esi + 0x48]");                   // 0x00405842    8b4648
     asm("push               eax");                                           // 0x00405845    50
     asm("mov.s              ecx, edi");                                      // 0x00405846    8bcf
@@ -347,7 +347,7 @@ uint32_t __fastcall Save__12PlannedAbodeFR10GameOSFile(struct GameThing* this, c
     asm("mov                eax, 0x00000001");                               // 0x0040584e    b801000000
     asm("pop                esi");                                           // 0x00405853    5e
     asm("ret                0x0004");                                        // 0x00405854    c20400
-    asm("_jmp_addr_0x00405857:");
+    asm("LAB__addr_0x00405857:");
     asm("pop                edi");                                           // 0x00405857    5f
     asm("xor.s              eax, eax");                                      // 0x00405858    33c0
     asm("pop                esi");                                           // 0x0040585a    5e
@@ -365,7 +365,7 @@ uint32_t __fastcall Load__12PlannedAbodeFR10GameOSFile(struct GameThing* this, c
     asm("push               edi");                                           // 0x00405868    57
     asm("call               ?Load@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z");  // 0x00405869    e882322400
     asm("test               eax, eax");                                      // 0x0040586e    85c0
-    asm("{disp8} je         _jmp_addr_0x00405887");                          // 0x00405870    7415
+    asm("{disp8} je         LAB__addr_0x00405887");                          // 0x00405870    7415
     asm("add                esi, 0x48");                                     // 0x00405872    83c648
     asm("push               esi");                                           // 0x00405875    56
     asm("mov.s              ecx, edi");                                      // 0x00405876    8bcf
@@ -374,7 +374,7 @@ uint32_t __fastcall Load__12PlannedAbodeFR10GameOSFile(struct GameThing* this, c
     asm("mov                eax, 0x00000001");                               // 0x0040587e    b801000000
     asm("pop                esi");                                           // 0x00405883    5e
     asm("ret                0x0004");                                        // 0x00405884    c20400
-    asm("_jmp_addr_0x00405887:");
+    asm("LAB__addr_0x00405887:");
     asm("pop                edi");                                           // 0x00405887    5f
     asm("xor.s              eax, eax");                                      // 0x00405888    33c0
     asm("pop                esi");                                           // 0x0040588a    5e

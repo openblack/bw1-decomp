@@ -9,13 +9,13 @@ void LoadIt__FP10LoaderAnonPcP23GVillagerStateTableInfoUlbP6LHFile(struct Loader
     asm("push               ebp                                     ");  // 0x00433f08    55
     asm("push               esi                                     ");  // 0x00433f09    56
     asm("push               edi                                     ");  // 0x00433f0a    57
-    asm("{disp8} je         _jmp_addr_0x00433f7b                    ");  // 0x00433f0b    746e
+    asm("{disp8} je         LAB__addr_0x00433f7b                    ");  // 0x00433f0b    746e
     asm("{disp8} mov        eax, dword ptr [esp + 0x24]             ");  // 0x00433f0d    8b442424
     asm("test               eax, eax                                ");  // 0x00433f11    85c0
-    asm("{disp32} jbe       _jmp_addr_0x00434036                    ");  // 0x00433f13    0f861d010000
+    asm("{disp32} jbe       LAB__addr_0x00434036                    ");  // 0x00433f13    0f861d010000
     asm("{disp8} mov        ebp, dword ptr [esp + 0x20]             ");  // 0x00433f19    8b6c2420
     asm("{disp8} mov        dword ptr [esp + 0x28], eax             ");  // 0x00433f1d    89442428
-    asm("_jmp_addr_0x00433f21:                                      ");
+    asm("LAB__addr_0x00433f21:                                      ");
     asm("push               0x17                                    ");  // 0x00433f21    6a17
     asm("push               0x009cce48                              ");  // 0x00433f23    6848ce9c00
     asm("push               0x00000104                              ");  // 0x00433f28    6804010000
@@ -40,22 +40,22 @@ void LoadIt__FP10LoaderAnonPcP23GVillagerStateTableInfoUlbP6LHFile(struct Loader
     asm("add                ebp, 0x00000114                         ");  // 0x00433f68    81c514010000
     asm("dec                eax                                     ");  // 0x00433f6e    48
     asm("{disp8} mov        dword ptr [esp + 0x28], eax             ");  // 0x00433f6f    89442428
-    asm("{disp8} jne        _jmp_addr_0x00433f21                    ");  // 0x00433f73    75ac
+    asm("{disp8} jne        LAB__addr_0x00433f21                    ");  // 0x00433f73    75ac
     asm("pop                edi                                     ");  // 0x00433f75    5f
     asm("pop                esi                                     ");  // 0x00433f76    5e
     asm("pop                ebp                                     ");  // 0x00433f77    5d
     asm("pop                ebx                                     ");  // 0x00433f78    5b
     asm("pop                ecx                                     ");  // 0x00433f79    59
     asm("ret                                                        ");  // 0x00433f7a    c3
-    asm("_jmp_addr_0x00433f7b:                                      ");
+    asm("LAB__addr_0x00433f7b:                                      ");
     asm("{disp8} mov        eax, dword ptr [esp + 0x24]             ");  // 0x00433f7b    8b442424
     asm("test               eax, eax                                ");  // 0x00433f7f    85c0
     asm("{disp8} mov        dword ptr [esp + 0x10], 0x00000000      ");  // 0x00433f81    c744241000000000
-    asm("{disp32} jbe       _jmp_addr_0x00434036                    ");  // 0x00433f89    0f86a7000000
+    asm("{disp32} jbe       LAB__addr_0x00434036                    ");  // 0x00433f89    0f86a7000000
     asm("{disp8} mov        eax, dword ptr [esp + 0x20]             ");  // 0x00433f8f    8b442420
     asm("{disp8} mov        ebx, dword ptr [esp + 0x18]             ");  // 0x00433f93    8b5c2418
     asm("{disp8} mov        dword ptr [esp + 0x28], eax             ");  // 0x00433f97    89442428
-    asm("_jmp_addr_0x00433f9b:                                      ");
+    asm("LAB__addr_0x00433f9b:                                      ");
     asm("{disp8} mov        ecx, dword ptr [esp + 0x10]             ");  // 0x00433f9b    8b4c2410
     asm("{disp8} mov        edx, dword ptr [esp + 0x1c]             ");  // 0x00433f9f    8b54241c
     asm("{disp32} lea       eax, dword ptr [ebx + 0x00000118]       ");  // 0x00433fa3    8d8318010000
@@ -67,7 +67,7 @@ void LoadIt__FP10LoaderAnonPcP23GVillagerStateTableInfoUlbP6LHFile(struct Loader
     asm("call               _jmp_addr_0x005f3120                    ");  // 0x00433fb4    e867f11b00
     asm("mov.s              ebp, eax                                ");  // 0x00433fb9    8be8
     asm("test               ebp, ebp                                ");  // 0x00433fbb    85ed
-    asm("{disp8} je         _jmp_addr_0x00434030                    ");  // 0x00433fbd    7471
+    asm("{disp8} je         LAB__addr_0x00434030                    ");  // 0x00433fbd    7471
     asm("{disp32} mov       eax, dword ptr [ebx + 0x00002118]       ");  // 0x00433fbf    8b8318210000
     asm("{disp8} mov        ecx, dword ptr [esp + 0x2c]             ");  // 0x00433fc5    8b4c242c
     asm("push               0x00000104                              ");  // 0x00433fc9    6804010000
@@ -82,9 +82,9 @@ void LoadIt__FP10LoaderAnonPcP23GVillagerStateTableInfoUlbP6LHFile(struct Loader
     asm("mov.s              ecx, edx                                ");  // 0x00433ff2    8bca
     asm("call               ?SetInfoID@GBaseInfo@@QAEXXZ            ");  // 0x00433ff4    e8d72b0000
     asm("cmp                ebp, 0x00000104                         ");  // 0x00433ff9    81fd04010000
-    asm("{disp8} je         _jmp_addr_0x00434007                    ");  // 0x00433fff    7406
+    asm("{disp8} je         LAB__addr_0x00434007                    ");  // 0x00433fff    7406
     asm("{disp32} inc       dword ptr [ebx + 0x0000211c]            ");  // 0x00434001    ff831c210000
-    asm("_jmp_addr_0x00434007:                                      ");
+    asm("LAB__addr_0x00434007:                                      ");
     asm("{disp8} mov        eax, dword ptr [esp + 0x10]             ");  // 0x00434007    8b442410
     asm("{disp8} mov        edx, dword ptr [esp + 0x28]             ");  // 0x0043400b    8b542428
     asm("{disp8} mov        ecx, dword ptr [esp + 0x24]             ");  // 0x0043400f    8b4c2424
@@ -93,16 +93,16 @@ void LoadIt__FP10LoaderAnonPcP23GVillagerStateTableInfoUlbP6LHFile(struct Loader
     asm("cmp.s              eax, ecx                                ");  // 0x0043401a    3bc1
     asm("{disp8} mov        dword ptr [esp + 0x10], eax             ");  // 0x0043401c    89442410
     asm("{disp8} mov        dword ptr [esp + 0x28], edx             ");  // 0x00434020    89542428
-    asm("{disp32} jb        _jmp_addr_0x00433f9b                    ");  // 0x00434024    0f8271ffffff
+    asm("{disp32} jb        LAB__addr_0x00433f9b                    ");  // 0x00434024    0f8271ffffff
     asm("pop                edi                                     ");  // 0x0043402a    5f
     asm("pop                esi                                     ");  // 0x0043402b    5e
     asm("pop                ebp                                     ");  // 0x0043402c    5d
     asm("pop                ebx                                     ");  // 0x0043402d    5b
     asm("pop                ecx                                     ");  // 0x0043402e    59
     asm("ret                                                        ");  // 0x0043402f    c3
-    asm("_jmp_addr_0x00434030:                                      ");
+    asm("LAB__addr_0x00434030:                                      ");
     asm("{disp32} inc       dword ptr [ebx + 0x0000211c]            ");  // 0x00434030    ff831c210000
-    asm("_jmp_addr_0x00434036:                                      ");
+    asm("LAB__addr_0x00434036:                                      ");
     asm("pop                edi                                     ");  // 0x00434036    5f
     asm("pop                esi                                     ");  // 0x00434037    5e
     asm("pop                ebp                                     ");  // 0x00434038    5d

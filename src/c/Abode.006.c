@@ -40,21 +40,21 @@ size_t __fastcall SaveObject__5AbodeFR8LHOSFileRC9MapCoords(struct Object* this,
     asm("call               ?CheckAndSetSaved@GameThing@@QAE_NXZ");                          // 0x00405bba    e831a31600
     asm("mov.s              ebp, eax");                                      // 0x00405bbf    8be8
     asm("test               ebp, ebp");                                      // 0x00405bc1    85ed
-    asm("{disp32} je        _jmp_addr_0x00405d68");                          // 0x00405bc3    0f849f010000
+    asm("{disp32} je        LAB__addr_0x00405d68");                          // 0x00405bc3    0f849f010000
     asm("push               ebx");                                           // 0x00405bc9    53
     asm("{disp32} mov       ebx, dword ptr [esp + 0x0000028c]");             // 0x00405bca    8b9c248c020000
     asm("test               ebx, ebx");                                      // 0x00405bd1    85db
     asm("push               edi");                                           // 0x00405bd3    57
-    asm("{disp8} je         _jmp_addr_0x00405be6");                          // 0x00405bd4    7410
+    asm("{disp8} je         LAB__addr_0x00405be6");                          // 0x00405bd4    7410
     asm("push               ebx");                                           // 0x00405bd6    53
     asm("{disp8} lea        eax, dword ptr [esp + 0x28]");                   // 0x00405bd7    8d442428
     asm("push               eax");                                           // 0x00405bdb    50
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x00405bdc    8d4e14
     asm("call               _jmp_addr_0x006055c0");                          // 0x00405bdf    e8dcf91f00
-    asm("{disp8} jmp        _jmp_addr_0x00405be9");                          // 0x00405be4    eb03
-    asm("_jmp_addr_0x00405be6:");
+    asm("{disp8} jmp        LAB__addr_0x00405be9");                          // 0x00405be4    eb03
+    asm("LAB__addr_0x00405be6:");
     asm("{disp8} lea        eax, dword ptr [esi + 0x14]");                   // 0x00405be6    8d4614
-    asm("_jmp_addr_0x00405be9:");
+    asm("LAB__addr_0x00405be9:");
     asm("mov                ecx, dword ptr [eax]");                          // 0x00405be9    8b08
     asm("{disp8} mov        dword ptr [esp + 0x18], ecx");                   // 0x00405beb    894c2418
     asm("{disp8} mov        edx, dword ptr [eax + 0x04]");                   // 0x00405bef    8b5004
@@ -65,21 +65,21 @@ size_t __fastcall SaveObject__5AbodeFR8LHOSFileRC9MapCoords(struct Object* this,
     asm("{disp8} mov        dword ptr [esp + 0x20], eax");                   // 0x00405bfd    89442420
     asm("call               dword ptr [edx + 0x48]");                        // 0x00405c01    ff5248
     asm("test               eax, eax");                                      // 0x00405c04    85c0
-    asm("{disp8} je         _jmp_addr_0x00405c1b");                          // 0x00405c06    7413
+    asm("{disp8} je         LAB__addr_0x00405c1b");                          // 0x00405c06    7413
     asm("test               ebx, ebx");                                      // 0x00405c08    85db
-    asm("{disp8} jne        _jmp_addr_0x00405c1b");                          // 0x00405c0a    750f
+    asm("{disp8} jne        LAB__addr_0x00405c1b");                          // 0x00405c0a    750f
     asm("mov                eax, dword ptr [esi]");                          // 0x00405c0c    8b06
     asm("mov.s              ecx, esi");                                      // 0x00405c0e    8bce
     asm("call               dword ptr [eax + 0x48]");                        // 0x00405c10    ff5048
     asm("{disp32} mov       edi, dword ptr [eax + 0x000005b4]");             // 0x00405c13    8bb8b4050000
-    asm("{disp8} jmp        _jmp_addr_0x00405c1e");                          // 0x00405c19    eb03
-    asm("_jmp_addr_0x00405c1b:");
+    asm("{disp8} jmp        LAB__addr_0x00405c1e");                          // 0x00405c19    eb03
+    asm("LAB__addr_0x00405c1b:");
     asm("or                 edi, 0xffffffff");                               // 0x00405c1b    83cfff
-    asm("_jmp_addr_0x00405c1e:");
+    asm("LAB__addr_0x00405c1e:");
     asm("test               byte ptr [esi + 0x58], 0x02");                   // 0x00405c1e    f6465802
     asm("mov                edx, dword ptr [esi]");                          // 0x00405c22    8b16
     asm("mov.s              ecx, esi");                                      // 0x00405c24    8bce
-    asm("{disp8} je         _jmp_addr_0x00405ca1");                          // 0x00405c26    7479
+    asm("{disp8} je         LAB__addr_0x00405ca1");                          // 0x00405c26    7479
     asm("call               dword ptr [edx + 0x120]");                       // 0x00405c28    ff9220010000
     asm("{disp8} fstp       dword ptr [esp + 0x14]");                        // 0x00405c2e    d95c2414
     asm("mov                eax, dword ptr [esi]");                          // 0x00405c32    8b06
@@ -116,8 +116,8 @@ size_t __fastcall SaveObject__5AbodeFR8LHOSFileRC9MapCoords(struct Object* this,
     asm("push               eax");                                           // 0x00405c9b    50
     asm("push               edi");                                           // 0x00405c9c    57
     asm("push               0x8");                                           // 0x00405c9d    6a08
-    asm("{disp8} jmp        _jmp_addr_0x00405d18");                          // 0x00405c9f    eb77
-    asm("_jmp_addr_0x00405ca1:");
+    asm("{disp8} jmp        LAB__addr_0x00405d18");                          // 0x00405c9f    eb77
+    asm("LAB__addr_0x00405ca1:");
     asm("call               dword ptr [edx + 0x120]");                       // 0x00405ca1    ff9220010000
     asm("{disp8} fstp       dword ptr [esp + 0x10]");                        // 0x00405ca7    d95c2410
     asm("mov                eax, dword ptr [esi]");                          // 0x00405cab    8b06
@@ -154,7 +154,7 @@ size_t __fastcall SaveObject__5AbodeFR8LHOSFileRC9MapCoords(struct Object* this,
     asm("push               eax");                                           // 0x00405d14    50
     asm("push               edi");                                           // 0x00405d15    57
     asm("push               0x7");                                           // 0x00405d16    6a07
-    asm("_jmp_addr_0x00405d18:");
+    asm("LAB__addr_0x00405d18:");
     asm("call               ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z");                          // 0x00405d18    e813f43000
     asm("add                esp, 0x04");                                     // 0x00405d1d    83c404
     asm("push               eax");                                           // 0x00405d20    50
@@ -186,7 +186,7 @@ size_t __fastcall SaveObject__5AbodeFR8LHOSFileRC9MapCoords(struct Object* this,
     asm("pop                ebp");                                           // 0x00405d5e    5d
     asm("add                esp, 0x00000278");                               // 0x00405d5f    81c478020000
     asm("ret                0x0008");                                        // 0x00405d65    c20800
-    asm("_jmp_addr_0x00405d68:");
+    asm("LAB__addr_0x00405d68:");
     asm("pop                esi");                                           // 0x00405d68    5e
     asm("mov.s              eax, ebp");                                      // 0x00405d69    8bc5
     asm("pop                ebp");                                           // 0x00405d6b    5d
@@ -217,12 +217,12 @@ void __fastcall ReduceLife__5AbodeFfP7GPlayer(struct Object* this, const void* e
     asm("{disp8} fcomp      dword ptr [esp + 0x0c]");                        // 0x00405dac    d85c240c
     asm("fnstsw             ax");                                            // 0x00405db0    dfe0
     asm("test               ah, 0x01");                                      // 0x00405db2    f6c401
-    asm("{disp8} je         _jmp_addr_0x00405dbe");                          // 0x00405db5    7407
+    asm("{disp8} je         LAB__addr_0x00405dbe");                          // 0x00405db5    7407
     asm("mov                ebp, 0x00000001");                               // 0x00405db7    bd01000000
-    asm("{disp8} jmp        _jmp_addr_0x00405dc0");                          // 0x00405dbc    eb02
-    asm("_jmp_addr_0x00405dbe:");
+    asm("{disp8} jmp        LAB__addr_0x00405dc0");                          // 0x00405dbc    eb02
+    asm("LAB__addr_0x00405dbe:");
     asm("xor.s              ebp, ebp");                                      // 0x00405dbe    33ed
-    asm("_jmp_addr_0x00405dc0:");
+    asm("LAB__addr_0x00405dc0:");
     asm("{disp8} mov        ebx, dword ptr [esp + 0x18]");                   // 0x00405dc0    8b5c2418
     asm("{disp8} mov        eax, dword ptr [esp + 0x14]");                   // 0x00405dc4    8b442414
     asm("push               ebx");                                           // 0x00405dc8    53
@@ -233,28 +233,28 @@ void __fastcall ReduceLife__5AbodeFfP7GPlayer(struct Object* this, const void* e
     asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x00405dd5    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x00405ddb    dfe0
     asm("test               ah, 0x01");                                      // 0x00405ddd    f6c401
-    asm("{disp32} je        _jmp_addr_0x00405ec5");                          // 0x00405de0    0f84df000000
+    asm("{disp32} je        LAB__addr_0x00405ec5");                          // 0x00405de0    0f84df000000
     asm("push               edi");                                           // 0x00405de6    57
     asm("{disp32} mov       edi, dword ptr [esi + 0x000000a0]");             // 0x00405de7    8bbea0000000
     asm("test               edi, edi");                                      // 0x00405ded    85ff
-    asm("{disp8} je         _jmp_addr_0x00405e02");                          // 0x00405def    7411
-    asm("_jmp_addr_0x00405df1:");
+    asm("{disp8} je         LAB__addr_0x00405e02");                          // 0x00405def    7411
+    asm("LAB__addr_0x00405df1:");
     asm("mov.s              ecx, edi");                                      // 0x00405df1    8bcf
     asm("call               ?SetStateWhenTappedOnAbode@Villager@@QAE_NXZ");                          // 0x00405df3    e888cd3400
     asm("{disp32} mov       edi, dword ptr [edi + 0x000000e4]");             // 0x00405df8    8bbfe4000000
     asm("test               edi, edi");                                      // 0x00405dfe    85ff
-    asm("{disp8} jne        _jmp_addr_0x00405df1");                          // 0x00405e00    75ef
-    asm("_jmp_addr_0x00405e02:");
+    asm("{disp8} jne        LAB__addr_0x00405df1");                          // 0x00405e00    75ef
+    asm("LAB__addr_0x00405e02:");
     asm("test               ebp, ebp");                                      // 0x00405e02    85ed
     asm("pop                edi");                                           // 0x00405e04    5f
-    asm("{disp8} je         _jmp_addr_0x00405e45");                          // 0x00405e05    743e
+    asm("{disp8} je         LAB__addr_0x00405e45");                          // 0x00405e05    743e
     asm("mov                edx, dword ptr [esi]");                          // 0x00405e07    8b16
     asm("mov.s              ecx, esi");                                      // 0x00405e09    8bce
     asm("call               dword ptr [edx + 0x894]");                       // 0x00405e0b    ff9294080000
     asm("{disp8} fcomp      dword ptr [esp + 0x18]");                        // 0x00405e11    d85c2418
     asm("fnstsw             ax");                                            // 0x00405e15    dfe0
     asm("test               ah, 0x01");                                      // 0x00405e17    f6c401
-    asm("{disp8} jne        _jmp_addr_0x00405e45");                          // 0x00405e1a    7529
+    asm("{disp8} jne        LAB__addr_0x00405e45");                          // 0x00405e1a    7529
     asm("mov                eax, dword ptr [esi]");                          // 0x00405e1c    8b06
     asm("push               ebx");                                           // 0x00405e1e    53
     asm("mov.s              ecx, esi");                                      // 0x00405e1f    8bce
@@ -263,61 +263,61 @@ void __fastcall ReduceLife__5AbodeFfP7GPlayer(struct Object* this, const void* e
     asm("mov.s              ecx, esi");                                      // 0x00405e29    8bce
     asm("call               dword ptr [edx + 0x920]");                       // 0x00405e2b    ff9220090000
     asm("test               eax, eax");                                      // 0x00405e31    85c0
-    asm("{disp8} je         _jmp_addr_0x00405e5e");                          // 0x00405e33    7429
+    asm("{disp8} je         LAB__addr_0x00405e5e");                          // 0x00405e33    7429
     asm("mov                eax, dword ptr [esi]");                          // 0x00405e35    8b06
     asm("mov.s              ecx, esi");                                      // 0x00405e37    8bce
     asm("call               dword ptr [eax + 0x48]");                        // 0x00405e39    ff5048
     asm("mov.s              ecx, eax");                                      // 0x00405e3c    8bc8
     asm("call               ?SetInStateOfEmergency@Town@@QAEXXZ");           // 0x00405e3e    e85d1b3400
-    asm("{disp8} jmp        _jmp_addr_0x00405e5e");                          // 0x00405e43    eb19
-    asm("_jmp_addr_0x00405e45:");
+    asm("{disp8} jmp        LAB__addr_0x00405e5e");                          // 0x00405e43    eb19
+    asm("LAB__addr_0x00405e45:");
     asm("{disp8} fld        dword ptr [esp + 0x0c]");                        // 0x00405e45    d944240c
     asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x00405e49    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x00405e4f    dfe0
     asm("test               ah, 0x01");                                      // 0x00405e51    f6c401
-    asm("{disp8} jne        _jmp_addr_0x00405e5e");                          // 0x00405e54    7508
+    asm("{disp8} jne        LAB__addr_0x00405e5e");                          // 0x00405e54    7508
     asm("push               ebx");                                           // 0x00405e56    53
     asm("mov.s              ecx, esi");                                      // 0x00405e57    8bce
     asm("call               ?FUN_004073f0@Abode@@UAEXPAVGPlayer@@@Z");       // 0x00405e59    e892150000
-    asm("_jmp_addr_0x00405e5e:");
+    asm("LAB__addr_0x00405e5e:");
     asm("{disp8} mov        eax, dword ptr [esi + 0x74]");                   // 0x00405e5e    8b4674
     asm("test               eax, eax");                                      // 0x00405e61    85c0
-    asm("{disp8} jne        _jmp_addr_0x00405e86");                          // 0x00405e63    7521
+    asm("{disp8} jne        LAB__addr_0x00405e86");                          // 0x00405e63    7521
     asm("mov                edx, dword ptr [esi]");                          // 0x00405e65    8b16
     asm("mov.s              ecx, esi");                                      // 0x00405e67    8bce
     asm("call               dword ptr [edx + 0x48]");                        // 0x00405e69    ff5248
     asm("test               eax, eax");                                      // 0x00405e6c    85c0
-    asm("{disp8} je         _jmp_addr_0x00405e7f");                          // 0x00405e6e    740f
+    asm("{disp8} je         LAB__addr_0x00405e7f");                          // 0x00405e6e    740f
     asm("mov                eax, dword ptr [esi]");                          // 0x00405e70    8b06
     asm("push               esi");                                           // 0x00405e72    56
     asm("mov.s              ecx, esi");                                      // 0x00405e73    8bce
     asm("call               dword ptr [eax + 0x48]");                        // 0x00405e75    ff5048
     asm("mov.s              ecx, eax");                                      // 0x00405e78    8bc8
     asm("call               _jmp_addr_0x0073b8e0");                          // 0x00405e7a    e8615a3300
-    asm("_jmp_addr_0x00405e7f:");
+    asm("LAB__addr_0x00405e7f:");
     asm("{disp8} mov        eax, dword ptr [esi + 0x74]");                   // 0x00405e7f    8b4674
     asm("test               eax, eax");                                      // 0x00405e82    85c0
-    asm("{disp8} je         _jmp_addr_0x00405ead");                          // 0x00405e84    7427
-    asm("_jmp_addr_0x00405e86:");
+    asm("{disp8} je         LAB__addr_0x00405ead");                          // 0x00405e84    7427
+    asm("LAB__addr_0x00405e86:");
     asm("mov                edx, dword ptr [esi]");                          // 0x00405e86    8b16
     asm("mov.s              ecx, esi");                                      // 0x00405e88    8bce
     asm("call               dword ptr [edx + 0x890]");                       // 0x00405e8a    ff9290080000
     asm("test               eax, eax");                                      // 0x00405e90    85c0
-    asm("{disp8} je         _jmp_addr_0x00405ead");                          // 0x00405e92    7419
+    asm("{disp8} je         LAB__addr_0x00405ead");                          // 0x00405e92    7419
     asm("{disp8} fld        dword ptr [esp + 0x18]");                        // 0x00405e94    d9442418
     asm("{disp8} mov        eax, dword ptr [esi + 0x74]");                   // 0x00405e98    8b4674
     asm("{disp32} fmul      dword ptr [__real@3f8ccccd]");                   // 0x00405e9b    d80d30b28a00
     asm("{disp32} fsub      dword ptr [__real@3dcccccd]");                   // 0x00405ea1    d8252cb28a00
     asm("{disp32} fstp      dword ptr [eax + 0x00000640]");                  // 0x00405ea7    d99840060000
-    asm("_jmp_addr_0x00405ead:");
+    asm("LAB__addr_0x00405ead:");
     asm("{disp8} fld        dword ptr [esp + 0x18]");                        // 0x00405ead    d9442418
     asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x00405eb1    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x00405eb7    dfe0
     asm("test               ah, 0x40");                                      // 0x00405eb9    f6c440
-    asm("{disp8} je         _jmp_addr_0x00405ec5");                          // 0x00405ebc    7407
+    asm("{disp8} je         LAB__addr_0x00405ec5");                          // 0x00405ebc    7407
     asm("mov.s              ecx, esi");                                      // 0x00405ebe    8bce
     asm("call               ?FUN_00405d80@Abode@@QAEHXZ");                   // 0x00405ec0    e8bbfeffff
-    asm("_jmp_addr_0x00405ec5:");
+    asm("LAB__addr_0x00405ec5:");
     asm("{disp8} fld        dword ptr [esp + 0x18]");                        // 0x00405ec5    d9442418
     asm("pop                esi");                                           // 0x00405ec9    5e
     asm("pop                ebp");                                           // 0x00405eca    5d
@@ -343,30 +343,30 @@ void __fastcall IncreaseLife__5AbodeFf(struct Object* this, const void* edx, flo
     asm("{disp8} fcomp      dword ptr [esp + 0x08]");                        // 0x00405eeb    d85c2408
     asm("fnstsw             ax");                                            // 0x00405eef    dfe0
     asm("test               ah, 0x01");                                      // 0x00405ef1    f6c401
-    asm("{disp8} jne        _jmp_addr_0x00405efd");                          // 0x00405ef4    7507
+    asm("{disp8} jne        LAB__addr_0x00405efd");                          // 0x00405ef4    7507
     asm("mov                edi, 0x00000001");                               // 0x00405ef6    bf01000000
-    asm("{disp8} jmp        _jmp_addr_0x00405eff");                          // 0x00405efb    eb02
-    asm("_jmp_addr_0x00405efd:");
+    asm("{disp8} jmp        LAB__addr_0x00405eff");                          // 0x00405efb    eb02
+    asm("LAB__addr_0x00405efd:");
     asm("xor.s              edi, edi");                                      // 0x00405efd    33ff
-    asm("_jmp_addr_0x00405eff:");
+    asm("LAB__addr_0x00405eff:");
     asm("{disp8} mov        eax, dword ptr [esp + 0x10]");                   // 0x00405eff    8b442410
     asm("push               eax");                                           // 0x00405f03    50
     asm("mov.s              ecx, esi");                                      // 0x00405f04    8bce
     asm("call               ?IncreaseLife@Object@@UAEXM@Z");                 // 0x00405f06    e865192300
     asm("{disp8} fstp       dword ptr [esp + 0x10]");                        // 0x00405f0b    d95c2410
     asm("test               edi, edi");                                      // 0x00405f0f    85ff
-    asm("{disp8} je         _jmp_addr_0x00405f32");                          // 0x00405f11    741f
+    asm("{disp8} je         LAB__addr_0x00405f32");                          // 0x00405f11    741f
     asm("mov                edx, dword ptr [esi]");                          // 0x00405f13    8b16
     asm("mov.s              ecx, esi");                                      // 0x00405f15    8bce
     asm("call               dword ptr [edx + 0x894]");                       // 0x00405f17    ff9294080000
     asm("{disp8} fcomp      dword ptr [esp + 0x10]");                        // 0x00405f1d    d85c2410
     asm("fnstsw             ax");                                            // 0x00405f21    dfe0
     asm("test               ah, 0x01");                                      // 0x00405f23    f6c401
-    asm("{disp8} je         _jmp_addr_0x00405f32");                          // 0x00405f26    740a
+    asm("{disp8} je         LAB__addr_0x00405f32");                          // 0x00405f26    740a
     asm("mov                eax, dword ptr [esi]");                          // 0x00405f28    8b06
     asm("mov.s              ecx, esi");                                      // 0x00405f2a    8bce
     asm("call               dword ptr [eax + 0x91c]");                       // 0x00405f2c    ff901c090000
-    asm("_jmp_addr_0x00405f32:");
+    asm("LAB__addr_0x00405f32:");
     asm("{disp8} fld        dword ptr [esp + 0x10]");                        // 0x00405f32    d9442410
     asm("pop                edi");                                           // 0x00405f36    5f
     asm("pop                esi");                                           // 0x00405f37    5e
@@ -391,7 +391,7 @@ struct GTribeInfo* __fastcall GetTribe__5AbodeFv(struct Abode* this)
     asm("mov                eax, dword ptr [esi]");                          // 0x00405f53    8b06
     asm("call               dword ptr [eax + 0x48]");                        // 0x00405f55    ff5048
     asm("test               eax, eax");                                      // 0x00405f58    85c0
-    asm("{disp8} je         _jmp_addr_0x00405f6c");                          // 0x00405f5a    7410
+    asm("{disp8} je         LAB__addr_0x00405f6c");                          // 0x00405f5a    7410
     asm("mov                edx, dword ptr [esi]");                          // 0x00405f5c    8b16
     asm("mov.s              ecx, esi");                                      // 0x00405f5e    8bce
     asm("call               dword ptr [edx + 0x48]");                        // 0x00405f60    ff5248
@@ -399,7 +399,7 @@ struct GTribeInfo* __fastcall GetTribe__5AbodeFv(struct Abode* this)
     asm("call               ?GetTribe@Town@@QBEPAVGTribeInfo@@XZ");          // 0x00405f65    e8d6683300
     asm("pop                esi");                                           // 0x00405f6a    5e
     asm("ret");                                                              // 0x00405f6b    c3
-    asm("_jmp_addr_0x00405f6c:");
+    asm("LAB__addr_0x00405f6c:");
     asm("xor.s              eax, eax");                                      // 0x00405f6c    33c0
     asm("pop                esi");                                           // 0x00405f6e    5e
     asm("ret");                                                              // 0x00405f6f    c3
@@ -413,7 +413,7 @@ struct GPlayer* __fastcall GetPlayer__5AbodeFv(struct GameThing* this)
     asm("mov                eax, dword ptr [esi]");                          // 0x00405f73    8b06
     asm("call               dword ptr [eax + 0x48]");                        // 0x00405f75    ff5048
     asm("test               eax, eax");                                      // 0x00405f78    85c0
-    asm("{disp8} je         _jmp_addr_0x00405f8c");                          // 0x00405f7a    7410
+    asm("{disp8} je         LAB__addr_0x00405f8c");                          // 0x00405f7a    7410
     asm("mov                edx, dword ptr [esi]");                          // 0x00405f7c    8b16
     asm("mov.s              ecx, esi");                                      // 0x00405f7e    8bce
     asm("call               dword ptr [edx + 0x48]");                        // 0x00405f80    ff5248
@@ -422,7 +422,7 @@ struct GPlayer* __fastcall GetPlayer__5AbodeFv(struct GameThing* this)
     asm("call               dword ptr [edx + 0x1c]");                        // 0x00405f87    ff521c
     asm("pop                esi");                                           // 0x00405f8a    5e
     asm("ret");                                                              // 0x00405f8b    c3
-    asm("_jmp_addr_0x00405f8c:");
+    asm("LAB__addr_0x00405f8c:");
     asm("mov.s              ecx, esi");                                      // 0x00405f8c    8bce
     asm("call               ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ");       // 0x00405f8e    e89da11600
     asm("pop                esi");                                           // 0x00405f93    5e
@@ -450,7 +450,7 @@ bool GetNearestWaterPos__5AbodeFR9MapCoords(struct Abode* this, const void* edx,
     asm("{disp8} mov        dl, byte ptr [ecx + 0x7c]");                     // 0x00405fc0    8a517c
     asm("mov                eax, 0x00000001");                               // 0x00405fc3    b801000000
     asm("test               al, dl");                                        // 0x00405fc8    84d0
-    asm("{disp8} je         _jmp_addr_0x00405feb");                          // 0x00405fca    741f
+    asm("{disp8} je         LAB__addr_0x00405feb");                          // 0x00405fca    741f
     asm("{disp8} mov        edx, dword ptr [esp + 0x04]");                   // 0x00405fcc    8b542404
     asm("add                ecx, 0x00000080");                               // 0x00405fd0    81c180000000
     asm("push               esi");                                           // 0x00405fd6    56
@@ -462,7 +462,7 @@ bool GetNearestWaterPos__5AbodeFR9MapCoords(struct Abode* this, const void* edx,
     asm("{disp8} mov        dword ptr [edx + 0x08], ecx");                   // 0x00405fe4    894a08
     asm("pop                esi");                                           // 0x00405fe7    5e
     asm("ret                0x0004");                                        // 0x00405fe8    c20400
-    asm("_jmp_addr_0x00405feb:");
+    asm("LAB__addr_0x00405feb:");
     asm("xor.s              eax, eax");                                      // 0x00405feb    33c0
     asm("ret                0x0004");                                        // 0x00405fed    c20400
     __builtin_unreachable();
@@ -474,31 +474,31 @@ bool __fastcall IsCivic__5AbodeFv(struct MultiMapFixed* this)
     asm("{disp8} mov        eax, dword ptr [ecx + 0x28]");                   // 0x00405ff0    8b4128
     asm("{disp32} mov       eax, dword ptr [eax + 0x00000120]");             // 0x00405ff3    8b8020010000
     asm("cmp                eax, 0x00000100");                               // 0x00405ff9    3d00010000
-    asm("{disp8} jg         _jmp_addr_0x00406019");                          // 0x00405ffe    7f19
-    asm("{disp8} je         _jmp_addr_0x0040603d");                          // 0x00406000    743b
+    asm("{disp8} jg         LAB__addr_0x00406019");                          // 0x00405ffe    7f19
+    asm("{disp8} je         LAB__addr_0x0040603d");                          // 0x00406000    743b
     asm("add                eax, -0x14");                                    // 0x00406002    83c0ec
     asm("cmp                eax, 0x70");                                     // 0x00406005    83f870
-    asm("{disp8} ja         _jmp_addr_0x0040603a");                          // 0x00406008    7730
+    asm("{disp8} ja         LAB__addr_0x0040603a");                          // 0x00406008    7730
     asm("xor.s              ecx, ecx");                                      // 0x0040600a    33c9
     asm("{disp32} mov       cl, byte ptr [eax + 0x0040604c]");               // 0x0040600c    8a884c604000
     asm("jmp                dword ptr [ecx*4 + 0x406044]");                  // 0x00406012    ff248d44604000
-    asm("_jmp_addr_0x00406019:");
+    asm("LAB__addr_0x00406019:");
     asm("cmp                eax, 0x00001004");                               // 0x00406019    3d04100000
-    asm("{disp8} jg         _jmp_addr_0x00406033");                          // 0x0040601e    7f13
-    asm("{disp8} je         _jmp_addr_0x0040603d");                          // 0x00406020    741b
+    asm("{disp8} jg         LAB__addr_0x00406033");                          // 0x0040601e    7f13
+    asm("{disp8} je         LAB__addr_0x0040603d");                          // 0x00406020    741b
     asm("cmp                eax, 0x00000204");                               // 0x00406022    3d04020000
-    asm("{disp8} je         _jmp_addr_0x0040603d");                          // 0x00406027    7414
+    asm("{disp8} je         LAB__addr_0x0040603d");                          // 0x00406027    7414
     asm("cmp                eax, 0x00000404");                               // 0x00406029    3d04040000
-    asm("{disp8} je         _jmp_addr_0x0040603d");                          // 0x0040602e    740d
+    asm("{disp8} je         LAB__addr_0x0040603d");                          // 0x0040602e    740d
     asm("xor.s              eax, eax");                                      // 0x00406030    33c0
     asm("ret");                                                              // 0x00406032    c3
-    asm("_jmp_addr_0x00406033:");
+    asm("LAB__addr_0x00406033:");
     asm("cmp                eax, 0x00002004");                               // 0x00406033    3d04200000
-    asm("{disp8} je         _jmp_addr_0x0040603d");                          // 0x00406038    7403
-    asm("_jmp_addr_0x0040603a:");
+    asm("{disp8} je         LAB__addr_0x0040603d");                          // 0x00406038    7403
+    asm("LAB__addr_0x0040603a:");
     asm("xor.s              eax, eax");                                      // 0x0040603a    33c0
     asm("ret");                                                              // 0x0040603c    c3
-    asm("_jmp_addr_0x0040603d:");
+    asm("LAB__addr_0x0040603d:");
     asm("mov                eax, 0x00000001");                               // 0x0040603d    b801000000
     asm("ret");                                                              // 0x00406042    c3
     asm("nop");                                                              // 0x00406043    90
