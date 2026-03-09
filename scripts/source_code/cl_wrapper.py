@@ -133,11 +133,13 @@ def wrap_cl_call_with_wibo(argv):
 
     # Compiler is annoying and echo's the filename, remove that
     name = get_out_file_path(argv).name.removesuffix(".o").removesuffix(".obj")
-    stdout = result.stdout.decode().splitlines()
-    if name.endswith(".cpp"):
-        stdout = [l for l in stdout if l.strip() != name]
+    stdout = (l.rstrip("\n\r") for l in result.stdout.decode().splitlines())
+    if name.endswith(".cpp") or name.endswith(".c"):
+        stdout = (l for l in stdout if l.strip() != name)
 
-    sys.stdout.write("".join(stdout))
+    stdout = list(stdout)
+    if any(filter(None, stdout)):
+        sys.stdout.write("\n".join(stdout) + f"\n")
     sys.stderr.write(fix_paths(result.stderr.decode()))
 
     return result.returncode
