@@ -9,7 +9,7 @@
 .extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ??3Base@@SAXPAXK@Z
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern _jmp_addr_0x00519320
 .extern _jmp_addr_0x00519ad0
 .extern ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z
@@ -1049,7 +1049,7 @@ _jmp_addr_0x00726dc0:    push               esi                                 
                          mov.s              esi, ecx                                             // 0x00726dc1    8bf1
                          call               ??0GameThing@@QAE@XZ                                 // 0x00726dc3    e8488ce4ff
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x00726dc8    8d4e14
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x00726dcb    e890add1ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x00726dcb    e890add1ff
                          {disp8} mov        dword ptr [esi + 0x20], 0x00000000                   // 0x00726dd0    c7462000000000
                          mov.s              ecx, esi                                             // 0x00726dd7    8bce
                          mov                dword ptr [esi], 0x008c31a0                          // 0x00726dd9    c706a0318c00
@@ -1134,7 +1134,7 @@ _jmp_addr_0x00726dc0:    push               esi                                 
                          call               ??0GameThing@@QAE@XZ                                 // 0x00726e75    e8968be4ff
                          {disp8} lea        edi, dword ptr [esi + 0x14]                          // 0x00726e7a    8d7e14
                          mov.s              ecx, edi                                             // 0x00726e7d    8bcf
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x00726e7f    e8dcacd1ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x00726e7f    e8dcacd1ff
                          xor.s              ebx, ebx                                             // 0x00726e84    33db
                          {disp8} mov        dword ptr [esi + 0x20], ebx                          // 0x00726e86    895e20
                          mov.s              ecx, esi                                             // 0x00726e89    8bce

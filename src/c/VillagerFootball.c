@@ -1733,7 +1733,7 @@ void __fastcall FootballAttackerMoveToBePassedProcess__8VillagerFP8Football(stru
     asm("fstp               dword ptr [esp]");                               // 0x0075da2f    d91c24
     asm("call               @__ct__7LHPointFfff@20");                        // 0x0075da32    e8c94cceff
     asm("{disp8} lea        ecx, dword ptr [esp + 0x30]");                   // 0x0075da37    8d4c2430
-    asm("call               ??0MapCoords@@QAE@XZ");                          // 0x0075da3b    e82041ceff
+    asm("call               ??0MapCoords@@QAE@ABU0@@Z");                     // 0x0075da3b    e82041ceff
     asm("{disp8} fld        dword ptr [esp + 0x24]");                        // 0x0075da40    d9442424
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3400]");              // 0x0075da44    d80d00c48a00
     asm("call               _jmp_addr_0x007a1400");                          // 0x0075da4a    e8b1390400

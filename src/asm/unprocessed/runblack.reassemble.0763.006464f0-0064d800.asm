@@ -14,7 +14,7 @@
 .extern ??3Base@@SAXPAXK@Z
 .extern @__ct__12BuildingSiteFP20PlannedMultiMapFixed@12
 .extern _jmp_addr_0x0043dc00
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern @__ct__14CameraModeNew3FP7GCamera@12
 .extern _jmp_addr_0x00457b60
 .extern _jmp_addr_0x00462d70
@@ -3237,7 +3237,7 @@ _globl_ct_0x00648750:    {disp32} jmp       .Lbl_addr_0x00648760                
                          call               ??0GameThing@@QAE@XZ                           // 0x00648786    e88572f2ff
                          {disp8} lea        edi, dword ptr [esi + 0x14]                    // 0x0064878b    8d7e14
                          mov.s              ecx, edi                                       // 0x0064878e    8bcf
-                         call               ??0MapCoords@@QAE@XZ                           // 0x00648790    e8cb93dfff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                      // 0x00648790    e8cb93dfff
                          xor.s              ebx, ebx                                       // 0x00648795    33db
                          {disp8} mov        dword ptr [esi + 0x20], ebx                    // 0x00648797    895e20
                          mov.s              ecx, esi                                       // 0x0064879a    8bce
@@ -3302,7 +3302,7 @@ _jmp_addr_0x00648820:    push               ebx                                 
                          call               ??0GameThing@@QAE@XZ                           // 0x00648826    e8e571f2ff
                          {disp8} lea        ebx, dword ptr [esi + 0x14]                    // 0x0064882b    8d5e14
                          mov.s              ecx, ebx                                       // 0x0064882e    8bcb
-                         call               ??0MapCoords@@QAE@XZ                           // 0x00648830    e82b93dfff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                      // 0x00648830    e82b93dfff
                          {disp8} mov        dword ptr [esi + 0x20], 0x00000000             // 0x00648835    c7462000000000
                          mov.s              ecx, esi                                       // 0x0064883c    8bce
                          mov                dword ptr [esi], 0x008c31a0                    // 0x0064883e    c706a0318c00
@@ -3887,7 +3887,7 @@ _jmp_addr_0x00648da0:    push               ecx                                 
                          xor.s              ebx, ebx                                       // 0x00648db1    33db
                          mov.s              ecx, edi                                       // 0x00648db3    8bcf
                          {disp8} mov        dword ptr [esi + 0x5c], ebx                    // 0x00648db5    895e5c
-                         call               ??0MapCoords@@QAE@XZ                           // 0x00648db8    e8a38ddfff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                      // 0x00648db8    e8a38ddfff
                          {disp8} mov        al, byte ptr [esp + 0x0f]                      // 0x00648dbd    8a44240f
                          {disp8} mov        dl, byte ptr [esp + 0x0f]                      // 0x00648dc1    8a54240f
                          mov                dword ptr [edi], ebx                           // 0x00648dc5    891f

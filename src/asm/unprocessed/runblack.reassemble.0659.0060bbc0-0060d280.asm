@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern ?GetCell@LH3DIsland@@SAPAULandCell@@JJ@Z
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
@@ -1078,7 +1078,7 @@ _jmp_addr_0x0060c3f0:    mov                ax, word ptr [ecx]                  
                          add.s              ecx, eax                                      // 0x0060c5d9    03c8
                          {disp32} mov       dword ptr [esi + 0x00000214], ecx             // 0x0060c5db    898e14020000
 .Lbl_addr_0x0060c5e1:    {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x0060c5e1    8d4c2428
-                         call               ??0MapCoords@@QAE@XZ                          // 0x0060c5e5    e87655e3ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x0060c5e5    e87655e3ff
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x0060c5ea    8d4c2420
                          {disp8} lea        ebx, dword ptr [edi + 0x70]                   // 0x0060c5ee    8d5f70
                          push               ecx                                           // 0x0060c5f1    51
@@ -1343,7 +1343,7 @@ _jmp_addr_0x0060c3f0:    mov                ax, word ptr [ecx]                  
                          {disp8} jmp        .Lbl_addr_0x0060c903                          // 0x0060c8fd    eb04
 .Lbl_addr_0x0060c8ff:    {disp8} mov        word ptr [ebx + 0x76], ax                     // 0x0060c8ff    66894376
 .Lbl_addr_0x0060c903:    {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x0060c903    8d4c2428
-                         call               ??0MapCoords@@QAE@XZ                          // 0x0060c907    e85452e3ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x0060c907    e85452e3ff
                          {disp8} lea        edx, dword ptr [esp + 0x14]                   // 0x0060c90c    8d542414
                          push               edx                                           // 0x0060c910    52
                          mov.s              ecx, esi                                      // 0x0060c911    8bce

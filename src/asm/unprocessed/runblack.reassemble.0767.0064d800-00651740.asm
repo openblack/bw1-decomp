@@ -4,7 +4,7 @@
 .extern rdata_bytes
 .extern data_bytes
 .extern ?__nw@Base@@SAPAXK@Z
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern ?SetMessage@GDebug@@SAXGPADZZ
 .extern _jmp_addr_0x00513640
 .extern _HideAll__13DialogBoxBaseFv@0
@@ -2970,7 +2970,7 @@ _jmp_addr_0x0064ffd0:    sub                esp, 0x0c                           
                          call               ??0GameThing@@QAE@XZ                          // 0x0064fff0    e81bfaf1ff
                          {disp8} lea        esi, dword ptr [ebx + 0x14]                   // 0x0064fff5    8d7314
                          mov.s              ecx, esi                                      // 0x0064fff8    8bce
-                         call               ??0MapCoords@@QAE@XZ                          // 0x0064fffa    e8611bdfff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x0064fffa    e8611bdfff
                          xor.s              ebp, ebp                                      // 0x0064ffff    33ed
                          {disp8} mov        dword ptr [ebx + 0x20], ebp                   // 0x00650001    896b20
                          mov.s              ecx, ebx                                      // 0x00650004    8bcb

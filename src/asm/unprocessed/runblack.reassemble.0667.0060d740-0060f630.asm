@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern @__as__7Point2DFRC7Point2D@12
 .extern _jmp_addr_0x005357c0
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
@@ -213,7 +213,7 @@ _jmp_addr_0x0060d760:    {disp32} mov       eax, dword ptr [_game]              
                          call               _jmp_addr_0x0060c180                        // 0x0060d887    e8f4e8ffff
                          add                esp, 0x14                                   // 0x0060d88c    83c414
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                 // 0x0060d88f    8d4c243c
-                         call               ??0MapCoords@@QAE@XZ                        // 0x0060d893    e8c842e3ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                   // 0x0060d893    e8c842e3ff
                          {disp8} lea        edi, dword ptr [esi + 0x70]                 // 0x0060d898    8d7e70
                          mov.s              ecx, edi                                    // 0x0060d89b    8bcf
                          call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ          // 0x0060d89d    e8becdffff
@@ -242,7 +242,7 @@ _jmp_addr_0x0060d760:    {disp32} mov       eax, dword ptr [_game]              
                          call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ          // 0x0060d8f5    e866cdffff
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                 // 0x0060d8fa    8d4c243c
                          mov.s              edi, eax                                    // 0x0060d8fe    8bf8
-                         call               ??0MapCoords@@QAE@XZ                        // 0x0060d900    e85b42e3ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                   // 0x0060d900    e85b42e3ff
                          fld                dword ptr [edi]                             // 0x0060d905    d907
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3400]            // 0x0060d907    d80d00c48a00
                          call               _jmp_addr_0x007a1400                        // 0x0060d90d    e8ee3a1900

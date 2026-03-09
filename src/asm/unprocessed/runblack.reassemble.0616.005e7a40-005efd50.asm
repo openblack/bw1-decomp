@@ -15,7 +15,7 @@
 .extern _jmp_addr_0x00437eb0
 .extern ?MSeconds@LHTimer@@QAEHXZ
 .extern @SetSpeedUpFactor__7LHTimerFf@12
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern _jmp_addr_0x00446ac0
 .extern _jmp_addr_0x00447060
 .extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
@@ -6297,7 +6297,7 @@ _globl_ct_0x005ebe90:    {disp32} jmp       .Lbl_addr_0x005ebea0                
                          {disp8} mov        dword ptr [esi + 0x6c], edi                   // 0x005ebee4    897e6c
                          call               ??0CircleHugInfo@@QAE@XZ                      // 0x005ebee7    e854e70100
                          {disp32} lea       ecx, dword ptr [esi + 0x00000080]             // 0x005ebeec    8d8e80000000
-                         call               ??0MapCoords@@QAE@XZ                          // 0x005ebef2    e8695ce5ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x005ebef2    e8695ce5ff
                          mov.s              ecx, esi                                      // 0x005ebef7    8bce
                          mov                dword ptr [esi], 0x008cded8                   // 0x005ebef9    c706d8de8c00
                          call               @SetSpeed__13MobileWallHugFl@12               // 0x005ebeff    e85c380200

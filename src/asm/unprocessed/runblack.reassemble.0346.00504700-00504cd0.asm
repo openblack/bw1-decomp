@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
 .extern _jmp_addr_0x0047a880
 .extern _jmp_addr_0x00480c60
@@ -43,7 +43,7 @@ start_0x00504700_0x00504cd0:
                          mov.s              esi, ecx                                      // 0x00504705    8bf1
                          push               edi                                           // 0x00504707    57
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x00504708    8d4c2420
-                         call               ??0MapCoords@@QAE@XZ                          // 0x0050470c    e84fd4f3ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x0050470c    e84fd4f3ff
                          {disp32} mov       ecx, dword ptr [esi + 0x000000d8]             // 0x00504711    8b8ed8000000
                          {disp8} mov        edx, dword ptr [ecx + 0x18]                   // 0x00504717    8b5118
                          {disp8} lea        eax, dword ptr [esp + 0x20]                   // 0x0050471a    8d442420

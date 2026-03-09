@@ -19,7 +19,7 @@
 .extern _jmp_addr_0x0043dc00
 .extern ?MSeconds@LHTimer@@QAEHXZ
 .extern @SetSpeedUpFactor__7LHTimerFf@12
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern _jmp_addr_0x004640a0
 .extern _jmp_addr_0x004e69a0
 .extern _jmp_addr_0x004e9490
@@ -1397,7 +1397,7 @@ _jmp_addr_0x00597ed0:    {disp8} mov        edx, dword ptr [ecx + 0x7c]         
                          push               esi                                           // 0x00597f25    56
                          push               edi                                           // 0x00597f26    57
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x00597f27    8d4c2420
-                         call               ??0MapCoords@@QAE@XZ                          // 0x00597f2b    e8309ceaff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x00597f2b    e8309ceaff
                          {disp8} mov        edi, dword ptr [esp + 0x38]                   // 0x00597f30    8b7c2438
                          {disp8} mov        eax, dword ptr [edi + 0x40]                   // 0x00597f34    8b4740
                          test               eax, eax                                      // 0x00597f37    85c0

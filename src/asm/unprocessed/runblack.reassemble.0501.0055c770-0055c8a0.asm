@@ -5,7 +5,7 @@
 .extern data_bytes
 
 .extern ??3Base@@SAXPAXK@Z
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern ?SetToZero@Living@@QAEXXZ
 .extern ??0LivingAction@@QAE@XZ
 .extern ??0CircleHugInfo@@QAE@XZ
@@ -151,7 +151,7 @@ _IsClear__8BaseInfoCFv:
                          {disp8} mov        dword ptr [esi + 0x6c], edi                    // 0x0055c83d    897e6c
                          call               ??0CircleHugInfo@@QAE@XZ                       // 0x0055c840    e8fbdd0a00
                          {disp32} lea       ecx, dword ptr [esi + 0x00000080]              // 0x0055c845    8d8e80000000
-                         call               ??0MapCoords@@QAE@XZ                           // 0x0055c84b    e81053eeff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                      // 0x0055c84b    e81053eeff
                          {disp32} lea       ecx, dword ptr [esi + 0x0000008c]              // 0x0055c850    8d8e8c000000
                          mov                dword ptr [esi], 0x008cded8                    // 0x0055c856    c706d8de8c00
                          call               ??0LivingAction@@QAE@XZ                        // 0x0055c85c    e80f040900

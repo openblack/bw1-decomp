@@ -62,7 +62,7 @@
 .extern _jmp_addr_0x0043d0b0
 .extern _jmp_addr_0x0043dc00
 .extern _jmp_addr_0x00441840
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern ?SetPointFromPointDistanceHeadingAndPitch@GCamera@@SAXPAULHPoint@@ABU2@MMM@Z
 .extern @AddTown__7CitadelFP4Town@12
 .extern _jmp_addr_0x004631d0
@@ -990,7 +990,7 @@ _jmp_addr_0x0073aaf0:    sub                esp, 0x34                           
                          mov.s              esi, ecx                                             // 0x0073aaf4    8bf1
                          push               edi                                                  // 0x0073aaf6    57
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                          // 0x0073aaf7    8d4c240c
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x0073aafb    e86070d0ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x0073aafb    e86070d0ff
                          mov                eax, 0x7fffffff                                      // 0x0073ab00    b8ffffff7f
                          {disp32} mov       dword ptr [esi + 0x00000728], eax                    // 0x0073ab05    898628070000
                          {disp32} mov       dword ptr [esi + 0x0000072c], eax                    // 0x0073ab0b    89862c070000
@@ -12168,7 +12168,7 @@ _jmp_addr_0x00741f30:    sub                esp, 0x14                           
                          mov.s              edi, ecx                                             // 0x00741f37    8bf9
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                          // 0x00741f39    8d4c2418
                          {disp8} mov        dword ptr [esp + 0x10], edi                          // 0x00741f3d    897c2410
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x00741f41    e81afccfff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x00741f41    e81afccfff
                          {disp8} mov        ebx, dword ptr [esp + 0x2c]                          // 0x00741f46    8b5c242c
                          {disp8} mov        ebp, dword ptr [esp + 0x28]                          // 0x00741f4a    8b6c2428
                          push               ebx                                                  // 0x00741f4e    53

@@ -17,7 +17,7 @@
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern @__ct__7LHPointFfff@20
 .extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
 .extern _jmp_addr_0x0047f490
@@ -1058,7 +1058,7 @@ _globl_ct_0x0051eec0:    call               .Lbl_addr_0x0051eed0                
                          {disp8} je         .Lbl_addr_0x0051f103                                 // 0x0051f0ca    7437
                          {disp8} lea        ecx, dword ptr [esi + 0x10]                          // 0x0051f0cc    8d4e10
                          mov                dword ptr [esi], 0x008d87b8                          // 0x0051f0cf    c706b8878d00
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x0051f0d5    e8862af2ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x0051f0d5    e8862af2ff
                          {disp8} mov        al, byte ptr [esp + 0x10]                            // 0x0051f0da    8a442410
                          {disp8} lea        edi, dword ptr [esi + 0x30]                          // 0x0051f0de    8d7e30
                          push               ebp                                                  // 0x0051f0e1    55
@@ -10747,7 +10747,7 @@ _jmp_addr_0x00525100:    sub                esp, 0x6c                           
                          {disp8} mov        dword ptr [esp + 0x18], esi                          // 0x00525136    89742418
                          {disp8} mov        dword ptr [esp + 0x48], edx                          // 0x0052513a    89542448
                          {disp8} mov        dword ptr [esp + 0x4c], eax                          // 0x0052513e    8944244c
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x00525142    e819caf1ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x00525142    e819caf1ff
                          {disp8} lea        ecx, dword ptr [ebx + 0x08]                          // 0x00525147    8d4b08
                          call               _jmp_addr_0x005258c0                                 // 0x0052514a    e871070000
                          {disp8} fld        dword ptr [ebx + 0x24]                               // 0x0052514f    d94324

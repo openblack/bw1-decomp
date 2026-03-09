@@ -11,7 +11,7 @@
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00439430
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern _jmp_addr_0x0052b670
 .extern _jmp_addr_0x00530310
 .extern _jmp_addr_0x00535550
@@ -3128,7 +3128,7 @@ _jmp_addr_0x00719e90:    sub                esp, 0x5c                           
                          {disp32} fmul      dword ptr [ecx + 0x00000110]                  // 0x00719f86    d88910010000
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x00719f8c    8d4c2424
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x00719f90    d95c2414
-                         call               ??0MapCoords@@QAE@XZ                          // 0x00719f94    e8c77bd2ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x00719f94    e8c77bd2ff
                          {disp8} mov        ecx, dword ptr [ebx + 0x60]                   // 0x00719f99    8b4b60
                          mov                edx, dword ptr [ecx]                          // 0x00719f9c    8b11
                          {disp8} lea        eax, dword ptr [esp + 0x24]                   // 0x00719f9e    8d442424

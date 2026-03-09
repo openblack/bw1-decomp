@@ -16,7 +16,7 @@
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ??3Base@@SAXPAXK@Z
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern @__ct__7LHPointFfff@20
 .extern _jmp_addr_0x004438c0
 .extern _jmp_addr_0x0044cf90
@@ -2519,7 +2519,7 @@ _jmp_addr_0x007809f0:    push               ecx                                 
                          call               ?GetPlayerColour@GPlayer@@QBE?AULH3DColor@@XZ // 0x00780c02    e8f9cbecff
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x00780c07    8d4c2420
                          mov.s              ebx, eax                                      // 0x00780c0b    8bd8
-                         call               ??0MapCoords@@QAE@XZ                          // 0x00780c0d    e84e0fccff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x00780c0d    e84e0fccff
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x00780c12    8d4c2420
                          push               ecx                                           // 0x00780c16    51
                          mov.s              ecx, ebp                                      // 0x00780c17    8bcd

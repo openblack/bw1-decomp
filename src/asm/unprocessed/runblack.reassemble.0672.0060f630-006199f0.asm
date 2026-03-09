@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern @__as__7Point2DFRC7Point2D@12
 .extern _jmp_addr_0x0051f640
 .extern _jmp_addr_0x0051fa40
@@ -8781,7 +8781,7 @@ _jmp_addr_0x00614630:    mov                eax, dword ptr [ecx]                
                          {disp8} lea        ecx, dword ptr [esp + 0x68]                    // 0x00614d34    8d4c2468
                          {disp32} fsub      qword ptr [rdata_bytes + 0x6c440]              // 0x00614d38    dc2540549100
                          {disp8} fstp       dword ptr [esp + 0x28]                         // 0x00614d3e    d95c2428
-                         call               ??0MapCoords@@QAE@XZ                           // 0x00614d42    e819cee2ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                      // 0x00614d42    e819cee2ff
                          mov.s              ecx, esi                                       // 0x00614d47    8bce
                          call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ             // 0x00614d49    e81259ffff
                          mov.s              esi, eax                                       // 0x00614d4e    8bf0
@@ -9833,7 +9833,7 @@ _jmp_addr_0x00614630:    mov                eax, dword ptr [ecx]                
                          {disp8} lea        ecx, dword ptr [esp + 0x68]                    // 0x00615ae4    8d4c2468
                          {disp32} fsub      qword ptr [rdata_bytes + 0x6c440]              // 0x00615ae8    dc2540549100
                          {disp8} fstp       dword ptr [esp + 0x28]                         // 0x00615aee    d95c2428
-                         call               ??0MapCoords@@QAE@XZ                           // 0x00615af2    e869c0e2ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                      // 0x00615af2    e869c0e2ff
                          mov.s              ecx, esi                                       // 0x00615af7    8bce
                          call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ             // 0x00615af9    e8624bffff
                          mov.s              esi, eax                                       // 0x00615afe    8bf0

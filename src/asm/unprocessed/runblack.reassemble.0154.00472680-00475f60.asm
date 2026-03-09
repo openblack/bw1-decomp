@@ -13,7 +13,7 @@
 .extern ??3Base@@SAXPAXK@Z
 .extern ?Create@BookmarkGraphic@@SAPAV1@JW4CREATURE_TYPE@@@Z
 .extern _jmp_addr_0x0043a850
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern _jmp_addr_0x00468db0
 .extern _jmp_addr_0x00476070
 .extern _jmp_addr_0x00477130
@@ -2072,9 +2072,9 @@ _ProcessState__8CreatureFv:
                          mov.s              ecx, ebx                                             // 0x00473c30    8bcb
                          {disp32} mov       dword ptr [esi + 0x000003d4], edi                    // 0x00473c32    89bed4030000
                          {disp32} mov       dword ptr [esi + 0x000003d0], edi                    // 0x00473c38    89bed0030000
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x00473c3e    e81ddffcff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x00473c3e    e81ddffcff
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                          // 0x00473c43    8d4b14
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x00473c46    e815dffcff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x00473c46    e815dffcff
                          push               0x00473db0                                           // 0x00473c4b    68b03d4700
                          push               0x20                                                 // 0x00473c50    6a20
                          push               0x60                                                 // 0x00473c52    6a60
@@ -3189,9 +3189,9 @@ _jmp_addr_0x00474350:    push               ebx                                 
                          mov.s              ecx, ebx                                             // 0x00474761    8bcb
                          {disp32} mov       dword ptr [esi + 0x000003d4], edi                    // 0x00474763    89bed4030000
                          {disp32} mov       dword ptr [esi + 0x000003d0], edi                    // 0x00474769    89bed0030000
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x0047476f    e8ecd3fcff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x0047476f    e8ecd3fcff
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                          // 0x00474774    8d4b14
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x00474777    e8e4d3fcff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x00474777    e8e4d3fcff
                          push               0x00473db0                                           // 0x0047477c    68b03d4700
                          push               0x20                                                 // 0x00474781    6a20
                          push               0x60                                                 // 0x00474783    6a60
@@ -3213,11 +3213,11 @@ _jmp_addr_0x00474350:    push               ebx                                 
                          {disp32} lea       ecx, dword ptr [esi + 0x00001164]                    // 0x004747dd    8d8e64110000
                          {disp32} mov       dword ptr [esi + 0x00001150], edi                    // 0x004747e3    89be50110000
                          {disp32} mov       dword ptr [esi + 0x00001154], edi                    // 0x004747e9    89be54110000
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x004747ef    e86cd3fcff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x004747ef    e86cd3fcff
                          {disp32} lea       ecx, dword ptr [esi + 0x000011a8]                    // 0x004747f4    8d8ea8110000
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x004747fa    e861d3fcff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x004747fa    e861d3fcff
                          {disp32} lea       ecx, dword ptr [esi + 0x000011cc]                    // 0x004747ff    8d8ecc110000
-                         call               ??0MapCoords@@QAE@XZ                                 // 0x00474805    e856d3fcff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                            // 0x00474805    e856d3fcff
                          {disp32} mov       dword ptr [esi + 0x00001200], edi                    // 0x0047480a    89be00120000
                          {disp32} mov       dword ptr [esi + 0x00001204], edi                    // 0x00474810    89be04120000
                          {disp32} mov       dword ptr [esi + 0x00001208], edi                    // 0x00474816    89be08120000

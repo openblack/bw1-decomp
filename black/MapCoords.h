@@ -67,13 +67,13 @@ struct MapCoords
 
     // Constructors
 
-    // win1.41 00441b60 mac 1006e040 MapCoords::MapCoords(void)
+    // win1.41 inlined mac 1006e040 MapCoords::MapCoords(void)
     MapCoords();
     // win1.41 006031b0 mac 1004feb0 MapCoords::MapCoords(long, long, float)
     MapCoords(long x, long z, float altitude);
     // win1.41 006031d0 mac 10324c60 MapCoords::MapCoords(char *)
     MapCoords(const char* str);
-    // win1.41 inlined mac inlined MapCoords::MapCoords(MapCoords const &)
+    // win1.41 00441b60 mac inlined MapCoords::MapCoords(MapCoords const &)
     MapCoords(const MapCoords& other);
     // win1.41 00603160 mac 1006a450 MapCoords::MapCoords(LHPoint const &)
     MapCoords(const LHPoint& point);
@@ -198,13 +198,13 @@ static_assert(sizeof(struct MapCoords) == 0xc, "Data type is of wrong size");
 
 // Constructors
 
-// win1.41 00441b60 mac 1006e040 MapCoords::MapCoords(void)
+// win1.41 inlined mac 1006e040 MapCoords::MapCoords(void)
 struct MapCoords* __fastcall __ct__9MapCoordsFv(struct MapCoords* this) asm("??0MapCoords@@QAE@XZ");
 // win1.41 006031b0 mac 1004feb0 MapCoords::MapCoords(long, long, float)
 struct MapCoords* __fastcall __ct__9MapCoordsFllf(struct MapCoords* this, const void* edx, long x, long z, float altitude) asm("??0MapCoords@@QAE@JJM@Z");
 // win1.41 006031d0 mac 10324c60 MapCoords::MapCoords(char *)
 struct MapCoords* __fastcall __ct__9MapCoordsFPc(struct MapCoords* this, const void* edx, const char* str) asm("??0MapCoords@@QAE@PAD@Z");
-// win1.41 inlined mac inlined MapCoords::MapCoords(MapCoords const &)
+// win1.41 00441b60 mac inlined MapCoords::MapCoords(MapCoords const &)
 struct MapCoords* __fastcall __ct__9MapCoordsFP9MapCoords(struct MapCoords* this, const void* edx, const struct MapCoords* other) asm("??0MapCoords@@QAE@PAV0@@Z");
 // win1.41 00603160 mac 1006a450 MapCoords::MapCoords(LHPoint const &)
 struct MapCoords* __fastcall __ct__9MapCoordsFRC7LHPoint(struct MapCoords* this, const void* edx, const struct LHPoint* point) asm("??0MapCoords@@QAE@ABULHPoint@@@Z");

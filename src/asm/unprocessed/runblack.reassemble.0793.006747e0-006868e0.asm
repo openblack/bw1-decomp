@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
 .extern @SetPosition__6ZoomerFf@12
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern @__ct__7LHPointFfff@20
 .extern _jmp_addr_0x004427b0
 .extern _jmp_addr_0x00442ce0
@@ -14342,7 +14342,7 @@ _jmp_addr_0x0067e140:    push               esi                                 
                          {disp32} mov       dword ptr [esi + 0x00eab7f4], ebp             // 0x0067e556    89aef4b7ea00
                          {disp32} mov       dword ptr [data_bytes + 0x4f3ab8], eax        // 0x0067e55c    a3b89aeb00
 .Lbl_addr_0x0067e561:    {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x0067e561    8d4c2438
-                         call               ??0MapCoords@@QAE@XZ                          // 0x0067e565    e8f635dcff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x0067e565    e8f635dcff
                          fld                dword ptr [edi]                               // 0x0067e56a    d907
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3400]              // 0x0067e56c    d80d00c48a00
                          call               _jmp_addr_0x007a1400                          // 0x0067e572    e8892e1200
@@ -21320,7 +21320,7 @@ _jmp_addr_0x00682fa0:    push               esi                                 
                          {disp8} je         .Lbl_addr_0x006830cf                          // 0x0068304f    747e
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x00683051    8d4c2428
                          {disp8} mov        byte ptr [edi + 0x20], bl                     // 0x00683055    885f20
-                         call               ??0MapCoords@@QAE@XZ                          // 0x00683058    e803ebdbff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x00683058    e803ebdbff
                          {disp32} fld       dword ptr [esi + 0x00000080]                  // 0x0068305d    d98680000000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3400]              // 0x00683063    d80d00c48a00
                          call               _jmp_addr_0x007a1400                          // 0x00683069    e892e31100

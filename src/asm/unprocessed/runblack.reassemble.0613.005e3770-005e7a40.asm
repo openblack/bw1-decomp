@@ -11,7 +11,7 @@
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00439b90
 .extern _jmp_addr_0x0043a9e0
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern _jmp_addr_0x00442b00
 .extern _jmp_addr_0x00442c20
 .extern @__ct__7LHPointFRC7LHPoint@12
@@ -475,7 +475,7 @@ start_0x005e3770_0x005e7a40:
                          call               ??0GameThing@@QAE@XZ                          // 0x005e3b85    e886bef8ff
                          {disp8} lea        edi, dword ptr [esi + 0x14]                   // 0x005e3b8a    8d7e14
                          mov.s              ecx, edi                                      // 0x005e3b8d    8bcf
-                         call               ??0MapCoords@@QAE@XZ                          // 0x005e3b8f    e8ccdfe5ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x005e3b8f    e8ccdfe5ff
                          {disp8} mov        dword ptr [esi + 0x20], ebp                   // 0x005e3b94    896e20
                          mov.s              ecx, esi                                      // 0x005e3b97    8bce
                          mov                dword ptr [esi], 0x008c31a0                   // 0x005e3b99    c706a0318c00

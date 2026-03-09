@@ -9,7 +9,7 @@
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ?GetBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ
 .extern _jmp_addr_0x0043dc00
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern @__ct__7LHPointFRC7LHPoint@12
 .extern _jmp_addr_0x00463ad0
 .extern _jmp_addr_0x004640a0
@@ -8893,7 +8893,7 @@ _jmp_addr_0x00656d40:    push               ebx                                 
                          mov.s              esi, ecx                                       // 0x00656d44    8bf1
                          call               ??0GameThing@@QAE@XZ                           // 0x00656d46    e8c58cf1ff
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                    // 0x00656d4b    8d4e14
-                         call               ??0MapCoords@@QAE@XZ                           // 0x00656d4e    e80daedeff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                      // 0x00656d4e    e80daedeff
                          xor.s              ebx, ebx                                       // 0x00656d53    33db
                          {disp8} mov        dword ptr [esi + 0x20], ebx                    // 0x00656d55    895e20
                          mov.s              ecx, esi                                       // 0x00656d58    8bce

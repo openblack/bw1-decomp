@@ -35,7 +35,7 @@
 .extern _jmp_addr_0x0043bcb0
 .extern _jmp_addr_0x0043bef0
 .extern _jmp_addr_0x0043bf20
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern _jmp_addr_0x00441c50
 .extern @__ct__7LHPointFfff@20
 .extern ?SetPointFromPointDistanceHeadingAndPitch@GCamera@@SAXPAULHPoint@@ABU2@MMM@Z
@@ -3406,9 +3406,9 @@ _globl_ct_0x006e00d0:    call               .Lbl_addr_0x006e00e0                
                          cmp.s              esi, ebp                                      // 0x006e017c    3bf5
                          {disp8} je         .Lbl_addr_0x006e019b                          // 0x006e017e    741b
                          {disp8} lea        ecx, dword ptr [esi + 0x04]                   // 0x006e0180    8d4e04
-                         call               ??0MapCoords@@QAE@XZ                          // 0x006e0183    e8d819d6ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x006e0183    e8d819d6ff
                          {disp8} lea        ecx, dword ptr [esi + 0x18]                   // 0x006e0188    8d4e18
-                         call               ??0MapCoords@@QAE@XZ                          // 0x006e018b    e8d019d6ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x006e018b    e8d019d6ff
                          {disp8} mov        dword ptr [esi + 0x24], ebp                   // 0x006e0190    896e24
                          {disp8} mov        dword ptr [esi + 0x28], ebp                   // 0x006e0193    896e28
                          {disp8} mov        dword ptr [esi + 0x2c], ebp                   // 0x006e0196    896e2c

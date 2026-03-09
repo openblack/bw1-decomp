@@ -135,7 +135,7 @@
 .globl _jmp_addr_0x00441840
 .globl @__ct__7GCameraFR9MapCoords@12
 .globl @SetPosition__6ZoomerFf@12
-.globl ??0MapCoords@@QAE@XZ 
+.globl ??0MapCoords@@QAE@ABU0@@Z
 .globl ?CantExitCurrentMode@GCamera@@QAE_NXZ
 .globl _jmp_addr_0x00441c50
 .globl @SwitchToViewMode__7GCameraFP10CameraMode@12
@@ -2910,7 +2910,7 @@ _jmp_addr_0x00441840:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          mov.s              edi, ecx                                      // 0x00441877    8bf9
                          call               ??0GameThing@@QAE@XZ                          // 0x00441879    e892e11200
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                   // 0x0044187e    8d4f14
-                         call               ??0MapCoords@@QAE@XZ                          // 0x00441881    e8da020000
+                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x00441881    e8da020000
                          xor.s              ebx, ebx                                      // 0x00441886    33db
                          {disp8} mov        dword ptr [edi + 0x20], ebx                   // 0x00441888    895f20
                          mov.s              ecx, edi                                      // 0x0044188b    8bcf
@@ -3188,7 +3188,7 @@ _jmp_addr_0x00441840:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x00441b5d    90
                          nop                                                              // 0x00441b5e    90
                          nop                                                              // 0x00441b5f    90
-??0MapCoords@@QAE@XZ:
+??0MapCoords@@QAE@ABU0@@Z:
                          mov.s              eax, ecx                                      // 0x00441b60    8bc1
                          xor.s              ecx, ecx                                      // 0x00441b62    33c9
                          mov                dword ptr [eax], ecx                          // 0x00441b64    8908

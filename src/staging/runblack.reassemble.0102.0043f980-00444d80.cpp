@@ -100,7 +100,7 @@ GCamera::~GCamera()
 }
 
 // win1.41 00441b60 mac 1006e040 MapCoords::MapCoords(void)
-MapCoords::MapCoords()
+MapCoords::MapCoords(const MapCoords& coords)
 {
 }
 

@@ -30,7 +30,7 @@
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x0043dc00
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern @__ct__7LHPointFfff@20
 .extern @__ct__7LHPointFRC7LHPoint@12
 .extern _jmp_addr_0x004e9540
@@ -5724,11 +5724,11 @@ _globl_ct_0x00770080:    {disp32} mov       cl, byte ptr [_DAT_00fac934]        
                          push               esi                                             // 0x007706b5    56
                          push               edi                                             // 0x007706b6    57
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                     // 0x007706b7    8d4c2428
-                         call               ??0MapCoords@@QAE@XZ                            // 0x007706bb    e8a014cdff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                       // 0x007706bb    e8a014cdff
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                     // 0x007706c0    8d4c241c
-                         call               ??0MapCoords@@QAE@XZ                            // 0x007706c4    e89714cdff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                       // 0x007706c4    e89714cdff
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                     // 0x007706c9    8d4c2434
-                         call               ??0MapCoords@@QAE@XZ                            // 0x007706cd    e88e14cdff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                       // 0x007706cd    e88e14cdff
                          {disp8} mov        edi, dword ptr [esp + 0x50]                     // 0x007706d2    8b7c2450
                          {disp8} mov        esi, dword ptr [esp + 0x44]                     // 0x007706d6    8b742444
                          push               edi                                             // 0x007706da    57
@@ -9072,7 +9072,7 @@ _jmp_addr_0x00772b80:    push               ebx                                 
                          mov.s              ebp, ecx                                        // 0x00772be6    8be9
                          push               edi                                             // 0x00772be8    57
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                     // 0x00772be9    8d4c2424
-                         call               ??0MapCoords@@QAE@XZ                            // 0x00772bed    e86eefccff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                       // 0x00772bed    e86eefccff
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000              // 0x00772bf2    c744241000000000
 .Lbl_addr_0x00772bfa:    test               byte ptr [ebp + 0x64], 0x01                     // 0x00772bfa    f6456401
                          mov                bl, 0x01                                        // 0x00772bfe    b301
@@ -10842,7 +10842,7 @@ _globl_ct_0x00774000:    {disp32} mov       cl, byte ptr [_DAT_00fac934]        
                          mov.s              ebx, ecx                                        // 0x00774036    8bd9
                          call               ??0GameThing@@QAE@XZ                            // 0x00774038    e8d3b9dfff
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                     // 0x0077403d    8d4b14
-                         call               ??0MapCoords@@QAE@XZ                            // 0x00774040    e81bdbccff
+                         call               ??0MapCoords@@QAE@ABU0@@Z                       // 0x00774040    e81bdbccff
                          {disp8} mov        dword ptr [ebx + 0x20], 0x00000000              // 0x00774045    c7432000000000
                          mov.s              ecx, ebx                                        // 0x0077404c    8bcb
                          mov                dword ptr [ebx], 0x008c31a0                     // 0x0077404e    c703a0318c00

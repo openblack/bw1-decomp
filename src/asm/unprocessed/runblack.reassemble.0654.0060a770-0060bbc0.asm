@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ??0MapCoords@@QAE@XZ
+.extern ??0MapCoords@@QAE@ABU0@@Z
 .extern @__ct__9MapCoordsFllf@20
 .extern @GetMetresDistanceSq__9MapCoordsCFRC9MapCoords@12
 .extern _jmp_addr_0x00609ca0
@@ -1108,7 +1108,7 @@ _jmp_addr_0x0060adc0:    sub                esp, 0x10                           
                          fstp               st(0)                                   // 0x0060b310    ddd8
                          {disp32} je        .Lbl_addr_0x0060b8d8                    // 0x0060b312    0f84c0050000
                          {disp8} lea        ecx, dword ptr [esp + 0x38]             // 0x0060b318    8d4c2438
-                         call               ??0MapCoords@@QAE@XZ                    // 0x0060b31c    e83f68e3ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z               // 0x0060b31c    e83f68e3ff
                          {disp8} lea        edx, dword ptr [esp + 0x38]             // 0x0060b321    8d542438
                          push               edx                                     // 0x0060b325    52
                          {disp8} lea        ecx, dword ptr [esi + 0x70]             // 0x0060b326    8d4e70
@@ -1351,7 +1351,7 @@ _jmp_addr_0x0060adc0:    sub                esp, 0x10                           
                          fstp               st(0)                                   // 0x0060b62a    ddd8
                          {disp32} je        .Lbl_addr_0x0060b8d8                    // 0x0060b62c    0f84a6020000
                          {disp8} lea        ecx, dword ptr [esp + 0x38]             // 0x0060b632    8d4c2438
-                         call               ??0MapCoords@@QAE@XZ                    // 0x0060b636    e82565e3ff
+                         call               ??0MapCoords@@QAE@ABU0@@Z               // 0x0060b636    e82565e3ff
                          {disp8} lea        ecx, dword ptr [esi + 0x70]             // 0x0060b63b    8d4e70
                          call               ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ      // 0x0060b63e    e81df0ffff
                          mov.s              edi, eax                                // 0x0060b643    8bf8
