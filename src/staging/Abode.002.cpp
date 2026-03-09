@@ -1,8 +1,8 @@
 #include "Abode.h"
 #include <cstddef>
 
-// win1.41 00402bc0 mac inlined Abode::SetZero(void)
-void Abode::SetZero()
+// win1.41 00402bc0 mac inlined Abode::SetToZero(void)
+void Abode::SetToZero()
 {
 }
 

@@ -32,7 +32,7 @@
 .extern _jmp_addr_0x00844c80
 .extern _jmp_addr_0x00844ca0
 .globl ??1GGame@@UAE@XZ
-.globl ?SetZero@LH3DMapCoords@@QAEXXZ
+.globl ?SetToZero@LH3DMapCoords@@QAEXXZ
 .globl @Reset__7LHTimerFUl@12
 .globl ??0GKeyBuffer@@QAE@XZ
 .globl ??0GSoundMap@@QAE@XZ 
@@ -64,7 +64,7 @@
 .globl ??0GestureSystemDataList@@QAE@XZ
 .globl ??0GestureSystemData@@QAE@XZ
 
-?SetZero@LH3DMapCoords@@QAEXXZ:
+?SetToZero@LH3DMapCoords@@QAEXXZ:
                          xor.s              eax, eax                                      // 0x0054b820    33c0
                          mov                dword ptr [ecx], eax                          // 0x0054b822    8901
                          {disp8} mov        dword ptr [ecx + 0x04], eax                   // 0x0054b824    894104

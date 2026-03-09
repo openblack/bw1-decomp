@@ -5,7 +5,7 @@
 .extern data_bytes
 
 .extern ??1Abode@@UAE@XZ
-.extern ?SetZero@Abode@@QAEXXZ
+.extern ?SetToZero@Abode@@QAEXXZ
 .extern _jmp_addr_0x00417900
 .extern _jmp_addr_0x00417b80
 .extern _jmp_addr_0x0041fdc0
@@ -901,7 +901,7 @@ _jmp_addr_0x0055cc10:    push               esi                                 
                          {disp32} mov       dword ptr [esi + 0x000000a4], eax              // 0x0055cc3e    8986a4000000
                          mov.s              ecx, esi                                       // 0x0055cc44    8bce
                          mov                dword ptr [esi], 0x008a9a64                    // 0x0055cc46    c706649a8a00
-                         call               ?SetZero@Abode@@QAEXXZ                         // 0x0055cc4c    e86f5feaff
+                         call               ?SetToZero@Abode@@QAEXXZ                         // 0x0055cc4c    e86f5feaff
                          mov.s              eax, esi                                       // 0x0055cc51    8bc6
                          pop                esi                                            // 0x0055cc53    5e
                          ret                                                               // 0x0055cc54    c3
@@ -929,7 +929,7 @@ _jmp_addr_0x0055cc60:    push               esi                                 
                          {disp32} mov       dword ptr [esi + 0x000000a4], eax              // 0x0055cc8e    8986a4000000
                          mov.s              ecx, esi                                       // 0x0055cc94    8bce
                          mov                dword ptr [esi], 0x008a9a64                    // 0x0055cc96    c706649a8a00
-                         call               ?SetZero@Abode@@QAEXXZ                         // 0x0055cc9c    e81f5feaff
+                         call               ?SetToZero@Abode@@QAEXXZ                         // 0x0055cc9c    e81f5feaff
                          mov                dword ptr [esi], 0x008aa8e4                    // 0x0055cca1    c706e4a88a00
                          mov.s              eax, esi                                       // 0x0055cca7    8bc6
                          pop                esi                                            // 0x0055cca9    5e

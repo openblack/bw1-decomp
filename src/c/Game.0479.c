@@ -298,7 +298,7 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("LAB__addr_0x0054b791:");
     asm("mov.s              ecx, ebp");                                      // 0x0054b791    8bcd
     asm("{disp32} mov       dword ptr [esi + 0x00250074], edi");             // 0x0054b793    89be74002500
-    asm("call               ?SetZero@LH3DMapCoords@@QAEXXZ");                          // 0x0054b799    e882000000
+    asm("call               ?SetToZero@LH3DMapCoords@@QAEXXZ");                          // 0x0054b799    e882000000
     asm("mov                eax, 0x3f800000");                               // 0x0054b79e    b80000803f
     asm("{disp32} mov       byte ptr [esi + 0x002500a8], bl");               // 0x0054b7a3    889ea8002500
     asm("{disp32} mov       dword ptr [esi + 0x00250170], ebx");             // 0x0054b7a9    899e70012500

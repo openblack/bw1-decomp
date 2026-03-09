@@ -96,8 +96,8 @@ public:
 
     // Non-virtual methods
 
-    // win1.41 0077f1f0 mac inlined WorshipSpellIcon::SetZero(void)
-    void SetZero();
+    // win1.41 0077f1f0 mac inlined WorshipSpellIcon::SetToZero(void)
+    void SetToZero();
     // win1.41 0077f320 mac 105b6bf0 WorshipSpellIcon::UpdateGraphicsWithPULevels(void)
     void UpdateGraphicsWithPULevels();
     // win1.41 0077ff40 mac 105b4ff0 WorshipSpellIcon::StopRemoveFromPlayer(void)
@@ -200,8 +200,8 @@ struct WorshipSpellIcon* __fastcall __ct__16WorshipSpellIconFRC9MapCoordsPC14GSp
 
 // Non-virtual methods
 
-// win1.41 0077f1f0 mac inlined WorshipSpellIcon::SetZero(void)
-void __fastcall SetZero__16WorshipSpellIconFv(struct WorshipSpellIcon* this) asm("?SetZero@WorshipSpellIcon@@QAEXXZ");
+// win1.41 0077f1f0 mac inlined WorshipSpellIcon::SetToZero(void)
+void __fastcall SetToZero__16WorshipSpellIconFv(struct WorshipSpellIcon* this) asm("?SetToZero@WorshipSpellIcon@@QAEXXZ");
 // win1.41 0077f320 mac 105b6bf0 WorshipSpellIcon::UpdateGraphicsWithPULevels(void)
 void __fastcall UpdateGraphicsWithPULevels__16WorshipSpellIconFv(struct WorshipSpellIcon* this) asm("?UpdateGraphicsWithPULevels@WorshipSpellIcon@@QAEXXZ");
 // win1.41 0077ff40 mac 105b4ff0 WorshipSpellIcon::StopRemoveFromPlayer(void)

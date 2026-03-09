@@ -1285,8 +1285,8 @@ void Wonder::AddToPlayer()
 {
 }
 
-// win1.41 00779060 mac inlined Wonder::SetZero(void)
-void Wonder::SetZero()
+// win1.41 00779060 mac inlined Wonder::SetToZero(void)
+void Wonder::SetToZero()
 {
 }
 

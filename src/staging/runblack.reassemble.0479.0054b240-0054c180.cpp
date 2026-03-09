@@ -18,8 +18,8 @@ GGame::GGame()
 {
 }
 
-// win1.41 0054b820 mac inlined LH3DMapCoords::SetZero(void)
-void LH3DMapCoords::SetZero()
+// win1.41 0054b820 mac inlined LH3DMapCoords::SetToZero(void)
+void LH3DMapCoords::SetToZero()
 {
 }
 

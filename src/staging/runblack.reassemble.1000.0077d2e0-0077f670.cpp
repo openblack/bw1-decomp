@@ -197,8 +197,8 @@ WorshipSpellIcon::~WorshipSpellIcon()
 // {
 // }
 
-// win1.41 0077f1f0 mac inlined WorshipSpellIcon::SetZero(void)
-void WorshipSpellIcon::SetZero()
+// win1.41 0077f1f0 mac inlined WorshipSpellIcon::SetToZero(void)
+void WorshipSpellIcon::SetToZero()
 {
 }
 

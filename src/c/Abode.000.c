@@ -624,7 +624,7 @@ struct Abode* __fastcall __ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struc
     asm("{disp32} mov       dword ptr [esi + 0x000000a4], edi");                                // 0x0040139f    89bea4000000
     asm("mov.s              ecx, esi");                                                         // 0x004013a5    8bce
     asm("mov                dword ptr [esi], 0x008a9a64");                                      // 0x004013a7    c706649a8a00
-    asm("call               ?SetZero@Abode@@QAEXXZ");                                           // 0x004013ad    e80e180000
+    asm("call               ?SetToZero@Abode@@QAEXXZ");                                           // 0x004013ad    e80e180000
     asm("{disp8} mov        ecx, dword ptr [esp + 0x14]");                                      // 0x004013b2    8b4c2414
     asm("cmp.s              ecx, edi");                                                         // 0x004013b6    3bcf
     asm("{disp8} je         LAB__addr_0x004013d4");                                             // 0x004013b8    741a

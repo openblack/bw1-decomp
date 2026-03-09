@@ -286,7 +286,7 @@
 .globl _jmp_addr_0x007789c0
 .globl ??0Wonder@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .globl ?Create@Wonder@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
-.globl ?SetZero@Wonder@@QAEXXZ
+.globl ?SetToZero@Wonder@@QAEXXZ
 
 .globl _globl_ct_0x0076cc10
 .globl _globl_ct_0x0076cc40
@@ -18272,7 +18272,7 @@ _globl_ct_0x00778dd0:    {disp32} jmp       .Lbl_addr_0x00778de0                
                          call               ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z                            // 0x00778e28    e82385c8ff
                          mov.s              ecx, esi                                        // 0x00778e2d    8bce
                          mov                dword ptr [esi], 0x008df96c                     // 0x00778e2f    c7066cf98d00
-                         call               ?SetZero@Wonder@@QAEXXZ                         // 0x00778e35    e826020000
+                         call               ?SetToZero@Wonder@@QAEXXZ                         // 0x00778e35    e826020000
                          mov.s              eax, esi                                        // 0x00778e3a    8bc6
                          pop                esi                                             // 0x00778e3c    5e
                          ret                0x001c                                          // 0x00778e3d    c21c00
@@ -18553,7 +18553,7 @@ _globl_ct_0x00778dd0:    {disp32} jmp       .Lbl_addr_0x00778de0                
                          nop                                                                // 0x0077905d    90
                          nop                                                                // 0x0077905e    90
                          nop                                                                // 0x0077905f    90
-?SetZero@Wonder@@QAEXXZ:
+?SetToZero@Wonder@@QAEXXZ:
                          {disp32} mov       dword ptr [ecx + 0x000000c4], 0x00000000        // 0x00779060    c781c400000000000000
                          ret                                                                // 0x0077906a    c3
                          nop                                                                // 0x0077906b    90

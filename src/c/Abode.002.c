@@ -84,7 +84,7 @@ void __fastcall __dt__5AbodeFv(struct Abode* this)
 }
 
 __attribute__((XOR32rr_REV))
-void __fastcall SetZero__5AbodeFv(struct Abode* this)
+void __fastcall SetToZero__5AbodeFv(struct Abode* this)
 {
     asm("xor.s              eax, eax");                                 // 0x00402bc0    33c0
     asm("{disp32} mov       byte ptr [ecx + 0x000000b6], al");          // 0x00402bc2    8881b6000000

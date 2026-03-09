@@ -54,8 +54,8 @@ struct LH3DMapCoords
     void SetWholeZ(int z);
     // win1.41 inlined mac 1004aee0 LH3DMapCoords::SetAltitude(float)
     void SetAltitude(float altitude);
-    // win1.41 0054b820 mac inlined LH3DMapCoords::SetZero(void)
-    void SetZero();
+    // win1.41 0054b820 mac inlined LH3DMapCoords::SetToZero(void)
+    void SetToZero();
 };
 
 #else // __cplusplus
@@ -102,8 +102,8 @@ void __fastcall SetWholeX__13LH3DMapCoordsFl(struct LH3DMapCoords* this, const v
 void __fastcall SetWholeZ__13LH3DMapCoordsFl(struct LH3DMapCoords* this, const void* edx, int z) asm("?SetWholeZ@LH3DMapCoords@@QAEXJ@Z");
 // win1.41 inlined mac 1004aee0 LH3DMapCoords::SetAltitude(float)
 void __fastcall SetAltitude__13LH3DMapCoordsFf(struct LH3DMapCoords* this, const void* edx, float altitude) asm("?SetAltitude@LH3DMapCoords@@QAEXM@Z");
-// win1.41 0054b820 mac inlined LH3DMapCoords::SetZero(void)
-void __fastcall SetZero__13LH3DMapCoordsFv(struct LH3DMapCoords* this) asm("?SetZero@LH3DMapCoords@@QAEXXZ");
+// win1.41 0054b820 mac inlined LH3DMapCoords::SetToZero(void)
+void __fastcall SetToZero__13LH3DMapCoordsFv(struct LH3DMapCoords* this) asm("?SetToZero@LH3DMapCoords@@QAEXXZ");
 
 #endif // __cplusplus
 

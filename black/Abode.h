@@ -253,8 +253,8 @@ public:
 
     // Non-virtual methods
 
-    // win1.41 00402bc0 mac inlined Abode::SetZero(void)
-    void SetZero();
+    // win1.41 00402bc0 mac inlined Abode::SetToZero(void)
+    void SetToZero();
     // win1.41 00403130 mac 1033b920 Abode::Init(int, unsigned long, unsigned long)
     void Init(int param_1, uint32_t food_amount, uint32_t wood_amount);
     // win1.41 00403590 mac 103602f0 Abode::GetNewEp(ABODE_EPP, MapCoords*)
@@ -449,8 +449,8 @@ void __fastcall __dt__5AbodeFv(struct Abode* this) asm("??1Abode@@UAE@XZ");
 
 // Non-virtual methods
 
-// win1.41 00402bc0 mac inlined Abode::SetZero(void)
-void __fastcall SetZero__5AbodeFv(struct Abode* this) asm("?SetZero@Abode@@QAEXXZ");
+// win1.41 00402bc0 mac inlined Abode::SetToZero(void)
+void __fastcall SetToZero__5AbodeFv(struct Abode* this) asm("?SetToZero@Abode@@QAEXXZ");
 // win1.41 00403130 mac 1033b920 Abode::Init(int, unsigned long, unsigned long)
 void __fastcall Init__5AbodeFiUlUl(struct Abode* this, const void* edx, int param_1, uint32_t food_amount, uint32_t wood_amount) asm("?Init@Abode@@QAEXHII@Z");
 // win1.41 00403590 mac 103602f0 Abode::GetNewEp(ABODE_EPP, MapCoords*)
