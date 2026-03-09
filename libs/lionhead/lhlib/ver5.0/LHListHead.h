@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 
 template<typename T> // Must have T.next and must be T*
-class LHListHead {
+struct LHListHead {
     T* head;
     uint32_t count;
 };
