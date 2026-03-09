@@ -405,7 +405,7 @@ MultiMapFixed::~MultiMapFixed()
 }
 
 // win1.41 0052e1e0 mac 100e1460 MultiMapFixed::MultiMapFixed(MapCoords const &, GMultiMapFixedInfo const *, float, float, float, int)
-MultiMapFixed::MultiMapFixed(const MapCoords* coords, const GMultiMapFixedInfo* info, float y_angle, float scale, float param_5, int param_6)
+MultiMapFixed::MultiMapFixed(const MapCoords& coords, const GMultiMapFixedInfo* info, float y_angle, float scale, float food, int wood)
 {
 }
 

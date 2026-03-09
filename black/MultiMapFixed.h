@@ -260,7 +260,7 @@ public:
     // win1.41 0052e1a0 mac 100e16a0 MultiMapFixed::MultiMapFixed(void)
     MultiMapFixed();
     // win1.41 0052e1e0 mac 100e1460 MultiMapFixed::MultiMapFixed(MapCoords const &, GMultiMapFixedInfo const *, float, float, float, int)
-    MultiMapFixed(const MapCoords* coords, const GMultiMapFixedInfo* info, float y_angle, float scale, float param_5, int param_6);
+    MultiMapFixed(const MapCoords& coords, const GMultiMapFixedInfo* info, float y_angle, float scale, float food, int wood);
 
     // Non-virtual Destructors
 
