@@ -1,6 +1,8 @@
 #include "AbodeInfo.h"
 #include "SetupThing.h"
 
+extern struct GAbodeInfo AbodeInfos[0x93]; // 0x00c3c690-00c4cc68
+
 // win1.41 00401240 mac 1019a370 GAbodeInfo::GetMesh() const
 uint32_t GAbodeInfo::GetMesh() const
 {
@@ -20,7 +22,8 @@ ABODE_NUMBER GAbodeInfo::GetAbodeNumber() const
 }
 
 // win1.41 00401270 mac 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
-GBaseInfo* GAbodeInfo::GetBaseInfo(uint32_t& param_1)
+GBaseInfo* GAbodeInfo::GetBaseInfo(uint32_t& index)
 {
-    return NULL;
+    index = sizeof(AbodeInfos) / sizeof(AbodeInfos[0]);
+    return AbodeInfos;
 }
