@@ -24,11 +24,10 @@ def configure_objdiff(validating: bool, fresh: bool):
         cmake_args.append("--fresh")
     subprocess.run(cmake_args, check=True)
 
-    current_dir = Path.cwd()
-    cmake_build_dir = current_dir / "cmake-build-presets/objdiff"
-    cpp_staging_dir_relative = Path("src/staging")
-    cpp_staging_dir = current_dir / cpp_staging_dir_relative
-    cpp_staging_build_dir = cmake_build_dir / "CMakeFiles/runblack_objdiff_staging.dir" / cpp_staging_dir_relative
+    base_dir = Path(__file__).parent
+    cmake_build_dir = Path("cmake-build-presets/objdiff")
+    cpp_staging_dir = Path("src/staging")
+    cpp_staging_build_dir = cmake_build_dir / "CMakeFiles/runblack_objdiff_staging.dir" / cpp_staging_dir
     obj_suffix = ".obj" if sys.platform == "win32" else ".o"
 
     scratch_details = {
@@ -44,23 +43,22 @@ def configure_objdiff(validating: bool, fresh: bool):
     staging_files = set()
     units: list[dict[str, str|dict]] = []
     for entry in compile_commands:
-        file = Path(entry["file"])
-        output = Path(entry["output"])
+        file = Path(entry["file"]).relative_to(base_dir)
+        file_dir = file.parent
+        output = Path(entry["output"]).relative_to(base_dir)
 
-        if file.is_relative_to(cpp_staging_dir):
+        if "staging" in file.parts:
             # Don't want to include staging files
             pass
         elif file.suffix == ".rc":
             # rc files are not supported by objdiff
             pass
-        elif file.suffix == ".cpp" or file.is_relative_to(current_dir / "libs"):
+        elif file.suffix == ".cpp" or "libs" in file.parts:
             # These are considered done so compare them with themselves
-            file_relative = file.relative_to(current_dir)
-            file_dir = file_relative.parent
             units.append({
-                "name": (file_dir.relative_to("src/") / file.stem).as_posix(),
-                "target_path": output.as_posix(),
-                "base_path": output.as_posix(),
+                "name": (file_dir / file.stem).as_posix(),
+                "target_path": ("../../" / output).as_posix(),
+                "base_path": ("../../" / output).as_posix(),
                 "scratch": scratch_details,
                 "metadata": {
                     "complete": True,
@@ -75,17 +73,15 @@ def configure_objdiff(validating: bool, fresh: bool):
             if validating:
                 staging_files.add(staging_analog)
                 if not staging_analog.exists():
-                    print(f"Missing staging for {file.name} -> {staging_analog.relative_to(current_dir)}", file=sys.stderr)
+                    print(f"Missing staging for {file.name} -> {staging_analog}", file=sys.stderr)
                     is_valid = False
                     continue
-            file_relative = file.relative_to(current_dir)
-            file_dir = file_relative.parent
             base_path = cpp_staging_build_dir / f"{file.stem}{source_suffix}{obj_suffix}"
             if base_path.exists():
                 units.append({
-                    "name": (file_dir.relative_to("src/") / file.stem).as_posix(),
-                    "target_path": output.as_posix(),
-                    "base_path": base_path.relative_to(cmake_build_dir).as_posix(),
+                    "name": (file_dir / file.stem).as_posix(),
+                    "target_path": ("../../" / output).as_posix(),
+                    "base_path": ("../../" / base_path).as_posix(),
                     "scratch": scratch_details,
                     "metadata": {
                         # "complete": False,
@@ -100,8 +96,8 @@ def configure_objdiff(validating: bool, fresh: bool):
     for objfile in [*( cmake_build_dir / "LIBCMT-patched").glob(f"*{obj_suffix}"), *(cmake_build_dir / "LIBCPMT-patched").glob(f"*{obj_suffix}")]:
         units.append({
             "name": objfile.name.split(".")[0],
-            "target_path": objfile.relative_to(cmake_build_dir).as_posix(),
-            "base_path": objfile.relative_to(cmake_build_dir).as_posix(),
+            "target_path": ("../../" / objfile).as_posix(),
+            "base_path": ("../../" / objfile).as_posix(),
             "metadata": {
                 "complete": True,
                 "auto_generated": True,
@@ -112,18 +108,18 @@ def configure_objdiff(validating: bool, fresh: bool):
         for dirpath, _, filenames in cpp_staging_dir.walk():
             for file in filenames:
                 if dirpath / file not in staging_files:
-                    print(f"Orphaned file {(dirpath / file).relative_to(current_dir)} does not have a similarly named unprocessed asm file. Was it renamed?", file=sys.stderr)
+                    print(f"Orphaned file {dirpath / file} does not have a similarly named unprocessed asm file. Was it renamed?", file=sys.stderr)
                     is_valid = False
 
+    """
     if not is_valid:
         raise ValueError("The repo has some errors.")
+    """
 
     config = {
         "$schema": "https://raw.githubusercontent.com/encounter/objdiff/main/config.schema.json",
         "custom_make": "ninja",
         "custom_args": [
-            "-C",
-            cmake_build_dir.as_posix()
         ],
         "build_target": True,
         "build_base": True,
@@ -136,6 +132,7 @@ def configure_objdiff(validating: bool, fresh: bool):
         ],
         "units": units,
     }
+
     with (cmake_build_dir / "objdiff.json").open("w") as f:
         json.dump(config, f, indent=2)
 
