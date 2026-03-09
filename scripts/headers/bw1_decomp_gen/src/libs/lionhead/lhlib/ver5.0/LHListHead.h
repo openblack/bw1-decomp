@@ -9,6 +9,12 @@ template<typename T> // Must have T.next and must be T*
 struct LHListHead {
     T* head;
     uint32_t count;
+
+    inline LHListHead()
+      : head(NULL)
+      , count(0)
+    {
+    }
 };
 
 #else // __cplusplus
