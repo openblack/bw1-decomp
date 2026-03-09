@@ -27,6 +27,8 @@ enum ABODE_EPP
 
 #ifdef __cplusplus
 
+#include <lionhead/lhlib/ver5.0/LHFastPointer.h>
+
 // Forward Declares
 
 class Base;
@@ -63,8 +65,8 @@ public:
     LH3DSmoke* smoke;
     LH3DMesh* destruction_mesh; /* 0x90 */
     uint32_t field_0x94;
-    Town* town;
-    Abode* next;
+    LHFastPointer<Town> town;
+    LHFastPointer<Abode> next;
     LHListHead<Villager> villagers; /* 0xa0 */
     Villager* male_female_villagers[0x2];
     uint32_t field_0xb0;

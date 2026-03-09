@@ -23,9 +23,9 @@ void Abode::RestartBeingFunctional()
 }
 
 // win1.41 00401690 mac 1037f370 Abode::SetTown(Town *)
-void Abode::SetTown(Town* town)
+void Abode::SetTown(Town* _town)
 {
-    this->town = town;
+    town.payload = _town;
 }
 
 // win1.41 004016a0 mac 10066b80 Abode::IsRepaired(void)
@@ -67,7 +67,7 @@ bool32_t Abode::IsCastShadowAtNight()
 // win1.41 00401730 mac 1004fe30 Abode::GetTown(void)
 Town* Abode::GetTown()
 {
-    return town;
+    return town.payload;
 }
 
 // win1.41 00401740 mac 1040f9d0 Abode::GetCreatureBeliefType(void)
