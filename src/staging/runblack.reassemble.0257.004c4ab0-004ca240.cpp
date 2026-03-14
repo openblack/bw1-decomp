@@ -2,7 +2,7 @@
 #include "CreatureAttitudeToPlayer.h"
 
 // win1.41 004c5e50 mac 10231ab0 Creature::FalseFunction(void)
-bool Creature::FalseFunction()
+bool32_t Creature::FalseFunction()
 {
     return 0;
 }

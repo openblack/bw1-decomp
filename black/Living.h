@@ -95,9 +95,9 @@ public:
     // win1.41 005ef160 mac 1037c530 DataForScriptRemind::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005ef570 mac 1037c5c0 DataForScriptRemind::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 005ef360 mac 1037c8b0 DataForScriptRemind::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 005ef150 mac 1037c4f0 DataForScriptRemind::GetSaveType(void)
     virtual uint32_t GetSaveType();
 
@@ -123,21 +123,21 @@ class Living: public MobileWallHug
 public:
     struct StateTableSubEntry
     {
-        bool (* StateTableSubEntry::function)();  /* 0x0 */
+        bool32_t (* StateTableSubEntry::function)();  /* 0x0 */
         uint32_t field_0x4;
         uint32_t field_0x8;
         int32_t field_0xc;
     };
     struct StateTableSubEntryState
     {
-        bool (* StateTableSubEntryState::function)();  /* 0x0 */
+        bool32_t (* StateTableSubEntryState::function)();  /* 0x0 */
         uint32_t field_0x4;
         uint32_t field_0x8;
         int32_t field_0xc;
     };
     struct StateTableSubEntryEntryState
     {
-        bool (* StateTableSubEntryEntryState::function)(enum VILLAGER_STATES param_1, enum VILLAGER_STATES param_2);  /* 0x0 */
+        bool32_t (* StateTableSubEntryEntryState::function)(enum VILLAGER_STATES param_1, enum VILLAGER_STATES param_2);  /* 0x0 */
         uint32_t field_0x4;
         uint32_t field_0x8;
         int32_t field_0xc;
@@ -183,49 +183,49 @@ public:
     // win1.41 005ec0a0 mac 10383210 Living::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
     // win1.41 004172d0 mac 10006820 Living::IsFunctional(void)
-    virtual bool32_tcorrect IsFunctional();
+    virtual bool32_t IsFunctional();
     // win1.41 005ee960 mac 1037d8d0 Living::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 005ee630 mac 1037ddd0 Living::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& file);
+    virtual bool32_t Save(GameOSFile& file);
     // win1.41 005eed20 mac 1037d880 Living::ResolveLoad(void)
     virtual void ResolveLoad();
     // win1.41 004173c0 mac 10130ac0 Living::IsAnimate(void)
-    virtual bool IsAnimate();
+    virtual bool32_t IsAnimate();
     // win1.41 004172c0 mac 101306c0 Living::IsStompable(void)
-    virtual bool IsStompable();
+    virtual bool32_t IsStompable();
     // win1.41 00417470 mac 10130e00 Living::IsNotLiving(void)
-    virtual bool IsNotLiving();
+    virtual bool32_t IsNotLiving();
     // win1.41 00417330 mac 10130890 Living::IsSuitableForCreatureAction(void)
-    virtual bool IsSuitableForCreatureAction();
+    virtual bool32_t IsSuitableForCreatureAction();
     // win1.41 00417350 mac 10130930 Living::CanBeAttackedByCreature(Creature *)
-    virtual bool CanBeAttackedByCreature(Creature* param_1);
+    virtual bool32_t CanBeAttackedByCreature(Creature* param_1);
     // win1.41 004173d0 mac 10130af0 Living::CanBeFrighteningToCreature(Creature *)
-    virtual bool CanBeFrighteningToCreature(Creature* param_1);
+    virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
     // win1.41 00417390 mac 10130a10 Living::CanBePlayedWithByCreature(Creature *)
-    virtual bool CanBePlayedWithByCreature(Creature* param_1);
+    virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
     // win1.41 004173e0 mac 10130b40 Living::CanBeInspectedByCreature(Creature *)
-    virtual bool CanBeInspectedByCreature(Creature* param_1);
+    virtual bool32_t CanBeInspectedByCreature(Creature* param_1);
     // win1.41 00417410 mac 10130c00 Living::CanBePoodUponByCreature(Creature *)
-    virtual bool CanBePoodUponByCreature(Creature* param_1);
+    virtual bool32_t CanBePoodUponByCreature(Creature* param_1);
     // win1.41 00417430 mac 10130cd0 Living::CanBeStompedOnByCreature(Creature *)
-    virtual bool CanBeStompedOnByCreature(Creature* param_1);
+    virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
     // win1.41 00417340 mac 101308e0 Living::CanBeThrownByCreature(Creature *)
-    virtual bool CanBeThrownByCreature(Creature* param_1);
+    virtual bool32_t CanBeThrownByCreature(Creature* param_1);
     // win1.41 00417420 mac 10130c50 Living::CanBeDestroyedByStoning(Creature *)
-    virtual bool CanBeDestroyedByStoning(Creature* param_1);
+    virtual bool32_t CanBeDestroyedByStoning(Creature* param_1);
     // win1.41 00417440 mac 10130d50 Living::CanBeDancedWith(Creature *)
-    virtual bool CanBeDancedWith(Creature* param_1);
+    virtual bool32_t CanBeDancedWith(Creature* param_1);
     // win1.41 00417450 mac 10130dc0 Living::IsAggressive(Creature *)
-    virtual bool IsAggressive(Creature* param_1);
+    virtual bool32_t IsAggressive(Creature* param_1);
     // win1.41 00417460 mac inlined Living::IsLiving(void) const
-    virtual bool IsLiving() const;
+    virtual bool32_t IsLiving() const;
     // win1.41 00768580 mac 10594bb0 Living::AttitudeToCreatureEating(void)
     virtual uint32_t AttitudeToCreatureEating();
     // win1.41 00416ff0 mac 1012f810 Living::IsSkeleton( const(void))
-    virtual bool IsSkeleton() const;
+    virtual bool32_t IsSkeleton() const;
     // win1.41 00416f90 mac 10057470 Living::IsPoisoned(void)
-    virtual bool IsPoisoned();
+    virtual bool32_t IsPoisoned();
     // win1.41 00417000 mac 1012f850 Living::SetSkeleton(int)
     virtual void SetSkeleton(int param_1);
     // win1.41 005ee230 mac 1037e700 Living::MoveAlongPath(void)
@@ -237,17 +237,17 @@ public:
     // win1.41 0051aec0 mac 100c5880 Living::Draw(void)
     virtual void Draw();
     // win1.41 004172a0 mac 10130640 Living::CanBePickedUp(void)
-    virtual bool CanBePickedUp();
+    virtual bool32_t CanBePickedUp();
     // win1.41 004172b0 mac 10130680 Living::CanBeCrushed(void)
-    virtual bool CanBeCrushed();
+    virtual bool32_t CanBeCrushed();
     // win1.41 005ec9b0 mac 10382060 Living::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00416fa0 mac 1012f760 Living::SetPoisoned(int)
     virtual void SetPoisoned(int param_1);
     // win1.41 005ec390 mac 10382b30 Living::SetDying(void)
-    virtual bool SetDying();
+    virtual bool32_t SetDying();
     // win1.41 005eccb0 mac 10381220 Living::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 005ed590 mac 1037ffb0 Living::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
     // win1.41 005ed5c0 mac 1037fd10 Living::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
@@ -261,33 +261,33 @@ public:
     // win1.41 005ed3e0 mac 10380210 Living::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 005ed4f0 mac 103801d0 Living::CanBecomeAPhysicsObject(void)
-    virtual bool32_tcorrect CanBecomeAPhysicsObject();
+    virtual bool32_t CanBecomeAPhysicsObject();
     // win1.41 005ed370 mac 103803b0 Living::HasSunk(void)
-    virtual bool HasSunk();
+    virtual bool32_t HasSunk();
     // win1.41 005edba0 mac 1037f690 Living::CreatureMustAvoid(Creature *)
-    virtual bool CreatureMustAvoid(Creature* param_1);
+    virtual bool32_t CreatureMustAvoid(Creature* param_1);
     // win1.41 005ee560 mac 1037e320 Living::RemoveFromGame(void)
     virtual uint32_t RemoveFromGame();
     // win1.41 005ef340 mac 1037cc80 Living::GetInHandImmersionTexture(void)
     virtual IMMERSION_EFFECT_TYPE GetInHandImmersionTexture();
     // win1.41 005f2710 mac 10385c50 Living::AmILikelyToMove(void)
-    virtual bool AmILikelyToMove(); /* 0x874 */
+    virtual bool32_t AmILikelyToMove(); /* 0x874 */
     // win1.41 005ec3e0 mac 10382af0 Living::GetNumTurnsToDieOver(void)
     virtual uint32_t GetNumTurnsToDieOver(); /* 0x880 */
     // win1.41 005ec1e0 mac 103830e0 Living::GetFinalDestPos(MapCoords *)
     virtual MapCoords* GetFinalDestPos(MapCoords* pos);
     // win1.41 005ec4b0 mac 10382830 Living::Downed(void)
-    virtual bool Downed();
+    virtual bool32_t Downed();
     // win1.41 005ecdb0 mac 10380b40 Living::MoveInFlock(void)
-    virtual bool MoveInFlock();
+    virtual bool32_t MoveInFlock();
     // win1.41 005f2630 mac 10385ed0 Living::ArrivesAtFoodReaction(void)
-    virtual bool ArrivesAtFoodReaction();
+    virtual bool32_t ArrivesAtFoodReaction();
     // win1.41 00474940 mac 103838c0 Living::DecideWhatToDo(void)
-    virtual bool DecideWhatToDo();
+    virtual bool32_t DecideWhatToDo();
     // win1.41 005ecaf0 mac 1004c540 Living::GetAge(void)
     virtual uint32_t GetAge();
     // win1.41 005f26d0 mac 10385ce0 Living::LookAtFlyingObjectReaction(void)
-    virtual bool LookAtFlyingObjectReaction();
+    virtual bool32_t LookAtFlyingObjectReaction();
     // win1.41 005f2980 mac 10076180 Living::SetCurrentAndDestinationState(unsigned char, unsigned char)
     virtual int SetCurrentAndDestinationState(VILLAGER_STATES current, VILLAGER_STATES destination);
     // win1.41 005f28e0 mac 10075940 Living::SetTopState(unsigned char)
@@ -341,27 +341,27 @@ public:
     // win1.41 007689c0 mac inlined Living::ExitPlayAnim(VILLAGER_STATES)
     virtual int ExitPlayAnim(VILLAGER_STATES state);
     // win1.41 00473e60 mac inlined Living::IsScriptState( const(VILLAGER_STATES))
-    virtual bool IsScriptState(VILLAGER_STATES state); /* 0x960 */
+    virtual bool32_t IsScriptState(VILLAGER_STATES state); /* 0x960 */
     // win1.41 00473e70 mac inlined Living::IsScriptInterruptableState( const(VILLAGER_STATES))
-    virtual bool IsScriptInterruptableState(VILLAGER_STATES state);
+    virtual bool32_t IsScriptInterruptableState(VILLAGER_STATES state);
     // win1.41 00417070 mac inlined Living::IsStateForInterface( const(VILLAGER_STATES))
-    virtual bool IsStateForInterface(VILLAGER_STATES state);
+    virtual bool32_t IsStateForInterface(VILLAGER_STATES state);
     // win1.41 00473e80 mac inlined Living::IsStateExitFunctionSameAs( const(VILLAGER_STATES))
-    virtual bool IsStateExitFunctionSameAs(VILLAGER_STATES state);
+    virtual bool32_t IsStateExitFunctionSameAs(VILLAGER_STATES state);
     // win1.41 005ecaa0 mac inlined Living::IsDeathState( const(VILLAGER_STATES))
-    virtual bool IsDeathState(VILLAGER_STATES state); /* 0x970 */
+    virtual bool32_t IsDeathState(VILLAGER_STATES state); /* 0x970 */
     // win1.41 005ed2b0 mac 10380650 Living::DebugShowTime(unsigned long, unsigned char, unsigned char)
     virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
     // win1.41 005ecc10 mac 10084310 Living::IsDancing(void)
-    virtual bool IsDancing();
+    virtual bool32_t IsDancing();
     // win1.41 00473e90 mac 101e3580 Living::IsInterestedInFoodObject(Object *)
-    virtual bool IsInterestedInFoodObject(Object* object);
+    virtual bool32_t IsInterestedInFoodObject(Object* object);
     // win1.41 00417080 mac 1012fa20 Living::IsInterestedInWoodObject(Object *)
-    virtual bool IsInterestedInWoodObject(Object* object); /* 0x980 */
+    virtual bool32_t IsInterestedInWoodObject(Object* object); /* 0x980 */
     // win1.41 005f11f0 mac 10019a90 Living::IsAvailableForReaction(REACTION)
-    virtual bool IsAvailableForReaction(REACTION reaction);
+    virtual bool32_t IsAvailableForReaction(REACTION reaction);
     // win1.41 00417090 mac 1012fa70 Living::IsAvailableForBeliefButNotReaction(REACTION)
-    virtual bool IsAvailableForBeliefButNotReaction(REACTION reaction);
+    virtual bool32_t IsAvailableForBeliefButNotReaction(REACTION reaction);
     // win1.41 004170a0 mac 1012fac0 Living::UpdateHowImpressed(Reaction *, int)
     virtual void UpdateHowImpressed(Reaction* param_1, int param_2);
     // win1.41 005f0f30 mac inlined Living::AddReaction(Reaction *, VILLAGER_STATES)
@@ -541,9 +541,9 @@ public:
     // win1.41 005ec340 mac 10382c10 Living::MoveByTeleport(MapCoords const &)
     virtual void MoveByTeleport(const MapCoords* param_1); /* 0xaf0 */
     // win1.41 00417270 mac 10130570 Living::IsDead(void)
-    virtual bool IsDead();
+    virtual bool32_t IsDead();
     // win1.41 00473ed0 mac 101e36f0 Living::IsChild(void)
-    virtual bool IsChild();
+    virtual bool32_t IsChild();
     // win1.41 005f2160 mac 103864c0 Living::GetFleeingPositionFromMovingObject(MapCoords *, GameThingWithPos *, float)
     virtual void GetFleeingPositionFromMovingObject(MapCoords* param_1, GameThingWithPos* param_2, float param_3);
     // win1.41 005f2010 mac 10386800 Living::GetFleeingPositionFromStationaryObject(MapCoords *, GameThingWithPos *, float)
@@ -559,7 +559,7 @@ public:
     // win1.41 00417320 mac 100f8730 Living::DanceType(void)
     virtual uint32_t DanceType();
     // win1.41 005ee550 mac 1037e4a0 Living::CanBeHealedByHealSpell(void)
-    virtual bool CanBeHealedByHealSpell();
+    virtual bool32_t CanBeHealedByHealSpell();
 
     // Static methods
 
@@ -614,7 +614,7 @@ public:
     // win1.41 005ec030 mac 103834b0 Living::SetToZero(void)
     void SetToZero();
     // win1.41 005ec1d0 mac 103831d0 Living::InvalidState(void)
-    bool InvalidState();
+    bool32_t InvalidState();
     // win1.41 005ec270 mac 1004cf70 Living::MoveToPos(void)
     int MoveToPos();
     // win1.41 005ec2c0 mac 10382da0 Living::MoveToObject(void)
@@ -624,9 +624,9 @@ public:
     // win1.41 005ec520 mac 103826a0 Living::LookAtObject(GameThingWithPos *, unsigned long)
     uint32_t LookAtObject(GameThingWithPos* param_1, unsigned long param_2);
     // win1.41 005ec550 mac 10382540 Living::LookAtPos(MapCoords const &, ulong)
-    bool LookAtPos(MapCoords* pos, int param_2);
+    bool32_t LookAtPos(MapCoords* pos, int param_2);
     // win1.41 005ec960 mac 1004eb50 Living::IsReadyForNewAnimation(unsigned long)
-    bool IsReadyForNewAnimation(uint32_t index);
+    bool32_t IsReadyForNewAnimation(uint32_t index);
     // win1.41 005ec990 mac 10054e20 Living::WaitForAnimation(void)
     uint32_t WaitForAnimation();
     // win1.41 005eca60 mac 10381e30 Living::GetReaction(void)
@@ -642,7 +642,7 @@ public:
     // win1.41 005ecf60 mac 1006ced0 Living::GetFlockPos(void)
     MapCoords* GetFlockPos();
     // win1.41 005ecf70 mac 1004bf90 Living::IAmFlockLeader(void)
-    bool IAmFlockLeader();
+    bool32_t IAmFlockLeader();
     // win1.41 005ecfa0 mac 10065500 Living::GetDomainRadius(void)
     uint16_t GetDomainRadius();
     // win1.41 005ecfc0 mac 1006cd50 Living::GetFlockDistance(void)
@@ -666,7 +666,7 @@ public:
     // win1.41 005ef010 mac 10065550 Living::PosWithinDomain(MapCoords const &, float)
     uint32_t PosWithinDomain(MapCoords* param_1, float param_2);
     // win1.41 005ef9c0 mac 10384160 Living::CalculateDancePosition(MapCoords const &, MapCoords *)
-    bool CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2);
+    bool32_t CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2);
     // win1.41 005ef9f0 mac 10383ce0 Living::PerformDance(MapCoords const &, unsigned char, unsigned long)
     bool32_t PerformDance(const MapCoords* param_1, unsigned char param_2, unsigned long param_3);
     // win1.41 005f1270 mac 1004b9b0 Living::ProcessReaction(void)
@@ -678,7 +678,7 @@ public:
     // win1.41 005f27f0 mac 10056110 Living::GetTopState(void)
     VILLAGER_STATES GetTopState();
     // win1.41 005f2800 mac 1038a340 Living::SetupMoveToObject(Object *, unsigned char)
-    bool SetupMoveToObject(Object* param_1, unsigned char param_2);
+    bool32_t SetupMoveToObject(Object* param_1, unsigned char param_2);
     // win1.41 005f2830 mac 10029240 Living::SetupMoveToPos(MapCoords const &, unsigned char)
     uint32_t SetupMoveToPos(const MapCoords* param_2, uint8_t param_3);
     // win1.41 005f2890 mac 10010f60 Living::SetupMoveToWithHug(MapCoords const &, unsigned char)

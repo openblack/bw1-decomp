@@ -56,9 +56,9 @@ public:
     // win1.41 0055e140 mac 1013e6d0 Scaffold::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006ea3d0 mac 10140100 Scaffold::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 006ea240 mac 10140340 Scaffold::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0055e130 mac 1013e690 Scaffold::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006ea560 mac 1013ffc0 Scaffold::ResolveLoad(void)
@@ -72,13 +72,13 @@ public:
     // win1.41 006ea9e0 mac 1013f670 Scaffold::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
     virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
     // win1.41 004e3fc0 mac 105e6330 Scaffold::CanBePickedUpByCreature(Creature *)
-    virtual bool CanBePickedUpByCreature(Creature* param_1);
+    virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
     // win1.41 004e3ff0 mac 105e6220 Scaffold::CanBeStolenByCreature(Creature *)
-    virtual bool CanBeStolenByCreature(Creature* param_1);
+    virtual bool32_t CanBeStolenByCreature(Creature* param_1);
     // win1.41 004e4070 mac 105e6100 Scaffold::IsStealableScaffold(Creature *)
-    virtual bool IsStealableScaffold(Creature* param_1);
+    virtual bool32_t IsStealableScaffold(Creature* param_1);
     // win1.41 0055e100 mac 1013e5d0 Scaffold::IsScaffold(void)
-    virtual bool IsScaffold();
+    virtual bool32_t IsScaffold();
     // win1.41 006eab60 mac 1013f280 Scaffold::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 006e9890 mac 10141590 Scaffold::ActualMoveMapObject(MapCoords const &)
@@ -88,19 +88,19 @@ public:
     // win1.41 006e8540 mac 10143a70 Scaffold::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 006eaea0 mac 1013ec20 Scaffold::IsResourceStore(RESOURCE_TYPE)
-    virtual bool IsResourceStore(RESOURCE_TYPE param_1);
+    virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
     // win1.41 006eaec0 mac 1013eb90 Scaffold::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-    virtual bool DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+    virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
     // win1.41 0055e0f0 mac 1013e590 Scaffold::GetResourceType(void)
     virtual RESOURCE_TYPE GetResourceType();
     // win1.41 006e9d30 mac 10140dd0 Scaffold::GetDefaultResource(void)
     virtual int GetDefaultResource();
     // win1.41 006e96a0 mac 10141b10 Scaffold::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 006e96e0 mac 101419a0 Scaffold::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 006e9770 mac 10141720 Scaffold::InterfaceSetOutMagicHand(GInterfaceStatus *)
-    virtual bool InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
+    virtual bool32_t InterfaceSetOutMagicHand(GInterfaceStatus* param_1);
     // win1.41 006e9900 mac 101413a0 Scaffold::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
     // win1.41 006e99e0 mac 10141130 Scaffold::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
@@ -120,13 +120,13 @@ public:
     // win1.41 006e8780 mac 101434e0 Scaffold::EndPhysics(PhysicsObject *, bool)
     virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
     // win1.41 0055e110 mac 1013e610 Scaffold::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 006ea940 mac 1013f890 Scaffold::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 006ea910 mac 1013f8e0 Scaffold::CanBecomeAPhysicsObject(void)
-    virtual bool32_tcorrect CanBecomeAPhysicsObject();
+    virtual bool32_t CanBecomeAPhysicsObject();
     // win1.41 006e8570 mac 101436c0 Scaffold::ProcessInHand(void)
-    virtual bool ProcessInHand();
+    virtual bool32_t ProcessInHand();
     // win1.41 006eaf30 mac 1013e710 Scaffold::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };

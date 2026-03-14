@@ -38,7 +38,7 @@ public:
     // win1.41 005d9e80 mac 10368b50 GInterfaceMessageBuffer::Init(unsigned short)
     void Init(unsigned short param_1);
     // win1.41 005d9f10 mac 1009c3b0 GInterfaceMessageBuffer::Add(INTERFACE_MESSAGE_TYPES, GInterfaceCollide *, LHCoord *)
-    bool Add(INTERFACE_MESSAGE_TYPES param_1, GInterfaceCollide* param_2, LHCoord* param_3);
+    bool32_t Add(INTERFACE_MESSAGE_TYPES param_1, GInterfaceCollide* param_2, LHCoord* param_3);
 };
 
 #else // __cplusplus

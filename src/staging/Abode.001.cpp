@@ -7,7 +7,7 @@ Abode* Abode::CastAbode()
 }
 
 // win1.41 00401650 mac 10565230 Abode::GetShouldNotBeAddedToPlanned(void)
-bool Abode::GetShouldNotBeAddedToPlanned()
+bool32_t Abode::GetShouldNotBeAddedToPlanned()
 {
     return false;
 }
@@ -29,19 +29,19 @@ void Abode::SetTown(Town* _town)
 }
 
 // win1.41 004016a0 mac 10066b80 Abode::IsRepaired(void)
-bool Abode::IsRepaired()
+bool32_t Abode::IsRepaired()
 {
     return false;
 }
 
 // win1.41 004016c0 mac 10055bb0 Abode::IsBuilt(void)
-bool32_tcorrect Abode::IsBuilt()
+bool32_t Abode::IsBuilt()
 {
     return false;
 }
 
 // win1.41 004016f0 mac 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
-bool Abode::CausesTownEmergencyIfDamaged()
+bool32_t Abode::CausesTownEmergencyIfDamaged()
 {
     return false;
 }

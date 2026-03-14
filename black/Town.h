@@ -179,9 +179,9 @@ public:
     // win1.41 007392a0 mac 105594a0 Town::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0073f450 mac 1054aa80 Town::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 0073ed30 mac 1054c770 Town::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00739290 mac 10559470 Town::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007412e0 mac 10547990 Town::ResolveLoad(void)
@@ -195,27 +195,27 @@ public:
     // win1.41 007391d0 mac 10559100 Town::GetOrigin(void)
     virtual uint32_t GetOrigin();
     // win1.41 00739250 mac inlined Town::IsTown_0(void)
-    virtual bool IsTown();
+    virtual bool32_t IsTown();
     // win1.41 00739220 mac inlined Town::IsTown_1(Creature *)
-    virtual bool IsTown(Creature* param_1);
+    virtual bool32_t IsTown(Creature* param_1);
     // win1.41 004e47f0 mac 105e4b50 Town::IsActivityObjectWhichAngerAppliesTo(Creature *)
-    virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
+    virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
     // win1.41 00739230 mac 105592e0 Town::IsActivityObjectWhichCompassionAppliesTo(Creature *)
-    virtual bool IsActivityObjectWhichCompassionAppliesTo(Creature* param_1);
+    virtual bool32_t IsActivityObjectWhichCompassionAppliesTo(Creature* param_1);
     // win1.41 00739240 mac 10559340 Town::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
-    virtual bool IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
+    virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
     // win1.41 004e4750 mac 105e4c40 Town::IsTownBelongingToAnotherPlayer(Creature *)
-    virtual bool IsTownBelongingToAnotherPlayer(Creature* param_1);
+    virtual bool32_t IsTownBelongingToAnotherPlayer(Creature* param_1);
     // win1.41 00739260 mac 105593a0 Town::IsSuitableForCreatureActivity(void)
-    virtual bool IsSuitableForCreatureActivity();
+    virtual bool32_t IsSuitableForCreatureActivity();
     // win1.41 00739270 mac 105593f0 Town::CanBePlayedWithByCreature(Creature *)
-    virtual bool CanBePlayedWithByCreature(Creature* param_1);
+    virtual bool32_t CanBePlayedWithByCreature(Creature* param_1);
     // win1.41 0073c940 mac 1006fa90 Town::GetWorshipSite(void)
     virtual WorshipSite* GetWorshipSite();
     // win1.41 004e4140 mac 105e5e00 Town::IsTownBelongingToOtherPlayer(Creature *)
-    virtual bool IsTownBelongingToOtherPlayer(Creature* param_1);
+    virtual bool32_t IsTownBelongingToOtherPlayer(Creature* param_1);
     // win1.41 00739210 mac 105591b0 Town::IsScriptContainer( const(void))
-    virtual bool IsScriptContainer();
+    virtual bool32_t IsScriptContainer();
     // win1.41 00739280 mac 10559440 Town::GetText(void)
     virtual const char* GetText();
     // win1.41 00747f00 mac 10065180 Town::CalculateDesireForFood(void)
@@ -230,9 +230,9 @@ public:
     // win1.41 0073eac0 mac 1054e290 Town::AsssignTownFeature(void)
     static void AsssignTownFeature();
     // win1.41 007412f0 mac 100233e0 Town::FindClearArea(MapCoords &, MapCoords &, float, float, float, int (Object::)(void const *, void const *), Object *)
-    static bool FindClearArea(MapCoords& param_1, MapCoords& param_2, float param_3, float param_4, float param_5, int (*Town::callback)(const void*, const void*), Object* obj);
+    static bool32_t FindClearArea(MapCoords& param_1, MapCoords& param_2, float param_3, float param_4, float param_5, int (*Town::callback)(const void*, const void*), Object* obj);
     // win1.41 007413d0 mac 10038890 Town::CheckForClearArea(MapCoords &, float, int (Object::)(void const *, void const *), Object *)
-    static bool CheckForClearArea(MapCoords& param_1, float param_2, int (*Town::callback)(const void*, const void*), Object* obj);
+    static bool32_t CheckForClearArea(MapCoords& param_1, float param_2, int (*Town::callback)(const void*, const void*), Object* obj);
 
     // Constructors
 
@@ -246,7 +246,7 @@ public:
     // win1.41 00739a20 mac 105567f0 Town::AddAbodeToTownStats(Abode *)
     void AddAbodeToTownStats(Abode* abode);
     // win1.41 0073a090 mac 10556400 Town::AddVillagerToTown(Villager *)
-    bool AddVillagerToTown(Villager* villager);
+    bool32_t AddVillagerToTown(Villager* villager);
     // win1.41 0073a140 mac 10007ca0 Town::GetBestPlanned(float &, ABODE_TYPE)
     PlannedMultiMapFixed* GetBestPlanned(float* param_1, ABODE_TYPE param_2);
     // win1.41 0073a1a0 mac 100896c0 Town::GetDesireToBeBuilt(GMultiMapFixedInfo const *, unsigned long)
@@ -256,7 +256,7 @@ public:
     // win1.41 0073af50 mac 10555160 Town::ChildToAdult(Villager *)
     void ChildToAdult(Villager* param_1);
     // win1.41 0073b2d0 mac 10554e90 Town::IsHarvestTime(void)
-    bool IsHarvestTime();
+    bool32_t IsHarvestTime();
     // win1.41 0073b330 mac 1009ada0 Town::RequestANewAbode(ABODE_TYPE)
     bool32_t RequestANewAbode(ABODE_TYPE param_1);
     // win1.41 0073b370 mac 10554d60 Town::FindAbodeWithSpaceInTown(Villager *, float)
@@ -300,11 +300,11 @@ public:
     // win1.41 0073d360 mac 10550fd0 Town::GetNextSpellIcon(TownSpellIcon *)
     TownSpellIcon* GetNextSpellIcon(TownSpellIcon* icon);
     // win1.41 0073d380 mac 10550e80 Town::AddMagicTypesHeld(MAGIC_TYPE)
-    bool AddMagicTypesHeld(MAGIC_TYPE type);
+    bool32_t AddMagicTypesHeld(MAGIC_TYPE type);
     // win1.41 0073d630 mac 10550b00 Town::IsMagicTypeHeld(MAGIC_TYPE)
-    bool IsMagicTypeHeld(MAGIC_TYPE type);
+    bool32_t IsMagicTypeHeld(MAGIC_TYPE type);
     // win1.41 0073de30 mac 1054fb60 Town::GetFlock(LIVING_TYPE, int)
-    bool GetFlock(LIVING_TYPE param_1, int param_2);
+    bool32_t GetFlock(LIVING_TYPE param_1, int param_2);
     // win1.41 0073e1d0 mac 1054f6b0 Town::GetTotemStatue(void)
     TotemStatue* GetTotemStatue();
     // win1.41 0073e210 mac 1054f460 Town::RemoveVillager(Villager *)
@@ -332,7 +332,7 @@ public:
     // win1.41 007477a0 mac 10067510 Town::ProcessTownEmergency(void)
     void ProcessTownEmergency();
     // win1.41 00747970 mac 1006d3c0 Town::IsInStateOfEmergency(void)
-    bool IsInStateOfEmergency();
+    bool32_t IsInStateOfEmergency();
     // win1.41 007479a0 mac 105602e0 Town::SetInStateOfEmergency(void)
     void SetInStateOfEmergency();
     // win1.41 00747ea0 mac 1055f880 Town::GetBestRepairBuildingSite(void)

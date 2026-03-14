@@ -38,7 +38,7 @@ struct GNetwork
     // Non-virtual methods
 
     // win1.41 006349f0 mac 1010bff0 GNetwork::ProcessOnePacket(void)
-    bool ProcessOnePacket();
+    bool32_t ProcessOnePacket();
     // win1.41 00635290 mac 100229f0 GNetwork::ProcessOneSuperpacket(void)
     uint32_t ProcessOneSuperpacket();
 };

@@ -29,7 +29,7 @@ public:
     // win1.41 0056e730 mac 1031c600 EndGameBox::Destroy(void)
     virtual void Destroy();
     // win1.41 0053be30 mac 1031ba50 EndGameBox::CanESCOut(void)
-    virtual bool CanESCOut();
+    virtual bool32_t CanESCOut();
     // win1.41 0056e740 mac 1031c100 EndGameBox::InitControls(void)
     virtual void InitControls();
 };

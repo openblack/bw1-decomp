@@ -23,9 +23,9 @@ struct CameraExclusion
     // Static methods
 
     // win1.41 00455d50 mac 10000050 CameraExclusion::InsideExclusion(LHPoint)
-    static bool InsideExclusion(LHPoint point);
+    static bool32_t InsideExclusion(LHPoint point);
     // win1.41 00455e20 mac 1004f140 CameraExclusion::InsideInclusion(LHPoint, LHPoint, LHPoint *, LHPoint *)
-    static bool InsideInclusion(LHPoint param_1, LHPoint param_2, LHPoint* param_3, LHPoint* param_4);
+    static bool32_t InsideInclusion(LHPoint param_1, LHPoint param_2, LHPoint* param_3, LHPoint* param_4);
 };
 
 #else // __cplusplus

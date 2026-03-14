@@ -36,7 +36,7 @@ public:
     // Override methods
 
     // win1.41 00410f90 mac 10112370 SetupCheckBox::HitTest(int, int)
-    virtual bool HitTest(int x, int y);
+    virtual bool32_t HitTest(int x, int y);
     // win1.41 00410b80 mac 103c4a20 SetupCheckBox::Draw(bool, bool)
     virtual void Draw(bool hovered, bool selected);
     // win1.41 00411020 mac 103dbde0 SetupCheckBox::Click(int, int)

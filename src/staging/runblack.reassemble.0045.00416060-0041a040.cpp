@@ -55,13 +55,13 @@ MapCoords* MobileWallHug::GetDestPos()
 }
 
 // win1.41 00416f80 mac 1002c440 MobileWallHug::IsMobileWallHug( const(void))
-bool MobileWallHug::IsMobileWallHug() const
+bool32_t MobileWallHug::IsMobileWallHug() const
 {
     return 0;
 }
 
 // win1.41 00416f90 mac 10057470 Living::IsPoisoned(void)
-bool Living::IsPoisoned()
+bool32_t Living::IsPoisoned()
 {
     return 0;
 }
@@ -72,7 +72,7 @@ void Living::SetPoisoned(int param_1)
 }
 
 // win1.41 00416ff0 mac 1012f810 Living::IsSkeleton( const(void))
-bool Living::IsSkeleton() const
+bool32_t Living::IsSkeleton() const
 {
     return 0;
 }
@@ -94,19 +94,19 @@ uint32_t Living::EnterInHand(VILLAGER_STATES param_1, VILLAGER_STATES param_2)
 }
 
 // win1.41 00417070 mac inlined Living::IsStateForInterface( const(VILLAGER_STATES))
-bool Living::IsStateForInterface(VILLAGER_STATES param_1)
+bool32_t Living::IsStateForInterface(VILLAGER_STATES param_1)
 {
     return 0;
 }
 
 // win1.41 00417080 mac 1012fa20 Living::IsInterestedInWoodObject(Object *)
-bool Living::IsInterestedInWoodObject(Object* param_1)
+bool32_t Living::IsInterestedInWoodObject(Object* param_1)
 {
     return 0;
 }
 
 // win1.41 00417090 mac 1012fa70 Living::IsAvailableForBeliefButNotReaction(REACTION)
-bool Living::IsAvailableForBeliefButNotReaction(REACTION param_1)
+bool32_t Living::IsAvailableForBeliefButNotReaction(REACTION param_1)
 {
     return 0;
 }
@@ -266,31 +266,31 @@ uint32_t Living::IsPosValidForMapCellExistance(const MapCoords* param_1)
 }
 
 // win1.41 00417270 mac 10130570 Living::IsDead(void)
-bool Living::IsDead()
+bool32_t Living::IsDead()
 {
     return 0;
 }
 
 // win1.41 004172a0 mac 10130640 Living::CanBePickedUp(void)
-bool Living::CanBePickedUp()
+bool32_t Living::CanBePickedUp()
 {
     return 0;
 }
 
 // win1.41 004172b0 mac 10130680 Living::CanBeCrushed(void)
-bool Living::CanBeCrushed()
+bool32_t Living::CanBeCrushed()
 {
     return 0;
 }
 
 // win1.41 004172c0 mac 101306c0 Living::IsStompable(void)
-bool Living::IsStompable()
+bool32_t Living::IsStompable()
 {
     return 0;
 }
 
 // win1.41 004172d0 mac 10006820 Living::IsFunctional(void)
-bool32_tcorrect Living::IsFunctional()
+bool32_t Living::IsFunctional()
 {
     return 0;
 }
@@ -313,85 +313,85 @@ uint32_t Living::DanceType()
 }
 
 // win1.41 00417330 mac 10130890 Living::IsSuitableForCreatureAction(void)
-bool Living::IsSuitableForCreatureAction()
+bool32_t Living::IsSuitableForCreatureAction()
 {
     return 0;
 }
 
 // win1.41 00417340 mac 101308e0 Living::CanBeThrownByCreature(Creature *)
-bool Living::CanBeThrownByCreature(Creature* param_1)
+bool32_t Living::CanBeThrownByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00417350 mac 10130930 Living::CanBeAttackedByCreature(Creature *)
-bool Living::CanBeAttackedByCreature(Creature* param_1)
+bool32_t Living::CanBeAttackedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00417390 mac 10130a10 Living::CanBePlayedWithByCreature(Creature *)
-bool Living::CanBePlayedWithByCreature(Creature* param_1)
+bool32_t Living::CanBePlayedWithByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 004173c0 mac 10130ac0 Living::IsAnimate(void)
-bool Living::IsAnimate()
+bool32_t Living::IsAnimate()
 {
     return 0;
 }
 
 // win1.41 004173d0 mac 10130af0 Living::CanBeFrighteningToCreature(Creature *)
-bool Living::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t Living::CanBeFrighteningToCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 004173e0 mac 10130b40 Living::CanBeInspectedByCreature(Creature *)
-bool Living::CanBeInspectedByCreature(Creature* param_1)
+bool32_t Living::CanBeInspectedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00417410 mac 10130c00 Living::CanBePoodUponByCreature(Creature *)
-bool Living::CanBePoodUponByCreature(Creature* param_1)
+bool32_t Living::CanBePoodUponByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00417420 mac 10130c50 Living::CanBeDestroyedByStoning(Creature *)
-bool Living::CanBeDestroyedByStoning(Creature* param_1)
+bool32_t Living::CanBeDestroyedByStoning(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00417430 mac 10130cd0 Living::CanBeStompedOnByCreature(Creature *)
-bool Living::CanBeStompedOnByCreature(Creature* param_1)
+bool32_t Living::CanBeStompedOnByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00417440 mac 10130d50 Living::CanBeDancedWith(Creature *)
-bool Living::CanBeDancedWith(Creature* param_1)
+bool32_t Living::CanBeDancedWith(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00417450 mac 10130dc0 Living::IsAggressive(Creature *)
-bool Living::IsAggressive(Creature* param_1)
+bool32_t Living::IsAggressive(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00417460 mac inlined Living::IsLiving_1( const(void))
-bool Living::IsLiving() const
+bool32_t Living::IsLiving() const
 {
     return 0;
 }
 
 // win1.41 00417470 mac 10130e00 Living::IsNotLiving(void)
-bool Living::IsNotLiving()
+bool32_t Living::IsNotLiving()
 {
     return 0;
 }
@@ -408,13 +408,13 @@ void Living::SetSpecularColor(LH3DColor param_1)
 // }
 
 // win1.41 004174a0 mac inlined Villager::MoveAllowedForChessGame(void)
-bool Villager::MoveAllowedForChessGame()
+bool32_t Villager::MoveAllowedForChessGame()
 {
     return 0;
 }
 
 // win1.41 004174b0 mac inlined Villager::AttackAllowedForChessGame(void)
-bool Villager::AttackAllowedForChessGame()
+bool32_t Villager::AttackAllowedForChessGame()
 {
     return 0;
 }
@@ -471,13 +471,13 @@ int Animal::GetDetailMesh(int param_1)
 }
 
 // win1.41 00417570 mac inlined Animal::IsScriptState( const(VILLAGER_STATES))
-bool Animal::IsScriptState(VILLAGER_STATES param_1)
+bool32_t Animal::IsScriptState(VILLAGER_STATES param_1)
 {
     return 0;
 }
 
 // win1.41 00417590 mac inlined Animal::IsScriptInterruptableState( const(VILLAGER_STATES))
-bool Animal::IsScriptInterruptableState(VILLAGER_STATES param_1)
+bool32_t Animal::IsScriptInterruptableState(VILLAGER_STATES param_1)
 {
     return 0;
 }
@@ -627,13 +627,13 @@ uint32_t Animal::GetTastiness()
 }
 
 // win1.41 00417870 mac 1012f470 Animal::CanBeGivenToTown(Creature *)
-bool Animal::CanBeGivenToTown(Creature* param_1)
+bool32_t Animal::CanBeGivenToTown(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00417880 mac 1004f080 Animal::IsAnimal(void)
-bool Animal::IsAnimal()
+bool32_t Animal::IsAnimal()
 {
     return 0;
 }
@@ -650,13 +650,13 @@ Animal::~Animal()
 }
 
 // win1.41 004178d0 mac 10380910 GameThingWithPos::IsWonder(void)
-bool32_tcorrect GameThingWithPos::IsWonder()
+bool32_t GameThingWithPos::IsWonder()
 {
     return 0;
 }
 
 // win1.41 004178e0 mac 102ff000 GameThingWithPos::CreateBuildingSite(void)
-bool GameThingWithPos::CreateBuildingSite()
+bool32_t GameThingWithPos::CreateBuildingSite()
 {
     return 0;
 }
@@ -723,7 +723,7 @@ MultiMapFixed* Object::AsMultiMapFixed()
 }
 
 // win1.41 004192d0 mac 100a9e00 Object::IsResourceStore(RESOURCE_TYPE)
-bool Object::IsResourceStore(RESOURCE_TYPE type)
+bool32_t Object::IsResourceStore(RESOURCE_TYPE type)
 {
     return 0;
 }
@@ -770,7 +770,7 @@ uint32_t Object::InterfaceTap(GInterfaceStatus* status)
 }
 
 // win1.41 00419890 mac 100a9e80 Object::ChecksVerticesVObjects(void)
-bool Object::ChecksVerticesVObjects()
+bool32_t Object::ChecksVerticesVObjects()
 {
     return 0;
 }
@@ -800,7 +800,7 @@ bool32_t Object::IsTownArtifact()
 }
 
 // win1.41 00419a50 mac 100a5a00 Object::ShouldFootpathsGoRound(void)
-bool Object::ShouldFootpathsGoRound()
+bool32_t Object::ShouldFootpathsGoRound()
 {
     return 0;
 }
@@ -812,19 +812,19 @@ NewCollide* Object::GetCollideData()
 }
 
 // win1.41 00419b40 mac 10168830 Animal::ValidForPlaceInHand(GInterfaceStatus *)
-bool Animal::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t Animal::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 00419b60 mac 10168730 Animal::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool Animal::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t Animal::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 00419bc0 mac 10168630 Animal::IsInterestedInFoodObject(Object *)
-bool Animal::IsInterestedInFoodObject(Object* param_1)
+bool32_t Animal::IsInterestedInFoodObject(Object* param_1)
 {
     return 0;
 }

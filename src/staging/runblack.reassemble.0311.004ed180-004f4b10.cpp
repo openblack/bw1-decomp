@@ -55,7 +55,7 @@ CreaturePhysical::~CreaturePhysical()
 }
 
 // win1.41 004f0560 mac 1027a2e0 Creature::DecideWhatToDo(void)
-bool Creature::DecideWhatToDo()
+bool32_t Creature::DecideWhatToDo()
 {
     return 0;
 }
@@ -81,7 +81,7 @@ void Creature::UpdateHowImpressed(Reaction* param_1, int param_2)
 }
 
 // win1.41 004f2820 mac 1027db00 Creature::IsAvailableForReaction(REACTION)
-bool Creature::IsAvailableForReaction(REACTION param_1)
+bool32_t Creature::IsAvailableForReaction(REACTION param_1)
 {
     return 0;
 }

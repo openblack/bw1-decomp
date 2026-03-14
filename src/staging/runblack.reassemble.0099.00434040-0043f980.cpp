@@ -118,7 +118,7 @@ Ball::Ball(const MapCoords* coords, const GBallInfo* info)
 }
 
 // win1.41 00435ab0 mac 100aff50 Ball::CanBePickedUpByCreature(Creature *)
-bool Ball::CanBePickedUpByCreature(Creature* param_1)
+bool32_t Ball::CanBePickedUpByCreature(Creature* param_1)
 {
     return 0;
 }
@@ -159,7 +159,7 @@ GPlayer* Ball::GetPlayer()
 }
 
 // win1.41 004360e0 mac 100b04d0 Ball::IsBallFree(void)
-bool Ball::IsBallFree()
+bool32_t Ball::IsBallFree()
 {
     return 0;
 }
@@ -177,25 +177,25 @@ uint32_t Ball::GetScriptObjectType()
 }
 
 // win1.41 00436110 mac 100b0260 Ball::Save(GameOSFile &)
-bool32_tcorrect Ball::Save(GameOSFile& file)
+bool32_t Ball::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00436260 mac 100b0080 Ball::Load(GameOSFile &)
-bool32_tcorrect Ball::Load(GameOSFile& file)
+bool32_t Ball::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 004363b0 mac 100b0040 Ball::IsToy(Creature *)
-bool Ball::IsToy(Creature* param_1)
+bool32_t Ball::IsToy(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 004363c0 mac 100b0000 Ball::IsToyBall(Creature *)
-bool Ball::IsToyBall(Creature* param_1)
+bool32_t Ball::IsToyBall(Creature* param_1)
 {
     return 0;
 }
@@ -288,13 +288,13 @@ BigForest::BigForest(const MapCoords* coords, const GBigForestInfo* info, uint32
 }
 
 // win1.41 00438d70 mac 10368f30 MultiMapFixed::IsRepaired(void)
-bool MultiMapFixed::IsRepaired()
+bool32_t MultiMapFixed::IsRepaired()
 {
     return 0;
 }
 
 // win1.41 00438d80 mac 10570e90 MultiMapFixed::IsBuilt(void)
-bool32_tcorrect MultiMapFixed::IsBuilt()
+bool32_t MultiMapFixed::IsBuilt()
 {
     return 0;
 }
@@ -312,19 +312,19 @@ LH3DObject::ObjectType BigForest::Get3DType()
 }
 
 // win1.41 00438db0 mac 100b2390 BigForest::ValidForPlaceInHand(GInterfaceStatus *)
-bool BigForest::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t BigForest::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 00438dc0 mac 100b23e0 BigForest::IsTuggable(void)
-bool BigForest::IsTuggable()
+bool32_t BigForest::IsTuggable()
 {
     return 0;
 }
 
 // win1.41 00438dd0 mac 100b2420 BigForest::VillagerMustAvoid(Villager *)
-bool BigForest::VillagerMustAvoid(Villager* param_1)
+bool32_t BigForest::VillagerMustAvoid(Villager* param_1)
 {
     return 0;
 }
@@ -370,7 +370,7 @@ BigForest* BigForest::Create(MapCoords* coords, GBigForestInfo* info, uint32_t p
 }
 
 // win1.41 00438f50 mac 100b3530 BigForest::CreatureMustAvoid(Creature *)
-bool BigForest::CreatureMustAvoid(Creature* param_1)
+bool32_t BigForest::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }
@@ -392,7 +392,7 @@ void BigForest::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 }
 
 // win1.41 004390a0 mac 100b3050 BigForest::InteractsWithPhysicsObjects(void)
-bool BigForest::InteractsWithPhysicsObjects()
+bool32_t BigForest::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -410,19 +410,19 @@ uint32_t BigForest::RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInt
 }
 
 // win1.41 004393c0 mac 100b29f0 BigForest::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool BigForest::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t BigForest::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 00439470 mac 100b2840 BigForest::Save(GameOSFile &)
-bool32_tcorrect BigForest::Save(GameOSFile& file)
+bool32_t BigForest::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 004394e0 mac 100b2760 BigForest::Load(GameOSFile &)
-bool32_tcorrect BigForest::Load(GameOSFile& file)
+bool32_t BigForest::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -446,19 +446,19 @@ float MobileStatic::GetZAngle()
 }
 
 // win1.41 00439630 mac 100b4140 MobileStatic::CanBeStompedOnByCreature(Creature *)
-bool MobileStatic::CanBeStompedOnByCreature(Creature* param_1)
+bool32_t MobileStatic::CanBeStompedOnByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00439640 mac 100b4190 MobileStatic::CanBePlayedWithByCreature(Creature *)
-bool MobileStatic::CanBePlayedWithByCreature(Creature* param_1)
+bool32_t MobileStatic::CanBePlayedWithByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00439650 mac 100b41e0 MobileStatic::CanBeThrownInTheSeaPlayfully(Creature *)
-bool MobileStatic::CanBeThrownInTheSeaPlayfully(Creature* param_1)
+bool32_t MobileStatic::CanBeThrownInTheSeaPlayfully(Creature* param_1)
 {
     return 0;
 }
@@ -470,7 +470,7 @@ uint32_t MobileStatic::GetTastiness()
 }
 
 // win1.41 00439670 mac 100b4280 MobileStatic::CanBePickedUp(void)
-bool MobileStatic::CanBePickedUp()
+bool32_t MobileStatic::CanBePickedUp()
 {
     return 0;
 }
@@ -482,13 +482,13 @@ int MobileStatic::GetMesh() const
 }
 
 // win1.41 00439690 mac 100b4420 MobileStatic::IsSolidToNewAbode(void)
-bool MobileStatic::IsSolidToNewAbode()
+bool32_t MobileStatic::IsSolidToNewAbode()
 {
     return 0;
 }
 
 // win1.41 004396a0 mac 100b4460 MobileStatic::IsFunctional(void)
-bool32_tcorrect MobileStatic::IsFunctional()
+bool32_t MobileStatic::IsFunctional()
 {
     return 0;
 }
@@ -506,25 +506,25 @@ uint32_t MobileStatic::ValidToApplyThisToMapCoord(GInterfaceStatus* param_1, con
 }
 
 // win1.41 004396d0 mac 100b4580 MobileStatic::CanBeUsedForThrowingDamageByCreature(Creature *)
-bool MobileStatic::CanBeUsedForThrowingDamageByCreature(Creature* param_1)
+bool32_t MobileStatic::CanBeUsedForThrowingDamageByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 004396f0 mac 100b4610 MobileStatic::IsMobileStatic(void)
-bool MobileStatic::IsMobileStatic()
+bool32_t MobileStatic::IsMobileStatic()
 {
     return 0;
 }
 
 // win1.41 00439700 mac 100b4650 MobileStatic::IsCastShadowAtNight(void)
-bool MobileStatic::IsCastShadowAtNight()
+bool32_t MobileStatic::IsCastShadowAtNight()
 {
     return 0;
 }
 
 // win1.41 00439710 mac 100b3f00 Rock::IsResourceStore(RESOURCE_TYPE)
-bool Rock::IsResourceStore(RESOURCE_TYPE param_1)
+bool32_t Rock::IsResourceStore(RESOURCE_TYPE param_1)
 {
     return 0;
 }
@@ -535,13 +535,13 @@ void Rock::SetPlayer(GPlayer* param_1)
 }
 
 // win1.41 00439730 mac inlined Rock::IsRock_0(void)
-bool Rock::IsRock()
+bool32_t Rock::IsRock()
 {
     return 0;
 }
 
 // win1.41 00439740 mac 100b3fc0 Rock::IsMovable(void)
-bool Rock::IsMovable()
+bool32_t Rock::IsMovable()
 {
     return 0;
 }
@@ -553,13 +553,13 @@ uint32_t Rock::GetCreatureMimicType()
 }
 
 // win1.41 00439760 mac 100b4030 Rock::CanBeAttackedByCreature(Creature *)
-bool Rock::CanBeAttackedByCreature(Creature* param_1)
+bool32_t Rock::CanBeAttackedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00439770 mac 100b4080 Rock::ShouldFootpathsGoRound(void)
-bool Rock::ShouldFootpathsGoRound()
+bool32_t Rock::ShouldFootpathsGoRound()
 {
     return 0;
 }
@@ -571,19 +571,19 @@ uint32_t Bonfire::InterfaceValidToTap(GInterfaceStatus* param_1)
 }
 
 // win1.41 00439790 mac 100b3cf0 Bonfire::ValidForPlaceInHand(GInterfaceStatus *)
-bool Bonfire::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t Bonfire::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 004397a0 mac 100b3d40 Bonfire::CanBecomeAPhysicsObject(void)
-bool32_tcorrect Bonfire::CanBecomeAPhysicsObject()
+bool32_t Bonfire::CanBecomeAPhysicsObject()
 {
     return 0;
 }
 
 // win1.41 004397b0 mac 100b3d80 Bonfire::InteractsWithPhysicsObjects(void)
-bool Bonfire::InteractsWithPhysicsObjects()
+bool32_t Bonfire::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -628,13 +628,13 @@ uint32_t Bonfire::SaveObject(LHOSFile& param_1, const MapCoords& param_2)
 }
 
 // win1.41 00439990 mac 100b48d0 Bonfire::Save(GameOSFile &)
-bool32_tcorrect Bonfire::Save(GameOSFile& file)
+bool32_t Bonfire::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00439a00 mac 100b4800 Bonfire::Load(GameOSFile &)
-bool32_tcorrect Bonfire::Load(GameOSFile& file)
+bool32_t Bonfire::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -764,13 +764,13 @@ bool32_t BuildingSite::ShouldIGetWood(Villager* param_1)
 }
 
 // win1.41 0043c830 mac 100ba480 BuildingSite::Save(GameOSFile &)
-bool32_tcorrect BuildingSite::Save(GameOSFile& file)
+bool32_t BuildingSite::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0043cad0 mac 100b9cf0 BuildingSite::Load(GameOSFile &)
-bool32_tcorrect BuildingSite::Load(GameOSFile& file)
+bool32_t BuildingSite::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -864,7 +864,7 @@ Pot* CitadelBuildingSite::GetPileWood(const MapCoords* param_1)
 }
 
 // win1.41 0043d580 mac 100b8750 CitadelBuildingSite::IsLinkedToThisBuildingSite(Pot *)
-bool CitadelBuildingSite::IsLinkedToThisBuildingSite(Pot* param_1)
+bool32_t CitadelBuildingSite::IsLinkedToThisBuildingSite(Pot* param_1)
 {
     return 0;
 }
@@ -875,13 +875,13 @@ void CitadelBuildingSite::RemovePotFromStructure(PotStructure* param_1)
 }
 
 // win1.41 0043d5e0 mac 100b8620 CitadelBuildingSite::Save(GameOSFile &)
-bool32_tcorrect CitadelBuildingSite::Save(GameOSFile& file)
+bool32_t CitadelBuildingSite::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0043d620 mac 100b8580 CitadelBuildingSite::Load(GameOSFile &)
-bool32_tcorrect CitadelBuildingSite::Load(GameOSFile& file)
+bool32_t CitadelBuildingSite::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -930,19 +930,19 @@ void StandardBuildingSite::RemovePotFromStructure(PotStructure* param_1)
 }
 
 // win1.41 0043d830 mac 100b8000 StandardBuildingSite::IsLinkedToThisBuildingSite(Pot *)
-bool StandardBuildingSite::IsLinkedToThisBuildingSite(Pot* param_1)
+bool32_t StandardBuildingSite::IsLinkedToThisBuildingSite(Pot* param_1)
 {
     return 0;
 }
 
 // win1.41 0043d850 mac 100b7f60 StandardBuildingSite::Save(GameOSFile &)
-bool32_tcorrect StandardBuildingSite::Save(GameOSFile& file)
+bool32_t StandardBuildingSite::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0043d890 mac 100b7ec0 StandardBuildingSite::Load(GameOSFile &)
-bool32_tcorrect StandardBuildingSite::Load(GameOSFile& file)
+bool32_t StandardBuildingSite::Load(GameOSFile& file)
 {
     return 0;
 }

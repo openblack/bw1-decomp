@@ -52,9 +52,9 @@ public:
     // win1.41 00438e10 mac 100b25b0 BigForest::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004394e0 mac 100b2760 BigForest::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 00439470 mac 100b2840 BigForest::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00438e00 mac 100b2570 BigForest::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00438df0 mac 100b24d0 BigForest::GetMesh( const(void))
@@ -70,17 +70,17 @@ public:
     // win1.41 004390b0 mac 100b2fe0 BigForest::GetWoodValue(void)
     virtual float GetWoodValue();
     // win1.41 00438db0 mac 100b2390 BigForest::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 004393c0 mac 100b29f0 BigForest::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 00438dc0 mac 100b23e0 BigForest::IsTuggable(void)
-    virtual bool IsTuggable();
+    virtual bool32_t IsTuggable();
     // win1.41 004390a0 mac 100b3050 BigForest::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 00438f50 mac 100b3530 BigForest::CreatureMustAvoid(Creature *)
-    virtual bool CreatureMustAvoid(Creature* param_1);
+    virtual bool32_t CreatureMustAvoid(Creature* param_1);
     // win1.41 00438dd0 mac 100b2420 BigForest::VillagerMustAvoid(Villager *)
-    virtual bool VillagerMustAvoid(Villager* param_1);
+    virtual bool32_t VillagerMustAvoid(Villager* param_1);
     // win1.41 00438de0 mac 100b2470 BigForest::GetCarriedTreeType(void)
     virtual uint32_t GetCarriedTreeType();
     // win1.41 00438f70 mac 100b3190 BigForest::SaveObject(LHOSFile &, MapCoords const &)

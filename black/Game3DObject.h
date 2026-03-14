@@ -30,9 +30,9 @@ public:
     // win1.41 0063abc0 mac 103da030 Game3DObject::GetAltitudeFondation(void) const
     float GetAltitudeFondation();
     // win1.41 0063afe0 mac 10019840 Game3DObject::GetDoorPosition(MapCoords *) const
-    bool GetDoorPosition(MapCoords* position);
+    bool32_t GetDoorPosition(MapCoords* position);
     // win1.41 0063b060 mac 103d9d50 Game3DObject::GetSpecialPos(unsigned long, MapCoords &) const
-    bool GetSpecialPos(uint32_t index, MapCoords* coords);
+    bool32_t GetSpecialPos(uint32_t index, MapCoords* coords);
 };
 
 #else // __cplusplus

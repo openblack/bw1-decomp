@@ -167,9 +167,9 @@ public:
     // win1.41 00459f10 mac 1007e670 CameraModeNew3::DragFocusOntoLand(LHPoint &, LHPoint &)
     void DragFocusOntoLand(LHPoint* param_1, LHPoint* param_2);
     // win1.41 0045a080 mac 101a3db0 CameraModeNew3::UpdateStrafe(LHPoint &, LHPoint &, float &, float &, float, unsigned long)
-    bool UpdateStrafe(LHPoint* param_1, LHPoint* param_2, float* param_3, float* param_4, float param_5, uint32_t param_6);
+    bool32_t UpdateStrafe(LHPoint* param_1, LHPoint* param_2, float* param_3, float* param_4, float param_5, uint32_t param_6);
     // win1.41 0045a390 mac 100098e0 CameraModeNew3::WantToQuitFight(LHPoint, LHPoint, float)
-    bool WantToQuitFight(LHPoint param_1, LHPoint param_2, float param_3);
+    bool32_t WantToQuitFight(LHPoint param_1, LHPoint param_2, float param_3);
     // win1.41 0045a4d0 mac 101a3910 CameraModeNew3::StartFight(GArena *)
     void StartFight(GArena* arena);
     // win1.41 0045a830 mac inlined CameraModeNew3::EndFightNow(int)

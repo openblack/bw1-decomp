@@ -59,7 +59,7 @@ public:
     // win1.41 00513da0 mac 102b50c0 DialogBoxOptions::Destroy(void)
     virtual void Destroy();
     // win1.41 00513830 mac 102b5900 DialogBoxOptions::CanESCOut(void)
-    virtual bool CanESCOut();
+    virtual bool32_t CanESCOut();
     // win1.41 00513dc0 mac 102b4ff0 DialogBoxOptions::InitControls(void)
     virtual void InitControls();
 

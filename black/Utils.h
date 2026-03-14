@@ -35,7 +35,7 @@ struct GUtils
     // win1.41 0074dcc0 mac 10032220 GUtils::ConvertWholeDistanceToMeters(long)
     static float ConvertWholeDistanceToMeters(int param_1);
     // win1.41 0074e3a0 mac 104fa7f0 GUtils::FindNearestDrinkingWater(MapCoords &, MapCoords &, float)
-    static bool FindNearestDrinkingWater(MapCoords& param_1, MapCoords& param_2, float max_dist);
+    static bool32_t FindNearestDrinkingWater(MapCoords& param_1, MapCoords& param_2, float max_dist);
     // win1.41 0074f170 mac 10067300 GUtils::SigmoidThreshold(float, float)
     static float SigmoidThreshold(float param_1, float param_2);
     // win1.41 0074f290 mac 100673e0 GUtils::GetDistanceModifier(float float)

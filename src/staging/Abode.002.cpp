@@ -22,13 +22,13 @@ void Abode::DestroyedByBeam()
 }
 
 // win1.41 00402cd0 mac 100c7020 Abode::GetInspectObjectPos(Villager *, MapCoords *)
-bool Abode::GetInspectObjectPos(Villager* param_1, MapCoords* pos)
+bool32_t Abode::GetInspectObjectPos(Villager* param_1, MapCoords* pos)
 {
     return false;
 }
 
 // win1.41 00402cf0 mac 101c66a0 Abode::GetPSysFireLocalRndFlamePos(LHPoint *, long *)
-bool Abode::GetPSysFireLocalRndFlamePos(LHPoint* point, int32_t* param_2)
+bool32_t Abode::GetPSysFireLocalRndFlamePos(LHPoint* point, int32_t* param_2)
 {
     return false;
 }

@@ -25,7 +25,7 @@ struct MapCell
     // Static methods
 
     // win1.41 00601510 mac 1000b040 MapCell::DoesObjectTypeCountAsFixed(OBJECT_TYPE)
-    static bool DoesObjectTypeCountAsFixed(OBJECT_TYPE type);
+    static bool32_t DoesObjectTypeCountAsFixed(OBJECT_TYPE type);
 
     // Non-virtual methods
 
@@ -112,7 +112,7 @@ public:
     // win1.41 00612660 mac 100fddf0 GMap::ToMap(long, long)
     MapCell* ToMap(uint32_t cell_x, uint32_t cell_z);
     // win1.41 00612690 mac 10049c10 GMap::InBounds(long, long)
-    bool InBounds(uint32_t x, uint32_t z);
+    bool32_t InBounds(uint32_t x, uint32_t z);
 };
 
 #else // __cplusplus

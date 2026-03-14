@@ -11,7 +11,7 @@ void GGame::StartPlaygroundGame(char* map_path)
 }
 
 // win1.41 00552f80 mac 100369c0 GGame::IsMultiplayerGame(void) const
-bool GGame::IsMultiplayerGame()
+bool32_t GGame::IsMultiplayerGame()
 {
     return 0;
 }
@@ -28,13 +28,13 @@ void GGame::OnNewGame()
 }
 
 // win1.41 00554090 mac 104935a0 GGame::Save(GameOSFile &)
-bool32_tcorrect GGame::Save(GameOSFile& file)
+bool32_t GGame::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00554830 mac 10354cc0 GGame::Load(GameOSFile &)
-bool32_tcorrect GGame::Load(GameOSFile& file)
+bool32_t GGame::Load(GameOSFile& file)
 {
     return 0;
 }

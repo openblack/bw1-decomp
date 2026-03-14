@@ -1,13 +1,13 @@
 #include "PuzzleGame.h"
 
 // win1.41 006d96c0 mac 10127440 PuzzleGame::Save(GameOSFile &)
-bool32_tcorrect PuzzleGame::Save(GameOSFile& file)
+bool32_t PuzzleGame::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006d9d40 mac 10126ae0 PuzzleGame::Load(GameOSFile &)
-bool32_tcorrect PuzzleGame::Load(GameOSFile& file)
+bool32_t PuzzleGame::Load(GameOSFile& file)
 {
     return 0;
 }

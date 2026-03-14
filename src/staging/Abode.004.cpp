@@ -17,7 +17,7 @@ void Abode::InsertMapObject()
 }
 
 // win1.41 00403ef0 mac 10589380 Abode::ShouldFootpathsGoRound(void)
-bool Abode::ShouldFootpathsGoRound()
+bool32_t Abode::ShouldFootpathsGoRound()
 {
     return false;
 }
@@ -39,7 +39,7 @@ void Abode::RemoveDamage()
 }
 
 // win1.41 00403f80 mac 10573770 Abode::DestroyedByEffect(GPlayer *, float)
-bool Abode::DestroyedByEffect(GPlayer* player, float param_2)
+bool32_t Abode::DestroyedByEffect(GPlayer* player, float param_2)
 {
     return false;
 }
@@ -88,7 +88,7 @@ int Abode::CalculateFoodNeededForDinner()
 }
 
 // win1.41 00404600 mac 1032c5d0 Abode::IsEnoughFoodForDinner(void)
-bool Abode::IsEnoughFoodForDinner()
+bool32_t Abode::IsEnoughFoodForDinner()
 {
     return false;
 }
@@ -123,19 +123,19 @@ int Abode::FUN_004046b0()
 }
 
 // win1.41 004046c0 mac 105b93c0 Abode::IsTooCrowded(void)
-bool Abode::IsTooCrowded()
+bool32_t Abode::IsTooCrowded()
 {
     return false;
 }
 
 // win1.41 00404720 mac 105b9180 Abode::Built(void)
-bool Abode::Built()
+bool32_t Abode::Built()
 {
     return false;
 }
 
 // win1.41 004047b0 mac 105b9280 Abode::Repaired(void)
-bool Abode::Repaired()
+bool32_t Abode::Repaired()
 {
     return false;
 }

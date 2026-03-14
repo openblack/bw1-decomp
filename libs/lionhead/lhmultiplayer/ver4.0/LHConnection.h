@@ -62,9 +62,9 @@ public:
     // win1.41 100051b0 mac 100dd710 LHConnection::ClearTransport(void)
     void ClearTransport();
     // win1.41 10005270 mac 10010210 LHConnection::IsDisconnected(void)
-    bool IsDisconnected();
+    bool32_t IsDisconnected();
     // win1.41 100052d0 mac 100dd3b0 LHConnection::CheckForEvents(void)
-    bool CheckForEvents();
+    bool32_t CheckForEvents();
     // win1.41 10005330 mac 100dd1e0 LHConnection::GetProtocolVersion(void)
     uint32_t GetProtocolVersion();
     // win1.41 100df100 mac 100047b0 LHConnection::Read(unsigned long, LH_NETEVENT_TYPE)

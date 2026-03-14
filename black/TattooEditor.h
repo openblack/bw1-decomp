@@ -29,7 +29,7 @@ public:
     // win1.41 005427e0 mac 105bda80 TattooEditor::Destroy(void)
     virtual void Destroy();
     // win1.41 0053bd20 mac 105c5eb0 TattooEditor::CanESCOut(void)
-    virtual bool CanESCOut();
+    virtual bool32_t CanESCOut();
     // win1.41 005433e0 mac 105bc900 TattooEditor::InitControls(void)
     virtual void InitControls();
 };

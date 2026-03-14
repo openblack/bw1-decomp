@@ -6,7 +6,7 @@ void GGame::KeyHandler(unsigned short param_1, LH_KEY param_2, unsigned short pa
 }
 
 // win1.41 0054ffe0 mac 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
-bool GGame::MouseHandler(void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4)
+bool32_t GGame::MouseHandler(void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4)
 {
     return 0;
 }
@@ -27,7 +27,7 @@ void GGame::CreateMeshPack()
 }
 
 // win1.41 00550390 mac 10427340 GGame::LoadFiles(void)
-bool GGame::LoadFiles()
+bool32_t GGame::LoadFiles()
 {
     return 0;
 }

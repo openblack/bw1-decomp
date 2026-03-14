@@ -39,9 +39,9 @@ public:
     // win1.41 0043d710 mac 100be260 StandardBuildingSite::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0043d890 mac 100b7ec0 StandardBuildingSite::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 0043d850 mac 100b7f60 StandardBuildingSite::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0043d700 mac 100be220 StandardBuildingSite::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0043d8d0 mac 10077e70 StandardBuildingSite::Process(void)
@@ -59,7 +59,7 @@ public:
     // win1.41 0043d800 mac 100b8060 StandardBuildingSite::RemovePotFromStructure(PotStructure *)
     virtual void RemovePotFromStructure(PotStructure* param_1);
     // win1.41 0043d830 mac 100b8000 StandardBuildingSite::IsLinkedToThisBuildingSite(Pot *)
-    virtual bool IsLinkedToThisBuildingSite(Pot* param_1);
+    virtual bool32_t IsLinkedToThisBuildingSite(Pot* param_1);
     // win1.41 0043ce40 mac inlined StandardBuildingSite::GetNearestEdge(float, float, int *)
     virtual float GetNearestEdge(float param_1, float param_2, int* param_3);
     // win1.41 0043cf40 mac inlined StandardBuildingSite::GetNextPosFromIndex(int *)

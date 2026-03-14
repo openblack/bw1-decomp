@@ -45,15 +45,15 @@ public:
     // win1.41 00643980 mac inlined PFootball::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 00643950 mac inlined PFootball::IsPlaytimeStructure(void)
-    virtual bool IsPlaytimeStructure();
+    virtual bool32_t IsPlaytimeStructure();
     // win1.41 00643960 mac inlined PFootball::IsPlaytimeStarted(void)
-    virtual bool IsPlaytimeStarted();
+    virtual bool32_t IsPlaytimeStarted();
     // win1.41 00644200 mac inlined PFootball::AddPlaytimeVillager(Villager *)
-    virtual bool AddPlaytimeVillager(Villager* param_1);
+    virtual bool32_t AddPlaytimeVillager(Villager* param_1);
     // win1.41 006438f0 mac inlined PFootball::IsRepaired(void)
-    virtual bool IsRepaired();
+    virtual bool32_t IsRepaired();
     // win1.41 00643910 mac inlined PFootball::IsBuilt(void)
-    virtual bool32_tcorrect IsBuilt();
+    virtual bool32_t IsBuilt();
 };
 
 // win1.41 00bfed58 mac inlined PPlannedFootball::`RTTI Type Descriptor'

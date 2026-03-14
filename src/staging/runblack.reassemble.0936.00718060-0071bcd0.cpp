@@ -80,13 +80,13 @@ GPlayer* ShowNeeds::GetPlayer()
 }
 
 // win1.41 00719cb0 mac 10145970 ShowNeeds::Save(GameOSFile &)
-bool32_tcorrect ShowNeeds::Save(GameOSFile& file)
+bool32_t ShowNeeds::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00719cf0 mac 101458d0 ShowNeeds::Load(GameOSFile &)
-bool32_tcorrect ShowNeeds::Load(GameOSFile& file)
+bool32_t ShowNeeds::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -119,13 +119,13 @@ GPlayer* ShowNeedsVisuals::GetPlayer()
 }
 
 // win1.41 0071a230 mac 10144d30 ShowNeedsVisuals::Save(GameOSFile &)
-bool32_tcorrect ShowNeedsVisuals::Save(GameOSFile& file)
+bool32_t ShowNeedsVisuals::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0071a320 mac 10144bb0 ShowNeedsVisuals::Load(GameOSFile &)
-bool32_tcorrect ShowNeedsVisuals::Load(GameOSFile& file)
+bool32_t ShowNeedsVisuals::Load(GameOSFile& file)
 {
     return 0;
 }

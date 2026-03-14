@@ -45,23 +45,23 @@ public:
     // win1.41 00561210 mac 101612d0 Wonder::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007790f0 mac 10161470 Wonder::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 00779080 mac 10161540 Wonder::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00561200 mac 10161290 Wonder::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005611b0 mac inlined Wonder::GetArrivePos(MapCoords *)
     virtual MapCoords* GetArrivePos(MapCoords* param_1);
     // win1.41 005611e0 mac 10161200 Wonder::CanActAsAContainer(Creature *)
-    virtual bool CanActAsAContainer(Creature* param_1);
+    virtual bool32_t CanActAsAContainer(Creature* param_1);
     // win1.41 005611f0 mac 10161250 Wonder::IsStoragePit(Creature *)
-    virtual bool IsStoragePit(Creature* param_1);
+    virtual bool32_t IsStoragePit(Creature* param_1);
     // win1.41 00779160 mac 101613c0 Wonder::CallVirtualFunctionsForCreation(const MapCoords&)
     virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00779190 mac 10161310 Wonder::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
     // win1.41 00778f30 mac 10161920 Wonder::Built(void)
-    virtual bool Built();
+    virtual bool32_t Built();
     // win1.41 00779070 mac 10161620 Wonder::SetPower(float)
     virtual void SetPower(float param_1);
     // win1.41 00778fc0 mac 10161700 Wonder::AddToPlayer(void)

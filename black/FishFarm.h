@@ -68,9 +68,9 @@ public:
     // win1.41 0052c5b0 mac 100dd9a0 FishFarm::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0052d4f0 mac 100daf80 FishFarm::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 0052d3b0 mac 100db1a0 FishFarm::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0052c5a0 mac 100dd960 FishFarm::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0052c490 mac inlined FishFarm::GetArrivePos(MapCoords *)
@@ -78,29 +78,29 @@ public:
     // win1.41 0052c4d0 mac 100dd5a0 FishFarm::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
     // win1.41 0052c980 mac 100dc470 FishFarm::IsObjectInMap(void)
-    virtual bool IsObjectInMap();
+    virtual bool32_t IsObjectInMap();
     // win1.41 0052c550 mac 100dd800 FishFarm::CanBeEatenByCreature(Creature *)
-    virtual bool CanBeEatenByCreature(Creature* param_1);
+    virtual bool32_t CanBeEatenByCreature(Creature* param_1);
     // win1.41 0052c560 mac 100dd850 FishFarm::CanBeSleptNextToByCreature(Creature *)
-    virtual bool CanBeSleptNextToByCreature(Creature* param_1);
+    virtual bool32_t CanBeSleptNextToByCreature(Creature* param_1);
     // win1.41 0052c4f0 mac 100dd620 FishFarm::CanBePickedUpByCreature(Creature *)
-    virtual bool CanBePickedUpByCreature(Creature* param_1);
+    virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
     // win1.41 0052c500 mac 100dd670 FishFarm::CanBeStompedOnByCreature(Creature *)
-    virtual bool CanBeStompedOnByCreature(Creature* param_1);
+    virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
     // win1.41 0052c510 mac 100dd6c0 FishFarm::CanBeGivenToVillager(Creature *)
-    virtual bool CanBeGivenToVillager(Creature* param_1);
+    virtual bool32_t CanBeGivenToVillager(Creature* param_1);
     // win1.41 0052c520 mac 100dd710 FishFarm::CanBePutInAStoragePit(Creature *)
-    virtual bool CanBePutInAStoragePit(Creature* param_1);
+    virtual bool32_t CanBePutInAStoragePit(Creature* param_1);
     // win1.41 0052c530 mac 100dd760 FishFarm::CanBeDestroyedByStoning(Creature *)
-    virtual bool CanBeDestroyedByStoning(Creature* param_1);
+    virtual bool32_t CanBeDestroyedByStoning(Creature* param_1);
     // win1.41 0052c540 mac 100dd7b0 FishFarm::CanBeExaminedByCreature(Creature *)
-    virtual bool CanBeExaminedByCreature(Creature* param_1);
+    virtual bool32_t CanBeExaminedByCreature(Creature* param_1);
     // win1.41 0052c570 mac 100dd8a0 FishFarm::IsBeingBuilt(Creature *)
     virtual bool32_t IsBeingBuilt(Creature* param_1);
     // win1.41 0052c580 mac 100dd8e0 FishFarm::NeedsRepair(Creature *)
     virtual bool32_t NeedsRepair(Creature* param_1);
     // win1.41 0052c4e0 mac 100dd5e0 FishFarm::CanBePoodOn(Creature *)
-    virtual bool CanBePoodOn(Creature* param_1);
+    virtual bool32_t CanBePoodOn(Creature* param_1);
     // win1.41 0052cad0 mac 1009a360 FishFarm::GetMapChild(MapCell const &)
     virtual Object* GetMapChild(const MapCell& param_1);
     // win1.41 0052cb70 mac 100dc1a0 FishFarm::SetMapChild(Object *, MapCell *)
@@ -126,25 +126,25 @@ public:
     // win1.41 0052d760 mac 100dac50 FishFarm::GetResourceType(void)
     virtual RESOURCE_TYPE GetResourceType();
     // win1.41 0052c590 mac 100dd920 FishFarm::IsLockedInInteract(void)
-    virtual bool IsLockedInInteract();
+    virtual bool32_t IsLockedInInteract();
     // win1.41 0052d750 mac 100dac90 FishFarm::ValidForLockedSelectProcess(GInterfaceStatus *)
     virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
     // win1.41 0052d770 mac 100da990 FishFarm::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
     virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
     // win1.41 0052d880 mac 100da930 FishFarm::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
-    virtual bool NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+    virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
     // win1.41 0052d890 mac 100da8e0 FishFarm::NetworkUnfriendlyEndLockedSelect(void)
-    virtual bool NetworkUnfriendlyEndLockedSelect();
+    virtual bool32_t NetworkUnfriendlyEndLockedSelect();
     // win1.41 0052d8a0 mac 100da7c0 FishFarm::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
-    virtual bool NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+    virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
     // win1.41 0052d670 mac 100daed0 FishFarm::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 0052d6b0 mac 100dadc0 FishFarm::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 0052c4b0 mac 100dd510 FishFarm::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 0052c460 mac 100dd3e0 FishFarm::CreatureMustAvoid(Creature *)
-    virtual bool CreatureMustAvoid(Creature* param_1);
+    virtual bool32_t CreatureMustAvoid(Creature* param_1);
     // win1.41 0052d950 mac 100da4d0 FishFarm::ProcessInInteract(GInterfaceStatus *)
     virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
     // win1.41 0052cf90 mac 100db980 FishFarm::SaveObject(LHOSFile &, MapCoords const &)

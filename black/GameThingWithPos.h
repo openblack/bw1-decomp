@@ -53,9 +53,9 @@ public:
     // win1.41 004178f0 mac 101bb350 GameThingWithPos::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005704a0 mac 1016a2c0 GameThingWithPos::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 005703f0 mac 10512f10 GameThingWithPos::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& file);
+    virtual bool32_t Save(GameOSFile& file);
     // win1.41 00570560 mac 10430e60 GameThingWithPos::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00401940 mac 1004d010 GameThingWithPos::SetPos(MapCoords const &)
@@ -111,7 +111,7 @@ public:
     // win1.41 00570280 mac 1055e070 GameThingWithPos::GetDefaultSpeedInMetresPerSecond(void)
     virtual float GetDefaultSpeedInMetresPerSecond(); /* 0x160 */
     // win1.41 004019e0 mac 103e1180 GameThingWithPos::IsAnimate(void)
-    virtual bool IsAnimate();
+    virtual bool32_t IsAnimate();
     // win1.41 0056ff20 mac 1019c820 GameThingWithPos::GetMovementDirection(LHPoint *)
     virtual void GetMovementDirection(LHPoint* pos);
     // win1.41 0056ff50 mac 1056c0f0 GameThingWithPos::GetPhysicsMovementDirection(LHPoint *)
@@ -119,21 +119,21 @@ public:
     // win1.41 004019f0 mac 103efd20 GameThingWithPos::GetInteractPos(void)
     virtual void GetInteractPos(LHPoint* pos); /* 0x170 */
     // win1.41 004052b0 mac 103efb80 GameThingWithPos::IsMoving( const(void))
-    virtual bool IsMoving() const;
+    virtual bool32_t IsMoving() const;
     // win1.41 004052c0 mac 103f07b0 GameThingWithPos::IsObjectInMap(void)
-    virtual bool IsObjectInMap();
+    virtual bool32_t IsObjectInMap();
     // win1.41 004052d0 mac 103ee440 GameThingWithPos::IsDrowning(void)
-    virtual bool IsDrowning();
+    virtual bool32_t IsDrowning();
     // win1.41 00401a10 mac 100cb2b0 GameThingWithPos::IsCannotBePickedUp( const(void))
-    virtual bool IsCannotBePickedUp() const; /* 0x180 */
+    virtual bool32_t IsCannotBePickedUp() const; /* 0x180 */
     // win1.41 00570590 mac 101bf190 GameThingWithPos::GetOverwritePickUpToolTip(void)
     virtual uint32_t GetOverwritePickUpToolTip();
     // win1.41 00401a20 mac 100cb270 GameThingWithPos::IsStompable(void)
-    virtual bool IsStompable();
+    virtual bool32_t IsStompable();
     // win1.41 00401a30 mac 100cb210 GameThingWithPos::IsAvailableForStateChange(void)
-    virtual bool IsAvailableForStateChange();
+    virtual bool32_t IsAvailableForStateChange();
     // win1.41 005701b0 mac 1007b9d0 GameThingWithPos::IsInteractable(void)
-    virtual bool32_tcorrect IsInteractable(); /* 0x190 */
+    virtual bool32_t IsInteractable(); /* 0x190 */
     // win1.41 005705a0 mac 100b34e0 GameThingWithPos::GetOverwriteInteractableToolTip(void)
     virtual uint32_t GetOverwriteInteractableToolTip();
     // win1.41 005705b0 mac 10097060 GameThingWithPos::GetOverwriteDropToolTip(void)
@@ -141,7 +141,7 @@ public:
     // win1.41 005705c0 mac 103eff20 GameThingWithPos::GetOverwriteTapToolTip(void)
     virtual uint32_t GetOverwriteTapToolTip();
     // win1.41 004052e0 mac 10405890 GameThingWithPos::IsCastShadowAtNight(void)
-    virtual bool IsCastShadowAtNight(); /* 0x1a0 */
+    virtual bool32_t IsCastShadowAtNight(); /* 0x1a0 */
     // win1.41 004052f0 mac 1055f350 GameThingWithPos::CleanupWhenDeleted(int)
     virtual void CleanupWhenDeleted(int param_1);
     // win1.41 0056ff70 mac 10569e60 GameThingWithPos::GetImpressiveType(void)
@@ -153,51 +153,51 @@ public:
     // win1.41 0056feb0 mac 10002750 GameThingWithPos::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
     virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
     // win1.41 00401ae0 mac 100d3ed0 GameThingWithPos::IsTown(void)
-    virtual bool IsTown();
+    virtual bool32_t IsTown();
     // win1.41 00401a50 mac 1002b190 GameThingWithPos::IsTown(Creature *)
-    virtual bool IsTown(Creature* param_1);
+    virtual bool32_t IsTown(Creature* param_1);
     // win1.41 00401a60 mac 103efcc0 GameThingWithPos::IsActivityObjectWhichAngerAppliesTo(Creature *)
-    virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1); /* 0x1c0 */
+    virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* param_1); /* 0x1c0 */
     // win1.41 00401a70 mac 100c8d70 GameThingWithPos::IsActivityObjectWhichCompassionAppliesTo(Creature *)
-    virtual bool IsActivityObjectWhichCompassionAppliesTo(Creature* param_1);
+    virtual bool32_t IsActivityObjectWhichCompassionAppliesTo(Creature* param_1);
     // win1.41 00401a80 mac 10381cb0 GameThingWithPos::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
-    virtual bool IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
+    virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
     // win1.41 00401a90 mac 1055f950 GameThingWithPos::IsTownBelongingToAnotherPlayer(Creature *)
-    virtual bool IsTownBelongingToAnotherPlayer(Creature* param_1);
+    virtual bool32_t IsTownBelongingToAnotherPlayer(Creature* param_1);
     // win1.41 00401aa0 mac 10354120 GameThingWithPos::TrueFunction(void)
-    virtual bool TrueFunction(); /* 0x1d0 */
+    virtual bool32_t TrueFunction(); /* 0x1d0 */
     // win1.41 00401ab0 mac 100c53e0 GameThingWithPos::FalseFunction(void)
-    virtual bool FalseFunction();
+    virtual bool32_t FalseFunction();
     // win1.41 00401ac0 mac 10174ec0 GameThingWithPos::IsNotLiving(void)
-    virtual bool IsNotLiving();
+    virtual bool32_t IsNotLiving();
     // win1.41 00401ad0 mac 100a9d40 GameThingWithPos::IsSuitableForCreatureActivity(void)
-    virtual bool IsSuitableForCreatureActivity();
+    virtual bool32_t IsSuitableForCreatureActivity();
     // win1.41 00401af0 mac 10093ec0 GameThingWithPos::IsTownCentre(void)
-    virtual bool IsTownCentre(); /* 0x1e0 */
+    virtual bool32_t IsTownCentre(); /* 0x1e0 */
     // win1.41 00401b00 mac 101a36a0 GameThingWithPos::IsTotemStatue(void)
-    virtual bool IsTotemStatue();
+    virtual bool32_t IsTotemStatue();
     // win1.41 00401b10 mac 103d8ae0 GameThingWithPos::IsTownDesireFlag(void)
-    virtual bool IsTownDesireFlag();
+    virtual bool32_t IsTownDesireFlag();
     // win1.41 00401f50 mac 104a9cd0 GameThingWithPos::IsRock(Creature *)
-    virtual bool IsRock(struct Creature* creature);
+    virtual bool32_t IsRock(struct Creature* creature);
     // win1.41 00401b20 mac 10135ee0 GameThingWithPos::IsRock(void)
-    virtual bool IsRock();
+    virtual bool32_t IsRock();
     // win1.41 00401b30 mac 103d8b30 GameThingWithPos::IsSpellDispenser(void)
-    virtual bool IsSpellDispenser();
+    virtual bool32_t IsSpellDispenser();
     // win1.41 00401b40 mac 100c3630 GameThingWithPos::IsMist(void)
-    virtual bool IsMist();
+    virtual bool32_t IsMist();
     // win1.41 00401b50 mac 10097020 GameThingWithPos::IsQueryIcon(void)
-    virtual bool IsQueryIcon();
+    virtual bool32_t IsQueryIcon();
     // win1.41 00401b60 mac 105e81b0 GameThingWithPos::IsStreetLight(void)
-    virtual bool IsStreetLight(); /* 0x200 */
+    virtual bool32_t IsStreetLight(); /* 0x200 */
     // win1.41 00401b70 mac 104a63f0 GameThingWithPos::IsStreetLantern(void)
-    virtual bool IsStreetLantern();
+    virtual bool32_t IsStreetLantern();
     // win1.41 00405310 mac 1009aa60 GameThingWithPos::IsAbode(void)
-    virtual bool IsAbode();
+    virtual bool32_t IsAbode();
     // win1.41 00401e40 mac 104c28e0 GameThingWithPos::IsField(Creature *)
-    virtual bool IsField(struct Creature* creature);
+    virtual bool32_t IsField(struct Creature* creature);
     // win1.41 00401b80 mac 105e8170 GameThingWithPos::IsField(void)
-    virtual bool IsField();
+    virtual bool32_t IsField();
     // win1.41 00405320 mac 105e8120 GameThingWithPos::IsBuildingMaterial(void)
     virtual bool32_t IsBuildingMaterial();
     // win1.41 00401b90 mac 1009eea0 GameThingWithPos::IsMagicFireBall(void)
@@ -483,9 +483,9 @@ public:
     // win1.41 00402280 mac 1004cf30 GameThingWithPos::IsInScript(void)
     virtual bool32_t IsInScript();
     // win1.41 00402290 mac 1033c710 GameThingWithPos::IsMaleVillager(void)
-    virtual bool32_tcorrect IsMaleVillager();
+    virtual bool32_t IsMaleVillager();
     // win1.41 004022a0 mac 1056d120 GameThingWithPos::IsFemaleVillager(void)
-    virtual bool32_tcorrect IsFemaleVillager(); /* 0x450 */
+    virtual bool32_t IsFemaleVillager(); /* 0x450 */
     // win1.41 004022b0 mac 1002a950 GameThingWithPos::IsAnimal(void)
     virtual bool32_t IsAnimal();
     // win1.41 004022c0 mac 10572f10 GameThingWithPos::IsAChild(void)
@@ -517,7 +517,7 @@ public:
     // win1.41 004023a0 mac 10000870 GameThingWithPos::IsScriptHighlight(void)
     virtual bool32_t IsScriptHighlight();
     // win1.41 004178d0 mac 10380910 GameThingWithPos::IsWonder(void)
-    virtual bool32_tcorrect IsWonder(); /* 0x490 */
+    virtual bool32_t IsWonder(); /* 0x490 */
     // win1.41 004023c0 mac 10380730 GameThingWithPos::IsInfluenceRing(void)
     virtual bool32_t IsInfluenceRing();
     // win1.41 004023d0 mac 103809e0 GameThingWithPos::IsPuzzleGame(void)

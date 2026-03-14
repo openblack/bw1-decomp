@@ -13,7 +13,7 @@ void Villager::AssignFootballAttackerSubState()
 }
 
 // win1.41 0075d230 mac 10582f50 Villager::FootballAttacker(void)
-bool Villager::FootballAttacker()
+bool32_t Villager::FootballAttacker()
 {
     return 0;
 }
@@ -112,7 +112,7 @@ void Villager::AssignFootballDefenderSubState()
 }
 
 // win1.41 0075e170 mac 1057f990 Villager::FootballDefender(void)
-bool Villager::FootballDefender()
+bool32_t Villager::FootballDefender()
 {
     return 0;
 }
@@ -206,7 +206,7 @@ float Villager::FootballDefenderPassPriority(Football* param_1)
 }
 
 // win1.41 0075ea10 mac 1057dfd0 Villager::FootballGoalie(void)
-bool Villager::FootballGoalie()
+bool32_t Villager::FootballGoalie()
 {
     return 0;
 }
@@ -294,79 +294,79 @@ float Villager::FootballGoaliePassPriority(Football* param_1)
 }
 
 // win1.41 0075f070 mac 1057c0c0 Villager::FootballerIsTouchingBallPrecondition(Football *)
-bool Villager::FootballerIsTouchingBallPrecondition(Football* param_1)
+bool32_t Villager::FootballerIsTouchingBallPrecondition(Football* param_1)
 {
     return 0;
 }
 
 // win1.41 0075f0a0 mac 1057bff0 Villager::FootballerIsNotTouchingBallPrecondition(Football *)
-bool Villager::FootballerIsNotTouchingBallPrecondition(Football* param_1)
+bool32_t Villager::FootballerIsNotTouchingBallPrecondition(Football* param_1)
 {
     return 0;
 }
 
 // win1.41 0075f0d0 mac 1057bf50 Villager::FootballerIsNearestBallPrecondition(Football *)
-bool Villager::FootballerIsNearestBallPrecondition(Football* param_1)
+bool32_t Villager::FootballerIsNearestBallPrecondition(Football* param_1)
 {
     return 0;
 }
 
 // win1.41 0075f100 mac 1057bea0 Villager::FootballerIsNotNearestBallPrecondition(Football *)
-bool Villager::FootballerIsNotNearestBallPrecondition(Football* param_1)
+bool32_t Villager::FootballerIsNotNearestBallPrecondition(Football* param_1)
 {
     return 0;
 }
 
 // win1.41 0075f130 mac 1057bda0 Villager::FootballerIsAtHomePrecondition(Football *)
-bool Villager::FootballerIsAtHomePrecondition(Football* param_1)
+bool32_t Villager::FootballerIsAtHomePrecondition(Football* param_1)
 {
     return 0;
 }
 
 // win1.41 0075f190 mac 1057bc90 Villager::FootballerIsNotAtHomePrecondition(Football *)
-bool Villager::FootballerIsNotAtHomePrecondition(Football* param_1)
+bool32_t Villager::FootballerIsNotAtHomePrecondition(Football* param_1)
 {
     return 0;
 }
 
 // win1.41 0075f1f0 mac 1057bbe0 Villager::FootballerIsQuiteNearBallPrecondition(Football *)
-bool Villager::FootballerIsQuiteNearBallPrecondition(Football* param_1)
+bool32_t Villager::FootballerIsQuiteNearBallPrecondition(Football* param_1)
 {
     return 0;
 }
 
 // win1.41 0075f230 mac 1057bb30 Villager::FootballerIsNotQuiteNearBallPrecondition(Football *)
-bool Villager::FootballerIsNotQuiteNearBallPrecondition(Football* param_1)
+bool32_t Villager::FootballerIsNotQuiteNearBallPrecondition(Football* param_1)
 {
     return 0;
 }
 
 // win1.41 0075f270 mac 1057ba80 Villager::StartMoveToPickUpBallForDeadBall(void)
-bool Villager::StartMoveToPickUpBallForDeadBall()
+bool32_t Villager::StartMoveToPickUpBallForDeadBall()
 {
     return 0;
 }
 
 // win1.41 0075f2c0 mac 1057b9e0 Villager::ArrivedAtPickUpBallForDeadBall(void)
-bool Villager::ArrivedAtPickUpBallForDeadBall()
+bool32_t Villager::ArrivedAtPickUpBallForDeadBall()
 {
     return 0;
 }
 
 // win1.41 0075f2f0 mac 1057b970 Villager::ArrivedAtPutDownBallForDeadBallStart(void)
-bool Villager::ArrivedAtPutDownBallForDeadBallStart()
+bool32_t Villager::ArrivedAtPutDownBallForDeadBallStart()
 {
     return 0;
 }
 
 // win1.41 0075f300 mac 1057b840 Villager::ArrivedAtPutDownBallForDeadBallEnd(void)
-bool Villager::ArrivedAtPutDownBallForDeadBallEnd()
+bool32_t Villager::ArrivedAtPutDownBallForDeadBallEnd()
 {
     return 0;
 }
 
 // win1.41 0075f380 mac 1057b700 Villager::FootballMoveToBall(void)
-bool Villager::FootballMoveToBall()
+bool32_t Villager::FootballMoveToBall()
 {
     return 0;
 }

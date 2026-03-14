@@ -73,9 +73,9 @@ public:
     // win1.41 0052f910 mac 100e37a0 Flock::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00530930 mac 100e3880 Flock::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 005305a0 mac 100e40b0 Flock::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0052f900 mac 100e3770 Flock::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0052f8a0 mac 100e3580 Flock::GetCreatureBeliefType(void)
@@ -83,17 +83,17 @@ public:
     // win1.41 0052f8b0 mac 100e35c0 Flock::GetCreatureBeliefListType(void)
     virtual uint32_t GetCreatureBeliefListType();
     // win1.41 0052f8d0 mac 100e3650 Flock::IsActivityObjectWhichAngerAppliesTo(Creature *)
-    virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
+    virtual bool32_t IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
     // win1.41 0052f8e0 mac 100e36b0 Flock::IsActivityObjectWhichCompassionAppliesTo(Creature *)
-    virtual bool IsActivityObjectWhichCompassionAppliesTo(Creature* param_1);
+    virtual bool32_t IsActivityObjectWhichCompassionAppliesTo(Creature* param_1);
     // win1.41 0052f8f0 mac 100e3710 Flock::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
-    virtual bool IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
+    virtual bool32_t IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
     // win1.41 0052f8c0 mac 100e3600 Flock::IsSuitableForCreatureActivity(void)
-    virtual bool IsSuitableForCreatureActivity();
+    virtual bool32_t IsSuitableForCreatureActivity();
     // win1.41 0052f860 mac 100e34b0 Flock::IsFlock( const(void))
-    virtual bool IsFlock();
+    virtual bool32_t IsFlock();
     // win1.41 0052f880 mac 100e3510 Flock::IsScriptContainer( const(void))
-    virtual bool IsScriptContainer();
+    virtual bool32_t IsScriptContainer();
     // win1.41 0052f890 mac 100e3550 Flock::GetText(void)
     virtual const char* GetText();
     // win1.41 00530490 mac 100e4a70 Flock::GetScriptObjectType(void)

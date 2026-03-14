@@ -82,7 +82,7 @@ public:
     // Non-virtual methods
 
     // win1.41 004aca70 mac 10217d60 CreatureAgenda::ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long)
-    bool ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long param_1);
+    bool32_t ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long param_1);
 };
 
 #else // __cplusplus

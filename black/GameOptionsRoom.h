@@ -29,7 +29,7 @@ public:
     // Override methods
 
     // win1.41 0078d8f0 mac 102ffdb0 GameOptionsRoom::IsAvailable(void)
-    virtual bool IsAvailable();
+    virtual bool32_t IsAvailable();
     // win1.41 0079a230 mac inlined GameOptionsRoom::DrawAdditional(bool)
     virtual void DrawAdditional(bool param_1);
     // win1.41 00799f80 mac inlined GameOptionsRoom::PreDraw(void)

@@ -57,9 +57,9 @@ public:
     // win1.41 0071bcd0 mac 1050fda0 Rock::GetSampleForAttack(void)
     virtual uint32_t GetSampleForAttack();
     // win1.41 006e7870 mac 1013cfa0 Rock::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 006e77b0 mac 1013d0c0 Rock::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00561380 mac 100c41e0 Rock::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006e79f0 mac 1013c460 Rock::PhysicsEditorCreate(int)
@@ -67,15 +67,15 @@ public:
     // win1.41 006e7a60 mac 1013c420 Rock::GetOverwriteTapToolTip(void)
     virtual uint32_t GetOverwriteTapToolTip();
     // win1.41 00439730 mac inlined Rock::IsRock_0(void)
-    virtual bool IsRock();
+    virtual bool32_t IsRock();
     // win1.41 00439760 mac 100b4030 Rock::CanBeAttackedByCreature(Creature *)
-    virtual bool CanBeAttackedByCreature(Creature* param_1);
+    virtual bool32_t CanBeAttackedByCreature(Creature* param_1);
     // win1.41 006e7a70 mac 1013c3c0 Rock::CanBePickedUpByCreature(Creature *)
-    virtual bool CanBePickedUpByCreature(Creature* param_1);
+    virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
     // win1.41 00439750 mac 100b3ff0 Rock::GetCreatureMimicType(void)
     virtual uint32_t GetCreatureMimicType();
     // win1.41 006e7070 mac 1013dbc0 Rock::CanBeThrownByPlayer(void)
-    virtual bool CanBeThrownByPlayer();
+    virtual bool32_t CanBeThrownByPlayer();
     // win1.41 006e79e0 mac 1000ef30 Rock::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 006e7210 mac 1013d710 Rock::ActualMoveMapObject(MapCoords const &)
@@ -83,13 +83,13 @@ public:
     // win1.41 00517f10 mac 10042fe0 Rock::Draw(void)
     virtual void Draw();
     // win1.41 00439710 mac 100b3f00 Rock::IsResourceStore(RESOURCE_TYPE)
-    virtual bool IsResourceStore(RESOURCE_TYPE param_1);
+    virtual bool32_t IsResourceStore(RESOURCE_TYPE param_1);
     // win1.41 006e70c0 mac 1013dad0 Rock::GetResourceType(void)
     virtual RESOURCE_TYPE GetResourceType();
     // win1.41 006e7090 mac 1013db10 Rock::GetDefaultResource(void)
     virtual int GetDefaultResource();
     // win1.41 006e7030 mac 1013dc40 Rock::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 006e7450 mac 1013d680 Rock::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
     // win1.41 006e7480 mac 1013d4e0 Rock::InterfaceTap(GInterfaceStatus *)
@@ -99,13 +99,13 @@ public:
     // win1.41 006e7000 mac 1013dd00 Rock::EndPhysics(PhysicsObject *, bool)
     virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
     // win1.41 00561370 mac 100c41a0 Rock::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 006e7930 mac 1013ce40 Rock::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 00439770 mac 100b4080 Rock::ShouldFootpathsGoRound(void)
-    virtual bool ShouldFootpathsGoRound();
+    virtual bool32_t ShouldFootpathsGoRound();
     // win1.41 00439740 mac 100b3fc0 Rock::IsMovable(void)
-    virtual bool IsMovable();
+    virtual bool32_t IsMovable();
 
     // Constructors
 

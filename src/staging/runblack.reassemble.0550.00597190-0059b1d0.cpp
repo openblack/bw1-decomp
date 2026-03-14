@@ -12,7 +12,7 @@ void GroupBehaviour::AddAction(float param_1, LHDynamicStack<uint32_t>& stack, D
 }
 
 // win1.41 00597400 mac 100f8550 GroupBehaviour::FindDanceGroup(Living *)
-bool GroupBehaviour::FindDanceGroup(Living* param_1)
+bool32_t GroupBehaviour::FindDanceGroup(Living* param_1)
 {
     return 0;
 }
@@ -28,13 +28,13 @@ void GroupBehaviour::CalculateDancePosition(const MapCoords* param_1, MapCoords*
 }
 
 // win1.41 00598240 mac 100f5a80 GroupBehaviour::Save(GameOSFile &)
-bool32_tcorrect GroupBehaviour::Save(GameOSFile& file)
+bool32_t GroupBehaviour::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005985c0 mac 100f4e70 GroupBehaviour::Load(GameOSFile &)
-bool32_tcorrect GroupBehaviour::Load(GameOSFile& file)
+bool32_t GroupBehaviour::Load(GameOSFile& file)
 {
     return 0;
 }

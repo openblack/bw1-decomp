@@ -29,7 +29,7 @@ public:
     // Override methods
 
     // win1.41 00571f00 mac 10328c60 SetupStaticTextNoHit::HitTest(int, int)
-    virtual bool HitTest(int x, int y);
+    virtual bool32_t HitTest(int x, int y);
     // win1.41 00571f10 mac 10328bc0 SetupStaticTextNoHit::~SetupStaticTextNoHit(void)
     virtual ~SetupStaticTextNoHit();
 

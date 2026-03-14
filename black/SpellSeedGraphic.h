@@ -63,9 +63,9 @@ public:
     // win1.41 00726e40 mac 105215a0 SpellSeedGraphic::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00727ac0 mac 10521910 SpellSeedGraphic::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 00727c70 mac 10521650 SpellSeedGraphic::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00726e30 mac 10521560 SpellSeedGraphic::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00727e30 mac 105215f0 SpellSeedGraphic::ResolveLoad(void)

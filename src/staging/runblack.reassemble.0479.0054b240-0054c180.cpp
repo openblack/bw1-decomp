@@ -50,7 +50,7 @@ GlobalGameLists::~GlobalGameLists()
 }
 
 // win1.41 0054b9a0 mac 1009d100 GGame::IsAvailable(void)
-bool GGame::IsAvailable()
+bool32_t GGame::IsAvailable()
 {
     return 0;
 }

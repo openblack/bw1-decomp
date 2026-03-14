@@ -46,9 +46,9 @@ public:
     // win1.41 006e5680 mac 10138f70 Reward::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006e6c70 mac 10139000 Reward::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 006e69c0 mac 10139380 Reward::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 006e5670 mac 10138f30 Reward::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006e6f00 mac 10138fb0 Reward::ResolveLoad(void)
@@ -58,9 +58,9 @@ public:
     // win1.41 006e69b0 mac 10139730 Reward::GetOverwriteTapToolTip(void)
     virtual uint32_t GetOverwriteTapToolTip();
     // win1.41 006e5650 mac 10138ed0 Reward::IsReward( const(void))
-    virtual bool IsReward() const;
+    virtual bool32_t IsReward() const;
     // win1.41 006e5660 mac 10138f00 Reward::IsActive( const(void))
-    virtual bool IsActive() const;
+    virtual bool32_t IsActive() const;
     // win1.41 006e5ca0 mac 1013b370 Reward::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 006e68f0 mac 10139850 Reward::Process(void)
@@ -72,13 +72,13 @@ public:
     // win1.41 006e59b0 mac 1013b570 Reward::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords& param_1);
     // win1.41 006e69a0 mac 10139770 Reward::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 006e5cc0 mac 1013b270 Reward::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
     // win1.41 006e5d00 mac 1013a480 Reward::InterfaceTap(GInterfaceStatus *)
     virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
     // win1.41 006e6980 mac 10139800 Reward::CanBecomeAPhysicsObject(void)
-    virtual bool32_tcorrect CanBecomeAPhysicsObject();
+    virtual bool32_t CanBecomeAPhysicsObject();
 };
 
 // win1.41 00c0bec8 mac inlined GRewardProgress::`RTTI Type Descriptor'

@@ -57,39 +57,39 @@ public:
     // win1.41 0066d330 mac 10003c80 PileResource::JustAddResource(RESOURCE_TYPE, unsigned long, bool)
     virtual uint32_t JustAddResource(RESOURCE_TYPE param_1, uint32_t param_2, bool param_3);
     // win1.41 0066f690 mac 101163b0 PileResource::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 0066f620 mac 10116490 PileResource::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0066e3d0 mac 10119880 PileResource::GetLife(void)
     virtual float GetLife();
     // win1.41 0066e3c0 mac inlined PileResource::IsField_1(Creature *)
-    virtual bool IsField(Creature* param_1);
+    virtual bool32_t IsField(Creature* param_1);
     // win1.41 0066e390 mac 101199a0 PileResource::CanBePickedUpByCreature(Creature *)
-    virtual bool CanBePickedUpByCreature(Creature* param_1);
+    virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
     // win1.41 0066ed60 mac 10117ce0 PileResource::IsPileResource(void)
-    virtual bool IsPileResource();
+    virtual bool32_t IsPileResource();
     // win1.41 0066e400 mac 101196c0 PileResource::SetLife(float)
     virtual void SetLife(float param_1);
     // win1.41 0066e300 mac 10119a80 PileResource::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 0055d680 mac 1011d530 PileResource::IsLockedInInteract(void)
-    virtual bool IsLockedInInteract();
+    virtual bool32_t IsLockedInInteract();
     // win1.41 0066e4f0 mac 10119600 PileResource::ValidForLockedSelectProcess(GInterfaceStatus *)
-    virtual bool ValidForLockedSelectProcess(GInterfaceStatus* param_1);
+    virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
     // win1.41 0066e710 mac 10119060 PileResource::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
-    virtual bool NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
+    virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
     // win1.41 0066e830 mac 10118ff0 PileResource::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
-    virtual bool NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+    virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
     // win1.41 0066e840 mac 10118fa0 PileResource::NetworkUnfriendlyEndLockedSelect(void)
-    virtual bool NetworkUnfriendlyEndLockedSelect();
+    virtual bool32_t NetworkUnfriendlyEndLockedSelect();
     // win1.41 0066e850 mac 10118e70 PileResource::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
-    virtual bool NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+    virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
     // win1.41 0066ece0 mac 10117d60 PileResource::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 0066ef80 mac 10117380 PileResource::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 0066e3b0 mac 10119960 PileResource::IsTuggable(void)
-    virtual bool IsTuggable();
+    virtual bool32_t IsTuggable();
     // win1.41 0066e520 mac 101192c0 PileResource::ProcessInInteract(GInterfaceStatus *)
     virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
 

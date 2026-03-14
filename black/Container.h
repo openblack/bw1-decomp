@@ -37,9 +37,9 @@ public:
     // win1.41 00462a50 mac 1005c760 Container::GetPlayer(void)
     virtual GPlayer* GetPlayer();
     // win1.41 0046b960 mac 100bf930 Container::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 0046b920 mac 100bf9d0 Container::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
 };
 
 #else // __cplusplus

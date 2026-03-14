@@ -69,7 +69,7 @@ public:
     // Virtual functions
 
     // win1.41 0055c770 mac 10043c50 BaseInfo::IsClear(void) const
-    virtual bool IsClear(); /* 0x0 */
+    virtual bool32_t IsClear(); /* 0x0 */
 
     // Constructors
 

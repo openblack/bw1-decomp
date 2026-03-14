@@ -2,7 +2,7 @@
 #include "InnerCamera.h"
 
 // win1.41 00794a20 mac 10536350 Temple::StartScript(unsigned long)
-bool Temple::StartScript(unsigned long param_1)
+bool32_t Temple::StartScript(unsigned long param_1)
 {
     return 0;
 }

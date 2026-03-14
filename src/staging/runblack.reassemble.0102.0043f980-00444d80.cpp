@@ -77,7 +77,7 @@ const char* GCamera::GetText()
 }
 
 // win1.41 00441b00 mac 10086270 GCamera::IsMoving( const(void))
-bool GCamera::IsMoving()
+bool32_t GCamera::IsMoving()
 {
     return 0;
 }
@@ -106,7 +106,7 @@ MapCoords& MapCoords::operator=(const MapCoords& coords)
 }
 
 // win1.41 00441b70 mac 1019a650 GCamera::CantExitCurrentMode(void)
-bool GCamera::CantExitCurrentMode()
+bool32_t GCamera::CantExitCurrentMode()
 {
     return 0;
 }
@@ -168,13 +168,13 @@ void GCamera::UpdateGameThingWithPosData()
 }
 
 // win1.41 004430e0 mac 10198d40 GCamera::Save(GameOSFile &)
-bool32_tcorrect GCamera::Save(GameOSFile& file)
+bool32_t GCamera::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 004433a0 mac 10198870 GCamera::Load(GameOSFile &)
-bool32_tcorrect GCamera::Load(GameOSFile& file)
+bool32_t GCamera::Load(GameOSFile& file)
 {
     return 0;
 }

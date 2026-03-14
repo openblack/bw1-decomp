@@ -63,25 +63,25 @@ void Living::SetStateSpeed()
 }
 
 // win1.41 00473e60 mac inlined Living::IsScriptState( const(VILLAGER_STATES))
-bool Living::IsScriptState(VILLAGER_STATES param_1)
+bool32_t Living::IsScriptState(VILLAGER_STATES param_1)
 {
     return 0;
 }
 
 // win1.41 00473e70 mac inlined Living::IsScriptInterruptableState( const(VILLAGER_STATES))
-bool Living::IsScriptInterruptableState(VILLAGER_STATES param_1)
+bool32_t Living::IsScriptInterruptableState(VILLAGER_STATES param_1)
 {
     return 0;
 }
 
 // win1.41 00473e80 mac inlined Living::IsStateExitFunctionSameAs( const(VILLAGER_STATES))
-bool Living::IsStateExitFunctionSameAs(VILLAGER_STATES param_1)
+bool32_t Living::IsStateExitFunctionSameAs(VILLAGER_STATES param_1)
 {
     return 0;
 }
 
 // win1.41 00473e90 mac 101e3580 Living::IsInterestedInFoodObject(Object *)
-bool Living::IsInterestedInFoodObject(Object* param_1)
+bool32_t Living::IsInterestedInFoodObject(Object* param_1)
 {
     return 0;
 }
@@ -104,13 +104,13 @@ uint8_t Living::ReactToFallingTreePriority(Reaction* param_1, Reaction* param_2)
 }
 
 // win1.41 00473ed0 mac 101e36f0 Living::IsChild(void)
-bool Living::IsChild()
+bool32_t Living::IsChild()
 {
     return 0;
 }
 
 // win1.41 00473ee0 mac inlined Villager::IsPosValidForTurnAngle(MapCoords const &)
-bool Villager::IsPosValidForTurnAngle(const MapCoords* param_1)
+bool32_t Villager::IsPosValidForTurnAngle(const MapCoords* param_1)
 {
     return 0;
 }
@@ -145,19 +145,19 @@ void Creature::RemoveDance()
 }
 
 // win1.41 00473f40 mac inlined Creature::IsFinalState(VILLAGER_STATES)
-bool Creature::IsFinalState(VILLAGER_STATES param_1)
+bool32_t Creature::IsFinalState(VILLAGER_STATES param_1)
 {
     return 0;
 }
 
 // win1.41 00473f50 mac 101e2d40 Creature::IsReachable(void)
-bool Creature::IsReachable()
+bool32_t Creature::IsReachable()
 {
     return 0;
 }
 
 // win1.41 00473f60 mac 101e2d80 Creature::ValidForPlaceInHand(GInterfaceStatus *)
-bool Creature::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t Creature::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -198,19 +198,19 @@ uint32_t Creature::CallEntryStateFunction(VILLAGER_STATES param_1, VILLAGER_STAT
 }
 
 // win1.41 00473fd0 mac 101e2f50 Creature::IsSuitableForCreatureActivity(void)
-bool Creature::IsSuitableForCreatureActivity()
+bool32_t Creature::IsSuitableForCreatureActivity()
 {
     return 0;
 }
 
 // win1.41 00473fe0 mac 101e2fa0 Creature::CanBePickedUp(void)
-bool Creature::CanBePickedUp()
+bool32_t Creature::CanBePickedUp()
 {
     return 0;
 }
 
 // win1.41 00473ff0 mac 101e2fe0 Creature::CanBeExaminedByCreature(Creature *)
-bool Creature::CanBeExaminedByCreature(Creature* param_1)
+bool32_t Creature::CanBeExaminedByCreature(Creature* param_1)
 {
     return 0;
 }
@@ -222,61 +222,61 @@ Creature* Creature::CastCreature()
 }
 
 // win1.41 00474020 mac 101e30a0 Creature::IsActivityObjectWhichCompassionAppliesTo(Creature *)
-bool Creature::IsActivityObjectWhichCompassionAppliesTo(Creature* param_1)
+bool32_t Creature::IsActivityObjectWhichCompassionAppliesTo(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00474030 mac 101e3100 Creature::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
-bool Creature::IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1)
+bool32_t Creature::IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00474040 mac 101e3160 Creature::CanBeSleptNextToByCreature(Creature *)
-bool Creature::CanBeSleptNextToByCreature(Creature* param_1)
+bool32_t Creature::CanBeSleptNextToByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00474050 mac 101e31b0 Creature::CanBeEatenByCreature(Creature *)
-bool Creature::CanBeEatenByCreature(Creature* param_1)
+bool32_t Creature::CanBeEatenByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00474060 mac 101e3200 Creature::CanBeBefriendedByCreature(Creature *)
-bool Creature::CanBeBefriendedByCreature(Creature* param_1)
+bool32_t Creature::CanBeBefriendedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00474070 mac 101e3250 Creature::CanBePlayedWithByCreature(Creature *)
-bool Creature::CanBePlayedWithByCreature(Creature* param_1)
+bool32_t Creature::CanBePlayedWithByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00474080 mac inlined Creature::IsCreature_1(void)
-bool Creature::IsCreature_1()
+bool32_t Creature::IsCreature_1()
 {
     return 0;
 }
 
 // win1.41 00474090 mac 101e32a0 Creature::IsCreature(Creature *)
-bool Creature::IsCreature(Creature* param_1)
+bool32_t Creature::IsCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 004740a0 mac 101e3320 Creature::CanBeFoughtByCreature(Creature *)
-bool Creature::CanBeFoughtByCreature(Creature* param_1)
+bool32_t Creature::CanBeFoughtByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 004740b0 mac 101e33a0 Creature::CanBeFrighteningToCreature(Creature *)
-bool Creature::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t Creature::CanBeFrighteningToCreature(Creature* param_1)
 {
     return 0;
 }
@@ -324,7 +324,7 @@ MobileWallHug::~MobileWallHug()
 }
 
 // win1.41 00474940 mac 103838c0 Living::DecideWhatToDo(void)
-bool Living::DecideWhatToDo()
+bool32_t Living::DecideWhatToDo()
 {
     return 0;
 }

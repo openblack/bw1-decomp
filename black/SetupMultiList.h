@@ -34,7 +34,7 @@ public:
     // win1.41 0040b4a0 mac 103f18b0 SetupMultiList::~SetupMultiList(void)
     virtual ~SetupMultiList();
     // win1.41 0040b530 mac 1047e020 SetupMultiList::IsSelected(int)
-    virtual bool IsSelected(int index);
+    virtual bool32_t IsSelected(int index);
 
     // Constructors
 

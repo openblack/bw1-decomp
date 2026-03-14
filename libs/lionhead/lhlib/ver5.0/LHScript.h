@@ -48,7 +48,7 @@ struct LHScriptX
     // win1.41 007e72c0 mac 1061e38c LHScriptX<char>::Load(char *, LHScriptCommandX<char> *, LH_RETURN (*)(long, LHScriptPramX<char> *), long *)
     void Load(const char* path, LHScriptCommandX<T>* command, LH_RETURN (__cdecl* callback)(int, LHScriptPramX<T> *), long* param_4);
     // win1.41 007e7400 mac 1061cd3c LHScriptX<char>::LoadOneLine(LHReleasedOSFile &, char *)
-    bool LoadOneLine(LHReleasedOSFile& file, char* line);
+    bool32_t LoadOneLine(LHReleasedOSFile& file, char* line);
     // win1.41 007e7540 mac 10150830 LHScriptX<char>::ScanLine(char *)
     uint32_t ScanLine(char* line);
     // win1.41 007e8170 mac 10153040 LHScriptX<char>::LoadFile(char *, long *)

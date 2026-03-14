@@ -46,9 +46,9 @@ public:
     // win1.41 00560f70 mac 1010feb0 GParticleContainer::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0063e6d0 mac 1010ff00 GParticleContainer::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 0063e5d0 mac 101100b0 GParticleContainer::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00560f60 mac 1010fe70 GParticleContainer::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0063e3f0 mac 10110510 GParticleContainer::SetScale(float)
@@ -56,7 +56,7 @@ public:
     // win1.41 00560f40 mac 1010fde0 GParticleContainer::GetText(void)
     virtual const char* GetText();
     // win1.41 00560f50 mac 1010fe20 GParticleContainer::IsParticleContainer(void)
-    virtual bool IsParticleContainer();
+    virtual bool32_t IsParticleContainer();
 };
 
 #else // __cplusplus

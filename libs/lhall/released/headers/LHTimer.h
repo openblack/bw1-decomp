@@ -18,7 +18,7 @@ struct LHTimer
     // Non-virtual methods
 
     // win1.41 inlined mac 10001570 LHTimer::Running(void)
-    bool Running();
+    bool32_t Running();
     // win1.41 inlined mac 10005790 LHTimer::Start(void)
     void Start();
     // win1.41 0043e9c0 mac 10001820 LHTimer::Stop(void)

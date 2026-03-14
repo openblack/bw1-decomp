@@ -231,7 +231,7 @@ public:
     // win1.41 0046c550 mac 10029b00 CHand::PrepareForDrawing(void)
     virtual void PrepareForDrawing();
     // win1.41 0046d0f0 mac 101c7f70 CHand::AddForDrawing(void)
-    virtual bool AddForDrawing();
+    virtual bool32_t AddForDrawing();
 
     // Constructors
 

@@ -18,7 +18,7 @@ void PathCreator::GetCurrentGamePath(char* path)
 }
 
 // win1.41 0078efc0 mac 103655d0 PathCreator::CheckAndRecreateSaveGamePaths(void)
-bool PathCreator::CheckAndRecreateSaveGamePaths()
+bool32_t PathCreator::CheckAndRecreateSaveGamePaths()
 {
     return 0;
 }
@@ -29,7 +29,7 @@ bool PathCreator::CheckAndRecreateSaveGamePaths()
 // }
 
 // win1.41 007923a0 mac 104ce930 SaveGameRoom::CreateSaveGameFiles(char*)
-bool SaveGameRoom::CreateSaveGameFiles()
+bool32_t SaveGameRoom::CreateSaveGameFiles()
 {
     return 0;
 }

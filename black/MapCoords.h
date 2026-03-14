@@ -95,9 +95,9 @@ struct MapCoords
     // win1.41 00602880 mac 10569c60 MapCoords::ConvertToText(char *)
     char* ConvertToText(char* buff);
     // win1.41 006042c0 mac 100499f0 MapCoords::InBounds(void) const
-    bool InBounds() const;
+    bool32_t InBounds() const;
     // win1.41 006053c0 mac 100028d0 MapCoords::IsCloseToEqual(const MapCoords&, float) const
-    bool IsCloseToEqual(const MapCoords& other, float epsilon) const;
+    bool32_t IsCloseToEqual(const MapCoords& other, float epsilon) const;
     // win1.41 00605410 mac 1001fb00 MapCoords::operator+=(MapCoords const &)
     MapCoords& operator+=(const MapCoords& other);
     // win1.41 00605470 mac 100494b0 MapCoords::operator+=(JustMapXZ const &)
@@ -117,7 +117,7 @@ struct MapCoords
     // win1.41 006034d0 mac 1002c570 MapCoords::GetFirstIterator(void) const
     MapCellIterator GetFirstIterator() const;
     // win1.41 006035b0 mac 10018e70 MapCoords::IsWater(void) const
-    bool IsWater() const;
+    bool32_t IsWater() const;
     // win1.41 00603b30 mac 1055e480 MapCoords::IsSuitableForFixed 9MESH_LISTff
     void IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3);
     // win1.41 00603dc0 mac 101c2c00 MapCoords::IsSuitableForFixed(Game3DObject *) const
@@ -125,7 +125,7 @@ struct MapCoords
     // win1.41 006045c0 mac 100195c0 MapCoords::FindType(OBJECT_TYPE, Object *) const
     Object* FindType(OBJECT_TYPE type, Object* object) const;
     // win1.41 00605660 mac 10087b50 MapCoords::operator==(MapCoords const &) const
-    bool operator==(const MapCoords& param_2) const;
+    bool32_t operator==(const MapCoords& param_2) const;
     // win1.41 00605c40 mac 1004ff00 MapCoords::GetLHPoint(void) const
     LHPoint* GetLHPoint(LHPoint* point) const;
     // win1.41 00605cd0 mac inlined MapCoords::GetMetresDistance(MapCoords const &)
@@ -137,7 +137,7 @@ struct MapCoords
     // win1.41 00603490 mac 105a3bb0 MapCoords::GetFirstObjectMobile(void) const
     Object* GetFirstObjectMobile() const;
     // win1.41 006056b0 mac 10557130 MapCoords::__ne(MapCoords const &) const
-    bool operator!=(const MapCoords& param_1) const;
+    bool32_t operator!=(const MapCoords& param_1) const;
     // win1.41 00604fe0 mac 10406220 MapCoords::CollideCollideWithFixe(void) const
     int CollideCollideWithFixe() const;
 };

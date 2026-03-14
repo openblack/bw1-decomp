@@ -53,7 +53,7 @@ public:
 
     // Virtual functions
 
-    virtual bool IsAvailable(); /* 0x0 */
+    virtual bool32_t IsAvailable(); /* 0x0 */
     virtual void DrawAdditional(bool param);
     virtual void PreDraw();
     virtual void Draw();

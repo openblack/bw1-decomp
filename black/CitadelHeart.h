@@ -72,7 +72,7 @@ public:
     // win1.41 00464880 mac 101c2690 LeashObj::GetQueryLastEnumText(void)
     virtual HELP_TEXT GetQueryLastEnumText();
     // win1.41 00464850 mac 101c2590 LeashObj::ValidAsInterfaceLeashTarget(void)
-    virtual bool ValidAsInterfaceLeashTarget();
+    virtual bool32_t ValidAsInterfaceLeashTarget();
     // win1.41 00464450 mac 101c1a60 LeashObj::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
     // win1.41 00464490 mac 101c18f0 LeashObj::InterfaceTap(GInterfaceStatus *)
@@ -138,17 +138,17 @@ public:
     // win1.41 00464bb0 mac 101c23c0 CitadelHeart::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004657f0 mac 101bf6e0 CitadelHeart::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 004655c0 mac 101bf9c0 CitadelHeart::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00464ba0 mac 101c2380 CitadelHeart::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00465a10 mac 101bf690 CitadelHeart::ResolveLoad(void)
     virtual void ResolveLoad();
     // win1.41 00464b80 mac 101c2250 CitadelHeart::IsCitadelHeart(void)
-    virtual bool IsCitadelHeart();
+    virtual bool32_t IsCitadelHeart();
     // win1.41 00468dc0 mac 101bbf10 CitadelHeart::CreateBuildingSite(void)
-    virtual bool CreateBuildingSite();
+    virtual bool32_t CreateBuildingSite();
     // win1.41 004680b0 mac 101bd410 CitadelHeart::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 00464b20 mac inlined CitadelHeart::SetSpecularColor(LH3DColor)
@@ -158,7 +158,7 @@ public:
     // win1.41 00468c30 mac 101bc080 CitadelHeart::GetActualObjectToEffect(GPlayer *, bool)
     virtual void* GetActualObjectToEffect(GPlayer* param_1, bool param_2);
     // win1.41 00468da0 mac 101bc010 CitadelHeart::DestroyedByEffect(GPlayer *, float)
-    virtual bool DestroyedByEffect(GPlayer* param_1, float param_2);
+    virtual bool32_t DestroyedByEffect(GPlayer* param_1, float param_2);
     // win1.41 004665a0 mac 1008a6f0 CitadelHeart::Process(void)
     virtual uint32_t Process();
     // win1.41 00464b90 mac 10011680 CitadelHeart::Draw(void)
@@ -174,9 +174,9 @@ public:
     // win1.41 00467b70 mac 101bde40 CitadelHeart::SetUpPhysOb(PhysOb *)
     virtual void SetUpPhysOb(PhysOb* param_1);
     // win1.41 00467b40 mac 101bdf40 CitadelHeart::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 00467b30 mac 101bdfc0 CitadelHeart::ChecksVerticesVObjects(void)
-    virtual bool ChecksVerticesVObjects();
+    virtual bool32_t ChecksVerticesVObjects();
     // win1.41 00467bb0 mac 101bdc10 CitadelHeart::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 004680d0 mac 101bceb0 CitadelHeart::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
@@ -188,11 +188,11 @@ public:
     // win1.41 004673a0 mac 101be8e0 CitadelHeart::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 00464b70 mac 101c2200 CitadelHeart::ShouldFootpathsGoRound(void)
-    virtual bool ShouldFootpathsGoRound();
+    virtual bool32_t ShouldFootpathsGoRound();
     // win1.41 00467d10 mac inlined CitadelHeart::GetDoorPos(MapCoords *)
     virtual MapCoords* GetDoorPos(MapCoords* param_1);
     // win1.41 00465000 mac 101c0570 CitadelHeart::Built(void)
-    virtual bool Built();
+    virtual bool32_t Built();
     // win1.41 00464b60 mac 101c21c0 CitadelHeart::GetAbodeType(void)
     virtual ABODE_TYPE GetAbodeType();
     // win1.41 00465430 mac 101bfcc0 CitadelHeart::ConvertToPlanned(void)

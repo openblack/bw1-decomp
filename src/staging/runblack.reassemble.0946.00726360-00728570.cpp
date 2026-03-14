@@ -127,25 +127,25 @@ void SpellSeedGraphic::ForDrawFXGetVertexPos(int param_1, LHPoint* param_2)
 }
 
 // win1.41 00727940 mac 10521ce0 SpellIcon::Save(GameOSFile &)
-bool32_tcorrect SpellIcon::Save(GameOSFile& file)
+bool32_t SpellIcon::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00727a00 mac 10521bb0 SpellIcon::Load(GameOSFile &)
-bool32_tcorrect SpellIcon::Load(GameOSFile& file)
+bool32_t SpellIcon::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00727ac0 mac 10521910 SpellSeedGraphic::Load(GameOSFile &)
-bool32_tcorrect SpellSeedGraphic::Load(GameOSFile& file)
+bool32_t SpellSeedGraphic::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00727c70 mac 10521650 SpellSeedGraphic::Save(GameOSFile &)
-bool32_tcorrect SpellSeedGraphic::Save(GameOSFile& file)
+bool32_t SpellSeedGraphic::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -156,13 +156,13 @@ void SpellSeedGraphic::ResolveLoad()
 }
 
 // win1.41 00727f50 mac 1052cc60 SpellSeed::IsSpellSeed(void)
-bool SpellSeed::IsSpellSeed()
+bool32_t SpellSeed::IsSpellSeed()
 {
     return 0;
 }
 
 // win1.41 00727f60 mac 1052cc90 SpellSeed::HandShouldFeelWithMeshIntersect(void)
-bool SpellSeed::HandShouldFeelWithMeshIntersect()
+bool32_t SpellSeed::HandShouldFeelWithMeshIntersect()
 {
     return 0;
 }

@@ -48,7 +48,7 @@ struct Temple
     // Non-virtual methods
 
     // win1.41 00794a20 mac 10536350 Temple::StartScript(unsigned long)
-    bool StartScript(unsigned long param_1);
+    bool32_t StartScript(unsigned long param_1);
 };
 
 #else // __cplusplus

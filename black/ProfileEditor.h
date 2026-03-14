@@ -29,7 +29,7 @@ public:
     // win1.41 0053e210 mac 105c2500 ProfileEditor::Destroy(void)
     virtual void Destroy();
     // win1.41 0053bd30 mac 105c5f30 ProfileEditor::CanESCOut(void)
-    virtual bool CanESCOut();
+    virtual bool32_t CanESCOut();
     // win1.41 0053e380 mac 105c2140 ProfileEditor::InitControls(void)
     virtual void InitControls();
 };

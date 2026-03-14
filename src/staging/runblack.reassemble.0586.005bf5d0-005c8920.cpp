@@ -66,7 +66,7 @@ uint32_t HelpSpirit::SaveObject(LHOSFile& file, const MapCoords& coords)
 }
 
 // win1.41 005c4af0 mac 1034b5f0 HelpSpirit::ValidForPlaceInHand(GInterfaceStatus *)
-bool HelpSpirit::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t HelpSpirit::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }

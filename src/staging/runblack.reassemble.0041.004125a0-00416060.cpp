@@ -88,7 +88,7 @@ LH3DColor* EditorIconBase::GetHiliteColor()
 }
 
 // win1.41 00414c00 mac 100a4f90 EditorIconBase::IsScrollable(void)
-bool EditorIconBase::IsScrollable()
+bool32_t EditorIconBase::IsScrollable()
 {
     return 0;
 }

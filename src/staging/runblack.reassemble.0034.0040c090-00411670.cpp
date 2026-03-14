@@ -72,7 +72,7 @@ void SetupBigButton::KeyDown(LHKey key, LHKeyMod mod)
 }
 
 // win1.41 0040d310 mac 101670b0 SetupBigButton::HitTest(int, int)
-bool SetupBigButton::HitTest(int x, int y)
+bool32_t SetupBigButton::HitTest(int x, int y)
 {
     return 0;
 }
@@ -303,7 +303,7 @@ void SetupCheckBox::Draw(bool hovered, bool selected)
 // }
 
 // win1.41 00410f90 mac 10112370 SetupCheckBox::HitTest(int, int)
-bool SetupCheckBox::HitTest(int x, int y)
+bool32_t SetupCheckBox::HitTest(int x, int y)
 {
     return 0;
 }

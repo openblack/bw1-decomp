@@ -45,7 +45,7 @@ public:
     // Static methods
 
     // win1.41 00784b30 mac 101abfe0 ChallengeRoom::CreateChallengeFiles(char*)
-    static bool CreateChallengeFiles();
+    static bool32_t CreateChallengeFiles();
 
     // Constructors
 
@@ -55,7 +55,7 @@ public:
     // Non-virtual methods
 
     // win1.41 00784c10 mac 101abd90 ChallengeRoom::StartScript(unsigned long)
-    bool StartScript(unsigned long param_1);
+    bool32_t StartScript(unsigned long param_1);
     // win1.41 00784d10 mac 101aba10 ChallengeRoom::ChallengeLoad(GameOSFile &)
     void ChallengeLoad(GameOSFile& param_1);
 };

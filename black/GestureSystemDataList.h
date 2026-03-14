@@ -35,7 +35,7 @@ public:
     // Non-virtual methods
 
     // win1.41 00579af0 mac 1032b530 GestureSystemDataList::Load(char *)
-    bool Load(char* param_1);
+    bool32_t Load(char* param_1);
 };
 
 #else // __cplusplus

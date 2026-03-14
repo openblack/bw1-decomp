@@ -15,7 +15,7 @@
 
 #ifdef __cplusplus
 
-extern "C" bool32_tcorrect DAT_00bec990;
+extern "C" bool32_t DAT_00bec990;
 
 // Forward Declares
 
@@ -93,7 +93,7 @@ public:
     // Static methods
 
     // win1.41 005587b0 mac 1030ef00 GameOSFile::LoadAllGame(char *)
-    static bool LoadAllGame(char* filename);
+    static bool32_t LoadAllGame(char* filename);
 
     // Non-virtual methods
 

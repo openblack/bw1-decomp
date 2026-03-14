@@ -2,6 +2,7 @@
 #define BW1_DECOMP_MULTIPLAYER_DATABASE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+#include <stdbool.h> 
 #include <stdint.h> /* For uint32_t */
 
 #include <reversing_utils/re_common.h> /* For bool32_t */
@@ -28,9 +29,9 @@ public:
 
     // Virtual functions
 
-    virtual bool Send(); /* 0x0 */
+    virtual bool32_t Send(); /* 0x0 */
     // win1.41 00633610 mac 10109f20 MultiplayerDatabase::ReceiveReturnData(void)
-    virtual bool ReceiveReturnData();
+    virtual bool32_t ReceiveReturnData();
 
     // Constructors
 

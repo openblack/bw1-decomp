@@ -25,7 +25,7 @@ CreatureInitialDesireInfo::~CreatureInitialDesireInfo()
 }
 
 // win1.41 004aca70 mac 10217d60 CreatureAgenda::ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long)
-bool CreatureAgenda::ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long param_1)
+bool32_t CreatureAgenda::ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long param_1)
 {
     return 0;
 }

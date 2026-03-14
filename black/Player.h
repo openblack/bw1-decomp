@@ -150,7 +150,7 @@ public:
     // win1.41 0064aac0 mac 10035b60 GPlayer::GetNextInterfaceStatus(GInterfaceStatus *)
     GInterfaceStatus* GetNextInterfaceStatus(GInterfaceStatus* param_1);
     // win1.41 0064ac00 mac 100306d0 GPlayer::IsNeutral(void)
-    bool IsNeutral();
+    bool32_t IsNeutral();
     // win1.41 0064ad00 mac 1004d120 GPlayer::CalculateInfluencePower(void)
     float CalculateInfluencePower();
     // win1.41 0064b590 mac 10494ee0 GPlayer::GetPlayer3DColor(void)
@@ -160,7 +160,7 @@ public:
     // win1.41 0064d120 mac 10051520 GPlayer::GetRealInterface(unsigned long)
     GInterface* GetRealInterface(int param_2);
     // win1.41 0064d750 mac 10033320 GPlayer::IsMemberOfThisPlayer(GInterfaceStatus *)
-    bool IsMemberOfThisPlayer(GInterfaceStatus* param_1);
+    bool32_t IsMemberOfThisPlayer(GInterfaceStatus* param_1);
     // win1.41 0064d800 mac 10021970 GPlayer::GetPlayerColour(void) const
     LH3DColor GetPlayerColour();
     // win1.41 0064da80 mac inline GPlayer::FUN_0064da80(int, int)

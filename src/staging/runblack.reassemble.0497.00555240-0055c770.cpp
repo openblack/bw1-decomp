@@ -95,7 +95,7 @@ void PhysicsSaveInfo::ReadInfo(GameOSFile& file)
 }
 
 // win1.41 005587b0 mac 1030ef00 GameOSFile::LoadAllGame(char *)
-bool GameOSFile::LoadAllGame(char* filename)
+bool32_t GameOSFile::LoadAllGame(char* filename)
 {
     return 0;
 }

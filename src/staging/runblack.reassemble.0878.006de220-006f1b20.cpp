@@ -14,13 +14,13 @@
 #include "Script.h"
 
 // win1.41 006de3f0 mac 1011eed0 HanoiBlock::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool HanoiBlock::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t HanoiBlock::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 006de440 mac 1011ee00 HanoiBlock::IsCannotBePickedUp( const(void))
-bool HanoiBlock::IsCannotBePickedUp()
+bool32_t HanoiBlock::IsCannotBePickedUp()
 {
     return 0;
 }
@@ -115,13 +115,13 @@ float Reaction::GetDefaultReactionMultiplier(Living* param_1)
 }
 
 // win1.41 006e4990 mac 10134810 Reaction::Save(GameOSFile &)
-bool32_tcorrect Reaction::Save(GameOSFile& file)
+bool32_t Reaction::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006e4ba0 mac 10134400 Reaction::Load(GameOSFile &)
-bool32_tcorrect Reaction::Load(GameOSFile& file)
+bool32_t Reaction::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -138,13 +138,13 @@ GRewardInfo::~GRewardInfo()
 }
 
 // win1.41 006e5650 mac 10138ed0 Reward::IsReward( const(void))
-bool Reward::IsReward() const
+bool32_t Reward::IsReward() const
 {
     return 0;
 }
 
 // win1.41 006e5660 mac 10138f00 Reward::IsActive( const(void))
-bool Reward::IsActive() const
+bool32_t Reward::IsActive() const
 {
     return 0;
 }
@@ -218,7 +218,7 @@ uint32_t Reward::Process()
 }
 
 // win1.41 006e6980 mac 10139800 Reward::CanBecomeAPhysicsObject(void)
-bool32_tcorrect Reward::CanBecomeAPhysicsObject()
+bool32_t Reward::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -229,7 +229,7 @@ void Reward::PhysicsEditorCreate(int param_1)
 }
 
 // win1.41 006e69a0 mac 10139770 Reward::ValidForPlaceInHand(GInterfaceStatus *)
-bool Reward::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t Reward::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -241,13 +241,13 @@ uint32_t Reward::GetOverwriteTapToolTip()
 }
 
 // win1.41 006e69c0 mac 10139380 Reward::Save(GameOSFile &)
-bool32_tcorrect Reward::Save(GameOSFile& file)
+bool32_t Reward::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006e6c70 mac 10139000 Reward::Load(GameOSFile &)
-bool32_tcorrect Reward::Load(GameOSFile& file)
+bool32_t Reward::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -274,13 +274,13 @@ void Rock::EndPhysics(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 006e7030 mac 1013dc40 Rock::ValidForPlaceInHand(GInterfaceStatus *)
-bool Rock::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t Rock::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 006e7070 mac 1013dbc0 Rock::CanBeThrownByPlayer(void)
-bool Rock::CanBeThrownByPlayer()
+bool32_t Rock::CanBeThrownByPlayer()
 {
     return 0;
 }
@@ -333,13 +333,13 @@ GPlayer* Rock::GetPlayer()
 }
 
 // win1.41 006e77b0 mac 1013d0c0 Rock::Save(GameOSFile &)
-bool32_tcorrect Rock::Save(GameOSFile& file)
+bool32_t Rock::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006e7870 mac 1013cfa0 Rock::Load(GameOSFile &)
-bool32_tcorrect Rock::Load(GameOSFile& file)
+bool32_t Rock::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -367,7 +367,7 @@ uint32_t Rock::GetOverwriteTapToolTip()
 }
 
 // win1.41 006e7a70 mac 1013c3c0 Rock::CanBePickedUpByCreature(Creature *)
-bool Rock::CanBePickedUpByCreature(Creature* param_1)
+bool32_t Rock::CanBePickedUpByCreature(Creature* param_1)
 {
     return 0;
 }
@@ -388,7 +388,7 @@ void Scaffold::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 }
 
 // win1.41 006e8570 mac 101436c0 Scaffold::ProcessInHand(void)
-bool Scaffold::ProcessInHand()
+bool32_t Scaffold::ProcessInHand()
 {
     return 0;
 }
@@ -405,19 +405,19 @@ void Scaffold::EndPhysics(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 006e96a0 mac 10141b10 Scaffold::ValidForPlaceInHand(GInterfaceStatus *)
-bool Scaffold::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t Scaffold::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 006e96e0 mac 101419a0 Scaffold::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool Scaffold::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t Scaffold::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 006e9770 mac 10141720 Scaffold::InterfaceSetOutMagicHand(GInterfaceStatus *)
-bool Scaffold::InterfaceSetOutMagicHand(GInterfaceStatus* param_1)
+bool32_t Scaffold::InterfaceSetOutMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -464,13 +464,13 @@ uint32_t Scaffold::InterfaceTap(GInterfaceStatus* param_1)
 }
 
 // win1.41 006ea240 mac 10140340 Scaffold::Save(GameOSFile &)
-bool32_tcorrect Scaffold::Save(GameOSFile& file)
+bool32_t Scaffold::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006ea3d0 mac 10140100 Scaffold::Load(GameOSFile &)
-bool32_tcorrect Scaffold::Load(GameOSFile& file)
+bool32_t Scaffold::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -504,7 +504,7 @@ uint32_t Scaffold::InitialisePhysicsFromHand(LHPoint* param_1, LHPoint* param_2,
 }
 
 // win1.41 006ea910 mac 1013f8e0 Scaffold::CanBecomeAPhysicsObject(void)
-bool32_tcorrect Scaffold::CanBecomeAPhysicsObject()
+bool32_t Scaffold::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -539,13 +539,13 @@ uint32_t Scaffold::ThrowObjectFromHand(GInterfaceStatus* param_1, int param_2)
 }
 
 // win1.41 006eaea0 mac 1013ec20 Scaffold::IsResourceStore(RESOURCE_TYPE)
-bool Scaffold::IsResourceStore(RESOURCE_TYPE param_1)
+bool32_t Scaffold::IsResourceStore(RESOURCE_TYPE param_1)
 {
     return 0;
 }
 
 // win1.41 006eaec0 mac 1013eb90 Scaffold::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-bool Scaffold::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
+bool32_t Scaffold::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
 {
     return 0;
 }

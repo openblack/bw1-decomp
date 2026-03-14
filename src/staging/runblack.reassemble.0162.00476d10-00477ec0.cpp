@@ -31,43 +31,43 @@ bool32_t Creature::NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1)
 }
 
 // win1.41 00476e90 mac 101dc1c0 Creature::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
-bool Creature::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
+bool32_t Creature::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 00476eb0 mac 101dc160 Creature::IsReadyForNetworkUnfriendlyLockedSelect(void)
-bool Creature::IsReadyForNetworkUnfriendlyLockedSelect()
+bool32_t Creature::IsReadyForNetworkUnfriendlyLockedSelect()
 {
     return 0;
 }
 
 // win1.41 00476ec0 mac 101dc100 Creature::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
-bool Creature::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
+bool32_t Creature::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
 {
     return 0;
 }
 
 // win1.41 00476ed0 mac 101dc060 Creature::GetReadyForNetworkUnfriendlyEndLockedSelect(void)
-bool Creature::GetReadyForNetworkUnfriendlyEndLockedSelect()
+bool32_t Creature::GetReadyForNetworkUnfriendlyEndLockedSelect()
 {
     return 0;
 }
 
 // win1.41 00476f00 mac 101dbf90 Creature::IsReadyForNetworkUnfriendlyEndLockedSelect(void)
-bool Creature::IsReadyForNetworkUnfriendlyEndLockedSelect()
+bool32_t Creature::IsReadyForNetworkUnfriendlyEndLockedSelect()
 {
     return 0;
 }
 
 // win1.41 00476f60 mac 101dbf40 Creature::NetworkUnfriendlyEndLockedSelect(void)
-bool Creature::NetworkUnfriendlyEndLockedSelect()
+bool32_t Creature::NetworkUnfriendlyEndLockedSelect()
 {
     return 0;
 }
 
 // win1.41 00476f70 mac 101dbeb0 Creature::DestroyedByEffect(GPlayer *, float)
-bool Creature::DestroyedByEffect(GPlayer* param_1, float param_2)
+bool32_t Creature::DestroyedByEffect(GPlayer* param_1, float param_2)
 {
     return 0;
 }
@@ -106,7 +106,7 @@ IMPRESSIVE_TYPE Creature::GetImpressiveType()
 }
 
 // win1.41 00477e30 mac 101da220 Creature::IsObjectTurningTooFastForCameraToFollowSmoothly(void)
-bool Creature::IsObjectTurningTooFastForCameraToFollowSmoothly()
+bool32_t Creature::IsObjectTurningTooFastForCameraToFollowSmoothly()
 {
     return 0;
 }

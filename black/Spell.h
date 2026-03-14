@@ -89,15 +89,15 @@ public:
     // win1.41 0055cdf0 mac 100d40a0 Spell::GetPlayer(void)
     virtual GPlayer* GetPlayer();
     // win1.41 0055cdc0 mac 103b1c30 Spell::IsFunctional(void)
-    virtual bool32_tcorrect IsFunctional();
+    virtual bool32_t IsFunctional();
     // win1.41 0071fb00 mac 10514e70 Spell::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0071bc30 mac 1050fe70 Spell::GetSampleForAttack(void)
     virtual uint32_t GetSampleForAttack();
     // win1.41 00721cd0 mac 10514eb0 Spell::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 00721930 mac 105155b0 Spell::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0071faf0 mac 10514e40 Spell::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055cec0 mac 103b1fa0 Spell::GetCreatureBeliefType(void)
@@ -119,13 +119,13 @@ public:
     // win1.41 007216d0 mac 105162d0 Spell::GetUpdateOfBoredomValue(Reaction *, GameThingWithPos *)
     virtual float GetUpdateOfBoredomValue(Reaction* param_1, GameThingWithPos* param_2);
     // win1.41 0055cee0 mac 103b2030 Spell::IsSuitableForCreatureAction(void)
-    virtual bool IsSuitableForCreatureAction();
+    virtual bool32_t IsSuitableForCreatureAction();
     // win1.41 0055ced0 mac 103b1fe0 Spell::CanBeFrighteningToCreature(Creature *)
-    virtual bool CanBeFrighteningToCreature(Creature* param_1);
+    virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
     // win1.41 00720240 mac 10518ca0 Spell::GetWorshipSite(void)
     virtual WorshipSite* GetWorshipSite();
     // win1.41 0055ce50 mac 103b1df0 Spell::IsSpell( const(void))
-    virtual bool IsSpell() const;
+    virtual bool32_t IsSpell() const;
     // win1.41 0055cf00 mac 103b20a0 Spell::GetText(void)
     virtual const char* GetText();
     // win1.41 007218a0 mac 10515fb0 Spell::GetQueryFirstEnumText(void)
@@ -151,7 +151,7 @@ public:
     // win1.41 007203e0 mac 105188d0 Spell::DebugDraw(void)
     virtual void DebugDraw(); /* 0x510 */
     // win1.41 007214c0 mac 105166c0 Spell::NeedsContinualPackets(GInterfaceStatus *)
-    virtual bool NeedsContinualPackets(GInterfaceStatus* param_1);
+    virtual bool32_t NeedsContinualPackets(GInterfaceStatus* param_1);
     // win1.41 0055ce00 mac 103b1ce0 Spell::HasEnoughChantsAndLifeForRecast(void)
     virtual void HasEnoughChantsAndLifeForRecast();
     // win1.41 0055ce10 mac 103b1d30 Spell::UpdateStruckReaction(void)
@@ -175,9 +175,9 @@ public:
     // win1.41 0055ce60 mac 103b1e20 Spell::AdjustSpellSeedPos(MapCoords *)
     virtual void AdjustSpellSeedPos(MapCoords* pos); /* 0x540 */
     // win1.41 0055ce70 mac 103b1e60 Spell::IsSpellCreature(void)
-    virtual bool IsSpellCreature();
+    virtual bool32_t IsSpellCreature();
     // win1.41 0055ce80 mac 103b1ea0 Spell::IsSpellStormAndTornado(void)
-    virtual bool IsSpellStormAndTornado();
+    virtual bool32_t IsSpellStormAndTornado();
     // win1.41 0055ce90 mac 103b1ee0 Spell::SetMaxObjectsToCreate(long)
     virtual void SetMaxObjectsToCreate(int value);
     virtual int GetMaxObjectsToCreate(); /* 0x550 */

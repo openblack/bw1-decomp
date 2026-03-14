@@ -30,7 +30,7 @@ void LH3DMeshedObject::SetDrawWithGlobalAlpha(int value)
 }
 
 // win1.41 007f9fb0 mac 1000bf70 LH3DMeshedObject::GetDoorPos(LHPoint *) const (this is fastcall, not thiscall)
-bool LH3DMeshedObject::GetDoorPos(LHPoint* out_point) const
+bool32_t LH3DMeshedObject::GetDoorPos(LHPoint* out_point) const
 {
     return 0;
 }
@@ -69,7 +69,7 @@ uint32_t LH3DIsland::Create()
 }
 
 // win1.41 00804790 mac 1061cc34 LH3DIsland::Release(void)
-bool LH3DIsland::Release()
+bool32_t LH3DIsland::Release()
 {
     return 0;
 }

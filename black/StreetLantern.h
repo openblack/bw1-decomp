@@ -42,13 +42,13 @@ public:
     // win1.41 00561460 mac 105347c0 GStreetLantern::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00734be0 mac 10534ab0 GStreetLantern::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 00734c90 mac 10534980 GStreetLantern::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00561450 mac 10534780 GStreetLantern::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561440 mac 10534740 GStreetLantern::IsStreetLantern(void)
-    virtual bool IsStreetLantern();
+    virtual bool32_t IsStreetLantern();
     // win1.41 00734d40 mac 10003680 GStreetLantern::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 00734a70 mac 1002d8c0 GStreetLantern::Draw(void)
@@ -56,9 +56,9 @@ public:
     // win1.41 00734810 mac 105350a0 GStreetLantern::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 007349d0 mac 10535050 GStreetLantern::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 00734d50 mac 10534800 GStreetLantern::CreatureMustAvoid(Creature *)
-    virtual bool CreatureMustAvoid(Creature* param_1);
+    virtual bool32_t CreatureMustAvoid(Creature* param_1);
     // win1.41 00734b10 mac 10534be0 GStreetLantern::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 };

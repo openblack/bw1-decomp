@@ -35,7 +35,7 @@ MultiplayerDatabase::MultiplayerDatabase()
 }
 
 // win1.41 00633610 mac 10109f20 MultiplayerDatabase::ReceiveReturnData(void)
-bool MultiplayerDatabase::ReceiveReturnData()
+bool32_t MultiplayerDatabase::ReceiveReturnData()
 {
     return 0;
 }
@@ -46,7 +46,7 @@ CreatureDatabase::CreatureDatabase()
 }
 
 // win1.41 006336d0 mac 10109aa0 CreatureDatabase::Send(void)
-bool CreatureDatabase::Send()
+bool32_t CreatureDatabase::Send()
 {
     return 0;
 }
@@ -57,7 +57,7 @@ StatsDatabase::StatsDatabase()
 }
 
 // win1.41 006338f0 mac 10109920 StatsDatabase::Send(void)
-bool StatsDatabase::Send()
+bool32_t StatsDatabase::Send()
 {
     return 0;
 }
@@ -68,7 +68,7 @@ void GNetwork::ResetStateDebug()
 }
 
 // win1.41 006349f0 mac 1010bff0 GNetwork::ProcessOnePacket(void)
-bool GNetwork::ProcessOnePacket()
+bool32_t GNetwork::ProcessOnePacket()
 {
     return 0;
 }
@@ -127,7 +127,7 @@ void Object::Delete()
 }
 
 // win1.41 006366b0 mac 103d8d10 Object::IsObjectInMapCheck(void)
-bool Object::IsObjectInMapCheck()
+bool32_t Object::IsObjectInMapCheck()
 {
     return 0;
 }
@@ -143,7 +143,7 @@ void Object::RemoveMapObject()
 }
 
 // win1.41 006367d0 mac 10054140 Object::IsObjectInMap(MapCell *)
-bool Object::IsObjectInMap(MapCell* cell)
+bool32_t Object::IsObjectInMap(MapCell* cell)
 {
     return 0;
 }
@@ -165,25 +165,25 @@ int Object::MoveMapObject(const MapCoords& param_2)
 }
 
 // win1.41 00636a90 mac 103d8920 Object::IsTuggable(void)
-bool Object::IsTuggable()
+bool32_t Object::IsTuggable()
 {
     return 0;
 }
 
 // win1.41 00636aa0 mac 100933f0 Object::ValidToShakeFromHand(void)
-bool Object::ValidToShakeFromHand()
+bool32_t Object::ValidToShakeFromHand()
 {
     return 0;
 }
 
 // win1.41 00636ab0 mac 103d8820 Object::IsAttackable(Object *)
-bool Object::IsAttackable(Object* param_1)
+bool32_t Object::IsAttackable(Object* param_1)
 {
     return 0;
 }
 
 // win1.41 00636af0 mac 103d8770 Object::IsAllied(Object *)
-bool Object::IsAllied(Object* param_1)
+bool32_t Object::IsAllied(Object* param_1)
 {
     return 0;
 }
@@ -226,7 +226,7 @@ uint32_t Object::InitialisePhysicsFromHand(LHPoint* param_1, LHPoint* param_2, G
 }
 
 // win1.41 00637470 mac 103d7730 Object::HasSunk(void)
-bool Object::HasSunk()
+bool32_t Object::HasSunk()
 {
     return 0;
 }
@@ -277,7 +277,7 @@ void Object::GetBoundingSphere(LHPoint& center, float& radius)
 }
 
 // win1.41 006377b0 mac 103d6f30 Object::InteractsWithPhysicsObjects(void)
-bool Object::InteractsWithPhysicsObjects()
+bool32_t Object::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -293,7 +293,7 @@ void Object::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1)
 }
 
 // win1.41 006377e0 mac 103d6e10 Object::CanBecomeAPhysicsObject(void)
-bool32_tcorrect Object::CanBecomeAPhysicsObject()
+bool32_t Object::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -314,7 +314,7 @@ void Object::IncreaseLife(float value)
 }
 
 // win1.41 006378e0 mac 103d6ad0 Object::DestroyedByEffect(GPlayer *, float)
-bool Object::DestroyedByEffect(GPlayer* player, float param_2)
+bool32_t Object::DestroyedByEffect(GPlayer* player, float param_2)
 {
     return 0;
 }
@@ -359,19 +359,19 @@ float Object::GetHealEffect(EffectValues& values)
 }
 
 // win1.41 00637e00 mac 103d5f70 Object::IsTouching(Object *, float)
-bool Object::IsTouching(Object* param_1, float param_2)
+bool32_t Object::IsTouching(Object* param_1, float param_2)
 {
     return 0;
 }
 
 // win1.41 00637e30 mac 103d5ef0 Object::IsTouching(MapCoords const &)
-bool Object::IsTouching(const MapCoords& param_1)
+bool32_t Object::IsTouching(const MapCoords& param_1)
 {
     return 0;
 }
 
 // win1.41 00637e60 mac 103d5970 Object::IsTouching(MapCoords const &, MapCoords const &)
-bool Object::IsTouching(const MapCoords& param_1, const MapCoords& param_2)
+bool32_t Object::IsTouching(const MapCoords& param_1, const MapCoords& param_2)
 {
     return 0;
 }
@@ -440,7 +440,7 @@ int Object::GetLandingPointCount()
 }
 
 // win1.41 00638450 mac 103d5230 Object::GetLandingPoint(unsigned char, LHPoint *)
-bool Object::GetLandingPoint(uint8_t param_1, LHPoint* param_2)
+bool32_t Object::GetLandingPoint(uint8_t param_1, LHPoint* param_2)
 {
     return 0;
 }
@@ -512,13 +512,13 @@ uint32_t Object::ThrowObjectFromHand(GInterfaceStatus* status, int param_2)
 }
 
 // win1.41 00638730 mac 10097740 Object::IsARootedObject(void)
-bool Object::IsARootedObject()
+bool32_t Object::IsARootedObject()
 {
     return 0;
 }
 
 // win1.41 00638740 mac 103d48a0 Object::CreatureMustAvoid(Creature *)
-bool Object::CreatureMustAvoid(Creature* param_1)
+bool32_t Object::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }
@@ -553,7 +553,7 @@ float Object::GetHoldLoweringMultiplier()
 }
 
 // win1.41 00638cb0 mac 103d3fe0 Object::GetInspectObjectPos(Villager *, MapCoords *)
-bool Object::GetInspectObjectPos(Villager* param_1, MapCoords* pos)
+bool32_t Object::GetInspectObjectPos(Villager* param_1, MapCoords* pos)
 {
     return 0;
 }
@@ -591,7 +591,7 @@ void Object::SetYAngle(float angle)
 }
 
 // win1.41 006392b0 mac 10037930 Object::IsObjectInMap(void)
-bool Object::IsObjectInMap()
+bool32_t Object::IsObjectInMap()
 {
     return 0;
 }
@@ -682,7 +682,7 @@ float Object::GetTribalPower(TRIBE_TYPE param_1)
 }
 
 // win1.41 00639a00 mac 103d2b20 Object::IsFireMan(void)
-bool Object::IsFireMan()
+bool32_t Object::IsFireMan()
 {
     return 0;
 }
@@ -711,7 +711,7 @@ float Object::GetDefaultFireRadius()
 }
 
 // win1.41 00639ad0 mac 1008a4c0 Object::ProcessInHand(void)
-bool Object::ProcessInHand()
+bool32_t Object::ProcessInHand()
 {
     return 0;
 }
@@ -734,7 +734,7 @@ uint32_t Object::RemoveFromGame()
 }
 
 // win1.41 00639b60 mac 103d21e0 Object::CanBeSuckedIntoVortex(LandscapeVortex *)
-bool Object::CanBeSuckedIntoVortex(LandscapeVortex* param_1)
+bool32_t Object::CanBeSuckedIntoVortex(LandscapeVortex* param_1)
 {
     return 0;
 }
@@ -752,13 +752,13 @@ uint32_t Object::GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Vill
 }
 
 // win1.41 00639b90 mac 103d1d50 Object::Save(GameOSFile &)
-bool32_tcorrect Object::Save(GameOSFile& file)
+bool32_t Object::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00639eb0 mac 103d1b20 Object::Load(GameOSFile &)
-bool32_tcorrect Object::Load(GameOSFile& file)
+bool32_t Object::Load(GameOSFile& file)
 {
     return 0;
 }

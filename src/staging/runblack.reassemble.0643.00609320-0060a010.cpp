@@ -2,7 +2,7 @@
 #include "MobileWallHug.h"
 
 // win1.41 00609320 mac 103bee30 MobileStatic::CanBecomeAPhysicsObject(void)
-bool32_tcorrect MobileStatic::CanBecomeAPhysicsObject()
+bool32_t MobileStatic::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -14,7 +14,7 @@ uint32_t MobileStatic::GetScriptObjectType()
 }
 
 // win1.41 006096a0 mac 103be560 MobileStatic::BlocksTownClearArea( const(void))
-bool MobileStatic::BlocksTownClearArea()
+bool32_t MobileStatic::BlocksTownClearArea()
 {
     return 0;
 }

@@ -41,7 +41,7 @@ uint32_t Object::MoveAlongPath()
 }
 
 // win1.41 00402560 mac 1030b0c0 Object::IsReachable(void)
-bool Object::IsReachable()
+bool32_t Object::IsReachable()
 {
     return false;
 }
@@ -71,7 +71,7 @@ float Object::GetHoldYRotate()
 }
 
 // win1.41 004025b0 mac 100a0df0 Object::HandShouldFeelWithMeshIntersect(void)
-bool Object::HandShouldFeelWithMeshIntersect()
+bool32_t Object::HandShouldFeelWithMeshIntersect()
 {
     return 1;
 }
@@ -106,7 +106,7 @@ float Object::GetLife()
 }
 
 // win1.41 00402610 mac 1005f530 Object::IsAlive(void)
-bool Object::IsAlive()
+bool32_t Object::IsAlive()
 {
     return false;
 }
@@ -129,7 +129,7 @@ int Object::GetDetailMesh(int detail) const
 }
 
 // win1.41 00402670 mac 10109540 Object::IsG3DObjectDrawnInHand(void)
-bool Object::IsG3DObjectDrawnInHand()
+bool32_t Object::IsG3DObjectDrawnInHand()
 {
     return false;
 }
@@ -146,7 +146,7 @@ uint32_t Object::ProcessState()
 }
 
 // win1.41 004026a0 mac 103e4940 Object::CanBePickedUp(void)
-bool Object::CanBePickedUp()
+bool32_t Object::CanBePickedUp()
 {
     return 0;
 }
@@ -170,19 +170,19 @@ FOOD_TYPE Object::GetFoodType()
 }
 
 // win1.41 00402710 mac 10032610 Object::IsMoving( const(void))
-bool Object::IsMoving() const
+bool32_t Object::IsMoving() const
 {
     return false;
 }
 
 // win1.41 00402730 mac 1056f400 Object::IsSpellSeedReturnPoint( const(void))
-bool Object::IsSpellSeedReturnPoint() const
+bool32_t Object::IsSpellSeedReturnPoint() const
 {
     return 0;
 }
 
 // win1.41 00402740 mac 104d62b0 Object::IsABeliever(void)
-bool Object::IsABeliever()
+bool32_t Object::IsABeliever()
 {
     return 0;
 }
@@ -210,13 +210,13 @@ void Object::SetPoisoned(int param_1)
 }
 
 // win1.41 00402790 mac 10109690 Object::IsLockedInInteract(void)
-bool Object::IsLockedInInteract()
+bool32_t Object::IsLockedInInteract()
 {
     return 0;
 }
 
 // win1.41 004027a0 mac 10109580 Object::SetDying(void)
-bool Object::SetDying()
+bool32_t Object::SetDying()
 {
     return false;
 }
@@ -233,73 +233,73 @@ float Object::GetDistanceFromObject(const MapCoords& target)
 }
 
 // win1.41 004027d0 mac 1016eda0 Object::NetworkUnfriendlyStartLockedSelect(void)
-bool Object::NetworkUnfriendlyStartLockedSelect()
+bool32_t Object::NetworkUnfriendlyStartLockedSelect()
 {
     return 1;
 }
 
 // win1.41 004027e0 mac 1056c2f0 Object::IsReadyForNetworkUnfriendlyLockedSelect(void)
-bool Object::IsReadyForNetworkUnfriendlyLockedSelect()
+bool32_t Object::IsReadyForNetworkUnfriendlyLockedSelect()
 {
     return 1;
 }
 
 // win1.41 004027f0 mac 10577790 Object::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
-bool Object::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
+bool32_t Object::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
 {
     return 1;
 }
 
 // win1.41 00402800 mac 1037fcb0 Object::GetReadyForNetworkUnfriendlyEndLockedSelect(void)
-bool Object::GetReadyForNetworkUnfriendlyEndLockedSelect()
+bool32_t Object::GetReadyForNetworkUnfriendlyEndLockedSelect()
 {
     return 1;
 }
 
 // win1.41 00402810 mac 102fd0c0 Object::IsReadyForNetworkUnfriendlyEndLockedSelect(void)
-bool Object::IsReadyForNetworkUnfriendlyEndLockedSelect()
+bool32_t Object::IsReadyForNetworkUnfriendlyEndLockedSelect()
 {
     return 1;
 }
 
 // win1.41 00402820 mac 103e2470 Object::NetworkUnfriendlyEndLockedSelect(void)
-bool Object::NetworkUnfriendlyEndLockedSelect()
+bool32_t Object::NetworkUnfriendlyEndLockedSelect()
 {
     return 1;
 }
 
 // win1.41 00402830 mac 1041d9a0 Object::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
-bool Object::NetworkFriendlyEndLockedSelect(GInterfaceStatus* status)
+bool32_t Object::NetworkFriendlyEndLockedSelect(GInterfaceStatus* status)
 {
     return 1;
 }
 
 // win1.41 00402840 mac 1017df80 Object::ValidAsInterfaceTarget(void)
-bool Object::ValidAsInterfaceTarget()
+bool32_t Object::ValidAsInterfaceTarget()
 {
     return 1;
 }
 
 // win1.41 00402850 mac 1016daa0 Object::ValidAsInterfaceLeashTarget(void)
-bool Object::ValidAsInterfaceLeashTarget()
+bool32_t Object::ValidAsInterfaceLeashTarget()
 {
     return 1;
 }
 
 // win1.41 00402860 mac 103e0d10 Object::SelectOnlyAfterRecSystem(void)
-bool Object::SelectOnlyAfterRecSystem()
+bool32_t Object::SelectOnlyAfterRecSystem()
 {
     return 0;
 }
 
 // win1.41 00402870 mac 105995f0 Object::ValidForPlaceInHand(GInterfaceStatus *)
-bool Object::ValidForPlaceInHand(GInterfaceStatus* status)
+bool32_t Object::ValidForPlaceInHand(GInterfaceStatus* status)
 {
     return 0;
 }
 
 // win1.41 00402880 mac 1040fc60 Object::ValidToRemoveFromHand(GInterfaceStatus *, MapCoords const &)
-bool Object::ValidToRemoveFromHand(GInterfaceStatus* status, const MapCoords& param_2)
+bool32_t Object::ValidToRemoveFromHand(GInterfaceStatus* status, const MapCoords& param_2)
 {
     return 0;
 }
@@ -311,7 +311,7 @@ uint32_t Object::RemoveFromHand(GInterfaceStatus* status, const MapCoords& param
 }
 
 // win1.41 004028a0 mac 101ca2e0 Object::InterfaceMustBeInInfluenceForInteraction(void)
-bool Object::InterfaceMustBeInInfluenceForInteraction()
+bool32_t Object::InterfaceMustBeInInfluenceForInteraction()
 {
     return 1;
 }
@@ -353,7 +353,7 @@ uint32_t Object::ApplyUnlockProcess(GInterfaceStatus* status)
 }
 
 // win1.41 00402910 mac 10364e10 Object::IsInterfacePowerUpWhenInHand( const(void))
-bool Object::IsInterfacePowerUpWhenInHand() const
+bool32_t Object::IsInterfacePowerUpWhenInHand() const
 {
     return 0;
 }
@@ -431,73 +431,73 @@ uint32_t Object::FightThisToObject(GInterfaceStatus* status, Object* param_2)
 }
 
 // win1.41 004029e0 mac 100068d0 Object::IsEffectReceiver(EffectValues *)
-bool Object::IsEffectReceiver(EffectValues* param_1)
+bool32_t Object::IsEffectReceiver(EffectValues* param_1)
 {
     return 1;
 }
 
 // win1.41 004029f0 mac 100219d0 Object::IsObject( const(void))
-bool Object::IsObject() const
+bool32_t Object::IsObject() const
 {
     return 1;
 }
 
 // win1.41 00402a00 mac 100b06b0 Object::PhysicallyDestroysAbodes(void)
-bool Object::PhysicallyDestroysAbodes()
+bool32_t Object::PhysicallyDestroysAbodes()
 {
     return 0;
 }
 
 // win1.41 00402a10 mac 103db1f0 Object::GetAlwaysRemainsInPhysicsInternalSystem(void)
-bool Object::GetAlwaysRemainsInPhysicsInternalSystem()
+bool32_t Object::GetAlwaysRemainsInPhysicsInternalSystem()
 {
     return false;
 }
 
 // win1.41 00402a20 mac 103db180 Object::IsSuitableForCreatureAction(void)
-bool Object::IsSuitableForCreatureAction()
+bool32_t Object::IsSuitableForCreatureAction()
 {
     return false;
 }
 
 // win1.41 00402a30 mac 100ba330 Object::CanBePoodOn(Creature *)
-bool Object::CanBePoodOn(Creature* creature)
+bool32_t Object::CanBePoodOn(Creature* creature)
 {
     return 1;
 }
 
 // win1.41 00402a40 mac 100db5e0 Object::CanBeAttackedByCreature(Creature *)
-bool Object::CanBeAttackedByCreature(Creature* creature)
+bool32_t Object::CanBeAttackedByCreature(Creature* creature)
 {
     return false;
 }
 
 // win1.41 00402a60 mac 100b95a0 Object::CanBePlayedWithByCreature(Creature *)
-bool Object::CanBePlayedWithByCreature(Creature* creature)
+bool32_t Object::CanBePlayedWithByCreature(Creature* creature)
 {
     return false;
 }
 
 // win1.41 00402a70 mac 105a25d0 Object::CanBeImpressedByCreature(Creature *)
-bool Object::CanBeImpressedByCreature(Creature* creature)
+bool32_t Object::CanBeImpressedByCreature(Creature* creature)
 {
     return 0;
 }
 
 // win1.41 00402a80 mac 1056cf30 Object::CanBeHelpedByCreature(Creature *)
-bool Object::CanBeHelpedByCreature(Creature* creature)
+bool32_t Object::CanBeHelpedByCreature(Creature* creature)
 {
     return 1;
 }
 
 // win1.41 00402a90 mac 103e4d10 Object::CanBeExaminedByCreature(Creature *)
-bool Object::CanBeExaminedByCreature(Creature* creature)
+bool32_t Object::CanBeExaminedByCreature(Creature* creature)
 {
     return 1;
 }
 
 // win1.41 00402aa0 mac 1054f410 Object::IsOnFire(Creature *)
-bool Object::IsOnFire(Creature* creature)
+bool32_t Object::IsOnFire(Creature* creature)
 {
     return false;
 }
@@ -509,7 +509,7 @@ uint32_t Object::GetTastiness()
 }
 
 // win1.41 00402ac0 mac 102fd110 Object::IsScary(void)
-bool Object::IsScary()
+bool32_t Object::IsScary()
 {
     return 0;
 }
@@ -521,7 +521,7 @@ uint32_t Object::GetObjectCollide()
 }
 
 // win1.41 00402ae0 mac 102fd140 Object::IsPushable(void)
-bool Object::IsPushable()
+bool32_t Object::IsPushable()
 {
     return 0;
 }
@@ -544,7 +544,7 @@ void Object::SetHeadPos(MapCoords* param_1)
 }
 
 // win1.41 00402b30 mac 1016e7f0 Object::IsAPotFromABuildingSite(void)
-bool Object::IsAPotFromABuildingSite()
+bool32_t Object::IsAPotFromABuildingSite()
 {
     return 0;
 }

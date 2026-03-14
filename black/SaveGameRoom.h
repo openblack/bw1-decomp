@@ -23,7 +23,7 @@ public:
     // Static methods
 
     // win1.41 007923a0 mac 104ce930 SaveGameRoom::CreateSaveGameFiles(char*)
-    static bool CreateSaveGameFiles();
+    static bool32_t CreateSaveGameFiles();
 
     // Constructors
 

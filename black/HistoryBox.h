@@ -29,11 +29,11 @@ public:
     // win1.41 005453b0 mac 105b9a60 HistoryBox::Destroy(void)
     virtual void Destroy();
     // win1.41 00545460 mac 105b98b0 HistoryBox::WantsKeyControl(void)
-    virtual bool WantsKeyControl();
+    virtual bool32_t WantsKeyControl();
     // win1.41 00545470 mac 105b97c0 HistoryBox::WantsMouseControl(void)
-    virtual bool WantsMouseControl();
+    virtual bool32_t WantsMouseControl();
     // win1.41 005454f0 mac 105b9780 HistoryBox::CanESCOut(void)
-    virtual bool CanESCOut();
+    virtual bool32_t CanESCOut();
     // win1.41 005453c0 mac 105b9a20 HistoryBox::InitControls(void)
     virtual void InitControls();
 };

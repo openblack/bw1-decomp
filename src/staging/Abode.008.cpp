@@ -39,7 +39,7 @@ ABODE_TYPE Abode::GetAbodeType()
 }
 
 // win1.41 00406200 mac 1005ff20 Abode::IsFunctional(void)
-bool32_tcorrect Abode::IsFunctional()
+bool32_t Abode::IsFunctional()
 {
     if (MultiMapFixed::IsFunctional() == 1)
     {
@@ -52,7 +52,7 @@ bool32_tcorrect Abode::IsFunctional()
 }
 
 // win1.41 00406230 mac 1014cfd0 Abode::ChecksVerticesVObjects(void)
-bool Abode::ChecksVerticesVObjects()
+bool32_t Abode::ChecksVerticesVObjects()
 {
     return false;
 }
@@ -68,7 +68,7 @@ void Abode::ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player
 }
 
 // win1.41 00406800 mac 1010ab50 Abode::CanBecomeAPhysicsObject(void)
-bool32_tcorrect Abode::CanBecomeAPhysicsObject()
+bool32_t Abode::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -86,7 +86,7 @@ uint32_t Abode::InterfaceValidToTap(GInterfaceStatus* status)
 }
 
 // win1.41 00406830 mac 102fed90 Abode::InterfaceTap(GInterfaceStatus *)
-bool32_tcorrect Abode::InterfaceTap(GInterfaceStatus* status)
+bool32_t Abode::InterfaceTap(GInterfaceStatus* status)
 {
     abode_town_00c4cc6c = GetTown();
     KnockKnock__13HowManyPeopleFv();
@@ -156,7 +156,7 @@ Villager* Abode::FindVillager(int (__cdecl* search_cb)(GameThingWithPos *, SCRIP
 }
 
 // win1.41 00406a10 mac 103bd750 Abode::Save(GameOSFile &)
-bool32_tcorrect Abode::Save(GameOSFile& file)
+bool32_t Abode::Save(GameOSFile& file)
 {
     if (MultiMapFixed::Save(file))
     {
@@ -188,7 +188,7 @@ bool32_tcorrect Abode::Save(GameOSFile& file)
         GameOSFileWriteCheckSum(file, field_0xb7);
         GameOSFileWriteCheckSum(file, index);
         file.WriteArray(resources, 2);
-        bool32_tcorrect hasDestructionMesh = (destruction_mesh != NULL);
+        bool32_t hasDestructionMesh = (destruction_mesh != NULL);
         GameOSFileWriteCheckSum(file, hasDestructionMesh);
         if (destruction_mesh != NULL)
         {
@@ -200,7 +200,7 @@ bool32_tcorrect Abode::Save(GameOSFile& file)
 }
 
 // win1.41 00406d20 mac 101a2920 Abode::Load(GameOSFile &)
-bool32_tcorrect Abode::Load(GameOSFile& file)
+bool32_t Abode::Load(GameOSFile& file)
 {
     return false;
 }
@@ -242,7 +242,7 @@ float Abode::GetNumAdultsInAbode()
 }
 
 // win1.41 004070f0 mac 101b8780 Abode::DrawPercentFull(int)
-void Abode::DrawPercentFull(bool32_tcorrect only_one)
+void Abode::DrawPercentFull(bool32_t only_one)
 {
     LHPoint translation;
     translation.x = game_3d_object->matrix.m[9];
@@ -276,7 +276,7 @@ uint32_t Abode::GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villa
 }
 
 // win1.41 00407200 mac 1008a7b0 Abode::IsInteractable(void)
-bool32_tcorrect Abode::IsInteractable()
+bool32_t Abode::IsInteractable()
 {
     if (GetPercentBuilt() == 0.0f)
         return false;
@@ -284,7 +284,7 @@ bool32_tcorrect Abode::IsInteractable()
 }
 
 // win1.41 00407230 mac inlined Abode::FUN_00407230(bool)
-MapCoords Abode::FUN_00407230(bool32_tcorrect param_1)
+MapCoords Abode::FUN_00407230(bool32_t param_1)
 {
     if (param_1 && building_site != NULL)
     {
@@ -294,7 +294,7 @@ MapCoords Abode::FUN_00407230(bool32_tcorrect param_1)
 }
 
 // win1.41 00407280 mac 100dcdb0 Abode::CanBeHiddenIn(void)
-bool Abode::CanBeHiddenIn()
+bool32_t Abode::CanBeHiddenIn()
 {
     return IsFunctional();
 }
@@ -402,11 +402,11 @@ float Abode::CalculateDesireToGainVillager()
 }
 
 // win1.41 004075b0 mac 10518900 Abode::TakeVillagerFrom(Abode&, int)
-bool32_tcorrect Abode::TakeVillagerFrom(Abode& other, bool32_tcorrect male)
+bool32_t Abode::TakeVillagerFrom(Abode& other, bool32_t male)
 {
     for (Villager* walker = other.villagers.head; walker != NULL; walker = walker->next)
     {
-        bool32_tcorrect found;
+        bool32_t found;
         if (male)
         {
             found = walker->IsMaleVillager();
@@ -426,7 +426,7 @@ bool32_tcorrect Abode::TakeVillagerFrom(Abode& other, bool32_tcorrect male)
 
 
 // win1.41 00407620 mac 10516470 Abode::SwapMaleForFemaleFrom(Abode&)
-bool32_tcorrect Abode::SwapMaleForFemaleFrom(Abode& other)
+bool32_t Abode::SwapMaleForFemaleFrom(Abode& other)
 {
     Villager* male = other.villagers.head;
     for (; male != NULL; male = male->next)

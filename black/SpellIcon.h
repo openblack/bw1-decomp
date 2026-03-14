@@ -78,9 +78,9 @@ public:
     // win1.41 0055d470 mac 10526050 SpellIcon::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00727a00 mac 10521bb0 SpellIcon::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 00727940 mac 10521ce0 SpellIcon::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0055d460 mac 10526010 SpellIcon::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055d420 mac 10525ee0 SpellIcon::GetCreatureBeliefType(void)
@@ -88,11 +88,11 @@ public:
     // win1.41 00726420 mac 10524aa0 SpellIcon::GetOverwriteTapToolTip(void)
     virtual uint32_t GetOverwriteTapToolTip();
     // win1.41 0055d430 mac 10525f20 SpellIcon::CanBeFrighteningToCreature(Creature *)
-    virtual bool CanBeFrighteningToCreature(Creature* param_1);
+    virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
     // win1.41 0055d3a0 mac 1049e650 SpellIcon::GetWorshipSite(void)
     virtual WorshipSite* GetWorshipSite();
     // win1.41 0055d450 mac 10525fd0 SpellIcon::IsSpellIcon(void)
-    virtual bool IsSpellIcon();
+    virtual bool32_t IsSpellIcon();
     // win1.41 007261a0 mac 105252a0 SpellIcon::Create3DObject(void)
     virtual void Create3DObject();
     // win1.41 007265d0 mac 10524600 SpellIcon::MoveMapObject(MapCoords const &)
@@ -110,19 +110,19 @@ public:
     // win1.41 00726160 mac 105253c0 SpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 0055d400 mac 10525e50 SpellIcon::IsSpellSeedReturnPoint( const(void))
-    virtual bool IsSpellSeedReturnPoint();
+    virtual bool32_t IsSpellSeedReturnPoint();
     // win1.41 0055d410 mac 10525e90 SpellIcon::ValidAsInterfaceLeashTarget(void)
-    virtual bool ValidAsInterfaceLeashTarget();
+    virtual bool32_t ValidAsInterfaceLeashTarget();
     // win1.41 007263c0 mac 10524b00 SpellIcon::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
     // win1.41 00726430 mac 105249c0 SpellIcon::InterfaceTap(GInterfaceStatus *)
     virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
     // win1.41 007260e0 mac 10525630 SpellIcon::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 0055d3b0 mac 10525de0 SpellIcon::IsRepaired(void)
-    virtual bool IsRepaired();
+    virtual bool32_t IsRepaired();
     // win1.41 0055d3d0 mac 100c7990 SpellIcon::IsBuilt(void)
-    virtual bool32_tcorrect IsBuilt();
+    virtual bool32_t IsBuilt();
 
     // Constructors
 

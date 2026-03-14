@@ -91,7 +91,7 @@ float GameThing::GetTownArtifactValue()
 }
 
 // win1.41 00405220 mac 10199de0 GameThing::CanBecomeArtifact(void)
-bool GameThing::CanBecomeArtifact()
+bool32_t GameThing::CanBecomeArtifact()
 {
     return false;
 }
@@ -102,7 +102,7 @@ void GameThing::DrawInHand(GInterfaceStatus* param_1)
 }
 
 // win1.41 00405240 mac 10067860 GameThing::IsFunctional(void)
-bool32_tcorrect GameThing::IsFunctional()
+bool32_t GameThing::IsFunctional()
 {
     return false;
 }

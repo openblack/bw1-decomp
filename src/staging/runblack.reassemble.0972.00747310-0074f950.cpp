@@ -19,7 +19,7 @@ void Town::ProcessTownEmergency()
 }
 
 // win1.41 00747970 mac 1006d3c0 Town::IsInStateOfEmergency(void)
-bool Town::IsInStateOfEmergency()
+bool32_t Town::IsInStateOfEmergency()
 {
     return 0;
 }
@@ -65,13 +65,13 @@ WorshipSite* TownSpellIcon::GetWorshipSite()
 }
 
 // win1.41 00748f70 mac 10561030 TownSpellIcon::Save(GameOSFile &)
-bool32_tcorrect TownSpellIcon::Save(GameOSFile& file)
+bool32_t TownSpellIcon::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00748fb0 mac 10560fa0 TownSpellIcon::Load(GameOSFile &)
-bool32_tcorrect TownSpellIcon::Load(GameOSFile& file)
+bool32_t TownSpellIcon::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -200,7 +200,7 @@ float Tree::GetHoldLoweringMultiplier()
 }
 
 // win1.41 0074b630 mac 10157ad0 Tree::CanBecomeAPhysicsObject(void)
-bool32_tcorrect Tree::CanBecomeAPhysicsObject()
+bool32_t Tree::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -217,7 +217,7 @@ void Tree::SetUpPhysOb(PhysOb* param_1)
 }
 
 // win1.41 0074b6a0 mac 10157960 Tree::InteractsWithPhysicsObjects(void)
-bool Tree::InteractsWithPhysicsObjects()
+bool32_t Tree::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -228,13 +228,13 @@ void Tree::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 0074b720 mac 10157800 Tree::IsARootedObject(void)
-bool Tree::IsARootedObject()
+bool32_t Tree::IsARootedObject()
 {
     return 0;
 }
 
 // win1.41 0074b730 mac 10157710 Tree::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool Tree::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t Tree::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -305,13 +305,13 @@ MapCoords* Tree::GetWorkingPos(MapCoords* param_1, Object* param_2)
 }
 
 // win1.41 0074c0a0 mac 10156670 Tree::IsTreeBigEnoughForCreature(Creature *)
-bool Tree::IsTreeBigEnoughForCreature(Creature* param_1)
+bool32_t Tree::IsTreeBigEnoughForCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0074c0e0 mac 10156590 Tree::CreatureMustAvoid(Creature *)
-bool Tree::CreatureMustAvoid(Creature* param_1)
+bool32_t Tree::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }
@@ -334,13 +334,13 @@ uint32_t Tree::GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villa
 }
 
 // win1.41 0074c1b0 mac 10156080 Tree::Save(GameOSFile &)
-bool32_tcorrect Tree::Save(GameOSFile& file)
+bool32_t Tree::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0074c2a0 mac 10155f10 Tree::Load(GameOSFile &)
-bool32_tcorrect Tree::Load(GameOSFile& file)
+bool32_t Tree::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -357,7 +357,7 @@ void Tree::CreateCollideData()
 }
 
 // win1.41 0074c7f0 mac 10155720 Tree::BlocksTownClearArea( const(void))
-bool Tree::BlocksTownClearArea() const
+bool32_t Tree::BlocksTownClearArea() const
 {
     return 0;
 }
@@ -455,7 +455,7 @@ float GUtils::ConvertWholeDistanceToMeters(int param_1)
 }
 
 // win1.41 0074e3a0 mac 104fa7f0 GUtils::FindNearestDrinkingWater(MapCoords &, MapCoords &, float)
-bool GUtils::FindNearestDrinkingWater(MapCoords& param_1, MapCoords& param_2, float max_dist)
+bool32_t GUtils::FindNearestDrinkingWater(MapCoords& param_1, MapCoords& param_2, float max_dist)
 {
     return 0;
 }

@@ -69,55 +69,55 @@ ParticleLightMap::~ParticleLightMap()
 }
 
 // win1.41 006cb040 mac inlined FireGraphic::SpritePos::Save( (GameOSFile &))
-bool32_tcorrect FireGraphic::SpritePos::Save(GameOSFile& file)
+bool32_t FireGraphic::SpritePos::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006cb060 mac 10485b50 GJPSysInterface::Save(GameOSFile &)
-bool32_tcorrect GJPSysInterface::Save(GameOSFile& file)
+bool32_t GJPSysInterface::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006cb090 mac 104858d0 PSysManager::Save(GameOSFile &)
-bool32_tcorrect PSysManager::Save(GameOSFile& file)
+bool32_t PSysManager::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006cbb30 mac inlined Particle3DPnt::Save(GameOSFile &)
-bool32_tcorrect Particle3DPnt::Save(GameOSFile& file)
+bool32_t Particle3DPnt::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006cc540 mac 10483800 ParticleChainJoint::Save(GameOSFile &)
-bool32_tcorrect ParticleChainJoint::Save(GameOSFile& file)
+bool32_t ParticleChainJoint::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006cc780 mac 10483590 Chain::Save(GameOSFile &)
-bool32_tcorrect Chain::Save(GameOSFile& file)
+bool32_t Chain::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006ced60 mac 10480d70 SpellPointInf::Save(GameOSFile &)
-bool32_tcorrect SpellPointInf::Save(GameOSFile& file)
+bool32_t SpellPointInf::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006d0680 mac 1047f460 DefensiveShield::Save(GameOSFile &)
-bool32_tcorrect DefensiveShield::Save(GameOSFile& file)
+bool32_t DefensiveShield::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006d06b0 mac 1047f3d0 DefensiveSphere::Save(GameOSFile &)
-bool32_tcorrect DefensiveSphere::Save(GameOSFile& file)
+bool32_t DefensiveSphere::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -180,13 +180,13 @@ int PSysSound::Get3DSoundPos(LHPoint* param_1)
 }
 
 // win1.41 006d13a0 mac 10486b50 PSysSound::Load(GameOSFile &)
-bool32_tcorrect PSysSound::Load(GameOSFile& file)
+bool32_t PSysSound::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006d14a0 mac 104869c0 PSysSound::Save(GameOSFile &)
-bool32_tcorrect PSysSound::Save(GameOSFile& file)
+bool32_t PSysSound::Save(GameOSFile& file)
 {
     return 0;
 }

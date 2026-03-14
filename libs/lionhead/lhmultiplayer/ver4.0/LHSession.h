@@ -50,9 +50,9 @@ struct LHSession
     // Non-virtual methods
 
     // win1.41 1001dab0 mac 10036a3c LHSession::IsSinglePlayer(void)
-    bool IsSinglePlayer();
+    bool32_t IsSinglePlayer();
     // win1.41 1001e5e0 mac inlined LHSession::NextPacketIsSuperpacket(void)
-    bool NextPacketIsSuperpacket();
+    bool32_t NextPacketIsSuperpacket();
 };
 
 #else // __cplusplus

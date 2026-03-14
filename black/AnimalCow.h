@@ -38,9 +38,9 @@ public:
     // win1.41 0041d0f0 mac 10171d50 Cow::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0041d110 mac 1012e4c0 Cow::IsCow(Creature *)
-    virtual bool IsCow(Creature* param_1);
+    virtual bool32_t IsCow(Creature* param_1);
     // win1.41 0041d1b0 mac 1000e870 Cow::DecideWhatToDo(void)
-    virtual bool DecideWhatToDo();
+    virtual bool32_t DecideWhatToDo();
 };
 
 #else // __cplusplus

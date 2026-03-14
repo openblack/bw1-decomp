@@ -2,13 +2,13 @@
 #include "Town.h"
 
 // win1.41 00763390 mac 10021260 Villager::IsAvailableForReaction(REACTION)
-bool Villager::IsAvailableForReaction(REACTION param_1)
+bool32_t Villager::IsAvailableForReaction(REACTION param_1)
 {
     return 0;
 }
 
 // win1.41 00763410 mac 1000edf0 Villager::IsAvailableForBeliefButNotReaction(REACTION)
-bool Villager::IsAvailableForBeliefButNotReaction(REACTION param_1)
+bool32_t Villager::IsAvailableForBeliefButNotReaction(REACTION param_1)
 {
     return 0;
 }
@@ -29,7 +29,7 @@ void Villager::UpdateHowImpressed(Reaction* param_1, int param_2)
 }
 
 // win1.41 007635d0 mac 10012ce0 Town::DisplayHowImpressed(void)
-bool Town::DisplayHowImpressed()
+bool32_t Town::DisplayHowImpressed()
 {
     return 0;
 }
@@ -40,7 +40,7 @@ void Villager::StopReacting()
 }
 
 // win1.41 00763800 mac 1001a3e0 Villager::SetupMoveToPos(MapCoords const &, VILLAGER_STATES)
-bool Villager::SetupMoveToPos(const MapCoords* param_1, VILLAGER_STATES param_2)
+bool32_t Villager::SetupMoveToPos(const MapCoords* param_1, VILLAGER_STATES param_2)
 {
     return 0;
 }
@@ -88,25 +88,25 @@ void Villager::SetupLookAtNiceSpell(GameThingWithPos* param_1, Reaction* param_2
 }
 
 // win1.41 00763b00 mac 10593810 Villager::FleeingFromObjectReaction(void)
-bool Villager::FleeingFromObjectReaction()
+bool32_t Villager::FleeingFromObjectReaction()
 {
     return 0;
 }
 
 // win1.41 00763b40 mac 105935e0 Villager::FleeingFromPredatorReaction(void)
-bool Villager::FleeingFromPredatorReaction()
+bool32_t Villager::FleeingFromPredatorReaction()
 {
     return 0;
 }
 
 // win1.41 00763cb0 mac 10593430 Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos *)
-bool Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos* param_1)
+bool32_t Villager::SetupGoAndHideInNearbyBuilding(GameThingWithPos* param_1)
 {
     return 0;
 }
 
 // win1.41 00763d90 mac 105931e0 Villager::GoAndHideInNearbyBuilding(void)
-bool Villager::GoAndHideInNearbyBuilding()
+bool32_t Villager::GoAndHideInNearbyBuilding()
 {
     return 0;
 }
@@ -118,7 +118,7 @@ Abode* Villager::GetAbodeToHideInAtPos(const MapCoords* param_1)
 }
 
 // win1.41 00763f80 mac 10592f10 Villager::LookToSeeIfItIsSafe(void)
-bool Villager::LookToSeeIfItIsSafe()
+bool32_t Villager::LookToSeeIfItIsSafe()
 {
     return 0;
 }
@@ -160,91 +160,91 @@ uint32_t Villager::NumGameTurnsBeforeReactingToShieldAgainFunction(GameThingWith
 }
 
 // win1.41 007642c0 mac 105927e0 Villager::LookingAtObjectReaction(void)
-bool Villager::LookingAtObjectReaction()
+bool32_t Villager::LookingAtObjectReaction()
 {
     return 0;
 }
 
 // win1.41 00764310 mac 10592770 Villager::FleeingAndLookingAtObjectReaction(void)
-bool Villager::FleeingAndLookingAtObjectReaction()
+bool32_t Villager::FleeingAndLookingAtObjectReaction()
 {
     return 0;
 }
 
 // win1.41 00764320 mac 105926d0 Villager::FollowingObjectReaction(void)
-bool Villager::FollowingObjectReaction()
+bool32_t Villager::FollowingObjectReaction()
 {
     return 0;
 }
 
 // win1.41 00764350 mac 105925b0 Villager::InspectObjectReaction(void)
-bool Villager::InspectObjectReaction()
+bool32_t Villager::InspectObjectReaction()
 {
     return 0;
 }
 
 // win1.41 00764410 mac 105924a0 Villager::PerformInspectionReaction(void)
-bool Villager::PerformInspectionReaction()
+bool32_t Villager::PerformInspectionReaction()
 {
     return 0;
 }
 
 // win1.41 00764490 mac 10592220 Villager::ApproachObjectReaction(void)
-bool Villager::ApproachObjectReaction()
+bool32_t Villager::ApproachObjectReaction()
 {
     return 0;
 }
 
 // win1.41 00764610 mac 10592150 Villager::InitialiseTellOthersAboutObject(void)
-bool Villager::InitialiseTellOthersAboutObject()
+bool32_t Villager::InitialiseTellOthersAboutObject()
 {
     return 0;
 }
 
 // win1.41 00764650 mac 10592100 Villager::TellOthersAboutInterestingObject(void)
-bool Villager::TellOthersAboutInterestingObject()
+bool32_t Villager::TellOthersAboutInterestingObject()
 {
     return 0;
 }
 
 // win1.41 00764660 mac 105920b0 Villager::InitialiseLookAroundForVillagerToTell(void)
-bool Villager::InitialiseLookAroundForVillagerToTell()
+bool32_t Villager::InitialiseLookAroundForVillagerToTell()
 {
     return 0;
 }
 
 // win1.41 00764670 mac 10592060 Villager::LookAroundForVillagerToTell(void)
-bool Villager::LookAroundForVillagerToTell()
+bool32_t Villager::LookAroundForVillagerToTell()
 {
     return 0;
 }
 
 // win1.41 00764680 mac 10592020 Villager::ApproachVillagerToTalkTo(void)
-bool Villager::ApproachVillagerToTalkTo()
+bool32_t Villager::ApproachVillagerToTalkTo()
 {
     return 0;
 }
 
 // win1.41 00764690 mac 10591fd0 Villager::TellParticularVillagerAboutObject(void)
-bool Villager::TellParticularVillagerAboutObject()
+bool32_t Villager::TellParticularVillagerAboutObject()
 {
     return 0;
 }
 
 // win1.41 007646a0 mac 10591f20 Villager::GotoFoodReaction(void)
-bool Villager::GotoFoodReaction()
+bool32_t Villager::GotoFoodReaction()
 {
     return 0;
 }
 
 // win1.41 007646d0 mac 10591e40 Villager::GotoWoodReaction(void)
-bool Villager::GotoWoodReaction()
+bool32_t Villager::GotoWoodReaction()
 {
     return 0;
 }
 
 // win1.41 00764720 mac 10591b50 Villager::ArrivesAtWoodReaction(void)
-bool Villager::ArrivesAtWoodReaction()
+bool32_t Villager::ArrivesAtWoodReaction()
 {
     return 0;
 }
@@ -256,55 +256,55 @@ uint32_t Villager::StandardNumGameTurnsBeforeReactingToWoodAgainFunction(GameThi
 }
 
 // win1.41 00764920 mac 10591770 Villager::ArrivesAtFoodReaction(void)
-bool Villager::ArrivesAtFoodReaction()
+bool32_t Villager::ArrivesAtFoodReaction()
 {
     return 0;
 }
 
 // win1.41 00764aa0 mac 10591600 Villager::InitialiseBewilderedByMagicTreeReaction(void)
-bool Villager::InitialiseBewilderedByMagicTreeReaction()
+bool32_t Villager::InitialiseBewilderedByMagicTreeReaction()
 {
     return 0;
 }
 
 // win1.41 00764b50 mac 10591340 Villager::PerformBewilderedByMagicTreeReaction(void)
-bool Villager::PerformBewilderedByMagicTreeReaction()
+bool32_t Villager::PerformBewilderedByMagicTreeReaction()
 {
     return 0;
 }
 
 // win1.41 00764d10 mac 10591260 Villager::TurnToFaceMagicTree(void)
-bool Villager::TurnToFaceMagicTree()
+bool32_t Villager::TurnToFaceMagicTree()
 {
     return 0;
 }
 
 // win1.41 00764d70 mac 10591140 Villager::LookAtMagicTree(void)
-bool Villager::LookAtMagicTree()
+bool32_t Villager::LookAtMagicTree()
 {
     return 0;
 }
 
 // win1.41 00764df0 mac 10590f30 Villager::IsInterestedInFoodObject(Object *)
-bool Villager::IsInterestedInFoodObject(Object* param_1)
+bool32_t Villager::IsInterestedInFoodObject(Object* param_1)
 {
     return 0;
 }
 
 // win1.41 00764f60 mac 10590c40 Villager::IsInterestedInWoodObject(Object *)
-bool Villager::IsInterestedInWoodObject(Object* param_1)
+bool32_t Villager::IsInterestedInWoodObject(Object* param_1)
 {
     return 0;
 }
 
 // win1.41 00765140 mac 10590b80 Villager::ApproachHandReaction(void)
-bool Villager::ApproachHandReaction()
+bool32_t Villager::ApproachHandReaction()
 {
     return 0;
 }
 
 // win1.41 007651a0 mac 10590a00 Villager::FindNearbyVillagerWhoIsntReacting(void)
-bool Villager::FindNearbyVillagerWhoIsntReacting()
+bool32_t Villager::FindNearbyVillagerWhoIsntReacting()
 {
     return 0;
 }
@@ -316,19 +316,19 @@ uint8_t Villager::ReactToFlyingObjectPriority(Reaction* param_1, Reaction* param
 }
 
 // win1.41 00765320 mac 10590720 Villager::ArrivesAtPickupBallReaction(void)
-bool Villager::ArrivesAtPickupBallReaction()
+bool32_t Villager::ArrivesAtPickupBallReaction()
 {
     return 0;
 }
 
 // win1.41 007653f0 mac 10590650 Villager::WatchFlyingObjectReaction(void)
-bool Villager::WatchFlyingObjectReaction()
+bool32_t Villager::WatchFlyingObjectReaction()
 {
     return 0;
 }
 
 // win1.41 00765450 mac 10590520 Villager::PointAtFlyingObjectReaction(void)
-bool Villager::PointAtFlyingObjectReaction()
+bool32_t Villager::PointAtFlyingObjectReaction()
 {
     return 0;
 }
@@ -345,7 +345,7 @@ uint8_t Villager::ReactToFirePriority(Reaction* param_1, Reaction* param_2)
 }
 
 // win1.41 00765870 mac 1058fce0 Villager::ReactToFire(void)
-bool Villager::ReactToFire()
+bool32_t Villager::ReactToFire()
 {
     return 0;
 }
@@ -367,7 +367,7 @@ void Villager::SetupReactToMagicShield(GameThingWithPos* param_1, Reaction* para
 }
 
 // win1.41 00765e00 mac 1058f550 Villager::AmazedByMagicShieldReaction(void)
-bool Villager::AmazedByMagicShieldReaction()
+bool32_t Villager::AmazedByMagicShieldReaction()
 {
     return 0;
 }
@@ -378,7 +378,7 @@ void Villager::SetupReactToNewBuilding(GameThingWithPos* param_1, Reaction* para
 }
 
 // win1.41 00766130 mac 1058f230 Villager::DanceWhileReacting(void)
-bool Villager::DanceWhileReacting()
+bool32_t Villager::DanceWhileReacting()
 {
     return 0;
 }
@@ -395,25 +395,25 @@ void Villager::SetupReactToTeleport(GameThingWithPos* param_1, Reaction* param_2
 }
 
 // win1.41 007662f0 mac 1058eec0 Villager::GoToTeleportReaction(void)
-bool Villager::GoToTeleportReaction()
+bool32_t Villager::GoToTeleportReaction()
 {
     return 0;
 }
 
 // win1.41 00766380 mac 1058ee60 Villager::GoToTeleportReactionQuickly(void)
-bool Villager::GoToTeleportReactionQuickly()
+bool32_t Villager::GoToTeleportReactionQuickly()
 {
     return 0;
 }
 
 // win1.41 00766390 mac 1058ed70 Villager::ExitReactToTeleport(unsigned char)
-bool Villager::ExitReactToTeleport(unsigned char param_1)
+bool32_t Villager::ExitReactToTeleport(unsigned char param_1)
 {
     return 0;
 }
 
 // win1.41 007663f0 mac 1058eca0 Villager::TeleportReaction(void)
-bool Villager::TeleportReaction()
+bool32_t Villager::TeleportReaction()
 {
     return 0;
 }
@@ -441,25 +441,25 @@ void Villager::SetupReactToDroppedByHand(GameThingWithPos* param_1, Reaction* pa
 }
 
 // win1.41 00766680 mac 1058e5f0 Villager::PointAtDeadPerson(void)
-bool Villager::PointAtDeadPerson()
+bool32_t Villager::PointAtDeadPerson()
 {
     return 0;
 }
 
 // win1.41 00766700 mac 1058e420 Villager::GoTowardsDeadPerson(void)
-bool Villager::GoTowardsDeadPerson()
+bool32_t Villager::GoTowardsDeadPerson()
 {
     return 0;
 }
 
 // win1.41 00766810 mac 1058e390 Villager::LookAtDeadPerson(void)
-bool Villager::LookAtDeadPerson()
+bool32_t Villager::LookAtDeadPerson()
 {
     return 0;
 }
 
 // win1.41 00766850 mac 1058e2b0 Villager::MournDeadPerson(void)
-bool Villager::MournDeadPerson()
+bool32_t Villager::MournDeadPerson()
 {
     return 0;
 }
@@ -470,7 +470,7 @@ void Villager::SetupReactToFainting(GameThingWithPos* param_1, Reaction* param_2
 }
 
 // win1.41 007668e0 mac 1058e1c0 Villager::FaintingReaction(void)
-bool Villager::FaintingReaction()
+bool32_t Villager::FaintingReaction()
 {
     return 1;
 }
@@ -481,13 +481,13 @@ void Villager::SetupReactToConfused(GameThingWithPos* param_1, Reaction* param_2
 }
 
 // win1.41 00766910 mac 1058e090 Villager::StartConfusedReaction(void)
-bool Villager::StartConfusedReaction()
+bool32_t Villager::StartConfusedReaction()
 {
     return 0;
 }
 
 // win1.41 00766930 mac 1058df30 Villager::ConfusedReaction(void)
-bool Villager::ConfusedReaction()
+bool32_t Villager::ConfusedReaction()
 {
     return 0;
 }
@@ -515,25 +515,25 @@ void Villager::SetupReactToCrowd(GameThingWithPos* param_1, Reaction* param_2)
 }
 
 // win1.41 00766a90 mac 1058dac0 Villager::CrowdReaction(void)
-bool Villager::CrowdReaction()
+bool32_t Villager::CrowdReaction()
 {
     return 0;
 }
 
 // win1.41 00766c60 mac 1058d970 Villager::MoveTowardsObjectToLookAt(void)
-bool Villager::MoveTowardsObjectToLookAt()
+bool32_t Villager::MoveTowardsObjectToLookAt()
 {
     return 0;
 }
 
 // win1.41 00766d00 mac 1058d890 Villager::InitialiseImpressedReaction(void)
-bool Villager::InitialiseImpressedReaction()
+bool32_t Villager::InitialiseImpressedReaction()
 {
     return 0;
 }
 
 // win1.41 00766d60 mac 1058d780 Villager::PerformImpressedReaction(void)
-bool Villager::PerformImpressedReaction()
+bool32_t Villager::PerformImpressedReaction()
 {
     return 0;
 }
@@ -550,7 +550,7 @@ void Villager::SetupReactToFight(GameThingWithPos* param_1, Reaction* param_2)
 }
 
 // win1.41 00766e50 mac 1058d3c0 Villager::InitialiseFightReaction(void)
-bool Villager::InitialiseFightReaction()
+bool32_t Villager::InitialiseFightReaction()
 {
     return 0;
 }
@@ -578,13 +578,13 @@ uint8_t Villager::ReactToBreederPriority(Reaction* param_1, Reaction* param_2)
 }
 
 // win1.41 00767280 mac 1058cc50 Villager::ReactToBreeder(void)
-bool Villager::ReactToBreeder()
+bool32_t Villager::ReactToBreeder()
 {
     return 0;
 }
 
 // win1.41 007672c0 mac 1058cba0 Villager::GoAndHaveSexWith(Villager *)
-bool Villager::GoAndHaveSexWith(Villager* param_1)
+bool32_t Villager::GoAndHaveSexWith(Villager* param_1)
 {
     return 0;
 }
@@ -601,19 +601,19 @@ uint8_t Villager::ReactToVillagerInHandPriority(Reaction* param_1, Reaction* par
 }
 
 // win1.41 007673a0 mac 1058c890 Villager::WaitForMate(void)
-bool Villager::WaitForMate()
+bool32_t Villager::WaitForMate()
 {
     return 0;
 }
 
 // win1.41 00767410 mac 1058c850 Villager::EnterDrowning(unsigned char, unsigned char)
-bool Villager::EnterDrowning(unsigned char param_1, unsigned char param_2)
+bool32_t Villager::EnterDrowning(unsigned char param_1, unsigned char param_2)
 {
     return 1;
 }
 
 // win1.41 00767420 mac 1058c810 Villager::ExitDrowning(unsigned char)
-bool Villager::ExitDrowning(unsigned char param_1)
+bool32_t Villager::ExitDrowning(unsigned char param_1)
 {
     return 1;
 }

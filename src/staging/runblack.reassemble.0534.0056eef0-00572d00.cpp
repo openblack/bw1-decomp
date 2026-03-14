@@ -48,7 +48,7 @@ void GameThing::ToBeDeleted(int param_1)
 }
 
 // win1.41 0056fbe0 mac 101724b0 GameThing::Save(GameOSFile &)
-bool32_tcorrect GameThing::Save(GameOSFile& file)
+bool32_t GameThing::Save(GameOSFile& file)
 {
     uint32_t saveType = GetSaveType();
 
@@ -69,7 +69,7 @@ bool32_tcorrect GameThing::Save(GameOSFile& file)
 }
 
 // win1.41 0056fcf0 mac 103807f0 GameThing::Load(GameOSFile &)
-bool32_tcorrect GameThing::Load(GameOSFile& file)
+bool32_t GameThing::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -131,7 +131,7 @@ void GameThing::UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2)
 }
 
 // win1.41 0056fef0 mac 103c2300 GameThing::CheckAndSetSaved(void)
-bool GameThing::CheckAndSetSaved()
+bool32_t GameThing::CheckAndSetSaved()
 {
     return 0;
 }
@@ -170,7 +170,7 @@ void GameThing::SetPlayer(GPlayer* param_1)
 }
 
 // win1.41 005701b0 mac 1007b9d0 GameThingWithPos::IsInteractable(void)
-bool32_tcorrect GameThingWithPos::IsInteractable()
+bool32_t GameThingWithPos::IsInteractable()
 {
     return 0;
 }
@@ -283,13 +283,13 @@ uint32_t GameThingWithPos::GetFOVHelpCondition()
 }
 
 // win1.41 005703f0 mac 10512f10 GameThingWithPos::Save(GameOSFile &)
-bool32_tcorrect GameThingWithPos::Save(GameOSFile& file)
+bool32_t GameThingWithPos::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005704a0 mac 1016a2c0 GameThingWithPos::Load(GameOSFile &)
-bool32_tcorrect GameThingWithPos::Load(GameOSFile& file)
+bool32_t GameThingWithPos::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -358,7 +358,7 @@ void GatheringBox::Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallbac
 }
 
 // win1.41 00571f00 mac 10328c60 SetupStaticTextNoHit::HitTest(int, int)
-bool SetupStaticTextNoHit::HitTest(int x, int y)
+bool32_t SetupStaticTextNoHit::HitTest(int x, int y)
 {
     return 0;
 }

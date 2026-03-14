@@ -119,9 +119,9 @@ public:
     // win1.41 005ce300 mac 10357e40 GInterface::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005d04d0 mac 10358550 GInterface::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 005d0490 mac 103585e0 GInterface::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 005ce2f0 mac 10357e00 GInterface::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005d0590 mac 103581e0 GInterface::SaveExtraData(GameOSFile &)
@@ -129,7 +129,7 @@ public:
     // win1.41 005d0510 mac 10358340 GInterface::ResolveLoad(void)
     virtual void ResolveLoad();
     // win1.41 005ce2e0 mac 10074680 GInterface::IsActive( const(void))
-    virtual bool IsActive();
+    virtual bool32_t IsActive();
     // win1.41 005ce2d0 mac 10357dc0 GInterface::GetText(void)
     virtual const char* GetText();
 
@@ -154,7 +154,7 @@ public:
     // win1.41 005d9130 mac 100315f0 GInterface::UpdateAllLeashes(void)
     void UpdateAllLeashes();
     // win1.41 005d9d80 mac 10004300 GInterface::SendMessageA(INTERFACE_MESSAGE_TYPES, LHCoord *)
-    bool SendMessageA(INTERFACE_MESSAGE_TYPES param_1, LHCoord* param_2);
+    bool32_t SendMessageA(INTERFACE_MESSAGE_TYPES param_1, LHCoord* param_2);
 };
 
 #else // __cplusplus

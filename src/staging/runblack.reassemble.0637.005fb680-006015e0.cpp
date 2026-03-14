@@ -40,73 +40,73 @@ int SpellTeleport::InitWithPos(GameThing* param_1, const MapCoords* param_2, Spe
 }
 
 // win1.41 005fbf50 mac 103b1400 MagicTeleport::Load(GameOSFile &)
-bool32_tcorrect MagicTeleport::Load(GameOSFile& file)
+bool32_t MagicTeleport::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005fbfa0 mac 103b1350 MagicTeleport::Save(GameOSFile &)
-bool32_tcorrect MagicTeleport::Save(GameOSFile& file)
+bool32_t MagicTeleport::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005fc040 mac 103aed40 MagicTeleport::CanBePickedUpByCreature(Creature *)
-bool MagicTeleport::CanBePickedUpByCreature(Creature* param_1)
+bool32_t MagicTeleport::CanBePickedUpByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 005fc050 mac 103aed90 MagicTeleport::CanBeSetOnFire(Creature *)
-bool MagicTeleport::CanBeSetOnFire(Creature* param_1)
+bool32_t MagicTeleport::CanBeSetOnFire(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 005fc060 mac 103aede0 MagicTeleport::CanBeStompedOnByCreature(Creature *)
-bool MagicTeleport::CanBeStompedOnByCreature(Creature* param_1)
+bool32_t MagicTeleport::CanBeStompedOnByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 005fc070 mac 103aee30 MagicTeleport::CanBeThrownByCreature(Creature *)
-bool MagicTeleport::CanBeThrownByCreature(Creature* param_1)
+bool32_t MagicTeleport::CanBeThrownByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 005fc080 mac 103aee80 MagicTeleport::CanBePutInAStoragePit(Creature *)
-bool MagicTeleport::CanBePutInAStoragePit(Creature* param_1)
+bool32_t MagicTeleport::CanBePutInAStoragePit(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 005fc090 mac 103aeed0 MagicTeleport::CanBeDestroyedByStoning(Creature *)
-bool MagicTeleport::CanBeDestroyedByStoning(Creature* param_1)
+bool32_t MagicTeleport::CanBeDestroyedByStoning(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 005fc0a0 mac 103aef20 MagicTeleport::CanBeStonedAndEatenByCreature(Creature *)
-bool MagicTeleport::CanBeStonedAndEatenByCreature(Creature* param_1)
+bool32_t MagicTeleport::CanBeStonedAndEatenByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 005fc0b0 mac 103aef80 MagicTeleport::CanBeExaminedByCreature(Creature *)
-bool MagicTeleport::CanBeExaminedByCreature(Creature* param_1)
+bool32_t MagicTeleport::CanBeExaminedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 005fc0c0 mac 103aefd0 MagicTeleport::CanBeFoughtByCreature(Creature *)
-bool MagicTeleport::CanBeFoughtByCreature(Creature* param_1)
+bool32_t MagicTeleport::CanBeFoughtByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 005fc0d0 mac 103af020 MagicTeleport::CanActAsAContainer(Creature *)
-bool MagicTeleport::CanActAsAContainer(Creature* param_1)
+bool32_t MagicTeleport::CanActAsAContainer(Creature* param_1)
 {
     return 0;
 }
@@ -145,19 +145,19 @@ GPlayer* MagicTeleport::GetPlayer()
 }
 
 // win1.41 005fc440 mac 103b05b0 MagicTeleport::ValidForPlaceInHand(GInterfaceStatus *)
-bool MagicTeleport::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t MagicTeleport::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 005fc470 mac 103b0500 MagicTeleport::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool MagicTeleport::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t MagicTeleport::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 005fc4a0 mac 103b04c0 MagicTeleport::IsSolidToNewAbode(void)
-bool MagicTeleport::IsSolidToNewAbode()
+bool32_t MagicTeleport::IsSolidToNewAbode()
 {
     return 0;
 }
@@ -179,19 +179,19 @@ void MagicTeleport::Draw()
 }
 
 // win1.41 005fcde0 mac 103af230 MagicTeleport::InteractsWithPhysicsObjects(void)
-bool MagicTeleport::InteractsWithPhysicsObjects()
+bool32_t MagicTeleport::InteractsWithPhysicsObjects()
 {
     return 0;
 }
 
 // win1.41 005fcdf0 mac 103af1e0 MagicTeleport::CanBecomeAPhysicsObject(void)
-bool32_tcorrect MagicTeleport::CanBecomeAPhysicsObject()
+bool32_t MagicTeleport::CanBecomeAPhysicsObject()
 {
     return 0;
 }
 
 // win1.41 005fce00 mac 103af190 MagicTeleport::IsEffectReceiver(EffectValues *)
-bool MagicTeleport::IsEffectReceiver(EffectValues* param_1)
+bool32_t MagicTeleport::IsEffectReceiver(EffectValues* param_1)
 {
     return 0;
 }
@@ -241,13 +241,13 @@ void MagicTree::EndOnFire()
 }
 
 // win1.41 005fd110 mac 103b2510 MagicTree::Save(GameOSFile &)
-bool32_tcorrect MagicTree::Save(GameOSFile& file)
+bool32_t MagicTree::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005fd1c0 mac 103b23f0 MagicTree::Load(GameOSFile &)
-bool32_tcorrect MagicTree::Load(GameOSFile& file)
+bool32_t MagicTree::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -270,13 +270,13 @@ GMobileStaticInfo* GMobileStaticInfo::GetInfo()
 }
 
 // win1.41 00600ad0 mac 103b3000 VortexObjectInfo::Save(GameOSFile &)
-bool32_tcorrect VortexObjectInfo::Save(GameOSFile& file)
+bool32_t VortexObjectInfo::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00600bf0 mac 103b2d00 VortexObjectInfo::Load(GameOSFile &)
-bool32_tcorrect VortexObjectInfo::Load(GameOSFile& file)
+bool32_t VortexObjectInfo::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -299,7 +299,7 @@ IMPRESSIVE_TYPE MagicWood::GetImpressiveType()
 }
 
 // win1.41 00600dc0 mac 103b9f50 MagicWood::IsAWoodPileOutsideStoragePit(Creature *)
-bool MagicWood::IsAWoodPileOutsideStoragePit(Creature* param_1)
+bool32_t MagicWood::IsAWoodPileOutsideStoragePit(Creature* param_1)
 {
     return 0;
 }
@@ -327,13 +327,13 @@ void MagicWood::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 }
 
 // win1.41 00600f20 mac 103ba0b0 MagicWood::Save(GameOSFile &)
-bool32_tcorrect MagicWood::Save(GameOSFile& file)
+bool32_t MagicWood::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00600f60 mac 103ba020 MagicWood::Load(GameOSFile &)
-bool32_tcorrect MagicWood::Load(GameOSFile& file)
+bool32_t MagicWood::Load(GameOSFile& file)
 {
     return 0;
 }

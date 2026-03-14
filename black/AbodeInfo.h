@@ -105,7 +105,7 @@ public:
     // Non-virtual methods
 
     // win1.41 00404b10 mac 1015a260 GAbodeInfo::IsOkToCreateAtPos(MapCoords const &, float, float, Town *) const
-    bool IsOkToCreateAtPos(const MapCoords& coords, float param_2, float param_3, Town* town) const;
+    bool32_t IsOkToCreateAtPos(const MapCoords& coords, float param_2, float param_3, Town* town) const;
     // win1.41 00405a60 mac inlined GAbodeInfo::GetDescription(void)
     const char* GetDescription();
     // win1.41 0042e520 mac inlined GAbodeInfo::LoadBinary(LHFile *)

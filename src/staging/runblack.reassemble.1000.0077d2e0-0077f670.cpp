@@ -11,13 +11,13 @@ uint32_t WorshipSite::GetScriptObjectType()
 }
 
 // win1.41 0077d2f0 mac 105ad890 WorshipSite::Save(GameOSFile &)
-bool32_tcorrect WorshipSite::Save(GameOSFile& file)
+bool32_t WorshipSite::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0077d700 mac 105acc40 WorshipSite::Load(GameOSFile &)
-bool32_tcorrect WorshipSite::Load(GameOSFile& file)
+bool32_t WorshipSite::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -57,13 +57,13 @@ uint32_t WorshipSite::GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1
 }
 
 // win1.41 0077dec0 mac 105ac190 WorshipSite::IsResourceStore(RESOURCE_TYPE)
-bool WorshipSite::IsResourceStore(RESOURCE_TYPE param_1)
+bool32_t WorshipSite::IsResourceStore(RESOURCE_TYPE param_1)
 {
     return 0;
 }
 
 // win1.41 0077def0 mac 105ac090 WorshipSite::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
-bool WorshipSite::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus* param_2)
+bool32_t WorshipSite::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus* param_2)
 {
     return 0;
 }
@@ -91,7 +91,7 @@ float WorshipSite::GetRadiusMultiplierForApplyingPotToPos()
 }
 
 // win1.41 0077e7b0 mac 105ab190 WorshipSite::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-bool WorshipSite::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
+bool32_t WorshipSite::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
 {
     return 0;
 }
@@ -159,7 +159,7 @@ WorshipSite* WorshipSpellIcon::GetWorshipSite()
 }
 
 // win1.41 0077f0b0 mac 105b42c0 WorshipSpellIcon::IsEffectReceiver(EffectValues *)
-bool WorshipSpellIcon::IsEffectReceiver(EffectValues* param_1)
+bool32_t WorshipSpellIcon::IsEffectReceiver(EffectValues* param_1)
 {
     return 0;
 }

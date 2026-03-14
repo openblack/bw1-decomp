@@ -49,7 +49,7 @@ public:
     // win1.41 0072afc0 mac 1052d9d0 GSpellSeedInfo::GetMagicTypeFromPULevel(POWER_UP_TYPE) const
     MAGIC_TYPE GetMagicTypeFromPULevel(POWER_UP_TYPE power_type);
     // win1.41 0072b060 mac inlined GSpellSeedInfo::SpellSeedIsOfMagicType(MAGIC_TYPE) const
-    bool SpellSeedIsOfMagicType(MAGIC_TYPE type);
+    bool32_t SpellSeedIsOfMagicType(MAGIC_TYPE type);
 };
 
 #else // __cplusplus

@@ -44,9 +44,9 @@ public:
     // win1.41 0050a990 mac inlined Creche::GetArrivePos(MapCoords *)
     virtual MapCoords* GetArrivePos(MapCoords* param_1);
     // win1.41 0050a9b0 mac 102a3c40 Creche::CanActAsAContainer(Creature *)
-    virtual bool CanActAsAContainer(Creature* param_1);
+    virtual bool32_t CanActAsAContainer(Creature* param_1);
     // win1.41 0050a9c0 mac 102a3c90 Creche::IsStoragePit(Creature *)
-    virtual bool IsStoragePit(Creature* param_1);
+    virtual bool32_t IsStoragePit(Creature* param_1);
     // win1.41 0050ab90 mac 102a3d80 Creche::ReduceLife(float, GPlayer *)
     virtual void ReduceLife(float param_1, GPlayer* param_2);
     // win1.41 0050a9d0 mac 102a3cd0 Creche::Get3DType(void)

@@ -35,7 +35,7 @@ public:
     // Override methods
 
     // win1.41 0040d310 mac 101670b0 SetupBigButton::HitTest(int, int)
-    virtual bool HitTest(int x, int y);
+    virtual bool32_t HitTest(int x, int y);
     // win1.41 0040ceb0 mac 103deac0 SetupBigButton::Draw(bool, bool)
     virtual void Draw(bool hovered, bool selected);
     // win1.41 0040d2f0 mac 101689f0 SetupBigButton::KeyDown(int, int)

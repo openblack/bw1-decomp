@@ -60,9 +60,9 @@ public:
     // win1.41 0055dba0 mac 1055bf20 TownCentre::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00744880 mac 10559dc0 TownCentre::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 00744830 mac 10559e60 TownCentre::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0055db90 mac 1055bee0 TownCentre::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007448c0 mac 10559d40 TownCentre::ResolveLoad(void)
@@ -70,13 +70,13 @@ public:
     // win1.41 007449e0 mac inlined TownCentre::GetArrivePos(MapCoords *)
     virtual MapCoords* GetArrivePos(MapCoords* param_1);
     // win1.41 0055db60 mac 1055be20 TownCentre::IsCastShadowAtNight(void)
-    virtual bool IsCastShadowAtNight();
+    virtual bool32_t IsCastShadowAtNight();
     // win1.41 0055db70 mac 1055be60 TownCentre::IsTownCentre(void)
-    virtual bool IsTownCentre();
+    virtual bool32_t IsTownCentre();
     // win1.41 0055db40 mac 1055bd90 TownCentre::CanActAsAContainer(Creature *)
-    virtual bool CanActAsAContainer(Creature* param_1);
+    virtual bool32_t CanActAsAContainer(Creature* param_1);
     // win1.41 0055db50 mac 1055bde0 TownCentre::IsStoragePit(Creature *)
-    virtual bool IsStoragePit(Creature* param_1);
+    virtual bool32_t IsStoragePit(Creature* param_1);
     // win1.41 007445d0 mac 10559f30 TownCentre::ReduceLife(float, GPlayer *)
     virtual void ReduceLife(float param_1, GPlayer* param_2);
     // win1.41 00744320 mac 1055a570 TownCentre::IncreaseLife(float)
@@ -94,7 +94,7 @@ public:
     // win1.41 0055db10 mac 1055bcb0 TownCentre::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
     // win1.41 00743bc0 mac 1055b860 TownCentre::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 00744380 mac 1055a500 TownCentre::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 00744140 mac 1055a800 TownCentre::SaveObject(LHOSFile &, MapCoords const &)
@@ -112,9 +112,9 @@ public:
     // win1.41 00744a00 mac 105599a0 TownCentre::StopBeingFunctional(GPlayer *)
     virtual void StopBeingFunctional(GPlayer* param_1);
     // win1.41 0055db30 mac 1055bd40 TownCentre::CausesTownEmergencyIfDamaged(void)
-    virtual bool CausesTownEmergencyIfDamaged();
+    virtual bool32_t CausesTownEmergencyIfDamaged();
     // win1.41 0055db80 mac 1055bea0 TownCentre::CanBeHiddenIn(void)
-    virtual bool CanBeHiddenIn();
+    virtual bool32_t CanBeHiddenIn();
 
     // Static methods
 
@@ -137,7 +137,7 @@ public:
     // win1.41 0069bd60 mac 10066090 TownCentre::DrawPSys(void)
     void DrawPSys();
     // win1.41 00743da0 mac 1055b260 TownCentre::CreateTotemIfNecessary(void)
-    bool CreateTotemIfNecessary();
+    bool32_t CreateTotemIfNecessary();
     // win1.41 00743f20 mac 1055af50 TownCentre::GetTotemPos(void)
     MapCoords* GetTotemPos(MapCoords* coords);
     // win1.41 00743fa0 mac 1055ae80 TownCentre::FindSpellIcon(SPELL_SEED_TYPE)
@@ -145,7 +145,7 @@ public:
     // win1.41 00744010 mac 1055ad20 TownCentre::AddPowerUp(SPELL_SEED_TYPE, POWER_UP_TYPE)
     void AddPowerUp(SPELL_SEED_TYPE seed_type, POWER_UP_TYPE power_up_type);
     // win1.41 00744050 mac 1055aac0 TownCentre::AddSpell(SPELL_SEED_TYPE)
-    bool AddSpell(SPELL_SEED_TYPE seed_type);
+    bool32_t AddSpell(SPELL_SEED_TYPE seed_type);
 };
 
 #else // __cplusplus

@@ -54,13 +54,13 @@ FireGraphic* FireEffect::CreateSprites()
 }
 
 // win1.41 00730b00 mac 1014c110 FireEffect::Save(GameOSFile &)
-bool32_tcorrect FireEffect::Save(GameOSFile& file)
+bool32_t FireEffect::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00730df0 mac 1014bcc0 FireEffect::Load(GameOSFile &)
-bool32_tcorrect FireEffect::Load(GameOSFile& file)
+bool32_t FireEffect::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -81,19 +81,19 @@ FireGraphic::SpritePos::~SpritePos()
 }
 
 // win1.41 00732630 mac 101499d0 Object::GetPSysFireFlameMatrix(LHMatrix *)
-bool Object::GetPSysFireFlameMatrix(LHMatrix* matrix)
+bool32_t Object::GetPSysFireFlameMatrix(LHMatrix* matrix)
 {
     return 0;
 }
 
 // win1.41 00732660 mac 10149810 Object::GetPSysFireWorldFlamePos(LHPoint const &, long, LHPoint *)
-bool Object::GetPSysFireWorldFlamePos(const LHPoint& param_1, int param_2, LHPoint* param_3)
+bool32_t Object::GetPSysFireWorldFlamePos(const LHPoint& param_1, int param_2, LHPoint* param_3)
 {
     return 0;
 }
 
 // win1.41 00732770 mac 10149520 Object::GetPSysFireLocalRndFlamePos(LHPoint *, long *)
-bool Object::GetPSysFireLocalRndFlamePos(LHPoint* point, int* param_2)
+bool32_t Object::GetPSysFireLocalRndFlamePos(LHPoint* point, int* param_2)
 {
     return 0;
 }
@@ -171,7 +171,7 @@ MapCoords* StoragePit::GetResourceNearestEdge(MapCoords* param_1, RESOURCE_TYPE 
 }
 
 // win1.41 00733550 mac inlined StoragePit::IsPoisonedResource(void)
-bool StoragePit::IsPoisonedResource()
+bool32_t StoragePit::IsPoisonedResource()
 {
     return 0;
 }
@@ -187,7 +187,7 @@ void StoragePit::SetPoisonedResource(RESOURCE_TYPE param_1, int param_2)
 }
 
 // win1.41 007336b0 mac 10151ed0 StoragePit::IsPoisoned(void)
-bool StoragePit::IsPoisoned()
+bool32_t StoragePit::IsPoisoned()
 {
     return 0;
 }
@@ -198,25 +198,25 @@ void StoragePit::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 00733750 mac 10151c60 StoragePit::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-bool StoragePit::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
+bool32_t StoragePit::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
 {
     return 0;
 }
 
 // win1.41 00733810 mac 101519d0 StoragePit::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
-bool StoragePit::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus* param_2)
+bool32_t StoragePit::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus* param_2)
 {
     return 0;
 }
 
 // win1.41 007338d0 mac 10151930 StoragePit::Save(GameOSFile &)
-bool32_tcorrect StoragePit::Save(GameOSFile& file)
+bool32_t StoragePit::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00733920 mac 10151890 StoragePit::Load(GameOSFile &)
-bool32_tcorrect StoragePit::Load(GameOSFile& file)
+bool32_t StoragePit::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -264,13 +264,13 @@ uint32_t GWaterfall::SaveObject(LHOSFile& file, const MapCoords& coords)
 }
 
 // win1.41 00734380 mac 10153ac0 GStream::Save(GameOSFile &)
-bool32_tcorrect GStream::Save(GameOSFile& file)
+bool32_t GStream::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007344e0 mac 10153560 GStream::Load(GameOSFile &)
-bool32_tcorrect GStream::Load(GameOSFile& file)
+bool32_t GStream::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -281,13 +281,13 @@ void GStream::ResolveLoad()
 }
 
 // win1.41 00734650 mac 101534b0 GWaterfall::Save(GameOSFile &)
-bool32_tcorrect GWaterfall::Save(GameOSFile& file)
+bool32_t GWaterfall::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00734660 mac 10153470 GWaterfall::Load(GameOSFile &)
-bool32_tcorrect GWaterfall::Load(GameOSFile& file)
+bool32_t GWaterfall::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -298,7 +298,7 @@ void GStreetLantern::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 }
 
 // win1.41 007349d0 mac 10535050 GStreetLantern::InteractsWithPhysicsObjects(void)
-bool GStreetLantern::InteractsWithPhysicsObjects()
+bool32_t GStreetLantern::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -320,13 +320,13 @@ uint32_t GStreetLantern::SaveObject(LHOSFile& file, const MapCoords& coords)
 }
 
 // win1.41 00734be0 mac 10534ab0 GStreetLantern::Load(GameOSFile &)
-bool32_tcorrect GStreetLantern::Load(GameOSFile& file)
+bool32_t GStreetLantern::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00734c90 mac 10534980 GStreetLantern::Save(GameOSFile &)
-bool32_tcorrect GStreetLantern::Save(GameOSFile& file)
+bool32_t GStreetLantern::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -338,7 +338,7 @@ uint32_t GStreetLantern::GetScriptObjectType()
 }
 
 // win1.41 00734d50 mac 10534800 GStreetLantern::CreatureMustAvoid(Creature *)
-bool GStreetLantern::CreatureMustAvoid(Creature* param_1)
+bool32_t GStreetLantern::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }
@@ -355,13 +355,13 @@ float GStreetLight::GetDistanceFromObject(const MapCoords& param_1)
 }
 
 // win1.41 00735140 mac 10535910 GStreetLight::Save(GameOSFile &)
-bool32_tcorrect GStreetLight::Save(GameOSFile& file)
+bool32_t GStreetLight::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00735160 mac 105358a0 GStreetLight::Load(GameOSFile &)
-bool32_tcorrect GStreetLight::Load(GameOSFile& file)
+bool32_t GStreetLight::Load(GameOSFile& file)
 {
     return 0;
 }

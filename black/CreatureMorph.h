@@ -3842,7 +3842,7 @@ public:
     // win1.41 004842b0 mac 101f4ce0 LH3DCreature::GetSafeBuffer(void)
     uint8_t* GetSafeBuffer();
     // win1.41 004842d0 mac 101f4c90 LH3DCreature::IsPerformingBodyAction(void)
-    bool IsPerformingBodyAction();
+    bool32_t IsPerformingBodyAction();
     // win1.41 0048b780 mac 101eb040 LH3DCreature::GetObjectActionStatus(void)
     uint32_t GetObjectActionStatus();
 };

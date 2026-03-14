@@ -36,7 +36,7 @@ void Living::ToBeDeleted(int param_1)
 }
 
 // win1.41 005ec1d0 mac 103831d0 Living::InvalidState(void)
-bool Living::InvalidState()
+bool32_t Living::InvalidState()
 {
     return 0;
 }
@@ -71,7 +71,7 @@ void Living::MoveByTeleport(const MapCoords* param_1)
 }
 
 // win1.41 005ec390 mac 10382b30 Living::SetDying(void)
-bool Living::SetDying()
+bool32_t Living::SetDying()
 {
     return 0;
 }
@@ -83,7 +83,7 @@ uint32_t Living::GetNumTurnsToDieOver()
 }
 
 // win1.41 005ec4b0 mac 10382830 Living::Downed(void)
-bool Living::Downed()
+bool32_t Living::Downed()
 {
     return 0;
 }
@@ -95,7 +95,7 @@ uint32_t Living::LookAtObject(GameThingWithPos* param_1, unsigned long param_2)
 }
 
 // win1.41 005ec550 mac 10382540 Living::LookAtPos(MapCoords const &, ulong)
-bool Living::LookAtPos(MapCoords* pos, int param_2)
+bool32_t Living::LookAtPos(MapCoords* pos, int param_2)
 {
     return 0;
 }
@@ -106,7 +106,7 @@ void Living::ProcessLiving()
 }
 
 // win1.41 005ec960 mac 1004eb50 Living::IsReadyForNewAnimation(unsigned long)
-bool Living::IsReadyForNewAnimation(uint32_t index)
+bool32_t Living::IsReadyForNewAnimation(uint32_t index)
 {
     return 0;
 }
@@ -133,7 +133,7 @@ void Living::SetTopStateToFinal()
 }
 
 // win1.41 005ecaa0 mac inlined Living::IsDeathState( const(VILLAGER_STATES))
-bool Living::IsDeathState(VILLAGER_STATES param_1)
+bool32_t Living::IsDeathState(VILLAGER_STATES param_1)
 {
     return 0;
 }
@@ -165,7 +165,7 @@ void Living::SetAnim__li(int param_1, int param_2)
 }
 
 // win1.41 005ecc10 mac 10084310 Living::IsDancing(void)
-bool Living::IsDancing()
+bool32_t Living::IsDancing()
 {
     return 0;
 }
@@ -181,7 +181,7 @@ void LivingAction::SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state)
 }
 
 // win1.41 005eccb0 mac 10381220 Living::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool Living::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t Living::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -199,7 +199,7 @@ uint32_t Living::MoveOnStructure()
 }
 
 // win1.41 005ecdb0 mac 10380b40 Living::MoveInFlock(void)
-bool Living::MoveInFlock()
+bool32_t Living::MoveInFlock()
 {
     return 0;
 }
@@ -211,7 +211,7 @@ MapCoords* Living::GetFlockPos()
 }
 
 // win1.41 005ecf70 mac 1004bf90 Living::IAmFlockLeader(void)
-bool Living::IAmFlockLeader()
+bool32_t Living::IAmFlockLeader()
 {
     return 0;
 }
@@ -251,7 +251,7 @@ void Living::GetBoundingSphere(LHPoint* param_1, float* param_2)
 }
 
 // win1.41 005ed370 mac 103803b0 Living::HasSunk(void)
-bool Living::HasSunk()
+bool32_t Living::HasSunk()
 {
     return 0;
 }
@@ -262,7 +262,7 @@ void Living::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 005ed4f0 mac 103801d0 Living::CanBecomeAPhysicsObject(void)
-bool32_tcorrect Living::CanBecomeAPhysicsObject()
+bool32_t Living::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -334,7 +334,7 @@ int Living::ExitDanceInScript(VILLAGER_STATES param_1)
 }
 
 // win1.41 005edba0 mac 1037f690 Living::CreatureMustAvoid(Creature *)
-bool Living::CreatureMustAvoid(Creature* param_1)
+bool32_t Living::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }
@@ -393,7 +393,7 @@ uint32_t Living::MoveAlongPath()
 }
 
 // win1.41 005ee550 mac 1037e4a0 Living::CanBeHealedByHealSpell(void)
-bool Living::CanBeHealedByHealSpell()
+bool32_t Living::CanBeHealedByHealSpell()
 {
     return 0;
 }
@@ -410,13 +410,13 @@ void Living::SetFlock(Flock* param_1)
 }
 
 // win1.41 005ee630 mac 1037ddd0 Living::Save(GameOSFile &)
-bool32_tcorrect Living::Save(GameOSFile& file)
+bool32_t Living::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005ee960 mac 1037d8d0 Living::Load(GameOSFile &)
-bool32_tcorrect Living::Load(GameOSFile& file)
+bool32_t Living::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -427,13 +427,13 @@ void Living::ResolveLoad()
 }
 
 // win1.41 005eed30 mac 1037d620 DataPath::Save(GameOSFile &)
-bool32_tcorrect DataPath::Save(GameOSFile& file)
+bool32_t DataPath::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005eeec0 mac 1037d3e0 DataPath::Load(GameOSFile &)
-bool32_tcorrect DataPath::Load(GameOSFile& file)
+bool32_t DataPath::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -478,7 +478,7 @@ void Living::RemoveFromDance(int param_1)
 }
 
 // win1.41 005ef9c0 mac 10384160 Living::CalculateDancePosition(MapCoords const &, MapCoords *)
-bool Living::CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2)
+bool32_t Living::CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2)
 {
     return 0;
 }

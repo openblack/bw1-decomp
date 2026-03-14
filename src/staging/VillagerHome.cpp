@@ -14,67 +14,67 @@ uint8_t villager_home_unknown_data_0x00c24488[] = {
 };
 
 // win1.41 0075fea0 mac 10097120 Villager::HomeDecideWhatToDo(void)
-bool Villager::HomeDecideWhatToDo()
+bool32_t Villager::HomeDecideWhatToDo()
 {
     return false;
 }
 
 // win1.41 0075ff80 mac 1000a8c0 Villager::CheckNeededForSomething(void)
-bool Villager::CheckNeededForSomething()
+bool32_t Villager::CheckNeededForSomething()
 {
     return false;
 }
 
 // win1.41 0075ffb0 mac 105894c0 Villager::HomeNothingToDo(void)
-bool Villager::HomeNothingToDo()
+bool32_t Villager::HomeNothingToDo()
 {
     return false;
 }
 
 // win1.41 00760000 mac 10589480 Villager::NothingToDo(void)
-bool Villager::NothingToDo()
+bool32_t Villager::NothingToDo()
 {
     return true;
 }
 
 // win1.41 00760010 mac 10096ee0 Villager::CheckNeededForSpecial(void)
-bool Villager::CheckNeededForSpecial()
+bool32_t Villager::CheckNeededForSpecial()
 {
     return false;
 }
 
 // win1.41 00760050 mac 10095a70 Villager::CheckSatisfyOwnDesire(float)
-bool Villager::CheckSatisfyOwnDesire(float param_1)
+bool32_t Villager::CheckSatisfyOwnDesire(float param_1)
 {
     return false;
 }
 
 // win1.41 00760110 mac 1000c610 Villager::CheckNeedsAtHome(void)
-bool Villager::CheckNeedsAtHome()
+bool32_t Villager::CheckNeedsAtHome()
 {
     return false;
 }
 
 // win1.41 00760240 mac 105892c0 Villager::CheckIllAtHome(void)
-bool Villager::CheckIllAtHome()
+bool32_t Villager::CheckIllAtHome()
 {
     return false;
 }
 
 // win1.41 00760250 mac 10589160 Villager::GoHomeDropResource(void)
-bool Villager::GoHomeDropResource()
+bool32_t Villager::GoHomeDropResource()
 {
     return false;
 }
 
 // win1.41 00760270 mac 1009edb0 Villager::GoHome(void)
-bool Villager::GoHome()
+bool32_t Villager::GoHome()
 {
     return false;
 }
 
 // win1.41 00760280 mac 1009a4b0 Villager::DoGoingHome(VILLAGER_STATES, VILLAGER_STATES)
-bool Villager::DoGoingHome(VILLAGER_STATES state_1, VILLAGER_STATES state_2)
+bool32_t Villager::DoGoingHome(VILLAGER_STATES state_1, VILLAGER_STATES state_2)
 {
     return false;
 }
@@ -86,7 +86,7 @@ Town* Villager::GetTentPos(MapCoords* coords)
 }
 
 // win1.41 007606e0 mac 10588820 Villager::Landed(void)
-bool Villager::Landed()
+bool32_t Villager::Landed()
 {
     return false;
 }
@@ -98,145 +98,145 @@ uint32_t Villager::ArrivesHome()
 }
 
 // win1.41 00760b10 mac 10004a80 Villager::AtHome(void)
-bool Villager::AtHome()
+bool32_t Villager::AtHome()
 {
     return false;
 }
 
 // win1.41 00760b20 mac 10588720 Villager::SitsDownToDinner(void)
-bool Villager::SitsDownToDinner()
+bool32_t Villager::SitsDownToDinner()
 {
     return true;
 }
 
 // win1.41 00760b30 mac 10003aa0 Villager::GotoBedAtHome(void)
-bool Villager::GotoBedAtHome()
+bool32_t Villager::GotoBedAtHome()
 {
     return false;
 }
 
 // win1.41 00760b60 mac 1009af60 Villager::CheckWhenGoingToBed(void)
-bool Villager::CheckWhenGoingToBed()
+bool32_t Villager::CheckWhenGoingToBed()
 {
     return false;
 }
 
 // win1.41 00760c80 mac 10588200 Villager::CheckGetPregnantAtHome(void)
-bool Villager::CheckGetPregnantAtHome()
+bool32_t Villager::CheckGetPregnantAtHome()
 {
     return false;
 }
 
 // win1.41 00760ca0 mac 1000d140 Villager::CheckDeathFromOldAge(void)
-bool Villager::CheckDeathFromOldAge()
+bool32_t Villager::CheckDeathFromOldAge()
 {
     return false;
 }
 
 // win1.41 00760d70 mac 10023200 Villager::SleepingAtHome(void)
-bool Villager::SleepingAtHome()
+bool32_t Villager::SleepingAtHome()
 {
     return false;
 }
 
 // win1.41 00760db0 mac 10587f40 Villager::DoSleeping(float)
-bool Villager::DoSleeping(float param_1)
+bool32_t Villager::DoSleeping(float param_1)
 {
     return false;
 }
 
 // win1.41 00760e50 mac 10587ee0 Villager::WakeUpAtHome(void)
-bool Villager::WakeUpAtHome()
+bool32_t Villager::WakeUpAtHome()
 {
     return false;
 }
 
 // win1.41 00760e60 mac 10587dc0 Villager::StartHavingSex(void)
-bool Villager::StartHavingSex()
+bool32_t Villager::StartHavingSex()
 {
     return false;
 }
 
 // win1.41 00760ee0 mac 10587cd0 Villager::HavingSex(void)
-bool Villager::HavingSex()
+bool32_t Villager::HavingSex()
 {
     return false;
 }
 
 // win1.41 00760f50 mac 10587c50 Villager::StopHavingSex(void)
-bool Villager::StopHavingSex()
+bool32_t Villager::StopHavingSex()
 {
     return false;
 }
 
 // win1.41 00760f80 mac 10587c10 Villager::StartHavingSexAtHome(void)
-bool Villager::StartHavingSexAtHome()
+bool32_t Villager::StartHavingSexAtHome()
 {
     return true;
 }
 
 // win1.41 00760f90 mac 10587ac0 Villager::StartHavingSex(Villager *, VILLAGER_STATES)
-bool Villager::StartHavingSex(Villager* param_1, VILLAGER_STATES param_2)
+bool32_t Villager::StartHavingSex(Villager* param_1, VILLAGER_STATES param_2)
 {
     return false;
 }
 
 // win1.41 00761010 mac 10587a80 Villager::HavingSexAtHome(void)
-bool Villager::HavingSexAtHome()
+bool32_t Villager::HavingSexAtHome()
 {
     return true;
 }
 
 // win1.41 00761020 mac 10587a40 Villager::StopHavingSexAtHome(void)
-bool Villager::StopHavingSexAtHome()
+bool32_t Villager::StopHavingSexAtHome()
 {
     return true;
 }
 
 // win1.41 00761030 mac 10587a00 Villager::WaitForDinner(void)
-bool Villager::WaitForDinner()
+bool32_t Villager::WaitForDinner()
 {
     return true;
 }
 
 // win1.41 00761040 mac 10587960 Villager::GetPromiscuity(void)
-bool Villager::GetPromiscuity()
+bool32_t Villager::GetPromiscuity()
 {
     return false;
 }
 
 // win1.41 00761070 mac 105878e0 Villager::IsAvailableForSex(void)
-bool Villager::IsAvailableForSex()
+bool32_t Villager::IsAvailableForSex()
 {
     return false;
 }
 
 // win1.41 00761090 mac 10587810 Villager::IsSexuallyActive(void)
-bool Villager::IsSexuallyActive()
+bool32_t Villager::IsSexuallyActive()
 {
     return false;
 }
 
 // win1.41 007610d0 mac 10587790 Villager::IsPromiscious(void)
-bool Villager::IsPromiscious()
+bool32_t Villager::IsPromiscious()
 {
     return false;
 }
 
 // win1.41 00761110 mac 105876a0 Villager::FindAMateAtHome(void)
-bool Villager::FindAMateAtHome()
+bool32_t Villager::FindAMateAtHome()
 {
     return false;
 }
 
 // win1.41 00761180 mac 10587620 Villager::CheckForSexAtHome(void)
-bool Villager::CheckForSexAtHome()
+bool32_t Villager::CheckForSexAtHome()
 {
     return false;
 }
 
 // win1.41 007611b0 mac 10587570 Villager::ShallIWaitForDinner(void)
-bool Villager::ShallIWaitForDinner()
+bool32_t Villager::ShallIWaitForDinner()
 {
     return false;
 }
@@ -247,31 +247,31 @@ void Villager::HomeDeleted()
 }
 
 // win1.41 00761220 mac 10587440 Villager::MakeHomeless(void)
-bool Villager::MakeHomeless()
+bool32_t Villager::MakeHomeless()
 {
     return false;
 }
 
 // win1.41 00761240 mac 10587220 Villager::MakeHomelessNoStateChange(void)
-bool Villager::MakeHomelessNoStateChange()
+bool32_t Villager::MakeHomelessNoStateChange()
 {
     return false;
 }
 
 // win1.41 00761320 mac 10587160 Villager::HomelessStart(void)
-bool Villager::HomelessStart()
+bool32_t Villager::HomelessStart()
 {
     return false;
 }
 
 // win1.41 00761360 mac 10586fd0 Villager::CheckHomelessMoveIntoAbode(void)
-bool Villager::CheckHomelessMoveIntoAbode()
+bool32_t Villager::CheckHomelessMoveIntoAbode()
 {
     return false;
 }
 
 // win1.41 007613f0 mac 10586f90 Villager::VillagerGossips(void)
-bool Villager::VillagerGossips()
+bool32_t Villager::VillagerGossips()
 {
     return true;
 }
@@ -282,79 +282,79 @@ void Villager::SetupAfterTapOnAbode(MapCoords* param_1, VILLAGER_STATES param_2)
 }
 
 // win1.41 00761440 mac 10586e70 Villager::AfterTapOnAbode(void)
-bool Villager::AfterTapOnAbode()
+bool32_t Villager::AfterTapOnAbode()
 {
     return false;
 }
 
 // win1.41 00761460 mac 100955e0 Villager::CheckSatisfyRelaxation(void)
-bool Villager::CheckSatisfyRelaxation()
+bool32_t Villager::CheckSatisfyRelaxation()
 {
     return false;
 }
 
 // win1.41 00761490 mac 1009cb70 Villager::CheckSatisfySleep(void)
-bool Villager::CheckSatisfySleep()
+bool32_t Villager::CheckSatisfySleep()
 {
     return false;
 }
 
 // win1.41 00761510 mac 10586c80 Villager::ArtifactDance(void)
-bool Villager::ArtifactDance()
+bool32_t Villager::ArtifactDance()
 {
     return false;
 }
 
 // win1.41 007615c0 mac 105869b0 Villager::WaitForArtifactDance(void)
-bool Villager::WaitForArtifactDance()
+bool32_t Villager::WaitForArtifactDance()
 {
     return false;
 }
 
 // win1.41 00761800 mac 10586960 Villager::EnterWaitForArtifactDance(unsigned char, unsigned char)
-bool Villager::EnterWaitForArtifactDance(unsigned char param_1, unsigned char param_2)
+bool32_t Villager::EnterWaitForArtifactDance(unsigned char param_1, unsigned char param_2)
 {
     return false;
 }
 
 // win1.41 00761810 mac 105867e0 Villager::GoHomeAndChange(void)
-bool Villager::GoHomeAndChange()
+bool32_t Villager::GoHomeAndChange()
 {
     return false;
 }
 
 // win1.41 007618c0 mac 10586680 Villager::ChangeTribeIfRequired(TRIBE_TYPE, int)
-bool Villager::ChangeTribeIfRequired(TRIBE_TYPE param_1, int param_2)
+bool32_t Villager::ChangeTribeIfRequired(TRIBE_TYPE param_1, int param_2)
 {
     return false;
 }
 
 // win1.41 00761980 mac 10586570 Villager::ExitGoHomeAndChange(unsigned char)
-bool Villager::ExitGoHomeAndChange(unsigned char param_1)
+bool32_t Villager::ExitGoHomeAndChange(unsigned char param_1)
 {
     return false;
 }
 
 // win1.41 00761a00 mac 10586340 Villager::ChangeInfo(GVillagerInfo const *)
-bool Villager::ChangeInfo(const GVillagerInfo* param_1)
+bool32_t Villager::ChangeInfo(const GVillagerInfo* param_1)
 {
     return false;
 }
 
 // win1.41 00761ae0 mac 10586240 Villager::SleepInTent(void)
-bool Villager::SleepInTent()
+bool32_t Villager::SleepInTent()
 {
     return false;
 }
 
 // win1.41 00761b40 mac 100957f0 Villager::ExitAtHome(unsigned char)
-bool Villager::ExitAtHome(unsigned char param_1)
+bool32_t Villager::ExitAtHome(unsigned char param_1)
 {
     return false;
 }
 
 // win1.41 00761b70 mac 10586150 Villager::GoHomeFromWorship(void)
-bool Villager::GoHomeFromWorship()
+bool32_t Villager::GoHomeFromWorship()
 {
     return false;
 }

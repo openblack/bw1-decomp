@@ -86,9 +86,9 @@ public:
     // win1.41 00528080 mac 100d6570 Field::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00529d60 mac 100d1eb0 Field::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 00529b10 mac 100d23a0 Field::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00528070 mac 100d6540 Field::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00529330 mac inlined Field::GetArrivePos(MapCoords *)
@@ -98,39 +98,39 @@ public:
     // win1.41 0052a000 mac 100d1d20 Field::GetOverwriteInteractableToolTip(void)
     virtual uint32_t GetOverwriteInteractableToolTip();
     // win1.41 00527f30 mac inlined Field::IsField_1(Creature *)
-    virtual bool IsField(Creature* param_1);
+    virtual bool32_t IsField(Creature* param_1);
     // win1.41 00527f40 mac inlined Field::IsField_0(void)
-    virtual bool IsField();
+    virtual bool32_t IsField();
     // win1.41 00527fd0 mac 100d62f0 Field::CanBeEatenByCreature(Creature *)
-    virtual bool CanBeEatenByCreature(Creature* param_1);
+    virtual bool32_t CanBeEatenByCreature(Creature* param_1);
     // win1.41 00527fe0 mac 100d6340 Field::CanBeSleptNextToByCreature(Creature *)
-    virtual bool CanBeSleptNextToByCreature(Creature* param_1);
+    virtual bool32_t CanBeSleptNextToByCreature(Creature* param_1);
     // win1.41 00527f70 mac 100d6110 Field::CanBePickedUpByCreature(Creature *)
-    virtual bool CanBePickedUpByCreature(Creature* param_1);
+    virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
     // win1.41 00527f80 mac 100d6160 Field::CanBeStompedOnByCreature(Creature *)
-    virtual bool CanBeStompedOnByCreature(Creature* param_1);
+    virtual bool32_t CanBeStompedOnByCreature(Creature* param_1);
     // win1.41 00527f90 mac 100d61b0 Field::CanBeGivenToVillager(Creature *)
-    virtual bool CanBeGivenToVillager(Creature* param_1);
+    virtual bool32_t CanBeGivenToVillager(Creature* param_1);
     // win1.41 00527fa0 mac 100d6200 Field::CanBePutInAStoragePit(Creature *)
-    virtual bool CanBePutInAStoragePit(Creature* param_1);
+    virtual bool32_t CanBePutInAStoragePit(Creature* param_1);
     // win1.41 00527fb0 mac 100d6250 Field::CanBeDestroyedByStoning(Creature *)
-    virtual bool CanBeDestroyedByStoning(Creature* param_1);
+    virtual bool32_t CanBeDestroyedByStoning(Creature* param_1);
     // win1.41 00527fc0 mac 100d62a0 Field::CanBeExaminedByCreature(Creature *)
-    virtual bool CanBeExaminedByCreature(Creature* param_1);
+    virtual bool32_t CanBeExaminedByCreature(Creature* param_1);
     // win1.41 00527ff0 mac 100d6390 Field::IsBeingBuilt(Creature *)
     virtual bool32_t IsBeingBuilt(Creature* param_1);
     // win1.41 00528000 mac 100d63d0 Field::NeedsRepair(Creature *)
     virtual bool32_t NeedsRepair(Creature* param_1);
     // win1.41 00527f60 mac 100d60d0 Field::CanBePoodOn(Creature *)
-    virtual bool CanBePoodOn(Creature* param_1);
+    virtual bool32_t CanBePoodOn(Creature* param_1);
     // win1.41 004e4970 mac 105e46e0 Field::IsFieldWhichNeedsWatering(Creature *)
-    virtual bool IsFieldWhichNeedsWatering(Creature* param_1);
+    virtual bool32_t IsFieldWhichNeedsWatering(Creature* param_1);
     // win1.41 004e4930 mac 105e4760 Field::IsFieldWithFoodInIt(Creature *)
-    virtual bool IsFieldWithFoodInIt(Creature* param_1);
+    virtual bool32_t IsFieldWithFoodInIt(Creature* param_1);
     // win1.41 004e4900 mac 105e47d0 Field::IsFieldBelongingToAnotherPlayer(Creature *)
-    virtual bool IsFieldBelongingToAnotherPlayer(Creature* param_1);
+    virtual bool32_t IsFieldBelongingToAnotherPlayer(Creature* param_1);
     // win1.41 00527f50 mac 100d6050 Field::BenefitsFromHavingWaterSprinkledOnIt(Creature *)
-    virtual bool BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1);
+    virtual bool32_t BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1);
     // win1.41 00528a30 mac 100d4a10 Field::GetMeshRadius( const(void))
     virtual float GetMeshRadius();
     // win1.41 0052a0a0 mac 100d1b50 Field::ReduceLife(float, GPlayer *)
@@ -140,7 +140,7 @@ public:
     // win1.41 005288d0 mac 100d4d30 Field::GetFireGPHXDrawn(bool *, bool *, bool *, bool *)
     virtual void GetFireGPHXDrawn(bool* param_1, bool* param_2, bool* param_3, bool* param_4);
     // win1.41 0052a010 mac 100d1c70 Field::DestroyedByEffect(GPlayer *, float)
-    virtual bool DestroyedByEffect(GPlayer* param_1, float param_2);
+    virtual bool32_t DestroyedByEffect(GPlayer* param_1, float param_2);
     // win1.41 00529020 mac 100533b0 Field::Process(void)
     virtual uint32_t Process();
     // win1.41 00528570 mac 100370e0 Field::Draw(void)
@@ -154,35 +154,35 @@ public:
     // win1.41 00528010 mac 100d2c60 Field::GetResourceType(void)
     virtual RESOURCE_TYPE GetResourceType();
     // win1.41 00528050 mac 100d64c0 Field::IsLockedInInteract(void)
-    virtual bool IsLockedInInteract();
+    virtual bool32_t IsLockedInInteract();
     // win1.41 00529290 mac inlined Field::IsTouching_2( const(MapCoords *))
-    virtual bool IsTouching_2(MapCoords* param_1);
+    virtual bool32_t IsTouching_2(MapCoords* param_1);
     // win1.41 005299e0 mac 100d2a40 Field::ValidForLockedSelectProcess(GInterfaceStatus *)
     virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
     // win1.41 00529900 mac 100d2ac0 Field::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
     virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
     // win1.41 00529a20 mac 100d29b0 Field::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
-    virtual bool NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
+    virtual bool32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
     // win1.41 00529a60 mac 100d28b0 Field::NetworkUnfriendlyEndLockedSelect(void)
-    virtual bool NetworkUnfriendlyEndLockedSelect();
+    virtual bool32_t NetworkUnfriendlyEndLockedSelect();
     // win1.41 00529af0 mac 100d2830 Field::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
-    virtual bool NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
+    virtual bool32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
     // win1.41 00528ef0 mac 100d40d0 Field::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 00529520 mac 100d3560 Field::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 00528040 mac 100d6490 Field::IsTuggable(void)
-    virtual bool IsTuggable();
+    virtual bool32_t IsTuggable();
     // win1.41 00528900 mac 100d4c80 Field::IsEffectReceiver(EffectValues *)
-    virtual bool IsEffectReceiver(EffectValues* param_1);
+    virtual bool32_t IsEffectReceiver(EffectValues* param_1);
     // win1.41 00529ff0 mac inlined Field::CanBeDestroyedBySpell_1(Spell *)
-    virtual bool CanBeDestroyedBySpell(Spell* param_1);
+    virtual bool32_t CanBeDestroyedBySpell(Spell* param_1);
     // win1.41 00528020 mac 100d6410 Field::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 00528030 mac 100d6450 Field::CanBecomeAPhysicsObject(void)
-    virtual bool32_tcorrect CanBecomeAPhysicsObject();
+    virtual bool32_t CanBecomeAPhysicsObject();
     // win1.41 005280c0 mac 100d5880 Field::CreatureMustAvoid(Creature *)
-    virtual bool CreatureMustAvoid(Creature* param_1);
+    virtual bool32_t CreatureMustAvoid(Creature* param_1);
     // win1.41 00529730 mac 100d3050 Field::ProcessInInteract(GInterfaceStatus *)
     virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
     // win1.41 00528ce0 mac 100d4250 Field::SaveObject(LHOSFile &, MapCoords const &)

@@ -94,7 +94,7 @@ struct BindableAction
     // Static methods
 
     // win1.41 0046f3c0 mac 10090c30 BindableAction::IsKeyDown(LH_KEY)
-    static bool IsKeyDown(LH_KEY key);
+    static bool32_t IsKeyDown(LH_KEY key);
 
     // Constructors
 
@@ -104,7 +104,7 @@ struct BindableAction
     // Non-virtual methods
 
     // win1.41 0046f4c0 mac 10090b80 BindableAction::IsKeyBeingPressed(void)
-    bool IsKeyBeingPressed();
+    bool32_t IsKeyBeingPressed();
 };
 
 #else // __cplusplus

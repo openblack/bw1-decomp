@@ -123,19 +123,19 @@ public:
     // win1.41 007502f0 mac 10064390 Villager::GetPlayer(void)
     virtual GPlayer* GetPlayer();
     // win1.41 00751d50 mac 10054860 Villager::IsAvailable(void)
-    virtual bool IsAvailable();
+    virtual bool32_t IsAvailable();
     // win1.41 00751f00 mac 10064360 Villager::GetTown(void)
     virtual Town* GetTown();
     // win1.41 007564d0 mac 10565060 Villager::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
     virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4, const MapCoords* param_5, int param_6);
     // win1.41 00751cf0 mac 100199f0 Villager::IsFunctional(void)
-    virtual bool32_tcorrect IsFunctional();
+    virtual bool32_t IsFunctional();
     // win1.41 0055cb30 mac 10571f80 Villager::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00754580 mac 10568980 Villager::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 00754280 mac 10568d70 Villager::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0055cb20 mac 10571f40 Villager::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00754870 mac 10568900 Villager::ResolveLoad(void)
@@ -147,43 +147,43 @@ public:
     // win1.41 00753110 mac 1056a8c0 Villager::SetSpeedInMetres(float, int)
     virtual void SetSpeedInMetres(float param_1, int param_2);
     // win1.41 00756b30 mac 10563e60 Villager::IsDrowning(void)
-    virtual bool IsDrowning();
+    virtual bool32_t IsDrowning();
     // win1.41 004e4c90 mac 105e3c40 Villager::CanBeHealedByCreature(Creature *)
-    virtual bool CanBeHealedByCreature(Creature* param_1);
+    virtual bool32_t CanBeHealedByCreature(Creature* param_1);
     // win1.41 0055caa0 mac 10148110 Villager::CanBeHelpedByCreature(Creature *)
-    virtual bool CanBeHelpedByCreature(Creature* param_1);
+    virtual bool32_t CanBeHelpedByCreature(Creature* param_1);
     // win1.41 0055ca80 mac 10148050 Villager::CanBeImpressedByCreature(Creature *)
-    virtual bool CanBeImpressedByCreature(Creature* param_1);
+    virtual bool32_t CanBeImpressedByCreature(Creature* param_1);
     // win1.41 0055ca90 mac 101480d0 Villager::CanReceiveGifts(Creature *)
-    virtual bool CanReceiveGifts(Creature* param_1);
+    virtual bool32_t CanReceiveGifts(Creature* param_1);
     // win1.41 004e4b40 mac 105e4090 Villager::CanHaveMagicFoodCastOnMe(Creature *)
-    virtual bool CanHaveMagicFoodCastOnMe(Creature* param_1);
+    virtual bool32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
     // win1.41 0055cab0 mac 1006d800 Villager::IsVillager(Creature *)
-    virtual bool IsVillager(Creature* param_1);
+    virtual bool32_t IsVillager(Creature* param_1);
     // win1.41 004e4d50 mac 105e3950 Villager::IsVillagerFarFromHome(Creature *)
-    virtual bool IsVillagerFarFromHome(Creature* param_1);
+    virtual bool32_t IsVillagerFarFromHome(Creature* param_1);
     // win1.41 004e4510 mac 105e5100 Villager::IsVillagerInTownWithoutManyBreeders(Creature *)
-    virtual bool IsVillagerInTownWithoutManyBreeders(Creature* param_1);
+    virtual bool32_t IsVillagerInTownWithoutManyBreeders(Creature* param_1);
     // win1.41 004e46d0 mac 105e4e90 Villager::IsVillagerNotWorshipping(Creature *)
-    virtual bool IsVillagerNotWorshipping(Creature* param_1);
+    virtual bool32_t IsVillagerNotWorshipping(Creature* param_1);
     // win1.41 004e4b10 mac 105e40e0 Villager::IsVillagerBelongingToOtherPlayer(Creature *)
-    virtual bool IsVillagerBelongingToOtherPlayer(Creature* param_1);
+    virtual bool32_t IsVillagerBelongingToOtherPlayer(Creature* param_1);
     // win1.41 004e4840 mac 105e4a70 Villager::IsVillagerWhoHasNotBeenImpressedRecently(Creature *)
-    virtual bool IsVillagerWhoHasNotBeenImpressedRecently(Creature* param_1);
+    virtual bool32_t IsVillagerWhoHasNotBeenImpressedRecently(Creature* param_1);
     // win1.41 004e4890 mac 105e49d0 Villager::IsVillagerWhoHasNotBeenDancedWithRecently(Creature *)
-    virtual bool IsVillagerWhoHasNotBeenDancedWithRecently(Creature* param_1);
+    virtual bool32_t IsVillagerWhoHasNotBeenDancedWithRecently(Creature* param_1);
     // win1.41 004e3e20 mac 105e68c0 Villager::DoesVillagerBelongToATownWhichIsAlreadyImpressed(Creature *)
-    virtual bool DoesVillagerBelongToATownWhichIsAlreadyImpressed(Creature* param_1);
+    virtual bool32_t DoesVillagerBelongToATownWhichIsAlreadyImpressed(Creature* param_1);
     // win1.41 0076c340 mac 1059db90 Villager::GetWorshipSite(void)
     virtual WorshipSite* GetWorshipSite();
     // win1.41 004e3b60 mac 105e7030 Villager::IsDoingSomethingInteresting(Creature *)
-    virtual bool IsDoingSomethingInteresting(Creature* param_1);
+    virtual bool32_t IsDoingSomethingInteresting(Creature* param_1);
     // win1.41 00532db0 mac 102ba4d0 Villager::IsPlayingFootball(Creature *)
-    virtual bool IsPlayingFootball(Creature* param_1);
+    virtual bool32_t IsPlayingFootball(Creature* param_1);
     // win1.41 00532e00 mac 102ba3f0 Villager::IsPlayingFootballAndMySideHasJustScored(Creature *)
-    virtual bool IsPlayingFootballAndMySideHasJustScored(Creature* param_1);
+    virtual bool32_t IsPlayingFootballAndMySideHasJustScored(Creature* param_1);
     // win1.41 00532e50 mac 102ba300 Villager::IsPlayingFootballAndOtherSideHasJustScored(Creature *)
-    virtual bool IsPlayingFootballAndOtherSideHasJustScored(Creature* param_1);
+    virtual bool32_t IsPlayingFootballAndOtherSideHasJustScored(Creature* param_1);
     // win1.41 004eaba0 mac 1026e3f0 Villager::GetCreatureMimicType(void)
     virtual uint32_t GetCreatureMimicType();
     // win1.41 004d1b40 mac 10243020 Villager::GetHowMuchCreatureWantsToLookAtMe(void)
@@ -191,15 +191,15 @@ public:
     // win1.41 0063b9b0 mac 103da4e0 Villager::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)
     virtual void CalculateWhereIWillBeAfterNSeconds(float param_1, LHPoint* param_2);
     // win1.41 00768630 mac 10597660 Villager::IsReadyForNewScriptAction(void)
-    virtual bool IsReadyForNewScriptAction();
+    virtual bool32_t IsReadyForNewScriptAction();
     // win1.41 0055cb10 mac 10148200 Villager::GetDeathReason(void)
     virtual DEATH_REASON GetDeathReason();
     // win1.41 0055cac0 mac 10478e10 Villager::IsMaleVillager(void)
-    virtual bool32_tcorrect IsMaleVillager();
+    virtual bool32_t IsMaleVillager();
     // win1.41 0055cae0 mac 1033bc40 Villager::IsFemaleVillager(void)
-    virtual bool32_tcorrect IsFemaleVillager();
+    virtual bool32_t IsFemaleVillager();
     // win1.41 0055cb00 mac 1009a450 Villager::IsAChild(void)
-    virtual bool IsAChild();
+    virtual bool32_t IsAChild();
     // win1.41 007562c0 mac 105652e0 Villager::SetSkeleton(int)
     virtual void SetSkeleton(int index);
     // win1.41 00753f20 mac 10569710 Villager::GetQueryFirstEnumText(void)
@@ -213,7 +213,7 @@ public:
     // win1.41 00753020 mac 10005a00 Villager::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 00756460 mac 10094080 Villager::IsReachable(void)
-    virtual bool IsReachable();
+    virtual bool32_t IsReachable();
     // win1.41 00756450 mac 1005f5e0 Villager::InsertMapObject(void)
     virtual void InsertMapObject();
     // win1.41 00750310 mac 10097630 Villager::GetHoldType(void)
@@ -225,7 +225,7 @@ public:
     // win1.41 00753460 mac 1056a0d0 Villager::IncreaseLife(float)
     virtual void IncreaseLife(float param_1);
     // win1.41 007502d0 mac 10570c30 Villager::DestroyedByEffect(GPlayer *, float)
-    virtual bool DestroyedByEffect(GPlayer* param_1, float param_2);
+    virtual bool32_t DestroyedByEffect(GPlayer* param_1, float param_2);
     // win1.41 0055c9c0 mac 10147dd0 Villager::GetMesh( const(void))
     virtual int GetMesh() const;
     // win1.41 0055c9d0 mac inlined Villager::GetDetailMesh(int)
@@ -235,7 +235,7 @@ public:
     // win1.41 0074ff70 mac 1004b3c0 Villager::ProcessState(void)
     virtual uint32_t ProcessState();
     // win1.41 0055ca50 mac 10147fb0 Villager::CanBePickedUp(void)
-    virtual bool CanBePickedUp();
+    virtual bool32_t CanBePickedUp();
     // win1.41 007560e0 mac 10565860 Villager::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
     virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
     // win1.41 0074fc70 mac 10571530 Villager::CallVirtualFunctionsForCreation(MapCoords const &)
@@ -243,15 +243,15 @@ public:
     // win1.41 0055c990 mac 10147d30 Villager::IsABeliever(void)
     virtual bool32_t IsABeliever();
     // win1.41 0076a4c0 mac 1059a990 Villager::SetDying(void)
-    virtual bool SetDying();
+    virtual bool32_t SetDying();
     // win1.41 00753040 mac inlined Villager::IsTouching_2( const(MapCoords *))
-    virtual bool IsTouching(MapCoords* param_1) const;
+    virtual bool32_t IsTouching(MapCoords* param_1) const;
     // win1.41 0055c9a0 mac inlined Villager::IsTouching_3( const(Object *, float))
-    virtual bool IsTouching(Object* param_1, float param_2) const;
+    virtual bool32_t IsTouching(Object* param_1, float param_2) const;
     // win1.41 007564a0 mac 105651b0 Villager::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 00753080 mac 1056a940 Villager::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 00752bd0 mac 100a0960 Villager::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
     // win1.41 00752c40 mac 1056ac90 Villager::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
@@ -259,7 +259,7 @@ public:
     // win1.41 00756ae0 mac 10563ed0 Villager::ThrowObjectFromHand(GInterfaceStatus *, int)
     virtual uint32_t ThrowObjectFromHand(GInterfaceStatus* param_1, int param_2);
     // win1.41 00751d70 mac 1000aef0 Villager::IsEffectReceiver(EffectValues *)
-    virtual bool IsEffectReceiver(EffectValues* param_1);
+    virtual bool32_t IsEffectReceiver(EffectValues* param_1);
     // win1.41 0076aa80 mac 10599f40 Villager::GetImportance(void)
     virtual float GetImportance();
     // win1.41 005efe90 mac 10385750 Villager::InitialisePhysicsFromHand(LHPoint &, LHPoint &, GInterfaceStatus *, Object *, int)
@@ -273,11 +273,11 @@ public:
     // win1.41 005f0a60 mac 103846d0 Villager::EndPhysics(PhysicsObject *, bool)
     virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
     // win1.41 007564c0 mac 10565140 Villager::CanBecomeAPhysicsObject(void)
-    virtual bool32_tcorrect CanBecomeAPhysicsObject();
+    virtual bool32_t CanBecomeAPhysicsObject();
     // win1.41 00750ab0 mac 1056fb10 Villager::HasSunk(void)
-    virtual bool HasSunk();
+    virtual bool32_t HasSunk();
     // win1.41 0075b400 mac 10578430 Villager::IsFireMan(void)
-    virtual bool IsFireMan();
+    virtual bool32_t IsFireMan();
     // win1.41 00753e00 mac 10569a30 Villager::RemoveFromGame(void)
     virtual uint32_t RemoveFromGame();
     // win1.41 0055ca30 mac 10147f70 Villager::GetTastiness(void)
@@ -287,39 +287,39 @@ public:
     // win1.41 00753410 mac 1056a150 Villager::SetFoodSpeedup(bool)
     virtual void SetFoodSpeedup(bool param_1);
     // win1.41 0055c980 mac 10051310 Villager::IsFoodSpeedUp(void)
-    virtual bool IsFoodSpeedUp();
+    virtual bool32_t IsFoodSpeedUp();
     // win1.41 00756ad0 mac 10563fe0 Villager::GetFinalDestPos(MapCoords *)
     virtual MapCoords* GetFinalDestPos(MapCoords* param_1);
     // win1.41 00763b00 mac 10593810 Villager::FleeingFromObjectReaction(void)
-    virtual bool FleeingFromObjectReaction();
+    virtual bool32_t FleeingFromObjectReaction();
     // win1.41 007642c0 mac 105927e0 Villager::LookingAtObjectReaction(void)
-    virtual bool LookingAtObjectReaction();
+    virtual bool32_t LookingAtObjectReaction();
     // win1.41 00764310 mac 10592770 Villager::FleeingAndLookingAtObjectReaction(void)
-    virtual bool FleeingAndLookingAtObjectReaction();
+    virtual bool32_t FleeingAndLookingAtObjectReaction();
     // win1.41 00764320 mac 105926d0 Villager::FollowingObjectReaction(void)
-    virtual bool FollowingObjectReaction();
+    virtual bool32_t FollowingObjectReaction();
     // win1.41 00764350 mac 105925b0 Villager::InspectObjectReaction(void)
-    virtual bool InspectObjectReaction();
+    virtual bool32_t InspectObjectReaction();
     // win1.41 0076a570 mac 1059a890 Villager::Dying(void)
-    virtual bool Dying();
+    virtual bool32_t Dying();
     // win1.41 0076a5e0 mac 1059a580 Villager::Dead(void)
-    virtual bool Dead();
+    virtual bool32_t Dead();
     // win1.41 0076b380 mac 10598f90 Villager::BeingEaten(void)
-    virtual bool BeingEaten();
+    virtual bool32_t BeingEaten();
     // win1.41 007646a0 mac 10591f20 Villager::GotoFoodReaction(void)
-    virtual bool GotoFoodReaction();
+    virtual bool32_t GotoFoodReaction();
     // win1.41 007646d0 mac 10591e40 Villager::GotoWoodReaction(void)
-    virtual bool GotoWoodReaction();
+    virtual bool32_t GotoWoodReaction();
     // win1.41 00756c60 mac 1004d520 Villager::IsMovingForAnimation(void)
-    virtual bool IsMovingForAnimation();
+    virtual bool32_t IsMovingForAnimation();
     // win1.41 00764920 mac 10591770 Villager::ArrivesAtFoodReaction(void)
-    virtual bool ArrivesAtFoodReaction();
+    virtual bool32_t ArrivesAtFoodReaction();
     // win1.41 00764720 mac 10591b50 Villager::ArrivesAtWoodReaction(void)
-    virtual bool ArrivesAtWoodReaction();
+    virtual bool32_t ArrivesAtWoodReaction();
     // win1.41 0076ade0 mac 1000abe0 Villager::InHand(void)
-    virtual bool InHand();
+    virtual bool32_t InHand();
     // win1.41 007515c0 mac 10098ff0 Villager::DecideWhatToDo(void)
-    virtual bool DecideWhatToDo();
+    virtual bool32_t DecideWhatToDo();
     // win1.41 00751040 mac 1056f5e0 Villager::Birthday(void)
     virtual void Birthday();
     // win1.41 007528c0 mac 1056b4c0 Villager::SetAge(unsigned long)
@@ -337,7 +337,7 @@ public:
     // win1.41 00753740 mac 10075d50 Villager::SetStateSpeed(void)
     virtual void SetStateSpeed();
     // win1.41 00753f00 mac inlined Villager::IsFinalState(VILLAGER_STATES)
-    virtual bool IsFinalState(VILLAGER_STATES param_1);
+    virtual bool32_t IsFinalState(VILLAGER_STATES param_1);
     // win1.41 00750110 mac 10066490 Villager::GetAnimId(void)
     virtual ANIM_LIST GetAnimId();
     // win1.41 00752320 mac inlined Villager::CallExitStateFunction(VILLAGER_STATES)
@@ -357,21 +357,21 @@ public:
     // win1.41 0076afe0 mac inlined Villager::EnterInHand(VILLAGER_STATES, VILLAGER_STATES)
     virtual uint32_t EnterInHand(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
     // win1.41 0055c9f0 mac inlined Villager::IsScriptState( const(VILLAGER_STATES))
-    virtual bool IsScriptState(VILLAGER_STATES param_1) const;
+    virtual bool32_t IsScriptState(VILLAGER_STATES param_1) const;
     // win1.41 0055ca10 mac inlined Villager::IsScriptInterruptableState( const(VILLAGER_STATES))
-    virtual bool IsScriptInterruptableState(VILLAGER_STATES param_1) const;
+    virtual bool32_t IsScriptInterruptableState(VILLAGER_STATES param_1) const;
     // win1.41 00752530 mac inlined Villager::IsStateExitFunctionSameAs( const(VILLAGER_STATES))
-    virtual bool IsStateExitFunctionSameAs(VILLAGER_STATES param_1) const;
+    virtual bool32_t IsStateExitFunctionSameAs(VILLAGER_STATES param_1) const;
     // win1.41 007528b0 mac 1056b830 Villager::DebugShowTime(unsigned long, unsigned char, unsigned char)
     virtual uint32_t DebugShowTime(uint32_t param_1, uint8_t param_2, uint8_t param_3);
     // win1.41 00764df0 mac 10590f30 Villager::IsInterestedInFoodObject(Object *)
-    virtual bool IsInterestedInFoodObject(Object* param_1);
+    virtual bool32_t IsInterestedInFoodObject(Object* param_1);
     // win1.41 00764f60 mac 10590c40 Villager::IsInterestedInWoodObject(Object *)
-    virtual bool IsInterestedInWoodObject(Object* param_1);
+    virtual bool32_t IsInterestedInWoodObject(Object* param_1);
     // win1.41 00763390 mac 10021260 Villager::IsAvailableForReaction(REACTION)
-    virtual bool IsAvailableForReaction(REACTION param_1);
+    virtual bool32_t IsAvailableForReaction(REACTION param_1);
     // win1.41 00763410 mac 1000edf0 Villager::IsAvailableForBeliefButNotReaction(REACTION)
-    virtual bool IsAvailableForBeliefButNotReaction(REACTION param_1);
+    virtual bool32_t IsAvailableForBeliefButNotReaction(REACTION param_1);
     // win1.41 007634c0 mac 100072a0 Villager::UpdateHowImpressed(Reaction *, int)
     virtual void UpdateHowImpressed(Reaction* param_1, int param_2);
     // win1.41 00763440 mac inlined Villager::AddReaction(Reaction *, VILLAGER_STATES)
@@ -481,7 +481,7 @@ public:
     // win1.41 00764230 mac 105928c0 Villager::NumGameTurnsBeforeReactingToShieldAgainFunction(GameThingWithPos *, unsigned long, float)
     virtual uint32_t NumGameTurnsBeforeReactingToShieldAgainFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
     // win1.41 0055c970 mac 10064ef0 Villager::IsChild(void)
-    virtual bool IsChild();
+    virtual bool32_t IsChild();
     // win1.41 00751dd0 mac 1004ec00 Villager::GetFinalState(void) const
     virtual VILLAGER_STATES GetFinalState() const;
     // win1.41 00751510 mac 1056ec00 Villager::RemoveFromDance(int)
@@ -491,9 +491,9 @@ public:
     // win1.41 0075bae0 mac 1057b530 Villager::CalculateLifeDesire(void)
     virtual float CalculateLifeDesire();
     // win1.41 004174a0 mac inlined Villager::MoveAllowedForChessGame(void)
-    virtual bool MoveAllowedForChessGame();
+    virtual bool32_t MoveAllowedForChessGame();
     // win1.41 004174b0 mac inlined Villager::AttackAllowedForChessGame(void)
-    virtual bool AttackAllowedForChessGame();
+    virtual bool32_t AttackAllowedForChessGame();
     // win1.41 004174c0 mac inlined Villager::AddToBoxPositionForChessGame(int, int)
     virtual void AddToBoxPositionForChessGame(int param_1, int param_2);
     // win1.41 004174d0 mac inlined Villager::GetBoxXForChessGame(void)
@@ -507,7 +507,7 @@ public:
     // win1.41 00417510 mac inlined Villager::GetTeamForChessGame(void)
     virtual uint32_t GetTeamForChessGame();
     // win1.41 00473ee0 mac inlined Villager::IsPosValidForTurnAngle(MapCoords const &)
-    virtual bool IsPosValidForTurnAngle(const MapCoords* param_1);
+    virtual bool32_t IsPosValidForTurnAngle(const MapCoords* param_1);
     // win1.41 0055ca40 mac 100c54f0 Villager::GetVillagerName(void)
     virtual const char* GetVillagerName(); /* 0xb40 */
     // win1.41 0051b510 mac 10057c40 Villager::DrawVillagerInfo(void)
@@ -542,9 +542,9 @@ public:
     // win1.41 0074fd60 mac 10571210 Villager::DeleteDependancys(void)
     void DeleteDependancys();
     // win1.41 0074fec0 mac 105710c0 Villager::UnemployedJobs(void)
-    bool UnemployedJobs();
+    bool32_t UnemployedJobs();
     // win1.41 0074ff60 mac 10571080 Villager::SetupJobLocation(void)
-    bool SetupJobLocation();
+    bool32_t SetupJobLocation();
     // win1.41 00750060 mac 1009a920 Villager::FinishedIntoOutOfAnimation(void)
     void FinishedIntoOutOfAnimation();
     // win1.41 007501a0 mac 1005ffb0 Villager::SetStateCarriedObject(void)
@@ -574,15 +574,15 @@ public:
     // win1.41 00750de0 mac 1056f7b0 Villager::SetAbode(Abode*)
     void SetAbode(Town* town);
     // win1.41 00750e10 mac 1056f660 Villager::GetRandomLookAhead(MapCoords *, float)
-    bool GetRandomLookAhead(MapCoords* param_1, float param_2);
+    bool32_t GetRandomLookAhead(MapCoords* param_1, float param_2);
     // win1.41 00750ed0 mac 10068820 Villager::SetSpeed__8VillagerFli(int, int)
     void SetSpeed(int base_speed, int scale_speed);
     // win1.41 00751050 mac 10021a00 Villager::CheckChildGrownUp(void)
     int CheckChildGrownUp();
     // win1.41 00751110 mac 1056f4c0 Villager::IsAMother(void)
-    bool IsAMother();
+    bool32_t IsAMother();
     // win1.41 00751190 mac 1056f440 Villager::StartMoveToObject(Object *, VILLAGER_STATES)
-    bool StartMoveToObject(Object* param_1, VILLAGER_STATES param_2);
+    bool32_t StartMoveToObject(Object* param_1, VILLAGER_STATES param_2);
     // win1.41 007511b0 mac 1009cd40 Villager::DropResource(RESOURCE_TYPE, unsigned short)
     uint16_t DropResource(RESOURCE_TYPE param_1, unsigned short param_2);
     // win1.41 007511e0 mac 1056f310 Villager::DropFood(unsigned short)
@@ -590,7 +590,7 @@ public:
     // win1.41 00751240 mac 1056f220 Villager::DropWood(unsigned short)
     uint16_t DropWood(unsigned short param_1);
     // win1.41 007512a0 mac 1056f160 Villager::IsEnoughFoodInStoragePitForDinner(void)
-    bool IsEnoughFoodInStoragePitForDinner();
+    bool32_t IsEnoughFoodInStoragePitForDinner();
     // win1.41 007512e0 mac 1056efc0 Villager::FindPotAroundToGoto(RESOURCE_TYPE, unsigned long &, int)
     Pot* FindPotAroundToGoto(RESOURCE_TYPE param_1, unsigned long* param_2, int param_3);
     // win1.41 007513f0 mac 1056ee50 Villager::PickupResource(RESOURCE_TYPE, short, unsigned char)
@@ -604,23 +604,23 @@ public:
     // win1.41 007514f0 mac 1056ec50 Villager::GetWoodCapacity(void)
     int GetWoodCapacity();
     // win1.41 00751520 mac 1056eb50 Villager::IsRandomlyLazy(void)
-    bool IsRandomlyLazy();
+    bool32_t IsRandomlyLazy();
     // win1.41 00751570 mac 100007e0 Villager::GetResourceHeld(RESOURCE_TYPE &)
-    bool GetResourceHeld(RESOURCE_TYPE* param_1);
+    bool32_t GetResourceHeld(RESOURCE_TYPE* param_1);
     // win1.41 007516e0 mac 10003bb0 Villager::CheckTakeResourcesToStoragePit(void)
-    bool CheckTakeResourcesToStoragePit();
+    bool32_t CheckTakeResourcesToStoragePit();
     // win1.41 00751720 mac 1056e1f0 Villager::DiscipleDecideWhatToDo(void)
-    bool DiscipleDecideWhatToDo();
+    bool32_t DiscipleDecideWhatToDo();
     // win1.41 00751970 mac 1056e1b0 Villager::GetPrayerSite(void)
-    bool GetPrayerSite();
+    bool32_t GetPrayerSite();
     // win1.41 00751980 mac 1056e0e0 Villager::RestartDance(VILLAGER_STATES)
-    bool RestartDance(VILLAGER_STATES param_1);
+    bool32_t RestartDance(VILLAGER_STATES param_1);
     // win1.41 00751ab0 mac 1056dea0 Villager::GetVillagerText(char *)
     char* GetVillagerText(char* param_1);
     // win1.41 00751d20 mac 1056d6a0 Villager::GetJobInfo(unsigned char) const
     GJobInfo* GetJobInfo(unsigned char param_1) const;
     // win1.41 00751d40 mac inlined Villager::FUN00751d40(void)
-    bool FUN00751d40();
+    bool32_t FUN00751d40();
     // win1.41 00751e50 mac 1056d290 Villager::PopFromPrevious(void)
     void PopFromPrevious();
     // win1.41 00751ea0 mac 1056d250 Villager::GetFootball(void)
@@ -644,39 +644,39 @@ public:
     // win1.41 007521d0 mac 1004b330 Villager::CallState(void)
     uint32_t CallState();
     // win1.41 00752210 mac 10020260 Villager::IsPregnant(void)
-    bool IsPregnant();
+    bool32_t IsPregnant();
     // win1.41 00752240 mac 100201b0 Villager::WomanSpecial(void)
     uint32_t WomanSpecial();
     // win1.41 00752290 mac 1056c8b0 Villager::IsVillagerAvailable(void)
-    bool IsVillagerAvailable();
+    bool32_t IsVillagerAvailable();
     // win1.41 007522c0 mac 1056c7a0 Villager::IsAvailableToBeSummonedByCreature(void)
-    bool IsAvailableToBeSummonedByCreature();
+    bool32_t IsAvailableToBeSummonedByCreature();
     // win1.41 007524d0 mac 1009d4c0 Villager::IsStateEntryFunctionSameAs(unsigned long, unsigned long) const
-    bool IsStateEntryFunctionSameAs(unsigned long param_1, unsigned long param_2) const;
+    bool32_t IsStateEntryFunctionSameAs(unsigned long param_1, unsigned long param_2) const;
     // win1.41 007525b0 mac 1056c220 Villager::IsReactiveState(unsigned long)
-    bool IsReactiveState(unsigned long param_1);
+    bool32_t IsReactiveState(unsigned long param_1);
     // win1.41 00752600 mac 1001ff70 Villager::IsHungry(void)
-    bool IsHungry();
+    bool32_t IsHungry();
     // win1.41 00752620 mac 1006a7a0 Villager::IsWoman(void)
-    bool IsWoman();
+    bool32_t IsWoman();
     // win1.41 00752690 mac 1056bc60 Villager::MakeVillagesMeet(Villager *, VILLAGER_STATES, float)
-    bool MakeVillagesMeet(Villager* param_1, VILLAGER_STATES param_2, float param_3);
+    bool32_t MakeVillagesMeet(Villager* param_1, VILLAGER_STATES param_2, float param_3);
     // win1.41 00752760 mac 1056bbd0 Villager::MakeVillagerFaceObject(Object *)
-    bool MakeVillagerFaceObject(Object* param_1);
+    bool32_t MakeVillagerFaceObject(Object* param_1);
     // win1.41 007527e0 mac 1056ba70 Villager::ExitDance(unsigned char)
-    bool ExitDance(unsigned char param_1);
+    bool32_t ExitDance(unsigned char param_1);
     // win1.41 00752820 mac 1056b9c0 Villager::IsAvailableForWorshipSite(int)
-    bool IsAvailableForWorshipSite(int param_1);
+    bool32_t IsAvailableForWorshipSite(int param_1);
     // win1.41 00752860 mac 1056b900 Villager::IsAtOrOnTheWayToWorshipSite(void)
-    bool IsAtOrOnTheWayToWorshipSite();
+    bool32_t IsAtOrOnTheWayToWorshipSite();
     // win1.41 00752a90 mac 1056b340 Villager::SetScaleForAge(unsigned long)
     void SetScaleForAge(unsigned long param_1);
     // win1.41 00752b80 mac 1056b240 Villager::SetStateWhenTappedOnAbode(void)
-    bool SetStateWhenTappedOnAbode();
+    bool32_t SetStateWhenTappedOnAbode();
     // win1.41 00753140 mac inlined Villager::FUN_00753140(void)
     uint32_t FUN_00753140();
     // win1.41 007531a0 mac 1056a780 Villager::IsVagrant(void)
-    bool IsVagrant();
+    bool32_t IsVagrant();
     // win1.41 007531d0 mac 1056a480 Villager::ReleaseFromScript(void)
     void ReleaseFromScript();
     // win1.41 00753340 mac 1056a3d0 Villager::TestSpecial(void)
@@ -1198,13 +1198,13 @@ public:
     // win1.41 0075f060 mac 1057c190 Villager::FootballGoaliePassPriority(Football *)
     float FootballGoaliePassPriority(Football* param_1);
     // win1.41 0075f070 mac 1057c0c0 Villager::FootballerIsTouchingBallPrecondition(Football *)
-    bool FootballerIsTouchingBallPrecondition(Football* param_1);
+    bool32_t FootballerIsTouchingBallPrecondition(Football* param_1);
     // win1.41 0075f0a0 mac 1057bff0 Villager::FootballerIsNotTouchingBallPrecondition(Football *)
-    bool FootballerIsNotTouchingBallPrecondition(Football* param_1);
+    bool32_t FootballerIsNotTouchingBallPrecondition(Football* param_1);
     // win1.41 0075f0d0 mac 1057bf50 Villager::FootballerIsNearestBallPrecondition(Football *)
-    bool FootballerIsNearestBallPrecondition(Football* param_1);
+    bool32_t FootballerIsNearestBallPrecondition(Football* param_1);
     // win1.41 0075f100 mac 1057bea0 Villager::FootballerIsNotNearestBallPrecondition(Football *)
-    bool FootballerIsNotNearestBallPrecondition(Football* param_1);
+    bool32_t FootballerIsNotNearestBallPrecondition(Football* param_1);
     // win1.41 0075f130 mac 1057bda0 Villager::FootballerIsAtHomePrecondition(Football *)
     bool32_t FootballerIsAtHomePrecondition(Football* param_1);
     // win1.41 0075f190 mac 1057bc90 Villager::FootballerIsNotAtHomePrecondition(Football *)
@@ -1422,7 +1422,7 @@ public:
     // win1.41 007626e0 mac 1058ad90 Villager::CheckLeaderNeeded(void)
     bool32_t CheckLeaderNeeded();
     // win1.41 007630e0 mac 1058c1c0 Villager::IsPlaytime(void)
-    bool IsPlaytime();
+    bool32_t IsPlaytime();
     // win1.41 007630f0 mac 1058c170 Villager::CheckPlaytimeAvailableToPlayPFootball(void)
     bool32_t CheckPlaytimeAvailableToPlayPFootball();
     // win1.41 00763100 mac 1058c120 Villager::CheckPlaytimeSettingUpPlayPFootball(void)
@@ -1818,9 +1818,9 @@ public:
     // win1.41 00756730 mac 10563970 MissionaryControl::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007568a0 mac 105646b0 MissionaryControl::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 007568e0 mac 10564610 MissionaryControl::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00756720 mac 10563930 MissionaryControl::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00756920 mac 10564510 MissionaryControl::GetImpressiveValue(Living *, Reaction *)
