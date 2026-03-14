@@ -73,9 +73,9 @@ public:
     // win1.41 00425be0 mac 100adc60 MobileObject::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00607d00 mac 103bb660 MobileObject::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00607c40 mac 103bb7a0 MobileObject::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00425bd0 mac 100adc20 MobileObject::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00607ab0 mac 103bbc80 MobileObject::PhysicsEditorCreate(int)
@@ -129,7 +129,7 @@ public:
     // win1.41 00607560 mac 103bc790 MobileObject::GetWorldMatrix(LHMatrix *)
     virtual void GetWorldMatrix(LHMatrix* param_1);
     // win1.41 00607150 mac 103bd200 MobileObject::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00607c20 mac 103bb8f0 MobileObject::GetResourceType(void)
     virtual RESOURCE_TYPE GetResourceType();
     // win1.41 00607bf0 mac 103bb9a0 MobileObject::GetDefaultResource(void)
@@ -143,7 +143,7 @@ public:
     // win1.41 00607a20 mac 103bbe50 MobileObject::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 00607aa0 mac 103bbe00 MobileObject::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 00607410 mac 103bcc90 MobileObject::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
     virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int param_1, Point2D param_2, float param_3, int param_4));
     // win1.41 00425b50 mac 100ad9d0 MobileObject::GetTastiness(void)

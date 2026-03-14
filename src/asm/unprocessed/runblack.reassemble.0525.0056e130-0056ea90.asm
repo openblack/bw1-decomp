@@ -15,14 +15,14 @@
 .extern _jmp_addr_0x00555180
 .extern _jmp_addr_0x00555400
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
-.extern _jmp_addr_0x00555880
+.extern ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ
 .extern _jmp_addr_0x005559b0
 .extern _jmp_addr_0x00555a10
 .extern _jmp_addr_0x0056ea90
 .extern _jmp_addr_0x0056eaf0
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern _jmp_addr_0x0071d0b0
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern _wcscpy
 .extern _swprintf
 .extern ___nw__FUl
@@ -131,7 +131,7 @@ _jmp_addr_0x0056e130:    push              ebx                                  
                          cmp.s             ebx, ebp                                      // 0x0056e25b    3bdd
                          {disp8} je        .Lbl_addr_0x0056e2bc                          // 0x0056e25d    745d
                          {disp8} fld       dword ptr [esp + 0x24]                        // 0x0056e25f    d9442424
-                         call              _jmp_addr_0x007a1400                          // 0x0056e263    e898312300
+                         call              __ftol                                        // 0x0056e263    e898312300
                          {disp8} fld       dword ptr [esp + 0x24]                        // 0x0056e268    d9442424
                          mov.s             ebp, eax                                      // 0x0056e26c    8be8
                          {disp8} fadd      dword ptr [esp + 0x10]                        // 0x0056e26e    d8442410
@@ -150,7 +150,7 @@ _jmp_addr_0x0056e130:    push              ebx                                  
                          push              edx                                           // 0x0056e28f    52
                          push              eax                                           // 0x0056e290    50
                          push              0x28                                          // 0x0056e291    6a28
-                         call              _jmp_addr_0x007a1400                          // 0x0056e293    e868312300
+                         call              __ftol                                        // 0x0056e293    e868312300
                          {disp8} mov       ecx, dword ptr [esp + 0x3c]                   // 0x0056e298    8b4c243c
                          sub.s             eax, ebp                                      // 0x0056e29c    2bc5
                          push              eax                                           // 0x0056e29e    50
@@ -597,7 +597,7 @@ _jmp_addr_0x0056e130:    push              ebx                                  
                          cmp.s             eax, edi                                      // 0x0056e8c2    3bc7
                          {disp8} jne       .Lbl_addr_0x0056e8da                          // 0x0056e8c4    7514
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x0056e8c6    8b0d5c19d000
-                         call              _jmp_addr_0x00555880                          // 0x0056e8cc    e8af6ffeff
+                         call              ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ                          // 0x0056e8cc    e8af6ffeff
                          {disp8} mov       ecx, dword ptr [eax + 0x30]                   // 0x0056e8d1    8b4830
                          push              ebp                                           // 0x0056e8d4    55
                          call              _jmp_addr_0x0071d0b0                          // 0x0056e8d5    e8d6e71a00

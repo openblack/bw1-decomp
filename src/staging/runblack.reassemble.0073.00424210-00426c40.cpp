@@ -59,13 +59,13 @@ void GArena::ToBeDeleted(int param_1)
 }
 
 // win1.41 004250d0 mac 100aa9e0 GArena::Save(GameOSFile &)
-bool GArena::Save(GameOSFile& file)
+bool32_tcorrect GArena::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 004251d0 mac 100aa860 GArena::Load(GameOSFile &)
-bool GArena::Load(GameOSFile& file)
+bool32_tcorrect GArena::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -77,9 +77,9 @@ int Object::GetMesh() const
 }
 
 // win1.41 00425920 mac 100ad790 GMobileObjectInfo::GetMesh( const(void))
-uint32_t GMobileObjectInfo::GetMesh() const
+MeshId GMobileObjectInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 00425930 mac 100ad830 GArrowInfo::GetBaseInfo(unsigned long &)

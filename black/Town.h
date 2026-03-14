@@ -179,9 +179,9 @@ public:
     // win1.41 007392a0 mac 105594a0 Town::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0073f450 mac 1054aa80 Town::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0073ed30 mac 1054c770 Town::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00739290 mac 10559470 Town::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007412e0 mac 10547990 Town::ResolveLoad(void)

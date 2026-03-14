@@ -41,9 +41,9 @@ uint32_t GSetup::WriteToFile(void* param_1, LHOSFile& param_2, void* param_3, ui
 }
 
 // win1.41 00719a00 mac 10144960 GShowNeedsInfo::GetMesh( const(void))
-uint32_t GShowNeedsInfo::GetMesh() const
+MeshId GShowNeedsInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 00719a10 mac 101461f0 GShowNeedsInfo::GetBaseInfo(unsigned long &)
@@ -80,13 +80,13 @@ GPlayer* ShowNeeds::GetPlayer()
 }
 
 // win1.41 00719cb0 mac 10145970 ShowNeeds::Save(GameOSFile &)
-bool ShowNeeds::Save(GameOSFile& file)
+bool32_tcorrect ShowNeeds::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00719cf0 mac 101458d0 ShowNeeds::Load(GameOSFile &)
-bool ShowNeeds::Load(GameOSFile& file)
+bool32_tcorrect ShowNeeds::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -108,7 +108,7 @@ void ShowNeedsVisuals::ToBeDeleted(int param_1)
 }
 
 // win1.41 00719e00 mac 10145510 ShowNeedsVisuals::CallVirtualFunctionsForCreation(const MapCoords &)
-void ShowNeedsVisuals::CallVirtualFunctionsForCreation(const MapCoords* coords)
+void ShowNeedsVisuals::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 }
 
@@ -119,13 +119,13 @@ GPlayer* ShowNeedsVisuals::GetPlayer()
 }
 
 // win1.41 0071a230 mac 10144d30 ShowNeedsVisuals::Save(GameOSFile &)
-bool ShowNeedsVisuals::Save(GameOSFile& file)
+bool32_tcorrect ShowNeedsVisuals::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0071a320 mac 10144bb0 ShowNeedsVisuals::Load(GameOSFile &)
-bool ShowNeedsVisuals::Load(GameOSFile& file)
+bool32_tcorrect ShowNeedsVisuals::Load(GameOSFile& file)
 {
     return 0;
 }

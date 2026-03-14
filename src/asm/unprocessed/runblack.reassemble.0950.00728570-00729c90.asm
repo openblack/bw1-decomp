@@ -30,7 +30,7 @@
 .extern ?ProcessInHand@Object@@UAE_NXZ
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x0063e540
-.extern _jmp_addr_0x0064ab20
+.extern ?GetRenderHand@GPlayer@@QAEPAVCHand@@XZ
 .extern ?IsNeutral@GPlayer@@QAE_NXZ
 .extern ?GetPlayerColour@GPlayer@@QBE?AULH3DColor@@XZ
 .extern _jmp_addr_0x00682e10
@@ -1263,7 +1263,7 @@ _jmp_addr_0x00728620:    {disp8} mov        eax, dword ptr [ecx + 0x28]         
                          nop                                                         // 0x00728f5d    90
                          nop                                                         // 0x00728f5e    90
                          nop                                                         // 0x00728f5f    90
-                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x00728f60    d90598a38a00
+                         {disp32} fld       dword ptr [__real@4@00000000000000000000]              // 0x00728f60    d90598a38a00
                          ret                0x0004                                   // 0x00728f66    c20400
                          nop                                                         // 0x00728f69    90
                          nop                                                         // 0x00728f6a    90
@@ -1286,7 +1286,7 @@ _jmp_addr_0x00728f70:    push               esi                                 
                          {disp8} lea        eax, dword ptr [esi + 0x14]              // 0x00728f8a    8d4614
                          push               eax                                      // 0x00728f8d    50
                          call               _jmp_addr_0x005cd170                     // 0x00728f8e    e8dd41eaff
-                         {disp32} fcomp     dword ptr [_rdata_float0p0]              // 0x00728f93    d81d98a38a00
+                         {disp32} fcomp     dword ptr [__real@4@00000000000000000000]              // 0x00728f93    d81d98a38a00
                          add                esp, 0x14                                // 0x00728f99    83c414
                          fnstsw             ax                                       // 0x00728f9c    dfe0
                          test               ah, 0x41                                 // 0x00728f9e    f6c441
@@ -1682,7 +1682,7 @@ _jmp_addr_0x007290f0:    {disp8} mov        eax, dword ptr [ecx + 0x6c]         
                          {disp8} fld        dword ptr [esi + 0x7c]                   // 0x00729340    d9467c
                          {disp32} mov       ecx, dword ptr [edi + 0x000000b4]        // 0x00729343    8b8fb4000000
                          {disp8} fst        dword ptr [esp + 0x1c]                   // 0x00729349    d954241c
-                         {disp32} fcomp     dword ptr [_rdata_float0p0]              // 0x0072934d    d81d98a38a00
+                         {disp32} fcomp     dword ptr [__real@4@00000000000000000000]              // 0x0072934d    d81d98a38a00
                          {disp32} mov       dword ptr [esi + 0x00000098], ecx        // 0x00729353    898e98000000
                          fnstsw             ax                                       // 0x00729359    dfe0
                          test               ah, 0x01                                 // 0x0072935b    f6c401
@@ -2256,7 +2256,7 @@ _jmp_addr_0x00729900:    {disp8} mov        dl, byte ptr [esp + 0x04]           
                          {disp8} mov        dword ptr [esp + 0x08], edx              // 0x007299a5    89542408
                          {disp8} mov        dword ptr [esp + 0x0c], 0x00000000       // 0x007299a9    c744240c00000000
                          {disp8} fimul      dword ptr [esp + 0x08]                   // 0x007299b1    da4c2408
-                         {disp32} fmul      dword ptr [_rdata_float0p001]            // 0x007299b5    d80db0a38a00
+                         {disp32} fmul      dword ptr [__real@4@3ff583126f0000000000]            // 0x007299b5    d80db0a38a00
                          {disp32} fcomp     dword ptr [data_bytes + 0x3da584]        // 0x007299bb    d81d8405da00
                          fnstsw             ax                                       // 0x007299c1    dfe0
                          test               ah, 0x41                                 // 0x007299c3    f6c441
@@ -2447,7 +2447,7 @@ _jmp_addr_0x00729b30:    push               ebx                                 
                          mov.s              ecx, esi                                 // 0x00729b55    8bce
                          call               dword ptr [eax + 0x30c]                  // 0x00729b57    ff900c030000
                          {disp8} fld        dword ptr [esp + 0x14]                   // 0x00729b5d    d9442414
-                         {disp32} fcomp     dword ptr [_rdata_float0p0]              // 0x00729b61    d81d98a38a00
+                         {disp32} fcomp     dword ptr [__real@4@00000000000000000000]              // 0x00729b61    d81d98a38a00
                          mov.s              ecx, eax                                 // 0x00729b67    8bc8
                          fnstsw             ax                                       // 0x00729b69    dfe0
                          test               ah, 0x41                                 // 0x00729b6b    f6c441
@@ -2483,7 +2483,7 @@ _jmp_addr_0x00729b30:    push               ebx                                 
                          mov.s              ecx, esi                                 // 0x00729bd7    8bce
                          call               _jmp_addr_0x00729800                     // 0x00729bd9    e822fcffff
                          mov.s              ecx, eax                                 // 0x00729bde    8bc8
-                         call               _jmp_addr_0x0064ab20                     // 0x00729be0    e83b0ff2ff
+                         call               ?GetRenderHand@GPlayer@@QAEPAVCHand@@XZ  // 0x00729be0    e83b0ff2ff
                          mov.s              edi, eax                                 // 0x00729be5    8bf8
                          push               esi                                      // 0x00729be7    56
                          mov.s              ecx, edi                                 // 0x00729be8    8bcf

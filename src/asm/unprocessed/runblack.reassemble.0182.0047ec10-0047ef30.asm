@@ -120,7 +120,7 @@ _jmp_addr_0x0047ec10:    sub                esp, 0x18                          /
                          {disp8} mov        ecx, dword ptr [esp + 0x2c]        // 0x0047ed97    8b4c242c
                          {disp32} mov       edx, dword ptr [ecx + 0x00000168]  // 0x0047ed9b    8b9168010000
                          {disp8} fld        dword ptr [edx + 0x08]             // 0x0047eda1    d94208
-                         {disp32} fcomp     dword ptr [_rdata_float0p0]        // 0x0047eda4    d81d98a38a00
+                         {disp32} fcomp     dword ptr [__real@4@00000000000000000000]        // 0x0047eda4    d81d98a38a00
                          fnstsw             ax                                 // 0x0047edaa    dfe0
                          test               ah, 0x01                           // 0x0047edac    f6c401
                          {disp8} je         .Lbl_addr_0x0047ee18               // 0x0047edaf    7467

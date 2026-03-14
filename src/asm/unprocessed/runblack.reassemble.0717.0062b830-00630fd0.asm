@@ -8534,7 +8534,7 @@ _jmp_addr_0x00630d80:    push               esi                                 
                          call               dword ptr [edx + 0x18]                         // 0x00630f30    ff5218
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x37af70]         // 0x00630f33    8b0d700fd400
 .Lbl_addr_0x00630f39:    call               dword ptr [rdata_bytes + 0x428]                // 0x00630f39    ff1528948a00
-                         {disp32} fcomp     dword ptr [_rdata_float1p0]                    // 0x00630f3f    d81d90a38a00
+                         {disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]                    // 0x00630f3f    d81d90a38a00
                          fnstsw             ax                                             // 0x00630f45    dfe0
                          test               ah, 0x40                                       // 0x00630f47    f6c440
                          {disp8} je         .Lbl_addr_0x00630f9f                           // 0x00630f4a    7453

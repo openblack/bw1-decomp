@@ -40,7 +40,7 @@ public:
     // win1.41 00516320 mac 100cb390 Windmill::Draw(void)
     virtual void Draw();
     // win1.41 00405950 mac 102aa970 Windmill::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
 
     // Static methods
 

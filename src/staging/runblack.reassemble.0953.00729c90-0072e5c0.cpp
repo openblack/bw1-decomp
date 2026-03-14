@@ -19,13 +19,13 @@ uint32_t SpellSeed::GetScriptObjectType()
 }
 
 // win1.41 00729ca0 mac 10528230 SpellSeed::Save(GameOSFile &)
-bool SpellSeed::Save(GameOSFile& file)
+bool32_tcorrect SpellSeed::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00729fb0 mac 10527d30 SpellSeed::Load(GameOSFile &)
-bool SpellSeed::Load(GameOSFile& file)
+bool32_tcorrect SpellSeed::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -42,7 +42,7 @@ void OneOffSpellSeed::ToBeDeleted(int param_1)
 }
 
 // win1.41 0072a450 mac 105276e0 OneOffSpellSeed::CallVirtualFunctionsForCreation(MapCoords const &)
-void OneOffSpellSeed::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void OneOffSpellSeed::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -83,13 +83,13 @@ uint32_t OneOffSpellSeed::GetPhysicsConstantsType()
 }
 
 // win1.41 0072a930 mac 10526be0 OneOffSpellSeed::Save(GameOSFile &)
-bool OneOffSpellSeed::Save(GameOSFile& file)
+bool32_tcorrect OneOffSpellSeed::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0072aa20 mac 10526a70 OneOffSpellSeed::Load(GameOSFile &)
-bool OneOffSpellSeed::Load(GameOSFile& file)
+bool32_tcorrect OneOffSpellSeed::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -166,9 +166,9 @@ GSpellSystemInfo::~GSpellSystemInfo()
 }
 
 // win1.41 0072ae60 mac 1052df00 GSpellSeedInfo::GetMesh( const(void))
-uint32_t GSpellSeedInfo::GetMesh() const
+MeshId GSpellSeedInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 0072ae70 mac 1052df40 GSpellSeedInfo::GetBaseInfo(unsigned long &)
@@ -304,13 +304,13 @@ float SpellShield::GetImpressiveValue(Living* param_1, Reaction* param_2)
 }
 
 // win1.41 0072bb40 mac 105324f0 SpellShield::Load(GameOSFile &)
-bool SpellShield::Load(GameOSFile& file)
+bool32_tcorrect SpellShield::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0072bc40 mac 10532270 SpellShield::Save(GameOSFile &)
-bool SpellShield::Save(GameOSFile& file)
+bool32_tcorrect SpellShield::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -390,7 +390,7 @@ float MapShield::GetTopPos()
 }
 
 // win1.41 0072c1d0 mac 10531680 MapShield::CanBecomeAPhysicsObject(void)
-bool MapShield::CanBecomeAPhysicsObject()
+bool32_tcorrect MapShield::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -418,7 +418,7 @@ MagicShield::~MagicShield()
 }
 
 // win1.41 0072c2a0 mac 10531420 MagicShield::CallVirtualFunctionsForCreation(MapCoords const &)
-void MagicShield::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void MagicShield::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -462,37 +462,37 @@ LH3DObject::ObjectType MagicShield::Get3DType()
 }
 
 // win1.41 0072c350 mac 10531180 MapShield::Load(GameOSFile &)
-bool MapShield::Load(GameOSFile& file)
+bool32_tcorrect MapShield::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0072c390 mac 105310e0 MapShield::Save(GameOSFile &)
-bool MapShield::Save(GameOSFile& file)
+bool32_tcorrect MapShield::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0072c3d0 mac 10531080 MagicShield::Load(GameOSFile &)
-bool MagicShield::Load(GameOSFile& file)
+bool32_tcorrect MagicShield::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0072c3f0 mac 10531020 MagicShield::Save(GameOSFile &)
-bool MagicShield::Save(GameOSFile& file)
+bool32_tcorrect MagicShield::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0072c410 mac 10530bd0 PhysicalShield::Load(GameOSFile &)
-bool PhysicalShield::Load(GameOSFile& file)
+bool32_tcorrect PhysicalShield::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0072c700 mac 10530750 PhysicalShield::Save(GameOSFile &)
-bool PhysicalShield::Save(GameOSFile& file)
+bool32_tcorrect PhysicalShield::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -532,7 +532,7 @@ bool PhysicalShield::IsEffectReceiver(EffectValues* param_1)
 }
 
 // win1.41 0072ccb0 mac 10530110 PhysicalShield::CallVirtualFunctionsForCreation(MapCoords const &)
-void PhysicalShield::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void PhysicalShield::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 

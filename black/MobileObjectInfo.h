@@ -34,7 +34,7 @@ public:
     // win1.41 00606da0 mac 100ad7d0 GMobileObjectInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 00425920 mac 100ad790 GMobileObjectInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh() const;
+    virtual MeshId GetMesh() const;
 
     // Constructors
 

@@ -65,9 +65,9 @@ public:
     // win1.41 0071be20 mac 1050fb70 Tree::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // win1.41 0074c2a0 mac 10155f10 Tree::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0074c1b0 mac 10156080 Tree::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0055da20 mac 10159b50 Tree::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055d950 mac 101597f0 Tree::GetCreatureBeliefType(void)
@@ -171,7 +171,7 @@ public:
     // win1.41 0074b6b0 mac 10157840 Tree::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 0074b630 mac 10157ad0 Tree::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 0074c0e0 mac 10156590 Tree::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 0074a180 mac 10158cd0 Tree::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))

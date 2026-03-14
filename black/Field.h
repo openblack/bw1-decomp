@@ -86,9 +86,9 @@ public:
     // win1.41 00528080 mac 100d6570 Field::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00529d60 mac 100d1eb0 Field::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00529b10 mac 100d23a0 Field::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00528070 mac 100d6540 Field::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00529330 mac inlined Field::GetArrivePos(MapCoords *)
@@ -118,9 +118,9 @@ public:
     // win1.41 00527fc0 mac 100d62a0 Field::CanBeExaminedByCreature(Creature *)
     virtual bool CanBeExaminedByCreature(Creature* param_1);
     // win1.41 00527ff0 mac 100d6390 Field::IsBeingBuilt(Creature *)
-    virtual bool IsBeingBuilt(Creature* param_1);
+    virtual bool32_t IsBeingBuilt(Creature* param_1);
     // win1.41 00528000 mac 100d63d0 Field::NeedsRepair(Creature *)
-    virtual bool NeedsRepair(Creature* param_1);
+    virtual bool32_t NeedsRepair(Creature* param_1);
     // win1.41 00527f60 mac 100d60d0 Field::CanBePoodOn(Creature *)
     virtual bool CanBePoodOn(Creature* param_1);
     // win1.41 004e4970 mac 105e46e0 Field::IsFieldWhichNeedsWatering(Creature *)
@@ -148,7 +148,7 @@ public:
     // win1.41 00529fb0 mac 100d1db0 Field::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
     virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
     // win1.41 00528a40 mac 100d47b0 Field::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00528f30 mac 100d3f10 Field::ApplyWaterSpell(SpellWater *)
     virtual float ApplyWaterSpell(SpellWater* param_1);
     // win1.41 00528010 mac 100d2c60 Field::GetResourceType(void)
@@ -180,7 +180,7 @@ public:
     // win1.41 00528020 mac 100d6410 Field::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 00528030 mac 100d6450 Field::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 005280c0 mac 100d5880 Field::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 00529730 mac 100d3050 Field::ProcessInInteract(GInterfaceStatus *)

@@ -1159,7 +1159,7 @@ void __fastcall FootballAttackerShootProcess__8VillagerFP8Football(struct Villag
     asm("push               0x00000099");                                    // 0x0075d345    6899000000
     asm("push               0x00c2443c");                                    // 0x0075d34a    683c44c200
     asm("push               0x40800000");                                    // 0x0075d34f    6800008040
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075d354    e8d711f8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075d354    e8d711f8ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x261c0]");             // 0x0075d359    d805c0f18c00
     asm("add                esp, 0x08");                                     // 0x0075d35f    83c408
     asm("{disp8} lea        edx, dword ptr [esp + 0x18]");                   // 0x0075d362    8d542418
@@ -1283,7 +1283,7 @@ void __fastcall FootballAttackerPassProcess__8VillagerFP8Football(struct Village
     asm("{disp8} lea        edx, dword ptr [ebp + 0x14]");                   // 0x0075d48b    8d5514
     asm("push               edx");                                           // 0x0075d48e    52
     asm("call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z");                               // 0x0075d48f    e8dcf8feff
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x0075d494    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075d494    d81d90a38a00
     asm("add                esp, 0x08");                                     // 0x0075d49a    83c408
     asm("fnstsw             ax");                                            // 0x0075d49d    dfe0
     asm("test               ah, 0x41");                                      // 0x0075d49f    f6c441
@@ -1292,7 +1292,7 @@ void __fastcall FootballAttackerPassProcess__8VillagerFP8Football(struct Village
     asm("push               0x000000b5");                                    // 0x0075d4a6    68b5000000
     asm("push               0x00c2443c");                                    // 0x0075d4ab    683c44c200
     asm("push               0x3f800000");                                    // 0x0075d4b0    680000803f
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075d4b5    e87610f8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075d4b5    e87610f8ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x235c]");              // 0x0075d4ba    d8055cb38a00
     asm("add                esp, 0x08");                                     // 0x0075d4c0    83c408
     asm("{disp8} lea        eax, dword ptr [esp + 0x18]");                   // 0x0075d4c3    8d442418
@@ -1364,7 +1364,7 @@ void __fastcall FootballAttackerLobNearGoalProcess__8VillagerFP8Football(struct 
     asm("push               0x000000c7");                                    // 0x0075d56a    68c7000000
     asm("push               0x00c2443c");                                    // 0x0075d56f    683c44c200
     asm("push               0x40800000");                                    // 0x0075d574    6800008040
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075d579    e8b20ff8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075d579    e8b20ff8ff
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x2478]");              // 0x0075d57e    d82578b48a00
     asm("{disp8} fild       dword ptr [esp + 0x1c]");                        // 0x0075d584    db44241c
     asm("{disp32} fmul      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075d588    d80d80a99900
@@ -1372,13 +1372,13 @@ void __fastcall FootballAttackerLobNearGoalProcess__8VillagerFP8Football(struct 
     asm("fadd               st, st(1)");                                     // 0x0075d594    d8c1
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3408]");              // 0x0075d596    d80d08c48a00
     asm("{disp32} fdiv      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075d59c    d83580a99900
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0075d5a2    e8593e0400
+    asm("call               __ftol");                                        // 0x0075d5a2    e8593e0400
     asm("fstp               st(0)");                                         // 0x0075d5a7    ddd8
     asm("push               0x000000c8");                                    // 0x0075d5a9    68c8000000
     asm("push               0x00c2443c");                                    // 0x0075d5ae    683c44c200
     asm("push               0x40800000");                                    // 0x0075d5b3    6800008040
     asm("{disp8} mov        dword ptr [esp + 0x28], eax");                   // 0x0075d5b8    89442428
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075d5bc    e86f0ff8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075d5bc    e86f0ff8ff
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x2478]");              // 0x0075d5c1    d82578b48a00
     asm("{disp8} fild       dword ptr [esp + 0x2c]");                        // 0x0075d5c7    db44242c
     asm("add                esp, 0x18");                                     // 0x0075d5cb    83c418
@@ -1387,7 +1387,7 @@ void __fastcall FootballAttackerLobNearGoalProcess__8VillagerFP8Football(struct 
     asm("fadd               st, st(1)");                                     // 0x0075d5da    d8c1
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3408]");              // 0x0075d5dc    d80d08c48a00
     asm("{disp32} fdiv      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075d5e2    d83580a99900
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0075d5e8    e8133e0400
+    asm("call               __ftol");                                        // 0x0075d5e8    e8133e0400
     asm("fstp               st(0)");                                         // 0x0075d5ed    ddd8
     asm("{disp8} mov        ecx, dword ptr [esp + 0x10]");                   // 0x0075d5ef    8b4c2410
     asm("{disp8} mov        edx, dword ptr [esp + 0x18]");                   // 0x0075d5f3    8b542418
@@ -1404,7 +1404,7 @@ void __fastcall FootballAttackerLobNearGoalProcess__8VillagerFP8Football(struct 
     asm("push               0x000000cb");                                    // 0x0075d616    68cb000000
     asm("push               0x00c2443c");                                    // 0x0075d61b    683c44c200
     asm("push               0x3f800000");                                    // 0x0075d620    680000803f
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075d625    e8060ff8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075d625    e8060ff8ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x19c50]");             // 0x0075d62a    d805502c8c00
     asm("add                esp, 0x08");                                     // 0x0075d630    83c408
     asm("{disp8} lea        ecx, dword ptr [esp + 0x24]");                   // 0x0075d633    8d4c2424
@@ -1500,17 +1500,17 @@ void __fastcall FootballAttackerDribbleProcess__8VillagerFP8Football(struct Vill
     asm("{disp8} fadd       dword ptr [esp + 0x14]");                        // 0x0075d733    d8442414
     asm("fsqrt");                                                            // 0x0075d737    d9fa
     asm("fld                st(1)");                                         // 0x0075d739    d9c1
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075d73b    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075d73b    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075d741    dfe0
     asm("test               ah, 0x40");                                      // 0x0075d743    f6c440
     asm("{disp8} je         LAB__addr_0x0075d76a");                          // 0x0075d746    7422
     asm("{disp8} fld        dword ptr [esp + 0x1c]");                        // 0x0075d748    d944241c
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075d74c    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075d74c    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075d752    dfe0
     asm("test               ah, 0x40");                                      // 0x0075d754    f6c440
     asm("{disp8} je         LAB__addr_0x0075d76a");                          // 0x0075d757    7411
     asm("{disp8} fld        dword ptr [esp + 0x20]");                        // 0x0075d759    d9442420
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075d75d    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075d75d    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075d763    dfe0
     asm("test               ah, 0x40");                                      // 0x0075d765    f6c440
     asm("{disp8} jne        LAB__addr_0x0075d798");                          // 0x0075d768    752e
@@ -1519,7 +1519,7 @@ void __fastcall FootballAttackerDribbleProcess__8VillagerFP8Football(struct Vill
     asm("{disp8} fadd       dword ptr [esp + 0x10]");                        // 0x0075d76e    d8442410
     asm("{disp8} fadd       dword ptr [esp + 0x14]");                        // 0x0075d772    d8442414
     asm("fsqrt");                                                            // 0x0075d776    d9fa
-    asm("{disp32} fdivr     dword ptr [_rdata_float1p0]");                   // 0x0075d778    d83d90a38a00
+    asm("{disp32} fdivr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075d778    d83d90a38a00
     asm("fld                st(0)");                                         // 0x0075d77e    d9c0
     asm("fmulp              st(3), st");                                     // 0x0075d780    decb
     asm("{disp8} fld        dword ptr [esp + 0x1c]");                        // 0x0075d782    d944241c
@@ -1560,7 +1560,7 @@ void __fastcall FootballAttackerDribbleProcess__8VillagerFP8Football(struct Vill
     asm("push               0x000000e2");                                    // 0x0075d7f9    68e2000000
     asm("push               0x00c2443c");                                    // 0x0075d7fe    683c44c200
     asm("push               0x3f800000");                                    // 0x0075d803    680000803f
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075d808    e8230df8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075d808    e8230df8ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x235c]");              // 0x0075d80d    d8055cb38a00
     asm("add                esp, 0x08");                                     // 0x0075d813    83c408
     asm("{disp8} lea        edx, dword ptr [esp + 0x5c]");                   // 0x0075d816    8d54245c
@@ -1653,17 +1653,17 @@ void __fastcall FootballAttackerMoveToBePassedProcess__8VillagerFP8Football(stru
     asm("fchs");                                                             // 0x0075d90f    d9e0
     asm("{disp8} fstp       dword ptr [esp + 0x0c]");                        // 0x0075d911    d95c240c
     asm("{disp8} fld        dword ptr [esp + 0x0c]");                        // 0x0075d915    d944240c
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075d919    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075d919    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075d91f    dfe0
     asm("test               ah, 0x40");                                      // 0x0075d921    f6c440
     asm("{disp8} je         LAB__addr_0x0075d948");                          // 0x0075d924    7422
     asm("{disp8} fld        dword ptr [esp + 0x10]");                        // 0x0075d926    d9442410
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075d92a    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075d92a    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075d930    dfe0
     asm("test               ah, 0x40");                                      // 0x0075d932    f6c440
     asm("{disp8} je         LAB__addr_0x0075d948");                          // 0x0075d935    7411
     asm("{disp8} fld        dword ptr [esp + 0x18]");                        // 0x0075d937    d9442418
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075d93b    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075d93b    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075d941    dfe0
     asm("test               ah, 0x40");                                      // 0x0075d943    f6c440
     asm("{disp8} jne        LAB__addr_0x0075d988");                          // 0x0075d946    7540
@@ -1677,7 +1677,7 @@ void __fastcall FootballAttackerMoveToBePassedProcess__8VillagerFP8Football(stru
     asm("{disp8} fmul       dword ptr [esp + 0x0c]");                        // 0x0075d95e    d84c240c
     asm("faddp              st(1), st");                                     // 0x0075d962    dec1
     asm("fsqrt");                                                            // 0x0075d964    d9fa
-    asm("{disp32} fdivr     dword ptr [_rdata_float1p0]");                   // 0x0075d966    d83d90a38a00
+    asm("{disp32} fdivr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075d966    d83d90a38a00
     asm("fld                st(0)");                                         // 0x0075d96c    d9c0
     asm("{disp8} fmul       dword ptr [esp + 0x0c]");                        // 0x0075d96e    d84c240c
     asm("{disp8} fstp       dword ptr [esp + 0x0c]");                        // 0x0075d972    d95c240c
@@ -1690,7 +1690,7 @@ void __fastcall FootballAttackerMoveToBePassedProcess__8VillagerFP8Football(stru
     asm("push               0x000000f7");                                    // 0x0075d988    68f7000000
     asm("push               0x00c2443c");                                    // 0x0075d98d    683c44c200
     asm("push               0x3e4ccccd");                                    // 0x0075d992    68cdcc4c3e
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075d997    e8940bf8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075d997    e8940bf8ff
     asm("{disp32} fadd      qword ptr [rdata_bytes + 0x267d8]");             // 0x0075d99c    dc05d8f78c00
     asm("push               0x000000f8");                                    // 0x0075d9a2    68f8000000
     asm("push               0x00c2443c");                                    // 0x0075d9a7    683c44c200
@@ -1710,7 +1710,7 @@ void __fastcall FootballAttackerMoveToBePassedProcess__8VillagerFP8Football(stru
     asm("{disp8} fstp       dword ptr [esp + 0x34]");                        // 0x0075d9dd    d95c2434
     asm("{disp8} fadd       dword ptr [esp + 0x44]");                        // 0x0075d9e1    d8442444
     asm("{disp8} fstp       dword ptr [esp + 0x38]");                        // 0x0075d9e5    d95c2438
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075d9e9    e8420bf8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075d9e9    e8420bf8ff
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x56ec8]");             // 0x0075d9ee    d825c8fe8f00
     asm("add                esp, 0x14");                                     // 0x0075d9f4    83c414
     asm("fld                st(0)");                                         // 0x0075d9f7    d9c0
@@ -1736,11 +1736,11 @@ void __fastcall FootballAttackerMoveToBePassedProcess__8VillagerFP8Football(stru
     asm("call               ??0MapCoords@@QAE@ABU0@@Z");                     // 0x0075da3b    e82041ceff
     asm("{disp8} fld        dword ptr [esp + 0x24]");                        // 0x0075da40    d9442424
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3400]");              // 0x0075da44    d80d00c48a00
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0075da4a    e8b1390400
+    asm("call               __ftol");                                        // 0x0075da4a    e8b1390400
     asm("{disp8} fld        dword ptr [esp + 0x2c]");                        // 0x0075da4f    d944242c
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3400]");              // 0x0075da53    d80d00c48a00
     asm("{disp8} mov        dword ptr [esp + 0x30], eax");                   // 0x0075da59    89442430
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0075da5d    e89e390400
+    asm("call               __ftol");                                        // 0x0075da5d    e89e390400
     asm("push               0x49");                                          // 0x0075da62    6a49
     asm("{disp8} lea        edx, dword ptr [esp + 0x34]");                   // 0x0075da64    8d542434
     asm("push               edx");                                           // 0x0075da68    52
@@ -1930,13 +1930,13 @@ float __fastcall FootballAttackerShootPriority__8VillagerFP8Football(struct Vill
     asm("{disp8} lea        esi, dword ptr [ebx + 0x14]");                   // 0x0075dc46    8d7314
     asm("push               esi");                                           // 0x0075dc49    56
     asm("call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z");                               // 0x0075dc4a    e821f1feff
-    asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075dc4f    d81598a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@00000000000000000000]");                   // 0x0075dc4f    d81598a38a00
     asm("add                esp, 0x08");                                     // 0x0075dc55    83c408
     asm("fnstsw             ax");                                            // 0x0075dc58    dfe0
     asm("test               ah, 0x01");                                      // 0x0075dc5a    f6c401
     asm("{disp8} je         LAB__addr_0x0075dc69");                          // 0x0075dc5d    740a
     asm("fstp               st(0)");                                         // 0x0075dc5f    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075dc61    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075dc61    d90598a38a00
     asm("{disp8} jmp        LAB__addr_0x0075dc7e");                          // 0x0075dc67    eb15
     asm("LAB__addr_0x0075dc69:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x26300]");             // 0x0075dc69    d81500f38c00
@@ -1947,7 +1947,7 @@ float __fastcall FootballAttackerShootPriority__8VillagerFP8Football(struct Vill
     asm("{disp32} fld       dword ptr [rdata_bytes + 0x26300]");             // 0x0075dc78    d90500f38c00
     asm("LAB__addr_0x0075dc7e:");
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x2850c]");             // 0x0075dc7e    d80d0c158d00
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075dc84    d82d90a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075dc84    d82d90a38a00
     asm("{disp8} fst        dword ptr [esp + 0x28]");                        // 0x0075dc8a    d9542428
     asm("{disp32} fcomp     dword ptr [__real@3dcccccd]");                   // 0x0075dc8e    d81d2cb28a00
     asm("fnstsw             ax");                                            // 0x0075dc94    dfe0
@@ -1957,7 +1957,7 @@ float __fastcall FootballAttackerShootPriority__8VillagerFP8Football(struct Vill
     asm("{disp8} jmp        LAB__addr_0x0075dcbe");                          // 0x0075dca3    eb19
     asm("LAB__addr_0x0075dca5:");
     asm("{disp8} fld        dword ptr [esp + 0x28]");                        // 0x0075dca5    d9442428
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x0075dca9    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075dca9    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x0075dcaf    dfe0
     asm("test               ah, 0x41");                                      // 0x0075dcb1    f6c441
     asm("{disp8} jne        LAB__addr_0x0075dcbe");                          // 0x0075dcb4    7508
@@ -2004,7 +2004,7 @@ float __fastcall FootballAttackerShootPriority__8VillagerFP8Football(struct Vill
     asm("{disp8} mov        dword ptr [esp + 0x00], eax");                   // 0x0075dd19    89442400
     asm("{disp8} mov        dword ptr [esp + 0x04], 0x00000000");            // 0x0075dd1d    c744240400000000
     asm("{disp8} fild       qword ptr [esp + 0x00]");                        // 0x0075dd25    df6c2400
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075dd29    d82d90a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075dd29    d82d90a38a00
     asm("{disp8} fst        dword ptr [esp + 0x00]");                        // 0x0075dd2f    d9542400
     asm("{disp32} fcomp     dword ptr [__real@3dcccccd]");                   // 0x0075dd33    d81d2cb28a00
     asm("fnstsw             ax");                                            // 0x0075dd39    dfe0
@@ -2016,11 +2016,11 @@ float __fastcall FootballAttackerShootPriority__8VillagerFP8Football(struct Vill
     asm("ret                0x0004");                                        // 0x0075dd4d    c20400
     asm("LAB__addr_0x0075dd50:");
     asm("{disp8} fld        dword ptr [esp + 0x00]");                        // 0x0075dd50    d9442400
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x0075dd54    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075dd54    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x0075dd5a    dfe0
     asm("test               ah, 0x41");                                      // 0x0075dd5c    f6c441
     asm("{disp8} jne        LAB__addr_0x0075dd71");                          // 0x0075dd5f    7510
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075dd61    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075dd61    d90590a38a00
     asm("{disp8} fmul       dword ptr [esp + 0x1c]");                        // 0x0075dd67    d84c241c
     asm("add                esp, 0x18");                                     // 0x0075dd6b    83c418
     asm("ret                0x0004");                                        // 0x0075dd6e    c20400
@@ -2042,19 +2042,19 @@ float __fastcall FootballAttackerPassPriority__8VillagerFP8Football(struct Villa
     asm("push               0x0000014b");                                    // 0x0075dd8d    684b010000
     asm("push               0x00c2443c");                                    // 0x0075dd92    683c44c200
     asm("push               0x3e4ccccd");                                    // 0x0075dd97    68cdcc4c3e
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075dd9c    e88f07f8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075dd9c    e88f07f8ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x1ba04]");             // 0x0075dda1    d805044a8c00
     asm("add                esp, 0x0c");                                     // 0x0075dda7    83c40c
     asm("ret                0x0004");                                        // 0x0075ddaa    c20400
     asm("LAB__addr_0x0075ddad:");
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075ddad    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075ddad    d90598a38a00
     asm("ret                0x0004");                                        // 0x0075ddb3    c20400
     __builtin_unreachable();
 }
 
 float __fastcall FootballAttackerLobNearGoalPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075ddc0    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075ddc0    d90598a38a00
     asm("ret                0x0004");                                        // 0x0075ddc6    c20400
     __builtin_unreachable();
 }
@@ -2079,7 +2079,7 @@ float __fastcall FootballAttackerDribblePriority__8VillagerFP8Football(struct Vi
     asm("add                esi, 0x14");                                     // 0x0075ddf5    83c614
     asm("push               esi");                                           // 0x0075ddf8    56
     asm("call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z");                               // 0x0075ddf9    e872effeff
-    asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075ddfe    d81598a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@00000000000000000000]");                   // 0x0075ddfe    d81598a38a00
     asm("add                esp, 0x08");                                     // 0x0075de04    83c408
     asm("pop                edi");                                           // 0x0075de07    5f
     asm("pop                esi");                                           // 0x0075de08    5e
@@ -2087,7 +2087,7 @@ float __fastcall FootballAttackerDribblePriority__8VillagerFP8Football(struct Vi
     asm("test               ah, 0x01");                                      // 0x0075de0b    f6c401
     asm("{disp8} je         LAB__addr_0x0075de1a");                          // 0x0075de0e    740a
     asm("fstp               st(0)");                                         // 0x0075de10    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075de12    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075de12    d90598a38a00
     asm("{disp8} jmp        LAB__addr_0x0075de2f");                          // 0x0075de18    eb15
     asm("LAB__addr_0x0075de1a:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x26300]");             // 0x0075de1a    d81500f38c00
@@ -2107,12 +2107,12 @@ float __fastcall FootballAttackerDribblePriority__8VillagerFP8Football(struct Vi
     asm("add                esp, 0x0c");                                     // 0x0075de4a    83c40c
     asm("ret                0x0004");                                        // 0x0075de4d    c20400
     asm("LAB__addr_0x0075de50:");
-    asm("{disp32} fcom      dword ptr [_rdata_float1p0]");                   // 0x0075de50    d81590a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075de50    d81590a38a00
     asm("fnstsw             ax");                                            // 0x0075de56    dfe0
     asm("test               ah, 0x41");                                      // 0x0075de58    f6c441
     asm("{disp8} jne        LAB__addr_0x0075de65");                          // 0x0075de5b    7508
     asm("fstp               st(0)");                                         // 0x0075de5d    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075de5f    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075de5f    d90590a38a00
     asm("LAB__addr_0x0075de65:");
     asm("add                esp, 0x0c");                                     // 0x0075de65    83c40c
     asm("ret                0x0004");                                        // 0x0075de68    c20400
@@ -2130,14 +2130,14 @@ float __fastcall FootballAttackerMoveToBePassedPriority__8VillagerFP8Football(st
     asm("add                esi, 0x14");                                     // 0x0075de80    83c614
     asm("push               esi");                                           // 0x0075de83    56
     asm("call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z");                               // 0x0075de84    e8e7eefeff
-    asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075de89    d81598a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@00000000000000000000]");                   // 0x0075de89    d81598a38a00
     asm("add                esp, 0x08");                                     // 0x0075de8f    83c408
     asm("pop                esi");                                           // 0x0075de92    5e
     asm("fnstsw             ax");                                            // 0x0075de93    dfe0
     asm("test               ah, 0x01");                                      // 0x0075de95    f6c401
     asm("{disp8} je         LAB__addr_0x0075dea4");                          // 0x0075de98    740a
     asm("fstp               st(0)");                                         // 0x0075de9a    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075de9c    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075de9c    d90598a38a00
     asm("{disp8} jmp        LAB__addr_0x0075deb9");                          // 0x0075dea2    eb15
     asm("LAB__addr_0x0075dea4:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x1e658]");             // 0x0075dea4    d81558768c00
@@ -2148,12 +2148,12 @@ float __fastcall FootballAttackerMoveToBePassedPriority__8VillagerFP8Football(st
     asm("{disp32} fld       dword ptr [rdata_bytes + 0x1e658]");             // 0x0075deb3    d90558768c00
     asm("LAB__addr_0x0075deb9:");
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x1ebd4]");             // 0x0075deb9    d80dd47b8c00
-    asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075debf    d81598a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@00000000000000000000]");                   // 0x0075debf    d81598a38a00
     asm("fnstsw             ax");                                            // 0x0075dec5    dfe0
     asm("test               ah, 0x01");                                      // 0x0075dec7    f6c401
     asm("{disp8} je         LAB__addr_0x0075ded7");                          // 0x0075deca    740b
     asm("fstp               st(0)");                                         // 0x0075decc    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075dece    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075dece    d90598a38a00
     asm("ret                0x0004");                                        // 0x0075ded4    c20400
     asm("LAB__addr_0x0075ded7:");
     asm("{disp32} fcom      dword ptr [__real@3e4ccccd]");                   // 0x0075ded7    d81544b28a00
@@ -2169,7 +2169,7 @@ float __fastcall FootballAttackerMoveToBePassedPriority__8VillagerFP8Football(st
 
 float __fastcall FootballAttackerGoToBallPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075def0    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075def0    d90598a38a00
     asm("ret                0x0004");                                        // 0x0075def6    c20400
     __builtin_unreachable();
 }
@@ -2198,7 +2198,7 @@ float __fastcall FootballAttackerGoHomePriority__8VillagerFP8Football(struct Vil
     asm("add                esi, 0x14");                                     // 0x0075df2b    83c614
     asm("push               esi");                                           // 0x0075df2e    56
     asm("call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z");                               // 0x0075df2f    e83ceefeff
-    asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075df34    d81598a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@00000000000000000000]");                   // 0x0075df34    d81598a38a00
     asm("add                esp, 0x08");                                     // 0x0075df3a    83c408
     asm("pop                edi");                                           // 0x0075df3d    5f
     asm("pop                esi");                                           // 0x0075df3e    5e
@@ -2206,7 +2206,7 @@ float __fastcall FootballAttackerGoHomePriority__8VillagerFP8Football(struct Vil
     asm("test               ah, 0x01");                                      // 0x0075df41    f6c401
     asm("{disp8} je         LAB__addr_0x0075df50");                          // 0x0075df44    740a
     asm("fstp               st(0)");                                         // 0x0075df46    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075df48    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075df48    d90598a38a00
     asm("{disp8} jmp        LAB__addr_0x0075df65");                          // 0x0075df4e    eb15
     asm("LAB__addr_0x0075df50:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x1e658]");             // 0x0075df50    d81558768c00
@@ -2226,12 +2226,12 @@ float __fastcall FootballAttackerGoHomePriority__8VillagerFP8Football(struct Vil
     asm("add                esp, 0x0c");                                     // 0x0075df80    83c40c
     asm("ret                0x0004");                                        // 0x0075df83    c20400
     asm("LAB__addr_0x0075df86:");
-    asm("{disp32} fcom      dword ptr [_rdata_float1p0]");                   // 0x0075df86    d81590a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075df86    d81590a38a00
     asm("fnstsw             ax");                                            // 0x0075df8c    dfe0
     asm("test               ah, 0x41");                                      // 0x0075df8e    f6c441
     asm("{disp8} jne        LAB__addr_0x0075df9b");                          // 0x0075df91    7508
     asm("fstp               st(0)");                                         // 0x0075df93    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075df95    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075df95    d90590a38a00
     asm("LAB__addr_0x0075df9b:");
     asm("add                esp, 0x0c");                                     // 0x0075df9b    83c40c
     asm("ret                0x0004");                                        // 0x0075df9e    c20400
@@ -2288,7 +2288,7 @@ float __fastcall FootballAttackerIdlePriority__8VillagerFP8Football(struct Villa
     asm("push               ecx");                                           // 0x0075e02e    51
     asm("push               edi");                                           // 0x0075e02f    57
     asm("call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z");                               // 0x0075e030    e83bedfeff
-    asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075e035    d81598a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@00000000000000000000]");                   // 0x0075e035    d81598a38a00
     asm("add                esp, 0x08");                                     // 0x0075e03b    83c408
     asm("pop                edi");                                           // 0x0075e03e    5f
     asm("pop                esi");                                           // 0x0075e03f    5e
@@ -2297,7 +2297,7 @@ float __fastcall FootballAttackerIdlePriority__8VillagerFP8Football(struct Villa
     asm("test               ah, 0x01");                                      // 0x0075e043    f6c401
     asm("{disp8} je         LAB__addr_0x0075e052");                          // 0x0075e046    740a
     asm("fstp               st(0)");                                         // 0x0075e048    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075e04a    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075e04a    d90598a38a00
     asm("{disp8} jmp        LAB__addr_0x0075e067");                          // 0x0075e050    eb15
     asm("LAB__addr_0x0075e052:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x2414]");              // 0x0075e052    d81514b48a00
@@ -2308,23 +2308,23 @@ float __fastcall FootballAttackerIdlePriority__8VillagerFP8Football(struct Villa
     asm("{disp32} fld       dword ptr [rdata_bytes + 0x2414]");              // 0x0075e061    d90514b48a00
     asm("LAB__addr_0x0075e067:");
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3404]");              // 0x0075e067    d80d04c48a00
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075e06d    d82d90a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075e06d    d82d90a38a00
     asm("{disp8} fmul       dword ptr [esp + 0x10]");                        // 0x0075e073    d84c2410
-    asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075e077    d81598a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@00000000000000000000]");                   // 0x0075e077    d81598a38a00
     asm("fnstsw             ax");                                            // 0x0075e07d    dfe0
     asm("test               ah, 0x01");                                      // 0x0075e07f    f6c401
     asm("{disp8} je         LAB__addr_0x0075e092");                          // 0x0075e082    740e
     asm("fstp               st(0)");                                         // 0x0075e084    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075e086    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075e086    d90598a38a00
     asm("add                esp, 0x0c");                                     // 0x0075e08c    83c40c
     asm("ret                0x0004");                                        // 0x0075e08f    c20400
     asm("LAB__addr_0x0075e092:");
-    asm("{disp32} fcom      dword ptr [_rdata_float1p0]");                   // 0x0075e092    d81590a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075e092    d81590a38a00
     asm("fnstsw             ax");                                            // 0x0075e098    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e09a    f6c441
     asm("{disp8} jne        LAB__addr_0x0075e0a7");                          // 0x0075e09d    7508
     asm("fstp               st(0)");                                         // 0x0075e09f    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075e0a1    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075e0a1    d90590a38a00
     asm("LAB__addr_0x0075e0a7:");
     asm("add                esp, 0x0c");                                     // 0x0075e0a7    83c40c
     asm("ret                0x0004");                                        // 0x0075e0aa    c20400
@@ -2511,7 +2511,7 @@ void __fastcall FootballDefenderSaveProcess__8VillagerFP8Football(struct Village
     asm("push               0x000001e9");                                    // 0x0075e27a    68e9010000
     asm("push               0x00c2443c");                                    // 0x0075e27f    683c44c200
     asm("push               0x41200000");                                    // 0x0075e284    6800002041
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075e289    e8a202f8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075e289    e8a202f8ff
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x26e4]");              // 0x0075e28e    d825e4b68a00
     asm("{disp8} fild       dword ptr [esp + 0x1c]");                        // 0x0075e294    db44241c
     asm("{disp32} fmul      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075e298    d80d80a99900
@@ -2519,13 +2519,13 @@ void __fastcall FootballDefenderSaveProcess__8VillagerFP8Football(struct Village
     asm("fadd               st, st(1)");                                     // 0x0075e2a4    d8c1
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3408]");              // 0x0075e2a6    d80d08c48a00
     asm("{disp32} fdiv      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075e2ac    d83580a99900
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0075e2b2    e849310400
+    asm("call               __ftol");                                        // 0x0075e2b2    e849310400
     asm("fstp               st(0)");                                         // 0x0075e2b7    ddd8
     asm("push               0x000001ea");                                    // 0x0075e2b9    68ea010000
     asm("push               0x00c2443c");                                    // 0x0075e2be    683c44c200
     asm("push               0x41200000");                                    // 0x0075e2c3    6800002041
     asm("{disp8} mov        dword ptr [esp + 0x28], eax");                   // 0x0075e2c8    89442428
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075e2cc    e85f02f8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075e2cc    e85f02f8ff
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x26e4]");              // 0x0075e2d1    d825e4b68a00
     asm("{disp8} fild       dword ptr [esp + 0x2c]");                        // 0x0075e2d7    db44242c
     asm("add                esp, 0x18");                                     // 0x0075e2db    83c418
@@ -2534,7 +2534,7 @@ void __fastcall FootballDefenderSaveProcess__8VillagerFP8Football(struct Village
     asm("fadd               st, st(1)");                                     // 0x0075e2ea    d8c1
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x3408]");              // 0x0075e2ec    d80d08c48a00
     asm("{disp32} fdiv      dword ptr [_villager_football_float10p0_0x0099a980]"); // 0x0075e2f2    d83580a99900
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0075e2f8    e803310400
+    asm("call               __ftol");                                        // 0x0075e2f8    e803310400
     asm("fstp               st(0)");                                         // 0x0075e2fd    ddd8
     asm("{disp8} mov        ecx, dword ptr [esp + 0x10]");                   // 0x0075e2ff    8b4c2410
     asm("{disp8} mov        edx, dword ptr [esp + 0x18]");                   // 0x0075e303    8b542418
@@ -2546,7 +2546,7 @@ void __fastcall FootballDefenderSaveProcess__8VillagerFP8Football(struct Village
     asm("{disp8} mov        dword ptr [esp + 0x2c], ecx");                   // 0x0075e31c    894c242c
     asm("{disp8} mov        dword ptr [esp + 0x30], eax");                   // 0x0075e320    89442430
     asm("{disp8} mov        dword ptr [esp + 0x34], edx");                   // 0x0075e324    89542434
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075e328    e80302f8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075e328    e80302f8ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x19c70]");             // 0x0075e32d    d805702c8c00
     asm("add                esp, 0x08");                                     // 0x0075e333    83c408
     asm("{disp8} lea        eax, dword ptr [esp + 0x24]");                   // 0x0075e336    8d442424
@@ -2651,17 +2651,17 @@ void __fastcall FootballDefenderDribbleProcess__8VillagerFP8Football(struct Vill
     asm("{disp8} fadd       dword ptr [esp + 0x14]");                        // 0x0075e443    d8442414
     asm("fsqrt");                                                            // 0x0075e447    d9fa
     asm("fld                st(1)");                                         // 0x0075e449    d9c1
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075e44b    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075e44b    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075e451    dfe0
     asm("test               ah, 0x40");                                      // 0x0075e453    f6c440
     asm("{disp8} je         LAB__addr_0x0075e47a");                          // 0x0075e456    7422
     asm("{disp8} fld        dword ptr [esp + 0x1c]");                        // 0x0075e458    d944241c
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075e45c    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075e45c    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075e462    dfe0
     asm("test               ah, 0x40");                                      // 0x0075e464    f6c440
     asm("{disp8} je         LAB__addr_0x0075e47a");                          // 0x0075e467    7411
     asm("{disp8} fld        dword ptr [esp + 0x20]");                        // 0x0075e469    d9442420
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075e46d    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075e46d    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075e473    dfe0
     asm("test               ah, 0x40");                                      // 0x0075e475    f6c440
     asm("{disp8} jne        LAB__addr_0x0075e4a8");                          // 0x0075e478    752e
@@ -2670,7 +2670,7 @@ void __fastcall FootballDefenderDribbleProcess__8VillagerFP8Football(struct Vill
     asm("{disp8} fadd       dword ptr [esp + 0x10]");                        // 0x0075e47e    d8442410
     asm("{disp8} fadd       dword ptr [esp + 0x14]");                        // 0x0075e482    d8442414
     asm("fsqrt");                                                            // 0x0075e486    d9fa
-    asm("{disp32} fdivr     dword ptr [_rdata_float1p0]");                   // 0x0075e488    d83d90a38a00
+    asm("{disp32} fdivr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075e488    d83d90a38a00
     asm("fld                st(0)");                                         // 0x0075e48e    d9c0
     asm("fmulp              st(3), st");                                     // 0x0075e490    decb
     asm("{disp8} fld        dword ptr [esp + 0x1c]");                        // 0x0075e492    d944241c
@@ -2711,7 +2711,7 @@ void __fastcall FootballDefenderDribbleProcess__8VillagerFP8Football(struct Vill
     asm("push               0x00000208");                                    // 0x0075e509    6808020000
     asm("push               0x00c2443c");                                    // 0x0075e50e    683c44c200
     asm("push               0x3f800000");                                    // 0x0075e513    680000803f
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075e518    e81300f8ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075e518    e81300f8ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x235c]");              // 0x0075e51d    d8055cb38a00
     asm("add                esp, 0x08");                                     // 0x0075e523    83c408
     asm("{disp8} lea        edx, dword ptr [esp + 0x5c]");                   // 0x0075e526    8d54245c
@@ -3010,7 +3010,7 @@ void __fastcall FootballDefenderPassProcess__8VillagerFP8Football(struct Village
     asm("{disp8} lea        edx, dword ptr [ebp + 0x14]");                   // 0x0075e81b    8d5514
     asm("push               edx");                                           // 0x0075e81e    52
     asm("call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z");                               // 0x0075e81f    e84ce5feff
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x0075e824    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075e824    d81d90a38a00
     asm("add                esp, 0x08");                                     // 0x0075e82a    83c408
     asm("fnstsw             ax");                                            // 0x0075e82d    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e82f    f6c441
@@ -3019,7 +3019,7 @@ void __fastcall FootballDefenderPassProcess__8VillagerFP8Football(struct Village
     asm("push               0x00000255");                                    // 0x0075e836    6855020000
     asm("push               0x00c2443c");                                    // 0x0075e83b    683c44c200
     asm("push               0x3f800000");                                    // 0x0075e840    680000803f
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075e845    e8e6fcf7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075e845    e8e6fcf7ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x235c]");              // 0x0075e84a    d8055cb38a00
     asm("add                esp, 0x08");                                     // 0x0075e850    83c408
     asm("{disp8} lea        eax, dword ptr [esp + 0x18]");                   // 0x0075e853    8d442418
@@ -3054,7 +3054,7 @@ float __fastcall FootballDefenderSavePriority__8VillagerFP8Football(struct Villa
     asm("push               0x00000267");                                    // 0x0075e890    6867020000
     asm("push               0x00c2443c");                                    // 0x0075e895    683c44c200
     asm("push               0x3e99999a");                                    // 0x0075e89a    689a99993e
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075e89f    e88cfcf7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075e89f    e88cfcf7ff
     asm("{disp32} fadd      dword ptr [__real@3f333333]");                   // 0x0075e8a4    d80538b28a00
     asm("add                esp, 0x0c");                                     // 0x0075e8aa    83c40c
     asm("ret                0x0004");                                        // 0x0075e8ad    c20400
@@ -3066,7 +3066,7 @@ float __fastcall FootballDefenderClearPriority__8VillagerFP8Football(struct Vill
     asm("push               0x0000026e");                                    // 0x0075e8b0    686e020000
     asm("push               0x00c2443c");                                    // 0x0075e8b5    683c44c200
     asm("push               0x3ecccccd");                                    // 0x0075e8ba    68cdcccc3e
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075e8bf    e86cfcf7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075e8bf    e86cfcf7ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x1ebdc]");             // 0x0075e8c4    d805dc7b8c00
     asm("add                esp, 0x0c");                                     // 0x0075e8ca    83c40c
     asm("ret                0x0004");                                        // 0x0075e8cd    c20400
@@ -3093,7 +3093,7 @@ float __fastcall FootballDefenderDribblePriority__8VillagerFP8Football(struct Vi
     asm("add                esi, 0x14");                                     // 0x0075e8f5    83c614
     asm("push               esi");                                           // 0x0075e8f8    56
     asm("call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z");                               // 0x0075e8f9    e872e4feff
-    asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075e8fe    d81598a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@00000000000000000000]");                   // 0x0075e8fe    d81598a38a00
     asm("add                esp, 0x08");                                     // 0x0075e904    83c408
     asm("pop                edi");                                           // 0x0075e907    5f
     asm("pop                esi");                                           // 0x0075e908    5e
@@ -3101,7 +3101,7 @@ float __fastcall FootballDefenderDribblePriority__8VillagerFP8Football(struct Vi
     asm("test               ah, 0x01");                                      // 0x0075e90b    f6c401
     asm("{disp8} je         LAB__addr_0x0075e91a");                          // 0x0075e90e    740a
     asm("fstp               st(0)");                                         // 0x0075e910    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075e912    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075e912    d90598a38a00
     asm("{disp8} jmp        LAB__addr_0x0075e92f");                          // 0x0075e918    eb15
     asm("LAB__addr_0x0075e91a:");
     asm("{disp32} fcom      dword ptr [rdata_bytes + 0x26300]");             // 0x0075e91a    d81500f38c00
@@ -3121,12 +3121,12 @@ float __fastcall FootballDefenderDribblePriority__8VillagerFP8Football(struct Vi
     asm("add                esp, 0x0c");                                     // 0x0075e94a    83c40c
     asm("ret                0x0004");                                        // 0x0075e94d    c20400
     asm("LAB__addr_0x0075e950:");
-    asm("{disp32} fcom      dword ptr [_rdata_float1p0]");                   // 0x0075e950    d81590a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075e950    d81590a38a00
     asm("fnstsw             ax");                                            // 0x0075e956    dfe0
     asm("test               ah, 0x41");                                      // 0x0075e958    f6c441
     asm("{disp8} jne        LAB__addr_0x0075e965");                          // 0x0075e95b    7508
     asm("fstp               st(0)");                                         // 0x0075e95d    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075e95f    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075e95f    d90590a38a00
     asm("LAB__addr_0x0075e965:");
     asm("add                esp, 0x0c");                                     // 0x0075e965    83c40c
     asm("ret                0x0004");                                        // 0x0075e968    c20400
@@ -3138,7 +3138,7 @@ float __fastcall FootballDefenderMarkPriority__8VillagerFP8Football(struct Villa
     asm("push               0x00000280");                                    // 0x0075e970    6880020000
     asm("push               0x00c2443c");                                    // 0x0075e975    683c44c200
     asm("push               0x3f800000");                                    // 0x0075e97a    680000803f
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075e97f    e8acfbf7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075e97f    e8acfbf7ff
     asm("add                esp, 0x0c");                                     // 0x0075e984    83c40c
     asm("ret                0x0004");                                        // 0x0075e987    c20400
     __builtin_unreachable();
@@ -3146,7 +3146,7 @@ float __fastcall FootballDefenderMarkPriority__8VillagerFP8Football(struct Villa
 
 float __fastcall FootballDefenderGoToBallPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075e990    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075e990    d90598a38a00
     asm("ret                0x0004");                                        // 0x0075e996    c20400
     __builtin_unreachable();
 }
@@ -3165,7 +3165,7 @@ float __fastcall FootballDefenderIdlePriority__8VillagerFP8Football(struct Villa
     asm("{disp8} mov        eax, dword ptr [esp + 0x04]");                   // 0x0075e9b0    8b442404
     asm("push               eax");                                           // 0x0075e9b4    50
     asm("call               ?FootballDefenderGoHomePriority@Villager@@QAEMPAVFootball@@@Z");                          // 0x0075e9b5    e8e6ffffff
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075e9ba    d82d90a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075e9ba    d82d90a38a00
     asm("ret                0x0004");                                        // 0x0075e9c0    c20400
     __builtin_unreachable();
 }
@@ -3180,12 +3180,12 @@ float __fastcall FootballDefenderPassPriority__8VillagerFP8Football(struct Villa
     asm("push               0x0000029e");                                    // 0x0075e9dd    689e020000
     asm("push               0x00c2443c");                                    // 0x0075e9e2    683c44c200
     asm("push               0x3e4ccccd");                                    // 0x0075e9e7    68cdcc4c3e
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075e9ec    e83ffbf7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075e9ec    e83ffbf7ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x1ba04]");             // 0x0075e9f1    d805044a8c00
     asm("add                esp, 0x0c");                                     // 0x0075e9f7    83c40c
     asm("ret                0x0004");                                        // 0x0075e9fa    c20400
     asm("LAB__addr_0x0075e9fd:");
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075e9fd    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075e9fd    d90598a38a00
     asm("ret                0x0004");                                        // 0x0075ea03    c20400
     __builtin_unreachable();
 }
@@ -3379,7 +3379,7 @@ void __fastcall FootballGoalieSaveProcess__8VillagerFP8Football(struct Villager*
     asm("push               0x000002f5");                                    // 0x0075ebef    68f5020000
     asm("push               0x00c2443c");                                    // 0x0075ebf4    683c44c200
     asm("push               0x3f800000");                                    // 0x0075ebf9    680000803f
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075ebfe    e82df9f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075ebfe    e82df9f7ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x56ec8]");             // 0x0075ec03    d805c8fe8f00
     asm("add                esp, 0x08");                                     // 0x0075ec09    83c408
     asm("{disp8} lea        edx, dword ptr [esp + 0x18]");                   // 0x0075ec0c    8d542418
@@ -3708,7 +3708,7 @@ void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager*
     asm("{disp8} lea        edx, dword ptr [ebp + 0x14]");                   // 0x0075ef45    8d5514
     asm("push               edx");                                           // 0x0075ef48    52
     asm("call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z");                               // 0x0075ef49    e822defeff
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x0075ef4e    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075ef4e    d81d90a38a00
     asm("add                esp, 0x08");                                     // 0x0075ef54    83c408
     asm("fnstsw             ax");                                            // 0x0075ef57    dfe0
     asm("test               ah, 0x41");                                      // 0x0075ef59    f6c441
@@ -3717,7 +3717,7 @@ void __fastcall FootballGoaliePassProcess__8VillagerFP8Football(struct Villager*
     asm("push               0x0000034e");                                    // 0x0075ef60    684e030000
     asm("push               0x00c2443c");                                    // 0x0075ef65    683c44c200
     asm("push               0x3f800000");                                    // 0x0075ef6a    680000803f
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075ef6f    e8bcf5f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075ef6f    e8bcf5f7ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x235c]");              // 0x0075ef74    d8055cb38a00
     asm("add                esp, 0x08");                                     // 0x0075ef7a    83c408
     asm("{disp8} lea        eax, dword ptr [esp + 0x18]");                   // 0x0075ef7d    8d442418
@@ -3752,7 +3752,7 @@ float __fastcall FootballGoalieSavePriority__8VillagerFP8Football(struct Village
     asm("push               0x00000360");                                    // 0x0075efc0    6860030000
     asm("push               0x00c2443c");                                    // 0x0075efc5    683c44c200
     asm("push               0x3f800000");                                    // 0x0075efca    680000803f
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075efcf    e85cf5f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075efcf    e85cf5f7ff
     asm("add                esp, 0x0c");                                     // 0x0075efd4    83c40c
     asm("ret                0x0004");                                        // 0x0075efd7    c20400
     __builtin_unreachable();
@@ -3763,7 +3763,7 @@ float __fastcall FootballGoalieClearPriority__8VillagerFP8Football(struct Villag
     asm("push               0x00000366");                                    // 0x0075efe0    6866030000
     asm("push               0x00c2443c");                                    // 0x0075efe5    683c44c200
     asm("push               0x3f800000");                                    // 0x0075efea    680000803f
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075efef    e83cf5f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075efef    e83cf5f7ff
     asm("add                esp, 0x0c");                                     // 0x0075eff4    83c40c
     asm("ret                0x0004");                                        // 0x0075eff7    c20400
     __builtin_unreachable();
@@ -3774,7 +3774,7 @@ float __fastcall FootballGoalieLookPriority__8VillagerFP8Football(struct Village
     asm("push               0x0000036c");                                    // 0x0075f000    686c030000
     asm("push               0x00c2443c");                                    // 0x0075f005    683c44c200
     asm("push               0x3f800000");                                    // 0x0075f00a    680000803f
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0075f00f    e81cf5f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0075f00f    e81cf5f7ff
     asm("add                esp, 0x0c");                                     // 0x0075f014    83c40c
     asm("ret                0x0004");                                        // 0x0075f017    c20400
     __builtin_unreachable();
@@ -3782,7 +3782,7 @@ float __fastcall FootballGoalieLookPriority__8VillagerFP8Football(struct Village
 
 float __fastcall FootballGoalieGoToBallPriority__8VillagerFP8Football(struct Villager* this, const void* edx, struct Football* param_1)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075f020    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075f020    d90598a38a00
     asm("ret                0x0004");                                        // 0x0075f026    c20400
     __builtin_unreachable();
 }
@@ -3801,7 +3801,7 @@ float __fastcall FootballGoalieIdlePriority__8VillagerFP8Football(struct Village
     asm("{disp8} mov        eax, dword ptr [esp + 0x04]");                   // 0x0075f040    8b442404
     asm("push               eax");                                           // 0x0075f044    50
     asm("call               ?FootballGoalieGoHomePriority@Villager@@QAEMPAVFootball@@@Z");                          // 0x0075f045    e8e6ffffff
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075f04a    d82d90a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075f04a    d82d90a38a00
     asm("ret                0x0004");                                        // 0x0075f050    c20400
     __builtin_unreachable();
 }
@@ -4190,7 +4190,7 @@ bool32_t __fastcall FootballMoveToBall__8VillagerFv(struct Villager* this)
     asm("push               eax");                                           // 0x0075f3df    50
     asm("push               edi");                                           // 0x0075f3e0    57
     asm("call               _jmp_addr_0x0074cd50");                          // 0x0075f3e1    e86ad9feff
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x0075f3e6    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075f3e6    d81d90a38a00
     asm("add                esp, 0x08");                                     // 0x0075f3ec    83c408
     asm("fnstsw             ax");                                            // 0x0075f3ef    dfe0
     asm("test               ah, 0x41");                                      // 0x0075f3f1    f6c441

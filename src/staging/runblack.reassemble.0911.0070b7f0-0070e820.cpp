@@ -18,13 +18,13 @@ void ScriptMarker::ToBeDeleted(int param_1)
 }
 
 // win1.41 0070d9d0 mac 105016d0 ScriptMarker::Save(GameOSFile &)
-bool ScriptMarker::Save(GameOSFile& file)
+bool32_tcorrect ScriptMarker::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0070d9f0 mac 10501660 ScriptMarker::Load(GameOSFile &)
-bool ScriptMarker::Load(GameOSFile& file)
+bool32_tcorrect ScriptMarker::Load(GameOSFile& file)
 {
     return 0;
 }

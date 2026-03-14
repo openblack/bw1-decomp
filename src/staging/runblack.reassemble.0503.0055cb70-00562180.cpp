@@ -147,7 +147,7 @@ float Spell::GetLife()
 }
 
 // win1.41 0055cdc0 mac 103b1c30 Spell::IsFunctional(void)
-bool Spell::IsFunctional()
+bool32_tcorrect Spell::IsFunctional()
 {
     return 0;
 }
@@ -509,7 +509,7 @@ bool SpellIcon::IsRepaired()
 }
 
 // win1.41 0055d3d0 mac 100c7990 SpellIcon::IsBuilt(void)
-bool SpellIcon::IsBuilt()
+bool32_tcorrect SpellIcon::IsBuilt()
 {
     return 0;
 }
@@ -1650,7 +1650,7 @@ bool TotemStatue::IsRepaired()
 }
 
 // win1.41 005610b0 mac 1001a9a0 TotemStatue::IsBuilt(void)
-bool TotemStatue::IsBuilt()
+bool32_tcorrect TotemStatue::IsBuilt()
 {
     return 0;
 }
@@ -1767,7 +1767,7 @@ void Whale::PhysicsEditorCreate(int param_1)
 }
 
 // win1.41 00561290 mac 1015ff10 Whale::CanBecomeAPhysicsObject(void)
-bool Whale::CanBecomeAPhysicsObject()
+bool32_tcorrect Whale::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -1953,7 +1953,7 @@ uint32_t HanoiBlock::SaveObject(LHOSFile& file, const MapCoords& coords)
 }
 
 // win1.41 00561800 mac 1011eca0 HanoiBlock::CanBecomeAPhysicsObject(void)
-bool HanoiBlock::CanBecomeAPhysicsObject()
+bool32_tcorrect HanoiBlock::CanBecomeAPhysicsObject()
 {
     return 0;
 }

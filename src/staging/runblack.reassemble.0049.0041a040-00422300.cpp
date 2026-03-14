@@ -7,7 +7,7 @@
 #include "AnimatedStatic.h"
 
 // win1.41 0041a040 mac 10168030 Animal::CallVirtualFunctionsForCreation(MapCoords const &)
-void Animal::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void Animal::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -123,13 +123,13 @@ bool Animal::IsFinalState(VILLAGER_STATES param_1)
 }
 
 // win1.41 0041b460 mac 101659a0 Animal::Save(GameOSFile &)
-bool Animal::Save(GameOSFile& param_1)
+bool32_tcorrect Animal::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0041b710 mac 10165620 Animal::Load(GameOSFile &)
-bool Animal::Load(GameOSFile& param_1)
+bool32_tcorrect Animal::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -211,9 +211,9 @@ ABODE_NUMBER GFeatureInfo::GetAbodeNumber()
 }
 
 // win1.41 00421ea0 mac 100a5310 GFeatureInfo::GetMesh( const(void))
-uint32_t GFeatureInfo::GetMesh() const
+MeshId GFeatureInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 00421eb0 mac 100a7c10 GFeatureInfo::GetBaseInfo(unsigned long &)
@@ -227,11 +227,11 @@ GAnimatedStaticInfo::~GAnimatedStaticInfo()
 {
 }
 
-// win1.41 00421fe0 mac 105b8ff0 MultiMapFixed::GetArrivePos(void)
-MapCoords* MultiMapFixed::GetArrivePos(MapCoords* coords)
-{
-    return 0;
-}
+// // win1.41 00421fe0 mac 105b8ff0 MultiMapFixed::GetArrivePos(void)
+// MapCoords MultiMapFixed::GetArrivePos()
+// {
+//     return 0;
+// }
 
 // win1.41 00422000 mac 100a5570 MultiMapFixed::GetPercentAbodeFullWithAdults(void)
 float MultiMapFixed::GetPercentAbodeFullWithAdults()
@@ -246,7 +246,7 @@ float MultiMapFixed::GetPercentAbodeFullWithChildren()
 }
 
 // win1.41 00422020 mac 100a5620 MultiMapFixed::GetDestructionMesh(void)
-LH3DMesh* MultiMapFixed::GetDestructionMesh()
+FragMesh* MultiMapFixed::GetDestructionMesh()
 {
     return 0;
 }
@@ -263,7 +263,7 @@ bool MultiMapFixed::IsCivic()
 }
 
 // win1.41 00422050 mac 100a56e0 MultiMapFixed::IsWonder(void)
-bool32_t MultiMapFixed::IsWonder()
+bool32_tcorrect MultiMapFixed::IsWonder()
 {
     return 0;
 }
@@ -327,7 +327,7 @@ bool WorshipSiteUpgrade::IsRepaired()
 }
 
 // win1.41 00422110 mac inlined WorshipSiteUpgrade::IsBuilt(void)
-bool WorshipSiteUpgrade::IsBuilt()
+bool32_tcorrect WorshipSiteUpgrade::IsBuilt()
 {
     return 0;
 }

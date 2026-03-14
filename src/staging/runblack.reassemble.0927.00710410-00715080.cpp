@@ -9,13 +9,13 @@ uint32_t ScriptTimer::GetScriptObjectType()
 }
 
 // win1.41 00711700 mac 105064b0 ScriptTimer::Save(GameOSFile &)
-bool ScriptTimer::Save(GameOSFile& file)
+bool32_tcorrect ScriptTimer::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007117b0 mac 10506390 ScriptTimer::Load(GameOSFile &)
-bool ScriptTimer::Load(GameOSFile& file)
+bool32_tcorrect ScriptTimer::Load(GameOSFile& file)
 {
     return 0;
 }

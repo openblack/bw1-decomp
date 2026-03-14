@@ -82,7 +82,7 @@ HelpSpirit::~HelpSpirit()
 }
 
 // win1.41 005c4b90 mac 1034c540 HelpSpirit::CallVirtualFunctionsForCreation(MapCoords const &)
-void HelpSpirit::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void HelpSpirit::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 

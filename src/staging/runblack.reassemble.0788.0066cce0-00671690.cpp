@@ -35,7 +35,7 @@ void Pot::ToBeDeleted(int param_1)
 }
 
 // win1.41 0066d130 mac 1011c840 Pot::CallVirtualFunctionsForCreation(MapCoords const &)
-void Pot::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void Pot::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -115,13 +115,13 @@ bool Pot::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 }
 
 // win1.41 0066d730 mac 1011b830 Pot::Save(GameOSFile &)
-bool Pot::Save(GameOSFile& file)
+bool32_tcorrect Pot::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0066d820 mac 1011b6c0 Pot::Load(GameOSFile &)
-bool Pot::Load(GameOSFile& file)
+bool32_tcorrect Pot::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -155,19 +155,19 @@ bool PotStructure::IsResourceStore(RESOURCE_TYPE param_1)
 }
 
 // win1.41 0066da90 mac 1011b150 PotStructure::Save(GameOSFile &)
-bool PotStructure::Save(GameOSFile& file)
+bool32_tcorrect PotStructure::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0066db10 mac 1011b060 PotStructure::Load(GameOSFile &)
-bool PotStructure::Load(GameOSFile& file)
+bool32_tcorrect PotStructure::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0066db90 mac 1011afa0 PotStructure::CallVirtualFunctionsForCreation(const MapCoords&)
-void PotStructure::CallVirtualFunctionsForCreation(const MapCoords* coords)
+void PotStructure::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 }
 
@@ -244,7 +244,7 @@ void PileFood::ToBeDeleted(int param_1)
 }
 
 // win1.41 0066e1a0 mac 10119ea0 PileFood::CallVirtualFunctionsForCreation(MapCoords const &)
-void PileFood::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void PileFood::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -267,7 +267,7 @@ HELP_TEXT PileFood::GetQueryLastEnumText()
 }
 
 // win1.41 0066e300 mac 10119a80 PileResource::CallVirtualFunctionsForCreation(MapCoords const &)
-void PileResource::CallVirtualFunctionsForCreation(const MapCoords* coords)
+void PileResource::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 }
 
@@ -343,7 +343,7 @@ bool PileResource::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
 }
 
 // win1.41 0066e8f0 mac 10118e10 Pot::CanBecomeAPhysicsObject(void)
-bool Pot::CanBecomeAPhysicsObject()
+bool32_tcorrect Pot::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -455,33 +455,33 @@ float Pot::GetFoodValue(FOOD_TYPE param_1)
 }
 
 // win1.41 0066f5a0 mac 10116600 PileFood::Save(GameOSFile &)
-bool PileFood::Save(GameOSFile& file)
+bool32_tcorrect PileFood::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0066f5e0 mac 10116570 PileFood::Load(GameOSFile &)
-bool PileFood::Load(GameOSFile& file)
+bool32_tcorrect PileFood::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0066f620 mac 10116490 PileResource::Save(GameOSFile &)
-bool PileResource::Save(GameOSFile& file)
+bool32_tcorrect PileResource::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0066f690 mac 101163b0 PileResource::Load(GameOSFile &)
-bool PileResource::Load(GameOSFile& file)
+bool32_tcorrect PileResource::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00670660 mac 1011eac0 GPrayerSiteInfo::GetMesh( const(void))
-uint32_t GPrayerSiteInfo::GetMesh() const
+MeshId GPrayerSiteInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 00670670 mac 1011eb00 GPrayerSiteInfo::GetBaseInfo(unsigned long &)

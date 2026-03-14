@@ -78,8 +78,15 @@ struct MapCoords
     MapCoords(long x, long z, float altitude);
     // win1.41 006031d0 mac 10324c60 MapCoords::MapCoords(char *)
     MapCoords(const char* str);
+    // win1.41 inlined mac 100e62c0 MapCoords::operator=(MapCoords const &)
+    MapCoords(const MapCoords& other)
+    {
+      x = other.x;
+      z = other.z;
+      altitude = other.altitude;
+    }
     // win1.41 00441b60 mac inlined MapCoords::MapCoords(MapCoords const &)
-    MapCoords(const MapCoords& other);
+    MapCoords& operator=(const MapCoords& other);
     // win1.41 00603160 mac 1006a450 MapCoords::MapCoords(LHPoint const &)
     MapCoords(const LHPoint& point);
 
@@ -121,10 +128,10 @@ struct MapCoords
     bool operator==(const MapCoords& param_2) const;
     // win1.41 00605c40 mac 1004ff00 MapCoords::GetLHPoint(void) const
     LHPoint* GetLHPoint(LHPoint* point) const;
+    // win1.41 00605cd0 mac inlined MapCoords::GetMetresDistance(MapCoords const &)
+    float GetMetresDistance(const MapCoords& other) const;
     // win1.41 00605fb0 mac 10032290 MapCoords::GetMetresDistanceSq(MapCoords const &) const
-    float GetMetresDistanceSq(const MapCoords& param_2) const;
-    // win1.41 inlined mac 100e62c0 MapCoords::operator=(MapCoords const &)
-    MapCoords* operator=(const MapCoords& other);
+    float GetMetresDistanceSq(const MapCoords& other) const;
     // win1.41 inlined mac 1004a1d0 MapCoords::Altitude(void) const
     float Altitude() const;
     // win1.41 00603490 mac 105a3bb0 MapCoords::GetFirstObjectMobile(void) const
@@ -252,8 +259,10 @@ struct Object* __fastcall FindType__9MapCoordsCF11OBJECT_TYPEP6Object(struct Map
 uint32_t __fastcall __eq__9MapCoordsCFRC9MapCoords(const struct MapCoords* this, const void* edx, const struct MapCoords* param_2) asm("?__eq@MapCoords@@QBEIABV1@@Z");
 // win1.41 00605c40 mac 1004ff00 MapCoords::GetLHPoint(void) const
 struct LHPoint* __fastcall GetLHPoint__9MapCoordsCFv(const struct MapCoords* this, const void* edx, struct LHPoint* point) asm("?GetLHPoint@MapCoords@@QBEPAULHPoint@@XZ");
+// win1.41 00605cd0 mac inlined MapCoords::GetMetresDistance(MapCoords const &, MapCoords const &)
+float __fastcall GetMetresDistance__9MapCoordsCFRC9MapCoords(struct MapCoords* this, const void* edx, struct MapCoords* param_2) asm("?GetMetresDistance@MapCoords@@QBEMABU1@@Z");
 // win1.41 00605fb0 mac 10032290 MapCoords::GetMetresDistanceSq(MapCoords const &) const
-float __fastcall GetMetresDistanceSq__9MapCoordsCFRC9MapCoords(struct MapCoords* this, const void* edx, struct MapCoords* param_2) asm("?GetMetresDistanceSq@MapCoords@@QBEMABV1@@Z");
+float __fastcall GetMetresDistanceSq__9MapCoordsCFRC9MapCoords(struct MapCoords* this, const void* edx, struct MapCoords* param_2) asm("?GetMetresDistanceSq@MapCoords@@QBEMABU1@@Z");
 // win1.41 inlined mac 100e62c0 MapCoords::operator=(MapCoords const &)
 struct MapCoords* __fastcall __as__9MapCoordsFRC9MapCoords(struct MapCoords* this, const void* edx, const struct MapCoords* other) asm("?__as@MapCoords@@QAEPAV1@ABV1@@Z");
 // win1.41 inlined mac 1004a1d0 MapCoords::Altitude(void) const

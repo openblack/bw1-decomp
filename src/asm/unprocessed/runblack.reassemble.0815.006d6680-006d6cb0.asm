@@ -8,7 +8,7 @@
 .extern _jmp_addr_0x006d61d0
 .extern _jmp_addr_0x006d9290
 .extern _jmp_addr_0x006db520
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 
 .globl _jmp_addr_0x006d6680
 .globl _jmp_addr_0x006d66e0
@@ -306,13 +306,13 @@ _jmp_addr_0x006d66e0:    sub               esp, 0x24                          //
                          {disp32} fild     dword ptr [esi + _sin_lookup_table]// 0x006d698b    db861416c300
                          {disp32} fmul     dword ptr [ebp + 0x00000388]       // 0x006d6991    d88d88030000
                          fadd.s            st(0), st(0)                       // 0x006d6997    dcc0
-                         call              _jmp_addr_0x007a1400               // 0x006d6999    e862aa0c00
+                         call              __ftol                             // 0x006d6999    e862aa0c00
                          {disp32} fild     dword ptr [esi + _cos_lookup_table]// 0x006d699e    db86141ec300
                          add.s             ebx, eax                           // 0x006d69a4    03d8
                          {disp8} mov       dword ptr [esp + 0x1c], ebx        // 0x006d69a6    895c241c
                          {disp32} fmul     dword ptr [ebp + 0x00000388]       // 0x006d69aa    d88d88030000
                          fadd.s            st(0), st(0)                       // 0x006d69b0    dcc0
-                         call              _jmp_addr_0x007a1400               // 0x006d69b2    e849aa0c00
+                         call              __ftol                             // 0x006d69b2    e849aa0c00
                          {disp8} mov       esi, dword ptr [esp + 0x20]        // 0x006d69b7    8b742420
                          push              0x0                                // 0x006d69bb    6a00
                          push              0x3                                // 0x006d69bd    6a03

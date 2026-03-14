@@ -46,9 +46,9 @@ public:
     // win1.41 00709860 mac 104fa730 ScriptHighlight::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0070a8f0 mac 104fb050 ScriptHighlight::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0070a760 mac 104fb290 ScriptHighlight::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00709850 mac 104fa6f0 ScriptHighlight::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00709760 mac 104fa210 ScriptHighlight::PhysicsEditorCreate(int)
@@ -80,7 +80,7 @@ public:
     // win1.41 007097d0 mac 104fa470 ScriptHighlight::CanBeCrushed(void)
     virtual bool CanBeCrushed();
     // win1.41 00709aa0 mac 104fbb00 ScriptHighlight::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00709800 mac 104fa550 ScriptHighlight::ValidAsInterfaceTarget(void)
     virtual bool ValidAsInterfaceTarget();
     // win1.41 00709770 mac 104fa250 ScriptHighlight::ValidForPlaceInHand(GInterfaceStatus *)
@@ -100,7 +100,7 @@ public:
     // win1.41 00709820 mac 104fa5f0 ScriptHighlight::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 00709810 mac 104fa5a0 ScriptHighlight::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 0070ae40 mac 104fa770 ScriptHighlight::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
     virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int, Point2D, float, int));
 

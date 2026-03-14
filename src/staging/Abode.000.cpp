@@ -1,9 +1,12 @@
 #include "Abode.h"
+#include "AbodeInfo.h"
 #include "Object.h"
 #include "Town.h"
 #include "Game.h"
 
-extern GGame* _game = (GGame*)0x00d0195c;
+extern "C" GGame* game;
+
+GAbodeInfo infossss[0x93];
 
 // win1.41 00401350 mac 1033b330 Abode::Abode(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
 Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* _town, float y_angle, float scale, float food, int wood)
@@ -17,7 +20,7 @@ Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* _town, float
     }
 
     // _game->map.field_0x8 |= 1;
-    __asm mov eax, _game
+    __asm mov eax, game
     __asm or BYTE PTR [eax + 0x059bc + 0x4], 1
 
     FindNearestDrinkingWater(200.0f);

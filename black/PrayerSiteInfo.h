@@ -31,7 +31,7 @@ public:
     // win1.41 00670670 mac 1011eb00 GPrayerSiteInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 00670660 mac 1011eac0 GPrayerSiteInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh() const;
+    virtual MeshId GetMesh() const;
 };
 
 #else // __cplusplus

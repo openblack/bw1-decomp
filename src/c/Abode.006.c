@@ -98,11 +98,11 @@ size_t __fastcall SaveObject__5AbodeFR8LHOSFileRC9MapCoords(struct Object* this,
     asm("{disp8} fld        dword ptr [esp + 0x18]");                        // 0x00405c59    d9442418
     asm("{disp32} fmul      dword ptr [__real@447a0000]");                   // 0x00405c5d    d80d28b28a00
     asm("push               eax");                                           // 0x00405c63    50
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00405c64    e897b73900
+    asm("call               __ftol");                                        // 0x00405c64    e897b73900
     asm("{disp8} fld        dword ptr [esp + 0x18]");                        // 0x00405c69    d9442418
     asm("{disp32} fmul      dword ptr [__real@447a0000]");                   // 0x00405c6d    d80d28b28a00
     asm("push               eax");                                           // 0x00405c73    50
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00405c74    e887b73900
+    asm("call               __ftol");                                        // 0x00405c74    e887b73900
     asm("push               eax");                                           // 0x00405c79    50
     asm("{disp32} lea       ecx, dword ptr [esp + 0x00000108]");             // 0x00405c7a    8d8c2408010000
     asm("push               ecx");                                           // 0x00405c81    51
@@ -136,11 +136,11 @@ size_t __fastcall SaveObject__5AbodeFR8LHOSFileRC9MapCoords(struct Object* this,
     asm("{disp8} fld        dword ptr [esp + 0x14]");                        // 0x00405cd2    d9442414
     asm("{disp32} fmul      dword ptr [__real@447a0000]");                   // 0x00405cd6    d80d28b28a00
     asm("push               eax");                                           // 0x00405cdc    50
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00405cdd    e81eb73900
+    asm("call               __ftol");                                        // 0x00405cdd    e81eb73900
     asm("{disp8} fld        dword ptr [esp + 0x1c]");                        // 0x00405ce2    d944241c
     asm("{disp32} fmul      dword ptr [__real@447a0000]");                   // 0x00405ce6    d80d28b28a00
     asm("push               eax");                                           // 0x00405cec    50
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00405ced    e80eb73900
+    asm("call               __ftol");                                        // 0x00405ced    e80eb73900
     asm("push               eax");                                           // 0x00405cf2    50
     asm("{disp32} lea       ecx, dword ptr [esp + 0x00000108]");             // 0x00405cf3    8d8c2408010000
     asm("push               ecx");                                           // 0x00405cfa    51
@@ -230,7 +230,7 @@ void __fastcall ReduceLife__5AbodeFfP7GPlayer(struct Object* this, const void* e
     asm("mov.s              ecx, esi");                                      // 0x00405dca    8bce
     asm("call               ?ReduceLife@MultiMapFixed@@UAEXMPAVGPlayer@@@Z");// 0x00405dcc    e80f981200
     asm("{disp8} fst        dword ptr [esp + 0x18]");                        // 0x00405dd1    d9542418
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x00405dd5    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x00405dd5    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x00405ddb    dfe0
     asm("test               ah, 0x01");                                      // 0x00405ddd    f6c401
     asm("{disp32} je        LAB__addr_0x00405ec5");                          // 0x00405de0    0f84df000000
@@ -272,13 +272,13 @@ void __fastcall ReduceLife__5AbodeFfP7GPlayer(struct Object* this, const void* e
     asm("{disp8} jmp        LAB__addr_0x00405e5e");                          // 0x00405e43    eb19
     asm("LAB__addr_0x00405e45:");
     asm("{disp8} fld        dword ptr [esp + 0x0c]");                        // 0x00405e45    d944240c
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x00405e49    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x00405e49    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x00405e4f    dfe0
     asm("test               ah, 0x01");                                      // 0x00405e51    f6c401
     asm("{disp8} jne        LAB__addr_0x00405e5e");                          // 0x00405e54    7508
     asm("push               ebx");                                           // 0x00405e56    53
     asm("mov.s              ecx, esi");                                      // 0x00405e57    8bce
-    asm("call               ?FUN_004073f0@Abode@@UAEXPAVGPlayer@@@Z");       // 0x00405e59    e892150000
+    asm("call               ?FUN_004073f0@Abode@@QAEXPAVGPlayer@@@Z");       // 0x00405e59    e892150000
     asm("LAB__addr_0x00405e5e:");
     asm("{disp8} mov        eax, dword ptr [esi + 0x74]");                   // 0x00405e5e    8b4674
     asm("test               eax, eax");                                      // 0x00405e61    85c0
@@ -311,7 +311,7 @@ void __fastcall ReduceLife__5AbodeFfP7GPlayer(struct Object* this, const void* e
     asm("{disp32} fstp      dword ptr [eax + 0x00000640]");                  // 0x00405ea7    d99840060000
     asm("LAB__addr_0x00405ead:");
     asm("{disp8} fld        dword ptr [esp + 0x18]");                        // 0x00405ead    d9442418
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x00405eb1    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x00405eb1    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x00405eb7    dfe0
     asm("test               ah, 0x40");                                      // 0x00405eb9    f6c440
     asm("{disp8} je         LAB__addr_0x00405ec5");                          // 0x00405ebc    7407

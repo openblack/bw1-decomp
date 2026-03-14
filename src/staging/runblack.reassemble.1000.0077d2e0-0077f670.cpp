@@ -11,13 +11,13 @@ uint32_t WorshipSite::GetScriptObjectType()
 }
 
 // win1.41 0077d2f0 mac 105ad890 WorshipSite::Save(GameOSFile &)
-bool WorshipSite::Save(GameOSFile& file)
+bool32_tcorrect WorshipSite::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0077d700 mac 105acc40 WorshipSite::Load(GameOSFile &)
-bool WorshipSite::Load(GameOSFile& file)
+bool32_tcorrect WorshipSite::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -208,7 +208,7 @@ void WorshipSpellIcon::ToBeDeleted(int param_1)
 }
 
 // win1.41 0077f290 mac 105b6e40 WorshipSpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)
-void WorshipSpellIcon::CallVirtualFunctionsForCreation(const MapCoords* coords)
+void WorshipSpellIcon::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 }
 

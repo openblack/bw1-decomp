@@ -115,13 +115,13 @@ float Reaction::GetDefaultReactionMultiplier(Living* param_1)
 }
 
 // win1.41 006e4990 mac 10134810 Reaction::Save(GameOSFile &)
-bool Reaction::Save(GameOSFile& file)
+bool32_tcorrect Reaction::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006e4ba0 mac 10134400 Reaction::Load(GameOSFile &)
-bool Reaction::Load(GameOSFile& file)
+bool32_tcorrect Reaction::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -218,7 +218,7 @@ uint32_t Reward::Process()
 }
 
 // win1.41 006e6980 mac 10139800 Reward::CanBecomeAPhysicsObject(void)
-bool Reward::CanBecomeAPhysicsObject()
+bool32_tcorrect Reward::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -241,13 +241,13 @@ uint32_t Reward::GetOverwriteTapToolTip()
 }
 
 // win1.41 006e69c0 mac 10139380 Reward::Save(GameOSFile &)
-bool Reward::Save(GameOSFile& file)
+bool32_tcorrect Reward::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006e6c70 mac 10139000 Reward::Load(GameOSFile &)
-bool Reward::Load(GameOSFile& file)
+bool32_tcorrect Reward::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -310,7 +310,7 @@ uint32_t Rock::AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceSt
 }
 
 // win1.41 006e7210 mac 1013d710 Rock::ActualMoveMapObject(MapCoords const &)
-void Rock::ActualMoveMapObject(const MapCoords* param_1)
+void Rock::ActualMoveMapObject(const MapCoords& param_1)
 {
 }
 
@@ -333,13 +333,13 @@ GPlayer* Rock::GetPlayer()
 }
 
 // win1.41 006e77b0 mac 1013d0c0 Rock::Save(GameOSFile &)
-bool Rock::Save(GameOSFile& file)
+bool32_tcorrect Rock::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006e7870 mac 1013cfa0 Rock::Load(GameOSFile &)
-bool Rock::Load(GameOSFile& file)
+bool32_tcorrect Rock::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -383,7 +383,7 @@ void Scaffold::ToBeDeleted(int param_1)
 }
 
 // win1.41 006e8540 mac 10143a70 Scaffold::CallVirtualFunctionsForCreation(MapCoords const &)
-void Scaffold::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void Scaffold::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -429,7 +429,7 @@ uint32_t Scaffold::GetOverwriteDropToolTip()
 }
 
 // win1.41 006e9890 mac 10141590 Scaffold::ActualMoveMapObject(MapCoords const &)
-void Scaffold::ActualMoveMapObject(const MapCoords* param_1)
+void Scaffold::ActualMoveMapObject(const MapCoords& param_1)
 {
 }
 
@@ -464,13 +464,13 @@ uint32_t Scaffold::InterfaceTap(GInterfaceStatus* param_1)
 }
 
 // win1.41 006ea240 mac 10140340 Scaffold::Save(GameOSFile &)
-bool Scaffold::Save(GameOSFile& file)
+bool32_tcorrect Scaffold::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006ea3d0 mac 10140100 Scaffold::Load(GameOSFile &)
-bool Scaffold::Load(GameOSFile& file)
+bool32_tcorrect Scaffold::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -504,7 +504,7 @@ uint32_t Scaffold::InitialisePhysicsFromHand(LHPoint* param_1, LHPoint* param_2,
 }
 
 // win1.41 006ea910 mac 1013f8e0 Scaffold::CanBecomeAPhysicsObject(void)
-bool Scaffold::CanBecomeAPhysicsObject()
+bool32_tcorrect Scaffold::CanBecomeAPhysicsObject()
 {
     return 0;
 }

@@ -50,9 +50,9 @@ public:
     // win1.41 0055d160 mac 105263d0 OneOffSpellSeed::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0072aa20 mac 10526a70 OneOffSpellSeed::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0072a930 mac 10526be0 OneOffSpellSeed::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0055d150 mac 10526390 OneOffSpellSeed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0072ac50 mac 10526640 OneOffSpellSeed::GetOverwritePickUpToolTip(void)
@@ -84,7 +84,7 @@ public:
     // win1.41 00518c50 mac 100c8340 OneOffSpellSeed::DrawOutOfMap(bool)
     virtual void DrawOutOfMap(bool param_1);
     // win1.41 0072a450 mac 105276e0 OneOffSpellSeed::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 0072a530 mac 105275c0 OneOffSpellSeed::InterfaceSetInMagicHand(GInterfaceStatus *)
     virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 0072a630 mac 10527330 OneOffSpellSeed::InterfaceValidToTap(GInterfaceStatus *)

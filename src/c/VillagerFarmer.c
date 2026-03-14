@@ -476,14 +476,14 @@ bool32_t __fastcall CheckSatisfyFoodDesire__8VillagerFv(struct Villager* this)
     asm("{disp8} fild       qword ptr [esp + 0x18]");                        // 0x0075a046    df6c2418
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0xf1100]");             // 0x0075a04a    d80500a19900
     asm("fdivp              st(1), st");                                     // 0x0075a050    def9
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075a052    d82d90a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075a052    d82d90a38a00
     asm("{disp8} fstp       dword ptr [esp + 0x18]");                        // 0x0075a058    d95c2418
     asm("call               ?GetResourceDropoffPos@Villager@@QAEPAVGameThingWithPos@@W4RESOURCE_TYPE@@@Z");                          // 0x0075a05c    e8bf9dffff
     asm("push               0x43fa0000");                                    // 0x0075a061    680000fa43
     asm("{disp8} lea        ecx, dword ptr [ebx + 0x14]");                   // 0x0075a066    8d4b14
     asm("push               ecx");                                           // 0x0075a069    51
     asm("{disp8} lea        ecx, dword ptr [esp + 0x28]");                   // 0x0075a06a    8d4c2428
-    asm("call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2");                          // 0x0075a06e    e85dbceaff
+    asm("call               ?GetMetresDistance@MapCoords@@QBEMABU1@@Z");                          // 0x0075a06e    e85dbceaff
     asm("push               ecx");                                           // 0x0075a073    51
     asm("fstp               dword ptr [esp]");                               // 0x0075a074    d91c24
     asm("call               _GetDistanceModifier__6GUtilsFff@8");            // 0x0075a077    e81452ffff

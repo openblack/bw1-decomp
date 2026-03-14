@@ -250,7 +250,7 @@ bool32_t __fastcall CheckSatisfyOwnDesire__8VillagerFf(struct Villager* this, co
     asm("test               ah, 0x41");                                      // 0x0076007a    f6c441
     asm("{disp8} jne        LAB__addr_0x007600c2");                          // 0x0076007d    7543
     asm("{disp8} fld        dword ptr [esp + 0x04]");                        // 0x0076007f    d9442404
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x00760083    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x00760083    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x00760089    dfe0
     asm("test               ah, 0x41");                                      // 0x0076008b    f6c441
     asm("{disp8} jne        LAB__addr_0x007600c2");                          // 0x0076008e    7532
@@ -264,7 +264,7 @@ bool32_t __fastcall CheckSatisfyOwnDesire__8VillagerFf(struct Villager* this, co
     asm("ret                0x0004");                                        // 0x007600a2    c20400
     asm("LAB__addr_0x007600a5:");
     asm("{disp8} fld        dword ptr [esp + 0x0c]");                        // 0x007600a5    d944240c
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x007600a9    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x007600a9    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x007600af    dfe0
     asm("test               ah, 0x41");                                      // 0x007600b1    f6c441
     asm("{disp8} jne        LAB__addr_0x00760105");                          // 0x007600b4    754f
@@ -275,7 +275,7 @@ bool32_t __fastcall CheckSatisfyOwnDesire__8VillagerFf(struct Villager* this, co
     asm("ret                0x0004");                                        // 0x007600bf    c20400
     asm("LAB__addr_0x007600c2:");
     asm("{disp8} fld        dword ptr [esp + 0x0c]");                        // 0x007600c2    d944240c
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x007600c6    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x007600c6    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x007600cc    dfe0
     asm("test               ah, 0x41");                                      // 0x007600ce    f6c441
     asm("{disp8} jne        LAB__addr_0x00760105");                          // 0x007600d1    7532
@@ -289,7 +289,7 @@ bool32_t __fastcall CheckSatisfyOwnDesire__8VillagerFf(struct Villager* this, co
     asm("ret                0x0004");                                        // 0x007600e5    c20400
     asm("LAB__addr_0x007600e8:");
     asm("{disp8} fld        dword ptr [esp + 0x04]");                        // 0x007600e8    d9442404
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x007600ec    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x007600ec    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x007600f2    dfe0
     asm("test               ah, 0x41");                                      // 0x007600f4    f6c441
     asm("{disp8} jne        LAB__addr_0x00760105");                          // 0x007600f7    750c
@@ -546,7 +546,7 @@ bool32_t __fastcall DoGoingHome__8VillagerF15VILLAGER_STATES15VILLAGER_STATES(st
     asm("{disp32} mov       bl, byte ptr [esi + 0x0000008c]");               // 0x0076036d    8a9e8c000000
     asm("push               0x3fc90fdb");                                    // 0x00760373    68db0fc93f
     asm("add                edi, 0x14");                                     // 0x00760378    83c714
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x0076037b    e8b0e1f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x0076037b    e8b0e1f7ff
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x1dc9c]");             // 0x00760380    d8259c6c8c00
     asm("push               ebp");                                           // 0x00760386    55
     asm("push               edi");                                           // 0x00760387    57
@@ -557,7 +557,7 @@ bool32_t __fastcall DoGoingHome__8VillagerF15VILLAGER_STATES15VILLAGER_STATES(st
     asm("push               0x00c24464");                                    // 0x0076039a    686444c200
     asm("push               0x41c80000");                                    // 0x0076039f    680000c841
     asm("{disp8} fstp       dword ptr [esp + 0x58]");                        // 0x007603a4    d95c2458
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x007603a8    e883e1f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x007603a8    e883e1f7ff
     asm("{disp8} mov        eax, dword ptr [esp + 0x58]");                   // 0x007603ad    8b442458
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x2414]");              // 0x007603b1    d80514b48a00
     asm("add                esp, 0x1c");                                     // 0x007603b7    83c41c
@@ -565,7 +565,7 @@ bool32_t __fastcall DoGoingHome__8VillagerF15VILLAGER_STATES15VILLAGER_STATES(st
     asm("fstp               dword ptr [esp]");                               // 0x007603be    d91c24
     asm("push               eax");                                           // 0x007603c1    50
     asm("push               ecx");                                           // 0x007603c2    51
-    asm("call               ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z"); // 0x007603c3    e8b8d1feff
+    asm("call               ?GetPosFromAngle@GUtils@@SA?AUMapCoords@@MM@Z"); // 0x007603c3    e8b8d1feff
     asm("add                esp, 0x0c");                                     // 0x007603c8    83c40c
     asm("push               eax");                                           // 0x007603cb    50
     asm("{disp8} lea        edx, dword ptr [esp + 0x2c]");                   // 0x007603cc    8d54242c
@@ -583,23 +583,23 @@ bool32_t __fastcall DoGoingHome__8VillagerF15VILLAGER_STATES15VILLAGER_STATES(st
     asm("push               0x0000012c");                                    // 0x007603f1    682c010000
     asm("push               0x00c24464");                                    // 0x007603f6    686444c200
     asm("push               0x41000000");                                    // 0x007603fb    6800000041
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00760400    e82be1f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x00760400    e82be1f7ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x2478]");              // 0x00760405    d80578b48a00
     asm("add                esp, 0x08");                                     // 0x0076040b    83c408
     asm("fstp               dword ptr [esp]");                               // 0x0076040e    d91c24
     asm("push               0x0000012c");                                    // 0x00760411    682c010000
     asm("push               0x00c24464");                                    // 0x00760416    686444c200
     asm("push               0x40c90fdb");                                    // 0x0076041b    68db0fc940
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00760420    e80be1f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x00760420    e80be1f7ff
     asm("add                esp, 0x08");                                     // 0x00760425    83c408
     asm("{disp8} lea        ecx, dword ptr [esp + 0x30]");                   // 0x00760428    8d4c2430
     asm("fstp               dword ptr [esp]");                               // 0x0076042c    d91c24
     asm("push               ecx");                                           // 0x0076042f    51
-    asm("call               ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z"); // 0x00760430    e84bd1feff
+    asm("call               ?GetPosFromAngle@GUtils@@SA?AUMapCoords@@MM@Z"); // 0x00760430    e84bd1feff
     asm("add                esp, 0x0c");                                     // 0x00760435    83c40c
     asm("push               eax");                                           // 0x00760438    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                   // 0x00760439    8d4c2414
-    asm("call               @__apl__9MapCoordsFRC9MapCoords@12");            // 0x0076043d    e8ce4feaff
+    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");            // 0x0076043d    e8ce4feaff
     asm("{disp8} lea        edx, dword ptr [esp + 0x10]");                   // 0x00760442    8d542410
     asm("push               edx");                                           // 0x00760446    52
     asm("mov.s              ecx, esi");                                      // 0x00760447    8bce
@@ -611,23 +611,23 @@ bool32_t __fastcall DoGoingHome__8VillagerF15VILLAGER_STATES15VILLAGER_STATES(st
     asm("xor.s              ebx, ebx");                                      // 0x0076045c    33db
     asm("{disp32} mov       bl, byte ptr [esi + 0x0000008c]");               // 0x0076045e    8a9e8c000000
     asm("push               0x41a00000");                                    // 0x00760464    680000a041
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00760469    e8c2e0f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x00760469    e8c2e0f7ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x2414]");              // 0x0076046e    d80514b48a00
     asm("add                esp, 0x08");                                     // 0x00760474    83c408
     asm("fstp               dword ptr [esp]");                               // 0x00760477    d91c24
     asm("push               0x00000130");                                    // 0x0076047a    6830010000
     asm("push               0x00c24464");                                    // 0x0076047f    686444c200
     asm("push               0x40c90fdb");                                    // 0x00760484    68db0fc940
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00760489    e8a2e0f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x00760489    e8a2e0f7ff
     asm("add                esp, 0x08");                                     // 0x0076048e    83c408
     asm("{disp8} lea        eax, dword ptr [esp + 0x30]");                   // 0x00760491    8d442430
     asm("fstp               dword ptr [esp]");                               // 0x00760495    d91c24
     asm("push               eax");                                           // 0x00760498    50
-    asm("call               ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z"); // 0x00760499    e8e2d0feff
+    asm("call               ?GetPosFromAngle@GUtils@@SA?AUMapCoords@@MM@Z"); // 0x00760499    e8e2d0feff
     asm("add                esp, 0x0c");                                     // 0x0076049e    83c40c
     asm("push               eax");                                           // 0x007604a1    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                   // 0x007604a2    8d4c2414
-    asm("call               @__apl__9MapCoordsFRC9MapCoords@12");            // 0x007604a6    e8654feaff
+    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");            // 0x007604a6    e8654feaff
     asm("{disp8} jmp        LAB__addr_0x007604b1");                          // 0x007604ab    eb04
     asm("LAB__addr_0x007604ad:");
     asm("{disp8} mov        ebx, dword ptr [esp + 0x3c]");                   // 0x007604ad    8b5c243c
@@ -745,7 +745,7 @@ struct Town* __fastcall GetTentPos__8VillagerFR9MapCoords(struct Villager* this,
     asm("add                eax, 0x14");                                     // 0x007605cf    83c014
     asm("push               eax");                                           // 0x007605d2    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x20]");                   // 0x007605d3    8d4c2420
-    asm("call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2");                          // 0x007605d7    e8f456eaff
+    asm("call               ?GetMetresDistance@MapCoords@@QBEMABU1@@Z");                          // 0x007605d7    e8f456eaff
     asm("{disp32} fcomp     dword ptr [rdata_bytes + 0x26e4]");              // 0x007605dc    d81de4b68a00
     asm("fnstsw             ax");                                            // 0x007605e2    dfe0
     asm("test               ah, 0x01");                                      // 0x007605e4    f6c401
@@ -793,23 +793,23 @@ struct Town* __fastcall GetTentPos__8VillagerFR9MapCoords(struct Villager* this,
     asm("push               0x0000016d");                                    // 0x00760654    686d010000
     asm("push               0x00c24464");                                    // 0x00760659    686444c200
     asm("push               0x40a00000");                                    // 0x0076065e    680000a040
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00760663    e8c8def7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x00760663    e8c8def7ff
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x19c50]");             // 0x00760668    d805502c8c00
     asm("add                esp, 0x08");                                     // 0x0076066e    83c408
     asm("fstp               dword ptr [esp]");                               // 0x00760671    d91c24
     asm("push               0x0000016d");                                    // 0x00760674    686d010000
     asm("push               0x00c24464");                                    // 0x00760679    686444c200
     asm("push               0x40c90fdb");                                    // 0x0076067e    68db0fc940
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00760683    e8a8def7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x00760683    e8a8def7ff
     asm("add                esp, 0x08");                                     // 0x00760688    83c408
     asm("{disp8} lea        ecx, dword ptr [esp + 0x3c]");                   // 0x0076068b    8d4c243c
     asm("fstp               dword ptr [esp]");                               // 0x0076068f    d91c24
     asm("push               ecx");                                           // 0x00760692    51
-    asm("call               ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z"); // 0x00760693    e8e8cefeff
+    asm("call               ?GetPosFromAngle@GUtils@@SA?AUMapCoords@@MM@Z"); // 0x00760693    e8e8cefeff
     asm("add                esp, 0x0c");                                     // 0x00760698    83c40c
     asm("push               eax");                                           // 0x0076069b    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x20]");                   // 0x0076069c    8d4c2420
-    asm("call               @__apl__9MapCoordsFRC9MapCoords@12");            // 0x007606a0    e86b4deaff
+    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");            // 0x007606a0    e86b4deaff
     asm("{disp8} mov        al, byte ptr [esp + 0x13]");                     // 0x007606a5    8a442413
     asm("inc                al");                                            // 0x007606a9    fec0
     asm("cmp                al, 0x03");                                      // 0x007606ab    3c03
@@ -1126,7 +1126,7 @@ uint32_t __fastcall ArrivesHome__8VillagerFv(struct Villager* this)
     asm("push               0x00c24464");                                    // 0x007609c0    686444c200
     asm("push               0x3f490fdb");                                    // 0x007609c5    68db0f493f
     asm("{disp8} lea        ebx, dword ptr [esi + 0x14]");                   // 0x007609ca    8d5e14
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x007609cd    e85edbf7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x007609cd    e85edbf7ff
     asm("{disp32} fsubr     dword ptr [rdata_bytes + 0x1dca0]");             // 0x007609d2    d82da06c8c00
     asm("push               ebx");                                           // 0x007609d8    53
     asm("add                edi, 0x14");                                     // 0x007609d9    83c714
@@ -1138,7 +1138,7 @@ uint32_t __fastcall ArrivesHome__8VillagerFv(struct Villager* this)
     asm("push               0x00c24464");                                    // 0x007609ef    686444c200
     asm("{disp8} fstp       dword ptr [esp + 0x28]");                        // 0x007609f4    d95c2428
     asm("push               0x40a00000");                                    // 0x007609f8    680000a040
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x007609fd    e82edbf7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x007609fd    e82edbf7ff
     asm("{disp8} mov        ecx, dword ptr [esp + 0x2c]");                   // 0x00760a02    8b4c242c
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x26e4]");              // 0x00760a06    d805e4b68a00
     asm("add                esp, 0x1c");                                     // 0x00760a0c    83c41c
@@ -1146,7 +1146,7 @@ uint32_t __fastcall ArrivesHome__8VillagerFv(struct Villager* this)
     asm("fstp               dword ptr [esp]");                               // 0x00760a13    d91c24
     asm("push               ecx");                                           // 0x00760a16    51
     asm("push               edx");                                           // 0x00760a17    52
-    asm("call               ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z"); // 0x00760a18    e863cbfeff
+    asm("call               ?GetPosFromAngle@GUtils@@SA?AUMapCoords@@MM@Z"); // 0x00760a18    e863cbfeff
     asm("add                esp, 0x0c");                                     // 0x00760a1d    83c40c
     asm("push               eax");                                           // 0x00760a20    50
     asm("{disp8} lea        eax, dword ptr [esp + 0x14]");                   // 0x00760a21    8d442414
@@ -1302,7 +1302,7 @@ bool32_t __fastcall CheckWhenGoingToBed__8VillagerFv(struct Villager* this)
     asm("call               dword ptr [edx + 0x48]");                        // 0x00760ba5    ff5248
     asm("mov.s              ecx, eax");                                      // 0x00760ba8    8bc8
     asm("call               ?GetRawDesire@Town@@QAEMW4TOWN_DESIRE_INFO@@@Z");// 0x00760baa    e871d8fdff
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x00760baf    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x00760baf    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x00760bb5    dfe0
     asm("test               ah, 0x01");                                      // 0x00760bb7    f6c401
     asm("{disp32} jne       LAB__addr_0x00760c6d");                          // 0x00760bba    0f85ad000000
@@ -1412,7 +1412,7 @@ bool32_t __fastcall CheckDeathFromOldAge__8VillagerFv(struct Villager* this)
     asm("push               0x00c24464");                                    // 0x00760cd2    686444c200
     asm("push               0x3f800000");                                    // 0x00760cd7    680000803f
     asm("sub.s              edi, ecx");                                      // 0x00760cdc    2bf9
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00760cde    e84dd8f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x00760cde    e84dd8f7ff
     asm("{disp8} fst        dword ptr [esp + 0x14]");                        // 0x00760ce3    d9542414
     asm("add                esp, 0x0c");                                     // 0x00760ce7    83c40c
     asm("mov                eax, 0x00000002");                               // 0x00760cea    b802000000
@@ -1428,7 +1428,7 @@ bool32_t __fastcall CheckDeathFromOldAge__8VillagerFv(struct Villager* this)
     asm("push               0x0000025a");                                    // 0x00760d09    685a020000
     asm("fmulp              st(1), st");                                     // 0x00760d0e    dec9
     asm("push               0x00c24464");                                    // 0x00760d10    686444c200
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00760d15    e8e6060400
+    asm("call               __ftol");                                        // 0x00760d15    e8e6060400
     asm("push               eax");                                           // 0x00760d1a    50
     asm("call               ?GameRand@GRand@@SAHJ@Z");                       // 0x00760d1b    e8f0d7f7ff
     asm("mov                edx, dword ptr [esi]");                          // 0x00760d20    8b16
@@ -1633,7 +1633,7 @@ bool32_t __fastcall HavingSex__8VillagerFv(struct Villager* this)
     asm("push               0x000002b3");                                    // 0x00760f09    68b3020000
     asm("push               0x00c24464");                                    // 0x00760f0e    686444c200
     asm("push               0x3f800000");                                    // 0x00760f13    680000803f
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00760f18    e813d6f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x00760f18    e813d6f7ff
     asm("{disp32} fcomp     dword ptr [edi + 0x00000254]");                  // 0x00760f1d    d89f54020000
     asm("add                esp, 0x0c");                                     // 0x00760f23    83c40c
     asm("pop                edi");                                           // 0x00760f26    5f
@@ -1822,7 +1822,7 @@ bool32_t __fastcall IsPromiscious__8VillagerFv(struct Villager* this)
     asm("push               0x00c24464");                                    // 0x007610d7    686444c200
     asm("push               0x3f800000");                                    // 0x007610dc    680000803f
     asm("mov.s              esi, ecx");                                      // 0x007610e1    8bf1
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x007610e3    e848d4f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x007610e3    e848d4f7ff
     asm("{disp8} fstp       dword ptr [esp + 0x10]");                        // 0x007610e8    d95c2410
     asm("add                esp, 0x0c");                                     // 0x007610ec    83c40c
     asm("mov.s              ecx, esi");                                      // 0x007610ef    8bce
@@ -2377,7 +2377,7 @@ bool32_t __fastcall WaitForArtifactDance__8VillagerFv(struct Villager* this)
     asm("{disp8} fstp       dword ptr [esp + 0x10]");                        // 0x007615fb    d95c2410
     asm("push               edi");                                           // 0x007615ff    57
     asm("add                ecx, 0x14");                                     // 0x00761600    83c114
-    asm("call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2");                          // 0x00761603    e8c846eaff
+    asm("call               ?GetMetresDistance@MapCoords@@QBEMABU1@@Z");                          // 0x00761603    e8c846eaff
     asm("{disp32} fcomp     dword ptr [rdata_bytes + 0x261c0]");             // 0x00761608    d81dc0f18c00
     asm("fnstsw             ax");                                            // 0x0076160e    dfe0
     asm("test               ah, 0x41");                                      // 0x00761610    f6c441
@@ -2394,7 +2394,7 @@ bool32_t __fastcall WaitForArtifactDance__8VillagerFv(struct Villager* this)
     asm("push               0x00c24464");                                    // 0x0076163a    686444c200
     asm("push               0x3f490fdb");                                    // 0x0076163f    68db0f493f
     asm("{disp8} mov        dword ptr [esp + 0x2c], edx");                   // 0x00761644    8954242c
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00761648    e8e3cef7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x00761648    e8e3cef7ff
     asm("{disp8} lea        eax, dword ptr [esp + 0x24]");                   // 0x0076164d    8d442424
     asm("push               edi");                                           // 0x00761651    57
     asm("{disp8} fstp       dword ptr [esp + 0x24]");                        // 0x00761652    d95c2424
@@ -2406,18 +2406,18 @@ bool32_t __fastcall WaitForArtifactDance__8VillagerFv(struct Villager* this)
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x1dca0]");             // 0x0076166a    d825a06c8c00
     asm("push               0x41400000");                                    // 0x00761670    6800004041
     asm("{disp8} fstp       dword ptr [esp + 0x34]");                        // 0x00761675    d95c2434
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00761679    e8b2cef7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x00761679    e8b2cef7ff
     asm("{disp8} mov        ecx, dword ptr [esp + 0x34]");                   // 0x0076167e    8b4c2434
     asm("add                esp, 0x1c");                                     // 0x00761682    83c41c
     asm("fstp               dword ptr [esp]");                               // 0x00761685    d91c24
     asm("push               ecx");                                           // 0x00761688    51
     asm("{disp8} lea        edx, dword ptr [esp + 0x2c]");                   // 0x00761689    8d54242c
     asm("push               edx");                                           // 0x0076168d    52
-    asm("call               ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z"); // 0x0076168e    e8edbefeff
+    asm("call               ?GetPosFromAngle@GUtils@@SA?AUMapCoords@@MM@Z"); // 0x0076168e    e8edbefeff
     asm("add                esp, 0x0c");                                     // 0x00761693    83c40c
     asm("push               eax");                                           // 0x00761696    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x00761697    8d4c241c
-    asm("call               @__apl__9MapCoordsFRC9MapCoords@12");            // 0x0076169b    e8703deaff
+    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");            // 0x0076169b    e8703deaff
     asm("push               esi");                                           // 0x007616a0    56
     asm("sub                esp, 0x10");                                     // 0x007616a1    83ec10
     asm("mov.s              ebx, esp");                                      // 0x007616a4    8bdc

@@ -102,7 +102,7 @@ void GameThing::DrawInHand(GInterfaceStatus* param_1)
 }
 
 // win1.41 00405240 mac 10067860 GameThing::IsFunctional(void)
-bool GameThing::IsFunctional()
+bool32_tcorrect GameThing::IsFunctional()
 {
     return false;
 }

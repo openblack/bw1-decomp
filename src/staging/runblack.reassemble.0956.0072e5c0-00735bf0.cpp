@@ -54,13 +54,13 @@ FireGraphic* FireEffect::CreateSprites()
 }
 
 // win1.41 00730b00 mac 1014c110 FireEffect::Save(GameOSFile &)
-bool FireEffect::Save(GameOSFile& file)
+bool32_tcorrect FireEffect::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00730df0 mac 1014bcc0 FireEffect::Load(GameOSFile &)
-bool FireEffect::Load(GameOSFile& file)
+bool32_tcorrect FireEffect::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -132,7 +132,7 @@ void StoragePit::DeleteDependancys()
 }
 
 // win1.41 00732e80 mac 10152d50 StoragePit::CallVirtualFunctionsForCreation(MapCoords const &)
-void StoragePit::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void StoragePit::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -210,13 +210,13 @@ bool StoragePit::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInte
 }
 
 // win1.41 007338d0 mac 10151930 StoragePit::Save(GameOSFile &)
-bool StoragePit::Save(GameOSFile& file)
+bool32_tcorrect StoragePit::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00733920 mac 10151890 StoragePit::Load(GameOSFile &)
-bool StoragePit::Load(GameOSFile& file)
+bool32_tcorrect StoragePit::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -253,7 +253,7 @@ void GWaterfall::ToBeDeleted(int param_1)
 }
 
 // win1.41 007341b0 mac 10154110 GWaterfall::CallVirtualFunctionsForCreation(MapCoords const &)
-void GWaterfall::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void GWaterfall::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -264,13 +264,13 @@ uint32_t GWaterfall::SaveObject(LHOSFile& file, const MapCoords& coords)
 }
 
 // win1.41 00734380 mac 10153ac0 GStream::Save(GameOSFile &)
-bool GStream::Save(GameOSFile& file)
+bool32_tcorrect GStream::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007344e0 mac 10153560 GStream::Load(GameOSFile &)
-bool GStream::Load(GameOSFile& file)
+bool32_tcorrect GStream::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -281,19 +281,19 @@ void GStream::ResolveLoad()
 }
 
 // win1.41 00734650 mac 101534b0 GWaterfall::Save(GameOSFile &)
-bool GWaterfall::Save(GameOSFile& file)
+bool32_tcorrect GWaterfall::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00734660 mac 10153470 GWaterfall::Load(GameOSFile &)
-bool GWaterfall::Load(GameOSFile& file)
+bool32_tcorrect GWaterfall::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00734810 mac 105350a0 GStreetLantern::CallVirtualFunctionsForCreation(MapCoords const &)
-void GStreetLantern::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void GStreetLantern::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -320,13 +320,13 @@ uint32_t GStreetLantern::SaveObject(LHOSFile& file, const MapCoords& coords)
 }
 
 // win1.41 00734be0 mac 10534ab0 GStreetLantern::Load(GameOSFile &)
-bool GStreetLantern::Load(GameOSFile& file)
+bool32_tcorrect GStreetLantern::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00734c90 mac 10534980 GStreetLantern::Save(GameOSFile &)
-bool GStreetLantern::Save(GameOSFile& file)
+bool32_tcorrect GStreetLantern::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -349,19 +349,19 @@ void GStreetLight::ToBeDeleted(int param_1)
 }
 
 // win1.41 00735110 mac 10535980 GStreetLight::GetDistanceFromObject(MapCoords const &)
-float GStreetLight::GetDistanceFromObject(const MapCoords* param_1)
+float GStreetLight::GetDistanceFromObject(const MapCoords& param_1)
 {
     return 0;
 }
 
 // win1.41 00735140 mac 10535910 GStreetLight::Save(GameOSFile &)
-bool GStreetLight::Save(GameOSFile& file)
+bool32_tcorrect GStreetLight::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00735160 mac 105358a0 GStreetLight::Load(GameOSFile &)
-bool GStreetLight::Load(GameOSFile& file)
+bool32_tcorrect GStreetLight::Load(GameOSFile& file)
 {
     return 0;
 }

@@ -85,7 +85,7 @@ bool ScriptHighlight::ValidAsInterfaceTarget()
 }
 
 // win1.41 00709810 mac 104fa5a0 ScriptHighlight::CanBecomeAPhysicsObject(void)
-bool ScriptHighlight::CanBecomeAPhysicsObject()
+bool32_tcorrect ScriptHighlight::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -131,7 +131,7 @@ void ScriptHighlight::ToBeDeleted(int param_1)
 }
 
 // win1.41 00709aa0 mac 104fbb00 ScriptHighlight::CallVirtualFunctionsForCreation(MapCoords const &)
-void ScriptHighlight::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void ScriptHighlight::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -157,13 +157,13 @@ void ScriptHighlight::SetActivated(int param_1)
 }
 
 // win1.41 0070a760 mac 104fb290 ScriptHighlight::Save(GameOSFile &)
-bool ScriptHighlight::Save(GameOSFile& file)
+bool32_tcorrect ScriptHighlight::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0070a8f0 mac 104fb050 ScriptHighlight::Load(GameOSFile &)
-bool ScriptHighlight::Load(GameOSFile& file)
+bool32_tcorrect ScriptHighlight::Load(GameOSFile& file)
 {
     return 0;
 }

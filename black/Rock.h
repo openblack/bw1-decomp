@@ -57,9 +57,9 @@ public:
     // win1.41 0071bcd0 mac 1050fda0 Rock::GetSampleForAttack(void)
     virtual uint32_t GetSampleForAttack();
     // win1.41 006e7870 mac 1013cfa0 Rock::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 006e77b0 mac 1013d0c0 Rock::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00561380 mac 100c41e0 Rock::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006e79f0 mac 1013c460 Rock::PhysicsEditorCreate(int)
@@ -79,7 +79,7 @@ public:
     // win1.41 006e79e0 mac 1000ef30 Rock::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 006e7210 mac 1013d710 Rock::ActualMoveMapObject(MapCoords const &)
-    virtual void ActualMoveMapObject(const MapCoords* param_1);
+    virtual void ActualMoveMapObject(const MapCoords& param_1);
     // win1.41 00517f10 mac 10042fe0 Rock::Draw(void)
     virtual void Draw();
     // win1.41 00439710 mac 100b3f00 Rock::IsResourceStore(RESOURCE_TYPE)

@@ -219,7 +219,7 @@ _jmp_addr_0x00484920:    sub                esp, 0x0c                           
                          sete               dl                                       // 0x00484a24    0f94c2
                          {disp32} mov       dword ptr [esi + 0x0000522c], edx        // 0x00484a27    89962c520000
                          {disp8} jmp        .Lbl_addr_0x00484a6b                     // 0x00484a2d    eb3c
-.Lbl_addr_0x00484a2f:    {disp32} fcomp     dword ptr [_rdata_float0p0]              // 0x00484a2f    d81d98a38a00
+.Lbl_addr_0x00484a2f:    {disp32} fcomp     dword ptr [__real@4@00000000000000000000]              // 0x00484a2f    d81d98a38a00
                          fnstsw             ax                                       // 0x00484a35    dfe0
                          test               ah, 0x41                                 // 0x00484a37    f6c441
                          {disp8} jne        .Lbl_addr_0x00484a49                     // 0x00484a3a    750d

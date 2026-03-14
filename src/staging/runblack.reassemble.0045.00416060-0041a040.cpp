@@ -9,9 +9,9 @@
 #include "Object.h"
 
 // win1.41 00416d20 mac 1016cc30 GAnimalInfo::GetMesh( const(void))
-uint32_t GAnimalInfo::GetMesh() const
+MeshId GAnimalInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 00416d30 mac 1016cc70 GAnimalInfo::GetBaseInfo(unsigned long &)
@@ -290,7 +290,7 @@ bool Living::IsStompable()
 }
 
 // win1.41 004172d0 mac 10006820 Living::IsFunctional(void)
-bool Living::IsFunctional()
+bool32_tcorrect Living::IsFunctional()
 {
     return 0;
 }
@@ -650,7 +650,7 @@ Animal::~Animal()
 }
 
 // win1.41 004178d0 mac 10380910 GameThingWithPos::IsWonder(void)
-bool GameThingWithPos::IsWonder()
+bool32_tcorrect GameThingWithPos::IsWonder()
 {
     return 0;
 }
@@ -700,7 +700,7 @@ void Animal::MoveTo3D()
 }
 
 // win1.41 00418c90 mac 100540e0 Object::GetMapChild(MapCell const &)
-Object* Object::GetMapChild(const MapCell* param_1)
+Object* Object::GetMapChild(const MapCell& param_1)
 {
     return 0;
 }

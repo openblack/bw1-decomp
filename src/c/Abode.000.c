@@ -593,7 +593,7 @@ const struct AbodeVftable __vt__5Abode = {
   GetTribe__5AbodeFv,
 };
 
-__attribute__((section(".bss"))) struct Town* abode_town_00c4cc6c;
+__attribute__((section(".bss"))) struct Town* abode_town_00c4cc6c asm("?abode_town_00c4cc6c@@3PAVTown@@A");
 
 struct Abode* __fastcall __ct__5AbodeFRC9MapCoordsPC10GAbodeInfoP4Townfffi(struct Abode* this, const void* edx, const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, float food, int wood)
 {

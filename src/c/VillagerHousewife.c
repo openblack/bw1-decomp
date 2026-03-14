@@ -575,7 +575,7 @@ bool32_t __fastcall HousewifeGossipsAroundStoragePit__8VillagerFv(struct Village
     asm("push               0x00c2450c");                                    // 0x007620c6    680c45c200
     asm("push               0x40c90fdb");                                    // 0x007620cb    68db0fc940
     asm("{disp8} mov        dword ptr [esp + 0x2c], eax");                   // 0x007620d0    8944242c
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x007620d4    e857c4f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x007620d4    e857c4f7ff
     asm("add                esp, 0x0c");                                     // 0x007620d9    83c40c
     asm("{disp8} fstp       dword ptr [esp + 0x0c]");                        // 0x007620dc    d95c240c
     asm("mov.s              ecx, esi");                                      // 0x007620e0    8bce
@@ -587,7 +587,7 @@ bool32_t __fastcall HousewifeGossipsAroundStoragePit__8VillagerFv(struct Village
     asm("push               ecx");                                           // 0x007620fd    51
     asm("fstp               dword ptr [esp]");                               // 0x007620fe    d91c24
     asm("mov.s              edi, eax");                                      // 0x00762101    8bf8
-    asm("call               ?GameFloatRand@GRand@@SAMM@Z");                  // 0x00762103    e828c4f7ff
+    asm("call               ?GameFloatRand@GRand@@SAMMPBDI@Z");                  // 0x00762103    e828c4f7ff
     asm("mov                edx, dword ptr [edi]");                          // 0x00762108    8b17
     asm("{disp8} fstp       dword ptr [esp + 0x14]");                        // 0x0076210a    d95c2414
     asm("add                esp, 0x0c");                                     // 0x0076210e    83c40c
@@ -601,11 +601,11 @@ bool32_t __fastcall HousewifeGossipsAroundStoragePit__8VillagerFv(struct Village
     asm("push               eax");                                           // 0x0076212a    50
     asm("push               ecx");                                           // 0x0076212b    51
     asm("push               edx");                                           // 0x0076212c    52
-    asm("call               ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z"); // 0x0076212d    e84eb4feff
+    asm("call               ?GetPosFromAngle@GUtils@@SA?AUMapCoords@@MM@Z"); // 0x0076212d    e84eb4feff
     asm("add                esp, 0x0c");                                     // 0x00762132    83c40c
     asm("push               eax");                                           // 0x00762135    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x00762136    8d4c241c
-    asm("call               @__apl__9MapCoordsFRC9MapCoords@12");            // 0x0076213a    e8d132eaff
+    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");            // 0x0076213a    e8d132eaff
     asm("push               0x19");                                          // 0x0076213f    6a19
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x00762141    8d4c241c
     asm("call               _jmp_addr_0x006033b0");                          // 0x00762145    e86612eaff
@@ -628,7 +628,7 @@ bool32_t __fastcall HousewifeGossipsAroundStoragePit__8VillagerFv(struct Village
     asm("{disp32} fld       dword ptr [esi + 0x000000e8]");                  // 0x0076217d    d986e8000000
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x2414]");              // 0x00762183    d80d14b48a00
     asm("faddp              st(1), st");                                     // 0x00762189    dec1
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0076218b    e870f20300
+    asm("call               __ftol");                                        // 0x0076218b    e870f20300
     asm("{disp8} mov        word ptr [esi + 0x58], ax");                     // 0x00762190    66894658
     asm("LAB__addr_0x00762194:");
     asm("pop                edi");                                           // 0x00762194    5f
@@ -648,7 +648,7 @@ bool32_t __fastcall HousewifeStartsGivingBirth__8VillagerFv(struct Villager* thi
     asm("{disp32} fld       dword ptr [data_bytes + 0x33ba0c]");             // 0x007621af    d9050c1ad000
     asm("push               0x00000120");                                    // 0x007621b5    6820010000
     asm("push               0x00c2450c");                                    // 0x007621ba    680c45c200
-    asm("call               _jmp_addr_0x007a1400");                          // 0x007621bf    e83cf20300
+    asm("call               __ftol");                                        // 0x007621bf    e83cf20300
     asm("push               eax");                                           // 0x007621c4    50
     asm("call               ?GameRand@GRand@@SAHJ@Z");                       // 0x007621c5    e846c3f7ff
     asm("{disp8} mov        dword ptr [esp + 0x10], eax");                   // 0x007621ca    89442410
@@ -658,8 +658,8 @@ bool32_t __fastcall HousewifeStartsGivingBirth__8VillagerFv(struct Villager* thi
     asm("{disp32} fld       dword ptr [data_bytes + 0x33ba0c]");             // 0x007621dd    d9050c1ad000
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x23d4]");              // 0x007621e3    d80dd4b38a00
     asm("faddp              st(1), st");                                     // 0x007621e9    dec1
-    asm("{disp32} fadd      dword ptr [_rdata_float1p0]");                   // 0x007621eb    d80590a38a00
-    asm("call               _jmp_addr_0x007a1400");                          // 0x007621f1    e80af20300
+    asm("{disp32} fadd      dword ptr [__real@4@3fff8000000000000000]");                   // 0x007621eb    d80590a38a00
+    asm("call               __ftol");                                        // 0x007621f1    e80af20300
     asm("{disp8} mov        word ptr [esi + 0x58], ax");                     // 0x007621f6    66894658
     asm("mov                eax, dword ptr [esi]");                          // 0x007621fa    8b06
     asm("push               0x6f");                                          // 0x007621fc    6a6f
@@ -976,7 +976,7 @@ bool32_t __fastcall WillHousewifeGetPregnant__8VillagerFP8Villager(struct Villag
     asm("{disp8} jne        LAB__addr_0x0076251f");                          // 0x00762534    75e9
     asm("LAB__addr_0x00762536:");
     asm("{disp8} fld        dword ptr [esp + 0x0c]");                        // 0x00762536    d944240c
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0076253a    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0076253a    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x00762540    dfe0
     asm("test               ah, 0x41");                                      // 0x00762542    f6c441
     asm("{disp8} jne        LAB__addr_0x0076255e");                          // 0x00762545    7517

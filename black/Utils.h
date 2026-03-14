@@ -14,8 +14,6 @@ struct MapCoords;
 
 struct GUtils
 {
-    // win1.41 00605cd0 mac inlined GUtils::GetDistanceInMetres_2(MapCoords const &, MapCoords const &)
-    static float GetDistanceInMetres_2(const MapCoords& first, const MapCoords& second);
     // win1.41 0074ccb0 mac 100495f0 GUtils::GetDistance(MapCoords const &, MapCoords const &)
     static void GetDistance(const MapCoords& param_1, const MapCoords& param_2);
     // win1.41 0074cd70 mac 10049550 GUtils::GetDistanceInMetres(MapCoords const &, MapCoords const &)
@@ -64,8 +62,6 @@ struct GUtils;
 struct JustMapXZ;
 struct MapCoords;
 
-// win1.41 00605cd0 mac inlined GUtils::GetDistanceInMetres_2(MapCoords const &, MapCoords const &)
-float __cdecl GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2(const struct MapCoords* this, const struct MapCoords* other);
 // win1.41 0074ccb0 mac 100495f0 GUtils::GetDistance(MapCoords const &, MapCoords const &)
 void __cdecl GetDistance__6GUtilsFRC9MapCoordsRC9MapCoords(struct MapCoords* param_1, struct MapCoords* param_2) asm("?GetDistance@GUtils@@SAXABUMapCoords@@0@Z");
 // win1.41 0074cd70 mac 10049550 GUtils::GetDistanceInMetres(MapCoords const &, MapCoords const &)
@@ -77,7 +73,7 @@ uint16_t __cdecl GetAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords(struct MapCoor
 // win1.41 0074d270 mac 100112f0 GUtils::Get3DAngleFromXZ(MapCoords const &, MapCoords const &)
 float __cdecl Get3DAngleFromXZ__6GUtilsFRC9MapCoordsRC9MapCoords(const struct MapCoords* param_1, const struct MapCoords* param_2) asm("?Get3DAngleFromXZ@GUtils@@SAMABUMapCoords@@0@Z");
 // win1.41 0074d580 mac 10061ba0 GUtils::GetPosFromAngle(float, float)
-struct MapCoords* __cdecl GetPosFromAngle__6GUtilsFff(struct MapCoords* coords, float angle, float radius) asm("?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z");
+struct MapCoords* __cdecl GetPosFromAngle__6GUtilsFff(struct MapCoords* coords, float angle, float radius) asm("?GetPosFromAngle@GUtils@@SA?AUMapCoords@@MM@Z");
 // win1.41 0074d7e0 mac 10049ad0 GUtils::Spiral(long &, long &)
 const struct JustMapXZ* __cdecl Spiral__6GUtilsFRlRl(int* param_1, int* param_2) asm("?Spiral@GUtils@@SAPBUJustMapXZ@@AAJ0@Z");
 // win1.41 0074d810 mac 10021cd0 GUtils::SpiralIncrement(MapCoords &, long &, long &, float)

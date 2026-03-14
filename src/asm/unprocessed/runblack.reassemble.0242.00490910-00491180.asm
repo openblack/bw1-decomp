@@ -25,7 +25,7 @@
 .extern _jmp_addr_0x006182f0
 .extern @GetAnim__9MorphableFll@16
 .extern ?GameRand@GRand@@SAHJ@Z
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern _jmp_addr_0x007faaf0
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
@@ -350,12 +350,12 @@ _jmp_addr_0x00490960:    sub                esp, 0x60                           
                          fld                dword ptr [edi]                          // 0x00490d2b    d907
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3408]         // 0x00490d2d    d80d08c48a00
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3404]         // 0x00490d33    d80d04c48a00
-                         call               _jmp_addr_0x007a1400                     // 0x00490d39    e8c2063100
+                         call               __ftol                                   // 0x00490d39    e8c2063100
                          {disp8} fld        dword ptr [edi + 0x08]                   // 0x00490d3e    d94708
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3408]         // 0x00490d41    d80d08c48a00
                          {disp8} mov        dword ptr [esp + 0x1c], eax              // 0x00490d47    8944241c
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3404]         // 0x00490d4b    d80d04c48a00
-                         call               _jmp_addr_0x007a1400                     // 0x00490d51    e8aa063100
+                         call               __ftol                                   // 0x00490d51    e8aa063100
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]              // 0x00490d56    8d4c241c
                          {disp8} mov        dword ptr [esp + 0x20], eax              // 0x00490d5a    89442420
                          {disp8} mov        dword ptr [esp + 0x24], 0x00000000       // 0x00490d5e    c744242400000000
@@ -452,7 +452,7 @@ _jmp_addr_0x00490960:    sub                esp, 0x60                           
 .Lbl_addr_0x00490eb7:    {disp8} fld        dword ptr [esp + 0x10]                   // 0x00490eb7    d9442410
                          {disp32} fsub      dword ptr [_rdata_float0p5]              // 0x00490ebb    d825b4a38a00
                          fimul              dword ptr [eax]                          // 0x00490ec1    da08
-.Lbl_addr_0x00490ec3:    call               _jmp_addr_0x007a1400                     // 0x00490ec3    e838053100
+.Lbl_addr_0x00490ec3:    call               __ftol                                   // 0x00490ec3    e838053100
                          {disp32} mov       edi, dword ptr [esi + 0x00005220]        // 0x00490ec8    8bbe20520000
                          cmp.s              edi, ebp                                 // 0x00490ece    3bfd
                          {disp32} mov       edx, dword ptr [esi + 0x00004844]        // 0x00490ed0    8b9644480000

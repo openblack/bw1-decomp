@@ -227,7 +227,7 @@ void Object::EndOnFire()
 }
 
 // win1.41 00637fb0 mac 103d58a0 Object::GetDistanceFromObject(Object *)
-float Object::GetDistanceFromObject(const MapCoords* target)
+float Object::GetDistanceFromObject(const MapCoords& target)
 {
     return 0.0f;
 }

@@ -263,7 +263,7 @@ bool32_t __fastcall FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedLis
     asm("push               edx");                                           // 0x00756f20    52
     asm("mov.s              edi, ecx");                                      // 0x00756f21    8bf9
     asm("call               dword ptr [eax + 0x6c4]");                       // 0x00756f23    ff90c4060000
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x00756f29    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x00756f29    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x00756f2f    dfe0
     asm("test               ah, 0x41");                                      // 0x00756f31    f6c441
     asm("{disp8} jne        LAB__addr_0x00756f4d");                          // 0x00756f34    7517
@@ -287,7 +287,7 @@ bool32_t __fastcall FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedLis
     asm("call               _jmp_addr_0x005eca20");                          // 0x00756f72    e8a95ae9ff
     asm("{disp8} fmul       dword ptr [esp + 0x24]");                        // 0x00756f77    d84c2424
     asm("{disp8} fst        dword ptr [esp + 0x10]");                        // 0x00756f7b    d9542410
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p001]");                 // 0x00756f7f    d81db0a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3ff583126f0000000000]");                 // 0x00756f7f    d81db0a38a00
     asm("fnstsw             ax");                                            // 0x00756f85    dfe0
     asm("test               ah, 0x41");                                      // 0x00756f87    f6c441
     asm("{disp32} jne       LAB__addr_0x00757107");                          // 0x00756f8a    0f8577010000
@@ -323,7 +323,7 @@ bool32_t __fastcall FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedLis
     asm("push               eax");                                           // 0x00756fdc    50
     asm("mov.s              ecx, edi");                                      // 0x00756fdd    8bcf
     asm("call               dword ptr [edx + 0x6c4]");                       // 0x00756fdf    ff92c4060000
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x00756fe5    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x00756fe5    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x00756feb    dfe0
     asm("test               ah, 0x41");                                      // 0x00756fed    f6c441
     asm("{disp8} jne        LAB__addr_0x00757008");                          // 0x00756ff0    7516
@@ -351,7 +351,7 @@ bool32_t __fastcall FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedLis
     asm("push               eax");                                           // 0x0075703d    50
     asm("mov.s              ecx, ebx");                                      // 0x0075703e    8bcb
     asm("call               dword ptr [edx + 0x6c4]");                       // 0x00757040    ff92c4060000
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x00757046    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x00757046    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075704c    dfe0
     asm("test               ah, 0x41");                                      // 0x0075704e    f6c441
     asm("{disp8} jne        LAB__addr_0x00757069");                          // 0x00757051    7516
@@ -493,7 +493,7 @@ bool32_t __fastcall CheckMoveHouse__8VillagerFP6Object(struct Villager* this, co
     asm("mov.s              ecx, esi");                                      // 0x007571c1    8bce
     asm("call               dword ptr [edx + 0x89c]");                       // 0x007571c3    ff929c080000
     asm("LAB__addr_0x007571c9:");
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x007571c9    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x007571c9    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x007571cf    dfe0
     asm("test               ah, 0x01");                                      // 0x007571d1    f6c401
     asm("{disp8} je         LAB__addr_0x007571e8");                          // 0x007571d4    7412
@@ -595,7 +595,7 @@ bool32_t __fastcall CheckInteractWithWorshipSite__8VillagerFv(struct Villager* t
     asm("mov                edx, dword ptr [edi]");                          // 0x007572a6    8b17
     asm("mov.s              ecx, edi");                                      // 0x007572a8    8bcf
     asm("call               dword ptr [edx + 0x8d8]");                       // 0x007572aa    ff92d8080000
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x007572b0    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x007572b0    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x007572b6    dfe0
     asm("test               ah, 0x41");                                      // 0x007572b8    f6c441
     asm("{disp8} jne        LAB__addr_0x0075730f");                          // 0x007572bb    7552
@@ -700,7 +700,7 @@ bool32_t __fastcall CheckInteractWithWorshipSite__8VillagerFv(struct Villager* t
     asm("{disp32} fdivr     qword ptr [__real@8@3fff8000000000000000]");   // 0x007573c0    dc3d80b68a00
     asm("{disp32} fadd      dword ptr [ebp + 0x000005c0]");                  // 0x007573c6    d885c0050000
     asm("{disp8} fst        dword ptr [esp + 0x10]");                        // 0x007573cc    d9542410
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x007573d0    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x007573d0    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x007573d6    dfe0
     asm("test               ah, 0x41");                                      // 0x007573d8    f6c441
     asm("{disp8} je         LAB__addr_0x007573fb");                          // 0x007573db    741e
@@ -767,7 +767,7 @@ bool32_t __fastcall CheckInteractWithAbode__8VillagerFv(struct Villager* this)
     asm("mov                eax, dword ptr [edi]");                          // 0x00757469    8b07
     asm("mov.s              ecx, edi");                                      // 0x0075746b    8bcf
     asm("call               dword ptr [eax + 0x8d8]");                       // 0x0075746d    ff90d8080000
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x00757473    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x00757473    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x00757479    dfe0
     asm("test               ah, 0x41");                                      // 0x0075747b    f6c441
     asm("{disp8} jne        LAB__addr_0x007574fb");                          // 0x0075747e    757b

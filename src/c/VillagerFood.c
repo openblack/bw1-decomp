@@ -231,11 +231,11 @@ bool32_t __fastcall GetDesireToPickupFood__8VillagerFv(struct Villager* this)
     asm("{disp8} fild       dword ptr [esp + 0x00]");                        // 0x0075bb2b    db442400
     asm("{disp8} mov        dword ptr [esp + 0x00], edx");                   // 0x0075bb2f    89542400
     asm("{disp8} fidiv      dword ptr [esp + 0x00]");                        // 0x0075bb33    da742400
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075bb37    d82d90a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bb37    d82d90a38a00
     asm("add                esp, 0x08");                                     // 0x0075bb3d    83c408
     asm("ret");                                                              // 0x0075bb40    c3
     asm("LAB__addr_0x0075bb41:");
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075bb41    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075bb41    d90598a38a00
     asm("add                esp, 0x08");                                     // 0x0075bb47    83c408
     asm("ret");                                                              // 0x0075bb4a    c3
     __builtin_unreachable();
@@ -253,14 +253,14 @@ float __fastcall GetDesireForFood__8VillagerFv(struct Villager* this)
 float __cdecl POWER_f___FfUl(float param_0, uint32_t param_1)
 {
     asm("{disp8} fld        dword ptr [esp + 0x04]");                        // 0x0075bb60    d9442404
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x0075bb64    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bb64    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x0075bb6a    dfe0
     asm("test               ah, 0x01");                                      // 0x0075bb6c    f6c401
     asm("{disp8} je         LAB__addr_0x0075bb77");                          // 0x0075bb6f    7406
     asm("{disp8} fld        dword ptr [esp + 0x04]");                        // 0x0075bb71    d9442404
     asm("{disp8} jmp        LAB__addr_0x0075bb7d");                          // 0x0075bb75    eb06
     asm("LAB__addr_0x0075bb77:");
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075bb77    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bb77    d90590a38a00
     asm("LAB__addr_0x0075bb7d:");
     asm("{disp8} fst        dword ptr [esp + 0x04]");                        // 0x0075bb7d    d9542404
     asm("mov                eax, 0x00000002");                               // 0x0075bb81    b802000000
@@ -268,7 +268,7 @@ float __cdecl POWER_f___FfUl(float param_0, uint32_t param_1)
     asm("dec                eax");                                           // 0x0075bb86    48
     asm("{disp8} fmul       dword ptr [esp + 0x04]");                        // 0x0075bb87    d84c2404
     asm("{disp8} jne        LAB__addr_0x0075bb86");                          // 0x0075bb8b    75f9
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075bb8d    d82d90a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bb8d    d82d90a38a00
     asm("ret                0x0004");                                        // 0x0075bb93    c20400
     __builtin_unreachable();
 }
@@ -302,12 +302,12 @@ float __fastcall GetLifeDesireFromLife__8VillagerFf(struct Villager* this, const
     asm("{disp8} fld        dword ptr [esp + 0x04]");                        // 0x0075bbdc    d9442404
     asm("LAB__addr_0x0075bbe0:");
     asm("{disp8} fsubr      dword ptr [esp + 0x04]");                        // 0x0075bbe0    d86c2404
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075bbe4    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bbe4    d90590a38a00
     asm("{disp32} fsub      dword ptr [ecx + 0x0000035c]");                  // 0x0075bbea    d8a15c030000
     asm("fdivp              st(1), st");                                     // 0x0075bbf0    def9
     asm("fld                st(0)");                                         // 0x0075bbf2    d9c0
     asm("fmulp              st(1), st");                                     // 0x0075bbf4    dec9
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075bbf6    d82d90a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bbf6    d82d90a38a00
     asm("ret                0x0004");                                        // 0x0075bbfc    c20400
     __builtin_unreachable();
 }
@@ -352,32 +352,32 @@ uint32_t __fastcall GetAmountOfFoodToEat__8VillagerFv(struct Villager* this)
     asm("mov.s              ecx, esi");                                      // 0x0075bc56    8bce
     asm("call               dword ptr [eax + 0x48]");                        // 0x0075bc58    ff5048
     asm("{disp32} fld       dword ptr [eax + 0x0000014c]");                  // 0x0075bc5b    d9804c010000
-    asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075bc61    d81598a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@00000000000000000000]");                   // 0x0075bc61    d81598a38a00
     asm("fnstsw             ax");                                            // 0x0075bc67    dfe0
     asm("test               ah, 0x01");                                      // 0x0075bc69    f6c401
     asm("{disp8} je         LAB__addr_0x0075bc78");                          // 0x0075bc6c    740a
     asm("fstp               st(0)");                                         // 0x0075bc6e    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075bc70    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075bc70    d90598a38a00
     asm("{disp8} jmp        LAB__addr_0x0075bc8d");                          // 0x0075bc76    eb15
     asm("LAB__addr_0x0075bc78:");
-    asm("{disp32} fcom      dword ptr [_rdata_float1p0]");                   // 0x0075bc78    d81590a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bc78    d81590a38a00
     asm("fnstsw             ax");                                            // 0x0075bc7e    dfe0
     asm("test               ah, 0x41");                                      // 0x0075bc80    f6c441
     asm("{disp8} jne        LAB__addr_0x0075bc8d");                          // 0x0075bc83    7508
     asm("fstp               st(0)");                                         // 0x0075bc85    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075bc87    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bc87    d90590a38a00
     asm("LAB__addr_0x0075bc8d:");
     asm("{disp32} fmul      dword ptr [__real@3e999999]");                   // 0x0075bc8d    d80d3cb28a00
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075bc93    d82d90a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bc93    d82d90a38a00
     asm("{disp8} fmul       dword ptr [esp + 0x08]");                        // 0x0075bc99    d84c2408
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0075bc9d    e85e570400
+    asm("call               __ftol");                                        // 0x0075bc9d    e85e570400
     asm("pop                edi");                                           // 0x0075bca2    5f
     asm("pop                esi");                                           // 0x0075bca3    5e
     asm("add                esp, 0x08");                                     // 0x0075bca4    83c408
     asm("ret");                                                              // 0x0075bca7    c3
     asm("LAB__addr_0x0075bca8:");
     asm("{disp8} fld        dword ptr [esp + 0x08]");                        // 0x0075bca8    d9442408
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0075bcac    e84f570400
+    asm("call               __ftol");                                        // 0x0075bcac    e84f570400
     asm("pop                edi");                                           // 0x0075bcb1    5f
     asm("pop                esi");                                           // 0x0075bcb2    5e
     asm("add                esp, 0x08");                                     // 0x0075bcb3    83c408
@@ -436,13 +436,13 @@ bool32_t __fastcall CheckHungry__8VillagerFv(struct Villager* this)
     asm("LAB__addr_0x0075bd4f:");
     asm("{disp32} fld       dword ptr [esi + 0x000000e8]");                  // 0x0075bd4f    d986e8000000
     asm("{disp8} fsub       dword ptr [esp + 0x08]");                        // 0x0075bd55    d8642408
-    asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075bd59    d81598a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@00000000000000000000]");                   // 0x0075bd59    d81598a38a00
     asm("{disp32} fst       dword ptr [esi + 0x000000e8]");                  // 0x0075bd5f    d996e8000000
     asm("fnstsw             ax");                                            // 0x0075bd65    dfe0
     asm("test               ah, 0x01");                                      // 0x0075bd67    f6c401
     asm("{disp8} je         LAB__addr_0x0075bd74");                          // 0x0075bd6a    7408
     asm("fstp               st(0)");                                         // 0x0075bd6c    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075bd6e    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075bd6e    d90598a38a00
     asm("LAB__addr_0x0075bd74:");
     asm("{disp8} mov        eax, dword ptr [esi + 0x28]");                   // 0x0075bd74    8b4628
     asm("{disp32} fst       dword ptr [esi + 0x000000e8]");                  // 0x0075bd77    d996e8000000
@@ -464,13 +464,13 @@ bool32_t __fastcall CheckHungry__8VillagerFv(struct Villager* this)
     asm("{disp8} mov        ecx, dword ptr [esi + 0x28]");                   // 0x0075bda6    8b4e28
     asm("{disp32} fld       dword ptr [ecx + 0x000002c0]");                  // 0x0075bda9    d981c0020000
     asm("{disp32} fdivr     dword ptr [esi + 0x000000e8]");                  // 0x0075bdaf    d8bee8000000
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075bdb5    d82d90a38a00
-    asm("{disp32} fcom      dword ptr [_rdata_float1p0]");                   // 0x0075bdbb    d81590a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bdb5    d82d90a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bdbb    d81590a38a00
     asm("fnstsw             ax");                                            // 0x0075bdc1    dfe0
     asm("test               ah, 0x41");                                      // 0x0075bdc3    f6c441
     asm("{disp8} je         LAB__addr_0x0075bdd0");                          // 0x0075bdc6    7408
     asm("fstp               st(0)");                                         // 0x0075bdc8    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075bdca    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bdca    d90590a38a00
     asm("LAB__addr_0x0075bdd0:");
     asm("{disp32} fmul      dword ptr [ecx + 0x000002d0]");                  // 0x0075bdd0    d889d0020000
     asm("mov                eax, dword ptr [esi]");                          // 0x0075bdd6    8b06
@@ -529,7 +529,7 @@ bool32_t __fastcall CheckHungry__8VillagerFv(struct Villager* this)
     asm("mov                eax, dword ptr [esi]");                          // 0x0075be7a    8b06
     asm("mov.s              ecx, esi");                                      // 0x0075be7c    8bce
     asm("call               dword ptr [eax + 0x11c]");                       // 0x0075be7e    ff901c010000
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075be84    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075be84    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075be8a    dfe0
     asm("test               ah, 0x41");                                      // 0x0075be8c    f6c441
     asm("{disp8} je         LAB__addr_0x0075bedf");                          // 0x0075be8f    744e
@@ -625,7 +625,7 @@ bool32_t __fastcall EatFoodHeld__8VillagerFv(struct Villager* this)
     asm("{disp8} fstp       dword ptr [esp + 0x04]");                        // 0x0075bf67    d95c2404
     asm("LAB__addr_0x0075bf6b:");
     asm("{disp8} fld        dword ptr [esp + 0x04]");                        // 0x0075bf6b    d9442404
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0075bf6f    e88c540400
+    asm("call               __ftol");                                        // 0x0075bf6f    e88c540400
     asm("mov.s              ecx, esi");                                      // 0x0075bf74    8bce
     asm("push               eax");                                           // 0x0075bf76    50
     asm("call               ?DropFood@Villager@@QAEGG@Z");                   // 0x0075bf77    e86452ffff
@@ -634,7 +634,7 @@ bool32_t __fastcall EatFoodHeld__8VillagerFv(struct Villager* this)
     asm("{disp8} mov        edx, dword ptr [esi + 0x28]");                   // 0x0075bf84    8b5628
     asm("{disp32} fmul      dword ptr [edx + 0x000002b8]");                  // 0x0075bf87    d88ab8020000
     asm("{disp32} fadd      dword ptr [esi + 0x000000e8]");                  // 0x0075bf8d    d886e8000000
-    asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x0075bf93    d81598a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@00000000000000000000]");                   // 0x0075bf93    d81598a38a00
     asm("{disp32} fst       dword ptr [esi + 0x000000e8]");                  // 0x0075bf99    d996e8000000
     asm("fnstsw             ax");                                            // 0x0075bf9f    dfe0
     asm("test               ah, 0x01");                                      // 0x0075bfa1    f6c401
@@ -643,7 +643,7 @@ bool32_t __fastcall EatFoodHeld__8VillagerFv(struct Villager* this)
     asm("{disp32} mov       dword ptr [esi + 0x000000e8], 0x00000000");      // 0x0075bfa8    c786e800000000000000
     asm("{disp8} jmp        LAB__addr_0x0075bfcb");                          // 0x0075bfb2    eb17
     asm("LAB__addr_0x0075bfb4:");
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x0075bfb4    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075bfb4    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x0075bfba    dfe0
     asm("test               ah, 0x41");                                      // 0x0075bfbc    f6c441
     asm("{disp8} jne        LAB__addr_0x0075bfcb");                          // 0x0075bfbf    750a
@@ -655,7 +655,7 @@ bool32_t __fastcall EatFoodHeld__8VillagerFv(struct Villager* this)
     asm("test               eax, eax");                                      // 0x0075bfd2    85c0
     asm("{disp8} je         LAB__addr_0x0075bfee");                          // 0x0075bfd4    7418
     asm("{disp8} fld        dword ptr [esp + 0x04]");                        // 0x0075bfd6    d9442404
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0075bfda    e821540400
+    asm("call               __ftol");                                        // 0x0075bfda    e821540400
     asm("mov                edx, dword ptr [esi]");                          // 0x0075bfdf    8b16
     asm("push               eax");                                           // 0x0075bfe1    50
     asm("mov.s              ecx, esi");                                      // 0x0075bfe2    8bce

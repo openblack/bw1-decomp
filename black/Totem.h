@@ -51,9 +51,9 @@ public:
     // win1.41 00561570 mac 105427e0 Totem::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00737800 mac 10542950 Totem::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 007378b0 mac 10542820 Totem::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00561560 mac 105427b0 Totem::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561530 mac 101337e0 Totem::IsCastShadowAtNight(void)
@@ -67,7 +67,7 @@ public:
     // win1.41 0051aba0 mac 100c5910 Totem::Draw(void)
     virtual void Draw();
     // win1.41 00737490 mac 10543360 Totem::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00737520 mac 10543140 Totem::ValidForLockedSelectProcess(GInterfaceStatus *)
     virtual bool ValidForLockedSelectProcess(GInterfaceStatus* param_1);
     // win1.41 00737570 mac 10543060 Totem::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)

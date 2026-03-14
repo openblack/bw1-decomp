@@ -5,9 +5,7 @@
 
 #ifdef __cplusplus
 
-// Forward Declares
-
-struct LHPoint;
+#include "LHPoint.h"
 
 struct LHMatrix
 {

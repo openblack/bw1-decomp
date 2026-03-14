@@ -17,9 +17,9 @@ GMagicEffectInfo* GMagicInfo::GetMagicEffectInfo()
 }
 
 // win1.41 005fb900 mac inlined GMagicLivingInfo::GetMesh( const(void))
-uint32_t GMagicLivingInfo::GetMesh() const
+MeshId GMagicLivingInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 005fb910 mac inlined GMagicLivingInfo::GetBaseInfo(unsigned long &)
@@ -40,13 +40,13 @@ int SpellTeleport::InitWithPos(GameThing* param_1, const MapCoords* param_2, Spe
 }
 
 // win1.41 005fbf50 mac 103b1400 MagicTeleport::Load(GameOSFile &)
-bool MagicTeleport::Load(GameOSFile& file)
+bool32_tcorrect MagicTeleport::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005fbfa0 mac 103b1350 MagicTeleport::Save(GameOSFile &)
-bool MagicTeleport::Save(GameOSFile& file)
+bool32_tcorrect MagicTeleport::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -129,7 +129,7 @@ MagicTeleport::~MagicTeleport()
 }
 
 // win1.41 005fc260 mac 103b0bf0 MagicTeleport::CallVirtualFunctionsForCreation(MapCoords const &)
-void MagicTeleport::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void MagicTeleport::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -163,7 +163,7 @@ bool MagicTeleport::IsSolidToNewAbode()
 }
 
 // win1.41 005fc960 mac 103af8d0 MagicTeleport::ActualMoveMapObject(MapCoords const &)
-void MagicTeleport::ActualMoveMapObject(const MapCoords* param_1)
+void MagicTeleport::ActualMoveMapObject(const MapCoords& param_1)
 {
 }
 
@@ -185,7 +185,7 @@ bool MagicTeleport::InteractsWithPhysicsObjects()
 }
 
 // win1.41 005fcdf0 mac 103af1e0 MagicTeleport::CanBecomeAPhysicsObject(void)
-bool MagicTeleport::CanBecomeAPhysicsObject()
+bool32_tcorrect MagicTeleport::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -241,13 +241,13 @@ void MagicTree::EndOnFire()
 }
 
 // win1.41 005fd110 mac 103b2510 MagicTree::Save(GameOSFile &)
-bool MagicTree::Save(GameOSFile& file)
+bool32_tcorrect MagicTree::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005fd1c0 mac 103b23f0 MagicTree::Load(GameOSFile &)
-bool MagicTree::Load(GameOSFile& file)
+bool32_tcorrect MagicTree::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -270,13 +270,13 @@ GMobileStaticInfo* GMobileStaticInfo::GetInfo()
 }
 
 // win1.41 00600ad0 mac 103b3000 VortexObjectInfo::Save(GameOSFile &)
-bool VortexObjectInfo::Save(GameOSFile& file)
+bool32_tcorrect VortexObjectInfo::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00600bf0 mac 103b2d00 VortexObjectInfo::Load(GameOSFile &)
-bool VortexObjectInfo::Load(GameOSFile& file)
+bool32_tcorrect VortexObjectInfo::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -322,18 +322,18 @@ MagicWood::~MagicWood()
 }
 
 // win1.41 00600f10 mac 103ba140 MagicWood::CallVirtualFunctionsForCreation(MapCoords const &)
-void MagicWood::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void MagicWood::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
 // win1.41 00600f20 mac 103ba0b0 MagicWood::Save(GameOSFile &)
-bool MagicWood::Save(GameOSFile& file)
+bool32_tcorrect MagicWood::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00600f60 mac 103ba020 MagicWood::Load(GameOSFile &)
-bool MagicWood::Load(GameOSFile& file)
+bool32_tcorrect MagicWood::Load(GameOSFile& file)
 {
     return 0;
 }

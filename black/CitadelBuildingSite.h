@@ -45,9 +45,9 @@ public:
     // win1.41 0043d1a0 mac 100be380 CitadelBuildingSite::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0043d620 mac 100b8580 CitadelBuildingSite::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0043d5e0 mac 100b8620 CitadelBuildingSite::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0043d190 mac 100be340 CitadelBuildingSite::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0043d660 mac 100b84d0 CitadelBuildingSite::Process(void)
@@ -59,7 +59,7 @@ public:
     // win1.41 0043d460 mac 100b8b60 CitadelBuildingSite::CreatePileWood(void)
     virtual void CreatePileWood();
     // win1.41 0043d470 mac inlined CitadelBuildingSite::GetResourcePosAndYAngle(unsigned int, unsigned int, float *)
-    virtual void GetResourcePosAndYAngle(uint32_t param_1, uint32_t param_2, float* param_3);
+    virtual MapCoords GetResourcePosAndYAngle(uint32_t param_1, uint32_t param_2, float* param_3);
     // win1.41 0043d5b0 mac 100b86c0 CitadelBuildingSite::RemovePotFromStructure(PotStructure *)
     virtual void RemovePotFromStructure(PotStructure* param_1);
     // win1.41 0043d580 mac 100b8750 CitadelBuildingSite::IsLinkedToThisBuildingSite(Pot *)

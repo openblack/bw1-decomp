@@ -78,9 +78,9 @@ public:
     // win1.41 00474910 mac 103c19a0 MobileWallHug::_dt(void)
     virtual ~MobileWallHug();
     // win1.41 0060c740 mac 103c23a0 MobileWallHug::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0060c420 mac 103c28c0 MobileWallHug::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0060c070 mac 100321c0 MobileWallHug::GetSpeedInMetres( const(void))
     virtual float GetSpeedInMetres() const;
     // win1.41 0060c080 mac 103c3320 MobileWallHug::SetSpeedInMetres(float, int)

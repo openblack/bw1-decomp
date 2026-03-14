@@ -46,9 +46,9 @@ public:
     // win1.41 006e5680 mac 10138f70 Reward::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006e6c70 mac 10139000 Reward::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 006e69c0 mac 10139380 Reward::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 006e5670 mac 10138f30 Reward::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006e6f00 mac 10138fb0 Reward::ResolveLoad(void)
@@ -78,7 +78,7 @@ public:
     // win1.41 006e5d00 mac 1013a480 Reward::InterfaceTap(GInterfaceStatus *)
     virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
     // win1.41 006e6980 mac 10139800 Reward::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
 };
 
 // win1.41 00c0bec8 mac inlined GRewardProgress::`RTTI Type Descriptor'

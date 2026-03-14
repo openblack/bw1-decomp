@@ -18,7 +18,7 @@ float __fastcall CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager(struc
     asm("xor.s              edx, edx");                                      // 0x00404b62    33d2
     asm("cmp.s              eax, edx");                                      // 0x00404b64    3bc2
     asm("{disp8} jne        LAB__addr_0x00404b76");                          // 0x00404b66    750e
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x00404b68    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x00404b68    d90598a38a00
     asm("pop                edi");                                           // 0x00404b6e    5f
     asm("pop                esi");                                           // 0x00404b6f    5e
     asm("add                esp, 0x10");                                     // 0x00404b70    83c410
@@ -31,7 +31,7 @@ float __fastcall CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager(struc
     asm("{disp8} mov        dword ptr [esp + 0x1c], ecx");                   // 0x00404b86    894c241c
     asm("{disp8} fild       dword ptr [esp + 0x1c]");                        // 0x00404b8a    db44241c
     asm("{disp8} fidiv      dword ptr [esp + 0x08]");                        // 0x00404b8e    da742408
-    asm("{disp32} fcom      dword ptr [_rdata_float1p0]");                   // 0x00404b92    d81590a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@3fff8000000000000000]");                   // 0x00404b92    d81590a38a00
     asm("fnstsw             ax");                                            // 0x00404b98    dfe0
     asm("test               ah, 0x01");                                      // 0x00404b9a    f6c401
     asm("{disp8} jne        LAB__addr_0x00404bef");                          // 0x00404b9d    7550
@@ -42,7 +42,7 @@ float __fastcall CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager(struc
     asm("xor.s              edx, edx");                                      // 0x00404baa    33d2
     asm("cmp.s              eax, edx");                                      // 0x00404bac    3bc2
     asm("{disp8} jne        LAB__addr_0x00404bbe");                          // 0x00404bae    750e
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x00404bb0    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x00404bb0    d90598a38a00
     asm("pop                edi");                                           // 0x00404bb6    5f
     asm("pop                esi");                                           // 0x00404bb7    5e
     asm("add                esp, 0x10");                                     // 0x00404bb8    83c410
@@ -55,16 +55,16 @@ float __fastcall CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager(struc
     asm("{disp8} mov        dword ptr [esp + 0x1c], ecx");                   // 0x00404bce    894c241c
     asm("{disp8} fild       dword ptr [esp + 0x1c]");                        // 0x00404bd2    db44241c
     asm("{disp8} fidiv      dword ptr [esp + 0x08]");                        // 0x00404bd6    da742408
-    asm("{disp32} fcom      dword ptr [_rdata_float1p0]");                   // 0x00404bda    d81590a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@3fff8000000000000000]");                   // 0x00404bda    d81590a38a00
     asm("fnstsw             ax");                                            // 0x00404be0    dfe0
     asm("test               ah, 0x01");                                      // 0x00404be2    f6c401
     asm("{disp8} jne        LAB__addr_0x00404bef");                          // 0x00404be5    7508
     asm("LAB__addr_0x00404be7:");
     asm("fstp               st(0)");                                         // 0x00404be7    ddd8
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x00404be9    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x00404be9    d90590a38a00
     asm("LAB__addr_0x00404bef:");
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x00404bef    d82d90a38a00
-    asm("{disp32} fcom      dword ptr [_rdata_float0p0]");                   // 0x00404bf5    d81598a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x00404bef    d82d90a38a00
+    asm("{disp32} fcom      dword ptr [__real@4@00000000000000000000]");                   // 0x00404bf5    d81598a38a00
     asm("{disp8} fst        dword ptr [esp + 0x08]");                        // 0x00404bfb    d9542408
     asm("fnstsw             ax");                                            // 0x00404bff    dfe0
     asm("test               ah, 0x41");                                      // 0x00404c01    f6c441
@@ -72,7 +72,7 @@ float __fastcall CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager(struc
     asm("{disp32} mov       eax, dword ptr [esi + 0x000000a0]");             // 0x00404c0a    8b86a0000000
     asm("fstp               st(0)");                                         // 0x00404c10    ddd8
     asm("cmp.s              eax, edx");                                      // 0x00404c12    3bc2
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x00404c14    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x00404c14    d90598a38a00
     asm("{disp8} je         LAB__addr_0x00404c42");                          // 0x00404c1a    7426
     asm("{disp8} mov        ecx, dword ptr [edi + 0x28]");                   // 0x00404c1c    8b4f28
     asm("{disp32} mov       ecx, dword ptr [ecx + 0x000001f8]");             // 0x00404c1f    8b89f8010000
@@ -81,7 +81,7 @@ float __fastcall CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager(struc
     asm("{disp8} mov        ebx, dword ptr [eax + 0x28]");                   // 0x00404c26    8b5828
     asm("cmp                dword ptr [ebx + 0x000001f8], ecx");             // 0x00404c29    398bf8010000
     asm("{disp8} jne        LAB__addr_0x00404c37");                          // 0x00404c2f    7506
-    asm("{disp32} fadd      dword ptr [_rdata_float1p0]");                   // 0x00404c31    d80590a38a00
+    asm("{disp32} fadd      dword ptr [__real@4@3fff8000000000000000]");                   // 0x00404c31    d80590a38a00
     asm("LAB__addr_0x00404c37:");
     asm("{disp32} mov       eax, dword ptr [eax + 0x000000e4]");             // 0x00404c37    8b80e4000000
     asm("cmp.s              eax, edx");                                      // 0x00404c3d    3bc2
@@ -96,8 +96,8 @@ float __fastcall CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager(struc
     asm("{disp8} mov        dword ptr [esp + 0x14], edx");                   // 0x00404c58    89542414
     asm("{disp8} fild       qword ptr [esp + 0x10]");                        // 0x00404c5c    df6c2410
     asm("fdivr              st, st(1)");                                     // 0x00404c60    d8f9
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x00404c62    d82d90a38a00
-    asm("{disp32} fadd      dword ptr [_rdata_float1p0]");                   // 0x00404c68    d80590a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x00404c62    d82d90a38a00
+    asm("{disp32} fadd      dword ptr [__real@4@3fff8000000000000000]");                   // 0x00404c68    d80590a38a00
     asm("{disp32} fmul      dword ptr [_rdata_float0p5]");                   // 0x00404c6e    d80db4a38a00
     asm("{disp8} fstp       dword ptr [esp + 0x1c]");                        // 0x00404c74    d95c241c
     asm("LAB__addr_0x00404c78:");
@@ -106,11 +106,11 @@ float __fastcall CalculateScoreForAddingVillagerToAbode__5AbodeFP8Villager(struc
     asm("add                edi, 0x14");                                     // 0x00404c7f    83c714
     asm("push               edi");                                           // 0x00404c82    57
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x00404c83    8d4e14
-    asm("call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2");                          // 0x00404c86    e845102000
+    asm("call               ?GetMetresDistance@MapCoords@@QBEMABU1@@Z");                          // 0x00404c86    e845102000
     asm("push               ecx");                                           // 0x00404c8b    51
     asm("fstp               dword ptr [esp]");                               // 0x00404c8c    d91c24
     asm("call               _GetDistanceModifier__6GUtilsFff@8");            // 0x00404c8f    e8fca53400
-    asm("{disp32} fadd      dword ptr [_rdata_float1p0]");                   // 0x00404c94    d80590a38a00
+    asm("{disp32} fadd      dword ptr [__real@4@3fff8000000000000000]");                   // 0x00404c94    d80590a38a00
     asm("add                esp, 0x08");                                     // 0x00404c9a    83c408
     asm("{disp32} fmul      dword ptr [_rdata_float0p5]");                   // 0x00404c9d    d80db4a38a00
     asm("{disp8} fmul       dword ptr [esp + 0x1c]");                        // 0x00404ca3    d84c241c

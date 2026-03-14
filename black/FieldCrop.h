@@ -39,7 +39,7 @@ public:
     // win1.41 00607e20 mac 103bb470 FieldCrop::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
     // win1.41 00608270 mac 103bb1e0 FieldCrop::IsFunctional(void)
-    virtual bool IsFunctional();
+    virtual bool32_tcorrect IsFunctional();
     // win1.41 0055d100 mac 103bab60 FieldCrop::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0055d0f0 mac 103bab20 FieldCrop::GetSaveType(void)
@@ -69,7 +69,7 @@ public:
     // win1.41 00608340 mac 103baf80 FieldCrop::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 006082d0 mac 103bb100 FieldCrop::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 00608440 mac 103baba0 FieldCrop::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 00608350 mac 103baf40 FieldCrop::IsARootedObject(void)

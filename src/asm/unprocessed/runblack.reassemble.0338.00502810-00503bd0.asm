@@ -34,7 +34,7 @@
 .extern _jmp_addr_0x0050baf0
 .extern _jmp_addr_0x0050c290
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
-.extern _jmp_addr_0x00555880
+.extern ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
 .extern ?GameRand@GRand@@SAHJ@Z
@@ -45,7 +45,7 @@
 .extern ?GetDistance@GUtils@@SAXABUMapCoords@@0@Z
 .extern _jmp_addr_0x0074cde0
 .extern ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
 .extern ___nw__FUl
@@ -388,7 +388,7 @@ start_0x00502810_0x00503bd0:
                          add                esp, 0x14                                            // 0x00502be1    83c414
                          mov.s              ecx, eax                                             // 0x00502be4    8bc8
                          call               dword ptr [edx + 0x11c]                              // 0x00502be6    ff921c010000
-                         {disp32} fcomp     dword ptr [_rdata_float0p0]                          // 0x00502bec    d81d98a38a00
+                         {disp32} fcomp     dword ptr [__real@4@00000000000000000000]                          // 0x00502bec    d81d98a38a00
                          fnstsw             ax                                                   // 0x00502bf2    dfe0
                          test               ah, 0x41                                             // 0x00502bf4    f6c441
                          {disp8} je         .Lbl_addr_0x00502c46                                 // 0x00502bf7    744d
@@ -702,7 +702,7 @@ start_0x00502810_0x00503bd0:
                          {disp8} mov        dword ptr [esp + 0x0c], eax                          // 0x00502fbe    8944240c
                          {disp8} mov        dword ptr [esp + 0x08], edi                          // 0x00502fc2    897c2408
                          {disp8} fimul      dword ptr [esp + 0x08]                               // 0x00502fc6    da4c2408
-                         call               _jmp_addr_0x007a1400                                 // 0x00502fca    e831e42900
+                         call               __ftol                                               // 0x00502fca    e831e42900
                          cmp.s              esi, eax                                             // 0x00502fcf    3bf0
                          {disp8} ja         .Lbl_addr_0x00502fdd                                 // 0x00502fd1    770a
 .Lbl_addr_0x00502fd3:    pop                edi                                                  // 0x00502fd3    5f
@@ -1516,7 +1516,7 @@ start_0x00502810_0x00503bd0:
                          add                esp, 0x28                                            // 0x005038fb    83c428
                          mov.s              ecx, eax                                             // 0x005038fe    8bc8
                          call               dword ptr [edx + 0x11c]                              // 0x00503900    ff921c010000
-                         {disp32} fcomp     dword ptr [_rdata_float0p0]                          // 0x00503906    d81d98a38a00
+                         {disp32} fcomp     dword ptr [__real@4@00000000000000000000]                          // 0x00503906    d81d98a38a00
                          fnstsw             ax                                                   // 0x0050390c    dfe0
                          test               ah, 0x41                                             // 0x0050390e    f6c441
                          {disp32} je        .Lbl_addr_0x005039a5                                 // 0x00503911    0f848e000000
@@ -1524,7 +1524,7 @@ start_0x00502810_0x00503bd0:
                          {disp32} jne       .Lbl_addr_0x005039a5                                 // 0x0050391b    0f8584000000
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x00503921    8b0d5c19d000
                          push               ebx                                                  // 0x00503927    53
-                         call               _jmp_addr_0x00555880                                 // 0x00503928    e8531f0500
+                         call               ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ                                 // 0x00503928    e8531f0500
                          mov.s              ebx, eax                                             // 0x0050392d    8bd8
                          mov                eax, dword ptr [esi]                                 // 0x0050392f    8b06
                          mov.s              ecx, esi                                             // 0x00503931    8bce
@@ -1572,7 +1572,7 @@ start_0x00502810_0x00503bd0:
                          test               eax, eax                                             // 0x005039b4    85c0
                          {disp32} jne       .Lbl_addr_0x00503a44                                 // 0x005039b6    0f8588000000
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x005039bc    8b0d5c19d000
-                         call               _jmp_addr_0x00555880                                 // 0x005039c2    e8b91e0500
+                         call               ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ                                 // 0x005039c2    e8b91e0500
                          mov                edx, dword ptr [esi]                                 // 0x005039c7    8b16
                          mov.s              ecx, esi                                             // 0x005039c9    8bce
                          mov.s              edi, eax                                             // 0x005039cb    8bf8

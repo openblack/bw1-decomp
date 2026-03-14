@@ -50,9 +50,9 @@ public:
     // win1.41 00682b40 mac 103fd410 MagicFireBall::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00683320 mac 103fb710 MagicFireBall::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 006832b0 mac 103fb800 MagicFireBall::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00682b30 mac 103fd3d0 MagicFireBall::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00682a50 mac 103fcf70 MagicFireBall::IsMagicFireBall(void)
@@ -102,7 +102,7 @@ public:
     // win1.41 00682a60 mac 103fcfb0 MagicFireBall::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 00682a70 mac 103fd000 MagicFireBall::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 00682b20 mac 103fd380 MagicFireBall::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile& param_1, const MapCoords& param_2);
 

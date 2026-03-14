@@ -1,12 +1,15 @@
 #include "GameThingWithPos.h"
 
+
+const float rdata_float0p0 asm("__real@4@00000000000000000000");
 const float rdata_float0p0 = 0.0f;                                 // [0x1398] 0x008a9000 + 0x1398 = 0x008aa398
 const float rdata_float0p0005 = 0.0005f;                           // [0x139c] 0x008a9000 + 0x139c = 0x008aa39c
 const float rdata_float1p05 = 1.05;                                // [0x13a0] 0x008a9000 + 0x13a0 = 0x008aa3a0
 const float rdata_float_coord_to_point = 10.0f / ((float)0x10000); // [0x13a4] 0x008a9000 + 0x13a4 = 0x008aa3a4
 const float rdata_floatn0p8 = -0.8;                                // [0x13a8] 0x008a9000 + 0x13a8 = 0x008aa3a8
 const float rdata_float0p2 = 0.2;                                  // [0x13ac] 0x008a9000 + 0x13ac = 0x008aa3ac
-const float rdata_float0p001 = 0.001;                              // [0x13b0] 0x008a9000 + 0x13b0 = 0x008aa3b0
+const float rdata_float0p001 asm("__real@4@3ff583126f0000000000"); // [0x13b0] 0x008a9000 + 0x13b0 = 0x008aa3b0
+const float rdata_float0p001 = 0.001;
 const float rdata_float0p5 = 0.5;                                  // [0x13b4] 0x008a9000 + 0x13b4 = 0x008aa3b4
 
 __attribute__((aligned(8)))
@@ -91,7 +94,7 @@ void __fastcall SetMaxHeight__16GameThingWithPosFf(struct GameThingWithPos* this
 
 float __fastcall GetMaxHeight__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x004019d0    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");              // 0x004019d0    d90598a38a00
     asm("ret");                                                         // 0x004019d6    c3
     __builtin_unreachable();
 }
@@ -150,7 +153,7 @@ bool __fastcall IsAvailableForStateChange__16GameThingWithPosFv(struct GameThing
 
 float __fastcall GetImpressiveIntensity__16GameThingWithPosF15IMPRESSIVE_TYPE(struct GameThingWithPos* this, const void* edx, enum IMPRESSIVE_TYPE type)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                       // 0x00401a40    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                       // 0x00401a40    d90590a38a00
     asm("ret                0x0004");                                   // 0x00401a46    c20400
     __builtin_unreachable();
 }
@@ -290,7 +293,7 @@ bool32_t __fastcall IsDamaged__16GameThingWithPosFv(struct GameThingWithPos* thi
 {
     asm("mov                eax, dword ptr [ecx]");                     // 0x00401bb0    8b01
     asm("call               dword ptr [eax + 0x11c]");                  // 0x00401bb2    ff901c010000
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                       // 0x00401bb8    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                       // 0x00401bb8    d81d90a38a00
     asm("fnstsw             ax");                                       // 0x00401bbe    dfe0
     asm("test               ah, 0x01");                                 // 0x00401bc0    f6c401
     asm("{disp8} je         LAB__addr_0x00401bcb");                     // 0x00401bc3    7406
@@ -923,21 +926,21 @@ bool32_t __fastcall IsObjectTurningTooFastForCameraToFollowSmoothly__16GameThing
 
 float __fastcall CalculateDesireForFood__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x00402200    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");              // 0x00402200    d90598a38a00
     asm("ret");                                                         // 0x00402206    c3
     __builtin_unreachable();
 }
 
 float __fastcall CalculateDesireForRest__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x00402210    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");              // 0x00402210    d90598a38a00
     asm("ret");                                                         // 0x00402216    c3
     __builtin_unreachable();
 }
 
 float __fastcall CalculatePeopleHidingIndicator__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x00402220    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");              // 0x00402220    d90598a38a00
     asm("ret");                                                         // 0x00402226    c3
     __builtin_unreachable();
 }
@@ -1190,7 +1193,7 @@ bool32_t __fastcall IsScriptTimer__16GameThingWithPosFv(struct GameThingWithPos*
 
 float __fastcall GetFacingDirection__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x004024b0    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");              // 0x004024b0    d90598a38a00
     asm("ret");                                                         // 0x004024b6    c3
     __builtin_unreachable();
 }
@@ -1202,7 +1205,7 @@ void __fastcall SetAffectedByWind__16GameThingWithPosFi(struct GameThingWithPos*
 
 float __fastcall GetReactionPower__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");              // 0x004024d0    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");              // 0x004024d0    d90590a38a00
     asm("ret");                                                         // 0x004024d6    c3
     __builtin_unreachable();
 }

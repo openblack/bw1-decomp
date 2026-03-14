@@ -263,9 +263,9 @@ public:
     // win1.41 0071bd50 mac 1050fcd0 Creature::GetSampleForAttack(void)
     virtual uint32_t GetSampleForAttack();
     // win1.41 004e5ff0 mac 1026b130 Creature::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 004e4ea0 mac 1026c9c0 Creature::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 004740c0 mac 101e33f0 Creature::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 004e6ab0 mac 1026aa90 Creature::ResolveLoad(void)
@@ -367,7 +367,7 @@ public:
     // win1.41 00473f50 mac 101e2d40 Creature::IsReachable(void)
     virtual bool IsReachable();
     // win1.41 00479e50 mac 101d6990 Creature::MoveMapObject(MapCoords const &)
-    virtual int MoveMapObject(const MapCoords* param_1);
+    virtual int MoveMapObject(const MapCoords& param_1);
     // win1.41 0047dd00 mac 101ce700 Creature::ReduceLife(float, GPlayer *)
     virtual void ReduceLife(float param_1, GPlayer* param_2);
     // win1.41 0047de20 mac 101ce640 Creature::IncreaseLife(float)
@@ -439,7 +439,7 @@ public:
     // win1.41 00479990 mac 101d6fd0 Creature::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 00479d10 mac 101d6d70 Creature::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 0047d4b0 mac 101cf930 Creature::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 0047d500 mac 101cf7f0 Creature::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
@@ -618,9 +618,9 @@ public:
     // win1.41 0050b360 mac 100c0320 Creed::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0050b4e0 mac 100c03b0 Creed::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0050b4c0 mac 100c0410 Creed::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0050b350 mac 100c02f0 Creed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0050b4a0 mac 100c0470 Creed::SetScale(float)
@@ -634,11 +634,11 @@ public:
     // win1.41 005186d0 mac 100c8c40 Creed::DrawOutOfMap(bool)
     virtual void DrawOutOfMap(bool param_1);
     // win1.41 0050b3a0 mac 100c06a0 Creed::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 0050b330 mac 100c0270 Creed::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 0050b340 mac 100c02b0 Creed::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
 };
 
 #else // __cplusplus

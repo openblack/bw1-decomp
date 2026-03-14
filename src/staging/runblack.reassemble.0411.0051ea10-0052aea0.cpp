@@ -149,13 +149,13 @@ MultiMapFixed* PlannedFeature::CreatePlanned(float param_1)
 }
 
 // win1.41 00527550 mac 100d0ff0 PlannedFeature::Save(GameOSFile &)
-bool PlannedFeature::Save(GameOSFile& file)
+bool32_tcorrect PlannedFeature::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00527580 mac 100d0f60 PlannedFeature::Load(GameOSFile &)
-bool PlannedFeature::Load(GameOSFile& file)
+bool32_tcorrect PlannedFeature::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -197,9 +197,9 @@ HELP_TEXT Feature::GetQueryLastEnumText()
 }
 
 // win1.41 005278b0 mac 100d15c0 GFlowersInfo::GetMesh( const(void))
-uint32_t GFlowersInfo::GetMesh() const
+MeshId GFlowersInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 00527910 mac 100d06a0 GFlowersInfo::_dt(void)
@@ -231,7 +231,7 @@ Flowers::~Flowers()
 }
 
 // win1.41 00527a30 mac 100d0310 Flowers::CallVirtualFunctionsForCreation(MapCoords const &)
-void Flowers::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void Flowers::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -365,7 +365,7 @@ bool Field::InteractsWithPhysicsObjects()
 }
 
 // win1.41 00528030 mac 100d6450 Field::CanBecomeAPhysicsObject(void)
-bool Field::CanBecomeAPhysicsObject()
+bool32_tcorrect Field::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -451,7 +451,7 @@ float Field::GetMeshRadius()
 }
 
 // win1.41 00528a40 mac 100d47b0 Field::CallVirtualFunctionsForCreation(MapCoords const &)
-void Field::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void Field::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -588,13 +588,13 @@ bool Field::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
 }
 
 // win1.41 00529b10 mac 100d23a0 Field::Save(GameOSFile &)
-bool Field::Save(GameOSFile& file)
+bool32_tcorrect Field::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00529d60 mac 100d1eb0 Field::Load(GameOSFile &)
-bool Field::Load(GameOSFile& file)
+bool32_tcorrect Field::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -645,7 +645,7 @@ void FireFly::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 0052a1c0 mac 100da1b0 FireFly::CanBecomeAPhysicsObject(void)
-bool FireFly::CanBecomeAPhysicsObject()
+bool32_tcorrect FireFly::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -695,7 +695,7 @@ void FireFly::ToBeDeleted(int param_1)
 }
 
 // win1.41 0052a510 mac 100d9950 FireFly::CallVirtualFunctionsForCreation(MapCoords const &)
-void FireFly::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void FireFly::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 

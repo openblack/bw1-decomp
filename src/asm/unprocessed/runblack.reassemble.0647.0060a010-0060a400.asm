@@ -5,7 +5,7 @@
 .extern ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ
 .extern ?MoveToCircleHugCircleSquareSweep@MobileWallHug_InCircleStuff_0_@@SAIPAVMobileWallHug@@ABUMapCoords@@@Z
 .extern ?MoveToCircleHugCircleSquareSweep@MobileWallHug_InCircleStuff_1_@@SAIPAVMobileWallHug@@ABUMapCoords@@@Z
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 
 .globl _jmp_addr_0x0060a010
 .globl _jmp_addr_0x0060a020
@@ -55,7 +55,7 @@ _jmp_addr_0x0060a030:    sub              esp, 0x0c                        // 0x
                          {disp8} fild     dword ptr [esp + 0x14]           // 0x0060a078    db442414
                          {disp8} fld      dword ptr [esi + 0x68]           // 0x0060a07c    d94668
                          fchs                                              // 0x0060a07f    d9e0
-                         call             _jmp_addr_0x007a1400             // 0x0060a081    e87a731900
+                         call             __ftol                           // 0x0060a081    e87a731900
                          {disp8} mov      ecx, dword ptr [esi + 0x64]      // 0x0060a086    8b4e64
                          {disp8} fstp     dword ptr [esi + 0x68]           // 0x0060a089    d95e68
                          neg              ecx                              // 0x0060a08c    f7d9
@@ -109,7 +109,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          fstp             dword ptr [esp]                  // 0x0060a124    d91c24
                          {disp8} fld      dword ptr [esi + 0x68]           // 0x0060a127    d94668
                          fchs                                              // 0x0060a12a    d9e0
-                         call             _jmp_addr_0x007a1400             // 0x0060a12c    e8cf721900
+                         call             __ftol                           // 0x0060a12c    e8cf721900
                          mov              edx, dword ptr [edi]             // 0x0060a131    8b17
                          push             eax                              // 0x0060a133    50
                          neg              edx                              // 0x0060a134    f7da
@@ -156,7 +156,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          fstp             dword ptr [esp]                  // 0x0060a1ae    d91c24
                          {disp8} fld      dword ptr [esi + 0x68]           // 0x0060a1b1    d94668
                          fchs                                              // 0x0060a1b4    d9e0
-                         call             _jmp_addr_0x007a1400             // 0x0060a1b6    e845721900
+                         call             __ftol                           // 0x0060a1b6    e845721900
                          mov              edx, dword ptr [edi]             // 0x0060a1bb    8b17
                          push             eax                              // 0x0060a1bd    50
                          neg              edx                              // 0x0060a1be    f7da
@@ -203,7 +203,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          fstp             dword ptr [esp]                  // 0x0060a238    d91c24
                          {disp8} fld      dword ptr [esi + 0x68]           // 0x0060a23b    d94668
                          fchs                                              // 0x0060a23e    d9e0
-                         call             _jmp_addr_0x007a1400             // 0x0060a240    e8bb711900
+                         call             __ftol                           // 0x0060a240    e8bb711900
                          mov              edx, dword ptr [edi]             // 0x0060a245    8b17
                          push             eax                              // 0x0060a247    50
                          neg              edx                              // 0x0060a248    f7da
@@ -263,7 +263,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          fstp             dword ptr [esp]                  // 0x0060a2eb    d91c24
                          {disp8} fld      dword ptr [esi + 0x68]           // 0x0060a2ee    d94668
                          fchs                                              // 0x0060a2f1    d9e0
-                         call             _jmp_addr_0x007a1400             // 0x0060a2f3    e808711900
+                         call             __ftol                           // 0x0060a2f3    e808711900
                          mov              edx, dword ptr [edi]             // 0x0060a2f8    8b17
                          push             eax                              // 0x0060a2fa    50
                          neg              edx                              // 0x0060a2fb    f7da
@@ -323,7 +323,7 @@ _jmp_addr_0x0060a0b0:    sub              esp, 0x24                        // 0x
                          fstp             dword ptr [esp]                  // 0x0060a39e    d91c24
                          {disp8} fld      dword ptr [esi + 0x68]           // 0x0060a3a1    d94668
                          fchs                                              // 0x0060a3a4    d9e0
-                         call             _jmp_addr_0x007a1400             // 0x0060a3a6    e855701900
+                         call             __ftol                           // 0x0060a3a6    e855701900
                          mov              edx, dword ptr [edi]             // 0x0060a3ab    8b17
                          push             eax                              // 0x0060a3ad    50
                          neg              edx                              // 0x0060a3ae    f7da

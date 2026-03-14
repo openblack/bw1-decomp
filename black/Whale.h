@@ -41,9 +41,9 @@ public:
     // win1.41 005612b0 mac 10160000 Whale::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007752c0 mac 10160090 Whale::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 007752a0 mac 101600f0 Whale::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 005612a0 mac 1015ffd0 Whale::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007752e0 mac 10160040 Whale::ResolveLoad(void)
@@ -55,11 +55,11 @@ public:
     // win1.41 00774e10 mac 101609a0 Whale::Draw(void)
     virtual void Draw();
     // win1.41 00774ca0 mac 10160a20 Whale::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00561270 mac 1015ff50 Whale::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 00561290 mac 1015ff10 Whale::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
 };
 
 #else // __cplusplus

@@ -370,11 +370,11 @@ _LHRand__FlRU:           push              ebp                                  
 _jmp_addr_0x007db770:    {disp8} fld       dword ptr [esp + 0x08]                         // 0x007db770    d9442408
                          {disp8} fld       dword ptr [esp + 0x04]                         // 0x007db774    d9442404
                          fpatan                                                           // 0x007db778    d9f3
-                         {disp32} fcom     dword ptr [_rdata_float0p0]                    // 0x007db77a    d81598a38a00
+                         {disp32} fcom     dword ptr [__real@4@00000000000000000000]                    // 0x007db77a    d81598a38a00
                          fnstsw            ax                                             // 0x007db780    dfe0
                          test              ah, 0x01                                       // 0x007db782    f6c401
                          {disp8} je        .Lbl_addr_0x007db78d                           // 0x007db785    7406
-                         {disp32} fadd     dword ptr [__real@40c90fdb]                    // 0x007db787    d80510b28a00
+                         {disp32} fadd     dword ptr [__real@4@4001c90fdb0000000000]                    // 0x007db787    d80510b28a00
 .Lbl_addr_0x007db78d:    ret                                                              // 0x007db78d    c3
                          nop                                                              // 0x007db78e    90
                          nop                                                              // 0x007db78f    90

@@ -1,3 +1,4 @@
+#include "MapCoords.h"
 #include "ObjectInfo.h"
 #include "LeashSelectorInfo.h"
 #include "MagicInfo.h"
@@ -36,9 +37,9 @@
 #include "lhall/released/headers/LHTimer.h"
 
 // win1.41 0042b370 mac 1016ddf0 GObjectInfo::GetMesh( const(void))
-uint32_t GObjectInfo::GetMesh() const
+MeshId GObjectInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 0042b380 mac 104cc120 GObjectInfo::GetBaseInfo(unsigned long &)
@@ -235,13 +236,13 @@ uint32_t Ball::GetScriptObjectType()
 }
 
 // win1.41 00436110 mac 100b0260 Ball::Save(GameOSFile &)
-bool Ball::Save(GameOSFile& file)
+bool32_tcorrect Ball::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00436260 mac 100b0080 Ball::Load(GameOSFile &)
-bool Ball::Load(GameOSFile& file)
+bool32_tcorrect Ball::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -330,9 +331,9 @@ void GBelief::SetBeliefInPlayerCap(GPlayer* player, float cap)
 }
 
 // win1.41 00438c50 mac 100b2530 GBigForestInfo::GetMesh( const(void))
-uint32_t GBigForestInfo::GetMesh() const
+MeshId GBigForestInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 00438cb0 mac 100b33d0 GBigForestInfo::_dt(void)
@@ -352,7 +353,7 @@ bool MultiMapFixed::IsRepaired()
 }
 
 // win1.41 00438d80 mac 10570e90 MultiMapFixed::IsBuilt(void)
-bool MultiMapFixed::IsBuilt()
+bool32_tcorrect MultiMapFixed::IsBuilt()
 {
     return 0;
 }
@@ -445,7 +446,7 @@ uint32_t BigForest::SaveObject(LHOSFile& param_1, const MapCoords& param_2)
 }
 
 // win1.41 00439050 mac 100b30a0 BigForest::CallVirtualFunctionsForCreation(MapCoords const &)
-void BigForest::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void BigForest::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -474,13 +475,13 @@ bool BigForest::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 }
 
 // win1.41 00439470 mac 100b2840 BigForest::Save(GameOSFile &)
-bool BigForest::Save(GameOSFile& param_1)
+bool32_tcorrect BigForest::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 004394e0 mac 100b2760 BigForest::Load(GameOSFile &)
-bool BigForest::Load(GameOSFile& file)
+bool32_tcorrect BigForest::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -546,7 +547,7 @@ bool MobileStatic::IsSolidToNewAbode()
 }
 
 // win1.41 004396a0 mac 100b4460 MobileStatic::IsFunctional(void)
-bool MobileStatic::IsFunctional()
+bool32_tcorrect MobileStatic::IsFunctional()
 {
     return 0;
 }
@@ -635,7 +636,7 @@ bool Bonfire::ValidForPlaceInHand(GInterfaceStatus* param_1)
 }
 
 // win1.41 004397a0 mac 100b3d40 Bonfire::CanBecomeAPhysicsObject(void)
-bool Bonfire::CanBecomeAPhysicsObject()
+bool32_tcorrect Bonfire::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -675,7 +676,7 @@ Bonfire::~Bonfire()
 }
 
 // win1.41 00439840 mac 100b4c70 Bonfire::CallVirtualFunctionsForCreation(MapCoords const &)
-void Bonfire::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void Bonfire::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -686,13 +687,13 @@ uint32_t Bonfire::SaveObject(LHOSFile& param_1, const MapCoords& param_2)
 }
 
 // win1.41 00439990 mac 100b48d0 Bonfire::Save(GameOSFile &)
-bool Bonfire::Save(GameOSFile& param_1)
+bool32_tcorrect Bonfire::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00439a00 mac 100b4800 Bonfire::Load(GameOSFile &)
-bool Bonfire::Load(GameOSFile& param_1)
+bool32_tcorrect Bonfire::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -781,9 +782,9 @@ float BuildingSite::GetWoodValue()
 }
 
 // win1.41 0043c220 mac inlined StandardBuildingSite::GetResourcePosAndYAngle(unsigned int, unsigned int, float *)
-void StandardBuildingSite::GetResourcePosAndYAngle(uint32_t param_1, uint32_t param_2, float* param_3)
-{
-}
+// MapCoords StandardBuildingSite::GetResourcePosAndYAngle(uint32_t param_1, uint32_t param_2, float* param_3)
+// {
+// }
 
 // win1.41 0043c490 mac 100bb090 BuildingSite::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
 uint32_t BuildingSite::AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4, const MapCoords* param_5, int param_6)
@@ -822,13 +823,13 @@ bool32_t BuildingSite::ShouldIGetWood(Villager* param_1)
 }
 
 // win1.41 0043c830 mac 100ba480 BuildingSite::Save(GameOSFile &)
-bool BuildingSite::Save(GameOSFile& param_1)
+bool32_tcorrect BuildingSite::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0043cad0 mac 100b9cf0 BuildingSite::Load(GameOSFile &)
-bool BuildingSite::Load(GameOSFile& param_1)
+bool32_tcorrect BuildingSite::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -911,9 +912,9 @@ void CitadelBuildingSite::CreatePileWood()
 }
 
 // win1.41 0043d470 mac inlined CitadelBuildingSite::GetResourcePosAndYAngle(unsigned int, unsigned int, float *)
-void CitadelBuildingSite::GetResourcePosAndYAngle(uint32_t param_1, uint32_t param_2, float* param_3)
-{
-}
+// MapCoords CitadelBuildingSite::GetResourcePosAndYAngle(uint32_t param_1, uint32_t param_2, float* param_3)
+// {
+// }
 
 // win1.41 0043d500 mac 100b8830 CitadelBuildingSite::GetPileWood(MapCoords const &)
 Pot* CitadelBuildingSite::GetPileWood(const MapCoords* param_1)
@@ -933,13 +934,13 @@ void CitadelBuildingSite::RemovePotFromStructure(PotStructure* param_1)
 }
 
 // win1.41 0043d5e0 mac 100b8620 CitadelBuildingSite::Save(GameOSFile &)
-bool CitadelBuildingSite::Save(GameOSFile& param_1)
+bool32_tcorrect CitadelBuildingSite::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0043d620 mac 100b8580 CitadelBuildingSite::Load(GameOSFile &)
-bool CitadelBuildingSite::Load(GameOSFile& param_1)
+bool32_tcorrect CitadelBuildingSite::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -994,13 +995,13 @@ bool StandardBuildingSite::IsLinkedToThisBuildingSite(Pot* param_1)
 }
 
 // win1.41 0043d850 mac 100b7f60 StandardBuildingSite::Save(GameOSFile &)
-bool StandardBuildingSite::Save(GameOSFile& param_1)
+bool32_tcorrect StandardBuildingSite::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0043d890 mac 100b7ec0 StandardBuildingSite::Load(GameOSFile &)
-bool StandardBuildingSite::Load(GameOSFile& param_1)
+bool32_tcorrect StandardBuildingSite::Load(GameOSFile& file)
 {
     return 0;
 }

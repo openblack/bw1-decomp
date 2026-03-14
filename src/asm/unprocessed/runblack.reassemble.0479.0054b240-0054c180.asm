@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x00648ee0
 .extern _jmp_addr_0x0071d6d0
 .extern _jmp_addr_0x0078e9a0
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern ??3@YAXPAX@Z
 .extern _jmp_addr_0x007dee00
 .extern _jmp_addr_0x0082f3b0
@@ -97,7 +97,7 @@
                          mov.s              esi, ecx                                      // 0x0054b85b    8bf1
                          call               edi                                           // 0x0054b85d    ffd7
                          {disp32} fld       dword ptr [esi + 0x00000108]                  // 0x0054b85f    d98608010000
-                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x0054b865    d81d98a38a00
+                         {disp32} fcomp     dword ptr [__real@4@00000000000000000000]                   // 0x0054b865    d81d98a38a00
                          {disp32} mov       dword ptr [esi + 0x00000100], eax             // 0x0054b86b    898600010000
                          {disp8} mov        eax, dword ptr [esp + 0x14]                   // 0x0054b871    8b442414
                          {disp32} mov       dword ptr [esi + 0x00000104], eax             // 0x0054b875    898604010000
@@ -117,7 +117,7 @@
                          {disp8} mov        dword ptr [esp + 0x0c], 0x00000000            // 0x0054b8b2    c744240c00000000
                          {disp32} fmul      dword ptr [esi + 0x00000108]                  // 0x0054b8ba    d88e08010000
                          {disp8} fiadd      dword ptr [esp + 0x08]                        // 0x0054b8c0    da442408
-                         call               _jmp_addr_0x007a1400                          // 0x0054b8c4    e8375b2500
+                         call               __ftol                                        // 0x0054b8c4    e8375b2500
                          {disp32} mov       dword ptr [esi + 0x00000104], eax             // 0x0054b8c9    898604010000
                          call               edi                                           // 0x0054b8cf    ffd7
                          {disp32} mov       dword ptr [esi + 0x00000100], eax             // 0x0054b8d1    898600010000

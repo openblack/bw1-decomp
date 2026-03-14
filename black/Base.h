@@ -29,19 +29,31 @@ public:
     // Virtual functions
 
     // win1.41 004011b0 mac 101228f0 Base::Serialise(Archive&)
-    virtual void Serialise(Archive* param_1); /* 0x0 */
+    virtual void Serialise(Archive* param_1) {} /* 0x0 */
     // win1.41 00401210 mac 10082770 Base::~Base(void)
     virtual ~Base();
     // win1.41 004011c0 mac 1056ecc0 Base::Delete(int)
-    virtual void Delete();
+    virtual void Delete()
+    {
+        if (this)
+        {
+            delete this;
+        }
+    }
     // win1.41 004011d0 mac 1032b070 Base::ToBeDeleted(int)
-    virtual void ToBeDeleted(int param_1);
+    virtual void ToBeDeleted(int param_1)
+    {
+        Delete(/*param_1*/);
+    }
     // win1.41 004011e0 mac 1032b3d0 Base::Get3DSoundPos(LHPoint*)
-    virtual int Get3DSoundPos(LHPoint* pos); /* 0x10 */
+    virtual int Get3DSoundPos(LHPoint* pos) /* 0x10 */
+    {
+        return 0;
+    }
     // win1.41 004011f0 mac 1032cbf0 Base::CleanUpForSerialisation(void)
-    virtual void CleanUpForSerialisation();
+    virtual void CleanUpForSerialisation() {}
     // win1.41 00401200 mac 106fc7f0 Base::Dump(void)
-    virtual void Dump();
+    virtual void Dump() {}
 
     // Static methods
 

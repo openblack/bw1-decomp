@@ -4,7 +4,7 @@
 .extern rdata_bytes
 .extern data_bytes
 
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern _memmove
 .extern ??2@YAPAXI@Z
@@ -7029,7 +7029,7 @@ _jmp_addr_0x0089a4d0:    push               esi                                 
 .Lbl_addr_0x0089d90d:    fld                dword ptr [ebx + esi * 0x1]                    // 0x0089d90d    d90433
                          fmul               dword ptr [esi]                                // 0x0089d910    d80e
                          {disp32} fadd      dword ptr [rdata_bytes + 0xfd170]              // 0x0089d912    d80570619a00
-                         call               _jmp_addr_0x007a1400                           // 0x0089d918    e8e33af0ff
+                         call               __ftol                                         // 0x0089d918    e8e33af0ff
                          sub                eax, 0x00004000                                // 0x0089d91d    2d00400000
                          add                esi, 0x04                                      // 0x0089d922    83c604
                          mov                word ptr [edi], ax                             // 0x0089d925    668907

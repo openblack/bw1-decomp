@@ -36,15 +36,15 @@ public:
     // win1.41 0072c220 mac 10534190 MagicShield::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0072c3d0 mac 10531080 MagicShield::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0072c3f0 mac 10531020 MagicShield::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0072c210 mac 10534150 MagicShield::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0072c300 mac 10531370 MagicShield::Draw(void)
     virtual void Draw();
     // win1.41 0072c2a0 mac 10531420 MagicShield::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 0072c340 mac 10531220 MagicShield::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
     // win1.41 0072c320 mac 105312c0 MagicShield::SetDying(void)

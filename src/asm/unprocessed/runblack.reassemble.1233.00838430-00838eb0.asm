@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern ?ResetData@LHFile@@QAEIXZ
 .extern _jmp_addr_0x0046d720
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern @SetName__6LHFileFPCc@12
 .extern @Open__14LHReleasedFileF12LH_FILE_MODE@12
 .extern _jmp_addr_0x007bda20
@@ -577,7 +577,7 @@ _jmp_addr_0x00838a70:    push              ebx                                  
                          push              esi                                      // 0x00838a8a    56
                          {disp32} fmul     dword ptr [rdata_bytes + 0x87678]        // 0x00838a8b    d80d78069300
                          push              edi                                      // 0x00838a91    57
-                         call              _jmp_addr_0x007a1400                     // 0x00838a92    e86989f6ff
+                         call              __ftol                                   // 0x00838a92    e86989f6ff
                          mov.s             edi, eax                                 // 0x00838a97    8bf8
                          test              edi, edi                                 // 0x00838a99    85ff
                          {disp8} jge       .Lbl_addr_0x00838aa1                     // 0x00838a9b    7d04
@@ -588,7 +588,7 @@ _jmp_addr_0x00838a70:    push              ebx                                  
                          mov               edi, 0x0000003f                          // 0x00838aa6    bf3f000000
 .Lbl_addr_0x00838aab:    {disp8} fld       dword ptr [esp + 0x14]                   // 0x00838aab    d9442414
                          {disp32} fmul     dword ptr [rdata_bytes + 0x87678]        // 0x00838aaf    d80d78069300
-                         call              _jmp_addr_0x007a1400                     // 0x00838ab5    e84689f6ff
+                         call              __ftol                                   // 0x00838ab5    e84689f6ff
                          mov.s             esi, eax                                 // 0x00838aba    8bf0
                          test              esi, esi                                 // 0x00838abc    85f6
                          {disp8} jge       .Lbl_addr_0x00838ac4                     // 0x00838abe    7d04

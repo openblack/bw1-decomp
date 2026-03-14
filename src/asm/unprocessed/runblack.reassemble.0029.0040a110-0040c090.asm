@@ -14,7 +14,7 @@
 .extern ?unadjust@SetupThing@@SAMAAH0@Z
 .extern ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z
 .extern ?DrawBevBox@SetupThing@@SAXHHHHHHHK@Z
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern _wcscat
 .extern _wcscpy
@@ -94,7 +94,7 @@ _Drag__9SetupListFii:
                          {disp8} fdiv         dword ptr [esp + 0x24]                          // 0x0040a199    d8742424
                          {disp8} fmul         dword ptr [esp + 0x10]                          // 0x0040a19d    d84c2410
                          fadd                 st, st(1)                                       // 0x0040a1a1    d8c1
-                         call                 _jmp_addr_0x007a1400                            // 0x0040a1a3    e858723900
+                         call                 __ftol                                          // 0x0040a1a3    e858723900
                          {disp32} mov         ebp, dword ptr [esi + 0x0000028c]               // 0x0040a1a8    8bae8c020000
                          cmp.s                ebp, eax                                        // 0x0040a1ae    3be8
                          {disp8} mov          dword ptr [esp + 0x1c], eax                     // 0x0040a1b0    8944241c
@@ -106,7 +106,7 @@ _Drag__9SetupListFii:
                          {disp8} fdiv         dword ptr [esp + 0x24]                          // 0x0040a1c6    d8742424
                          {disp8} fmul         dword ptr [esp + 0x10]                          // 0x0040a1ca    d84c2410
                          fadd                 st, st(1)                                       // 0x0040a1ce    d8c1
-                         call                 _jmp_addr_0x007a1400                            // 0x0040a1d0    e82b723900
+                         call                 __ftol                                          // 0x0040a1d0    e82b723900
                          fstp                 st(0)                                           // 0x0040a1d5    ddd8
                          cmp.s                ebp, eax                                        // 0x0040a1d7    3be8
                          {disp8} jge          .Lbl_addr_0x0040a206                            // 0x0040a1d9    7d2b
@@ -117,7 +117,7 @@ _Drag__9SetupListFii:
                          {disp8} fmul         dword ptr [esp + 0x24]                          // 0x0040a1e9    d84c2424
                          {disp8} fdiv         dword ptr [esp + 0x10]                          // 0x0040a1ed    d8742410
                          {disp8} fadd         dword ptr [esp + 0x18]                          // 0x0040a1f1    d8442418
-                         call                 _jmp_addr_0x007a1400                            // 0x0040a1f5    e806723900
+                         call                 __ftol                                          // 0x0040a1f5    e806723900
                          {disp32} mov         dword ptr [esi + 0x0000027c], eax               // 0x0040a1fa    89867c020000
                          {disp8} jmp          .Lbl_addr_0x0040a227                            // 0x0040a200    eb25
 .Lbl_addr_0x0040a202:    fstp                 st(0)                                           // 0x0040a202    ddd8
@@ -837,7 +837,7 @@ _Draw__9SetupListFbb:
                          {disp8} fild         dword ptr [esp + 0x48]                          // 0x0040aa49    db442448
                          fdiv                 st, st(2)                                       // 0x0040aa4d    d8f2
                          fmul                 st, st(1)                                       // 0x0040aa4f    d8c9
-                         call                 _jmp_addr_0x007a1400                            // 0x0040aa51    e8aa693900
+                         call                 __ftol                                          // 0x0040aa51    e8aa693900
                          {disp8} mov          dword ptr [esp + 0x48], eax                     // 0x0040aa56    89442448
                          mov.s                eax, edi                                        // 0x0040aa5a    8bc7
                          sub.s                eax, ebp                                        // 0x0040aa5c    2bc5
@@ -846,7 +846,7 @@ _Draw__9SetupListFbb:
                          {disp8} fild         dword ptr [esp + 0x44]                          // 0x0040aa66    db442444
                          fdiv                 st, st(2)                                       // 0x0040aa6a    d8f2
                          fmul                 st, st(1)                                       // 0x0040aa6c    d8c9
-                         call                 _jmp_addr_0x007a1400                            // 0x0040aa6e    e88d693900
+                         call                 __ftol                                          // 0x0040aa6e    e88d693900
                          fstp                 st(0)                                           // 0x0040aa73    ddd8
                          {disp32} mov         cl, byte ptr [esi + 0x00000290]                 // 0x0040aa75    8a8e90020000
                          fstp                 st(0)                                           // 0x0040aa7b    ddd8
@@ -966,7 +966,7 @@ _Draw__9SetupListFbb:
                          push                 eax                                             // 0x0040abb0    50
                          call                 @DrawText__13GatheringTextFPwfffffffffP9LH3DColoriii@64                            // 0x0040abb1    e8fa694200
                          {disp32} fadd        dword ptr [rdata_bytes + 0x235c]                // 0x0040abb6    d8055cb38a00
-                         call                 _jmp_addr_0x007a1400                            // 0x0040abbc    e83f683900
+                         call                 __ftol                                          // 0x0040abbc    e83f683900
                          {disp32} mov         ecx, dword ptr [esi + 0x0000025c]               // 0x0040abc1    8b8e5c020000
                          mov                  dword ptr [ecx + edi * 0x4], eax                // 0x0040abc7    8904b9
                          {disp32} mov         edx, dword ptr [esi + 0x0000025c]               // 0x0040abca    8b965c020000
@@ -1047,7 +1047,7 @@ _Draw__9SetupListFbb:
                          {disp32} mov         ecx, dword ptr [data_bytes + 0x286d2c]          // 0x0040accb    8b0d2ccdc400
                          call                 @DrawText__13GatheringTextFPwfffffffffP9LH3DColoriii@64                            // 0x0040acd1    e8da684200
                          {disp32} fadd        dword ptr [rdata_bytes + 0x235c]                // 0x0040acd6    d8055cb38a00
-                         call                 _jmp_addr_0x007a1400                            // 0x0040acdc    e81f673900
+                         call                 __ftol                                          // 0x0040acdc    e81f673900
                          {disp32} mov         edx, dword ptr [esi + 0x0000025c]               // 0x0040ace1    8b965c020000
                          mov                  dword ptr [edx + edi * 0x4], eax                // 0x0040ace7    8904ba
                          {disp32} mov         eax, dword ptr [esi + 0x0000025c]               // 0x0040acea    8b865c020000

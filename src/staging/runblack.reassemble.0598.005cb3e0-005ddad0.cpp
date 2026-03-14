@@ -125,13 +125,13 @@ void GInterfaceStatus::SetActive(int param_1)
 }
 
 // win1.41 005d0490 mac 103585e0 GInterface::Save(GameOSFile &)
-bool GInterface::Save(GameOSFile& file)
+bool32_tcorrect GInterface::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005d04d0 mac 10358550 GInterface::Load(GameOSFile &)
-bool GInterface::Load(GameOSFile& file)
+bool32_tcorrect GInterface::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -257,13 +257,13 @@ void GInterfaceStatus::UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2)
 }
 
 // win1.41 005dca50 mac 1036c810 GInterfaceStatus::Save(GameOSFile &)
-bool GInterfaceStatus::Save(GameOSFile& file)
+bool32_tcorrect GInterfaceStatus::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005dcdc0 mac 1036c160 GInterfaceStatus::Load(GameOSFile &)
-bool GInterfaceStatus::Load(GameOSFile& file)
+bool32_tcorrect GInterfaceStatus::Load(GameOSFile& file)
 {
     return 0;
 }

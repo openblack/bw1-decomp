@@ -104,13 +104,13 @@ bool Villager::IsVillager(Creature* param_1)
 }
 
 // win1.41 0055cac0 mac 10478e10 Villager::IsMaleVillager(void)
-bool Villager::IsMaleVillager()
+bool32_tcorrect Villager::IsMaleVillager()
 {
     return 0;
 }
 
 // win1.41 0055cae0 mac 1033bc40 Villager::IsFemaleVillager(void)
-bool Villager::IsFemaleVillager()
+bool32_tcorrect Villager::IsFemaleVillager()
 {
     return 0;
 }

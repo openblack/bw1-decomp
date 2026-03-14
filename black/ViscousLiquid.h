@@ -22,6 +22,13 @@ struct FragVertex
     FragVertex();
 };
 
+struct FragTriangle
+{
+  uint32_t field_0x0;
+  FragVertex vertices[0x3];
+  uint8_t field_0x40[0x18];
+};
+
 struct FragPrimitive
 {
     LH3DPrimitive* lh3d_primitive; /* 0x0 */
@@ -50,8 +57,11 @@ struct FragMesh
 
     // Non-virtual methods
 
+    // win1.41 0076d680 mac 1015e1b0 WriteToFile__8FragMeshFR10GameOSFile
+    void WriteToFile(GameOSFile& file);
+
     // win1.41 007f70e0 mac 1015e8f0 FragMesh::_dt(void)
-    void _dt();
+    ~FragMesh();
 };
 
 #else // __cplusplus

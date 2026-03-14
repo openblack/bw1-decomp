@@ -18,8 +18,11 @@ zlib_c_files = {
     "zutil",
 }
 
-def configure_objdiff(validating: bool):
-    subprocess.run(["cmake", "--workflow", "--preset", "objdiff"], check=True)
+def configure_objdiff(validating: bool, fresh: bool):
+    cmake_args = ["cmake", "--workflow", "--preset", "objdiff"]
+    if fresh:
+        cmake_args.append("--fresh")
+    subprocess.run(cmake_args, check=True)
 
     current_dir = Path.cwd()
     cmake_build_dir = current_dir / "cmake-build-presets/objdiff"
@@ -140,5 +143,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--validate", action="store_true",
                         help="Skip validation of staging files")
+    parser.add_argument("--fresh", action="store_true",
+                        help="Force cmake to make a clean re-build")
     args = parser.parse_args()
-    exit(configure_objdiff(validating=args.validate))
+    exit(configure_objdiff(validating=args.validate, fresh=args.fresh))

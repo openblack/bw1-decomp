@@ -21,7 +21,7 @@ const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__6Object = {
 
 float __fastcall GetXAngle__6ObjectFv(struct Object* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x004024f0    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");              // 0x004024f0    d90598a38a00
     asm("ret");                                                         // 0x004024f6    c3
     __builtin_unreachable();
 }
@@ -35,7 +35,7 @@ float __fastcall GetYAngle__6ObjectFv(struct Object* this)
 
 float __fastcall GetZAngle__6ObjectFv(struct Object* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x00402510    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");              // 0x00402510    d90598a38a00
     asm("ret");                                                         // 0x00402516    c3
     __builtin_unreachable();
 }
@@ -89,14 +89,14 @@ struct Game3DObject* __fastcall Get3DObjectForPSys__6ObjectFv(struct Object* thi
 
 float __fastcall GetSpotEffectPower__6ObjectFv(const struct Object* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x00402590    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");              // 0x00402590    d90598a38a00
     asm("ret");                                                         // 0x00402596    c3
     __builtin_unreachable();
 }
 
 float __fastcall GetHoldYRotate__6ObjectFv(struct Object* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x004025a0    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");              // 0x004025a0    d90598a38a00
     asm("ret");                                                         // 0x004025a6    c3
     __builtin_unreachable();
 }
@@ -143,7 +143,7 @@ bool __fastcall IsAlive__6ObjectFv(struct Object* this)
     asm("mov.s              esi, ecx");                                 // 0x00402611    8bf1
     asm("mov                eax, dword ptr [esi]");                     // 0x00402613    8b06
     asm("call               dword ptr [eax + 0x11c]");                  // 0x00402615    ff901c010000
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");              // 0x0040261b    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");              // 0x0040261b    d81d98a38a00
     asm("fnstsw             ax");                                       // 0x00402621    dfe0
     asm("test               ah, 0x41");                                 // 0x00402623    f6c441
     asm("{disp8} jne        LAB__addr_0x0040263a");                     // 0x00402626    7512
@@ -228,7 +228,7 @@ float __fastcall GetFoodValue__6ObjectF9FOOD_TYPE(struct Object* this, const voi
     asm("pop                esi");                                      // 0x004026e7    5e
     asm("ret                0x0004");                                   // 0x004026e8    c20400
     asm("LAB__addr_0x004026eb:");
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x004026eb    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");              // 0x004026eb    d90598a38a00
     asm("pop                esi");                                      // 0x004026f1    5e
     asm("ret                0x0004");                                   // 0x004026f2    c20400
     __builtin_unreachable();
@@ -626,7 +626,7 @@ uint32_t __fastcall GetCarriedTreeType__6ObjectFv(struct Object* this)
 
 float __fastcall GetFacingPitch__6ObjectFv(struct Object* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");              // 0x00402b00    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");              // 0x00402b00    d90598a38a00
     asm("ret");                                                         // 0x00402b06    c3
     __builtin_unreachable();
 }

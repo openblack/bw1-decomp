@@ -7,7 +7,7 @@ bool PlannedAbode::IsCivic()
 }
 
 // win1.41 004061a0 mac 104333f0 PlannedAbode::IsWonder(void)
-bool PlannedAbode::IsWonder()
+bool32_tcorrect PlannedAbode::IsWonder()
 {
     return false;
 }

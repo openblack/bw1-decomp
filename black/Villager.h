@@ -129,13 +129,13 @@ public:
     // win1.41 007564d0 mac 10565060 Villager::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
     virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4, const MapCoords* param_5, int param_6);
     // win1.41 00751cf0 mac 100199f0 Villager::IsFunctional(void)
-    virtual bool IsFunctional();
+    virtual bool32_tcorrect IsFunctional();
     // win1.41 0055cb30 mac 10571f80 Villager::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00754580 mac 10568980 Villager::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00754280 mac 10568d70 Villager::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0055cb20 mac 10571f40 Villager::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00754870 mac 10568900 Villager::ResolveLoad(void)
@@ -195,9 +195,9 @@ public:
     // win1.41 0055cb10 mac 10148200 Villager::GetDeathReason(void)
     virtual DEATH_REASON GetDeathReason();
     // win1.41 0055cac0 mac 10478e10 Villager::IsMaleVillager(void)
-    virtual bool IsMaleVillager();
+    virtual bool32_tcorrect IsMaleVillager();
     // win1.41 0055cae0 mac 1033bc40 Villager::IsFemaleVillager(void)
-    virtual bool IsFemaleVillager();
+    virtual bool32_tcorrect IsFemaleVillager();
     // win1.41 0055cb00 mac 1009a450 Villager::IsAChild(void)
     virtual bool IsAChild();
     // win1.41 007562c0 mac 105652e0 Villager::SetSkeleton(int)
@@ -273,7 +273,7 @@ public:
     // win1.41 005f0a60 mac 103846d0 Villager::EndPhysics(PhysicsObject *, bool)
     virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
     // win1.41 007564c0 mac 10565140 Villager::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 00750ab0 mac 1056fb10 Villager::HasSunk(void)
     virtual bool HasSunk();
     // win1.41 0075b400 mac 10578430 Villager::IsFireMan(void)
@@ -1818,9 +1818,9 @@ public:
     // win1.41 00756730 mac 10563970 MissionaryControl::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007568a0 mac 105646b0 MissionaryControl::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 007568e0 mac 10564610 MissionaryControl::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00756720 mac 10563930 MissionaryControl::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00756920 mac 10564510 MissionaryControl::GetImpressiveValue(Living *, Reaction *)

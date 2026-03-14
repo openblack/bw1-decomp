@@ -35,7 +35,7 @@ bool Abode::IsRepaired()
 }
 
 // win1.41 004016c0 mac 10055bb0 Abode::IsBuilt(void)
-bool Abode::IsBuilt()
+bool32_tcorrect Abode::IsBuilt()
 {
     return false;
 }
@@ -47,7 +47,7 @@ bool Abode::CausesTownEmergencyIfDamaged()
 }
 
 // win1.41 00401700 mac 105756c0 Abode::GetDestructionMesh(void)
-LH3DMesh* Abode::GetDestructionMesh()
+FragMesh* Abode::GetDestructionMesh()
 {
     return destruction_mesh;
 }
@@ -88,11 +88,10 @@ uint32_t Abode::GetOrigin()
     return 1;
 }
 
-// win1.41 00401770 mac 1000c2b0 Abode::GetArrivePos(void)
-MapCoords* Abode::GetArrivePos(MapCoords* coords)
-{
-    return NULL;
-}
+// // win1.41 00401770 mac 1000c2b0 Abode::GetArrivePos(void)
+// MapCoords Abode::GetArrivePos()
+// {
+// }
 
 // win1.41 00401790 mac 10134300 Abode::IsHouse(void)
 bool32_t Abode::IsHouse()

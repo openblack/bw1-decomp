@@ -37,9 +37,9 @@ public:
     // win1.41 00722fa0 mac 1051ac90 SpellDispenser::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00722e80 mac 1051acf0 SpellDispenser::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00722d50 mac 1051aeb0 SpellDispenser::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 007226f0 mac 1051aa40 SpellDispenser::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007226d0 mac 1051a9b0 SpellDispenser::IsSpellDispenser(void)
@@ -53,7 +53,7 @@ public:
     // win1.41 00722940 mac 1051b6d0 SpellDispenser::Draw(void)
     virtual void Draw();
     // win1.41 007227d0 mac 1051ba80 SpellDispenser::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 007226e0 mac 1051a9f0 SpellDispenser::IsSpellSeedReturnPoint( const(void))
     virtual bool IsSpellSeedReturnPoint();
 };

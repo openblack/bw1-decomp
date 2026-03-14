@@ -185,7 +185,7 @@ struct GPlannedAbodeInfo* __cdecl GetInfo__12PlannedAbodeFv(void)
 
 bool32_t __fastcall FUN_004056f0__12PlannedAbodeFP4Town(struct PlannedAbode* this, const void* edx, int param_1)
 {
-    asm("call               ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ");                          // 0x004056f0    e8dbffffff
+    asm("call               ?GetInfo@PlannedAbode@@SAPAVGAbodeInfo@@XZ");                          // 0x004056f0    e8dbffffff
     asm("{disp32} mov       eax, dword ptr [eax + 0x00000120]");             // 0x004056f5    8b8020010000
     asm("and                eax, dword ptr [esp + 0x04]");                   // 0x004056fb    23442404
     asm("neg                eax");                                           // 0x004056ff    f7d8
@@ -215,7 +215,7 @@ struct MultiMapFixed* __fastcall CreatePlanned__12PlannedAbodeFf(struct PlannedM
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x00405732    8d4e14
     asm("push               ecx");                                           // 0x00405735    51
     asm("mov.s              ecx, esi");                                      // 0x00405736    8bce
-    asm("call               ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ");                          // 0x00405738    e893ffffff
+    asm("call               ?GetInfo@PlannedAbode@@SAPAVGAbodeInfo@@XZ");                          // 0x00405738    e893ffffff
     asm("mov.s              ecx, eax");                                      // 0x0040573d    8bc8
     asm("call               ?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z");  // 0x0040573f    e8ccf3ffff
     asm("test               eax, eax");                                      // 0x00405744    85c0
@@ -261,7 +261,7 @@ struct MultiMapFixed* __fastcall CreatePlannedNoFixedCheck__12PlannedAbodeFf(str
     asm("push               eax");                                           // 0x0040579e    50
     asm("push               edi");                                           // 0x0040579f    57
     asm("mov.s              ecx, esi");                                      // 0x004057a0    8bce
-    asm("call               ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ");                          // 0x004057a2    e829ffffff
+    asm("call               ?GetInfo@PlannedAbode@@SAPAVGAbodeInfo@@XZ");                          // 0x004057a2    e829ffffff
     asm("push               eax");                                           // 0x004057a7    50
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x004057a8    8d4e14
     asm("push               ecx");                                           // 0x004057ab    51
@@ -305,7 +305,7 @@ bool32_t __fastcall IsOkToBuild__12PlannedAbodeFv(struct PlannedAbode* this)
     asm("{disp8} mov        eax, dword ptr [esi + 0x28]");                   // 0x004057f4    8b4628
     asm("push               edi");                                           // 0x004057f7    57
     asm("{disp8} mov        dword ptr [esp + 0x08], eax");                   // 0x004057f8    89442408
-    asm("call               ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ");                          // 0x004057fc    e8cffeffff
+    asm("call               ?GetInfo@PlannedAbode@@SAPAVGAbodeInfo@@XZ");                          // 0x004057fc    e8cffeffff
     asm("mov                edx, dword ptr [esi]");                          // 0x00405801    8b16
     asm("mov.s              ecx, esi");                                      // 0x00405803    8bce
     asm("mov.s              edi, eax");                                      // 0x00405805    8bf8

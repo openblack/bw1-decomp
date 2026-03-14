@@ -31,7 +31,7 @@ public:
     // win1.41 0052dce0 mac 100e3150 GSingleMapFixedInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 0052dcd0 mac 100c3840 GSingleMapFixedInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh() const;
+    virtual MeshId GetMesh() const;
 };
 
 #else // __cplusplus

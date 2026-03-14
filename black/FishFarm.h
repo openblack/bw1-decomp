@@ -68,9 +68,9 @@ public:
     // win1.41 0052c5b0 mac 100dd9a0 FishFarm::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0052d4f0 mac 100daf80 FishFarm::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0052d3b0 mac 100db1a0 FishFarm::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0052c5a0 mac 100dd960 FishFarm::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0052c490 mac inlined FishFarm::GetArrivePos(MapCoords *)
@@ -96,13 +96,13 @@ public:
     // win1.41 0052c540 mac 100dd7b0 FishFarm::CanBeExaminedByCreature(Creature *)
     virtual bool CanBeExaminedByCreature(Creature* param_1);
     // win1.41 0052c570 mac 100dd8a0 FishFarm::IsBeingBuilt(Creature *)
-    virtual bool IsBeingBuilt(Creature* param_1);
+    virtual bool32_t IsBeingBuilt(Creature* param_1);
     // win1.41 0052c580 mac 100dd8e0 FishFarm::NeedsRepair(Creature *)
-    virtual bool NeedsRepair(Creature* param_1);
+    virtual bool32_t NeedsRepair(Creature* param_1);
     // win1.41 0052c4e0 mac 100dd5e0 FishFarm::CanBePoodOn(Creature *)
     virtual bool CanBePoodOn(Creature* param_1);
     // win1.41 0052cad0 mac 1009a360 FishFarm::GetMapChild(MapCell const &)
-    virtual Object* GetMapChild(const MapCell* param_1);
+    virtual Object* GetMapChild(const MapCell& param_1);
     // win1.41 0052cb70 mac 100dc1a0 FishFarm::SetMapChild(Object *, MapCell *)
     virtual void SetMapChild(Object* param_1, MapCell* param_2);
     // win1.41 0052ca10 mac 100dc3c0 FishFarm::InsertMapObject(void)
@@ -120,7 +120,7 @@ public:
     // win1.41 0052c840 mac 100dc810 FishFarm::GetHeightForHandAboveInteractObject(void)
     virtual float GetHeightForHandAboveInteractObject();
     // win1.41 0052cc10 mac 100dbd10 FishFarm::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 0052d1e0 mac 100626c0 FishFarm::GetFoodValue(FOOD_TYPE)
     virtual float GetFoodValue(FOOD_TYPE param_1);
     // win1.41 0052d760 mac 100dac50 FishFarm::GetResourceType(void)

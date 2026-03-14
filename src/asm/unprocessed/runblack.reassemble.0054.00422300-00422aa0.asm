@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x0063b5d0
 .extern ?GetCommandAsText@GSetup@@SAPADW4SCRIPT_FEATURE_COMMANDS@@@Z
 .extern ?WriteToFile@GSetup@@SAIPAXAAVLHOSFile@@0K@Z
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern _sprintf
 .extern __strcmpi
@@ -164,7 +164,7 @@ start_0x00422300_0x00422aa0:
                          call              dword ptr [eax + 0x40]                        // 0x00422481    ff5040
                          xor.s             edi, edi                                      // 0x00422484    33ff
 .Lbl_addr_0x00422486:    test              edi, edi                                      // 0x00422486    85ff
-                         {disp32} fld      dword ptr [_rdata_float0p0]                   // 0x00422488    d90598a38a00
+                         {disp32} fld      dword ptr [__real@4@00000000000000000000]                   // 0x00422488    d90598a38a00
                          {disp8} mov       dword ptr [esp + 0x14], 0x41700000            // 0x0042248e    c744241400007041
                          {disp8} jne       .Lbl_addr_0x004224a0                          // 0x00422496    7508
                          {disp8} mov       dword ptr [esp + 0x14], 0xc1700000            // 0x00422498    c7442414000070c1
@@ -372,10 +372,10 @@ _jmp_addr_0x00422600:    push              ebx                                  
                          call              dword ptr [eax + 0x508]                       // 0x004226ae    ff9008050000
                          {disp8} fld       dword ptr [esp + 0x0c]                        // 0x004226b4    d944240c
                          {disp32} fmul     dword ptr [__real@447a0000]                   // 0x004226b8    d80d28b28a00
-                         call              _jmp_addr_0x007a1400                          // 0x004226be    e83ded3700
+                         call              __ftol                                        // 0x004226be    e83ded3700
                          {disp32} fmul     dword ptr [__real@447a0000]                   // 0x004226c3    d80d28b28a00
                          push              eax                                           // 0x004226c9    50
-                         call              _jmp_addr_0x007a1400                          // 0x004226ca    e831ed3700
+                         call              __ftol                                        // 0x004226ca    e831ed3700
                          push              eax                                           // 0x004226cf    50
                          {disp32} lea      ecx, dword ptr [esp + 0x0000015c]             // 0x004226d0    8d8c245c010000
                          push              ecx                                           // 0x004226d7    51

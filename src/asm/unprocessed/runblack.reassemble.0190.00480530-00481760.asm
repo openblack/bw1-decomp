@@ -27,7 +27,7 @@
 .extern ?LocalRand@GRand@@SAIJ@Z
 .extern _jmp_addr_0x007120e0
 .extern _jmp_addr_0x00712330
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern ___RTDynamicCast
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
@@ -1138,7 +1138,7 @@ _jmp_addr_0x00481160:    push               esi                                 
 .Lbl_addr_0x0048118a:    xor.s              eax, eax                                 // 0x0048118a    33c0
                          pop                esi                                      // 0x0048118c    5e
                          ret                0x0004                                   // 0x0048118d    c20400
-_jmp_addr_0x00481190:    {disp32} fld       dword ptr [_rdata_float0p0]              // 0x00481190    d90598a38a00
+_jmp_addr_0x00481190:    {disp32} fld       dword ptr [__real@4@00000000000000000000]              // 0x00481190    d90598a38a00
                          ret                0x0004                                   // 0x00481196    c20400
                          nop                                                         // 0x00481199    90
                          nop                                                         // 0x0048119a    90
@@ -1435,7 +1435,7 @@ _jmp_addr_0x00481410:    {disp32} mov       eax, dword ptr [data_bytes + 0x29e20
                          {disp8} fstp       dword ptr [esp + 0x44]                   // 0x00481506    d95c2444
                          {disp32} fld       dword ptr [esi + 0x0000009c]             // 0x0048150a    d9869c000000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x26134]        // 0x00481510    d80d34f18c00
-                         call               _jmp_addr_0x007a1400                     // 0x00481516    e8e5fe3100
+                         call               __ftol                                   // 0x00481516    e8e5fe3100
                          mov.s              edi, eax                                 // 0x0048151b    8bf8
                          push               0x6                                      // 0x0048151d    6a06
                          shl                edi, 0x18                                // 0x0048151f    c1e718
@@ -1493,7 +1493,7 @@ _jmp_addr_0x00481410:    {disp32} mov       eax, dword ptr [data_bytes + 0x29e20
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2612c]        // 0x004815df    d80d2cf18c00
                          {disp8} mov        dword ptr [esp + 0x34], 0x00000000       // 0x004815e5    c744243400000000
                          xor.s              ebp, ebp                                 // 0x004815ed    33ed
-                         call               _jmp_addr_0x007a1400                     // 0x004815ef    e80cfe3100
+                         call               __ftol                                   // 0x004815ef    e80cfe3100
                          {disp8} mov        edi, dword ptr [esp + 0x1c]              // 0x004815f4    8b7c241c
                          mov.s              ebx, eax                                 // 0x004815f8    8bd8
                          shl                ebx, 0x18                                // 0x004815fa    c1e318

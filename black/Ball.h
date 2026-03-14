@@ -62,9 +62,9 @@ public:
     // win1.41 00435ad0 mac 100affd0 Ball::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00436260 mac 100b0080 Ball::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00436110 mac 100b0260 Ball::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00435ac0 mac 100affa0 Ball::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00435ab0 mac 100aff50 Ball::CanBePickedUpByCreature(Creature *)

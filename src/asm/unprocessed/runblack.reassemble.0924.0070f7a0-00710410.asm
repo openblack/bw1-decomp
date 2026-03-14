@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x004298c0
 .extern _jmp_addr_0x004298f0
 .extern _jmp_addr_0x00429910
-.extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
+.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
 .extern @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20
 .extern _jmp_addr_0x0042a280
 .extern @__ct__9MapCoordsFRC7LHPoint@12
@@ -31,7 +31,7 @@
 .extern _jmp_addr_0x0071a640
 .extern ?Create@SoundTag@@SAPAV1@PAVGameThingWithPos@@K_NKKHHW4AUDIO_SFX_BANK_TYPE@@H@Z
 .extern _jmp_addr_0x0071ebe0
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern _atexit
 
 .globl _jmp_addr_0x0070f8e0
@@ -138,7 +138,7 @@ _globl_ct_0x0070f7d0:    {disp32} jmp     .Lbl_addr_0x0070f7e0                  
                          {disp8} mov      dword ptr [esp + 0x5c], eax                   // 0x0070f8ac    8944245c
                          {disp8} mov      dword ptr [esp + 0x2c], edi                   // 0x0070f8b0    897c242c
                          {disp8} mov      dword ptr [esp + 0x30], 0x00000000            // 0x0070f8b4    c744243000000000
-                         call             @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12                          // 0x0070f8bc    e86fa5d1ff
+                         call             ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0070f8bc    e86fa5d1ff
                          {disp8} lea      ecx, dword ptr [esp + 0x20]                   // 0x0070f8c1    8d4c2420
                          call             dword ptr [rdata_bytes + 0x758]               // 0x0070f8c5    ff1558978a00
                          pop              edi                                           // 0x0070f8cb    5f
@@ -202,7 +202,7 @@ _jmp_addr_0x0070f8e0:    {disp8} mov      ecx, dword ptr [esp + 0x04]           
 .Lbl_addr_0x0070f98a:    {disp8} lea      eax, dword ptr [esp + 0x08]                   // 0x0070f98a    8d442408
                          push             eax                                           // 0x0070f98e    50
                          {disp8} mov      dword ptr [esp + 0x18], 0x00000000            // 0x0070f98f    c744241800000000
-                         call             @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12                          // 0x0070f997    e894a4d1ff
+                         call             ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0070f997    e894a4d1ff
                          {disp8} lea      ecx, dword ptr [esp + 0x08]                   // 0x0070f99c    8d4c2408
                          call             dword ptr [rdata_bytes + 0x758]               // 0x0070f9a0    ff1558978a00
 .Lbl_addr_0x0070f9a6:    pop              edi                                           // 0x0070f9a6    5f
@@ -858,7 +858,7 @@ _jmp_addr_0x0070f8e0:    {disp8} mov      ecx, dword ptr [esp + 0x04]           
                          push             esi                                           // 0x0071007e    56
                          {disp32} mov     esi, dword ptr [ecx + 0x00250090]             // 0x0071007f    8bb190002500
                          push             0x6                                           // 0x00710085    6a06
-                         call             _jmp_addr_0x007a1400                          // 0x00710087    e874130900
+                         call             __ftol                                        // 0x00710087    e874130900
                          {disp32} mov     edx, dword ptr [esi + 0x00000098]             // 0x0071008c    8b9698000000
                          {disp32} mov     ecx, dword ptr [_script_dll]                  // 0x00710092    8b0d105cd900
                          cmp.s            edx, eax                                      // 0x00710098    3bd0

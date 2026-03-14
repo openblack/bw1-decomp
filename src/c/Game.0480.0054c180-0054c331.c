@@ -36,7 +36,7 @@ void __fastcall StartGame__5GGameFv(struct GGame* this)
     asm("                         {disp32} mov       dword ptr [data_bytes + 0x30a6e8], ebx");        // 0x0054c1f1    891de806cd00
     asm("                         call               edi");                                           // 0x0054c1f7    ffd7
     asm("                         {disp32} fld       dword ptr [esi + 0x00205e70]");                  // 0x0054c1f9    d986705e2000
-    asm("                         {disp32} fcomp     dword ptr [_rdata_float0p0]     ");              // 0x0054c1ff    d81d98a38a00
+    asm("                         {disp32} fcomp     dword ptr [__real@4@00000000000000000000]     ");              // 0x0054c1ff    d81d98a38a00
     asm("                         {disp32} mov       dword ptr [esi + 0x00205e68], eax");             // 0x0054c205    8986685e2000
     asm("                         {disp32} mov       dword ptr [esi + 0x00205e6c], ebx");             // 0x0054c20b    899e6c5e2000
     asm("                         fnstsw             ax");                                            // 0x0054c211    dfe0
@@ -54,7 +54,7 @@ void __fastcall StartGame__5GGameFv(struct GGame* this)
     asm("                         {disp8} mov        dword ptr [esp + 0x10], ebx");                   // 0x0054c242    895c2410
     asm("                         {disp32} fmul      dword ptr [esi + 0x00205e70]");                  // 0x0054c246    d88e705e2000
     asm("                         {disp8} fiadd      dword ptr [esp + 0x0c]");                        // 0x0054c24c    da44240c
-    asm("                         call               _jmp_addr_0x007a1400");                          // 0x0054c250    e8ab512500
+    asm("                         call               __ftol");                                        // 0x0054c250    e8ab512500
     asm("                         {disp32} mov       dword ptr [esi + 0x00205e6c], eax");             // 0x0054c255    89866c5e2000
     asm("                         call               edi");                                           // 0x0054c25b    ffd7
     asm("                         {disp32} mov       dword ptr [esi + 0x00205e68], eax");             // 0x0054c25d    8986685e2000
@@ -73,7 +73,7 @@ void __fastcall StartGame__5GGameFv(struct GGame* this)
     asm("                         {disp8} mov        dword ptr [esp + 0x18], ebx");                   // 0x0054c29d    895c2418
     asm("                         {disp32} fmul      dword ptr [esi + 0x00205e70]");                  // 0x0054c2a1    d88e705e2000
     asm("                         {disp8} fiadd      dword ptr [esp + 0x14]");                        // 0x0054c2a7    da442414
-    asm("                         call               _jmp_addr_0x007a1400");                          // 0x0054c2ab    e850512500
+    asm("                         call               __ftol");                                        // 0x0054c2ab    e850512500
     asm("                         {disp32} mov       dword ptr [esi + 0x00205e6c], eax");             // 0x0054c2b0    89866c5e2000
     asm("                         call               edi");                                           // 0x0054c2b6    ffd7
     asm("                         {disp32} mov       dword ptr [esi + 0x00205e68], eax");             // 0x0054c2b8    8986685e2000
@@ -103,7 +103,7 @@ void __fastcall FUN_0054c2e0(struct GGame* this)
     asm("{disp8} mov        dword ptr [esp + 0x08], eax");                   // 0x0054c30a    89442408
     asm("{disp32} fmul      dword ptr [data_bytes + 0x30dc2c]");             // 0x0054c30e    d80d2c3ccd00
     asm("{disp8} fiadd      dword ptr [esp + 0x04]");                        // 0x0054c314    da442404
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0054c318    e8e3502500
+    asm("call               __ftol");                                        // 0x0054c318    e8e3502500
     asm("{disp32} mov       dword ptr [esi + 0x00205d3c], eax");             // 0x0054c31d    89863c5d2000
     asm("pop                esi");                                           // 0x0054c323    5e
     asm("add                esp, 0x08");                                     // 0x0054c324    83c408

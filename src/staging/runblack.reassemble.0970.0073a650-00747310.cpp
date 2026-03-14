@@ -241,13 +241,13 @@ void Town::AssignForestsToTown()
 }
 
 // win1.41 0073ed30 mac 1054c770 Town::Save(GameOSFile &)
-bool Town::Save(GameOSFile& file)
+bool32_tcorrect Town::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0073f450 mac 1054aa80 Town::Load(GameOSFile &)
-bool Town::Load(GameOSFile& file)
+bool32_tcorrect Town::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -348,7 +348,7 @@ TownCentre* TownCentre::Create(const MapCoords* coords, const GAbodeInfo* info, 
 }
 
 // win1.41 00743cf0 mac 1055b3c0 TownCentre::CallVirtualFunctionsForCreation(MapCoords const &)
-void TownCentre::CallVirtualFunctionsForCreation(const MapCoords* coords)
+void TownCentre::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 }
 
@@ -441,13 +441,13 @@ void TownCentre::DrawAll()
 }
 
 // win1.41 00744830 mac 10559e60 TownCentre::Save(GameOSFile &)
-bool TownCentre::Save(GameOSFile& file)
+bool32_tcorrect TownCentre::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00744880 mac 10559dc0 TownCentre::Load(GameOSFile &)
-bool TownCentre::Load(GameOSFile& file)
+bool32_tcorrect TownCentre::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -541,7 +541,7 @@ void TownDesireFlags::Draw()
 }
 
 // win1.41 00746dc0 mac 1055d830 TownDesireFlags::CallVirtualFunctionsForCreation(MapCoords const &)
-void TownDesireFlags::CallVirtualFunctionsForCreation(const MapCoords* coords)
+void TownDesireFlags::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 }
 
@@ -576,13 +576,13 @@ uint32_t TownDesireFlags::GetFOVHelpCondition()
 }
 
 // win1.41 00746f10 mac 1055c600 TownDesireFlags::Save(GameOSFile &)
-bool TownDesireFlags::Save(GameOSFile& file)
+bool32_tcorrect TownDesireFlags::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00747030 mac 1055c440 TownDesireFlags::Load(GameOSFile &)
-bool TownDesireFlags::Load(GameOSFile& file)
+bool32_tcorrect TownDesireFlags::Load(GameOSFile& file)
 {
     return 0;
 }

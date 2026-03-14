@@ -8,7 +8,7 @@
 .extern ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z
 .extern ?AddMainSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z
 .extern ?GameRand@GRand@@SAHJ@Z
-.extern ?GameFloatRand@GRand@@SAMM@Z
+.extern ?GameFloatRand@GRand@@SAMMPBDI@Z
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x0047e760
@@ -240,7 +240,7 @@ _jmp_addr_0x0047e760:    sub               esp, 0x18                          //
                          push              0x00001754                         // 0x0047ea3e    6854170000
                          push              0x009cf9e0                         // 0x0047ea43    68e0f99c00
                          push              0x42700000                         // 0x0047ea48    6800007042
-                         call              ?GameFloatRand@GRand@@SAMM@Z       // 0x0047ea4d    e8defa2500
+                         call              ?GameFloatRand@GRand@@SAMMPBDI@Z       // 0x0047ea4d    e8defa2500
                          {disp8} fstp      dword ptr [esi + 0x08]             // 0x0047ea52    d95e08
                          add               esp, 0x0c                          // 0x0047ea55    83c40c
                          mov               dword ptr [esi], 0x008cf050        // 0x0047ea58    c70650f08c00

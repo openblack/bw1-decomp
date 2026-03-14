@@ -28,7 +28,7 @@
 /// has the same structure
 
 #include <stdbool.h> /* For bool */
-#include <stdint.h> /* For uin32_t */
+#include <stdint.h> /* For uint32_t */
 #include <stdlib.h> /* For malloc */
 
 #ifdef __cplusplus

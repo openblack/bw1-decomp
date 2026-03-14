@@ -108,7 +108,7 @@ void Creature::SetUpPhysOb(PhysOb* param_1)
 }
 
 // win1.41 00479d10 mac 101d6d70 Creature::CanBecomeAPhysicsObject(void)
-bool Creature::CanBecomeAPhysicsObject()
+bool32_tcorrect Creature::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -126,7 +126,7 @@ bool Creature::IsMoving()
 }
 
 // win1.41 00479e50 mac 101d6990 Creature::MoveMapObject(MapCoords const &)
-int Creature::MoveMapObject(const MapCoords* param_1)
+int Creature::MoveMapObject(const MapCoords& param_1)
 {
     return 0;
 }

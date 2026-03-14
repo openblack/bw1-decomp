@@ -57,7 +57,7 @@ struct LHPoint
     // Constructors
 
     // win1.41 inlined mac inlined LHPoint::LHPoint(void)
-    LHPoint();
+    inline LHPoint() {}
     // win1.41 00442700 mac 1004a260 LHPoint::LHPoint(float, float, float)
     LHPoint(float x, float y, float z);
     // win1.41 0044cfc0 mac 1003a450 LHPoint::LHPoint(const LHPoint&)

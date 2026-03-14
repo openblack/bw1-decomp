@@ -42,9 +42,9 @@ public:
     // win1.41 00561460 mac 105347c0 GStreetLantern::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00734be0 mac 10534ab0 GStreetLantern::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00734c90 mac 10534980 GStreetLantern::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00561450 mac 10534780 GStreetLantern::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561440 mac 10534740 GStreetLantern::IsStreetLantern(void)
@@ -54,7 +54,7 @@ public:
     // win1.41 00734a70 mac 1002d8c0 GStreetLantern::Draw(void)
     virtual void Draw();
     // win1.41 00734810 mac 105350a0 GStreetLantern::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 007349d0 mac 10535050 GStreetLantern::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // win1.41 00734d50 mac 10534800 GStreetLantern::CreatureMustAvoid(Creature *)

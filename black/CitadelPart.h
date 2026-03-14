@@ -55,9 +55,9 @@ public:
     // win1.41 004694e0 mac 101c37f0 CitadelPart::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004698b0 mac 101c2780 CitadelPart::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& file);
+    virtual bool32_tcorrect Load(GameOSFile& file);
     // win1.41 00469830 mac 101c2870 CitadelPart::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 004694d0 mac 101c37b0 CitadelPart::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00464aa0 mac 101c2460 CitadelPart::GetCreatureBeliefType(void)
@@ -77,7 +77,7 @@ public:
     // win1.41 00464a90 mac 101c2400 CitadelPart::GetMesh( const(void))
     virtual int GetMesh() const;
     // win1.41 00469760 mac 101c2b70 CitadelPart::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 004694b0 mac 101c3720 CitadelPart::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
     // win1.41 004695d0 mac inlined CitadelPart::CanBeDestroyedBySpell_1(Spell *)
@@ -91,7 +91,7 @@ public:
     // win1.41 00464ab0 mac 101c08e0 CitadelPart::IsRepaired(void)
     virtual bool IsRepaired();
     // win1.41 00464ad0 mac 10081060 CitadelPart::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_tcorrect IsBuilt();
     // win1.41 004694a0 mac 101b91f0 CitadelPart::ConvertToPlanned(void)
     virtual PlannedMultiMapFixed* ConvertToPlanned();
 

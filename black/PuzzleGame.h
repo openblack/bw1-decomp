@@ -68,9 +68,9 @@ public:
     // win1.41 00561b60 mac 10133a40 PuzzleGame::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006d9d40 mac 10126ae0 PuzzleGame::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 006d96c0 mac 10127440 PuzzleGame::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00561b50 mac 10133a00 PuzzleGame::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561b10 mac inlined PuzzleGame::GetPos( const(MapCoords *))
@@ -169,15 +169,15 @@ public:
     // win1.41 00422190 mac inlined ChessPion::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00422bc0 mac inlined ChessPion::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00422aa0 mac inlined ChessPion::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00422180 mac inlined ChessPion::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00422770 mac inlined ChessPion::Draw(void)
     virtual void Draw();
     // win1.41 006dde50 mac inlined ChessPion::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00422210 mac inlined ChessPion::SetUpPhysOb(PhysOb *)
     virtual void SetUpPhysOb(PhysOb* param_1);
     // win1.41 004221e0 mac inlined ChessPion::InteractsWithPhysicsObjects(void)
@@ -382,7 +382,7 @@ public:
     // win1.41 006dd4b0 mac inlined PuzzleCow::CanBeFrighteningToCreature(Creature *)
     virtual bool CanBeFrighteningToCreature(Creature* param_1);
     // win1.41 006dd690 mac 10132390 PuzzleCow::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 0041c7e0 mac inlined PuzzleCow::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
@@ -402,9 +402,9 @@ public:
     // win1.41 00561910 mac 10131890 PuzzleGrain::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006dbe40 mac 10123450 PuzzleGrain::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 006dbeb0 mac 10123370 PuzzleGrain::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00561900 mac 10131850 PuzzleGrain::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561920 mac 101318d0 PuzzleGrain::CanBeEatenByCreature(Creature *)
@@ -414,7 +414,7 @@ public:
     // win1.41 00561a20 mac 10131e70 PuzzleGrain::Draw(void)
     virtual void Draw();
     // win1.41 00561a30 mac 10122f40 PuzzleGrain::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00561a10 mac 10131e20 PuzzleGrain::GetFoodValue(FOOD_TYPE)
     virtual float GetFoodValue(FOOD_TYPE param_1);
     // win1.41 00561940 mac 10131970 PuzzleGrain::ValidForLockedSelectProcess(GInterfaceStatus *)
@@ -446,7 +446,7 @@ public:
     // win1.41 00561a40 mac 10131ec0 PuzzleGrain::EndPhysics(PhysicsObject *, bool)
     virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
     // win1.41 00561a60 mac 10131f20 PuzzleGrain::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 006dc550 mac 10122550 PuzzleGrain::GetImmersionTexture(void)
     virtual IMMERSION_EFFECT_TYPE GetImmersionTexture();
 };
@@ -466,7 +466,7 @@ public:
     // win1.41 006dd520 mac 10132850 PuzzleHorse::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006dd530 mac 10132890 PuzzleHorse::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 00416fd0 mac inlined PuzzleHorse::SetFoodSpeedup(bool)
     virtual void SetFoodSpeedup(bool param_1);
     // win1.41 00416fe0 mac inlined PuzzleHorse::IsFoodSpeedUp(void)
@@ -530,7 +530,7 @@ public:
     // win1.41 005615b0 mac 10132d90 PuzzleLion::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005615d0 mac 10132e10 PuzzleLion::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
 };
 
 // win1.41 00bee278 mac inlined PuzzleMobileObject::`RTTI Type Descriptor'
@@ -548,9 +548,9 @@ public:
     // win1.41 00561ae0 mac 10131770 PuzzleMobileObject::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006dbf20 mac 10123290 PuzzleMobileObject::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 006dbf80 mac 101231b0 PuzzleMobileObject::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00561ad0 mac 10131730 PuzzleMobileObject::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006dc510 mac 10122590 PuzzleMobileObject::GetImmersionTexture(void)
@@ -576,7 +576,7 @@ public:
     // win1.41 006dd720 mac 101325b0 PuzzlePig::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006dd740 mac 10132630 PuzzlePig::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 006db130 mac 10124df0 PuzzlePig::DecideWhatToDo(void)
     virtual bool DecideWhatToDo();
 };
@@ -598,7 +598,7 @@ public:
     // win1.41 00561740 mac 10132ad0 PuzzleSheep::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561760 mac 10132b50 PuzzleSheep::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 006db110 mac 10124e70 PuzzleSheep::DecideWhatToDo(void)
     virtual bool DecideWhatToDo();
 };
@@ -620,7 +620,7 @@ public:
     // win1.41 006dd5c0 mac 10132010 PuzzleTortoise::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006dd5e0 mac 10132090 PuzzleTortoise::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
 };
 
 // win1.41 00be6758 mac inlined PuzzleTotem::`RTTI Type Descriptor'
@@ -638,9 +638,9 @@ public:
     // win1.41 00561890 mac 101335e0 PuzzleTotem::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006da740 mac 10126150 PuzzleTotem::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 006da7f0 mac 10126020 PuzzleTotem::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00561880 mac 101335a0 PuzzleTotem::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006da710 mac 10126270 PuzzleTotem::SetMaxHeight(float)
@@ -688,7 +688,7 @@ public:
     // win1.41 00561660 mac 10133160 PuzzleVillager::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561680 mac 101331e0 PuzzleVillager::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
 };
 
 #else // __cplusplus

@@ -36,7 +36,7 @@
 .extern ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ
 .extern ?ProcessBindableKeys@GGame@@QAEIW4LH_KEY@@0K@Z
 .extern _jmp_addr_0x007947c0
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern @SetLHFilePointer__6LHFileFPcl@16
 .extern _jmp_addr_0x007bdfc0
@@ -1254,7 +1254,7 @@ _jmp_addr_0x0061a660:    {disp8} mov       eax, dword ptr [esp + 0x04]          
                          push              edx                                                  // 0x0061a792    52
                          call              @GetStringWidth__13GatheringTextFPwif@20             // 0x0061a793    e898692100
                          {disp32} fadd     dword ptr [rdata_bytes + 0x19c70]                    // 0x0061a798    d805702c8c00
-                         call              _jmp_addr_0x007a1400                                 // 0x0061a79e    e85d6c1800
+                         call              __ftol                                               // 0x0061a79e    e85d6c1800
                          {disp8} mov       ecx, dword ptr [esi + 0x08]                          // 0x0061a7a3    8b4e08
                          mov               dword ptr [esi], eax                                 // 0x0061a7a6    8906
                          mov               bl, 0x01                                             // 0x0061a7a8    b301

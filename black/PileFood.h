@@ -51,9 +51,9 @@ public:
     // win1.41 0066e030 mac 1011d5f0 PileFood::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0066f5e0 mac 10116570 PileFood::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0066f5a0 mac 10116600 PileFood::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0066e020 mac 1011d5b0 PileFood::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055d690 mac 1011d570 PileFood::IsPileFood(void)
@@ -65,7 +65,7 @@ public:
     // win1.41 0051bf80 mac 10030810 PileFood::Draw(void)
     virtual void Draw();
     // win1.41 0066e1a0 mac 10119ea0 PileFood::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 0066e380 mac 10119a40 PileFood::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
     // win1.41 0066ec50 mac 10117fe0 PileFood::GetResourceType(void)

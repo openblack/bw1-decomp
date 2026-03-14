@@ -34,7 +34,7 @@ void PlannedAbode::ToBeDeleted(int param_1)
 }
 
 // win1.41 004056d0 mac 10007bf0 PlannedAbode::GetInfo(void)
-GPlannedAbodeInfo* PlannedAbode::GetInfo(void)
+GAbodeInfo* PlannedAbode::GetInfo(void)
 {
     return NULL;
 }
@@ -64,13 +64,13 @@ bool PlannedAbode::IsOkToBuild()
 }
 
 // win1.41 00405830 mac 10350950 PlannedAbode::Save(GameOSFile &)
-bool PlannedAbode::Save(GameOSFile& file)
+bool32_tcorrect PlannedAbode::Save(GameOSFile& file)
 {
     return false;
 }
 
 // win1.41 00405860 mac 10260310 PlannedAbode::Load(GameOSFile &)
-bool PlannedAbode::Load(GameOSFile& file)
+bool32_tcorrect PlannedAbode::Load(GameOSFile& file)
 {
     return false;
 }

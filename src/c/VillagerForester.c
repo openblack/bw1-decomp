@@ -179,9 +179,9 @@ uint32_t __fastcall DecideHowToGetWood__8VillagerFiPP9BigForestPP6Forest(struct 
     asm("{disp8} fild       qword ptr [esp + 0x08]");                        // 0x0075f60f    df6c2408
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0xf1100]");             // 0x0075f613    d80500a19900
     asm("fdivp              st(1), st");                                     // 0x0075f619    def9
-    asm("{disp32} fsubr     dword ptr [_rdata_float1p0]");                   // 0x0075f61b    d82d90a38a00
+    asm("{disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075f61b    d82d90a38a00
     asm("{disp8} fstp       dword ptr [esp + 0x28]");                        // 0x0075f621    d95c2428
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x0075f625    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x0075f625    d90590a38a00
     asm("{disp8} fsub       dword ptr [esp + 0x28]");                        // 0x0075f62b    d8642428
     asm("{disp8} fstp       dword ptr [esp + 0x08]");                        // 0x0075f62f    d95c2408
     asm("LAB__addr_0x0075f633:");
@@ -191,7 +191,7 @@ uint32_t __fastcall DecideHowToGetWood__8VillagerFiPP9BigForestPP6Forest(struct 
     asm("{disp8} lea        edi, dword ptr [esi + 0x14]");                   // 0x0075f639    8d7e14
     asm("push               edi");                                           // 0x0075f63c    57
     asm("{disp8} lea        ecx, dword ptr [esp + 0x24]");                   // 0x0075f63d    8d4c2424
-    asm("call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2");                          // 0x0075f641    e88a66eaff
+    asm("call               ?GetMetresDistance@MapCoords@@QBEMABU1@@Z");                          // 0x0075f641    e88a66eaff
     asm("push               ecx");                                           // 0x0075f646    51
     asm("fstp               dword ptr [esp]");                               // 0x0075f647    d91c24
     asm("call               _GetDistanceModifier__6GUtilsFff@8");            // 0x0075f64a    e841fcfeff
@@ -213,7 +213,7 @@ uint32_t __fastcall DecideHowToGetWood__8VillagerFiPP9BigForestPP6Forest(struct 
     asm("push               ebx");                                           // 0x0075f673    53
     asm("push               edi");                                           // 0x0075f674    57
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x0075f675    8d4e14
-    asm("call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2");                          // 0x0075f678    e85366eaff
+    asm("call               ?GetMetresDistance@MapCoords@@QBEMABU1@@Z");                          // 0x0075f678    e85366eaff
     asm("push               ecx");                                           // 0x0075f67d    51
     asm("fstp               dword ptr [esp]");                               // 0x0075f67e    d91c24
     asm("call               _GetDistanceModifier__6GUtilsFff@8");            // 0x0075f681    e80afcfeff
@@ -229,7 +229,7 @@ uint32_t __fastcall DecideHowToGetWood__8VillagerFiPP9BigForestPP6Forest(struct 
     asm("add                esp, 0x0c");                                     // 0x0075f69a    83c40c
     asm("test               esi, esi");                                      // 0x0075f69d    85f6
     asm("{disp8} jne        LAB__addr_0x0075f673");                          // 0x0075f69f    75d2
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x0075f6a1    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x0075f6a1    d90598a38a00
     asm("LAB__addr_0x0075f6a7:");
     asm("{disp8} fld        dword ptr [esp + 0x2c]");                        // 0x0075f6a7    d944242c
     asm("pop                ebx");                                           // 0x0075f6ab    5b
@@ -244,7 +244,7 @@ uint32_t __fastcall DecideHowToGetWood__8VillagerFiPP9BigForestPP6Forest(struct 
     asm("add                esp, 0x1c");                                     // 0x0075f6be    83c41c
     asm("ret                0x000c");                                        // 0x0075f6c1    c20c00
     asm("LAB__addr_0x0075f6c4:");
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075f6c4    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075f6c4    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075f6ca    dfe0
     asm("test               ah, 0x40");                                      // 0x0075f6cc    f6c440
     asm("{disp8} jne        LAB__addr_0x0075f702");                          // 0x0075f6cf    7531

@@ -34,6 +34,7 @@ enum PLAYER_NAME
 // Forward Declares
 
 class Base;
+class CHand;
 class Citadel;
 class Creature;
 class GAlignment;
@@ -144,6 +145,8 @@ public:
     void Birthday();
     // win1.41 0064a790 mac 1005c3d0 GPlayer::GetPlayerNumber(void) const
     uint8_t GetPlayerNumber();
+    // win1.41 0064ab20 mac 10495cd0 GPlayer::GetRenderHand(void)
+    CHand* GetRenderHand();
     // win1.41 0064aac0 mac 10035b60 GPlayer::GetNextInterfaceStatus(GInterfaceStatus *)
     GInterfaceStatus* GetNextInterfaceStatus(GInterfaceStatus* param_1);
     // win1.41 0064ac00 mac 100306d0 GPlayer::IsNeutral(void)
@@ -160,6 +163,8 @@ public:
     bool IsMemberOfThisPlayer(GInterfaceStatus* param_1);
     // win1.41 0064d800 mac 10021970 GPlayer::GetPlayerColour(void) const
     LH3DColor GetPlayerColour();
+    // win1.41 0064da80 mac inline GPlayer::FUN_0064da80(int, int)
+    void FUN_0064da80(int, int);
 };
 
 #else // __cplusplus

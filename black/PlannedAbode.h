@@ -48,13 +48,13 @@ public:
     // win1.41 00405100 mac 10179a00 PlannedAbode::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00405860 mac 10260310 PlannedAbode::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& file);
+    virtual bool32_tcorrect Load(GameOSFile& file);
     // win1.41 00405830 mac 10350950 PlannedAbode::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& file);
+    virtual bool32_tcorrect Save(GameOSFile& file);
     // win1.41 004050f0 mac 10531c20 PlannedAbode::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 004061a0 mac 104333f0 PlannedAbode::IsWonder(void)
-    virtual bool32_t IsWonder();
+    virtual bool32_tcorrect IsWonder();
     // win1.41 00405710 mac 10570d80 PlannedAbode::CreatePlanned(float)
     virtual MultiMapFixed* CreatePlanned(float param_1);
     // win1.41 00405770 mac 10282ed0 PlannedAbode::CreatePlannedNoFixedCheck(float)
@@ -73,7 +73,7 @@ public:
     // win1.41 00405660 mac 1043fad0 PlannedAbode::Create(Abode*)
     static PlannedAbode* Create(Abode* abode);
     // win1.41 004056d0 mac 10007bf0 PlannedAbode::GetInfo(void)
-    static GPlannedAbodeInfo* GetInfo();
+    static GAbodeInfo* GetInfo();
 
     // Constructors
 
@@ -138,7 +138,7 @@ struct PlannedAbode* __cdecl Create__12PlannedAbodeFRC9MapCoordsPC10GAbodeInfoP4
 // win1.41 00405660 mac 1043fad0 PlannedAbode::Create(Abode*)
 struct PlannedAbode* __cdecl Create__12PlannedAbodeFP5Abode(struct Abode* abode) asm("?Create@PlannedAbode@@SAPAV1@PAVAbode@@@Z");
 // win1.41 004056d0 mac 10007bf0 PlannedAbode::GetInfo(void)
-struct GPlannedAbodeInfo* __cdecl GetInfo__12PlannedAbodeFv(void) asm("?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ");
+struct GPlannedAbodeInfo* __cdecl GetInfo__12PlannedAbodeFv(void) asm("?GetInfo@PlannedAbode@@SAPAVGAbodeInfo@@XZ");
 
 // Constructors
 
@@ -181,7 +181,7 @@ struct MultiMapFixed* __fastcall CreatePlannedNoFixedCheck__12PlannedAbodeFf(str
 // win1.41 004060c0 mac 101a36e0 PlannedAbode::IsCivic(void)
 bool __fastcall IsCivic__12PlannedAbodeFv(struct PlannedMultiMapFixed* this) asm("?IsCivic@PlannedAbode@@QAE_NXZ");
 // win1.41 004061e0 mac 10007c40 PlannedAbode::GetAbodeType(void)
-enum ABODE_TYPE __fastcall GetAbodeType__12PlannedAbodeFv(struct PlannedMultiMapFixed* this) asm("?GetAbodeType@PlannedAbode@@QAE?AW4ABODE_TYPE@@XZ");
+enum ABODE_TYPE __fastcall GetAbodeType__12PlannedAbodeFv(struct PlannedMultiMapFixed* this) asm("?GetAbodeType@PlannedAbode@@UAE?AW4ABODE_TYPE@@XZ");
 
 #endif // __cplusplus
 

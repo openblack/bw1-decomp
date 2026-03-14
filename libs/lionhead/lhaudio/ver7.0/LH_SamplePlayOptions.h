@@ -8,7 +8,24 @@
 
 struct LH_SamplePlayOptions
 {
-    uint8_t field_0x0[0x168];
+    uint8_t field_0x0[0x4];
+    uint32_t field_0x4;
+    uint8_t field_0x8;
+    uint8_t field_0x9;
+    uint8_t field_0xa;
+    uint8_t field_0xb;
+    uint8_t field_0xc;
+    uint8_t field_0xd;
+    uint8_t field_0xe;
+    uint8_t field_0xf;
+    uint8_t field_0x10[0x10];
+    void* field_0x20;
+    uint32_t field_0x24;
+    uint8_t field_0x28[0x8];
+    float field_0x30;
+    float field_0x34;
+    float field_0x38;
+    uint8_t field_0x3c[0x12c];
 
     // Constructors
 
@@ -18,7 +35,7 @@ struct LH_SamplePlayOptions
     // Non-virtual methods
 
     // win1.41 10011010 mac 1003a2c0 LH_SamplePlayOptions::~LH_SamplePlayOptions(void)
-    void ~LH_SamplePlayOptions();
+    ~LH_SamplePlayOptions();
 };
 
 #else // __cplusplus

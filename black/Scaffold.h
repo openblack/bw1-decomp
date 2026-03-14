@@ -56,9 +56,9 @@ public:
     // win1.41 0055e140 mac 1013e6d0 Scaffold::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 006ea3d0 mac 10140100 Scaffold::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 006ea240 mac 10140340 Scaffold::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0055e130 mac 1013e690 Scaffold::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 006ea560 mac 1013ffc0 Scaffold::ResolveLoad(void)
@@ -82,11 +82,11 @@ public:
     // win1.41 006eab60 mac 1013f280 Scaffold::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 006e9890 mac 10141590 Scaffold::ActualMoveMapObject(MapCoords const &)
-    virtual void ActualMoveMapObject(const MapCoords* param_1);
+    virtual void ActualMoveMapObject(const MapCoords& param_1);
     // win1.41 006ea5c0 mac 1013fd30 Scaffold::Draw(void)
     virtual void Draw();
     // win1.41 006e8540 mac 10143a70 Scaffold::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 006eaea0 mac 1013ec20 Scaffold::IsResourceStore(RESOURCE_TYPE)
     virtual bool IsResourceStore(RESOURCE_TYPE param_1);
     // win1.41 006eaec0 mac 1013eb90 Scaffold::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
@@ -124,7 +124,7 @@ public:
     // win1.41 006ea940 mac 1013f890 Scaffold::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 006ea910 mac 1013f8e0 Scaffold::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 006e8570 mac 101436c0 Scaffold::ProcessInHand(void)
     virtual bool ProcessInHand();
     // win1.41 006eaf30 mac 1013e710 Scaffold::SaveObject(LHOSFile &, MapCoords const &)

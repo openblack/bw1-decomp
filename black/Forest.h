@@ -60,13 +60,13 @@ public:
     // win1.41 0053acc0 mac 100f0830 Forest::RemoveFootpath(GFootpath *)
     virtual uint32_t RemoveFootpath(GFootpath* param_1);
     // win1.41 00539a60 mac 100ef4a0 Forest::IsFunctional(void)
-    virtual bool IsFunctional();
+    virtual bool32_tcorrect IsFunctional();
     // win1.41 00539b10 mac 100ef7d0 Forest::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0053b070 mac 100ef950 Forest::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& file);
+    virtual bool32_tcorrect Load(GameOSFile& file);
     // win1.41 0053ae40 mac 100efda0 Forest::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& file);
+    virtual bool32_tcorrect Save(GameOSFile& file);
     // win1.41 00539b00 mac 100ef790 Forest::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00539a80 mac 100ef580 Forest::GetCreatureBeliefType(void)

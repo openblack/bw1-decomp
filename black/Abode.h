@@ -33,6 +33,7 @@ enum ABODE_EPP
 
 class Base;
 class Creature;
+struct FragMesh;
 class GAbodeInfo;
 class GInterfaceStatus;
 class GPlayer;
@@ -60,10 +61,10 @@ class Town;
 class Abode: public MultiMapFixed
 {
 public:
-    uint32_t field_0x7c;
+    uint8_t field_0x7c;
     MapCoords drinking_water; /* 0x80 */
     LH3DSmoke* smoke;
-    LH3DMesh* destruction_mesh; /* 0x90 */
+    FragMesh* destruction_mesh; /* 0x90 */
     uint32_t field_0x94;
     LHFastPointer<Town> town;
     LHFastPointer<Abode> next;
@@ -79,6 +80,25 @@ public:
     uint32_t resources[RESOURCE_TYPE_LAST];
 
     // Virtual functions
+
+    // win1.41 00404520 mac 1036d5a0 Abode::MoveAbodeToPlannedAbodes(void)
+    virtual void MoveAbodeToPlannedAbodes(); /* 0x90c */
+    // win1.41 00403f00 mac 100e33a0 Abode::DeleteDependancys(void)
+    virtual void DeleteDependancys(); /* 0x910 */
+    // win1.41 004047e0 mac 103c1e30 Abode::MakeFunctional(void)
+    virtual void MakeFunctional();
+    // win1.41 004073c0 mac 103b5600 Abode::StopBeingFunctional(GPlayer *)
+    virtual void StopBeingFunctional(GPlayer* param_1);
+    // win1.41 00401680 mac 10371be0 Abode::RestartBeingFunctional(void)
+    virtual void RestartBeingFunctional();
+    // win1.41 004016f0 mac 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
+    virtual bool CausesTownEmergencyIfDamaged(); /* 0x920 */
+    // win1.41 00407280 mac 100dcdb0 Abode::CanBeHiddenIn(void)
+    virtual bool CanBeHiddenIn();
+    // win1.41 00405f50 mac 103b5680 Abode::GetTribe(void)
+    virtual GTribeInfo* GetTribe();
+
+    // Override functions
 
     // win1.41 004017c0 mac 103d4980 Abode::_dt(unsigned int)
     virtual ~Abode();
@@ -105,23 +125,23 @@ public:
     // win1.41 00403f10 mac 103c9730 Abode::GetNumberOfInstanceForGlobalList(void)
     virtual uint16_t GetNumberOfInstanceForGlobalList();
     // win1.41 00406200 mac 1005ff20 Abode::IsFunctional(void)
-    virtual bool IsFunctional();
+    virtual bool32_tcorrect IsFunctional();
     // win1.41 004017b0 mac 10434340 Abode::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00406d20 mac 101a2920 Abode::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& file);
+    virtual bool32_tcorrect Load(GameOSFile& file);
     // win1.41 00406a10 mac 103bd750 Abode::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& file);
+    virtual bool32_tcorrect Save(GameOSFile& file);
     // win1.41 004017a0 mac 103e1790 Abode::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00401770 mac 1000c2b0 Abode::GetArrivePos(void)
-    virtual MapCoords* GetArrivePos(MapCoords* coords);
+    virtual MapCoords GetArrivePos();
     // win1.41 00401740 mac 1040f9d0 Abode::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
     // win1.41 00401760 mac 10110c50 Abode::GetOrigin(void)
     virtual uint32_t GetOrigin();
     // win1.41 00407200 mac 1008a7b0 Abode::IsInteractable(void)
-    virtual bool IsInteractable();
+    virtual bool32_tcorrect IsInteractable();
     // win1.41 00401720 mac 10435a10 Abode::IsCastShadowAtNight(void)
     virtual bool32_t IsCastShadowAtNight();
     // win1.41 00401710 mac 100970f0 Abode::IsAbode(void)
@@ -139,7 +159,7 @@ public:
     // win1.41 00401790 mac 10134300 Abode::IsHouse(void)
     virtual bool32_t IsHouse();
     // win1.41 004061c0 mac 1014d0e0 Abode::IsWonder(void)
-    virtual bool32_t IsWonder();
+    virtual bool32_tcorrect IsWonder();
     // win1.41 00406810 mac 1001b380 Abode::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 00402cb0 mac 10570ad0 Abode::DestroyedByBeam(void)
@@ -167,7 +187,7 @@ public:
     // win1.41 00406820 mac 1049b920 Abode::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* status);
     // win1.41 00406830 mac 102fed90 Abode::InterfaceTap(GInterfaceStatus *)
-    virtual uint32_t InterfaceTap(GInterfaceStatus* status);
+    virtual bool32_tcorrect InterfaceTap(GInterfaceStatus* status);
     // win1.41 00402dc0 mac 103bf040 Abode::GetPhysicsConstantsType(void)
     virtual uint32_t GetPhysicsConstantsType();
     // win1.41 00402dd0 mac 103bf110 Abode::SetUpPhysOb(PhysOb *)
@@ -177,11 +197,11 @@ public:
     // win1.41 00406240 mac 104a8350 Abode::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 00406800 mac 1010ab50 Abode::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 00402cd0 mac 100c7020 Abode::GetInspectObjectPos(Villager *, MapCoords *)
     virtual bool GetInspectObjectPos(Villager* param_1, MapCoords* pos);
     // win1.41 00407420 mac 10351de0 Abode::DiscipleInHandNear(Villager &, GInterfaceStatus &)
-    virtual void DiscipleInHandNear(Villager* param_1, GInterfaceStatus* status);
+    virtual void DiscipleInHandNear(Villager& param_1, GInterfaceStatus& status);
     // win1.41 00405bb0 mac 101ca440 Abode::SaveObject(LHOSFile &, MapCoords const &)
     virtual size_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 00403ef0 mac 10589380 Abode::ShouldFootpathsGoRound(void)
@@ -191,7 +211,7 @@ public:
     // win1.41 004016a0 mac 10066b80 Abode::IsRepaired(void)
     virtual bool IsRepaired();
     // win1.41 004016c0 mac 10055bb0 Abode::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_tcorrect IsBuilt();
     // win1.41 00407290 mac 10064f30 Abode::GetPercentRepairedForNonFunctional(void)
     virtual float GetPercentRepairedForNonFunctional();
     // win1.41 00407050 mac 1004d310 Abode::GetPercentAbodeFullWithAdults(void)
@@ -203,7 +223,7 @@ public:
     // win1.41 004047b0 mac 105b9280 Abode::Repaired(void)
     virtual bool Repaired();
     // win1.41 00401700 mac 105756c0 Abode::GetDestructionMesh(void)
-    virtual LH3DMesh* GetDestructionMesh();
+    virtual FragMesh* GetDestructionMesh();
     // win1.41 00403f40 mac 105861b0 Abode::RemoveDamage(void)
     virtual void RemoveDamage();
     // win1.41 00405ff0 mac 10199f30 Abode::IsCivic(void)
@@ -224,22 +244,6 @@ public:
     virtual void SetShouldNotBeAddedToPlanned(bool value);
     // win1.41 00405050 mac 100a3330 Abode::ConvertToPlanned(void)
     virtual PlannedMultiMapFixed* ConvertToPlanned();
-    // win1.41 00404520 mac 1036d5a0 Abode::MoveAbodeToPlannedAbodes(void)
-    virtual void MoveAbodeToPlannedAbodes(); /* 0x90c */
-    // win1.41 00403f00 mac 100e33a0 Abode::DeleteDependancys(void)
-    virtual void DeleteDependancys(); /* 0x910 */
-    // win1.41 004047e0 mac 103c1e30 Abode::MakeFunctional(void)
-    virtual void MakeFunctional();
-    // win1.41 004073c0 mac 103b5600 Abode::StopBeingFunctional(GPlayer *)
-    virtual void StopBeingFunctional(GPlayer* param_1);
-    // win1.41 00401680 mac 10371be0 Abode::RestartBeingFunctional(void)
-    virtual void RestartBeingFunctional();
-    // win1.41 004016f0 mac 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
-    virtual bool CausesTownEmergencyIfDamaged(); /* 0x920 */
-    // win1.41 00407280 mac 100dcdb0 Abode::CanBeHiddenIn(void)
-    virtual bool CanBeHiddenIn();
-    // win1.41 00405f50 mac 103b5680 Abode::GetTribe(void)
-    virtual GTribeInfo* GetTribe();
 
     // Static methods
 
@@ -314,13 +318,13 @@ public:
     // win1.41 00407020 mac inlined Abode::FindNearestDrinkingWater(float)
     void FindNearestDrinkingWater(float max_dist);
     // win1.41 004070d0 mac 104ed230 Abode::GetNumAdultsInAbode(void)
-    uint8_t GetNumAdultsInAbode();
+    float GetNumAdultsInAbode();
     // win1.41 004070f0 mac 101b8780 Abode::DrawPercentFull(int)
-    void DrawPercentFull(int param_1);
+    void DrawPercentFull(bool32_tcorrect only_one);
     // win1.41 00407230 mac inlined Abode::FUN_00407230(bool)
-    MapCoords* FUN_00407230(MapCoords* coords, bool param_2);
+    MapCoords FUN_00407230(bool32_tcorrect param_1);
     // win1.41 004072e0 mac 1000cd50 Abode::GetPosOutside(float, float, float)
-    MapCoords* GetPosOutside(MapCoords* coords, float param_2, float param_3, float param_4);
+    MapCoords GetPosOutside(float param_2, float param_3, float param_4);
     // win1.41 004073f0 mac inlined Abode::FUN_004073f0(GPlayer *)
     void FUN_004073f0(GPlayer* param_1);
     // win1.41 004074a0 mac 100e7ac0 Abode::CalculateDesireToGainMale(void)
@@ -328,9 +332,9 @@ public:
     // win1.41 00407540 mac 100af0d0 Abode::CalculateDesireToGainVillager(void)
     float CalculateDesireToGainVillager();
     // win1.41 004075b0 mac 10518900 Abode::TakeVillagerFrom(Abode&, int)
-    bool TakeVillagerFrom(Abode* other, int param_2);
+    bool32_tcorrect TakeVillagerFrom(Abode& other, bool32_tcorrect param_2);
     // win1.41 00407620 mac 10516470 Abode::SwapMaleForFemaleFrom(Abode&)
-    bool SwapMaleForFemaleFrom(Abode* other);
+    bool32_tcorrect SwapMaleForFemaleFrom(Abode& other);
     // win1.41 004076c0 mac 105a17d0 Abode::GetVillagerHealthTotal(void)
     float GetVillagerHealthTotal();
 };
@@ -510,23 +514,23 @@ struct Villager* __fastcall FindVillager__5AbodeFPFP16GameThingWithPos18SCRIPT_O
 // win1.41 00407020 mac inlined Abode::FindNearestDrinkingWater(float)
 void __fastcall FindNearestDrinkingWater__5AbodeFf(struct Abode* this, const void* edx, float max_dist) asm("?FindNearestDrinkingWater@Abode@@QAEXM@Z");
 // win1.41 004070d0 mac 104ed230 Abode::GetNumAdultsInAbode(void)
-uint8_t __fastcall GetNumAdultsInAbode__5AbodeFv(struct Abode* this) asm("?GetNumAdultsInAbode@Abode@@QAEEXZ");
+uint8_t __fastcall GetNumAdultsInAbode__5AbodeFv(struct Abode* this) asm("?GetNumAdultsInAbode@Abode@@QAEMXZ");
 // win1.41 004070f0 mac 101b8780 Abode::DrawPercentFull(int)
 void __fastcall DrawPercentFull__5AbodeFi(struct Abode* this, const void* edx, int param_1) asm("?DrawPercentFull@Abode@@QAEXH@Z");
 // win1.41 00407230 mac inlined Abode::FUN_00407230(bool)
-struct MapCoords* __fastcall FUN_00407230__5AbodeFb(struct Abode* this, const void* edx, struct MapCoords* coords, bool param_2) asm("?FUN_00407230@Abode@@QAEPAUMapCoords@@_N@Z");
+struct MapCoords* __fastcall FUN_00407230__5AbodeFb(struct Abode* this, const void* edx, struct MapCoords* coords, bool param_2) asm("?FUN_00407230@Abode@@QAE?AUMapCoords@@I@Z");
 // win1.41 004072e0 mac 1000cd50 Abode::GetPosOutside(float, float, float)
-struct MapCoords* __fastcall GetPosOutside__5AbodeFfff(struct Abode* this, const void* edx, struct MapCoords* coords, float param_2, float param_3, float param_4) asm("?GetPosOutside@Abode@@QAEPAUMapCoords@@PAU2@MMM@Z");
+struct MapCoords* __fastcall GetPosOutside__5AbodeFfff(struct Abode* this, const void* edx, struct MapCoords* coords, float param_2, float param_3, float param_4) asm("?GetPosOutside@Abode@@QAE?AUMapCoords@@MMM@Z");
 // win1.41 004073f0 mac inlined Abode::FUN_004073f0(GPlayer *)
-void __fastcall FUN_004073f0__5AbodeFP7GPlayer(struct Abode* this, const void* edx, struct GPlayer* param_1) asm("?FUN_004073f0@Abode@@UAEXPAVGPlayer@@@Z");
+void __fastcall FUN_004073f0__5AbodeFP7GPlayer(struct Abode* this, const void* edx, struct GPlayer* param_1) asm("?FUN_004073f0@Abode@@QAEXPAVGPlayer@@@Z");
 // win1.41 004074a0 mac 100e7ac0 Abode::CalculateDesireToGainMale(void)
 float __fastcall CalculateDesireToGainMale__5AbodeFv(struct Abode* this) asm("?CalculateDesireToGainMale@Abode@@QAEMXZ");
 // win1.41 00407540 mac 100af0d0 Abode::CalculateDesireToGainVillager(void)
 float __fastcall CalculateDesireToGainVillager__5AbodeFv(struct Abode* this) asm("?CalculateDesireToGainVillager@Abode@@QAEMXZ");
 // win1.41 004075b0 mac 10518900 Abode::TakeVillagerFrom(Abode&, int)
-bool __fastcall TakeVillagerFrom__5AbodeFR5Abodei(struct Abode* this, const void* edx, struct Abode* other, int param_2) asm("?TakeVillagerFrom@Abode@@QAE_NAAV1@@Z");
+bool __fastcall TakeVillagerFrom__5AbodeFR5Abodei(struct Abode* this, const void* edx, struct Abode* other, int param_2) asm("?TakeVillagerFrom@Abode@@QAEIAAV1@I@Z");
 // win1.41 00407620 mac 10516470 Abode::SwapMaleForFemaleFrom(Abode&)
-bool __fastcall SwapMaleForFemaleFrom__5AbodeFR5Abode(struct Abode* this, const void* edx, struct Abode* other) asm("?SwapMaleForFemaleFrom@Abode@@QAE_NAAV1@@Z");
+bool __fastcall SwapMaleForFemaleFrom__5AbodeFR5Abode(struct Abode* this, const void* edx, struct Abode* other) asm("?SwapMaleForFemaleFrom@Abode@@QAEIAAV1@@Z");
 // win1.41 004076c0 mac 105a17d0 Abode::GetVillagerHealthTotal(void)
 float __fastcall GetVillagerHealthTotal__5AbodeFv(struct Abode* this) asm("?GetVillagerHealthTotal@Abode@@QAEMXZ");
 
@@ -561,9 +565,9 @@ bool __fastcall IsFunctional__5AbodeFv(struct GameThing* this) asm("?IsFunctiona
 // win1.41 004017b0 mac 10434340 Abode::GetDebugText(void)
 char* __fastcall GetDebugText__5AbodeFv(struct GameThing* this) asm("?GetDebugText@Abode@@UAEPADXZ");
 // win1.41 00406d20 mac 101a2920 Abode::Load(GameOSFile &)
-uint32_t __fastcall Load__5AbodeFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@Abode@@UAEIPAVGameOSFile@@@Z");
+uint32_t __fastcall Load__5AbodeFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@Abode@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00406a10 mac 103bd750 Abode::Save(GameOSFile &)
-uint32_t __fastcall Save__5AbodeFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@Abode@@UAEIPAVGameOSFile@@@Z");
+uint32_t __fastcall Save__5AbodeFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@Abode@@UAEIAAVGameOSFile@@@Z");
 // win1.41 004017a0 mac 103e1790 Abode::GetSaveType(void)
 uint32_t __fastcall GetSaveType__5AbodeFv(struct GameThing* this) asm("?GetSaveType@Abode@@UAEIXZ");
 // win1.41 00401770 mac 1000c2b0 Abode::GetArrivePos(void)
@@ -573,7 +577,7 @@ uint32_t __fastcall GetCreatureBeliefType__5AbodeFv(struct GameThingWithPos* thi
 // win1.41 00401760 mac 10110c50 Abode::GetOrigin(void)
 uint32_t __fastcall GetOrigin__5AbodeFv(struct GameThingWithPos* this) asm("?GetOrigin@Abode@@UAEIXZ");
 // win1.41 00407200 mac 1008a7b0 Abode::IsInteractable(void)
-bool __fastcall IsInteractable__5AbodeFv(struct GameThingWithPos* this) asm("?IsInteractable@Abode@@UAE_NXZ");
+bool __fastcall IsInteractable__5AbodeFv(struct GameThingWithPos* this) asm("?IsInteractable@Abode@@UAEIXZ");
 // win1.41 00401720 mac 10435a10 Abode::IsCastShadowAtNight(void)
 bool32_t __fastcall IsCastShadowAtNight__5AbodeFv(struct GameThingWithPos* this) asm("?IsCastShadowAtNight@Abode@@UAE_NXZ");
 // win1.41 00401710 mac 100970f0 Abode::IsAbode(void)
@@ -591,7 +595,7 @@ void __fastcall CalculateWhereIWillBeAfterNSeconds__5AbodeFfP7LHPoint(struct Gam
 // win1.41 00401790 mac 10134300 Abode::IsHouse(void)
 bool32_t __fastcall IsHouse__5AbodeFv(struct GameThingWithPos* this) asm("?IsHouse@Abode@@UAE_NXZ");
 // win1.41 004061c0 mac 1014d0e0 Abode::IsWonder(void)
-bool32_t __fastcall IsWonder__5AbodeFv(struct GameThingWithPos* this) asm("?IsWonder@Abode@@UAE_NXZ");
+bool32_t __fastcall IsWonder__5AbodeFv(struct GameThingWithPos* this) asm("?IsWonder@Abode@@UAEIXZ");
 // win1.41 00406810 mac 1001b380 Abode::GetScriptObjectType(void)
 uint32_t __fastcall GetScriptObjectType__5AbodeFv(struct GameThingWithPos* this) asm("?GetScriptObjectType@Abode@@UAEIXZ");
 // win1.41 00402cb0 mac 10570ad0 Abode::DestroyedByBeam(void)
@@ -625,15 +629,15 @@ uint32_t __fastcall GetPhysicsConstantsType__5AbodeFv(struct Object* this) asm("
 // win1.41 00402dd0 mac 103bf110 Abode::SetUpPhysOb(PhysOb *)
 void __fastcall SetUpPhysOb__5AbodeFP6PhysOb(struct Object* this, const void* edx, struct PhysOb* param_1) asm("?SetUpPhysOb@Abode@@UAEXPAVPhysOb@@@Z");
 // win1.41 00406230 mac 1014cfd0 Abode::ChecksVerticesVObjects(void)
-uint32_t __fastcall ChecksVerticesVObjects__5AbodeFv(struct Object* this) asm("?ChecksVerticesVObjects@Abode@@UAEIXZ");
+uint32_t __fastcall ChecksVerticesVObjects__5AbodeFv(struct Object* this) asm("?ChecksVerticesVObjects@Abode@@UAE_NXZ");
 // win1.41 00406240 mac 104a8350 Abode::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__5AbodeFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@Abode@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00406800 mac 1010ab50 Abode::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__5AbodeFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Abode@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__5AbodeFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Abode@@UAEIXZ");
 // win1.41 00402cd0 mac 100c7020 Abode::GetInspectObjectPos(Villager *, MapCoords *)
 bool __fastcall GetInspectObjectPos__5AbodeFP8VillagerP9MapCoords(struct Object* this, const void* edx, struct Villager* param_1, struct MapCoords* pos) asm("?GetInspectObjectPos@Abode@@UAE_NPAVVillager@@PAUMapCoords@@@Z");
 // win1.41 00407420 mac 10351de0 Abode::DiscipleInHandNear(Villager &, GInterfaceStatus &)
-void __fastcall DiscipleInHandNear__5AbodeFR8VillagerR16GInterfaceStatus(struct Object* this, const void* edx, struct Villager* param_1, struct GInterfaceStatus* status) asm("?DiscipleInHandNear@Abode@@UAEXPAVVillager@@PAVGInterfaceStatus@@@Z");
+void __fastcall DiscipleInHandNear__5AbodeFR8VillagerR16GInterfaceStatus(struct Object* this, const void* edx, struct Villager* param_1, struct GInterfaceStatus* status) asm("?DiscipleInHandNear@Abode@@UAEXAAVVillager@@AAVGInterfaceStatus@@@Z");
 // win1.41 00405bb0 mac 101ca440 Abode::SaveObject(LHOSFile &, MapCoords const &)
 size_t __fastcall SaveObject__5AbodeFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@Abode@@UAEIPAVLHOSFile@@PBUMapCoords@@@Z");
 // win1.41 00403ef0 mac 10589380 Abode::ShouldFootpathsGoRound(void)

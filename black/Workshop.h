@@ -52,9 +52,9 @@ public:
     // win1.41 0077a630 mac 10161f20 Workshop::GetShowNeedsPos(unsigned long, MapCoords *)
     virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
     // win1.41 0077a130 mac 101625f0 Workshop::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00779f40 mac 101629d0 Workshop::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00779300 mac 10164920 Workshop::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0077a330 mac 101625a0 Workshop::ResolveLoad(void)
@@ -78,7 +78,7 @@ public:
     // win1.41 0077a340 mac 10162470 Workshop::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
     virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
     // win1.41 007793e0 mac 101643c0 Workshop::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 007792b0 mac 101647d0 Workshop::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
     // win1.41 0077a650 mac 10161e90 Workshop::IsResourceStore(RESOURCE_TYPE)

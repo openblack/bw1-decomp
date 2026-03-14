@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x00651210
 .extern _jmp_addr_0x00657fe0
 .extern _jmp_addr_0x00726380
-.extern ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z
+.extern ?GetPosFromAngle@GUtils@@SA?AUMapCoords@@MM@Z
 
 .globl _jmp_addr_0x00666410
 
@@ -48,7 +48,7 @@ _jmp_addr_0x00666410:    sub              esp, 0x68                         // 0
                          push             edx                               // 0x00666455    52
                          {disp8} lea      eax, dword ptr [esp + 0x20]       // 0x00666456    8d442420
                          push             eax                               // 0x0066645a    50
-                         call             ?GetPosFromAngle@GUtils@@SAPAUMapCoords@@MM@Z      // 0x0066645b    e820710e00
+                         call             ?GetPosFromAngle@GUtils@@SA?AUMapCoords@@MM@Z      // 0x0066645b    e820710e00
                          add              esp, 0x0c                         // 0x00666460    83c40c
                          push             eax                               // 0x00666463    50
                          {disp8} lea      ecx, dword ptr [esp + 0x28]       // 0x00666464    8d4c2428
@@ -79,7 +79,7 @@ _jmp_addr_0x00666410:    sub              esp, 0x68                         // 0
                          {disp8} lea      eax, dword ptr [esp + 0x18]       // 0x006664ba    8d442418
                          push             eax                               // 0x006664be    50
                          {disp8} lea      ecx, dword ptr [esp + 0x28]       // 0x006664bf    8d4c2428
-                         call             _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2              // 0x006664c3    e808f8f9ff
+                         call             ?GetMetresDistance@MapCoords@@QBEMABU1@@Z              // 0x006664c3    e808f8f9ff
                          fstp             st(0)                             // 0x006664c8    ddd8
                          push             0x00000112                        // 0x006664ca    6812010000
                          push             0x00c01cc4                        // 0x006664cf    68c41cc000

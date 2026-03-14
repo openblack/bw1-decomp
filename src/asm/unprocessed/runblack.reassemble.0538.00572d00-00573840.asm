@@ -21,7 +21,7 @@
 .extern _jmp_addr_0x00575d20
 .extern _jmp_addr_0x0071ef70
 .extern ?CanShowName@SpecialVillager@@QAE_NXZ
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern ___RTDynamicCast
 .extern _wcsncpy
@@ -764,7 +764,7 @@ start_0x00572d00_0x00573840:
                          push              edx                                           // 0x00573724    52
                          call              @GetStringWidth__13GatheringTextFPwif@20      // 0x00573725    e806da2b00
                          {disp32} fadd     dword ptr [rdata_bytes + 0x1e658]             // 0x0057372a    d80558768c00
-                         call              _jmp_addr_0x007a1400                          // 0x00573730    e8cbdc2200
+                         call              __ftol                                        // 0x00573730    e8cbdc2200
                          mov.s             esi, eax                                      // 0x00573735    8bf0
                          {disp32} mov      eax, dword ptr [data_bytes + 0x4bf058]        // 0x00573737    a15850e800
                          and               eax, 0x0000ffff                               // 0x0057373c    25ffff0000
