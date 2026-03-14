@@ -1,19 +1,19 @@
 #include "SpellSeed.h"
 
 // win1.41 00728570 mac 1052bca0 SpellSeed::InteractsWithPhysicsObjects(void)
-bool SpellSeed::InteractsWithPhysicsObjects()
+bool32_t SpellSeed::InteractsWithPhysicsObjects()
 {
     return 0;
 }
 
 // win1.41 00728580 mac 1052bba0 SpellSeed::ValidForPlaceInHand(GInterfaceStatus *)
-bool SpellSeed::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t SpellSeed::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 00728600 mac 1052bac0 SpellSeed::IsG3DObjectDrawnInHand(void)
-bool SpellSeed::IsG3DObjectDrawnInHand()
+bool32_t SpellSeed::IsG3DObjectDrawnInHand()
 {
     return 0;
 }
@@ -43,7 +43,7 @@ HOLD_TYPE SpellSeed::GetHoldType()
 }
 
 // win1.41 007286a0 mac 1052b830 SpellSeed::IsInterfacePowerUpWhenInHand( const(void))
-bool SpellSeed::IsInterfacePowerUpWhenInHand() const
+bool32_t SpellSeed::IsInterfacePowerUpWhenInHand() const
 {
     return 0;
 }
@@ -73,19 +73,19 @@ uint32_t SpellSeed::ValidForLockedApplyProcess(GInterfaceStatus* param_1)
 }
 
 // win1.41 00728760 mac 1052b4f0 SpellSeed::ValidToRemoveFromHand(GInterfaceStatus *, MapCoords const &)
-bool SpellSeed::ValidToRemoveFromHand(GInterfaceStatus* param_1, const MapCoords* param_2)
+bool32_t SpellSeed::ValidToRemoveFromHand(GInterfaceStatus* param_1, const MapCoords* param_2)
 {
     return 0;
 }
 
 // win1.41 00728810 mac 1052b1f0 SpellSeed::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool SpellSeed::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t SpellSeed::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 00728940 mac 1052b0d0 SpellSeed::InterfaceSetOutMagicHand(GInterfaceStatus *)
-bool SpellSeed::InterfaceSetOutMagicHand(GInterfaceStatus* param_1)
+bool32_t SpellSeed::InterfaceSetOutMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -131,7 +131,7 @@ void SpellSeed::RemoveMapObject()
 }
 
 // win1.41 00728f50 mac 1052a390 SpellSeed::IsEffectReceiver(EffectValues *)
-bool SpellSeed::IsEffectReceiver(EffectValues* param_1)
+bool32_t SpellSeed::IsEffectReceiver(EffectValues* param_1)
 {
     return 0;
 }
@@ -155,7 +155,7 @@ float SpellSeed::GetPSysPower()
 }
 
 // win1.41 00729930 mac 10528d60 SpellSeed::ProcessInHand(void)
-bool SpellSeed::ProcessInHand()
+bool32_t SpellSeed::ProcessInHand()
 {
     return 0;
 }

@@ -29,7 +29,7 @@ public:
     // win1.41 0053d150 mac 105c39d0 NewProfileBox::Destroy(void)
     virtual void Destroy();
     // win1.41 0053bd10 mac 105c5f90 NewProfileBox::CanESCOut(void)
-    virtual bool CanESCOut();
+    virtual bool32_t CanESCOut();
     // win1.41 0053d160 mac 105c3890 NewProfileBox::InitControls(void)
     virtual void InitControls();
 };

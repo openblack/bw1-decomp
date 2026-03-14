@@ -37,9 +37,9 @@ public:
     // win1.41 0041dd90 mac 10172860 Dove::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0041f130 mac 10173580 Dove::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 0041f110 mac 101735e0 Dove::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0041dd80 mac 10172830 Dove::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0041f190 mac 10173450 Dove::CanBePickedUpByCreature(Creature *)
@@ -75,13 +75,13 @@ public:
     // win1.41 0041eb50 mac 10175210 SpellDove::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0041fad0 mac 10172970 SpellDove::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 0041fb40 mac 10172890 SpellDove::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0041eb40 mac 101751d0 SpellDove::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0041f5c0 mac 10172e20 SpellDove::SetDying(void)
-    virtual bool SetDying();
+    virtual bool32_t SetDying();
     // win1.41 0041bde0 mac 10170a20 SpellDove::StandAnimation(void)
     virtual uint32_t StandAnimation();
     // win1.41 0041f620 mac 10172de0 SpellDove::GetNumTurnsToDieOver(void)

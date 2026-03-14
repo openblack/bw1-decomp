@@ -51,13 +51,13 @@ public:
     // win1.41 0066e030 mac 1011d5f0 PileFood::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0066f5e0 mac 10116570 PileFood::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 0066f5a0 mac 10116600 PileFood::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0066e020 mac 1011d5b0 PileFood::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055d690 mac 1011d570 PileFood::IsPileFood(void)
-    virtual bool IsPileFood();
+    virtual bool32_t IsPileFood();
     // win1.41 0066e2a0 mac 10119c00 PileFood::GetQueryFirstEnumText(void)
     virtual HELP_TEXT GetQueryFirstEnumText();
     // win1.41 0066e2d0 mac 10119b60 PileFood::GetQueryLastEnumText(void)
@@ -71,7 +71,7 @@ public:
     // win1.41 0066ec50 mac 10117fe0 PileFood::GetResourceType(void)
     virtual RESOURCE_TYPE GetResourceType();
     // win1.41 0066e1f0 mac 10119d80 PileFood::CreatureMustAvoid(Creature *)
-    virtual bool CreatureMustAvoid(Creature* param_1);
+    virtual bool32_t CreatureMustAvoid(Creature* param_1);
 
     // Constructors
 

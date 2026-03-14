@@ -87,11 +87,11 @@ public:
     // win1.41 0052eca0 mac 1004af20 MultiMapFixed::GetInfluence(void)
     virtual float GetInfluence();
     // win1.41 004014a0 mac 103dc840 MultiMapFixed::IsPlaytimeStructure(void)
-    virtual bool IsPlaytimeStructure();
+    virtual bool32_t IsPlaytimeStructure();
     // win1.41 004014b0 mac 103e2190 MultiMapFixed::IsPlaytimeStarted(void)
-    virtual bool IsPlaytimeStarted(); /* 0x870 */
+    virtual bool32_t IsPlaytimeStarted(); /* 0x870 */
     // win1.41 004014c0 mac 1037fbf0 MultiMapFixed::AddPlaytimeVillager(Villager *)
-    virtual bool AddPlaytimeVillager(Villager* villager);
+    virtual bool32_t AddPlaytimeVillager(Villager* villager);
     // win1.41 0052e840 mac 100e04f0 MultiMapFixed::CheckMapObject(void)
     virtual void CheckMapObject();
     // win1.41 004014d0 mac 1016ecd0 MultiMapFixed::GetResourceDropPosForComputerPlayer(RESOURCE_TYPE)
@@ -103,9 +103,9 @@ public:
     // win1.41 0052f010 mac 100debc0 MultiMapFixed::GetPercentRepairedFromWhenDamaged(void)
     virtual float GetPercentRepairedFromWhenDamaged();
     // win1.41 00438d70 mac 10368f30 MultiMapFixed::IsRepaired(void)
-    virtual bool IsRepaired();
+    virtual bool32_t IsRepaired();
     // win1.41 00438d80 mac 10570e90 MultiMapFixed::IsBuilt(void)
-    virtual bool32_tcorrect IsBuilt(); /* 0x890 */
+    virtual bool32_t IsBuilt(); /* 0x890 */
     // win1.41 0052efc0 mac 100dedd0 MultiMapFixed::GetPercentRepairedForNonFunctional(void)
     virtual float GetPercentRepairedForNonFunctional();
     // win1.41 0052efd0 mac 100ded00 MultiMapFixed::GetPercentForDrawBuilding(void)
@@ -115,11 +115,11 @@ public:
     // win1.41 00422010 mac 100a55c0 MultiMapFixed::GetPercentAbodeFullWithChildren(void)
     virtual float GetPercentAbodeFullWithChildren(); /* 0x8a0 */
     // win1.41 0052f0c0 mac 10040f00 MultiMapFixed::IsDrawBuilding(void)
-    virtual bool IsDrawBuilding();
+    virtual bool32_t IsDrawBuilding();
     // win1.41 0052ebb0 mac 100dfda0 MultiMapFixed::Built(void)
-    virtual bool Built();
+    virtual bool32_t Built();
     // win1.41 0052ec70 mac 100dfca0 MultiMapFixed::Repaired(void)
-    virtual bool Repaired();
+    virtual bool32_t Repaired();
     // win1.41 00401510 mac 100ddc00 MultiMapFixed::GetBuildingSiteWood(unsigned long *)
     virtual uint32_t GetBuildingSiteWood(uint32_t* param_1); /* 0x8b0 */
     // win1.41 00422020 mac 100a5620 MultiMapFixed::GetDestructionMesh(void)
@@ -129,7 +129,7 @@ public:
     // win1.41 00401520 mac 1005fe80 MultiMapFixed::GetBuildingObject(void)
     virtual void* GetBuildingObject();
     // win1.41 00422040 mac 100a56a0 MultiMapFixed::IsCivic(void)
-    virtual bool IsCivic(); /* 0x8c0 */
+    virtual bool32_t IsCivic(); /* 0x8c0 */
     // win1.41 00422060 mac 100a5720 MultiMapFixed::GetAbodeType(void)
     virtual ABODE_TYPE GetAbodeType();
     // win1.41 00401550 mac 102ff050 MultiMapFixed::SetPower(float)
@@ -137,7 +137,7 @@ public:
     // win1.41 00401560 mac 10369300 MultiMapFixed::GetResourcePos(RESOURCE_TYPE, long)
     virtual MapCoords* GetResourcePos(RESOURCE_TYPE type, int param_2);
     // win1.41 00401580 mac 1035b520 MultiMapFixed::IsPoisonedResource(RESOURCE_TYPE)
-    virtual bool IsPoisonedResource(); /* 0x8d0 */
+    virtual bool32_t IsPoisonedResource(); /* 0x8d0 */
     // win1.41 00401590 mac 10368ea0 MultiMapFixed::GetResourceNearestEdge(RESOURCE_TYPE, Object *, int)
     virtual MapCoords* GetResourceNearestEdge(MapCoords* coords, RESOURCE_TYPE type, Object* param_3, int param_4);
     // win1.41 0052ece0 mac 100df410 MultiMapFixed::GetDesireToBeRepaired(void)
@@ -157,7 +157,7 @@ public:
     // win1.41 0052f160 mac 100de8b0 MultiMapFixed::RemovePotFromStructure(PotStructure *)
     virtual void RemovePotFromStructure(PotStructure* structure);
     // win1.41 004220b0 mac 100a58c0 MultiMapFixed::GetShouldNotBeAddedToPlanned(void)
-    virtual bool GetShouldNotBeAddedToPlanned();
+    virtual bool32_t GetShouldNotBeAddedToPlanned();
     // win1.41 004220c0 mac 100a5910 MultiMapFixed::SetShouldNotBeAddedToPlanned(int)
     virtual void SetShouldNotBeAddedToPlanned(bool value);
     // win1.41 0052ed40 mac 100df2d0 MultiMapFixed::BuildBy(float)
@@ -192,25 +192,25 @@ public:
     // win1.41 00401540 mac 10569bb0 MultiMapFixed::CastMultiMapFixed(void)
     virtual MultiMapFixed* CastMultiMapFixed();
     // win1.41 0052ef70 mac 1005fb60 MultiMapFixed::IsFunctional(void)
-    virtual bool32_tcorrect IsFunctional();
+    virtual bool32_t IsFunctional();
     // win1.41 0052f310 mac 100de310 MultiMapFixed::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 0052f250 mac 100de470 MultiMapFixed::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& file);
+    virtual bool32_t Save(GameOSFile& file);
     // win1.41 00421fe0 mac 105b8ff0 MultiMapFixed::GetArrivePos(void)
     virtual MapCoords GetArrivePos();
     // win1.41 0052e480 mac 100e0e80 MultiMapFixed::IsObjectInMap(void)
-    virtual bool IsObjectInMap();
+    virtual bool32_t IsObjectInMap();
     // win1.41 004015e0 mac 10570a50 MultiMapFixed::IsBeingBuilt(Creature *)
     virtual bool32_t IsBeingBuilt(Creature* creature);
     // win1.41 00401600 mac 100dc2a0 MultiMapFixed::NeedsRepair(Creature *)
     virtual bool32_t NeedsRepair(Creature* creature);
     // win1.41 004e41c0 mac 105e5c20 MultiMapFixed::IsBuildingWhichIsBeingBuilt(Creature *)
-    virtual bool IsBuildingWhichIsBeingBuilt(Creature* creature);
+    virtual bool32_t IsBuildingWhichIsBeingBuilt(Creature* creature);
     // win1.41 00422050 mac 100a56e0 MultiMapFixed::IsWonder(void)
-    virtual bool32_tcorrect IsWonder();
+    virtual bool32_t IsWonder();
     // win1.41 0052f590 mac 100ddc50 MultiMapFixed::CreateBuildingSite(void)
-    virtual bool CreateBuildingSite();
+    virtual bool32_t CreateBuildingSite();
     // win1.41 0052e400 mac 10033c30 MultiMapFixed::GetMapChild(MapCell const &)
     virtual Object* GetMapChild(const MapCell& cell);
     // win1.41 0052e420 mac 100e0ec0 MultiMapFixed::SetMapChild(Object *, MapCell *)
@@ -234,25 +234,25 @@ public:
     // win1.41 00401490 mac 1056ea60 MultiMapFixed::AsMultiMapFixed(void)
     virtual MultiMapFixed* AsMultiMapFixed();
     // win1.41 0052f1f0 mac 100de6f0 MultiMapFixed::IsResourceStore(RESOURCE_TYPE)
-    virtual bool IsResourceStore(RESOURCE_TYPE type);
+    virtual bool32_t IsResourceStore(RESOURCE_TYPE type);
     // win1.41 0052f460 mac 100de000 MultiMapFixed::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-    virtual bool DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
+    virtual bool32_t DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
     // win1.41 0052f210 mac 100de5e0 MultiMapFixed::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
-    virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status);
+    virtual bool32_t DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status);
     // win1.41 0052ec60 mac 100dfd40 MultiMapFixed::StartOnFire(void)
     virtual void StartOnFire();
     // win1.41 0052f3d0 mac 100de230 MultiMapFixed::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 0052f490 mac 100dded0 MultiMapFixed::CreatureMustAvoid(Creature *)
-    virtual bool CreatureMustAvoid(Creature* param_1);
+    virtual bool32_t CreatureMustAvoid(Creature* param_1);
     // win1.41 00401530 mac 100a0e40 MultiMapFixed::IsSolidToNewAbode(void)
-    virtual bool IsSolidToNewAbode();
+    virtual bool32_t IsSolidToNewAbode();
     // win1.41 0052ef10 mac 100dee90 MultiMapFixed::SaveObject(LHOSFile &, MapCoords const &)
     virtual size_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 00401630 mac inlined MultiMapFixed::GetCollideData(void)
     virtual NewCollide* GetCollideData();
     // win1.41 0052e490 mac 100e0d80 MultiMapFixed::IsObjectFullyInMap(void)
-    virtual bool IsObjectFullyInMap();
+    virtual bool32_t IsObjectFullyInMap();
 
     // Static methods
 

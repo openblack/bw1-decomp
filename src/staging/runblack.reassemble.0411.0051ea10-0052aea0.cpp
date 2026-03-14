@@ -149,13 +149,13 @@ MultiMapFixed* PlannedFeature::CreatePlanned(float param_1)
 }
 
 // win1.41 00527550 mac 100d0ff0 PlannedFeature::Save(GameOSFile &)
-bool32_tcorrect PlannedFeature::Save(GameOSFile& file)
+bool32_t PlannedFeature::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00527580 mac 100d0f60 PlannedFeature::Load(GameOSFile &)
-bool32_tcorrect PlannedFeature::Load(GameOSFile& file)
+bool32_t PlannedFeature::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -173,13 +173,13 @@ uint32_t Feature::GetScriptObjectType()
 }
 
 // win1.41 005276d0 mac 100d0c30 Feature::IsMushroom(Creature *)
-bool Feature::IsMushroom(Creature* param_1)
+bool32_t Feature::IsMushroom(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527790 mac inlined WorshipSiteUpgrade::IsDrawBuilding(void)
-bool WorshipSiteUpgrade::IsDrawBuilding()
+bool32_t WorshipSiteUpgrade::IsDrawBuilding()
 {
     return 0;
 }
@@ -269,85 +269,85 @@ uint32_t Field::GetCreatureBeliefType()
 }
 
 // win1.41 00527f30 mac inlined Field::IsField(Creature *)
-bool Field::IsField(Creature* param_1)
+bool32_t Field::IsField(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527f40 mac inlined Field::IsField(void)
-bool Field::IsField()
+bool32_t Field::IsField()
 {
     return 0;
 }
 
 // win1.41 00527f50 mac 100d6050 Field::BenefitsFromHavingWaterSprinkledOnIt(Creature *)
-bool Field::BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1)
+bool32_t Field::BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527f60 mac 100d60d0 Field::CanBePoodOn(Creature *)
-bool Field::CanBePoodOn(Creature* param_1)
+bool32_t Field::CanBePoodOn(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527f70 mac 100d6110 Field::CanBePickedUpByCreature(Creature *)
-bool Field::CanBePickedUpByCreature(Creature* param_1)
+bool32_t Field::CanBePickedUpByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527f80 mac 100d6160 Field::CanBeStompedOnByCreature(Creature *)
-bool Field::CanBeStompedOnByCreature(Creature* param_1)
+bool32_t Field::CanBeStompedOnByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527f90 mac 100d61b0 Field::CanBeGivenToVillager(Creature *)
-bool Field::CanBeGivenToVillager(Creature* param_1)
+bool32_t Field::CanBeGivenToVillager(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527fa0 mac 100d6200 Field::CanBePutInAStoragePit(Creature *)
-bool Field::CanBePutInAStoragePit(Creature* param_1)
+bool32_t Field::CanBePutInAStoragePit(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527fb0 mac 100d6250 Field::CanBeDestroyedByStoning(Creature *)
-bool Field::CanBeDestroyedByStoning(Creature* param_1)
+bool32_t Field::CanBeDestroyedByStoning(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527fc0 mac 100d62a0 Field::CanBeExaminedByCreature(Creature *)
-bool Field::CanBeExaminedByCreature(Creature* param_1)
+bool32_t Field::CanBeExaminedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527fd0 mac 100d62f0 Field::CanBeEatenByCreature(Creature *)
-bool Field::CanBeEatenByCreature(Creature* param_1)
+bool32_t Field::CanBeEatenByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527fe0 mac 100d6340 Field::CanBeSleptNextToByCreature(Creature *)
-bool Field::CanBeSleptNextToByCreature(Creature* param_1)
+bool32_t Field::CanBeSleptNextToByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00527ff0 mac 100d6390 Field::IsBeingBuilt(Creature *)
-bool Field::IsBeingBuilt(Creature* param_1)
+bool32_t Field::IsBeingBuilt(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00528000 mac 100d63d0 Field::NeedsRepair(Creature *)
-bool Field::NeedsRepair(Creature* param_1)
+bool32_t Field::NeedsRepair(Creature* param_1)
 {
     return 0;
 }
@@ -359,25 +359,25 @@ RESOURCE_TYPE Field::GetResourceType()
 }
 
 // win1.41 00528020 mac 100d6410 Field::InteractsWithPhysicsObjects(void)
-bool Field::InteractsWithPhysicsObjects()
+bool32_t Field::InteractsWithPhysicsObjects()
 {
     return 0;
 }
 
 // win1.41 00528030 mac 100d6450 Field::CanBecomeAPhysicsObject(void)
-bool32_tcorrect Field::CanBecomeAPhysicsObject()
+bool32_t Field::CanBecomeAPhysicsObject()
 {
     return 0;
 }
 
 // win1.41 00528040 mac 100d6490 Field::IsTuggable(void)
-bool Field::IsTuggable()
+bool32_t Field::IsTuggable()
 {
     return 0;
 }
 
 // win1.41 00528050 mac 100d64c0 Field::IsLockedInInteract(void)
-bool Field::IsLockedInInteract()
+bool32_t Field::IsLockedInInteract()
 {
     return 0;
 }
@@ -400,7 +400,7 @@ Field::~Field()
 }
 
 // win1.41 005280c0 mac 100d5880 Field::CreatureMustAvoid(Creature *)
-bool Field::CreatureMustAvoid(Creature* param_1)
+bool32_t Field::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }
@@ -427,7 +427,7 @@ void Field::GetFireGPHXDrawn(bool* param_1, bool* param_2, bool* param_3, bool* 
 }
 
 // win1.41 00528900 mac 100d4c80 Field::IsEffectReceiver(EffectValues *)
-bool Field::IsEffectReceiver(EffectValues* param_1)
+bool32_t Field::IsEffectReceiver(EffectValues* param_1)
 {
     return 0;
 }
@@ -468,7 +468,7 @@ uint32_t Field::SaveObject(LHOSFile& file, const MapCoords& coords)
 }
 
 // win1.41 00528e50 mac 100d4190 GFieldTypeInfo::IsOkToCreateAtPos( const(MapCoords const &, float, float))
-bool GFieldTypeInfo::IsOkToCreateAtPos(const MapCoords* param_1, float param_2, float param_3)
+bool32_t GFieldTypeInfo::IsOkToCreateAtPos(const MapCoords* param_1, float param_2, float param_3)
 {
     return 0;
 }
@@ -480,7 +480,7 @@ float Field::Get2DRadius()
 }
 
 // win1.41 00528ef0 mac 100d40d0 Field::ValidForPlaceInHand(GInterfaceStatus *)
-bool Field::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t Field::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -510,7 +510,7 @@ bool32_t Field::GetPlantCropPos()
 }
 
 // win1.41 00529290 mac inlined Field::IsTouching_2( const(MapCoords *))
-bool Field::IsTouching_2(MapCoords* param_1)
+bool32_t Field::IsTouching_2(MapCoords* param_1)
 {
     return 0;
 }
@@ -534,7 +534,7 @@ float Field::GetPercentFull()
 }
 
 // win1.41 00529520 mac 100d3560 Field::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool Field::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t Field::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -570,31 +570,31 @@ bool32_t Field::ValidForLockedSelectProcess(GInterfaceStatus* param_1)
 }
 
 // win1.41 00529a20 mac 100d29b0 Field::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
-bool Field::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
+bool32_t Field::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
 {
     return 0;
 }
 
 // win1.41 00529a60 mac 100d28b0 Field::NetworkUnfriendlyEndLockedSelect(void)
-bool Field::NetworkUnfriendlyEndLockedSelect()
+bool32_t Field::NetworkUnfriendlyEndLockedSelect()
 {
     return 0;
 }
 
 // win1.41 00529af0 mac 100d2830 Field::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
-bool Field::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
+bool32_t Field::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 00529b10 mac 100d23a0 Field::Save(GameOSFile &)
-bool32_tcorrect Field::Save(GameOSFile& file)
+bool32_t Field::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00529d60 mac 100d1eb0 Field::Load(GameOSFile &)
-bool32_tcorrect Field::Load(GameOSFile& file)
+bool32_t Field::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -606,7 +606,7 @@ uint32_t Field::GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Vill
 }
 
 // win1.41 00529ff0 mac inlined Field::CanBeDestroyedBySpell_1(Spell *)
-bool Field::CanBeDestroyedBySpell(Spell* param_1)
+bool32_t Field::CanBeDestroyedBySpell(Spell* param_1)
 {
     return 0;
 }
@@ -618,7 +618,7 @@ uint32_t Field::GetOverwriteInteractableToolTip()
 }
 
 // win1.41 0052a010 mac 100d1c70 Field::DestroyedByEffect(GPlayer *, float)
-bool Field::DestroyedByEffect(GPlayer* param_1, float param_2)
+bool32_t Field::DestroyedByEffect(GPlayer* param_1, float param_2)
 {
     return 0;
 }
@@ -634,7 +634,7 @@ void Field::ReduceLife(float param_1, GPlayer* param_2)
 }
 
 // win1.41 0052a1a0 mac 100da240 FireFly::InteractsWithPhysicsObjects(void)
-bool FireFly::InteractsWithPhysicsObjects()
+bool32_t FireFly::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -645,13 +645,13 @@ void FireFly::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 0052a1c0 mac 100da1b0 FireFly::CanBecomeAPhysicsObject(void)
-bool32_tcorrect FireFly::CanBecomeAPhysicsObject()
+bool32_t FireFly::CanBecomeAPhysicsObject()
 {
     return 0;
 }
 
 // win1.41 0052a1d0 mac 100da180 FireFly::IsMoving( const(void))
-bool FireFly::IsMoving()
+bool32_t FireFly::IsMoving()
 {
     return 0;
 }

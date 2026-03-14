@@ -41,9 +41,9 @@ public:
     // win1.41 004208d0 mac 10176ab0 SpellWolf::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004210b0 mac 10176d80 SpellWolf::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 004211d0 mac 10176bb0 SpellWolf::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 004208c0 mac 10176a70 SpellWolf::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0051c560 mac 100c4a10 SpellWolf::Draw(void)
@@ -51,7 +51,7 @@ public:
     // win1.41 00420910 mac 10177d60 SpellWolf::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00420cf0 mac 101777b0 SpellWolf::SetDying(void)
-    virtual bool SetDying();
+    virtual bool32_t SetDying();
     // win1.41 0041c6a0 mac 1016ee70 SpellWolf::StandAnimation(void)
     virtual uint32_t StandAnimation();
     // win1.41 004209b0 mac 10177c00 SpellWolf::SetSpeed(long)

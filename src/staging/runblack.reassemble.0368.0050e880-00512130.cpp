@@ -42,13 +42,13 @@ IMMERSION_EFFECT_TYPE DeadTree::GetInHandImmersionTexture()
 }
 
 // win1.41 00510980 mac 100c0e80 DeadTree::IsAnyKindOfTree(void)
-bool DeadTree::IsAnyKindOfTree()
+bool32_t DeadTree::IsAnyKindOfTree()
 {
     return 0;
 }
 
 // win1.41 00510990 mac 100c0ec0 DeadTree::IsDeadTree(void)
-bool DeadTree::IsDeadTree()
+bool32_t DeadTree::IsDeadTree()
 {
     return 0;
 }
@@ -66,13 +66,13 @@ uint32_t DeadTree::InterfaceTap(GInterfaceStatus* param_1)
 }
 
 // win1.41 005109c0 mac 100c0fa0 DeadTree::HandShouldFeelWithMeshIntersect(void)
-bool DeadTree::HandShouldFeelWithMeshIntersect()
+bool32_t DeadTree::HandShouldFeelWithMeshIntersect()
 {
     return 0;
 }
 
 // win1.41 005109d0 mac inlined DeadTree::IsRock_0(void)
-bool DeadTree::IsRock()
+bool32_t DeadTree::IsRock()
 {
     return 0;
 }
@@ -127,7 +127,7 @@ void DeadTree::StartOnFire()
 }
 
 // win1.41 00510e30 mac 100c2e50 DeadTree::CreatureMustAvoid(Creature *)
-bool DeadTree::CreatureMustAvoid(Creature* param_1)
+bool32_t DeadTree::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }
@@ -197,13 +197,13 @@ void DeadTree::SetUpPhysOb(PhysOb* param_1)
 }
 
 // win1.41 005111f0 mac 100c2490 DeadTree::InteractsWithPhysicsObjects(void)
-bool DeadTree::InteractsWithPhysicsObjects()
+bool32_t DeadTree::InteractsWithPhysicsObjects()
 {
     return 0;
 }
 
 // win1.41 00511200 mac 100c2450 DeadTree::IsARootedObject(void)
-bool DeadTree::IsARootedObject()
+bool32_t DeadTree::IsARootedObject()
 {
     return 0;
 }
@@ -244,13 +244,13 @@ uint32_t DeadTree::GetScriptObjectType()
 }
 
 // win1.41 005115c0 mac 100c1b30 DeadTree::Save(GameOSFile &)
-bool32_tcorrect DeadTree::Save(GameOSFile& file)
+bool32_t DeadTree::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00511630 mac 100c1a50 DeadTree::Load(GameOSFile &)
-bool32_tcorrect DeadTree::Load(GameOSFile& file)
+bool32_t DeadTree::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -273,7 +273,7 @@ FelledTree::~FelledTree()
 }
 
 // win1.41 00511a10 mac 100c1250 DeadTree::CanBecomeAPhysicsObject(void)
-bool32_tcorrect DeadTree::CanBecomeAPhysicsObject()
+bool32_t DeadTree::CanBecomeAPhysicsObject()
 {
     return 0;
 }

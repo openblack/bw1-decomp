@@ -46,9 +46,9 @@ public:
     // win1.41 00709860 mac 104fa730 ScriptHighlight::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0070a8f0 mac 104fb050 ScriptHighlight::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 0070a760 mac 104fb290 ScriptHighlight::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00709850 mac 104fa6f0 ScriptHighlight::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00709760 mac 104fa210 ScriptHighlight::PhysicsEditorCreate(int)
@@ -56,21 +56,21 @@ public:
     // win1.41 0070ae10 mac 104fa8c0 ScriptHighlight::GetOverwriteTapToolTip(void)
     virtual uint32_t GetOverwriteTapToolTip();
     // win1.41 007097a0 mac 104fa370 ScriptHighlight::CanBeSleptNextToByCreature(Creature *)
-    virtual bool CanBeSleptNextToByCreature(Creature* param_1);
+    virtual bool32_t CanBeSleptNextToByCreature(Creature* param_1);
     // win1.41 00709830 mac 104fa640 ScriptHighlight::CanBePickedUpByCreature(Creature *)
-    virtual bool CanBePickedUpByCreature(Creature* param_1);
+    virtual bool32_t CanBePickedUpByCreature(Creature* param_1);
     // win1.41 007097c0 mac 104fa420 ScriptHighlight::CanBeSetOnFire(Creature *)
-    virtual bool CanBeSetOnFire(Creature* param_1);
+    virtual bool32_t CanBeSetOnFire(Creature* param_1);
     // win1.41 007097b0 mac 104fa3d0 ScriptHighlight::CanBeDestroyedByStoning(Creature *)
-    virtual bool CanBeDestroyedByStoning(Creature* param_1);
+    virtual bool32_t CanBeDestroyedByStoning(Creature* param_1);
     // win1.41 00709750 mac 104fa1d0 ScriptHighlight::IsActive( const(void))
-    virtual bool IsActive();
+    virtual bool32_t IsActive();
     // win1.41 0070aa70 mac 104faf70 ScriptHighlight::ForDrawFXGetNumVertices(void)
     virtual int ForDrawFXGetNumVertices();
     // win1.41 0070aac0 mac 104facf0 ScriptHighlight::ForDrawFXGetVertexPos(long, LHPoint *)
     virtual void ForDrawFXGetVertexPos(int param_1, LHPoint* param_2);
     // win1.41 00709740 mac 104fa180 ScriptHighlight::IsScriptHighlight(void)
-    virtual bool IsScriptHighlight();
+    virtual bool32_t IsScriptHighlight();
     // win1.41 0070ae30 mac 100083b0 ScriptHighlight::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 0070a580 mac 10055e10 ScriptHighlight::Process(void)
@@ -78,15 +78,15 @@ public:
     // win1.41 00709c60 mac 10043ec0 ScriptHighlight::Draw(void)
     virtual void Draw();
     // win1.41 007097d0 mac 104fa470 ScriptHighlight::CanBeCrushed(void)
-    virtual bool CanBeCrushed();
+    virtual bool32_t CanBeCrushed();
     // win1.41 00709aa0 mac 104fbb00 ScriptHighlight::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00709800 mac 104fa550 ScriptHighlight::ValidAsInterfaceTarget(void)
-    virtual bool ValidAsInterfaceTarget();
+    virtual bool32_t ValidAsInterfaceTarget();
     // win1.41 00709770 mac 104fa250 ScriptHighlight::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 00709840 mac 104fa690 ScriptHighlight::InterfaceMustBeInInfluenceForInteraction(void)
-    virtual bool InterfaceMustBeInInfluenceForInteraction();
+    virtual bool32_t InterfaceMustBeInInfluenceForInteraction();
     // win1.41 00709790 mac 104fa300 ScriptHighlight::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
     virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
     // win1.41 00709780 mac 104fa2b0 ScriptHighlight::ApplyOnlyAfterReleased(void)
@@ -96,11 +96,11 @@ public:
     // win1.41 0070ac70 mac 104faa10 ScriptHighlight::InterfaceTap(GInterfaceStatus *)
     virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
     // win1.41 007097e0 mac 104fa4b0 ScriptHighlight::IsEffectReceiver(EffectValues *)
-    virtual bool IsEffectReceiver(EffectValues* param_1);
+    virtual bool32_t IsEffectReceiver(EffectValues* param_1);
     // win1.41 00709820 mac 104fa5f0 ScriptHighlight::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 00709810 mac 104fa5a0 ScriptHighlight::CanBecomeAPhysicsObject(void)
-    virtual bool32_tcorrect CanBecomeAPhysicsObject();
+    virtual bool32_t CanBecomeAPhysicsObject();
     // win1.41 0070ae40 mac 104fa770 ScriptHighlight::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
     virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int, Point2D, float, int));
 
@@ -114,7 +114,7 @@ public:
     // win1.41 0070a630 mac 104fb550 ScriptHighlight::SetActivated(int)
     void SetActivated(int param_1);
     // win1.41 0070ac20 mac 1004f0b0 ScriptHighlight::IsDidYouKnow(void)
-    bool IsDidYouKnow();
+    bool32_t IsDidYouKnow();
 };
 
 #else // __cplusplus

@@ -41,13 +41,13 @@ public:
     // win1.41 005135f0 mac 102b22e0 DialogBoxBase::Show(void)
     virtual void Show();
     // win1.41 005127e0 mac 100fd5d0 DialogBoxBase::CloseNotification(void)
-    virtual bool CloseNotification();
+    virtual bool32_t CloseNotification();
     // win1.41 005127f0 mac 10504080 DialogBoxBase::WantsKeyControl(void)
-    virtual bool WantsKeyControl();
+    virtual bool32_t WantsKeyControl();
     // win1.41 00512800 mac 100fd610 DialogBoxBase::WantsMouseControl(void)
-    virtual bool WantsMouseControl();
+    virtual bool32_t WantsMouseControl();
     // win1.41 00512810 mac 103c4090 DialogBoxBase::CanESCOut(void)
-    virtual bool CanESCOut();
+    virtual bool32_t CanESCOut();
 
     // Static methods
 

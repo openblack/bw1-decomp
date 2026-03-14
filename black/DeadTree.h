@@ -52,17 +52,17 @@ public:
     // win1.41 0071be30 mac 1050fb30 DeadTree::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // win1.41 00511630 mac 100c1a50 DeadTree::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 005115c0 mac 100c1b30 DeadTree::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 005109e0 mac 100c4120 DeadTree::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005109d0 mac inlined DeadTree::IsRock_0(void)
-    virtual bool IsRock();
+    virtual bool32_t IsRock();
     // win1.41 00510980 mac 100c0e80 DeadTree::IsAnyKindOfTree(void)
-    virtual bool IsAnyKindOfTree();
+    virtual bool32_t IsAnyKindOfTree();
     // win1.41 00510990 mac 100c0ec0 DeadTree::IsDeadTree(void)
-    virtual bool IsDeadTree();
+    virtual bool32_t IsDeadTree();
     // win1.41 005115b0 mac 100c1c10 DeadTree::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 005110d0 mac 100c2890 DeadTree::GetHoldType(void)
@@ -72,7 +72,7 @@ public:
     // win1.41 005110f0 mac 100c27d0 DeadTree::GetHoldLoweringMultiplier(void)
     virtual float GetHoldLoweringMultiplier();
     // win1.41 005109c0 mac 100c0fa0 DeadTree::HandShouldFeelWithMeshIntersect(void)
-    virtual bool HandShouldFeelWithMeshIntersect();
+    virtual bool32_t HandShouldFeelWithMeshIntersect();
     // win1.41 00510ce0 mac inlined DeadTree::GetDefaultFireCentrePos(LHPoint *)
     virtual LHPoint* GetDefaultFireCentrePos(LHPoint* param_1);
     // win1.41 00510e10 mac 100c2f40 DeadTree::GetDefaultFireRadius(void)
@@ -110,15 +110,15 @@ public:
     // win1.41 005113f0 mac 100c1f10 DeadTree::EndPhysics(PhysicsObject *, bool)
     virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
     // win1.41 005111f0 mac 100c2490 DeadTree::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 00510ca0 mac 100c3670 DeadTree::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 00511a10 mac 100c1250 DeadTree::CanBecomeAPhysicsObject(void)
-    virtual bool32_tcorrect CanBecomeAPhysicsObject();
+    virtual bool32_t CanBecomeAPhysicsObject();
     // win1.41 00510e30 mac 100c2e50 DeadTree::CreatureMustAvoid(Creature *)
-    virtual bool CreatureMustAvoid(Creature* param_1);
+    virtual bool32_t CreatureMustAvoid(Creature* param_1);
     // win1.41 00511200 mac 100c2450 DeadTree::IsARootedObject(void)
-    virtual bool IsARootedObject();
+    virtual bool32_t IsARootedObject();
     // win1.41 00511130 mac 100c2640 DeadTree::GetCollideSoundType(void)
     virtual SOUND_COLLISION_TYPE GetCollideSoundType();
     // win1.41 00511a20 mac 100c10e0 DeadTree::GetCarriedTreeType(void)

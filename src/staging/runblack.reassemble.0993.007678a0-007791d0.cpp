@@ -121,7 +121,7 @@ uint32_t Living::AttitudeToCreatureEating()
 }
 
 // win1.41 00768630 mac 10597660 Villager::IsReadyForNewScriptAction(void)
-bool Villager::IsReadyForNewScriptAction()
+bool32_t Villager::IsReadyForNewScriptAction()
 {
     return 0;
 }
@@ -438,19 +438,19 @@ uint32_t Villager::AtStructureAddResource(MultiMapFixed* param_1, RESOURCE_TYPE 
 }
 
 // win1.41 0076a4c0 mac 1059a990 Villager::SetDying(void)
-bool Villager::SetDying()
+bool32_t Villager::SetDying()
 {
     return 0;
 }
 
 // win1.41 0076a570 mac 1059a890 Villager::Dying(void)
-bool Villager::Dying()
+bool32_t Villager::Dying()
 {
     return 0;
 }
 
 // win1.41 0076a5e0 mac 1059a580 Villager::Dead(void)
-bool Villager::Dead()
+bool32_t Villager::Dead()
 {
     return 0;
 }
@@ -534,7 +534,7 @@ bool32_t Villager::ExitSex(unsigned char param_1)
 }
 
 // win1.41 0076ade0 mac 1000abe0 Villager::InHand(void)
-bool Villager::InHand()
+bool32_t Villager::InHand()
 {
     return 0;
 }
@@ -600,7 +600,7 @@ bool32_t Villager::CongregateInTownAfterEmergency()
 }
 
 // win1.41 0076b380 mac 10598f90 Villager::BeingEaten(void)
-bool Villager::BeingEaten()
+bool32_t Villager::BeingEaten()
 {
     return 0;
 }
@@ -942,13 +942,13 @@ GVirtualInfluence::~GVirtualInfluence()
 // }
 
 // win1.41 0076e930 mac 1015aab0 Fragment::CanBePickedUpByCreature(Creature *)
-bool Fragment::CanBePickedUpByCreature(Creature* param_1)
+bool32_t Fragment::CanBePickedUpByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0076e940 mac 1015ab00 Fragment::ValidForPlaceInHand(GInterfaceStatus *)
-bool Fragment::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t Fragment::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -960,7 +960,7 @@ uint32_t Fragment::InterfaceValidToTap(GInterfaceStatus* param_1)
 }
 
 // win1.41 0076e960 mac 1015aba0 Fragment::CanBeThrownByPlayer(void)
-bool Fragment::CanBeThrownByPlayer()
+bool32_t Fragment::CanBeThrownByPlayer()
 {
     return 0;
 }
@@ -1015,7 +1015,7 @@ void Fragment::SetUpPhysOb(PhysOb* param_1)
 }
 
 // win1.41 0076f3d0 mac 1015b4f0 Fragment::InteractsWithPhysicsObjects(void)
-bool Fragment::InteractsWithPhysicsObjects()
+bool32_t Fragment::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -1031,13 +1031,13 @@ void Fragment::EndPhysics(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 0076f5d0 mac 1015b130 Fragment::Save(GameOSFile &)
-bool32_tcorrect Fragment::Save(GameOSFile& file)
+bool32_t Fragment::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0076f6a0 mac 1015afa0 Fragment::Load(GameOSFile &)
-bool32_tcorrect Fragment::Load(GameOSFile& file)
+bool32_t Fragment::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1060,13 +1060,13 @@ SOUND_COLLISION_TYPE Fragment::GetCollideSoundType()
 }
 
 // win1.41 0076f7e0 mac 1015ae70 Fragment::ShouldFootpathsGoRound(void)
-bool Fragment::ShouldFootpathsGoRound()
+bool32_t Fragment::ShouldFootpathsGoRound()
 {
     return 0;
 }
 
 // win1.41 0076f7f0 mac 1015ae00 Fragment::CreatureMustAvoid(Creature *)
-bool Fragment::CreatureMustAvoid(Creature* param_1)
+bool32_t Fragment::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }
@@ -1083,13 +1083,13 @@ VortexSave::~VortexSave()
 }
 
 // win1.41 0076fb40 mac 1015ed90 VortexSave::Save(GameOSFile &)
-bool32_tcorrect VortexSave::Save(GameOSFile& file)
+bool32_t VortexSave::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0076fdc0 mac 1015e890 VortexSave::Load(GameOSFile &)
-bool32_tcorrect VortexSave::Load(GameOSFile& file)
+bool32_t VortexSave::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1160,13 +1160,13 @@ void GClimate::ToBeDeleted(int param_1)
 }
 
 // win1.41 00773320 mac 1059f860 GClimate::Save(GameOSFile &)
-bool32_tcorrect GClimate::Save(GameOSFile& file)
+bool32_t GClimate::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007736e0 mac 1059ef90 GClimate::Load(GameOSFile &)
-bool32_tcorrect GClimate::Load(GameOSFile& file)
+bool32_t GClimate::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1204,13 +1204,13 @@ void WeatherThing::SetSpeedInMetres(float param_1, int param_2)
 }
 
 // win1.41 007745c0 mac 105a4300 WeatherThing::Save(GameOSFile &)
-bool32_tcorrect WeatherThing::Save(GameOSFile& file)
+bool32_t WeatherThing::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007747e0 mac 105a3fe0 WeatherThing::Load(GameOSFile &)
-bool32_tcorrect WeatherThing::Load(GameOSFile& file)
+bool32_t WeatherThing::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1237,13 +1237,13 @@ uint32_t Whale::Process()
 }
 
 // win1.41 007752a0 mac 101600f0 Whale::Save(GameOSFile &)
-bool32_tcorrect Whale::Save(GameOSFile& file)
+bool32_t Whale::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007752c0 mac 10160090 Whale::Load(GameOSFile &)
-bool32_tcorrect Whale::Load(GameOSFile& file)
+bool32_t Whale::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1270,7 +1270,7 @@ Wonder* Wonder::Create(const MapCoords* coords, const GAbodeInfo* info, Town* to
 }
 
 // win1.41 00778f30 mac 10161920 Wonder::Built(void)
-bool Wonder::Built()
+bool32_t Wonder::Built()
 {
     return 0;
 }
@@ -1296,13 +1296,13 @@ void Wonder::SetPower(float param_1)
 }
 
 // win1.41 00779080 mac 10161540 Wonder::Save(GameOSFile &)
-bool32_tcorrect Wonder::Save(GameOSFile& file)
+bool32_t Wonder::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007790f0 mac 10161470 Wonder::Load(GameOSFile &)
-bool32_tcorrect Wonder::Load(GameOSFile& file)
+bool32_t Wonder::Load(GameOSFile& file)
 {
     return 0;
 }

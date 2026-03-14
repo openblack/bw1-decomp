@@ -10,31 +10,31 @@ Villager* Villager::FindImmediateNeighbour()
 }
 
 // win1.41 00759930 mac 10577560 Villager::DanceForEditingPurposes(void)
-bool Villager::DanceForEditingPurposes()
+bool32_t Villager::DanceForEditingPurposes()
 {
     return false;
 }
 
 // win1.41 00759960 mac 105774f0 Villager::DanceButNotWorship(void)
-bool Villager::DanceButNotWorship()
+bool32_t Villager::DanceButNotWorship()
 {
     return false;
 }
 
 // win1.41 00759990 mac 10577430 Villager::MoveToDancePos(void)
-bool Villager::MoveToDancePos()
+bool32_t Villager::MoveToDancePos()
 {
     return false;
 }
 
 // win1.41 00759a00 mac 105772e0 Villager::ControlledByCreature(void)
-bool Villager::ControlledByCreature()
+bool32_t Villager::ControlledByCreature()
 {
     return false;
 }
 
 // win1.41 00759a90 mac 105770d0 Villager::ExitControlledByCreature(unsigned char)
-bool Villager::ExitControlledByCreature(unsigned char param_1)
+bool32_t Villager::ExitControlledByCreature(unsigned char param_1)
 {
     return false;
 }

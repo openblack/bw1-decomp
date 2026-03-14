@@ -34,7 +34,7 @@ struct PathCreator
     // win1.41 0078eae0 mac 101ca330 PathCreator::GetCurrentGamePath(char*)
     void GetCurrentGamePath(char* path);
     // win1.41 0078efc0 mac 103655d0 PathCreator::CheckAndRecreateSaveGamePaths(void)
-    bool CheckAndRecreateSaveGamePaths();
+    bool32_t CheckAndRecreateSaveGamePaths();
 };
 
 #else // __cplusplus

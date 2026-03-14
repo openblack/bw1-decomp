@@ -23,7 +23,7 @@ public:
     // Override methods
 
     // win1.41 006336d0 mac 10109aa0 CreatureDatabase::Send(void)
-    virtual bool Send();
+    virtual bool32_t Send();
 
     // Constructors
 

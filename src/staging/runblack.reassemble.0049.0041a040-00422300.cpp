@@ -63,13 +63,13 @@ uint32_t Animal::KeepFlockMemberWithinFlockArea()
 }
 
 // win1.41 0041acc0 mac 10166b90 Animal::DecideWhatToDo(void)
-bool Animal::DecideWhatToDo()
+bool32_t Animal::DecideWhatToDo()
 {
     return 0;
 }
 
 // win1.41 0041b100 mac inlined Animal::IsStateExitFunctionSameAs( const(VILLAGER_STATES))
-bool Animal::IsStateExitFunctionSameAs(VILLAGER_STATES param_1)
+bool32_t Animal::IsStateExitFunctionSameAs(VILLAGER_STATES param_1)
 {
     return 0;
 }
@@ -81,7 +81,7 @@ int Animal::ExitReaction(VILLAGER_STATES param_1)
 }
 
 // win1.41 0041b1b0 mac 101666a0 Animal::DestroyedByEffect(GPlayer *, float)
-bool Animal::DestroyedByEffect(GPlayer* param_1, float param_2)
+bool32_t Animal::DestroyedByEffect(GPlayer* param_1, float param_2)
 {
     return 0;
 }
@@ -99,7 +99,7 @@ uint32_t Animal::GetScriptObjectType()
 }
 
 // win1.41 0041b210 mac 10055c50 Animal::IsPosValidForTurnAngle(MapCoords const &)
-bool Animal::IsPosValidForTurnAngle(const MapCoords* param_1)
+bool32_t Animal::IsPosValidForTurnAngle(const MapCoords* param_1)
 {
     return 0;
 }
@@ -117,19 +117,19 @@ uint32_t Animal::ApplyThisToObject(GInterfaceStatus* param_1, Object* param_2, G
 }
 
 // win1.41 0041b430 mac inlined Animal::IsFinalState(VILLAGER_STATES)
-bool Animal::IsFinalState(VILLAGER_STATES param_1)
+bool32_t Animal::IsFinalState(VILLAGER_STATES param_1)
 {
     return 0;
 }
 
 // win1.41 0041b460 mac 101659a0 Animal::Save(GameOSFile &)
-bool32_tcorrect Animal::Save(GameOSFile& file)
+bool32_t Animal::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0041b710 mac 10165620 Animal::Load(GameOSFile &)
-bool32_tcorrect Animal::Load(GameOSFile& file)
+bool32_t Animal::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -140,7 +140,7 @@ void Animal::ResolveLoad()
 }
 
 // win1.41 0041bb00 mac 101650c0 Animal::IsChild(void)
-bool Animal::IsChild()
+bool32_t Animal::IsChild()
 {
     return 0;
 }
@@ -257,13 +257,13 @@ void MultiMapFixed::RemoveDamage()
 }
 
 // win1.41 00422040 mac 100a56a0 MultiMapFixed::IsCivic(void)
-bool MultiMapFixed::IsCivic()
+bool32_t MultiMapFixed::IsCivic()
 {
     return 0;
 }
 
 // win1.41 00422050 mac 100a56e0 MultiMapFixed::IsWonder(void)
-bool32_tcorrect MultiMapFixed::IsWonder()
+bool32_t MultiMapFixed::IsWonder()
 {
     return 0;
 }
@@ -298,7 +298,7 @@ Town* MultiMapFixed::GetTown()
 }
 
 // win1.41 004220b0 mac 100a58c0 MultiMapFixed::GetShouldNotBeAddedToPlanned(void)
-bool MultiMapFixed::GetShouldNotBeAddedToPlanned()
+bool32_t MultiMapFixed::GetShouldNotBeAddedToPlanned()
 {
     return 0;
 }
@@ -315,19 +315,19 @@ int Feature::GetMesh() const
 }
 
 // win1.41 004220e0 mac 100a5350 Feature::IsFeature(void)
-bool Feature::IsFeature()
+bool32_t Feature::IsFeature()
 {
     return 0;
 }
 
 // win1.41 004220f0 mac inlined WorshipSiteUpgrade::IsRepaired(void)
-bool WorshipSiteUpgrade::IsRepaired()
+bool32_t WorshipSiteUpgrade::IsRepaired()
 {
     return 0;
 }
 
 // win1.41 00422110 mac inlined WorshipSiteUpgrade::IsBuilt(void)
-bool32_tcorrect WorshipSiteUpgrade::IsBuilt()
+bool32_t WorshipSiteUpgrade::IsBuilt()
 {
     return 0;
 }
@@ -339,7 +339,7 @@ uint32_t Feature::GetCreatureBeliefType()
 }
 
 // win1.41 00422150 mac 100a54d0 Feature::CanBePickedUpByCreature(Creature *)
-bool Feature::CanBePickedUpByCreature(Creature* param_1)
+bool32_t Feature::CanBePickedUpByCreature(Creature* param_1)
 {
     return 0;
 }

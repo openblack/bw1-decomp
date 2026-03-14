@@ -21,7 +21,7 @@ void MiniDialogBoxOptions::InitControls()
 }
 
 // win1.41 00515810 mac 102b27a0 MiniDialogBoxOptions::CanESCOut(void)
-bool MiniDialogBoxOptions::CanESCOut()
+bool32_t MiniDialogBoxOptions::CanESCOut()
 {
     return 0;
 }

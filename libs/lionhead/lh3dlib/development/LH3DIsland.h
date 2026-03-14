@@ -28,7 +28,7 @@ struct LandCell
     // Non-virtual methods
 
     // win1.41 inlined mac 1000cd10 LandCell::IsWater(void)
-    bool IsWater();
+    bool32_t IsWater();
 };
 
 struct LH3DIsland
@@ -38,13 +38,13 @@ struct LH3DIsland
     // win1.41 00516aa0 mac 100484b0 LH3DIsland::GetCell(long, long)
     static LandCell* GetCell(int x, int z);
     // win1.41 0060d3a0 mac inlined LH3DIsland::IsWater(long, long)
-    static bool IsWater(int x, int y);
+    static bool32_t IsWater(int x, int y);
     // win1.41 00803090 mac 10048554 LH3DIsland::GetAltitude(LH3DMapCoords const &)
     static float GetAltitude(const LH3DMapCoords& coords);
     // win1.41 00803340 mac 10048110 LH3DIsland::GetAltitudeAndSetColorSpecular(LH3DMapCoords const &, ulong *, ulong *)
     static float GetAltitudeAndSetColorSpecular(const LH3DMapCoords& coords, LH3DColor* param_2, LH3DColor* param_3);
     // win1.41 00804790 mac 1061cc34 LH3DIsland::Release(void)
-    static bool Release();
+    static bool32_t Release();
     // win1.41 007ff2d0 mac 10022e10 LH3DIsland::PreDraw(void)
     static void PreDraw();
 };

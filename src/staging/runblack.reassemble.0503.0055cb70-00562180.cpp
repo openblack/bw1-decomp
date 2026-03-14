@@ -89,31 +89,31 @@ LH3DObject::ObjectType StoragePit::Get3DType()
 }
 
 // win1.41 0055cce0 mac 101513e0 StoragePit::CausesTownEmergencyIfDamaged(void)
-bool StoragePit::CausesTownEmergencyIfDamaged()
+bool32_t StoragePit::CausesTownEmergencyIfDamaged()
 {
     return 0;
 }
 
 // win1.41 0055ccf0 mac 10151430 StoragePit::IsCastShadowAtNight(void)
-bool StoragePit::IsCastShadowAtNight()
+bool32_t StoragePit::IsCastShadowAtNight()
 {
     return 0;
 }
 
 // win1.41 0055cd00 mac 10151470 StoragePit::CanActAsAContainer(Creature *)
-bool StoragePit::CanActAsAContainer(Creature* param_1)
+bool32_t StoragePit::CanActAsAContainer(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055cd10 mac 101514c0 StoragePit::CanBeEatenByCreature(Creature *)
-bool StoragePit::CanBeEatenByCreature(Creature* param_1)
+bool32_t StoragePit::CanBeEatenByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055cd20 mac 10151510 StoragePit::IsResourceStore(RESOURCE_TYPE)
-bool StoragePit::IsResourceStore(RESOURCE_TYPE param_1)
+bool32_t StoragePit::IsResourceStore(RESOURCE_TYPE param_1)
 {
     return 0;
 }
@@ -147,7 +147,7 @@ float Spell::GetLife()
 }
 
 // win1.41 0055cdc0 mac 103b1c30 Spell::IsFunctional(void)
-bool32_tcorrect Spell::IsFunctional()
+bool32_t Spell::IsFunctional()
 {
     return 0;
 }
@@ -185,7 +185,7 @@ void Spell::CloseDown()
 }
 
 // win1.41 0055ce50 mac 103b1df0 Spell::IsSpell( const(void))
-bool Spell::IsSpell() const
+bool32_t Spell::IsSpell() const
 {
     return 0;
 }
@@ -196,13 +196,13 @@ void Spell::AdjustSpellSeedPos(MapCoords* param_1)
 }
 
 // win1.41 0055ce70 mac 103b1e60 Spell::IsSpellCreature(void)
-bool Spell::IsSpellCreature()
+bool32_t Spell::IsSpellCreature()
 {
     return 0;
 }
 
 // win1.41 0055ce80 mac 103b1ea0 Spell::IsSpellStormAndTornado(void)
-bool Spell::IsSpellStormAndTornado()
+bool32_t Spell::IsSpellStormAndTornado()
 {
     return 0;
 }
@@ -231,13 +231,13 @@ uint32_t Spell::GetCreatureBeliefType()
 }
 
 // win1.41 0055ced0 mac 103b1fe0 Spell::CanBeFrighteningToCreature(Creature *)
-bool Spell::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t Spell::CanBeFrighteningToCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055cee0 mac 103b2030 Spell::IsSuitableForCreatureAction(void)
-bool Spell::IsSuitableForCreatureAction()
+bool32_t Spell::IsSuitableForCreatureAction()
 {
     return 0;
 }
@@ -267,7 +267,7 @@ float Spell::GetImpressiveIntensity(IMPRESSIVE_TYPE param_1)
 }
 
 // win1.41 0055cf50 mac 103b1b10 SpellWithObjects::GetSetObjectsDyingOnCloseDown(void)
-bool SpellWithObjects::GetSetObjectsDyingOnCloseDown()
+bool32_t SpellWithObjects::GetSetObjectsDyingOnCloseDown()
 {
     return 0;
 }
@@ -379,7 +379,7 @@ SpellSeed* OneOffSpellSeed::CastOneOffSpellSeed()
 }
 
 // win1.41 0055d140 mac 10526350 OneOffSpellSeed::GetComputerSeen(void)
-bool OneOffSpellSeed::GetComputerSeen()
+bool32_t OneOffSpellSeed::GetComputerSeen()
 {
     return 0;
 }
@@ -503,25 +503,25 @@ WorshipSite* SpellIcon::GetWorshipSite()
 }
 
 // win1.41 0055d3b0 mac 10525de0 SpellIcon::IsRepaired(void)
-bool SpellIcon::IsRepaired()
+bool32_t SpellIcon::IsRepaired()
 {
     return 0;
 }
 
 // win1.41 0055d3d0 mac 100c7990 SpellIcon::IsBuilt(void)
-bool32_tcorrect SpellIcon::IsBuilt()
+bool32_t SpellIcon::IsBuilt()
 {
     return 0;
 }
 
 // win1.41 0055d400 mac 10525e50 SpellIcon::IsSpellSeedReturnPoint( const(void))
-bool SpellIcon::IsSpellSeedReturnPoint()
+bool32_t SpellIcon::IsSpellSeedReturnPoint()
 {
     return 0;
 }
 
 // win1.41 0055d410 mac 10525e90 SpellIcon::ValidAsInterfaceLeashTarget(void)
-bool SpellIcon::ValidAsInterfaceLeashTarget()
+bool32_t SpellIcon::ValidAsInterfaceLeashTarget()
 {
     return 0;
 }
@@ -533,7 +533,7 @@ uint32_t SpellIcon::GetCreatureBeliefType()
 }
 
 // win1.41 0055d430 mac 10525f20 SpellIcon::CanBeFrighteningToCreature(Creature *)
-bool SpellIcon::CanBeFrighteningToCreature(Creature* param_1)
+bool32_t SpellIcon::CanBeFrighteningToCreature(Creature* param_1)
 {
     return 0;
 }
@@ -545,7 +545,7 @@ int SpellIcon::GetMesh() const
 }
 
 // win1.41 0055d450 mac 10525fd0 SpellIcon::IsSpellIcon(void)
-bool SpellIcon::IsSpellIcon()
+bool32_t SpellIcon::IsSpellIcon()
 {
     return 0;
 }
@@ -580,19 +580,19 @@ int Pot::GetDefaultResource()
 }
 
 // win1.41 0055d4e0 mac 1000ea20 Pot::IsPoisoned(void)
-bool Pot::IsPoisoned()
+bool32_t Pot::IsPoisoned()
 {
     return 0;
 }
 
 // win1.41 0055d4f0 mac 101161d0 Pot::IsSpeedUp(void)
-bool Pot::IsSpeedUp()
+bool32_t Pot::IsSpeedUp()
 {
     return 0;
 }
 
 // win1.41 0055d500 mac 10116210 Pot::IsPot(void)
-bool Pot::IsPot()
+bool32_t Pot::IsPot()
 {
     return 0;
 }
@@ -619,7 +619,7 @@ uint32_t Pot::GetCreatureBeliefType()
 }
 
 // win1.41 0055d590 mac 10116310 Pot::IsAPotFromABuildingSite(void)
-bool Pot::IsAPotFromABuildingSite()
+bool32_t Pot::IsAPotFromABuildingSite()
 {
     return 0;
 }
@@ -652,7 +652,7 @@ void PotStructure::SetMultiMapFixed(MultiMapFixed* param_1)
 }
 
 // win1.41 0055d640 mac 101160a0 PotStructure::CanBeThrownByPlayer(void)
-bool PotStructure::CanBeThrownByPlayer()
+bool32_t PotStructure::CanBeThrownByPlayer()
 {
     return 0;
 }
@@ -663,13 +663,13 @@ PotStructure::~PotStructure()
 }
 
 // win1.41 0055d680 mac 1011d530 PileResource::IsLockedInInteract(void)
-bool PileResource::IsLockedInInteract()
+bool32_t PileResource::IsLockedInInteract()
 {
     return 0;
 }
 
 // win1.41 0055d690 mac 1011d570 PileFood::IsPileFood(void)
-bool PileFood::IsPileFood()
+bool32_t PileFood::IsPileFood()
 {
     return 0;
 }
@@ -703,7 +703,7 @@ void MobileStatic::PhysicsEditorCreate(int param_1)
 }
 
 // win1.41 0055d730 mac 103c12f0 MobileStatic::ValidForPlaceInHand(GInterfaceStatus *)
-bool MobileStatic::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t MobileStatic::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -766,7 +766,7 @@ int Tree::GetMesh() const
 }
 
 // win1.41 0055d8b0 mac 10159520 Tree::CanBePickedUp(void)
-bool Tree::CanBePickedUp()
+bool32_t Tree::CanBePickedUp()
 {
     return 0;
 }
@@ -790,7 +790,7 @@ Tree* Tree::CastTree()
 }
 
 // win1.41 0055d8f0 mac 10159620 Tree::IsResourceStore(RESOURCE_TYPE)
-bool Tree::IsResourceStore(RESOURCE_TYPE param_1)
+bool32_t Tree::IsResourceStore(RESOURCE_TYPE param_1)
 {
     return 0;
 }
@@ -808,19 +808,19 @@ Forest* Tree::GetForest()
 }
 
 // win1.41 0055d920 mac inlined Tree::IsTree_0(Creature *)
-bool Tree::IsTree(Creature* param_1)
+bool32_t Tree::IsTree(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055d930 mac 10159740 Tree::CanBePlayedWithByCreature(Creature *)
-bool Tree::CanBePlayedWithByCreature(Creature* param_1)
+bool32_t Tree::CanBePlayedWithByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055d940 mac 10159790 Tree::BenefitsFromHavingWaterSprinkledOnIt(Creature *)
-bool Tree::BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1)
+bool32_t Tree::BenefitsFromHavingWaterSprinkledOnIt(Creature* param_1)
 {
     return 0;
 }
@@ -838,61 +838,61 @@ uint32_t Tree::GetCreatureMimicType()
 }
 
 // win1.41 0055d970 mac 10159870 Tree::CanBeUsedForBuilding(Creature *)
-bool Tree::CanBeUsedForBuilding(Creature* param_1)
+bool32_t Tree::CanBeUsedForBuilding(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055d980 mac 101598c0 Tree::CanBeUsedForRepair(Creature *)
-bool Tree::CanBeUsedForRepair(Creature* param_1)
+bool32_t Tree::CanBeUsedForRepair(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055d990 mac 10159900 Tree::CanBeDestroyedByStoning(Creature *)
-bool Tree::CanBeDestroyedByStoning(Creature* param_1)
+bool32_t Tree::CanBeDestroyedByStoning(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055d9a0 mac 10159950 Tree::CanBeAttackedByCreature(Creature *)
-bool Tree::CanBeAttackedByCreature(Creature* param_1)
+bool32_t Tree::CanBeAttackedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055d9b0 mac 101599a0 Tree::CanBeThrownInTheSeaPlayfully(Creature *)
-bool Tree::CanBeThrownInTheSeaPlayfully(Creature* param_1)
+bool32_t Tree::CanBeThrownInTheSeaPlayfully(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055d9c0 mac 101599f0 Tree::IsAnyKindOfTree(void)
-bool Tree::IsAnyKindOfTree()
+bool32_t Tree::IsAnyKindOfTree()
 {
     return 0;
 }
 
 // win1.41 0055d9d0 mac inlined Tree::IsTree_1(void)
-bool Tree::IsTree()
+bool32_t Tree::IsTree()
 {
     return 0;
 }
 
 // win1.41 0055d9e0 mac 10159a30 Tree::HandShouldFeelWithMeshIntersect(void)
-bool Tree::HandShouldFeelWithMeshIntersect()
+bool32_t Tree::HandShouldFeelWithMeshIntersect()
 {
     return 0;
 }
 
 // win1.41 0055d9f0 mac 10159a80 Tree::GetComputerSeen(void)
-bool Tree::GetComputerSeen()
+bool32_t Tree::GetComputerSeen()
 {
     return 0;
 }
 
 // win1.41 0055da10 mac 10159b10 Tree::IsCastShadowAtNight(void)
-bool Tree::IsCastShadowAtNight()
+bool32_t Tree::IsCastShadowAtNight()
 {
     return 0;
 }
@@ -933,13 +933,13 @@ uint32_t TownDesireFlags::SaveObject(LHOSFile& file, const MapCoords& coords)
 }
 
 // win1.41 0055daa0 mac 1055bff0 TownDesireFlags::IsTownDesireFlag(void)
-bool TownDesireFlags::IsTownDesireFlag()
+bool32_t TownDesireFlags::IsTownDesireFlag()
 {
     return 0;
 }
 
 // win1.41 0055dab0 mac 1055c030 TownDesireFlags::IsEffectReceiver(EffectValues *)
-bool TownDesireFlags::IsEffectReceiver(EffectValues* param_1)
+bool32_t TownDesireFlags::IsEffectReceiver(EffectValues* param_1)
 {
     return 0;
 }
@@ -974,37 +974,37 @@ LH3DObject::ObjectType TownCentre::Get3DType()
 }
 
 // win1.41 0055db30 mac 1055bd40 TownCentre::CausesTownEmergencyIfDamaged(void)
-bool TownCentre::CausesTownEmergencyIfDamaged()
+bool32_t TownCentre::CausesTownEmergencyIfDamaged()
 {
     return 0;
 }
 
 // win1.41 0055db40 mac 1055bd90 TownCentre::CanActAsAContainer(Creature *)
-bool TownCentre::CanActAsAContainer(Creature* param_1)
+bool32_t TownCentre::CanActAsAContainer(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055db50 mac 1055bde0 TownCentre::IsStoragePit(Creature *)
-bool TownCentre::IsStoragePit(Creature* param_1)
+bool32_t TownCentre::IsStoragePit(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055db60 mac 1055be20 TownCentre::IsCastShadowAtNight(void)
-bool TownCentre::IsCastShadowAtNight()
+bool32_t TownCentre::IsCastShadowAtNight()
 {
     return 0;
 }
 
 // win1.41 0055db70 mac 1055be60 TownCentre::IsTownCentre(void)
-bool TownCentre::IsTownCentre()
+bool32_t TownCentre::IsTownCentre()
 {
     return 0;
 }
 
 // win1.41 0055db80 mac 1055bea0 TownCentre::CanBeHiddenIn(void)
-bool TownCentre::CanBeHiddenIn()
+bool32_t TownCentre::CanBeHiddenIn()
 {
     return 0;
 }
@@ -1054,7 +1054,7 @@ void WorshipSite::RemoveDance()
 }
 
 // win1.41 0055dc60 mac 105b3dc0 WorshipSite::InteractsWithPhysicsObjects(void)
-bool WorshipSite::InteractsWithPhysicsObjects()
+bool32_t WorshipSite::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -1066,19 +1066,19 @@ ABODE_TYPE WorshipSite::GetAbodeType()
 }
 
 // win1.41 0055dc80 mac 105b3e50 WorshipSite::IsSuitableForCreatureAction(void)
-bool WorshipSite::IsSuitableForCreatureAction()
+bool32_t WorshipSite::IsSuitableForCreatureAction()
 {
     return 0;
 }
 
 // win1.41 0055dc90 mac inlined WorshipSite::IsWorshipSite_0(Creature *)
-bool WorshipSite::IsWorshipSite(Creature* param_1)
+bool32_t WorshipSite::IsWorshipSite(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055dca0 mac inlined WorshipSite::IsWorshipSite_1(void)
-bool WorshipSite::IsWorshipSite()
+bool32_t WorshipSite::IsWorshipSite()
 {
     return 0;
 }
@@ -1227,7 +1227,7 @@ GClimate::~GClimate()
 }
 
 // win1.41 0055df10 mac 105a3ea0 WeatherThing::IsWeather( const(void))
-bool WeatherThing::IsWeather()
+bool32_t WeatherThing::IsWeather()
 {
     return 0;
 }
@@ -1273,19 +1273,19 @@ LH3DObject::ObjectType Graveyard::Get3DType()
 }
 
 // win1.41 0055dfc0 mac 100f4440 Graveyard::CanBeHiddenIn(void)
-bool Graveyard::CanBeHiddenIn()
+bool32_t Graveyard::CanBeHiddenIn()
 {
     return 0;
 }
 
 // win1.41 0055dfd0 mac 100f4480 Graveyard::CanActAsAContainer(Creature *)
-bool Graveyard::CanActAsAContainer(Creature* param_1)
+bool32_t Graveyard::CanActAsAContainer(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055dfe0 mac 100f44d0 Graveyard::IsStoragePit(Creature *)
-bool Graveyard::IsStoragePit(Creature* param_1)
+bool32_t Graveyard::IsStoragePit(Creature* param_1)
 {
     return 0;
 }
@@ -1337,13 +1337,13 @@ RESOURCE_TYPE Scaffold::GetResourceType()
 }
 
 // win1.41 0055e100 mac 1013e5d0 Scaffold::IsScaffold(void)
-bool Scaffold::IsScaffold()
+bool32_t Scaffold::IsScaffold()
 {
     return 0;
 }
 
 // win1.41 0055e110 mac 1013e610 Scaffold::InteractsWithPhysicsObjects(void)
-bool Scaffold::InteractsWithPhysicsObjects()
+bool32_t Scaffold::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -1384,7 +1384,7 @@ const char* Mist::GetText()
 }
 
 // win1.41 0055eb90 mac 101046e0 Mist::IsMist(void)
-bool Mist::IsMist()
+bool32_t Mist::IsMist()
 {
     return 0;
 }
@@ -1564,7 +1564,7 @@ const char* GParticleContainer::GetText()
 }
 
 // win1.41 00560f50 mac 1010fe20 GParticleContainer::IsParticleContainer(void)
-bool GParticleContainer::IsParticleContainer()
+bool32_t GParticleContainer::IsParticleContainer()
 {
     return 0;
 }
@@ -1610,7 +1610,7 @@ const char* ScriptMarker::GetText()
 }
 
 // win1.41 00561020 mac 10501510 ScriptMarker::IsScriptMarker(void)
-bool ScriptMarker::IsScriptMarker()
+bool32_t ScriptMarker::IsScriptMarker()
 {
     return 0;
 }
@@ -1621,7 +1621,7 @@ void ScriptMarker::PhysicsEditorCreate(int param_1)
 }
 
 // win1.41 00561040 mac 10501590 ScriptMarker::IsDeletedWhenReleasedFromScript(void)
-bool ScriptMarker::IsDeletedWhenReleasedFromScript()
+bool32_t ScriptMarker::IsDeletedWhenReleasedFromScript()
 {
     return 0;
 }
@@ -1644,13 +1644,13 @@ ScriptMarker::~ScriptMarker()
 }
 
 // win1.41 00561090 mac 10543660 TotemStatue::IsRepaired(void)
-bool TotemStatue::IsRepaired()
+bool32_t TotemStatue::IsRepaired()
 {
     return 0;
 }
 
 // win1.41 005610b0 mac 1001a9a0 TotemStatue::IsBuilt(void)
-bool32_tcorrect TotemStatue::IsBuilt()
+bool32_t TotemStatue::IsBuilt()
 {
     return 0;
 }
@@ -1668,25 +1668,25 @@ uint32_t TotemStatue::GetCreatureBeliefType()
 }
 
 // win1.41 00561100 mac 10543d20 TotemStatue::CanBeImpressedByCreature(Creature *)
-bool TotemStatue::CanBeImpressedByCreature(Creature* param_1)
+bool32_t TotemStatue::CanBeImpressedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00561110 mac 10543d70 TotemStatue::CanBePlayedWithByCreature(Creature *)
-bool TotemStatue::CanBePlayedWithByCreature(Creature* param_1)
+bool32_t TotemStatue::CanBePlayedWithByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00561120 mac 10543dc0 TotemStatue::HandShouldFeelWithMeshIntersect(void)
-bool TotemStatue::HandShouldFeelWithMeshIntersect()
+bool32_t TotemStatue::HandShouldFeelWithMeshIntersect()
 {
     return 0;
 }
 
 // win1.41 00561130 mac 10543e10 TotemStatue::IsEffectReceiver(EffectValues *)
-bool TotemStatue::IsEffectReceiver(EffectValues* param_1)
+bool32_t TotemStatue::IsEffectReceiver(EffectValues* param_1)
 {
     return 0;
 }
@@ -1698,7 +1698,7 @@ uint32_t TotemStatue::SaveObject(LHOSFile& file, const MapCoords& coords)
 }
 
 // win1.41 00561150 mac 10543eb0 TotemStatue::IsTotemStatue(void)
-bool TotemStatue::IsTotemStatue()
+bool32_t TotemStatue::IsTotemStatue()
 {
     return 0;
 }
@@ -1727,13 +1727,13 @@ MapCoords* Wonder::GetArrivePos(MapCoords* param_1)
 }
 
 // win1.41 005611e0 mac 10161200 Wonder::CanActAsAContainer(Creature *)
-bool Wonder::CanActAsAContainer(Creature* param_1)
+bool32_t Wonder::CanActAsAContainer(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 005611f0 mac 10161250 Wonder::IsStoragePit(Creature *)
-bool Wonder::IsStoragePit(Creature* param_1)
+bool32_t Wonder::IsStoragePit(Creature* param_1)
 {
     return 0;
 }
@@ -1756,7 +1756,7 @@ Wonder::~Wonder()
 }
 
 // win1.41 00561270 mac 1015ff50 Whale::InteractsWithPhysicsObjects(void)
-bool Whale::InteractsWithPhysicsObjects()
+bool32_t Whale::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -1767,7 +1767,7 @@ void Whale::PhysicsEditorCreate(int param_1)
 }
 
 // win1.41 00561290 mac 1015ff10 Whale::CanBecomeAPhysicsObject(void)
-bool32_tcorrect Whale::CanBecomeAPhysicsObject()
+bool32_t Whale::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -1796,13 +1796,13 @@ const char* ScriptTimer::GetText()
 }
 
 // win1.41 005612f0 mac 1002b150 ScriptTimer::IsScriptTimer(void)
-bool ScriptTimer::IsScriptTimer()
+bool32_t ScriptTimer::IsScriptTimer()
 {
     return 0;
 }
 
 // win1.41 00561300 mac 105062c0 ScriptTimer::IsDeletedWhenReleasedFromScript(void)
-bool ScriptTimer::IsDeletedWhenReleasedFromScript()
+bool32_t ScriptTimer::IsDeletedWhenReleasedFromScript()
 {
     return 0;
 }
@@ -1825,7 +1825,7 @@ ScriptTimer::~ScriptTimer()
 }
 
 // win1.41 00561370 mac 100c41a0 Rock::InteractsWithPhysicsObjects(void)
-bool Rock::InteractsWithPhysicsObjects()
+bool32_t Rock::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -1860,7 +1860,7 @@ const char* GStreetLight::GetText()
 }
 
 // win1.41 005613f0 mac 10535780 GStreetLight::IsStreetLight(void)
-bool GStreetLight::IsStreetLight()
+bool32_t GStreetLight::IsStreetLight()
 {
     return 0;
 }
@@ -1883,7 +1883,7 @@ GStreetLight::~GStreetLight()
 }
 
 // win1.41 00561440 mac 10534740 GStreetLantern::IsStreetLantern(void)
-bool GStreetLantern::IsStreetLantern()
+bool32_t GStreetLantern::IsStreetLantern()
 {
     return 0;
 }
@@ -1906,25 +1906,25 @@ GStreetLantern::~GStreetLantern()
 }
 
 // win1.41 00561500 mac 101336f0 Totem::CanBeImpressedByCreature(Creature *)
-bool Totem::CanBeImpressedByCreature(Creature* param_1)
+bool32_t Totem::CanBeImpressedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00561510 mac 10133740 Totem::CanBePlayedWithByCreature(Creature *)
-bool Totem::CanBePlayedWithByCreature(Creature* param_1)
+bool32_t Totem::CanBePlayedWithByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00561520 mac 10133790 Totem::IsEffectReceiver(EffectValues *)
-bool Totem::IsEffectReceiver(EffectValues* param_1)
+bool32_t Totem::IsEffectReceiver(EffectValues* param_1)
 {
     return 0;
 }
 
 // win1.41 00561530 mac 101337e0 Totem::IsCastShadowAtNight(void)
-bool Totem::IsCastShadowAtNight()
+bool32_t Totem::IsCastShadowAtNight()
 {
     return 0;
 }
@@ -1953,7 +1953,7 @@ uint32_t HanoiBlock::SaveObject(LHOSFile& file, const MapCoords& coords)
 }
 
 // win1.41 00561800 mac 1011eca0 HanoiBlock::CanBecomeAPhysicsObject(void)
-bool32_tcorrect HanoiBlock::CanBecomeAPhysicsObject()
+bool32_t HanoiBlock::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -1994,7 +1994,7 @@ const char* PuzzleGame::GetText()
 }
 
 // win1.41 00561b40 mac 101339c0 PuzzleGame::IsPuzzleGame(void)
-bool PuzzleGame::IsPuzzleGame()
+bool32_t PuzzleGame::IsPuzzleGame()
 {
     return 0;
 }

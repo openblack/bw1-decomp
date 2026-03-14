@@ -45,11 +45,11 @@ public:
     // win1.41 0077ef30 mac inlined WorshipSiteUpgrade::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 004220f0 mac inlined WorshipSiteUpgrade::IsRepaired(void)
-    virtual bool IsRepaired();
+    virtual bool32_t IsRepaired();
     // win1.41 00422110 mac inlined WorshipSiteUpgrade::IsBuilt(void)
-    virtual bool32_tcorrect IsBuilt();
+    virtual bool32_t IsBuilt();
     // win1.41 00527790 mac inlined WorshipSiteUpgrade::IsDrawBuilding(void)
-    virtual bool IsDrawBuilding();
+    virtual bool32_t IsDrawBuilding();
     // win1.41 0077edd0 mac inlined WorshipSiteUpgrade::ConvertToPlanned(void)
     virtual PlannedMultiMapFixed* ConvertToPlanned();
 };

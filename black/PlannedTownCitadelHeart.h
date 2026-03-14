@@ -37,19 +37,19 @@ public:
     // win1.41 00467e50 mac 101c2000 PlannedTownCitadelHeart::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00467ff0 mac 101bd570 PlannedTownCitadelHeart::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 00467fc0 mac 101bd610 PlannedTownCitadelHeart::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00467e40 mac 101c1fb0 PlannedTownCitadelHeart::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00467e20 mac 101c1f20 PlannedTownCitadelHeart::IsWonder(void)
-    virtual bool32_tcorrect IsWonder();
+    virtual bool32_t IsWonder();
     // win1.41 00467ea0 mac 101bd8c0 PlannedTownCitadelHeart::CreatePlanned(float)
     virtual MultiMapFixed* CreatePlanned(float param_1);
     // win1.41 00467ef0 mac 101bd6b0 PlannedTownCitadelHeart::CreatePlannedNoFixedCheck(float)
     virtual MultiMapFixed* CreatePlannedNoFixedCheck(float param_1);
     // win1.41 00467e10 mac 101c1ee0 PlannedTownCitadelHeart::IsCivic(void)
-    virtual bool IsCivic();
+    virtual bool32_t IsCivic();
     // win1.41 00467e30 mac 101c1f60 PlannedTownCitadelHeart::GetAbodeType(void)
     virtual ABODE_TYPE GetAbodeType();
 };

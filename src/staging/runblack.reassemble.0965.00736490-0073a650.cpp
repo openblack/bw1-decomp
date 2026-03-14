@@ -39,37 +39,37 @@ bool32_t Totem::NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1)
 }
 
 // win1.41 007375c0 mac 10542ff0 Totem::NetworkUnfriendlyStartLockedSelect(void)
-bool Totem::NetworkUnfriendlyStartLockedSelect()
+bool32_t Totem::NetworkUnfriendlyStartLockedSelect()
 {
     return 0;
 }
 
 // win1.41 007375e0 mac 10542f60 Totem::NetworkUnfriendlyEndLockedSelect(void)
-bool Totem::NetworkUnfriendlyEndLockedSelect()
+bool32_t Totem::NetworkUnfriendlyEndLockedSelect()
 {
     return 0;
 }
 
 // win1.41 00737600 mac 10542f00 Totem::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
-bool Totem::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
+bool32_t Totem::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 00737610 mac 10542df0 Totem::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
-bool Totem::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
+bool32_t Totem::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
 {
     return 0;
 }
 
 // win1.41 00737800 mac 10542950 Totem::Load(GameOSFile &)
-bool32_tcorrect Totem::Load(GameOSFile& file)
+bool32_t Totem::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007378b0 mac 10542820 Totem::Save(GameOSFile &)
-bool32_tcorrect Totem::Save(GameOSFile& file)
+bool32_t Totem::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -118,7 +118,7 @@ TotemStatue* TotemStatue::Create(TownCentre* town_centre)
 }
 
 // win1.41 00737d40 mac 105451c0 TotemStatue::InteractsWithPhysicsObjects(void)
-bool TotemStatue::InteractsWithPhysicsObjects()
+bool32_t TotemStatue::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -186,37 +186,37 @@ bool32_t TotemStatue::NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1
 }
 
 // win1.41 007385e0 mac 10544640 TotemStatue::NetworkUnfriendlyStartLockedSelect(void)
-bool TotemStatue::NetworkUnfriendlyStartLockedSelect()
+bool32_t TotemStatue::NetworkUnfriendlyStartLockedSelect()
 {
     return 0;
 }
 
 // win1.41 00738630 mac 10544580 TotemStatue::NetworkUnfriendlyEndLockedSelect(void)
-bool TotemStatue::NetworkUnfriendlyEndLockedSelect()
+bool32_t TotemStatue::NetworkUnfriendlyEndLockedSelect()
 {
     return 0;
 }
 
 // win1.41 00738690 mac 10544520 TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
-bool TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
+bool32_t TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 007386a0 mac 10544470 TotemStatue::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
-bool TotemStatue::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
+bool32_t TotemStatue::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
 {
     return 0;
 }
 
 // win1.41 00738700 mac 105442e0 TotemStatue::Save(GameOSFile &)
-bool32_tcorrect TotemStatue::Save(GameOSFile& file)
+bool32_t TotemStatue::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00738800 mac 10544120 TotemStatue::Load(GameOSFile &)
-bool32_tcorrect TotemStatue::Load(GameOSFile& file)
+bool32_t TotemStatue::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -278,43 +278,43 @@ uint32_t Town::GetCreatureBeliefListType()
 }
 
 // win1.41 00739210 mac 105591b0 Town::IsScriptContainer( const(void))
-bool Town::IsScriptContainer()
+bool32_t Town::IsScriptContainer()
 {
     return 0;
 }
 
 // win1.41 00739220 mac inlined Town::IsTown_1(Creature *)
-bool Town::IsTown(Creature* param_1)
+bool32_t Town::IsTown(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00739230 mac 105592e0 Town::IsActivityObjectWhichCompassionAppliesTo(Creature *)
-bool Town::IsActivityObjectWhichCompassionAppliesTo(Creature* param_1)
+bool32_t Town::IsActivityObjectWhichCompassionAppliesTo(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00739240 mac 10559340 Town::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
-bool Town::IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1)
+bool32_t Town::IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00739250 mac inlined Town::IsTown_0(void)
-bool Town::IsTown()
+bool32_t Town::IsTown()
 {
     return 0;
 }
 
 // win1.41 00739260 mac 105593a0 Town::IsSuitableForCreatureActivity(void)
-bool Town::IsSuitableForCreatureActivity()
+bool32_t Town::IsSuitableForCreatureActivity()
 {
     return 0;
 }
 
 // win1.41 00739270 mac 105593f0 Town::CanBePlayedWithByCreature(Creature *)
-bool Town::CanBePlayedWithByCreature(Creature* param_1)
+bool32_t Town::CanBePlayedWithByCreature(Creature* param_1)
 {
     return 0;
 }
@@ -368,7 +368,7 @@ void Town::AddAbodeToTownStats(Abode* abode)
 }
 
 // win1.41 0073a090 mac 10556400 Town::AddVillagerToTown(Villager *)
-bool Town::AddVillagerToTown(Villager* villager)
+bool32_t Town::AddVillagerToTown(Villager* villager)
 {
     return 0;
 }

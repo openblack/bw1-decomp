@@ -14,13 +14,13 @@ GPlayer* PFootball::GetPlayer()
 }
 
 // win1.41 006438f0 mac inlined PFootball::IsRepaired(void)
-bool PFootball::IsRepaired()
+bool32_t PFootball::IsRepaired()
 {
     return 0;
 }
 
 // win1.41 00643910 mac inlined PFootball::IsBuilt(void)
-bool32_tcorrect PFootball::IsBuilt()
+bool32_t PFootball::IsBuilt()
 {
     return 0;
 }
@@ -32,13 +32,13 @@ int PFootball::GetMesh() const
 }
 
 // win1.41 00643950 mac inlined PFootball::IsPlaytimeStructure(void)
-bool PFootball::IsPlaytimeStructure()
+bool32_t PFootball::IsPlaytimeStructure()
 {
     return 0;
 }
 
 // win1.41 00643960 mac inlined PFootball::IsPlaytimeStarted(void)
-bool PFootball::IsPlaytimeStarted()
+bool32_t PFootball::IsPlaytimeStarted()
 {
     return 0;
 }
@@ -65,7 +65,7 @@ void PFootball::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 }
 
 // win1.41 00644200 mac inlined PFootball::AddPlaytimeVillager(Villager *)
-bool PFootball::AddPlaytimeVillager(Villager* param_1)
+bool32_t PFootball::AddPlaytimeVillager(Villager* param_1)
 {
     return 0;
 }

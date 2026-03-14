@@ -5,13 +5,13 @@ void __cdecl FUN_0075b920(void)
 }
 
 // win1.41 0075b940 mac 1057b620 Villager::ShowPoisoned(void)
-bool Villager::ShowPoisoned()
+bool32_t Villager::ShowPoisoned()
 {
     return false;
 }
 
 // win1.41 0075b990 mac 1000a640 Villager::ChangeStateToFindFoodToEat(void)
-bool Villager::ChangeStateToFindFoodToEat()
+bool32_t Villager::ChangeStateToFindFoodToEat()
 {
     return false;
 }
@@ -23,13 +23,13 @@ float Villager::CalculateLifeDesire()
 }
 
 // win1.41 0075baf0 mac 1057b4f0 Villager::CheckHungryAtHome(void)
-bool Villager::CheckHungryAtHome()
+bool32_t Villager::CheckHungryAtHome()
 {
     return true;
 }
 
 // win1.41 0075bb00 mac 1057b400 Villager::GetDesireToPickupFood(void)
-bool Villager::GetDesireToPickupFood()
+bool32_t Villager::GetDesireToPickupFood()
 {
     return false;
 }
@@ -71,43 +71,43 @@ uint32_t Villager::GetAmountOfFoodToEat()
 }
 
 // win1.41 0075bcc0 mac 100577f0 Villager::CheckHungry(void)
-bool Villager::CheckHungry()
+bool32_t Villager::CheckHungry()
 {
     return false;
 }
 
 // win1.41 0075bf00 mac 10096d50 Villager::CheckSatisfyOwnFoodDesire(void)
-bool Villager::CheckSatisfyOwnFoodDesire()
+bool32_t Villager::CheckSatisfyOwnFoodDesire()
 {
     return false;
 }
 
 // win1.41 0075bf20 mac 1057ab30 Villager::EatFoodHeld(void)
-bool Villager::EatFoodHeld()
+bool32_t Villager::EatFoodHeld()
 {
     return false;
 }
 
 // win1.41 0075c000 mac 1057aaa0 Villager::EatFood(void)
-bool Villager::EatFood()
+bool32_t Villager::EatFood()
 {
     return false;
 }
 
 // win1.41 0075c040 mac 1057a9c0 Villager::GetFoodFromHome(unsigned long)
-bool Villager::GetFoodFromHome(unsigned long param_1)
+bool32_t Villager::GetFoodFromHome(unsigned long param_1)
 {
     return false;
 }
 
 // win1.41 0075c090 mac 1057a900 Villager::EatFoodAtHome(void)
-bool Villager::EatFoodAtHome()
+bool32_t Villager::EatFoodAtHome()
 {
     return false;
 }
 
 // win1.41 0075c0f0 mac 1057a8c0 Villager::HomelessEatDinner(void)
-bool Villager::HomelessEatDinner()
+bool32_t Villager::HomelessEatDinner()
 {
     return true;
 }

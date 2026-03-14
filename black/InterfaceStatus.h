@@ -86,9 +86,9 @@ public:
     // win1.41 005db980 mac 1036be40 GInterfaceStatus::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005dcdc0 mac 1036c160 GInterfaceStatus::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 005dca50 mac 1036c810 GInterfaceStatus::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 005db970 mac 1036be00 GInterfaceStatus::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005dd130 mac 1036c080 GInterfaceStatus::SaveExtraData(GameOSFile &)
@@ -114,7 +114,7 @@ public:
     // win1.41 005dc130 mac 100755c0 GInterfaceStatus::GetFirstObjectInCurrentHand(void)
     Object* GetFirstObjectInCurrentHand();
     // win1.41 005dc2f0 mac 1007b2f0 GInterfaceStatus::IsSpaceInHands(void)
-    bool IsSpaceInHands();
+    bool32_t IsSpaceInHands();
     // win1.41 005dc8b0 mac 10035b20 GInterfaceStatus::GetInterface(void)
     GInterface* GetInterface();
     // win1.41 005dd1a0 mac 1036bf20 GInterfaceStatus::Init(unsigned char, GInterface *)

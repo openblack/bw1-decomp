@@ -21,7 +21,7 @@ void GameOptionsRoom::Update()
 }
 
 // win1.41 0078d8f0 mac 102ffdb0 GameOptionsRoom::IsAvailable(void)
-bool GameOptionsRoom::IsAvailable()
+bool32_t GameOptionsRoom::IsAvailable()
 {
     return 0;
 }

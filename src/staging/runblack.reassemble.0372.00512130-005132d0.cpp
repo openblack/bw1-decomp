@@ -12,25 +12,25 @@ void DialogBoxBase::InitSubDialogs()
 }
 
 // win1.41 005127e0 mac 100fd5d0 DialogBoxBase::CloseNotification(void)
-bool DialogBoxBase::CloseNotification()
+bool32_t DialogBoxBase::CloseNotification()
 {
     return 0;
 }
 
 // win1.41 005127f0 mac 10504080 DialogBoxBase::WantsKeyControl(void)
-bool DialogBoxBase::WantsKeyControl()
+bool32_t DialogBoxBase::WantsKeyControl()
 {
     return 0;
 }
 
 // win1.41 00512800 mac 100fd610 DialogBoxBase::WantsMouseControl(void)
-bool DialogBoxBase::WantsMouseControl()
+bool32_t DialogBoxBase::WantsMouseControl()
 {
     return 0;
 }
 
 // win1.41 00512810 mac 103c4090 DialogBoxBase::CanESCOut(void)
-bool DialogBoxBase::CanESCOut()
+bool32_t DialogBoxBase::CanESCOut()
 {
     return 0;
 }

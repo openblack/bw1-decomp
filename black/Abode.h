@@ -92,9 +92,9 @@ public:
     // win1.41 00401680 mac 10371be0 Abode::RestartBeingFunctional(void)
     virtual void RestartBeingFunctional();
     // win1.41 004016f0 mac 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
-    virtual bool CausesTownEmergencyIfDamaged(); /* 0x920 */
+    virtual bool32_t CausesTownEmergencyIfDamaged(); /* 0x920 */
     // win1.41 00407280 mac 100dcdb0 Abode::CanBeHiddenIn(void)
-    virtual bool CanBeHiddenIn();
+    virtual bool32_t CanBeHiddenIn();
     // win1.41 00405f50 mac 103b5680 Abode::GetTribe(void)
     virtual GTribeInfo* GetTribe();
 
@@ -125,13 +125,13 @@ public:
     // win1.41 00403f10 mac 103c9730 Abode::GetNumberOfInstanceForGlobalList(void)
     virtual uint16_t GetNumberOfInstanceForGlobalList();
     // win1.41 00406200 mac 1005ff20 Abode::IsFunctional(void)
-    virtual bool32_tcorrect IsFunctional();
+    virtual bool32_t IsFunctional();
     // win1.41 004017b0 mac 10434340 Abode::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00406d20 mac 101a2920 Abode::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 00406a10 mac 103bd750 Abode::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& file);
+    virtual bool32_t Save(GameOSFile& file);
     // win1.41 004017a0 mac 103e1790 Abode::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00401770 mac 1000c2b0 Abode::GetArrivePos(void)
@@ -141,7 +141,7 @@ public:
     // win1.41 00401760 mac 10110c50 Abode::GetOrigin(void)
     virtual uint32_t GetOrigin();
     // win1.41 00407200 mac 1008a7b0 Abode::IsInteractable(void)
-    virtual bool32_tcorrect IsInteractable();
+    virtual bool32_t IsInteractable();
     // win1.41 00401720 mac 10435a10 Abode::IsCastShadowAtNight(void)
     virtual bool32_t IsCastShadowAtNight();
     // win1.41 00401710 mac 100970f0 Abode::IsAbode(void)
@@ -159,7 +159,7 @@ public:
     // win1.41 00401790 mac 10134300 Abode::IsHouse(void)
     virtual bool32_t IsHouse();
     // win1.41 004061c0 mac 1014d0e0 Abode::IsWonder(void)
-    virtual bool32_tcorrect IsWonder();
+    virtual bool32_t IsWonder();
     // win1.41 00406810 mac 1001b380 Abode::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
     // win1.41 00402cb0 mac 10570ad0 Abode::DestroyedByBeam(void)
@@ -167,13 +167,13 @@ public:
     // win1.41 00403ee0 mac 1036edb0 Abode::InsertMapObject(void)
     virtual void InsertMapObject();
     // win1.41 00402cf0 mac 101c66a0 Abode::GetPSysFireLocalRndFlamePos(LHPoint *, long *)
-    virtual bool GetPSysFireLocalRndFlamePos(LHPoint* point, int* param_2);
+    virtual bool32_t GetPSysFireLocalRndFlamePos(LHPoint* point, int* param_2);
     // win1.41 00405d90 mac 10097be0 Abode::ReduceLife(float, GPlayer *)
     virtual void ReduceLife(float value, GPlayer* player);
     // win1.41 00405ed0 mac 10112270 Abode::IncreaseLife(float)
     virtual void IncreaseLife(float value);
     // win1.41 00403f80 mac 10573770 Abode::DestroyedByEffect(GPlayer *, float)
-    virtual bool DestroyedByEffect(GPlayer* player, float param_2);
+    virtual bool32_t DestroyedByEffect(GPlayer* player, float param_2);
     // win1.41 00404440 mac 1004fcb0 Abode::Process(void)
     virtual uint32_t Process();
     // win1.41 00404aa0 mac 100ac700 Abode::GetMesh(void) const
@@ -187,31 +187,31 @@ public:
     // win1.41 00406820 mac 1049b920 Abode::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* status);
     // win1.41 00406830 mac 102fed90 Abode::InterfaceTap(GInterfaceStatus *)
-    virtual bool32_tcorrect InterfaceTap(GInterfaceStatus* status);
+    virtual bool32_t InterfaceTap(GInterfaceStatus* status);
     // win1.41 00402dc0 mac 103bf040 Abode::GetPhysicsConstantsType(void)
     virtual uint32_t GetPhysicsConstantsType();
     // win1.41 00402dd0 mac 103bf110 Abode::SetUpPhysOb(PhysOb *)
     virtual void SetUpPhysOb(PhysOb* param_1);
     // win1.41 00406230 mac 1014cfd0 Abode::ChecksVerticesVObjects(void)
-    virtual bool ChecksVerticesVObjects();
+    virtual bool32_t ChecksVerticesVObjects();
     // win1.41 00406240 mac 104a8350 Abode::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 00406800 mac 1010ab50 Abode::CanBecomeAPhysicsObject(void)
-    virtual bool32_tcorrect CanBecomeAPhysicsObject();
+    virtual bool32_t CanBecomeAPhysicsObject();
     // win1.41 00402cd0 mac 100c7020 Abode::GetInspectObjectPos(Villager *, MapCoords *)
-    virtual bool GetInspectObjectPos(Villager* param_1, MapCoords* pos);
+    virtual bool32_t GetInspectObjectPos(Villager* param_1, MapCoords* pos);
     // win1.41 00407420 mac 10351de0 Abode::DiscipleInHandNear(Villager &, GInterfaceStatus &)
     virtual void DiscipleInHandNear(Villager& param_1, GInterfaceStatus& status);
     // win1.41 00405bb0 mac 101ca440 Abode::SaveObject(LHOSFile &, MapCoords const &)
     virtual size_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 00403ef0 mac 10589380 Abode::ShouldFootpathsGoRound(void)
-    virtual bool ShouldFootpathsGoRound();
+    virtual bool32_t ShouldFootpathsGoRound();
     // win1.41 004072a0 mac 10053220 Abode::GetInfluence(void)
     virtual float GetInfluence();
     // win1.41 004016a0 mac 10066b80 Abode::IsRepaired(void)
-    virtual bool IsRepaired();
+    virtual bool32_t IsRepaired();
     // win1.41 004016c0 mac 10055bb0 Abode::IsBuilt(void)
-    virtual bool32_tcorrect IsBuilt();
+    virtual bool32_t IsBuilt();
     // win1.41 00407290 mac 10064f30 Abode::GetPercentRepairedForNonFunctional(void)
     virtual float GetPercentRepairedForNonFunctional();
     // win1.41 00407050 mac 1004d310 Abode::GetPercentAbodeFullWithAdults(void)
@@ -219,15 +219,15 @@ public:
     // win1.41 00407090 mac 10058a60 Abode::GetPercentAbodeFullWithChildren(void)
     virtual float GetPercentAbodeFullWithChildren();
     // win1.41 00404720 mac 105b9180 Abode::Built(void)
-    virtual bool Built();
+    virtual bool32_t Built();
     // win1.41 004047b0 mac 105b9280 Abode::Repaired(void)
-    virtual bool Repaired();
+    virtual bool32_t Repaired();
     // win1.41 00401700 mac 105756c0 Abode::GetDestructionMesh(void)
     virtual FragMesh* GetDestructionMesh();
     // win1.41 00403f40 mac 105861b0 Abode::RemoveDamage(void)
     virtual void RemoveDamage();
     // win1.41 00405ff0 mac 10199f30 Abode::IsCivic(void)
-    virtual bool IsCivic();
+    virtual bool32_t IsCivic();
     // win1.41 004061f0 mac 10089cd0 Abode::GetAbodeType(void)
     virtual ABODE_TYPE GetAbodeType();
     // win1.41 00406970 mac 1004c590 Abode::GetDesireToBeRepaired(void)
@@ -239,7 +239,7 @@ public:
     // win1.41 00401690 mac 1037f370 Abode::SetTown(Town *)
     virtual void SetTown(Town* town);
     // win1.41 00401650 mac 10565230 Abode::GetShouldNotBeAddedToPlanned(void)
-    virtual bool GetShouldNotBeAddedToPlanned();
+    virtual bool32_t GetShouldNotBeAddedToPlanned();
     // win1.41 00401660 mac 1031a9a0 Abode::SetShouldNotBeAddedToPlanned(int)
     virtual void SetShouldNotBeAddedToPlanned(bool value);
     // win1.41 00405050 mac 100a3330 Abode::ConvertToPlanned(void)
@@ -264,7 +264,7 @@ public:
     // win1.41 00403130 mac 1033b920 Abode::Init(int, unsigned long, unsigned long)
     void Init(int param_1, uint32_t food_amount, uint32_t wood_amount);
     // win1.41 00403590 mac 103602f0 Abode::GetNewEp(ABODE_EPP, MapCoords*)
-    bool GetNewEp(ABODE_EPP index, LHPoint* point);
+    bool32_t GetNewEp(ABODE_EPP index, LHPoint* point);
     // win1.41 00403d20 mac 10573d50 Abode::DeleteAbodeSurroundingObjects(void)
     void DeleteAbodeSurroundingObjects();
     // win1.41 00403e00 mac 10494a10 Abode::CreateAbodeSurroundingObjects(void)
@@ -282,7 +282,7 @@ public:
     // win1.41 004045d0 mac 103d89d0 Abode::CalculateFoodNeededForDinner(void)
     int CalculateFoodNeededForDinner();
     // win1.41 00404600 mac 1032c5d0 Abode::IsEnoughFoodForDinner(void)
-    bool IsEnoughFoodForDinner();
+    bool32_t IsEnoughFoodForDinner();
     // win1.41 00404630 mac 1032c250 Abode::GetOtherParent(Villager *)
     Villager* GetSpouse(Villager* villager);
     // win1.41 00404660 mac 1032c3e0 Abode::GetRoomLeftForAdults(void)
@@ -310,7 +310,7 @@ public:
     // win1.41 00405fb0 mac 1009fda0 Abode::LeaveHome(void)
     void LeaveHome();
     // win1.41 00405fc0 mac 100cd2d0 Abode::GetNearestWaterPos(MapCoords &)
-    bool GetNearestWaterPos(MapCoords& coords);
+    bool32_t GetNearestWaterPos(MapCoords& coords);
     // win1.41 00406640 mac 10172a50 Abode::ApplyEffectsDueToPhysicalDestruction(Object *, GPlayer *)
     void ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player);
     // win1.41 004069c0 mac 1036ee00 Abode::FindVillager( int (*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, ulong), SCRIPT_OBJECT_TYPE, ulong)
@@ -320,9 +320,9 @@ public:
     // win1.41 004070d0 mac 104ed230 Abode::GetNumAdultsInAbode(void)
     float GetNumAdultsInAbode();
     // win1.41 004070f0 mac 101b8780 Abode::DrawPercentFull(int)
-    void DrawPercentFull(bool32_tcorrect only_one);
+    void DrawPercentFull(bool32_t only_one);
     // win1.41 00407230 mac inlined Abode::FUN_00407230(bool)
-    MapCoords FUN_00407230(bool32_tcorrect param_1);
+    MapCoords FUN_00407230(bool32_t param_1);
     // win1.41 004072e0 mac 1000cd50 Abode::GetPosOutside(float, float, float)
     MapCoords GetPosOutside(float param_2, float param_3, float param_4);
     // win1.41 004073f0 mac inlined Abode::FUN_004073f0(GPlayer *)
@@ -332,9 +332,9 @@ public:
     // win1.41 00407540 mac 100af0d0 Abode::CalculateDesireToGainVillager(void)
     float CalculateDesireToGainVillager();
     // win1.41 004075b0 mac 10518900 Abode::TakeVillagerFrom(Abode&, int)
-    bool32_tcorrect TakeVillagerFrom(Abode& other, bool32_tcorrect param_2);
+    bool32_t TakeVillagerFrom(Abode& other, bool32_t param_2);
     // win1.41 00407620 mac 10516470 Abode::SwapMaleForFemaleFrom(Abode&)
-    bool32_tcorrect SwapMaleForFemaleFrom(Abode& other);
+    bool32_t SwapMaleForFemaleFrom(Abode& other);
     // win1.41 004076c0 mac 105a17d0 Abode::GetVillagerHealthTotal(void)
     float GetVillagerHealthTotal();
 };

@@ -44,9 +44,9 @@ public:
     // win1.41 0050cae0 mac 100ef1d0 GFootpathLink::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005365a0 mac 100eb8e0 GFootpathLink::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 005364f0 mac 100ebc00 GFootpathLink::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0050cad0 mac 100ef190 GFootpathLink::GetSaveType(void)
     virtual uint32_t GetSaveType();
 

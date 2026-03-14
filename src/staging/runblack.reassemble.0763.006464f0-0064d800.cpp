@@ -31,13 +31,13 @@ bool32_t PlannedMultiMapFixed::CreateBuildingSite()
 }
 
 // win1.41 00648990 mac 10114ef0 PlannedMultiMapFixed::Save(GameOSFile &)
-bool32_tcorrect PlannedMultiMapFixed::Save(GameOSFile& file)
+bool32_t PlannedMultiMapFixed::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00648af0 mac 10114cd0 PlannedMultiMapFixed::Load(GameOSFile &)
-bool32_tcorrect PlannedMultiMapFixed::Load(GameOSFile& file)
+bool32_t PlannedMultiMapFixed::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -117,7 +117,7 @@ void GPlayer::PostLoadCleanup()
 }
 
 // win1.41 0064ac00 mac 100306d0 GPlayer::IsNeutral(void)
-bool GPlayer::IsNeutral()
+bool32_t GPlayer::IsNeutral()
 {
     return 0;
 }
@@ -169,7 +169,7 @@ GInterface* GPlayer::GetRealInterface(int param_2)
 }
 
 // win1.41 0064d750 mac 10033320 GPlayer::IsMemberOfThisPlayer(GInterfaceStatus *)
-bool GPlayer::IsMemberOfThisPlayer(GInterfaceStatus* param_1)
+bool32_t GPlayer::IsMemberOfThisPlayer(GInterfaceStatus* param_1)
 {
     return 0;
 }

@@ -8,25 +8,25 @@ Villager::Villager()
 }
 
 // win1.41 0055c970 mac 10064ef0 Villager::IsChild(void)
-bool Villager::IsChild()
+bool32_t Villager::IsChild()
 {
     return 0;
 }
 
 // win1.41 0055c980 mac 10051310 Villager::IsFoodSpeedUp(void)
-bool Villager::IsFoodSpeedUp()
+bool32_t Villager::IsFoodSpeedUp()
 {
     return 0;
 }
 
 // win1.41 0055c990 mac 10147d30 Villager::IsABeliever(void)
-bool Villager::IsABeliever()
+bool32_t Villager::IsABeliever()
 {
     return true;
 }
 
 // win1.41 0055c9a0 mac inlined Villager::IsTouching_3( const(Object *, float))
-bool Villager::IsTouching(Object* param_1, float param_2) const
+bool32_t Villager::IsTouching(Object* param_1, float param_2) const
 {
     return 0;
 }
@@ -44,13 +44,13 @@ int Villager::GetDetailMesh(int param_1)
 }
 
 // win1.41 0055c9f0 mac inlined Villager::IsScriptState( const(VILLAGER_STATES))
-bool Villager::IsScriptState(VILLAGER_STATES param_1) const
+bool32_t Villager::IsScriptState(VILLAGER_STATES param_1) const
 {
     return 0;
 }
 
 // win1.41 0055ca10 mac inlined Villager::IsScriptInterruptableState( const(VILLAGER_STATES))
-bool Villager::IsScriptInterruptableState(VILLAGER_STATES param_1) const
+bool32_t Villager::IsScriptInterruptableState(VILLAGER_STATES param_1) const
 {
     return 0;
 }
@@ -68,7 +68,7 @@ const char* Villager::GetVillagerName()
 }
 
 // win1.41 0055ca50 mac 10147fb0 Villager::CanBePickedUp(void)
-bool Villager::CanBePickedUp()
+bool32_t Villager::CanBePickedUp()
 {
     return false;
 }
@@ -80,43 +80,43 @@ uint32_t Villager::GetCreatureBeliefType()
 }
 
 // win1.41 0055ca80 mac 10148050 Villager::CanBeImpressedByCreature(Creature *)
-bool Villager::CanBeImpressedByCreature(Creature* param_1)
+bool32_t Villager::CanBeImpressedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055ca90 mac 101480d0 Villager::CanReceiveGifts(Creature *)
-bool Villager::CanReceiveGifts(Creature* param_1)
+bool32_t Villager::CanReceiveGifts(Creature* param_1)
 {
     return 1;
 }
 
 // win1.41 0055caa0 mac 10148110 Villager::CanBeHelpedByCreature(Creature *)
-bool Villager::CanBeHelpedByCreature(Creature* param_1)
+bool32_t Villager::CanBeHelpedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0055cab0 mac 1006d800 Villager::IsVillager(Creature *)
-bool Villager::IsVillager(Creature* param_1)
+bool32_t Villager::IsVillager(Creature* param_1)
 {
     return 1;
 }
 
 // win1.41 0055cac0 mac 10478e10 Villager::IsMaleVillager(void)
-bool32_tcorrect Villager::IsMaleVillager()
+bool32_t Villager::IsMaleVillager()
 {
     return 0;
 }
 
 // win1.41 0055cae0 mac 1033bc40 Villager::IsFemaleVillager(void)
-bool32_tcorrect Villager::IsFemaleVillager()
+bool32_t Villager::IsFemaleVillager()
 {
     return 0;
 }
 
 // win1.41 0055cb00 mac 1009a450 Villager::IsAChild(void)
-bool Villager::IsAChild()
+bool32_t Villager::IsAChild()
 {
     return 0;
 }

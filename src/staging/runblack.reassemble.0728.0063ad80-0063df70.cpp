@@ -12,13 +12,13 @@ Game3DObject* Game3DObject::Create(const MapCoords* coords, LH3DObject::ObjectTy
 }
 
 // win1.41 0063afe0 mac 10019840 Game3DObject::GetDoorPosition(MapCoords *) const
-bool Game3DObject::GetDoorPosition(MapCoords* position)
+bool32_t Game3DObject::GetDoorPosition(MapCoords* position)
 {
     return 0;
 }
 
 // win1.41 0063b060 mac 103d9d50 Game3DObject::GetSpecialPos(unsigned long, MapCoords &) const
-bool Game3DObject::GetSpecialPos(uint32_t index, MapCoords* coords)
+bool32_t Game3DObject::GetSpecialPos(uint32_t index, MapCoords* coords)
 {
     return 0;
 }

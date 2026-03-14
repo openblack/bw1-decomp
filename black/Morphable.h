@@ -115,8 +115,8 @@ public:
     virtual void MorphTexture(); /* 0x10 */
     virtual void UpdateTime(int time);
     virtual void PrepareForDrawing();
-    virtual bool AddForDrawing();
-    virtual bool LoadBinary(char* param_2, int param_3); /* 0x20 */
+    virtual bool32_t AddForDrawing();
+    virtual bool32_t LoadBinary(char* param_2, int param_3); /* 0x20 */
     virtual void SaveBinary(char* buffer);
 
     // Static methods

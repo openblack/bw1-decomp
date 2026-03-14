@@ -13,7 +13,7 @@ GestureSystemData::~GestureSystemData()
 }
 
 // win1.41 00579af0 mac 1032b530 GestureSystemDataList::Load(char *)
-bool GestureSystemDataList::Load(char* param_1)
+bool32_t GestureSystemDataList::Load(char* param_1)
 {
     return 0;
 }
@@ -59,7 +59,7 @@ void Graveyard::ToBeDeleted(int param_1)
 }
 
 // win1.41 00595cd0 mac 100f4d60 Graveyard::InteractsWithPhysicsObjects(void)
-bool Graveyard::InteractsWithPhysicsObjects()
+bool32_t Graveyard::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -80,13 +80,13 @@ void Graveyard::MakeFunctional()
 }
 
 // win1.41 00595ee0 mac 100f4670 Graveyard::Save(GameOSFile &)
-bool32_tcorrect Graveyard::Save(GameOSFile& file)
+bool32_t Graveyard::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00595f50 mac 100f4590 Graveyard::Load(GameOSFile &)
-bool32_tcorrect Graveyard::Load(GameOSFile& file)
+bool32_t Graveyard::Load(GameOSFile& file)
 {
     return 0;
 }

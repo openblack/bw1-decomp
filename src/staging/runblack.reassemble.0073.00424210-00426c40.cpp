@@ -59,13 +59,13 @@ void GArena::ToBeDeleted(int param_1)
 }
 
 // win1.41 004250d0 mac 100aa9e0 GArena::Save(GameOSFile &)
-bool32_tcorrect GArena::Save(GameOSFile& file)
+bool32_t GArena::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 004251d0 mac 100aa860 GArena::Load(GameOSFile &)
-bool32_tcorrect GArena::Load(GameOSFile& file)
+bool32_t GArena::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -94,7 +94,7 @@ GArrowInfo::~GArrowInfo()
 }
 
 // win1.41 00425b00 mac 100adca0 Mobile::ValidForPlaceInHand(GInterfaceStatus *)
-bool Mobile::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t Mobile::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -112,7 +112,7 @@ float MobileObject::GetZAngle()
 }
 
 // win1.41 00425b30 mac 100ad910 MobileObject::CanBePickedUp(void)
-bool MobileObject::CanBePickedUp()
+bool32_t MobileObject::CanBePickedUp()
 {
     return 0;
 }
@@ -136,31 +136,31 @@ uint32_t MobileObject::GetCreatureMimicType()
 }
 
 // win1.41 00425b70 mac 100ada60 MobileObject::CanBeUsedToHoldWater(Creature *)
-bool MobileObject::CanBeUsedToHoldWater(Creature* param_1)
+bool32_t MobileObject::CanBeUsedToHoldWater(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00425b90 mac 100adae0 MobileObject::CanBeStompedOnByCreature(Creature *)
-bool MobileObject::CanBeStompedOnByCreature(Creature* param_1)
+bool32_t MobileObject::CanBeStompedOnByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00425ba0 mac 100adb30 MobileObject::CanBeThrownInTheSeaPlayfully(Creature *)
-bool MobileObject::CanBeThrownInTheSeaPlayfully(Creature* param_1)
+bool32_t MobileObject::CanBeThrownInTheSeaPlayfully(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00425bb0 mac 100adb90 MobileObject::CanBePlayedWithByCreature(Creature *)
-bool MobileObject::CanBePlayedWithByCreature(Creature* param_1)
+bool32_t MobileObject::CanBePlayedWithByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00425bc0 mac 100adbe0 MobileObject::IsMobileObject(void)
-bool MobileObject::IsMobileObject()
+bool32_t MobileObject::IsMobileObject()
 {
     return 0;
 }
@@ -189,13 +189,13 @@ Arrow::~Arrow()
 }
 
 // win1.41 00425c50 mac 100add90 Object::CanBeCrushed(void)
-bool Object::CanBeCrushed()
+bool32_t Object::CanBeCrushed()
 {
     return 0;
 }
 
 // win1.41 00425c60 mac 100ade90 Object::CanBeFrighteningToCreature(Creature *)
-bool Object::CanBeFrighteningToCreature(Creature* creature)
+bool32_t Object::CanBeFrighteningToCreature(Creature* creature)
 {
     return 0;
 }

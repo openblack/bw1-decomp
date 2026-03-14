@@ -16,7 +16,7 @@ void GGame::ProcessBufferedKeys()
 }
 
 // win1.41 0054c4a0 mac 10029760 GGame::LocalTimerSaysDoATurn(void)
-bool GGame::LocalTimerSaysDoATurn()
+bool32_t GGame::LocalTimerSaysDoATurn()
 {
     return 0;
 }

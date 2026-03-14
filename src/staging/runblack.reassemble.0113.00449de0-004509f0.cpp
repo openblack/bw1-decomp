@@ -3,7 +3,7 @@
 #include "lionhead/lh3dlib/development/LHPoint.h"
 
 // win1.41 0044a290 mac inlined CameraModeTwoObjects::CanPlayerGestureWhenCameraMoving(void)
-bool CameraModeTwoObjects::CanPlayerGestureWhenCameraMoving()
+bool32_t CameraModeTwoObjects::CanPlayerGestureWhenCameraMoving()
 {
     return 0;
 }
@@ -19,7 +19,7 @@ void CameraModeTwoObjects::Cleanup()
 }
 
 // win1.41 0044a2e0 mac inlined CameraModeTwoObjects::CanExist(void)
-bool CameraModeTwoObjects::CanExist()
+bool32_t CameraModeTwoObjects::CanExist()
 {
     return 0;
 }

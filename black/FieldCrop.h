@@ -39,7 +39,7 @@ public:
     // win1.41 00607e20 mac 103bb470 FieldCrop::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
     // win1.41 00608270 mac 103bb1e0 FieldCrop::IsFunctional(void)
-    virtual bool32_tcorrect IsFunctional();
+    virtual bool32_t IsFunctional();
     // win1.41 0055d100 mac 103bab60 FieldCrop::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0055d0f0 mac 103bab20 FieldCrop::GetSaveType(void)
@@ -55,7 +55,7 @@ public:
     // win1.41 006081e0 mac 103bb330 FieldCrop::SetLife(float)
     virtual void SetLife(float param_1);
     // win1.41 006083e0 mac 103bac40 FieldCrop::InterfaceSetInMagicHand(GInterfaceStatus *)
-    virtual bool InterfaceSetInMagicHand(GInterfaceStatus* param_1);
+    virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
     // win1.41 00608360 mac 103bae90 FieldCrop::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t ValidToApplyThisToObject(GInterfaceStatus* param_1, Object* param_2);
     // win1.41 00608390 mac 103badc0 FieldCrop::ApplyThisToObject(GInterfaceStatus *, Object *, GestureSystemPacketData *)
@@ -67,13 +67,13 @@ public:
     // win1.41 006082f0 mac 103bafd0 FieldCrop::SetUpPhysOb(PhysOb *)
     virtual void SetUpPhysOb(PhysOb* param_1);
     // win1.41 00608340 mac 103baf80 FieldCrop::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 006082d0 mac 103bb100 FieldCrop::CanBecomeAPhysicsObject(void)
-    virtual bool32_tcorrect CanBecomeAPhysicsObject();
+    virtual bool32_t CanBecomeAPhysicsObject();
     // win1.41 00608440 mac 103baba0 FieldCrop::CreatureMustAvoid(Creature *)
-    virtual bool CreatureMustAvoid(Creature* param_1);
+    virtual bool32_t CreatureMustAvoid(Creature* param_1);
     // win1.41 00608350 mac 103baf40 FieldCrop::IsARootedObject(void)
-    virtual bool IsARootedObject();
+    virtual bool32_t IsARootedObject();
 };
 
 #else // __cplusplus

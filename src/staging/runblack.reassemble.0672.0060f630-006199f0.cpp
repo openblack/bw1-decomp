@@ -20,7 +20,7 @@ MapCell* GMap::ToMap(uint32_t cell_x, uint32_t cell_z)
 }
 
 // win1.41 00612690 mac 10049c10 GMap::InBounds(long, long)
-bool GMap::InBounds(uint32_t x, uint32_t z)
+bool32_t GMap::InBounds(uint32_t x, uint32_t z)
 {
     return 0;
 }

@@ -34,9 +34,9 @@ public:
     // win1.41 00722230 mac 10519fb0 SpellCreature::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00722520 mac 1051a0e0 SpellCreature::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 00722590 mac 10519ff0 SpellCreature::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00722220 mac 10519f70 SpellCreature::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00722490 mac 1051a2e0 SpellCreature::ProcessSpellSeed(void)

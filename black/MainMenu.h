@@ -29,7 +29,7 @@ public:
     // win1.41 0053fb50 mac 105c05a0 MainMenu::Destroy(void)
     virtual void Destroy();
     // win1.41 0053bd50 mac 105c5ef0 MainMenu::CanESCOut(void)
-    virtual bool CanESCOut();
+    virtual bool32_t CanESCOut();
     // win1.41 0053fba0 mac 105bff40 MainMenu::InitControls(void)
     virtual void InitControls();
 };

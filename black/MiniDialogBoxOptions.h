@@ -50,7 +50,7 @@ public:
     // win1.41 00515680 mac 102b2aa0 MiniDialogBoxOptions::Destroy(void)
     virtual void Destroy();
     // win1.41 00515810 mac 102b27a0 MiniDialogBoxOptions::CanESCOut(void)
-    virtual bool CanESCOut();
+    virtual bool32_t CanESCOut();
     // win1.41 00515690 mac 102b2800 MiniDialogBoxOptions::InitControls(void)
     virtual void InitControls();
 

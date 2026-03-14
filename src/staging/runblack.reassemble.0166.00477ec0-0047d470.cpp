@@ -19,7 +19,7 @@ float Creature::GetProjectileSpeed()
 }
 
 // win1.41 00477f00 mac 101da0d0 Creature::IsScary(void)
-bool Creature::IsScary()
+bool32_t Creature::IsScary()
 {
     return 0;
 }
@@ -75,13 +75,13 @@ Citadel* Creature::GetCitadel()
 }
 
 // win1.41 004792f0 mac 101d83c0 Creature::IsDominantCreature(Creature *)
-bool Creature::IsDominantCreature(Creature* param_1)
+bool32_t Creature::IsDominantCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 004794a0 mac 101d7fc0 Creature::IsReadyForNewScriptAction(void)
-bool Creature::IsReadyForNewScriptAction()
+bool32_t Creature::IsReadyForNewScriptAction()
 {
     return 0;
 }
@@ -108,19 +108,19 @@ void Creature::SetUpPhysOb(PhysOb* param_1)
 }
 
 // win1.41 00479d10 mac 101d6d70 Creature::CanBecomeAPhysicsObject(void)
-bool32_tcorrect Creature::CanBecomeAPhysicsObject()
+bool32_t Creature::CanBecomeAPhysicsObject()
 {
     return 0;
 }
 
 // win1.41 00479d20 mac 101d6d20 Creature::InteractsWithPhysicsObjects(void)
-bool Creature::InteractsWithPhysicsObjects()
+bool32_t Creature::InteractsWithPhysicsObjects()
 {
     return 0;
 }
 
 // win1.41 00479e40 mac 101d6a50 Creature::IsMoving( const(void))
-bool Creature::IsMoving()
+bool32_t Creature::IsMoving()
 {
     return 0;
 }
@@ -207,13 +207,13 @@ void Creature::SetAnimationTimeModify(bool value)
 }
 
 // win1.41 0047c670 mac 101d2490 Creature::IsDancing(void)
-bool Creature::IsDancing()
+bool32_t Creature::IsDancing()
 {
     return 0;
 }
 
 // win1.41 0047c690 mac 101d2420 Creature::IsOnHomeTeam(void)
-bool Creature::IsOnHomeTeam()
+bool32_t Creature::IsOnHomeTeam()
 {
     return 0;
 }

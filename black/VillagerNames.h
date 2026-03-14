@@ -35,7 +35,7 @@ struct VillagerNameBlock
     // Non-virtual methods
 
     // win1.41 007627e0 mac 10012bf0 VillagerNameBlock::DeleteAll(void)
-    bool DeleteAll();
+    bool32_t DeleteAll();
     // win1.41 00762900 mac inlined VillagerNameBlock::~VillagerNameBlock()
     ~VillagerNameBlock();
     // win1.41 00762970 mac inlined VillagerNameBlock::FreeAll(void)

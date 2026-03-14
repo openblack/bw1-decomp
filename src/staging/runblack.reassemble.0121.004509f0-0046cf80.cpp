@@ -24,13 +24,13 @@
 #include "HandStateInvisible.h"
 
 // win1.41 00455d50 mac 10000050 CameraExclusion::InsideExclusion(LHPoint)
-bool CameraExclusion::InsideExclusion(LHPoint point)
+bool32_t CameraExclusion::InsideExclusion(LHPoint point)
 {
     return 0;
 }
 
 // win1.41 00455e20 mac 1004f140 CameraExclusion::InsideInclusion(LHPoint, LHPoint, LHPoint *, LHPoint *)
-bool CameraExclusion::InsideInclusion(LHPoint param_1, LHPoint param_2, LHPoint* param_3, LHPoint* param_4)
+bool32_t CameraExclusion::InsideInclusion(LHPoint param_1, LHPoint param_2, LHPoint* param_3, LHPoint* param_4)
 {
     return 0;
 }
@@ -76,13 +76,13 @@ void CameraModeNew3::DragFocusOntoLand(LHPoint* param_1, LHPoint* param_2)
 }
 
 // win1.41 0045a080 mac 101a3db0 CameraModeNew3::UpdateStrafe(LHPoint &, LHPoint &, float &, float &, float, unsigned long)
-bool CameraModeNew3::UpdateStrafe(LHPoint* param_1, LHPoint* param_2, float* param_3, float* param_4, float param_5, uint32_t param_6)
+bool32_t CameraModeNew3::UpdateStrafe(LHPoint* param_1, LHPoint* param_2, float* param_3, float* param_4, float param_5, uint32_t param_6)
 {
     return 0;
 }
 
 // win1.41 0045a390 mac 100098e0 CameraModeNew3::WantToQuitFight(LHPoint, LHPoint, float)
-bool CameraModeNew3::WantToQuitFight(LHPoint param_1, LHPoint param_2, float param_3)
+bool32_t CameraModeNew3::WantToQuitFight(LHPoint param_1, LHPoint param_2, float param_3)
 {
     return 0;
 }
@@ -114,7 +114,7 @@ CameraModeTwoObjects::~CameraModeTwoObjects()
 }
 
 // win1.41 00461d90 mac 101aac60 CameraModeTwoObjects::IsStillValid(void)
-bool CameraModeTwoObjects::IsStillValid()
+bool32_t CameraModeTwoObjects::IsStillValid()
 {
     return 0;
 }
@@ -160,7 +160,7 @@ uint32_t Citadel::GetOrigin()
 }
 
 // win1.41 00462a90 mac 101b6f00 Citadel::IsSuitableForCreatureActivity(void)
-bool Citadel::IsSuitableForCreatureActivity()
+bool32_t Citadel::IsSuitableForCreatureActivity()
 {
     return 0;
 }
@@ -172,7 +172,7 @@ const char* Citadel::GetText()
 }
 
 // win1.41 00462ab0 mac 101b6f80 Citadel::IsCitadel(void)
-bool Citadel::IsCitadel()
+bool32_t Citadel::IsCitadel()
 {
     return 0;
 }
@@ -218,13 +218,13 @@ Citadel* Citadel::CreateCitadel(MapCoords* coords, GCitadelHeartInfo* info, uint
 }
 
 // win1.41 00463b00 mac 101b7db0 Citadel::Save(GameOSFile &)
-bool32_tcorrect Citadel::Save(GameOSFile& file)
+bool32_t Citadel::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00463dc0 mac 101b71d0 Citadel::Load(GameOSFile &)
-bool32_tcorrect Citadel::Load(GameOSFile& file)
+bool32_t Citadel::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -286,25 +286,25 @@ uint32_t CitadelPart::GetCreatureBeliefType()
 }
 
 // win1.41 00464ab0 mac 101c08e0 CitadelPart::IsRepaired(void)
-bool CitadelPart::IsRepaired()
+bool32_t CitadelPart::IsRepaired()
 {
     return 0;
 }
 
 // win1.41 00464ad0 mac 10081060 CitadelPart::IsBuilt(void)
-bool32_tcorrect CitadelPart::IsBuilt()
+bool32_t CitadelPart::IsBuilt()
 {
     return 0;
 }
 
 // win1.41 00464b00 mac inlined CitadelPart::IsCitadelPart_0(void)
-bool CitadelPart::IsCitadelPart()
+bool32_t CitadelPart::IsCitadelPart()
 {
     return 0;
 }
 
 // win1.41 00464b10 mac inlined CitadelPart::IsCitadelPart_1(Creature *)
-bool CitadelPart::IsCitadelPart(Creature* param_1)
+bool32_t CitadelPart::IsCitadelPart(Creature* param_1)
 {
     return 0;
 }
@@ -339,13 +339,13 @@ ABODE_TYPE CitadelHeart::GetAbodeType()
 }
 
 // win1.41 00464b70 mac 101c2200 CitadelHeart::ShouldFootpathsGoRound(void)
-bool CitadelHeart::ShouldFootpathsGoRound()
+bool32_t CitadelHeart::ShouldFootpathsGoRound()
 {
     return 0;
 }
 
 // win1.41 00464b80 mac 101c2250 CitadelHeart::IsCitadelHeart(void)
-bool CitadelHeart::IsCitadelHeart()
+bool32_t CitadelHeart::IsCitadelHeart()
 {
     return 0;
 }
@@ -389,7 +389,7 @@ CitadelHeart* CitadelHeart::Create(MapCoords* coords, GCitadelHeartInfo* info, C
 }
 
 // win1.41 00465000 mac 101c0570 CitadelHeart::Built(void)
-bool CitadelHeart::Built()
+bool32_t CitadelHeart::Built()
 {
     return 0;
 }
@@ -413,13 +413,13 @@ MultiMapFixed* PlannedMultiMapFixed::CreatePlannedNoFixedCheck(float param_1)
 }
 
 // win1.41 00465550 mac 100d1770 PlannedMultiMapFixed::IsCivic(void)
-bool PlannedMultiMapFixed::IsCivic()
+bool32_t PlannedMultiMapFixed::IsCivic()
 {
     return 0;
 }
 
 // win1.41 00465560 mac 100d17b0 PlannedMultiMapFixed::IsWonder(void)
-bool32_tcorrect PlannedMultiMapFixed::IsWonder()
+bool32_t PlannedMultiMapFixed::IsWonder()
 {
     return 0;
 }
@@ -448,13 +448,13 @@ PlannedCitadelHeart::~PlannedCitadelHeart()
 }
 
 // win1.41 004655c0 mac 101bf9c0 CitadelHeart::Save(GameOSFile &)
-bool32_tcorrect CitadelHeart::Save(GameOSFile& file)
+bool32_t CitadelHeart::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 004657f0 mac 101bf6e0 CitadelHeart::Load(GameOSFile &)
-bool32_tcorrect CitadelHeart::Load(GameOSFile& file)
+bool32_t CitadelHeart::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -510,13 +510,13 @@ void CitadelHeart::GetWorldMatrix(LHMatrix* param_1)
 }
 
 // win1.41 00467b30 mac 101bdfc0 CitadelHeart::ChecksVerticesVObjects(void)
-bool CitadelHeart::ChecksVerticesVObjects()
+bool32_t CitadelHeart::ChecksVerticesVObjects()
 {
     return 0;
 }
 
 // win1.41 00467b40 mac 101bdf40 CitadelHeart::InteractsWithPhysicsObjects(void)
-bool CitadelHeart::InteractsWithPhysicsObjects()
+bool32_t CitadelHeart::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -544,13 +544,13 @@ MapCoords* CitadelHeart::GetDoorPos(MapCoords* param_1)
 }
 
 // win1.41 00467e10 mac 101c1ee0 PlannedTownCitadelHeart::IsCivic(void)
-bool PlannedTownCitadelHeart::IsCivic()
+bool32_t PlannedTownCitadelHeart::IsCivic()
 {
     return 0;
 }
 
 // win1.41 00467e20 mac 101c1f20 PlannedTownCitadelHeart::IsWonder(void)
-bool32_tcorrect PlannedTownCitadelHeart::IsWonder()
+bool32_t PlannedTownCitadelHeart::IsWonder()
 {
     return 0;
 }
@@ -596,13 +596,13 @@ MultiMapFixed* PlannedTownCitadelHeart::CreatePlannedNoFixedCheck(float param_1)
 }
 
 // win1.41 00467fc0 mac 101bd610 PlannedTownCitadelHeart::Save(GameOSFile &)
-bool32_tcorrect PlannedTownCitadelHeart::Save(GameOSFile& file)
+bool32_t PlannedTownCitadelHeart::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00467ff0 mac 101bd570 PlannedTownCitadelHeart::Load(GameOSFile &)
-bool32_tcorrect PlannedTownCitadelHeart::Load(GameOSFile& file)
+bool32_t PlannedTownCitadelHeart::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -637,19 +637,19 @@ void* CitadelHeart::GetActualObjectToEffect(GPlayer* param_1, bool param_2)
 }
 
 // win1.41 00468da0 mac 101bc010 CitadelHeart::DestroyedByEffect(GPlayer *, float)
-bool CitadelHeart::DestroyedByEffect(GPlayer* param_1, float param_2)
+bool32_t CitadelHeart::DestroyedByEffect(GPlayer* param_1, float param_2)
 {
     return 0;
 }
 
 // win1.41 00468dc0 mac 101bbf10 CitadelHeart::CreateBuildingSite(void)
-bool CitadelHeart::CreateBuildingSite()
+bool32_t CitadelHeart::CreateBuildingSite()
 {
     return 0;
 }
 
 // win1.41 00468df0 mac 101bbe50 PlannedCitadelHeart::CreateBuildingSite(void)
-bool PlannedCitadelHeart::CreateBuildingSite()
+bool32_t PlannedCitadelHeart::CreateBuildingSite()
 {
     return 0;
 }
@@ -753,7 +753,7 @@ char* CitadelPart::GetDebugText()
 }
 
 // win1.41 004694f0 mac 101c3830 CitadelPart::ShouldFootpathsGoRound(void)
-bool CitadelPart::ShouldFootpathsGoRound()
+bool32_t CitadelPart::ShouldFootpathsGoRound()
 {
     return 0;
 }
@@ -769,13 +769,13 @@ void CitadelPart::ToBeDeleted(int param_1)
 }
 
 // win1.41 004695c0 mac 101c32d0 CitadelPart::DestroyedByEffect(GPlayer *, float)
-bool CitadelPart::DestroyedByEffect(GPlayer* param_1, float param_2)
+bool32_t CitadelPart::DestroyedByEffect(GPlayer* param_1, float param_2)
 {
     return 0;
 }
 
 // win1.41 004695d0 mac inlined CitadelPart::CanBeDestroyedBySpell_1(Spell *)
-bool CitadelPart::CanBeDestroyedBySpell(Spell* param_1)
+bool32_t CitadelPart::CanBeDestroyedBySpell(Spell* param_1)
 {
     return 0;
 }
@@ -797,13 +797,13 @@ void PlannedCitadelPart::ToBeDeleted(int param_1)
 }
 
 // win1.41 004696f0 mac 101c2ed0 PlannedCitadelPart::Save(GameOSFile &)
-bool32_tcorrect PlannedCitadelPart::Save(GameOSFile& file)
+bool32_t PlannedCitadelPart::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00469720 mac 101c2e30 PlannedCitadelPart::Load(GameOSFile &)
-bool32_tcorrect PlannedCitadelPart::Load(GameOSFile& file)
+bool32_t PlannedCitadelPart::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -831,13 +831,13 @@ void CitadelPart::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 00469830 mac 101c2870 CitadelPart::Save(GameOSFile &)
-bool32_tcorrect CitadelPart::Save(GameOSFile& file)
+bool32_t CitadelPart::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 004698b0 mac 101c2780 CitadelPart::Load(GameOSFile &)
-bool32_tcorrect CitadelPart::Load(GameOSFile& file)
+bool32_t CitadelPart::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -875,19 +875,19 @@ Container::~Container()
 }
 
 // win1.41 0046b920 mac 100bf9d0 Container::Save(GameOSFile &)
-bool32_tcorrect Container::Save(GameOSFile& file)
+bool32_t Container::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0046b960 mac 100bf930 Container::Load(GameOSFile &)
-bool32_tcorrect Container::Load(GameOSFile& file)
+bool32_t Container::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0046be80 mac 101a6900 HandState::AllowCameraTricons(void)
-bool HandState::AllowCameraTricons()
+bool32_t HandState::AllowCameraTricons()
 {
     return 0;
 }

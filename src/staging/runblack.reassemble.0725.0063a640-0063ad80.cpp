@@ -7,7 +7,7 @@ void Object::InitialiseIsFixedForMapList()
 }
 
 // win1.41 0063a780 mac 103d07e0 Object::IsDrowning(void)
-bool Object::IsDrowning()
+bool32_t Object::IsDrowning()
 {
     return 0;
 }
@@ -25,7 +25,7 @@ IMMERSION_EFFECT_TYPE Object::GetInHandImmersionTexture()
 }
 
 // win1.41 0063a7d0 mac 103d06c0 Object::CanBecomeArtifact(void)
-bool Object::CanBecomeArtifact()
+bool32_t Object::CanBecomeArtifact()
 {
     return 0;
 }
@@ -48,13 +48,13 @@ float Object::ApplyWaterSpell(SpellWater* spell)
 }
 
 // win1.41 0063a920 mac 103d03c0 Object::BlocksTownClearArea( const(void))
-bool Object::BlocksTownClearArea()
+bool32_t Object::BlocksTownClearArea()
 {
     return 0;
 }
 
 // win1.41 0063a930 mac 103d0360 Object::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-bool Object::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
+bool32_t Object::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
 {
     return 0;
 }
@@ -66,7 +66,7 @@ float Object::GetRadiusMultiplierForApplyingPotToPos()
 }
 
 // win1.41 0063aae0 mac 103cffe0 Object::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
-bool Object::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status)
+bool32_t Object::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status)
 {
     return 0;
 }

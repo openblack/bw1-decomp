@@ -38,13 +38,13 @@ uint32_t GGame::InitOneTimeOnly()
 }
 
 // win1.41 0054f3b0 mac 101b9770 GGame::Init(void)
-bool GGame::Init()
+bool32_t GGame::Init()
 {
     return 0;
 }
 
 // win1.41 0054f421 mac inlined GGame::InitInner(void)
-bool GGame::InitInner()
+bool32_t GGame::InitInner()
 {
     return 0;
 }

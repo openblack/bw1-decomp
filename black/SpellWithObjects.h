@@ -37,9 +37,9 @@ public:
     // win1.41 0055cf70 mac 10519dd0 SpellWithObjects::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 007210f0 mac 10516ed0 SpellWithObjects::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 007211d0 mac 10516d00 SpellWithObjects::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& file);
+    virtual bool32_t Save(GameOSFile& file);
     // win1.41 0055cf60 mac 10519d90 SpellWithObjects::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 007212f0 mac 10516c10 SpellWithObjects::ProcessSpellSeed(void)
@@ -51,7 +51,7 @@ public:
     // win1.41 0055cea0 mac inlined SpellWithObjects::GetMaxObjectsToCreate(void)
     virtual int GetMaxObjectsToCreate();
     // win1.41 0055cf50 mac 103b1b10 SpellWithObjects::GetSetObjectsDyingOnCloseDown(void)
-    virtual bool GetSetObjectsDyingOnCloseDown(); /* 0x554 */
+    virtual bool32_t GetSetObjectsDyingOnCloseDown(); /* 0x554 */
 };
 
 #else // __cplusplus

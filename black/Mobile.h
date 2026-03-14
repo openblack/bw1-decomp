@@ -44,13 +44,13 @@ public:
     // win1.41 004748e0 mac 100c0800 Mobile::_dt(void)
     virtual ~Mobile();
     // win1.41 00606c70 mac 103ba4e0 Mobile::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 00606c10 mac 103ba5b0 Mobile::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& file);
+    virtual bool32_t Save(GameOSFile& file);
     // win1.41 00606cd0 mac 103ba4a0 Mobile::BlocksTownClearArea( const(void))
-    virtual bool BlocksTownClearArea() const;
+    virtual bool32_t BlocksTownClearArea() const;
     // win1.41 00425b00 mac 100adca0 Mobile::ValidForPlaceInHand(GInterfaceStatus *)
-    virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
+    virtual bool32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 00416f50 mac 100adcf0 Mobile::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
     virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
     // win1.41 00606bf0 mac 103ba690 Mobile::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)

@@ -73,7 +73,7 @@ MapCellIterator MapCoords::GetFirstIterator() const
 }
 
 // win1.41 006035b0 mac 10018e70 MapCoords::IsWater(void) const
-bool MapCoords::IsWater() const
+bool32_t MapCoords::IsWater() const
 {
     return 0;
 }
@@ -89,7 +89,7 @@ void MapCoords::IsSuitableForFixed(Game3DObject* object) const
 }
 
 // win1.41 006042c0 mac 100499f0 MapCoords::InBounds(void) const
-bool MapCoords::InBounds() const
+bool32_t MapCoords::InBounds() const
 {
     return 0;
 }
@@ -107,7 +107,7 @@ int MapCoords::CollideCollideWithFixe() const
 }
 
 // win1.41 006053c0 mac 100028d0 MapCoords::IsCloseToEqual(const MapCoords&, float) const
-bool MapCoords::IsCloseToEqual(const MapCoords& other, float epsilon) const
+bool32_t MapCoords::IsCloseToEqual(const MapCoords& other, float epsilon) const
 {
     return 0;
 }
@@ -131,13 +131,13 @@ MapCoords MapCoords::operator+(const MapCoords& other) const
 }
 
 // win1.41 00605660 mac 10087b50 MapCoords::operator==(MapCoords const &) const
-bool MapCoords::operator==(const MapCoords& param_2) const
+bool32_t MapCoords::operator==(const MapCoords& param_2) const
 {
     return 0;
 }
 
 // win1.41 006056b0 mac 10557130 MapCoords::operator!=(MapCoords const &) const
-bool MapCoords::operator!=(const MapCoords& param_1) const
+bool32_t MapCoords::operator!=(const MapCoords& param_1) const
 {
     return 0;
 }
@@ -210,13 +210,13 @@ uint32_t Mist::GetScriptObjectType()
 }
 
 // win1.41 00606920 mac 10104980 Mist::Save(GameOSFile &)
-bool32_tcorrect Mist::Save(GameOSFile& file)
+bool32_t Mist::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00606a10 mac 10104820 Mist::Load(GameOSFile &)
-bool32_tcorrect Mist::Load(GameOSFile& file)
+bool32_t Mist::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -233,19 +233,19 @@ uint32_t Mobile::ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords*
 }
 
 // win1.41 00606c10 mac 103ba5b0 Mobile::Save(GameOSFile &)
-bool32_tcorrect Mobile::Save(GameOSFile& file)
+bool32_t Mobile::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00606c70 mac 103ba4e0 Mobile::Load(GameOSFile &)
-bool32_tcorrect Mobile::Load(GameOSFile& file)
+bool32_t Mobile::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00606cd0 mac 103ba4a0 Mobile::BlocksTownClearArea( const(void))
-bool Mobile::BlocksTownClearArea() const
+bool32_t Mobile::BlocksTownClearArea() const
 {
     return 0;
 }
@@ -364,7 +364,7 @@ void Poo::InsertMapObject()
 }
 
 // win1.41 006079e0 mac 103bc0b0 MobileObject::IsPoisoned(void)
-bool MobileObject::IsPoisoned()
+bool32_t MobileObject::IsPoisoned()
 {
     return 0;
 }
@@ -381,7 +381,7 @@ void MobileObject::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 00607aa0 mac 103bbe00 MobileObject::CanBecomeAPhysicsObject(void)
-bool32_tcorrect MobileObject::CanBecomeAPhysicsObject()
+bool32_t MobileObject::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -422,13 +422,13 @@ RESOURCE_TYPE MobileObject::GetResourceType()
 }
 
 // win1.41 00607c40 mac 103bb7a0 MobileObject::Save(GameOSFile &)
-bool32_tcorrect MobileObject::Save(GameOSFile& file)
+bool32_t MobileObject::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00607d00 mac 103bb660 MobileObject::Load(GameOSFile &)
-bool32_tcorrect MobileObject::Load(GameOSFile& file)
+bool32_t MobileObject::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -460,7 +460,7 @@ void FieldCrop::InsertMapObject()
 }
 
 // win1.41 00608270 mac 103bb1e0 FieldCrop::IsFunctional(void)
-bool32_tcorrect FieldCrop::IsFunctional()
+bool32_t FieldCrop::IsFunctional()
 {
     return 0;
 }
@@ -472,7 +472,7 @@ uint32_t FieldCrop::ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoor
 }
 
 // win1.41 006082d0 mac 103bb100 FieldCrop::CanBecomeAPhysicsObject(void)
-bool32_tcorrect FieldCrop::CanBecomeAPhysicsObject()
+bool32_t FieldCrop::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -489,13 +489,13 @@ void FieldCrop::SetUpPhysOb(PhysOb* param_1)
 }
 
 // win1.41 00608340 mac 103baf80 FieldCrop::InteractsWithPhysicsObjects(void)
-bool FieldCrop::InteractsWithPhysicsObjects()
+bool32_t FieldCrop::InteractsWithPhysicsObjects()
 {
     return 0;
 }
 
 // win1.41 00608350 mac 103baf40 FieldCrop::IsARootedObject(void)
-bool FieldCrop::IsARootedObject()
+bool32_t FieldCrop::IsARootedObject()
 {
     return 0;
 }
@@ -525,13 +525,13 @@ HOLD_TYPE Poo::GetHoldType()
 }
 
 // win1.41 006083e0 mac 103bac40 FieldCrop::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool FieldCrop::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t FieldCrop::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 00608440 mac 103baba0 FieldCrop::CreatureMustAvoid(Creature *)
-bool FieldCrop::CreatureMustAvoid(Creature* param_1)
+bool32_t FieldCrop::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }
@@ -554,13 +554,13 @@ GMobileStaticInfo::~GMobileStaticInfo()
 }
 
 // win1.41 00608590 mac 103c1060 MobileStatic::Load(GameOSFile &)
-bool32_tcorrect MobileStatic::Load(GameOSFile& file)
+bool32_t MobileStatic::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00608650 mac 103c0f20 MobileStatic::Save(GameOSFile &)
-bool32_tcorrect MobileStatic::Save(GameOSFile& file)
+bool32_t MobileStatic::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -642,43 +642,43 @@ void MobileStatic::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 00609010 mac 103bf860 MobileStatic::CreatureMustAvoid(Creature *)
-bool MobileStatic::CreatureMustAvoid(Creature* param_1)
+bool32_t MobileStatic::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00609020 mac 103bf7d0 MobileStatic::IsToy(Creature *)
-bool MobileStatic::IsToy(Creature* param_1)
+bool32_t MobileStatic::IsToy(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00609050 mac 103bf750 MobileStatic::IsToyBall(Creature *)
-bool MobileStatic::IsToyBall(Creature* param_1)
+bool32_t MobileStatic::IsToyBall(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00609070 mac 103bf6d0 MobileStatic::IsToyDie(Creature *)
-bool MobileStatic::IsToyDie(Creature* param_1)
+bool32_t MobileStatic::IsToyDie(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00609090 mac 103bf650 MobileStatic::IsToyCuddly(Creature *)
-bool MobileStatic::IsToyCuddly(Creature* param_1)
+bool32_t MobileStatic::IsToyCuddly(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 006090b0 mac 103bf550 MobileStatic::InteractsWithPhysicsObjects(void)
-bool MobileStatic::InteractsWithPhysicsObjects()
+bool32_t MobileStatic::InteractsWithPhysicsObjects()
 {
     return 0;
 }
 
 // win1.41 00609110 mac 1004d490 MobileStatic::IsFence(void)
-bool MobileStatic::IsFence()
+bool32_t MobileStatic::IsFence()
 {
     return 0;
 }
@@ -690,7 +690,7 @@ HOLD_TYPE MobileStatic::GetHoldType()
 }
 
 // win1.41 00609210 mac 103bf080 MobileStatic::PhysicallyDestroysAbodes(void)
-bool MobileStatic::PhysicallyDestroysAbodes()
+bool32_t MobileStatic::PhysicallyDestroysAbodes()
 {
     return 0;
 }
@@ -702,7 +702,7 @@ float MobileStatic::GetHoldLoweringMultiplier()
 }
 
 // win1.41 00609260 mac 103beff0 MobileStatic::ChecksVerticesVObjects(void)
-bool MobileStatic::ChecksVerticesVObjects()
+bool32_t MobileStatic::ChecksVerticesVObjects()
 {
     return 0;
 }

@@ -82,7 +82,7 @@ public:
     uint8_t field_0x5318[0x664];
     StatsDatabase stats_database; /* 0x597c */
     CreatureDatabase creature_database; /* 0x598c */
-    bool field_0x599c;
+    bool32_t field_0x599c;
     uint8_t field_0x599d;
     uint8_t field_0x599e;
     uint8_t field_0x599f;
@@ -189,13 +189,13 @@ public:
     // win1.41 00550780 mac 10560930 GGame::Dump(void)
     virtual void Dump();
     // win1.41 0054b9a0 mac 1009d100 GGame::IsAvailable(void)
-    virtual bool IsAvailable();
+    virtual bool32_t IsAvailable();
     // win1.41 0054b9c0 mac 10496160 GGame::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00554830 mac 10354cc0 GGame::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 00554090 mac 104935a0 GGame::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& file);
+    virtual bool32_t Save(GameOSFile& file);
     // win1.41 0054b9b0 mac 10512c00 GGame::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00555080 mac 100c76b0 GGame::ResolveLoad(void)
@@ -208,7 +208,7 @@ public:
     // win1.41 0054ff80 mac 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void *)
     static void KeyHandler(unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4, void* param_5);
     // win1.41 0054ffe0 mac 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
-    static bool MouseHandler(void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4);
+    static bool32_t MouseHandler(void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4);
 
     // Constructors
 
@@ -232,7 +232,7 @@ public:
     // win1.41 0054c420 mac 10083f50 GGame::ProcessBufferedKeys(void)
     void ProcessBufferedKeys();
     // win1.41 0054c4a0 mac 10029760 GGame::LocalTimerSaysDoATurn(void)
-    bool LocalTimerSaysDoATurn();
+    bool32_t LocalTimerSaysDoATurn();
     // win1.41 0054cc30 mac 10029320 GGame::ProcessNetworkPackets(void)
     void ProcessNetworkPackets();
     // win1.41 0054ced0 mac 100dc070 GGame::DoNetworkStart(void)
@@ -258,9 +258,9 @@ public:
     // win1.41 0054ef40 mac 10514230 GGame::InitOneTimeOnly(void)
     uint32_t InitOneTimeOnly();
     // win1.41 0054f3b0 mac 101b9770 GGame::Init(void)
-    bool Init();
+    bool32_t Init();
     // win1.41 0054f421 mac inlined GGame::InitInner(void)
-    bool InitInner();
+    bool32_t InitInner();
     // win1.41 00550080 mac 101c6850 GGame::UnfinishInitialisation(void)
     void UnfinishInitialisation();
     // win1.41 00550110 mac 10505500 GGame::FinishInitialisation(void)
@@ -268,7 +268,7 @@ public:
     // win1.41 00550170 mac inlined GGame::CreateMeshPack(void)
     void CreateMeshPack();
     // win1.41 00550390 mac 10427340 GGame::LoadFiles(void)
-    bool LoadFiles();
+    bool32_t LoadFiles();
     // win1.41 00550410 mac 1054a080 GGame::SetupPlayers(void)
     void SetupPlayers();
     // win1.41 005507d0 mac inlined GGame::LoopThroughPlayers(void)
@@ -304,7 +304,7 @@ public:
     // win1.41 00552f40 mac 1056f520 GGame::StartPlaygroundGame(char *)
     void StartPlaygroundGame(char* map_path);
     // win1.41 00552f80 mac 100369c0 GGame::IsMultiplayerGame(void) const
-    bool IsMultiplayerGame();
+    bool32_t IsMultiplayerGame();
     // win1.41 00552fa0 mac 10423f90 GGame::FindTownWithID(unsigned long)
     Town* FindTownWithID(int id);
     // win1.41 005538e0 mac 10166f50 GGame::OnNewGame(void)

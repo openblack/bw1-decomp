@@ -28,7 +28,7 @@ public:
     virtual LHRegion* GetRegion(); /* 0x0 */
     virtual uint32_t Process();
     virtual void Draw(int param_1);
-    virtual bool IsActive();
+    virtual bool32_t IsActive();
     // win1.41 00520f00 mac 102b77f0 EditorIconBase::DrawTextString(LH3DColor *, LHRegion *)
     virtual uint32_t DrawTextString(LH3DColor* color, LHRegion* region); /* 0x10 */
     // win1.41 00414bb0 mac 100a4e10 EditorIconBase::GetPDMRegion(void)
@@ -50,7 +50,7 @@ public:
     // win1.41 005203e0 mac 102b72e0 EditorIconBase::GetText(void)
     virtual char* GetText();
     // win1.41 00414c00 mac 100a4f90 EditorIconBase::IsScrollable(void)
-    virtual bool IsScrollable();
+    virtual bool32_t IsScrollable();
     // win1.41 00520b10 mac 102b8040 EditorIconBase::DrawBox(int)
     virtual void DrawBox(int param_1);
     // win1.41 00520f50 mac 102b7700 EditorIconBase::DrawBubbleBox(void)

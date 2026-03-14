@@ -43,7 +43,7 @@ public:
     // win1.41 005b02d0 mac 101c5590 HandState::Exit(void)
     virtual void Exit();
     // win1.41 0046be80 mac 101a6900 HandState::AllowCameraTricons(void)
-    virtual bool AllowCameraTricons();
+    virtual bool32_t AllowCameraTricons();
 
     // Constructors
 

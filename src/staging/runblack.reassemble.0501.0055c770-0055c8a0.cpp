@@ -4,7 +4,7 @@
 #include "Living.h"
 
 // win1.41 0055c770 mac 10043c50 BaseInfo::IsClear(void) const
-bool BaseInfo::IsClear()
+bool32_t BaseInfo::IsClear()
 {
     return 0;
 }

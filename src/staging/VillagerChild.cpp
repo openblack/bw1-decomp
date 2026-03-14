@@ -3,7 +3,7 @@
 char s_VillagerChild_cpp[] = "C:\\dev\\MP\\Black\\VillagerChild.cpp";
 
 // win1.41 007578c0 mac 10573fc0 Villager::ChildFollowsMother(void)
-bool Villager::ChildFollowsMother()
+bool32_t Villager::ChildFollowsMother()
 {
     return false;
 }
@@ -20,7 +20,7 @@ void GetNextDstPromemade(Creche* param_1, long* param_2, MapCoords& param_3, con
 }
 
 // win1.41 00757c90 mac 1006d8c0 Villager::ChildAtCreche(void)
-bool Villager::ChildAtCreche()
+bool32_t Villager::ChildAtCreche()
 {
     return false;
 }
@@ -32,31 +32,31 @@ uint32_t Villager::CheckChild()
 }
 
 // win1.41 00757ec0 mac 10573a80 Villager::ChildDecideWhatToDo(void)
-bool Villager::ChildDecideWhatToDo()
+bool32_t Villager::ChildDecideWhatToDo()
 {
     return false;
 }
 
 // win1.41 00757f00 mac 10573a20 Villager::CheckChildActivity(void)
-bool Villager::CheckChildActivity()
+bool32_t Villager::CheckChildActivity()
 {
     return false;
 }
 
 // win1.41 00757f10 mac 10573990 Villager::ChildBecomesAdult(void)
-bool Villager::ChildBecomesAdult()
+bool32_t Villager::ChildBecomesAdult()
 {
     return false;
 }
 
 // win1.41 00757f40 mac 10095500 Villager::IsMotherAlive(void)
-bool Villager::IsMotherAlive()
+bool32_t Villager::IsMotherAlive()
 {
     return false;
 }
 
 // win1.41 00757f90 mac 10573570 Villager::CheckNeedNewAbode(void)
-bool Villager::CheckNeedNewAbode()
+bool32_t Villager::CheckNeedNewAbode()
 {
     return false;
 }

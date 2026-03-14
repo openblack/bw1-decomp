@@ -14,13 +14,13 @@ GScriptHighlightInfo::~GScriptHighlightInfo()
 }
 
 // win1.41 00709740 mac 104fa180 ScriptHighlight::IsScriptHighlight(void)
-bool ScriptHighlight::IsScriptHighlight()
+bool32_t ScriptHighlight::IsScriptHighlight()
 {
     return 0;
 }
 
 // win1.41 00709750 mac 104fa1d0 ScriptHighlight::IsActive( const(void))
-bool ScriptHighlight::IsActive()
+bool32_t ScriptHighlight::IsActive()
 {
     return 0;
 }
@@ -31,7 +31,7 @@ void ScriptHighlight::PhysicsEditorCreate(int param_1)
 }
 
 // win1.41 00709770 mac 104fa250 ScriptHighlight::ValidForPlaceInHand(GInterfaceStatus *)
-bool ScriptHighlight::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t ScriptHighlight::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -49,61 +49,61 @@ uint32_t ScriptHighlight::ValidToApplyThisToMapCoord(GInterfaceStatus* param_1, 
 }
 
 // win1.41 007097a0 mac 104fa370 ScriptHighlight::CanBeSleptNextToByCreature(Creature *)
-bool ScriptHighlight::CanBeSleptNextToByCreature(Creature* param_1)
+bool32_t ScriptHighlight::CanBeSleptNextToByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 007097b0 mac 104fa3d0 ScriptHighlight::CanBeDestroyedByStoning(Creature *)
-bool ScriptHighlight::CanBeDestroyedByStoning(Creature* param_1)
+bool32_t ScriptHighlight::CanBeDestroyedByStoning(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 007097c0 mac 104fa420 ScriptHighlight::CanBeSetOnFire(Creature *)
-bool ScriptHighlight::CanBeSetOnFire(Creature* param_1)
+bool32_t ScriptHighlight::CanBeSetOnFire(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 007097d0 mac 104fa470 ScriptHighlight::CanBeCrushed(void)
-bool ScriptHighlight::CanBeCrushed()
+bool32_t ScriptHighlight::CanBeCrushed()
 {
     return 0;
 }
 
 // win1.41 007097e0 mac 104fa4b0 ScriptHighlight::IsEffectReceiver(EffectValues *)
-bool ScriptHighlight::IsEffectReceiver(EffectValues* param_1)
+bool32_t ScriptHighlight::IsEffectReceiver(EffectValues* param_1)
 {
     return 0;
 }
 
 // win1.41 00709800 mac 104fa550 ScriptHighlight::ValidAsInterfaceTarget(void)
-bool ScriptHighlight::ValidAsInterfaceTarget()
+bool32_t ScriptHighlight::ValidAsInterfaceTarget()
 {
     return 0;
 }
 
 // win1.41 00709810 mac 104fa5a0 ScriptHighlight::CanBecomeAPhysicsObject(void)
-bool32_tcorrect ScriptHighlight::CanBecomeAPhysicsObject()
+bool32_t ScriptHighlight::CanBecomeAPhysicsObject()
 {
     return 0;
 }
 
 // win1.41 00709820 mac 104fa5f0 ScriptHighlight::InteractsWithPhysicsObjects(void)
-bool ScriptHighlight::InteractsWithPhysicsObjects()
+bool32_t ScriptHighlight::InteractsWithPhysicsObjects()
 {
     return 0;
 }
 
 // win1.41 00709830 mac 104fa640 ScriptHighlight::CanBePickedUpByCreature(Creature *)
-bool ScriptHighlight::CanBePickedUpByCreature(Creature* param_1)
+bool32_t ScriptHighlight::CanBePickedUpByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00709840 mac 104fa690 ScriptHighlight::InterfaceMustBeInInfluenceForInteraction(void)
-bool ScriptHighlight::InterfaceMustBeInInfluenceForInteraction()
+bool32_t ScriptHighlight::InterfaceMustBeInInfluenceForInteraction()
 {
     return 0;
 }
@@ -157,13 +157,13 @@ void ScriptHighlight::SetActivated(int param_1)
 }
 
 // win1.41 0070a760 mac 104fb290 ScriptHighlight::Save(GameOSFile &)
-bool32_tcorrect ScriptHighlight::Save(GameOSFile& file)
+bool32_t ScriptHighlight::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0070a8f0 mac 104fb050 ScriptHighlight::Load(GameOSFile &)
-bool32_tcorrect ScriptHighlight::Load(GameOSFile& file)
+bool32_t ScriptHighlight::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -180,7 +180,7 @@ void ScriptHighlight::ForDrawFXGetVertexPos(int param_1, LHPoint* param_2)
 }
 
 // win1.41 0070ac20 mac 1004f0b0 ScriptHighlight::IsDidYouKnow(void)
-bool ScriptHighlight::IsDidYouKnow()
+bool32_t ScriptHighlight::IsDidYouKnow()
 {
     return 0;
 }

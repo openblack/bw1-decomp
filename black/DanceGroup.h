@@ -44,9 +44,9 @@ public:
     // win1.41 0050cef0 mac 102aaa60 DanceGroup::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0050d9c0 mac 102aab20 DanceGroup::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 0050d640 mac 102ab450 DanceGroup::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0050cee0 mac 102aaa20 DanceGroup::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };

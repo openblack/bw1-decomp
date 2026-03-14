@@ -33,91 +33,91 @@ uint32_t Villager::ArrivesAtStoragePitForDropOff()
 }
 
 // win1.41 00769830 mac 10096ac0 Villager::GotoStoragePitForFood(void)
-bool Villager::GotoStoragePitForFood()
+bool32_t Villager::GotoStoragePitForFood()
 {
     return false;
 }
 
 // win1.41 007696d0 mac 100062f0 Villager::ArrivesAtStoragePitForDropOff(void)
-bool Villager::ArrivesAtStoragePitForFood()
+bool32_t Villager::ArrivesAtStoragePitForFood()
 {
     return false;
 }
 
 // win1.41 007698d0 mac 1059bc90 Villager::ArrivesAtStoragePitForResource(RESOURCE_TYPE, unsigned long, VILLAGER_STATES, VILLAGER_STATES)
-bool Villager::ArrivesAtStoragePitForResource(RESOURCE_TYPE param_1, unsigned long param_2, VILLAGER_STATES param_3, VILLAGER_STATES param_4)
+bool32_t Villager::ArrivesAtStoragePitForResource(RESOURCE_TYPE param_1, unsigned long param_2, VILLAGER_STATES param_3, VILLAGER_STATES param_4)
 {
     return false;
 }
 
 // win1.41 00769b30 mac 1059bbc0 Villager::ArrivesAtHomeWithFood(void)
-bool Villager::ArrivesAtHomeWithFood()
+bool32_t Villager::ArrivesAtHomeWithFood()
 {
     return false;
 }
 
 // win1.41 00769b80 mac 1059baa0 Villager::CheckTrader(void)
-bool Villager::CheckTrader()
+bool32_t Villager::CheckTrader()
 {
     return false;
 }
 
 // win1.41 00769c10 mac 1059ba60 Villager::CheckMissionary(void)
-bool Villager::CheckMissionary()
+bool32_t Villager::CheckMissionary()
 {
     return false;
 }
 
 // win1.41 00769c20 mac 1059b860 Villager::CheckTraderPickUpOrDropOff(RESOURCE_TYPE)
-bool Villager::CheckTraderPickUpOrDropOff(RESOURCE_TYPE param_1)
+bool32_t Villager::CheckTraderPickUpOrDropOff(RESOURCE_TYPE param_1)
 {
     return false;
 }
 
 // win1.41 00769d20 mac 1059b730 Villager::ArrivesAtStoragePitForTraderPickUp(void)
-bool Villager::ArrivesAtStoragePitForTraderPickUp()
+bool32_t Villager::ArrivesAtStoragePitForTraderPickUp()
 {
     return false;
 }
 
 // win1.41 00769dc0 mac 1059b590 Villager::ArrivesAtStoragePitForTraderDropOff(void)
-bool Villager::ArrivesAtStoragePitForTraderDropOff()
+bool32_t Villager::ArrivesAtStoragePitForTraderDropOff()
 {
     return false;
 }
 
 // win1.41 00769ea0 mac 1059b4c0 Villager::SetTraderNothingToDo(void)
-bool Villager::SetTraderNothingToDo()
+bool32_t Villager::SetTraderNothingToDo()
 {
     return false;
 }
 
 // win1.41 00769ee0 mac 1059b190 Villager::SetupBreederDisciple(void)
-bool Villager::SetupBreederDisciple()
+bool32_t Villager::SetupBreederDisciple()
 {
     return false;
 }
 
 // win1.41 0076a1b0 mac 1059b020 Villager::BreederDisciple(void)
-bool Villager::BreederDisciple()
+bool32_t Villager::BreederDisciple()
 {
     return false;
 }
 
 // win1.41 0076a220 mac 1059af00 Villager::MissionaryDisciple(void)
-bool Villager::MissionaryDisciple()
+bool32_t Villager::MissionaryDisciple()
 {
     return false;
 }
 
 // win1.41 0076a2a0 mac 1059ae60 Villager::EnterBreeder(unsigned char, unsigned char)
-bool Villager::EnterBreeder(unsigned char param_1, unsigned char param_2)
+bool32_t Villager::EnterBreeder(unsigned char param_1, unsigned char param_2)
 {
     return false;
 }
 
 // win1.41 0076a2d0 mac 1059ae00 Villager::ExitBreeder(unsigned char)
-bool Villager::ExitBreeder(unsigned char param_1)
+bool32_t Villager::ExitBreeder(unsigned char param_1)
 {
     return false;
 }
@@ -135,55 +135,55 @@ uint32_t Villager::AtStructureAddResource(MultiMapFixed* param_1, RESOURCE_TYPE 
 }
 
 // win1.41 0076a4c0 mac 1059a990 Villager::SetDying(void)
-bool Villager::SetDying()
+bool32_t Villager::SetDying()
 {
     return false;
 }
 
 // win1.41 0076a570 mac 1059a890 Villager::Dying(void)
-bool Villager::Dying()
+bool32_t Villager::Dying()
 {
     return false;
 }
 
 // win1.41 0076a5e0 mac 1059a580 Villager::Dead(void)
-bool Villager::Dead()
+bool32_t Villager::Dead()
 {
     return false;
 }
 
 // win1.41 0076a780 mac 1059a490 Villager::Drowning(void)
-bool Villager::Drowning()
+bool32_t Villager::Drowning()
 {
     return false;
 }
 
 // win1.41 0076a7e0 mac 1059a340 Villager::MakeScaredStiff(void)
-bool Villager::MakeScaredStiff()
+bool32_t Villager::MakeScaredStiff()
 {
     return false;
 }
 
 // win1.41 0076a8b0 mac 1059a2d0 Villager::ScaredStiff(void)
-bool Villager::ScaredStiff()
+bool32_t Villager::ScaredStiff()
 {
     return false;
 }
 
 // win1.41 0076a8d0 mac 1059a060 Villager::VagrantStart(void)
-bool Villager::VagrantStart()
+bool32_t Villager::VagrantStart()
 {
     return false;
 }
 
 // win1.41 0076aa60 mac 1059a010 Villager::MornDeath(void)
-bool Villager::MornDeath()
+bool32_t Villager::MornDeath()
 {
     return false;
 }
 
 // win1.41 0076aa70 mac 10599fd0 Villager::EatOutside(void)
-bool Villager::EatOutside()
+bool32_t Villager::EatOutside()
 {
     return true;
 }
@@ -195,13 +195,13 @@ float Villager::GetImportance()
 }
 
 // win1.41 0076aab0 mac 10599d10 Villager::SetupInspectObject(Object *)
-bool Villager::SetupInspectObject(Object* param_1)
+bool32_t Villager::SetupInspectObject(Object* param_1)
 {
     return false;
 }
 
 // win1.41 0076ac40 mac 10599c00 Villager::InspectObject(void)
-bool Villager::InspectObject()
+bool32_t Villager::InspectObject()
 {
     return false;
 }
@@ -213,25 +213,25 @@ int Villager::ExitInFlying(VILLAGER_STATES param_1)
 }
 
 // win1.41 0076ace0 mac 10599b50 Villager::EnterSex(unsigned char, unsigned char)
-bool Villager::EnterSex(unsigned char param_1, unsigned char param_2)
+bool32_t Villager::EnterSex(unsigned char param_1, unsigned char param_2)
 {
     return 1;
 }
 
 // win1.41 0076acf0 mac 10599a60 Villager::SetupWander(JustWholeMapXZ &, VILLAGER_STATES)
-bool Villager::SetupWander(JustWholeMapXZ* param_1, VILLAGER_STATES param_2)
+bool32_t Villager::SetupWander(JustWholeMapXZ* param_1, VILLAGER_STATES param_2)
 {
     return false;
 }
 
 // win1.41 0076ad80 mac 10599960 Villager::ExitSex(unsigned char)
-bool Villager::ExitSex(unsigned char param_1)
+bool32_t Villager::ExitSex(unsigned char param_1)
 {
     return false;
 }
 
 // win1.41 0076ade0 mac 1000abe0 Villager::InHand(void)
-bool Villager::InHand()
+bool32_t Villager::InHand()
 {
     return false;
 }
@@ -249,13 +249,13 @@ int Villager::ExitInHand(VILLAGER_STATES param_1)
 }
 
 // win1.41 0076b030 mac 1000ab40 Villager::IsInACreaturesHand(void)
-bool Villager::IsInACreaturesHand()
+bool32_t Villager::IsInACreaturesHand()
 {
     return false;
 }
 
 // win1.41 0076b060 mac 10599640 Villager::SetupWaitForCounter(unsigned short, VILLAGER_STATES)
-bool Villager::SetupWaitForCounter(unsigned short param_1, VILLAGER_STATES param_2)
+bool32_t Villager::SetupWaitForCounter(unsigned short param_1, VILLAGER_STATES param_2)
 {
     return false;
 }
@@ -267,61 +267,61 @@ uint32_t Villager::SetupPauseForASecond(VILLAGER_STATES state)
 }
 
 // win1.41 0076b0b0 mac 1000e650 Villager::PauseForASecond(void)
-bool Villager::PauseForASecond()
+bool32_t Villager::PauseForASecond()
 {
     return false;
 }
 
 // win1.41 0076b0d0 mac 105993e0 Villager::SetupPanicReaction(Reaction *, MapCoords &)
-bool Villager::SetupPanicReaction(Reaction* param_1, MapCoords* param_2)
+bool32_t Villager::SetupPanicReaction(Reaction* param_1, MapCoords* param_2)
 {
     return false;
 }
 
 // win1.41 0076b1c0 mac 10599350 Villager::PanicReaction(void)
-bool Villager::PanicReaction()
+bool32_t Villager::PanicReaction()
 {
     return false;
 }
 
 // win1.41 0076b200 mac 10599180 Villager::GotoCongregateInTownAfterEmergency(void)
-bool Villager::GotoCongregateInTownAfterEmergency()
+bool32_t Villager::GotoCongregateInTownAfterEmergency()
 {
     return false;
 }
 
 // win1.41 0076b300 mac 10599090 Villager::CongregateInTownAfterEmergency(void)
-bool Villager::CongregateInTownAfterEmergency()
+bool32_t Villager::CongregateInTownAfterEmergency()
 {
     return false;
 }
 
 // win1.41 0076b380 mac 10598f90 Villager::BeingEaten(void)
-bool Villager::BeingEaten()
+bool32_t Villager::BeingEaten()
 {
     return false;
 }
 
 // win1.41 0076b3f0 mac 1001b410 Villager::GoAndChilloutOutsideHome(void)
-bool Villager::GoAndChilloutOutsideHome()
+bool32_t Villager::GoAndChilloutOutsideHome()
 {
     return false;
 }
 
 // win1.41 0076b4e0 mac 1005fc40 Villager::SitAndChillout(void)
-bool Villager::SitAndChillout()
+bool32_t Villager::SitAndChillout()
 {
     return false;
 }
 
 // win1.41 0076b570 mac 10005660 Villager::EnterSitAndChillOut(unsigned char, unsigned char)
-bool Villager::EnterSitAndChillOut(unsigned char param_1, unsigned char param_2)
+bool32_t Villager::EnterSitAndChillOut(unsigned char param_1, unsigned char param_2)
 {
     return false;
 }
 
 // win1.41 0076b590 mac 10598c80 Villager::GoAndChilloutInTown(void)
-bool Villager::GoAndChilloutInTown()
+bool32_t Villager::GoAndChilloutInTown()
 {
     return false;
 }
@@ -332,19 +332,19 @@ void Villager::GetMeToMyChillOutPos(int (* callback)(MapCoords&), MapCoords& par
 }
 
 // win1.41 0076b7e0 mac 10598b40 Villager::ArrivesHomeFromWorship(void)
-bool Villager::ArrivesHomeFromWorship()
+bool32_t Villager::ArrivesHomeFromWorship()
 {
     return false;
 }
 
 // win1.41 0076b7f0 mac 10598ae0 Villager::SleepInTentFromWorship(void)
-bool Villager::SleepInTentFromWorship()
+bool32_t Villager::SleepInTentFromWorship()
 {
     return false;
 }
 
 // win1.41 0076b800 mac 10598930 Villager::BreederJustLanded(void)
-bool Villager::BreederJustLanded()
+bool32_t Villager::BreederJustLanded()
 {
     return false;
 }

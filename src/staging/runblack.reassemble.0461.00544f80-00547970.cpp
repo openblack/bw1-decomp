@@ -27,19 +27,19 @@ void HistoryBox::InitControls()
 }
 
 // win1.41 00545460 mac 105b98b0 HistoryBox::WantsKeyControl(void)
-bool HistoryBox::WantsKeyControl()
+bool32_t HistoryBox::WantsKeyControl()
 {
     return 0;
 }
 
 // win1.41 00545470 mac 105b97c0 HistoryBox::WantsMouseControl(void)
-bool HistoryBox::WantsMouseControl()
+bool32_t HistoryBox::WantsMouseControl()
 {
     return 0;
 }
 
 // win1.41 005454f0 mac 105b9780 HistoryBox::CanESCOut(void)
-bool HistoryBox::CanESCOut()
+bool32_t HistoryBox::CanESCOut()
 {
     return 0;
 }

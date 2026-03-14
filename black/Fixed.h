@@ -46,16 +46,16 @@ public:
     // win1.41 0052dee0 mac 100e1c70 FixedObject::InsertMapObjectToCellAssumeFixed(MapCell *)
     virtual void InsertMapObjectToCellAssumeFixed(MapCell* cell); /* 0x85c */
     // win1.41 004252f0 mac 100a9cd0 FixedObject::IsObjectFullyInMap(void)
-    virtual bool IsObjectFullyInMap(); /* 0x860 */
+    virtual bool32_t IsObjectFullyInMap(); /* 0x860 */
 
     // Override functions
 
     // win1.41 0052df20 mac 100e1bd0 FixedObject::GetTownArtifactValue(void)
     virtual float GetTownArtifactValue();
     // win1.41 0052e170 mac inlined FixedObject::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 0052e140 mac 100e17b0 FixedObject::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& file);
+    virtual bool32_t Save(GameOSFile& file);
     // win1.41 00401400 mac 10513b00 FixedObject::CanBeFrighteningToCreature(Creature *)
     virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return true; }
     // win1.41 00401410 mac 10570f10 FixedObject::CanBeSleptNextToByCreature(Creature *)

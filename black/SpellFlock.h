@@ -35,11 +35,11 @@ public:
     // win1.41 0055d250 mac 1030e480 SpellFlock::_dt(void)
     virtual ~SpellFlock();
     // win1.41 00724780 mac 1051c560 SpellFlock::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 007248a0 mac 1051c390 SpellFlock::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00723280 mac 1051e660 SpellFlock::NeedsContinualPackets(GInterfaceStatus *)
-    virtual bool NeedsContinualPackets(GInterfaceStatus* param_1);
+    virtual bool32_t NeedsContinualPackets(GInterfaceStatus* param_1);
     // win1.41 007233d0 mac 1051e2b0 SpellFlock::Process(void)
     virtual uint32_t Process();
     // win1.41 00723270 mac 1051e760 SpellFlock::CloseDown(void)

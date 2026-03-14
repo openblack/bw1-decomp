@@ -18,85 +18,85 @@ MagicFireBall::MagicFireBall()
 }
 
 // win1.41 00682a40 mac 103fcf30 MagicFireBall::IsTuggable(void)
-bool MagicFireBall::IsTuggable()
+bool32_t MagicFireBall::IsTuggable()
 {
     return 0;
 }
 
 // win1.41 00682a50 mac 103fcf70 MagicFireBall::IsMagicFireBall(void)
-bool MagicFireBall::IsMagicFireBall()
+bool32_t MagicFireBall::IsMagicFireBall()
 {
     return 0;
 }
 
 // win1.41 00682a60 mac 103fcfb0 MagicFireBall::InteractsWithPhysicsObjects(void)
-bool MagicFireBall::InteractsWithPhysicsObjects()
+bool32_t MagicFireBall::InteractsWithPhysicsObjects()
 {
     return 0;
 }
 
 // win1.41 00682a70 mac 103fd000 MagicFireBall::CanBecomeAPhysicsObject(void)
-bool32_tcorrect MagicFireBall::CanBecomeAPhysicsObject()
+bool32_t MagicFireBall::CanBecomeAPhysicsObject()
 {
     return 0;
 }
 
 // win1.41 00682a80 mac 103fd050 MagicFireBall::CanBePickedUpByCreature(Creature *)
-bool MagicFireBall::CanBePickedUpByCreature(Creature* param_1)
+bool32_t MagicFireBall::CanBePickedUpByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00682a90 mac 103fd0a0 MagicFireBall::CanBeSetOnFire(Creature *)
-bool MagicFireBall::CanBeSetOnFire(Creature* param_1)
+bool32_t MagicFireBall::CanBeSetOnFire(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00682aa0 mac 103fd0f0 MagicFireBall::CanBeStompedOnByCreature(Creature *)
-bool MagicFireBall::CanBeStompedOnByCreature(Creature* param_1)
+bool32_t MagicFireBall::CanBeStompedOnByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00682ab0 mac 103fd140 MagicFireBall::CanBeThrownByCreature(Creature *)
-bool MagicFireBall::CanBeThrownByCreature(Creature* param_1)
+bool32_t MagicFireBall::CanBeThrownByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00682ac0 mac 103fd190 MagicFireBall::CanBePutInAStoragePit(Creature *)
-bool MagicFireBall::CanBePutInAStoragePit(Creature* param_1)
+bool32_t MagicFireBall::CanBePutInAStoragePit(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00682ad0 mac 103fd1e0 MagicFireBall::CanBeDestroyedByStoning(Creature *)
-bool MagicFireBall::CanBeDestroyedByStoning(Creature* param_1)
+bool32_t MagicFireBall::CanBeDestroyedByStoning(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00682ae0 mac 103fd230 MagicFireBall::CanBeStonedAndEatenByCreature(Creature *)
-bool MagicFireBall::CanBeStonedAndEatenByCreature(Creature* param_1)
+bool32_t MagicFireBall::CanBeStonedAndEatenByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00682af0 mac 103fd290 MagicFireBall::CanBeExaminedByCreature(Creature *)
-bool MagicFireBall::CanBeExaminedByCreature(Creature* param_1)
+bool32_t MagicFireBall::CanBeExaminedByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00682b00 mac 103fd2e0 MagicFireBall::CanBeFoughtByCreature(Creature *)
-bool MagicFireBall::CanBeFoughtByCreature(Creature* param_1)
+bool32_t MagicFireBall::CanBeFoughtByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 00682b10 mac 103fd330 MagicFireBall::CanActAsAContainer(Creature *)
-bool MagicFireBall::CanActAsAContainer(Creature* param_1)
+bool32_t MagicFireBall::CanActAsAContainer(Creature* param_1)
 {
     return 0;
 }
@@ -170,7 +170,7 @@ float MagicFireBall::GetRainCoolingMultiplier()
 }
 
 // win1.41 00682dd0 mac 103fc3d0 MagicFireBall::ValidForPlaceInHand(GInterfaceStatus *)
-bool MagicFireBall::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t MagicFireBall::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -188,7 +188,7 @@ uint32_t MagicFireBall::InterfaceTap(GInterfaceStatus* param_1)
 }
 
 // win1.41 00682e80 mac 103fc040 MagicFireBall::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool MagicFireBall::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t MagicFireBall::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -199,13 +199,13 @@ void MagicFireBall::Draw()
 }
 
 // win1.41 006832b0 mac 103fb800 MagicFireBall::Save(GameOSFile &)
-bool32_tcorrect MagicFireBall::Save(GameOSFile& file)
+bool32_t MagicFireBall::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00683320 mac 103fb710 MagicFireBall::Load(GameOSFile &)
-bool32_tcorrect MagicFireBall::Load(GameOSFile& file)
+bool32_t MagicFireBall::Load(GameOSFile& file)
 {
     return 0;
 }

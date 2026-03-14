@@ -1,25 +1,25 @@
 #include "Villager.h"
 
 // win1.41 00768630 mac 10597660 Villager::IsReadyForNewScriptAction(void)
-bool Villager::IsReadyForNewScriptAction()
+bool32_t Villager::IsReadyForNewScriptAction()
 {
     return 0;
 }
 
 // win1.41 00768640 mac 105975c0 Living::CannotExitState(unsigned char)
-bool Living::CannotExitState(unsigned char param_1)
+bool32_t Living::CannotExitState(unsigned char param_1)
 {
     return false;
 }
 
 // win1.41 00768680 mac 105974b0 Villager::SetupScriptWanderToPos(MapCoords const &, float, unsigned short, unsigned short)
-bool Villager::SetupScriptWanderToPos(const MapCoords* param_1, float param_2, unsigned short param_3, unsigned short param_4)
+bool32_t Villager::SetupScriptWanderToPos(const MapCoords* param_1, float param_2, unsigned short param_3, unsigned short param_4)
 {
     return false;
 }
 
 // win1.41 007686d0 mac 10597370 Villager::SetupNewScriptWander(void)
-bool Villager::SetupNewScriptWander()
+bool32_t Villager::SetupNewScriptWander()
 {
     return false;
 }
@@ -37,7 +37,7 @@ uint32_t Living::EnterScriptWander(VILLAGER_STATES param_1, VILLAGER_STATES para
 }
 
 // win1.41 007687f0 mac 105971a0 Villager::ScriptWanderAroundPos(void)
-bool Villager::ScriptWanderAroundPos()
+bool32_t Villager::ScriptWanderAroundPos()
 {
     return false;
 }
@@ -55,7 +55,7 @@ uint32_t Living::EnterPlayAnim(VILLAGER_STATES param_1, VILLAGER_STATES param_2)
 }
 
 // win1.41 00768970 mac 10005f50 Villager::ScriptPlayAnim(void)
-bool Villager::ScriptPlayAnim()
+bool32_t Villager::ScriptPlayAnim()
 {
     return false;
 }
@@ -67,25 +67,25 @@ int Living::ExitPlayAnim(VILLAGER_STATES param_1)
 }
 
 // win1.41 007689d0 mac 1000afa0 Villager::IsScriptAnimationComplete(void)
-bool Villager::IsScriptAnimationComplete()
+bool32_t Villager::IsScriptAnimationComplete()
 {
     return false;
 }
 
 // win1.41 00768a00 mac 10596c60 Villager::ScriptAnimation(void)
-bool Villager::ScriptAnimation()
+bool32_t Villager::ScriptAnimation()
 {
     return false;
 }
 
 // win1.41 00768a10 mac 10596c20 Villager::WeakOnGround(void)
-bool Villager::WeakOnGround()
+bool32_t Villager::WeakOnGround()
 {
     return true;
 }
 
 // win1.41 00768a20 mac 105969d0 Villager::ScriptGoAndMoveAlongPath(void)
-bool Villager::ScriptGoAndMoveAlongPath()
+bool32_t Villager::ScriptGoAndMoveAlongPath()
 {
     return false;
 }

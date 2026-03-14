@@ -26,7 +26,7 @@ public:
     // win1.41 00461c70 mac 101aa520 CameraModeTwoObjects::_dt(void)
     virtual ~CameraModeTwoObjects();
     // win1.41 0044a290 mac inlined CameraModeTwoObjects::CanPlayerGestureWhenCameraMoving(void)
-    virtual bool CanPlayerGestureWhenCameraMoving();
+    virtual bool32_t CanPlayerGestureWhenCameraMoving();
     // win1.41 00461de0 mac 101aa880 CameraModeTwoObjects::Update(void)
     virtual void Update();
     // win1.41 0044a2b0 mac inlined CameraModeTwoObjects::Validate(void)
@@ -34,11 +34,11 @@ public:
     // win1.41 0044a390 mac inlined CameraModeTwoObjects::Restart(void)
     virtual void Restart();
     // win1.41 00461d90 mac 101aac60 CameraModeTwoObjects::IsStillValid(void)
-    virtual bool IsStillValid();
+    virtual bool32_t IsStillValid();
     // win1.41 0044a2d0 mac inlined CameraModeTwoObjects::Cleanup(void)
     virtual void Cleanup();
     // win1.41 0044a2e0 mac inlined CameraModeTwoObjects::CanExist(void)
-    virtual bool CanExist();
+    virtual bool32_t CanExist();
 };
 
 #else // __cplusplus

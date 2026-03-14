@@ -12,25 +12,25 @@ void GameThing::RemoveDance()
 }
 
 // win1.41 00401810 mac 100512d0 GameThing::IsAvailable(void)
-bool GameThing::IsAvailable()
+bool32_t GameThing::IsAvailable()
 {
     return false;
 }
 
 // win1.41 00401820 mac 10494880 GameThing::IsCreature(Creature *)
-bool GameThing::IsCreature(Creature* param_1)
+bool32_t GameThing::IsCreature(Creature* param_1)
 {
     return false;
 }
 
 // win1.41 00401830 mac 1002c400 GameThing::IsCreature(void)
-bool GameThing::IsCreature()
+bool32_t GameThing::IsCreature()
 {
     return false;
 }
 
 // win1.41 00401840 mac 104948c0 GameThing::IsCreatureNotTooNear(Creature *)
-bool GameThing::IsCreatureNotTooNear(Creature* param_1)
+bool32_t GameThing::IsCreatureNotTooNear(Creature* param_1)
 {
     return false;
 }
@@ -42,7 +42,7 @@ float GameThing::GetMaxAlignmentChangePerGameTurn()
 }
 
 // win1.41 00401860 mac 10425a40 GameThing::GetComputerSeen(void)
-bool GameThing::GetComputerSeen()
+bool32_t GameThing::GetComputerSeen()
 {
     return false;
 }

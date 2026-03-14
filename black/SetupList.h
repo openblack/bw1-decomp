@@ -77,7 +77,7 @@ public:
     // win1.41 0040a540 mac 1056c3d0 SetupList::~SetupList(void)
     ~SetupList();
     // win1.41 0040a520 mac 104e2bb0 SetupList::IsSelected(int)
-    bool IsSelected(int index);
+    bool32_t IsSelected(int index);
 
     // Constructors
 

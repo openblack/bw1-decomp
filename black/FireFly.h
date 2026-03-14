@@ -62,23 +62,23 @@ public:
     // win1.41 0052a300 mac 100d66d0 FireFly::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0052bbc0 mac 100d6850 FireFly::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 0052b870 mac 100d7020 FireFly::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0052a2f0 mac 100d6690 FireFly::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0052a1d0 mac 100da180 FireFly::IsMoving( const(void))
-    virtual bool IsMoving();
+    virtual bool32_t IsMoving();
     // win1.41 0052aa90 mac 100d9130 FireFly::Draw(void)
     virtual void Draw();
     // win1.41 0052a510 mac 100d9950 FireFly::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 0052a1a0 mac 100da240 FireFly::InteractsWithPhysicsObjects(void)
-    virtual bool InteractsWithPhysicsObjects();
+    virtual bool32_t InteractsWithPhysicsObjects();
     // win1.41 0052a1b0 mac 100da1f0 FireFly::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 0052a1c0 mac 100da1b0 FireFly::CanBecomeAPhysicsObject(void)
-    virtual bool32_tcorrect CanBecomeAPhysicsObject();
+    virtual bool32_t CanBecomeAPhysicsObject();
     // win1.41 0052bf10 mac 100d6710 FireFly::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 

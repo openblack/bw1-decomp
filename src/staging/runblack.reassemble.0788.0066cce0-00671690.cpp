@@ -18,7 +18,7 @@ void Pot::SetToZero()
 }
 
 // win1.41 0066ced0 mac 1011ce10 Pot::InteractsWithPhysicsObjects(void)
-bool Pot::InteractsWithPhysicsObjects()
+bool32_t Pot::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -93,7 +93,7 @@ uint32_t Pot::SaveObject(LHOSFile& file, const MapCoords& coords)
 }
 
 // win1.41 0066d650 mac 1011bcb0 Pot::IsEffectReceiver(EffectValues *)
-bool Pot::IsEffectReceiver(EffectValues* param_1)
+bool32_t Pot::IsEffectReceiver(EffectValues* param_1)
 {
     return 0;
 }
@@ -109,19 +109,19 @@ void Pot::EndOnFire()
 }
 
 // win1.41 0066d710 mac 1011b9b0 Pot::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool Pot::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t Pot::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 0066d730 mac 1011b830 Pot::Save(GameOSFile &)
-bool32_tcorrect Pot::Save(GameOSFile& file)
+bool32_t Pot::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0066d820 mac 1011b6c0 Pot::Load(GameOSFile &)
-bool32_tcorrect Pot::Load(GameOSFile& file)
+bool32_t Pot::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -143,25 +143,25 @@ uint32_t PotStructure::JustRemoveResource(RESOURCE_TYPE param_1, uint32_t param_
 }
 
 // win1.41 0066da00 mac 10077bc0 PotStructure::IsPartOfStructure(void)
-bool PotStructure::IsPartOfStructure()
+bool32_t PotStructure::IsPartOfStructure()
 {
     return 0;
 }
 
 // win1.41 0066da30 mac 1011b250 PotStructure::IsResourceStore(RESOURCE_TYPE)
-bool PotStructure::IsResourceStore(RESOURCE_TYPE param_1)
+bool32_t PotStructure::IsResourceStore(RESOURCE_TYPE param_1)
 {
     return 0;
 }
 
 // win1.41 0066da90 mac 1011b150 PotStructure::Save(GameOSFile &)
-bool32_tcorrect PotStructure::Save(GameOSFile& file)
+bool32_t PotStructure::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0066db10 mac 1011b060 PotStructure::Load(GameOSFile &)
-bool32_tcorrect PotStructure::Load(GameOSFile& file)
+bool32_t PotStructure::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -182,7 +182,7 @@ void Pot::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 0066dd30 mac 1011ac10 Pot::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-bool Pot::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
+bool32_t Pot::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
 {
     return 0;
 }
@@ -249,7 +249,7 @@ void PileFood::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 }
 
 // win1.41 0066e1f0 mac 10119d80 PileFood::CreatureMustAvoid(Creature *)
-bool PileFood::CreatureMustAvoid(Creature* param_1)
+bool32_t PileFood::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }
@@ -278,19 +278,19 @@ LH3DObject::ObjectType PileFood::Get3DType()
 }
 
 // win1.41 0066e390 mac 101199a0 PileResource::CanBePickedUpByCreature(Creature *)
-bool PileResource::CanBePickedUpByCreature(Creature* param_1)
+bool32_t PileResource::CanBePickedUpByCreature(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0066e3b0 mac 10119960 PileResource::IsTuggable(void)
-bool PileResource::IsTuggable()
+bool32_t PileResource::IsTuggable()
 {
     return 0;
 }
 
 // win1.41 0066e3c0 mac inlined PileResource::IsField(Creature *)
-bool PileResource::IsField(Creature* param_1)
+bool32_t PileResource::IsField(Creature* param_1)
 {
     return 0;
 }
@@ -325,25 +325,25 @@ bool32_t PileResource::NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_
 }
 
 // win1.41 0066e830 mac 10118ff0 PileResource::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
-bool PileResource::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
+bool32_t PileResource::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
 {
     return 0;
 }
 
 // win1.41 0066e840 mac 10118fa0 PileResource::NetworkUnfriendlyEndLockedSelect(void)
-bool PileResource::NetworkUnfriendlyEndLockedSelect()
+bool32_t PileResource::NetworkUnfriendlyEndLockedSelect()
 {
     return 0;
 }
 
 // win1.41 0066e850 mac 10118e70 PileResource::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
-bool PileResource::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
+bool32_t PileResource::NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 0066e8f0 mac 10118e10 Pot::CanBecomeAPhysicsObject(void)
-bool32_tcorrect Pot::CanBecomeAPhysicsObject()
+bool32_t Pot::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -371,13 +371,13 @@ PileResource::~PileResource()
 }
 
 // win1.41 0066ece0 mac 10117d60 PileResource::ValidForPlaceInHand(GInterfaceStatus *)
-bool PileResource::ValidForPlaceInHand(GInterfaceStatus* param_1)
+bool32_t PileResource::ValidForPlaceInHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
 
 // win1.41 0066ed60 mac 10117ce0 PileResource::IsPileResource(void)
-bool PileResource::IsPileResource()
+bool32_t PileResource::IsPileResource()
 {
     return 0;
 }
@@ -407,7 +407,7 @@ Town* PotStructure::GetTown()
 }
 
 // win1.41 0066ef80 mac 10117380 PileResource::InterfaceSetInMagicHand(GInterfaceStatus *)
-bool PileResource::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
+bool32_t PileResource::InterfaceSetInMagicHand(GInterfaceStatus* param_1)
 {
     return 0;
 }
@@ -443,7 +443,7 @@ uint32_t Pot::GetOverwriteInteractableToolTip()
 }
 
 // win1.41 0066f560 mac 10116710 Pot::IsResourceStore(RESOURCE_TYPE)
-bool Pot::IsResourceStore(RESOURCE_TYPE param_1)
+bool32_t Pot::IsResourceStore(RESOURCE_TYPE param_1)
 {
     return 0;
 }
@@ -455,25 +455,25 @@ float Pot::GetFoodValue(FOOD_TYPE param_1)
 }
 
 // win1.41 0066f5a0 mac 10116600 PileFood::Save(GameOSFile &)
-bool32_tcorrect PileFood::Save(GameOSFile& file)
+bool32_t PileFood::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0066f5e0 mac 10116570 PileFood::Load(GameOSFile &)
-bool32_tcorrect PileFood::Load(GameOSFile& file)
+bool32_t PileFood::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0066f620 mac 10116490 PileResource::Save(GameOSFile &)
-bool32_tcorrect PileResource::Save(GameOSFile& file)
+bool32_t PileResource::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0066f690 mac 101163b0 PileResource::Load(GameOSFile &)
-bool32_tcorrect PileResource::Load(GameOSFile& file)
+bool32_t PileResource::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -541,7 +541,7 @@ Town* PrayerSite::GetTown()
 }
 
 // win1.41 00670a10 mac inlined PrayerSite::CreatureMustAvoid(Creature *)
-bool PrayerSite::CreatureMustAvoid(Creature* param_1)
+bool32_t PrayerSite::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }

@@ -20,25 +20,25 @@ void WorshipSpellIcon::StopRemoveFromPlayer()
 }
 
 // win1.41 0077ff80 mac 105b4bc0 WorshipSpellIcon::Save(GameOSFile &)
-bool32_tcorrect WorshipSpellIcon::Save(GameOSFile& file)
+bool32_t WorshipSpellIcon::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007801f0 mac 105b4690 WorshipSpellIcon::Load(GameOSFile &)
-bool32_tcorrect WorshipSpellIcon::Load(GameOSFile& file)
+bool32_t WorshipSpellIcon::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00780790 mac 105b7570 WorshipTotem::IsSpellSeedReturnPoint( const(void))
-bool WorshipTotem::IsSpellSeedReturnPoint()
+bool32_t WorshipTotem::IsSpellSeedReturnPoint()
 {
     return 0;
 }
 
 // win1.41 007807a0 mac 105b75c0 WorshipTotem::IsEffectReceiver(EffectValues *)
-bool WorshipTotem::IsEffectReceiver(EffectValues* param_1)
+bool32_t WorshipTotem::IsEffectReceiver(EffectValues* param_1)
 {
     return 0;
 }
@@ -61,7 +61,7 @@ LH3DObject::ObjectType WorshipTotem::Get3DType()
 }
 
 // win1.41 007807e0 mac 105b76e0 WorshipTotem::IsSacrificeAltar(void)
-bool WorshipTotem::IsSacrificeAltar()
+bool32_t WorshipTotem::IsSacrificeAltar()
 {
     return 0;
 }
@@ -145,13 +145,13 @@ void WorshipTotem::ResolveLoad()
 }
 
 // win1.41 00780f10 mac 105b7910 WorshipTotem::Load(GameOSFile &)
-bool32_tcorrect WorshipTotem::Load(GameOSFile& file)
+bool32_t WorshipTotem::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00780f90 mac 105b7820 WorshipTotem::Save(GameOSFile &)
-bool32_tcorrect WorshipTotem::Save(GameOSFile& file)
+bool32_t WorshipTotem::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -162,13 +162,13 @@ bool32_tcorrect WorshipTotem::Save(GameOSFile& file)
 // }
 
 // win1.41 00784b30 mac 101abfe0 ChallengeRoom::CreateChallengeFiles(char*)
-bool ChallengeRoom::CreateChallengeFiles()
+bool32_t ChallengeRoom::CreateChallengeFiles()
 {
     return 0;
 }
 
 // win1.41 00784c10 mac 101abd90 ChallengeRoom::StartScript(unsigned long)
-bool ChallengeRoom::StartScript(unsigned long param_1)
+bool32_t ChallengeRoom::StartScript(unsigned long param_1)
 {
     return 0;
 }

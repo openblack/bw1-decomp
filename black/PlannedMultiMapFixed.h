@@ -47,9 +47,9 @@ public:
     // win1.41 0055cbe0 mac 10111890 PlannedMultiMapFixed::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00648af0 mac 10114cd0 PlannedMultiMapFixed::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 00648990 mac 10114ef0 PlannedMultiMapFixed::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& file);
+    virtual bool32_t Save(GameOSFile& file);
     // win1.41 0055cbd0 mac inlined PlannedMultiMapFixed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 004050c0 mac 1017d1b0 PlannedMultiMapFixed::GetScale(void)
@@ -59,9 +59,9 @@ public:
     // win1.41 00648940 mac 10115200 PlannedMultiMapFixed::GetText(void)
     virtual const char* GetText();
     // win1.41 00465560 mac 100d17b0 PlannedMultiMapFixed::IsWonder(void)
-    virtual bool32_tcorrect IsWonder();
+    virtual bool32_t IsWonder();
     // win1.41 00648950 mac inlined PlannedMultiMapFixed::CreateBuildingSite(void)
-    virtual bool CreateBuildingSite();
+    virtual bool32_t CreateBuildingSite();
     // win1.41 00469660 mac 100bd510 PlannedMultiMapFixed::CreatePlanned(float)
     virtual MultiMapFixed* CreatePlanned(float param_1); /* 0x500 */
     // win1.41 00465540 mac 100d1720 PlannedMultiMapFixed::CreatePlannedNoFixedCheck(float)
@@ -69,7 +69,7 @@ public:
     // win1.41 00648c50 mac 10114bf0 PlannedMultiMapFixed::PostCreatePlanned(MultiMapFixed&)
     virtual void PostCreatePlanned(MultiMapFixed* param_1);
     // win1.41 00465550 mac 100d1770 PlannedMultiMapFixed::IsCivic(void)
-    virtual bool IsCivic();
+    virtual bool32_t IsCivic();
     // win1.41 00465570 mac 100d17f0 PlannedMultiMapFixed::GetAbodeType(void)
     virtual ABODE_TYPE GetAbodeType(); /* 0x510 */
     // win1.41 00648910 mac 1006f570 PlannedMultiMapFixed::GetDesireToBeRepaired(void)

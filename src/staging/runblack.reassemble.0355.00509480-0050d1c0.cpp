@@ -12,13 +12,13 @@ MapCoords* Creche::GetArrivePos(MapCoords* param_1)
 }
 
 // win1.41 0050a9b0 mac 102a3c40 Creche::CanActAsAContainer(Creature *)
-bool Creche::CanActAsAContainer(Creature* param_1)
+bool32_t Creche::CanActAsAContainer(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 0050a9c0 mac 102a3c90 Creche::IsStoragePit(Creature *)
-bool Creche::IsStoragePit(Creature* param_1)
+bool32_t Creche::IsStoragePit(Creature* param_1)
 {
     return 0;
 }
@@ -83,7 +83,7 @@ Dance::Dance(const MapCoords* param_1, GDanceInfo* info, const GameThingWithPos*
 }
 
 // win1.41 0050b710 mac 102a80e0 Dance::IsScriptContainer( const(void))
-bool Dance::IsScriptContainer()
+bool32_t Dance::IsScriptContainer()
 {
     return 0;
 }
@@ -95,7 +95,7 @@ GFootpathLink* Dance::GetFootpathLink()
 }
 
 // win1.41 0050b730 mac 102a8160 Dance::IsDance( const(void))
-bool Dance::IsDance()
+bool32_t Dance::IsDance()
 {
     return 0;
 }
@@ -162,13 +162,13 @@ uint32_t Dance::GetScriptObjectType()
 }
 
 // win1.41 0050c480 mac 102a8960 Dance::Save(GameOSFile &)
-bool32_tcorrect Dance::Save(GameOSFile& file)
+bool32_t Dance::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0050c760 mac 102a85a0 Dance::Load(GameOSFile &)
-bool32_tcorrect Dance::Load(GameOSFile& file)
+bool32_t Dance::Load(GameOSFile& file)
 {
     return 0;
 }

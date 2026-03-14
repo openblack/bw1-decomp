@@ -1,7 +1,7 @@
 #include "lionhead/lhlib/ver5.0/LHMouse.h"
 
 // win1.41 007e4e40 mac 101459e0 LHMouse::SetPosition(LHCoord *)
-bool LHMouse::SetPosition(LHCoord* position)
+bool32_t LHMouse::SetPosition(LHCoord* position)
 {
     return 0;
 }

@@ -29,13 +29,13 @@ void GParticleContainer::SetScale(float param_1)
 }
 
 // win1.41 0063e5d0 mac 101100b0 GParticleContainer::Save(GameOSFile &)
-bool32_tcorrect GParticleContainer::Save(GameOSFile& file)
+bool32_t GParticleContainer::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0063e6d0 mac 1010ff00 GParticleContainer::Load(GameOSFile &)
-bool32_tcorrect GParticleContainer::Load(GameOSFile& file)
+bool32_t GParticleContainer::Load(GameOSFile& file)
 {
     return 0;
 }

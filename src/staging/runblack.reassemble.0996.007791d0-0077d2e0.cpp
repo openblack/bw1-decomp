@@ -10,25 +10,25 @@ LH3DObject::ObjectType Workshop::Get3DType()
 }
 
 // win1.41 007792c0 mac inlined Workshop::IsWorkshop_0(void)
-bool Workshop::IsWorkshop()
+bool32_t Workshop::IsWorkshop()
 {
     return 0;
 }
 
 // win1.41 007792d0 mac inlined Workshop::IsWorkshop_1(Creature *)
-bool Workshop::IsWorkshop(Creature* param_1)
+bool32_t Workshop::IsWorkshop(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 007792e0 mac 10164890 Workshop::CanActAsAContainer(Creature *)
-bool Workshop::CanActAsAContainer(Creature* param_1)
+bool32_t Workshop::CanActAsAContainer(Creature* param_1)
 {
     return 0;
 }
 
 // win1.41 007792f0 mac 101648e0 Workshop::IsStoragePit(Creature *)
-bool Workshop::IsStoragePit(Creature* param_1)
+bool32_t Workshop::IsStoragePit(Creature* param_1)
 {
     return 0;
 }
@@ -97,19 +97,19 @@ uint32_t Workshop::RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInte
 }
 
 // win1.41 00779f20 mac 10162d40 Workshop::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
-bool Workshop::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
+bool32_t Workshop::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2)
 {
     return 0;
 }
 
 // win1.41 00779f40 mac 101629d0 Workshop::Save(GameOSFile &)
-bool32_tcorrect Workshop::Save(GameOSFile& file)
+bool32_t Workshop::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0077a130 mac 101625f0 Workshop::Load(GameOSFile &)
-bool32_tcorrect Workshop::Load(GameOSFile& file)
+bool32_t Workshop::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -137,19 +137,19 @@ uint32_t Workshop::GetShowNeedsPos(uint32_t param_1, MapCoords* param_2)
 }
 
 // win1.41 0077a650 mac 10161e90 Workshop::IsResourceStore(RESOURCE_TYPE)
-bool Workshop::IsResourceStore(RESOURCE_TYPE param_1)
+bool32_t Workshop::IsResourceStore(RESOURCE_TYPE param_1)
 {
     return 0;
 }
 
 // win1.41 0077a680 mac 10161d90 Workshop::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
-bool Workshop::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus* param_2)
+bool32_t Workshop::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus* param_2)
 {
     return 0;
 }
 
 // win1.41 0077a6d0 mac 10161cd0 Workshop::CreateBuildingSite(void)
-bool Workshop::CreateBuildingSite()
+bool32_t Workshop::CreateBuildingSite()
 {
     return 0;
 }
@@ -171,7 +171,7 @@ void WorshipSite::ToBeDeleted(int param_1)
 }
 
 // win1.41 0077ac10 mac 105b3210 WorshipSite::Built(void)
-bool WorshipSite::Built()
+bool32_t WorshipSite::Built()
 {
     return 0;
 }
@@ -182,7 +182,7 @@ void WorshipSite::RemovePotFromStructure(PotStructure* param_1)
 }
 
 // win1.41 0077ae30 mac 105b2cf0 WorshipSite::GetInspectObjectPos(Villager *, MapCoords *)
-bool WorshipSite::GetInspectObjectPos(Villager* param_1, MapCoords* param_2)
+bool32_t WorshipSite::GetInspectObjectPos(Villager* param_1, MapCoords* param_2)
 {
     return 0;
 }
@@ -217,7 +217,7 @@ uint32_t WorshipSite::GetResource(RESOURCE_TYPE param_1)
 }
 
 // win1.41 0077bdd0 mac 105b10a0 WorshipSite::IsBuilt(void)
-bool32_tcorrect WorshipSite::IsBuilt()
+bool32_t WorshipSite::IsBuilt()
 {
     return 0;
 }
@@ -240,13 +240,13 @@ PlannedWorshipSite::~PlannedWorshipSite()
 }
 
 // win1.41 0077bf30 mac 105b0ea0 PlannedWorshipSite::Save(GameOSFile &)
-bool32_tcorrect PlannedWorshipSite::Save(GameOSFile& file)
+bool32_t PlannedWorshipSite::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0077bf90 mac 105b0dc0 PlannedWorshipSite::Load(GameOSFile &)
-bool32_tcorrect PlannedWorshipSite::Load(GameOSFile& file)
+bool32_t PlannedWorshipSite::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -315,7 +315,7 @@ void WorshipSite::AddSpellIconIfNecessary(SPELL_SEED_TYPE seed_type)
 }
 
 // win1.41 0077cc90 mac 105aefc0 WorshipSite::GetSpecialPos(unsigned long, MapCoords *)
-bool WorshipSite::GetSpecialPos(uint32_t param_1, MapCoords* param_2)
+bool32_t WorshipSite::GetSpecialPos(uint32_t param_1, MapCoords* param_2)
 {
     return 0;
 }

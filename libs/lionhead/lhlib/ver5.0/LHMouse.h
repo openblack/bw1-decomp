@@ -101,7 +101,7 @@ struct LHSurface;
 struct LHMouse
 {
     LH_SCREEN_BUFFER screen_buffer; /* 0x0 */
-    bool (__cdecl* handler)(void* param_0, LH_MOUSE_EVENT_TYPE param_1, uint32_t param_2, uint32_t param_3);
+    bool32_t (__cdecl* handler)(void* param_0, LH_MOUSE_EVENT_TYPE param_1, uint32_t param_2, uint32_t param_3);
     uint32_t field_0x8;
     bool32_t in_window;
     uint8_t field_0x10;
@@ -208,7 +208,7 @@ struct LHMouse
     // win1.41 007e49a0 mac 10006f30 LHMouse::UpdateCurrentPos(LHCoord)
     void UpdateCurrentPos(LHCoord coord);
     // win1.41 007e4e40 mac 101459e0 LHMouse::SetPosition(LHCoord *)
-    bool SetPosition(LHCoord* position);
+    bool32_t SetPosition(LHCoord* position);
     // win1.41 007e53b0 mac 10145190 LHMouse::SetCursor(void *, LH_MOUSE_IMAGE_TYPE, int)
     uint32_t SetCursor(void* param_2, LH_MOUSE_IMAGE_TYPE mouse_image_type, int param_4);
     // win1.41 007e57c0 mac 1003fb90 LHMouse::Draw(LH_SCREEN_BUFFER, LH_MOUSE_EVENT_TYPE)

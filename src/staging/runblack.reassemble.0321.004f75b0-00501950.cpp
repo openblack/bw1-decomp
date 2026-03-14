@@ -11,7 +11,7 @@ void Creature::UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2)
 }
 
 // win1.41 004f8a10 mac 1028ac60 Creature::CanBeSuckedIntoVortex(LandscapeVortex *)
-bool Creature::CanBeSuckedIntoVortex(LandscapeVortex* param_1)
+bool32_t Creature::CanBeSuckedIntoVortex(LandscapeVortex* param_1)
 {
     return 0;
 }

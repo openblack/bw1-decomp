@@ -35,7 +35,7 @@ public:
     // win1.41 0041fd70 mac 10175d10 Lion::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0041fc70 mac 10171320 Lion::CanBeFrighteningToCreature(Creature *)
-    virtual bool CanBeFrighteningToCreature(Creature* param_1);
+    virtual bool32_t CanBeFrighteningToCreature(Creature* param_1);
     // win1.41 0041c1a0 mac 1016fc50 Lion::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };

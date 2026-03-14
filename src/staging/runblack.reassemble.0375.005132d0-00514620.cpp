@@ -32,7 +32,7 @@ DialogBoxOptions::DialogBoxOptions()
 }
 
 // win1.41 00513830 mac 102b5900 DialogBoxOptions::CanESCOut(void)
-bool DialogBoxOptions::CanESCOut()
+bool32_t DialogBoxOptions::CanESCOut()
 {
     return 0;
 }

@@ -24,13 +24,13 @@ void GAudio::ToBeDeleted(int param_1)
 }
 
 // win1.41 00428310 mac 10179bd0 GAudio::Save(GameOSFile &)
-bool32_tcorrect GAudio::Save(GameOSFile& file)
+bool32_t GAudio::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00428480 mac 10179710 GAudio::Load(GameOSFile &)
-bool32_tcorrect GAudio::Load(GameOSFile& file)
+bool32_t GAudio::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -63,13 +63,13 @@ ThingMusicInfo::~ThingMusicInfo()
 }
 
 // win1.41 00429950 mac 1017cc10 ThingMusicInfo::Save(GameOSFile &)
-bool32_tcorrect ThingMusicInfo::Save(GameOSFile& file)
+bool32_t ThingMusicInfo::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00429ae0 mac 1017c9c0 ThingMusicInfo::Load(GameOSFile &)
-bool32_tcorrect ThingMusicInfo::Load(GameOSFile& file)
+bool32_t ThingMusicInfo::Load(GameOSFile& file)
 {
     return 0;
 }

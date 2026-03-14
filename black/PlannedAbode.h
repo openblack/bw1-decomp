@@ -48,19 +48,19 @@ public:
     // win1.41 00405100 mac 10179a00 PlannedAbode::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00405860 mac 10260310 PlannedAbode::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 00405830 mac 10350950 PlannedAbode::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& file);
+    virtual bool32_t Save(GameOSFile& file);
     // win1.41 004050f0 mac 10531c20 PlannedAbode::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 004061a0 mac 104333f0 PlannedAbode::IsWonder(void)
-    virtual bool32_tcorrect IsWonder();
+    virtual bool32_t IsWonder();
     // win1.41 00405710 mac 10570d80 PlannedAbode::CreatePlanned(float)
     virtual MultiMapFixed* CreatePlanned(float param_1);
     // win1.41 00405770 mac 10282ed0 PlannedAbode::CreatePlannedNoFixedCheck(float)
     virtual MultiMapFixed* CreatePlannedNoFixedCheck(float param_1);
     // win1.41 004060c0 mac 101a36e0 PlannedAbode::IsCivic(void)
-    virtual bool IsCivic();
+    virtual bool32_t IsCivic();
     // win1.41 004061e0 mac 10007c40 PlannedAbode::GetAbodeType(void)
     virtual ABODE_TYPE GetAbodeType();
 

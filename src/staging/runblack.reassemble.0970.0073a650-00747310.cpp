@@ -31,7 +31,7 @@ Town* Town::GetNearestTownToPos(MapCoords* coords, TRIBE_TYPE tribe_type, ABODE_
 }
 
 // win1.41 0073b2d0 mac 10554e90 Town::IsHarvestTime(void)
-bool Town::IsHarvestTime()
+bool32_t Town::IsHarvestTime()
 {
     return 0;
 }
@@ -167,13 +167,13 @@ TownSpellIcon* Town::GetNextSpellIcon(TownSpellIcon* icon)
 }
 
 // win1.41 0073d380 mac 10550e80 Town::AddMagicTypesHeld(MAGIC_TYPE)
-bool Town::AddMagicTypesHeld(MAGIC_TYPE type)
+bool32_t Town::AddMagicTypesHeld(MAGIC_TYPE type)
 {
     return 0;
 }
 
 // win1.41 0073d630 mac 10550b00 Town::IsMagicTypeHeld(MAGIC_TYPE)
-bool Town::IsMagicTypeHeld(MAGIC_TYPE type)
+bool32_t Town::IsMagicTypeHeld(MAGIC_TYPE type)
 {
     return 0;
 }
@@ -185,7 +185,7 @@ float Town::GetRadius()
 }
 
 // win1.41 0073de30 mac 1054fb60 Town::GetFlock(LIVING_TYPE, int)
-bool Town::GetFlock(LIVING_TYPE param_1, int param_2)
+bool32_t Town::GetFlock(LIVING_TYPE param_1, int param_2)
 {
     return 0;
 }
@@ -241,13 +241,13 @@ void Town::AssignForestsToTown()
 }
 
 // win1.41 0073ed30 mac 1054c770 Town::Save(GameOSFile &)
-bool32_tcorrect Town::Save(GameOSFile& file)
+bool32_t Town::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0073f450 mac 1054aa80 Town::Load(GameOSFile &)
-bool32_tcorrect Town::Load(GameOSFile& file)
+bool32_t Town::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -288,13 +288,13 @@ void Town::ResolveLoad()
 }
 
 // win1.41 007412f0 mac 100233e0 Town::FindClearArea(MapCoords &, MapCoords &, float, float, float, int (Object::)(void const *, void const *), Object *)
-bool Town::FindClearArea(MapCoords& param_1, MapCoords& param_2, float param_3, float param_4, float param_5, int (*callback)(const void*, const void*), Object* obj)
+bool32_t Town::FindClearArea(MapCoords& param_1, MapCoords& param_2, float param_3, float param_4, float param_5, int (*callback)(const void*, const void*), Object* obj)
 {
     return 0;
 }
 
 // win1.41 007413d0 mac 10038890 Town::CheckForClearArea(MapCoords &, float, int (Object::)(void const *, void const *), Object *)
-bool Town::CheckForClearArea(MapCoords& param_1, float param_2, int (*callback)(const void*, const void*), Object* obj)
+bool32_t Town::CheckForClearArea(MapCoords& param_1, float param_2, int (*callback)(const void*, const void*), Object* obj)
 {
     return 0;
 }
@@ -331,7 +331,7 @@ void TownCentre::ToBeDeleted(int param_1)
 }
 
 // win1.41 00743bc0 mac 1055b860 TownCentre::InteractsWithPhysicsObjects(void)
-bool TownCentre::InteractsWithPhysicsObjects()
+bool32_t TownCentre::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -353,7 +353,7 @@ void TownCentre::CallVirtualFunctionsForCreation(const MapCoords& coords)
 }
 
 // win1.41 00743da0 mac 1055b260 TownCentre::CreateTotemIfNecessary(void)
-bool TownCentre::CreateTotemIfNecessary()
+bool32_t TownCentre::CreateTotemIfNecessary()
 {
     return 0;
 }
@@ -387,7 +387,7 @@ void TownCentre::AddPowerUp(SPELL_SEED_TYPE seed_type, POWER_UP_TYPE power_up_ty
 }
 
 // win1.41 00744050 mac 1055aac0 TownCentre::AddSpell(SPELL_SEED_TYPE)
-bool TownCentre::AddSpell(SPELL_SEED_TYPE seed_type)
+bool32_t TownCentre::AddSpell(SPELL_SEED_TYPE seed_type)
 {
     return 0;
 }
@@ -441,13 +441,13 @@ void TownCentre::DrawAll()
 }
 
 // win1.41 00744830 mac 10559e60 TownCentre::Save(GameOSFile &)
-bool32_tcorrect TownCentre::Save(GameOSFile& file)
+bool32_t TownCentre::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00744880 mac 10559dc0 TownCentre::Load(GameOSFile &)
-bool32_tcorrect TownCentre::Load(GameOSFile& file)
+bool32_t TownCentre::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -524,7 +524,7 @@ void TownDesireFlags::ToBeDeleted(int param_1)
 }
 
 // win1.41 00746a10 mac 1055dae0 TownDesireFlags::InteractsWithPhysicsObjects(void)
-bool TownDesireFlags::InteractsWithPhysicsObjects()
+bool32_t TownDesireFlags::InteractsWithPhysicsObjects()
 {
     return 0;
 }
@@ -546,7 +546,7 @@ void TownDesireFlags::CallVirtualFunctionsForCreation(const MapCoords& coords)
 }
 
 // win1.41 00746de0 mac 1055d7e0 TownDesireFlags::CreatureMustAvoid(Creature *)
-bool TownDesireFlags::CreatureMustAvoid(Creature* param_1)
+bool32_t TownDesireFlags::CreatureMustAvoid(Creature* param_1)
 {
     return 0;
 }
@@ -576,13 +576,13 @@ uint32_t TownDesireFlags::GetFOVHelpCondition()
 }
 
 // win1.41 00746f10 mac 1055c600 TownDesireFlags::Save(GameOSFile &)
-bool32_tcorrect TownDesireFlags::Save(GameOSFile& file)
+bool32_t TownDesireFlags::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00747030 mac 1055c440 TownDesireFlags::Load(GameOSFile &)
-bool32_tcorrect TownDesireFlags::Load(GameOSFile& file)
+bool32_t TownDesireFlags::Load(GameOSFile& file)
 {
     return 0;
 }

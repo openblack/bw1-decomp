@@ -29,13 +29,13 @@ MPFECondtionUpdateMessage::~MPFECondtionUpdateMessage()
 }
 
 // win1.41 0062dab0 mac 103a1860 MPFEConnectionStatus::IsLanLobby(void)
-bool MPFEConnectionStatus::IsLanLobby()
+bool32_t MPFEConnectionStatus::IsLanLobby()
 {
     return 0;
 }
 
 // win1.41 0062dac0 mac 103a1810 MPFEConnectionStatus::IsInternetLobby(void)
-bool MPFEConnectionStatus::IsInternetLobby()
+bool32_t MPFEConnectionStatus::IsInternetLobby()
 {
     return 0;
 }

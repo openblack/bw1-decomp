@@ -62,19 +62,19 @@ public:
     // win1.41 00401800 mac 10494700 GameThing::RemoveDance(void)
     virtual void RemoveDance();
     // win1.41 00401810 mac 100512d0 GameThing::IsAvailable(void)
-    virtual bool IsAvailable();
+    virtual bool32_t IsAvailable();
     // win1.41 00401820 mac 10494880 GameThing::IsCreature(Creature *)
-    virtual bool IsCreature(Creature* param_1); /* 0x30 */
+    virtual bool32_t IsCreature(Creature* param_1); /* 0x30 */
     // win1.41 00401830 mac 1002c400 GameThing::IsCreature(void)
-    virtual bool IsCreature();
+    virtual bool32_t IsCreature();
     // win1.41 00401840 mac 104948c0 GameThing::IsCreatureNotTooNear(Creature *)
-    virtual bool IsCreatureNotTooNear(Creature* param_1);
+    virtual bool32_t IsCreatureNotTooNear(Creature* param_1);
     // win1.41 00405130 mac 10169a70 GameThing::GetDrawImportance(void)
     virtual float GetDrawImportance();
     // win1.41 00401850 mac 10428ff0 GameThing::GetMaxAlignmentChangePerGameTurn(void)
     virtual float GetMaxAlignmentChangePerGameTurn(); /* 0x40 */
     // win1.41 00401860 mac 10425a40 GameThing::GetComputerSeen(void)
-    virtual bool GetComputerSeen();
+    virtual bool32_t GetComputerSeen();
     // win1.41 0056ff10 mac 103c22d0 GameThing::GetTown(void)
     virtual Town* GetTown();
     // win1.41 00401870 mac 103f1450 GameThing::GetVillagerActivityDesire(Villager *)
@@ -142,11 +142,11 @@ public:
     // win1.41 00405210 mac 1019aa00 GameThing::GetTownArtifactValue(void)
     virtual float GetTownArtifactValue();
     // win1.41 00405220 mac 10199de0 GameThing::CanBecomeArtifact(void)
-    virtual bool CanBecomeArtifact();
+    virtual bool32_t CanBecomeArtifact();
     // win1.41 00405230 mac 10199e20 GameThing::DrawInHand(GInterfaceStatus *)
     virtual void DrawInHand(GInterfaceStatus* param_1); /* 0xd0 */
     // win1.41 00405240 mac 10067860 GameThing::IsFunctional(void)
-    virtual bool32_tcorrect IsFunctional();
+    virtual bool32_t IsFunctional();
     // win1.41 00425da0 mac 1054ef00 GameThing::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0071bc20 mac 1050ff50 GameThing::GetSampleForAttack(void)
@@ -156,9 +156,9 @@ public:
     // win1.41 00401930 mac 1017a550 GameThing::GetShowNeedsPos(unsigned long, MapCoords *)
     virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
     // win1.41 0056fcf0 mac 103807f0 GameThing::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& file);
+    virtual bool32_t Load(GameOSFile& file);
     // win1.41 0056fbe0 mac 101724b0 GameThing::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& file);
+    virtual bool32_t Save(GameOSFile& file);
     // win1.41 0056fd90 mac 101361c0 GameThing::GetSaveType(void)
     virtual uint32_t GetSaveType(); /* 0xf0 */
     // win1.41 0056fda0 mac 100bc180 GameThing::SaveExtraData(GameOSFile &)
@@ -186,7 +186,7 @@ public:
     // win1.41 0056faa0 mac 10492500 GameThing::ProcessDead(int)
     void ProcessDead(int param_1);
     // win1.41 0056fef0 mac 103c2300 GameThing::CheckAndSetSaved(void)
-    bool CheckAndSetSaved();
+    bool32_t CheckAndSetSaved();
 };
 
 #else // __cplusplus

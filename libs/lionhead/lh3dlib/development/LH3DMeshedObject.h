@@ -27,7 +27,7 @@ public:
     // win1.41 007f9d60 mac 10029180 LH3DMeshedObject::SetDrawWithGlobalAlpha(int) (this is fastcall, not thiscall)
     void SetDrawWithGlobalAlpha(int value);
     // win1.41 007f9fb0 mac 1000bf70 LH3DMeshedObject::GetDoorPos(LHPoint *) const (this is fastcall, not thiscall)
-    bool GetDoorPos(LHPoint* out_point) const;
+    bool32_t GetDoorPos(LHPoint* out_point) const;
 
     // Constructors
 

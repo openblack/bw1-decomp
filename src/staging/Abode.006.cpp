@@ -63,7 +63,7 @@ bool GetNearestWaterPos(MapCoords& coords)
 }
 
 // win1.41 00405ff0 mac 10199f30 Abode::IsCivic(void)
-bool Abode::IsCivic()
+bool32_t Abode::IsCivic()
 {
     return false;
 }

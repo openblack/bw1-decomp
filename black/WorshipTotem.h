@@ -61,9 +61,9 @@ public:
     // win1.41 00780800 mac 105b7760 WorshipTotem::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00780f10 mac 105b7910 WorshipTotem::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 00780f90 mac 105b7820 WorshipTotem::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 007807f0 mac 105b7720 WorshipTotem::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00780f00 mac 105b7a00 WorshipTotem::ResolveLoad(void)
@@ -77,7 +77,7 @@ public:
     // win1.41 00780aa0 mac 105b8240 WorshipTotem::CalculatePeopleHidingIndicator(void)
     virtual float CalculatePeopleHidingIndicator();
     // win1.41 007807e0 mac 105b76e0 WorshipTotem::IsSacrificeAltar(void)
-    virtual bool IsSacrificeAltar();
+    virtual bool32_t IsSacrificeAltar();
     // win1.41 007807b0 mac inlined WorshipTotem::SetSpecularColor(LH3DColor)
     virtual void SetSpecularColor(LH3DColor param_1);
     // win1.41 007807c0 mac 105b7650 WorshipTotem::GetSpecularColor(void)
@@ -91,9 +91,9 @@ public:
     // win1.41 007807d0 mac 105b7690 WorshipTotem::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
     // win1.41 00780790 mac 105b7570 WorshipTotem::IsSpellSeedReturnPoint( const(void))
-    virtual bool IsSpellSeedReturnPoint();
+    virtual bool32_t IsSpellSeedReturnPoint();
     // win1.41 007807a0 mac 105b75c0 WorshipTotem::IsEffectReceiver(EffectValues *)
-    virtual bool IsEffectReceiver(EffectValues* param_1);
+    virtual bool32_t IsEffectReceiver(EffectValues* param_1);
 
     // Static methods
 

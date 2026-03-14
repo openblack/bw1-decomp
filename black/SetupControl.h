@@ -51,7 +51,7 @@ public:
     // win1.41 00409180 mac 1032c7e0 SetupControl::SetFocus(bool)
     virtual void SetFocus(bool focus);
     // win1.41 00409310 mac 10310540 SetupControl::HitTest(int, int)
-    virtual bool HitTest(int x, int y); /* 0x10 */
+    virtual bool32_t HitTest(int x, int y); /* 0x10 */
     virtual void Draw(bool hovered, bool selected);
     // win1.41 00409340 mac inlined SetupControl::Drag(int, int)
     virtual void Drag(int x, int y);

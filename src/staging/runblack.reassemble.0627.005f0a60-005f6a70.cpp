@@ -29,7 +29,7 @@ void Living::StopReactingAndSetState()
 }
 
 // win1.41 005f11f0 mac 10019a90 Living::IsAvailableForReaction(REACTION)
-bool Living::IsAvailableForReaction(REACTION param_1)
+bool32_t Living::IsAvailableForReaction(REACTION param_1)
 {
     return 0;
 }
@@ -295,7 +295,7 @@ void Living::GetFleeingPositionFromMovingObject(MapCoords* param_1, GameThingWit
 }
 
 // win1.41 005f2630 mac 10385ed0 Living::ArrivesAtFoodReaction(void)
-bool Living::ArrivesAtFoodReaction()
+bool32_t Living::ArrivesAtFoodReaction()
 {
     return 0;
 }
@@ -307,13 +307,13 @@ uint32_t Living::GotoPickupBallReaction()
 }
 
 // win1.41 005f26d0 mac 10385ce0 Living::LookAtFlyingObjectReaction(void)
-bool Living::LookAtFlyingObjectReaction()
+bool32_t Living::LookAtFlyingObjectReaction()
 {
     return 0;
 }
 
 // win1.41 005f2710 mac 10385c50 Living::AmILikelyToMove(void)
-bool Living::AmILikelyToMove()
+bool32_t Living::AmILikelyToMove()
 {
     return 0;
 }
@@ -331,7 +331,7 @@ VILLAGER_STATES Living::GetTopState()
 }
 
 // win1.41 005f2800 mac 1038a340 Living::SetupMoveToObject(Object *, unsigned char)
-bool Living::SetupMoveToObject(Object* param_1, unsigned char param_2)
+bool32_t Living::SetupMoveToObject(Object* param_1, unsigned char param_2)
 {
     return 0;
 }

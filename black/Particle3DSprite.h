@@ -31,7 +31,7 @@ public:
     // win1.41 0055f050 mac inlined Particle3DSprite::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00695ac0 mac inlined Particle3DSprite::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
 };
 
 #else // __cplusplus

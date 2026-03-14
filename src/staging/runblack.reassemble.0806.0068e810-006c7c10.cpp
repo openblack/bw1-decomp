@@ -22,67 +22,67 @@ PSysInterface* PSysInterface::Create(Spell* spell, PARTICLE_TYPE particle_type, 
 }
 
 // win1.41 006944b0 mac 1041db80 PSysBase::Load(GameOSFile &)
-bool32_tcorrect PSysBase::Load(GameOSFile& file)
+bool32_t PSysBase::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006944d0 mac 1041dae0 GJPSysInterface::Load(GameOSFile &)
-bool32_tcorrect GJPSysInterface::Load(GameOSFile& file)
+bool32_t GJPSysInterface::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00694500 mac 1041d6f0 PSysManager::Load(GameOSFile &)
-bool32_tcorrect PSysManager::Load(GameOSFile& file)
+bool32_t PSysManager::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00695010 mac inlined Particle3DPnt::Load(GameOSFile &)
-bool32_tcorrect Particle3DPnt::Load(GameOSFile& file)
+bool32_t Particle3DPnt::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00695180 mac 1041c890 ParticleLightMap::Load(GameOSFile &)
-bool32_tcorrect ParticleLightMap::Load(GameOSFile& file)
+bool32_t ParticleLightMap::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 006959d0 mac 1041c0e0 ParticleChainJoint::Load(GameOSFile &)
-bool32_tcorrect ParticleChainJoint::Load(GameOSFile& file)
+bool32_t ParticleChainJoint::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00695ac0 mac inlined Particle3DSprite::Load(GameOSFile &)
-bool32_tcorrect Particle3DSprite::Load(GameOSFile& file)
+bool32_t Particle3DSprite::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00695c10 mac 1041bda0 Chain::Load(GameOSFile &)
-bool32_tcorrect Chain::Load(GameOSFile& file)
+bool32_t Chain::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00698240 mac 104192e0 SpellPointInf::Load(GameOSFile &)
-bool32_tcorrect SpellPointInf::Load(GameOSFile& file)
+bool32_t SpellPointInf::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00699ca0 mac 10417a80 DefensiveShield::Load(GameOSFile &)
-bool32_tcorrect DefensiveShield::Load(GameOSFile& file)
+bool32_t DefensiveShield::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00699cd0 mac 104179f0 DefensiveSphere::Load(GameOSFile &)
-bool32_tcorrect DefensiveSphere::Load(GameOSFile& file)
+bool32_t DefensiveSphere::Load(GameOSFile& file)
 {
     return 0;
 }

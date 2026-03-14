@@ -36,7 +36,7 @@ const char* GInterface::GetText()
 }
 
 // win1.41 005ce2e0 mac 10074680 GInterface::IsActive( const(void))
-bool GInterface::IsActive()
+bool32_t GInterface::IsActive()
 {
     return 0;
 }
@@ -125,13 +125,13 @@ void GInterfaceStatus::SetActive(int param_1)
 }
 
 // win1.41 005d0490 mac 103585e0 GInterface::Save(GameOSFile &)
-bool32_tcorrect GInterface::Save(GameOSFile& file)
+bool32_t GInterface::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005d04d0 mac 10358550 GInterface::Load(GameOSFile &)
-bool32_tcorrect GInterface::Load(GameOSFile& file)
+bool32_t GInterface::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -162,7 +162,7 @@ void GInterface::UpdateAllLeashes()
 }
 
 // win1.41 005d9d80 mac 10004300 GInterface::SendMessageA(INTERFACE_MESSAGE_TYPES, LHCoord *)
-bool GInterface::SendMessageA(INTERFACE_MESSAGE_TYPES param_1, LHCoord* param_2)
+bool32_t GInterface::SendMessageA(INTERFACE_MESSAGE_TYPES param_1, LHCoord* param_2)
 {
     return 0;
 }
@@ -173,7 +173,7 @@ void GInterfaceMessageBuffer::Init(unsigned short param_1)
 }
 
 // win1.41 005d9f10 mac 1009c3b0 GInterfaceMessageBuffer::Add(INTERFACE_MESSAGE_TYPES, GInterfaceCollide *, LHCoord *)
-bool GInterfaceMessageBuffer::Add(INTERFACE_MESSAGE_TYPES param_1, GInterfaceCollide* param_2, LHCoord* param_3)
+bool32_t GInterfaceMessageBuffer::Add(INTERFACE_MESSAGE_TYPES param_1, GInterfaceCollide* param_2, LHCoord* param_3)
 {
     return 0;
 }
@@ -240,7 +240,7 @@ Object* GInterfaceStatus::GetFirstObjectInCurrentHand()
 }
 
 // win1.41 005dc2f0 mac 1007b2f0 GInterfaceStatus::IsSpaceInHands(void)
-bool GInterfaceStatus::IsSpaceInHands()
+bool32_t GInterfaceStatus::IsSpaceInHands()
 {
     return 0;
 }
@@ -257,13 +257,13 @@ void GInterfaceStatus::UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2)
 }
 
 // win1.41 005dca50 mac 1036c810 GInterfaceStatus::Save(GameOSFile &)
-bool32_tcorrect GInterfaceStatus::Save(GameOSFile& file)
+bool32_t GInterfaceStatus::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005dcdc0 mac 1036c160 GInterfaceStatus::Load(GameOSFile &)
-bool32_tcorrect GInterfaceStatus::Load(GameOSFile& file)
+bool32_t GInterfaceStatus::Load(GameOSFile& file)
 {
     return 0;
 }

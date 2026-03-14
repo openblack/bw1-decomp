@@ -11,13 +11,13 @@ void MobileWallHug::SetupMobileMoveToObject(Object* param_1)
 }
 
 // win1.41 0060ad40 mac 1005f4a0 MobileWallHug::AreWeThere(float)
-bool MobileWallHug::AreWeThere(float param_1)
+bool32_t MobileWallHug::AreWeThere(float param_1)
 {
     return 0;
 }
 
 // win1.41 0060ad60 mac 1004abe0 MobileWallHug::AreWeThere(MapCoords const &, float)
-bool MobileWallHug::AreWeThere(const MapCoords* param_1, float param_2)
+bool32_t MobileWallHug::AreWeThere(const MapCoords* param_1, float param_2)
 {
     return 0;
 }

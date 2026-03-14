@@ -51,19 +51,19 @@ public:
     // Virtual functions
 
     virtual ~CameraMode(); /* 0x0 */
-    virtual bool CanPlayerGestureWhenCameraMoving();
+    virtual bool32_t CanPlayerGestureWhenCameraMoving();
     virtual void Update();
     virtual void Validate();
     virtual void Restart(); /* 0x10 */
-    virtual bool IsStillValid();
+    virtual bool32_t IsStillValid();
     virtual void Cleanup();
-    virtual bool CanExist();
-    virtual bool MouseIsLocked(); /* 0x20 */
+    virtual bool32_t CanExist();
+    virtual bool32_t MouseIsLocked(); /* 0x20 */
     virtual void GetMousePos(LHCoord* pos);
     virtual void ProcessKeyMovement(uint16_t param_2);
     virtual void ProcessMouseMovement();
     virtual void Delete(); /* 0x30 */
-    virtual bool Arrived();
+    virtual bool32_t Arrived();
     virtual uint32_t GetSaveID();
     virtual void Load(GameOSFile& param_2);
     virtual void Save(GameOSFile& param_2); /* 0x40 */

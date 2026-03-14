@@ -56,13 +56,13 @@ public:
     // win1.41 00443840 mac 10198640 GCamera::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004433a0 mac 10198870 GCamera::Load(GameOSFile &)
-    virtual bool32_tcorrect Load(GameOSFile& param_1);
+    virtual bool32_t Load(GameOSFile& param_1);
     // win1.41 004430e0 mac 10198d40 GCamera::Save(GameOSFile &)
-    virtual bool32_tcorrect Save(GameOSFile& param_1);
+    virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 00441b20 mac 101982e0 GCamera::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00441b00 mac 10086270 GCamera::IsMoving( const(void))
-    virtual bool IsMoving();
+    virtual bool32_t IsMoving();
     // win1.41 00441af0 mac 101980f0 GCamera::GetText(void)
     virtual const char* GetText();
     // win1.41 00441b10 mac 101982b0 GCamera::GetHeight(void)
@@ -85,7 +85,7 @@ public:
     // Non-virtual methods
 
     // win1.41 00441b70 mac 1019a650 GCamera::CantExitCurrentMode(void)
-    bool CantExitCurrentMode();
+    bool32_t CantExitCurrentMode();
     // win1.41 00441cd0 mac 1019a420 GCamera::SwitchToViewMode(CameraMode *)
     void SwitchToViewMode(CameraMode* mode);
     // win1.41 00441d40 mac 1008de30 GCamera::CheckStackedModesForValidity(void)
