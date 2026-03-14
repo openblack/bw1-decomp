@@ -105,8 +105,10 @@ set(CMAKE_C_FLAGS_RELWITHDEBINFO "-g -gcodeview -fstandalone-debug -fno-eliminat
 set(CMAKE_C_FLAGS_RELEASE "-O3")
 set(CMAKE_DEPFILE_FLAGS_C "")
 
-set(CMAKE_CXX_FLAGS_DEBUG "/Zi /MT /GR")
-set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/Zi /MT /GR /O2")
+# Use /Zd (line number debugging only) instead of /Zi because limit is exceeded
+# This is a limitation of pdb format at the time.
+set(CMAKE_CXX_FLAGS_DEBUG "/Zd /MT /GR")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/Zd /MT /GR /O2")
 set(CMAKE_CXX_FLAGS_RELEASE "/MT /GR /O2")
 
 find_program(LLVM_STRIP_EXECUTABLE NAMES llvm-strip REQUIRED)
