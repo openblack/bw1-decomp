@@ -9,7 +9,7 @@
 .extern ?GetFootball@Villager@@QAEPAVFootball@@XZ
 .extern ?IsWoman@Villager@@QAE_NXZ
 .extern ?GetDesireForFood@Villager@@QAEMXZ
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0083add0
 
@@ -102,7 +102,7 @@ start_0x00423a80_0x004241b0:
                          mov.s              ecx, esi                                      // 0x00423b3c    8bce
                          call               ?GetDesireForFood@Villager@@QAEMXZ            // 0x00423b3e    e80d803300
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2414]              // 0x00423b43    d80d14b48a00
-                         call               _jmp_addr_0x007a1400                          // 0x00423b49    e8b2d83700
+                         call               __ftol                                        // 0x00423b49    e8b2d83700
                          mov.s              ecx, eax                                      // 0x00423b4e    8bc8
                          mov                eax, 0xaaaaaaab                               // 0x00423b50    b8abaaaaaa
                          mul                ecx                                           // 0x00423b55    f7e1
@@ -136,7 +136,7 @@ start_0x00423a80_0x004241b0:
                          mov.s              ecx, esi                                      // 0x00423b8c    8bce
                          call               ?GetDesireForFood@Villager@@QAEMXZ            // 0x00423b8e    e8bd7f3300
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2414]              // 0x00423b93    d80d14b48a00
-                         call               _jmp_addr_0x007a1400                          // 0x00423b99    e862d83700
+                         call               __ftol                                        // 0x00423b99    e862d83700
                          mov.s              ecx, eax                                      // 0x00423b9e    8bc8
                          mov                eax, 0xaaaaaaab                               // 0x00423ba0    b8abaaaaaa
                          mul                ecx                                           // 0x00423ba5    f7e1

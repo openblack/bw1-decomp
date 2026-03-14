@@ -125,7 +125,7 @@ VftableAndRTTI Fragment                                                         
 
 .long ?IsStompable@GameThingWithPos@@UAE_NXZ
 .long ?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ
-.long ?IsInteractable@GameThingWithPos@@UAE_NXZ
+.long ?IsInteractable@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteInteractableToolTip@GameThingWithPos@@UAEIXZ
 
 .long ?GetOverwriteDropToolTip@GameThingWithPos@@UAEIXZ
@@ -788,7 +788,7 @@ VftableAndRTTI WayPoint                                                         
 .long ?GetOverwritePickUpToolTip@GameThingWithPos@@UAEIXZ
 .long ?IsStompable@GameThingWithPos@@UAE_NXZ
 .long ?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ
-.long ?IsInteractable@GameThingWithPos@@UAE_NXZ
+.long ?IsInteractable@GameThingWithPos@@UAEIXZ
 
 .long ?GetOverwriteInteractableToolTip@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteDropToolTip@GameThingWithPos@@UAEIXZ
@@ -1241,7 +1241,7 @@ VftableAndRTTI Workshop                                                         
 .long ?GetOverwritePickUpToolTip@GameThingWithPos@@UAEIXZ
 .long ?IsStompable@GameThingWithPos@@UAE_NXZ
 .long ?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ
-.long ?IsInteractable@Abode@@UAE_NXZ
+.long ?IsInteractable@Abode@@UAEIXZ
 .long ?GetOverwriteInteractableToolTip@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteDropToolTip@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteTapToolTip@GameThingWithPos@@UAEIXZ
@@ -1467,7 +1467,7 @@ VftableAndRTTI Workshop                                                         
 .long ?IsFeature@GameThingWithPos@@UAE_NXZ
 .long ?IsScriptMarker@GameThingWithPos@@UAE_NXZ
 .long ?IsScriptHighlight@GameThingWithPos@@UAE_NXZ
-.long ?IsWonder@Abode@@UAE_NXZ
+.long ?IsWonder@Abode@@UAEIXZ
 .long ?IsInfluenceRing@GameThingWithPos@@UAE_NXZ
 .long ?IsPuzzleGame@GameThingWithPos@@UAE_NXZ
 .long ?IsScaffold@GameThingWithPos@@UAE_NXZ
@@ -1665,11 +1665,11 @@ VftableAndRTTI Workshop                                                         
 .long ?DropSfx@Object@@UAEIXZ
 .long ?GetBoundingSphere@Object@@UAEXPAULHPoint@@PAM@Z
 .long ?InteractsWithPhysicsObjects@MultiMapFixed@@UAE_NXZ
-.long ?ChecksVerticesVObjects@Abode@@UAEIXZ
+.long ?ChecksVerticesVObjects@Abode@@UAE_NXZ
 .long ?ShouldPhysicsRaiseObjectUntilNotIntersectingThis@Object@@UAEXPAV1@@Z
 .long ?PhysicallyDestroysAbodes@Object@@UAEIXZ
 .long ?ReactToPhysicsImpact@Abode@@UAEXPAVPhysicsObject@@_N@Z
-.long ?CanBecomeAPhysicsObject@Abode@@UAE_NXZ
+.long ?CanBecomeAPhysicsObject@Abode@@UAEIXZ
 .long ?GetAlwaysRemainsInPhysicsInternalSystem@Object@@UAE_NXZ
 .long ?HasSunk@Object@@UAE_NXZ
 .long ?CreatureMustAvoid@MultiMapFixed@@UAE_NPAVCreature@@@Z
@@ -1685,7 +1685,7 @@ VftableAndRTTI Workshop                                                         
 .long ?GetLandingPoint@Object@@UAE_NEPAULHPoint@@@Z
 .long ?GetTastiness@Object@@UAEIXZ
 .long ?IsScary@Object@@UAE_NXZ
-.long ?GetInspectObjectPos@Abode@@UAE_NPAVVillager@@PAUMapCoords@@@Z, ?DiscipleInHandNear@Abode@@UAEXPAVVillager@@PAVGInterfaceStatus@@@Z, ?GetSpecialPos@Fixed@@UAE_NIPAUMapCoords@@@Z, ?GetTownArtifact@Fixed@@UAEPAVGameThing@@XZ                                                               // [0xf3310] 0x008a9000 + 0xf3310 = 0x0099c310
+.long ?GetInspectObjectPos@Abode@@UAE_NPAVVillager@@PAUMapCoords@@@Z, ?DiscipleInHandNear@Abode@@UAEXAAVVillager@@AAVGInterfaceStatus@@@Z, ?GetSpecialPos@Fixed@@UAE_NIPAUMapCoords@@@Z, ?GetTownArtifact@Fixed@@UAEPAVGameThing@@XZ                                                               // [0xf3310] 0x008a9000 + 0xf3310 = 0x0099c310
 .long ?IsTownArtifact@Fixed@@UAE_NXZ
 .long ?ProcessInHand@Object@@UAE_NXZ
 .long ?ProcessInInteract@Object@@UAEIPAVGInterfaceStatus@@@Z
@@ -1861,7 +1861,7 @@ VftableAndRTTI PlannedWorshipSite                                               
 .long ?IsStompable@GameThingWithPos@@UAE_NXZ
 
 .long ?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ
-.long ?IsInteractable@GameThingWithPos@@UAE_NXZ
+.long ?IsInteractable@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteInteractableToolTip@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteDropToolTip@GameThingWithPos@@UAEIXZ
 
@@ -2212,13 +2212,13 @@ VftableAndRTTI WorshipSiteUpgrade                                               
 .long ?GetTownArtifactValue@Fixed@@UAEMXZ
 .long ?CanBecomeArtifact@Object@@UAE_NXZ
 .long ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z
-.long ?IsFunctional@MultiMapFixed@@UAE_NXZ
+.long ?IsFunctional@MultiMapFixed@@UAEIXZ
 .long ?GetDebugText@Feature@@UAEPADXZ
 .long ?GetSampleForAttack@GameThing@@UAEIXZ
 .long ?GetGuidanceResourceType@GameThing@@UAEIXZ
 .long ?GetShowNeedsPos@MultiMapFixed@@UAEIKPAUMapCoords@@@Z
 .long _Load__13MultiMapFixedFR10GameOSFile
-.long ?Save@MultiMapFixed@@UAEIPAVGameOSFile@@@Z                                                                                                   // [0xf3b2c] 0x008a9000 + 0xf3b2c = 0x0099cb2c
+.long ?Save@MultiMapFixed@@UAEIAAVGameOSFile@@@Z                                                                                                   // [0xf3b2c] 0x008a9000 + 0xf3b2c = 0x0099cb2c
 .long ?GetSaveType@Feature@@UAEIXZ                                                                                                   // [0xf3b30] 0x008a9000 + 0xf3b30 = 0x0099cb30
 .long ?SaveExtraData@GameThing@@QAEXAAVGameOSFile@@@Z
 .long ?ResolveLoad@Object@@UAEXXZ
@@ -2268,7 +2268,7 @@ VftableAndRTTI WorshipSiteUpgrade                                               
 .long ?IsStompable@GameThingWithPos@@UAE_NXZ
 .long ?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ
 
-.long ?IsInteractable@GameThingWithPos@@UAE_NXZ
+.long ?IsInteractable@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteInteractableToolTip@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteDropToolTip@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteTapToolTip@GameThingWithPos@@UAEIXZ
@@ -2876,7 +2876,7 @@ VftableAndRTTI PlannedWorshipSiteUpgrade                                        
 .long ?IsStompable@GameThingWithPos@@UAE_NXZ
 .long ?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ
 
-.long ?IsInteractable@GameThingWithPos@@UAE_NXZ
+.long ?IsInteractable@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteInteractableToolTip@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteDropToolTip@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteTapToolTip@GameThingWithPos@@UAEIXZ
@@ -3205,7 +3205,7 @@ VftableAndRTTI WorshipSpellIcon                                                 
 .long ?GetTownArtifactValue@Fixed@@UAEMXZ
 .long ?CanBecomeArtifact@Object@@UAE_NXZ
 .long ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z
-.long ?IsFunctional@MultiMapFixed@@UAE_NXZ
+.long ?IsFunctional@MultiMapFixed@@UAEIXZ
 .long ?GetDebugText@WorshipSpellIcon@@UAEPADXZ                                                                                                   // [0xf4950] 0x008a9000 + 0xf4950 = 0x0099d950
 .long ?GetSampleForAttack@GameThing@@UAEIXZ
 .long ?GetGuidanceResourceType@GameThing@@UAEIXZ
@@ -3259,7 +3259,7 @@ VftableAndRTTI WorshipSpellIcon                                                 
 
 .long ?IsStompable@GameThingWithPos@@UAE_NXZ
 .long ?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ
-.long ?IsInteractable@GameThingWithPos@@UAE_NXZ
+.long ?IsInteractable@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteInteractableToolTip@GameThingWithPos@@UAEIXZ
 
 .long ?GetOverwriteDropToolTip@GameThingWithPos@@UAEIXZ
@@ -3808,7 +3808,7 @@ VftableAndRTTI WorshipTotem                                                     
 .long ?GetTownArtifactValue@Fixed@@UAEMXZ
 .long ?CanBecomeArtifact@Object@@UAE_NXZ
 .long ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z
-.long ?IsFunctional@MultiMapFixed@@UAE_NXZ
+.long ?IsFunctional@MultiMapFixed@@UAEIXZ
 .long ?GetDebugText@WorshipTotem@@UAEPADXZ                                                                                       // [0xf5290] 0x008a9000 + 0xf5290 = 0x0099e290
 .long ?GetSampleForAttack@GameThing@@UAEIXZ
 .long ?GetGuidanceResourceType@GameThing@@UAEIXZ
@@ -3861,7 +3861,7 @@ VftableAndRTTI WorshipTotem                                                     
 .long ?GetOverwritePickUpToolTip@GameThingWithPos@@UAEIXZ
 .long ?IsStompable@GameThingWithPos@@UAE_NXZ
 .long ?IsAvailableForStateChange@GameThingWithPos@@UAE_NXZ
-.long ?IsInteractable@GameThingWithPos@@UAE_NXZ
+.long ?IsInteractable@GameThingWithPos@@UAEIXZ
 
 .long ?GetOverwriteInteractableToolTip@GameThingWithPos@@UAEIXZ
 .long ?GetOverwriteDropToolTip@GameThingWithPos@@UAEIXZ

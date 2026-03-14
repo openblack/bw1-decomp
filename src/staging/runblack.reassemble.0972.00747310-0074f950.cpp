@@ -65,13 +65,13 @@ WorshipSite* TownSpellIcon::GetWorshipSite()
 }
 
 // win1.41 00748f70 mac 10561030 TownSpellIcon::Save(GameOSFile &)
-bool TownSpellIcon::Save(GameOSFile& file)
+bool32_tcorrect TownSpellIcon::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00748fb0 mac 10560fa0 TownSpellIcon::Load(GameOSFile &)
-bool TownSpellIcon::Load(GameOSFile& file)
+bool32_tcorrect TownSpellIcon::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -200,7 +200,7 @@ float Tree::GetHoldLoweringMultiplier()
 }
 
 // win1.41 0074b630 mac 10157ad0 Tree::CanBecomeAPhysicsObject(void)
-bool Tree::CanBecomeAPhysicsObject()
+bool32_tcorrect Tree::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -334,13 +334,13 @@ uint32_t Tree::GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villa
 }
 
 // win1.41 0074c1b0 mac 10156080 Tree::Save(GameOSFile &)
-bool Tree::Save(GameOSFile& file)
+bool32_tcorrect Tree::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0074c2a0 mac 10155f10 Tree::Load(GameOSFile &)
-bool Tree::Load(GameOSFile& file)
+bool32_tcorrect Tree::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -490,9 +490,9 @@ int GUtils::GetIncrementSpiralSizeFromRadius(float param_1, float param_2)
 }
 
 // win1.41 0074f880 mac 10571e50 GVillagerInfo::GetMesh( const(void))
-uint32_t GVillagerInfo::GetMesh() const
+MeshId GVillagerInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 0074f890 mac 10571e90 GVillagerInfo::GetBaseInfo(unsigned long &)

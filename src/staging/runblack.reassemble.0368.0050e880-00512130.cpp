@@ -95,7 +95,7 @@ DeadTree::~DeadTree()
 }
 
 // win1.41 00510a90 mac 100c3b20 DeadTree::CallVirtualFunctionsForCreation(MapCoords const &)
-void DeadTree::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void DeadTree::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -244,13 +244,13 @@ uint32_t DeadTree::GetScriptObjectType()
 }
 
 // win1.41 005115c0 mac 100c1b30 DeadTree::Save(GameOSFile &)
-bool DeadTree::Save(GameOSFile& file)
+bool32_tcorrect DeadTree::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00511630 mac 100c1a50 DeadTree::Load(GameOSFile &)
-bool DeadTree::Load(GameOSFile& file)
+bool32_tcorrect DeadTree::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -273,7 +273,7 @@ FelledTree::~FelledTree()
 }
 
 // win1.41 00511a10 mac 100c1250 DeadTree::CanBecomeAPhysicsObject(void)
-bool DeadTree::CanBecomeAPhysicsObject()
+bool32_tcorrect DeadTree::CanBecomeAPhysicsObject()
 {
     return 0;
 }

@@ -51,9 +51,9 @@ public:
     // win1.41 0072c040 mac 10534210 MapShield::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0072c350 mac 10531180 MapShield::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& file);
+    virtual bool32_tcorrect Load(GameOSFile& file);
     // win1.41 0072c390 mac 105310e0 MapShield::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& file);
+    virtual bool32_tcorrect Save(GameOSFile& file);
     // win1.41 0072c030 mac 105341d0 MapShield::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0072c010 mac 10534010 MapShield::HandShouldFeelWithMeshIntersect(void)
@@ -67,7 +67,7 @@ public:
     // win1.41 0072c1e0 mac 10531620 MapShield::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object *)
     virtual void ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1);
     // win1.41 0072c1d0 mac 10531680 MapShield::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 0072c170 mac 10531740 MapShield::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 0072c020 mac 10534060 MapShield::SaveObject(LHOSFile &, MapCoords const &)

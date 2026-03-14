@@ -82,7 +82,7 @@ float __fastcall CheckNeededForWorship__8VillagerFv(struct Villager* this)
     asm("test               ecx, ecx");                                        // 0x0076ba97    85c9
     asm("{disp8} je         LAB__addr_0x0076bad7");                            // 0x0076ba99    743c
     asm("{disp32} fld       dword ptr [ecx + 0x000005c0]");                    // 0x0076ba9b    d981c0050000
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                     // 0x0076baa1    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                     // 0x0076baa1    d81d98a38a00
     asm("fnstsw             ax");                                              // 0x0076baa7    dfe0
     asm("test               ah, 0x40");                                        // 0x0076baa9    f6c440
     asm("{disp8} jne        LAB__addr_0x0076bad7");                            // 0x0076baac    7529
@@ -259,7 +259,7 @@ bool32_t __fastcall CanIGetToTheWorshipSite__8VillagerFRP13MagicTeleport(struct 
     asm("{disp8} lea        ebp, dword ptr [esi + 0x14]");                     // 0x0076bc4f    8d6e14
     asm("push               ebx");                                             // 0x0076bc52    53
     asm("mov.s              ecx, ebp");                                        // 0x0076bc53    8bcd
-    asm("call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2");                            // 0x0076bc55    e876a0e9ff
+    asm("call               ?GetMetresDistance@MapCoords@@QBEMABU1@@Z");                            // 0x0076bc55    e876a0e9ff
     asm("{disp8} mov        edx, dword ptr [esp + 0x10]");                     // 0x0076bc5a    8b542410
     asm("{disp32} fcomp     dword ptr [edx + 0x00000148]");                    // 0x0076bc5e    d89a48010000
     asm("fnstsw             ax");                                              // 0x0076bc64    dfe0
@@ -339,7 +339,7 @@ bool32_t __fastcall GotoWorshipSiteForWorship__8VillagerFv(struct Villager* this
     asm("push               esi");                                             // 0x0076bd09    56
     asm("mov.s              ecx, edi");                                        // 0x0076bd0a    8bcf
     asm("call               dword ptr [edx + 0x6c4]");                         // 0x0076bd0c    ff92c4060000
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                     // 0x0076bd12    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                     // 0x0076bd12    d81d98a38a00
     asm("fnstsw             ax");                                              // 0x0076bd18    dfe0
     asm("test               ah, 0x41");                                        // 0x0076bd1a    f6c441
     asm("{disp8} jne        LAB__addr_0x0076bd4a");                            // 0x0076bd1d    752b
@@ -413,10 +413,10 @@ bool32_t __fastcall SetGotoWorshipSpeed__8VillagerFv(struct Villager* this)
     asm("call               dword ptr [eax + 0x30c]");                         // 0x0076bdc1    ff900c030000
     asm("mov.s              ecx, eax");                                        // 0x0076bdc7    8bc8
     asm("call               _jmp_addr_0x0077c100");                            // 0x0076bdc9    e832030100
-    asm("{disp32} fadd      dword ptr [_rdata_float1p0]");                     // 0x0076bdce    d80590a38a00
+    asm("{disp32} fadd      dword ptr [__real@4@3fff8000000000000000]");                     // 0x0076bdce    d80590a38a00
     asm("push               0x1");                                             // 0x0076bdd4    6a01
     asm("{disp8} fmul       dword ptr [esp + 0x08]");                          // 0x0076bdd6    d84c2408
-    asm("call               _jmp_addr_0x007a1400");                            // 0x0076bdda    e821560300
+    asm("call               __ftol");                                          // 0x0076bdda    e821560300
     asm("push               eax");                                             // 0x0076bddf    50
     asm("mov.s              ecx, esi");                                        // 0x0076bde0    8bce
     asm("call               ?SetSpeed@Villager@@QAEXJH@Z");                    // 0x0076bde2    e8e950feff
@@ -426,7 +426,7 @@ bool32_t __fastcall SetGotoWorshipSpeed__8VillagerFv(struct Villager* this)
     asm("LAB__addr_0x0076bdea:");
     asm("{disp8} fld        dword ptr [esp + 0x04]");                          // 0x0076bdea    d9442404
     asm("push               0x1");                                             // 0x0076bdee    6a01
-    asm("call               _jmp_addr_0x007a1400");                            // 0x0076bdf0    e80b560300
+    asm("call               __ftol");                                          // 0x0076bdf0    e80b560300
     asm("push               eax");                                             // 0x0076bdf5    50
     asm("mov.s              ecx, esi");                                        // 0x0076bdf6    8bce
     asm("call               ?SetSpeed@Villager@@QAEXJH@Z");                    // 0x0076bdf8    e8d350feff
@@ -1475,7 +1475,7 @@ bool32_t __fastcall ReduceVillagerLifeByChant__8VillagerFv(struct Villager* this
     asm("mov                eax, dword ptr [esi]");                            // 0x0076c837    8b06
     asm("mov.s              ecx, esi");                                        // 0x0076c839    8bce
     asm("call               dword ptr [eax + 0x11c]");                         // 0x0076c83b    ff901c010000
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                     // 0x0076c841    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                     // 0x0076c841    d81d98a38a00
     asm("fnstsw             ax");                                              // 0x0076c847    dfe0
     asm("test               ah, 0x41");                                        // 0x0076c849    f6c441
     asm("{disp8} je         LAB__addr_0x0076c881");                            // 0x0076c84c    7433
@@ -1783,7 +1783,7 @@ bool32_t __fastcall GetFoodAtWorshipSite__8VillagerFv(struct Villager* this)
 
 bool32_t __fastcall GetFoodDesireAtWorshipSite__8VillagerFv(struct Villager* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                     // 0x0076caf0    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                     // 0x0076caf0    d90590a38a00
     asm("ret");                                                                // 0x0076caf6    c3
     __builtin_unreachable();
 }

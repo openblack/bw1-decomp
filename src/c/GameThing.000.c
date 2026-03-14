@@ -2,6 +2,7 @@
 
 const float maxAlignmentChangePerGameTurn asm("?maxAlignmentChangePerGameTurn@GameThing@@2MB");
 // [0x1390] 0x008a9000 + 0x1390 = 0x008aa390
+const float rdata_float1p0 asm("__real@4@3fff8000000000000000");
 const float rdata_float1p0 = 1.0f;
 // [0x1394] 0x008a9000 + 0x1394 = 0x008aa394
 const float maxAlignmentChangePerGameTurn = 1.0f / (60 * 60 * 10);
@@ -28,7 +29,7 @@ const struct RTTIBaseClassDescriptor __RTTIBaseClassDescriptor__9GameThing = {
 float __fastcall CalculateInfluence__9GameThingFRC9MapCoords(struct GameThing* this, const void* edx, const struct MapCoords* param_1)
 {
     asm(
-        "{disp32} fld       dword ptr [_rdata_float1p0]\n"  // 0x004017f0    d90590a38a00
+        "{disp32} fld       dword ptr [__real@4@3fff8000000000000000]\n"  // 0x004017f0    d90590a38a00
         "ret                0x0004                     \n"  // 0x004017f6    c20400
 
         // SEH code path?
@@ -93,7 +94,7 @@ bool __fastcall GetComputerSeen__9GameThingFv(struct GameThing* this)
 float __fastcall GetVillagerActivityDesire__9GameThingFP8Villager(struct GameThing* this, const void* edx, struct Villager* param_1)
 {
     asm(
-        "{disp32} fld dword ptr [_rdata_float0p0]                       \n"  // 0x00401870    d90598a38a00
+        "{disp32} fld dword ptr [__real@4@00000000000000000000]                       \n"  // 0x00401870    d90598a38a00
         "ret          0x0004                                            \n"  // 0x00401876    c20400
         // SEH Code path?
         "push         ecx                                               \n"  // 0x00401879    51

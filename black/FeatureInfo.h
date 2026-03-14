@@ -32,7 +32,7 @@ public:
     // win1.41 00421eb0 mac 100a7c10 GFeatureInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 00421ea0 mac 100a5310 GFeatureInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh() const;
+    virtual MeshId GetMesh() const;
     // win1.41 00421e80 mac inlined GFeatureInfo::GetAbodeType( const(void))
     virtual ABODE_TYPE GetAbodeType();
     // win1.41 00421e90 mac inlined GFeatureInfo::GetAbodeNumber( const(void))

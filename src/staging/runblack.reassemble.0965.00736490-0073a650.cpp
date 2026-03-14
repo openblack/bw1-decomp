@@ -22,7 +22,7 @@ void Totem::ToBeDeleted(int param_1)
 }
 
 // win1.41 00737490 mac 10543360 Totem::CallVirtualFunctionsForCreation(MapCoords const &)
-void Totem::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void Totem::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -63,21 +63,21 @@ bool Totem::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
 }
 
 // win1.41 00737800 mac 10542950 Totem::Load(GameOSFile &)
-bool Totem::Load(GameOSFile& file)
+bool32_tcorrect Totem::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007378b0 mac 10542820 Totem::Save(GameOSFile &)
-bool Totem::Save(GameOSFile& file)
+bool32_tcorrect Totem::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00737a70 mac 10543c90 GTotemStatueInfo::GetMesh( const(void))
-uint32_t GTotemStatueInfo::GetMesh() const
+MeshId GTotemStatueInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 00737a80 mac 10545af0 GTotemStatueInfo::GetBaseInfo(unsigned long &)
@@ -129,7 +129,7 @@ void TotemStatue::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 00737d60 mac 10544f40 TotemStatue::CallVirtualFunctionsForCreation(MapCoords const &)
-void TotemStatue::CallVirtualFunctionsForCreation(const MapCoords* coords)
+void TotemStatue::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 }
 
@@ -210,13 +210,13 @@ bool TotemStatue::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1)
 }
 
 // win1.41 00738700 mac 105442e0 TotemStatue::Save(GameOSFile &)
-bool TotemStatue::Save(GameOSFile& file)
+bool32_tcorrect TotemStatue::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00738800 mac 10544120 TotemStatue::Load(GameOSFile &)
-bool TotemStatue::Load(GameOSFile& file)
+bool32_tcorrect TotemStatue::Load(GameOSFile& file)
 {
     return 0;
 }

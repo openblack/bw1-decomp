@@ -5,15 +5,16 @@
 #include "SetupBox.h"
 #include "SetupControl.h"
 #include "SetupStaticText.h"
+#include "stdbool.h"
 
 // win1.41 004061a0 mac 104333f0 PlannedAbode::IsWonder(void)
-bool32_t PlannedAbode::IsWonder()
+bool32_tcorrect PlannedAbode::IsWonder()
 {
     return 0;
 }
 
 // win1.41 004061c0 mac 1014d0e0 Abode::IsWonder(void)
-bool32_t Abode::IsWonder()
+bool32_tcorrect Abode::IsWonder()
 {
     return 0;
 }
@@ -31,7 +32,7 @@ ABODE_TYPE Abode::GetAbodeType()
 }
 
 // win1.41 00406200 mac 1005ff20 Abode::IsFunctional(void)
-bool Abode::IsFunctional()
+bool32_tcorrect Abode::IsFunctional()
 {
     return 0;
 }
@@ -53,7 +54,7 @@ void Abode::ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player
 }
 
 // win1.41 00406800 mac 1010ab50 Abode::CanBecomeAPhysicsObject(void)
-bool Abode::CanBecomeAPhysicsObject()
+bool32_tcorrect Abode::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -89,13 +90,13 @@ Villager* Abode::FindVillager(int (__cdecl* param_1)(GameThingWithPos*, SCRIPT_O
 }
 
 // win1.41 00406a10 mac 103bd750 Abode::Save(GameOSFile &)
-bool Abode::Save(GameOSFile& file)
+bool32_tcorrect Abode::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00406d20 mac 101a2920 Abode::Load(GameOSFile &)
-bool Abode::Load(GameOSFile& file)
+bool32_tcorrect Abode::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -118,13 +119,13 @@ float Abode::GetPercentAbodeFullWithChildren()
 }
 
 // win1.41 004070d0 mac 104ed230 Abode::GetNumAdultsInAbode(void)
-uint8_t Abode::GetNumAdultsInAbode()
+float Abode::GetNumAdultsInAbode()
 {
     return 0;
 }
 
 // win1.41 004070f0 mac 101b8780 Abode::DrawPercentFull(int)
-void Abode::DrawPercentFull(int param_1)
+void Abode::DrawPercentFull(bool32_tcorrect param_1)
 {
 }
 
@@ -135,16 +136,16 @@ uint32_t Abode::GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villa
 }
 
 // win1.41 00407200 mac 1008a7b0 Abode::IsInteractable(void)
-bool Abode::IsInteractable()
+bool32_tcorrect Abode::IsInteractable()
 {
     return 0;
 }
 
 // win1.41 00407230 mac inlined Abode::FUN_00407230(bool)
-MapCoords* Abode::FUN_00407230(MapCoords* coords, bool param_2)
-{
-    return 0;
-}
+// MapCoords Abode::FUN_00407230(bool param_1)
+// {
+//     return 0;
+// }
 
 // win1.41 00407280 mac 100dcdb0 Abode::CanBeHiddenIn(void)
 bool Abode::CanBeHiddenIn()
@@ -164,11 +165,11 @@ float Abode::GetInfluence()
     return 0;
 }
 
-// win1.41 004072e0 mac 1000cd50 Abode::GetPosOutside(float, float, float)
-MapCoords* Abode::GetPosOutside(MapCoords* coords, float param_2, float param_3, float param_4)
-{
-    return 0;
-}
+// // win1.41 004072e0 mac 1000cd50 Abode::GetPosOutside(float, float, float)
+// MapCoords Abode::GetPosOutside(float param_2, float param_3, float param_4)
+// {
+//     return 0;
+// }
 
 // win1.41 004073c0 mac 103b5600 Abode::StopBeingFunctional(GPlayer *)
 void Abode::StopBeingFunctional(GPlayer* param_1)
@@ -181,7 +182,7 @@ void Abode::FUN_004073f0(GPlayer* param_1)
 }
 
 // win1.41 00407420 mac 10351de0 Abode::DiscipleInHandNear(Villager &, GInterfaceStatus &)
-void Abode::DiscipleInHandNear(Villager* param_1, GInterfaceStatus* status)
+void Abode::DiscipleInHandNear(Villager& param_1, GInterfaceStatus& status)
 {
 }
 
@@ -198,13 +199,13 @@ float Abode::CalculateDesireToGainVillager()
 }
 
 // win1.41 004075b0 mac 10518900 Abode::TakeVillagerFrom(Abode&, int)
-bool Abode::TakeVillagerFrom(Abode* other, int param_2)
+bool32_tcorrect Abode::TakeVillagerFrom(Abode& other, bool32_tcorrect male)
 {
     return 0;
 }
 
 // win1.41 00407620 mac 10516470 Abode::SwapMaleForFemaleFrom(Abode&)
-bool Abode::SwapMaleForFemaleFrom(Abode* other)
+bool32_tcorrect Abode::SwapMaleForFemaleFrom(Abode& other)
 {
     return 0;
 }

@@ -453,13 +453,13 @@ bool StoragePit::IsStoragePitWithFoodInIt(Creature* param_1)
 }
 
 // win1.41 004e4ea0 mac 1026c9c0 Creature::Save(GameOSFile &)
-bool Creature::Save(GameOSFile& file)
+bool32_tcorrect Creature::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 004e5ff0 mac 1026b130 Creature::Load(GameOSFile &)
-bool Creature::Load(GameOSFile& file)
+bool32_tcorrect Creature::Load(GameOSFile& file)
 {
     return 0;
 }

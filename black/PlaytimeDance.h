@@ -33,7 +33,7 @@ public:
     // win1.41 0066c3e0 mac inlined PlaytimeElement::GetTown(void)
     virtual Town* GetTown();
     // win1.41 0066c810 mac inlined PlaytimeElement::IsFunctional(void)
-    virtual bool IsFunctional();
+    virtual bool32_tcorrect IsFunctional();
 };
 
 #else // __cplusplus

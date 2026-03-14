@@ -31,7 +31,7 @@ public:
     // win1.41 005fb910 mac inlined GMagicLivingInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 005fb900 mac inlined GMagicLivingInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh() const;
+    virtual MeshId GetMesh() const;
 };
 
 #else // __cplusplus

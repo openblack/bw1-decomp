@@ -404,7 +404,7 @@ struct VillagerName* __cdecl Add__12VillagerNameFf7LHPointPwR9LH3DColor(float te
     asm("ret");                                                              // 0x00762a1e    c3
     asm("LAB__addr_0x00762a1f:");
     asm("{disp8} fld        dword ptr [esp + 0x1c]");                        // 0x00762a1f    d944241c
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x00762a23    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x00762a23    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x00762a29    dfe0
     asm("test               ah, 0x41");                                      // 0x00762a2b    f6c441
     asm("{disp8} jne        LAB__addr_0x00762a38");                          // 0x00762a2e    7508
@@ -581,7 +581,7 @@ struct VillagerName* __cdecl Add__12VillagerNameFf7LHPointPwR9LH3DColor(float te
     asm("{disp32} fmul      dword ptr [_rdata_float0p5]");                   // 0x00762c4c    d80db4a38a00
     asm("fsubp              st(1), st");                                     // 0x00762c52    dee9
     asm("{disp8} fst        dword ptr [esi + 0x04]");                        // 0x00762c54    d95604
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x00762c57    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x00762c57    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x00762c5d    dfe0
     asm("test               ah, 0x01");                                      // 0x00762c5f    f6c401
     asm("{disp8} je         LAB__addr_0x00762c6b");                          // 0x00762c62    7407
@@ -648,12 +648,12 @@ struct VillagerName* __cdecl Add__12VillagerNameFf7LHPointPwR9LH3DColor(float te
     asm("{disp8} fsub       dword ptr [esi + 0x10]");                        // 0x00762d19    d86610
     asm("{disp8} fstp       dword ptr [esi + 0x08]");                        // 0x00762d1c    d95e08
     asm("{disp8} fld        dword ptr [ecx + 0x08]");                        // 0x00762d1f    d94108
-    asm("{disp32} fsub      dword ptr [_rdata_float1p0]");                   // 0x00762d22    d82590a38a00
+    asm("{disp32} fsub      dword ptr [__real@4@3fff8000000000000000]");                   // 0x00762d22    d82590a38a00
     asm("{disp8} fst        dword ptr [esi + 0x10]");                        // 0x00762d28    d95610
     asm("{disp8} fadd       dword ptr [esi + 0x08]");                        // 0x00762d2b    d84608
     asm("{disp8} fstp       dword ptr [esi + 0x08]");                        // 0x00762d2e    d95e08
     asm("{disp8} fld        dword ptr [ecx + 0x08]");                        // 0x00762d31    d94108
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x00762d34    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x00762d34    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x00762d3a    dfe0
     asm("test               ah, 0x01");                                      // 0x00762d3c    f6c401
     asm("{disp8} jne        LAB__addr_0x00762d5e");                          // 0x00762d3f    751d
@@ -669,7 +669,7 @@ struct VillagerName* __cdecl Add__12VillagerNameFf7LHPointPwR9LH3DColor(float te
     asm("{disp8} jne        LAB__addr_0x00762ce2");                          // 0x00762d5c    7584
     asm("LAB__addr_0x00762d5e:");
     asm("{disp8} fld        dword ptr [esi + 0x08]");                        // 0x00762d5e    d94608
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x00762d61    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x00762d61    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x00762d67    dfe0
     asm("test               ah, 0x01");                                      // 0x00762d69    f6c401
     asm("{disp8} je         LAB__addr_0x00762d7f");                          // 0x00762d6c    7411
@@ -716,29 +716,29 @@ void __fastcall Draw__12VillagerNameFv(struct VillagerName* this)
     asm("push               esi");                                           // 0x00762dc3    56
     asm("mov.s              esi, ecx");                                      // 0x00762dc4    8bf1
     asm("{disp8} fld        dword ptr [esi + 0x24]");                        // 0x00762dc6    d94624
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x00762dc9    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x00762dc9    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x00762dcf    dfe0
     asm("test               ah, 0x41");                                      // 0x00762dd1    f6c441
     asm("{disp8} jne        LAB__addr_0x00762df3");                          // 0x00762dd4    751d
     asm("{disp8} fld        dword ptr [esi + 0x24]");                        // 0x00762dd6    d94624
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x00762dd9    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x00762dd9    d81d90a38a00
     asm("fnstsw             ax");                                            // 0x00762ddf    dfe0
     asm("test               ah, 0x01");                                      // 0x00762de1    f6c401
     asm("{disp8} je         LAB__addr_0x00762deb");                          // 0x00762de4    7405
     asm("{disp8} fld        dword ptr [esi + 0x24]");                        // 0x00762de6    d94624
     asm("{disp8} jmp        LAB__addr_0x00762df9");                          // 0x00762de9    eb0e
     asm("LAB__addr_0x00762deb:");
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x00762deb    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x00762deb    d90590a38a00
     asm("{disp8} jmp        LAB__addr_0x00762df9");                          // 0x00762df1    eb06
     asm("LAB__addr_0x00762df3:");
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x00762df3    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x00762df3    d90598a38a00
     asm("LAB__addr_0x00762df9:");
     asm("push               ebx");                                           // 0x00762df9    53
     asm("{disp8} fst        dword ptr [esi + 0x24]");                        // 0x00762dfa    d95624
     asm("{disp32} fmul      dword ptr [rdata_bytes + 0x26338]");             // 0x00762dfd    d80d38f38c00
     asm("push               ebp");                                           // 0x00762e03    55
     asm("push               edi");                                           // 0x00762e04    57
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00762e05    e8f6e50300
+    asm("call               __ftol");                                        // 0x00762e05    e8f6e50300
     asm("mov.s              edi, eax");                                      // 0x00762e0a    8bf8
     asm("{disp8} mov        eax, dword ptr [esi + 0x1c]");                   // 0x00762e0c    8b461c
     asm("push               eax");                                           // 0x00762e0f    50
@@ -795,18 +795,18 @@ void __fastcall Draw__12VillagerNameFv(struct VillagerName* this)
     asm("push               0x3f180000");                                    // 0x00762eae    680000183f
     asm("push               0x3d4ccccd");                                    // 0x00762eb3    68cdcc4c3d
     asm("push               0x3f080000");                                    // 0x00762eb8    680000083f
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00762ebd    e83ee50300
+    asm("call               __ftol");                                        // 0x00762ebd    e83ee50300
     asm("{disp8} fld        dword ptr [esi + 0x14]");                        // 0x00762ec2    d94614
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x19c50]");             // 0x00762ec5    d805502c8c00
     asm("push               eax");                                           // 0x00762ecb    50
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00762ecc    e82fe50300
+    asm("call               __ftol");                                        // 0x00762ecc    e82fe50300
     asm("{disp8} fld        dword ptr [esi + 0x10]");                        // 0x00762ed1    d94610
     asm("push               eax");                                           // 0x00762ed4    50
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00762ed5    e826e50300
+    asm("call               __ftol");                                        // 0x00762ed5    e826e50300
     asm("{disp8} fld        dword ptr [esi + 0x14]");                        // 0x00762eda    d94614
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x19c50]");             // 0x00762edd    d825502c8c00
     asm("push               eax");                                           // 0x00762ee3    50
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00762ee4    e817e50300
+    asm("call               __ftol");                                        // 0x00762ee4    e817e50300
     asm("push               eax");                                           // 0x00762ee9    50
     asm("call               ?DrawBox@SetupThing@@SAXHHHHMMMMPAULH3DMaterial@@PAULH3DColor@@HHH_NM@Z");                 // 0x00762eea    e891facaff
     asm("{disp8} fld        dword ptr [esi + 0x18]");                        // 0x00762eef    d94618
@@ -829,19 +829,19 @@ void __fastcall Draw__12VillagerNameFv(struct VillagerName* this)
     asm("push               0x3f200000");                                    // 0x00762f27    680000203f
     asm("push               0x3d4ccccd");                                    // 0x00762f2c    68cdcc4c3d
     asm("push               0x3f000000");                                    // 0x00762f31    680000003f
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00762f36    e8c5e40300
+    asm("call               __ftol");                                        // 0x00762f36    e8c5e40300
     asm("{disp8} fld        dword ptr [esi + 0x14]");                        // 0x00762f3b    d94614
     asm("{disp32} fadd      dword ptr [rdata_bytes + 0x235c]");              // 0x00762f3e    d8055cb38a00
     asm("push               eax");                                           // 0x00762f44    50
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00762f45    e8b6e40300
+    asm("call               __ftol");                                        // 0x00762f45    e8b6e40300
     asm("{disp8} fld        dword ptr [esi + 0x18]");                        // 0x00762f4a    d94618
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x26e8]");              // 0x00762f4d    d825e8b68a00
     asm("push               eax");                                           // 0x00762f53    50
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00762f54    e8a7e40300
+    asm("call               __ftol");                                        // 0x00762f54    e8a7e40300
     asm("{disp8} fld        dword ptr [esi + 0x14]");                        // 0x00762f59    d94614
     asm("{disp32} fsub      dword ptr [rdata_bytes + 0x235c]");              // 0x00762f5c    d8255cb38a00
     asm("push               eax");                                           // 0x00762f62    50
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00762f63    e898e40300
+    asm("call               __ftol");                                        // 0x00762f63    e898e40300
     asm("push               eax");                                           // 0x00762f68    50
     asm("call               ?DrawBox@SetupThing@@SAXHHHHMMMMPAULH3DMaterial@@PAULH3DColor@@HHH_NM@Z");                 // 0x00762f69    e812facaff
     asm("add                esp, 0x78");                                     // 0x00762f6e    83c478
@@ -850,7 +850,7 @@ void __fastcall Draw__12VillagerNameFv(struct VillagerName* this)
     asm("{disp32} mov       eax, dword ptr [data_bytes + 0x506d08]");        // 0x00762f74    a108cdec00
     asm("{disp32} fmul      dword ptr [__real@437f0000]");                   // 0x00762f79    d80d70b28a00
     asm("{disp8} mov        dword ptr [esp + 0x1c], eax");                   // 0x00762f7f    8944241c
-    asm("call               _jmp_addr_0x007a1400");                          // 0x00762f83    e878e40300
+    asm("call               __ftol");                                        // 0x00762f83    e878e40300
     asm("{disp32} mov       byte ptr [esi + 0x00000453], al");               // 0x00762f88    888653040000
     asm("{disp8} mov        eax, dword ptr [esi + 0x28]");                   // 0x00762f8e    8b4628
     asm("xor.s              ebp, ebp");                                      // 0x00762f91    33ed

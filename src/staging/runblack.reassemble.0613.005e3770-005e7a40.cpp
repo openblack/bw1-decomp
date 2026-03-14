@@ -34,13 +34,13 @@ void GLeashStatus::SaveExtraData(GameOSFile* param_1)
 }
 
 // win1.41 005e7230 mac 1037b1a0 GLeashStatus::Save(GameOSFile &)
-bool GLeashStatus::Save(GameOSFile& file)
+bool32_tcorrect GLeashStatus::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005e7430 mac 1037aeb0 GLeashStatus::Load(GameOSFile &)
-bool GLeashStatus::Load(GameOSFile& file)
+bool32_tcorrect GLeashStatus::Load(GameOSFile& file)
 {
     return 0;
 }

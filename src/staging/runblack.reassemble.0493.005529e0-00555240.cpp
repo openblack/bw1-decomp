@@ -28,13 +28,13 @@ void GGame::OnNewGame()
 }
 
 // win1.41 00554090 mac 104935a0 GGame::Save(GameOSFile &)
-bool GGame::Save(GameOSFile& file)
+bool32_tcorrect GGame::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00554830 mac 10354cc0 GGame::Load(GameOSFile &)
-bool GGame::Load(GameOSFile& file)
+bool32_tcorrect GGame::Load(GameOSFile& file)
 {
     return 0;
 }

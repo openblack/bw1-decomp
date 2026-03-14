@@ -70,7 +70,7 @@ void Graveyard::DeleteDependancys()
 }
 
 // win1.41 00595dd0 mac 100f4a40 Graveyard::CallVirtualFunctionsForCreation(MapCoords const &)
-void Graveyard::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void Graveyard::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -80,13 +80,13 @@ void Graveyard::MakeFunctional()
 }
 
 // win1.41 00595ee0 mac 100f4670 Graveyard::Save(GameOSFile &)
-bool Graveyard::Save(GameOSFile& file)
+bool32_tcorrect Graveyard::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00595f50 mac 100f4590 Graveyard::Load(GameOSFile &)
-bool Graveyard::Load(GameOSFile& file)
+bool32_tcorrect Graveyard::Load(GameOSFile& file)
 {
     return 0;
 }

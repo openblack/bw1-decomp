@@ -28,13 +28,13 @@
 #include "RegisterBox.h"
 
 // win1.41 0052b870 mac 100d7020 FireFly::Save(GameOSFile &)
-bool FireFly::Save(GameOSFile& file)
+bool32_tcorrect FireFly::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0052bbc0 mac 100d6850 FireFly::Load(GameOSFile &)
-bool FireFly::Load(GameOSFile& file)
+bool32_tcorrect FireFly::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -237,7 +237,7 @@ void FishFarm::RemoveMapObject()
 }
 
 // win1.41 0052cad0 mac 1009a360 FishFarm::GetMapChild(MapCell const &)
-Object* FishFarm::GetMapChild(const MapCell* param_1)
+Object* FishFarm::GetMapChild(const MapCell& param_1)
 {
     return 0;
 }
@@ -248,7 +248,7 @@ void FishFarm::SetMapChild(Object* param_1, MapCell* param_2)
 }
 
 // win1.41 0052cc10 mac 100dbd10 FishFarm::CallVirtualFunctionsForCreation(MapCoords const &)
-void FishFarm::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void FishFarm::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -289,13 +289,13 @@ float FishFarm::GetFoodValue(FOOD_TYPE param_1)
 }
 
 // win1.41 0052d3b0 mac 100db1a0 FishFarm::Save(GameOSFile &)
-bool FishFarm::Save(GameOSFile& file)
+bool32_tcorrect FishFarm::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0052d4f0 mac 100daf80 FishFarm::Load(GameOSFile &)
-bool FishFarm::Load(GameOSFile& file)
+bool32_tcorrect FishFarm::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -378,9 +378,9 @@ MultiChild* MultiMapFixed::SortedMultiChildFind(const MapCell* cell)
 }
 
 // win1.41 0052dcd0 mac 100c3840 GSingleMapFixedInfo::GetMesh( const(void))
-uint32_t GSingleMapFixedInfo::GetMesh() const
+MeshId GSingleMapFixedInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 0052dce0 mac 100e3150 GSingleMapFixedInfo::GetBaseInfo(unsigned long &)
@@ -421,7 +421,7 @@ MapCoords MultiMapFixed::GetDoorPos()
 }
 
 // win1.41 0052e400 mac 10033c30 MultiMapFixed::GetMapChild(MapCell const &)
-Object* MultiMapFixed::GetMapChild(const MapCell* cell)
+Object* MultiMapFixed::GetMapChild(const MapCell& cell)
 {
     return 0;
 }
@@ -444,7 +444,7 @@ bool MultiMapFixed::IsObjectFullyInMap()
 }
 
 // win1.41 0052e4f0 mac 100e0cd0 MultiMapFixed::MoveMapObject(MapCoords const &)
-int MultiMapFixed::MoveMapObject(const MapCoords* param_2)
+int MultiMapFixed::MoveMapObject(const MapCoords& param_2)
 {
     return 0;
 }
@@ -465,7 +465,7 @@ void MultiMapFixed::CheckMapObject()
 }
 
 // win1.41 0052e890 mac 100e0240 MultiMapFixed::CallVirtualFunctionsForCreation(const MapCoords&)
-void MultiMapFixed::CallVirtualFunctionsForCreation(const MapCoords* coords)
+void MultiMapFixed::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 }
 
@@ -527,13 +527,13 @@ uint32_t MultiMapFixed::RemoveFootpath(GFootpath* param_1)
 }
 
 // win1.41 0052eeb0 mac 100defc0 MultiMapFixed::GetNearestPathTo(MapCoords const &, float, int)
-uint32_t MultiMapFixed::GetNearestPathTo(const MapCoords* param_1, float param_2, int param_3)
+uint32_t MultiMapFixed::GetNearestPathTo(const MapCoords& coords, float param_2, int param_3)
 {
     return 0;
 }
 
 // win1.41 0052eec0 mac 1009b530 MultiMapFixed::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
-void MultiMapFixed::UseFootpathIfNecessary(Living* param_1, const MapCoords* param_2, unsigned char param_3)
+void MultiMapFixed::UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3)
 {
 }
 
@@ -544,7 +544,7 @@ size_t MultiMapFixed::SaveObject(LHOSFile& file, const MapCoords& coords)
 }
 
 // win1.41 0052ef70 mac 1005fb60 MultiMapFixed::IsFunctional(void)
-bool MultiMapFixed::IsFunctional()
+bool32_tcorrect MultiMapFixed::IsFunctional()
 {
     return 0;
 }
@@ -585,7 +585,7 @@ void MultiMapFixed::RemovePotFromStructure(PotStructure* structure)
 }
 
 // win1.41 0052f180 mac 100de800 MultiMapFixed::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
-uint32_t MultiMapFixed::AddResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool param_4, const MapCoords* coords, int param_6)
+uint32_t MultiMapFixed::AddResource(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* param_3, bool param_4, const MapCoords& coords, int param_6)
 {
     return 0;
 }
@@ -603,19 +603,19 @@ bool MultiMapFixed::IsResourceStore(RESOURCE_TYPE type)
 }
 
 // win1.41 0052f210 mac 100de5e0 MultiMapFixed::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
-bool MultiMapFixed::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus* status)
+bool MultiMapFixed::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, GInterfaceStatus& status)
 {
     return 0;
 }
 
 // win1.41 0052f250 mac 100de470 MultiMapFixed::Save(GameOSFile &)
-bool MultiMapFixed::Save(GameOSFile& file)
+bool32_tcorrect MultiMapFixed::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0052f310 mac 100de310 MultiMapFixed::Load(GameOSFile &)
-bool MultiMapFixed::Load(GameOSFile& file)
+bool32_tcorrect MultiMapFixed::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -770,13 +770,13 @@ MapCoords* Flock::GetFlockPos()
 }
 
 // win1.41 005305a0 mac 100e40b0 Flock::Save(GameOSFile &)
-bool Flock::Save(GameOSFile& file)
+bool32_tcorrect Flock::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00530930 mac 100e3880 Flock::Load(GameOSFile &)
-bool Flock::Load(GameOSFile& file)
+bool32_tcorrect Flock::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -793,7 +793,7 @@ GFootballPositionInfo::~GFootballPositionInfo()
 }
 
 // win1.41 00530f80 mac 102bd510 Football::CallVirtualFunctionsForCreation(MapCoords const &)
-void Football::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void Football::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -816,7 +816,7 @@ bool Football::IsRepaired()
 }
 
 // win1.41 005312b0 mac 102b86c0 Football::IsBuilt(void)
-bool Football::IsBuilt()
+bool32_tcorrect Football::IsBuilt()
 {
     return 0;
 }
@@ -919,13 +919,13 @@ bool Villager::IsPlayingFootballAndOtherSideHasJustScored(Creature* param_1)
 }
 
 // win1.41 005332a0 mac 102b9230 Football::Save(GameOSFile &)
-bool Football::Save(GameOSFile& file)
+bool32_tcorrect Football::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005336e0 mac 102b89e0 Football::Load(GameOSFile &)
-bool Football::Load(GameOSFile& file)
+bool32_tcorrect Football::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1031,13 +1031,13 @@ void GFootpath::FUN_00535a80(Point2D* param_1, MultiMapFixed* param_2, float poi
 }
 
 // win1.41 00535e00 mac 100ece10 GFootpath::Save(GameOSFile &)
-bool GFootpath::Save(GameOSFile& file)
+bool32_tcorrect GFootpath::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00535f10 mac 100ecb10 GFootpath::Load(GameOSFile &)
-bool GFootpath::Load(GameOSFile& file)
+bool32_tcorrect GFootpath::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1060,7 +1060,7 @@ uint32_t GFootpathLink::RemoveFootpath(GFootpath* param_1)
 }
 
 // win1.41 00536110 mac 100ec590 GFootpathLink::GetNearestPathTo(MapCoords const &, MapCoords const &, float, int &, GFootpathNode **)
-GFootpath* GFootpathLink::GetNearestPathTo(const MapCoords* param_1, const MapCoords* param_2, float param_3, int* param_4, GFootpathNode** param_5)
+GFootpath* GFootpathLink::GetNearestPathTo(const MapCoords& coords, const MapCoords* param_2, float param_3, int* param_4, GFootpathNode** param_5)
 {
     return 0;
 }
@@ -1072,19 +1072,19 @@ GFootpath* GFootpathLink::GetNearestPathToQuick(const MapCoords* param_1, const 
 }
 
 // win1.41 005362e0 mac 100ebe90 GFootpathLink::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char, GameThingWithPos *)
-uint32_t GFootpathLink::UseFootpathIfNecessary(Living* living, const MapCoords* coord, uint32_t param_4, GameThingWithPos* game_thing_with_pos)
+uint32_t GFootpathLink::UseFootpathIfNecessary(Living* living, const MapCoords& coord, uint32_t param_4, GameThingWithPos* game_thing_with_pos)
 {
     return 0;
 }
 
 // win1.41 005364f0 mac 100ebc00 GFootpathLink::Save(GameOSFile &)
-bool GFootpathLink::Save(GameOSFile& file)
+bool32_tcorrect GFootpathLink::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005365a0 mac 100eb8e0 GFootpathLink::Load(GameOSFile &)
-bool GFootpathLink::Load(GameOSFile& file)
+bool32_tcorrect GFootpathLink::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1095,7 +1095,7 @@ void GFootpathLinkSave::FUN_00536fa0()
 }
 
 // win1.41 005370a0 mac 100eb5c0 GFootpathLinkSave::Load(GameOSFile &)
-bool GFootpathLinkSave::Load(GameOSFile& file)
+bool32_tcorrect GFootpathLinkSave::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1143,13 +1143,13 @@ void GFootpathNode::ClearFromPreviousNode()
 }
 
 // win1.41 00538c10 mac 100e86f0 GFootpathNode::Load(GameOSFile &)
-bool GFootpathNode::Load(GameOSFile& file)
+bool32_tcorrect GFootpathNode::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00538d70 mac 100e83f0 GFootpathNode::Save(GameOSFile &)
-bool GFootpathNode::Save(GameOSFile& file)
+bool32_tcorrect GFootpathNode::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -1182,13 +1182,13 @@ void GFootpathFinder::GameTurnProcess()
 }
 
 // win1.41 005390e0 mac 100e7ce0 GFootpathFinder::Load(GameOSFile &)
-bool GFootpathFinder::Load(GameOSFile& file)
+bool32_tcorrect GFootpathFinder::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00539150 mac 100e7c00 GFootpathFinder::Save(GameOSFile &)
-bool GFootpathFinder::Save(GameOSFile& file)
+bool32_tcorrect GFootpathFinder::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -1214,7 +1214,7 @@ GForestInfo::~GForestInfo()
 }
 
 // win1.41 00539a60 mac 100ef4a0 Forest::IsFunctional(void)
-bool Forest::IsFunctional()
+bool32_tcorrect Forest::IsFunctional()
 {
     return 0;
 }
@@ -1329,13 +1329,13 @@ void Forest::UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, u
 }
 
 // win1.41 0053ae40 mac 100efda0 Forest::Save(GameOSFile &)
-bool Forest::Save(GameOSFile& file)
+bool32_tcorrect Forest::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0053b070 mac 100ef950 Forest::Load(GameOSFile &)
-bool Forest::Load(GameOSFile& file)
+bool32_tcorrect Forest::Load(GameOSFile& file)
 {
     return 0;
 }

@@ -40,7 +40,7 @@
 .extern _jmp_addr_0x00681260
 .extern _jmp_addr_0x006d6cc0
 .extern ?GameRand@GRand@@SAHJ@Z
-.extern ?GameFloatRand@GRand@@SAMM@Z
+.extern ?GameFloatRand@GRand@@SAMMPBDI@Z
 .extern ?ScriptErrorMessage@GScript@@QAEXPAD@Z
 .extern ?ScriptWarningMessage@GScript@@QAEXPAD@Z
 .extern _jmp_addr_0x006f69f0
@@ -57,7 +57,7 @@
 .extern _jmp_addr_0x0074cde0
 .extern _jmp_addr_0x00774550
 .extern @GetTotemPos__11WorshipSiteFv@12
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern _atexit
 .extern ___RTDynamicCast
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
@@ -507,7 +507,7 @@ _jmp_addr_0x006f72e0:    {disp8} mov        ecx, dword ptr [esp + 0x0c]         
                          push               eax                                           // 0x006f7397    50
                          push               ebx                                           // 0x006f7398    53
                          call               ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z                               // 0x006f7399    e8d2590500
-                         {disp32} fcomp     dword ptr [_rdata_float1p0]                   // 0x006f739e    d81d90a38a00
+                         {disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]                   // 0x006f739e    d81d90a38a00
                          add                esp, 0x08                                     // 0x006f73a4    83c408
                          fnstsw             ax                                            // 0x006f73a7    dfe0
                          test               ah, 0x41                                      // 0x006f73a9    f6c441
@@ -2505,7 +2505,7 @@ _jmp_addr_0x006f82e0:    push               esi                                 
                          {disp8} jne        .Lbl_addr_0x006f8923                          // 0x006f88c1    7560
                          push               0x00c0c258                                    // 0x006f88c3    6858c2c000
                          call               ?ScriptErrorMessage@GScript@@QAEXPAD@Z        // 0x006f88c8    e8e3d9ffff
-                         {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x006f88cd    d90598a38a00
+                         {disp32} fld       dword ptr [__real@4@00000000000000000000]                   // 0x006f88cd    d90598a38a00
                          add                esp, 0x04                                     // 0x006f88d3    83c404
                          {disp8} mov        dword ptr [esp + 0x14], esi                   // 0x006f88d6    89742414
                          {disp8} mov        dword ptr [esp + 0x10], esi                   // 0x006f88da    89742410
@@ -2733,10 +2733,10 @@ _jmp_addr_0x006f82e0:    push               esi                                 
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]       // 0x006f8b97    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x34]                        // 0x006f8b9d    d95c2434
                          {disp8} fld        dword ptr [esp + 0x14]                        // 0x006f8ba1    d9442414
-                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x006f8ba5    d81d98a38a00
+                         {disp32} fcomp     dword ptr [__real@4@00000000000000000000]                   // 0x006f8ba5    d81d98a38a00
                          {disp8} fld        dword ptr [esp + 0x10]                        // 0x006f8bab    d9442410
                          fnstsw             ax                                            // 0x006f8baf    dfe0
-                         {disp32} fcomp     dword ptr [_rdata_float1p0]                   // 0x006f8bb1    d81d90a38a00
+                         {disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]                   // 0x006f8bb1    d81d90a38a00
                          test               ah, 0x40                                      // 0x006f8bb7    f6c440
                          fnstsw             ax                                            // 0x006f8bba    dfe0
                          {disp8} jne        .Lbl_addr_0x006f8c04                          // 0x006f8bbc    7546
@@ -2928,13 +2928,13 @@ _jmp_addr_0x006f82e0:    push               esi                                 
                          {disp8} fsub       dword ptr [esp + 0x00]                        // 0x006f8dcf    d8642400
                          push               0x000002aa                                    // 0x006f8dd3    68aa020000
                          push               0x00c0d548                                    // 0x006f8dd8    6848d5c000
-                         {disp32} fadd      dword ptr [_rdata_float1p0]                   // 0x006f8ddd    d80590a38a00
+                         {disp32} fadd      dword ptr [__real@4@3fff8000000000000000]                   // 0x006f8ddd    d80590a38a00
                          push               ecx                                           // 0x006f8de3    51
                          fstp               dword ptr [esp]                               // 0x006f8de4    d91c24
-                         call               ?GameFloatRand@GRand@@SAMM@Z                  // 0x006f8de7    e84457feff
+                         call               ?GameFloatRand@GRand@@SAMMPBDI@Z                  // 0x006f8de7    e84457feff
                          {disp8} fadd       dword ptr [esp + 0x0c]                        // 0x006f8dec    d844240c
                          add                esp, 0x0c                                     // 0x006f8df0    83c40c
-                         call               _jmp_addr_0x007a1400                          // 0x006f8df3    e808860a00
+                         call               __ftol                                        // 0x006f8df3    e808860a00
                          {disp32} mov       ecx, dword ptr [_script_dll]                  // 0x006f8df8    8b0d105cd900
                          {disp8} mov        dword ptr [esp + 0x04], eax                   // 0x006f8dfe    89442404
                          {disp8} fild       dword ptr [esp + 0x04]                        // 0x006f8e02    db442404

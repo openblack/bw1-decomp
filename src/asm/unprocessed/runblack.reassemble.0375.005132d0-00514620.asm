@@ -37,7 +37,7 @@
 .extern _jmp_addr_0x005558d0
 .extern ?SetActive@GInterface@@SAXH@Z
 .extern _jmp_addr_0x0066bcd0
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern _atexit
 .extern _wcscpy
@@ -1715,7 +1715,7 @@ _jmp_addr_0x005140b0:    {disp8} mov       eax, dword ptr [ecx + 0x48]          
                          {disp8} jne       .Lbl_addr_0x005145ef                          // 0x005145ac    7541
                          {disp32} fld      dword ptr [ebx + 0x0000023c]                  // 0x005145ae    d9833c020000
                          {disp32} fmul     dword ptr [rdata_bytes + 0x1ba00]             // 0x005145b4    d80d004a8c00
-                         call              _jmp_addr_0x007a1400                          // 0x005145ba    e841ce2800
+                         call              __ftol                                        // 0x005145ba    e841ce2800
                          {disp32} mov      ecx, dword ptr [_global]                      // 0x005145bf    8b0d203bcd00
                          push              eax                                           // 0x005145c5    50
                          call              _jmp_addr_0x00428660                          // 0x005145c6    e89540f1ff
@@ -1726,7 +1726,7 @@ _jmp_addr_0x005140b0:    {disp8} mov       eax, dword ptr [ecx + 0x48]          
                          ret               0x0014                                        // 0x005145cf    c21400
 .Lbl_addr_0x005145d2:    {disp32} fld      dword ptr [ebx + 0x0000023c]                  // 0x005145d2    d9833c020000
                          {disp32} fmul     dword ptr [rdata_bytes + 0x1ba00]             // 0x005145d8    d80d004a8c00
-                         call              _jmp_addr_0x007a1400                          // 0x005145de    e81dce2800
+                         call              __ftol                                        // 0x005145de    e81dce2800
                          {disp32} mov      ecx, dword ptr [_global]                      // 0x005145e3    8b0d203bcd00
                          push              eax                                           // 0x005145e9    50
                          call              _jmp_addr_0x00428600                          // 0x005145ea    e81140f1ff

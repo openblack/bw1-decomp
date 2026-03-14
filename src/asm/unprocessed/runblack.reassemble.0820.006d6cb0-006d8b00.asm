@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12
+.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern _jmp_addr_0x005e6540
 .extern ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ
@@ -40,7 +40,7 @@
 .extern _jmp_addr_0x00737760
 .extern _jmp_addr_0x0074a3f0
 .extern ?Spiral@GUtils@@SAPBUJustMapXZ@@AAJ0@Z
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern ___RTDynamicCast
 .extern ___nw__FUl
@@ -525,13 +525,13 @@ _jmp_addr_0x006d6cc0:    push               ecx                                 
                          nop                                                              // 0x006d718e    90
                          nop                                                              // 0x006d718f    90
 _jmp_addr_0x006d7190:    {disp8} fld        dword ptr [esp + 0x04]                        // 0x006d7190    d9442404
-                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x006d7194    d81d98a38a00
+                         {disp32} fcomp     dword ptr [__real@4@00000000000000000000]                   // 0x006d7194    d81d98a38a00
                          fnstsw             ax                                            // 0x006d719a    dfe0
                          test               ah, 0x01                                      // 0x006d719c    f6c401
                          {disp8} jne        .Lbl_addr_0x006d71b0                          // 0x006d719f    750f
                          {disp8} fld        dword ptr [esp + 0x04]                        // 0x006d71a1    d9442404
                          {disp32} fadd      qword ptr [__real@3fe0000000000000]           // 0x006d71a5    dc0560b28a00
-                         {disp32} jmp       _jmp_addr_0x007a1400                          // 0x006d71ab    e950a20c00
+                         {disp32} jmp       __ftol                                        // 0x006d71ab    e950a20c00
 .Lbl_addr_0x006d71b0:    {disp8} fld        dword ptr [esp + 0x04]                        // 0x006d71b0    d9442404
                          push               ecx                                           // 0x006d71b4    51
                          fchs                                                             // 0x006d71b5    d9e0
@@ -734,7 +734,7 @@ _jmp_addr_0x006d71d0:    sub                esp, 0x20                           
                          {disp8} mov        dword ptr [esp + 0x14], 0x00000000            // 0x006d73c0    c744241400000000
                          {disp8} mov        dword ptr [esp + 0x28], 0x00000000            // 0x006d73c8    c744242800000000
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000            // 0x006d73d0    c744241000000000
-                         call               @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12                          // 0x006d73d8    e8532ad5ff
+                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x006d73d8    e8532ad5ff
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x006d73dd    8d4c2404
                          call               dword ptr [rdata_bytes + 0x758]               // 0x006d73e1    ff1558978a00
                          pop                esi                                           // 0x006d73e7    5e
@@ -955,7 +955,7 @@ _jmp_addr_0x006d7480:    sub                esp, 0x0000023c                     
                          {disp32} mov       dword ptr [esp + 0x00000120], edx             // 0x006d76aa    89942420010000
                          {disp32} mov       dword ptr [esp + 0x00000108], edi             // 0x006d76b1    89bc2408010000
                          {disp32} mov       dword ptr [esp + 0x000000f0], ebp             // 0x006d76b8    89ac24f0000000
-                         call               @PlaySoundEffect__6GAudioFP20LH_SamplePlayOptions@12                          // 0x006d76bf    e86c27d5ff
+                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x006d76bf    e86c27d5ff
                          {disp32} mov       ecx, dword ptr [esi + 0x000003f0]             // 0x006d76c4    8b8ef0030000
                          {disp32} mov       edx, dword ptr [esi + 0x000003ec]             // 0x006d76ca    8b96ec030000
                          push               ebx                                           // 0x006d76d0    53
@@ -1244,7 +1244,7 @@ _jmp_addr_0x006d7480:    sub                esp, 0x0000023c                     
                          add                eax, 0x14                                     // 0x006d7a4a    83c014
                          push               eax                                           // 0x006d7a4d    50
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                   // 0x006d7a4e    8d4f14
-                         call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2                          // 0x006d7a51    e87ae2f2ff
+                         call               ?GetMetresDistance@MapCoords@@QBEMABU1@@Z     // 0x006d7a51    e87ae2f2ff
                          {disp32} fcomp     qword ptr [rdata_bytes + 0x2470]              // 0x006d7a56    dc1d70b48a00
                          fnstsw             ax                                            // 0x006d7a5c    dfe0
                          test               ah, 0x41                                      // 0x006d7a5e    f6c441
@@ -1350,7 +1350,7 @@ _jmp_addr_0x006d7480:    sub                esp, 0x0000023c                     
                          add                ecx, 0x68                                     // 0x006d7ba3    83c168
                          push               ecx                                           // 0x006d7ba6    51
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                   // 0x006d7ba7    8d4f14
-                         call               _GetDistanceInMetres__6GUtilsFRC9MapCoordsRC9MapCoords_2                          // 0x006d7baa    e821e1f2ff
+                         call               ?GetMetresDistance@MapCoords@@QBEMABU1@@Z     // 0x006d7baa    e821e1f2ff
                          {disp32} fcomp     qword ptr [rdata_bytes + 0x2470]              // 0x006d7baf    dc1d70b48a00
                          fnstsw             ax                                            // 0x006d7bb5    dfe0
                          test               ah, 0x41                                      // 0x006d7bb7    f6c441
@@ -1432,9 +1432,9 @@ _jmp_addr_0x006d7480:    sub                esp, 0x0000023c                     
                          {disp8} jmp        .Lbl_addr_0x006d7ccf                          // 0x006d7cb7    eb16
                          {disp32} fld       dword ptr [rdata_bytes + 0x2478]              // 0x006d7cb9    d90578b48a00
                          {disp8} jmp        .Lbl_addr_0x006d7ccf                          // 0x006d7cbf    eb0e
-                         {disp32} fld       dword ptr [_rdata_float1p0]                   // 0x006d7cc1    d90590a38a00
+                         {disp32} fld       dword ptr [__real@4@3fff8000000000000000]                   // 0x006d7cc1    d90590a38a00
                          {disp8} jmp        .Lbl_addr_0x006d7ccf                          // 0x006d7cc7    eb06
-.Lbl_addr_0x006d7cc9:    {disp32} fld       dword ptr [_rdata_float0p0]                   // 0x006d7cc9    d90598a38a00
+.Lbl_addr_0x006d7cc9:    {disp32} fld       dword ptr [__real@4@00000000000000000000]                   // 0x006d7cc9    d90598a38a00
 .Lbl_addr_0x006d7ccf:    {disp8} mov        eax, dword ptr [ebp + 0x00]                   // 0x006d7ccf    8b4500
                          {disp8} fadd       dword ptr [eax + 0x70]                        // 0x006d7cd2    d84070
                          add                eax, 0x68                                     // 0x006d7cd5    83c068
@@ -1618,13 +1618,13 @@ _jmp_addr_0x006d7480:    sub                esp, 0x0000023c                     
                          {disp32} fild      dword ptr [edi + _sin_lookup_table]           // 0x006d7f1c    db871416c300
                          {disp32} fmul      dword ptr [esi + 0x00000388]                  // 0x006d7f22    d88e88030000
                          fadd.s             st(0), st(0)                                  // 0x006d7f28    dcc0
-                         call               _jmp_addr_0x007a1400                          // 0x006d7f2a    e8d1940c00
+                         call               __ftol                                        // 0x006d7f2a    e8d1940c00
                          {disp32} fild      dword ptr [edi + _cos_lookup_table]           // 0x006d7f2f    db87141ec300
                          add.s              ebx, eax                                      // 0x006d7f35    03d8
                          {disp8} mov        dword ptr [esp + 0x1c], ebx                   // 0x006d7f37    895c241c
                          {disp32} fmul      dword ptr [esi + 0x00000388]                  // 0x006d7f3b    d88e88030000
                          fadd.s             st(0), st(0)                                  // 0x006d7f41    dcc0
-                         call               _jmp_addr_0x007a1400                          // 0x006d7f43    e8b8940c00
+                         call               __ftol                                        // 0x006d7f43    e8b8940c00
                          {disp8} mov        ecx, dword ptr [esp + 0x20]                   // 0x006d7f48    8b4c2420
                          push               0x0                                           // 0x006d7f4c    6a00
                          add.s              ecx, eax                                      // 0x006d7f4e    03c8

@@ -148,13 +148,13 @@ const char* SpecialVillager::GetVillagerName()
 }
 
 // win1.41 0071f560 mac 10146e00 SpecialVillager::Save(GameOSFile &)
-bool SpecialVillager::Save(GameOSFile& file)
+bool32_tcorrect SpecialVillager::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0071f5d0 mac 10146d20 SpecialVillager::Load(GameOSFile &)
-bool SpecialVillager::Load(GameOSFile& file)
+bool32_tcorrect SpecialVillager::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -258,13 +258,13 @@ void SpellWithObjects::ToBeDeleted(int param_1)
 }
 
 // win1.41 007210f0 mac 10516ed0 SpellWithObjects::Load(GameOSFile &)
-bool SpellWithObjects::Load(GameOSFile& file)
+bool32_tcorrect SpellWithObjects::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007211d0 mac 10516d00 SpellWithObjects::Save(GameOSFile &)
-bool SpellWithObjects::Save(GameOSFile& file)
+bool32_tcorrect SpellWithObjects::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -343,13 +343,13 @@ uint32_t Spell::GetFOVHelpCondition()
 }
 
 // win1.41 00721930 mac 105155b0 Spell::Save(GameOSFile &)
-bool Spell::Save(GameOSFile& file)
+bool32_tcorrect Spell::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00721cd0 mac 10514eb0 Spell::Load(GameOSFile &)
-bool Spell::Load(GameOSFile& file)
+bool32_tcorrect Spell::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -400,13 +400,13 @@ void SpellCreature::CloseDown()
 }
 
 // win1.41 00722520 mac 1051a0e0 SpellCreature::Load(GameOSFile &)
-bool SpellCreature::Load(GameOSFile& file)
+bool32_tcorrect SpellCreature::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00722590 mac 10519ff0 SpellCreature::Save(GameOSFile &)
-bool SpellCreature::Save(GameOSFile& file)
+bool32_tcorrect SpellCreature::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -441,7 +441,7 @@ SpellDispenser::~SpellDispenser()
 }
 
 // win1.41 007227d0 mac 1051ba80 SpellDispenser::CallVirtualFunctionsForCreation(MapCoords const &)
-void SpellDispenser::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void SpellDispenser::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -462,13 +462,13 @@ uint32_t SpellDispenser::Process()
 }
 
 // win1.41 00722d50 mac 1051aeb0 SpellDispenser::Save(GameOSFile &)
-bool SpellDispenser::Save(GameOSFile& file)
+bool32_tcorrect SpellDispenser::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00722e80 mac 1051acf0 SpellDispenser::Load(GameOSFile &)
-bool SpellDispenser::Load(GameOSFile& file)
+bool32_tcorrect SpellDispenser::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -542,37 +542,37 @@ uint32_t SpellFlockGround::Process()
 }
 
 // win1.41 00724780 mac 1051c560 SpellFlock::Load(GameOSFile &)
-bool SpellFlock::Load(GameOSFile& file)
+bool32_tcorrect SpellFlock::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007248a0 mac 1051c390 SpellFlock::Save(GameOSFile &)
-bool SpellFlock::Save(GameOSFile& file)
+bool32_tcorrect SpellFlock::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007249d0 mac 1051c220 SpellFlockFlying::Load(GameOSFile &)
-bool SpellFlockFlying::Load(GameOSFile& file)
+bool32_tcorrect SpellFlockFlying::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00724ac0 mac 1051c0a0 SpellFlockFlying::Save(GameOSFile &)
-bool SpellFlockFlying::Save(GameOSFile& file)
+bool32_tcorrect SpellFlockFlying::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00724bb0 mac 1051c030 SpellFlockGround::Load(GameOSFile &)
-bool SpellFlockGround::Load(GameOSFile& file)
+bool32_tcorrect SpellFlockGround::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00724bd0 mac 1051bfc0 SpellFlockGround::Save(GameOSFile &)
-bool SpellFlockGround::Save(GameOSFile& file)
+bool32_tcorrect SpellFlockGround::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -594,25 +594,25 @@ uint32_t SpellWater::Process()
 }
 
 // win1.41 007252f0 mac 1051f230 SpellResource::Load(GameOSFile &)
-bool SpellResource::Load(GameOSFile& file)
+bool32_tcorrect SpellResource::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00725350 mac 1051f150 SpellResource::Save(GameOSFile &)
-bool SpellResource::Save(GameOSFile& file)
+bool32_tcorrect SpellResource::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007253b0 mac 1051f070 SpellWater::Load(GameOSFile &)
-bool SpellWater::Load(GameOSFile& file)
+bool32_tcorrect SpellWater::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00725420 mac 1051ef90 SpellWater::Save(GameOSFile &)
-bool SpellWater::Save(GameOSFile& file)
+bool32_tcorrect SpellWater::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -667,13 +667,13 @@ float SpellForest::CalculateCostToMaintain()
 }
 
 // win1.41 00725c90 mac 10520200 SpellForest::Save(GameOSFile &)
-bool SpellForest::Save(GameOSFile& file)
+bool32_tcorrect SpellForest::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00725d50 mac 105200d0 SpellForest::Load(GameOSFile &)
-bool SpellForest::Load(GameOSFile& file)
+bool32_tcorrect SpellForest::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -685,9 +685,9 @@ bool SpellForest::Load(GameOSFile& file)
 // }
 
 // win1.41 00725f30 mac 10524c10 GSpellIconInfo::GetMesh( const(void))
-uint32_t GSpellIconInfo::GetMesh() const
+MeshId GSpellIconInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 00725f40 mac 10525c70 GSpellIconInfo::GetBaseInfo(unsigned long &)
@@ -723,7 +723,7 @@ void SpellIcon::SetToZero()
 }
 
 // win1.41 00726160 mac 105253c0 SpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)
-void SpellIcon::CallVirtualFunctionsForCreation(const MapCoords* coords)
+void SpellIcon::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 }
 

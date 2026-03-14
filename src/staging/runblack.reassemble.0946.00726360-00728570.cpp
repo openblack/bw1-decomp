@@ -44,7 +44,7 @@ uint32_t SpellIcon::Process()
 }
 
 // win1.41 007265d0 mac 10524600 SpellIcon::MoveMapObject(MapCoords const &)
-int SpellIcon::MoveMapObject(const MapCoords* param_1)
+int SpellIcon::MoveMapObject(const MapCoords& param_1)
 {
     return 0;
 }
@@ -127,25 +127,25 @@ void SpellSeedGraphic::ForDrawFXGetVertexPos(int param_1, LHPoint* param_2)
 }
 
 // win1.41 00727940 mac 10521ce0 SpellIcon::Save(GameOSFile &)
-bool SpellIcon::Save(GameOSFile& file)
+bool32_tcorrect SpellIcon::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00727a00 mac 10521bb0 SpellIcon::Load(GameOSFile &)
-bool SpellIcon::Load(GameOSFile& file)
+bool32_tcorrect SpellIcon::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00727ac0 mac 10521910 SpellSeedGraphic::Load(GameOSFile &)
-bool SpellSeedGraphic::Load(GameOSFile& file)
+bool32_tcorrect SpellSeedGraphic::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00727c70 mac 10521650 SpellSeedGraphic::Save(GameOSFile &)
-bool SpellSeedGraphic::Save(GameOSFile& file)
+bool32_tcorrect SpellSeedGraphic::Save(GameOSFile& file)
 {
     return 0;
 }
@@ -208,6 +208,6 @@ void SpellSeed::ToBeDeleted(int param_1)
 }
 
 // win1.41 00728360 mac 1052bef0 SpellSeed::CallVirtualFunctionsForCreation(MapCoords const &)
-void SpellSeed::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void SpellSeed::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }

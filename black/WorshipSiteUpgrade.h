@@ -47,7 +47,7 @@ public:
     // win1.41 004220f0 mac inlined WorshipSiteUpgrade::IsRepaired(void)
     virtual bool IsRepaired();
     // win1.41 00422110 mac inlined WorshipSiteUpgrade::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_tcorrect IsBuilt();
     // win1.41 00527790 mac inlined WorshipSiteUpgrade::IsDrawBuilding(void)
     virtual bool IsDrawBuilding();
     // win1.41 0077edd0 mac inlined WorshipSiteUpgrade::ConvertToPlanned(void)

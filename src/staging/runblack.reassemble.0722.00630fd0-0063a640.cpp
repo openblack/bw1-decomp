@@ -293,7 +293,7 @@ void Object::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object* param_1)
 }
 
 // win1.41 006377e0 mac 103d6e10 Object::CanBecomeAPhysicsObject(void)
-bool Object::CanBecomeAPhysicsObject()
+bool32_tcorrect Object::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -752,13 +752,13 @@ uint32_t Object::GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Vill
 }
 
 // win1.41 00639b90 mac 103d1d50 Object::Save(GameOSFile &)
-bool Object::Save(GameOSFile& file)
+bool32_tcorrect Object::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00639eb0 mac 103d1b20 Object::Load(GameOSFile &)
-bool Object::Load(GameOSFile& file)
+bool32_tcorrect Object::Load(GameOSFile& file)
 {
     return 0;
 }

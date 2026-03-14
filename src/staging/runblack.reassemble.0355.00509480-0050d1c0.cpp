@@ -162,13 +162,13 @@ uint32_t Dance::GetScriptObjectType()
 }
 
 // win1.41 0050c480 mac 102a8960 Dance::Save(GameOSFile &)
-bool Dance::Save(GameOSFile& file)
+bool32_tcorrect Dance::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0050c760 mac 102a85a0 Dance::Load(GameOSFile &)
-bool Dance::Load(GameOSFile& file)
+bool32_tcorrect Dance::Load(GameOSFile& file)
 {
     return 0;
 }

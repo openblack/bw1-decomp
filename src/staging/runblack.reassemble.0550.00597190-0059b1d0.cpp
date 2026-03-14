@@ -28,13 +28,13 @@ void GroupBehaviour::CalculateDancePosition(const MapCoords* param_1, MapCoords*
 }
 
 // win1.41 00598240 mac 100f5a80 GroupBehaviour::Save(GameOSFile &)
-bool GroupBehaviour::Save(GameOSFile& file)
+bool32_tcorrect GroupBehaviour::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005985c0 mac 100f4e70 GroupBehaviour::Load(GameOSFile &)
-bool GroupBehaviour::Load(GameOSFile& file)
+bool32_tcorrect GroupBehaviour::Load(GameOSFile& file)
 {
     return 0;
 }

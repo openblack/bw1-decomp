@@ -20,13 +20,13 @@ void WorshipSpellIcon::StopRemoveFromPlayer()
 }
 
 // win1.41 0077ff80 mac 105b4bc0 WorshipSpellIcon::Save(GameOSFile &)
-bool WorshipSpellIcon::Save(GameOSFile& file)
+bool32_tcorrect WorshipSpellIcon::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007801f0 mac 105b4690 WorshipSpellIcon::Load(GameOSFile &)
-bool WorshipSpellIcon::Load(GameOSFile& file)
+bool32_tcorrect WorshipSpellIcon::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -124,7 +124,7 @@ float WorshipTotem::CalculatePeopleHidingIndicator()
 }
 
 // win1.41 00780ab0 mac 105b81d0 WorshipTotem::CallVirtualFunctionsForCreation(MapCoords const &)
-void WorshipTotem::CallVirtualFunctionsForCreation(const MapCoords* coords)
+void WorshipTotem::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 }
 
@@ -145,13 +145,13 @@ void WorshipTotem::ResolveLoad()
 }
 
 // win1.41 00780f10 mac 105b7910 WorshipTotem::Load(GameOSFile &)
-bool WorshipTotem::Load(GameOSFile& file)
+bool32_tcorrect WorshipTotem::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00780f90 mac 105b7820 WorshipTotem::Save(GameOSFile &)
-bool WorshipTotem::Save(GameOSFile& file)
+bool32_tcorrect WorshipTotem::Save(GameOSFile& file)
 {
     return 0;
 }

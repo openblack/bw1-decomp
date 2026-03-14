@@ -19,7 +19,7 @@
 .extern _jmp_addr_0x0066b9c0
 .extern _jmp_addr_0x0066bad0
 .extern _jmp_addr_0x0078e9b0
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern _wcscpy
 .extern ___nw__FUl
 
@@ -133,7 +133,7 @@ _jmp_addr_0x0053f740:    {disp8} mov       eax, dword ptr [esp + 0x0c]          
                          test              ebx, ebx                                      // 0x0053f87e    85db
                          {disp8} je        .Lbl_addr_0x0053f8dd                          // 0x0053f880    745b
                          {disp8} fld       dword ptr [esp + 0x10]                        // 0x0053f882    d9442410
-                         call              _jmp_addr_0x007a1400                          // 0x0053f886    e8751b2600
+                         call              __ftol                                        // 0x0053f886    e8751b2600
                          {disp8} fld       dword ptr [esp + 0x10]                        // 0x0053f88b    d9442410
                          {disp8} fadd      dword ptr [esp + 0x14]                        // 0x0053f88f    d8442414
                          mov.s             edi, eax                                      // 0x0053f893    8bf8
@@ -151,7 +151,7 @@ _jmp_addr_0x0053f740:    {disp8} mov       eax, dword ptr [esp + 0x0c]          
                          push              edx                                           // 0x0053f8af    52
                          push              ebp                                           // 0x0053f8b0    55
                          push              0x28                                          // 0x0053f8b1    6a28
-                         call              _jmp_addr_0x007a1400                          // 0x0053f8b3    e8481b2600
+                         call              __ftol                                        // 0x0053f8b3    e8481b2600
                          sub.s             eax, edi                                      // 0x0053f8b8    2bc7
                          push              eax                                           // 0x0053f8ba    50
                          {disp8} mov       eax, dword ptr [esp + 0x30]                   // 0x0053f8bb    8b442430

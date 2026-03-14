@@ -45,9 +45,9 @@ public:
     // win1.41 00727fb0 mac 1052cdf0 SpellSeed::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00729fb0 mac 10527d30 SpellSeed::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00729ca0 mac 10528230 SpellSeed::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00727fa0 mac 1052cdb0 SpellSeed::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00727f70 mac 1052cce0 SpellSeed::GetCreatureBeliefType(void)
@@ -87,7 +87,7 @@ public:
     // win1.41 00728600 mac 1052bac0 SpellSeed::IsG3DObjectDrawnInHand(void)
     virtual bool IsG3DObjectDrawnInHand();
     // win1.41 00728360 mac 1052bef0 SpellSeed::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00728580 mac 1052bba0 SpellSeed::ValidForPlaceInHand(GInterfaceStatus *)
     virtual bool ValidForPlaceInHand(GInterfaceStatus* param_1);
     // win1.41 00728810 mac 1052b1f0 SpellSeed::InterfaceSetInMagicHand(GInterfaceStatus *)

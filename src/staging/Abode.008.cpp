@@ -1,14 +1,53 @@
 #include "Abode.h"
 
+#include "stdbool.h"
+#include <stdint.h>
+
+#include <lionhead/lh3dlib/development/LH3DMesh.h>
+#include <lionhead/lhaudio/ver7.0/LH_SamplePlayOptions.h>
+
+#include "AbodeInfo.h"
+#include "Audio.h"
+#include "ControlHand.h"
+#include "Game.h"
+#include "Game3DObject.h"
+#include "GameOSFile.h"
+#include "GameStats.h"
+#include "Global.h"
+#include "InterfaceStatus.h"
+#include "Player.h"
+#include "Rand.h"
+#include "Villager.h"
+#include "Utils.h"
+#include "Town.h"
+#include "TownInfo.h"
+#include "ViscousLiquid.h"
+
+Town* abode_town_00c4cc6c; // TODO match the correct .bss one
+extern "C" GGame* game;
+extern "C" GGlobal* global;
+extern "C" int windmill_int_00c4cc7c;
+
+extern "C" void Draw__13HowManyPeopleFllP7LHPoint(uint32_t, uint32_t, LHPoint*);
+extern "C" void KnockKnock__13HowManyPeopleFv(void);
+
 // win1.41 004061f0 mac 10089cd0 Abode::GetAbodeType(void)
 ABODE_TYPE Abode::GetAbodeType()
 {
-    return ABODE_TYPE_LAST;
+    GAbodeInfo* _info = (GAbodeInfo*)info;
+    return _info->abodeType;
 }
 
 // win1.41 00406200 mac 1005ff20 Abode::IsFunctional(void)
-bool Abode::IsFunctional()
+bool32_tcorrect Abode::IsFunctional()
 {
+    if (MultiMapFixed::IsFunctional() == 1)
+    {
+        if (IsBuilt())
+        {
+            return true;
+        }
+    }
     return false;
 }
 
@@ -29,7 +68,7 @@ void Abode::ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player
 }
 
 // win1.41 00406800 mac 1010ab50 Abode::CanBecomeAPhysicsObject(void)
-bool Abode::CanBecomeAPhysicsObject()
+bool32_tcorrect Abode::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -47,31 +86,121 @@ uint32_t Abode::InterfaceValidToTap(GInterfaceStatus* status)
 }
 
 // win1.41 00406830 mac 102fed90 Abode::InterfaceTap(GInterfaceStatus *)
-uint32_t Abode::InterfaceTap(GInterfaceStatus* status)
+bool32_tcorrect Abode::InterfaceTap(GInterfaceStatus* status)
 {
-    return false;
+    abode_town_00c4cc6c = GetTown();
+    KnockKnock__13HowManyPeopleFv();
+    
+    for (Villager* villager = villagers.head; villager != NULL; villager = villager->next)
+    {
+        villager->SetStateWhenTappedOnAbode();
+    }
+    
+    ABODE_TYPE type = GetAbodeType();
+    if ((type & ABODE_TYPE_LIVING_QUARTERS) != 0)
+    {
+        GInterfaceStatus* game_status = game->MyInterfaceStatus();
+        if (status == game_status)
+        {
+            CHand* hand = game->players[game->player_index].GetRenderHand();
+            if (hand != NULL)
+            {
+                hand->StartFixedPosAnimation(hand->position, 0x39);
+            }
+        }
+        
+        LH_SamplePlayOptions play_options;
+        
+        play_options.field_0x30 = status->field_0xc8.z;
+        play_options.field_0x4 = global->debug.field_0x3a8;
+        play_options.field_0x24 = windmill_int_00c4cc7c + 0x6e;
+        ++windmill_int_00c4cc7c;
+        if (windmill_int_00c4cc7c == 9)
+        {
+            windmill_int_00c4cc7c = 0;
+        }
+        play_options.field_0x34 = status->field_0xc8.y;
+        play_options.field_0x38 = status->field_0xc8.x;
+        play_options.field_0x30 = status->field_0xc8.z;
+        play_options.field_0x20 = this;
+        play_options.field_0x8 = 1;
+        
+        global->audio->PlaySoundEffect(&play_options);
+    }
+    return true;
 }
 
 // win1.41 00406970 mac 1004c590 Abode::GetDesireToBeRepaired(void)
 float Abode::GetDesireToBeRepaired()
 {
-    return 0.0f;
+    GTownInfo* townInfo = (GTownInfo*)GetTown()->info;
+    if (GetPercentRepaired() > townInfo->field_0x10c ||
+        ((((GAbodeInfo*)info)->abodeType & ABODE_TYPE_LIVING_QUARTERS) != 0 && villagers.count == 0))
+    {
+        return 0.0f;
+    }
+    return MultiMapFixed::GetDesireToBeRepaired();
 }
 
 // win1.41 004069c0 mac 1036ee00 Abode::FindVillager( int (*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, ulong), SCRIPT_OBJECT_TYPE, ulong)
-Villager* Abode::FindVillager(int (__cdecl* param_1)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, uint32_t), SCRIPT_OBJECT_TYPE param_2, uint32_t param_3)
+Villager* Abode::FindVillager(int (__cdecl* search_cb)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, uint32_t), SCRIPT_OBJECT_TYPE type, uint32_t param_3)
 {
+    for (Villager* villager = villagers.head; villager != NULL; villager = villager->next)
+    {
+        if ((*search_cb)(villager, type, param_3))
+        {
+            return villager;
+        }
+    }
     return NULL;
 }
 
 // win1.41 00406a10 mac 103bd750 Abode::Save(GameOSFile &)
-bool Abode::Save(GameOSFile& file)
+bool32_tcorrect Abode::Save(GameOSFile& file)
 {
+    if (MultiMapFixed::Save(file))
+    {
+        GameOSFileWriteCheckSum(file, field_0x7c);
+        GameOSFileWriteCheckSum(file, drinking_water);
+        GameOSFileWriteCheckSum(file, field_0x94);
+
+        file.WritePtr(town);
+
+        if (DAT_00bec990)
+        {
+            file.WriteIt(villagers.count);
+
+            uint32_t i = 0;
+            for (Villager* villager = villagers.head; villager != NULL; villager = villager->next)
+            {
+                ++i;
+                if (i > villagers.count)
+                {
+                    DAT_00bec990 = false;
+                    break;
+                }
+                file.WritePtr(villager);
+            }
+        }
+
+        GameOSFileWriteCheckSum(file, adult_count);
+        GameOSFileWriteCheckSum(file, field_0xb6);
+        GameOSFileWriteCheckSum(file, field_0xb7);
+        GameOSFileWriteCheckSum(file, index);
+        file.WriteArray(resources, 2);
+        bool32_tcorrect hasDestructionMesh = (destruction_mesh != NULL);
+        GameOSFileWriteCheckSum(file, hasDestructionMesh);
+        if (destruction_mesh != NULL)
+        {
+            destruction_mesh->WriteToFile(file);
+        }
+        return true;
+    }
     return false;
 }
 
 // win1.41 00406d20 mac 101a2920 Abode::Load(GameOSFile &)
-bool Abode::Load(GameOSFile& file)
+bool32_tcorrect Abode::Load(GameOSFile& file)
 {
     return false;
 }
@@ -79,114 +208,259 @@ bool Abode::Load(GameOSFile& file)
 // win1.41 00407020 mac inlined Abode::FindNearestDrinkingWater(float)
 void Abode::FindNearestDrinkingWater(float max_dist)
 {
+    uint8_t found = GUtils::FindNearestDrinkingWater(coords, drinking_water, max_dist);
+    // Set or clear bit 0 based on result
+    field_0x7c = (field_0x7c ^ found) & 1 ^ field_0x7c;
 }
 
 // win1.41 00407050 mac 1004d310 Abode::GetPercentAbodeFullWithAdults(void)
 float Abode::GetPercentAbodeFullWithAdults()
 {
-    return 0.0f;
+    GAbodeInfo* _info = (GAbodeInfo*)info;
+    if (_info->maxVillagersInAbode != 0)
+    {
+        return GetNumAdultsInAbode() / _info->maxVillagersInAbode;
+    }
+    return 1.0f;
 }
 
 // win1.41 00407090 mac 10058a60 Abode::GetPercentAbodeFullWithChildren(void)
 float Abode::GetPercentAbodeFullWithChildren()
 {
-    return 0.0f;
+    int maxChildren = ((GAbodeInfo*)info)->maxChildrenInAbode;
+    if (maxChildren != 0)
+    {
+        return (uint32_t)field_0xb7 / maxChildren;
+    }
+    return 1.0f;
 }
 
 // win1.41 004070d0 mac 104ed230 Abode::GetNumAdultsInAbode(void)
-uint8_t Abode::GetNumAdultsInAbode()
+float Abode::GetNumAdultsInAbode()
 {
-    return false;
+    return adult_count;
 }
 
 // win1.41 004070f0 mac 101b8780 Abode::DrawPercentFull(int)
-void Abode::DrawPercentFull(int param_1)
+void Abode::DrawPercentFull(bool32_tcorrect only_one)
 {
+    LHPoint translation;
+    translation.x = game_3d_object->matrix.m[9];
+    translation.y = game_3d_object->matrix.m[10];
+    translation.z = game_3d_object->matrix.m[11];
+    float height = game_3d_object->GetMesh()->bounding_box.size.y;
+    translation.y += height + height + 1.5f;
+    uint32_t maxVillagers = ((GAbodeInfo*)info)->maxVillagersInAbode;
+    int numAdults = GetNumAdultsInAbode();
+    if (only_one)
+    {
+        maxVillagers = 1;
+        numAdults = -1;
+    }
+    Draw__13HowManyPeopleFllP7LHPoint(maxVillagers, numAdults, &translation);
 }
 
 // win1.41 00407170 mac 1034ec40 Abode::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
 uint32_t Abode::GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager)
 {
-    return false;
+    uint32_t result = MultiMapFixed::GetDiscipleStateIfInteractedWith(status, villager);
+    if (result == 0 && IsFunctional() &&
+        GetPlayer() == status->GetPlayer() &&
+        GetPercentAbodeFullWithAdults() < 1.0f &&
+        villager->GetAbode() != this &&
+        GetTown() != NULL && GetTown()->field_0x5f4 == 0)
+    {
+        return 10;
+    }
+    return result;
 }
 
 // win1.41 00407200 mac 1008a7b0 Abode::IsInteractable(void)
-bool Abode::IsInteractable()
+bool32_tcorrect Abode::IsInteractable()
 {
-    return false;
+    if (GetPercentBuilt() == 0.0f)
+        return false;
+    return GameThingWithPos::IsInteractable();
 }
 
 // win1.41 00407230 mac inlined Abode::FUN_00407230(bool)
-MapCoords* Abode::FUN_00407230(MapCoords* coords, bool param_2)
+MapCoords Abode::FUN_00407230(bool32_tcorrect param_1)
 {
-    return NULL;
+    if (param_1 && building_site != NULL)
+    {
+        return building_site->GetResourcePosAndYAngle(1, 0, NULL);
+    }
+    return coords;
 }
 
 // win1.41 00407280 mac 100dcdb0 Abode::CanBeHiddenIn(void)
 bool Abode::CanBeHiddenIn()
 {
-    return false;
+    return IsFunctional();
 }
 
 // win1.41 00407290 mac 10064f30 Abode::GetPercentRepairedForNonFunctional(void)
 float Abode::GetPercentRepairedForNonFunctional()
 {
-    return 0.0f;
+    return ((GAbodeInfo*)info)->thresholdForStopBeingFunctional;
 }
 
 // win1.41 004072a0 mac 10053220 Abode::GetInfluence(void)
 float Abode::GetInfluence()
 {
-    return 0.0f;
+    float baseInfluence = MultiMapFixed::GetInfluence();
+    return (GetNumAdultsInAbode() + field_0xb7 + 1.0f) * baseInfluence;
 }
 
 // win1.41 004072e0 mac 1000cd50 Abode::GetPosOutside(float, float, float)
-MapCoords* Abode::GetPosOutside(MapCoords* coords, float param_2, float param_3, float param_4)
+MapCoords Abode::GetPosOutside(float numSegments, float distanceRange, float baseDistance)
 {
-    return NULL;
+    MapCoords centerPos = GetArrivePos();
+    float randomAngle = GRand::GameFloatRand(6.2831855f / numSegments, "C:\\dev\\MP\\Black\\Abode.cpp", 0x94a);
+    float randomDist = GRand::GameFloatRand(distanceRange, "C:\\dev\\MP\\Black\\Abode.cpp", 0x94b);
+    return centerPos + GUtils::GetPosFromAngle((6.2831855f / (numSegments + numSegments)) - randomAngle + GUtils::Get3DAngleFromXZ(coords, centerPos), randomDist + baseDistance);
 }
 
 // win1.41 004073c0 mac 103b5600 Abode::StopBeingFunctional(GPlayer *)
-void Abode::StopBeingFunctional(GPlayer* param_1)
+void Abode::StopBeingFunctional(GPlayer* player)
 {
+    if (player != NULL && this->field_0xb9 >= 200)
+    {
+        player->game_stats->field_0x1080++;
+        FUN_004073f0(player);
+    }
 }
 
 // win1.41 004073f0 mac inlined Abode::FUN_004073f0(GPlayer *)
-void Abode::FUN_004073f0(GPlayer* param_1)
+void Abode::FUN_004073f0(GPlayer* player)
 {
+    if ((field_0x7c & 0x40) == 0)
+    {
+        if ((field_0x7c & 0x20) == 0)
+        {
+            player->FUN_0064da80(9, 1);
+        }
+        else
+        {
+            player->FUN_0064da80(10, 1);
+        }
+    }
 }
 
 // win1.41 00407420 mac 10351de0 Abode::DiscipleInHandNear(Villager &, GInterfaceStatus &)
-void Abode::DiscipleInHandNear(Villager* param_1, GInterfaceStatus* status)
+void Abode::DiscipleInHandNear(Villager& disciple, GInterfaceStatus& status)
 {
+    if (((GAbodeInfo*)info)->maxVillagersInAbode > 0)
+    {
+        float distance = coords.GetMetresDistance(disciple.coords);
+        float radius = Get2DRadius();
+        if (distance < radius)
+        {
+            Town* town = GetTown();
+            if (town != NULL && town->field_0x5f4 == 0)
+            {
+                if (town->GetPlayer() == status.GetPlayer())
+                {
+                    abode_town_00c4cc6c = town;
+                    KnockKnock__13HowManyPeopleFv();
+
+                }
+            }
+        }
+    }
 }
 
 // win1.41 004074a0 mac 100e7ac0 Abode::CalculateDesireToGainMale(void)
 float Abode::CalculateDesireToGainMale()
 {
-    return 0.0f;
+    float result = 0.0f;
+    if (((GAbodeInfo*)info)->maxVillagersInAbode != 0)
+    {
+        Town* town = GetTown();
+        if (town != NULL)
+        {
+            result = (town->stats.field_0x54 + 0.001f) / (town->stats.field_0x58 + 0.001f) - 
+                (field_0xb5 + 0.001f) / ((adult_count - field_0xb5) + 0.001f);
+        }
+    }
+    return result;
 }
 
 // win1.41 00407540 mac 100af0d0 Abode::CalculateDesireToGainVillager(void)
 float Abode::CalculateDesireToGainVillager()
 {
-    return 0.0f;
+    float result = 0.0f;
+    if (((GAbodeInfo*)info)->maxVillagersInAbode != 0)
+    {
+        Town* town = GetTown();
+        if (town != NULL)
+        {
+            result = (town->stats.num_adults + 0.001f) / (town->stats.field_0x34 + 0.001f) - GetPercentAbodeFullWithAdults();
+        }
+    }
+    return result;
 }
 
 // win1.41 004075b0 mac 10518900 Abode::TakeVillagerFrom(Abode&, int)
-bool Abode::TakeVillagerFrom(Abode* other, int param_2)
+bool32_tcorrect Abode::TakeVillagerFrom(Abode& other, bool32_tcorrect male)
 {
+    for (Villager* walker = other.villagers.head; walker != NULL; walker = walker->next)
+    {
+        bool32_tcorrect found;
+        if (male)
+        {
+            found = walker->IsMaleVillager();
+        }
+        else
+        {
+            found = walker->IsFemaleVillager();
+        }
+        if (found && (walker->field_0xe0 & 4) == 0)
+        {
+            walker->ForceMoveVillagerToAbode(this);
+            return true;
+        }
+    }
     return false;
 }
 
+
 // win1.41 00407620 mac 10516470 Abode::SwapMaleForFemaleFrom(Abode&)
-bool Abode::SwapMaleForFemaleFrom(Abode* other)
+bool32_tcorrect Abode::SwapMaleForFemaleFrom(Abode& other)
 {
+    Villager* male = other.villagers.head;
+    for (; male != NULL; male = male->next)
+    {
+        if (male->IsMaleVillager() && (male->field_0xe0 & 4) == 0)
+        {
+            break;
+        }
+    }
+
+    if (male != NULL)
+    {
+        Villager* female = villagers.head;
+        for (; female != NULL; female = female->next)
+        {
+            if (female->IsFemaleVillager() && (female->field_0xe0 & 4) == 0)
+            {
+                male->ForceMoveVillagerToAbode(this);
+                female->ForceMoveVillagerToAbode(&other);
+                return true;
+            }
+        }
+    }
+
     return false;
 }
 
 // win1.41 004076c0 mac 105a17d0 Abode::GetVillagerHealthTotal(void)
 float Abode::GetVillagerHealthTotal()
 {
-    return 0.0f;
+    float total = 0.0f;
+    for (Villager* walker = this->villagers.head; walker != NULL; walker = walker->next)
+    {
+        total += walker->GetLife();
+    }
+    return total;
 }

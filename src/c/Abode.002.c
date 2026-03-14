@@ -771,10 +771,10 @@ void __fastcall CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords(struct Obje
     asm("{disp32} fmul      dword ptr [_rdata_float_coord_to_point]");       // 0x00403320    d80da4a38a00
     asm("{disp8} fstp       dword ptr [esp + 0x18]");                        // 0x00403326    d95c2418
     asm("{disp8} fld        dword ptr [esp + 0x08]");                        // 0x0040332a    d9442408
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0040332e    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0040332e    d81d98a38a00
     asm("{disp8} fld        dword ptr [esp + 0x2c]");                        // 0x00403334    d944242c
     asm("fnstsw             ax");                                            // 0x00403338    dfe0
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");                   // 0x0040333a    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");                   // 0x0040333a    d81d90a38a00
     asm("test               ah, 0x40");                                      // 0x00403340    f6c440
     asm("fnstsw             ax");                                            // 0x00403343    dfe0
     asm("{disp32} jne       LAB__addr_0x0040349b");                          // 0x00403345    0f8550010000

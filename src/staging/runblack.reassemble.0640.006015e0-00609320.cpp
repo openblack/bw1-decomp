@@ -148,14 +148,14 @@ LHPoint* MapCoords::GetLHPoint(LHPoint* point) const
     return 0;
 }
 
-// win1.41 00605cd0 mac inlined GUtils::GetDistanceInMetres_2(MapCoords const &, MapCoords const &)
-float GUtils::GetDistanceInMetres_2(const MapCoords& first, const MapCoords& other)
+// win1.41 00605cd0 mac inlined MapCoords::GetMetresDistance(MapCoords const &)
+float MapCoords::GetMetresDistance(const MapCoords& other) const
 {
     return 0;
 }
 
 // win1.41 00605fb0 mac 10032290 MapCoords::GetMetresDistanceSq(MapCoords const &) const
-float MapCoords::GetMetresDistanceSq(const MapCoords& param_2) const
+float MapCoords::GetMetresDistanceSq(const MapCoords& other) const
 {
     return 0;
 }
@@ -198,7 +198,7 @@ void Mist::ToBeDeleted(int param_1)
 }
 
 // win1.41 006067d0 mac 10104c90 Mist::GetDistanceFromObject(MapCoords const &)
-float Mist::GetDistanceFromObject(const MapCoords* param_1)
+float Mist::GetDistanceFromObject(const MapCoords& param_1)
 {
     return 0;
 }
@@ -210,13 +210,13 @@ uint32_t Mist::GetScriptObjectType()
 }
 
 // win1.41 00606920 mac 10104980 Mist::Save(GameOSFile &)
-bool Mist::Save(GameOSFile& file)
+bool32_tcorrect Mist::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00606a10 mac 10104820 Mist::Load(GameOSFile &)
-bool Mist::Load(GameOSFile& file)
+bool32_tcorrect Mist::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -233,13 +233,13 @@ uint32_t Mobile::ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords*
 }
 
 // win1.41 00606c10 mac 103ba5b0 Mobile::Save(GameOSFile &)
-bool Mobile::Save(GameOSFile& file)
+bool32_tcorrect Mobile::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00606c70 mac 103ba4e0 Mobile::Load(GameOSFile &)
-bool Mobile::Load(GameOSFile& file)
+bool32_tcorrect Mobile::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -289,7 +289,7 @@ float MobileObject::GetHoldLoweringMultiplier()
 }
 
 // win1.41 00607150 mac 103bd200 MobileObject::CallVirtualFunctionsForCreation(MapCoords const &)
-void MobileObject::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void MobileObject::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -381,7 +381,7 @@ void MobileObject::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 00607aa0 mac 103bbe00 MobileObject::CanBecomeAPhysicsObject(void)
-bool MobileObject::CanBecomeAPhysicsObject()
+bool32_tcorrect MobileObject::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -422,13 +422,13 @@ RESOURCE_TYPE MobileObject::GetResourceType()
 }
 
 // win1.41 00607c40 mac 103bb7a0 MobileObject::Save(GameOSFile &)
-bool MobileObject::Save(GameOSFile& file)
+bool32_tcorrect MobileObject::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00607d00 mac 103bb660 MobileObject::Load(GameOSFile &)
-bool MobileObject::Load(GameOSFile& file)
+bool32_tcorrect MobileObject::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -460,7 +460,7 @@ void FieldCrop::InsertMapObject()
 }
 
 // win1.41 00608270 mac 103bb1e0 FieldCrop::IsFunctional(void)
-bool FieldCrop::IsFunctional()
+bool32_tcorrect FieldCrop::IsFunctional()
 {
     return 0;
 }
@@ -472,7 +472,7 @@ uint32_t FieldCrop::ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoor
 }
 
 // win1.41 006082d0 mac 103bb100 FieldCrop::CanBecomeAPhysicsObject(void)
-bool FieldCrop::CanBecomeAPhysicsObject()
+bool32_tcorrect FieldCrop::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -537,9 +537,9 @@ bool FieldCrop::CreatureMustAvoid(Creature* param_1)
 }
 
 // win1.41 006084e0 mac 10050090 GMobileStaticInfo::GetMesh( const(void))
-uint32_t GMobileStaticInfo::GetMesh() const
+MeshId GMobileStaticInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 006084f0 mac 103c1240 GMobileStaticInfo::GetBaseInfo(unsigned long &)
@@ -554,13 +554,13 @@ GMobileStaticInfo::~GMobileStaticInfo()
 }
 
 // win1.41 00608590 mac 103c1060 MobileStatic::Load(GameOSFile &)
-bool MobileStatic::Load(GameOSFile& file)
+bool32_tcorrect MobileStatic::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00608650 mac 103c0f20 MobileStatic::Save(GameOSFile &)
-bool MobileStatic::Save(GameOSFile& file)
+bool32_tcorrect MobileStatic::Save(GameOSFile& file)
 {
     return 0;
 }

@@ -9,7 +9,7 @@
 .extern ?DrawText@SetupThing@@SAMHHHW4TEXTJUSTIFY@@PA_WHPAULH3DColor@@H@Z
 .extern ?DrawBigButton@SetupThing@@SAXHH_N0HW4BBSTYLE@@0HH@Z
 .extern ?DrawBevBox@SetupThing@@SAXHHHHHHHK@Z
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern @CandidateList_GetSelectIdx__Q24slim5TbIMEFv@4
 .extern @CandidateList_SetViewWindow__Q24slim5TbIMEFUiUiUi@20
@@ -52,7 +52,7 @@ _Draw__11SetupSliderFbb:
                          {disp8} fild       dword ptr [esp + 0x30]                   // 0x00409a78    db442430
                          add                esp, 0x20                                // 0x00409a7c    83c420
                          {disp32} fmul      dword ptr [esi + 0x0000023c]             // 0x00409a7f    d88e3c020000
-                         call               _jmp_addr_0x007a1400                     // 0x00409a85    e876793900
+                         call               __ftol                                   // 0x00409a85    e876793900
                          mov.s              edi, eax                                 // 0x00409a8a    8bf8
                          {disp8} mov        eax, dword ptr [esi + 0x1c]              // 0x00409a8c    8b461c
                          add.s              edi, ebx                                 // 0x00409a8f    03fb
@@ -264,7 +264,7 @@ _Drag__11SetupSliderFii:
                          {disp8} fild       dword ptr [esp + 0x0c]                   // 0x00409c8a    db44240c
                          {disp8} fst        dword ptr [esp + 0x0c]                   // 0x00409c8e    d954240c
                          {disp32} fmul      dword ptr [esi + 0x00000240]             // 0x00409c92    d88e40020000
-                         call               _jmp_addr_0x007a1400                     // 0x00409c98    e863773900
+                         call               __ftol                                   // 0x00409c98    e863773900
                          {disp32} mov       ecx, dword ptr [esi + 0x00000244]        // 0x00409c9d    8b8e44020000
                          add.s              eax, edi                                 // 0x00409ca3    03c7
                          cmp.s              ecx, eax                                 // 0x00409ca5    3bc8
@@ -291,7 +291,7 @@ _Drag__11SetupSliderFii:
                          {disp32} fadd      dword ptr [__real@3dcccccd]              // 0x00409cec    d8052cb28a00
 .Lbl_addr_0x00409cf2:    {disp32} fstp      dword ptr [esi + 0x0000023c]             // 0x00409cf2    d99e3c020000
 .Lbl_addr_0x00409cf8:    {disp32} fld       dword ptr [esi + 0x0000023c]             // 0x00409cf8    d9863c020000
-                         {disp32} fcomp     dword ptr [_rdata_float0p0]              // 0x00409cfe    d81d98a38a00
+                         {disp32} fcomp     dword ptr [__real@4@00000000000000000000]              // 0x00409cfe    d81d98a38a00
                          fnstsw             ax                                       // 0x00409d04    dfe0
                          test               ah, 0x41                                 // 0x00409d06    f6c441
                          {disp8} jne        .Lbl_addr_0x00409d42                     // 0x00409d09    7537
@@ -393,7 +393,7 @@ _MouseUp__11SetupSliderFiib:
                          test               ebx, ebx                                 // 0x00409de7    85db
                          {disp32} jl        .Lbl_addr_0x00409e93                     // 0x00409de9    0f8ca4000000
                          {disp32} mov       edi, dword ptr [esi + 0x0000025c]        // 0x00409def    8bbe5c020000
-                         {disp32} fld       dword ptr [_rdata_float0p0]              // 0x00409df5    d90598a38a00
+                         {disp32} fld       dword ptr [__real@4@00000000000000000000]              // 0x00409df5    d90598a38a00
                          mov                edx, dword ptr [edi + ebx * 0x4]         // 0x00409dfb    8b149f
                          {disp8} mov        eax, dword ptr [esi + 0x14]              // 0x00409dfe    8b4614
                          {disp8} mov        ecx, dword ptr [esi + 0x0c]              // 0x00409e01    8b4e0c
@@ -433,7 +433,7 @@ _MouseUp__11SetupSliderFiib:
 .Lbl_addr_0x00409e56:    fstp               st(0)                                    // 0x00409e56    ddd8
                          {disp8} jmp        .Lbl_addr_0x00409e5e                     // 0x00409e58    eb04
 .Lbl_addr_0x00409e5a:    {disp8} fsub       dword ptr [esp + 0x10]                   // 0x00409e5a    d8642410
-.Lbl_addr_0x00409e5e:    call               _jmp_addr_0x007a1400                     // 0x00409e5e    e89d753900
+.Lbl_addr_0x00409e5e:    call               __ftol                                   // 0x00409e5e    e89d753900
                          test               eax, eax                                 // 0x00409e63    85c0
                          {disp32} mov       dword ptr [esi + 0x0000027c], eax        // 0x00409e65    89867c020000
                          {disp8} jle        .Lbl_addr_0x00409e85                     // 0x00409e6b    7e18

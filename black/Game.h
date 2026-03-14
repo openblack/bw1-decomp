@@ -193,9 +193,9 @@ public:
     // win1.41 0054b9c0 mac 10496160 GGame::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00554830 mac 10354cc0 GGame::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& file);
+    virtual bool32_tcorrect Load(GameOSFile& file);
     // win1.41 00554090 mac 104935a0 GGame::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& file);
+    virtual bool32_tcorrect Save(GameOSFile& file);
     // win1.41 0054b9b0 mac 10512c00 GGame::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00555080 mac 100c76b0 GGame::ResolveLoad(void)
@@ -313,6 +313,8 @@ public:
     GPlayer* Update3DInfluence();
     // win1.41 00555850 mac 10051560 GGame::MyInterface(void)
     GInterface* MyInterface();
+    // win1.41 00555880 mac 1005fec0 GGame::MyInterfaceStatus(void)
+    GInterfaceStatus* MyInterfaceStatus();
     // win1.41 00555890 mac 105996f0 GGame::SetLandBalance(unsigned long, float, GPlayer *)
     void SetLandBalance(int index, float balance, GPlayer* player);
     // win1.41 00555990 mac inlined GGame::ResetAndStartPlaygroundGame(char *)

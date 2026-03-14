@@ -69,9 +69,9 @@ public:
     // win1.41 0071be10 mac 1050fbb0 Animal::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // win1.41 0041b710 mac 10165620 Animal::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0041b460 mac 101659a0 Animal::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0041b9a0 mac 101655d0 Animal::ResolveLoad(void)
     virtual void ResolveLoad();
     // win1.41 00417840 mac 1012f3a0 Animal::GetCreatureBeliefType(void)
@@ -107,7 +107,7 @@ public:
     // win1.41 00417ee0 mac 1004c150 Animal::ProcessState(void)
     virtual uint32_t ProcessState();
     // win1.41 0041a040 mac 10168030 Animal::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00417530 mac 1012e500 Animal::GetResourceType(void)
     virtual RESOURCE_TYPE GetResourceType();
     // win1.41 0041bc80 mac 10164dc0 Animal::GetDefaultResource(void)

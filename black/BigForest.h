@@ -52,9 +52,9 @@ public:
     // win1.41 00438e10 mac 100b25b0 BigForest::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004394e0 mac 100b2760 BigForest::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& file);
+    virtual bool32_tcorrect Load(GameOSFile& file);
     // win1.41 00439470 mac 100b2840 BigForest::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00438e00 mac 100b2570 BigForest::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00438df0 mac 100b24d0 BigForest::GetMesh( const(void))
@@ -64,7 +64,7 @@ public:
     // win1.41 00439550 mac 100b2690 BigForest::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
     virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
     // win1.41 00439050 mac 100b30a0 BigForest::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00438da0 mac 100b2350 BigForest::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
     // win1.41 004390b0 mac 100b2fe0 BigForest::GetWoodValue(void)

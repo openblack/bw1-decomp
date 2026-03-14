@@ -36,7 +36,7 @@ bool MagicFireBall::InteractsWithPhysicsObjects()
 }
 
 // win1.41 00682a70 mac 103fd000 MagicFireBall::CanBecomeAPhysicsObject(void)
-bool MagicFireBall::CanBecomeAPhysicsObject()
+bool32_tcorrect MagicFireBall::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -199,13 +199,13 @@ void MagicFireBall::Draw()
 }
 
 // win1.41 006832b0 mac 103fb800 MagicFireBall::Save(GameOSFile &)
-bool MagicFireBall::Save(GameOSFile& file)
+bool32_tcorrect MagicFireBall::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00683320 mac 103fb710 MagicFireBall::Load(GameOSFile &)
-bool MagicFireBall::Load(GameOSFile& file)
+bool32_tcorrect MagicFireBall::Load(GameOSFile& file)
 {
     return 0;
 }

@@ -138,9 +138,9 @@ public:
     // win1.41 00464bb0 mac 101c23c0 CitadelHeart::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 004657f0 mac 101bf6e0 CitadelHeart::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& file);
+    virtual bool32_tcorrect Load(GameOSFile& file);
     // win1.41 004655c0 mac 101bf9c0 CitadelHeart::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00464ba0 mac 101c2380 CitadelHeart::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00465a10 mac 101bf690 CitadelHeart::ResolveLoad(void)
@@ -166,7 +166,7 @@ public:
     // win1.41 00467870 mac 101be3b0 CitadelHeart::GetWorldMatrix(LHMatrix *)
     virtual void GetWorldMatrix(LHMatrix* param_1);
     // win1.41 004675a0 mac 101be430 CitadelHeart::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00464b40 mac 101be8a0 CitadelHeart::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
     // win1.41 00467b60 mac 101bdef0 CitadelHeart::GetPhysicsConstantsType(void)

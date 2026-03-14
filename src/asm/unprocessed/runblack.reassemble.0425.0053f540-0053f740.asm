@@ -3,7 +3,7 @@
 
 .extern data_bytes
 .extern @__ct__14SetupTabButtonFiiiiiPwiii@35
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern ___nw__FUl
 
 .globl _jmp_addr_0x0053f540
@@ -91,7 +91,7 @@ _jmp_addr_0x0053f540:    sub               esp, 0x10                            
                          test              ebx, ebx                                      // 0x0053f699    85db
                          {disp8} je        .Lbl_addr_0x0053f6fa                          // 0x0053f69b    745d
                          {disp8} fld       dword ptr [esp + 0x14]                        // 0x0053f69d    d9442414
-                         call              _jmp_addr_0x007a1400                          // 0x0053f6a1    e85a1d2600
+                         call              __ftol                                        // 0x0053f6a1    e85a1d2600
                          {disp8} fld       dword ptr [esp + 0x14]                        // 0x0053f6a6    d9442414
                          mov.s             esi, eax                                      // 0x0053f6aa    8bf0
                          {disp8} fadd      dword ptr [esp + 0x18]                        // 0x0053f6ac    d8442418
@@ -111,7 +111,7 @@ _jmp_addr_0x0053f540:    sub               esp, 0x10                            
                          push              eax                                           // 0x0053f6ce    50
                          push              ebp                                           // 0x0053f6cf    55
                          push              0x28                                          // 0x0053f6d0    6a28
-                         call              _jmp_addr_0x007a1400                          // 0x0053f6d2    e8291d2600
+                         call              __ftol                                        // 0x0053f6d2    e8291d2600
                          sub.s             eax, esi                                      // 0x0053f6d7    2bc6
                          push              eax                                           // 0x0053f6d9    50
                          {disp8} mov       eax, dword ptr [esp + 0x34]                   // 0x0053f6da    8b442434

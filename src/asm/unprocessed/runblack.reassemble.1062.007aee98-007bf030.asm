@@ -147,7 +147,7 @@
 .globl ?Close@LHOSFile@@QAEIXZ
 .globl @Seek__8LHOSFileFl12LH_SEEK_MODEPUl@20
 .globl @Read__8LHOSFileFPvUlPUl@20
-.globl @Write__8LHOSFileFPvUlPUl@20
+.globl ?Write@LHOSFile@@QAEIPBXIPAI@Z
 .globl _LHFileLength__FPcPUl
 .globl _jmp_addr_0x007bcad0
 .globl _jmp_addr_0x007bcae0
@@ -19935,7 +19935,7 @@ _Open__16LHReleasedOSFileFPc12LH_FILE_MODE:
                          nop                                                                   // 0x007bc91d    90
                          nop                                                                   // 0x007bc91e    90
                          nop                                                                   // 0x007bc91f    90
-@Write__8LHOSFileFPvUlPUl@20:    {disp8} mov          edx, dword ptr [esp + 0x08]                      // 0x007bc920    8b542408
+?Write@LHOSFile@@QAEIPBXIPAI@Z:    {disp8} mov          edx, dword ptr [esp + 0x08]                      // 0x007bc920    8b542408
                          {disp8} mov          ecx, dword ptr [ecx + 0x04]                      // 0x007bc924    8b4904
                          {disp8} lea          eax, dword ptr [esp + 0x08]                      // 0x007bc927    8d442408
                          push                 0x0                                              // 0x007bc92b    6a00
@@ -20581,7 +20581,7 @@ _jmp_addr_0x007bd030:    sub                  esp, 0x00000110                   
                          push                 esi                                              // 0x007bd078    56
                          push                 edx                                              // 0x007bd079    52
                          {disp8} lea          ecx, dword ptr [esp + 0x18]                      // 0x007bd07a    8d4c2418
-                         call                 @Write__8LHOSFileFPvUlPUl@20                     // 0x007bd07e    e89df8ffff
+                         call                 ?Write@LHOSFile@@QAEIPBXIPAI@Z                     // 0x007bd07e    e89df8ffff
                          test                 eax, eax                                         // 0x007bd083    85c0
                          {disp8} jne          .Lbl_addr_0x007bd0a3                             // 0x007bd085    751c
                          {disp8} mov          eax, dword ptr [esp + 0x08]                      // 0x007bd087    8b442408

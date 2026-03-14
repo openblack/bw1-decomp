@@ -51,7 +51,7 @@ Workshop::~Workshop()
 }
 
 // win1.41 007793e0 mac 101643c0 Workshop::CallVirtualFunctionsForCreation(MapCoords const &)
-void Workshop::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void Workshop::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -103,13 +103,13 @@ bool Workshop::DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* pa
 }
 
 // win1.41 00779f40 mac 101629d0 Workshop::Save(GameOSFile &)
-bool Workshop::Save(GameOSFile& file)
+bool32_tcorrect Workshop::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0077a130 mac 101625f0 Workshop::Load(GameOSFile &)
-bool Workshop::Load(GameOSFile& file)
+bool32_tcorrect Workshop::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -206,7 +206,7 @@ uint32_t WorshipSite::Process()
 }
 
 // win1.41 0077b9d0 mac 105b16a0 WorshipSite::CallVirtualFunctionsForCreation(MapCoords const &)
-void WorshipSite::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void WorshipSite::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -217,7 +217,7 @@ uint32_t WorshipSite::GetResource(RESOURCE_TYPE param_1)
 }
 
 // win1.41 0077bdd0 mac 105b10a0 WorshipSite::IsBuilt(void)
-bool WorshipSite::IsBuilt()
+bool32_tcorrect WorshipSite::IsBuilt()
 {
     return 0;
 }
@@ -240,13 +240,13 @@ PlannedWorshipSite::~PlannedWorshipSite()
 }
 
 // win1.41 0077bf30 mac 105b0ea0 PlannedWorshipSite::Save(GameOSFile &)
-bool PlannedWorshipSite::Save(GameOSFile& file)
+bool32_tcorrect PlannedWorshipSite::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0077bf90 mac 105b0dc0 PlannedWorshipSite::Load(GameOSFile &)
-bool PlannedWorshipSite::Load(GameOSFile& file)
+bool32_tcorrect PlannedWorshipSite::Load(GameOSFile& file)
 {
     return 0;
 }

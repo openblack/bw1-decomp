@@ -52,9 +52,9 @@ public:
     // win1.41 0076e990 mac 1015ac80 Fragment::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0076f6a0 mac 1015afa0 Fragment::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0076f5d0 mac 1015b130 Fragment::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0076e980 mac 1015ac40 Fragment::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0076f7b0 mac 1015af50 Fragment::ResolveLoad(void)

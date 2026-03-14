@@ -20,7 +20,7 @@ bool PFootball::IsRepaired()
 }
 
 // win1.41 00643910 mac inlined PFootball::IsBuilt(void)
-bool PFootball::IsBuilt()
+bool32_tcorrect PFootball::IsBuilt()
 {
     return 0;
 }
@@ -60,7 +60,7 @@ void PFootball::Draw()
 }
 
 // win1.41 00644030 mac inlined PFootball::CallVirtualFunctionsForCreation(MapCoords const &)
-void PFootball::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void PFootball::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 

@@ -30,7 +30,7 @@
 .extern _jmp_addr_0x0053f540
 .extern _jmp_addr_0x005553f0
 .extern _jmp_addr_0x00793d90
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern _wcscpy
 .extern ___nw__FUl
 
@@ -464,7 +464,7 @@ start_0x00514f20_0x00515960:
                          {disp8} mov       eax, dword ptr [esp + 0x08]                   // 0x00515500    8b442408
                          {disp32} fld      dword ptr [eax + 0x0000023c]                  // 0x00515504    d9803c020000
                          {disp32} fmul     dword ptr [rdata_bytes + 0x1ba00]             // 0x0051550a    d80d004a8c00
-                         call              _jmp_addr_0x007a1400                          // 0x00515510    e8ebbe2800
+                         call              __ftol                                        // 0x00515510    e8ebbe2800
                          {disp32} mov      ecx, dword ptr [_global]                      // 0x00515515    8b0d203bcd00
                          push              eax                                           // 0x0051551b    50
                          call              _jmp_addr_0x00428600                          // 0x0051551c    e8df30f1ff
@@ -486,7 +486,7 @@ start_0x00514f20_0x00515960:
                          {disp8} mov       eax, dword ptr [esp + 0x08]                   // 0x00515530    8b442408
                          {disp32} fld      dword ptr [eax + 0x0000023c]                  // 0x00515534    d9803c020000
                          {disp32} fmul     dword ptr [rdata_bytes + 0x1ba00]             // 0x0051553a    d80d004a8c00
-                         call              _jmp_addr_0x007a1400                          // 0x00515540    e8bbbe2800
+                         call              __ftol                                        // 0x00515540    e8bbbe2800
                          {disp32} mov      ecx, dword ptr [_global]                      // 0x00515545    8b0d203bcd00
                          push              eax                                           // 0x0051554b    50
                          call              _jmp_addr_0x00428660                          // 0x0051554c    e80f31f1ff

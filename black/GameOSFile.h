@@ -15,11 +15,33 @@
 
 #ifdef __cplusplus
 
+extern "C" bool32_tcorrect DAT_00bec990;
+
 // Forward Declares
 
 class GBaseInfo;
 class LHOSFile;
 struct MapCoords;
+
+#define GameOSFileWriteCheckSum(file, value) \
+    if (DAT_00bec990) \
+    { \
+        if (file.Write(&value, sizeof(value), NULL) == 3) \
+        { \
+            DAT_00bec990 = false; \
+        } \
+        file.checksum += *(uint8_t*)&value + sizeof(value); \
+    }
+
+#define GameOSFileWriteArray(file, arr, count) \
+    if (DAT_00bec990) \
+    { \
+        if (file.Write(&value, sizeof(value), NULL) == 3) \
+        { \
+            DAT_00bec990 = false; \
+        } \
+        file.checksum += *(uint8_t*)&value + sizeof(value); \
+    }
 
 // win1.41 00bec9b8 mac inlined GameOSFile::`RTTI Type Descriptor'
 // win1.41 009ad420 mac inlined GameOSFile::`RTTI Base Class Descriptor'
@@ -40,6 +62,26 @@ public:
     uint32_t field_0x21c;
     LHLinkedList<GSaveLoadPtr> save_load_ptr_list; /* 0x220 */
     LHLinkedList<GameThing> game_thing_list;
+
+    // win1.41 00563f60 mac 103007e0 WriteCheckSum__10GameOSFileFP9GameThing
+    void WriteCheckSum(GameThing* thing);
+
+    template <typename T>
+    inline void WriteArray(T* arr, uint32_t count)
+    {
+        if (DAT_00bec990)
+        {
+            WriteIt(count);
+            for (uint32_t i = 0; i < count; ++i)
+            {
+                WriteIt(arr[i]);
+                if (!DAT_00bec990)
+                {
+                    break;
+                }
+            }
+        }
+    }
 
     // Override methods
 

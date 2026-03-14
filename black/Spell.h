@@ -89,15 +89,15 @@ public:
     // win1.41 0055cdf0 mac 100d40a0 Spell::GetPlayer(void)
     virtual GPlayer* GetPlayer();
     // win1.41 0055cdc0 mac 103b1c30 Spell::IsFunctional(void)
-    virtual bool IsFunctional();
+    virtual bool32_tcorrect IsFunctional();
     // win1.41 0071fb00 mac 10514e70 Spell::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0071bc30 mac 1050fe70 Spell::GetSampleForAttack(void)
     virtual uint32_t GetSampleForAttack();
     // win1.41 00721cd0 mac 10514eb0 Spell::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00721930 mac 105155b0 Spell::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0071faf0 mac 10514e40 Spell::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055cec0 mac 103b1fa0 Spell::GetCreatureBeliefType(void)

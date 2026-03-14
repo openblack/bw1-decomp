@@ -43,54 +43,63 @@ public:
 
     // Virtual functions
 
-    // win1.41 0052df20 mac 100e1bd0 FixedObject::GetTownArtifactValue(void)
-    float GetTownArtifactValue();
-    // win1.41 0052e170 mac inlined FixedObject::Load(GameOSFile &)
-    bool Load(GameOSFile& file);
-    // win1.41 0052e140 mac 100e17b0 FixedObject::Save(GameOSFile &)
-    bool Save(GameOSFile& file);
-    // win1.41 00401400 mac 10513b00 FixedObject::CanBeFrighteningToCreature(Creature *)
-    bool CanBeFrighteningToCreature(Creature* creature);
-    // win1.41 00401410 mac 10570f10 FixedObject::CanBeSleptNextToByCreature(Creature *)
-    bool CanBeSleptNextToByCreature(Creature* creature);
-    // win1.41 00401440 mac 1056c2a0 FixedObject::CanBePickedUpByCreature(Creature *)
-    bool CanBePickedUpByCreature(Creature* creature);
-    // win1.41 00401430 mac 100b19c0 FixedObject::CanBeSetOnFire(Creature *)
-    bool CanBeSetOnFire(Creature* creature);
-    // win1.41 00401420 mac 105e81f0 FixedObject::CanBeDestroyedByStoning(Creature *)
-    bool CanBeDestroyedByStoning(Creature* creature);
-    // win1.41 004d1b80 mac 10242ed0 FixedObject::GetHowMuchCreatureWantsToLookAtMe(void)
-    float GetHowMuchCreatureWantsToLookAtMe();
-    // win1.41 0052de30 mac 100e1ea0 FixedObject::Create3DObject(void)
-    void Create3DObject();
-    // win1.41 0052e530 mac 100e0b90 FixedObject::InsertMapObject(void)
-    void InsertMapObject();
-    // win1.41 0052e5c0 mac 100e0af0 FixedObject::RemoveMapObject(void)
-    void RemoveMapObject();
-    // win1.41 0052dea0 mac 100e1d30 FixedObject::InsertMapObjectToCell(MapCell *)
-    void InsertMapObjectToCell(MapCell* cell);
-    // win1.41 00401450 mac 1057a200 FixedObject::CanBeCrushed(void)
-    bool CanBeCrushed();
-    // win1.41 0052eb90 mac 100dff80 FixedObject::ValidForLockedSelectProcess(GInterfaceStatus *)
-    bool ValidForLockedSelectProcess(GInterfaceStatus* status);
-    // win1.41 0052eba0 mac 100dff20 FixedObject::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
-    bool NetworkFriendlyStartLockedSelect(GInterfaceStatus* status);
-    // win1.41 0052e0e0 mac 100e1840 FixedObject::InterfaceSetInMagicHand(GInterfaceStatus *)
-    bool InterfaceSetInMagicHand(GInterfaceStatus* status);
-    // win1.41 0052df50 mac 100e1950 FixedObject::EndPhysics(PhysicsObject *, bool)
-    void EndPhysics(PhysicsObject* param_1, bool param_2);
-    // win1.41 00401460 mac 10554e40 FixedObject::VillagerMustAvoid(Villager *)
-    bool VillagerMustAvoid(Villager* param_1);
-    // win1.41 0052de50 mac 100e1df0 FixedObject::GetSpecialPos(unsigned long, MapCoords *)
-    bool GetSpecialPos(uint32_t index, MapCoords* pos);
-    // win1.41 00401470 mac 1057ad40 FixedObject::GetTownArtifact(void)
-    GameThing* GetTownArtifact();
-    // win1.41 00401480 mac 10588280 FixedObject::IsTownArtifact(void)
-    bool IsTownArtifact();
     // win1.41 0052dee0 mac 100e1c70 FixedObject::InsertMapObjectToCellAssumeFixed(MapCell *)
     virtual void InsertMapObjectToCellAssumeFixed(MapCell* cell); /* 0x85c */
     // win1.41 004252f0 mac 100a9cd0 FixedObject::IsObjectFullyInMap(void)
     virtual bool IsObjectFullyInMap(); /* 0x860 */
+
+    // Override functions
+
+    // win1.41 0052df20 mac 100e1bd0 FixedObject::GetTownArtifactValue(void)
+    virtual float GetTownArtifactValue();
+    // win1.41 0052e170 mac inlined FixedObject::Load(GameOSFile &)
+    virtual bool32_tcorrect Load(GameOSFile& file);
+    // win1.41 0052e140 mac 100e17b0 FixedObject::Save(GameOSFile &)
+    virtual bool32_tcorrect Save(GameOSFile& file);
+    // win1.41 00401400 mac 10513b00 FixedObject::CanBeFrighteningToCreature(Creature *)
+    virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return true; }
+    // win1.41 00401410 mac 10570f10 FixedObject::CanBeSleptNextToByCreature(Creature *)
+    virtual bool32_t CanBeSleptNextToByCreature(Creature* creature) { return true; }
+    // win1.41 00401420 mac 105e81f0 FixedObject::CanBeDestroyedByStoning(Creature *)
+    virtual bool32_t CanBeDestroyedByStoning(Creature* creature) { return true; }
+    // win1.41 00401430 mac 100b19c0 FixedObject::CanBeSetOnFire(Creature *)
+    virtual bool32_t CanBeSetOnFire(Creature* creature)
+    {
+        return (field_0xa & 0x8) == 0;
+    }
+    // win1.41 00401440 mac 1056c2a0 FixedObject::CanBePickedUpByCreature(Creature *)
+    virtual bool32_t CanBePickedUpByCreature(Creature* creature)
+    {
+        return false;
+    }
+    // win1.41 004d1b80 mac 10242ed0 FixedObject::GetHowMuchCreatureWantsToLookAtMe(void)
+    virtual float GetHowMuchCreatureWantsToLookAtMe();
+    // win1.41 0052de30 mac 100e1ea0 FixedObject::Create3DObject(void)
+    virtual void Create3DObject();
+    // win1.41 0052e530 mac 100e0b90 FixedObject::InsertMapObject(void)
+    virtual void InsertMapObject();
+    // win1.41 0052e5c0 mac 100e0af0 FixedObject::RemoveMapObject(void)
+    virtual void RemoveMapObject();
+    // win1.41 0052dea0 mac 100e1d30 FixedObject::InsertMapObjectToCell(MapCell *)
+    virtual void InsertMapObjectToCell(MapCell* cell);
+    // win1.41 00401450 mac 1057a200 FixedObject::CanBeCrushed(void)
+    virtual bool32_t CanBeCrushed() { return true; }
+    // win1.41 0052eb90 mac 100dff80 FixedObject::ValidForLockedSelectProcess(GInterfaceStatus *)
+    virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* status);
+    // win1.41 0052eba0 mac 100dff20 FixedObject::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
+    virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* status);
+    // win1.41 0052e0e0 mac 100e1840 FixedObject::InterfaceSetInMagicHand(GInterfaceStatus *)
+    virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* status);
+    // win1.41 0052df50 mac 100e1950 FixedObject::EndPhysics(PhysicsObject *, bool)
+    virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
+    // win1.41 00401460 mac 10554e40 FixedObject::VillagerMustAvoid(Villager *)
+    virtual bool32_t VillagerMustAvoid(Villager* param_1);
+    // win1.41 0052de50 mac 100e1df0 FixedObject::GetSpecialPos(unsigned long, MapCoords *)
+    virtual bool32_t GetSpecialPos(uint32_t index, MapCoords* pos);
+    // win1.41 00401470 mac 1057ad40 FixedObject::GetTownArtifact(void)
+    virtual GameThing* GetTownArtifact();
+    // win1.41 00401480 mac 10588280 FixedObject::IsTownArtifact(void)
+    virtual bool32_t IsTownArtifact();
 
     // Constructors
 

@@ -1,9 +1,11 @@
 #include "MultiplayerConditionBox.h"
+#include "GameOSFile.h"
 #include "GameThing.h"
 #include "GameThingWithPos.h"
 #include "GatheringBox.h"
 #include "SetupStaticTextNoHit.h"
 #include "SetupMP3Button.h"
+#include "stdbool.h"
 
 // win1.41 0056eef0 mac inlined MultiplayerConditionBox::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
 void MultiplayerConditionBox::Init(uint32_t param_1, uint32_t param_2, DialogBoxInitCallback param_3)
@@ -46,13 +48,28 @@ void GameThing::ToBeDeleted(int param_1)
 }
 
 // win1.41 0056fbe0 mac 101724b0 GameThing::Save(GameOSFile &)
-bool GameThing::Save(GameOSFile& file)
+bool32_tcorrect GameThing::Save(GameOSFile& file)
 {
+    uint32_t saveType = GetSaveType();
+
+    GameOSFileWriteCheckSum(file, saveType);
+
+    SaveExtraData(file);
+
+    if (saveType != 0)
+    {
+        file.WriteCheckSum(this);
+
+        GameOSFileWriteCheckSum(file, destroyed);
+        GameOSFileWriteCheckSum(file, field_0xa);
+
+        return 1;
+    }
     return 0;
 }
 
 // win1.41 0056fcf0 mac 103807f0 GameThing::Load(GameOSFile &)
-bool GameThing::Load(GameOSFile& file)
+bool32_tcorrect GameThing::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -64,7 +81,7 @@ uint32_t GameThing::GetSaveType()
 }
 
 // win1.41 0056fda0 mac 100bc180 GameThing::SaveExtraData(GameOSFile &)
-void GameThing::SaveExtraData(GameOSFile* file)
+void GameThing::SaveExtraData(GameOSFile& file)
 {
 }
 
@@ -153,7 +170,7 @@ void GameThing::SetPlayer(GPlayer* param_1)
 }
 
 // win1.41 005701b0 mac 1007b9d0 GameThingWithPos::IsInteractable(void)
-bool GameThingWithPos::IsInteractable()
+bool32_tcorrect GameThingWithPos::IsInteractable()
 {
     return 0;
 }
@@ -228,7 +245,7 @@ void GameThingWithPos::ForDrawFXGetVertexPos(int param_1, LHPoint* param_2)
 }
 
 // win1.41 005702b0 mac 10172410 GameThingWithPos::GetDistanceFromObject(MapCoords const &)
-float GameThingWithPos::GetDistanceFromObject(const MapCoords* target)
+float GameThingWithPos::GetDistanceFromObject(const MapCoords& target)
 {
     return 0;
 }
@@ -239,12 +256,12 @@ void GameThingWithPos::GetPSysBeamTargetPos(LHPoint* pos)
 }
 
 // win1.41 00570330 mac 100e4740 GameThing::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
-void GameThing::UseFootpathIfNecessary(Living* param_1, const MapCoords* param_2, unsigned char param_3)
+void GameThing::UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3)
 {
 }
 
 // win1.41 00570350 mac 10005560 GameThingWithPos::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
-void GameThingWithPos::UseFootpathIfNecessary(Living* param_1, const MapCoords* param_2, unsigned char param_3)
+void GameThingWithPos::UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3)
 {
 }
 
@@ -266,13 +283,13 @@ uint32_t GameThingWithPos::GetFOVHelpCondition()
 }
 
 // win1.41 005703f0 mac 10512f10 GameThingWithPos::Save(GameOSFile &)
-bool GameThingWithPos::Save(GameOSFile& file)
+bool32_tcorrect GameThingWithPos::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005704a0 mac 1016a2c0 GameThingWithPos::Load(GameOSFile &)
-bool GameThingWithPos::Load(GameOSFile& file)
+bool32_tcorrect GameThingWithPos::Load(GameOSFile& file)
 {
     return 0;
 }

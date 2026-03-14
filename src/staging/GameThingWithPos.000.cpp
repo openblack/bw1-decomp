@@ -793,13 +793,13 @@ bool GameThingWithPos::IsInScript()
 }
 
 // win1.41 00402290 mac 1033c710 GameThingWithPos::IsMaleVillager(void)
-bool GameThingWithPos::IsMaleVillager()
+bool32_tcorrect GameThingWithPos::IsMaleVillager()
 {
     return 0;
 }
 
 // win1.41 004022a0 mac 1056d120 GameThingWithPos::IsFemaleVillager(void)
-bool GameThingWithPos::IsFemaleVillager()
+bool32_tcorrect GameThingWithPos::IsFemaleVillager()
 {
     return 0;
 }

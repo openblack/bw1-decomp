@@ -8,7 +8,7 @@
 .extern ?PUSH@ScriptDLL@@QAEXPAXW4VMType@@@Z
 .extern _jmp_addr_0x006f6bc0
 .extern _jmp_addr_0x0070d220
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 
 start_0x00708fc0_0x00709170:
 // Snippet: asm, [0x00708fc0, 0x0070912e)
@@ -21,7 +21,7 @@ start_0x00708fc0_0x00709170:
                          {disp8} mov       dword ptr [esp + 0x04], eax            // 0x00708fd2    89442404
                          {disp8} fld       dword ptr [esp + 0x04]                 // 0x00708fd6    d9442404
                          mov               esi, 0x00000001                        // 0x00708fda    be01000000
-                         call              _jmp_addr_0x007a1400                   // 0x00708fdf    e81c840900
+                         call              __ftol                                 // 0x00708fdf    e81c840900
                          cmp               eax, 0x0d                              // 0x00708fe4    83f80d
                          {disp8} jne       .Lbl_addr_0x00708fef                   // 0x00708fe7    7506
                          {disp32} mov      esi, dword ptr [data_bytes + 0x353c94] // 0x00708fe9    8b35949cd100

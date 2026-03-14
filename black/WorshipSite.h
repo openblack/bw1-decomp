@@ -83,9 +83,9 @@ public:
     // win1.41 0077cd70 mac 105aef50 WorshipSite::GetShowNeedsPos(unsigned long, MapCoords *)
     virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
     // win1.41 0077d700 mac 105acc40 WorshipSite::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0077d2f0 mac 105ad890 WorshipSite::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0055dcd0 mac 105b3fc0 WorshipSite::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0077daf0 mac 105acbf0 WorshipSite::ResolveLoad(void)
@@ -127,7 +127,7 @@ public:
     // win1.41 0077de70 mac 105ac230 WorshipSite::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
     virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
     // win1.41 0077b9d0 mac 105b16a0 WorshipSite::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 0077dec0 mac 105ac190 WorshipSite::IsResourceStore(RESOURCE_TYPE)
     virtual bool IsResourceStore(RESOURCE_TYPE param_1);
     // win1.41 0077e7b0 mac 105ab190 WorshipSite::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
@@ -153,7 +153,7 @@ public:
     // win1.41 0077e460 mac inlined WorshipSite::GetResourceDropPosForComputerPlayer(MapCoords *)
     virtual void GetResourceDropPosForComputerPlayer(MapCoords* param_1);
     // win1.41 0077bdd0 mac 105b10a0 WorshipSite::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_tcorrect IsBuilt();
     // win1.41 0077ac10 mac 105b3210 WorshipSite::Built(void)
     virtual bool Built();
     // win1.41 0055dc70 mac 105b3e10 WorshipSite::GetAbodeType(void)

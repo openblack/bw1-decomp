@@ -47,7 +47,7 @@
 .extern _jmp_addr_0x00602a80
 .extern @__eq__9MapCoordsCFRC9MapCoords@12
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern _atexit
 .extern _wcslen
@@ -675,7 +675,7 @@ _globl_ct_0x005122b0:    call              .Lbl_addr_0x005122c0                 
 .Lbl_addr_0x00512731:    {disp8} lea       edx, dword ptr [esi + 0x28]                          // 0x00512731    8d5628
                          push              0x40000000                                           // 0x00512734    6800000040
                          push              edx                                                  // 0x00512739    52
-                         call              _jmp_addr_0x007a1400                                 // 0x0051273a    e8c1ec2800
+                         call              __ftol                                               // 0x0051273a    e8c1ec2800
                          push              eax                                                  // 0x0051273f    50
                          {disp8} mov       eax, dword ptr [esp + 0x10]                          // 0x00512740    8b442410
                          push              eax                                                  // 0x00512744    50
@@ -890,7 +890,7 @@ _jmp_addr_0x00512820:    mov               dword ptr [ecx], 0x008d85a0          
                          push              eax                                                  // 0x0051290c    50
                          push              esi                                                  // 0x0051290d    56
                          call              @GetStringWidth__13GatheringTextFPwif@20             // 0x0051290e    e81de83100
-                         call              _jmp_addr_0x007a1400                                 // 0x00512913    e8e8ea2800
+                         call              __ftol                                               // 0x00512913    e8e8ea2800
                          {disp8} mov       edx, dword ptr [esp + 0x28]                          // 0x00512918    8b542428
                          mov.s             edi, eax                                             // 0x0051291c    8bf8
                          {disp8} mov       eax, dword ptr [esp + 0x20]                          // 0x0051291e    8b442420
@@ -910,7 +910,7 @@ _jmp_addr_0x00512820:    mov               dword ptr [ecx], 0x008d85a0          
                          push              ebp                                                  // 0x00512948    55
                          push              esi                                                  // 0x00512949    56
                          call              @GetStringWidth__13GatheringTextFPwif@20             // 0x0051294a    e8e1e73100
-                         call              _jmp_addr_0x007a1400                                 // 0x0051294f    e8acea2800
+                         call              __ftol                                               // 0x0051294f    e8acea2800
                          {disp8} mov       edx, dword ptr [esp + 0x28]                          // 0x00512954    8b542428
                          mov.s             esi, eax                                             // 0x00512958    8bf0
                          {disp8} mov       eax, dword ptr [esp + 0x20]                          // 0x0051295a    8b442420

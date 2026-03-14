@@ -30,7 +30,7 @@
 .extern ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ
 .extern ??0MPFELoginDatabase@@QAE@XZ
 .extern _jmp_addr_0x00631070
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern ?Exists@LHOSFile@@SAIPAD@Z
 .extern _atexit
@@ -770,7 +770,7 @@ _jmp_addr_0x00629b50:    sub               esp, 0x08                            
 .Lbl_addr_0x00629f34:    test              edi, edi                                       // 0x00629f34    85ff
                          {disp8} jne       .Lbl_addr_0x00629f4a                           // 0x00629f36    7512
                          {disp8} fld       dword ptr [esp + 0x14]                         // 0x00629f38    d9442414
-                         call              _jmp_addr_0x007a1400                           // 0x00629f3c    e8bf741700
+                         call              __ftol                                         // 0x00629f3c    e8bf741700
                          {disp8} mov       edx, dword ptr [ebx + 0x28]                    // 0x00629f41    8b5328
                          {disp32} mov      dword ptr [edx + 0x0000027c], eax              // 0x00629f44    89827c020000
 .Lbl_addr_0x00629f4a:    {disp8} mov       ebx, dword ptr [ebx + 0x28]                    // 0x00629f4a    8b5b28

@@ -837,7 +837,7 @@ bool32_t __fastcall ShepherdSlaughterAnimal__8VillagerFv(struct Villager* this)
     asm("push               0x3");                                             // 0x007693cf    6a03
     asm("mov.s              ecx, edi");                                        // 0x007693d1    8bcf
     asm("call               dword ptr [eax + 0x660]");                         // 0x007693d3    ff9060060000
-    asm("call               _jmp_addr_0x007a1400");                            // 0x007693d9    e822800300
+    asm("call               __ftol");                                          // 0x007693d9    e822800300
     asm("mov.s              ecx, esi");                                        // 0x007693de    8bce
     asm("push               eax");                                             // 0x007693e0    50
     asm("call               ?PickupFood@Villager@@QAEXF@Z");                   // 0x007693e1    e8aa80feff

@@ -747,7 +747,7 @@ const struct AbodeVftable __vt__8Windmill = {
   GetTribe__5AbodeFv,
 };
 
-const float rdata_float_6_2831855 asm("__real@40c90fdb") = 6.2831855f;
+const float rdata_float_6_2831855 asm("__real@4@4001c90fdb0000000000") = 6.2831855f;
 const float rdata_float_0_00075075077 asm("__real@3a440441") = 0.00075075077f;
 const float rdata_float_0_0022522523 asm("__real@3b130c31") = 0.0022522523f;
 const double rdata_double_0_100000001490116119385 asm("__real@3fb999999999999a") = 0.100000001490116119385;
@@ -813,14 +813,14 @@ void __fastcall PreDraw__8WindmillFv(struct Windmill* this)
     asm("{disp32} fstp      dword ptr [_windmill_float_00c4cc74]");          // 0x00405a16    d91d74ccc400
     asm("{disp32} fmul      dword ptr [__real@3a440441]");                   // 0x00405a1c    d80d14b28a00
     asm("{disp32} fadd      dword ptr [_windmill_float_00c4cc78]");          // 0x00405a22    d80578ccc400
-    asm("{disp32} fcom      dword ptr [__real@40c90fdb]     ");              // 0x00405a28    d81510b28a00
+    asm("{disp32} fcom      dword ptr [__real@4@4001c90fdb0000000000]     ");              // 0x00405a28    d81510b28a00
     asm("{disp32} fst       dword ptr [_windmill_float_00c4cc78]");          // 0x00405a2e    d91578ccc400
     asm("fnstsw             ax");                                            // 0x00405a34    dfe0
     asm("test               ah, 0x41");                                      // 0x00405a36    f6c441
     asm("{disp8} jne        LAB__addr_0x00405a55");                          // 0x00405a39    751a
     asm("LAB__addr_0x00405a3b:");
-    asm("{disp32} fsub      dword ptr [__real@40c90fdb]     ");              // 0x00405a3b    d82510b28a00
-    asm("{disp32} fcom      dword ptr [__real@40c90fdb]     ");              // 0x00405a41    d81510b28a00
+    asm("{disp32} fsub      dword ptr [__real@4@4001c90fdb0000000000]     ");              // 0x00405a3b    d82510b28a00
+    asm("{disp32} fcom      dword ptr [__real@4@4001c90fdb0000000000]     ");              // 0x00405a41    d81510b28a00
     asm("fnstsw             ax");                                            // 0x00405a47    dfe0
     asm("test               ah, 0x41");                                      // 0x00405a49    f6c441
     asm("{disp8} je         LAB__addr_0x00405a3b");                          // 0x00405a4c    74ed

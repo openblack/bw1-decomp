@@ -37,18 +37,18 @@ MagicFood::~MagicFood()
 }
 
 // win1.41 005faab0 mac 103ac020 MagicFood::CallVirtualFunctionsForCreation(MapCoords const &)
-void MagicFood::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void MagicFood::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
 // win1.41 005fab00 mac 103abf90 MagicFood::Save(GameOSFile &)
-bool MagicFood::Save(GameOSFile& file)
+bool32_tcorrect MagicFood::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005fab40 mac 103abf00 MagicFood::Load(GameOSFile &)
-bool MagicFood::Load(GameOSFile& file)
+bool32_tcorrect MagicFood::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -82,13 +82,13 @@ void GMagicHand::CleanUpForSerialisation()
 }
 
 // win1.41 005fb2c0 mac 103ace90 GMagicHand::Save(GameOSFile &)
-bool GMagicHand::Save(GameOSFile& file)
+bool32_tcorrect GMagicHand::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005fb320 mac 103acdc0 GMagicHand::Load(GameOSFile &)
-bool GMagicHand::Load(GameOSFile& file)
+bool32_tcorrect GMagicHand::Load(GameOSFile& file)
 {
     return 0;
 }

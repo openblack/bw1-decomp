@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
-.extern _jmp_addr_0x00555880
+.extern ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005e1020
 .extern _jmp_addr_0x005e15b0
@@ -16,7 +16,7 @@
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern _jmp_addr_0x0064a9f0
 .extern _jmp_addr_0x0078ea20
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern _LHFileLength__FPcPUl
 .extern _LHLoadData__FPcPvUlPUl
@@ -2143,7 +2143,7 @@ _jmp_addr_0x005def00:    sub                esp, 0x00000104                     
                          call               _jmp_addr_0x0064a9f0                          // 0x005df032    e8b9b90600
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005df037    8b0d5c19d000
                          mov.s              edi, eax                                      // 0x005df03d    8bf8
-                         call               _jmp_addr_0x00555880                          // 0x005df03f    e83c68f7ff
+                         call               ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ                          // 0x005df03f    e83c68f7ff
                          cmp.s              edi, eax                                      // 0x005df044    3bf8
                          {disp32} jne       .Lbl_addr_0x005df0f4                          // 0x005df046    0f85a8000000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005df04c    8b0d5c19d000
@@ -2207,7 +2207,7 @@ _jmp_addr_0x005def00:    sub                esp, 0x00000104                     
                          call               _jmp_addr_0x0064a9f0                          // 0x005df11c    e8cfb80600
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005df121    8b0d5c19d000
                          mov.s              edi, eax                                      // 0x005df127    8bf8
-                         call               _jmp_addr_0x00555880                          // 0x005df129    e85267f7ff
+                         call               ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ                          // 0x005df129    e85267f7ff
                          sub.s              edi, eax                                      // 0x005df12e    2bf8
                          {disp8} mov        eax, dword ptr [esp + 0x10]                   // 0x005df130    8b442410
                          neg                edi                                           // 0x005df134    f7df
@@ -2307,11 +2307,11 @@ _jmp_addr_0x005df1b0:    sub                esp, 0x08                           
                          {disp8} mov        dword ptr [eax + 0x0c], edx                   // 0x005df201    89500c
                          fld                dword ptr [esi]                               // 0x005df204    d906
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3404]              // 0x005df206    d80d04c48a00
-                         call               _jmp_addr_0x007a1400                          // 0x005df20c    e8ef211c00
+                         call               __ftol                                        // 0x005df20c    e8ef211c00
                          {disp8} fld        dword ptr [esi + 0x08]                        // 0x005df211    d94608
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3404]              // 0x005df214    d80d04c48a00
                          mov.s              edi, eax                                      // 0x005df21a    8bf8
-                         call               _jmp_addr_0x007a1400                          // 0x005df21c    e8df211c00
+                         call               __ftol                                        // 0x005df21c    e8df211c00
                          {disp8} lea        esi, dword ptr [edi + -0x01]                  // 0x005df221    8d77ff
                          {disp8} lea        ecx, dword ptr [edi + 0x01]                   // 0x005df224    8d4f01
                          cmp.s              esi, ecx                                      // 0x005df227    3bf1

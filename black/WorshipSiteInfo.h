@@ -46,7 +46,7 @@ public:
     // win1.41 0077a8b0 mac 105b3c70 GWorshipSiteInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t& param_1);
     // win1.41 00464370 mac inlined GWorshipSiteInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh() const;
+    virtual MeshId GetMesh() const;
     // win1.41 00464380 mac inlined GWorshipSiteInfo::GetAbodeType( const(void))
     virtual ABODE_TYPE GetAbodeType() const;
 };

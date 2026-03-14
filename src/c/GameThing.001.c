@@ -2,21 +2,21 @@
 
 float __fastcall GetDrawImportance__9GameThingFv(struct GameThing* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x00405130    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x00405130    d90598a38a00
     asm("ret");                                                              // 0x00405136    c3
     __builtin_unreachable();
 }
 
 float __fastcall GetRadius__9GameThingFv(struct GameThing* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x00405140    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x00405140    d90598a38a00
     asm("ret");                                                              // 0x00405146    c3
     __builtin_unreachable();
 }
 
 float __fastcall Get2DRadius__9GameThingFv(struct GameThing* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x00405150    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x00405150    d90598a38a00
     asm("ret");                                                              // 0x00405156    c3
     __builtin_unreachable();
 }
@@ -88,7 +88,7 @@ uint16_t __fastcall GetNumberOfInstanceForGlobalList__9GameThingFv(struct GameTh
 
 float __fastcall GetTownArtifactValue__9GameThingFv(struct GameThing* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x00405210    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x00405210    d90598a38a00
     asm("ret");                                                              // 0x00405216    c3
     __builtin_unreachable();
 }

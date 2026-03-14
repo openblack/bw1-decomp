@@ -95,9 +95,9 @@ public:
     // win1.41 005ef160 mac 1037c530 DataForScriptRemind::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 005ef570 mac 1037c5c0 DataForScriptRemind::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 005ef360 mac 1037c8b0 DataForScriptRemind::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 005ef150 mac 1037c4f0 DataForScriptRemind::GetSaveType(void)
     virtual uint32_t GetSaveType();
 
@@ -183,11 +183,11 @@ public:
     // win1.41 005ec0a0 mac 10383210 Living::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
     // win1.41 004172d0 mac 10006820 Living::IsFunctional(void)
-    virtual bool IsFunctional();
+    virtual bool32_tcorrect IsFunctional();
     // win1.41 005ee960 mac 1037d8d0 Living::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& file);
+    virtual bool32_tcorrect Load(GameOSFile& file);
     // win1.41 005ee630 mac 1037ddd0 Living::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& file);
+    virtual bool32_tcorrect Save(GameOSFile& file);
     // win1.41 005eed20 mac 1037d880 Living::ResolveLoad(void)
     virtual void ResolveLoad();
     // win1.41 004173c0 mac 10130ac0 Living::IsAnimate(void)
@@ -241,7 +241,7 @@ public:
     // win1.41 004172b0 mac 10130680 Living::CanBeCrushed(void)
     virtual bool CanBeCrushed();
     // win1.41 005ec9b0 mac 10382060 Living::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00416fa0 mac 1012f760 Living::SetPoisoned(int)
     virtual void SetPoisoned(int param_1);
     // win1.41 005ec390 mac 10382b30 Living::SetDying(void)
@@ -261,7 +261,7 @@ public:
     // win1.41 005ed3e0 mac 10380210 Living::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 005ed4f0 mac 103801d0 Living::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 005ed370 mac 103803b0 Living::HasSunk(void)
     virtual bool HasSunk();
     // win1.41 005edba0 mac 1037f690 Living::CreatureMustAvoid(Creature *)

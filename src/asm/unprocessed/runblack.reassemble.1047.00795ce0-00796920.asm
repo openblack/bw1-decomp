@@ -9,7 +9,7 @@
 .extern @SetDestinationWithTime__8Zoomer3dFRC7LHPointf@16
 .extern _jmp_addr_0x00470af0
 .extern _jmp_addr_0x00794fb0
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern _jmp_addr_0x007fac10
 .extern _jmp_addr_0x007faff0
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
@@ -53,7 +53,7 @@ _UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
 .Lbl_addr_0x00795d40:    cmp                dword ptr [ebp + 0x00000128], ebx             // 0x00795d40    399d28010000
                          {disp32} jne       .Lbl_addr_0x00795dfd                          // 0x00795d46    0f85b1000000
                          {disp32} fld       dword ptr [ebp + 0x000003cc]                  // 0x00795d4c    d985cc030000
-                         {disp32} fcomp     dword ptr [__real@3fc00000]                   // 0x00795d52    d81d4cb28a00
+                         {disp32} fcomp     dword ptr [__real@4@3fffc000000000000000]                   // 0x00795d52    d81d4cb28a00
                          fnstsw             ax                                            // 0x00795d58    dfe0
                          test               ah, 0x41                                      // 0x00795d5a    f6c441
                          {disp32} jne       .Lbl_addr_0x00795dfd                          // 0x00795d5d    0f859a000000
@@ -337,7 +337,7 @@ _UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
                          {disp32} lea       edi, dword ptr [ebp + 0x000003d4]             // 0x0079623c    8dbdd4030000
                          push               esi                                           // 0x00796242    56
                          push               edi                                           // 0x00796243    57
-                         call               _jmp_addr_0x007a1400                          // 0x00796244    e8b7b10000
+                         call               __ftol                                        // 0x00796244    e8b7b10000
                          {disp32} mov       ecx, dword ptr [ebp + 0x0000043c]             // 0x00796249    8b8d3c040000
                          push               eax                                           // 0x0079624f    50
                          xor.s              edx, edx                                      // 0x00796250    33d2
@@ -351,7 +351,7 @@ _UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
                          {disp8} mov        dword ptr [esp + 0x14], ebx                   // 0x00796275    895c2414
                          {disp8} fild       qword ptr [esp + 0x10]                        // 0x00796279    df6c2410
                          mov                ecx, 0x00000001                               // 0x0079627d    b901000000
-                         {disp32} fmul      dword ptr [_rdata_float0p001]                 // 0x00796282    d80db0a38a00
+                         {disp32} fmul      dword ptr [__real@4@3ff583126f0000000000]                 // 0x00796282    d80db0a38a00
                          fld                st(0)                                         // 0x00796288    d9c0
                          {disp32} fadd      dword ptr [_rdata_float0p5]                   // 0x0079628a    d805b4a38a00
                          {disp32} fld       dword ptr [ebp + 0x000003cc]                  // 0x00796290    d985cc030000
@@ -366,16 +366,16 @@ _UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
                          {disp8} jne        .Lbl_addr_0x007962c6                          // 0x007962b4    7510
                          {disp32} mov       dword ptr [ebp + 0x00000438], ecx             // 0x007962b6    898d38040000
                          {disp32} mov       dword ptr [data_bytes + 0x264150], 0x3f800000 // 0x007962bc    c70550a1c2000000803f
-.Lbl_addr_0x007962c6:    {disp32} fsub      dword ptr [_rdata_float1p0]                   // 0x007962c6    d82590a38a00
+.Lbl_addr_0x007962c6:    {disp32} fsub      dword ptr [__real@4@3fff8000000000000000]                   // 0x007962c6    d82590a38a00
                          {disp32} fsubr     dword ptr [ebp + 0x000003cc]                  // 0x007962cc    d8adcc030000
-                         {disp32} fcom      dword ptr [_rdata_float0p0]                   // 0x007962d2    d81598a38a00
+                         {disp32} fcom      dword ptr [__real@4@00000000000000000000]                   // 0x007962d2    d81598a38a00
                          fnstsw             ax                                            // 0x007962d8    dfe0
                          test               ah, 0x41                                      // 0x007962da    f6c441
                          {disp32} jne       .Lbl_addr_0x00796406                          // 0x007962dd    0f8523010000
                          {disp32} mov       al, byte ptr [ebp + 0x00000399]               // 0x007962e3    8a8599030000
                          test               al, al                                        // 0x007962e9    84c0
                          {disp32} je        .Lbl_addr_0x00796406                          // 0x007962eb    0f8415010000
-                         {disp32} fcom      dword ptr [_rdata_float1p0]                   // 0x007962f1    d81590a38a00
+                         {disp32} fcom      dword ptr [__real@4@3fff8000000000000000]                   // 0x007962f1    d81590a38a00
                          {disp32} lea       eax, dword ptr [ebp + 0x0000026c]             // 0x007962f7    8d856c020000
                          mov                ecx, dword ptr [eax]                          // 0x007962fd    8b08
                          {disp8} mov        edx, dword ptr [eax + 0x04]                   // 0x007962ff    8b5004
@@ -394,7 +394,7 @@ _UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
                          {disp8} mov        dword ptr [esp + 0x24], ecx                   // 0x0079632c    894c2424
                          {disp8} jne        .Lbl_addr_0x0079633a                          // 0x00796330    7508
                          fstp               st(0)                                         // 0x00796332    ddd8
-                         {disp32} fld       dword ptr [_rdata_float1p0]                   // 0x00796334    d90590a38a00
+                         {disp32} fld       dword ptr [__real@4@3fff8000000000000000]                   // 0x00796334    d90590a38a00
 .Lbl_addr_0x0079633a:    {disp8} fld        dword ptr [esp + 0x10]                        // 0x0079633a    d9442410
                          mov.s              edx, edi                                      // 0x0079633e    8bd7
                          fsub               dword ptr [edi]                               // 0x00796340    d827
@@ -462,7 +462,7 @@ _UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
                          {disp32} fsub      dword ptr [ebp + 0x000003d0]                  // 0x0079640e    d8a5d0030000
                          {disp32} fmul      dword ptr [_rdata_float0p5]                   // 0x00796414    d80db4a38a00
                          {disp8} fst        dword ptr [esp + 0x10]                        // 0x0079641a    d9542410
-                         {disp32} fcomp     dword ptr [_rdata_float0p0]                   // 0x0079641e    d81d98a38a00
+                         {disp32} fcomp     dword ptr [__real@4@00000000000000000000]                   // 0x0079641e    d81d98a38a00
                          fnstsw             ax                                            // 0x00796424    dfe0
                          test               ah, 0x41                                      // 0x00796426    f6c441
                          {disp32} jne       .Lbl_addr_0x007965e2                          // 0x00796429    0f85b3010000
@@ -506,7 +506,7 @@ _UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
                          {disp32} fld       dword ptr [ebp + 0x000002d8]                  // 0x007964cf    d985d8020000
                          {disp8} fstp       dword ptr [esp + 0x30]                        // 0x007964d5    d95c2430
                          {disp8} fld        dword ptr [esp + 0x10]                        // 0x007964d9    d9442410
-                         {disp32} fcomp     dword ptr [_rdata_float1p0]                   // 0x007964dd    d81d90a38a00
+                         {disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]                   // 0x007964dd    d81d90a38a00
                          fnstsw             ax                                            // 0x007964e3    dfe0
                          test               ah, 0x41                                      // 0x007964e5    f6c441
                          {disp8} jne        .Lbl_addr_0x007964f2                          // 0x007964e8    7508
@@ -566,7 +566,7 @@ _UpdateMain__11InnerCameraFP9InnerRoomfiiRC7LHCoordb:
                          mov                dword ptr [esi], eax                          // 0x007965ae    8906
                          {disp8} mov        dword ptr [esi + 0x04], ecx                   // 0x007965b0    894e04
                          {disp8} fstp       dword ptr [esp + 0x30]                        // 0x007965b3    d95c2430
-                         {disp32} fld       dword ptr [_rdata_float1p0]                   // 0x007965b7    d90590a38a00
+                         {disp32} fld       dword ptr [__real@4@3fff8000000000000000]                   // 0x007965b7    d90590a38a00
                          {disp8} mov        edx, dword ptr [esp + 0x30]                   // 0x007965bd    8b542430
                          {disp8} fsub       dword ptr [esp + 0x10]                        // 0x007965c1    d8642410
                          {disp8} mov        dword ptr [esi + 0x08], edx                   // 0x007965c5    895608

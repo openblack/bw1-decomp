@@ -46,9 +46,9 @@ public:
     // win1.41 0055dad0 mac 1055c0c0 TownDesireFlags::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00747030 mac 1055c440 TownDesireFlags::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00746f10 mac 1055c600 TownDesireFlags::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0055dac0 mac 1055c080 TownDesireFlags::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055daa0 mac 1055bff0 TownDesireFlags::IsTownDesireFlag(void)
@@ -68,7 +68,7 @@ public:
     // win1.41 00746a30 mac 100364a0 TownDesireFlags::Draw(void)
     virtual void Draw();
     // win1.41 00746dc0 mac 1055d830 TownDesireFlags::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 0055dab0 mac 1055c030 TownDesireFlags::IsEffectReceiver(EffectValues *)
     virtual bool IsEffectReceiver(EffectValues* param_1);
     // win1.41 00746a10 mac 1055dae0 TownDesireFlags::InteractsWithPhysicsObjects(void)

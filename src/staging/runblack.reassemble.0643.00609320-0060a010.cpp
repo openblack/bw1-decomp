@@ -2,7 +2,7 @@
 #include "MobileWallHug.h"
 
 // win1.41 00609320 mac 103bee30 MobileStatic::CanBecomeAPhysicsObject(void)
-bool MobileStatic::CanBecomeAPhysicsObject()
+bool32_tcorrect MobileStatic::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -32,7 +32,7 @@ int MobileStatic::GetDefaultResource()
 }
 
 // win1.41 00609700 mac 103be330 MobileStatic::CallVirtualFunctionsForCreation(MapCoords const &)
-void MobileStatic::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void MobileStatic::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 

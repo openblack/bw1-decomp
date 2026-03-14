@@ -31,7 +31,7 @@ uint32_t __fastcall GetOrigin__16GameThingWithPosFv(struct GameThingWithPos* thi
 
 float __fastcall GetLife__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float1p0]");                   // 0x004052a0    d90590a38a00
+    asm("{disp32} fld       dword ptr [__real@4@3fff8000000000000000]");                   // 0x004052a0    d90590a38a00
     asm("ret");                                                              // 0x004052a6    c3
     __builtin_unreachable();
 }
@@ -71,7 +71,7 @@ void __fastcall CleanupWhenDeleted__16GameThingWithPosFi(struct GameThingWithPos
 
 float __fastcall GetImpressiveValue__16GameThingWithPosFP6LivingP8Reaction(struct GameThingWithPos* this, const void* edx, struct Living* param_1, struct Reaction* param_2)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x00405300    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x00405300    d90598a38a00
     asm("ret                0x0008");                                        // 0x00405306    c20800
     __builtin_unreachable();
 }
@@ -257,14 +257,14 @@ uint32_t __fastcall GetCreatureMimicType__16GameThingWithPosFv(struct GameThingW
 
 float __fastcall GetHowMuchCreatureWantsToLookAtMe__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x004054f0    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x004054f0    d90598a38a00
     asm("ret");                                                              // 0x004054f6    c3
     __builtin_unreachable();
 }
 
 float __fastcall GetHeight__16GameThingWithPosFv(struct GameThingWithPos* this)
 {
-    asm("{disp32} fld       dword ptr [_rdata_float0p0]");                   // 0x00405500    d90598a38a00
+    asm("{disp32} fld       dword ptr [__real@4@00000000000000000000]");                   // 0x00405500    d90598a38a00
     asm("ret");                                                              // 0x00405506    c3
     __builtin_unreachable();
 }

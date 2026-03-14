@@ -57,9 +57,9 @@ public:
     // win1.41 0066d330 mac 10003c80 PileResource::JustAddResource(RESOURCE_TYPE, unsigned long, bool)
     virtual uint32_t JustAddResource(RESOURCE_TYPE param_1, uint32_t param_2, bool param_3);
     // win1.41 0066f690 mac 101163b0 PileResource::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0066f620 mac 10116490 PileResource::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0066e3d0 mac 10119880 PileResource::GetLife(void)
     virtual float GetLife();
     // win1.41 0066e3c0 mac inlined PileResource::IsField_1(Creature *)
@@ -71,7 +71,7 @@ public:
     // win1.41 0066e400 mac 101196c0 PileResource::SetLife(float)
     virtual void SetLife(float param_1);
     // win1.41 0066e300 mac 10119a80 PileResource::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 0055d680 mac 1011d530 PileResource::IsLockedInInteract(void)
     virtual bool IsLockedInInteract();
     // win1.41 0066e4f0 mac 10119600 PileResource::ValidForLockedSelectProcess(GInterfaceStatus *)

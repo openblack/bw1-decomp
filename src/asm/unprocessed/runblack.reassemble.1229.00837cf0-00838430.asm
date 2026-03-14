@@ -2,7 +2,7 @@
 .align 16
 
 .extern data_bytes
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern _LHFileLength__FPcPUl
 .extern _Report3D__FPCce
 .extern _jmp_addr_0x00837300
@@ -538,7 +538,7 @@ _jmp_addr_0x00837df0:    sub               esp, 0x00000098                      
                          {disp8} mov       dword ptr [esp + 0x18], ebx                    // 0x00838325    895c2418
                          {disp32} fmul     dword ptr [data_bytes + 0x4dbc80]              // 0x00838329    d80d801cea00
                          {disp8} fiadd     dword ptr [esp + 0x14]                         // 0x0083832f    da442414
-                         call              _jmp_addr_0x007a1400                           // 0x00838333    e8c890f6ff
+                         call              __ftol                                         // 0x00838333    e8c890f6ff
                          {disp8} mov       ecx, dword ptr [esi + 0x10]                    // 0x00838338    8b4e10
                          and               ecx, 0x3f                                      // 0x0083833b    83e13f
                          cmp               cl, 0x08                                       // 0x0083833e    80f908

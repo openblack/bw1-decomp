@@ -39,9 +39,9 @@ public:
     // win1.41 0043d710 mac 100be260 StandardBuildingSite::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0043d890 mac 100b7ec0 StandardBuildingSite::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0043d850 mac 100b7f60 StandardBuildingSite::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0043d700 mac 100be220 StandardBuildingSite::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0043d8d0 mac 10077e70 StandardBuildingSite::Process(void)
@@ -55,7 +55,7 @@ public:
     // win1.41 0043d760 mac 100b81d0 StandardBuildingSite::CreatePileWood(void)
     virtual void CreatePileWood();
     // win1.41 0043c220 mac inlined StandardBuildingSite::GetResourcePosAndYAngle(unsigned int, unsigned int, float *)
-    virtual void GetResourcePosAndYAngle(uint32_t param_1, uint32_t param_2, float* param_3);
+    virtual MapCoords GetResourcePosAndYAngle(uint32_t param_1, uint32_t param_2, float* param_3);
     // win1.41 0043d800 mac 100b8060 StandardBuildingSite::RemovePotFromStructure(PotStructure *)
     virtual void RemovePotFromStructure(PotStructure* param_1);
     // win1.41 0043d830 mac 100b8000 StandardBuildingSite::IsLinkedToThisBuildingSite(Pot *)

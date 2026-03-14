@@ -69,9 +69,9 @@ public:
     // win1.41 00561170 mac 10543f30 TotemStatue::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00738800 mac 10544120 TotemStatue::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00738700 mac 105442e0 TotemStatue::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00561160 mac 10543ef0 TotemStatue::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00738940 mac 105440b0 TotemStatue::ResolveLoad(void)
@@ -107,7 +107,7 @@ public:
     // win1.41 00738960 mac 10024bb0 TotemStatue::Draw(void)
     virtual void Draw();
     // win1.41 00737d60 mac 10544f40 TotemStatue::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00738500 mac 105447e0 TotemStatue::ValidForLockedSelectProcess(GInterfaceStatus *)
     virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
     // win1.41 00738590 mac 10544700 TotemStatue::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
@@ -131,7 +131,7 @@ public:
     // win1.41 00561090 mac 10543660 TotemStatue::IsRepaired(void)
     virtual bool IsRepaired();
     // win1.41 005610b0 mac 1001a9a0 TotemStatue::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_tcorrect IsBuilt();
     // win1.41 00738130 mac 10544dd0 TotemStatue::AddToPlayer(void)
     virtual void AddToPlayer();
 

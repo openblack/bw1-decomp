@@ -118,7 +118,7 @@ uint32_t Living::WaitForAnimation()
 }
 
 // win1.41 005ec9b0 mac 10382060 Living::CallVirtualFunctionsForCreation(MapCoords const &)
-void Living::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void Living::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -262,7 +262,7 @@ void Living::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 005ed4f0 mac 103801d0 Living::CanBecomeAPhysicsObject(void)
-bool Living::CanBecomeAPhysicsObject()
+bool32_tcorrect Living::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -410,13 +410,13 @@ void Living::SetFlock(Flock* param_1)
 }
 
 // win1.41 005ee630 mac 1037ddd0 Living::Save(GameOSFile &)
-bool Living::Save(GameOSFile& file)
+bool32_tcorrect Living::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005ee960 mac 1037d8d0 Living::Load(GameOSFile &)
-bool Living::Load(GameOSFile& file)
+bool32_tcorrect Living::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -427,13 +427,13 @@ void Living::ResolveLoad()
 }
 
 // win1.41 005eed30 mac 1037d620 DataPath::Save(GameOSFile &)
-bool DataPath::Save(GameOSFile& file)
+bool32_tcorrect DataPath::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 005eeec0 mac 1037d3e0 DataPath::Load(GameOSFile &)
-bool DataPath::Load(GameOSFile& file)
+bool32_tcorrect DataPath::Load(GameOSFile& file)
 {
     return 0;
 }

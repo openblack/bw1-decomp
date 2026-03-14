@@ -125,10 +125,6 @@ set(SOURCES_001
     src/c/Base.000.c
     src/c/BaseInfo.000.c
     src/c/AbodeInfo.002.c
-    src/c/Base.001.c
-    src/c/BaseInfo.001.c
-    src/c/ObjectInfo.000.c
-    src/c/MultiMapFixedInfo.000.c
     src/c/AbodeInfo.003.c
     src/c/Abode.000.c
     src/c/Fixed.000.c
@@ -156,8 +152,8 @@ set(SOURCES_001
     src/c/AbodeInfo.005.c
     src/c/Abode.006.c
     src/c/PlannedAbode.003.c
-    src/c/Abode.007.c
-    src/c/PlannedAbode.004.c
+    src/cpp/Abode.007.cpp
+    src/cpp/PlannedAbode.004.cpp
     src/c/Abode.008.c
     src/c/SetupControl.000.c
 
@@ -949,6 +945,11 @@ else()
             $<IF:$<COMPILE_LANGUAGE:C>,/usr/x86_64-w64-mingw32/include,>
     )
 endif()
+
+add_library(game_common_compile_options INTERFACE)
+target_link_libraries(game_common_compile_options INTERFACE common_compile_options)
+target_compile_options(game_common_compile_options INTERFACE $<IF:$<COMPILE_LANGUAGE:CXX>,/G6,>)
+
 # Enforce a obj linking order
 target_link_libraries(runblack-reassembled
     PRIVATE
@@ -1037,13 +1038,13 @@ add_custom_command(
             "--no-pad"
 )
 
-target_link_libraries(runblack-reassembled-src-001 PRIVATE common_compile_options)
-target_link_libraries(runblack-reassembled-src-002 PRIVATE common_compile_options)
-target_link_libraries(runblack-reassembled-zlib PRIVATE common_compile_options)
-target_link_libraries(runblack-reassembled-src-004 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-001 PRIVATE game_common_compile_options)
+target_link_libraries(runblack-reassembled-src-002 PRIVATE game_common_compile_options)
+target_link_libraries(runblack-reassembled-zlib PRIVATE game_common_compile_options)
+target_link_libraries(runblack-reassembled-src-004 PRIVATE game_common_compile_options)
 target_link_libraries(runblack-reassembled-src-008 PRIVATE common_compile_options)
-target_link_libraries(runblack-reassembled-src-009 PRIVATE common_compile_options)
-target_link_libraries(runblack-reassembled-src-bss-005 PRIVATE common_compile_options)
+target_link_libraries(runblack-reassembled-src-009 PRIVATE game_common_compile_options)
+target_link_libraries(runblack-reassembled-src-bss-005 PRIVATE game_common_compile_options)
 
 target_link_options(runblack-reassembled
     PRIVATE
@@ -1102,5 +1103,9 @@ if(OBJDIFF)
     # Force the msvc compiler even for zlib c files
     set_source_files_properties(${STAGING_FILES} PROPERTIES LANGUAGE CXX)
     add_library(runblack_objdiff_staging OBJECT ${STAGING_FILES})
-    target_link_libraries(runblack_objdiff_staging PRIVATE common_compile_options)
+    # common_compile_options specifies the compile options common to the whole binary
+    # game_common_compile_options specifies compile options for game part portions
+    # obj files that have small differences might need to use common_compile_options instead
+    # this would mean it is probably part of a sepeate static library
+    target_link_libraries(runblack_objdiff_staging PRIVATE game_common_compile_options)
 endif()

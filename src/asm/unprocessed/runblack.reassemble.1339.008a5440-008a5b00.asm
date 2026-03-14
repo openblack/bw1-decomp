@@ -6,7 +6,7 @@
 .extern ??_DLHOSFile@@QAEXXZ
 .extern @Open__8LHOSFileFPc12LH_FILE_MODE@16
 .extern ?Close@LHOSFile@@QAEIXZ
-.extern @Write__8LHOSFileFPvUlPUl@20
+.extern ?Write@LHOSFile@@QAEIPBXIPAI@Z
 .extern ??2@YAPAXI@Z
 
 .globl _jmp_addr_0x008a5440
@@ -54,7 +54,7 @@ _jmp_addr_0x008a5480:    ret                                                    
                          push             0x2                                      // 0x008a5499    6a02
                          push             ecx                                      // 0x008a549b    51
                          {disp8} mov      ecx, dword ptr [esp + 0x10]              // 0x008a549c    8b4c2410
-                         call             @Write__8LHOSFileFPvUlPUl@20             // 0x008a54a0    e87b74f1ff
+                         call             ?Write@LHOSFile@@QAEIPBXIPAI@Z             // 0x008a54a0    e87b74f1ff
                          test             eax, eax                                 // 0x008a54a5    85c0
                          {disp8} je       .Lbl_addr_0x008a54ae                     // 0x008a54a7    7405
                          xor.s            eax, eax                                 // 0x008a54a9    33c0
@@ -73,7 +73,7 @@ _jmp_addr_0x008a5480:    ret                                                    
                          push             0x4                                      // 0x008a54c9    6a04
                          push             ecx                                      // 0x008a54cb    51
                          {disp8} mov      ecx, dword ptr [esp + 0x10]              // 0x008a54cc    8b4c2410
-                         call             @Write__8LHOSFileFPvUlPUl@20             // 0x008a54d0    e84b74f1ff
+                         call             ?Write@LHOSFile@@QAEIPBXIPAI@Z             // 0x008a54d0    e84b74f1ff
                          test             eax, eax                                 // 0x008a54d5    85c0
                          {disp8} je       .Lbl_addr_0x008a54de                     // 0x008a54d7    7405
                          xor.s            eax, eax                                 // 0x008a54d9    33c0
@@ -479,7 +479,7 @@ _jmp_addr_0x008a5590:    push             -0x1                                  
                          {disp8} lea      ecx, dword ptr [esp + 0x40]              // 0x008a59f0    8d4c2440
                          add.s            eax, edx                                 // 0x008a59f4    03c2
                          push             eax                                      // 0x008a59f6    50
-                         call             @Write__8LHOSFileFPvUlPUl@20             // 0x008a59f7    e8246ff1ff
+                         call             ?Write@LHOSFile@@QAEIPBXIPAI@Z             // 0x008a59f7    e8246ff1ff
                          {disp32} mov     eax, dword ptr [esi + 0x00000104]        // 0x008a59fc    8b8604010000
                          neg              eax                                      // 0x008a5a02    f7d8
                          and              eax, 0x03                                // 0x008a5a04    83e003
@@ -490,7 +490,7 @@ _jmp_addr_0x008a5590:    push             -0x1                                  
                          push             eax                                      // 0x008a5a12    50
                          push             0x0                                      // 0x008a5a13    6a00
                          {disp8} lea      ecx, dword ptr [esp + 0x44]              // 0x008a5a15    8d4c2444
-                         call             @Write__8LHOSFileFPvUlPUl@20             // 0x008a5a19    e8026ff1ff
+                         call             ?Write@LHOSFile@@QAEIPBXIPAI@Z             // 0x008a5a19    e8026ff1ff
 .Lbl_addr_0x008a5a1e:    {disp32} mov     eax, dword ptr [esi + 0x00000108]        // 0x008a5a1e    8b8608010000
                          inc              edi                                      // 0x008a5a24    47
                          cmp.s            edi, eax                                 // 0x008a5a25    3bf8

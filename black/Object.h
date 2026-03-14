@@ -67,7 +67,7 @@ class Object: public GameThingWithPos
 {
 public:
     const GObjectInfo* info; /* 0x28 */
-    MapCoords coords;
+    MapCoords obj_coords;
     Object* map_parent; /* 0x38 */
     uint32_t field_0x3c;
     Game3DObject* game_3d_object; /* 0x40 */
@@ -97,9 +97,9 @@ public:
     // win1.41 005190e0 mac 1008d3a0 Object::DrawInHand(GInterfaceStatus *)
     virtual void DrawInHand(GInterfaceStatus* param_1);
     // win1.41 00639eb0 mac 103d1b20 Object::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& file);
+    virtual bool32_tcorrect Load(GameOSFile& file);
     // win1.41 00639b90 mac 103d1d50 Object::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& file);
+    virtual bool32_tcorrect Save(GameOSFile& file);
     // win1.41 0063a020 mac 103d1940 Object::ResolveLoad(void)
     virtual void ResolveLoad();
     // win1.41 00402600 mac 1004b110 Object::GetLife(void)
@@ -108,14 +108,10 @@ public:
     virtual float GetScale();
     // win1.41 00639200 mac 103d3c80 Object::SetScale(float)
     virtual void SetScale(float scale);
-    // win1.41 004027c0 mac 1016ea00 Object::GetDistanceFromObject(MapCoords &)
-    virtual float GetDistanceFromObject(const MapCoords* target);
     // win1.41 006394e0 mac 103d35f0 Object::GetPhysicsMovementDirection(LHPoint *)
     virtual void GetPhysicsMovementDirection(LHPoint* pos);
     // win1.41 00402710 mac 10032610 Object::IsMoving( const(void))
     virtual bool IsMoving() const;
-    // win1.41 006392b0 mac 10037930 Object::IsObjectInMap(void)
-    virtual bool IsObjectInMap();
     // win1.41 0063a780 mac 103d07e0 Object::IsDrowning(void)
     virtual bool IsDrowning();
     // win1.41 006377f0 mac 103d6d80 Object::CleanupWhenDeleted(int)
@@ -217,7 +213,7 @@ public:
     // win1.41 006365f0 mac 103d9010 Object::Create3DObject(void)
     virtual void Create3DObject();
     // win1.41 00418c90 mac 100540e0 Object::GetMapChild(MapCell const &)
-    virtual Object* GetMapChild(const MapCell* param_1);
+    virtual Object* GetMapChild(const MapCell& param_1);
     // win1.41 00418cc0 mac 10053b70 Object::SetMapChild(Object *, MapCell *)
     virtual void SetMapChild(Object* object, MapCell* cell); /* 0x540 */
     // win1.41 00636740 mac 1004ad80 Object::InsertMapObject(void)
@@ -529,7 +525,7 @@ public:
     // win1.41 006377c0 mac 103d6ee0 Object::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 006377e0 mac 103d6e10 Object::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject(); /* 0x7b0 */
+    virtual bool32_tcorrect CanBecomeAPhysicsObject(); /* 0x7b0 */
     // win1.41 00402a10 mac 103db1f0 Object::GetAlwaysRemainsInPhysicsInternalSystem(void)
     virtual bool GetAlwaysRemainsInPhysicsInternalSystem();
     // win1.41 00637470 mac 103d7730 Object::HasSunk(void)
@@ -613,6 +609,15 @@ public:
     virtual uint32_t StandAnimation();
     // win1.41 00419b30 mac 1009cd00 Object::GetCollideData(void)
     virtual NewCollide* GetCollideData();
+
+    // win1.41 004027c0 mac 1016ea00 Object::GetDistanceFromObject(MapCoords &)
+    virtual float GetDistanceFromObject(const MapCoords& target);
+    // win1.41 006392b0 mac 10037930 Object::IsObjectInMap(void)
+    virtual bool IsObjectInMap();
+
+    virtual bool _missing1();
+    virtual bool _missing2();
+    virtual bool _missing3();
 
     // Static methods
 

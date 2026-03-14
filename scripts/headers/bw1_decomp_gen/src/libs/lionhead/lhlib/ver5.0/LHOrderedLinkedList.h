@@ -17,7 +17,7 @@
 ///     }
 /// has the same structure
 
-#include <stdint.h> /* For uin32_t */
+#include <stdint.h> /* For uint32_t */
 
 #ifdef __cplusplus
 

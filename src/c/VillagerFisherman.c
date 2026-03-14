@@ -253,7 +253,7 @@ bool32_t __fastcall Fishing__8VillagerFv(struct Villager* this)
     asm("{disp8} mov        dword ptr [esp + 0x1c], edi");                   // 0x0075b6dc    897c241c
     asm("{disp8} fild       qword ptr [esp + 0x18]");                        // 0x0075b6e0    df6c2418
     asm("add                esp, 0x0c");                                     // 0x0075b6e4    83c40c
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075b6e7    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075b6e7    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075b6ed    dfe0
     asm("test               ah, 0x40");                                      // 0x0075b6ef    f6c440
     asm("{disp32} je        LAB__addr_0x0075b80d");                          // 0x0075b6f2    0f8415010000
@@ -300,17 +300,17 @@ bool32_t __fastcall Fishing__8VillagerFv(struct Villager* this)
     asm("mov.s              ecx, esi");                                      // 0x0075b798    8bce
     asm("call               dword ptr [edx + 0x6c8]");                       // 0x0075b79a    ff92c8060000
     asm("{disp8} fmul       dword ptr [esp + 0x08]");                        // 0x0075b7a0    d84c2408
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0075b7a4    e8575c0400
+    asm("call               __ftol");                                        // 0x0075b7a4    e8575c0400
     asm("{disp8} mov        dword ptr [esp + 0x0c], eax");                   // 0x0075b7a9    8944240c
     asm("{disp8} mov        dword ptr [esp + 0x10], edi");                   // 0x0075b7ad    897c2410
     asm("{disp8} fild       qword ptr [esp + 0x0c]");                        // 0x0075b7b1    df6c240c
     asm("{disp8} fst        dword ptr [esp + 0x08]");                        // 0x0075b7b5    d9542408
-    asm("{disp32} fcomp     dword ptr [_rdata_float0p0]");                   // 0x0075b7b9    d81d98a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@00000000000000000000]");                   // 0x0075b7b9    d81d98a38a00
     asm("fnstsw             ax");                                            // 0x0075b7bf    dfe0
     asm("test               ah, 0x40");                                      // 0x0075b7c1    f6c440
     asm("{disp8} jne        LAB__addr_0x0075b7d7");                          // 0x0075b7c4    7511
     asm("{disp8} fld        dword ptr [esp + 0x08]");                        // 0x0075b7c6    d9442408
-    asm("call               _jmp_addr_0x007a1400");                          // 0x0075b7ca    e8315c0400
+    asm("call               __ftol");                                        // 0x0075b7ca    e8315c0400
     asm("mov.s              ecx, esi");                                      // 0x0075b7cf    8bce
     asm("push               eax");                                           // 0x0075b7d1    50
     asm("call               ?PickupFood@Villager@@QAEXF@Z");                 // 0x0075b7d2    e8b95cffff

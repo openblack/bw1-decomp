@@ -3,7 +3,7 @@
 __attribute__((XOR32rr_REV))
 bool __fastcall IsCivic__12PlannedAbodeFv(struct PlannedMultiMapFixed* this)
 {
-    asm("call             ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ");              // 0x004060c0    e80bf6ffff
+    asm("call             ?GetInfo@PlannedAbode@@SAPAVGAbodeInfo@@XZ");              // 0x004060c0    e80bf6ffff
     asm("{disp32} mov     eax, dword ptr [eax + 0x00000120]"); // 0x004060c5    8b8020010000
     asm("cmp              eax, 0x00000100");                   // 0x004060cb    3d00010000
     asm("{disp8} jg       LAB__addr_0x004060eb");              // 0x004060d0    7f19
@@ -74,7 +74,7 @@ bool __fastcall IsCivic__12PlannedAbodeFv(struct PlannedMultiMapFixed* this)
 __attribute__((XOR32rr_REV))
 bool32_t __fastcall IsWonder__12PlannedAbodeFv(struct GameThingWithPos* this)
 {
-    asm("call               ?GetInfo@PlannedAbode@@SAPAVGPlannedAbodeInfo@@XZ");                          // 0x004061a0    e82bf5ffff
+    asm("call               ?GetInfo@PlannedAbode@@SAPAVGAbodeInfo@@XZ");                          // 0x004061a0    e82bf5ffff
     asm("{disp32} mov       edx, dword ptr [eax + 0x00000120]");             // 0x004061a5    8b9020010000
     asm("xor.s              ecx, ecx");                                      // 0x004061ab    33c9
     asm("cmp                edx, 0x00000100");                               // 0x004061ad    81fa00010000

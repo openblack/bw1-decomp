@@ -45,7 +45,7 @@
 .extern ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z
 .extern ?Create@Villager@@SAPAV1@ABUMapCoords@@PBVGVillagerInfo@@KH@Z
 .extern ?SetSpeed@Villager@@QAEXJH@Z
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern ??0_Lockit@std@@QAE@XZ
 .extern ??1_Lockit@std@@QAE@XZ
@@ -471,7 +471,7 @@ _jmp_addr_0x006094e0:    push              esi                                  
                          mov               edx, dword ptr [esi]                          // 0x006096df    8b16
                          mov.s             ecx, esi                                      // 0x006096e1    8bce
                          call              dword ptr [edx + 0x664]                       // 0x006096e3    ff9264060000
-                         call              _jmp_addr_0x007a1400                          // 0x006096e9    e8127d1900
+                         call              __ftol                                        // 0x006096e9    e8127d1900
                          pop               esi                                           // 0x006096ee    5e
                          ret                                                             // 0x006096ef    c3
 .Lbl_addr_0x006096f0:    xor.s             eax, eax                                      // 0x006096f0    33c0
@@ -1008,11 +1008,11 @@ _jmp_addr_0x00609cc0:    sub               esp, 0x0c                            
                          mov.s             esi, eax                                      // 0x00609cca    8bf0
                          fld               dword ptr [esi]                               // 0x00609ccc    d906
                          {disp32} fmul     dword ptr [rdata_bytes + 0x3400]              // 0x00609cce    d80d00c48a00
-                         call              _jmp_addr_0x007a1400                          // 0x00609cd4    e827771900
+                         call              __ftol                                        // 0x00609cd4    e827771900
                          {disp8} fld       dword ptr [esi + 0x08]                        // 0x00609cd9    d94608
                          {disp32} fmul     dword ptr [rdata_bytes + 0x3400]              // 0x00609cdc    d80d00c48a00
                          mov.s             edi, eax                                      // 0x00609ce2    8bf8
-                         call              _jmp_addr_0x007a1400                          // 0x00609ce4    e817771900
+                         call              __ftol                                        // 0x00609ce4    e817771900
                          {disp8} mov       ecx, dword ptr [esp + 0x18]                   // 0x00609ce9    8b4c2418
                          mov.s             edx, ecx                                      // 0x00609ced    8bd1
                          mov               dword ptr [edx], edi                          // 0x00609cef    893a
@@ -1175,7 +1175,7 @@ _jmp_addr_0x00609cc0:    sub               esp, 0x0c                            
                          fstp              dword ptr [esp]                               // 0x00609eda    d91c24
                          {disp8} fld       dword ptr [esi + 0x68]                        // 0x00609edd    d94668
                          fchs                                                            // 0x00609ee0    d9e0
-                         call              _jmp_addr_0x007a1400                          // 0x00609ee2    e819751900
+                         call              __ftol                                        // 0x00609ee2    e819751900
                          {disp8} mov       edx, dword ptr [ebp + 0x00]                   // 0x00609ee7    8b5500
                          push              eax                                           // 0x00609eea    50
                          neg               edx                                           // 0x00609eeb    f7da

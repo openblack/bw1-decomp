@@ -39,6 +39,26 @@ struct LHMatrix;
 class CHand: public Morphable
 {
 public:
+    union State
+    {
+        struct Named
+        {
+          HandStateInvisible* invisible;  /* 0x0 */
+          HandStateNormal* normal;
+          HandStateCamera* camera;
+          HandStateTug* tug;
+          HandStateHolding* holding;  /* 0x10 */
+          HandStateTotem* totem;
+          HandStateMultiPickUp* multi_pick_up;
+          HandStateCreature* creature;
+          HandStateGrain* grain;  /* 0x20 */
+          HandStatePlayAnim* play_anim;
+          HandStateCitadel* citadel;
+        };
+        Named named;
+        HandState* raw[0xb];
+    };
+
     float field_0x4834;
     float max_distance_from_user;
     int field_0x483c;
@@ -66,7 +86,7 @@ public:
     uint8_t field_0x4876;
     uint8_t field_0x4877;
     uint32_t current_state;
-    CHand__State hand_states;
+    State hand_states;
     uint8_t field_0x48a8;
     uint8_t field_0x48a9;
     uint8_t field_0x48aa;
@@ -220,6 +240,8 @@ public:
 
     // Non-virtual methods
 
+    // win1.41 0046c050 mac 101c8990 CHand::StartFixedPosAnimation()
+    void StartFixedPosAnimation(LHPoint& pos, int32_t animation);
     // win1.41 0046c260 mac 101c86d0 CHand::ToggleLeftRight(void)
     void ToggleLeftRight();
     // win1.41 0046d2c0 mac 101c76b0 CHand::LoadBinary(char *, int)

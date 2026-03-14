@@ -52,9 +52,9 @@ public:
     // win1.41 0071be30 mac 1050fb30 DeadTree::GetGuidanceResourceType(void)
     virtual uint32_t GetGuidanceResourceType();
     // win1.41 00511630 mac 100c1a50 DeadTree::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 005115c0 mac 100c1b30 DeadTree::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 005109e0 mac 100c4120 DeadTree::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 005109d0 mac inlined DeadTree::IsRock_0(void)
@@ -82,7 +82,7 @@ public:
     // win1.41 00511590 mac 100c1c50 DeadTree::GetWeight(void)
     virtual float GetWeight();
     // win1.41 00510a90 mac 100c3b20 DeadTree::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00511ad0 mac 100c1020 DeadTree::GetWoodValue(void)
     virtual float GetWoodValue();
     // win1.41 005110c0 mac 100c28d0 DeadTree::GetResourceType(void)
@@ -114,7 +114,7 @@ public:
     // win1.41 00510ca0 mac 100c3670 DeadTree::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 00511a10 mac 100c1250 DeadTree::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 00510e30 mac 100c2e50 DeadTree::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 00511200 mac 100c2450 DeadTree::IsARootedObject(void)

@@ -15,7 +15,7 @@
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
 .extern _jmp_addr_0x0056aca0
 .extern _jmp_addr_0x0056b4b0
-.extern _jmp_addr_0x007a1400
+.extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern ___nw__FUl
 
@@ -265,7 +265,7 @@ _jmp_addr_0x0056d270:    push              ebx                                  
                          test              ebp, ebp                                      // 0x0056d4e2    85ed
                          {disp8} je        .Lbl_addr_0x0056d545                          // 0x0056d4e4    745f
                          {disp8} fld       dword ptr [esp + 0x28]                        // 0x0056d4e6    d9442428
-                         call              _jmp_addr_0x007a1400                          // 0x0056d4ea    e8113f2300
+                         call              __ftol                                        // 0x0056d4ea    e8113f2300
                          {disp8} fld       dword ptr [esp + 0x28]                        // 0x0056d4ef    d9442428
                          xor.s             ecx, ecx                                      // 0x0056d4f3    33c9
                          {disp8} fadd      dword ptr [esp + 0x20]                        // 0x0056d4f5    d8442420
@@ -284,7 +284,7 @@ _jmp_addr_0x0056d270:    push              ebx                                  
                          push              eax                                           // 0x0056d516    50
                          push              ebx                                           // 0x0056d517    53
                          push              0x28                                          // 0x0056d518    6a28
-                         call              _jmp_addr_0x007a1400                          // 0x0056d51a    e8e13e2300
+                         call              __ftol                                        // 0x0056d51a    e8e13e2300
                          {disp8} mov       edx, dword ptr [esp + 0x38]                   // 0x0056d51f    8b542438
                          sub.s             eax, edi                                      // 0x0056d523    2bc7
                          push              eax                                           // 0x0056d525    50

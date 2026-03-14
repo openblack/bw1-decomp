@@ -41,7 +41,7 @@ public:
     // win1.41 00643fd0 mac inlined PFootball::Draw(void)
     virtual void Draw();
     // win1.41 00644030 mac inlined PFootball::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 00643980 mac inlined PFootball::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
     // win1.41 00643950 mac inlined PFootball::IsPlaytimeStructure(void)
@@ -53,7 +53,7 @@ public:
     // win1.41 006438f0 mac inlined PFootball::IsRepaired(void)
     virtual bool IsRepaired();
     // win1.41 00643910 mac inlined PFootball::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_tcorrect IsBuilt();
 };
 
 // win1.41 00bfed58 mac inlined PPlannedFootball::`RTTI Type Descriptor'

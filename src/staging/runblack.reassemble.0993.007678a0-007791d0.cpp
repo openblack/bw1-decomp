@@ -1031,13 +1031,13 @@ void Fragment::EndPhysics(PhysicsObject* param_1, bool param_2)
 }
 
 // win1.41 0076f5d0 mac 1015b130 Fragment::Save(GameOSFile &)
-bool Fragment::Save(GameOSFile& file)
+bool32_tcorrect Fragment::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0076f6a0 mac 1015afa0 Fragment::Load(GameOSFile &)
-bool Fragment::Load(GameOSFile& file)
+bool32_tcorrect Fragment::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1083,13 +1083,13 @@ VortexSave::~VortexSave()
 }
 
 // win1.41 0076fb40 mac 1015ed90 VortexSave::Save(GameOSFile &)
-bool VortexSave::Save(GameOSFile& file)
+bool32_tcorrect VortexSave::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0076fdc0 mac 1015e890 VortexSave::Load(GameOSFile &)
-bool VortexSave::Load(GameOSFile& file)
+bool32_tcorrect VortexSave::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1160,13 +1160,13 @@ void GClimate::ToBeDeleted(int param_1)
 }
 
 // win1.41 00773320 mac 1059f860 GClimate::Save(GameOSFile &)
-bool GClimate::Save(GameOSFile& file)
+bool32_tcorrect GClimate::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007736e0 mac 1059ef90 GClimate::Load(GameOSFile &)
-bool GClimate::Load(GameOSFile& file)
+bool32_tcorrect GClimate::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1204,13 +1204,13 @@ void WeatherThing::SetSpeedInMetres(float param_1, int param_2)
 }
 
 // win1.41 007745c0 mac 105a4300 WeatherThing::Save(GameOSFile &)
-bool WeatherThing::Save(GameOSFile& file)
+bool32_tcorrect WeatherThing::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007747e0 mac 105a3fe0 WeatherThing::Load(GameOSFile &)
-bool WeatherThing::Load(GameOSFile& file)
+bool32_tcorrect WeatherThing::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1221,7 +1221,7 @@ void Whale::ToBeDeleted(int param_1)
 }
 
 // win1.41 00774ca0 mac 10160a20 Whale::CallVirtualFunctionsForCreation(MapCoords const &)
-void Whale::CallVirtualFunctionsForCreation(const MapCoords* param_1)
+void Whale::CallVirtualFunctionsForCreation(const MapCoords& param_1)
 {
 }
 
@@ -1237,13 +1237,13 @@ uint32_t Whale::Process()
 }
 
 // win1.41 007752a0 mac 101600f0 Whale::Save(GameOSFile &)
-bool Whale::Save(GameOSFile& file)
+bool32_tcorrect Whale::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007752c0 mac 10160090 Whale::Load(GameOSFile &)
-bool Whale::Load(GameOSFile& file)
+bool32_tcorrect Whale::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1296,19 +1296,19 @@ void Wonder::SetPower(float param_1)
 }
 
 // win1.41 00779080 mac 10161540 Wonder::Save(GameOSFile &)
-bool Wonder::Save(GameOSFile& file)
+bool32_tcorrect Wonder::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007790f0 mac 10161470 Wonder::Load(GameOSFile &)
-bool Wonder::Load(GameOSFile& file)
+bool32_tcorrect Wonder::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00779160 mac 101613c0 Wonder::CallVirtualFunctionsForCreation(const MapCoords&)
-void Wonder::CallVirtualFunctionsForCreation(const MapCoords* coords)
+void Wonder::CallVirtualFunctionsForCreation(const MapCoords& coords)
 {
 }
 

@@ -27,7 +27,7 @@ class Villager;
 class TownStats: public Base
 {
 public:
-    int num_adults; /* 0x8 */
+    uint32_t num_adults; /* 0x8 */
     int num_children;
     uint32_t field_0x10;
     uint32_t field_0x14;
@@ -38,7 +38,7 @@ public:
     uint32_t field_0x28;
     uint32_t field_0x2c;
     uint32_t field_0x30;
-    uint32_t field_0x34;
+    int32_t field_0x34;
     uint32_t field_0x38;
     uint32_t field_0x3c;
     uint32_t field_0x40;

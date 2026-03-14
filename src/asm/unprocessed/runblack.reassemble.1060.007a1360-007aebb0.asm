@@ -28,7 +28,7 @@
 .extern _jmp_addr_0x008a2610
 .extern _jmp_addr_0x008a30a0
 
-.globl _jmp_addr_0x007a1400
+.globl __ftol
 .globl _jmp_addr_0x007a1480
 .globl _jmp_addr_0x007a1800
 .globl _jmp_addr_0x007ac9e0
@@ -171,7 +171,7 @@ _globl_ct_0x007a13d0:    {disp32} mov         cl, byte ptr [_DAT_00fac934]      
                          nop                                                                   // 0x007a13fd    90
                          nop                                                                   // 0x007a13fe    90
                          nop                                                                   // 0x007a13ff    90
-_jmp_addr_0x007a1400:    {disp32} mov         eax, dword ptr [_DAT_00e83a20]                   // 0x007a1400    a1203ae800
+__ftol:                  {disp32} mov         eax, dword ptr [_DAT_00e83a20]                   // 0x007a1400    a1203ae800
                          {disp8} lea          ecx, dword ptr [esp + -0x08]                     // 0x007a1405    8d4c24f8
                          and                  ecx, 0xfffffff8                                  // 0x007a1409    83e1f8
                          test                 eax, eax                                         // 0x007a140c    85c0

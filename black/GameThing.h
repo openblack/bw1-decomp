@@ -104,7 +104,7 @@ public:
     // win1.41 00405180 mac 104788b0 GameThing::GetNearestPathTo(MapCoords const &, float, int)
     virtual uint32_t GetNearestPathTo(const MapCoords& param_1, float param_2, int param_3);
     // win1.41 00570330 mac 100e4740 GameThing::UseFootpathIfNecessary(Living *, MapCoords const &, unsigned char)
-    virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords* param_2, unsigned char param_3); /* 0x80 */
+    virtual void UseFootpathIfNecessary(Living* param_1, const MapCoords& param_2, unsigned char param_3); /* 0x80 */
     // win1.41 00405190 mac 103dffc0 GameThing::AddFootpath(GFootpath *)
     virtual uint32_t AddFootpath(GFootpath* param_1);
     // win1.41 004051a0 mac 103dff70 GameThing::RemoveFootpath(GFootpath *)
@@ -146,7 +146,7 @@ public:
     // win1.41 00405230 mac 10199e20 GameThing::DrawInHand(GInterfaceStatus *)
     virtual void DrawInHand(GInterfaceStatus* param_1); /* 0xd0 */
     // win1.41 00405240 mac 10067860 GameThing::IsFunctional(void)
-    virtual bool IsFunctional();
+    virtual bool32_tcorrect IsFunctional();
     // win1.41 00425da0 mac 1054ef00 GameThing::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0071bc20 mac 1050ff50 GameThing::GetSampleForAttack(void)
@@ -156,13 +156,13 @@ public:
     // win1.41 00401930 mac 1017a550 GameThing::GetShowNeedsPos(unsigned long, MapCoords *)
     virtual uint32_t GetShowNeedsPos(uint32_t param_1, MapCoords* param_2);
     // win1.41 0056fcf0 mac 103807f0 GameThing::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& file);
+    virtual bool32_tcorrect Load(GameOSFile& file);
     // win1.41 0056fbe0 mac 101724b0 GameThing::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& file);
+    virtual bool32_tcorrect Save(GameOSFile& file);
     // win1.41 0056fd90 mac 101361c0 GameThing::GetSaveType(void)
     virtual uint32_t GetSaveType(); /* 0xf0 */
     // win1.41 0056fda0 mac 100bc180 GameThing::SaveExtraData(GameOSFile &)
-    virtual void SaveExtraData(GameOSFile* file);
+    virtual void SaveExtraData(GameOSFile& file);
     // win1.41 00405250 mac 1057b140 GameThing::ResolveLoad(void)
     virtual void ResolveLoad();
 
@@ -992,7 +992,7 @@ uint32_t __fastcall GetShowNeedsPos__9GameThingFUlP9MapCoords(struct GameThing* 
 // win1.41 0056fcf0 mac 103807f0 GameThing::Load(GameOSFile &)
 uint32_t __fastcall Load__9GameThingFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@GameThing@@QAEIAAVGGameOSFile@@@Z");
 // win1.41 0056fbe0 mac 101724b0 GameThing::Save(GameOSFile &)
-uint32_t __fastcall Save__9GameThingFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@GameThing@@QAEIAAVGGameOSFile@@@Z");
+uint32_t __fastcall Save__9GameThingFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@GameThing@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0056fd90 mac 101361c0 GameThing::GetSaveType(void)
 uint32_t __fastcall GetSaveType__9GameThingFv(struct GameThing* this) asm("?GetSaveType@GameThing@@UAEIXZ");
 // win1.41 0056fda0 mac 100bc180 GameThing::SaveExtraData(GameOSFile &)

@@ -52,13 +52,13 @@ public:
     // win1.41 006088b0 mac 103c0890 MobileStatic::GetPlayer(void)
     virtual GPlayer* GetPlayer();
     // win1.41 004396a0 mac 100b4460 MobileStatic::IsFunctional(void)
-    virtual bool IsFunctional();
+    virtual bool32_tcorrect IsFunctional();
     // win1.41 0055d750 mac 103b9760 MobileStatic::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 00608590 mac 103c1060 MobileStatic::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 00608650 mac 103c0f20 MobileStatic::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 0055d740 mac 103b9720 MobileStatic::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 0055d720 mac 103af140 MobileStatic::PhysicsEditorCreate(int)
@@ -122,7 +122,7 @@ public:
     // win1.41 00608de0 mac 103bfb00 MobileStatic::GetWorldMatrix(LHMatrix *)
     virtual void GetWorldMatrix(LHMatrix* param_1);
     // win1.41 00609700 mac 103be330 MobileStatic::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 006096b0 mac 103be4f0 MobileStatic::GetResourceType(void)
     virtual RESOURCE_TYPE GetResourceType();
     // win1.41 006096d0 mac 103be450 MobileStatic::GetDefaultResource(void)
@@ -152,7 +152,7 @@ public:
     // win1.41 00608fc0 mac 103bf8c0 MobileStatic::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
     // win1.41 00609320 mac 103bee30 MobileStatic::CanBecomeAPhysicsObject(void)
-    virtual bool CanBecomeAPhysicsObject();
+    virtual bool32_tcorrect CanBecomeAPhysicsObject();
     // win1.41 00609010 mac 103bf860 MobileStatic::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 00608ac0 mac 103c0450 MobileStatic::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
@@ -191,7 +191,7 @@ public:
     // win1.41 00609540 mac 103be980 GBaseOnly::Draw(void)
     virtual void Draw();
     // win1.41 006093a0 mac 103beb00 GBaseOnly::CallVirtualFunctionsForCreation(MapCoords const &)
-    virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
+    virtual void CallVirtualFunctionsForCreation(const MapCoords& coords);
     // win1.41 006095e0 mac 103be5b0 GBaseOnly::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile& file, const MapCoords& coords);
 };

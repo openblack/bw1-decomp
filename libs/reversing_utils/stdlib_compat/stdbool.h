@@ -2,7 +2,8 @@
 
 #ifdef __cplusplus
 
-typedef bool bool32_t;
+typedef bool bool32_t; // FIXME: This is a bug
+typedef unsigned int bool32_tcorrect;
 
 #endif // __cplusplus
 

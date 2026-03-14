@@ -35,9 +35,9 @@ public:
     // win1.41 00561060 mac 10501620 ScriptMarker::GetDebugText(void)
     virtual char* GetDebugText();
     // win1.41 0070d9f0 mac 10501660 ScriptMarker::Load(GameOSFile &)
-    virtual bool Load(GameOSFile& param_1);
+    virtual bool32_tcorrect Load(GameOSFile& param_1);
     // win1.41 0070d9d0 mac 105016d0 ScriptMarker::Save(GameOSFile &)
-    virtual bool Save(GameOSFile& param_1);
+    virtual bool32_tcorrect Save(GameOSFile& param_1);
     // win1.41 00561050 mac 105015e0 ScriptMarker::GetSaveType(void)
     virtual uint32_t GetSaveType();
     // win1.41 00561030 mac 10501550 ScriptMarker::PhysicsEditorCreate(int)

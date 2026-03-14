@@ -100,8 +100,9 @@ GCamera::~GCamera()
 }
 
 // win1.41 00441b60 mac 1006e040 MapCoords::MapCoords(void)
-MapCoords::MapCoords(const MapCoords& coords)
+MapCoords& MapCoords::operator=(const MapCoords& coords)
 {
+    return *this;
 }
 
 // win1.41 00441b70 mac 1019a650 GCamera::CantExitCurrentMode(void)
@@ -167,13 +168,13 @@ void GCamera::UpdateGameThingWithPosData()
 }
 
 // win1.41 004430e0 mac 10198d40 GCamera::Save(GameOSFile &)
-bool GCamera::Save(GameOSFile& file)
+bool32_tcorrect GCamera::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 004433a0 mac 10198870 GCamera::Load(GameOSFile &)
-bool GCamera::Load(GameOSFile& file)
+bool32_tcorrect GCamera::Load(GameOSFile& file)
 {
     return 0;
 }

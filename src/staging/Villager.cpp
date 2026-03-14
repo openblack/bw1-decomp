@@ -6,9 +6,9 @@
 #include <stdint.h>
 
 // win1.41 0074f880 mac 10571e50 GVillagerInfo::GetMesh( const(void))
-uint32_t GVillagerInfo::GetMesh() const
+MeshId GVillagerInfo::GetMesh() const
 {
-    return 0;
+    return (MeshId)0;
 }
 
 // win1.41 0074f890 mac 10571e90 GVillagerInfo::GetBaseInfo(unsigned long &)
@@ -350,7 +350,7 @@ uint32_t Villager::SaveObject(LHOSFile& param_1, const MapCoords& param_2)
 }
 
 // win1.41 00751cf0 mac 100199f0 Villager::IsFunctional(void)
-bool Villager::IsFunctional()
+bool32_tcorrect Villager::IsFunctional()
 {
     return 0;
 }
@@ -811,13 +811,13 @@ bool Villager::FindDisciplePrayerPos(MapCoords* param_1)
 }
 
 // win1.41 00754280 mac 10568d70 Villager::Save(GameOSFile &)
-bool Villager::Save(GameOSFile& file)
+bool32_tcorrect Villager::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00754580 mac 10568980 Villager::Load(GameOSFile &)
-bool Villager::Load(GameOSFile& file)
+bool32_tcorrect Villager::Load(GameOSFile& file)
 {
     return 0;
 }
@@ -1190,7 +1190,7 @@ bool Villager::ValidForPlaceInHand(GInterfaceStatus* param_1)
 }
 
 // win1.41 007564c0 mac 10565140 Villager::CanBecomeAPhysicsObject(void)
-bool Villager::CanBecomeAPhysicsObject()
+bool32_tcorrect Villager::CanBecomeAPhysicsObject()
 {
     return 0;
 }
@@ -1298,13 +1298,13 @@ void MissionaryControl::ToBeDeleted(int param_1)
 }
 
 // win1.41 007568a0 mac 105646b0 MissionaryControl::Load(GameOSFile &)
-bool MissionaryControl::Load(GameOSFile& param_1)
+bool32_tcorrect MissionaryControl::Load(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 007568e0 mac 10564610 MissionaryControl::Save(GameOSFile &)
-bool MissionaryControl::Save(GameOSFile& param_1)
+bool32_tcorrect MissionaryControl::Save(GameOSFile& file)
 {
     return 0;
 }

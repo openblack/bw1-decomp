@@ -46,7 +46,7 @@ bool __fastcall IsRepaired__5AbodeFv(struct MultiMapFixed* this)
 {
     asm("mov                eax, dword ptr [ecx]       ");  // 0x004016a0    8b01
     asm("call               dword ptr [eax + 0x884]    ");  // 0x004016a2    ff9084080000
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");  // 0x004016a8    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");  // 0x004016a8    d81d90a38a00
     asm("fnstsw             ax                         ");  // 0x004016ae    dfe0
     asm("test               ah, 0x01                   ");  // 0x004016b0    f6c401
     asm("{disp8} jne        LAB__addr_0x004016bb       ");  // 0x004016b3    7506
@@ -67,7 +67,7 @@ bool __fastcall IsBuilt__5AbodeFv(struct MultiMapFixed* this)
     asm("{disp8} je         LAB__addr_0x004016e4       ");  // 0x004016c7    741b
     asm("mov                edx, dword ptr [ecx]       ");  // 0x004016c9    8b11
     asm("call               dword ptr [edx + 0x880]    ");  // 0x004016cb    ff9280080000
-    asm("{disp32} fcomp     dword ptr [_rdata_float1p0]");  // 0x004016d1    d81d90a38a00
+    asm("{disp32} fcomp     dword ptr [__real@4@3fff8000000000000000]");  // 0x004016d1    d81d90a38a00
     asm("fnstsw             ax                         ");  // 0x004016d7    dfe0
     asm("test               ah, 0x01                   ");  // 0x004016d9    f6c401
     asm("{disp8} jne        LAB__addr_0x004016e4       ");  // 0x004016dc    7506

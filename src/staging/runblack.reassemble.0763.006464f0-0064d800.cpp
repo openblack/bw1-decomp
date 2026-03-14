@@ -31,13 +31,13 @@ bool32_t PlannedMultiMapFixed::CreateBuildingSite()
 }
 
 // win1.41 00648990 mac 10114ef0 PlannedMultiMapFixed::Save(GameOSFile &)
-bool PlannedMultiMapFixed::Save(GameOSFile& file)
+bool32_tcorrect PlannedMultiMapFixed::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 00648af0 mac 10114cd0 PlannedMultiMapFixed::Load(GameOSFile &)
-bool PlannedMultiMapFixed::Load(GameOSFile& file)
+bool32_tcorrect PlannedMultiMapFixed::Load(GameOSFile& file)
 {
     return 0;
 }

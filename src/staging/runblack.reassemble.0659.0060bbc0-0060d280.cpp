@@ -63,13 +63,13 @@ float MobileWallHug::GetDefaultSpeedInMetresPerSecond()
 }
 
 // win1.41 0060c420 mac 103c28c0 MobileWallHug::Save(GameOSFile &)
-bool MobileWallHug::Save(GameOSFile& file)
+bool32_tcorrect MobileWallHug::Save(GameOSFile& file)
 {
     return 0;
 }
 
 // win1.41 0060c740 mac 103c23a0 MobileWallHug::Load(GameOSFile &)
-bool MobileWallHug::Load(GameOSFile& file)
+bool32_tcorrect MobileWallHug::Load(GameOSFile& file)
 {
     return 0;
 }
