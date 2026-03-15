@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x00563410
 .extern ??0GameThing@@QAE@XZ
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
-.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
+.extern ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern ?SetToZero@GameThingWithPos@@QAEXXZ
 .extern @GetLHPoint__9MapCoordsCFv@12
@@ -743,7 +743,7 @@ _jmp_addr_0x0063e580:    {disp8} mov       ecx, dword ptr [esp + 0x08]          
                          push              edi                                           // 0x0063e5d5    57
                          mov.s             edi, ecx                                      // 0x0063e5d6    8bf9
                          push              esi                                           // 0x0063e5d8    56
-                         call              ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x0063e5d9    e8121ef3ff
+                         call              ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z // 0x0063e5d9    e8121ef3ff
                          test              eax, eax                                      // 0x0063e5de    85c0
                          {disp32} je       .Lbl_addr_0x0063e6ba                          // 0x0063e5e0    0f84d4000000
                          {disp32} mov      eax, dword ptr [_DAT_00bec990]                // 0x0063e5e6    a190c9be00

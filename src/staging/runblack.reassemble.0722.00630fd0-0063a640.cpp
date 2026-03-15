@@ -1,3 +1,8 @@
+#include <string.h>
+#include <lionhead/lh3dlib/development/LHMatrix.h>
+#include <lionhead/lh3dlib/development/LHPoint.h>
+
+#include "GameThingWithPos.h"
 #include "MPFEChangedMapMessage.h"
 #include "MPFEMapErrorMessage.h"
 #include "MPFEChangedTeamRequestMessage.h"
@@ -8,6 +13,9 @@
 #include "Network.h"
 #include "ObjectInfo.h"
 #include "Object.h"
+#include "GameOSFile.h"
+#include "FireEffect.h"
+#include "PhysicsObject.h"
 
 // win1.41 00631270 mac 103969e0 MPFEChangedMapMessage::_dt(void)
 MPFEChangedMapMessage::~MPFEChangedMapMessage()
@@ -754,7 +762,55 @@ uint32_t Object::GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Vill
 // win1.41 00639b90 mac 103d1d50 Object::Save(GameOSFile &)
 bool32_t Object::Save(GameOSFile& file)
 {
-    return 0;
+    if (GameThingWithPos::Save(file))
+    {
+        file.WriteInfo(info);
+        GameOSFileWriteCheckSum(file, obj_coords);
+        GameOSFileWriteCheckSum(file, field_0x3c);
+        GameOSFileWriteCheckSum(file, life);
+        GameOSFileWriteCheckSum(file, scale);
+        GameOSFileWriteCheckSum(file, y_angle);
+        file.WritePtr(fire_effect);
+        if ((field_0x24 & 0x40) && !(field_0xa & 0x10))
+        {
+            PhysicsObject* physObj = PhysicsObject::SearchForPhysicsObject(this);
+            LHMatrix m;
+            LHPoint p1;
+            LHPoint p2;
+            if (physObj != NULL)
+            {
+                m = physObj->field_0xa4;
+                p1 = physObj->field_0x104;
+                p2 = physObj->field_0x90;
+            }
+            else
+            {
+                m.m[0xb] = 0.0f;
+                m.m[10] = 0.0f;
+                m.m[9] = 0.0f;
+                m.m[7] = 0.0f;
+                m.m[6] = 0.0f;
+                m.m[5] = 0.0f;
+                m.m[3] = 0.0f;
+                m.m[2] = 0.0f;
+                m.m[1] = 0.0f;
+                m.m[8] = 1.0f;
+                m.m[4] = 1.0f;
+                m.m[0] = 1.0f;
+                p1.z = 0.0f;
+                p1.y = 0.0f;
+                p1.x = 0.0f;
+                p2.z = 0.0f;
+                p2.y = 0.0f;
+                p2.x = 0.0f;
+            }
+            GameOSFileWriteCheckSum(file, m);
+            GameOSFileWriteCheckSum(file, p1);
+            GameOSFileWriteCheckSum(file, p2);
+        }
+        return true;
+    }
+    return false;
 }
 
 // win1.41 00639eb0 mac 103d1b20 Object::Load(GameOSFile &)

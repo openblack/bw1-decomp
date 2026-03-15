@@ -285,7 +285,13 @@ uint32_t GameThingWithPos::GetFOVHelpCondition()
 // win1.41 005703f0 mac 10512f10 GameThingWithPos::Save(GameOSFile &)
 bool32_t GameThingWithPos::Save(GameOSFile& file)
 {
-    return 0;
+    if (GameThing::Save(file))
+    {
+        GameOSFileWriteCheckSum(file, coords);
+        GameOSFileWriteCheckSum(file, field_0x24);
+        return true;
+    }
+    return false;
 }
 
 // win1.41 005704a0 mac 1016a2c0 GameThingWithPos::Load(GameOSFile &)

@@ -83,7 +83,7 @@
 .extern _jmp_addr_0x00639a10
 .extern _jmp_addr_0x00639a60
 .extern ?GetRainCoolingMultiplier@Object@@UAEMXZ
-.extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
+.extern ?Save@Object@@UAEIAAVGameOSFile@@@Z
 .extern @Load__6ObjectFR10GameOSFile@12
 .extern _jmp_addr_0x0063e370
 .extern _jmp_addr_0x0063e580
@@ -21516,7 +21516,7 @@ _jmp_addr_0x00682fa0:    push               esi                                 
                          push               edi                                           // 0x006832b5    57
                          mov.s              edi, ecx                                      // 0x006832b6    8bf9
                          push               esi                                           // 0x006832b8    56
-                         call               ?Save@Object@@UAEIPAVGameOSFile@@@Z           // 0x006832b9    e8d268fbff
+                         call               ?Save@Object@@UAEIAAVGameOSFile@@@Z           // 0x006832b9    e8d268fbff
                          test               eax, eax                                      // 0x006832be    85c0
                          {disp8} je         .Lbl_addr_0x00683311                          // 0x006832c0    744f
                          {disp8} lea        eax, dword ptr [edi + 0x5c]                   // 0x006832c2    8d475c

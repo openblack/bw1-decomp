@@ -10849,7 +10849,7 @@ uint32_t __fastcall Save__17MissionaryControlFR10GameOSFile(struct GameThing* th
     asm("{disp8} mov        edi, dword ptr [esp + 0x0c]");                   // 0x007568e2    8b7c240c
     asm("mov.s              esi, ecx");                                      // 0x007568e6    8bf1
     asm("push               edi");                                           // 0x007568e8    57
-    asm("call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z"); // 0x007568e9    e8029be1ff
+    asm("call               ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z"); // 0x007568e9    e8029be1ff
     asm("test               eax, eax");                                      // 0x007568ee    85c0
     asm("{disp8} je         LAB__addr_0x00756912");                          // 0x007568f0    7420
     asm("{disp8} mov        eax, dword ptr [esi + 0x28]");                   // 0x007568f2    8b4628

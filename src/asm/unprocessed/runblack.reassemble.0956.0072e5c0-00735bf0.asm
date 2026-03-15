@@ -49,7 +49,7 @@
 .extern ?Load@GameThing@@UAEIAAVGameOSFile@@@Z
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
-.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
+.extern ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern ?SetToZero@GameThingWithPos@@QAEXXZ
 .extern _jmp_addr_0x0057ca40
@@ -76,13 +76,13 @@
 .extern _jmp_addr_0x006380c0
 .extern _jmp_addr_0x00639a10
 .extern _jmp_addr_0x00639a30
-.extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
+.extern ?Save@Object@@UAEIAAVGameOSFile@@@Z
 .extern @Load__6ObjectFR10GameOSFile@12
 .extern _jmp_addr_0x0063a190
 .extern _jmp_addr_0x0063a940
 .extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x0063b5d0
-.extern _jmp_addr_0x00646950
+.extern ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z
 .extern _jmp_addr_0x0066cf10
 .extern _jmp_addr_0x0066d660
 .extern _jmp_addr_0x0066d6a0
@@ -8050,7 +8050,7 @@ _jmp_addr_0x007336e0:    sub                esp, 0x0c                           
                          test               byte ptr [ebx + 0x24], 0x40                   // 0x0073376d    f6432440
                          {disp8} je         .Lbl_addr_0x007337ab                          // 0x00733771    7438
                          push               ebx                                           // 0x00733773    53
-                         call               _jmp_addr_0x00646950                          // 0x00733774    e8d731f1ff
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                          // 0x00733774    e8d731f1ff
                          add                esp, 0x04                                     // 0x00733779    83c404
                          test               eax, eax                                      // 0x0073377c    85c0
                          {disp8} je         .Lbl_addr_0x007337ab                          // 0x0073377e    742b
@@ -10195,7 +10195,7 @@ _jmp_addr_0x00734a30:    {disp32} mov       eax, dword ptr [_game]              
                          push               edi                                           // 0x00734c95    57
                          mov.s              edi, ecx                                      // 0x00734c96    8bf9
                          push               esi                                           // 0x00734c98    56
-                         call               ?Save@Object@@UAEIPAVGameOSFile@@@Z           // 0x00734c99    e8f24ef0ff
+                         call               ?Save@Object@@UAEIAAVGameOSFile@@@Z           // 0x00734c99    e8f24ef0ff
                          test               eax, eax                                      // 0x00734c9e    85c0
                          {disp32} je        .Lbl_addr_0x00734d2f                          // 0x00734ca0    0f8489000000
                          {disp32} mov       eax, dword ptr [_DAT_00bec990]                // 0x00734ca6    a190c9be00
@@ -10712,7 +10712,7 @@ _jmp_addr_0x00734f70:    {disp32} mov       eax, dword ptr [_game]              
 ?Save@GStreetLight@@UAEIAAVGameOSFile@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00735140    8b442404
                          push               eax                                           // 0x00735144    50
-                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x00735145    e8a6b2e3ff
+                         call               ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z // 0x00735145    e8a6b2e3ff
                          neg                eax                                           // 0x0073514a    f7d8
                          sbb.s              eax, eax                                      // 0x0073514c    1bc0
                          neg                eax                                           // 0x0073514e    f7d8

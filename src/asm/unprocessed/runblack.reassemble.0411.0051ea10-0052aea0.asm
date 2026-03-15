@@ -43,7 +43,7 @@
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
-.extern _jmp_addr_0x00563ea0
+.extern ?WriteInfo@GameOSFile@@QAEXPBVGBaseInfo@@@Z
 .extern @ReadInfo__10GameOSFileFPPC9GBaseInfo@12
 .extern _jmp_addr_0x0056fa80
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
@@ -17780,7 +17780,7 @@ _jmp_addr_0x005293a0:    sub                esp, 0x0c                           
                          push               ebp                                                  // 0x00529b2d    55
                          push               eax                                                  // 0x00529b2e    50
                          mov.s              ecx, esi                                             // 0x00529b2f    8bce
-                         call               _jmp_addr_0x00563ea0                                 // 0x00529b31    e86aa30300
+                         call               ?WriteInfo@GameOSFile@@QAEXPBVGBaseInfo@@@Z                                 // 0x00529b31    e86aa30300
                          {disp32} mov       eax, dword ptr [_DAT_00bec990]                       // 0x00529b36    a190c9be00
                          xor.s              ebp, ebp                                             // 0x00529b3b    33ed
                          cmp.s              eax, ebp                                             // 0x00529b3d    3bc5

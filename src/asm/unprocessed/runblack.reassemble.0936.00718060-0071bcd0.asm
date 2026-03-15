@@ -53,7 +53,7 @@
 .extern ?ConvertMapCoordToLandscapePoint@GLandscape@@SAPAULHPoint@@ABUMapCoords@@AAU2@@Z
 .extern ?Get3DType@Object@@SA?AW4LH3DObject__ObjectType@@W4MESH_LIST@@@Z
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
-.extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
+.extern ?Save@Object@@UAEIAAVGameOSFile@@@Z
 .extern @Load__6ObjectFR10GameOSFile@12
 .extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
 .extern _jmp_addr_0x0063b5d0
@@ -3361,7 +3361,7 @@ _jmp_addr_0x0071a200:    {disp8} fld        dword ptr [ecx + 0x5c]              
                          push               edi                                           // 0x0071a235    57
                          mov.s              edi, ecx                                      // 0x0071a236    8bf9
                          push               esi                                           // 0x0071a238    56
-                         call               ?Save@Object@@UAEIPAVGameOSFile@@@Z           // 0x0071a239    e852f9f1ff
+                         call               ?Save@Object@@UAEIAAVGameOSFile@@@Z           // 0x0071a239    e852f9f1ff
                          test               eax, eax                                      // 0x0071a23e    85c0
                          {disp32} je        .Lbl_addr_0x0071a311                          // 0x0071a240    0f84cb000000
                          {disp32} mov       eax, dword ptr [_DAT_00bec990]                // 0x0071a246    a190c9be00

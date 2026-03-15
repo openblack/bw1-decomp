@@ -6,6 +6,9 @@
 
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
+#include "lionhead/lh3dlib/development/LHMatrix.h"
+#include "lionhead/lh3dlib/development/LHPoint.h"
+
 #include "Base.h" /* For struct Base */
 
 #ifdef __cplusplus
@@ -19,7 +22,13 @@
 class PhysicsObject: public Base
 {
 public:
-    uint8_t field_0x8[0x1a0];
+    uint8_t field_0x8[0x88];
+    LHPoint field_0x90;
+    uint8_t field_0x9c[0x8];
+    LHMatrix field_0xa4;
+    LHMatrix field_0xd4;
+    LHPoint field_0x104;
+    uint8_t field_0x110[0x98];
     float field_0x1a8;
     uint32_t field_0x1ac;
     uint32_t field_0x1b0;
@@ -38,6 +47,11 @@ public:
 
     // win1.41 00644d70 mac 10113d90 PhysicsObject::_dt(void)
     virtual ~PhysicsObject();
+
+    // Static methods
+
+    // win1.41 00646950 mac 10112550 PhysicsObject::SearchForPhysicsObject(Object*)
+    static PhysicsObject* SearchForPhysicsObject(Object* object);
 
     // Constructors
 

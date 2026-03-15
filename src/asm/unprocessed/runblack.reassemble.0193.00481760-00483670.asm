@@ -34,7 +34,7 @@
 .extern _jmp_addr_0x00617a10
 .extern _jmp_addr_0x00618c40
 .extern @GetAnim__9MorphableFll@16
-.extern _jmp_addr_0x00646950
+.extern ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z
 .extern _jmp_addr_0x0064a9f0
 .extern _jmp_addr_0x0068e6e0
 .extern ?LocalRand@GRand@@SAIJ@Z
@@ -1656,7 +1656,7 @@ _jmp_addr_0x00481a40:    push               esi                                 
                          {disp8} je         .Lbl_addr_0x00482bfa                                 // 0x00482bca    742e
                          {disp32} mov       eax, dword ptr [esi + 0x00004834]                    // 0x00482bcc    8b8634480000
                          push               eax                                                  // 0x00482bd2    50
-                         call               _jmp_addr_0x00646950                                 // 0x00482bd3    e8783d1c00
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                                 // 0x00482bd3    e8783d1c00
                          add                esp, 0x04                                            // 0x00482bd8    83c404
                          cmp.s              eax, ebx                                             // 0x00482bdb    3bc3
                          {disp8} je         .Lbl_addr_0x00482bfa                                 // 0x00482bdd    741b

@@ -642,7 +642,7 @@ void __fastcall SetupReactToFlyingObject__8VillagerFP16GameThingWithPosP8Reactio
     asm("mov.s              esi, ecx");                                      // 0x007639e8    8bf1
     asm("call               ___RTDynamicCast");                              // 0x007639ea    e82a200600
     asm("push               eax");                                           // 0x007639ef    50
-    asm("call               _jmp_addr_0x00646950");                          // 0x007639f0    e85b2feeff
+    asm("call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z");                          // 0x007639f0    e85b2feeff
     asm("add                esp, 0x18");                                     // 0x007639f5    83c418
     asm("test               eax, eax");                                      // 0x007639f8    85c0
     asm("{disp32} je        LAB__addr_0x00763a94");                          // 0x007639fa    0f8494000000
@@ -3104,7 +3104,7 @@ bool32_t __fastcall PointAtFlyingObjectReaction__8VillagerFv(struct Villager* th
     asm("mov.s              esi, ecx");                                      // 0x00765454    8bf1
     asm("{disp32} mov       eax, dword ptr [esi + 0x000000bc]");             // 0x00765456    8b86bc000000
     asm("push               eax");                                           // 0x0076545c    50
-    asm("call               _jmp_addr_0x00646950");                          // 0x0076545d    e8ee14eeff
+    asm("call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z");                          // 0x0076545d    e8ee14eeff
     asm("add                esp, 0x04");                                     // 0x00765462    83c404
     asm("test               eax, eax");                                      // 0x00765465    85c0
     asm("{disp32} je        LAB__addr_0x00765529");                          // 0x00765467    0f84bc000000

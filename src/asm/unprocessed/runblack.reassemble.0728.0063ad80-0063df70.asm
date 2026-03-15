@@ -98,7 +98,7 @@
 .extern _jmp_addr_0x0063df70
 .extern _jmp_addr_0x0063e540
 .extern _jmp_addr_0x00644800
-.extern _jmp_addr_0x00646950
+.extern ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z
 .extern _jmp_addr_0x00649810
 .extern _jmp_addr_0x0064a8f0
 .extern _jmp_addr_0x0064af60
@@ -3271,7 +3271,7 @@ _jmp_addr_0x0063c420:    sub                esp, 0x000002f4                     
                          mov.s              ecx, ebx                                       // 0x0063cdf7    8bcb
                          call               _jmp_addr_0x0063df70                           // 0x0063cdf9    e872110000
                          push               eax                                            // 0x0063cdfe    50
-                         call               _jmp_addr_0x00646950                           // 0x0063cdff    e84c9b0000
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                           // 0x0063cdff    e84c9b0000
                          add                esp, 0x04                                      // 0x0063ce04    83c404
                          test               eax, eax                                       // 0x0063ce07    85c0
                          {disp32} je        .Lbl_addr_0x0063ddbf                           // 0x0063ce09    0f84b00f0000

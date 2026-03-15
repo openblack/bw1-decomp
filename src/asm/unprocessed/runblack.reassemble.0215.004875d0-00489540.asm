@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x006182f0
 .extern @GetAnim__9MorphableFll@16
 .extern _jmp_addr_0x00644800
-.extern _jmp_addr_0x00646950
+.extern ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z
 .extern _jmp_addr_0x00646a00
 .extern _jmp_addr_0x0064a9f0
 .extern ?GameRand@GRand@@SAHJ@Z
@@ -796,7 +796,7 @@ _jmp_addr_0x00487fa0:    sub                esp, 0x1c                           
                          test               eax, eax                                      // 0x00487fbe    85c0
                          {disp32} je        .Lbl_addr_0x0048809f                          // 0x00487fc0    0f84d9000000
                          push               eax                                           // 0x00487fc6    50
-                         call               _jmp_addr_0x00646950                          // 0x00487fc7    e884e91b00
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                          // 0x00487fc7    e884e91b00
                          {disp32} fld       dword ptr [esi + 0x00004a08]                  // 0x00487fcc    d986084a0000
                          {disp32} fmul      dword ptr [esi + 0x00000094]                  // 0x00487fd2    d88e94000000
                          add                esp, 0x04                                     // 0x00487fd8    83c404
@@ -1150,7 +1150,7 @@ _jmp_addr_0x004884a0:    sub                esp, 0x58                           
                          test               byte ptr [eax + 0x24], 0x40                   // 0x004884e1    f6402440
                          {disp32} je        .Lbl_addr_0x0048876a                          // 0x004884e5    0f847f020000
                          push               eax                                           // 0x004884eb    50
-                         call               _jmp_addr_0x00646950                          // 0x004884ec    e85fe41b00
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                          // 0x004884ec    e85fe41b00
                          mov.s              ebx, eax                                      // 0x004884f1    8bd8
                          add                esp, 0x04                                     // 0x004884f3    83c404
                          test               ebx, ebx                                      // 0x004884f6    85db
@@ -1889,7 +1889,7 @@ _jmp_addr_0x004887a0:    sub                esp, 0x000000d8                     
                          fmul               st, st(1)                                     // 0x00488f26    d8c9
                          {disp8} fstp       dword ptr [esp + 0x38]                        // 0x00488f28    d95c2438
                          fstp               st(0)                                         // 0x00488f2c    ddd8
-                         call               _jmp_addr_0x00646950                          // 0x00488f2e    e81dda1b00
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                          // 0x00488f2e    e81dda1b00
                          add                esp, 0x04                                     // 0x00488f33    83c404
                          cmp.s              eax, ebp                                      // 0x00488f36    3bc5
                          {disp8} je         .Lbl_addr_0x00488f64                          // 0x00488f38    742a

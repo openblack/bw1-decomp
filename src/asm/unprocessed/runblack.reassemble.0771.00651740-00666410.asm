@@ -65,7 +65,7 @@
 .extern ?Save@GameThing@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@GameThing@@UAEIAAVGameOSFile@@@Z
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
-.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
+.extern ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern ?SetToZero@GameThingWithPos@@QAEXXZ
 .extern _jmp_addr_0x0057c960
@@ -289,7 +289,7 @@ start_0x00651740_0x00666410:
                          push               edi                                            // 0x00651745    57
                          mov.s              edi, ecx                                       // 0x00651746    8bf9
                          push               esi                                            // 0x00651748    56
-                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z  // 0x00651749    e8a2ecf1ff
+                         call               ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z  // 0x00651749    e8a2ecf1ff
                          test               eax, eax                                       // 0x0065174e    85c0
                          {disp32} je        .Lbl_addr_0x00651a14                           // 0x00651750    0f84be020000
                          {disp8} mov        eax, dword ptr [edi + 0x6c]                    // 0x00651756    8b476c
@@ -9694,7 +9694,7 @@ _jmp_addr_0x00657420:    sub                esp, 0x0c                           
                          push               edi                                            // 0x00657646    57
                          mov.s              edi, ecx                                       // 0x00657647    8bf9
                          push               esi                                            // 0x00657649    56
-                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z  // 0x0065764a    e8a18df1ff
+                         call               ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z  // 0x0065764a    e8a18df1ff
                          test               eax, eax                                       // 0x0065764f    85c0
                          {disp32} je        .Lbl_addr_0x00657990                           // 0x00657651    0f8439030000
                          {disp8} mov        eax, dword ptr [edi + 0x28]                    // 0x00657657    8b4728

@@ -739,7 +739,7 @@ VftableAndRTTI WayPoint                                                         
 .long ?GetGuidanceResourceType@GameThing@@UAEIXZ
 .long ?GetShowNeedsPos@GameThing@@UAEIIPAUMapCoords@@@Z
 .long ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
-.long ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
+.long ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z
 .long ?GetSaveType@WayPoint@@UAEIXZ
 .long ?SaveExtraData@GameThing@@QAEXAAVGameOSFile@@@Z
 .long ?ResolveLoad@GameThing@@UAEXXZ

@@ -212,7 +212,7 @@ float __fastcall GetTownArtifactValue__11FixedObjectFv(struct GameThing* this) a
 // win1.41 0052e170 mac inlined FixedObject::Load(GameOSFile &)
 uint32_t __fastcall Load__11FixedObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@Fixed@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0052e140 mac 100e17b0 FixedObject::Save(GameOSFile &)
-uint32_t __fastcall Save__11FixedObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@Fixed@@UAEIPAVGameOSFile@@@Z");
+uint32_t __fastcall Save__11FixedObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@Fixed@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00401400 mac 10513b00 FixedObject::CanBeFrighteningToCreature(Creature *)
 bool32_t __fastcall CanBeFrighteningToCreature__11FixedObjectFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* creature) asm("?CanBeFrighteningToCreature@Fixed@@UAEIPAVCreature@@@Z");
 // win1.41 00401410 mac 10570f10 FixedObject::CanBeSleptNextToByCreature(Creature *)

@@ -92,7 +92,7 @@
 .globl ?GetPlayer@GameThing@@QAEPAVGPlayer@@XZ
 .globl ?SetPlayer@GameThing@@QAEXPAVGPlayer@@@Z
 .globl ?UseFootpathIfNecessary@GameThingWithPos@@QAEXPAVLiving@@ABUMapCoords@@E@Z
-.globl ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
+.globl ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z
 .globl ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .globl ?SetToZero@GameThingWithPos@@QAEXXZ
 .globl _jmp_addr_0x005707f0
@@ -2295,7 +2295,7 @@ _ProcessDeadList__9GameThingFi@4:    {disp32} mov       eax, dword ptr [_game]  
                          nop                                                              // 0x005703ed    90
                          nop                                                              // 0x005703ee    90
                          nop                                                              // 0x005703ef    90
-?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z:    push               ebx                                           // 0x005703f0    53
+?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z:    push               ebx                                           // 0x005703f0    53
                          push               esi                                           // 0x005703f1    56
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x005703f2    8b74240c
                          mov.s              ebx, ecx                                      // 0x005703f6    8bd9

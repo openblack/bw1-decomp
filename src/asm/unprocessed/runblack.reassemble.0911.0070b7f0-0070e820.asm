@@ -19,7 +19,7 @@
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern ??0GameThing@@QAE@XZ
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
-.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
+.extern ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern ?SetToZero@GameThingWithPos@@QAEXXZ
 .extern _jmp_addr_0x005d8a10
@@ -32,7 +32,7 @@
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x0063e580
-.extern _jmp_addr_0x00646950
+.extern ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern _jmp_addr_0x0064bb90
 .extern _jmp_addr_0x0064bbf0
@@ -3337,7 +3337,7 @@ _jmp_addr_0x0070d8d0:    push               ebx                                 
 ?Save@ScriptMarker@@UAEIAAVGameOSFile@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0070d9d0    8b442404
                          push               eax                                           // 0x0070d9d4    50
-                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x0070d9d5    e8162ae6ff
+                         call               ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z // 0x0070d9d5    e8162ae6ff
                          neg                eax                                           // 0x0070d9da    f7d8
                          sbb.s              eax, eax                                      // 0x0070d9dc    1bc0
                          neg                eax                                           // 0x0070d9de    f7d8
@@ -3775,7 +3775,7 @@ _globl_ct_0x0070dab0:    {disp32} jmp       .Lbl_addr_0x0070dac0                
                          add                esp, 0x0000040c                               // 0x0070dea2    81c40c040000
                          ret                                                              // 0x0070dea8    c3
 .Lbl_addr_0x0070dea9:    push               eax                                           // 0x0070dea9    50
-                         call               _jmp_addr_0x00646950                          // 0x0070deaa    e8a18af3ff
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                          // 0x0070deaa    e8a18af3ff
                          add                esp, 0x04                                     // 0x0070deaf    83c404
                          test               eax, eax                                      // 0x0070deb2    85c0
                          {disp8} je         .Lbl_addr_0x0070de80                          // 0x0070deb4    74ca
