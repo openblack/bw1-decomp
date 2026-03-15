@@ -728,7 +728,7 @@ float BuildingSite::GetWoodValue()
 // }
 
 // win1.41 0043c490 mac 100bb090 BuildingSite::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
-uint32_t BuildingSite::AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4, const MapCoords* param_5, int param_6)
+uint32_t BuildingSite::AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4, const MapCoords& param_5, int param_6)
 {
     return 0;
 }
