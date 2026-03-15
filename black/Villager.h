@@ -2191,7 +2191,7 @@ bool __fastcall IsAtOrOnTheWayToWorshipSite__8VillagerFv(struct Villager* this) 
 // win1.41 00752a90 mac 1056b340 Villager::SetScaleForAge(unsigned long)
 void __fastcall SetScaleForAge__8VillagerFUl(struct Villager* this, const void* edx, unsigned long param_1) asm("?SetScaleForAge@Villager@@QAEXK@Z");
 // win1.41 00752b80 mac 1056b240 Villager::SetStateWhenTappedOnAbode(void)
-bool __fastcall SetStateWhenTappedOnAbode__8VillagerFv(struct Villager* this) asm("?SetStateWhenTappedOnAbode@Villager@@QAE_NXZ");
+bool __fastcall SetStateWhenTappedOnAbode__8VillagerFv(struct Villager* this) asm("?SetStateWhenTappedOnAbode@Villager@@QAEIXZ");
 // win1.41 00753140 mac inlined Villager::FUN_00753140(void)
 uint32_t __fastcall FUN_00753140__8VillagerFv(struct Villager* this) asm("?FUN_00753140@Villager@@QAEIXZ");
 // win1.41 007531a0 mac 1056a780 Villager::IsVagrant(void)

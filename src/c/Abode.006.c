@@ -240,7 +240,7 @@ void __fastcall ReduceLife__5AbodeFfP7GPlayer(struct Object* this, const void* e
     asm("{disp8} je         LAB__addr_0x00405e02");                          // 0x00405def    7411
     asm("LAB__addr_0x00405df1:");
     asm("mov.s              ecx, edi");                                      // 0x00405df1    8bcf
-    asm("call               ?SetStateWhenTappedOnAbode@Villager@@QAE_NXZ");                          // 0x00405df3    e888cd3400
+    asm("call               ?SetStateWhenTappedOnAbode@Villager@@QAEIXZ");                          // 0x00405df3    e888cd3400
     asm("{disp32} mov       edi, dword ptr [edi + 0x000000e4]");             // 0x00405df8    8bbfe4000000
     asm("test               edi, edi");                                      // 0x00405dfe    85ff
     asm("{disp8} jne        LAB__addr_0x00405df1");                          // 0x00405e00    75ef
