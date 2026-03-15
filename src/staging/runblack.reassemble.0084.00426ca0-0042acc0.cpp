@@ -80,9 +80,8 @@ void GAudio::PlaySoundEffect(Base* param_1, uint32_t param_2, uint32_t param_3, 
 }
 
 // win1.41 00429e30 mac 10020580 GAudio::PlaySoundEffect(LH_SamplePlayOptions *)
-uint32_t GAudio::PlaySoundEffect(LH_SamplePlayOptions* options)
+void GAudio::PlaySoundEffect(LH_SamplePlayOptions* options)
 {
-    return 0;
 }
 
 // win1.41 0042a210 mac 1017e7d0 GAudio::StopPlayingSoundEffect(unsigned long, unsigned long, AUDIO_SFX_BANK_TYPE) const

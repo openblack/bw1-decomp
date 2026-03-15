@@ -91,12 +91,12 @@ bool32_t Abode::InterfaceTap(GInterfaceStatus* status)
 {
     abode_town_00c4cc6c = GetTown();
     KnockKnock__13HowManyPeopleFv();
-    
+
     for (Villager* villager = villagers.head; villager != NULL; villager = villager->next)
     {
         villager->SetStateWhenTappedOnAbode();
     }
-    
+
     ABODE_TYPE type = GetAbodeType();
     if ((type & ABODE_TYPE_LIVING_QUARTERS) != 0)
     {
@@ -109,10 +109,12 @@ bool32_t Abode::InterfaceTap(GInterfaceStatus* status)
                 hand->StartFixedPosAnimation(hand->position, 0x39);
             }
         }
-        
+
+        float pos_z = status->field_0xc8.z;
+        float pos_y = status->field_0xc8.y;
+        float pos_x = status->field_0xc8.x;
         LH_SamplePlayOptions play_options;
-        
-        play_options.field_0x30 = status->field_0xc8.z;
+
         play_options.field_0x4 = global->debug.field_0x3a8;
         play_options.field_0x24 = windmill_int_00c4cc7c + 0x6e;
         ++windmill_int_00c4cc7c;
@@ -120,14 +122,16 @@ bool32_t Abode::InterfaceTap(GInterfaceStatus* status)
         {
             windmill_int_00c4cc7c = 0;
         }
-        play_options.field_0x34 = status->field_0xc8.y;
-        play_options.field_0x38 = status->field_0xc8.x;
-        play_options.field_0x30 = status->field_0xc8.z;
+        play_options.field_0x34 = pos_y;
+        play_options.field_0x30 = pos_x;
+        play_options.field_0x38 = pos_z;
         play_options.field_0x20 = this;
         play_options.field_0x8 = 1;
-        
+        play_options.field_0xc = 0;
+
         global->audio->PlaySoundEffect(&play_options);
     }
+
     return true;
 }
 
