@@ -91,7 +91,7 @@
 .globl _jmp_addr_0x00429910
 .globl @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .globl _jmp_addr_0x00429da0
-.globl ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.globl ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .globl _jmp_addr_0x0042a000
 .globl _jmp_addr_0x0042a040
 .globl _jmp_addr_0x0042a100
@@ -4663,7 +4663,7 @@ _jmp_addr_0x00429da0:    sub                esp, 0x0c                           
                          nop                                                                     // 0x00429e2d    90
                          nop                                                                     // 0x00429e2e    90
                          nop                                                                     // 0x00429e2f    90
-?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z:    sub                esp, 0x0c                                            // 0x00429e30    83ec0c
+?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z:    sub                esp, 0x0c                                            // 0x00429e30    83ec0c
                          push               ebx                                                  // 0x00429e33    53
                          push               ebp                                                  // 0x00429e34    55
                          mov.s              ebx, ecx                                             // 0x00429e35    8bd9
@@ -4890,7 +4890,7 @@ _jmp_addr_0x0042a040:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
 .Lbl_addr_0x0042a0dd:    {disp32} lea       edx, dword ptr [esi + 0x00000240]                    // 0x0042a0dd    8d9640020000
                          push               edx                                                  // 0x0042a0e3    52
                          mov.s              ecx, esi                                             // 0x0042a0e4    8bce
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z // 0x0042a0e6    e845fdffff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z // 0x0042a0e6    e845fdffff
                          pop                edi                                                  // 0x0042a0eb    5f
                          pop                esi                                                  // 0x0042a0ec    5e
                          ret                0x0020                                               // 0x0042a0ed    c22000
@@ -4957,7 +4957,7 @@ _jmp_addr_0x0042a100:    {disp8} mov        eax, dword ptr [esp + 0x10]         
 .Lbl_addr_0x0042a1b6:    {disp32} lea       ecx, dword ptr [esi + 0x00000240]                    // 0x0042a1b6    8d8e40020000
                          push               ecx                                                  // 0x0042a1bc    51
                          mov.s              ecx, esi                                             // 0x0042a1bd    8bce
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z // 0x0042a1bf    e86cfcffff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z // 0x0042a1bf    e86cfcffff
                          pop                esi                                                  // 0x0042a1c4    5e
                          ret                0x0028                                               // 0x0042a1c5    c22800
 .Lbl_addr_0x0042a1c8:    xor.s              eax, eax                                             // 0x0042a1c8    33c0

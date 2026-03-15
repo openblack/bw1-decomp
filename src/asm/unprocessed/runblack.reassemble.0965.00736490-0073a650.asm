@@ -20,7 +20,7 @@
 .extern _jmp_addr_0x00417c50
 .extern _jmp_addr_0x0041bc90
 .extern ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern @ReleaseLoopOnSoundEffect__6GAudioCFP4BaseUl19AUDIO_SFX_BANK_TYPE@20
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
@@ -2960,7 +2960,7 @@ _jmp_addr_0x00737bf0:    push               esi                                 
                          {disp8} mov        dword ptr [esp + 0x2c], 0x00000001             // 0x007380fb    c744242c01000000
                          {disp8} mov        dword ptr [esp + 0x5c], eax                    // 0x00738103    8944245c
                          {disp8} mov        dword ptr [esp + 0x30], edi                    // 0x00738107    897c2430
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                           // 0x0073810b    e8201dcfff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                           // 0x0073810b    e8201dcfff
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x00738110    8d4c2420
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]  // 0x00738114    ff1558978a00
 .Lbl_addr_0x0073811a:    pop                edi                                            // 0x0073811a    5f

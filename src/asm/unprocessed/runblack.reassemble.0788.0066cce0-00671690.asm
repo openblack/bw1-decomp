@@ -7,7 +7,7 @@
 .extern ?Translation@LHMatrix@@QAEXABULHPoint@@@Z
 .extern ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z
 .extern _jmp_addr_0x00418a50
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
@@ -775,7 +775,7 @@ _jmp_addr_0x0066d1a0:    sub                esp, 0x00000174                     
                          push               eax                                           // 0x0066d25d    50
                          {disp8} mov        dword ptr [esp + 0x54], edx                   // 0x0066d25e    89542454
                          {disp8} mov        dword ptr [esp + 0x28], 0x00000000            // 0x0066d262    c744242800000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0066d26a    e8c1cbdbff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0066d26a    e8c1cbdbff
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x0066d26f    8d4c2418
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0066d273    ff1558978a00
                          pop                edi                                           // 0x0066d279    5f

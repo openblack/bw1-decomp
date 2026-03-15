@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436a70
 .extern _jmp_addr_0x00550e40
@@ -139,7 +139,7 @@ _jmp_addr_0x006da550:    push               esi                                 
                          {disp8} mov        dword ptr [esp + 0x28], 0x00000001            // 0x006da64a    c744242801000000
                          {disp8} mov        dword ptr [esp + 0x24], eax                   // 0x006da652    89442424
                          {disp8} mov        dword ptr [esp + 0x0c], eax                   // 0x006da656    8944240c
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x006da65a    e8d1f7d4ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x006da65a    e8d1f7d4ff
                          {disp8} lea        ecx, dword ptr [esp + 0x00]                   // 0x006da65f    8d4c2400
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x006da663    ff1558978a00
                          mov                eax, 0x00000001                               // 0x006da669    b801000000

@@ -6,7 +6,7 @@
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
 .extern ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
 .extern _jmp_addr_0x00424b80
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
@@ -3852,7 +3852,7 @@ _jmp_addr_0x0071a650:    push               ecx                                 
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x0071a761    8b0d203bcd00
                          add                esp, 0x04                                     // 0x0071a767    83c404
                          push               edx                                           // 0x0071a76a    52
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0071a76b    e8c0f6d0ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0071a76b    e8c0f6d0ff
                          {disp32} mov       eax, dword ptr [_game]                        // 0x0071a770    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00205a40]             // 0x0071a775    8b88405a2000
                          {disp8} mov        dword ptr [esi + 0x1c], ecx                   // 0x0071a77b    894e1c
@@ -3883,7 +3883,7 @@ _jmp_addr_0x0071a650:    push               ecx                                 
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x0071a7c1    8b0d203bcd00
                          add                esp, 0x04                                     // 0x0071a7c7    83c404
                          push               edx                                           // 0x0071a7ca    52
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0071a7cb    e860f6d0ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0071a7cb    e860f6d0ff
                          {disp32} mov       eax, dword ptr [_game]                        // 0x0071a7d0    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00205a40]             // 0x0071a7d5    8b88405a2000
                          {disp8} mov        dword ptr [esi + 0x1c], ecx                   // 0x0071a7db    894e1c
@@ -3914,7 +3914,7 @@ _jmp_addr_0x0071a650:    push               ecx                                 
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x0071a821    8b0d203bcd00
                          add                esp, 0x04                                     // 0x0071a827    83c404
                          push               edx                                           // 0x0071a82a    52
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0071a82b    e800f6d0ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0071a82b    e800f6d0ff
                          {disp32} mov       eax, dword ptr [_game]                        // 0x0071a830    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00205a40]             // 0x0071a835    8b88405a2000
                          {disp8} mov        dword ptr [esi + 0x1c], ecx                   // 0x0071a83b    894e1c
@@ -3935,7 +3935,7 @@ _jmp_addr_0x0071a650:    push               ecx                                 
                          {disp8} mov        edx, dword ptr [esi + 0x20]                   // 0x0071a85f    8b5620
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x0071a862    8b0d203bcd00
                          push               edx                                           // 0x0071a868    52
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0071a869    e8c2f5d0ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0071a869    e8c2f5d0ff
                          {disp32} mov       eax, dword ptr [_game]                        // 0x0071a86e    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00205a40]             // 0x0071a873    8b88405a2000
                          {disp8} mov        dword ptr [esi + 0x1c], ecx                   // 0x0071a879    894e1c
@@ -3972,7 +3972,7 @@ _jmp_addr_0x0071a650:    push               ecx                                 
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x0071a8c1    8b0d203bcd00
                          add                esp, 0x04                                     // 0x0071a8c7    83c404
                          push               edx                                           // 0x0071a8ca    52
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0071a8cb    e860f5d0ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0071a8cb    e860f5d0ff
                          {disp32} mov       eax, dword ptr [_game]                        // 0x0071a8d0    a15c19d000
                          {disp32} mov       ecx, dword ptr [eax + 0x00205a40]             // 0x0071a8d5    8b88405a2000
                          {disp8} mov        dword ptr [esi + 0x1c], ecx                   // 0x0071a8db    894e1c

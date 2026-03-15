@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern _jmp_addr_0x004279a0
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
@@ -1194,7 +1194,7 @@ _jmp_addr_0x00424ab0:    sub                esp, 0x00000174                     
                          {disp8} mov        dword ptr [esp + 0x48], eax                   // 0x00424b2a    89442448
                          {disp8} mov        dword ptr [esp + 0x34], esi                   // 0x00424b2e    89742434
                          {disp8} mov        dword ptr [esp + 0x1c], 0x00000001            // 0x00424b32    c744241c01000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x00424b3a    e8f1520000
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x00424b3a    e8f1520000
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x00424b3f    8d4c2410
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x00424b43    ff1558978a00
                          pop                esi                                           // 0x00424b49    5e

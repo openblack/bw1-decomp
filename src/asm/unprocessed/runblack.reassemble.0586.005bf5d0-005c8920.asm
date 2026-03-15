@@ -7,7 +7,7 @@
 .extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .extern ??$ReadIt@H@GameOSFile@@QAEXAAI@Z
 .extern _jmp_addr_0x0041bce0
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20
 .extern _jmp_addr_0x0042a280
 .extern _jmp_addr_0x0042a4b0
@@ -9823,7 +9823,7 @@ _jmp_addr_0x005c5f90:    sub                esp, 0x0000016c                     
                          {disp8} mov        dword ptr [esp + 0x1c], edx                    // 0x005c60c4    8954241c
                          {disp8} mov        dword ptr [esp + 0x38], 0x0000270f             // 0x005c60c8    c74424380f270000
                          {disp32} mov       dword ptr [esp + 0x0000017c], 0x00000001       // 0x005c60d0    c784247c01000001000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                           // 0x005c60db    e8503de6ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                           // 0x005c60db    e8503de6ff
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x005c60e0    8d4c2414
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]  // 0x005c60e4    ff1558978a00
 .Lbl_addr_0x005c60ea:    pop                edi                                            // 0x005c60ea    5f

@@ -609,7 +609,7 @@ uint32_t __fastcall InterfaceTap__5AbodeFP16GInterfaceStatus(struct Object* this
     asm("{disp8} mov        dword ptr [esp + 0x20], 0x00000001");            // 0x00406936    c744242001000000
     asm("{disp8} mov        dword ptr [esp + 0x50], eax");                   // 0x0040693e    89442450
     asm("{disp8} mov        dword ptr [esp + 0x24], 0x00000000");            // 0x00406942    c744242400000000
-    asm("call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z");                          // 0x0040694a    e8e1340200
+    asm("call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z");                          // 0x0040694a    e8e1340200
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                   // 0x0040694f    8d4c2414
     asm("call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]");   // 0x00406953    ff1558978a00
     asm("LAB__addr_0x00406959:");
