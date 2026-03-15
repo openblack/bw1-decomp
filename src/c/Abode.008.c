@@ -1244,7 +1244,7 @@ void __fastcall FindNearestDrinkingWater__5AbodeFf(struct Abode* this, const voi
     asm("push               ecx");                                           // 0x0040702e    51
     asm("{disp8} lea        edx, dword ptr [esi + 0x14]");                   // 0x0040702f    8d5614
     asm("push               edx");                                           // 0x00407032    52
-    asm("call               ?FindNearestDrinkingWater@GUtils@@SA_NAAUMapCoords@@0M@Z  ");                          // 0x00407033    e868733400
+    asm("call               ?FindNearestDrinkingWater@GUtils@@SAIAAUMapCoords@@0M@Z");                          // 0x00407033    e868733400
     asm("{disp8} mov        cl, byte ptr [esi + 0x7c]");                     // 0x00407038    8a4e7c
     asm("mov.s              dl, cl");                                        // 0x0040703b    8ad1
     asm("xor.s              dl, al");                                        // 0x0040703d    32d0

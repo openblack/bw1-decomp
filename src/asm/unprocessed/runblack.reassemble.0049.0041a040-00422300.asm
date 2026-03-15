@@ -93,7 +93,7 @@
 .extern ?ConvertGameAngleTo3D@GUtils@@SAMJ@Z
 .extern ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z
 .extern _jmp_addr_0x0074e2b0
-.extern ?FindNearestDrinkingWater@GUtils@@SA_NAAUMapCoords@@0M@Z
+.extern ?FindNearestDrinkingWater@GUtils@@SAIAAUMapCoords@@0M@Z
 .extern _jmp_addr_0x0074f310
 .extern __ftol
 .extern  ??3@YAXPAX@Z
@@ -13863,7 +13863,7 @@ _jmp_addr_0x004213c0:    push               esi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x004214d7    8d4c2428
                          push               ecx                                           // 0x004214db    51
                          push               ebp                                           // 0x004214dc    55
-                         call               ?FindNearestDrinkingWater@GUtils@@SA_NAAUMapCoords@@0M@Z                            // 0x004214dd    e8bece3200
+                         call               ?FindNearestDrinkingWater@GUtils@@SAIAAUMapCoords@@0M@Z                            // 0x004214dd    e8bece3200
                          add                esp, 0x0c                                     // 0x004214e2    83c40c
                          test               eax, eax                                      // 0x004214e5    85c0
                          {disp8} jne        .Lbl_addr_0x004214f3                          // 0x004214e7    750a
