@@ -102,7 +102,7 @@ struct MultiMapFixed* __fastcall CreatePlanned__23PlannedTownCitadelHeartFf(stru
 // win1.41 00467ef0 mac 101bd6b0 PlannedTownCitadelHeart::CreatePlannedNoFixedCheck(float)
 struct MultiMapFixed* __fastcall CreatePlannedNoFixedCheck__23PlannedTownCitadelHeartFf(struct PlannedMultiMapFixed* this, const void* edx, float param_1) asm("?CreatePlannedNoFixedCheck@PlannedTownCitadelHeart@@UAEPAVMultiMapFixed@@M@Z");
 // win1.41 00467e10 mac 101c1ee0 PlannedTownCitadelHeart::IsCivic(void)
-bool __fastcall IsCivic__23PlannedTownCitadelHeartFv(struct PlannedMultiMapFixed* this) asm("?IsCivic@PlannedTownCitadelHeart@@UAE_NXZ");
+bool __fastcall IsCivic__23PlannedTownCitadelHeartFv(struct PlannedMultiMapFixed* this) asm("?IsCivic@PlannedTownCitadelHeart@@UAEIXZ");
 // win1.41 00467e30 mac 101c1f60 PlannedTownCitadelHeart::GetAbodeType(void)
 enum ABODE_TYPE __fastcall GetAbodeType__23PlannedTownCitadelHeartFv(struct PlannedMultiMapFixed* this) asm("?GetAbodeType@PlannedTownCitadelHeart@@UAE?AW4ABODE_TYPE@@XZ");
 

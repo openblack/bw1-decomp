@@ -908,11 +908,11 @@ struct GPlayer* __fastcall GetPlayer__8CreatureFv(struct GameThing* this) asm("?
 // win1.41 00473f30 mac 101e2cc0 Creature::RemoveDance(void)
 void __fastcall RemoveDance__8CreatureFv(struct GameThing* this) asm("?RemoveDance@Creature@@UAEXXZ");
 // win1.41 00474090 mac 101e32a0 Creature::IsCreature(Creature *)
-bool __fastcall IsCreature__8CreatureFP8Creature(struct GameThing* this, const void* edx, struct Creature* param_1) asm("?IsCreature@Creature@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsCreature__8CreatureFP8Creature(struct GameThing* this, const void* edx, struct Creature* param_1) asm("?IsCreature@Creature@@UAEIPAVCreature@@@Z");
 // win1.41 00474080 mac inlined Creature::IsCreature_1(void)
-bool __fastcall IsCreature_1__8CreatureFv(struct GameThing* this) asm("?IsCreature@Creature@@UAE_NXZ");
+bool __fastcall IsCreature_1__8CreatureFv(struct GameThing* this) asm("?IsCreature@Creature@@UAEIXZ");
 // win1.41 004e4080 mac 105e6020 Creature::IsCreatureNotTooNear(Creature *)
-bool __fastcall IsCreatureNotTooNear__8CreatureFP8Creature(struct GameThing* this, const void* edx, struct Creature* param_1) asm("?IsCreatureNotTooNear@Creature@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsCreatureNotTooNear__8CreatureFP8Creature(struct GameThing* this, const void* edx, struct Creature* param_1) asm("?IsCreatureNotTooNear@Creature@@UAEIPAVCreature@@@Z");
 // win1.41 0047b1f0 mac 101d48a0 Creature::GetMaxAlignmentChangePerGameTurn(void)
 float __fastcall GetMaxAlignmentChangePerGameTurn__8CreatureFv(struct GameThing* this) asm("?GetMaxAlignmentChangePerGameTurn@Creature@@UAEMXZ");
 // win1.41 004f8350 mac inlined Creature::MaintainSpell(unsigned int, float)
@@ -960,7 +960,7 @@ void __fastcall GetPSysBeamTargetPos__8CreatureFP7LHPoint(struct GameThingWithPo
 // win1.41 00477ac0 mac 101daa00 Creature::GetMovementDirection(LHPoint *)
 void __fastcall GetMovementDirection__8CreatureFP7LHPoint(struct GameThingWithPos* this, const void* edx, struct LHPoint* param_1) asm("?GetMovementDirection@Creature@@UAEXPAULHPoint@@@Z");
 // win1.41 00479e40 mac 101d6a50 Creature::IsMoving( const(void))
-bool __fastcall IsMoving__8CreatureCFv(const struct GameThingWithPos* this) asm("?IsMoving@Creature@@UBE_NXZ");
+bool __fastcall IsMoving__8CreatureCFv(const struct GameThingWithPos* this) asm("?IsMoving@Creature@@UBEIXZ");
 // win1.41 00477e10 mac 101da2c0 Creature::GetImpressiveType(void)
 enum IMPRESSIVE_TYPE __fastcall GetImpressiveType__8CreatureFv(struct GameThingWithPos* this) asm("?GetImpressiveType@Creature@@UAE?AW4IMPRESSIVE_TYPE@@XZ");
 // win1.41 0047b150 mac 101d4b00 Creature::GetImpressiveIntensity(IMPRESSIVE_TYPE)
@@ -968,11 +968,11 @@ float __fastcall GetImpressiveIntensity__8CreatureF15IMPRESSIVE_TYPE(struct Game
 // win1.41 0047b200 mac 101d4730 Creature::GetImpressiveValue(Living *, Reaction *)
 float __fastcall GetImpressiveValue__8CreatureFP6LivingP8Reaction(struct GameThingWithPos* this, const void* edx, struct Living* param_1, struct Reaction* param_2) asm("?GetImpressiveValue@Creature@@UAEMPAVLiving@@PAVReaction@@@Z");
 // win1.41 004e4310 mac 105e5880 Creature::IsActivityObjectWhichAngerAppliesTo(Creature *)
-bool __fastcall IsActivityObjectWhichAngerAppliesTo__8CreatureFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Creature@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsActivityObjectWhichAngerAppliesTo__8CreatureFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Creature@@UAEIPAVCreature@@@Z");
 // win1.41 00474020 mac 101e30a0 Creature::IsActivityObjectWhichCompassionAppliesTo(Creature *)
-bool __fastcall IsActivityObjectWhichCompassionAppliesTo__8CreatureFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichCompassionAppliesTo@Creature@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsActivityObjectWhichCompassionAppliesTo__8CreatureFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichCompassionAppliesTo@Creature@@UAEIPAVCreature@@@Z");
 // win1.41 00474030 mac 101e3100 Creature::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
-bool __fastcall IsActivityObjectWhichPlayfulnessAppliesTo__8CreatureFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichPlayfulnessAppliesTo@Creature@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsActivityObjectWhichPlayfulnessAppliesTo__8CreatureFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichPlayfulnessAppliesTo@Creature@@UAEIPAVCreature@@@Z");
 // win1.41 004c5e50 mac 10231ab0 Creature::FalseFunction(void)
 uint32_t __fastcall FalseFunction__8CreatureFv(struct GameThingWithPos* this) asm("?FalseFunction@Creature@@UAEIXZ");
 // win1.41 00473fd0 mac 101e2f50 Creature::IsSuitableForCreatureActivity(void)
@@ -1032,7 +1032,7 @@ float __fastcall GetFacingDirection__8CreatureFv(struct GameThingWithPos* this) 
 // win1.41 004f6760 mac 10289e50 Creature::SetFocus(LHPoint const &)
 void __fastcall SetFocus__8CreatureFRC7LHPoint(struct Object* this, const void* edx, const struct LHPoint* param_1) asm("?SetFocus@Creature@@UAEXPBULHPoint@@@Z");
 // win1.41 00473f50 mac 101e2d40 Creature::IsReachable(void)
-bool __fastcall IsReachable__8CreatureFv(struct Object* this) asm("?IsReachable@Creature@@UAE_NXZ");
+bool __fastcall IsReachable__8CreatureFv(struct Object* this) asm("?IsReachable@Creature@@UAEIXZ");
 // win1.41 00479e50 mac 101d6990 Creature::MoveMapObject(MapCoords const &)
 int __fastcall MoveMapObject__8CreatureFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?MoveMapObject@Creature@@UAEHPBUMapCoords@@@Z");
 // win1.41 0047dd00 mac 101ce700 Creature::ReduceLife(float, GPlayer *)
@@ -1054,7 +1054,7 @@ uint32_t __fastcall ProcessState__8CreatureFv(struct Object* this) asm("?Process
 // win1.41 00477ef0 mac 101da120 Creature::GetProjectileSpeed(void)
 float __fastcall GetProjectileSpeed__8CreatureFv(struct Object* this) asm("?GetProjectileSpeed@Creature@@UAEMXZ");
 // win1.41 00473fe0 mac 101e2fa0 Creature::CanBePickedUp(void)
-bool __fastcall CanBePickedUp__8CreatureFv(struct Object* this) asm("?CanBePickedUp@Creature@@UAE_NXZ");
+bool __fastcall CanBePickedUp__8CreatureFv(struct Object* this) asm("?CanBePickedUp@Creature@@UAEIXZ");
 // win1.41 0047cd60 mac 101d06d0 Creature::GetWeight(void)
 float __fastcall GetWeight__8CreatureFv(struct Object* this) asm("?GetWeight@Creature@@UAEMXZ");
 // win1.41 004f8a10 mac 1028ac60 Creature::CanBeSuckedIntoVortex(LandscapeVortex *)
@@ -1102,17 +1102,17 @@ void __fastcall SetUpPhysOb__8CreatureFP6PhysOb(struct Object* this, const void*
 // win1.41 00479970 mac 101d72a0 Creature::GetBoundingSphere(LHPoint &, float &)
 void __fastcall GetBoundingSphere__8CreatureFR7LHPointRf(struct Object* this, const void* edx, struct LHPoint* param_1, float* param_2) asm("?GetBoundingSphere@Creature@@UAEXAAULHPoint@@AAM@Z");
 // win1.41 00479d20 mac 101d6d20 Creature::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__8CreatureFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Creature@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__8CreatureFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Creature@@UAEIXZ");
 // win1.41 00479990 mac 101d6fd0 Creature::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__8CreatureFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@Creature@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00479d10 mac 101d6d70 Creature::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__8CreatureFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Creature@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__8CreatureFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Creature@@UAEIXZ");
 // win1.41 0047d4b0 mac 101cf930 Creature::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__8CreatureFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@Creature@@UAE_NPAVCreature@@@Z");
 // win1.41 0047d500 mac 101cf7f0 Creature::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
 void __fastcall AddToRoutePlan__8CreatureFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int param_1, struct Point2D param_2, float param_3, int param_4)) asm("?AddToRoutePlan@Creature@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 // win1.41 00477f00 mac 101da0d0 Creature::IsScary(void)
-bool __fastcall IsScary__8CreatureFv(struct Object* this) asm("?IsScary@Creature@@UAE_NXZ");
+bool __fastcall IsScary__8CreatureFv(struct Object* this) asm("?IsScary@Creature@@UAEIXZ");
 // win1.41 00477ee0 mac 101da160 Creature::GetFacingPitch(void)
 float __fastcall GetFacingPitch__8CreatureFv(struct Object* this) asm("?GetFacingPitch@Creature@@UAEMXZ");
 // win1.41 004770d0 mac 101dbbc0 Creature::SetHeadPos(MapCoords *)
@@ -1126,7 +1126,7 @@ struct MapCoords* __fastcall GetDestPos__8CreatureFv(struct MobileWallHug* this)
 // win1.41 004753d0 mac 101de690 Creature::GetFinalDestPos(MapCoords *)
 struct MapCoords* __fastcall GetFinalDestPos__8CreatureFP9MapCoords(struct Living* this, const void* edx, struct MapCoords* param_1) asm("?GetFinalDestPos@Creature@@UAEPAUMapCoords@@PAU2@@Z");
 // win1.41 004f0560 mac 1027a2e0 Creature::DecideWhatToDo(void)
-bool __fastcall DecideWhatToDo__8CreatureFv(struct Living* this) asm("?DecideWhatToDo@Creature@@UAE_NXZ");
+bool __fastcall DecideWhatToDo__8CreatureFv(struct Living* this) asm("?DecideWhatToDo@Creature@@UAEIXZ");
 // win1.41 0047b1a0 mac 101d49f0 Creature::GetAge(void)
 uint32_t __fastcall GetAge__8CreatureFv(struct Living* this) asm("?GetAge@Creature@@UAEIXZ");
 // win1.41 0047b1b0 mac 101d49b0 Creature::SetAge(unsigned long)
@@ -1148,7 +1148,7 @@ uint32_t __fastcall CallEntryStateFunction__UcUc__8CreatureF15VILLAGER_STATES15V
 // win1.41 00473fb0 mac inlined Creature::CallEntryStateFunctionUc(VILLAGER_STATES)
 uint32_t __fastcall CallEntryStateFunction__Uc__8CreatureF15VILLAGER_STATES(struct Living* this, const void* edx, enum VILLAGER_STATES param_1) asm("?CallEntryStateFunctionUc@Creature@@UAEIW4VILLAGER_STATES@@@Z");
 // win1.41 0047c670 mac 101d2490 Creature::IsDancing(void)
-bool __fastcall IsDancing__8CreatureFv(struct Living* this) asm("?IsDancing@Creature@@UAE_NXZ");
+bool __fastcall IsDancing__8CreatureFv(struct Living* this) asm("?IsDancing@Creature@@UAEIXZ");
 // win1.41 004f2820 mac 1027db00 Creature::IsAvailableForReaction(REACTION)
 bool __fastcall IsAvailableForReaction__8CreatureF8REACTION(struct Living* this, const void* edx, enum REACTION param_1) asm("?IsAvailableForReaction@Creature@@UAE_NW4REACTION@@@Z");
 // win1.41 004f2780 mac 1027dca0 Creature::UpdateHowImpressed(Reaction *, int)
@@ -1278,9 +1278,9 @@ void __fastcall DrawOutOfMap__5CreedFb(struct Object* this, const void* edx, boo
 // win1.41 0050b3a0 mac 100c06a0 Creed::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__5CreedFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@Creed@@UAEXABUMapCoords@@@Z");
 // win1.41 0050b330 mac 100c0270 Creed::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__5CreedFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Creed@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__5CreedFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Creed@@UAEIXZ");
 // win1.41 0050b340 mac 100c02b0 Creed::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__5CreedFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Creed@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__5CreedFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Creed@@UAEIXZ");
 
 #endif // __cplusplus
 

@@ -183,7 +183,7 @@ uint32_t __fastcall GetCreatureBeliefListType__7CitadelFv(struct GameThingWithPo
 // win1.41 00462a80 mac 101b6ed0 Citadel::GetOrigin(void)
 uint32_t __fastcall GetOrigin__7CitadelFv(struct GameThingWithPos* this) asm("?GetOrigin@Citadel@@UAEIXZ");
 // win1.41 004e40e0 mac 105e5f60 Citadel::IsActivityObjectWhichAngerAppliesTo(Creature *)
-bool __fastcall IsActivityObjectWhichAngerAppliesTo__7CitadelFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Citadel@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsActivityObjectWhichAngerAppliesTo__7CitadelFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Citadel@@UAEIPAVCreature@@@Z");
 // win1.41 00462a90 mac 101b6f00 Citadel::IsSuitableForCreatureActivity(void)
 uint32_t __fastcall IsSuitableForCreatureActivity__7CitadelFv(struct GameThingWithPos* this) asm("?IsSuitableForCreatureActivity@Citadel@@UAEIXZ");
 // win1.41 004d1b50 mac 10242fd0 Citadel::GetHowMuchCreatureWantsToLookAtMe(void)

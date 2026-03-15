@@ -218,9 +218,9 @@ uint32_t __fastcall InterfaceValidToTap__13MagicFireBallFP16GInterfaceStatus(str
 // win1.41 00682e50 mac 103fc190 MagicFireBall::InterfaceTap(GInterfaceStatus *)
 uint32_t __fastcall InterfaceTap__13MagicFireBallFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?InterfaceTap@MagicFireBall@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 00682a60 mac 103fcfb0 MagicFireBall::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__13MagicFireBallFv(struct Object* this) asm("?InteractsWithPhysicsObjects@MagicFireBall@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__13MagicFireBallFv(struct Object* this) asm("?InteractsWithPhysicsObjects@MagicFireBall@@UAEIXZ");
 // win1.41 00682a70 mac 103fd000 MagicFireBall::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__13MagicFireBallFv(struct Object* this) asm("?CanBecomeAPhysicsObject@MagicFireBall@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__13MagicFireBallFv(struct Object* this) asm("?CanBecomeAPhysicsObject@MagicFireBall@@UAEIXZ");
 // win1.41 00682b20 mac 103fd380 MagicFireBall::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__13MagicFireBallFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@MagicFireBall@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 

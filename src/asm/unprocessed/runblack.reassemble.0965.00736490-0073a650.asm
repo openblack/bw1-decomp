@@ -7,14 +7,14 @@
 .extern ?Delete@Abode@@UAEXXZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
-.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
-.extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
+.extern ?Translation@LHMatrix@@QAEXABULHPoint@@@Z
+.extern ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z
 .extern ?DeleteDependancys@Abode@@UAEXXZ
 .extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
 .extern ?RemoveAliveVillagerFromAbode@Abode@@QAEXPAVVillager@@@Z
-.extern ?NumVillagersOfSex@Abode@@QAEHW4SEX_TYPE@@@Z
+.extern ?NumVillagersOfSex@Abode@@QAEHXZ
 .extern ?MakeFunctional@Abode@@UAEXXZ
-.extern ?GetTribeType@Abode@@QAE?AW4TRIBE_TYPE@@XZ
+.extern ?GetTribeType@Abode@@QBE?AW4TRIBE_TYPE@@XZ
 .extern ?Save@Abode@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@Abode@@UAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x00417c50
@@ -196,7 +196,7 @@
 .globl ?ToBeDeleted@TotemStatue@@UAEXH@Z
 .globl ?IncreaseLife@TotemStatue@@UAEXM@Z
 .globl ?ReduceLife@TotemStatue@@UAEXMPAVGPlayer@@@Z
-.globl ?InteractsWithPhysicsObjects@TotemStatue@@UAE_NXZ
+.globl ?InteractsWithPhysicsObjects@TotemStatue@@UAEIXZ
 .globl ?ReactToPhysicsImpact@TotemStatue@@UAEXPAVPhysicsObject@@_N@Z
 .globl ?Process@TotemStatue@@UAEIXZ
 .globl ?AddToPlayer@TotemStatue@@UAEXXZ
@@ -222,10 +222,10 @@
 .globl ?GetCreatureBeliefType@Town@@UAEIXZ
 .globl ?GetCreatureBeliefListType@Town@@UAEIXZ
 .globl ?IsScriptContainer@Town@@UBEIXZ
-.globl ?IsTown@Town@@UAE_NPAVCreature@@@Z
-.globl ?IsActivityObjectWhichCompassionAppliesTo@Town@@UAE_NPAVCreature@@@Z
-.globl ?IsActivityObjectWhichPlayfulnessAppliesTo@Town@@UAE_NPAVCreature@@@Z
-.globl ?IsTown@Town@@UAE_NXZ
+.globl ?IsTown@Town@@UAEIPAVCreature@@@Z
+.globl ?IsActivityObjectWhichCompassionAppliesTo@Town@@UAEIPAVCreature@@@Z
+.globl ?IsActivityObjectWhichPlayfulnessAppliesTo@Town@@UAEIPAVCreature@@@Z
+.globl ?IsTown@Town@@UAEIXZ
 .globl ?IsSuitableForCreatureActivity@Town@@UAEIXZ
 .globl ?CanBePlayedWithByCreature@Town@@UAEIPAVCreature@@@Z
 .globl ?GetText@Town@@UAEPBDXZ
@@ -2627,7 +2627,7 @@ _jmp_addr_0x00737bf0:    push               esi                                 
                          push               edi                                            // 0x00737cc4    57
                          {disp8} mov        edi, dword ptr [esp + 0x18]                    // 0x00737cc5    8b7c2418
                          mov.s              ecx, edi                                       // 0x00737cc9    8bcf
-                         call               ?GetTribeType@Abode@@QAE?AW4TRIBE_TYPE@@XZ     // 0x00737ccb    e870e2ccff
+                         call               ?GetTribeType@Abode@@QBE?AW4TRIBE_TYPE@@XZ     // 0x00737ccb    e870e2ccff
                          push               0x68                                           // 0x00737cd0    6a68
                          push               0x00c22b68                                     // 0x00737cd2    68682bc200
                          push               0x000000d8                                     // 0x00737cd7    68d8000000
@@ -2673,7 +2673,7 @@ _jmp_addr_0x00737bf0:    push               esi                                 
                          nop                                                               // 0x00737d3d    90
                          nop                                                               // 0x00737d3e    90
                          nop                                                               // 0x00737d3f    90
-?InteractsWithPhysicsObjects@TotemStatue@@UAE_NXZ:
+?InteractsWithPhysicsObjects@TotemStatue@@UAEIXZ:
                          xor.s              al, al                                         // 0x00737d40    32c0
                          ret                                                               // 0x00737d42    c3
                          nop                                                               // 0x00737d43    90
@@ -2762,7 +2762,7 @@ _jmp_addr_0x00737bf0:    push               esi                                 
                          call               _jmp_addr_0x00519320                           // 0x00737e23    e8f814deff
                          {disp8} lea        edx, dword ptr [esp + 0x18]                    // 0x00737e28    8d542418
                          mov.s              ecx, edi                                       // 0x00737e2c    8bcf
-                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z       // 0x00737e2e    e83db7ccff
+                         call               ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z       // 0x00737e2e    e83db7ccff
                          {disp8} mov        eax, dword ptr [esp + 0x10]                    // 0x00737e33    8b442410
                          push               eax                                            // 0x00737e37    50
                          mov.s              ecx, edi                                       // 0x00737e38    8bcf
@@ -2770,7 +2770,7 @@ _jmp_addr_0x00737bf0:    push               esi                                 
                          {disp8} jmp        .Lbl_addr_0x00737e87                           // 0x00737e3f    eb46
 .Lbl_addr_0x00737e41:    {disp8} lea        edx, dword ptr [esp + 0x18]                    // 0x00737e41    8d542418
                          mov.s              ecx, edi                                       // 0x00737e45    8bcf
-                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z      // 0x00737e47    e8e4b6ccff
+                         call               ?Translation@LHMatrix@@QAEXABULHPoint@@@Z      // 0x00737e47    e8e4b6ccff
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                    // 0x00737e4c    8b4c2410
                          push               ecx                                            // 0x00737e50    51
                          mov.s              ecx, edi                                       // 0x00737e51    8bcf
@@ -2785,11 +2785,11 @@ _jmp_addr_0x00737bf0:    push               esi                                 
                          call               _jmp_addr_0x00519320                           // 0x00737e69    e8b214deff
                          {disp8} lea        edx, dword ptr [esp + 0x18]                    // 0x00737e6e    8d542418
                          mov.s              ecx, edi                                       // 0x00737e72    8bcf
-                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z       // 0x00737e74    e8f7b6ccff
+                         call               ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z       // 0x00737e74    e8f7b6ccff
                          {disp8} jmp        .Lbl_addr_0x00737e87                           // 0x00737e79    eb0c
 .Lbl_addr_0x00737e7b:    {disp8} lea        edx, dword ptr [esp + 0x18]                    // 0x00737e7b    8d542418
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                    // 0x00737e7f    8d4b14
-                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z      // 0x00737e82    e8a9b6ccff
+                         call               ?Translation@LHMatrix@@QAEXABULHPoint@@@Z      // 0x00737e82    e8a9b6ccff
 .Lbl_addr_0x00737e87:    {disp8} mov        eax, dword ptr [esp + 0x0c]                    // 0x00737e87    8b44240c
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                    // 0x00737e8b    8b4c2410
                          {disp8} mov        dword ptr [ebx + 0x48], ecx                    // 0x00737e8f    894b48
@@ -4481,7 +4481,7 @@ _jmp_addr_0x00738ff0:    push               ebx                                 
                          nop                                                               // 0x0073921d    90
                          nop                                                               // 0x0073921e    90
                          nop                                                               // 0x0073921f    90
-?IsTown@Town@@UAE_NPAVCreature@@@Z:
+?IsTown@Town@@UAEIPAVCreature@@@Z:
                          mov                eax, 0x00000001                                // 0x00739220    b801000000
                          ret                0x0004                                         // 0x00739225    c20400
                          nop                                                               // 0x00739228    90
@@ -4492,7 +4492,7 @@ _jmp_addr_0x00738ff0:    push               ebx                                 
                          nop                                                               // 0x0073922d    90
                          nop                                                               // 0x0073922e    90
                          nop                                                               // 0x0073922f    90
-?IsActivityObjectWhichCompassionAppliesTo@Town@@UAE_NPAVCreature@@@Z:
+?IsActivityObjectWhichCompassionAppliesTo@Town@@UAEIPAVCreature@@@Z:
                          mov                eax, 0x00000001                                // 0x00739230    b801000000
                          ret                0x0004                                         // 0x00739235    c20400
                          nop                                                               // 0x00739238    90
@@ -4503,7 +4503,7 @@ _jmp_addr_0x00738ff0:    push               ebx                                 
                          nop                                                               // 0x0073923d    90
                          nop                                                               // 0x0073923e    90
                          nop                                                               // 0x0073923f    90
-?IsActivityObjectWhichPlayfulnessAppliesTo@Town@@UAE_NPAVCreature@@@Z:
+?IsActivityObjectWhichPlayfulnessAppliesTo@Town@@UAEIPAVCreature@@@Z:
                          mov                eax, 0x00000001                                // 0x00739240    b801000000
                          ret                0x0004                                         // 0x00739245    c20400
                          nop                                                               // 0x00739248    90
@@ -4514,7 +4514,7 @@ _jmp_addr_0x00738ff0:    push               ebx                                 
                          nop                                                               // 0x0073924d    90
                          nop                                                               // 0x0073924e    90
                          nop                                                               // 0x0073924f    90
-?IsTown@Town@@UAE_NXZ:
+?IsTown@Town@@UAEIXZ:
                          mov                eax, 0x00000001                                // 0x00739250    b801000000
                          ret                                                               // 0x00739255    c3
                          nop                                                               // 0x00739256    90
@@ -5595,7 +5595,7 @@ _jmp_addr_0x00739a60:    push               ebx                                 
                          {disp8} je         .Lbl_addr_0x00739f06                           // 0x00739e93    7471
                          push               0x1                                            // 0x00739e95    6a01
                          mov.s              ecx, esi                                       // 0x00739e97    8bce
-                         call               ?NumVillagersOfSex@Abode@@QAEHW4SEX_TYPE@@@Z   // 0x00739e99    e8e2a6ccff
+                         call               ?NumVillagersOfSex@Abode@@QAEHXZ   // 0x00739e99    e8e2a6ccff
                          cmp                eax, dword ptr [esp + 0x10]                    // 0x00739e9e    3b442410
                          {disp8} jg         .Lbl_addr_0x00739f06                           // 0x00739ea2    7f62
                          mov                edx, dword ptr [esi]                           // 0x00739ea4    8b16
@@ -5687,7 +5687,7 @@ _jmp_addr_0x00739a60:    push               ebx                                 
                          push               0x0                                            // 0x00739fb6    6a00
                          mov.s              ecx, esi                                       // 0x00739fb8    8bce
                          inc                edi                                            // 0x00739fba    47
-                         call               ?NumVillagersOfSex@Abode@@QAEHW4SEX_TYPE@@@Z   // 0x00739fbb    e8c0a5ccff
+                         call               ?NumVillagersOfSex@Abode@@QAEHXZ   // 0x00739fbb    e8c0a5ccff
                          cmp                eax, dword ptr [esp + 0x10]                    // 0x00739fc0    3b442410
                          {disp8} jg         .Lbl_addr_0x0073a00e                           // 0x00739fc4    7f48
                          mov                eax, dword ptr [esi]                           // 0x00739fc6    8b06

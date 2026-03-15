@@ -240,15 +240,15 @@ void __fastcall SetUpPhysOb__8DeadTreeFP6PhysOb(struct Object* this, const void*
 // win1.41 005113f0 mac 100c1f10 DeadTree::EndPhysics(PhysicsObject *, bool)
 void __fastcall EndPhysics__8DeadTreeFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?EndPhysics@DeadTree@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 005111f0 mac 100c2490 DeadTree::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__8DeadTreeFv(struct Object* this) asm("?InteractsWithPhysicsObjects@DeadTree@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__8DeadTreeFv(struct Object* this) asm("?InteractsWithPhysicsObjects@DeadTree@@UAEIXZ");
 // win1.41 00510ca0 mac 100c3670 DeadTree::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__8DeadTreeFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@DeadTree@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00511a10 mac 100c1250 DeadTree::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__8DeadTreeFv(struct Object* this) asm("?CanBecomeAPhysicsObject@DeadTree@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__8DeadTreeFv(struct Object* this) asm("?CanBecomeAPhysicsObject@DeadTree@@UAEIXZ");
 // win1.41 00510e30 mac 100c2e50 DeadTree::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__8DeadTreeFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@DeadTree@@UAE_NPAVCreature@@@Z");
 // win1.41 00511200 mac 100c2450 DeadTree::IsARootedObject(void)
-bool __fastcall IsARootedObject__8DeadTreeFv(struct Object* this) asm("?IsARootedObject@DeadTree@@UAE_NXZ");
+bool __fastcall IsARootedObject__8DeadTreeFv(struct Object* this) asm("?IsARootedObject@DeadTree@@UAEIXZ");
 // win1.41 00511130 mac 100c2640 DeadTree::GetCollideSoundType(void)
 enum SOUND_COLLISION_TYPE __fastcall GetCollideSoundType__8DeadTreeFv(struct Object* this) asm("?GetCollideSoundType@DeadTree@@UAE?AW4SOUND_COLLISION_TYPE@@XZ");
 // win1.41 00511a20 mac 100c10e0 DeadTree::GetCarriedTreeType(void)

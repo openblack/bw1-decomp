@@ -265,7 +265,7 @@ void __fastcall Draw__9SpellIconFv(struct Object* this) asm("?Draw@SpellIcon@@UA
 // win1.41 00726160 mac 105253c0 SpellIcon::CallVirtualFunctionsForCreation(const MapCoords &)
 void __fastcall CallVirtualFunctionsForCreation__9SpellIconFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* coords) asm("?CallVirtualFunctionsForCreation@SpellIcon@@UAEXABUMapCoords@@@Z");
 // win1.41 0055d400 mac 10525e50 SpellIcon::IsSpellSeedReturnPoint( const(void))
-bool __fastcall IsSpellSeedReturnPoint__9SpellIconCFv(const struct Object* this) asm("?IsSpellSeedReturnPoint@SpellIcon@@UBE_NXZ");
+bool __fastcall IsSpellSeedReturnPoint__9SpellIconCFv(const struct Object* this) asm("?IsSpellSeedReturnPoint@SpellIcon@@UBEIXZ");
 // win1.41 0055d410 mac 10525e90 SpellIcon::ValidAsInterfaceLeashTarget(void)
 uint32_t __fastcall ValidAsInterfaceLeashTarget__9SpellIconFv(struct Object* this) asm("?ValidAsInterfaceLeashTarget@SpellIcon@@UAEIXZ");
 // win1.41 007263c0 mac 10524b00 SpellIcon::InterfaceValidToTap(GInterfaceStatus *)
@@ -273,11 +273,11 @@ uint32_t __fastcall InterfaceValidToTap__9SpellIconFP16GInterfaceStatus(struct O
 // win1.41 00726430 mac 105249c0 SpellIcon::InterfaceTap(GInterfaceStatus *)
 uint32_t __fastcall InterfaceTap__9SpellIconFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?InterfaceTap@SpellIcon@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 007260e0 mac 10525630 SpellIcon::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__9SpellIconFv(struct Object* this) asm("?InteractsWithPhysicsObjects@SpellIcon@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__9SpellIconFv(struct Object* this) asm("?InteractsWithPhysicsObjects@SpellIcon@@UAEIXZ");
 // win1.41 0055d3b0 mac 10525de0 SpellIcon::IsRepaired(void)
-bool __fastcall IsRepaired__9SpellIconFv(struct MultiMapFixed* this) asm("?IsRepaired@SpellIcon@@UAE_NXZ");
+bool __fastcall IsRepaired__9SpellIconFv(struct MultiMapFixed* this) asm("?IsRepaired@SpellIcon@@UAEIXZ");
 // win1.41 0055d3d0 mac 100c7990 SpellIcon::IsBuilt(void)
-bool __fastcall IsBuilt__9SpellIconFv(struct MultiMapFixed* this) asm("?IsBuilt@SpellIcon@@UAE_NXZ");
+bool __fastcall IsBuilt__9SpellIconFv(struct MultiMapFixed* this) asm("?IsBuilt@SpellIcon@@UAEIXZ");
 
 #endif // __cplusplus
 

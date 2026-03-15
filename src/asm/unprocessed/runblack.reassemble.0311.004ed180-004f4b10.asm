@@ -234,7 +234,7 @@
 .globl ?SaveObject@CreaturePen@@UAEIAAULHOSFile@@ABUMapCoords@@@Z
 .globl ??_GCreatureDamageMap@@UAEPAXI@Z
 .globl ??_GCreaturePhysical@@UAEPAXI@Z
-.globl ?DecideWhatToDo@Creature@@UAE_NXZ
+.globl ?DecideWhatToDo@Creature@@UAEIXZ
 .globl ??_GCreaturePreviousActions@@UAEPAXI@Z
 .globl ?AddReaction@Creature@@UAEXPAVReaction@@W4VILLAGER_STATES@@@Z
 .globl ?StartReacting@Creature@@UAEXW4REACTION@@PAVGameThingWithPos@@PAVReaction@@@Z
@@ -2300,7 +2300,7 @@ _globl_ct_0x004eed60:    {disp32} jmp       .Lbl_addr_0x004eed70                
                          nop                                                                     // 0x004eed6f    90
 .Lbl_addr_0x004eed70:    {disp32} mov       dword ptr [data_bytes + 0x2e7a7c], 0xffffffff        // 0x004eed70    c7057cdaca00ffffffff
                          ret                                                                     // 0x004eed7a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004eed7b    e8f92af1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004eed7b    e8f92af1ff
 _globl_ct_0x004eed80:    call               .Lbl_addr_0x004eed90                                 // 0x004eed80    e80b000000
                          {disp32} jmp       .Lbl_addr_0x004eede0                                 // 0x004eed85    e956000000
                          nop                                                                     // 0x004eed8a    90
@@ -2512,7 +2512,7 @@ _globl_ct_0x004eed80:    call               .Lbl_addr_0x004eed90                
 .Lbl_addr_0x004eef54:    call               _jmp_addr_0x00469530                                 // 0x004eef54    e8d7a5f7ff
                          pop                esi                                                  // 0x004eef59    5e
                          ret                                                                     // 0x004eef5a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004eef5b    e81929f1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004eef5b    e81929f1ff
 _jmp_addr_0x004eef60:    push               esi                                                  // 0x004eef60    56
                          push               edi                                                  // 0x004eef61    57
                          push               0x24                                                 // 0x004eef62    6a24
@@ -2882,7 +2882,7 @@ _globl_ct_0x004ef2a0:    {disp32} jmp       .Lbl_addr_0x004ef2b0                
                          nop                                                                     // 0x004ef2af    90
 .Lbl_addr_0x004ef2b0:    {disp32} mov       dword ptr [data_bytes + 0x2e7a84], 0xffffffff        // 0x004ef2b0    c70584daca00ffffffff
                          ret                                                                     // 0x004ef2ba    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004ef2bb    e8b925f1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004ef2bb    e8b925f1ff
 @__ct__16CreaturePhysicalFRC9MapCoordsUsPC12CreatureInfoP8Creature@22:    sub                esp, 0x00000110                                      // 0x004ef2c0    81ec10010000
                          push               ebx                                                  // 0x004ef2c6    53
                          xor.s              ebx, ebx                                             // 0x004ef2c7    33db
@@ -3475,7 +3475,7 @@ _jmp_addr_0x004ef510:    xor.s              edx, edx                            
                          mov.s              esp, ebp                                             // 0x004efa57    8be5
                          pop                ebp                                                  // 0x004efa59    5d
                          ret                                                                     // 0x004efa5a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004efa5b    e8191ef1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004efa5b    e8191ef1ff
 .Lbl_addr_0x004efa60:    sub                esp, 0x08                                            // 0x004efa60    83ec08
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                          // 0x004efa63    8b44240c
                          {disp32} fld       dword ptr [eax + 0x00000214]                         // 0x004efa67    d98014020000
@@ -3843,7 +3843,7 @@ _jmp_addr_0x004efce0:    sub                esp, 0x18                           
                          ret                0x0004                                               // 0x004efe93    c20400
 .Lbl_addr_0x004efe96:    xor.s              eax, eax                                             // 0x004efe96    33c0
                          ret                0x0004                                               // 0x004efe98    c20400
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004efe9b    e8d919f1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004efe9b    e8d919f1ff
                          {disp8} fld        dword ptr [ecx + 0x2c]                               // 0x004efea0    d9412c
                          {disp8} fcomp      dword ptr [esp + 0x04]                               // 0x004efea3    d85c2404
                          fnstsw             ax                                                   // 0x004efea7    dfe0
@@ -3853,7 +3853,7 @@ _jmp_addr_0x004efce0:    sub                esp, 0x18                           
                          ret                0x0004                                               // 0x004efeb3    c20400
 .Lbl_addr_0x004efeb6:    xor.s              eax, eax                                             // 0x004efeb6    33c0
                          ret                0x0004                                               // 0x004efeb8    c20400
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004efebb    e8b919f1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004efebb    e8b919f1ff
                          {disp8} fld        dword ptr [ecx + 0x30]                               // 0x004efec0    d94130
                          {disp8} fcomp      dword ptr [esp + 0x04]                               // 0x004efec3    d85c2404
                          fnstsw             ax                                                   // 0x004efec7    dfe0
@@ -3863,7 +3863,7 @@ _jmp_addr_0x004efce0:    sub                esp, 0x18                           
                          ret                0x0004                                               // 0x004efed3    c20400
 .Lbl_addr_0x004efed6:    xor.s              eax, eax                                             // 0x004efed6    33c0
                          ret                0x0004                                               // 0x004efed8    c20400
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004efedb    e89919f1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004efedb    e89919f1ff
                          {disp8} mov        eax, dword ptr [ecx + 0x54]                          // 0x004efee0    8b4154
                          {disp32} mov       ecx, dword ptr [eax + 0x00000164]                    // 0x004efee3    8b8864010000
                          add                ecx, 0x0001aa8c                                      // 0x004efee9    81c18caa0100
@@ -3948,7 +3948,7 @@ _jmp_addr_0x004efce0:    sub                esp, 0x18                           
                          ret                0x0004                                               // 0x004effc3    c20400
 .Lbl_addr_0x004effc6:    xor.s              eax, eax                                             // 0x004effc6    33c0
                          ret                0x0004                                               // 0x004effc8    c20400
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004effcb    e8a918f1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004effcb    e8a918f1ff
                          {disp8} mov        ecx, dword ptr [ecx + 0x54]                          // 0x004effd0    8b4954
                          mov                eax, dword ptr [ecx]                                 // 0x004effd3    8b01
                          call               dword ptr [eax + 0x11c]                              // 0x004effd5    ff901c010000
@@ -4047,7 +4047,7 @@ _jmp_addr_0x004efce0:    sub                esp, 0x18                           
                          ret                0x0004                                               // 0x004f00b3    c20400
 .Lbl_addr_0x004f00b6:    xor.s              eax, eax                                             // 0x004f00b6    33c0
                          ret                0x0004                                               // 0x004f00b8    c20400
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f00bb    e8b917f1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f00bb    e8b917f1ff
                          {disp8} fld        dword ptr [ecx + 0x10]                               // 0x004f00c0    d94110
                          {disp8} fcomp      dword ptr [esp + 0x04]                               // 0x004f00c3    d85c2404
                          fnstsw             ax                                                   // 0x004f00c7    dfe0
@@ -4057,7 +4057,7 @@ _jmp_addr_0x004efce0:    sub                esp, 0x18                           
                          ret                0x0004                                               // 0x004f00d3    c20400
 .Lbl_addr_0x004f00d6:    xor.s              eax, eax                                             // 0x004f00d6    33c0
                          ret                0x0004                                               // 0x004f00d8    c20400
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f00db    e89917f1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f00db    e89917f1ff
 _jmp_addr_0x004f00e0:    push               esi                                                  // 0x004f00e0    56
                          mov.s              esi, ecx                                             // 0x004f00e1    8bf1
                          {disp8} mov        ecx, dword ptr [esi + 0x58]                          // 0x004f00e3    8b4e58
@@ -4326,7 +4326,7 @@ _globl_ct_0x004f0350:    {disp32} jmp       .Lbl_addr_0x004f0360                
                          nop                                                                     // 0x004f035f    90
 .Lbl_addr_0x004f0360:    {disp32} mov       dword ptr [data_bytes + 0x2e7a8c], 0xffffffff        // 0x004f0360    c7058cdaca00ffffffff
                          ret                                                                     // 0x004f036a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f036b    e80915f1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f036b    e80915f1ff
 _jmp_addr_0x004f0370:    push               esi                                                  // 0x004f0370    56
                          mov.s              esi, ecx                                             // 0x004f0371    8bf1
                          push               edi                                                  // 0x004f0373    57
@@ -4478,7 +4478,7 @@ _jmp_addr_0x004f0370:    push               esi                                 
                          nop                                                                     // 0x004f055d    90
                          nop                                                                     // 0x004f055e    90
                          nop                                                                     // 0x004f055f    90
-?DecideWhatToDo@Creature@@UAE_NXZ:
+?DecideWhatToDo@Creature@@UAEIXZ:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x21a26c]               // 0x004f0560    a16c02be00
                          push               esi                                                  // 0x004f0565    56
                          push               edi                                                  // 0x004f0566    57
@@ -5551,7 +5551,7 @@ _jmp_addr_0x004f10a0:    push               ecx                                 
                          pop                ebx                                                  // 0x004f11a6    5b
                          pop                ecx                                                  // 0x004f11a7    59
                          ret                0x0008                                               // 0x004f11a8    c20800
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f11ab    e8c906f1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f11ab    e8c906f1ff
 _jmp_addr_0x004f11b0:    push               esi                                                  // 0x004f11b0    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                          // 0x004f11b1    8b742408
                          {disp8} mov        eax, dword ptr [esi + 0x18]                          // 0x004f11b5    8b4618
@@ -5628,7 +5628,7 @@ _jmp_addr_0x004f11b0:    push               esi                                 
                          mov.s              eax, esi                                             // 0x004f1265    8bc6
                          pop                esi                                                  // 0x004f1267    5e
                          ret                0x0018                                               // 0x004f1268    c21800
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f126b    e80906f1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f126b    e80906f1ff
 _jmp_addr_0x004f1270:    {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x004f1270    8b442404
                          {disp8} mov        edx, dword ptr [esp + 0x08]                          // 0x004f1274    8b542408
                          {disp8} mov        dword ptr [ecx + 0x08], eax                          // 0x004f1278    894108
@@ -5647,7 +5647,7 @@ _jmp_addr_0x004f1270:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} mov        dword ptr [ecx + 0x1c], eax                          // 0x004f12a2    89411c
                          {disp8} mov        dword ptr [ecx + 0x2c], edx                          // 0x004f12a5    89512c
                          ret                0x0018                                               // 0x004f12a8    c21800
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f12ab    e8c905f1ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f12ab    e8c905f1ff
 _jmp_addr_0x004f12b0:    xor.s              eax, eax                                             // 0x004f12b0    33c0
                          {disp8} mov        dword ptr [ecx + 0x14], eax                          // 0x004f12b2    894114
                          {disp8} mov        dword ptr [ecx + 0x10], eax                          // 0x004f12b5    894110
@@ -6476,7 +6476,7 @@ _jmp_addr_0x004f17f0:    sub                esp, 0x50                           
                          pop                ebx                                                  // 0x004f1b56    5b
                          pop                ecx                                                  // 0x004f1b57    59
                          ret                0x0014                                               // 0x004f1b58    c21400
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f1b5b    e819fdf0ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f1b5b    e819fdf0ff
 _jmp_addr_0x004f1b60:    push               ebx                                                  // 0x004f1b60    53
                          {disp8} mov        ebx, dword ptr [esp + 0x08]                          // 0x004f1b61    8b5c2408
                          lea                eax, dword ptr [ebx + ebx * 0x4]                     // 0x004f1b65    8d049b
@@ -7096,7 +7096,7 @@ _globl_ct_0x004f2170:    {disp32} jmp       .Lbl_addr_0x004f2180                
                          nop                                                                     // 0x004f217f    90
 .Lbl_addr_0x004f2180:    {disp32} mov       dword ptr [data_bytes + 0x2e7a9c], 0xffffffff        // 0x004f2180    c7059cdaca00ffffffff
                          ret                                                                     // 0x004f218a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f218b    e8e9f6f0ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f218b    e8e9f6f0ff
 _jmp_addr_0x004f2190:    mov.s              eax, ecx                                             // 0x004f2190    8bc1
                          push               esi                                                  // 0x004f2192    56
                          mov.s              edx, eax                                             // 0x004f2193    8bd0
@@ -7282,7 +7282,7 @@ _globl_ct_0x004f2300:    {disp32} jmp       .Lbl_addr_0x004f2310                
                          nop                                                                     // 0x004f230f    90
 .Lbl_addr_0x004f2310:    {disp32} mov       dword ptr [data_bytes + 0x2e7aa4], 0xffffffff        // 0x004f2310    c705a4daca00ffffffff
                          ret                                                                     // 0x004f231a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f231b    e859f5f0ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f231b    e859f5f0ff
 _jmp_addr_0x004f2320:    push               ebx                                                  // 0x004f2320    53
                          push               esi                                                  // 0x004f2321    56
                          push               edi                                                  // 0x004f2322    57
@@ -7638,7 +7638,7 @@ _globl_ct_0x004f2660:    {disp32} jmp       .Lbl_addr_0x004f2670                
                          nop                                                                     // 0x004f266f    90
 .Lbl_addr_0x004f2670:    {disp32} mov       dword ptr [data_bytes + 0x2e7aac], 0xffffffff        // 0x004f2670    c705acdaca00ffffffff
                          ret                                                                     // 0x004f267a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f267b    e8f9f1f0ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f267b    e8f9f1f0ff
 ?AddReaction@Creature@@UAEXPAVReaction@@W4VILLAGER_STATES@@@Z:
                          push               esi                                                  // 0x004f2680    56
                          {disp8} mov        esi, dword ptr [esp + 0x08]                          // 0x004f2681    8b742408
@@ -8166,7 +8166,7 @@ _globl_ct_0x004f2660:    {disp32} jmp       .Lbl_addr_0x004f2670                
 .Lbl_addr_0x004f2be5:    xor.s              al, al                                               // 0x004f2be5    32c0
                          pop                esi                                                  // 0x004f2be7    5e
                          ret                0x0008                                               // 0x004f2be8    c20800
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f2beb    e889ecf0ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f2beb    e889ecf0ff
 ?ReactToCreaturePriority@Creature@@UAEEPAVReaction@@0@Z:
                          sub                esp, 0x08                                            // 0x004f2bf0    83ec08
                          mov.s              eax, ecx                                             // 0x004f2bf3    8bc1
@@ -8401,7 +8401,7 @@ _globl_ct_0x004f2660:    {disp32} jmp       .Lbl_addr_0x004f2670                
 .Lbl_addr_0x004f2e45:    xor.s              al, al                                               // 0x004f2e45    32c0
                          pop                esi                                                  // 0x004f2e47    5e
                          ret                0x0008                                               // 0x004f2e48    c20800
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f2e4b    e829eaf0ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f2e4b    e829eaf0ff
 ?SetupReactToMagicTree@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                          // 0x004f2e50    8b442404
                          {disp8} mov        edx, dword ptr [esp + 0x08]                          // 0x004f2e54    8b542408
@@ -8440,7 +8440,7 @@ _globl_ct_0x004f2660:    {disp32} jmp       .Lbl_addr_0x004f2670                
 .Lbl_addr_0x004f2e95:    xor.s              al, al                                               // 0x004f2e95    32c0
                          pop                esi                                                  // 0x004f2e97    5e
                          ret                0x0008                                               // 0x004f2e98    c20800
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f2e9b    e8d9e9f0ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f2e9b    e8d9e9f0ff
 ?SetupReactToBall@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          push               esi                                                  // 0x004f2ea0    56
                          mov.s              esi, ecx                                             // 0x004f2ea1    8bf1
@@ -8461,7 +8461,7 @@ _globl_ct_0x004f2660:    {disp32} jmp       .Lbl_addr_0x004f2670                
                          call               dword ptr [edx + 0x990]                              // 0x004f2ed1    ff9290090000
                          pop                esi                                                  // 0x004f2ed7    5e
                          ret                0x0008                                               // 0x004f2ed8    c20800
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f2edb    e899e9f0ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f2edb    e899e9f0ff
 ?ReactToFirePriority@Creature@@UAEEPAVReaction@@0@Z:
                          push               ecx                                                  // 0x004f2ee0    51
                          push               ebx                                                  // 0x004f2ee1    53
@@ -9071,7 +9071,7 @@ _globl_ct_0x004f2660:    {disp32} jmp       .Lbl_addr_0x004f2670                
                          xor.s              al, al                                               // 0x004f3595    32c0
                          pop                ebx                                                  // 0x004f3597    5b
                          ret                0x0008                                               // 0x004f3598    c20800
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f359b    e8d9e2f0ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f359b    e8d9e2f0ff
 ?SetupReactToFlyingObject@Creature@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z:
                          push               esi                                                  // 0x004f35a0    56
                          push               edi                                                  // 0x004f35a1    57
@@ -9779,7 +9779,7 @@ _globl_ct_0x004f3c80:    {disp32} jmp       .Lbl_addr_0x004f3c90                
                          nop                                                                     // 0x004f3c8f    90
 .Lbl_addr_0x004f3c90:    {disp32} mov       dword ptr [data_bytes + 0x2e7abc], 0xffffffff        // 0x004f3c90    c705bcdaca00ffffffff
                          ret                                                                     // 0x004f3c9a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x004f3c9b    e8d9dbf0ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x004f3c9b    e8d9dbf0ff
 _globl_ct_0x004f3ca0:    {disp32} jmp       .Lbl_addr_0x004f3cb0                                 // 0x004f3ca0    e90b000000
                          nop                                                                     // 0x004f3ca5    90
                          nop                                                                     // 0x004f3ca6    90

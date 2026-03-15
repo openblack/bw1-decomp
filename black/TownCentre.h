@@ -272,7 +272,7 @@ enum LH3DObject__ObjectType __fastcall Get3DType__10TownCentreFv(struct Object* 
 // win1.41 0055db10 mac 1055bcb0 TownCentre::InterfaceValidToTap(GInterfaceStatus *)
 uint32_t __fastcall InterfaceValidToTap__10TownCentreFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?InterfaceValidToTap@TownCentre@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 00743bc0 mac 1055b860 TownCentre::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__10TownCentreFv(struct Object* this) asm("?InteractsWithPhysicsObjects@TownCentre@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__10TownCentreFv(struct Object* this) asm("?InteractsWithPhysicsObjects@TownCentre@@UAEIXZ");
 // win1.41 00744380 mac 1055a500 TownCentre::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__10TownCentreFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@TownCentre@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00744140 mac 1055a800 TownCentre::SaveObject(LHOSFile &, MapCoords const &)
@@ -290,9 +290,9 @@ void __fastcall MakeFunctional__10TownCentreFv(struct Abode* this) asm("?MakeFun
 // win1.41 00744a00 mac 105599a0 TownCentre::StopBeingFunctional(GPlayer *)
 void __fastcall StopBeingFunctional__10TownCentreFP7GPlayer(struct Abode* this, const void* edx, struct GPlayer* param_1) asm("?StopBeingFunctional@TownCentre@@UAEXPAVGPlayer@@@Z");
 // win1.41 0055db30 mac 1055bd40 TownCentre::CausesTownEmergencyIfDamaged(void)
-bool __fastcall CausesTownEmergencyIfDamaged__10TownCentreFv(struct Abode* this) asm("?CausesTownEmergencyIfDamaged@TownCentre@@UAE_NXZ");
+bool __fastcall CausesTownEmergencyIfDamaged__10TownCentreFv(struct Abode* this) asm("?CausesTownEmergencyIfDamaged@TownCentre@@UAEIXZ");
 // win1.41 0055db80 mac 1055bea0 TownCentre::CanBeHiddenIn(void)
-bool __fastcall CanBeHiddenIn__10TownCentreFv(struct Abode* this) asm("?CanBeHiddenIn@TownCentre@@UAE_NXZ");
+bool __fastcall CanBeHiddenIn__10TownCentreFv(struct Abode* this) asm("?CanBeHiddenIn@TownCentre@@UAEIXZ");
 
 DECLARE_LH_LINKED_LIST(TownCentre);
 

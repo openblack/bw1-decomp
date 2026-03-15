@@ -19,7 +19,7 @@
 .extern ??0FixedObject@@QAE@XZ
 .extern @__ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff@24
 .extern ?Save@Fixed@@UAEIPAVGameOSFile@@@Z
-.extern ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@Fixed@@UAEIAAVGameOSFile@@@Z
 .extern ?CallVirtualFunctionsForCreation@SingleMapFixed@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x0052eac0
 .extern _jmp_addr_0x0052f690
@@ -266,7 +266,7 @@
 .globl ?CreatureMustAvoid@MapShield@@UAE_NPAVCreature@@@Z
 .globl ?GetMesh@MapShield@@UBEHXZ
 .globl ?GetTopPos@MapShield@@UAEMXZ
-.globl ?CanBecomeAPhysicsObject@MapShield@@UAE_NXZ
+.globl ?CanBecomeAPhysicsObject@MapShield@@UAEIXZ
 .globl ?ShouldPhysicsRaiseObjectUntilNotIntersectingThis@MapShield@@UAEXPAVObject@@@Z
 .globl ?GetSaveType@MagicShield@@UAEIXZ
 .globl ?GetDebugText@MagicShield@@UAEPADXZ
@@ -276,14 +276,14 @@
 .globl ?DrawShield@MagicShield@@UAEXXZ
 .globl ?Draw@MagicShield@@UAEXXZ
 .globl ?IsEffectReceiver@MagicShield@@UAEIPAVEffectValues@@@Z
-.globl ?SetDying@MagicShield@@UAE_NXZ
-.globl ?InteractsWithPhysicsObjects@MagicShield@@UAE_NXZ
+.globl ?SetDying@MagicShield@@UAEIXZ
+.globl ?InteractsWithPhysicsObjects@MagicShield@@UAEIXZ
 .globl ?Get3DType@MagicShield@@UAE?AW4LH3DObject__ObjectType@@XZ
 .globl ?Load@MagicShield@@UAEIAAVGameOSFile@@@Z
 .globl ?Save@MagicShield@@UAEIAAVGameOSFile@@@Z
 .globl ?Load@PhysicalShield@@UAEIAAVGameOSFile@@@Z
 .globl ?Save@PhysicalShield@@UAEIAAVGameOSFile@@@Z
-.globl ?GetAlwaysRemainsInPhysicsInternalSystem@PhysicalShield@@UAE_NXZ
+.globl ?GetAlwaysRemainsInPhysicsInternalSystem@PhysicalShield@@UAEIXZ
 .globl ?GetSaveType@PhysicalShield@@UAEIXZ
 .globl ?GetDebugText@PhysicalShield@@UAEPADXZ
 .globl ??_GPhysicalShield@@UAEPAXI@Z
@@ -296,9 +296,9 @@
 .globl ?Draw@PhysicalShield@@UAEXXZ
 .globl ?SetUpPhysOb@PhysicalShield@@UAEXPAUPhysOb@@@Z
 .globl ?DrawShield@PhysicalShield@@UAEXXZ
-.globl ?SetDying@PhysicalShield@@UAE_NXZ
+.globl ?SetDying@PhysicalShield@@UAEIXZ
 .globl ?ProcessShield@PhysicalShield@@UAEXXZ
-.globl ?InteractsWithPhysicsObjects@PhysicalShield@@UAE_NXZ
+.globl ?InteractsWithPhysicsObjects@PhysicalShield@@UAEIXZ
 .globl ?ReactToPhysicsImpact@PhysicalShield@@UAEXPAVPhysicsObject@@_N@Z
 .globl ?GetPhysicsConstantsType@PhysicalShield@@UAEIXZ
 .globl ?GetImpressiveValue@PhysicalShield@@UAEMPAVLiving@@PAVReaction@@@Z
@@ -4351,7 +4351,7 @@ _jmp_addr_0x0072bf80:    {disp32} mov       eax, dword ptr [_game]              
                          nop                                                              // 0x0072c1cd    90
                          nop                                                              // 0x0072c1ce    90
                          nop                                                              // 0x0072c1cf    90
-?CanBecomeAPhysicsObject@MapShield@@UAE_NXZ:
+?CanBecomeAPhysicsObject@MapShield@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x0072c1d0    33c0
                          ret                                                              // 0x0072c1d2    c3
                          nop                                                              // 0x0072c1d3    90
@@ -4573,7 +4573,7 @@ _jmp_addr_0x0072c1f0:    push               esi                                 
                          nop                                                              // 0x0072c31d    90
                          nop                                                              // 0x0072c31e    90
                          nop                                                              // 0x0072c31f    90
-?SetDying@MagicShield@@UAE_NXZ:
+?SetDying@MagicShield@@UAEIXZ:
                          mov                eax, dword ptr [ecx]                          // 0x0072c320    8b01
                          push               0x0                                           // 0x0072c322    6a00
                          call               dword ptr [eax + 0xc]                         // 0x0072c324    ff500c
@@ -4582,7 +4582,7 @@ _jmp_addr_0x0072c1f0:    push               esi                                 
                          nop                                                              // 0x0072c32d    90
                          nop                                                              // 0x0072c32e    90
                          nop                                                              // 0x0072c32f    90
-?InteractsWithPhysicsObjects@MagicShield@@UAE_NXZ:
+?InteractsWithPhysicsObjects@MagicShield@@UAEIXZ:
                          xor.s              al, al                                        // 0x0072c330    32c0
                          ret                                                              // 0x0072c332    c3
                          nop                                                              // 0x0072c333    90
@@ -4617,7 +4617,7 @@ _jmp_addr_0x0072c1f0:    push               esi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x0072c352    8b7c240c
                          mov.s              esi, ecx                                      // 0x0072c356    8bf1
                          push               edi                                           // 0x0072c358    57
-                         call               ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z         // 0x0072c359    e8121ee0ff
+                         call               ?Load@Fixed@@UAEIAAVGameOSFile@@@Z         // 0x0072c359    e8121ee0ff
                          test               eax, eax                                      // 0x0072c35e    85c0
                          {disp8} je         .Lbl_addr_0x0072c382                          // 0x0072c360    7420
                          {disp8} lea        eax, dword ptr [esi + 0x60]                   // 0x0072c362    8d4660
@@ -5281,7 +5281,7 @@ _jmp_addr_0x0072c1f0:    push               esi                                 
                          nop                                                              // 0x0072caed    90
                          nop                                                              // 0x0072caee    90
                          nop                                                              // 0x0072caef    90
-?GetAlwaysRemainsInPhysicsInternalSystem@PhysicalShield@@UAE_NXZ:
+?GetAlwaysRemainsInPhysicsInternalSystem@PhysicalShield@@UAEIXZ:
                          mov                al, 0x01                                      // 0x0072caf0    b001
                          ret                                                              // 0x0072caf2    c3
                          nop                                                              // 0x0072caf3    90
@@ -5859,7 +5859,7 @@ _jmp_addr_0x0072cb50:    push               esi                                 
                          nop                                                              // 0x0072d16d    90
                          nop                                                              // 0x0072d16e    90
                          nop                                                              // 0x0072d16f    90
-?SetDying@PhysicalShield@@UAE_NXZ:
+?SetDying@PhysicalShield@@UAEIXZ:
                          mov                eax, 0x00000001                               // 0x0072d170    b801000000
                          {disp32} mov       byte ptr [ecx + 0x000000f8], al               // 0x0072d175    8881f8000000
                          {disp8} mov        dword ptr [ecx + 0x60], 0x00000000            // 0x0072d17b    c7416000000000
@@ -6219,7 +6219,7 @@ _jmp_addr_0x0072cb50:    push               esi                                 
                          nop                                                              // 0x0072d5fd    90
                          nop                                                              // 0x0072d5fe    90
                          nop                                                              // 0x0072d5ff    90
-?InteractsWithPhysicsObjects@PhysicalShield@@UAE_NXZ:
+?InteractsWithPhysicsObjects@PhysicalShield@@UAEIXZ:
                          mov                al, 0x01                                      // 0x0072d600    b001
                          ret                                                              // 0x0072d602    c3
                          nop                                                              // 0x0072d603    90

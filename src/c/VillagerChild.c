@@ -723,7 +723,7 @@ bool32_t __fastcall CheckNeedNewAbode__8VillagerFv(struct Villager* this)
     asm("mov.s              ecx, esi");                                      // 0x00757faf    8bce
     asm("call               ?GetAbode@Villager@@QAEPAVAbode@@XZ");           // 0x00757fb1    e8aaa1ffff
     asm("mov.s              ecx, eax");                                      // 0x00757fb6    8bc8
-    asm("call               ?IsTooCrowded@Abode@@QAE_NXZ");                  // 0x00757fb8    e803c7caff
+    asm("call               ?IsTooCrowded@Abode@@QAEIXZ");                  // 0x00757fb8    e803c7caff
     asm("test               eax, eax");                                      // 0x00757fbd    85c0
     asm("{disp32} je        LAB__addr_0x0075806f");                          // 0x00757fbf    0f84aa000000
     asm("LAB__addr_0x00757fc5:");

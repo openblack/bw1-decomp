@@ -131,7 +131,7 @@ void __fastcall Draw__9SpellWolfFv(struct Object* this) asm("?Draw@SpellWolf@@UA
 // win1.41 00420910 mac 10177d60 SpellWolf::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__9SpellWolfFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@SpellWolf@@UAEXABUMapCoords@@@Z");
 // win1.41 00420cf0 mac 101777b0 SpellWolf::SetDying(void)
-bool __fastcall SetDying__9SpellWolfFv(struct Object* this) asm("?SetDying@SpellWolf@@UAE_NXZ");
+bool __fastcall SetDying__9SpellWolfFv(struct Object* this) asm("?SetDying@SpellWolf@@UAEIXZ");
 // win1.41 0041c6a0 mac 1016ee70 SpellWolf::StandAnimation(void)
 uint32_t __fastcall StandAnimation__9SpellWolfFv(struct Object* this) asm("?StandAnimation@SpellWolf@@UAEIXZ");
 // win1.41 004209b0 mac 10177c00 SpellWolf::SetSpeed(long)

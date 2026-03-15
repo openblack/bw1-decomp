@@ -18,7 +18,7 @@ void __fastcall SetIdentity__8LHMatrixFv(struct LHMatrix* this)
     asm("{disp8} mov        dword ptr [ecx + 0x10], eax");                   // 0x00403525    894110
     asm("mov                dword ptr [ecx], eax");                          // 0x00403528    8901
     asm("ret");                                                              // 0x0040352a    c3
-    asm("call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9");                          // 0x0040352b    e849e3ffff
+    asm("call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9");                          // 0x0040352b    e849e3ffff
     __builtin_unreachable();
 }
 
@@ -61,6 +61,6 @@ void __fastcall PostTranslation__8LHMatrixFRC7LHPoint(struct LHMatrix* this, str
     asm("{disp8} fadd       dword ptr [ecx + 0x2c]");                        // 0x00403584    d8412c
     asm("{disp8} fstp       dword ptr [ecx + 0x2c]");                        // 0x00403587    d9592c
     asm("ret");                                                              // 0x0040358a    c3
-    asm("call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9");                          // 0x0040358b    e8e9e2ffff
+    asm("call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9");                          // 0x0040358b    e8e9e2ffff
     __builtin_unreachable();
 }

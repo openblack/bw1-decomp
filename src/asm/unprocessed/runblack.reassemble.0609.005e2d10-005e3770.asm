@@ -3,9 +3,9 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?SetIdentity@LHMatrix@@QAEXXZ
-.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
-.extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
+.extern ?SetIdentityMatrix@LHMatrix@@QAEXXZ
+.extern ?Translation@LHMatrix@@QAEXABULHPoint@@@Z
+.extern ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z
 .extern __ftol
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
@@ -344,7 +344,7 @@ _RequestChangeTexture__FP6Object:    sub                esp, 0x4c               
                          {disp32} jmp       .Lbl_addr_0x005e322e                    // 0x005e3157    e9d2000000
 .Lbl_addr_0x005e315c:    {disp8} lea        edi, dword ptr [esi + 0x14]             // 0x005e315c    8d7e14
                          mov.s              ecx, edi                                // 0x005e315f    8bcf
-                         call               ?SetIdentity@LHMatrix@@QAEXXZ           // 0x005e3161    e89a03e2ff
+                         call               ?SetIdentityMatrix@LHMatrix@@QAEXXZ           // 0x005e3161    e89a03e2ff
                          {disp8} fld        dword ptr [esp + 0x10]                  // 0x005e3166    d9442410
                          fcos                                                       // 0x005e316a    d9ff
                          {disp8} mov        ecx, dword ptr [esp + 0x20]             // 0x005e316c    8b4c2420
@@ -411,11 +411,11 @@ _RequestChangeTexture__FP6Object:    sub                esp, 0x4c               
                          {disp8} mov        dword ptr [ecx + 0x08], ebp             // 0x005e3212    896908
                          {disp8} mov        dword ptr [ecx + 0x04], ebp             // 0x005e3215    896904
                          {disp8} mov        dword ptr [ecx + 0x10], eax             // 0x005e3218    894110
-                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z// 0x005e321b    e85003e2ff
+                         call               ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z// 0x005e321b    e85003e2ff
                          {disp8} jmp        .Lbl_addr_0x005e322e                    // 0x005e3220    eb0c
 .Lbl_addr_0x005e3222:    {disp8} lea        edx, dword ptr [esp + 0x20]             // 0x005e3222    8d542420
                          {disp8} lea        ecx, dword ptr [esi + 0x14]             // 0x005e3226    8d4e14
-                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z  // 0x005e3229    e80203e2ff
+                         call               ?Translation@LHMatrix@@QAEXABULHPoint@@@Z  // 0x005e3229    e80203e2ff
 .Lbl_addr_0x005e322e:    {disp8} mov        edx, dword ptr [esp + 0x18]             // 0x005e322e    8b542418
                          {disp8} mov        eax, dword ptr [esp + 0x60]             // 0x005e3232    8b442460
                          {disp8} mov        ecx, dword ptr [esp + 0x10]             // 0x005e3236    8b4c2410

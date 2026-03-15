@@ -3,8 +3,8 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
-.extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
+.extern ?Translation@LHMatrix@@QAEXABULHPoint@@@Z
+.extern ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z
 .extern ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
 .extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
@@ -1545,11 +1545,11 @@ _jmp_addr_0x00726dc0:    push               esi                                 
                          call               _jmp_addr_0x00519320                                 // 0x0072729c    e87f20dfff
                          {disp8} lea        edx, dword ptr [esp + 0x14]                          // 0x007272a1    8d542414
                          mov.s              ecx, edi                                             // 0x007272a5    8bcf
-                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z             // 0x007272a7    e8c4c2cdff
+                         call               ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z             // 0x007272a7    e8c4c2cdff
                          {disp8} jmp        .Lbl_addr_0x007272ba                                 // 0x007272ac    eb0c
 .Lbl_addr_0x007272ae:    {disp8} lea        edx, dword ptr [esp + 0x14]                          // 0x007272ae    8d542414
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                          // 0x007272b2    8d4b14
-                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z            // 0x007272b5    e876c2cdff
+                         call               ?Translation@LHMatrix@@QAEXABULHPoint@@@Z            // 0x007272b5    e876c2cdff
 .Lbl_addr_0x007272ba:    {disp8} mov        ecx, dword ptr [esp + 0x0c]                          // 0x007272ba    8b4c240c
                          {disp8} mov        dword ptr [ebx + 0x44], ecx                          // 0x007272be    894b44
                          {disp8} mov        dword ptr [ebx + 0x48], 0x00000000                   // 0x007272c1    c7434800000000

@@ -44,7 +44,7 @@
 .globl ?UpdateMouse@GameOptionsRoom@@UAEXULHCoord@@W4INTERFACE_MESSAGE_TYPES@@@Z
 .globl ?UpdateKeyboard@GameOptionsRoom@@UAEXW4LH_KEY@@G@Z
 .globl ?Update@GameOptionsRoom@@UAEXXZ
-.globl ?IsAvailable@GameOptionsRoom@@UAE_NXZ
+.globl ?IsAvailable@GameOptionsRoom@@UAEIXZ
 .globl ?GetSubMeshData@SubOptionEntryButton@@UAEXAAUSubMeshDrawData@@HH@Z
 .globl ?UpdateMouse@SubOptionEntryButton@@UAEIULHCoord@@W4INTERFACE_MESSAGE_TYPES@@H@Z
 
@@ -890,7 +890,7 @@ _jmp_addr_0x0078d680:    sub               esp, 0x0c                            
                          nop                                                             // 0x0078d8ed    90
                          nop                                                             // 0x0078d8ee    90
                          nop                                                             // 0x0078d8ef    90
-?IsAvailable@GameOptionsRoom@@UAE_NXZ:
+?IsAvailable@GameOptionsRoom@@UAEIXZ:
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x0078d8f0    8b0d5c19d000
                          call              ?IsMultiplayerGame@GGame@@QBE_NXZ             // 0x0078d8f6    e88556dcff
                          test              eax, eax                                      // 0x0078d8fb    85c0

@@ -272,7 +272,7 @@ _jmp_addr_0x00543d50:    {disp8} mov      eax, dword ptr [esp + 0x04]           
                          pop              esi                                           // 0x00544036    5e
                          pop              ebx                                           // 0x00544037    5b
                          ret              0x000c                                        // 0x00544038    c20c00
-                         call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054403b    e839d8ebff
+                         call             ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0054403b    e839d8ebff
 ?Destroy@CDBox@@UAEXXZ:
                          call             ?Destroy@DialogBoxBase@@UAEXXZ                // 0x00544040    e84bf5fcff
                          {disp32} mov     dword ptr [data_bytes + 0x30ab7c], 0x00000000 // 0x00544045    c7057c0bcd0000000000

@@ -65,7 +65,7 @@ void __fastcall Init__8MainMenuFUlUlPFiP8SetupBoxP12SetupControlii_v(struct Dial
 // win1.41 0053fb50 mac 105c05a0 MainMenu::Destroy(void)
 void __fastcall Destroy__8MainMenuFv(struct DialogBoxBase* this) asm("?Destroy@MainMenu@@UAEXXZ");
 // win1.41 0053bd50 mac 105c5ef0 MainMenu::CanESCOut(void)
-bool __fastcall CanESCOut__8MainMenuFv(struct DialogBoxBase* this) asm("?CanESCOut@MainMenu@@UAE_NXZ");
+bool __fastcall CanESCOut__8MainMenuFv(struct DialogBoxBase* this) asm("?CanESCOut@MainMenu@@UAEIXZ");
 // win1.41 0053fba0 mac 105bff40 MainMenu::InitControls(void)
 void __fastcall InitControls__8MainMenuFv(struct DialogBoxBase* this) asm("?InitControls@MainMenu@@UAEXXZ");
 

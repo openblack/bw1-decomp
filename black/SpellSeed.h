@@ -248,9 +248,9 @@ uint32_t __fastcall ThrowObjectFromHand__9SpellSeedFP16GInterfaceStatusi(struct 
 // win1.41 00728f50 mac 1052a390 SpellSeed::IsEffectReceiver(EffectValues *)
 uint32_t __fastcall IsEffectReceiver__9SpellSeedFP12EffectValues(struct Object* this, const void* edx, struct EffectValues* param_1) asm("?IsEffectReceiver@SpellSeed@@UAEIPAVEffectValues@@@Z");
 // win1.41 00728570 mac 1052bca0 SpellSeed::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__9SpellSeedFv(struct Object* this) asm("?InteractsWithPhysicsObjects@SpellSeed@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__9SpellSeedFv(struct Object* this) asm("?InteractsWithPhysicsObjects@SpellSeed@@UAEIXZ");
 // win1.41 00729930 mac 10528d60 SpellSeed::ProcessInHand(void)
-bool __fastcall ProcessInHand__9SpellSeedFv(struct Object* this) asm("?ProcessInHand@SpellSeed@@UAE_NXZ");
+bool __fastcall ProcessInHand__9SpellSeedFv(struct Object* this) asm("?ProcessInHand@SpellSeed@@UAEIXZ");
 // win1.41 00727f90 mac 1052cd60 SpellSeed::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__9SpellSeedFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@SpellSeed@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 // win1.41 0072a2d0 mac 10527cc0 SpellSeed::GetInHandImmersionTexture(void)

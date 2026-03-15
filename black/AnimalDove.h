@@ -177,7 +177,7 @@ uint32_t __fastcall Save__9SpellDoveFR10GameOSFile(struct GameThing* this, const
 // win1.41 0041eb40 mac 101751d0 SpellDove::GetSaveType(void)
 uint32_t __fastcall GetSaveType__9SpellDoveFv(struct GameThing* this) asm("?GetSaveType@SpellDove@@UAEIXZ");
 // win1.41 0041f5c0 mac 10172e20 SpellDove::SetDying(void)
-bool __fastcall SetDying__9SpellDoveFv(struct Object* this) asm("?SetDying@SpellDove@@UAE_NXZ");
+bool __fastcall SetDying__9SpellDoveFv(struct Object* this) asm("?SetDying@SpellDove@@UAEIXZ");
 // win1.41 0041bde0 mac 10170a20 SpellDove::StandAnimation(void)
 uint32_t __fastcall StandAnimation__9SpellDoveFv(struct Object* this) asm("?StandAnimation@SpellDove@@UAEIXZ");
 // win1.41 0041f620 mac 10172de0 SpellDove::GetNumTurnsToDieOver(void)

@@ -175,17 +175,17 @@ uint32_t __fastcall Save__7FireFlyFR10GameOSFile(struct GameThing* this, const v
 // win1.41 0052a2f0 mac 100d6690 FireFly::GetSaveType(void)
 uint32_t __fastcall GetSaveType__7FireFlyFv(struct GameThing* this) asm("?GetSaveType@FireFly@@UAEIXZ");
 // win1.41 0052a1d0 mac 100da180 FireFly::IsMoving( const(void))
-bool __fastcall IsMoving__7FireFlyCFv(const struct GameThingWithPos* this) asm("?IsMoving@FireFly@@UBE_NXZ");
+bool __fastcall IsMoving__7FireFlyCFv(const struct GameThingWithPos* this) asm("?IsMoving@FireFly@@UBEIXZ");
 // win1.41 0052aa90 mac 100d9130 FireFly::Draw(void)
 void __fastcall Draw__7FireFlyFv(struct Object* this) asm("?Draw@FireFly@@UAEXXZ");
 // win1.41 0052a510 mac 100d9950 FireFly::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__7FireFlyFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@FireFly@@UAEXABUMapCoords@@@Z");
 // win1.41 0052a1a0 mac 100da240 FireFly::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__7FireFlyFv(struct Object* this) asm("?InteractsWithPhysicsObjects@FireFly@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__7FireFlyFv(struct Object* this) asm("?InteractsWithPhysicsObjects@FireFly@@UAEIXZ");
 // win1.41 0052a1b0 mac 100da1f0 FireFly::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__7FireFlyFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@FireFly@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 0052a1c0 mac 100da1b0 FireFly::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__7FireFlyFv(struct Object* this) asm("?CanBecomeAPhysicsObject@FireFly@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__7FireFlyFv(struct Object* this) asm("?CanBecomeAPhysicsObject@FireFly@@UAEIXZ");
 // win1.41 0052bf10 mac 100d6710 FireFly::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__7FireFlyFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@FireFly@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 

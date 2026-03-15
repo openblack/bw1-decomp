@@ -225,13 +225,13 @@ uint32_t __fastcall GetPhysicsConstantsType__4RockFv(struct Object* this) asm("?
 // win1.41 006e7000 mac 1013dd00 Rock::EndPhysics(PhysicsObject *, bool)
 void __fastcall EndPhysics__4RockFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?EndPhysics@Rock@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00561370 mac 100c41a0 Rock::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__4RockFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Rock@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__4RockFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Rock@@UAEIXZ");
 // win1.41 006e7930 mac 1013ce40 Rock::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__4RockFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@Rock@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00439770 mac 100b4080 Rock::ShouldFootpathsGoRound(void)
-bool __fastcall ShouldFootpathsGoRound__4RockFv(struct Object* this) asm("?ShouldFootpathsGoRound@Rock@@UAE_NXZ");
+bool __fastcall ShouldFootpathsGoRound__4RockFv(struct Object* this) asm("?ShouldFootpathsGoRound@Rock@@UAEIXZ");
 // win1.41 00439740 mac 100b3fc0 Rock::IsMovable(void)
-bool __fastcall IsMovable__4RockFv(struct Rock* this) asm("?IsMovable@Rock@@UAE_NXZ");
+bool __fastcall IsMovable__4RockFv(struct Rock* this) asm("?IsMovable@Rock@@UAEIXZ");
 
 #endif // __cplusplus
 

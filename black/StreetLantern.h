@@ -120,7 +120,7 @@ void __fastcall Draw__14GStreetLanternFv(struct Object* this) asm("?Draw@GStreet
 // win1.41 00734810 mac 105350a0 GStreetLantern::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__14GStreetLanternFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@GStreetLantern@@UAEXABUMapCoords@@@Z");
 // win1.41 007349d0 mac 10535050 GStreetLantern::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__14GStreetLanternFv(struct Object* this) asm("?InteractsWithPhysicsObjects@GStreetLantern@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__14GStreetLanternFv(struct Object* this) asm("?InteractsWithPhysicsObjects@GStreetLantern@@UAEIXZ");
 // win1.41 00734d50 mac 10534800 GStreetLantern::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__14GStreetLanternFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@GStreetLantern@@UAE_NPAVCreature@@@Z");
 // win1.41 00734b10 mac 10534be0 GStreetLantern::SaveObject(LHOSFile &, MapCoords const &)

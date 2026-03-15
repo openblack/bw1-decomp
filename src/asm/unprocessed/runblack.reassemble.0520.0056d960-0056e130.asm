@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x0048e260
 .extern ?Destroy@DialogBoxBase@@UAEXXZ
 .extern _jmp_addr_0x00513640
-.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern _jmp_addr_0x00566890
 .extern _jmp_addr_0x0056aca0
 .extern _jmp_addr_0x0056d220
@@ -386,12 +386,12 @@ _jmp_addr_0x0056da00:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          {disp32} je        .Lbl_addr_0x0056e0aa                          // 0x0056ddee    0f84b6020000
                          {disp8} mov        esi, dword ptr [esp + 0x2c]                   // 0x0056ddf4    8b74242c
                          push               esi                                           // 0x0056ddf8    56
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x0056ddf9    e8b22bfeff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x0056ddf9    e8b22bfeff
                          test               eax, eax                                      // 0x0056ddfe    85c0
                          {disp32} je        .Lbl_addr_0x0056e0aa                          // 0x0056de00    0f84a4020000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0056de06    8b0d5c19d000
                          push               esi                                           // 0x0056de0c    56
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x0056de0d    e89e2bfeff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x0056de0d    e89e2bfeff
                          {disp32} mov       ecx, dword ptr [eax + 0x00000a4c]             // 0x0056de12    8b884c0a0000
                          test               ecx, ecx                                      // 0x0056de18    85c9
                          {disp32} je        .Lbl_addr_0x0056e0aa                          // 0x0056de1a    0f848a020000

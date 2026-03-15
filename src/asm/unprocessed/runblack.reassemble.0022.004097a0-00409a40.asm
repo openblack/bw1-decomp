@@ -192,7 +192,7 @@ _KeyDown__11SetupButtonFii:
                          push               edx                                      // 0x00409935    52
                          call               dword ptr [eax]                          // 0x00409936    ff10
 .Lbl_addr_0x00409938:    ret                0x0008                                   // 0x00409938    c20800
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                     // 0x0040993b    e8397fffff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                     // 0x0040993b    e8397fffff
 ??_GSetupButton@@UAEPAXI@Z:
                          push               esi                                      // 0x00409940    56
                          mov.s              esi, ecx                                 // 0x00409941    8bf1

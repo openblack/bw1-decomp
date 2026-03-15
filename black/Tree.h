@@ -281,7 +281,7 @@ void __fastcall ToBeDeleted__4TreeFi(struct Base* this, const void* edx, int par
 // win1.41 0055d8c0 mac 10159560 Tree::GetPlayer(void)
 struct GPlayer* __fastcall GetPlayer__4TreeFv(struct GameThing* this) asm("?GetPlayer@Tree@@UAEPAVGPlayer@@XZ");
 // win1.41 0055d9f0 mac 10159a80 Tree::GetComputerSeen(void)
-bool __fastcall GetComputerSeen__4TreeFv(struct GameThing* this) asm("?GetComputerSeen@Tree@@UAE_NXZ");
+bool __fastcall GetComputerSeen__4TreeFv(struct GameThing* this) asm("?GetComputerSeen@Tree@@UAEIXZ");
 // win1.41 0055d8e0 mac 101595f0 Tree::CastTree(void)
 struct Tree* __fastcall CastTree__4TreeFv(struct GameThing* this) asm("?CastTree@Tree@@UAEPAVTree@@XZ");
 // win1.41 0055da30 mac 10159b80 Tree::GetDebugText(void)
@@ -355,7 +355,7 @@ void __fastcall Draw__4TreeFv(struct Object* this) asm("?Draw@Tree@@UAEXXZ");
 // win1.41 0074b270 mac 10157fc0 Tree::DrawOutOfMap(bool)
 void __fastcall DrawOutOfMap__4TreeFb(struct Object* this, const void* edx, bool param_1) asm("?DrawOutOfMap@Tree@@UAEX_N@Z");
 // win1.41 0055d8b0 mac 10159520 Tree::CanBePickedUp(void)
-bool __fastcall CanBePickedUp__4TreeFv(struct Object* this) asm("?CanBePickedUp@Tree@@UAE_NXZ");
+bool __fastcall CanBePickedUp__4TreeFv(struct Object* this) asm("?CanBePickedUp@Tree@@UAEIXZ");
 // win1.41 0074a1a0 mac 10158c20 Tree::GetVillagerHugRadius(void)
 float __fastcall GetVillagerHugRadius__4TreeFv(struct Object* this) asm("?GetVillagerHugRadius@Tree@@UAEMXZ");
 // win1.41 0074c150 mac 101562a0 Tree::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
@@ -391,11 +391,11 @@ void __fastcall EndPhysics__4TreeFP13PhysicsObjectb(struct Object* this, const v
 // win1.41 0074bc60 mac 10156df0 Tree::DropSfx(void)
 uint32_t __fastcall DropSfx__4TreeFv(struct Object* this) asm("?DropSfx@Tree@@UAEIXZ");
 // win1.41 0074b6a0 mac 10157960 Tree::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__4TreeFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Tree@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__4TreeFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Tree@@UAEIXZ");
 // win1.41 0074b6b0 mac 10157840 Tree::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__4TreeFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@Tree@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 0074b630 mac 10157ad0 Tree::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__4TreeFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Tree@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__4TreeFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Tree@@UAEIXZ");
 // win1.41 0074c0e0 mac 10156590 Tree::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__4TreeFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@Tree@@UAE_NPAVCreature@@@Z");
 // win1.41 0074a180 mac 10158cd0 Tree::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
@@ -403,7 +403,7 @@ void __fastcall AddToRoutePlan__4TreeFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struc
 // win1.41 0074a140 mac 10158d40 Tree::GetRoutePlanRadius(Creature *)
 float __fastcall GetRoutePlanRadius__4TreeFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?GetRoutePlanRadius@Tree@@UAEMPAVCreature@@@Z");
 // win1.41 0074b720 mac 10157800 Tree::IsARootedObject(void)
-bool __fastcall IsARootedObject__4TreeFv(struct Object* this) asm("?IsARootedObject@Tree@@UAE_NXZ");
+bool __fastcall IsARootedObject__4TreeFv(struct Object* this) asm("?IsARootedObject@Tree@@UAEIXZ");
 // win1.41 0055d900 mac 10159670 Tree::GetCarriedTreeType(void)
 uint32_t __fastcall GetCarriedTreeType__4TreeFv(struct Object* this) asm("?GetCarriedTreeType@Tree@@UAEIXZ");
 // win1.41 0074a9d0 mac 10158260 Tree::SaveObject(LHOSFile &, MapCoords const &)

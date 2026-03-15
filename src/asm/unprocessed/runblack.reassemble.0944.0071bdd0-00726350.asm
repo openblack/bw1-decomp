@@ -8,7 +8,7 @@
 .extern ?SetToZero@Abode@@QAEXXZ
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
-.extern ?SetIdentity@LHMatrix@@QAEXXZ
+.extern ?SetIdentityMatrix@LHMatrix@@QAEXXZ
 .extern ?Process@Abode@@UAEIXZ
 .extern ?GetAbodeText@Abode@@QAEPADPAD@Z
 .extern ?Save@Abode@@UAEIAAVGameOSFile@@@Z
@@ -69,7 +69,7 @@
 .extern _jmp_addr_0x0053a740
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z
-.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ
@@ -423,7 +423,7 @@
 .globl ?Save@SpellCreature@@UAEIAAVGameOSFile@@@Z
 .globl ?IsActive@SpellDispenser@@UBEIXZ
 .globl ?IsSpellDispenser@SpellDispenser@@UAEIXZ
-.globl ?IsSpellSeedReturnPoint@SpellDispenser@@UBE_NXZ
+.globl ?IsSpellSeedReturnPoint@SpellDispenser@@UBEIXZ
 .globl ?GetSaveType@SpellDispenser@@UAEIXZ
 .globl ??_GSpellDispenser@@UAEPAXI@Z
 .globl ?CallVirtualFunctionsForCreation@SpellDispenser@@UAEXABUMapCoords@@@Z
@@ -467,7 +467,7 @@
 .globl ?GetMesh@GSpellIconInfo@@UBEIXZ
 .globl ?GetBaseInfo@GSpellIconInfo@@UAEPAVGBaseInfo@@AAI@Z
 .globl ??_GGSpellIconInfo@@UAEPAXI@Z
-.globl ?InteractsWithPhysicsObjects@SpellIcon@@UAE_NXZ
+.globl ?InteractsWithPhysicsObjects@SpellIcon@@UAEIXZ
 .globl ?Create3DObject@SpellIcon@@UAEXXZ
 .globl ?InitWithObject@Spell@@UAEHPAVGameThing@@PAVObject@@PAVSpellCastData@@ABUPSysProcessInfo@@@Z
 .globl ?SpellEvent@Spell@@UAEXABVSpellEventInfo@@@Z
@@ -10632,7 +10632,7 @@ _jmp_addr_0x00722660:    push               esi                                 
                          nop                                                                     // 0x007226dd    90
                          nop                                                                     // 0x007226de    90
                          nop                                                                     // 0x007226df    90
-?IsSpellSeedReturnPoint@SpellDispenser@@UBE_NXZ:
+?IsSpellSeedReturnPoint@SpellDispenser@@UBEIXZ:
                          mov                eax, 0x00000001                                      // 0x007226e0    b801000000
                          ret                                                                     // 0x007226e5    c3
                          nop                                                                     // 0x007226e6    90
@@ -11473,7 +11473,7 @@ _jmp_addr_0x00722b30:    sub                esp, 0x0c                           
                          {disp8} jne        .Lbl_addr_0x0072302b                                 // 0x00723016    7513
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x00723018    8b0d5c19d000
                          push               eax                                                  // 0x0072301e    50
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z                 // 0x0072301f    e88cd9e2ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z                 // 0x0072301f    e88cd9e2ff
                          add                eax, 0x00000a50                                      // 0x00723024    05500a0000
                          mov                eax, dword ptr [eax]                                 // 0x00723029    8b00
 .Lbl_addr_0x0072302b:    ret                                                                     // 0x0072302b    c3
@@ -12246,7 +12246,7 @@ _jmp_addr_0x00723210:    xor.s              eax, eax                            
                          {disp8} lea        ecx, dword ptr [esp + 0x4c]                          // 0x0072386d    8d4c244c
                          {disp8} fdivr      dword ptr [esp + 0x0c]                               // 0x00723871    d87c240c
                          {disp8} fstp       dword ptr [esp + 0x08]                               // 0x00723875    d95c2408
-                         call               ?SetIdentity@LHMatrix@@QAEXXZ                        // 0x00723879    e882fccdff
+                         call               ?SetIdentityMatrix@LHMatrix@@QAEXXZ                        // 0x00723879    e882fccdff
                          {disp8} fld        dword ptr [esp + 0x08]                               // 0x0072387e    d9442408
                          fcos                                                                    // 0x00723882    d9ff
                          {disp8} lea        edx, dword ptr [esp + 0x10]                          // 0x00723884    8d542410
@@ -15968,7 +15968,7 @@ _jmp_addr_0x00726080:    push               esi                                 
                          ret                0x0004                                               // 0x007260db    c20400
                          nop                                                                     // 0x007260de    90
                          nop                                                                     // 0x007260df    90
-?InteractsWithPhysicsObjects@SpellIcon@@UAE_NXZ:
+?InteractsWithPhysicsObjects@SpellIcon@@UAEIXZ:
                          xor.s              al, al                                               // 0x007260e0    32c0
                          ret                                                                     // 0x007260e2    c3
                          nop                                                                     // 0x007260e3    90

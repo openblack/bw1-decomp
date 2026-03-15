@@ -65,9 +65,9 @@ This script uses clang to compile classes get get function signatures in their m
 ```bash
 python scripts/msvc_mangler.py extracted_reversing_data_bw_141.json
 void __fastcall ProcessGraphicsEngine__5GGameFUlUl
-?ProcessGraphicsEngine@GGame@@QAEXKK@Z
+?ProcessGraphicsEngine@GGame@@QAEXII@Z
 GPlayer* __fastcall GetPlayer__5GGameFUl
-?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 bool __fastcall IsMultiplayerGame__5GGameCFv
 ?IsMultiplayerGame@GGame@@QBE_NXZ
 ```

@@ -178,7 +178,7 @@ bool32_t __fastcall ShepherdMoveFlockToWater__8VillagerFv(struct Villager* this)
     asm("{disp8} lea        eax, dword ptr [esp + 0x0c]");                     // 0x00768d06    8d44240c
     asm("push               eax");                                             // 0x00768d0a    50
     asm("mov.s              ecx, ebx");                                        // 0x00768d0b    8bcb
-    asm("call               ?GetNearestWaterPos@Abode@@QAE_NAAUMapCoords@@@Z");                            // 0x00768d0d    e8aed2c9ff
+    asm("call               ?GetNearestWaterPos@@YA_NAAUMapCoords@@@Z");                            // 0x00768d0d    e8aed2c9ff
     asm("test               eax, eax");                                        // 0x00768d12    85c0
     asm("{disp8} jne        LAB__addr_0x00768d3a");                            // 0x00768d14    7524
     asm("push               0x43c80000");                                      // 0x00768d16    680000c843
@@ -189,7 +189,7 @@ bool32_t __fastcall ShepherdMoveFlockToWater__8VillagerFv(struct Villager* this)
     asm("{disp8} lea        ecx, dword ptr [esp + 0x0c]");                     // 0x00768d2a    8d4c240c
     asm("push               ecx");                                             // 0x00768d2e    51
     asm("mov.s              ecx, ebx");                                        // 0x00768d2f    8bcb
-    asm("call               ?GetNearestWaterPos@Abode@@QAE_NAAUMapCoords@@@Z");                            // 0x00768d31    e88ad2c9ff
+    asm("call               ?GetNearestWaterPos@@YA_NAAUMapCoords@@@Z");                            // 0x00768d31    e88ad2c9ff
     asm("test               eax, eax");                                        // 0x00768d36    85c0
     asm("{disp8} je         LAB__addr_0x00768dad");                            // 0x00768d38    7473
     asm("LAB__addr_0x00768d3a:");

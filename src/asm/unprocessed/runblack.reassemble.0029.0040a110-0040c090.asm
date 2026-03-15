@@ -309,7 +309,7 @@ _MouseDown__9SetupListFiib:
                          call                 dword ptr [eax + 0x18]                          // 0x0040a3e4    ff5018
                          pop                  esi                                             // 0x0040a3e7    5e
 .Lbl_addr_0x0040a3e8:    ret                  0x000c                                          // 0x0040a3e8    c20c00
-                         call                 ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                            // 0x0040a3eb    e88974ffff
+                         call                 ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                            // 0x0040a3eb    e88974ffff
 _MouseUp__9SetupListFiib:
                          {disp8} mov          eax, dword ptr [ecx + 0x04]                     // 0x0040a3f0    8b4104
                          test                 eax, eax                                        // 0x0040a3f3    85c0

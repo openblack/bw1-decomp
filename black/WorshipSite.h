@@ -347,7 +347,7 @@ bool __fastcall DoCreatureMimicAfterAddingResource__11WorshipSiteF13RESOURCE_TYP
 // win1.41 0077de20 mac 105ac330 WorshipSite::GetDistanceFromObject(Object *)
 float __fastcall GetDistanceFromObject__11WorshipSiteFP6Object(struct Object* this, const void* edx, struct Object* param_1) asm("?GetDistanceFromObject@WorshipSite@@UAEMPAVObject@@@Z");
 // win1.41 0055dc60 mac 105b3dc0 WorshipSite::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__11WorshipSiteFv(struct Object* this) asm("?InteractsWithPhysicsObjects@WorshipSite@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__11WorshipSiteFv(struct Object* this) asm("?InteractsWithPhysicsObjects@WorshipSite@@UAEIXZ");
 // win1.41 0077ae30 mac 105b2cf0 WorshipSite::GetInspectObjectPos(Villager *, MapCoords *)
 bool __fastcall GetInspectObjectPos__11WorshipSiteFP8VillagerP9MapCoords(struct Object* this, const void* edx, struct Villager* param_1, struct MapCoords* param_2) asm("?GetInspectObjectPos@WorshipSite@@UAE_NPAVVillager@@PAUMapCoords@@@Z");
 // win1.41 0077cc90 mac 105aefc0 WorshipSite::GetSpecialPos(unsigned long, MapCoords *)
@@ -361,9 +361,9 @@ void __fastcall GetNearestEdgeOfObject__11WorshipSiteFP6Object(struct Object* th
 // win1.41 0077e460 mac inlined WorshipSite::GetResourceDropPosForComputerPlayer(MapCoords *)
 void __fastcall GetResourceDropPosForComputerPlayer__11WorshipSiteFP9MapCoords(struct MultiMapFixed* this, const void* edx, struct MapCoords* param_1) asm("?GetResourceDropPosForComputerPlayer@WorshipSite@@UAEXPAUMapCoords@@@Z");
 // win1.41 0077bdd0 mac 105b10a0 WorshipSite::IsBuilt(void)
-bool __fastcall IsBuilt__11WorshipSiteFv(struct MultiMapFixed* this) asm("?IsBuilt@WorshipSite@@UAE_NXZ");
+bool __fastcall IsBuilt__11WorshipSiteFv(struct MultiMapFixed* this) asm("?IsBuilt@WorshipSite@@UAEIXZ");
 // win1.41 0077ac10 mac 105b3210 WorshipSite::Built(void)
-bool __fastcall Built__11WorshipSiteFv(struct MultiMapFixed* this) asm("?Built@WorshipSite@@UAE_NXZ");
+bool __fastcall Built__11WorshipSiteFv(struct MultiMapFixed* this) asm("?Built@WorshipSite@@UAEIXZ");
 // win1.41 0055dc70 mac 105b3e10 WorshipSite::GetAbodeType(void)
 enum ABODE_TYPE __fastcall GetAbodeType__11WorshipSiteFv(struct MultiMapFixed* this) asm("?GetAbodeType@WorshipSite@@UAE?AW4ABODE_TYPE@@XZ");
 // win1.41 0077c5d0 mac 105afeb0 WorshipSite::GetResourcePos(RESOURCE_TYPE, long)

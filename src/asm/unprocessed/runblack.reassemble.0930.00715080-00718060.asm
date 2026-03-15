@@ -3,11 +3,11 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z
+.extern ?Create@@YAPAVAbode@@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z
 .extern ?AddVillagerToAbode@Abode@@QAEXPAVVillager@@@Z
-.extern ?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z
-.extern ?Create@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z
-.extern ?GetInfoFromText@GAbodeInfo@@SAHPAD@Z
+.extern ?IsOkToCreateAtPos@GAbodeInfo@@QBEIABUMapCoords@@MMPAVTown@@@Z
+.extern ?Create@PlannedAbode@@SAPAV1@AAUMapCoords@@PAVGAbodeInfo@@PAVTown@@MM@Z
+.extern ?GetInfoFromText@GAbodeInfo@@SAHPBD@Z
 .extern @DeleteString__9SetupListFi@12
 .extern @InsertString__9SetupListFiPw@16
 .extern _jmp_addr_0x00419d10
@@ -44,7 +44,7 @@
 .extern @__ct__6ForestFRC9MapCoordsUl@16
 .extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z
-.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern ?FindTownWithID@GGame@@QAEPAVTown@@K@Z
 .extern _jmp_addr_0x00552ff0
@@ -624,7 +624,7 @@ _jmp_addr_0x00715150:    push               0x0                                 
                          ret                                                              // 0x00715628    c3
                          {disp32} lea       ecx, dword ptr [ebp + 0x00001000]             // 0x00715629    8d8d00100000
                          push               ecx                                           // 0x0071562f    51
-                         call               ?GetInfoFromText@GAbodeInfo@@SAHPAD@Z         // 0x00715630    e83b04cfff
+                         call               ?GetInfoFromText@GAbodeInfo@@SAHPBD@Z         // 0x00715630    e83b04cfff
                          lea                edx, dword ptr [eax + eax * 0x8]              // 0x00715635    8d14c0
                          lea                eax, dword ptr [eax + edx * 0x2]              // 0x00715638    8d0450
                          {disp32} lea       ecx, dword ptr [ebp + 0x00000800]             // 0x0071563b    8d8d00080000
@@ -687,7 +687,7 @@ _jmp_addr_0x00715150:    push               0x0                                 
                          {disp8} lea        eax, dword ptr [esp + 0x40]                   // 0x00715707    8d442440
                          push               esi                                           // 0x0071570b    56
                          push               eax                                           // 0x0071570c    50
-                         call               ?Create@PlannedAbode@@SAPAV1@PAUMapCoords@@PAVGMultiMapFixedInfo@@PAVTown@@MM@Z                          // 0x0071570d    e8eefeceff
+                         call               ?Create@PlannedAbode@@SAPAV1@AAUMapCoords@@PAVGAbodeInfo@@PAVTown@@MM@Z                          // 0x0071570d    e8eefeceff
                          add                esp, 0x14                                     // 0x00715712    83c414
                          {disp32} mov       dword ptr [_PTR_00d99384], eax                // 0x00715715    a38493d900
                          xor.s              eax, eax                                      // 0x0071571a    33c0
@@ -714,7 +714,7 @@ _jmp_addr_0x00715150:    push               0x0                                 
                          {disp8} lea        eax, dword ptr [esp + 0x54]                   // 0x0071574a    8d442454
                          push               esi                                           // 0x0071574e    56
                          push               eax                                           // 0x0071574f    50
-                         call               ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z  // 0x00715750    e8cbd6ceff
+                         call               ?Create@@YAPAVAbode@@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z  // 0x00715750    e8cbd6ceff
                          add                esp, 0x28                                     // 0x00715755    83c428
                          test               eax, eax                                      // 0x00715758    85c0
                          {disp32} mov       dword ptr [_PTR_00d99384], eax                // 0x0071575a    a38493d900
@@ -730,7 +730,7 @@ _jmp_addr_0x00715150:    push               0x0                                 
                          ret                                                              // 0x0071577b    c3
                          {disp32} lea       ecx, dword ptr [ebp + 0x00001000]             // 0x0071577c    8d8d00100000
                          push               ecx                                           // 0x00715782    51
-                         call               ?GetInfoFromText@GAbodeInfo@@SAHPAD@Z         // 0x00715783    e8e802cfff
+                         call               ?GetInfoFromText@GAbodeInfo@@SAHPBD@Z         // 0x00715783    e8e802cfff
                          lea                edx, dword ptr [eax + eax * 0x8]              // 0x00715788    8d14c0
                          lea                eax, dword ptr [eax + edx * 0x2]              // 0x0071578b    8d0450
                          {disp32} lea       ecx, dword ptr [ebp + 0x00000800]             // 0x0071578e    8d8d00080000
@@ -774,7 +774,7 @@ _jmp_addr_0x00715150:    push               0x0                                 
                          {disp8} lea        edx, dword ptr [esp + 0x40]                   // 0x00715821    8d542440
                          push               edx                                           // 0x00715825    52
                          mov.s              ecx, edi                                      // 0x00715826    8bcf
-                         call               ?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z  // 0x00715828    e8e3f2ceff
+                         call               ?IsOkToCreateAtPos@GAbodeInfo@@QBEIABUMapCoords@@MMPAVTown@@@Z  // 0x00715828    e8e3f2ceff
                          cmp                eax, 0x01                                     // 0x0071582d    83f801
                          {disp32} jne       .Lbl_addr_0x00717e8a                          // 0x00715830    0f8554260000
                          push               0x0                                           // 0x00715836    6a00
@@ -788,7 +788,7 @@ _jmp_addr_0x00715150:    push               0x0                                 
                          {disp8} lea        eax, dword ptr [esp + 0x54]                   // 0x00715846    8d442454
                          push               edi                                           // 0x0071584a    57
                          push               eax                                           // 0x0071584b    50
-                         call               ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z  // 0x0071584c    e8cfd5ceff
+                         call               ?Create@@YAPAVAbode@@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z  // 0x0071584c    e8cfd5ceff
                          mov.s              edi, eax                                      // 0x00715851    8bf8
                          add                esp, 0x28                                     // 0x00715853    83c428
                          test               edi, edi                                      // 0x00715856    85ff
@@ -1359,7 +1359,7 @@ _jmp_addr_0x00715150:    push               0x0                                 
                          call               ?GetPlayerNumber@GPlayer@@QBEEXZ              // 0x00715f8e    e8fd47f3ff
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00715f93    8b0d5c19d000
                          push               eax                                           // 0x00715f99    50
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x00715f9a    e811aae3ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x00715f9a    e811aae3ff
                          {disp32} mov       edi, dword ptr [eax + 0x00000a48]             // 0x00715f9f    8bb8480a0000
                          add                eax, 0x00000a48                               // 0x00715fa5    05480a0000
                          test               edi, edi                                      // 0x00715faa    85ff
@@ -2055,7 +2055,7 @@ _jmp_addr_0x00715150:    push               0x0                                 
                          ret                                                              // 0x00716880    c3
                          {disp32} lea       edx, dword ptr [ebp + 0x00001000]             // 0x00716881    8d9500100000
                          push               edx                                           // 0x00716887    52
-                         call               ?GetInfoFromText@GAbodeInfo@@SAHPAD@Z         // 0x00716888    e8e3f1ceff
+                         call               ?GetInfoFromText@GAbodeInfo@@SAHPBD@Z         // 0x00716888    e8e3f1ceff
                          lea                ecx, dword ptr [eax + eax * 0x8]              // 0x0071688d    8d0cc0
                          lea                eax, dword ptr [eax + ecx * 0x2]              // 0x00716890    8d0448
                          lea                edx, dword ptr [eax + eax * 0x2]              // 0x00716893    8d1440
@@ -2563,7 +2563,7 @@ _jmp_addr_0x00715150:    push               0x0                                 
                          {disp32} mov       ecx, dword ptr [ebp + 0x00006008]             // 0x00716f03    8b8d08600000
                          push               ecx                                           // 0x00716f09    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00716f0a    8b0d5c19d000
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x00716f10    e89b9ae3ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x00716f10    e89b9ae3ff
                          push               eax                                           // 0x00716f15    50
                          {disp32} mov       eax, dword ptr [ebp + 0x00006004]             // 0x00716f16    8b8504600000
                          lea                edx, dword ptr [eax + eax * 0x8]              // 0x00716f1c    8d14c0
@@ -2788,7 +2788,7 @@ _jmp_addr_0x00715150:    push               0x0                                 
                          push               eax                                           // 0x007171bb    50
                          push               ecx                                           // 0x007171bc    51
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x007171bd    8b0d5c19d000
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x007171c3    e8e897e3ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x007171c3    e8e897e3ff
                          push               eax                                           // 0x007171c8    50
                          {disp32} lea       edx, dword ptr [esp + 0x00000214]             // 0x007171c9    8d942414020000
                          push               ebp                                           // 0x007171d0    55
@@ -3461,7 +3461,7 @@ _jmp_addr_0x00715150:    push               0x0                                 
                          {disp32} lea       edx, dword ptr [ebp + 0x00000800]             // 0x00717a46    8d9500080000
                          push               edx                                           // 0x00717a4c    52
                          push               eax                                           // 0x00717a4d    50
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x00717a4e    e85d8fe3ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x00717a4e    e85d8fe3ff
                          {disp32} mov       ecx, dword ptr [eax + 0x00000944]             // 0x00717a53    8b8844090000
                          call               _jmp_addr_0x006642b0                          // 0x00717a59    e852c8f4ff
                          xor.s              eax, eax                                      // 0x00717a5e    33c0

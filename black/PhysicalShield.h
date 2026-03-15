@@ -144,7 +144,7 @@ void __fastcall CallVirtualFunctionsForCreation__14PhysicalShieldFRC9MapCoords(s
 // win1.41 0072ce50 mac 1052fe80 PhysicalShield::Get3DType(void)
 enum LH3DObject__ObjectType __fastcall Get3DType__14PhysicalShieldFv(struct Object* this) asm("?Get3DType@PhysicalShield@@UAE?AW4LH3DObject__ObjectType@@XZ");
 // win1.41 0072d170 mac 1052f8a0 PhysicalShield::SetDying(void)
-bool __fastcall SetDying__14PhysicalShieldFv(struct Object* this) asm("?SetDying@PhysicalShield@@UAE_NXZ");
+bool __fastcall SetDying__14PhysicalShieldFv(struct Object* this) asm("?SetDying@PhysicalShield@@UAEIXZ");
 // win1.41 0072cc80 mac 10530260 PhysicalShield::IsEffectReceiver(EffectValues *)
 uint32_t __fastcall IsEffectReceiver__14PhysicalShieldFP12EffectValues(struct Object* this, const void* edx, struct EffectValues* param_1) asm("?IsEffectReceiver@PhysicalShield@@UAEIPAVEffectValues@@@Z");
 // win1.41 0072d7e0 mac 1052ef50 PhysicalShield::GetPhysicsConstantsType(void)
@@ -152,11 +152,11 @@ uint32_t __fastcall GetPhysicsConstantsType__14PhysicalShieldFv(struct Object* t
 // win1.41 0072ceb0 mac 1052fce0 PhysicalShield::SetUpPhysOb(PhysOb *)
 void __fastcall SetUpPhysOb__14PhysicalShieldFP6PhysOb(struct Object* this, const void* edx, struct PhysOb* param_1) asm("?SetUpPhysOb@PhysicalShield@@UAEXPAUPhysOb@@@Z");
 // win1.41 0072d600 mac 1052f2c0 PhysicalShield::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__14PhysicalShieldFv(struct Object* this) asm("?InteractsWithPhysicsObjects@PhysicalShield@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__14PhysicalShieldFv(struct Object* this) asm("?InteractsWithPhysicsObjects@PhysicalShield@@UAEIXZ");
 // win1.41 0072d610 mac 1052efa0 PhysicalShield::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__14PhysicalShieldFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@PhysicalShield@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 0072caf0 mac 10533ee0 PhysicalShield::GetAlwaysRemainsInPhysicsInternalSystem(void)
-bool __fastcall GetAlwaysRemainsInPhysicsInternalSystem__14PhysicalShieldFv(struct Object* this) asm("?GetAlwaysRemainsInPhysicsInternalSystem@PhysicalShield@@UAE_NXZ");
+bool __fastcall GetAlwaysRemainsInPhysicsInternalSystem__14PhysicalShieldFv(struct Object* this) asm("?GetAlwaysRemainsInPhysicsInternalSystem@PhysicalShield@@UAEIXZ");
 // win1.41 0072d190 mac 1052f310 PhysicalShield::ProcessShield(void)
 void __fastcall ProcessShield__14PhysicalShieldFv(struct MapShield* this) asm("?ProcessShield@PhysicalShield@@UAEXXZ");
 // win1.41 0072ced0 mac 1052f980 PhysicalShield::DrawShield(void)

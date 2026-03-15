@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?SetIdentity@LHMatrix@@QAEXXZ
+.extern ?SetIdentityMatrix@LHMatrix@@QAEXXZ
 .extern ?GetSizeFootprintData@LH3DMesh@@QAEIXZ
 .extern ?GetSizeUV2Data@LH3DMesh@@QAEIXZ
 .extern ?GetSizeNameData@LH3DMesh@@QAEIXZ
@@ -12496,7 +12496,7 @@ _jmp_addr_0x00814fd0:    sub                esp, 0x1c                           
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x0081539c    8d4e14
                          {disp8} mov        dword ptr [esp + 0x08], esi                   // 0x0081539f    89742408
                          mov                dword ptr [esi], 0x009a251c                   // 0x008153a3    c7061c259a00
-                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x008153a9    e852e1beff
+                         call               ?SetIdentityMatrix@LHMatrix@@QAEXXZ                 // 0x008153a9    e852e1beff
                          xor.s              ebx, ebx                                      // 0x008153ae    33db
                          {disp8} mov        dword ptr [esi + 0x44], 0x3f800000            // 0x008153b0    c746440000803f
                          {disp8} mov        dword ptr [esi + 0x48], ebx                   // 0x008153b7    895e48
@@ -18770,7 +18770,7 @@ _globl_ct_0x00819670:    {disp32} jmp       .Lbl_addr_0x00819680                
                          add                esp, 0x08                                     // 0x00819e95    83c408
                          mov                ecx, 0x00ea1d88                               // 0x00819e98    b9881dea00
                          {disp8} fstp       dword ptr [esp + 0x00]                        // 0x00819e9d    d95c2400
-                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x00819ea1    e85a96beff
+                         call               ?SetIdentityMatrix@LHMatrix@@QAEXXZ                 // 0x00819ea1    e85a96beff
                          {disp8} fld        dword ptr [esp + 0x00]                        // 0x00819ea6    d9442400
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4e3e90]        // 0x00819eaa    8b15909eea00
                          fcos                                                             // 0x00819eb0    d9ff

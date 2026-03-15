@@ -65,7 +65,7 @@ void __fastcall Init__13ProfileEditorFUlUlPFiP8SetupBoxP12SetupControlii_v(struc
 // win1.41 0053e210 mac 105c2500 ProfileEditor::Destroy(void)
 void __fastcall Destroy__13ProfileEditorFv(struct DialogBoxBase* this) asm("?Destroy@ProfileEditor@@UAEXXZ");
 // win1.41 0053bd30 mac 105c5f30 ProfileEditor::CanESCOut(void)
-bool __fastcall CanESCOut__13ProfileEditorFv(struct DialogBoxBase* this) asm("?CanESCOut@ProfileEditor@@UAE_NXZ");
+bool __fastcall CanESCOut__13ProfileEditorFv(struct DialogBoxBase* this) asm("?CanESCOut@ProfileEditor@@UAEIXZ");
 // win1.41 0053e380 mac 105c2140 ProfileEditor::InitControls(void)
 void __fastcall InitControls__13ProfileEditorFv(struct DialogBoxBase* this) asm("?InitControls@ProfileEditor@@UAEXXZ");
 

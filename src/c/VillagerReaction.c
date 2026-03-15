@@ -349,7 +349,7 @@ bool32_t __fastcall DisplayHowImpressed__4TownFv(struct Town* this)
     asm("LAB__addr_0x007636c0:");
     asm("{disp32} mov       ecx, dword ptr [_game]");                        // 0x007636c0    8b0d5c19d000
     asm("push               ebx");                                           // 0x007636c6    53
-    asm("call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z");          // 0x007636c7    e8e4d2deff
+    asm("call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z");          // 0x007636c7    e8e4d2deff
     asm("add                eax, 0x000008e4");                               // 0x007636cc    05e4080000
     asm("push               eax");                                           // 0x007636d1    50
     asm("call               _jmp_addr_0x0053b4a0");                          // 0x007636d2    e8c97dddff
@@ -749,7 +749,7 @@ bool __fastcall FleeingFromObjectReaction__8VillagerFv(struct Living* this)
     asm("mov                edx, dword ptr [ecx]");                          // 0x00763b1c    8b11
     asm("call               dword ptr [edx + 0x1c]");                        // 0x00763b1e    ff521c
     asm("mov.s              ecx, esi");                                      // 0x00763b21    8bce
-    asm("call               ?FleeingFromObjectReaction@PuzzleHorse@@UAE_NXZ");                          // 0x00763b23    e8e8e1e8ff
+    asm("call               ?FleeingFromObjectReaction@PuzzleHorse@@UAEIXZ");                          // 0x00763b23    e8e8e1e8ff
     asm("pop                esi");                                           // 0x00763b28    5e
     asm("ret");                                                              // 0x00763b29    c3
     asm("LAB__addr_0x00763b2a:");
@@ -1527,7 +1527,7 @@ bool __fastcall LookingAtObjectReaction__8VillagerFv(struct Living* this)
     asm("ret");                                                              // 0x00764306    c3
     asm("LAB__addr_0x00764307:");
     asm("mov.s              ecx, esi");                                      // 0x00764307    8bce
-    asm("call               ?LookingAtObjectReaction@PuzzleHorse@@UAE_NXZ"); // 0x00764309    e892e0e8ff
+    asm("call               ?LookingAtObjectReaction@PuzzleHorse@@UAEIXZ"); // 0x00764309    e892e0e8ff
     asm("pop                esi");                                           // 0x0076430e    5e
     asm("ret");                                                              // 0x0076430f    c3
     __builtin_unreachable();
@@ -1557,7 +1557,7 @@ bool __fastcall FollowingObjectReaction__8VillagerFv(struct Living* this)
     asm("ret");                                                              // 0x00764342    c3
     asm("LAB__addr_0x00764343:");
     asm("mov.s              ecx, esi");                                      // 0x00764343    8bce
-    asm("call               ?FollowingObjectReaction@PuzzleHorse@@UAE_NXZ"); // 0x00764345    e8e6e0e8ff
+    asm("call               ?FollowingObjectReaction@PuzzleHorse@@UAEIXZ"); // 0x00764345    e8e6e0e8ff
     asm("pop                esi");                                           // 0x0076434a    5e
     asm("ret");                                                              // 0x0076434b    c3
     __builtin_unreachable();
@@ -1868,7 +1868,7 @@ bool __fastcall GotoFoodReaction__8VillagerFv(struct Living* this)
     asm("test               eax, eax");                                      // 0x007646b2    85c0
     asm("{disp8} je         LAB__addr_0x007646bf");                          // 0x007646b4    7409
     asm("mov.s              ecx, esi");                                      // 0x007646b6    8bce
-    asm("call               ?GotoFoodReaction@PuzzleHorse@@UAE_NXZ");        // 0x007646b8    e893dee8ff
+    asm("call               ?GotoFoodReaction@PuzzleHorse@@UAEIXZ");        // 0x007646b8    e893dee8ff
     asm("pop                esi");                                           // 0x007646bd    5e
     asm("ret");                                                              // 0x007646be    c3
     asm("LAB__addr_0x007646bf:");
@@ -1899,7 +1899,7 @@ bool __fastcall GotoWoodReaction__8VillagerFv(struct Living* this)
     asm("test               eax, eax");                                      // 0x007646f7    85c0
     asm("{disp8} jne        LAB__addr_0x00764704");                          // 0x007646f9    7509
     asm("mov.s              ecx, esi");                                      // 0x007646fb    8bce
-    asm("call               ?GotoWoodReaction@PuzzleHorse@@UAE_NXZ");        // 0x007646fd    e8bedee8ff
+    asm("call               ?GotoWoodReaction@PuzzleHorse@@UAEIXZ");        // 0x007646fd    e8bedee8ff
     asm("pop                esi");                                           // 0x00764702    5e
     asm("ret");                                                              // 0x00764703    c3
     asm("LAB__addr_0x00764704:");

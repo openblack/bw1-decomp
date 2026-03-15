@@ -7,7 +7,7 @@
 .extern _jmp_addr_0x0046af20
 .extern ?CreateCreature@Creature@@SAPAV1@ABUMapCoords@@PBVCreatureInfo@@PAVGPlayer@@@Z
 .extern _jmp_addr_0x0054ae20
-.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern _jmp_addr_0x00550a80
 .extern _jmp_addr_0x00550c20
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
@@ -6665,7 +6665,7 @@ _jmp_addr_0x00714490:    sub                esp, 0x00000954                     
 .Lbl_addr_0x007146d3:    xor.s              esi, esi                                      // 0x007146d3    33f6
 .Lbl_addr_0x007146d5:    {disp32} mov       ecx, dword ptr [_game]                        // 0x007146d5    8b0d5c19d000
                          push               ebx                                           // 0x007146db    53
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x007146dc    e8cfc2e3ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x007146dc    e8cfc2e3ff
                          cmp.s              eax, esi                                      // 0x007146e1    3bc6
                          {disp8} mov        dword ptr [esp + 0x30], eax                   // 0x007146e3    89442430
                          {disp32} je        .Lbl_addr_0x0071486b                          // 0x007146e7    0f847e010000
@@ -7369,7 +7369,7 @@ _globl_ct_0x00714ce0:    {disp32} jmp       .Lbl_addr_0x00714cf0                
                          {disp32} mov       edx, dword ptr [esi + 0x0000600c]             // 0x00714e34    8b960c600000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00714e3a    8b0d5c19d000
                          push               edx                                           // 0x00714e40    52
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x00714e41    e86abbe3ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x00714e41    e86abbe3ff
                          push               eax                                           // 0x00714e46    50
                          {disp32} mov       eax, dword ptr [esi + 0x00006008]             // 0x00714e47    8b8608600000
                          lea                ecx, dword ptr [eax + eax * 0x8]              // 0x00714e4d    8d0cc0

@@ -18,19 +18,19 @@
 .globl _jmp_addr_0x006dd7d0
 .globl ?CanBeFrighteningToCreature@PuzzleCow@@UAEIPAVCreature@@@Z
 .globl ?GetDebugText@PuzzleHorse@@UAEPADXZ
-.globl ?CanBecomeAPhysicsObject@PuzzleHorse@@UAE_NXZ
+.globl ?CanBecomeAPhysicsObject@PuzzleHorse@@UAEIXZ
 .globl ??_GPuzzleHorse@@UAEPAXI@Z
 .globl ?GetSaveType@PuzzleTortoise@@UAEIXZ
 .globl ?GetDebugText@PuzzleTortoise@@UAEPADXZ
-.globl ?CanBecomeAPhysicsObject@PuzzleTortoise@@UAE_NXZ
+.globl ?CanBecomeAPhysicsObject@PuzzleTortoise@@UAEIXZ
 .globl ??_GPuzzleTortoise@@UAEPAXI@Z
 .globl ?GetSaveType@PuzzleCow@@UAEIXZ
 .globl ?GetDebugText@PuzzleCow@@UAEPADXZ
-.globl ?CanBecomeAPhysicsObject@PuzzleCow@@UAE_NXZ
+.globl ?CanBecomeAPhysicsObject@PuzzleCow@@UAEIXZ
 .globl ??_GPuzzleCow@@UAEPAXI@Z
 .globl ?GetSaveType@PuzzlePig@@UAEIXZ
 .globl ?GetDebugText@PuzzlePig@@UAEPADXZ
-.globl ?CanBecomeAPhysicsObject@PuzzlePig@@UAE_NXZ
+.globl ?CanBecomeAPhysicsObject@PuzzlePig@@UAEIXZ
 .globl ??_GPuzzlePig@@UAEPAXI@Z
 
 start_0x006dd460_0x006dd940:
@@ -167,7 +167,7 @@ _jmp_addr_0x006dd4f0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x006dd52d    90
                          nop                                                     // 0x006dd52e    90
                          nop                                                     // 0x006dd52f    90
-?CanBecomeAPhysicsObject@PuzzleHorse@@UAE_NXZ:
+?CanBecomeAPhysicsObject@PuzzleHorse@@UAEIXZ:
                          xor.s            eax, eax                               // 0x006dd530    33c0
                          ret                                                     // 0x006dd532    c3
                          nop                                                     // 0x006dd533    90
@@ -280,7 +280,7 @@ _jmp_addr_0x006dd4f0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x006dd5dd    90
                          nop                                                     // 0x006dd5de    90
                          nop                                                     // 0x006dd5df    90
-?CanBecomeAPhysicsObject@PuzzleTortoise@@UAE_NXZ:
+?CanBecomeAPhysicsObject@PuzzleTortoise@@UAEIXZ:
                          xor.s            eax, eax                               // 0x006dd5e0    33c0
                          ret                                                     // 0x006dd5e2    c3
                          nop                                                     // 0x006dd5e3    90
@@ -393,7 +393,7 @@ _jmp_addr_0x006dd4f0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x006dd68d    90
                          nop                                                     // 0x006dd68e    90
                          nop                                                     // 0x006dd68f    90
-?CanBecomeAPhysicsObject@PuzzleCow@@UAE_NXZ:
+?CanBecomeAPhysicsObject@PuzzleCow@@UAEIXZ:
                          xor.s            eax, eax                               // 0x006dd690    33c0
                          ret                                                     // 0x006dd692    c3
                          nop                                                     // 0x006dd693    90
@@ -506,7 +506,7 @@ _jmp_addr_0x006dd4f0:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          nop                                                     // 0x006dd73d    90
                          nop                                                     // 0x006dd73e    90
                          nop                                                     // 0x006dd73f    90
-?CanBecomeAPhysicsObject@PuzzlePig@@UAE_NXZ:
+?CanBecomeAPhysicsObject@PuzzlePig@@UAEIXZ:
                          xor.s            eax, eax                               // 0x006dd740    33c0
                          ret                                                     // 0x006dd742    c3
                          nop                                                     // 0x006dd743    90

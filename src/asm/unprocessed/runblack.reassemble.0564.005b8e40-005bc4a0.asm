@@ -1985,7 +1985,7 @@ _jmp_addr_0x005ba350:    sub                esp, 0x34                           
                          pop                ebx                                            // 0x005ba774    5b
                          add                esp, 0x34                                      // 0x005ba775    83c434
                          ret                0x0004                                         // 0x005ba778    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x005ba77b    e87970e4ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                           // 0x005ba77b    e87970e4ff
 _jmp_addr_0x005ba780:    sub                esp, 0x14                                      // 0x005ba780    83ec14
                          push               ebx                                            // 0x005ba783    53
                          push               ebp                                            // 0x005ba784    55
@@ -3697,7 +3697,7 @@ _jmp_addr_0x005bbbd0:    push               ecx                                 
                          pop                esi                                            // 0x005bbcc6    5e
                          pop                ecx                                            // 0x005bbcc7    59
                          ret                0x0004                                         // 0x005bbcc8    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                           // 0x005bbccb    e8295be4ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                           // 0x005bbccb    e8295be4ff
 _jmp_addr_0x005bbcd0:    sub                esp, 0x0c                                      // 0x005bbcd0    83ec0c
                          {disp32} fld       dword ptr [ecx + 0x00003514]                   // 0x005bbcd3    d98114350000
                          push               esi                                            // 0x005bbcd9    56

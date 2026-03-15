@@ -144,7 +144,7 @@ void __fastcall __dt__15OneOffSpellSeedFv(struct Base* this, const void* edx, ui
 // win1.41 0072a420 mac 105278e0 OneOffSpellSeed::ToBeDeleted(int)
 void __fastcall ToBeDeleted__15OneOffSpellSeedFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@OneOffSpellSeed@@UAEXH@Z");
 // win1.41 0055d140 mac 10526350 OneOffSpellSeed::GetComputerSeen(void)
-bool __fastcall GetComputerSeen__15OneOffSpellSeedFv(struct GameThing* this) asm("?GetComputerSeen@OneOffSpellSeed@@UAE_NXZ");
+bool __fastcall GetComputerSeen__15OneOffSpellSeedFv(struct GameThing* this) asm("?GetComputerSeen@OneOffSpellSeed@@UAEIXZ");
 // win1.41 0055d130 mac 10526310 OneOffSpellSeed::CastOneOffSpellSeed(void)
 struct SpellSeed* __fastcall CastOneOffSpellSeed__15OneOffSpellSeedFv(struct GameThing* this) asm("?CastOneOffSpellSeed@OneOffSpellSeed@@UAEPAVSpellSeed@@XZ");
 // win1.41 0055d160 mac 105263d0 OneOffSpellSeed::GetDebugText(void)

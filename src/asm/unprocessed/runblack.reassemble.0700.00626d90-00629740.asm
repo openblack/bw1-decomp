@@ -1210,7 +1210,7 @@ _jmp_addr_0x006277c0:    sub               esp, 0x1c                            
                          mov.s             eax, esi                                      // 0x00627975    8bc6
                          pop               esi                                           // 0x00627977    5e
                          ret               0x0008                                        // 0x00627978    c20800
-                         call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0062797b    e8799eddff
+                         call              ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x0062797b    e8799eddff
 ??_GMPFEKickMessage@@UAEPAXI@Z:
                          push              esi                                           // 0x00627980    56
                          mov.s             esi, ecx                                      // 0x00627981    8bf1
@@ -2083,7 +2083,7 @@ _globl_ct_0x00628290:    {disp32} jmp      .Lbl_addr_0x006282a0                 
                          nop                                                             // 0x0062829f    90
 .Lbl_addr_0x006282a0:    {disp32} mov      dword ptr [data_bytes + 0x37a98c], 0xffffffff // 0x006282a0    c7058c09d400ffffffff
                          ret                                                             // 0x006282aa    c3
-                         call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x006282ab    e84995ddff
+                         call              ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x006282ab    e84995ddff
 _globl_ct_0x006282b0:    {disp32} jmp      .Lbl_addr_0x006282c0                          // 0x006282b0    e90b000000
                          nop                                                             // 0x006282b5    90
                          nop                                                             // 0x006282b6    90

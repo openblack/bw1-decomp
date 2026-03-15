@@ -65,7 +65,7 @@ void __fastcall Init__10EndGameBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct D
 // win1.41 0056e730 mac 1031c600 EndGameBox::Destroy(void)
 void __fastcall Destroy__10EndGameBoxFv(struct DialogBoxBase* this) asm("?Destroy@EndGameBox@@UAEXXZ");
 // win1.41 0053be30 mac 1031ba50 EndGameBox::CanESCOut(void)
-bool __fastcall CanESCOut__10EndGameBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@EndGameBox@@UAE_NXZ");
+bool __fastcall CanESCOut__10EndGameBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@EndGameBox@@UAEIXZ");
 // win1.41 0056e740 mac 1031c100 EndGameBox::InitControls(void)
 void __fastcall InitControls__10EndGameBoxFv(struct DialogBoxBase* this) asm("?InitControls@EndGameBox@@UAEXXZ");
 

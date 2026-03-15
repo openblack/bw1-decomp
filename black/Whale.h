@@ -120,9 +120,9 @@ void __fastcall Draw__5WhaleFv(struct Object* this) asm("?Draw@Whale@@UAEXXZ");
 // win1.41 00774ca0 mac 10160a20 Whale::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__5WhaleFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@Whale@@UAEXABUMapCoords@@@Z");
 // win1.41 00561270 mac 1015ff50 Whale::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__5WhaleFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Whale@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__5WhaleFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Whale@@UAEIXZ");
 // win1.41 00561290 mac 1015ff10 Whale::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__5WhaleFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Whale@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__5WhaleFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Whale@@UAEIXZ");
 
 DECLARE_LH_LIST_HEAD(Whale);
 

@@ -46,7 +46,7 @@
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThing@@UAEXH@Z
 .extern ?Save@GameThing@@UAEIAAVGameOSFile@@@Z
-.extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@GameThing@@UAEIAAVGameOSFile@@@Z
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
@@ -263,7 +263,7 @@
 .globl ?CalulateAmountOverMaximum@StoragePit@@UAEHW4RESOURCE_TYPE@@@Z
 .globl ?RemoveResource@StoragePit@@UAEIW4RESOURCE_TYPE@@IPAVGInterfaceStatus@@PA_N@Z
 .globl ?GetResourceNearestEdge@StoragePit@@UAEPAUMapCoords@@PAU2@W4RESOURCE_TYPE@@PAVObject@@H@Z
-.globl ?IsPoisonedResource@StoragePit@@UAE_NXZ
+.globl ?IsPoisonedResource@StoragePit@@UAEIXZ
 .globl ?SetPoisoned@StoragePit@@UAEXH@Z
 .globl ?SetPoisonedResource@StoragePit@@UAEXW4RESOURCE_TYPE@@H@Z
 .globl ?IsPoisoned@StoragePit@@UAEIXZ
@@ -285,7 +285,7 @@
 .globl ?Save@GWaterfall@@UAEIAAVGameOSFile@@@Z
 .globl ?Load@GWaterfall@@UAEIAAVGameOSFile@@@Z
 .globl ?CallVirtualFunctionsForCreation@GStreetLantern@@UAEXABUMapCoords@@@Z
-.globl ?InteractsWithPhysicsObjects@GStreetLantern@@UAE_NXZ
+.globl ?InteractsWithPhysicsObjects@GStreetLantern@@UAEIXZ
 .globl ?Draw@GStreetLantern@@UAEXXZ
 .globl ?ToBeDeleted@GStreetLantern@@UAEXH@Z
 .globl ?SaveObject@GStreetLantern@@UAEIAAULHOSFile@@ABUMapCoords@@@Z
@@ -4267,7 +4267,7 @@ _jmp_addr_0x00730ab0:    {disp8} mov        eax, dword ptr [ecx + 0x1c]         
                          {disp8} mov        esi, dword ptr [esp + 0x10]                   // 0x00730df3    8b742410
                          mov.s              ebx, ecx                                      // 0x00730df7    8bd9
                          push               esi                                           // 0x00730df9    56
-                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x00730dfa    e8f1eee3ff
+                         call               ?Load@GameThing@@UAEIAAVGameOSFile@@@Z       // 0x00730dfa    e8f1eee3ff
                          test               eax, eax                                      // 0x00730dff    85c0
                          {disp32} je        .Lbl_addr_0x007310be                          // 0x00730e01    0f84b7020000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x00730e07    a194c9be00
@@ -7802,7 +7802,7 @@ _jmp_addr_0x00732d60:    sub                esp, 0x0c                           
                          nop                                                              // 0x0073354d    90
                          nop                                                              // 0x0073354e    90
                          nop                                                              // 0x0073354f    90
-?IsPoisonedResource@StoragePit@@UAE_NXZ:
+?IsPoisonedResource@StoragePit@@UAEIXZ:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x00733550    8b442404
                          test               eax, eax                                      // 0x00733554    85c0
                          push               esi                                           // 0x00733556    56
@@ -9431,7 +9431,7 @@ _jmp_addr_0x007341c0:    mov                eax, 0x00000001                     
                          mov.s              ebp, ecx                                      // 0x007344e7    8be9
                          push               edi                                           // 0x007344e9    57
                          {disp8} mov        dword ptr [esp + 0x0c], ebp                   // 0x007344ea    896c240c
-                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x007344ee    e8fdb7e3ff
+                         call               ?Load@GameThing@@UAEIAAVGameOSFile@@@Z       // 0x007344ee    e8fdb7e3ff
                          test               eax, eax                                      // 0x007344f3    85c0
                          {disp32} je        .Lbl_addr_0x00734633                          // 0x007344f5    0f8438010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x007344fb    a194c9be00
@@ -9905,7 +9905,7 @@ _jmp_addr_0x00734800:    xor.s              eax, eax                            
                          nop                                                              // 0x007349cd    90
                          nop                                                              // 0x007349ce    90
                          nop                                                              // 0x007349cf    90
-?InteractsWithPhysicsObjects@GStreetLantern@@UAE_NXZ:
+?InteractsWithPhysicsObjects@GStreetLantern@@UAEIXZ:
                          xor.s              al, al                                        // 0x007349d0    32c0
                          ret                                                              // 0x007349d2    c3
                          nop                                                              // 0x007349d3    90

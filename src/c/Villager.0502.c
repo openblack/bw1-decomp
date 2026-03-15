@@ -47,7 +47,7 @@ struct Villager* __fastcall __ct__8VillagerFv(struct Villager* this)
     asm("mov.s              eax, esi");                                       // 0x0055c967    8bc6
     asm("pop                esi");                                            // 0x0055c969    5e
     asm("ret");                                                               // 0x0055c96a    c3
-    asm("call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9");                           // 0x0055c96b    e8094feaff
+    asm("call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9");                           // 0x0055c96b    e8094feaff
     __builtin_unreachable();
 }
 
@@ -185,7 +185,7 @@ uint32_t __fastcall CanBeHelpedByCreature__8VillagerFP8Creature(struct GameThing
     asm("mov                eax, dword ptr [ecx]");                           // 0x0055caa0    8b01
     asm("call               dword ptr [eax + 0x628]");                        // 0x0055caa2    ff9028060000
     asm("ret                0x0004");                                         // 0x0055caa8    c20400
-    asm("call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9");                           // 0x0055caab    e8c94deaff
+    asm("call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9");                           // 0x0055caab    e8c94deaff
     __builtin_unreachable();
 }
 

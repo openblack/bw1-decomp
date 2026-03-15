@@ -69,11 +69,11 @@ void __fastcall Init__10HistoryBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct D
 // win1.41 005453b0 mac 105b9a60 HistoryBox::Destroy(void)
 void __fastcall Destroy__10HistoryBoxFv(struct DialogBoxBase* this) asm("?Destroy@HistoryBox@@UAEXXZ");
 // win1.41 00545460 mac 105b98b0 HistoryBox::WantsKeyControl(void)
-bool __fastcall WantsKeyControl__10HistoryBoxFv(struct DialogBoxBase* this) asm("?WantsKeyControl@HistoryBox@@UAE_NXZ");
+bool __fastcall WantsKeyControl__10HistoryBoxFv(struct DialogBoxBase* this) asm("?WantsKeyControl@HistoryBox@@UAEIXZ");
 // win1.41 00545470 mac 105b97c0 HistoryBox::WantsMouseControl(void)
-bool __fastcall WantsMouseControl__10HistoryBoxFv(struct DialogBoxBase* this) asm("?WantsMouseControl@HistoryBox@@UAE_NXZ");
+bool __fastcall WantsMouseControl__10HistoryBoxFv(struct DialogBoxBase* this) asm("?WantsMouseControl@HistoryBox@@UAEIXZ");
 // win1.41 005454f0 mac 105b9780 HistoryBox::CanESCOut(void)
-bool __fastcall CanESCOut__10HistoryBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@HistoryBox@@UAE_NXZ");
+bool __fastcall CanESCOut__10HistoryBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@HistoryBox@@UAEIXZ");
 // win1.41 005453c0 mac 105b9a20 HistoryBox::InitControls(void)
 void __fastcall InitControls__10HistoryBoxFv(struct DialogBoxBase* this) asm("?InitControls@HistoryBox@@UAEXXZ");
 

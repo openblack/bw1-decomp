@@ -302,7 +302,7 @@ int __fastcall GetMesh__12MobileObjectCFv(const struct Object* this) asm("?GetMe
 // win1.41 00518150 mac 10036400 MobileObject::Draw(void)
 void __fastcall Draw__12MobileObjectFv(struct Object* this) asm("?Draw@MobileObject@@UAEXXZ");
 // win1.41 00425b30 mac 100ad910 MobileObject::CanBePickedUp(void)
-bool __fastcall CanBePickedUp__12MobileObjectFv(struct Object* this) asm("?CanBePickedUp@MobileObject@@UAE_NXZ");
+bool __fastcall CanBePickedUp__12MobileObjectFv(struct Object* this) asm("?CanBePickedUp@MobileObject@@UAEIXZ");
 // win1.41 00607560 mac 103bc790 MobileObject::GetWorldMatrix(LHMatrix *)
 void __fastcall GetWorldMatrix__12MobileObjectFP8LHMatrix(struct Object* this, const void* edx, struct LHMatrix* param_1) asm("?GetWorldMatrix@MobileObject@@UAEXPAULHMatrix@@@Z");
 // win1.41 00607150 mac 103bd200 MobileObject::CallVirtualFunctionsForCreation(MapCoords const &)
@@ -320,7 +320,7 @@ uint32_t __fastcall GetPhysicsConstantsType__12MobileObjectFv(struct Object* thi
 // win1.41 00607a20 mac 103bbe50 MobileObject::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__12MobileObjectFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@MobileObject@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00607aa0 mac 103bbe00 MobileObject::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__12MobileObjectFv(struct Object* this) asm("?CanBecomeAPhysicsObject@MobileObject@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__12MobileObjectFv(struct Object* this) asm("?CanBecomeAPhysicsObject@MobileObject@@UAEIXZ");
 // win1.41 00607410 mac 103bcc90 MobileObject::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
 void __fastcall AddToRoutePlan__12MobileObjectFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int param_1, struct Point2D param_2, float param_3, int param_4)) asm("?AddToRoutePlan@MobileObject@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 // win1.41 00425b50 mac 100ad9d0 MobileObject::GetTastiness(void)

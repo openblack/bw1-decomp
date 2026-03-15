@@ -1211,7 +1211,7 @@ _jmp_addr_0x004843a0:    push               esi                                 
                          xor.s              eax, eax                                      // 0x00484405    33c0
                          pop                esi                                           // 0x00484407    5e
                          ret                0x0008                                        // 0x00484408    c20800
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0048440b    e869d4f7ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0048440b    e869d4f7ff
 _jmp_addr_0x00484410:    sub                esp, 0x0c                                     // 0x00484410    83ec0c
                          push               ebx                                           // 0x00484413    53
                          push               esi                                           // 0x00484414    56
@@ -1435,7 +1435,7 @@ _jmp_addr_0x004845f0:    push               edi                                 
                          mov                eax, 0x00000001                               // 0x004846b4    b801000000
                          pop                edi                                           // 0x004846b9    5f
                          ret                                                              // 0x004846ba    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x004846bb    e8b9d1f7ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x004846bb    e8b9d1f7ff
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x004846c0    8b442404
                          {disp32} mov       dword ptr [ecx + 0x000049a8], eax             // 0x004846c4    8981a8490000
                          ret                0x0004                                        // 0x004846ca    c20400

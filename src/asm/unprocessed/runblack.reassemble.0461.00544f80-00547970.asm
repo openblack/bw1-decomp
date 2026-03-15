@@ -75,9 +75,9 @@
 .globl ?Init@HistoryBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
 .globl ?Destroy@HistoryBox@@UAEXXZ
 .globl ?InitControls@HistoryBox@@UAEXXZ
-.globl ?WantsKeyControl@HistoryBox@@UAE_NXZ
-.globl ?WantsMouseControl@HistoryBox@@UAE_NXZ
-.globl ?CanESCOut@HistoryBox@@UAE_NXZ
+.globl ?WantsKeyControl@HistoryBox@@UAEIXZ
+.globl ?WantsMouseControl@HistoryBox@@UAEIXZ
+.globl ?CanESCOut@HistoryBox@@UAEIXZ
 .globl ?Init@SetupLandscapeBox@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
 .globl ?Destroy@SetupLandscapeBox@@UAEXXZ
 .globl ?InitControls@SetupLandscapeBox@@UAEXXZ
@@ -462,7 +462,7 @@ _jmp_addr_0x005453d0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x0054545d    90
                          nop                                                              // 0x0054545e    90
                          nop                                                              // 0x0054545f    90
-?WantsKeyControl@HistoryBox@@UAE_NXZ:
+?WantsKeyControl@HistoryBox@@UAEIXZ:
                          xor.s              al, al                                        // 0x00545460    32c0
                          ret                                                              // 0x00545462    c3
                          nop                                                              // 0x00545463    90
@@ -478,7 +478,7 @@ _jmp_addr_0x005453d0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x0054546d    90
                          nop                                                              // 0x0054546e    90
                          nop                                                              // 0x0054546f    90
-?WantsMouseControl@HistoryBox@@UAE_NXZ:
+?WantsMouseControl@HistoryBox@@UAEIXZ:
                          sub                esp, 0x10                                     // 0x00545470    83ec10
                          push               esi                                           // 0x00545473    56
                          mov.s              esi, ecx                                      // 0x00545474    8bf1
@@ -535,7 +535,7 @@ _jmp_addr_0x005453d0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x005454ed    90
                          nop                                                              // 0x005454ee    90
                          nop                                                              // 0x005454ef    90
-?CanESCOut@HistoryBox@@UAE_NXZ:
+?CanESCOut@HistoryBox@@UAEIXZ:
                          xor.s              al, al                                        // 0x005454f0    32c0
                          ret                                                              // 0x005454f2    c3
                          nop                                                              // 0x005454f3    90
@@ -1797,7 +1797,7 @@ _jmp_addr_0x00545f00:    push               ebx                                 
                          pop                ebp                                           // 0x00546106    5d
                          pop                ebx                                           // 0x00546107    5b
                          ret                0x000c                                        // 0x00546108    c20c00
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054610b    e869b7ebff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0054610b    e869b7ebff
 .Lbl_addr_0x00546110:    mov                eax, 0x7ffffffd                               // 0x00546110    b8fdffff7f
                          ret                                                              // 0x00546115    c3
                          nop                                                              // 0x00546116    90
@@ -1938,7 +1938,7 @@ _globl_ct_0x00546230:    {disp32} jmp       .Lbl_addr_0x00546240                
                          nop                                                              // 0x0054623f    90
 .Lbl_addr_0x00546240:    {disp32} mov       dword ptr [data_bytes + 0x30b660], 0xffffffff // 0x00546240    c7056016cd00ffffffff
                          ret                                                              // 0x0054624a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054624b    e829b6ebff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0054624b    e829b6ebff
 _globl_ct_0x00546250:    {disp32} jmp       .Lbl_addr_0x00546260                          // 0x00546250    e90b000000
                          nop                                                              // 0x00546255    90
                          nop                                                              // 0x00546256    90
@@ -2711,7 +2711,7 @@ _globl_ct_0x00546250:    {disp32} jmp       .Lbl_addr_0x00546260                
                          add                esp, 0x08                                     // 0x00546cf2    83c408
                          mov                eax, 0x00cd125c                               // 0x00546cf5    b85c12cd00
                          ret                                                              // 0x00546cfa    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00546cfb    e879abebff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x00546cfb    e879abebff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x30b664]        // 0x00546d00    a16416cd00
                          {disp32} mov       ecx, dword ptr [eax + 0x00000444]             // 0x00546d05    8b8844040000
                          mov                edx, dword ptr [ecx]                          // 0x00546d0b    8b11

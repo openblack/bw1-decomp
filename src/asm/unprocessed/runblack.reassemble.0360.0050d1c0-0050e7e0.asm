@@ -17,7 +17,7 @@
 .extern ??0GameThing@@QAE@XZ
 .extern _jmp_addr_0x0056fa80
 .extern ?Save@GameThing@@UAEIAAVGameOSFile@@@Z
-.extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@GameThing@@UAEIAAVGameOSFile@@@Z
 .extern ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z
 .extern ?ConvertAngle3DToGame@GUtils@@SAIM@Z
 .extern _jmp_addr_0x0074e1d0
@@ -155,7 +155,7 @@ _jmp_addr_0x0050d2a0:    sub                esp, 0x08                           
                          pop                esi                                           // 0x0050d316    5e
                          add                esp, 0x08                                     // 0x0050d317    83c408
                          ret                                                              // 0x0050d31a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0050d31b    e85945efff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0050d31b    e85945efff
 .Lbl_addr_0x0050d320:    sub                esp, 0x0c                                     // 0x0050d320    83ec0c
                          {disp8} mov        eax, dword ptr [esp + 0x10]                   // 0x0050d323    8b442410
                          {disp8} fld        dword ptr [eax + 0x04]                        // 0x0050d327    d94004
@@ -775,7 +775,7 @@ _jmp_addr_0x0050d600:    {disp8} mov        eax, dword ptr [ecx + 0x18]         
                          push               edi                                           // 0x0050d9c6    57
                          mov.s              edi, ecx                                      // 0x0050d9c7    8bf9
                          push               esi                                           // 0x0050d9c9    56
-                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x0050d9ca    e821230600
+                         call               ?Load@GameThing@@UAEIAAVGameOSFile@@@Z       // 0x0050d9ca    e821230600
                          test               eax, eax                                      // 0x0050d9cf    85c0
                          {disp32} je        .Lbl_addr_0x0050dd3e                          // 0x0050d9d1    0f8467030000
                          push               ebx                                           // 0x0050d9d7    53

@@ -65,7 +65,7 @@ void __fastcall Init__7SkipBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struct Dialo
 // win1.41 00544430 mac 105bb330 SkipBox::Destroy(void)
 void __fastcall Destroy__7SkipBoxFv(struct DialogBoxBase* this) asm("?Destroy@SkipBox@@UAEXXZ");
 // win1.41 0053bd60 mac 105c5e80 SkipBox::CanESCOut(void)
-bool __fastcall CanESCOut__7SkipBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@SkipBox@@UAE_NXZ");
+bool __fastcall CanESCOut__7SkipBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@SkipBox@@UAEIXZ");
 // win1.41 00544440 mac 105bb270 SkipBox::InitControls(void)
 void __fastcall InitControls__7SkipBoxFv(struct DialogBoxBase* this) asm("?InitControls@SkipBox@@UAEXXZ");
 

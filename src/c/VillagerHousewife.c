@@ -116,7 +116,7 @@ bool32_t __fastcall CheckNeededForHouseWork__8VillagerFv(struct Villager* this)
     asm("mov.s              esi, ecx");                                      // 0x00761c41    8bf1
     asm("call               ?GetAbode@Villager@@QAEPAVAbode@@XZ");           // 0x00761c43    e81805ffff
     asm("mov.s              ecx, eax");                                      // 0x00761c48    8bc8
-    asm("call               ?IsEnoughFoodForDinner@Abode@@QAE_NXZ");         // 0x00761c4a    e8b129caff
+    asm("call               ?IsEnoughFoodForDinner@Abode@@QAEIXZ");         // 0x00761c4a    e8b129caff
     asm("cmp                eax, 0x01");                                     // 0x00761c4f    83f801
     asm("{disp8} je         LAB__addr_0x00761c67");                          // 0x00761c52    7413
     asm("mov                eax, dword ptr [esi]");                          // 0x00761c54    8b06
@@ -201,7 +201,7 @@ bool32_t __fastcall HousewifeGotoStoragePit__8VillagerFv(struct Villager* this)
     asm("mov.s              ecx, esi");                                      // 0x00761d04    8bce
     asm("call               ?GetAbode@Villager@@QAEPAVAbode@@XZ");           // 0x00761d06    e85504ffff
     asm("mov.s              ecx, eax");                                      // 0x00761d0b    8bc8
-    asm("call               ?IsEnoughFoodForDinner@Abode@@QAE_NXZ");         // 0x00761d0d    e8ee28caff
+    asm("call               ?IsEnoughFoodForDinner@Abode@@QAEIXZ");         // 0x00761d0d    e8ee28caff
     asm("cmp                eax, 0x01");                                     // 0x00761d12    83f801
     asm("{disp8} je         LAB__addr_0x00761d49");                          // 0x00761d15    7432
     asm("mov.s              ecx, esi");                                      // 0x00761d17    8bce
@@ -440,7 +440,7 @@ bool32_t __fastcall HousewifeMakeDinner__8VillagerFv(struct Villager* this)
     asm("mov.s              esi, ecx");                                      // 0x00761f61    8bf1
     asm("call               ?GetAbode@Villager@@QAEPAVAbode@@XZ");           // 0x00761f63    e8f801ffff
     asm("mov.s              ecx, eax");                                      // 0x00761f68    8bc8
-    asm("call               ?IsEnoughFoodForDinner@Abode@@QAE_NXZ");         // 0x00761f6a    e89126caff
+    asm("call               ?IsEnoughFoodForDinner@Abode@@QAEIXZ");         // 0x00761f6a    e89126caff
     asm("cmp                eax, 0x01");                                     // 0x00761f6f    83f801
     asm("{disp8} jne        LAB__addr_0x00761f87");                          // 0x00761f72    7513
     asm("mov                eax, dword ptr [esi]");                          // 0x00761f74    8b06

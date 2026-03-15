@@ -193,7 +193,7 @@ uint32_t __fastcall Save__7GCameraFR10GameOSFile(struct GameThing* this, const v
 // win1.41 00441b20 mac 101982e0 GCamera::GetSaveType(void)
 uint32_t __fastcall GetSaveType__7GCameraFv(struct GameThing* this) asm("?GetSaveType@GCamera@@UAEIXZ");
 // win1.41 00441b00 mac 10086270 GCamera::IsMoving( const(void))
-bool __fastcall IsMoving__7GCameraCFv(const struct GameThingWithPos* this) asm("?IsMoving@GCamera@@UBE_NXZ");
+bool __fastcall IsMoving__7GCameraCFv(const struct GameThingWithPos* this) asm("?IsMoving@GCamera@@UBEIXZ");
 // win1.41 00441af0 mac 101980f0 GCamera::GetText(void)
 const char* __fastcall GetText__7GCameraFv(struct GameThingWithPos* this) asm("?GetText@GCamera@@UAEPBDXZ");
 // win1.41 00441b10 mac 101982b0 GCamera::GetHeight(void)

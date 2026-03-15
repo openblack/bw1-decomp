@@ -1166,7 +1166,7 @@ void __fastcall __dt__6LivingFv(struct Base* this, const void* edx, uint32_t par
 // win1.41 005ec0a0 mac 10383210 Living::ToBeDeleted(int)
 void __fastcall ToBeDeleted__6LivingFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@Living@@UAEXH@Z");
 // win1.41 004172d0 mac 10006820 Living::IsFunctional(void)
-bool __fastcall IsFunctional__6LivingFv(struct GameThing* this) asm("?IsFunctional@Living@@UAE_NXZ");
+bool __fastcall IsFunctional__6LivingFv(struct GameThing* this) asm("?IsFunctional@Living@@UAEIXZ");
 // win1.41 005ee960 mac 1037d8d0 Living::Load(GameOSFile &)
 uint32_t __fastcall Load__6LivingFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* param_1) asm("?Load@Living@@UAEIAAVGameOSFile@@@Z");
 // win1.41 005ee630 mac 1037ddd0 Living::Save(GameOSFile &)
@@ -1174,9 +1174,9 @@ uint32_t __fastcall Save__6LivingFR10GameOSFile(struct GameThing* this, const vo
 // win1.41 005eed20 mac 1037d880 Living::ResolveLoad(void)
 void __fastcall ResolveLoad__6LivingFv(struct GameThing* this) asm("?ResolveLoad@Living@@UAEXXZ");
 // win1.41 004173c0 mac 10130ac0 Living::IsAnimate(void)
-bool __fastcall IsAnimate__6LivingFv(struct GameThingWithPos* this) asm("?IsAnimate@Living@@UAE_NXZ");
+bool __fastcall IsAnimate__6LivingFv(struct GameThingWithPos* this) asm("?IsAnimate@Living@@UAEIXZ");
 // win1.41 004172c0 mac 101306c0 Living::IsStompable(void)
-bool __fastcall IsStompable__6LivingFv(struct GameThingWithPos* this) asm("?IsStompable@Living@@UAE_NXZ");
+bool __fastcall IsStompable__6LivingFv(struct GameThingWithPos* this) asm("?IsStompable@Living@@UAEIXZ");
 // win1.41 00417470 mac 10130e00 Living::IsNotLiving(void)
 uint32_t __fastcall IsNotLiving__6LivingFv(struct GameThingWithPos* this) asm("?IsNotLiving@Living@@UAEIXZ");
 // win1.41 00417330 mac 10130890 Living::IsSuitableForCreatureAction(void)
@@ -1220,7 +1220,7 @@ struct LH3DColor __fastcall GetSpecularColor__6LivingFv(struct Object* this) asm
 // win1.41 0051aec0 mac 100c5880 Living::Draw(void)
 void __fastcall Draw__6LivingFv(struct Object* this) asm("?Draw@Living@@UAEXXZ");
 // win1.41 004172a0 mac 10130640 Living::CanBePickedUp(void)
-bool __fastcall CanBePickedUp__6LivingFv(struct Object* this) asm("?CanBePickedUp@Living@@UAE_NXZ");
+bool __fastcall CanBePickedUp__6LivingFv(struct Object* this) asm("?CanBePickedUp@Living@@UAEIXZ");
 // win1.41 004172b0 mac 10130680 Living::CanBeCrushed(void)
 uint32_t __fastcall CanBeCrushed__6LivingFv(struct Object* this) asm("?CanBeCrushed@Living@@UAEIXZ");
 // win1.41 005ec9b0 mac 10382060 Living::CallVirtualFunctionsForCreation(MapCoords const &)
@@ -1228,7 +1228,7 @@ void __fastcall CallVirtualFunctionsForCreation__6LivingFRC9MapCoords(struct Obj
 // win1.41 00416fa0 mac 1012f760 Living::SetPoisoned(int)
 void __fastcall SetPoisoned__6LivingFi(struct Object* this, const void* edx, int param_1) asm("?SetPoisoned@Living@@UAEXH@Z");
 // win1.41 005ec390 mac 10382b30 Living::SetDying(void)
-bool __fastcall SetDying__6LivingFv(struct Object* this) asm("?SetDying@Living@@UAE_NXZ");
+bool __fastcall SetDying__6LivingFv(struct Object* this) asm("?SetDying@Living@@UAEIXZ");
 // win1.41 005eccb0 mac 10381220 Living::InterfaceSetInMagicHand(GInterfaceStatus *)
 uint32_t __fastcall InterfaceSetInMagicHand__6LivingFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?InterfaceSetInMagicHand@Living@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 005ed590 mac 1037ffb0 Living::ValidToApplyThisToObject(GInterfaceStatus *, Object *)
@@ -1244,9 +1244,9 @@ void __fastcall GetBoundingSphere__6LivingFR7LHPointRf(struct Object* this, cons
 // win1.41 005ed3e0 mac 10380210 Living::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__6LivingFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@Living@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 005ed4f0 mac 103801d0 Living::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__6LivingFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Living@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__6LivingFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Living@@UAEIXZ");
 // win1.41 005ed370 mac 103803b0 Living::HasSunk(void)
-bool __fastcall HasSunk__6LivingFv(struct Object* this) asm("?HasSunk@Living@@UAE_NXZ");
+bool __fastcall HasSunk__6LivingFv(struct Object* this) asm("?HasSunk@Living@@UAEIXZ");
 // win1.41 005edba0 mac 1037f690 Living::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__6LivingFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@Living@@UAE_NPAVCreature@@@Z");
 // win1.41 005ee560 mac 1037e320 Living::RemoveFromGame(void)
@@ -1254,23 +1254,23 @@ uint32_t __fastcall RemoveFromGame__6LivingFv(struct Object* this) asm("?RemoveF
 // win1.41 005ef340 mac 1037cc80 Living::GetInHandImmersionTexture(void)
 enum IMMERSION_EFFECT_TYPE __fastcall GetInHandImmersionTexture__6LivingFv(struct Object* this) asm("?GetInHandImmersionTexture@Living@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ");
 // win1.41 005f2710 mac 10385c50 Living::AmILikelyToMove(void)
-bool __fastcall AmILikelyToMove__6LivingFv(struct Living* this) asm("?AmILikelyToMove@Living@@UAE_NXZ");
+bool __fastcall AmILikelyToMove__6LivingFv(struct Living* this) asm("?AmILikelyToMove@Living@@UAEIXZ");
 // win1.41 005ec3e0 mac 10382af0 Living::GetNumTurnsToDieOver(void)
 uint32_t __fastcall GetNumTurnsToDieOver__6LivingFv(struct Living* this) asm("?GetNumTurnsToDieOver@Living@@UAEIXZ");
 // win1.41 005ec1e0 mac 103830e0 Living::GetFinalDestPos(MapCoords *)
 void __fastcall GetFinalDestPos__6LivingFP9MapCoords(struct Living* this, const void* edx, struct MapCoords* result) asm("?GetFinalDestPos@Living@@UAEXPAUMapCoords@@@Z");
 // win1.41 005ec4b0 mac 10382830 Living::Downed(void)
-bool __fastcall Downed__6LivingFv(struct Living* this) asm("?Downed@Living@@UAE_NXZ");
+bool __fastcall Downed__6LivingFv(struct Living* this) asm("?Downed@Living@@UAEIXZ");
 // win1.41 005ecdb0 mac 10380b40 Living::MoveInFlock(void)
-bool __fastcall MoveInFlock__6LivingFv(struct Living* this) asm("?MoveInFlock@Living@@UAE_NXZ");
+bool __fastcall MoveInFlock__6LivingFv(struct Living* this) asm("?MoveInFlock@Living@@UAEIXZ");
 // win1.41 005f2630 mac 10385ed0 Living::ArrivesAtFoodReaction(void)
-bool __fastcall ArrivesAtFoodReaction__6LivingFv(struct Living* this) asm("?ArrivesAtFoodReaction@Living@@UAE_NXZ");
+bool __fastcall ArrivesAtFoodReaction__6LivingFv(struct Living* this) asm("?ArrivesAtFoodReaction@Living@@UAEIXZ");
 // win1.41 00474940 mac 103838c0 Living::DecideWhatToDo(void)
-bool __fastcall DecideWhatToDo__6LivingFv(struct Living* this) asm("?DecideWhatToDo@Living@@UAE_NXZ");
+bool __fastcall DecideWhatToDo__6LivingFv(struct Living* this) asm("?DecideWhatToDo@Living@@UAEIXZ");
 // win1.41 005ecaf0 mac 1004c540 Living::GetAge(void)
 uint32_t __fastcall GetAge__6LivingFv(struct Living* this) asm("?GetAge@Living@@UAEIXZ");
 // win1.41 005f26d0 mac 10385ce0 Living::LookAtFlyingObjectReaction(void)
-bool __fastcall LookAtFlyingObjectReaction__6LivingFv(struct Living* this) asm("?LookAtFlyingObjectReaction@Living@@UAE_NXZ");
+bool __fastcall LookAtFlyingObjectReaction__6LivingFv(struct Living* this) asm("?LookAtFlyingObjectReaction@Living@@UAEIXZ");
 // win1.41 005f2980 mac 10076180 Living::SetCurrentAndDestinationState(unsigned char, unsigned char)
 uint32_t __fastcall SetCurrentAndDestinationState__6LivingFUcUc(struct Living* this, const void* edx, enum VILLAGER_STATES current, enum VILLAGER_STATES destination) asm("?SetCurrentAndDestinationState@Living@@UAEIEE@Z");
 // win1.41 005f28e0 mac 10075940 Living::SetTopState(unsigned char)
@@ -1336,7 +1336,7 @@ bool __fastcall IsDeathState__6LivingCF15VILLAGER_STATES(const struct Living* th
 // win1.41 005ed2b0 mac 10380650 Living::DebugShowTime(unsigned long, unsigned char, unsigned char)
 uint32_t __fastcall DebugShowTime__6LivingFUlUcUc(struct Living* this, const void* edx, uint32_t param_1, uint8_t param_2, uint8_t param_3) asm("?DebugShowTime@Living@@UAEIIEE@Z");
 // win1.41 005ecc10 mac 10084310 Living::IsDancing(void)
-bool __fastcall IsDancing__6LivingFv(struct Living* this) asm("?IsDancing@Living@@UAE_NXZ");
+bool __fastcall IsDancing__6LivingFv(struct Living* this) asm("?IsDancing@Living@@UAEIXZ");
 // win1.41 00473e90 mac 101e3580 Living::IsInterestedInFoodObject(Object *)
 bool __fastcall IsInterestedInFoodObject__6LivingFP6Object(struct Living* this, const void* edx, struct Object* param_1) asm("?IsInterestedInFoodObject@Living@@UAE_NPAVObject@@@Z");
 // win1.41 00417080 mac 1012fa20 Living::IsInterestedInWoodObject(Object *)
@@ -1524,9 +1524,9 @@ uint32_t __fastcall IsPosValidForMapCellExistance__6LivingFRC9MapCoords(struct L
 // win1.41 005ec340 mac 10382c10 Living::MoveByTeleport(MapCoords const &)
 void __fastcall MoveByTeleport__6LivingFRC9MapCoords(struct Living* this, const void* edx, const struct MapCoords* param_1) asm("?MoveByTeleport@Living@@UAEXABUMapCoords@@@Z");
 // win1.41 00417270 mac 10130570 Living::IsDead(void)
-bool __fastcall IsDead__6LivingFv(struct Living* this) asm("?IsDead@Living@@UAE_NXZ");
+bool __fastcall IsDead__6LivingFv(struct Living* this) asm("?IsDead@Living@@UAEIXZ");
 // win1.41 00473ed0 mac 101e36f0 Living::IsChild(void)
-bool __fastcall IsChild__6LivingFv(struct Living* this) asm("?IsChild@Living@@UAE_NXZ");
+bool __fastcall IsChild__6LivingFv(struct Living* this) asm("?IsChild@Living@@UAEIXZ");
 // win1.41 005f2160 mac 103864c0 Living::GetFleeingPositionFromMovingObject(MapCoords *, GameThingWithPos *, float)
 void __fastcall GetFleeingPositionFromMovingObject__6LivingFP9MapCoordsP16GameThingWithPosf(struct Living* this, const void* edx, struct MapCoords* param_1, struct GameThingWithPos* param_2, float param_3) asm("?GetFleeingPositionFromMovingObject@Living@@UAEXPAUMapCoords@@PAVGameThingWithPos@@M@Z");
 // win1.41 005f2010 mac 10386800 Living::GetFleeingPositionFromStationaryObject(MapCoords *, GameThingWithPos *, float)
@@ -1542,7 +1542,7 @@ float __fastcall CalculateLifeDesire__6LivingFv(struct Living* this) asm("?Calcu
 // win1.41 00417320 mac 100f8730 Living::DanceType(void)
 uint32_t __fastcall DanceType__6LivingFv(struct Living* this) asm("?DanceType@Living@@UAEIXZ");
 // win1.41 005ee550 mac 1037e4a0 Living::CanBeHealedByHealSpell(void)
-bool __fastcall CanBeHealedByHealSpell__6LivingFv(struct Living* this) asm("?CanBeHealedByHealSpell@Living@@UAE_NXZ");
+bool __fastcall CanBeHealedByHealSpell__6LivingFv(struct Living* this) asm("?CanBeHealedByHealSpell@Living@@UAEIXZ");
 
 DECLARE_LH_LINKED_LIST(Living);
 

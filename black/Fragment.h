@@ -183,7 +183,7 @@ void __fastcall SetUpPhysOb__8FragmentFP6PhysOb(struct Object* this, const void*
 // win1.41 0076f3f0 mac 1015b270 Fragment::EndPhysics(PhysicsObject *, bool)
 void __fastcall EndPhysics__8FragmentFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?EndPhysics@Fragment@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 0076f3d0 mac 1015b4f0 Fragment::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__8FragmentFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Fragment@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__8FragmentFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Fragment@@UAEIXZ");
 // win1.41 0076f3e0 mac 1015b4a0 Fragment::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__8FragmentFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@Fragment@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 0076f7f0 mac 1015ae00 Fragment::CreatureMustAvoid(Creature *)
@@ -193,7 +193,7 @@ enum SOUND_COLLISION_TYPE __fastcall GetCollideSoundType__8FragmentFv(struct Obj
 // win1.41 0076e970 mac 1015abe0 Fragment::GetInHandImmersionTexture(void)
 enum IMMERSION_EFFECT_TYPE __fastcall GetInHandImmersionTexture__8FragmentFv(struct Object* this) asm("?GetInHandImmersionTexture@Fragment@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ");
 // win1.41 0076f7e0 mac 1015ae70 Fragment::ShouldFootpathsGoRound(void)
-bool __fastcall ShouldFootpathsGoRound__8FragmentFv(struct Object* this) asm("?ShouldFootpathsGoRound@Fragment@@UAE_NXZ");
+bool __fastcall ShouldFootpathsGoRound__8FragmentFv(struct Object* this) asm("?ShouldFootpathsGoRound@Fragment@@UAEIXZ");
 
 DECLARE_LH_LINKED_LIST(Fragment);
 

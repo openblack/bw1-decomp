@@ -228,9 +228,9 @@ uint32_t __fastcall InterfaceTap__15ScriptHighlightFP16GInterfaceStatus(struct O
 // win1.41 007097e0 mac 104fa4b0 ScriptHighlight::IsEffectReceiver(EffectValues *)
 uint32_t __fastcall IsEffectReceiver__15ScriptHighlightFP12EffectValues(struct Object* this, const void* edx, struct EffectValues* param_1) asm("?IsEffectReceiver@ScriptHighlight@@UAEIPAVEffectValues@@@Z");
 // win1.41 00709820 mac 104fa5f0 ScriptHighlight::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__15ScriptHighlightFv(struct Object* this) asm("?InteractsWithPhysicsObjects@ScriptHighlight@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__15ScriptHighlightFv(struct Object* this) asm("?InteractsWithPhysicsObjects@ScriptHighlight@@UAEIXZ");
 // win1.41 00709810 mac 104fa5a0 ScriptHighlight::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__15ScriptHighlightFv(struct Object* this) asm("?CanBecomeAPhysicsObject@ScriptHighlight@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__15ScriptHighlightFv(struct Object* this) asm("?CanBecomeAPhysicsObject@ScriptHighlight@@UAEIXZ");
 // win1.41 0070ae40 mac 104fa770 ScriptHighlight::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
 void __fastcall AddToRoutePlan__15ScriptHighlightFP8RPHolderP8CreatureiPFi7Point2Dfi_v(struct Object* this, const void* edx, struct RPHolder* param_1, struct Creature* param_2, int param_3, void (__cdecl* param_4)(int param_1, struct Point2D param_2, float param_3, int param_4)) asm("?AddToRoutePlan@ScriptHighlight@@UAEXPAURPHolder@@PAVCreature@@HP6AXHUPoint2D@@MH@Z@Z");
 

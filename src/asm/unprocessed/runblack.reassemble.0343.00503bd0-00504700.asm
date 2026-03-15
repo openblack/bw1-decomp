@@ -426,7 +426,7 @@ start_0x00503bd0_0x00504700:
                          pop                esi                                           // 0x00504066    5e
                          add                esp, 0x10                                     // 0x00504067    83c410
                          ret                                                              // 0x0050406a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0050406b    e809d8efff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0050406b    e809d8efff
                          sub                esp, 0x10                                     // 0x00504070    83ec10
                          push               esi                                           // 0x00504073    56
                          mov.s              esi, ecx                                      // 0x00504074    8bf1
@@ -843,7 +843,7 @@ start_0x00503bd0_0x00504700:
                          mov                eax, 0x00000002                               // 0x00504554    b802000000
                          pop                esi                                           // 0x00504559    5e
                          ret                                                              // 0x0050455a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0050455b    e819d3efff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0050455b    e819d3efff
                          {disp32} mov       eax, dword ptr [ecx + 0x00000164]             // 0x00504560    8b8164010000
                          {disp32} mov       ecx, dword ptr [eax + 0x00000fb4]             // 0x00504566    8b88b40f0000
                          add                eax, 0x00000fa8                               // 0x0050456c    05a80f0000

@@ -92,7 +92,7 @@ extern const struct AbodeVftable __vt__8Windmill asm("??_7Windmill@@6B@");
 // Static methods
 
 // win1.41 00405890 mac 10199b40 Windmill::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float, unsigned long, unsigned long, float, int, int)
-struct Windmill* __cdecl Create__8WindmillFRC9MapCoordsPC10GAbodeInfoP4Townfffi(const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, float food, int wood) asm("?Create@Windmill@@SAPAVAbode@@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");
+struct Windmill* __cdecl Create__8WindmillFRC9MapCoordsPC10GAbodeInfoP4Townfffi(const struct MapCoords* coords, const struct GAbodeInfo* info, struct Town* town, float y_angle, float scale, float food, int wood) asm("?Create@Windmill@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");
 
 // Non-virtual methods
 
@@ -101,7 +101,7 @@ void __fastcall Open__8WindmillFv(struct Windmill* this) asm("?Open@Windmill@@QA
 // win1.41 004059d0 mac 10241170 Windmill::Close(void)
 void __fastcall Close__8WindmillFv(struct Windmill* this) asm("?Close@Windmill@@QAEXXZ");
 // win1.41 004059f0 mac 1007d870 Windmill::PreDraw(void)
-void __fastcall PreDraw__8WindmillFv(struct Windmill* this) asm("?PreDraw@Windmill@@QAEIXZ");
+void __fastcall PreDraw__8WindmillFv(struct Windmill* this) asm("?PreDraw@Windmill@@QAEXXZ");
 
 // Override methods
 
