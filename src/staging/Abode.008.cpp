@@ -329,10 +329,10 @@ bool32_t Abode::IsInteractable()
     return GameThingWithPos::IsInteractable();
 }
 
-// win1.41 00407230 mac inlined Abode::FUN_00407230(bool)
-MapCoords Abode::FUN_00407230(bool32_t param_1)
+// win1.41 00407230 mac inlined
+MapCoords Abode::FUN_00407230(uint32_t param_1, uint32_t param_2)
 {
-    if (param_1 && building_site != NULL)
+    if (param_1 == 1 && building_site != NULL)
     {
         return building_site->GetResourcePosAndYAngle(1, 0, NULL);
     }
