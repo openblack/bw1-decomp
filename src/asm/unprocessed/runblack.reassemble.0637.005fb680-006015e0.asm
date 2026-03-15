@@ -3,9 +3,9 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?SetIdentity@LHMatrix@@QAEXXZ
-.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
-.extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
+.extern ?SetIdentityMatrix@LHMatrix@@QAEXXZ
+.extern ?Translation@LHMatrix@@QAEXABULHPoint@@@Z
+.extern ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z
 .extern _jmp_addr_0x00417ba0
 .extern _jmp_addr_0x00417c50
 .extern _jmp_addr_0x0041bce0
@@ -23,7 +23,7 @@
 .extern _jmp_addr_0x0052fa50
 .extern _jmp_addr_0x0052fb50
 .extern ?SetDomainCentrePos@Flock@@QAEXABUMapCoords@@@Z
-.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern _jmp_addr_0x00563400
@@ -230,8 +230,8 @@
 .globl ?ActualMoveMapObject@MagicTeleport@@UAEXPBUMapCoords@@@Z
 .globl ?Get2DRadius@MagicTeleport@@UAEMXZ
 .globl ?Draw@MagicTeleport@@UAEXXZ
-.globl ?InteractsWithPhysicsObjects@MagicTeleport@@UAE_NXZ
-.globl ?CanBecomeAPhysicsObject@MagicTeleport@@UAE_NXZ
+.globl ?InteractsWithPhysicsObjects@MagicTeleport@@UAEIXZ
+.globl ?CanBecomeAPhysicsObject@MagicTeleport@@UAEIXZ
 .globl ?IsEffectReceiver@MagicTeleport@@UAEIPAVEffectValues@@@Z
 .globl ?GetImpressiveType@MagicTree@@UAE?AW4IMPRESSIVE_TYPE@@XZ
 .globl ?GetSaveType@MagicTree@@UAEIXZ
@@ -263,7 +263,7 @@
 .globl ?GetDebugText@LandscapeVortexIn@@UAEPADXZ
 .globl ??_GLandscapeVortexIn@@UAEPAXI@Z
 .globl ?ToBeDeleted@LandscapeVortexIn@@UAEXH@Z
-.globl ?InteractsWithPhysicsObjects@LandscapeVortexIn@@UAE_NXZ
+.globl ?InteractsWithPhysicsObjects@LandscapeVortexIn@@UAEIXZ
 .globl ?ShouldPhysicsRaiseObjectUntilNotIntersectingThis@LandscapeVortexIn@@UAEXPAVObject@@@Z
 .globl ?ReactToPhysicsImpact@LandscapeVortexIn@@UAEXPAVPhysicsObject@@_N@Z
 .globl ?GetPhysicsConstantsType@LandscapeVortexIn@@UAEIXZ
@@ -279,8 +279,8 @@
 .globl ?CallVirtualFunctionsForCreation@LandscapeVortex@@UAEXABUMapCoords@@@Z
 .globl ?ValidForPlaceInHand@LandscapeVortex@@UAEIPAVGInterfaceStatus@@@Z
 .globl ?Draw@LandscapeVortex@@UAEXXZ
-.globl ?InteractsWithPhysicsObjects@LandscapeVortex@@UAE_NXZ
-.globl ?CanBecomeAPhysicsObject@LandscapeVortex@@UAE_NXZ
+.globl ?InteractsWithPhysicsObjects@LandscapeVortex@@UAEIXZ
+.globl ?CanBecomeAPhysicsObject@LandscapeVortex@@UAEIXZ
 .globl ?IsEffectReceiver@LandscapeVortex@@UAEIPAVEffectValues@@@Z
 .globl ?GetScriptObjectType@LandscapeVortex@@UAEIXZ
 .globl ?Save@LandscapeVortexIn@@UAEIAAVGameOSFile@@@Z
@@ -566,7 +566,7 @@ _jmp_addr_0x005fb830:    call               ?GetMagicEffectInfo@GMagicInfo@@QBEP
                          ret                0x0004                                        // 0x005fb86f    c20400
 .Lbl_addr_0x005fb872:    {disp32} fld       dword ptr [__real@4@00000000000000000000]                   // 0x005fb872    d90598a38a00
                          ret                0x0004                                        // 0x005fb878    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005fb87b    e8795fe0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005fb87b    e8795fe0ff
 _globl_ct_0x005fb880:    {disp32} mov       cl, byte ptr [_DAT_00fac934]                  // 0x005fb880    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x005fb886    b001
                          test               al, cl                                        // 0x005fb888    84c8
@@ -756,7 +756,7 @@ _globl_ct_0x005fb9e0:    {disp32} jmp       .Lbl_addr_0x005fb9f0                
                          nop                                                              // 0x005fb9ef    90
 .Lbl_addr_0x005fb9f0:    {disp32} mov       dword ptr [data_bytes + 0x3721dc], 0x3e000000 // 0x005fb9f0    c705dc81d3000000003e
                          ret                                                              // 0x005fb9fa    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005fb9fb    e8f95de0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005fb9fb    e8f95de0ff
 _jmp_addr_0x005fba00:    {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x005fba00    8b4c2404
                          call               _jmp_addr_0x00603720                          // 0x005fba04    e8177d0000
                          neg                eax                                           // 0x005fba09    f7d8
@@ -791,7 +791,7 @@ _globl_ct_0x005fba20:    {disp32} jmp       .Lbl_addr_0x005fba30                
                          nop                                                              // 0x005fba2f    90
 .Lbl_addr_0x005fba30:    {disp32} mov       dword ptr [data_bytes + 0x3721e8], 0x3e000000 // 0x005fba30    c705e881d3000000003e
                          ret                                                              // 0x005fba3a    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005fba3b    e8b95de0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005fba3b    e8b95de0ff
 _globl_ct_0x005fba40:    {disp32} jmp       .Lbl_addr_0x005fba50                          // 0x005fba40    e90b000000
                          nop                                                              // 0x005fba45    90
                          nop                                                              // 0x005fba46    90
@@ -1310,7 +1310,7 @@ _globl_ct_0x005fbdc0:    {disp32} jmp       .Lbl_addr_0x005fbdd0                
                          pop                esi                                           // 0x005fbf06    5e
                          pop                ebx                                           // 0x005fbf07    5b
                          ret                0x0010                                        // 0x005fbf08    c21000
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005fbf0b    e8e958e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005fbf0b    e8e958e0ff
 .Lbl_addr_0x005fbf10:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x005fbf10    8b442404
                          push               0x1                                           // 0x005fbf14    6a01
                          push               eax                                           // 0x005fbf16    50
@@ -1684,7 +1684,7 @@ _jmp_addr_0x005fbff0:    push               esi                                 
                          nop                                                              // 0x005fc1df    90
 .Lbl_addr_0x005fc1e0:    {disp32} mov       dword ptr [ecx + 0x00000098], 0x00000000      // 0x005fc1e0    c7819800000000000000
                          ret                                                              // 0x005fc1ea    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005fc1eb    e80956e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005fc1eb    e80956e0ff
 .Lbl_addr_0x005fc1f0:    push               esi                                           // 0x005fc1f0    56
                          push               edi                                           // 0x005fc1f1    57
                          push               0x000000a4                                    // 0x005fc1f2    68a4000000
@@ -1928,7 +1928,7 @@ _jmp_addr_0x005fbff0:    push               esi                                 
                          ret                0x0004                                        // 0x005fc463    c20400
 .Lbl_addr_0x005fc466:    xor.s              eax, eax                                      // 0x005fc466    33c0
                          ret                0x0004                                        // 0x005fc468    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005fc46b    e88953e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005fc46b    e88953e0ff
 ?InterfaceSetInMagicHand@MagicTeleport@@UAEIPAVGInterfaceStatus@@@Z:
                          {disp32} mov       eax, dword ptr [ecx + 0x0000009c]             // 0x005fc470    8b819c000000
                          test               eax, eax                                      // 0x005fc476    85c0
@@ -2499,7 +2499,7 @@ _jmp_addr_0x005fc790:    sub                esp, 0x3c                           
                          {disp32} jmp       .Lbl_addr_0x005fcb88                          // 0x005fcab1    e9d2000000
 .Lbl_addr_0x005fcab6:    {disp8} lea        edi, dword ptr [esi + 0x14]                   // 0x005fcab6    8d7e14
                          mov.s              ecx, edi                                      // 0x005fcab9    8bcf
-                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x005fcabb    e8406ae0ff
+                         call               ?SetIdentityMatrix@LHMatrix@@QAEXXZ                 // 0x005fcabb    e8406ae0ff
                          {disp8} fld        dword ptr [esp + 0x08]                        // 0x005fcac0    d9442408
                          fcos                                                             // 0x005fcac4    d9ff
                          {disp8} mov        edx, dword ptr [esp + 0x10]                   // 0x005fcac6    8b542410
@@ -2566,11 +2566,11 @@ _jmp_addr_0x005fc790:    sub                esp, 0x3c                           
                          {disp8} mov        dword ptr [ecx + 0x08], edi                   // 0x005fcb6c    897908
                          {disp8} mov        dword ptr [ecx + 0x04], edi                   // 0x005fcb6f    897904
                          {disp8} mov        dword ptr [ecx + 0x10], eax                   // 0x005fcb72    894110
-                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z      // 0x005fcb75    e8f669e0ff
+                         call               ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z      // 0x005fcb75    e8f669e0ff
                          {disp8} jmp        .Lbl_addr_0x005fcb88                          // 0x005fcb7a    eb0c
 .Lbl_addr_0x005fcb7c:    {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x005fcb7c    8d542410
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x005fcb80    8d4e14
-                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z     // 0x005fcb83    e8a869e0ff
+                         call               ?Translation@LHMatrix@@QAEXABULHPoint@@@Z     // 0x005fcb83    e8a869e0ff
 .Lbl_addr_0x005fcb88:    {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x005fcb88    8b442420
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x005fcb8c    8b4c2408
                          {disp8} mov        dword ptr [esi + 0x44], eax                   // 0x005fcb90    894644
@@ -2786,7 +2786,7 @@ _jmp_addr_0x005fcc70:    push               esi                                 
                          nop                                                              // 0x005fcddd    90
                          nop                                                              // 0x005fcdde    90
                          nop                                                              // 0x005fcddf    90
-?InteractsWithPhysicsObjects@MagicTeleport@@UAE_NXZ:
+?InteractsWithPhysicsObjects@MagicTeleport@@UAEIXZ:
                          xor.s              al, al                                        // 0x005fcde0    32c0
                          ret                                                              // 0x005fcde2    c3
                          nop                                                              // 0x005fcde3    90
@@ -2802,7 +2802,7 @@ _jmp_addr_0x005fcc70:    push               esi                                 
                          nop                                                              // 0x005fcded    90
                          nop                                                              // 0x005fcdee    90
                          nop                                                              // 0x005fcdef    90
-?CanBecomeAPhysicsObject@MagicTeleport@@UAE_NXZ:
+?CanBecomeAPhysicsObject@MagicTeleport@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x005fcdf0    33c0
                          ret                                                              // 0x005fcdf2    c3
                          nop                                                              // 0x005fcdf3    90
@@ -2868,7 +2868,7 @@ _globl_ct_0x005fce40:    {disp32} jmp       .Lbl_addr_0x005fce50                
                          nop                                                              // 0x005fce4f    90
 .Lbl_addr_0x005fce50:    {disp32} mov       dword ptr [data_bytes + 0x372208], 0x3e000000 // 0x005fce50    c7050882d3000000003e
                          ret                                                              // 0x005fce5a    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005fce5b    e89949e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005fce5b    e89949e0ff
 _globl_ct_0x005fce60:    {disp32} jmp       .Lbl_addr_0x005fce70                          // 0x005fce60    e90b000000
                          nop                                                              // 0x005fce65    90
                          nop                                                              // 0x005fce66    90
@@ -3111,7 +3111,7 @@ _jmp_addr_0x005fd000:    push               esi                                 
                          {disp8} mov        eax, dword ptr [ecx + 0x6c]                   // 0x005fd060    8b416c
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005fd063    8b0d5c19d000
                          push               eax                                           // 0x005fd069    50
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x005fd06a    e84139f5ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x005fd06a    e84139f5ff
                          ret                                                              // 0x005fd06f    c3
 ?ToBeDeleted@MagicTree@@UAEXH@Z:
                          push               ebx                                           // 0x005fd070    53
@@ -3420,7 +3420,7 @@ _globl_ct_0x005fd300:    {disp32} jmp       .Lbl_addr_0x005fd310                
                          nop                                                              // 0x005fd30f    90
 .Lbl_addr_0x005fd310:    {disp32} mov       dword ptr [data_bytes + 0x372230], 0xffffffff // 0x005fd310    c7053082d300ffffffff
                          ret                                                              // 0x005fd31a    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005fd31b    e8d944e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005fd31b    e8d944e0ff
 _globl_ct_0x005fd320:    {disp32} jmp       .Lbl_addr_0x005fd330                          // 0x005fd320    e90b000000
                          nop                                                              // 0x005fd325    90
                          nop                                                              // 0x005fd326    90
@@ -3542,7 +3542,7 @@ _globl_ct_0x005fd350:    call               .Lbl_addr_0x005fd360                
                          sub                eax, 0x00d38248                               // 0x005fd412    2d4882d300
                          sar                eax, 6                                        // 0x005fd417    c1f806
                          ret                                                              // 0x005fd41a    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005fd41b    e8d943e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005fd41b    e8d943e0ff
 .Lbl_addr_0x005fd420:    push               0x53                                          // 0x005fd420    6a53
                          push               0x00bf403c                                    // 0x005fd422    683c40bf00
                          push               0x3f800000                                    // 0x005fd427    680000803f
@@ -4187,7 +4187,7 @@ _jmp_addr_0x005fd770:    push               esi                                 
                          call               ?ToBeDeleted@LandscapeVortex@@UAEXH@Z         // 0x005fd882    e869100000
                          pop                esi                                           // 0x005fd887    5e
                          ret                0x0004                                        // 0x005fd888    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005fd88b    e8693fe0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005fd88b    e8693fe0ff
 .Lbl_addr_0x005fd890:    {disp32} lea       eax, dword ptr [ecx + 0x000000f0]             // 0x005fd890    8d81f0000000
                          {disp32} mov       dword ptr [ecx + 0x000000ec], 0x00000000      // 0x005fd896    c781ec00000000000000
                          xor.s              ecx, ecx                                      // 0x005fd8a0    33c9
@@ -4212,7 +4212,7 @@ _jmp_addr_0x005fd770:    push               esi                                 
                          nop                                                              // 0x005fd8bd    90
                          nop                                                              // 0x005fd8be    90
                          nop                                                              // 0x005fd8bf    90
-?InteractsWithPhysicsObjects@LandscapeVortexIn@@UAE_NXZ:
+?InteractsWithPhysicsObjects@LandscapeVortexIn@@UAEIXZ:
                          mov                al, 0x01                                      // 0x005fd8c0    b001
                          ret                                                              // 0x005fd8c2    c3
                          nop                                                              // 0x005fd8c3    90
@@ -4809,7 +4809,7 @@ _jmp_addr_0x005fdd80:    push               esi                                 
                          {disp8} mov        dword ptr [eax + 0x0c], ecx                   // 0x005fdf04    89480c
                          {disp8} mov        dword ptr [eax + 0x10], ecx                   // 0x005fdf07    894810
                          ret                                                              // 0x005fdf0a    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005fdf0b    e8e938e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005fdf0b    e8e938e0ff
 ?ToBeDeleted@LandscapeVortexOut@@UAEXH@Z:
                          push               ebx                                           // 0x005fdf10    53
                          push               ebp                                           // 0x005fdf11    55
@@ -5710,7 +5710,7 @@ _jmp_addr_0x005fe6e0:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          pop                edi                                           // 0x005fe9c6    5f
                          pop                esi                                           // 0x005fe9c7    5e
                          ret                0x0004                                        // 0x005fe9c8    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005fe9cb    e8292ee0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005fe9cb    e8292ee0ff
 .Lbl_addr_0x005fe9d0:    xor.s              eax, eax                                      // 0x005fe9d0    33c0
                          {disp32} mov       dword ptr [ecx + 0x000000ac], eax             // 0x005fe9d2    8981ac000000
                          {disp32} mov       dword ptr [ecx + 0x000000b0], eax             // 0x005fe9d8    8981b0000000
@@ -6294,7 +6294,7 @@ _jmp_addr_0x005feda0:    mov                eax, dword ptr [edx]                
 .Lbl_addr_0x005ff224:    pop                esi                                           // 0x005ff224    5e
                          add                esp, 0x18                                     // 0x005ff225    83c418
                          ret                0x0004                                        // 0x005ff228    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005ff22b    e8c925e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005ff22b    e8c925e0ff
                          sub                esp, 0x0c                                     // 0x005ff230    83ec0c
                          push               ebx                                           // 0x005ff233    53
                          push               ebp                                           // 0x005ff234    55
@@ -6362,7 +6362,7 @@ _jmp_addr_0x005feda0:    mov                eax, dword ptr [edx]                
                          pop                ebx                                           // 0x005ff2e6    5b
                          add                esp, 0x0c                                     // 0x005ff2e7    83c40c
                          ret                                                              // 0x005ff2ea    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005ff2eb    e80925e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005ff2eb    e80925e0ff
 ?GetInfo@GMobileStaticInfo@@SAPAV1@XZ:
                                     mov                eax, 0x00d3b4e8                               // 0x005ff2f0    b8e8b4d300
                          ret                                                              // 0x005ff2f5    c3
@@ -7026,7 +7026,7 @@ _jmp_addr_0x005ff330:    {disp32} mov       ecx, dword ptr [data_bytes + 0x37222
                          fmulp              st(1), st                                     // 0x005ffac2    dec9
                          {disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]                   // 0x005ffac4    d82d90a38a00
                          ret                                                              // 0x005ffaca    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005ffacb    e8291de0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005ffacb    e8291de0ff
 .Lbl_addr_0x005ffad0:    push               ecx                                           // 0x005ffad0    51
                          push               esi                                           // 0x005ffad1    56
                          mov.s              esi, ecx                                      // 0x005ffad2    8bf1
@@ -7362,7 +7362,7 @@ _jmp_addr_0x005ff330:    {disp32} mov       ecx, dword ptr [data_bytes + 0x37222
                          add                esp, 0x3c                                     // 0x005fff7b    83c43c
                          ret                                                              // 0x005fff7e    c3
                          nop                                                              // 0x005fff7f    90
-?InteractsWithPhysicsObjects@LandscapeVortex@@UAE_NXZ:
+?InteractsWithPhysicsObjects@LandscapeVortex@@UAEIXZ:
                          xor.s              al, al                                        // 0x005fff80    32c0
                          ret                                                              // 0x005fff82    c3
                          nop                                                              // 0x005fff83    90
@@ -7378,7 +7378,7 @@ _jmp_addr_0x005ff330:    {disp32} mov       ecx, dword ptr [data_bytes + 0x37222
                          nop                                                              // 0x005fff8d    90
                          nop                                                              // 0x005fff8e    90
                          nop                                                              // 0x005fff8f    90
-?CanBecomeAPhysicsObject@LandscapeVortex@@UAE_NXZ:
+?CanBecomeAPhysicsObject@LandscapeVortex@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x005fff90    33c0
                          ret                                                              // 0x005fff92    c3
                          nop                                                              // 0x005fff93    90
@@ -8132,7 +8132,7 @@ _jmp_addr_0x005fffd0:    {disp32} mov       dword ptr [ecx + 0x000000e4], 0x0000
                          xor.s              eax, eax                                      // 0x00600875    33c0
                          pop                ebx                                           // 0x00600877    5b
                          ret                0x0004                                        // 0x00600878    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0060087b    e8790fe0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x0060087b    e8790fe0ff
 ?Load@LandscapeVortexOut@@UAEIAAVGameOSFile@@@Z:
                          push               ecx                                           // 0x00600880    51
                          push               ebp                                           // 0x00600881    55
@@ -8745,10 +8745,10 @@ _jmp_addr_0x00600e20:    push               esi                                 
                          call               _jmp_addr_0x0066f1a0                          // 0x00600ec4    e8d7e20600
                          pop                esi                                           // 0x00600ec9    5e
                          ret                                                              // 0x00600eca    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x00600ecb    e82909e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x00600ecb    e82909e0ff
 .Lbl_addr_0x00600ed0:    {disp32} mov       dword ptr [ecx + 0x000000b4], 0x00000000      // 0x00600ed0    c781b400000000000000
                          ret                                                              // 0x00600eda    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x00600edb    e81909e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x00600edb    e81909e0ff
 .Lbl_addr_0x00600ee0:    {disp32} fld       dword ptr [__real@3f333333]                   // 0x00600ee0    d90538b28a00
                          ret                                                              // 0x00600ee6    c3
                          nop                                                              // 0x00600ee7    90
@@ -8900,7 +8900,7 @@ _globl_ct_0x00600fd0:    {disp32} jmp       .Lbl_addr_0x00600fe0                
                          nop                                                              // 0x00600fdf    90
 .Lbl_addr_0x00600fe0:    {disp32} mov       dword ptr [data_bytes + 0x372310], 0x3e000000 // 0x00600fe0    c7051083d3000000003e
                          ret                                                              // 0x00600fea    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x00600feb    e80908e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x00600feb    e80908e0ff
 _globl_ct_0x00600ff0:    {disp32} jmp       .Lbl_addr_0x00601000                          // 0x00600ff0    e90b000000
                          nop                                                              // 0x00600ff5    90
                          nop                                                              // 0x00600ff6    90
@@ -9358,7 +9358,7 @@ _jmp_addr_0x00601330:    push               ebx                                 
                          pop                esi                                           // 0x006013c3    5e
                          add                esp, 0x00000080                               // 0x006013c4    81c480000000
                          ret                                                              // 0x006013ca    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x006013cb    e82904e0ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x006013cb    e82904e0ff
 _jmp_addr_0x006013d0:    push               ebx                                           // 0x006013d0    53
                          push               edi                                           // 0x006013d1    57
                          mov.s              edi, ecx                                      // 0x006013d2    8bf9

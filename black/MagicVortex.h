@@ -296,9 +296,9 @@ uint32_t __fastcall ValidForPlaceInHand__15LandscapeVortexFP16GInterfaceStatus(s
 // win1.41 005fffa0 mac 103b4580 LandscapeVortex::IsEffectReceiver(EffectValues *)
 uint32_t __fastcall IsEffectReceiver__15LandscapeVortexFP12EffectValues(struct Object* this, const void* edx, struct EffectValues* param_1) asm("?IsEffectReceiver@LandscapeVortex@@UAEIPAVEffectValues@@@Z");
 // win1.41 005fff80 mac 103b4620 LandscapeVortex::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__15LandscapeVortexFv(struct Object* this) asm("?InteractsWithPhysicsObjects@LandscapeVortex@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__15LandscapeVortexFv(struct Object* this) asm("?InteractsWithPhysicsObjects@LandscapeVortex@@UAEIXZ");
 // win1.41 005fff90 mac 103b45d0 LandscapeVortex::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__15LandscapeVortexFv(struct Object* this) asm("?CanBecomeAPhysicsObject@LandscapeVortex@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__15LandscapeVortexFv(struct Object* this) asm("?CanBecomeAPhysicsObject@LandscapeVortex@@UAEIXZ");
 
 struct LandscapeVortexIn
 {
@@ -334,7 +334,7 @@ uint32_t __fastcall GetSaveType__17LandscapeVortexInFv(struct GameThing* this) a
 // win1.41 005fd970 mac 103b8540 LandscapeVortexIn::GetPhysicsConstantsType(void)
 uint32_t __fastcall GetPhysicsConstantsType__17LandscapeVortexInFv(struct Object* this) asm("?GetPhysicsConstantsType@LandscapeVortexIn@@UAEIXZ");
 // win1.41 005fd8c0 mac 103b8720 LandscapeVortexIn::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__17LandscapeVortexInFv(struct Object* this) asm("?InteractsWithPhysicsObjects@LandscapeVortexIn@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__17LandscapeVortexInFv(struct Object* this) asm("?InteractsWithPhysicsObjects@LandscapeVortexIn@@UAEIXZ");
 // win1.41 005fd8d0 mac 103b86b0 LandscapeVortexIn::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object *)
 void __fastcall ShouldPhysicsRaiseObjectUntilNotIntersectingThis__17LandscapeVortexInFP6Object(struct Object* this, const void* edx, struct Object* param_1) asm("?ShouldPhysicsRaiseObjectUntilNotIntersectingThis@LandscapeVortexIn@@UAEXPAVObject@@@Z");
 // win1.41 005fd8e0 mac 103b8590 LandscapeVortexIn::ReactToPhysicsImpact(PhysicsObject *, bool)

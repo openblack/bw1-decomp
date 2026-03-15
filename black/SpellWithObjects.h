@@ -115,7 +115,7 @@ void __fastcall CloseDown__16SpellWithObjectsFv(struct Spell* this) asm("?CloseD
 // win1.41 0055cea0 mac inlined SpellWithObjects::GetMaxObjectsToCreate(void)
 int __fastcall GetMaxObjectsToCreate__16SpellWithObjectsFv(struct Spell* this) asm("?GetMaxObjectsToCreate@SpellWithObjects@@UAEHXZ");
 // win1.41 0055cf50 mac 103b1b10 SpellWithObjects::GetSetObjectsDyingOnCloseDown(void)
-bool __fastcall GetSetObjectsDyingOnCloseDown__16SpellWithObjectsFv(struct SpellWithObjects* this) asm("?GetSetObjectsDyingOnCloseDown@SpellWithObjects@@UAE_NXZ");
+bool __fastcall GetSetObjectsDyingOnCloseDown__16SpellWithObjectsFv(struct SpellWithObjects* this) asm("?GetSetObjectsDyingOnCloseDown@SpellWithObjects@@UAEIXZ");
 
 #endif // __cplusplus
 

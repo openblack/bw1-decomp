@@ -26,9 +26,9 @@
 .globl _jmp_addr_0x006db020
 .globl _jmp_addr_0x006db160
 .globl _jmp_addr_0x006db520
-.globl ?DecideWhatToDo@PuzzleSheep@@UAE_NXZ
-.globl ?DecideWhatToDo@PuzzleHorse@@UAE_NXZ
-.globl ?DecideWhatToDo@PuzzlePig@@UAE_NXZ
+.globl ?DecideWhatToDo@PuzzleSheep@@UAEIXZ
+.globl ?DecideWhatToDo@PuzzleHorse@@UAEIXZ
+.globl ?DecideWhatToDo@PuzzlePig@@UAEIXZ
 
 start_0x006dacd0_0x006db570:
 // Snippet: asm, [0x006dacd0, 0x006db541)
@@ -428,7 +428,7 @@ _jmp_addr_0x006db020:    {disp8} mov       eax, dword ptr [esp + 0x0c]          
                          nop                                                              // 0x006db10d    90
                          nop                                                              // 0x006db10e    90
                          nop                                                              // 0x006db10f    90
-?DecideWhatToDo@PuzzleSheep@@UAE_NXZ:
+?DecideWhatToDo@PuzzleSheep@@UAEIXZ:
                          mov               eax, 0x00000001                                // 0x006db110    b801000000
                          ret                                                              // 0x006db115    c3
                          nop                                                              // 0x006db116    90
@@ -441,7 +441,7 @@ _jmp_addr_0x006db020:    {disp8} mov       eax, dword ptr [esp + 0x0c]          
                          nop                                                              // 0x006db11d    90
                          nop                                                              // 0x006db11e    90
                          nop                                                              // 0x006db11f    90
-?DecideWhatToDo@PuzzleHorse@@UAE_NXZ:
+?DecideWhatToDo@PuzzleHorse@@UAEIXZ:
                          mov               eax, 0x00000001                                // 0x006db120    b801000000
                          ret                                                              // 0x006db125    c3
                          nop                                                              // 0x006db126    90
@@ -454,7 +454,7 @@ _jmp_addr_0x006db020:    {disp8} mov       eax, dword ptr [esp + 0x0c]          
                          nop                                                              // 0x006db12d    90
                          nop                                                              // 0x006db12e    90
                          nop                                                              // 0x006db12f    90
-?DecideWhatToDo@PuzzlePig@@UAE_NXZ:
+?DecideWhatToDo@PuzzlePig@@UAEIXZ:
                          mov               eax, 0x00000001                                // 0x006db130    b801000000
                          ret                                                              // 0x006db135    c3
                          nop                                                              // 0x006db136    90

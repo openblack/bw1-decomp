@@ -386,7 +386,7 @@ void __cdecl LoadAllAnimations__Fv(void)
     asm("pop                ebp");                                            // 0x00550383    5d
     asm("add                esp, 0x000000a0");                                // 0x00550384    81c4a0000000
     asm("ret");                                                               // 0x0055038a    c3
-    asm("call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9");                           // 0x0055038b    e8e914ebff
+    asm("call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9");                           // 0x0055038b    e8e914ebff
     __builtin_unreachable();
 }
 
@@ -711,7 +711,7 @@ void __fastcall Dump__5GGameFv(struct Base* this)
     asm("LAB__addr_0x00550786:");
     asm("push               esi");                                            // 0x00550786    56
     asm("mov.s              ecx, edi");                                       // 0x00550787    8bcf
-    asm("call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z");           // 0x00550789    e822020000
+    asm("call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z");           // 0x00550789    e822020000
     asm("mov                edx, dword ptr [eax]");                           // 0x0055078e    8b10
     asm("mov.s              ecx, eax");                                       // 0x00550790    8bc8
     asm("call               dword ptr [edx + 0x18]");                         // 0x00550792    ff5218
@@ -989,7 +989,7 @@ struct GPlayer* __fastcall GetPlayerFromReal__5GGameFUl(struct GGame* this, cons
     asm("shl                eax, 5");                                         // 0x00550a01    c1e005
     asm("{disp8} lea        eax, dword ptr [eax + ecx * 0x1 + 0x18]");        // 0x00550a04    8d440818
     asm("ret                0x0004");                                         // 0x00550a08    c20400
-    asm("call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9");                           // 0x00550a0b    e8690eebff
+    asm("call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9");                           // 0x00550a0b    e8690eebff
     __builtin_unreachable();
 }
 

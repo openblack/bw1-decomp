@@ -152,7 +152,7 @@ void __fastcall CallVirtualFunctionsForCreation__15TownDesireFlagsFRC9MapCoords(
 // win1.41 0055dab0 mac 1055c030 TownDesireFlags::IsEffectReceiver(EffectValues *)
 uint32_t __fastcall IsEffectReceiver__15TownDesireFlagsFP12EffectValues(struct Object* this, const void* edx, struct EffectValues* param_1) asm("?IsEffectReceiver@TownDesireFlags@@UAEIPAVEffectValues@@@Z");
 // win1.41 00746a10 mac 1055dae0 TownDesireFlags::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__15TownDesireFlagsFv(struct Object* this) asm("?InteractsWithPhysicsObjects@TownDesireFlags@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__15TownDesireFlagsFv(struct Object* this) asm("?InteractsWithPhysicsObjects@TownDesireFlags@@UAEIXZ");
 // win1.41 00746de0 mac 1055d7e0 TownDesireFlags::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__15TownDesireFlagsFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@TownDesireFlags@@UAE_NPAVCreature@@@Z");
 // win1.41 0055da90 mac 1055bfa0 TownDesireFlags::SaveObject(LHOSFile &, MapCoords const &)

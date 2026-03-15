@@ -162,7 +162,7 @@ bool __fastcall IsResourceStore__12PotStructureF13RESOURCE_TYPE(struct Object* t
 // win1.41 0066d480 mac inlined PotStructure::SetSize(void)
 void __fastcall SetSize__12PotStructureFv(struct Pot* this) asm("?SetSize@PotStructure@@UAEXXZ");
 // win1.41 0066da00 mac 10077bc0 PotStructure::IsPartOfStructure(void)
-bool __fastcall IsPartOfStructure__12PotStructureFv(struct Pot* this) asm("?IsPartOfStructure@PotStructure@@UAE_NXZ");
+bool __fastcall IsPartOfStructure__12PotStructureFv(struct Pot* this) asm("?IsPartOfStructure@PotStructure@@UAEIXZ");
 // win1.41 0055d530 mac inlined PotStructure::SetSpeedUp(int)
 void __fastcall SetSpeedUp__12PotStructureFi(struct Pot* this, const void* edx, int param_1) asm("?SetSpeedUp@PotStructure@@UAEXH@Z");
 // win1.41 0055d630 mac 10116020 PotStructure::SetMultiMapFixed(MultiMapFixed *)

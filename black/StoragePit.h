@@ -241,7 +241,7 @@ void __fastcall SetPoisoned__10StoragePitFi(struct Object* this, const void* edx
 // win1.41 00733730 mac 10151d80 StoragePit::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__10StoragePitFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@StoragePit@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00733550 mac inlined StoragePit::IsPoisonedResource(void)
-bool __fastcall IsPoisonedResource__10StoragePitFv(struct MultiMapFixed* this) asm("?IsPoisonedResource@StoragePit@@UAE_NXZ");
+bool __fastcall IsPoisonedResource__10StoragePitFv(struct MultiMapFixed* this) asm("?IsPoisonedResource@StoragePit@@UAEIXZ");
 // win1.41 00733400 mac 10002840 StoragePit::GetResourceNearestEdge(RESOURCE_TYPE, Object *, int)
 struct MapCoords* __fastcall GetResourceNearestEdge__10StoragePitF13RESOURCE_TYPEP6Objecti(struct MultiMapFixed* this, const void* edx, struct MapCoords* param_1, enum RESOURCE_TYPE param_2, struct Object* param_3, int param_4) asm("?GetResourceNearestEdge@StoragePit@@UAEPAUMapCoords@@PAU2@W4RESOURCE_TYPE@@PAVObject@@H@Z");
 // win1.41 00733260 mac 101526e0 StoragePit::CalulateAmountOverMaximum(RESOURCE_TYPE)
@@ -257,7 +257,7 @@ void __fastcall StopBeingFunctional__10StoragePitFP7GPlayer(struct Abode* this, 
 // win1.41 007339d0 mac 10151670 StoragePit::RestartBeingFunctional(void)
 void __fastcall RestartBeingFunctional__10StoragePitFv(struct Abode* this) asm("?RestartBeingFunctional@StoragePit@@UAEXXZ");
 // win1.41 0055cce0 mac 101513e0 StoragePit::CausesTownEmergencyIfDamaged(void)
-bool __fastcall CausesTownEmergencyIfDamaged__10StoragePitFv(struct Abode* this) asm("?CausesTownEmergencyIfDamaged@StoragePit@@UAE_NXZ");
+bool __fastcall CausesTownEmergencyIfDamaged__10StoragePitFv(struct Abode* this) asm("?CausesTownEmergencyIfDamaged@StoragePit@@UAEIXZ");
 
 #endif // __cplusplus
 

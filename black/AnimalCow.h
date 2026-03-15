@@ -85,7 +85,7 @@ uint32_t __fastcall GetSaveType__3CowFv(struct GameThing* this) asm("?GetSaveTyp
 // win1.41 0041d110 mac 1012e4c0 Cow::IsCow(Creature *)
 uint32_t __fastcall IsCow__3CowFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsCow@Cow@@UAEIPAVCreature@@@Z");
 // win1.41 0041d1b0 mac 1000e870 Cow::DecideWhatToDo(void)
-bool __fastcall DecideWhatToDo__3CowFv(struct Living* this) asm("?DecideWhatToDo@Cow@@UAE_NXZ");
+bool __fastcall DecideWhatToDo__3CowFv(struct Living* this) asm("?DecideWhatToDo@Cow@@UAEIXZ");
 
 #endif // __cplusplus
 

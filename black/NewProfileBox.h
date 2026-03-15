@@ -65,7 +65,7 @@ void __fastcall Init__13NewProfileBoxFUlUlPFiP8SetupBoxP12SetupControlii_v(struc
 // win1.41 0053d150 mac 105c39d0 NewProfileBox::Destroy(void)
 void __fastcall Destroy__13NewProfileBoxFv(struct DialogBoxBase* this) asm("?Destroy@NewProfileBox@@UAEXXZ");
 // win1.41 0053bd10 mac 105c5f90 NewProfileBox::CanESCOut(void)
-bool __fastcall CanESCOut__13NewProfileBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@NewProfileBox@@UAE_NXZ");
+bool __fastcall CanESCOut__13NewProfileBoxFv(struct DialogBoxBase* this) asm("?CanESCOut@NewProfileBox@@UAEIXZ");
 // win1.41 0053d160 mac 105c3890 NewProfileBox::InitControls(void)
 void __fastcall InitControls__13NewProfileBoxFv(struct DialogBoxBase* this) asm("?InitControls@NewProfileBox@@UAEXXZ");
 

@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?SetIdentity@LHMatrix@@QAEXXZ
+.extern ?SetIdentityMatrix@LHMatrix@@QAEXXZ
 .extern _jmp_addr_0x005f04c0
 .extern ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ
 .extern ?InitialisePhysicsFromHand@Object@@UAEIPAULHPoint@@0PAVGInterfaceStatus@@PAV1@H@Z
@@ -237,7 +237,7 @@ _globl_ct_0x005efd50:    {disp32} mov       cl, byte ptr [_DAT_00fac934]        
                          pop                esi                                      // 0x005eff26    5e
                          pop                ebx                                      // 0x005eff27    5b
                          ret                0x0018                                   // 0x005eff28    c21800
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                     // 0x005eff2b    e8c918e1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                     // 0x005eff2b    e8c918e1ff
 ?GetPhysicsConstantsType@Villager@@UAEIXZ:
                          mov                eax, 0x00000007                          // 0x005eff30    b807000000
                          ret                                                         // 0x005eff35    c3
@@ -333,7 +333,7 @@ _globl_ct_0x005efd50:    {disp32} mov       cl, byte ptr [_DAT_00fac934]        
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1ba04]        // 0x005f005c    d80d044a8c00
                          {disp8} fstp       dword ptr [esp + 0x54]                   // 0x005f0062    d95c2454
                          {disp8} fstp       dword ptr [esp + 0x14]                   // 0x005f0066    d95c2414
-                         call               ?SetIdentity@LHMatrix@@QAEXXZ            // 0x005f006a    e89134e1ff
+                         call               ?SetIdentityMatrix@LHMatrix@@QAEXXZ            // 0x005f006a    e89134e1ff
                          {disp32} fld       qword ptr [rdata_bytes + 0x1eb48]        // 0x005f006f    dd05487b8c00
                          {disp32} mov       eax, dword ptr [esi + 0x00000154]        // 0x005f0075    8b8654010000
                          fcos                                                        // 0x005f007b    d9ff

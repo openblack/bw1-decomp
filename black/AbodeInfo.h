@@ -182,9 +182,9 @@ extern const struct GMultiMapFixedInfoVftable __vt__10GAbodeInfo asm("??_7GAbode
 // Static methods
 
 // win1.41 00405a70 mac 101ca0c0 GAbodeInfo::GetInfoFromText(char *)
-int __cdecl GetInfoFromText__10GAbodeInfoFPc(const char* text) asm("?GetInfoFromText@GAbodeInfo@@SAHPAD@Z");
+int __cdecl GetInfoFromText__10GAbodeInfoFPc(const char* text) asm("?GetInfoFromText@GAbodeInfo@@SAHPBD@Z");
 // win1.41 00405b30 mac 1006f680 GAbodeInfo::Find(TRIBE_TYPE, ABODE_NUMBER)
-struct GAbodeInfo* __cdecl Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER(enum TRIBE_TYPE tribe_type, enum ABODE_NUMBER abode_number) asm("?Find@GAbodeInfo@@SAPAV1@W4TRIBE_TYPE@@W4ABODE_NUMBER@@@Z");
+struct GAbodeInfo* __cdecl Find__10GAbodeInfoF10TRIBE_TYPE12ABODE_NUMBER(enum TRIBE_TYPE tribe_type, enum ABODE_NUMBER abode_number) asm("?Find@GAbodeInfo@@SAPAU1@W4TRIBE_TYPE@@W4ABODE_NUMBER@@@Z");
 
 // Global Static variable lifetime methods
 
@@ -200,7 +200,7 @@ void __cdecl dynamic_atexit_destructor_for_AbodeInfos__10GAbodeInfoFv(void) asm(
 // Non-virtual methods
 
 // win1.41 00404b10 mac 1015a260 GAbodeInfo::IsOkToCreateAtPos(MapCoords const &, float, float, Town *) const
-bool __fastcall IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town(const struct GAbodeInfo* this, const void* edx, const struct MapCoords* coords, float param_2, float param_3, struct Town* town) asm("?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z");
+bool __fastcall IsOkToCreateAtPos__10GAbodeInfoCFRC9MapCoordsffP4Town(const struct GAbodeInfo* this, const void* edx, const struct MapCoords* coords, float param_2, float param_3, struct Town* town) asm("?IsOkToCreateAtPos@GAbodeInfo@@QBEIABUMapCoords@@MMPAVTown@@@Z");
 // win1.41 00405a60 mac inlined GAbodeInfo::GetDescription(void)
 const char* __fastcall GetDescription__10GAbodeInfoFv(struct GAbodeInfo* this) asm("?GetDescription@GAbodeInfo@@QAEPBDXZ");
 // win1.41 0042e520 mac inlined GAbodeInfo::LoadBinary(LHFile *)
@@ -209,9 +209,9 @@ void __fastcall LoadBinary__10GAbodeInfoFP6LHFile(struct GAbodeInfo* this, const
 // Override methods
 
 // win1.41 00401320 mac 101ca240 GAbodeInfo::~GAbodeInfo(unsigned int)
-void __fastcall __dt__10GAbodeInfoFUi(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGAbodeInfo@@UAE@XZ");
+void __fastcall __dt__10GAbodeInfoFUi(struct Base* this, const void* edx, uint32_t param_1) asm("??_GGAbodeInfo@@UAEPAXI@Z");
 // win1.41 00401270 mac 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
-struct GBaseInfo* __fastcall GetBaseInfo__10GAbodeInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GAbodeInfo@@UAEPAVGBaseInfo@@AAK@Z");
+struct GBaseInfo* __fastcall GetBaseInfo__10GAbodeInfoFRUl(struct GBaseInfo* this, const void* edx, uint32_t* param_1) asm("?GetBaseInfo@GAbodeInfo@@UAEPAVGBaseInfo@@AAI@Z");
 // win1.41 00401240 mac 1019a370 GAbodeInfo::GetMesh() const
 uint32_t __fastcall GetMesh__10GAbodeInfoCFv(const struct GObjectInfo* this) asm("?GetMesh@GAbodeInfo@@UBE?AW4MeshId@@XZ");
 // win1.41 00401250 mac 106fde70 GAbodeInfo::GetAbodeType() const

@@ -179,7 +179,7 @@ uint32_t __fastcall AddFootpath__6ForestFP9GFootpath(struct GameThing* this, con
 // win1.41 0053acc0 mac 100f0830 Forest::RemoveFootpath(GFootpath *)
 uint32_t __fastcall RemoveFootpath__6ForestFP9GFootpath(struct GameThing* this, const void* edx, struct GFootpath* param_1) asm("?RemoveFootpath@Forest@@UAEIPAVGFootpath@@@Z");
 // win1.41 00539a60 mac 100ef4a0 Forest::IsFunctional(void)
-bool __fastcall IsFunctional__6ForestFv(struct GameThing* this) asm("?IsFunctional@Forest@@UAE_NXZ");
+bool __fastcall IsFunctional__6ForestFv(struct GameThing* this) asm("?IsFunctional@Forest@@UAEIXZ");
 // win1.41 00539b10 mac 100ef7d0 Forest::GetDebugText(void)
 char* __fastcall GetDebugText__6ForestFv(struct GameThing* this) asm("?GetDebugText@Forest@@UAEPADXZ");
 // win1.41 0053b070 mac 100ef950 Forest::Load(GameOSFile &)
@@ -193,7 +193,7 @@ uint32_t __fastcall GetCreatureBeliefType__6ForestFv(struct GameThingWithPos* th
 // win1.41 00539a90 mac 100ef5c0 Forest::GetCreatureBeliefListType(void)
 uint32_t __fastcall GetCreatureBeliefListType__6ForestFv(struct GameThingWithPos* this) asm("?GetCreatureBeliefListType@Forest@@UAEIXZ");
 // win1.41 00539ab0 mac 100ef650 Forest::IsActivityObjectWhichAngerAppliesTo(Creature *)
-bool __fastcall IsActivityObjectWhichAngerAppliesTo__6ForestFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Forest@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsActivityObjectWhichAngerAppliesTo__6ForestFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Forest@@UAEIPAVCreature@@@Z");
 // win1.41 00539aa0 mac 100ef600 Forest::IsSuitableForCreatureActivity(void)
 uint32_t __fastcall IsSuitableForCreatureActivity__6ForestFv(struct GameThingWithPos* this) asm("?IsSuitableForCreatureActivity@Forest@@UAEIXZ");
 // win1.41 00539ac0 mac 100ef6b0 Forest::GetText(void)

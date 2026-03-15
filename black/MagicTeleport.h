@@ -173,9 +173,9 @@ uint32_t __fastcall InterfaceSetInMagicHand__13MagicTeleportFP16GInterfaceStatus
 // win1.41 005fce00 mac 103af190 MagicTeleport::IsEffectReceiver(EffectValues *)
 uint32_t __fastcall IsEffectReceiver__13MagicTeleportFP12EffectValues(struct Object* this, const void* edx, struct EffectValues* param_1) asm("?IsEffectReceiver@MagicTeleport@@UAEIPAVEffectValues@@@Z");
 // win1.41 005fcde0 mac 103af230 MagicTeleport::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__13MagicTeleportFv(struct Object* this) asm("?InteractsWithPhysicsObjects@MagicTeleport@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__13MagicTeleportFv(struct Object* this) asm("?InteractsWithPhysicsObjects@MagicTeleport@@UAEIXZ");
 // win1.41 005fcdf0 mac 103af1e0 MagicTeleport::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__13MagicTeleportFv(struct Object* this) asm("?CanBecomeAPhysicsObject@MagicTeleport@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__13MagicTeleportFv(struct Object* this) asm("?CanBecomeAPhysicsObject@MagicTeleport@@UAEIXZ");
 // win1.41 005fc4a0 mac 103b04c0 MagicTeleport::IsSolidToNewAbode(void)
 uint32_t __fastcall IsSolidToNewAbode__13MagicTeleportFv(struct Object* this) asm("?IsSolidToNewAbode@MagicTeleport@@UAEIXZ");
 

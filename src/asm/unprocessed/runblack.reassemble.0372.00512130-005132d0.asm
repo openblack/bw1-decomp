@@ -40,7 +40,7 @@
 .extern _jmp_addr_0x0053f3e0
 .extern _jmp_addr_0x0053f540
 .extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
-.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern _jmp_addr_0x00550a80
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005c4800
@@ -155,7 +155,7 @@ start_0x00512130_0x005132d0:
                          and               eax, 0x1f                                            // 0x00512243    83e01f
                          push              eax                                                  // 0x00512246    50
                          mov.s             ecx, ebp                                             // 0x00512247    8bcd
-                         call              ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z                 // 0x00512249    e862e70300
+                         call              ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z                 // 0x00512249    e862e70300
                          add               eax, 0x000008e4                                      // 0x0051224e    05e4080000
                          push              eax                                                  // 0x00512253    50
                          push              ebx                                                  // 0x00512254    53
@@ -168,7 +168,7 @@ start_0x00512130_0x005132d0:
                          and               eax, 0x1f                                            // 0x00512266    83e01f
                          push              eax                                                  // 0x00512269    50
                          mov.s             ecx, ebp                                             // 0x0051226a    8bcd
-                         call              ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z                 // 0x0051226c    e83fe70300
+                         call              ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z                 // 0x0051226c    e83fe70300
                          add               eax, 0x000008e4                                      // 0x00512271    05e4080000
                          push              eax                                                  // 0x00512276    50
                          push              ebx                                                  // 0x00512277    53

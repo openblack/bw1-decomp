@@ -175,7 +175,7 @@ uint32_t __fastcall InterfaceValidToTap__6RewardFP16GInterfaceStatus(struct Obje
 // win1.41 006e5d00 mac 1013a480 Reward::InterfaceTap(GInterfaceStatus *)
 uint32_t __fastcall InterfaceTap__6RewardFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?InterfaceTap@Reward@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 006e6980 mac 10139800 Reward::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__6RewardFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Reward@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__6RewardFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Reward@@UAEIXZ");
 
 DECLARE_LH_LINKED_LIST(Reward);
 

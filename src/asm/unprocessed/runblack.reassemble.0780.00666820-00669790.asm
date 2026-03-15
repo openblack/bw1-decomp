@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x0052d240
 .extern ?GetForestCentreTree@Forest@@QAEPAVTree@@XZ
 .extern ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z
-.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern _jmp_addr_0x005dc8d0
 .extern @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
@@ -381,7 +381,7 @@ _globl_ct_0x00666ab0:    {disp32} jmp       .Lbl_addr_0x00666ac0                
                          {disp32} lea       ebx, dword ptr [edi + 0x000009fc]        // 0x00666b13    8d9ffc090000
 .Lbl_addr_0x00666b19:    {disp32} mov       ecx, dword ptr [_game]                   // 0x00666b19    8b0d5c19d000
                          push               esi                                      // 0x00666b1f    56
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z     // 0x00666b20    e88b9eeeff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z     // 0x00666b20    e88b9eeeff
                          {disp32} mov       eax, dword ptr [eax + 0x000008e0]        // 0x00666b25    8b80e0080000
                          cmp                eax, 0x01                                // 0x00666b2b    83f801
                          {disp8} je         .Lbl_addr_0x00666b39                     // 0x00666b2e    7409
@@ -442,7 +442,7 @@ _globl_ct_0x00666ab0:    {disp32} jmp       .Lbl_addr_0x00666ac0                
                          {disp8} fstp       dword ptr [esp + 0x10]                   // 0x00666bf2    d95c2410
                          {disp32} mov       ecx, dword ptr [_game]                   // 0x00666bf6    8b0d5c19d000
                          push               esi                                      // 0x00666bfc    56
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z     // 0x00666bfd    e8ae9deeff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z     // 0x00666bfd    e8ae9deeff
                          {disp8} mov        ecx, dword ptr [esp + 0x2c]              // 0x00666c02    8b4c242c
                          mov                dword ptr [ecx], eax                     // 0x00666c06    8901
                          {disp8} jmp        .Lbl_addr_0x00666c0c                     // 0x00666c08    eb02
@@ -2259,7 +2259,7 @@ _globl_ct_0x00666ab0:    {disp32} jmp       .Lbl_addr_0x00666ac0                
                          pop                ebx                                      // 0x00667fb4    5b
                          add                esp, 0x18                                // 0x00667fb5    83c418
                          ret                0x0004                                   // 0x00667fb8    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                     // 0x00667fbb    e83998d9ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                     // 0x00667fbb    e83998d9ff
                          sub                esp, 0x18                                // 0x00667fc0    83ec18
                          push               ebx                                      // 0x00667fc3    53
                          push               esi                                      // 0x00667fc4    56
@@ -2962,7 +2962,7 @@ _jmp_addr_0x00668650:    sub                esp, 0x10                           
                          pop                ebx                                      // 0x00668784    5b
                          add                esp, 0x10                                // 0x00668785    83c410
                          ret                0x0004                                   // 0x00668788    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                     // 0x0066878b    e86990d9ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                     // 0x0066878b    e86990d9ff
 _jmp_addr_0x00668790:    sub                esp, 0x0c                                // 0x00668790    83ec0c
                          push               ebx                                      // 0x00668793    53
                          push               esi                                      // 0x00668794    56
@@ -4270,7 +4270,7 @@ _jmp_addr_0x00668790:    sub                esp, 0x0c                           
 .Lbl_addr_0x00669571:    {disp32} fld       dword ptr [__real@4@00000000000000000000]              // 0x00669571    d90598a38a00
                          pop                ecx                                      // 0x00669577    59
                          ret                0x0004                                   // 0x00669578    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                     // 0x0066957b    e87982d9ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                     // 0x0066957b    e87982d9ff
 .Lbl_addr_0x00669580:    sub                esp, 0x30                                // 0x00669580    83ec30
                          push               ebx                                      // 0x00669583    53
                          push               esi                                      // 0x00669584    56

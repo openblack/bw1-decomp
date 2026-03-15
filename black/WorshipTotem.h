@@ -207,7 +207,7 @@ void __fastcall CallVirtualFunctionsForCreation__12WorshipTotemFRC9MapCoords(str
 // win1.41 007807d0 mac 105b7690 WorshipTotem::Get3DType(void)
 enum LH3DObject__ObjectType __fastcall Get3DType__12WorshipTotemFv(struct Object* this) asm("?Get3DType@WorshipTotem@@UAE?AW4LH3DObject__ObjectType@@XZ");
 // win1.41 00780790 mac 105b7570 WorshipTotem::IsSpellSeedReturnPoint( const(void))
-bool __fastcall IsSpellSeedReturnPoint__12WorshipTotemCFv(const struct Object* this) asm("?IsSpellSeedReturnPoint@WorshipTotem@@UBE_NXZ");
+bool __fastcall IsSpellSeedReturnPoint__12WorshipTotemCFv(const struct Object* this) asm("?IsSpellSeedReturnPoint@WorshipTotem@@UBEIXZ");
 // win1.41 007807a0 mac 105b75c0 WorshipTotem::IsEffectReceiver(EffectValues *)
 uint32_t __fastcall IsEffectReceiver__12WorshipTotemFP12EffectValues(struct Object* this, const void* edx, struct EffectValues* param_1) asm("?IsEffectReceiver@WorshipTotem@@UAEIPAVEffectValues@@@Z");
 

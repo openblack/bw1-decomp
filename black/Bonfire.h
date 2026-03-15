@@ -124,11 +124,11 @@ uint32_t __fastcall ValidForPlaceInHand__7BonfireFP16GInterfaceStatus(struct Obj
 // win1.41 00439780 mac 100b3ca0 Bonfire::InterfaceValidToTap(GInterfaceStatus *)
 uint32_t __fastcall InterfaceValidToTap__7BonfireFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?InterfaceValidToTap@Bonfire@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 004397b0 mac 100b3d80 Bonfire::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__7BonfireFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Bonfire@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__7BonfireFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Bonfire@@UAEIXZ");
 // win1.41 00439a80 mac 100b4750 Bonfire::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__7BonfireFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@Bonfire@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 004397a0 mac 100b3d40 Bonfire::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__7BonfireFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Bonfire@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__7BonfireFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Bonfire@@UAEIXZ");
 // win1.41 004398a0 mac 100b49b0 Bonfire::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__7BonfireFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@Bonfire@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 // win1.41 004397d0 mac 100b3e20 Bonfire::GetInHandImmersionTexture(void)

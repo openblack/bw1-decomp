@@ -638,17 +638,17 @@ struct Citadel* __fastcall GetCitadel__4TownFv(struct GameThingWithPos* this) as
 // win1.41 007391d0 mac 10559100 Town::GetOrigin(void)
 uint32_t __fastcall GetOrigin__4TownFv(struct GameThingWithPos* this) asm("?GetOrigin@Town@@UAEIXZ");
 // win1.41 00739250 mac inlined Town::IsTown_0(void)
-bool __fastcall IsTown_0__4TownFv(struct GameThingWithPos* this) asm("?IsTown@Town@@UAE_NXZ");
+bool __fastcall IsTown_0__4TownFv(struct GameThingWithPos* this) asm("?IsTown@Town@@UAEIXZ");
 // win1.41 00739220 mac inlined Town::IsTown_1(Creature *)
-bool __fastcall IsTown_1__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTown@Town@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsTown_1__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTown@Town@@UAEIPAVCreature@@@Z");
 // win1.41 004e47f0 mac 105e4b50 Town::IsActivityObjectWhichAngerAppliesTo(Creature *)
-bool __fastcall IsActivityObjectWhichAngerAppliesTo__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Town@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsActivityObjectWhichAngerAppliesTo__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Town@@UAEIPAVCreature@@@Z");
 // win1.41 00739230 mac 105592e0 Town::IsActivityObjectWhichCompassionAppliesTo(Creature *)
-bool __fastcall IsActivityObjectWhichCompassionAppliesTo__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichCompassionAppliesTo@Town@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsActivityObjectWhichCompassionAppliesTo__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichCompassionAppliesTo@Town@@UAEIPAVCreature@@@Z");
 // win1.41 00739240 mac 10559340 Town::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
-bool __fastcall IsActivityObjectWhichPlayfulnessAppliesTo__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichPlayfulnessAppliesTo@Town@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsActivityObjectWhichPlayfulnessAppliesTo__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichPlayfulnessAppliesTo@Town@@UAEIPAVCreature@@@Z");
 // win1.41 004e4750 mac 105e4c40 Town::IsTownBelongingToAnotherPlayer(Creature *)
-bool __fastcall IsTownBelongingToAnotherPlayer__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTownBelongingToAnotherPlayer@Town@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsTownBelongingToAnotherPlayer__4TownFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsTownBelongingToAnotherPlayer@Town@@UAEIPAVCreature@@@Z");
 // win1.41 00739260 mac 105593a0 Town::IsSuitableForCreatureActivity(void)
 uint32_t __fastcall IsSuitableForCreatureActivity__4TownFv(struct GameThingWithPos* this) asm("?IsSuitableForCreatureActivity@Town@@UAEIXZ");
 // win1.41 00739270 mac 105593f0 Town::CanBePlayedWithByCreature(Creature *)

@@ -118,13 +118,13 @@ void __fastcall CallVirtualFunctionsForCreation__9GraveyardFRC9MapCoords(struct 
 // win1.41 0055dfb0 mac 100f4400 Graveyard::Get3DType(void)
 enum LH3DObject__ObjectType __fastcall Get3DType__9GraveyardFv(struct Object* this) asm("?Get3DType@Graveyard@@UAE?AW4LH3DObject__ObjectType@@XZ");
 // win1.41 00595cd0 mac 100f4d60 Graveyard::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__9GraveyardFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Graveyard@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__9GraveyardFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Graveyard@@UAEIXZ");
 // win1.41 00595ce0 mac 100f4c10 Graveyard::DeleteDependancys(void)
 void __fastcall DeleteDependancys__9GraveyardFv(struct Abode* this) asm("?DeleteDependancys@Graveyard@@UAEXXZ");
 // win1.41 00595e00 mac 100f4870 Graveyard::MakeFunctional(void)
 void __fastcall MakeFunctional__9GraveyardFv(struct Abode* this) asm("?MakeFunctional@Graveyard@@UAEXXZ");
 // win1.41 0055dfc0 mac 100f4440 Graveyard::CanBeHiddenIn(void)
-bool __fastcall CanBeHiddenIn__9GraveyardFv(struct Abode* this) asm("?CanBeHiddenIn@Graveyard@@UAE_NXZ");
+bool __fastcall CanBeHiddenIn__9GraveyardFv(struct Abode* this) asm("?CanBeHiddenIn@Graveyard@@UAEIXZ");
 
 #endif // __cplusplus
 

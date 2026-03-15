@@ -135,7 +135,7 @@ void __fastcall Init__16DialogBoxOptionsFUlUlPFiP8SetupBoxP12SetupControlii_v(st
 // win1.41 00513da0 mac 102b50c0 DialogBoxOptions::Destroy(void)
 void __fastcall Destroy__16DialogBoxOptionsFv(struct DialogBoxBase* this) asm("?Destroy@DialogBoxOptions@@UAEXXZ");
 // win1.41 00513830 mac 102b5900 DialogBoxOptions::CanESCOut(void)
-bool __fastcall CanESCOut__16DialogBoxOptionsFv(struct DialogBoxBase* this) asm("?CanESCOut@DialogBoxOptions@@UAE_NXZ");
+bool __fastcall CanESCOut__16DialogBoxOptionsFv(struct DialogBoxBase* this) asm("?CanESCOut@DialogBoxOptions@@UAEIXZ");
 // win1.41 00513dc0 mac 102b4ff0 DialogBoxOptions::InitControls(void)
 void __fastcall InitControls__16DialogBoxOptionsFv(struct DialogBoxBase* this) asm("?InitControls@DialogBoxOptions@@UAEXXZ");
 

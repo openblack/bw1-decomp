@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
+.extern ?Translation@LHMatrix@@QAEXABULHPoint@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
@@ -68,7 +68,7 @@
 .globl _globl_ct_0x00609760
 .globl _globl_ct_0x00609790
 .globl _globl_ct_0x006097c0
-.globl ?CanBecomeAPhysicsObject@MobileStatic@@UAE_NXZ
+.globl ?CanBecomeAPhysicsObject@MobileStatic@@UAEIXZ
 .globl ?CallVirtualFunctionsForCreation@GBaseOnly@@UAEXABUMapCoords@@@Z
 .globl ?Draw@GBaseOnly@@UAEXXZ
 .globl ?ToBeDeleted@GBaseOnly@@UAEXH@Z
@@ -79,7 +79,7 @@
 
 start_0x00609320_0x0060a010:
 // Snippet: asm, [0x00609320, 0x00609ff3)
-?CanBecomeAPhysicsObject@MobileStatic@@UAE_NXZ:
+?CanBecomeAPhysicsObject@MobileStatic@@UAEIXZ:
                          mov               eax, 0x00000001                               // 0x00609320    b801000000
                          ret                                                             // 0x00609325    c3
                          nop                                                             // 0x00609326    90
@@ -198,7 +198,7 @@ _jmp_addr_0x00609340:    push              esi                                  
                          {disp8} fild      dword ptr [edi + 0x04]                        // 0x00609433    db4704
                          {disp32} fmul     dword ptr [_rdata_float_coord_to_point]       // 0x00609436    d80da4a38a00
                          {disp8} fstp      dword ptr [esp + 0x14]                        // 0x0060943c    d95c2414
-                         call              ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z     // 0x00609440    e8eba0dfff
+                         call              ?Translation@LHMatrix@@QAEXABULHPoint@@@Z     // 0x00609440    e8eba0dfff
                          {disp8} mov       dword ptr [esi + 0x44], 0x3f800000            // 0x00609445    c746440000803f
                          {disp8} mov       dword ptr [esi + 0x48], 0x00000000            // 0x0060944c    c7464800000000
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x378e58]        // 0x00609453    8b0d58eed300
@@ -266,7 +266,7 @@ _jmp_addr_0x006094e0:    push              esi                                  
                          {disp8} jne       .Lbl_addr_0x006094eb                          // 0x006094f7    75f2
 .Lbl_addr_0x006094f9:    pop               esi                                           // 0x006094f9    5e
                          ret                                                             // 0x006094fa    c3
-                         call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x006094fb    e8f982dfff
+                         call              ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x006094fb    e8f982dfff
                          push              esi                                           // 0x00609500    56
                          {disp32} mov      esi, dword ptr [data_bytes + 0x378e54]        // 0x00609501    8b3554eed300
                          test              esi, esi                                      // 0x00609507    85f6
@@ -324,7 +324,7 @@ _jmp_addr_0x006094e0:    push              esi                                  
                          {disp8} fild      dword ptr [esi + 0x04]                        // 0x00609582    db4604
                          {disp32} fmul     dword ptr [_rdata_float_coord_to_point]       // 0x00609585    d80da4a38a00
                          {disp8} fstp      dword ptr [esp + 0x18]                        // 0x0060958b    d95c2418
-                         call              ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z     // 0x0060958f    e89c9fdfff
+                         call              ?Translation@LHMatrix@@QAEXABULHPoint@@@Z     // 0x0060958f    e89c9fdfff
                          {disp8} mov       dword ptr [ebx + 0x44], 0x3f800000            // 0x00609594    c743440000803f
                          {disp8} mov       dword ptr [ebx + 0x48], 0x00000000            // 0x0060959b    c7434800000000
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x378e58]        // 0x006095a2    8b0d58eed300

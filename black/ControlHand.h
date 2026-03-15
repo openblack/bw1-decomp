@@ -509,7 +509,7 @@ void __fastcall UpdateTime__5CHandFl(struct Morphable* this, const void* edx, in
 // win1.41 0046c550 mac 10029b00 CHand::PrepareForDrawing(void)
 void __fastcall PrepareForDrawing__5CHandFv(struct Morphable* this) asm("?PrepareForDrawing@CHand@@UAEXXZ");
 // win1.41 0046d0f0 mac 101c7f70 CHand::AddForDrawing(void)
-bool __fastcall AddForDrawing__5CHandFv(struct Morphable* this) asm("?AddForDrawing@CHand@@UAE_NXZ");
+bool __fastcall AddForDrawing__5CHandFv(struct Morphable* this) asm("?AddForDrawing@CHand@@UAEIXZ");
 
 #endif // __cplusplus
 

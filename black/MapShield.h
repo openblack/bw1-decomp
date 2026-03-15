@@ -165,7 +165,7 @@ uint32_t __fastcall ValidForPlaceInHand__9MapShieldFP16GInterfaceStatus(struct O
 // win1.41 0072c1e0 mac 10531620 MapShield::ShouldPhysicsRaiseObjectUntilNotIntersectingThis(Object *)
 void __fastcall ShouldPhysicsRaiseObjectUntilNotIntersectingThis__9MapShieldFP6Object(struct Object* this, const void* edx, struct Object* param_1) asm("?ShouldPhysicsRaiseObjectUntilNotIntersectingThis@MapShield@@UAEXPAVObject@@@Z");
 // win1.41 0072c1d0 mac 10531680 MapShield::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__9MapShieldFv(struct Object* this) asm("?CanBecomeAPhysicsObject@MapShield@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__9MapShieldFv(struct Object* this) asm("?CanBecomeAPhysicsObject@MapShield@@UAEIXZ");
 // win1.41 0072c170 mac 10531740 MapShield::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__9MapShieldFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@MapShield@@UAE_NPAVCreature@@@Z");
 // win1.41 0072c020 mac 10534060 MapShield::SaveObject(LHOSFile &, MapCoords const &)

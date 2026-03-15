@@ -393,7 +393,7 @@ float __fastcall ApplyWaterSpell__5FieldFP10SpellWater(struct Object* this, cons
 // win1.41 00528010 mac 100d2c60 Field::GetResourceType(void)
 enum RESOURCE_TYPE __fastcall GetResourceType__5FieldFv(struct Object* this) asm("?GetResourceType@Field@@UAE?AW4RESOURCE_TYPE@@XZ");
 // win1.41 00528050 mac 100d64c0 Field::IsLockedInInteract(void)
-bool __fastcall IsLockedInInteract__5FieldFv(struct Object* this) asm("?IsLockedInInteract@Field@@UAE_NXZ");
+bool __fastcall IsLockedInInteract__5FieldFv(struct Object* this) asm("?IsLockedInInteract@Field@@UAEIXZ");
 // win1.41 00529290 mac inlined Field::IsTouching_2( const(MapCoords *))
 bool __fastcall IsTouching_2__5FieldCFP9MapCoords(const struct Object* this, const void* edx, struct MapCoords* param_1) asm("?IsTouching@Field@@UBE_NPAUMapCoords@@@Z");
 // win1.41 005299e0 mac 100d2a40 Field::ValidForLockedSelectProcess(GInterfaceStatus *)
@@ -417,9 +417,9 @@ uint32_t __fastcall IsEffectReceiver__5FieldFP12EffectValues(struct Object* this
 // win1.41 00529ff0 mac inlined Field::CanBeDestroyedBySpell_1(Spell *)
 uint32_t __fastcall CanBeDestroyedBySpell_1__5FieldFP5Spell(struct Object* this, const void* edx, struct Spell* param_1) asm("?CanBeDestroyedBySpell@Field@@UAEIPAVSpell@@@Z");
 // win1.41 00528020 mac 100d6410 Field::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__5FieldFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Field@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__5FieldFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Field@@UAEIXZ");
 // win1.41 00528030 mac 100d6450 Field::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__5FieldFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Field@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__5FieldFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Field@@UAEIXZ");
 // win1.41 005280c0 mac 100d5880 Field::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__5FieldFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@Field@@UAE_NPAVCreature@@@Z");
 // win1.41 00529730 mac 100d3050 Field::ProcessInInteract(GInterfaceStatus *)

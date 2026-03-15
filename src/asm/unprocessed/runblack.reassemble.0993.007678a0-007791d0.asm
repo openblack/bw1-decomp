@@ -8,13 +8,13 @@
 .extern ??0Abode@@QAE@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z
 .extern ?ToBeDeleted@Abode@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@Abode@@UAEXABUMapCoords@@@Z
-.extern ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z
+.extern ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z
 .extern ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ
 .extern ?GetSizeUV2Data_dup1@LH3DMesh@@QAEIXZ
 .extern ?GetSizeNameData_dup1@LH3DMesh@@QAEIXZ
 .extern ?GetSizeEMetricsData_dup1@LH3DMesh@@QAEIXZ
 .extern ?DeleteDependancys@Abode@@UAEXXZ
-.extern ?Built@Abode@@UAE_NXZ
+.extern ?Built@Abode@@UAEIXZ
 .extern ?MakeFunctional@Abode@@UAEXXZ
 .extern ?Save@Abode@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@Abode@@UAEIAAVGameOSFile@@@Z
@@ -59,7 +59,7 @@
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThing@@UAEXH@Z
 .extern ?Save@GameThing@@UAEIAAVGameOSFile@@@Z
-.extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@GameThing@@UAEIAAVGameOSFile@@@Z
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
@@ -334,7 +334,7 @@
 .globl ?Draw@Fragment@@UAEXXZ
 .globl ?GetPhysicsConstantsType@Fragment@@UAEIXZ
 .globl ?SetUpPhysOb@Fragment@@UAEXPAUPhysOb@@@Z
-.globl ?InteractsWithPhysicsObjects@Fragment@@UAE_NXZ
+.globl ?InteractsWithPhysicsObjects@Fragment@@UAEIXZ
 .globl ?ReactToPhysicsImpact@Fragment@@UAEXPAVPhysicsObject@@_N@Z
 .globl ?EndPhysics@Fragment@@UAEXPAVPhysicsObject@@_N@Z
 .globl ?Save@Fragment@@UAEIAAVGameOSFile@@@Z
@@ -342,7 +342,7 @@
 .globl ?ResolveLoad@Fragment@@UAEXXZ
 .globl ?GetScriptObjectType@Fragment@@UAEIXZ
 .globl ?GetCollideSoundType@Fragment@@UAE?AW4SOUND_COLLISION_TYPE@@XZ
-.globl ?ShouldFootpathsGoRound@Fragment@@UAE_NXZ
+.globl ?ShouldFootpathsGoRound@Fragment@@UAEIXZ
 .globl ?CreatureMustAvoid@Fragment@@UAE_NPAVCreature@@@Z
 .globl ?GetSaveType@VortexSave@@UAEIXZ
 .globl ??_GVortexSave@@UAEPAXI@Z
@@ -378,7 +378,7 @@
 .globl ?Load@Whale@@UAEIAAVGameOSFile@@@Z
 .globl ?ResolveLoad@Whale@@UAEXXZ
 .globl ?ToBeDeleted@Wonder@@UAEXH@Z
-.globl ?Built@Wonder@@UAE_NXZ
+.globl ?Built@Wonder@@UAEIXZ
 .globl ?RemoveFromPlayer@Wonder@@UAEXXZ
 .globl ?AddToPlayer@Wonder@@UAEXXZ
 .globl ?SetPower@Wonder@@UAEXM@Z
@@ -3857,7 +3857,7 @@ _jmp_addr_0x0076eaf0:    push               esi                                 
                          nop                                                                // 0x0076f3cd    90
                          nop                                                                // 0x0076f3ce    90
                          nop                                                                // 0x0076f3cf    90
-?InteractsWithPhysicsObjects@Fragment@@UAE_NXZ:
+?InteractsWithPhysicsObjects@Fragment@@UAEIXZ:
                          xor.s              al, al                                          // 0x0076f3d0    32c0
                          ret                                                                // 0x0076f3d2    c3
                          nop                                                                // 0x0076f3d3    90
@@ -4252,7 +4252,7 @@ _jmp_addr_0x0076eaf0:    push               esi                                 
                          nop                                                                // 0x0076f7dd    90
                          nop                                                                // 0x0076f7de    90
                          nop                                                                // 0x0076f7df    90
-?ShouldFootpathsGoRound@Fragment@@UAE_NXZ:
+?ShouldFootpathsGoRound@Fragment@@UAEIXZ:
                          xor.s              eax, eax                                        // 0x0076f7e0    33c0
                          ret                                                                // 0x0076f7e2    c3
                          nop                                                                // 0x0076f7e3    90
@@ -4839,7 +4839,7 @@ _jmp_addr_0x0076fa50:    sub                esp, 0x000003e8                     
                          mov.s              edi, ecx                                        // 0x0076fdcf    8bf9
                          push               ebx                                             // 0x0076fdd1    53
                          {disp8} mov        dword ptr [esp + 0x10], edi                     // 0x0076fdd2    897c2410
-                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z         // 0x0076fdd6    e815ffdfff
+                         call               ?Load@GameThing@@UAEIAAVGameOSFile@@@Z         // 0x0076fdd6    e815ffdfff
                          test               eax, eax                                        // 0x0076fddb    85c0
                          {disp32} je        .Lbl_addr_0x0076ffcc                            // 0x0076fddd    0f84e9010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]          // 0x0076fde3    a194c9be00
@@ -9928,7 +9928,7 @@ _jmp_addr_0x007732d0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          mov.s              ebp, ecx                                        // 0x007736e9    8be9
                          push               esi                                             // 0x007736eb    56
                          {disp8} mov        dword ptr [esp + 0x0c], ebp                     // 0x007736ec    896c240c
-                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z         // 0x007736f0    e8fbc5dfff
+                         call               ?Load@GameThing@@UAEIAAVGameOSFile@@@Z         // 0x007736f0    e8fbc5dfff
                          test               eax, eax                                        // 0x007736f5    85c0
                          {disp32} je        .Lbl_addr_0x00773abb                            // 0x007736f7    0f84be030000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]          // 0x007736fd    a194c9be00
@@ -12170,7 +12170,7 @@ _jmp_addr_0x00774c50:    push               esi                                 
                          call               _jmp_addr_0x00519320                            // 0x00774dae    e86d45daff
                          {disp8} lea        edx, dword ptr [esp + 0x18]                     // 0x00774db3    8d542418
                          mov.s              ecx, edi                                        // 0x00774db7    8bcf
-                         call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z        // 0x00774db9    e8b2e7c8ff
+                         call               ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z        // 0x00774db9    e8b2e7c8ff
                          mov                edi, 0x40000000                                 // 0x00774dbe    bf00000040
 .Lbl_addr_0x00774dc3:    {disp8} mov        eax, dword ptr [esp + 0x10]                     // 0x00774dc3    8b442410
                          {disp8} mov        dword ptr [ebx + 0x44], edi                     // 0x00774dc7    897b44
@@ -18405,11 +18405,11 @@ _globl_ct_0x00778dd0:    {disp32} jmp       .Lbl_addr_0x00778de0                
                          nop                                                                // 0x00778f2d    90
                          nop                                                                // 0x00778f2e    90
                          nop                                                                // 0x00778f2f    90
-?Built@Wonder@@UAE_NXZ:
+?Built@Wonder@@UAEIXZ:
                          push               esi                                             // 0x00778f30    56
                          push               edi                                             // 0x00778f31    57
                          mov.s              esi, ecx                                        // 0x00778f32    8bf1
-                         call               ?Built@Abode@@UAE_NXZ                           // 0x00778f34    e8e7b7c8ff
+                         call               ?Built@Abode@@UAEIXZ                           // 0x00778f34    e8e7b7c8ff
                          mov.s              edi, eax                                        // 0x00778f39    8bf8
                          mov                eax, dword ptr [esi]                            // 0x00778f3b    8b06
                          mov.s              ecx, esi                                        // 0x00778f3d    8bce

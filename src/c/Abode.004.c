@@ -14,7 +14,7 @@ void __fastcall DeleteAbodeSurroundingObjects__5AbodeFv(struct Abode* this)
     asm("push               ecx");                                           // 0x00403d38    51
     asm("push               0x1");                                           // 0x00403d39    6a01
     asm("mov.s              ecx, edi");                                      // 0x00403d3b    8bcf
-    asm("call               ?GetNewEp@Abode@@QAE_NW4ABODE_EPP@@PAULHPoint@@@Z");       // 0x00403d3d    e84ef8ffff
+    asm("call               ?GetNewEp@Abode@@QAEIW4ABODE_EPP@@PAULHPoint@@@Z");       // 0x00403d3d    e84ef8ffff
     asm("test               eax, eax");                                      // 0x00403d42    85c0
     asm("{disp8} je         LAB__addr_0x00403d90");                          // 0x00403d44    744a
     asm("{disp8} lea        edx, dword ptr [esp + 0x08]");                   // 0x00403d46    8d542408
@@ -51,7 +51,7 @@ void __fastcall DeleteAbodeSurroundingObjects__5AbodeFv(struct Abode* this)
     asm("push               eax");                                           // 0x00403d94    50
     asm("push               0x0");                                           // 0x00403d95    6a00
     asm("mov.s              ecx, edi");                                      // 0x00403d97    8bcf
-    asm("call               ?GetNewEp@Abode@@QAE_NW4ABODE_EPP@@PAULHPoint@@@Z");       // 0x00403d99    e8f2f7ffff
+    asm("call               ?GetNewEp@Abode@@QAEIW4ABODE_EPP@@PAULHPoint@@@Z");       // 0x00403d99    e8f2f7ffff
     asm("test               eax, eax");                                      // 0x00403d9e    85c0
     asm("{disp8} je         LAB__addr_0x00403dec");                          // 0x00403da0    744a
     asm("{disp8} lea        ecx, dword ptr [esp + 0x08]");                   // 0x00403da2    8d4c2408
@@ -105,7 +105,7 @@ void __fastcall CreateAbodeSurroundingObjects__5AbodeFv(struct Abode* this)
     asm("push               ecx");                                           // 0x00403e18    51
     asm("push               0x1");                                           // 0x00403e19    6a01
     asm("mov.s              ecx, edi");                                      // 0x00403e1b    8bcf
-    asm("call               ?GetNewEp@Abode@@QAE_NW4ABODE_EPP@@PAULHPoint@@@Z");       // 0x00403e1d    e86ef7ffff
+    asm("call               ?GetNewEp@Abode@@QAEIW4ABODE_EPP@@PAULHPoint@@@Z");       // 0x00403e1d    e86ef7ffff
     asm("test               eax, eax");                                      // 0x00403e22    85c0
     asm("{disp8} je         LAB__addr_0x00403e79");                          // 0x00403e24    7453
     asm("push               0x3f800000");                                    // 0x00403e26    680000803f
@@ -138,7 +138,7 @@ void __fastcall CreateAbodeSurroundingObjects__5AbodeFv(struct Abode* this)
     asm("push               eax");                                           // 0x00403e7d    50
     asm("push               0x0");                                           // 0x00403e7e    6a00
     asm("mov.s              ecx, edi");                                      // 0x00403e80    8bcf
-    asm("call               ?GetNewEp@Abode@@QAE_NW4ABODE_EPP@@PAULHPoint@@@Z");       // 0x00403e82    e809f7ffff
+    asm("call               ?GetNewEp@Abode@@QAEIW4ABODE_EPP@@PAULHPoint@@@Z");       // 0x00403e82    e809f7ffff
     asm("test               eax, eax");                                      // 0x00403e87    85c0
     asm("{disp8} je         LAB__addr_0x00403ed9");                          // 0x00403e89    744e
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                   // 0x00403e8b    8d4c2414
@@ -1019,7 +1019,7 @@ bool __fastcall Built__5AbodeFv(struct MultiMapFixed* this)
 {
     asm("push               esi");                                           // 0x00404720    56
     asm("mov.s              esi, ecx");                                      // 0x00404721    8bf1
-    asm("call               ?Built@MultiMapFixed@@UAE_NXZ");                 // 0x00404723    e888a41200
+    asm("call               ?Built@MultiMapFixed@@UAEIXZ");                 // 0x00404723    e888a41200
     asm("mov                eax, dword ptr [esi]");                          // 0x00404728    8b06
     asm("mov.s              ecx, esi");                                      // 0x0040472a    8bce
     asm("call               dword ptr [eax + 0x48]");                        // 0x0040472c    ff5048
@@ -1081,7 +1081,7 @@ bool __fastcall Repaired__5AbodeFv(struct MultiMapFixed* this)
 {
     asm("push               esi");                                           // 0x004047b0    56
     asm("mov.s              esi, ecx");                                      // 0x004047b1    8bf1
-    asm("call               ?Repaired@MultiMapFixed@@UAE_NXZ");              // 0x004047b3    e8b8a41200
+    asm("call               ?Repaired@MultiMapFixed@@UAEIXZ");              // 0x004047b3    e8b8a41200
     asm("mov                eax, dword ptr [esi]");                          // 0x004047b8    8b06
     asm("mov.s              ecx, esi");                                      // 0x004047ba    8bce
     asm("call               dword ptr [eax + 0x48]");                        // 0x004047bc    ff5048
@@ -1248,7 +1248,7 @@ void __fastcall MakeFunctional__5AbodeFv(struct Abode* this)
     asm("pop                ebx");                                           // 0x00404956    5b
     asm("add                esp, 0x18");                                     // 0x00404957    83c418
     asm("ret");                                                              // 0x0040495a    c3
-    asm("call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9");                          // 0x0040495b    e819cfffff
+    asm("call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9");                          // 0x0040495b    e819cfffff
     asm("LAB__addr_0x00404960:");
     asm("sub                esp, 0x08");                                     // 0x00404960    83ec08
     asm("push               ebx");                                           // 0x00404963    53

@@ -69,7 +69,7 @@ extern const struct CameraModeVftable __vt__20CameraModeTwoObjects asm("??_7Came
 // win1.41 00461c70 mac 101aa520 CameraModeTwoObjects::_dt(void)
 struct CameraMode* __fastcall __dt__20CameraModeTwoObjectsFv(struct CameraMode* this, const void* edx, uint32_t param_1) asm("??_GCameraModeTwoObjects@@UAEPAXI@Z");
 // win1.41 0044a290 mac inlined CameraModeTwoObjects::CanPlayerGestureWhenCameraMoving(void)
-bool __fastcall CanPlayerGestureWhenCameraMoving__20CameraModeTwoObjectsFv(struct CameraMode* this) asm("?CanPlayerGestureWhenCameraMoving@CameraModeTwoObjects@@UAE_NXZ");
+bool __fastcall CanPlayerGestureWhenCameraMoving__20CameraModeTwoObjectsFv(struct CameraMode* this) asm("?CanPlayerGestureWhenCameraMoving@CameraModeTwoObjects@@UAEIXZ");
 // win1.41 00461de0 mac 101aa880 CameraModeTwoObjects::Update(void)
 void __fastcall Update__20CameraModeTwoObjectsFv(struct CameraMode* this) asm("?Update@CameraModeTwoObjects@@UAEXXZ");
 // win1.41 0044a2b0 mac inlined CameraModeTwoObjects::Validate(void)
@@ -77,11 +77,11 @@ void __fastcall Validate__20CameraModeTwoObjectsFv(struct CameraMode* this) asm(
 // win1.41 0044a390 mac inlined CameraModeTwoObjects::Restart(void)
 void __fastcall Restart__20CameraModeTwoObjectsFv(struct CameraMode* this) asm("?Restart@CameraModeTwoObjects@@UAEXXZ");
 // win1.41 00461d90 mac 101aac60 CameraModeTwoObjects::IsStillValid(void)
-bool __fastcall IsStillValid__20CameraModeTwoObjectsFv(struct CameraMode* this) asm("?IsStillValid@CameraModeTwoObjects@@UAE_NXZ");
+bool __fastcall IsStillValid__20CameraModeTwoObjectsFv(struct CameraMode* this) asm("?IsStillValid@CameraModeTwoObjects@@UAEIXZ");
 // win1.41 0044a2d0 mac inlined CameraModeTwoObjects::Cleanup(void)
 void __fastcall Cleanup__20CameraModeTwoObjectsFv(struct CameraMode* this) asm("?Cleanup@CameraModeTwoObjects@@UAEXXZ");
 // win1.41 0044a2e0 mac inlined CameraModeTwoObjects::CanExist(void)
-bool __fastcall CanExist__20CameraModeTwoObjectsFv(struct CameraMode* this) asm("?CanExist@CameraModeTwoObjects@@UAE_NXZ");
+bool __fastcall CanExist__20CameraModeTwoObjectsFv(struct CameraMode* this) asm("?CanExist@CameraModeTwoObjects@@UAEIXZ");
 
 #endif // __cplusplus
 

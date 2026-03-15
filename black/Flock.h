@@ -212,11 +212,11 @@ uint32_t __fastcall GetCreatureBeliefType__5FlockFv(struct GameThingWithPos* thi
 // win1.41 0052f8b0 mac 100e35c0 Flock::GetCreatureBeliefListType(void)
 uint32_t __fastcall GetCreatureBeliefListType__5FlockFv(struct GameThingWithPos* this) asm("?GetCreatureBeliefListType@Flock@@UAEIXZ");
 // win1.41 0052f8d0 mac 100e3650 Flock::IsActivityObjectWhichAngerAppliesTo(Creature *)
-bool __fastcall IsActivityObjectWhichAngerAppliesTo__5FlockFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Flock@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsActivityObjectWhichAngerAppliesTo__5FlockFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichAngerAppliesTo@Flock@@UAEIPAVCreature@@@Z");
 // win1.41 0052f8e0 mac 100e36b0 Flock::IsActivityObjectWhichCompassionAppliesTo(Creature *)
-bool __fastcall IsActivityObjectWhichCompassionAppliesTo__5FlockFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichCompassionAppliesTo@Flock@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsActivityObjectWhichCompassionAppliesTo__5FlockFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichCompassionAppliesTo@Flock@@UAEIPAVCreature@@@Z");
 // win1.41 0052f8f0 mac 100e3710 Flock::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
-bool __fastcall IsActivityObjectWhichPlayfulnessAppliesTo__5FlockFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichPlayfulnessAppliesTo@Flock@@UAE_NPAVCreature@@@Z");
+bool __fastcall IsActivityObjectWhichPlayfulnessAppliesTo__5FlockFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?IsActivityObjectWhichPlayfulnessAppliesTo@Flock@@UAEIPAVCreature@@@Z");
 // win1.41 0052f8c0 mac 100e3600 Flock::IsSuitableForCreatureActivity(void)
 uint32_t __fastcall IsSuitableForCreatureActivity__5FlockFv(struct GameThingWithPos* this) asm("?IsSuitableForCreatureActivity@Flock@@UAEIXZ");
 // win1.41 0052f860 mac 100e34b0 Flock::IsFlock( const(void))

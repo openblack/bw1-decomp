@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z
+.extern ?Translation@LHMatrix@@QAEXABULHPoint@@@Z
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern _jmp_addr_0x0046e7b0
 .extern _jmp_addr_0x0046e890
@@ -27,7 +27,7 @@
 .extern _jmp_addr_0x006022c0
 .extern _jmp_addr_0x00602460
 .extern _jmp_addr_0x00603720
-.extern ?ProcessInHand@Object@@UAE_NXZ
+.extern ?ProcessInHand@Object@@UAEIXZ
 .extern _jmp_addr_0x0063b5d0
 .extern _jmp_addr_0x0063e540
 .extern ?GetRenderHand@GPlayer@@QAEPAVCHand@@XZ
@@ -72,7 +72,7 @@
 .globl _jmp_addr_0x00729ac0
 .globl _jmp_addr_0x00729af0
 .globl _jmp_addr_0x00729b30
-.globl ?InteractsWithPhysicsObjects@SpellSeed@@UAE_NXZ
+.globl ?InteractsWithPhysicsObjects@SpellSeed@@UAEIXZ
 .globl ?ValidForPlaceInHand@SpellSeed@@UAEIPAVGInterfaceStatus@@@Z
 .globl ?IsG3DObjectDrawnInHand@SpellSeed@@UAE_NXZ
 .globl ?GetHoldRadius@SpellSeed@@UAEMXZ
@@ -98,11 +98,11 @@
 .globl ?GetMesh@SpellSeed@@UBEHXZ
 .globl ?GetPower@SpellSeed@@UBEMXZ
 .globl ?GetPSysPower@SpellSeed@@UBEMXZ
-.globl ?ProcessInHand@SpellSeed@@UAE_NXZ
+.globl ?ProcessInHand@SpellSeed@@UAEIXZ
 
 start_0x00728570_0x00729c90:
 // Snippet: asm, [0x00728570, 0x00729c7f)
-?InteractsWithPhysicsObjects@SpellSeed@@UAE_NXZ:
+?InteractsWithPhysicsObjects@SpellSeed@@UAEIXZ:
                          xor.s              al, al                                   // 0x00728570    32c0
                          ret                                                         // 0x00728572    c3
                          nop                                                         // 0x00728573    90
@@ -1391,7 +1391,7 @@ _jmp_addr_0x00729020:    sub                esp, 0x18                           
                          {disp8} lea        edx, dword ptr [esp + 0x14]              // 0x007290af    8d542414
                          {disp8} lea        ecx, dword ptr [esi + 0x14]              // 0x007290b3    8d4e14
                          {disp8} fstp       dword ptr [esp + 0x18]                   // 0x007290b6    d95c2418
-                         call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z// 0x007290ba    e871a4cdff
+                         call               ?Translation@LHMatrix@@QAEXABULHPoint@@@Z// 0x007290ba    e871a4cdff
                          mov.s              edx, edi                                 // 0x007290bf    8bd7
                          mov.s              ecx, esi                                 // 0x007290c1    8bce
                          {disp8} mov        dword ptr [esi + 0x44], 0x3f800000       // 0x007290c3    c746440000803f
@@ -2218,7 +2218,7 @@ _jmp_addr_0x00729900:    {disp8} mov        dl, byte ptr [esp + 0x04]           
                          nop                                                         // 0x0072992d    90
                          nop                                                         // 0x0072992e    90
                          nop                                                         // 0x0072992f    90
-?ProcessInHand@SpellSeed@@UAE_NXZ:
+?ProcessInHand@SpellSeed@@UAEIXZ:
                          sub                esp, 0x08                                // 0x00729930    83ec08
                          push               esi                                      // 0x00729933    56
                          mov.s              esi, ecx                                 // 0x00729934    8bf1
@@ -2286,7 +2286,7 @@ _jmp_addr_0x00729900:    {disp8} mov        dl, byte ptr [esp + 0x04]           
                          mov.s              ecx, esi                                 // 0x00729a12    8bce
                          call               dword ptr [eax + 0xc]                    // 0x00729a14    ff500c
 .Lbl_addr_0x00729a17:    mov.s              ecx, esi                                 // 0x00729a17    8bce
-                         call               ?ProcessInHand@Object@@UAE_NXZ           // 0x00729a19    e8b200f1ff
+                         call               ?ProcessInHand@Object@@UAEIXZ           // 0x00729a19    e8b200f1ff
                          pop                edi                                      // 0x00729a1e    5f
                          pop                esi                                      // 0x00729a1f    5e
                          add                esp, 0x08                                // 0x00729a20    83c408

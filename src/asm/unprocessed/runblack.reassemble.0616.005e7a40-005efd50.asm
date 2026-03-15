@@ -36,7 +36,7 @@
 .extern @GetNearestPos__9GFootpathFRC9MapCoordsi@16
 .extern _jmp_addr_0x00535df0
 .extern _jmp_addr_0x0053b4a0
-.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern _jmp_addr_0x00555400
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
@@ -47,7 +47,7 @@
 .extern ??0GameThing@@QAE@XZ
 .extern _jmp_addr_0x0056fa80
 .extern ?Save@GameThing@@UAEIAAVGameOSFile@@@Z
-.extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@GameThing@@UAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x005752d0
 .extern ?CalculateDancePosition@GroupBehaviour@@QAEXABUMapCoords@@PAU2@PAVDanceGroup@@K@Z
 .extern _jmp_addr_0x005de8c0
@@ -167,7 +167,7 @@
 .globl _jmp_addr_0x005ec240
 .globl ?MoveToPos@Living@@QAEHXZ
 .globl _jmp_addr_0x005ec2a0
-.globl ?Dead@PuzzleHorse@@UAE_NXZ
+.globl ?Dead@PuzzleHorse@@UAEIXZ
 .globl _jmp_addr_0x005ec480
 .globl ?LookAtObject@Living@@QAEIPAVGameThingWithPos@@K@Z
 .globl @LookAtPos__6LivingFRC9MapCoordsUl@16
@@ -182,7 +182,7 @@
 .globl ?PlayAnimThenSetState@Living@@QAEXEK@Z
 .globl ?SetStateAnim@Living@@QAEXXZ
 .globl ?SetAnim__i@Living@@UAEXH@Z
-.globl ?IsDancing@Living@@UAE_NXZ
+.globl ?IsDancing@Living@@UAEIXZ
 .globl _jmp_addr_0x005ecc20
 .globl ??0LivingAction@@QAE@XZ  
 .globl @SetState__12LivingActionFUlUc@16
@@ -242,22 +242,22 @@
 .globl ?MoveAlongPath@Living@@UAEIXZ
 .globl ??_GLHLobby@@UAEPAXI@Z
 .globl ?MoveByTeleport@Living@@UAEXABUMapCoords@@@Z
-.globl ?SetDying@Living@@UAE_NXZ
+.globl ?SetDying@Living@@UAEIXZ
 .globl ?GetNumTurnsToDieOver@Living@@UAEIXZ
-.globl ?Dying@PuzzleHorse@@UAE_NXZ
-.globl ?Downed@Living@@UAE_NXZ
-.globl ?BeingEaten@PuzzleHorse@@UAE_NXZ
-.globl ?InHand@PuzzleHorse@@UAE_NXZ
+.globl ?Dying@PuzzleHorse@@UAEIXZ
+.globl ?Downed@Living@@UAEIXZ
+.globl ?BeingEaten@PuzzleHorse@@UAEIXZ
+.globl ?InHand@PuzzleHorse@@UAEIXZ
 .globl ?Birthday@PuzzleHorse@@UAEXXZ
 .globl ?IsDeathState@Living@@UBE_NW4VILLAGER_STATES@@@Z
 .globl ?GetAge@Living@@UAEIXZ
 .globl ?SetAnim__li@Living@@UAEXHH@Z
 .globl ?ExitReaction@Living@@UAEHW4VILLAGER_STATES@@@Z
-.globl ?MoveInFlock@Living@@UAE_NXZ
+.globl ?MoveInFlock@Living@@UAEIXZ
 .globl ?DebugShowTime@Living@@UAEIIEE@Z
 .globl ?GetBoundingSphere@Living@@UAEXAAULHPoint@@AAM@Z
-.globl ?HasSunk@Living@@UAE_NXZ
-.globl ?CanBecomeAPhysicsObject@Living@@UAE_NXZ
+.globl ?HasSunk@Living@@UAEIXZ
+.globl ?CanBecomeAPhysicsObject@Living@@UAEIXZ
 .globl ?ExitInFlying@Living@@UAEHW4VILLAGER_STATES@@@Z
 .globl ?ExitInLanded@Living@@UAEHW4VILLAGER_STATES@@@Z
 .globl ?EnterInScript@Living@@UAEIW4VILLAGER_STATES@@0@Z
@@ -269,7 +269,7 @@
 .globl ?ExitMoveToPos@Living@@UAEHE@Z
 .globl ?ExitBeingEaten@Living@@UAEHE@Z
 .globl ?ExitMoveOnPath@Living@@UAEHW4VILLAGER_STATES@@@Z
-.globl ?CanBeHealedByHealSpell@Living@@UAE_NXZ
+.globl ?CanBeHealedByHealSpell@Living@@UAEIXZ
 .globl ?Save@DataPath@@UAEIAAVGameOSFile@@@Z
 .globl ?Load@DataPath@@UAEIAAVGameOSFile@@@Z
 .globl ?GetSaveType@DataPath@@UAEIXZ
@@ -279,7 +279,7 @@
 .globl ?GetDebugText@DataForScriptRemind@@UAEPADXZ
 .globl ??_GDataForScriptRemind@@UAEPAXI@Z
 .globl ?GetInHandImmersionTexture@Living@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ
-.globl ?IsMovingForAnimation@PuzzleHorse@@UAE_NXZ
+.globl ?IsMovingForAnimation@PuzzleHorse@@UAEIXZ
 .globl ?Save@DataForScriptRemind@@UAEIAAVGameOSFile@@@Z
 .globl ?Load@DataForScriptRemind@@UAEIAAVGameOSFile@@@Z
 .globl ?InvalidState@Living@@QAEIXZ
@@ -313,7 +313,7 @@ _jmp_addr_0x005e7a40:    mov.s              edx, ecx                            
                          mov.s              eax, edx                                      // 0x005e7aa7    8bc2
                          pop                edi                                           // 0x005e7aa9    5f
                          ret                                                              // 0x005e7aaa    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005e7aab    e8499de1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005e7aab    e8499de1ff
 .Lbl_addr_0x005e7ab0:    push               esi                                           // 0x005e7ab0    56
                          push               edi                                           // 0x005e7ab1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x005e7ab2    8b7c240c
@@ -1938,7 +1938,7 @@ _jmp_addr_0x005e7d30:    push               ebx                                 
                          pop                ebp                                           // 0x005e8c51    5d
                          add                esp, 0x00000e7c                               // 0x005e8c52    81c47c0e0000
                          ret                0x0004                                        // 0x005e8c58    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005e8c5b    e8998be1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005e8c5b    e8998be1ff
 .Lbl_addr_0x005e8c60:    sub                esp, 0x000000b8                               // 0x005e8c60    81ecb8000000
                          push               ebx                                           // 0x005e8c66    53
                          push               ebp                                           // 0x005e8c67    55
@@ -2663,7 +2663,7 @@ _jmp_addr_0x005e7d30:    push               ebx                                 
                          xor.s              al, al                                        // 0x005e93e5    32c0
                          pop                ebp                                           // 0x005e93e7    5d
                          ret                0x0004                                        // 0x005e93e8    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005e93eb    e80984e1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005e93eb    e80984e1ff
 .Lbl_addr_0x005e93f0:    {disp8} mov        dx, word ptr [esp + 0x04]                     // 0x005e93f0    668b542404
                          cmp                dx, -0x01                                     // 0x005e93f5    6683faff
                          push               esi                                           // 0x005e93f9    56
@@ -4047,7 +4047,7 @@ _globl_ct_0x005ea4e0:    {disp32} jmp       .Lbl_addr_0x005ea4f0                
                          nop                                                              // 0x005ea4ef    90
 .Lbl_addr_0x005ea4f0:    {disp32} mov       dword ptr [data_bytes + 0x35a554], 0xffffffff // 0x005ea4f0    c7055405d200ffffffff
                          ret                                                              // 0x005ea4fa    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005ea4fb    e8f972e1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005ea4fb    e8f972e1ff
 _globl_ct_0x005ea500:    {disp32} jmp       .Lbl_addr_0x005ea510                          // 0x005ea500    e90b000000
                          nop                                                              // 0x005ea505    90
                          nop                                                              // 0x005ea506    90
@@ -5242,7 +5242,7 @@ _jmp_addr_0x005eb120:    sub                esp, 0x0000017c                     
 .Lbl_addr_0x005eb302:    {disp32} mov       ecx, dword ptr [_game]                        // 0x005eb302    8b0d5c19d000
                          push               edi                                           // 0x005eb308    57
                          {disp8} mov        dword ptr [esp + 0x14], ebp                   // 0x005eb309    896c2414
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x005eb30d    e89e56f6ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x005eb30d    e89e56f6ff
                          mov.s              esi, eax                                      // 0x005eb312    8bf0
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x005eb314    8d4c2410
                          push               ecx                                           // 0x005eb318    51
@@ -5268,7 +5268,7 @@ _jmp_addr_0x005eb120:    sub                esp, 0x0000017c                     
                          push               edi                                           // 0x005eb358    57
                          {disp8} mov        dword ptr [esp + 0x38], edx                   // 0x005eb359    89542438
                          {disp8} mov        dword ptr [esp + 0x14], ebp                   // 0x005eb35d    896c2414
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x005eb361    e84a56f6ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x005eb361    e84a56f6ff
                          mov.s              esi, eax                                      // 0x005eb366    8bf0
                          {disp8} lea        eax, dword ptr [esp + 0x10]                   // 0x005eb368    8d442410
                          add                esi, 0x000000f8                               // 0x005eb36c    81c6f8000000
@@ -5360,7 +5360,7 @@ _jmp_addr_0x005eb430:    push               esi                                 
                          call               _jmp_addr_0x005752d0                          // 0x005eb464    e8679ef8ff
 .Lbl_addr_0x005eb469:    pop                esi                                           // 0x005eb469    5e
                          ret                                                              // 0x005eb46a    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005eb46b    e88963e1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005eb46b    e88963e1ff
 _jmp_addr_0x005eb470:    push               ecx                                           // 0x005eb470    51
                          push               esi                                           // 0x005eb471    56
                          mov.s              esi, ecx                                      // 0x005eb472    8bf1
@@ -5669,7 +5669,7 @@ _jmp_addr_0x005eb470:    push               ecx                                 
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005eb87d    8b0d5c19d000
                          call               _jmp_addr_0x00555400                          // 0x005eb883    e8789bf6ff
 .Lbl_addr_0x005eb888:    ret                0x0014                                        // 0x005eb888    c21400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005eb88b    e8695fe1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005eb88b    e8695fe1ff
 _jmp_addr_0x005eb890:    push               esi                                           // 0x005eb890    56
                          mov.s              esi, ecx                                      // 0x005eb891    8bf1
                          {disp8} mov        ecx, dword ptr [esi + 0x24]                   // 0x005eb893    8b4e24
@@ -6249,7 +6249,7 @@ _globl_ct_0x005ebe70:    {disp32} jmp       .Lbl_addr_0x005ebe80                
                          nop                                                              // 0x005ebe7f    90
 .Lbl_addr_0x005ebe80:    {disp32} mov       dword ptr [data_bytes + 0x36a870], 0xffffffff // 0x005ebe80    c7057008d300ffffffff
                          ret                                                              // 0x005ebe8a    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005ebe8b    e86959e1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005ebe8b    e86959e1ff
 _globl_ct_0x005ebe90:    {disp32} jmp       .Lbl_addr_0x005ebea0                          // 0x005ebe90    e90b000000
                          nop                                                              // 0x005ebe95    90
                          nop                                                              // 0x005ebe96    90
@@ -6769,7 +6769,7 @@ _jmp_addr_0x005ec2a0:    push               esi                                 
                          pop                esi                                           // 0x005ec386    5e
                          ret                0x0004                                        // 0x005ec387    c20400
                          call               dword ptr [__imp__GetOpenFileNameA@4]         // 0x005ec38a    ff1570998a00
-?SetDying@Living@@UAE_NXZ:
+?SetDying@Living@@UAEIXZ:
                          push               esi                                           // 0x005ec390    56
                          mov.s              esi, ecx                                      // 0x005ec391    8bf1
                          test               byte ptr [esi + 0x24], 0x40                   // 0x005ec393    f6462440
@@ -6796,7 +6796,7 @@ _jmp_addr_0x005ec2a0:    push               esi                                 
 .Lbl_addr_0x005ec3d7:    xor.s              eax, eax                                      // 0x005ec3d7    33c0
                          pop                esi                                           // 0x005ec3d9    5e
                          ret                                                              // 0x005ec3da    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005ec3db    e81954e1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005ec3db    e81954e1ff
 ?GetNumTurnsToDieOver@Living@@UAEIXZ:
                          mov                eax, 0x00000258                               // 0x005ec3e0    b858020000
                          ret                                                              // 0x005ec3e5    c3
@@ -6810,14 +6810,14 @@ _jmp_addr_0x005ec2a0:    push               esi                                 
                          nop                                                              // 0x005ec3ed    90
                          nop                                                              // 0x005ec3ee    90
                          nop                                                              // 0x005ec3ef    90
-?Dying@PuzzleHorse@@UAE_NXZ:
+?Dying@PuzzleHorse@@UAEIXZ:
                          push               0x1                                           // 0x005ec3f0    6a01
                          push               0xf                                           // 0x005ec3f2    6a0f
                          call               ?PlayAnimThenSetState@Living@@QAEXEK@Z        // 0x005ec3f4    e8c7060000
                          mov                eax, 0x00000001                               // 0x005ec3f9    b801000000
                          ret                                                              // 0x005ec3fe    c3
                          nop                                                              // 0x005ec3ff    90
-?Dead@PuzzleHorse@@UAE_NXZ:
+?Dead@PuzzleHorse@@UAEIXZ:
                          push               esi                                           // 0x005ec400    56
                          mov.s              esi, ecx                                      // 0x005ec401    8bf1
                          {disp32} mov       ecx, dword ptr [esi + 0x000000b8]             // 0x005ec403    8b8eb8000000
@@ -6895,7 +6895,7 @@ _jmp_addr_0x005ec480:    push               esi                                 
                          nop                                                              // 0x005ec4ad    90
                          nop                                                              // 0x005ec4ae    90
                          nop                                                              // 0x005ec4af    90
-?Downed@Living@@UAE_NXZ:
+?Downed@Living@@UAEIXZ:
                          push               esi                                           // 0x005ec4b0    56
                          push               0x1                                           // 0x005ec4b1    6a01
                          mov.s              esi, ecx                                      // 0x005ec4b3    8bf1
@@ -6912,7 +6912,7 @@ _jmp_addr_0x005ec480:    push               esi                                 
                          nop                                                              // 0x005ec4cd    90
                          nop                                                              // 0x005ec4ce    90
                          nop                                                              // 0x005ec4cf    90
-?BeingEaten@PuzzleHorse@@UAE_NXZ:
+?BeingEaten@PuzzleHorse@@UAEIXZ:
                          push               esi                                           // 0x005ec4d0    56
                          mov.s              esi, ecx                                      // 0x005ec4d1    8bf1
                          dec                word ptr [esi + 0x58]                         // 0x005ec4d3    66ff4e58
@@ -7064,7 +7064,7 @@ _jmp_addr_0x005ec480:    push               esi                                 
                          nop                                                              // 0x005ec61d    90
                          nop                                                              // 0x005ec61e    90
                          nop                                                              // 0x005ec61f    90
-?InHand@PuzzleHorse@@UAE_NXZ:
+?InHand@PuzzleHorse@@UAEIXZ:
                          mov                eax, 0x00000001                               // 0x005ec620    b801000000
                          ret                                                              // 0x005ec625    c3
                          nop                                                              // 0x005ec626    90
@@ -7563,7 +7563,7 @@ _jmp_addr_0x005eca20:    {disp8} fld        dword ptr [esp + 0x04]              
                          ret                0x0004                                        // 0x005ecab3    c20400
 .Lbl_addr_0x005ecab6:    xor.s              eax, eax                                      // 0x005ecab6    33c0
                          ret                0x0004                                        // 0x005ecab8    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005ecabb    e8394de1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005ecabb    e8394de1ff
 ?PlayAnimThenSetState@Living@@QAEXEK@Z:
                          push               esi                                           // 0x005ecac0    56
                          push               edi                                           // 0x005ecac1    57
@@ -7706,7 +7706,7 @@ _jmp_addr_0x005eca20:    {disp8} fld        dword ptr [esp + 0x04]              
                          nop                                                              // 0x005ecc0d    90
                          nop                                                              // 0x005ecc0e    90
                          nop                                                              // 0x005ecc0f    90
-?IsDancing@Living@@UAE_NXZ:
+?IsDancing@Living@@UAEIXZ:
                          {disp32} mov       edx, dword ptr [ecx + 0x000000d8]             // 0x005ecc10    8b91d8000000
                          xor.s              eax, eax                                      // 0x005ecc16    33c0
                          test               edx, edx                                      // 0x005ecc18    85d2
@@ -7890,7 +7890,7 @@ _jmp_addr_0x005ecc20:    push               esi                                 
                          nop                                                              // 0x005ecdad    90
                          nop                                                              // 0x005ecdae    90
                          nop                                                              // 0x005ecdaf    90
-?MoveInFlock@Living@@UAE_NXZ:
+?MoveInFlock@Living@@UAEIXZ:
                          sub                esp, 0x20                                     // 0x005ecdb0    83ec20
                          push               esi                                           // 0x005ecdb3    56
                          mov.s              esi, ecx                                      // 0x005ecdb4    8bf1
@@ -8464,7 +8464,7 @@ _SetAge__6LivingFUl:
                          nop                                                              // 0x005ed36d    90
                          nop                                                              // 0x005ed36e    90
                          nop                                                              // 0x005ed36f    90
-?HasSunk@Living@@UAE_NXZ:
+?HasSunk@Living@@UAEIXZ:
                          push               esi                                           // 0x005ed370    56
                          mov.s              esi, ecx                                      // 0x005ed371    8bf1
                          mov                eax, dword ptr [esi]                          // 0x005ed373    8b06
@@ -8600,7 +8600,7 @@ _SetAge__6LivingFUl:
                          add                esp, 0x60                                     // 0x005ed4e4    83c460
                          ret                0x0008                                        // 0x005ed4e7    c20800
                          call               dword ptr [__imp__SetBkColor@4]               // 0x005ed4ea    ff1550908a00
-?CanBecomeAPhysicsObject@Living@@UAE_NXZ:
+?CanBecomeAPhysicsObject@Living@@UAEIXZ:
                          mov                eax, 0x00000001                               // 0x005ed4f0    b801000000
                          ret                                                              // 0x005ed4f5    c3
                          nop                                                              // 0x005ed4f6    90
@@ -10095,7 +10095,7 @@ _jmp_addr_0x005ee520:    {disp32} mov       eax, dword ptr [ecx + 0x000000ac]   
                          push               edx                                           // 0x005ee549    52
                          call               .Lbl_addr_0x005ee4f0                          // 0x005ee54a    e8a1ffffff
                          ret                                                              // 0x005ee54f    c3
-?CanBeHealedByHealSpell@Living@@UAE_NXZ:
+?CanBeHealedByHealSpell@Living@@UAEIXZ:
                          mov                eax, dword ptr [ecx]                          // 0x005ee550    8b01
                          call               dword ptr [eax + 0xaf4]                       // 0x005ee552    ff90f40a0000
                          neg                eax                                           // 0x005ee558    f7d8
@@ -10893,7 +10893,7 @@ _jmp_addr_0x005ee520:    {disp32} mov       eax, dword ptr [ecx + 0x000000ac]   
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x005eeec2    8b74240c
                          mov.s              ebx, ecx                                      // 0x005eeec6    8bd9
                          push               esi                                           // 0x005eeec8    56
-                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x005eeec9    e8220ef8ff
+                         call               ?Load@GameThing@@UAEIAAVGameOSFile@@@Z       // 0x005eeec9    e8220ef8ff
                          test               eax, eax                                      // 0x005eeece    85c0
                          {disp32} je        .Lbl_addr_0x005ef02b                          // 0x005eeed0    0f8455010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x005eeed6    a194c9be00
@@ -11134,7 +11134,7 @@ _jmp_addr_0x005ee520:    {disp32} mov       eax, dword ptr [ecx + 0x000000ac]   
                          push               0x0                                           // 0x005ef102    6a00
                          call               dword ptr [eax + 0xfc]                        // 0x005ef104    ff90fc000000
                          ret                                                              // 0x005ef10a    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005ef10b    e8e926e1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005ef10b    e8e926e1ff
 ??0DataForScriptRemind@@QAE@XZ:
                                      push               esi                                           // 0x005ef110    56
                          mov.s              esi, ecx                                      // 0x005ef111    8bf1
@@ -11342,7 +11342,7 @@ _jmp_addr_0x005ef2a0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
 .Lbl_addr_0x005ef316:    pop                edi                                           // 0x005ef316    5f
                          pop                esi                                           // 0x005ef317    5e
                          ret                0x0004                                        // 0x005ef318    c20400
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005ef31b    e8d924e1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005ef31b    e8d924e1ff
 .Lbl_addr_0x005ef320:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x005ef320    8b442404
                          {disp8} mov        edx, dword ptr [esp + 0x08]                   // 0x005ef324    8b542408
                          {disp32} mov       dword ptr [ecx + 0x0000010c], eax             // 0x005ef328    89810c010000
@@ -11370,7 +11370,7 @@ _jmp_addr_0x005ef2a0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                              // 0x005ef34d    90
                          nop                                                              // 0x005ef34e    90
                          nop                                                              // 0x005ef34f    90
-?IsMovingForAnimation@PuzzleHorse@@UAE_NXZ:
+?IsMovingForAnimation@PuzzleHorse@@UAEIXZ:
                          mov                eax, dword ptr [ecx]                          // 0x005ef350    8b01
                          jmp                dword ptr [eax + 0x174]                       // 0x005ef352    ffa074010000
                          nop                                                              // 0x005ef358    90
@@ -11558,7 +11558,7 @@ _jmp_addr_0x005ef2a0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x005ef572    8b74240c
                          mov.s              ebx, ecx                                      // 0x005ef576    8bd9
                          push               esi                                           // 0x005ef578    56
-                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x005ef579    e87207f8ff
+                         call               ?Load@GameThing@@UAEIAAVGameOSFile@@@Z       // 0x005ef579    e87207f8ff
                          test               eax, eax                                      // 0x005ef57e    85c0
                          {disp32} je        .Lbl_addr_0x005ef75d                          // 0x005ef580    0f84d7010000
                          push               ebp                                           // 0x005ef586    55
@@ -11907,7 +11907,7 @@ _globl_ct_0x005ef8b0:    {disp32} jmp       .Lbl_addr_0x005ef8c0                
                          nop                                                              // 0x005ef8bf    90
 .Lbl_addr_0x005ef8c0:    {disp32} mov       dword ptr [data_bytes + 0x36a888], 0xffffffff // 0x005ef8c0    c7058808d300ffffffff
                          ret                                                              // 0x005ef8ca    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x005ef8cb    e8291fe1ff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x005ef8cb    e8291fe1ff
 _jmp_addr_0x005ef8d0:    push               esi                                           // 0x005ef8d0    56
                          push               edi                                           // 0x005ef8d1    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x005ef8d2    8b7c240c

@@ -98,11 +98,11 @@ uint32_t __fastcall Save__10HanoiBlockFR10GameOSFile(struct GameThing* this, con
 // win1.41 00561830 mac 1011ed80 HanoiBlock::GetSaveType(void)
 uint32_t __fastcall GetSaveType__10HanoiBlockFv(struct GameThing* this) asm("?GetSaveType@HanoiBlock@@UAEIXZ");
 // win1.41 006de440 mac 1011ee00 HanoiBlock::IsCannotBePickedUp( const(void))
-bool __fastcall IsCannotBePickedUp__10HanoiBlockCFv(const struct GameThingWithPos* this) asm("?IsCannotBePickedUp@HanoiBlock@@UBE_NXZ");
+bool __fastcall IsCannotBePickedUp__10HanoiBlockCFv(const struct GameThingWithPos* this) asm("?IsCannotBePickedUp@HanoiBlock@@UBEIXZ");
 // win1.41 006de3f0 mac 1011eed0 HanoiBlock::InterfaceSetInMagicHand(GInterfaceStatus *)
 uint32_t __fastcall InterfaceSetInMagicHand__10HanoiBlockFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?InterfaceSetInMagicHand@HanoiBlock@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 00561800 mac 1011eca0 HanoiBlock::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__10HanoiBlockFv(struct Object* this) asm("?CanBecomeAPhysicsObject@HanoiBlock@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__10HanoiBlockFv(struct Object* this) asm("?CanBecomeAPhysicsObject@HanoiBlock@@UAEIXZ");
 // win1.41 005617f0 mac 1011ec50 HanoiBlock::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__10HanoiBlockFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@HanoiBlock@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 // win1.41 00561820 mac 1011ed30 HanoiBlock::GetInHandImmersionTexture(void)

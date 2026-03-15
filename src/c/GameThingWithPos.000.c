@@ -663,7 +663,7 @@ bool32_t __fastcall IsRock__16GameThingWithPosFP8Creature(struct GameThingWithPo
     asm("mov                eax, dword ptr [ecx]");                     // 0x00401f50    8b01
     asm("call               dword ptr [eax + 0x1f0]");                  // 0x00401f52    ff90f0010000
     asm("ret                0x0004");                                   // 0x00401f58    c20400
-    asm("call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9");                     // 0x00401f5b    e819f9ffff
+    asm("call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9");                     // 0x00401f5b    e819f9ffff
     __builtin_unreachable();
 }
 
@@ -830,7 +830,7 @@ bool32_t __fastcall IsLiving__16GameThingWithPosFP8Creature(const struct GameThi
     asm("mov                eax, dword ptr [ecx]");                     // 0x00402100    8b01
     asm("call               dword ptr [eax + 0x3c4]");                  // 0x00402102    ff90c4030000
     asm("ret                0x0004");                                   // 0x00402108    c20400
-    asm("call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9");                     // 0x0040210b    e869f7ffff
+    asm("call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9");                     // 0x0040210b    e869f7ffff
     __builtin_unreachable();
 }
 

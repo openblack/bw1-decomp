@@ -32,7 +32,7 @@
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
-.extern ?CanBeInspectedByCreature@Object@@UAE_NPAVCreature@@@Z
+.extern ?CanBeInspectedByCreature@Object@@UAEIPAVCreature@@@Z
 .extern _jmp_addr_0x00511d80
 .extern _jmp_addr_0x0051fb20
 .extern _jmp_addr_0x0051fea0
@@ -135,7 +135,7 @@
 .globl ?SetMapChild@Object@@UAEXPAV1@PAUMapCell@@@Z
 .globl _StorePreviousState__6LivingFv
 .globl ?GetDebugText@GameThingWithPos@@QAEPADXZ
-.globl ?IsWonder@GameThingWithPos@@UAE_NXZ
+.globl ?IsWonder@GameThingWithPos@@UAEIXZ
 .globl ?CreateBuildingSite@GameThingWithPos@@UBE_NXZ
 .globl ?GetTown@Object@@UAEPAVTown@@XZ
 .globl ?GetMapChild@Object@@UAEPAV1@PBUMapCell@@@Z
@@ -148,10 +148,10 @@
 .globl ?InterfaceValidToTap@Object@@UAEIPAVGInterfaceStatus@@@Z
 .globl ?InterfaceTap@Object@@UAEIPAVGInterfaceStatus@@@Z
 .globl ?ChecksVerticesVObjects@Object@@UAEIXZ
-.globl ?IsSolidToNewAbode@Object@@UAE_NXZ
+.globl ?IsSolidToNewAbode@Object@@UAEIXZ
 .globl ?GetTownArtifact@Object@@UAEPAVGameThing@@XZ
-.globl ?IsTownArtifact@Object@@UAE_NXZ
-.globl ?ShouldFootpathsGoRound@Object@@UAE_NXZ
+.globl ?IsTownArtifact@Object@@UAEIXZ
+.globl ?ShouldFootpathsGoRound@Object@@UAEIXZ
 .globl ?GetCollideData@Object@@UAEPAVNewCollide@@XZ
 .globl ?GetMesh@GAnimalInfo@@UBEIXZ
 .globl ?GetBaseInfo@GAnimalInfo@@UAEPAVGBaseInfo@@AAI@Z
@@ -165,10 +165,10 @@
 .globl ?IsPoisoned@Living@@UAEIXZ
 .globl ?SetPoisoned@Living@@UAEXH@Z
 .globl ?SetFoodSpeedup@PuzzleHorse@@UAEX_N@Z
-.globl ?IsFoodSpeedUp@PuzzleHorse@@UAE_NXZ
+.globl ?IsFoodSpeedUp@PuzzleHorse@@UAEIXZ
 .globl ?IsSkeleton@Living@@UBEIXZ
 .globl ?SetSkeleton@Living@@UAEXH@Z
-.globl ?ArrivesAtWoodReaction@PuzzleHorse@@UAE_NXZ
+.globl ?ArrivesAtWoodReaction@PuzzleHorse@@UAEIXZ
 .globl ?EnterInHand@Living@@UAEIW4VILLAGER_STATES@@0@Z
 .globl ?IsStateForInterface@Living@@UBE_NW4VILLAGER_STATES@@@Z
 .globl ?IsInterestedInWoodObject@Living@@UAE_NPAVObject@@@Z
@@ -202,11 +202,11 @@
 .globl ?ReactToMagicShieldDestroyedPriority@Living@@UAEEPAVReaction@@0@Z
 .globl ?ReactToScaffoldPriority@Living@@UAEEPAVReaction@@0@Z
 .globl ?IsPosValidForMapCellExistance@Living@@UAEIABUMapCoords@@@Z
-.globl ?IsDead@Living@@UAE_NXZ
-.globl ?CanBePickedUp@Living@@UAE_NXZ
+.globl ?IsDead@Living@@UAEIXZ
+.globl ?CanBePickedUp@Living@@UAEIXZ
 .globl ?CanBeCrushed@Living@@UAEIXZ
-.globl ?IsStompable@Living@@UAE_NXZ
-.globl ?IsFunctional@Living@@UAE_NXZ
+.globl ?IsStompable@Living@@UAEIXZ
+.globl ?IsFunctional@Living@@UAEIXZ
 .globl ?SetStateAfterFinishingDance@Living@@UAEXXZ
 .globl ?CalculateLifeDesire@Living@@UAEMXZ
 .globl ?DanceType@Living@@UAEIXZ
@@ -214,7 +214,7 @@
 .globl ?CanBeThrownByCreature@Living@@UAEIPAVCreature@@@Z
 .globl ?CanBeAttackedByCreature@Living@@UAEIPAVCreature@@@Z
 .globl ?CanBePlayedWithByCreature@Living@@UAEIPAVCreature@@@Z
-.globl ?IsAnimate@Living@@UAE_NXZ
+.globl ?IsAnimate@Living@@UAEIXZ
 .globl ?CanBeFrighteningToCreature@Living@@UAEIPAVCreature@@@Z
 .globl ?CanBeInspectedByCreature@Living@@UAEIPAVCreature@@@Z
 .globl ?CanBePoodUponByCreature@Living@@UAEIPAVCreature@@@Z
@@ -226,8 +226,8 @@
 .globl ?IsNotLiving@Living@@UAEIXZ
 .globl ?SetSpecularColor@Living@@UAEXULH3DColor@@@Z
 .globl ?GetSpecularColor@Living@@UAE?AULH3DColor@@XZ
-.globl ?MoveAllowedForChessGame@Villager@@UAE_NXZ
-.globl ?AttackAllowedForChessGame@Villager@@UAE_NXZ
+.globl ?MoveAllowedForChessGame@Villager@@UAEIXZ
+.globl ?AttackAllowedForChessGame@Villager@@UAEIXZ
 .globl ?AddToBoxPositionForChessGame@Villager@@UAEXHH@Z
 .globl ?GetBoxXForChessGame@Villager@@UAEHXZ
 .globl ?GetBoxZForChessGame@Villager@@UAEHXZ
@@ -1266,7 +1266,7 @@ _jmp_addr_0x004169e0:    {disp8} mov        eax, dword ptr [esp + 0x40]         
                          pop                esi                                           // 0x00416bb8    5e
                          pop                ebx                                           // 0x00416bb9    5b
                          ret                                                              // 0x00416bba    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00416bbb    e8b9acfeff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x00416bbb    e8b9acfeff
 .Lbl_addr_0x00416bc0:    push               ecx                                           // 0x00416bc0    51
                          push               ebx                                           // 0x00416bc1    53
                          push               esi                                           // 0x00416bc2    56
@@ -1347,7 +1347,7 @@ _jmp_addr_0x004169e0:    {disp8} mov        eax, dword ptr [esp + 0x40]         
                          setg               al                                            // 0x00416c46    0f9fc0
                          pop                ebx                                           // 0x00416c49    5b
                          ret                                                              // 0x00416c4a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00416c4b    e829acfeff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x00416c4b    e829acfeff
 _globl_ct_0x00416c50:    {disp32} mov       cl, byte ptr [_DAT_00fac934]                  // 0x00416c50    8a0d34c9fa00
                          mov                al, 0x01                                      // 0x00416c56    b001
                          test               al, cl                                        // 0x00416c58    84c8
@@ -1413,7 +1413,7 @@ _globl_ct_0x00416cb0:    {disp32} jmp       .Lbl_addr_0x00416cc0                
                          nop                                                              // 0x00416cbf    90
 .Lbl_addr_0x00416cc0:    {disp32} mov       dword ptr [data_bytes + 0x287024], 0xffffffff // 0x00416cc0    c70524d0c400ffffffff
                          ret                                                              // 0x00416cca    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00416ccb    e8a9abfeff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x00416ccb    e8a9abfeff
 _globl_ct_0x00416cd0:    call               .Lbl_addr_0x00416ce0                          // 0x00416cd0    e80b000000
                          {disp32} jmp       .Lbl_addr_0x00416d50                          // 0x00416cd5    e976000000
                          nop                                                              // 0x00416cda    90
@@ -1808,7 +1808,7 @@ _jmp_addr_0x00416eb0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x00416fdd    90
                          nop                                                              // 0x00416fde    90
                          nop                                                              // 0x00416fdf    90
-?IsFoodSpeedUp@PuzzleHorse@@UAE_NXZ:
+?IsFoodSpeedUp@PuzzleHorse@@UAEIXZ:
                          xor.s              al, al                                        // 0x00416fe0    32c0
                          ret                                                              // 0x00416fe2    c3
                          nop                                                              // 0x00416fe3    90
@@ -1851,7 +1851,7 @@ _jmp_addr_0x00416eb0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          nop                                                              // 0x0041702d    90
                          nop                                                              // 0x0041702e    90
                          nop                                                              // 0x0041702f    90
-?ArrivesAtWoodReaction@PuzzleHorse@@UAE_NXZ:
+?ArrivesAtWoodReaction@PuzzleHorse@@UAEIXZ:
                          mov                eax, 0x00000001                               // 0x00417030    b801000000
                          ret                                                              // 0x00417035    c3
                          nop                                                              // 0x00417036    90
@@ -1875,7 +1875,7 @@ _StorePreviousState__6LivingFv:
                          call               @SetState__12LivingActionFUlUc@16             // 0x00417054    e8375c1d00
                          pop                esi                                           // 0x00417059    5e
                          ret                                                              // 0x0041705a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0041705b    e819a8feff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0041705b    e819a8feff
 ?EnterInHand@Living@@UAEIW4VILLAGER_STATES@@0@Z:
                          mov                eax, 0x00000001                               // 0x00417060    b801000000
                          ret                0x0008                                        // 0x00417065    c20800
@@ -2345,7 +2345,7 @@ _StorePreviousState__6LivingFv:
                          nop                                                              // 0x0041726d    90
                          nop                                                              // 0x0041726e    90
                          nop                                                              // 0x0041726f    90
-?IsDead@Living@@UAE_NXZ:
+?IsDead@Living@@UAEIXZ:
                          {disp32} mov       al, byte ptr [ecx + 0x000000b4]               // 0x00417270    8a81b4000000
                          and                al, 0x01                                      // 0x00417276    2401
                          cmp                al, 0x01                                      // 0x00417278    3c01
@@ -2360,8 +2360,8 @@ _StorePreviousState__6LivingFv:
                          ret                                                              // 0x00417294    c3
 .Lbl_addr_0x00417295:    mov                eax, 0x00000001                               // 0x00417295    b801000000
                          ret                                                              // 0x0041729a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0041729b    e8d9a5feff
-?CanBePickedUp@Living@@UAE_NXZ:
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0041729b    e8d9a5feff
+?CanBePickedUp@Living@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x004172a0    33c0
                          {disp8} mov        ax, word ptr [ecx + 0x24]                     // 0x004172a2    668b4124
                          not                ax                                            // 0x004172a6    66f7d0
@@ -2381,7 +2381,7 @@ _StorePreviousState__6LivingFv:
                          nop                                                              // 0x004172bd    90
                          nop                                                              // 0x004172be    90
                          nop                                                              // 0x004172bf    90
-?IsStompable@Living@@UAE_NXZ:
+?IsStompable@Living@@UAEIXZ:
                          mov                eax, dword ptr [ecx]                          // 0x004172c0    8b01
                          call               dword ptr [eax + 0xaf4]                       // 0x004172c2    ff90f40a0000
                          neg                eax                                           // 0x004172c8    f7d8
@@ -2390,7 +2390,7 @@ _StorePreviousState__6LivingFv:
                          ret                                                              // 0x004172cd    c3
                          nop                                                              // 0x004172ce    90
                          nop                                                              // 0x004172cf    90
-?IsFunctional@Living@@UAE_NXZ:
+?IsFunctional@Living@@UAEIXZ:
                          push               esi                                           // 0x004172d0    56
                          mov.s              esi, ecx                                      // 0x004172d1    8bf1
                          mov                eax, dword ptr [esi]                          // 0x004172d3    8b06
@@ -2534,8 +2534,8 @@ _StorePreviousState__6LivingFv:
 .Lbl_addr_0x004173b5:    xor.s              eax, eax                                      // 0x004173b5    33c0
                          pop                esi                                           // 0x004173b7    5e
                          ret                0x0004                                        // 0x004173b8    c20400
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x004173bb    e8b9a4feff
-?IsAnimate@Living@@UAE_NXZ:
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x004173bb    e8b9a4feff
+?IsAnimate@Living@@UAEIXZ:
                          mov                eax, 0x00000001                               // 0x004173c0    b801000000
                          ret                                                              // 0x004173c5    c3
                          nop                                                              // 0x004173c6    90
@@ -2572,7 +2572,7 @@ _StorePreviousState__6LivingFv:
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x004173ef    8b4c2408
                          push               ecx                                           // 0x004173f3    51
                          mov.s              ecx, esi                                      // 0x004173f4    8bce
-                         call               ?CanBeInspectedByCreature@Object@@UAE_NPAVCreature@@@Z                          // 0x004173f6    e845c70c00
+                         call               ?CanBeInspectedByCreature@Object@@UAEIPAVCreature@@@Z                          // 0x004173f6    e845c70c00
                          test               eax, eax                                      // 0x004173fb    85c0
                          {disp8} je         .Lbl_addr_0x00417408                          // 0x004173fd    7409
                          mov                eax, 0x00000001                               // 0x004173ff    b801000000
@@ -2677,7 +2677,7 @@ _StorePreviousState__6LivingFv:
                          nop                                                              // 0x0041749d    90
                          nop                                                              // 0x0041749e    90
                          nop                                                              // 0x0041749f    90
-?MoveAllowedForChessGame@Villager@@UAE_NXZ:
+?MoveAllowedForChessGame@Villager@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x004174a0    33c0
                          ret                0x0008                                        // 0x004174a2    c20800
                          nop                                                              // 0x004174a5    90
@@ -2691,7 +2691,7 @@ _StorePreviousState__6LivingFv:
                          nop                                                              // 0x004174ad    90
                          nop                                                              // 0x004174ae    90
                          nop                                                              // 0x004174af    90
-?AttackAllowedForChessGame@Villager@@UAE_NXZ:
+?AttackAllowedForChessGame@Villager@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x004174b0    33c0
                          ret                0x0008                                        // 0x004174b2    c20800
                          nop                                                              // 0x004174b5    90
@@ -3187,7 +3187,7 @@ _StorePreviousState__6LivingFv:
                          mov                eax, dword ptr [ecx]                          // 0x00417700    8b01
                          call               dword ptr [eax + 0xbd8]                       // 0x00417702    ff90d80b0000
                          ret                0x0004                                        // 0x00417708    c20400
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0041770b    e869a1feff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0041770b    e869a1feff
                          or                 eax, -0x1                                     // 0x00417710    83c8ff
                          ret                                                              // 0x00417713    c3
                          nop                                                              // 0x00417714    90
@@ -3546,7 +3546,7 @@ _StorePreviousState__6LivingFv:
                          nop                                                              // 0x004178cd    90
                          nop                                                              // 0x004178ce    90
                          nop                                                              // 0x004178cf    90
-?IsWonder@GameThingWithPos@@UAE_NXZ:
+?IsWonder@GameThingWithPos@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x004178d0    33c0
                          ret                                                              // 0x004178d2    c3
                          nop                                                              // 0x004178d3    90
@@ -4356,7 +4356,7 @@ _jmp_addr_0x00418010:    push               ebx                                 
 .Lbl_addr_0x004180c4:    mov                eax, 0x00000001                               // 0x004180c4    b801000000
                          pop                esi                                           // 0x004180c9    5e
                          ret                                                              // 0x004180ca    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x004180cb    e8a997feff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x004180cb    e8a997feff
                          sub                esp, 0x24                                     // 0x004180d0    83ec24
                          push               esi                                           // 0x004180d3    56
                          mov.s              esi, ecx                                      // 0x004180d4    8bf1
@@ -5633,7 +5633,7 @@ _jmp_addr_0x00418d20:    push               esi                                 
                          mov                eax, 0x00000001                               // 0x00419004    b801000000
                          pop                esi                                           // 0x00419009    5e
                          ret                                                              // 0x0041900a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0041900b    e86988feff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0041900b    e86988feff
                          sub                esp, 0x0c                                     // 0x00419010    83ec0c
                          push               ebx                                           // 0x00419013    53
                          push               esi                                           // 0x00419014    56
@@ -6021,7 +6021,7 @@ _jmp_addr_0x00419340:    push               esi                                 
 .Lbl_addr_0x004193c7:    xor.s              eax, eax                                      // 0x004193c7    33c0
                          pop                esi                                           // 0x004193c9    5e
                          ret                                                              // 0x004193ca    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x004193cb    e8a984feff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x004193cb    e8a984feff
 ?NetworkFriendlyStartLockedSelect@Object@@UAE_NPAVGInterfaceStatus@@@Z:
                          mov                eax, 0x00000001                               // 0x004193d0    b801000000
                          ret                0x0004                                        // 0x004193d5    c20400
@@ -6482,7 +6482,7 @@ _jmp_addr_0x00419490:    sub                esp, 0x18                           
                          nop                                                              // 0x0041989d    90
                          nop                                                              // 0x0041989e    90
                          nop                                                              // 0x0041989f    90
-?IsSolidToNewAbode@Object@@UAE_NXZ:
+?IsSolidToNewAbode@Object@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x004198a0    33c0
                          ret                                                              // 0x004198a2    c3
                          nop                                                              // 0x004198a3    90
@@ -6584,7 +6584,7 @@ _jmp_addr_0x00419490:    sub                esp, 0x18                           
                          nop                                                              // 0x0041996d    90
                          nop                                                              // 0x0041996e    90
                          nop                                                              // 0x0041996f    90
-?IsTownArtifact@Object@@UAE_NXZ:
+?IsTownArtifact@Object@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x00419970    33c0
                          ret                                                              // 0x00419972    c3
                          nop                                                              // 0x00419973    90
@@ -6669,7 +6669,7 @@ _jmp_addr_0x00419980:    push               ebx                                 
                          pop                ebx                                           // 0x00419a4b    5b
                          ret                0x0008                                        // 0x00419a4c    c20800
                          nop                                                              // 0x00419a4f    90
-?ShouldFootpathsGoRound@Object@@UAE_NXZ:
+?ShouldFootpathsGoRound@Object@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x00419a50    33c0
                          ret                                                              // 0x00419a52    c3
                          nop                                                              // 0x00419a53    90

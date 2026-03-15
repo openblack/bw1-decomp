@@ -197,11 +197,11 @@ void __fastcall ReactToPhysicsImpact__11CitadelPartFP13PhysicsObjectb(struct Obj
 // win1.41 004694c0 mac 101c3760 CitadelPart::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__11CitadelPartFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@CitadelPart@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 // win1.41 004694f0 mac 101c3830 CitadelPart::ShouldFootpathsGoRound(void)
-bool __fastcall ShouldFootpathsGoRound__11CitadelPartFv(struct Object* this) asm("?ShouldFootpathsGoRound@CitadelPart@@UAE_NXZ");
+bool __fastcall ShouldFootpathsGoRound__11CitadelPartFv(struct Object* this) asm("?ShouldFootpathsGoRound@CitadelPart@@UAEIXZ");
 // win1.41 00464ab0 mac 101c08e0 CitadelPart::IsRepaired(void)
-bool __fastcall IsRepaired__11CitadelPartFv(struct MultiMapFixed* this) asm("?IsRepaired@CitadelPart@@UAE_NXZ");
+bool __fastcall IsRepaired__11CitadelPartFv(struct MultiMapFixed* this) asm("?IsRepaired@CitadelPart@@UAEIXZ");
 // win1.41 00464ad0 mac 10081060 CitadelPart::IsBuilt(void)
-bool __fastcall IsBuilt__11CitadelPartFv(struct MultiMapFixed* this) asm("?IsBuilt@CitadelPart@@UAE_NXZ");
+bool __fastcall IsBuilt__11CitadelPartFv(struct MultiMapFixed* this) asm("?IsBuilt@CitadelPart@@UAEIXZ");
 // win1.41 004694a0 mac 101b91f0 CitadelPart::ConvertToPlanned(void)
 struct PlannedMultiMapFixed* __fastcall ConvertToPlanned__11CitadelPartFv(struct MultiMapFixed* this) asm("?ConvertToPlanned@CitadelPart@@UAEPAVPlannedMultiMapFixed@@XZ");
 

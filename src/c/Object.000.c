@@ -177,7 +177,7 @@ int __fastcall GetDetailMesh__6ObjectCF12DETAIL_LEVEL(struct Object* this, const
     asm("mov                eax, dword ptr [ecx]");                     // 0x00402660    8b01
     asm("call               dword ptr [eax + 0x608]");                  // 0x00402662    ff9008060000
     asm("ret                0x0004");                                   // 0x00402668    c20400
-    asm("call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9");                     // 0x0040266b    e809f2ffff
+    asm("call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9");                     // 0x0040266b    e809f2ffff
     __builtin_unreachable();
 }
 

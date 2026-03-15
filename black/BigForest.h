@@ -182,7 +182,7 @@ uint32_t __fastcall InterfaceSetInMagicHand__9BigForestFP16GInterfaceStatus(stru
 // win1.41 00438dc0 mac 100b23e0 BigForest::IsTuggable(void)
 uint32_t __fastcall IsTuggable__9BigForestFv(struct Object* this) asm("?IsTuggable@BigForest@@UAEIXZ");
 // win1.41 004390a0 mac 100b3050 BigForest::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__9BigForestFv(struct Object* this) asm("?InteractsWithPhysicsObjects@BigForest@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__9BigForestFv(struct Object* this) asm("?InteractsWithPhysicsObjects@BigForest@@UAEIXZ");
 // win1.41 00438f50 mac 100b3530 BigForest::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__9BigForestFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@BigForest@@UAE_NPAVCreature@@@Z");
 // win1.41 00438dd0 mac 100b2420 BigForest::VillagerMustAvoid(Villager *)

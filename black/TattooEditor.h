@@ -65,7 +65,7 @@ void __fastcall Init__12TattooEditorFUlUlPFiP8SetupBoxP12SetupControlii_v(struct
 // win1.41 005427e0 mac 105bda80 TattooEditor::Destroy(void)
 void __fastcall Destroy__12TattooEditorFv(struct DialogBoxBase* this) asm("?Destroy@TattooEditor@@UAEXXZ");
 // win1.41 0053bd20 mac 105c5eb0 TattooEditor::CanESCOut(void)
-bool __fastcall CanESCOut__12TattooEditorFv(struct DialogBoxBase* this) asm("?CanESCOut@TattooEditor@@UAE_NXZ");
+bool __fastcall CanESCOut__12TattooEditorFv(struct DialogBoxBase* this) asm("?CanESCOut@TattooEditor@@UAEIXZ");
 // win1.41 005433e0 mac 105bc900 TattooEditor::InitControls(void)
 void __fastcall InitControls__12TattooEditorFv(struct DialogBoxBase* this) asm("?InitControls@TattooEditor@@UAEXXZ");
 

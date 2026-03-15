@@ -38,7 +38,7 @@
 .globl ?Init@MiniDialogBoxOptions@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
 .globl ?Destroy@MiniDialogBoxOptions@@UAEXXZ
 .globl ?InitControls@MiniDialogBoxOptions@@UAEXXZ
-.globl ?CanESCOut@MiniDialogBoxOptions@@UAE_NXZ
+.globl ?CanESCOut@MiniDialogBoxOptions@@UAEIXZ
 
 start_0x00514f20_0x00515960:
 // Snippet: asm, [0x00514f20, 0x0051593a)
@@ -746,7 +746,7 @@ start_0x00514f20_0x00515960:
                          nop                                                             // 0x0051580d    90
                          nop                                                             // 0x0051580e    90
                          nop                                                             // 0x0051580f    90
-?CanESCOut@MiniDialogBoxOptions@@UAE_NXZ:
+?CanESCOut@MiniDialogBoxOptions@@UAEIXZ:
                          {disp32} mov      eax, dword ptr [_game]                        // 0x00515810    a15c19d000
                          {disp32} mov      ecx, dword ptr [eax + 0x00250304]             // 0x00515815    8b8804032500
                          {disp8} mov       eax, dword ptr [ecx + 0x5c]                   // 0x0051581b    8b415c

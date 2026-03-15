@@ -55,7 +55,7 @@ _globl_ct_0x0062ac30:    {disp32} jmp      .Lbl_addr_0x0062ac40                 
                          nop                                                             // 0x0062ac3f    90
 .Lbl_addr_0x0062ac40:    {disp32} mov      dword ptr [data_bytes + 0x37ade8], 0xffffffff // 0x0062ac40    c705e80dd400ffffffff
                          ret                                                             // 0x0062ac4a    c3
-                         call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0062ac4b    e8a96bddff
+                         call              ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x0062ac4b    e8a96bddff
 _globl_ct_0x0062ac50:    {disp32} jmp      .Lbl_addr_0x0062ac60                          // 0x0062ac50    e90b000000
                          nop                                                             // 0x0062ac55    90
                          nop                                                             // 0x0062ac56    90

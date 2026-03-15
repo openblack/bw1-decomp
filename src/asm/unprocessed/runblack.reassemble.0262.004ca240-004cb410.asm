@@ -1530,7 +1530,7 @@ _globl_ct_0x004cb3a0:    {disp32} jmp       .Lbl_addr_0x004cb3b0                
                          nop                                                              // 0x004cb3af    90
 .Lbl_addr_0x004cb3b0:    {disp32} mov       dword ptr [data_bytes + 0x2bc914], 0xffffffff // 0x004cb3b0    c7051429c800ffffffff
                          ret                                                              // 0x004cb3ba    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x004cb3bb    e8b964f3ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x004cb3bb    e8b964f3ff
 _jmp_addr_0x004cb3c0:    {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x004cb3c0    8b4128
                          {disp32} mov       eax, dword ptr [eax + 0x000001f4]             // 0x004cb3c3    8b80f4010000
                          cmp                eax, 0x04                                     // 0x004cb3c9    83f804

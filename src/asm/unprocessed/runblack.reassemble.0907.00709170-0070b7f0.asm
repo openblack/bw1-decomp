@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?SetIdentity@LHMatrix@@QAEXXZ
+.extern ?SetIdentityMatrix@LHMatrix@@QAEXXZ
 .extern ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
 .extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
@@ -24,7 +24,7 @@
 .extern ??0FixedObject@@QAE@XZ
 .extern @__ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff@24
 .extern ?Save@Fixed@@UAEIPAVGameOSFile@@@Z
-.extern ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@Fixed@@UAEIAAVGameOSFile@@@Z
 .extern ?CallVirtualFunctionsForCreation@SingleMapFixed@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x0052eac0
 .extern _jmp_addr_0x0052f690
@@ -107,8 +107,8 @@
 .globl ?CanBeCrushed@ScriptHighlight@@UAEIXZ
 .globl ?IsEffectReceiver@ScriptHighlight@@UAEIPAVEffectValues@@@Z
 .globl ?ValidAsInterfaceTarget@ScriptHighlight@@UAEIXZ
-.globl ?CanBecomeAPhysicsObject@ScriptHighlight@@UAE_NXZ
-.globl ?InteractsWithPhysicsObjects@ScriptHighlight@@UAE_NXZ
+.globl ?CanBecomeAPhysicsObject@ScriptHighlight@@UAEIXZ
+.globl ?InteractsWithPhysicsObjects@ScriptHighlight@@UAEIXZ
 .globl ?CanBePickedUpByCreature@ScriptHighlight@@UAEIPAVCreature@@@Z
 .globl ?InterfaceMustBeInInfluenceForInteraction@ScriptHighlight@@UAEIXZ
 .globl ?GetSaveType@ScriptHighlight@@UAEIXZ
@@ -913,7 +913,7 @@ _jmp_addr_0x00709700:    push               esi                                 
                          nop                                                              // 0x0070980d    90
                          nop                                                              // 0x0070980e    90
                          nop                                                              // 0x0070980f    90
-?CanBecomeAPhysicsObject@ScriptHighlight@@UAE_NXZ:
+?CanBecomeAPhysicsObject@ScriptHighlight@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x00709810    33c0
                          ret                                                              // 0x00709812    c3
                          nop                                                              // 0x00709813    90
@@ -929,7 +929,7 @@ _jmp_addr_0x00709700:    push               esi                                 
                          nop                                                              // 0x0070981d    90
                          nop                                                              // 0x0070981e    90
                          nop                                                              // 0x0070981f    90
-?InteractsWithPhysicsObjects@ScriptHighlight@@UAE_NXZ:
+?InteractsWithPhysicsObjects@ScriptHighlight@@UAEIXZ:
                          xor.s              al, al                                        // 0x00709820    32c0
                          ret                                                              // 0x00709822    c3
                          nop                                                              // 0x00709823    90
@@ -1679,7 +1679,7 @@ _jmp_addr_0x00709c40:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          fpatan                                                           // 0x0070a031    d9f3
                          {disp32} fadd      dword ptr [rdata_bytes + 0x1e8d8]             // 0x0070a033    d805d8788c00
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x0070a039    d95c241c
-                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x0070a03d    e8be94cfff
+                         call               ?SetIdentityMatrix@LHMatrix@@QAEXXZ                 // 0x0070a03d    e8be94cfff
                          {disp8} fld        dword ptr [esp + 0x1c]                        // 0x0070a042    d944241c
                          {disp8} mov        ecx, dword ptr [esp + 0x30]                   // 0x0070a046    8b4c2430
                          fcos                                                             // 0x0070a04a    d9ff
@@ -2384,7 +2384,7 @@ _jmp_addr_0x0070a510:    {disp32} fld       dword ptr [data_bytes + 0x3d07d8]   
                          {disp8} mov        esi, dword ptr [esp + 0x0c]                   // 0x0070a8f2    8b74240c
                          mov.s              ebx, ecx                                      // 0x0070a8f6    8bd9
                          push               esi                                           // 0x0070a8f8    56
-                         call               ?Load@Fixed@@QAEIAAVGGameOSFile@@@Z         // 0x0070a8f9    e87238e2ff
+                         call               ?Load@Fixed@@UAEIAAVGameOSFile@@@Z         // 0x0070a8f9    e87238e2ff
                          test               eax, eax                                      // 0x0070a8fe    85c0
                          {disp32} je        .Lbl_addr_0x0070aa61                          // 0x0070a900    0f845b010000
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x0070a906    a194c9be00

@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?SetIdentity@LHMatrix@@QAEXXZ
+.extern ?SetIdentityMatrix@LHMatrix@@QAEXXZ
 .extern ?GetSizeNameData@LH3DMesh@@QAEIXZ
 .extern ?GetSizeFootprintData_dup1@LH3DMesh@@QAEIXZ
 .extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
@@ -239,7 +239,7 @@
 .globl ?UpdateSpellInfo@WorshipSpellIcon@@UAEXPAVSpell@@PAUPSysProcessInfo@@@Z
 .globl ?Save@WorshipSpellIcon@@UAEIAAVGameOSFile@@@Z
 .globl ?Load@WorshipSpellIcon@@UAEIAAVGameOSFile@@@Z
-.globl ?IsSpellSeedReturnPoint@WorshipTotem@@UBE_NXZ
+.globl ?IsSpellSeedReturnPoint@WorshipTotem@@UBEIXZ
 .globl ?IsEffectReceiver@WorshipTotem@@UAEIPAVEffectValues@@@Z
 .globl ?SetSpecularColor@WorshipTotem@@UAEXULH3DColor@@@Z
 .globl ?GetSpecularColor@WorshipTotem@@UAE?AULH3DColor@@XZ
@@ -1982,7 +1982,7 @@ _jmp_addr_0x00780740:    push               ebx                                 
                          nop                                                              // 0x0078078d    90
                          nop                                                              // 0x0078078e    90
                          nop                                                              // 0x0078078f    90
-?IsSpellSeedReturnPoint@WorshipTotem@@UBE_NXZ:
+?IsSpellSeedReturnPoint@WorshipTotem@@UBEIXZ:
                          mov                eax, 0x00000001                               // 0x00780790    b801000000
                          ret                                                              // 0x00780795    c3
                          nop                                                              // 0x00780796    90
@@ -2537,7 +2537,7 @@ _jmp_addr_0x007809f0:    push               ecx                                 
                          {disp8} fild       dword ptr [esp + 0x24]                        // 0x00780c49    db442424
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]       // 0x00780c4d    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x00780c53    d95c241c
-                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x00780c57    e8a428c8ff
+                         call               ?SetIdentityMatrix@LHMatrix@@QAEXXZ                 // 0x00780c57    e8a428c8ff
                          {disp8} mov        eax, dword ptr [esp + 0x14]                   // 0x00780c5c    8b442414
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                   // 0x00780c60    8b4c2418
                          {disp8} mov        edx, dword ptr [esp + 0x1c]                   // 0x00780c64    8b54241c
@@ -10806,7 +10806,7 @@ _globl_ct_0x00785230:    {disp32} jmp       .Lbl_addr_0x00785240                
                          {disp8} lea        ecx, dword ptr [esp + 0x44]                   // 0x007856fe    8d4c2444
                          {disp8} mov        dword ptr [esp + 0x0c], eax                   // 0x00785702    8944240c
                          {disp8} mov        dword ptr [esp + 0x04], edx                   // 0x00785706    89542404
-                         call               ?SetIdentity@LHMatrix@@QAEXXZ                 // 0x0078570a    e8f1ddc7ff
+                         call               ?SetIdentityMatrix@LHMatrix@@QAEXXZ                 // 0x0078570a    e8f1ddc7ff
                          {disp8} fld        dword ptr [esp + 0x04]                        // 0x0078570f    d9442404
                          fcos                                                             // 0x00785713    d9ff
                          {disp8} fstp       dword ptr [esp + 0x64]                        // 0x00785715    d95c2464

@@ -252,13 +252,13 @@ uint32_t __fastcall GetPhysicsConstantsType__8ScaffoldFv(struct Object* this) as
 // win1.41 006e8780 mac 101434e0 Scaffold::EndPhysics(PhysicsObject *, bool)
 void __fastcall EndPhysics__8ScaffoldFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?EndPhysics@Scaffold@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 0055e110 mac 1013e610 Scaffold::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__8ScaffoldFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Scaffold@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__8ScaffoldFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Scaffold@@UAEIXZ");
 // win1.41 006ea940 mac 1013f890 Scaffold::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__8ScaffoldFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@Scaffold@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 006ea910 mac 1013f8e0 Scaffold::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__8ScaffoldFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Scaffold@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__8ScaffoldFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Scaffold@@UAEIXZ");
 // win1.41 006e8570 mac 101436c0 Scaffold::ProcessInHand(void)
-bool __fastcall ProcessInHand__8ScaffoldFv(struct Object* this) asm("?ProcessInHand@Scaffold@@UAE_NXZ");
+bool __fastcall ProcessInHand__8ScaffoldFv(struct Object* this) asm("?ProcessInHand@Scaffold@@UAEIXZ");
 // win1.41 006eaf30 mac 1013e710 Scaffold::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__8ScaffoldFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@Scaffold@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 

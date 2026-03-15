@@ -99,11 +99,11 @@ struct WorshipSite* __fastcall GetWorshipSite__18WorshipSiteUpgradeFv(struct Gam
 // win1.41 0077ef30 mac inlined WorshipSiteUpgrade::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__18WorshipSiteUpgradeFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@WorshipSiteUpgrade@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 // win1.41 004220f0 mac inlined WorshipSiteUpgrade::IsRepaired(void)
-bool __fastcall IsRepaired__18WorshipSiteUpgradeFv(struct MultiMapFixed* this) asm("?IsRepaired@WorshipSiteUpgrade@@UAE_NXZ");
+bool __fastcall IsRepaired__18WorshipSiteUpgradeFv(struct MultiMapFixed* this) asm("?IsRepaired@WorshipSiteUpgrade@@UAEIXZ");
 // win1.41 00422110 mac inlined WorshipSiteUpgrade::IsBuilt(void)
-bool __fastcall IsBuilt__18WorshipSiteUpgradeFv(struct MultiMapFixed* this) asm("?IsBuilt@WorshipSiteUpgrade@@UAE_NXZ");
+bool __fastcall IsBuilt__18WorshipSiteUpgradeFv(struct MultiMapFixed* this) asm("?IsBuilt@WorshipSiteUpgrade@@UAEIXZ");
 // win1.41 00527790 mac inlined WorshipSiteUpgrade::IsDrawBuilding(void)
-bool __fastcall IsDrawBuilding__18WorshipSiteUpgradeFv(struct MultiMapFixed* this) asm("?IsDrawBuilding@WorshipSiteUpgrade@@UAE_NXZ");
+bool __fastcall IsDrawBuilding__18WorshipSiteUpgradeFv(struct MultiMapFixed* this) asm("?IsDrawBuilding@WorshipSiteUpgrade@@UAEIXZ");
 // win1.41 0077edd0 mac inlined WorshipSiteUpgrade::ConvertToPlanned(void)
 struct PlannedMultiMapFixed* __fastcall ConvertToPlanned__18WorshipSiteUpgradeFv(struct MultiMapFixed* this) asm("?ConvertToPlanned@WorshipSiteUpgrade@@UAEPAVPlannedMultiMapFixed@@XZ");
 

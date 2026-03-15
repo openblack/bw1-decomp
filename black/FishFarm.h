@@ -239,7 +239,7 @@ struct MapCoords* __fastcall GetArrivePos__8FishFarmFP9MapCoords(struct GameThin
 // win1.41 0052c4d0 mac 100dd5a0 FishFarm::GetCreatureBeliefType(void)
 uint32_t __fastcall GetCreatureBeliefType__8FishFarmFv(struct GameThingWithPos* this) asm("?GetCreatureBeliefType@FishFarm@@UAEIXZ");
 // win1.41 0052c980 mac 100dc470 FishFarm::IsObjectInMap(void)
-bool __fastcall IsObjectInMap__8FishFarmFv(struct GameThingWithPos* this) asm("?IsObjectInMap@FishFarm@@UAE_NXZ");
+bool __fastcall IsObjectInMap__8FishFarmFv(struct GameThingWithPos* this) asm("?IsObjectInMap@FishFarm@@UAEIXZ");
 // win1.41 0052c550 mac 100dd800 FishFarm::CanBeEatenByCreature(Creature *)
 uint32_t __fastcall CanBeEatenByCreature__8FishFarmFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?CanBeEatenByCreature@FishFarm@@UAEIPAVCreature@@@Z");
 // win1.41 0052c560 mac 100dd850 FishFarm::CanBeSleptNextToByCreature(Creature *)
@@ -287,7 +287,7 @@ float __fastcall GetFoodValue__8FishFarmF9FOOD_TYPE(struct Object* this, const v
 // win1.41 0052d760 mac 100dac50 FishFarm::GetResourceType(void)
 enum RESOURCE_TYPE __fastcall GetResourceType__8FishFarmFv(struct Object* this) asm("?GetResourceType@FishFarm@@UAE?AW4RESOURCE_TYPE@@XZ");
 // win1.41 0052c590 mac 100dd920 FishFarm::IsLockedInInteract(void)
-bool __fastcall IsLockedInInteract__8FishFarmFv(struct Object* this) asm("?IsLockedInInteract@FishFarm@@UAE_NXZ");
+bool __fastcall IsLockedInInteract__8FishFarmFv(struct Object* this) asm("?IsLockedInInteract@FishFarm@@UAEIXZ");
 // win1.41 0052d750 mac 100dac90 FishFarm::ValidForLockedSelectProcess(GInterfaceStatus *)
 bool32_t __fastcall ValidForLockedSelectProcess__8FishFarmFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?ValidForLockedSelectProcess@FishFarm@@UAE_NPAVGInterfaceStatus@@@Z");
 // win1.41 0052d770 mac 100da990 FishFarm::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
@@ -303,7 +303,7 @@ uint32_t __fastcall ValidForPlaceInHand__8FishFarmFP16GInterfaceStatus(struct Ob
 // win1.41 0052d6b0 mac 100dadc0 FishFarm::InterfaceSetInMagicHand(GInterfaceStatus *)
 uint32_t __fastcall InterfaceSetInMagicHand__8FishFarmFP16GInterfaceStatus(struct Object* this, const void* edx, struct GInterfaceStatus* param_1) asm("?InterfaceSetInMagicHand@FishFarm@@UAEIPAVGInterfaceStatus@@@Z");
 // win1.41 0052c4b0 mac 100dd510 FishFarm::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__8FishFarmFv(struct Object* this) asm("?InteractsWithPhysicsObjects@FishFarm@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__8FishFarmFv(struct Object* this) asm("?InteractsWithPhysicsObjects@FishFarm@@UAEIXZ");
 // win1.41 0052c460 mac 100dd3e0 FishFarm::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__8FishFarmFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@FishFarm@@UAE_NPAVCreature@@@Z");
 // win1.41 0052d950 mac 100da4d0 FishFarm::ProcessInInteract(GInterfaceStatus *)

@@ -74,7 +74,7 @@
 .globl _Destroy__13DialogBoxBaseFv
 .globl _Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v
 .globl _Show__13DialogBoxBaseFv
-.globl ?CanESCOut@DialogBoxOptions@@UAE_NXZ
+.globl ?CanESCOut@DialogBoxOptions@@UAEIXZ
 .globl ?Init@DialogBoxOptions@@UAEXIIP6AXHPAVSetupBox@@PAVSetupControl@@HH@Z@Z
 .globl ?Destroy@DialogBoxOptions@@UAEXXZ
 .globl ?InitControls@DialogBoxOptions@@UAEXXZ
@@ -563,7 +563,7 @@ _globl_ct_0x005137c0:    {disp32} jmp      .Lbl_addr_0x005137d0                 
                          nop                                                             // 0x005137cf    90
 .Lbl_addr_0x005137d0:    {disp32} mov      dword ptr [data_bytes + 0x3002b0], 0xffffffff // 0x005137d0    c705b062cc00ffffffff
                          ret                                                             // 0x005137da    c3
-                         call              ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x005137db    e899e0eeff
+                         call              ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x005137db    e899e0eeff
 _globl_ct_0x005137e0:    {disp32} jmp      .Lbl_addr_0x005137f0                          // 0x005137e0    e90b000000
                          nop                                                             // 0x005137e5    90
                          nop                                                             // 0x005137e6    90
@@ -615,7 +615,7 @@ _globl_ct_0x005137e0:    {disp32} jmp      .Lbl_addr_0x005137f0                 
                          nop                                                             // 0x0051382d    90
                          nop                                                             // 0x0051382e    90
                          nop                                                             // 0x0051382f    90
-?CanESCOut@DialogBoxOptions@@UAE_NXZ:
+?CanESCOut@DialogBoxOptions@@UAEIXZ:
                          {disp32} mov      eax, dword ptr [_game]                        // 0x00513830    a15c19d000
                          {disp32} mov      ecx, dword ptr [eax + 0x00250304]             // 0x00513835    8b8804032500
                          {disp8} mov       eax, dword ptr [ecx + 0x5c]                   // 0x0051383b    8b415c
@@ -1349,7 +1349,7 @@ _jmp_addr_0x00514020:    {disp8} mov       eax, dword ptr [esp + 0x04]          
                          pop               esi                                           // 0x005140a4    5e
                          add               esp, 0x10                                     // 0x005140a5    83c410
                          ret               0x0004                                        // 0x005140a8    c20400
-                         call              ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x005140ab    e8c9d7eeff
+                         call              ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x005140ab    e8c9d7eeff
 _jmp_addr_0x005140b0:    {disp8} mov       eax, dword ptr [ecx + 0x48]                   // 0x005140b0    8b4148
                          ret                                                             // 0x005140b3    c3
                          nop                                                             // 0x005140b4    90

@@ -136,7 +136,7 @@ _jmp_addr_0x00471850:    {disp8} mov      edx, dword ptr [esp + 0x04]           
                          pop              esi                                           // 0x004718a1    5e
                          add              esp, 0x00000108                               // 0x004718a2    81c408010000
                          ret              0x0004                                        // 0x004718a8    c20400
-                         call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x004718ab    e8c9fff8ff
+                         call             ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x004718ab    e8c9fff8ff
                          {disp8} mov      edx, dword ptr [esp + 0x04]                   // 0x004718b0    8b542404
                          sub              esp, 0x00000108                               // 0x004718b4    81ec08010000
                          cmp              edx, -0x01                                    // 0x004718ba    83faff
@@ -347,7 +347,7 @@ _jmp_addr_0x00471aa0:    push             esi                                   
                          add              esp, 0x04                                     // 0x00471ad6    83c404
 .Lbl_addr_0x00471ad9:    pop              esi                                           // 0x00471ad9    5e
                          ret                                                            // 0x00471ada    c3
-                         call             ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00471adb    e899fdf8ff
+                         call             ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x00471adb    e899fdf8ff
 .Lbl_addr_0x00471ae0:    push             ebp                                           // 0x00471ae0    55
                          mov.s            ebp, esp                                      // 0x00471ae1    8bec
                          push             ecx                                           // 0x00471ae3    51

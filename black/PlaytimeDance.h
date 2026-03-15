@@ -69,7 +69,7 @@ void __fastcall ToBeDeleted__15PlaytimeElementFi(struct Base* this, const void* 
 // win1.41 0066c3e0 mac inlined PlaytimeElement::GetTown(void)
 struct Town* __fastcall GetTown__15PlaytimeElementFv(struct GameThing* this) asm("?GetTown@PlaytimeElement@@UAEPAVTown@@XZ");
 // win1.41 0066c810 mac inlined PlaytimeElement::IsFunctional(void)
-bool __fastcall IsFunctional__15PlaytimeElementFv(struct GameThing* this) asm("?IsFunctional@PlaytimeElement@@UAE_NXZ");
+bool __fastcall IsFunctional__15PlaytimeElementFv(struct GameThing* this) asm("?IsFunctional@PlaytimeElement@@UAEIXZ");
 
 #endif // __cplusplus
 

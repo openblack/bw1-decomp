@@ -128,7 +128,7 @@ struct MapCoords* __fastcall GetResourceNearestEdge__13MultiMapFixedF13RESOURCE_
     asm("mov.s              eax, esi                   "); // 0x004015a5    8bc6
     asm("pop                esi                        "); // 0x004015a7    5e
     asm("ret                0x0010                     "); // 0x004015a8    c21000
-    asm("call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9"); // 0x004015ab    e8c9020000
+    asm("call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9"); // 0x004015ab    e8c9020000
     __builtin_unreachable();
 }
 

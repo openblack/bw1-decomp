@@ -114,7 +114,7 @@ void __fastcall __dt__9FieldCropFv(struct Base* this, const void* edx, uint32_t 
 // win1.41 00607e20 mac 103bb470 FieldCrop::ToBeDeleted(int)
 void __fastcall ToBeDeleted__9FieldCropFi(struct Base* this, const void* edx, int param_1) asm("?ToBeDeleted@FieldCrop@@UAEXH@Z");
 // win1.41 00608270 mac 103bb1e0 FieldCrop::IsFunctional(void)
-bool __fastcall IsFunctional__9FieldCropFv(struct GameThing* this) asm("?IsFunctional@FieldCrop@@UAE_NXZ");
+bool __fastcall IsFunctional__9FieldCropFv(struct GameThing* this) asm("?IsFunctional@FieldCrop@@UAEIXZ");
 // win1.41 0055d100 mac 103bab60 FieldCrop::GetDebugText(void)
 char* __fastcall GetDebugText__9FieldCropFv(struct GameThing* this) asm("?GetDebugText@FieldCrop@@UAEPADXZ");
 // win1.41 0055d0f0 mac 103bab20 FieldCrop::GetSaveType(void)
@@ -142,13 +142,13 @@ uint32_t __fastcall GetPhysicsConstantsType__9FieldCropFv(struct Object* this) a
 // win1.41 006082f0 mac 103bafd0 FieldCrop::SetUpPhysOb(PhysOb *)
 void __fastcall SetUpPhysOb__9FieldCropFP6PhysOb(struct Object* this, const void* edx, struct PhysOb* param_1) asm("?SetUpPhysOb@FieldCrop@@UAEXPAUPhysOb@@@Z");
 // win1.41 00608340 mac 103baf80 FieldCrop::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__9FieldCropFv(struct Object* this) asm("?InteractsWithPhysicsObjects@FieldCrop@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__9FieldCropFv(struct Object* this) asm("?InteractsWithPhysicsObjects@FieldCrop@@UAEIXZ");
 // win1.41 006082d0 mac 103bb100 FieldCrop::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__9FieldCropFv(struct Object* this) asm("?CanBecomeAPhysicsObject@FieldCrop@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__9FieldCropFv(struct Object* this) asm("?CanBecomeAPhysicsObject@FieldCrop@@UAEIXZ");
 // win1.41 00608440 mac 103baba0 FieldCrop::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__9FieldCropFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@FieldCrop@@UAE_NPAVCreature@@@Z");
 // win1.41 00608350 mac 103baf40 FieldCrop::IsARootedObject(void)
-bool __fastcall IsARootedObject__9FieldCropFv(struct Object* this) asm("?IsARootedObject@FieldCrop@@UAE_NXZ");
+bool __fastcall IsARootedObject__9FieldCropFv(struct Object* this) asm("?IsARootedObject@FieldCrop@@UAEIXZ");
 
 #endif // __cplusplus
 

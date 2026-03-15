@@ -217,7 +217,7 @@ struct MultiMapFixed* __fastcall CreatePlanned__12PlannedAbodeFf(struct PlannedM
     asm("mov.s              ecx, esi");                                      // 0x00405736    8bce
     asm("call               ?GetInfo@PlannedAbode@@SAPAVGAbodeInfo@@XZ");                          // 0x00405738    e893ffffff
     asm("mov.s              ecx, eax");                                      // 0x0040573d    8bc8
-    asm("call               ?IsOkToCreateAtPos@GAbodeInfo@@QBE_NPBUMapCoords@@MMPAVTown@@@Z");  // 0x0040573f    e8ccf3ffff
+    asm("call               ?IsOkToCreateAtPos@GAbodeInfo@@QBEIABUMapCoords@@MMPAVTown@@@Z");  // 0x0040573f    e8ccf3ffff
     asm("test               eax, eax");                                      // 0x00405744    85c0
     asm("{disp8} je         LAB__addr_0x0040575c");                          // 0x00405746    7414
     asm("{disp8} mov        eax, dword ptr [esp + 0x0c]");                   // 0x00405748    8b44240c
@@ -265,7 +265,7 @@ struct MultiMapFixed* __fastcall CreatePlannedNoFixedCheck__12PlannedAbodeFf(str
     asm("push               eax");                                           // 0x004057a7    50
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x004057a8    8d4e14
     asm("push               ecx");                                           // 0x004057ab    51
-    asm("call               ?Create@Abode@@SAPAV1@PBUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z"); // 0x004057ac    e86fd6ffff
+    asm("call               ?Create@@YAPAVAbode@@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMIIMHH@Z"); // 0x004057ac    e86fd6ffff
     asm("mov.s              edi, eax");                                      // 0x004057b1    8bf8
     asm("add                esp, 0x28");                                     // 0x004057b3    83c428
     asm("test               edi, edi");                                      // 0x004057b6    85ff
@@ -336,7 +336,7 @@ uint32_t __fastcall Save__12PlannedAbodeFR10GameOSFile(struct GameThing* this, c
     asm("{disp8} mov        edi, dword ptr [esp + 0x0c]");                   // 0x00405832    8b7c240c
     asm("mov.s              esi, ecx");                                      // 0x00405836    8bf1
     asm("push               edi");                                           // 0x00405838    57
-    asm("call               ?Save@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z");  // 0x00405839    e852312400
+    asm("call               ?Save@PlannedMultiMapFixed@@UAEIAAVGameOSFile@@@Z");  // 0x00405839    e852312400
     asm("test               eax, eax");                                      // 0x0040583e    85c0
     asm("{disp8} je         LAB__addr_0x00405857");                          // 0x00405840    7415
     asm("{disp8} mov        eax, dword ptr [esi + 0x48]");                   // 0x00405842    8b4648
@@ -363,7 +363,7 @@ uint32_t __fastcall Load__12PlannedAbodeFR10GameOSFile(struct GameThing* this, c
     asm("{disp8} mov        edi, dword ptr [esp + 0x0c]");                   // 0x00405862    8b7c240c
     asm("mov.s              esi, ecx");                                      // 0x00405866    8bf1
     asm("push               edi");                                           // 0x00405868    57
-    asm("call               ?Load@PlannedMultiMapFixed@@QAEIAAVGGameOSFile@@@Z");  // 0x00405869    e882322400
+    asm("call               ?Load@PlannedMultiMapFixed@@UAEIAAVGameOSFile@@@Z");  // 0x00405869    e882322400
     asm("test               eax, eax");                                      // 0x0040586e    85c0
     asm("{disp8} je         LAB__addr_0x00405887");                          // 0x00405870    7415
     asm("add                esi, 0x48");                                     // 0x00405872    83c648

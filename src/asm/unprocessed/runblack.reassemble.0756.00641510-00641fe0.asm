@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x0053c480
 .extern ?JustDoNewProfileBox@FrontEnd@@QAEXXZ
 .extern ?JustDoSkirmishGameBox@FrontEnd@@QAEXXZ
-.extern ?StartGame@GGame@@QAEIXZ
+.extern ?StartGame@GGame@@QAEXXZ
 .extern _jmp_addr_0x0054d610
 .extern _jmp_addr_0x0054eb40
 .extern _jmp_addr_0x0054ec80
@@ -359,7 +359,7 @@ _globl_ct_0x00641870:    {disp32} jmp      .Lbl_addr_0x00641880                 
                          nop                                                             // 0x0064187f    90
 .Lbl_addr_0x00641880:    {disp32} mov      dword ptr [data_bytes + 0x380ab0], 0xffffffff // 0x00641880    c705b06ad400ffffffff
                          ret                                                             // 0x0064188a    c3
-                         call              ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0064188b    e869ffdbff
+                         call              ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x0064188b    e869ffdbff
 _globl_ct_0x00641890:    {disp32} jmp      .Lbl_addr_0x006418a0                          // 0x00641890    e90b000000
                          nop                                                             // 0x00641895    90
                          nop                                                             // 0x00641896    90
@@ -931,7 +931,7 @@ _ScanParameters__Fv@0:   push              ebx                                  
                          {disp32} mov      eax, dword ptr [data_bytes + 0x2387f8]        // 0x00641ee7    a1f8e7bf00
                          mov               dword ptr [eax], edx                          // 0x00641eec    8910
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00641eee    8b0d5c19d000
-                         call              ?StartGame@GGame@@QAEIXZ                        // 0x00641ef4    e897a2f0ff
+                         call              ?StartGame@GGame@@QAEXXZ                        // 0x00641ef4    e897a2f0ff
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x00641ef9    8b0d5c19d000
                          call              _jmp_addr_0x0054ec80                          // 0x00641eff    e87ccdf0ff
                          {disp32} mov      eax, dword ptr [_game]                        // 0x00641f04    a15c19d000

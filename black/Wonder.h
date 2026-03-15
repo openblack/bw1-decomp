@@ -162,7 +162,7 @@ void __fastcall CallVirtualFunctionsForCreation__6WonderFRC9MapCoords(struct Obj
 // win1.41 00779190 mac 10161310 Wonder::Get3DType(void)
 enum LH3DObject__ObjectType __fastcall Get3DType__6WonderFv(struct Object* this) asm("?Get3DType@Wonder@@UAE?AW4LH3DObject__ObjectType@@XZ");
 // win1.41 00778f30 mac 10161920 Wonder::Built(void)
-bool __fastcall Built__6WonderFv(struct MultiMapFixed* this) asm("?Built@Wonder@@UAE_NXZ");
+bool __fastcall Built__6WonderFv(struct MultiMapFixed* this) asm("?Built@Wonder@@UAEIXZ");
 // win1.41 00779070 mac 10161620 Wonder::SetPower(float)
 void __fastcall SetPower__6WonderFf(struct MultiMapFixed* this, const void* edx, float param_1) asm("?SetPower@Wonder@@UAEXM@Z");
 // win1.41 00778fc0 mac 10161700 Wonder::AddToPlayer(void)

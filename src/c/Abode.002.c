@@ -366,7 +366,7 @@ struct Abode* __cdecl Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii(c
     asm("push               ecx");                                      // 0x00402ec6    51
     asm("push               eax");                                      // 0x00402ec7    50
     asm("push               edx");                                      // 0x00402ec8    52
-    asm("call               ?Create@Windmill@@SAPAVAbode@@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");  // 0x00402ec9    e8c2290000
+    asm("call               ?Create@Windmill@@SAPAV1@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");  // 0x00402ec9    e8c2290000
     asm("{disp32} jmp       LAB__addr_0x0040306d");                     // 0x00402ece    e99a010000
     asm("{disp8} mov        ecx, dword ptr [esp + 0x28]");              // 0x00402ed3    8b4c2428
     asm("{disp8} mov        edx, dword ptr [esp + 0x24]");              // 0x00402ed7    8b542424
@@ -488,7 +488,7 @@ struct Abode* __cdecl Create__5AbodeFRC9MapCoordsPC10GAbodeInfoP4TownffUlUlfii(c
     asm("push               ecx");                                      // 0x00403017    51
     asm("push               eax");                                      // 0x00403018    50
     asm("push               edx");                                      // 0x00403019    52
-    asm("call               ?CreateWithoutSpecial@Abode@@SAPAVAbode@@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");                     // 0x0040301a    e871010000
+    asm("call               ?CreateWithoutSpecial@@YAPAVAbode@@ABUMapCoords@@PBVGAbodeInfo@@PAVTown@@MMMH@Z");                     // 0x0040301a    e871010000
     asm("{disp8} jmp        LAB__addr_0x0040306d");                     // 0x0040301f    eb4c
     asm("LAB__addr_0x00403021:");
     asm("{disp8} mov        eax, dword ptr [esp + 0x28]");              // 0x00403021    8b442428
@@ -849,7 +849,7 @@ void __fastcall CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords(struct Obje
     asm("LAB__addr_0x0040340f:");
     asm("{disp8} lea        edi, dword ptr [esi + 0x14]");                   // 0x0040340f    8d7e14
     asm("mov.s              ecx, edi");                                      // 0x00403412    8bcf
-    asm("call               ?SetIdentity@LHMatrix@@QAEXXZ");                 // 0x00403414    e8e7000000
+    asm("call               ?SetIdentityMatrix@LHMatrix@@QAEXXZ");                 // 0x00403414    e8e7000000
     asm("{disp8} fld        dword ptr [esp + 0x08]");                        // 0x00403419    d9442408
     asm("fcos");                                                             // 0x0040341d    d9ff
     asm("{disp8} mov        ecx, dword ptr [esp + 0x10]");                   // 0x0040341f    8b4c2410
@@ -918,12 +918,12 @@ void __fastcall CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords(struct Obje
     asm("{disp8} mov        dword ptr [ecx + 0x08], edi");                   // 0x004034c7    897908
     asm("{disp8} mov        dword ptr [ecx + 0x04], edi");                   // 0x004034ca    897904
     asm("{disp8} mov        dword ptr [ecx + 0x10], eax");                   // 0x004034cd    894110
-    asm("call               ?PostTranslation@LHMatrix@@QAEXAAULHPoint@@@Z");      // 0x004034d0    e89b000000
+    asm("call               ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z");      // 0x004034d0    e89b000000
     asm("{disp8} jmp        LAB__addr_0x004034e3");                          // 0x004034d5    eb0c
     asm("LAB__addr_0x004034d7:");
     asm("{disp8} lea        edx, dword ptr [esp + 0x10]");                   // 0x004034d7    8d542410
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x004034db    8d4e14
-    asm("call               ?Translation@LHMatrix@@QAEXABVLHPoint@@@Z");     // 0x004034de    e84d000000
+    asm("call               ?Translation@LHMatrix@@QAEXABULHPoint@@@Z");     // 0x004034de    e84d000000
     asm("LAB__addr_0x004034e3:");
     asm("{disp8} mov        eax, dword ptr [esp + 0x2c]");                   // 0x004034e3    8b44242c
     asm("{disp8} mov        ecx, dword ptr [esp + 0x08]");                   // 0x004034e7    8b4c2408

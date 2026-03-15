@@ -111,7 +111,7 @@ void __fastcall DrawTheHeldObject__9HandStateFv(struct HandState* this) asm("?Dr
 // win1.41 005b02d0 mac 101c5590 HandState::Exit(void)
 void __fastcall Exit__9HandStateFv(struct HandState* this) asm("?Exit@HandState@@UAEXXZ");
 // win1.41 0046be80 mac 101a6900 HandState::AllowCameraTricons(void)
-bool __fastcall AllowCameraTricons__9HandStateFv(struct HandState* this) asm("?AllowCameraTricons@HandState@@UAE_NXZ");
+bool __fastcall AllowCameraTricons__9HandStateFv(struct HandState* this) asm("?AllowCameraTricons@HandState@@UAEIXZ");
 
 #endif // __cplusplus
 

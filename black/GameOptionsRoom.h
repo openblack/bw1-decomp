@@ -72,7 +72,7 @@ extern const struct RTTIClassHierarchyDescriptor __RTTIClassHierarchyDescriptor_
 // Override methods
 
 // win1.41 0078d8f0 mac 102ffdb0 GameOptionsRoom::IsAvailable(void)
-bool __fastcall IsAvailable__15GameOptionsRoomFv(struct TempleRoom* this) asm("?IsAvailable@GameOptionsRoom@@UAE_NXZ");
+bool __fastcall IsAvailable__15GameOptionsRoomFv(struct TempleRoom* this) asm("?IsAvailable@GameOptionsRoom@@UAEIXZ");
 // win1.41 0079a230 mac inlined GameOptionsRoom::DrawAdditional(bool)
 void __fastcall DrawAdditional__15GameOptionsRoomFb(struct TempleRoom* this, const void* edx, bool param_1) asm("?DrawAdditional@GameOptionsRoom@@UAEX_N@Z");
 // win1.41 00799f80 mac inlined GameOptionsRoom::PreDraw(void)

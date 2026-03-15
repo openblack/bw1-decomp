@@ -52,7 +52,7 @@ bool __fastcall IsAvailable__9GameThingFv(struct GameThing* this)
         "not         al                                                           \n"  // 0x00401815    f6d0
         "and         eax, 0x01                                                    \n"  // 0x00401817    83e001
         "ret                                                                      \n"  // 0x0040181a    c3
-        "call        ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9\n"  // 0x0040181b    e859000000
+        "call        ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9\n"  // 0x0040181b    e859000000
     );
     __builtin_unreachable();
 }

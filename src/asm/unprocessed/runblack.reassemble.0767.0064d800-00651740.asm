@@ -10,7 +10,7 @@
 .extern _HideAll__13DialogBoxBaseFv@0
 .extern _jmp_addr_0x0053b4a0
 .extern _jmp_addr_0x00543200
-.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
@@ -1592,7 +1592,7 @@ _globl_ct_0x0064e6d0:    {disp32} jmp       .Lbl_addr_0x0064e6e0                
                          nop                                                              // 0x0064e6df    90
 .Lbl_addr_0x0064e6e0:    {disp32} mov       dword ptr [data_bytes + 0x381f3c], 0xffffffff // 0x0064e6e0    c7053c7fd400ffffffff
                          ret                                                              // 0x0064e6ea    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x0064e6eb    e80931dbff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x0064e6eb    e80931dbff
 _globl_ct_0x0064e6f0:    {disp32} jmp       .Lbl_addr_0x0064e700                          // 0x0064e6f0    e90b000000
                          nop                                                              // 0x0064e6f5    90
                          nop                                                              // 0x0064e6f6    90
@@ -3866,12 +3866,12 @@ _jmp_addr_0x00650840:    {disp8} mov        edx, dword ptr [ecx + 0x2c]         
                          {disp32} fld       dword ptr [__real@4@3fff8000000000000000]                   // 0x006508d1    d90590a38a00
 .Lbl_addr_0x006508d7:    add                esp, 0x08                                     // 0x006508d7    83c408
                          ret                                                              // 0x006508da    c3
-                         call               ?CalculateInfluence@GameThing@@QAEMABUMapCoords@@@Z +9                          // 0x006508db    e8190fdbff
+                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x006508db    e8190fdbff
 ?GetPlayer@PlayerActionState@@UAEPAVGPlayer@@XZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x4c]                   // 0x006508e0    8b414c
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x006508e3    8b0d5c19d000
                          push               eax                                           // 0x006508e9    50
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x006508ea    e8c100f0ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x006508ea    e8c100f0ff
                          ret                                                              // 0x006508ef    c3
 _jmp_addr_0x006508f0:    sub                esp, 0x0c                                     // 0x006508f0    83ec0c
                          push               esi                                           // 0x006508f3    56

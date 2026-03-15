@@ -293,15 +293,15 @@ uint32_t __fastcall NetworkFriendlyEndLockedSelect__11TotemStatueFP16GInterfaceS
 // win1.41 00561130 mac 10543e10 TotemStatue::IsEffectReceiver(EffectValues *)
 uint32_t __fastcall IsEffectReceiver__11TotemStatueFP12EffectValues(struct Object* this, const void* edx, struct EffectValues* param_1) asm("?IsEffectReceiver@TotemStatue@@UAEIPAVEffectValues@@@Z");
 // win1.41 00737d40 mac 105451c0 TotemStatue::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__11TotemStatueFv(struct Object* this) asm("?InteractsWithPhysicsObjects@TotemStatue@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__11TotemStatueFv(struct Object* this) asm("?InteractsWithPhysicsObjects@TotemStatue@@UAEIXZ");
 // win1.41 00737d50 mac 10545170 TotemStatue::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__11TotemStatueFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@TotemStatue@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00561140 mac 10543e60 TotemStatue::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__11TotemStatueFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@TotemStatue@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 // win1.41 00561090 mac 10543660 TotemStatue::IsRepaired(void)
-bool __fastcall IsRepaired__11TotemStatueFv(struct MultiMapFixed* this) asm("?IsRepaired@TotemStatue@@UAE_NXZ");
+bool __fastcall IsRepaired__11TotemStatueFv(struct MultiMapFixed* this) asm("?IsRepaired@TotemStatue@@UAEIXZ");
 // win1.41 005610b0 mac 1001a9a0 TotemStatue::IsBuilt(void)
-bool __fastcall IsBuilt__11TotemStatueFv(struct MultiMapFixed* this) asm("?IsBuilt@TotemStatue@@UAE_NXZ");
+bool __fastcall IsBuilt__11TotemStatueFv(struct MultiMapFixed* this) asm("?IsBuilt@TotemStatue@@UAEIXZ");
 // win1.41 00738130 mac 10544dd0 TotemStatue::AddToPlayer(void)
 void __fastcall AddToPlayer__11TotemStatueFv(struct MultiMapFixed* this) asm("?AddToPlayer@TotemStatue@@UAEXXZ");
 

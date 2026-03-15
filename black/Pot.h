@@ -309,15 +309,15 @@ uint32_t __fastcall GetPhysicsConstantsType__3PotFv(struct Object* this) asm("?G
 // win1.41 0066dbd0 mac 1011ae20 Pot::EndPhysics(PhysicsObject *, bool)
 void __fastcall EndPhysics__3PotFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?EndPhysics@Pot@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 0066ced0 mac 1011ce10 Pot::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__3PotFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Pot@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__3PotFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Pot@@UAEIXZ");
 // win1.41 0066dc90 mac 1011ac90 Pot::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__3PotFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@Pot@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 0066e8f0 mac 10118e10 Pot::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__3PotFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Pot@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__3PotFv(struct Object* this) asm("?CanBecomeAPhysicsObject@Pot@@UAEIXZ");
 // win1.41 0066d550 mac 1011bd00 Pot::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__3PotFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@Pot@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 // win1.41 0055d590 mac 10116310 Pot::IsAPotFromABuildingSite(void)
-bool __fastcall IsAPotFromABuildingSite__3PotFv(struct Object* this) asm("?IsAPotFromABuildingSite@Pot@@UAE_NXZ");
+bool __fastcall IsAPotFromABuildingSite__3PotFv(struct Object* this) asm("?IsAPotFromABuildingSite@Pot@@UAEIXZ");
 
 #endif // __cplusplus
 

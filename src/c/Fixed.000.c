@@ -62,7 +62,7 @@ bool32_t __fastcall IsTownArtifact__11FixedObjectFv(struct Object* this)
     // return ((struct FixedObject*)this)->town_artifact != NULL;
 
     // SEH?
-    asm("call ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9");  // 0x0040148b    e8e9030000
+    asm("call ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9");  // 0x0040148b    e8e9030000
 
     __builtin_unreachable();
 }

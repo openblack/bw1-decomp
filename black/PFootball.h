@@ -118,15 +118,15 @@ void __fastcall CallVirtualFunctionsForCreation__9PFootballFRC9MapCoords(struct 
 // win1.41 00643980 mac inlined PFootball::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__9PFootballFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@PFootball@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 // win1.41 00643950 mac inlined PFootball::IsPlaytimeStructure(void)
-bool __fastcall IsPlaytimeStructure__9PFootballFv(struct MultiMapFixed* this) asm("?IsPlaytimeStructure@PFootball@@UAE_NXZ");
+bool __fastcall IsPlaytimeStructure__9PFootballFv(struct MultiMapFixed* this) asm("?IsPlaytimeStructure@PFootball@@UAEIXZ");
 // win1.41 00643960 mac inlined PFootball::IsPlaytimeStarted(void)
-bool __fastcall IsPlaytimeStarted__9PFootballFv(struct MultiMapFixed* this) asm("?IsPlaytimeStarted@PFootball@@UAE_NXZ");
+bool __fastcall IsPlaytimeStarted__9PFootballFv(struct MultiMapFixed* this) asm("?IsPlaytimeStarted@PFootball@@UAEIXZ");
 // win1.41 00644200 mac inlined PFootball::AddPlaytimeVillager(Villager *)
 bool __fastcall AddPlaytimeVillager__9PFootballFP8Villager(struct MultiMapFixed* this, const void* edx, struct Villager* param_1) asm("?AddPlaytimeVillager@PFootball@@UAE_NPAVVillager@@@Z");
 // win1.41 006438f0 mac inlined PFootball::IsRepaired(void)
-bool __fastcall IsRepaired__9PFootballFv(struct MultiMapFixed* this) asm("?IsRepaired@PFootball@@UAE_NXZ");
+bool __fastcall IsRepaired__9PFootballFv(struct MultiMapFixed* this) asm("?IsRepaired@PFootball@@UAEIXZ");
 // win1.41 00643910 mac inlined PFootball::IsBuilt(void)
-bool __fastcall IsBuilt__9PFootballFv(struct MultiMapFixed* this) asm("?IsBuilt@PFootball@@UAE_NXZ");
+bool __fastcall IsBuilt__9PFootballFv(struct MultiMapFixed* this) asm("?IsBuilt@PFootball@@UAEIXZ");
 
 struct PPlannedFootball
 {

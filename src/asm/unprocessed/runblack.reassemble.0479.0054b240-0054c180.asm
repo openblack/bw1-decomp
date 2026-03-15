@@ -42,7 +42,7 @@
 .globl ?GetBaseInfo@GPlayerInfo@@UAEPAVGBaseInfo@@AAI@Z
 .globl ??_GGKeyBuffer@@UAEPAXI@Z
 .globl ??_GGlobalGameLists@@UAEPAXI@Z
-.globl ?IsAvailable@GGame@@UAE_NXZ
+.globl ?IsAvailable@GGame@@UAEIXZ
 .globl ?GetSaveType@GGame@@UAEIXZ
 .globl ?GetDebugText@GGame@@UAEPADXZ
 .globl ??_GGSoundMap@@UAEPAXI@Z
@@ -70,7 +70,7 @@
                          {disp8} mov        dword ptr [ecx + 0x04], eax                   // 0x0054b824    894104
                          {disp8} mov        dword ptr [ecx + 0x08], eax                   // 0x0054b827    894108
                          ret                                                              // 0x0054b82a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054b82b    e84960ebff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0054b82b    e84960ebff
 ?GetBaseInfo@GPlayerInfo@@UAEPAVGBaseInfo@@AAI@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0054b830    8b442404
                          mov                dword ptr [eax], 0x00000001                   // 0x0054b834    c70001000000
@@ -216,13 +216,13 @@ _jmp_addr_0x0054b910:    mov.s              eax, ecx                            
 .Lbl_addr_0x0054b99a:    mov.s              eax, esi                                      // 0x0054b99a    8bc6
                          pop                esi                                           // 0x0054b99c    5e
                          ret                0x0004                                        // 0x0054b99d    c20400
-?IsAvailable@GGame@@UAE_NXZ:
+?IsAvailable@GGame@@UAEIXZ:
                          xor.s              eax, eax                                      // 0x0054b9a0    33c0
                          {disp8} mov        al, byte ptr [ecx + 0x0a]                     // 0x0054b9a2    8a410a
                          not                al                                            // 0x0054b9a5    f6d0
                          and                eax, 0x01                                     // 0x0054b9a7    83e001
                          ret                                                              // 0x0054b9aa    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054b9ab    e8c95eebff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0054b9ab    e8c95eebff
 ?GetSaveType@GGame@@UAEIXZ:
                          mov                eax, 0x0000006a                               // 0x0054b9b0    b86a000000
                          ret                                                              // 0x0054b9b5    c3

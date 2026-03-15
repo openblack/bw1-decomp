@@ -421,7 +421,7 @@ uint32_t __fastcall GetPhysicsConstantsType__12CitadelHeartFv(struct Object* thi
 // win1.41 00467b70 mac 101bde40 CitadelHeart::SetUpPhysOb(PhysOb *)
 void __fastcall SetUpPhysOb__12CitadelHeartFP6PhysOb(struct Object* this, const void* edx, struct PhysOb* param_1) asm("?SetUpPhysOb@CitadelHeart@@UAEXPAUPhysOb@@@Z");
 // win1.41 00467b40 mac 101bdf40 CitadelHeart::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__12CitadelHeartFv(struct Object* this) asm("?InteractsWithPhysicsObjects@CitadelHeart@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__12CitadelHeartFv(struct Object* this) asm("?InteractsWithPhysicsObjects@CitadelHeart@@UAEIXZ");
 // win1.41 00467b30 mac 101bdfc0 CitadelHeart::ChecksVerticesVObjects(void)
 uint32_t __fastcall ChecksVerticesVObjects__12CitadelHeartFv(struct Object* this) asm("?ChecksVerticesVObjects@CitadelHeart@@UAEIXZ");
 // win1.41 00467bb0 mac 101bdc10 CitadelHeart::ReactToPhysicsImpact(PhysicsObject *, bool)
@@ -435,11 +435,11 @@ uint32_t __fastcall GetObjectCollide__12CitadelHeartFv(struct Object* this) asm(
 // win1.41 004673a0 mac 101be8e0 CitadelHeart::SaveObject(LHOSFile &, MapCoords const &)
 uint32_t __fastcall SaveObject__12CitadelHeartFR8LHOSFileRC9MapCoords(struct Object* this, const void* edx, struct LHOSFile* param_1, const struct MapCoords* param_2) asm("?SaveObject@CitadelHeart@@UAEIAAULHOSFile@@ABUMapCoords@@@Z");
 // win1.41 00464b70 mac 101c2200 CitadelHeart::ShouldFootpathsGoRound(void)
-bool __fastcall ShouldFootpathsGoRound__12CitadelHeartFv(struct Object* this) asm("?ShouldFootpathsGoRound@CitadelHeart@@UAE_NXZ");
+bool __fastcall ShouldFootpathsGoRound__12CitadelHeartFv(struct Object* this) asm("?ShouldFootpathsGoRound@CitadelHeart@@UAEIXZ");
 // win1.41 00467d10 mac inlined CitadelHeart::GetDoorPos(MapCoords *)
 struct MapCoords* __fastcall GetDoorPos__12CitadelHeartFP9MapCoords(struct MultiMapFixed* this, const void* edx, struct MapCoords* param_1) asm("?GetDoorPos@CitadelHeart@@UAEPAUMapCoords@@PAU2@@Z");
 // win1.41 00465000 mac 101c0570 CitadelHeart::Built(void)
-bool __fastcall Built__12CitadelHeartFv(struct MultiMapFixed* this) asm("?Built@CitadelHeart@@UAE_NXZ");
+bool __fastcall Built__12CitadelHeartFv(struct MultiMapFixed* this) asm("?Built@CitadelHeart@@UAEIXZ");
 // win1.41 00464b60 mac 101c21c0 CitadelHeart::GetAbodeType(void)
 enum ABODE_TYPE __fastcall GetAbodeType__12CitadelHeartFv(struct MultiMapFixed* this) asm("?GetAbodeType@CitadelHeart@@UAE?AW4ABODE_TYPE@@XZ");
 // win1.41 00465430 mac 101bfcc0 CitadelHeart::ConvertToPlanned(void)

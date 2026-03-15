@@ -450,7 +450,7 @@ _jmp_addr_0x00484c60:    push               esi                                 
                          pop                esi                                      // 0x00484c77    5e
                          fidiv              dword ptr [eax]                          // 0x00484c78    da30
                          ret                                                         // 0x00484c7a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                     // 0x00484c7b    e8f9cbf7ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                     // 0x00484c7b    e8f9cbf7ff
 _jmp_addr_0x00484c80:    push               esi                                      // 0x00484c80    56
                          mov.s              esi, ecx                                 // 0x00484c81    8bf1
                          {disp32} mov       eax, dword ptr [esi + 0x000048d0]        // 0x00484c83    8b86d0480000
@@ -660,7 +660,7 @@ _jmp_addr_0x00484e60:    push               esi                                 
                          xor.s              eax, eax                                 // 0x00484eb5    33c0
                          pop                esi                                      // 0x00484eb7    5e
                          ret                0x0004                                   // 0x00484eb8    c20400
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                     // 0x00484ebb    e8b9c9f7ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                     // 0x00484ebb    e8b9c9f7ff
 _jmp_addr_0x00484ec0:    {disp8} mov        eax, dword ptr [esp + 0x04]              // 0x00484ec0    8b442404
                          cmp                eax, 0x25                                // 0x00484ec4    83f825
                          push               esi                                      // 0x00484ec7    56

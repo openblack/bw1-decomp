@@ -332,7 +332,7 @@ start_0x00501bc0_0x00502660:
                          pop                ebp                                           // 0x00501f06    5d
                          add                esp, 0x10                                     // 0x00501f07    83c410
                          ret                                                              // 0x00501f0a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x00501f0b    e869f9efff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x00501f0b    e869f9efff
                          sub                esp, 0x10                                     // 0x00501f10    83ec10
                          push               ebx                                           // 0x00501f13    53
                          push               ebp                                           // 0x00501f14    55

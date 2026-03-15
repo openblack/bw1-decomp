@@ -391,7 +391,7 @@ void __fastcall MoveTo3D__6AnimalFv(struct MobileWallHug* this) asm("?MoveTo3D@A
 // win1.41 0041a3f0 mac 1000bfc0 Animal::SetNewWander(MapCoords const &, long, long)
 void __fastcall SetNewWander__6AnimalFRC9MapCoordsll(struct MobileWallHug* this, const void* edx, const struct MapCoords* param_1, int param_2, int param_3) asm("?SetNewWander@Animal@@UAEXABUMapCoords@@HH@Z");
 // win1.41 0041acc0 mac 10166b90 Animal::DecideWhatToDo(void)
-bool __fastcall DecideWhatToDo__6AnimalFv(struct Living* this) asm("?DecideWhatToDo@Animal@@UAE_NXZ");
+bool __fastcall DecideWhatToDo__6AnimalFv(struct Living* this) asm("?DecideWhatToDo@Animal@@UAEIXZ");
 // win1.41 0041a2b0 mac 1007c6d0 Animal::SetStateSpeed(void)
 void __fastcall SetStateSpeed__6AnimalFv(struct Living* this) asm("?SetStateSpeed@Animal@@UAEXXZ");
 // win1.41 0041b430 mac inlined Animal::IsFinalState(VILLAGER_STATES)
@@ -473,7 +473,7 @@ uint8_t __fastcall ReactToConfusedPriority__6AnimalFP8ReactionP8Reaction(struct 
 // win1.41 004203b0 mac 10176560 Animal::ReactToFallingTreePriority(Reaction *, Reaction *)
 uint8_t __fastcall ReactToFallingTreePriority__6AnimalFP8ReactionP8Reaction(struct Living* this, const void* edx, struct Reaction* param_1, struct Reaction* param_2) asm("?ReactToFallingTreePriority@Animal@@UAEEPAVReaction@@0@Z");
 // win1.41 0041bb00 mac 101650c0 Animal::IsChild(void)
-bool __fastcall IsChild__6AnimalFv(struct Living* this) asm("?IsChild@Animal@@UAE_NXZ");
+bool __fastcall IsChild__6AnimalFv(struct Living* this) asm("?IsChild@Animal@@UAEIXZ");
 // win1.41 00420550 mac 10175d80 Animal::GetFleeingPositionFromMovingObject(MapCoords *, GameThingWithPos *, float)
 void __fastcall GetFleeingPositionFromMovingObject__6AnimalFP9MapCoordsP16GameThingWithPosf(struct Living* this, const void* edx, struct MapCoords* param_1, struct GameThingWithPos* param_2, float param_3) asm("?GetFleeingPositionFromMovingObject@Animal@@UAEXPAUMapCoords@@PAVGameThingWithPos@@M@Z");
 // win1.41 0041a240 mac 1007c570 Animal::GetFinalState( const(void))

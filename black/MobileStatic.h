@@ -253,7 +253,7 @@ void __fastcall ToBeDeleted__12MobileStaticFi(struct Base* this, const void* edx
 // win1.41 006088b0 mac 103c0890 MobileStatic::GetPlayer(void)
 struct GPlayer* __fastcall GetPlayer__12MobileStaticFv(struct GameThing* this) asm("?GetPlayer@MobileStatic@@UAEPAVGPlayer@@XZ");
 // win1.41 004396a0 mac 100b4460 MobileStatic::IsFunctional(void)
-bool __fastcall IsFunctional__12MobileStaticFv(struct GameThing* this) asm("?IsFunctional@MobileStatic@@UAE_NXZ");
+bool __fastcall IsFunctional__12MobileStaticFv(struct GameThing* this) asm("?IsFunctional@MobileStatic@@UAEIXZ");
 // win1.41 0055d750 mac 103b9760 MobileStatic::GetDebugText(void)
 char* __fastcall GetDebugText__12MobileStaticFv(struct GameThing* this) asm("?GetDebugText@MobileStatic@@UAEPADXZ");
 // win1.41 00608590 mac 103c1060 MobileStatic::Load(GameOSFile &)
@@ -319,7 +319,7 @@ int __fastcall GetMesh__12MobileStaticCFv(const struct Object* this) asm("?GetMe
 // win1.41 00517f60 mac 10042f50 MobileStatic::Draw(void)
 void __fastcall Draw__12MobileStaticFv(struct Object* this) asm("?Draw@MobileStatic@@UAEXXZ");
 // win1.41 00439670 mac 100b4280 MobileStatic::CanBePickedUp(void)
-bool __fastcall CanBePickedUp__12MobileStaticFv(struct Object* this) asm("?CanBePickedUp@MobileStatic@@UAE_NXZ");
+bool __fastcall CanBePickedUp__12MobileStaticFv(struct Object* this) asm("?CanBePickedUp@MobileStatic@@UAEIXZ");
 // win1.41 00608de0 mac 103bfb00 MobileStatic::GetWorldMatrix(LHMatrix *)
 void __fastcall GetWorldMatrix__12MobileStaticFP8LHMatrix(struct Object* this, const void* edx, struct LHMatrix* param_1) asm("?GetWorldMatrix@MobileStatic@@UAEXPAULHMatrix@@@Z");
 // win1.41 00609700 mac 103be330 MobileStatic::CallVirtualFunctionsForCreation(MapCoords const &)
@@ -345,7 +345,7 @@ uint32_t __fastcall GetPhysicsConstantsType__12MobileStaticFv(struct Object* thi
 // win1.41 00608f40 mac 103bf9c0 MobileStatic::GetBoundingSphere(LHPoint &, float &)
 void __fastcall GetBoundingSphere__12MobileStaticFR7LHPointRf(struct Object* this, const void* edx, struct LHPoint* param_1, float* param_2) asm("?GetBoundingSphere@MobileStatic@@UAEXAAULHPoint@@AAM@Z");
 // win1.41 006090b0 mac 103bf550 MobileStatic::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__12MobileStaticFv(struct Object* this) asm("?InteractsWithPhysicsObjects@MobileStatic@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__12MobileStaticFv(struct Object* this) asm("?InteractsWithPhysicsObjects@MobileStatic@@UAEIXZ");
 // win1.41 00609260 mac 103beff0 MobileStatic::ChecksVerticesVObjects(void)
 uint32_t __fastcall ChecksVerticesVObjects__12MobileStaticFv(struct Object* this) asm("?ChecksVerticesVObjects@MobileStatic@@UAEIXZ");
 // win1.41 00609210 mac 103bf080 MobileStatic::PhysicallyDestroysAbodes(void)
@@ -353,7 +353,7 @@ uint32_t __fastcall PhysicallyDestroysAbodes__12MobileStaticFv(struct Object* th
 // win1.41 00608fc0 mac 103bf8c0 MobileStatic::ReactToPhysicsImpact(PhysicsObject *, bool)
 void __fastcall ReactToPhysicsImpact__12MobileStaticFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?ReactToPhysicsImpact@MobileStatic@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00609320 mac 103bee30 MobileStatic::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__12MobileStaticFv(struct Object* this) asm("?CanBecomeAPhysicsObject@MobileStatic@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__12MobileStaticFv(struct Object* this) asm("?CanBecomeAPhysicsObject@MobileStatic@@UAEIXZ");
 // win1.41 00609010 mac 103bf860 MobileStatic::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__12MobileStaticFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@MobileStatic@@UAE_NPAVCreature@@@Z");
 // win1.41 00608ac0 mac 103c0450 MobileStatic::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))

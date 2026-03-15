@@ -68,7 +68,7 @@
 .extern _jmp_addr_0x0054ab20
 .extern ?UnfinishInitialisation@GGame@@QAEXXZ
 .extern ?FinishInitialisation@GGame@@QAEXXZ
-.extern ?LoadFiles@GGame@@QAE_NXZ
+.extern ?LoadFiles@GGame@@QAEIXZ
 .extern ?SetupPlayers@GGame@@QAEXXZ
 .extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern ?GetNextActivePlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
@@ -1266,7 +1266,7 @@ _jmp_addr_0x0054da00:    {disp32} mov       eax, dword ptr [data_bytes + 0x30db1
                          {disp32} mov       dword ptr [eax + 0x00004608], 0x00000000      // 0x0054e5af    c7800846000000000000
 .Lbl_addr_0x0054e5b9:    pop                ebp                                           // 0x0054e5b9    5d
                          ret                                                              // 0x0054e5ba    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                          // 0x0054e5bb    e8b932ebff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                          // 0x0054e5bb    e8b932ebff
 ?ProcessTurn@GGame@@QAEIXZ:sub                esp, 0x10                                     // 0x0054e5c0    83ec10
                          push               esi                                           // 0x0054e5c3    56
                          push               edi                                           // 0x0054e5c4    57
@@ -2028,7 +2028,7 @@ _jmp_addr_0x0054ec80:    push               ecx                                 
                          call               _RenderLoadingFrame__Fb                       // 0x0054f087    e8b45d0a00
                          add                esp, 0x08                                     // 0x0054f08c    83c408
                          mov.s              ecx, esi                                      // 0x0054f08f    8bce
-                         call               ?LoadFiles@GGame@@QAE_NXZ                     // 0x0054f091    e8fa120000
+                         call               ?LoadFiles@GGame@@QAEIXZ                     // 0x0054f091    e8fa120000
                          cmp                eax, 0x01                                     // 0x0054f096    83f801
                          {disp8} je         .Lbl_addr_0x0054f0a6                          // 0x0054f099    740b
                          pop                edi                                           // 0x0054f09b    5f

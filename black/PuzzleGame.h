@@ -905,7 +905,7 @@ void __fastcall CallVirtualFunctionsForCreation__9ChessPionFRC9MapCoords(struct 
 // win1.41 00422210 mac inlined ChessPion::SetUpPhysOb(PhysOb *)
 void __fastcall SetUpPhysOb__9ChessPionFP6PhysOb(struct Object* this, const void* edx, struct PhysOb* param_1) asm("?SetUpPhysOb@ChessPion@@UAEXPAUPhysOb@@@Z");
 // win1.41 004221e0 mac inlined ChessPion::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__9ChessPionFv(struct Object* this) asm("?InteractsWithPhysicsObjects@ChessPion@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__9ChessPionFv(struct Object* this) asm("?InteractsWithPhysicsObjects@ChessPion@@UAEIXZ");
 // win1.41 004221d0 mac inlined ChessPion::ChecksVerticesVObjects(void)
 uint32_t __fastcall ChecksVerticesVObjects__9ChessPionFv(struct Object* this) asm("?ChecksVerticesVObjects@ChessPion@@UAEIXZ");
 // win1.41 00422ec0 mac inlined ChessPion::CreatureMustAvoid(Creature *)
@@ -1039,7 +1039,7 @@ char* __fastcall GetDebugText__8PiecePigFv(struct GameThing* this) asm("?GetDebu
 // win1.41 0041da90 mac 101315b0 PiecePig::GetSaveType(void)
 uint32_t __fastcall GetSaveType__8PiecePigFv(struct GameThing* this) asm("?GetSaveType@PiecePig@@UAEIXZ");
 // win1.41 0041da70 mac 10131530 PiecePig::DecideWhatToDo(void)
-bool __fastcall DecideWhatToDo__8PiecePigFv(struct Living* this) asm("?DecideWhatToDo@PiecePig@@UAE_NXZ");
+bool __fastcall DecideWhatToDo__8PiecePigFv(struct Living* this) asm("?DecideWhatToDo@PiecePig@@UAEIXZ");
 
 struct PieceSheep
 {
@@ -1192,7 +1192,7 @@ uint32_t __fastcall GetSaveType__9PuzzleCowFv(struct GameThing* this) asm("?GetS
 // win1.41 006dd4b0 mac inlined PuzzleCow::CanBeFrighteningToCreature(Creature *)
 uint32_t __fastcall CanBeFrighteningToCreature__9PuzzleCowFP8Creature(struct GameThingWithPos* this, const void* edx, struct Creature* param_1) asm("?CanBeFrighteningToCreature@PuzzleCow@@UAEIPAVCreature@@@Z");
 // win1.41 006dd690 mac 10132390 PuzzleCow::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__9PuzzleCowFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleCow@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__9PuzzleCowFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleCow@@UAEIXZ");
 // win1.41 0041c7e0 mac inlined PuzzleCow::StandAnimation(void)
 uint32_t __fastcall StandAnimation__9PuzzleCowFv(struct Object* this) asm("?StandAnimation@PuzzleCow@@UAEIXZ");
 
@@ -1264,7 +1264,7 @@ uint32_t __fastcall ValidToApplyThisToObject__11PuzzleGrainFP16GInterfaceStatusP
 // win1.41 00561a40 mac 10131ec0 PuzzleGrain::EndPhysics(PhysicsObject *, bool)
 void __fastcall EndPhysics__11PuzzleGrainFP13PhysicsObjectb(struct Object* this, const void* edx, struct PhysicsObject* param_1, bool param_2) asm("?EndPhysics@PuzzleGrain@@UAEXPAVPhysicsObject@@_N@Z");
 // win1.41 00561a60 mac 10131f20 PuzzleGrain::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__11PuzzleGrainFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleGrain@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__11PuzzleGrainFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleGrain@@UAEIXZ");
 // win1.41 006dc550 mac 10122550 PuzzleGrain::GetImmersionTexture(void)
 enum IMMERSION_EFFECT_TYPE __fastcall GetImmersionTexture__11PuzzleGrainFv(struct Object* this) asm("?GetImmersionTexture@PuzzleGrain@@UAE?AW4IMMERSION_EFFECT_TYPE@@XZ");
 
@@ -1292,43 +1292,43 @@ void __fastcall __dt__11PuzzleHorseFv(struct Base* this, const void* edx, uint32
 // win1.41 006dd520 mac 10132850 PuzzleHorse::GetDebugText(void)
 char* __fastcall GetDebugText__11PuzzleHorseFv(struct GameThing* this) asm("?GetDebugText@PuzzleHorse@@UAEPADXZ");
 // win1.41 006dd530 mac 10132890 PuzzleHorse::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__11PuzzleHorseFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleHorse@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__11PuzzleHorseFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleHorse@@UAEIXZ");
 // win1.41 00416fd0 mac inlined PuzzleHorse::SetFoodSpeedup(bool)
 void __fastcall SetFoodSpeedup__11PuzzleHorseFb(struct Living* this, const void* edx, bool param_1) asm("?SetFoodSpeedup@PuzzleHorse@@UAEX_N@Z");
 // win1.41 00416fe0 mac inlined PuzzleHorse::IsFoodSpeedUp(void)
-bool __fastcall IsFoodSpeedUp__11PuzzleHorseFv(struct Living* this) asm("?IsFoodSpeedUp@PuzzleHorse@@UAE_NXZ");
+bool __fastcall IsFoodSpeedUp__11PuzzleHorseFv(struct Living* this) asm("?IsFoodSpeedUp@PuzzleHorse@@UAEIXZ");
 // win1.41 005f1d10 mac inlined PuzzleHorse::FleeingFromObjectReaction(void)
-bool __fastcall FleeingFromObjectReaction__11PuzzleHorseFv(struct Living* this) asm("?FleeingFromObjectReaction@PuzzleHorse@@UAE_NXZ");
+bool __fastcall FleeingFromObjectReaction__11PuzzleHorseFv(struct Living* this) asm("?FleeingFromObjectReaction@PuzzleHorse@@UAEIXZ");
 // win1.41 005f23a0 mac inlined PuzzleHorse::LookingAtObjectReaction(void)
-bool __fastcall LookingAtObjectReaction__11PuzzleHorseFv(struct Living* this) asm("?LookingAtObjectReaction@PuzzleHorse@@UAE_NXZ");
+bool __fastcall LookingAtObjectReaction__11PuzzleHorseFv(struct Living* this) asm("?LookingAtObjectReaction@PuzzleHorse@@UAEIXZ");
 // win1.41 005f2420 mac inlined PuzzleHorse::FleeingAndLookingAtObjectReaction(void)
-bool __fastcall FleeingAndLookingAtObjectReaction__11PuzzleHorseFv(struct Living* this) asm("?FleeingAndLookingAtObjectReaction@PuzzleHorse@@UAE_NXZ");
+bool __fastcall FleeingAndLookingAtObjectReaction__11PuzzleHorseFv(struct Living* this) asm("?FleeingAndLookingAtObjectReaction@PuzzleHorse@@UAEIXZ");
 // win1.41 005f2430 mac inlined PuzzleHorse::FollowingObjectReaction(void)
-bool __fastcall FollowingObjectReaction__11PuzzleHorseFv(struct Living* this) asm("?FollowingObjectReaction@PuzzleHorse@@UAE_NXZ");
+bool __fastcall FollowingObjectReaction__11PuzzleHorseFv(struct Living* this) asm("?FollowingObjectReaction@PuzzleHorse@@UAEIXZ");
 // win1.41 005f2540 mac inlined PuzzleHorse::InspectObjectReaction(void)
-bool __fastcall InspectObjectReaction__11PuzzleHorseFv(struct Living* this) asm("?InspectObjectReaction@PuzzleHorse@@UAE_NXZ");
+bool __fastcall InspectObjectReaction__11PuzzleHorseFv(struct Living* this) asm("?InspectObjectReaction@PuzzleHorse@@UAEIXZ");
 // win1.41 005ec3f0 mac inlined PuzzleHorse::Dying(void)
-bool __fastcall Dying__11PuzzleHorseFv(struct Living* this) asm("?Dying@PuzzleHorse@@UAE_NXZ");
+bool __fastcall Dying__11PuzzleHorseFv(struct Living* this) asm("?Dying@PuzzleHorse@@UAEIXZ");
 // win1.41 005ec400 mac inlined PuzzleHorse::Dead(void)
-bool __fastcall Dead__11PuzzleHorseFv(struct Living* this) asm("?Dead@PuzzleHorse@@UAE_NXZ");
+bool __fastcall Dead__11PuzzleHorseFv(struct Living* this) asm("?Dead@PuzzleHorse@@UAEIXZ");
 // win1.41 005ec4d0 mac inlined PuzzleHorse::BeingEaten(void)
-bool __fastcall BeingEaten__11PuzzleHorseFv(struct Living* this) asm("?BeingEaten@PuzzleHorse@@UAE_NXZ");
+bool __fastcall BeingEaten__11PuzzleHorseFv(struct Living* this) asm("?BeingEaten@PuzzleHorse@@UAEIXZ");
 // win1.41 005f2550 mac inlined PuzzleHorse::GotoFoodReaction(void)
-bool __fastcall GotoFoodReaction__11PuzzleHorseFv(struct Living* this) asm("?GotoFoodReaction@PuzzleHorse@@UAE_NXZ");
+bool __fastcall GotoFoodReaction__11PuzzleHorseFv(struct Living* this) asm("?GotoFoodReaction@PuzzleHorse@@UAEIXZ");
 // win1.41 005f25c0 mac inlined PuzzleHorse::GotoWoodReaction(void)
-bool __fastcall GotoWoodReaction__11PuzzleHorseFv(struct Living* this) asm("?GotoWoodReaction@PuzzleHorse@@UAE_NXZ");
+bool __fastcall GotoWoodReaction__11PuzzleHorseFv(struct Living* this) asm("?GotoWoodReaction@PuzzleHorse@@UAEIXZ");
 // win1.41 0041a9f0 mac inlined PuzzleHorse::MoveInFlock(void)
-bool __fastcall MoveInFlock__11PuzzleHorseFv(struct Living* this) asm("?MoveInFlock@PuzzleHorse@@UAE_NXZ");
+bool __fastcall MoveInFlock__11PuzzleHorseFv(struct Living* this) asm("?MoveInFlock@PuzzleHorse@@UAEIXZ");
 // win1.41 005ef350 mac inlined PuzzleHorse::IsMovingForAnimation(void)
-bool __fastcall IsMovingForAnimation__11PuzzleHorseFv(struct Living* this) asm("?IsMovingForAnimation@PuzzleHorse@@UAE_NXZ");
+bool __fastcall IsMovingForAnimation__11PuzzleHorseFv(struct Living* this) asm("?IsMovingForAnimation@PuzzleHorse@@UAEIXZ");
 // win1.41 0041a0a0 mac inlined PuzzleHorse::ArrivesAtFoodReaction(void)
-bool __fastcall ArrivesAtFoodReaction__11PuzzleHorseFv(struct Living* this) asm("?ArrivesAtFoodReaction@PuzzleHorse@@UAE_NXZ");
+bool __fastcall ArrivesAtFoodReaction__11PuzzleHorseFv(struct Living* this) asm("?ArrivesAtFoodReaction@PuzzleHorse@@UAEIXZ");
 // win1.41 00417030 mac inlined PuzzleHorse::ArrivesAtWoodReaction(void)
-bool __fastcall ArrivesAtWoodReaction__11PuzzleHorseFv(struct Living* this) asm("?ArrivesAtWoodReaction@PuzzleHorse@@UAE_NXZ");
+bool __fastcall ArrivesAtWoodReaction__11PuzzleHorseFv(struct Living* this) asm("?ArrivesAtWoodReaction@PuzzleHorse@@UAEIXZ");
 // win1.41 005ec620 mac inlined PuzzleHorse::InHand(void)
-bool __fastcall InHand__11PuzzleHorseFv(struct Living* this) asm("?InHand@PuzzleHorse@@UAE_NXZ");
+bool __fastcall InHand__11PuzzleHorseFv(struct Living* this) asm("?InHand@PuzzleHorse@@UAEIXZ");
 // win1.41 006db120 mac 10124e30 PuzzleHorse::DecideWhatToDo(void)
-bool __fastcall DecideWhatToDo__11PuzzleHorseFv(struct Living* this) asm("?DecideWhatToDo@PuzzleHorse@@UAE_NXZ");
+bool __fastcall DecideWhatToDo__11PuzzleHorseFv(struct Living* this) asm("?DecideWhatToDo@PuzzleHorse@@UAEIXZ");
 // win1.41 005ec8f0 mac inlined PuzzleHorse::Birthday(void)
 void __fastcall Birthday__11PuzzleHorseFv(struct Living* this) asm("?Birthday@PuzzleHorse@@UAEXXZ");
 // win1.41 004179c0 mac inlined PuzzleHorse::SetAge(unsigned long)
@@ -1364,7 +1364,7 @@ char* __fastcall GetDebugText__10PuzzleLionFv(struct GameThing* this) asm("?GetD
 // win1.41 005615b0 mac 10132d90 PuzzleLion::GetSaveType(void)
 uint32_t __fastcall GetSaveType__10PuzzleLionFv(struct GameThing* this) asm("?GetSaveType@PuzzleLion@@UAEIXZ");
 // win1.41 005615d0 mac 10132e10 PuzzleLion::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__10PuzzleLionFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleLion@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__10PuzzleLionFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleLion@@UAEIXZ");
 
 struct PuzzleMobileObject
 {
@@ -1426,9 +1426,9 @@ char* __fastcall GetDebugText__9PuzzlePigFv(struct GameThing* this) asm("?GetDeb
 // win1.41 006dd720 mac 101325b0 PuzzlePig::GetSaveType(void)
 uint32_t __fastcall GetSaveType__9PuzzlePigFv(struct GameThing* this) asm("?GetSaveType@PuzzlePig@@UAEIXZ");
 // win1.41 006dd740 mac 10132630 PuzzlePig::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__9PuzzlePigFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzlePig@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__9PuzzlePigFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzlePig@@UAEIXZ");
 // win1.41 006db130 mac 10124df0 PuzzlePig::DecideWhatToDo(void)
-bool __fastcall DecideWhatToDo__9PuzzlePigFv(struct Living* this) asm("?DecideWhatToDo@PuzzlePig@@UAE_NXZ");
+bool __fastcall DecideWhatToDo__9PuzzlePigFv(struct Living* this) asm("?DecideWhatToDo@PuzzlePig@@UAEIXZ");
 
 struct PuzzleSheep
 {
@@ -1456,9 +1456,9 @@ char* __fastcall GetDebugText__11PuzzleSheepFv(struct GameThing* this) asm("?Get
 // win1.41 00561740 mac 10132ad0 PuzzleSheep::GetSaveType(void)
 uint32_t __fastcall GetSaveType__11PuzzleSheepFv(struct GameThing* this) asm("?GetSaveType@PuzzleSheep@@UAEIXZ");
 // win1.41 00561760 mac 10132b50 PuzzleSheep::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__11PuzzleSheepFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleSheep@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__11PuzzleSheepFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleSheep@@UAEIXZ");
 // win1.41 006db110 mac 10124e70 PuzzleSheep::DecideWhatToDo(void)
-bool __fastcall DecideWhatToDo__11PuzzleSheepFv(struct Living* this) asm("?DecideWhatToDo@PuzzleSheep@@UAE_NXZ");
+bool __fastcall DecideWhatToDo__11PuzzleSheepFv(struct Living* this) asm("?DecideWhatToDo@PuzzleSheep@@UAEIXZ");
 
 struct PuzzleTortoise
 {
@@ -1486,7 +1486,7 @@ char* __fastcall GetDebugText__14PuzzleTortoiseFv(struct GameThing* this) asm("?
 // win1.41 006dd5c0 mac 10132010 PuzzleTortoise::GetSaveType(void)
 uint32_t __fastcall GetSaveType__14PuzzleTortoiseFv(struct GameThing* this) asm("?GetSaveType@PuzzleTortoise@@UAEIXZ");
 // win1.41 006dd5e0 mac 10132090 PuzzleTortoise::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__14PuzzleTortoiseFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleTortoise@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__14PuzzleTortoiseFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleTortoise@@UAEIXZ");
 
 struct PuzzleTotem
 {
@@ -1570,7 +1570,7 @@ char* __fastcall GetDebugText__14PuzzleVillagerFv(struct GameThing* this) asm("?
 // win1.41 00561660 mac 10133160 PuzzleVillager::GetSaveType(void)
 uint32_t __fastcall GetSaveType__14PuzzleVillagerFv(struct GameThing* this) asm("?GetSaveType@PuzzleVillager@@UAEIXZ");
 // win1.41 00561680 mac 101331e0 PuzzleVillager::CanBecomeAPhysicsObject(void)
-bool __fastcall CanBecomeAPhysicsObject__14PuzzleVillagerFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleVillager@@UAE_NXZ");
+bool __fastcall CanBecomeAPhysicsObject__14PuzzleVillagerFv(struct Object* this) asm("?CanBecomeAPhysicsObject@PuzzleVillager@@UAEIXZ");
 
 #endif // __cplusplus
 

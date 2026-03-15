@@ -22,7 +22,7 @@
 .extern ?Birthday@GGame@@QAEXXZ
 .extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z
-.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z
+.extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern ?IsMultiplayerGame@GGame@@QBE_NXZ
 .extern _jmp_addr_0x005530c0
 .extern ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ
@@ -34,7 +34,7 @@
 .extern ??0GameThing@@QAE@XZ
 .extern ?ToBeDeleted@GameThing@@UAEXH@Z
 .extern ?Save@GameThing@@UAEIAAVGameOSFile@@@Z
-.extern ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z
+.extern ?Load@GameThing@@UAEIAAVGameOSFile@@@Z
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern _jmp_addr_0x005ccf80
 .extern _jmp_addr_0x005cda90
@@ -387,14 +387,14 @@ start_0x00718060_0x0071bcd0:
                          {disp8} je         .Lbl_addr_0x007182c7                          // 0x007182b8    740d
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x007182ba    8b0d5c19d000
                          push               eax                                           // 0x007182c0    50
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x007182c1    e8ea86e3ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x007182c1    e8ea86e3ff
                          ret                                                              // 0x007182c6    c3
 .Lbl_addr_0x007182c7:    {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x007182c7    8b442404
                          test               eax, eax                                      // 0x007182cb    85c0
                          {disp8} jl         .Lbl_addr_0x007182dc                          // 0x007182cd    7c0d
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x007182cf    8b0d5c19d000
                          push               eax                                           // 0x007182d5    50
-                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@K@Z          // 0x007182d6    e8d586e3ff
+                         call               ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z          // 0x007182d6    e8d586e3ff
                          ret                                                              // 0x007182db    c3
 .Lbl_addr_0x007182dc:    xor.s              eax, eax                                      // 0x007182dc    33c0
                          ret                                                              // 0x007182de    c3
@@ -2874,7 +2874,7 @@ _jmp_addr_0x00719c10:    push               esi                                 
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x00719cf2    8b7c240c
                          mov.s              esi, ecx                                      // 0x00719cf6    8bf1
                          push               edi                                           // 0x00719cf8    57
-                         call               ?Load@GameThing@@QAEIAAVGGameOSFile@@@Z       // 0x00719cf9    e8f25fe5ff
+                         call               ?Load@GameThing@@UAEIAAVGameOSFile@@@Z       // 0x00719cf9    e8f25fe5ff
                          test               eax, eax                                      // 0x00719cfe    85c0
                          {disp8} je         .Lbl_addr_0x00719d22                          // 0x00719d00    7420
                          {disp8} lea        eax, dword ptr [esi + 0x14]                   // 0x00719d02    8d4614

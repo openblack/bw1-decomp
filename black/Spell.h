@@ -311,7 +311,7 @@ void __fastcall ToBeDeleted__5SpellFi(struct Base* this, const void* edx, int pa
 // win1.41 0055cdf0 mac 100d40a0 Spell::GetPlayer(void)
 struct GPlayer* __fastcall GetPlayer__5SpellFv(struct GameThing* this) asm("?GetPlayer@Spell@@UAEPAVGPlayer@@XZ");
 // win1.41 0055cdc0 mac 103b1c30 Spell::IsFunctional(void)
-bool __fastcall IsFunctional__5SpellFv(struct GameThing* this) asm("?IsFunctional@Spell@@UAE_NXZ");
+bool __fastcall IsFunctional__5SpellFv(struct GameThing* this) asm("?IsFunctional@Spell@@UAEIXZ");
 // win1.41 0071fb00 mac 10514e70 Spell::GetDebugText(void)
 char* __fastcall GetDebugText__5SpellFv(struct GameThing* this) asm("?GetDebugText@Spell@@UAEPADXZ");
 // win1.41 0071bc30 mac 1050fe70 Spell::GetSampleForAttack(void)
@@ -397,9 +397,9 @@ float __fastcall CalculateCostToMaintain__5SpellFv(struct Spell* this) asm("?Cal
 // win1.41 0055ce60 mac 103b1e20 Spell::AdjustSpellSeedPos(MapCoords *)
 void __fastcall AdjustSpellSeedPos__5SpellFP9MapCoords(struct Spell* this, const void* edx, struct MapCoords* param_1) asm("?AdjustSpellSeedPos@Spell@@UAEXPAUMapCoords@@@Z");
 // win1.41 0055ce70 mac 103b1e60 Spell::IsSpellCreature(void)
-bool __fastcall IsSpellCreature__5SpellFv(struct Spell* this) asm("?IsSpellCreature@Spell@@UAE_NXZ");
+bool __fastcall IsSpellCreature__5SpellFv(struct Spell* this) asm("?IsSpellCreature@Spell@@UAEIXZ");
 // win1.41 0055ce80 mac 103b1ea0 Spell::IsSpellStormAndTornado(void)
-bool __fastcall IsSpellStormAndTornado__5SpellFv(struct Spell* this) asm("?IsSpellStormAndTornado@Spell@@UAE_NXZ");
+bool __fastcall IsSpellStormAndTornado__5SpellFv(struct Spell* this) asm("?IsSpellStormAndTornado@Spell@@UAEIXZ");
 // win1.41 0055ce90 mac 103b1ee0 Spell::SetMaxObjectsToCreate(long)
 void __fastcall SetMaxObjectsToCreate__5SpellFl(struct Spell* this, const void* edx, int param_1) asm("?SetMaxObjectsToCreate@Spell@@UAEXH@Z");
 

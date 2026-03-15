@@ -1848,7 +1848,7 @@ bool __fastcall Dead__8VillagerFv(struct Living* this)
     asm("call               dword ptr [eax + 0xc4]");                          // 0x0076a76a    ff90c4000000
     asm("LAB__addr_0x0076a770:");
     asm("mov.s              ecx, esi");                                        // 0x0076a770    8bce
-    asm("call               ?Dead@PuzzleHorse@@UAE_NXZ");                      // 0x0076a772    e8891ce8ff
+    asm("call               ?Dead@PuzzleHorse@@UAEIXZ");                      // 0x0076a772    e8891ce8ff
     asm("pop                edi");                                             // 0x0076a777    5f
     asm("pop                esi");                                             // 0x0076a778    5e
     asm("ret");                                                                // 0x0076a779    c3

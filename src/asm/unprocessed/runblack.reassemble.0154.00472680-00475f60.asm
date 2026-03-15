@@ -215,7 +215,7 @@
 .globl ?SetupReactToFallingTree@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .globl ?ReactToDroppedByHandPriority@Living@@UAEEPAVReaction@@0@Z
 .globl ?ReactToFallingTreePriority@Living@@UAEEPAVReaction@@0@Z
-.globl ?IsChild@Living@@UAE_NXZ
+.globl ?IsChild@Living@@UAEIXZ
 .globl ?IsPosValidForTurnAngle@Villager@@UAE_NABUMapCoords@@@Z
 .globl ?GetAnimId@Creature@@UAE?AW4ANIM_LIST@@XZ
 .globl ?CallIntoAnimationFunction@Creature@@UAEHW4VILLAGER_STATES@@@Z
@@ -223,7 +223,7 @@
 .globl ?GetPlayer@Creature@@UAEPAVGPlayer@@XZ
 .globl ?RemoveDance@Creature@@UAEXXZ
 .globl ?IsFinalState@Creature@@UAE_NW4VILLAGER_STATES@@@Z
-.globl ?IsReachable@Creature@@UAE_NXZ
+.globl ?IsReachable@Creature@@UAEIXZ
 .globl ?ValidForPlaceInHand@Creature@@UAEIPAVGInterfaceStatus@@@Z
 .globl ?GetCreatureBeliefType@Creature@@UAEIXZ
 .globl ?GetCreatureMimicType@Creature@@UAEIXZ
@@ -232,17 +232,17 @@
 .globl ?CallEntryStateFunctionUc@Creature@@UAEIW4VILLAGER_STATES@@@Z
 .globl ?CallEntryStateFunctionUcUc@Creature@@UAEIW4VILLAGER_STATES@@0@Z
 .globl ?IsSuitableForCreatureActivity@Creature@@UAEIXZ
-.globl ?CanBePickedUp@Creature@@UAE_NXZ
+.globl ?CanBePickedUp@Creature@@UAEIXZ
 .globl ?CanBeExaminedByCreature@Creature@@UAEIPAVCreature@@@Z
 .globl ?CastCreature@Creature@@UAEPAVCreature@@XZ
-.globl ?IsActivityObjectWhichCompassionAppliesTo@Creature@@UAE_NPAVCreature@@@Z
-.globl ?IsActivityObjectWhichPlayfulnessAppliesTo@Creature@@UAE_NPAVCreature@@@Z
+.globl ?IsActivityObjectWhichCompassionAppliesTo@Creature@@UAEIPAVCreature@@@Z
+.globl ?IsActivityObjectWhichPlayfulnessAppliesTo@Creature@@UAEIPAVCreature@@@Z
 .globl ?CanBeSleptNextToByCreature@Creature@@UAEIPAVCreature@@@Z
 .globl ?CanBeEatenByCreature@Creature@@UAEIPAVCreature@@@Z
 .globl ?CanBeBefriendedByCreature@Creature@@UAEIPAVCreature@@@Z
 .globl ?CanBePlayedWithByCreature@Creature@@UAEIPAVCreature@@@Z
 .globl ?IsCreature2@Creature@@UAE_NXZ
-.globl ?IsCreature@Creature@@UAE_NPAVCreature@@@Z
+.globl ?IsCreature@Creature@@UAEIPAVCreature@@@Z
 .globl ?CanBeFoughtByCreature@Creature@@UAEIPAVCreature@@@Z
 .globl ?CanBeFrighteningToCreature@Creature@@UAEIPAVCreature@@@Z
 .globl ?GetSaveType@Creature@@UAEIXZ
@@ -251,7 +251,7 @@
 .globl ??_GCreature@@UAEPAXI@Z
 .globl ??_GMobile@@UAEPAXI@Z
 .globl ??_GMobileWallHug@@UAEPAXI@Z
-.globl ?DecideWhatToDo@Living@@UAE_NXZ
+.globl ?DecideWhatToDo@Living@@UAEIXZ
 .globl ?SetupReactToFire@Living@@UAEXPAVGameThingWithPos@@PAVReaction@@@Z
 .globl ?ReactToFirePriority@Living@@UAEEPAVReaction@@0@Z
 .globl ?ReactToHandPickUpPriority@Living@@UAEEPAVReaction@@0@Z
@@ -673,7 +673,7 @@ _globl_ct_0x00472a40:    {disp32} jmp       .Lbl_addr_0x00472a50                
                          nop                                                                     // 0x00472a4f    90
 .Lbl_addr_0x00472a50:    {disp32} mov       dword ptr [data_bytes + 0x29e134], 0xffffffff        // 0x00472a50    c7053441c600ffffffff
                          ret                                                                     // 0x00472a5a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x00472a5b    e819eef8ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x00472a5b    e819eef8ff
 _globl_ct_0x00472a60:    {disp32} jmp       .Lbl_addr_0x00472a70                                 // 0x00472a60    e90b000000
                          nop                                                                     // 0x00472a65    90
                          nop                                                                     // 0x00472a66    90
@@ -2355,7 +2355,7 @@ _ProcessState__8CreatureFv:
                          nop                                                                     // 0x00473ecd    90
                          nop                                                                     // 0x00473ece    90
                          nop                                                                     // 0x00473ecf    90
-?IsChild@Living@@UAE_NXZ:
+?IsChild@Living@@UAEIXZ:
                          xor.s              eax, eax                                             // 0x00473ed0    33c0
                          ret                                                                     // 0x00473ed2    c3
                          nop                                                                     // 0x00473ed3    90
@@ -2438,7 +2438,7 @@ _ProcessState__8CreatureFv:
 ?RemoveDance@Creature@@UAEXXZ:
                          {disp32} mov       dword ptr [ecx + 0x00001074], 0x00000000             // 0x00473f30    c7817410000000000000
                          ret                                                                     // 0x00473f3a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x00473f3b    e839d9f8ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x00473f3b    e839d9f8ff
 ?IsFinalState@Creature@@UAE_NW4VILLAGER_STATES@@@Z:
                          xor.s              eax, eax                                             // 0x00473f40    33c0
                          ret                0x0004                                               // 0x00473f42    c20400
@@ -2453,7 +2453,7 @@ _ProcessState__8CreatureFv:
                          nop                                                                     // 0x00473f4d    90
                          nop                                                                     // 0x00473f4e    90
                          nop                                                                     // 0x00473f4f    90
-?IsReachable@Creature@@UAE_NXZ:
+?IsReachable@Creature@@UAEIXZ:
                          xor.s              eax, eax                                             // 0x00473f50    33c0
                          ret                                                                     // 0x00473f52    c3
                          nop                                                                     // 0x00473f53    90
@@ -2570,7 +2570,7 @@ _ProcessState__8CreatureFv:
                          nop                                                                     // 0x00473fdd    90
                          nop                                                                     // 0x00473fde    90
                          nop                                                                     // 0x00473fdf    90
-?CanBePickedUp@Creature@@UAE_NXZ:
+?CanBePickedUp@Creature@@UAEIXZ:
                          mov                eax, 0x00000001                                      // 0x00473fe0    b801000000
                          ret                                                                     // 0x00473fe5    c3
                          nop                                                                     // 0x00473fe6    90
@@ -2625,7 +2625,7 @@ _ProcessState__8CreatureFv:
                          nop                                                                     // 0x0047401d    90
                          nop                                                                     // 0x0047401e    90
                          nop                                                                     // 0x0047401f    90
-?IsActivityObjectWhichCompassionAppliesTo@Creature@@UAE_NPAVCreature@@@Z:
+?IsActivityObjectWhichCompassionAppliesTo@Creature@@UAEIPAVCreature@@@Z:
                          mov                eax, 0x00000001                                      // 0x00474020    b801000000
                          ret                0x0004                                               // 0x00474025    c20400
                          nop                                                                     // 0x00474028    90
@@ -2636,7 +2636,7 @@ _ProcessState__8CreatureFv:
                          nop                                                                     // 0x0047402d    90
                          nop                                                                     // 0x0047402e    90
                          nop                                                                     // 0x0047402f    90
-?IsActivityObjectWhichPlayfulnessAppliesTo@Creature@@UAE_NPAVCreature@@@Z:
+?IsActivityObjectWhichPlayfulnessAppliesTo@Creature@@UAEIPAVCreature@@@Z:
                          mov                eax, 0x00000001                                      // 0x00474030    b801000000
                          ret                0x0004                                               // 0x00474035    c20400
                          nop                                                                     // 0x00474038    90
@@ -2707,7 +2707,7 @@ _ProcessState__8CreatureFv:
                          nop                                                                     // 0x0047408d    90
                          nop                                                                     // 0x0047408e    90
                          nop                                                                     // 0x0047408f    90
-?IsCreature@Creature@@UAE_NPAVCreature@@@Z:
+?IsCreature@Creature@@UAEIPAVCreature@@@Z:
                          mov                eax, 0x00000001                                      // 0x00474090    b801000000
                          ret                0x0004                                               // 0x00474095    c20400
                          nop                                                                     // 0x00474098    90
@@ -3341,7 +3341,7 @@ _jmp_addr_0x00474350:    push               ebx                                 
                          nop                                                                     // 0x0047493d    90
                          nop                                                                     // 0x0047493e    90
                          nop                                                                     // 0x0047493f    90
-?DecideWhatToDo@Living@@UAE_NXZ:
+?DecideWhatToDo@Living@@UAEIXZ:
                          xor.s              eax, eax                                             // 0x00474940    33c0
                          ret                                                                     // 0x00474942    c3
                          nop                                                                     // 0x00474943    90
@@ -4986,7 +4986,7 @@ _jmp_addr_0x004758d0:    sub                esp, 0x30                           
                          ret                                                                     // 0x00475d23    c3
 .Lbl_addr_0x00475d24:    {disp32} fstp      dword ptr [ecx + 0x00005464]                         // 0x00475d24    d99964540000
                          ret                                                                     // 0x00475d2a    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x00475d2b    e849bbf8ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x00475d2b    e849bbf8ff
 _jmp_addr_0x00475d30:    sub                esp, 0x0c                                            // 0x00475d30    83ec0c
                          push               esi                                                  // 0x00475d33    56
                          mov.s              esi, ecx                                             // 0x00475d34    8bf1

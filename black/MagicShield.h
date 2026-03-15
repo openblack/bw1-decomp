@@ -108,11 +108,11 @@ void __fastcall CallVirtualFunctionsForCreation__11MagicShieldFRC9MapCoords(stru
 // win1.41 0072c340 mac 10531220 MagicShield::Get3DType(void)
 enum LH3DObject__ObjectType __fastcall Get3DType__11MagicShieldFv(struct Object* this) asm("?Get3DType@MagicShield@@UAE?AW4LH3DObject__ObjectType@@XZ");
 // win1.41 0072c320 mac 105312c0 MagicShield::SetDying(void)
-bool __fastcall SetDying__11MagicShieldFv(struct Object* this) asm("?SetDying@MagicShield@@UAE_NXZ");
+bool __fastcall SetDying__11MagicShieldFv(struct Object* this) asm("?SetDying@MagicShield@@UAEIXZ");
 // win1.41 0072c310 mac 10531320 MagicShield::IsEffectReceiver(EffectValues *)
 uint32_t __fastcall IsEffectReceiver__11MagicShieldFP12EffectValues(struct Object* this, const void* edx, struct EffectValues* param_1) asm("?IsEffectReceiver@MagicShield@@UAEIPAVEffectValues@@@Z");
 // win1.41 0072c330 mac 10531270 MagicShield::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__11MagicShieldFv(struct Object* this) asm("?InteractsWithPhysicsObjects@MagicShield@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__11MagicShieldFv(struct Object* this) asm("?InteractsWithPhysicsObjects@MagicShield@@UAEIXZ");
 // win1.41 0072c2e0 mac 105313e0 MagicShield::ProcessShield(void)
 void __fastcall ProcessShield__11MagicShieldFv(struct MapShield* this) asm("?ProcessShield@MagicShield@@UAEXXZ");
 // win1.41 0072c2f0 mac 105313a0 MagicShield::DrawShield(void)

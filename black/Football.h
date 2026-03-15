@@ -241,15 +241,15 @@ void __fastcall CallVirtualFunctionsForCreation__8FootballFRC9MapCoords(struct O
 // win1.41 005312e0 mac 102b8760 Football::Get3DType(void)
 enum LH3DObject__ObjectType __fastcall Get3DType__8FootballFv(struct Object* this) asm("?Get3DType@Football@@UAE?AW4LH3DObject__ObjectType@@XZ");
 // win1.41 00531930 mac 102bcad0 Football::InteractsWithPhysicsObjects(void)
-bool __fastcall InteractsWithPhysicsObjects__8FootballFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Football@@UAE_NXZ");
+bool __fastcall InteractsWithPhysicsObjects__8FootballFv(struct Object* this) asm("?InteractsWithPhysicsObjects@Football@@UAEIXZ");
 // win1.41 005312f0 mac 102b87a0 Football::CreatureMustAvoid(Creature *)
 bool __fastcall CreatureMustAvoid__8FootballFP8Creature(struct Object* this, const void* edx, struct Creature* param_1) asm("?CreatureMustAvoid@Football@@UAE_NPAVCreature@@@Z");
 // win1.41 00533b30 mac inlined Football::GetDoorPos(MapCoords *)
 struct MapCoords* __fastcall GetDoorPos__8FootballFP9MapCoords(struct MultiMapFixed* this, const void* edx, struct MapCoords* param_1) asm("?GetDoorPos@Football@@UAEPAUMapCoords@@PAU2@@Z");
 // win1.41 00531290 mac 102b8650 Football::IsRepaired(void)
-bool __fastcall IsRepaired__8FootballFv(struct MultiMapFixed* this) asm("?IsRepaired@Football@@UAE_NXZ");
+bool __fastcall IsRepaired__8FootballFv(struct MultiMapFixed* this) asm("?IsRepaired@Football@@UAEIXZ");
 // win1.41 005312b0 mac 102b86c0 Football::IsBuilt(void)
-bool __fastcall IsBuilt__8FootballFv(struct MultiMapFixed* this) asm("?IsBuilt@Football@@UAE_NXZ");
+bool __fastcall IsBuilt__8FootballFv(struct MultiMapFixed* this) asm("?IsBuilt@Football@@UAEIXZ");
 
 #endif // __cplusplus
 

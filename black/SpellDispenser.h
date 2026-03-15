@@ -113,7 +113,7 @@ void __fastcall Draw__14SpellDispenserFv(struct Object* this) asm("?Draw@SpellDi
 // win1.41 007227d0 mac 1051ba80 SpellDispenser::CallVirtualFunctionsForCreation(MapCoords const &)
 void __fastcall CallVirtualFunctionsForCreation__14SpellDispenserFRC9MapCoords(struct Object* this, const void* edx, const struct MapCoords* param_1) asm("?CallVirtualFunctionsForCreation@SpellDispenser@@UAEXABUMapCoords@@@Z");
 // win1.41 007226e0 mac 1051a9f0 SpellDispenser::IsSpellSeedReturnPoint( const(void))
-bool __fastcall IsSpellSeedReturnPoint__14SpellDispenserCFv(const struct Object* this) asm("?IsSpellSeedReturnPoint@SpellDispenser@@UBE_NXZ");
+bool __fastcall IsSpellSeedReturnPoint__14SpellDispenserCFv(const struct Object* this) asm("?IsSpellSeedReturnPoint@SpellDispenser@@UBEIXZ");
 
 #endif // __cplusplus
 

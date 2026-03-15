@@ -517,7 +517,7 @@ _jmp_addr_0x00481a40:    push               esi                                 
                          shr                eax, 0xc                                             // 0x00481c52    c1e80c
                          and                eax, 0x01                                            // 0x00481c55    83e001
                          ret                0x0004                                               // 0x00481c58    c20400
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x00481c5b    e819fcf7ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x00481c5b    e819fcf7ff
 .Lbl_addr_0x00481c60:    sub                esp, 0x44                                            // 0x00481c60    83ec44
                          push               ebx                                                  // 0x00481c63    53
                          push               ebp                                                  // 0x00481c64    55
@@ -650,7 +650,7 @@ _jmp_addr_0x00481a40:    push               esi                                 
                          pop                ebx                                                  // 0x00481de6    5b
                          add                esp, 0x44                                            // 0x00481de7    83c444
                          ret                                                                     // 0x00481dea    c3
-                         call               ?GetVillagerActivityDesire@GameThing@@QAEMPAVVillager@@@Z + 9                                 // 0x00481deb    e889faf7ff
+                         call               ?GetVillagerActivityDesire@GameThing@@UAEMPAVVillager@@@Z + 9                                 // 0x00481deb    e889faf7ff
                          sub                esp, 0x000000a8                                      // 0x00481df0    81eca8000000
                          push               ebx                                                  // 0x00481df6    53
                          push               ebp                                                  // 0x00481df7    55
