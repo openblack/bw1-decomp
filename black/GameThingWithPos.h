@@ -943,7 +943,7 @@ char* __fastcall GetDebugText__16GameThingWithPosFv(struct GameThing* this) asm(
 // win1.41 005704a0 mac 1016a2c0 GameThingWithPos::Load(GameOSFile &)
 uint32_t __fastcall Load__16GameThingWithPosFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z");
 // win1.41 005703f0 mac 10512f10 GameThingWithPos::Save(GameOSFile &)
-uint32_t __fastcall Save__16GameThingWithPosFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z");
+uint32_t __fastcall Save__16GameThingWithPosFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00570560 mac 10430e60 GameThingWithPos::GetSaveType(void)
 uint32_t __fastcall GetSaveType__16GameThingWithPosFv(struct GameThing* this) asm("?GetSaveType@GameThingWithPos@@QAEKXZ");
 // win1.41 00401940 mac 1004d010 GameThingWithPos::SetPos(MapCoords const &)

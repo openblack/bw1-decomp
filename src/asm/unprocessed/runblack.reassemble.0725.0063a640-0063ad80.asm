@@ -10,7 +10,7 @@
 .extern ?DoesObjectTypeCountAsFixed@MapCell@@SA_NW4OBJECT_TYPE@@@Z
 .extern @GetLHPoint__9MapCoordsCFv@12
 .extern _jmp_addr_0x00637cc0
-.extern _jmp_addr_0x00646950
+.extern ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z
 .extern @GetRealInterface__7GPlayerFUl@12
 .extern ?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z
 .extern _jmp_addr_0x0071b570
@@ -198,7 +198,7 @@ _jmp_addr_0x0063a710:    push               ebx                                 
                          test               byte ptr [ecx + 0x24], 0x40                   // 0x0063a780    f6412440
                          {disp8} je         .Lbl_addr_0x0063a7ac                          // 0x0063a784    7426
                          push               ecx                                           // 0x0063a786    51
-                         call               _jmp_addr_0x00646950                          // 0x0063a787    e8c4c10000
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                          // 0x0063a787    e8c4c10000
                          add                esp, 0x04                                     // 0x0063a78c    83c404
                          test               eax, eax                                      // 0x0063a78f    85c0
                          {disp8} je         .Lbl_addr_0x0063a7ac                          // 0x0063a791    7419

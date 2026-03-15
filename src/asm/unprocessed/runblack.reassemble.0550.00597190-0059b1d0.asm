@@ -43,7 +43,7 @@
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
 .extern ??0GameThing@@QAE@XZ
-.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
+.extern ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x00596570
 .extern _jmp_addr_0x0059b1d0
@@ -1660,7 +1660,7 @@ _jmp_addr_0x005981d0:    push               ebx                                 
                          push               edi                                           // 0x00598245    57
                          mov.s              edi, ecx                                      // 0x00598246    8bf9
                          push               esi                                           // 0x00598248    56
-                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x00598249    e8a281fdff
+                         call               ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z // 0x00598249    e8a281fdff
                          test               eax, eax                                      // 0x0059824e    85c0
                          {disp32} je        .Lbl_addr_0x005985ae                          // 0x00598250    0f8458030000
                          {disp32} mov       eax, dword ptr [_DAT_00bec990]                // 0x00598256    a190c9be00

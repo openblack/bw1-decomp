@@ -21,7 +21,7 @@
 .extern ??0FixedObject@@QAE@XZ
 .extern @__ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff@24
 .extern _jmp_addr_0x0052de20
-.extern ?Save@Fixed@@UAEIPAVGameOSFile@@@Z
+.extern ?Save@Fixed@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@Fixed@@UAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x00535850
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
@@ -35,7 +35,7 @@
 .extern ?Load@GameThing@@UAEIAAVGameOSFile@@@Z
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
-.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
+.extern ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern ?SetToZero@GameThingWithPos@@QAEXXZ
 .extern _jmp_addr_0x0057d440
@@ -1774,7 +1774,7 @@ _jmp_addr_0x004250a0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          push               edi                                           // 0x004250d5    57
                          mov.s              edi, ecx                                      // 0x004250d6    8bf9
                          push               esi                                           // 0x004250d8    56
-                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x004250d9    e812b31400
+                         call               ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z // 0x004250d9    e812b31400
                          test               eax, eax                                      // 0x004250de    85c0
                          {disp32} je        .Lbl_addr_0x004251c2                          // 0x004250e0    0f84dc000000
                          {disp32} mov       eax, dword ptr [_DAT_00bec990]                // 0x004250e6    a190c9be00
@@ -2425,7 +2425,7 @@ _jmp_addr_0x004252d0:    push               esi                                 
                          push               edi                                           // 0x004256e5    57
                          mov.s              edi, ecx                                      // 0x004256e6    8bf9
                          push               esi                                           // 0x004256e8    56
-                         call               ?Save@Fixed@@UAEIPAVGameOSFile@@@Z            // 0x004256e9    e8528a1000
+                         call               ?Save@Fixed@@UAEIAAVGameOSFile@@@Z            // 0x004256e9    e8528a1000
                          test               eax, eax                                      // 0x004256ee    85c0
                          {disp32} je        .Lbl_addr_0x004257c5                          // 0x004256f0    0f84cf000000
                          {disp8} mov        eax, dword ptr [edi + 0x58]                   // 0x004256f6    8b4758

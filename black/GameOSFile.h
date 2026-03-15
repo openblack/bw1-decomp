@@ -120,6 +120,8 @@ public:
     void WritePtr(GameThing* param_1);
     // win1.41 00562180 mac 10304470 GameOSFile::ReadPtr(GameThing **)
     void ReadPtr(GameThing** ptr);
+    // win1.41 00563ea0 mac 10300970 GameOSFile::WriteInfo(const BaseInfo*)
+    void WriteInfo(const GBaseInfo* info);
     // win1.41 00563f00 mac 103008a0 GameOSFile::ReadInfo(GBaseInfo const **)
     void ReadInfo(GBaseInfo** info);
     // win1.41 00563fa0 mac 10300720 GameOSFile::ReadCheckSum(GameThing *)

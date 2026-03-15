@@ -197,7 +197,7 @@
 .extern _jmp_addr_0x0063e580
 .extern _jmp_addr_0x00644800
 .extern _jmp_addr_0x00644f00
-.extern _jmp_addr_0x00646950
+.extern ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z
 .extern _jmp_addr_0x00646a00
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern @IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE@12
@@ -12868,7 +12868,7 @@ _jmp_addr_0x006e7560:    sub                esp, 0x5c                           
                          {disp8} mov        dword ptr [esp + 0x3c], 0x00000000            // 0x006e75ce    c744243c00000000
                          {disp8} je         .Lbl_addr_0x006e764f                          // 0x006e75d6    7477
                          push               esi                                           // 0x006e75d8    56
-                         call               _jmp_addr_0x00646950                          // 0x006e75d9    e872f3f5ff
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                          // 0x006e75d9    e872f3f5ff
                          xor.s              edx, edx                                      // 0x006e75de    33d2
                          add                esp, 0x04                                     // 0x006e75e0    83c404
                          cmp.s              eax, edx                                      // 0x006e75e3    3bc2
@@ -16428,7 +16428,7 @@ _jmp_addr_0x006e9610:    push               esi                                 
                          {disp8} mov        dword ptr [esp + 0x34], 0x00000000            // 0x006e9bd3    c744243400000000
                          {disp8} je         .Lbl_addr_0x006e9c28                          // 0x006e9bdb    744b
                          push               esi                                           // 0x006e9bdd    56
-                         call               _jmp_addr_0x00646950                          // 0x006e9bde    e86dcdf5ff
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                          // 0x006e9bde    e86dcdf5ff
                          add                esp, 0x04                                     // 0x006e9be3    83c404
                          test               eax, eax                                      // 0x006e9be6    85c0
                          {disp8} je         .Lbl_addr_0x006e9c28                          // 0x006e9be8    743e
@@ -16802,7 +16802,7 @@ _jmp_addr_0x006e9d40:    sub                esp, 0x08                           
 .Lbl_addr_0x006ea062:    test               byte ptr [esi + 0x24], 0x40                   // 0x006ea062    f6462440
                          {disp8} je         .Lbl_addr_0x006ea0e3                          // 0x006ea066    747b
                          push               esi                                           // 0x006ea068    56
-                         call               _jmp_addr_0x00646950                          // 0x006ea069    e8e2c8f5ff
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                          // 0x006ea069    e8e2c8f5ff
                          {disp32} fld       dword ptr [eax + 0x00000090]                  // 0x006ea06e    d98090000000
                          {disp32} fmul      dword ptr [_rdata_float0p5]                   // 0x006ea074    d80db4a38a00
                          add                esp, 0x04                                     // 0x006ea07a    83c404

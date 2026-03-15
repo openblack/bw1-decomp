@@ -39,7 +39,7 @@
 .extern _jmp_addr_0x006076c0
 .extern _jmp_addr_0x00639a40
 .extern _jmp_addr_0x00639a60
-.extern _jmp_addr_0x00646950
+.extern ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z
 .extern _jmp_addr_0x0064d6a0
 .extern _jmp_addr_0x0068f450
 .extern _jmp_addr_0x0068f4f0
@@ -1837,7 +1837,7 @@ start_0x006f94a0_0x006fc520:
                          test               byte ptr [esi + 0x24], 0x40                   // 0x006fa8fe    f6462440
                          {disp8} je         .Lbl_addr_0x006fa933                          // 0x006fa902    742f
                          push               esi                                           // 0x006fa904    56
-                         call               _jmp_addr_0x00646950                          // 0x006fa905    e846c0f4ff
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                          // 0x006fa905    e846c0f4ff
                          add                esp, 0x04                                     // 0x006fa90a    83c404
                          test               eax, eax                                      // 0x006fa90d    85c0
                          {disp32} je        .Lbl_addr_0x006fa9d3                          // 0x006fa90f    0f84be000000
@@ -3409,7 +3409,7 @@ _jmp_addr_0x006faa60:    {disp32} mov       ecx, dword ptr [_game]              
                          {disp8} fstp       dword ptr [esp + 0x54]                        // 0x006fbadd    d95c2454
                          {disp8} je         .Lbl_addr_0x006fbb1a                          // 0x006fbae1    7437
                          push               edi                                           // 0x006fbae3    57
-                         call               _jmp_addr_0x00646950                          // 0x006fbae4    e867aef4ff
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                          // 0x006fbae4    e867aef4ff
                          add                esp, 0x04                                     // 0x006fbae9    83c404
                          test               eax, eax                                      // 0x006fbaec    85c0
                          {disp8} je         .Lbl_addr_0x006fbb49                          // 0x006fbaee    7459

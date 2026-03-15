@@ -138,7 +138,7 @@
 .extern ?CallVirtualFunctionsForCreation@Object@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x00636e30
 .extern @SetScale__6ObjectFf@12
-.extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
+.extern ?Save@Object@@UAEIAAVGameOSFile@@@Z
 .extern @Load__6ObjectFR10GameOSFile@12
 .extern ?ResolveLoad@Object@@UAEXXZ
 .extern _jmp_addr_0x0063a710
@@ -19572,7 +19572,7 @@ _jmp_addr_0x00746ee0:    call               .Lbl_addr_0x00746db0                
                          push               edi                                                  // 0x00746f15    57
                          mov.s              edi, ecx                                             // 0x00746f16    8bf9
                          push               esi                                                  // 0x00746f18    56
-                         call               ?Save@Object@@UAEIPAVGameOSFile@@@Z                  // 0x00746f19    e8722cefff
+                         call               ?Save@Object@@UAEIAAVGameOSFile@@@Z                  // 0x00746f19    e8722cefff
                          test               eax, eax                                             // 0x00746f1e    85c0
                          {disp32} je        .Lbl_addr_0x00747022                                 // 0x00746f20    0f84fc000000
                          {disp8} mov        eax, dword ptr [edi + 0x64]                          // 0x00746f26    8b4764

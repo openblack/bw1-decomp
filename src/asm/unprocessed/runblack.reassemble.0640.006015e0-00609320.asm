@@ -42,7 +42,7 @@
 .extern _jmp_addr_0x0056fa80
 .extern ?ToBeDeleted@GameThingWithPos@@UAEXH@Z
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
-.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
+.extern ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern ?SetToZero@GameThingWithPos@@QAEXXZ
 .extern _jmp_addr_0x005cd170
@@ -70,7 +70,7 @@
 .extern ?GetHoldLoweringMultiplier@Object@@UAEMXZ
 .extern @SetScale__6ObjectFf@12
 .extern @SetYAngle__6ObjectFf@12
-.extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
+.extern ?Save@Object@@UAEIAAVGameOSFile@@@Z
 .extern @Load__6ObjectFR10GameOSFile@12
 .extern @SetLife__6ObjectFf@12
 .extern _jmp_addr_0x0063a230
@@ -8474,7 +8474,7 @@ _jmp_addr_0x00606880:    push               esi                                 
                          push               edi                                           // 0x00606925    57
                          mov.s              edi, ecx                                      // 0x00606926    8bf9
                          push               esi                                           // 0x00606928    56
-                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z // 0x00606929    e8c29af6ff
+                         call               ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z // 0x00606929    e8c29af6ff
                          test               eax, eax                                      // 0x0060692e    85c0
                          {disp32} je        .Lbl_addr_0x006069fa                          // 0x00606930    0f84c4000000
                          {disp32} mov       eax, dword ptr [_DAT_00bec990]                // 0x00606936    a190c9be00
@@ -8776,7 +8776,7 @@ _globl_ct_0x00606b30:    call               .Lbl_addr_0x00606b40                
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                   // 0x00606c12    8b7c240c
                          mov.s              esi, ecx                                      // 0x00606c16    8bf1
                          push               edi                                           // 0x00606c18    57
-                         call               ?Save@Object@@UAEIPAVGameOSFile@@@Z           // 0x00606c19    e8722f0300
+                         call               ?Save@Object@@UAEIAAVGameOSFile@@@Z           // 0x00606c19    e8722f0300
                          test               eax, eax                                      // 0x00606c1e    85c0
                          {disp8} je         .Lbl_addr_0x00606c68                          // 0x00606c20    7446
                          {disp32} mov       eax, dword ptr [_DAT_00bec990]                // 0x00606c22    a190c9be00

@@ -23,7 +23,7 @@
 .extern _jmp_addr_0x00519960
 .extern ??0FixedObject@@QAE@XZ
 .extern @__ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff@24
-.extern ?Save@Fixed@@UAEIPAVGameOSFile@@@Z
+.extern ?Save@Fixed@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@Fixed@@UAEIAAVGameOSFile@@@Z
 .extern ?CallVirtualFunctionsForCreation@SingleMapFixed@@UAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x0052eac0
@@ -2251,7 +2251,7 @@ _jmp_addr_0x0070a510:    {disp32} fld       dword ptr [data_bytes + 0x3d07d8]   
                          push               edi                                           // 0x0070a765    57
                          mov.s              edi, ecx                                      // 0x0070a766    8bf9
                          push               esi                                           // 0x0070a768    56
-                         call               ?Save@Fixed@@UAEIPAVGameOSFile@@@Z            // 0x0070a769    e8d239e2ff
+                         call               ?Save@Fixed@@UAEIAAVGameOSFile@@@Z            // 0x0070a769    e8d239e2ff
                          test               eax, eax                                      // 0x0070a76e    85c0
                          {disp32} je        .Lbl_addr_0x0070a8e1                          // 0x0070a770    0f846b010000
                          {disp32} mov       eax, dword ptr [_DAT_00bec990]                // 0x0070a776    a190c9be00

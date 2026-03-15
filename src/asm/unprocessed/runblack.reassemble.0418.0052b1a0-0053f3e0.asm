@@ -176,7 +176,7 @@
 .extern @SetScale__6ObjectFf@12
 .extern @SetYAngle__6ObjectFf@12
 .extern ?IsObjectInMap@Object@@UAEIXZ
-.extern ?Save@Object@@UAEIPAVGameOSFile@@@Z
+.extern ?Save@Object@@UAEIAAVGameOSFile@@@Z
 .extern @Load__6ObjectFR10GameOSFile@12
 .extern _jmp_addr_0x0063a940
 .extern @GetDoorPosition__12Game3DObjectCFP9MapCoords@12
@@ -326,7 +326,7 @@
 .globl @InsertMapObjectToCell__11FixedObjectFP7MapCell@12
 .globl @InsertMapObjectToCellAssumeFixed__11FixedObjectFP7MapCell@12
 .extern ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z
-.extern ?Save@Fixed@@UAEIPAVGameOSFile@@@Z
+.extern ?Save@Fixed@@UAEIAAVGameOSFile@@@Z
 .globl ?Load@Fixed@@UAEIAAVGameOSFile@@@Z
 .globl ??0MultiMapFixed@@QAE@XZ  
 .globl @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
@@ -518,7 +518,7 @@
 .globl ?IsOkToCreateAtPos@GMultiMapFixedInfo@@UBE_NABUMapCoords@@MM@Z
 .globl ??1Fixed@@UAE@XZ
 .globl ?GetTownArtifactValue@Fixed@@UAEMXZ
-.globl ?Save@Fixed@@UAEIPAVGameOSFile@@@Z
+.globl ?Save@Fixed@@UAEIAAVGameOSFile@@@Z
 .globl ?InsertMapObject@Fixed@@UAEXXZ
 .globl ?RemoveMapObject@Fixed@@UAEXXZ
 .globl ?ValidForLockedSelectProcess@Fixed@@UAE_NPAVGInterfaceStatus@@@Z
@@ -1411,7 +1411,7 @@ _jmp_addr_0x0052b7a0:    mov                ecx, OFFSET _GGameInfo_00d019f8     
                          push               edi                                                  // 0x0052b875    57
                          mov.s              edi, ecx                                             // 0x0052b876    8bf9
                          push               esi                                                  // 0x0052b878    56
-                         call               ?Save@Object@@UAEIPAVGameOSFile@@@Z                  // 0x0052b879    e812e31000
+                         call               ?Save@Object@@UAEIAAVGameOSFile@@@Z                  // 0x0052b879    e812e31000
                          test               eax, eax                                             // 0x0052b87e    85c0
                          {disp32} je        .Lbl_addr_0x0052bbac                                 // 0x0052b880    0f8426030000
                          {disp32} mov       eax, dword ptr [_DAT_00bec990]                       // 0x0052b886    a190c9be00
@@ -5591,13 +5591,13 @@ _jmp_addr_0x0052de20:    mov                dword ptr [ecx], 0x008db71c         
                          nop                                                                     // 0x0052e13d    90
                          nop                                                                     // 0x0052e13e    90
                          nop                                                                     // 0x0052e13f    90
-?Save@Fixed@@UAEIPAVGameOSFile@@@Z:
+?Save@Fixed@@UAEIAAVGameOSFile@@@Z:
                          push               esi                                                  // 0x0052e140    56
                          push               edi                                                  // 0x0052e141    57
                          {disp8} mov        edi, dword ptr [esp + 0x0c]                          // 0x0052e142    8b7c240c
                          mov.s              esi, ecx                                             // 0x0052e146    8bf1
                          push               edi                                                  // 0x0052e148    57
-                         call               ?Save@Object@@UAEIPAVGameOSFile@@@Z                  // 0x0052e149    e842ba1000
+                         call               ?Save@Object@@UAEIAAVGameOSFile@@@Z                  // 0x0052e149    e842ba1000
                          test               eax, eax                                             // 0x0052e14e    85c0
                          {disp8} je         .Lbl_addr_0x0052e167                                 // 0x0052e150    7415
                          {disp8} mov        eax, dword ptr [esi + 0x54]                          // 0x0052e152    8b4654
@@ -7503,7 +7503,7 @@ _jmp_addr_0x0052edd0:    {disp8} fld        dword ptr [esp + 0x04]              
                          push               edi                                                  // 0x0052f255    57
                          mov.s              edi, ecx                                             // 0x0052f256    8bf9
                          push               esi                                                  // 0x0052f258    56
-                         call               ?Save@Fixed@@UAEIPAVGameOSFile@@@Z                   // 0x0052f259    e8e2eeffff
+                         call               ?Save@Fixed@@UAEIAAVGameOSFile@@@Z                   // 0x0052f259    e8e2eeffff
                          test               eax, eax                                             // 0x0052f25e    85c0
                          {disp32} je        .Lbl_addr_0x0052f2fe                                 // 0x0052f260    0f8498000000
                          {disp32} mov       eax, dword ptr [_DAT_00bec990]                       // 0x0052f266    a190c9be00

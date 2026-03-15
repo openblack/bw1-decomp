@@ -83,7 +83,7 @@
 .extern ?GetBoredomMultiplier@GameThingWithPos@@QAEHPAVReaction@@@Z
 .extern ?GetUpdateOfBoredomValue@GameThingWithPos@@UAEMPAUReaction@@PAV1@@Z
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
-.extern ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z
+.extern ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern ?SetToZero@GameThingWithPos@@QAEXXZ
 .extern _jmp_addr_0x00575e20
@@ -9318,7 +9318,7 @@ _jmp_addr_0x00721910:    {disp32} mov       eax, dword ptr [ecx + 0x000000ac]   
                          push               edi                                                  // 0x00721935    57
                          mov.s              edi, ecx                                             // 0x00721936    8bf9
                          push               esi                                                  // 0x00721938    56
-                         call               ?Save@GameThingWithPos@@UAEXPAUGameOSFile@@@Z        // 0x00721939    e8b2eae4ff
+                         call               ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z        // 0x00721939    e8b2eae4ff
                          test               eax, eax                                             // 0x0072193e    85c0
                          {disp32} je        .Lbl_addr_0x00721cc2                                 // 0x00721940    0f847c030000
                          {disp32} mov       eax, dword ptr [_DAT_00bec990]                       // 0x00721946    a190c9be00

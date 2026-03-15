@@ -96,7 +96,7 @@
 .globl _jmp_addr_0x00563620
 .globl _jmp_addr_0x005637f0
 .globl _jmp_addr_0x00563b30
-.globl _jmp_addr_0x00563ea0
+.globl ?WriteInfo@GameOSFile@@QAEXPBVGBaseInfo@@@Z
 .globl @ReadInfo__10GameOSFileFPPC9GBaseInfo@12
 .globl ?WriteCheckSum@GameOSFile@@QAEXPAVGameThing@@@Z
 .globl @ReadCheckSum__10GameOSFileFP9GameThing@12
@@ -2834,7 +2834,7 @@ _jmp_addr_0x00563b30:    push               ecx                                 
                          nop                                                              // 0x00563e9d    90
                          nop                                                              // 0x00563e9e    90
                          nop                                                              // 0x00563e9f    90
-_jmp_addr_0x00563ea0:    push               esi                                           // 0x00563ea0    56
+?WriteInfo@GameOSFile@@QAEXPBVGBaseInfo@@@Z:    push               esi                                           // 0x00563ea0    56
                          mov.s              esi, ecx                                      // 0x00563ea1    8bf1
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x00563ea3    8b4c2408
                          call               _jmp_addr_0x00436c00                          // 0x00563ea7    e8542dedff

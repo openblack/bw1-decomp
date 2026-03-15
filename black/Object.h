@@ -1006,7 +1006,7 @@ void __fastcall DrawInHand__6ObjectFP16GInterfaceStatus(struct GameThing* this, 
 // win1.41 00639eb0 mac 103d1b20 Object::Load(GameOSFile &)
 uint32_t __fastcall Load__6ObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Load@Object@@UAEIAAVGameOSFile@@@Z");
 // win1.41 00639b90 mac 103d1d50 Object::Save(GameOSFile &)
-uint32_t __fastcall Save__6ObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@Object@@UAEIPAVGameOSFile@@@Z");
+uint32_t __fastcall Save__6ObjectFR10GameOSFile(struct GameThing* this, const void* edx, struct GameOSFile* file) asm("?Save@Object@@UAEIAAVGameOSFile@@@Z");
 // win1.41 0063a020 mac 103d1940 Object::ResolveLoad(void)
 void __fastcall ResolveLoad__6ObjectFv(struct GameThing* this) asm("?ResolveLoad@Object@@UAEXXZ");
 // win1.41 00402600 mac 1004b110 Object::GetLife(void)

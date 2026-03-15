@@ -16,7 +16,7 @@
 .extern ?AllocateMultiChild@MultiMapFixed@@QAEXXZ
 .extern ?WritePtr@GameOSFile@@QAEXPAVGameThing@@@Z
 .extern @ReadPtr__10GameOSFileFPP9GameThing@12
-.extern _jmp_addr_0x00563ea0
+.extern ?WriteInfo@GameOSFile@@QAEXPBVGBaseInfo@@@Z
 .extern @ReadInfo__10GameOSFileFPPC9GBaseInfo@12
 .extern ??0GameThing@@QAE@XZ
 .extern _jmp_addr_0x0056fa80
@@ -4686,7 +4686,7 @@ _jmp_addr_0x00511270:    push               ebx                                 
                          {disp32} mov       eax, dword ptr [edi + 0x00000094]             // 0x005115d2    8b8794000000
                          push               eax                                           // 0x005115d8    50
                          mov.s              ecx, esi                                      // 0x005115d9    8bce
-                         call               _jmp_addr_0x00563ea0                          // 0x005115db    e8c0280500
+                         call               ?WriteInfo@GameOSFile@@QAEXPBVGBaseInfo@@@Z                          // 0x005115db    e8c0280500
                          {disp32} mov       eax, dword ptr [_DAT_00bec990]                // 0x005115e0    a190c9be00
                          test               eax, eax                                      // 0x005115e5    85c0
                          {disp8} je         .Lbl_addr_0x0051161f                          // 0x005115e7    7436

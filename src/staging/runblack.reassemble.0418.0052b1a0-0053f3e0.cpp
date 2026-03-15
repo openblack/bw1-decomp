@@ -2,6 +2,7 @@
 #include "FishFarmInfo.h"
 #include "FishFarm.h"
 #include "MultiMapFixed.h"
+#include "Object.h"
 #include "SingleMapFixedInfo.h"
 #include "MultiMapFixedInfo.h"
 #include "Flock.h"
@@ -16,6 +17,7 @@
 #include "ForestInfo.h"
 #include "Forest.h"
 #include "FrontEnd.h"
+#include "GameOSFile.h"
 #include "NewProfileBox.h"
 #include "TattooEditor.h"
 #include "ProfileEditor.h"
@@ -26,6 +28,7 @@
 #include "LoadingBox.h"
 #include "EditingDebugBox.h"
 #include "RegisterBox.h"
+#include "BuildingSite.h"
 
 // win1.41 0052b870 mac 100d7020 FireFly::Save(GameOSFile &)
 bool32_t FireFly::Save(GameOSFile& file)
@@ -394,6 +397,17 @@ GSingleMapFixedInfo::~GSingleMapFixedInfo()
 {
 }
 
+// win1.41 0052e140 mac 100e17b0 FixedObject::Save(GameOSFile &)
+bool32_t Fixed::Save(GameOSFile& file)
+{
+    if (Object::Save(file))
+    {
+        file.GameOSFile::WritePtr(town_artifact);
+        return true;
+    }
+    return false;
+}
+
 // win1.41 0052e1a0 mac 100e16a0 MultiMapFixed::MultiMapFixed(void)
 MultiMapFixed::MultiMapFixed()
 {
@@ -611,7 +625,15 @@ bool32_t MultiMapFixed::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE type, G
 // win1.41 0052f250 mac 100de470 MultiMapFixed::Save(GameOSFile &)
 bool32_t MultiMapFixed::Save(GameOSFile& file)
 {
-    return 0;
+    if (Fixed::Save(file))
+    {
+        GameOSFileWriteCheckSum(file, field_0x58);
+        GameOSFileWriteCheckSum(file, percent_built);         
+        file.WritePtr(footpath_link);
+        file.WritePtr(building_site);
+        return true;
+    }
+    return false;
 }
 
 // win1.41 0052f310 mac 100de310 MultiMapFixed::Load(GameOSFile &)

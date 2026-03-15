@@ -73,7 +73,7 @@
 .extern _jmp_addr_0x0060bf90
 .extern _jmp_addr_0x0060c000
 .extern _jmp_addr_0x00644f00
-.extern _jmp_addr_0x00646950
+.extern ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?GameFloatRand@GRand@@SAMMPBDI@Z
 .extern ?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z
@@ -12465,7 +12465,7 @@ _globl_ct_0x004201c0:    {disp32} jmp       .Lbl_addr_0x004201d0                
                          mov.s              esi, ecx                                      // 0x004204b8    8bf1
                          call               ___RTDynamicCast                              // 0x004204ba    e85a553a00
                          push               eax                                           // 0x004204bf    50
-                         call               _jmp_addr_0x00646950                          // 0x004204c0    e88b642200
+                         call               ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z                          // 0x004204c0    e88b642200
                          add                esp, 0x18                                     // 0x004204c5    83c418
                          test               eax, eax                                      // 0x004204c8    85c0
                          {disp8} je         .Lbl_addr_0x0042053e                          // 0x004204ca    7472
