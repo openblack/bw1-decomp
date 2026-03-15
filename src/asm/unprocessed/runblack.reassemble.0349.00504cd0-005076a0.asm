@@ -62,7 +62,7 @@
 .extern _jmp_addr_0x005fc790
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern ?InBounds@MapCoords@@QBEIXZ
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00639410
 .extern _jmp_addr_0x00639a60
 .extern _jmp_addr_0x0063e580
@@ -2477,7 +2477,7 @@ start_0x00504cd0_0x005076a0:
                          push               ecx                                                  // 0x00506846    51
                          {disp32} mov       ecx, dword ptr [esi + 0x000010a0]                    // 0x00506847    8b8ea0100000
                          add                ecx, 0x14                                            // 0x0050684d    83c114
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x00506850    e8ebf30f00
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x00506850    e8ebf30f00
                          {disp32} mov       eax, dword ptr [esi + 0x00000160]                    // 0x00506855    8b8660010000
                          {disp8} mov        ecx, dword ptr [eax + 0x58]                          // 0x0050685b    8b4858
                          push               0x0                                                  // 0x0050685e    6a00

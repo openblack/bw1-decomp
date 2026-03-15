@@ -23,7 +23,7 @@
 .extern _jmp_addr_0x0050d460
 .extern _jmp_addr_0x0050d600
 .extern ?CalculateDancePosition@Living@@QAE_NABUMapCoords@@PAU2@@Z
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x006e8160
 .extern _jmp_addr_0x0074cd50
 .extern _jmp_addr_0x0074d360
@@ -343,7 +343,7 @@ start_0x00504700_0x00504cd0:
                          push               edx                                           // 0x00504bb1    52
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x00504bb2    8d4c2418
                          {disp8} mov        dword ptr [esp + 0x1c], eax                   // 0x00504bb6    8944241c
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x00504bba    e881101000
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x00504bba    e881101000
                          push               0x0                                           // 0x00504bbf    6a00
                          {disp8} lea        eax, dword ptr [esp + 0x48]                   // 0x00504bc1    8d442448
                          push               eax                                           // 0x00504bc5    50

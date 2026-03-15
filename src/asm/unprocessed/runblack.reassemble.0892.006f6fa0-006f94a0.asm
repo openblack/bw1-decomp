@@ -33,7 +33,7 @@
 .extern @GetNearestTown__9MapCoordsCFf@12
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x00604370
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern @AreWeThere__13MobileWallHugFf@12
 .extern _jmp_addr_0x00658510
 .extern _jmp_addr_0x00681230
@@ -3548,7 +3548,7 @@ _jmp_addr_0x006f82e0:    push               esi                                 
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                   // 0x006f9451    8d44241c
                          push               eax                                           // 0x006f9455    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x006f9456    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x006f9459    e8e2c7f0ff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x006f9459    e8e2c7f0ff
                          push               eax                                           // 0x006f945e    50
                          push               esi                                           // 0x006f945f    56
                          call               _jmp_addr_0x00681260                          // 0x006f9460    e8fb7df8ff

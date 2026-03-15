@@ -23,7 +23,7 @@
 .extern ?SetMessage@GDebug@@SAXGPADZZ
 .extern ?GetReaction@Living@@QAEXXZ
 .extern @GetNearestTown__9MapCoordsCFf@12
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?FUN_0064da80@GPlayer@@QAEXHH@Z
 .extern _jmp_addr_0x007436f0
 .extern _jmp_addr_0x0074cd50
@@ -838,7 +838,7 @@ _jmp_addr_0x00476070:    push               ebp                                 
 .Lbl_addr_0x00476aa6:    {disp8} lea        eax, dword ptr [esp + 0x1c]                   // 0x00476aa6    8d44241c
                          push               eax                                           // 0x00476aaa    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x00476aab    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x00476aae    e88df11800
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x00476aae    e88df11800
                          push               eax                                           // 0x00476ab3    50
                          call               _jmp_addr_0x00771a80                          // 0x00476ab4    e8c7af2f00
                          push               ecx                                           // 0x00476ab9    51

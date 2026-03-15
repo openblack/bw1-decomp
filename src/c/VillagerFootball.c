@@ -1467,7 +1467,7 @@ void __fastcall FootballAttackerDribbleProcess__8VillagerFP8Football(struct Vill
     asm("{disp8} lea        eax, dword ptr [esp + 0x24]");                   // 0x0075d6c5    8d442424
     asm("push               eax");                                           // 0x0075d6c9    50
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x0075d6ca    8d4e14
-    asm("call               @GetLHPoint__9MapCoordsCFv@12");                 // 0x0075d6cd    e86e85eaff
+    asm("call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ");      // 0x0075d6cd    e86e85eaff
     asm("{disp8} lea        ecx, dword ptr [esp + 0x30]");                   // 0x0075d6d2    8d4c2430
     asm("push               ecx");                                           // 0x0075d6d6    51
     asm("push               esi");                                           // 0x0075d6d7    56
@@ -1479,7 +1479,7 @@ void __fastcall FootballAttackerDribbleProcess__8VillagerFP8Football(struct Vill
     asm("mov.s              ecx, edi");                                      // 0x0075d6e5    8bcf
     asm("call               ?GetGoalPosition@Football@@QAEXK@Z");            // 0x0075d6e7    e89455ddff
     asm("mov.s              ecx, eax");                                      // 0x0075d6ec    8bc8
-    asm("call               @GetLHPoint__9MapCoordsCFv@12");                 // 0x0075d6ee    e84d85eaff
+    asm("call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ");      // 0x0075d6ee    e84d85eaff
     asm("{disp8} fld        dword ptr [esp + 0x30]");                        // 0x0075d6f3    d9442430
     asm("{disp8} fsub       dword ptr [esp + 0x24]");                        // 0x0075d6f7    d8642424
     asm("{disp8} fld        dword ptr [esp + 0x34]");                        // 0x0075d6fb    d9442434
@@ -2618,7 +2618,7 @@ void __fastcall FootballDefenderDribbleProcess__8VillagerFP8Football(struct Vill
     asm("{disp8} lea        eax, dword ptr [esp + 0x24]");                   // 0x0075e3d5    8d442424
     asm("push               eax");                                           // 0x0075e3d9    50
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x0075e3da    8d4e14
-    asm("call               @GetLHPoint__9MapCoordsCFv@12");                 // 0x0075e3dd    e85e78eaff
+    asm("call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ");      // 0x0075e3dd    e85e78eaff
     asm("{disp8} lea        ecx, dword ptr [esp + 0x30]");                   // 0x0075e3e2    8d4c2430
     asm("push               ecx");                                           // 0x0075e3e6    51
     asm("push               esi");                                           // 0x0075e3e7    56
@@ -2630,7 +2630,7 @@ void __fastcall FootballDefenderDribbleProcess__8VillagerFP8Football(struct Vill
     asm("mov.s              ecx, edi");                                      // 0x0075e3f5    8bcf
     asm("call               ?GetGoalPosition@Football@@QAEXK@Z");            // 0x0075e3f7    e88448ddff
     asm("mov.s              ecx, eax");                                      // 0x0075e3fc    8bc8
-    asm("call               @GetLHPoint__9MapCoordsCFv@12");                 // 0x0075e3fe    e83d78eaff
+    asm("call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ");      // 0x0075e3fe    e83d78eaff
     asm("{disp8} fld        dword ptr [esp + 0x30]");                        // 0x0075e403    d9442430
     asm("{disp8} fsub       dword ptr [esp + 0x24]");                        // 0x0075e407    d8642424
     asm("{disp8} fld        dword ptr [esp + 0x34]");                        // 0x0075e40b    d9442434

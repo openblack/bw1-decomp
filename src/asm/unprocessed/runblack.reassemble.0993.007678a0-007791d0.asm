@@ -109,7 +109,7 @@
 .extern ??YMapCoords@@QAEAAU0@ABU0@@Z
 .extern _jmp_addr_0x006055c0
 .extern @__eq__9MapCoordsCFRC9MapCoords@12
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
 .extern ?ToBeDeleted@MobileObject@@UAEXH@Z
 .extern ?Save@MobileObject@@UAEIAAVGameOSFile@@@Z
@@ -7840,7 +7840,7 @@ _jmp_addr_0x00771be0:    push               ebp                                 
                          {disp8} fstp       dword ptr [esp + 0x28]                          // 0x00771c7d    d95c2428
                          push               eax                                             // 0x00771c81    50
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                     // 0x00771c82    8d4c2424
-                         call               @GetLHPoint__9MapCoordsCFv@12                   // 0x00771c86    e8b53fe9ff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ        // 0x00771c86    e8b53fe9ff
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                     // 0x00771c8b    8d4c2414
                          push               ecx                                             // 0x00771c8f    51
                          call               _jmp_addr_0x00771a80                            // 0x00771c90    e8ebfdffff

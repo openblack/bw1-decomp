@@ -101,7 +101,7 @@
 .extern _jmp_addr_0x00603720
 .extern _jmp_addr_0x00603830
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ
 .extern _jmp_addr_0x00632880
 .extern _jmp_addr_0x00635cf0
@@ -1710,7 +1710,7 @@ _globl_ct_0x00647570:    {disp32} jmp       .Lbl_addr_0x00647580                
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                    // 0x006475c2    8b4c2414
                          {disp8} lea        eax, dword ptr [esp + 0x04]                    // 0x006475c6    8d442404
                          push               eax                                            // 0x006475ca    50
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x006475cb    e870e6fbff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x006475cb    e870e6fbff
                          mov                edx, dword ptr [eax]                           // 0x006475d0    8b10
                          {disp8} lea        ecx, dword ptr [esi + 0x0c]                    // 0x006475d2    8d4e0c
                          mov                dword ptr [ecx], edx                           // 0x006475d5    8911
@@ -1732,7 +1732,7 @@ _globl_ct_0x00647570:    {disp32} jmp       .Lbl_addr_0x00647580                
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                    // 0x00647600    8d4c2404
                          push               ecx                                            // 0x00647604    51
                          {disp8} mov        ecx, dword ptr [esp + 0x18]                    // 0x00647605    8b4c2418
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00647609    e832e6fbff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00647609    e832e6fbff
                          mov                ecx, dword ptr [eax]                           // 0x0064760e    8b08
                          mov.s              edx, esi                                       // 0x00647610    8bd6
                          mov                dword ptr [edx], ecx                           // 0x00647612    890a
@@ -2061,7 +2061,7 @@ _globl_ct_0x00647570:    {disp32} jmp       .Lbl_addr_0x00647580                
                          {disp8} mov        ecx, dword ptr [esp + 0x2c]                    // 0x0064799c    8b4c242c
                          {disp8} lea        edx, dword ptr [esp + 0x04]                    // 0x006479a0    8d542404
                          push               edx                                            // 0x006479a4    52
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x006479a5    e896e2fbff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x006479a5    e896e2fbff
                          {disp8} fld        dword ptr [esp + 0x04]                         // 0x006479aa    d9442404
                          {disp8} fcomp      dword ptr [esp + 0x10]                         // 0x006479ae    d85c2410
                          pop                esi                                            // 0x006479b2    5e
@@ -2712,7 +2712,7 @@ _globl_ct_0x00647ea0:    {disp32} jmp       .Lbl_addr_0x00647eb0                
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                    // 0x00648227    8d4c241c
                          push               ecx                                            // 0x0064822b    51
                          {disp8} mov        ecx, dword ptr [esp + 0x34]                    // 0x0064822c    8b4c2434
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00648230    e80bdafbff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00648230    e80bdafbff
                          mov.s              edx, eax                                       // 0x00648235    8bd0
                          mov                eax, dword ptr [edx]                           // 0x00648237    8b02
                          {disp8} mov        dword ptr [esp + 0x04], eax                    // 0x00648239    89442404
@@ -2801,11 +2801,11 @@ _jmp_addr_0x00648290:    sub                esp, 0x64                           
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                    // 0x00648317    8d4c2410
                          push               ecx                                            // 0x0064831b    51
                          {disp8} mov        ecx, dword ptr [esp + 0x28]                    // 0x0064831c    8b4c2428
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00648320    e81bd9fbff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00648320    e81bd9fbff
                          {disp8} mov        ecx, dword ptr [esp + 0x28]                    // 0x00648325    8b4c2428
                          {disp8} lea        edx, dword ptr [esp + 0x04]                    // 0x00648329    8d542404
                          push               edx                                            // 0x0064832d    52
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0064832e    e80dd9fbff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0064832e    e80dd9fbff
                          {disp8} fld        dword ptr [esp + 0x14]                         // 0x00648333    d9442414
                          {disp8} fadd       dword ptr [esp + 0x2c]                         // 0x00648337    d844242c
                          push               0x0                                            // 0x0064833b    6a00
@@ -2891,7 +2891,7 @@ _jmp_addr_0x00648290:    sub                esp, 0x64                           
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                    // 0x006483f8    8d4c2418
                          push               ecx                                            // 0x006483fc    51
                          {disp8} mov        ecx, dword ptr [esp + 0x4c]                    // 0x006483fd    8b4c244c
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00648401    e83ad8fbff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00648401    e83ad8fbff
                          {disp8} fld        dword ptr [esp + 0x1c]                         // 0x00648406    d944241c
                          {disp8} fadd       dword ptr [esp + 0x50]                         // 0x0064840a    d8442450
                          {disp8} lea        edx, dword ptr [esp + 0x08]                    // 0x0064840e    8d542408
@@ -3076,7 +3076,7 @@ _jmp_addr_0x00648290:    sub                esp, 0x64                           
                          push               ecx                                            // 0x00648625    51
                          {disp8} mov        ecx, dword ptr [esp + 0x28]                    // 0x00648626    8b4c2428
                          {disp8} mov        dword ptr [esp + 0x10], eax                    // 0x0064862a    89442410
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0064862e    e80dd6fbff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0064862e    e80dd6fbff
                          {disp8} fld        dword ptr [esp + 0x08]                         // 0x00648633    d9442408
                          {disp32} fadd      dword ptr [rdata_bytes + 0x2478]               // 0x00648637    d80578b48a00
                          push               0x0                                            // 0x0064863d    6a00

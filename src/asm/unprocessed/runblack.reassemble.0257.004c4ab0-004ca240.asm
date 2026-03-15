@@ -69,7 +69,7 @@
 .extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
 .extern ?IsWater@MapCoords@@QBEIXZ
 .extern @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?GameFloatRand@GRand@@SAMMPBDI@Z
 .extern _jmp_addr_0x0074cd50
@@ -2065,7 +2065,7 @@ _jmp_addr_0x004c5ff0:    sub                esp, 0x000001a8                     
                          {disp8} lea        eax, dword ptr [esp + 0x10]                          // 0x004c6127    8d442410
                          push               eax                                                  // 0x004c612b    50
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                          // 0x004c612c    8d4b14
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004c612f    e80cfb1300
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004c612f    e80cfb1300
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]                    // 0x004c6134    8b8e64010000
                          mov                edi, 0x00000001                                      // 0x004c613a    bf01000000
                          push               edi                                                  // 0x004c613f    57

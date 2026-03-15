@@ -94,7 +94,7 @@
 .extern _jmp_addr_0x00604870
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00605cf0
 .extern _jmp_addr_0x00639900
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
@@ -3553,7 +3553,7 @@ _jmp_addr_0x00653150:    sub                esp, 0x0c                           
                          push               edx                                            // 0x006539ce    52
                          call               dword ptr [eax + 0x170]                        // 0x006539cf    ff9070010000
                          mov.s              ecx, eax                                       // 0x006539d5    8bc8
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x006539d7    e86422fbff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x006539d7    e86422fbff
                          {disp8} fld        dword ptr [esp + 0x10]                         // 0x006539dc    d9442410
                          fsub               dword ptr [esi]                                // 0x006539e0    d826
                          {disp8} fld        dword ptr [esp + 0x14]                         // 0x006539e2    d9442414
@@ -6191,7 +6191,7 @@ _jmp_addr_0x00653150:    sub                esp, 0x0c                           
                          mov.s              ecx, esi                                       // 0x0065536d    8bce
                          call               dword ptr [edx + 0x170]                        // 0x0065536f    ff9270010000
                          mov.s              ecx, eax                                       // 0x00655375    8bc8
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00655377    e8c408fbff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00655377    e8c408fbff
                          push               0x1                                            // 0x0065537c    6a01
                          mov.s              ecx, edi                                       // 0x0065537e    8bcf
                          call               .Lbl_addr_0x006559a0                           // 0x00655380    e81b060000
@@ -9201,7 +9201,7 @@ _jmp_addr_0x00656d40:    push               ebx                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                    // 0x0065708e    8d4c241c
                          push               ecx                                            // 0x00657092    51
                          {disp8} lea        ecx, dword ptr [eax + 0x14]                    // 0x00657093    8d4814
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00657096    e8a5ebfaff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00657096    e8a5ebfaff
                          {disp8} mov        edx, dword ptr [esi + 0x34]                    // 0x0065709b    8b5634
                          mov                ecx, dword ptr [eax]                           // 0x0065709e    8b08
                          add                edx, 0x50                                      // 0x006570a0    83c250
@@ -12949,7 +12949,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          push               ecx                                            // 0x00659906    51
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                    // 0x00659907    8d4c241c
                          {disp32} mov       dword ptr [esi + 0x00000094], eax              // 0x0065990b    898694000000
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00659911    e82ac3faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00659911    e82ac3faff
                          mov                edx, dword ptr [eax]                           // 0x00659916    8b10
                          add                esi, 0x00000084                                // 0x00659918    81c684000000
                          mov                dword ptr [esi], edx                           // 0x0065991e    8916
@@ -13356,7 +13356,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        edx, dword ptr [esp + 0x1c]                    // 0x00659d1a    8d54241c
                          push               edx                                            // 0x00659d1e    52
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x00659d1f    8d4c2414
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00659d23    e818bffaff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00659d23    e818bffaff
                          push               eax                                            // 0x00659d28    50
                          mov.s              ecx, esi                                       // 0x00659d29    8bce
                          call               _jmp_addr_0x00651120                           // 0x00659d2b    e8f073ffff
@@ -13394,7 +13394,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                    // 0x00659d89    8d44241c
                          push               eax                                            // 0x00659d8d    50
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                    // 0x00659d8e    8d4f14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00659d91    e8aabefaff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00659d91    e8aabefaff
                          push               eax                                            // 0x00659d96    50
                          mov.s              ecx, esi                                       // 0x00659d97    8bce
                          call               _jmp_addr_0x00651120                           // 0x00659d99    e88273ffff
@@ -13679,7 +13679,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                    // 0x0065a081    8d4c2410
                          push               ecx                                            // 0x0065a085    51
                          {disp32} lea       ecx, dword ptr [ebp + 0x00001200]              // 0x0065a086    8d8d00120000
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065a08c    e8afbbfaff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065a08c    e8afbbfaff
                          push               eax                                            // 0x0065a091    50
                          mov.s              ecx, esi                                       // 0x0065a092    8bce
                          call               _jmp_addr_0x00651120                           // 0x0065a094    e88770ffff
@@ -13717,7 +13717,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        edx, dword ptr [esp + 0x10]                    // 0x0065a0f2    8d542410
                          push               edx                                            // 0x0065a0f6    52
                          {disp8} lea        ecx, dword ptr [ebp + 0x14]                    // 0x0065a0f7    8d4d14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065a0fa    e841bbfaff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065a0fa    e841bbfaff
                          push               eax                                            // 0x0065a0ff    50
                          mov.s              ecx, esi                                       // 0x0065a100    8bce
                          call               _jmp_addr_0x00651120                           // 0x0065a102    e81970ffff
@@ -13826,7 +13826,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                    // 0x0065a221    8d4c2410
                          push               ecx                                            // 0x0065a225    51
                          {disp32} lea       ecx, dword ptr [ebp + 0x00001200]              // 0x0065a226    8d8d00120000
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065a22c    e80fbafaff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065a22c    e80fbafaff
                          push               eax                                            // 0x0065a231    50
                          mov.s              ecx, esi                                       // 0x0065a232    8bce
                          call               _jmp_addr_0x00651120                           // 0x0065a234    e8e76effff
@@ -13864,7 +13864,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        edx, dword ptr [esp + 0x10]                    // 0x0065a292    8d542410
                          push               edx                                            // 0x0065a296    52
                          {disp8} lea        ecx, dword ptr [ebp + 0x14]                    // 0x0065a297    8d4d14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065a29a    e8a1b9faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065a29a    e8a1b9faff
                          push               eax                                            // 0x0065a29f    50
                          mov.s              ecx, esi                                       // 0x0065a2a0    8bce
                          call               _jmp_addr_0x00651120                           // 0x0065a2a2    e8796effff
@@ -13973,7 +13973,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        eax, dword ptr [esp + 0x10]                    // 0x0065a3a8    8d442410
                          push               eax                                            // 0x0065a3ac    50
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                    // 0x0065a3ad    8d4b14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065a3b0    e88bb8faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065a3b0    e88bb8faff
                          push               eax                                            // 0x0065a3b5    50
                          mov.s              ecx, esi                                       // 0x0065a3b6    8bce
                          call               _jmp_addr_0x00651120                           // 0x0065a3b8    e8636dffff
@@ -14065,7 +14065,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        eax, dword ptr [esp + 0x10]                    // 0x0065a4a8    8d442410
                          push               eax                                            // 0x0065a4ac    50
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                    // 0x0065a4ad    8d4b14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065a4b0    e88bb7faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065a4b0    e88bb7faff
                          push               eax                                            // 0x0065a4b5    50
                          mov.s              ecx, esi                                       // 0x0065a4b6    8bce
                          call               _jmp_addr_0x00651120                           // 0x0065a4b8    e8636cffff
@@ -14178,7 +14178,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        eax, dword ptr [esp + 0x14]                    // 0x0065a5ee    8d442414
                          push               eax                                            // 0x0065a5f2    50
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                    // 0x0065a5f3    8d4f14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065a5f6    e845b6faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065a5f6    e845b6faff
                          push               eax                                            // 0x0065a5fb    50
                          mov.s              ecx, esi                                       // 0x0065a5fc    8bce
                          call               _jmp_addr_0x00651120                           // 0x0065a5fe    e81d6bffff
@@ -14328,7 +14328,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x0065a792    8d4c2414
                          push               ecx                                            // 0x0065a796    51
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                    // 0x0065a797    8d4f14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065a79a    e8a1b4faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065a79a    e8a1b4faff
                          push               eax                                            // 0x0065a79f    50
                          mov.s              ecx, ebp                                       // 0x0065a7a0    8bcd
                          call               _jmp_addr_0x00651120                           // 0x0065a7a2    e87969ffff
@@ -14433,7 +14433,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x0065a8aa    8d4c2414
                          push               ecx                                            // 0x0065a8ae    51
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                    // 0x0065a8af    8d4f14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065a8b2    e889b3faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065a8b2    e889b3faff
                          push               eax                                            // 0x0065a8b7    50
                          mov.s              ecx, ebp                                       // 0x0065a8b8    8bcd
                          call               _jmp_addr_0x00651120                           // 0x0065a8ba    e86168ffff
@@ -14532,7 +14532,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x0065a9c2    8d4c2414
                          push               ecx                                            // 0x0065a9c6    51
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                    // 0x0065a9c7    8d4f14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065a9ca    e871b2faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065a9ca    e871b2faff
                          push               eax                                            // 0x0065a9cf    50
                          mov.s              ecx, ebp                                       // 0x0065a9d0    8bcd
                          call               _jmp_addr_0x00651120                           // 0x0065a9d2    e84967ffff
@@ -14627,7 +14627,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        ebx, dword ptr [edi + 0x14]                    // 0x0065aab8    8d5f14
                          push               edx                                            // 0x0065aabb    52
                          mov.s              ecx, ebx                                       // 0x0065aabc    8bcb
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065aabe    e87db1faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065aabe    e87db1faff
                          {disp8} mov        eax, dword ptr [esi + 0x34]                    // 0x0065aac3    8b4634
                          {disp8} fld        dword ptr [eax + 0x50]                         // 0x0065aac6    d94050
                          {disp8} mov        ecx, dword ptr [eax + 0x54]                    // 0x0065aac9    8b4854
@@ -14763,7 +14763,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        edx, dword ptr [esp + 0x30]                    // 0x0065ac80    8d542430
                          push               edx                                            // 0x0065ac84    52
                          mov.s              ecx, ebx                                       // 0x0065ac85    8bcb
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065ac87    e8b4affaff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065ac87    e8b4affaff
                          push               edi                                            // 0x0065ac8c    57
                          mov.s              ecx, esi                                       // 0x0065ac8d    8bce
                          call               _jmp_addr_0x0065d1c0                           // 0x0065ac8f    e82c250000
@@ -15023,7 +15023,7 @@ _globl_ct_0x00658fd0:    {disp32} jmp       .Lbl_addr_0x00658fe0                
                          {disp8} lea        edx, dword ptr [esp + 0x10]                    // 0x0065af5f    8d542410
                          push               edx                                            // 0x0065af63    52
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                    // 0x0065af64    8d4b14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065af67    e8d4acfaff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065af67    e8d4acfaff
                          push               eax                                            // 0x0065af6c    50
                          mov.s              ecx, edi                                       // 0x0065af6d    8bcf
                          call               _jmp_addr_0x00651120                           // 0x0065af6f    e8ac61ffff
@@ -16504,7 +16504,7 @@ _jmp_addr_0x0065bcb0:    {disp8} mov        eax, dword ptr [ecx + 0x28]         
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                    // 0x0065bf8a    8d4c2410
                          push               ecx                                            // 0x0065bf8e    51
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                    // 0x0065bf8f    8d4b14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065bf92    e8a99cfaff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065bf92    e8a99cfaff
                          push               eax                                            // 0x0065bf97    50
                          mov.s              ecx, esi                                       // 0x0065bf98    8bce
                          call               _jmp_addr_0x00651120                           // 0x0065bf9a    e88151ffff
@@ -16697,7 +16697,7 @@ _jmp_addr_0x0065bcb0:    {disp8} mov        eax, dword ptr [ecx + 0x28]         
                          {disp8} lea        edx, dword ptr [esp + 0x10]                    // 0x0065c1aa    8d542410
                          push               edx                                            // 0x0065c1ae    52
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                    // 0x0065c1af    8d4b14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065c1b2    e8899afaff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065c1b2    e8899afaff
                          push               eax                                            // 0x0065c1b7    50
                          mov.s              ecx, esi                                       // 0x0065c1b8    8bce
                          call               _jmp_addr_0x00651120                           // 0x0065c1ba    e8614fffff
@@ -17717,7 +17717,7 @@ _jmp_addr_0x0065bcb0:    {disp8} mov        eax, dword ptr [ecx + 0x28]         
                          {disp8} lea        eax, dword ptr [esp + 0x0c]                    // 0x0065ccd7    8d44240c
                          push               eax                                            // 0x0065ccdb    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                    // 0x0065ccdc    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0065ccdf    e85c8ffaff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0065ccdf    e85c8ffaff
                          push               0x0                                            // 0x0065cce4    6a00
                          push               0x009c7f50                                     // 0x0065cce6    68507f9c00
                          push               0x009c7f18                                     // 0x0065cceb    68187f9c00
@@ -23535,7 +23535,7 @@ _jmp_addr_0x00663be0:    push               ebx                                 
                          sub                esp, 0x0c                                      // 0x00663c75    83ec0c
                          push               esp                                            // 0x00663c78    54
                          {disp8} lea        ecx, dword ptr [eax + 0x14]                    // 0x00663c79    8d4814
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00663c7c    e8bf1ffaff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00663c7c    e8bf1ffaff
                          push               ebp                                            // 0x00663c81    55
                          push               edi                                            // 0x00663c82    57
                          mov.s              ecx, esi                                       // 0x00663c83    8bce
@@ -24765,7 +24765,7 @@ _jmp_addr_0x00664380:    mov                dword ptr [ecx], 0x008ffcac         
                          {disp8} lea        eax, dword ptr [esp + 0x10]                    // 0x00664867    8d442410
                          push               eax                                            // 0x0066486b    50
                          {disp8} lea        ecx, dword ptr [ebp + 0x14]                    // 0x0066486c    8d4d14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0066486f    e8cc13faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0066486f    e8cc13faff
                          push               eax                                            // 0x00664874    50
                          mov.s              ecx, edi                                       // 0x00664875    8bcf
                          call               _jmp_addr_0x00651120                           // 0x00664877    e8a4c8feff
@@ -25879,7 +25879,7 @@ _globl_ct_0x00664f80:    {disp32} jmp       .Lbl_addr_0x00664f90                
                          {disp8} lea        eax, dword ptr [esp + 0x38]                    // 0x006653cf    8d442438
                          push               eax                                            // 0x006653d3    50
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                    // 0x006653d4    8d4c2418
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x006653d8    e86308faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x006653d8    e86308faff
                          {disp8} fld        dword ptr [esp + 0x0c]                         // 0x006653dd    d944240c
                          mov                ecx, dword ptr [eax]                           // 0x006653e1    8b08
                          add                esi, 0x00000084                                // 0x006653e3    81c684000000
@@ -26260,7 +26260,7 @@ _globl_ct_0x00664f80:    {disp32} jmp       .Lbl_addr_0x00664f90                
                          mov.s              ecx, edi                                       // 0x00665816    8bcf
                          call               dword ptr [eax + 0x170]                        // 0x00665818    ff9070010000
                          mov.s              ecx, eax                                       // 0x0066581e    8bc8
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00665820    e81b04faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00665820    e81b04faff
                          push               eax                                            // 0x00665825    50
                          mov.s              ecx, ebx                                       // 0x00665826    8bcb
                          call               _jmp_addr_0x00651120                           // 0x00665828    e8f3b8feff
@@ -26359,7 +26359,7 @@ _globl_ct_0x00664f80:    {disp32} jmp       .Lbl_addr_0x00664f90                
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                    // 0x00665911    8d4c240c
                          push               ecx                                            // 0x00665915    51
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                    // 0x00665916    8d4f14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00665919    e82203faff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00665919    e82203faff
                          push               ebx                                            // 0x0066591e    53
                          mov.s              ecx, esi                                       // 0x0066591f    8bce
                          call               _jmp_addr_0x00658aa0                           // 0x00665921    e87a31ffff
@@ -27001,7 +27001,7 @@ _jmp_addr_0x00665dd0:    sub                esp, 0x0c                           
                          push               eax                                            // 0x00665f45    50
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                    // 0x00665f46    8d4c2424
                          {disp8} mov        dword ptr [esp + 0x2c], edx                    // 0x00665f4a    8954242c
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00665f4e    e8edfcf9ff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00665f4e    e8edfcf9ff
                          mov.s              edx, eax                                       // 0x00665f53    8bd0
                          mov                eax, dword ptr [edx]                           // 0x00665f55    8b02
                          {disp8} mov        dword ptr [esp + 0x14], eax                    // 0x00665f57    89442414
@@ -27106,7 +27106,7 @@ _jmp_addr_0x00665fc0:    sub                esp, 0x74                           
                          {disp8} lea        ecx, dword ptr [esp + 0x48]                    // 0x00666093    8d4c2448
                          push               ecx                                            // 0x00666097    51
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                    // 0x00666098    8d4c241c
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0066609c    e89ffbf9ff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0066609c    e89ffbf9ff
                          push               eax                                            // 0x006660a1    50
                          mov.s              ecx, esi                                       // 0x006660a2    8bce
                          call               _jmp_addr_0x00651120                           // 0x006660a4    e877b0feff
@@ -27130,7 +27130,7 @@ _jmp_addr_0x00665fc0:    sub                esp, 0x74                           
                          {disp8} lea        edx, dword ptr [esp + 0x54]                    // 0x006660db    8d542454
                          push               edx                                            // 0x006660df    52
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                    // 0x006660e0    8d4c2428
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x006660e4    e857fbf9ff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x006660e4    e857fbf9ff
                          push               eax                                            // 0x006660e9    50
                          mov.s              ecx, esi                                       // 0x006660ea    8bce
                          call               _jmp_addr_0x00651120                           // 0x006660ec    e82fb0feff
@@ -27181,7 +27181,7 @@ _jmp_addr_0x00665fc0:    sub                esp, 0x74                           
                          {disp8} lea        edx, dword ptr [esp + 0x60]                    // 0x00666173    8d542460
                          push               edx                                            // 0x00666177    52
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                    // 0x00666178    8d4c2428
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0066617c    e8bffaf9ff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0066617c    e8bffaf9ff
                          push               eax                                            // 0x00666181    50
                          mov.s              ecx, esi                                       // 0x00666182    8bce
                          call               _jmp_addr_0x00651120                           // 0x00666184    e897affeff
@@ -27244,7 +27244,7 @@ _jmp_addr_0x00665fc0:    sub                esp, 0x74                           
                          {disp8} lea        ecx, dword ptr [esp + 0x6c]                    // 0x0066622b    8d4c246c
                          push               ecx                                            // 0x0066622f    51
                          {disp8} lea        ecx, dword ptr [ebp + 0x14]                    // 0x00666230    8d4d14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00666233    e808faf9ff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00666233    e808faf9ff
                          push               eax                                            // 0x00666238    50
                          mov.s              ecx, esi                                       // 0x00666239    8bce
                          call               _jmp_addr_0x00651120                           // 0x0066623b    e8e0aefeff
@@ -27310,7 +27310,7 @@ _jmp_addr_0x00665fc0:    sub                esp, 0x74                           
                          {disp8} lea        edx, dword ptr [esp + 0x78]                    // 0x006662f6    8d542478
                          push               edx                                            // 0x006662fa    52
                          {disp8} lea        ecx, dword ptr [eax + 0x14]                    // 0x006662fb    8d4814
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x006662fe    e83df9f9ff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x006662fe    e83df9f9ff
                          push               eax                                            // 0x00666303    50
                          mov.s              ecx, esi                                       // 0x00666304    8bce
                          call               _jmp_addr_0x00651120                           // 0x00666306    e815aefeff

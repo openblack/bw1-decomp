@@ -51,7 +51,7 @@
 .extern @GetNearestTown__9MapCoordsCFf@12
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x006041c0
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?GameFloatRand@GRand@@SAMMPBDI@Z
 .extern _jmp_addr_0x0072a5f0
@@ -4197,7 +4197,7 @@ start_0x004af640_0x004c4ab0:
                          {disp8} lea        eax, dword ptr [esp + 0x34]                          // 0x004b2635    8d442434
                          push               eax                                                  // 0x004b2639    50
                          {disp8} lea        ecx, dword ptr [esp + 0x48]                          // 0x004b263a    8d4c2448
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004b263e    e8fd351500
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004b263e    e8fd351500
                          {disp8} fld        dword ptr [esp + 0x10]                               // 0x004b2643    d9442410
                          {disp32} fmul      dword ptr [rdata_bytes + 0x23d4]                     // 0x004b2647    d80dd4b38a00
                          mov                ecx, dword ptr [eax]                                 // 0x004b264d    8b08
@@ -5101,7 +5101,7 @@ start_0x004af640_0x004c4ab0:
                          {disp8} lea        eax, dword ptr [esp + 0x14]                          // 0x004b3141    8d442414
                          push               eax                                                  // 0x004b3145    50
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                          // 0x004b3146    8d4c243c
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004b314a    e8f12a1500
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004b314a    e8f12a1500
                          {disp8} fld        dword ptr [esp + 0x10]                               // 0x004b314f    d9442410
                          {disp32} fmul      dword ptr [rdata_bytes + 0x23d4]                     // 0x004b3153    d80dd4b38a00
                          push               0x00000e5d                                           // 0x004b3159    685d0e0000
@@ -10319,7 +10319,7 @@ start_0x004af640_0x004c4ab0:
                          {disp8} lea        eax, dword ptr [esp + 0x10]                          // 0x004b6f9d    8d442410
                          push               eax                                                  // 0x004b6fa1    50
                          add                ecx, 0x24                                            // 0x004b6fa2    83c124
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004b6fa5    e896ec1400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004b6fa5    e896ec1400
                          push               0x00001008                                           // 0x004b6faa    6808100000
                          push               0x009d9544                                           // 0x004b6faf    6844959d00
                          push               0x14                                                 // 0x004b6fb4    6a14
@@ -10693,7 +10693,7 @@ start_0x004af640_0x004c4ab0:
 .Lbl_addr_0x004b741f:    {disp8} lea        eax, dword ptr [esp + 0x2c]                          // 0x004b741f    8d44242c
                          push               eax                                                  // 0x004b7423    50
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                          // 0x004b7424    8d4f14
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004b7427    e814e81400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004b7427    e814e81400
                          mov.s              ecx, edi                                             // 0x004b742c    8bcf
                          call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ      // 0x004b742e    e81d04fcff
                          {disp32} fld       dword ptr [eax + 0x00000090]                         // 0x004b7433    d98090000000
@@ -10788,7 +10788,7 @@ start_0x004af640_0x004c4ab0:
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                          // 0x004b755b    8d44241c
                          push               eax                                                  // 0x004b755f    50
                          add                ecx, 0x14                                            // 0x004b7560    83c114
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004b7563    e8d8e61400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004b7563    e8d8e61400
                          mov                ecx, dword ptr [eax]                                 // 0x004b7568    8b08
                          {disp8} mov        dword ptr [esp + 0x2c], ecx                          // 0x004b756a    894c242c
                          {disp8} mov        edx, dword ptr [eax + 0x04]                          // 0x004b756e    8b5004
@@ -11062,7 +11062,7 @@ start_0x004af640_0x004c4ab0:
                          push               ecx                                                  // 0x004b788d    51
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                          // 0x004b788e    8d4c241c
                          {disp8} fstp       dword ptr [esp + 0x14]                               // 0x004b7892    d95c2414
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004b7896    e8a5e31400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004b7896    e8a5e31400
                          mov                dword ptr [esi], 0x008cefec                          // 0x004b789b    c706ecef8c00
                          mov                ecx, dword ptr [eax]                                 // 0x004b78a1    8b08
                          {disp8} lea        edx, dword ptr [esi + 0x04]                          // 0x004b78a3    8d5604
@@ -12155,7 +12155,7 @@ start_0x004af640_0x004c4ab0:
 .Lbl_addr_0x004b856b:    {disp8} lea        ecx, dword ptr [esp + 0x20]                          // 0x004b856b    8d4c2420
                          push               ecx                                                  // 0x004b856f    51
                          {disp8} lea        ecx, dword ptr [eax + 0x14]                          // 0x004b8570    8d4814
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004b8573    e8c8d61400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004b8573    e8c8d61400
 .Lbl_addr_0x004b8578:    mov                edx, dword ptr [eax]                                 // 0x004b8578    8b10
                          {disp8} mov        ecx, dword ptr [eax + 0x04]                          // 0x004b857a    8b4804
                          push               0x000010ab                                           // 0x004b857d    68ab100000
@@ -14177,7 +14177,7 @@ start_0x004af640_0x004c4ab0:
                          {disp8} lea        edx, dword ptr [esp + 0x30]                          // 0x004b9d85    8d542430
                          push               edx                                                  // 0x004b9d89    52
                          {disp8} lea        ecx, dword ptr [esp + 0x44]                          // 0x004b9d8a    8d4c2444
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004b9d8e    e8adbe1400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004b9d8e    e8adbe1400
                          mov                ecx, dword ptr [eax]                                 // 0x004b9d93    8b08
                          {disp8} mov        dword ptr [esp + 0x18], ecx                          // 0x004b9d95    894c2418
                          {disp8} mov        edx, dword ptr [eax + 0x04]                          // 0x004b9d99    8b5004
@@ -14812,7 +14812,7 @@ start_0x004af640_0x004c4ab0:
 .Lbl_addr_0x004ba50b:    {disp8} lea        ecx, dword ptr [esp + 0x20]                          // 0x004ba50b    8d4c2420
                          push               ecx                                                  // 0x004ba50f    51
                          {disp8} lea        ecx, dword ptr [eax + 0x14]                          // 0x004ba510    8d4814
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004ba513    e828b71400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004ba513    e828b71400
 .Lbl_addr_0x004ba518:    mov                edx, dword ptr [eax]                                 // 0x004ba518    8b10
                          {disp8} mov        ecx, dword ptr [eax + 0x04]                          // 0x004ba51a    8b4804
                          push               0x00001189                                           // 0x004ba51d    6889110000
@@ -15665,7 +15665,7 @@ start_0x004af640_0x004c4ab0:
                          push               eax                                                  // 0x004baf17    50
                          {disp8} fstp       dword ptr [esp + 0x14]                               // 0x004baf18    d95c2414
                          add                ecx, 0x00001200                                      // 0x004baf1c    81c100120000
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004baf22    e819ad1400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004baf22    e819ad1400
                          mov                dword ptr [edi], 0x008cefec                          // 0x004baf27    c707ecef8c00
                          mov                edx, dword ptr [eax]                                 // 0x004baf2d    8b10
                          {disp8} lea        ecx, dword ptr [edi + 0x04]                          // 0x004baf2f    8d4f04
@@ -19407,7 +19407,7 @@ start_0x004af640_0x004c4ab0:
                          {disp8} lea        edx, dword ptr [esp + 0x34]                          // 0x004bdb67    8d542434
                          push               edx                                                  // 0x004bdb6b    52
                          {disp8} lea        ecx, dword ptr [eax + 0x14]                          // 0x004bdb6c    8d4814
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004bdb6f    e8cc801400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004bdb6f    e8cc801400
                          mov                dword ptr [edi], 0x008cefec                          // 0x004bdb74    c707ecef8c00
                          mov                edx, dword ptr [eax]                                 // 0x004bdb7a    8b10
                          {disp8} lea        ecx, dword ptr [edi + 0x04]                          // 0x004bdb7c    8d4f04
@@ -19869,7 +19869,7 @@ start_0x004af640_0x004c4ab0:
                          {disp8} lea        edx, dword ptr [esp + 0x34]                          // 0x004be107    8d542434
                          push               edx                                                  // 0x004be10b    52
                          {disp8} lea        ecx, dword ptr [eax + 0x14]                          // 0x004be10c    8d4814
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004be10f    e82c7b1400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004be10f    e82c7b1400
                          mov                dword ptr [edi], 0x008cefec                          // 0x004be114    c707ecef8c00
                          mov                edx, dword ptr [eax]                                 // 0x004be11a    8b10
                          {disp8} lea        ecx, dword ptr [edi + 0x04]                          // 0x004be11c    8d4f04
@@ -21097,7 +21097,7 @@ start_0x004af640_0x004c4ab0:
                          mov.s              ecx, eax                                             // 0x004bef2a    8bc8
                          call               @GetTotemPos__11WorshipSiteFv@12                     // 0x004bef2c    e8ffdf2b00
                          mov.s              ecx, eax                                             // 0x004bef31    8bc8
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004bef33    e8086d1400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004bef33    e8086d1400
                          {disp32} mov       eax, dword ptr [esi + 0x00001514]                    // 0x004bef38    8b8614150000
                          {disp32} mov       ecx, dword ptr [eax + 0x00000160]                    // 0x004bef3e    8b8860010000
                          {disp8} mov        ecx, dword ptr [ecx + 0x28]                          // 0x004bef44    8b4928
@@ -25080,7 +25080,7 @@ start_0x004af640_0x004c4ab0:
                          {disp8} lea        eax, dword ptr [esp + 0x18]                          // 0x004c1dc5    8d442418
                          push               eax                                                  // 0x004c1dc9    50
                          add                ecx, 0x14                                            // 0x004c1dca    83c114
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004c1dcd    e86e3e1400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004c1dcd    e86e3e1400
                          push               0x0000150c                                           // 0x004c1dd2    680c150000
                          push               0x009d9544                                           // 0x004c1dd7    6844959d00
                          push               0x14                                                 // 0x004c1ddc    6a14
@@ -26066,7 +26066,7 @@ start_0x004af640_0x004c4ab0:
                          add                ecx, 0x14                                            // 0x004c2915    83c114
                          {disp8} mov        dword ptr [esp + 0x18], edx                          // 0x004c2918    89542418
                          {disp8} mov        dword ptr [esp + 0x1c], eax                          // 0x004c291c    8944241c
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004c2920    e81b331400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004c2920    e81b331400
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                          // 0x004c2925    8b4c2414
                          {disp8} mov        edx, dword ptr [esp + 0x10]                          // 0x004c2929    8b542410
                          {disp8} mov        dword ptr [esp + 0x20], ecx                          // 0x004c292d    894c2420
@@ -26863,7 +26863,7 @@ _jmp_addr_0x004c2b90:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} lea        eax, dword ptr [esp + 0x10]                          // 0x004c32eb    8d442410
                          push               eax                                                  // 0x004c32ef    50
                          add                ecx, 0x24                                            // 0x004c32f0    83c124
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x004c32f3    e848291400
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x004c32f3    e848291400
                          push               0x0000159f                                           // 0x004c32f8    689f150000
                          push               0x009d9544                                           // 0x004c32fd    6844959d00
                          push               0x14                                                 // 0x004c3302    6a14

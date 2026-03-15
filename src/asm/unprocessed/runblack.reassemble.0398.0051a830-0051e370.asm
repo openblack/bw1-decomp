@@ -29,7 +29,7 @@
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005ced10
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern @SelectMesh__9MorphableFl@12
 .extern _jmp_addr_0x00617860
 .extern _jmp_addr_0x00618b40
@@ -1375,7 +1375,7 @@ _jmp_addr_0x0051af00:    sub                esp, 0x30                           
 .Lbl_addr_0x0051b7e6:    {disp8} lea        edx, dword ptr [esp + 0x24]                          // 0x0051b7e6    8d542424
                          push               edx                                                  // 0x0051b7ea    52
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x0051b7eb    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x0051b7ee    e84da40e00
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x0051b7ee    e84da40e00
 .Lbl_addr_0x0051b7f3:    mov                ecx, dword ptr [eax]                                 // 0x0051b7f3    8b08
                          {disp8} mov        dword ptr [esp + 0x14], ecx                          // 0x0051b7f5    894c2414
                          {disp8} mov        edx, dword ptr [eax + 0x04]                          // 0x0051b7f9    8b5004
@@ -2852,7 +2852,7 @@ _jmp_addr_0x0051c8e0:    sub                esp, 0x18                           
 .Lbl_addr_0x0051c9bb:    {disp8} lea        ecx, dword ptr [esp + 0x14]                          // 0x0051c9bb    8d4c2414
                          push               ecx                                                  // 0x0051c9bf    51
                          {disp8} lea        ecx, dword ptr [eax + 0x14]                          // 0x0051c9c0    8d4814
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x0051c9c3    e878920e00
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x0051c9c3    e878920e00
                          mov                edx, dword ptr [eax]                                 // 0x0051c9c8    8b10
                          {disp8} mov        dword ptr [esp + 0x08], edx                          // 0x0051c9ca    89542408
                          {disp8} mov        ecx, dword ptr [eax + 0x04]                          // 0x0051c9ce    8b4804

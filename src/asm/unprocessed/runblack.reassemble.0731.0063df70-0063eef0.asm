@@ -19,7 +19,7 @@
 .extern ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern ?SetToZero@GameThingWithPos@@QAEXXZ
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
 .extern _jmp_addr_0x00606ed0
 .extern @SetLife__6ObjectFf@12
@@ -462,7 +462,7 @@ _jmp_addr_0x0063e1b0:    xor.s             eax, eax                             
                          mov               edi, dword ptr [eax]                          // 0x0063e33a    8b38
                          push              edx                                           // 0x0063e33c    52
                          {disp8} lea       ecx, dword ptr [esi + 0x14]                   // 0x0063e33d    8d4e14
-                         call              @GetLHPoint__9MapCoordsCFv@12                 // 0x0063e340    e8fb78fcff
+                         call              ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x0063e340    e8fb78fcff
                          {disp8} mov       ecx, dword ptr [esi + 0x2c]                   // 0x0063e345    8b4e2c
                          push              eax                                           // 0x0063e348    50
                          call              dword ptr [edi + 0x124]                       // 0x0063e349    ff9724010000

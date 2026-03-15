@@ -30,7 +30,7 @@
 .extern ?GetMagicEffectInfo@GMagicInfo@@QBEPAVGMagicEffectInfo@@XZ
 .extern _jmp_addr_0x005fb800
 .extern @__ct__9MapCoordsFRC7LHPoint@12
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x0063e580
 .extern ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
@@ -544,7 +544,7 @@ _jmp_addr_0x0070bb20:    sub                esp, 0x68                           
                          {disp8} mov        dword ptr [esp + 0x70], 0x3f800000            // 0x0070bc6b    c74424700000803f
                          {disp8} mov        dword ptr [esp + 0x74], 0x00000000            // 0x0070bc73    c744247400000000
                          {disp8} mov        byte ptr [esp + 0x78], 0x01                   // 0x0070bc7b    c644247801
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x0070bc80    e8bb9fefff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x0070bc80    e8bb9fefff
                          mov                ecx, dword ptr [eax]                          // 0x0070bc85    8b08
                          {disp8} mov        dword ptr [esp + 0x48], ecx                   // 0x0070bc87    894c2448
                          {disp8} mov        edx, dword ptr [eax + 0x04]                   // 0x0070bc8b    8b5004
@@ -554,7 +554,7 @@ _jmp_addr_0x0070bb20:    sub                esp, 0x68                           
                          push               ecx                                           // 0x0070bc99    51
                          mov.s              ecx, edi                                      // 0x0070bc9a    8bcf
                          {disp8} mov        dword ptr [esp + 0x54], eax                   // 0x0070bc9c    89442454
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x0070bca0    e89b9fefff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x0070bca0    e89b9fefff
                          fld                dword ptr [eax]                               // 0x0070bca5    d900
                          {disp8} fsub       dword ptr [esp + 0x48]                        // 0x0070bca7    d8642448
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x0070bcab    d95c2414
@@ -699,7 +699,7 @@ _jmp_addr_0x0070bd60:    sub                esp, 0x68                           
                          {disp8} mov        dword ptr [esp + 0x70], 0x3f800000            // 0x0070bea3    c74424700000803f
                          {disp8} mov        dword ptr [esp + 0x74], 0x00000000            // 0x0070beab    c744247400000000
                          {disp8} mov        byte ptr [esp + 0x78], 0x01                   // 0x0070beb3    c644247801
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x0070beb8    e8839defff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x0070beb8    e8839defff
                          mov                ecx, dword ptr [eax]                          // 0x0070bebd    8b08
                          {disp8} mov        dword ptr [esp + 0x48], ecx                   // 0x0070bebf    894c2448
                          {disp8} mov        edx, dword ptr [eax + 0x04]                   // 0x0070bec3    8b5004
@@ -709,7 +709,7 @@ _jmp_addr_0x0070bd60:    sub                esp, 0x68                           
                          push               ecx                                           // 0x0070bed1    51
                          mov.s              ecx, esi                                      // 0x0070bed2    8bce
                          {disp8} mov        dword ptr [esp + 0x54], eax                   // 0x0070bed4    89442454
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x0070bed8    e8639defff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x0070bed8    e8639defff
                          fld                dword ptr [eax]                               // 0x0070bedd    d900
                          {disp8} fsub       dword ptr [esp + 0x48]                        // 0x0070bedf    d8642448
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x0070bee3    d95c2414

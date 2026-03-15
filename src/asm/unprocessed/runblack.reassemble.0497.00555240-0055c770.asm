@@ -191,7 +191,7 @@
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
 .extern _jmp_addr_0x006055c0
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x0060c200
 .extern _jmp_addr_0x0062d9e0
 .extern _jmp_addr_0x0062da60
@@ -503,7 +503,7 @@ _jmp_addr_0x00555270:    {disp32} mov       byte ptr [ecx + 0x00250174], 0x01   
                          {disp8} lea        eax, dword ptr [esp + 0x18]                   // 0x005552ff    8d442418
                          push               eax                                           // 0x00555303    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x00555304    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x00555307    e834090b00
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x00555307    e834090b00
                          push               eax                                           // 0x0055530c    50
                          push               ebx                                           // 0x0055530d    53
                          call               _jmp_addr_0x00826fa0                          // 0x0055530e    e88d1c2d00
@@ -525,7 +525,7 @@ _jmp_addr_0x00555270:    {disp32} mov       byte ptr [ecx + 0x00250174], 0x01   
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x00555345    8d4c2424
                          push               ecx                                           // 0x00555349    51
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x0055534a    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x0055534d    e8ee080b00
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x0055534d    e8ee080b00
                          push               eax                                           // 0x00555352    50
                          push               ebx                                           // 0x00555353    53
                          call               _jmp_addr_0x00826fa0                          // 0x00555354    e8471c2d00

@@ -35,7 +35,7 @@
 .extern _jmp_addr_0x005f8870
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern _jmp_addr_0x00603860
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ??0Object@@QAE@XZ
 .extern ?Get3DType@Object@@SA?AW4LH3DObject__ObjectType@@W4MESH_LIST@@@Z
 .extern @__ct__6ObjectFRC9MapCoordsPC11GObjectInfo@16
@@ -1395,7 +1395,7 @@ _jmp_addr_0x00726dc0:    push               esi                                 
                          mov.s              edi, ecx                                             // 0x007270ef    8bf9
                          push               eax                                                  // 0x007270f1    50
                          mov.s              ecx, esi                                             // 0x007270f2    8bce
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x007270f4    e847ebedff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x007270f4    e847ebedff
                          mov                edx, dword ptr [eax]                                 // 0x007270f9    8b10
                          {disp8} mov        ebp, dword ptr [esp + 0x24]                          // 0x007270fb    8b6c2424
                          {disp8} mov        ebx, dword ptr [esp + 0x28]                          // 0x007270ff    8b5c2428

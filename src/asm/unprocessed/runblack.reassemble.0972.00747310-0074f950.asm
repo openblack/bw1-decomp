@@ -78,7 +78,7 @@
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
 .extern _jmp_addr_0x006055c0
 .extern _jmp_addr_0x006057b0
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern @Create3DObject__6ObjectFv@4
 .extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern ?ReactToPhysicsImpact@Object@@UAEXPAVPhysicsObject@@_N@Z
@@ -5076,7 +5076,7 @@ _jmp_addr_0x00749f60:    xor.s              eax, eax                            
                          {disp8} lea        edi, dword ptr [esi + 0x14]                    // 0x0074a2e9    8d7e14
                          push               edx                                            // 0x0074a2ec    52
                          mov.s              ecx, edi                                       // 0x0074a2ed    8bcf
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0074a2ef    e84cb9ebff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0074a2ef    e84cb9ebff
                          push               eax                                            // 0x0074a2f4    50
                          call               _jmp_addr_0x00771600                           // 0x0074a2f5    e806730200
                          {disp32} fmul      dword ptr [rdata_bytes + 0x1c840]              // 0x0074a2fa    d80d40588c00
@@ -7519,7 +7519,7 @@ _jmp_addr_0x0074bd20:    push               esi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x0074bf3f    8d4c2414
                          push               ecx                                            // 0x0074bf43    51
                          {disp32} lea       ecx, dword ptr [eax + 0x000003b8]              // 0x0074bf44    8d88b8030000
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x0074bf4a    e8f19cebff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x0074bf4a    e8f19cebff
                          {disp8} lea        edx, dword ptr [esp + 0x10]                    // 0x0074bf4f    8d542410
                          mov.s              esi, eax                                       // 0x0074bf53    8bf0
                          push               edx                                            // 0x0074bf55    52
