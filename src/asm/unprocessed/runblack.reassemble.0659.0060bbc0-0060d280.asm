@@ -44,7 +44,7 @@
 .extern  ??3@YAXPAX@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern ?Write@LHOSFile@@QAEIPBXIPAI@Z
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern @__ct__Q210NewCollide3ObjFfP7LHPoint@16
 
@@ -877,7 +877,7 @@ _jmp_addr_0x0060c200:    sub                esp, 0x30                           
                          {disp8} fild       dword ptr [esp + 0x34]                        // 0x0060c371    db442434
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]       // 0x0060c375    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x44]                        // 0x0060c37b    d95c2444
-                         call               ___nw__FUl                                    // 0x0060c37f    e80cf41c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0060c37f    e80cf41c00
                          add                esp, 0x0c                                     // 0x0060c384    83c40c
                          test               eax, eax                                      // 0x0060c387    85c0
                          {disp8} je         .Lbl_addr_0x0060c3a0                          // 0x0060c389    7415
@@ -1522,7 +1522,7 @@ _jmp_addr_0x0060c3f0:    mov                ax, word ptr [ecx]                  
                          push               0x000006eb                                    // 0x0060cb1f    68eb060000
                          push               0x00bf42a4                                    // 0x0060cb24    68a442bf00
                          push               0x10                                          // 0x0060cb29    6a10
-                         call               ___nw__FUl                                    // 0x0060cb2b    e860ec1c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0060cb2b    e860ec1c00
                          mov.s              esi, eax                                      // 0x0060cb30    8bf0
                          add                esp, 0x0c                                     // 0x0060cb32    83c40c
                          test               esi, esi                                      // 0x0060cb35    85f6
@@ -1551,7 +1551,7 @@ _jmp_addr_0x0060c3f0:    mov                ax, word ptr [ecx]                  
 .Lbl_addr_0x0060cb70:    push               0x000006ec                                    // 0x0060cb70    68ec060000
                          push               0x00bf42a4                                    // 0x0060cb75    68a442bf00
                          push               0x10                                          // 0x0060cb7a    6a10
-                         call               ___nw__FUl                                    // 0x0060cb7c    e80fec1c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0060cb7c    e80fec1c00
                          {disp8} fld        dword ptr [ebx + 0x08]                        // 0x0060cb81    d94308
                          {disp32} fcomp     dword ptr [__real@4@00000000000000000000]                   // 0x0060cb84    d81d98a38a00
                          mov.s              ebp, eax                                      // 0x0060cb8a    8be8
@@ -2136,7 +2136,7 @@ _jmp_addr_0x0060c3f0:    mov                ax, word ptr [ecx]                  
                          push               0x000000d7                                    // 0x0060d1ff    68d7000000
                          push               0x00bf42a4                                    // 0x0060d204    68a442bf00
                          push               0x28                                          // 0x0060d209    6a28
-                         call               ___nw__FUl                                    // 0x0060d20b    e880e51c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0060d20b    e880e51c00
                          add                esp, 0x14                                     // 0x0060d210    83c414
                          test               eax, eax                                      // 0x0060d213    85c0
                          {disp8} je         .Lbl_addr_0x0060d22c                          // 0x0060d215    7415

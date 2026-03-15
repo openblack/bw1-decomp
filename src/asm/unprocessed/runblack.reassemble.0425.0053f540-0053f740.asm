@@ -4,7 +4,7 @@
 .extern data_bytes
 .extern @__ct__14SetupTabButtonFiiiiiPwiii@35
 .extern __ftol
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 
 .globl _jmp_addr_0x0053f540
 
@@ -85,7 +85,7 @@ _jmp_addr_0x0053f540:    sub               esp, 0x10                            
 .Lbl_addr_0x0053f680:    push              0x0000062e                                    // 0x0053f680    682e060000
                          push              0x00bea568                                    // 0x0053f685    6868a5be00
                          push              0x00000254                                    // 0x0053f68a    6854020000
-                         call              ___nw__FUl                                    // 0x0053f68f    e8fcc02900
+                         call              ??2@YAPAXIPBDI@Z                              // 0x0053f68f    e8fcc02900
                          mov.s             ebx, eax                                      // 0x0053f694    8bd8
                          add               esp, 0x0c                                     // 0x0053f696    83c40c
                          test              ebx, ebx                                      // 0x0053f699    85db

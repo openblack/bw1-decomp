@@ -87,7 +87,7 @@
 .extern _LHLoadData__FPcPvUlPUl
 .extern _atexit
 .extern ___RTDynamicCast
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007dd9c0
 .extern _jmp_addr_0x007dda90
 .extern _jmp_addr_0x007dee00
@@ -3659,7 +3659,7 @@ _jmp_addr_0x005e6540:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          inc                ebx                                           // 0x005e6569    43
                          push               0xc                                           // 0x005e656a    6a0c
                          {disp32} mov       dword ptr [data_bytes + 0x35a1a0], ebx        // 0x005e656c    891da001d200
-                         call               ___nw__FUl                                    // 0x005e6572    e819521f00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005e6572    e819521f00
                          mov.s              ebx, eax                                      // 0x005e6577    8bd8
                          add                esp, 0x0c                                     // 0x005e6579    83c40c
                          test               ebx, ebx                                      // 0x005e657c    85db
@@ -5284,7 +5284,7 @@ _globl_ct_0x005e7690:    {disp32} mov       cl, byte ptr [_DAT_00fac934]        
                          push               0x24                                          // 0x005e76c1    6a24
                          push               0x00bf3654                                    // 0x005e76c3    685436bf00
                          push               0x1c                                          // 0x005e76c8    6a1c
-                         call               ___nw__FUl                                    // 0x005e76ca    e8c1401f00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005e76ca    e8c1401f00
                          xor.s              ecx, ecx                                      // 0x005e76cf    33c9
                          add                esp, 0x0c                                     // 0x005e76d1    83c40c
                          cmp.s              eax, ecx                                      // 0x005e76d4    3bc1

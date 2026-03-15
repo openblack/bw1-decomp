@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x005cee20
 .extern _jmp_addr_0x0064a7a0
 .extern ___RTDynamicCast
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 
 .globl _jmp_addr_0x0063f710
 .globl ?ProcessBindableKeys@GGame@@QAEIW4LH_KEY@@0K@Z
@@ -301,7 +301,7 @@ _jmp_addr_0x0063f710:    push               esi                                 
                          push               0x0000037e                                     // 0x0063fa7b    687e030000
                          push               0x00bfe2d8                                     // 0x0063fa80    68d8e2bf00
                          push               0x00000300                                     // 0x0063fa85    6800030000
-                         call               ___nw__FUl                                     // 0x0063fa8a    e801bd1900
+                         call               ??2@YAPAXIPBDI@Z                               // 0x0063fa8a    e801bd1900
                          mov.s              esi, eax                                       // 0x0063fa8f    8bf0
                          add                esp, 0x0c                                      // 0x0063fa91    83c40c
                          test               esi, esi                                       // 0x0063fa94    85f6
@@ -334,7 +334,7 @@ _jmp_addr_0x0063f710:    push               esi                                 
                          {disp8} fld        dword ptr [eax + 0x08]                         // 0x0063faf8    d94008
                          {disp8} fsub       dword ptr [esp + 0x20]                         // 0x0063fafb    d8642420
                          {disp8} fstp       dword ptr [esp + 0x28]                         // 0x0063faff    d95c2428
-                         call               ___nw__FUl                                     // 0x0063fb03    e888bc1900
+                         call               ??2@YAPAXIPBDI@Z                               // 0x0063fb03    e888bc1900
                          mov.s              ecx, eax                                       // 0x0063fb08    8bc8
                          add                esp, 0x0c                                      // 0x0063fb0a    83c40c
                          test               ecx, ecx                                       // 0x0063fb0d    85c9

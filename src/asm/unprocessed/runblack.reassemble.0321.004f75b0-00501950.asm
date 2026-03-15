@@ -94,7 +94,7 @@
 .extern _atexit
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
@@ -8054,7 +8054,7 @@ _jmp_addr_0x004ff4b0:    push               ebx                                 
                          mov                edi, 0x004c87f0                               // 0x004ff4c2    bff0874c00
                          xor.s              ebx, ebx                                      // 0x004ff4c7    33db
                          xor.s              ebp, ebp                                      // 0x004ff4c9    33ed
-                         call               ___nw__FUl                                    // 0x004ff4cb    e8c0c22d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004ff4cb    e8c0c22d00
                          add                esp, 0x0c                                     // 0x004ff4d0    83c40c
                          test               eax, eax                                      // 0x004ff4d3    85c0
                          {disp8} je         .Lbl_addr_0x004ff4fb                          // 0x004ff4d5    7424
@@ -8760,7 +8760,7 @@ _jmp_addr_0x004ff9f0:    sub                esp, 0x1c                           
                          push               0x0000008c                                    // 0x004ffb19    688c000000
                          push               0x00be6588                                    // 0x004ffb1e    688865be00
                          push               0xc                                           // 0x004ffb23    6a0c
-                         call               ___nw__FUl                                    // 0x004ffb25    e866bc2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004ffb25    e866bc2d00
                          add                esp, 0x0c                                     // 0x004ffb2a    83c40c
                          test               eax, eax                                      // 0x004ffb2d    85c0
                          {disp8} je         .Lbl_addr_0x004ffb49                          // 0x004ffb2f    7418
@@ -8799,7 +8799,7 @@ _jmp_addr_0x004ff9f0:    sub                esp, 0x1c                           
                          push               0x000000c6                                    // 0x004ffb97    68c6000000
                          push               0x00be6588                                    // 0x004ffb9c    688865be00
                          push               0xc                                           // 0x004ffba1    6a0c
-                         call               ___nw__FUl                                    // 0x004ffba3    e8e8bb2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004ffba3    e8e8bb2d00
                          add                esp, 0x0c                                     // 0x004ffba8    83c40c
                          test               eax, eax                                      // 0x004ffbab    85c0
                          {disp8} je         .Lbl_addr_0x004ffbc7                          // 0x004ffbad    7418
@@ -8856,7 +8856,7 @@ _jmp_addr_0x004ff9f0:    sub                esp, 0x1c                           
                          push               0x000000be                                    // 0x004ffc41    68be000000
                          push               0x00be6588                                    // 0x004ffc46    688865be00
                          push               0xc                                           // 0x004ffc4b    6a0c
-                         call               ___nw__FUl                                    // 0x004ffc4d    e83ebb2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004ffc4d    e83ebb2d00
                          add                esp, 0x0c                                     // 0x004ffc52    83c40c
                          test               eax, eax                                      // 0x004ffc55    85c0
                          {disp8} je         .Lbl_addr_0x004ffc71                          // 0x004ffc57    7418

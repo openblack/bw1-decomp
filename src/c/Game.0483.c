@@ -350,7 +350,7 @@ void __cdecl LoadAllAnimations__Fv(void)
     asm("push               0x00001311");                                     // 0x00550324    6811130000
     asm("push               0x00bec32c");                                     // 0x00550329    682cc3be00
     asm("push               0x14");                                           // 0x0055032e    6a14
-    asm("call               ___nw__FUl");                                     // 0x00550330    e85bb42800
+    asm("call               ??2@YAPAXIPBDI@Z");                               // 0x00550330    e85bb42800
     asm("add                esp, 0x0c");                                      // 0x00550335    83c40c
     asm("test               eax, eax");                                       // 0x00550338    85c0
     asm("{disp8} je         LAB__addr_0x00550363");                           // 0x0055033a    7427

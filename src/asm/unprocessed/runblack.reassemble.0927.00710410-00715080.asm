@@ -92,7 +92,7 @@
 .extern __allshl
 .extern __allrem
 .extern __mkdir
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x00801a70
 .extern _jmp_addr_0x008207f0
 .extern _jmp_addr_0x0086a110
@@ -2631,7 +2631,7 @@ _jmp_addr_0x00711e10:    push               ebx                                 
                          push               0x1b                                          // 0x00711e49    6a1b
                          push               0x00c20c20                                    // 0x00711e4b    68200cc200
                          push               edx                                           // 0x00711e50    52
-                         call               ___nw__FUl                                    // 0x00711e51    e83a990c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00711e51    e83a990c00
                          {disp32} mov       ecx, dword ptr [ebx + 0x0000050c]             // 0x00711e56    8b8b0c050000
                          mov.s              ebp, eax                                      // 0x00711e5c    8be8
                          mov.s              eax, ecx                                      // 0x00711e5e    8bc1
@@ -2645,7 +2645,7 @@ _jmp_addr_0x00711e10:    push               ebx                                 
                          push               0x00c20c20                                    // 0x00711e74    68200cc200
                          push               0x8                                           // 0x00711e79    6a08
                          rep movsb                                                        // 0x00711e7b    f3a4
-                         call               ___nw__FUl                                    // 0x00711e7d    e80e990c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00711e7d    e80e990c00
                          add                esp, 0x18                                     // 0x00711e82    83c418
                          test               eax, eax                                      // 0x00711e85    85c0
                          {disp8} je         .Lbl_addr_0x00711e98                          // 0x00711e87    740f
@@ -3883,7 +3883,7 @@ _jmp_addr_0x00712b20:    sub                esp, 0x08                           
                          push               0x00c20c58                                    // 0x00712b40    68580cc200
                          push               eax                                           // 0x00712b45    50
                          {disp8} mov        dword ptr [esp + 0x1c], ecx                   // 0x00712b46    894c241c
-                         call               ___nw__FUl                                    // 0x00712b4a    e8418c0c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00712b4a    e8418c0c00
                          mov.s              edx, eax                                      // 0x00712b4f    8bd0
                          mov.s              ecx, ebx                                      // 0x00712b51    8bcb
                          mov.s              esi, ecx                                      // 0x00712b53    8bf1
@@ -3914,7 +3914,7 @@ _jmp_addr_0x00712b20:    sub                esp, 0x08                           
 .Lbl_addr_0x00712b94:    push               0x00000096                                    // 0x00712b94    6896000000
                          push               0x00c20c58                                    // 0x00712b99    68580cc200
                          push               0x9                                           // 0x00712b9e    6a09
-                         call               ___nw__FUl                                    // 0x00712ba0    e8eb8b0c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00712ba0    e8eb8b0c00
                          add                esp, 0x0c                                     // 0x00712ba5    83c40c
                          test               eax, eax                                      // 0x00712ba8    85c0
                          {disp8} je         .Lbl_addr_0x00712bb4                          // 0x00712baa    7408
@@ -3960,7 +3960,7 @@ _jmp_addr_0x00712b20:    sub                esp, 0x08                           
 .Lbl_addr_0x00712c15:    push               0x000000a4                                    // 0x00712c15    68a4000000
                          push               0x00c20c58                                    // 0x00712c1a    68580cc200
                          push               0x9                                           // 0x00712c1f    6a09
-                         call               ___nw__FUl                                    // 0x00712c21    e86a8b0c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00712c21    e86a8b0c00
                          add                esp, 0x0c                                     // 0x00712c26    83c40c
                          test               eax, eax                                      // 0x00712c29    85c0
                          {disp8} je         .Lbl_addr_0x00712c35                          // 0x00712c2b    7408
@@ -4007,7 +4007,7 @@ _jmp_addr_0x00712b20:    sub                esp, 0x08                           
                          push               0x00c20c58                                    // 0x00712c9b    68580cc200
                          push               ecx                                           // 0x00712ca0    51
                          {disp8} mov        dword ptr [esp + 0x2c], esi                   // 0x00712ca1    8974242c
-                         call               ___nw__FUl                                    // 0x00712ca5    e8e68a0c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00712ca5    e8e68a0c00
                          mov.s              ebp, eax                                      // 0x00712caa    8be8
                          {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x00712cac    8b442420
                          {disp8} lea        ecx, dword ptr [ebx + 0x01]                   // 0x00712cb0    8d4b01
@@ -4078,7 +4078,7 @@ _jmp_addr_0x00712b20:    sub                esp, 0x08                           
                          {disp8} mov        dword ptr [esp + 0x30], ebx                   // 0x00712d54    895c2430
                          {disp8} mov        dword ptr [esp + 0x34], ecx                   // 0x00712d58    894c2434
                          {disp8} mov        dword ptr [esp + 0x24], eax                   // 0x00712d5c    89442424
-                         call               ___nw__FUl                                    // 0x00712d60    e82b8a0c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00712d60    e82b8a0c00
                          add                esp, 0x0c                                     // 0x00712d65    83c40c
                          cmp.s              eax, esi                                      // 0x00712d68    3bc6
                          {disp8} je         .Lbl_addr_0x00712d84                          // 0x00712d6a    7418
@@ -4100,7 +4100,7 @@ _jmp_addr_0x00712b20:    sub                esp, 0x08                           
                          push               eax                                           // 0x00712d93    50
                          {disp8} mov        dword ptr [esp + 0x20], edi                   // 0x00712d94    897c2420
                          {disp8} mov        dword ptr [esp + 0x2c], eax                   // 0x00712d98    8944242c
-                         call               ___nw__FUl                                    // 0x00712d9c    e8ef890c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00712d9c    e8ef890c00
                          add                esp, 0x0c                                     // 0x00712da1    83c40c
                          cmp.s              eax, esi                                      // 0x00712da4    3bc6
                          {disp8} je         .Lbl_addr_0x00712dc0                          // 0x00712da6    7418
@@ -4174,7 +4174,7 @@ _jmp_addr_0x00712b20:    sub                esp, 0x08                           
                          {disp8} lea        eax, dword ptr [eax + edx * 0x1 + 0x14]       // 0x00712e62    8d441014
                          push               0x00c20c58                                    // 0x00712e66    68580cc200
                          push               eax                                           // 0x00712e6b    50
-                         call               ___nw__FUl                                    // 0x00712e6c    e81f890c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00712e6c    e81f890c00
                          or                 ecx, 0xffffffff                               // 0x00712e71    83c9ff
                          {disp8} mov        edi, dword ptr [esp + 0x60]                   // 0x00712e74    8b7c2460
                          mov.s              edx, eax                                      // 0x00712e78    8bd0
@@ -4503,7 +4503,7 @@ _jmp_addr_0x00713140:    sub                esp, 0x68                           
                          mov.s              esi, eax                                      // 0x007131c0    8bf0
                          push               0x00c20c58                                    // 0x007131c2    68580cc200
                          push               esi                                           // 0x007131c7    56
-                         call               ___nw__FUl                                    // 0x007131c8    e8c3850c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x007131c8    e8c3850c00
                          push               ebx                                           // 0x007131cd    53
                          push               esi                                           // 0x007131ce    56
                          mov.s              ebp, eax                                      // 0x007131cf    8be8
@@ -4642,7 +4642,7 @@ _jmp_addr_0x007132b0:    sub                esp, 0x08                           
                          mov.s              esi, eax                                      // 0x0071330f    8bf0
                          push               0x00c20c58                                    // 0x00713311    68580cc200
                          push               esi                                           // 0x00713316    56
-                         call               ___nw__FUl                                    // 0x00713317    e874840c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00713317    e874840c00
                          {disp8} mov        ecx, dword ptr [esp + 0x30]                   // 0x0071331c    8b4c2430
                          push               ecx                                           // 0x00713320    51
                          push               esi                                           // 0x00713321    56
@@ -4657,12 +4657,12 @@ _jmp_addr_0x007132b0:    sub                esp, 0x08                           
                          push               esi                                           // 0x0071333c    56
                          {disp8} mov        dword ptr [esp + 0x44], esi                   // 0x0071333d    89742444
                          {disp8} mov        dword ptr [esp + 0x40], edi                   // 0x00713341    897c2440
-                         call               ___nw__FUl                                    // 0x00713345    e846840c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00713345    e846840c00
                          push               0x00000179                                    // 0x0071334a    6879010000
                          push               0x00c20c58                                    // 0x0071334f    68580cc200
                          push               edi                                           // 0x00713354    57
                          {disp8} mov        dword ptr [ebx + 0x08], eax                   // 0x00713355    894308
-                         call               ___nw__FUl                                    // 0x00713358    e833840c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00713358    e833840c00
                          mov.s              ecx, esi                                      // 0x0071335d    8bce
                          mov.s              edx, ecx                                      // 0x0071335f    8bd1
                          shr                ecx, 2                                        // 0x00713361    c1e902
@@ -5166,7 +5166,7 @@ _jmp_addr_0x00713710:    sub                esp, 0x00000340                     
                          push               0x00c20c58                                    // 0x00713809    68580cc200
                          push               edx                                           // 0x0071380e    52
                          {disp8} mov        dword ptr [esp + 0x24], ebp                   // 0x0071380f    896c2424
-                         call               ___nw__FUl                                    // 0x00713813    e8787f0c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00713813    e8787f0c00
                          add                esp, 0x0c                                     // 0x00713818    83c40c
                          {disp8} mov        dword ptr [esp + 0x14], eax                   // 0x0071381b    89442414
 .Lbl_addr_0x0071381f:    cmp.s              ebp, edi                                      // 0x0071381f    3bef
@@ -5608,7 +5608,7 @@ _jmp_addr_0x00713b70:    sub                esp, 0x00000200                     
 .Lbl_addr_0x00713c0f:    push               0x00000288                                    // 0x00713c0f    6888020000
                          push               0x00c20c58                                    // 0x00713c14    68580cc200
                          push               0x0000032c                                    // 0x00713c19    682c030000
-                         call               ___nw__FUl                                    // 0x00713c1e    e86d7b0c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00713c1e    e86d7b0c00
                          mov.s              edx, eax                                      // 0x00713c23    8bd0
                          add                esp, 0x0c                                     // 0x00713c25    83c40c
                          test               edx, edx                                      // 0x00713c28    85d2
@@ -5715,7 +5715,7 @@ _jmp_addr_0x00713cc0:    push               ecx                                 
                          add                esi, 0x04                                     // 0x00713d1a    83c604
                          push               0x00c20c58                                    // 0x00713d1d    68580cc200
                          push               esi                                           // 0x00713d22    56
-                         call               ___nw__FUl                                    // 0x00713d23    e8687a0c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00713d23    e8687a0c00
                          mov.s              ebx, eax                                      // 0x00713d28    8bd8
                          mov.s              ecx, esi                                      // 0x00713d2a    8bce
                          mov.s              edx, ecx                                      // 0x00713d2c    8bd1
@@ -5908,7 +5908,7 @@ _jmp_addr_0x00713e00:    sub                esp, 0x00000204                     
                          push               0x000002b2                                    // 0x00713f00    68b2020000
                          push               0x00c20c58                                    // 0x00713f05    68580cc200
                          push               0x0000032c                                    // 0x00713f0a    682c030000
-                         call               ___nw__FUl                                    // 0x00713f0f    e87c780c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00713f0f    e87c780c00
                          mov.s              ebp, eax                                      // 0x00713f14    8be8
                          add                esp, 0x0c                                     // 0x00713f16    83c40c
                          test               ebp, ebp                                      // 0x00713f19    85ed
@@ -6060,7 +6060,7 @@ _jmp_addr_0x00713fd0:    sub                esp, 0x000003e8                     
                          push               0x000002d0                                    // 0x00714097    68d0020000
                          push               0x00c20c58                                    // 0x0071409c    68580cc200
                          push               0x0000032c                                    // 0x007140a1    682c030000
-                         call               ___nw__FUl                                    // 0x007140a6    e8e5760c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x007140a6    e8e5760c00
                          mov.s              edx, eax                                      // 0x007140ab    8bd0
                          add                esp, 0x0c                                     // 0x007140ad    83c40c
                          test               edx, edx                                      // 0x007140b0    85d2
@@ -6222,7 +6222,7 @@ _jmp_addr_0x00714130:    push               esi                                 
                          push               0x00c20c58                                    // 0x0071422d    68580cc200
                          push               eax                                           // 0x00714232    50
                          {disp8} mov        dword ptr [esi + 0x04], eax                   // 0x00714233    894604
-                         call               ___nw__FUl                                    // 0x00714236    e855750c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00714236    e855750c00
                          {disp8} mov        ecx, dword ptr [esi + 0x04]                   // 0x0071423b    8b4e04
                          push               edi                                           // 0x0071423e    57
                          push               ecx                                           // 0x0071423f    51
@@ -6456,7 +6456,7 @@ _jmp_addr_0x00714420:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               0x00000356                                    // 0x00714432    6856030000
                          push               0x00c20c58                                    // 0x00714437    68580cc200
                          push               0x11                                          // 0x0071443c    6a11
-                         call               ___nw__FUl                                    // 0x0071443e    e84d730c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0071443e    e84d730c00
                          add                esp, 0x0c                                     // 0x00714443    83c40c
                          test               eax, eax                                      // 0x00714446    85c0
                          {disp8} je         .Lbl_addr_0x00714466                          // 0x00714448    741c
@@ -6470,7 +6470,7 @@ _jmp_addr_0x00714420:    {disp8} mov        eax, dword ptr [esp + 0x04]         
 .Lbl_addr_0x00714468:    push               0x00000357                                    // 0x00714468    6857030000
                          push               0x00c20c58                                    // 0x0071446d    68580cc200
                          push               0x00000200                                    // 0x00714472    6800020000
-                         call               ___nw__FUl                                    // 0x00714477    e814730c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00714477    e814730c00
                          {disp8} mov        dword ptr [esi + 0x0d], eax                   // 0x0071447c    89460d
                          add                esp, 0x0c                                     // 0x0071447f    83c40c
                          mov.s              eax, esi                                      // 0x00714482    8bc6
@@ -6598,7 +6598,7 @@ _jmp_addr_0x00714490:    sub                esp, 0x00000954                     
                          push               0x00c20c58                                    // 0x00714600    68580cc200
                          push               0x00100004                                    // 0x00714605    6804001000
                          {disp8} mov        dword ptr [esp + 0x40], esi                   // 0x0071460a    89742440
-                         call               ___nw__FUl                                    // 0x0071460e    e87d710c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0071460e    e87d710c00
                          mov.s              edi, eax                                      // 0x00714613    8bf8
                          {disp8} mov        eax, dword ptr [esp + 0x28]                   // 0x00714615    8b442428
                          add                esp, 0x10                                     // 0x00714619    83c410
@@ -6686,7 +6686,7 @@ _jmp_addr_0x00714490:    sub                esp, 0x00000954                     
                          push               0x9                                           // 0x00714724    6a09
                          and                edi, 0x0000ffff                               // 0x00714726    81e7ffff0000
                          and                ebp, 0x0000ffff                               // 0x0071472c    81e5ffff0000
-                         call               ___nw__FUl                                    // 0x00714732    e859700c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00714732    e859700c00
                          add                esp, 0x0c                                     // 0x00714737    83c40c
                          cmp.s              eax, esi                                      // 0x0071473a    3bc6
                          {disp8} je         .Lbl_addr_0x00714744                          // 0x0071473c    7406
@@ -6746,7 +6746,7 @@ _jmp_addr_0x00714490:    sub                esp, 0x00000954                     
                          push               0x9                                           // 0x007147d8    6a09
                          and                edi, 0x0000ffff                               // 0x007147da    81e7ffff0000
                          and                ebp, 0x0000ffff                               // 0x007147e0    81e5ffff0000
-                         call               ___nw__FUl                                    // 0x007147e6    e8a56f0c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x007147e6    e8a56f0c00
                          add                esp, 0x0c                                     // 0x007147eb    83c40c
                          test               eax, eax                                      // 0x007147ee    85c0
                          {disp8} je         .Lbl_addr_0x007147fa                          // 0x007147f0    7408
@@ -6843,7 +6843,7 @@ _jmp_addr_0x00714490:    sub                esp, 0x00000954                     
                          add.s              eax, ecx                                      // 0x007148f7    03c1
                          push               0x00c20c58                                    // 0x007148f9    68580cc200
                          push               eax                                           // 0x007148fe    50
-                         call               ___nw__FUl                                    // 0x007148ff    e88c6e0c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x007148ff    e88c6e0c00
                          {disp8} mov        ebp, dword ptr [esp + 0x58]                   // 0x00714904    8b6c2458
                          or                 ecx, 0xffffffff                               // 0x00714908    83c9ff
                          mov.s              ebx, eax                                      // 0x0071490b    8bd8
@@ -6858,7 +6858,7 @@ _jmp_addr_0x00714490:    sub                esp, 0x00000954                     
                          push               ecx                                           // 0x00714925    51
                          {disp8} mov        dword ptr [esp + 0x5c], ebx                   // 0x00714926    895c245c
                          {disp8} mov        dword ptr [esp + 0x74], ecx                   // 0x0071492a    894c2474
-                         call               ___nw__FUl                                    // 0x0071492e    e85d6e0c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0071492e    e85d6e0c00
                          or                 ecx, 0xffffffff                               // 0x00714933    83c9ff
                          mov.s              ebp, eax                                      // 0x00714936    8be8
                          xor.s              eax, eax                                      // 0x00714938    33c0
@@ -7479,7 +7479,7 @@ _globl_ct_0x00714ce0:    {disp32} jmp       .Lbl_addr_0x00714cf0                
                          push               0x000000c0                                    // 0x00714f84    68c0000000
                          push               0x00c21fe8                                    // 0x00714f89    68e81fc200
                          push               0x00000114                                    // 0x00714f8e    6814010000
-                         call               ___nw__FUl                                    // 0x00714f93    e8f8670c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00714f93    e8f8670c00
                          mov.s              esi, eax                                      // 0x00714f98    8bf0
                          add                esp, 0x0c                                     // 0x00714f9a    83c40c
                          test               esi, esi                                      // 0x00714f9d    85f6

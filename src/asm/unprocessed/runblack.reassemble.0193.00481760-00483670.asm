@@ -44,7 +44,7 @@
 .extern ___RTDynamicCast
 .extern _fprintf
 .extern __CIasin
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007f6f00
 .extern ??1FragMesh@@QAE@XZ
 .extern _jmp_addr_0x007f7230
@@ -1349,7 +1349,7 @@ _jmp_addr_0x00481a40:    push               esi                                 
                          push               0x00000865                                           // 0x004827b8    6865080000
                          push               0x009d1094                                           // 0x004827bd    6894109d00
                          push               0x28                                                 // 0x004827c2    6a28
-                         call               ___nw__FUl                                           // 0x004827c4    e8c78f3500
+                         call               ??2@YAPAXIPBDI@Z                                     // 0x004827c4    e8c78f3500
                          add                esp, 0x0c                                            // 0x004827c9    83c40c
                          test               eax, eax                                             // 0x004827cc    85c0
                          {disp8} je         .Lbl_addr_0x004827dd                                 // 0x004827ce    740d

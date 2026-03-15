@@ -21,7 +21,7 @@
 .extern _atexit
 .extern _wcscpy
 .extern _swprintf
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern @CandidateList_GetSelectIdx__Q24slim5TbIMEFv@4
 .extern @CandidateList_SetViewWindow__Q24slim5TbIMEFUiUiUi@20
 
@@ -1352,7 +1352,7 @@ _jmp_addr_0x0056b4b0:    sub                esp, 0x20                           
                          push               0xb                                           // 0x0056b4e1    6a0b
                          push               0x00bef058                                    // 0x0056b4e3    6858f0be00
                          push               0x00005400                                    // 0x0056b4e8    6800540000
-                         call               ___nw__FUl                                    // 0x0056b4ed    e89e022700
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0056b4ed    e89e022700
                          mov.s              ebx, eax                                      // 0x0056b4f2    8bd8
                          add                esp, 0x10                                     // 0x0056b4f4    83c410
                          test               ebx, ebx                                      // 0x0056b4f7    85db

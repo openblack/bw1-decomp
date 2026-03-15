@@ -11,7 +11,7 @@
 .extern ?CreateDroppedResource@Villager@@QAEXPAULHPoint@@00@Z
 .extern ?SetVillagerDisciple@Villager@@QAEIPAVGameThing@@W4VILLAGER_DISCIPLE@@H@Z
 .extern _atexit
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007fb810
 .extern _jmp_addr_0x007fb880
 .extern _jmp_addr_0x007fc760
@@ -282,7 +282,7 @@ _globl_ct_0x005efd50:    {disp32} mov       cl, byte ptr [_DAT_00fac934]        
                          push               0x00bf3b14                               // 0x005eff96    68143bbf00
                          push               0x000003c0                               // 0x005eff9b    68c0030000
                          {disp32} mov       dword ptr [esi + 0x00000154], 0x0000000c // 0x005effa0    c786540100000c000000
-                         call               ___nw__FUl                               // 0x005effaa    e8e1b71e00
+                         call               ??2@YAPAXIPBDI@Z                         // 0x005effaa    e8e1b71e00
                          mov.s              ebx, eax                                 // 0x005effaf    8bd8
                          xor.s              ebp, ebp                                 // 0x005effb1    33ed
                          add                esp, 0x0c                                // 0x005effb3    83c40c
@@ -522,7 +522,7 @@ _globl_ct_0x005efd50:    {disp32} mov       cl, byte ptr [_DAT_00fac934]        
                          push               0x00bf3b14                               // 0x005f029e    68143bbf00
                          push               0x000002d0                               // 0x005f02a3    68d0020000
                          {disp32} mov       dword ptr [esi + 0x00000160], 0x00000014 // 0x005f02a8    c7866001000014000000
-                         call               ___nw__FUl                               // 0x005f02b2    e8d9b41e00
+                         call               ??2@YAPAXIPBDI@Z                         // 0x005f02b2    e8d9b41e00
                          {disp32} mov       dword ptr [esi + 0x00000164], eax        // 0x005f02b7    898664010000
                          {disp8} mov        dword ptr [eax + 0x08], ebp              // 0x005f02bd    896808
                          mov                dword ptr [eax], 0x00000001              // 0x005f02c0    c70001000000

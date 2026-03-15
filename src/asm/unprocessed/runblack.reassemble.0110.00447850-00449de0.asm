@@ -21,7 +21,7 @@
 .extern ___RTDynamicCast
 .extern _wcscpy
 .extern _wcslen
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007e2910
 .extern _jmp_addr_0x007e2b40
 .extern _jmp_addr_0x007e3d20
@@ -1456,7 +1456,7 @@ _jmp_addr_0x004489d0:    push               esi                                 
                          push               0x00000183                                    // 0x004489d1    6883010000
                          push               0x009cdfb8                                    // 0x004489d6    68b8df9c00
                          push               0x00000140                                    // 0x004489db    6840010000
-                         call               ___nw__FUl                                    // 0x004489e0    e8ab2d3900
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004489e0    e8ab2d3900
                          add                esp, 0x0c                                     // 0x004489e5    83c40c
                          test               eax, eax                                      // 0x004489e8    85c0
                          {disp8} je         .Lbl_addr_0x004489f7                          // 0x004489ea    740b
@@ -2948,7 +2948,7 @@ _jmp_addr_0x00449650:    {disp8} mov        al, byte ptr [esp + 0x06]           
 .Lbl_addr_0x00449af9:    push               0x00000160                                    // 0x00449af9    6860010000
                          push               0x009cdff8                                    // 0x00449afe    68f8df9c00
                          push               0x00000098                                    // 0x00449b03    6898000000
-                         call               ___nw__FUl                                    // 0x00449b08    e8831c3900
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00449b08    e8831c3900
                          add                esp, 0x0c                                     // 0x00449b0d    83c40c
                          cmp.s              eax, ebx                                      // 0x00449b10    3bc3
                          {disp8} je         .Lbl_addr_0x00449b1d                          // 0x00449b12    7409

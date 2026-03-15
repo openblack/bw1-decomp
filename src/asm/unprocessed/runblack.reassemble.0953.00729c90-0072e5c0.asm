@@ -126,7 +126,7 @@
 .extern _localtime
 .extern _time
 .extern __CIfmod
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0080bec0
 .extern ?UpdateCamera@LH3DTech@@SAXABULHPoint@@0@Z
@@ -7534,7 +7534,7 @@ _jmp_addr_0x0072e2a0:    {disp32} mov       eax, dword ptr [_global]            
                          push               0x00c228e4                                    // 0x0072e2ad    68e428c200
                          push               0x00000168                                    // 0x0072e2b2    6868010000
                          {disp32} mov       dword ptr [data_bytes + 0x3da838], ecx        // 0x0072e2b7    890d3808da00
-                         call               ___nw__FUl                                    // 0x0072e2bd    e8ced40a00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0072e2bd    e8ced40a00
                          add                esp, 0x0c                                     // 0x0072e2c2    83c40c
                          test               eax, eax                                      // 0x0072e2c5    85c0
                          {disp8} je         .Lbl_addr_0x0072e2d3                          // 0x0072e2c7    740a

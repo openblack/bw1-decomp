@@ -122,7 +122,7 @@
 .extern _fopen
 .extern _fclose
 .extern  __CIpow
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0080b440
 .extern _jmp_addr_0x00814fd0
@@ -2917,7 +2917,7 @@ _globl_ct_0x004ef2a0:    {disp32} jmp       .Lbl_addr_0x004ef2b0                
                          {disp8} mov        dword ptr [esi + 0x54], edi                          // 0x004ef331    897e54
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]              // 0x004ef334    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x24]                               // 0x004ef33a    d95c2424
-                         call               ___nw__FUl                                           // 0x004ef33e    e84dc42e00
+                         call               ??2@YAPAXIPBDI@Z                                     // 0x004ef33e    e84dc42e00
                          add                esp, 0x0c                                            // 0x004ef343    83c40c
                          cmp.s              eax, ebx                                             // 0x004ef346    3bc3
                          {disp8} je         .Lbl_addr_0x004ef35a                                 // 0x004ef348    7410
@@ -10322,7 +10322,7 @@ _jmp_addr_0x004f46c0:    mov.s              eax, ecx                            
                          push               0x51                                                 // 0x004f46d0    6a51
                          push               0x00be0a00                                           // 0x004f46d2    68000abe00
                          push               0x000001d8                                           // 0x004f46d7    68d8010000
-                         call               ___nw__FUl                                           // 0x004f46dc    e8af702e00
+                         call               ??2@YAPAXIPBDI@Z                                     // 0x004f46dc    e8af702e00
                          add                esp, 0x0c                                            // 0x004f46e1    83c40c
                          test               eax, eax                                             // 0x004f46e4    85c0
                          {disp8} je         .Lbl_addr_0x004f46f5                                 // 0x004f46e6    740d

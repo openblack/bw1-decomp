@@ -42,7 +42,7 @@
 .extern _jmp_addr_0x006e8160
 .extern __ftol
 .extern ___RTDynamicCast
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
@@ -648,7 +648,7 @@ _jmp_addr_0x00486390:    sub                esp, 0x40                           
                          push               0x00001115                                           // 0x0048652a    6815110000
                          push               0x009d1094                                           // 0x0048652f    6894109d00
                          push               0x00001550                                           // 0x00486534    6850150000
-                         call               ___nw__FUl                                           // 0x00486539    e852523500
+                         call               ??2@YAPAXIPBDI@Z                                     // 0x00486539    e852523500
                          mov.s              edi, eax                                             // 0x0048653e    8bf8
                          or                 eax, -0x1                                            // 0x00486540    83c8ff
                          mov                ecx, 0x00000554                                      // 0x00486543    b954050000

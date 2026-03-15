@@ -13,7 +13,7 @@
 .extern @GetMapChild__6ObjectFRC9MapCoords@12
 .extern _jmp_addr_0x007370b0
 .extern ___RTDynamicCast
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern @__ct__Q210NewCollide3ObjFfP7LHPoint@16
 
@@ -228,7 +228,7 @@ start_0x0060d280_0x0060d740:
                          {disp8} fild      dword ptr [esp + 0x3c]                      // 0x0060d4bc    db44243c
                          {disp32} fmul     dword ptr [_rdata_float_coord_to_point]                   // 0x0060d4c0    d80da4a38a00
                          {disp8} fstp      dword ptr [esp + 0x30]                      // 0x0060d4c6    d95c2430
-                         call              ___nw__FUl                                  // 0x0060d4ca    e8c1e21c00
+                         call              ??2@YAPAXIPBDI@Z                            // 0x0060d4ca    e8c1e21c00
                          add               esp, 0x0c                                   // 0x0060d4cf    83c40c
                          test              eax, eax                                    // 0x0060d4d2    85c0
                          {disp8} je        .Lbl_addr_0x0060d4eb                        // 0x0060d4d4    7415

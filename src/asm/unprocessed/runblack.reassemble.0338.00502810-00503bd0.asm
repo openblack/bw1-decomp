@@ -48,7 +48,7 @@
 .extern __ftol
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
@@ -163,7 +163,7 @@ start_0x00502810_0x00503bd0:
                          push               0x00000755                                           // 0x00502933    6855070000
                          push               0x00be6588                                           // 0x00502938    688865be00
                          push               0xc                                                  // 0x0050293d    6a0c
-                         call               ___nw__FUl                                           // 0x0050293f    e84c8e2d00
+                         call               ??2@YAPAXIPBDI@Z                                     // 0x0050293f    e84c8e2d00
                          add                esp, 0x0c                                            // 0x00502944    83c40c
                          test               eax, eax                                             // 0x00502947    85c0
                          {disp8} je         .Lbl_addr_0x00502963                                 // 0x00502949    7418
@@ -217,7 +217,7 @@ start_0x00502810_0x00503bd0:
                          push               0x00000777                                           // 0x005029d4    6877070000
                          push               0x00be6588                                           // 0x005029d9    688865be00
                          push               0xc                                                  // 0x005029de    6a0c
-                         call               ___nw__FUl                                           // 0x005029e0    e8ab8d2d00
+                         call               ??2@YAPAXIPBDI@Z                                     // 0x005029e0    e8ab8d2d00
                          add                esp, 0x0c                                            // 0x005029e5    83c40c
                          test               eax, eax                                             // 0x005029e8    85c0
                          {disp8} je         .Lbl_addr_0x00502a04                                 // 0x005029ea    7418
@@ -281,7 +281,7 @@ start_0x00502810_0x00503bd0:
                          push               0x0000076f                                           // 0x00502a82    686f070000
                          push               0x00be6588                                           // 0x00502a87    688865be00
                          push               0xc                                                  // 0x00502a8c    6a0c
-                         call               ___nw__FUl                                           // 0x00502a8e    e8fd8c2d00
+                         call               ??2@YAPAXIPBDI@Z                                     // 0x00502a8e    e8fd8c2d00
                          add                esp, 0x0c                                            // 0x00502a93    83c40c
                          test               eax, eax                                             // 0x00502a96    85c0
                          {disp8} je         .Lbl_addr_0x00502ab2                                 // 0x00502a98    7418
@@ -980,7 +980,7 @@ start_0x00502810_0x00503bd0:
                          {disp8} fild       dword ptr [edi + 0x04]                               // 0x00503315    db4704
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]              // 0x00503318    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x28]                               // 0x0050331e    d95c2428
-                         call               ___nw__FUl                                           // 0x00503322    e869842d00
+                         call               ??2@YAPAXIPBDI@Z                                     // 0x00503322    e869842d00
                          add                esp, 0x0c                                            // 0x00503327    83c40c
                          test               eax, eax                                             // 0x0050332a    85c0
                          {disp8} je         .Lbl_addr_0x00503346                                 // 0x0050332c    7418
@@ -1073,7 +1073,7 @@ start_0x00502810_0x00503bd0:
                          {disp8} fild       dword ptr [edi + 0x04]                               // 0x00503459    db4704
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]              // 0x0050345c    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x28]                               // 0x00503462    d95c2428
-                         call               ___nw__FUl                                           // 0x00503466    e825832d00
+                         call               ??2@YAPAXIPBDI@Z                                     // 0x00503466    e825832d00
                          add                esp, 0x0c                                            // 0x0050346b    83c40c
                          test               eax, eax                                             // 0x0050346e    85c0
                          {disp8} je         .Lbl_addr_0x0050348a                                 // 0x00503470    7418

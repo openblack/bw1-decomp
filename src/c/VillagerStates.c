@@ -1804,7 +1804,7 @@ bool __fastcall Dead__8VillagerFv(struct Living* this)
     asm("push               0x00000238");                                      // 0x0076a6f4    6838020000
     asm("push               0x00c24630");                                      // 0x0076a6f9    683046c200
     asm("push               0xc");                                             // 0x0076a6fe    6a0c
-    asm("call               ___nw__FUl");                                      // 0x0076a700    e88b100700
+    asm("call               ??2@YAPAXIPBDI@Z");                                // 0x0076a700    e88b100700
     asm("add                esp, 0x0c");                                       // 0x0076a705    83c40c
     asm("test               eax, eax");                                        // 0x0076a708    85c0
     asm("{disp8} je         LAB__addr_0x0076a750");                            // 0x0076a70a    7444
@@ -1820,7 +1820,7 @@ bool __fastcall Dead__8VillagerFv(struct Living* this)
     asm("push               0x0000023b");                                      // 0x0076a720    683b020000
     asm("push               0x00c24630");                                      // 0x0076a725    683046c200
     asm("push               0xc");                                             // 0x0076a72a    6a0c
-    asm("call               ___nw__FUl");                                      // 0x0076a72c    e85f100700
+    asm("call               ??2@YAPAXIPBDI@Z");                                // 0x0076a72c    e85f100700
     asm("mov.s              edi, eax");                                        // 0x0076a731    8bf8
     asm("add                esp, 0x0c");                                       // 0x0076a733    83c40c
     asm("test               edi, edi");                                        // 0x0076a736    85ff

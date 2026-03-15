@@ -30,7 +30,7 @@
 .globl ?jmp_addr_0x007db410@@YAXPAHPAPAPAD@Z
 .globl _LHRand__FlRU
 .globl _jmp_addr_0x007db770
-.globl ___nw__FUl
+.globl ??2@YAPAXIPBDI@Z
 .globl _jmp_addr_0x007db7a0
 .globl ??0LHSys@@QAE@XZ 
 .globl _jmp_addr_0x007db8a0
@@ -378,7 +378,9 @@ _jmp_addr_0x007db770:    {disp8} fld       dword ptr [esp + 0x08]               
 .Lbl_addr_0x007db78d:    ret                                                              // 0x007db78d    c3
                          nop                                                              // 0x007db78e    90
                          nop                                                              // 0x007db78f    90
-___nw__FUl:              {disp8} mov       eax, dword ptr [esp + 0x04]                    // 0x007db790    8b442404
+
+??2@YAPAXIPBDI@Z:
+                         {disp8} mov       eax, dword ptr [esp + 0x04]                    // 0x007db790    8b442404
                          push              0x1                                            // 0x007db794    6a01
                          push              eax                                            // 0x007db796    50
                          call              _calloc                                        // 0x007db797    e810dbfeff
@@ -795,7 +797,7 @@ _jmp_addr_0x007db940:    sub               esp, 0x1c                            
                          push              0x000000c1                                     // 0x007dbbeb    68c1000000
                          push              0x00c311d8                                     // 0x007dbbf0    68d811c300
                          push              0x4                                            // 0x007dbbf5    6a04
-                         call              ___nw__FUl                                     // 0x007dbbf7    e894fbffff
+                         call              ??2@YAPAXIPBDI@Z                               // 0x007dbbf7    e894fbffff
                          add               esp, 0x0c                                      // 0x007dbbfc    83c40c
                          {disp8} mov       dword ptr [esp + 0x2c], eax                    // 0x007dbbff    8944242c
                          cmp.s             eax, ebx                                       // 0x007dbc03    3bc3

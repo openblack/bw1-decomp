@@ -65,7 +65,7 @@
 .extern  ??3@YAXPAX@Z
 .extern ___RTDynamicCast
 .extern __CIacos
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 
 .globl _jmp_addr_0x0060d740
 .globl _jmp_addr_0x0060d750
@@ -1492,7 +1492,7 @@ _jmp_addr_0x0060db00:    push               esi                                 
 .Lbl_addr_0x0060e9e6:    push               0x00000736                                  // 0x0060e9e6    6836070000
                          push               0x00bf42a4                                  // 0x0060e9eb    68a442bf00
                          push               0x2c                                        // 0x0060e9f0    6a2c
-                         call               ___nw__FUl                                  // 0x0060e9f2    e899cd1c00
+                         call               ??2@YAPAXIPBDI@Z                            // 0x0060e9f2    e899cd1c00
                          add                esp, 0x0c                                   // 0x0060e9f7    83c40c
                          test               eax, eax                                    // 0x0060e9fa    85c0
                          {disp8} je         .Lbl_addr_0x0060ea09                        // 0x0060e9fc    740b
@@ -1504,7 +1504,7 @@ _jmp_addr_0x0060db00:    push               esi                                 
 .Lbl_addr_0x0060ea0b:    push               0x00000736                                  // 0x0060ea0b    6836070000
                          push               0x00bf42a4                                  // 0x0060ea10    68a442bf00
                          push               0x2c                                        // 0x0060ea15    6a2c
-                         call               ___nw__FUl                                  // 0x0060ea17    e874cd1c00
+                         call               ??2@YAPAXIPBDI@Z                            // 0x0060ea17    e874cd1c00
                          add                esp, 0x0c                                   // 0x0060ea1c    83c40c
                          test               eax, eax                                    // 0x0060ea1f    85c0
                          {disp8} je         .Lbl_addr_0x0060ea2e                        // 0x0060ea21    740b

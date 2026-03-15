@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x0062d9a0
 .extern _wcscpy
 .extern __chkstk
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 
 .globl ?Init@MPFEChooseConnection@@SAXKKP6AXHPAUSetupBox@@PAUSetupControl@@HH@Z@Z
 .globl _Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v
@@ -47,7 +47,7 @@ _Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v:
                          push             0x000000b9                                    // 0x0062b049    68b9000000
                          push             0x00bf4b24                                    // 0x0062b04e    68244bbf00
                          push             0x0000025c                                    // 0x0062b053    685c020000
-                         call             ___nw__FUl                                    // 0x0062b058    e833071b00
+                         call             ??2@YAPAXIPBDI@Z                              // 0x0062b058    e833071b00
                          add              esp, 0x0c                                     // 0x0062b05d    83c40c
                          test             eax, eax                                      // 0x0062b060    85c0
                          {disp8} je       .Lbl_addr_0x0062b081                          // 0x0062b062    741d
@@ -67,7 +67,7 @@ _Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v:
                          {disp8} mov      dword ptr [edi + 0x10], eax                   // 0x0062b08d    894710
                          push             0x0000025c                                    // 0x0062b090    685c020000
                          {disp32} mov     dword ptr [eax + 0x00000238], 0x0062b200      // 0x0062b095    c7803802000000b26200
-                         call             ___nw__FUl                                    // 0x0062b09f    e8ec061b00
+                         call             ??2@YAPAXIPBDI@Z                              // 0x0062b09f    e8ec061b00
                          add              esp, 0x0c                                     // 0x0062b0a4    83c40c
                          test             eax, eax                                      // 0x0062b0a7    85c0
                          {disp8} je       .Lbl_addr_0x0062b0cb                          // 0x0062b0a9    7420
@@ -88,7 +88,7 @@ _Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v:
                          {disp8} mov      dword ptr [edi + 0x14], eax                   // 0x0062b0d8    894714
                          push             0x00000244                                    // 0x0062b0db    6844020000
                          {disp32} mov     dword ptr [eax + 0x00000238], 0x0062b210      // 0x0062b0e0    c7803802000010b26200
-                         call             ___nw__FUl                                    // 0x0062b0ea    e8a1061b00
+                         call             ??2@YAPAXIPBDI@Z                              // 0x0062b0ea    e8a1061b00
                          mov.s            esi, eax                                      // 0x0062b0ef    8bf0
                          add              esp, 0x0c                                     // 0x0062b0f1    83c40c
                          test             esi, esi                                      // 0x0062b0f4    85f6
@@ -114,7 +114,7 @@ _Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v:
                          push             0x00bf4b24                                    // 0x0062b146    68244bbf00
                          push             0x000002b0                                    // 0x0062b14b    68b0020000
                          {disp8} mov      dword ptr [ecx + 0x20], eax                   // 0x0062b150    894120
-                         call             ___nw__FUl                                    // 0x0062b153    e838061b00
+                         call             ??2@YAPAXIPBDI@Z                              // 0x0062b153    e838061b00
                          add              esp, 0x0c                                     // 0x0062b158    83c40c
                          test             eax, eax                                      // 0x0062b15b    85c0
                          pop              esi                                           // 0x0062b15d    5e
@@ -136,7 +136,7 @@ _Init__20MPFEChooseConnectionFUlUlPFiP8SetupBoxP12SetupControlii_v:
                          push             0x00bf4b24                                    // 0x0062b19b    68244bbf00
                          push             0x00000468                                    // 0x0062b1a0    6868040000
                          {disp8} mov      dword ptr [edx + 0x20], eax                   // 0x0062b1a5    894220
-                         call             ___nw__FUl                                    // 0x0062b1a8    e8e3051b00
+                         call             ??2@YAPAXIPBDI@Z                              // 0x0062b1a8    e8e3051b00
                          add              esp, 0x0c                                     // 0x0062b1ad    83c40c
                          test             eax, eax                                      // 0x0062b1b0    85c0
                          {disp8} je       .Lbl_addr_0x0062b1d7                          // 0x0062b1b2    7423

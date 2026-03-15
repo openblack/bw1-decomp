@@ -13,7 +13,7 @@
 .extern _strstr
 .extern _tolower
 .extern __controlfp
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007db8e0
 .extern _jmp_addr_0x007db8f0
 .extern _jmp_addr_0x007db910
@@ -626,7 +626,7 @@ _globl_ct_0x007dce00:    {disp32} jmp       .Lbl_addr_0x007dce10                
                          {disp8} mov        dword ptr [esi + 0x04], edi                   // 0x007dcf26    897e04
                          {disp8} mov        dword ptr [esi + 0x34], edi                   // 0x007dcf29    897e34
                          {disp8} mov        dword ptr [esi + 0x30], edi                   // 0x007dcf2c    897e30
-                         call               ___nw__FUl                                    // 0x007dcf2f    e85ce8ffff
+                         call               ??2@YAPAXIPBDI@Z                              // 0x007dcf2f    e85ce8ffff
                          add                esp, 0x0c                                     // 0x007dcf34    83c40c
                          cmp.s              eax, edi                                      // 0x007dcf37    3bc7
                          {disp8} je         .Lbl_addr_0x007dcf46                          // 0x007dcf39    740b

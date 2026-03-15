@@ -86,7 +86,7 @@
 .extern ___RTDynamicCast
 .extern _wcsncpy
 .extern ??2@YAPAXI@Z
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern @DrawText__13GatheringTextFPwfffffffffP9LH3DColoriii@64
 
@@ -289,7 +289,7 @@ start_0x00509480_0x0050d1c0:
                          push               0x8                                           // 0x00509574    6a08
                          mov                ebx, 0x004c8830                               // 0x00509576    bb30884c00
                          xor.s              ebp, ebp                                      // 0x0050957b    33ed
-                         call               ___nw__FUl                                    // 0x0050957d    e80e222d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0050957d    e80e222d00
                          mov.s              edi, eax                                      // 0x00509582    8bf8
                          add                esp, 0x0c                                     // 0x00509584    83c40c
                          test               edi, edi                                      // 0x00509587    85ff
@@ -353,7 +353,7 @@ start_0x00509480_0x0050d1c0:
                          push               0x8                                           // 0x00509646    6a08
                          mov                ebx, 0x004c87d0                               // 0x00509648    bbd0874c00
                          xor.s              ebp, ebp                                      // 0x0050964d    33ed
-                         call               ___nw__FUl                                    // 0x0050964f    e83c212d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0050964f    e83c212d00
                          mov.s              edi, eax                                      // 0x00509654    8bf8
                          add                esp, 0x0c                                     // 0x00509656    83c40c
                          test               edi, edi                                      // 0x00509659    85ff
@@ -395,7 +395,7 @@ start_0x00509480_0x0050d1c0:
                          push               0x8                                           // 0x005096ce    6a08
                          mov                ebx, 0x004c87d0                               // 0x005096d0    bbd0874c00
                          xor.s              ebp, ebp                                      // 0x005096d5    33ed
-                         call               ___nw__FUl                                    // 0x005096d7    e8b4202d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005096d7    e8b4202d00
                          mov.s              edi, eax                                      // 0x005096dc    8bf8
                          add                esp, 0x0c                                     // 0x005096de    83c40c
                          test               edi, edi                                      // 0x005096e1    85ff
@@ -438,7 +438,7 @@ start_0x00509480_0x0050d1c0:
                          xor.s              edi, edi                                      // 0x0050975c    33ff
                          xor.s              ebx, ebx                                      // 0x0050975e    33db
                          xor.s              ebp, ebp                                      // 0x00509760    33ed
-                         call               ___nw__FUl                                    // 0x00509762    e829202d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00509762    e829202d00
                          add                esp, 0x0c                                     // 0x00509767    83c40c
                          test               eax, eax                                      // 0x0050976a    85c0
                          {disp8} je         .Lbl_addr_0x0050977d                          // 0x0050976c    740f
@@ -479,7 +479,7 @@ start_0x00509480_0x0050d1c0:
                          xor.s              edi, edi                                      // 0x005097db    33ff
                          xor.s              ebx, ebx                                      // 0x005097dd    33db
                          xor.s              ebp, ebp                                      // 0x005097df    33ed
-                         call               ___nw__FUl                                    // 0x005097e1    e8aa1f2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005097e1    e8aa1f2d00
                          add                esp, 0x0c                                     // 0x005097e6    83c40c
                          test               eax, eax                                      // 0x005097e9    85c0
                          {disp8} je         .Lbl_addr_0x005097fc                          // 0x005097eb    740f
@@ -513,7 +513,7 @@ start_0x00509480_0x0050d1c0:
                          mov                edi, 0x004c8830                               // 0x00509845    bf30884c00
                          xor.s              ebx, ebx                                      // 0x0050984a    33db
                          xor.s              ebp, ebp                                      // 0x0050984c    33ed
-                         call               ___nw__FUl                                    // 0x0050984e    e83d1f2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0050984e    e83d1f2d00
                          add                esp, 0x0c                                     // 0x00509853    83c40c
                          test               eax, eax                                      // 0x00509856    85c0
                          {disp8} je         .Lbl_addr_0x00509869                          // 0x00509858    740f
@@ -546,7 +546,7 @@ start_0x00509480_0x0050d1c0:
                          push               0x8                                           // 0x005098af    6a08
                          mov                ebx, 0x004c87d0                               // 0x005098b1    bbd0874c00
                          xor.s              ebp, ebp                                      // 0x005098b6    33ed
-                         call               ___nw__FUl                                    // 0x005098b8    e8d31e2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005098b8    e8d31e2d00
                          mov.s              edi, eax                                      // 0x005098bd    8bf8
                          add                esp, 0x0c                                     // 0x005098bf    83c40c
                          test               edi, edi                                      // 0x005098c2    85ff
@@ -596,7 +596,7 @@ start_0x00509480_0x0050d1c0:
                          mov                edi, 0x004c8830                               // 0x00509952    bf30884c00
                          xor.s              ebx, ebx                                      // 0x00509957    33db
                          xor.s              ebp, ebp                                      // 0x00509959    33ed
-                         call               ___nw__FUl                                    // 0x0050995b    e8301e2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0050995b    e8301e2d00
                          add                esp, 0x0c                                     // 0x00509960    83c40c
                          test               eax, eax                                      // 0x00509963    85c0
                          {disp8} je         .Lbl_addr_0x00509976                          // 0x00509965    740f
@@ -631,7 +631,7 @@ start_0x00509480_0x0050d1c0:
                          xor.s              ebx, ebx                                      // 0x005099c3    33db
                          xor.s              ebp, ebp                                      // 0x005099c5    33ed
                          {disp8} mov        dword ptr [esp + 0x30], 0x004d10d0            // 0x005099c7    c7442430d0104d00
-                         call               ___nw__FUl                                    // 0x005099cf    e8bc1d2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005099cf    e8bc1d2d00
                          add                esp, 0x0c                                     // 0x005099d4    83c40c
                          test               eax, eax                                      // 0x005099d7    85c0
                          {disp8} je         .Lbl_addr_0x005099ea                          // 0x005099d9    740f
@@ -692,7 +692,7 @@ start_0x00509480_0x0050d1c0:
                          push               0x14                                          // 0x00509a8b    6a14
                          xor.s              ebx, ebx                                      // 0x00509a8d    33db
                          xor.s              ebp, ebp                                      // 0x00509a8f    33ed
-                         call               ___nw__FUl                                    // 0x00509a91    e8fa1c2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00509a91    e8fa1c2d00
                          mov.s              edi, eax                                      // 0x00509a96    8bf8
                          add                esp, 0x0c                                     // 0x00509a98    83c40c
                          test               edi, edi                                      // 0x00509a9b    85ff
@@ -743,7 +743,7 @@ start_0x00509480_0x0050d1c0:
                          push               0xc                                           // 0x00509b23    6a0c
                          mov                ebx, 0x004c8550                               // 0x00509b25    bb50854c00
                          xor.s              ebp, ebp                                      // 0x00509b2a    33ed
-                         call               ___nw__FUl                                    // 0x00509b2c    e85f1c2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00509b2c    e85f1c2d00
                          mov.s              edi, eax                                      // 0x00509b31    8bf8
                          add                esp, 0x0c                                     // 0x00509b33    83c40c
                          test               edi, edi                                      // 0x00509b36    85ff
@@ -786,7 +786,7 @@ start_0x00509480_0x0050d1c0:
                          xor.s              ebx, ebx                                      // 0x00509bb0    33db
                          xor.s              ebp, ebp                                      // 0x00509bb2    33ed
                          {disp8} mov        dword ptr [esp + 0x30], 0x004d10d0            // 0x00509bb4    c7442430d0104d00
-                         call               ___nw__FUl                                    // 0x00509bbc    e8cf1b2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00509bbc    e8cf1b2d00
                          add                esp, 0x0c                                     // 0x00509bc1    83c40c
                          test               eax, eax                                      // 0x00509bc4    85c0
                          {disp8} je         .Lbl_addr_0x00509bd7                          // 0x00509bc6    740f
@@ -820,7 +820,7 @@ start_0x00509480_0x0050d1c0:
                          mov                edi, 0x004c84b0                               // 0x00509c1f    bfb0844c00
                          xor.s              ebx, ebx                                      // 0x00509c24    33db
                          xor.s              ebp, ebp                                      // 0x00509c26    33ed
-                         call               ___nw__FUl                                    // 0x00509c28    e8631b2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00509c28    e8631b2d00
                          add                esp, 0x0c                                     // 0x00509c2d    83c40c
                          test               eax, eax                                      // 0x00509c30    85c0
                          {disp8} je         .Lbl_addr_0x00509c43                          // 0x00509c32    740f
@@ -862,7 +862,7 @@ start_0x00509480_0x0050d1c0:
                          xor.s              ebx, ebx                                      // 0x00509ca2    33db
                          xor.s              ebp, ebp                                      // 0x00509ca4    33ed
                          {disp8} mov        dword ptr [esp + 0x3c], 0xffffffff            // 0x00509ca6    c744243cffffffff
-                         call               ___nw__FUl                                    // 0x00509cae    e8dd1a2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00509cae    e8dd1a2d00
                          add                esp, 0x0c                                     // 0x00509cb3    83c40c
                          test               eax, eax                                      // 0x00509cb6    85c0
                          {disp8} je         .Lbl_addr_0x00509cc9                          // 0x00509cb8    740f
@@ -892,7 +892,7 @@ start_0x00509480_0x0050d1c0:
                          xor.s              ebx, ebx                                      // 0x00509cfe    33db
                          xor.s              ebp, ebp                                      // 0x00509d00    33ed
                          {disp8} mov        dword ptr [esp + 0x3c], 0xffffffff            // 0x00509d02    c744243cffffffff
-                         call               ___nw__FUl                                    // 0x00509d0a    e8811a2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00509d0a    e8811a2d00
                          add                esp, 0x0c                                     // 0x00509d0f    83c40c
                          test               eax, eax                                      // 0x00509d12    85c0
                          {disp8} je         .Lbl_addr_0x00509d25                          // 0x00509d14    740f
@@ -926,7 +926,7 @@ start_0x00509480_0x0050d1c0:
                          mov                ebx, 0x004c8830                               // 0x00509d70    bb30884c00
                          xor.s              ebp, ebp                                      // 0x00509d75    33ed
                          {disp8} mov        dword ptr [esp + 0x30], 0x004d1a30            // 0x00509d77    c7442430301a4d00
-                         call               ___nw__FUl                                    // 0x00509d7f    e80c1a2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00509d7f    e80c1a2d00
                          mov.s              edi, eax                                      // 0x00509d84    8bf8
                          add                esp, 0x0c                                     // 0x00509d86    83c40c
                          test               edi, edi                                      // 0x00509d89    85ff
@@ -990,7 +990,7 @@ start_0x00509480_0x0050d1c0:
                          xor.s              edi, edi                                      // 0x00509e4a    33ff
                          xor.s              ebx, ebx                                      // 0x00509e4c    33db
                          xor.s              ebp, ebp                                      // 0x00509e4e    33ed
-                         call               ___nw__FUl                                    // 0x00509e50    e83b192d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00509e50    e83b192d00
                          add                esp, 0x0c                                     // 0x00509e55    83c40c
                          test               eax, eax                                      // 0x00509e58    85c0
                          {disp8} je         .Lbl_addr_0x00509e6b                          // 0x00509e5a    740f
@@ -1059,7 +1059,7 @@ start_0x00509480_0x0050d1c0:
                          xor.s              edi, edi                                      // 0x00509efc    33ff
                          xor.s              ebx, ebx                                      // 0x00509efe    33db
                          xor.s              ebp, ebp                                      // 0x00509f00    33ed
-                         call               ___nw__FUl                                    // 0x00509f02    e889182d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00509f02    e889182d00
                          add                esp, 0x0c                                     // 0x00509f07    83c40c
                          test               eax, eax                                      // 0x00509f0a    85c0
                          {disp8} je         .Lbl_addr_0x00509f1d                          // 0x00509f0c    740f
@@ -1101,7 +1101,7 @@ start_0x00509480_0x0050d1c0:
                          xor.s              ebx, ebx                                      // 0x00509f85    33db
                          xor.s              ebp, ebp                                      // 0x00509f87    33ed
                          {disp8} mov        dword ptr [esp + 0x28], 0xffffffff            // 0x00509f89    c7442428ffffffff
-                         call               ___nw__FUl                                    // 0x00509f91    e8fa172d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00509f91    e8fa172d00
                          add                esp, 0x0c                                     // 0x00509f96    83c40c
                          test               eax, eax                                      // 0x00509f99    85c0
                          {disp8} je         .Lbl_addr_0x00509fac                          // 0x00509f9b    740f
@@ -1173,7 +1173,7 @@ start_0x00509480_0x0050d1c0:
                          xor.s              edi, edi                                      // 0x0050a066    33ff
                          xor.s              ebx, ebx                                      // 0x0050a068    33db
                          xor.s              ebp, ebp                                      // 0x0050a06a    33ed
-                         call               ___nw__FUl                                    // 0x0050a06c    e81f172d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0050a06c    e81f172d00
                          add                esp, 0x0c                                     // 0x0050a071    83c40c
                          test               eax, eax                                      // 0x0050a074    85c0
                          {disp8} je         .Lbl_addr_0x0050a087                          // 0x0050a076    740f
@@ -1215,7 +1215,7 @@ start_0x00509480_0x0050d1c0:
                          xor.s              ebx, ebx                                      // 0x0050a0ef    33db
                          xor.s              ebp, ebp                                      // 0x0050a0f1    33ed
                          {disp8} mov        dword ptr [esp + 0x28], 0xffffffff            // 0x0050a0f3    c7442428ffffffff
-                         call               ___nw__FUl                                    // 0x0050a0fb    e890162d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0050a0fb    e890162d00
                          add                esp, 0x0c                                     // 0x0050a100    83c40c
                          test               eax, eax                                      // 0x0050a103    85c0
                          {disp8} je         .Lbl_addr_0x0050a116                          // 0x0050a105    740f
@@ -1820,7 +1820,7 @@ start_0x00509480_0x0050d1c0:
                          push               0x14                                          // 0x0050a847    6a14
                          xor.s              edi, edi                                      // 0x0050a849    33ff
                          xor.s              ebx, ebx                                      // 0x0050a84b    33db
-                         call               ___nw__FUl                                    // 0x0050a84d    e83e0f2d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0050a84d    e83e0f2d00
                          add                esp, 0x0c                                     // 0x0050a852    83c40c
                          test               eax, eax                                      // 0x0050a855    85c0
                          {disp8} je         .Lbl_addr_0x0050a887                          // 0x0050a857    742e
@@ -3057,7 +3057,7 @@ _jmp_addr_0x0050b310:    push               esi                                 
                          push               0x3e                                          // 0x0050b471    6a3e
                          push               0x00be6854                                    // 0x0050b473    685468be00
                          push               0x14                                          // 0x0050b478    6a14
-                         call               ___nw__FUl                                    // 0x0050b47a    e811032d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0050b47a    e811032d00
                          add                esp, 0x0c                                     // 0x0050b47f    83c40c
                          test               eax, eax                                      // 0x0050b482    85c0
                          {disp8} je         .Lbl_addr_0x0050b493                          // 0x0050b484    740d

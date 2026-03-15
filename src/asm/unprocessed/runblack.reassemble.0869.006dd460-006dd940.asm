@@ -10,7 +10,7 @@
 .extern _jmp_addr_0x006db520
 .extern _jmp_addr_0x006dc9e0
 .extern _jmp_addr_0x006dcfd0
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 
 .globl _jmp_addr_0x006dd460
 .globl _jmp_addr_0x006dd4c0
@@ -603,7 +603,7 @@ _jmp_addr_0x006dd7d0:    push             ecx                                   
                          mov              ebx, 0x00000001                        // 0x006dd7df    bb01000000
                          push             ebx                                    // 0x006dd7e4    53
                          mov.s            esi, ecx                               // 0x006dd7e5    8bf1
-                         call             ___nw__FUl                             // 0x006dd7e7    e8a4df0f00
+                         call             ??2@YAPAXIPBDI@Z                       // 0x006dd7e7    e8a4df0f00
                          add              esp, 0x0c                              // 0x006dd7ec    83c40c
                          test             eax, eax                               // 0x006dd7ef    85c0
                          {disp8} je       .Lbl_addr_0x006dd7fc                   // 0x006dd7f1    7409

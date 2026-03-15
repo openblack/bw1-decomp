@@ -19,7 +19,7 @@ void LoadIt__FP10LoaderAnonPcP23GVillagerStateTableInfoUlbP6LHFile(struct Loader
     asm("push               0x17                                    ");  // 0x00433f21    6a17
     asm("push               0x009cce48                              ");  // 0x00433f23    6848ce9c00
     asm("push               0x00000104                              ");  // 0x00433f28    6804010000
-    asm("call               ___nw__FUl                              ");  // 0x00433f2d    e85e783a00
+    asm("call               ??2@YAPAXIPBDI@Z                        ");  // 0x00433f2d    e85e783a00
     asm("{disp8} mov        ecx, dword ptr [esp + 0x38]             ");  // 0x00433f32    8b4c2438
     asm("add                esp, 0x0c                               ");  // 0x00433f36    83c40c
     asm("push               -0x1                                    ");  // 0x00433f39    6aff

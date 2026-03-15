@@ -5399,7 +5399,7 @@ uint32_t __fastcall ApplyThisToObject__8VillagerFP16GInterfaceStatusP6ObjectP23G
     asm("push               0x000009a6");                                    // 0x00752ec8    68a6090000
     asm("push               0x00c235dc");                                    // 0x00752ecd    68dc35c200
     asm("push               0x000000a0");                                    // 0x00752ed2    68a0000000
-    asm("call               ___nw__FUl");                                    // 0x00752ed7    e8b4880800
+    asm("call               ??2@YAPAXIPBDI@Z");                              // 0x00752ed7    e8b4880800
     asm("xor.s              ebx, ebx");                                      // 0x00752edc    33db
     asm("add                esp, 0x0c");                                     // 0x00752ede    83c40c
     asm("cmp.s              eax, ebx");                                      // 0x00752ee1    3bc3

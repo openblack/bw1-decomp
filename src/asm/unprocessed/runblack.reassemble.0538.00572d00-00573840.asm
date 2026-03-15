@@ -28,7 +28,7 @@
 .extern _wcslen
 .extern __strcmpi
 .extern __chkstk
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern @GetStringWidth__13GatheringTextFPwif@20
 
 start_0x00572d00_0x00573840:
@@ -295,7 +295,7 @@ start_0x00572d00_0x00573840:
                          push              0x000002bb                                    // 0x005730e0    68bb020000
                          push              0x00bef1b8                                    // 0x005730e5    68b8f1be00
                          push              0x48                                          // 0x005730ea    6a48
-                         call              ___nw__FUl                                    // 0x005730ec    e89f862600
+                         call              ??2@YAPAXIPBDI@Z                              // 0x005730ec    e89f862600
                          mov.s             esi, eax                                      // 0x005730f1    8bf0
                          add               esp, 0x0c                                     // 0x005730f3    83c40c
                          test              esi, esi                                      // 0x005730f6    85f6
@@ -457,7 +457,7 @@ start_0x00572d00_0x00573840:
                          push              0x000002ed                                    // 0x00573310    68ed020000
                          push              0x00bef1b8                                    // 0x00573315    68b8f1be00
                          push              0x48                                          // 0x0057331a    6a48
-                         call              ___nw__FUl                                    // 0x0057331c    e86f842600
+                         call              ??2@YAPAXIPBDI@Z                              // 0x0057331c    e86f842600
                          mov.s             edi, eax                                      // 0x00573321    8bf8
                          add               esp, 0x0c                                     // 0x00573323    83c40c
                          test              edi, edi                                      // 0x00573326    85ff

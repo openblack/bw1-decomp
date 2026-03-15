@@ -44,7 +44,7 @@
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
 .extern __strcmpi
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007fac10
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
@@ -211,7 +211,7 @@ start_0x005fa480_0x005fb680:
                          push               0x00bf3d7c                                    // 0x005fa5c9    687c3dbf00
                          push               0xc                                           // 0x005fa5ce    6a0c
                          mov.s              esi, eax                                      // 0x005fa5d0    8bf0
-                         call               ___nw__FUl                                    // 0x005fa5d2    e8b9111e00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005fa5d2    e8b9111e00
                          add                esp, 0x0c                                     // 0x005fa5d7    83c40c
                          cmp.s              eax, ebx                                      // 0x005fa5da    3bc3
                          {disp8} je         .Lbl_addr_0x005fa5e6                          // 0x005fa5dc    7408

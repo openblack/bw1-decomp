@@ -22,7 +22,7 @@
 .extern  ??3@YAXPAX@Z
 .extern _sprintf
 .extern ??2@YAPAXI@Z
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 
 .globl _jmp_addr_0x004d66e0
 .globl _jmp_addr_0x004d6700
@@ -475,7 +475,7 @@ _jmp_addr_0x004d6780:    sub                esp, 0x08                           
                          push               0x00000311                              // 0x004d67ad    6811030000
                          push               0x00bdee10                              // 0x004d67b2    6810eebd00
                          push               0xc                                     // 0x004d67b7    6a0c
-                         call               ___nw__FUl                              // 0x004d67b9    e8d24f3000
+                         call               ??2@YAPAXIPBDI@Z                        // 0x004d67b9    e8d24f3000
                          mov.s              esi, eax                                // 0x004d67be    8bf0
                          add                esp, 0x0c                               // 0x004d67c0    83c40c
                          test               esi, esi                                // 0x004d67c3    85f6
@@ -792,7 +792,7 @@ _jmp_addr_0x004d6a50:    push               ebx                                 
 .Lbl_addr_0x004d6a78:    push               0x000003bf                              // 0x004d6a78    68bf030000
                          push               0x00bdee10                              // 0x004d6a7d    6810eebd00
                          push               0x00000094                              // 0x004d6a82    6894000000
-                         call               ___nw__FUl                              // 0x004d6a87    e8044d3000
+                         call               ??2@YAPAXIPBDI@Z                        // 0x004d6a87    e8044d3000
                          add                esp, 0x0c                               // 0x004d6a8c    83c40c
                          test               eax, eax                                // 0x004d6a8f    85c0
                          {disp8} je         .Lbl_addr_0x004d6ae7                    // 0x004d6a91    7454
@@ -1500,7 +1500,7 @@ _jmp_addr_0x004d6cd0:    sub                esp, 0x4c                           
 .Lbl_addr_0x004d7229:    push               0x000004b9                              // 0x004d7229    68b9040000
                          push               0x00bdee10                              // 0x004d722e    6810eebd00
                          push               0x24                                    // 0x004d7233    6a24
-                         call               ___nw__FUl                              // 0x004d7235    e856453000
+                         call               ??2@YAPAXIPBDI@Z                        // 0x004d7235    e856453000
                          add                esp, 0x0c                               // 0x004d723a    83c40c
                          test               eax, eax                                // 0x004d723d    85c0
                          {disp8} je         .Lbl_addr_0x004d724d                    // 0x004d723f    740c
@@ -1514,7 +1514,7 @@ _jmp_addr_0x004d6cd0:    sub                esp, 0x4c                           
                          push               0x00bdee10                              // 0x004d7254    6810eebd00
                          push               0x24                                    // 0x004d7259    6a24
                          mov                dword ptr [edi], eax                    // 0x004d725b    8907
-                         call               ___nw__FUl                              // 0x004d725d    e82e453000
+                         call               ??2@YAPAXIPBDI@Z                        // 0x004d725d    e82e453000
                          add                esp, 0x0c                               // 0x004d7262    83c40c
                          test               eax, eax                                // 0x004d7265    85c0
                          {disp8} je         .Lbl_addr_0x004d7275                    // 0x004d7267    740c

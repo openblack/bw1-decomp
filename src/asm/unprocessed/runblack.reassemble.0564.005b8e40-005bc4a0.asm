@@ -20,7 +20,7 @@
 .extern  ??3@YAXPAX@Z
 .extern _atexit
 .extern _memmove
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007ea570
 .extern _jmp_addr_0x007ea810
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
@@ -690,7 +690,7 @@ _jmp_addr_0x005b90c0:    sub                esp, 0x44                           
                          shl                eax, 2                                         // 0x005b9519    c1e002
                          push               0x00bf04d0                                     // 0x005b951c    68d004bf00
                          push               eax                                            // 0x005b9521    50
-                         call               ___nw__FUl                                     // 0x005b9522    e869222200
+                         call               ??2@YAPAXIPBDI@Z                               // 0x005b9522    e869222200
                          {disp8} mov        esi, dword ptr [ebx + 0x04]                    // 0x005b9527    8b7304
                          mov.s              edi, eax                                       // 0x005b952a    8bf8
                          {disp8} mov        dword ptr [esp + 0x1c], eax                    // 0x005b952c    8944241c
@@ -2692,7 +2692,7 @@ _jmp_addr_0x005bb060:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          push               0x00bf04d0                                     // 0x005bb0d8    68d004bf00
                          push               eax                                            // 0x005bb0dd    50
                          {disp32} mov       dword ptr [edi + 0x00002f00], esi              // 0x005bb0de    89b7002f0000
-                         call               ___nw__FUl                                     // 0x005bb0e4    e8a7062200
+                         call               ??2@YAPAXIPBDI@Z                               // 0x005bb0e4    e8a7062200
                          add                esp, 0x0c                                      // 0x005bb0e9    83c40c
                          cmp.s              eax, ebx                                       // 0x005bb0ec    3bc3
                          {disp8} je         .Lbl_addr_0x005bb11f                           // 0x005bb0ee    742f
@@ -2834,7 +2834,7 @@ _jmp_addr_0x005bb1b0:    push               ebx                                 
                          push               0x00bf04d0                                     // 0x005bb25a    68d004bf00
                          push               eax                                            // 0x005bb25f    50
                          {disp32} mov       dword ptr [edi + 0x00002f00], esi              // 0x005bb260    89b7002f0000
-                         call               ___nw__FUl                                     // 0x005bb266    e825052200
+                         call               ??2@YAPAXIPBDI@Z                               // 0x005bb266    e825052200
                          add                esp, 0x0c                                      // 0x005bb26b    83c40c
                          cmp.s              eax, ebx                                       // 0x005bb26e    3bc3
                          {disp8} je         .Lbl_addr_0x005bb2a1                           // 0x005bb270    742f
@@ -3100,7 +3100,7 @@ _jmp_addr_0x005bb340:    push               esi                                 
                          shl                eax, 1                                         // 0x005bb591    d1e0
                          push               0x00bf04d0                                     // 0x005bb593    68d004bf00
                          push               eax                                            // 0x005bb598    50
-                         call               ___nw__FUl                                     // 0x005bb599    e8f2012200
+                         call               ??2@YAPAXIPBDI@Z                               // 0x005bb599    e8f2012200
                          add                esp, 0x0c                                      // 0x005bb59e    83c40c
                          test               eax, eax                                       // 0x005bb5a1    85c0
                          {disp32} mov       dword ptr [data_bytes + 0x34fa94], eax         // 0x005bb5a3    a3945ad100

@@ -53,7 +53,7 @@
 .extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern ___RTDynamicCast
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007f6f00
 .extern ??1FragMesh@@QAE@XZ
 .extern _jmp_addr_0x007f7230
@@ -1660,7 +1660,7 @@ _jmp_addr_0x004887a0:    sub                esp, 0x000000d8                     
                          push               0x0000154c                                    // 0x00488bbb    684c150000
                          push               0x009d1094                                    // 0x00488bc0    6894109d00
                          push               0x28                                          // 0x00488bc5    6a28
-                         call               ___nw__FUl                                    // 0x00488bc7    e8c42b3500
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00488bc7    e8c42b3500
                          add                esp, 0x0c                                     // 0x00488bcc    83c40c
                          cmp.s              eax, ebp                                      // 0x00488bcf    3bc5
                          {disp8} je         .Lbl_addr_0x00488be0                          // 0x00488bd1    740d

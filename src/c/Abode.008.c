@@ -134,7 +134,7 @@ void __fastcall ReactToPhysicsImpact__5AbodeFP13PhysicsObjectb(struct Object* th
     asm("push               0x00000778");                                    // 0x0040633c    6878070000
     asm("push               0x009c7fbc");                                    // 0x00406341    68bc7f9c00
     asm("push               0x28");                                          // 0x00406346    6a28
-    asm("call               ___nw__FUl");                                    // 0x00406348    e843543d00
+    asm("call               ??2@YAPAXIPBDI@Z");                              // 0x00406348    e843543d00
     asm("add                esp, 0x0c");                                     // 0x0040634d    83c40c
     asm("test               eax, eax");                                      // 0x00406350    85c0
     asm("{disp8} je         LAB__addr_0x004063b6");                          // 0x00406352    7462
@@ -167,7 +167,7 @@ void __fastcall ReactToPhysicsImpact__5AbodeFP13PhysicsObjectb(struct Object* th
     asm("fstp               st(0)");                                         // 0x00406394    ddd8
     asm("push               0x009c7fbc");                                    // 0x00406396    68bc7f9c00
     asm("push               0x28");                                          // 0x0040639b    6a28
-    asm("call               ___nw__FUl");                                    // 0x0040639d    e8ee533d00
+    asm("call               ??2@YAPAXIPBDI@Z");                              // 0x0040639d    e8ee533d00
     asm("add                esp, 0x0c");                                     // 0x004063a2    83c40c
     asm("test               eax, eax");                                      // 0x004063a5    85c0
     asm("{disp8} je         LAB__addr_0x004063b6");                          // 0x004063a7    740d
@@ -1183,7 +1183,7 @@ uint32_t __fastcall Load__5AbodeFR10GameOSFile(struct GameThing* this, const voi
     asm("push               0x000008a2");                                    // 0x00406faa    68a2080000
     asm("push               0x009c7fbc");                                    // 0x00406faf    68bc7f9c00
     asm("push               0x28");                                          // 0x00406fb4    6a28
-    asm("call               ___nw__FUl");                                    // 0x00406fb6    e8d5473d00
+    asm("call               ??2@YAPAXIPBDI@Z");                              // 0x00406fb6    e8d5473d00
     asm("mov.s              edi, eax");                                      // 0x00406fbb    8bf8
     asm("add                esp, 0x0c");                                     // 0x00406fbd    83c40c
     asm("cmp.s              edi, ebx");                                      // 0x00406fc0    3bfb

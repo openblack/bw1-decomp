@@ -49,7 +49,7 @@
 .extern _sscanf
 .extern _iswspace
 .extern __strnicmp
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007dee00
 .extern _jmp_addr_0x007df870
 .extern _jmp_addr_0x007dfe70
@@ -199,7 +199,7 @@ _jmp_addr_0x00426d40:    sub                esp, 0x000001bc                     
                          push               0x009caf7c                                           // 0x00426d6f    687caf9c00
                          push               0x000001ec                                           // 0x00426d74    68ec010000
                          {disp8} mov        dword ptr [ebp + 0x00], 0x008c48e0                   // 0x00426d79    c74500e0488c00
-                         call               ___nw__FUl                                           // 0x00426d80    e80b4a3b00
+                         call               ??2@YAPAXIPBDI@Z                                     // 0x00426d80    e80b4a3b00
                          add                esp, 0x0c                                            // 0x00426d85    83c40c
                          cmp.s              eax, esi                                             // 0x00426d88    3bc6
                          {disp8} je         .Lbl_addr_0x00426d96                                 // 0x00426d8a    740a

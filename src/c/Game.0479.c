@@ -270,7 +270,7 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("push               0x00bec32c");                                    // 0x0054b73d    682cc3be00
     asm("push               0xc");                                           // 0x0054b742    6a0c
     asm("{disp32} mov       dword ptr [esi + 0x0025006c], eax");             // 0x0054b744    89866c002500
-    asm("call               ___nw__FUl");                                    // 0x0054b74a    e841002900
+    asm("call               ??2@YAPAXIPBDI@Z");                              // 0x0054b74a    e841002900
     asm("mov.s              edi, eax");                                      // 0x0054b74f    8bf8
     asm("add                esp, 0x0c");                                     // 0x0054b751    83c40c
     asm("cmp.s              edi, ebx");                                      // 0x0054b754    3bfb
@@ -285,7 +285,7 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("push               0x00bec32c");                                    // 0x0054b768    682cc3be00
     asm("push               0x00000104");                                    // 0x0054b76d    6804010000
     asm("{disp32} mov       dword ptr [esi + 0x00250070], edi");             // 0x0054b772    89be70002500
-    asm("call               ___nw__FUl");                                    // 0x0054b778    e813002900
+    asm("call               ??2@YAPAXIPBDI@Z");                              // 0x0054b778    e813002900
     asm("mov.s              edi, eax");                                      // 0x0054b77d    8bf8
     asm("add                esp, 0x0c");                                     // 0x0054b77f    83c40c
     asm("cmp.s              edi, ebx");                                      // 0x0054b782    3bfb

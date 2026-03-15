@@ -94,7 +94,7 @@
 .extern _strtok
 .extern __chmod
 .extern __strdup
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x00842100
 .extern _jmp_addr_0x00842120
 .extern _jmp_addr_0x008423c0
@@ -2897,7 +2897,7 @@ _globl_ct_0x0066b560:    {disp32} jmp       .Lbl_addr_0x0066b570                
                          push               0x17                                          // 0x0066b581    6a17
                          push               0x00c01eec                                    // 0x0066b583    68ec1ec000
                          push               0x14                                          // 0x0066b588    6a14
-                         call               ___nw__FUl                                    // 0x0066b58a    e801021700
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0066b58a    e801021700
                          add                esp, 0x0c                                     // 0x0066b58f    83c40c
                          test               eax, eax                                      // 0x0066b592    85c0
                          {disp8} je         .Lbl_addr_0x0066b5a7                          // 0x0066b594    7411
