@@ -87,7 +87,7 @@
 .extern _sprintf
 .extern ??2@YAPAXI@Z
 .extern _atoi
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0083add0
 .extern _jmp_addr_0x0083e4f0
@@ -974,7 +974,7 @@ _jmp_addr_0x00424820:    push               esi                                 
                          push               0x75                                          // 0x004248dd    6a75
                          push               0x009c960c                                    // 0x004248df    680c969c00
                          push               0x00000084                                    // 0x004248e4    6884000000
-                         call               ___nw__FUl                                    // 0x004248e9    e8a26e3b00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004248e9    e8a26e3b00
                          mov.s              edi, eax                                      // 0x004248ee    8bf8
                          add                esp, 0x0c                                     // 0x004248f0    83c40c
                          test               edi, edi                                      // 0x004248f3    85ff
@@ -1076,7 +1076,7 @@ _jmp_addr_0x00424820:    push               esi                                 
                          push               0x00000093                                    // 0x004249f9    6893000000
                          push               0x009c960c                                    // 0x004249fe    680c969c00
                          push               0x00000084                                    // 0x00424a03    6884000000
-                         call               ___nw__FUl                                    // 0x00424a08    e8836d3b00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00424a08    e8836d3b00
                          mov.s              edi, eax                                      // 0x00424a0d    8bf8
                          add                esp, 0x0c                                     // 0x00424a0f    83c40c
                          test               edi, edi                                      // 0x00424a12    85ff
@@ -2163,7 +2163,7 @@ _jmp_addr_0x004252d0:    push               esi                                 
                          push               0x00000216                                    // 0x00425493    6816020000
                          push               0x009c960c                                    // 0x00425498    680c969c00
                          push               0x00000084                                    // 0x0042549d    6884000000
-                         call               ___nw__FUl                                    // 0x004254a2    e8e9623b00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004254a2    e8e9623b00
                          mov.s              edi, eax                                      // 0x004254a7    8bf8
                          add                esp, 0x0c                                     // 0x004254a9    83c40c
                          test               edi, edi                                      // 0x004254ac    85ff

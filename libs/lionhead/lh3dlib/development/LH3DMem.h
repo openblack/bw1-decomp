@@ -2,6 +2,7 @@
 #define BW1_DECOMP_LH3D_MEM_INCLUDED_H
 
 #include <stddef.h> /* For size_t */
+#include <stdint.h> /* For uint32_t */
 
 #ifdef __cplusplus
 
@@ -12,6 +13,9 @@ struct LH3DMem
     // win1.41 00842d60 mac 100c8720 LH3DMem::Free(void)
     static void Free(void* mem);
 };
+
+// win1.41 007c64ee mac inlined operator new(unsigned long, const char*, uint32_t)
+void* operator new(size_t size, const char* file, uint32_t line);
 
 #else // __cplusplus
 

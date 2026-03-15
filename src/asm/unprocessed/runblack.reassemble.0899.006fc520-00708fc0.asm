@@ -87,7 +87,7 @@
 .extern _atexit
 .extern _sprintf
 .extern ___RTDynamicCast
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern _jmp_addr_0x00825440
@@ -12934,7 +12934,7 @@ _globl_ct_0x00708c30:    {disp32} jmp       .Lbl_addr_0x00708c40                
                          push               0x00000099                                    // 0x00708f15    6899000000
                          push               0x00c20594                                    // 0x00708f1a    689405c200
                          push               0x2c                                          // 0x00708f1f    6a2c
-                         call               ___nw__FUl                                    // 0x00708f21    e86a280d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00708f21    e86a280d00
                          add                esp, 0x0c                                     // 0x00708f26    83c40c
                          test               eax, eax                                      // 0x00708f29    85c0
                          {disp8} je         .Lbl_addr_0x00708f70                          // 0x00708f2b    7443

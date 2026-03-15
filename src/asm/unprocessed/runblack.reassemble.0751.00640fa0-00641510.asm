@@ -20,7 +20,7 @@
 .extern _sprintf
 .extern _wcscpy
 .extern __sleep
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _Report3D__FPCce
 .extern _CHAR2WCHAR__FPc
 
@@ -96,7 +96,7 @@ start_0x00640fa0_0x00641510:
                          push             0x00000f5e                                    // 0x00641017    685e0f0000
                          push             0x00bfe2d8                                    // 0x0064101c    68d8e2bf00
                          push             0x4                                           // 0x00641021    6a04
-                         call             ___nw__FUl                                    // 0x00641023    e868a71900
+                         call             ??2@YAPAXIPBDI@Z                              // 0x00641023    e868a71900
                          add              esp, 0x0c                                     // 0x00641028    83c40c
                          push             0x4                                           // 0x0064102b    6a04
                          push             eax                                           // 0x0064102d    50
@@ -285,7 +285,7 @@ start_0x00640fa0_0x00641510:
                          push             0x00bfde78                                    // 0x00641287    6878debf00
                          push             0x0000100c                                    // 0x0064128c    680c100000
                          {disp32} mov     dword ptr [esi + 0x000000e0], eax             // 0x00641291    8986e0000000
-                         call             ___nw__FUl                                    // 0x00641297    e8f4a41900
+                         call             ??2@YAPAXIPBDI@Z                              // 0x00641297    e8f4a41900
                          add              esp, 0x20                                     // 0x0064129c    83c420
                          test             eax, eax                                      // 0x0064129f    85c0
                          {disp8} je       .Lbl_addr_0x006412af                          // 0x006412a1    740c
@@ -320,7 +320,7 @@ start_0x00640fa0_0x00641510:
                          push             0x00bfde78                                    // 0x00641302    6878debf00
                          push             0x0000100c                                    // 0x00641307    680c100000
                          {disp32} mov     dword ptr [esi + 0x000000e0], eax             // 0x0064130c    8986e0000000
-                         call             ___nw__FUl                                    // 0x00641312    e879a41900
+                         call             ??2@YAPAXIPBDI@Z                              // 0x00641312    e879a41900
                          add              esp, 0x1c                                     // 0x00641317    83c41c
                          test             eax, eax                                      // 0x0064131a    85c0
                          {disp8} je       .Lbl_addr_0x0064132c                          // 0x0064131c    740e

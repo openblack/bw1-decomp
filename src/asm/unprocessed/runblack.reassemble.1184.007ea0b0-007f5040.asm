@@ -26,7 +26,7 @@
 .extern _fseek
 .extern _realloc
 .extern __msize
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007deb20
 .extern _jmp_addr_0x007df060
 .extern _jmp_addr_0x007df430
@@ -7770,7 +7770,7 @@ _jmp_addr_0x007ef780:    mov.s            eax, ecx                              
                          push             0x00c34df0                               // 0x007ef7e6    68f04dc300
                          mov.s            esi, ecx                                 // 0x007ef7eb    8bf1
                          push             0xc                                      // 0x007ef7ed    6a0c
-                         call             ___nw__FUl                               // 0x007ef7ef    e89cbffeff
+                         call             ??2@YAPAXIPBDI@Z                         // 0x007ef7ef    e89cbffeff
                          {disp8} mov      ecx, dword ptr [esp + 0x18]              // 0x007ef7f4    8b4c2418
                          {disp8} mov      edx, dword ptr [esp + 0x14]              // 0x007ef7f8    8b542414
                          add              esp, 0x0c                                // 0x007ef7fc    83c40c
@@ -7824,7 +7824,7 @@ _jmp_addr_0x007ef780:    mov.s            eax, ecx                              
 .Lbl_addr_0x007ef870:    push             0x0000031a                               // 0x007ef870    681a030000
                          push             0x00c34df0                               // 0x007ef875    68f04dc300
                          push             0xc                                      // 0x007ef87a    6a0c
-                         call             ___nw__FUl                               // 0x007ef87c    e80fbffeff
+                         call             ??2@YAPAXIPBDI@Z                         // 0x007ef87c    e80fbffeff
                          mov.s            esi, eax                                 // 0x007ef881    8bf0
                          add              esp, 0x0c                                // 0x007ef883    83c40c
                          test             esi, esi                                 // 0x007ef886    85f6

@@ -92,7 +92,7 @@
 .extern ?Write@LHOSFile@@QAEIPBXIPAI@Z
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 
 .globl _jmp_addr_0x0055cb70
 .globl _jmp_addr_0x0055cb90
@@ -12755,7 +12755,7 @@ _jmp_addr_0x00561bf0:    push               esi                                 
 .Lbl_addr_0x00561ec2:    push               0x00000676                                     // 0x00561ec2    6876060000
                          push               0x00bec9e0                                     // 0x00561ec7    68e0c9be00
                          push               0x4                                            // 0x00561ecc    6a04
-                         call               ___nw__FUl                                     // 0x00561ece    e8bd982700
+                         call               ??2@YAPAXIPBDI@Z                               // 0x00561ece    e8bd982700
                          add                esp, 0x0c                                      // 0x00561ed3    83c40c
                          cmp.s              eax, edi                                       // 0x00561ed6    3bc7
                          {disp8} je         .Lbl_addr_0x00561ee4                           // 0x00561ed8    740a

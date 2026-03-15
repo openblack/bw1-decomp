@@ -51,7 +51,7 @@
 .extern __ftol
 .extern ___RTDynamicCast
 .extern _wcscpy
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007de090
 .extern _jmp_addr_0x007ded50
 .extern _jmp_addr_0x007dee00
@@ -393,7 +393,7 @@ _globl_ct_0x0054c6f0:    {disp32} jmp       .Lbl_addr_0x0054c700                
                          push               0x00000588                                    // 0x0054c705    6888050000
                          push               0x00bec32c                                    // 0x0054c70a    682cc3be00
                          push               0x000000cc                                    // 0x0054c70f    68cc000000
-                         call               ___nw__FUl                                    // 0x0054c714    e877f02800
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0054c714    e877f02800
                          mov.s              esi, eax                                      // 0x0054c719    8bf0
                          xor.s              ebx, ebx                                      // 0x0054c71b    33db
                          add                esp, 0x0c                                     // 0x0054c71d    83c40c

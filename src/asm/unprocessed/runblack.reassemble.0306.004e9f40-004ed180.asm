@@ -69,7 +69,7 @@
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _atexit
 .extern _sprintf
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007faaf0
 .extern _jmp_addr_0x007faff0
 .extern _jmp_addr_0x00839f10
@@ -1278,7 +1278,7 @@ _LoadBase__12LH3DCreatureFPc:
                          shl                ecx, 4                                        // 0x004eacc3    c1e104
                          push               0x00be0080                                    // 0x004eacc6    688000be00
                          push               ecx                                           // 0x004eaccb    51
-                         call               ___nw__FUl                                    // 0x004eaccc    e8bf0a2f00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004eaccc    e8bf0a2f00
                          {disp32} mov       dword ptr [esi + 0x00005174], eax             // 0x004eacd1    898674510000
                          {disp32} mov       eax, dword ptr [esi + 0x00005178]             // 0x004eacd7    8b8678510000
                          add                esp, 0x0c                                     // 0x004eacdd    83c40c
@@ -1293,7 +1293,7 @@ _LoadBase__12LH3DCreatureFPc:
                          shl                edx, 4                                        // 0x004eacf8    c1e204
                          push               0x00be0080                                    // 0x004eacfb    688000be00
                          push               edx                                           // 0x004ead00    52
-                         call               ___nw__FUl                                    // 0x004ead01    e88a0a2f00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004ead01    e88a0a2f00
                          {disp32} mov       dword ptr [esi + 0x00005178], eax             // 0x004ead06    898678510000
                          {disp32} mov       eax, dword ptr [esi + 0x0000517c]             // 0x004ead0c    8b867c510000
                          add                esp, 0x0c                                     // 0x004ead12    83c40c
@@ -1308,7 +1308,7 @@ _LoadBase__12LH3DCreatureFPc:
                          shl                eax, 4                                        // 0x004ead2d    c1e004
                          push               0x00be0080                                    // 0x004ead30    688000be00
                          push               eax                                           // 0x004ead35    50
-                         call               ___nw__FUl                                    // 0x004ead36    e8550a2f00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004ead36    e8550a2f00
                          {disp32} mov       dword ptr [esi + 0x0000517c], eax             // 0x004ead3b    89867c510000
                          {disp32} mov       eax, dword ptr [esi + 0x00005180]             // 0x004ead41    8b8680510000
                          add                esp, 0x0c                                     // 0x004ead47    83c40c
@@ -1323,7 +1323,7 @@ _LoadBase__12LH3DCreatureFPc:
                          shl                ecx, 4                                        // 0x004ead62    c1e104
                          push               0x00be0080                                    // 0x004ead65    688000be00
                          push               ecx                                           // 0x004ead6a    51
-                         call               ___nw__FUl                                    // 0x004ead6b    e8200a2f00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004ead6b    e8200a2f00
                          {disp32} mov       dword ptr [esi + 0x00005180], eax             // 0x004ead70    898680510000
                          {disp32} mov       eax, dword ptr [esi + 0x000051f0]             // 0x004ead76    8b86f0510000
                          add                esp, 0x0c                                     // 0x004ead7c    83c40c
@@ -1334,7 +1334,7 @@ _LoadBase__12LH3DCreatureFPc:
                          shl                edx, 2                                        // 0x004ead8b    c1e202
                          push               0x00be0080                                    // 0x004ead8e    688000be00
                          push               edx                                           // 0x004ead93    52
-                         call               ___nw__FUl                                    // 0x004ead94    e8f7092f00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004ead94    e8f7092f00
                          {disp32} mov       ecx, dword ptr [esi + 0x000047b8]             // 0x004ead99    8b8eb8470000
                          {disp32} mov       dword ptr [esi + 0x000051f0], eax             // 0x004ead9f    8986f0510000
                          add                esp, 0x0c                                     // 0x004eada5    83c40c
@@ -1939,7 +1939,7 @@ _jmp_addr_0x004eb430:    sub                esp, 0x000001a4                     
                          push               0x00000137                                    // 0x004eb530    6837010000
                          push               0x00be0080                                    // 0x004eb535    688000be00
                          push               0x00005468                                    // 0x004eb53a    6868540000
-                         call               ___nw__FUl                                    // 0x004eb53f    e84c022f00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004eb53f    e84c022f00
                          add                esp, 0x18                                     // 0x004eb544    83c418
                          test               eax, eax                                      // 0x004eb547    85c0
                          {disp8} mov        dword ptr [esp + 0x1c], eax                   // 0x004eb549    8944241c
@@ -1995,7 +1995,7 @@ _jmp_addr_0x004eb430:    sub                esp, 0x000001a4                     
                          push               0x00000142                                    // 0x004eb5e2    6842010000
                          push               0x00be0080                                    // 0x004eb5e7    688000be00
                          push               0x00005468                                    // 0x004eb5ec    6868540000
-                         call               ___nw__FUl                                    // 0x004eb5f1    e89a012f00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x004eb5f1    e89a012f00
                          add                esp, 0x18                                     // 0x004eb5f6    83c418
                          test               eax, eax                                      // 0x004eb5f9    85c0
                          {disp8} mov        dword ptr [esp + 0x10], eax                   // 0x004eb5fb    89442410

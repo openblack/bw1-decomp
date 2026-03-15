@@ -17,7 +17,7 @@
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern ___RTDynamicCast
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x008421f0
 .extern _jmp_addr_0x0085e490
 .extern _jmp_addr_0x0085e650
@@ -143,7 +143,7 @@ _jmp_addr_0x0051e500:    sub              esp, 0x6c                             
                          push             0x000002de                                           // 0x0051e56f    68de020000
                          push             0x00be8f80                                           // 0x0051e574    68808fbe00
                          push             0x38                                                 // 0x0051e579    6a38
-                         call             ___nw__FUl                                           // 0x0051e57b    e810d22b00
+                         call             ??2@YAPAXIPBDI@Z                                     // 0x0051e57b    e810d22b00
                          add              esp, 0x0c                                            // 0x0051e580    83c40c
                          cmp.s            eax, ebp                                             // 0x0051e583    3bc5
                          {disp8} je       .Lbl_addr_0x0051e599                                 // 0x0051e585    7412
@@ -226,7 +226,7 @@ _jmp_addr_0x0051e500:    sub              esp, 0x6c                             
                          push             0x000002fa                                           // 0x0051e669    68fa020000
                          push             0x00be8f80                                           // 0x0051e66e    68808fbe00
                          push             0x38                                                 // 0x0051e673    6a38
-                         call             ___nw__FUl                                           // 0x0051e675    e816d12b00
+                         call             ??2@YAPAXIPBDI@Z                                     // 0x0051e675    e816d12b00
                          add              esp, 0x0c                                            // 0x0051e67a    83c40c
                          cmp.s            eax, ebp                                             // 0x0051e67d    3bc5
                          {disp8} je       .Lbl_addr_0x0051e694                                 // 0x0051e67f    7413

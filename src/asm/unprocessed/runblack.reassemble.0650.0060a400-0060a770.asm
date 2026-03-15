@@ -15,7 +15,7 @@
 .extern ?Spiral@GUtils@@SAPBUJustMapXZ@@AAJ0@Z
 .extern __ftol
 .extern  ??3@YAXPAX@Z
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern @__dt__Q210NewCollide3ObjFv@4
 
 .globl _jmp_addr_0x0060a400
@@ -209,7 +209,7 @@ _jmp_addr_0x0060a5e0:    push              esi                                  
                          push              0x00bf42a4                             // 0x0060a5e6    68a442bf00
                          push              0x14                                   // 0x0060a5eb    6a14
                          mov.s             esi, ecx                               // 0x0060a5ed    8bf1
-                         call              ___nw__FUl                             // 0x0060a5ef    e89c111d00
+                         call              ??2@YAPAXIPBDI@Z                       // 0x0060a5ef    e89c111d00
                          xor.s             ecx, ecx                               // 0x0060a5f4    33c9
                          add               esp, 0x0c                              // 0x0060a5f6    83c40c
                          cmp.s             eax, ecx                               // 0x0060a5f9    3bc1

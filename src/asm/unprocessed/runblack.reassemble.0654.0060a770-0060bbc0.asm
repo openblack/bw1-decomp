@@ -46,7 +46,7 @@
 .extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern ___RTDynamicCast
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 
 .globl @SetObjectPtr__13CircleHugInfoFPQ210NewCollide3ObjP13MobileWallHugb@17
 .globl _jmp_addr_0x0060a9f0
@@ -103,7 +103,7 @@ start_0x0060a770_0x0060bbc0:
 .Lbl_addr_0x0060a7cf:    push               0x000001a6                              // 0x0060a7cf    68a6010000
                          push               0x00bf42a4                              // 0x0060a7d4    68a442bf00
                          push               0x14                                    // 0x0060a7d9    6a14
-                         call               ___nw__FUl                              // 0x0060a7db    e8b00f1d00
+                         call               ??2@YAPAXIPBDI@Z                        // 0x0060a7db    e8b00f1d00
                          add                esp, 0x0c                               // 0x0060a7e0    83c40c
                          cmp.s              eax, ebp                                // 0x0060a7e3    3bc5
                          {disp8} je         .Lbl_addr_0x0060a804                    // 0x0060a7e5    741d

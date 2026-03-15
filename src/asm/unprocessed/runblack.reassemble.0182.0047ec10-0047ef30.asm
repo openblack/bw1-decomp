@@ -5,7 +5,7 @@
 .extern _jmp_addr_0x004dce20
 .extern ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z
 .extern ?GameRand@GRand@@SAHJ@Z
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 
 .globl _jmp_addr_0x0047ec10
 
@@ -90,7 +90,7 @@ _jmp_addr_0x0047ec10:    sub                esp, 0x18                          /
                          push               0x0000177d                         // 0x0047ed0d    687d170000
                          push               0x009cf9e0                         // 0x0047ed12    68e0f99c00
                          push               0x8                                // 0x0047ed17    6a08
-                         call               ___nw__FUl                         // 0x0047ed19    e872ca3500
+                         call               ??2@YAPAXIPBDI@Z                   // 0x0047ed19    e872ca3500
                          add                esp, 0x0c                          // 0x0047ed1e    83c40c
                          test               eax, eax                           // 0x0047ed21    85c0
                          {disp32} je        .Lbl_addr_0x0047ee3f               // 0x0047ed23    0f8416010000
@@ -100,7 +100,7 @@ _jmp_addr_0x0047ec10:    sub                esp, 0x18                          /
                          push               0x00001781                         // 0x0047ed3b    6881170000
                          push               0x009cf9e0                         // 0x0047ed40    68e0f99c00
                          push               0x8                                // 0x0047ed45    6a08
-                         call               ___nw__FUl                         // 0x0047ed47    e844ca3500
+                         call               ??2@YAPAXIPBDI@Z                   // 0x0047ed47    e844ca3500
                          add                esp, 0x0c                          // 0x0047ed4c    83c40c
                          test               eax, eax                           // 0x0047ed4f    85c0
                          {disp32} je        .Lbl_addr_0x0047ee3f               // 0x0047ed51    0f84e8000000
@@ -110,7 +110,7 @@ _jmp_addr_0x0047ec10:    sub                esp, 0x18                          /
                          push               0x00001786                         // 0x0047ed69    6886170000
                          push               0x009cf9e0                         // 0x0047ed6e    68e0f99c00
                          push               0x8                                // 0x0047ed73    6a08
-                         call               ___nw__FUl                         // 0x0047ed75    e816ca3500
+                         call               ??2@YAPAXIPBDI@Z                   // 0x0047ed75    e816ca3500
                          add                esp, 0x0c                          // 0x0047ed7a    83c40c
                          test               eax, eax                           // 0x0047ed7d    85c0
                          {disp32} je        .Lbl_addr_0x0047ee3f               // 0x0047ed7f    0f84ba000000
@@ -134,7 +134,7 @@ _jmp_addr_0x0047ec10:    sub                esp, 0x18                          /
                          push               0x00001791                         // 0x0047edca    6891170000
                          push               0x009cf9e0                         // 0x0047edcf    68e0f99c00
                          push               0x8                                // 0x0047edd4    6a08
-                         call               ___nw__FUl                         // 0x0047edd6    e8b5c93500
+                         call               ??2@YAPAXIPBDI@Z                   // 0x0047edd6    e8b5c93500
                          add                esp, 0x0c                          // 0x0047eddb    83c40c
                          test               eax, eax                           // 0x0047edde    85c0
                          {disp8} je         .Lbl_addr_0x0047ee3f               // 0x0047ede0    745d
@@ -144,7 +144,7 @@ _jmp_addr_0x0047ec10:    sub                esp, 0x18                          /
 .Lbl_addr_0x0047edf1:    push               0x00001796                         // 0x0047edf1    6896170000
                          push               0x009cf9e0                         // 0x0047edf6    68e0f99c00
                          push               0x8                                // 0x0047edfb    6a08
-                         call               ___nw__FUl                         // 0x0047edfd    e88ec93500
+                         call               ??2@YAPAXIPBDI@Z                   // 0x0047edfd    e88ec93500
                          add                esp, 0x0c                          // 0x0047ee02    83c40c
                          test               eax, eax                           // 0x0047ee05    85c0
                          {disp8} je         .Lbl_addr_0x0047ee3f               // 0x0047ee07    7436
@@ -154,7 +154,7 @@ _jmp_addr_0x0047ec10:    sub                esp, 0x18                          /
 .Lbl_addr_0x0047ee18:    push               0x0000179d                         // 0x0047ee18    689d170000
                          push               0x009cf9e0                         // 0x0047ee1d    68e0f99c00
                          push               0x8                                // 0x0047ee22    6a08
-                         call               ___nw__FUl                         // 0x0047ee24    e867c93500
+                         call               ??2@YAPAXIPBDI@Z                   // 0x0047ee24    e867c93500
                          add                esp, 0x0c                          // 0x0047ee29    83c40c
                          test               eax, eax                           // 0x0047ee2c    85c0
                          {disp8} je         .Lbl_addr_0x0047ee3f               // 0x0047ee2e    740f

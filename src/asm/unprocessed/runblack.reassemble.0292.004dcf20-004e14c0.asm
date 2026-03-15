@@ -64,7 +64,7 @@
 .extern _atexit
 .extern _sprintf
 .extern ??2@YAPAXI@Z
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 
 .globl _jmp_addr_0x004dcf20
@@ -1588,7 +1588,7 @@ _jmp_addr_0x004de270:    sub                esp, 0x08                           
                          push               0x75                                            // 0x004de2df    6a75
                          push               0x00bdf5d8                                      // 0x004de2e1    68d8f5bd00
                          push               0x10                                            // 0x004de2e6    6a10
-                         call               ___nw__FUl                                      // 0x004de2e8    e8a3d42f00
+                         call               ??2@YAPAXIPBDI@Z                                // 0x004de2e8    e8a3d42f00
                          add                esp, 0x0c                                       // 0x004de2ed    83c40c
                          test               eax, eax                                        // 0x004de2f0    85c0
                          {disp8} je         .Lbl_addr_0x004de30d                            // 0x004de2f2    7419
@@ -4293,7 +4293,7 @@ _jmp_addr_0x004dfc80:    sub                esp, 0x24                           
 .Lbl_addr_0x004dfce8:    push               0x000001b7                                      // 0x004dfce8    68b7010000
                          push               0x00bdf8d8                                      // 0x004dfced    68d8f8bd00
                          push               edi                                             // 0x004dfcf2    57
-                         call               ___nw__FUl                                      // 0x004dfcf3    e898ba2f00
+                         call               ??2@YAPAXIPBDI@Z                                // 0x004dfcf3    e898ba2f00
                          {disp8} mov        dword ptr [esi + 0x10], eax                     // 0x004dfcf8    894610
                          add                esp, 0x0c                                       // 0x004dfcfb    83c40c
                          xor.s              eax, eax                                        // 0x004dfcfe    33c0

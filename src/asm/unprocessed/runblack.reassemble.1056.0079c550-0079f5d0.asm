@@ -75,7 +75,7 @@
 .extern _wcsstr
 .extern __wtoi
 .extern _wcsncat
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Release__8LH3DMeshFv@4
@@ -211,7 +211,7 @@ _jmp_addr_0x0079c650:    sub                esp, 0x00000804                     
                          {disp8} lea        eax, dword ptr [eax + eax * 0x1 + 0x02]       // 0x0079c671    8d440002
                          add                esp, 0x04                                     // 0x0079c675    83c404
                          push               eax                                           // 0x0079c678    50
-                         call               ___nw__FUl                                    // 0x0079c679    e812f10300
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0079c679    e812f10300
                          push               edi                                           // 0x0079c67e    57
                          mov.s              esi, eax                                      // 0x0079c67f    8bf0
                          call               _wcslen                                       // 0x0079c681    e8dc9d0200
@@ -1350,7 +1350,7 @@ _jmp_addr_0x0079d1c0:    push               ebx                                 
                          push               0x00c2a67c                                    // 0x0079d38c    687ca6c200
                          push               0x0000c628                                    // 0x0079d391    6828c60000
                          {disp32} mov       dword ptr [esi + 0x00000158], ecx             // 0x0079d396    898e58010000
-                         call               ___nw__FUl                                    // 0x0079d39c    e8efe30300
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0079d39c    e8efe30300
                          add                esp, 0x0c                                     // 0x0079d3a1    83c40c
                          mov.s              ecx, eax                                      // 0x0079d3a4    8bc8
                          {disp32} mov       dword ptr [esi + 0x00000154], eax             // 0x0079d3a6    898654010000
@@ -1462,7 +1462,7 @@ _jmp_addr_0x0079d1c0:    push               ebx                                 
 .Lbl_addr_0x0079d55b:    push               0x00000096                                    // 0x0079d55b    6896000000
                          push               0x00c2a67c                                    // 0x0079d560    687ca6c200
                          push               0x000004e4                                    // 0x0079d565    68e4040000
-                         call               ___nw__FUl                                    // 0x0079d56a    e821e20300
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0079d56a    e821e20300
                          mov.s              edi, eax                                      // 0x0079d56f    8bf8
                          add                esp, 0x0c                                     // 0x0079d571    83c40c
                          test               edi, edi                                      // 0x0079d574    85ff

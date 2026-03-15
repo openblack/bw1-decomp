@@ -77,7 +77,7 @@
 .extern _fprintf
 .extern _vsprintf
 .extern _LHRand__FlRU
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007dd9c0
 .extern _jmp_addr_0x007dda90
 .extern _jmp_addr_0x007e41b0
@@ -3221,7 +3221,7 @@ _globl_ct_0x005107d0:    {disp32} jmp       .Lbl_addr_0x005107e0                
                          push               0x25                                          // 0x005107fc    6a25
                          push               0x00be8a08                                    // 0x005107fe    68088abe00
                          push               0x44                                          // 0x00510803    6a44
-                         call               ___nw__FUl                                    // 0x00510805    e886af2c00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00510805    e886af2c00
                          add                esp, 0x0c                                     // 0x0051080a    83c40c
                          test               eax, eax                                      // 0x0051080d    85c0
                          {disp8} je         .Lbl_addr_0x00510821                          // 0x0051080f    7410

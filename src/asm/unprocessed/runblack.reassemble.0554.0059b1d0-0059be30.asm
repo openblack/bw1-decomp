@@ -37,7 +37,7 @@
 .extern _malloc
 .extern _free
 .extern __chkstk
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _CHAR2WCHAR__FPc
 .extern _jmp_addr_0x008850d0
 .extern _jmp_addr_0x008855f0
@@ -670,7 +670,7 @@ _jmp_addr_0x0059b680:    mov              eax, 0x00001848                       
 .Lbl_addr_0x0059b8a0:    push             0x000000ad                                    // 0x0059b8a0    68ad000000
                          push             0x00beffa4                                    // 0x0059b8a5    68a4ffbe00
                          push             0x0000032c                                    // 0x0059b8aa    682c030000
-                         call             ___nw__FUl                                    // 0x0059b8af    e8dcfe2300
+                         call             ??2@YAPAXIPBDI@Z                              // 0x0059b8af    e8dcfe2300
                          add              esp, 0x0c                                     // 0x0059b8b4    83c40c
                          test             eax, eax                                      // 0x0059b8b7    85c0
                          {disp8} je       .Lbl_addr_0x0059b8c8                          // 0x0059b8b9    740d
@@ -707,7 +707,7 @@ _jmp_addr_0x0059b680:    mov              eax, 0x00001848                       
 .Lbl_addr_0x0059b914:    push             0x000000ad                                    // 0x0059b914    68ad000000
                          push             0x00beffa4                                    // 0x0059b919    68a4ffbe00
                          push             0x0000032c                                    // 0x0059b91e    682c030000
-                         call             ___nw__FUl                                    // 0x0059b923    e868fe2300
+                         call             ??2@YAPAXIPBDI@Z                              // 0x0059b923    e868fe2300
                          add              esp, 0x0c                                     // 0x0059b928    83c40c
                          test             eax, eax                                      // 0x0059b92b    85c0
                          {disp8} je       .Lbl_addr_0x0059b93c                          // 0x0059b92d    740d

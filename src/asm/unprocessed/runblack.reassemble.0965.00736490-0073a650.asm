@@ -129,7 +129,7 @@
 .extern ??2@YAPAXI@Z
 .extern __chkstk
 .extern _qsort
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
@@ -4795,7 +4795,7 @@ _jmp_addr_0x00738ff0:    push               ebx                                 
                          not                ecx                                            // 0x007395af    f7d1
                          push               0x00c22be0                                     // 0x007395b1    68e02bc200
                          push               ecx                                            // 0x007395b6    51
-                         call               ___nw__FUl                                     // 0x007395b7    e8d4210a00
+                         call               ??2@YAPAXIPBDI@Z                               // 0x007395b7    e8d4210a00
                          or                 ecx, 0xffffffff                                // 0x007395bc    83c9ff
                          mov.s              edx, eax                                       // 0x007395bf    8bd0
                          mov.s              edi, esi                                       // 0x007395c1    8bfe

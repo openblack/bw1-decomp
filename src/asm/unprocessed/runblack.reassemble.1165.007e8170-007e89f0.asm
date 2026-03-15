@@ -7,7 +7,7 @@
 .extern ?Close@LHOSFile@@QAEIXZ
 .extern _jmp_addr_0x007bcad0
 .extern _jmp_addr_0x007bd0c0
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern @SetFullscreenMode__8LHScreenFi@12
 .extern _jmp_addr_0x007ddc40
 .extern _jmp_addr_0x007ded40
@@ -363,7 +363,7 @@ _jmp_addr_0x007e8240:    {disp32} mov      eax, fs:[0x0]                        
 .Lbl_addr_0x007e857c:    push              0x00000138                               // 0x007e857c    6838010000
                          push              0x00c34da4                               // 0x007e8581    68a44dc300
                          push              0x8                                      // 0x007e8586    6a08
-                         call              ___nw__FUl                               // 0x007e8588    e80332ffff
+                         call              ??2@YAPAXIPBDI@Z                         // 0x007e8588    e80332ffff
                          mov.s             esi, eax                                 // 0x007e858d    8bf0
                          {disp32} mov      eax, dword ptr [edi + 0x00006004]        // 0x007e858f    8b8704600000
                          mov.s             ecx, eax                                 // 0x007e8595    8bc8
@@ -445,7 +445,7 @@ _jmp_addr_0x007e8240:    {disp32} mov      eax, fs:[0x0]                        
 .Lbl_addr_0x007e867a:    push              0x0000014d                               // 0x007e867a    684d010000
                          push              0x00c34da4                               // 0x007e867f    68a44dc300
                          push              0xc                                      // 0x007e8684    6a0c
-                         call              ___nw__FUl                               // 0x007e8686    e80531ffff
+                         call              ??2@YAPAXIPBDI@Z                         // 0x007e8686    e80531ffff
                          add               esp, 0x0c                                // 0x007e868b    83c40c
                          {disp8} mov       dword ptr [esp + 0x20], eax              // 0x007e868e    89442420
                          test              eax, eax                                 // 0x007e8692    85c0
@@ -505,7 +505,7 @@ _jmp_addr_0x007e8240:    {disp32} mov      eax, fs:[0x0]                        
 .Lbl_addr_0x007e8747:    push              0x00000163                               // 0x007e8747    6863010000
                          push              0x00c34da4                               // 0x007e874c    68a44dc300
                          push              0xc                                      // 0x007e8751    6a0c
-                         call              ___nw__FUl                               // 0x007e8753    e83830ffff
+                         call              ??2@YAPAXIPBDI@Z                         // 0x007e8753    e83830ffff
                          add               esp, 0x0c                                // 0x007e8758    83c40c
                          {disp8} mov       dword ptr [esp + 0x20], eax              // 0x007e875b    89442420
                          test              eax, eax                                 // 0x007e875f    85c0

@@ -37,7 +37,7 @@
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern _sprintf
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007e6450
 .extern _jmp_addr_0x007e64a0
 .extern _jmp_addr_0x00801c90
@@ -412,7 +412,7 @@ _LoadBinary_5CHandFPci:
                          push               0x00000473                                    // 0x0046d392    6873040000
                          push               0x009ced1c                                    // 0x0046d397    681ced9c00
                          push               0x00005468                                    // 0x0046d39c    6868540000
-                         call               ___nw__FUl                                    // 0x0046d3a1    e8eae33600
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0046d3a1    e8eae33600
                          mov.s              ebp, eax                                      // 0x0046d3a6    8be8
                          add                esp, 0x18                                     // 0x0046d3a8    83c418
                          test               ebp, ebp                                      // 0x0046d3ab    85ed
@@ -468,7 +468,7 @@ _LoadBinary_5CHandFPci:
                          push               0x0000047e                                    // 0x0046d447    687e040000
                          push               0x009ced1c                                    // 0x0046d44c    681ced9c00
                          push               0x00005468                                    // 0x0046d451    6868540000
-                         call               ___nw__FUl                                    // 0x0046d456    e835e33600
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0046d456    e835e33600
                          mov.s              ebp, eax                                      // 0x0046d45b    8be8
                          add                esp, 0x18                                     // 0x0046d45d    83c418
                          test               ebp, ebp                                      // 0x0046d460    85ed
@@ -595,7 +595,7 @@ _LoadBinary_5CHandFPci:
                          shl                eax, 4                                        // 0x0046d5b0    c1e004
                          push               0x009ced1c                                    // 0x0046d5b3    681ced9c00
                          push               eax                                           // 0x0046d5b8    50
-                         call               ___nw__FUl                                    // 0x0046d5b9    e8d2e13600
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0046d5b9    e8d2e13600
                          add                esp, 0x0c                                     // 0x0046d5be    83c40c
                          mov.s              ecx, esi                                      // 0x0046d5c1    8bce
                          {disp32} mov       dword ptr [esi + 0x000049ac], eax             // 0x0046d5c3    8986ac490000

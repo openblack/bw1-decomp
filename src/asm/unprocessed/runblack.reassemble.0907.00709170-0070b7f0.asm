@@ -65,7 +65,7 @@
 .extern ?Write@LHOSFile@@QAEIPBXIPAI@Z
 .extern _atexit
 .extern ___RTDynamicCast
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0080b440
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
@@ -183,7 +183,7 @@ start_0x00709170_0x0070b7f0:
                          push               0x00c20594                                    // 0x0070921e    689405c200
                          push               0x00000828                                    // 0x00709223    6828080000
                          {disp8} mov        dword ptr [esp + 0x24], eax                   // 0x00709228    89442424
-                         call               ___nw__FUl                                    // 0x0070922c    e85f250d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0070922c    e85f250d00
                          xor.s              ecx, ecx                                      // 0x00709231    33c9
                          add                esp, 0x0c                                     // 0x00709233    83c40c
                          cmp.s              eax, ecx                                      // 0x00709236    3bc1
@@ -280,7 +280,7 @@ start_0x00709170_0x0070b7f0:
                          push               0x00000136                                    // 0x0070933d    6836010000
                          push               0x00c20594                                    // 0x00709342    689405c200
                          push               0x00000828                                    // 0x00709347    6828080000
-                         call               ___nw__FUl                                    // 0x0070934c    e83f240d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0070934c    e83f240d00
                          xor.s              ecx, ecx                                      // 0x00709351    33c9
                          add                esp, 0x18                                     // 0x00709353    83c418
                          cmp.s              eax, ecx                                      // 0x00709356    3bc1

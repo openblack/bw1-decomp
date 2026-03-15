@@ -167,7 +167,7 @@
 .extern _sprintf
 .extern ___RTDynamicCast
 .extern _wcscmp
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007dee00
 .extern _Release__10LH3DIslandFv@0
 .extern _jmp_addr_0x0081e590
@@ -1560,7 +1560,7 @@ _jmp_addr_0x005539a0:    xor.s              eax, eax                            
                          push               0x00bec32c                                    // 0x005539ce    682cc3be00
                          push               0x40                                          // 0x005539d3    6a40
                          {disp32} mov       dword ptr [esi + 0x00205a28], 0x00000002      // 0x005539d5    c786285a200002000000
-                         call               ___nw__FUl                                    // 0x005539df    e8ac7d2800
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005539df    e8ac7d2800
                          add                esp, 0x0c                                     // 0x005539e4    83c40c
                          test               eax, eax                                      // 0x005539e7    85c0
                          {disp8} je         .Lbl_addr_0x00553a00                          // 0x005539e9    7415
@@ -1777,7 +1777,7 @@ _jmp_addr_0x00553a70:    push               ebx                                 
 .Lbl_addr_0x00553d8b:    push               0x00001b6b                                    // 0x00553d8b    686b1b0000
                          push               0x00bec32c                                    // 0x00553d90    682cc3be00
                          push               0x00000300                                    // 0x00553d95    6800030000
-                         call               ___nw__FUl                                    // 0x00553d9a    e8f1792800
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00553d9a    e8f1792800
                          add                esp, 0x0c                                     // 0x00553d9f    83c40c
                          cmp.s              eax, ebx                                      // 0x00553da2    3bc3
                          {disp8} je         .Lbl_addr_0x00553de6                          // 0x00553da4    7440
@@ -2441,7 +2441,7 @@ _jmp_addr_0x00553e10:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          push               0x00001c4e                                    // 0x005546af    684e1c0000
                          push               0x00bec32c                                    // 0x005546b4    682cc3be00
                          push               0x0001100c                                    // 0x005546b9    680c100100
-                         call               ___nw__FUl                                    // 0x005546be    e8cd702800
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005546be    e8cd702800
                          mov.s              edi, eax                                      // 0x005546c3    8bf8
                          add                esp, 0x0c                                     // 0x005546c5    83c40c
                          mov.s              ecx, edi                                      // 0x005546c8    8bcf
@@ -3021,7 +3021,7 @@ _jmp_addr_0x00553e10:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          push               0x00001d00                                    // 0x00554ea0    68001d0000
                          push               0x00bec32c                                    // 0x00554ea5    682cc3be00
                          push               0x0001100c                                    // 0x00554eaa    680c100100
-                         call               ___nw__FUl                                    // 0x00554eaf    e8dc682800
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00554eaf    e8dc682800
                          mov.s              ebx, eax                                      // 0x00554eb4    8bd8
                          add                esp, 0x0c                                     // 0x00554eb6    83c40c
                          mov.s              ecx, ebx                                      // 0x00554eb9    8bcb

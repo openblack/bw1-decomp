@@ -4,7 +4,7 @@
 .extern  ??3@YAXPAX@Z
 .extern @Read__8LHOSFileFPvUlPUl@20
 .extern _strncpy
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007e6fc0
 .extern _jmp_addr_0x007e6fe0
 .extern _jmp_addr_0x007e7180
@@ -424,7 +424,7 @@ _jmp_addr_0x007e7bf0:    sub              esp, 0x000007e4                       
                          {disp8} lea      eax, dword ptr [eax + eax * 0x1 + 0x02]   // 0x007e7d07    8d440002
                          push             0x00c34da4                                // 0x007e7d0b    68a44dc300
                          push             eax                                       // 0x007e7d10    50
-                         call             ___nw__FUl                                // 0x007e7d11    e87a3affff
+                         call             ??2@YAPAXIPBDI@Z                          // 0x007e7d11    e87a3affff
                          add              esp, 0x10                                 // 0x007e7d16    83c410
                          {disp8} mov      dword ptr [esi + 0x08], eax               // 0x007e7d19    894608
                          test             eax, eax                                  // 0x007e7d1c    85c0

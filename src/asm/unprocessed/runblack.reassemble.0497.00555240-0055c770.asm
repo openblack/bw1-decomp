@@ -309,7 +309,7 @@
 .extern _wcsncpy
 .extern ??2@YAPAXI@Z
 .extern __CIfmod
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007de090
 .extern _jmp_addr_0x00826c50
 .extern _jmp_addr_0x00826fa0
@@ -686,7 +686,7 @@ _jmp_addr_0x00555400:    {disp32} mov       dword ptr [ecx + 0x00250180], 0x0000
                          push               0x00001e70                                    // 0x0055554e    68701e0000
                          push               0x00bec32c                                    // 0x00555553    682cc3be00
                          push               0x54                                          // 0x00555558    6a54
-                         call               ___nw__FUl                                    // 0x0055555a    e831622800
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0055555a    e831622800
                          xor.s              ebx, ebx                                      // 0x0055555f    33db
                          add                esp, 0x0c                                     // 0x00555561    83c40c
                          cmp.s              eax, ebx                                      // 0x00555564    3bc3
@@ -5071,7 +5071,7 @@ _jmp_addr_0x00558160:    sub                esp, 0x0000074c                     
                          push               0x00000154                                    // 0x0055828f    6854010000
                          push               0x00bec9e0                                    // 0x00558294    68e0c9be00
                          push               0x4                                           // 0x00558299    6a04
-                         call               ___nw__FUl                                    // 0x0055829b    e8f0342800
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0055829b    e8f0342800
                          add                esp, 0x0c                                     // 0x005582a0    83c40c
                          cmp.s              eax, ebx                                      // 0x005582a3    3bc3
                          {disp8} je         .Lbl_addr_0x005582e3                          // 0x005582a5    743c
@@ -5498,7 +5498,7 @@ _jmp_addr_0x00558160:    sub                esp, 0x0000074c                     
                          push               0x000001b8                                    // 0x005587c2    68b8010000
                          push               0x00bec9e0                                    // 0x005587c7    68e0c9be00
                          push               0x00004800                                    // 0x005587cc    6800480000
-                         call               ___nw__FUl                                    // 0x005587d1    e8ba2f2800
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005587d1    e8ba2f2800
                          mov                ebp, 0x00000001                               // 0x005587d6    bd01000000
                          add                esp, 0x10                                     // 0x005587db    83c410
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                   // 0x005587de    8d4c242c
@@ -9360,7 +9360,7 @@ _jmp_addr_0x00558db0:    ret                                                    
 .Lbl_addr_0x0055c2d0:    push               0x000005c0                                    // 0x0055c2d0    68c0050000
                          push               0x00bec9e0                                    // 0x0055c2d5    68e0c9be00
                          push               0x4                                           // 0x0055c2da    6a04
-                         call               ___nw__FUl                                    // 0x0055c2dc    e8aff42700
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0055c2dc    e8aff42700
                          add                esp, 0x0c                                     // 0x0055c2e1    83c40c
                          cmp.s              eax, ebx                                      // 0x0055c2e4    3bc3
                          pop                edi                                           // 0x0055c2e6    5f

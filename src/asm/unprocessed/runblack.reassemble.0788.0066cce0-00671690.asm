@@ -91,7 +91,7 @@
 .extern _wcscpy
 .extern _wcslen
 .extern ??2@YAPAXI@Z
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern ?ProjectPoint@LH3DTech@@SAIPAULHPoint@@PAH1PAM@Z
@@ -4644,7 +4644,7 @@ _jmp_addr_0x0066f730:    push               esi                                 
                          push               0x14                                          // 0x0066f731    6a14
                          push               0x00c02064                                    // 0x0066f733    686420c000
                          push               0x000009cc                                    // 0x0066f738    68cc090000
-                         call               ___nw__FUl                                    // 0x0066f73d    e84ec01600
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0066f73d    e84ec01600
                          add                esp, 0x0c                                     // 0x0066f742    83c40c
                          test               eax, eax                                      // 0x0066f745    85c0
                          {disp8} je         .Lbl_addr_0x0066f754                          // 0x0066f747    740b

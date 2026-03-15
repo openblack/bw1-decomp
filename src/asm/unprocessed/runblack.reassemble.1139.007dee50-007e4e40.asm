@@ -14,7 +14,7 @@
 .extern _fprintf
 .extern __chkstk
 .extern _rand
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007eab90
 .extern _jmp_addr_0x007eac00
 .extern _jmp_addr_0x007eadb0
@@ -2211,7 +2211,7 @@ _globl_ct_0x007e0440:    call               .Lbl_addr_0x007e0450                
                          not                ecx                                           // 0x007e059b    f7d1
                          push               0x00c34004                                    // 0x007e059d    680440c300
                          push               ecx                                           // 0x007e05a2    51
-                         call               ___nw__FUl                                    // 0x007e05a3    e8e8b1ffff
+                         call               ??2@YAPAXIPBDI@Z                              // 0x007e05a3    e8e8b1ffff
                          mov.s              edx, eax                                      // 0x007e05a8    8bd0
                          mov.s              edi, esi                                      // 0x007e05aa    8bfe
                          or                 ecx, 0xffffffff                               // 0x007e05ac    83c9ff
@@ -2273,7 +2273,7 @@ _jmp_addr_0x007e0620:    sub                esp, 0x14                           
                          push               0x00c34004                                    // 0x007e0628    680440c300
                          mov.s              ebp, ecx                                      // 0x007e062d    8be9
                          push               0x0000012c                                    // 0x007e062f    682c010000
-                         call               ___nw__FUl                                    // 0x007e0634    e857b1ffff
+                         call               ??2@YAPAXIPBDI@Z                              // 0x007e0634    e857b1ffff
                          mov.s              edx, eax                                      // 0x007e0639    8bd0
                          xor.s              ebx, ebx                                      // 0x007e063b    33db
                          add                esp, 0x0c                                     // 0x007e063d    83c40c
@@ -3346,7 +3346,7 @@ _jmp_addr_0x007e10a0:    push               esi                                 
                          push               0x3e                                          // 0x007e10fb    6a3e
                          push               0x00c3409c                                    // 0x007e10fd    689c40c300
                          push               edi                                           // 0x007e1102    57
-                         call               ___nw__FUl                                    // 0x007e1103    e888a6ffff
+                         call               ??2@YAPAXIPBDI@Z                              // 0x007e1103    e888a6ffff
                          mov.s              esi, eax                                      // 0x007e1108    8bf0
                          add                esp, 0x0c                                     // 0x007e110a    83c40c
                          test               esi, esi                                      // 0x007e110d    85f6
@@ -3354,7 +3354,7 @@ _jmp_addr_0x007e10a0:    push               esi                                 
                          push               0x42                                          // 0x007e1111    6a42
                          push               0x00c3409c                                    // 0x007e1113    689c40c300
                          push               0x2c                                          // 0x007e1118    6a2c
-                         call               ___nw__FUl                                    // 0x007e111a    e871a6ffff
+                         call               ??2@YAPAXIPBDI@Z                              // 0x007e111a    e871a6ffff
                          add                esp, 0x0c                                     // 0x007e111f    83c40c
                          {disp8} mov        dword ptr [esp + 0x18], eax                   // 0x007e1122    89442418
                          test               eax, eax                                      // 0x007e1126    85c0
@@ -4163,7 +4163,7 @@ _jmp_addr_0x007e17a0:    {disp32} mov       eax, fs:[0x0]                       
                          push               0x000001b5                                    // 0x007e17bb    68b5010000
                          push               0x00c3409c                                    // 0x007e17c0    689c40c300
                          push               edi                                           // 0x007e17c5    57
-                         call               ___nw__FUl                                    // 0x007e17c6    e8c59fffff
+                         call               ??2@YAPAXIPBDI@Z                              // 0x007e17c6    e8c59fffff
                          mov.s              esi, eax                                      // 0x007e17cb    8bf0
                          add                esp, 0x0c                                     // 0x007e17cd    83c40c
                          test               esi, esi                                      // 0x007e17d0    85f6
@@ -4171,7 +4171,7 @@ _jmp_addr_0x007e17a0:    {disp32} mov       eax, fs:[0x0]                       
                          push               0x000001b9                                    // 0x007e17d4    68b9010000
                          push               0x00c3409c                                    // 0x007e17d9    689c40c300
                          push               0x000000c0                                    // 0x007e17de    68c0000000
-                         call               ___nw__FUl                                    // 0x007e17e3    e8a89fffff
+                         call               ??2@YAPAXIPBDI@Z                              // 0x007e17e3    e8a89fffff
                          add                esp, 0x0c                                     // 0x007e17e8    83c40c
                          {disp8} mov        dword ptr [esp + 0x18], eax                   // 0x007e17eb    89442418
                          test               eax, eax                                      // 0x007e17ef    85c0

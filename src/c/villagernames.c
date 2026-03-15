@@ -45,7 +45,7 @@ struct VillagerName* __cdecl Alloc__17VillagerNameBlockFv(void)
     asm("push               0x16");                                          // 0x0076273a    6a16
     asm("push               0x00c24534");                                    // 0x0076273c    683445c200
     asm("push               0x14");                                          // 0x00762741    6a14
-    asm("call               ___nw__FUl");                                    // 0x00762743    e848900700
+    asm("call               ??2@YAPAXIPBDI@Z");                              // 0x00762743    e848900700
     asm("add                esp, 0x0c");                                     // 0x00762748    83c40c
     asm("test               eax, eax");                                      // 0x0076274b    85c0
     asm("{disp8} je         LAB__addr_0x0076275a");                          // 0x0076274d    740b
@@ -152,7 +152,7 @@ struct VillagerNameBlock* __fastcall __ct__17VillagerNameBlockFv(struct Villager
     asm("{disp8} mov        dword ptr [esi + 0x04], 0x00000040");            // 0x0076282f    c7460440000000
     asm("{disp8} mov        dword ptr [esi + 0x08], 0x00000000");            // 0x00762836    c7460800000000
     asm("{disp8} mov        dword ptr [esi + 0x0c], 0x00000000");            // 0x0076283d    c7460c00000000
-    asm("call               ___nw__FUl");                                    // 0x00762844    e8478f0700
+    asm("call               ??2@YAPAXIPBDI@Z");                              // 0x00762844    e8478f0700
     asm("add                esp, 0x0c");                                     // 0x00762849    83c40c
     asm("test               eax, eax");                                      // 0x0076284c    85c0
     asm("{disp8} je         LAB__addr_0x00762882");                          // 0x0076284e    7432

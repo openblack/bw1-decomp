@@ -123,7 +123,7 @@
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
 .extern _ceil
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007fd140
 .extern _jmp_addr_0x00800da0
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
@@ -6234,7 +6234,7 @@ _jmp_addr_0x005feda0:    mov                eax, dword ptr [edx]                
                          push               0x00befd9c                                    // 0x005ff150    689cfdbe00
                          push               0x3c                                          // 0x005ff155    6a3c
                          {disp8} mov        dword ptr [edi + 0x04], 0x00000005            // 0x005ff157    c7470405000000
-                         call               ___nw__FUl                                    // 0x005ff15e    e82dc61d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005ff15e    e82dc61d00
                          add                esp, 0x0c                                     // 0x005ff163    83c40c
                          test               eax, eax                                      // 0x005ff166    85c0
                          mov                dword ptr [edi], eax                          // 0x005ff168    8907
@@ -6713,7 +6713,7 @@ _jmp_addr_0x005ff330:    {disp32} mov       ecx, dword ptr [data_bytes + 0x37222
                          push               0x000001ac                                    // 0x005ff709    68ac010000
                          push               0x00befd9c                                    // 0x005ff70e    689cfdbe00
                          push               eax                                           // 0x005ff713    50
-                         call               ___nw__FUl                                    // 0x005ff714    e877c01d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005ff714    e877c01d00
                          add                esp, 0x0c                                     // 0x005ff719    83c40c
                          {disp32} mov       dword ptr [esi + 0x000000bc], eax             // 0x005ff71c    8986bc000000
 .Lbl_addr_0x005ff722:    {disp32} mov       ecx, dword ptr [esi + 0x000000bc]             // 0x005ff722    8b8ebc000000
@@ -7741,7 +7741,7 @@ _jmp_addr_0x005fffd0:    {disp32} mov       dword ptr [ecx + 0x000000e4], 0x0000
                          push               0x000001ac                                    // 0x006003bc    68ac010000
                          push               0x00befd9c                                    // 0x006003c1    689cfdbe00
                          push               ebx                                           // 0x006003c6    53
-                         call               ___nw__FUl                                    // 0x006003c7    e8c4b31d00
+                         call               ??2@YAPAXIPBDI@Z                              // 0x006003c7    e8c4b31d00
                          add                esp, 0x0c                                     // 0x006003cc    83c40c
                          {disp32} mov       dword ptr [edi + 0x000000bc], eax             // 0x006003cf    8987bc000000
 .Lbl_addr_0x006003d5:    cmp                dword ptr [edi + 0x000000bc], ebp             // 0x006003d5    39afbc000000

@@ -187,7 +187,7 @@
 .extern _wcsncpy
 .extern ??2@YAPAXI@Z
 .extern __strcmpi
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007f7960
 .extern _jmp_addr_0x007fab30
 .extern _jmp_addr_0x007fb5c0
@@ -5944,7 +5944,7 @@ _jmp_addr_0x0064a7a0:    sub                esp, 0x0c                           
                          push               0x000003a8                                     // 0x0064a7e5    68a8030000
                          push               0x00bff158                                     // 0x0064a7ea    6858f1bf00
                          push               0x00000300                                     // 0x0064a7ef    6800030000
-                         call               ___nw__FUl                                     // 0x0064a7f4    e8970f1900
+                         call               ??2@YAPAXIPBDI@Z                               // 0x0064a7f4    e8970f1900
                          mov.s              esi, eax                                       // 0x0064a7f9    8bf0
                          add                esp, 0x0c                                      // 0x0064a7fb    83c40c
                          test               esi, esi                                       // 0x0064a7fe    85f6
@@ -6790,7 +6790,7 @@ _jmp_addr_0x0064afb0:    sub                esp, 0x00000810                     
                          push               0x0000100c                                     // 0x0064b0d5    680c100000
                          mov.s              ebp, eax                                       // 0x0064b0da    8be8
                          {disp32} mov       dword ptr [edi + 0x000000e0], ecx              // 0x0064b0dc    898fe0000000
-                         call               ___nw__FUl                                     // 0x0064b0e2    e8a9061900
+                         call               ??2@YAPAXIPBDI@Z                               // 0x0064b0e2    e8a9061900
                          mov.s              esi, eax                                       // 0x0064b0e7    8bf0
                          add                esp, 0x1c                                      // 0x0064b0e9    83c41c
                          test               esi, esi                                       // 0x0064b0ec    85f6
@@ -6933,7 +6933,7 @@ _jmp_addr_0x0064b290:    sub                esp, 0x00000a04                     
                          push               0x00bfde78                                     // 0x0064b2d1    6878debf00
                          push               0x0000100c                                     // 0x0064b2d6    680c100000
                          {disp32} mov       dword ptr [esi + 0x000000e0], eax              // 0x0064b2db    8986e0000000
-                         call               ___nw__FUl                                     // 0x0064b2e1    e8aa041900
+                         call               ??2@YAPAXIPBDI@Z                               // 0x0064b2e1    e8aa041900
                          add                esp, 0x1c                                      // 0x0064b2e6    83c41c
                          test               eax, eax                                       // 0x0064b2e9    85c0
                          {disp8} je         .Lbl_addr_0x0064b2f9                           // 0x0064b2eb    740c
@@ -7038,7 +7038,7 @@ _jmp_addr_0x0064b290:    sub                esp, 0x00000a04                     
                          push               0x2b                                           // 0x0064b43d    6a2b
                          push               0x00bf07e8                                     // 0x0064b43f    68e807bf00
                          push               0x00000148                                     // 0x0064b444    6848010000
-                         call               ___nw__FUl                                     // 0x0064b449    e842031900
+                         call               ??2@YAPAXIPBDI@Z                               // 0x0064b449    e842031900
                          mov.s              edi, eax                                       // 0x0064b44e    8bf8
                          add                esp, 0x0c                                      // 0x0064b450    83c40c
                          test               edi, edi                                       // 0x0064b453    85ff

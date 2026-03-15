@@ -72,7 +72,7 @@
 .extern _sprintf
 .extern _wcscpy
 .extern __strcmpi
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?Create@LH3DSmoke@@SAPAV1@PBULHPoint@@@Z
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
@@ -301,7 +301,7 @@ _InitEngine__12CreatureRoomFv:
                          push               0x00c27630                                    // 0x00787b91    683076c200
                          push               0x000057b8                                    // 0x00787b96    68b8570000
                          {disp8} mov        dword ptr [ecx + 0x08], edx                   // 0x00787b9b    895108
-                         call               ___nw__FUl                                    // 0x00787b9e    e8ed3b0500
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00787b9e    e8ed3b0500
                          mov.s              ebx, eax                                      // 0x00787ba3    8bd8
                          add                esp, 0x0c                                     // 0x00787ba5    83c40c
                          test               ebx, ebx                                      // 0x00787ba8    85db
@@ -840,7 +840,7 @@ _InitEngine__12CreatureRoomFv:
 .Lbl_addr_0x007883ab:    push               0x0000041e                                    // 0x007883ab    681e040000
                          push               0x00c27630                                    // 0x007883b0    683076c200
                          push               0x000004c4                                    // 0x007883b5    68c4040000
-                         call               ___nw__FUl                                    // 0x007883ba    e8d1330500
+                         call               ??2@YAPAXIPBDI@Z                              // 0x007883ba    e8d1330500
                          mov.s              edi, eax                                      // 0x007883bf    8bf8
                          add                esp, 0x0c                                     // 0x007883c1    83c40c
                          test               edi, edi                                      // 0x007883c4    85ff
@@ -2530,7 +2530,7 @@ _jmp_addr_0x00789a70:    sub                esp, 0x0000020c                     
                          push               0x0000072d                                    // 0x00789a78    682d070000
                          push               0x00c27630                                    // 0x00789a7d    683076c200
                          push               0x00057e40                                    // 0x00789a82    68407e0500
-                         call               ___nw__FUl                                    // 0x00789a87    e8041d0500
+                         call               ??2@YAPAXIPBDI@Z                              // 0x00789a87    e8041d0500
                          {disp32} mov       dword ptr [data_bytes + 0x41afc4], eax        // 0x00789a8c    a3c40fde00
                          xor.s              ebx, ebx                                      // 0x00789a91    33db
                          {disp32} mov       dword ptr [esp + 0x0000021c], eax             // 0x00789a93    8984241c020000

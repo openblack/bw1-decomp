@@ -88,7 +88,7 @@
 .extern _atexit
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x00829260
 .extern _jmp_addr_0x008292d0
@@ -1854,7 +1854,7 @@ _jmp_addr_0x0077e400:    sub                esp, 0x08                           
 .Lbl_addr_0x0077e5f1:    push               0x00000956                                    // 0x0077e5f1    6856090000
                          push               0x00c24d10                                    // 0x0077e5f6    68104dc200
                          push               0x4                                           // 0x0077e5fb    6a04
-                         call               ___nw__FUl                                    // 0x0077e5fd    e88ed10500
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0077e5fd    e88ed10500
                          add                esp, 0x0c                                     // 0x0077e602    83c40c
                          test               eax, eax                                      // 0x0077e605    85c0
                          {disp8} je         .Lbl_addr_0x0077e616                          // 0x0077e607    740d
@@ -1877,7 +1877,7 @@ _jmp_addr_0x0077e400:    sub                esp, 0x08                           
 .Lbl_addr_0x0077e634:    push               0x0000095a                                    // 0x0077e634    685a090000
                          push               0x00c24d10                                    // 0x0077e639    68104dc200
                          push               0xc                                           // 0x0077e63e    6a0c
-                         call               ___nw__FUl                                    // 0x0077e640    e84bd10500
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0077e640    e84bd10500
                          add                esp, 0x0c                                     // 0x0077e645    83c40c
                          test               eax, eax                                      // 0x0077e648    85c0
                          {disp8} je         .Lbl_addr_0x0077e657                          // 0x0077e64a    740b
@@ -1937,7 +1937,7 @@ _jmp_addr_0x0077e400:    sub                esp, 0x08                           
                          faddp              st(1), st                                     // 0x0077e6fe    dec1
                          {disp8} fadd       dword ptr [esp + 0x5c]                        // 0x0077e700    d844245c
                          {disp8} fstp       dword ptr [esp + 0x2c]                        // 0x0077e704    d95c242c
-                         call               ___nw__FUl                                    // 0x0077e708    e883d00500
+                         call               ??2@YAPAXIPBDI@Z                              // 0x0077e708    e883d00500
                          add                esp, 0x0c                                     // 0x0077e70d    83c40c
                          test               eax, eax                                      // 0x0077e710    85c0
                          {disp8} je         .Lbl_addr_0x0077e731                          // 0x0077e712    741d

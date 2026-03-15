@@ -211,7 +211,7 @@
 .extern _wcsncpy
 .extern ??2@YAPAXI@Z
 .extern _strncpy
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0081f1a0
 .extern _jmp_addr_0x0081f1d0
@@ -5148,7 +5148,7 @@ _jmp_addr_0x0071ef70:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               0x32                                                 // 0x0071efa1    6a32
                          push               0x00c2254c                                           // 0x0071efa3    684c25c200
                          push               0x000000b0                                           // 0x0071efa8    68b0000000
-                         call               ___nw__FUl                                           // 0x0071efad    e8dec70b00
+                         call               ??2@YAPAXIPBDI@Z                                     // 0x0071efad    e8dec70b00
                          add                esp, 0x0c                                            // 0x0071efb2    83c40c
                          cmp.s              eax, ebx                                             // 0x0071efb5    3bc3
                          {disp8} je         .Lbl_addr_0x0071efeb                                 // 0x0071efb7    7432

@@ -36,7 +36,7 @@
 .extern _LHLoadData__FPcPvUlPUl
 .extern _atexit
 .extern _sprintf
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007fae60
 .extern _jmp_addr_0x007faff0
 .extern _jmp_addr_0x00801c90
@@ -390,7 +390,7 @@ _jmp_addr_0x005dff20:    sub                esp, 0x00000084                     
 .Lbl_addr_0x005dff88:    push               0x000004af                                     // 0x005dff88    68af040000
                          push               0x00bf3248                                     // 0x005dff8d    684832bf00
                          push               0x68                                           // 0x005dff92    6a68
-                         call               ___nw__FUl                                     // 0x005dff94    e8f7b71f00
+                         call               ??2@YAPAXIPBDI@Z                               // 0x005dff94    e8f7b71f00
                          add                esp, 0x0c                                      // 0x005dff99    83c40c
                          test               eax, eax                                       // 0x005dff9c    85c0
                          {disp32} je        .Lbl_addr_0x005e03e7                           // 0x005dff9e    0f8443040000

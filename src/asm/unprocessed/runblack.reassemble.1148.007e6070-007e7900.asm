@@ -33,7 +33,7 @@
 .extern _strrchr
 .extern __itoa
 .extern _strpbrk
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007ded80
 .extern _jmp_addr_0x007e7900
 .extern _jmp_addr_0x007e7960
@@ -2570,7 +2570,7 @@ _jmp_addr_0x007e7530:    mov              dword ptr [ecx], 0xffffffff           
                          inc              eax                                           // 0x007e7656    40
                          push             0x00c34da4                                    // 0x007e7657    68a44dc300
                          push             eax                                           // 0x007e765c    50
-                         call             ___nw__FUl                                    // 0x007e765d    e82e41ffff
+                         call             ??2@YAPAXIPBDI@Z                              // 0x007e765d    e82e41ffff
                          add              esp, 0x10                                     // 0x007e7662    83c410
                          {disp8} mov      dword ptr [esi + 0x08], eax                   // 0x007e7665    894608
                          test             eax, eax                                      // 0x007e7668    85c0

@@ -51,7 +51,7 @@
 .extern _wcslen
 .extern _swprintf
 .extern _wcscmp
-.extern ___nw__FUl
+.extern ??2@YAPAXIPBDI@Z
 .extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x00824b10
 .extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
@@ -3385,7 +3385,7 @@ _jmp_addr_0x005cad00:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          lea                edx, dword ptr [eax + eax * 0x1]              // 0x005cad1e    8d1400
                          push               0x00bf1a2c                                    // 0x005cad21    682c1abf00
                          push               edx                                           // 0x005cad26    52
-                         call               ___nw__FUl                                    // 0x005cad27    e8640a2100
+                         call               ??2@YAPAXIPBDI@Z                              // 0x005cad27    e8640a2100
                          push               edi                                           // 0x005cad2c    57
                          push               eax                                           // 0x005cad2d    50
                          {disp8} mov        dword ptr [esi + 0x08], eax                   // 0x005cad2e    894608
