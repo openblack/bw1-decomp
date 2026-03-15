@@ -163,26 +163,30 @@ bool32_t Abode::Save(GameOSFile& file)
         GameOSFileWriteCheckSum(file, field_0x7c);
         GameOSFileWriteCheckSum(file, drinking_water);
         GameOSFileWriteCheckSum(file, field_0x94);
-
         file.WritePtr(town);
-
         if (DAT_00bec990)
         {
+            int count = villagers.count;
             file.WriteIt(villagers.count);
-
-            uint32_t i = 0;
-            for (Villager* villager = villagers.head; villager != NULL; villager = villager->next)
+            Villager* villager = NULL;
+            int i = 0;
+            while (true)
             {
-                ++i;
-                if (i > villagers.count)
+                if (villager == NULL)
+                    villager = villagers.head;
+                else
+                    villager = villager->next;
+                if (villager == NULL)
+                    break;
+                if (++i > count)
                 {
                     DAT_00bec990 = false;
                     break;
                 }
+                if (!DAT_00bec990) break;
                 file.WritePtr(villager);
             }
         }
-
         GameOSFileWriteCheckSum(file, adult_count);
         GameOSFileWriteCheckSum(file, field_0xb6);
         GameOSFileWriteCheckSum(file, field_0xb7);
@@ -190,7 +194,7 @@ bool32_t Abode::Save(GameOSFile& file)
         file.WriteArray(resources, 2);
         bool32_t hasDestructionMesh = (destruction_mesh != NULL);
         GameOSFileWriteCheckSum(file, hasDestructionMesh);
-        if (destruction_mesh != NULL)
+        if (hasDestructionMesh)
         {
             destruction_mesh->WriteToFile(file);
         }
