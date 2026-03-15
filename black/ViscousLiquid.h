@@ -53,7 +53,7 @@ struct FragMesh
     // Constructors
 
     // win1.41 0076d520 mac 1015e3a0 FragMesh::FragMesh(GameOSFile &, LH3DMesh *)
-    FragMesh(GameOSFile* file, LH3DMesh* mesh);
+    FragMesh(GameOSFile& file, LH3DMesh* mesh);
 
     // Non-virtual methods
 

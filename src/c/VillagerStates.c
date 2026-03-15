@@ -1728,7 +1728,7 @@ bool __fastcall Dead__8VillagerFv(struct Living* this)
     asm("{disp32} mov       al, byte ptr [_villager_states_byte_0x00db9e58]"); // 0x0076a5f9    a058b1dc00
     asm("test               al, 0x01");                                        // 0x0076a5fe    a801
     asm("{disp8} jne        LAB__addr_0x0076a626");                            // 0x0076a600    7524
-    asm("{disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]");          // 0x0076a602    8b0d34fee900
+    asm("{disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]");          // 0x0076a602    8b0d34fee900
     asm("or                 al, 1");                                           // 0x0076a608    0c01
     asm("{disp32} mov       byte ptr [_villager_states_byte_0x00db9e58], al"); // 0x0076a60a    a258b1dc00
     asm("mov                edx, dword ptr [ecx]");                            // 0x0076a60f    8b11

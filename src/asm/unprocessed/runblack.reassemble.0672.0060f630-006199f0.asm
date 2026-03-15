@@ -35,7 +35,7 @@
 .extern  ??3@YAXPAX@Z
 .extern ??0_Lockit@std@@QAE@XZ
 .extern ??1_Lockit@std@@QAE@XZ
-.extern @Read__8LHOSFileFPvUlPUl@20
+.extern ?Read@LHOSFile@@QAEIPAXIPAI@Z
 .extern ?Write@LHOSFile@@QAEIPBXIPAI@Z
 .extern _LHFileLength__FPcPUl
 .extern _LHLoadData__FPcPvUlPUl
@@ -10822,7 +10822,7 @@ _jmp_addr_0x006167a0:    {disp32} mov       eax, dword ptr [data_bytes + 0x22699
                          push               0x0                                            // 0x006167b1    6a00
                          push               0xc                                            // 0x006167b3    6a0c
                          push               edi                                            // 0x006167b5    57
-                         call               @Read__8LHOSFileFPvUlPUl@20                    // 0x006167b6    e825611a00
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                    // 0x006167b6    e825611a00
                          cmp                eax, 0x03                                      // 0x006167bb    83f803
                          {disp8} jne        .Lbl_addr_0x006167ca                           // 0x006167be    750a
                          {disp32} mov       dword ptr [data_bytes + 0x226994], 0x00000000  // 0x006167c0    c70594c9be0000000000

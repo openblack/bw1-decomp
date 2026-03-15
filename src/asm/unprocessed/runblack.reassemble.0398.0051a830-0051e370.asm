@@ -2920,7 +2920,7 @@ _jmp_addr_0x0051c8e0:    sub                esp, 0x18                           
                          mov.s              ecx, edi                                             // 0x0051ca95    8bcf
                          call               dword ptr [eax + 0x608]                              // 0x0051ca97    ff9008060000
                          cmp.s              eax, ebx                                             // 0x0051ca9d    3bc3
-                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]               // 0x0051ca9f    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]               // 0x0051ca9f    8b1534fee900
                          {disp8} jl         .Lbl_addr_0x0051caab                                 // 0x0051caa5    7c04
                          cmp                eax, dword ptr [edx]                                 // 0x0051caa7    3b02
                          {disp8} jl         .Lbl_addr_0x0051caad                                 // 0x0051caa9    7c02

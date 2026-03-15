@@ -3,6 +3,7 @@
 #include "stdbool.h"
 #include <stdint.h>
 
+#include <lionhead/lh3dlib/development/LH3DMem.h>
 #include <lionhead/lh3dlib/development/LH3DMesh.h>
 #include <lionhead/lhaudio/ver7.0/LH_SamplePlayOptions.h>
 
@@ -206,6 +207,47 @@ bool32_t Abode::Save(GameOSFile& file)
 // win1.41 00406d20 mac 101a2920 Abode::Load(GameOSFile &)
 bool32_t Abode::Load(GameOSFile& file)
 {
+    if (MultiMapFixed::Load(file))
+    {
+        GameOSFileReadCheckSum(file, field_0x7c);
+        GameOSFileReadCheckSum(file, drinking_water);
+        GameOSFileReadCheckSum(file, field_0x94);
+        file.ReadPtr((GameThing**)&town);
+        if (DAT_00bec994)
+        {
+            int32_t count;
+            file.ReadIt(count);
+            for (; count > 0; --count)
+            {
+                Villager* villager;
+                file.ReadPtr((GameThing**)&villager);
+                villager->next = NULL;
+                villagers.AddToLast(villager);
+            }
+        }
+        male_female_villagers[0] = NULL;
+        male_female_villagers[1] = NULL;
+        GameOSFileReadCheckSum(file, adult_count);
+        GameOSFileReadCheckSum(file, field_0xb6);
+        GameOSFileReadCheckSum(file, field_0xb7);
+        GameOSFileReadCheckSum(file, index);
+        if (DAT_00bec994)
+        {
+            uint32_t arrayCount;
+            file.ReadIt(arrayCount);
+            for (uint32_t i = 0; i < arrayCount; ++i)
+            {
+                file.ReadIt(resources[i]);
+            }
+        }
+        uint32_t fragMeshData;
+        GameOSFileReadCheckSum(file, fragMeshData);
+        if (fragMeshData)
+        {
+            destruction_mesh = new("C:\\dev\\MP\\Black\\Abode.cpp", 2210) FragMesh(file, LH3DMesh::g_current_pack->GetMesh(info->GetMesh()));
+        }
+        return true;
+    }
     return false;
 }
 

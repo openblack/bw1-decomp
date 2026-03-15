@@ -15,6 +15,8 @@ struct LHListHead {
       , count(0)
     {
     }
+
+    void AddToLast(T* element);
 };
 
 #else // __cplusplus

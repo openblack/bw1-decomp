@@ -19,7 +19,7 @@
 .extern ??_DLHOSFile@@QAEXXZ
 .extern @Open__16LHReleasedOSFileFPc12LH_FILE_MODE@16
 .extern ?Close@LHOSFile@@QAEIXZ
-.extern @Read__8LHOSFileFPvUlPUl@20
+.extern ?Read@LHOSFile@@QAEIPAXIPAI@Z
 .extern _jmp_addr_0x007bdfc0
 .extern @GetSegmentData__6LHFileFPvUll@20
 .extern ??2@YAPAXI@Z
@@ -3385,13 +3385,13 @@ _jmp_addr_0x00844a20:    push               ebp                                 
                          push               0x4                                            // 0x00844b92    6a04
                          push               edi                                            // 0x00844b94    57
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x00844b95    8d4c2420
-                         call               @Read__8LHOSFileFPvUlPUl@20                    // 0x00844b99    e8427df7ff
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                    // 0x00844b99    e8427df7ff
                          push               0x0                                            // 0x00844b9e    6a00
                          push               0x4                                            // 0x00844ba0    6a04
                          {disp8} lea        ebx, dword ptr [edi + 0x04]                    // 0x00844ba2    8d5f04
                          push               ebx                                            // 0x00844ba5    53
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x00844ba6    8d4c2420
-                         call               @Read__8LHOSFileFPvUlPUl@20                    // 0x00844baa    e8317df7ff
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                    // 0x00844baa    e8317df7ff
                          mov                ecx, dword ptr [edi]                           // 0x00844baf    8b0f
                          imul               ecx, dword ptr [ebx]                           // 0x00844bb1    0faf0b
                          push               ecx                                            // 0x00844bb4    51
@@ -3406,12 +3406,12 @@ _jmp_addr_0x00844a20:    push               ebp                                 
                          {disp32} lea       edx, dword ptr [esi + -0x0000017c]             // 0x00844bd7    8d9684feffff
                          push               edx                                            // 0x00844bdd    52
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x00844bde    8d4c2420
-                         call               @Read__8LHOSFileFPvUlPUl@20                    // 0x00844be2    e8f97cf7ff
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                    // 0x00844be2    e8f97cf7ff
                          push               0x0                                            // 0x00844be7    6a00
                          push               0x4                                            // 0x00844be9    6a04
                          push               esi                                            // 0x00844beb    56
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x00844bec    8d4c2420
-                         call               @Read__8LHOSFileFPvUlPUl@20                    // 0x00844bf0    e8eb7cf7ff
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                    // 0x00844bf0    e8eb7cf7ff
                          {disp32} mov       dword ptr [esi + 0x00000180], ebp              // 0x00844bf5    89ae80010000
                          mov                eax, dword ptr [esi]                           // 0x00844bfb    8b06
                          imul               eax, dword ptr [ebx]                           // 0x00844bfd    0faf03
@@ -3428,7 +3428,7 @@ _jmp_addr_0x00844a20:    push               ebp                                 
                          push               ecx                                            // 0x00844c1d    51
                          push               edx                                            // 0x00844c1e    52
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x00844c1f    8d4c2420
-                         call               @Read__8LHOSFileFPvUlPUl@20                    // 0x00844c23    e8b87cf7ff
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                    // 0x00844c23    e8b87cf7ff
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x00844c28    8d4c2414
                          call               ?Close@LHOSFile@@QAEIXZ                        // 0x00844c2c    e82f7cf7ff
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x00844c31    8d4c2414

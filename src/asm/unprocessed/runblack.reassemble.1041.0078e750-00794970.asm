@@ -68,7 +68,7 @@
 .extern ?Exists@LHOSFile@@SAIPAD@Z
 .extern @Open__16LHReleasedOSFileFPc12LH_FILE_MODE@16
 .extern ?Close@LHOSFile@@QAEIXZ
-.extern @Read__8LHOSFileFPvUlPUl@20
+.extern ?Read@LHOSFile@@QAEIPAXIPAI@Z
 .extern ?Write@LHOSFile@@QAEIPBXIPAI@Z
 .extern _jmp_addr_0x007bcb10
 .extern _jmp_addr_0x007bcba0
@@ -6212,7 +6212,7 @@ _CreateSaveGameFiles__12SaveGameRoomFPc@0:    {disp32} mov       eax, dword ptr 
                          {disp8} lea        eax, dword ptr [esp + 0x10]                   // 0x00792ad3    8d442410
                          push               eax                                           // 0x00792ad7    50
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x00792ad8    8d4c2418
-                         call               @Read__8LHOSFileFPvUlPUl@20                   // 0x00792adc    e8ff9d0200
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                   // 0x00792adc    e8ff9d0200
                          {disp8} mov        ecx, dword ptr [esp + 0x08]                   // 0x00792ae1    8b4c2408
                          {disp32} mov       esi, dword ptr [esp + 0x00000324]             // 0x00792ae5    8bb42424030000
                          {disp8} lea        edx, dword ptr [esp + 0x04]                   // 0x00792aec    8d542404
@@ -6222,7 +6222,7 @@ _CreateSaveGameFiles__12SaveGameRoomFPc@0:    {disp32} mov       eax, dword ptr 
                          {disp32} mov       dword ptr [esi + 0x00000100], ecx             // 0x00792afd    898e00010000
                          push               eax                                           // 0x00792b03    50
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x00792b04    8d4c2418
-                         call               @Read__8LHOSFileFPvUlPUl@20                   // 0x00792b08    e8d39d0200
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                   // 0x00792b08    e8d39d0200
                          {disp32} lea       ecx, dword ptr [esp + 0x00000118]             // 0x00792b0d    8d8c2418010000
                          push               ecx                                           // 0x00792b14    51
                          {disp32} lea       edx, dword ptr [esi + 0x00000104]             // 0x00792b15    8d9604010000
@@ -6235,7 +6235,7 @@ _CreateSaveGameFiles__12SaveGameRoomFPc@0:    {disp32} mov       eax, dword ptr 
                          {disp32} lea       ecx, dword ptr [esp + 0x000002a4]             // 0x00792b2e    8d8c24a4020000
                          push               ecx                                           // 0x00792b35    51
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x00792b36    8d4c2418
-                         call               @Read__8LHOSFileFPvUlPUl@20                   // 0x00792b3a    e8a19d0200
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                   // 0x00792b3a    e8a19d0200
                          {disp32} lea       edx, dword ptr [esp + 0x0000029c]             // 0x00792b3f    8d94249c020000
                          push               edx                                           // 0x00792b46    52
                          push               esi                                           // 0x00792b47    56

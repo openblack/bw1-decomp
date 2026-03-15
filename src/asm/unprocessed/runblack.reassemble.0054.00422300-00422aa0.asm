@@ -52,7 +52,7 @@ start_0x00422300_0x00422aa0:
                          mov.s             ecx, esi                                      // 0x00422312    8bce
                          call              dword ptr [edx + 0x608]                       // 0x00422314    ff9208060000
                          test              eax, eax                                      // 0x0042231a    85c0
-                         {disp32} mov      edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x0042231c    8b1534fee900
+                         {disp32} mov      edx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]        // 0x0042231c    8b1534fee900
                          {disp8} jl        .Lbl_addr_0x00422328                          // 0x00422322    7c04
                          cmp               eax, dword ptr [edx]                          // 0x00422324    3b02
                          {disp8} jl        .Lbl_addr_0x0042232a                          // 0x00422326    7c02
@@ -196,7 +196,7 @@ start_0x00422300_0x00422aa0:
                          {disp8} fstp      dword ptr [esp + 0x20]                        // 0x004224f8    d95c2420
                          call              ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z                          // 0x004224fc    e8af862100
                          {disp32} mov      dword ptr [esi + edi * 0x4 + 0x00000080], eax // 0x00422501    8984be80000000
-                         {disp32} mov      edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00422508    8b1534fee900
+                         {disp32} mov      edx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]        // 0x00422508    8b1534fee900
                          mov               ebx, dword ptr [edx]                          // 0x0042250e    8b1a
                          mov               ecx, 0x0000018e                               // 0x00422510    b98e010000
                          add               esp, 0x04                                     // 0x00422515    83c404

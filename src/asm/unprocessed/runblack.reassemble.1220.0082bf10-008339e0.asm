@@ -13,7 +13,7 @@
 .extern @Open__16LHReleasedOSFileFPc12LH_FILE_MODE@16
 .extern ?Close@LHOSFile@@QAEIXZ
 .extern @Seek__8LHOSFileFl12LH_SEEK_MODEPUl@20
-.extern @Read__8LHOSFileFPvUlPUl@20
+.extern ?Read@LHOSFile@@QAEIPAXIPAI@Z
 .extern _atexit
 .extern _sprintf
 .extern _memmove
@@ -5943,19 +5943,19 @@ _CHAR2WCHAR__FPc:        {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               0x4                                            // 0x008304ad    6a04
                          push               ebp                                            // 0x008304af    55
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x008304b0    8d4c2420
-                         call               @Read__8LHOSFileFPvUlPUl@20                    // 0x008304b4    e827c4f8ff
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                    // 0x008304b4    e827c4f8ff
                          push               ebx                                            // 0x008304b9    53
                          push               0x00000100                                     // 0x008304ba    6800010000
                          {disp8} lea        edx, dword ptr [ebp + 0x04]                    // 0x008304bf    8d5504
                          push               edx                                            // 0x008304c2    52
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x008304c3    8d4c2420
-                         call               @Read__8LHOSFileFPvUlPUl@20                    // 0x008304c7    e814c4f8ff
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                    // 0x008304c7    e814c4f8ff
                          push               ebx                                            // 0x008304cc    53
                          push               0x4                                            // 0x008304cd    6a04
                          {disp32} lea       esi, dword ptr [ebp + 0x00000104]              // 0x008304cf    8db504010000
                          push               esi                                            // 0x008304d5    56
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x008304d6    8d4c2420
-                         call               @Read__8LHOSFileFPvUlPUl@20                    // 0x008304da    e801c4f8ff
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                    // 0x008304da    e801c4f8ff
                          mov                eax, dword ptr [esi]                           // 0x008304df    8b06
                          {disp32} lea       ecx, dword ptr [eax * 0x8 + 0x00000000]        // 0x008304e1    8d0cc500000000
                          sub.s              ecx, eax                                       // 0x008304e8    2bc8
@@ -5972,7 +5972,7 @@ _CHAR2WCHAR__FPc:        {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               eax                                            // 0x00830506    50
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x00830507    8d4c2420
                          {disp32} mov       dword ptr [ebp + 0x00000108], eax              // 0x0083050b    898508010000
-                         call               @Read__8LHOSFileFPvUlPUl@20                    // 0x00830511    e8cac3f8ff
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                    // 0x00830511    e8cac3f8ff
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x00830516    8d4c2414
                          call               ?Close@LHOSFile@@QAEIXZ                        // 0x0083051a    e841c3f8ff
                          mov                esi, dword ptr [esi]                           // 0x0083051f    8b36
@@ -6628,7 +6628,7 @@ _CHAR2WCHAR__FPc:        {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               eax                                            // 0x00830ca8    50
                          push               ecx                                            // 0x00830ca9    51
                          {disp32} mov       ecx, dword ptr [ebx + 0x0000010c]              // 0x00830caa    8b8b0c010000
-                         call               @Read__8LHOSFileFPvUlPUl@20                    // 0x00830cb0    e82bbcf8ff
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                    // 0x00830cb0    e82bbcf8ff
                          {disp8} mov        edi, dword ptr [esp + 0x1c]                    // 0x00830cb5    8b7c241c
                          xor.s              eax, eax                                       // 0x00830cb9    33c0
                          xor.s              edx, edx                                       // 0x00830cbb    33d2

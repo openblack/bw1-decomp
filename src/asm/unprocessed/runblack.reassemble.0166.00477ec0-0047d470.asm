@@ -147,7 +147,7 @@
 .extern ??0LHOSFile@@QAE@XZ
 .extern ??_DLHOSFile@@QAEXXZ
 .extern ?Close@LHOSFile@@QAEIXZ
-.extern @Read__8LHOSFileFPvUlPUl@20
+.extern ?Read@LHOSFile@@QAEIPAXIPAI@Z
 .extern _atexit
 .extern _sprintf
 .extern ___RTDynamicCast
@@ -5706,7 +5706,7 @@ _jmp_addr_0x0047bee0:    mov                eax, 0x000010f4                     
                          {disp32} mov       dword ptr [esp + 0x000005ac], esi             // 0x0047c05a    89b424ac050000
                          {disp32} mov       dword ptr [esp + 0x000005b0], 0x00000002      // 0x0047c061    c78424b005000002000000
                          {disp32} mov       byte ptr [esp + 0x000005b4], 0x03             // 0x0047c06c    c68424b405000003
-                         call               @Read__8LHOSFileFPvUlPUl@20                   // 0x0047c074    e867083400
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                   // 0x0047c074    e867083400
                          or                 ecx, 0xffffffff                               // 0x0047c079    83c9ff
                          xor.s              eax, eax                                      // 0x0047c07c    33c0
                          mov                edi, 0x009d0638                               // 0x0047c07e    bf38069d00
@@ -5754,7 +5754,7 @@ _jmp_addr_0x0047bee0:    mov                eax, 0x000010f4                     
                          {disp32} mov       dword ptr [esp + 0x00000be4], esi             // 0x0047c12e    89b424e40b0000
                          {disp32} mov       dword ptr [esp + 0x00000be8], 0x00000002      // 0x0047c135    c78424e80b000002000000
                          {disp32} mov       byte ptr [esp + 0x00000bec], 0x03             // 0x0047c140    c68424ec0b000003
-                         call               @Read__8LHOSFileFPvUlPUl@20                   // 0x0047c148    e893073400
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                   // 0x0047c148    e893073400
                          or                 ecx, 0xffffffff                               // 0x0047c14d    83c9ff
                          xor.s              eax, eax                                      // 0x0047c150    33c0
                          mov                edi, 0x009d0640                               // 0x0047c152    bf40069d00

@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x0056d220
 .extern @GetPlayer3DColor__7GPlayerFv@12
 .extern  ??3@YAXPAX@Z
-.extern @Read__8LHOSFileFPvUlPUl@20
+.extern ?Read@LHOSFile@@QAEIPAXIPAI@Z
 .extern ?Write@LHOSFile@@QAEIPBXIPAI@Z
 .extern _atexit
 .extern _wcscpy
@@ -215,7 +215,7 @@ _jmp_addr_0x0056a840:    {disp32} mov       eax, dword ptr [data_bytes + 0x22699
                          push               0x0                                           // 0x0056a851    6a00
                          push               0x000007dc                                    // 0x0056a853    68dc070000
                          push               edi                                           // 0x0056a858    57
-                         call               @Read__8LHOSFileFPvUlPUl@20                   // 0x0056a859    e882202500
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                   // 0x0056a859    e882202500
                          cmp                eax, 0x03                                     // 0x0056a85e    83f803
                          {disp8} jne        .Lbl_addr_0x0056a86d                          // 0x0056a861    750a
                          {disp32} mov       dword ptr [data_bytes + 0x226994], 0x00000000 // 0x0056a863    c70594c9be0000000000

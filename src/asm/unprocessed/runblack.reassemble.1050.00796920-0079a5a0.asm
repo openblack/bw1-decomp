@@ -43,7 +43,7 @@
 .extern ??_DLHOSFile@@QAEXXZ
 .extern @Open__16LHReleasedOSFileFPc12LH_FILE_MODE@16
 .extern ?Close@LHOSFile@@QAEIXZ
-.extern @Read__8LHOSFileFPvUlPUl@20
+.extern ?Read@LHOSFile@@QAEIPAXIPAI@Z
 .extern _LHFileLength__FPcPUl
 .extern _LHLoadData__FPcPvUlPUl
 .extern _atexit
@@ -2810,7 +2810,7 @@ _jmp_addr_0x007989e0:    sub                  esp, 0x00000118                   
                          push                 0x00030000                                    // 0x00798a8b    6800000300
                          push                 0x00e060b8                                    // 0x00798a90    68b860e000
                          {disp8} lea          ecx, dword ptr [esp + 0x1c]                   // 0x00798a95    8d4c241c
-                         call                 @Read__8LHOSFileFPvUlPUl@20                   // 0x00798a99    e8423e0200
+                         call                 ?Read@LHOSFile@@QAEIPAXIPAI@Z                   // 0x00798a99    e8423e0200
                          {disp8} lea          ecx, dword ptr [esp + 0x10]                   // 0x00798a9e    8d4c2410
                          call                 ?Close@LHOSFile@@QAEIXZ                       // 0x00798aa2    e8b93d0200
                          {disp32} mov         dword ptr [data_bytes + 0x470124], 0x00000001 // 0x00798aa7    c7052461e30001000000

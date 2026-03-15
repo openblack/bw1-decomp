@@ -180,7 +180,7 @@
                          {disp32} je        .Lbl_addr_0x0063afa9                           // 0x0063ad98    0f840b020000
                          {disp8} mov        eax, dword ptr [esp + 0x20]                    // 0x0063ad9e    8b442420
                          cmp.s              eax, ebx                                       // 0x0063ada2    3bc3
-                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]         // 0x0063ada4    8b0d34fee900
+                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]         // 0x0063ada4    8b0d34fee900
                          {disp8} jl         .Lbl_addr_0x0063adb0                           // 0x0063adaa    7c04
                          cmp                eax, dword ptr [ecx]                           // 0x0063adac    3b01
                          {disp8} jl         .Lbl_addr_0x0063adb2                           // 0x0063adae    7c02

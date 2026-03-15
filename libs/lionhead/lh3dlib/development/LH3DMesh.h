@@ -18,6 +18,20 @@ struct FootprintData;
 
 struct LH3DMesh
 {
+    struct Pack
+    {
+        int count;
+        LH3DMesh* meshes[1];
+        inline LH3DMesh* GetMesh(int meshId)
+        {
+            if (meshId < 0 || meshId >= count)
+                meshId = 0;
+            return meshes[meshId];
+        }
+    };
+
+    static Pack* g_current_pack;
+
     char magic[0x4]; /* 0x0 */
     uint32_t flags;
     uint32_t size;

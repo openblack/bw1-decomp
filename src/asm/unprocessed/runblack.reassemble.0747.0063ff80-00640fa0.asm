@@ -501,7 +501,7 @@ start_0x0063ff80_0x00640fa0:
 .Lbl_addr_0x006404f2:    {disp8} mov       esi, dword ptr [ecx + 0x04]                   // 0x006404f2    8b7104
 .Lbl_addr_0x006404f5:    mov               ecx, 0x00000002                               // 0x006404f5    b902000000
                          call              @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                          // 0x006404fa    e8d1af1c00
-                         {disp32} mov      ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x006404ff    8b0d34fee900
+                         {disp32} mov      ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]        // 0x006404ff    8b0d34fee900
                          mov.s             ebx, eax                                      // 0x00640505    8bd8
                          {disp8} mov       eax, dword ptr [esp + 0x20]                   // 0x00640507    8b442420
                          test              eax, eax                                      // 0x0064050b    85c0
@@ -520,7 +520,7 @@ start_0x0063ff80_0x00640fa0:
                          {disp8} jmp       .Lbl_addr_0x00640560                          // 0x0064052b    eb33
 .Lbl_addr_0x0064052d:    xor.s             ecx, ecx                                      // 0x0064052d    33c9
                          call              @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                          // 0x0064052f    e89caf1c00
-                         {disp32} mov      ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00640534    8b0d34fee900
+                         {disp32} mov      ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]        // 0x00640534    8b0d34fee900
                          mov.s             ebx, eax                                      // 0x0064053a    8bd8
                          {disp8} mov       eax, dword ptr [esp + 0x20]                   // 0x0064053c    8b442420
                          test              eax, eax                                      // 0x00640540    85c0

@@ -533,7 +533,7 @@ _jmp_addr_0x00481a40:    push               esi                                 
                          mov.s              ecx, esi                                             // 0x00481c7c    8bce
                          call               dword ptr [edx + 0x608]                              // 0x00481c7e    ff9208060000
                          test               eax, eax                                             // 0x00481c84    85c0
-                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]               // 0x00481c86    8b0d34fee900
+                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]               // 0x00481c86    8b0d34fee900
                          {disp8} jl         .Lbl_addr_0x00481c92                                 // 0x00481c8c    7c04
                          cmp                eax, dword ptr [ecx]                                 // 0x00481c8e    3b01
                          {disp8} jl         .Lbl_addr_0x00481c94                                 // 0x00481c90    7c02
