@@ -182,7 +182,7 @@ _jmp_addr_0x006ddf60:    {disp8} mov      eax, dword ptr [esp + 0x0c]           
                          mov.s            ecx, esi                                // 0x006de1d5    8bce
                          call             dword ptr [edx + 0x608]                 // 0x006de1d7    ff9208060000
                          test             eax, eax                                // 0x006de1dd    85c0
-                         {disp32} mov     edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]  // 0x006de1df    8b1534fee900
+                         {disp32} mov     edx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]  // 0x006de1df    8b1534fee900
                          {disp8} jl       .Lbl_addr_0x006de1eb                    // 0x006de1e5    7c04
                          cmp              eax, dword ptr [edx]                    // 0x006de1e7    3b02
                          {disp8} jl       .Lbl_addr_0x006de1ed                    // 0x006de1e9    7c02

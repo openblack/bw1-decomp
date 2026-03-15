@@ -7,7 +7,7 @@
 .globl ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A
 .globl ?g_index_block@LH3DIsland@@3PAY0CA@EA
 .globl ?g_current_list_matrix@LH3DMesh@@2PAULH3DMatrix@@A
-.globl ?g_current_pack@LH3DMesh@@2PAULH3DPack@@A
+.globl ?g_current_pack@LH3DMesh@@2PAUPack@1@A
 .globl ?g_current_matrix@LH3DMesh@@2PAULH3DMatrix@@A
 .globl ?g_b_dont_care_about_texture@LH3DMesh@@2PA_NA
 .globl _caca_static_draw
@@ -49,7 +49,7 @@ _LH3DMist:                                 .space 0x4                           
                                            .space 0xc4                                                             // [0x4d6d64] 0x009c6000 + 0x4d6d64 = 0x00e9cd64
 ?g_current_list_matrix@LH3DMesh@@2PAULH3DMatrix@@A: .space 0x3000                                                  // [0x4d6e28] 0x009c6000 + 0x4d6e28 = 0x00e9ce28
                                            .space 0xc                                                              // [0x4d9e28] 0x009c6000 + 0x4d9e28 = 0x00e9fe28
-?g_current_pack@LH3DMesh@@2PAULH3DPack@@A: .space 4                                                                // [0x4d9e34] 0x009c6000 + 0x4d9e34 = 0x00e9fe34
+?g_current_pack@LH3DMesh@@2PAUPack@1@A: .space 4                                                                // [0x4d9e34] 0x009c6000 + 0x4d9e34 = 0x00e9fe34
                                            .space 0x10                                                             // [0x4d9e38] 0x009c6000 + 0x4d9e38 = 0x00e9fe38
 ?g_current_matrix@LH3DMesh@@2PAULH3DMatrix@@A: .space 4                                                            // [0x4d9e48] 0x009c6000 + 0x4d9e48 = 0x00e9fe48
                                            .space 8                                                                // [0x4d9e4c] 0x009c6000 + 0x4d9e4c = 0x00e9fe4c

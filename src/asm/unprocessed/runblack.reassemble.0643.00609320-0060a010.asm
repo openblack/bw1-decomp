@@ -169,7 +169,7 @@ _jmp_addr_0x00609340:    push              esi                                  
                          mov               edx, dword ptr [ecx]                          // 0x006093d3    8b11
                          call              dword ptr [edx + 0x2c]                        // 0x006093d5    ff522c
                          test              eax, eax                                      // 0x006093d8    85c0
-                         {disp32} mov      edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x006093da    8b1534fee900
+                         {disp32} mov      edx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]        // 0x006093da    8b1534fee900
                          {disp8} jl        .Lbl_addr_0x006093e6                          // 0x006093e0    7c04
                          cmp               eax, dword ptr [edx]                          // 0x006093e2    3b02
                          {disp8} jl        .Lbl_addr_0x006093e8                          // 0x006093e4    7c02
@@ -206,7 +206,7 @@ _jmp_addr_0x00609340:    push              esi                                  
                          call              _jmp_addr_0x0081e9e0                          // 0x0060945a    e881552100
                          {disp8} mov       dword ptr [ebx + 0x58], eax                   // 0x0060945f    894358
                          {disp32} mov      ecx, dword ptr [data_bytes + 0x378e58]        // 0x00609462    8b0d58eed300
-                         {disp32} mov      edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00609468    8b1534fee900
+                         {disp32} mov      edx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]        // 0x00609468    8b1534fee900
                          mov               eax, dword ptr [ecx]                          // 0x0060946e    8b01
                          {disp8} mov       edx, dword ptr [edx + 0x04]                   // 0x00609470    8b5204
                          add               esp, 0x04                                     // 0x00609473    83c404

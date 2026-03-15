@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x005d8a10
 .extern __ftol
 .extern  ??3@YAXPAX@Z
-.extern @Read__8LHOSFileFPvUlPUl@20
+.extern ?Read@LHOSFile@@QAEIPAXIPAI@Z
 .extern ?Write@LHOSFile@@QAEIPBXIPAI@Z
 .extern _atexit
 .extern _toupper
@@ -40,11 +40,11 @@
 .globl ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .globl ?WriteIt@GameOSFile@@QAEXAAI@Z
 .globl ??$ReadIt@H@GameOSFile@@QAEXAAH@Z
-.globl _ReadIt_i32___10GameOSFileFRl
+.globl ?ReadIt@GameOSFile@@QAEXAAH@Z
 .globl ??$ReadIt@H@GameOSFile@@QAEXAAI@Z
-.globl _ReadIt_u32___10GameOSFileFRUl
+.globl ?ReadIt@GameOSFile@@QAEXAAI@Z
 .globl ?AddToLast@?$LHListHead@VVillager@@@@QAEXPAVVillager@@@Z
-.globl _AddToLast__21LHListHead_8Villager_FP8Villager
+.globl ?AddToLast@?$LHListHead@VVillager@@@@QAEXPAVVillager@@@Z
 .globl _NeedsBiggerText__Fv
 .globl _GetMidTextSize__Fv
 .globl _GetSmallTextSize__Fv
@@ -127,7 +127,7 @@
                          nop                                                              // 0x0040774f    90
 
 ??$ReadIt@H@GameOSFile@@QAEXAAH@Z:
-_ReadIt_i32___10GameOSFileFRl:
+?ReadIt@GameOSFile@@QAEXAAH@Z:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x00407750    a194c9be00
                          test               eax, eax                                      // 0x00407755    85c0
                          push               esi                                           // 0x00407757    56
@@ -138,7 +138,7 @@ _ReadIt_i32___10GameOSFileFRl:
                          push               0x0                                           // 0x00407761    6a00
                          push               0x4                                           // 0x00407763    6a04
                          push               edi                                           // 0x00407765    57
-                         call               @Read__8LHOSFileFPvUlPUl@20                   // 0x00407766    e875513b00
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                   // 0x00407766    e875513b00
                          cmp                eax, 0x03                                     // 0x0040776b    83f803
                          {disp8} jne        .Lbl_addr_0x0040777a                          // 0x0040776e    750a
                          {disp32} mov       dword ptr [data_bytes + 0x226994], 0x00000000 // 0x00407770    c70594c9be0000000000
@@ -165,7 +165,7 @@ _ReadIt_i32___10GameOSFileFRl:
                          nop                                                              // 0x0040779f    90
 
 ??$ReadIt@H@GameOSFile@@QAEXAAI@Z:
-_ReadIt_u32___10GameOSFileFRUl:
+?ReadIt@GameOSFile@@QAEXAAI@Z:
                          {disp32} mov       eax, dword ptr [data_bytes + 0x226994]        // 0x004077a0    a194c9be00
                          test               eax, eax                                      // 0x004077a5    85c0
                          push               esi                                           // 0x004077a7    56
@@ -176,7 +176,7 @@ _ReadIt_u32___10GameOSFileFRUl:
                          push               0x0                                           // 0x004077b1    6a00
                          push               0x4                                           // 0x004077b3    6a04
                          push               edi                                           // 0x004077b5    57
-                         call               @Read__8LHOSFileFPvUlPUl@20                   // 0x004077b6    e825513b00
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                   // 0x004077b6    e825513b00
                          cmp                eax, 0x03                                     // 0x004077bb    83f803
                          {disp8} jne        .Lbl_addr_0x004077ca                          // 0x004077be    750a
                          {disp32} mov       dword ptr [data_bytes + 0x226994], 0x00000000 // 0x004077c0    c70594c9be0000000000
@@ -203,7 +203,6 @@ _ReadIt_u32___10GameOSFileFRUl:
                          nop                                                              // 0x004077ef    90
 
 ?AddToLast@?$LHListHead@VVillager@@@@QAEXPAVVillager@@@Z:
-_AddToLast__21LHListHead_8Villager_FP8Villager:
                          mov                edx, dword ptr [ecx]                          // 0x004077f0    8b11
                          test               edx, edx                                      // 0x004077f2    85d2
                          {disp8} je         .Lbl_addr_0x00407826                          // 0x004077f4    7430

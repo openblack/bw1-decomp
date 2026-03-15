@@ -763,7 +763,7 @@ void __fastcall Open__8WindmillFv(struct Windmill* this)
     asm("push               esi");                                           // 0x00405980    56
     asm("xor.s              ecx, ecx");                                      // 0x00405981    33c9
     asm("call               @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4");                          // 0x00405983    e8485b4000
-    asm("{disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]");        // 0x00405988    8b1534fee900
+    asm("{disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]");        // 0x00405988    8b1534fee900
     asm("{disp32} mov       dword ptr [_windmill_lh3d_object_00c4cc70], eax");        // 0x0040598e    a370ccc400
     asm("mov                esi, dword ptr [edx]");                          // 0x00405993    8b32
     asm("mov                ecx, 0x00000085");                               // 0x00405995    b985000000

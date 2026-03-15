@@ -465,7 +465,7 @@ start_0x00787120_0x007878e0:
 .Lbl_addr_0x0078765b:    mov                eax, dword ptr [ebx]                          // 0x0078765b    8b03
                          cmp.s              eax, ebp                                      // 0x0078765d    3bc5
                          {disp8} jle        .Lbl_addr_0x007876df                          // 0x0078765f    7e7e
-                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00787661    8b0d34fee900
+                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]        // 0x00787661    8b0d34fee900
                          {disp8} jl         .Lbl_addr_0x0078766d                          // 0x00787667    7c04
                          cmp                eax, dword ptr [ecx]                          // 0x00787669    3b01
                          {disp8} jl         .Lbl_addr_0x0078766f                          // 0x0078766b    7c02

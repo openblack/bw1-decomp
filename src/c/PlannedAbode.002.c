@@ -369,7 +369,7 @@ uint32_t __fastcall Load__12PlannedAbodeFR10GameOSFile(struct GameThing* this, c
     asm("add                esi, 0x48");                                     // 0x00405872    83c648
     asm("push               esi");                                           // 0x00405875    56
     asm("mov.s              ecx, edi");                                      // 0x00405876    8bcf
-    asm("call               @ReadPtr__10GameOSFileFPP9GameThing@12");        // 0x00405878    e803c91500
+    asm("call               ?ReadPtr@GameOSFile@@QAEXPAPAVGameThing@@@Z");        // 0x00405878    e803c91500
     asm("pop                edi");                                           // 0x0040587d    5f
     asm("mov                eax, 0x00000001");                               // 0x0040587e    b801000000
     asm("pop                esi");                                           // 0x00405883    5e

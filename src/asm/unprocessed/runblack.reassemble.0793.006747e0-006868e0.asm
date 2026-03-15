@@ -170,7 +170,7 @@
 .extern _jmp_addr_0x007b19e3
 .extern _jmp_addr_0x007b1e3a
 .extern _jmp_addr_0x007b1fbb
-.extern @Read__8LHOSFileFPvUlPUl@20
+.extern ?Read@LHOSFile@@QAEIPAXIPAI@Z
 .extern ?Write@LHOSFile@@QAEIPBXIPAI@Z
 .extern _atexit
 .extern ___RTDynamicCast
@@ -14502,7 +14502,7 @@ _jmp_addr_0x0067e140:    push               esi                                 
                          mov.s              esi, eax                                      // 0x0067e7aa    8bf0
                          test               esi, esi                                      // 0x0067e7ac    85f6
                          {disp32} je        .Lbl_addr_0x0067e88d                          // 0x0067e7ae    0f84d9000000
-                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x0067e7b4    8b0d34fee900
+                         {disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]        // 0x0067e7b4    8b0d34fee900
                          mov                edx, dword ptr [ecx]                          // 0x0067e7ba    8b11
                          mov                eax, 0x00000237                               // 0x0067e7bc    b837020000
                          cmp.s              edx, eax                                      // 0x0067e7c1    3bd0
@@ -21578,7 +21578,7 @@ _jmp_addr_0x00682fa0:    push               esi                                 
                          push               0x1                                           // 0x0068334b    6a01
                          push               edi                                           // 0x0068334d    57
                          mov.s              ecx, esi                                      // 0x0068334e    8bce
-                         call               @Read__8LHOSFileFPvUlPUl@20                   // 0x00683350    e88b951300
+                         call               ?Read@LHOSFile@@QAEIPAXIPAI@Z                   // 0x00683350    e88b951300
                          cmp                eax, 0x03                                     // 0x00683355    83f803
                          {disp8} jne        .Lbl_addr_0x00683364                          // 0x00683358    750a
                          {disp32} mov       dword ptr [data_bytes + 0x226994], 0x00000000 // 0x0068335a    c70594c9be0000000000

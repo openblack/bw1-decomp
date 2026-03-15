@@ -16,12 +16,26 @@
 #ifdef __cplusplus
 
 extern "C" bool32_t DAT_00bec990;
+extern "C" bool32_t DAT_00bec994;
 
 // Forward Declares
 
 class GBaseInfo;
 class LHOSFile;
 struct MapCoords;
+
+#define GameOSFileReadCheckSum(file, value) \
+    { \
+        void* _ptr = &value; \
+        if (DAT_00bec994) \
+        { \
+            if (file.Read(_ptr, sizeof(value), NULL) == 3) \
+            { \
+                DAT_00bec994 = false; \
+            } \
+            file.checksum += *(uint8_t*)_ptr + sizeof(value); \
+        } \
+    }
 
 #define GameOSFileWriteCheckSum(file, value) \
     if (DAT_00bec990) \
@@ -117,7 +131,7 @@ public:
     // win1.41 00561c60 mac 103049e0 GameOSFile::ResolveAllLoads(void)
     void ResolveAllLoads();
     // win1.41 00561e10 mac 10304650 GameOSFile::WritePtr(GameThing *)
-    void WritePtr(GameThing* param_1);
+    void WritePtr(GameThing* ptr);
     // win1.41 00562180 mac 10304470 GameOSFile::ReadPtr(GameThing **)
     void ReadPtr(GameThing** ptr);
     // win1.41 00563ea0 mac 10300970 GameOSFile::WriteInfo(const BaseInfo*)

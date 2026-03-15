@@ -10,7 +10,7 @@ bool __fastcall GetNewEp__5AbodeF8ABODE_EPP7LHPoint(struct Abode* this, const vo
     asm("push               edi");                                           // 0x00403597    57
     asm("{disp8} mov        dword ptr [esp + 0x14], ecx");                   // 0x00403598    894c2414
     asm("call               dword ptr [eax + 0x608]");                       // 0x0040359c    ff9008060000
-    asm("{disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]");        // 0x004035a2    8b0d34fee900
+    asm("{disp32} mov       ecx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]");        // 0x004035a2    8b0d34fee900
     asm("xor.s              edi, edi");                                      // 0x004035a8    33ff
     asm("cmp.s              eax, edi");                                      // 0x004035aa    3bc7
     asm("{disp8} jl         LAB__addr_0x004035b2");                          // 0x004035ac    7c04

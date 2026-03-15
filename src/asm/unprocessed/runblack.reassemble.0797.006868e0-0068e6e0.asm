@@ -10343,7 +10343,7 @@ _jmp_addr_0x0068e070:    push               esi                                 
                          {disp8} mov        dword ptr [esi + 0x08], 0x00000000            // 0x0068e083    c7460800000000
                          call               @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                          // 0x0068e08a    e841d41700
                          {disp8} mov        dword ptr [esi + 0x0c], eax                   // 0x0068e08f    89460c
-                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x0068e092    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]        // 0x0068e092    8b1534fee900
                          mov                edi, dword ptr [edx]                          // 0x0068e098    8b3a
                          mov                ecx, 0x0000020d                               // 0x0068e09a    b90d020000
                          cmp.s              edi, ecx                                      // 0x0068e09f    3bf9

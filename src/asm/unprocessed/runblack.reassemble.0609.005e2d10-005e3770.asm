@@ -44,7 +44,7 @@ _jmp_addr_0x005e2d10:    sub                esp, 0x0c                           
                          {disp32} jne       .Lbl_addr_0x005e2e22                    // 0x005e2d62    0f85ba000000
                          xor.s              ecx, ecx                                // 0x005e2d68    33c9
                          call               @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                    // 0x005e2d6a    e861872200
-                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]  // 0x005e2d6f    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]  // 0x005e2d6f    8b1534fee900
                          {disp32} mov       dword ptr [data_bytes + 0x3542f4], eax  // 0x005e2d75    a3f4a2d100
                          mov                edi, dword ptr [edx]                    // 0x005e2d7a    8b3a
                          mov                ecx, 0x00000235                         // 0x005e2d7c    b935020000
@@ -63,7 +63,7 @@ _jmp_addr_0x005e2d10:    sub                esp, 0x0c                           
                          call               dword ptr [eax + 0x58]                  // 0x005e2da6    ff5058
                          mov                ecx, 0x00000002                         // 0x005e2da9    b902000000
                          call               @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4                    // 0x005e2dae    e81d872200
-                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]  // 0x005e2db3    8b1534fee900
+                         {disp32} mov       edx, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]  // 0x005e2db3    8b1534fee900
                          {disp32} mov       dword ptr [data_bytes + 0x3542f0], eax  // 0x005e2db9    a3f0a2d100
                          mov                edi, dword ptr [edx]                    // 0x005e2dbe    8b3a
                          mov                ecx, 0x00000233                         // 0x005e2dc0    b933020000

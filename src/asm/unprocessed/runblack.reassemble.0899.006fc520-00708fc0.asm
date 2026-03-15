@@ -12756,7 +12756,7 @@ _globl_ct_0x00708c30:    {disp32} jmp       .Lbl_addr_0x00708c40                
                          mov                edx, 0x00000001                               // 0x00708d35    ba01000000
                          call               dword ptr [eax + 0x70]                        // 0x00708d3a    ff5070
                          {disp8} mov        ecx, dword ptr [esi + 0x40]                   // 0x00708d3d    8b4e40
-                         {disp32} mov       ebp, dword ptr [?g_current_pack@LH3DMesh@@2PAULH3DPack@@A]        // 0x00708d40    8b2d34fee900
+                         {disp32} mov       ebp, dword ptr [?g_current_pack@LH3DMesh@@2PAUPack@1@A]        // 0x00708d40    8b2d34fee900
                          {disp32} mov       ebx, dword ptr [ecx + 0x00000098]             // 0x00708d46    8b9998000000
                          {disp8} mov        ecx, dword ptr [ebp + 0x00]                   // 0x00708d4c    8b4d00
                          mov                edx, 0x000001f5                               // 0x00708d4f    baf5010000
