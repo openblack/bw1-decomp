@@ -47,7 +47,7 @@ public:
     uint8_t field_0x63c[0x4];
     float life; /* 0x640 */
 
-    // Virtual functions
+    // Override functions
 
     // win1.41 0043b7b0 mac 100bcd40 BuildingSite::_dt(void)
     virtual ~BuildingSite();
@@ -60,7 +60,7 @@ public:
     // win1.41 0043c5b0 mac 100bae60 BuildingSite::GetResource(RESOURCE_TYPE)
     virtual uint32_t GetResource(RESOURCE_TYPE param_1);
     // win1.41 0043c490 mac 100bb090 BuildingSite::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
-    virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, struct GInterfaceStatus* param_3, bool param_4, const struct MapCoords* param_5, int param_6);
+    virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, struct GInterfaceStatus* param_3, bool param_4, const struct MapCoords& param_5, int param_6);
     // win1.41 0043c530 mac 100baf20 BuildingSite::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
     virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, struct GInterfaceStatus* param_3, bool* param_4);
     // win1.41 0043cad0 mac 100b9cf0 BuildingSite::Load(GameOSFile &)
@@ -69,6 +69,9 @@ public:
     virtual bool32_t Save(GameOSFile& param_1);
     // win1.41 0043b7a0 mac 100be420 BuildingSite::GetSaveType(void)
     virtual uint32_t GetSaveType();
+
+    // Virtual functions
+
     // win1.41 0043b950 mac 100bcd10 BuildingSite::Init(void)
     virtual void Init();
     virtual void Process() = 0;  /* 0x100 */
