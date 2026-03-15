@@ -726,7 +726,7 @@ _jmp_addr_0x0066d1a0:    sub                esp, 0x00000174                     
                          mov.s              ebx, ecx                                      // 0x0066d1a8    8bd9
                          push               edi                                           // 0x0066d1aa    57
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x0066d1ab    8d4c2418
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x0066d1af    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x0066d1af    ff155c978a00
                          {disp32} mov       eax, dword ptr [_global]                      // 0x0066d1b5    a1203bcd00
                          {disp32} mov       ecx, dword ptr [eax + 0x000003ac]             // 0x0066d1ba    8b88ac030000
                          cmp                dword ptr [esp + 0x0000018c], 0x000000c8      // 0x0066d1c0    81bc248c010000c8000000
@@ -777,7 +777,7 @@ _jmp_addr_0x0066d1a0:    sub                esp, 0x00000174                     
                          {disp8} mov        dword ptr [esp + 0x28], 0x00000000            // 0x0066d262    c744242800000000
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0066d26a    e8c1cbdbff
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x0066d26f    8d4c2418
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x0066d273    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0066d273    ff1558978a00
                          pop                edi                                           // 0x0066d279    5f
                          pop                esi                                           // 0x0066d27a    5e
                          pop                ebx                                           // 0x0066d27b    5b

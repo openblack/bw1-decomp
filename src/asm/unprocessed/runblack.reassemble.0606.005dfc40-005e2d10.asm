@@ -696,7 +696,7 @@ _jmp_addr_0x005e03f0:    sub                esp, 0x000001c4                     
                          push               edi                                            // 0x005e040c    57
                          {disp32} jne       .Lbl_addr_0x005e0766                           // 0x005e040d    0f8553030000
                          {disp8} lea        ecx, dword ptr [esp + 0x6c]                    // 0x005e0413    8d4c246c
-                         call               dword ptr [rdata_bytes + 0x75c]                // 0x005e0417    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]                // 0x005e0417    ff155c978a00
                          {disp32} mov       ecx, dword ptr [_global]                       // 0x005e041d    8b0d203bcd00
                          {disp32} mov       eax, dword ptr [ecx + 0x000003bc]              // 0x005e0423    8b81bc030000
                          {disp8} mov        edx, dword ptr [ebx + 0x64]                    // 0x005e0429    8b5364
@@ -907,7 +907,7 @@ _jmp_addr_0x005e03f0:    sub                esp, 0x000001c4                     
                          {disp8} mov        dword ptr [esp + 0x14], esi                    // 0x005e0752    89742414
                          {disp32} jl        .Lbl_addr_0x005e062e                           // 0x005e0756    0f8cd2feffff
                          {disp8} lea        ecx, dword ptr [esp + 0x6c]                    // 0x005e075c    8d4c246c
-                         call               dword ptr [rdata_bytes + 0x758]                // 0x005e0760    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]  // 0x005e0760    ff1558978a00
 .Lbl_addr_0x005e0766:    cmp                dword ptr [ebx + 0x30], 0x01                   // 0x005e0766    837b3001
                          {disp32} jne       .Lbl_addr_0x005e1015                           // 0x005e076a    0f85a5080000
                          {disp8} mov        ecx, dword ptr [ebx + 0x28]                    // 0x005e0770    8b4b28

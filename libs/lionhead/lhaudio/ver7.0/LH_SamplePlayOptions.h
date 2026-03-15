@@ -30,12 +30,12 @@ struct LH_SamplePlayOptions
     // Constructors
 
     // win1.41 10010e90 mac 100397c0 LH_SamplePlayOptions::LH_SamplePlayOptions(void)
-    LH_SamplePlayOptions();
+    __declspec(dllimport) LH_SamplePlayOptions();
 
     // Non-virtual methods
 
     // win1.41 10011010 mac 1003a2c0 LH_SamplePlayOptions::~LH_SamplePlayOptions(void)
-    ~LH_SamplePlayOptions();
+    __declspec(dllimport) ~LH_SamplePlayOptions();
 };
 
 #else // __cplusplus

@@ -7327,7 +7327,7 @@ _GetWoodValueMultiplier__4TreeFv:
                          {disp8} fild       dword ptr [esi + 0x04]                         // 0x0074bc93    db4604
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]        // 0x0074bc96    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x10]                         // 0x0074bc9c    d95c2410
-                         call               dword ptr [rdata_bytes + 0x75c]                // 0x0074bca0    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]                // 0x0074bca0    ff155c978a00
                          {disp32} mov       ecx, dword ptr [_global]                       // 0x0074bca6    8b0d203bcd00
                          {disp32} mov       edx, dword ptr [ecx + 0x000003ac]              // 0x0074bcac    8b91ac030000
                          {disp8} mov        dword ptr [esp + 0x1c], edx                    // 0x0074bcb2    8954241c
@@ -7351,7 +7351,7 @@ _GetWoodValueMultiplier__4TreeFv:
                          push               edx                                            // 0x0074bd02    52
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                           // 0x0074bd03    e828e1cdff
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                    // 0x0074bd08    8d4c2418
-                         call               dword ptr [rdata_bytes + 0x758]                // 0x0074bd0c    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]  // 0x0074bd0c    ff1558978a00
                          pop                edi                                            // 0x0074bd12    5f
                          mov                eax, 0x00000001                                // 0x0074bd13    b801000000
                          pop                esi                                            // 0x0074bd18    5e
@@ -7462,7 +7462,7 @@ _jmp_addr_0x0074bd20:    push               esi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x30]                    // 0x0074be52    8d4c2430
                          {disp8} mov        dword ptr [esp + 0x18], edx                    // 0x0074be56    89542418
                          {disp8} mov        dword ptr [esp + 0x1c], eax                    // 0x0074be5a    8944241c
-                         call               dword ptr [rdata_bytes + 0x75c]                // 0x0074be5e    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]                // 0x0074be5e    ff155c978a00
                          {disp32} mov       ecx, dword ptr [_global]                       // 0x0074be64    8b0d203bcd00
                          {disp32} mov       edx, dword ptr [ecx + 0x000003ac]              // 0x0074be6a    8b91ac030000
                          {disp8} mov        eax, dword ptr [esp + 0x14]                    // 0x0074be70    8b442414
@@ -7480,7 +7480,7 @@ _jmp_addr_0x0074bd20:    push               esi                                 
                          {disp8} mov        dword ptr [esp + 0x40], ebx                    // 0x0074bea5    895c2440
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                           // 0x0074bea9    e882dfcdff
                          {disp8} lea        ecx, dword ptr [esp + 0x30]                    // 0x0074beae    8d4c2430
-                         call               dword ptr [rdata_bytes + 0x758]                // 0x0074beb2    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]  // 0x0074beb2    ff1558978a00
 .Lbl_addr_0x0074beb8:    {disp32} mov       ecx, dword ptr [_game]                         // 0x0074beb8    8b0d5c19d000
                          call               ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ                           // 0x0074bebe    e8bd99e0ff
                          cmp.s              edi, eax                                       // 0x0074bec3    3bf8
@@ -8029,7 +8029,7 @@ _jmp_addr_0x0074c180:    push               esi                                 
                          test               ah, 0x40                                       // 0x0074c450    f6c440
                          {disp32} jne       .Lbl_addr_0x0074c50f                           // 0x0074c453    0f85b6000000
                          {disp8} lea        ecx, dword ptr [esp + 0x30]                    // 0x0074c459    8d4c2430
-                         call               dword ptr [rdata_bytes + 0x75c]                // 0x0074c45d    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]                // 0x0074c45d    ff155c978a00
                          mov                edx, dword ptr [esi]                           // 0x0074c463    8b16
                          {disp8} lea        eax, dword ptr [esp + 0x24]                    // 0x0074c465    8d442424
                          push               eax                                            // 0x0074c469    50
@@ -8071,7 +8071,7 @@ _jmp_addr_0x0074c180:    push               esi                                 
                          push               edx                                            // 0x0074c4ff    52
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                           // 0x0074c500    e82bd9cdff
                          {disp8} lea        ecx, dword ptr [esp + 0x30]                    // 0x0074c505    8d4c2430
-                         call               dword ptr [rdata_bytes + 0x758]                // 0x0074c509    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]  // 0x0074c509    ff1558978a00
 .Lbl_addr_0x0074c50f:    test               bl, bl                                         // 0x0074c50f    84db
                          {disp8} jne        .Lbl_addr_0x0074c58a                           // 0x0074c511    7577
 .Lbl_addr_0x0074c513:    mov                eax, dword ptr [esi]                           // 0x0074c513    8b06

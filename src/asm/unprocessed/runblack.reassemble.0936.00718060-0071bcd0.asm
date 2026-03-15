@@ -3694,7 +3694,7 @@ _jmp_addr_0x0071a560:    push               esi                                 
                          cmp.s              eax, esi                                      // 0x0071a577    3bc6
                          {disp8} je         .Lbl_addr_0x0071a585                          // 0x0071a579    740a
                          mov.s              ecx, eax                                      // 0x0071a57b    8bc8
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x0071a57d    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x0071a57d    ff155c978a00
                          {disp8} jmp        .Lbl_addr_0x0071a587                          // 0x0071a583    eb02
 .Lbl_addr_0x0071a585:    xor.s              eax, eax                                      // 0x0071a585    33c0
 .Lbl_addr_0x0071a587:    {disp32} mov       dword ptr [data_bytes + 0x3d3bc0], eax        // 0x0071a587    a3c09bd900
@@ -3730,7 +3730,7 @@ _jmp_addr_0x0071a5f0:    push               esi                                 
                          test               esi, esi                                      // 0x0071a5f7    85f6
                          {disp8} je         .Lbl_addr_0x0071a60c                          // 0x0071a5f9    7411
                          mov.s              ecx, esi                                      // 0x0071a5fb    8bce
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x0071a5fd    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0071a5fd    ff1558978a00
                          push               esi                                           // 0x0071a603    56
                          call               ??3@YAXPAX@Z                                  // 0x0071a604    e88f480900
                          add                esp, 0x04                                     // 0x0071a609    83c404
@@ -4328,7 +4328,7 @@ _jmp_addr_0x0071abf0:    push               ebx                                 
                          test               esi, esi                                      // 0x0071abf9    85f6
                          {disp8} je         .Lbl_addr_0x0071ac0e                          // 0x0071abfb    7411
                          mov.s              ecx, esi                                      // 0x0071abfd    8bce
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x0071abff    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0071abff    ff1558978a00
                          push               esi                                           // 0x0071ac05    56
 .Lbl_addr_0x0071ac06:    call               ??3@YAXPAX@Z                                  // 0x0071ac06    e88d420900
                          add                esp, 0x04                                     // 0x0071ac0b    83c404
@@ -4393,7 +4393,7 @@ _jmp_addr_0x0071abf0:    push               ebx                                 
                          cmp.s              eax, edi                                      // 0x0071ac8f    3bc7
                          {disp8} je         .Lbl_addr_0x0071ac9d                          // 0x0071ac91    740a
                          mov.s              ecx, eax                                      // 0x0071ac93    8bc8
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x0071ac95    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x0071ac95    ff155c978a00
                          {disp8} jmp        .Lbl_addr_0x0071ac9f                          // 0x0071ac9b    eb02
 .Lbl_addr_0x0071ac9d:    xor.s              eax, eax                                      // 0x0071ac9d    33c0
 .Lbl_addr_0x0071ac9f:    {disp8} mov        dword ptr [esi + 0x08], eax                   // 0x0071ac9f    894608

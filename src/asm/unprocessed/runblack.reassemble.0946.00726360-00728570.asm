@@ -276,7 +276,7 @@ _jmp_addr_0x00726380:    {disp32} mov       ecx, dword ptr [ecx + 0x00000080]   
                          nop                                                                     // 0x0072648f    90
 .Lbl_addr_0x00726490:    sub                esp, 0x00000184                                      // 0x00726490    81ec84010000
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                          // 0x00726496    8d4c241c
-                         call               dword ptr [__imp___0LH_SamplePlayOptions__QAE_XZ@4]  // 0x0072649a    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]    // 0x0072649a    ff155c978a00
                          {disp32} mov       ecx, dword ptr [_global]                             // 0x007264a0    8b0d203bcd00
                          {disp32} mov       eax, dword ptr [ecx + 0x000003ac]                    // 0x007264a6    8b81ac030000
                          {disp8} mov        dword ptr [esp + 0x20], eax                          // 0x007264ac    89442420
@@ -305,7 +305,7 @@ _jmp_addr_0x00726380:    {disp32} mov       ecx, dword ptr [ecx + 0x00000080]   
                          {disp8} mov        dword ptr [esp + 0x68], eax                          // 0x00726524    89442468
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z // 0x00726528    e80339d0ff
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                          // 0x0072652d    8d4c241c
-                         call               dword ptr [__imp___1LH_SamplePlayOptions__QAE_XZ@4]  // 0x00726531    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]    // 0x00726531    ff1558978a00
                          add                esp, 0x00000184                                      // 0x00726537    81c484010000
                          ret                                                                     // 0x0072653d    c3
                          nop                                                                     // 0x0072653e    90

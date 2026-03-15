@@ -1173,7 +1173,7 @@ _jmp_addr_0x00424ab0:    sub                esp, 0x00000174                     
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x00424aca    8d4c2410
                          {disp8} mov        dword ptr [esi + 0x38], eax                   // 0x00424ace    894638
                          {disp8} mov        dword ptr [esi + 0x34], 0x00000001            // 0x00424ad1    c7463401000000
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x00424ad8    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x00424ad8    ff155c978a00
                          {disp32} mov       edx, dword ptr [_global]                      // 0x00424ade    8b15203bcd00
                          {disp32} mov       eax, dword ptr [edx + 0x000003ac]             // 0x00424ae4    8b82ac030000
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x00424aea    8d4c2404
@@ -1196,7 +1196,7 @@ _jmp_addr_0x00424ab0:    sub                esp, 0x00000174                     
                          {disp8} mov        dword ptr [esp + 0x1c], 0x00000001            // 0x00424b32    c744241c01000000
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x00424b3a    e8f1520000
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x00424b3f    8d4c2410
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x00424b43    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x00424b43    ff1558978a00
                          pop                esi                                           // 0x00424b49    5e
                          add                esp, 0x00000174                               // 0x00424b4a    81c474010000
                          ret                0x0008                                        // 0x00424b50    c20800

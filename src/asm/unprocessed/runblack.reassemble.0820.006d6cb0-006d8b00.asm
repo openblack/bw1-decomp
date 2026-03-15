@@ -719,7 +719,7 @@ _jmp_addr_0x006d71d0:    sub                esp, 0x20                           
                          mov.s              ecx, eax                                      // 0x006d7381    8bc8
                          call               dword ptr [edx + 0x440]                       // 0x006d7383    ff9240040000
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x006d7389    8d4c2404
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x006d738d    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x006d738d    ff155c978a00
                          {disp32} mov       eax, dword ptr [_global]                      // 0x006d7393    a1203bcd00
                          {disp32} mov       ecx, dword ptr [eax + 0x000003b0]             // 0x006d7398    8b88b0030000
                          push               0x9                                           // 0x006d739e    6a09
@@ -736,7 +736,7 @@ _jmp_addr_0x006d71d0:    sub                esp, 0x20                           
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000000            // 0x006d73d0    c744241000000000
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x006d73d8    e8532ad5ff
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x006d73dd    8d4c2404
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x006d73e1    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x006d73e1    ff1558978a00
                          pop                esi                                           // 0x006d73e7    5e
                          add                esp, 0x00000168                               // 0x006d73e8    81c468010000
                          ret                0x0004                                        // 0x006d73ee    c20400
@@ -933,7 +933,7 @@ _jmp_addr_0x006d7480:    sub                esp, 0x0000023c                     
                          call               _jmp_addr_0x0063e580                          // 0x006d7636    e8456ff6ff
                          add                esp, 0x14                                     // 0x006d763b    83c414
                          {disp32} lea       ecx, dword ptr [esp + 0x000000e4]             // 0x006d763e    8d8c24e4000000
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x006d7645    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x006d7645    ff155c978a00
                          {disp32} mov       eax, dword ptr [_global]                      // 0x006d764b    a1203bcd00
                          {disp32} mov       ecx, dword ptr [eax + 0x000003bc]             // 0x006d7650    8b88bc030000
                          {disp32} mov       dword ptr [esp + 0x000000e8], ecx             // 0x006d7656    898c24e8000000
@@ -1004,7 +1004,7 @@ _jmp_addr_0x006d7480:    sub                esp, 0x0000023c                     
                          {disp8} je         .Lbl_addr_0x006d76f2                          // 0x006d776e    7482
                          mov                ebp, 0x00000001                               // 0x006d7770    bd01000000
 .Lbl_addr_0x006d7775:    {disp32} lea       ecx, dword ptr [esp + 0x000000e4]             // 0x006d7775    8d8c24e4000000
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x006d777c    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x006d777c    ff1558978a00
 .Lbl_addr_0x006d7782:    {disp32} mov       ecx, dword ptr [esi + 0x000003f4]             // 0x006d7782    8b8ef4030000
                          mov                edx, dword ptr [ecx]                          // 0x006d7788    8b11
                          xor.s              eax, eax                                      // 0x006d778a    33c0

@@ -2935,7 +2935,7 @@ _jmp_addr_0x00737bf0:    push               esi                                 
                          call               _jmp_addr_0x0071ec30                           // 0x00738099    e8926bfeff
                          add                esp, 0x10                                      // 0x0073809e    83c410
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x007380a1    8d4c2420
-                         call               dword ptr [rdata_bytes + 0x75c]                // 0x007380a5    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]                // 0x007380a5    ff155c978a00
                          mov                edx, dword ptr [esi]                           // 0x007380ab    8b16
                          {disp8} lea        ecx, dword ptr [esp + 0x08]                    // 0x007380ad    8d4c2408
                          push               ecx                                            // 0x007380b1    51
@@ -2962,7 +2962,7 @@ _jmp_addr_0x00737bf0:    push               esi                                 
                          {disp8} mov        dword ptr [esp + 0x30], edi                    // 0x00738107    897c2430
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                           // 0x0073810b    e8201dcfff
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                    // 0x00738110    8d4c2420
-                         call               dword ptr [rdata_bytes + 0x758]                // 0x00738114    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]  // 0x00738114    ff1558978a00
 .Lbl_addr_0x0073811a:    pop                edi                                            // 0x0073811a    5f
                          mov                eax, 0x00000001                                // 0x0073811b    b801000000
                          pop                esi                                            // 0x00738120    5e

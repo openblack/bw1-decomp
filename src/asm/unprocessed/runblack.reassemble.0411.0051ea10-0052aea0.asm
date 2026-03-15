@@ -13253,8 +13253,8 @@ _jmp_addr_0x00526e00:    sub                esp, 0x000001b4                     
                          {disp8} fstp       dword ptr [esp + 0x2c]                               // 0x00526f18    d95c242c
                          call               _jmp_addr_0x00819f50                                 // 0x00526f1c    e82f302f00
                          cmp                dword ptr [esi + 0x24], edi                          // 0x00526f21    397e24
-                         {disp32} mov       ebx, dword ptr [rdata_bytes + 0x75c]                 // 0x00526f24    8b1d5c978a00
-                         {disp32} mov       ebp, dword ptr [rdata_bytes + 0x758]                 // 0x00526f2a    8b2d58978a00
+                         {disp32} mov       ebx, dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]                 // 0x00526f24    8b1d5c978a00
+                         {disp32} mov       ebp, dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]   // 0x00526f2a    8b2d58978a00
                          {disp8} jne        .Lbl_addr_0x00526f79                                 // 0x00526f30    7547
                          cmp                dword ptr [esp + 0x10], 0x0000442a                   // 0x00526f32    817c24102a440000
                          {disp8} jle        .Lbl_addr_0x00526f79                                 // 0x00526f3a    7e3d

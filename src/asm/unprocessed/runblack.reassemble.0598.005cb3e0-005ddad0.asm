@@ -9806,7 +9806,7 @@ _jmp_addr_0x005d1260:    push               ebx                                 
                          {disp32} mov       dword ptr [eax + 0x00eab7f4], ecx              // 0x005d20dd    8988f4b7ea00
                          {disp32} inc       dword ptr [data_bytes + 0x4f3ab8]              // 0x005d20e3    ff05b89aeb00
 .Lbl_addr_0x005d20e9:    {disp32} lea       ecx, dword ptr [esp + 0x00000094]              // 0x005d20e9    8d8c2494000000
-                         call               dword ptr [rdata_bytes + 0x75c]                // 0x005d20f0    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]                // 0x005d20f0    ff155c978a00
                          {disp32} mov       ecx, dword ptr [_global]                       // 0x005d20f6    8b0d203bcd00
                          {disp32} mov       eax, dword ptr [ecx + 0x000003ac]              // 0x005d20fc    8b81ac030000
                          {disp32} mov       dword ptr [esp + 0x00000098], eax              // 0x005d2102    89842498000000
@@ -9837,7 +9837,7 @@ _jmp_addr_0x005d1260:    push               ebx                                 
                          {disp32} mov       dword ptr [data_bytes + 0x4f39f0], ebx         // 0x005d2185    891df099eb00
                          {disp32} mov       dword ptr [data_bytes + 0x4e3f44], edx         // 0x005d218b    8915449fea00
                          {disp32} mov       dword ptr [data_bytes + 0x4e3f48], eax         // 0x005d2191    a3489fea00
-                         call               dword ptr [rdata_bytes + 0x758]                // 0x005d2196    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]  // 0x005d2196    ff1558978a00
 .Lbl_addr_0x005d219c:    pop                edi                                            // 0x005d219c    5f
                          pop                esi                                            // 0x005d219d    5e
                          pop                ebp                                            // 0x005d219e    5d

@@ -4814,7 +4814,7 @@ _jmp_addr_0x00649810:    sub                esp, 0x00000174                     
                          cmp.s              eax, ebx                                       // 0x0064988e    3bc3
                          {disp8} je         .Lbl_addr_0x006498d8                           // 0x00649890    7446
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                    // 0x00649892    8d4c2418
-                         call               dword ptr [rdata_bytes + 0x75c]                // 0x00649896    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]                // 0x00649896    ff155c978a00
                          {disp32} mov       ecx, dword ptr [_global]                       // 0x0064989c    8b0d203bcd00
                          {disp32} mov       eax, dword ptr [ecx + 0x000003ac]              // 0x006498a2    8b81ac030000
                          {disp8} lea        edx, dword ptr [esp + 0x18]                    // 0x006498a8    8d542418
@@ -4825,7 +4825,7 @@ _jmp_addr_0x00649810:    sub                esp, 0x00000174                     
                          {disp8} mov        dword ptr [esp + 0x24], 0x00000000             // 0x006498c1    c744242400000000
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                           // 0x006498c9    e86205deff
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                    // 0x006498ce    8d4c2418
-                         call               dword ptr [rdata_bytes + 0x758]                // 0x006498d2    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]  // 0x006498d2    ff1558978a00
 .Lbl_addr_0x006498d8:    push               0x0                                            // 0x006498d8    6a00
                          mov.s              ecx, esi                                       // 0x006498da    8bce
                          call               ?SetWorshipPercentage@Town@@QAEXM@Z            // 0x006498dc    e87f270f00

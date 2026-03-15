@@ -1061,7 +1061,7 @@ _Reinit__11InnerCameraFv:
                          mov.s              esi, ecx                                      // 0x00788638    8bf1
                          push               edi                                           // 0x0078863a    57
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x0078863b    8d4c2438
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x0078863f    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x0078863f    ff155c978a00
                          {disp32} fld       dword ptr [data_bytes + 0x298454]             // 0x00788645    d90554e4c500
                          {disp32} mov       edx, dword ptr [data_bytes + 0x298458]        // 0x0078864b    8b1558e4c500
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x00788651    8b0d203bcd00
@@ -1291,7 +1291,7 @@ _Reinit__11InnerCameraFv:
                          mov.s              ecx, esi                                      // 0x007889f2    8bce
                          call               ?DrawAdditional@GameOptionsRoom@@UAEX_N@Z     // 0x007889f4    e837180100
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x007889f9    8d4c2438
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x007889fd    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x007889fd    ff1558978a00
                          pop                edi                                           // 0x00788a03    5f
                          pop                esi                                           // 0x00788a04    5e
                          pop                ebx                                           // 0x00788a05    5b
