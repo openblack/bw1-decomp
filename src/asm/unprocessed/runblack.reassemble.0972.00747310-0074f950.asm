@@ -240,10 +240,10 @@
 .globl _jmp_addr_0x0074caf0
 .globl _jmp_addr_0x0074cbd0
 .globl _jmp_addr_0x0074cca0
-.globl ?GetDistance@GUtils@@SAXABUMapCoords@@0@Z     
+.globl ?GetDistance@GUtils@@SAXABUMapCoords@@0@Z
 .globl _jmp_addr_0x0074cce0
 .globl _jmp_addr_0x0074cd50
-.globl ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z     
+.globl ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
 .globl _jmp_addr_0x0074cd90
 .globl _jmp_addr_0x0074cde0
 .globl ?FastDistance@GUtils@@SAHABUMapCoords@@0@Z
@@ -254,8 +254,8 @@
 .globl _LHArcTan__Fll
 .globl ?GetAngleFromDXDZ@GUtils@@SAGJJ@Z
 .globl _jmp_addr_0x0074d220
-.globl ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z     
-.globl ?Get3DAngleFromXZ@GUtils@@SAMABUMapCoords@@0@Z     
+.globl ?GetAngleFromXZ@GUtils@@SAGABUMapCoords@@0@Z
+.globl ?Get3DAngleFromXZ@GUtils@@SAMABUMapCoords@@0@Z
 .globl _jmp_addr_0x0074d360
 .globl _jmp_addr_0x0074d380
 .globl _jmp_addr_0x0074d3a0
@@ -288,7 +288,7 @@
 .globl _jmp_addr_0x0074e270
 .globl _jmp_addr_0x0074e290
 .globl _jmp_addr_0x0074e2b0
-.globl ?FindNearestDrinkingWater@GUtils@@SA_NAAUMapCoords@@0M@Z  
+.globl ?FindNearestDrinkingWater@GUtils@@SAIAAUMapCoords@@0M@Z
 .globl _jmp_addr_0x0074e4c0
 .globl _jmp_addr_0x0074eb40
 .globl ?GetMidPoint@GUtils@@SAXAAUMapCoords@@0M@Z
@@ -11350,7 +11350,7 @@ _jmp_addr_0x0074e2b0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          nop                                                               // 0x0074e39d    90
                          nop                                                               // 0x0074e39e    90
                          nop                                                               // 0x0074e39f    90
-?FindNearestDrinkingWater@GUtils@@SA_NAAUMapCoords@@0M@Z:
+?FindNearestDrinkingWater@GUtils@@SAIAAUMapCoords@@0M@Z:
                                                                push               ebx                                            // 0x0074e3a0    53
                          {disp8} mov        ebx, dword ptr [esp + 0x10]                    // 0x0074e3a1    8b5c2410
                          push               esi                                            // 0x0074e3a5    56

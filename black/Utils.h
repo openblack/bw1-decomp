@@ -83,7 +83,7 @@ float __cdecl ConvertGameAngleTo3D__6GUtilsFl(uint32_t angle) asm("?ConvertGameA
 // win1.41 0074dcc0 mac 10032220 GUtils::ConvertWholeDistanceToMeters(long)
 float __cdecl ConvertWholeDistanceToMeters__6GUtilsFl(int param_1) asm("?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z");
 // win1.41 0074e3a0 mac 104fa7f0 GUtils::FindNearestDrinkingWater(MapCoords &, MapCoords &, float)
-bool __cdecl FindNearestDrinkingWater__6GUtilsFR9MapCoordsR9MapCoordsf(struct MapCoords* param_1, struct MapCoords* param_2, float max_dist) asm("?FindNearestDrinkingWater@GUtils@@SA_NAAUMapCoords@@0M@Z");
+bool __cdecl FindNearestDrinkingWater__6GUtilsFR9MapCoordsR9MapCoordsf(struct MapCoords* param_1, struct MapCoords* param_2, float max_dist) asm("?FindNearestDrinkingWater@GUtils@@SAIAAUMapCoords@@0M@Z");
 // win1.41 0074f170 mac 10067300 GUtils::SigmoidThreshold(float, float)
 float __cdecl SigmoidThreshold__6GUtilsFff(float param_1, float param_2) asm("?SigmoidThreshold@GUtils@@SAMMM@Z");
 // win1.41 0074f290 mac 100673e0 GUtils::GetDistanceModifier(float float)
