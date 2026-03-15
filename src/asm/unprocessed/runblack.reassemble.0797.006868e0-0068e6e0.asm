@@ -6,7 +6,7 @@
 .extern _jmp_addr_0x00401140
 .extern _SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern @__ct__7LHPointFfff@20
 .extern _jmp_addr_0x004427b0
 .extern _jmp_addr_0x00442ce0
@@ -2766,7 +2766,7 @@ _ModifyAtomCollection__22UR_GesturingRecognisedCFP14AtomCollection:
                          {disp8} mov        dword ptr [esp + 0x40], 0x00000001            // 0x00688647    c744244001000000
                          {disp8} mov        dword ptr [esp + 0x70], eax                   // 0x0068864f    89442470
                          {disp8} mov        dword ptr [esp + 0x44], 0x00000000            // 0x00688653    c744244400000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0068865b    e8d017daff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0068865b    e8d017daff
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x00688660    8d4c2434
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x00688664    ff1558978a00
 .Lbl_addr_0x0068866a:    {disp32} mov       eax, dword ptr [esp + 0x000001a0]             // 0x0068866a    8b8424a0010000
@@ -8865,7 +8865,7 @@ _DoRemoveFromHandVisual__7PHandFXFv:
                          {disp8} mov        dword ptr [esp + 0x38], 0x00000077            // 0x0068cecd    c744243877000000
                          {disp8} mov        dword ptr [esp + 0x34], esi                   // 0x0068ced5    89742434
                          {disp8} mov        dword ptr [esp + 0x1c], 0x00000000            // 0x0068ced9    c744241c00000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0068cee1    e84acfd9ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0068cee1    e84acfd9ff
                          push               0x00000130                                    // 0x0068cee6    6830010000
                          push               0x00c028b4                                    // 0x0068ceeb    68b428c000
                          push               0x48                                          // 0x0068cef0    6a48

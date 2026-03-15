@@ -23,7 +23,7 @@
 .extern @DeleteString__9SetupListFi@12
 .extern @InsertString__9SetupListFiPw@16
 .extern _jmp_addr_0x00428740
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20
 .extern _jmp_addr_0x0042a280
 .extern ?__nw@Base@@SAPAXK@Z
@@ -688,7 +688,7 @@ _jmp_addr_0x0076cd40:    sub                esp, 0x10                           
                          {disp8} mov        dword ptr [esp + 0x4c], eax                     // 0x0076cf30    8944244c
                          {disp8} lea        eax, dword ptr [esp + 0x04]                     // 0x0076cf34    8d442404
                          push               eax                                             // 0x0076cf38    50
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                            // 0x0076cf39    e8f2cecbff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                            // 0x0076cf39    e8f2cecbff
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                     // 0x0076cf3e    8d4c2404
                          {disp8} mov        byte ptr [esi + 0x3c], 0x01                     // 0x0076cf42    c6463c01
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]   // 0x0076cf46    ff1558978a00

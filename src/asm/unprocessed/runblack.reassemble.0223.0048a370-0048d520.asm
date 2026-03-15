@@ -4,7 +4,7 @@
 .extern rdata_bytes
 .extern data_bytes
 .extern ?ApplyEffectsDueToPhysicalDestruction@Abode@@QAEXPAVObject@@PAVGPlayer@@@Z
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern _jmp_addr_0x0042a4b0
 .extern _jmp_addr_0x00476fa0
 .extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
@@ -2530,7 +2530,7 @@ _jmp_addr_0x0048bcc0:    sub                esp, 0x000001b0                     
                          {disp8} mov        dword ptr [esp + 0x64], 0x00000001                   // 0x0048c41c    c744246401000000
                          {disp32} mov       dword ptr [esp + 0x00000094], eax                    // 0x0048c424    89842494000000
                          {disp8} mov        dword ptr [esp + 0x68], 0x00000000                   // 0x0048c42b    c744246800000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z // 0x0048c433    e8f8d9f9ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z // 0x0048c433    e8f8d9f9ff
                          mov.s              ecx, edi                                             // 0x0048c438    8bcf
                          call               _jmp_addr_0x006e7560                                 // 0x0048c43a    e821b12500
                          {disp8} lea        ecx, dword ptr [esp + 0x58]                          // 0x0048c43f    8d4c2458
@@ -2580,7 +2580,7 @@ _jmp_addr_0x0048bcc0:    sub                esp, 0x000001b0                     
                          {disp8} mov        dword ptr [esp + 0x64], 0x00000001                   // 0x0048c4f9    c744246401000000
                          {disp32} mov       dword ptr [esp + 0x00000094], eax                    // 0x0048c501    89842494000000
                          {disp8} mov        dword ptr [esp + 0x68], 0x00000000                   // 0x0048c508    c744246800000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z // 0x0048c510    e81bd9f9ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z // 0x0048c510    e81bd9f9ff
                          mov.s              ecx, edi                                             // 0x0048c515    8bcf
                          call               _jmp_addr_0x006e7560                                 // 0x0048c517    e844b02500
                          {disp8} lea        ecx, dword ptr [esp + 0x58]                          // 0x0048c51c    8d4c2458

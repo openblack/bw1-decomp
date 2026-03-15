@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern ?FUN_004046a0@Abode@@QAEXH@Z
 .extern _jmp_addr_0x00419a60
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
@@ -4037,7 +4037,7 @@ _jmp_addr_0x00510bb0:    push               ebx                                 
                          {disp8} mov        dword ptr [esp + 0x28], 0x00000001            // 0x00510fbb    c744242801000000
                          {disp8} mov        dword ptr [esp + 0x58], eax                   // 0x00510fc3    89442458
                          {disp8} mov        dword ptr [esp + 0x2c], 0x00000000            // 0x00510fc7    c744242c00000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x00510fcf    e85c8ef1ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x00510fcf    e85c8ef1ff
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                   // 0x00510fd4    8d4c241c
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x00510fd8    ff1558978a00
 .Lbl_addr_0x00510fde:    push               esi                                           // 0x00510fde    56

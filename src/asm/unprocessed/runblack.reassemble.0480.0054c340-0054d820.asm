@@ -10,7 +10,7 @@
 .extern ?DrawTextWrap@SetupThing@@SAMHHHHH_NPA_WHPAULH3DColor@@00@Z
 .extern ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z
 .extern _jmp_addr_0x00413960
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20
 .extern ?Stop@LHTimer@@QAEXXZ
 .extern @SetSpeedUpFactor__7LHTimerFf@12
@@ -1128,7 +1128,7 @@ _globl_ct_0x0054ceb0:    {disp32} jmp       .Lbl_addr_0x0054cec0                
                          {disp8} mov        dword ptr [esp + 0x6c], eax                   // 0x0054d030    8944246c
                          {disp32} mov       dword ptr [esp + 0x00000088], ebx             // 0x0054d034    899c2488000000
                          {disp32} mov       dword ptr [esp + 0x0000008c], 0x000000a0      // 0x0054d03b    c784248c000000a0000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0054d046    e8e5cdedff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0054d046    e8e5cdedff
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0054d04b    8b0d5c19d000
                          {disp32} mov       dword ptr [data_bytes + 0x22627c], ebx        // 0x0054d051    891d7cc2be00
                          call               ?IsMultiplayerGame@GGame@@QBE_NXZ             // 0x0054d057    e8245f0000

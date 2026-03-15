@@ -14,7 +14,7 @@
 .extern ?DrawText@SetupThing@@SAMHHHW4TEXTJUSTIFY@@PA_WHPAULH3DColor@@H@Z
 .extern _jmp_addr_0x00426c40
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
@@ -9828,7 +9828,7 @@ _jmp_addr_0x005d1260:    push               ebx                                 
                          {disp32} mov       dword ptr [esp + 0x000000cc], 0x3e4ccccd       // 0x005d214e    c78424cc000000cdcc4c3e
                          {disp32} mov       dword ptr [esp + 0x000000d0], edx              // 0x005d2159    899424d0000000
                          {disp32} mov       dword ptr [esp + 0x000000a4], ebp              // 0x005d2160    89ac24a4000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                           // 0x005d2167    e8c47ce5ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                           // 0x005d2167    e8c47ce5ff
                          {disp8} mov        ecx, dword ptr [esp + 0x48]                    // 0x005d216c    8b4c2448
                          {disp8} mov        edx, dword ptr [esp + 0x4c]                    // 0x005d2170    8b54244c
                          {disp8} mov        eax, dword ptr [esp + 0x50]                    // 0x005d2174    8b442450

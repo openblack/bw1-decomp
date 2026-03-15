@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern ?SetIdentityMatrix@LHMatrix@@QAEXXZ
 .extern ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
@@ -2178,7 +2178,7 @@ _jmp_addr_0x0070a510:    {disp32} fld       dword ptr [data_bytes + 0x3d07d8]   
                          {disp8} mov        dword ptr [esp + 0x48], esi                   // 0x0070a699    89742448
                          {disp8} mov        dword ptr [esp + 0x30], 0x00000000            // 0x0070a69d    c744243000000000
                          {disp8} mov        dword ptr [esp + 0x4c], 0x00000086            // 0x0070a6a5    c744244c86000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0070a6ad    e87ef7d1ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0070a6ad    e87ef7d1ff
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x0070a6b2    8d4c2424
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0070a6b6    ff1558978a00
 .Lbl_addr_0x0070a6bc:    mov.s              ecx, esi                                      // 0x0070a6bc    8bce
@@ -2792,7 +2792,7 @@ _jmp_addr_0x0070a510:    {disp32} fld       dword ptr [data_bytes + 0x3d07d8]   
                          {disp8} mov        dword ptr [esp + 0x30], 0x00000000            // 0x0070ad29    c744243000000000
                          {disp8} mov        dword ptr [esp + 0x18], 0x00000000            // 0x0070ad31    c744241800000000
                          {disp8} mov        dword ptr [esp + 0x1c], 0x00000000            // 0x0070ad39    c744241c00000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0070ad41    e8eaf0d1ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0070ad41    e8eaf0d1ff
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                   // 0x0070ad46    8d4c240c
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0070ad4a    ff1558978a00
 .Lbl_addr_0x0070ad50:    mov.s              ecx, esi                                      // 0x0070ad50    8bce

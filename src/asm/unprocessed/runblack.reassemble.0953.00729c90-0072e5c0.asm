@@ -4,7 +4,7 @@
 .extern rdata_bytes
 .extern data_bytes
 .extern ??$ReadIt@H@GameOSFile@@QAEXAAH@Z
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
@@ -1272,7 +1272,7 @@ _jmp_addr_0x0072a610:    {disp8} mov        eax, dword ptr [ecx + 0x78]         
                          {disp8} mov        dword ptr [esp + 0x20], 0x00000001            // 0x0072a6e0    c744242001000000
                          {disp8} mov        dword ptr [esp + 0x50], edx                   // 0x0072a6e8    89542450
                          {disp8} mov        dword ptr [esp + 0x24], 0x00000000            // 0x0072a6ec    c744242400000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0072a6f4    e837f7cfff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0072a6f4    e837f7cfff
                          mov                edx, dword ptr [esi]                          // 0x0072a6f9    8b16
                          push               0x0                                           // 0x0072a6fb    6a00
                          mov.s              ecx, esi                                      // 0x0072a6fd    8bce
@@ -7687,7 +7687,7 @@ _jmp_addr_0x0072e3b0:    push               ecx                                 
                          {disp8} mov        eax, dword ptr [esi + 0x0c]                   // 0x0072e4c3    8b460c
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x0072e4c6    8b0d203bcd00
                          push               eax                                           // 0x0072e4cc    50
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0072e4cd    e85eb9cfff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0072e4cd    e85eb9cfff
                          pop                edi                                           // 0x0072e4d2    5f
                          {disp8} mov        dword ptr [esi + 0x14], 0x00000000            // 0x0072e4d3    c7461400000000
                          pop                esi                                           // 0x0072e4da    5e

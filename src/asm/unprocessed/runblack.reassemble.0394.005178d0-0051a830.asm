@@ -9,7 +9,7 @@
 .extern ?GetInfo@PlannedAbode@@SAPAVGAbodeInfo@@XZ
 .extern ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern @__ct__7LHPointFfff@20
 .extern _jmp_addr_0x0044cf90
 .extern @__ct__7LHPointFRC7LHPoint@12
@@ -895,7 +895,7 @@ _jmp_addr_0x00518050:    push               ebx                                 
                          {disp8} mov        dword ptr [esp + 0x44], ebp                   // 0x00518286    896c2444
                          {disp8} mov        dword ptr [esp + 0x58], ebp                   // 0x0051828a    896c2458
                          {disp8} mov        dword ptr [esp + 0x40], ebp                   // 0x0051828e    896c2440
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x00518292    e8991bf1ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x00518292    e8991bf1ff
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x00518297    8d4c2434
                          {disp32} mov       dword ptr [data_bytes + 0x30031c], 0x00000001 // 0x0051829b    c7051c63cc0001000000
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x005182a5    ff1558978a00

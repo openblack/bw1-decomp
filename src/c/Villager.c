@@ -5349,7 +5349,7 @@ uint32_t __fastcall ApplyThisToObject__8VillagerFP16GInterfaceStatusP6ObjectP23G
     asm("{disp8} mov        dword ptr [esp + 0x4c], ebx");                   // 0x00752e16    895c244c
     asm("{disp8} mov        dword ptr [esp + 0x7c], edx");                   // 0x00752e1a    8954247c
     asm("{disp8} mov        dword ptr [esp + 0x50], 0x00000000");            // 0x00752e1e    c744245000000000
-    asm("call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z");                          // 0x00752e26    e80570cdff
+    asm("call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z");                          // 0x00752e26    e80570cdff
     asm("mov                edx, dword ptr [esi]");                          // 0x00752e2b    8b16
     asm("mov.s              ecx, esi");                                      // 0x00752e2d    8bce
     asm("call               dword ptr [edx + 0xaf8]");                       // 0x00752e2f    ff92f80a0000
@@ -5360,7 +5360,7 @@ uint32_t __fastcall ApplyThisToObject__8VillagerFP16GInterfaceStatusP6ObjectP23G
     asm("{disp8} lea        edx, dword ptr [esp + 0x40]");                   // 0x00752e45    8d542440
     asm("push               edx");                                           // 0x00752e49    52
     asm("{disp8} mov        dword ptr [esp + 0x48], eax");                   // 0x00752e4a    89442448
-    asm("call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z");                          // 0x00752e4e    e8dd6fcdff
+    asm("call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z");                          // 0x00752e4e    e8dd6fcdff
     asm("push               0xa");                                           // 0x00752e53    6a0a
     asm("push               0xd");                                           // 0x00752e55    6a0d
     asm("call               _jmp_addr_0x0071ed40");                          // 0x00752e57    e8e4befcff
@@ -5387,7 +5387,7 @@ uint32_t __fastcall ApplyThisToObject__8VillagerFP16GInterfaceStatusP6ObjectP23G
     asm("add                esp, 0x08");                                     // 0x00752e9e    83c408
     asm("{disp8} lea        eax, dword ptr [esp + 0x40]");                   // 0x00752ea1    8d442440
     asm("push               eax");                                           // 0x00752ea5    50
-    asm("call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z");                          // 0x00752ea6    e8856fcdff
+    asm("call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z");                          // 0x00752ea6    e8856fcdff
     asm("LAB__addr_0x00752eab:");
     asm("{disp8} lea        ecx, dword ptr [esp + 0x40]");                   // 0x00752eab    8d4c2440
     asm("call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]");   // 0x00752eaf    ff1558978a00

@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?GetNextPlayer@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ
 .extern _jmp_addr_0x005e6540
@@ -495,7 +495,7 @@ _jmp_addr_0x0063a940:    sub                esp, 0x00000180                     
                          {disp8} mov        dword ptr [esp + 0x34], 0x00000001            // 0x0063aa7f    c744243401000000
                          {disp8} mov        dword ptr [esp + 0x64], eax                   // 0x0063aa87    89442464
                          {disp8} mov        dword ptr [esp + 0x38], 0x00000000            // 0x0063aa8b    c744243800000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0063aa93    e898f3deff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0063aa93    e898f3deff
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x0063aa98    8d4c2428
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0063aa9c    ff1558978a00
 .Lbl_addr_0x0063aaa2:    push               esi                                           // 0x0063aaa2    56

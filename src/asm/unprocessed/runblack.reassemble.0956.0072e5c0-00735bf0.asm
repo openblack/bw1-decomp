@@ -18,7 +18,7 @@
 .extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .extern _SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl
 .extern ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern _jmp_addr_0x0042a240
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
@@ -1254,7 +1254,7 @@ _globl_ct_0x0072ea30:    call               .Lbl_addr_0x0072ea40                
                          {disp8} mov        dword ptr [esp + 0x48], edx                   // 0x0072ee47    89542448
                          {disp8} mov        dword ptr [esp + 0x4c], eax                   // 0x0072ee4b    8944244c
                          {disp8} mov        dword ptr [esp + 0x20], 0x00000001            // 0x0072ee4f    c744242001000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0072ee57    e8d4afcfff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0072ee57    e8d4afcfff
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x0072ee5c    8d4c2410
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0072ee60    ff1558978a00
 .Lbl_addr_0x0072ee66:    pop                esi                                           // 0x0072ee66    5e
@@ -4884,7 +4884,7 @@ _globl_ct_0x007310e0:    call               .Lbl_addr_0x007310f0                
                          {disp8} mov        dword ptr [esp + 0x10], 0x00000001            // 0x0073152e    c744241001000000
                          {disp8} mov        dword ptr [esp + 0x40], edx                   // 0x00731536    89542440
                          {disp8} mov        dword ptr [esp + 0x14], 0x00000000            // 0x0073153a    c744241400000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x00731542    e8e988cfff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x00731542    e8e988cfff
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x00731547    8d4c2404
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0073154b    ff1558978a00
                          pop                esi                                           // 0x00731551    5e

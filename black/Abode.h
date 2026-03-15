@@ -518,7 +518,7 @@ uint8_t __fastcall GetNumAdultsInAbode__5AbodeFv(struct Abode* this) asm("?GetNu
 // win1.41 004070f0 mac 101b8780 Abode::DrawPercentFull(int)
 void __fastcall DrawPercentFull__5AbodeFi(struct Abode* this, const void* edx, int param_1) asm("?DrawPercentFull@Abode@@QAEXI@Z");
 // win1.41 00407230 mac inlined Abode::FUN_00407230(bool)
-struct MapCoords* __fastcall FUN_00407230__5AbodeFb(struct Abode* this, const void* edx, struct MapCoords* coords, bool param_2) asm("?FUN_00407230@Abode@@QAE?AUMapCoords@@I@Z");
+struct MapCoords* __fastcall FUN_00407230__5AbodeFb(struct Abode* this, const void* edx, struct MapCoords* coords, bool param_2) asm("?FUN_00407230@Abode@@QAE?AUMapCoords@@II@Z");
 // win1.41 004072e0 mac 1000cd50 Abode::GetPosOutside(float, float, float)
 struct MapCoords* __fastcall GetPosOutside__5AbodeFfff(struct Abode* this, const void* edx, struct MapCoords* coords, float param_2, float param_3, float param_4) asm("?GetPosOutside@Abode@@QAE?AUMapCoords@@MMM@Z");
 // win1.41 004073f0 mac inlined Abode::FUN_004073f0(GPlayer *)

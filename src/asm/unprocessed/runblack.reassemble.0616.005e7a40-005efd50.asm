@@ -8,7 +8,7 @@
 .extern _jmp_addr_0x00407a30
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
@@ -8779,7 +8779,7 @@ _SetAge__6LivingFUl:
                          {disp8} mov        dword ptr [esp + 0x3c], 0x00000001            // 0x005ed6b1    c744243c01000000
                          {disp8} mov        dword ptr [esp + 0x6c], eax                   // 0x005ed6b9    8944246c
                          {disp8} mov        dword ptr [esp + 0x40], ebx                   // 0x005ed6bd    895c2440
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x005ed6c1    e86ac7e3ff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x005ed6c1    e86ac7e3ff
                          {disp8} lea        ecx, dword ptr [esp + 0x30]                   // 0x005ed6c6    8d4c2430
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x005ed6ca    ff1558978a00
 .Lbl_addr_0x005ed6d0:    {disp32} mov       ecx, dword ptr [_game]                        // 0x005ed6d0    8b0d5c19d000

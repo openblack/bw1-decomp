@@ -18,7 +18,7 @@
 .extern ?Load@Abode@@UAEIAAVGameOSFile@@@Z
 .extern ?GetDiscipleStateIfInteractedWith@Abode@@UAEIPAVGInterfaceStatus@@PAVVillager@@@Z
 .extern _jmp_addr_0x00426a80
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436960
 .extern ??3Base@@SAXPAXK@Z
@@ -1151,7 +1151,7 @@ _jmp_addr_0x00779690:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          {disp8} mov        dword ptr [esp + 0x48], 0x00000001            // 0x00779a07    c744244801000000
                          {disp8} mov        dword ptr [esp + 0x78], eax                   // 0x00779a0f    89442478
                          {disp8} mov        dword ptr [esp + 0x4c], 0x00000000            // 0x00779a13    c744244c00000000
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x00779a1b    e81004cbff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x00779a1b    e81004cbff
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                   // 0x00779a20    8d4c243c
                          call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x00779a24    ff1558978a00
 .Lbl_addr_0x00779a2a:    push               0x1                                           // 0x00779a2a    6a01

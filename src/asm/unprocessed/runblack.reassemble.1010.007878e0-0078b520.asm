@@ -6,7 +6,7 @@
 .extern ?GetSizeFootprintData@LH3DMesh@@QAEIXZ
 .extern ?GetSizeUV2Data_dup1@LH3DMesh@@QAEIXZ
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
-.extern ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z
+.extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern @__ct__7LHPointFfff@20
 .extern ?SetPointFromPointDistanceHeadingAndPitch@GCamera@@SAXPAULHPoint@@ABU2@MMM@Z
 .extern ?GetHeadingAndPitchFromPoints@GCamera@@SAXABULHPoint@@0PAM1@Z
@@ -1081,7 +1081,7 @@ _Reinit__11InnerCameraFv:
                          {disp8} mov        dword ptr [esp + 0x74], eax                   // 0x0078868e    89442474
                          {disp8} mov        dword ptr [esp + 0x5c], ebx                   // 0x00788692    895c245c
                          {disp8} mov        dword ptr [esp + 0x44], edi                   // 0x00788696    897c2444
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0078869a    e89117caff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x0078869a    e89117caff
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x0078869f    8b0d203bcd00
                          {disp32} mov       eax, dword ptr [ecx + 0x000003ac]             // 0x007886a5    8b81ac030000
                          {disp8} lea        edx, dword ptr [esp + 0x38]                   // 0x007886ab    8d542438
@@ -1094,7 +1094,7 @@ _Reinit__11InnerCameraFv:
                          {disp8} mov        dword ptr [esp + 0x74], 0xc1f00000            // 0x007886d0    c74424740000f0c1
                          {disp8} mov        dword ptr [esp + 0x5c], ebx                   // 0x007886d8    895c245c
                          {disp8} mov        dword ptr [esp + 0x44], edi                   // 0x007886dc    897c2444
-                         call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x007886e0    e84b17caff
+                         call               ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z                          // 0x007886e0    e84b17caff
                          cmp                byte ptr [esp + 0x000001a4], bl               // 0x007886e5    389c24a4010000
                          {disp32} jne       .Lbl_addr_0x007889ea                          // 0x007886ec    0f85f8020000
                          {disp32} mov       al, byte ptr [data_bytes + 0x41ad24]          // 0x007886f2    a0240dde00
