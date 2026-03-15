@@ -321,8 +321,8 @@ public:
     float GetNumAdultsInAbode();
     // win1.41 004070f0 mac 101b8780 Abode::DrawPercentFull(int)
     void DrawPercentFull(bool32_t only_one);
-    // win1.41 00407230 mac inlined Abode::FUN_00407230(bool)
-    MapCoords FUN_00407230(bool32_t param_1);
+    // win1.41 00407230 mac inlined
+    MapCoords FUN_00407230(uint32_t param_1, uint32_t param_2);
     // win1.41 004072e0 mac 1000cd50 Abode::GetPosOutside(float, float, float)
     MapCoords GetPosOutside(float param_2, float param_3, float param_4);
     // win1.41 004073f0 mac inlined Abode::FUN_004073f0(GPlayer *)
