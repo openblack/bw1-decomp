@@ -55,7 +55,7 @@ public:
     // win1.41 00429d60 mac 100001c0 GAudio::PlaySoundEffect(Base *, unsigned long, unsigned long, unsigned long, int, int, AUDIO_SFX_BANK_TYPE)
     void PlaySoundEffect(Base* param_1, uint32_t param_2, uint32_t param_3, uint32_t param_4, int param_5, int param_6, AUDIO_SFX_BANK_TYPE param_7);
     // win1.41 00429e30 mac 10020580 GAudio::PlaySoundEffect(LH_SamplePlayOptions *)
-    uint32_t PlaySoundEffect(LH_SamplePlayOptions* options);
+    void PlaySoundEffect(LH_SamplePlayOptions* options);
     // win1.41 0042a210 mac 1017e7d0 GAudio::StopPlayingSoundEffect(unsigned long, unsigned long, AUDIO_SFX_BANK_TYPE) const
     void StopPlayingSoundEffect(uint32_t param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type);
     // win1.41 0042a330 mac 1017e410 GAudio::ReleaseLoopOnSoundEffect(Base *, unsigned long, AUDIO_SFX_BANK_TYPE) const

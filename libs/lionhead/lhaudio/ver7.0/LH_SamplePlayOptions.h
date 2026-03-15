@@ -10,14 +10,8 @@ struct LH_SamplePlayOptions
 {
     uint8_t field_0x0[0x4];
     uint32_t field_0x4;
-    uint8_t field_0x8;
-    uint8_t field_0x9;
-    uint8_t field_0xa;
-    uint8_t field_0xb;
-    uint8_t field_0xc;
-    uint8_t field_0xd;
-    uint8_t field_0xe;
-    uint8_t field_0xf;
+    uint32_t field_0x8;
+    uint32_t field_0xc;
     uint8_t field_0x10[0x10];
     void* field_0x20;
     uint32_t field_0x24;
