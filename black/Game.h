@@ -83,9 +83,6 @@ public:
     StatsDatabase stats_database; /* 0x597c */
     CreatureDatabase creature_database; /* 0x598c */
     bool32_t field_0x599c;
-    uint8_t field_0x599d;
-    uint8_t field_0x599e;
-    uint8_t field_0x599f;
     uint32_t field_0x59a0;
     uint32_t field_0x59a4;
     uint8_t field_0x59a8[0xc];
