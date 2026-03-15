@@ -308,7 +308,7 @@ void __fastcall ReactToPhysicsImpact__5AbodeFP13PhysicsObjectb(struct Object* th
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x0040654e    8d4e14
     asm("{disp8} mov        dword ptr [esp + 0x3c], 0x00000016");            // 0x00406551    c744243c16000000
     asm("{disp8} mov        dword ptr [esp + 0x40], ebp");                   // 0x00406559    896c2440
-    asm("call               @GetLHPoint__9MapCoordsCFv@12");                 // 0x0040655d    e8def61f00
+    asm("call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ");      // 0x0040655d    e8def61f00
     asm("mov                ecx, dword ptr [eax]");                          // 0x00406562    8b08
     asm("{disp8} mov        edx, dword ptr [eax + 0x04]");                   // 0x00406564    8b5004
     asm("{disp8} mov        eax, dword ptr [eax + 0x08]");                   // 0x00406567    8b4008
@@ -386,7 +386,7 @@ void __fastcall ApplyEffectsDueToPhysicalDestruction__5AbodeFP6ObjectP7GPlayer(s
     asm("{disp8} lea        eax, dword ptr [esp + 0x08]");                   // 0x00406649    8d442408
     asm("push               eax");                                           // 0x0040664d    50
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x0040664e    8d4e14
-    asm("call               @GetLHPoint__9MapCoordsCFv@12");                 // 0x00406651    e8eaf51f00
+    asm("call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ");      // 0x00406651    e8eaf51f00
     asm("mov                ecx, dword ptr [eax]");                          // 0x00406656    8b08
     asm("{disp8} mov        edx, dword ptr [eax + 0x04]");                   // 0x00406658    8b5004
     asm("{disp8} mov        eax, dword ptr [eax + 0x08]");                   // 0x0040665b    8b4008

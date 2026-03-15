@@ -46,7 +46,7 @@
 .extern @SetupMoveToWithHug__6LivingFRC9MapCoordsUc@13
 .extern _RenderLoadingFrame__Fb
 .extern _jmp_addr_0x006041c0
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00634370
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern @GetPlayer3DColor__7GPlayerFv@12
@@ -2162,7 +2162,7 @@ _ProcessDeadList__9GameThingFi@4:    {disp32} mov       eax, dword ptr [_game]  
                          {disp8} lea        eax, dword ptr [esp + 0x08]                   // 0x005702e7    8d442408
                          push               eax                                           // 0x005702eb    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x005702ec    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x005702ef    e84c590900
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x005702ef    e84c590900
                          mov                edx, dword ptr [eax]                          // 0x005702f4    8b10
                          {disp8} mov        edi, dword ptr [esp + 0x18]                   // 0x005702f6    8b7c2418
                          mov.s              ecx, edi                                      // 0x005702fa    8bcf

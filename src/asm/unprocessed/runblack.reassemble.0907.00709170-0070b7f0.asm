@@ -40,7 +40,7 @@
 .extern _jmp_addr_0x005d36d0
 .extern _jmp_addr_0x006022c0
 .extern @__ct__9MapCoordsFRC7LHPoint@12
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?ConvertMapCoordToLandscapePoint@GLandscape@@SAPAULHPoint@@ABUMapCoords@@AAU2@@Z
 .extern ?ToBeDeleted@Object@@UAEXH@Z
 .extern _jmp_addr_0x00638b00
@@ -1360,7 +1360,7 @@ _jmp_addr_0x00709a40:    push               esi                                 
                          {disp8} mov        dword ptr [esp + 0x24], 0x00000000            // 0x00709bed    c744242400000000
                          {disp8} mov        dword ptr [esp + 0x28], 0x00000000            // 0x00709bf5    c744242800000000
                          {disp8} mov        dword ptr [esp + 0x2c], 0x00000000            // 0x00709bfd    c744242c00000000
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x00709c05    e836c0efff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x00709c05    e836c0efff
                          push               eax                                           // 0x00709c0a    50
                          push               edi                                           // 0x00709c0b    57
                          push               0x0                                           // 0x00709c0c    6a00
@@ -2198,7 +2198,7 @@ _jmp_addr_0x0070a510:    {disp32} fld       dword ptr [data_bytes + 0x3d07d8]   
                          {disp8} mov        dword ptr [esp + 0x1c], 0x00000000            // 0x0070a6e6    c744241c00000000
                          {disp8} mov        dword ptr [esp + 0x20], 0x00000000            // 0x0070a6ee    c744242000000000
                          {disp8} mov        dword ptr [esp + 0x24], 0x00000000            // 0x0070a6f6    c744242400000000
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x0070a6fe    e83db5efff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x0070a6fe    e83db5efff
                          push               eax                                           // 0x0070a703    50
                          push               ebx                                           // 0x0070a704    53
                          push               0x0                                           // 0x0070a705    6a00

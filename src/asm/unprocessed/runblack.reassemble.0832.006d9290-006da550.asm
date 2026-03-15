@@ -17,7 +17,7 @@
 .extern ?Save@GameThingWithPos@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@GameThingWithPos@@QAEIAAVGameOSFile@@@Z
 .extern _jmp_addr_0x005e6540
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00606380
 .extern _jmp_addr_0x006da550
 .extern ?GameRand@GRand@@SAHJ@Z
@@ -1538,12 +1538,12 @@ _jmp_addr_0x006da350:    sub               esp, 0x30                            
                          mov.s             ecx, ebx                                      // 0x006da459    8bcb
                          call              _jmp_addr_0x006d9290                          // 0x006da45b    e830eeffff
                          mov.s             ecx, eax                                      // 0x006da460    8bc8
-                         call              @GetLHPoint__9MapCoordsCFv@12                 // 0x006da462    e8d9b7f2ff
+                         call              ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x006da462    e8d9b7f2ff
                          {disp8} lea       ecx, dword ptr [esp + 0x34]                   // 0x006da467    8d4c2434
                          push              ecx                                           // 0x006da46b    51
                          {disp8} lea       ecx, dword ptr [esp + 0x14]                   // 0x006da46c    8d4c2414
                          mov.s             edi, eax                                      // 0x006da470    8bf8
-                         call              @GetLHPoint__9MapCoordsCFv@12                 // 0x006da472    e8c9b7f2ff
+                         call              ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x006da472    e8c9b7f2ff
                          fld               dword ptr [eax]                               // 0x006da477    d900
                          fsub              dword ptr [edi]                               // 0x006da479    d827
                          mov               ecx, dword ptr [esi]                          // 0x006da47b    8b0e

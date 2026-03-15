@@ -45,7 +45,7 @@
 .extern @IsCloseToEqual__9MapCoordsCFRC9MapCoordsf@16
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
 .extern _jmp_addr_0x006055c0
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?ApplyThisToMapCoord@Mobile@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@PAUGestureSystemPacketData@@@Z
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
 .extern _jmp_addr_0x00606ed0
@@ -764,7 +764,7 @@ _jmp_addr_0x0066d1a0:    sub                esp, 0x00000174                     
                          push               edx                                           // 0x0066d22d    52
                          {disp8} mov        dword ptr [esp + 0x3c], ebx                   // 0x0066d22e    895c243c
                          {disp8} mov        dword ptr [esp + 0x24], 0x00000001            // 0x0066d232    c744242401000000
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x0066d23a    e8018af9ff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x0066d23a    e8018af9ff
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x0066d23f    8b44240c
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                   // 0x0066d243    8b4c2410
                          {disp8} mov        edx, dword ptr [esp + 0x14]                   // 0x0066d247    8b542414

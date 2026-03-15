@@ -159,7 +159,7 @@
 .extern _jmp_addr_0x006054a0
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
 .extern _jmp_addr_0x006055c0
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
 .extern _jmp_addr_0x00606ed0
 .extern ?ToBeDeleted@MobileObject@@UAEXH@Z
@@ -15748,7 +15748,7 @@ _jmp_addr_0x006e9200:    push               esi                                 
                          mov.s              ecx, esi                                      // 0x006e9432    8bce
                          call               dword ptr [edx + 0x100]                       // 0x006e9434    ff9200010000
                          mov.s              ecx, eax                                      // 0x006e943a    8bc8
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x006e943c    e8ffc7f1ff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x006e943c    e8ffc7f1ff
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                   // 0x006e9441    8b4c2414
                          {disp8} mov        edx, dword ptr [esp + 0x18]                   // 0x006e9445    8b542418
                          {disp8} mov        eax, dword ptr [esp + 0x1c]                   // 0x006e9449    8b44241c

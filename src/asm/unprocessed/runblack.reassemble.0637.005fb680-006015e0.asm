@@ -55,7 +55,7 @@
 .extern @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16
 .extern _jmp_addr_0x00604c30
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?Load@MobileStatic@@UAEIAAVGameOSFile@@@Z
 .extern ?Save@MobileStatic@@UAEIAAVGameOSFile@@@Z
 .extern @__ct__12MobileStaticFRC9MapCoordsPC17GMobileStaticInfoP6Objectff@28
@@ -7276,7 +7276,7 @@ _jmp_addr_0x005ff330:    {disp32} mov       ecx, dword ptr [data_bytes + 0x37222
                          {disp8} lea        eax, dword ptr [esp + 0x04]                   // 0x005ffe16    8d442404
                          push               eax                                           // 0x005ffe1a    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x005ffe1b    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x005ffe1e    e81d5e0000
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x005ffe1e    e81d5e0000
                          {disp8} fld        dword ptr [eax + 0x08]                        // 0x005ffe23    d94008
                          {disp32} fsub      dword ptr [data_bytes + 0x4dbdc0]             // 0x005ffe26    d825c01dea00
                          push               0x0                                           // 0x005ffe2c    6a00

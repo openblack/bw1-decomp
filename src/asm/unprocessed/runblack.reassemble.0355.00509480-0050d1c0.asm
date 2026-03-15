@@ -55,7 +55,7 @@
 .extern ?Load@GroupBehaviour@@UAEIAAVGameOSFile@@@Z
 .extern ?CalculateDancePosition@Living@@QAE_NABUMapCoords@@PAU2@@Z
 .extern @GetNearestTown__9MapCoordsCFf@12
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00606ed0
 .extern ?ToBeDeleted@MobileObject@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@MobileObject@@UAEXABUMapCoords@@@Z
@@ -704,7 +704,7 @@ start_0x00509480_0x0050d1c0:
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x00509aaa    8d4c2424
                          push               ecx                                           // 0x00509aae    51
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                   // 0x00509aaf    8d4c241c
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x00509ab3    e888c10f00
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x00509ab3    e888c10f00
                          mov                dword ptr [edi], 0x008cefec                   // 0x00509ab8    c707ecef8c00
                          mov                ecx, dword ptr [eax]                          // 0x00509abe    8b08
                          {disp8} lea        edx, dword ptr [edi + 0x04]                   // 0x00509ac0    8d5704

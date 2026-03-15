@@ -55,7 +55,7 @@
 .extern _jmp_addr_0x005d8a80
 .extern _jmp_addr_0x00601d10
 .extern @__ct__9MapCoordsFRC7LHPoint@12
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?IncreaseLife@Object@@UAEXM@Z
 .extern ?ResolveLoad@Object@@UAEXXZ
 .extern ?Create@Game3DObject@@SAPAV1@W4ObjectType@LH3DObject@@@Z
@@ -2944,7 +2944,7 @@ _jmp_addr_0x00737bf0:    push               esi                                 
                          mov.s              ecx, esi                                       // 0x007380b7    8bce
                          call               dword ptr [edx + 0x100]                        // 0x007380b9    ff9200010000
                          mov.s              ecx, eax                                       // 0x007380bf    8bc8
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x007380c1    e87adbecff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x007380c1    e87adbecff
                          {disp32} mov       ecx, dword ptr [_global]                       // 0x007380c6    8b0d203bcd00
                          {disp32} mov       edx, dword ptr [ecx + 0x000003ac]              // 0x007380cc    8b91ac030000
                          {disp8} mov        eax, dword ptr [esp + 0x08]                    // 0x007380d2    8b442408
@@ -4824,7 +4824,7 @@ _jmp_addr_0x00738ff0:    push               ebx                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                    // 0x00739608    8d4c2410
                          push               ecx                                            // 0x0073960c    51
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                    // 0x0073960d    8d4b14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x00739610    e82bc6ecff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x00739610    e82bc6ecff
                          push               eax                                            // 0x00739615    50
                          call               _jmp_addr_0x007714b0                           // 0x00739616    e8957e0300
                          {disp32} mov       dword ptr [ebx + 0x000005e4], ebp              // 0x0073961b    89abe4050000

@@ -35,7 +35,7 @@
 .extern _jmp_addr_0x0050c290
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z
@@ -939,7 +939,7 @@ start_0x00502810_0x00503bd0:
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                          // 0x00503291    8d44241c
                          push               eax                                                  // 0x00503295    50
                          mov.s              ecx, ebx                                             // 0x00503296    8bcb
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x00503298    e8a3291000
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x00503298    e8a3291000
                          push               eax                                                  // 0x0050329d    50
                          push               ebp                                                  // 0x0050329e    55
                          mov.s              ecx, esi                                             // 0x0050329f    8bce
@@ -1041,7 +1041,7 @@ start_0x00502810_0x00503bd0:
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                          // 0x005033e4    8d44241c
                          push               eax                                                  // 0x005033e8    50
                          {disp8} lea        ecx, dword ptr [ebx + 0x14]                          // 0x005033e9    8d4b14
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x005033ec    e84f281000
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x005033ec    e84f281000
                          push               eax                                                  // 0x005033f1    50
                          push               ebp                                                  // 0x005033f2    55
                          mov.s              ecx, esi                                             // 0x005033f3    8bce

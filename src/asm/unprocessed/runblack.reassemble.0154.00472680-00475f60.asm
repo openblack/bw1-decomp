@@ -133,7 +133,7 @@
 .extern @ToBeDeleted__6LivingFi@12
 .extern ??0LivingAction@@QAE@XZ
 .extern ?InBounds@MapCoords@@QBEIXZ
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ??0CircleHugInfo@@QAE@XZ
 .extern @SetGameAngle__13MobileWallHugFUs@10
 .extern _jmp_addr_0x0060db00
@@ -5095,7 +5095,7 @@ _jmp_addr_0x00475d30:    sub                esp, 0x0c                           
                          {disp8} lea        ecx, dword ptr [esp + 0x08]                          // 0x00475ebb    8d4c2408
                          push               ecx                                                  // 0x00475ebf    51
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x00475ec0    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x00475ec3    e878fd1800
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x00475ec3    e878fd1800
                          push               eax                                                  // 0x00475ec8    50
                          call               _jmp_addr_0x00771a80                                 // 0x00475ec9    e8b2bb2f00
                          fstp               dword ptr [esp]                                      // 0x00475ece    d91c24

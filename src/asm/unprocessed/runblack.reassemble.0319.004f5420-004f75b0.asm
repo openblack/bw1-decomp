@@ -48,7 +48,7 @@
 .extern _jmp_addr_0x005e6ae0
 .extern _jmp_addr_0x005e6f70
 .extern _jmp_addr_0x005fa7d0
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern __ftol
 .extern  ??3@YAXPAX@Z
 .extern _atexit
@@ -2431,7 +2431,7 @@ _jmp_addr_0x004f6b60:    sub                esp, 0x14                           
                          {disp8} lea        eax, dword ptr [esp + 0x18]                    // 0x004f6b70    8d442418
                          push               eax                                            // 0x004f6b74    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                    // 0x004f6b75    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x004f6b78    e8c3f01000
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x004f6b78    e8c3f01000
                          {disp8} mov        ebp, dword ptr [esp + 0x28]                    // 0x004f6b7d    8b6c2428
                          {disp8} fld        dword ptr [ebp + 0x00]                         // 0x004f6b81    d94500
                          mov.s              ecx, esi                                       // 0x004f6b84    8bce

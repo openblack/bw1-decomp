@@ -12,7 +12,7 @@
 .extern @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
 .extern ?__ne@MapCoords@@QBE_NABV1@@Z
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern @AreWeThere__13MobileWallHugFf@12
 .extern _jmp_addr_0x0060c110
 .extern _jmp_addr_0x00639a60
@@ -943,7 +943,7 @@ _jmp_addr_0x006d7480:    sub                esp, 0x0000023c                     
                          add                ecx, 0x14                                     // 0x006d7664    83c114
                          {disp32} mov       dword ptr [esp + 0x0000010c], 0x0000005c      // 0x006d7667    c784240c0100005c000000
                          {disp32} mov       dword ptr [esp + 0x000000f4], 0x00000000      // 0x006d7672    c78424f400000000000000
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x006d767d    e8bee5f2ff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x006d767d    e8bee5f2ff
                          {disp8} mov        eax, dword ptr [esp + 0x1c]                   // 0x006d7682    8b44241c
                          {disp8} mov        ecx, dword ptr [esp + 0x20]                   // 0x006d7686    8b4c2420
                          {disp8} mov        edx, dword ptr [esp + 0x24]                   // 0x006d768a    8b542424

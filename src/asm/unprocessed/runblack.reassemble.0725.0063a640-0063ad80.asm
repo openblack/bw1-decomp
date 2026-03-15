@@ -8,7 +8,7 @@
 .extern ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ
 .extern _jmp_addr_0x005e6540
 .extern ?DoesObjectTypeCountAsFixed@MapCell@@SA_NW4OBJECT_TYPE@@@Z
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00637cc0
 .extern ?SearchForPhysicsObject@PhysicsObject@@SAPAV1@PAVObject@@@Z
 .extern @GetRealInterface__7GPlayerFUl@12
@@ -474,7 +474,7 @@ _jmp_addr_0x0063a940:    sub                esp, 0x00000180                     
                          mov.s              ecx, esi                                      // 0x0063aa29    8bce
                          call               dword ptr [edx + 0x100]                       // 0x0063aa2b    ff9200010000
                          mov.s              ecx, eax                                      // 0x0063aa31    8bc8
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x0063aa33    e808b2fcff
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x0063aa33    e808b2fcff
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x37e37c]        // 0x0063aa38    8b0d7c43d400
                          {disp8} lea        eax, dword ptr [ecx + 0x01]                   // 0x0063aa3e    8d4101
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x0063aa41    8b0d203bcd00

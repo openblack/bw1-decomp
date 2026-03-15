@@ -64,7 +64,7 @@
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
 .extern _jmp_addr_0x006055c0
 .extern _jmp_addr_0x006057b0
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00608770
 .extern _DoWallHuggerLookahead__Fv
 .extern @SetObjectPtr__13CircleHugInfoFPQ210NewCollide3ObjP13MobileWallHugb@17
@@ -16825,7 +16825,7 @@ _jmp_addr_0x00528970:    sub                esp, 0x10                           
                          mov.s              ecx, edi                                             // 0x005290b7    8bcf
                          fadd.s             st(0), st(0)                                         // 0x005290b9    dcc0
                          {disp8} fstp       dword ptr [esp + 0x0c]                               // 0x005290bb    d95c240c
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x005290bf    e87ccb0d00
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x005290bf    e87ccb0d00
                          push               eax                                                  // 0x005290c4    50
                          call               _jmp_addr_0x007714b0                                 // 0x005290c5    e8e6832400
                          {disp32} fld       dword ptr [esi + 0x000000d0]                         // 0x005290ca    d986d0000000
@@ -19207,7 +19207,7 @@ _jmp_addr_0x0052a950:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} lea        ebx, dword ptr [esi + 0x60]                          // 0x0052a992    8d5e60
                          push               edx                                                  // 0x0052a995    52
                          mov.s              ecx, ebx                                             // 0x0052a996    8bcb
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x0052a998    e8a3b20d00
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x0052a998    e8a3b20d00
                          mov                edx, dword ptr [eax]                                 // 0x0052a99d    8b10
                          {disp32} lea       ecx, dword ptr [esi + 0x00000084]                    // 0x0052a99f    8d8e84000000
                          mov                dword ptr [ecx], edx                                 // 0x0052a9a5    8911
@@ -19532,12 +19532,12 @@ _jmp_addr_0x0052aa10:    push               esi                                 
                          {disp8} mov        dword ptr [esp + 0x0c], ecx                          // 0x0052ae00    894c240c
                          push               edx                                                  // 0x0052ae04    52
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x0052ae05    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x0052ae08    e833ae0d00
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x0052ae08    e833ae0d00
                          mov.s              ebx, eax                                             // 0x0052ae0d    8bd8
                          {disp8} lea        eax, dword ptr [esp + 0x1c]                          // 0x0052ae0f    8d44241c
                          push               eax                                                  // 0x0052ae13    50
                          {disp8} lea        ecx, dword ptr [esi + 0x78]                          // 0x0052ae14    8d4e78
-                         call               @GetLHPoint__9MapCoordsCFv@12                        // 0x0052ae17    e824ae0d00
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ             // 0x0052ae17    e824ae0d00
                          fld                dword ptr [ebx]                                      // 0x0052ae1c    d903
                          fsub               dword ptr [eax]                                      // 0x0052ae1e    d820
                          push               ecx                                                  // 0x0052ae20    51

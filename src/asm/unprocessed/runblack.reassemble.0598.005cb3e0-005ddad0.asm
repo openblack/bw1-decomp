@@ -171,7 +171,7 @@
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern @__apl__9MapCoordsFRC9JustMapXZ@12
 .extern _jmp_addr_0x006055c0
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x006177e0
 .extern _jmp_addr_0x006182f0
 .extern _jmp_addr_0x006227c0
@@ -19065,7 +19065,7 @@ _jmp_addr_0x005d8ea0:    sub                esp, 0x3c                           
                          {disp8} lea        eax, dword ptr [esp + 0x08]                    // 0x005d8f62    8d442408
                          push               eax                                            // 0x005d8f66    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                    // 0x005d8f67    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x005d8f6a    e8d1cc0200
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x005d8f6a    e8d1cc0200
                          mov                edx, dword ptr [eax]                           // 0x005d8f6f    8b10
                          {disp8} mov        ecx, dword ptr [esp + 0x48]                    // 0x005d8f71    8b4c2448
                          mov                dword ptr [ecx], edx                           // 0x005d8f75    8911
@@ -19138,7 +19138,7 @@ _jmp_addr_0x005d8ea0:    sub                esp, 0x3c                           
 .Lbl_addr_0x005d903a:    {disp8} lea        eax, dword ptr [esp + 0x08]                    // 0x005d903a    8d442408
                          push               eax                                            // 0x005d903e    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                    // 0x005d903f    8d4e14
-                         call               @GetLHPoint__9MapCoordsCFv@12                  // 0x005d9042    e8f9cb0200
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ       // 0x005d9042    e8f9cb0200
                          mov                edx, dword ptr [eax]                           // 0x005d9047    8b10
                          {disp8} mov        edi, dword ptr [esp + 0x48]                    // 0x005d9049    8b7c2448
                          mov.s              ecx, edi                                       // 0x005d904d    8bcf

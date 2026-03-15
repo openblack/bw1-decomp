@@ -127,7 +127,7 @@ struct MapCoords
     // win1.41 00605660 mac 10087b50 MapCoords::operator==(MapCoords const &) const
     bool32_t operator==(const MapCoords& param_2) const;
     // win1.41 00605c40 mac 1004ff00 MapCoords::GetLHPoint(void) const
-    LHPoint* GetLHPoint(LHPoint* point) const;
+    LHPoint GetLHPoint() const;
     // win1.41 00605cd0 mac inlined MapCoords::GetMetresDistance(MapCoords const &)
     float GetMetresDistance(const MapCoords& other) const;
     // win1.41 00605fb0 mac 10032290 MapCoords::GetMetresDistanceSq(MapCoords const &) const

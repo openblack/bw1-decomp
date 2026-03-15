@@ -9,6 +9,9 @@
 #include "FieldCrop.h"
 #include "MobileStaticInfo.h"
 #include "MobileStatic.h"
+#include "lionhead/lh3dlib/development/LH3DIsland.h"
+
+extern "C" float rdata_float_coord_to_point;
 
 // win1.41 006020e0 mac 1048f050 MapCoords::GetNearestTown(float) const
 Town* MapCoords::GetNearestTown(float t_max) const
@@ -143,9 +146,13 @@ bool32_t MapCoords::operator!=(const MapCoords& param_1) const
 }
 
 // win1.41 00605c40 mac 1004ff00 MapCoords::GetLHPoint(void) const
-LHPoint* MapCoords::GetLHPoint(LHPoint* point) const
+LHPoint MapCoords::GetLHPoint() const
 {
-    return 0;
+    LHPoint result;
+    result.y = altitude + LH3DIsland::GetAltitude(*(LH3DMapCoords*)this);
+    result.x = rdata_float_coord_to_point * (float)x.full;
+    result.z = rdata_float_coord_to_point * (float)z.full;
+    return result;
 }
 
 // win1.41 00605cd0 mac inlined MapCoords::GetMetresDistance(MapCoords const &)

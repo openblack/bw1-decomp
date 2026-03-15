@@ -58,7 +58,7 @@
 .extern _jmp_addr_0x005ff310
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern @__pl__9MapCoordsCFRC9MapCoords@16
-.extern @GetLHPoint__9MapCoordsCFv@12
+.extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00646fe0
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern _jmp_addr_0x006e6770
@@ -4405,7 +4405,7 @@ _jmp_addr_0x005e6bd0:    sub                esp, 0x0000018c                     
                          push               edx                                           // 0x005e6ca4    52
                          call               dword ptr [eax + 0x100]                       // 0x005e6ca5    ff9000010000
 .Lbl_addr_0x005e6cab:    mov.s              ecx, eax                                      // 0x005e6cab    8bc8
-                         call               @GetLHPoint__9MapCoordsCFv@12                 // 0x005e6cad    e88eef0100
+                         call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x005e6cad    e88eef0100
                          mov                ecx, dword ptr [eax]                          // 0x005e6cb2    8b08
                          {disp8} mov        edx, dword ptr [eax + 0x04]                   // 0x005e6cb4    8b5004
                          {disp8} mov        eax, dword ptr [eax + 0x08]                   // 0x005e6cb7    8b4008
