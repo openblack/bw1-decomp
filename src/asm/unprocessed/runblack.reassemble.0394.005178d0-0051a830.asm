@@ -877,7 +877,7 @@ _jmp_addr_0x00518050:    push               ebx                                 
                          call               dword ptr [edx + 0x44]                        // 0x0051823e    ff5244
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x00518241    8d4c2434
                          mov.s              esi, eax                                      // 0x00518245    8bf0
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x00518247    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x00518247    ff155c978a00
                          cmp.s              esi, ebp                                      // 0x0051824d    3bf5
                          {disp8} jge        .Lbl_addr_0x0051825b                          // 0x0051824f    7d0a
                          {disp8} mov        dword ptr [esp + 0x7c], 0x00000064            // 0x00518251    c744247c64000000
@@ -898,7 +898,7 @@ _jmp_addr_0x00518050:    push               ebx                                 
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x00518292    e8991bf1ff
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x00518297    8d4c2434
                          {disp32} mov       dword ptr [data_bytes + 0x30031c], 0x00000001 // 0x0051829b    c7051c63cc0001000000
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x005182a5    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x005182a5    ff1558978a00
 .Lbl_addr_0x005182ab:    {disp8} fild       dword ptr [esp + 0x10]                        // 0x005182ab    db442410
                          {disp32} fmul      dword ptr [rdata_bytes + 0x26154]             // 0x005182af    d80d54f18c00
                          {disp32} fsubr     dword ptr [__real@4@3fff8000000000000000]                   // 0x005182b5    d82d90a38a00

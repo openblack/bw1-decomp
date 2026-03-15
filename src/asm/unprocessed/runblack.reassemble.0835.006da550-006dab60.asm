@@ -129,7 +129,7 @@ _jmp_addr_0x006da550:    push               esi                                 
                          {disp8} jne        .Lbl_addr_0x006da629                          // 0x006da621    7506
                          {disp32} mov       dword ptr [ecx + 0x000000e8], eax             // 0x006da623    8981e8000000
 .Lbl_addr_0x006da629:    {disp8} lea        ecx, dword ptr [esp + 0x00]                   // 0x006da629    8d4c2400
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x006da62d    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x006da62d    ff155c978a00
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x006da633    8b0d203bcd00
                          {disp32} mov       eax, dword ptr [ecx + 0x000003ac]             // 0x006da639    8b81ac030000
                          {disp8} mov        dword ptr [esp + 0x04], eax                   // 0x006da63f    89442404
@@ -141,7 +141,7 @@ _jmp_addr_0x006da550:    push               esi                                 
                          {disp8} mov        dword ptr [esp + 0x0c], eax                   // 0x006da656    8944240c
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x006da65a    e8d1f7d4ff
                          {disp8} lea        ecx, dword ptr [esp + 0x00]                   // 0x006da65f    8d4c2400
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x006da663    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x006da663    ff1558978a00
                          mov                eax, 0x00000001                               // 0x006da669    b801000000
                          add                esp, 0x00000168                               // 0x006da66e    81c468010000
                          ret                0x0004                                        // 0x006da674    c20400

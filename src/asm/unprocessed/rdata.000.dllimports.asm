@@ -462,8 +462,8 @@
 .globl __imp__LHSampleIsPlaying_LH_AudioSystem__QAEHPAVLH_AudioBank__KK_Z@4
 .globl __imp__LHSampleGetMaxDistance_LH_AudioSystem__QAEMPAVLH_AudioBank__K_Z@4
 .globl __imp__LHSampleSet3DPosition_LH_AudioSystem__QAEPAULH_SampleInfo__PAU2_MMMH_Z@4
-.globl __imp___1LH_SamplePlayOptions__QAE_XZ@4
-.globl __imp___0LH_SamplePlayOptions__QAE_XZ@4
+.globl __imp_??1LH_SamplePlayOptions@@QAE@XZ
+.globl __imp_??0LH_SamplePlayOptions@@QAE@XZ
 .globl __imp__LHMusicGetTotalGroups_LH_AudioSystem__QAEKXZ@4
 .globl __imp__LHSampleClearInfoList_LH_AudioSystem__QAEXXZ@4
 .globl __imp__LHSampleGetNumberPlaying_LH_AudioSystem__QAEKXZ@4
@@ -1075,8 +1075,8 @@ __imp__LHSampleSetMasterVolume_LH_AudioSystem__QAEXK_Z@4:                       
 __imp__LHSampleIsPlaying_LH_AudioSystem__QAEHPAVLH_AudioBank__KK_Z@4:                                                          .long 0x005c1bc6 // 0x008a974c LHaudiodllR.dll::LHSampleIsPlaying_LH_AudioSystem__QAEHPAVLH_AudioBank__KK_Z
 __imp__LHSampleGetMaxDistance_LH_AudioSystem__QAEMPAVLH_AudioBank__K_Z@4:                                                      .long 0x005c1c96 // 0x008a9750 LHaudiodllR.dll::LHSampleGetMaxDistance_LH_AudioSystem__QAEMPAVLH_AudioBank__K_Z
 __imp__LHSampleSet3DPosition_LH_AudioSystem__QAEPAULH_SampleInfo__PAU2_MMMH_Z@4:                                               .long 0x005c1874 // 0x008a9754 LHaudiodllR.dll::LHSampleSet3DPosition_LH_AudioSystem__QAEPAULH_SampleInfo__PAU2_MMMH_Z
-__imp___1LH_SamplePlayOptions__QAE_XZ@4:                                                                                       .long 0x005c119e // 0x008a9758 LHaudiodllR.dll::_1LH_SamplePlayOptions__QAE_XZ
-__imp___0LH_SamplePlayOptions__QAE_XZ@4:                                                                                       .long 0x005c11c0 // 0x008a975c LHaudiodllR.dll::_0LH_SamplePlayOptions__QAE_XZ
+__imp_??1LH_SamplePlayOptions@@QAE@XZ:                                                                                         .long 0x005c119e // 0x008a9758 LHaudiodllR.dll::_1LH_SamplePlayOptions__QAE_XZ
+__imp_??0LH_SamplePlayOptions@@QAE@XZ:                                                                                         .long 0x005c11c0 // 0x008a975c LHaudiodllR.dll::_0LH_SamplePlayOptions__QAE_XZ
 __imp__LHMusicGetTotalGroups_LH_AudioSystem__QAEKXZ@4:                                                                         .long 0x005c11e2 // 0x008a9760 LHaudiodllR.dll::LHMusicGetTotalGroups_LH_AudioSystem__QAEKXZ
 __imp__LHSampleClearInfoList_LH_AudioSystem__QAEXXZ@4:                                                                         .long 0x005c1212 // 0x008a9764 LHaudiodllR.dll::LHSampleClearInfoList_LH_AudioSystem__QAEXXZ
 __imp__LHSampleGetNumberPlaying_LH_AudioSystem__QAEKXZ@4:                                                                      .long 0x005c1242 // 0x008a9768 LHaudiodllR.dll::LHSampleGetNumberPlaying_LH_AudioSystem__QAEKXZ

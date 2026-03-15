@@ -121,7 +121,7 @@ _globl_ct_0x0070f7d0:    {disp32} jmp     .Lbl_addr_0x0070f7e0                  
                          call             _jmp_addr_0x006f6bc0                          // 0x0070f85e    e85d73feff
                          {disp8} lea      ecx, dword ptr [esp + 0x20]                   // 0x0070f863    8d4c2420
                          mov.s            esi, eax                                      // 0x0070f867    8bf0
-                         call             dword ptr [rdata_bytes + 0x75c]               // 0x0070f869    ff155c978a00
+                         call             dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x0070f869    ff155c978a00
                          {disp32} mov     ecx, dword ptr [_global]                      // 0x0070f86f    8b0d203bcd00
                          {disp8} mov      eax, dword ptr [esp + 0x14]                   // 0x0070f875    8b442414
                          {disp8} mov      dword ptr [esp + 0x44], esi                   // 0x0070f879    89742444
@@ -140,7 +140,7 @@ _globl_ct_0x0070f7d0:    {disp32} jmp     .Lbl_addr_0x0070f7e0                  
                          {disp8} mov      dword ptr [esp + 0x30], 0x00000000            // 0x0070f8b4    c744243000000000
                          call             ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0070f8bc    e86fa5d1ff
                          {disp8} lea      ecx, dword ptr [esp + 0x20]                   // 0x0070f8c1    8d4c2420
-                         call             dword ptr [rdata_bytes + 0x758]               // 0x0070f8c5    ff1558978a00
+                         call             dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0070f8c5    ff1558978a00
                          pop              edi                                           // 0x0070f8cb    5f
                          pop              esi                                           // 0x0070f8cc    5e
                          pop              ebx                                           // 0x0070f8cd    5b
@@ -174,7 +174,7 @@ _jmp_addr_0x0070f8e0:    {disp8} mov      ecx, dword ptr [esp + 0x04]           
                          {disp8} je       .Lbl_addr_0x0070f91a                          // 0x0070f916    7402
                          xor.s            edi, edi                                      // 0x0070f918    33ff
 .Lbl_addr_0x0070f91a:    {disp8} lea      ecx, dword ptr [esp + 0x08]                   // 0x0070f91a    8d4c2408
-                         call             dword ptr [rdata_bytes + 0x75c]               // 0x0070f91e    ff155c978a00
+                         call             dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x0070f91e    ff155c978a00
                          {disp32} mov     edx, dword ptr [esp + 0x0000017c]             // 0x0070f924    8b94247c010000
                          {disp32} mov     ecx, dword ptr [_global]                      // 0x0070f92b    8b0d203bcd00
                          neg              edx                                           // 0x0070f931    f7da
@@ -204,7 +204,7 @@ _jmp_addr_0x0070f8e0:    {disp8} mov      ecx, dword ptr [esp + 0x04]           
                          {disp8} mov      dword ptr [esp + 0x18], 0x00000000            // 0x0070f98f    c744241800000000
                          call             ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0070f997    e894a4d1ff
                          {disp8} lea      ecx, dword ptr [esp + 0x08]                   // 0x0070f99c    8d4c2408
-                         call             dword ptr [rdata_bytes + 0x758]               // 0x0070f9a0    ff1558978a00
+                         call             dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0070f9a0    ff1558978a00
 .Lbl_addr_0x0070f9a6:    pop              edi                                           // 0x0070f9a6    5f
                          pop              esi                                           // 0x0070f9a7    5e
                          add              esp, 0x00000168                               // 0x0070f9a8    81c468010000

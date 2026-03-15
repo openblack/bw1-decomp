@@ -8763,7 +8763,7 @@ _SetAge__6LivingFUl:
                          {disp8} lea        ecx, dword ptr [esp + 0x30]                   // 0x005ed66a    8d4c2430
                          {disp8} mov        dword ptr [esp + 0x18], edx                   // 0x005ed66e    89542418
                          {disp8} mov        dword ptr [esp + 0x1c], eax                   // 0x005ed672    8944241c
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x005ed676    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x005ed676    ff155c978a00
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x005ed67c    8b0d203bcd00
                          {disp32} mov       edx, dword ptr [ecx + 0x000003ac]             // 0x005ed682    8b91ac030000
                          {disp8} mov        eax, dword ptr [esp + 0x14]                   // 0x005ed688    8b442414
@@ -8781,7 +8781,7 @@ _SetAge__6LivingFUl:
                          {disp8} mov        dword ptr [esp + 0x40], ebx                   // 0x005ed6bd    895c2440
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x005ed6c1    e86ac7e3ff
                          {disp8} lea        ecx, dword ptr [esp + 0x30]                   // 0x005ed6c6    8d4c2430
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x005ed6ca    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x005ed6ca    ff1558978a00
 .Lbl_addr_0x005ed6d0:    {disp32} mov       ecx, dword ptr [_game]                        // 0x005ed6d0    8b0d5c19d000
                          call               ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ                          // 0x005ed6d6    e8a581f6ff
                          cmp.s              edi, eax                                      // 0x005ed6db    3bf8

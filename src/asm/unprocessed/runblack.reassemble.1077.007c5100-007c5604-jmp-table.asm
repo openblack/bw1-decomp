@@ -5,8 +5,8 @@
 .globl ?Close@LHLobby@@UAEXXZ
 .globl ?ProcessEvent@LHLobby@@UAE?AW4LH_RETURN@@PAULHNetEvent@@@Z
 
-                         jmp              dword ptr [__imp___1LH_SamplePlayOptions__QAE_XZ@4]                                                                                        // 0x007c5100    ff2558978a00
-                         jmp              dword ptr [__imp___0LH_SamplePlayOptions__QAE_XZ@4]                                                                                        // 0x007c5106    ff255c978a00
+                         jmp              dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]                                                                                          // 0x007c5100    ff2558978a00
+                         jmp              dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]                                                                                          // 0x007c5106    ff255c978a00
                          jmp              dword ptr [__imp__LHMusicGetTotalGroups_LH_AudioSystem__QAEKXZ@4]                                                                          // 0x007c510c    ff2560978a00
                          jmp              dword ptr [__imp__LHSampleClearInfoList_LH_AudioSystem__QAEXXZ@4]                                                                          // 0x007c5112    ff2564978a00
                          jmp              dword ptr [__imp__LHSampleGetNumberPlaying_LH_AudioSystem__QAEKXZ@4]                                                                       // 0x007c5118    ff2568978a00

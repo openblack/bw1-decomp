@@ -1119,7 +1119,7 @@ _globl_ct_0x0054ceb0:    {disp32} jmp       .Lbl_addr_0x0054cec0                
                          cmp                dword ptr [data_bytes + 0x22627c], ebx        // 0x0054d009    391d7cc2be00
                          {disp8} je         .Lbl_addr_0x0054d082                          // 0x0054d00f    7471
                          {disp8} lea        ecx, dword ptr [esp + 0x64]                   // 0x0054d011    8d4c2464
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x0054d015    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x0054d015    ff155c978a00
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x0054d01b    8b0d203bcd00
                          {disp8} mov        dword ptr [esp + 0x6c], ebx                   // 0x0054d021    895c246c
                          {disp32} mov       eax, dword ptr [ecx + 0x000003ac]             // 0x0054d025    8b81ac030000
@@ -1141,7 +1141,7 @@ _globl_ct_0x0054ceb0:    {disp32} jmp       .Lbl_addr_0x0054cec0                
                          push               0x000000a0                                    // 0x0054d06e    68a0000000
                          call               @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20                          // 0x0054d073    e898d1edff
 .Lbl_addr_0x0054d078:    {disp8} lea        ecx, dword ptr [esp + 0x64]                   // 0x0054d078    8d4c2464
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x0054d07c    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0054d07c    ff1558978a00
 .Lbl_addr_0x0054d082:    cmp.s              ebp, ebx                                      // 0x0054d082    3beb
                          {disp8} je         .Lbl_addr_0x0054d091                          // 0x0054d084    740b
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x30a65c]        // 0x0054d086    8b0d5c06cd00

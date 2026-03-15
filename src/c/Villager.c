@@ -5332,7 +5332,7 @@ uint32_t __fastcall ApplyThisToObject__8VillagerFP16GInterfaceStatusP6ObjectP23G
     asm("{disp8} lea        ecx, dword ptr [esp + 0x40]");                   // 0x00752dca    8d4c2440
     asm("{disp8} mov        dword ptr [esp + 0x18], eax");                   // 0x00752dce    89442418
     asm("{disp8} mov        dword ptr [esp + 0x20], edx");                   // 0x00752dd2    89542420
-    asm("call               dword ptr [rdata_bytes + 0x75c]");               // 0x00752dd6    ff155c978a00
+    asm("call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]");               // 0x00752dd6    ff155c978a00
     asm("{disp32} mov       ecx, dword ptr [_global]");                      // 0x00752ddc    8b0d203bcd00
     asm("{disp32} mov       eax, dword ptr [ecx + 0x000003ac]");             // 0x00752de2    8b81ac030000
     asm("{disp8} mov        edx, dword ptr [esp + 0x18]");                   // 0x00752de8    8b542418
@@ -5390,7 +5390,7 @@ uint32_t __fastcall ApplyThisToObject__8VillagerFP16GInterfaceStatusP6ObjectP23G
     asm("call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z");                          // 0x00752ea6    e8856fcdff
     asm("LAB__addr_0x00752eab:");
     asm("{disp8} lea        ecx, dword ptr [esp + 0x40]");                   // 0x00752eab    8d4c2440
-    asm("call               dword ptr [rdata_bytes + 0x758]");               // 0x00752eaf    ff1558978a00
+    asm("call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]");   // 0x00752eaf    ff1558978a00
     asm("LAB__addr_0x00752eb5:");
     asm("{disp32} mov       ecx, dword ptr [_game]");                        // 0x00752eb5    8b0d5c19d000
     asm("call               ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ");                          // 0x00752ebb    e8c029e0ff

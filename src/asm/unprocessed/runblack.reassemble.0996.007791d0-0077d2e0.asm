@@ -1135,7 +1135,7 @@ _jmp_addr_0x00779690:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          mov.s              ecx, eax                                      // 0x007799c1    8bc8
                          call               @GetLHPoint__9MapCoordsCFv@12                 // 0x007799c3    e878c2e8ff
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                   // 0x007799c8    8d4c243c
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x007799cc    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x007799cc    ff155c978a00
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x007799d2    8b0d203bcd00
                          {disp32} mov       edx, dword ptr [ecx + 0x000003ac]             // 0x007799d8    8b91ac030000
                          {disp8} mov        eax, dword ptr [esp + 0x10]                   // 0x007799de    8b442410
@@ -1153,7 +1153,7 @@ _jmp_addr_0x00779690:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          {disp8} mov        dword ptr [esp + 0x4c], 0x00000000            // 0x00779a13    c744244c00000000
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x00779a1b    e81004cbff
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                   // 0x00779a20    8d4c243c
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x00779a24    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x00779a24    ff1558978a00
 .Lbl_addr_0x00779a2a:    push               0x1                                           // 0x00779a2a    6a01
                          push               0x4a                                          // 0x00779a2c    6a4a
                          push               esi                                           // 0x00779a2e    56

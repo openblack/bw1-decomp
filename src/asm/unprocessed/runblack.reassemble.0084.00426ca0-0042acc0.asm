@@ -194,7 +194,7 @@ _jmp_addr_0x00426d40:    sub                esp, 0x000001bc                     
                          {disp32} lea       ecx, dword ptr [ebp + 0x00000240]                    // 0x00426d52    8d8d40020000
                          {disp32} mov       dword ptr [ebp + 0x00000188], esi                    // 0x00426d58    89b588010000
                          {disp32} mov       dword ptr [ebp + 0x00000184], esi                    // 0x00426d5e    89b584010000
-                         call               dword ptr [__imp___0LH_SamplePlayOptions__QAE_XZ@4]  // 0x00426d64    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]    // 0x00426d64    ff155c978a00
                          push               0x00000145                                           // 0x00426d6a    6845010000
                          push               0x009caf7c                                           // 0x00426d6f    687caf9c00
                          push               0x000001ec                                           // 0x00426d74    68ec010000
@@ -378,7 +378,7 @@ _jmp_addr_0x00426d40:    sub                esp, 0x000001bc                     
                          push               esi                                                  // 0x00426fa0    56
                          mov.s              esi, ecx                                             // 0x00426fa1    8bf1
                          {disp32} lea       ecx, dword ptr [esi + 0x00000240]                    // 0x00426fa3    8d8e40020000
-                         call               dword ptr [__imp___1LH_SamplePlayOptions__QAE_XZ@4]  // 0x00426fa9    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ]    // 0x00426fa9    ff1558978a00
                          mov.s              ecx, esi                                             // 0x00426faf    8bce
                          call               _jmp_addr_0x0056fa80                                 // 0x00426fb1    e8ca8a1400
                          test               byte ptr [esp + 0x08], 0x01                          // 0x00426fb6    f644240801

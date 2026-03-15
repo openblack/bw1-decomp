@@ -2750,7 +2750,7 @@ _ModifyAtomCollection__22UR_GesturingRecognisedCFP14AtomCollection:
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x00688600    8d4c2434
                          {disp8} mov        dword ptr [esp + 0x1c], edx                   // 0x00688604    8954241c
                          {disp8} mov        dword ptr [esp + 0x20], eax                   // 0x00688608    89442420
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x0068860c    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x0068860c    ff155c978a00
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x00688612    8b0d203bcd00
                          {disp32} mov       edx, dword ptr [ecx + 0x000003ac]             // 0x00688618    8b91ac030000
                          {disp8} mov        eax, dword ptr [esp + 0x18]                   // 0x0068861e    8b442418
@@ -2768,7 +2768,7 @@ _ModifyAtomCollection__22UR_GesturingRecognisedCFP14AtomCollection:
                          {disp8} mov        dword ptr [esp + 0x44], 0x00000000            // 0x00688653    c744244400000000
                          call               ?PlaySoundEffect@GAudio@@QAEIPAULH_SamplePlayOptions@@@Z                          // 0x0068865b    e8d017daff
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x00688660    8d4c2434
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x00688664    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x00688664    ff1558978a00
 .Lbl_addr_0x0068866a:    {disp32} mov       eax, dword ptr [esp + 0x000001a0]             // 0x0068866a    8b8424a0010000
                          {disp8} mov        esi, dword ptr [eax + 0x40]                   // 0x00688671    8b7040
                          test               esi, esi                                      // 0x00688674    85f6
@@ -8856,7 +8856,7 @@ _DoRemoveFromHandVisual__7PHandFXFv:
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x0068cea6    8d4c2410
                          {disp8} mov        dword ptr [esp + 0x08], eax                   // 0x0068ceaa    89442408
                          {disp8} mov        byte ptr [esp + 0x0c], dl                     // 0x0068ceae    8854240c
-                         call               dword ptr [rdata_bytes + 0x75c]               // 0x0068ceb2    ff155c978a00
+                         call               dword ptr [__imp_??0LH_SamplePlayOptions@@QAE@XZ]               // 0x0068ceb2    ff155c978a00
                          {disp32} mov       ecx, dword ptr [_global]                      // 0x0068ceb8    8b0d203bcd00
                          {disp32} mov       eax, dword ptr [ecx + 0x000003ac]             // 0x0068cebe    8b81ac030000
                          {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x0068cec4    8d542410
@@ -8904,7 +8904,7 @@ _DoRemoveFromHandVisual__7PHandFXFv:
                          inc                eax                                           // 0x0068cf47    40
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x0068cf48    8d4c2410
                          {disp8} mov        dword ptr [esi + 0x50], eax                   // 0x0068cf4c    894650
-                         call               dword ptr [rdata_bytes + 0x758]               // 0x0068cf4f    ff1558978a00
+                         call               dword ptr [__imp_??1LH_SamplePlayOptions@@QAE@XZ] // 0x0068cf4f    ff1558978a00
                          pop                esi                                           // 0x0068cf55    5e
                          add                esp, 0x00000174                               // 0x0068cf56    81c474010000
                          ret                                                              // 0x0068cf5c    c3
