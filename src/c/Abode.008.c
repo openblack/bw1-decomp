@@ -546,7 +546,7 @@ uint32_t __fastcall InterfaceTap__5AbodeFP16GInterfaceStatus(struct Object* this
     asm("{disp8} je         LAB__addr_0x00406864");                          // 0x00406851    7411
     asm("LAB__addr_0x00406853:");
     asm("mov.s              ecx, esi");                                      // 0x00406853    8bce
-    asm("call               ?SetStateWhenTappedOnAbode@Villager@@QAE_NXZ");                          // 0x00406855    e826c33400
+    asm("call               ?SetStateWhenTappedOnAbode@Villager@@QAEIXZ");                          // 0x00406855    e826c33400
     asm("{disp32} mov       esi, dword ptr [esi + 0x000000e4]");             // 0x0040685a    8bb6e4000000
     asm("test               esi, esi");                                      // 0x00406860    85f6
     asm("{disp8} jne        LAB__addr_0x00406853");                          // 0x00406862    75ef
