@@ -3,6 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 #include <stdbool.h> /* For bool */
+#include <math.h>
 
 #ifdef __cplusplus
 
@@ -72,15 +73,33 @@ struct LHPoint
     // win1.41 inlined mac inlined LHPoint::operator+(LHPoint const &) const
     LHPoint* operator+(const LHPoint* rhs);
     // win1.41 inlined mac inlined LHPoint::operator-(LHPoint const &) const
-    LHPoint* operator-(const LHPoint* rhs);
+    LHPoint operator-(const LHPoint& rhs)
+    {
+        LHPoint result;
+        result.x = x - rhs.x;
+        result.y = y - rhs.y;
+        result.z = z - rhs.z;
+        return result;
+    }
     // win1.41 inlined mac inlined LHPoint::GetNormSq(void)
-    float GetNormSq();
+    float GetNormSq()
+    {
+        return x * x + y * y + z * z;
+    }
     // win1.41 inlined mac inlined LHPoint::GetNorm(void)
-    float GetNorm();
+    float GetNorm()
+    {
+        return sqrtf(GetNormSq());
+    }
     // win1.41 inlined mac inlined LHPoint::SetNull(void)
     void SetNull();
     // win1.41 0054e910 mac 10037ce0 LHPoint::FastNormalize(void)
     void FastNormalize();
+
+    float GetDistance(const LHPoint& other)
+    {
+        return (*this - other).GetNorm();
+    }
 };
 
 #else // __cplusplus
