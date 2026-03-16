@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
 .extern _jmp_addr_0x004774f0
 .extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
@@ -919,7 +919,7 @@ start_0x00503bd0_0x00504700:
                          {disp32} mov       ecx, dword ptr [edi + 0x00000164]             // 0x00504630    8b8f64010000
                          {disp32} mov       dword ptr [ecx + 0x00000658], 0x00000001      // 0x00504636    c7815806000001000000
 .Lbl_addr_0x00504640:    {disp8} lea        ecx, dword ptr [esp + 0x0c]                   // 0x00504640    8d4c240c
-                         call               _jmp_addr_0x00436960                          // 0x00504644    e81723f3ff
+                         call               ??1Base@@UAE@XZ                               // 0x00504644    e81723f3ff
                          pop                edi                                           // 0x00504649    5f
                          mov                eax, 0x00000002                               // 0x0050464a    b802000000
                          pop                esi                                           // 0x0050464f    5e

@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern _NeedsBiggerText__Fv
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern ?GetWoodNeededToBuild@BuildingSite@@QAEMXZ
 .extern _jmp_addr_0x004489d0
@@ -1795,7 +1795,7 @@ _globl_ct_0x005c99a0:    call               .Lbl_addr_0x005c99b0                
                          mov                edi, 0x000000aa                               // 0x005c9a2b    bfaa000000
 .Lbl_addr_0x005c9a30:    sub                esi, 0x1c                                     // 0x005c9a30    83ee1c
                          mov.s              ecx, esi                                      // 0x005c9a33    8bce
-                         call               _jmp_addr_0x00436960                          // 0x005c9a35    e826cfe6ff
+                         call               ??1Base@@UAE@XZ                               // 0x005c9a35    e826cfe6ff
                          dec                edi                                           // 0x005c9a3a    4f
                          {disp8} jne        .Lbl_addr_0x005c9a30                          // 0x005c9a3b    75f3
                          pop                edi                                           // 0x005c9a3d    5f
@@ -1804,7 +1804,7 @@ _globl_ct_0x005c99a0:    call               .Lbl_addr_0x005c99b0                
 ??_GGToolTipsInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x005c9a40    56
                          mov.s              esi, ecx                                      // 0x005c9a41    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x005c9a43    e818cfe6ff
+                         call               ??1Base@@UAE@XZ                               // 0x005c9a43    e818cfe6ff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x005c9a48    f644240801
                          {disp8} je         .Lbl_addr_0x005c9a5a                          // 0x005c9a4d    740b
                          push               0x1c                                          // 0x005c9a4f    6a1c
@@ -3602,7 +3602,7 @@ _jmp_addr_0x005cb020:    {disp8} mov        al, byte ptr [esp + 0x04]           
                          call               _jmp_addr_0x0082f3b0                          // 0x005cb07f    e82c432600
                          add                esp, 0x08                                     // 0x005cb084    83c408
                          mov.s              ecx, esi                                      // 0x005cb087    8bce
-                         call               _jmp_addr_0x00436960                          // 0x005cb089    e8d2b8e6ff
+                         call               ??1Base@@UAE@XZ                               // 0x005cb089    e8d2b8e6ff
                          pop                esi                                           // 0x005cb08e    5e
                          ret                                                              // 0x005cb08f    c3
 _jmp_addr_0x005cb090:    push               esi                                           // 0x005cb090    56

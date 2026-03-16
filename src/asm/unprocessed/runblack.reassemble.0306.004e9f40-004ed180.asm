@@ -7,7 +7,7 @@
 .extern _jmp_addr_0x00428620
 .extern ??0LHFile@@QAE@XZ
 .extern ?ResetData@LHFile@@QAEIXZ
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
 .extern _jmp_addr_0x00477440
 .extern _jmp_addr_0x00481390
@@ -867,7 +867,7 @@ _jmp_addr_0x004e9f40:    sub                esp, 0x08                           
 .Lbl_addr_0x004ea8cd:    {disp8} lea        ecx, dword ptr [esp + 0x58]                   // 0x004ea8cd    8d4c2458
                          call               _jmp_addr_0x004f12d0                          // 0x004ea8d1    e8fa690000
                          {disp8} lea        ecx, dword ptr [esp + 0x50]                   // 0x004ea8d6    8d4c2450
-                         call               _jmp_addr_0x00436960                          // 0x004ea8da    e881c0f4ff
+                         call               ??1Base@@UAE@XZ                               // 0x004ea8da    e881c0f4ff
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x004ea8df    8d4c2420
                          call               _jmp_addr_0x004f12d0                          // 0x004ea8e3    e8e8690000
 .Lbl_addr_0x004ea8e8:    pop                edi                                           // 0x004ea8e8    5f

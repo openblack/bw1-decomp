@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern _jmp_addr_0x0047b1c0
 .extern _jmp_addr_0x0047d640
 .extern _jmp_addr_0x004806c0
@@ -1522,7 +1522,7 @@ _jmp_addr_0x00477a00:    push               esi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]              // 0x00477cbf    8d4c240c
                          call               _jmp_addr_0x004f12d0                     // 0x00477cc3    e808960700
                          {disp8} lea        ecx, dword ptr [esp + 0x04]              // 0x00477cc8    8d4c2404
-                         call               _jmp_addr_0x00436960                     // 0x00477ccc    e88fecfbff
+                         call               ??1Base@@UAE@XZ                          // 0x00477ccc    e88fecfbff
                          mov.s              eax, esi                                 // 0x00477cd1    8bc6
                          pop                esi                                      // 0x00477cd3    5e
                          add                esp, 0x70                                // 0x00477cd4    83c470
@@ -1532,7 +1532,7 @@ _jmp_addr_0x00477a00:    push               esi                                 
                          mov                dword ptr [eax], 0x00000028              // 0x00477ce2    c70028000000
                          call               _jmp_addr_0x004f12d0                     // 0x00477ce8    e8e3950700
                          {disp8} lea        ecx, dword ptr [esp + 0x04]              // 0x00477ced    8d4c2404
-                         call               _jmp_addr_0x00436960                     // 0x00477cf1    e86aecfbff
+                         call               ??1Base@@UAE@XZ                          // 0x00477cf1    e86aecfbff
                          xor.s              eax, eax                                 // 0x00477cf6    33c0
                          pop                esi                                      // 0x00477cf8    5e
                          add                esp, 0x70                                // 0x00477cf9    83c470

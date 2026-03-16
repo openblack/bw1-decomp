@@ -9,7 +9,7 @@
 .extern _jmp_addr_0x00425db0
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x0043dc00
 .extern _jmp_addr_0x0043dc50
@@ -2447,13 +2447,13 @@ _globl_ct_0x0077eb40:    call               .Lbl_addr_0x0077eb50                
                          or.s               cl, al                                        // 0x0077ebac    0ac8
                          {disp32} mov       byte ptr [data_bytes + 0x406998], cl          // 0x0077ebae    880d98c9dc00
                          mov                ecx, 0x00dcc9a0                               // 0x0077ebb4    b9a0c9dc00
-                         {disp32} jmp       _jmp_addr_0x00436960                          // 0x0077ebb9    e9a27dcbff
+                         {disp32} jmp       ??1Base@@UAE@XZ                               // 0x0077ebb9    e9a27dcbff
 .Lbl_addr_0x0077ebbe:    ret                                                              // 0x0077ebbe    c3
                          nop                                                              // 0x0077ebbf    90
 ??_GGWorshipSiteUpgradeInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x0077ebc0    56
                          mov.s              esi, ecx                                      // 0x0077ebc1    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x0077ebc3    e8987dcbff
+                         call               ??1Base@@UAE@XZ                               // 0x0077ebc3    e8987dcbff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x0077ebc8    f644240801
                          {disp8} je         .Lbl_addr_0x0077ebdd                          // 0x0077ebcd    740e
                          push               0x00000128                                    // 0x0077ebcf    6828010000

@@ -130,7 +130,7 @@ void __fastcall UnfinishInitialisation__5GGameFv(struct GGame* this)
     asm("LAB__addr_0x005500ec:");
     asm("sub                esi, 0x3c");                                      // 0x005500ec    83ee3c
     asm("mov.s              ecx, esi");                                       // 0x005500ef    8bce
-    asm("call               _jmp_addr_0x00436960");                           // 0x005500f1    e86a68eeff
+    asm("call               ??1Base@@UAE@XZ");                                // 0x005500f1    e86a68eeff
     asm("dec                edi");                                            // 0x005500f6    4f
     asm("{disp8} jne        LAB__addr_0x005500ec");                           // 0x005500f7    75f3
     asm("xor.s              edi, edi");                                       // 0x005500f9    33ff

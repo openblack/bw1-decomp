@@ -539,13 +539,13 @@ _globl_ct_0x0042b340:    call               .Lbl_addr_0x0042b350                
                          or.s               cl, al                                               // 0x0042b3bc    0ac8
                          {disp32} mov       byte ptr [data_bytes + 0x292378], cl                 // 0x0042b3be    880d7883c500
                          mov                ecx, 0x00c58380                                      // 0x0042b3c4    b98083c500
-                         {disp32} jmp       _jmp_addr_0x00436960                                 // 0x0042b3c9    e992b50000
+                         {disp32} jmp       ??1Base@@UAE@XZ                                      // 0x0042b3c9    e992b50000
 .Lbl_addr_0x0042b3ce:    ret                                                                     // 0x0042b3ce    c3
                          nop                                                                     // 0x0042b3cf    90
 ??_GGLeashSelectorInfo@@UAEPAXI@Z:
                          push               esi                                                  // 0x0042b3d0    56
                          mov.s              esi, ecx                                             // 0x0042b3d1    8bf1
-                         call               _jmp_addr_0x00436960                                 // 0x0042b3d3    e888b50000
+                         call               ??1Base@@UAE@XZ                                      // 0x0042b3d3    e888b50000
                          test               byte ptr [esp + 0x08], 0x01                          // 0x0042b3d8    f644240801
                          {disp8} je         .Lbl_addr_0x0042b3ed                                 // 0x0042b3dd    740e
                          push               0x00000104                                           // 0x0042b3df    6804010000
@@ -4801,7 +4801,7 @@ _jmp_addr_0x0042e380:    push               ebx                                 
 ??_GGBaseInfo@@UAEPAXI@Z:
                          push               esi                                                  // 0x0042e600    56
                          mov.s              esi, ecx                                             // 0x0042e601    8bf1
-                         call               _jmp_addr_0x00436960                                 // 0x0042e603    e858830000
+                         call               ??1Base@@UAE@XZ                                      // 0x0042e603    e858830000
                          test               byte ptr [esp + 0x08], 0x01                          // 0x0042e608    f644240801
                          {disp8} je         .Lbl_addr_0x0042e61a                                 // 0x0042e60d    740b
                          push               0x10                                                 // 0x0042e60f    6a10

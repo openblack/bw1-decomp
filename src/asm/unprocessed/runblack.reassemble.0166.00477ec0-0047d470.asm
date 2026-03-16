@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern _jmp_addr_0x004146f0
 .extern _jmp_addr_0x00414730
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern _jmp_addr_0x00436a70
 .extern ?DistanceChangeToBelief@GBelief@@SAMMM@Z
 .extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
@@ -2605,7 +2605,7 @@ _jmp_addr_0x004798c0:    push               esi                                 
                          add                ecx, 0x8                                      // 0x00479b5e    83c108
                          call               _jmp_addr_0x004de730                          // 0x00479b61    e8ca4b0600
 .Lbl_addr_0x00479b66:    {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x00479b66    8d4c2420
-                         call               _jmp_addr_0x00436960                          // 0x00479b6a    e8f1cdfbff
+                         call               ??1Base@@UAE@XZ                               // 0x00479b6a    e8f1cdfbff
 .Lbl_addr_0x00479b6f:    pop                edi                                           // 0x00479b6f    5f
                          pop                esi                                           // 0x00479b70    5e
                          pop                ebp                                           // 0x00479b71    5d

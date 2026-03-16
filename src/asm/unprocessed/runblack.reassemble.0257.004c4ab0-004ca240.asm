@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004427b0
 .extern ?FinishActionUnsuccessfully@Creature@@QAEXPADHH@Z
@@ -552,13 +552,13 @@ _jmp_addr_0x004c4d50:    sub                esp, 0x00000144                     
                          {disp8} lea        ecx, dword ptr [esp + 0x78]                          // 0x004c4ec5    8d4c2478
                          call               _jmp_addr_0x004f12d0                                 // 0x004c4ec9    e802c40200
                          {disp8} lea        ecx, dword ptr [esp + 0x70]                          // 0x004c4ece    8d4c2470
-                         call               _jmp_addr_0x00436960                                 // 0x004c4ed2    e8891af7ff
+                         call               ??1Base@@UAE@XZ                                      // 0x004c4ed2    e8891af7ff
                          {disp8} lea        ecx, dword ptr [esp + 0x40]                          // 0x004c4ed7    8d4c2440
                          call               _jmp_addr_0x004f12d0                                 // 0x004c4edb    e8f0c30200
                          {disp32} lea       ecx, dword ptr [esp + 0x000000e8]                    // 0x004c4ee0    8d8c24e8000000
                          call               _jmp_addr_0x004f12d0                                 // 0x004c4ee7    e8e4c30200
                          {disp32} lea       ecx, dword ptr [esp + 0x000000e0]                    // 0x004c4eec    8d8c24e0000000
-                         call               _jmp_addr_0x00436960                                 // 0x004c4ef3    e8681af7ff
+                         call               ??1Base@@UAE@XZ                                      // 0x004c4ef3    e8681af7ff
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                          // 0x004c4ef8    8d4c2410
                          call               _jmp_addr_0x004f12d0                                 // 0x004c4efc    e8cfc30200
                          pop                edi                                                  // 0x004c4f01    5f
@@ -3502,7 +3502,7 @@ _jmp_addr_0x004c7220:    sub                esp, 0x0c                           
 ??_GCreatureCommand@@UAEPAXI@Z:
                          push               esi                                                  // 0x004c7420    56
                          mov.s              esi, ecx                                             // 0x004c7421    8bf1
-                         call               _jmp_addr_0x00436960                                 // 0x004c7423    e838f5f6ff
+                         call               ??1Base@@UAE@XZ                                      // 0x004c7423    e838f5f6ff
                          test               byte ptr [esp + 0x08], 0x01                          // 0x004c7428    f644240801
                          {disp8} je         .Lbl_addr_0x004c743a                                 // 0x004c742d    740b
                          push               0x1c                                                 // 0x004c742f    6a1c
@@ -4972,7 +4972,7 @@ _jmp_addr_0x004c8130:    push               esi                                 
 ??_GCreatureAttitudeToPlayer@@UAEPAXI@Z:
                          push               esi                                                  // 0x004c81a0    56
                          mov.s              esi, ecx                                             // 0x004c81a1    8bf1
-                         call               _jmp_addr_0x00436960                                 // 0x004c81a3    e8b8e7f6ff
+                         call               ??1Base@@UAE@XZ                                      // 0x004c81a3    e8b8e7f6ff
                          test               byte ptr [esp + 0x08], 0x01                          // 0x004c81a8    f644240801
                          {disp8} je         .Lbl_addr_0x004c81bd                                 // 0x004c81ad    740e
                          push               0x00001db4                                           // 0x004c81af    68b41d0000

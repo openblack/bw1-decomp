@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern _jmp_addr_0x004775d0
 .extern _jmp_addr_0x00477800
 .extern _jmp_addr_0x004cf060
@@ -994,7 +994,7 @@ _jmp_addr_0x00476070:    push               ebp                                 
 .Lbl_addr_0x00476cda:    {disp8} lea        ecx, dword ptr [esp + 0x30]                   // 0x00476cda    8d4c2430
                          call               _jmp_addr_0x004f12d0                          // 0x00476cde    e8eda50700
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x00476ce3    8d4c2428
-                         call               _jmp_addr_0x00436960                          // 0x00476ce7    e874fcfbff
+                         call               ??1Base@@UAE@XZ                               // 0x00476ce7    e874fcfbff
                          pop                edi                                           // 0x00476cec    5f
                          pop                esi                                           // 0x00476ced    5e
                          pop                ebp                                           // 0x00476cee    5d

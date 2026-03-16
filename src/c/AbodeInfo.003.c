@@ -261,7 +261,7 @@ void __cdecl dynamic_atexit_destructor_for_AbodeInfos__10GAbodeInfoFv(void)
     asm("LAB__addr_0x00401300:");
     asm("sub                esi, 0x1c8");                                   // 0x00401300    81eec8010000
     asm("mov.s              ecx, esi");                                     // 0x00401306    8bce
-    asm("call               _jmp_addr_0x00436960");                         // 0x00401308    e853560300
+    asm("call               ??1Base@@UAE@XZ");                              // 0x00401308    e853560300
     asm("dec                edi");                                          // 0x0040130d    4f
     asm("{disp8} jne        LAB__addr_0x00401300");                         // 0x0040130e    75f0
     asm("pop                edi");                                          // 0x00401310    5f
@@ -275,7 +275,7 @@ void __fastcall __dt__10GAbodeInfoFUi(struct Base* this, const void* edx, uint32
 {
     asm("push               esi");                                          // 0x00401320    56
     asm("mov.s              esi, ecx");                                     // 0x00401321    8bf1
-    asm("call               _jmp_addr_0x00436960");                         // 0x00401323    e838560300
+    asm("call               ??1Base@@UAE@XZ");                              // 0x00401323    e838560300
     asm("test               byte ptr [esp + 0x08], 0x01");                  // 0x00401328    f644240801
     asm("{disp8} je         LAB__addr_0x0040133d");                         // 0x0040132d    740e
     asm("push               0x000001c8");                                   // 0x0040132f    68c8010000

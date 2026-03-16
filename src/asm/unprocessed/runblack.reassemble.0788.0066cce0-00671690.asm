@@ -9,7 +9,7 @@
 .extern _jmp_addr_0x00418a50
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern @__ct__7LHPointFfff@20
 .extern _jmp_addr_0x0044cf90
@@ -5847,13 +5847,13 @@ _globl_ct_0x00670630:    call               .Lbl_addr_0x00670640                
                          or.s               cl, al                                        // 0x006706ac    0ac8
                          {disp32} mov       byte ptr [data_bytes + 0x387e81], cl          // 0x006706ae    880d81ded400
                          mov                ecx, 0x00d4df90                               // 0x006706b4    b990dfd400
-                         {disp32} jmp       _jmp_addr_0x00436960                          // 0x006706b9    e9a262dcff
+                         {disp32} jmp       ??1Base@@UAE@XZ                               // 0x006706b9    e9a262dcff
 .Lbl_addr_0x006706be:    ret                                                              // 0x006706be    c3
                          nop                                                              // 0x006706bf    90
 ??_GGPrayerSiteInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x006706c0    56
                          mov.s              esi, ecx                                      // 0x006706c1    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x006706c3    e89862dcff
+                         call               ??1Base@@UAE@XZ                               // 0x006706c3    e89862dcff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x006706c8    f644240801
                          {disp8} je         .Lbl_addr_0x006706dd                          // 0x006706cd    740e
                          push               0x00000128                                    // 0x006706cf    6828010000
@@ -5932,13 +5932,13 @@ _globl_ct_0x006706f0:    call               .Lbl_addr_0x00670700                
                          or.s               cl, al                                        // 0x0067075c    0ac8
                          {disp32} mov       byte ptr [data_bytes + 0x387e80], cl          // 0x0067075e    880d80ded400
                          mov                ecx, 0x00d4de88                               // 0x00670764    b988ded400
-                         {disp32} jmp       _jmp_addr_0x00436960                          // 0x00670769    e9f261dcff
+                         {disp32} jmp       ??1Base@@UAE@XZ                               // 0x00670769    e9f261dcff
 .Lbl_addr_0x0067076e:    ret                                                              // 0x0067076e    c3
                          nop                                                              // 0x0067076f    90
 ??_GGPrayerIconInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x00670770    56
                          mov.s              esi, ecx                                      // 0x00670771    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x00670773    e8e861dcff
+                         call               ??1Base@@UAE@XZ                               // 0x00670773    e8e861dcff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00670778    f644240801
                          {disp8} je         .Lbl_addr_0x0067078d                          // 0x0067077d    740e
                          push               0x00000108                                    // 0x0067077f    6808010000
