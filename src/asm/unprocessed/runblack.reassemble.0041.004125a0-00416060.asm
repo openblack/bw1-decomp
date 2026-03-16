@@ -16,7 +16,7 @@
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
-.extern ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
+.extern ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z
 .extern _jmp_addr_0x0071ceb0
 .extern _jmp_addr_0x0072eec0
 .extern _jmp_addr_0x00741220
@@ -2445,7 +2445,7 @@ _jmp_addr_0x004141a0:    push               ebx                                 
                          {disp8} je         .Lbl_addr_0x004141de                          // 0x004141b8    7424
                          push               edi                                           // 0x004141ba    57
                          mov.s              ecx, esi                                      // 0x004141bb    8bce
-                         call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z                          // 0x004141bd    e88e952300
+                         call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z                          // 0x004141bd    e88e952300
                          test               eax, eax                                      // 0x004141c2    85c0
                          {disp8} je         .Lbl_addr_0x004141de                          // 0x004141c4    7418
                          mov                eax, dword ptr [esi]                          // 0x004141c6    8b06

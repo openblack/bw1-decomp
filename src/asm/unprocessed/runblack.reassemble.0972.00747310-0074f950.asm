@@ -101,7 +101,7 @@
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern ?IsNeutral@GPlayer@@QAE_NXZ
 .extern _jmp_addr_0x0064d6a0
-.extern ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
+.extern ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z
 .extern ?FUN_0064da80@GPlayer@@QAEXHH@Z
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?GameFloatRand@GRand@@SAMMPBDI@Z
@@ -1637,7 +1637,7 @@ _jmp_addr_0x00747c70:    push               esi                                 
                          mov.s              ebx, eax                                       // 0x00747f67    8bd8
                          push               ebx                                            // 0x00747f69    53
                          mov.s              ecx, edi                                       // 0x00747f6a    8bcf
-                         call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z                           // 0x00747f6c    e8df57f0ff
+                         call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z                           // 0x00747f6c    e8df57f0ff
                          test               eax, eax                                       // 0x00747f71    85c0
                          {disp8} je         .Lbl_addr_0x00747fa5                           // 0x00747f73    7430
                          {disp8} fld        dword ptr [esp + 0x0c]                         // 0x00747f75    d944240c
@@ -1788,7 +1788,7 @@ _jmp_addr_0x00747c70:    push               esi                                 
                          mov.s              ebx, eax                                       // 0x00748183    8bd8
                          push               ebx                                            // 0x00748185    53
                          mov.s              ecx, edi                                       // 0x00748186    8bcf
-                         call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z                           // 0x00748188    e8c355f0ff
+                         call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z                           // 0x00748188    e8c355f0ff
                          test               eax, eax                                       // 0x0074818d    85c0
                          {disp8} je         .Lbl_addr_0x007481c1                           // 0x0074818f    7430
                          {disp8} fld        dword ptr [esp + 0x0c]                         // 0x00748191    d944240c

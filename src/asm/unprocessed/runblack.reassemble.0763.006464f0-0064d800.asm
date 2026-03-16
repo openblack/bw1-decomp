@@ -302,7 +302,7 @@
 .globl _jmp_addr_0x0064d680
 .globl _jmp_addr_0x0064d6a0
 .globl _jmp_addr_0x0064d6b0
-.globl ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
+.globl ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z
 .globl _GetRemapedPlayer__FUl
 .globl ?GetText@PlannedMultiMapFixed@@UAEPBDXZ
 .globl ?CreateBuildingSite@PlannedMultiMapFixed@@UBE_NXZ
@@ -10576,7 +10576,7 @@ _jmp_addr_0x0064d6b0:    sub                esp, 0x08                           
                          nop                                                               // 0x0064d74d    90
                          nop                                                               // 0x0064d74e    90
                          nop                                                               // 0x0064d74f    90
-?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z:
+?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z:
                          push               esi                                            // 0x0064d750    56
                          push               edi                                            // 0x0064d751    57
                          mov.s              esi, ecx                                       // 0x0064d752    8bf1
