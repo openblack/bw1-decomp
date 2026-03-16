@@ -17,8 +17,8 @@
 .extern _jmp_addr_0x004dc370
 .extern _jmp_addr_0x004dc600
 .extern _jmp_addr_0x004f00e0
-.extern _jmp_addr_0x00524fe0
-.extern _jmp_addr_0x00525720
+.extern ??0EffectValues@@QAE@W4EFFECT_TYPE@@PAVGameThing@@PAVGPlayer@@@Z
+.extern ??XEffectNumbers@@QAEAAU0@ABM@Z
 .extern @__ct__9MapCoordsFRC7LHPoint@12
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern _jmp_addr_0x00605050
@@ -899,12 +899,12 @@ start_0x00503bd0_0x00504700:
                          push               0x4                                           // 0x005045ef    6a04
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x005045f1    8d4c2418
                          mov.s              esi, eax                                      // 0x005045f5    8bf0
-                         call               _jmp_addr_0x00524fe0                          // 0x005045f7    e8e4090200
+                         call               ??0EffectValues@@QAE@W4EFFECT_TYPE@@PAVGameThing@@PAVGPlayer@@@Z                          // 0x005045f7    e8e4090200
                          {disp8} lea        eax, dword ptr [esp + 0x08]                   // 0x005045fc    8d442408
                          push               eax                                           // 0x00504600    50
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x00504601    8d4c2418
                          {disp8} mov        dword ptr [esp + 0x0c], 0x40a00000            // 0x00504605    c744240c0000a040
-                         call               _jmp_addr_0x00525720                          // 0x0050460d    e80e110200
+                         call               ??XEffectNumbers@@QAEAAU0@ABM@Z               // 0x0050460d    e80e110200
                          mov                edx, dword ptr [esi]                          // 0x00504612    8b16
                          push               0x1                                           // 0x00504614    6a01
                          {disp8} lea        eax, dword ptr [esp + 0x10]                   // 0x00504616    8d442410

@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern ?ApplyEffectsDueToPhysicalDestruction@Abode@@QAEXPAVObject@@PAVGPlayer@@@Z
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
-.extern _jmp_addr_0x0042a4b0
+.extern ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
 .extern _jmp_addr_0x00476fa0
 .extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
 .extern _jmp_addr_0x00479040
@@ -2440,7 +2440,7 @@ _jmp_addr_0x0048bcc0:    sub                esp, 0x000001b0                     
                          fstp               st(0)                                                // 0x0048c2c6    ddd8
                          fstp               dword ptr [esp]                                      // 0x0048c2c8    d91c24
                          push               edi                                                  // 0x0048c2cb    57
-                         call               _jmp_addr_0x0042a4b0                                 // 0x0048c2cc    e8dfe1f9ff
+                         call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z                                 // 0x0048c2cc    e8dfe1f9ff
                          {disp32} fld       dword ptr [esi + 0x00000090]                         // 0x0048c2d1    d98690000000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x2616c]                    // 0x0048c2d7    d80d6cf18c00
                          push               edi                                                  // 0x0048c2dd    57

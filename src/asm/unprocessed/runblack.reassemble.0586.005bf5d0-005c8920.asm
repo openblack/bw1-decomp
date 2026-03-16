@@ -10,7 +10,7 @@
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20
 .extern _jmp_addr_0x0042a280
-.extern _jmp_addr_0x0042a4b0
+.extern ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
 .extern ??0LHFile@@QAE@XZ
 .extern ?ResetData@LHFile@@QAEIXZ
 .extern ?__nw@Base@@SAPAXK@Z
@@ -4452,7 +4452,7 @@ _jmp_addr_0x005c2800:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          fstp               st(0)                                          // 0x005c29d8    ddd8
                          fstp               dword ptr [esp]                                // 0x005c29da    d91c24
                          push               esi                                            // 0x005c29dd    56
-                         call               _jmp_addr_0x0042a4b0                           // 0x005c29de    e8cd7ae6ff
+                         call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z                           // 0x005c29de    e8cd7ae6ff
 .Lbl_addr_0x005c29e3:    {disp8} mov        ecx, dword ptr [esp + 0x48]                    // 0x005c29e3    8b4c2448
                          mov                eax, dword ptr [edi]                           // 0x005c29e7    8b07
                          inc                ebp                                            // 0x005c29e9    45

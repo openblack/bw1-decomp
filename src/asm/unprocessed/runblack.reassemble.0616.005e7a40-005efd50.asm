@@ -26,8 +26,8 @@
 .extern _jmp_addr_0x0050d490
 .extern _jmp_addr_0x0050d600
 .extern _jmp_addr_0x005136b0
-.extern _jmp_addr_0x00524fe0
-.extern _jmp_addr_0x00525720
+.extern ??0EffectValues@@QAE@W4EFFECT_TYPE@@PAVGameThing@@PAVGPlayer@@@Z
+.extern ??XEffectNumbers@@QAEAAU0@ABM@Z
 .extern _jmp_addr_0x0052fb50
 .extern ?GetFlockPos@Flock@@QAEPAUMapCoords@@XZ
 .extern _jmp_addr_0x00535120
@@ -8569,11 +8569,11 @@ _SetAge__6LivingFUl:
                          push               eax                                           // 0x005ed48f    50
                          push               0x3                                           // 0x005ed490    6a03
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x005ed492    8d4c2434
-                         call               _jmp_addr_0x00524fe0                          // 0x005ed496    e8457bf3ff
+                         call               ??0EffectValues@@QAE@W4EFFECT_TYPE@@PAVGameThing@@PAVGPlayer@@@Z                          // 0x005ed496    e8457bf3ff
                          {disp8} lea        edx, dword ptr [esp + 0x70]                   // 0x005ed49b    8d542470
                          push               edx                                           // 0x005ed49f    52
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x005ed4a0    8d4c2434
-                         call               _jmp_addr_0x00525720                          // 0x005ed4a4    e87782f3ff
+                         call               ??XEffectNumbers@@QAEAAU0@ABM@Z               // 0x005ed4a4    e87782f3ff
                          mov                eax, dword ptr [esi]                          // 0x005ed4a9    8b06
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x005ed4ab    8d4c2428
                          push               ecx                                           // 0x005ed4af    51

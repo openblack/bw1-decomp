@@ -104,7 +104,7 @@
 .globl @ReleaseLoopOnSoundEffect__6GAudioCFP4BaseUl19AUDIO_SFX_BANK_TYPE@20
 .globl _jmp_addr_0x0042a430
 .globl _jmp_addr_0x0042a460
-.globl _jmp_addr_0x0042a4b0
+.globl ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
 .globl _jmp_addr_0x0042a5f0
 .globl _jmp_addr_0x0042a6d0
 
@@ -5290,7 +5290,8 @@ _jmp_addr_0x0042a460:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          ret                0x000c                                               // 0x0042a4ab    c20c00
                          nop                                                                     // 0x0042a4ae    90
                          nop                                                                     // 0x0042a4af    90
-_jmp_addr_0x0042a4b0:    {disp8} mov        eax, dword ptr [esp + 0x10]                          // 0x0042a4b0    8b442410
+?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z:
+                         {disp8} mov        eax, dword ptr [esp + 0x10]                          // 0x0042a4b0    8b442410
                          test               eax, eax                                             // 0x0042a4b4    85c0
                          push               ebx                                                  // 0x0042a4b6    53
                          push               ebp                                                  // 0x0042a4b7    55

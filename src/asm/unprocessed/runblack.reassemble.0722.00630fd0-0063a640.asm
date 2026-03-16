@@ -324,7 +324,7 @@
 .extern ?ReactToPhysicsImpact@Object@@UAEXPAVPhysicsObject@@_N@Z
 .extern ?IncreaseLife@Object@@UAEXM@Z
 .extern ?DestroyedByEffect@Object@@UAEIPAVGPlayer@@M@Z
-.globl _jmp_addr_0x00637930
+.globl ?GetDefenseMultiplier@Object@@QAEMXZ
 .extern ?ApplyEffect@Object@@UAEXPBXPAVEffectValues@@@Z
 .globl _jmp_addr_0x00637cc0
 .extern ?GetHeatCapacity@Object@@UAEMXZ
@@ -10353,7 +10353,8 @@ _jmp_addr_0x00636e30:    mov                eax, dword ptr [ecx]                
                          nop                                                               // 0x0063792d    90
                          nop                                                               // 0x0063792e    90
                          nop                                                               // 0x0063792f    90
-_jmp_addr_0x00637930:    sub                esp, 0x1c                                      // 0x00637930    83ec1c
+?GetDefenseMultiplier@Object@@QAEMXZ:
+                         sub                esp, 0x1c                                      // 0x00637930    83ec1c
                          push               esi                                            // 0x00637933    56
                          push               edi                                            // 0x00637934    57
                          mov.s              edx, ecx                                       // 0x00637935    8bd1

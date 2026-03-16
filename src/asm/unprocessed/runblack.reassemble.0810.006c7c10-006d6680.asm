@@ -8,7 +8,7 @@
 .extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .extern _SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl
 .extern _jmp_addr_0x0042a2b0
-.extern _jmp_addr_0x0042a4b0
+.extern ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
 .extern _jmp_addr_0x0043dc00
 .extern _jmp_addr_0x00441e00
 .extern @__ct__7LHPointFfff@20
@@ -14857,7 +14857,7 @@ _jmp_addr_0x006d1090:    {disp8} mov        dl, byte ptr [ecx + 0x30]           
                          push               edx                                           // 0x006d1293    52
                          push               0x0                                           // 0x006d1294    6a00
                          push               esi                                           // 0x006d1296    56
-                         call               _jmp_addr_0x0042a4b0                          // 0x006d1297    e81492d5ff
+                         call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z                          // 0x006d1297    e81492d5ff
                          {disp8} mov        byte ptr [esi + 0x3c], 0x01                   // 0x006d129c    c6463c01
                          {disp32} jmp       .Lbl_addr_0x006d1383                          // 0x006d12a0    e9de000000
 .Lbl_addr_0x006d12a5:    test               esi, esi                                      // 0x006d12a5    85f6
@@ -14925,7 +14925,7 @@ _jmp_addr_0x006d1090:    {disp8} mov        dl, byte ptr [ecx + 0x30]           
                          push               ecx                                           // 0x006d1375    51
                          fstp               dword ptr [esp]                               // 0x006d1376    d91c24
                          push               esi                                           // 0x006d1379    56
-                         call               _jmp_addr_0x0042a4b0                          // 0x006d137a    e83191d5ff
+                         call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z                          // 0x006d137a    e83191d5ff
                          {disp8} jmp        .Lbl_addr_0x006d1383                          // 0x006d137f    eb02
 .Lbl_addr_0x006d1381:    fstp               st(0)                                         // 0x006d1381    ddd8
 .Lbl_addr_0x006d1383:    test               ebp, ebp                                      // 0x006d1383    85ed

@@ -246,7 +246,7 @@
 .globl _jmp_addr_0x0071ce70
 .globl _jmp_addr_0x0071ceb0
 .globl _jmp_addr_0x0071cfe0
-.globl _jmp_addr_0x0071d070
+.globl ?HelpSpritesDestroyBuilding@GGuidance@@QAEXAAVAbode@@@Z
 .globl _jmp_addr_0x0071d0b0
 .globl _jmp_addr_0x0071d100
 .globl _jmp_addr_0x0071d1c0
@@ -2225,7 +2225,8 @@ _jmp_addr_0x0071cfe0:    push               esi                                 
                          nop                                                                     // 0x0071d06d    90
                          nop                                                                     // 0x0071d06e    90
                          nop                                                                     // 0x0071d06f    90
-_jmp_addr_0x0071d070:    push               esi                                                  // 0x0071d070    56
+?HelpSpritesDestroyBuilding@GGuidance@@QAEXAAVAbode@@@Z:
+                         push               esi                                                  // 0x0071d070    56
                          mov.s              esi, ecx                                             // 0x0071d071    8bf1
                          push               0x1e                                                 // 0x0071d073    6a1e
                          call               _jmp_addr_0x0071aff0                                 // 0x0071d075    e876dfffff

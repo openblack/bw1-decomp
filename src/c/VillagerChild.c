@@ -551,7 +551,7 @@ bool32_t __fastcall ChildAtCreche__8VillagerFv(struct Villager* this)
     asm("fstp               st(0)");                                         // 0x00757e2d    ddd8
     asm("fstp               dword ptr [esp]");                               // 0x00757e2f    d91c24
     asm("push               edi");                                           // 0x00757e32    57
-    asm("call               _jmp_addr_0x0042a4b0");                          // 0x00757e33    e87826cdff
+    asm("call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z");                          // 0x00757e33    e87826cdff
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x00757e38    8d4e14
     asm("push               ecx");                                           // 0x00757e3b    51
     asm("{disp8} lea        edx, dword ptr [esp + 0x10]");                   // 0x00757e3c    8d542410

@@ -359,7 +359,7 @@ void __fastcall ReactToPhysicsImpact__5AbodeFP13PhysicsObjectb(struct Object* th
     asm("fstp               st(0)");                                         // 0x0040660a    ddd8
     asm("fstp               dword ptr [esp]");                               // 0x0040660c    d91c24
     asm("push               esi");                                           // 0x0040660f    56
-    asm("call               _jmp_addr_0x0042a4b0");                          // 0x00406610    e89b3e0200
+    asm("call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z");                          // 0x00406610    e89b3e0200
     asm("LAB__addr_0x00406615:");
     asm("pop                edi");                                           // 0x00406615    5f
     asm("pop                esi");                                           // 0x00406616    5e
@@ -441,14 +441,14 @@ void __fastcall ApplyEffectsDueToPhysicalDestruction__5AbodeFP6ObjectP7GPlayer(s
     asm("fstp               st(0)");                                         // 0x00406717    ddd8
     asm("fstp               dword ptr [esp]");                               // 0x00406719    d91c24
     asm("push               esi");                                           // 0x0040671c    56
-    asm("call               _jmp_addr_0x0042a4b0");                          // 0x0040671d    e88e3d0200
+    asm("call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z");                          // 0x0040671d    e88e3d0200
     asm("{disp32} mov       edi, dword ptr [esp + 0x000000a0]");             // 0x00406722    8bbc24a0000000
     asm("{disp32} mov       ecx, dword ptr [esp + 0x0000009c]");             // 0x00406729    8b8c249c000000
     asm("push               edi");                                           // 0x00406730    57
     asm("push               ecx");                                           // 0x00406731    51
     asm("push               0x3");                                           // 0x00406732    6a03
     asm("{disp8} lea        ecx, dword ptr [esp + 0x48]");                   // 0x00406734    8d4c2448
-    asm("call               _jmp_addr_0x00524fe0");                          // 0x00406738    e8a3e81100
+    asm("call               ??0EffectValues@@QAE@W4EFFECT_TYPE@@PAVGameThing@@PAVGPlayer@@@Z");                          // 0x00406738    e8a3e81100
     asm("{disp32} mov       eax, dword ptr [esi + 0x00000090]");             // 0x0040673d    8b8690000000
     asm("test               eax, eax");                                      // 0x00406743    85c0
     asm("{disp32} je        LAB__addr_0x004067d2");                          // 0x00406745    0f8487000000
@@ -471,7 +471,7 @@ void __fastcall ApplyEffectsDueToPhysicalDestruction__5AbodeFP6ObjectP7GPlayer(s
     asm("{disp8} je         LAB__addr_0x00406786");                          // 0x0040677b    7409
     asm("{disp8} mov        ecx, dword ptr [ebx + 0x30]");                   // 0x0040677d    8b4b30
     asm("push               esi");                                           // 0x00406780    56
-    asm("call               _jmp_addr_0x0071d070");                          // 0x00406781    e8ea683100
+    asm("call               ?HelpSpritesDestroyBuilding@GGuidance@@QAEXAAVAbode@@@Z");                          // 0x00406781    e8ea683100
     asm("LAB__addr_0x00406786:");
     asm("mov                edx, dword ptr [esi]");                          // 0x00406786    8b16
     asm("mov.s              ecx, esi");                                      // 0x00406788    8bce
@@ -488,14 +488,14 @@ void __fastcall ApplyEffectsDueToPhysicalDestruction__5AbodeFP6ObjectP7GPlayer(s
     asm("{disp8} lea        eax, dword ptr [esp + 0x08]");                   // 0x004067ae    8d442408
     asm("push               eax");                                           // 0x004067b2    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x48]");                   // 0x004067b3    8d4c2448
-    asm("call               _jmp_addr_0x00525720");                          // 0x004067b7    e864ef1100
+    asm("call               ??XEffectNumbers@@QAEAAU0@ABM@Z");               // 0x004067b7    e864ef1100
     asm("{disp8} lea        ecx, dword ptr [esp + 0x7c]");                   // 0x004067bc    8d4c247c
     asm("push               ecx");                                           // 0x004067c0    51
     asm("mov.s              ecx, esi");                                      // 0x004067c1    8bce
-    asm("call               _jmp_addr_0x00637930");                          // 0x004067c3    e868112300
+    asm("call               ?GetDefenseMultiplier@Object@@QAEMXZ");                          // 0x004067c3    e868112300
     asm("push               eax");                                           // 0x004067c8    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x40]");                   // 0x004067c9    8d4c2440
-    asm("call               _jmp_addr_0x00525950");                          // 0x004067cd    e87ef11100
+    asm("call               ??_0EffectValues@@QAEAAV0@ABM@Z");                          // 0x004067cd    e87ef11100
     asm("LAB__addr_0x004067d2:");
     asm("mov                edx, dword ptr [esi]");                          // 0x004067d2    8b16
     asm("push               0x0");                                           // 0x004067d4    6a00

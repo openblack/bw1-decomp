@@ -638,6 +638,8 @@ public:
 
     // Non-virtual methods
 
+    // win1.41 00637930 mac 103d6910 Object::GetDefenseMultiplier(void)
+    float GetDefenseMultiplier();
     // win1.41 00637e00 mac 103d5f70 Object::IsTouching(Object *, float)
     bool32_t IsTouching(Object* param_1, float param_2);
     // win1.41 00638560 mac 1005ba80 Object::GetMapChild(MapCoords const &)

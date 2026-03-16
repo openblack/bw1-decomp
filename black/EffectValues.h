@@ -19,7 +19,12 @@ class GameThing;
 
 struct EffectNumbers
 {
-  float values[EFFECT_TYPE_LAST];  /* 0x0 */
+    float values[EFFECT_TYPE_LAST];  /* 0x0 */
+
+    // Non-virtual methods
+
+    // win1.41 00525720 mac 100cba20 EffectNumbers::operator*=(const float&)
+    EffectNumbers& operator*=(const float& rhs);
 };
 
 // win1.41 00be9678 mac inlined EffectValues::`RTTI Type Descriptor'
@@ -45,8 +50,15 @@ public:
 
     // Constructors
 
+    // win1.41 00524fe0 mac 100cc4c0 EffectValues::EffectValues(EFFECT_INFO, GameThing*, GPlayer*)
+    EffectValues(EFFECT_TYPE type, GameThing* source, GPlayer* player);
     // win1.41 00525040 mac 100cc350 EffectValues::EffectValues(EFFECT_TYPE, float, GameThing *, float, GPlayer *)
     EffectValues(EFFECT_TYPE type, float value, GameThing* source, float param_4, GPlayer* player);
+
+    // Non-virtual methods
+
+    // win1.41 00525950 mac 100cb810 EffectValues::operator/=(const float&)
+    EffectValues& operator/=(const float& rhs);
 };
 
 #else // __cplusplus

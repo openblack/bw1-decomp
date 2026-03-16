@@ -93,8 +93,8 @@
 .extern _jmp_addr_0x004f8ca0
 .extern ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z
 .extern _jmp_addr_0x004ff5c0
-.extern _jmp_addr_0x00524fe0
-.extern _jmp_addr_0x00525720
+.extern ??0EffectValues@@QAE@W4EFFECT_TYPE@@PAVGameThing@@PAVGPlayer@@@Z
+.extern ??XEffectNumbers@@QAEAAU0@ABM@Z
 .extern _jmp_addr_0x0053b4a0
 .extern ?GetPlayerFromReal@GGame@@QAEPAVGPlayer@@K@Z
 .extern _jmp_addr_0x00551580
@@ -1355,7 +1355,7 @@ _jmp_addr_0x00478350:    {disp32} mov       eax, dword ptr [_game]              
                          {disp8} je         .Lbl_addr_0x00478d31                          // 0x00478d22    740d
                          push               0x008cbf50                                    // 0x00478d24    6850bf8c00
                          {disp8} lea        ecx, dword ptr [edi + 0x08]                   // 0x00478d29    8d4f08
-                         call               _jmp_addr_0x00525720                          // 0x00478d2c    e8efc90a00
+                         call               ??XEffectNumbers@@QAEAAU0@ABM@Z               // 0x00478d2c    e8efc90a00
 .Lbl_addr_0x00478d31:    push               0x000000b8                                    // 0x00478d31    68b8000000
                          mov.s              ecx, esi                                      // 0x00478d36    8bce
                          call               ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ                 // 0x00478d38    e813ebffff
@@ -2528,7 +2528,7 @@ _jmp_addr_0x004798c0:    push               esi                                 
                          push               eax                                           // 0x00479a37    50
                          push               0x3                                           // 0x00479a38    6a03
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                   // 0x00479a3a    8d4c242c
-                         call               _jmp_addr_0x00524fe0                          // 0x00479a3e    e89db50a00
+                         call               ??0EffectValues@@QAE@W4EFFECT_TYPE@@PAVGameThing@@PAVGPlayer@@@Z                          // 0x00479a3e    e89db50a00
                          {disp8} mov        ecx, dword ptr [ebp + 0x08]                   // 0x00479a43    8b4d08
                          push               ecx                                           // 0x00479a46    51
                          mov.s              ecx, esi                                      // 0x00479a47    8bce
@@ -2537,7 +2537,7 @@ _jmp_addr_0x004798c0:    push               esi                                 
                          {disp8} lea        edx, dword ptr [esp + 0x64]                   // 0x00479a52    8d542464
                          push               edx                                           // 0x00479a56    52
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                   // 0x00479a57    8d4c242c
-                         call               _jmp_addr_0x00525720                          // 0x00479a5b    e8c0bc0a00
+                         call               ??XEffectNumbers@@QAEAAU0@ABM@Z               // 0x00479a5b    e8c0bc0a00
                          {disp8} fld        dword ptr [esp + 0x64]                        // 0x00479a60    d9442464
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x1e674]             // 0x00479a64    d81d74768c00
                          fnstsw             ax                                            // 0x00479a6a    dfe0

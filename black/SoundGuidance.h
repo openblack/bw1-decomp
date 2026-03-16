@@ -78,6 +78,8 @@ public:
     void Init(GInterfaceStatus* status);
     // win1.41 0071cbe0 mac 1050e610 GGuidance::HelpSpritesLowOnPeople(Town &)
     void HelpSpritesLowOnPeople(Town* param_1);
+    // win1.41 0071d070 mac 1050d750 GGuidance::HelpSpritesDestroyBuilding(Abode&)
+    void HelpSpritesDestroyBuilding(Abode& building);
 };
 
 #else // __cplusplus
