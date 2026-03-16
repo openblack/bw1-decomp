@@ -48,7 +48,9 @@ struct FragMesh
     uint32_t field_0x8;
     FragPrimitive* primitives;
     uint32_t field_0x10;
-    uint8_t field_0x14[0x14];
+    uint8_t field_0x14[0x4];
+    float field_0x18;
+    uint8_t field_0x1c[0x8];
 
     // Constructors
 

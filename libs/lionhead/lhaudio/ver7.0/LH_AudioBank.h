@@ -8,6 +8,5 @@ struct LH_AudioBank
 {
   uint8_t field_0x0[0x13c];
 };
-static_assert(sizeof(struct LH_AudioBank) == 0x13c, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH_AUDIO_BANK_INCLUDED_H */

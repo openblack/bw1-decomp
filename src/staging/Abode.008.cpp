@@ -3,6 +3,7 @@
 #include "stdbool.h"
 #include <stdint.h>
 
+#include <lionhead/lh3dlib/development/LH3DCamera.h>
 #include <lionhead/lh3dlib/development/LH3DMem.h>
 #include <lionhead/lh3dlib/development/LH3DMesh.h>
 #include <lionhead/lhaudio/ver7.0/LH_SamplePlayOptions.h>
@@ -18,6 +19,7 @@
 #include "InterfaceStatus.h"
 #include "Player.h"
 #include "Rand.h"
+#include "SoundGuidance.h"
 #include "Villager.h"
 #include "Utils.h"
 #include "Town.h"
@@ -26,7 +28,8 @@
 
 Town* abode_town_00c4cc6c; // TODO match the correct .bss one
 extern "C" GGame* game;
-extern "C" GGlobal* global;
+extern "C" GGlobal global;
+extern "C" LH3DCamera g_camera;
 extern "C" int windmill_int_00c4cc7c;
 
 extern "C" void Draw__13HowManyPeopleFllP7LHPoint(uint32_t, uint32_t, LHPoint*);
@@ -66,12 +69,48 @@ void Abode::ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2)
 // win1.41 00406640 mac 10172a50 Abode::ApplyEffectsDueToPhysicalDestruction(Object *, GPlayer *)
 void Abode::ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player)
 {
+    LHPoint point;
+    point = coords.GetLHPoint();
+    if (game->GetCamera() != NULL)
+    {
+        GCamera* camera = game->GetCamera();
+        LHPoint camera_pos;
+        camera_pos = g_camera.pos;
+
+        long local_70[5] = {1, 0, 0x16, 9, 0x4b};
+
+        global.audio->SamplePlayAnimEffect(this, camera_pos.GetDistance(point), local_70, 0, global.audio->audio_banks[2], 0, 0, 0);
+        EffectValues effect(EFFECT_TYPE_HEAL, object, player);
+        if (destruction_mesh != NULL)
+        {
+            float dmg = destruction_mesh->field_0x18;
+            if (dmg < 0.4f)
+            {
+                GInterfaceStatus* status = game->MyInterfaceStatus();
+                if (player != NULL)
+                {
+                    if (player->IsMemberOfThisPlayer(status))
+                    {
+                        status->guidance->HelpSpritesDestroyBuilding(*this);
+                    }
+                }
+            }
+            float life = GetLife() - dmg;
+            if (life < 0.0f)
+            {
+                life = 0.0f;
+            }
+            effect.numbers *= life;
+            effect /= GetDefenseMultiplier();
+        }
+        ApplyEffect(effect, 0);
+    }
 }
 
 // win1.41 00406800 mac 1010ab50 Abode::CanBecomeAPhysicsObject(void)
 bool32_t Abode::CanBecomeAPhysicsObject()
 {
-    return 0;
+    return false;
 }
 
 // win1.41 00406810 mac 1001b380 Abode::GetScriptObjectType(void)
@@ -115,7 +154,7 @@ bool32_t Abode::InterfaceTap(GInterfaceStatus* status)
         float pos_x = status->field_0xc8.x;
         LH_SamplePlayOptions play_options;
 
-        play_options.field_0x4 = global->debug.field_0x3a8;
+        play_options.field_0x4 = global.debug.field_0x3a8;
         play_options.field_0x24 = windmill_int_00c4cc7c + 0x6e;
         ++windmill_int_00c4cc7c;
         if (windmill_int_00c4cc7c == 9)
@@ -129,7 +168,7 @@ bool32_t Abode::InterfaceTap(GInterfaceStatus* status)
         play_options.field_0x8 = 1;
         play_options.field_0xc = 0;
 
-        global->audio->PlaySoundEffect(&play_options);
+        global.audio->PlaySoundEffect(&play_options);
     }
 
     return true;

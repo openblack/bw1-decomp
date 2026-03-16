@@ -28,8 +28,8 @@ class GAudio: public GameThing
 {
 public:
     uint8_t field_0x14[0x394];
-    LH_AudioBank* audio_banks[0x2]; /* 0x3a8 */
-    uint8_t field_0x3b0[0x24];
+    LH_AudioBank* audio_banks[0x3]; /* 0x3a8 */
+    uint8_t field_0x3b4[0x20];
 
     // Override methods
 
