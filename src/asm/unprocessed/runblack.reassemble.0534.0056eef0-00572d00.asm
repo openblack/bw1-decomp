@@ -30,7 +30,7 @@
 .extern ?DrawBigButton@SetupThing@@SAXHH_N0HW4BBSTYLE@@0HH@Z
 .extern ?DrawBox@SetupThing@@SAXHHHHMMMMPAULH3DMaterial@@PAULH3DColor@@HHH_NM@Z
 .extern ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004707f0
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
@@ -1171,7 +1171,7 @@ _jmp_addr_0x0056fa70:    ret                0x0004                              
                          nop                                                              // 0x0056fa7f    90
 _jmp_addr_0x0056fa80:    mov                dword ptr [ecx], 0x008fff50                   // 0x0056fa80    c70150ff8f00
                          dec                word ptr [data_bytes + 0x340080]              // 0x0056fa86    66ff0d8060d000
-                         {disp32} jmp       _jmp_addr_0x00436960                          // 0x0056fa8d    e9ce6eecff
+                         {disp32} jmp       ??1Base@@UAE@XZ                               // 0x0056fa8d    e9ce6eecff
                          nop                                                              // 0x0056fa92    90
                          nop                                                              // 0x0056fa93    90
                          nop                                                              // 0x0056fa94    90

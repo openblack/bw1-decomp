@@ -207,7 +207,7 @@ void __cdecl atexit_destroy_GVillagerInfo_array(void)
     asm("LAB__addr_0x0074f8e0:");
     asm("sub                esi, 0x000003a4");                                // 0x0074f8e0    81eea4030000
     asm("mov.s              ecx, esi");                                       // 0x0074f8e6    8bce
-    asm("call               _jmp_addr_0x00436960");                           // 0x0074f8e8    e87370ceff
+    asm("call               ??1Base@@UAE@XZ");                                // 0x0074f8e8    e87370ceff
     asm("dec                edi");                                            // 0x0074f8ed    4f
     asm("{disp8} jne        LAB__addr_0x0074f8e0");                           // 0x0074f8ee    75f0
     asm("pop                edi");                                            // 0x0074f8f0    5f
@@ -221,7 +221,7 @@ void __fastcall __dt__13GVillagerInfoFv(struct Base* this, const void* edx, uint
 {
     asm("push               esi");                                            // 0x0074f900    56
     asm("mov.s              esi, ecx");                                       // 0x0074f901    8bf1
-    asm("call               _jmp_addr_0x00436960");                           // 0x0074f903    e85870ceff
+    asm("call               ??1Base@@UAE@XZ");                                // 0x0074f903    e85870ceff
     asm("test               byte ptr [esp + 0x08], 0x01");                    // 0x0074f908    f644240801
     asm("{disp8} je         LAB__addr_0x0074f91d");                           // 0x0074f90d    740e
     asm("push               0x000003a4");                                     // 0x0074f90f    68a4030000

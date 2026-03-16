@@ -147,7 +147,7 @@ void __cdecl FUN_007695b0__8VillagerFv(void)
     asm("LAB__addr_0x007695d0:");
     asm("sub                esi, 0x00000114");                               // 0x007695d0    81ee14010000
     asm("mov.s              ecx, esi");                                      // 0x007695d6    8bce
-    asm("call               _jmp_addr_0x00436960");                          // 0x007695d8    e883d3ccff
+    asm("call               ??1Base@@UAE@XZ");                               // 0x007695d8    e883d3ccff
     asm("dec                edi");                                           // 0x007695dd    4f
     asm("{disp8} jne        LAB__addr_0x007695d0");                          // 0x007695de    75f0
     asm("pop                edi");                                           // 0x007695e0    5f
@@ -159,7 +159,7 @@ void __fastcall __dt__23GVillagerStateTableInfoFv(struct Base* this, const void*
 {
     asm("push               esi");                                             // 0x007695f0    56
     asm("mov.s              esi, ecx");                                        // 0x007695f1    8bf1
-    asm("call               _jmp_addr_0x00436960");                            // 0x007695f3    e868d3ccff
+    asm("call               ??1Base@@UAE@XZ");                                 // 0x007695f3    e868d3ccff
     asm("test               byte ptr [esp + 0x08], 0x01");                     // 0x007695f8    f644240801
     asm("{disp8} je         LAB__addr_0x0076960d");                            // 0x007695fd    740e
     asm("push               0x00000114");                                      // 0x007695ff    6814010000

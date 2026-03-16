@@ -11,7 +11,7 @@
 .extern ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
 .extern _jmp_addr_0x004269c0
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00439850
 .extern ??0MapCoords@@QAE@ABU0@@Z
@@ -8734,7 +8734,7 @@ _globl_ct_0x00606b30:    call               .Lbl_addr_0x00606b40                
                          mov                edi, 0x0000000a                               // 0x00606bbb    bf0a000000
 .Lbl_addr_0x00606bc0:    sub                esi, 0x18                                     // 0x00606bc0    83ee18
                          mov.s              ecx, esi                                      // 0x00606bc3    8bce
-                         call               _jmp_addr_0x00436960                          // 0x00606bc5    e896fde2ff
+                         call               ??1Base@@UAE@XZ                               // 0x00606bc5    e896fde2ff
                          dec                edi                                           // 0x00606bca    4f
                          {disp8} jne        .Lbl_addr_0x00606bc0                          // 0x00606bcb    75f3
                          pop                edi                                           // 0x00606bcd    5f
@@ -8743,7 +8743,7 @@ _globl_ct_0x00606b30:    call               .Lbl_addr_0x00606b40                
 ??_GGSpeedThreshold@@UAEPAXI@Z:
                          push               esi                                           // 0x00606bd0    56
                          mov.s              esi, ecx                                      // 0x00606bd1    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x00606bd3    e888fde2ff
+                         call               ??1Base@@UAE@XZ                               // 0x00606bd3    e888fde2ff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00606bd8    f644240801
                          {disp8} je         .Lbl_addr_0x00606bea                          // 0x00606bdd    740b
                          push               0x18                                          // 0x00606bdf    6a18
@@ -8993,7 +8993,7 @@ _globl_ct_0x00606d60:    call               .Lbl_addr_0x00606d70                
                          mov                edi, 0x00000020                               // 0x00606deb    bf20000000
 .Lbl_addr_0x00606df0:    sub                esi, 0x00000114                               // 0x00606df0    81ee14010000
                          mov.s              ecx, esi                                      // 0x00606df6    8bce
-                         call               _jmp_addr_0x00436960                          // 0x00606df8    e863fbe2ff
+                         call               ??1Base@@UAE@XZ                               // 0x00606df8    e863fbe2ff
                          dec                edi                                           // 0x00606dfd    4f
                          {disp8} jne        .Lbl_addr_0x00606df0                          // 0x00606dfe    75f0
                          pop                edi                                           // 0x00606e00    5f
@@ -9015,7 +9015,7 @@ _globl_ct_0x00606d60:    call               .Lbl_addr_0x00606d70                
 ??_GGMobileObjectInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x00606e10    56
                          mov.s              esi, ecx                                      // 0x00606e11    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x00606e13    e848fbe2ff
+                         call               ??1Base@@UAE@XZ                               // 0x00606e13    e848fbe2ff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00606e18    f644240801
                          {disp8} je         .Lbl_addr_0x00606e2d                          // 0x00606e1d    740e
                          push               0x00000114                                    // 0x00606e1f    6814010000
@@ -11492,7 +11492,7 @@ _globl_ct_0x006084a0:    call               .Lbl_addr_0x006084b0                
                          mov                edi, 0x0000003d                               // 0x0060853b    bf3d000000
 .Lbl_addr_0x00608540:    sub                esi, 0x0000012c                               // 0x00608540    81ee2c010000
                          mov.s              ecx, esi                                      // 0x00608546    8bce
-                         call               _jmp_addr_0x00436960                          // 0x00608548    e813e4e2ff
+                         call               ??1Base@@UAE@XZ                               // 0x00608548    e813e4e2ff
                          dec                edi                                           // 0x0060854d    4f
                          {disp8} jne        .Lbl_addr_0x00608540                          // 0x0060854e    75f0
                          pop                edi                                           // 0x00608550    5f
@@ -11514,7 +11514,7 @@ _globl_ct_0x006084a0:    call               .Lbl_addr_0x006084b0                
 ??_GGMobileStaticInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x00608560    56
                          mov.s              esi, ecx                                      // 0x00608561    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x00608563    e8f8e3e2ff
+                         call               ??1Base@@UAE@XZ                               // 0x00608563    e8f8e3e2ff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00608568    f644240801
                          {disp8} je         .Lbl_addr_0x0060857d                          // 0x0060856d    740e
                          push               0x0000012c                                    // 0x0060856f    682c010000

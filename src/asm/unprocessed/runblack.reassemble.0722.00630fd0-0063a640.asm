@@ -14,7 +14,7 @@
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
 .extern _jmp_addr_0x00414410
 .extern _jmp_addr_0x004267f0
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern ?DistanceChangeToBelief@GBelief@@SAMMM@Z
 .extern ?Stop@LHTimer@@QAEXXZ
@@ -8122,7 +8122,7 @@ _globl_ct_0x00636330:    call               .Lbl_addr_0x00636340                
                          mov                edi, 0x0000002d                                // 0x0063639b    bf2d000000
 .Lbl_addr_0x006363a0:    sub                esi, 0x00000100                                // 0x006363a0    81ee00010000
                          mov.s              ecx, esi                                       // 0x006363a6    8bce
-                         call               _jmp_addr_0x00436960                           // 0x006363a8    e8b305e0ff
+                         call               ??1Base@@UAE@XZ                                // 0x006363a8    e8b305e0ff
                          dec                edi                                            // 0x006363ad    4f
                          {disp8} jne        .Lbl_addr_0x006363a0                           // 0x006363ae    75f0
                          pop                edi                                            // 0x006363b0    5f
@@ -8144,7 +8144,7 @@ _globl_ct_0x00636330:    call               .Lbl_addr_0x00636340                
 ??_GGObjectInfo@@UAEPAXI@Z:
                          push               esi                                            // 0x006363c0    56
                          mov.s              esi, ecx                                       // 0x006363c1    8bf1
-                         call               _jmp_addr_0x00436960                           // 0x006363c3    e89805e0ff
+                         call               ??1Base@@UAE@XZ                                // 0x006363c3    e89805e0ff
                          test               byte ptr [esp + 0x08], 0x01                    // 0x006363c8    f644240801
                          {disp8} je         .Lbl_addr_0x006363dd                           // 0x006363cd    740e
                          push               0x00000100                                     // 0x006363cf    6800010000
@@ -8204,7 +8204,7 @@ _globl_ct_0x006363f0:    call               .Lbl_addr_0x00636400                
                          or.s               cl, al                                         // 0x0063643c    0ac8
                          {disp32} mov       byte ptr [data_bytes + 0x37b558], cl           // 0x0063643e    880d5815d400
                          mov                ecx, 0x00d41560                                // 0x00636444    b96015d400
-                         {disp32} jmp       _jmp_addr_0x00436960                           // 0x00636449    e91205e0ff
+                         {disp32} jmp       ??1Base@@UAE@XZ                                // 0x00636449    e91205e0ff
 .Lbl_addr_0x0063644e:    ret                                                               // 0x0063644e    c3
                          nop                                                               // 0x0063644f    90
 ??0Object@@QAE@XZ:
@@ -10669,7 +10669,7 @@ _jmp_addr_0x00637930:    sub                esp, 0x1c                           
                          mov.s              ecx, edi                                       // 0x00637c8f    8bcf
                          call               _jmp_addr_0x0073c9b0                           // 0x00637c91    e81a4d1000
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                    // 0x00637c96    8d4c2410
-                         call               _jmp_addr_0x00436960                           // 0x00637c9a    e8c1ecdfff
+                         call               ??1Base@@UAE@XZ                                // 0x00637c9a    e8c1ecdfff
 .Lbl_addr_0x00637c9f:    mov                edx, dword ptr [esi]                           // 0x00637c9f    8b16
                          mov.s              ecx, esi                                       // 0x00637ca1    8bce
                          call               dword ptr [edx + 0x11c]                        // 0x00637ca3    ff921c010000
@@ -11051,7 +11051,7 @@ _jmp_addr_0x00637dd0:    {disp8} mov        ecx, dword ptr [ecx + 0x44]         
                          call               dword ptr [eax + 0x5cc]                        // 0x00638020    ff90cc050000
                          fstp               st(0)                                          // 0x00638026    ddd8
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                    // 0x00638028    8d4c2404
-                         call               _jmp_addr_0x00436960                           // 0x0063802c    e82fe9dfff
+                         call               ??1Base@@UAE@XZ                                // 0x0063802c    e82fe9dfff
                          pop                esi                                            // 0x00638031    5e
                          add                esp, 0x40                                      // 0x00638032    83c440
                          ret                0x0010                                         // 0x00638035    c21000

@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern ?ForceActivityAndForceAction@Creature@@QAEXW4CREATURE_DESIRES@@PAVCreatureBelief@@W4CREATURE_ACTION@@11HH@Z
 .extern _jmp_addr_0x004d8980
@@ -403,7 +403,7 @@ _jmp_addr_0x004d78f0:    mov.s              eax, ecx                            
 ??_GAllocatedBeliefList@@UAEPAXI@Z:
                          push               esi                                           // 0x004d7910    56
                          mov.s              esi, ecx                                      // 0x004d7911    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x004d7913    e848f0f5ff
+                         call               ??1Base@@UAE@XZ                               // 0x004d7913    e848f0f5ff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x004d7918    f644240801
                          {disp8} je         .Lbl_addr_0x004d792a                          // 0x004d791d    740b
                          push               0x18                                          // 0x004d791f    6a18

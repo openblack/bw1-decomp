@@ -16,7 +16,7 @@
 .extern _jmp_addr_0x004252d0
 .extern _jmp_addr_0x00435c00
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00439830
 .extern _jmp_addr_0x0043d120
@@ -3459,14 +3459,14 @@ _jmp_addr_0x005571c0:    mov.s              eax, ecx                            
                          mov.s              eax, edx                                      // 0x0055726a    8bc2
                          test               eax, eax                                      // 0x0055726c    85c0
                          {disp8} jne        .Lbl_addr_0x00557263                          // 0x0055726e    75f3
-                         call               _jmp_addr_0x00436960                          // 0x00557270    e8ebf6edff
+                         call               ??1Base@@UAE@XZ                               // 0x00557270    e8ebf6edff
                          pop                esi                                           // 0x00557275    5e
                          ret                                                              // 0x00557276    c3
 .Lbl_addr_0x00557277:    {disp8} mov        edx, dword ptr [ecx + 0x18]                   // 0x00557277    8b5118
                          {disp8} mov        dword ptr [eax + 0x18], edx                   // 0x0055727a    895018
 .Lbl_addr_0x0055727d:    dec                dword ptr [esi + 0x04]                        // 0x0055727d    ff4e04
                          {disp8} mov        dword ptr [ecx + 0x18], 0x00000000            // 0x00557280    c7411800000000
-.Lbl_addr_0x00557287:    call               _jmp_addr_0x00436960                          // 0x00557287    e8d4f6edff
+.Lbl_addr_0x00557287:    call               ??1Base@@UAE@XZ                               // 0x00557287    e8d4f6edff
                          pop                esi                                           // 0x0055728c    5e
                          ret                                                              // 0x0055728d    c3
                          nop                                                              // 0x0055728e    90
@@ -3842,7 +3842,7 @@ _globl_ct_0x00557560:    call               .Lbl_addr_0x00557570                
                          nop                                                              // 0x0055758e    90
                          nop                                                              // 0x0055758f    90
                          mov                ecx, OFFSET _GGameInfo_00d019f8               // 0x00557590    b9f819d000
-                         {disp32} jmp       _jmp_addr_0x00436960                          // 0x00557595    e9c6f3edff
+                         {disp32} jmp       ??1Base@@UAE@XZ                               // 0x00557595    e9c6f3edff
                          nop                                                              // 0x0055759a    90
                          nop                                                              // 0x0055759b    90
                          nop                                                              // 0x0055759c    90
@@ -4031,7 +4031,7 @@ _jmp_addr_0x005576f0:    push               esi                                 
 ??_GGGameInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x005577b0    56
                          mov.s              esi, ecx                                      // 0x005577b1    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x005577b3    e8a8f1edff
+                         call               ??1Base@@UAE@XZ                               // 0x005577b3    e8a8f1edff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x005577b8    f644240801
                          {disp8} je         .Lbl_addr_0x005577ca                          // 0x005577bd    740b
                          push               0x58                                          // 0x005577bf    6a58

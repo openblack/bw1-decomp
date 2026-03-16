@@ -7,7 +7,7 @@
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
 .extern _jmp_addr_0x004dfc80
@@ -2675,13 +2675,13 @@ _globl_ct_0x004258f0:    call               .Lbl_addr_0x00425900                
                          or.s               cl, al                                        // 0x0042596c    0ac8
                          {disp32} mov       byte ptr [data_bytes + 0x290008], cl          // 0x0042596e    880d0860c500
                          mov                ecx, 0x00c56010                               // 0x00425974    b91060c500
-                         {disp32} jmp       _jmp_addr_0x00436960                          // 0x00425979    e9e20f0100
+                         {disp32} jmp       ??1Base@@UAE@XZ                               // 0x00425979    e9e20f0100
 .Lbl_addr_0x0042597e:    ret                                                              // 0x0042597e    c3
                          nop                                                              // 0x0042597f    90
 ??_GGArrowInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x00425980    56
                          mov.s              esi, ecx                                      // 0x00425981    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x00425983    e8d80f0100
+                         call               ??1Base@@UAE@XZ                               // 0x00425983    e8d80f0100
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00425988    f644240801
                          {disp8} je         .Lbl_addr_0x0042599d                          // 0x0042598d    740e
                          push               0x00000130                                    // 0x0042598f    6830010000

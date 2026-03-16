@@ -7,7 +7,7 @@
 .extern _SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00439b90
 .extern _jmp_addr_0x0043a9e0
@@ -3894,7 +3894,7 @@ _jmp_addr_0x005e6790:    push               esi                                 
                          call               _jmp_addr_0x007add80                          // 0x005e67a8    e8d3751c00
                          {disp8} mov        dword ptr [esi + 0x08], 0x00000000            // 0x005e67ad    c7460800000000
 .Lbl_addr_0x005e67b4:    mov.s              ecx, esi                                      // 0x005e67b4    8bce
-                         call               _jmp_addr_0x00436960                          // 0x005e67b6    e8a501e5ff
+                         call               ??1Base@@UAE@XZ                               // 0x005e67b6    e8a501e5ff
                          pop                esi                                           // 0x005e67bb    5e
                          ret                                                              // 0x005e67bc    c3
                          nop                                                              // 0x005e67bd    90

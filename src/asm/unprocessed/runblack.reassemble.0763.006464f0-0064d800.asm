@@ -10,7 +10,7 @@
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern _jmp_addr_0x0042a4b0
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern @__ct__12BuildingSiteFP20PlannedMultiMapFixed@12
 .extern _jmp_addr_0x0043dc00
@@ -3874,7 +3874,7 @@ _globl_ct_0x00648d40:    call               ??0PlayerInfo@@QAE@XZ               
                          or.s               cl, al                                         // 0x00648d8c    0ac8
                          {disp32} mov       byte ptr [data_bytes + 0x381984], cl           // 0x00648d8e    880d8479d400
                          mov                ecx, 0x00d47988                                // 0x00648d94    b98879d400
-                         {disp32} jmp       _jmp_addr_0x00436960                           // 0x00648d99    e9c2dbdeff
+                         {disp32} jmp       ??1Base@@UAE@XZ                                // 0x00648d99    e9c2dbdeff
 .Lbl_addr_0x00648d9e:    ret                                                               // 0x00648d9e    c3
                          nop                                                               // 0x00648d9f    90
 _jmp_addr_0x00648da0:    push               ecx                                            // 0x00648da0    51

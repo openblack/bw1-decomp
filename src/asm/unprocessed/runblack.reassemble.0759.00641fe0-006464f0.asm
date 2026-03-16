@@ -17,7 +17,7 @@
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern ?__nw@Base@@SAPAXK@Z
 .extern _jmp_addr_0x00436760
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004369d0
 .extern _jmp_addr_0x004729a0
@@ -1972,13 +1972,13 @@ _globl_ct_0x00643590:    call               .Lbl_addr_0x006435a0                
                          or.s               cl, al                                         // 0x0064360c    0ac8
                          {disp32} mov       byte ptr [data_bytes + 0x380ae1], cl           // 0x0064360e    880de16ad400
                          mov                ecx, 0x00d46ae8                                // 0x00643614    b9e86ad400
-                         {disp32} jmp       _jmp_addr_0x00436960                           // 0x00643619    e94233dfff
+                         {disp32} jmp       ??1Base@@UAE@XZ                                // 0x00643619    e94233dfff
 .Lbl_addr_0x0064361e:    ret                                                               // 0x0064361e    c3
                          nop                                                               // 0x0064361f    90
 ??_GGPFootballInfo@@UAEPAXI@Z:
                          push               esi                                            // 0x00643620    56
                          mov.s              esi, ecx                                       // 0x00643621    8bf1
-                         call               _jmp_addr_0x00436960                           // 0x00643623    e83833dfff
+                         call               ??1Base@@UAE@XZ                                // 0x00643623    e83833dfff
                          test               byte ptr [esp + 0x08], 0x01                    // 0x00643628    f644240801
                          {disp8} je         .Lbl_addr_0x0064363d                           // 0x0064362d    740e
                          push               0x00000124                                     // 0x0064362f    6824010000
@@ -2072,7 +2072,7 @@ _globl_ct_0x00643650:    call               .Lbl_addr_0x00643660                
                          mov                edi, 0x0000000a                                // 0x006436db    bf0a000000
 .Lbl_addr_0x006436e0:    sub                esi, 0x24                                      // 0x006436e0    83ee24
                          mov.s              ecx, esi                                       // 0x006436e3    8bce
-                         call               _jmp_addr_0x00436960                           // 0x006436e5    e87632dfff
+                         call               ??1Base@@UAE@XZ                                // 0x006436e5    e87632dfff
                          dec                edi                                            // 0x006436ea    4f
                          {disp8} jne        .Lbl_addr_0x006436e0                           // 0x006436eb    75f3
                          pop                edi                                            // 0x006436ed    5f
@@ -2081,7 +2081,7 @@ _globl_ct_0x00643650:    call               .Lbl_addr_0x00643660                
 ??_GGPFootballPositionInfo@@UAEPAXI@Z:
                          push               esi                                            // 0x006436f0    56
                          mov.s              esi, ecx                                       // 0x006436f1    8bf1
-                         call               _jmp_addr_0x00436960                           // 0x006436f3    e86832dfff
+                         call               ??1Base@@UAE@XZ                                // 0x006436f3    e86832dfff
                          test               byte ptr [esp + 0x08], 0x01                    // 0x006436f8    f644240801
                          {disp8} je         .Lbl_addr_0x0064370a                           // 0x006436fd    740b
                          push               0x24                                           // 0x006436ff    6a24
@@ -3365,7 +3365,7 @@ _jmp_addr_0x006442b0:    {disp32} mov       eax, dword ptr [data_bytes + 0x38181
                          ret                                                               // 0x0064438a    c3
                          call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                           // 0x0064438b    e869d4dbff
 .Lbl_addr_0x00644390:    mov                dword ptr [ecx], 0x00932b94                    // 0x00644390    c701942b9300
-                         {disp32} jmp       _jmp_addr_0x00436960                           // 0x00644396    e9c525dfff
+                         {disp32} jmp       ??1Base@@UAE@XZ                                // 0x00644396    e9c525dfff
                          nop                                                               // 0x0064439b    90
                          nop                                                               // 0x0064439c    90
                          nop                                                               // 0x0064439d    90

@@ -878,7 +878,7 @@ bool32_t __fastcall PutOutFireByBeating__8VillagerFv(struct Villager* this)
     asm("call               _jmp_addr_0x00730670");                          // 0x0075ad0b    e86059fdff
     asm("add                esp, 0x08");                                     // 0x0075ad10    83c408
     asm("{disp8} lea        ecx, dword ptr [esp + 0x10]");                   // 0x0075ad13    8d4c2410
-    asm("call               _jmp_addr_0x00436960");                          // 0x0075ad17    e844bccdff
+    asm("call               ??1Base@@UAE@XZ");                               // 0x0075ad17    e844bccdff
     asm("mov                eax, 0x00000001");                               // 0x0075ad1c    b801000000
     asm("pop                esi");                                           // 0x0075ad21    5e
     asm("add                esp, 0x4c");                                     // 0x0075ad22    83c44c

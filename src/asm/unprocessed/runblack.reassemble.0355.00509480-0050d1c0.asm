@@ -11,7 +11,7 @@
 .extern ?ReduceLife@Abode@@UAEXMPAVGPlayer@@@Z
 .extern ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00479d80
 .extern ?ForceActivityAndForceAction@Creature@@QAEXW4CREATURE_DESIRES@@PAVCreatureBelief@@W4CREATURE_ACTION@@11HH@Z
@@ -1425,7 +1425,7 @@ start_0x00509480_0x0050d1c0:
 .Lbl_addr_0x0050a35b:    {disp8} lea        ecx, dword ptr [esp + 0x3c]                   // 0x0050a35b    8d4c243c
                          call               _jmp_addr_0x004f12d0                          // 0x0050a35f    e86c6ffeff
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x0050a364    8d4c2434
-                         call               _jmp_addr_0x00436960                          // 0x0050a368    e8f3c5f2ff
+                         call               ??1Base@@UAE@XZ                               // 0x0050a368    e8f3c5f2ff
                          pop                esi                                           // 0x0050a36d    5e
                          add                esp, 0x000000a0                               // 0x0050a36e    81c4a0000000
                          ret                0x0008                                        // 0x0050a374    c20800
@@ -3310,7 +3310,7 @@ _globl_ct_0x0050b5c0:    call               .Lbl_addr_0x0050b5d0                
                          mov                edi, 0x00000019                               // 0x0050b64b    bf19000000
 .Lbl_addr_0x0050b650:    sub                esi, 0x000000b0                               // 0x0050b650    81eeb0000000
                          mov.s              ecx, esi                                      // 0x0050b656    8bce
-                         call               _jmp_addr_0x00436960                          // 0x0050b658    e803b3f2ff
+                         call               ??1Base@@UAE@XZ                               // 0x0050b658    e803b3f2ff
                          dec                edi                                           // 0x0050b65d    4f
                          {disp8} jne        .Lbl_addr_0x0050b650                          // 0x0050b65e    75f0
                          pop                edi                                           // 0x0050b660    5f
@@ -3332,7 +3332,7 @@ _globl_ct_0x0050b5c0:    call               .Lbl_addr_0x0050b5d0                
 ??_GGDanceInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x0050b670    56
                          mov.s              esi, ecx                                      // 0x0050b671    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x0050b673    e8e8b2f2ff
+                         call               ??1Base@@UAE@XZ                               // 0x0050b673    e8e8b2f2ff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x0050b678    f644240801
                          {disp8} je         .Lbl_addr_0x0050b68d                          // 0x0050b67d    740e
                          push               0x000000b0                                    // 0x0050b67f    68b0000000

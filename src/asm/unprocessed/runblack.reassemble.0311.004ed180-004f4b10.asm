@@ -7,7 +7,7 @@
 .extern ??0LHFile@@QAE@XZ
 .extern ?ResetData@LHFile@@QAEIXZ
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern @__ct__11CitadelPartFRC9MapCoordsPC16GCitadelPartInfoP7Citadelfffi@36
 .extern _jmp_addr_0x00469530
@@ -2370,7 +2370,7 @@ _globl_ct_0x004eed80:    call               .Lbl_addr_0x004eed90                
                          mov                edi, 0x00000005                                      // 0x004eee0b    bf05000000
 .Lbl_addr_0x004eee10:    sub                esi, 0x00000144                                      // 0x004eee10    81ee44010000
                          mov.s              ecx, esi                                             // 0x004eee16    8bce
-                         call               _jmp_addr_0x00436960                                 // 0x004eee18    e8437bf4ff
+                         call               ??1Base@@UAE@XZ                                      // 0x004eee18    e8437bf4ff
                          dec                edi                                                  // 0x004eee1d    4f
                          {disp8} jne        .Lbl_addr_0x004eee10                                 // 0x004eee1e    75f0
                          pop                edi                                                  // 0x004eee20    5f
@@ -2392,7 +2392,7 @@ _globl_ct_0x004eed80:    call               .Lbl_addr_0x004eed90                
 ??_GGCreaturePenInfo@@UAEPAXI@Z:
                          push               esi                                                  // 0x004eee30    56
                          mov.s              esi, ecx                                             // 0x004eee31    8bf1
-                         call               _jmp_addr_0x00436960                                 // 0x004eee33    e8287bf4ff
+                         call               ??1Base@@UAE@XZ                                      // 0x004eee33    e8287bf4ff
                          test               byte ptr [esp + 0x08], 0x01                          // 0x004eee38    f644240801
                          {disp8} je         .Lbl_addr_0x004eee4d                                 // 0x004eee3d    740e
                          push               0x00000144                                           // 0x004eee3f    6844010000
@@ -3026,7 +3026,7 @@ _globl_ct_0x004ef2a0:    {disp32} jmp       .Lbl_addr_0x004ef2b0                
 ??_GCreatureDamageMap@@UAEPAXI@Z:
                          push               esi                                                  // 0x004ef4a0    56
                          mov.s              esi, ecx                                             // 0x004ef4a1    8bf1
-                         call               _jmp_addr_0x00436960                                 // 0x004ef4a3    e8b874f4ff
+                         call               ??1Base@@UAE@XZ                                      // 0x004ef4a3    e8b874f4ff
                          test               byte ptr [esp + 0x08], 0x01                          // 0x004ef4a8    f644240801
                          {disp8} je         .Lbl_addr_0x004ef4ba                                 // 0x004ef4ad    740b
                          push               0x10                                                 // 0x004ef4af    6a10
@@ -3040,9 +3040,9 @@ _globl_ct_0x004ef2a0:    {disp32} jmp       .Lbl_addr_0x004ef2b0                
                          push               esi                                                  // 0x004ef4c0    56
                          mov.s              esi, ecx                                             // 0x004ef4c1    8bf1
                          {disp8} lea        ecx, dword ptr [esi + 0x5c]                          // 0x004ef4c3    8d4e5c
-                         call               _jmp_addr_0x00436960                                 // 0x004ef4c6    e89574f4ff
+                         call               ??1Base@@UAE@XZ                                      // 0x004ef4c6    e89574f4ff
                          mov.s              ecx, esi                                             // 0x004ef4cb    8bce
-                         call               _jmp_addr_0x00436960                                 // 0x004ef4cd    e88e74f4ff
+                         call               ??1Base@@UAE@XZ                                      // 0x004ef4cd    e88e74f4ff
                          test               byte ptr [esp + 0x08], 0x01                          // 0x004ef4d2    f644240801
                          {disp8} je         .Lbl_addr_0x004ef4e4                                 // 0x004ef4d7    740b
                          push               0x74                                                 // 0x004ef4d9    6a74
@@ -5662,7 +5662,7 @@ _jmp_addr_0x004f12b0:    xor.s              eax, eax                            
                          nop                                                                     // 0x004f12ce    90
                          nop                                                                     // 0x004f12cf    90
 _jmp_addr_0x004f12d0:    mov                dword ptr [ecx], 0x008cc7cc                          // 0x004f12d0    c701ccc78c00
-                         {disp32} jmp       _jmp_addr_0x00436960                                 // 0x004f12d6    e98556f4ff
+                         {disp32} jmp       ??1Base@@UAE@XZ                                      // 0x004f12d6    e98556f4ff
                          nop                                                                     // 0x004f12db    90
                          nop                                                                     // 0x004f12dc    90
                          nop                                                                     // 0x004f12dd    90
@@ -6032,7 +6032,7 @@ _jmp_addr_0x004f1600:    sub                esp, 0x70                           
                          {disp32} mov       dword ptr [data_bytes + 0x2e7a98], eax               // 0x004f1697    a398daca00
                          call               _jmp_addr_0x004f12d0                                 // 0x004f169c    e82ffcffff
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                          // 0x004f16a1    8d4c2404
-                         call               _jmp_addr_0x00436960                                 // 0x004f16a5    e8b652f4ff
+                         call               ??1Base@@UAE@XZ                                      // 0x004f16a5    e8b652f4ff
 .Lbl_addr_0x004f16aa:    pop                esi                                                  // 0x004f16aa    5e
                          add                esp, 0x70                                            // 0x004f16ab    83c470
                          ret                0x0004                                               // 0x004f16ae    c20400
@@ -6940,7 +6940,7 @@ _jmp_addr_0x004f1ff0:    push               ebx                                 
 ??_GCreaturePreviousActions@@UAEPAXI@Z:
                          push               esi                                                  // 0x004f2040    56
                          mov.s              esi, ecx                                             // 0x004f2041    8bf1
-                         call               _jmp_addr_0x00436960                                 // 0x004f2043    e81849f4ff
+                         call               ??1Base@@UAE@XZ                                      // 0x004f2043    e81849f4ff
                          test               byte ptr [esp + 0x08], 0x01                          // 0x004f2048    f644240801
                          {disp8} je         .Lbl_addr_0x004f205d                                 // 0x004f204d    740e
                          push               0x00000528                                           // 0x004f204f    6828050000
@@ -7334,7 +7334,7 @@ _jmp_addr_0x004f2370:    push               ebx                                 
                          sub                esi, 0x70                                            // 0x004f239d    83ee70
                          call               _jmp_addr_0x004f12d0                                 // 0x004f23a0    e82befffff
                          mov.s              ecx, esi                                             // 0x004f23a5    8bce
-                         call               _jmp_addr_0x00436960                                 // 0x004f23a7    e8b445f4ff
+                         call               ??1Base@@UAE@XZ                                      // 0x004f23a7    e8b445f4ff
                          dec                ebx                                                  // 0x004f23ac    4b
                          {disp8} jne        .Lbl_addr_0x004f2398                                 // 0x004f23ad    75e9
                          pop                edi                                                  // 0x004f23af    5f

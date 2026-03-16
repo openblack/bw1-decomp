@@ -7,7 +7,7 @@
 .extern ?adjusty@SetupThing@@SAHH@Z
 .extern _jmp_addr_0x00416750
 .extern _jmp_addr_0x004169e0
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004f12e0
 .extern _jmp_addr_0x0051fbe0
@@ -2386,7 +2386,7 @@ _globl_ct_0x00414070:    call               .Lbl_addr_0x00414080                
                          mov                edi, 0x00000007                               // 0x0041410b    bf07000000
 .Lbl_addr_0x00414110:    sub                esi, 0x48                                     // 0x00414110    83ee48
                          mov.s              ecx, esi                                      // 0x00414113    8bce
-                         call               _jmp_addr_0x00436960                          // 0x00414115    e846280200
+                         call               ??1Base@@UAE@XZ                               // 0x00414115    e846280200
                          dec                edi                                           // 0x0041411a    4f
                          {disp8} jne        .Lbl_addr_0x00414110                          // 0x0041411b    75f3
                          pop                edi                                           // 0x0041411d    5f
@@ -2395,7 +2395,7 @@ _globl_ct_0x00414070:    call               .Lbl_addr_0x00414080                
 ??_GGAlignmentInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x00414120    56
                          mov.s              esi, ecx                                      // 0x00414121    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x00414123    e838280200
+                         call               ??1Base@@UAE@XZ                               // 0x00414123    e838280200
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00414128    f644240801
                          {disp8} je         .Lbl_addr_0x0041413a                          // 0x0041412d    740b
                          push               0x48                                          // 0x0041412f    6a48

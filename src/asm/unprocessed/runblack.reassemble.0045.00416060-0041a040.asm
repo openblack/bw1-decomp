@@ -30,7 +30,7 @@
 .extern _jmp_addr_0x00421600
 .extern _jmp_addr_0x00421cf0
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern ?CanBeInspectedByCreature@Object@@UAEIPAVCreature@@@Z
 .extern _jmp_addr_0x00511d80
@@ -1500,7 +1500,7 @@ _globl_ct_0x00416cd0:    call               .Lbl_addr_0x00416ce0                
                          mov                edi, 0x0000001f                               // 0x00416d7b    bf1f000000
 .Lbl_addr_0x00416d80:    sub                esi, 0x000002cc                               // 0x00416d80    81eecc020000
                          mov.s              ecx, esi                                      // 0x00416d86    8bce
-                         call               _jmp_addr_0x00436960                          // 0x00416d88    e8d3fb0100
+                         call               ??1Base@@UAE@XZ                               // 0x00416d88    e8d3fb0100
                          dec                edi                                           // 0x00416d8d    4f
                          {disp8} jne        .Lbl_addr_0x00416d80                          // 0x00416d8e    75f0
                          pop                edi                                           // 0x00416d90    5f
@@ -1522,7 +1522,7 @@ _globl_ct_0x00416cd0:    call               .Lbl_addr_0x00416ce0                
 ??_GGAnimalInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x00416da0    56
                          mov.s              esi, ecx                                      // 0x00416da1    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x00416da3    e8b8fb0100
+                         call               ??1Base@@UAE@XZ                               // 0x00416da3    e8b8fb0100
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00416da8    f644240801
                          {disp8} je         .Lbl_addr_0x00416dbd                          // 0x00416dad    740e
                          push               0x000002cc                                    // 0x00416daf    68cc020000
@@ -1614,7 +1614,7 @@ _globl_ct_0x00416dd0:    call               .Lbl_addr_0x00416de0                
                          mov                edi, 0x00000035                               // 0x00416e5b    bf35000000
 .Lbl_addr_0x00416e60:    sub                esi, 0x000000b8                               // 0x00416e60    81eeb8000000
                          mov.s              ecx, esi                                      // 0x00416e66    8bce
-                         call               _jmp_addr_0x00436960                          // 0x00416e68    e8f3fa0100
+                         call               ??1Base@@UAE@XZ                               // 0x00416e68    e8f3fa0100
                          dec                edi                                           // 0x00416e6d    4f
                          {disp8} jne        .Lbl_addr_0x00416e60                          // 0x00416e6e    75f0
                          pop                edi                                           // 0x00416e70    5f
@@ -1636,7 +1636,7 @@ _globl_ct_0x00416dd0:    call               .Lbl_addr_0x00416de0                
 ??_GGAnimalStateTableInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x00416e80    56
                          mov.s              esi, ecx                                      // 0x00416e81    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x00416e83    e8d8fa0100
+                         call               ??1Base@@UAE@XZ                               // 0x00416e83    e8d8fa0100
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00416e88    f644240801
                          {disp8} je         .Lbl_addr_0x00416e9d                          // 0x00416e8d    740e
                          push               0x000000b8                                    // 0x00416e8f    68b8000000

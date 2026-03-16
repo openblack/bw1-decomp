@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern _jmp_addr_0x00407ef0
 .extern _jmp_addr_0x004286a0
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00511d70
 .extern _jmp_addr_0x005136b0
@@ -313,7 +313,7 @@ _globl_ct_0x0054a310:    call               .Lbl_addr_0x0054a320                
                          mov                edi, 0x0000001f                               // 0x0054a39b    bf1f000000
 .Lbl_addr_0x0054a3a0:    sub                esi, 0x00000104                               // 0x0054a3a0    81ee04010000
                          mov.s              ecx, esi                                      // 0x0054a3a6    8bce
-                         call               _jmp_addr_0x00436960                          // 0x0054a3a8    e8b3c5eeff
+                         call               ??1Base@@UAE@XZ                               // 0x0054a3a8    e8b3c5eeff
                          dec                edi                                           // 0x0054a3ad    4f
                          {disp8} jne        .Lbl_addr_0x0054a3a0                          // 0x0054a3ae    75f0
                          pop                edi                                           // 0x0054a3b0    5f
@@ -335,7 +335,7 @@ _globl_ct_0x0054a310:    call               .Lbl_addr_0x0054a320                
 ??_GGFurnitureInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x0054a3c0    56
                          mov.s              esi, ecx                                      // 0x0054a3c1    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x0054a3c3    e898c5eeff
+                         call               ??1Base@@UAE@XZ                               // 0x0054a3c3    e898c5eeff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x0054a3c8    f644240801
                          {disp8} je         .Lbl_addr_0x0054a3dd                          // 0x0054a3cd    740e
                          push               0x00000104                                    // 0x0054a3cf    6804010000

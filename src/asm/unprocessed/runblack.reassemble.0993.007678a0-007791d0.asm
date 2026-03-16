@@ -27,7 +27,7 @@
 .extern @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20
 .extern _jmp_addr_0x0042a280
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x0043dc00
 .extern ??0MapCoords@@QAE@ABU0@@Z
@@ -521,7 +521,7 @@ _globl_ct_0x0076cc70:    {disp32} jmp       .Lbl_addr_0x0076cc80                
                          pop                esi                                             // 0x0076cd2c    5e
                          ret                0x0004                                          // 0x0076cd2d    c20400
 .Lbl_addr_0x0076cd30:    mov                dword ptr [ecx], 0x0099aa70                     // 0x0076cd30    c70170aa9900
-                         {disp32} jmp       _jmp_addr_0x00436960                            // 0x0076cd36    e9259cccff
+                         {disp32} jmp       ??1Base@@UAE@XZ                                 // 0x0076cd36    e9259cccff
                          nop                                                                // 0x0076cd3b    90
                          nop                                                                // 0x0076cd3c    90
                          nop                                                                // 0x0076cd3d    90
@@ -6520,7 +6520,7 @@ _globl_ct_0x00770d90:    call               .Lbl_addr_0x00770da0                
                          mov                edi, 0x00000007                                 // 0x00770e1b    bf07000000
 .Lbl_addr_0x00770e20:    sub                esi, 0x64                                       // 0x00770e20    83ee64
                          mov.s              ecx, esi                                        // 0x00770e23    8bce
-                         call               _jmp_addr_0x00436960                            // 0x00770e25    e8365bccff
+                         call               ??1Base@@UAE@XZ                                 // 0x00770e25    e8365bccff
                          dec                edi                                             // 0x00770e2a    4f
                          {disp8} jne        .Lbl_addr_0x00770e20                            // 0x00770e2b    75f3
                          pop                edi                                             // 0x00770e2d    5f
@@ -6529,7 +6529,7 @@ _globl_ct_0x00770d90:    call               .Lbl_addr_0x00770da0                
 ??_GGWeatherInfo@@UAEPAXI@Z:
                          push               esi                                             // 0x00770e30    56
                          mov.s              esi, ecx                                        // 0x00770e31    8bf1
-                         call               _jmp_addr_0x00436960                            // 0x00770e33    e8285bccff
+                         call               ??1Base@@UAE@XZ                                 // 0x00770e33    e8285bccff
                          test               byte ptr [esp + 0x08], 0x01                     // 0x00770e38    f644240801
                          {disp8} je         .Lbl_addr_0x00770e4a                            // 0x00770e3d    740b
                          push               0x64                                            // 0x00770e3f    6a64
@@ -6704,7 +6704,7 @@ _globl_ct_0x00770f40:    call               .Lbl_addr_0x00770f50                
                          mov                edi, 0x00000007                                 // 0x00770fcb    bf07000000
 .Lbl_addr_0x00770fd0:    sub                esi, 0x000000a0                                 // 0x00770fd0    81eea0000000
                          mov.s              ecx, esi                                        // 0x00770fd6    8bce
-                         call               _jmp_addr_0x00436960                            // 0x00770fd8    e88359ccff
+                         call               ??1Base@@UAE@XZ                                 // 0x00770fd8    e88359ccff
                          dec                edi                                             // 0x00770fdd    4f
                          {disp8} jne        .Lbl_addr_0x00770fd0                            // 0x00770fde    75f0
                          pop                edi                                             // 0x00770fe0    5f
@@ -6726,7 +6726,7 @@ _globl_ct_0x00770f40:    call               .Lbl_addr_0x00770f50                
 ??_GGClimateInfo@@UAEPAXI@Z:
                          push               esi                                             // 0x00770ff0    56
                          mov.s              esi, ecx                                        // 0x00770ff1    8bf1
-                         call               _jmp_addr_0x00436960                            // 0x00770ff3    e86859ccff
+                         call               ??1Base@@UAE@XZ                                 // 0x00770ff3    e86859ccff
                          test               byte ptr [esp + 0x08], 0x01                     // 0x00770ff8    f644240801
                          {disp8} je         .Lbl_addr_0x0077100d                            // 0x00770ffd    740e
                          push               0x000000a0                                      // 0x00770fff    68a0000000
@@ -10499,13 +10499,13 @@ _globl_ct_0x00773c60:    call               .Lbl_addr_0x00773c70                
                          or.s               cl, al                                          // 0x00773ccc    0ac8
                          {disp32} mov       byte ptr [data_bytes + 0x4058c8], cl            // 0x00773cce    880dc8b8dc00
                          mov                ecx, 0x00dcb8d0                                 // 0x00773cd4    b9d0b8dc00
-                         {disp32} jmp       _jmp_addr_0x00436960                            // 0x00773cd9    e9822cccff
+                         {disp32} jmp       ??1Base@@UAE@XZ                                 // 0x00773cd9    e9822cccff
 .Lbl_addr_0x00773cde:    ret                                                                // 0x00773cde    c3
                          nop                                                                // 0x00773cdf    90
 ??_GGClimateRainInfo@@UAEPAXI@Z:
                          push               esi                                             // 0x00773ce0    56
                          mov.s              esi, ecx                                        // 0x00773ce1    8bf1
-                         call               _jmp_addr_0x00436960                            // 0x00773ce3    e8782cccff
+                         call               ??1Base@@UAE@XZ                                 // 0x00773ce3    e8782cccff
                          test               byte ptr [esp + 0x08], 0x01                     // 0x00773ce8    f644240801
                          {disp8} je         .Lbl_addr_0x00773cfd                            // 0x00773ced    740e
                          push               0x000000a4                                      // 0x00773cef    68a4000000

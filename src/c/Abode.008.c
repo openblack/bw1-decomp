@@ -505,7 +505,7 @@ void __fastcall ApplyEffectsDueToPhysicalDestruction__5AbodeFP6ObjectP7GPlayer(s
     asm("call               dword ptr [edx + 0x5cc]");                       // 0x004067dd    ff92cc050000
     asm("fstp               st(0)");                                         // 0x004067e3    ddd8
     asm("{disp8} lea        ecx, dword ptr [esp + 0x3c]");                   // 0x004067e5    8d4c243c
-    asm("call               _jmp_addr_0x00436960");                          // 0x004067e9    e872010300
+    asm("call               ??1Base@@UAE@XZ");                               // 0x004067e9    e872010300
     asm("pop                edi");                                           // 0x004067ee    5f
     asm("LAB__addr_0x004067ef:");
     asm("pop                esi");                                           // 0x004067ef    5e

@@ -10,7 +10,7 @@
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00437eb0
 .extern ?MSeconds@LHTimer@@QAEHXZ
@@ -8589,7 +8589,7 @@ _SetAge__6LivingFUl:
                          call               dword ptr [edx + 0x5cc]                       // 0x005ed4c7    ff92cc050000
                          fstp               st(0)                                         // 0x005ed4cd    ddd8
 .Lbl_addr_0x005ed4cf:    {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x005ed4cf    8d4c2428
-                         call               _jmp_addr_0x00436960                          // 0x005ed4d3    e88894e4ff
+                         call               ??1Base@@UAE@XZ                               // 0x005ed4d3    e88894e4ff
                          pop                edi                                           // 0x005ed4d8    5f
                          pop                esi                                           // 0x005ed4d9    5e
                          add                esp, 0x60                                     // 0x005ed4da    83c460

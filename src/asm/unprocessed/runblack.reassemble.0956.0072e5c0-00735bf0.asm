@@ -21,7 +21,7 @@
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern _jmp_addr_0x0042a240
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x0043dc50
 .extern @__ct__7LHPointFfff@20
@@ -835,7 +835,7 @@ _globl_ct_0x0072ea30:    call               .Lbl_addr_0x0072ea40                
                          nop                                                              // 0x0072ea6e    90
                          nop                                                              // 0x0072ea6f    90
                          mov                ecx, 0x00da0980                               // 0x0072ea70    b98009da00
-                         {disp32} jmp       _jmp_addr_0x00436960                          // 0x0072ea75    e9e67ed0ff
+                         {disp32} jmp       ??1Base@@UAE@XZ                               // 0x0072ea75    e9e67ed0ff
                          nop                                                              // 0x0072ea7a    90
                          nop                                                              // 0x0072ea7b    90
                          nop                                                              // 0x0072ea7c    90
@@ -10882,7 +10882,7 @@ _globl_ct_0x007351f0:    call               .Lbl_addr_0x00735200                
                          mov                edi, 0x0000002b                               // 0x0073527b    bf2b000000
 .Lbl_addr_0x00735280:    sub                esi, 0x70                                     // 0x00735280    83ee70
                          mov.s              ecx, esi                                      // 0x00735283    8bce
-                         call               _jmp_addr_0x00436960                          // 0x00735285    e8d616d0ff
+                         call               ??1Base@@UAE@XZ                               // 0x00735285    e8d616d0ff
                          dec                edi                                           // 0x0073528a    4f
                          {disp8} jne        .Lbl_addr_0x00735280                          // 0x0073528b    75f3
                          pop                edi                                           // 0x0073528d    5f
@@ -10891,7 +10891,7 @@ _globl_ct_0x007351f0:    call               .Lbl_addr_0x00735200                
 ??_GGTerrainMaterialInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x00735290    56
                          mov.s              esi, ecx                                      // 0x00735291    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x00735293    e8c816d0ff
+                         call               ??1Base@@UAE@XZ                               // 0x00735293    e8c816d0ff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00735298    f644240801
                          {disp8} je         .Lbl_addr_0x007352aa                          // 0x0073529d    740b
                          push               0x70                                          // 0x0073529f    6a70

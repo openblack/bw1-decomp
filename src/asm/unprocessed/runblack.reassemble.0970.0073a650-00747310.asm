@@ -44,7 +44,7 @@
 .extern _jmp_addr_0x00425d00
 .extern _jmp_addr_0x004268e0
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00437dd0
 .extern _jmp_addr_0x00437e90
@@ -14726,7 +14726,7 @@ _jmp_addr_0x00743720:    push               esi                                 
 ??_GTownCreatureInfo@@UAEPAXI@Z:
                          push               esi                                                  // 0x007437d0    56
                          mov.s              esi, ecx                                             // 0x007437d1    8bf1
-                         call               _jmp_addr_0x00436960                                 // 0x007437d3    e88831cfff
+                         call               ??1Base@@UAE@XZ                                      // 0x007437d3    e88831cfff
                          test               byte ptr [esp + 0x08], 0x01                          // 0x007437d8    f644240801
                          {disp8} je         .Lbl_addr_0x007437ea                                 // 0x007437dd    740b
                          push               0x20                                                 // 0x007437df    6a20
@@ -16775,7 +16775,7 @@ _globl_ct_0x00744ae0:    call               .Lbl_addr_0x00744af0                
                          mov                edi, 0x00000011                                      // 0x00744b6b    bf11000000
 .Lbl_addr_0x00744b70:    sub                esi, 0x00000090                                      // 0x00744b70    81ee90000000
                          mov.s              ecx, esi                                             // 0x00744b76    8bce
-                         call               _jmp_addr_0x00436960                                 // 0x00744b78    e8e31dcfff
+                         call               ??1Base@@UAE@XZ                                      // 0x00744b78    e8e31dcfff
                          dec                edi                                                  // 0x00744b7d    4f
                          {disp8} jne        .Lbl_addr_0x00744b70                                 // 0x00744b7e    75f0
                          pop                edi                                                  // 0x00744b80    5f
@@ -16797,7 +16797,7 @@ _globl_ct_0x00744ae0:    call               .Lbl_addr_0x00744af0                
 ??_GGTownDesireInfo@@UAEPAXI@Z:
                          push               esi                                                  // 0x00744b90    56
                          mov.s              esi, ecx                                             // 0x00744b91    8bf1
-                         call               _jmp_addr_0x00436960                                 // 0x00744b93    e8c81dcfff
+                         call               ??1Base@@UAE@XZ                                      // 0x00744b93    e8c81dcfff
                          test               byte ptr [esp + 0x08], 0x01                          // 0x00744b98    f644240801
                          {disp8} je         .Lbl_addr_0x00744bad                                 // 0x00744b9d    740e
                          push               0x00000090                                           // 0x00744b9f    6890000000
@@ -17423,7 +17423,7 @@ _globl_ct_0x00744bc0:    {disp32} jmp       .Lbl_addr_0x00744bd0                
                          nop                                                                     // 0x0074575e    90
                          nop                                                                     // 0x0074575f    90
 _jmp_addr_0x00745760:    mov                dword ptr [ecx], 0x0099a0c8                          // 0x00745760    c701c8a09900
-                         {disp32} jmp       _jmp_addr_0x00436960                                 // 0x00745766    e9f511cfff
+                         {disp32} jmp       ??1Base@@UAE@XZ                                      // 0x00745766    e9f511cfff
                          nop                                                                     // 0x0074576b    90
                          nop                                                                     // 0x0074576c    90
                          nop                                                                     // 0x0074576d    90

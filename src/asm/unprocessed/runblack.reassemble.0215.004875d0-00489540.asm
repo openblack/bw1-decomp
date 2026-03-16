@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern ?ApplyEffectsDueToPhysicalDestruction@Abode@@QAEXPAVObject@@PAVGPlayer@@@Z
 .extern _jmp_addr_0x0042a4b0
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern _jmp_addr_0x0046c0b0
 .extern _jmp_addr_0x0047f1c0
 .extern _jmp_addr_0x00481390
@@ -2015,7 +2015,7 @@ _jmp_addr_0x004887a0:    sub                esp, 0x000000d8                     
                          call               dword ptr [edx + 0x5cc]                       // 0x004890c8    ff92cc050000
                          fstp               st(0)                                         // 0x004890ce    ddd8
                          {disp32} lea       ecx, dword ptr [esp + 0x000000a8]             // 0x004890d0    8d8c24a8000000
-                         call               _jmp_addr_0x00436960                          // 0x004890d7    e884d8faff
+                         call               ??1Base@@UAE@XZ                               // 0x004890d7    e884d8faff
 .Lbl_addr_0x004890dc:    {disp32} mov       dword ptr [esi + 0x000048cc], ebp             // 0x004890dc    89aecc480000
 .Lbl_addr_0x004890e2:    pop                edi                                           // 0x004890e2    5f
                          pop                esi                                           // 0x004890e3    5e

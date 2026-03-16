@@ -7,7 +7,7 @@
 .extern _jmp_addr_0x00419a60
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern ?MSeconds@LHTimer@@QAEHXZ
 .extern _jmp_addr_0x0050e3e0
@@ -3012,7 +3012,7 @@ _globl_ct_0x005104e0:    {disp32} jmp       .Lbl_addr_0x005104f0                
 ??_GGData@@UAEPAXI@Z:
                          push               esi                                           // 0x00510610    56
                          mov.s              esi, ecx                                      // 0x00510611    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x00510613    e84863f2ff
+                         call               ??1Base@@UAE@XZ                               // 0x00510613    e84863f2ff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x00510618    f644240801
                          {disp8} je         .Lbl_addr_0x0051062a                          // 0x0051061d    740b
                          push               0x28                                          // 0x0051061f    6a28

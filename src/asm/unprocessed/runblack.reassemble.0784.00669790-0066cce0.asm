@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern ?CreateNoInit@PlannedAbode@@SAPAV1@AAUMapCoords@@PAVGAbodeInfo@@PAVTown@@MM@Z
 .extern ?__nw@Base@@SAPAXK@Z
-.extern _jmp_addr_0x00436960
+.extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x00438a40
 .extern ?GetBuilding@BuildingSite@@QAEPAVMultiMapFixed@@XZ
@@ -4202,7 +4202,7 @@ _globl_ct_0x0066c290:    call               .Lbl_addr_0x0066c2a0                
                          mov                edi, 0x00000005                               // 0x0066c31b    bf05000000
 .Lbl_addr_0x0066c320:    sub                esi, 0x24                                     // 0x0066c320    83ee24
                          mov.s              ecx, esi                                      // 0x0066c323    8bce
-                         call               _jmp_addr_0x00436960                          // 0x0066c325    e836a6dcff
+                         call               ??1Base@@UAE@XZ                               // 0x0066c325    e836a6dcff
                          dec                edi                                           // 0x0066c32a    4f
                          {disp8} jne        .Lbl_addr_0x0066c320                          // 0x0066c32b    75f3
                          pop                edi                                           // 0x0066c32d    5f
@@ -4211,7 +4211,7 @@ _globl_ct_0x0066c290:    call               .Lbl_addr_0x0066c2a0                
 ??_GGPlaytimeInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x0066c330    56
                          mov.s              esi, ecx                                      // 0x0066c331    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x0066c333    e828a6dcff
+                         call               ??1Base@@UAE@XZ                               // 0x0066c333    e828a6dcff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x0066c338    f644240801
                          {disp8} je         .Lbl_addr_0x0066c34a                          // 0x0066c33d    740b
                          push               0x24                                          // 0x0066c33f    6a24
@@ -5222,7 +5222,7 @@ _globl_ct_0x0066cb90:    call               .Lbl_addr_0x0066cba0                
                          mov                edi, 0x00000013                               // 0x0066cc1b    bf13000000
 .Lbl_addr_0x0066cc20:    sub                esi, 0x00000144                               // 0x0066cc20    81ee44010000
                          mov.s              ecx, esi                                      // 0x0066cc26    8bce
-                         call               _jmp_addr_0x00436960                          // 0x0066cc28    e8339ddcff
+                         call               ??1Base@@UAE@XZ                               // 0x0066cc28    e8339ddcff
                          dec                edi                                           // 0x0066cc2d    4f
                          {disp8} jne        .Lbl_addr_0x0066cc20                          // 0x0066cc2e    75f0
                          pop                edi                                           // 0x0066cc30    5f
@@ -5244,7 +5244,7 @@ _globl_ct_0x0066cb90:    call               .Lbl_addr_0x0066cba0                
 ??_GGPotInfo@@UAEPAXI@Z:
                          push               esi                                           // 0x0066cc40    56
                          mov.s              esi, ecx                                      // 0x0066cc41    8bf1
-                         call               _jmp_addr_0x00436960                          // 0x0066cc43    e8189ddcff
+                         call               ??1Base@@UAE@XZ                               // 0x0066cc43    e8189ddcff
                          test               byte ptr [esp + 0x08], 0x01                   // 0x0066cc48    f644240801
                          {disp8} je         .Lbl_addr_0x0066cc5d                          // 0x0066cc4d    740e
                          push               0x00000144                                    // 0x0066cc4f    6844010000
