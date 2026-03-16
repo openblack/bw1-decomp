@@ -4400,10 +4400,10 @@ _jmp_addr_0x005c2800:    {disp8} mov        eax, dword ptr [esp + 0x0c]         
                          fnstsw             ax                                             // 0x005c2930    dfe0
                          test               ah, 0x41                                       // 0x005c2932    f6c441
                          {disp32} jne       .Lbl_addr_0x005c29e3                           // 0x005c2935    0f85a8000000
-.Lbl_addr_0x005c293b:    {disp32} fld       dword ptr [data_bytes + 0x4dbdb8]              // 0x005c293b    d905b81dea00
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdbc]         // 0x005c2941    a1bc1dea00
+.Lbl_addr_0x005c293b:    {disp32} fld       dword ptr [_g_camera + 0x0]              // 0x005c293b    d905b81dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x4]         // 0x005c2941    a1bc1dea00
                          {disp32} fld       dword ptr [esi + 0x00003374]                   // 0x005c2946    d98674330000
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdc0]         // 0x005c294c    8b15c01dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x8]         // 0x005c294c    8b15c01dea00
                          {disp32} fld       dword ptr [esi + 0x00003378]                   // 0x005c2952    d98678330000
                          {disp8} mov        dword ptr [esp + 0x18], eax                    // 0x005c2958    89442418
                          {disp8} fstp       dword ptr [esp + 0x24]                         // 0x005c295c    d95c2424

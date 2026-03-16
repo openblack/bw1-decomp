@@ -721,11 +721,11 @@ _jmp_addr_0x00542c50:    sub                esp, 0x44                           
                          push               eax                                           // 0x00542df8    50
                          call               _jmp_addr_0x00867400                          // 0x00542df9    e802463200
                          {disp8} fld        dword ptr [esp + 0x48]                        // 0x00542dfe    d9442448
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdb8]             // 0x00542e02    d825b81dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x0]             // 0x00542e02    d825b81dea00
                          {disp8} fld        dword ptr [esp + 0x4c]                        // 0x00542e08    d944244c
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdbc]             // 0x00542e0c    d825bc1dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x4]             // 0x00542e0c    d825bc1dea00
                          {disp8} fld        dword ptr [esp + 0x50]                        // 0x00542e12    d9442450
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdc0]             // 0x00542e16    d825c01dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x8]             // 0x00542e16    d825c01dea00
                          fld                st(2)                                         // 0x00542e1c    d9c2
                          {disp32} fcomp     dword ptr [__real@4@00000000000000000000]                   // 0x00542e1e    d81d98a38a00
                          fnstsw             ax                                            // 0x00542e24    dfe0

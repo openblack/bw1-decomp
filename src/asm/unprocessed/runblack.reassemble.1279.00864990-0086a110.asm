@@ -5752,11 +5752,11 @@ _jmp_addr_0x00868c80:    mov.s              eax, ecx                            
                          test               ah, 0x01                                      // 0x00868d98    f6c401
                          {disp32} jne       .Lbl_addr_0x00868fb7                          // 0x00868d9b    0f8516020000
                          {disp8} fld        dword ptr [ecx + 0x40]                        // 0x00868da1    d94140
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdc0]             // 0x00868da4    d825c01dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x8]             // 0x00868da4    d825c01dea00
                          {disp8} fld        dword ptr [ecx + 0x3c]                        // 0x00868daa    d9413c
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdbc]             // 0x00868dad    d825bc1dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x4]             // 0x00868dad    d825bc1dea00
                          {disp8} fld        dword ptr [ecx + 0x38]                        // 0x00868db3    d94138
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdb8]             // 0x00868db6    d825b81dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x0]             // 0x00868db6    d825b81dea00
                          fld                st(0)                                         // 0x00868dbc    d9c0
                          fmul               st, st(1)                                     // 0x00868dbe    d8c9
                          fld                st(2)                                         // 0x00868dc0    d9c2

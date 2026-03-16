@@ -6205,14 +6205,14 @@ _globl_ct_0x007310e0:    call               .Lbl_addr_0x007310f0                
                          nop                                                              // 0x007325cf    90
 .Lbl_addr_0x007325d0:    {disp32} fld       dword ptr [ecx + 0x000000a0]                  // 0x007325d0    d981a0000000
                          push               0x0                                           // 0x007325d6    6a00
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdc0]             // 0x007325d8    d825c01dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x8]             // 0x007325d8    d825c01dea00
                          push               ecx                                           // 0x007325de    51
                          {disp32} fld       dword ptr [ecx + 0x0000009c]                  // 0x007325df    d9819c000000
                          mov.s              edx, ecx                                      // 0x007325e5    8bd1
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdbc]             // 0x007325e7    d825bc1dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x4]             // 0x007325e7    d825bc1dea00
                          {disp32} fld       dword ptr [ecx + 0x00000098]                  // 0x007325ed    d98198000000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x504648]        // 0x007325f3    8b0d48a6ec00
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdb8]             // 0x007325f9    d825b81dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x0]             // 0x007325f9    d825b81dea00
                          fld                st(0)                                         // 0x007325ff    d9c0
                          fmul               st, st(1)                                     // 0x00732601    d8c9
                          fld                st(2)                                         // 0x00732603    d9c2

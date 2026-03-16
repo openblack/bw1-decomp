@@ -4822,11 +4822,11 @@ _jmp_addr_0x0066f730:    push               esi                                 
                          fnstsw             ax                                            // 0x0066f920    dfe0
                          test               ah, 0x01                                      // 0x0066f922    f6c401
                          {disp32} je        .Lbl_addr_0x0066faff                          // 0x0066f925    0f84d4010000
-                         {disp32} fld       dword ptr [data_bytes + 0x4dbdb8]             // 0x0066f92b    d905b81dea00
+                         {disp32} fld       dword ptr [_g_camera + 0x0]             // 0x0066f92b    d905b81dea00
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdc8]        // 0x0066f931    8b15c81dea00
                          {disp32} fld       dword ptr [data_bytes + 0x4dbdc4]             // 0x0066f937    d905c41dea00
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdbc]        // 0x0066f93d    a1bc1dea00
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdc0]        // 0x0066f942    8b0dc01dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x4]        // 0x0066f93d    a1bc1dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x8]        // 0x0066f942    8b0dc01dea00
                          fsub               st, st(1)                                     // 0x0066f948    d8e1
                          {disp8} mov        dword ptr [esp + 0x0c], edx                   // 0x0066f94a    8954240c
                          {disp8} mov        dword ptr [esp + 0x30], eax                   // 0x0066f94e    89442430

@@ -2679,14 +2679,14 @@ _jmp_addr_0x00449650:    {disp8} mov        al, byte ptr [esp + 0x06]           
                          {disp8} mov        dword ptr [esp + 0x10], ebx                   // 0x00449748    895c2410
                          {disp32} ja        .Lbl_addr_0x00449ba6                          // 0x0044974c    0f8754040000
                          jmp                dword ptr [eax*4 + 0x449da8]                  // 0x00449752    ff2485a89d4400
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]        // 0x00449759    8b0db81dea00
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]        // 0x0044975f    8b15bc1dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x0]        // 0x00449759    8b0db81dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x4]        // 0x0044975f    8b15bc1dea00
                          {disp8} mov        eax, dword ptr [esp + 0x2c]                   // 0x00449765    8b44242c
                          {disp8} mov        dword ptr [esp + 0x18], edx                   // 0x00449769    89542418
                          {disp32} mov       esi, dword ptr [__imp__SendMessageA@4]        // 0x0044976d    8b35dc978a00
                          {disp32} mov       dword ptr [data_bytes + 0x293e74], edx        // 0x00449773    8915749ec500
                          {disp8} mov        dword ptr [esp + 0x14], ecx                   // 0x00449779    894c2414
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdc0]        // 0x0044977d    8b0dc01dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x8]        // 0x0044977d    8b0dc01dea00
                          {disp8} mov        dword ptr [esp + 0x1c], ecx                   // 0x00449783    894c241c
                          {disp8} mov        edx, dword ptr [esp + 0x1c]                   // 0x00449787    8b54241c
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                   // 0x0044978b    8b4c2414

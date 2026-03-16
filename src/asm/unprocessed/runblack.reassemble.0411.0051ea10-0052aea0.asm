@@ -19310,9 +19310,9 @@ _jmp_addr_0x0052aa10:    push               esi                                 
                          {disp32} je        .Lbl_addr_0x0052abae                                 // 0x0052aaab    0f84fd000000
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0052aab1    8b0d5c19d000
                          call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ                  // 0x0052aab7    e8c4160200
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdb8]               // 0x0052aabc    a1b81dea00
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdbc]               // 0x0052aac1    8b0dbc1dea00
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdc0]               // 0x0052aac7    8b15c01dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x0]               // 0x0052aabc    a1b81dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x4]               // 0x0052aac1    8b0dbc1dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x8]               // 0x0052aac7    8b15c01dea00
                          {disp8} mov        dword ptr [esp + 0x08], eax                          // 0x0052aacd    89442408
                          {disp8} fld        dword ptr [esp + 0x08]                               // 0x0052aad1    d9442408
                          {disp32} fsub      dword ptr [esi + 0x00000084]                         // 0x0052aad5    d8a684000000

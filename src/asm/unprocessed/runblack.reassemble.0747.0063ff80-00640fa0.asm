@@ -647,9 +647,9 @@ _jmp_addr_0x006405f0:    {disp32} mov      ecx, dword ptr [_game]               
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x006406b3    8b0d5c19d000
                          add               esp, 0x10                                     // 0x006406b9    83c410
                          call              ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x006406bc    e8bfbaf0ff
-                         {disp32} mov      ecx, dword ptr [data_bytes + 0x4dbdc0]        // 0x006406c1    8b0dc01dea00
-                         {disp32} mov      edx, dword ptr [data_bytes + 0x4dbdb8]        // 0x006406c7    8b15b81dea00
-                         {disp32} mov      eax, dword ptr [data_bytes + 0x4dbdbc]        // 0x006406cd    a1bc1dea00
+                         {disp32} mov      ecx, dword ptr [_g_camera + 0x8]        // 0x006406c1    8b0dc01dea00
+                         {disp32} mov      edx, dword ptr [_g_camera + 0x0]        // 0x006406c7    8b15b81dea00
+                         {disp32} mov      eax, dword ptr [_g_camera + 0x4]        // 0x006406cd    a1bc1dea00
                          {disp8} mov       dword ptr [esp + 0x5c], ecx                   // 0x006406d2    894c245c
                          {disp32} mov      ecx, dword ptr [_game]                        // 0x006406d6    8b0d5c19d000
                          {disp8} mov       dword ptr [esp + 0x54], edx                   // 0x006406dc    89542454

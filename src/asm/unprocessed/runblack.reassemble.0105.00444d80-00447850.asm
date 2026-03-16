@@ -1622,12 +1622,12 @@ _jmp_addr_0x00445ee0:    sub                esp, 0x00000404                     
                          mov                ecx, 0x00000008                               // 0x00445fa1    b908000000
                          rep movsd          es:[edi], dword ptr ds:[esi]                  // 0x00445fa6    f3a5
                          {disp8} jmp        .Lbl_addr_0x00445fe8                          // 0x00445fa8    eb3e
-.Lbl_addr_0x00445faa:    {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdb8]        // 0x00445faa    a1b81dea00
+.Lbl_addr_0x00445faa:    {disp32} mov       eax, dword ptr [_g_camera + 0x0]        // 0x00445faa    a1b81dea00
                          {disp8} lea        edx, dword ptr [ebp + 0x24]                   // 0x00445faf    8d5524
                          mov                dword ptr [edx], eax                          // 0x00445fb2    8902
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdbc]        // 0x00445fb4    8b0dbc1dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x4]        // 0x00445fb4    8b0dbc1dea00
                          {disp8} mov        dword ptr [edx + 0x04], ecx                   // 0x00445fba    894a04
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]        // 0x00445fbd    a1c01dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x8]        // 0x00445fbd    a1c01dea00
                          {disp8} mov        dword ptr [edx + 0x08], eax                   // 0x00445fc2    894208
                          {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdc4]        // 0x00445fc5    8b15c41dea00
                          {disp8} lea        ecx, dword ptr [ebp + 0x30]                   // 0x00445fcb    8d4d30

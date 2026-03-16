@@ -837,13 +837,13 @@ _jmp_addr_0x007266b0:    push               esi                                 
                          {disp8} je         .Lbl_addr_0x00726ba5                                 // 0x00726b5c    7447
                          {disp8} fld        dword ptr [edx + 0x0c]                               // 0x00726b5e    d9420c
                          push               0x0                                                  // 0x00726b61    6a00
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdc0]                    // 0x00726b63    d825c01dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x8]                    // 0x00726b63    d825c01dea00
                          push               ecx                                                  // 0x00726b69    51
                          {disp8} fld        dword ptr [edx + 0x08]                               // 0x00726b6a    d94208
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x504648]               // 0x00726b6d    8b0d48a6ec00
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdbc]                    // 0x00726b73    d825bc1dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x4]                    // 0x00726b73    d825bc1dea00
                          {disp8} fld        dword ptr [edx + 0x04]                               // 0x00726b79    d94204
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdb8]                    // 0x00726b7c    d825b81dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x0]                    // 0x00726b7c    d825b81dea00
                          fld                st(0)                                                // 0x00726b82    d9c0
                          fmul               st, st(1)                                            // 0x00726b84    d8c9
                          fld                st(2)                                                // 0x00726b86    d9c2

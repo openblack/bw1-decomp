@@ -2996,9 +2996,9 @@ start_0x006fc520_0x00708fc0:
                          {disp32} je        .Lbl_addr_0x006fe636                          // 0x006fe540    0f84f0000000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x006fe546    8b0d5c19d000
                          call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x006fe54c    e82fdce4ff
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]        // 0x006fe551    8b0db81dea00
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]        // 0x006fe557    8b15bc1dea00
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]        // 0x006fe55d    a1c01dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x0]        // 0x006fe551    8b0db81dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x4]        // 0x006fe557    8b15bc1dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x8]        // 0x006fe55d    a1c01dea00
                          {disp8} mov        dword ptr [esp + 0x10], ecx                   // 0x006fe562    894c2410
                          {disp8} mov        dword ptr [esp + 0x14], edx                   // 0x006fe566    89542414
                          mov                edx, dword ptr [esi]                          // 0x006fe56a    8b16

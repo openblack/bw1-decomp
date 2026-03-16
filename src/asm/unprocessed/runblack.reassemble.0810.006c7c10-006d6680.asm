@@ -4987,12 +4987,12 @@ _jmp_addr_0x006ca930:    sub                esp, 0x08                           
                          push               ecx                                           // 0x006ca93b    51
                          {disp8} fld        dword ptr [ecx + 0x14]                        // 0x006ca93c    d94114
                          mov.s              edx, ecx                                      // 0x006ca93f    8bd1
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdc0]             // 0x006ca941    d825c01dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x8]             // 0x006ca941    d825c01dea00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x504648]        // 0x006ca947    8b0d48a6ec00
                          {disp8} fstp       dword ptr [esp + 0x0c]                        // 0x006ca94d    d95c240c
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdbc]             // 0x006ca951    d825bc1dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x4]             // 0x006ca951    d825bc1dea00
                          {disp8} fstp       dword ptr [esp + 0x08]                        // 0x006ca957    d95c2408
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdb8]             // 0x006ca95b    d825b81dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x0]             // 0x006ca95b    d825b81dea00
                          fld                st(0)                                         // 0x006ca961    d9c0
                          fmul               st, st(1)                                     // 0x006ca963    d8c9
                          {disp8} fld        dword ptr [esp + 0x08]                        // 0x006ca965    d9442408

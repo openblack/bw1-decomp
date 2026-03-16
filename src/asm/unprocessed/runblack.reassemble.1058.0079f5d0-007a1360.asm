@@ -383,9 +383,9 @@ _globl_ct_0x0079f940:    {disp32} jmp       .Lbl_addr_0x0079f950                
                          {disp8} fld        dword ptr [edi + 0x60]                        // 0x0079fa93    d94760
                          {disp8} fstp       dword ptr [esp + 0x20]                        // 0x0079fa96    d95c2420
                          {disp8} jmp        .Lbl_addr_0x0079fabd                          // 0x0079fa9a    eb21
-.Lbl_addr_0x0079fa9c:    {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]        // 0x0079fa9c    a1c01dea00
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]        // 0x0079faa1    8b0db81dea00
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]        // 0x0079faa7    8b15bc1dea00
+.Lbl_addr_0x0079fa9c:    {disp32} mov       eax, dword ptr [_g_camera + 0x8]        // 0x0079fa9c    a1c01dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x0]        // 0x0079faa1    8b0db81dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x4]        // 0x0079faa7    8b15bc1dea00
                          {disp8} mov        dword ptr [esp + 0x20], eax                   // 0x0079faad    89442420
                          {disp8} mov        dword ptr [esp + 0x18], ecx                   // 0x0079fab1    894c2418
                          {disp8} mov        dword ptr [esp + 0x1c], edx                   // 0x0079fab5    8954241c

@@ -748,9 +748,9 @@ _Init__11InnerCameraFPc:
                          or                   esi, 0xffffffff                               // 0x0079718d    83ceff
                          {disp32} mov         dword ptr [ebp + 0x0000044c], esi             // 0x00797190    89b54c040000
                          {disp32} mov         dword ptr [ebp + 0x0000012c], esi             // 0x00797196    89b52c010000
-                         {disp32} fld         dword ptr [data_bytes + 0x4dbdb8]             // 0x0079719c    d905b81dea00
-                         {disp32} mov         ecx, dword ptr [data_bytes + 0x4dbdbc]        // 0x007971a2    8b0dbc1dea00
-                         {disp32} mov         edx, dword ptr [data_bytes + 0x4dbdc0]        // 0x007971a8    8b15c01dea00
+                         {disp32} fld         dword ptr [_g_camera + 0x0]             // 0x0079719c    d905b81dea00
+                         {disp32} mov         ecx, dword ptr [_g_camera + 0x4]        // 0x007971a2    8b0dbc1dea00
+                         {disp32} mov         edx, dword ptr [_g_camera + 0x8]        // 0x007971a8    8b15c01dea00
                          {disp8} fst          dword ptr [ebp + 0x08]                        // 0x007971ae    d95508
                          mov.s                eax, ecx                                      // 0x007971b1    8bc1
                          {disp8} fst          dword ptr [ebp + 0x04]                        // 0x007971b3    d95504
