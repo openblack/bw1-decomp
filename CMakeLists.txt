@@ -348,6 +348,7 @@ set(SOURCES_001
 
     src/asm/unprocessed/runblack.reassemble.0639.006015e0-006020e0.asm
     src/asm/unprocessed/MapCoords.010.asm
+    src/asm/unprocessed/Meeting.010.asm
     src/asm/unprocessed/runblack.reassemble.0640.006020e0-00609320.asm
 
     src/asm/unprocessed/runblack.reassemble.0643.00609320-0060a010.asm

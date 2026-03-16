@@ -1,6 +1,5 @@
 #include "MapCoords.h"
 #include "Utils.h"
-#include "Meeting.h"
 #include "Mist.h"
 #include "Mobile.h"
 #include "MobileObjectInfo.h"
@@ -10,33 +9,6 @@
 #include "MobileStaticInfo.h"
 #include "MobileStatic.h"
 #include "lionhead/lh3dlib/development/LH3DIsland.h"
-
-// win1.41 00606140 mac inlined Meeting::GetTown(void)
-Town* Meeting::GetTown()
-{
-    return 0;
-}
-
-// win1.41 00606150 mac inlined Meeting::RemoveDance(void)
-void Meeting::RemoveDance()
-{
-}
-
-// win1.41 00606160 mac inlined Meeting::_dt(void)
-Meeting::~Meeting()
-{
-}
-
-// win1.41 00606180 mac inlined Meeting::ToBeDeleted(int)
-void Meeting::ToBeDeleted(int param_1)
-{
-}
-
-// win1.41 00606230 mac inlined Meeting::GetPlayer(void)
-GPlayer* Meeting::GetPlayer()
-{
-    return 0;
-}
 
 // win1.41 00606270 mac 101056c0 Mist::Mist(MapCoords const &, float, unsigned long, float)
 Mist::Mist(MapCoords* coords, float param_3, uint32_t param_4, float param_5)
