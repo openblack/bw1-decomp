@@ -455,7 +455,7 @@ void __fastcall ApplyEffectsDueToPhysicalDestruction__5AbodeFP6ObjectP7GPlayer(s
     asm("{disp8} fld        dword ptr [eax + 0x18]");                        // 0x0040674b    d94018
     asm("push               ebx");                                           // 0x0040674e    53
     asm("{disp8} fst        dword ptr [esp + 0x28]");                        // 0x0040674f    d9542428
-    asm("{disp32} fcomp     dword ptr [rdata_bytes + 0xd7188]");             // 0x00406753    d81d88019800
+    asm("{disp32} fcomp     dword ptr [__real@4@3ffdcccccd0000000000]");     // 0x00406753    d81d88019800
     asm("fnstsw             ax");                                            // 0x00406759    dfe0
     asm("test               ah, 0x01");                                      // 0x0040675b    f6c401
     asm("{disp8} je         LAB__addr_0x00406786");                          // 0x0040675e    7426
