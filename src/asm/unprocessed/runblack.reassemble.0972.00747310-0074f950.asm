@@ -6146,9 +6146,9 @@ _jmp_addr_0x0074a7c0:    sub                esp, 0x20                           
                          {disp32} mov       dword ptr [esp + 0x00000084], 0x0000000a       // 0x0074af7e    c78424840000000a000000
                          {disp32} mov       dword ptr [esp + 0x00000088], 0x0000004b       // 0x0074af89    c78424880000004b000000
                          call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ            // 0x0074af94    e8e711e0ff
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdb8]         // 0x0074af99    a1b81dea00
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdbc]         // 0x0074af9e    8b0dbc1dea00
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdc0]         // 0x0074afa4    8b15c01dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x0]         // 0x0074af99    a1b81dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x4]         // 0x0074af9e    8b0dbc1dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x8]         // 0x0074afa4    8b15c01dea00
                          {disp8} mov        dword ptr [esp + 0x20], eax                    // 0x0074afaa    89442420
                          {disp8} fld        dword ptr [esp + 0x20]                         // 0x0074afae    d9442420
                          {disp8} mov        eax, dword ptr [ebx + 0x40]                    // 0x0074afb2    8b4340
@@ -6279,9 +6279,9 @@ _jmp_addr_0x0074a7c0:    sub                esp, 0x20                           
                          {disp32} mov       ecx, dword ptr [_game]                         // 0x0074b152    8b0d5c19d000
                          call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ            // 0x0074b158    e82310e0ff
                          {disp8} fld        dword ptr [esp + 0x20]                         // 0x0074b15d    d9442420
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdb8]         // 0x0074b161    8b15b81dea00
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdbc]         // 0x0074b167    a1bc1dea00
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdc0]         // 0x0074b16c    8b0dc01dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x0]         // 0x0074b161    8b15b81dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x4]         // 0x0074b167    a1bc1dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x8]         // 0x0074b16c    8b0dc01dea00
                          {disp8} mov        dword ptr [esp + 0x10], edx                    // 0x0074b172    89542410
                          {disp8} fsub       dword ptr [esp + 0x10]                         // 0x0074b176    d8642410
                          {disp8} mov        dword ptr [esp + 0x14], eax                    // 0x0074b17a    89442414
@@ -8692,12 +8692,12 @@ _globl_ct_0x0074ca50:    {disp32} jmp       .Lbl_addr_0x0074ca60                
                          nop                                                               // 0x0074caee    90
                          nop                                                               // 0x0074caef    90
 _jmp_addr_0x0074caf0:    sub                esp, 0x14                                      // 0x0074caf0    83ec14
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdb8]         // 0x0074caf3    a1b81dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x0]         // 0x0074caf3    a1b81dea00
                          push               esi                                            // 0x0074caf8    56
                          mov.s              esi, edx                                       // 0x0074caf9    8bf2
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]         // 0x0074cafb    8b15bc1dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x4]         // 0x0074cafb    8b15bc1dea00
                          {disp8} mov        dword ptr [esp + 0x0c], eax                    // 0x0074cb01    8944240c
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]         // 0x0074cb05    a1c01dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x8]         // 0x0074cb05    a1c01dea00
                          {disp8} mov        dword ptr [esp + 0x10], edx                    // 0x0074cb0a    89542410
                          push               0x0                                            // 0x0074cb0e    6a00
                          mov.s              edx, esi                                       // 0x0074cb10    8bd6
@@ -8767,12 +8767,12 @@ _jmp_addr_0x0074caf0:    sub                esp, 0x14                           
                          nop                                                               // 0x0074cbce    90
                          nop                                                               // 0x0074cbcf    90
 _jmp_addr_0x0074cbd0:    sub                esp, 0x14                                      // 0x0074cbd0    83ec14
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdb8]         // 0x0074cbd3    a1b81dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x0]         // 0x0074cbd3    a1b81dea00
                          push               esi                                            // 0x0074cbd8    56
                          mov.s              esi, edx                                       // 0x0074cbd9    8bf2
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]         // 0x0074cbdb    8b15bc1dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x4]         // 0x0074cbdb    8b15bc1dea00
                          {disp8} mov        dword ptr [esp + 0x0c], eax                    // 0x0074cbe1    8944240c
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]         // 0x0074cbe5    a1c01dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x8]         // 0x0074cbe5    a1c01dea00
                          {disp8} mov        dword ptr [esp + 0x10], edx                    // 0x0074cbea    89542410
                          push               0x0                                            // 0x0074cbee    6a00
                          mov.s              edx, esi                                       // 0x0074cbf0    8bd6

@@ -5418,9 +5418,9 @@ _jmp_addr_0x00854630:    push               ebp                                 
                          {disp8} mov        dword ptr [ebp + -0x2c], 0x00e437e0           // 0x00854650    c745d4e037e400
                          {disp8} mov        dword ptr [ebp + -0x04], 0x00e3b5e0           // 0x00854657    c745fce0b5e300
                          {disp32} jne       .Lbl_addr_0x00854a68                          // 0x0085465e    0f8504040000
-                         {disp32} fld       dword ptr [data_bytes + 0x4dbdb8]             // 0x00854664    d905b81dea00
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]        // 0x0085466a    a1c01dea00
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]        // 0x0085466f    8b15bc1dea00
+                         {disp32} fld       dword ptr [_g_camera + 0x0]             // 0x00854664    d905b81dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x8]        // 0x0085466a    a1c01dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x4]        // 0x0085466f    8b15bc1dea00
                          {disp8} fst        dword ptr [ebp + -0x20]                       // 0x00854675    d955e0
                          {disp32} fld       dword ptr [data_bytes + 0x4dbce0]             // 0x00854678    d905e01cea00
                          {disp8} mov        dword ptr [ebp + -0x34], eax                  // 0x0085467e    8945cc

@@ -191,14 +191,14 @@ void __fastcall AddDrawing__12VillagerNameFv(struct VillagerName* this)
     asm("{disp8} je         LAB__addr_0x007628fb");                          // 0x007628a7    7452
     asm("{disp32} fld       dword ptr [ecx + 0x0000045c]");                  // 0x007628a9    d9815c040000
     asm("push               0x0");                                           // 0x007628af    6a00
-    asm("{disp32} fsub      dword ptr [data_bytes + 0x4dbdc0]");             // 0x007628b1    d825c01dea00
+    asm("{disp32} fsub      dword ptr [_g_camera + 0x8]");             // 0x007628b1    d825c01dea00
     asm("push               ecx");                                           // 0x007628b7    51
     asm("{disp32} fld       dword ptr [ecx + 0x00000458]");                  // 0x007628b8    d98158040000
     asm("mov.s              edx, ecx");                                      // 0x007628be    8bd1
-    asm("{disp32} fsub      dword ptr [data_bytes + 0x4dbdbc]");             // 0x007628c0    d825bc1dea00
+    asm("{disp32} fsub      dword ptr [_g_camera + 0x4]");             // 0x007628c0    d825bc1dea00
     asm("{disp32} fld       dword ptr [ecx + 0x00000454]");                  // 0x007628c6    d98154040000
     asm("{disp32} mov       ecx, dword ptr [data_bytes + 0x504648]");        // 0x007628cc    8b0d48a6ec00
-    asm("{disp32} fsub      dword ptr [data_bytes + 0x4dbdb8]");             // 0x007628d2    d825b81dea00
+    asm("{disp32} fsub      dword ptr [_g_camera + 0x0]");             // 0x007628d2    d825b81dea00
     asm("fld                st(0)");                                         // 0x007628d8    d9c0
     asm("fmul               st, st(1)");                                     // 0x007628da    d8c9
     asm("fld                st(2)");                                         // 0x007628dc    d9c2

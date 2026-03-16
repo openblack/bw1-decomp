@@ -3149,9 +3149,9 @@ _jmp_addr_0x00719e90:    sub                esp, 0x5c                           
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]       // 0x00719fd9    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x38]                        // 0x00719fdf    d95c2438
                          call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x00719fe3    e89821e3ff
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdb8]        // 0x00719fe8    8b15b81dea00
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdc0]        // 0x00719fee    8b0dc01dea00
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdbc]        // 0x00719ff4    a1bc1dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x0]        // 0x00719fe8    8b15b81dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x8]        // 0x00719fee    8b0dc01dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x4]        // 0x00719ff4    a1bc1dea00
                          {disp8} mov        esi, dword ptr [ebx + 0x40]                   // 0x00719ff9    8b7340
                          {disp8} mov        dword ptr [esp + 0x18], edx                   // 0x00719ffc    89542418
                          {disp8} fld        dword ptr [esp + 0x18]                        // 0x0071a000    d9442418

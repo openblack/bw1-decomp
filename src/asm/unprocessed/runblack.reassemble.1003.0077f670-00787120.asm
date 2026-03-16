@@ -2692,14 +2692,14 @@ _jmp_addr_0x007809f0:    push               ecx                                 
                          {disp8} je         .Lbl_addr_0x00780ed0                          // 0x00780e85    7449
                          {disp8} fld        dword ptr [edi + 0x0c]                        // 0x00780e87    d9470c
                          push               0x0                                           // 0x00780e8a    6a00
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdc0]             // 0x00780e8c    d825c01dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x8]             // 0x00780e8c    d825c01dea00
                          push               ecx                                           // 0x00780e92    51
                          {disp8} fld        dword ptr [edi + 0x08]                        // 0x00780e93    d94708
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x504648]        // 0x00780e96    8b0d48a6ec00
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdbc]             // 0x00780e9c    d825bc1dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x4]             // 0x00780e9c    d825bc1dea00
                          mov.s              edx, edi                                      // 0x00780ea2    8bd7
                          {disp8} fld        dword ptr [edi + 0x04]                        // 0x00780ea4    d94704
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdb8]             // 0x00780ea7    d825b81dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x0]             // 0x00780ea7    d825b81dea00
                          fld                st(0)                                         // 0x00780ead    d9c0
                          fmul               st, st(1)                                     // 0x00780eaf    d8c9
                          fld                st(2)                                         // 0x00780eb1    d9c2

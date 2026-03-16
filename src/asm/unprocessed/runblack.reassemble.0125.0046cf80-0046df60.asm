@@ -244,14 +244,14 @@ _jmp_addr_0x0046d100:    push               ecx                                 
                          {disp32} mov       eax, dword ptr [edi + 0x0000482c]             // 0x0046d1b7    8b872c480000
                          {disp8} fld        dword ptr [eax + 0x40]                        // 0x0046d1bd    d94040
                          add                eax, 0x38                                     // 0x0046d1c0    83c038
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdc0]             // 0x0046d1c3    d825c01dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x8]             // 0x0046d1c3    d825c01dea00
                          push               0x0                                           // 0x0046d1c9    6a00
                          {disp8} fld        dword ptr [eax + 0x04]                        // 0x0046d1cb    d94004
                          push               ecx                                           // 0x0046d1ce    51
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdbc]             // 0x0046d1cf    d825bc1dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x4]             // 0x0046d1cf    d825bc1dea00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x504648]        // 0x0046d1d5    8b0d48a6ec00
                          fld                dword ptr [eax]                               // 0x0046d1db    d900
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdb8]             // 0x0046d1dd    d825b81dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x0]             // 0x0046d1dd    d825b81dea00
                          mov.s              edx, edi                                      // 0x0046d1e3    8bd7
                          fld                st(0)                                         // 0x0046d1e5    d9c0
                          fmul               st, st(1)                                     // 0x0046d1e7    d8c9
@@ -1076,9 +1076,9 @@ _jmp_addr_0x0046db70:    sub                esp, 0x1c                           
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]       // 0x0046dbc0    d80da4a38a00
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x0046dbc6    d95c241c
                          call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ           // 0x0046dbca    e8b1e50d00
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdb8]        // 0x0046dbcf    8b15b81dea00
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdbc]        // 0x0046dbd5    a1bc1dea00
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdc0]        // 0x0046dbda    8b0dc01dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x0]        // 0x0046dbcf    8b15b81dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x4]        // 0x0046dbd5    a1bc1dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x8]        // 0x0046dbda    8b0dc01dea00
                          {disp8} mov        dword ptr [esp + 0x08], edx                   // 0x0046dbe0    89542408
                          {disp8} fld        dword ptr [esp + 0x08]                        // 0x0046dbe4    d9442408
                          {disp8} fsub       dword ptr [esp + 0x14]                        // 0x0046dbe8    d8642414

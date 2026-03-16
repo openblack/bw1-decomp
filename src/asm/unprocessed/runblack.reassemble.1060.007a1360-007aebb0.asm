@@ -10066,11 +10066,11 @@ _jmp_addr_0x007a1800:    push                 ebx                               
                          pop                  ebx                                              // 0x007ac796    5b
                          ret                                                                   // 0x007ac797    c3
 .Lbl_addr_0x007ac798:    movss                xmm6, dword ptr [ecx + 0x38]                     // 0x007ac798    f30f107138
-                         subss                xmm6, dword ptr [data_bytes + 0x4dbdb8]          // 0x007ac79d    f30f5c35b81dea00
+                         subss                xmm6, dword ptr [_g_camera + 0x0]          // 0x007ac79d    f30f5c35b81dea00
                          movss                xmm3, dword ptr [ecx + 0x3c]                     // 0x007ac7a5    f30f10593c
-                         subss                xmm3, dword ptr [data_bytes + 0x4dbdbc]          // 0x007ac7aa    f30f5c1dbc1dea00
+                         subss                xmm3, dword ptr [_g_camera + 0x4]          // 0x007ac7aa    f30f5c1dbc1dea00
                          movss                xmm4, dword ptr [ecx + 0x40]                     // 0x007ac7b2    f30f106140
-                         subss                xmm4, dword ptr [data_bytes + 0x4dbdc0]          // 0x007ac7b7    f30f5c25c01dea00
+                         subss                xmm4, dword ptr [_g_camera + 0x8]          // 0x007ac7b7    f30f5c25c01dea00
                          mulss                xmm6, xmm6                                       // 0x007ac7bf    f30f59f6
                          mulss                xmm3, xmm3                                       // 0x007ac7c3    f30f59db
                          addss                xmm6, xmm3                                       // 0x007ac7c7    f30f58f3

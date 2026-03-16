@@ -3008,13 +3008,13 @@ _jmp_addr_0x0071d800:    sub                esp, 0x18                           
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x0071d806    8b0d5c19d000
                          push               edi                                                  // 0x0071d80c    57
                          call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ                  // 0x0071d80d    e86ee9e2ff
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]               // 0x0071d812    8b0db81dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x0]               // 0x0071d812    8b0db81dea00
                          {disp32} lea       edi, dword ptr [esi + 0x000000ec]                    // 0x0071d818    8dbeec000000
                          mov.s              eax, edi                                             // 0x0071d81e    8bc7
                          mov                dword ptr [eax], ecx                                 // 0x0071d820    8908
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]               // 0x0071d822    8b15bc1dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x4]               // 0x0071d822    8b15bc1dea00
                          {disp8} mov        dword ptr [eax + 0x04], edx                          // 0x0071d828    895004
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdc0]               // 0x0071d82b    8b0dc01dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x8]               // 0x0071d82b    8b0dc01dea00
                          {disp8} mov        dword ptr [eax + 0x08], ecx                          // 0x0071d831    894808
                          fld                dword ptr [edi]                                      // 0x0071d834    d907
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3400]                     // 0x0071d836    d80d00c48a00

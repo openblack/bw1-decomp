@@ -207,9 +207,9 @@ _jmp_addr_0x0056da00:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          {disp32} mov       ebx, dword ptr [esp + 0x0000009c]             // 0x0056db7e    8b9c249c000000
                          cmp                dword ptr [ebx + 0x10], 0x02                  // 0x0056db85    837b1002
                          {disp32} jne       .Lbl_addr_0x0056e0ea                          // 0x0056db89    0f855b050000
-                         {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]        // 0x0056db8f    8b0db81dea00
-                         {disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]        // 0x0056db95    8b15bc1dea00
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]        // 0x0056db9b    a1c01dea00
+                         {disp32} mov       ecx, dword ptr [_g_camera + 0x0]        // 0x0056db8f    8b0db81dea00
+                         {disp32} mov       edx, dword ptr [_g_camera + 0x4]        // 0x0056db95    8b15bc1dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x8]        // 0x0056db9b    a1c01dea00
                          {disp32} mov       dword ptr [esp + 0x0000008c], ecx             // 0x0056dba0    898c248c000000
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdc4]        // 0x0056dba7    8b0dc41dea00
                          {disp32} mov       dword ptr [esp + 0x00000090], edx             // 0x0056dbad    89942490000000

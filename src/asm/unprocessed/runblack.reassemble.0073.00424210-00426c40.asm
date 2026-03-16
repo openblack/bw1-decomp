@@ -684,14 +684,14 @@ _jmp_addr_0x00424650:    push               esi                                 
                          {disp8} je         .Lbl_addr_0x004246d6                          // 0x0042468b    7449
                          {disp8} fld        dword ptr [esi + 0x0c]                        // 0x0042468d    d9460c
                          push               0x0                                           // 0x00424690    6a00
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdc0]             // 0x00424692    d825c01dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x8]             // 0x00424692    d825c01dea00
                          push               ecx                                           // 0x00424698    51
                          {disp8} fld        dword ptr [esi + 0x08]                        // 0x00424699    d94608
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x504648]        // 0x0042469c    8b0d48a6ec00
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdbc]             // 0x004246a2    d825bc1dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x4]             // 0x004246a2    d825bc1dea00
                          mov.s              edx, esi                                      // 0x004246a8    8bd6
                          {disp8} fld        dword ptr [esi + 0x04]                        // 0x004246aa    d94604
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdb8]             // 0x004246ad    d825b81dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x0]             // 0x004246ad    d825b81dea00
                          fld                st(0)                                         // 0x004246b3    d9c0
                          fmul               st, st(1)                                     // 0x004246b5    d8c9
                          fld                st(2)                                         // 0x004246b7    d9c2

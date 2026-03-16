@@ -81,13 +81,13 @@ _jmp_addr_0x0081b370:    fild               dword ptr [ecx]                     
                          fstp               st(0)                                         // 0x0081b41a    ddd8
                          fstp               st(0)                                         // 0x0081b41c    ddd8
                          fstp               st(0)                                         // 0x0081b41e    ddd8
-                         {disp32} fld       dword ptr [data_bytes + 0x4dbdb8]             // 0x0081b420    d905b81dea00
+                         {disp32} fld       dword ptr [_g_camera + 0x0]             // 0x0081b420    d905b81dea00
                          fadd               dword ptr [edx]                               // 0x0081b426    d802
                          fstp               dword ptr [edx]                               // 0x0081b428    d91a
-                         {disp32} fld       dword ptr [data_bytes + 0x4dbdbc]             // 0x0081b42a    d905bc1dea00
+                         {disp32} fld       dword ptr [_g_camera + 0x4]             // 0x0081b42a    d905bc1dea00
                          {disp8} fadd       dword ptr [edx + 0x04]                        // 0x0081b430    d84204
                          {disp8} fstp       dword ptr [edx + 0x04]                        // 0x0081b433    d95a04
-                         {disp32} fld       dword ptr [data_bytes + 0x4dbdc0]             // 0x0081b436    d905c01dea00
+                         {disp32} fld       dword ptr [_g_camera + 0x8]             // 0x0081b436    d905c01dea00
                          {disp8} fadd       dword ptr [edx + 0x08]                        // 0x0081b43c    d84208
                          {disp8} fstp       dword ptr [edx + 0x08]                        // 0x0081b43f    d95a08
                          ret                0x0004                                        // 0x0081b442    c20400

@@ -7278,14 +7278,14 @@ _jmp_addr_0x005ff330:    {disp32} mov       ecx, dword ptr [data_bytes + 0x37222
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x005ffe1b    8d4e14
                          call               ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ      // 0x005ffe1e    e81d5e0000
                          {disp8} fld        dword ptr [eax + 0x08]                        // 0x005ffe23    d94008
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdc0]             // 0x005ffe26    d825c01dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x8]             // 0x005ffe26    d825c01dea00
                          push               0x0                                           // 0x005ffe2c    6a00
                          {disp8} fld        dword ptr [eax + 0x04]                        // 0x005ffe2e    d94004
                          push               ecx                                           // 0x005ffe31    51
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdbc]             // 0x005ffe32    d825bc1dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x4]             // 0x005ffe32    d825bc1dea00
                          {disp32} mov       ecx, dword ptr [data_bytes + 0x504648]        // 0x005ffe38    8b0d48a6ec00
                          fld                dword ptr [eax]                               // 0x005ffe3e    d900
-                         {disp32} fsub      dword ptr [data_bytes + 0x4dbdb8]             // 0x005ffe40    d825b81dea00
+                         {disp32} fsub      dword ptr [_g_camera + 0x0]             // 0x005ffe40    d825b81dea00
                          mov.s              edx, esi                                      // 0x005ffe46    8bd6
                          fld                st(0)                                         // 0x005ffe48    d9c0
                          fmul               st, st(1)                                     // 0x005ffe4a    d8c9

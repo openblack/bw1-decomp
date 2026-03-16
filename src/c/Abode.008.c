@@ -321,9 +321,9 @@ void __fastcall ReactToPhysicsImpact__5AbodeFP13PhysicsObjectb(struct Object* th
     asm("{disp32} je        LAB__addr_0x00406615");                          // 0x00406583    0f848c000000
     asm("{disp32} mov       ecx, dword ptr [_game]");                        // 0x00406589    8b0d5c19d000
     asm("call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ");                        // 0x0040658f    e8ec5b1400
-    asm("{disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]");        // 0x00406594    8b0db81dea00
-    asm("{disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]");        // 0x0040659a    8b15bc1dea00
-    asm("{disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]");        // 0x004065a0    a1c01dea00
+    asm("{disp32} mov       ecx, dword ptr [_g_camera + 0x0]");        // 0x00406594    8b0db81dea00
+    asm("{disp32} mov       edx, dword ptr [_g_camera + 0x4]");        // 0x0040659a    8b15bc1dea00
+    asm("{disp32} mov       eax, dword ptr [_g_camera + 0x8]");        // 0x004065a0    a1c01dea00
     asm("{disp8} mov        dword ptr [esp + 0x18], ecx");                   // 0x004065a5    894c2418
     asm("{disp8} fld        dword ptr [esp + 0x18]");                        // 0x004065a9    d9442418
     asm("{disp8} fsub       dword ptr [esp + 0x24]");                        // 0x004065ad    d8642424
@@ -400,9 +400,9 @@ void __fastcall ApplyEffectsDueToPhysicalDestruction__5AbodeFP6ObjectP7GPlayer(s
     asm("{disp32} mov       ecx, dword ptr [_game]");                        // 0x0040667d    8b0d5c19d000
     asm("push               edi");                                           // 0x00406683    57
     asm("call               ?GetCamera@GGame@@QAEPAVGCamera@@XZ");                        // 0x00406684    e8f75a1400
-    asm("{disp32} mov       ecx, dword ptr [data_bytes + 0x4dbdb8]");        // 0x00406689    8b0db81dea00
-    asm("{disp32} mov       edx, dword ptr [data_bytes + 0x4dbdbc]");        // 0x0040668f    8b15bc1dea00
-    asm("{disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]");        // 0x00406695    a1c01dea00
+    asm("{disp32} mov       ecx, dword ptr [_g_camera + 0x0]");        // 0x00406689    8b0db81dea00
+    asm("{disp32} mov       edx, dword ptr [_g_camera + 0x4]");        // 0x0040668f    8b15bc1dea00
+    asm("{disp32} mov       eax, dword ptr [_g_camera + 0x8]");        // 0x00406695    a1c01dea00
     asm("{disp8} mov        dword ptr [esp + 0x0c], ecx");                   // 0x0040669a    894c240c
     asm("{disp8} fld        dword ptr [esp + 0x0c]");                        // 0x0040669e    d944240c
     asm("{disp8} fsub       dword ptr [esp + 0x18]");                        // 0x004066a2    d8642418

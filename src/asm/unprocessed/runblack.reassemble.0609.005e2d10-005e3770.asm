@@ -187,8 +187,8 @@ _GetNearClipping__11LandFeatureFv@0:    {disp32} mov       eax, dword ptr [data_
                          {disp32} fld       dword ptr [__real@3dcccccd]             // 0x005e2f3c    d9052cb28a00
                          add                esp, 0x1c                               // 0x005e2f42    83c41c
                          ret                                                        // 0x005e2f45    c3
-.Lbl_addr_0x005e2f46:    {disp32} fld       dword ptr [data_bytes + 0x4dbdb8]       // 0x005e2f46    d905b81dea00
-                         {disp32} mov       eax, dword ptr [data_bytes + 0x4dbdc0]  // 0x005e2f4c    a1c01dea00
+.Lbl_addr_0x005e2f46:    {disp32} fld       dword ptr [_g_camera + 0x0]       // 0x005e2f46    d905b81dea00
+                         {disp32} mov       eax, dword ptr [_g_camera + 0x8]  // 0x005e2f4c    a1c01dea00
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3408]        // 0x005e2f51    d80d08c48a00
                          {disp8} mov        dword ptr [esp + 0x18], eax             // 0x005e2f57    89442418
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3404]        // 0x005e2f5b    d80d04c48a00
@@ -202,7 +202,7 @@ _GetNearClipping__11LandFeatureFv@0:    {disp32} mov       eax, dword ptr [data_
                          {disp8} mov        dword ptr [esp + 0x08], eax             // 0x005e2f83    89442408
                          {disp8} mov        dword ptr [esp + 0x0c], 0x00000000      // 0x005e2f87    c744240c00000000
                          call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z                  // 0x005e2f8f    e8fc002200
-                         {disp32} fsubr     dword ptr [data_bytes + 0x4dbdbc]       // 0x005e2f94    d82dbc1dea00
+                         {disp32} fsubr     dword ptr [_g_camera + 0x4]       // 0x005e2f94    d82dbc1dea00
                          {disp8} fst        dword ptr [esp + 0x00]                  // 0x005e2f9a    d9542400
                          {disp32} fcomp     dword ptr [__real@4@00000000000000000000]             // 0x005e2f9e    d81d98a38a00
                          fnstsw             ax                                      // 0x005e2fa4    dfe0
