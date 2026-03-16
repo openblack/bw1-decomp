@@ -3,16 +3,6 @@
 #include "Landscape.h"
 #include "Morphable.h"
 
-// win1.41 0060f760 mac 103c1910 MobileWallHug::SetToZero(void)
-void MobileWallHug::SetToZero()
-{
-}
-
-// win1.41 0060fc50 mac 10084230 MobileWallHug::SetSpeed(long)
-void MobileWallHug::SetSpeed(int param_1)
-{
-}
-
 // win1.41 00612660 mac 100fddf0 GMap::ToMap(long, long)
 MapCell* GMap::ToMap(uint32_t cell_x, uint32_t cell_z)
 {

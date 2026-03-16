@@ -353,14 +353,8 @@ set(SOURCES_001
     src/asm/unprocessed/MobileObject.010.asm
     src/asm/unprocessed/FieldCrop.010.asm
     src/asm/unprocessed/MobileStatic.010.asm
-    src/asm/unprocessed/runblack.reassemble.0643.00609760-0060a010.asm
-    src/asm/unprocessed/runblack.reassemble.0647.0060a010-0060a400.asm
-    src/asm/unprocessed/runblack.reassemble.0650.0060a400-0060a770.asm
-    src/asm/unprocessed/runblack.reassemble.0654.0060a770-0060bbc0.asm
-    src/asm/unprocessed/runblack.reassemble.0659.0060bbc0-0060d280.asm
-    src/asm/unprocessed/runblack.reassemble.0663.0060d280-0060d740.asm
-    src/asm/unprocessed/runblack.reassemble.0667.0060d740-0060f630.asm
-    src/asm/unprocessed/runblack.reassemble.0672.0060f630-006199f0.asm
+    src/asm/unprocessed/MobileWallHug.010.asm
+    src/asm/unprocessed/Morphable.010.asm
     src/asm/unprocessed/runblack.reassemble.0676.006199f0-0061b880.asm
     src/asm/unprocessed/runblack.reassemble.0679.0061b880-0061e640.asm
     src/asm/unprocessed/runblack.reassemble.0684.0061e640-0061ed30.asm
