@@ -351,6 +351,7 @@ set(SOURCES_001
     src/asm/unprocessed/Meeting.010.asm
     src/asm/unprocessed/Mist.010.asm
     src/asm/unprocessed/Mobile.010.asm
+    src/asm/unprocessed/MobileObject.010.asm
     src/asm/unprocessed/runblack.reassemble.0640.006020e0-00609320.asm
 
     src/asm/unprocessed/runblack.reassemble.0643.00609320-0060a010.asm
