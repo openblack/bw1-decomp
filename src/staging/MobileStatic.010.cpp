@@ -1,8 +1,5 @@
-#include "MapCoords.h"
-#include "Utils.h"
 #include "MobileStaticInfo.h"
 #include "MobileStatic.h"
-#include "lionhead/lh3dlib/development/LH3DIsland.h"
 
 // win1.41 006084e0 mac 10050090 GMobileStaticInfo::GetMesh( const(void))
 MeshId GMobileStaticInfo::GetMesh() const
@@ -179,4 +176,39 @@ bool32_t MobileStatic::ChecksVerticesVObjects()
 uint32_t MobileStatic::GetPhysicsConstantsType()
 {
     return 0;
+}
+
+// win1.41 00609320 mac 103bee30 MobileStatic::CanBecomeAPhysicsObject(void)
+bool32_t MobileStatic::CanBecomeAPhysicsObject()
+{
+    return 0;
+}
+
+// win1.41 00609330 mac 10008460 MobileStatic::GetScriptObjectType(void)
+uint32_t MobileStatic::GetScriptObjectType()
+{
+    return 0;
+}
+
+// win1.41 006096a0 mac 103be560 MobileStatic::BlocksTownClearArea( const(void))
+bool32_t MobileStatic::BlocksTownClearArea()
+{
+    return 0;
+}
+
+// win1.41 006096b0 mac 103be4f0 MobileStatic::GetResourceType(void)
+RESOURCE_TYPE MobileStatic::GetResourceType()
+{
+    return (RESOURCE_TYPE)0;
+}
+
+// win1.41 006096d0 mac 103be450 MobileStatic::GetDefaultResource(void)
+int MobileStatic::GetDefaultResource()
+{
+    return 0;
+}
+
+// win1.41 00609700 mac 103be330 MobileStatic::CallVirtualFunctionsForCreation(MapCoords const &)
+void MobileStatic::CallVirtualFunctionsForCreation(const MapCoords& param_1)
+{
 }
