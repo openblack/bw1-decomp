@@ -4,7 +4,7 @@
 .extern rdata_bytes
 .extern data_bytes
 .extern _jmp_addr_0x00414730
-.extern _jmp_addr_0x0042a4b0
+.extern ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
 .extern @__ct__7LHPointFfff@20
 .extern _jmp_addr_0x00442d50
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
@@ -4943,7 +4943,7 @@ _jmp_addr_0x006745d0:    sub                esp, 0x38                           
                          push               eax                                           // 0x00674798    50
                          push               edx                                           // 0x00674799    52
                          push               esi                                           // 0x0067479a    56
-                         call               _jmp_addr_0x0042a4b0                          // 0x0067479b    e8105ddbff
+                         call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z                          // 0x0067479b    e8105ddbff
                          pop                edi                                           // 0x006747a0    5f
                          pop                esi                                           // 0x006747a1    5e
                          pop                ebp                                           // 0x006747a2    5d

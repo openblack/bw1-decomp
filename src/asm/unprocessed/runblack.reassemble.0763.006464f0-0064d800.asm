@@ -8,7 +8,7 @@
 .extern _jmp_addr_0x004141a0
 .extern _jmp_addr_0x004146f0
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
-.extern _jmp_addr_0x0042a4b0
+.extern ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
@@ -647,7 +647,7 @@ _jmp_addr_0x006464f0:    push               ebp                                 
                          fstp               st(0)                                          // 0x00646913    ddd8
                          fstp               dword ptr [esp]                                // 0x00646915    d91c24
                          push               edi                                            // 0x00646918    57
-                         call               _jmp_addr_0x0042a4b0                           // 0x00646919    e8923bdeff
+                         call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z                           // 0x00646919    e8923bdeff
                          {disp32} mov       eax, dword ptr [data_bytes + 0x381820]         // 0x0064691e    a12078d400
                          lea                ecx, dword ptr [eax + eax * 0x2]               // 0x00646923    8d0c40
                          {disp32} lea       eax, dword ptr [ecx * 0x4 + 0x00d47208]        // 0x00646926    8d048d0872d400

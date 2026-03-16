@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern _jmp_addr_0x0042a4b0
+.extern ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
 .extern ??0LHFile@@QAE@XZ
 .extern ?ResetData@LHFile@@QAEIXZ
 .extern ?__nw@Base@@SAPAXK@Z
@@ -10576,7 +10576,7 @@ _jmp_addr_0x004f48c0:    sub                esp, 0x2c                           
                          push               eax                                                  // 0x004f4992    50
                          push               ebx                                                  // 0x004f4993    53
                          push               ebp                                                  // 0x004f4994    55
-                         call               _jmp_addr_0x0042a4b0                                 // 0x004f4995    e8165bf3ff
+                         call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z                                 // 0x004f4995    e8165bf3ff
 .Lbl_addr_0x004f499a:    xor.s              edx, edx                                             // 0x004f499a    33d2
                          mov                eax, 0x000003e8                                      // 0x004f499c    b8e8030000
                          div                dword ptr [data_bytes + 0x33ba38]                    // 0x004f49a1    f735381ad000

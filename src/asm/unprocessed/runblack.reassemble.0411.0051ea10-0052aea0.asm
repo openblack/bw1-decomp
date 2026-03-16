@@ -217,7 +217,7 @@
 .globl ??0GMagicEffectInfo@@QAE@XZ  
 .globl _jmp_addr_0x00524ed0
 .globl _jmp_addr_0x00524ef0
-.globl _jmp_addr_0x00524fe0
+.globl ??0EffectValues@@QAE@W4EFFECT_TYPE@@PAVGameThing@@PAVGPlayer@@@Z
 .globl ??0EffectValues@@QAE@W4EFFECT_TYPE@@MPAVGameThing@@MPAVGPlayer@@@Z
 .globl _jmp_addr_0x005250a0
 .globl _jmp_addr_0x00525100
@@ -226,10 +226,10 @@
 .globl _jmp_addr_0x00525500
 .globl _jmp_addr_0x00525670
 .globl _jmp_addr_0x005256d0
-.globl _jmp_addr_0x00525720
+.globl ??XEffectNumbers@@QAEAAU0@ABM@Z
 .globl _jmp_addr_0x005258c0
 .globl _jmp_addr_0x00525910
-.globl _jmp_addr_0x00525950
+.globl ??_0EffectValues@@QAEAAV0@ABM@Z
 .globl _jmp_addr_0x005259d0
 .globl _jmp_addr_0x00526060
 .globl _jmp_addr_0x005264a0
@@ -10600,7 +10600,8 @@ _jmp_addr_0x00524ef0:    push               esi                                 
                          nop                                                                     // 0x00524fdd    90
                          nop                                                                     // 0x00524fde    90
                          nop                                                                     // 0x00524fdf    90
-_jmp_addr_0x00524fe0:    push               esi                                                  // 0x00524fe0    56
+??0EffectValues@@QAE@W4EFFECT_TYPE@@PAVGameThing@@PAVGPlayer@@@Z:
+                         push               esi                                                  // 0x00524fe0    56
                          mov.s              esi, ecx                                             // 0x00524fe1    8bf1
                          xor.s              edx, edx                                             // 0x00524fe3    33d2
                          push               edi                                                  // 0x00524fe5    57
@@ -11192,7 +11193,7 @@ _jmp_addr_0x00525670:    {disp8} fld        dword ptr [esp + 0x04]              
                          {disp8} lea        eax, dword ptr [esp + 0x04]                          // 0x00525681    8d442404
                          push               eax                                                  // 0x00525685    50
                          add                ecx, 0x8                                             // 0x00525686    83c108
-                         call               _jmp_addr_0x00525720                                 // 0x00525689    e892000000
+                         call               ??XEffectNumbers@@QAEAAU0@ABM@Z                      // 0x00525689    e892000000
 .Lbl_addr_0x0052568e:    ret                0x0004                                               // 0x0052568e    c20400
                          nop                                                                     // 0x00525691    90
                          nop                                                                     // 0x00525692    90
@@ -11267,7 +11268,8 @@ _jmp_addr_0x005256d0:    push               esi                                 
                          nop                                                                     // 0x0052571d    90
                          nop                                                                     // 0x0052571e    90
                          nop                                                                     // 0x0052571f    90
-_jmp_addr_0x00525720:    {disp8} mov        edx, dword ptr [esp + 0x04]                          // 0x00525720    8b542404
+??XEffectNumbers@@QAEAAU0@ABM@Z:
+                         {disp8} mov        edx, dword ptr [esp + 0x04]                          // 0x00525720    8b542404
                          mov                eax, 0x00000007                                      // 0x00525724    b807000000
 .Lbl_addr_0x00525729:    fld                dword ptr [edx]                                      // 0x00525729    d902
                          add                ecx, 0x4                                             // 0x0052572b    83c104
@@ -11494,7 +11496,8 @@ _jmp_addr_0x00525910:    {disp8} mov        eax, dword ptr [ecx + 0x3c]         
                          {disp8} fstp       dword ptr [eax + -0x04]                              // 0x00525948    d958fc
                          {disp8} jne        .Lbl_addr_0x0052593c                                 // 0x0052594b    75ef
                          ret                0x0004                                               // 0x0052594d    c20400
-_jmp_addr_0x00525950:    {disp8} mov        edx, dword ptr [esp + 0x04]                          // 0x00525950    8b542404
+??_0EffectValues@@QAEAAV0@ABM@Z:
+                         {disp8} mov        edx, dword ptr [esp + 0x04]                          // 0x00525950    8b542404
                          {disp8} lea        eax, dword ptr [ecx + 0x08]                          // 0x00525954    8d4108
                          mov                ecx, 0x00000007                                      // 0x00525957    b907000000
 .Lbl_addr_0x0052595c:    fld                dword ptr [eax]                                      // 0x0052595c    d900

@@ -14,7 +14,7 @@
 .extern _jmp_addr_0x004145a0
 .extern _jmp_addr_0x00425fb0
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
-.extern _jmp_addr_0x0042a4b0
+.extern ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXK@Z
@@ -6185,7 +6185,7 @@ _jmp_addr_0x0074a7c0:    sub                esp, 0x20                           
                          fstp               st(0)                                          // 0x0074b003    ddd8
                          fstp               dword ptr [esp]                                // 0x0074b005    d91c24
                          push               ebx                                            // 0x0074b008    53
-                         call               _jmp_addr_0x0042a4b0                           // 0x0074b009    e8a2f4cdff
+                         call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z                           // 0x0074b009    e8a2f4cdff
                          {disp8} jmp        .Lbl_addr_0x0074b067                           // 0x0074b00e    eb57
 .Lbl_addr_0x0074b010:    and                word ptr [ebx + 0x5c], -0x03c1                 // 0x0074b010    6681635c3ffc
 .Lbl_addr_0x0074b016:    {disp8} mov        eax, dword ptr [ebx + 0x40]                    // 0x0074b016    8b4340
@@ -6347,7 +6347,7 @@ _jmp_addr_0x0074a7c0:    sub                esp, 0x20                           
                          fstp               st(0)                                          // 0x0074b256    ddd8
                          fstp               dword ptr [esp]                                // 0x0074b258    d91c24
                          push               ebx                                            // 0x0074b25b    53
-                         call               _jmp_addr_0x0042a4b0                           // 0x0074b25c    e84ff2cdff
+                         call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z                           // 0x0074b25c    e84ff2cdff
 .Lbl_addr_0x0074b261:    pop                edi                                            // 0x0074b261    5f
                          pop                esi                                            // 0x0074b262    5e
                          pop                ebp                                            // 0x0074b263    5d

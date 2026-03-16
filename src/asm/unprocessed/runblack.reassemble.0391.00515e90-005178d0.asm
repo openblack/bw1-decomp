@@ -12,7 +12,7 @@
 .extern _jmp_addr_0x00411fc0
 .extern ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z
 .extern ?DrawBevBox@SetupThing@@SAXHHHHHHHK@Z
-.extern _jmp_addr_0x0042a4b0
+.extern ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
 .extern ?SetMessage@GDebug@@SAXGPADZZ
 .extern _jmp_addr_0x00517f90
 .extern ?Draw@MultiMapFixed@@UAEXXZ
@@ -403,7 +403,7 @@ _globl_ct_0x00515f40:    {disp32} jmp       .Lbl_addr_0x00515f50                
                          push               eax                                           // 0x00516280    50
                          push               edx                                           // 0x00516281    52
                          push               esi                                           // 0x00516282    56
-                         call               _jmp_addr_0x0042a4b0                          // 0x00516283    e82842f1ff
+                         call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z                          // 0x00516283    e82842f1ff
 .Lbl_addr_0x00516288:    cmp                dword ptr [esi + 0x0000008c], ebx             // 0x00516288    399e8c000000
                          {disp8} je         .Lbl_addr_0x005162e5                          // 0x0051628e    7455
                          cmp                dword ptr [data_bytes + 0x4dbaf0], ebx        // 0x00516290    391df01aea00
@@ -828,7 +828,7 @@ _globl_ct_0x00515f40:    {disp32} jmp       .Lbl_addr_0x00515f50                
                          push               eax                                           // 0x005167a5    50
                          push               edx                                           // 0x005167a6    52
 .Lbl_addr_0x005167a7:    push               esi                                           // 0x005167a7    56
-.Lbl_addr_0x005167a8:    call               _jmp_addr_0x0042a4b0                          // 0x005167a8    e8033df1ff
+.Lbl_addr_0x005167a8:    call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z                          // 0x005167a8    e8033df1ff
 .Lbl_addr_0x005167ad:    {disp8} mov        edi, dword ptr [edi + 0x10]                   // 0x005167ad    8b7f10
                          test               edi, edi                                      // 0x005167b0    85ff
                          {disp32} jne       .Lbl_addr_0x00516528                          // 0x005167b2    0f8570fdffff

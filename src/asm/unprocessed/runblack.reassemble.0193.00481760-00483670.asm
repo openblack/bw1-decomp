@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern ?ApplyEffectsDueToPhysicalDestruction@Abode@@QAEXPAVObject@@PAVGPlayer@@@Z
 .extern _jmp_addr_0x00428790
-.extern _jmp_addr_0x0042a4b0
+.extern ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
 .extern @__ct__7LHPointFRC7LHPoint@12
 .extern _jmp_addr_0x00454960
 .extern _jmp_addr_0x00454aa0
@@ -2291,7 +2291,7 @@ _jmp_addr_0x00483290:    sub                esp, 0x48                           
                          {disp8} mov        eax, dword ptr [esi + 0x04]                          // 0x0048343c    8b4604
                          push               edx                                                  // 0x0048343f    52
                          push               eax                                                  // 0x00483440    50
-                         call               _jmp_addr_0x0042a4b0                                 // 0x00483441    e86a70faff
+                         call               ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z                                 // 0x00483441    e86a70faff
                          test               eax, eax                                             // 0x00483446    85c0
                          {disp8} je         .Lbl_addr_0x0048346e                                 // 0x00483448    7424
                          {disp8} mov        ecx, dword ptr [esi + 0x04]                          // 0x0048344a    8b4e04

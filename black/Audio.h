@@ -60,6 +60,8 @@ public:
     void StopPlayingSoundEffect(uint32_t param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type);
     // win1.41 0042a330 mac 1017e410 GAudio::ReleaseLoopOnSoundEffect(Base *, unsigned long, AUDIO_SFX_BANK_TYPE) const
     void ReleaseLoopOnSoundEffect(Base* param_1, uint32_t param_2, AUDIO_SFX_BANK_TYPE type);
+    // win1.41 0042a4b0 mac 10060460 GAudio::.SamplePlayAnimEffect(void*, float, long*, int, LH_AudioBank*, int, float, float)
+    bool32_t SamplePlayAnimEffect(void* param_1, float param_2, long* param_3, int param_4, LH_AudioBank* param_5, int param_6, float param_7, float param_8);
 };
 
 #else // __cplusplus
