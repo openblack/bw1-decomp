@@ -153,7 +153,7 @@
 .extern _jmp_addr_0x0064c0e0
 .extern _jmp_addr_0x0064c300
 .extern _jmp_addr_0x0064d0e0
-.extern ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
+.extern ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z
 .extern _jmp_addr_0x0066c5c0
 .extern _jmp_addr_0x0066c640
 .extern _jmp_addr_0x0066cf10
@@ -4045,7 +4045,7 @@ _jmp_addr_0x0073c9b0:    push               ebx                                 
                          mov.s              esi, eax                                             // 0x0073cae7    8bf0
                          push               esi                                                  // 0x0073cae9    56
                          mov.s              ecx, ebp                                             // 0x0073caea    8bcd
-                         call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z                                 // 0x0073caec    e85f0cf1ff
+                         call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z                                 // 0x0073caec    e85f0cf1ff
                          test               eax, eax                                             // 0x0073caf1    85c0
                          {disp8} je         .Lbl_addr_0x0073cb29                                 // 0x0073caf3    7434
                          {disp8} mov        ecx, dword ptr [esi + 0x30]                          // 0x0073caf5    8b4e30
@@ -4062,7 +4062,7 @@ _jmp_addr_0x0073c9b0:    push               ebx                                 
                          mov.s              ebp, eax                                             // 0x0073cb11    8be8
                          push               ebp                                                  // 0x0073cb13    55
                          mov.s              ecx, ebx                                             // 0x0073cb14    8bcb
-                         call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z                                 // 0x0073cb16    e8350cf1ff
+                         call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z                                 // 0x0073cb16    e8350cf1ff
                          test               eax, eax                                             // 0x0073cb1b    85c0
                          {disp8} je         .Lbl_addr_0x0073cb29                                 // 0x0073cb1d    740a
                          {disp8} mov        ecx, dword ptr [ebp + 0x30]                          // 0x0073cb1f    8b4d30
@@ -17818,7 +17818,7 @@ _jmp_addr_0x00745770:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          mov.s              edi, eax                                             // 0x00745c64    8bf8
                          push               edi                                                  // 0x00745c66    57
                          mov.s              ecx, ebx                                             // 0x00745c67    8bcb
-                         call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z                                 // 0x00745c69    e8e27af0ff
+                         call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z                                 // 0x00745c69    e8e27af0ff
                          test               eax, eax                                             // 0x00745c6e    85c0
                          {disp8} je         .Lbl_addr_0x00745c8f                                 // 0x00745c70    741d
                          {disp8} fld        dword ptr [esp + 0x0c]                               // 0x00745c72    d944240c

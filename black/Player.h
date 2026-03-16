@@ -300,7 +300,7 @@ bool32_t __fastcall IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE(struct GPlayer* th
 // win1.41 0064d120 mac 10051520 GPlayer::GetRealInterface(unsigned long)
 struct GInterface* __fastcall GetRealInterface__7GPlayerFUl(struct GPlayer* this, const void* edx, int param_2) asm("?GetRealInterface@GPlayer@@QAEPAVGInterface@@K@Z");
 // win1.41 0064d750 mac 10033320 GPlayer::IsMemberOfThisPlayer(GInterfaceStatus *)
-bool __fastcall IsMemberOfThisPlayer__7GPlayerFP16GInterfaceStatus(struct GPlayer* this, const void* edx, struct GInterfaceStatus* param_1) asm("?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z");
+bool __fastcall IsMemberOfThisPlayer__7GPlayerFP16GInterfaceStatus(struct GPlayer* this, const void* edx, struct GInterfaceStatus* param_1) asm("?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z");
 // win1.41 0064d800 mac 10021970 GPlayer::GetPlayerColour(void) const
 struct LH3DColor __fastcall GetPlayerColour__7GPlayerCFv(struct GPlayer* this) asm("?GetPlayerColour@GPlayer@@QBE?AULH3DColor@@XZ");
 

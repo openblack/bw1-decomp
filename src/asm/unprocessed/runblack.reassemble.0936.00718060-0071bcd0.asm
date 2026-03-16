@@ -59,7 +59,7 @@
 .extern _jmp_addr_0x0063b5d0
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern ?PostLoadCleanup@GPlayer@@SAXXZ
-.extern ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
+.extern ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z
 .extern _jmp_addr_0x0064d840
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?LocalRand@GRand@@SAIJ@Z
@@ -5711,7 +5711,7 @@ _jmp_addr_0x0071b7c0:    sub                esp, 0x08                           
                          mov.s              ecx, ebp                                      // 0x0071bbf1    8bcd
                          call               dword ptr [eax + 0x1c]                        // 0x0071bbf3    ff501c
                          mov.s              ecx, eax                                      // 0x0071bbf6    8bc8
-                         call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z                          // 0x0071bbf8    e8531bf3ff
+                         call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z                          // 0x0071bbf8    e8531bf3ff
                          test               eax, eax                                      // 0x0071bbfd    85c0
                          {disp8} je         .Lbl_addr_0x0071bc0f                          // 0x0071bbff    740e
                          {disp8} mov        ecx, dword ptr [esp + 0x20]                   // 0x0071bc01    8b4c2420

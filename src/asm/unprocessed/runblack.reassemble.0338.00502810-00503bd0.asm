@@ -36,7 +36,7 @@
 .extern ?GetCamera@GGame@@QAEPAVGCamera@@XZ
 .extern ?MyInterfaceStatus@GGame@@QAEPAVGInterfaceStatus@@XZ
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
-.extern ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z
+.extern ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?CreateReaction@Reaction@@SAPAV1@PAVGameThingWithPos@@EPAVGPlayer@@H@Z
 .extern _jmp_addr_0x006e8160
@@ -1534,7 +1534,7 @@ start_0x00502810_0x00503bd0:
                          {disp8} je         .Lbl_addr_0x00503962                                 // 0x0050393a    7426
                          push               ebx                                                  // 0x0050393c    53
                          mov.s              ecx, edi                                             // 0x0050393d    8bcf
-                         call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z                                 // 0x0050393f    e80c9e1400
+                         call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z                                 // 0x0050393f    e80c9e1400
                          test               eax, eax                                             // 0x00503944    85c0
                          {disp8} je         .Lbl_addr_0x00503954                                 // 0x00503946    740c
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x00503948    8d4e14
@@ -1581,7 +1581,7 @@ start_0x00502810_0x00503bd0:
                          {disp8} je         .Lbl_addr_0x005039ec                                 // 0x005039d2    7418
                          push               edi                                                  // 0x005039d4    57
                          mov.s              ecx, eax                                             // 0x005039d5    8bc8
-                         call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z                                 // 0x005039d7    e8749d1400
+                         call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z                                 // 0x005039d7    e8749d1400
                          test               eax, eax                                             // 0x005039dc    85c0
                          {disp8} je         .Lbl_addr_0x005039ec                                 // 0x005039de    740c
                          {disp8} mov        ecx, dword ptr [edi + 0x30]                          // 0x005039e0    8b4f30

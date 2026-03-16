@@ -466,7 +466,7 @@ void __fastcall ApplyEffectsDueToPhysicalDestruction__5AbodeFP6ObjectP7GPlayer(s
     asm("{disp8} je         LAB__addr_0x00406786");                          // 0x0040676f    7415
     asm("push               ebx");                                           // 0x00406771    53
     asm("mov.s              ecx, edi");                                      // 0x00406772    8bcf
-    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z");                          // 0x00406774    e8d76f2400
+    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z");                          // 0x00406774    e8d76f2400
     asm("test               eax, eax");                                      // 0x00406779    85c0
     asm("{disp8} je         LAB__addr_0x00406786");                          // 0x0040677b    7409
     asm("{disp8} mov        ecx, dword ptr [ebx + 0x30]");                   // 0x0040677d    8b4b30

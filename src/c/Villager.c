@@ -1668,7 +1668,7 @@ void __fastcall VillagerDead__8VillagerF12DEATH_REASONP7GPlayerfi(struct Village
     asm("{disp8} mov        ecx, dword ptr [esp + 0x18]");                    // 0x00750769    8b4c2418
     asm("mov.s              edi, eax");                                       // 0x0075076d    8bf8
     asm("push               edi");                                            // 0x0075076f    57
-    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z");                           // 0x00750770    e8dbcfefff
+    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z");                           // 0x00750770    e8dbcfefff
     asm("test               eax, eax");                                       // 0x00750775    85c0
     asm("{disp8} je         LAB__addr_0x00750792");                           // 0x00750777    7419
     asm("lea                eax, dword ptr [ebx + ebx * 0x2]");               // 0x00750779    8d045b
@@ -1682,7 +1682,7 @@ void __fastcall VillagerDead__8VillagerF12DEATH_REASONP7GPlayerfi(struct Village
     asm("LAB__addr_0x00750792:");
     asm("push               edi");                                            // 0x00750792    57
     asm("mov.s              ecx, ebp");                                       // 0x00750793    8bcd
-    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z");                           // 0x00750795    e8b6cfefff
+    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z");                           // 0x00750795    e8b6cfefff
     asm("test               eax, eax");                                       // 0x0075079a    85c0
     asm("{disp8} je         LAB__addr_0x007507c0");                           // 0x0075079c    7422
     asm("lea                ecx, dword ptr [ebx + ebx * 0x2]");               // 0x0075079e    8d0c5b
@@ -1763,7 +1763,7 @@ void __fastcall VillagerDead__8VillagerF12DEATH_REASONP7GPlayerfi(struct Village
     asm("mov.s              edi, eax");                                       // 0x0075086b    8bf8
     asm("push               edi");                                            // 0x0075086d    57
     asm("mov.s              ecx, ebp");                                       // 0x0075086e    8bcd
-    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z");                           // 0x00750870    e8dbceefff
+    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z");                           // 0x00750870    e8dbceefff
     asm("test               eax, eax");                                       // 0x00750875    85c0
     asm("{disp8} je         LAB__addr_0x007508f4");                           // 0x00750877    747b
     asm("{disp8} mov        ecx, dword ptr [edi + 0x30]");                    // 0x00750879    8b4f30
@@ -1785,7 +1785,7 @@ void __fastcall VillagerDead__8VillagerF12DEATH_REASONP7GPlayerfi(struct Village
     asm("{disp8} je         LAB__addr_0x007508f4");                           // 0x007508b3    743f
     asm("push               edi");                                            // 0x007508b5    57
     asm("mov.s              ecx, ebp");                                       // 0x007508b6    8bcd
-    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z");                           // 0x007508b8    e893ceefff
+    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z");                           // 0x007508b8    e893ceefff
     asm("test               eax, eax");                                       // 0x007508bd    85c0
     asm("{disp8} je         LAB__addr_0x007508f4");                           // 0x007508bf    7433
     asm("{disp8} mov        ecx, dword ptr [edi + 0x30]");                    // 0x007508c1    8b4f30
@@ -1798,7 +1798,7 @@ void __fastcall VillagerDead__8VillagerF12DEATH_REASONP7GPlayerfi(struct Village
     asm("push               eax");                                            // 0x007508d7    50
     asm("mov.s              ecx, ebp");                                       // 0x007508d8    8bcd
     asm("{disp8} mov        dword ptr [esp + 0x20], eax");                    // 0x007508da    89442420
-    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z");                           // 0x007508de    e86dceefff
+    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z");                           // 0x007508de    e86dceefff
     asm("test               eax, eax");                                       // 0x007508e3    85c0
     asm("{disp8} je         LAB__addr_0x007508f4");                           // 0x007508e5    740d
     asm("{disp8} mov        ecx, dword ptr [esp + 0x1c]");                    // 0x007508e7    8b4c241c
@@ -11443,7 +11443,7 @@ uint32_t __fastcall ThrowObjectFromHand__8VillagerFP16GInterfaceStatusi(struct O
     asm("mov.s              ecx, esi");                                      // 0x00756b04    8bce
     asm("call               dword ptr [eax + 0x1c]");                        // 0x00756b06    ff501c
     asm("mov.s              ecx, eax");                                      // 0x00756b09    8bc8
-    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAE_NPAVGInterfaceStatus@@@Z");                          // 0x00756b0b    e8406cefff
+    asm("call               ?IsMemberOfThisPlayer@GPlayer@@QAEIPAVGInterfaceStatus@@@Z");                          // 0x00756b0b    e8406cefff
     asm("test               eax, eax");                                      // 0x00756b10    85c0
     asm("{disp8} je         LAB__addr_0x00756b21");                          // 0x00756b12    740d
     asm("LAB__addr_0x00756b14:");
