@@ -345,7 +345,11 @@ set(SOURCES_001
     src/asm/unprocessed/runblack.reassemble.0631.005f6a70-005fa480.asm
     src/asm/unprocessed/runblack.reassemble.0634.005fa480-005fb680.asm
     src/asm/unprocessed/runblack.reassemble.0637.005fb680-006015e0.asm
-    src/asm/unprocessed/runblack.reassemble.0640.006015e0-00609320.asm
+
+    src/asm/unprocessed/runblack.reassemble.0639.006015e0-006020e0.asm
+    src/asm/unprocessed/MapCoords.010.asm
+    src/asm/unprocessed/runblack.reassemble.0640.006020e0-00609320.asm
+
     src/asm/unprocessed/runblack.reassemble.0643.00609320-0060a010.asm
     src/asm/unprocessed/runblack.reassemble.0647.0060a010-0060a400.asm
     src/asm/unprocessed/runblack.reassemble.0650.0060a400-0060a770.asm
