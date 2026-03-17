@@ -503,7 +503,7 @@ uint32_t __fastcall DoResourceRemoving__5AbodeF13RESOURCE_TYPEUlP16GInterfaceSta
     asm("{disp8} mov        ecx, dword ptr [esp + 0x04]");                   // 0x00405040    8b4c2404
     asm("push               0x0");                                           // 0x00405044    6a00
     asm("push               0x0");                                           // 0x00405046    6a00
-    asm("call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16");                          // 0x00405048    e873f51f00
+    asm("call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z");                          // 0x00405048    e873f51f00
     asm("ret");                                                              // 0x0040504d    c3
     __builtin_unreachable();
 }

@@ -54,7 +54,7 @@
 .extern ?Save@GroupBehaviour@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@GroupBehaviour@@UAEIAAVGameOSFile@@@Z
 .extern ?CalculateDancePosition@Living@@QAE_NABUMapCoords@@PAU2@@Z
-.extern @GetNearestTown__9MapCoordsCFf@12
+.extern ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00606ed0
 .extern ?ToBeDeleted@MobileObject@@UAEXH@Z
@@ -1394,7 +1394,7 @@ start_0x00509480_0x0050d1c0:
                          {disp32} mov       edx, dword ptr [rdata_bytes + 0x286a4]        // 0x0050a2f1    8b15a4168d00
                          push               edx                                           // 0x0050a2f7    52
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x0050a2f8    8d4e14
-                         call               @GetNearestTown__9MapCoordsCFf@12             // 0x0050a2fb    e8e07d0f00
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z             // 0x0050a2fb    e8e07d0f00
                          test               eax, eax                                      // 0x0050a300    85c0
                          {disp8} je         .Lbl_addr_0x0050a315                          // 0x0050a302    7411
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]             // 0x0050a304    8b8e64010000
@@ -3638,7 +3638,7 @@ _globl_ct_0x0050b5c0:    call               .Lbl_addr_0x0050b5d0                
                          {disp32} mov       edx, dword ptr [rdata_bytes + 0x29858]        // 0x0050b930    8b1558288d00
                          push               edx                                           // 0x0050b936    52
                          mov.s              ecx, ebp                                      // 0x0050b937    8bcd
-                         call               @GetNearestTown__9MapCoordsCFf@12             // 0x0050b939    e8a2670f00
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z             // 0x0050b939    e8a2670f00
                          test               eax, eax                                      // 0x0050b93e    85c0
                          {disp8} je         .Lbl_addr_0x0050b957                          // 0x0050b940    7415
 .Lbl_addr_0x0050b942:    mov.s              ecx, eax                                      // 0x0050b942    8bc8

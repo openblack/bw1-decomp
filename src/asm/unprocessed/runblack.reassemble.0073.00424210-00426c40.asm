@@ -40,12 +40,12 @@
 .extern ?SetToZero@GameThingWithPos@@QAEXXZ
 .extern _jmp_addr_0x0057d440
 .extern ?FindDanceGroup@GroupBehaviour@@QAE_NPAVLiving@@@Z
-.extern @GetNearestTown__9MapCoordsCFf@12
+.extern ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern ?IsWater@MapCoords@@QBEIXZ
-.extern @__pl__9MapCoordsCFRC9MapCoords@16
+.extern ??HMapCoords@@QBE?AU0@ABU0@@Z
 .extern _jmp_addr_0x006055c0
-.extern ?__ne@MapCoords@@QBE_NABV1@@Z
+.extern ??9MapCoords@@QBEIABU0@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00605c90
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
@@ -1481,7 +1481,7 @@ _jmp_addr_0x00424d10:    {disp32} mov       eax, dword ptr [_game]              
                          {disp8} lea        edx, dword ptr [esp + 0x08]                   // 0x00424dd0    8d542408
                          push               edx                                           // 0x00424dd4    52
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x00424dd5    8d4e14
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16            // 0x00424dd8    e843071e00
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z            // 0x00424dd8    e843071e00
                          {disp8} mov        eax, dword ptr [esp + 0x20]                   // 0x00424ddd    8b442420
                          {disp8} mov        edx, dword ptr [esp + 0x04]                   // 0x00424de1    8b542404
                          mov.s              ecx, eax                                      // 0x00424de5    8bc8
@@ -3953,7 +3953,7 @@ _jmp_addr_0x00426230:    push               esi                                 
                          {disp8} mov        ecx, dword ptr [esi + 0x2c]                   // 0x00426504    8b4e2c
                          push               eax                                           // 0x00426507    50
                          add                ecx, 0x14                                     // 0x00426508    83c114
-                         call               ?__ne@MapCoords@@QBE_NABV1@@Z                 // 0x0042650b    e8a0f11d00
+                         call               ??9MapCoords@@QBEIABU0@@Z                 // 0x0042650b    e8a0f11d00
                          test               eax, eax                                      // 0x00426510    85c0
                          {disp8} je         .Lbl_addr_0x00426568                          // 0x00426512    7454
                          {disp8} mov        ecx, dword ptr [esi + 0x14]                   // 0x00426514    8b4e14
@@ -3973,7 +3973,7 @@ _jmp_addr_0x00426230:    push               esi                                 
                          push               ecx                                           // 0x00426540    51
                          {disp8} mov        ecx, dword ptr [esi + 0x2c]                   // 0x00426541    8b4e2c
                          add                ecx, 0x14                                     // 0x00426544    83c114
-                         call               @GetNearestTown__9MapCoordsCFf@12             // 0x00426547    e894bb1d00
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z             // 0x00426547    e894bb1d00
                          test               eax, eax                                      // 0x0042654c    85c0
                          {disp8} je         .Lbl_addr_0x00426568                          // 0x0042654e    7418
                          mov.s              ecx, eax                                      // 0x00426550    8bc8

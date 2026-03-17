@@ -571,7 +571,7 @@ bool32_t __fastcall SetupWaitForWood__8VillagerFP12BuildingSite(struct Villager*
     asm("{disp8} fstp       dword ptr [esp + 0x1c]");                        // 0x00758677    d95c241c
     asm("{disp8} fstp       dword ptr [esp + 0x20]");                        // 0x0075867b    d95c2420
     asm("{disp8} fstp       dword ptr [esp + 0x24]");                        // 0x0075867f    d95c2424
-    asm("call               @__ct__9MapCoordsFRC7LHPoint@12");               // 0x00758683    e8d8aaeaff
+    asm("call               ??0MapCoords@@QAE@ABULHPoint@@@Z");               // 0x00758683    e8d8aaeaff
     asm("push               0x000000e8");                                    // 0x00758688    68e8000000
     asm("{disp8} lea        ecx, dword ptr [esp + 0x28]");                   // 0x0075868d    8d4c2428
     asm("push               ecx");                                           // 0x00758691    51
@@ -1697,7 +1697,7 @@ bool32_t __fastcall ProcessPoint__14ClearAreaPointFRC7LHPoint(struct ClearAreaPo
     asm("{disp8} lea        ecx, dword ptr [esp + 0x0c]");                   // 0x0075920b    8d4c240c
     asm("{disp8} mov        dword ptr [esp + 0x10], eax");                   // 0x0075920f    89442410
     asm("{disp8} mov        dword ptr [esp + 0x14], 0x00000000");            // 0x00759213    c744241400000000
-    asm("call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16");                          // 0x0075921b    e8a0b3eaff
+    asm("call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z");                          // 0x0075921b    e8a0b3eaff
     asm("mov.s              esi, eax");                                      // 0x00759220    8bf0
     asm("test               esi, esi");                                      // 0x00759222    85f6
     asm("{disp32} je        LAB__addr_0x007592d3");                          // 0x00759224    0f84a9000000
@@ -1749,7 +1749,7 @@ bool32_t __fastcall ProcessPoint__14ClearAreaPointFRC7LHPoint(struct ClearAreaPo
     asm("push               esi");                                           // 0x007592bd    56
     asm("push               -0x1");                                          // 0x007592be    6aff
     asm("{disp8} lea        ecx, dword ptr [esp + 0x0c]");                   // 0x007592c0    8d4c240c
-    asm("call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16");                          // 0x007592c4    e8f7b2eaff
+    asm("call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z");                          // 0x007592c4    e8f7b2eaff
     asm("mov.s              esi, eax");                                      // 0x007592c9    8bf0
     asm("test               esi, esi");                                      // 0x007592cb    85f6
     asm("{disp32} jne       LAB__addr_0x0075922a");                          // 0x007592cd    0f8557ffffff

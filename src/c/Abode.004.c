@@ -20,11 +20,11 @@ void __fastcall DeleteAbodeSurroundingObjects__5AbodeFv(struct Abode* this)
     asm("{disp8} lea        edx, dword ptr [esp + 0x08]");                   // 0x00403d46    8d542408
     asm("push               edx");                                           // 0x00403d4a    52
     asm("{disp8} lea        ecx, dword ptr [esp + 0x18]");                   // 0x00403d4b    8d4c2418
-    asm("call               @__ct__9MapCoordsFRC7LHPoint@12");               // 0x00403d4f    e80cf41f00
+    asm("call               ??0MapCoords@@QAE@ABULHPoint@@@Z");               // 0x00403d4f    e80cf41f00
     asm("push               0x0");                                           // 0x00403d54    6a00
     asm("push               0x23");                                          // 0x00403d56    6a23
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x00403d58    8d4c241c
-    asm("call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16");                          // 0x00403d5c    e85f082000
+    asm("call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z");                          // 0x00403d5c    e85f082000
     asm("mov.s              esi, eax");                                      // 0x00403d61    8bf0
     asm("test               esi, esi");                                      // 0x00403d63    85f6
     asm("{disp8} je         LAB__addr_0x00403d90");                          // 0x00403d65    7429
@@ -42,7 +42,7 @@ void __fastcall DeleteAbodeSurroundingObjects__5AbodeFv(struct Abode* this)
     asm("push               esi");                                           // 0x00403d7e    56
     asm("push               0x23");                                          // 0x00403d7f    6a23
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x00403d81    8d4c241c
-    asm("call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16");                          // 0x00403d85    e836082000
+    asm("call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z");                          // 0x00403d85    e836082000
     asm("mov.s              esi, eax");                                      // 0x00403d8a    8bf0
     asm("test               esi, esi");                                      // 0x00403d8c    85f6
     asm("{disp8} jne        LAB__addr_0x00403d67");                          // 0x00403d8e    75d7
@@ -57,11 +57,11 @@ void __fastcall DeleteAbodeSurroundingObjects__5AbodeFv(struct Abode* this)
     asm("{disp8} lea        ecx, dword ptr [esp + 0x08]");                   // 0x00403da2    8d4c2408
     asm("push               ecx");                                           // 0x00403da6    51
     asm("{disp8} lea        ecx, dword ptr [esp + 0x18]");                   // 0x00403da7    8d4c2418
-    asm("call               @__ct__9MapCoordsFRC7LHPoint@12");               // 0x00403dab    e8b0f31f00
+    asm("call               ??0MapCoords@@QAE@ABULHPoint@@@Z");               // 0x00403dab    e8b0f31f00
     asm("push               0x0");                                           // 0x00403db0    6a00
     asm("push               0x1c");                                          // 0x00403db2    6a1c
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x00403db4    8d4c241c
-    asm("call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16");                          // 0x00403db8    e803082000
+    asm("call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z");                          // 0x00403db8    e803082000
     asm("mov.s              esi, eax");                                      // 0x00403dbd    8bf0
     asm("test               esi, esi");                                      // 0x00403dbf    85f6
     asm("{disp8} je         LAB__addr_0x00403dec");                          // 0x00403dc1    7429
@@ -79,7 +79,7 @@ void __fastcall DeleteAbodeSurroundingObjects__5AbodeFv(struct Abode* this)
     asm("push               esi");                                           // 0x00403dda    56
     asm("push               0x1c");                                          // 0x00403ddb    6a1c
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x00403ddd    8d4c241c
-    asm("call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16");                          // 0x00403de1    e8da072000
+    asm("call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z");                          // 0x00403de1    e8da072000
     asm("mov.s              esi, eax");                                      // 0x00403de6    8bf0
     asm("test               esi, esi");                                      // 0x00403de8    85f6
     asm("{disp8} jne        LAB__addr_0x00403dc3");                          // 0x00403dea    75d7
@@ -115,7 +115,7 @@ void __fastcall CreateAbodeSurroundingObjects__5AbodeFv(struct Abode* this)
     asm("{disp8} lea        edx, dword ptr [esp + 0x24]");                   // 0x00403e34    8d542424
     asm("push               edx");                                           // 0x00403e38    52
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x00403e39    8d4c241c
-    asm("call               @__ct__9MapCoordsFRC7LHPoint@12");               // 0x00403e3d    e81ef31f00
+    asm("call               ??0MapCoords@@QAE@ABULHPoint@@@Z");               // 0x00403e3d    e81ef31f00
     asm("push               eax");                                           // 0x00403e42    50
     asm("call               _jmp_addr_0x00709a40");                          // 0x00403e43    e8f85b3000
     asm("mov.s              esi, eax");                                      // 0x00403e48    8bf0
@@ -144,7 +144,7 @@ void __fastcall CreateAbodeSurroundingObjects__5AbodeFv(struct Abode* this)
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                   // 0x00403e8b    8d4c2414
     asm("push               ecx");                                           // 0x00403e8f    51
     asm("{disp8} lea        ecx, dword ptr [esp + 0x0c]");                   // 0x00403e90    8d4c240c
-    asm("call               @__ct__9MapCoordsFRC7LHPoint@12");               // 0x00403e94    e8c7f21f00
+    asm("call               ??0MapCoords@@QAE@ABULHPoint@@@Z");               // 0x00403e94    e8c7f21f00
     asm("{disp8} mov        eax, dword ptr [esp + 0x08]");                   // 0x00403e99    8b442408
     asm("{disp8} mov        ecx, dword ptr [esp + 0x0c]");                   // 0x00403e9d    8b4c240c
     asm("push               0x42200000");                                    // 0x00403ea1    6800002042

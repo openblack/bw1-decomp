@@ -87,7 +87,7 @@
 .extern ?ResolveLoad@Living@@UAEXXZ
 .extern ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ
 .extern _jmp_addr_0x005fb400
-.extern @GetNearestTown__9MapCoordsCFf@12
+.extern ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z
 .extern ?ToMap@MapCoords@@QBEPAUMapCell@@XZ
 .extern _jmp_addr_0x00603830
 .extern _jmp_addr_0x00618c40
@@ -5029,7 +5029,7 @@ _jmp_addr_0x004e3ee0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} lea        edi, dword ptr [ecx + 0x14]                     // 0x004e4a28    8d7914
                          push               eax                                             // 0x004e4a2b    50
                          mov.s              ecx, edi                                        // 0x004e4a2c    8bcf
-                         call               @GetNearestTown__9MapCoordsCFf@12               // 0x004e4a2e    e8add61100
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z               // 0x004e4a2e    e8add61100
                          test               eax, eax                                        // 0x004e4a33    85c0
                          {disp8} je         .Lbl_addr_0x004e4a75                            // 0x004e4a35    743e
                          mov.s              ecx, eax                                        // 0x004e4a37    8bc8
@@ -12188,7 +12188,7 @@ _jmp_addr_0x004e9df0:    push               esi                                 
                          {disp8} je         .Lbl_addr_0x004e9e32                            // 0x004e9e0a    7426
                          push               0x42c80000                                      // 0x004e9e0c    680000c842
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                     // 0x004e9e11    8d4e14
-                         call               @GetNearestTown__9MapCoordsCFf@12               // 0x004e9e14    e8c7821100
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z               // 0x004e9e14    e8c7821100
                          test               eax, eax                                        // 0x004e9e19    85c0
                          {disp8} je         .Lbl_addr_0x004e9e32                            // 0x004e9e1b    7415
                          mov                edx, dword ptr [eax]                            // 0x004e9e1d    8b10

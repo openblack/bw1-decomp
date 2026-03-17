@@ -182,7 +182,7 @@ bool32_t __fastcall FishermanArrivesAtFishing__8VillagerFv(struct Villager* this
     asm("call               dword ptr [eax + 0x104]");                       // 0x0075b616    ff9004010000
     asm("push               eax");                                           // 0x0075b61c    50
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x0075b61d    8d4e14
-    asm("call               @__eq__9MapCoordsCFRC9MapCoords@12");            // 0x0075b620    e83ba0eaff
+    asm("call               ??8MapCoords@@QBEIABU0@@Z");            // 0x0075b620    e83ba0eaff
     asm("test               eax, eax");                                      // 0x0075b625    85c0
     asm("{disp8} je         LAB__addr_0x0075b64e");                          // 0x0075b627    7425
     asm("{disp8} lea        edx, dword ptr [esp + 0x08]");                   // 0x0075b629    8d542408

@@ -2,7 +2,7 @@
 .align 16
 
 .extern ?__nw@Base@@SAPAXK@Z
-.extern @__pl__9MapCoordsCFRC9MapCoords@16
+.extern ??HMapCoords@@QBE?AU0@ABU0@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00605cf0
 .extern _jmp_addr_0x0064d360
@@ -54,7 +54,7 @@ _jmp_addr_0x00666410:    sub              esp, 0x68                         // 0
                          {disp8} lea      ecx, dword ptr [esp + 0x28]       // 0x00666464    8d4c2428
                          push             ecx                               // 0x00666468    51
                          mov.s            ecx, ebx                          // 0x00666469    8bcb
-                         call             @__pl__9MapCoordsCFRC9MapCoords@16// 0x0066646b    e8b0f0f9ff
+                         call             ??HMapCoords@@QBE?AU0@ABU0@@Z// 0x0066646b    e8b0f0f9ff
                          {disp8} lea      eax, dword ptr [esi + -0x01]      // 0x00666470    8d46ff
                          cmp              eax, 0x18                         // 0x00666473    83f818
                          {disp32} ja      .Lbl_addr_0x006667e1              // 0x00666476    0f8765030000

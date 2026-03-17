@@ -42,8 +42,8 @@
 .extern ?IsWater@MapCoords@@QBEIXZ
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern _jmp_addr_0x00605250
-.extern @IsCloseToEqual__9MapCoordsCFRC9MapCoordsf@16
-.extern @__apl__9MapCoordsFRC9JustMapXZ@12
+.extern ?IsCloseToEqual@MapCoords@@QBEIABU1@M@Z
+.extern ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z
 .extern _jmp_addr_0x006055c0
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?ApplyThisToMapCoord@Mobile@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@PAUGestureSystemPacketData@@@Z
@@ -4216,7 +4216,7 @@ _jmp_addr_0x0066f270:    sub                esp, 0x3c                           
                          {disp8} lea        eax, dword ptr [esp + 0x2c]                   // 0x0066f36d    8d44242c
                          fstp               dword ptr [esp]                               // 0x0066f371    d91c24
                          push               eax                                           // 0x0066f374    50
-                         call               @IsCloseToEqual__9MapCoordsCFRC9MapCoordsf@16 // 0x0066f375    e84660f9ff
+                         call               ?IsCloseToEqual@MapCoords@@QBEIABU1@M@Z // 0x0066f375    e84660f9ff
                          test               eax, eax                                      // 0x0066f37a    85c0
                          {disp8} je         .Lbl_addr_0x0066f3c1                          // 0x0066f37c    7443
                          {disp8} mov        ecx, dword ptr [esp + 0x50]                   // 0x0066f37e    8b4c2450
@@ -4269,7 +4269,7 @@ _jmp_addr_0x0066f270:    sub                esp, 0x3c                           
                          add                esp, 0x08                                     // 0x0066f40c    83c408
                          push               eax                                           // 0x0066f40f    50
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x0066f410    8d4c2438
-                         call               @__apl__9MapCoordsFRC9JustMapXZ@12            // 0x0066f414    e85760f9ff
+                         call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z            // 0x0066f414    e85760f9ff
                          dec                dword ptr [esp + 0x5c]                        // 0x0066f419    ff4c245c
                          {disp32} jne       .Lbl_addr_0x0066f2c6                          // 0x0066f41d    0f85a3feffff
                          test               ebx, ebx                                      // 0x0066f423    85db

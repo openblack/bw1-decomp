@@ -67,7 +67,7 @@
 .extern _jmp_addr_0x005e6f70
 .extern _jmp_addr_0x00601f90
 .extern _jmp_addr_0x00602200
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
@@ -5207,7 +5207,7 @@ _jmp_addr_0x004ce8e0:    sub                esp, 0x24                           
 .Lbl_addr_0x004ceaeb:    {disp32} lea       edx, dword ptr [ebx + 0x000000c8]             // 0x004ceaeb    8d93c8000000
                          push               edx                                           // 0x004ceaf1    52
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x004ceaf2    8d4c2420
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x004ceaf6    e865461300
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x004ceaf6    e865461300
                          {disp32} mov       eax, dword ptr [esi + 0x00000380]             // 0x004ceafb    8b8680030000
                          test               eax, eax                                      // 0x004ceb01    85c0
                          {disp8} je         .Lbl_addr_0x004ceb7f                          // 0x004ceb03    747a
@@ -5224,7 +5224,7 @@ _jmp_addr_0x004ce8e0:    sub                esp, 0x24                           
                          push               ecx                                           // 0x004ceb27    51
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                   // 0x004ceb28    8d4c242c
                          {disp8} mov        dword ptr [esp + 0x1c], eax                   // 0x004ceb2c    8944241c
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x004ceb30    e82b461300
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x004ceb30    e82b461300
                          {disp8} lea        edx, dword ptr [esp + 0x1c]                   // 0x004ceb35    8d54241c
                          push               edx                                           // 0x004ceb39    52
                          {disp8} lea        eax, dword ptr [esp + 0x2c]                   // 0x004ceb3a    8d44242c

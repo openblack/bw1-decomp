@@ -54,7 +54,7 @@
 .extern _jmp_addr_0x005d8a10
 .extern _jmp_addr_0x005d8a80
 .extern _jmp_addr_0x00601d10
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?IncreaseLife@Object@@UAEXM@Z
 .extern ?ResolveLoad@Object@@UAEXXZ
@@ -3868,7 +3868,7 @@ _jmp_addr_0x00738470:    {disp32} fld       dword ptr [ecx + 0x00000080]        
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                    // 0x00738b24    8d4c242c
                          {disp8} fadd       dword ptr [esp + 0x3c]                         // 0x00738b28    d844243c
                          {disp8} fstp       dword ptr [esp + 0x3c]                         // 0x00738b2c    d95c243c
-                         call               @__ct__9MapCoordsFRC7LHPoint@12                // 0x00738b30    e82ba6ecff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z                // 0x00738b30    e82ba6ecff
                          mov                edx, dword ptr [esi]                           // 0x00738b35    8b16
                          mov.s              ecx, esi                                       // 0x00738b37    8bce
                          call               dword ptr [edx + 0x120]                        // 0x00738b39    ff9220010000
@@ -4003,7 +4003,7 @@ _jmp_addr_0x00738470:    {disp32} fld       dword ptr [ecx + 0x00000080]        
                          {disp32} mov       dword ptr [esi + 0x000000d4], ebx              // 0x00738d0d    899ed4000000
                          {disp8} fadd       dword ptr [esp + 0x3c]                         // 0x00738d13    d844243c
                          {disp8} fstp       dword ptr [esp + 0x3c]                         // 0x00738d17    d95c243c
-                         call               @__ct__9MapCoordsFRC7LHPoint@12                // 0x00738d1b    e840a4ecff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z                // 0x00738d1b    e840a4ecff
                          mov                edx, dword ptr [esi]                           // 0x00738d20    8b16
                          mov.s              ecx, esi                                       // 0x00738d22    8bce
                          call               dword ptr [edx + 0x120]                        // 0x00738d24    ff9220010000

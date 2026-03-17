@@ -11,7 +11,7 @@
 .extern ?SetCursorOn@FrontEnd@@SAXXZ
 .extern _jmp_addr_0x005e1950
 .extern ?GetFirstObjectFixed@MapCoords@@QBEPAVObject@@XZ
-.extern @GetMetresDistanceSq__9MapCoordsCFRC9MapCoords@12
+.extern ?GetMetresDistanceSq@MapCoords@@QBEMABU1@@Z
 .extern _jmp_addr_0x00609cc0
 .extern ?RebuildMoveByStep@MobileWallHug@@QAEXXZ
 .extern ?GetObjectPtr@CircleHugInfo@@QAEPAUQ210NewCollide3Obj@@XZ

@@ -320,7 +320,7 @@ bool32_t __fastcall IsOkToBuild__12PlannedAbodeFv(struct PlannedAbode* this)
     asm("call               dword ptr [edx + 0x2c]");                        // 0x00405820    ff522c
     asm("push               eax");                                           // 0x00405823    50
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x00405824    8d4e14
-    asm("call               ?IsSuitableForFixed@MapCoords@@QBEXW4MESH_LIST@@MM@Z");                          // 0x00405827    e804e31f00
+    asm("call               ?IsSuitableForFixed@MapCoords@@QAEXW4MESH_LIST@@MM@Z");                          // 0x00405827    e804e31f00
     asm("pop                edi");                                           // 0x0040582c    5f
     asm("pop                esi");                                           // 0x0040582d    5e
     asm("pop                ecx");                                           // 0x0040582e    59

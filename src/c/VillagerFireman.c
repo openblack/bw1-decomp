@@ -722,7 +722,7 @@ bool32_t __fastcall GetFireFightingPos__8VillagerFP10FireEffectP9MapCoords(struc
     asm("{disp8} lea        ecx, dword ptr [esp + 0x2c]");                   // 0x0075ab62    8d4c242c
     asm("push               ecx");                                           // 0x0075ab66    51
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x0075ab67    8d4e14
-    asm("call               @__pl__9MapCoordsCFRC9MapCoords@16");            // 0x0075ab6a    e8b1a9eaff
+    asm("call               ??HMapCoords@@QBE?AU0@ABU0@@Z");            // 0x0075ab6a    e8b1a9eaff
     asm("mov                ecx, dword ptr [eax]");                          // 0x0075ab6f    8b08
     asm("{disp8} mov        edx, dword ptr [esp + 0x3c]");                   // 0x0075ab71    8b54243c
     asm("mov                dword ptr [edx], ecx");                          // 0x0075ab75    890a
@@ -1465,7 +1465,7 @@ bool32_t __fastcall OnFire__8VillagerFv(struct Villager* this)
     asm("{disp8} lea        ecx, dword ptr [esp + 0x2c]");                   // 0x0075b371    8d4c242c
     asm("push               ecx");                                           // 0x0075b375    51
     asm("{disp8} lea        ecx, dword ptr [esi + 0x14]");                   // 0x0075b376    8d4e14
-    asm("call               @__pl__9MapCoordsCFRC9MapCoords@16");            // 0x0075b379    e8a2a1eaff
+    asm("call               ??HMapCoords@@QBE?AU0@ABU0@@Z");            // 0x0075b379    e8a2a1eaff
     asm("mov                edx, dword ptr [eax]");                          // 0x0075b37e    8b10
     asm("{disp8} mov        dword ptr [esp + 0x10], edx");                   // 0x0075b380    89542410
     asm("{disp8} mov        ecx, dword ptr [eax + 0x04]");                   // 0x0075b384    8b4804

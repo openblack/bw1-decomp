@@ -43,8 +43,8 @@
 .extern ?Trigger@HelpProfile@@QAEXW4HELP_EVENT_TYPE@@@Z
 .extern _jmp_addr_0x005c7c40
 .extern _jmp_addr_0x005dc830
-.extern @__ct__9MapCoordsFRC7LHPoint@12
-.extern @__pl__9MapCoordsCFRC9MapCoords@16
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
+.extern ??HMapCoords@@QBE?AU0@ABU0@@Z
 .extern _jmp_addr_0x006055c0
 .extern ?ResolveLoad@Object@@UAEXXZ
 .extern _jmp_addr_0x0063a710
@@ -1037,7 +1037,7 @@ _jmp_addr_0x0077dbb0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          mov.s              ecx, esi                                      // 0x0077dce6    8bce
                          call               _jmp_addr_0x0077dd40                          // 0x0077dce8    e853000000
                          mov.s              ecx, eax                                      // 0x0077dced    8bc8
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16            // 0x0077dcef    e82c78e8ff
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z            // 0x0077dcef    e82c78e8ff
                          mov.s              esi, eax                                      // 0x0077dcf4    8bf0
                          {disp8} mov        ecx, dword ptr [esi + 0x08]                   // 0x0077dcf6    8b4e08
                          {disp8} mov        dword ptr [esp + 0x38], ecx                   // 0x0077dcf9    894c2438
@@ -1101,7 +1101,7 @@ _jmp_addr_0x0077dd40:    sub                esp, 0x0c                           
                          {disp8} lea        eax, dword ptr [esp + 0x04]                   // 0x0077ddb4    8d442404
                          push               eax                                           // 0x0077ddb8    50
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x0077ddb9    d95c2410
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x0077ddbd    e89e53e8ff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x0077ddbd    e89e53e8ff
                          mov.s              eax, esi                                      // 0x0077ddc2    8bc6
                          pop                esi                                           // 0x0077ddc4    5e
                          add                esp, 0x0c                                     // 0x0077ddc5    83c40c

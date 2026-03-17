@@ -37,7 +37,7 @@
 .extern _jmp_addr_0x005e28f0
 .extern ?GetMagicEffectInfo@GMagicInfo@@QBEPAVGMagicEffectInfo@@XZ
 .extern _jmp_addr_0x005fffd0
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern _jmp_addr_0x00606800
 .extern _jmp_addr_0x00606870
 .extern _jmp_addr_0x0063e380
@@ -2686,7 +2686,7 @@ start_0x006fc520_0x00708fc0:
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x006fe1c7    8d4c2424
                          push               ecx                                           // 0x006fe1cb    51
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x006fe1cc    8d4c2434
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x006fe1d0    e88b4ff0ff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x006fe1d0    e88b4ff0ff
                          push               eax                                           // 0x006fe1d5    50
                          mov.s              ecx, esi                                      // 0x006fe1d6    8bce
                          call               dword ptr [edi + 0x910]                       // 0x006fe1d8    ff9710090000
@@ -3010,7 +3010,7 @@ start_0x006fc520_0x00708fc0:
                          {disp8} lea        eax, dword ptr [esp + 0x10]                   // 0x006fe579    8d442410
                          push               eax                                           // 0x006fe57d    50
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x006fe57e    8d4c2420
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x006fe582    e8d94bf0ff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x006fe582    e8d94bf0ff
                          {disp32} fld       dword ptr [rdata_bytes + 0x82380]             // 0x006fe587    d90580b39200
                          {disp8} fdiv       dword ptr [esp + 0x04]                        // 0x006fe58d    d8742404
                          call               __ftol                                        // 0x006fe591    e86a2e0a00

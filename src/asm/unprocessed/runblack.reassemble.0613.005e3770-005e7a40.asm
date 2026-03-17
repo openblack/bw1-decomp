@@ -56,8 +56,8 @@
 .extern _jmp_addr_0x005e25c0
 .extern _jmp_addr_0x005e2d10
 .extern _jmp_addr_0x005ff310
-.extern @__ct__9MapCoordsFRC7LHPoint@12
-.extern @__pl__9MapCoordsCFRC9MapCoords@16
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
+.extern ??HMapCoords@@QBE?AU0@ABU0@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00646fe0
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
@@ -307,7 +307,7 @@ start_0x005e3770_0x005e7a40:
                          push               0x00d1a2c0                                    // 0x005e38ef    68c0a2d100
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x005e38f4    8d4c2428
                          {disp8} mov        dword ptr [eax + 0x10], 0x3f800000            // 0x005e38f8    c740100000803f
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x005e38ff    e85cf80100
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x005e38ff    e85cf80100
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x005e3904    8d4c2424
                          push               ecx                                           // 0x005e3908    51
                          call               _jmp_addr_0x0070d8d0                          // 0x005e3909    e8c29f1200
@@ -462,7 +462,7 @@ start_0x005e3770_0x005e7a40:
                          call               dword ptr [eax + 0x98]                        // 0x005e3b55    ff9098000000
                          push               0x00d1a2b0                                    // 0x005e3b5b    68b0a2d100
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                   // 0x005e3b60    8d4c241c
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x005e3b64    e8f7f50100
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x005e3b64    e8f7f50100
                          push               0x00000223                                    // 0x005e3b69    6823020000
                          push               0x00bf3528                                    // 0x005e3b6e    682835bf00
                          push               0x28                                          // 0x005e3b73    6a28
@@ -1998,7 +1998,7 @@ _globl_ct_0x005e3f20:    {disp32} jmp       .Lbl_addr_0x005e3f30                
                          {disp8} lea        edx, dword ptr [esp + 0x50]                   // 0x005e4ff3    8d542450
                          push               edx                                           // 0x005e4ff7    52
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x005e4ff8    8d4e14
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16            // 0x005e4ffb    e820050200
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z            // 0x005e4ffb    e820050200
                          {disp8} lea        ecx, dword ptr [esp + 0x4c]                   // 0x005e5000    8d4c244c
                          {disp8} mov        dword ptr [esp + 0x54], 0x00000000            // 0x005e5004    c744245400000000
                          call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x005e500c    e87fe02100
@@ -2420,7 +2420,7 @@ _jmp_addr_0x005e5280:    push               esi                                 
                          {disp8} lea        ecx, dword ptr [esp + 0x34]                   // 0x005e5589    8d4c2434
                          {disp8} mov        dword ptr [esp + 0x2c], edx                   // 0x005e558d    8954242c
                          {disp8} mov        dword ptr [esp + 0x30], eax                   // 0x005e5591    89442430
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x005e5595    e8c6db0100
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x005e5595    e8c6db0100
                          push               eax                                           // 0x005e559a    50
                          mov.s              ecx, esi                                      // 0x005e559b    8bce
                          call               _jmp_addr_0x0071d720                          // 0x005e559d    e87e811300

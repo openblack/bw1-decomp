@@ -48,8 +48,8 @@
 .extern _jmp_addr_0x004ff420
 .extern _jmp_addr_0x004ff4b0
 .extern _jmp_addr_0x0052d360
-.extern @GetNearestTown__9MapCoordsCFf@12
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern _jmp_addr_0x006041c0
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?GameRand@GRand@@SAHJ@Z
@@ -4174,7 +4174,7 @@ start_0x004af640_0x004c4ab0:
                          {disp8} fstp       dword ptr [esp + 0x1c]                               // 0x004b25db    d95c241c
                          {disp8} fstp       dword ptr [esp + 0x20]                               // 0x004b25df    d95c2420
                          {disp8} fstp       dword ptr [esp + 0x24]                               // 0x004b25e3    d95c2424
-                         call               @__ct__9MapCoordsFRC7LHPoint@12                      // 0x004b25e7    e8740b1500
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z                      // 0x004b25e7    e8740b1500
                          {disp32} mov       ecx, dword ptr [ebp + 0x00001514]                    // 0x004b25ec    8b8d14150000
                          mov                edx, dword ptr [ecx]                                 // 0x004b25f2    8b11
                          call               dword ptr [edx + 0x42c]                              // 0x004b25f4    ff922c040000
@@ -14159,7 +14159,7 @@ start_0x004af640_0x004c4ab0:
                          {disp8} fstp       dword ptr [esp + 0x1c]                               // 0x004b9d48    d95c241c
                          {disp8} fstp       dword ptr [esp + 0x20]                               // 0x004b9d4c    d95c2420
                          {disp8} fstp       dword ptr [esp + 0x24]                               // 0x004b9d50    d95c2424
-                         call               @__ct__9MapCoordsFRC7LHPoint@12                      // 0x004b9d54    e807941400
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z                      // 0x004b9d54    e807941400
                          mov                edx, dword ptr [edi]                                 // 0x004b9d59    8b17
                          mov.s              ecx, edi                                             // 0x004b9d5b    8bcf
                          call               dword ptr [edx + 0x64]                               // 0x004b9d5d    ff5264
@@ -19255,7 +19255,7 @@ start_0x004af640_0x004c4ab0:
                          {disp32} mov       ecx, dword ptr [ebx + 0x00001514]                    // 0x004bd971    8b8b14150000
                          push               edx                                                  // 0x004bd977    52
                          add                ecx, 0x14                                            // 0x004bd978    83c114
-                         call               @GetNearestTown__9MapCoordsCFf@12                    // 0x004bd97b    e860471400
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z                    // 0x004bd97b    e860471400
                          mov.s              edi, eax                                             // 0x004bd980    8bf8
                          mov.s              ecx, edi                                             // 0x004bd982    8bcf
                          {disp8} mov        dword ptr [esp + 0x14], edi                          // 0x004bd984    897c2414
@@ -19717,7 +19717,7 @@ start_0x004af640_0x004c4ab0:
                          {disp32} mov       ecx, dword ptr [ebx + 0x00001514]                    // 0x004bdf11    8b8b14150000
                          push               edx                                                  // 0x004bdf17    52
                          add                ecx, 0x14                                            // 0x004bdf18    83c114
-                         call               @GetNearestTown__9MapCoordsCFf@12                    // 0x004bdf1b    e8c0411400
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z                    // 0x004bdf1b    e8c0411400
                          mov.s              edi, eax                                             // 0x004bdf20    8bf8
                          mov.s              ecx, edi                                             // 0x004bdf22    8bcf
                          {disp8} mov        dword ptr [esp + 0x14], edi                          // 0x004bdf24    897c2414

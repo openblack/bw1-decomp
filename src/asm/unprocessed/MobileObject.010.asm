@@ -749,7 +749,7 @@ _InsertMapObjectToCell__12MobileObjectFP7MapCell:
                          push               0x0                                           // 0x00607374    6a00
                          push               0x14                                          // 0x00607376    6a14
                          mov.s              ecx, ebp                                      // 0x00607378    8bcd
-                         call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16                          // 0x0060737a    e841d2ffff
+                         call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x0060737a    e841d2ffff
                          push               eax                                           // 0x0060737f    50
                          call               ___RTDynamicCast                              // 0x00607380    e894e61b00
                          add                esp, 0x14                                     // 0x00607385    83c414
@@ -783,7 +783,7 @@ _InsertMapObjectToCell__12MobileObjectFP7MapCell:
                          push               esi                                           // 0x006073cf    56
                          push               0x14                                          // 0x006073d0    6a14
                          mov.s              ecx, ebp                                      // 0x006073d2    8bcd
-                         call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16                          // 0x006073d4    e8e7d1ffff
+                         call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x006073d4    e8e7d1ffff
                          push               eax                                           // 0x006073d9    50
                          call               ___RTDynamicCast                              // 0x006073da    e83ae61b00
                          mov.s              esi, eax                                      // 0x006073df    8bf0

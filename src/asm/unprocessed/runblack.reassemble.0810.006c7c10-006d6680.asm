@@ -65,13 +65,13 @@
 .extern _jmp_addr_0x005c7ba0
 .extern _jmp_addr_0x005fdac0
 .extern _jmp_addr_0x005fe5f0
-.extern @__ct__9MapCoordsFRC7LHPoint@12
-.extern @Set__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
+.extern ?Set@MapCoords@@QAEPAU1@ABULHPoint@@@Znt@12
 .extern ?ToMap@MapCoords@@QBEPAUMapCell@@XZ
 .extern _jmp_addr_0x00603620
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern _jmp_addr_0x00604f40
-.extern @__apl__9MapCoordsFRC9JustMapXZ@12
+.extern ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z
 .extern _jmp_addr_0x00646a00
 .extern _jmp_addr_0x0066f0d0
 .extern _jmp_addr_0x00670cf0
@@ -4175,7 +4175,7 @@ _jmp_addr_0x006c9e60:    push               esi                                 
                          push               ebx                                           // 0x006ca1ca    53
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x006ca1cb    8d4c2410
                          mov.s              esi, eax                                      // 0x006ca1cf    8bf0
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x006ca1d1    e88a8ff3ff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x006ca1d1    e88a8ff3ff
                          mov                edx, dword ptr [eax]                          // 0x006ca1d6    8b10
                          add                esi, 0x14                                     // 0x006ca1d8    83c614
                          mov                dword ptr [esi], edx                          // 0x006ca1db    8916
@@ -16449,7 +16449,7 @@ _jmp_addr_0x006d18a0:    mov                dword ptr [ecx], 0x008fb3ec         
                          add                esp, 0x08                                     // 0x006d26de    83c408
                          push               eax                                           // 0x006d26e1    50
                          {disp8} lea        ecx, dword ptr [ebp + -0x40]                  // 0x006d26e2    8d4dc0
-                         call               @__apl__9MapCoordsFRC9JustMapXZ@12            // 0x006d26e5    e8862df3ff
+                         call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z            // 0x006d26e5    e8862df3ff
                          dec                dword ptr [ebp + -0x10]                       // 0x006d26ea    ff4df0
                          {disp32} jne       .Lbl_addr_0x006d2303                          // 0x006d26ed    0f8510fcffff
 .Lbl_addr_0x006d26f3:    pop                edi                                           // 0x006d26f3    5f
@@ -16872,7 +16872,7 @@ _jmp_addr_0x006d18a0:    mov                dword ptr [ecx], 0x008fb3ec         
                          add                eax, 0x24                                     // 0x006d2b9b    83c024
                          push               eax                                           // 0x006d2b9e    50
                          {disp8} lea        ecx, dword ptr [esp + 0x60]                   // 0x006d2b9f    8d4c2460
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x006d2ba3    e8b805f3ff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x006d2ba3    e8b805f3ff
                          {disp8} mov        cx, word ptr [eax + 0x06]                     // 0x006d2ba8    668b4806
                          {disp8} mov        ax, word ptr [eax + 0x02]                     // 0x006d2bac    668b4002
                          push               ecx                                           // 0x006d2bb0    51
@@ -17137,7 +17137,7 @@ _jmp_addr_0x006d18a0:    mov                dword ptr [ecx], 0x008fb3ec         
                          push               eax                                           // 0x006d2f13    50
                          {disp8} lea        ecx, dword ptr [esp + 0x54]                   // 0x006d2f14    8d4c2454
                          {disp8} fstp       dword ptr [esp + 0x20]                        // 0x006d2f18    d95c2420
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x006d2f1c    e83f02f3ff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x006d2f1c    e83f02f3ff
                          {disp8} lea        ecx, dword ptr [esp + 0x50]                   // 0x006d2f21    8d4c2450
                          call               _jmp_addr_0x00603620                          // 0x006d2f25    e8f606f3ff
                          test               eax, eax                                      // 0x006d2f2a    85c0
@@ -18858,7 +18858,7 @@ _jmp_addr_0x006d4150:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} je         .Lbl_addr_0x006d46c3                          // 0x006d46b8    7409
                          push               esi                                           // 0x006d46ba    56
                          {disp8} lea        ecx, dword ptr [eax + 0x14]                   // 0x006d46bb    8d4814
-                         call               @Set__9MapCoordsFRC7LHPoint@12                // 0x006d46be    e87decf2ff
+                         call          ?Set@MapCoords@@QAEPAU1@ABULHPoint@@@Z                // 0x006d46be    e87decf2ff
 .Lbl_addr_0x006d46c3:    {disp8} mov        ecx, dword ptr [ebx + 0x30]                   // 0x006d46c3    8b4b30
                          call               _jmp_addr_0x00673510                          // 0x006d46c6    e845eef9ff
                          cmp                eax, 0x01                                     // 0x006d46cb    83f801

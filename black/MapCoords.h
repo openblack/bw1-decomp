@@ -250,7 +250,7 @@ struct MapCellIterator* __fastcall GetFirstIterator__9MapCoordsCFv(struct MapCoo
 // win1.41 006035b0 mac 10018e70 MapCoords::IsWater(void) const
 bool32_t __fastcall IsWater__9MapCoordsCFv(const struct MapCoords* this) asm("?IsWater@MapCoords@@QBEIXZ");
 // win1.41 00603b30 mac 1055e480 MapCoords::IsSuitableForFixed 9MESH_LISTff
-void __fastcall IsSuitableForFixed__9MapCoordsCF9MESH_LISTff(const struct MapCoords* this, const void* edx, enum MESH_LIST mesh, float param_2, float param_3) asm("?IsSuitableForFixed@MapCoords@@QBEXW4MESH_LIST@@MM@Z");
+void __fastcall IsSuitableForFixed__9MapCoordsCF9MESH_LISTff(const struct MapCoords* this, const void* edx, enum MESH_LIST mesh, float param_2, float param_3) asm("?IsSuitableForFixed@MapCoords@@QAEXW4MESH_LIST@@MM@Z");
 // win1.41 00603dc0 mac 101c2c00 MapCoords::IsSuitableForFixed(Game3DObject *) const
 void __fastcall IsSuitableForFixed__9MapCoordsCFP12Game3DObject(const struct MapCoords* this, const void* edx, struct Game3DObject* object) asm("?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z");
 // win1.41 006045c0 mac 100195c0 MapCoords::FindType(OBJECT_TYPE, Object *) const
@@ -270,7 +270,7 @@ float __fastcall Altitude__9MapCoordsCFv(const struct MapCoords* this) asm("?Alt
 // win1.41 00603490 mac 105a3bb0 MapCoords::GetFirstObjectMobile(void) const
 struct Object* __fastcall GetFirstObjectMobile__9MapCoordsCFv(const struct MapCoords* this) asm("?GetFirstObjectMobile@MapCoords@@QBEPAVObject@@XZ");
 // win1.41 006056b0 mac 10557130 MapCoords::__ne(MapCoords const &) const
-bool __fastcall __ne__9MapCoordsCFRC9MapCoords(const struct MapCoords* this, const void* edx, const struct MapCoords* param_1) asm("?__ne@MapCoords@@QBE_NABV1@@Z");
+bool __fastcall __ne__9MapCoordsCFRC9MapCoords(const struct MapCoords* this, const void* edx, const struct MapCoords* param_1) asm("??9MapCoords@@QBEIABU0@@Z");
 // win1.41 00604fe0 mac 10406220 MapCoords::CollideCollideWithFixe(void) const
 int __fastcall CollideCollideWithFixe__9MapCoordsCFv(const struct MapCoords* this) asm("?CollideCollideWithFixe@MapCoords@@QBEHXZ");
 

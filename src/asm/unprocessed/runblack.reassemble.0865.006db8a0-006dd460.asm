@@ -11,7 +11,7 @@
 .extern ?ReadPtr@GameOSFile@@QAEXPAPAVGameThing@@@Z
 .extern _jmp_addr_0x005d8dd0
 .extern _jmp_addr_0x005e6540
-.extern ?__ne@MapCoords@@QBE_NABV1@@Z
+.extern ??9MapCoords@@QBEIABU0@@Z
 .extern @__ct__12MobileObjectFRC9MapCoordsPC17GMobileObjectInfoP6Objectff@28
 .extern _jmp_addr_0x00607000
 .extern ?Save@MobileObject@@UAEIAAVGameOSFile@@@Z
@@ -1410,7 +1410,7 @@ _jmp_addr_0x006dc560:    sub                esp, 0x14                           
                          {disp8} lea        eax, dword ptr [esi + 0x14]                    // 0x006dc5aa    8d4614
                          push               eax                                            // 0x006dc5ad    50
                          add                ecx, 0x14                                      // 0x006dc5ae    83c114
-                         call               ?__ne@MapCoords@@QBE_NABV1@@Z                  // 0x006dc5b1    e8fa90f2ff
+                         call               ??9MapCoords@@QBEIABU0@@Z                  // 0x006dc5b1    e8fa90f2ff
                          test               eax, eax                                       // 0x006dc5b6    85c0
                          {disp8} je         .Lbl_addr_0x006dc5ec                           // 0x006dc5b8    7432
 .Lbl_addr_0x006dc5ba:    {disp32} mov       ecx, dword ptr [esi + 0x00000384]              // 0x006dc5ba    8b8e84030000
@@ -1443,7 +1443,7 @@ _jmp_addr_0x006dc560:    sub                esp, 0x14                           
                          mov                ecx, dword ptr [edi]                           // 0x006dc615    8b0f
                          push               eax                                            // 0x006dc617    50
                          add                ecx, 0x14                                      // 0x006dc618    83c114
-                         call               ?__ne@MapCoords@@QBE_NABV1@@Z                  // 0x006dc61b    e89090f2ff
+                         call               ??9MapCoords@@QBEIABU0@@Z                  // 0x006dc61b    e89090f2ff
                          test               eax, eax                                       // 0x006dc620    85c0
                          {disp32} je        .Lbl_addr_0x006dc723                           // 0x006dc622    0f84fb000000
                          mov                eax, dword ptr [edi]                           // 0x006dc628    8b07
@@ -1578,7 +1578,7 @@ _jmp_addr_0x006dc740:    sub                esp, 0x1c                           
                          {disp32} mov       ecx, dword ptr [esi + 0x00000384]              // 0x006dc795    8b8e84030000
                          push               eax                                            // 0x006dc79b    50
                          add                ecx, 0x14                                      // 0x006dc79c    83c114
-                         call               ?__ne@MapCoords@@QBE_NABV1@@Z                  // 0x006dc79f    e80c8ff2ff
+                         call               ??9MapCoords@@QBEIABU0@@Z                  // 0x006dc79f    e80c8ff2ff
                          test               eax, eax                                       // 0x006dc7a4    85c0
                          {disp8} je         .Lbl_addr_0x006dc7da                           // 0x006dc7a6    7432
 .Lbl_addr_0x006dc7a8:    {disp32} mov       ecx, dword ptr [esi + 0x00000384]              // 0x006dc7a8    8b8e84030000
@@ -1612,7 +1612,7 @@ _jmp_addr_0x006dc740:    sub                esp, 0x1c                           
                          {disp8} mov        ecx, dword ptr [ebp + 0x00]                    // 0x006dc808    8b4d00
                          push               eax                                            // 0x006dc80b    50
                          add                ecx, 0x14                                      // 0x006dc80c    83c114
-                         call               ?__ne@MapCoords@@QBE_NABV1@@Z                  // 0x006dc80f    e89c8ef2ff
+                         call               ??9MapCoords@@QBEIABU0@@Z                  // 0x006dc80f    e89c8ef2ff
                          test               eax, eax                                       // 0x006dc814    85c0
                          {disp32} je        .Lbl_addr_0x006dc963                           // 0x006dc816    0f8447010000
                          {disp8} mov        eax, dword ptr [ebp + 0x00]                    // 0x006dc81c    8b4500

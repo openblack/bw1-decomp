@@ -23,7 +23,7 @@
 .extern _jmp_addr_0x005c7b70
 .extern ?CalculateDancePosition@Living@@QAE_NABUMapCoords@@PAU2@@Z
 .extern _jmp_addr_0x00604250
-.extern @__pl__9MapCoordsCFRC9MapCoords@16
+.extern ??HMapCoords@@QBE?AU0@ABU0@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00650280
 .extern _jmp_addr_0x00650d70
@@ -264,7 +264,7 @@ start_0x00669790_0x0066cce0:
                          mov.s              ecx, esi                                      // 0x00669903    8bce
                          call               _jmp_addr_0x0073ae10                          // 0x00669905    e806150d00
                          mov.s              ecx, eax                                      // 0x0066990a    8bc8
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16            // 0x0066990c    e80fbcf9ff
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z            // 0x0066990c    e80fbcf9ff
                          mov                ecx, dword ptr [eax]                          // 0x00669911    8b08
                          {disp8} mov        dword ptr [esp + 0x2c], ecx                   // 0x00669913    894c242c
                          {disp8} mov        edx, dword ptr [eax + 0x04]                   // 0x00669917    8b5004
@@ -1879,7 +1879,7 @@ start_0x00669790_0x0066cce0:
                          {disp8} lea        ecx, dword ptr [esp + 0x30]                   // 0x0066aaba    8d4c2430
                          push               ecx                                           // 0x0066aabe    51
                          mov.s              ecx, ebp                                      // 0x0066aabf    8bcd
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16            // 0x0066aac1    e85aaaf9ff
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z            // 0x0066aac1    e85aaaf9ff
                          mov                edx, dword ptr [eax]                          // 0x0066aac6    8b10
                          {disp8} mov        dword ptr [esp + 0x20], edx                   // 0x0066aac8    89542420
                          {disp8} mov        ecx, dword ptr [eax + 0x04]                   // 0x0066aacc    8b4804

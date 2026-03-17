@@ -1355,7 +1355,7 @@ struct Villager* __fastcall LookAroundForVillagerInState__8VillagerF15VILLAGER_S
     asm("add                esp, 0x08");                                      // 0x007503ee    83c408
     asm("push               eax");                                            // 0x007503f1    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                    // 0x007503f2    8d4c2414
-    asm("call               @__apl__9MapCoordsFRC9JustMapXZ@12");             // 0x007503f6    e87550ebff
+    asm("call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z");             // 0x007503f6    e87550ebff
     asm("test               edi, edi");                                       // 0x007503fb    85ff
     asm("{disp8} jne        LAB__addr_0x007503aa");                           // 0x007503fd    75ab
     asm("LAB__addr_0x007503ff:");
@@ -2711,7 +2711,7 @@ struct Pot* __fastcall FindPotAroundToGoto__8VillagerF13RESOURCE_TYPERUli(struct
     asm("push               0x0");                                            // 0x00751339    6a00
     asm("push               0x15");                                           // 0x0075133b    6a15
     asm("{disp8} lea        ecx, dword ptr [esp + 0x34]");                    // 0x0075133d    8d4c2434
-    asm("call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16");// 0x00751341    e87a32ebff
+    asm("call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z");// 0x00751341    e87a32ebff
     asm("push               eax");                                            // 0x00751346    50
     asm("call               ___RTDynamicCast");                               // 0x00751347    e8cd460700
     asm("mov.s              esi, eax");                                       // 0x0075134c    8bf0
@@ -2750,7 +2750,7 @@ struct Pot* __fastcall FindPotAroundToGoto__8VillagerF13RESOURCE_TYPERUli(struct
     asm("push               esi");                                            // 0x0075139f    56
     asm("push               0x15");                                           // 0x007513a0    6a15
     asm("{disp8} lea        ecx, dword ptr [esp + 0x34]");                    // 0x007513a2    8d4c2434
-    asm("call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16");// 0x007513a6    e81532ebff
+    asm("call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z");// 0x007513a6    e81532ebff
     asm("push               eax");                                            // 0x007513ab    50
     asm("call               ___RTDynamicCast");                               // 0x007513ac    e868460700
     asm("mov.s              esi, eax");                                       // 0x007513b1    8bf0
@@ -2766,7 +2766,7 @@ struct Pot* __fastcall FindPotAroundToGoto__8VillagerF13RESOURCE_TYPERUli(struct
     asm("add                esp, 0x08");                                      // 0x007513c9    83c408
     asm("push               eax");                                            // 0x007513cc    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x20]");                    // 0x007513cd    8d4c2420
-    asm("call               @__apl__9MapCoordsFRC9JustMapXZ@12");             // 0x007513d1    e89a40ebff
+    asm("call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z");             // 0x007513d1    e89a40ebff
     asm("dec                dword ptr [esp + 0x30]");                         // 0x007513d6    ff4c2430
     asm("{disp32} jne       LAB__addr_0x0075132b");                           // 0x007513da    0f854bffffff
     asm("{disp8} mov        eax, dword ptr [esp + 0x10]");                    // 0x007513e0    8b442410
@@ -6009,7 +6009,7 @@ void __fastcall FindPosOutsideAbode__8VillagerFP5Abode(struct Villager* this, co
     asm("mov.s              ecx, esi");                                      // 0x00753504    8bce
     asm("call               dword ptr [edx + 0x104]");                       // 0x00753506    ff9204010000
     asm("mov.s              ecx, eax");                                      // 0x0075350c    8bc8
-    asm("call               @__pl__9MapCoordsCFRC9MapCoords@16");            // 0x0075350e    e80d20ebff
+    asm("call               ??HMapCoords@@QBE?AU0@ABU0@@Z");            // 0x0075350e    e80d20ebff
     asm("{disp8} mov        eax, dword ptr [esp + 0x30]");                   // 0x00753513    8b442430
     asm("{disp8} mov        edx, dword ptr [esp + 0x08]");                   // 0x00753517    8b542408
     asm("mov.s              ecx, eax");                                      // 0x0075351b    8bc8
@@ -6690,7 +6690,7 @@ uint32_t __fastcall GetChillOutPos__8VillagerFR9MapCoords(struct Villager* this,
     asm("{disp8} lea       eax, dword ptr [esp + 0x2c]");                   // 0x00753d16    8d44242c
     asm("push              eax");                                           // 0x00753d1a    50
     asm("{disp8} lea       ecx, dword ptr [esp + 0x18]");                   // 0x00753d1b    8d4c2418
-    asm("call              @__pl__9MapCoordsCFRC9MapCoords@16");            // 0x00753d1f    e8fc17ebff
+    asm("call              ??HMapCoords@@QBE?AU0@ABU0@@Z");            // 0x00753d1f    e8fc17ebff
     asm("mov               edx, dword ptr [eax]");                          // 0x00753d24    8b10
     asm("{disp8} mov       ecx, dword ptr [esp + 0x38]");                   // 0x00753d26    8b4c2438
     asm("mov               dword ptr [ecx], edx");                          // 0x00753d2a    8911
@@ -7184,7 +7184,7 @@ bool32_t __fastcall FindDisciplePrayerPos__8VillagerFP9MapCoords(struct Villager
     asm("{disp8} lea       eax, dword ptr [esp + 0x24]");                   // 0x00754218    8d442424
     asm("push              eax");                                           // 0x0075421c    50
     asm("mov.s             ecx, edi");                                      // 0x0075421d    8bcf
-    asm("call              @__pl__9MapCoordsCFRC9MapCoords@16");            // 0x0075421f    e8fc12ebff
+    asm("call              ??HMapCoords@@QBE?AU0@ABU0@@Z");            // 0x0075421f    e8fc12ebff
     asm("mov               edx, dword ptr [eax]");                          // 0x00754224    8b10
     asm("{disp8} mov       ecx, dword ptr [esp + 0x30]");                   // 0x00754226    8b4c2430
     asm("mov               dword ptr [ecx], edx");                          // 0x0075422a    8911

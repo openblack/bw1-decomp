@@ -124,7 +124,7 @@
 .extern _jmp_addr_0x00603790
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern _jmp_addr_0x00605400
-.extern @__apl__9MapCoordsFRC9JustMapXZ@12
+.extern ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z
 .extern _jmp_addr_0x00605490
 .extern _jmp_addr_0x006055c0
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
@@ -14374,7 +14374,7 @@ _jmp_addr_0x00724ec0:    xor.s              eax, eax                            
                          add                esp, 0x08                                            // 0x0072516b    83c408
                          push               eax                                                  // 0x0072516e    50
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                          // 0x0072516f    8d4c243c
-                         call               @__apl__9MapCoordsFRC9JustMapXZ@12                   // 0x00725173    e8f802eeff
+                         call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z                   // 0x00725173    e8f802eeff
                          dec                ebp                                                  // 0x00725178    4d
                          {disp32} jne       .Lbl_addr_0x007250cc                                 // 0x00725179    0f854dffffff
                          {disp32} fld       dword ptr [esi + 0x000000b8]                         // 0x0072517f    d986b8000000

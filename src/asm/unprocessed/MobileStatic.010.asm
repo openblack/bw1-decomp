@@ -658,7 +658,7 @@ _jmp_addr_0x00608840:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          push               0x0                                           // 0x00608a2e    6a00
                          push               0x1c                                          // 0x00608a30    6a1c
                          mov.s              ecx, ebx                                      // 0x00608a32    8bcb
-                         call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16                          // 0x00608a34    e887bbffff
+                         call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x00608a34    e887bbffff
                          push               eax                                           // 0x00608a39    50
                          call               ___RTDynamicCast                              // 0x00608a3a    e8dacf1b00
                          mov.s              edi, eax                                      // 0x00608a3f    8bf8
@@ -691,7 +691,7 @@ _jmp_addr_0x00608840:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          push               edi                                           // 0x00608a87    57
                          push               0x1c                                          // 0x00608a88    6a1c
                          mov.s              ecx, ebx                                      // 0x00608a8a    8bcb
-                         call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16                          // 0x00608a8c    e82fbbffff
+                         call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x00608a8c    e82fbbffff
                          push               eax                                           // 0x00608a91    50
                          call               ___RTDynamicCast                              // 0x00608a92    e882cf1b00
                          mov.s              edi, eax                                      // 0x00608a97    8bf8

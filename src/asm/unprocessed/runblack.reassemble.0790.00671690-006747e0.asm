@@ -19,7 +19,7 @@
 .extern _jmp_addr_0x005d8a10
 .extern _jmp_addr_0x005d8a80
 .extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern _jmp_addr_0x0064d6a0
 .extern _jmp_addr_0x00670b60
 .extern _jmp_addr_0x00670bc0
@@ -4852,7 +4852,7 @@ _jmp_addr_0x006745d0:    sub                esp, 0x38                           
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x00674652    8d4c2410
                          push               ecx                                           // 0x00674656    51
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x00674657    8d4c2420
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x0067465b    e800ebf8ff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x0067465b    e800ebf8ff
                          push               eax                                           // 0x00674660    50
                          call               _jmp_addr_0x0071d8e0                          // 0x00674661    e87a920a00
                          add                esp, 0x04                                     // 0x00674666    83c404

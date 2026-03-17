@@ -18,9 +18,9 @@
 .extern ?GetNextPlayerAndNeutral@GGame@@QAEPAVGPlayer@@PAV2@@Z
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern _jmp_addr_0x005dc8d0
-.extern @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16
-.extern @__apl__9MapCoordsFRC9JustMapXZ@12
-.extern @__pl__9MapCoordsCFRC9MapCoords@16
+.extern ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z
+.extern ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z
+.extern ??HMapCoords@@QBE?AU0@ABU0@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x0064a9f0
 .extern ?IsNeutral@GPlayer@@QAE_NXZ
@@ -2551,7 +2551,7 @@ _globl_ct_0x00666ab0:    {disp32} jmp       .Lbl_addr_0x00666ac0                
                          {disp8} lea        ecx, dword ptr [esp + 0x20]              // 0x00668314    8d4c2420
                          push               ecx                                      // 0x00668318    51
                          {disp8} lea        ecx, dword ptr [edi + 0x14]              // 0x00668319    8d4f14
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16       // 0x0066831c    e8ffd1f9ff
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z       // 0x0066831c    e8ffd1f9ff
                          push               esi                                      // 0x00668321    56
                          mov.s              ecx, ebx                                 // 0x00668322    8bcb
                          call               _jmp_addr_0x00658aa0                     // 0x00668324    e87707ffff
@@ -3105,7 +3105,7 @@ _jmp_addr_0x00668790:    sub                esp, 0x0c                           
 .Lbl_addr_0x0066892f:    push               0x0                                      // 0x0066892f    6a00
                          push               0x2                                      // 0x00668931    6a02
                          {disp8} lea        ecx, dword ptr [esp + 0x24]              // 0x00668933    8d4c2424
-                         call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16                     // 0x00668937    e884bcf9ff
+                         call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                     // 0x00668937    e884bcf9ff
                          mov.s              esi, eax                                 // 0x0066893c    8bf0
                          test               esi, esi                                 // 0x0066893e    85f6
                          {disp8} je         .Lbl_addr_0x0066896b                     // 0x00668940    7429
@@ -3120,7 +3120,7 @@ _jmp_addr_0x00668790:    sub                esp, 0x0c                           
 .Lbl_addr_0x00668955:    push               esi                                      // 0x00668955    56
                          push               0x2                                      // 0x00668956    6a02
                          {disp8} lea        ecx, dword ptr [esp + 0x24]              // 0x00668958    8d4c2424
-                         call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16                     // 0x0066895c    e85fbcf9ff
+                         call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                     // 0x0066895c    e85fbcf9ff
                          mov.s              esi, eax                                 // 0x00668961    8bf0
                          test               esi, esi                                 // 0x00668963    85f6
                          {disp8} jne        .Lbl_addr_0x00668942                     // 0x00668965    75db
@@ -3135,7 +3135,7 @@ _jmp_addr_0x00668790:    sub                esp, 0x0c                           
                          add                esp, 0x08                                // 0x0066897b    83c408
                          push               eax                                      // 0x0066897e    50
                          {disp8} lea        ecx, dword ptr [esp + 0x20]              // 0x0066897f    8d4c2420
-                         call               @__apl__9MapCoordsFRC9JustMapXZ@12       // 0x00668983    e8e8caf9ff
+                         call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z       // 0x00668983    e8e8caf9ff
                          test               ebp, ebp                                 // 0x00668988    85ed
                          {disp8} jne        .Lbl_addr_0x0066892f                     // 0x0066898a    75a3
                          {disp32} fld       dword ptr [__real@4@00000000000000000000]              // 0x0066898c    d90598a38a00

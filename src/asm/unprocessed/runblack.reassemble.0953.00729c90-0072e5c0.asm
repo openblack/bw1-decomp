@@ -44,7 +44,7 @@
 .extern ?GetMagicInfoText@GMagicInfo@@QBEPBDXZ
 .extern ?GetMagicEffectInfo@GMagicInfo@@QBEPAVGMagicEffectInfo@@XZ
 .extern _jmp_addr_0x005fbb00
-.extern @GetNearestTown__9MapCoordsCFf@12
+.extern ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern _jmp_addr_0x006055c0
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
@@ -3068,7 +3068,7 @@ _jmp_addr_0x0072b4b0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          push               0x43fa0000                                    // 0x0072b683    680000fa43
                          {disp8} fstp       dword ptr [esp + 0x20]                        // 0x0072b688    d95c2420
                          mov.s              ecx, ebp                                      // 0x0072b68c    8bcd
-                         call               @GetNearestTown__9MapCoordsCFf@12             // 0x0072b68e    e84d6aedff
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z             // 0x0072b68e    e84d6aedff
                          {disp32} mov       dword ptr [esi + 0x000000fc], eax             // 0x0072b693    8986fc000000
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0072b699    8b0d5c19d000
                          push               0x0                                           // 0x0072b69f    6a00

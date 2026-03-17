@@ -22,7 +22,7 @@
 .extern _jmp_addr_0x005dc060
 .extern _jmp_addr_0x005ebd80
 .extern _jmp_addr_0x00602fc0
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern _jmp_addr_0x0064a9f0
 .extern _GetRemapedPlayer__FUl
@@ -3553,7 +3553,7 @@ _jmp_addr_0x00650370:    sub                esp, 0x28                           
                          {disp8} mov        dword ptr [eax + 0x08], ecx                   // 0x006505d0    894808
                          push               esi                                           // 0x006505d3    56
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x006505d4    8d4c2420
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x006505d8    e8832bfbff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x006505d8    e8832bfbff
                          {disp8} mov        eax, dword ptr [ebp + 0x00]                   // 0x006505dd    8b4500
                          push               esi                                           // 0x006505e0    56
                          {disp8} lea        edx, dword ptr [esp + 0x20]                   // 0x006505e1    8d542420
