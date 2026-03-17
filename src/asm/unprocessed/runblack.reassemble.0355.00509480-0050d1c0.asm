@@ -87,7 +87,7 @@
 .extern _wcsncpy
 .extern ??2@YAPAXI@Z
 .extern ??2@YAPAXIPBDI@Z
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern @DrawText__13GatheringTextFPwfffffffffP9LH3DColoriii@64
 
 .globl _jmp_addr_0x0050aad0
@@ -3932,7 +3932,7 @@ _jmp_addr_0x0050bb60:    call               .Lbl_addr_0x0050ccd0                
                          {disp8} lea        edi, dword ptr [esi + 0x14]                   // 0x0050bc86    8d7e14
                          mov.s              ecx, edi                                      // 0x0050bc89    8bcf
                          {disp8} mov        dword ptr [esp + 0x0c], eax                   // 0x0050bc8b    8944240c
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0050bc8f    e8fc732f00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x0050bc8f    e8fc732f00
                          {disp8} fadd       dword ptr [esp + 0x0c]                        // 0x0050bc94    d844240c
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0050bc98    8b0d5c19d000
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x0050bc9e    d95c2410
@@ -4549,7 +4549,7 @@ _jmp_addr_0x0050c150:    push               esi                                 
                          {disp8} lea        esi, dword ptr [ecx + 0x14]                   // 0x0050c255    8d7114
                          mov.s              ecx, esi                                      // 0x0050c258    8bce
                          {disp8} mov        dword ptr [esp + 0x04], eax                   // 0x0050c25a    89442404
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0050c25e    e82d6e2f00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x0050c25e    e82d6e2f00
                          {disp8} fadd       dword ptr [esp + 0x04]                        // 0x0050c263    d8442404
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x0050c267    8b44240c
                          {disp8} fstp       dword ptr [eax + 0x04]                        // 0x0050c26b    d95804

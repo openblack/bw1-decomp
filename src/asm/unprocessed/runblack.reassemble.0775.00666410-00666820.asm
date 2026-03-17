@@ -4,7 +4,7 @@
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ??HMapCoords@@QBE?AU0@ABU0@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
-.extern _jmp_addr_0x00605cf0
+.extern ?GetAngle@MapCoords@@QBEMABU1@@Z
 .extern _jmp_addr_0x0064d360
 .extern _jmp_addr_0x00650280
 .extern _jmp_addr_0x00650d70
@@ -40,7 +40,7 @@ _jmp_addr_0x00666410:    sub              esp, 0x68                         // 0
                          {disp8} mov      ebx, dword ptr [esp + 0x7c]       // 0x00666439    8b5c247c
                          push             eax                               // 0x0066643d    50
                          mov.s            ecx, ebx                          // 0x0066643e    8bcb
-                         call             _jmp_addr_0x00605cf0              // 0x00666440    e8abf8f9ff
+                         call             ?GetAngle@MapCoords@@QBEMABU1@@Z              // 0x00666440    e8abf8f9ff
                          {disp8} fstp     dword ptr [esp + 0x14]            // 0x00666445    d95c2414
                          {disp32} mov     ecx, dword ptr [esp + 0x00000084] // 0x00666449    8b8c2484000000
                          {disp8} mov      edx, dword ptr [esp + 0x14]       // 0x00666450    8b542414

@@ -89,7 +89,7 @@
 .extern ___RTDynamicCast
 .extern ??2@YAPAXI@Z
 .extern ??2@YAPAXIPBDI@Z
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x00829260
 .extern _jmp_addr_0x008292d0
 .extern _jmp_addr_0x00829330
@@ -1042,7 +1042,7 @@ _jmp_addr_0x0077dbb0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} mov        ecx, dword ptr [esi + 0x08]                   // 0x0077dcf6    8b4e08
                          {disp8} mov        dword ptr [esp + 0x38], ecx                   // 0x0077dcf9    894c2438
                          mov.s              ecx, esi                                      // 0x0077dcfd    8bce
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0077dcff    e88c530800
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x0077dcff    e88c530800
                          {disp8} fadd       dword ptr [esp + 0x38]                        // 0x0077dd04    d8442438
                          fild               dword ptr [esi]                               // 0x0077dd08    db06
                          {disp8} mov        eax, dword ptr [esp + 0x34]                   // 0x0077dd0a    8b442434

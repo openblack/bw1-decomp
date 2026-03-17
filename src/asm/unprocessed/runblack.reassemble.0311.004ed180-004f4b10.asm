@@ -71,11 +71,11 @@
 .extern ?NumGameTurnsBeforeReactingAgainToCreatureFunction@Living@@UAEIPAVGameThingWithPos@@IM@Z
 .extern _jmp_addr_0x005fc590
 .extern _jmp_addr_0x005fc6a0
-.extern @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16
+.extern ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern ?ToMap@MapCoords@@QBEPAUMapCell@@XZ
 .extern ?InBounds@MapCoords@@QBEIXZ
-.extern ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z
+.extern ??YMapCoords@@QAEXABUJustMapXZ@@@Z
 .extern _jmp_addr_0x006055c0
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00617140
@@ -103,7 +103,7 @@
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
 .extern _jmp_addr_0x0074cde0
 .extern ?Spiral@GUtils@@SAPBUJustMapXZ@@AAJ0@Z
-.extern ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z
+.extern ?ConvertWholeDistanceToMeters@GUtils@@SAMH@Z
 .extern ?SigmoidThreshold@GUtils@@SAMMM@Z
 .extern _jmp_addr_0x00771a80
 .extern __ftol
@@ -123,7 +123,7 @@
 .extern _fclose
 .extern  __CIpow
 .extern ??2@YAPAXIPBDI@Z
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0080b440
 .extern _jmp_addr_0x00814fd0
 .extern _jmp_addr_0x00839f10
@@ -2903,7 +2903,7 @@ _globl_ct_0x004ef2a0:    {disp32} jmp       .Lbl_addr_0x004ef2b0                
                          {disp8} mov        ecx, dword ptr [edi + 0x08]                          // 0x004ef2f9    8b4f08
                          {disp8} mov        dword ptr [esp + 0x0c], ecx                          // 0x004ef2fc    894c240c
                          mov.s              ecx, edi                                             // 0x004ef300    8bcf
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z     // 0x004ef302    e8893d3100
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z     // 0x004ef302    e8893d3100
                          {disp8} fadd       dword ptr [esp + 0x0c]                               // 0x004ef307    d844240c
                          push               0x1a                                                 // 0x004ef30b    6a1a
                          push               0x00be0218                                           // 0x004ef30d    681802be00
@@ -3872,7 +3872,7 @@ _jmp_addr_0x004efce0:    sub                esp, 0x18                           
                          push               eax                                                  // 0x004efef3    50
                          call               ?GetDistance@GUtils@@SAXABUMapCoords@@0@Z            // 0x004efef4    e8b7cd2500
                          push               eax                                                  // 0x004efef9    50
-                         call               ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z         // 0x004efefa    e8c1dd2500
+                         call               ?ConvertWholeDistanceToMeters@GUtils@@SAMH@Z         // 0x004efefa    e8c1dd2500
                          {disp8} fcomp      dword ptr [esp + 0x10]                               // 0x004efeff    d85c2410
                          add                esp, 0x0c                                            // 0x004eff03    83c40c
                          fnstsw             ax                                                   // 0x004eff06    dfe0
@@ -3897,7 +3897,7 @@ _jmp_addr_0x004efce0:    sub                esp, 0x18                           
                          add                esi, 0x14                                            // 0x004eff39    83c614
                          {disp8} mov        dword ptr [esp + 0x08], ecx                          // 0x004eff3c    894c2408
                          mov.s              ecx, esi                                             // 0x004eff40    8bce
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z     // 0x004eff42    e849313100
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z     // 0x004eff42    e849313100
                          {disp8} fadd       dword ptr [esp + 0x08]                               // 0x004eff47    d8442408
                          {disp8} mov        ecx, dword ptr [edi + 0x54]                          // 0x004eff4b    8b4f54
                          {disp8} fstp       dword ptr [esp + 0x10]                               // 0x004eff4e    d95c2410
@@ -8923,7 +8923,7 @@ _globl_ct_0x004f2660:    {disp32} jmp       .Lbl_addr_0x004f2670                
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                          // 0x004f33ed    8d4c241c
                          call               ?ToMap@MapCoords@@QBEPAUMapCell@@XZ                  // 0x004f33f1    e83a001100
                          mov.s              ecx, eax                                             // 0x004f33f6    8bc8
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16   // 0x004f33f8    e8e3e11000
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z   // 0x004f33f8    e8e3e11000
                          mov.s              edi, eax                                             // 0x004f33fd    8bf8
                          test               edi, edi                                             // 0x004f33ff    85ff
                          {disp8} je         .Lbl_addr_0x004f3420                                 // 0x004f3401    741d
@@ -8934,7 +8934,7 @@ _globl_ct_0x004f2660:    {disp32} jmp       .Lbl_addr_0x004f2670                
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                          // 0x004f340a    8d4c241c
                          call               ?ToMap@MapCoords@@QBEPAUMapCell@@XZ                  // 0x004f340e    e81d001100
                          mov.s              ecx, eax                                             // 0x004f3413    8bc8
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16   // 0x004f3415    e8c6e11000
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z   // 0x004f3415    e8c6e11000
                          mov.s              edi, eax                                             // 0x004f341a    8bf8
                          test               edi, edi                                             // 0x004f341c    85ff
                          {disp8} jne        .Lbl_addr_0x004f3403                                 // 0x004f341e    75e3
@@ -8947,7 +8947,7 @@ _globl_ct_0x004f2660:    {disp32} jmp       .Lbl_addr_0x004f2670                
                          add                esp, 0x08                                            // 0x004f3430    83c408
                          push               eax                                                  // 0x004f3433    50
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                          // 0x004f3434    8d4c2418
-                         call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z                   // 0x004f3438    e833201100
+                         call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z                   // 0x004f3438    e833201100
                          test               ebx, ebx                                             // 0x004f343d    85db
                          {disp8} jne        .Lbl_addr_0x004f33db                                 // 0x004f343f    759a
 .Lbl_addr_0x004f3441:    test               edi, edi                                             // 0x004f3441    85ff

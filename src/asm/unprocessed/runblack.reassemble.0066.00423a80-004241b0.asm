@@ -10,7 +10,7 @@
 .extern ?IsWoman@Villager@@QAE_NXZ
 .extern ?GetDesireForFood@Villager@@QAEMXZ
 .extern __ftol
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0083add0
 
 .globl ?FootballWatchMatchAnimation@Villager@@QAEIXZ
@@ -79,7 +79,7 @@ start_0x00423a80_0x004241b0:
                          {disp8} mov        eax, dword ptr [ecx + 0x1c]                   // 0x00423b00    8b411c
                          add                ecx, 0x14                                     // 0x00423b03    83c114
                          {disp8} mov        dword ptr [esp + 0x00], eax                   // 0x00423b06    89442400
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00423b0a    e881f53d00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00423b0a    e881f53d00
                          {disp8} fsubr      dword ptr [esp + 0x00]                        // 0x00423b0f    d86c2400
                          {disp32} fcomp     dword ptr [rdata_bytes + 0x19c50]             // 0x00423b13    d81d502c8c00
                          fnstsw             ax                                            // 0x00423b19    dfe0

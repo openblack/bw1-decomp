@@ -1599,7 +1599,7 @@ bool32_t __fastcall CheckForClearArea__8VillagerFRC9MapCoordsf(struct Villager* 
     asm("{disp8} mov        eax, dword ptr [edi + 0x08]");                   // 0x007590c5    8b4708
     asm("mov.s              ecx, edi");                                      // 0x007590c8    8bcf
     asm("{disp8} mov        dword ptr [esp + 0x18], eax");                   // 0x007590ca    89442418
-    asm("call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z");// 0x007590ce    e8bd9f0a00
+    asm("call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z");// 0x007590ce    e8bd9f0a00
     asm("{disp8} fadd       dword ptr [esp + 0x18]");                        // 0x007590d3    d8442418
     asm("{disp32} mov       ecx, dword ptr [_villager_civic_float10p0_0x0099a944]");  // 0x007590d7    8b0d44a99900
     asm("{disp8} mov        edx, dword ptr [esp + 0x1c]");                   // 0x007590dd    8b54241c
@@ -2125,7 +2125,7 @@ struct MapCoords* __fastcall GetPosForPushObject__8VillagerFP6ObjectR9MapCoords(
     asm("mov.s              edi, ecx");                                      // 0x0075961c    8bf9
     asm("mov.s              ecx, esi");                                      // 0x0075961e    8bce
     asm("{disp8} mov        dword ptr [esp + 0x3c], eax");                   // 0x00759620    8944243c
-    asm("call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z");// 0x00759624    e8679a0a00
+    asm("call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z");// 0x00759624    e8679a0a00
     asm("{disp8} fadd       dword ptr [esp + 0x3c]");                        // 0x00759629    d844243c
     asm("{disp8} mov        ecx, dword ptr [esp + 0x38]");                   // 0x0075962d    8b4c2438
     asm("mov                edx, dword ptr [ecx]");                          // 0x00759631    8b11

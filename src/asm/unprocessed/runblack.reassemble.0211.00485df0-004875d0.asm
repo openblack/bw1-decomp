@@ -45,7 +45,7 @@
 .extern ??2@YAPAXIPBDI@Z
 .extern _jmp_addr_0x007faa50
 .extern _jmp_addr_0x007faaf0
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x00865020
 .extern _jmp_addr_0x00866a90
 .extern _jmp_addr_0x00867040
@@ -172,7 +172,7 @@ _jmp_addr_0x00485f40:    sub                esp, 0x1c                           
                          {disp8} lea        edi, dword ptr [ebx + 0x14]                          // 0x00485f55    8d7b14
                          mov.s              ecx, edi                                             // 0x00485f58    8bcf
                          {disp8} mov        dword ptr [esp + 0x30], eax                          // 0x00485f5a    89442430
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z     // 0x00485f5e    e82dd13700
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z     // 0x00485f5e    e82dd13700
                          {disp8} fadd       dword ptr [esp + 0x30]                               // 0x00485f63    d8442430
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                          // 0x00485f67    8d4c2420
                          push               ecx                                                  // 0x00485f6b    51

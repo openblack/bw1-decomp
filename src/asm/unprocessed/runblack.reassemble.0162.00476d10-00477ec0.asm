@@ -47,7 +47,7 @@
 .extern _jmp_addr_0x0074e290
 .extern __ftol
 .extern _jmp_addr_0x007faa50
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 
 .globl _jmp_addr_0x00476fa0
 .globl _jmp_addr_0x00477060
@@ -471,12 +471,12 @@ _jmp_addr_0x00477060:    {disp32} jmp       _jmp_addr_0x00476fa0                
                          call               _jmp_addr_0x004813b0                     // 0x004770de    e8cda20000
                          mov.s              ebx, eax                                 // 0x004770e3    8bd8
                          fld                dword ptr [ebx]                          // 0x004770e5    d903
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]         // 0x004770e7    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]// 0x004770e7    d80d00c48a00
                          call               __ftol                                   // 0x004770ed    e80ea33200
                          {disp8} mov        esi, dword ptr [esp + 0x10]              // 0x004770f2    8b742410
                          mov                dword ptr [esi], eax                     // 0x004770f6    8906
                          {disp8} fld        dword ptr [ebx + 0x08]                   // 0x004770f8    d94308
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]         // 0x004770fb    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]// 0x004770fb    d80d00c48a00
                          call               __ftol                                   // 0x00477101    e8faa23200
                          {disp8} mov        dword ptr [esi + 0x04], eax              // 0x00477106    894604
                          {disp8} mov        dword ptr [esi + 0x08], 0x00000000       // 0x00477109    c7460800000000
@@ -502,29 +502,29 @@ _jmp_addr_0x00477130:    sub                esp, 0x24                           
                          {disp8} mov        ecx, dword ptr [eax + 0x7c]              // 0x0047715a    8b487c
                          {disp32} mov       edx, dword ptr [eax + 0x00000080]        // 0x0047715d    8b9080000000
                          fld                st(0)                                    // 0x00477163    d9c0
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]         // 0x00477165    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]// 0x00477165    d80d00c48a00
                          add                eax, 0x78                                // 0x0047716b    83c078
                          {disp8} mov        dword ptr [esp + 0x14], ecx              // 0x0047716e    894c2414
                          {disp8} mov        dword ptr [esp + 0x18], edx              // 0x00477172    89542418
                          call               __ftol                                   // 0x00477176    e885a23200
                          {disp8} fld        dword ptr [esp + 0x18]                   // 0x0047717b    d9442418
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]         // 0x0047717f    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]// 0x0047717f    d80d00c48a00
                          {disp8} mov        dword ptr [esp + 0x04], eax              // 0x00477185    89442404
                          call               __ftol                                   // 0x00477189    e872a23200
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3408]         // 0x0047718e    d80d08c48a00
+                         {disp32} fmul      dword ptr [__real@4@400f8000000000000000]// 0x0047718e    d80d08c48a00
                          {disp8} mov        dword ptr [esp + 0x08], eax              // 0x00477194    89442408
                          {disp8} mov        dword ptr [esp + 0x0c], 0x00000000       // 0x00477198    c744240c00000000
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3404]         // 0x004771a0    d80d04c48a00
                          call               __ftol                                   // 0x004771a6    e855a23200
                          {disp8} fld        dword ptr [esp + 0x18]                   // 0x004771ab    d9442418
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3408]         // 0x004771af    d80d08c48a00
+                         {disp32} fmul      dword ptr [__real@4@400f8000000000000000]// 0x004771af    d80d08c48a00
                          {disp8} mov        dword ptr [esp + 0x1c], eax              // 0x004771b5    8944241c
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3404]         // 0x004771b9    d80d04c48a00
                          call               __ftol                                   // 0x004771bf    e83ca23200
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]              // 0x004771c4    8d4c241c
                          {disp8} mov        dword ptr [esp + 0x20], eax              // 0x004771c8    89442420
                          {disp8} mov        dword ptr [esp + 0x24], 0x00000000       // 0x004771cc    c744242400000000
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z                   // 0x004771d4    e8b7be3800
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z                   // 0x004771d4    e8b7be3800
                          {disp8} fsubr      dword ptr [esp + 0x14]                   // 0x004771d9    d86c2414
                          {disp8} lea        ecx, dword ptr [esp + 0x04]              // 0x004771dd    8d4c2404
                          {disp8} fstp       dword ptr [esp + 0x0c]                   // 0x004771e1    d95c240c
@@ -674,7 +674,7 @@ _jmp_addr_0x00477370:    sub                esp, 0x18                           
 .Lbl_addr_0x00477393:    {disp8} mov        eax, dword ptr [esi + 0x08]              // 0x00477393    8b4608
                          mov.s              ecx, esi                                 // 0x00477396    8bce
                          {disp8} mov        dword ptr [esp + 0x28], eax              // 0x00477398    89442428
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z                   // 0x0047739c    e8efbc3800
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z                   // 0x0047739c    e8efbc3800
                          {disp8} fadd       dword ptr [esp + 0x28]                   // 0x004773a1    d8442428
                          fild               dword ptr [esi]                          // 0x004773a5    db06
                          {disp32} mov       ecx, dword ptr [edi + 0x00000160]        // 0x004773a7    8b8f60010000
@@ -1179,7 +1179,7 @@ _jmp_addr_0x00477800:    sub                esp, 0x0c                           
                          mov.s              ebx, ecx                                 // 0x0047788b    8bd9
                          {disp8} lea        edi, dword ptr [esi + 0x14]              // 0x0047788d    8d7e14
                          mov.s              ecx, edi                                 // 0x00477890    8bcf
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z                   // 0x00477892    e8f9b73800
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z                   // 0x00477892    e8f9b73800
                          fstp               st(0)                                    // 0x00477897    ddd8
                          fild               dword ptr [edi]                          // 0x00477899    db07
                          {disp8} mov        eax, dword ptr [ebx + 0x18]              // 0x0047789b    8b4318
@@ -1448,7 +1448,7 @@ _jmp_addr_0x00477a00:    push               esi                                 
                          {disp8} lea        edi, dword ptr [esi + 0x14]              // 0x00477bcf    8d7e14
                          mov.s              ecx, edi                                 // 0x00477bd2    8bcf
                          {disp8} mov        dword ptr [esp + 0x08], edx              // 0x00477bd4    89542408
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z                   // 0x00477bd8    e8b3b43800
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z                   // 0x00477bd8    e8b3b43800
                          {disp8} fadd       dword ptr [esp + 0x08]                   // 0x00477bdd    d8442408
                          {disp8} fstp       dword ptr [esp + 0x1c]                   // 0x00477be1    d95c241c
                          fild               dword ptr [edi]                          // 0x00477be5    db07

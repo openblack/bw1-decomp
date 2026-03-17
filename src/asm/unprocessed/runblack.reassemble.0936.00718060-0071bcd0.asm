@@ -39,7 +39,7 @@
 .extern _jmp_addr_0x005ccf80
 .extern _jmp_addr_0x005cda90
 .extern _jmp_addr_0x005e2890
-.extern @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16
+.extern ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z
 .extern ?GetX@MapCell@@QBEIXZ
 .extern ?GetZ@MapCell@@QBEIXZ
 .extern ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z
@@ -48,7 +48,7 @@
 .extern ??0MapCoords@@QAE@PBD@Z
 .extern ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z
 .extern _jmp_addr_0x00604f40
-.extern ??YMapCoords@@QAEAAU0@ABU0@@Z
+.extern ??YMapCoords@@QAEXABU0@@Z
 .extern _jmp_addr_0x006065d0
 .extern ?ConvertMapCoordToLandscapePoint@GLandscape@@SAPAULHPoint@@ABUMapCoords@@AAU2@@Z
 .extern ?Get3DType@Object@@SA?AW4LH3DObject__ObjectType@@W4MESH_LIST@@@Z
@@ -107,7 +107,7 @@
 .extern _jmp_addr_0x007e7960
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 
 .globl ?LoadMapFeatures@GSetup@@SAXPAD@Z
 .globl ?GetScriptPos@GSetup@@SAPAUMapCoords@@PAD@Z
@@ -351,7 +351,7 @@ start_0x00718060_0x0071bcd0:
                          {disp8} je         .Lbl_addr_0x00718274                          // 0x00718268    740a
                          push               eax                                           // 0x0071826a    50
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                   // 0x0071826b    8d4c2404
-                         call               ??YMapCoords@@QAEAAU0@ABU0@@Z            // 0x0071826f    e89cd1eeff
+                         call               ??YMapCoords@@QAEXABU0@@Z            // 0x0071826f    e89cd1eeff
 .Lbl_addr_0x00718274:    {disp8} mov        eax, dword ptr [esp + 0x10]                   // 0x00718274    8b442410
                          {disp8} mov        edx, dword ptr [esp + 0x00]                   // 0x00718278    8b542400
                          mov.s              ecx, eax                                      // 0x0071827c    8bc8
@@ -928,7 +928,7 @@ start_0x00718060_0x0071bcd0:
                          push               0x0                                           // 0x00718886    6a00
                          push               0x13                                          // 0x00718888    6a13
                          mov.s              ecx, esi                                      // 0x0071888a    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x0071888c    e84f8deeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x0071888c    e84f8deeff
                          push               eax                                           // 0x00718891    50
                          call               ___RTDynamicCast                              // 0x00718892    e882d10a00
                          {disp8} mov        ebp, dword ptr [esp + 0x44]                   // 0x00718897    8b6c2444
@@ -965,7 +965,7 @@ start_0x00718060_0x0071bcd0:
                          push               edi                                           // 0x007188f0    57
                          push               0x13                                          // 0x007188f1    6a13
                          mov.s              ecx, esi                                      // 0x007188f3    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x007188f5    e8e68ceeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x007188f5    e8e68ceeff
                          push               eax                                           // 0x007188fa    50
                          call               ___RTDynamicCast                              // 0x007188fb    e819d10a00
                          mov.s              edi, eax                                      // 0x00718900    8bf8
@@ -979,7 +979,7 @@ start_0x00718060_0x0071bcd0:
                          push               0x0                                           // 0x00718917    6a00
                          push               0x15                                          // 0x00718919    6a15
                          mov.s              ecx, esi                                      // 0x0071891b    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x0071891d    e8be8ceeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x0071891d    e8be8ceeff
                          push               eax                                           // 0x00718922    50
                          call               ___RTDynamicCast                              // 0x00718923    e8f1d00a00
                          mov.s              edi, eax                                      // 0x00718928    8bf8
@@ -1003,7 +1003,7 @@ start_0x00718060_0x0071bcd0:
                          push               edi                                           // 0x00718959    57
                          push               0x15                                          // 0x0071895a    6a15
                          mov.s              ecx, esi                                      // 0x0071895c    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x0071895e    e87d8ceeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x0071895e    e87d8ceeff
                          push               eax                                           // 0x00718963    50
                          call               ___RTDynamicCast                              // 0x00718964    e8b0d00a00
                          mov.s              edi, eax                                      // 0x00718969    8bf8
@@ -1017,7 +1017,7 @@ start_0x00718060_0x0071bcd0:
                          push               0x0                                           // 0x00718980    6a00
                          push               0x14                                          // 0x00718982    6a14
                          mov.s              ecx, esi                                      // 0x00718984    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x00718986    e8558ceeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x00718986    e8558ceeff
                          push               eax                                           // 0x0071898b    50
                          call               ___RTDynamicCast                              // 0x0071898c    e888d00a00
                          mov.s              edi, eax                                      // 0x00718991    8bf8
@@ -1041,7 +1041,7 @@ start_0x00718060_0x0071bcd0:
                          push               edi                                           // 0x007189c2    57
                          push               0x14                                          // 0x007189c3    6a14
                          mov.s              ecx, esi                                      // 0x007189c5    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x007189c7    e8148ceeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x007189c7    e8148ceeff
                          push               eax                                           // 0x007189cc    50
                          call               ___RTDynamicCast                              // 0x007189cd    e847d00a00
                          mov.s              edi, eax                                      // 0x007189d2    8bf8
@@ -1055,7 +1055,7 @@ start_0x00718060_0x0071bcd0:
                          push               0x0                                           // 0x007189e9    6a00
                          push               0x1c                                          // 0x007189eb    6a1c
                          mov.s              ecx, esi                                      // 0x007189ed    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x007189ef    e8ec8beeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x007189ef    e8ec8beeff
                          push               eax                                           // 0x007189f4    50
                          call               ___RTDynamicCast                              // 0x007189f5    e81fd00a00
                          mov.s              edi, eax                                      // 0x007189fa    8bf8
@@ -1078,7 +1078,7 @@ start_0x00718060_0x0071bcd0:
                          push               edi                                           // 0x00718a28    57
                          push               0x1c                                          // 0x00718a29    6a1c
                          mov.s              ecx, esi                                      // 0x00718a2b    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x00718a2d    e8ae8beeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x00718a2d    e8ae8beeff
                          push               eax                                           // 0x00718a32    50
                          call               ___RTDynamicCast                              // 0x00718a33    e8e1cf0a00
                          mov.s              edi, eax                                      // 0x00718a38    8bf8
@@ -1092,7 +1092,7 @@ start_0x00718060_0x0071bcd0:
                          push               0x0                                           // 0x00718a4f    6a00
                          push               0x27                                          // 0x00718a51    6a27
                          mov.s              ecx, esi                                      // 0x00718a53    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x00718a55    e8868beeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x00718a55    e8868beeff
                          push               eax                                           // 0x00718a5a    50
                          call               ___RTDynamicCast                              // 0x00718a5b    e8b9cf0a00
                          mov.s              edi, eax                                      // 0x00718a60    8bf8
@@ -1112,7 +1112,7 @@ start_0x00718060_0x0071bcd0:
                          push               edi                                           // 0x00718a87    57
                          push               0x27                                          // 0x00718a88    6a27
                          mov.s              ecx, esi                                      // 0x00718a8a    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x00718a8c    e84f8beeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x00718a8c    e84f8beeff
                          push               eax                                           // 0x00718a91    50
                          call               ___RTDynamicCast                              // 0x00718a92    e882cf0a00
                          mov.s              edi, eax                                      // 0x00718a97    8bf8
@@ -1126,7 +1126,7 @@ start_0x00718060_0x0071bcd0:
                          push               0x0                                           // 0x00718aae    6a00
                          push               0x6                                           // 0x00718ab0    6a06
                          mov.s              ecx, esi                                      // 0x00718ab2    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x00718ab4    e8278beeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x00718ab4    e8278beeff
                          push               eax                                           // 0x00718ab9    50
                          call               ___RTDynamicCast                              // 0x00718aba    e85acf0a00
                          mov.s              edi, eax                                      // 0x00718abf    8bf8
@@ -1160,7 +1160,7 @@ start_0x00718060_0x0071bcd0:
                          push               edi                                           // 0x00718b0b    57
                          push               0x6                                           // 0x00718b0c    6a06
                          mov.s              ecx, esi                                      // 0x00718b0e    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x00718b10    e8cb8aeeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x00718b10    e8cb8aeeff
                          push               eax                                           // 0x00718b15    50
                          call               ___RTDynamicCast                              // 0x00718b16    e8fece0a00
                          mov.s              edi, eax                                      // 0x00718b1b    8bf8
@@ -1174,7 +1174,7 @@ start_0x00718060_0x0071bcd0:
                          push               0x0                                           // 0x00718b32    6a00
                          push               0x20                                          // 0x00718b34    6a20
                          mov.s              ecx, esi                                      // 0x00718b36    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x00718b38    e8a38aeeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x00718b38    e8a38aeeff
                          push               eax                                           // 0x00718b3d    50
                          call               ___RTDynamicCast                              // 0x00718b3e    e8d6ce0a00
                          mov.s              edi, eax                                      // 0x00718b43    8bf8
@@ -1198,7 +1198,7 @@ start_0x00718060_0x0071bcd0:
                          push               edi                                           // 0x00718b74    57
                          push               0x20                                          // 0x00718b75    6a20
                          mov.s              ecx, esi                                      // 0x00718b77    8bce
-                         call               @FindTypeOnMap__7MapCellCF11OBJECT_TYPEP6Object@16                          // 0x00718b79    e8628aeeff
+                         call               ?FindTypeOnMap@MapCell@@QAEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x00718b79    e8628aeeff
                          push               eax                                           // 0x00718b7e    50
                          call               ___RTDynamicCast                              // 0x00718b7f    e895ce0a00
                          mov.s              edi, eax                                      // 0x00718b84    8bf8
@@ -1341,10 +1341,10 @@ _jmp_addr_0x00718c10:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          and                eax, 0x0000ffff                               // 0x00718cff    25ffff0000
                          {disp8} mov        dword ptr [esp + 0x28], eax                   // 0x00718d04    89442428
                          {disp32} fmul      dword ptr [rdata_bytes + 0xae2a8]             // 0x00718d08    d80da8729500
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x341c]              // 0x00718d0e    d80d1cc48a00
+                         {disp32} fmul      dword ptr [__real@4@3fef8000000000000000]     // 0x00718d0e    d80d1cc48a00
                          fild               dword ptr [edi]                               // 0x00718d14    db07
                          {disp32} fmul      dword ptr [rdata_bytes + 0xae2a8]             // 0x00718d16    d80da8729500
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x341c]              // 0x00718d1c    d80d1cc48a00
+                         {disp32} fmul      dword ptr [__real@4@3fef8000000000000000]     // 0x00718d1c    d80d1cc48a00
                          fld                st(1)                                         // 0x00718d22    d9c1
                          fcomp              st(1)                                         // 0x00718d24    d8d9
                          fnstsw             ax                                            // 0x00718d26    dfe0
@@ -1360,10 +1360,10 @@ _jmp_addr_0x00718c10:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} fild       dword ptr [esp + 0x10]                        // 0x00718d43    db442410
                          {disp8} mov        dword ptr [esp + 0x10], edx                   // 0x00718d47    89542410
                          {disp32} fmul      dword ptr [rdata_bytes + 0xae2a8]             // 0x00718d4b    d80da8729500
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x341c]              // 0x00718d51    d80d1cc48a00
+                         {disp32} fmul      dword ptr [__real@4@3fef8000000000000000]     // 0x00718d51    d80d1cc48a00
                          {disp8} fild       dword ptr [esp + 0x10]                        // 0x00718d57    db442410
                          {disp32} fmul      dword ptr [rdata_bytes + 0xae2a8]             // 0x00718d5b    d80da8729500
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x341c]              // 0x00718d61    d80d1cc48a00
+                         {disp32} fmul      dword ptr [__real@4@3fef8000000000000000]     // 0x00718d61    d80d1cc48a00
                          {disp8} fstp       dword ptr [esp + 0x10]                        // 0x00718d67    d95c2410
                          {disp8} fcom       dword ptr [esp + 0x10]                        // 0x00718d6b    d8542410
                          fnstsw             ax                                            // 0x00718d6f    dfe0
@@ -1381,10 +1381,10 @@ _jmp_addr_0x00718c10:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          sub                esp, 0x08                                     // 0x00718d96    83ec08
                          sub                esp, 0x08                                     // 0x00718d99    83ec08
                          {disp32} fmul      dword ptr [rdata_bytes + 0xae2a8]             // 0x00718d9c    d80da8729500
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x341c]              // 0x00718da2    d80d1cc48a00
+                         {disp32} fmul      dword ptr [__real@4@3fef8000000000000000]     // 0x00718da2    d80d1cc48a00
                          {disp8} fild       dword ptr [esp + 0x48]                        // 0x00718da8    db442448
                          {disp32} fmul      dword ptr [rdata_bytes + 0xae2a8]             // 0x00718dac    d80da8729500
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x341c]              // 0x00718db2    d80d1cc48a00
+                         {disp32} fmul      dword ptr [__real@4@3fef8000000000000000]     // 0x00718db2    d80d1cc48a00
                          fsubp              st(1), st                                     // 0x00718db8    dee9
                          fabs                                                             // 0x00718dba    d9e1
                          {disp8} fstp       qword ptr [esp + 0x08]                        // 0x00718dbc    dd5c2408
@@ -1414,11 +1414,11 @@ _jmp_addr_0x00718c10:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} lea        ecx, dword ptr [esp + 0x64]                   // 0x00718e03    8d4c2464
                          call               ?Write@LHOSFile@@QAEIPBXIPAI@Z                  // 0x00718e07    e8143b0a00
                          {disp8} fld        dword ptr [esp + 0x2c]                        // 0x00718e0c    d944242c
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3408]              // 0x00718e10    d80d08c48a00
+                         {disp32} fmul      dword ptr [__real@4@400f8000000000000000]     // 0x00718e10    d80d08c48a00
                          {disp32} fdiv      dword ptr [rdata_bytes + 0xae2a8]             // 0x00718e16    d835a8729500
                          call               __ftol                                        // 0x00718e1c    e8df850800
                          {disp8} fld        dword ptr [esp + 0x10]                        // 0x00718e21    d9442410
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3408]              // 0x00718e25    d80d08c48a00
+                         {disp32} fmul      dword ptr [__real@4@400f8000000000000000]     // 0x00718e25    d80d08c48a00
                          {disp8} mov        dword ptr [esp + 0x40], eax                   // 0x00718e2b    89442440
                          {disp32} fdiv      dword ptr [rdata_bytes + 0xae2a8]             // 0x00718e2f    d835a8729500
                          call               __ftol                                        // 0x00718e35    e8c6850800
@@ -2805,7 +2805,7 @@ _jmp_addr_0x00719c10:    push               esi                                 
                          add                esi, 0x14                                     // 0x00719c4d    83c614
                          mov.s              ecx, esi                                      // 0x00719c50    8bce
                          {disp8} mov        dword ptr [esp + 0x08], eax                   // 0x00719c52    89442408
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00719c56    e835940e00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00719c56    e835940e00
                          {disp8} fadd       dword ptr [esp + 0x08]                        // 0x00719c5b    d8442408
                          {disp8} mov        ecx, dword ptr [edi + 0x14]                   // 0x00719c5f    8b4f14
                          mov                edx, dword ptr [ecx]                          // 0x00719c62    8b11
@@ -3139,7 +3139,7 @@ _jmp_addr_0x00719e90:    sub                esp, 0x5c                           
                          {disp8} mov        ecx, dword ptr [esp + 0x14]                   // 0x00719fae    8b4c2414
                          {disp8} mov        dword ptr [esp + 0x2c], ecx                   // 0x00719fb2    894c242c
                          {disp8} lea        ecx, dword ptr [esp + 0x24]                   // 0x00719fb6    8d4c2424
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00719fba    e8d1900e00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00719fba    e8d1900e00
                          fstp               st(0)                                         // 0x00719fbf    ddd8
                          {disp8} fild       dword ptr [esp + 0x24]                        // 0x00719fc1    db442424
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00719fc5    8b0d5c19d000

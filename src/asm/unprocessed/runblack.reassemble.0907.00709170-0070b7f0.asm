@@ -66,7 +66,7 @@
 .extern _atexit
 .extern ___RTDynamicCast
 .extern ??2@YAPAXIPBDI@Z
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0080b440
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _CHAR2WCHAR__FPc
@@ -1464,7 +1464,7 @@ _jmp_addr_0x00709c40:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          test               eax, eax                                      // 0x00709d25    85c0
                          {disp8} je         .Lbl_addr_0x00709d8f                          // 0x00709d27    7466
                          mov.s              ecx, esi                                      // 0x00709d29    8bce
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00709d2b    e860930f00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00709d2b    e860930f00
                          fstp               st(0)                                         // 0x00709d30    ddd8
                          fild               dword ptr [esi]                               // 0x00709d32    db06
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x00709d34    8b0d5c19d000
@@ -1521,7 +1521,7 @@ _jmp_addr_0x00709c40:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} lea        ecx, dword ptr [esp + 0x3c]                   // 0x00709e0f    8d4c243c
                          {disp32} mov       dword ptr [esp + 0x000000a4], edx             // 0x00709e13    899424a4000000
                          {disp8} mov        dword ptr [esp + 0x20], eax                   // 0x00709e1a    89442420
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00709e1e    e86d920f00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00709e1e    e86d920f00
                          {disp8} fadd       dword ptr [esp + 0x20]                        // 0x00709e23    d8442420
                          {disp32} lea       ecx, dword ptr [esp + 0x0000009c]             // 0x00709e27    8d8c249c000000
                          push               ecx                                           // 0x00709e2e    51

@@ -223,7 +223,7 @@ _jmp_addr_0x006063d0:    push               esi                                 
                          {disp8} lea        edi, dword ptr [esi + 0x14]                   // 0x00606449    8d7e14
                          mov.s              ecx, edi                                      // 0x0060644c    8bcf
                          {disp8} mov        dword ptr [esp + 0x08], eax                   // 0x0060644e    89442408
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00606452    e839cc1f00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00606452    e839cc1f00
                          {disp8} fadd       dword ptr [esp + 0x08]                        // 0x00606457    d8442408
                          {disp8} mov        ecx, dword ptr [esi + 0x28]                   // 0x0060645b    8b4e28
                          push               0x3f800000                                    // 0x0060645e    680000803f

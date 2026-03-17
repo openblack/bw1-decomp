@@ -42,7 +42,7 @@
 .extern ?Exists@LHOSFile@@SAIPAD@Z
 .extern _sprintf
 .extern ??2@YAPAXIPBDI@Z
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x0083b450
 .extern ?Free@LH3DMem@@SAXPAX@Z
 
@@ -218,7 +218,7 @@ _jmp_addr_0x0047d640:    sub                esp, 0x14                           
                          xor.s              ebx, ebx                                      // 0x0047d681    33db
                          mov.s              ecx, esi                                      // 0x0047d683    8bce
                          {disp8} mov        dword ptr [esp + 0x0c], ebx                   // 0x0047d685    895c240c
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0047d689    e8025a3800
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x0047d689    e8025a3800
                          {disp8} fadd       dword ptr [esp + 0x10]                        // 0x0047d68e    d8442410
                          mov                edx, dword ptr [edi]                          // 0x0047d692    8b17
                          push               ebx                                           // 0x0047d694    53
@@ -312,7 +312,7 @@ _jmp_addr_0x0047d740:    sub                esp, 0x14                           
                          xor.s              ebx, ebx                                      // 0x0047d760    33db
                          mov.s              ecx, esi                                      // 0x0047d762    8bce
                          {disp8} mov        dword ptr [esp + 0x0c], ebx                   // 0x0047d764    895c240c
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0047d768    e823593800
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x0047d768    e823593800
                          {disp8} fadd       dword ptr [esp + 0x10]                        // 0x0047d76d    d8442410
                          mov                edx, dword ptr [edi]                          // 0x0047d771    8b17
                          push               ebx                                           // 0x0047d773    53

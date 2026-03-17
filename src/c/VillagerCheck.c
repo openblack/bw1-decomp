@@ -140,7 +140,7 @@ void __fastcall InteractDecideWhatToDoForOtherVillager__8VillagerFv(struct Villa
     asm("add                esp, 0x08");                                     // 0x00756dd6    83c408
     asm("push               eax");                                           // 0x00756dd9    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x18]");                   // 0x00756dda    8d4c2418
-    asm("call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z");            // 0x00756dde    e88de6eaff
+    asm("call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z");            // 0x00756dde    e88de6eaff
     asm("test               ebp, ebp");                                      // 0x00756de3    85ed
     asm("{disp32} jne       LAB__addr_0x00756d64");                          // 0x00756de5    0f8579ffffff
     asm("mov                edx, dword ptr [edi]");                          // 0x00756deb    8b17
@@ -449,7 +449,7 @@ bool32_t __fastcall FindCloseObjectsForInteract__8VillagerFP35LHOrderedLinkedLis
     asm("add                esp, 0x08");                                     // 0x00757157    83c408
     asm("push               eax");                                           // 0x0075715a    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x50]");                   // 0x0075715b    8d4c2450
-    asm("call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z");            // 0x0075715f    e80ce3eaff
+    asm("call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z");            // 0x0075715f    e80ce3eaff
     asm("dec                dword ptr [esp + 0x20]");                        // 0x00757164    ff4c2420
     asm("{disp32} jne       LAB__addr_0x00756ed4");                          // 0x00757168    0f8566fdffff
     asm("pop                edi");                                           // 0x0075716e    5f

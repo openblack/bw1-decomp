@@ -1579,7 +1579,7 @@ struct MapCoords* __fastcall GetPosOutside__5AbodeFfff(struct Abode* this, const
     asm("add                esp, 0x2c");                                     // 0x0040738c    83c42c
     asm("push               eax");                                           // 0x0040738f    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x0c]");                   // 0x00407390    8d4c240c
-    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");            // 0x00407394    e877e01f00
+    asm("call               ??YMapCoords@@QAEXABU0@@Z");            // 0x00407394    e877e01f00
     asm("{disp8} mov        eax, dword ptr [esp + 0x24]");                   // 0x00407399    8b442424
     asm("{disp8} mov        edx, dword ptr [esp + 0x08]");                   // 0x0040739d    8b542408
     asm("mov.s              ecx, eax");                                      // 0x004073a1    8bc8

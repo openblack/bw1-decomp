@@ -46,7 +46,7 @@
 .extern ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z
 .extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z
-.extern ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z
+.extern ??YMapCoords@@QAEXABUJustMapXZ@@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00618c40
 .extern _jmp_addr_0x0063e370
@@ -454,12 +454,12 @@ start_0x005076a0_0x00509480:
                          shl                ecx, 5                                        // 0x00507b38    c1e105
                          {disp8} fld        dword ptr [ecx + eax * 0x1 + 0x3c]            // 0x00507b3b    d944013c
                          push               edi                                           // 0x00507b3f    57
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]              // 0x00507b40    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]     // 0x00507b40    d80d00c48a00
                          {disp8} lea        edi, dword ptr [ecx + eax * 0x1 + 0x3c]       // 0x00507b46    8d7c013c
                          call               __ftol                                        // 0x00507b4a    e8b1982900
                          {disp8} mov        dword ptr [esp + 0x08], eax                   // 0x00507b4f    89442408
                          {disp8} fld        dword ptr [edi + 0x08]                        // 0x00507b53    d94708
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]              // 0x00507b56    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]     // 0x00507b56    d80d00c48a00
                          call               __ftol                                        // 0x00507b5c    e89f982900
                          {disp8} lea        edx, dword ptr [esp + 0x08]                   // 0x00507b61    8d542408
                          push               edx                                           // 0x00507b65    52
@@ -1726,9 +1726,9 @@ start_0x005076a0_0x00509480:
                          {disp8} fstp       dword ptr [esp + 0x30]                        // 0x00508a41    d95c2430
                          {disp8} fst        dword ptr [esp + 0x34]                        // 0x00508a45    d9542434
                          {disp8} fld        dword ptr [esp + 0x2c]                        // 0x00508a49    d944242c
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]              // 0x00508a4d    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]     // 0x00508a4d    d80d00c48a00
                          call               __ftol                                        // 0x00508a53    e8a8892900
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]              // 0x00508a58    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]     // 0x00508a58    d80d00c48a00
                          {disp8} mov        dword ptr [esp + 0x38], eax                   // 0x00508a5e    89442438
                          call               __ftol                                        // 0x00508a62    e899892900
                          mov                edx, dword ptr [esi]                          // 0x00508a67    8b16
@@ -2052,7 +2052,7 @@ start_0x005076a0_0x00509480:
                          add                esp, 0x08                                     // 0x00508db6    83c408
                          push               eax                                           // 0x00508db9    50
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                   // 0x00508dba    8d4c241c
-                         call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z            // 0x00508dbe    e8adc60f00
+                         call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z            // 0x00508dbe    e8adc60f00
                          test               ebp, ebp                                      // 0x00508dc3    85ed
                          {disp8} jne        .Lbl_addr_0x00508d64                          // 0x00508dc5    759d
                          test               edi, edi                                      // 0x00508dc7    85ff

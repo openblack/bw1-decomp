@@ -907,7 +907,7 @@ bool32_t __fastcall FindTreeNearVillager__8VillagerFPP4Tree(struct Villager* thi
     asm("add                esp, 0x08");                                     // 0x0075fdb3    83c408
     asm("push               eax");                                           // 0x0075fdb6    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x24]");                   // 0x0075fdb7    8d4c2424
-    asm("call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z");            // 0x0075fdbb    e8b056eaff
+    asm("call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z");            // 0x0075fdbb    e8b056eaff
     asm("dec                dword ptr [esp + 0x14]");                        // 0x0075fdc0    ff4c2414
     asm("{disp32} jne       LAB__addr_0x0075fd41");                          // 0x0075fdc4    0f8577ffffff
     asm("test               ebx, ebx");                                      // 0x0075fdca    85db

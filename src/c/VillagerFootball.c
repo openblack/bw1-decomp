@@ -1613,7 +1613,7 @@ void __fastcall FootballAttackerMoveToBePassedProcess__8VillagerFP8Football(stru
     asm("{disp8} mov        ecx, dword ptr [edi + 0x08]");                   // 0x0075d87e    8b4f08
     asm("{disp8} mov        dword ptr [esp + 0x4c], ecx");                   // 0x0075d881    894c244c
     asm("mov.s              ecx, edi");                                      // 0x0075d885    8bcf
-    asm("call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z");// 0x0075d887    e804580a00
+    asm("call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z");// 0x0075d887    e804580a00
     asm("{disp8} fadd       dword ptr [esp + 0x4c]");                        // 0x0075d88c    d844244c
     asm("push               esi");                                           // 0x0075d890    56
     asm("mov.s              ecx, ebx");                                      // 0x0075d891    8bcb
@@ -1634,7 +1634,7 @@ void __fastcall FootballAttackerMoveToBePassedProcess__8VillagerFP8Football(stru
     asm("{disp8} mov        eax, dword ptr [edi + 0x08]");                   // 0x0075d8c4    8b4708
     asm("mov.s              ecx, edi");                                      // 0x0075d8c7    8bcf
     asm("{disp8} mov        dword ptr [esp + 0x4c], eax");                   // 0x0075d8c9    8944244c
-    asm("call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z");// 0x0075d8cd    e8be570a00
+    asm("call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z");// 0x0075d8cd    e8be570a00
     asm("{disp8} fadd       dword ptr [esp + 0x4c]");                        // 0x0075d8d2    d844244c
     asm("fild               dword ptr [edi]");                               // 0x0075d8d6    db07
     asm("{disp32} fmul      dword ptr [_rdata_float_coord_to_point]");       // 0x0075d8d8    d80da4a38a00

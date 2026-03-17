@@ -9,7 +9,7 @@
 .extern __ftol
 .extern _jmp_addr_0x007feb30
 .extern _jmp_addr_0x00801c90
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x008786d0
 
@@ -37,7 +37,7 @@ _jmp_addr_0x005e2d10:    sub                esp, 0x0c                           
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]             // 0x005e2d43    8d4c240c
                          {disp8} mov        dword ptr [esp + 0x10], eax             // 0x005e2d47    89442410
                          {disp8} mov        dword ptr [esp + 0x14], 0x00000000      // 0x005e2d4b    c744241400000000
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z                  // 0x005e2d53    e838032200
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z                  // 0x005e2d53    e838032200
                          {disp8} fstp       dword ptr [esi + 0x04]                  // 0x005e2d58    d95e04
                          {disp32} mov       eax, dword ptr [data_bytes + 0x3542f0]  // 0x005e2d5b    a1f0a2d100
                          test               eax, eax                                // 0x005e2d60    85c0
@@ -201,7 +201,7 @@ _GetNearClipping__11LandFeatureFv@0:    {disp32} mov       eax, dword ptr [data_
                          {disp8} lea        ecx, dword ptr [esp + 0x04]             // 0x005e2f7f    8d4c2404
                          {disp8} mov        dword ptr [esp + 0x08], eax             // 0x005e2f83    89442408
                          {disp8} mov        dword ptr [esp + 0x0c], 0x00000000      // 0x005e2f87    c744240c00000000
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z                  // 0x005e2f8f    e8fc002200
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z                  // 0x005e2f8f    e8fc002200
                          {disp32} fsubr     dword ptr [_g_camera + 0x4]       // 0x005e2f94    d82dbc1dea00
                          {disp8} fst        dword ptr [esp + 0x00]                  // 0x005e2f9a    d9542400
                          {disp32} fcomp     dword ptr [__real@4@00000000000000000000]             // 0x005e2f9e    d81d98a38a00
@@ -257,7 +257,7 @@ _RequestChangeTexture__FP6Object:    sub                esp, 0x4c               
                          {disp8} lea        edi, dword ptr [ebx + 0x14]             // 0x005e3048    8d7b14
                          mov.s              ecx, edi                                // 0x005e304b    8bcf
                          {disp8} mov        dword ptr [esp + 0x14], eax             // 0x005e304d    89442414
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z                  // 0x005e3051    e83a002200
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z                  // 0x005e3051    e83a002200
                          {disp8} fadd       dword ptr [esp + 0x14]                  // 0x005e3056    d8442414
                          {disp8} fstp       dword ptr [esp + 0x24]                  // 0x005e305a    d95c2424
                          fild               dword ptr [edi]                         // 0x005e305e    db07

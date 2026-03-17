@@ -110,7 +110,7 @@ bool32_t __fastcall ChildFollowsMother__8VillagerFv(struct Villager* this)
     asm("add                esp, 0x18");                                     // 0x007579a2    83c418
     asm("push               eax");                                           // 0x007579a5    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x10]");                   // 0x007579a6    8d4c2410
-    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");            // 0x007579aa    e861daeaff
+    asm("call               ??YMapCoords@@QAEXABU0@@Z");            // 0x007579aa    e861daeaff
     asm("{disp8} lea        ecx, dword ptr [esp + 0x0c]");                   // 0x007579af    8d4c240c
     asm("call               _jmp_addr_0x00603840");                          // 0x007579b3    e888beeaff
     asm("test               eax, eax");                                      // 0x007579b8    85c0

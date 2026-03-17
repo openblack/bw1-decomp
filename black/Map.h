@@ -16,6 +16,7 @@
 
 class Fixed;
 class Object;
+struct MapCoords;
 
 struct MapCell
 {
@@ -43,12 +44,14 @@ struct MapCell
     uint32_t GetZ();
     // win1.41 00601690 mac 10570500 MapCell::FindFixedOnMap(Object *)
     Fixed* FindFixedOnMap(Object* param_1);
-};
+    // win1.41 00601d10 mac 101a6740 MapCell::CollideWithFixe(const MapCoords&)
+    int CollideWithFixe(const MapCoords& coords);
+  };
 
 struct MapCellIterator
 {
     Object* object; /* 0x0 */
-    bool is_fixed;
+    bool32_t is_fixed;
     MapCell* cell;
 
     // Non-virtual methods
@@ -56,6 +59,9 @@ struct MapCellIterator
     // win1.41 inlined mac 1002c620 MapCellIterator::MoveToMobileObsIfNeededAndPoss(void)
     void MoveToMobileObsIfNeededAndPoss();
 };
+
+#define MAP_CELL_COUNT_X 0x200
+#define MAP_CELL_COUNT_Z 0x200
 
 // win1.41 00bf4140 mac inlined GMap::`RTTI Type Descriptor'
 // win1.41 009b1ef0 mac inlined GMap::`RTTI Base Class Descriptor'
@@ -84,7 +90,7 @@ public:
     uint8_t field_0x3e;
     uint8_t field_0x3f;
     uint32_t field_0x40;
-    MapCell cells[0x200][0x200];
+    MapCell cells[MAP_CELL_COUNT_X * MAP_CELL_COUNT_Z];
     uint16_t count_0x200044;
     uint8_t field_0x200046;
     uint8_t field_0x200047;
