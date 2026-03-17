@@ -760,7 +760,7 @@ void __fastcall CallVirtualFunctionsForCreation__5AbodeFRC9MapCoords(struct Obje
     asm("{disp8} mov        esi, dword ptr [esi + 0x40]");                   // 0x004032fa    8b7640
     asm("mov.s              ecx, ebx");                                      // 0x004032fd    8bcb
     asm("{disp8} mov        dword ptr [esp + 0x10], eax");                   // 0x004032ff    89442410
-    asm("call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z");// 0x00403303    e888fd3f00
+    asm("call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z");// 0x00403303    e888fd3f00
     asm("{disp8} fadd       dword ptr [esp + 0x10]");                        // 0x00403308    d8442410
     asm("{disp8} fstp       dword ptr [esp + 0x18]");                        // 0x0040330c    d95c2418
     asm("fild               dword ptr [ebx]");                               // 0x00403310    db03

@@ -21,7 +21,7 @@ start_0x00502660_0x00502810:
                          {disp32} lea      ecx, dword ptr [ecx + eax * 0x1 + 0x00000fe4] // 0x00502688    8d8c01e40f0000
                          {disp8} mov       dword ptr [esp + 0x18], edx                   // 0x0050268f    89542418
                          {disp8} mov       edx, dword ptr [ecx + 0x04]                   // 0x00502693    8b5104
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x341c]              // 0x00502696    d80d1cc48a00
+                         {disp32} fmul     dword ptr [__real@4@3fef8000000000000000]     // 0x00502696    d80d1cc48a00
                          {disp8} mov       dword ptr [esp + 0x1c], edx                   // 0x0050269c    8954241c
                          {disp8} mov       ecx, dword ptr [ecx + 0x08]                   // 0x005026a0    8b4908
                          {disp8} fsubr     dword ptr [esp + 0x18]                        // 0x005026a3    d86c2418
@@ -33,7 +33,7 @@ start_0x00502660_0x00502810:
                          shl               edx, 5                                        // 0x005026bb    c1e205
                          mov.s             ecx, esi                                      // 0x005026be    8bce
                          {disp32} fmul     dword ptr [rdata_bytes + 0x2864c]             // 0x005026c0    d80d4c168d00
-                         {disp32} fmul     dword ptr [rdata_bytes + 0x341c]              // 0x005026c6    d80d1cc48a00
+                         {disp32} fmul     dword ptr [__real@4@3fef8000000000000000]     // 0x005026c6    d80d1cc48a00
                          {disp8} fsubr     dword ptr [esp + 0x20]                        // 0x005026cc    d86c2420
                          {disp8} fst       dword ptr [esp + 0x10]                        // 0x005026d0    d9542410
                          {disp8} fmul      dword ptr [esp + 0x10]                        // 0x005026d4    d84c2410

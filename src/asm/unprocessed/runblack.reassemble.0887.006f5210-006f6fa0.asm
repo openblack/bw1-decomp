@@ -821,11 +821,11 @@ start_0x006f5210_0x006f6fa0:
                          {disp8} je         .Lbl_addr_0x006f5a51                          // 0x006f5a11    743e
                          {disp8} fld        dword ptr [esp + 0x08]                        // 0x006f5a13    d9442408
                          {disp8} mov        ecx, dword ptr [esp + 0x04]                   // 0x006f5a17    8b4c2404
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]              // 0x006f5a1b    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]     // 0x006f5a1b    d80d00c48a00
                          {disp32} mov       dword ptr [esi + 0x000011b4], ecx             // 0x006f5a21    898eb4110000
                          call               __ftol                                        // 0x006f5a27    e8d4b90a00
                          {disp8} fld        dword ptr [esp + 0x0c]                        // 0x006f5a2c    d944240c
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]              // 0x006f5a30    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]     // 0x006f5a30    d80d00c48a00
                          {disp32} mov       dword ptr [esi + 0x000011a8], eax             // 0x006f5a36    8986a8110000
                          call               __ftol                                        // 0x006f5a3c    e8bfb90a00
                          {disp32} mov       dword ptr [esi + 0x000011ac], eax             // 0x006f5a41    8986ac110000

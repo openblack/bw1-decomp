@@ -16,7 +16,7 @@
 .extern _sprintf
 .extern ?Release@LH3DSmoke@@QAEXXZ
 .extern _jmp_addr_0x007fb5c0
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern ?CreateFromHD@LH3DMesh@@SAPAV1@PBD_N@Z
 .extern @Release__8LH3DMeshFv@4
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
@@ -595,27 +595,27 @@ start_0x00787120_0x007878e0:
                          mov.s              edx, edi                                      // 0x007877f0    8bd7
                          call               dword ptr [eax + 0x1cc]                       // 0x007877f2    ff90cc010000
                          {disp8} fld        dword ptr [esp + 0x2c]                        // 0x007877f8    d944242c
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]              // 0x007877fc    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]     // 0x007877fc    d80d00c48a00
                          call               __ftol                                        // 0x00787802    e8f99b0100
                          {disp8} fld        dword ptr [esp + 0x34]                        // 0x00787807    d9442434
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]              // 0x0078780b    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]     // 0x0078780b    d80d00c48a00
                          {disp8} mov        dword ptr [esp + 0x20], eax                   // 0x00787811    89442420
                          call               __ftol                                        // 0x00787815    e8e69b0100
                          {disp8} fld        dword ptr [esp + 0x2c]                        // 0x0078781a    d944242c
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3408]              // 0x0078781e    d80d08c48a00
+                         {disp32} fmul      dword ptr [__real@4@400f8000000000000000]     // 0x0078781e    d80d08c48a00
                          {disp8} mov        dword ptr [esp + 0x24], eax                   // 0x00787824    89442424
                          {disp8} mov        dword ptr [esp + 0x28], ebx                   // 0x00787828    895c2428
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3404]              // 0x0078782c    d80d04c48a00
                          call               __ftol                                        // 0x00787832    e8c99b0100
                          {disp8} fld        dword ptr [esp + 0x34]                        // 0x00787837    d9442434
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3408]              // 0x0078783b    d80d08c48a00
+                         {disp32} fmul      dword ptr [__real@4@400f8000000000000000]     // 0x0078783b    d80d08c48a00
                          {disp8} mov        dword ptr [esp + 0x38], eax                   // 0x00787841    89442438
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3404]              // 0x00787845    d80d04c48a00
                          call               __ftol                                        // 0x0078784b    e8b09b0100
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x00787850    8d4c2438
                          {disp8} mov        dword ptr [esp + 0x3c], eax                   // 0x00787854    8944243c
                          {disp8} mov        dword ptr [esp + 0x40], ebx                   // 0x00787858    895c2440
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0078785c    e82fb80700
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x0078785c    e82fb80700
                          {disp8} fsubr      dword ptr [esp + 0x30]                        // 0x00787861    d86c2430
                          cmp                dword ptr [esi], ebx                          // 0x00787865    391e
                          {disp8} mov        ecx, dword ptr [ebp + 0x00]                   // 0x00787867    8b4d00

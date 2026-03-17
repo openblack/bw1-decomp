@@ -41,7 +41,7 @@
 .extern _jmp_addr_0x007e6450
 .extern _jmp_addr_0x007e64a0
 .extern _jmp_addr_0x00801c90
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x00814fd0
 .extern _jmp_addr_0x00839f10
 .extern ?SetTransform@LH3DAnim@@SAMPAULHMatrix@@PAULH3DMesh@@AAU2@@Z
@@ -1065,7 +1065,7 @@ _jmp_addr_0x0046db70:    sub                esp, 0x1c                           
                          add                esi, 0x14                                     // 0x0046db95    83c614
                          {disp8} mov        dword ptr [esp + 0x24], ecx                   // 0x0046db98    894c2424
                          mov.s              ecx, esi                                      // 0x0046db9c    8bce
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0046db9e    e8ed543900
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x0046db9e    e8ed543900
                          {disp8} fadd       dword ptr [esp + 0x24]                        // 0x0046dba3    d8442424
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0046dba7    8b0d5c19d000
                          {disp8} fstp       dword ptr [esp + 0x18]                        // 0x0046dbad    d95c2418

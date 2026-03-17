@@ -19,7 +19,7 @@
 .extern _jmp_addr_0x0073cd20
 .extern __ftol
 .extern ___RTDynamicCast
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 
 .globl _jmp_addr_0x0070e820
 
@@ -686,7 +686,7 @@ _jmp_addr_0x0070e820:    sub                esp, 0x0000041c                    /
                          {disp8} mov        esi, dword ptr [esi + 0x40]        // 0x0070efff    8b7640
                          mov.s              ecx, edi                           // 0x0070f002    8bcf
                          {disp8} mov        dword ptr [esp + 0x18], eax        // 0x0070f004    89442418
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z             // 0x0070f008    e883400f00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z             // 0x0070f008    e883400f00
                          {disp8} fadd       dword ptr [esp + 0x18]             // 0x0070f00d    d8442418
                          fild               dword ptr [edi]                    // 0x0070f011    db07
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]          // 0x0070f013    d80da4a38a00

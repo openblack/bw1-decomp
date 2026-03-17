@@ -19,7 +19,7 @@
 .extern ?GetPlayer@GGame@@QAEPAVGPlayer@@I@Z
 .extern _jmp_addr_0x005dc8d0
 .extern ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z
-.extern ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z
+.extern ??YMapCoords@@QAEXABUJustMapXZ@@@Z
 .extern ??HMapCoords@@QBE?AU0@ABU0@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x0064a9f0
@@ -3135,7 +3135,7 @@ _jmp_addr_0x00668790:    sub                esp, 0x0c                           
                          add                esp, 0x08                                // 0x0066897b    83c408
                          push               eax                                      // 0x0066897e    50
                          {disp8} lea        ecx, dword ptr [esp + 0x20]              // 0x0066897f    8d4c2420
-                         call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z       // 0x00668983    e8e8caf9ff
+                         call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z       // 0x00668983    e8e8caf9ff
                          test               ebp, ebp                                 // 0x00668988    85ed
                          {disp8} jne        .Lbl_addr_0x0066892f                     // 0x0066898a    75a3
                          {disp32} fld       dword ptr [__real@4@00000000000000000000]              // 0x0066898c    d90598a38a00

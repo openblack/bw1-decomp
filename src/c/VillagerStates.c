@@ -644,7 +644,7 @@ bool32_t __fastcall ArrivesAtStoragePitForResource__8VillagerF13RESOURCE_TYPEUl1
     asm("{disp8} lea        ecx, dword ptr [esp + 0x28]");                     // 0x00769a67    8d4c2428
     asm("{disp8} mov        dword ptr [esp + 0x2c], eax");                     // 0x00769a6b    8944242c
     asm("{disp8} mov        dword ptr [esp + 0x30], 0x00000000");              // 0x00769a6f    c744243000000000
-    asm("call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z");// 0x00769a77    e814960900
+    asm("call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z");// 0x00769a77    e814960900
     asm("{disp8} fsubr      dword ptr [esp + 0x20]");                          // 0x00769a7c    d86c2420
     asm("mov                edx, dword ptr [esi]");                            // 0x00769a80    8b16
     asm("push               0x0");                                             // 0x00769a82    6a00
@@ -2225,7 +2225,7 @@ bool32_t __fastcall SetupInspectObject__8VillagerFP6Object(struct Villager* this
     asm("{disp8} lea        ecx, dword ptr [esp + 0x30]");                     // 0x0076abe8    8d4c2430
     asm("{disp8} mov        dword ptr [esp + 0x34], eax");                     // 0x0076abec    89442434
     asm("{disp8} mov        dword ptr [esp + 0x38], 0x00000000");              // 0x0076abf0    c744243800000000
-    asm("call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z");// 0x0076abf8    e893840900
+    asm("call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z");// 0x0076abf8    e893840900
     asm("{disp8} fsubr      dword ptr [esp + 0x1c]");                          // 0x0076abfd    d86c241c
     asm("push               0x000000e9");                                      // 0x0076ac01    68e9000000
     asm("{disp8} lea        eax, dword ptr [esp + 0x28]");                     // 0x0076ac06    8d442428
@@ -2906,7 +2906,7 @@ bool32_t __fastcall GotoCongregateInTownAfterEmergency__8VillagerFv(struct Villa
     asm("add                esp, 0x0c");                                       // 0x0076b2d0    83c40c
     asm("push               eax");                                             // 0x0076b2d3    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                     // 0x0076b2d4    8d4c2414
-    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");              // 0x0076b2d8    e833a1e9ff
+    asm("call               ??YMapCoords@@QAEXABU0@@Z");              // 0x0076b2d8    e833a1e9ff
     asm("push               0x000000f3");                                      // 0x0076b2dd    68f3000000
     asm("{disp8} lea        eax, dword ptr [esp + 0x14]");                     // 0x0076b2e2    8d442414
     asm("push               eax");                                             // 0x0076b2e6    50
@@ -3064,7 +3064,7 @@ bool32_t __fastcall GoAndChilloutOutsideHome__8VillagerFv(struct Villager* this)
     asm("add                esp, 0x0c");                                       // 0x0076b477    83c40c
     asm("push               eax");                                             // 0x0076b47a    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x20]");                     // 0x0076b47b    8d4c2420
-    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");              // 0x0076b47f    e88c9fe9ff
+    asm("call               ??YMapCoords@@QAEXABU0@@Z");              // 0x0076b47f    e88c9fe9ff
     asm("{disp8} lea        ebx, dword ptr [esp + 0x1c]");                     // 0x0076b484    8d5c241c
     asm("push               ebx");                                             // 0x0076b488    53
     asm("{disp8} mov        ebx, dword ptr [esp + 0x10]");                     // 0x0076b489    8b5c2410
@@ -3342,7 +3342,7 @@ void __fastcall GetMeToMyChillOutPos__8VillagerFM8VillagerFPCvPvR9MapCoords_iR9M
     asm("add                esp, 0x14");                                       // 0x0076b739    83c414
     asm("push               eax");                                             // 0x0076b73c    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                     // 0x0076b73d    8d4c241c
-    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");              // 0x0076b741    e8ca9ce9ff
+    asm("call               ??YMapCoords@@QAEXABU0@@Z");              // 0x0076b741    e8ca9ce9ff
     asm("LAB__addr_0x0076b746:");
     asm("push               esi");                                             // 0x0076b746    56
     asm("sub                esp, 0x10");                                       // 0x0076b747    83ec10
@@ -3490,7 +3490,7 @@ bool32_t __fastcall BreederJustLanded__8VillagerFv(struct Villager* this)
     asm("add                esp, 0x08");                                       // 0x0076b8c9    83c408
     asm("push               eax");                                             // 0x0076b8cc    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x28]");                     // 0x0076b8cd    8d4c2428
-    asm("call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z");              // 0x0076b8d1    e89a9be9ff
+    asm("call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z");              // 0x0076b8d1    e89a9be9ff
     asm("dec                dword ptr [esp + 0x14]");                          // 0x0076b8d6    ff4c2414
     asm("{disp32} jne       LAB__addr_0x0076b85a");                            // 0x0076b8da    0f857affffff
     asm("{disp8} mov        eax, dword ptr [esp + 0x18]");                     // 0x0076b8e0    8b442418

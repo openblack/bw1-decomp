@@ -81,7 +81,7 @@ void __cdecl SpiralIncrement__6GUtilsFR9MapCoordsRlRlf(struct MapCoords* param_1
 // win1.41 0074dc50 mac 1004cd50 GUtils::ConvertGameAngleTo3D(long)
 float __cdecl ConvertGameAngleTo3D__6GUtilsFl(uint32_t angle) asm("?ConvertGameAngleTo3D@GUtils@@SAMJ@Z");
 // win1.41 0074dcc0 mac 10032220 GUtils::ConvertWholeDistanceToMeters(long)
-float __cdecl ConvertWholeDistanceToMeters__6GUtilsFl(int param_1) asm("?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z");
+float __cdecl ConvertWholeDistanceToMeters__6GUtilsFl(int param_1) asm("?ConvertWholeDistanceToMeters@GUtils@@SAMH@Z");
 // win1.41 0074e3a0 mac 104fa7f0 GUtils::FindNearestDrinkingWater(MapCoords &, MapCoords &, float)
 bool __cdecl FindNearestDrinkingWater__6GUtilsFR9MapCoordsR9MapCoordsf(struct MapCoords* param_1, struct MapCoords* param_2, float max_dist) asm("?FindNearestDrinkingWater@GUtils@@SAIAAUMapCoords@@0M@Z");
 // win1.41 0074f170 mac 10067300 GUtils::SigmoidThreshold(float, float)

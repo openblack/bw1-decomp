@@ -599,7 +599,7 @@ bool32_t __fastcall DoGoingHome__8VillagerF15VILLAGER_STATES15VILLAGER_STATES(st
     asm("add                esp, 0x0c");                                     // 0x00760435    83c40c
     asm("push               eax");                                           // 0x00760438    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                   // 0x00760439    8d4c2414
-    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");            // 0x0076043d    e8ce4feaff
+    asm("call               ??YMapCoords@@QAEXABU0@@Z");            // 0x0076043d    e8ce4feaff
     asm("{disp8} lea        edx, dword ptr [esp + 0x10]");                   // 0x00760442    8d542410
     asm("push               edx");                                           // 0x00760446    52
     asm("mov.s              ecx, esi");                                      // 0x00760447    8bce
@@ -627,7 +627,7 @@ bool32_t __fastcall DoGoingHome__8VillagerF15VILLAGER_STATES15VILLAGER_STATES(st
     asm("add                esp, 0x0c");                                     // 0x0076049e    83c40c
     asm("push               eax");                                           // 0x007604a1    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                   // 0x007604a2    8d4c2414
-    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");            // 0x007604a6    e8654feaff
+    asm("call               ??YMapCoords@@QAEXABU0@@Z");            // 0x007604a6    e8654feaff
     asm("{disp8} jmp        LAB__addr_0x007604b1");                          // 0x007604ab    eb04
     asm("LAB__addr_0x007604ad:");
     asm("{disp8} mov        ebx, dword ptr [esp + 0x3c]");                   // 0x007604ad    8b5c243c
@@ -784,7 +784,7 @@ struct Town* __fastcall GetTentPos__8VillagerFR9MapCoords(struct Villager* this,
     asm("add                esp, 0x08");                                     // 0x0076063c    83c408
     asm("push               eax");                                           // 0x0076063f    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x20]");                   // 0x00760640    8d4c2420
-    asm("call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z");            // 0x00760644    e8274eeaff
+    asm("call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z");            // 0x00760644    e8274eeaff
     asm("dec                edi");                                           // 0x00760649    4f
     asm("{disp32} jne       LAB__addr_0x007605a6");                          // 0x0076064a    0f8556ffffff
     asm("cmp.s              esi, ebx");                                      // 0x00760650    3bf3
@@ -809,7 +809,7 @@ struct Town* __fastcall GetTentPos__8VillagerFR9MapCoords(struct Villager* this,
     asm("add                esp, 0x0c");                                     // 0x00760698    83c40c
     asm("push               eax");                                           // 0x0076069b    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x20]");                   // 0x0076069c    8d4c2420
-    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");            // 0x007606a0    e86b4deaff
+    asm("call               ??YMapCoords@@QAEXABU0@@Z");            // 0x007606a0    e86b4deaff
     asm("{disp8} mov        al, byte ptr [esp + 0x13]");                     // 0x007606a5    8a442413
     asm("inc                al");                                            // 0x007606a9    fec0
     asm("cmp                al, 0x03");                                      // 0x007606ab    3c03
@@ -2417,7 +2417,7 @@ bool32_t __fastcall WaitForArtifactDance__8VillagerFv(struct Villager* this)
     asm("add                esp, 0x0c");                                     // 0x00761693    83c40c
     asm("push               eax");                                           // 0x00761696    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x00761697    8d4c241c
-    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");            // 0x0076169b    e8703deaff
+    asm("call               ??YMapCoords@@QAEXABU0@@Z");            // 0x0076169b    e8703deaff
     asm("push               esi");                                           // 0x007616a0    56
     asm("sub                esp, 0x10");                                     // 0x007616a1    83ec10
     asm("mov.s              ebx, esp");                                      // 0x007616a4    8bdc

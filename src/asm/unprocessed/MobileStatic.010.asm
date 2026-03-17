@@ -1051,7 +1051,7 @@ _jmp_addr_0x00608840:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          {disp8} lea        edi, dword ptr [esi + 0x14]                   // 0x00608dea    8d7e14
                          mov.s              ecx, edi                                      // 0x00608ded    8bcf
                          {disp8} mov        dword ptr [esp + 0x08], eax                   // 0x00608def    89442408
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00608df3    e898a21f00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00608df3    e898a21f00
                          {disp8} fadd       dword ptr [esp + 0x08]                        // 0x00608df8    d8442408
                          mov                edx, dword ptr [esi]                          // 0x00608dfc    8b16
                          mov.s              ecx, esi                                      // 0x00608dfe    8bce
@@ -1188,7 +1188,7 @@ _jmp_addr_0x00608840:    {disp8} mov        ecx, dword ptr [esp + 0x08]         
                          {disp8} mov        dword ptr [esp + 0x10], ecx                   // 0x00608f7f    894c2410
                          mov.s              ecx, esi                                      // 0x00608f83    8bce
                          fstp               st(0)                                         // 0x00608f85    ddd8
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00608f87    e804a11f00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00608f87    e804a11f00
                          {disp8} fadd       dword ptr [esp + 0x10]                        // 0x00608f8c    d8442410
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x00608f90    8b44240c
                          {disp8} fst        dword ptr [eax + 0x04]                        // 0x00608f94    d95004
@@ -1730,7 +1730,7 @@ _jmp_addr_0x00609340:    push              esi                                  
                          {disp32} mov      esi, dword ptr [data_bytes + 0x378e58]        // 0x00609407    8b3558eed300
                          mov.s             ecx, edi                                      // 0x0060940d    8bcf
                          {disp8} mov       dword ptr [esp + 0x1c], eax                   // 0x0060940f    8944241c
-                         call              ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00609413    e8789c1f00
+                         call              ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00609413    e8789c1f00
                          {disp8} fadd      dword ptr [esp + 0x1c]                        // 0x00609418    d844241c
                          {disp8} lea       edx, dword ptr [esp + 0x0c]                   // 0x0060941c    8d54240c
                          {disp8} lea       ecx, dword ptr [esi + 0x14]                   // 0x00609420    8d4e14
@@ -1856,7 +1856,7 @@ _jmp_addr_0x006094e0:    push              esi                                  
                          {disp8} lea       esi, dword ptr [edi + 0x14]                   // 0x00609559    8d7714
                          {disp8} mov       dword ptr [esp + 0x0c], ecx                   // 0x0060955c    894c240c
                          mov.s             ecx, esi                                      // 0x00609560    8bce
-                         call              ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00609562    e8299b1f00
+                         call              ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00609562    e8299b1f00
                          {disp8} fadd      dword ptr [esp + 0x0c]                        // 0x00609567    d844240c
                          {disp8} lea       edx, dword ptr [esp + 0x10]                   // 0x0060956b    8d542410
                          {disp8} lea       ecx, dword ptr [ebx + 0x14]                   // 0x0060956f    8d4b14

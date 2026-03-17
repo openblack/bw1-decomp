@@ -144,7 +144,7 @@
 .extern _jmp_addr_0x007f8e00
 .extern _jmp_addr_0x007fa990
 .extern _jmp_addr_0x007faa50
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
 .extern _jmp_addr_0x0081b370
 .extern _jmp_addr_0x00828e90
@@ -2527,7 +2527,7 @@ _jmp_addr_0x007809f0:    push               ecx                                 
                          {disp8} mov        edx, dword ptr [esp + 0x28]                   // 0x00780c1e    8b542428
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x00780c22    8d4c2420
                          {disp8} mov        dword ptr [esp + 0x60], edx                   // 0x00780c26    89542460
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00780c2a    e861240800
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00780c2a    e861240800
                          {disp8} fadd       dword ptr [esp + 0x60]                        // 0x00780c2f    d8442460
                          {disp8} lea        ecx, dword ptr [esp + 0x2c]                   // 0x00780c33    8d4c242c
                          {disp8} fstp       dword ptr [esp + 0x18]                        // 0x00780c37    d95c2418

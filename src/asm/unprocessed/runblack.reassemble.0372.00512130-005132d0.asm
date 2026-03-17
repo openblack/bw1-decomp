@@ -55,7 +55,7 @@
 .extern ??2@YAPAXI@Z
 .extern _qsort
 .extern ??2@YAPAXIPBDI@Z
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern @GetStringWidth__13GatheringTextFPwif@20
 
 .globl ??0DialogBoxKeyBinding@@QAE@XZ  
@@ -306,7 +306,7 @@ _globl_ct_0x005122b0:    call              .Lbl_addr_0x005122c0                 
                          mov.s             ecx, edi                                             // 0x00512377    8bcf
                          {disp8} lea       ebp, dword ptr [esi + 0x10]                          // 0x00512379    8d6e10
                          {disp8} mov       dword ptr [esp + 0x14], eax                          // 0x0051237c    89442414
-                         call              ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z     // 0x00512380    e80b0d2f00
+                         call              ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z     // 0x00512380    e80b0d2f00
                          {disp8} fadd      dword ptr [esp + 0x14]                               // 0x00512385    d8442414
                          {disp8} lea       edx, dword ptr [esi + 0x1c]                          // 0x00512389    8d561c
                          mov.s             ecx, ebp                                             // 0x0051238c    8bcd
@@ -428,7 +428,7 @@ _globl_ct_0x005122b0:    call              .Lbl_addr_0x005122c0                 
                          mov.s             ecx, edi                                             // 0x005124d0    8bcf
                          {disp8} lea       ebp, dword ptr [esi + 0x10]                          // 0x005124d2    8d6e10
                          {disp8} mov       dword ptr [esp + 0x10], eax                          // 0x005124d5    89442410
-                         call              ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z     // 0x005124d9    e8b20b2f00
+                         call              ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z     // 0x005124d9    e8b20b2f00
                          {disp8} fadd      dword ptr [esp + 0x10]                               // 0x005124de    d8442410
                          {disp8} lea       edx, dword ptr [esi + 0x1c]                          // 0x005124e2    8d561c
                          mov.s             ecx, ebp                                             // 0x005124e5    8bcd

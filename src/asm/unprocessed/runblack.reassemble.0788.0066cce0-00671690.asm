@@ -43,7 +43,7 @@
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern _jmp_addr_0x00605250
 .extern ?IsCloseToEqual@MapCoords@@QBEIABU1@M@Z
-.extern ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z
+.extern ??YMapCoords@@QAEXABUJustMapXZ@@@Z
 .extern _jmp_addr_0x006055c0
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?ApplyThisToMapCoord@Mobile@@UAEIPAVGInterfaceStatus@@ABUMapCoords@@PAUGestureSystemPacketData@@@Z
@@ -93,7 +93,7 @@
 .extern ??2@YAPAXI@Z
 .extern ??2@YAPAXIPBDI@Z
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern ?ProjectPoint@LH3DTech@@SAIPAULHPoint@@PAH1PAM@Z
 .extern _jmp_addr_0x008321c0
 
@@ -3268,7 +3268,7 @@ _jmp_addr_0x0066e1c0:    push               esi                                 
                          {disp8} mov        esi, dword ptr [esi + 0x40]                   // 0x0066ea43    8b7640
                          {disp8} mov        dword ptr [esp + 0x14], ecx                   // 0x0066ea46    894c2414
                          mov.s              ecx, edi                                      // 0x0066ea4a    8bcf
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0066ea4c    e83f461900
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x0066ea4c    e83f461900
                          {disp8} fadd       dword ptr [esp + 0x14]                        // 0x0066ea51    d8442414
                          {disp8} fstp       dword ptr [esp + 0x1c]                        // 0x0066ea55    d95c241c
                          fild               dword ptr [edi]                               // 0x0066ea59    db07
@@ -4269,7 +4269,7 @@ _jmp_addr_0x0066f270:    sub                esp, 0x3c                           
                          add                esp, 0x08                                     // 0x0066f40c    83c408
                          push               eax                                           // 0x0066f40f    50
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x0066f410    8d4c2438
-                         call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z            // 0x0066f414    e85760f9ff
+                         call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z            // 0x0066f414    e85760f9ff
                          dec                dword ptr [esp + 0x5c]                        // 0x0066f419    ff4c245c
                          {disp32} jne       .Lbl_addr_0x0066f2c6                          // 0x0066f41d    0f85a3feffff
                          test               ebx, ebx                                      // 0x0066f423    85db
@@ -6971,7 +6971,7 @@ _jmp_addr_0x00670e30:    push               ecx                                 
                          {disp8} lea        esi, dword ptr [eax + 0x14]                   // 0x00670ec1    8d7014
                          {disp8} mov        dword ptr [esp + 0x04], ecx                   // 0x00670ec4    894c2404
                          mov.s              ecx, esi                                      // 0x00670ec8    8bce
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00670eca    e8c1211900
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00670eca    e8c1211900
                          {disp8} fadd       dword ptr [esp + 0x04]                        // 0x00670ecf    d8442404
                          {disp8} mov        eax, dword ptr [esp + 0x0c]                   // 0x00670ed3    8b44240c
                          {disp8} fstp       dword ptr [eax + 0x04]                        // 0x00670ed7    d95804
@@ -7050,7 +7050,7 @@ _jmp_addr_0x00670f00:    {disp8} mov        edx, dword ptr [ecx + 0x1c]         
                          {disp8} mov        eax, dword ptr [esi + 0x08]                   // 0x00670f99    8b4608
                          mov.s              ecx, esi                                      // 0x00670f9c    8bce
                          {disp8} mov        dword ptr [esp + 0x04], eax                   // 0x00670f9e    89442404
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00670fa2    e8e9201900
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00670fa2    e8e9201900
                          {disp8} fadd       dword ptr [esp + 0x04]                        // 0x00670fa7    d8442404
                          {disp8} mov        eax, dword ptr [esp + 0x10]                   // 0x00670fab    8b442410
                          {disp8} fstp       dword ptr [eax + 0x04]                        // 0x00670faf    d95804

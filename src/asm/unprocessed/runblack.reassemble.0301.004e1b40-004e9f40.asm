@@ -119,7 +119,7 @@
 .extern _jmp_addr_0x0073d2a0
 .extern ?GetDistanceInMetres@GUtils@@SAMABUMapCoords@@0@Z
 .extern _jmp_addr_0x0074dbf0
-.extern ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z
+.extern ?ConvertWholeDistanceToMeters@GUtils@@SAMH@Z
 .extern _jmp_addr_0x0074de90
 .extern ?GetAbode@Villager@@QAEPAVAbode@@XZ
 .extern _jmp_addr_0x0078ea60
@@ -2591,10 +2591,10 @@ _jmp_addr_0x004e2e70:    {disp32} mov       eax, dword ptr [data_bytes + 0x33ade
                          {disp32} mov       eax, dword ptr [ecx * 0x8 + 0x00cadb70]         // 0x004e3462    8b04cd70dbca00
                          {disp32} mov       esi, dword ptr [ecx * 0x8 + 0x00cadb74]         // 0x004e3469    8b34cd74dbca00
                          push               eax                                             // 0x004e3470    50
-                         call               ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z    // 0x004e3471    e84aa82600
+                         call               ?ConvertWholeDistanceToMeters@GUtils@@SAMH@Z    // 0x004e3471    e84aa82600
                          push               esi                                             // 0x004e3476    56
                          {disp8} fstp       dword ptr [esp + 0x14]                          // 0x004e3477    d95c2414
-                         call               ?ConvertWholeDistanceToMeters@GUtils@@SAMJ@Z    // 0x004e347b    e840a82600
+                         call               ?ConvertWholeDistanceToMeters@GUtils@@SAMH@Z    // 0x004e347b    e840a82600
                          {disp8} mov        eax, dword ptr [esp + 0x24]                     // 0x004e3480    8b442424
                          {disp8} fld        dword ptr [esp + 0x14]                          // 0x004e3484    d9442414
                          fstp               dword ptr [eax]                                 // 0x004e3488    d918

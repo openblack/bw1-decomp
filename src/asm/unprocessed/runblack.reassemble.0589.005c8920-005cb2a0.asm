@@ -52,7 +52,7 @@
 .extern _swprintf
 .extern _wcscmp
 .extern ??2@YAPAXIPBDI@Z
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern _jmp_addr_0x00824b10
 .extern ?RegisterFinishFrameCallback@LH3DRender@@QAEXK_NP6AXPAX@Z1@Z
 .extern _jmp_addr_0x0082f3b0
@@ -910,7 +910,7 @@ _jmp_addr_0x005c9090:    sub                esp, 0x30                           
                          {disp8} lea        ebx, dword ptr [esi + 0x14]                   // 0x005c9137    8d5e14
                          mov.s              ecx, ebx                                      // 0x005c913a    8bcb
                          {disp8} mov        dword ptr [esp + 0x40], eax                   // 0x005c913c    89442440
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x005c9140    e84b9f2300
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x005c9140    e84b9f2300
                          {disp8} fadd       dword ptr [esp + 0x40]                        // 0x005c9145    d8442440
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x005c9149    8b0d5c19d000
                          {disp8} fstp       dword ptr [esp + 0x28]                        // 0x005c914f    d95c2428
@@ -1535,7 +1535,7 @@ _globl_ct_0x005c9460:    {disp32} jmp       .Lbl_addr_0x005c9470                
 .Lbl_addr_0x005c97ac:    {disp8} mov        eax, dword ptr [esi + 0x08]                   // 0x005c97ac    8b4608
                          mov.s              ecx, esi                                      // 0x005c97af    8bce
                          {disp8} mov        dword ptr [esp + 0x1c], eax                   // 0x005c97b1    8944241c
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x005c97b5    e8d6982300
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x005c97b5    e8d6982300
                          {disp8} fadd       dword ptr [esp + 0x1c]                        // 0x005c97ba    d844241c
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                   // 0x005c97be    8d4c240c
                          push               ecx                                           // 0x005c97c2    51

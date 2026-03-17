@@ -100,7 +100,7 @@ struct Villager* __fastcall FindImmediateNeighbour__8VillagerFv(struct Villager*
     asm("add                esp, 0x08");                                     // 0x00759907    83c408
     asm("push               eax");                                           // 0x0075990a    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x18]");                   // 0x0075990b    8d4c2418
-    asm("call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z");            // 0x0075990f    e85cbbeaff
+    asm("call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z");            // 0x0075990f    e85cbbeaff
     asm("test               edi, edi");                                      // 0x00759914    85ff
     asm("{disp8} jne        LAB__addr_0x007598c9");                          // 0x00759916    75b1
     asm("xor.s              eax, eax");                                      // 0x00759918    33c0

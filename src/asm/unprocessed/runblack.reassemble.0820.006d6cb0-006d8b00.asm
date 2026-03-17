@@ -10,7 +10,7 @@
 .extern @SetupMoveToPos__6LivingFRC9MapCoordsUc@13
 .extern _jmp_addr_0x006041c0
 .extern ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z
-.extern ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z
+.extern ??YMapCoords@@QAEXABUJustMapXZ@@@Z
 .extern ??9MapCoords@@QBEIABU0@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern @AreWeThere__13MobileWallHugFf@12
@@ -1291,7 +1291,7 @@ _jmp_addr_0x006d7480:    sub                esp, 0x0000023c                     
                          add                esp, 0x08                                     // 0x006d7ac5    83c408
                          push               eax                                           // 0x006d7ac8    50
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x006d7ac9    8d4c2420
-                         call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z            // 0x006d7acd    e89ed9f2ff
+                         call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z            // 0x006d7acd    e89ed9f2ff
                          test               ebx, ebx                                      // 0x006d7ad2    85db
                          {disp32} jne       .Lbl_addr_0x006d7a34                          // 0x006d7ad4    0f855affffff
                          {disp8} jmp        .Lbl_addr_0x006d7b27                          // 0x006d7ada    eb4b
@@ -1456,7 +1456,7 @@ _jmp_addr_0x006d7480:    sub                esp, 0x0000023c                     
                          add                esp, 0x08                                     // 0x006d7d0a    83c408
                          push               eax                                           // 0x006d7d0d    50
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x006d7d0e    8d4c2420
-                         call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z            // 0x006d7d12    e859d7f2ff
+                         call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z            // 0x006d7d12    e859d7f2ff
                          test               edi, edi                                      // 0x006d7d17    85ff
                          {disp32} jne       .Lbl_addr_0x006d7b89                          // 0x006d7d19    0f856afeffff
                          {disp8} jmp        .Lbl_addr_0x006d7d27                          // 0x006d7d1f    eb06

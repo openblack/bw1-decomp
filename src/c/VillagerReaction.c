@@ -2887,7 +2887,7 @@ bool32_t __fastcall FindNearbyVillagerWhoIsntReacting__8VillagerFv(struct Villag
     asm("add                esp, 0x08");                                     // 0x0076523e    83c408
     asm("push               eax");                                           // 0x00765241    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x18]");                   // 0x00765242    8d4c2418
-    asm("call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z");            // 0x00765246    e82502eaff
+    asm("call               ??YMapCoords@@QAEXABUJustMapXZ@@@Z");            // 0x00765246    e82502eaff
     asm("test               edi, edi");                                      // 0x0076524b    85ff
     asm("{disp8} jne        LAB__addr_0x007651d2");                          // 0x0076524d    7583
     asm("xor.s              eax, eax");                                      // 0x0076524f    33c0
@@ -5118,7 +5118,7 @@ bool32_t __fastcall CrowdReaction__8VillagerFv(struct Villager* this)
     asm("{disp8} lea        esi, dword ptr [edi + 0x14]");                   // 0x00766aab    8d7714
     asm("mov.s              ecx, esi");                                      // 0x00766aae    8bce
     asm("{disp8} mov        dword ptr [esp + 0x14], eax");                   // 0x00766ab0    89442414
-    asm("call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z");// 0x00766ab4    e8d7c50900
+    asm("call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z");// 0x00766ab4    e8d7c50900
     asm("{disp8} fadd       dword ptr [esp + 0x14]");                        // 0x00766ab9    d8442414
     asm("{disp8} fstp       dword ptr [esp + 0x1c]");                        // 0x00766abd    d95c241c
     asm("fild               dword ptr [esi]");                               // 0x00766ac1    db06
@@ -5132,7 +5132,7 @@ bool32_t __fastcall CrowdReaction__8VillagerFv(struct Villager* this)
     asm("{disp8} mov        dword ptr [esp + 0x14], ecx");                   // 0x00766ae2    894c2414
     asm("mov.s              ecx, esi");                                      // 0x00766ae6    8bce
     asm("{disp8} fstp       dword ptr [esp + 0x20]");                        // 0x00766ae8    d95c2420
-    asm("call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z");// 0x00766aec    e89fc50900
+    asm("call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z");// 0x00766aec    e89fc50900
     asm("{disp8} fadd       dword ptr [esp + 0x14]");                        // 0x00766af1    d8442414
     asm("{disp8} fstp       dword ptr [esp + 0x28]");                        // 0x00766af5    d95c2428
     asm("fild               dword ptr [esi]");                               // 0x00766af9    db06

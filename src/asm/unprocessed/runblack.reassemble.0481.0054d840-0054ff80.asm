@@ -247,7 +247,7 @@
 .extern _jmp_addr_0x007e1be0
 .extern _jmp_addr_0x007e1df0
 .extern @Load__12LHScriptX_c_FPcP19LHScriptCommandX_c_PFlP16LHScriptPramX_c__9LH_RETURNPl@24
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern _Report3D__FPCce
 .extern _jmp_addr_0x00825190
 .extern _jmp_addr_0x00826c90
@@ -2758,7 +2758,7 @@ _jmp_addr_0x0054ec80:    push               ecx                                 
                          {disp8} je         .Lbl_addr_0x0054fc1e                          // 0x0054fba0    747c
                          add                esi, 0x14                                     // 0x0054fba2    83c614
                          mov.s              ecx, esi                                      // 0x0054fba5    8bce
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0054fba7    e8e4342b00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x0054fba7    e8e4342b00
                          fstp               st(0)                                         // 0x0054fbac    ddd8
                          fild               dword ptr [esi]                               // 0x0054fbae    db06
                          {disp32} fmul      dword ptr [_rdata_float_coord_to_point]       // 0x0054fbb0    d80da4a38a00

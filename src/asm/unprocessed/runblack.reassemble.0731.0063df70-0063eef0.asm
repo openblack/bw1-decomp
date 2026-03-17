@@ -31,7 +31,7 @@
 .extern ?Read@LHOSFile@@QAEIPAXIPAI@Z
 .extern ?Write@LHOSFile@@QAEIPBXIPAI@Z
 .extern _atexit
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 
 .globl _jmp_addr_0x0063df70
 .globl _jmp_addr_0x0063e090
@@ -576,7 +576,7 @@ _jmp_addr_0x0063e3e0:    {disp8} mov       eax, dword ptr [esp + 0x04]          
                          mov.s             edi, ecx                                      // 0x0063e41c    8bf9
                          mov.s             ecx, esi                                      // 0x0063e41e    8bce
                          {disp8} mov       dword ptr [esp + 0x24], eax                   // 0x0063e420    89442424
-                         call              ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x0063e424    e8674c1c00
+                         call              ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x0063e424    e8674c1c00
                          {disp8} fadd      dword ptr [esp + 0x24]                        // 0x0063e429    d8442424
                          mov               edx, dword ptr [esi]                          // 0x0063e42d    8b16
                          {disp8} lea       ecx, dword ptr [edi + 0x14]                   // 0x0063e42f    8d4f14

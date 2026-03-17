@@ -1159,10 +1159,10 @@ _ProcessState__8CreatureFv:
                          mov                edx, 0x0000000f                                      // 0x00472e6a    ba0f000000
                          call               dword ptr [eax + 0x1cc]                              // 0x00472e6f    ff90cc010000
                          {disp8} fld        dword ptr [esp + 0x14]                               // 0x00472e75    d9442414
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]                     // 0x00472e79    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]            // 0x00472e79    d80d00c48a00
                          call               __ftol                                               // 0x00472e7f    e87ce53200
                          {disp8} fld        dword ptr [esp + 0x1c]                               // 0x00472e84    d944241c
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]                     // 0x00472e88    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]            // 0x00472e88    d80d00c48a00
                          {disp32} mov       dword ptr [esi + 0x00001200], eax                    // 0x00472e8e    898600120000
                          call               __ftol                                               // 0x00472e94    e867e53200
                          {disp32} mov       dword ptr [esi + 0x00001204], eax                    // 0x00472e99    898604120000
@@ -3600,10 +3600,10 @@ _jmp_addr_0x00474350:    push               ebx                                 
                          add                esp, 0x0c                                            // 0x00474ac6    83c40c
                          ret                                                                     // 0x00474ac9    c3
 .Lbl_addr_0x00474aca:    {disp8} fld        dword ptr [esp + 0x0c]                               // 0x00474aca    d944240c
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]                     // 0x00474ace    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]            // 0x00474ace    d80d00c48a00
                          call               __ftol                                               // 0x00474ad4    e827c93200
                          {disp8} fld        dword ptr [esp + 0x14]                               // 0x00474ad9    d9442414
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]                     // 0x00474add    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]            // 0x00474add    d80d00c48a00
                          {disp32} mov       dword ptr [esi + 0x00001200], eax                    // 0x00474ae3    898600120000
                          call               __ftol                                               // 0x00474ae9    e812c93200
                          mov.s              ecx, edi                                             // 0x00474aee    8bcf

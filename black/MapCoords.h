@@ -99,9 +99,9 @@ struct MapCoords
     // win1.41 006053c0 mac 100028d0 MapCoords::IsCloseToEqual(const MapCoords&, float) const
     bool32_t IsCloseToEqual(const MapCoords& other, float epsilon) const;
     // win1.41 00605410 mac 1001fb00 MapCoords::operator+=(MapCoords const &)
-    MapCoords& operator+=(const MapCoords& other);
+    void operator+=(const MapCoords& other);
     // win1.41 00605470 mac 100494b0 MapCoords::operator+=(JustMapXZ const &)
-    MapCoords& operator+=(const JustMapXZ& other);
+    void operator+=(const JustMapXZ& other);
     // win1.41 00605520 mac 100503e0 MapCoords::operator+(MapCoords const &) const
     MapCoords operator+(const MapCoords& other) const;
     // win1.41 006020e0 mac 1048f050 MapCoords::GetNearestTown(float) const
@@ -109,7 +109,7 @@ struct MapCoords
     // win1.41 00603280 mac 10513100 MapCoords::Set(char *)
     void Set(const char* str);
     // win1.41 00603340 mac 1006a370 MapCoords::Set(LHPoint const &)
-    MapCoords* Set(const LHPoint& point);
+    void Set(const LHPoint& point);
     // win1.41 00603430 mac 10049b80 MapCoords::ToMap(void) const
     MapCell* ToMap() const;
     // win1.41 006034b0 mac 1002cb50 MapCoords::GetFirstObjectFixed(void) const
@@ -128,8 +128,12 @@ struct MapCoords
     bool32_t operator==(const MapCoords& param_2) const;
     // win1.41 00605c40 mac 1004ff00 MapCoords::GetLHPoint(void) const
     LHPoint GetLHPoint() const;
+    // win1.41 00605cc0 mac 1055fea0 MapCoords::GetTemperature() const
+    float GetTemperature() const;
     // win1.41 00605cd0 mac inlined MapCoords::GetMetresDistance(MapCoords const &)
     float GetMetresDistance(const MapCoords& other) const;
+    // win1.41 00605cf0 mac 1055fee0 MapCoords::GetAngle(const MapCoords&) const
+    float GetAngle(const MapCoords& other) const;
     // win1.41 00605fb0 mac 10032290 MapCoords::GetMetresDistanceSq(MapCoords const &) const
     float GetMetresDistanceSq(const MapCoords& other) const;
     // win1.41 inlined mac 1004a1d0 MapCoords::Altitude(void) const

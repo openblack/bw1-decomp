@@ -605,7 +605,7 @@ bool32_t __fastcall HousewifeGossipsAroundStoragePit__8VillagerFv(struct Village
     asm("add                esp, 0x0c");                                     // 0x00762132    83c40c
     asm("push               eax");                                           // 0x00762135    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x00762136    8d4c241c
-    asm("call               ??YMapCoords@@QAEAAU0@ABU0@@Z");            // 0x0076213a    e8d132eaff
+    asm("call               ??YMapCoords@@QAEXABU0@@Z");            // 0x0076213a    e8d132eaff
     asm("push               0x19");                                          // 0x0076213f    6a19
     asm("{disp8} lea        ecx, dword ptr [esp + 0x1c]");                   // 0x00762141    8d4c241c
     asm("call               _jmp_addr_0x006033b0");                          // 0x00762145    e86612eaff

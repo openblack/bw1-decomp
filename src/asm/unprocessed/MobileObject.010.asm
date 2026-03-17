@@ -966,7 +966,7 @@ _InsertMapObjectToCell__12MobileObjectFP7MapCell:
                          {disp8} lea        edi, dword ptr [esi + 0x14]                   // 0x0060756a    8d7e14
                          mov.s              ecx, edi                                      // 0x0060756d    8bcf
                          {disp8} mov        dword ptr [esp + 0x08], eax                   // 0x0060756f    89442408
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00607573    e818bb1f00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00607573    e818bb1f00
                          {disp8} fadd       dword ptr [esp + 0x08]                        // 0x00607578    d8442408
                          mov                edx, dword ptr [esi]                          // 0x0060757c    8b16
                          mov.s              ecx, esi                                      // 0x0060757e    8bce
@@ -1253,10 +1253,10 @@ _jmp_addr_0x006076c0:    {disp32} mov       eax, dword ptr [_game]              
                          {disp8} jmp        .Lbl_addr_0x0060789f                          // 0x0060789b    eb02
 .Lbl_addr_0x0060789d:    fstp               st(0)                                         // 0x0060789d    ddd8
 .Lbl_addr_0x0060789f:    {disp8} fld        dword ptr [esp + 0x0c]                        // 0x0060789f    d944240c
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]              // 0x006078a3    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]     // 0x006078a3    d80d00c48a00
                          call               __ftol                                        // 0x006078a9    e8529b1900
                          {disp8} fld        dword ptr [esp + 0x14]                        // 0x006078ae    d9442414
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3400]              // 0x006078b2    d80d00c48a00
+                         {disp32} fmul      dword ptr [__real@4@400bcccccd0000000000]     // 0x006078b2    d80d00c48a00
                          {disp8} mov        dword ptr [esp + 0x18], eax                   // 0x006078b8    89442418
                          call               __ftol                                        // 0x006078bc    e83f9b1900
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                   // 0x006078c1    8d4c2418

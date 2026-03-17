@@ -3456,7 +3456,7 @@ _jmp_addr_0x0086cba0:    sub                esp, 0x44                           
                          fld                dword ptr [edx + ecx * 0x4]                    // 0x0086cc4a    d9048a
                          {disp8} jmp        .Lbl_addr_0x0086cc55                           // 0x0086cc4d    eb06
 .Lbl_addr_0x0086cc4f:    {disp32} fld       dword ptr [__real@4@00000000000000000000]                    // 0x0086cc4f    d90598a38a00
-.Lbl_addr_0x0086cc55:    {disp32} fmul      dword ptr [rdata_bytes + 0x3408]               // 0x0086cc55    d80d08c48a00
+.Lbl_addr_0x0086cc55:    {disp32} fmul      dword ptr [__real@4@400f8000000000000000]      // 0x0086cc55    d80d08c48a00
                          call               __ftol                                         // 0x0086cc5b    e8a047f3ff
                          test               ebx, ebx                                       // 0x0086cc60    85db
                          mov.s              esi, eax                                       // 0x0086cc62    8bf0
@@ -3474,7 +3474,7 @@ _jmp_addr_0x0086cba0:    sub                esp, 0x44                           
                          {disp32} fld       dword ptr [edx + ecx * 0x4 + 0x00000200]       // 0x0086cc85    d9848a00020000
                          {disp8} jmp        .Lbl_addr_0x0086cc94                           // 0x0086cc8c    eb06
 .Lbl_addr_0x0086cc8e:    {disp32} fld       dword ptr [__real@4@00000000000000000000]                    // 0x0086cc8e    d90598a38a00
-.Lbl_addr_0x0086cc94:    {disp32} fmul      dword ptr [rdata_bytes + 0x3408]               // 0x0086cc94    d80d08c48a00
+.Lbl_addr_0x0086cc94:    {disp32} fmul      dword ptr [__real@4@400f8000000000000000]      // 0x0086cc94    d80d08c48a00
                          call               __ftol                                         // 0x0086cc9a    e86147f3ff
                          inc                ebx                                            // 0x0086cc9f    43
                          test               ebx, ebx                                       // 0x0086cca0    85db
@@ -3492,7 +3492,7 @@ _jmp_addr_0x0086cba0:    sub                esp, 0x44                           
                          fld                dword ptr [eax + ebp * 0x4]                    // 0x0086ccc5    d904a8
                          {disp8} jmp        .Lbl_addr_0x0086ccd0                           // 0x0086ccc8    eb06
 .Lbl_addr_0x0086ccca:    {disp32} fld       dword ptr [__real@4@00000000000000000000]                    // 0x0086ccca    d90598a38a00
-.Lbl_addr_0x0086ccd0:    {disp32} fmul      dword ptr [rdata_bytes + 0x3408]               // 0x0086ccd0    d80d08c48a00
+.Lbl_addr_0x0086ccd0:    {disp32} fmul      dword ptr [__real@4@400f8000000000000000]      // 0x0086ccd0    d80d08c48a00
                          call               __ftol                                         // 0x0086ccd6    e82547f3ff
                          test               ebx, ebx                                       // 0x0086ccdb    85db
                          mov.s              ebp, eax                                       // 0x0086ccdd    8be8
@@ -3511,7 +3511,7 @@ _jmp_addr_0x0086cba0:    sub                esp, 0x44                           
                          {disp32} fld       dword ptr [eax + edx * 0x4 + 0x00000200]       // 0x0086cd05    d9849000020000
                          {disp8} jmp        .Lbl_addr_0x0086cd14                           // 0x0086cd0c    eb06
 .Lbl_addr_0x0086cd0e:    {disp32} fld       dword ptr [__real@4@00000000000000000000]                    // 0x0086cd0e    d90598a38a00
-.Lbl_addr_0x0086cd14:    {disp32} fmul      dword ptr [rdata_bytes + 0x3408]               // 0x0086cd14    d80d08c48a00
+.Lbl_addr_0x0086cd14:    {disp32} fmul      dword ptr [__real@4@400f8000000000000000]      // 0x0086cd14    d80d08c48a00
                          call               __ftol                                         // 0x0086cd1a    e8e146f3ff
                          cmp                esi, 0x00050000                                // 0x0086cd1f    81fe00000500
                          mov.s              ecx, eax                                       // 0x0086cd25    8bc8

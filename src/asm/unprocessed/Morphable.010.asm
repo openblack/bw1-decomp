@@ -54,7 +54,7 @@
 .extern _jmp_addr_0x007dee00
 .extern @SetCursor__7LHMouseFPv19LH_MOUSE_IMAGE_TYPEi@20
 .extern ?SetInverse@LHMatrix@@QAEXAAU1@@Z
-.extern ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z
+.extern ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z
 .extern ?Create@LH3DMesh@@SAPAV1@PBX_N@Z
 .extern @Release__8LH3DMeshFv@4
 .extern @Create__10LH3DObjectFQ210LH3DObject10ObjectType@4
@@ -1805,18 +1805,18 @@ _jmp_addr_0x006182f0:    sub                esp, 0x0c                           
                          {disp8} mov        eax, dword ptr [eax + 0x08]                    // 0x00618305    8b4008
                          {disp32} mov       dword ptr [esi + 0x00000080], eax              // 0x00618308    898680000000
                          {disp8} fld        dword ptr [esi + 0x78]                         // 0x0061830e    d94678
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3408]               // 0x00618311    d80d08c48a00
+                         {disp32} fmul      dword ptr [__real@4@400f8000000000000000]      // 0x00618311    d80d08c48a00
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3404]               // 0x00618317    d80d04c48a00
                          call               __ftol                                         // 0x0061831d    e8de901800
                          {disp32} fld       dword ptr [esi + 0x00000080]                   // 0x00618322    d98680000000
-                         {disp32} fmul      dword ptr [rdata_bytes + 0x3408]               // 0x00618328    d80d08c48a00
+                         {disp32} fmul      dword ptr [__real@4@400f8000000000000000]      // 0x00618328    d80d08c48a00
                          {disp8} mov        dword ptr [esp + 0x04], eax                    // 0x0061832e    89442404
                          {disp32} fmul      dword ptr [rdata_bytes + 0x3404]               // 0x00618332    d80d04c48a00
                          call               __ftol                                         // 0x00618338    e8c3901800
                          {disp8} lea        ecx, dword ptr [esp + 0x04]                    // 0x0061833d    8d4c2404
                          {disp8} mov        dword ptr [esp + 0x08], eax                    // 0x00618341    89442408
                          {disp8} mov        dword ptr [esp + 0x0c], 0x00000000             // 0x00618345    c744240c00000000
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z // 0x0061834d    e83ead1e00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z // 0x0061834d    e83ead1e00
                          {disp8} fstp       dword ptr [esi + 0x7c]                         // 0x00618352    d95e7c
                          pop                esi                                            // 0x00618355    5e
                          add                esp, 0x0c                                      // 0x00618356    83c40c

@@ -153,7 +153,7 @@ _jmp_addr_0x00607e10:    mov                dword ptr [ecx], 0x008e2f18         
                          {disp8} mov        esi, dword ptr [edi + 0x40]                   // 0x00607ee7    8b7740
                          {disp8} mov        dword ptr [esp + 0x28], ecx                   // 0x00607eea    894c2428
                          mov.s              ecx, ebx                                      // 0x00607eee    8bcb
-                         call               ?GetAltitude@LH3DIsland@@SAMABULH3DMapCoords@@@Z// 0x00607ef0    e89bb11f00
+                         call               ?GetAltitude@LH3DIsland@@SIMABULH3DMapCoords@@@Z// 0x00607ef0    e89bb11f00
                          {disp8} fadd       dword ptr [esp + 0x28]                        // 0x00607ef5    d8442428
                          {disp8} fstp       dword ptr [esp + 0x14]                        // 0x00607ef9    d95c2414
                          fild               dword ptr [ebx]                               // 0x00607efd    db03
