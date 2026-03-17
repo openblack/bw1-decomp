@@ -100,7 +100,7 @@ struct Villager* __fastcall FindImmediateNeighbour__8VillagerFv(struct Villager*
     asm("add                esp, 0x08");                                     // 0x00759907    83c408
     asm("push               eax");                                           // 0x0075990a    50
     asm("{disp8} lea        ecx, dword ptr [esp + 0x18]");                   // 0x0075990b    8d4c2418
-    asm("call               @__apl__9MapCoordsFRC9JustMapXZ@12");            // 0x0075990f    e85cbbeaff
+    asm("call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z");            // 0x0075990f    e85cbbeaff
     asm("test               edi, edi");                                      // 0x00759914    85ff
     asm("{disp8} jne        LAB__addr_0x007598c9");                          // 0x00759916    75b1
     asm("xor.s              eax, eax");                                      // 0x00759918    33c0
@@ -211,7 +211,7 @@ bool32_t __fastcall ControlledByCreature__8VillagerFv(struct Villager* this)
     asm("{disp8} lea        edi, dword ptr [esi + 0x14]");                   // 0x00759a3a    8d7e14
     asm("push               eax");                                           // 0x00759a3d    50
     asm("mov.s              ecx, edi");                                      // 0x00759a3e    8bcf
-    asm("call               ?__ne@MapCoords@@QBE_NABV1@@Z");                 // 0x00759a40    e86bbceaff
+    asm("call               ??9MapCoords@@QBEIABU0@@Z");                 // 0x00759a40    e86bbceaff
     asm("test               eax, eax");                                      // 0x00759a45    85c0
     asm("{disp8} je         LAB__addr_0x00759a7c");                          // 0x00759a47    7433
     asm("{disp32} mov       ecx, dword ptr [esi + 0x000000d8]");             // 0x00759a49    8b8ed8000000
@@ -222,7 +222,7 @@ bool32_t __fastcall ControlledByCreature__8VillagerFv(struct Villager* this)
     asm("call               dword ptr [edx + 0x104]");                       // 0x00759a59    ff9204010000
     asm("push               eax");                                           // 0x00759a5f    50
     asm("mov.s              ecx, edi");                                      // 0x00759a60    8bcf
-    asm("call               @__eq__9MapCoordsCFRC9MapCoords@12");            // 0x00759a62    e8f9bbeaff
+    asm("call               ??8MapCoords@@QBEIABU0@@Z");            // 0x00759a62    e8f9bbeaff
     asm("test               eax, eax");                                      // 0x00759a67    85c0
     asm("{disp8} je         LAB__addr_0x00759a7c");                          // 0x00759a69    7411
     asm("push               0x000000cc");                                    // 0x00759a6b    68cc000000

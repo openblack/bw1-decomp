@@ -49,7 +49,7 @@
 .extern _jmp_addr_0x005575e0
 .extern _jmp_addr_0x005c9c60
 .extern _jmp_addr_0x005e1890
-.extern @GetNearestTown__9MapCoordsCFf@12
+.extern ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z
 .extern _jmp_addr_0x006024d0
 .extern _jmp_addr_0x00605870
 .extern _jmp_addr_0x006059a0
@@ -5622,7 +5622,7 @@ _jmp_addr_0x004e06a0:    sub                esp, 0x0000051c                     
                          {disp32} mov       edx, dword ptr [rdata_bytes + 0x270fc]          // 0x004e0d53    8b15fc008d00
                          push               edx                                             // 0x004e0d59    52
                          {disp8} lea        ecx, dword ptr [eax + 0x14]                     // 0x004e0d5a    8d4814
-                         call               @GetNearestTown__9MapCoordsCFf@12               // 0x004e0d5d    e87e131200
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z               // 0x004e0d5d    e87e131200
                          cmp.s              eax, ebx                                        // 0x004e0d62    3bc3
                          {disp8} je         .Lbl_addr_0x004e0d79                            // 0x004e0d64    7413
                          {disp32} mov       ecx, dword ptr [esi + 0x00020d18]               // 0x004e0d66    8b8e180d0200

@@ -39,7 +39,7 @@
 .extern _jmp_addr_0x005d0460
 .extern _jmp_addr_0x005d36d0
 .extern _jmp_addr_0x006022c0
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?ConvertMapCoordToLandscapePoint@GLandscape@@SAPAULHPoint@@ABUMapCoords@@AAU2@@Z
 .extern ?ToBeDeleted@Object@@UAEXH@Z
@@ -3234,7 +3234,7 @@ _globl_ct_0x0070ae90:    {disp32} jmp       .Lbl_addr_0x0070aea0                
                          {disp8} lea        ecx, dword ptr [esp + 0x10]                   // 0x0070b1be    8d4c2410
                          push               ecx                                           // 0x0070b1c2    51
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x0070b1c3    8d4c2420
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x0070b1c7    e8947fefff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x0070b1c7    e8947fefff
                          {disp32} mov       ecx, dword ptr [_game]                        // 0x0070b1cc    8b0d5c19d000
                          push               eax                                           // 0x0070b1d2    50
                          call               ?MyInterface@GGame@@QAEPAVGInterface@@XZ      // 0x0070b1d3    e878a6e4ff

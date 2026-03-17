@@ -94,7 +94,7 @@
 .extern _jmp_addr_0x005f04c0
 .extern @SetFirstObjectMobile__7MapCellFP6Object@12
 .extern @SetFirstObjectFixed__7MapCellFP6Object@12
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern ?ToMap@MapCoords@@QBEPAUMapCell@@XZ
 .extern ?GetFirstObjectMobile@MapCoords@@QBEPAVObject@@XZ
 .extern ?GetFirstObjectFixed@MapCoords@@QBEPAVObject@@XZ
@@ -103,7 +103,7 @@
 .extern _jmp_addr_0x00603720
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern ?CollideCollideWithFixe@MapCoords@@QBEHXZ
-.extern @__pl__9MapCoordsCFRC9MapCoords@16
+.extern ??HMapCoords@@QBE?AU0@ABU0@@Z
 .extern _jmp_addr_0x00605cc0
 .extern _jmp_addr_0x0061cc80
 .extern _jmp_addr_0x006208c0
@@ -9205,7 +9205,7 @@ _jmp_addr_0x00636640:    push               esi                                 
                          push               eax                                            // 0x00636d80    50
                          push               esi                                            // 0x00636d81    56
                          mov.s              ecx, edi                                       // 0x00636d82    8bcf
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16             // 0x00636d84    e897e7fcff
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z             // 0x00636d84    e897e7fcff
                          pop                edi                                            // 0x00636d89    5f
                          mov.s              eax, esi                                       // 0x00636d8a    8bc6
                          pop                esi                                            // 0x00636d8c    5e
@@ -9251,7 +9251,7 @@ _jmp_addr_0x00636640:    push               esi                                 
                          push               eax                                            // 0x00636ddd    50
                          push               esi                                            // 0x00636dde    56
                          mov.s              ecx, edi                                       // 0x00636ddf    8bcf
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16             // 0x00636de1    e83ae7fcff
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z             // 0x00636de1    e83ae7fcff
                          pop                edi                                            // 0x00636de6    5f
                          mov.s              eax, esi                                       // 0x00636de7    8bc6
                          pop                esi                                            // 0x00636de9    5e
@@ -9277,7 +9277,7 @@ _jmp_addr_0x00636640:    push               esi                                 
                          push               eax                                            // 0x00636e1a    50
                          push               edi                                            // 0x00636e1b    57
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                    // 0x00636e1c    8d4e14
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16             // 0x00636e1f    e8fce6fcff
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z             // 0x00636e1f    e8fce6fcff
                          mov.s              eax, edi                                       // 0x00636e24    8bc7
                          pop                edi                                            // 0x00636e26    5f
                          pop                esi                                            // 0x00636e27    5e
@@ -9558,7 +9558,7 @@ _jmp_addr_0x00636e30:    mov                eax, dword ptr [ecx]                
                          add                eax, 0x000000c8                                // 0x0063711a    05c8000000
                          push               eax                                            // 0x0063711f    50
                          {disp8} lea        ecx, dword ptr [ebp + -0x30]                   // 0x00637120    8d4dd0
-                         call               @__ct__9MapCoordsFRC7LHPoint@12                // 0x00637123    e838c0fcff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z                // 0x00637123    e838c0fcff
                          test               bl, bl                                         // 0x00637128    84db
                          {disp32} jne       .Lbl_addr_0x006373de                           // 0x0063712a    0f85ae020000
                          {disp8} fld        dword ptr [ebp + -0x0c]                        // 0x00637130    d945f4
@@ -13207,7 +13207,7 @@ _jmp_addr_0x00639410:    {disp8} mov        al, byte ptr [ecx + 0x24]           
                          push               eax                                            // 0x006395a0    50
                          push               esi                                            // 0x006395a1    56
                          mov.s              ecx, edi                                       // 0x006395a2    8bcf
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16             // 0x006395a4    e877bffcff
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z             // 0x006395a4    e877bffcff
                          pop                edi                                            // 0x006395a9    5f
                          mov.s              eax, esi                                       // 0x006395aa    8bc6
                          pop                esi                                            // 0x006395ac    5e
@@ -13445,7 +13445,7 @@ _jmp_addr_0x00639410:    {disp8} mov        al, byte ptr [ecx + 0x24]           
                          {disp8} lea        ecx, dword ptr [esp + 0x14]                    // 0x0063982a    8d4c2414
                          push               ecx                                            // 0x0063982e    51
                          mov.s              ecx, esi                                       // 0x0063982f    8bce
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16             // 0x00639831    e8eabcfcff
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z             // 0x00639831    e8eabcfcff
                          mov                edx, dword ptr [edi]                           // 0x00639836    8b17
                          {disp8} lea        eax, dword ptr [esp + 0x10]                    // 0x00639838    8d442410
                          push               eax                                            // 0x0063983c    50

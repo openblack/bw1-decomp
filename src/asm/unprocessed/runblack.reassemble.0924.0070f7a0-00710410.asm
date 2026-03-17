@@ -19,7 +19,7 @@
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern @StopPlayingSoundEffect__6GAudioCFUlUl19AUDIO_SFX_BANK_TYPE@20
 .extern _jmp_addr_0x0042a280
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern _jmp_addr_0x0064d6a0
 .extern ?LocalRand@GRand@@SAIJ@Z
 .extern ?ScriptErrorMessage@GScript@@QAEXPAD@Z
@@ -704,7 +704,7 @@ _jmp_addr_0x0070f8e0:    {disp8} mov      ecx, dword ptr [esp + 0x04]           
 .Lbl_addr_0x0070fedb:    {disp8} lea      ecx, dword ptr [esp + 0x08]                   // 0x0070fedb    8d4c2408
                          push             ecx                                           // 0x0070fedf    51
                          {disp8} lea      ecx, dword ptr [esp + 0x18]                   // 0x0070fee0    8d4c2418
-                         call             @__ct__9MapCoordsFRC7LHPoint@12               // 0x0070fee4    e87732efff
+                         call             ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x0070fee4    e87732efff
                          {disp32} mov     ecx, dword ptr [_global]                      // 0x0070fee9    8b0d203bcd00
                          push             eax                                           // 0x0070feef    50
                          push             esi                                           // 0x0070fef0    56

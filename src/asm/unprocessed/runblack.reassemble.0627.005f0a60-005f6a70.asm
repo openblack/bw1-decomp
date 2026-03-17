@@ -38,7 +38,7 @@
 .extern _jmp_addr_0x005f6d80
 .extern _jmp_addr_0x005f7d10
 .extern _jmp_addr_0x005f80c0
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern ?IsWater@MapCoords@@QBEIXZ
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern _jmp_addr_0x0060aad0
@@ -2527,7 +2527,7 @@ _jmp_addr_0x005f1e60:    sub                esp, 0x34                           
                          {disp8} fld        dword ptr [esp + 0x0c]                        // 0x005f2122    d944240c
                          {disp8} fadd       dword ptr [esp + 0x3c]                        // 0x005f2126    d844243c
                          {disp8} fstp       dword ptr [esp + 0x0c]                        // 0x005f212a    d95c240c
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x005f212e    e82d100100
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x005f212e    e82d100100
                          {disp8} mov        edx, dword ptr [esp + 0x24]                   // 0x005f2133    8b542424
                          {disp8} mov        ecx, dword ptr [esp + 0x40]                   // 0x005f2137    8b4c2440
                          {disp8} mov        eax, dword ptr [esp + 0x28]                   // 0x005f213b    8b442428

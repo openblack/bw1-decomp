@@ -47,7 +47,7 @@
 .extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005feda0
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern _jmp_addr_0x0064bab0
 .extern _jmp_addr_0x0064bb10
 .extern ?GetPlayerColour@GPlayer@@QBE?AULH3DColor@@XZ
@@ -7176,7 +7176,7 @@ _jmp_addr_0x0068aba0:    sub                esp, 0x0c                           
                          call               @__ct__7LHPointFfff@20                        // 0x0068bd0d    e8ee69dbff
                          push               eax                                           // 0x0068bd12    50
                          {disp8} lea        ecx, dword ptr [esp + 0x4c]                   // 0x0068bd13    8d4c244c
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x0068bd17    e84474f7ff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x0068bd17    e84474f7ff
                          push               eax                                           // 0x0068bd1c    50
                          call               ?Create@SpellSeedGraphic@@SAPAV1@PBUMapCoords@@W4SPELL_SEED_TYPE@@PAVGPlayer@@MW4POWER_UP_TYPE@@@Z                          // 0x0068bd1d    e83eb20900
                          add                esp, 0x14                                     // 0x0068bd22    83c414

@@ -45,7 +45,7 @@
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005c4800
 .extern _jmp_addr_0x00602a80
-.extern @__eq__9MapCoordsCFRC9MapCoords@12
+.extern ??8MapCoords@@QBEIABU0@@Z
 .extern ?GetPlayerNumber@GPlayer@@QBEEXZ
 .extern __ftol
 .extern  ??3@YAXPAX@Z
@@ -594,7 +594,7 @@ _globl_ct_0x005122b0:    call              .Lbl_addr_0x005122c0                 
                          {disp8} je        .Lbl_addr_0x005126b3                                 // 0x00512686    742b
                          push              edi                                                  // 0x00512688    57
                          mov.s             ecx, ebp                                             // 0x00512689    8bcd
-                         call              @__eq__9MapCoordsCFRC9MapCoords@12                   // 0x0051268b    e8d02f0f00
+                         call              ??8MapCoords@@QBEIABU0@@Z                   // 0x0051268b    e8d02f0f00
                          test              eax, eax                                             // 0x00512690    85c0
                          {disp8} je        .Lbl_addr_0x0051265d                                 // 0x00512692    74c9
                          {disp8} fld       dword ptr [esi + 0x0c]                               // 0x00512694    d9460c

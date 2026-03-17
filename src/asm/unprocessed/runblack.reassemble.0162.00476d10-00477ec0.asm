@@ -36,7 +36,7 @@
 .extern _jmp_addr_0x004f51e0
 .extern ?GetInterface@GInterfaceStatus@@QAEPAVGInterface@@XZ
 .extern _jmp_addr_0x005e6f70
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern ?GetNextInterfaceStatus@GPlayer@@QAEPAVGInterfaceStatus@@PAV2@@Z
 .extern ?GetAngleFromDXDZ@GUtils@@SAGJJ@Z
@@ -1121,7 +1121,7 @@ _jmp_addr_0x00477800:    sub                esp, 0x0c                           
                          add                eax, 0x000000c8                          // 0x0047781c    05c8000000
                          push               eax                                      // 0x00477821    50
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]              // 0x00477822    8d4c240c
-                         call               @__ct__9MapCoordsFRC7LHPoint@12          // 0x00477826    e835b91800
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z          // 0x00477826    e835b91800
                          push               eax                                      // 0x0047782b    50
                          mov.s              ecx, esi                                 // 0x0047782c    8bce
                          call               _jmp_addr_0x00477520                     // 0x0047782e    e8edfcffff

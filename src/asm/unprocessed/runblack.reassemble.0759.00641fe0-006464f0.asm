@@ -49,7 +49,7 @@
 .extern _jmp_addr_0x00604250
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern ??YMapCoords@@QAEAAU0@ABU0@@Z
-.extern @__pl__9MapCoordsCFRC9MapCoords@16
+.extern ??HMapCoords@@QBE?AU0@ABU0@@Z
 .extern _jmp_addr_0x006464f0
 .extern _jmp_addr_0x00646d60
 .extern @__ct__20PlannedMultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfoff@24
@@ -2627,7 +2627,7 @@ _globl_ct_0x00643650:    call               .Lbl_addr_0x00643660                
                          push               esi                                            // 0x00643bae    56
                          {disp8} lea        ecx, dword ptr [edi + 0x14]                    // 0x00643baf    8d4f14
                          {disp8} mov        dword ptr [esp + 0x18], 0x00000000             // 0x00643bb2    c744241800000000
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16             // 0x00643bba    e86119fcff
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z             // 0x00643bba    e86119fcff
                          pop                edi                                            // 0x00643bbf    5f
                          mov.s              eax, esi                                       // 0x00643bc0    8bc6
                          pop                esi                                            // 0x00643bc2    5e

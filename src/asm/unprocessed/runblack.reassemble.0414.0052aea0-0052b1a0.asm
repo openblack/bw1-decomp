@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 
 .globl _jmp_addr_0x0052af90
@@ -67,7 +67,7 @@ start_0x0052aea0_0x0052b1a0:
                          {disp8} lea        ecx, dword ptr [esp + 0x50]              // 0x0052af57    8d4c2450
                          {disp8} mov        dword ptr [esp + 0x3c], edx              // 0x0052af5b    8954243c
                          {disp8} mov        dword ptr [esp + 0x40], eax              // 0x0052af5f    89442440
-                         call               @__ct__9MapCoordsFRC7LHPoint@12          // 0x0052af63    e8f8810d00
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z          // 0x0052af63    e8f8810d00
                          mov                ecx, dword ptr [eax]                     // 0x0052af68    8b08
                          {disp8} mov        edx, dword ptr [esp + 0x68]              // 0x0052af6a    8b542468
                          mov                dword ptr [edx], ecx                     // 0x0052af6e    890a

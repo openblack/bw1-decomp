@@ -25,7 +25,7 @@
 .extern _jmp_addr_0x005ebaf0
 .extern _jmp_addr_0x005f3d90
 .extern ?StartTipOfTheDayText@@YAXXZ
-.extern @GetNearestTown__9MapCoordsCFf@12
+.extern ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z
 .extern _jmp_addr_0x0063ed40
 .extern _jmp_addr_0x00640cb0
 .extern ?PlayPreIntroVideo@@YAXXZ
@@ -256,7 +256,7 @@ _jmp_addr_0x00641510:    {disp8} mov       eax, dword ptr [esp + 0x04]          
                          call              ?StartPlaygroundGame@GGame@@QAEXPAD@Z         // 0x00641752    e8e917f1ff
                          push              0x47c34f80                                    // 0x00641757    68804fc347
                          mov               ecx, 0x00c5e258                               // 0x0064175c    b958e2c500
-                         call              @GetNearestTown__9MapCoordsCFf@12             // 0x00641761    e87a09fcff
+                         call              ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z             // 0x00641761    e87a09fcff
                          test              eax, eax                                      // 0x00641766    85c0
                          {disp8} je        .Lbl_addr_0x0064177c                          // 0x00641768    7412
                          push              0x41100000                                    // 0x0064176a    6800001041

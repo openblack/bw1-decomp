@@ -33,7 +33,7 @@
 .extern ?SetMaterialProperties@GJUtils@@SAXPAULH3DMesh@@ABUMaterialProperties@@@Z
 .extern _jmp_addr_0x005d8a80
 .extern _jmp_addr_0x005f8870
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern _jmp_addr_0x00603860
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ??0Object@@QAE@XZ
@@ -1813,7 +1813,7 @@ _jmp_addr_0x00727630:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          add                eax, 0x24                                            // 0x0072764a    83c024
                          push               eax                                                  // 0x0072764d    50
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                          // 0x0072764e    8d4c241c
-                         call               @__ct__9MapCoordsFRC7LHPoint@12                      // 0x00727652    e809bbedff
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z                      // 0x00727652    e809bbedff
                          push               eax                                                  // 0x00727657    50
                          mov.s              ecx, esi                                             // 0x00727658    8bce
                          call               .Lbl_addr_0x007270e0                                 // 0x0072765a    e881faffff

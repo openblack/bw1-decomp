@@ -75,7 +75,7 @@
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
 .extern ?ToMap@MapCoords@@QBEPAUMapCell@@XZ
 .extern ?InBounds@MapCoords@@QBEIXZ
-.extern @__apl__9MapCoordsFRC9JustMapXZ@12
+.extern ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z
 .extern _jmp_addr_0x006055c0
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00617140
@@ -8947,7 +8947,7 @@ _globl_ct_0x004f2660:    {disp32} jmp       .Lbl_addr_0x004f2670                
                          add                esp, 0x08                                            // 0x004f3430    83c408
                          push               eax                                                  // 0x004f3433    50
                          {disp8} lea        ecx, dword ptr [esp + 0x18]                          // 0x004f3434    8d4c2418
-                         call               @__apl__9MapCoordsFRC9JustMapXZ@12                   // 0x004f3438    e833201100
+                         call               ??YMapCoords@@QAEAAU0@ABUJustMapXZ@@@Z                   // 0x004f3438    e833201100
                          test               ebx, ebx                                             // 0x004f343d    85db
                          {disp8} jne        .Lbl_addr_0x004f33db                                 // 0x004f343f    759a
 .Lbl_addr_0x004f3441:    test               edi, edi                                             // 0x004f3441    85ff

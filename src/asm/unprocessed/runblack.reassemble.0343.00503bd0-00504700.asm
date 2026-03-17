@@ -19,7 +19,7 @@
 .extern _jmp_addr_0x004f00e0
 .extern ??0EffectValues@@QAE@W4EFFECT_TYPE@@PAVGameThing@@PAVGPlayer@@@Z
 .extern ??XEffectNumbers@@QAEAAU0@ABM@Z
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern _jmp_addr_0x00605050
 .extern _jmp_addr_0x00637cc0
@@ -114,7 +114,7 @@ start_0x00503bd0_0x00504700:
                          add                eax, 0x000000bc                               // 0x00503c9a    05bc000000
                          push               eax                                           // 0x00503c9f    50
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                   // 0x00503ca0    8d4c240c
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x00503ca4    e8b7f40f00
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x00503ca4    e8b7f40f00
                          {disp8} lea        ecx, dword ptr [esp + 0x08]                   // 0x00503ca9    8d4c2408
                          call               ?InBounds@MapCoords@@QBEIXZ                   // 0x00503cad    e80e061000
                          test               eax, eax                                      // 0x00503cb2    85c0

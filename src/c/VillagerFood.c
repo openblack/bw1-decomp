@@ -165,7 +165,7 @@ bool32_t __fastcall ChangeStateToFindFoodToEat__8VillagerFv(struct Villager* thi
     asm("{disp8} lea        edx, dword ptr [esi + 0x14]");                   // 0x0075ba85    8d5614
     asm("push               edx");                                           // 0x0075ba88    52
     asm("{disp8} lea        ecx, dword ptr [esp + 0x14]");                   // 0x0075ba89    8d4c2414
-    asm("call               @IsCloseToEqual__9MapCoordsCFRC9MapCoordsf@16"); // 0x0075ba8d    e82e99eaff
+    asm("call               ?IsCloseToEqual@MapCoords@@QBEIABU1@M@Z"); // 0x0075ba8d    e82e99eaff
     asm("test               eax, eax");                                      // 0x0075ba92    85c0
     asm("{disp8} jne        LAB__addr_0x0075bab0");                          // 0x0075ba94    751a
     asm("push               0x22");                                          // 0x0075ba96    6a22

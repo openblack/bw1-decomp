@@ -138,7 +138,7 @@
 .extern _jmp_addr_0x006016d0
 .extern _jmp_addr_0x00601820
 .extern _jmp_addr_0x00601850
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern ?AddMobileObjectCheckSum@MobileObject@@SAXXZ
 .extern _jmp_addr_0x0062d030
 .extern ?IsInternetLobby@MPFEConnectionStatus@@QAE_NXZ
@@ -2811,7 +2811,7 @@ _jmp_addr_0x0054ec80:    push               ecx                                 
                          {disp32} lea       ecx, dword ptr [ebp + -0x00000758]            // 0x0054fc7b    8d8da8f8ffff
                          push               ecx                                           // 0x0054fc81    51
                          {disp32} lea       ecx, dword ptr [ebp + -0x0000074c]            // 0x0054fc82    8d8db4f8ffff
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x0054fc88    e8d3340b00
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x0054fc88    e8d3340b00
                          push               eax                                           // 0x0054fc8d    50
                          mov.s              ecx, esi                                      // 0x0054fc8e    8bce
                          call               _jmp_addr_0x0071d720                          // 0x0054fc90    e88bda1c00

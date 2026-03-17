@@ -20,7 +20,7 @@
 .extern _jmp_addr_0x00600e20
 .extern _jmp_addr_0x00603720
 .extern ?InBounds@MapCoords@@QBEIXZ
-.extern @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16
+.extern ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z
 .extern @SetScale__6ObjectFf@12
 .extern ??0PileFood@@QAE@XZ
 .extern @__ct__8PileFoodFRC9MapCoordsPC8GPotInfoUlP13MultiMapFixedP4Towniff@40
@@ -1232,7 +1232,7 @@ _globl_ct_0x005fad60:    {disp32} jmp       .Lbl_addr_0x005fad70                
                          push               ebx                                           // 0x005fadfc    53
                          push               ebx                                           // 0x005fadfd    53
                          mov.s              ecx, edi                                      // 0x005fadfe    8bcf
-                         call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16                          // 0x005fae00    e8bb970000
+                         call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x005fae00    e8bb970000
                          mov.s              esi, eax                                      // 0x005fae05    8bf0
                          cmp.s              esi, ebx                                      // 0x005fae07    3bf3
                          {disp8} je         .Lbl_addr_0x005fae5d                          // 0x005fae09    7452
@@ -1260,7 +1260,7 @@ _globl_ct_0x005fad60:    {disp32} jmp       .Lbl_addr_0x005fad70                
                          push               esi                                           // 0x005fae4e    56
                          push               ebx                                           // 0x005fae4f    53
                          mov.s              ecx, edi                                      // 0x005fae50    8bcf
-                         call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16                          // 0x005fae52    e869970000
+                         call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z                          // 0x005fae52    e869970000
                          mov.s              esi, eax                                      // 0x005fae57    8bf0
                          cmp.s              esi, ebx                                      // 0x005fae59    3bf3
                          {disp8} jne        .Lbl_addr_0x005fae0b                          // 0x005fae5b    75ae

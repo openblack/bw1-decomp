@@ -43,7 +43,7 @@
 .extern _jmp_addr_0x004f12e0
 .extern _jmp_addr_0x004f1b60
 .extern _jmp_addr_0x004f8ca0
-.extern @GetNearestTown__9MapCoordsCFf@12
+.extern ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z
 .extern _jmp_addr_0x00617140
 .extern ?AddHairGroup@Morphable@@QAEIXZ
 .extern @SelectMesh__9MorphableFl@12
@@ -364,7 +364,7 @@ _jmp_addr_0x004e9f40:    sub                esp, 0x08                           
                          {disp32} mov       edx, dword ptr [rdata_bytes + 0x275ac]        // 0x004ea243    8b15ac058d00
                          push               edx                                           // 0x004ea249    52
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x004ea24a    8d4e14
-                         call               @GetNearestTown__9MapCoordsCFf@12             // 0x004ea24d    e88e7e1100
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z             // 0x004ea24d    e88e7e1100
                          test               eax, eax                                      // 0x004ea252    85c0
                          {disp8} je         .Lbl_addr_0x004ea267                          // 0x004ea254    7411
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]             // 0x004ea256    8b8e64010000
@@ -453,7 +453,7 @@ _jmp_addr_0x004e9f40:    sub                esp, 0x08                           
                          {disp32} mov       edx, dword ptr [rdata_bytes + 0x275ac]        // 0x004ea362    8b15ac058d00
                          push               edx                                           // 0x004ea368    52
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x004ea369    8d4e14
-                         call               @GetNearestTown__9MapCoordsCFf@12             // 0x004ea36c    e86f7d1100
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z             // 0x004ea36c    e86f7d1100
                          test               eax, eax                                      // 0x004ea371    85c0
                          {disp8} je         .Lbl_addr_0x004ea386                          // 0x004ea373    7411
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]             // 0x004ea375    8b8e64010000
@@ -560,7 +560,7 @@ _jmp_addr_0x004e9f40:    sub                esp, 0x08                           
                          {disp32} mov       edx, dword ptr [rdata_bytes + 0x275ac]        // 0x004ea4a3    8b15ac058d00
                          push               edx                                           // 0x004ea4a9    52
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x004ea4aa    8d4e14
-                         call               @GetNearestTown__9MapCoordsCFf@12             // 0x004ea4ad    e82e7c1100
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z             // 0x004ea4ad    e82e7c1100
                          test               eax, eax                                      // 0x004ea4b2    85c0
                          {disp8} je         .Lbl_addr_0x004ea4c7                          // 0x004ea4b4    7411
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]             // 0x004ea4b6    8b8e64010000
@@ -1042,7 +1042,7 @@ _jmp_addr_0x004eaab0:    sub                esp, 0x08                           
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x004eaad5    8d4e14
                          push               edx                                           // 0x004eaad8    52
                          mov.s              edi, eax                                      // 0x004eaad9    8bf8
-                         call               @GetNearestTown__9MapCoordsCFf@12             // 0x004eaadb    e800761100
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z             // 0x004eaadb    e800761100
                          mov                edx, dword ptr [esi]                          // 0x004eaae0    8b16
                          {disp8} mov        dword ptr [esp + 0x14], eax                   // 0x004eaae2    89442414
                          {disp32} mov       eax, dword ptr [edi + 0x00000a48]             // 0x004eaae6    8b87480a0000

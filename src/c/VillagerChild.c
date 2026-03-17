@@ -257,7 +257,7 @@ void __cdecl GetNextDstPromemade__FP6CrecheRlP9MapCoordsRC9MapCoords(struct Crec
     asm("call               dword ptr [edx + 0x864]");                       // 0x00757b0f    ff9264080000
     asm("{disp8} mov        ecx, dword ptr [esp + 0x40]");                   // 0x00757b15    8b4c2440
     asm("push               eax");                                           // 0x00757b19    50
-    asm("call               @__eq__9MapCoordsCFRC9MapCoords@12");            // 0x00757b1a    e841dbeaff
+    asm("call               ??8MapCoords@@QBEIABU0@@Z");            // 0x00757b1a    e841dbeaff
     asm("test               eax, eax");                                      // 0x00757b1f    85c0
     asm("{disp8} je         LAB__addr_0x00757b43");                          // 0x00757b21    7420
     asm("push               0x6b");                                          // 0x00757b23    6a6b
@@ -340,7 +340,7 @@ void __cdecl GetNextDstPromemade__FP6CrecheRlP9MapCoordsRC9MapCoords(struct Crec
     asm("{disp8} fld        dword ptr [esp + 0x24]");                        // 0x00757bf4    d9442424
     asm("{disp8} fadd       dword ptr [esp + 0x38]");                        // 0x00757bf8    d8442438
     asm("{disp8} fstp       dword ptr [esp + 0x24]");                        // 0x00757bfc    d95c2424
-    asm("call               @__ct__9MapCoordsFRC7LHPoint@12");               // 0x00757c00    e85bb5eaff
+    asm("call               ??0MapCoords@@QAE@ABULHPoint@@@Z");               // 0x00757c00    e85bb5eaff
     asm("mov                ecx, dword ptr [eax]");                          // 0x00757c05    8b08
     asm("{disp8} mov        edx, dword ptr [esp + 0x3c]");                   // 0x00757c07    8b54243c
     asm("mov                dword ptr [edx], ecx");                          // 0x00757c0b    890a

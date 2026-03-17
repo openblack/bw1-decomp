@@ -189,7 +189,7 @@
 .extern _jmp_addr_0x005fdd80
 .extern _jmp_addr_0x00600d40
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z
-.extern @__pl__9MapCoordsCFRC9MapCoords@16
+.extern ??HMapCoords@@QBE?AU0@ABU0@@Z
 .extern _jmp_addr_0x006055c0
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x0060c200
@@ -3581,7 +3581,7 @@ _jmp_addr_0x005571c0:    mov.s              eax, ecx                            
                          {disp8} lea        eax, dword ptr [esp + 0x10]                   // 0x005573a1    8d442410
                          push               eax                                           // 0x005573a5    50
                          mov.s              ecx, edi                                      // 0x005573a6    8bcf
-                         call               @__pl__9MapCoordsCFRC9MapCoords@16            // 0x005573a8    e873e10a00
+                         call               ??HMapCoords@@QBE?AU0@ABU0@@Z            // 0x005573a8    e873e10a00
                          {disp8} lea        ecx, dword ptr [esp + 0x0c]                   // 0x005573ad    8d4c240c
                          push               ebx                                           // 0x005573b1    53
                          push               ecx                                           // 0x005573b2    51

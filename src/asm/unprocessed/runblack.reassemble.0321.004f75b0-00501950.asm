@@ -66,8 +66,8 @@
 .extern ?GetMagicEffectInfo@GMagicInfo@@QBEPAVGMagicEffectInfo@@XZ
 .extern _jmp_addr_0x005fb7b0
 .extern _jmp_addr_0x005fb7e0
-.extern @GetNearestTown__9MapCoordsCFf@12
-.extern @__ct__9MapCoordsFRC7LHPoint@12
+.extern ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z
+.extern ??0MapCoords@@QAE@ABULHPoint@@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern _jmp_addr_0x00605cc0
 .extern _jmp_addr_0x00639a60
@@ -1638,7 +1638,7 @@ _jmp_addr_0x004f82f0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          push               0x14                                          // 0x004f86ed    6a14
                          push               ecx                                           // 0x004f86ef    51
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x004f86f0    8d4c2438
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x004f86f4    e867aa1000
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x004f86f4    e867aa1000
                          push               eax                                           // 0x004f86f9    50
                          call               _jmp_addr_0x0063e540                          // 0x004f86fa    e8415e1400
                          add                esp, 0x10                                     // 0x004f86ff    83c410
@@ -1654,7 +1654,7 @@ _jmp_addr_0x004f82f0:    {disp8} mov        eax, dword ptr [esp + 0x04]         
                          {disp8} lea        edx, dword ptr [esp + 0x28]                   // 0x004f8718    8d542428
                          push               edx                                           // 0x004f871c    52
                          {disp8} lea        ecx, dword ptr [esp + 0x38]                   // 0x004f871d    8d4c2438
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x004f8721    e83aaa1000
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x004f8721    e83aaa1000
                          push               eax                                           // 0x004f8726    50
                          call               _jmp_addr_0x0063e540                          // 0x004f8727    e8145e1400
                          add                esp, 0x10                                     // 0x004f872c    83c410
@@ -2128,7 +2128,7 @@ _jmp_addr_0x004f8ae0:    call               ?GetCreature3D@Creature@@QAEPAVLH3DC
                          {disp8} lea        edx, dword ptr [esp + 0x10]                   // 0x004f8bf8    8d542410
                          push               edx                                           // 0x004f8bfc    52
                          {disp8} lea        ecx, dword ptr [esp + 0x20]                   // 0x004f8bfd    8d4c2420
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x004f8c01    e85aa51000
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x004f8c01    e85aa51000
                          {disp32} mov       ecx, dword ptr [esi + 0x0000107c]             // 0x004f8c06    8b8e7c100000
                          push               eax                                           // 0x004f8c0c    50
                          call               dword ptr [ebp + 0xfc]                        // 0x004f8c0d    ff95fc000000
@@ -2157,7 +2157,7 @@ _jmp_addr_0x004f8ae0:    call               ?GetCreature3D@Creature@@QAEPAVLH3DC
                          {disp8} lea        edx, dword ptr [esp + 0x0c]                   // 0x004f8c59    8d54240c
                          push               edx                                           // 0x004f8c5d    52
                          {disp8} lea        ecx, dword ptr [esp + 0x1c]                   // 0x004f8c5e    8d4c241c
-                         call               @__ct__9MapCoordsFRC7LHPoint@12               // 0x004f8c62    e8f9a41000
+                         call               ??0MapCoords@@QAE@ABULHPoint@@@Z               // 0x004f8c62    e8f9a41000
                          {disp32} mov       ecx, dword ptr [esi + 0x00001080]             // 0x004f8c67    8b8e80100000
                          push               eax                                           // 0x004f8c6d    50
                          call               dword ptr [edi + 0xfc]                        // 0x004f8c6e    ff97fc000000
@@ -9151,7 +9151,7 @@ _jmp_addr_0x004ff9f0:    sub                esp, 0x1c                           
                          push               0x0                                           // 0x004fffa6    6a00
                          push               ecx                                           // 0x004fffa8    51
                          {disp8} lea        ecx, dword ptr [esp + 0x28]                   // 0x004fffa9    8d4c2428
-                         call               @GetNearestTown__9MapCoordsCFf@12             // 0x004fffad    e82e211000
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z             // 0x004fffad    e82e211000
                          push               eax                                           // 0x004fffb2    50
                          push               0x0                                           // 0x004fffb3    6a00
                          push               ebx                                           // 0x004fffb5    53

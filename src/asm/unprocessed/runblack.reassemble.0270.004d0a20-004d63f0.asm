@@ -90,7 +90,7 @@
 .extern ?GetSeason@GGameInfo@@QAEIXZ
 .extern _jmp_addr_0x005e17c0
 .extern ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ
-.extern @GetNearestTown__9MapCoordsCFf@12
+.extern ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z
 .extern _jmp_addr_0x00637cc0
 .extern @IsMagicTypeEnabled__7GPlayerF10MAGIC_TYPE@12
 .extern ?GameRand@GRand@@SAHJ@Z
@@ -3959,7 +3959,7 @@ _globl_ct_0x004d2920:    {disp32} jmp       .Lbl_addr_0x004d2930                
                          mov.s              esi, ecx                                             // 0x004d32f8    8bf1
                          push               eax                                                  // 0x004d32fa    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x004d32fb    8d4e14
-                         call               @GetNearestTown__9MapCoordsCFf@12                    // 0x004d32fe    e8dded1200
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z                    // 0x004d32fe    e8dded1200
                          test               eax, eax                                             // 0x004d3303    85c0
                          {disp8} je         .Lbl_addr_0x004d334f                                 // 0x004d3305    7448
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]                    // 0x004d3307    8b8e64010000
@@ -4007,7 +4007,7 @@ _globl_ct_0x004d2920:    {disp32} jmp       .Lbl_addr_0x004d2930                
                          mov.s              esi, ecx                                             // 0x004d3368    8bf1
                          push               eax                                                  // 0x004d336a    50
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                          // 0x004d336b    8d4e14
-                         call               @GetNearestTown__9MapCoordsCFf@12                    // 0x004d336e    e86ded1200
+                         call               ?GetNearestTown@MapCoords@@QBEPAVTown@@M@Z                    // 0x004d336e    e86ded1200
                          test               eax, eax                                             // 0x004d3373    85c0
                          {disp8} je         .Lbl_addr_0x004d33bf                                 // 0x004d3375    7448
                          {disp32} mov       ecx, dword ptr [esi + 0x00000164]                    // 0x004d3377    8b8e64010000

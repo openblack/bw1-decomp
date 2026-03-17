@@ -300,7 +300,7 @@ uint32_t __fastcall EnterPlayAnim__6LivingF15VILLAGER_STATES15VILLAGER_STATES(st
     asm("{disp8} mov        dword ptr [esp + 0x14], ebp");                     // 0x007688b6    896c2414
     asm("{disp8} mov        dword ptr [esp + 0x18], ebp");                     // 0x007688ba    896c2418
     asm("{disp8} mov        dword ptr [esp + 0x1c], ebp");                     // 0x007688be    896c241c
-    asm("call               ?__ne@MapCoords@@QBE_NABV1@@Z");                   // 0x007688c2    e8e9cde9ff
+    asm("call               ??9MapCoords@@QBEIABU0@@Z");                   // 0x007688c2    e8e9cde9ff
     asm("test               eax, eax");                                        // 0x007688c7    85c0
     asm("{disp8} je         LAB__addr_0x0076890b");                            // 0x007688c9    7440
     asm("push               ebp");                                             // 0x007688cb    55

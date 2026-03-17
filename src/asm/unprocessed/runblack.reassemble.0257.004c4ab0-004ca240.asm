@@ -68,7 +68,7 @@
 .extern _jmp_addr_0x005c6740
 .extern ?GetFirstObjectInCurrentHand@GInterfaceStatus@@QAEPAVObject@@XZ
 .extern ?IsWater@MapCoords@@QBEIXZ
-.extern @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16
+.extern ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z
 .extern ?GetLHPoint@MapCoords@@QBE?AULHPoint@@XZ
 .extern ?GameRand@GRand@@SAHJ@Z
 .extern ?GameFloatRand@GRand@@SAMMPBDI@Z
@@ -3072,7 +3072,7 @@ _jmp_addr_0x004c6540:    sub                esp, 0x000001ac                     
 .Lbl_addr_0x004c6ed2:    push               0x0                                                  // 0x004c6ed2    6a00
                          push               0x12                                                 // 0x004c6ed4    6a12
                          mov.s              ecx, edi                                             // 0x004c6ed6    8bcf
-                         call               @FindType__9MapCoordsCF11OBJECT_TYPEP6Object@16      // 0x004c6ed8    e8e3d61300
+                         call               ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z      // 0x004c6ed8    e8e3d61300
                          mov.s              ebx, eax                                             // 0x004c6edd    8bd8
                          test               ebx, ebx                                             // 0x004c6edf    85db
                          {disp8} je         .Lbl_addr_0x004c6f04                                 // 0x004c6ee1    7421
