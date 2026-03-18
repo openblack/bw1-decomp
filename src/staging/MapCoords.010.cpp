@@ -154,7 +154,23 @@ MapCellIterator MapCoords::GetFirstIterator() const
 // win1.41 006035b0 mac 10018e70 MapCoords::IsWater(void) const
 bool32_t MapCoords::IsWater() const
 {
-    return 0;
+    int _x = x.split.map;
+    int _z = z.split.map;
+    if (_x >= 0 && _x <= (MAP_CELL_COUNT_X - 1) && _z >= 0 && _z <= (MAP_CELL_COUNT_Z - 1))
+    {
+        int block_x = _x >> 4;
+        int block_z = _z >> 4;
+        int block_idx = LH3DIsland::g_index_block[block_x][block_z];
+        if (block_idx != 0)
+        {
+            uint32_t sub_x = (uint32_t)_x % 0x10;
+            uint32_t sub_z = (uint32_t)_z % 0x10;
+            LandCell* cell = &LH3DIsland::g_ptr_blocks[block_idx]->cells[sub_x][sub_z];
+            if (cell)
+                return cell->IsWater();
+        }
+    }
+    return true;
 }
 
 // win1.41 00603b30 mac 1055e480 MapCoords::IsSuitableForFixed 9MESH_LISTff

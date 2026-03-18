@@ -445,7 +445,7 @@ _jmp_addr_0x006464f0:    push               ebp                                 
                          mov.s              edi, eax                                       // 0x0064663a    8bf8
                          xor.s              ebx, ebx                                       // 0x0064663c    33db
                          sar                edi, 4                                         // 0x0064663e    c1ff04
-                         {disp32} mov       bl, byte ptr [edx + edi + ?g_index_block@LH3DIsland@@3PAY0CA@EA]    // 0x00646641    8a9c3a64c9e900
+                         {disp32} mov       bl, byte ptr [edx + edi + ?g_index_block@LH3DIsland@@2PAY0CA@EA]    // 0x00646641    8a9c3a64c9e900
                          mov.s              edx, ebx                                       // 0x00646648    8bd3
                          test               edx, edx                                       // 0x0064664a    85d2
                          {disp8} je         .Lbl_addr_0x00646671                           // 0x0064664c    7423
@@ -455,7 +455,7 @@ _jmp_addr_0x006464f0:    push               ebp                                 
                          and                eax, 0x0f                                      // 0x00646656    83e00f
                          add.s              edi, ecx                                       // 0x00646659    03f9
                          add.s              edi, eax                                       // 0x0064665b    03f8
-                         {disp32} mov       eax, dword ptr [edx * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]        // 0x0064665d    8b049564c5e900
+                         {disp32} mov       eax, dword ptr [edx * 0x4 + ?g_ptr_blocks@LH3DIsland@@2PAPAULandBlock@@A]        // 0x0064665d    8b049564c5e900
                          lea                eax, dword ptr [eax + edi * 0x8]               // 0x00646664    8d04f8
                          test               eax, eax                                       // 0x00646667    85c0
                          {disp8} je         .Lbl_addr_0x00646671                           // 0x00646669    7406

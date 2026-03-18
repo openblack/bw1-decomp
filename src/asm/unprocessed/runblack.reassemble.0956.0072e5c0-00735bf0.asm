@@ -10920,7 +10920,7 @@ _jmp_addr_0x007352b0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          shl                edx, 5                                        // 0x007352e1    c1e205
                          mov.s              esi, eax                                      // 0x007352e4    8bf0
                          sar                esi, 4                                        // 0x007352e6    c1fe04
-                         {disp32} mov       bl, byte ptr [edx + esi + ?g_index_block@LH3DIsland@@3PAY0CA@EA]   // 0x007352e9    8a9c3264c9e900
+                         {disp32} mov       bl, byte ptr [edx + esi + ?g_index_block@LH3DIsland@@2PAY0CA@EA]   // 0x007352e9    8a9c3264c9e900
                          mov.s              edx, ebx                                      // 0x007352f0    8bd3
                          test               edx, edx                                      // 0x007352f2    85d2
                          pop                ebx                                           // 0x007352f4    5b
@@ -10931,7 +10931,7 @@ _jmp_addr_0x007352b0:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          and                eax, 0x0f                                     // 0x007352ff    83e00f
                          add.s              esi, ecx                                      // 0x00735302    03f1
                          add.s              esi, eax                                      // 0x00735304    03f0
-                         {disp32} mov       eax, dword ptr [edx * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]       // 0x00735306    8b049564c5e900
+                         {disp32} mov       eax, dword ptr [edx * 0x4 + ?g_ptr_blocks@LH3DIsland@@2PAPAULandBlock@@A]       // 0x00735306    8b049564c5e900
                          lea                eax, dword ptr [eax + esi * 0x8]              // 0x0073530d    8d04f0
                          test               eax, eax                                      // 0x00735310    85c0
                          {disp8} je         .Lbl_addr_0x00735320                          // 0x00735312    740c

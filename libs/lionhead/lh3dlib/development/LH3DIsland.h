@@ -13,7 +13,6 @@ struct LH3DColor;
 struct LH3DMapCoords;
 struct LH3DMaterial;
 struct LH3DTexture;
-
 struct LandCell
 {
     uint8_t r; /* 0x0 */
@@ -28,7 +27,30 @@ struct LandCell
     // Non-virtual methods
 
     // win1.41 inlined mac 1000cd10 LandCell::IsWater(void)
-    bool32_t IsWater();
+    bool32_t IsWater() { return properties & 0x10; }
+};
+
+struct LandBlock
+{
+    LandCell cells[0x11][0x11]; /* 0x0 */
+    int field_0x908;
+    float field_0x90c;
+    float field_0x910;
+    uint32_t field_0x914;
+    uint32_t field_0x918;
+    uint8_t field_0x91c[0x28];
+    LH3DTexture* field_0x944;
+    LH3DMaterial* field_0x948;
+    uint32_t field_0x94c;
+    uint32_t field_0x950;
+    uint32_t field_0x954;
+    uint8_t field_0x958[0x68];
+    uint32_t field_0x9c0;
+    float field_0x9c4;
+    float field_0x9c8;
+    int field_0x9cc;
+    int field_0x9d0;
+    uint32_t field_0x9d4;
 };
 
 struct LH3DIsland
@@ -47,6 +69,9 @@ struct LH3DIsland
     static bool32_t Release();
     // win1.41 007ff2d0 mac 10022e10 LH3DIsland::PreDraw(void)
     static void PreDraw();
+
+    static uint8_t g_index_block[32][32];
+    static LandBlock* g_ptr_blocks[256];
 };
 
 #else // __cplusplus

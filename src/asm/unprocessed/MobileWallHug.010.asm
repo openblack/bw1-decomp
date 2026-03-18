@@ -5621,7 +5621,7 @@ _jmp_addr_0x0060c3f0:    mov                ax, word ptr [ecx]                  
                          shl               edx, 5                                      // 0x0060d3c8    c1e205
                          mov.s             esi, eax                                    // 0x0060d3cb    8bf0
                          sar               esi, 4                                      // 0x0060d3cd    c1fe04
-                         {disp32} mov      bl, byte ptr [edx + esi + ?g_index_block@LH3DIsland@@3PAY0CA@EA] // 0x0060d3d0    8a9c3264c9e900
+                         {disp32} mov      bl, byte ptr [edx + esi + ?g_index_block@LH3DIsland@@2PAY0CA@EA] // 0x0060d3d0    8a9c3264c9e900
                          mov.s             edx, ebx                                    // 0x0060d3d7    8bd3
                          test              edx, edx                                    // 0x0060d3d9    85d2
                          pop               ebx                                         // 0x0060d3db    5b
@@ -5632,7 +5632,7 @@ _jmp_addr_0x0060c3f0:    mov                ax, word ptr [ecx]                  
                          and               eax, 0x0f                                   // 0x0060d3e6    83e00f
                          add.s             esi, ecx                                    // 0x0060d3e9    03f1
                          add.s             esi, eax                                    // 0x0060d3eb    03f0
-                         {disp32} mov      eax, dword ptr [edx * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]     // 0x0060d3ed    8b049564c5e900
+                         {disp32} mov      eax, dword ptr [edx * 0x4 + ?g_ptr_blocks@LH3DIsland@@2PAPAULandBlock@@A]     // 0x0060d3ed    8b049564c5e900
                          lea               eax, dword ptr [eax + esi * 0x8]            // 0x0060d3f4    8d04f0
                          test              eax, eax                                    // 0x0060d3f7    85c0
                          {disp8} je        .Lbl_addr_0x0060d403                        // 0x0060d3f9    7408
@@ -5982,7 +5982,7 @@ _jmp_addr_0x0060d760:    {disp32} mov       eax, dword ptr [_game]              
                          shl                edx, 5                                      // 0x0060d7b2    c1e205
                          mov.s              esi, ecx                                    // 0x0060d7b5    8bf1
                          sar                esi, 4                                      // 0x0060d7b7    c1fe04
-                         {disp32} mov       bl, byte ptr [edx + esi + ?g_index_block@LH3DIsland@@3PAY0CA@EA] // 0x0060d7ba    8a9c3264c9e900
+                         {disp32} mov       bl, byte ptr [edx + esi + ?g_index_block@LH3DIsland@@2PAY0CA@EA] // 0x0060d7ba    8a9c3264c9e900
                          mov.s              edx, ebx                                    // 0x0060d7c1    8bd3
                          test               edx, edx                                    // 0x0060d7c3    85d2
                          pop                ebx                                         // 0x0060d7c5    5b
@@ -5991,7 +5991,7 @@ _jmp_addr_0x0060d760:    {disp32} mov       eax, dword ptr [_game]              
                          mov.s              esi, eax                                    // 0x0060d7cb    8bf0
                          shl                esi, 4                                      // 0x0060d7cd    c1e604
                          add.s              esi, eax                                    // 0x0060d7d0    03f0
-                         {disp32} mov       eax, dword ptr [edx * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]     // 0x0060d7d2    8b049564c5e900
+                         {disp32} mov       eax, dword ptr [edx * 0x4 + ?g_ptr_blocks@LH3DIsland@@2PAPAULandBlock@@A]     // 0x0060d7d2    8b049564c5e900
                          and                ecx, 0x0f                                   // 0x0060d7d9    83e10f
                          add.s              esi, ecx                                    // 0x0060d7dc    03f1
                          lea                eax, dword ptr [eax + esi * 0x8]            // 0x0060d7de    8d04f0

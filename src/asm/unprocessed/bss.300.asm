@@ -4,8 +4,8 @@
 .globl _LHSys
 .globl _lpCriticalSection_00e8c118
 .globl _LH3DMist
-.globl ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A
-.globl ?g_index_block@LH3DIsland@@3PAY0CA@EA
+.globl ?g_ptr_blocks@LH3DIsland@@2PAPAULandBlock@@A
+.globl ?g_index_block@LH3DIsland@@2PAY0CA@EA
 .globl ?g_current_list_matrix@LH3DMesh@@2PAULH3DMatrix@@A
 .globl ?g_current_pack@LH3DMesh@@2PAUPack@1@A
 .globl ?g_current_matrix@LH3DMesh@@2PAULH3DMatrix@@A
@@ -44,8 +44,8 @@ _lpCriticalSection_00e90650:               .space 0x18                          
                                            .space 0xb0                                                             // [0x4ca668] 0x009c6000 + 0x4ca668 = 0x00e90668
 _LH3DMist:                                 .space 0x4                                                              // [0x4d411c] 0x009c6000 + 0x4d411c = 0x00e9a11c
                                            .space 0x2444                                                           // [0x4d4120] 0x009c6000 + 0x4d4120 = 0x00e9a120
-?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A:.space 0x100 * 0x4                                                    // [0x4d6564] 0x009c6000 + 0x4d6564 = 0x00e9c564
-?g_index_block@LH3DIsland@@3PAY0CA@EA:     .space 0x20 * 0x20                                                      // [0x4d6964] 0x009c6000 + 0x4d6964 = 0x00e9c964
+?g_ptr_blocks@LH3DIsland@@2PAPAULandBlock@@A:.space 0x100 * 0x4                                                    // [0x4d6564] 0x009c6000 + 0x4d6564 = 0x00e9c564
+?g_index_block@LH3DIsland@@2PAY0CA@EA:     .space 0x20 * 0x20                                                      // [0x4d6964] 0x009c6000 + 0x4d6964 = 0x00e9c964
                                            .space 0xc4                                                             // [0x4d6d64] 0x009c6000 + 0x4d6d64 = 0x00e9cd64
 ?g_current_list_matrix@LH3DMesh@@2PAULH3DMatrix@@A: .space 0x3000                                                  // [0x4d6e28] 0x009c6000 + 0x4d6e28 = 0x00e9ce28
                                            .space 0xc                                                              // [0x4d9e28] 0x009c6000 + 0x4d9e28 = 0x00e9fe28
