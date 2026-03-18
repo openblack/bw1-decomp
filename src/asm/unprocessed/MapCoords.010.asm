@@ -46,6 +46,8 @@
 .globl _jmp_addr_0x006041c0
 .globl _jmp_addr_0x00604250
 .globl ?InBounds@MapCoords@@QBEIXZ
+.globl _jmp_addr_0x006042ea
+.globl _jmp_addr_0x006042f0
 .globl _jmp_addr_0x00604370
 .globl ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z
 .globl _jmp_addr_0x006045f0
@@ -3374,8 +3376,8 @@ _jmp_addr_0x00604250:    {disp8} mov        ax, word ptr [ecx + 0x02]           
                          ret                                                              // 0x006042e6    c3
 .Lbl_addr_0x006042e7:    xor.s              eax, eax                                      // 0x006042e7    33c0
                          ret                                                              // 0x006042e9    c3
-                         call               dword ptr [__imp__DirectXSetupGetVersion]     // 0x006042ea    ff153c908a00
-                         sub                esp, 0x0c                                     // 0x006042f0    83ec0c
+_jmp_addr_0x006042ea:    call               dword ptr [__imp__DirectXSetupGetVersion]     // 0x006042ea    ff153c908a00
+_jmp_addr_0x006042f0:    sub                esp, 0x0c                                     // 0x006042f0    83ec0c
                          push               ebx                                           // 0x006042f3    53
                          push               esi                                           // 0x006042f4    56
                          push               edi                                           // 0x006042f5    57

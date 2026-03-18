@@ -186,7 +186,8 @@ void MapCoords::IsSuitableForFixed(Game3DObject* object) const
 // win1.41 006042c0 mac 100499f0 MapCoords::InBounds(void) const
 bool32_t MapCoords::InBounds() const
 {
-    return 0;
+    return (uint32_t)x.split.map < game->map.cell_extent_zx[1]
+        && (uint32_t)z.split.map < game->map.cell_extent_zx[0];
 }
 
 // win1.41 006045c0 mac 100195c0 MapCoords::FindType(OBJECT_TYPE, Object *) const
