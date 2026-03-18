@@ -150,7 +150,7 @@
 .extern _jmp_addr_0x00603390
 .extern ?ToMap@MapCoords@@QBEPAUMapCell@@XZ
 .extern ?GetFirstIterator@MapCoords@@QBE?AUMapCellIterator@@XZ
-.extern ?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z
+.extern ?IsSuitableForFixed@MapCoords@@QBEIPAVGame3DObject@@@Z
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern _jmp_addr_0x006045f0
 .extern _jmp_addr_0x00604af0
@@ -14516,7 +14516,7 @@ _jmp_addr_0x006e8500:    xor.s              eax, eax                            
                          push               ecx                                           // 0x006e8737    51
                          push               edx                                           // 0x006e8738    52
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x006e8739    8d4e14
-                         call               ?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z                          // 0x006e873c    e87fb6f1ff
+                         call               ?IsSuitableForFixed@MapCoords@@QBEIPAVGame3DObject@@@Z                          // 0x006e873c    e87fb6f1ff
                          test               eax, eax                                      // 0x006e8741    85c0
                          {disp8} je         .Lbl_addr_0x006e8755                          // 0x006e8743    7410
                          test               edi, edi                                      // 0x006e8745    85ff
@@ -15182,7 +15182,7 @@ _jmp_addr_0x006e8b10:    {disp8} mov        edx, dword ptr [ecx + 0x68]         
                          push               ecx                                           // 0x006e8e33    51
                          push               ebp                                           // 0x006e8e34    55
                          mov.s              ecx, edi                                      // 0x006e8e35    8bcf
-                         call               ?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z                          // 0x006e8e37    e884aff1ff
+                         call               ?IsSuitableForFixed@MapCoords@@QBEIPAVGame3DObject@@@Z                          // 0x006e8e37    e884aff1ff
                          test               eax, eax                                      // 0x006e8e3c    85c0
                          {disp8} jne        .Lbl_addr_0x006e8e68                          // 0x006e8e3e    7528
                          {disp8} fld        dword ptr [esp + 0x1c]                        // 0x006e8e40    d944241c
@@ -15481,7 +15481,7 @@ _jmp_addr_0x006e8b10:    {disp8} mov        edx, dword ptr [ecx + 0x68]         
                          push               ecx                                           // 0x006e9113    51
                          push               edi                                           // 0x006e9114    57
                          {disp8} lea        ecx, dword ptr [esi + 0x14]                   // 0x006e9115    8d4e14
-                         call               ?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z                          // 0x006e9118    e8a3acf1ff
+                         call               ?IsSuitableForFixed@MapCoords@@QBEIPAVGame3DObject@@@Z                          // 0x006e9118    e8a3acf1ff
                          mov.s              ebx, eax                                      // 0x006e911d    8bd8
 .Lbl_addr_0x006e911f:    mov                edx, dword ptr [edi]                          // 0x006e911f    8b17
                          mov.s              ecx, edi                                      // 0x006e9121    8bcf

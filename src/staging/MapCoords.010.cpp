@@ -4,10 +4,12 @@
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
 
 #include "Game.h"
+#include "Game3DObject.h"
 #include "Utils.h"
 
 extern "C" float rdata_float_coord_to_point;
 extern "C" GGame* game;
+extern "C" Game3DObject* DAT_00d38334;
 
 // win1.41 006020e0 mac 1048f050 MapCoords::GetNearestTown(float) const
 Town* MapCoords::GetNearestTown(float t_max) const
@@ -173,14 +175,29 @@ bool32_t MapCoords::IsWater() const
     return true;
 }
 
-// win1.41 00603b30 mac 1055e480 MapCoords::IsSuitableForFixed 9MESH_LISTff
-void MapCoords::IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3)
+// win1.41 00603b30 mac 1055e480 MapCoords::IsSuitableForFixed(MESH_LIST, float, float) const
+bool32_t MapCoords::IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3) const
 {
+    MapCoords _coords = *this;
+    if (DAT_00d38334 == NULL)
+    {
+        DAT_00d38334 = Game3DObject::Create(_coords, LH3DObject::ObjectType::STATIC, mesh, param_2, param_3);
+    }
+    else
+    {
+        DAT_00d38334->SetMesh(NULL, NULL, NULL);
+    }
+    if (DAT_00d38334 == NULL)
+    {
+        return NULL;
+    }
+    return IsSuitableForFixed(DAT_00d38334);
 }
 
 // win1.41 00603dc0 mac 101c2c00 MapCoords::IsSuitableForFixed(Game3DObject *) const
-void MapCoords::IsSuitableForFixed(Game3DObject* object) const
+bool32_t MapCoords::IsSuitableForFixed(Game3DObject* object) const
 {
+    return false;
 }
 
 // win1.41 006042c0 mac 100499f0 MapCoords::InBounds(void) const

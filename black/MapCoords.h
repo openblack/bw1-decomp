@@ -118,10 +118,10 @@ struct MapCoords
     MapCellIterator GetFirstIterator() const;
     // win1.41 006035b0 mac 10018e70 MapCoords::IsWater(void) const
     bool32_t IsWater() const;
-    // win1.41 00603b30 mac 1055e480 MapCoords::IsSuitableForFixed 9MESH_LISTff
-    void IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3);
+    // win1.41 00603b30 mac 1055e480 MapCoords::IsSuitableForFixed(MESH_LIST, float, float) const
+    bool32_t IsSuitableForFixed(MESH_LIST mesh, float param_2, float param_3) const;
     // win1.41 00603dc0 mac 101c2c00 MapCoords::IsSuitableForFixed(Game3DObject *) const
-    void IsSuitableForFixed(Game3DObject* object) const;
+    bool32_t IsSuitableForFixed(Game3DObject* object) const;
     // win1.41 006045c0 mac 100195c0 MapCoords::FindType(OBJECT_TYPE, Object *) const
     Object* FindType(OBJECT_TYPE type, Object* object) const;
     // win1.41 00605660 mac 10087b50 MapCoords::operator==(MapCoords const &) const
@@ -254,9 +254,9 @@ struct MapCellIterator* __fastcall GetFirstIterator__9MapCoordsCFv(struct MapCoo
 // win1.41 006035b0 mac 10018e70 MapCoords::IsWater(void) const
 bool32_t __fastcall IsWater__9MapCoordsCFv(const struct MapCoords* this) asm("?IsWater@MapCoords@@QBEIXZ");
 // win1.41 00603b30 mac 1055e480 MapCoords::IsSuitableForFixed 9MESH_LISTff
-void __fastcall IsSuitableForFixed__9MapCoordsCF9MESH_LISTff(const struct MapCoords* this, const void* edx, enum MESH_LIST mesh, float param_2, float param_3) asm("?IsSuitableForFixed@MapCoords@@QAEXW4MESH_LIST@@MM@Z");
+void __fastcall IsSuitableForFixed__9MapCoordsCF9MESH_LISTff(const struct MapCoords* this, const void* edx, enum MESH_LIST mesh, float param_2, float param_3) asm("?IsSuitableForFixed@MapCoords@@QBEIW4MESH_LIST@@MM@Z");
 // win1.41 00603dc0 mac 101c2c00 MapCoords::IsSuitableForFixed(Game3DObject *) const
-void __fastcall IsSuitableForFixed__9MapCoordsCFP12Game3DObject(const struct MapCoords* this, const void* edx, struct Game3DObject* object) asm("?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z");
+void __fastcall IsSuitableForFixed__9MapCoordsCFP12Game3DObject(const struct MapCoords* this, const void* edx, struct Game3DObject* object) asm("?IsSuitableForFixed@MapCoords@@QBEIPAVGame3DObject@@@Z");
 // win1.41 006045c0 mac 100195c0 MapCoords::FindType(OBJECT_TYPE, Object *) const
 struct Object* __fastcall FindType__9MapCoordsCF11OBJECT_TYPEP6Object(struct MapCoords* this, const void* edx, enum OBJECT_TYPE type, struct Object* object) asm("?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z");
 // win1.41 00605660 mac 10087b50 MapCoords::operator==(MapCoords const &) const
