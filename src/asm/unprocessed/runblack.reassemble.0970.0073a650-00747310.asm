@@ -126,7 +126,7 @@
 .extern _jmp_addr_0x00603320
 .extern ?GetFirstIterator@MapCoords@@QBE?AUMapCellIterator@@XZ
 .extern _jmp_addr_0x00603840
-.extern ?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z
+.extern ?IsSuitableForFixed@MapCoords@@QBEIPAVGame3DObject@@@Z
 .extern ?InBounds@MapCoords@@QBEIXZ
 .extern ?FindType@MapCoords@@QBEPAVObject@@W4OBJECT_TYPE@@PAV2@@Z
 .extern ??YMapCoords@@QAEXABU0@@Z
@@ -5728,7 +5728,7 @@ _jmp_addr_0x0073d8d0:    sub                esp, 0x0c                           
                          {disp8} mov        ecx, dword ptr [esp + 0x28]                          // 0x0073da2e    8b4c2428
                          push               edx                                                  // 0x0073da32    52
                          push               eax                                                  // 0x0073da33    50
-                         call               ?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z                                 // 0x0073da34    e88763ecff
+                         call               ?IsSuitableForFixed@MapCoords@@QBEIPAVGame3DObject@@@Z                                 // 0x0073da34    e88763ecff
                          test               eax, eax                                             // 0x0073da39    85c0
                          {disp8} je         .Lbl_addr_0x0073da77                                 // 0x0073da3b    743a
 .Lbl_addr_0x0073da3d:    {disp8} mov        eax, dword ptr [esp + 0x2c]                          // 0x0073da3d    8b44242c

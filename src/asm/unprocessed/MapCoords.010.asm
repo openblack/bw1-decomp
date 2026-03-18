@@ -41,8 +41,8 @@
 .globl _jmp_addr_0x00603840
 .globl _jmp_addr_0x00603860
 .globl _jmp_addr_0x006038b0
-.globl ?IsSuitableForFixed@MapCoords@@QAEXW4MESH_LIST@@MM@Z
-.globl ?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z
+.globl ?IsSuitableForFixed@MapCoords@@QBEIW4MESH_LIST@@MM@Z
+.globl ?IsSuitableForFixed@MapCoords@@QBEIPAVGame3DObject@@@Z
 .globl _jmp_addr_0x006041c0
 .globl _jmp_addr_0x00604250
 .globl ?InBounds@MapCoords@@QBEIXZ
@@ -2665,7 +2665,7 @@ _jmp_addr_0x006038b0:    sub                esp, 0x18                           
                          {disp8} je         .Lbl_addr_0x00603b24                          // 0x00603b12    7410
                          push               eax                                           // 0x00603b14    50
                          mov.s              ecx, ebp                                      // 0x00603b15    8bcd
-                         call               .Lbl_addr_0x00604020                          // 0x00603b17    e804050000
+                         call               _jmp_addr_0x00604020                          // 0x00603b17    e804050000
                          pop                ebp                                           // 0x00603b1c    5d
                          pop                ebx                                           // 0x00603b1d    5b
                          add                esp, 0x18                                     // 0x00603b1e    83c418
@@ -2678,7 +2678,7 @@ _jmp_addr_0x006038b0:    sub                esp, 0x18                           
                          nop                                                              // 0x00603b2e    90
                          nop                                                              // 0x00603b2f    90
 
-?IsSuitableForFixed@MapCoords@@QAEXW4MESH_LIST@@MM@Z:
+?IsSuitableForFixed@MapCoords@@QBEIW4MESH_LIST@@MM@Z:
                          sub                esp, 0x1c                                     // 0x00603b30    83ec1c
                          push               ebx                                           // 0x00603b33    53
                          push               ebp                                           // 0x00603b34    55
@@ -2891,7 +2891,7 @@ _jmp_addr_0x006038b0:    sub                esp, 0x18                           
                          push               ecx                                           // 0x00603d9f    51
                          push               eax                                           // 0x00603da0    50
                          mov.s              ecx, esi                                      // 0x00603da1    8bce
-                         call               ?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z                          // 0x00603da3    e818000000
+                         call               ?IsSuitableForFixed@MapCoords@@QBEIPAVGame3DObject@@@Z                          // 0x00603da3    e818000000
                          pop                esi                                           // 0x00603da8    5e
                          pop                ebp                                           // 0x00603da9    5d
                          pop                ebx                                           // 0x00603daa    5b
@@ -2908,7 +2908,7 @@ _jmp_addr_0x006038b0:    sub                esp, 0x18                           
                          nop                                                              // 0x00603dbe    90
                          nop                                                              // 0x00603dbf    90
 
-?IsSuitableForFixed@MapCoords@@QBEXPAVGame3DObject@@@Z:
+?IsSuitableForFixed@MapCoords@@QBEIPAVGame3DObject@@@Z:
                          sub                esp, 0x34                                     // 0x00603dc0    83ec34
                          push               ebx                                           // 0x00603dc3    53
                          push               ebp                                           // 0x00603dc4    55
@@ -3118,7 +3118,7 @@ _jmp_addr_0x006038b0:    sub                esp, 0x18                           
                          nop                                                              // 0x0060401d    90
                          nop                                                              // 0x0060401e    90
                          nop                                                              // 0x0060401f    90
-.Lbl_addr_0x00604020:    sub                esp, 0x28                                     // 0x00604020    83ec28
+_jmp_addr_0x00604020:    sub                esp, 0x28                                     // 0x00604020    83ec28
                          push               ebx                                           // 0x00604023    53
                          push               ebp                                           // 0x00604024    55
                          push               esi                                           // 0x00604025    56

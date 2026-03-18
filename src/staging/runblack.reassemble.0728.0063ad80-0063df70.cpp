@@ -6,7 +6,7 @@
 #include "Game.h"
 
 // win1.41 0063ad80 mac 103d9ee0 Game3DObject::Create(MapCoords const &, LH3DObject::ObjectType, MESH_LIST, float, float)
-Game3DObject* Game3DObject::Create(const MapCoords* coords, LH3DObject::ObjectType type, MESH_LIST mesh, float param_4, float param_5)
+Game3DObject* Game3DObject::Create(const MapCoords& coords, LH3DObject::ObjectType type, MESH_LIST mesh, float param_4, float param_5)
 {
     return 0;
 }
