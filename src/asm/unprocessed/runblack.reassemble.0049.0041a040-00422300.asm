@@ -11286,11 +11286,11 @@ _jmp_addr_0x0041f280:    mov                eax, 0x437f0000                     
                          sar                eax, 4                                        // 0x0041fa93    c1f804
                          xor.s              ecx, ecx                                      // 0x0041fa96    33c9
                          shl                esi, 5                                        // 0x0041fa98    c1e605
-                         {disp32} mov       cl, byte ptr [esi + eax + ?g_index_block@LH3DIsland@@3PAY0CA@EA]   // 0x0041fa9b    8a8c0664c9e900
+                         {disp32} mov       cl, byte ptr [esi + eax + ?g_index_block@LH3DIsland@@2PAY0CA@EA]   // 0x0041fa9b    8a8c0664c9e900
                          mov.s              eax, ecx                                      // 0x0041faa2    8bc1
                          test               eax, eax                                      // 0x0041faa4    85c0
                          {disp8} je         .Lbl_addr_0x0041fac2                          // 0x0041faa6    741a
-                         {disp32} mov       ecx, dword ptr [eax * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]       // 0x0041faa8    8b0c8564c5e900
+                         {disp32} mov       ecx, dword ptr [eax * 0x4 + ?g_ptr_blocks@LH3DIsland@@2PAPAULandBlock@@A]       // 0x0041faa8    8b0c8564c5e900
                          test               ecx, ecx                                      // 0x0041faaf    85c9
                          {disp8} je         .Lbl_addr_0x0041fac2                          // 0x0041fab1    740f
                          {disp32} jmp       .Lbl_addr_0x0041f9ac                          // 0x0041fab3    e9f4feffff

@@ -13642,7 +13642,7 @@ _globl_ct_0x0067d6b0:    {disp32} jmp       .Lbl_addr_0x0067d6c0                
                          mov.s              edx, eax                                      // 0x0067dd75    8bd0
                          xor.s              ebx, ebx                                      // 0x0067dd77    33db
                          sar                edx, 4                                        // 0x0067dd79    c1fa04
-                         {disp32} mov       bl, byte ptr [ecx + edx + ?g_index_block@LH3DIsland@@3PAY0CA@EA]   // 0x0067dd7c    8a9c1164c9e900
+                         {disp32} mov       bl, byte ptr [ecx + edx + ?g_index_block@LH3DIsland@@2PAY0CA@EA]   // 0x0067dd7c    8a9c1164c9e900
                          mov.s              ecx, ebx                                      // 0x0067dd83    8bcb
                          test               ecx, ecx                                      // 0x0067dd85    85c9
                          {disp8} je         .Lbl_addr_0x0067ddac                          // 0x0067dd87    7423
@@ -13652,7 +13652,7 @@ _globl_ct_0x0067d6b0:    {disp32} jmp       .Lbl_addr_0x0067d6c0                
                          and                eax, 0x0f                                     // 0x0067dd91    83e00f
                          add.s              edx, esi                                      // 0x0067dd94    03d6
                          add.s              edx, eax                                      // 0x0067dd96    03d0
-                         {disp32} mov       eax, dword ptr [ecx * 0x4 + ?g_ptr_blocks@LH3DIsland@@3PAPAULandBlock@@A]       // 0x0067dd98    8b048d64c5e900
+                         {disp32} mov       eax, dword ptr [ecx * 0x4 + ?g_ptr_blocks@LH3DIsland@@2PAPAULandBlock@@A]       // 0x0067dd98    8b048d64c5e900
                          lea                eax, dword ptr [eax + edx * 0x8]              // 0x0067dd9f    8d04d0
                          test               eax, eax                                      // 0x0067dda2    85c0
                          {disp8} je         .Lbl_addr_0x0067ddac                          // 0x0067dda4    7406
