@@ -263,7 +263,7 @@ void __fastcall __dt__8VillagerFUi(struct Base* this, const void* edx, uint32_t 
     asm("{disp8} je         LAB__addr_0x0055cb5d");                           // 0x0055cb4d    740e
     asm("push               0x00000130");                                     // 0x0055cb4f    6830010000
     asm("push               esi");                                            // 0x0055cb54    56
-    asm("call               ??3Base@@SAXPAXK@Z");                           // 0x0055cb55    e8169eedff
+    asm("call               ??3Base@@SAXPAXI@Z");                           // 0x0055cb55    e8169eedff
     asm("add                esp, 0x08");                                      // 0x0055cb5a    83c408
     asm("LAB__addr_0x0055cb5d:");
     asm("mov.s              eax, esi");                                       // 0x0055cb5d    8bc6

@@ -31,7 +31,7 @@
 .extern ?DrawBox@SetupThing@@SAXHHHHMMMMPAULH3DMaterial@@PAULH3DColor@@HHH_NM@Z
 .extern ?DrawBox@SetupThing@@SAXHHHHKKKKKK@Z
 .extern ??1Base@@UAE@XZ
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x004707f0
 .extern @Init__13DialogBoxBaseFUlUlPFiP8SetupBoxP12SetupControlii_v@20
 .extern ?Destroy@DialogBoxBase@@UAEXXZ
@@ -1150,7 +1150,7 @@ _globl_ct_0x0056f9e0:    {disp32} jmp       .Lbl_addr_0x0056f9f0                
                          {disp8} je         .Lbl_addr_0x0056fa6a                          // 0x0056fa5d    740b
                          push               0x14                                          // 0x0056fa5f    6a14
                          push               esi                                           // 0x0056fa61    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x0056fa62    e8096fecff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x0056fa62    e8096fecff
                          add                esp, 0x08                                     // 0x0056fa67    83c408
 .Lbl_addr_0x0056fa6a:    mov.s              eax, esi                                      // 0x0056fa6a    8bc6
                          pop                esi                                           // 0x0056fa6c    5e

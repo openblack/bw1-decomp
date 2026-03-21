@@ -12,7 +12,7 @@
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern _jmp_addr_0x00436760
 .extern ??1Base@@UAE@XZ
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x004369d0
 .extern _jmp_addr_0x004427b0
 .extern _jmp_addr_0x005198f0
@@ -2106,7 +2106,7 @@ _globl_ct_0x005e1680:    call               .Lbl_addr_0x005e1690                
                          {disp8} je         .Lbl_addr_0x005e173a                           // 0x005e172d    740b
                          push               0x58                                           // 0x005e172f    6a58
                          push               esi                                            // 0x005e1731    56
-                         call               ??3Base@@SAXPAXK@Z                           // 0x005e1732    e83952e5ff
+                         call               ??3Base@@SAXPAXI@Z                           // 0x005e1732    e83952e5ff
                          add                esp, 0x08                                      // 0x005e1737    83c408
 .Lbl_addr_0x005e173a:    mov.s              eax, esi                                       // 0x005e173a    8bc6
                          pop                esi                                            // 0x005e173c    5e
@@ -2651,7 +2651,7 @@ _jmp_addr_0x005e1ac0:    push               ebx                                 
                          {disp8} je         .Lbl_addr_0x005e1b9f                           // 0x005e1b92    740b
                          push               0x10                                           // 0x005e1b94    6a10
                          push               edi                                            // 0x005e1b96    57
-                         call               ??3Base@@SAXPAXK@Z                           // 0x005e1b97    e8d44de5ff
+                         call               ??3Base@@SAXPAXI@Z                           // 0x005e1b97    e8d44de5ff
                          add                esp, 0x08                                      // 0x005e1b9c    83c408
 .Lbl_addr_0x005e1b9f:    mov.s              eax, edi                                       // 0x005e1b9f    8bc7
                          pop                edi                                            // 0x005e1ba1    5f

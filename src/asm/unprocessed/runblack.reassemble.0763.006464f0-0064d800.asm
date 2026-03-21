@@ -11,7 +11,7 @@
 .extern ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ??1Base@@UAE@XZ
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern @__ct__12BuildingSiteFP20PlannedMultiMapFixed@12
 .extern _jmp_addr_0x0043dc00
 .extern ??0MapCoords@@QAE@ABU0@@Z
@@ -4011,7 +4011,7 @@ _jmp_addr_0x00648da0:    push               ecx                                 
                          {disp8} je         .Lbl_addr_0x00648ecd                           // 0x00648ebd    740e
                          push               0x00000a60                                     // 0x00648ebf    68600a0000
                          push               esi                                            // 0x00648ec4    56
-                         call               ??3Base@@SAXPAXK@Z                           // 0x00648ec5    e8a6dadeff
+                         call               ??3Base@@SAXPAXI@Z                           // 0x00648ec5    e8a6dadeff
                          add                esp, 0x08                                      // 0x00648eca    83c408
 .Lbl_addr_0x00648ecd:    mov.s              eax, esi                                       // 0x00648ecd    8bc6
                          pop                esi                                            // 0x00648ecf    5e

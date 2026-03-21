@@ -26,7 +26,7 @@
 .extern ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ??1Base@@UAE@XZ
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x00437eb0
 .extern _jmp_addr_0x004383d0
 .extern @SetBelief__7GBeliefFUlf@16
@@ -658,7 +658,7 @@ _jmp_addr_0x006de220:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          {disp8} je         .Lbl_addr_0x006de29d                          // 0x006de28d    740e
                          push               0x0000009c                                    // 0x006de28f    689c000000
                          push               esi                                           // 0x006de294    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006de295    e8d686d5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006de295    e8d686d5ff
                          add                esp, 0x08                                     // 0x006de29a    83c408
 .Lbl_addr_0x006de29d:    mov.s              eax, esi                                      // 0x006de29d    8bc6
                          pop                esi                                           // 0x006de29f    5e
@@ -696,7 +696,7 @@ _jmp_addr_0x006de220:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          {disp8} je         .Lbl_addr_0x006de2dd                          // 0x006de2cd    740e
                          push               0x0000009c                                    // 0x006de2cf    689c000000
                          push               esi                                           // 0x006de2d4    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006de2d5    e89686d5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006de2d5    e89686d5ff
                          add                esp, 0x08                                     // 0x006de2da    83c408
 .Lbl_addr_0x006de2dd:    mov.s              eax, esi                                      // 0x006de2dd    8bc6
                          pop                esi                                           // 0x006de2df    5e
@@ -734,7 +734,7 @@ _jmp_addr_0x006de220:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          {disp8} je         .Lbl_addr_0x006de31d                          // 0x006de30d    740e
                          push               0x0000009c                                    // 0x006de30f    689c000000
                          push               esi                                           // 0x006de314    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006de315    e85686d5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006de315    e85686d5ff
                          add                esp, 0x08                                     // 0x006de31a    83c408
 .Lbl_addr_0x006de31d:    mov.s              eax, esi                                      // 0x006de31d    8bc6
                          pop                esi                                           // 0x006de31f    5e
@@ -772,7 +772,7 @@ _jmp_addr_0x006de220:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          {disp8} je         .Lbl_addr_0x006de35d                          // 0x006de34d    740e
                          push               0x0000009c                                    // 0x006de34f    689c000000
                          push               esi                                           // 0x006de354    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006de355    e81686d5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006de355    e81686d5ff
                          add                esp, 0x08                                     // 0x006de35a    83c408
 .Lbl_addr_0x006de35d:    mov.s              eax, esi                                      // 0x006de35d    8bc6
                          pop                esi                                           // 0x006de35f    5e
@@ -810,7 +810,7 @@ _jmp_addr_0x006de220:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          {disp8} je         .Lbl_addr_0x006de39d                          // 0x006de38d    740e
                          push               0x0000009c                                    // 0x006de38f    689c000000
                          push               esi                                           // 0x006de394    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006de395    e8d685d5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006de395    e8d685d5ff
                          add                esp, 0x08                                     // 0x006de39a    83c408
 .Lbl_addr_0x006de39d:    mov.s              eax, esi                                      // 0x006de39d    8bc6
                          pop                esi                                           // 0x006de39f    5e
@@ -848,7 +848,7 @@ _jmp_addr_0x006de220:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          {disp8} je         .Lbl_addr_0x006de3dd                          // 0x006de3cd    740e
                          push               0x0000009c                                    // 0x006de3cf    689c000000
                          push               esi                                           // 0x006de3d4    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006de3d5    e89685d5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006de3d5    e89685d5ff
                          add                esp, 0x08                                     // 0x006de3da    83c408
 .Lbl_addr_0x006de3dd:    mov.s              eax, esi                                      // 0x006de3dd    8bc6
                          pop                esi                                           // 0x006de3df    5e
@@ -3949,7 +3949,7 @@ _globl_ct_0x006e0710:    call               .Lbl_addr_0x006e0720                
                          {disp8} je         .Lbl_addr_0x006e07ca                          // 0x006e07bd    740b
                          push               0x28                                          // 0x006e07bf    6a28
                          push               esi                                           // 0x006e07c1    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006e07c2    e8a961d5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006e07c2    e8a961d5ff
                          add                esp, 0x08                                     // 0x006e07c7    83c408
 .Lbl_addr_0x006e07ca:    mov.s              eax, esi                                      // 0x006e07ca    8bc6
                          pop                esi                                           // 0x006e07cc    5e
@@ -4039,7 +4039,7 @@ _globl_ct_0x006e07d0:    call               .Lbl_addr_0x006e07e0                
                          {disp8} je         .Lbl_addr_0x006e088a                          // 0x006e087d    740b
                          push               0x1c                                          // 0x006e087f    6a1c
                          push               esi                                           // 0x006e0881    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006e0882    e8e960d5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006e0882    e8e960d5ff
                          add                esp, 0x08                                     // 0x006e0887    83c408
 .Lbl_addr_0x006e088a:    mov.s              eax, esi                                      // 0x006e088a    8bc6
                          pop                esi                                           // 0x006e088c    5e
@@ -4319,7 +4319,7 @@ _globl_ct_0x006e07d0:    call               .Lbl_addr_0x006e07e0                
                          {disp8} je         .Lbl_addr_0x006e0ba0                          // 0x006e0b93    740b
                          push               0x20                                          // 0x006e0b95    6a20
                          push               esi                                           // 0x006e0b97    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006e0b98    e8d35dd5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006e0b98    e8d35dd5ff
                          add                esp, 0x08                                     // 0x006e0b9d    83c408
 .Lbl_addr_0x006e0ba0:    mov.s              eax, esi                                      // 0x006e0ba0    8bc6
                          pop                esi                                           // 0x006e0ba2    5e
@@ -4663,7 +4663,7 @@ _globl_ct_0x006e0dc0:    call               .Lbl_addr_0x006e0dd0                
                          {disp8} je         .Lbl_addr_0x006e0e7a                          // 0x006e0e6d    740b
                          push               0x64                                          // 0x006e0e6f    6a64
                          push               esi                                           // 0x006e0e71    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006e0e72    e8f95ad5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006e0e72    e8f95ad5ff
                          add                esp, 0x08                                     // 0x006e0e77    83c408
 .Lbl_addr_0x006e0e7a:    mov.s              eax, esi                                      // 0x006e0e7a    8bc6
                          pop                esi                                           // 0x006e0e7c    5e
@@ -9805,7 +9805,7 @@ _globl_ct_0x006e5400:    call               .Lbl_addr_0x006e5410                
                          {disp8} je         .Lbl_addr_0x006e54cd                          // 0x006e54bd    740e
                          push               0x00000130                                    // 0x006e54bf    6830010000
                          push               esi                                           // 0x006e54c4    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006e54c5    e8a614d5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006e54c5    e8a614d5ff
                          add                esp, 0x08                                     // 0x006e54ca    83c408
 .Lbl_addr_0x006e54cd:    mov.s              eax, esi                                      // 0x006e54cd    8bc6
                          pop                esi                                           // 0x006e54cf    5e
@@ -9908,7 +9908,7 @@ _globl_ct_0x006e54e0:    call               .Lbl_addr_0x006e54f0                
                          {disp8} je         .Lbl_addr_0x006e559a                          // 0x006e558d    740b
                          push               0x2c                                          // 0x006e558f    6a2c
                          push               esi                                           // 0x006e5591    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006e5592    e8d913d5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006e5592    e8d913d5ff
                          add                esp, 0x08                                     // 0x006e5597    83c408
 .Lbl_addr_0x006e559a:    mov.s              eax, esi                                      // 0x006e559a    8bc6
                          pop                esi                                           // 0x006e559c    5e
@@ -10050,7 +10050,7 @@ _jmp_addr_0x006e5620:    push               esi                                 
                          {disp8} je         .Lbl_addr_0x006e56ad                          // 0x006e569d    740e
                          push               0x000000a8                                    // 0x006e569f    68a8000000
                          push               esi                                           // 0x006e56a4    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006e56a5    e8c612d5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006e56a5    e8c612d5ff
                          add                esp, 0x08                                     // 0x006e56aa    83c408
 .Lbl_addr_0x006e56ad:    mov.s              eax, esi                                      // 0x006e56ad    8bc6
                          pop                esi                                           // 0x006e56af    5e
@@ -14169,7 +14169,7 @@ _globl_ct_0x006e8300:    call               .Lbl_addr_0x006e8310                
                          {disp8} je         .Lbl_addr_0x006e837d                          // 0x006e836d    740e
                          push               0x00000128                                    // 0x006e836f    6828010000
                          push               esi                                           // 0x006e8374    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006e8375    e8f6e5d4ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006e8375    e8f6e5d4ff
                          add                esp, 0x08                                     // 0x006e837a    83c408
 .Lbl_addr_0x006e837d:    mov.s              eax, esi                                      // 0x006e837d    8bc6
                          pop                esi                                           // 0x006e837f    5e
@@ -18374,7 +18374,7 @@ _globl_ct_0x006eb0d0:    {disp32} jmp       .Lbl_addr_0x006eb0e0                
                          {disp8} je         .Lbl_addr_0x006eb16d                          // 0x006eb15d    740e
                          push               0x000000bc                                    // 0x006eb15f    68bc000000
                          push               esi                                           // 0x006eb164    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x006eb165    e806b8d4ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x006eb165    e806b8d4ff
                          add                esp, 0x08                                     // 0x006eb16a    83c408
 .Lbl_addr_0x006eb16d:    mov.s              eax, esi                                      // 0x006eb16d    8bc6
                          pop                esi                                           // 0x006eb16f    5e

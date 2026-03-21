@@ -8,7 +8,7 @@
 .extern ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern ??0MapCoords@@QAE@ABU0@@Z
 .extern _jmp_addr_0x00519320
 .extern _jmp_addr_0x00519ad0
@@ -2830,7 +2830,7 @@ _jmp_addr_0x00727f20:    push               esi                                 
                          {disp8} je         .Lbl_addr_0x00727fdd                                 // 0x00727fcd    740e
                          push               0x000000a0                                           // 0x00727fcf    68a0000000
                          push               esi                                                  // 0x00727fd4    56
-                         call               ??3Base@@SAXPAXK@Z                                 // 0x00727fd5    e896e9d0ff
+                         call               ??3Base@@SAXPAXI@Z                                 // 0x00727fd5    e896e9d0ff
                          add                esp, 0x08                                            // 0x00727fda    83c408
 .Lbl_addr_0x00727fdd:    mov.s              eax, esi                                             // 0x00727fdd    8bc6
                          pop                esi                                                  // 0x00727fdf    5e

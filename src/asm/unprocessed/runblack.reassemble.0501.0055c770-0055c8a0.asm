@@ -4,7 +4,7 @@
 .extern rdata_bytes
 .extern data_bytes
 
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern ??0MapCoords@@QAE@ABU0@@Z
 .extern ?SetToZero@Living@@QAEXXZ
 .extern ??0LivingAction@@QAE@XZ
@@ -132,7 +132,7 @@ _IsClear__8BaseInfoCFv:
                          {disp8} je         .Lbl_addr_0x0055c81a                           // 0x0055c80d    740b
                          push               0x44                                           // 0x0055c80f    6a44
                          push               esi                                            // 0x0055c811    56
-                         call               ??3Base@@SAXPAXK@Z                           // 0x0055c812    e859a1edff
+                         call               ??3Base@@SAXPAXI@Z                           // 0x0055c812    e859a1edff
                          add                esp, 0x08                                      // 0x0055c817    83c408
 .Lbl_addr_0x0055c81a:    mov.s              eax, esi                                       // 0x0055c81a    8bc6
                          pop                esi                                            // 0x0055c81c    5e

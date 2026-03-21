@@ -54,7 +54,7 @@ void __fastcall __dt__4BaseFUi(struct Base* this, const void* edx, uint32_t para
     asm("{disp8} je       LAB__addr_0x0040122a");              // 0x0040121d    740b
     asm("push             0x8");                               // 0x0040121f    6a08
     asm("push             esi");                               // 0x00401221    56
-    asm("call             ??3Base@@SAXPAXK@Z");              // 0x00401222    e849570300
+    asm("call             ??3Base@@SAXPAXI@Z");              // 0x00401222    e849570300
     asm("add              esp, 0x08");                         // 0x00401227    83c408
     asm("LAB__addr_0x0040122a:");
     asm("mov.s            eax, esi");                          // 0x0040122a    8bc6

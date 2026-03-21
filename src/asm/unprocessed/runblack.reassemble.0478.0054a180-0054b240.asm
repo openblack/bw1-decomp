@@ -6,7 +6,7 @@
 .extern _jmp_addr_0x00407ef0
 .extern _jmp_addr_0x004286a0
 .extern ??1Base@@UAE@XZ
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x00511d70
 .extern _jmp_addr_0x005136b0
 .extern _jmp_addr_0x0053c470
@@ -340,7 +340,7 @@ _globl_ct_0x0054a310:    call               .Lbl_addr_0x0054a320                
                          {disp8} je         .Lbl_addr_0x0054a3dd                          // 0x0054a3cd    740e
                          push               0x00000104                                    // 0x0054a3cf    6804010000
                          push               esi                                           // 0x0054a3d4    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x0054a3d5    e896c5eeff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x0054a3d5    e896c5eeff
                          add                esp, 0x08                                     // 0x0054a3da    83c408
 .Lbl_addr_0x0054a3dd:    mov.s              eax, esi                                      // 0x0054a3dd    8bc6
                          pop                esi                                           // 0x0054a3df    5e
@@ -448,7 +448,7 @@ _globl_ct_0x0054a310:    call               .Lbl_addr_0x0054a320                
                          {disp8} je         .Lbl_addr_0x0054a490                          // 0x0054a483    740b
                          push               0x54                                          // 0x0054a485    6a54
                          push               esi                                           // 0x0054a487    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x0054a488    e8e3c4eeff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x0054a488    e8e3c4eeff
                          add                esp, 0x08                                     // 0x0054a48d    83c408
 .Lbl_addr_0x0054a490:    mov.s              eax, esi                                      // 0x0054a490    8bc6
                          pop                esi                                           // 0x0054a492    5e

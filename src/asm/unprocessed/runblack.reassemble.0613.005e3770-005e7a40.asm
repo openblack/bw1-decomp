@@ -8,7 +8,7 @@
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ??1Base@@UAE@XZ
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x00439b90
 .extern _jmp_addr_0x0043a9e0
 .extern ??0MapCoords@@QAE@ABU0@@Z
@@ -3878,7 +3878,7 @@ _globl_ct_0x005e6730:    {disp32} jmp       .Lbl_addr_0x005e6740                
                          {disp8} je         .Lbl_addr_0x005e678a                          // 0x005e677d    740b
                          push               0xc                                           // 0x005e677f    6a0c
                          push               esi                                           // 0x005e6781    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x005e6782    e8e901e5ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x005e6782    e8e901e5ff
                          add                esp, 0x08                                     // 0x005e6787    83c408
 .Lbl_addr_0x005e678a:    mov.s              eax, esi                                      // 0x005e678a    8bc6
                          pop                esi                                           // 0x005e678c    5e
