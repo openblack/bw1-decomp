@@ -2938,6 +2938,14 @@ enum     LOADER_VERSIONS
     LOADER_VERSIONS_LAST                            =  3 ,
 };
 
-enum FOOD_TYPE;
+enum FOOD_TYPE
+{
+  FOOD_TYPE_0 = 0x0,
+};
+
+enum MeshId
+{
+  MESH_ID_0 = 0x0,
+};
 
 #endif
