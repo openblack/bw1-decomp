@@ -688,16 +688,7 @@ struct SpellWater;
 struct Town;
 struct Villager;
 
-enum FOOD_TYPE
-{
-  FOOD_TYPE_0 = 0x0,
-  _FOOD_TYPE_COUNT = 0x1
-};
 static_assert(sizeof(enum FOOD_TYPE) == 0x4, "Data type is of wrong size");
-
-static const char* FOOD_TYPE_strs[_FOOD_TYPE_COUNT] = {
-  "FOOD_TYPE_0",
-};
 
 struct ObjectVftable
 {
