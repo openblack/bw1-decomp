@@ -1,5 +1,7 @@
 #include "Object.h"
 
+#include "ObjectInfo.h"
+
 // win1.41 004024f0 mac 10055b70 Object::GetXAngle(void)
 float Object::GetXAngle()
 {
@@ -166,7 +168,7 @@ float Object::GetFoodValue(FOOD_TYPE type)
 // win1.41 00402700 mac 10062630 Object::GetFoodType(void)
 FOOD_TYPE Object::GetFoodType()
 {
-    return (FOOD_TYPE)0;
+    return info->GetFoodType();
 }
 
 // win1.41 00402710 mac 10032610 Object::IsMoving( const(void))

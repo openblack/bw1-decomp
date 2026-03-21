@@ -15,7 +15,7 @@
 .extern _HideAll__13DialogBoxBaseFv@0
 .extern ?Draw@Rock@@UAEXXZ
 .extern ?Draw@MultiMapFixed@@UAEXXZ
-.extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
+.extern ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z
 .extern _jmp_addr_0x0052e280
 .extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
 .extern _jmp_addr_0x0052e3f0
@@ -7894,7 +7894,7 @@ _globl_ct_0x00438c10:    call               .Lbl_addr_0x00438c20                
                          push               edx                                                  // 0x00438cf9    52
                          push               eax                                                  // 0x00438cfa    50
                          mov.s              ecx, esi                                             // 0x00438cfb    8bce
-                         call               @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32                                 // 0x00438cfd    e8de540f00
+                         call               ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z                                 // 0x00438cfd    e8de540f00
                          {disp8} mov        dword ptr [esi + 0x7c], 0x00000000                   // 0x00438d02    c7467c00000000
                          mov                dword ptr [esi], 0x008c5904                          // 0x00438d09    c70604598c00
                          {disp32} mov       ecx, dword ptr [_game]                               // 0x00438d0f    8b0d5c19d000

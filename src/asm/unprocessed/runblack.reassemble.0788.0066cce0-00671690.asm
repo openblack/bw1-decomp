@@ -20,7 +20,7 @@
 .extern _jmp_addr_0x00519320
 .extern _jmp_addr_0x005198f0
 .extern @__ct__11FixedObjectFRC9MapCoordsPC11GObjectInfoff@24
-.extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
+.extern ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z
 .extern _jmp_addr_0x0052e280
 .extern _jmp_addr_0x0052eac0
 .extern ?MyInterface@GGame@@QAEPAVGInterface@@XZ
@@ -5974,7 +5974,7 @@ _globl_ct_0x006706f0:    call               .Lbl_addr_0x00670700                
                          push               eax                                           // 0x006707ba    50
                          push               ecx                                           // 0x006707bb    51
                          mov.s              ecx, esi                                      // 0x006707bc    8bce
-                         call               @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32                          // 0x006707be    e81ddaebff
+                         call               ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z                          // 0x006707be    e81ddaebff
                          {disp8} mov        dword ptr [esi + 0x7c], edi                   // 0x006707c3    897e7c
                          {disp32} mov       dword ptr [esi + 0x00000080], edi             // 0x006707c6    89be80000000
                          {disp32} mov       dword ptr [esi + 0x00000084], edi             // 0x006707cc    89be84000000

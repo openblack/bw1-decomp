@@ -58,7 +58,7 @@
 .extern _jmp_addr_0x0052bfd0
 .extern _jmp_addr_0x0052c020
 .extern ??0MultiMapFixed@@QAE@XZ
-.extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
+.extern ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z
 .extern _jmp_addr_0x0052e280
 .extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
@@ -15903,7 +15903,7 @@ _globl_ct_0x00725ef0:    call               .Lbl_addr_0x00725f00                
                          push               ecx                                                  // 0x00726010    51
                          push               edx                                                  // 0x00726011    52
                          mov.s              ecx, esi                                             // 0x00726012    8bce
-                         call               @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32                                 // 0x00726014    e8c781e0ff
+                         call               ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z                                 // 0x00726014    e8c781e0ff
                          xor.s              edi, edi                                             // 0x00726019    33ff
                          {disp8} mov        dword ptr [esi + 0x7c], edi                          // 0x0072601b    897e7c
                          {disp32} lea       ecx, dword ptr [esi + 0x00000088]                    // 0x0072601e    8d8e88000000

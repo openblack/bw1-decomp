@@ -32,7 +32,7 @@
 .extern _jmp_addr_0x0051dce0
 .extern _jmp_addr_0x0052b1a0
 .extern _jmp_addr_0x0052b1d0
-.extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
+.extern ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z
 .extern _jmp_addr_0x0052e280
 .extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
 .extern ?AllocateMultiChild@MultiMapFixed@@QAEXXZ
@@ -13591,7 +13591,7 @@ _jmp_addr_0x00527350:    push               esi                                 
                          push               ecx                                                  // 0x00527385    51
                          push               edi                                                  // 0x00527386    57
                          mov.s              ecx, esi                                             // 0x00527387    8bce
-                         call               @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32                                 // 0x00527389    e8526e0000
+                         call               ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z                                 // 0x00527389    e8526e0000
                          push               edi                                                  // 0x0052738e    57
                          mov.s              ecx, esi                                             // 0x0052738f    8bce
                          mov                dword ptr [esi], 0x008c2320                          // 0x00527391    c70620238c00
@@ -14301,7 +14301,7 @@ _globl_ct_0x00527870:    call               .Lbl_addr_0x00527880                
                          push               edx                                                  // 0x0052795c    52
                          push               eax                                                  // 0x0052795d    50
                          mov.s              ecx, esi                                             // 0x0052795e    8bce
-                         call               @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32                                 // 0x00527960    e87b680000
+                         call               ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z                                 // 0x00527960    e87b680000
                          mov                dword ptr [esi], 0x008d91c8                          // 0x00527965    c706c8918d00
                          mov.s              eax, esi                                             // 0x0052796b    8bc6
                          pop                esi                                                  // 0x0052796d    5e

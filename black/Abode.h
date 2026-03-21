@@ -571,7 +571,7 @@ uint32_t __fastcall Save__5AbodeFR10GameOSFile(struct GameThing* this, const voi
 // win1.41 004017a0 mac 103e1790 Abode::GetSaveType(void)
 uint32_t __fastcall GetSaveType__5AbodeFv(struct GameThing* this) asm("?GetSaveType@Abode@@UAEIXZ");
 // win1.41 00401770 mac 1000c2b0 Abode::GetArrivePos(void)
-struct MapCoords* __fastcall GetArrivePos__5AbodeFv(struct GameThingWithPos* this, const void* edx, struct MapCoords* coords) asm("?GetArrivePos@Abode@@UAEPAUMapCoords@@PAU2@@Z");
+struct MapCoords* __fastcall GetArrivePos__5AbodeFv(struct GameThingWithPos* this, const void* edx, struct MapCoords* coords) asm("?GetArrivePos@Abode@@UAE?AUMapCoords@@XZ");
 // win1.41 00401740 mac 1040f9d0 Abode::GetCreatureBeliefType(void)
 uint32_t __fastcall GetCreatureBeliefType__5AbodeFv(struct GameThingWithPos* this) asm("?GetCreatureBeliefType@Abode@@UAEIXZ");
 // win1.41 00401760 mac 10110c50 Abode::GetOrigin(void)

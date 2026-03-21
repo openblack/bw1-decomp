@@ -1,20 +1,22 @@
 #include "Abode.h"
+#include <stdint.h>
 
 // win1.41 00401640 mac 105602b0 Abode::CastAbode(void)
 Abode* Abode::CastAbode()
 {
-    return NULL;
+    return this;
 }
 
 // win1.41 00401650 mac 10565230 Abode::GetShouldNotBeAddedToPlanned(void)
 bool32_t Abode::GetShouldNotBeAddedToPlanned()
 {
-    return false;
+    return (field_0x7c & 4) != 0;
 }
 
 // win1.41 00401660 mac 1031a9a0 Abode::SetShouldNotBeAddedToPlanned(int)
 void Abode::SetShouldNotBeAddedToPlanned(bool value)
 {
+    field_0x7c = (field_0x7c & ~(1 << 2)) | ((value & 1) << 2);
 }
 
 // win1.41 00401680 mac 10371be0 Abode::RestartBeingFunctional(void)
@@ -31,13 +33,13 @@ void Abode::SetTown(Town* _town)
 // win1.41 004016a0 mac 10066b80 Abode::IsRepaired(void)
 bool32_t Abode::IsRepaired()
 {
-    return false;
+    return GetPercentRepaired() >= 1.0f;
 }
 
 // win1.41 004016c0 mac 10055bb0 Abode::IsBuilt(void)
 bool32_t Abode::IsBuilt()
 {
-    return false;
+    return ((field_0x58 & 2) != 2) && GetPercentBuilt() >= 1.0f;
 }
 
 // win1.41 004016f0 mac 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
@@ -88,10 +90,11 @@ uint32_t Abode::GetOrigin()
     return 1;
 }
 
-// // win1.41 00401770 mac 1000c2b0 Abode::GetArrivePos(void)
-// MapCoords Abode::GetArrivePos()
-// {
-// }
+// win1.41 00401770 mac 1000c2b0 Abode::GetArrivePos(void)
+MapCoords Abode::GetArrivePos()
+{
+    return GetDoorPos();
+}
 
 // win1.41 00401790 mac 10134300 Abode::IsHouse(void)
 bool32_t Abode::IsHouse()
@@ -108,7 +111,7 @@ uint32_t Abode::GetSaveType()
 // win1.41 004017b0 mac 10434340 Abode::GetDebugText(void)
 char* Abode::GetDebugText()
 {
-    return NULL;
+    return "Abode:";
 }
 
 // win1.41 00402b60 mac inlined Abode::_dt(void)

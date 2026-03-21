@@ -57,21 +57,15 @@ public:
     // win1.41 0052e140 mac 100e17b0 FixedObject::Save(GameOSFile &)
     virtual bool32_t Save(GameOSFile& file);
     // win1.41 00401400 mac 10513b00 FixedObject::CanBeFrighteningToCreature(Creature *)
-    virtual bool32_t CanBeFrighteningToCreature(Creature* creature) { return true; }
+    virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
     // win1.41 00401410 mac 10570f10 FixedObject::CanBeSleptNextToByCreature(Creature *)
-    virtual bool32_t CanBeSleptNextToByCreature(Creature* creature) { return true; }
+    virtual bool32_t CanBeSleptNextToByCreature(Creature* creature);
     // win1.41 00401420 mac 105e81f0 FixedObject::CanBeDestroyedByStoning(Creature *)
-    virtual bool32_t CanBeDestroyedByStoning(Creature* creature) { return true; }
+    virtual bool32_t CanBeDestroyedByStoning(Creature* creature);
     // win1.41 00401430 mac 100b19c0 FixedObject::CanBeSetOnFire(Creature *)
-    virtual bool32_t CanBeSetOnFire(Creature* creature)
-    {
-        return (field_0xa & 0x8) == 0;
-    }
+    virtual bool32_t CanBeSetOnFire(Creature* creature);
     // win1.41 00401440 mac 1056c2a0 FixedObject::CanBePickedUpByCreature(Creature *)
-    virtual bool32_t CanBePickedUpByCreature(Creature* creature)
-    {
-        return false;
-    }
+    virtual bool32_t CanBePickedUpByCreature(Creature* creature);
     // win1.41 004d1b80 mac 10242ed0 FixedObject::GetHowMuchCreatureWantsToLookAtMe(void)
     virtual float GetHowMuchCreatureWantsToLookAtMe();
     // win1.41 0052de30 mac 100e1ea0 FixedObject::Create3DObject(void)
@@ -83,7 +77,7 @@ public:
     // win1.41 0052dea0 mac 100e1d30 FixedObject::InsertMapObjectToCell(MapCell *)
     virtual void InsertMapObjectToCell(MapCell* cell);
     // win1.41 00401450 mac 1057a200 FixedObject::CanBeCrushed(void)
-    virtual bool32_t CanBeCrushed() { return true; }
+    virtual bool32_t CanBeCrushed();
     // win1.41 0052eb90 mac 100dff80 FixedObject::ValidForLockedSelectProcess(GInterfaceStatus *)
     virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* status);
     // win1.41 0052eba0 mac 100dff20 FixedObject::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)

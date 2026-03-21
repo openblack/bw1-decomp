@@ -1198,7 +1198,7 @@ VftableAndRTTI Workshop                                                         
 .long ?ResolveLoad@Workshop@@UAEXXZ                                                                                                   // [0xf2c18] 0x008a9000 + 0xf2c18 = 0x0099bc18
 .long ?SetPos@GameThingWithPos@@UAEXABUMapCoords@@@Z
 .long ?GetPos@GameThingWithPos@@QAEPAUMapCoords@@XZ
-.long ?GetArrivePos@Abode@@UAEPAUMapCoords@@PAU2@@Z
+.long ?GetArrivePos@Abode@@UAE?AUMapCoords@@XZ
 .long ?PhysicsEditorCreate@GameThingWithPos@@UAEXH@Z
 .long ?GetCreatureBeliefType@Abode@@UAEIXZ
 
