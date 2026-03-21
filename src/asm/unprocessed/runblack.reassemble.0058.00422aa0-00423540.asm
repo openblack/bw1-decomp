@@ -4,7 +4,7 @@
 .extern rdata_bytes
 .extern data_bytes
 .extern _jmp_addr_0x00422750
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x0052e280
 .extern ?Save@MultiMapFixed@@UAEIAAVGameOSFile@@@Z
 .extern ?Load@MultiMapFixed@@UAEIAAVGameOSFile@@@Z
@@ -452,7 +452,7 @@ _jmp_addr_0x00422e30:    push               ebx                                 
                          {disp8} je         .Lbl_addr_0x00422eb0                          // 0x00422ea3    740b
                          push               0x7c                                          // 0x00422ea5    6a7c
                          push               esi                                           // 0x00422ea7    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x00422ea8    e8c33a0100
+                         call               ??3Base@@SAXPAXI@Z                          // 0x00422ea8    e8c33a0100
                          add                esp, 0x08                                     // 0x00422ead    83c408
 .Lbl_addr_0x00422eb0:    mov.s              eax, esi                                      // 0x00422eb0    8bc6
                          pop                esi                                           // 0x00422eb2    5e

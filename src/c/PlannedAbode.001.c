@@ -79,7 +79,7 @@ void __fastcall __dt__12PlannedAbodeFUi(struct Base* this, const void* edx, uint
     asm("{disp8} je         LAB__addr_0x0040512a");                          // 0x0040511d    740b
     asm("push               0x4c");                                          // 0x0040511f    6a4c
     asm("push               esi");                                           // 0x00405121    56
-    asm("call               ??3Base@@SAXPAXK@Z");                          // 0x00405122    e849180300
+    asm("call               ??3Base@@SAXPAXI@Z");                          // 0x00405122    e849180300
     asm("add                esp, 0x08");                                     // 0x00405127    83c408
     asm("LAB__addr_0x0040512a:");
     asm("mov.s              eax, esi");                                      // 0x0040512a    8bc6

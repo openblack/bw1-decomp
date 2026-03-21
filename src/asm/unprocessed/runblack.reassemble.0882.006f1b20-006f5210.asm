@@ -7,7 +7,7 @@
 .extern _jmp_addr_0x00424e70
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ??1Base@@UAE@XZ
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x00463ad0
 .extern _jmp_addr_0x0047b1c0
 .extern _jmp_addr_0x0047bee0
@@ -2594,7 +2594,7 @@ _globl_ct_0x006f36d0:    call               .Lbl_addr_0x006f36e0                
                          {disp8} je         .Lbl_addr_0x006f378a                                 // 0x006f377d    740b
                          push               0x1c                                                 // 0x006f377f    6a1c
                          push               esi                                                  // 0x006f3781    56
-                         call               ??3Base@@SAXPAXK@Z                                 // 0x006f3782    e8e931d4ff
+                         call               ??3Base@@SAXPAXI@Z                                 // 0x006f3782    e8e931d4ff
                          add                esp, 0x08                                            // 0x006f3787    83c408
 .Lbl_addr_0x006f378a:    mov.s              eax, esi                                             // 0x006f378a    8bc6
                          pop                esi                                                  // 0x006f378c    5e

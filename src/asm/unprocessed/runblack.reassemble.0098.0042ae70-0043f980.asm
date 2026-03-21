@@ -550,7 +550,7 @@ _globl_ct_0x0042b340:    call               .Lbl_addr_0x0042b350                
                          {disp8} je         .Lbl_addr_0x0042b3ed                                 // 0x0042b3dd    740e
                          push               0x00000104                                           // 0x0042b3df    6804010000
                          push               esi                                                  // 0x0042b3e4    56
-                         call               ??3Base@@SAXPAXK@Z                                 // 0x0042b3e5    e886b50000
+                         call               ??3Base@@SAXPAXI@Z                                 // 0x0042b3e5    e886b50000
                          add                esp, 0x08                                            // 0x0042b3ea    83c408
 .Lbl_addr_0x0042b3ed:    mov.s              eax, esi                                             // 0x0042b3ed    8bc6
                          pop                esi                                                  // 0x0042b3ef    5e
@@ -4806,7 +4806,7 @@ _jmp_addr_0x0042e380:    push               ebx                                 
                          {disp8} je         .Lbl_addr_0x0042e61a                                 // 0x0042e60d    740b
                          push               0x10                                                 // 0x0042e60f    6a10
                          push               esi                                                  // 0x0042e611    56
-                         call               ??3Base@@SAXPAXK@Z                                 // 0x0042e612    e859830000
+                         call               ??3Base@@SAXPAXI@Z                                 // 0x0042e612    e859830000
                          add                esp, 0x08                                            // 0x0042e617    83c408
 .Lbl_addr_0x0042e61a:    mov.s              eax, esi                                             // 0x0042e61a    8bc6
                          pop                esi                                                  // 0x0042e61c    5e

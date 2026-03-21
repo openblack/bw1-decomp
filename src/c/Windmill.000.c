@@ -119,7 +119,7 @@ void __fastcall __dt__8WindmillFv(struct Base* this, const void* edx, uint32_t p
     asm("{disp8} je         LAB__addr_0x0040593d");                          // 0x0040592d    740e
     asm("push               0x000000c4");                                    // 0x0040592f    68c4000000
     asm("push               esi");                                           // 0x00405934    56
-    asm("call               ??3Base@@SAXPAXK@Z");                          // 0x00405935    e836100300
+    asm("call               ??3Base@@SAXPAXI@Z");                          // 0x00405935    e836100300
     asm("add                esp, 0x08");                                     // 0x0040593a    83c408
     asm("LAB__addr_0x0040593d:");
     asm("mov.s              eax, esi");                                      // 0x0040593d    8bc6

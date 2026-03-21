@@ -6,7 +6,7 @@
 .extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .extern ??$ReadIt@H@GameOSFile@@QAEXAAH@Z
 .extern ??$ReadIt@H@GameOSFile@@QAEXAAI@Z
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x0043dc00
 .extern _jmp_addr_0x004640a0
 .extern _jmp_addr_0x004e94f0
@@ -1777,7 +1777,7 @@ _jmp_addr_0x0050e340:    push               esi                                 
                          {disp8} je         .Lbl_addr_0x0050e3d7                          // 0x0050e3ca    740b
                          push               0x58                                          // 0x0050e3cc    6a58
                          push               edi                                           // 0x0050e3ce    57
-                         call               ??3Base@@SAXPAXK@Z                          // 0x0050e3cf    e89c85f2ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x0050e3cf    e89c85f2ff
                          add                esp, 0x08                                     // 0x0050e3d4    83c408
 .Lbl_addr_0x0050e3d7:    mov.s              eax, edi                                      // 0x0050e3d7    8bc7
                          pop                edi                                           // 0x0050e3d9    5f

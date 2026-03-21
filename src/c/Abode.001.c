@@ -160,7 +160,7 @@ void __fastcall __dt__5AbodeFUi(struct Base* this, const void* edx, uint32_t par
     asm("{disp8} je LAB__addr_0x004017dd       ");  // 0x004017cd    740e
     asm("push       0x000000c4                 ");  // 0x004017cf    68c4000000
     asm("push       esi                        ");  // 0x004017d4    56
-    asm("call       ??3Base@@SAXPAXK@Z         ");  // 0x004017d5    e896510300
+    asm("call       ??3Base@@SAXPAXI@Z         ");  // 0x004017d5    e896510300
     asm("add        esp, 0x08                  ");  // 0x004017da    83c408
     asm("LAB__addr_0x004017dd:                 ");
     asm("mov.s     eax, esi                    ");  // 0x004017dd    8bc6

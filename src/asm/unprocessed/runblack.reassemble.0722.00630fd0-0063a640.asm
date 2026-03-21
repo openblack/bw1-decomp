@@ -15,7 +15,7 @@
 .extern _jmp_addr_0x00414410
 .extern _jmp_addr_0x004267f0
 .extern ??1Base@@UAE@XZ
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern ?DistanceChangeToBelief@GBelief@@SAMMM@Z
 .extern ?Stop@LHTimer@@QAEXXZ
 .extern ?MSeconds@LHTimer@@QAEHXZ
@@ -8149,7 +8149,7 @@ _globl_ct_0x00636330:    call               .Lbl_addr_0x00636340                
                          {disp8} je         .Lbl_addr_0x006363dd                           // 0x006363cd    740e
                          push               0x00000100                                     // 0x006363cf    6800010000
                          push               esi                                            // 0x006363d4    56
-                         call               ??3Base@@SAXPAXK@Z                           // 0x006363d5    e89605e0ff
+                         call               ??3Base@@SAXPAXI@Z                           // 0x006363d5    e89605e0ff
                          add                esp, 0x08                                      // 0x006363da    83c408
 .Lbl_addr_0x006363dd:    mov.s              eax, esi                                       // 0x006363dd    8bc6
                          pop                esi                                            // 0x006363df    5e
@@ -8249,7 +8249,7 @@ _globl_ct_0x006363f0:    call               .Lbl_addr_0x00636400                
                          {disp8} je         .Lbl_addr_0x006364ba                           // 0x006364ad    740b
                          push               0x54                                           // 0x006364af    6a54
                          push               esi                                            // 0x006364b1    56
-                         call               ??3Base@@SAXPAXK@Z                           // 0x006364b2    e8b904e0ff
+                         call               ??3Base@@SAXPAXI@Z                           // 0x006364b2    e8b904e0ff
                          add                esp, 0x08                                      // 0x006364b7    83c408
 .Lbl_addr_0x006364ba:    mov.s              eax, esi                                       // 0x006364ba    8bc6
                          pop                esi                                            // 0x006364bc    5e

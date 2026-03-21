@@ -121,7 +121,7 @@ _globl_ct_0x00606b30:    call               .Lbl_addr_0x00606b40                
                          {disp8} je         .Lbl_addr_0x00606bea                          // 0x00606bdd    740b
                          push               0x18                                          // 0x00606bdf    6a18
                          push               esi                                           // 0x00606be1    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x00606be2    e889fde2ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x00606be2    e889fde2ff
                          add                esp, 0x08                                     // 0x00606be7    83c408
 .Lbl_addr_0x00606bea:    mov.s              eax, esi                                      // 0x00606bea    8bc6
                          pop                esi                                           // 0x00606bec    5e

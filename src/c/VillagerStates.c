@@ -164,7 +164,7 @@ void __fastcall __dt__23GVillagerStateTableInfoFv(struct Base* this, const void*
     asm("{disp8} je         LAB__addr_0x0076960d");                            // 0x007695fd    740e
     asm("push               0x00000114");                                      // 0x007695ff    6814010000
     asm("push               esi");                                             // 0x00769604    56
-    asm("call               ??3Base@@SAXPAXK@Z");                              // 0x00769605    e866d3ccff
+    asm("call               ??3Base@@SAXPAXI@Z");                              // 0x00769605    e866d3ccff
     asm("add                esp, 0x08");                                       // 0x0076960a    83c408
     asm("LAB__addr_0x0076960d:");
     asm("mov.s              eax, esi");                                        // 0x0076960d    8bc6

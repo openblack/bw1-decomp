@@ -226,7 +226,7 @@ void __fastcall __dt__13GVillagerInfoFv(struct Base* this, const void* edx, uint
     asm("{disp8} je         LAB__addr_0x0074f91d");                           // 0x0074f90d    740e
     asm("push               0x000003a4");                                     // 0x0074f90f    68a4030000
     asm("push               esi");                                            // 0x0074f914    56
-    asm("call               ??3Base@@SAXPAXK@Z");                             // 0x0074f915    e85670ceff
+    asm("call               ??3Base@@SAXPAXI@Z");                             // 0x0074f915    e85670ceff
     asm("add                esp, 0x08");                                      // 0x0074f91a    83c408
     asm("LAB__addr_0x0074f91d:");
     asm("mov.s              eax, esi");                                       // 0x0074f91d    8bc6
@@ -10647,7 +10647,7 @@ void __fastcall __dt__17MissionaryControlFUi(struct Base* this, const void* edx,
     asm("{disp8} je         LAB__addr_0x0075675a");                          // 0x0075674d    740b
     asm("push               0x34");                                          // 0x0075674f    6a34
     asm("push               esi");                                           // 0x00756751    56
-    asm("call               ??3Base@@SAXPAXK@Z");                          // 0x00756752    e81902ceff
+    asm("call               ??3Base@@SAXPAXI@Z");                          // 0x00756752    e81902ceff
     asm("add                esp, 0x08");                                     // 0x00756757    83c408
     asm("LAB__addr_0x0075675a:");
     asm("mov.s              eax, esi");                                      // 0x0075675a    8bc6

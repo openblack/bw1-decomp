@@ -6,7 +6,7 @@
 .extern _NeedsBiggerText__Fv
 .extern ?__nw@Base@@SAPAXK@Z
 .extern ??1Base@@UAE@XZ
-.extern ??3Base@@SAXPAXK@Z
+.extern ??3Base@@SAXPAXI@Z
 .extern ?GetWoodNeededToBuild@BuildingSite@@QAEMXZ
 .extern _jmp_addr_0x004489d0
 .extern _jmp_addr_0x00448c00
@@ -1809,7 +1809,7 @@ _globl_ct_0x005c99a0:    call               .Lbl_addr_0x005c99b0                
                          {disp8} je         .Lbl_addr_0x005c9a5a                          // 0x005c9a4d    740b
                          push               0x1c                                          // 0x005c9a4f    6a1c
                          push               esi                                           // 0x005c9a51    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x005c9a52    e819cfe6ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x005c9a52    e819cfe6ff
                          add                esp, 0x08                                     // 0x005c9a57    83c408
 .Lbl_addr_0x005c9a5a:    mov.s              eax, esi                                      // 0x005c9a5a    8bc6
                          pop                esi                                           // 0x005c9a5c    5e
@@ -3430,7 +3430,7 @@ _jmp_addr_0x005cad00:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          {disp8} je         .Lbl_addr_0x005cadad                          // 0x005cad9d    740e
                          push               0x000000bc                                    // 0x005cad9f    68bc000000
                          push               esi                                           // 0x005cada4    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x005cada5    e8c6bbe6ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x005cada5    e8c6bbe6ff
                          add                esp, 0x08                                     // 0x005cadaa    83c408
 .Lbl_addr_0x005cadad:    mov.s              eax, esi                                      // 0x005cadad    8bc6
                          pop                esi                                           // 0x005cadaf    5e

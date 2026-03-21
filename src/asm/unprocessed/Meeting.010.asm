@@ -188,7 +188,7 @@ _globl_ct_0x00606020:    {disp32} jmp       .Lbl_addr_0x00606030                
                          {disp8} je         .Lbl_addr_0x0060617a                          // 0x0060616d    740b
                          push               0x40                                          // 0x0060616f    6a40
                          push               esi                                           // 0x00606171    56
-                         call               ??3Base@@SAXPAXK@Z                          // 0x00606172    e8f907e3ff
+                         call               ??3Base@@SAXPAXI@Z                          // 0x00606172    e8f907e3ff
                          add                esp, 0x08                                     // 0x00606177    83c408
 .Lbl_addr_0x0060617a:    mov.s              eax, esi                                      // 0x0060617a    8bc6
                          pop                esi                                           // 0x0060617c    5e
