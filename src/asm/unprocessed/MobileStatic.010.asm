@@ -361,7 +361,7 @@ _globl_ct_0x006084a0:    call               .Lbl_addr_0x006084b0                
                          push               edx                                           // 0x00608729    52
                          push               eax                                           // 0x0060872a    50
                          mov.s              ecx, esi                                      // 0x0060872b    8bce
-                         call               @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32                          // 0x0060872d    e8ae5af2ff
+                         call               ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z                          // 0x0060872d    e8ae5af2ff
                          {disp8} mov        ecx, dword ptr [esp + 0x10]                   // 0x00608732    8b4c2410
                          mov                dword ptr [esi], 0x008e80b4                   // 0x00608736    c706b4808e00
                          {disp8} mov        dword ptr [esi + 0x7c], ecx                   // 0x0060873c    894e7c

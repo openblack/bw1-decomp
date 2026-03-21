@@ -16,12 +16,10 @@ Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* _town, float
     if (_town)
     {
         _town->AddStructureToTown(this);
-        index = town.payload->abode_list.count + 0xff;
+        index = (uint8_t)town.payload->abode_list.count - 1;
     }
 
-    // _game->map.field_0x8 |= 1;
-    __asm mov eax, game
-    __asm or BYTE PTR [eax + 0x059bc + 0x4], 1
+    game->map.field_0x8 |= 1;
 
     FindNearestDrinkingWater(200.0f);
 }

@@ -25,7 +25,7 @@
 .extern ??3Base@@SAXPAXK@Z
 .extern _jmp_addr_0x004ea900
 .extern _jmp_addr_0x0051af00
-.extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
+.extern ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z
 .extern _jmp_addr_0x0052f950
 .extern ?SetDomainCentrePos@Flock@@QAEXABUMapCoords@@@Z
 .extern _jmp_addr_0x005302a0
@@ -15059,7 +15059,7 @@ _jmp_addr_0x00421f50:    push               edi                                 
                          push               ecx                                           // 0x00421f89    51
                          push               ebx                                           // 0x00421f8a    53
                          mov.s              ecx, edi                                      // 0x00421f8b    8bcf
-                         call               @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32                          // 0x00421f8d    e84ec21000
+                         call               ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z                          // 0x00421f8d    e84ec21000
                          mov.s              ecx, edi                                      // 0x00421f92    8bcf
                          mov                dword ptr [edi], 0x008c1a10                   // 0x00421f94    c707101a8c00
                          call               _jmp_addr_0x00422580                          // 0x00421f9a    e8e1050000

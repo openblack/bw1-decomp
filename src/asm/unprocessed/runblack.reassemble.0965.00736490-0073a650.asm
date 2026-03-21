@@ -33,7 +33,7 @@
 .extern _jmp_addr_0x00477d80
 .extern _jmp_addr_0x00519320
 .extern _jmp_addr_0x005198f0
-.extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
+.extern ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z
 .extern _jmp_addr_0x0052e280
 .extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
 .extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
@@ -2490,7 +2490,7 @@ _globl_ct_0x00737a30:    call               .Lbl_addr_0x00737a40                
                          call               @GetTotemPos__10TownCentreFv@12                // 0x00737b65    e8b6c30000
                          push               eax                                            // 0x00737b6a    50
                          mov.s              ecx, esi                                       // 0x00737b6b    8bce
-                         call               @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32                           // 0x00737b6d    e86e66dfff
+                         call               ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z                           // 0x00737b6d    e86e66dfff
                          mov                dword ptr [esi], 0x008e029c                    // 0x00737b72    c7069c028e00
                          {disp8} mov        dword ptr [esi + 0x7c], edi                    // 0x00737b78    897e7c
                          {disp32} fld       dword ptr [esi + 0x00000080]                   // 0x00737b7b    d98680000000

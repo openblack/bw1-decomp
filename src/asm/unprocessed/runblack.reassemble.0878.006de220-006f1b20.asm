@@ -91,7 +91,7 @@
 .extern ?Create@Field@@SAPAV1@ABUMapCoords@@PBVGFieldTypeInfo@@PAVTown@@MMH@Z
 .extern _jmp_addr_0x0052c7b0
 .extern ?EndPhysics@Fixed@@UAEXPAVPhysicsObject@@_N@Z
-.extern @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
+.extern ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z
 .extern _jmp_addr_0x0052edd0
 .extern @__ct__5FlockFRC9MapCoordsPC10GFlockInfoP7GPlayerUl@24
 .extern _jmp_addr_0x0052fa50
@@ -612,7 +612,7 @@ _jmp_addr_0x006de220:    {disp8} mov        eax, dword ptr [esp + 0x18]         
                          push               ecx                                           // 0x006de23f    51
                          push               edx                                           // 0x006de240    52
                          mov.s              ecx, esi                                      // 0x006de241    8bce
-                         call               @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32                          // 0x006de243    e898ffe4ff
+                         call               ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z                          // 0x006de243    e898ffe4ff
                          mov.s              ecx, esi                                      // 0x006de248    8bce
                          mov                dword ptr [esi], 0x008c1a10                   // 0x006de24a    c706101a8c00
                          call               _jmp_addr_0x00422580                          // 0x006de250    e82b43d4ff

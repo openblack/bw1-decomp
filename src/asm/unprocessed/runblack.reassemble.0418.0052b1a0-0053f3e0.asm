@@ -329,7 +329,7 @@
 .extern ?Save@Fixed@@UAEIAAVGameOSFile@@@Z
 .globl ?Load@Fixed@@UAEIAAVGameOSFile@@@Z
 .globl ??0MultiMapFixed@@QAE@XZ  
-.globl @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32
+.globl ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z
 .globl _jmp_addr_0x0052e280
 .extern ?ToBeDeleted@MultiMapFixed@@UAEXH@Z
 .globl _jmp_addr_0x0052e3f0
@@ -2422,7 +2422,7 @@ _globl_ct_0x0052c2b0:    call               .Lbl_addr_0x0052c2c0                
                          push               eax                                                  // 0x0052c379    50
                          mov.s              esi, ecx                                             // 0x0052c37a    8bf1
                          push               edi                                                  // 0x0052c37c    57
-                         call               @__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32                                 // 0x0052c37d    e85e1e0000
+                         call               ??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z                                 // 0x0052c37d    e85e1e0000
                          {disp8} mov        dword ptr [esi + 0x7c], ebx                          // 0x0052c382    895e7c
                          {disp32} mov       dword ptr [esi + 0x00000084], ebx                    // 0x0052c385    899e84000000
                          {disp32} mov       dword ptr [esi + 0x00000080], ebx                    // 0x0052c38b    899e80000000
@@ -5664,7 +5664,7 @@ _jmp_addr_0x0052de20:    mov                dword ptr [ecx], 0x008db71c         
 .Lbl_addr_0x0052e1da:    mov.s              eax, esi                                             // 0x0052e1da    8bc6
                          pop                esi                                                  // 0x0052e1dc    5e
                          ret                0x0004                                               // 0x0052e1dd    c20400
-@__ct__13MultiMapFixedFRC9MapCoordsPC18GMultiMapFixedInfofffi@32:    {disp8} mov        eax, dword ptr [esp + 0x10]                          // 0x0052e1e0    8b442410
+??0MultiMapFixed@@QAE@ABUMapCoords@@PBVGMultiMapFixedInfo@@MMMH@Z:    {disp8} mov        eax, dword ptr [esp + 0x10]                          // 0x0052e1e0    8b442410
                          {disp8} mov        edx, dword ptr [esp + 0x08]                          // 0x0052e1e4    8b542408
                          push               ebx                                                  // 0x0052e1e8    53
                          push               esi                                                  // 0x0052e1e9    56
