@@ -1,6 +1,11 @@
 #include "MobileObjectInfo.h"
 #include "MobileObject.h"
 #include "Poo.h"
+#include "Game.h"
+#include "Object.h"
+#include "GlobalGameLists.h"
+
+extern "C" GGame* game;
 
 // win1.41 00606da0 mac 100ad7d0 GMobileObjectInfo::GetBaseInfo(unsigned long &)
 GBaseInfo* GMobileObjectInfo::GetBaseInfo(uint32_t& param_1)
@@ -21,6 +26,14 @@ MobileObject::MobileObject(MapCoords* coords, const GMobileObjectInfo* info, Obj
 // win1.41 00606f00 mac 103bdb30 MobileObject::ToBeDeleted(int)
 void MobileObject::ToBeDeleted(int param_1)
 {
+    game->game_lists.mobile_objects.Remove(this);
+
+    if (game->game_lists.objects.Contains(this))
+    {
+        game->game_lists.objects.Remove(this);
+    }
+
+    Object::ToBeDeleted(param_1);
 }
 
 // win1.41 00606fc0 mac 1008e240 MobileObject::AddMobileObjectCheckSum(void)

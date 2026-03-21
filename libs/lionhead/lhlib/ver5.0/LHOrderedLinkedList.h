@@ -23,17 +23,19 @@
 
 template<typename T>
 class OrderedNode {
-  OrderedNode<T>* next;
-  T* payload;
+public:
+    OrderedNode<T>* next;
+    T* payload;
 };
 template<typename T>
 class LHOrderedLinkedList {
-  OrderedNode<T>* head;
-  uint32_t count;
-  inline OrderedNode<T>* GetStart()
-  {
-    return head.get();
-  }
+public:
+    OrderedNode<T>* head;
+    uint32_t count;
+    inline OrderedNode<T>* GetStart()
+    {
+        return head.get();
+    }
 };
 
 #else // __cplusplus
