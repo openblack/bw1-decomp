@@ -104,7 +104,7 @@ void GameThing::DrawInHand(GInterfaceStatus* param_1)
 // win1.41 00405240 mac 10067860 GameThing::IsFunctional(void)
 bool32_t GameThing::IsFunctional()
 {
-    return false;
+    return IsAvailable();
 }
 
 // win1.41 00405250 mac 1057b140 GameThing::ResolveLoad(void)
