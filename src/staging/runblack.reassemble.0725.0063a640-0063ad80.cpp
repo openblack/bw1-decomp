@@ -1,5 +1,6 @@
 #include "Object.h"
 #include "Game3DObject.h"
+#include "ObjectInfo.h"
 
 // win1.41 0063a640 mac 103d0b20 Object::InitialiseIsFixedForMapList(void)
 void Object::InitialiseIsFixedForMapList()
@@ -25,9 +26,11 @@ IMMERSION_EFFECT_TYPE Object::GetInHandImmersionTexture()
 }
 
 // win1.41 0063a7d0 mac 103d06c0 Object::CanBecomeArtifact(void)
-bool32_t Object::CanBecomeArtifact()
+bool Object::CanBecomeArtifact()
 {
-    return 0;
+    // IsInScript seems to use a 32 bit register and forces this 8 bit bool
+    // function to use the full 32 bit register instead of 8 bits.
+    return info->artifactMultiplier > 0.0f && !IsInScript();
 }
 
 // win1.41 0063a800 mac 10038850 Object::SetYJustAngle(float)

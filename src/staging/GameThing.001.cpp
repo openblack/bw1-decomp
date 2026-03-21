@@ -91,7 +91,7 @@ float GameThing::GetTownArtifactValue()
 }
 
 // win1.41 00405220 mac 10199de0 GameThing::CanBecomeArtifact(void)
-bool32_t GameThing::CanBecomeArtifact()
+bool GameThing::CanBecomeArtifact()
 {
     return false;
 }

@@ -142,7 +142,7 @@ public:
     // win1.41 00405210 mac 1019aa00 GameThing::GetTownArtifactValue(void)
     virtual float GetTownArtifactValue();
     // win1.41 00405220 mac 10199de0 GameThing::CanBecomeArtifact(void)
-    virtual bool32_t CanBecomeArtifact();
+    virtual bool CanBecomeArtifact();
     // win1.41 00405230 mac 10199e20 GameThing::DrawInHand(GInterfaceStatus *)
     virtual void DrawInHand(GInterfaceStatus* param_1); /* 0xd0 */
     // win1.41 00405240 mac 10067860 GameThing::IsFunctional(void)
@@ -976,7 +976,7 @@ uint16_t __fastcall GetNumberOfInstanceForGlobalList__9GameThingFv(struct GameTh
 // win1.41 00405210 mac 1019aa00 GameThing::GetTownArtifactValue(void)
 float __fastcall GetTownArtifactValue__9GameThingFv(struct GameThing* this) asm("?GetTownArtifactValue@GameThing@@UAEMXZ");
 // win1.41 00405220 mac 10199de0 GameThing::CanBecomeArtifact(void)
-bool __fastcall CanBecomeArtifact__9GameThingFv(struct GameThing* this) asm("?CanBecomeArtifact@GameThing@@UAEIXZ");
+bool __fastcall CanBecomeArtifact__9GameThingFv(struct GameThing* this) asm("?CanBecomeArtifact@GameThing@@UAE_NXZ");
 // win1.41 00405230 mac 10199e20 GameThing::DrawInHand(GInterfaceStatus *)
 void __fastcall DrawInHand__9GameThingFP16GInterfaceStatus(struct GameThing* this, const void* edx, struct GInterfaceStatus* param_1) asm("?DrawInHand@GameThing@@UAEXPAVGInterfaceStatus@@@Z");
 // win1.41 00405240 mac 10067860 GameThing::IsFunctional(void)

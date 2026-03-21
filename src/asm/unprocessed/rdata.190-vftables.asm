@@ -69,7 +69,7 @@ VftableAndRTTI Fragment                                                         
 .long ?IsDeletedOnNewMap@GameThing@@UAEIXZ
 .long ?GetNumberOfInstanceForGlobalList@GameThing@@UAEGXZ
 .long ?GetTownArtifactValue@Fixed@@UAEMXZ
-.long ?CanBecomeArtifact@Object@@UAEIXZ
+.long ?CanBecomeArtifact@Object@@UAE_NXZ
 .long ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z
 .long ?IsFunctional@MobileStatic@@UAEIXZ
 .long ?GetDebugText@Fragment@@UAEPADXZ
@@ -666,7 +666,7 @@ VftableAndRTTI VortexSave                                                       
 .long ?IsDeletedOnNewMap@GameThing@@UAEIXZ
 .long ?GetNumberOfInstanceForGlobalList@GameThing@@UAEGXZ
 .long ?GetTownArtifactValue@GameThing@@UAEMXZ
-.long ?CanBecomeArtifact@GameThing@@UAEIXZ
+.long ?CanBecomeArtifact@GameThing@@UAE_NXZ
 .long ?DrawInHand@GameThing@@UAEXPAVGInterfaceStatus@@@Z
 .long ?IsFunctional@GameThing@@UAEIXZ
 .long ?GetDebugText@GameThing@@QAEPADXZ
@@ -731,7 +731,7 @@ VftableAndRTTI WayPoint                                                         
 .long ?IsDeletedOnNewMap@GameThing@@UAEIXZ
 .long ?GetNumberOfInstanceForGlobalList@GameThing@@UAEGXZ
 .long ?GetTownArtifactValue@GameThing@@UAEMXZ
-.long ?CanBecomeArtifact@GameThing@@UAEIXZ
+.long ?CanBecomeArtifact@GameThing@@UAE_NXZ
 .long ?DrawInHand@GameThing@@UAEXPAVGInterfaceStatus@@@Z
 .long ?IsFunctional@GameThing@@UAEIXZ
 .long ?GetDebugText@WayPoint@@UAEPADXZ                                                                                                   // [0xf2584] 0x008a9000 + 0xf2584 = 0x0099b584
@@ -1184,7 +1184,7 @@ VftableAndRTTI Workshop                                                         
 .long ?CastTree@GameThing@@UAEPAVTree@@XZ
 .long ?IsDeletedOnNewMap@GameThing@@UAEIXZ
 .long ?GetNumberOfInstanceForGlobalList@Abode@@UAEGXZ, ?GetTownArtifactValue@Fixed@@UAEMXZ
-.long ?CanBecomeArtifact@Object@@UAEIXZ
+.long ?CanBecomeArtifact@Object@@UAE_NXZ
 .long ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z
 .long ?IsFunctional@Abode@@UAEIXZ
 .long ?GetDebugText@Workshop@@UAEPADXZ
@@ -1804,7 +1804,7 @@ VftableAndRTTI PlannedWorshipSite                                               
 .long ?IsDeletedOnNewMap@GameThing@@UAEIXZ
 .long ?GetNumberOfInstanceForGlobalList@GameThing@@UAEGXZ
 .long ?GetTownArtifactValue@GameThing@@UAEMXZ
-.long ?CanBecomeArtifact@GameThing@@UAEIXZ
+.long ?CanBecomeArtifact@GameThing@@UAE_NXZ
 .long ?DrawInHand@GameThing@@UAEXPAVGInterfaceStatus@@@Z
 .long ?IsFunctional@GameThing@@UAEIXZ
 .long ?GetDebugText@PlannedWorshipSite@@UAEPADXZ                                                                                                   // [0xf359c] 0x008a9000 + 0xf359c = 0x0099c59c
@@ -2210,7 +2210,7 @@ VftableAndRTTI WorshipSiteUpgrade                                               
 .long ?IsDeletedOnNewMap@GameThing@@UAEIXZ
 .long ?GetNumberOfInstanceForGlobalList@GameThing@@UAEGXZ
 .long ?GetTownArtifactValue@Fixed@@UAEMXZ
-.long ?CanBecomeArtifact@Object@@UAEIXZ
+.long ?CanBecomeArtifact@Object@@UAE_NXZ
 .long ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z
 .long ?IsFunctional@MultiMapFixed@@UAEIXZ
 .long ?GetDebugText@Feature@@UAEPADXZ
@@ -2820,7 +2820,7 @@ VftableAndRTTI PlannedWorshipSiteUpgrade                                        
 .long ?IsDeletedOnNewMap@GameThing@@UAEIXZ
 .long ?GetNumberOfInstanceForGlobalList@GameThing@@UAEGXZ
 .long ?GetTownArtifactValue@GameThing@@UAEMXZ
-.long ?CanBecomeArtifact@GameThing@@UAEIXZ
+.long ?CanBecomeArtifact@GameThing@@UAE_NXZ
 .long ?DrawInHand@GameThing@@UAEXPAVGInterfaceStatus@@@Z
 .long ?IsFunctional@GameThing@@UAEIXZ
 .long ?GetDebugText@PlannedFeature@@UAEPADXZ                                                                                                   // [0xf4428] 0x008a9000 + 0xf4428 = 0x0099d428
@@ -3203,7 +3203,7 @@ VftableAndRTTI WorshipSpellIcon                                                 
 .long ?IsDeletedOnNewMap@GameThing@@UAEIXZ
 .long ?GetNumberOfInstanceForGlobalList@GameThing@@UAEGXZ
 .long ?GetTownArtifactValue@Fixed@@UAEMXZ
-.long ?CanBecomeArtifact@Object@@UAEIXZ
+.long ?CanBecomeArtifact@Object@@UAE_NXZ
 .long ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z
 .long ?IsFunctional@MultiMapFixed@@UAEIXZ
 .long ?GetDebugText@WorshipSpellIcon@@UAEPADXZ                                                                                                   // [0xf4950] 0x008a9000 + 0xf4950 = 0x0099d950
@@ -3806,7 +3806,7 @@ VftableAndRTTI WorshipTotem                                                     
 .long ?IsDeletedOnNewMap@GameThing@@UAEIXZ
 .long ?GetNumberOfInstanceForGlobalList@GameThing@@UAEGXZ
 .long ?GetTownArtifactValue@Fixed@@UAEMXZ
-.long ?CanBecomeArtifact@Object@@UAEIXZ
+.long ?CanBecomeArtifact@Object@@UAE_NXZ
 .long ?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z
 .long ?IsFunctional@MultiMapFixed@@UAEIXZ
 .long ?GetDebugText@WorshipTotem@@UAEPADXZ                                                                                       // [0xf5290] 0x008a9000 + 0xf5290 = 0x0099e290

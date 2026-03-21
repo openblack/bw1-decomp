@@ -93,7 +93,7 @@ public:
     // win1.41 00639520 mac 103d3550 Object::GetResource(RESOURCE_TYPE)
     virtual uint32_t GetResource(RESOURCE_TYPE type);
     // win1.41 0063a7d0 mac 103d06c0 Object::CanBecomeArtifact(void)
-    virtual bool32_t CanBecomeArtifact();
+    virtual bool CanBecomeArtifact();
     // win1.41 005190e0 mac 1008d3a0 Object::DrawInHand(GInterfaceStatus *)
     virtual void DrawInHand(GInterfaceStatus* param_1);
     // win1.41 00639eb0 mac 103d1b20 Object::Load(GameOSFile &)
@@ -1002,7 +1002,7 @@ float __fastcall Get2DRadius__6ObjectFv(struct GameThing* this) asm("?Get2DRadiu
 // win1.41 00639520 mac 103d3550 Object::GetResource(RESOURCE_TYPE)
 uint32_t __fastcall GetResource__6ObjectF13RESOURCE_TYPE(struct GameThing* this, const void* edx, enum RESOURCE_TYPE type) asm("?GetResource@Object@@UAEIW4RESOURCE_TYPE@@@Z");
 // win1.41 0063a7d0 mac 103d06c0 Object::CanBecomeArtifact(void)
-bool __fastcall CanBecomeArtifact__6ObjectFv(struct GameThing* this) asm("?CanBecomeArtifact@Object@@UAEIXZ");
+bool __fastcall CanBecomeArtifact__6ObjectFv(struct GameThing* this) asm("?CanBecomeArtifact@Object@@UAE_NXZ");
 // win1.41 005190e0 mac 1008d3a0 Object::DrawInHand(GInterfaceStatus *)
 void __fastcall DrawInHand__6ObjectFP16GInterfaceStatus(struct GameThing* this, const void* edx, struct GInterfaceStatus* param_1) asm("?DrawInHand@Object@@UAEXPAVGInterfaceStatus@@@Z");
 // win1.41 00639eb0 mac 103d1b20 Object::Load(GameOSFile &)
