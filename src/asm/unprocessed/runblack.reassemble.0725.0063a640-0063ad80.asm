@@ -34,7 +34,7 @@
 .globl _globl_ct_0x0063ab60
 .globl _globl_ct_0x0063ab80
 .globl ?InitialiseIsFixedForMapList@Object@@UAEXH@Z
-.globl ?CanBecomeArtifact@Object@@UAEIXZ
+.globl ?CanBecomeArtifact@Object@@UAE_NXZ
 .globl ?IsDrowning@Object@@UAEIXZ
 .globl ?DestroyedByBeam@Object@@UAEXXZ
 .globl ?SetYJustAngle@Object@@UAEXM@Z
@@ -243,7 +243,7 @@ _jmp_addr_0x0063a710:    push               ebx                                 
                          nop                                                              // 0x0063a7cd    90
                          nop                                                              // 0x0063a7ce    90
                          nop                                                              // 0x0063a7cf    90
-?CanBecomeArtifact@Object@@UAEIXZ:
+?CanBecomeArtifact@Object@@UAE_NXZ:
                          {disp8} mov        eax, dword ptr [ecx + 0x28]                   // 0x0063a7d0    8b4128
                          {disp32} fld       dword ptr [eax + 0x000000f4]                  // 0x0063a7d3    d980f4000000
                          {disp32} fcomp     dword ptr [__real@4@00000000000000000000]                   // 0x0063a7d9    d81d98a38a00
@@ -258,7 +258,7 @@ _jmp_addr_0x0063a710:    push               ebx                                 
                          ret                                                              // 0x0063a7f7    c3
 .Lbl_addr_0x0063a7f8:    xor.s              eax, eax                                      // 0x0063a7f8    33c0
                          ret                                                              // 0x0063a7fa    c3
-                         call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x0063a7fb    e8f96fdcff
+_jmp_addr_0x0063a7fb:    call               ?CalculateInfluence@GameThing@@UAEMABUMapCoords@@@Z +9                          // 0x0063a7fb    e8f96fdcff
 ?SetYJustAngle@Object@@UAEXM@Z:
                          {disp8} mov        eax, dword ptr [esp + 0x04]                   // 0x0063a800    8b442404
                          {disp8} mov        dword ptr [ecx + 0x4c], eax                   // 0x0063a804    89414c
