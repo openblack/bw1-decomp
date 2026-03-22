@@ -65,7 +65,10 @@ public:
     // Constructors
 
     // win1.41 inlined mac 100a0450 Base::Base(void)
-    Base();
+    Base()
+    {
+        destroyed = false;
+    }
 
     // Non-virtual methods
 

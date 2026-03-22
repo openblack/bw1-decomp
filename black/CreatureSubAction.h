@@ -43,7 +43,11 @@ public:
     // Constructors
 
     // win1.41 00473db0 mac 101e0720 CreatureSubAction::CreatureSubAction(void)
-    CreatureSubAction();
+    CreatureSubAction()
+    {
+        field_0xc = 0;
+        field_0x2c = 0;
+    }
 };
 
 // win1.41 009cf9b8 mac inlined CreatureSubActionAgenda::`RTTI Type Descriptor'

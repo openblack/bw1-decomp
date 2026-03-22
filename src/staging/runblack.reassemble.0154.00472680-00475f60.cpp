@@ -42,10 +42,10 @@ CreaturePlan::~CreaturePlan()
 {
 }
 
-// win1.41 00473db0 mac 101e0720 CreatureSubAction::CreatureSubAction(void)
-CreatureSubAction::CreatureSubAction()
-{
-}
+// // win1.41 00473db0 mac 101e0720 CreatureSubAction::CreatureSubAction(void)
+// CreatureSubAction::CreatureSubAction()
+// {
+// }
 
 // win1.41 00473dd0 mac 101deb60 CreatureSubAction::_dt(void)
 CreatureSubAction::~CreatureSubAction()
