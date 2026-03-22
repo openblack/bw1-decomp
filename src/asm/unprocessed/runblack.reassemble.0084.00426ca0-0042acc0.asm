@@ -6,7 +6,7 @@
 .extern _jmp_addr_0x00414730
 .extern _jmp_addr_0x00425060
 .extern _jmp_addr_0x00426c80
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x00442d10
 .extern _jmp_addr_0x004639a0
@@ -3490,7 +3490,7 @@ _jmp_addr_0x00429230:    push               ebx                                 
 .Lbl_addr_0x00429265:    push               0x33                                                 // 0x00429265    6a33
                          push               0x009cb3c0                                           // 0x00429267    68c0b39c00
                          push               0x38                                                 // 0x0042926c    6a38
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042926e    e87dd40000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042926e    e87dd40000
                          mov.s              esi, eax                                             // 0x00429273    8bf0
                          add                esp, 0x0c                                            // 0x00429275    83c40c
                          cmp.s              esi, ebp                                             // 0x00429278    3bf5

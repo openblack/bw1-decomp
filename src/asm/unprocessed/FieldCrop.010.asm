@@ -100,7 +100,7 @@ _jmp_addr_0x00607e10:    mov                dword ptr [ecx], 0x008e2f18         
                          push               0x0000027a                                    // 0x00607e46    687a020000
                          push               0x00bf4238                                    // 0x00607e4b    683842bf00
                          push               0x68                                          // 0x00607e50    6a68
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00607e52    e899e8e2ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00607e52    e899e8e2ff
                          xor.s              ebp, ebp                                      // 0x00607e57    33ed
                          add                esp, 0x0c                                     // 0x00607e59    83c40c
                          cmp.s              eax, ebp                                      // 0x00607e5c    3bc5

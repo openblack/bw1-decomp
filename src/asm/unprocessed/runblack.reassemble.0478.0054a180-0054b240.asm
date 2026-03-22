@@ -362,7 +362,7 @@ _globl_ct_0x0054a310:    call               .Lbl_addr_0x0054a320                
                          push               0xe                                           // 0x0054a3f1    6a0e
                          push               0x00bea940                                    // 0x0054a3f3    6840a9be00
                          push               0x54                                          // 0x0054a3f8    6a54
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x0054a3fa    e8f1c2eeff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x0054a3fa    e8f1c2eeff
                          mov.s              esi, eax                                      // 0x0054a3ff    8bf0
                          add                esp, 0x0c                                     // 0x0054a401    83c40c
                          test               esi, esi                                      // 0x0054a404    85f6

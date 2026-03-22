@@ -5,7 +5,7 @@
 .extern data_bytes
 .extern _jmp_addr_0x00424e00
 .extern _jmp_addr_0x00424e70
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x00463ad0
@@ -683,7 +683,7 @@ start_0x006f1b20_0x006f5210:
                          push               0x00000286                                           // 0x006f2248    6886020000
                          push               0x00c0cc98                                           // 0x006f224d    6898ccc000
                          push               0x00000090                                           // 0x006f2252    6890000000
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x006f2257    e89444d4ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x006f2257    e89444d4ff
                          add                esp, 0x0c                                            // 0x006f225c    83c40c
                          test               eax, eax                                             // 0x006f225f    85c0
                          {disp8} je         .Lbl_addr_0x006f229e                                 // 0x006f2261    743b

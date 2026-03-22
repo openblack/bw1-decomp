@@ -424,7 +424,7 @@ _jmp_addr_0x00607000:    push               esi                                 
                          push               0x61                                          // 0x0060700e    6a61
                          push               0x00bf4238                                    // 0x00607010    683842bf00
                          push               0x68                                          // 0x00607015    6a68
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00607017    e8d4f6e2ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00607017    e8d4f6e2ff
                          mov.s              esi, eax                                      // 0x0060701c    8bf0
                          add                esp, 0x0c                                     // 0x0060701e    83c40c
                          test               esi, esi                                      // 0x00607021    85f6
@@ -448,7 +448,7 @@ _jmp_addr_0x00607000:    push               esi                                 
                          push               0x65                                          // 0x00607058    6a65
                          push               0x00bf4238                                    // 0x0060705a    683842bf00
                          push               0x68                                          // 0x0060705f    6a68
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00607061    e88af6e2ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00607061    e88af6e2ff
                          add                esp, 0x0c                                     // 0x00607066    83c40c
                          test               eax, eax                                      // 0x00607069    85c0
                          {disp32} je        .Lbl_addr_0x00607119                          // 0x0060706b    0f84a8000000
@@ -479,7 +479,7 @@ _jmp_addr_0x00607000:    push               esi                                 
                          push               0x69                                          // 0x006070a8    6a69
                          push               0x00bf4238                                    // 0x006070aa    683842bf00
                          push               0x6c                                          // 0x006070af    6a6c
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006070b1    e83af6e2ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006070b1    e83af6e2ff
                          mov.s              esi, eax                                      // 0x006070b6    8bf0
                          add                esp, 0x0c                                     // 0x006070b8    83c40c
                          test               esi, esi                                      // 0x006070bb    85f6
@@ -500,7 +500,7 @@ _jmp_addr_0x00607000:    push               esi                                 
 .Lbl_addr_0x006070e3:    push               0x6d                                          // 0x006070e3    6a6d
                          push               0x00bf4238                                    // 0x006070e5    683842bf00
                          push               0x68                                          // 0x006070ea    6a68
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006070ec    e8fff5e2ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006070ec    e8fff5e2ff
                          add                esp, 0x0c                                     // 0x006070f1    83c40c
                          test               eax, eax                                      // 0x006070f4    85c0
                          {disp8} je         .Lbl_addr_0x00607119                          // 0x006070f6    7421
@@ -1106,7 +1106,7 @@ _jmp_addr_0x006076c0:    {disp32} mov       eax, dword ptr [_game]              
 .Lbl_addr_0x006076fe:    push               0x00000138                                    // 0x006076fe    6838010000
                          push               0x00bf4238                                    // 0x00607703    683842bf00
                          push               0x30                                          // 0x00607708    6a30
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x0060770a    e8e1efe2ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x0060770a    e8e1efe2ff
                          add                esp, 0x0c                                     // 0x0060770f    83c40c
                          test               eax, eax                                      // 0x00607712    85c0
                          {disp8} je         .Lbl_addr_0x0060771f                          // 0x00607714    7409

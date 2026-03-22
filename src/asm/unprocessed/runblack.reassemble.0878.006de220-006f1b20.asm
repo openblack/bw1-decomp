@@ -24,7 +24,7 @@
 .extern _jmp_addr_0x0042a5f0
 .extern ?ResetData@LHFile@@QAEIXZ
 .extern ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x00437eb0
@@ -3062,7 +3062,7 @@ _globl_ct_0x006de6a0:    {disp32} jmp       .Lbl_addr_0x006de6b0                
 .Lbl_addr_0x006dfdc8:    push               0x0000027d                                    // 0x006dfdc8    687d020000
                          push               0x00c09b24                                    // 0x006dfdcd    68249bc000
                          push               0x00000094                                    // 0x006dfdd2    6894000000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006dfdd7    e81469d5ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006dfdd7    e81469d5ff
                          mov.s              esi, eax                                      // 0x006dfddc    8bf0
                          add                esp, 0x0c                                     // 0x006dfdde    83c40c
                          cmp.s              esi, edi                                      // 0x006dfde1    3bf7
@@ -4165,7 +4165,7 @@ _globl_ct_0x006e07d0:    call               .Lbl_addr_0x006e07e0                
                          push               0x36                                          // 0x006e0a0d    6a36
                          push               0x00c09c48                                    // 0x006e0a0f    68489cc000
                          push               0x20                                          // 0x006e0a14    6a20
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006e0a16    e8d55cd5ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006e0a16    e8d55cd5ff
                          add                esp, 0x0c                                     // 0x006e0a1b    83c40c
                          test               eax, eax                                      // 0x006e0a1e    85c0
                          {disp8} je         .Lbl_addr_0x006e0a6d                          // 0x006e0a20    744b
@@ -7219,7 +7219,7 @@ _jmp_addr_0x006e3b50:    push               ecx                                 
                          push               0x0000010f                                    // 0x006e3d89    680f010000
                          push               0x00c0be84                                    // 0x006e3d8e    6884bec000
                          push               0x44                                          // 0x006e3d93    6a44
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006e3d95    e85629d5ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006e3d95    e85629d5ff
                          {disp8} mov        ebx, dword ptr [esp + 0x28]                   // 0x006e3d9a    8b5c2428
                          add                esp, 0x0c                                     // 0x006e3d9e    83c40c
                          test               eax, eax                                      // 0x006e3da1    85c0
@@ -10251,7 +10251,7 @@ _jmp_addr_0x006e58c0:    push               ebx                                 
                          push               0x00000082                                    // 0x006e58c3    6882000000
                          push               0x00c0bf38                                    // 0x006e58c8    6838bfc000
                          push               0x000000a8                                    // 0x006e58cd    68a8000000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006e58d2    e8190ed5ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006e58d2    e8190ed5ff
                          xor.s              edi, edi                                      // 0x006e58d7    33ff
                          add                esp, 0x0c                                     // 0x006e58d9    83c40c
                          cmp.s              eax, edi                                      // 0x006e58dc    3bc7
@@ -14271,7 +14271,7 @@ _jmp_addr_0x006e8460:    push               esi                                 
                          push               0x42                                          // 0x006e8462    6a42
                          push               0x00c0bfe4                                    // 0x006e8464    68e4bfc000
                          push               0x0000009c                                    // 0x006e8469    689c000000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006e846e    e87de2d4ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006e846e    e87de2d4ff
                          add                esp, 0x0c                                     // 0x006e8473    83c40c
                          test               eax, eax                                      // 0x006e8476    85c0
                          {disp8} je         .Lbl_addr_0x006e84ed                          // 0x006e8478    7473
@@ -15644,7 +15644,7 @@ _jmp_addr_0x006e9200:    push               esi                                 
                          push               0x0000020d                                    // 0x006e92df    680d020000
                          push               0x00c0bfe4                                    // 0x006e92e4    68e4bfc000
                          push               0x00000f28                                    // 0x006e92e9    68280f0000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006e92ee    e8fdd3d4ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006e92ee    e8fdd3d4ff
                          mov.s              edi, eax                                      // 0x006e92f3    8bf8
                          add                esp, 0x0c                                     // 0x006e92f5    83c40c
                          test               edi, edi                                      // 0x006e92f8    85ff
@@ -18333,7 +18333,7 @@ _globl_ct_0x006eb0d0:    {disp32} jmp       .Lbl_addr_0x006eb0e0                
                          push               0x2f                                          // 0x006eb101    6a2f
                          push               0x00c0c020                                    // 0x006eb103    6820c0c000
                          push               0x000000bc                                    // 0x006eb108    68bc000000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006eb10d    e8deb5d4ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006eb10d    e8deb5d4ff
                          mov.s              esi, eax                                      // 0x006eb112    8bf0
                          xor.s              eax, eax                                      // 0x006eb114    33c0
                          add                esp, 0x0c                                     // 0x006eb116    83c40c
@@ -24456,7 +24456,7 @@ _globl_ct_0x006ef390:    {disp32} jmp       .Lbl_addr_0x006ef3a0                
                          push               0x00000096                                    // 0x006ef6bd    6896000000
                          push               0x00c0c374                                    // 0x006ef6c2    6874c3c000
                          push               0x00000090                                    // 0x006ef6c7    6890000000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006ef6cc    e81f70d4ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006ef6cc    e81f70d4ff
                          add                esp, 0x0c                                     // 0x006ef6d1    83c40c
                          test               eax, eax                                      // 0x006ef6d4    85c0
                          {disp32} je        .Lbl_addr_0x006ef7e3                          // 0x006ef6d6    0f8407010000
@@ -25507,7 +25507,7 @@ _jmp_addr_0x006efdc0:    push               ecx                                 
                          push               0x00c0c374                                    // 0x006f01fd    6874c3c000
                          push               0x0000012c                                    // 0x006f0202    682c010000
                          mov.s              ebx, eax                                      // 0x006f0207    8bd8
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006f0209    e8e264d4ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006f0209    e8e264d4ff
                          mov.s              edi, eax                                      // 0x006f020e    8bf8
                          add                esp, 0x10                                     // 0x006f0210    83c410
                          test               edi, edi                                      // 0x006f0213    85ff

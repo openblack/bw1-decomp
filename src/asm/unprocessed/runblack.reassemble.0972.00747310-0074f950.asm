@@ -15,7 +15,7 @@
 .extern _jmp_addr_0x00425fb0
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
 .extern ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x004383d0
@@ -2691,7 +2691,7 @@ _jmp_addr_0x00748ad0:    mov                dword ptr [ecx], 0x008e7794         
                          push               0x36                                           // 0x00748b22    6a36
                          push               0x00c22f04                                     // 0x00748b24    68042fc200
                          push               0x00000118                                     // 0x00748b29    6818010000
-                         call               ?__nw@Base@@SAPAXK@Z                           // 0x00748b2e    e8bddbceff
+                         call               ??2Base@@SAPAXIPBDI@Z                           // 0x00748b2e    e8bddbceff
                          add                esp, 0x0c                                      // 0x00748b33    83c40c
                          test               eax, eax                                       // 0x00748b36    85c0
                          {disp8} je         .Lbl_addr_0x00748b7f                           // 0x00748b38    7445
@@ -2884,7 +2884,7 @@ _jmp_addr_0x00748cb0:    push               esi                                 
                          push               0x0000008b                                     // 0x00748cb2    688b000000
                          push               0x00c22f04                                     // 0x00748cb7    68042fc200
                          push               0x00000128                                     // 0x00748cbc    6828010000
-                         call               ?__nw@Base@@SAPAXK@Z                           // 0x00748cc1    e82adaceff
+                         call               ??2Base@@SAPAXIPBDI@Z                           // 0x00748cc1    e82adaceff
                          add                esp, 0x0c                                      // 0x00748cc6    83c40c
                          test               eax, eax                                       // 0x00748cc9    85c0
                          {disp8} je         .Lbl_addr_0x00748d12                           // 0x00748ccb    7445
@@ -4689,7 +4689,7 @@ _jmp_addr_0x00749ed0:    mov                dword ptr [ecx], 0x008e92f4         
                          push               0x63                                           // 0x00749ee2    6a63
                          push               0x00c22fc0                                     // 0x00749ee4    68c02fc200
                          push               0x6c                                           // 0x00749ee9    6a6c
-                         call               ?__nw@Base@@SAPAXK@Z                           // 0x00749eeb    e800c8ceff
+                         call               ??2Base@@SAPAXIPBDI@Z                           // 0x00749eeb    e800c8ceff
                          mov.s              esi, eax                                       // 0x00749ef0    8bf0
                          add                esp, 0x0c                                      // 0x00749ef2    83c40c
                          test               esi, esi                                       // 0x00749ef5    85f6
@@ -7184,7 +7184,7 @@ _GetWoodValueMultiplier__4TreeFv:
                          push               0x0000035b                                     // 0x0074bb33    685b030000
                          push               0x00c22fc0                                     // 0x0074bb38    68c02fc200
                          push               0x58                                           // 0x0074bb3d    6a58
-                         call               ?__nw@Base@@SAPAXK@Z                           // 0x0074bb3f    e8acabceff
+                         call               ??2Base@@SAPAXIPBDI@Z                           // 0x0074bb3f    e8acabceff
                          add                esp, 0x0c                                      // 0x0074bb44    83c40c
                          test               eax, eax                                       // 0x0074bb47    85c0
                          {disp8} je         .Lbl_addr_0x0074bb5a                           // 0x0074bb49    740f

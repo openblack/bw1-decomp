@@ -63,7 +63,7 @@ struct Windmill* __cdecl Create__8WindmillFRC9MapCoordsPC10GAbodeInfoP4Townfffi(
     asm("push               0x000005c4");                                    // 0x00405891    68c4050000
     asm("push               0x009c7fbc");                                    // 0x00405896    68bc7f9c00
     asm("push               0x000000c4");                                    // 0x0040589b    68c4000000
-    asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x004058a0    e84b0e0300
+    asm("call               ??2Base@@SAPAXIPBDI@Z");                               // 0x004058a0    e84b0e0300
     asm("mov.s              esi, eax");                                      // 0x004058a5    8bf0
     asm("add                esp, 0x0c");                                     // 0x004058a7    83c40c
     asm("test               esi, esi");                                      // 0x004058aa    85f6

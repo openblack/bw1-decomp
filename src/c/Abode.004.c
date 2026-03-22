@@ -1166,7 +1166,7 @@ void __fastcall MakeFunctional__5AbodeFv(struct Abode* this)
     asm("push               0x000003fb");                                    // 0x00404892    68fb030000
     asm("push               0x009c7fbc");                                    // 0x00404897    68bc7f9c00
     asm("push               0x24");                                          // 0x0040489c    6a24
-    asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x0040489e    e84d1e0300
+    asm("call               ??2Base@@SAPAXIPBDI@Z");                               // 0x0040489e    e84d1e0300
     asm("add                esp, 0x0c");                                     // 0x004048a3    83c40c
     asm("test               eax, eax");                                      // 0x004048a6    85c0
     asm("{disp8} je         LAB__addr_0x004048b9");                          // 0x004048a8    740f

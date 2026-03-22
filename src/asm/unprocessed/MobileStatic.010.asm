@@ -416,7 +416,7 @@ _jmp_addr_0x00608770:    push               esi                                 
                          push               0x58                                          // 0x006087a6    6a58
                          push               0x00bf4280                                    // 0x006087a8    688042bf00
                          push               0x00000094                                    // 0x006087ad    6894000000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006087b2    e839dfe2ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006087b2    e839dfe2ff
                          add                esp, 0x0c                                     // 0x006087b7    83c40c
                          test               eax, eax                                      // 0x006087ba    85c0
                          {disp8} je         .Lbl_addr_0x006087e9                          // 0x006087bc    742b
@@ -443,7 +443,7 @@ _jmp_addr_0x00608770:    push               esi                                 
 .Lbl_addr_0x006087ee:    push               0x61                                          // 0x006087ee    6a61
                          push               0x00bf4280                                    // 0x006087f0    688042bf00
                          push               0x00000088                                    // 0x006087f5    6888000000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006087fa    e8f1dee2ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006087fa    e8f1dee2ff
                          add                esp, 0x0c                                     // 0x006087ff    83c40c
                          test               eax, eax                                      // 0x00608802    85c0
                          {disp8} je         .Lbl_addr_0x006087e9                          // 0x00608804    74e3
@@ -1653,7 +1653,7 @@ _jmp_addr_0x00609340:    push              esi                                  
                          push              0x00000247                                    // 0x00609342    6847020000
                          push              0x00bf4280                                    // 0x00609347    688042bf00
                          push              0x5c                                          // 0x0060934c    6a5c
-                         call              ?__nw@Base@@SAPAXK@Z                          // 0x0060934e    e89dd3e2ff
+                         call              ??2Base@@SAPAXIPBDI@Z                         // 0x0060934e    e89dd3e2ff
                          {disp8} mov       edi, dword ptr [esp + 0x18]                   // 0x00609353    8b7c2418
                          mov.s             esi, eax                                      // 0x00609357    8bf0
                          add               esp, 0x0c                                     // 0x00609359    83c40c

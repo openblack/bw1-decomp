@@ -7,7 +7,7 @@
 .extern ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
 .extern _jmp_addr_0x00424b80
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x00439430
@@ -2625,7 +2625,7 @@ _globl_ct_0x007199c0:    call               .Lbl_addr_0x007199d0                
 .Lbl_addr_0x00719ad7:    push               0x17                                          // 0x00719ad7    6a17
                          push               0x00c22168                                    // 0x00719ad9    686821c200
                          push               0x00000094                                    // 0x00719ade    6894000000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00719ae3    e808ccd1ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00719ae3    e808ccd1ff
                          add                esp, 0x0c                                     // 0x00719ae8    83c40c
                          test               eax, eax                                      // 0x00719aeb    85c0
                          {disp8} je         .Lbl_addr_0x00719afe                          // 0x00719aed    740f
@@ -2693,7 +2693,7 @@ _globl_ct_0x007199c0:    call               .Lbl_addr_0x007199d0                
                                             push               0x31                                          // 0x00719b60    6a31
                          push               0x00c22168                                    // 0x00719b62    686821c200
                          push               0x24                                          // 0x00719b67    6a24
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00719b69    e882cbd1ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00719b69    e882cbd1ff
                          add                esp, 0x0c                                     // 0x00719b6e    83c40c
                          test               eax, eax                                      // 0x00719b71    85c0
                          {disp8} je         .Lbl_addr_0x00719b85                          // 0x00719b73    7410

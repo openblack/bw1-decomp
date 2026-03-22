@@ -4,7 +4,7 @@
 .extern rdata_bytes
 .extern data_bytes
 .extern _jmp_addr_0x004146f0
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ?GetWoodValue@BuildingSite@@QAEMXZ
 .extern @BuildBy__12BuildingSiteFf@12
 .extern _jmp_addr_0x00477210
@@ -1415,7 +1415,7 @@ start_0x005076a0_0x00509480:
 .Lbl_addr_0x0050864a:    push               0x0000136a                                    // 0x0050864a    686a130000
                          push               0x00be6588                                    // 0x0050864f    688865be00
                          push               0x0000012c                                    // 0x00508654    682c010000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00508659    e892e0f2ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00508659    e892e0f2ff
                          add                esp, 0x0c                                     // 0x0050865e    83c40c
                          test               eax, eax                                      // 0x00508661    85c0
                          {disp8} je         .Lbl_addr_0x00508699                          // 0x00508663    7434

@@ -38,7 +38,7 @@
 .extern _jmp_addr_0x00426880
 .extern _jmp_addr_0x004268b0
 .extern ?Create@Ball@@QAEPAV1@ABUMapCoords@@PBVGBallInfo@@GMM@Z
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x00437eb0
@@ -3001,7 +3001,7 @@ _jmp_addr_0x0052c7b0:    sub                esp, 0x0c                           
                          push               0x00000098                                           // 0x0052c7d8    6898000000
                          {disp8} mov        word ptr [esp + 0x10], ax                            // 0x0052c7dd    6689442410
                          {disp8} mov        word ptr [esp + 0x14], ax                            // 0x0052c7e2    6689442414
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0052c7e7    e8049ff0ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0052c7e7    e8049ff0ff
                          add                esp, 0x0c                                            // 0x0052c7ec    83c40c
                          test               eax, eax                                             // 0x0052c7ef    85c0
                          {disp8} je         .Lbl_addr_0x0052c825                                 // 0x0052c7f1    7432
@@ -7012,7 +7012,7 @@ _jmp_addr_0x0052edd0:    {disp8} fld        dword ptr [esp + 0x04]              
                          push               0x000003d2                                           // 0x0052ee1d    68d2030000
                          push               0x00be9eac                                           // 0x0052ee22    68ac9ebe00
                          push               0x1c                                                 // 0x0052ee27    6a1c
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0052ee29    e8c278f0ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0052ee29    e8c278f0ff
                          mov.s              esi, eax                                             // 0x0052ee2e    8bf0
                          add                esp, 0x0c                                            // 0x0052ee30    83c40c
                          test               esi, esi                                             // 0x0052ee33    85f6
@@ -7853,7 +7853,7 @@ _CreateCollideData__14SingleMapFixedFv:
                          push               0x00be9eac                                           // 0x0052f597    68ac9ebe00
                          push               0x00000648                                           // 0x0052f59c    6848060000
                          mov.s              edi, ecx                                             // 0x0052f5a1    8bf9
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0052f5a3    e84871f0ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0052f5a3    e84871f0ff
                          mov.s              esi, eax                                             // 0x0052f5a8    8bf0
                          add                esp, 0x0c                                            // 0x0052f5aa    83c40c
                          test               esi, esi                                             // 0x0052f5ad    85f6
@@ -8864,7 +8864,7 @@ _jmp_addr_0x0052fe10:    {disp8} mov        eax, dword ptr [esp + 0x08]         
                          push               0x000000c9                                           // 0x0052fe23    68c9000000
                          push               0x00be9f2c                                           // 0x0052fe28    682c9fbe00
                          push               0x00000090                                           // 0x0052fe2d    6890000000
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0052fe32    e8b968f0ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0052fe32    e8b968f0ff
                          add                esp, 0x0c                                            // 0x0052fe37    83c40c
                          test               eax, eax                                             // 0x0052fe3a    85c0
                          {disp8} je         .Lbl_addr_0x0052fe48                                 // 0x0052fe3c    740a
@@ -11273,7 +11273,7 @@ _jmp_addr_0x005315a0:    push               esi                                 
                          push               0x000000b6                                           // 0x005315a2    68b6000000
                          push               0x00be9fa4                                           // 0x005315a7    68a49fbe00
                          push               0x00000318                                           // 0x005315ac    6818030000
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x005315b1    e83a51f0ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x005315b1    e83a51f0ff
                          add                esp, 0x0c                                            // 0x005315b6    83c40c
                          test               eax, eax                                             // 0x005315b9    85c0
                          {disp8} je         .Lbl_addr_0x005315fd                                 // 0x005315bb    7440
@@ -16619,7 +16619,7 @@ _jmp_addr_0x00534f90:    {disp32} mov       edx, dword ptr [_game]              
                          push               0x00bea194                                           // 0x00534fc6    6894a1be00
                          push               0x30                                                 // 0x00534fcb    6a30
                          mov.s              esi, ecx                                             // 0x00534fcd    8bf1
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x00534fcf    e81c17f0ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x00534fcf    e81c17f0ff
                          add                esp, 0x0c                                            // 0x00534fd4    83c40c
                          test               eax, eax                                             // 0x00534fd7    85c0
                          {disp8} je         .Lbl_addr_0x00534ffb                                 // 0x00534fd9    7420
@@ -16650,7 +16650,7 @@ _jmp_addr_0x00534f90:    {disp32} mov       edx, dword ptr [_game]              
                          push               0x00bea194                                           // 0x00535016    6894a1be00
                          push               0x30                                                 // 0x0053501b    6a30
                          mov.s              esi, ecx                                             // 0x0053501d    8bf1
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0053501f    e8cc16f0ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0053501f    e8cc16f0ff
                          add                esp, 0x0c                                            // 0x00535024    83c40c
                          test               eax, eax                                             // 0x00535027    85c0
                          {disp8} je         .Lbl_addr_0x0053504b                                 // 0x00535029    7420
@@ -17505,7 +17505,7 @@ _jmp_addr_0x005356f0:    push               esi                                 
                          push               0x0000025b                                           // 0x00535729    685b020000
                          push               0x00bea194                                           // 0x0053572e    6894a1be00
                          push               0x24                                                 // 0x00535733    6a24
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x00535735    e8b60ff0ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x00535735    e8b60ff0ff
                          add                esp, 0x0c                                            // 0x0053573a    83c40c
                          test               eax, eax                                             // 0x0053573d    85c0
                          {disp8} je         .Lbl_addr_0x0053575e                                 // 0x0053573f    741d
@@ -17656,7 +17656,7 @@ _jmp_addr_0x00535850:    mov                eax, 0x000640c8                     
                          push               0x000003ed                                           // 0x0053585e    68ed030000
                          push               0x00bea194                                           // 0x00535863    6894a1be00
                          push               0x24                                                 // 0x00535868    6a24
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0053586a    e8810ef0ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0053586a    e8810ef0ff
                          add                esp, 0x0c                                            // 0x0053586f    83c40c
                          test               eax, eax                                             // 0x00535872    85c0
                          {disp8} je         .Lbl_addr_0x00535885                                 // 0x00535874    740f
@@ -19163,7 +19163,7 @@ _jmp_addr_0x00536670:    sub                esp, 0x000003a0                     
 .Lbl_addr_0x00536812:    push               0x000007e1                                           // 0x00536812    68e1070000
                          push               0x00bea194                                           // 0x00536817    6894a1be00
                          push               0x24                                                 // 0x0053681c    6a24
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0053681e    e8cdfeefff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0053681e    e8cdfeefff
                          add                esp, 0x0c                                            // 0x00536823    83c40c
                          cmp.s              eax, ebp                                             // 0x00536826    3bc5
                          {disp8} je         .Lbl_addr_0x00536837                                 // 0x00536828    740d
@@ -19195,7 +19195,7 @@ _jmp_addr_0x00536670:    sub                esp, 0x000003a0                     
 .Lbl_addr_0x0053687a:    push               0x000007e9                                           // 0x0053687a    68e9070000
                          push               0x00bea194                                           // 0x0053687f    6894a1be00
                          push               0x24                                                 // 0x00536884    6a24
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x00536886    e865feefff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x00536886    e865feefff
                          add                esp, 0x0c                                            // 0x0053688b    83c40c
                          cmp.s              eax, ebp                                             // 0x0053688e    3bc5
                          {disp8} je         .Lbl_addr_0x0053689c                                 // 0x00536890    740a
@@ -20163,7 +20163,7 @@ _Load__17GFootpathLinkSaveFR10GameOSFile:
                          push               0x00bea194                                           // 0x0053740a    6894a1be00
                          push               0x30                                                 // 0x0053740f    6a30
                          {disp8} mov        byte ptr [esi + 0x14], al                            // 0x00537411    884614
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x00537414    e8d7f2efff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x00537414    e8d7f2efff
                          add                esp, 0x0c                                            // 0x00537419    83c40c
                          test               eax, eax                                             // 0x0053741c    85c0
                          {disp8} je         .Lbl_addr_0x00537431                                 // 0x0053741e    7411
@@ -20568,7 +20568,7 @@ _Load__17GFootpathLinkSaveFR10GameOSFile:
                          push               0x30                                                 // 0x00537a1b    6a30
                          {disp8} mov        dword ptr [esp + 0x78], eax                          // 0x00537a1d    89442478
                          {disp8} mov        dword ptr [esp + 0x7c], 0x00000000                   // 0x00537a21    c744247c00000000
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x00537a29    e8c2ecefff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x00537a29    e8c2ecefff
                          add                esp, 0x0c                                            // 0x00537a2e    83c40c
                          cmp.s              eax, ebp                                             // 0x00537a31    3bc5
                          {disp8} je         .Lbl_addr_0x00537a47                                 // 0x00537a33    7412
@@ -20653,7 +20653,7 @@ _Load__17GFootpathLinkSaveFR10GameOSFile:
                          push               0x30                                                 // 0x00537b63    6a30
                          {disp8} mov        dword ptr [esp + 0x78], eax                          // 0x00537b65    89442478
                          {disp8} mov        dword ptr [esp + 0x7c], 0x00000000                   // 0x00537b69    c744247c00000000
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x00537b71    e87aebefff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x00537b71    e87aebefff
                          add                esp, 0x0c                                            // 0x00537b76    83c40c
                          cmp.s              eax, ebp                                             // 0x00537b79    3bc5
                          {disp8} je         .Lbl_addr_0x00537b8f                                 // 0x00537b7b    7412
@@ -20703,7 +20703,7 @@ _Load__17GFootpathLinkSaveFR10GameOSFile:
 .Lbl_addr_0x00537c21:    push               0x00000901                                           // 0x00537c21    6801090000
                          push               0x00bea194                                           // 0x00537c26    6894a1be00
                          push               0x30                                                 // 0x00537c2b    6a30
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x00537c2d    e8beeaefff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x00537c2d    e8beeaefff
                          add                esp, 0x0c                                            // 0x00537c32    83c40c
                          cmp.s              eax, ebp                                             // 0x00537c35    3bc5
                          {disp8} je         .Lbl_addr_0x00537c4e                                 // 0x00537c37    7415
@@ -21335,7 +21335,7 @@ _Load__17GFootpathLinkSaveFR10GameOSFile:
                          push               0x00bea194                                           // 0x00538380    6894a1be00
                          push               0x30                                                 // 0x00538385    6a30
                          {disp8} mov        dword ptr [esp + 0x40], eax                          // 0x00538387    89442440
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0053838b    e860e3efff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0053838b    e860e3efff
                          mov.s              esi, eax                                             // 0x00538390    8bf0
                          add                esp, 0x14                                            // 0x00538392    83c414
                          test               esi, esi                                             // 0x00538395    85f6
@@ -21447,7 +21447,7 @@ _Load__17GFootpathLinkSaveFR10GameOSFile:
 .Lbl_addr_0x005384f7:    push               0x00000a33                                           // 0x005384f7    68330a0000
                          push               0x00bea194                                           // 0x005384fc    6894a1be00
                          push               0x30                                                 // 0x00538501    6a30
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x00538503    e8e8e1efff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x00538503    e8e8e1efff
                          mov.s              esi, eax                                             // 0x00538508    8bf0
                          add                esp, 0x0c                                            // 0x0053850a    83c40c
                          test               esi, esi                                             // 0x0053850d    85f6
@@ -21507,7 +21507,7 @@ _Load__17GFootpathLinkSaveFR10GameOSFile:
 .Lbl_addr_0x005385c4:    push               0x00000a3d                                           // 0x005385c4    683d0a0000
                          push               0x00bea194                                           // 0x005385c9    6894a1be00
                          push               0x30                                                 // 0x005385ce    6a30
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x005385d0    e81be1efff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x005385d0    e81be1efff
                          mov.s              esi, eax                                             // 0x005385d5    8bf0
                          add                esp, 0x0c                                            // 0x005385d7    83c40c
                          test               esi, esi                                             // 0x005385da    85f6
@@ -21564,7 +21564,7 @@ _Load__17GFootpathLinkSaveFR10GameOSFile:
 .Lbl_addr_0x00538683:    push               0x00000a43                                           // 0x00538683    68430a0000
                          push               0x00bea194                                           // 0x00538688    6894a1be00
                          push               0x30                                                 // 0x0053868d    6a30
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0053868f    e85ce0efff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0053868f    e85ce0efff
                          mov.s              esi, eax                                             // 0x00538694    8bf0
                          add                esp, 0x0c                                            // 0x00538696    83c40c
                          test               esi, esi                                             // 0x00538699    85f6
@@ -21588,7 +21588,7 @@ _Load__17GFootpathLinkSaveFR10GameOSFile:
                          push               0x00000a4a                                           // 0x005386cf    684a0a0000
                          push               0x00bea194                                           // 0x005386d4    6894a1be00
                          push               0x30                                                 // 0x005386d9    6a30
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x005386db    e810e0efff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x005386db    e810e0efff
                          mov.s              esi, eax                                             // 0x005386e0    8bf0
                          add                esp, 0x0c                                            // 0x005386e2    83c40c
                          test               esi, esi                                             // 0x005386e5    85f6
@@ -21615,7 +21615,7 @@ _Load__17GFootpathLinkSaveFR10GameOSFile:
 .Lbl_addr_0x0053871c:    push               0x00000a56                                           // 0x0053871c    68560a0000
                          push               0x00bea194                                           // 0x00538721    6894a1be00
                          push               0x30                                                 // 0x00538726    6a30
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x00538728    e8c3dfefff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x00538728    e8c3dfefff
                          mov.s              esi, eax                                             // 0x0053872d    8bf0
                          add                esp, 0x0c                                            // 0x0053872f    83c40c
                          test               esi, esi                                             // 0x00538732    85f6
@@ -21642,7 +21642,7 @@ _Load__17GFootpathLinkSaveFR10GameOSFile:
                          push               0x00000a5a                                           // 0x0053876e    685a0a0000
                          push               0x00bea194                                           // 0x00538773    6894a1be00
                          push               0x30                                                 // 0x00538778    6a30
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0053877a    e871dfefff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0053877a    e871dfefff
                          add                esp, 0x0c                                            // 0x0053877f    83c40c
                          test               eax, eax                                             // 0x00538782    85c0
                          {disp8} je         .Lbl_addr_0x00538794                                 // 0x00538784    740e
@@ -22453,7 +22453,7 @@ _jmp_addr_0x00538ec0:    sub                esp, 0x18                           
                          push               0x00000b28                                           // 0x00538f0f    68280b0000
                          push               0x00bea194                                           // 0x00538f14    6894a1be00
                          push               0x24                                                 // 0x00538f19    6a24
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x00538f1b    e8d0d7efff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x00538f1b    e8d0d7efff
                          {disp8} mov        edi, dword ptr [esp + 0x38]                          // 0x00538f20    8b7c2438
                          {disp8} mov        ebx, dword ptr [esp + 0x34]                          // 0x00538f24    8b5c2434
                          add                esp, 0x0c                                            // 0x00538f28    83c40c
@@ -25494,7 +25494,7 @@ _jmp_addr_0x0053a7c0:    sub                esp, 0x00000138                     
                          push               0x00000243                                           // 0x0053ac5d    6843020000
                          push               0x00bea26c                                           // 0x0053ac62    686ca2be00
                          push               0x1c                                                 // 0x0053ac67    6a1c
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0053ac69    e882baefff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0053ac69    e882baefff
                          mov.s              esi, eax                                             // 0x0053ac6e    8bf0
                          add                esp, 0x0c                                            // 0x0053ac70    83c40c
                          test               esi, esi                                             // 0x0053ac73    85f6

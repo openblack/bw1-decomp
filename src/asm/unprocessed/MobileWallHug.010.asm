@@ -4,7 +4,7 @@
 .extern rdata_bytes
 .extern data_bytes
 .extern ?Translation@LHMatrix@@QAEXABULHPoint@@@Z
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ?CallVirtualFunctionsForCreation@MultiMapFixed@@UAEXABUMapCoords@@@Z
 .extern ?CheckAndSetSaved@GameThing@@QAE_NXZ
 .extern ?ConvertToText@MapCoords@@QAEPADPAD@Z

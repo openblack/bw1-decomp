@@ -631,7 +631,7 @@ struct Abode* __cdecl CreateWithoutSpecial__5AbodeFRC9MapCoordsPC10GAbodeInfoP4T
     asm("push               0x0000013c");                                    // 0x00403192    683c010000
     asm("push               0x009c7fbc");                                    // 0x00403197    68bc7f9c00
     asm("push               0x000000c4");                                    // 0x0040319c    68c4000000
-    asm("call               ?__nw@Base@@SAPAXK@Z");                               // 0x004031a1    e84a350300
+    asm("call               ??2Base@@SAPAXIPBDI@Z");                               // 0x004031a1    e84a350300
     asm("add                esp, 0x0c");                                     // 0x004031a6    83c40c
     asm("test               eax, eax");                                      // 0x004031a9    85c0
     asm("{disp8} je         LAB__addr_0x004031ed");                          // 0x004031ab    7440

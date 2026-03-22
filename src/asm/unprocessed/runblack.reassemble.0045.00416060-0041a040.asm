@@ -29,7 +29,7 @@
 .extern _jmp_addr_0x004213c0
 .extern _jmp_addr_0x00421600
 .extern _jmp_addr_0x00421cf0
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern ?CanBeInspectedByCreature@Object@@UAEIPAVCreature@@@Z
@@ -6891,7 +6891,7 @@ _jmp_addr_0x00419c20:    {disp8} mov        eax, dword ptr [esp + 0x10]         
                          push               0x0000059f                                    // 0x00419c5f    689f050000
                          push               0x009c8e34                                    // 0x00419c64    68348e9c00
                          push               0x00000090                                    // 0x00419c69    6890000000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00419c6e    e87dca0100
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00419c6e    e87dca0100
                          add                esp, 0x0c                                     // 0x00419c73    83c40c
                          test               eax, eax                                      // 0x00419c76    85c0
                          {disp8} je         .Lbl_addr_0x00419c86                          // 0x00419c78    740c

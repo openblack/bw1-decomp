@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x00436a50
@@ -631,7 +631,7 @@ _jmp_addr_0x0063e3e0:    {disp8} mov       eax, dword ptr [esp + 0x04]          
                          push              0x000000e1                                    // 0x0063e4c5    68e1000000
                          push              0x00bfe020                                    // 0x0063e4ca    6820e0bf00
                          push              0x40                                          // 0x0063e4cf    6a40
-                         call              ?__nw@Base@@SAPAXK@Z                          // 0x0063e4d1    e81a82dfff
+                         call              ??2Base@@SAPAXIPBDI@Z                         // 0x0063e4d1    e81a82dfff
                          add               esp, 0x0c                                     // 0x0063e4d6    83c40c
                          test              eax, eax                                      // 0x0063e4d9    85c0
                          {disp8} je        .Lbl_addr_0x0063e51b                          // 0x0063e4db    743e
@@ -1154,7 +1154,7 @@ _globl_ct_0x0063e840:    call              .Lbl_addr_0x0063e850                 
                          push              0x39                                          // 0x0063e9a2    6a39
                          push              0x00bfe07c                                    // 0x0063e9a4    687ce0bf00
                          push              0x74                                          // 0x0063e9a9    6a74
-                         call              ?__nw@Base@@SAPAXK@Z                          // 0x0063e9ab    e8407ddfff
+                         call              ??2Base@@SAPAXIPBDI@Z                         // 0x0063e9ab    e8407ddfff
                          add               esp, 0x0c                                     // 0x0063e9b0    83c40c
                          test              eax, eax                                      // 0x0063e9b3    85c0
                          {disp8} je        .Lbl_addr_0x0063e9ed                          // 0x0063e9b5    7436

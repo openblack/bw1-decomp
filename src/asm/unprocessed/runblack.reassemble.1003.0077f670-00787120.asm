@@ -14,7 +14,7 @@
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
 .extern _jmp_addr_0x00414360
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??3Base@@SAXPAXI@Z
 .extern ??0MapCoords@@QAE@ABU0@@Z
 .extern @__ct__7LHPointFfff@20
@@ -2195,7 +2195,7 @@ _jmp_addr_0x00780740:    push               ebx                                 
                          push               0x3b                                          // 0x00780931    6a3b
                          push               0x00c24e54                                    // 0x00780933    68544ec200
                          push               0x00000104                                    // 0x00780938    6804010000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x0078093d    e8ae5dcbff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x0078093d    e8ae5dcbff
                          add                esp, 0x0c                                     // 0x00780942    83c40c
                          test               eax, eax                                      // 0x00780945    85c0
                          {disp8} je         .Lbl_addr_0x0078096d                          // 0x00780947    7424

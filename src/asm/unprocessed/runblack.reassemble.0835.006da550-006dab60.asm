@@ -4,7 +4,7 @@
 .extern rdata_bytes
 .extern data_bytes
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern _jmp_addr_0x00436a70
 .extern _jmp_addr_0x00550e40
 .extern @__ct__5TotemFRC9MapCoordsPC10GAbodeInfoP4Townfffi@36
@@ -36,7 +36,7 @@ _jmp_addr_0x006da550:    push               esi                                 
                          push               0x000007e0                                    // 0x006da551    68e0070000
                          push               0x00c09908                                    // 0x006da556    680899c000
                          push               0x000000fc                                    // 0x006da55b    68fc000000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006da560    e88bc1d5ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006da560    e88bc1d5ff
                          mov.s              esi, eax                                      // 0x006da565    8bf0
                          add                esp, 0x0c                                     // 0x006da567    83c40c
                          test               esi, esi                                      // 0x006da56a    85f6
