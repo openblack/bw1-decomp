@@ -26,6 +26,26 @@ void Creature::ProcessSpells()
 {
 }
 
+// win1.41 004ff1b0 mac 1028cea0 CreatureSubActionAgenda::CreatureSubActionAgenda(Creature*)
+CreatureSubActionAgenda::CreatureSubActionAgenda(Creature* _creature)
+{
+    field_0xc = 0;
+    field_0x8 = 1;
+    field_0xc30 = 0;
+    field_0x10 = 0;
+    field_0x14 = 0;
+    field_0xc34 = 0;
+    field_0x1c = -1;
+    field_0xc38 = 0;
+    field_0xc3c = 0;
+    field_0xc40 = 0;
+    field_0x20 = 0;
+    field_0xc44 = 0;
+    field_0xc48 = 0;
+    creature = _creature;
+    field_0xc2c = 0;
+}
+
 // win1.41 004ffdd0 mac 102a0fc0 Creature::SubStatePerformPickUpParameter(CreatureBelief *)
 uint32_t Creature::SubStatePerformPickUpParameter(CreatureBelief* param_1)
 {

@@ -83,7 +83,7 @@
 .extern _jmp_addr_0x004f2370
 .extern _jmp_addr_0x004f82f0
 .extern _jmp_addr_0x004f8ca0
-.extern @__ct__23CreatureSubActionAgendaFP8Creature@12
+.extern ??0CreatureSubActionAgenda@@QAE@PAVCreature@@@Z
 .extern _jmp_addr_0x004ff5c0
 .extern _jmp_addr_0x0052d360
 .extern _jmp_addr_0x005575e0
@@ -4171,7 +4171,7 @@ _globl_ct_0x004d3490:    {disp32} jmp       .Lbl_addr_0x004d34a0                
                          {disp8} mov        edi, dword ptr [esp + 0x14]                          // 0x004d34f1    8b7c2414
                          push               edi                                                  // 0x004d34f5    57
                          {disp32} lea       ecx, dword ptr [esi + 0x00000898]                    // 0x004d34f6    8d8e98080000
-                         call               @__ct__23CreatureSubActionAgendaFP8Creature@12       // 0x004d34fc    e8afbc0200
+                         call               ??0CreatureSubActionAgenda@@QAE@PAVCreature@@@Z       // 0x004d34fc    e8afbc0200
                          {disp32} mov       dword ptr [esi + 0x000014ec], ebx                    // 0x004d3501    899eec140000
                          {disp32} mov       dword ptr [esi + 0x000014f4], ebx                    // 0x004d3507    899ef4140000
                          {disp32} mov       dword ptr [esi + 0x000014f8], ebx                    // 0x004d350d    899ef8140000

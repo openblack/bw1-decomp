@@ -113,7 +113,7 @@
 .globl ?ProcessSpells@Creature@@QAEXXZ
 .globl _jmp_addr_0x004f8ca0
 .globl _jmp_addr_0x004feda0
-.globl @__ct__23CreatureSubActionAgendaFP8Creature@12
+.globl ??0CreatureSubActionAgenda@@QAE@PAVCreature@@@Z
 .globl ?AddSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z
 .globl ?AddMainSubAction@CreatureSubActionAgenda@@QAEXW4CREATURE_SUB_STATE_ACTIONS@@PAVSubArgument@@P8Creature@@AEHPBXPAXPAUMapCoords@@@ZP84@AEX23@Z@Z
 .globl _jmp_addr_0x004ff420
@@ -7771,7 +7771,7 @@ _jmp_addr_0x004feda0:    sub                esp, 0x14                           
                          nop                                                              // 0x004ff1ad    90
                          nop                                                              // 0x004ff1ae    90
                          nop                                                              // 0x004ff1af    90
-@__ct__23CreatureSubActionAgendaFP8Creature@12:    mov.s              eax, ecx                                      // 0x004ff1b0    8bc1
+??0CreatureSubActionAgenda@@QAE@PAVCreature@@@Z:    mov.s              eax, ecx                                      // 0x004ff1b0    8bc1
                          xor.s              ecx, ecx                                      // 0x004ff1b2    33c9
                          push               esi                                           // 0x004ff1b4    56
 .att_syntax
@@ -7780,16 +7780,22 @@ _jmp_addr_0x004feda0:    sub                esp, 0x14                           
                          {disp8} mov        dword ptr [eax + 0x04], ecx                   // 0x004ff1bb    894804
                          {disp8} lea        edx, dword ptr [eax + 0x28]                   // 0x004ff1be    8d5028
                          mov                esi, 0x00000020                               // 0x004ff1c1    be20000000
-.Lbl_addr_0x004ff1c6:    mov                dword ptr [edx], 0x008a9a44                   // 0x004ff1c6    c702449a8a00
+.att_syntax
+.Lbl_addr_0x004ff1c6:    movl               $??_7Base@@6B@, (%edx)                        // 0x004ff1c6    c702449a8a00
+.intel_syntax noprefix
                          {disp8} mov        dword ptr [edx + 0x04], ecx                   // 0x004ff1cc    894a04
-                         mov                dword ptr [edx], 0x008cd374                   // 0x004ff1cf    c70274d38c00
+.att_syntax
+                         movl               $??_7CreatureSubAction@@6B@, (%edx)           // 0x004ff1cf    c70274d38c00
+.intel_syntax noprefix
                          {disp8} mov        dword ptr [edx + 0x0c], ecx                   // 0x004ff1d5    894a0c
                          {disp8} mov        dword ptr [edx + 0x2c], ecx                   // 0x004ff1d8    894a2c
                          add                edx, 0x60                                     // 0x004ff1db    83c260
                          dec                esi                                           // 0x004ff1de    4e
                          {disp8} jne        .Lbl_addr_0x004ff1c6                          // 0x004ff1df    75e5
                          {disp8} mov        edx, dword ptr [esp + 0x08]                   // 0x004ff1e1    8b542408
-                         mov                dword ptr [eax], 0x008cd354                   // 0x004ff1e5    c70054d38c00
+.att_syntax
+                         movl               $??_7CreatureSubActionAgenda@@6B@, (%eax)     // 0x004ff1e5    c70054d38c00
+.intel_syntax noprefix
                          {disp8} mov        dword ptr [eax + 0x0c], ecx                   // 0x004ff1eb    89480c
                          {disp8} mov        dword ptr [eax + 0x08], 0x00000001            // 0x004ff1ee    c7400801000000
                          {disp32} mov       dword ptr [eax + 0x00000c30], ecx             // 0x004ff1f5    8988300c0000
