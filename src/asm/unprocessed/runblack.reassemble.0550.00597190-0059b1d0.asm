@@ -15,7 +15,7 @@
 .extern @__ct__14SetupBigButtonFiiiPwiii@36
 .extern @__ct__13SetupCheckBoxFiiibiPwi@33
 .extern @MessageBoxA__8SetupBoxFPw11MSGBOXSTYLEUl@20
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern _jmp_addr_0x0043dc00
 .extern ?MSeconds@LHTimer@@QAEHXZ
 .extern @SetSpeedUpFactor__7LHTimerFf@12
@@ -329,7 +329,7 @@ _AddAction__14GroupBehaviourFfR18LHDynamicStack_Ul_23DANCE_GROUP_ACTION_TYPERC24
 .Lbl_addr_0x00597323:    push               0x0000020f                                    // 0x00597323    680f020000
                          push               0x00beff3c                                    // 0x00597328    683cffbe00
                          push               0x24                                          // 0x0059732d    6a24
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x0059732f    e8bcf3e9ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x0059732f    e8bcf3e9ff
                          mov.s              esi, eax                                      // 0x00597334    8bf0
                          add                esp, 0x0c                                     // 0x00597336    83c40c
                          test               esi, esi                                      // 0x00597339    85f6
@@ -958,7 +958,7 @@ _LoadDance__14GroupBehaviourFPCc:
 .Lbl_addr_0x00597a3b:    push               0x000002a8                                    // 0x00597a3b    68a8020000
                          push               0x00beff3c                                    // 0x00597a40    683cffbe00
                          push               0x24                                          // 0x00597a45    6a24
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00597a47    e8a4ece9ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00597a47    e8a4ece9ff
                          mov.s              esi, eax                                      // 0x00597a4c    8bf0
                          add                esp, 0x0c                                     // 0x00597a4e    83c40c
                          cmp.s              esi, edi                                      // 0x00597a51    3bf7
@@ -992,7 +992,7 @@ _LoadDance__14GroupBehaviourFPCc:
 .Lbl_addr_0x00597aae:    push               0x000002b2                                    // 0x00597aae    68b2020000
                          push               0x00beff3c                                    // 0x00597ab3    683cffbe00
                          push               0x58                                          // 0x00597ab8    6a58
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00597aba    e831ece9ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00597aba    e831ece9ff
                          add                esp, 0x0c                                     // 0x00597abf    83c40c
                          cmp.s              eax, edi                                      // 0x00597ac2    3bc7
                          {disp8} je         .Lbl_addr_0x00597ad1                          // 0x00597ac4    740b
@@ -1157,7 +1157,7 @@ _LoadDance__14GroupBehaviourFPCc:
 .Lbl_addr_0x00597c93:    push               0x000002dc                                    // 0x00597c93    68dc020000
                          push               0x00beff3c                                    // 0x00597c98    683cffbe00
                          push               0x0000017c                                    // 0x00597c9d    687c010000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00597ca2    e849eae9ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00597ca2    e849eae9ff
                          add                esp, 0x0c                                     // 0x00597ca7    83c40c
                          test               eax, eax                                      // 0x00597caa    85c0
                          {disp8} je         .Lbl_addr_0x00597cb9                          // 0x00597cac    740b

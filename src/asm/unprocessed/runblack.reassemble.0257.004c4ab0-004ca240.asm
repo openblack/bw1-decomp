@@ -4,7 +4,7 @@
 .extern rdata_bytes
 .extern data_bytes
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x004427b0
@@ -3451,7 +3451,7 @@ _jmp_addr_0x004c7220:    sub                esp, 0x0c                           
                          push               0x0000022a                                           // 0x004c739b    682a020000
                          push               0x009d97e0                                           // 0x004c73a0    68e0979d00
                          push               0x1c                                                 // 0x004c73a5    6a1c
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x004c73a7    e844f3f6ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x004c73a7    e844f3f6ff
                          xor.s              edi, edi                                             // 0x004c73ac    33ff
                          add                esp, 0x0c                                            // 0x004c73ae    83c40c
                          cmp.s              eax, edi                                             // 0x004c73b1    3bc7
@@ -3521,7 +3521,7 @@ _jmp_addr_0x004c7220:    sub                esp, 0x0c                           
                          push               0x00000234                                           // 0x004c744f    6834020000
                          push               0x009d97e0                                           // 0x004c7454    68e0979d00
                          push               0x1c                                                 // 0x004c7459    6a1c
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x004c745b    e890f2f6ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x004c745b    e890f2f6ff
                          xor.s              edi, edi                                             // 0x004c7460    33ff
                          add                esp, 0x0c                                            // 0x004c7462    83c40c
                          cmp.s              eax, edi                                             // 0x004c7465    3bc7

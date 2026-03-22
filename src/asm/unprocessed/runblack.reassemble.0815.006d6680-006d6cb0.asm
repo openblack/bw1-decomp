@@ -1,7 +1,7 @@
 .intel_syntax noprefix
 .align 16
 
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ?GetTopState@Living@@QBE?AW4VILLAGER_STATES@@XZ
 .extern @AreWeThere__13MobileWallHugFf@12
 .extern _jmp_addr_0x0063e580
@@ -20,7 +20,7 @@ _jmp_addr_0x006d6680:    push              esi                                //
                          push              0x000000a8                         // 0x006d6682    68a8000000
                          push              0x00c09908                         // 0x006d6687    680899c000
                          push              0x00000588                         // 0x006d668c    6888050000
-                         call              ?__nw@Base@@SAPAXK@Z               // 0x006d6691    e85a00d6ff
+                         call              ??2Base@@SAPAXIPBDI@Z               // 0x006d6691    e85a00d6ff
                          add               esp, 0x0c                          // 0x006d6696    83c40c
                          test              eax, eax                           // 0x006d6699    85c0
                          {disp8} je        .Lbl_addr_0x006d66ce               // 0x006d669b    7431

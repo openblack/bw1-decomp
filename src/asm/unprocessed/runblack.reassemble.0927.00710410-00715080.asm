@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern _jmp_addr_0x0046af20
 .extern ?CreateCreature@Creature@@SAPAV1@ABUMapCoords@@PBVCreatureInfo@@PAVGPlayer@@@Z
 .extern _jmp_addr_0x0054ae20
@@ -1768,7 +1768,7 @@ _jmp_addr_0x007115a0:    push               esi                                 
                          push               0xd                                           // 0x007115a2    6a0d
                          push               0x00c20b98                                    // 0x007115a4    68980bc200
                          push               0x30                                          // 0x007115a9    6a30
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x007115ab    e84051d2ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x007115ab    e84051d2ff
                          mov.s              esi, eax                                      // 0x007115b0    8bf0
                          xor.s              edi, edi                                      // 0x007115b2    33ff
                          add                esp, 0x0c                                     // 0x007115b4    83c40c

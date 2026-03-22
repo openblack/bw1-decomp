@@ -6,7 +6,7 @@
 .extern ?PreDraw@Windmill@@QAEXXZ
 .extern _SetRenderState__10LH3DRenderF18D3DRENDERSTATETYPEUl
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x00439b90
@@ -466,7 +466,7 @@ start_0x005e3770_0x005e7a40:
                          push               0x00000223                                    // 0x005e3b69    6823020000
                          push               0x00bf3528                                    // 0x005e3b6e    682835bf00
                          push               0x28                                          // 0x005e3b73    6a28
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x005e3b75    e8762be5ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x005e3b75    e8762be5ff
                          mov.s              esi, eax                                      // 0x005e3b7a    8bf0
                          add                esp, 0x0c                                     // 0x005e3b7c    83c40c
                          cmp.s              esi, ebp                                      // 0x005e3b7f    3bf5

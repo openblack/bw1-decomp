@@ -8,7 +8,7 @@
 .extern _jmp_addr_0x00424d10
 .extern _jmp_addr_0x00426ca0
 .extern _jmp_addr_0x004291b0
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ?GetBeliefInPlayer@GBelief@@QAEMK@Z
 .extern _jmp_addr_0x00439d60
 .extern _jmp_addr_0x0043a3f0
@@ -1062,7 +1062,7 @@ _jmp_addr_0x005530c0:    push               ebp                                 
                          push               0x00001a35                                    // 0x0055335a    68351a0000
                          push               0x00bec32c                                    // 0x0055335f    682cc3be00
                          push               0x00250544                                    // 0x00553364    6844052500
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00553369    e88233eeff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00553369    e88233eeff
                          add                esp, 0x0c                                     // 0x0055336e    83c40c
                          test               eax, eax                                      // 0x00553371    85c0
                          {disp8} je         .Lbl_addr_0x0055337e                          // 0x00553373    7409

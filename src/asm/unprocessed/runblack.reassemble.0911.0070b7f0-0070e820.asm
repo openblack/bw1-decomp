@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern _jmp_addr_0x00436b80
 .extern _jmp_addr_0x00436ba0
 .extern @Set__8BaseInfoFP4Base@12
@@ -3223,7 +3223,7 @@ _jmp_addr_0x0070d8d0:    push               ebx                                 
                          push               0xb                                           // 0x0070d8d3    6a0b
                          push               0x00c20928                                    // 0x0070d8d5    682809c200
                          push               0x28                                          // 0x0070d8da    6a28
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x0070d8dc    e80f8ed2ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x0070d8dc    e80f8ed2ff
                          mov.s              esi, eax                                      // 0x0070d8e1    8bf0
                          xor.s              ebx, ebx                                      // 0x0070d8e3    33db
                          add                esp, 0x0c                                     // 0x0070d8e5    83c40c

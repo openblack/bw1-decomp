@@ -7,7 +7,7 @@
 .extern ?PostTranslation@LHMatrix@@QAEXABULHPoint@@@Z
 .extern ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??3Base@@SAXPAXI@Z
 .extern ??0MapCoords@@QAE@ABU0@@Z
 .extern _jmp_addr_0x00519320
@@ -3123,7 +3123,7 @@ _jmp_addr_0x007282a0:    push               esi                                 
                          push               0x000000bd                                           // 0x007282a2    68bd000000
                          push               0x00c22714                                           // 0x007282a7    681427c200
                          push               0x000000a0                                           // 0x007282ac    68a0000000
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x007282b1    e83ae4d0ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x007282b1    e83ae4d0ff
                          add                esp, 0x0c                                            // 0x007282b6    83c40c
                          test               eax, eax                                             // 0x007282b9    85c0
                          {disp8} je         .Lbl_addr_0x007282f3                                 // 0x007282bb    7436
@@ -3167,7 +3167,7 @@ _jmp_addr_0x00728300:    push               esi                                 
                          push               0x000000ca                                           // 0x00728302    68ca000000
                          push               0x00c22714                                           // 0x00728307    681427c200
                          push               0x000000a0                                           // 0x0072830c    68a0000000
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x00728311    e8dae3d0ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x00728311    e8dae3d0ff
                          add                esp, 0x0c                                            // 0x00728316    83c40c
                          test               eax, eax                                             // 0x00728319    85c0
                          {disp8} je         .Lbl_addr_0x00728353                                 // 0x0072831b    7436

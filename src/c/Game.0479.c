@@ -210,7 +210,7 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("{disp32} mov       dword ptr [esi + 0x002502e8], ebx");             // 0x0054b677    899ee8022500
     asm("{disp32} mov       dword ptr [esi + 0x002502ec], ebx");             // 0x0054b67d    899eec022500
     asm("{disp32} mov       dword ptr [esi + 0x00205d3c], ebx");             // 0x0054b683    899e3c5d2000
-    asm("call               ?__nw@Base@@SAPAXK@Z");                          // 0x0054b689    e862b0eeff
+    asm("call               ??2Base@@SAPAXIPBDI@Z");                          // 0x0054b689    e862b0eeff
     asm("add                esp, 0x0c");                                     // 0x0054b68e    83c40c
     asm("cmp.s              eax, ebx");                                      // 0x0054b691    3bc3
     asm("{disp8} je         LAB__addr_0x0054b69e");                          // 0x0054b693    7409
@@ -228,7 +228,7 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("push               0x00bec32c");                                    // 0x0054b6bc    682cc3be00
     asm("push               0x10");                                          // 0x0054b6c1    6a10
     asm("{disp32} mov       dword ptr [esi + 0x00250090], eax");             // 0x0054b6c3    898690002500
-    asm("call               ?__nw@Base@@SAPAXK@Z");                          // 0x0054b6c9    e822b0eeff
+    asm("call               ??2Base@@SAPAXIPBDI@Z");                          // 0x0054b6c9    e822b0eeff
     asm("add                esp, 0x0c");                                     // 0x0054b6ce    83c40c
     asm("cmp.s              eax, ebx");                                      // 0x0054b6d1    3bc3
     asm("{disp8} je         LAB__addr_0x0054b6de");                          // 0x0054b6d3    7409
@@ -242,7 +242,7 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("push               0x00bec32c");                                    // 0x0054b6e5    682cc3be00
     asm("push               0x0000065c");                                    // 0x0054b6ea    685c060000
     asm("{disp32} mov       dword ptr [esi + 0x00250064], eax");             // 0x0054b6ef    898664002500
-    asm("call               ?__nw@Base@@SAPAXK@Z");                          // 0x0054b6f5    e8f6afeeff
+    asm("call               ??2Base@@SAPAXIPBDI@Z");                          // 0x0054b6f5    e8f6afeeff
     asm("add                esp, 0x0c");                                     // 0x0054b6fa    83c40c
     asm("cmp.s              eax, ebx");                                      // 0x0054b6fd    3bc3
     asm("{disp8} je         LAB__addr_0x0054b70a");                          // 0x0054b6ff    7409
@@ -256,7 +256,7 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("push               0x00bec32c");                                    // 0x0054b711    682cc3be00
     asm("push               0x00000c98");                                    // 0x0054b716    68980c0000
     asm("{disp32} mov       dword ptr [esi + 0x00250068], eax");             // 0x0054b71b    898668002500
-    asm("call               ?__nw@Base@@SAPAXK@Z");                          // 0x0054b721    e8caafeeff
+    asm("call               ??2Base@@SAPAXIPBDI@Z");                          // 0x0054b721    e8caafeeff
     asm("add                esp, 0x0c");                                     // 0x0054b726    83c40c
     asm("cmp.s              eax, ebx");                                      // 0x0054b729    3bc3
     asm("{disp8} je         LAB__addr_0x0054b736");                          // 0x0054b72b    7409

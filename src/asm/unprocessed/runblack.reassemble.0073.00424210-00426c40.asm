@@ -6,7 +6,7 @@
 .extern _jmp_addr_0x004279a0
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern ?GetCreature3D@Creature@@QAEPAVLH3DCreature@@XZ
@@ -881,7 +881,7 @@ _jmp_addr_0x00424820:    push               esi                                 
                          push               0x5a                                          // 0x00424822    6a5a
                          push               0x009c960c                                    // 0x00424824    680c969c00
                          push               0x4c                                          // 0x00424829    6a4c
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x0042482b    e8c01e0100
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x0042482b    e8c01e0100
                          add                esp, 0x0c                                     // 0x00424830    83c40c
                          test               eax, eax                                      // 0x00424833    85c0
                          {disp8} je         .Lbl_addr_0x0042485e                          // 0x00424835    7427
@@ -930,7 +930,7 @@ _jmp_addr_0x00424820:    push               esi                                 
                          push               0x68                                          // 0x00424885    6a68
                          push               0x009c960c                                    // 0x00424887    680c969c00
                          push               0x4c                                          // 0x0042488c    6a4c
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x0042488e    e85d1e0100
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x0042488e    e85d1e0100
                          add                esp, 0x14                                     // 0x00424893    83c414
                          test               eax, eax                                      // 0x00424896    85c0
                          {disp8} je         .Lbl_addr_0x004248c1                          // 0x00424898    7427
@@ -2711,7 +2711,7 @@ _globl_ct_0x004258f0:    call               .Lbl_addr_0x00425900                
                          push               0xc                                           // 0x004259b6    6a0c
                          push               0x009c96cc                                    // 0x004259b8    68cc969c00
                          push               0x6c                                          // 0x004259bd    6a6c
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x004259bf    e82c0d0100
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x004259bf    e82c0d0100
                          {disp8} mov        edi, dword ptr [esp + 0x58]                   // 0x004259c4    8b7c2458
                          mov.s              esi, eax                                      // 0x004259c8    8bf0
                          add                esp, 0x0c                                     // 0x004259ca    83c40c
@@ -3914,7 +3914,7 @@ _jmp_addr_0x00426230:    push               esi                                 
                          push               0x00000134                                    // 0x0042648e    6834010000
                          push               0x009c9728                                    // 0x00426493    6828979c00
                          push               0x0000012c                                    // 0x00426498    682c010000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x0042649d    e84e020100
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x0042649d    e84e020100
                          mov.s              ebx, eax                                      // 0x004264a2    8bd8
                          add                esp, 0x0c                                     // 0x004264a4    83c40c
                          test               ebx, ebx                                      // 0x004264a7    85db

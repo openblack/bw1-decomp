@@ -176,7 +176,7 @@ _jmp_addr_0x006063d0:    push               esi                                 
                          push               0x30                                          // 0x006063d2    6a30
                          push               0x00bf41fc                                    // 0x006063d4    68fc41bf00
                          push               0x54                                          // 0x006063d9    6a54
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006063db    e81003e3ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006063db    e81003e3ff
                          add                esp, 0x0c                                     // 0x006063e0    83c40c
                          test               eax, eax                                      // 0x006063e3    85c0
                          {disp8} je         .Lbl_addr_0x00606418                          // 0x006063e5    7431

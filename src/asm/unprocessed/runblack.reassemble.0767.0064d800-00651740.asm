@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??0MapCoords@@QAE@ABU0@@Z
 .extern ?SetMessage@GDebug@@SAXGPADZZ
 .extern _jmp_addr_0x00513640
@@ -3239,7 +3239,7 @@ _jmp_addr_0x00650280:    push               esi                                 
                          push               0x00c009d4                                    // 0x00650287    68d409c000
                          push               0x20                                          // 0x0065028c    6a20
                          mov.s              edi, ecx                                      // 0x0065028e    8bf9
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00650290    e85b64deff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00650290    e85b64deff
                          add                esp, 0x0c                                     // 0x00650295    83c40c
                          test               eax, eax                                      // 0x00650298    85c0
                          {disp8} je         .Lbl_addr_0x006502b1                          // 0x0065029a    7415
@@ -3429,7 +3429,7 @@ _jmp_addr_0x00650370:    sub                esp, 0x28                           
 .Lbl_addr_0x00650464:    push               0x000000df                                    // 0x00650464    68df000000
                          push               0x00c009d4                                    // 0x00650469    68d409c000
                          push               0x74                                          // 0x0065046e    6a74
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00650470    e87b62deff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00650470    e87b62deff
                          mov.s              ebx, eax                                      // 0x00650475    8bd8
                          add                esp, 0x0c                                     // 0x00650477    83c40c
                          test               ebx, ebx                                      // 0x0065047a    85db
@@ -3475,7 +3475,7 @@ _jmp_addr_0x00650370:    sub                esp, 0x28                           
                          push               0x00c009d4                                    // 0x006504f8    68d409c000
                          push               0x20                                          // 0x006504fd    6a20
                          mov.s              esi, eax                                      // 0x006504ff    8bf0
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00650501    e8ea61deff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00650501    e8ea61deff
                          add                esp, 0x10                                     // 0x00650506    83c410
                          test               eax, eax                                      // 0x00650509    85c0
                          {disp8} je         .Lbl_addr_0x0065051e                          // 0x0065050b    7411

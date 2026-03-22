@@ -6,7 +6,7 @@
 .extern ?SetIdentityMatrix@LHMatrix@@QAEXXZ
 .extern ?SetPosition@LH3DObject@@SAXABULHPoint@@MM@Z
 .extern ?PlaySoundEffect@GAudio@@QAEXPAULH_SamplePlayOptions@@@Z
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern _jmp_addr_0x00436a80
@@ -1202,7 +1202,7 @@ _jmp_addr_0x00709a40:    push               esi                                 
                          push               0x7e                                          // 0x00709a42    6a7e
                          push               0x00c205f0                                    // 0x00709a44    68f005c200
                          push               0x0000008c                                    // 0x00709a49    688c000000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x00709a4e    e89dccd2ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x00709a4e    e89dccd2ff
                          add                esp, 0x0c                                     // 0x00709a53    83c40c
                          test               eax, eax                                      // 0x00709a56    85c0
                          {disp8} je         .Lbl_addr_0x00709a90                          // 0x00709a58    7436

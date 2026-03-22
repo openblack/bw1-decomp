@@ -1,7 +1,7 @@
 .intel_syntax noprefix
 .align 16
 
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??3Base@@SAXPAXI@Z
 .extern ??0GameThing@@QAE@XZ
 .extern _jmp_addr_0x0056fa80
@@ -585,7 +585,7 @@ start_0x006dd940_0x006ddf60:
                          push             0x0000101c                               // 0x006ddde1    681c100000
                          push             0x00c09908                               // 0x006ddde6    680899c000
                          push             0x00000138                               // 0x006dddeb    6838010000
-                         call             ?__nw@Base@@SAPAXK@Z                     // 0x006dddf0    e8fb88d5ff
+                         call             ??2Base@@SAPAXIPBDI@Z                     // 0x006dddf0    e8fb88d5ff
                          add              esp, 0x0c                                // 0x006dddf5    83c40c
                          test             eax, eax                                 // 0x006dddf8    85c0
                          {disp8} je       .Lbl_addr_0x006dde18                     // 0x006dddfa    741c

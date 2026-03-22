@@ -4,7 +4,7 @@
 .extern rdata_bytes
 .extern data_bytes
 .extern _jmp_addr_0x004146b0
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern _jmp_addr_0x00441f40
 .extern _jmp_addr_0x00484c60
 .extern ?ForceActivityAndForceAction@Creature@@QAEXAAVCreaturePlan@@HH@Z
@@ -1021,7 +1021,7 @@ start_0x006f94a0_0x006fc520:
                          push               0x000004c1                                    // 0x006fa01e    68c1040000
                          push               0x00c0d548                                    // 0x006fa023    6848d5c000
                          push               0x48                                          // 0x006fa028    6a48
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006fa02a    e8c1c6d3ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006fa02a    e8c1c6d3ff
                          add                esp, 0x0c                                     // 0x006fa02f    83c40c
                          test               eax, eax                                      // 0x006fa032    85c0
                          {disp8} je         .Lbl_addr_0x006fa03f                          // 0x006fa034    7409

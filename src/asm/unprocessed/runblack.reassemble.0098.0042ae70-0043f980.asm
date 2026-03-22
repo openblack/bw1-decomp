@@ -884,7 +884,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042b883:    push               0x0000009f                                           // 0x0042b883    689f000000
                          push               0x009cc624                                           // 0x0042b888    6824c69c00
                          push               0x58                                                 // 0x0042b88d    6a58
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042b88f    e85cae0000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042b88f    e85cae0000
                          mov.s              esi, eax                                             // 0x0042b894    8bf0
                          add                esp, 0x0c                                            // 0x0042b896    83c40c
                          test               esi, esi                                             // 0x0042b899    85f6
@@ -908,7 +908,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042b8d6:    push               0x000000ab                                           // 0x0042b8d6    68ab000000
                          push               0x009cc624                                           // 0x0042b8db    6824c69c00
                          push               0x58                                                 // 0x0042b8e0    6a58
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042b8e2    e809ae0000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042b8e2    e809ae0000
                          add                esp, 0x0c                                            // 0x0042b8e7    83c40c
                          test               eax, eax                                             // 0x0042b8ea    85c0
                          {disp8} je         .Lbl_addr_0x0042b8f9                                 // 0x0042b8ec    740b
@@ -951,7 +951,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042b95f:    push               0x0000009f                                           // 0x0042b95f    689f000000
                          push               0x009cc624                                           // 0x0042b964    6824c69c00
                          push               0x60                                                 // 0x0042b969    6a60
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042b96b    e880ad0000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042b96b    e880ad0000
                          mov.s              esi, eax                                             // 0x0042b970    8bf0
                          add                esp, 0x0c                                            // 0x0042b972    83c40c
                          test               esi, esi                                             // 0x0042b975    85f6
@@ -975,7 +975,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042b9aa:    push               0x000000ab                                           // 0x0042b9aa    68ab000000
                          push               0x009cc624                                           // 0x0042b9af    6824c69c00
                          push               0x60                                                 // 0x0042b9b4    6a60
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042b9b6    e835ad0000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042b9b6    e835ad0000
                          add                esp, 0x0c                                            // 0x0042b9bb    83c40c
                          test               eax, eax                                             // 0x0042b9be    85c0
                          {disp8} je         .Lbl_addr_0x0042b9cf                                 // 0x0042b9c0    740d
@@ -1015,7 +1015,7 @@ _load_variables:         sub                esp, 0x0000069c                     
                          push               0x0000009f                                           // 0x0042ba30    689f000000
                          push               0x009cc624                                           // 0x0042ba35    6824c69c00
                          push               0x5c                                                 // 0x0042ba3a    6a5c
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042ba3c    e8afac0000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042ba3c    e8afac0000
                          mov.s              esi, eax                                             // 0x0042ba41    8bf0
                          add                esp, 0x0c                                            // 0x0042ba43    83c40c
                          test               esi, esi                                             // 0x0042ba46    85f6
@@ -1036,7 +1036,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042ba79:    push               0x000000ab                                           // 0x0042ba79    68ab000000
                          push               0x009cc624                                           // 0x0042ba7e    6824c69c00
                          push               0x5c                                                 // 0x0042ba83    6a5c
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042ba85    e866ac0000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042ba85    e866ac0000
                          add                esp, 0x0c                                            // 0x0042ba8a    83c40c
                          test               eax, eax                                             // 0x0042ba8d    85c0
                          {disp8} je         .Lbl_addr_0x0042ba9e                                 // 0x0042ba8f    740d
@@ -1076,7 +1076,7 @@ _load_variables:         sub                esp, 0x0000069c                     
                          push               0x0000009f                                           // 0x0042baff    689f000000
                          push               0x009cc624                                           // 0x0042bb04    6824c69c00
                          push               0x6c                                                 // 0x0042bb09    6a6c
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042bb0b    e8e0ab0000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042bb0b    e8e0ab0000
                          mov.s              esi, eax                                             // 0x0042bb10    8bf0
                          add                esp, 0x0c                                            // 0x0042bb12    83c40c
                          test               esi, esi                                             // 0x0042bb15    85f6
@@ -1097,7 +1097,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042bb48:    push               0x000000ab                                           // 0x0042bb48    68ab000000
                          push               0x009cc624                                           // 0x0042bb4d    6824c69c00
                          push               0x6c                                                 // 0x0042bb52    6a6c
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042bb54    e897ab0000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042bb54    e897ab0000
                          add                esp, 0x0c                                            // 0x0042bb59    83c40c
                          test               eax, eax                                             // 0x0042bb5c    85c0
                          {disp8} je         .Lbl_addr_0x0042bb6d                                 // 0x0042bb5e    740d
@@ -1139,7 +1139,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042bbd8:    push               0x0000009f                                           // 0x0042bbd8    689f000000
                          push               0x009cc624                                           // 0x0042bbdd    6824c69c00
                          push               0x70                                                 // 0x0042bbe2    6a70
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042bbe4    e807ab0000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042bbe4    e807ab0000
                          mov.s              esi, eax                                             // 0x0042bbe9    8bf0
                          add                esp, 0x0c                                            // 0x0042bbeb    83c40c
                          test               esi, esi                                             // 0x0042bbee    85f6
@@ -1163,7 +1163,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042bc23:    push               0x000000ab                                           // 0x0042bc23    68ab000000
                          push               0x009cc624                                           // 0x0042bc28    6824c69c00
                          push               0x70                                                 // 0x0042bc2d    6a70
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042bc2f    e8bcaa0000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042bc2f    e8bcaa0000
                          add                esp, 0x0c                                            // 0x0042bc34    83c40c
                          test               eax, eax                                             // 0x0042bc37    85c0
                          {disp8} je         .Lbl_addr_0x0042bc48                                 // 0x0042bc39    740d
@@ -1205,7 +1205,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042bcb3:    push               0x0000009f                                           // 0x0042bcb3    689f000000
                          push               0x009cc624                                           // 0x0042bcb8    6824c69c00
                          push               0x6c                                                 // 0x0042bcbd    6a6c
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042bcbf    e82caa0000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042bcbf    e82caa0000
                          mov.s              esi, eax                                             // 0x0042bcc4    8bf0
                          add                esp, 0x0c                                            // 0x0042bcc6    83c40c
                          test               esi, esi                                             // 0x0042bcc9    85f6
@@ -1229,7 +1229,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042bcfe:    push               0x000000ab                                           // 0x0042bcfe    68ab000000
                          push               0x009cc624                                           // 0x0042bd03    6824c69c00
                          push               0x6c                                                 // 0x0042bd08    6a6c
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042bd0a    e8e1a90000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042bd0a    e8e1a90000
                          add                esp, 0x0c                                            // 0x0042bd0f    83c40c
                          test               eax, eax                                             // 0x0042bd12    85c0
                          {disp8} je         .Lbl_addr_0x0042bd23                                 // 0x0042bd14    740d
@@ -1271,7 +1271,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042bd8e:    push               0x0000009f                                           // 0x0042bd8e    689f000000
                          push               0x009cc624                                           // 0x0042bd93    6824c69c00
                          push               0x74                                                 // 0x0042bd98    6a74
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042bd9a    e851a90000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042bd9a    e851a90000
                          add                esp, 0x0c                                            // 0x0042bd9f    83c40c
                          test               eax, eax                                             // 0x0042bda2    85c0
                          {disp8} je         .Lbl_addr_0x0042bdb1                                 // 0x0042bda4    740b
@@ -1294,7 +1294,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042bdd3:    push               0x000000ab                                           // 0x0042bdd3    68ab000000
                          push               0x009cc624                                           // 0x0042bdd8    6824c69c00
                          push               0x74                                                 // 0x0042bddd    6a74
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042bddf    e80ca90000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042bddf    e80ca90000
                          add                esp, 0x0c                                            // 0x0042bde4    83c40c
                          test               eax, eax                                             // 0x0042bde7    85c0
                          {disp8} je         .Lbl_addr_0x0042bdf8                                 // 0x0042bde9    740d
@@ -1334,7 +1334,7 @@ _load_variables:         sub                esp, 0x0000069c                     
                          push               0x0000009f                                           // 0x0042be59    689f000000
                          push               0x009cc624                                           // 0x0042be5e    6824c69c00
                          push               0x70                                                 // 0x0042be63    6a70
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042be65    e886a80000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042be65    e886a80000
                          add                esp, 0x0c                                            // 0x0042be6a    83c40c
                          test               eax, eax                                             // 0x0042be6d    85c0
                          {disp8} je         .Lbl_addr_0x0042be7c                                 // 0x0042be6f    740b
@@ -1354,7 +1354,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042be9c:    push               0x000000ab                                           // 0x0042be9c    68ab000000
                          push               0x009cc624                                           // 0x0042bea1    6824c69c00
                          push               0x70                                                 // 0x0042bea6    6a70
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042bea8    e843a80000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042bea8    e843a80000
                          add                esp, 0x0c                                            // 0x0042bead    83c40c
                          test               eax, eax                                             // 0x0042beb0    85c0
                          {disp8} je         .Lbl_addr_0x0042bec1                                 // 0x0042beb2    740d
@@ -1396,7 +1396,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042bf2c:    push               0x0000009f                                           // 0x0042bf2c    689f000000
                          push               0x009cc624                                           // 0x0042bf31    6824c69c00
                          push               0x58                                                 // 0x0042bf36    6a58
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042bf38    e8b3a70000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042bf38    e8b3a70000
                          add                esp, 0x0c                                            // 0x0042bf3d    83c40c
                          test               eax, eax                                             // 0x0042bf40    85c0
                          {disp8} je         .Lbl_addr_0x0042bf4f                                 // 0x0042bf42    740b
@@ -1419,7 +1419,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042bf71:    push               0x000000ab                                           // 0x0042bf71    68ab000000
                          push               0x009cc624                                           // 0x0042bf76    6824c69c00
                          push               0x58                                                 // 0x0042bf7b    6a58
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042bf7d    e86ea70000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042bf7d    e86ea70000
                          add                esp, 0x0c                                            // 0x0042bf82    83c40c
                          test               eax, eax                                             // 0x0042bf85    85c0
                          {disp8} je         .Lbl_addr_0x0042bf96                                 // 0x0042bf87    740d
@@ -1459,7 +1459,7 @@ _load_variables:         sub                esp, 0x0000069c                     
                          push               0x0000009f                                           // 0x0042bff7    689f000000
                          push               0x009cc624                                           // 0x0042bffc    6824c69c00
                          push               0x64                                                 // 0x0042c001    6a64
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042c003    e8e8a60000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042c003    e8e8a60000
                          add                esp, 0x0c                                            // 0x0042c008    83c40c
                          test               eax, eax                                             // 0x0042c00b    85c0
                          {disp8} je         .Lbl_addr_0x0042c01a                                 // 0x0042c00d    740b
@@ -1479,7 +1479,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042c03a:    push               0x000000ab                                           // 0x0042c03a    68ab000000
                          push               0x009cc624                                           // 0x0042c03f    6824c69c00
                          push               0x64                                                 // 0x0042c044    6a64
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042c046    e8a5a60000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042c046    e8a5a60000
                          add                esp, 0x0c                                            // 0x0042c04b    83c40c
                          test               eax, eax                                             // 0x0042c04e    85c0
                          {disp8} je         .Lbl_addr_0x0042c05f                                 // 0x0042c050    740d
@@ -1519,7 +1519,7 @@ _load_variables:         sub                esp, 0x0000069c                     
                          push               0x0000009f                                           // 0x0042c0c0    689f000000
                          push               0x009cc624                                           // 0x0042c0c5    6824c69c00
                          push               0x68                                                 // 0x0042c0ca    6a68
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042c0cc    e81fa60000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042c0cc    e81fa60000
                          add                esp, 0x0c                                            // 0x0042c0d1    83c40c
                          test               eax, eax                                             // 0x0042c0d4    85c0
                          {disp8} je         .Lbl_addr_0x0042c0e3                                 // 0x0042c0d6    740b
@@ -1539,7 +1539,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042c103:    push               0x000000ab                                           // 0x0042c103    68ab000000
                          push               0x009cc624                                           // 0x0042c108    6824c69c00
                          push               0x68                                                 // 0x0042c10d    6a68
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042c10f    e8dca50000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042c10f    e8dca50000
                          add                esp, 0x0c                                            // 0x0042c114    83c40c
                          test               eax, eax                                             // 0x0042c117    85c0
                          {disp8} je         .Lbl_addr_0x0042c128                                 // 0x0042c119    740d
@@ -1581,7 +1581,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042c193:    push               0x0000009f                                           // 0x0042c193    689f000000
                          push               0x009cc624                                           // 0x0042c198    6824c69c00
                          push               0x0000009c                                           // 0x0042c19d    689c000000
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042c1a2    e849a50000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042c1a2    e849a50000
                          add                esp, 0x0c                                            // 0x0042c1a7    83c40c
                          test               eax, eax                                             // 0x0042c1aa    85c0
                          {disp8} je         .Lbl_addr_0x0042c1b9                                 // 0x0042c1ac    740b
@@ -1604,7 +1604,7 @@ _load_variables:         sub                esp, 0x0000069c                     
 .Lbl_addr_0x0042c1de:    push               0x000000ab                                           // 0x0042c1de    68ab000000
                          push               0x009cc624                                           // 0x0042c1e3    6824c69c00
                          push               0x0000009c                                           // 0x0042c1e8    689c000000
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x0042c1ed    e8fea40000
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x0042c1ed    e8fea40000
                          add                esp, 0x0c                                            // 0x0042c1f2    83c40c
                          test               eax, eax                                             // 0x0042c1f5    85c0
                          {disp8} je         .Lbl_addr_0x0042c204                                 // 0x0042c1f7    740b

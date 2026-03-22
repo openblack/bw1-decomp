@@ -4151,7 +4151,7 @@ void __fastcall SetupReactToNewBuilding__8VillagerFP16GameThingWithPosP8Reaction
     asm("push               0x0000066e");                                    // 0x0076605f    686e060000
     asm("push               0x00c24588");                                    // 0x00766064    688845c200
     asm("push               0x0000012c");                                    // 0x00766069    682c010000
-    asm("call               ?__nw@Base@@SAPAXK@Z");                          // 0x0076606e    e87d06cdff
+    asm("call               ??2Base@@SAPAXIPBDI@Z");                          // 0x0076606e    e87d06cdff
     asm("add                esp, 0x0c");                                     // 0x00766073    83c40c
     asm("test               eax, eax");                                      // 0x00766076    85c0
     asm("{disp32} je        LAB__addr_0x0076611e");                          // 0x00766078    0f84a0000000
@@ -5585,7 +5585,7 @@ void __fastcall SetupReactToTownCelebration__8VillagerFP16GameThingWithPosP8Reac
     asm("push               0x00000877");                                    // 0x00766ff6    6877080000
     asm("push               0x00c24588");                                    // 0x00766ffb    688845c200
     asm("push               0x0000012c");                                    // 0x00767000    682c010000
-    asm("call               ?__nw@Base@@SAPAXK@Z");                          // 0x00767005    e8e6f6ccff
+    asm("call               ??2Base@@SAPAXIPBDI@Z");                          // 0x00767005    e8e6f6ccff
     asm("add                esp, 0x0c");                                     // 0x0076700a    83c40c
     asm("test               eax, eax");                                      // 0x0076700d    85c0
     asm("{disp32} je        LAB__addr_0x00767173");                          // 0x0076700f    0f845e010000
@@ -5642,7 +5642,7 @@ void __fastcall SetupReactToTownCelebration__8VillagerFP16GameThingWithPosP8Reac
     asm("push               0x00c24588");                                    // 0x0076709e    688845c200
     asm("push               0x0000012c");                                    // 0x007670a3    682c010000
     asm("{disp8} mov        dword ptr [esp + 0x40], eax");                   // 0x007670a8    89442440
-    asm("call               ?__nw@Base@@SAPAXK@Z");                          // 0x007670ac    e83ff6ccff
+    asm("call               ??2Base@@SAPAXIPBDI@Z");                          // 0x007670ac    e83ff6ccff
     asm("mov.s              esi, eax");                                      // 0x007670b1    8bf0
     asm("add                esp, 0x20");                                     // 0x007670b3    83c420
     asm("test               esi, esi");                                      // 0x007670b6    85f6

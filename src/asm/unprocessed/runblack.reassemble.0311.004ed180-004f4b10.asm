@@ -6,7 +6,7 @@
 .extern ?SamplePlayAnimEffect@GAudio@@QAEIPAXMPAJHPAULH_AudioBank@@HMM@Z
 .extern ??0LHFile@@QAE@XZ
 .extern ?ResetData@LHFile@@QAEIXZ
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern @__ct__11CitadelPartFRC9MapCoordsPC16GCitadelPartInfoP7Citadelfffi@36
@@ -2518,7 +2518,7 @@ _jmp_addr_0x004eef60:    push               esi                                 
                          push               0x24                                                 // 0x004eef62    6a24
                          push               0x00be0198                                           // 0x004eef64    689801be00
                          push               0x00000098                                           // 0x004eef69    6898000000
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x004eef6e    e87d77f4ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x004eef6e    e87d77f4ff
                          add                esp, 0x0c                                            // 0x004eef73    83c40c
                          test               eax, eax                                             // 0x004eef76    85c0
                          {disp8} je         .Lbl_addr_0x004eefba                                 // 0x004eef78    7440
@@ -2562,7 +2562,7 @@ _jmp_addr_0x004eef60:    push               esi                                 
                          push               0x00be0198                                           // 0x004eefc7    689801be00
                          push               0x4c                                                 // 0x004eefcc    6a4c
                          mov.s              esi, ecx                                             // 0x004eefce    8bf1
-                         call               ?__nw@Base@@SAPAXK@Z                                 // 0x004eefd0    e81b77f4ff
+                         call               ??2Base@@SAPAXIPBDI@Z                                 // 0x004eefd0    e81b77f4ff
                          mov.s              edi, eax                                             // 0x004eefd5    8bf8
                          add                esp, 0x0c                                            // 0x004eefd7    83c40c
                          test               edi, edi                                             // 0x004eefda    85ff

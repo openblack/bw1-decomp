@@ -543,7 +543,7 @@ struct Villager* __cdecl Create__8VillagerFRC9MapCoordsPC13GVillagerInfoUli(stru
     asm("push               0x000000f3");                                     // 0x0074fc25    68f3000000
     asm("push               0x00c235dc");                                     // 0x0074fc2a    68dc35c200
     asm("push               0x00000130");                                     // 0x0074fc2f    6830010000
-    asm("call               ?__nw@Base@@SAPAXK@Z");                           // 0x0074fc34    e8b76aceff
+    asm("call               ??2Base@@SAPAXIPBDI@Z");                           // 0x0074fc34    e8b76aceff
     asm("add                esp, 0x0c");                                      // 0x0074fc39    83c40c
     asm("test               eax, eax");                                       // 0x0074fc3c    85c0
     asm("{disp8} je         LAB__addr_0x0074fc63");                           // 0x0074fc3e    7423

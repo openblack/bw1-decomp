@@ -8,7 +8,7 @@
 .extern @SetDestinationWithSpeedAndTime__6ZoomerFfff@20
 .extern _jmp_addr_0x00418a50
 .extern @PlaySoundEffect__6GAudioFP4BaseUlUlUlii19AUDIO_SFX_BANK_TYPE@36
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern ??1Base@@UAE@XZ
 .extern ??3Base@@SAXPAXI@Z
 .extern @SetPosition__6ZoomerFf@12
@@ -20432,7 +20432,7 @@ _jmp_addr_0x00682950:    {disp32} mov       eax, dword ptr [_game]              
                          push               0x2e                                          // 0x00682974    6a2e
                          push               0x00c023e4                                    // 0x00682976    68e423c000
                          push               0x60                                          // 0x0068297b    6a60
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x0068297d    e86e3ddbff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x0068297d    e86e3ddbff
                          add                esp, 0x0c                                     // 0x00682982    83c40c
                          test               eax, eax                                      // 0x00682985    85c0
                          {disp8} je         .Lbl_addr_0x006829cb                          // 0x00682987    7442

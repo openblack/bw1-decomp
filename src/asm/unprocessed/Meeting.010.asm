@@ -105,7 +105,7 @@ _globl_ct_0x00606020:    {disp32} jmp       .Lbl_addr_0x00606030                
                          push               0x14                                          // 0x006060ca    6a14
                          push               0x00bf41e0                                    // 0x006060cc    68e041bf00
                          push               0x0000012c                                    // 0x006060d1    682c010000
-                         call               ?__nw@Base@@SAPAXK@Z                          // 0x006060d6    e81506e3ff
+                         call               ??2Base@@SAPAXIPBDI@Z                         // 0x006060d6    e81506e3ff
                          add                esp, 0x0c                                     // 0x006060db    83c40c
                          cmp.s              eax, ebx                                      // 0x006060de    3bc3
                          {disp8} je         .Lbl_addr_0x0060610a                          // 0x006060e0    7428

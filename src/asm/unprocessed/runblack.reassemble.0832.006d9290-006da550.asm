@@ -6,7 +6,7 @@
 .extern ??$WriteIt@I@GameOSFile@@QAEXAAI@Z
 .extern ??$ReadIt@H@GameOSFile@@QAEXAAI@Z
 .extern _jmp_addr_0x00419d10
-.extern ?__nw@Base@@SAPAXK@Z
+.extern ??2Base@@SAPAXIPBDI@Z
 .extern _jmp_addr_0x004640a0
 .extern _jmp_addr_0x004e9590
 .extern @__ct__5FlockFRC9MapCoordsPC10GFlockInfoP7GPlayerUl@24
@@ -363,7 +363,7 @@ _jmp_addr_0x006d94a0:    sub               esp, 0x1c                            
                          push              0x00c09908                                    // 0x006d95a6    680899c000
                          push              0x00000090                                    // 0x006d95ab    6890000000
                          {disp32} mov      dword ptr [esi + 0x000000e0], eax             // 0x006d95b0    8986e0000000
-                         call              ?__nw@Base@@SAPAXK@Z                          // 0x006d95b6    e835d1d5ff
+                         call              ??2Base@@SAPAXIPBDI@Z                         // 0x006d95b6    e835d1d5ff
                          mov.s             edi, eax                                      // 0x006d95bb    8bf8
                          xor.s             ebp, ebp                                      // 0x006d95bd    33ed
                          add               esp, 0x14                                     // 0x006d95bf    83c414
