@@ -48,7 +48,7 @@ _globl_ct_0x00606240:    {disp32} mov       cl, byte ptr [_DAT_00fac934]        
                          call               ??0GameThing@@QAE@XZ                          // 0x00606275    e89697f6ff
                          {disp8} lea        edi, dword ptr [esi + 0x14]                   // 0x0060627a    8d7e14
                          mov.s              ecx, edi                                      // 0x0060627d    8bcf
-                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x0060627f    e8dcb8e3ff
+                         call               ??0MapCoords@@QAE@XZ                     // 0x0060627f    e8dcb8e3ff
                          xor.s              ebx, ebx                                      // 0x00606284    33db
                          {disp8} mov        dword ptr [esi + 0x20], ebx                   // 0x00606286    895e20
                          mov.s              ecx, esi                                      // 0x00606289    8bce

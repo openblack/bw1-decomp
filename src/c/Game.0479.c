@@ -30,18 +30,18 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("mov.s              ecx, edi");                                      // 0x0054b297    8bcf
     asm("mov                byte ptr [edi], bl");                            // 0x0054b299    881f
     asm("{disp8} mov        dword ptr [edi + 0x04], ebx");                   // 0x0054b29b    895f04
-    asm("call               ??0MapCoords@@QAE@ABU0@@Z ");                    // 0x0054b29e    e8bd68efff
+    asm("call               ??0MapCoords@@QAE@XZ ");                    // 0x0054b29e    e8bd68efff
     asm("mov.s              ecx, edi");                                      // 0x0054b2a3    8bcf
-    asm("call               ??0MapCoords@@QAE@ABU0@@Z ");                    // 0x0054b2a5    e8b668efff
+    asm("call               ??0MapCoords@@QAE@XZ ");                    // 0x0054b2a5    e8b668efff
     asm("mov.s              ecx, edi");                                      // 0x0054b2aa    8bcf
     asm("call               _jmp_addr_0x0054b910");                          // 0x0054b2ac    e85f060000
     asm("{disp32} lea       edi, dword ptr [esi + 0x00205a68]");             // 0x0054b2b1    8dbe685a2000
     asm("mov.s              ecx, edi");                                      // 0x0054b2b7    8bcf
     asm("call               _jmp_addr_0x0054b8f0");                          // 0x0054b2b9    e832060000
     asm("mov.s              ecx, edi");                                      // 0x0054b2be    8bcf
-    asm("call               ??0MapCoords@@QAE@ABU0@@Z ");                    // 0x0054b2c0    e89b68efff
+    asm("call               ??0MapCoords@@QAE@XZ ");                    // 0x0054b2c0    e89b68efff
     asm("{disp32} lea       ecx, dword ptr [esi + 0x00205a74]");             // 0x0054b2c5    8d8e745a2000
-    asm("call               ??0MapCoords@@QAE@ABU0@@Z ");                    // 0x0054b2cb    e89068efff
+    asm("call               ??0MapCoords@@QAE@XZ ");                    // 0x0054b2cb    e89068efff
     asm("{disp32} mov       dword ptr [esi + 0x00205b7c], ebx");             // 0x0054b2d0    899e7c5b2000
     asm("{disp32} mov       dword ptr [esi + 0x00205b78], ebx");             // 0x0054b2d6    899e785b2000
     asm("{disp32} mov       dword ptr [esi + 0x00205b80], ebx");             // 0x0054b2dc    899e805b2000
@@ -175,7 +175,7 @@ struct GGame* __fastcall __ct__5GGameFv(struct GGame* this)
     asm("{disp32} mov       dword ptr [esi + 0x0025008c], ebx");             // 0x0054b5c7    899e8c002500
     asm("{disp32} mov       dword ptr [esi + 0x00250088], ebx");             // 0x0054b5cd    899e88002500
     asm("{disp32} mov       dword ptr [esi + 0x00250084], ebx");             // 0x0054b5d3    899e84002500
-    asm("call               ??0MapCoords@@QAE@ABU0@@Z ");                    // 0x0054b5d9    e88265efff
+    asm("call               ??0MapCoords@@QAE@XZ ");                    // 0x0054b5d9    e88265efff
     asm("{disp32} lea       ecx, dword ptr [esi + 0x002502a8]");             // 0x0054b5de    8d8ea8022500
     asm("call               ??0GKeyBuffer@@QAE@XZ");                         // 0x0054b5e4    e847030000
     asm("{disp32} lea       ecx, dword ptr [esi + 0x00250310]");             // 0x0054b5e9    8d8e10032500

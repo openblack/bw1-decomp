@@ -67,13 +67,8 @@ struct MapCoords
 
     // Constructors
 
-    // win1.41 inlined mac 1006e040 MapCoords::MapCoords(void)
-    inline MapCoords()
-    {
-      x.full = 0;
-      z.full = 0;
-      altitude = 0.0;
-    }
+    // win1.41 00441b60 mac 1006e040 MapCoords::MapCoords(void)
+    MapCoords();
     // win1.41 006031b0 mac 1004feb0 MapCoords::MapCoords(long, long, float)
     MapCoords(long x, long z, float altitude);
     // win1.41 006031d0 mac 10324c60 MapCoords::MapCoords(char *)
@@ -85,8 +80,6 @@ struct MapCoords
       z = other.z;
       altitude = other.altitude;
     }
-    // win1.41 00441b60 mac inlined MapCoords::MapCoords(MapCoords const &)
-    MapCoords& operator=(const MapCoords& other);
     // win1.41 00603160 mac 1006a450 MapCoords::MapCoords(LHPoint const &)
     MapCoords(const LHPoint& point);
 

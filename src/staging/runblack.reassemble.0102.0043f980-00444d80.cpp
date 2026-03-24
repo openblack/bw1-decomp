@@ -100,9 +100,11 @@ GCamera::~GCamera()
 }
 
 // win1.41 00441b60 mac 1006e040 MapCoords::MapCoords(void)
-MapCoords& MapCoords::operator=(const MapCoords& coords)
+MapCoords::MapCoords()
 {
-    return *this;
+    x.full = 0;
+    z.full = 0;
+    altitude = 0.0f;
 }
 
 // win1.41 00441b70 mac 1019a650 GCamera::CantExitCurrentMode(void)
