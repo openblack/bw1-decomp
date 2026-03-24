@@ -3,7 +3,7 @@
 
 .extern rdata_bytes
 .extern data_bytes
-.extern ??0MapCoords@@QAE@ABU0@@Z
+.extern ??0MapCoords@@QAE@XZ
 .extern @__as__7Point2DFRC7Point2D@12
 .extern _jmp_addr_0x0051f640
 .extern _jmp_addr_0x0051fa40

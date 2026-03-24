@@ -71,7 +71,7 @@ _globl_ct_0x00606020:    {disp32} jmp       .Lbl_addr_0x00606030                
                          call               ??0GameThing@@QAE@XZ                          // 0x00606055    e8b699f6ff
                          {disp8} lea        edi, dword ptr [esi + 0x14]                   // 0x0060605a    8d7e14
                          mov.s              ecx, edi                                      // 0x0060605d    8bcf
-                         call               ??0MapCoords@@QAE@ABU0@@Z                     // 0x0060605f    e8fcbae3ff
+                         call               ??0MapCoords@@QAE@XZ                     // 0x0060605f    e8fcbae3ff
                          xor.s              ebx, ebx                                      // 0x00606064    33db
                          {disp8} mov        dword ptr [esi + 0x20], ebx                   // 0x00606066    895e20
                          mov.s              ecx, esi                                      // 0x00606069    8bce
