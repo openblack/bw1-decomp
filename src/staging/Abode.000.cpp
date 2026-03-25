@@ -11,6 +11,7 @@ GAbodeInfo infossss[0x93];
 // win1.41 00401350 mac 1033b330 Abode::Abode(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
 Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* _town, float y_angle, float scale, float food, int wood)
     : MultiMapFixed(coords, (const GMultiMapFixedInfo*)info, y_angle, scale, food, wood)
+    , drinking_water(0, 0)
 {
     SetToZero();
     if (_town)
