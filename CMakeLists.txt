@@ -108,8 +108,8 @@ set(CMAKE_DEPFILE_FLAGS_C "")
 # Use /Zd (line number debugging only) instead of /Zi because limit is exceeded
 # This is a limitation of pdb format at the time.
 set(CMAKE_CXX_FLAGS_DEBUG "/Zd /MT /GR")
-set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/Zd /MT /GR /O2")
-set(CMAKE_CXX_FLAGS_RELEASE "/MT /GR /O2")
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "/Zd /MT /GR /O2 /Ob1")
+set(CMAKE_CXX_FLAGS_RELEASE "/MT /GR /O2 /Ob1")
 
 find_program(LLVM_STRIP_EXECUTABLE NAMES llvm-strip REQUIRED)
 find_program(LLVM_AR_EXECUTABLE NAMES llvm-ar REQUIRED)
