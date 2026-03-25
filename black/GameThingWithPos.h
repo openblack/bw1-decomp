@@ -7,7 +7,8 @@
 
 #include <chlasm/Enum.h> /* For enum DEATH_REASON, enum IMPRESSIVE_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
-#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <lionhead/lhlib/ver5.0/LHFastPointer.h>
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h>
 #include <reversing_utils/re_common.h> /* For bool32_t */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
@@ -38,7 +39,7 @@ class GameThingWithPos: public GameThing
 {
 public:
     MapCoords coords; /* 0x14 */
-    Object* map_child; /* 0x20 */
+    LHFastPointer<Object> map_child; /* 0x20 */
     uint16_t field_0x24;
     uint8_t field_0x26;
 
@@ -576,7 +577,10 @@ public:
     // Constructors
 
     // win1.41 0055d050 mac 101bb2c0 GameThingWithPos::GameThingWithPos(void)
-    GameThingWithPos();
+    GameThingWithPos()
+    {
+        SetToZero();
+    }
 
     // Non-virtual Destructors
 

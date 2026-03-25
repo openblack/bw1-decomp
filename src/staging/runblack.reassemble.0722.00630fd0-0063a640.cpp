@@ -94,7 +94,15 @@ GObjectInfo::~GObjectInfo()
 
 // win1.41 00636450 mac 103d9480 Object::Object(void)
 Object::Object()
+    : GameThingWithPos()
+    , info(NULL)
+    , obj_coords(0, 0)
 {
+    // Using asm so that the virtual table gets set first
+    __asm mov [esi + 0x38], edi; // map_parent.Clear(), in mac version this is LHFastPointer
+    fire_effect.Clear();
+    field_0x24 = 0;
+    game_3d_object = NULL;
 }
 
 // win1.41 006364a0 mac 103d8f50 Object::_dt(void)

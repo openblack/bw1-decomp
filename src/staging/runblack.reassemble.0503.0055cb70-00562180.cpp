@@ -323,10 +323,10 @@ SpellWater::~SpellWater()
 {
 }
 
-// win1.41 0055d050 mac 101bb2c0 GameThingWithPos::GameThingWithPos(void)
-GameThingWithPos::GameThingWithPos()
-{
-}
+// // win1.41 0055d050 mac 101bb2c0 GameThingWithPos::GameThingWithPos(void)
+// GameThingWithPos::GameThingWithPos()
+// {
+// }
 
 // win1.41 0055d080 mac 103bdd30 MobileObject::_dt(void)
 MobileObject::~MobileObject()

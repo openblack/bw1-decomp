@@ -11,7 +11,8 @@
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <lionhead/lh3dlib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
-#include <lionhead/lhlib/ver5.0/LHLinkedList.h> /* For DECLARE_LH_LINKED_LIST */
+#include <lionhead/lhlib/ver5.0/LHLinkedList.h>
+#include <lionhead/lhlib/ver5.0/LHPTR.h>
 #include <reversing_utils/re_common.h> /* For bool32_t */
 #include <reversing_utils/re_rtti.h> /* For struct RTTIBaseClassArray, struct RTTIBaseClassDescriptor, struct RTTIClassHierarchyDescriptor, struct RTTICompleteObjectLocator, struct RTTITypeDescriptor */
 
@@ -68,10 +69,10 @@ class Object: public GameThingWithPos
 public:
     const GObjectInfo* info; /* 0x28 */
     MapCoords obj_coords;
-    Object* map_parent; /* 0x38 */
+    LHPTR<Object> map_parent; /* 0x38 */
     uint32_t field_0x3c;
     Game3DObject* game_3d_object; /* 0x40 */
-    FireEffect* fire_effect;
+    LHPTR<FireEffect> fire_effect;
     float life;
     float y_angle;
     float scale; /* 0x50 */
