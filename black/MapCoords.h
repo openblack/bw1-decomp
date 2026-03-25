@@ -69,6 +69,13 @@ struct MapCoords
 
     // win1.41 00441b60 mac 1006e040 MapCoords::MapCoords(void)
     MapCoords();
+    // win1.41 inline mac inline MapCoords::MapCoords(long, long)
+    MapCoords(long _x, long _z)
+    {
+      x.full = _x;
+      z.full = _z;
+      altitude = 0.0f;
+    }
     // win1.41 006031b0 mac 1004feb0 MapCoords::MapCoords(long, long, float)
     MapCoords(long x, long z, float altitude);
     // win1.41 006031d0 mac 10324c60 MapCoords::MapCoords(char *)
