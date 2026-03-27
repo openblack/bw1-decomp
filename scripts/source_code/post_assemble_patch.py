@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Optional, Union
 
 import pefile
+import struct
 
 
 RICH_HEADER_MASK = 0x0a8ee120
@@ -76,6 +77,8 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
     offset_for_rich_header = 0xc0
     rich_header_addr = 0x80
     rich_header_size = 0xa8
+    header_section_size = 0x1000
+    safedisc_version = (2, 60, 52) # 2.60.52
     timestamp = datetime(2002, 6, 18, 6, 13, 22, tzinfo=timezone.utc)
     last_text_layout_asm_addr = 0x008a895d
     header_characteristics_bits_to_clear = pefile.IMAGE_CHARACTERISTICS['IMAGE_FILE_DEBUG_STRIPPED']
@@ -90,11 +93,9 @@ def patch_black(input_path: Path, output_path: Path, turn_off_fullscreen: bool, 
             (0x390, "Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Build 001120  : C:\\Dev\\libs\\LIONHEAD\\LH3DLIB\\DEVELOPMENT\\LH3DP3.cpp : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -MT -W3 -GX -Zi -O2 -Ob1 -D NDEBUG -D _LH_LIB_RELEASE -D WIN32 -D _WINDOWS -D _LH_3D_LIB_ -D _GOLD -D _GOLD_ -D _USE_INTEL_COMPILER -FAcs -FaGold/ -FoGold/ -FdGold/ -FD -QxiW -G7 -c"[24:]),
             (0x503, "Intel(R) C++ Compiler for 32-bit applications, Version 5.0.1 Beta  Build 010214Z  : cpu_disp.c : -I../ -Zl -Zp8 -DVX -DWMT -DMULTI_THREADED -Focpu_disp_mt.obj -c"),
             (0x5a5, "Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Beta  Build 001024  : C:\\PROJECTS\\MathTest\\AMaths.c : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -ML -W3 -GX -O2 -D WIN32 -D NDEBUG -D _WINDOWS -D _USE_INTEL_COMPILER -D _KATMAI_STEP_B -FpRelease/AMaths.pch -YX -FoRelease/ -FdRelease/ -FD -QxiMKW -c"),
-            # Probably random garbage, but easy to just encode as string
+            # Safedisc magic string and version right before section end
             (0xfd4, "BoG_ *90.0&!!  Yy>"),
-            (0xff4, '\2'),
-            (0xff8, "<"),
-            (0xffc, "4"),
+            (header_section_size - 0xc, struct.pack('<3I', *safedisc_version)),
             # libcmt mismatch for the __Strftime function in strftime.obj (possible different version of msvc libs)
             (0x003cbe23, b'U\x8b\xecQQ\x8bE\x0cSVW\xbf\xc8\xdc\xfa\x00\x89E\xfcW\xff\x15\x10\x93\x8a\x00\x8b\x1d\x14\x93\x8a\x003\xf695\xc4\xdc\xfa\x00t\x14W\xff\xd3j\x13\xe8_\xf8\xff\xffY\xc7E\xf8\x01\x00\x00\x00\xeb\x03\x89u\xf8\x8bE\x18;\xc6u\x05\xa18\xdd\xc2\x009u\xfc\x89E\x18vw\x8bu\x10\x8a\x06\x84\xc0tn<%t2\x8b\x15 \xdb\xc2\x00\x0f\xb6\xc8\xf6DJ\x01\x80t\x12\x83}\xfc\x01v\x0c\x8bM\x08\x88\x01\xffE\x08F\xffM\xfc\x8bM\x08\x8a\x06\x88\x01\xffE\x08F\xffM\xfc\xeb2\x83%\xb0\xcc\xfa\x00\x00F\x80>#u\x0b\xc7\x05\xb0\xcc\xfa\x00\x01\x00\x00\x00F\xffu\x18\x8dE\xfcP\x8dE\x08P\x8a\x06\xffu\x14P\xe88\x00\x00\x00\x83\xc4\x14F\x83}\xfc\x00w\x8c\x83}\xf8\x00t\nj\x13\xe8\x1b\xf8\xff\xffY\xeb\x03W\xff\xd3\x83}\xfc\x00_^[v\x0e\x8bE\x08\x80 \x00\x8bE\x0c+E\xfc\xc9\xc33\xc0\xc9\xc3'),
             # libcmt padding is 0xCC
