@@ -32,7 +32,7 @@ NinjaPathOrPaths = Union[NinjaPath, NinjaPaths]
 
 
 def escape_path(word: str) -> str:
-    return word.replace("$ ", "$$ ").replace(" ", "$ ").replace(":", "$:")
+    return word.replace("$", "$$").replace(" ", "$ ").replace(":", "$:")
 
 
 class Writer(object):

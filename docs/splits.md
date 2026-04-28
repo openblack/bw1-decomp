@@ -2,21 +2,22 @@
 
 This file contains file splits for a module.
 
-Example:
+Example (PE/COFF, MSVC 6):
 
 ```yaml
 Sections:
-	.text       type:code align:32
-	.ctors      type:rodata align:32
-	.data       type:data align:32
-	.bss        type:bss align:32
+	.text       type:code align:4096
+	.rdata      type:rodata align:4096
+	.data       type:data align:4096
+	.data1      type:data align:4096
+	SELFMOD     type:data align:4096
+	.rsrc       type:rodata align:4096
 
-path/to/file.cpp:
-	.text       start:0x80047E5C end:0x8004875C
-	.ctors      start:0x803A54C4 end:0x803A54C8
-	.data       start:0x803B1B40 end:0x803B1B60
-	.bss        start:0x803DF828 end:0x803DFA8C
-	.bss        start:0x8040D4AC end:0x8040D4D8 common
+Black/Abode.cpp:
+	.text       start:0x00401000 end:0x00405070
+	.rdata      start:0x008A99DC end:0x008AB278
+	.rdata      start:0x009A62D8 end:0x009A6570
+	.data       start:0x00C3C680 end:0x00C4CC80
 ```
 
 ## Header
@@ -30,7 +31,7 @@ Sections:
 
 - `type:` The section type. `code`, `data`, `rodata` or `bss`.
 - `align:` The section alignment in bytes.
-- `vaddr:` (REL only) The fixed virtual address of the section. When set, split and symbol addresses are written as absolute addresses.
+- `vaddr:` (relocatable modules only) The fixed virtual address of the section. When set, split and symbol addresses are written as absolute addresses.
 
 ## Files
 
@@ -44,11 +45,6 @@ path/to/file.cpp: [file attributes]
   This corresponds to an entry in `configure.py` for specifying compiler flags and other options.
 
 ### File attributes
-
-- `comment:` Overrides the `mw_comment_version` setting in [`config.yml`](/config/GAMEID/config.example.yml) for this file. See [Comment section](comment_section.md).
-  - `comment:0` is used to disable `.comment` section generation for a file that wasn't compiled with `mwcc`.  
-  Example: `TRK_MINNOW_DOLPHIN/ppc/Export/targsupp.s: comment:0`  
-  This file was assembled and only contains label symbols. Generating a `.comment` section for it will crash `mwld`.
 
 - `order:` Allows influencing the resolved link order of objects. This is **not required**, as decomp-toolkit will generate the link order automatically. This can be used to fine-tune the link order for ambiguous cases.  
   Example:
@@ -66,9 +62,8 @@ path/to/file.cpp: [file attributes]
 
 ### Section attributes
 
-- `start:` The start address of the section within the file. For DOLs, this is the absolute address (e.g. `0x80001234`). For RELs, this is the section-relative address (e.g. `0x1234`).
+- `start:` The start address of the section within the file. Absolute virtual address for the platform (e.g. `0x00401000` for a PE `.text` section based at `0x00400000`).
 - `end:` The end address of the section within the file.
 - `align:` Specifies the alignment of the section. If not specified, the default alignment for the section is used.
-- `rename:` Writes this section under a different name when generating the split object. Used for `.ctors$10`, etc.
-- `common` Only valid for `.bss`. See [Common BSS](common_bss.md).
+- `rename:` Writes this section under a different name when generating the split object.
 - `skip` Skips this data when writing the object file. Used for ignoring data that's linker-generated.

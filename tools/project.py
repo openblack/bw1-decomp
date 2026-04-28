@@ -228,6 +228,11 @@ class ProjectConfig:
         self.progress_data_fancy_frac: int = 0
         self.progress_data_fancy_item: str = ""
 
+        # PE/COFF target support
+        self.platform: str = "dol"  # "dol" or "pe"
+        self.lld_link_path: Optional[Path] = None  # Path to lld-link binary (if not in PATH)
+        self.lld_link_tag: Optional[str] = None  # openblack/llvm-project release tag; if set, download lld-link
+
     def validate(self) -> None:
         required_attrs = [
             "build_dir",
@@ -236,10 +241,11 @@ class ProjectConfig:
             "check_sha_path",
             "config_path",
             "ldflags",
-            "linker_version",
             "libs",
             "version",
         ]
+        if self.platform == "dol":
+            required_attrs.append("linker_version")
         for attr in required_attrs:
             if getattr(self, attr) is None:
                 sys.exit(f"ProjectConfig.{attr} missing")
@@ -478,7 +484,10 @@ def generate_build_ninja(
     n.variable("ldflags", make_flags_str(config.ldflags))
     if config.linker_version is None:
         sys.exit("ProjectConfig.linker_version missing")
-    n.variable("mw_version", Path(config.linker_version))
+    elif config.platform == "pe":
+        n.variable("compiler_version", Path(config.linker_version))
+    else:
+        n.variable("mw_version", Path(config.linker_version))
     n.variable("objdiff_report_args", make_flags_str(config.progress_report_args))
     n.newline()
 
@@ -580,6 +589,7 @@ def generate_build_ninja(
     else:
         sys.exit("ProjectConfig.objdiff_tag missing")
 
+    sjiswrap = None
     if config.sjiswrap_path:
         sjiswrap = config.sjiswrap_path
     elif config.sjiswrap_tag:
@@ -593,8 +603,6 @@ def generate_build_ninja(
                 "tag": config.sjiswrap_tag,
             },
         )
-    else:
-        sys.exit("ProjectConfig.sjiswrap_tag missing")
 
     wrapper = config.compiler_wrapper()
     if wrapper is not None and config.use_wibo():
@@ -614,20 +622,35 @@ def generate_build_ninja(
 
     wrapper_cmd = f"{wrapper} " if wrapper else ""
 
-    compilers = config.compilers()
+    compilers: Optional[Path] = config.compilers()
     compilers_implicit: Optional[Path] = None
-    if config.compilers_path is None and config.compilers_tag is not None:
+    if compilers is not None and config.compilers_path is None and config.compilers_tag is not None:
         compilers_implicit = compilers
-        n.build(
-            outputs=compilers,
-            rule="download_tool",
-            implicit=download_tool,
-            variables={
-                "tool": "compilers",
-                "tag": config.compilers_tag,
-            },
-        )
+        if config.platform == "pe":
+            # For PE, download MSVC to a version-specific subdirectory so cl.exe
+            # ends up at build/compilers/<linker_version>/cl.exe
+            msvc_dir = compilers / str(config.linker_version)
+            n.build(
+                outputs=msvc_dir,
+                rule="download_tool",
+                implicit=download_tool,
+                variables={
+                    "tool": "compilers_msvc",
+                    "tag": config.compilers_tag,
+                },
+            )
+        else:
+            n.build(
+                outputs=compilers,
+                rule="download_tool",
+                implicit=download_tool,
+                variables={
+                    "tool": "compilers",
+                    "tag": config.compilers_tag,
+                },
+            )
 
+    binutils = None
     binutils_implicit = None
     if config.binutils_path:
         binutils = config.binutils_path
@@ -643,8 +666,29 @@ def generate_build_ninja(
                 "tag": config.binutils_tag,
             },
         )
-    else:
-        sys.exit("ProjectConfig.binutils_tag missing")
+
+    lld_link: Optional[Path] = None
+    lld_link_implicit: List[Optional[Path]] = []
+    if config.platform == "pe":
+        if config.lld_link_path:
+            lld_link = config.lld_link_path
+            lld_link_implicit = [config.lld_link_path]
+        elif config.lld_link_tag:
+            llvm_dir = build_tools_path / "llvm"
+            lld_link = llvm_dir / "bin" / f"lld-link{EXE}"
+            lld_link_implicit = [lld_link]
+            n.build(
+                outputs=llvm_dir,
+                rule="download_tool",
+                implicit=download_tool,
+                implicit_outputs=[lld_link],
+                variables={
+                    "tool": "llvm",
+                    "tag": config.lld_link_tag,
+                },
+            )
+        else:
+            lld_link = Path("lld-link")
 
     n.newline()
 
@@ -655,14 +699,15 @@ def generate_build_ninja(
     n.build(
         outputs="tools",
         rule="phony",
-        inputs=[dtk, sjiswrap, wrapper, compilers, binutils, objdiff],
+        inputs=[x for x in [dtk, sjiswrap, wrapper, compilers, binutils, objdiff, lld_link if lld_link_implicit else None] if x is not None],
     )
     n.newline()
 
     ###
     # Build rules
     ###
-    compiler_path = compilers / "$mw_version"
+    # MWCC/MWLD strings are only emitted by the dol path; PE skips them.
+    compiler_path = compilers / "$mw_version" if compilers is not None else Path("compilers/$mw_version")
 
     # MWCC
     mwcc = compiler_path / "mwcceppc.exe"
@@ -695,14 +740,18 @@ def generate_build_ninja(
     mwld_implicit: List[Optional[Path]] = [compilers_implicit or mwld, wrapper_implicit]
 
     # GNU as
-    gnu_as = binutils / f"powerpc-eabi-as{EXE}"
-    gnu_as_cmd = (
-        f"{CHAIN}{gnu_as} $asflags -o $out $in" + f" && {dtk} elf fixup $out $out"
-    )
-    gnu_as_implicit = [binutils_implicit or gnu_as, dtk]
-    # As a workaround for https://github.com/encounter/dtk-template/issues/51
-    # include macros.inc directly as an implicit dependency
-    gnu_as_implicit.append(build_path / "include" / "macros.inc")
+    if binutils is not None:
+        gnu_as = binutils / f"powerpc-eabi-as{EXE}"
+        gnu_as_cmd = (
+            f"{CHAIN}{gnu_as} $asflags -o $out $in" + f" && {dtk} elf fixup $out $out"
+        )
+        gnu_as_implicit = [binutils_implicit or gnu_as, dtk]
+        # As a workaround for https://github.com/encounter/dtk-template/issues/51
+        # include macros.inc directly as an implicit dependency
+        gnu_as_implicit.append(build_path / "include" / "macros.inc")
+    else:
+        gnu_as_cmd = ""
+        gnu_as_implicit = []
 
     if os.name != "nt":
         transform_dep = config.tools_dir / "transform_dep.py"
@@ -719,93 +768,129 @@ def generate_build_ninja(
         mwcc_extab_implicit.append(transform_dep)
         mwcc_sjis_extab_implicit.append(transform_dep)
 
-    n.comment("Link ELF file")
-    n.rule(
-        name="link",
-        command=mwld_cmd,
-        description="LINK $out",
-        rspfile="$out.rsp",
-        rspfile_content="$in_newline",
-    )
-    n.newline()
+    if config.platform == "pe":
+        n.comment("Link PE (lld-link)")
+        n.rule(
+            name="link",
+            command=f"{lld_link} @$ldscript $ldflags /OUT:$out @$out.rsp",
+            description="LINK $out",
+            rspfile="$out.rsp",
+            rspfile_content="$in_newline",
+        )
+        n.newline()
 
-    n.comment("Generate DOL")
-    n.rule(
-        name="elf2dol",
-        command=f"{dtk} elf2dol $in $out",
-        description="DOL $out",
-    )
-    n.newline()
+        # CL (MSVC-compatible: MSVC cl.exe or clang-cl)
+        compiler_path = compilers / "$compiler_version" if compilers is not None else None
+        cl = (compiler_path / "cl.exe") if compiler_path is not None else Path("cl.exe")
+        cl_implicit: List[Optional[Path]] = [compilers_implicit or cl if compilers is not None else None, wrapper_implicit]
 
-    n.comment("MWCC build")
-    n.rule(
-        name="mwcc",
-        command=mwcc_cmd,
-        description="MWCC $out",
-        depfile="$basefile.d",
-        deps="gcc",
-    )
-    n.newline()
+        n.comment("CL build (MSVC / clang-cl)")
+        n.rule(
+            name="cl",
+            command=f"{wrapper_cmd}{cl} /nologo $cflags /c $in /Fo$out",
+            description="CL $out",
+        )
+        n.newline()
 
-    n.comment("MWCC build (with UTF-8 to Shift JIS wrapper)")
-    n.rule(
-        name="mwcc_sjis",
-        command=mwcc_sjis_cmd,
-        description="MWCC $out",
-        depfile="$basefile.d",
-        deps="gcc",
-    )
-    n.newline()
+        if gnu_as_cmd:
+            n.comment("Assemble asm")
+            n.rule(
+                name="as",
+                command=gnu_as_cmd,
+                description="AS $out",
+            )
+            n.newline()
+    else:
+        lld_link_implicit = []
+        cl_implicit = []
 
-    n.comment("MWCC build (with extab post-processing)")
-    n.rule(
-        name="mwcc_extab",
-        command=mwcc_extab_cmd,
-        description="MWCC $out",
-        depfile="$basefile.d",
-        deps="gcc",
-    )
-    n.newline()
+        n.comment("Link ELF file")
+        n.rule(
+            name="link",
+            command=mwld_cmd,
+            description="LINK $out",
+            rspfile="$out.rsp",
+            rspfile_content="$in_newline",
+        )
+        n.newline()
 
-    n.comment("MWCC build (with UTF-8 to Shift JIS wrapper and extab post-processing)")
-    n.rule(
-        name="mwcc_sjis_extab",
-        command=mwcc_sjis_extab_cmd,
-        description="MWCC $out",
-        depfile="$basefile.d",
-        deps="gcc",
-    )
+        n.comment("Generate DOL")
+        n.rule(
+            name="elf2dol",
+            command=f"{dtk} elf2dol $in $out",
+            description="DOL $out",
+        )
+        n.newline()
 
-    n.comment("Assemble asm")
-    n.rule(
-        name="as",
-        command=gnu_as_cmd,
-        description="AS $out",
-        # See https://github.com/encounter/dtk-template/issues/51
-        # depfile="$out.d",
-        # deps="gcc",
-    )
-    n.newline()
+        n.comment("MWCC build")
+        n.rule(
+            name="mwcc",
+            command=mwcc_cmd,
+            description="MWCC $out",
+            depfile="$basefile.d",
+            deps="gcc",
+        )
+        n.newline()
 
-    n.comment("Build precompiled header")
-    n.rule(
-        name="mwcc_pch",
-        command=mwcc_pch_cmd,
-        description="PCH $out",
-        depfile="$basefile.d",
-        deps="gcc",
-    )
-    n.newline()
+        n.comment("MWCC build (with UTF-8 to Shift JIS wrapper)")
+        n.rule(
+            name="mwcc_sjis",
+            command=mwcc_sjis_cmd,
+            description="MWCC $out",
+            depfile="$basefile.d",
+            deps="gcc",
+        )
+        n.newline()
 
-    n.comment("Build precompiled header (with UTF-8 to Shift JIS wrapper)")
-    n.rule(
-        name="mwcc_pch_sjis",
-        command=mwcc_pch_sjis_cmd,
-        description="PCH $out",
-        depfile="$basefile.d",
-        deps="gcc",
-    )
-    n.newline()
+        n.comment("MWCC build (with extab post-processing)")
+        n.rule(
+            name="mwcc_extab",
+            command=mwcc_extab_cmd,
+            description="MWCC $out",
+            depfile="$basefile.d",
+            deps="gcc",
+        )
+        n.newline()
+
+        n.comment("MWCC build (with UTF-8 to Shift JIS wrapper and extab post-processing)")
+        n.rule(
+            name="mwcc_sjis_extab",
+            command=mwcc_sjis_extab_cmd,
+            description="MWCC $out",
+            depfile="$basefile.d",
+            deps="gcc",
+        )
+
+        n.comment("Assemble asm")
+        n.rule(
+            name="as",
+            command=gnu_as_cmd,
+            description="AS $out",
+            # See https://github.com/encounter/dtk-template/issues/51
+            # depfile="$out.d",
+            # deps="gcc",
+        )
+        n.newline()
+
+        n.comment("Build precompiled header")
+        n.rule(
+            name="mwcc_pch",
+            command=mwcc_pch_cmd,
+            description="PCH $out",
+            depfile="$basefile.d",
+            deps="gcc",
+        )
+        n.newline()
+
+        n.comment("Build precompiled header (with UTF-8 to Shift JIS wrapper)")
+        n.rule(
+            name="mwcc_pch_sjis",
+            command=mwcc_pch_sjis_cmd,
+            description="PCH $out",
+            depfile="$basefile.d",
+            deps="gcc",
+        )
+        n.newline()
 
     if len(config.custom_build_rules or {}) > 0:
         n.comment("Custom project build rules (pre/post-processing)")
@@ -887,20 +972,50 @@ def generate_build_ninja(
             self.inputs.append(serialize_path(obj))
 
         def output(self) -> Path:
-            if self.module_id == 0:
+            if config.platform == "pe":
+                return build_path / f"{self.name}.exe"
+            elif self.module_id == 0:
                 return build_path / f"{self.name}.dol"
             else:
                 return build_path / self.name / f"{self.name}.rel"
 
         def partial_output(self) -> Path:
-            if self.module_id == 0:
+            if config.platform == "pe":
+                has_post_link = bool(config.custom_build_steps and "post-link" in config.custom_build_steps)
+                stem = f"{self.name}-linked" if has_post_link else self.name
+                return build_path / f"{stem}.exe"
+            elif self.module_id == 0:
                 return build_path / f"{self.name}.elf"
             else:
                 return build_path / self.name / f"{self.name}.plf"
 
         def write(self, n: ninja_syntax.Writer) -> None:
             n.comment(f"Link {self.name}")
-            if self.module_id == 0:
+            if config.platform == "pe":
+                has_post_link = bool(config.custom_build_steps and "post-link" in config.custom_build_steps)
+                stem = f"{self.name}-linked" if has_post_link else self.name
+                exe_path = build_path / f"{stem}.exe"
+                pe_ldflags = list(config.ldflags)
+                map_path: Optional[Path] = None
+                if config.generate_map:
+                    map_path = build_path / f"{stem}.map"
+                    pe_ldflags.append(f"/MAP:{serialize_path(map_path)}")
+                n.build(
+                    outputs=exe_path,
+                    rule="link",
+                    inputs=self.inputs,
+                    implicit=[
+                        self.ldscript,
+                        *lld_link_implicit,
+                    ],
+                    implicit_outputs=map_path,
+                    variables={
+                        "ldscript": serialize_path(self.ldscript),
+                        "ldflags": make_flags_str(pe_ldflags),
+                    },
+                    order_only="post-compile",
+                )
+            elif self.module_id == 0:
                 elf_path = build_path / f"{self.name}.elf"
                 elf_ldflags = f"$ldflags -lcf {serialize_path(self.ldscript)}"
                 if config.generate_map:
@@ -1006,59 +1121,76 @@ def generate_build_ninja(
 
             cflags = obj.options["cflags"]
             extra_cflags = obj.options["extra_cflags"]
-
-            # Add appropriate language flag if it doesn't exist already
-            # Added directly to the source so it flows to other generation tasks
-            if not any(flag.startswith("-lang") for flag in cflags) and not any(
-                flag.startswith("-lang") for flag in extra_cflags
-            ):
-                # Ensure extra_cflags is a unique instance,
-                # and insert into there to avoid modifying shared sets of flags
-                extra_cflags = obj.options["extra_cflags"] = list(extra_cflags)
-                if file_is_cpp(src_path):
-                    extra_cflags.insert(0, "-lang=c++")
-                else:
-                    extra_cflags.insert(0, "-lang=c")
-
             all_cflags = cflags + extra_cflags
             cflags_str = make_flags_str(all_cflags)
-            used_compiler_versions.add(obj.options["mw_version"])
-
-            # Add MWCC build rule
             lib_name = obj.options["lib"]
-            build_rule = "mwcc"
-            build_implcit = mwcc_implicit
-            variables = {
-                "mw_version": Path(obj.options["mw_version"]),
-                "cflags": cflags_str,
-                "basedir": os.path.dirname(obj.src_obj_path),
-                "basefile": obj.src_obj_path.with_suffix(""),
-            }
 
-            if obj.options["shift_jis"] and obj.options["extab_padding"] is not None:
-                build_rule = "mwcc_sjis_extab"
-                build_implcit = mwcc_sjis_extab_implicit
-                variables["extab_padding"] = "".join(
-                    f"{i:02x}" for i in obj.options["extab_padding"]
+            if config.platform == "pe":
+                # CL (MSVC / clang-cl) build rule
+                n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")
+                n.build(
+                    outputs=obj.src_obj_path,
+                    rule="cl",
+                    inputs=src_path,
+                    variables={
+                        "compiler_version": Path(obj.options["mw_version"]) if obj.options["mw_version"] else "",
+                        "cflags": cflags_str,
+                    },
+                    implicit=cl_implicit,
+                    order_only="pre-compile",
                 )
-            elif obj.options["shift_jis"]:
-                build_rule = "mwcc_sjis"
-                build_implcit = mwcc_sjis_implicit
-            elif obj.options["extab_padding"] is not None:
-                build_rule = "mwcc_extab"
-                build_implcit = mwcc_extab_implicit
-                variables["extab_padding"] = "".join(
-                    f"{i:02x}" for i in obj.options["extab_padding"]
+            else:
+                # Add appropriate language flag if it doesn't exist already
+                # Added directly to the source so it flows to other generation tasks
+                if not any(flag.startswith("-lang") for flag in cflags) and not any(
+                    flag.startswith("-lang") for flag in extra_cflags
+                ):
+                    # Ensure extra_cflags is a unique instance,
+                    # and insert into there to avoid modifying shared sets of flags
+                    extra_cflags = obj.options["extra_cflags"] = list(extra_cflags)
+                    if file_is_cpp(src_path):
+                        extra_cflags.insert(0, "-lang=c++")
+                    else:
+                        extra_cflags.insert(0, "-lang=c")
+
+                all_cflags = cflags + extra_cflags
+                cflags_str = make_flags_str(all_cflags)
+                used_compiler_versions.add(obj.options["mw_version"])
+
+                # Add MWCC build rule
+                build_rule = "mwcc"
+                build_implcit = mwcc_implicit
+                variables = {
+                    "mw_version": Path(obj.options["mw_version"]),
+                    "cflags": cflags_str,
+                    "basedir": os.path.dirname(obj.src_obj_path),
+                    "basefile": obj.src_obj_path.with_suffix(""),
+                }
+
+                if obj.options["shift_jis"] and obj.options["extab_padding"] is not None:
+                    build_rule = "mwcc_sjis_extab"
+                    build_implcit = mwcc_sjis_extab_implicit
+                    variables["extab_padding"] = "".join(
+                        f"{i:02x}" for i in obj.options["extab_padding"]
+                    )
+                elif obj.options["shift_jis"]:
+                    build_rule = "mwcc_sjis"
+                    build_implcit = mwcc_sjis_implicit
+                elif obj.options["extab_padding"] is not None:
+                    build_rule = "mwcc_extab"
+                    build_implcit = mwcc_extab_implicit
+                    variables["extab_padding"] = "".join(
+                        f"{i:02x}" for i in obj.options["extab_padding"]
+                    )
+                n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")
+                n.build(
+                    outputs=obj.src_obj_path,
+                    rule=build_rule,
+                    inputs=src_path,
+                    variables=variables,
+                    implicit=build_implcit,
+                    order_only="pre-compile",
                 )
-            n.comment(f"{obj.name}: {lib_name} (linked {obj.completed})")
-            n.build(
-                outputs=obj.src_obj_path,
-                rule=build_rule,
-                inputs=src_path,
-                variables=variables,
-                implicit=build_implcit,
-                order_only="pre-compile",
-            )
 
             # Add ctx build rule
             if obj.ctx_path is not None:
@@ -1196,16 +1328,24 @@ def generate_build_ninja(
                 link_steps.append(module_link_step)
         n.newline()
 
-        # Check if all compiler versions exist
-        for mw_version in used_compiler_versions:
-            mw_path = compilers / mw_version / "mwcceppc.exe"
-            if config.compilers_path and not os.path.exists(mw_path):
-                sys.exit(f"Compiler {mw_path} does not exist")
+        if config.platform == "pe":
+            # Check if CL exists for each used compiler version
+            for compiler_version in used_compiler_versions:
+                if compilers is not None and config.compilers_path:
+                    cl_path = compilers / compiler_version / "cl.exe"
+                    if not os.path.exists(cl_path):
+                        sys.exit(f"Compiler {cl_path} does not exist")
+        else:
+            # Check if all compiler versions exist
+            for mw_version in used_compiler_versions:
+                mw_path = compilers / mw_version / "mwcceppc.exe"
+                if config.compilers_path and not os.path.exists(mw_path):
+                    sys.exit(f"Compiler {mw_path} does not exist")
 
-        # Check if linker exists
-        mw_path = compilers / str(config.linker_version) / "mwldeppc.exe"
-        if config.compilers_path and not os.path.exists(mw_path):
-            sys.exit(f"Linker {mw_path} does not exist")
+            # Check if linker exists
+            mw_path = compilers / str(config.linker_version) / "mwldeppc.exe"
+            if config.compilers_path and not os.path.exists(mw_path):
+                sys.exit(f"Linker {mw_path} does not exist")
 
         # Add all build steps needed before we link and after compiling objects
         write_custom_step("post-compile", "pre-compile")
@@ -1218,82 +1358,84 @@ def generate_build_ninja(
             link_outputs.append(step.output())
         n.newline()
 
-        # Add all build steps needed after linking and before GC/Wii native format generation
+        # Add all build steps needed after linking and before native format generation
         write_custom_step("post-link", "post-compile")
 
-        ###
-        # Generate DOL
-        ###
-        n.build(
-            outputs=link_steps[0].output(),
-            rule="elf2dol",
-            inputs=link_steps[0].partial_output(),
-            implicit=dtk,
-            order_only="post-link",
-        )
-
-        ###
-        # Generate RELs
-        ###
-        n.comment("Generate REL(s)")
-        flags = "-w"
-        if len(build_config["links"]) > 1:
-            flags += " -q"
-        n.rule(
-            name="makerel",
-            command=f"{dtk} rel make {flags} -c $config $names @$rspfile",
-            description="REL",
-            rspfile="$rspfile",
-            rspfile_content="$in_newline",
-        )
-        generated_rels: List[str] = []
-        for idx, link in enumerate(build_config["links"]):
-            # Map module names to link steps
-            link_steps_local = list(
-                filter(
-                    lambda step: step.name in link["modules"],
-                    link_steps,
-                )
-            )
-            link_steps_local.sort(key=lambda step: step.module_id)
-            # RELs can be the output of multiple link steps,
-            # so we need to filter out duplicates
-            rels_to_generate = list(
-                filter(
-                    lambda step: step.module_id != 0
-                    and step.name not in generated_rels,
-                    link_steps_local,
-                )
-            )
-            if len(rels_to_generate) == 0:
-                continue
-            generated_rels.extend(map(lambda step: step.name, rels_to_generate))
-            rel_outputs = list(
-                map(
-                    lambda step: step.output(),
-                    rels_to_generate,
-                )
-            )
-            rel_names = list(
-                map(
-                    lambda step: step.name,
-                    link_steps_local,
-                )
-            )
-            rel_names_arg = " ".join(map(lambda name: f"-n {name}", rel_names))
+        if config.platform == "dol":
+            ###
+            # Generate DOL
+            ###
             n.build(
-                outputs=rel_outputs,
-                rule="makerel",
-                inputs=list(map(lambda step: step.partial_output(), link_steps_local)),
-                implicit=[dtk, config.config_path],
-                variables={
-                    "config": config.config_path,
-                    "rspfile": config.out_path() / f"rel{idx}.rsp",
-                    "names": rel_names_arg,
-                },
+                outputs=link_steps[0].output(),
+                rule="elf2dol",
+                inputs=link_steps[0].partial_output(),
+                implicit=dtk,
                 order_only="post-link",
             )
-            n.newline()
+
+        ###
+        # Generate RELs (DOL only)
+        ###
+        if config.platform == "dol":
+            n.comment("Generate REL(s)")
+            flags = "-w"
+            if len(build_config["links"]) > 1:
+                flags += " -q"
+            n.rule(
+                name="makerel",
+                command=f"{dtk} rel make {flags} -c $config $names @$rspfile",
+                description="REL",
+                rspfile="$rspfile",
+                rspfile_content="$in_newline",
+            )
+            generated_rels: List[str] = []
+            for idx, link in enumerate(build_config["links"]):
+                # Map module names to link steps
+                link_steps_local = list(
+                    filter(
+                        lambda step: step.name in link["modules"],
+                        link_steps,
+                    )
+                )
+                link_steps_local.sort(key=lambda step: step.module_id)
+                # RELs can be the output of multiple link steps,
+                # so we need to filter out duplicates
+                rels_to_generate = list(
+                    filter(
+                        lambda step: step.module_id != 0
+                        and step.name not in generated_rels,
+                        link_steps_local,
+                    )
+                )
+                if len(rels_to_generate) == 0:
+                    continue
+                generated_rels.extend(map(lambda step: step.name, rels_to_generate))
+                rel_outputs = list(
+                    map(
+                        lambda step: step.output(),
+                        rels_to_generate,
+                    )
+                )
+                rel_names = list(
+                    map(
+                        lambda step: step.name,
+                        link_steps_local,
+                    )
+                )
+                rel_names_arg = " ".join(map(lambda name: f"-n {name}", rel_names))
+                n.build(
+                    outputs=rel_outputs,
+                    rule="makerel",
+                    inputs=list(map(lambda step: step.partial_output(), link_steps_local)),
+                    implicit=[dtk, config.config_path],
+                    variables={
+                        "config": config.config_path,
+                        "rspfile": config.out_path() / f"rel{idx}.rsp",
+                        "names": rel_names_arg,
+                    },
+                    order_only="post-link",
+                )
+                n.newline()
 
         # Add all build steps needed post-build (re-building archives and such)
         write_custom_step("post-build", "post-link")
@@ -1444,54 +1586,98 @@ def generate_build_ninja(
         ###
         # Helper tools
         ###
-        # TODO: make these rules work for RELs too
-        dol_link_step = link_steps[0]
-        dol_elf_path = dol_link_step.partial_output()
-        n.comment("Check for mismatching symbols")
-        n.rule(
-            name="dol_diff",
-            command=f"{dtk} -L error dol diff $in",
-            description=f"DIFF {dol_elf_path}",
-        )
-        n.build(
-            inputs=[config.config_path, dol_elf_path],
-            outputs="dol_diff",
-            rule="dol_diff",
-        )
-        n.build(
-            outputs="diff",
-            rule="phony",
-            inputs="dol_diff",
-        )
-        n.newline()
+        link_step_0 = link_steps[0]
+        linked_output = link_step_0.partial_output()
+        if config.platform == "pe":
+            n.comment("Check for mismatching symbols")
+            n.rule(
+                name="coff_diff",
+                command=f"{dtk} -L error coff diff $in",
+                description=f"DIFF {linked_output}",
+            )
+            n.build(
+                inputs=[config.config_path, linked_output],
+                outputs="coff_diff",
+                rule="coff_diff",
+            )
+            n.build(
+                outputs="diff",
+                rule="phony",
+                inputs="coff_diff",
+            )
+            n.newline()
 
-        n.comment("Apply symbols from linked ELF")
-        n.rule(
-            name="dol_apply",
-            command=f"{dtk} dol apply $in",
-            description=f"APPLY {dol_elf_path}",
-        )
-        n.build(
-            inputs=[config.config_path, dol_elf_path],
-            outputs="dol_apply",
-            rule="dol_apply",
-            implicit=[ok_path],
-        )
-        n.build(
-            outputs="apply",
-            rule="phony",
-            inputs="dol_apply",
-        )
-        n.newline()
+            n.comment("Apply symbols from linked PE")
+            n.rule(
+                name="coff_apply",
+                command=f"{dtk} coff apply $in",
+                description=f"APPLY {linked_output}",
+            )
+            n.build(
+                inputs=[config.config_path, linked_output],
+                outputs="coff_apply",
+                rule="coff_apply",
+                implicit=[ok_path],
+            )
+            n.build(
+                outputs="apply",
+                rule="phony",
+                inputs="coff_apply",
+            )
+            n.newline()
+        else:
+            # TODO: make these rules work for RELs too
+            n.comment("Check for mismatching symbols")
+            n.rule(
+                name="dol_diff",
+                command=f"{dtk} -L error dol diff $in",
+                description=f"DIFF {linked_output}",
+            )
+            n.build(
+                inputs=[config.config_path, linked_output],
+                outputs="dol_diff",
+                rule="dol_diff",
+            )
+            n.build(
+                outputs="diff",
+                rule="phony",
+                inputs="dol_diff",
+            )
+            n.newline()
+
+            n.comment("Apply symbols from linked ELF")
+            n.rule(
+                name="dol_apply",
+                command=f"{dtk} dol apply $in",
+                description=f"APPLY {linked_output}",
+            )
+            n.build(
+                inputs=[config.config_path, linked_output],
+                outputs="dol_apply",
+                rule="dol_apply",
+                implicit=[ok_path],
+            )
+            n.build(
+                outputs="apply",
+                rule="phony",
+                inputs="dol_apply",
+            )
+            n.newline()
 
     ###
-    # Split DOL
+    # Split
     ###
     build_config_path = build_path / "config.json"
-    n.comment("Split DOL into relocatable objects")
+    if config.platform == "pe":
+        split_kind = "coff"
+        split_desc = "Split COFF/PE into relocatable objects"
+    else:
+        split_kind = "dol"
+        split_desc = "Split DOL into relocatable objects"
+    n.comment(split_desc)
     n.rule(
         name="split",
-        command=f"{dtk} dol split $in $out_dir",
+        command=f"{dtk} {split_kind} split $in $out_dir",
         description="SPLIT $in",
         depfile="$out_dir/dep",
         deps="gcc",

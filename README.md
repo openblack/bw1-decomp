@@ -1,9 +1,26 @@
-decomp-toolkit Project Template
-===============================
+Black & White
+[![Build Status]][actions] [![Code Progress]][progress] [![Data Progress]][progress] [![Discord Badge]][discord]
+=============
 
-If starting a new GameCube / Wii decompilation project, this repository can be used as a scaffold.
+[Build Status]: https://github.com/openblack/bw1-decomp/actions/workflows/build.yml/badge.svg
+[actions]: https://github.com/openblack/bw1-decomp/actions/workflows/build.yml
+[Code Progress]: https://decomp.dev/openblack/bw1-decomp.svg?mode=shield&measure=code&label=Code
+[Data Progress]: https://decomp.dev/openblack/bw1-decomp.svg?mode=shield&measure=data&label=Data
+[progress]: https://decomp.dev/openblack/bw1-decomp
+[Discord Badge]: https://img.shields.io/discord/608729286513262622?color=%237289DA&logo=discord&logoColor=%23FFFFFF
+[discord]: https://discord.gg/5QTexBU
 
-See [decomp-toolkit](https://github.com/encounter/decomp-toolkit) for background on the concept and more information on the tooling used.
+A work-in-progress decompilation of Lionhead Studios' _Black & White_ (2001).
+
+This repository does **not** contain any game assets or assembly. An existing copy of the game is required.
+
+Scaffolded from [encounter/dtk-template](https://github.com/encounter/dtk-template) and adapted for PE/COFF (Windows) and PEF (Classic Mac OS) targets.
+
+Supported versions:
+
+- `BW1E100` — Windows v1.00 (PE/COFF, MSVC 6.0)
+- `BW1E142` — Windows v1.42 (PE/COFF, MSVC 6.0)
+- `BW1EMAC` — Classic Mac OS PowerPC (PEF, CodeWarrior Mac) — WIP
 
 Documentation
 -------------
@@ -14,53 +31,47 @@ Documentation
 - [`splits.txt`](docs/splits.md)
 - [GitHub Actions](docs/github_actions.md)
 
-General:
-
-- [Common BSS](docs/common_bss.md)
-- [`.comment` section](docs/comment_section.md)
-
 References
---------
+----------
 
-- [Discord: GC/Wii Decompilation](https://discord.gg/hKx3FJJgrV) (Come to `#dtk` for help!)
+- [openblack](https://github.com/openblack/openblack) (Open-source engine reimplementation)
+- [encounter/dtk-template](https://github.com/encounter/dtk-template) (Original GC/Wii project template this is based on)
+- [decomp-toolkit](https://github.com/openblack/decomp-toolkit) (Tooling — openblack fork)
 - [objdiff](https://github.com/encounter/objdiff) (Local diffing tool)
 - [decomp.me](https://decomp.me) (Collaborate on matches)
 - [decomp.dev](https://decomp.dev) (Decompilation progress hub and API)
-- [wibo](https://github.com/decompals/wibo) (Minimal Win32 wrapper for Linux)
-- [sjiswrap](https://github.com/encounter/sjiswrap) (UTF-8 to Shift JIS wrapper)
-
-Nearly all active GC/Wii decompilation projects use this structure, and will be useful
-for reference. A list of active GC/Wii projects can be found on [decomp.dev](https://decomp.dev).
 
 Features
 --------
 
-- Few external dependencies: Just `python` for the generator and `ninja` for the build system. See [Dependencies](docs/dependencies.md).
-- Simple configuration: Everything lives in `config.yml`, `symbols.txt`, and `splits.txt`.
-- Multi-version support: Separate configurations for each game version, and a `configure.py --version` flag to switch between them.
-- Feature-rich analyzer: Many time-consuming tasks are automated, allowing you to focus on the decompilation itself. See [Analyzer features](https://github.com/encounter/decomp-toolkit#analyzer-features).
-- REL support: RELs each have their own `symbols.txt` and `splits.txt`, and will automatically be built and linked against the main binary.
-- No manual assembly: decomp-toolkit handles splitting the DOL into relocatable objects based on the configuration. No game assets are committed to the repository.
+- Few external dependencies: just `python` for the generator and `ninja` for the build system. See [Dependencies](docs/dependencies.md).
+- Simple configuration: everything lives in `config.yml`, `symbols.txt`, and `splits.txt`.
+- Multi-version support: separate configurations for each game version, and a `configure.py --version` flag to switch between them.
+- Feature-rich analyzer: many time-consuming tasks are automated, allowing you to focus on the decompilation itself.
+- No manual assembly: decomp-toolkit handles splitting the original binary into relocatable objects based on the configuration. No game assets are committed to the repository.
 - Progress calculation and integration with [decomp.dev](https://decomp.dev).
 - Integration with [objdiff](https://github.com/encounter/objdiff) for a diffing workflow.
-- CI workflow template for GitHub Actions.
+- CI workflow for GitHub Actions.
+
+Diffing
+=======
+
+Once the initial build succeeds, an `objdiff.json` should exist in the project root.
+
+Download the latest release from [encounter/objdiff](https://github.com/encounter/objdiff). Under project settings, set `Project directory`. The configuration should be loaded automatically.
+
+Select an object from the left sidebar to begin diffing. Changes to the project will rebuild automatically: changes to source files, headers, `configure.py`, `splits.txt` or `symbols.txt`.
+
+![](assets/objdiff.png)
 
 Project structure
 -----------------
 
 - `configure.py` - Project configuration and generator script.
-- `config/[GAMEID]` - Configuration files for each game version.
-- `config/[GAMEID]/build.sha1` - SHA-1 hashes for each built artifact, for final verification.
-- `build/` - Build artifacts generated by the the build process. Ignored by `.gitignore`.
-- `orig/[GAMEID]` - Original game files, extracted from the disc. Ignored by `.gitignore`.
-- `orig/[GAMEID]/.gitkeep` - Empty checked-in file to ensure the directory is created on clone.
+- `config/[VERSION]` - Configuration files for each game version (`BW1E100`, `BW1E142`, `BW1EMAC`).
+- `config/[VERSION]/build.sha1` - SHA-1 hashes for each built artifact, for final verification.
+- `build/` - Build artifacts generated by the build process. Ignored by `.gitignore`.
+- `orig/[VERSION]` - Original game files. Ignored by `.gitignore`.
 - `src/` - C/C++ source files.
 - `include/` - C/C++ header files.
 - `tools/` - Scripts shared between projects.
-
-Temporary, delete when done:
-
-- `config/GAMEID/config.example.yml` - Example configuration file and documentation.
-- `docs/` - Documentation for decomp-toolkit configuration.
-- `README.md` - This file, replace with your own. For a template, see [`README.example.md`](README.example.md).
-- `LICENSE` - This repository is licensed under the CC0 license. Replace with your own if desired.

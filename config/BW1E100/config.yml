@@ -1,0 +1,26 @@
+# See config.example.yml for documentation.
+object_base: orig/BW1E100
+object: runblack-decrypted.exe
+hash: d810fe43e2956f2b76533ab698632756ba99b44d
+symbols: config/BW1E100/symbols.txt
+splits: config/BW1E100/splits.txt
+# map: orig/BW1E1001/files/runblack.map
+force_size: 0x0081b58f
+linker_version: "6.0"
+safe_disc_version: "2.10.30"
+# TODO: Unsure why we get 0x3EA000
+size_of_code: 0x3EE800
+# TODO: Unsure why we get 0x378000
+size_of_initialized_data: 0x6FA000
+# TODO: Unsure why we get 0xAE5000
+size_of_image: 0xAE493E
+# TODO: Unsure why we get 0
+entry_export_addr: 0x008f4f60
+# TODO: Unsure why we get 0
+entry_export_size: 0x35F
+# TODO: Unsure why we get 0
+entry_import_addr: 0x008efa40
+# TODO: Unsure why we get 0
+entry_import_size: 0x190
+# TODO: Unsure why we get 0x393e
+entry_resource_size: 0x38F8

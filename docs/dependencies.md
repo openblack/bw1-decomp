@@ -1,31 +1,35 @@
 Dependencies
 ============
 
+Required on every host:
+
+- [Python 3](https://www.python.org/downloads/)
+- [ninja](https://github.com/ninja-build/ninja/releases) (or `pip install ninja`)
+
+Everything else is downloaded automatically by `configure.py` on first run:
+
+- `dtk` — [openblack/decomp-toolkit](https://github.com/openblack/decomp-toolkit) build (split + link verification)
+- `lld-link` — [openblack/llvm-project](https://github.com/openblack/llvm-project) release (PE linker, used for `BW1E100` / `BW1E142`)
+- MSVC 6.0 SP5 compilers — pulled at the version pinned in `configure.py`
+- `objdiff-cli` — diff report generator
+
 Windows
---------
+-------
 
-On Windows, it's **highly recommended** to use native tooling. WSL or msys2 are **not** required.  
-When running under WSL, [objdiff](https://github.com/encounter/objdiff) is unable to get filesystem notifications for automatic rebuilds.
+Use native tooling. WSL is not required and breaks objdiff filesystem watching.
 
-- Install [Python](https://www.python.org/downloads/) and add it to `%PATH%`.
-  - Also available from the [Windows Store](https://apps.microsoft.com/store/detail/python-311/9NRWMJP3717K).
-- Download [ninja](https://github.com/ninja-build/ninja/releases) and add it to `%PATH%`.
-  - Quick install via pip: `pip install ninja`
+macOS / Linux
+-------------
 
-macOS
-------
+`pip install ninja` (or your package manager) and you're done.
 
-- Install [ninja](https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages):
+`BW1EMAC` (Classic Mac OS PowerPC, PEF)
+---------------------------------------
 
-  ```sh
-  brew install ninja
-  ```
+The Mac target is **WIP** and needs an extra dependency that is **not** auto-downloaded:
 
-[wibo](https://github.com/decompals/wibo), a minimal 32-bit Windows binary wrapper, will be automatically downloaded and used.
+- [Retro68](https://github.com/autc04/Retro68), built locally. Provides the `powerpc-apple-macos` binutils, `MakePEF`, and the CFM stub libraries the link consumes.
 
-Linux
-------
+Set `RETRO68_BIN=/path/to/Retro68/build/toolchain/bin` (or accept the default of `~/code/Retro68/build/toolchain/bin`) before running `configure.py --version BW1EMAC`.
 
-- Install [ninja](https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages).
-
-[wibo](https://github.com/decompals/wibo), a minimal 32-bit Windows binary wrapper, will be automatically downloaded and used.
+See the [PEF status TODO](../TODO.md) for the current gaps (objdiff XCOFF reader, MakePEF pidata compression, byte-identical link).

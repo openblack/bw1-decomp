@@ -29,7 +29,8 @@ from tools.project import (
 # Game versions
 DEFAULT_VERSION = 0
 VERSIONS = [
-    "GAMEID",  # 0
+    "BW1E100",  # 0   PE/COFF, Windows v1.00
+    "BW1E142",  # 1   PE/COFF, Windows v1.42
 ]
 
 parser = argparse.ArgumentParser()
@@ -56,16 +57,17 @@ parser.add_argument(
     help="base build directory (default: build)",
 )
 parser.add_argument(
-    "--binutils",
-    metavar="BINARY",
-    type=Path,
-    help="path to binutils (optional)",
-)
-parser.add_argument(
     "--compilers",
     metavar="DIR",
     type=Path,
-    help="path to compilers (optional)",
+    help="path to compilers directory (optional)",
+)
+parser.add_argument(
+    "--lld-link",
+    metavar="BINARY",
+    type=Path,
+    dest="lld_link",
+    help="path to lld-link binary (optional, defaults to lld-link in PATH)",
 )
 parser.add_argument(
     "--map",
@@ -138,12 +140,14 @@ config = ProjectConfig()
 config.version = str(args.version)
 version_num = VERSIONS.index(config.version)
 
+config.platform = "pe"
+
 # Apply arguments
 config.build_dir = args.build_dir
 config.dtk_path = args.dtk
 config.objdiff_path = args.objdiff
-config.binutils_path = args.binutils
 config.compilers_path = args.compilers
+config.lld_link_path = args.lld_link
 config.generate_map = args.map
 config.non_matching = args.non_matching
 config.sjiswrap_path = args.sjiswrap
@@ -157,119 +161,61 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.compilers_tag = "20251118"
-config.dtk_tag = "v1.8.3"
+config.dtk_tag = "v0.0.1"
 config.objdiff_tag = "v3.6.1"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.0.3"
+config.compilers_tag = "6.5"  # MSVC 6.0 SP5
+config.lld_link_tag = "bw1-decomp-013"
 
 # Project
 config.config_path = Path("config") / config.version / "config.yml"
 config.check_sha_path = Path("config") / config.version / "build.sha1"
-config.asflags = [
-    "-mgekko",
-    "--strip-local-absolute",
-    "-I include",
-    f"-I build/{config.version}/include",
-    f"--defsym BUILD_VERSION={version_num}",
-]
-config.ldflags = [
-    "-fp hardware",
-    "-nodefaults",
-]
-if args.debug:
-    config.ldflags.append("-g")  # Or -gdwarf-2 for Wii linkers
-if args.map:
-    config.ldflags.append("-mapunused")
-    # config.ldflags.append("-listclosure") # For Wii linkers
-
-# Use for any additional files that should cause a re-configure when modified
+config.asflags = None
+config.ldflags = []
 config.reconfig_deps = []
 
-# Optional numeric ID for decomp.me preset
-# Can be overridden in libraries or objects
-config.scratch_preset_id = None
-
-# Base flags, common to most GC/Wii games.
-# Generally leave untouched, with overrides added below.
+# Post-link patch: applies version-specific binary fixups after linking,
+# producing the final exe that is checked against build.sha1.
+_linked = f"build/{config.version}/runblack-decrypted-linked.exe"
+_patched = f"build/{config.version}/runblack-decrypted.exe"
+config.custom_build_rules = [
+    {
+        "name": "postpatch",
+        "command": f"$python tools/post_link_patch.py --version {config.version} $in $out",
+        "description": "PATCH $out",
+    },
+]
+config.custom_build_steps = {
+    "post-link": [
+        {
+            "outputs": _patched,
+            "rule": "postpatch",
+            "inputs": _linked,
+            "implicit": "tools/post_link_patch.py",
+        },
+    ],
+}
+config.linker_version = "MSVC6"
 cflags_base = [
-    "-nodefaults",
-    "-proc gekko",
-    "-align powerpc",
-    "-enum int",
-    "-fp hardware",
-    "-Cpp_exceptions off",
-    "-O4,p",
-    "-inline auto",
-    '-pragma "cats off"',
-    '-pragma "warn_notinlined off"',
-    "-maxerrors 1",
-    "-nosyspath",
-    "-RTTI off",
-    "-fp_contract on",
-    "-str reuse",
-    "-multibyte",  # For Wii compilers, replace with `-enc SJIS`
-    "-i include",
-    f"-i build/{config.version}/include",
-    f"-DBUILD_VERSION={version_num}",
-    f"-DVERSION_{config.version}",
+    "/nologo",
+    "/W3",
+    "/GX",
+    "/O2",
+    "/Og",
+    "/Ob1",
+    "/I", "include",
+    f"/I", f"build/{config.version}/include",
+    f"/DBUILD_VERSION={version_num}",
+    f"/DVERSION_{config.version}",
 ]
-
-# Debug flags
 if args.debug:
-    # Or -sym dwarf-2 for Wii compilers
-    cflags_base.extend(["-sym on", "-DDEBUG=1"])
+    cflags_base.extend(["/Zi", "/DDEBUG=1"])
 else:
-    cflags_base.append("-DNDEBUG=1")
+    cflags_base.append("/DNDEBUG=1")
 
-# Warning flags
-if args.warn == "all":
-    cflags_base.append("-W all")
-elif args.warn == "off":
-    cflags_base.append("-W off")
-elif args.warn == "error":
-    cflags_base.append("-W error")
-
-# Metrowerks library flags
-cflags_runtime = [
-    *cflags_base,
-    "-use_lmw_stmw on",
-    "-str reuse,pool,readonly",
-    "-gccinc",
-    "-common off",
-    "-inline auto",
-]
-
-# REL flags
-cflags_rel = [
-    *cflags_base,
-    "-sdata 0",
-    "-sdata2 0",
-]
-
-config.linker_version = "GC/1.3.2"
-
-
-# Helper function for Dolphin libraries
-def DolphinLib(lib_name: str, objects: List[Object]) -> Dict[str, Any]:
-    return {
-        "lib": lib_name,
-        "mw_version": "GC/1.2.5n",
-        "cflags": cflags_base,
-        "progress_category": "sdk",
-        "objects": objects,
-    }
-
-
-# Helper function for REL script objects
-def Rel(lib_name: str, objects: List[Object]) -> Dict[str, Any]:
-    return {
-        "lib": lib_name,
-        "mw_version": "GC/1.3.2",
-        "cflags": cflags_rel,
-        "progress_category": "game",
-        "objects": objects,
-    }
+# Optional numeric ID for decomp.me preset
+config.scratch_preset_id = 208
 
 
 Matching = True                   # Object matches and should be linked
@@ -285,16 +231,16 @@ def MatchingFor(*versions):
 config.warn_missing_config = True
 config.warn_missing_source = False
 config.libs = [
-    {
-        "lib": "Runtime.PPCEABI.H",
-        "mw_version": config.linker_version,
-        "cflags": cflags_runtime,
-        "progress_category": "sdk",  # str | List[str]
-        "objects": [
-            Object(NonMatching, "Runtime.PPCEABI.H/global_destructor_chain.c"),
-            Object(NonMatching, "Runtime.PPCEABI.H/__init_cpp_exceptions.cpp"),
-        ],
-    },
+    # Example: add compiled source objects here as they are matched
+    # {
+    #     "lib": "SomeModule",
+    #     "mw_version": config.linker_version,
+    #     "cflags": cflags_base,
+    #     "progress_category": "game",
+    #     "objects": [
+    #         Object(NonMatching, "SomeModule/some_file.cpp"),
+    #     ],
+    # },
 ]
 
 

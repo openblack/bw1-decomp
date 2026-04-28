@@ -1,0 +1,20 @@
+# See config.example.yml for documentation.
+object_base: orig/BW1E142
+object: runblack-decrypted.exe
+hash: bccccbd3a08fe9a5d6cf59cd114e916401abfb51
+symbols: config/BW1E142/symbols.txt
+splits: config/BW1E142/splits.txt
+
+timestamp: "2002-06-18T06:13:22+00:00"
+force_size: 0x00843000
+linker_version: "6.0"
+safe_disc_version: "2.60.52"
+size_of_code: 0x4AE000
+size_of_initialized_data: 0x71D000
+size_of_image: 0xBC6000
+entry_export_addr: 0x009c51e0
+entry_export_size: 0x365
+entry_import_addr: 0x009bf6e8
+entry_import_size: 0x1B8
+entry_resource_addr: 0x00fc2000
+entry_resource_size: 0x38F8

@@ -16,6 +16,7 @@ import os
 import platform
 import shutil
 import stat
+import tarfile
 import urllib.request
 import zipfile
 from typing import Callable, Dict
@@ -40,6 +41,11 @@ def compilers_url(tag: str) -> str:
     return f"https://files.decomp.dev/compilers_{tag}.zip"
 
 
+def compilers_msvc_url(tag: str) -> str:
+    # tag is the MSVC version, e.g. "6.5" for MSVC 6.0 SP5
+    return f"https://github.com/OmniBlade/decomp.me/releases/download/msvcwin9x/msvc{tag}.tar.gz"
+
+
 def dtk_url(tag: str) -> str:
     uname = platform.uname()
     suffix = ""
@@ -52,7 +58,7 @@ def dtk_url(tag: str) -> str:
     if arch == "amd64":
         arch = "x86_64"
 
-    repo = "https://github.com/encounter/decomp-toolkit"
+    repo = "https://github.com/openblack/decomp-toolkit"
     return f"{repo}/releases/download/{tag}/dtk-{system}-{arch}{suffix}"
 
 
@@ -88,10 +94,25 @@ def wibo_url(tag: str) -> str:
     return f"{repo}/releases/download/{tag}/wibo-{arch}"
 
 
+def llvm_url(tag: str) -> str:
+    # tag is the openblack/llvm-project release tag, e.g. "bw1-decomp-013"
+    uname = platform.uname()
+    system = uname.system.lower()
+    if system == "windows":
+        asset = "llvm-windows.zip"
+    else:
+        asset = "llvm-ubuntu.zip"
+
+    repo = "https://github.com/openblack/llvm-project"
+    return f"{repo}/releases/download/{tag}/{asset}"
+
+
 TOOLS: Dict[str, Callable[[str], str]] = {
     "binutils": binutils_url,
     "compilers": compilers_url,
+    "compilers_msvc": compilers_msvc_url,
     "dtk": dtk_url,
+    "llvm": llvm_url,
     "objdiff-cli": objdiff_cli_url,
     "sjiswrap": sjiswrap_url,
     "wibo": wibo_url,
@@ -103,6 +124,31 @@ def download(url, response, output) -> None:
         data = io.BytesIO(response.read())
         with zipfile.ZipFile(data) as f:
             f.extractall(output)
+        # Make all files executable
+        for root, _, files in os.walk(output):
+            for name in files:
+                os.chmod(os.path.join(root, name), 0o755)
+        output.touch(mode=0o755)  # Update dir modtime
+    elif url.endswith(".tar.gz") or url.endswith(".tgz"):
+        data = io.BytesIO(response.read())
+        output.mkdir(parents=True, exist_ok=True)
+        with tarfile.open(fileobj=data, mode="r:gz") as t:
+            t.extractall(output)
+        # Normalize all filenames to lowercase
+        for root, dirs, files in os.walk(output, topdown=False):
+            for name in files + dirs:
+                src = os.path.join(root, name)
+                dst = os.path.join(root, name.lower())
+                if src != dst:
+                    os.rename(src, dst)
+        # Flatten Bin/ to root so cl.exe lands directly in the output directory
+        bin_dir = output / "bin"
+        if bin_dir.is_dir():
+            for item in bin_dir.iterdir():
+                dst = output / item.name
+                if not dst.exists():
+                    shutil.move(str(item), str(dst))
+            bin_dir.rmdir()
         # Make all files executable
         for root, _, files in os.walk(output):
             for name in files:

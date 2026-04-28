@@ -8,14 +8,13 @@ jobs:
   build:
     # This is a *private* build container.
     # See docs/github_actions.md for more information.
-    container: ghcr.io/my/game-build:main
+    container: ghcr.io/openblack/bw1-build:main
 
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        # Add game versions here
-        version: [GAMEID]
+        version: [BW1E100, BW1E142]
 
     steps:
     # Checkout the repository
@@ -53,8 +52,7 @@ jobs:
     # Build the project
     - name: Build
       run: |
-        python configure.py --map --version ${{ matrix.version }} \
-            --binutils /binutils --compilers /compilers
+        python configure.py --map --version ${{ matrix.version }}
         ninja all_source progress build/${{ matrix.version }}/report.json
 
     # Upload map files
@@ -62,7 +60,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.version }}_maps
-        path: build/${{ matrix.version }}/**/*.MAP
+        path: build/${{ matrix.version }}/**/*.map
 
     # Upload progress report
     - name: Upload report
