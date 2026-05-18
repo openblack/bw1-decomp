@@ -1,6 +1,8 @@
 Sections:
 	.text       type:code align:4096
 	.rdata      type:rodata align:4096
+	.rdata$r    type:rodata vaddr:0x009A62D8 end:0x009BBDC8
+	.xdata$x    type:rodata vaddr:0x009BBDC8 end:0x009C5564
 	.data       type:data align:4096
 	.data1      type:data align:4096
 	SELFMOD     type:data align:4096

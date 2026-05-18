@@ -62,7 +62,7 @@ class Object:
             "extra_cflags": [],
             "extra_clang_flags": [],
             "lib": None,
-            "mw_version": None,
+            "compiler_version": None,
             "progress_category": None,
             "scratch_preset_id": None,
             "shift_jis": None,
@@ -94,7 +94,7 @@ class Object:
         set_default("asflags", config.asflags)
         set_default("asm_dir", config.asm_dir)
         set_default("extab_padding", None)
-        set_default("mw_version", config.linker_version)
+        set_default("compiler_version", config.linker_version)
         set_default("scratch_preset_id", config.scratch_preset_id)
         set_default("shift_jis", config.shift_jis)
         set_default("src_dir", config.src_dir)
@@ -484,10 +484,8 @@ def generate_build_ninja(
     n.variable("ldflags", make_flags_str(config.ldflags))
     if config.linker_version is None:
         sys.exit("ProjectConfig.linker_version missing")
-    elif config.platform == "pe":
-        n.variable("compiler_version", Path(config.linker_version))
     else:
-        n.variable("mw_version", Path(config.linker_version))
+        n.variable("compiler_version", Path(config.linker_version))
     n.variable("objdiff_report_args", make_flags_str(config.progress_report_args))
     n.newline()
 
@@ -625,11 +623,11 @@ def generate_build_ninja(
     compilers: Optional[Path] = config.compilers()
     compilers_implicit: Optional[Path] = None
     if compilers is not None and config.compilers_path is None and config.compilers_tag is not None:
-        compilers_implicit = compilers
         if config.platform == "pe":
-            # For PE, download MSVC to a version-specific subdirectory so cl.exe
+            # For PE, download MSVC to compilers/<linker_version>/ so cl.exe
             # ends up at build/compilers/<linker_version>/cl.exe
             msvc_dir = compilers / str(config.linker_version)
+            compilers_implicit = msvc_dir
             n.build(
                 outputs=msvc_dir,
                 rule="download_tool",
@@ -640,6 +638,7 @@ def generate_build_ninja(
                 },
             )
         else:
+            compilers_implicit = compilers
             n.build(
                 outputs=compilers,
                 rule="download_tool",
@@ -707,7 +706,7 @@ def generate_build_ninja(
     # Build rules
     ###
     # MWCC/MWLD strings are only emitted by the dol path; PE skips them.
-    compiler_path = compilers / "$mw_version" if compilers is not None else Path("compilers/$mw_version")
+    compiler_path = compilers / "$compiler_version" if compilers is not None else Path("compilers/$compiler_version")
 
     # MWCC
     mwcc = compiler_path / "mwcceppc.exe"
@@ -1103,7 +1102,7 @@ def generate_build_ninja(
                     rule="mwcc_pch_sjis" if shift_jis else "mwcc_pch",
                     inputs=f"include/{src_path_rel_str}",
                     variables={
-                        "mw_version": Path(pch["mw_version"]),
+                        "compiler_version": Path(pch["compiler_version"]),
                         "cflags": cflags_str,
                         "basedir": os.path.dirname(pch_out_abs_path),
                         "basefile": pch_out_abs_path.with_suffix(""),
@@ -1133,12 +1132,13 @@ def generate_build_ninja(
                     rule="cl",
                     inputs=src_path,
                     variables={
-                        "compiler_version": Path(obj.options["mw_version"]) if obj.options["mw_version"] else "",
+                        "compiler_version": Path(obj.options["compiler_version"]) if obj.options["compiler_version"] else "",
                         "cflags": cflags_str,
                     },
                     implicit=cl_implicit,
                     order_only="pre-compile",
                 )
+                used_compiler_versions.add(obj.options["compiler_version"])
             else:
                 # Add appropriate language flag if it doesn't exist already
                 # Added directly to the source so it flows to other generation tasks
@@ -1155,13 +1155,13 @@ def generate_build_ninja(
 
                 all_cflags = cflags + extra_cflags
                 cflags_str = make_flags_str(all_cflags)
-                used_compiler_versions.add(obj.options["mw_version"])
+                used_compiler_versions.add(obj.options["compiler_version"])
 
                 # Add MWCC build rule
                 build_rule = "mwcc"
                 build_implcit = mwcc_implicit
                 variables = {
-                    "mw_version": Path(obj.options["mw_version"]),
+                    "compiler_version": Path(obj.options["compiler_version"]),
                     "cflags": cflags_str,
                     "basedir": os.path.dirname(obj.src_obj_path),
                     "basefile": obj.src_obj_path.with_suffix(""),
@@ -1195,11 +1195,20 @@ def generate_build_ninja(
             # Add ctx build rule
             if obj.ctx_path is not None:
                 include_dirs = []
-                for flag in all_cflags:
-                    if (
+                flags_iter = iter(all_cflags)
+                for flag in flags_iter:
+                    if flag in ("-I", "-i", "/I", "/i"):
+                        # Two-element form: flag then path
+                        try:
+                            include_dirs.append(next(flags_iter))
+                        except StopIteration:
+                            pass
+                    elif (
                         flag.startswith("-i ")
                         or flag.startswith("-I ")
                         or flag.startswith("-I+")
+                        or flag.startswith("/I ")
+                        or flag.startswith("/i ")
                     ):
                         include_dirs.append(flag[3:])
                 includes = " ".join([f"-I {d}" for d in include_dirs])
@@ -1337,8 +1346,8 @@ def generate_build_ninja(
                         sys.exit(f"Compiler {cl_path} does not exist")
         else:
             # Check if all compiler versions exist
-            for mw_version in used_compiler_versions:
-                mw_path = compilers / mw_version / "mwcceppc.exe"
+            for compiler_version in used_compiler_versions:
+                mw_path = compilers / compiler_version / "mwcceppc.exe"
                 if config.compilers_path and not os.path.exists(mw_path):
                     sys.exit(f"Compiler {mw_path} does not exist")
 
@@ -1681,6 +1690,7 @@ def generate_build_ninja(
         description="SPLIT $in",
         depfile="$out_dir/dep",
         deps="gcc",
+        restat=1,
     )
     n.build(
         inputs=config.config_path,
@@ -1816,6 +1826,7 @@ def generate_objdiff_config(
         "Wii/1.5": "mwcc_43_188",
         "Wii/1.6": "mwcc_43_202",
         "Wii/1.7": "mwcc_43_213",
+        "MSVC/6.5": "msvc6.5",
     }
 
     def add_unit(
@@ -1877,9 +1888,9 @@ def generate_objdiff_config(
                 elif value == "nodeferred":
                     reverse_fn_order = False
 
-        compiler_version = COMPILER_MAP.get(obj.options["mw_version"])
+        compiler_version = COMPILER_MAP.get(obj.options["compiler_version"])
         if compiler_version is None:
-            print(f"Missing scratch compiler mapping for {obj.options['mw_version']}")
+            print(f"Missing scratch compiler mapping for {obj.options['compiler_version']}")
         else:
             cflags_str = make_flags_str(all_cflags)
             unit_config["scratch"] = {
