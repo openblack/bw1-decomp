@@ -234,16 +234,15 @@ def MatchingFor(*versions):
 config.warn_missing_config = True
 config.warn_missing_source = False
 config.libs = [
-    # Example: add compiled source objects here as they are matched
-    # {
-    #     "lib": "SomeModule",
-    #     "mw_version": config.linker_version,
-    #     "cflags": cflags_base,
-    #     "progress_category": "game",
-    #     "objects": [
-    #         Object(NonMatching, "SomeModule/some_file.cpp"),
-    #     ],
-    # },
+    {
+        "lib": "runblack",
+        "compiler_version": config.linker_version,
+        "cflags": cflags_base,
+        "progress_category": "game",
+        "objects": [
+            Object(NonMatching, "Black/Abode.cpp"),
+        ],
+    },
 ]
 
 
