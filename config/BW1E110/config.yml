@@ -1,0 +1,25 @@
+object_base: orig/BW1E110
+object: runblack-decrypted.exe
+hash: 44315eb19b6e2ab9023ea330b99bf5d471597402
+symbols: config/BW1E110/symbols.txt
+splits: config/BW1E110/splits.txt
+# TODO: Unsure why we get 0x832000, probably because of decryptor
+force_size: 0x00902a0b
+linker_version: "6.0"
+safe_disc_version: "2.30.33"
+# TODO: Unsure why we get 0x49d000
+size_of_code: 0x49d000
+# TODO: Unsure why we get 0x71c000
+size_of_initialized_data: 0x71c000
+# TODO: Unsure why we get 0xbb493e
+size_of_image: 0xbb493e
+# TODO: Unsure why we get a wrong value
+entry_export_addr: 0x009b4f30
+# TODO: Unsure why we get a wrong value
+entry_export_size: 0x39F
+# TODO: Unsure why we get a wrong value
+entry_import_addr: 0x009af438
+# TODO: Unsure why we get a wrong value
+entry_import_size: 0x1b8
+# TODO: Unsure why we get a wrong value
+entry_resource_size: 0x38f8

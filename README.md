@@ -19,6 +19,7 @@ Scaffolded from [encounter/dtk-template](https://github.com/encounter/dtk-templa
 Supported versions:
 
 - `BW1E100` — Windows v1.00 (PE/COFF, MSVC 6.0)
+- `BW1E110` — Windows v1.10 (PE/COFF, MSVC 6.0)
 - `BW1E142` — Windows v1.42 (PE/COFF, MSVC 6.0)
 - `BW1EMAC` — Classic Mac OS PowerPC (PEF, CodeWarrior Mac) — WIP
 

@@ -1,4 +1,3 @@
-# See config.example.yml for documentation.
 object_base: orig/BW1E100
 object: runblack-decrypted.exe
 hash: d810fe43e2956f2b76533ab698632756ba99b44d

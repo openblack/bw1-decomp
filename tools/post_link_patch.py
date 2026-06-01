@@ -114,11 +114,35 @@ BW1E100_RICH_RECORDS = [
     RichRecord(RichProductID.LINKER600,    8447,  26),
 ]
 
-BW1E100_PE_OFFSET = pe_offset_after_rich_header(BW1E100_RICH_RECORDS)  # = 0x138
+BW1E110_RICH_KEY = 0xEA105BED   # extracted from original exe at offset 0x124
+BW1E110_RICH_RECORDS = [
+    RichRecord(RichProductID.UTC12_C,      8447,  23),
+    RichRecord(RichProductID.UTC12_CPP,    8966,  62),
+    RichRecord(RichProductID.ALIAS_OBJ,    7291,  14),
+    RichRecord(RichProductID.UTC12_CPP,    8797,  13),
+    RichRecord(RichProductID.MASM613,      7299,  43),
+    RichRecord(RichProductID.UTC12_C,      8797, 196),
+    RichRecord(RichProductID.LINKER600SP5, 9049,  11),
+    RichRecord(RichProductID.UTC12_C,      8799,  35),
+    RichRecord(RichProductID.UTC12_C,      8168,   7),
+    RichRecord(RichProductID.UTC12_CPP,    8168,  24),
+    RichRecord(RichProductID.LINKER600,    8168,   2),
+    RichRecord(RichProductID.LINKER600SP5, 8034,  21),
+    RichRecord(RichProductID.IMPORT,          0, 578),
+    RichRecord(RichProductID.UTC12_CPP,    8447,   2),
+    RichRecord(RichProductID.CVTRES,       1735,   1),
+    RichRecord(RichProductID.UTC12_CPP,    8799, 585),
+    RichRecord(RichProductID.IMPORT_OLD,      0,   9),
+    RichRecord(RichProductID.LINKER600,    8447,  26),
+]
 
+# TODO: 1.20 is not yet cracked
+BW1E120_RICH_KEY = 0x0A8EE120   # extracted from original exe at offset 0x124
+BW1E120_RICH_RECORDS = [
+    # TODO
+]
 
 BW1E142_RICH_KEY = 0x0A8EE120   # extracted from original exe at offset 0x124
-
 BW1E142_RICH_RECORDS = [
     RichRecord(RichProductID.UTC12_C,      8168,   1),
     RichRecord(RichProductID.UTC12_C,      8447,  23),
@@ -137,10 +161,8 @@ BW1E142_RICH_RECORDS = [
     RichRecord(RichProductID.CVTRES,       1735,   1),
     RichRecord(RichProductID.UTC12_CPP,    8966, 620),
     RichRecord(RichProductID.IMPORT_OLD,      0,   9),
-    RichRecord(RichProductID.LINKER600,     8447,  26),
+    RichRecord(RichProductID.LINKER600,    8447,  26),
 ]
-
-BW1E142_PE_OFFSET = pe_offset_after_rich_header(BW1E142_RICH_RECORDS)  # = 0x140
 
 
 # Rich header write helpers
@@ -243,15 +265,28 @@ def apply_BW1E100_patch_safedisc_cleaner(pe):
     pe.FILE_HEADER.TimeDateStamp = int.from_bytes(b'eYes', 'little')
     # 4-byte marker immediately before IMAGE_NT_HEADERS.
     # First 2 bytes are version-specific; last 2 are the 0x2BAD "too bad" signature.
-    write_bytes(pe, BW1E100_PE_OFFSET - 4, bytes([0x0C, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
+    write_bytes(pe, pe_offset_after_rich_header(BW1E100_RICH_RECORDS) - 4, bytes([0x0C, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
     # Author credit string in the header padding area (between section table and .text).
     write_bytes(pe, 0x0310, b'Safedisc2Cleaner (c) bOOls eYe, waste_me & r!sc boolseye.cjb.net')
 
 
+def apply_BW1E110_patch_safedisc_cleaner(pe):
+    # SafeDisc2Cleaner wrote its author handle into the COFF timestamp field.
+    pe.FILE_HEADER.TimeDateStamp = int.from_bytes(b'eYes', 'little')
+    # 4-byte marker immediately before IMAGE_NT_HEADERS.
+    # First 2 bytes are version-specific; last 2 are the 0x2BAD "too bad" signature.
+    write_bytes(pe, pe_offset_after_rich_header(BW1E110_RICH_RECORDS) - 4, bytes([0x0D, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
+    # Author credit string in the header padding area (between section table and .text).
+    write_bytes(pe, 0x0340, b'Safedisc2Cleaner (c) bOOls eYe, waste_me & r!sc boolseye.cjb.net')
+
+
+def apply_BW1E120_patch_safedisc_cleaner(pe):
+    raise NotImplementedError("BW1E120 not yet decrytped by safedisc cleaner 2")
+
 def apply_BW1E142_patch_safedisc_cleaner(pe):
     # 4-byte marker immediately before IMAGE_NT_HEADERS.
     # First 2 bytes are version-specific; last 2 are the 0x2BAD "too bad" signature.
-    write_bytes(pe, BW1E142_PE_OFFSET - 4, bytes([0x0D, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
+    write_bytes(pe, pe_offset_after_rich_header(BW1E142_RICH_RECORDS) - 4, bytes([0x0D, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
 
 
 def apply_BNW_common_patch(pe, cfg):
@@ -304,18 +339,57 @@ def apply_BW1E100_patch(pe, cfg):
     ))
 
 
-def apply_BW1E142_patch(pe, cfg):
-    apply_patch_safedisc(pe, cfg)
-    apply_BW1E142_patch_safedisc_cleaner(pe)
-    apply_BNW_common_patch(pe, cfg)
-
-    # Different safedisc decryptor easter egg
-    # https://www.beatport.com/nl/track/crazy-bad-bwoy/682050
-    write_bytes(pe, 0x00000340, bytes(b' crazy bad bwoy '))
+def apply_intel_strings(pe, cfg):
     # Weird leaked icc compiler strings for certain files  that were compiled with icc
     write_bytes(pe, 0x390, b"Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Build 001120  : C:\\Dev\\libs\\LIONHEAD\\LH3DLIB\\DEVELOPMENT\\LH3DP3.cpp : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -MT -W3 -GX -Zi -O2 -Ob1 -D NDEBUG -D _LH_LIB_RELEASE -D WIN32 -D _WINDOWS -D _LH_3D_LIB_ -D _GOLD -D _GOLD_ -D _USE_INTEL_COMPILER -FAcs -FaGold/ -FoGold/ -FdGold/ -FD -QxiW -G7 -c"[24:])
     write_bytes(pe, 0x503, b"Intel(R) C++ Compiler for 32-bit applications, Version 5.0.1 Beta  Build 010214Z  : cpu_disp.c : -I../ -Zl -Zp8 -DVX -DWMT -DMULTI_THREADED -Focpu_disp_mt.obj -c")
     write_bytes(pe, 0x5a5, b"Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Beta  Build 001024  : C:\\PROJECTS\\MathTest\\AMaths.c : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -ML -W3 -GX -O2 -D WIN32 -D NDEBUG -D _WINDOWS -D _USE_INTEL_COMPILER -D _KATMAI_STEP_B -FpRelease/AMaths.pch -YX -FoRelease/ -FdRelease/ -FD -QxiMKW -c")
+
+
+
+def apply_BW1E110_patch(pe, cfg):
+    apply_patch_safedisc(pe, cfg)
+    apply_BW1E110_patch_safedisc_cleaner(pe)
+    apply_BNW_common_patch(pe, cfg)
+    apply_intel_strings(pe, cfg)
+
+    # This version has an existing but deleted debug directory
+    patch_directory(pe, 'IMAGE_DIRECTORY_ENTRY_DEBUG', 0x008999c0, 0x1c)
+
+    write_bytes(pe, 0x00832000, (
+        struct.pack(
+            "<4sIII",
+            b"NB10",
+            0x00000000,
+            0x3B1BA029,
+            0x00000010,
+        )
+        + b"C:\\dev\\Black\\Gold\\Black.pdb\x00"
+         # garbage?
+        + b"\x5f\x69\x69\x2e"
+        + b"\x2e\x2e\x2f\x2e\x2e"
+        + b"\x30\x30\x30\x30\x30\x30"
+        + b"\x5f"
+        + b"\x21\x21\x21"
+        + b"\x53\xf3\xe1\x75\x68\x68\x73"
+        + b"\x5f\x5f\x5f\x5f\x5f"
+        + b"\x30\x78\x36\x32\x32\x39\x35\x38\x61\x63\xa5\x4b\x44\x81"
+    ))
+
+
+def apply_BW1E120_patch(pe, cfg):
+    raise NotImplementedError("BW1E120 not yet decrypted")
+
+
+def apply_BW1E142_patch(pe, cfg):
+    apply_patch_safedisc(pe, cfg)
+    apply_BW1E142_patch_safedisc_cleaner(pe)
+    apply_BNW_common_patch(pe, cfg)
+    apply_intel_strings(pe, cfg)
+
+    # Different safedisc decryptor easter egg
+    # https://www.beatport.com/nl/track/crazy-bad-bwoy/682050
+    write_bytes(pe, 0x00000340, bytes(b' crazy bad bwoy '))
 
     # This version has an existing but deleted debug directory
     patch_directory(pe, 'IMAGE_DIRECTORY_ENTRY_DEBUG', 0x008a99c0, 0x1c)
@@ -323,6 +397,8 @@ def apply_BW1E142_patch(pe, cfg):
 
 PATCHES = {
     "BW1E100": (BW1E100_RICH_KEY, BW1E100_RICH_RECORDS, apply_BW1E100_patch),
+    "BW1E110": (BW1E110_RICH_KEY, BW1E110_RICH_RECORDS, apply_BW1E110_patch),
+    "BW1E120": (BW1E120_RICH_KEY, BW1E120_RICH_RECORDS, apply_BW1E120_patch),
     "BW1E142": (BW1E142_RICH_KEY, BW1E142_RICH_RECORDS, apply_BW1E142_patch),
 }
 
@@ -352,6 +428,7 @@ def main():
 
     data[:] = pe.write()
     if force_size:
+        print(f"size is {hex(len(data))}, expanding to {hex(force_size)}")
         data += b'\0' * (force_size - len(data))
     pe.close()
 

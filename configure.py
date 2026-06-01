@@ -30,7 +30,8 @@ from tools.project import (
 DEFAULT_VERSION = 0
 VERSIONS = [
     "BW1E100",  # 0   PE/COFF, Windows v1.00
-    "BW1E142",  # 1   PE/COFF, Windows v1.42
+    "BW1E110",  # 1   PE/COFF, Windows v1.10
+    "BW1E142",  # 2   PE/COFF, Windows v1.42
 ]
 
 parser = argparse.ArgumentParser()
