@@ -260,36 +260,7 @@ def apply_patch_safedisc(pe, cfg):
         pe.FILE_HEADER.TimeDateStamp = int(datetime.fromisoformat(timestamp).timestamp())
 
 
-def apply_BW1E100_patch_safedisc_cleaner(pe):
-    # SafeDisc2Cleaner wrote its author handle into the COFF timestamp field.
-    pe.FILE_HEADER.TimeDateStamp = int.from_bytes(b'eYes', 'little')
-    # 4-byte marker immediately before IMAGE_NT_HEADERS.
-    # First 2 bytes are version-specific; last 2 are the 0x2BAD "too bad" signature.
-    write_bytes(pe, pe_offset_after_rich_header(BW1E100_RICH_RECORDS) - 4, bytes([0x0C, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
-    # Author credit string in the header padding area (between section table and .text).
-    write_bytes(pe, 0x0310, b'Safedisc2Cleaner (c) bOOls eYe, waste_me & r!sc boolseye.cjb.net')
-
-
-def apply_BW1E110_patch_safedisc_cleaner(pe):
-    # SafeDisc2Cleaner wrote its author handle into the COFF timestamp field.
-    pe.FILE_HEADER.TimeDateStamp = int.from_bytes(b'eYes', 'little')
-    # 4-byte marker immediately before IMAGE_NT_HEADERS.
-    # First 2 bytes are version-specific; last 2 are the 0x2BAD "too bad" signature.
-    write_bytes(pe, pe_offset_after_rich_header(BW1E110_RICH_RECORDS) - 4, bytes([0x0D, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
-    # Author credit string in the header padding area (between section table and .text).
-    write_bytes(pe, 0x0340, b'Safedisc2Cleaner (c) bOOls eYe, waste_me & r!sc boolseye.cjb.net')
-
-
-def apply_BW1E120_patch_safedisc_cleaner(pe):
-    raise NotImplementedError("BW1E120 not yet decrytped by safedisc cleaner 2")
-
-def apply_BW1E142_patch_safedisc_cleaner(pe):
-    # 4-byte marker immediately before IMAGE_NT_HEADERS.
-    # First 2 bytes are version-specific; last 2 are the 0x2BAD "too bad" signature.
-    write_bytes(pe, pe_offset_after_rich_header(BW1E142_RICH_RECORDS) - 4, bytes([0x0D, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
-
-
-def apply_BNW_common_patch(pe, cfg):
+def apply_BW1_common_patch(pe, cfg):
     # Don't put anything in DllCharacteristics
     pe.OPTIONAL_HEADER.DllCharacteristics = 0
     # Striping characteristics are removed, probably by safedisc 2
@@ -323,10 +294,47 @@ def apply_BNW_common_patch(pe, cfg):
     pe.OPTIONAL_HEADER.BaseOfData = find_section_header(pe, '.rdata').get_PointerToRawData_adj()
 
 
+def apply_intel_strings(pe, cfg):
+    # Weird leaked icc compiler strings for certain files  that were compiled with icc
+    write_bytes(pe, 0x390, b"Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Build 001120  : C:\\Dev\\libs\\LIONHEAD\\LH3DLIB\\DEVELOPMENT\\LH3DP3.cpp : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -MT -W3 -GX -Zi -O2 -Ob1 -D NDEBUG -D _LH_LIB_RELEASE -D WIN32 -D _WINDOWS -D _LH_3D_LIB_ -D _GOLD -D _GOLD_ -D _USE_INTEL_COMPILER -FAcs -FaGold/ -FoGold/ -FdGold/ -FD -QxiW -G7 -c"[24:])
+    write_bytes(pe, 0x503, b"Intel(R) C++ Compiler for 32-bit applications, Version 5.0.1 Beta  Build 010214Z  : cpu_disp.c : -I../ -Zl -Zp8 -DVX -DWMT -DMULTI_THREADED -Focpu_disp_mt.obj -c")
+    write_bytes(pe, 0x5a5, b"Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Beta  Build 001024  : C:\\PROJECTS\\MathTest\\AMaths.c : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -ML -W3 -GX -O2 -D WIN32 -D NDEBUG -D _WINDOWS -D _USE_INTEL_COMPILER -D _KATMAI_STEP_B -FpRelease/AMaths.pch -YX -FoRelease/ -FdRelease/ -FD -QxiMKW -c")
+
+
+def apply_BW1E100_patch_safedisc_cleaner(pe):
+    # SafeDisc2Cleaner wrote its author handle into the COFF timestamp field.
+    pe.FILE_HEADER.TimeDateStamp = int.from_bytes(b'eYes', 'little')
+    # 4-byte marker immediately before IMAGE_NT_HEADERS.
+    # First 2 bytes are version-specific; last 2 are the 0x2BAD "too bad" signature.
+    write_bytes(pe, pe_offset_after_rich_header(BW1E100_RICH_RECORDS) - 4, bytes([0x0C, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
+    # Author credit string in the header padding area (between section table and .text).
+    write_bytes(pe, 0x0310, b'Safedisc2Cleaner (c) bOOls eYe, waste_me & r!sc boolseye.cjb.net')
+
+
+def apply_BW1E110_patch_safedisc_cleaner(pe):
+    # SafeDisc2Cleaner wrote its author handle into the COFF timestamp field.
+    pe.FILE_HEADER.TimeDateStamp = int.from_bytes(b'eYes', 'little')
+    # 4-byte marker immediately before IMAGE_NT_HEADERS.
+    # First 2 bytes are version-specific; last 2 are the 0x2BAD "too bad" signature.
+    write_bytes(pe, pe_offset_after_rich_header(BW1E110_RICH_RECORDS) - 4, bytes([0x0D, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
+    # Author credit string in the header padding area (between section table and .text).
+    write_bytes(pe, 0x0340, b'Safedisc2Cleaner (c) bOOls eYe, waste_me & r!sc boolseye.cjb.net')
+
+
+def apply_BW1E120_patch_safedisc_cleaner(pe):
+    raise NotImplementedError("BW1E120 not yet decrytped by safedisc cleaner 2")
+
+
+def apply_BW1E142_patch_safedisc_cleaner(pe):
+    # 4-byte marker immediately before IMAGE_NT_HEADERS.
+    # First 2 bytes are version-specific; last 2 are the 0x2BAD "too bad" signature.
+    write_bytes(pe, pe_offset_after_rich_header(BW1E142_RICH_RECORDS) - 4, bytes([0x0D, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
+
+
 def apply_BW1E100_patch(pe, cfg):
     apply_patch_safedisc(pe, cfg)
     apply_BW1E100_patch_safedisc_cleaner(pe)
-    apply_BNW_common_patch(pe, cfg)
+    apply_BW1_common_patch(pe, cfg)
 
     # Possible memdump metadata
     write_bytes(pe, 0x00763000, bytes(
@@ -339,18 +347,10 @@ def apply_BW1E100_patch(pe, cfg):
     ))
 
 
-def apply_intel_strings(pe, cfg):
-    # Weird leaked icc compiler strings for certain files  that were compiled with icc
-    write_bytes(pe, 0x390, b"Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Build 001120  : C:\\Dev\\libs\\LIONHEAD\\LH3DLIB\\DEVELOPMENT\\LH3DP3.cpp : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -MT -W3 -GX -Zi -O2 -Ob1 -D NDEBUG -D _LH_LIB_RELEASE -D WIN32 -D _WINDOWS -D _LH_3D_LIB_ -D _GOLD -D _GOLD_ -D _USE_INTEL_COMPILER -FAcs -FaGold/ -FoGold/ -FdGold/ -FD -QxiW -G7 -c"[24:])
-    write_bytes(pe, 0x503, b"Intel(R) C++ Compiler for 32-bit applications, Version 5.0.1 Beta  Build 010214Z  : cpu_disp.c : -I../ -Zl -Zp8 -DVX -DWMT -DMULTI_THREADED -Focpu_disp_mt.obj -c")
-    write_bytes(pe, 0x5a5, b"Intel(R) C++ Compiler for 32-bit applications, Version 5.0 Beta  Build 001024  : C:\\PROJECTS\\MathTest\\AMaths.c : -Qvc6 -Qlocation,link,C:\\Program Files\\Microsoft Visual Studio\\VC98\\bin -nologo -G6 -ML -W3 -GX -O2 -D WIN32 -D NDEBUG -D _WINDOWS -D _USE_INTEL_COMPILER -D _KATMAI_STEP_B -FpRelease/AMaths.pch -YX -FoRelease/ -FdRelease/ -FD -QxiMKW -c")
-
-
-
 def apply_BW1E110_patch(pe, cfg):
     apply_patch_safedisc(pe, cfg)
     apply_BW1E110_patch_safedisc_cleaner(pe)
-    apply_BNW_common_patch(pe, cfg)
+    apply_BW1_common_patch(pe, cfg)
     apply_intel_strings(pe, cfg)
 
     # This version has an existing but deleted debug directory
@@ -384,7 +384,7 @@ def apply_BW1E120_patch(pe, cfg):
 def apply_BW1E142_patch(pe, cfg):
     apply_patch_safedisc(pe, cfg)
     apply_BW1E142_patch_safedisc_cleaner(pe)
-    apply_BNW_common_patch(pe, cfg)
+    apply_BW1_common_patch(pe, cfg)
     apply_intel_strings(pe, cfg)
 
     # Different safedisc decryptor easter egg
