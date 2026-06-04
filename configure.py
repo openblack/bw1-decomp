@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.4"
+config.dtk_tag = "v0.0.5"
 config.objdiff_tag = "v3.6.1"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.1.0"
@@ -180,6 +180,9 @@ config.reconfig_deps = []
 # producing the final exe that is checked against build.sha1.
 _linked = f"build/{config.version}/runblack-decrypted-linked.exe"
 _patched = f"build/{config.version}/runblack-decrypted.exe"
+_modules = ["LHAudio", "LHLog", "LHMultiplayer", "LHDialog"]
+_module_linked = [f"build/{config.version}/{m}-linked.dll" for m in _modules]
+_module_patched = [f"build/{config.version}/{m}.dll" for m in _modules]
 config.custom_build_rules = [
     {
         "name": "postpatch",
@@ -193,7 +196,8 @@ config.custom_build_steps = {
             "outputs": _patched,
             "rule": "postpatch",
             "inputs": _linked,
-            "implicit": "tools/post_link_patch.py",
+            "implicit": ["tools/post_link_patch.py", *_module_linked],
+            "implicit_outputs": _module_patched,
         },
     ],
 }

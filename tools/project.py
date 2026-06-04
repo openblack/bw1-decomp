@@ -972,7 +972,9 @@ def generate_build_ninja(
 
         def output(self) -> Path:
             if config.platform == "pe":
-                return build_path / f"{self.name}.exe"
+                # The base image is an .exe; additional modules are DLLs.
+                ext = "exe" if self.module_id == 0 else "dll"
+                return build_path / f"{self.name}.{ext}"
             elif self.module_id == 0:
                 return build_path / f"{self.name}.dol"
             else:
@@ -980,9 +982,11 @@ def generate_build_ninja(
 
         def partial_output(self) -> Path:
             if config.platform == "pe":
+                # The base image is an .exe; additional modules are DLLs.
+                ext = "exe" if self.module_id == 0 else "dll"
                 has_post_link = bool(config.custom_build_steps and "post-link" in config.custom_build_steps)
                 stem = f"{self.name}-linked" if has_post_link else self.name
-                return build_path / f"{stem}.exe"
+                return build_path / f"{stem}.{ext}"
             elif self.module_id == 0:
                 return build_path / f"{self.name}.elf"
             else:
@@ -991,9 +995,11 @@ def generate_build_ninja(
         def write(self, n: ninja_syntax.Writer) -> None:
             n.comment(f"Link {self.name}")
             if config.platform == "pe":
+                # The base image is an .exe; additional modules are DLLs.
+                ext = "exe" if self.module_id == 0 else "dll"
                 has_post_link = bool(config.custom_build_steps and "post-link" in config.custom_build_steps)
                 stem = f"{self.name}-linked" if has_post_link else self.name
-                exe_path = build_path / f"{stem}.exe"
+                exe_path = build_path / f"{stem}.{ext}"
                 pe_ldflags = list(config.ldflags)
                 map_path: Optional[Path] = None
                 if config.generate_map:
@@ -1929,15 +1935,19 @@ def generate_objdiff_config(
             progress_categories.append("dol")
         add_unit(unit, build_config["name"], progress_categories)
 
-    # Add REL units
-    for module in build_config["modules"]:
-        for unit in module["units"]:
-            progress_categories = []
-            if config.progress_modules:
-                progress_categories.append("modules")
-            if config.progress_each_module:
-                progress_categories.append(module["name"])
-            add_unit(unit, module["name"], progress_categories)
+    # Add REL units. PE modules are byte-exact relinks of the original DLLs, not
+    # C-decompilation targets, so they have no objdiff diff target and their
+    # split objects intentionally keep data in the .data VirtualSize tail (which
+    # objdiff rejects). Their correctness is gated by build.sha1 instead.
+    if config.platform != "pe":
+        for module in build_config["modules"]:
+            for unit in module["units"]:
+                progress_categories = []
+                if config.progress_modules:
+                    progress_categories.append("modules")
+                if config.progress_each_module:
+                    progress_categories.append(module["name"])
+                add_unit(unit, module["name"], progress_categories)
 
     # Add progress categories
     def add_category(id: str, name: str):

@@ -23,3 +23,28 @@ entry_import_addr: 0x008efa40
 entry_import_size: 0x190
 # TODO: Unsure why we get 0x393e
 entry_resource_size: 0x38F8
+
+modules:
+- object: LHaudiodllR.dll
+  hash: 35f149cb77e9f770751112c0c814331c5b92bb4d
+  name: LHAudio
+  symbols: config/BW1E100/LHAudio/symbols.txt
+  splits: config/BW1E100/LHAudio/splits.txt
+
+- object: lhlogr.dll
+  hash: 30a92037f5b0df604e5fa63aedb4633a6fcdb226
+  name: LHLog
+  symbols: config/BW1E100/LHLog/symbols.txt
+  splits: config/BW1E100/LHLog/splits.txt
+
+- object: LHMultiplayerR.dll
+  hash: ef08506f38ea430b9c8348e0f9d44385964ff4d6
+  name: LHMultiplayer
+  symbols: config/BW1E100/LHMultiplayer/symbols.txt
+  splits: config/BW1E100/LHMultiplayer/splits.txt
+
+- object: LHDialogLib.dll
+  hash: 64a22b88a51adc4bc119777642263e419ea8d09e
+  name: LHDialog
+  symbols: config/BW1E100/LHDialog/symbols.txt
+  splits: config/BW1E100/LHDialog/splits.txt

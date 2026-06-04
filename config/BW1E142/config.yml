@@ -17,3 +17,28 @@ entry_import_addr: 0x009bf6e8
 entry_import_size: 0x1B8
 entry_resource_addr: 0x00fc2000
 entry_resource_size: 0x38F8
+
+modules:
+- object: LHaudiodllR.dll
+  hash: 35f149cb77e9f770751112c0c814331c5b92bb4d
+  name: LHAudio
+  symbols: config/BW1E142/LHAudio/symbols.txt
+  splits: config/BW1E142/LHAudio/splits.txt
+
+- object: LHLogR.dll
+  hash: 9ed6d153b24634b731ba062f38ee0fbb14001149
+  name: LHLog
+  symbols: config/BW1E142/LHLog/symbols.txt
+  splits: config/BW1E142/LHLog/splits.txt
+
+- object: LHMultiplayerR.dll
+  hash: 4042119212fb6a5da6d736b059347f340eb4cd17
+  name: LHMultiplayer
+  symbols: config/BW1E142/LHMultiplayer/symbols.txt
+  splits: config/BW1E142/LHMultiplayer/splits.txt
+
+- object: LHDialogLib.dll
+  hash: 64a22b88a51adc4bc119777642263e419ea8d09e
+  name: LHDialog
+  symbols: config/BW1E142/LHDialog/symbols.txt
+  splits: config/BW1E142/LHDialog/splits.txt

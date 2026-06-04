@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 
-###
-# Post-link patch script.
-# Applies version-specific binary fixups to the relinked executable,
-# producing the final output that is verified against build.sha1.
-#
-# Usage (called by ninja automatically):
-#   python3 tools/post_link_patch.py --version BW1E100 <input.exe> <output.exe>
-###
+"""
+Post-link patch script.
+Applies version-specific binary fixups to the relinked executable,
+producing the final output that is verified against build.sha1.
+
+Usage (called by ninja automatically):
+  python3 tools/post_link_patch.py --version BW1E100 <input.exe> <output.exe>
+"""
 
 import argparse
+import json
 import struct
 import yaml
 from datetime import datetime
@@ -165,6 +166,119 @@ BW1E142_RICH_RECORDS = [
 ]
 
 
+BW1E100_LHAUDIO_RICH_KEY = 0x52ED8B05   # extracted from original dll at offset 0xec
+BW1E100_LHAUDIO_RICH_SLOTS = 2
+BW1E100_LHAUDIO_RICH_RECORDS = [
+    RichRecord(RichProductID.ALIAS_OBJ,    7291,   2),
+    RichRecord(RichProductID.UTC12_CPP,    8797,   8),
+    RichRecord(RichProductID.MASM613,      7299,  30),
+    RichRecord(RichProductID.UTC12_C,      8797, 119),
+    RichRecord(RichProductID.UTC12_C,      8799,   9),
+    RichRecord(RichProductID.IMPORT_OLD,      0,   2),
+    RichRecord(RichProductID.LINKER600SP5, 8034,  11),
+    RichRecord(RichProductID.IMPORT,          0, 140),
+    RichRecord(RichProductID.UTC12_CPP,    8799,  19),
+    RichRecord(RichProductID.CVTRES,       1735,   1),
+    RichRecord(RichProductID.LINKER600,    8447,  37),
+]
+
+BW1E100_LHLOG_RICH_KEY = 0xF22BBA49   # extracted from original dll at offset 0xdc
+BW1E100_LHLOG_RICH_SLOTS = 3
+BW1E100_LHLOG_RICH_RECORDS = [
+    RichRecord(RichProductID.ALIAS_OBJ,    7291,   2),
+    RichRecord(RichProductID.UTC12_CPP,    8797,  10),
+    RichRecord(RichProductID.MASM613,      7299,  23),
+    RichRecord(RichProductID.UTC12_C,      8797, 120),
+    RichRecord(RichProductID.LINKER600SP5, 8034,  11),
+    RichRecord(RichProductID.IMPORT,          0, 129),
+    RichRecord(RichProductID.UTC12_CPP,    8799,   7),
+    RichRecord(RichProductID.CVTRES,       1735,   1),
+    RichRecord(RichProductID.LINKER600,    8447,   1),
+]
+
+BW1E100_LHMULTIPLAYER_RICH_KEY = 0x741C518F   # extracted from original dll at offset 0xec
+BW1E100_LHMULTIPLAYER_RICH_SLOTS = 2
+BW1E100_LHMULTIPLAYER_RICH_RECORDS = [
+    RichRecord(RichProductID.UTC12_C,      8799,  23),
+    RichRecord(RichProductID.ALIAS_OBJ,    7291,   3),
+    RichRecord(RichProductID.UTC12_CPP,    8797,  10),
+    RichRecord(RichProductID.MASM613,      7299,  23),
+    RichRecord(RichProductID.UTC12_C,      8797, 144),
+    RichRecord(RichProductID.UTC12_C,      8447,  12),
+    RichRecord(RichProductID.UTC12_CPP,    8168,   3),
+    RichRecord(RichProductID.LINKER600SP5, 8034,  11),
+    RichRecord(RichProductID.IMPORT,          0, 180),
+    RichRecord(RichProductID.UTC12_CPP,    8799,  28),
+    RichRecord(RichProductID.LINKER600,    8447,   3),
+]
+
+BW1E100_LHDIALOG_RICH_KEY = 0xEEAE27EE   # extracted from original dll at offset 0xcc
+BW1E100_LHDIALOG_RICH_SLOTS = 1
+BW1E100_LHDIALOG_RICH_RECORDS = [
+    RichRecord(RichProductID.LINKER600SP5, 8034,   2),
+    RichRecord(RichProductID.MASM613,      7299,   1),
+    RichRecord(RichProductID.UTC12_C,      8447,   4),
+    RichRecord(RichProductID.IMPORT,          0, 165),
+    RichRecord(RichProductID.UTC12_CPP,    8447,  13),
+    RichRecord(RichProductID.CVTRES,       1735,   1),
+    RichRecord(RichProductID.LINKER600,    8447,   6),
+]
+
+BW1E110_LHAUDIO_RICH_KEY = BW1E100_LHAUDIO_RICH_KEY
+BW1E110_LHAUDIO_RICH_SLOTS = BW1E100_LHAUDIO_RICH_SLOTS
+BW1E110_LHAUDIO_RICH_RECORDS = BW1E100_LHAUDIO_RICH_RECORDS
+
+BW1E110_LHLOG_RICH_KEY = BW1E100_LHLOG_RICH_KEY
+BW1E110_LHLOG_RICH_SLOTS = BW1E100_LHLOG_RICH_SLOTS
+BW1E110_LHLOG_RICH_RECORDS = BW1E100_LHLOG_RICH_RECORDS
+
+BW1E110_LHMULTIPLAYER_RICH_KEY = BW1E100_LHMULTIPLAYER_RICH_KEY
+BW1E110_LHMULTIPLAYER_RICH_SLOTS = BW1E100_LHMULTIPLAYER_RICH_SLOTS
+BW1E110_LHMULTIPLAYER_RICH_RECORDS = BW1E100_LHMULTIPLAYER_RICH_RECORDS
+
+BW1E110_LHDIALOG_RICH_KEY = BW1E100_LHDIALOG_RICH_KEY
+BW1E110_LHDIALOG_RICH_SLOTS = BW1E100_LHDIALOG_RICH_SLOTS
+BW1E110_LHDIALOG_RICH_RECORDS = BW1E100_LHDIALOG_RICH_RECORDS
+
+BW1E142_LHAUDIO_RICH_KEY = BW1E100_LHAUDIO_RICH_KEY
+BW1E142_LHAUDIO_RICH_SLOTS = BW1E100_LHAUDIO_RICH_SLOTS
+BW1E142_LHAUDIO_RICH_RECORDS = BW1E100_LHAUDIO_RICH_RECORDS
+
+BW1E142_LHLOG_RICH_KEY = 0x042055C6   # extracted from original dll at offset 0xdc
+BW1E142_LHLOG_RICH_SLOTS = 3
+BW1E142_LHLOG_RICH_RECORDS = [
+    RichRecord(RichProductID.ALIAS_OBJ,    7291,   2),
+    RichRecord(RichProductID.UTC12_CPP,    8047,  10),
+    RichRecord(RichProductID.MASM613,      7299,  23),
+    RichRecord(RichProductID.UTC12_C,      8047, 120),
+    RichRecord(RichProductID.LINKER600SP5, 8034,  11),
+    RichRecord(RichProductID.IMPORT,          0, 129),
+    RichRecord(RichProductID.UTC12_CPP,    8966,   7),
+    RichRecord(RichProductID.CVTRES,       1735,   1),
+    RichRecord(RichProductID.LINKER600,    8447,   1),
+]
+
+BW1E142_LHMULTIPLAYER_RICH_KEY = 0x40924540   # extracted from original dll at offset 0xec
+BW1E142_LHMULTIPLAYER_RICH_SLOTS = 3
+BW1E142_LHMULTIPLAYER_RICH_RECORDS = [
+    RichRecord(RichProductID.UTC12_C,      8799,  23),
+    RichRecord(RichProductID.ALIAS_OBJ,    7291,   5),
+    RichRecord(RichProductID.UTC12_CPP,    8047,  10),
+    RichRecord(RichProductID.MASM613,      7299,  23),
+    RichRecord(RichProductID.UTC12_C,      8047, 146),
+    RichRecord(RichProductID.UTC12_C,      8447,  12),
+    RichRecord(RichProductID.UTC12_CPP,    8168,   3),
+    RichRecord(RichProductID.LINKER600SP5, 8034,  11),
+    RichRecord(RichProductID.IMPORT,          0, 180),
+    RichRecord(RichProductID.UTC12_CPP,    8966,  28),
+    RichRecord(RichProductID.LINKER600,    8447,   3),
+]
+
+BW1E142_LHDIALOG_RICH_KEY = BW1E100_LHDIALOG_RICH_KEY
+BW1E142_LHDIALOG_RICH_SLOTS = BW1E100_LHDIALOG_RICH_SLOTS
+BW1E142_LHDIALOG_RICH_RECORDS = BW1E100_LHDIALOG_RICH_RECORDS
+
+
 # Rich header write helpers
 
 def write_bytes(pe, offset, data):
@@ -208,10 +322,10 @@ def write_rich_header(pe, addr, key, records):
     write_bytes(pe, off + 4, struct.pack('<I', key))
 
 
-def insert_rich_header(pe, key, records):
+def insert_rich_header(pe, key, records, reserved_slots=RICH_HEADER_RESERVED_SLOTS):
     # pefile gives us the current stub end (lld-link always sets e_lfanew = LLDLINK_STUB_SIZE)
     rich_start = pe.DOS_HEADER.e_lfanew
-    gap = rich_header_size(records) + RICH_HEADER_PAD
+    gap = rich_header_size(records) + reserved_slots * RICH_RECORD_SIZE
 
     # Shift IMAGE_NT_HEADERS back to make room. pefile's set_file_offset
     # updates section PointerToRawData, data directories, etc. automatically.
@@ -331,7 +445,7 @@ def apply_BW1E142_patch_safedisc_cleaner(pe):
     write_bytes(pe, pe_offset_after_rich_header(BW1E142_RICH_RECORDS) - 4, bytes([0x0D, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
 
 
-def apply_BW1E100_patch(pe, cfg):
+def apply_BW1E100_patch(pe, cfg, out_dir, modules):
     apply_patch_safedisc(pe, cfg)
     apply_BW1E100_patch_safedisc_cleaner(pe)
     apply_BW1_common_patch(pe, cfg)
@@ -346,8 +460,10 @@ def apply_BW1E100_patch(pe, cfg):
         + struct.pack('<I', 0x81444ba5)  # little-endian native value
     ))
 
+    apply_modules_patch(out_dir, cfg, modules)
 
-def apply_BW1E110_patch(pe, cfg):
+
+def apply_BW1E110_patch(pe, cfg, out_dir, modules):
     apply_patch_safedisc(pe, cfg)
     apply_BW1E110_patch_safedisc_cleaner(pe)
     apply_BW1_common_patch(pe, cfg)
@@ -376,12 +492,14 @@ def apply_BW1E110_patch(pe, cfg):
         + b"\x30\x78\x36\x32\x32\x39\x35\x38\x61\x63\xa5\x4b\x44\x81"
     ))
 
+    apply_modules_patch(out_dir, cfg, modules)
 
-def apply_BW1E120_patch(pe, cfg):
+
+def apply_BW1E120_patch(pe, cfg, out_dir, modules):
     raise NotImplementedError("BW1E120 not yet decrypted")
 
 
-def apply_BW1E142_patch(pe, cfg):
+def apply_BW1E142_patch(pe, cfg, out_dir, modules):
     apply_patch_safedisc(pe, cfg)
     apply_BW1E142_patch_safedisc_cleaner(pe)
     apply_BW1_common_patch(pe, cfg)
@@ -394,13 +512,75 @@ def apply_BW1E142_patch(pe, cfg):
     # This version has an existing but deleted debug directory
     patch_directory(pe, 'IMAGE_DIRECTORY_ENTRY_DEBUG', 0x008a99c0, 0x1c)
 
+    apply_modules_patch(out_dir, cfg, modules)
+
 
 PATCHES = {
-    "BW1E100": (BW1E100_RICH_KEY, BW1E100_RICH_RECORDS, apply_BW1E100_patch),
-    "BW1E110": (BW1E110_RICH_KEY, BW1E110_RICH_RECORDS, apply_BW1E110_patch),
-    "BW1E120": (BW1E120_RICH_KEY, BW1E120_RICH_RECORDS, apply_BW1E120_patch),
-    "BW1E142": (BW1E142_RICH_KEY, BW1E142_RICH_RECORDS, apply_BW1E142_patch),
+    "BW1E100": (BW1E100_RICH_KEY, BW1E100_RICH_RECORDS, apply_BW1E100_patch, {
+        "LHAudio":       (BW1E100_LHAUDIO_RICH_KEY,       BW1E100_LHAUDIO_RICH_RECORDS,       BW1E100_LHAUDIO_RICH_SLOTS),
+        "LHLog":         (BW1E100_LHLOG_RICH_KEY,         BW1E100_LHLOG_RICH_RECORDS,         BW1E100_LHLOG_RICH_SLOTS),
+        "LHMultiplayer": (BW1E100_LHMULTIPLAYER_RICH_KEY, BW1E100_LHMULTIPLAYER_RICH_RECORDS, BW1E100_LHMULTIPLAYER_RICH_SLOTS),
+        "LHDialog":      (BW1E100_LHDIALOG_RICH_KEY,      BW1E100_LHDIALOG_RICH_RECORDS,      BW1E100_LHDIALOG_RICH_SLOTS),
+    }),
+    "BW1E110": (BW1E110_RICH_KEY, BW1E110_RICH_RECORDS, apply_BW1E110_patch, {
+        "LHAudio":       (BW1E110_LHAUDIO_RICH_KEY,       BW1E110_LHAUDIO_RICH_RECORDS,       BW1E110_LHAUDIO_RICH_SLOTS),
+        "LHLog":         (BW1E110_LHLOG_RICH_KEY,         BW1E110_LHLOG_RICH_RECORDS,         BW1E110_LHLOG_RICH_SLOTS),
+        "LHMultiplayer": (BW1E110_LHMULTIPLAYER_RICH_KEY, BW1E110_LHMULTIPLAYER_RICH_RECORDS, BW1E110_LHMULTIPLAYER_RICH_SLOTS),
+        "LHDialog":      (BW1E110_LHDIALOG_RICH_KEY,      BW1E110_LHDIALOG_RICH_RECORDS,      BW1E110_LHDIALOG_RICH_SLOTS),
+    }),
+    "BW1E120": (BW1E120_RICH_KEY, BW1E120_RICH_RECORDS, apply_BW1E120_patch, {}),
+    "BW1E142": (BW1E142_RICH_KEY, BW1E142_RICH_RECORDS, apply_BW1E142_patch, {
+        "LHAudio":       (BW1E142_LHAUDIO_RICH_KEY,       BW1E142_LHAUDIO_RICH_RECORDS,       BW1E142_LHAUDIO_RICH_SLOTS),
+        "LHLog":         (BW1E142_LHLOG_RICH_KEY,         BW1E142_LHLOG_RICH_RECORDS,         BW1E142_LHLOG_RICH_SLOTS),
+        "LHMultiplayer": (BW1E142_LHMULTIPLAYER_RICH_KEY, BW1E142_LHMULTIPLAYER_RICH_RECORDS, BW1E142_LHMULTIPLAYER_RICH_SLOTS),
+        "LHDialog":      (BW1E142_LHDIALOG_RICH_KEY,      BW1E142_LHDIALOG_RICH_RECORDS,      BW1E142_LHDIALOG_RICH_SLOTS),
+    }),
 }
+
+
+def apply_module_patch(pe, cfg, pe_metadata):
+    # Override the linker version to the original one (we're using lld-link)
+    linker_version = cfg.get("linker_version")
+    if linker_version:
+        pe.OPTIONAL_HEADER.MajorLinkerVersion, pe.OPTIONAL_HEADER.MinorLinkerVersion = map(int, linker_version.split("."))
+    # Header fields lld-link reproduces differently, taken from the original PE
+    # (captured by dtk at split time into config.json).
+    pe.FILE_HEADER.TimeDateStamp = pe_metadata["timestamp"]
+    pe.FILE_HEADER.Characteristics = pe_metadata["characteristics"]
+    pe.OPTIONAL_HEADER.DllCharacteristics = pe_metadata["dll_characteristics"]
+    pe.OPTIONAL_HEADER.BaseOfData = pe_metadata["base_of_data"]
+    pe.OPTIONAL_HEADER.SizeOfCode = pe_metadata["size_of_code"]
+    pe.OPTIONAL_HEADER.SizeOfInitializedData = pe_metadata["size_of_initialized_data"]
+    pe.OPTIONAL_HEADER.SizeOfImage = pe_metadata["size_of_image"]
+    # Data directories (lld-link leaves export/import/IAT/debug/delay-import unset)
+    for i, (rva, size) in enumerate(pe_metadata["data_directories"]):
+        pe.OPTIONAL_HEADER.DATA_DIRECTORY[i].VirtualAddress = rva
+        pe.OPTIONAL_HEADER.DATA_DIRECTORY[i].Size = size
+    # The original linker's .reloc VirtualSize differs from lld-link's
+    find_section_header(pe, '.reloc').Misc_VirtualSize = pe_metadata["reloc_virtual_size"]
+
+
+def apply_modules_patch(out_dir, cfg, modules):
+    build_config = json.loads((out_dir / "config.json").read_text())
+    metadata = {m["name"]: m.get("pe_metadata") for m in build_config.get("modules", [])}
+    for name, (rich_key, rich_records, rich_slots) in modules.items():
+        pe_metadata = metadata.get(name)
+
+        data = bytearray((out_dir / f"{name}-linked.dll").read_bytes())
+        pe   = pefile.PE(data=data)
+
+        insert_rich_header(pe, rich_key, rich_records, rich_slots)
+        zero_code_section_padding(pe)
+        if pe_metadata:
+            apply_module_patch(pe, cfg, pe_metadata)
+
+        data[:] = pe.write()
+        # Trailing data (e.g. the CodeView debug record) that lld-link drops.
+        if pe_metadata:
+            data += bytes(pe_metadata["trailing_data"])
+        pe.close()
+
+        (out_dir / f"{name}.dll").write_bytes(data)
 
 
 def main():
@@ -413,18 +593,21 @@ def main():
     parser.add_argument("--version", required=True, choices=list(PATCHES), help="Game version")
     args = parser.parse_args()
 
-    rich_key, rich_records, apply_safedisc = PATCHES[args.version]
+    rich_key, rich_records, apply_safedisc, modules = PATCHES[args.version]
 
     cfg_path  = Path("config") / args.version / "config.yml"
     cfg       = yaml.safe_load(cfg_path.read_text())
     force_size = cfg.get("force_size")
+
+    out = args.output if args.output is not None else args.input
+    out.parent.mkdir(parents=True, exist_ok=True)
 
     data = bytearray(args.input.read_bytes())
     pe   = pefile.PE(data=data)
 
     insert_rich_header(pe, rich_key, rich_records)
     zero_code_section_padding(pe)
-    apply_safedisc(pe, cfg)
+    apply_safedisc(pe, cfg, out.parent, modules)
 
     data[:] = pe.write()
     if force_size:
@@ -432,8 +615,6 @@ def main():
         data += b'\0' * (force_size - len(data))
     pe.close()
 
-    out = args.output if args.output is not None else args.input
-    out.parent.mkdir(parents=True, exist_ok=True)
     out.write_bytes(data)
 
 
