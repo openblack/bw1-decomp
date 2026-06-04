@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [BW1E100, BW1E142]
+        version: [BW1E100, BW1E110, BW1E142]
 
     steps:
     # Checkout the repository
