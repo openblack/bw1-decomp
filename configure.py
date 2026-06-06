@@ -907,6 +907,7 @@ config.libs = [
             Object(NonMatching, "Black/VillagerChild.cpp"),
             Object(NonMatching, "Black/VillagerCivic.cpp"),
             Object(NonMatching, "Black/VillagerDance.cpp"),
+            Object(NonMatching, "Black/VillagerFarmer.cpp"),
             Object(NonMatching, "Black/VillagerFireman.cpp"),
             Object(NonMatching, "Black/VillagerFisherman.cpp"),
             Object(NonMatching, "Black/VillagerFootball.cpp"),

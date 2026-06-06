@@ -42,3 +42,8 @@ Black/VillagerDance.cpp:
 	.text       start:0x00759810 end:0x00759B90
 	.rdata      start:0x0099A950 end:0x0099A958
 	.bss        start:0x00DB9DF4 end:0x00DB9DFC
+
+Black/VillagerFarmer.cpp:
+	.text       start:0x00759B90 end:0x0075A370
+	.rdata      start:0x0099A958 end:0x0099A960
+	.bss        start:0x00DB9DFC end:0x00DB9E00
