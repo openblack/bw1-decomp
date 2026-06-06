@@ -2,3 +2,77 @@ Sections:
 	.text       type:code align:4096
 	.rdata      type:rodata align:4096
 	.data       type:data align:4096
+
+Lionhead/LHMultiplayer/ver4.0/LHPacketisableObject.cpp:
+	.text       start:0x10001000 end:0x100011C0
+	.rdata      start:0x1005029C end:0x100502AC
+
+Lionhead/LHMultiplayer/ver4.0/LHTransportInfo.cpp:
+	.text       start:0x10001440 end:0x100019C0
+	.rdata      start:0x100502AC end:0x100502BC
+
+Lionhead/LHMultiplayer/ver4.0/LHChannel.cpp:
+	.text       start:0x10004120 end:0x10004610
+	.rdata      start:0x100502DC end:0x100502F0
+
+Lionhead/LHMultiplayer/ver4.0/LHConnection.cpp:
+	.text       start:0x10004670 end:0x100054B0
+	.rdata      start:0x100502CC end:0x100502DC
+	.data       start:0x10061294 end:0x100612AC
+
+Lionhead/LHMultiplayer/ver4.0/LHConnectionServer.cpp:
+	.text       start:0x10008410 end:0x1000C460
+	.data       start:0x100613B4 end:0x10061614
+
+Lionhead/LHMultiplayer/ver4.0/LHLobby.cpp:
+	.text       start:0x1000C620 end:0x1000EF70
+	.rdata      start:0x10050300 end:0x10050324
+	.data       start:0x10068D20 end:0x10068E80
+
+Lionhead/LHMultiplayer/ver4.0/LHMail.cpp:
+	.text       start:0x10011A70 end:0x100138B0
+	.rdata      start:0x100506A0 end:0x10050800
+	.data       start:0x1006180C end:0x10061B48
+
+Lionhead/LHMultiplayer/ver4.0/LHPacket.cpp:
+	.text       start:0x10015990 end:0x10016070
+	.data       start:0x10061D1C end:0x10061D20
+
+Lionhead/LHMultiplayer/ver4.0/LHNetEvent.cpp:
+	.text       start:0x100160E0 end:0x10017000
+	.data       start:0x10062308 end:0x100624F8
+
+Lionhead/LHMultiplayer/ver4.0/LHNetLocalLobbyInfo.cpp:
+	.text       start:0x100171C0 end:0x10017880
+	.rdata      start:0x100502F0 end:0x10050300
+
+Lionhead/LHMultiplayer/ver4.0/LHNetUser.cpp:
+	.text       start:0x100178E0 end:0x10018220
+	.data       start:0x10062518 end:0x100626B0
+
+Lionhead/LHMultiplayer/ver4.0/LHPlayer.cpp:
+	.text       start:0x100199B0 end:0x1001A1B0
+	.rdata      start:0x100502BC end:0x100502CC
+
+Lionhead/LHMultiplayer/ver4.0/LHSerial.cpp:
+	.text       start:0x1001BDE0 end:0x1001C0C0
+	.data       start:0x100629B4 end:0x100629CC
+
+Lionhead/LHMultiplayer/ver4.0/LHSession.cpp:
+	.text       start:0x1001C4E0 end:0x1001F260
+	.rdata      start:0x10050324 end:0x10050334
+	.data       start:0x100629CC end:0x10062A18
+
+Lionhead/LHMultiplayer/ver4.0/LHSocket.cpp:
+	.text       start:0x1001FC90 end:0x100200E0
+	.rdata      start:0x100505E4 end:0x1005060C
+
+Lionhead/LHMultiplayer/ver4.0/LHSocketTCP.cpp:
+	.text       start:0x100200E0 end:0x10021D90
+	.rdata      start:0x1005060C end:0x100506A0
+	.data       start:0x10068384 end:0x10068400
+
+Lionhead/LHMultiplayer/ver4.0/LHTransport.cpp:
+	.text       start:0x10022260 end:0x100240C0
+	.rdata      start:0x10050334 end:0x100505E4
+	.data       start:0x10062A90 end:0x10062AA8
