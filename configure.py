@@ -167,7 +167,7 @@ config.objdiff_tag = "v3.6.1"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.1.0"
 config.compilers_tag = "6.5"  # MSVC 6.0 SP5
-config.lld_link_tag = "bw1-decomp-014"
+config.lld_link_tag = "bw1-decomp-015"
 
 # Project
 config.config_path = Path("config") / config.version / "config.yml"
