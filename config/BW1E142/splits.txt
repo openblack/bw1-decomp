@@ -13,3 +13,10 @@ Black/Abode.cpp:
 	.rdata      start:0x008A99DC end:0x008AB278
 	.rdata$r    start:0x009A62D8 end:0x009A6570
 	.data       start:0x009C7E80 end:0x009C8078
+
+Black/Villager.cpp:
+	.text       start:0x0074F7D0 end:0x00756C80
+	.rdata      start:0x0099A1E4 end:0x0099A924
+	.rdata$r    start:0x009AD530 end:0x009AD57C
+	.data       start:0x00C234E0 end:0x00C235C0
+	.bss        start:0x00DA6BC0 end:0x00DB9DC0
