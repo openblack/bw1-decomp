@@ -37,3 +37,8 @@ Black/VillagerCivic.cpp:
 	.rdata      start:0x0099A940 end:0x0099A950
 	.data       start:0x00C23704 end:0x00C2372C
 	.bss        start:0x00DB9DD8 end:0x00DB9DF4
+
+Black/VillagerDance.cpp:
+	.text       start:0x00759810 end:0x00759B90
+	.rdata      start:0x0099A950 end:0x0099A958
+	.bss        start:0x00DB9DF4 end:0x00DB9DFC
