@@ -903,6 +903,7 @@ config.libs = [
             Object(NonMatching, "Black/Utils.cpp"),
             Object(NonMatching, "Black/ValueSpinner.cpp"),
             Object(NonMatching, "Black/Villager.cpp"),
+            Object(NonMatching, "Black/VillagerCheck.cpp"),
             Object(NonMatching, "Black/VillagerChild.cpp"),
             Object(NonMatching, "Black/VillagerCivic.cpp"),
             Object(NonMatching, "Black/VillagerFireman.cpp"),
