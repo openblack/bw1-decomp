@@ -25,3 +25,15 @@ Black/VillagerCheck.cpp:
 	.text       start:0x00756C80 end:0x00757860
 	.rdata      start:0x0099A924 end:0x0099A930
 	.bss        start:0x00DB9DC0 end:0x00DB9DD0
+
+Black/VillagerChild.cpp:
+	.text       start:0x00757860 end:0x00758120
+	.rdata      start:0x0099A930 end:0x0099A940
+	.data       start:0x00C236E0 end:0x00C23704
+	.bss        start:0x00DB9DD0 end:0x00DB9DD8
+
+Black/VillagerCivic.cpp:
+	.text       start:0x00758120 end:0x00759810
+	.rdata      start:0x0099A940 end:0x0099A950
+	.data       start:0x00C23704 end:0x00C2372C
+	.bss        start:0x00DB9DD8 end:0x00DB9DF4
