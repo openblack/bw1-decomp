@@ -142,3 +142,42 @@ Black/VillagerWorshipper.cpp:
 	.text       start:0x0076B9E0 end:0x0076CED0
 	.rdata      start:0x0099AA5C end:0x0099AA64
 	.bss        start:0x00DCB16C end:0x00DCB174
+
+zlib/deflate.c:
+	.text       start:0x007BF210 end:0x007C08D0
+	.rdata      start:0x0099F878 end:0x0099F8B0
+
+zlib/inflate.c:
+	.text       start:0x007C08D0 end:0x007C1060
+	.rdata      start:0x0099F8B0 end:0x0099F92C
+
+zlib/zutil.c:
+	.text       start:0x007C1060 end:0x007C10C0
+	.data       start:0x00C2BF60 end:0x00C2C068
+
+zlib/adler32.c:
+	.text       start:0x007C10C0 end:0x007C11F0
+
+zlib/trees.c:
+	.text       start:0x007C11F0 end:0x007C2E30
+	.rdata      start:0x0099F92C end:0x009A035C
+
+zlib/infblock.c:
+	.text       start:0x007C2E30 end:0x007C3CE0
+	.rdata      start:0x009A035C end:0x009A03A8
+	.data       start:0x00C2C068 end:0x00C2C120
+
+zlib/infcodes.c:
+	.text       start:0x007C3CE0 end:0x007C44F0
+
+zlib/inftrees.c:
+	.text       start:0x007C44F0 end:0x007C4C30
+	.rdata      start:0x009A03A8 end:0x009A05C0
+	.data       start:0x00C2C120 end:0x00C2D350
+
+zlib/infutil.c:
+	.text       start:0x007C4C30 end:0x007C4D70
+	.data       start:0x00C2D350 end:0x00C2D394
+
+zlib/inffast.c:
+	.text       start:0x007C4D70 end:0x007C5100

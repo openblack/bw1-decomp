@@ -211,9 +211,9 @@ cflags_base = [
     "/Zd",
     "/MT",
     "/GR",
-    "/TP",
     "/I", "include",
     f"/I", f"build/{config.version}/include",
+    f"/I", f"build/compilers/{config.linker_version}/include",
     f"/DBUILD_VERSION={version_num}",
     f"/DVERSION_{config.version}",
 ]
@@ -953,6 +953,17 @@ config.libs = [
             Object(NonMatching, "Black/WorshipSpell.cpp"),
             Object(NonMatching, "Black/WorshipSpellIcon.cpp"),
             Object(NonMatching, "Black/WorshipTotem.cpp"),
+
+            Object(NonMatching, "zlib/deflate.c"),
+            Object(NonMatching, "zlib/inflate.c"),
+            Object(NonMatching, "zlib/zutil.c"),
+            Object(NonMatching, "zlib/adler32.c"),
+            Object(NonMatching, "zlib/trees.c"),
+            Object(NonMatching, "zlib/infblock.c"),
+            Object(NonMatching, "zlib/infcodes.c"),
+            Object(NonMatching, "zlib/inftrees.c"),
+            Object(NonMatching, "zlib/infutil.c"),
+            Object(NonMatching, "zlib/inffast.c")
         ],
     },
     {
