@@ -954,16 +954,17 @@ config.libs = [
             Object(NonMatching, "Black/WorshipSpellIcon.cpp"),
             Object(NonMatching, "Black/WorshipTotem.cpp"),
 
+            # TODO: Can match if duplicate symbol: ??_C@_05NLJN@1?41?43?$AA@ ("1.1.3" @ 00c2ba74) is resolved
             Object(NonMatching, "zlib/deflate.c"),
             Object(NonMatching, "zlib/inflate.c"),
             Object(NonMatching, "zlib/zutil.c"),
-            Object(NonMatching, "zlib/adler32.c"),
-            Object(NonMatching, "zlib/trees.c"),
-            Object(NonMatching, "zlib/infblock.c"),
-            Object(NonMatching, "zlib/infcodes.c"),
-            Object(NonMatching, "zlib/inftrees.c"),
-            Object(NonMatching, "zlib/infutil.c"),
-            Object(NonMatching, "zlib/inffast.c")
+            Object(Matching, "zlib/adler32.c"),
+            Object(Matching, "zlib/trees.c"),
+            Object(Matching, "zlib/infblock.c"),
+            Object(Matching, "zlib/infcodes.c"),
+            Object(Matching, "zlib/inftrees.c"),
+            Object(Matching, "zlib/infutil.c"),
+            Object(Matching, "zlib/inffast.c")
         ],
     },
     {
