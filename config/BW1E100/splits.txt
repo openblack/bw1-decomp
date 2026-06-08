@@ -12,3 +12,69 @@ Black/Abode.cpp:
 	.rdata      start:0x007EB900 end:0x007ED1A0
 	.rdata$r    start:0x008DA598 end:0x008DA830
 	.data       start:0x008F75A0 end:0x008F7780
+
+Black/Villager.cpp:
+	.text       start:0x006DFB00 end:0x006E62C0
+
+Black/VillagerCheck.cpp:
+	.text       start:0x006E62C0 end:0x006E6DB0
+
+Black/VillagerChild.cpp:
+	.text       start:0x006E6DB0 end:0x006E7650
+
+Black/VillagerCivic.cpp:
+	.text       start:0x006E7650 end:0x006E8AF0
+
+Black/VillagerDance.cpp:
+	.text       start:0x006E8AF0 end:0x006E8DA0
+
+Black/VillagerFarmer.cpp:
+	.text       start:0x006E8DA0 end:0x006E94E0
+
+Black/VillagerFireman.cpp:
+	.text       start:0x006E94E0 end:0x006EA570
+
+Black/VillagerFisherman.cpp:
+	.text       start:0x006EA570 end:0x006EA970
+
+Black/VillagerFood.cpp:
+	.text       start:0x006EA970 end:0x006EB0E0
+
+Black/VillagerFootball.cpp:
+	.text       start:0x006EB0E0 end:0x006EE230
+
+Black/VillagerForester.cpp:
+	.text       start:0x006EE230 end:0x006EEBB0
+
+Black/VillagerHome.cpp:
+	.text       start:0x006EEBB0 end:0x006F06A0
+
+Black/VillagerHousewife.cpp:
+	.text       start:0x006F06A0 end:0x006F0FC0
+
+Black/villagernames.cpp:
+	.text       start:0x006F0FC0 end:0x006F18E0
+
+Black/VillagerPlaytime.cpp:
+	.text       start:0x006F18E0 end:0x006F1B30
+
+Black/VillagerReaction.cpp:
+	.text       start:0x006F1B30 end:0x006F5C00
+
+Black/VillagerReactionToCreature.cpp:
+	.text       start:0x006F5C00 end:0x006F6770
+
+Black/VillagerScript.cpp:
+	.text       start:0x006F6770 end:0x006F6C80
+
+Black/VillagerShepherd.cpp:
+	.text       start:0x006F6C80 end:0x006F74F0
+
+Black/VillagerStates.cpp:
+	.text       start:0x006F74F0 end:0x006F9930
+
+Black/VillagerTrader.cpp:
+	.text       start:0x006F9930 end:0x006F9960
+
+Black/VillagerWorshipper.cpp:
+	.text       start:0x006F9960 end:0x006FACC0

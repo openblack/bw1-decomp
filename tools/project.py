@@ -1692,7 +1692,7 @@ def generate_build_ninja(
     n.comment(split_desc)
     n.rule(
         name="split",
-        command=f"{dtk} {split_kind} split $in $out_dir && touch $out",
+        command=f"{dtk} {split_kind} split --no-update $in $out_dir",
         description="SPLIT $in",
         depfile="$out_dir/dep",
         deps="gcc",
