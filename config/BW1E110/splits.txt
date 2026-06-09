@@ -13,3 +13,45 @@ Black/Abode.cpp:
 	.rdata      start:0x008999DC end:0x0089B278
 	.rdata$r    start:0x009961D8 end:0x00996470
 	.data       start:0x009B7640 end:0x009B7820
+
+zlib/deflate.c:
+	.text       start:0x007AF030 end:0x007B06F0
+	.rdata      start:0x0098F780 end:0x0098F830
+	.data       start:0x00C1ADA4 end:0x00C1ADA8
+
+zlib/inflate.c:
+	.text       start:0x007B06F0 end:0x007B0E80
+	.rdata      start:0x0098F830 end:0x0098F834
+
+zlib/zutil.c:
+	.text       start:0x007B0E80 end:0x007B0EE0
+	.data       start:0x00C1ADA8 end:0x00C1AEB0
+
+zlib/adler32.c:
+	.text       start:0x007B0EE0 end:0x007B1010
+
+zlib/trees.c:
+	.text       start:0x007B1010 end:0x007B2C50
+	.rdata      start:0x0098F834 end:0x00990264
+	.data       start:0x00C1AEB0 end:0x00C1AEF4
+
+zlib/infblock.c:
+	.text       start:0x007B2C50 end:0x007B3B00
+	.rdata      start:0x00990264 end:0x009902B0
+	.data       start:0x00C1AEF4 end:0x00C1AF68
+
+zlib/infcodes.c:
+	.text       start:0x007B3B00 end:0x007B4310
+	.data       start:0x00C1AF68 end:0x00C1AFA0
+
+zlib/inftrees.c:
+	.text       start:0x007B4310 end:0x007B4A50
+	.rdata      start:0x009902B0 end:0x009904C8
+	.data       start:0x00C1AFA0 end:0x00C1C198
+
+zlib/infutil.c:
+	.text       start:0x007B4A50 end:0x007B4B90
+	.data       start:0x00C1C198 end:0x00C1C1DC
+
+zlib/inffast.c:
+	.text       start:0x007B4B90 end:0x007B4F20
