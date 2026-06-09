@@ -274,6 +274,7 @@ int f;
 #endif
 }
 
+#ifndef VERSION_BW1E100
 
 int ZEXPORT inflateSetDictionary(z, dictionary, dictLength)
 z_streamp z;
@@ -364,3 +365,5 @@ z_streamp z;
     return Z_STREAM_ERROR;
   return inflate_blocks_sync_point(z->state->blocks);
 }
+
+#endif // VERSION_BW1E100

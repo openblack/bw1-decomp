@@ -1014,6 +1014,8 @@ void _tr_flush_block(s, buf, stored_len, eof)
            s->compressed_len-7*eof));
 }
 
+#ifndef VERSION_BW1E100
+
 /* ===========================================================================
  * Save the match info and tally the frequency counts. Return true if
  * the current block must be flushed.
@@ -1064,6 +1066,8 @@ int _tr_tally (s, dist, lc)
      * 64K-1 bytes.
      */
 }
+
+#endif // VERSION_BW1E100
 
 /* ===========================================================================
  * Send the block data compressed using the given Huffman trees

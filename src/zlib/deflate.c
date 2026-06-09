@@ -287,6 +287,8 @@ int ZEXPORT deflateInit2_(strm, level, method, windowBits, memLevel, strategy,
     return deflateReset(strm);
 }
 
+#ifndef VERSION_BW1E100
+
 /* ========================================================================= */
 int ZEXPORT deflateSetDictionary (strm, dictionary, dictLength)
     z_streamp strm;
@@ -328,6 +330,8 @@ int ZEXPORT deflateSetDictionary (strm, dictionary, dictLength)
     return Z_OK;
 }
 
+#endif // VERSION_BW1E100
+
 /* ========================================================================= */
 int ZEXPORT deflateReset (strm)
     z_streamp strm;
@@ -357,6 +361,8 @@ int ZEXPORT deflateReset (strm)
 
     return Z_OK;
 }
+
+#ifndef VERSION_BW1E100
 
 /* ========================================================================= */
 int ZEXPORT deflateParams(strm, level, strategy)
@@ -393,6 +399,8 @@ int ZEXPORT deflateParams(strm, level, strategy)
     s->strategy = strategy;
     return err;
 }
+
+#endif // VERSION_BW1E100
 
 /* =========================================================================
  * Put a short in the pending buffer. The 16-bit value is put in MSB order.
@@ -592,6 +600,8 @@ int ZEXPORT deflateEnd (strm)
     return status == BUSY_STATE ? Z_DATA_ERROR : Z_OK;
 }
 
+#ifndef VERSION_BW1E100
+
 /* =========================================================================
  * Copy the source state to the destination state.
  * To simplify the source, this is not supported for 16-bit MSDOS (which
@@ -651,6 +661,8 @@ int ZEXPORT deflateCopy (dest, source)
     return Z_OK;
 #endif
 }
+
+#endif // VERSION_BW1E100
 
 /* ===========================================================================
  * Read a new buffer from the current input stream, update the adler32
