@@ -15,66 +15,128 @@ Black/Abode.cpp:
 
 Black/Villager.cpp:
 	.text       start:0x006DFB00 end:0x006E62C0
+	.rdata      start:0x008d134c end:0x008d1a64
+	.rdata$r    start:0x008e1ec8 end:0x008e1f14
+	.data       start:0x00b46420 end:0x00b46500
+	.bss        start:0x00cc7858 end:0x00cdaa58
 
 Black/VillagerCheck.cpp:
 	.text       start:0x006E62C0 end:0x006E6DB0
+	.rdata      start:0x008d1a64 end:0x008d1a70
+	.bss        start:0x00cdaa58 end:0x00cdaa68
 
 Black/VillagerChild.cpp:
 	.text       start:0x006E6DB0 end:0x006E7650
+	.rdata      start:0x008d1a70 end:0x008d1a80
+	.data       start:0x00b46598 end:0x00b465b8
+	.bss        start:0x00cdaa68 end:0x00cdaa70
 
 Black/VillagerCivic.cpp:
 	.text       start:0x006E7650 end:0x006E8AF0
+	.rdata      start:0x008d1a80 end:0x008d1a90
+	.data       start:0x00b465b8 end:0x00b465dc
+	.bss        start:0x00cdaa70 end:0x00cdaa8c
 
 Black/VillagerDance.cpp:
 	.text       start:0x006E8AF0 end:0x006E8DA0
+	.rdata      start:0x008d1a90 end:0x008d1a98
+	.bss        start:0x00cdaa8c end:0x00cdaa94
 
 Black/VillagerFarmer.cpp:
 	.text       start:0x006E8DA0 end:0x006E94E0
+	.rdata      start:0x008d1a98 end:0x008d1aa0
+	.bss        start:0x00cdaa94 end:0x00cdaa98
 
 Black/VillagerFireman.cpp:
 	.text       start:0x006E94E0 end:0x006EA570
+	.rdata      start:0x008d1aa0 end:0x008d1ab0
+	.data       start:0x00b465dc end:0x00b46600
+	.bss        start:0x00cdaa98 end:0x00cdaa9c
 
 Black/VillagerFisherman.cpp:
 	.text       start:0x006EA570 end:0x006EA970
+	.rdata      start:0x008d1ab0 end:0x008d1ab8
+	.data       start:0x00b46600 end:0x00b46628
+	.bss        start:0x00cdaa9c end:0x00cdaaa0
 
 Black/VillagerFood.cpp:
 	.text       start:0x006EA970 end:0x006EB0E0
+	.rdata      start:0x008d1ab8 end:0x008d1ac0
+	.bss        start:0x00cdaaa0 end:0x00cdaaa4
 
 Black/VillagerFootball.cpp:
 	.text       start:0x006EB0E0 end:0x006EE230
+	.rdata      start:0x008d1ac0 end:0x008d1acc
+	.data       start:0x00b46628 end:0x00b47310
+	.bss        start:0x00cdaaa4 end:0x00cdaaac
 
 Black/VillagerForester.cpp:
 	.text       start:0x006EE230 end:0x006EEBB0
+	.rdata      start:0x008d1acc end:0x008d1ad4
+	.bss        start:0x00cdaaac end:0x00cdaab0
 
 Black/VillagerHome.cpp:
 	.text       start:0x006EEBB0 end:0x006F06A0
+	.rdata      start:0x008d1ad4 end:0x008d1adc
+	.data       start:0x00b47310 end:0x00b473b4
+	.bss        start:0x00cdaab0 end:0x00cdaab4
 
 Black/VillagerHousewife.cpp:
 	.text       start:0x006F06A0 end:0x006F0FC0
+	.rdata      start:0x008d1adc end:0x008d1ae4
+	.data       start:0x00b473b4 end:0x00b473d8
+	.bss        start:0x00cdaab4 end:0x00cdaab8
+
+Black/VillagerLeader.cpp:
+	.rdata      start:0x008d1ae4 end:0x008d1af8
+	.bss        start:0x00cdaab8 end:0x00cdaabc
 
 Black/villagernames.cpp:
 	.text       start:0x006F0FC0 end:0x006F18E0
+	.rdata      start:0x008d1af8 end:0x008d1b00
+	.data       start:0x00b473d8 end:0x00b47414
+	.bss        start:0x00cdaabc end:0x00cdaac4
 
 Black/VillagerPlaytime.cpp:
 	.text       start:0x006F18E0 end:0x006F1B30
+	.rdata      start:0x008d1b00 end:0x008d1b0c
+	.bss        start:0x00cdaac4 end:0x00cdaac8
 
 Black/VillagerReaction.cpp:
 	.text       start:0x006F1B30 end:0x006F5C00
+	.rdata      start:0x008d1b0c end:0x008d1b20
+	.data       start:0x00b47414 end:0x00b4744c
+	.bss        start:0x00cdaac8 end:0x00cdaad0
 
 Black/VillagerReactionToCreature.cpp:
 	.text       start:0x006F5C00 end:0x006F6770
+	.rdata      start:0x008d1b20 end:0x008d1b38
+	.data       start:0x00b4744c end:0x00b47478
+	.bss        start:0x00cdaad0 end:0x00cdaadc
 
 Black/VillagerScript.cpp:
 	.text       start:0x006F6770 end:0x006F6C80
+	.rdata      start:0x008d1b38 end:0x008d1b44
+	.data       start:0x00b47478 end:0x00b47498
+	.bss        start:0x00cdaadc end:0x00cdaae8
 
 Black/VillagerShepherd.cpp:
 	.text       start:0x006F6C80 end:0x006F74F0
+	.rdata      start:0x008d1b44 end:0x008d1b4c
+	.bss        start:0x00cdaae8 end:0x00cdaaf0
 
 Black/VillagerStates.cpp:
 	.text       start:0x006F74F0 end:0x006F9930
+	.rdata      start:0x008d1b4c end:0x008d1b90
+	.data       start:0x00b47498 end:0x00b474e0
+	.bss        start:0x00cdaaf0 end:0x00CEBDF8
 
 Black/VillagerTrader.cpp:
 	.text       start:0x006F9930 end:0x006F9960
+	.rdata      start:0x008d1b90 end:0x008d1b9c
+	.bss        start:0x00CEBDF8 end:0x00CEBe04
 
 Black/VillagerWorshipper.cpp:
 	.text       start:0x006F9960 end:0x006FACC0
+	.rdata      start:0x008d1b9c end:0x008d1ba4
+	.bss        start:0x00CEBe04 end:0x00CEBe0c

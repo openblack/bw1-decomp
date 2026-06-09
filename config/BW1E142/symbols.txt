@@ -23766,6 +23766,7 @@ lbl_009AD4CC = .rdata:0x009AD4CC; // type:object size:0x4C
 ??_R4SpellFlockFlying@@6B@ = .rdata:0x009AD518; // type:object size:0x14
 lbl_009AD52C = .rdata:0x009AD52C; // type:object size:0x4
 ??_R2Villager@@8 = .rdata:0x009AD530; // type:object size:0x24
+??_R3Villager@@8 = .rdata:0x009ad558; // type:object size:0x10
 lbl_009AD554 = .rdata:0x009AD554; // type:object size:0x14
 ??_R4Villager@@6B@ = .rdata:0x009AD568; // type:object size:0x14
 lbl_009AD57C = .rdata:0x009AD57C; // type:object size:0x4C
