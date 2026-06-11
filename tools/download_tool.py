@@ -141,13 +141,18 @@ def download(url, response, output) -> None:
                 dst = os.path.join(root, name.lower())
                 if src != dst:
                     os.rename(src, dst)
-        # Flatten Bin/ to root so cl.exe lands directly in the output directory
+        # Flatten Bin/ to root so cl.exe lands directly in the output directory.
+        # Replace any existing destination (stale copies from a prior partial
+        # extract) so bin/ always empties and the rmdir below cannot fail.
         bin_dir = output / "bin"
         if bin_dir.is_dir():
             for item in bin_dir.iterdir():
                 dst = output / item.name
-                if not dst.exists():
-                    shutil.move(str(item), str(dst))
+                if dst.is_dir():
+                    shutil.rmtree(dst)
+                elif dst.exists():
+                    dst.unlink()
+                shutil.move(str(item), str(dst))
             bin_dir.rmdir()
         # Make all files executable
         for root, _, files in os.walk(output):
