@@ -1,6 +1,6 @@
 object_base: orig/BW1E142
 object: runblack-decrypted.exe
-hash: bccccbd3a08fe9a5d6cf59cd114e916401abfb51
+hash: 9c9aea96f046911ab1b7e496fae511ed5ebbfefe
 symbols: config/BW1E142/symbols.txt
 splits: config/BW1E142/splits.txt
 
@@ -26,8 +26,9 @@ modules:
   splits: config/BW1E142/LHAudio/splits.txt
 
 - object: LHLogR.dll
-  hash: 9ed6d153b24634b731ba062f38ee0fbb14001149
+  hash: 3c42f20350da2c54eb1ba0a61829b94d9883669a
   name: LHLog
+  linker_version: "7.0"
   symbols: config/BW1E142/LHLog/symbols.txt
   splits: config/BW1E142/LHLog/splits.txt
 

@@ -42,6 +42,14 @@ class RichProductID(IntEnum):
     CVTOMF700    = 0x0011
     MASM614      = 0x0012
     LINKER600SP5 = 0x0013  # link.exe 6.00 SP5
+    IMPORT_VS2002 = 0x0019  # VS2002 (7.0) import library record
+    UTC70_C      = 0x001C  # cl.exe C (VS2002 .NET, build 9466)
+    UTC70_CPP    = 0x001D  # cl.exe C++ (VS2002 .NET, build 9466)
+    ALIASOBJ70   = 0x0027  # aliasobj.exe (VS2002 7.0)
+    LINKER70     = 0x003D  # link.exe (VS2002 .NET, build 9466)
+    EXP70        = 0x003F  # export record (VS2002 .NET, build 9466)
+    MASM70       = 0x0040  # ml.exe (VS2002 .NET, build 9466)
+    CVTRES70     = 0x0045  # cvtres.exe (VS2002 .NET, build 9466)
 
 
 class RichRecord(NamedTuple):
@@ -244,18 +252,18 @@ BW1E142_LHAUDIO_RICH_KEY = BW1E100_LHAUDIO_RICH_KEY
 BW1E142_LHAUDIO_RICH_SLOTS = BW1E100_LHAUDIO_RICH_SLOTS
 BW1E142_LHAUDIO_RICH_RECORDS = BW1E100_LHAUDIO_RICH_RECORDS
 
-BW1E142_LHLOG_RICH_KEY = 0x042055C6   # extracted from original dll at offset 0xdc
+BW1E142_LHLOG_RICH_KEY = 0xE4859AE9   # extracted from original dll at offset 0xdc
 BW1E142_LHLOG_RICH_SLOTS = 3
 BW1E142_LHLOG_RICH_RECORDS = [
-    RichRecord(RichProductID.ALIAS_OBJ,    7291,   2),
-    RichRecord(RichProductID.UTC12_CPP,    8047,  10),
-    RichRecord(RichProductID.MASM613,      7299,  23),
-    RichRecord(RichProductID.UTC12_C,      8047, 120),
-    RichRecord(RichProductID.LINKER600SP5, 8034,  11),
-    RichRecord(RichProductID.IMPORT,          0, 129),
-    RichRecord(RichProductID.UTC12_CPP,    8966,   7),
-    RichRecord(RichProductID.CVTRES,       1735,   1),
-    RichRecord(RichProductID.LINKER600,    8447,   1),
+    RichRecord(RichProductID.ALIASOBJ70,    9162,   2),
+    RichRecord(RichProductID.MASM70,        9466,  23),
+    RichRecord(RichProductID.UTC70_C,       9466, 126),
+    RichRecord(RichProductID.IMPORT_VS2002, 9210,  11),
+    RichRecord(RichProductID.IMPORT,           0, 131),
+    RichRecord(RichProductID.UTC70_CPP,     9466,  18),
+    RichRecord(RichProductID.EXP70,         9466,   1),
+    RichRecord(RichProductID.CVTRES70,      9466,   1),
+    RichRecord(RichProductID.LINKER70,      9466,   1),
 ]
 
 BW1E142_LHMULTIPLAYER_RICH_KEY = 0x40924540   # extracted from original dll at offset 0xec
@@ -563,8 +571,10 @@ def apply_module_patch(pe, cfg, pe_metadata):
 def apply_modules_patch(out_dir, cfg, modules):
     build_config = json.loads((out_dir / "config.json").read_text())
     metadata = {m["name"]: m.get("pe_metadata") for m in build_config.get("modules", [])}
+    module_cfgs = {m["name"]: m for m in cfg.get("modules", [])}
     for name, (rich_key, rich_records, rich_slots) in modules.items():
         pe_metadata = metadata.get(name)
+        module_cfg = {**cfg, **module_cfgs.get(name, {})}
 
         data = bytearray((out_dir / f"{name}-linked.dll").read_bytes())
         pe   = pefile.PE(data=data)
@@ -572,7 +582,7 @@ def apply_modules_patch(out_dir, cfg, modules):
         insert_rich_header(pe, rich_key, rich_records, rich_slots)
         zero_code_section_padding(pe)
         if pe_metadata:
-            apply_module_patch(pe, cfg, pe_metadata)
+            apply_module_patch(pe, module_cfg, pe_metadata)
 
         data[:] = pe.write()
         # Trailing data (e.g. the CodeView debug record) that lld-link drops.
