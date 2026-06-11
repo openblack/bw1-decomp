@@ -1,0 +1,18 @@
+#ifndef BW1_DECOMP_MPFE_START_GAME_TRANSFER_FILES_MESSAGE_INCLUDED_H
+#define BW1_DECOMP_MPFE_START_GAME_TRANSFER_FILES_MESSAGE_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
+
+#include "MPFEMessageObject.h" /* For struct MPFEMessageObject */
+
+class MPFEStartGameTransferFilesMessage: public MPFEMessageObject
+{
+public:
+
+    // Override methods
+
+    // win1.41 00630050 mac 103a6e30 MPFEStartGameTransferFilesMessage::_dt(void)
+    virtual ~MPFEStartGameTransferFilesMessage();
+};
+
+#endif /* BW1_DECOMP_MPFE_START_GAME_TRANSFER_FILES_MESSAGE_INCLUDED_H */

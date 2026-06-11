@@ -1,0 +1,32 @@
+#ifndef BW1_DECOMP_LH3D_ISLAND_INCLUDED_H
+#define BW1_DECOMP_LH3D_ISLAND_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
+#include <stdint.h> /* For uint32_t, uint8_t */
+
+// Forward Declares
+
+struct LH3DColor;
+struct LH3DMapCoords;
+struct LH3DMaterial;
+struct LH3DTexture;
+
+struct LandCell
+{
+    uint8_t r; /* 0x0 */
+    uint8_t g;
+    uint8_t b;
+    uint8_t luminosity;
+    uint8_t altitude;
+    uint8_t saveColor;
+    uint8_t properties;
+    uint8_t flags;
+
+    // Non-virtual methods
+
+    // win1.41 inlined mac 1000cd10 LandCell::IsWater(void)
+    bool IsWater();
+};
+
+#endif /* BW1_DECOMP_LH3D_ISLAND_INCLUDED_H */

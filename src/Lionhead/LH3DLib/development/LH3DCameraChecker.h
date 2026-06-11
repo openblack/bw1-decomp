@@ -1,0 +1,26 @@
+#ifndef BW1_DECOMP_LH3D_CAMERA_CHECKER_INCLUDED_H
+#define BW1_DECOMP_LH3D_CAMERA_CHECKER_INCLUDED_H
+
+#include <assert.h> /* For static_assert */
+#include <stdbool.h> /* For bool */
+#include <stdint.h> /* For uint32_t */
+
+#include "LHPoint.h" /* For struct LHPoint */
+
+struct LH3DCameraChecker
+{
+    LH3DCameraChecker* next; /* 0x0 */
+    float max_dist;
+    LHPoint point;
+    float field_0x14;
+    uint32_t field_0x18;
+    uint32_t field_0x1c;
+    bool y_only; /* 0x20 */
+
+    // Static methods
+
+    // win1.41 00821050 mac 100c4df0 LH3DCameraChecker::Create(float, LHPoint, float, long, bool)
+    static void Create(float max_distance, LHPoint point, float param_3, long param_4, bool y_only);
+};
+
+#endif /* BW1_DECOMP_LH3D_CAMERA_CHECKER_INCLUDED_H */
