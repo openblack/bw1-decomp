@@ -689,7 +689,7 @@ config.libs = [
             Object(NonMatching, "Black/PBall.cpp"),
             Object(NonMatching, "Black/PCInput.cpp"),
             Object(NonMatching, "Black/PCMain.cpp"),
-            Object(NonMatching, "Black/Persistent.cpp"),
+            Object(Matching, "Black/Persistent.cpp"),
             Object(NonMatching, "Black/PFootball.cpp"),
             Object(NonMatching, "Black/PhysicalShield.cpp"),
             Object(NonMatching, "Black/PhysicsObject.cpp"),
