@@ -526,6 +526,7 @@ def generate_build_ninja(
                 pool="cargo",
                 depfile=Path("$target") / "release" / "$bin.d",
                 deps="gcc",
+                restat=1,
             )
             cargo_rule_written = True
 
@@ -1692,7 +1693,7 @@ def generate_build_ninja(
     n.comment(split_desc)
     n.rule(
         name="split",
-        command=f"{dtk} {split_kind} split --no-update $in $out_dir",
+        command=f"{dtk} {split_kind} split $in $out_dir",
         description="SPLIT $in",
         depfile="$out_dir/dep",
         deps="gcc",
