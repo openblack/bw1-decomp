@@ -38,7 +38,7 @@ public:
     // win1.41 004366f0 mac 1009ebc0 Base::operator new(unsigned long)
     static void* __nw(size_t size, const char* file_name, uint32_t line);
     // win1.41 00436970 mac 10425a80 Base::operator delete(void*, unsigned long)
-    static void __dl(void* ptr, size_t size);
+    static void operator delete(void* ptr, size_t size);
 
     // Constructors
 

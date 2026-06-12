@@ -363,7 +363,7 @@ config.libs = [
             Object(NonMatching, "Black/CreatureInfo.cpp"),
             Object(NonMatching, "Black/CreatureInitialDesireInfo.cpp"),
             Object(NonMatching, "Black/CreatureInitialLesson.cpp"),
-            Object(NonMatching, "Black/CreatureInitialSourceInfo.cpp"),
+            Object(Matching, "Black/CreatureInitialSourceInfo.cpp"),
             Object(NonMatching, "Black/CreatureLearning.cpp"),
             Object(NonMatching, "Black/CreatureLessonChooser.cpp"),
             Object(NonMatching, "Black/CreatureLook.cpp"),

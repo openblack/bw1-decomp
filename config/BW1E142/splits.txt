@@ -14,6 +14,11 @@ Black/Abode.cpp:
 	.rdata$r    start:0x009A62D8 end:0x009A6570
 	.data       start:0x009C7E80 end:0x009C8078
 
+Black/CreatureInitialSourceInfo.cpp:
+	.text       start:0x004DD260 end:0x004DD360
+	.rdata      start:0x008D0000 end:0x008D0030
+	.rdata$r    start:0x009AACF8 end:0x009AAD48
+
 Black/Persistent.cpp:
 	.text       start:0x00580A10 end:0x00580A60
 	.rdata      start:0x009001DC end:0x009001F0
