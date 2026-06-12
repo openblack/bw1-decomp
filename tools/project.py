@@ -323,6 +323,12 @@ def file_is_c_cpp(path: Path) -> bool:
     return file_is_c(path) or file_is_cpp(path)
 
 
+def file_is_obj(path: Path) -> bool:
+    # Prebuilt object files (e.g. extracted from a known-matching libcmt.lib)
+    # that are linked verbatim rather than compiled from source.
+    return path.suffix.lower() in (".obj", ".o")
+
+
 _listdir_cache = {}
 
 
@@ -1293,6 +1299,11 @@ def generate_build_ninja(
                 elif file_is_asm(obj.src_path):
                     # Add assembler build rule
                     built_obj_path = asm_build(obj, obj.src_path, obj.src_obj_path)
+                elif file_is_obj(obj.src_path):
+                    # Prebuilt object: link verbatim, no compile step
+                    if obj.options["add_to_all"]:
+                        source_inputs.append(obj.src_path)
+                    built_obj_path = obj.src_path
                 else:
                     sys.exit(f"Unknown source file type {obj.src_path}")
             else:
@@ -1868,8 +1879,13 @@ def generate_objdiff_config(
             return
 
         src_exists = obj.src_path is not None and obj.src_path.exists()
+        src_is_obj = src_exists and file_is_obj(obj.src_path)
         if src_exists:
-            unit_config["base_path"] = obj.src_obj_path
+            # Prebuilt objects are linked verbatim, so the base is the source
+            # object itself rather than a compiled output.
+            unit_config["base_path"] = (
+                obj.src_path if src_is_obj else obj.src_obj_path
+            )
             unit_config["metadata"]["source_path"] = obj.src_path
 
         # Filter out include directories
@@ -1906,7 +1922,7 @@ def generate_objdiff_config(
                 "c_flags": cflags_str,
                 "preset_id": obj.options["scratch_preset_id"],
             }
-            if src_exists:
+            if src_exists and not src_is_obj:
                 unit_config["scratch"].update(
                     {
                         "ctx_path": obj.ctx_path,
