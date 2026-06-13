@@ -132,22 +132,22 @@ def download(url, response, output) -> None:
     elif url.endswith(".tar.gz") or url.endswith(".tgz"):
         data = io.BytesIO(response.read())
         output.mkdir(parents=True, exist_ok=True)
+        # Extract with every path component lowercased. The archive ships
+        # mixed-case names ("Include", "Bin", ...) but the build references
+        # them lowercase, and on a case-sensitive FS that mismatch breaks the
+        # lookup. Lowercasing during extraction (rather than renaming after)
+        # makes case-variant members land in the same directory, so re-runs
+        # are idempotent and never need the output dir deleted.
         with tarfile.open(fileobj=data, mode="r:gz") as t:
-            t.extractall(output)
-        # Normalize all filenames to lowercase
-        for root, dirs, files in os.walk(output, topdown=False):
-            for name in files + dirs:
-                src = os.path.join(root, name)
-                dst = os.path.join(root, name.lower())
-                if src != dst:
-                    os.rename(src, dst)
-        # Flatten Bin/ to root so cl.exe lands directly in the output directory
+            for member in t.getmembers():
+                member.name = member.name.lower()
+                t.extract(member, output)
+        # Flatten Bin/ to root so cl.exe lands directly in the output directory.
+        # Overwrite existing entries so re-runs stay idempotent.
         bin_dir = output / "bin"
         if bin_dir.is_dir():
             for item in bin_dir.iterdir():
-                dst = output / item.name
-                if not dst.exists():
-                    shutil.move(str(item), str(dst))
+                os.replace(str(item), str(output / item.name))
             bin_dir.rmdir()
         # Make all files executable
         for root, _, files in os.walk(output):
