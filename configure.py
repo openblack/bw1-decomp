@@ -168,6 +168,13 @@ config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.1.0"
 config.compilers_tag = "6.5"  # MSVC 6.0 SP5
 config.lld_link_tag = "bw1-decomp-015"
+# Static libraries to pull verbatim CRT objects from (see LibObject). All from
+# Visual Studio 6.0 (1998) SP5, downloaded from the public jmfrank63/VC6Ultimate
+# repo at a pinned commit — nothing committed. Add libs individually as needed
+# (each id must have a matching download_tool URL entry).
+config.static_libs = {
+    "libcmt": "58b3876f249a11568cff05dc7d96b1a1c9c06637",  # LIBCMT.LIB
+}
 
 # Project
 config.config_path = Path("config") / config.version / "config.yml"
@@ -234,6 +241,14 @@ Equivalent = config.non_matching  # Object should be linked when configured with
 # Object is only matching for specific versions
 def MatchingFor(*versions):
     return config.version in versions
+
+
+# An object linked verbatim from a downloaded static library (e.g. LIBCMT.LIB).
+# `archive` is the library id (see config.libcmt_tag); `member` is the path of
+# the object inside the archive. The unit name is derived as lib/<archive>/<obj>.
+def LibObject(completed, archive, member, **options):
+    name = "lib/" + archive + "/" + member.replace("\\", "/").rsplit("/", 1)[-1]
+    return Object(completed, name, lib_archive=archive, lib_member=member, **options)
 
 
 config.warn_missing_config = True
@@ -965,6 +980,8 @@ config.libs = [
             Object(Matching, "zlib/inftrees.c"),
             Object(Matching, "zlib/infutil.c"),
             Object(Matching, "zlib/inffast.c"),
+
+            LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\util.obj", progress_category="sdk"),
         ],
     },
     {
