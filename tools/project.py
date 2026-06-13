@@ -729,12 +729,16 @@ def generate_build_ninja(
     llvm_ar: Optional[Path] = None
     if config.static_libs and lld_link is not None:
         # llvm-ar ships alongside lld-link in the LLVM toolchain. Members carry
-        # Windows archive paths (e.g. ..\build\intel\mt_obj\util.obj); stream
-        # the exact member out (llvm-ar p needs the literal name).
+        # Windows archive paths (e.g. ..\build\intel\mt_obj\util.obj). ar_extract.py
+        # streams the exact member out via `llvm-ar p` and writes it to $out in
+        # Python, so the rule needs no shell redirect -- Windows ninja runs commands
+        # without a shell, which broke the old `p $in '$member' > $out` (the '>' and
+        # quotes reached llvm-ar literally).
         llvm_ar = lld_link.parent / f"llvm-ar{EXE}"
+        ar_extract = config.tools_dir / "ar_extract.py"
         n.rule(
             name="extract_lib_obj",
-            command=f"{llvm_ar} p $in '$member' > $out",
+            command=f"$python {ar_extract} {llvm_ar} $in $member $out",
             description="AR $out",
         )
         for lib_id, tag in config.static_libs.items():
@@ -1361,7 +1365,7 @@ def generate_build_ninja(
                         outputs=extracted,
                         rule="extract_lib_obj",
                         inputs=archive,
-                        implicit=[llvm_ar],
+                        implicit=[llvm_ar, config.tools_dir / "ar_extract.py"],
                         variables={"member": lib_member},
                     )
                 if obj.options["add_to_all"]:
