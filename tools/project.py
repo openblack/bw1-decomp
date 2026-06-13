@@ -338,6 +338,18 @@ def file_is_obj(path: Path) -> bool:
     return path.suffix.lower() in (".obj", ".o")
 
 
+def lib_extracted_path(config: "ProjectConfig", obj: Object) -> Optional[Path]:
+    # Path of an object extracted from a downloaded static library (LibObject),
+    # preserving the archive's internal path under build/lib/<archive>/. Returns
+    # None for ordinary (compiled/committed) objects.
+    archive = obj.options["lib_archive"]
+    member = obj.options["lib_member"]
+    if archive is None or member is None:
+        return None
+    member_path = member.replace("\\", "/").lstrip("./")
+    return config.build_dir / "lib" / archive / member_path
+
+
 _listdir_cache = {}
 
 
@@ -1342,8 +1354,7 @@ def generate_build_ninja(
                         f"Object {obj.name}: unknown lib_archive '{archive_id}' "
                         f"(known: {sorted(lib_archives)})"
                     )
-                member_path = lib_member.replace("\\", "/").lstrip("./")
-                extracted = config.build_dir / "lib" / archive_id / member_path
+                extracted = lib_extracted_path(config, obj)
                 if extracted not in lib_extracted_added:
                     lib_extracted_added.add(extracted)
                     n.build(
@@ -1945,7 +1956,14 @@ def generate_objdiff_config(
 
         src_exists = obj.src_path is not None and obj.src_path.exists()
         src_is_obj = src_exists and file_is_obj(obj.src_path)
-        if src_exists:
+        lib_obj = lib_extracted_path(config, obj)
+        if lib_obj is not None:
+            # Object extracted verbatim from a downloaded static library: diff
+            # against the extracted member itself (it is the base, and a
+            # completed object is a 1:1 match).
+            unit_config["base_path"] = lib_obj
+            unit_config["metadata"]["source_path"] = obj.options["lib_member"]
+        elif src_exists:
             # Prebuilt objects are linked verbatim, so the base is the source
             # object itself rather than a compiled output.
             unit_config["base_path"] = (
@@ -2001,7 +2019,9 @@ def generate_objdiff_config(
             progress_categories.append(category_opt)
         unit_config["metadata"].update(
             {
-                "complete": obj.completed if src_exists else None,
+                "complete": (
+                    obj.completed if (src_exists or lib_obj is not None) else None
+                ),
                 "reverse_fn_order": reverse_fn_order,
                 "progress_categories": progress_categories,
             }
