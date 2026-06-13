@@ -173,7 +173,18 @@ config.lld_link_tag = "bw1-decomp-015"
 config.config_path = Path("config") / config.version / "config.yml"
 config.check_sha_path = Path("config") / config.version / "build.sha1"
 config.asflags = None
-config.ldflags = []
+config.ldflags = [
+    # Our MSVC6 c1xx (msvcwin9x) emits the VECTOR deleting destructor (??_E) in a polymorphic
+    # class's vtable slot, whereas Lionhead's retail c1xx emitted the SCALAR deleting destructor
+    # (??_G) -- a front-end codegen difference reproducible with NO available compiler/flag/class
+    # shape (verified across 7 MSVC6 front-ends + the full flag matrix). The two are semantically
+    # interchangeable for a never-array-deleted class, and the retail binary's vtable points at the
+    # ??_G we DO emit byte-exact, so alias the unreferenced ??_E onto ??_G: the vtable slot then
+    # relocates to the real ??_G (byte-identical to retail) with no spurious ??_E body. This keeps
+    # polymorphic Matching TUs (currently Black/Persistent) byte-exact + linkable. Add one line per
+    # such class as more are lifted Matching.
+    "/alternatename:??_EPersistent@@UAEPAXI@Z=??_GPersistent@@UAEPAXI@Z",
+]
 config.reconfig_deps = []
 
 # Post-link patch: applies version-specific binary fixups after linking,
@@ -689,7 +700,7 @@ config.libs = [
             Object(NonMatching, "Black/PBall.cpp"),
             Object(NonMatching, "Black/PCInput.cpp"),
             Object(NonMatching, "Black/PCMain.cpp"),
-            Object(NonMatching, "Black/Persistent.cpp"),
+            Object(Matching, "Black/Persistent.cpp"),
             Object(NonMatching, "Black/PFootball.cpp"),
             Object(NonMatching, "Black/PhysicalShield.cpp"),
             Object(NonMatching, "Black/PhysicsObject.cpp"),
