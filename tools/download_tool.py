@@ -94,6 +94,16 @@ def wibo_url(tag: str) -> str:
     return f"{repo}/releases/download/{tag}/wibo-{arch}"
 
 
+def libcmt_url(tag: str) -> str:
+    # tag is a commit SHA of jmfrank63/VC6Ultimate. LIBCMT.LIB is stored via
+    # Git LFS, so fetch it from the media endpoint (the raw blob is just an LFS
+    # pointer). This is MSVC 6.0 SP5's multithreaded CRT static library.
+    return (
+        "https://media.githubusercontent.com/media/jmfrank63/VC6Ultimate/"
+        f"{tag}/VC98/Lib/LIBCMT.LIB"
+    )
+
+
 def llvm_url(tag: str) -> str:
     # tag is the openblack/llvm-project release tag, e.g. "bw1-decomp-013"
     uname = platform.uname()
@@ -112,6 +122,7 @@ TOOLS: Dict[str, Callable[[str], str]] = {
     "compilers": compilers_url,
     "compilers_msvc": compilers_msvc_url,
     "dtk": dtk_url,
+    "libcmt": libcmt_url,
     "llvm": llvm_url,
     "objdiff-cli": objdiff_cli_url,
     "sjiswrap": sjiswrap_url,
@@ -163,12 +174,18 @@ def download(url, response, output) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("tool", help="Tool name")
+    parser.add_argument("tool", help="Tool name (or 'url' with --url)")
     parser.add_argument("output", type=Path, help="output file path")
-    parser.add_argument("--tag", help="GitHub tag", required=True)
+    parser.add_argument("--tag", help="GitHub tag")
+    parser.add_argument("--url", help="Direct download URL (overrides tool/tag)")
     args = parser.parse_args()
 
-    url = TOOLS[args.tool](args.tag)
+    if args.url:
+        url = args.url
+    else:
+        if not args.tag:
+            parser.error("--tag is required unless --url is given")
+        url = TOOLS[args.tool](args.tag)
     output = Path(args.output)
 
     print(f"Downloading {url} to {output}")

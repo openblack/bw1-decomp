@@ -62,6 +62,10 @@ class Object:
             "extra_cflags": [],
             "extra_clang_flags": [],
             "lib": None,
+            # For objects pulled from a downloaded static library: the archive
+            # id (lib_archive) and the member path inside it (lib_member).
+            "lib_archive": None,
+            "lib_member": None,
             "compiler_version": None,
             "progress_category": None,
             "scratch_preset_id": None,
@@ -150,6 +154,11 @@ class ProjectConfig:
         self.dtk_path: Optional[Path] = None  # If None, download
         self.compilers_tag: Optional[str] = None  # 1
         self.compilers_path: Optional[Path] = None  # If None, download
+        # Static libraries to pull verbatim objects from, keyed by archive id
+        # (the download_tool tool name, e.g. "libcmt"). Value is the GitHub
+        # commit/tag. Members are extracted at build time (see LibObject); the
+        # .LIB and extracted .obj are build artifacts, nothing committed.
+        self.static_libs: Dict[str, str] = {}
         self.wibo_tag: Optional[str] = None  # Git tag
         self.wrapper: Optional[Path] = None  # If None, download wibo on Linux
         self.sjiswrap_tag: Optional[str] = None  # Git tag
@@ -683,11 +692,14 @@ def generate_build_ninja(
             llvm_dir = build_tools_path / "llvm"
             lld_link = llvm_dir / "bin" / f"lld-link{EXE}"
             lld_link_implicit = [lld_link]
+            # llvm-ar ships in the same archive; declare it an implicit output so
+            # the extract_lib_obj rule (which depends on it) has a known rule.
+            llvm_ar_out = llvm_dir / "bin" / f"llvm-ar{EXE}"
             n.build(
                 outputs=llvm_dir,
                 rule="download_tool",
                 implicit=download_tool,
-                implicit_outputs=[lld_link],
+                implicit_outputs=[lld_link, llvm_ar_out],
                 variables={
                     "tool": "llvm",
                     "tag": config.lld_link_tag,
@@ -697,6 +709,32 @@ def generate_build_ninja(
             lld_link = Path("lld-link")
 
     n.newline()
+
+    # Download static libraries (config.static_libs) so prebuilt members can be
+    # extracted at build time and nothing need be committed. `lib_archives` maps
+    # an archive id (LibObject's first arg) to the downloaded .LIB.
+    lib_archives: Dict[str, Path] = {}
+    llvm_ar: Optional[Path] = None
+    if config.static_libs and lld_link is not None:
+        # llvm-ar ships alongside lld-link in the LLVM toolchain. Members carry
+        # Windows archive paths (e.g. ..\build\intel\mt_obj\util.obj); stream
+        # the exact member out (llvm-ar p needs the literal name).
+        llvm_ar = lld_link.parent / f"llvm-ar{EXE}"
+        n.rule(
+            name="extract_lib_obj",
+            command=f"{llvm_ar} p $in '$member' > $out",
+            description="AR $out",
+        )
+        for lib_id, tag in config.static_libs.items():
+            archive = config.build_dir / "lib" / f"{lib_id}.lib"
+            n.build(
+                outputs=archive,
+                rule="download_tool",
+                implicit=download_tool,
+                variables={"tool": lib_id, "tag": tag},
+            )
+            lib_archives[lib_id] = archive
+        n.newline()
 
     ###
     # Helper rule for downloading all tools
@@ -1091,6 +1129,7 @@ def generate_build_ninja(
         used_compiler_versions: Set[str] = set()
         source_inputs: List[Path] = []
         source_added: Set[Path] = set()
+        lib_extracted_added: Set[Path] = set()
 
         if config.precompiled_headers:
             for pch in config.precompiled_headers:
@@ -1291,7 +1330,33 @@ def generate_build_ninja(
 
             link_built_obj = obj.completed
             built_obj_path: Optional[Path] = None
-            if obj.src_path is not None and obj.src_path.exists():
+            lib_member = obj.options["lib_member"]
+            if lib_member is not None:
+                # Object pulled verbatim from a downloaded static library: extract
+                # the exact archive member, no compile step. The output preserves
+                # the member's archive path under build/lib/<archive>/.
+                archive_id = obj.options["lib_archive"]
+                archive = lib_archives.get(archive_id)
+                if archive is None:
+                    sys.exit(
+                        f"Object {obj.name}: unknown lib_archive '{archive_id}' "
+                        f"(known: {sorted(lib_archives)})"
+                    )
+                member_path = lib_member.replace("\\", "/").lstrip("./")
+                extracted = config.build_dir / "lib" / archive_id / member_path
+                if extracted not in lib_extracted_added:
+                    lib_extracted_added.add(extracted)
+                    n.build(
+                        outputs=extracted,
+                        rule="extract_lib_obj",
+                        inputs=archive,
+                        implicit=[llvm_ar],
+                        variables={"member": lib_member},
+                    )
+                if obj.options["add_to_all"]:
+                    source_inputs.append(extracted)
+                built_obj_path = extracted
+            elif obj.src_path is not None and obj.src_path.exists():
                 check_path_case(obj.src_path)
                 if file_is_c_cpp(obj.src_path):
                     # Add C/C++ build rule
