@@ -134,20 +134,45 @@ def download(url, response, output) -> None:
         output.mkdir(parents=True, exist_ok=True)
         with tarfile.open(fileobj=data, mode="r:gz") as t:
             t.extractall(output)
-        # Normalize all filenames to lowercase
+        # Normalize all filenames to lowercase. On a case-SENSITIVE filesystem (e.g. CI Linux) a
+        # bare rename dies with "Directory not empty" when the archive ships both `Include/` and
+        # `include/`, or when re-run over a prior extract -- so merge case-colliding entries.
+        def _lower_rename(src, dst):
+            if src == dst or not os.path.exists(src):
+                return
+            try:
+                # Works directly for the common cases: a case-ONLY change on a case-INsensitive FS
+                # (src and dst are the same file -- must NOT be treated as a collision), and a plain
+                # rename on a case-sensitive FS where dst is absent.
+                os.rename(src, dst)
+                return
+            except OSError:
+                pass  # dst exists as a DISTINCT entry (case-sensitive FS collision) -- merge below
+            if os.path.isdir(src) and os.path.isdir(dst):
+                for child in os.listdir(src):
+                    _lower_rename(os.path.join(src, child), os.path.join(dst, child))
+                os.rmdir(src)
+            else:  # file-vs-anything collision: the lowercase target wins
+                if os.path.isdir(dst):
+                    shutil.rmtree(dst)
+                else:
+                    os.remove(dst)
+                os.rename(src, dst)
         for root, dirs, files in os.walk(output, topdown=False):
             for name in files + dirs:
-                src = os.path.join(root, name)
-                dst = os.path.join(root, name.lower())
-                if src != dst:
-                    os.rename(src, dst)
-        # Flatten Bin/ to root so cl.exe lands directly in the output directory
+                _lower_rename(os.path.join(root, name), os.path.join(root, name.lower()))
+        # Flatten Bin/ to root so cl.exe lands directly in the output directory.
+        # Replace any existing destination (stale copies from a prior partial
+        # extract) so bin/ always empties and the rmdir below cannot fail.
         bin_dir = output / "bin"
         if bin_dir.is_dir():
             for item in bin_dir.iterdir():
                 dst = output / item.name
-                if not dst.exists():
-                    shutil.move(str(item), str(dst))
+                if dst.is_dir():
+                    shutil.rmtree(dst)
+                elif dst.exists():
+                    dst.unlink()
+                shutil.move(str(item), str(dst))
             bin_dir.rmdir()
         # Make all files executable
         for root, _, files in os.walk(output):
