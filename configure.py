@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.7"
+config.dtk_tag = "v0.0.9"
 config.objdiff_tag = "v3.6.1"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.1.0"
@@ -964,7 +964,7 @@ config.libs = [
             Object(Matching, "zlib/infcodes.c"),
             Object(Matching, "zlib/inftrees.c"),
             Object(Matching, "zlib/infutil.c"),
-            Object(Matching, "zlib/inffast.c")
+            Object(Matching, "zlib/inffast.c"),
         ],
     },
     {

@@ -3,6 +3,7 @@ object: runblack-decrypted.exe
 hash: d810fe43e2956f2b76533ab698632756ba99b44d
 symbols: config/BW1E100/symbols.txt
 splits: config/BW1E100/splits.txt
+dead_strip: true
 # map: orig/BW1E1001/files/runblack.map
 force_size: 0x0081b58f
 linker_version: "6.0"
