@@ -180,7 +180,9 @@ config.static_libs = {
 config.config_path = Path("config") / config.version / "config.yml"
 config.check_sha_path = Path("config") / config.version / "build.sha1"
 config.asflags = None
-config.ldflags = []
+config.ldflags = [
+    "/alternatename:??_EPersistent@@UAEPAXI@Z=??_GPersistent@@UAEPAXI@Z",
+]
 config.reconfig_deps = []
 
 # Post-link patch: applies version-specific binary fixups after linking,
@@ -507,7 +509,7 @@ config.libs = [
             Object(NonMatching, "Black/GestureSystemDataList.cpp"),
             Object(NonMatching, "Black/GestureSystemResult.cpp"),
             Object(NonMatching, "Black/GJBaseUtils.inl"),
-            Object(NonMatching, "Black/GJPersistent.cpp"),
+            Object(Matching, "Black/GJPersistent.cpp"),
             Object(NonMatching, "Black/GJProperty.cpp"),
             Object(NonMatching, "Black/GJVnoise.cpp"),
             Object(NonMatching, "Black/Global.cpp"),

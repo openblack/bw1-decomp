@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 
-#include "Persistent.h" /* For struct Persistent */
+#include "GJPersistent.h" /* For struct Persistent */
 
 // Forward Declares
 
