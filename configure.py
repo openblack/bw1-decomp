@@ -960,7 +960,7 @@ config.libs = [
             Object(NonMatching, "zlib/zutil.c"),
             Object(Matching, "zlib/adler32.c"),
             Object(Matching, "zlib/trees.c"),
-            Object(NonMatching, "zlib/infblock.c"),  # TODO: In BW1E100, a fn_0073250A keeps being implicitely added and interferes with _inflate_blocks
+            Object(Matching, "zlib/infblock.c"),
             Object(Matching, "zlib/infcodes.c"),
             Object(Matching, "zlib/inftrees.c"),
             Object(Matching, "zlib/infutil.c"),
