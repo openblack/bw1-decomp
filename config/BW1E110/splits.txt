@@ -56,6 +56,12 @@ zlib/infutil.c:
 zlib/inffast.c:
 	.text       start:0x007B4B90 end:0x007B4F20
 
+lib/libcmt/_freebuf.obj:
+	.text       start:0x007C0BDC end:0x007C0C07 align:1
+
+lib/libcmt/ldexp.obj:
+	.text       start:0x007C0C07 end:0x007C0DED align:1
+
 lib/libcmt/util.obj:
 	.text       start:0x007C0DED end:0x007C0F95 align:1
 	.data       start:0x00C1ECA8 end:0x00C1ECD0

@@ -183,6 +183,9 @@ zlib/infutil.c:
 zlib/inffast.c:
 	.text       start:0x007338F0 end:0x00733C80
 
+lib/libcmt/_freebuf.obj:
+	.text       start:0x0073D294 end:0x0073D2BF align:1
+
 lib/libcmt/util.obj:
 	.text       start:0x0073D2BF end:0x0073D403 align:1
 	.data       start:0x00B52358 end:0x00B52380
