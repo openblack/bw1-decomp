@@ -14,6 +14,9 @@ Black/Abode.cpp:
 	.rdata$r    start:0x009961D8 end:0x00996470
 	.data       start:0x009B7640 end:0x009B7820
 
+Black/CameraHelp.cpp:
+	.text       start:0x00448510 end:0x00448530
+
 Black/MPFEConnectionStatus.cpp:
 	.text       start:0x00625130 end:0x00625140
 
