@@ -647,7 +647,7 @@ config.libs = [
             Object(NonMatching, "Black/MPFEClanList.cpp"),
             Object(NonMatching, "Black/MPFEConditionMessages.cpp"),
             Object(NonMatching, "Black/MPFECondtionUpdateMessage.cpp"),
-            Object(NonMatching, "Black/MPFEConnectionStatus.cpp"),
+            Object(Matching, "Black/MPFEConnectionStatus.cpp"),
             Object(NonMatching, "Black/MPFECreateGame.cpp"),
             Object(NonMatching, "Black/MPFEDatabaseID.cpp"),
             Object(NonMatching, "Black/MPFEDisconnectNowMessage.cpp"),
