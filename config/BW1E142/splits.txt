@@ -14,6 +14,9 @@ Black/Abode.cpp:
 	.rdata$r    start:0x009A62D8 end:0x009A6570
 	.data       start:0x009C7E80 end:0x009C8078
 
+Black/MPFEConnectionStatus.cpp:
+	.text       start:0x0062DAC0 end:0x0062DAD0
+
 Black/Villager.cpp:
 	.text       start:0x0074F7D0 end:0x00756C80
 	.rdata      start:0x0099A1E4 end:0x0099A924
