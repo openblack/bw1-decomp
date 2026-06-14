@@ -9,13 +9,21 @@
 
 struct CameraHelpAccumulator
 {
-    uint8_t field_0x0[0x10c];
+    uint32_t total_trigger_count;
+    uint32_t field_0x4;
+    uint8_t trigger_time_head;
+    uint8_t trigger_time_count;
+    uint8_t triggered_this_frame;
+    uint8_t field_0xb;
+    uint32_t trigger_times[0x40];
 
     // Non-virtual methods
 
     // win1.41 00448f20 mac 1019cd90 CameraHelpAccumulator::Reset(void)
     void Reset();
 };
+
+static_assert(sizeof(struct CameraHelpAccumulator) == 0x10c, "Data type is of wrong size");
 
 class HelpProfile: public Base
 {
