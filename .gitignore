@@ -33,3 +33,10 @@ compile_commands.json
 # Miscellaneous
 /*.txt
 *.exe
+
+# VSCode settings
+.vscode/
+
+# Claude
+/.claude/*
+!/.claude/skills/
