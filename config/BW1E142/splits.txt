@@ -245,6 +245,13 @@ lib/libcmt/fsetpos.obj:
 lib/libcmt/wcsncat.obj:
 	.text       start:0x007CA45F end:0x007CA49F align:1
 
+lib/libcmt/testfdiv.obj:
+	.text       start:0x007CC974 end:0x007CC9DB align:1
+	.rdata      start:0x009A0900 end:0x009A0938
+
+auto_gap_007CC9DB:
+	.text       start:0x007CC9DB end:0x007CCE10 align:1
+
 lib/libcmt/_freebuf.obj:
 	.text       start:0x007D0DCC end:0x007D0DF7 align:1
 

@@ -753,12 +753,18 @@ def verify_one(version, dtk, py):
     log.append(out)
     result["stage"] = "ninja"
     errs = parse_link_errors(out)
-    ok = ("runblack-decrypted.exe: OK" in out) or (
-        re.search(r"\d+ files OK", out) and not errs)
-    result["ok"] = bool(ok) and rc == 0
+    if rc != 0 or errs:
+        result["ok"] = False
+        result["errors"] = errs
+        result["tail"] = out[-2500:]
+        return result
+    # Authoritative check (robust to no-op ninja that prints no "files OK").
+    sha = ROOT / "config" / version / "build.sha1"
+    _, sout = _run([dtk, "shasum", "-c", str(sha)])
+    result["ok"] = "runblack-decrypted.exe: OK" in sout
     result["errors"] = errs
     if not result["ok"]:
-        result["tail"] = out[-2500:]
+        result["tail"] = (out + "\n--SHA--\n" + sout)[-2500:]
     return result
 
 
