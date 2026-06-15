@@ -149,6 +149,33 @@ lbl_Y       = .data:0xY;        // type:object size:0x<obj.start - Y>
 lbl_<obj.end> = .data:0x<obj.end>; // type:object size:0x<Y_end - obj.end>
 ```
 
+**`Invalid alignment for split: auto_00_<ADDR>_<sec>`** — the obj ends at a
+non-aligned address with **contiguous code/data right after** (not 0xCC padding —
+a real function/const follows). dtk's *auto-generated* gap splits floor at align 4
+(`.text`) / 8 (`.rdata`), so an auto-split starting at `<ADDR>` (not 4-/8-aligned)
+bails. dtk **can** do unaligned, but only via an **explicit `align:1` split** —
+auto-splits can't. Fix: in `splits.txt`, add a bare-named verbatim unit (dtk
+extracts it; no source object needed) covering the successor region up to the next
+**aligned, labelled** symbol, with `align:1`:
+```
+auto_gap_<ADDR>:
+	.text       start:0x<ADDR> end:0x<next-4-aligned-labelled-sym> align:1
+	.rdata      start:0x<rADDR> end:0x<next-blob-end> align:1   ; if .rdata tail also unaligned
+```
+(If the obj's `.rdata` end is already 8-aligned, no `.rdata` gap is needed — only
+the `.text` one.) This is why a CRT obj matches in one version but not another:
+same content, but its placement makes the end aligned in one exe and not the other.
+
+**Per-version comdat fold targets.** A shared float const (e.g.
+`__real@8@3fff8000000000000000` = 1.5) folds to a **different game copy in each
+version** — find it per version by reading the obj's `dir32` reloc operand in that
+exe (`struct.unpack` the 4 bytes at the reloc site). Carve a `comdat` there (§
+duplicate-symbol). If you don't, the obj's own copy is placed inline → +8 shift.
+Worked: `testfdiv.obj`'s 1.5 folds to E100 `0x7ED5A8` (inside `??_7GAlignmentInfo`),
+E110 `0x89B680`, E142 `0x8AB680`. An obj absent from a version (e.g. `ldexp` in
+E100) should be `MatchingFor(...)` only the versions it exists in — else its carve
+is orphaned and `/OPT:REF` dead-strips it.
+
 ## Worked examples (real numbers)
 
 **`wcscmp.obj`** — the clean `auto` case the loop nails with zero edits: one

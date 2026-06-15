@@ -116,6 +116,10 @@ lib/libcmt/fgetpos.obj:
 lib/libcmt/fsetpos.obj:
 	.text       start:0x007BAE9C end:0x007BAEB4 align:1
 
+lib/libcmt/testfdiv.obj:
+	.text       start:0x007BC785 end:0x007BC7EC align:1
+	.rdata      start:0x00990808 end:0x00990840
+
 lib/libcmt/_freebuf.obj:
 	.text       start:0x007C0BDC end:0x007C0C07 align:1
 

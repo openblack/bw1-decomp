@@ -243,6 +243,14 @@ lib/libcmt/fgetpos.obj:
 lib/libcmt/fsetpos.obj:
 	.text       start:0x00738A9C end:0x00738AB4 align:1
 
+lib/libcmt/testfdiv.obj:
+	.text       start:0x007396B3 end:0x0073971A align:1
+	.rdata      start:0x008D66B8 end:0x008D66ED
+
+auto_gap_0073971A:
+	.text       start:0x0073971A end:0x00739B40 align:1
+	.rdata      start:0x008D66ED end:0x008DA598 align:1
+
 lib/libcmt/_freebuf.obj:
 	.text       start:0x0073D294 end:0x0073D2BF align:1
 
