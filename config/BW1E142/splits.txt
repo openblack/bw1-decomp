@@ -185,18 +185,6 @@ zlib/infutil.c:
 	.text       start:0x007C4C30 end:0x007C4D70
 	.data       start:0x00C2D350 end:0x00C2D394
 
-lib/libcmt/ctype.obj:
-	.data       start:0x00C2DB20 end:0x00C2DD2A align:1
-
-auto_gap_00C2DD2A:
-	.data       start:0x00C2DD2A end:0x00C2DD2C align:1
-
-lib/libcmt/nlsdata1.obj:
-	.data       start:0x00C2DD2C end:0x00C2DD38 align:1
-
-auto_gap_00C2DD38:
-	.data       start:0x00C2DD38 end:0x00C2FE58 align:1
-
 zlib/inffast.c:
 	.text       start:0x007C4D70 end:0x007C5100
 
@@ -241,6 +229,25 @@ lib/libcmt/qsort.obj:
 
 auto_gap_007C8032:
 	.text       start:0x007C8032 end:0x007C804A align:1
+
+lib/libcmt/ceil.obj:
+	.text       start:0x007C8072 end:0x007C8141 align:1
+	.data       start:0x00C2D4A0 end:0x00C2D4A4 align:1
+
+auto_gap_00C2D4A4:
+	.data       start:0x00C2D4A4 end:0x00C2DB20 align:1
+
+lib/libcmt/ctype.obj:
+	.data       start:0x00C2DB20 end:0x00C2DD2A align:1
+
+auto_gap_00C2DD2A:
+	.data       start:0x00C2DD2A end:0x00C2DD2C align:1
+
+lib/libcmt/nlsdata1.obj:
+	.data       start:0x00C2DD2C end:0x00C2DD38 align:1
+
+auto_gap_00C2DD38:
+	.data       start:0x00C2DD38 end:0x00C2FE58 align:1
 
 lib/libcmt/bsearch.obj:
 	.text       start:0x007C8141 end:0x007C81CD align:1
