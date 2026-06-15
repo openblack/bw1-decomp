@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "Object.h" /* For struct Object, struct ObjectVftable */
 

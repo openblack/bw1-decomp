@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t, uintptr_t */
 
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "LHNetEvent.h" /* For enum LH_NETEVENT_TYPE */
 #include "LHTransportInfo.h" /* For enum LH_TRANSPORT_TYPE */

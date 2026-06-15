@@ -6,7 +6,7 @@
 
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
 #include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
 

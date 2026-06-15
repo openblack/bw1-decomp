@@ -6,7 +6,7 @@
 
 #include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "GameThing.h" /* For struct GameThing, struct GameThingVftable */
 #include "Villager.h" /* For struct Villager */

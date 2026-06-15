@@ -6,7 +6,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE, enum RESOURCE_TYPE */
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "Fixed.h" /* For struct Fixed, struct FixedVftable */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */

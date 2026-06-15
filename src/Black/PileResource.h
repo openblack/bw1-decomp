@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "PotStructure.h" /* For struct PotStructure */
 

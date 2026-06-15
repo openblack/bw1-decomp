@@ -6,7 +6,7 @@
 
 #include <chlasm/Enum.h> /* For enum IMMERSION_EFFECT_TYPE */
 #include <chlasm/GStates.h> /* For enum VILLAGER_STATES */
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "Animal.h" /* For struct Animal */
 #include "AnimalCow.h" /* For struct Cow */

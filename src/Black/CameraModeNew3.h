@@ -8,7 +8,7 @@
 #include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint, struct Point2D */
 #include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer, struct Zoomer3d */
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "CameraMode.h" /* For enum CAMERA_MODE_HAND_STATUS, enum CAMERA_MODE_MOUSE_STATUS, struct CameraMode, struct CameraModeVftable */
 

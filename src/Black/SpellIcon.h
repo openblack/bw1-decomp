@@ -6,7 +6,7 @@
 
 #include <chlasm/Enum.h> /* For enum SPELL_SEED_TYPE */
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "LightSheet.h" /* For struct LightSheet */
 #include "MapCoords.h" /* For struct MapCoords */

@@ -5,7 +5,7 @@
 #include <stdint.h> /* For int16_t, uint32_t, uint8_t */
 
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint, struct Point2D */
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 // Forward Declares
 

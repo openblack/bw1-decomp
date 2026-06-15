@@ -6,7 +6,7 @@
 #include <uchar.h> /* For char16_t */
 
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "GatheringText.h" /* For enum TEXTJUSTIFY */
 #include "SetupRect.h" /* For struct SetupRect */

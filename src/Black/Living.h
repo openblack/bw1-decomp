@@ -8,7 +8,7 @@
 #include <chlasm/Enum.h> /* For enum IMMERSION_EFFECT_TYPE, enum REACTION */
 #include <chlasm/GStates.h> /* For enum VILLAGER_STATES */
 #include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "GameThing.h" /* For struct GameThing */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */

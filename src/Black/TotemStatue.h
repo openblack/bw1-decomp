@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer */
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */
 

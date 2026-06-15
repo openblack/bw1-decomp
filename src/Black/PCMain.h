@@ -2,7 +2,7 @@
 #define BW1_DECOMP_PC_MAIN_INCLUDED_H
 
 
-#include <reversing_utils/re_common.h> /* For HINSTANCE */
+#include <re_common.h> /* For HINSTANCE */
 
 // win1.41 00641a10 mac 1011c650 IsACmdLineString(char*, const char*)
 bool __cdecl IsACmdLineString__FPcPCc(char* cmd_line, char* cmd);

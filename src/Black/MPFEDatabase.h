@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 class MPFEDatabase
 {

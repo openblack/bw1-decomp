@@ -12,7 +12,7 @@
 
 #include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
 #include <Lionhead/LH3DLib/development/LHRegion.h> /* For struct LHRegion */
-#include <reversing_utils/re_common.h> /* For HWND */
+#include <re_common.h> /* For HWND */
 
 // Forward Declares
 

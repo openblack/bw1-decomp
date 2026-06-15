@@ -10,7 +10,7 @@
 #include <chlasm/Enum.h> /* For enum CREATURE_DESIRES, enum EFFECT_TYPE, enum IMPRESSIVE_TYPE, enum REACTION */
 #include <chlasm/GStates.h> /* For enum VILLAGER_STATES */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
-#include <reversing_utils/re_common.h> /* For bool32_t */
+#include <re_common.h> /* For bool32_t */
 
 #include "CreatureHelp.h" /* For struct CreatureHelpStackEntry, struct CreatureHelpState */
 #include "CreatureSubAction.h" /* For struct CreatureSubActionAgenda */
