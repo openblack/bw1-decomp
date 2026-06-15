@@ -2,7 +2,6 @@
 #define BW1_DECOMP_SETUP_MP3_BUTTON_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
 #include <uchar.h> /* For char16_t */
 

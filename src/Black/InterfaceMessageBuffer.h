@@ -2,7 +2,6 @@
 #define BW1_DECOMP_INTERFACE_MESSAGE_BUFFER_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "Base.h" /* For struct Base */

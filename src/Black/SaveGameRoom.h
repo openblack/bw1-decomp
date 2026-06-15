@@ -2,7 +2,6 @@
 #define BW1_DECOMP_SAVE_GAME_ROOM_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 
 #include "PictureRoom.h" /* For struct PictureRoomBase */
 

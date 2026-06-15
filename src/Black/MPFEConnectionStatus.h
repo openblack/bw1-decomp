@@ -2,7 +2,6 @@
 #define BW1_DECOMP_MPFE_CONNECTION_STATUS_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 
 #include <lionhead/lhmultiplayer/ver4.0/LHLobby.h> /* For enum LOBBY_TYPE */
 

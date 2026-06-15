@@ -2,7 +2,6 @@
 #define BW1_DECOMP_VILLAGER_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int16_t, uint16_t, uint32_t, uint8_t */
 
 #include <chlasm/AllMeshes.h> /* For enum ANIM_LIST */

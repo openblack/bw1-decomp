@@ -2,7 +2,6 @@
 #define BW1_DECOMP_LH_FILE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint32_t */
 

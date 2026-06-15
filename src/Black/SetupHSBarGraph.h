@@ -2,7 +2,6 @@
 #define BW1_DECOMP_SETUP_HS_BAR_GRAPH_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <uchar.h> /* For char16_t */
 
 #include "SetupVBarGraph.h" /* For struct SetupVBarGraph */

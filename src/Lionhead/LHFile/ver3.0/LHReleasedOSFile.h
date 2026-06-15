@@ -2,7 +2,6 @@
 #define BW1_DECOMP_LH_RELEASED_OS_FILE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
 
 #include "LHFile.h" /* For enum LH_FILE_MODE */

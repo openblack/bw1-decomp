@@ -2,7 +2,6 @@
 #define BW1_DECOMP_HAND_STATE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 
 // Forward Declares
 

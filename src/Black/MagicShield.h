@@ -2,7 +2,6 @@
 #define BW1_DECOMP_MAGIC_SHIELD_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
 
 #include <lionhead/lh3dlib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */

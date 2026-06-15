@@ -1,7 +1,6 @@
 #ifndef BW1_DECOMP_UTILS_INCLUDED_H
 #define BW1_DECOMP_UTILS_INCLUDED_H
 
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint16_t, uint32_t */
 #include <uchar.h> /* For char16_t */
 

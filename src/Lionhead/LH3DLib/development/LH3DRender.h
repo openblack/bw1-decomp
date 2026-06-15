@@ -7,7 +7,6 @@
 #pragma clang diagnostic ignored "-Wmissing-declarations"
 #include <d3dtypes.h> /* For D3DMATRIX, D3DTLVERTEX */
 #pragma clang diagnostic pop
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint16_t, uint32_t */
 
 #include "LH3DMaterial.h" /* For enum LH3DMaterial__RenderMode */

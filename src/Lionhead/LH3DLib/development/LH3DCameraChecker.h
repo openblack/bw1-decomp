@@ -2,7 +2,6 @@
 #define BW1_DECOMP_LH3D_CAMERA_CHECKER_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t */
 
 #include "LHPoint.h" /* For struct LHPoint */

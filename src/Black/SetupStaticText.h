@@ -2,7 +2,6 @@
 #define BW1_DECOMP_SETUP_STATIC_TEXT_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 
 #include "GatheringText.h" /* For enum TEXTJUSTIFY */
 #include "SetupControl.h" /* For struct SetupControl */

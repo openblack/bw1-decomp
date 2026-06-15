@@ -2,7 +2,6 @@
 #define BW1_DECOMP_SOUND_TAG_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint16_t, uint32_t */
 
 #include <chlasm/AudioSFX.h> /* For enum AUDIO_SFX_BANK_TYPE */

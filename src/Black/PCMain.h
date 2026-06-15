@@ -1,7 +1,6 @@
 #ifndef BW1_DECOMP_PC_MAIN_INCLUDED_H
 #define BW1_DECOMP_PC_MAIN_INCLUDED_H
 
-#include <stdbool.h> /* For bool */
 
 #include <reversing_utils/re_common.h> /* For HINSTANCE */
 

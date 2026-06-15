@@ -2,7 +2,6 @@
 #define BW1_DECOMP_SAVE_LOAD_PTR_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uintptr_t */
 
 struct GSaveLoadPtr

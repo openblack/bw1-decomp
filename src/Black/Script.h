@@ -2,7 +2,6 @@
 #define BW1_DECOMP_SCRIPT_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int8_t, uint32_t, uint8_t */
 
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_INTERFACE_LEVEL, enum SCRIPT_OBJECT_TYPE */

@@ -8,7 +8,6 @@
 #pragma clang diagnostic ignored "-Wmissing-declarations"
 #include <ddraw.h> /* For IDirectDraw7, IDirectDrawClipper, IDirectDrawSurface7 */
 #pragma clang diagnostic pop
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
 
 #include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */

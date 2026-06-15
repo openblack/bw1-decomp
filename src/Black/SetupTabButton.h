@@ -2,7 +2,6 @@
 #define BW1_DECOMP_SETUP_TAB_BUTTON_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <uchar.h> /* For char16_t */
 
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */

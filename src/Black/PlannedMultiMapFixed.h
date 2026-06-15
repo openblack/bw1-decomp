@@ -2,7 +2,6 @@
 #define BW1_DECOMP_PLANNED_MULTI_MAP_FIXED_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum ABODE_TYPE */

@@ -2,7 +2,6 @@
 #define BW1_DECOMP_SETUP_MULTI_LIST_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 
 #include "SetupList.h" /* For struct SetupList */
 

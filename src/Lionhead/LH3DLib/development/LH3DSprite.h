@@ -2,7 +2,6 @@
 #define BW1_DECOMP_LH3D_SPRITE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
 
 #include "LHPoint.h" /* For struct LHPoint */

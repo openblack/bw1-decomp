@@ -2,7 +2,6 @@
 #define BW1_DECOMP_COLLIDE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int16_t, uint32_t, uint8_t */
 
 #include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint, struct Point2D */

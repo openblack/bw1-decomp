@@ -2,7 +2,6 @@
 #define BW1_DECOMP_CREATURE_ROOM_CAMERA_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint8_t */
 
 #include "InnerCamera.h" /* For struct InnerCamera */

@@ -2,7 +2,6 @@
 #define BW1_DECOMP_GAME_OPTIONS_ROOM_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint16_t */
 
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */

@@ -2,7 +2,6 @@
 #define BW1_DECOMP_CREATURE_MORPH_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t */
 
 #include <reversing_utils/re_common.h> /* For bool32_t */

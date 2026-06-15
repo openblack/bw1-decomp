@@ -2,7 +2,6 @@
 #define BW1_DECOMP_LH_POINT_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 
 struct Point2D
 {

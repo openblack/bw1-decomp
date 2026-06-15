@@ -2,7 +2,6 @@
 #define BW1_DECOMP_CAMERA_MODE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint16_t, uint32_t */
 
 // Forward Declares

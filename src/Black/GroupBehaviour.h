@@ -2,7 +2,6 @@
 #define BW1_DECOMP_GROUP_BEHAVIOUR_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include "DanceGroup.h" /* For enum DANCE_GROUP_ACTION_TYPE */

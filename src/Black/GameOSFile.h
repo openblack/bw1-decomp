@@ -2,7 +2,6 @@
 #define BW1_DECOMP_GAME_OS_FILE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
 #include <lionhead/lhfile/ver3.0/LHFile.h> /* For enum LH_FILE_MODE */

@@ -2,7 +2,6 @@
 #define BW1_DECOMP_MAP_COORDS_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int16_t, int32_t, uint16_t, uint32_t */
 
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST */

@@ -2,7 +2,6 @@
 #define BW1_DECOMP_MORPHABLE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t, uintptr_t */
 
 #include <lionhead/lh3dlib/development/LH3DAnim.h> /* For struct LH3DAnimSet */

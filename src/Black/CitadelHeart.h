@@ -2,7 +2,6 @@
 #define BW1_DECOMP_CITADEL_HEART_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For LEASH_TYPE_LAST, enum ABODE_TYPE */

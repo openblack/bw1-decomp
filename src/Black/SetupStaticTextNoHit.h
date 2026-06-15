@@ -2,7 +2,6 @@
 #define BW1_DECOMP_SETUP_STATIC_TEXT_NO_HIT_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 #include <uchar.h> /* For char16_t */
 
 #include "GatheringText.h" /* For enum TEXTJUSTIFY */

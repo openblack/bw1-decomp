@@ -2,7 +2,6 @@
 #define BW1_DECOMP_SETUP_PICTURE_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
-#include <stdbool.h> /* For bool */
 
 #include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <lionhead/lh3dlib/development/Zoomer.h> /* For struct Zoomer */
