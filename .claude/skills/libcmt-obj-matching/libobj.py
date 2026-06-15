@@ -412,6 +412,12 @@ def analyze(query):
     blob = extract_member(archive, member)
     coff = CoffObj(blob)
 
+    # Map every obj-defined symbol -> (section index, offset within it).
+    defined_syms = {}
+    for s in coff.symbols:
+        if s is not None and s.section > 0 and s.name:
+            defined_syms.setdefault(s.name, (s.section, s.value))
+
     # Collect loaded sections, grouped by bin, each with its naming symbol.
     funcs = []   # one per loaded code/data section
     for sec in coff.sections:
@@ -425,12 +431,29 @@ def analyze(query):
             "size": len(sec.data),
             "comdat": sec.is_comdat,
             "is_code": sec.is_code,
+            "index": sec.index,
             "pattern": masked_pattern(sec),
             "relocs": [(r.offset, r.type, coff.symbols[r.sym_index].name
                         if r.sym_index < len(coff.symbols) and coff.symbols[r.sym_index]
                         else "?") for r in sec.relocs],
             "_sec": sec,
         })
+
+    # For each section, find a DIR32 anchor: a reloc (in any section) that points
+    # at a symbol defined in this section. Lets us locate a section whose own
+    # bytes byte-search can't pin (e.g. a zero/common .data global like _newcw) —
+    # read the pointer's value out of the exe instead.
+    for fn in funcs:
+        fn["anchor"] = None
+        for src in funcs:
+            for (off, typ, tname) in src["relocs"]:
+                tgt = defined_syms.get(tname)
+                if tgt and tgt[0] == fn["index"] and typ == REL_DIR32:
+                    fn["anchor"] = {"src_index": src["index"], "off": off,
+                                    "sym_off": tgt[1]}
+                    break
+            if fn["anchor"]:
+                break
 
     externals = sorted(set(coff.undefined_externals()))
     has_fltused = "__fltused" in externals
@@ -458,16 +481,34 @@ def analyze(query):
             sym_by_norm.setdefault(re.sub(r"@\d+$", "", nm), (sec, addr, nm))
         vinfo = {"sections": [], "bins": {}, "missing_externals": [],
                  "externals": [], "comdat_consts": []}
+        placed = {}  # section index -> VA (byte-search hits, for anchor resolution)
         for fn in funcs:
             hits = [m.start() for m in re.finditer(fn["pattern"], exe, re.S)]
+            if len(hits) == 1:
+                placed[fn["index"]] = hits[0] + IMAGE_BASE
+        for fn in funcs:
+            hits = [m.start() for m in re.finditer(fn["pattern"], exe, re.S)]
+            va = (hits[0] + IMAGE_BASE) if len(hits) == 1 else None
+            via_reloc = False
+            # byte-search ambiguous/missing + non-comdat: locate via a DIR32 anchor
+            if va is None and not fn["comdat"] and fn["anchor"]:
+                a = fn["anchor"]
+                src_va = placed.get(a["src_index"])
+                if src_va is not None:
+                    off = src_va - IMAGE_BASE + a["off"]
+                    ptr = int.from_bytes(exe[off:off + 4], "little")
+                    if ptr:
+                        va = ptr - a["sym_off"]
+                        via_reloc = True
             entry = {
                 "symbol": fn["symbol"],
                 "bin": fn["bin"],
                 "size": fn["size"],
                 "comdat": fn["comdat"],
-                "found": len(hits) == 1,
-                "ambiguous": len(hits) > 1,
-                "va": (hits[0] + IMAGE_BASE) if len(hits) == 1 else None,
+                "found": va is not None,
+                "ambiguous": len(hits) > 1 and not via_reloc,
+                "via_reloc": via_reloc,
+                "va": va,
             }
             vinfo["sections"].append(entry)
         # External symbol resolution (read-only): classify each undefined ref.
@@ -671,6 +712,19 @@ def next_label_after(version, sec, addr):
     return best
 
 
+def next_split_start_after(version, sec, addr):
+    """Start of the nearest explicit split unit's `sec` at/after `addr` — the gap
+    must not run into an already-matched neighbour (e.g. ceil ends exactly where
+    bsearch begins)."""
+    best = None
+    for u in _split_units(splits_path(version).read_text()):
+        if sec in u["secs"]:
+            s = u["secs"][sec][0]
+            if s >= addr and (best is None or s < best):
+                best = s
+    return best
+
+
 def subdivide_section(version, sec, os_, oe):
     """Carve whatever contains [os_, oe) in `sec` so the object sits clean, with
     an explicit align:1 tail. A region can be covered by BOTH a `type:object`
@@ -681,6 +735,11 @@ def subdivide_section(version, sec, os_, oe):
     blob = find_blob_symbol(version, sec, os_)
     hi = (unit[2] if unit else blob["end"] if blob
           else (next_label_after(version, sec, oe) or oe))
+    # never let the tail gap run into an already-matched neighbour: cap at the
+    # next explicit split start after oe (== oe means contiguous -> no gap).
+    nss = next_split_start_after(version, sec, oe)
+    if nss is not None and oe <= nss < hi:
+        hi = nss
 
     # (a) shrink/replace the blob symbol so it ends at os_, with a tail label.
     if blob:

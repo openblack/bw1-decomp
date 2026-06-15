@@ -106,19 +106,7 @@ lib/libcmt/ceil.obj:
 	.data       start:0x00C1C2F0 end:0x00C1C2F4 align:1
 
 auto_gap_00C1C2F4:
-	.data       start:0x00C1C2F4 end:0x00C1C970 align:1
-
-lib/libcmt/ctype.obj:
-	.data       start:0x00C1C970 end:0x00C1CB7A align:1
-
-auto_gap_00C1CB7A:
-	.data       start:0x00C1CB7A end:0x00C1CB7C align:1
-
-lib/libcmt/nlsdata1.obj:
-	.data       start:0x00C1CB7C end:0x00C1CB88 align:1
-
-auto_gap_00C1CB88:
-	.data       start:0x00C1CB88 end:0x00C1ECA8 align:1
+	.data       start:0x00C1C2F4 end:0x00C1C304 align:1
 
 lib/libcmt/bsearch.obj:
 	.text       start:0x007B7F51 end:0x007B7FDD align:1
@@ -140,6 +128,28 @@ lib/libcmt/fseek.obj:
 
 lib/libcmt/fputs.obj:
 	.text       start:0x007B88A5 end:0x007B88F3 align:1
+
+lib/libcmt/floor.obj:
+	.text       start:0x007B88F3 end:0x007B89C2 align:1
+	.data       start:0x00C1C304 end:0x00C1C308 align:1
+
+auto_gap_00C1C308:
+	.data       start:0x00C1C308 end:0x00C1C970 align:1
+
+lib/libcmt/ctype.obj:
+	.data       start:0x00C1C970 end:0x00C1CB7A align:1
+
+auto_gap_00C1CB7A:
+	.data       start:0x00C1CB7A end:0x00C1CB7C align:1
+
+lib/libcmt/nlsdata1.obj:
+	.data       start:0x00C1CB7C end:0x00C1CB88 align:1
+
+auto_gap_00C1CB88:
+	.data       start:0x00C1CB88 end:0x00C1ECA8 align:1
+
+auto_gap_007B89C2:
+	.text       start:0x007B89C2 end:0x007B89D3 align:1
 
 lib/libcmt/strtok.obj:
 	.text       start:0x007B923A end:0x007B92DE align:1
