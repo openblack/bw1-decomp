@@ -325,6 +325,12 @@ auto_gap_00C30034:
 auto_gap_009A0B31:
 	.rdata      start:0x009A0B31 end:0x009A6194 align:1
 
+lib/libcmt/powhlp.obj:
+	.text       start:0x007D2DF7 end:0x007D2F8C align:1
+
+auto_gap_007D2F8C:
+	.text       start:0x007D2F8C end:0x007D305A align:1
+
 lib/libcmt/frnd.obj:
 	.text       start:0x007D3F8B end:0x007D3F9D align:1
 

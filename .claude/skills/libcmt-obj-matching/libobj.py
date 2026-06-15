@@ -490,16 +490,27 @@ def analyze(query):
             hits = [m.start() for m in re.finditer(fn["pattern"], exe, re.S)]
             va = (hits[0] + IMAGE_BASE) if len(hits) == 1 else None
             via_reloc = False
-            # byte-search ambiguous/missing + non-comdat: locate via a DIR32 anchor
-            if va is None and not fn["comdat"] and fn["anchor"]:
+            # resolve the DIR32 anchor pointer once (the VA the obj points at).
+            reloc_va = None
+            if fn["anchor"]:
                 a = fn["anchor"]
                 src_va = placed.get(a["src_index"])
                 if src_va is not None:
                     off = src_va - IMAGE_BASE + a["off"]
                     ptr = int.from_bytes(exe[off:off + 4], "little")
                     if ptr:
-                        va = ptr - a["sym_off"]
-                        via_reloc = True
+                        reloc_va = ptr - a["sym_off"]
+            # non-comdat data byte-search couldn't pin (zero/common global): place
+            # it at the pointer's target.
+            if va is None and not fn["comdat"] and reloc_va is not None:
+                va = reloc_va
+                via_reloc = True
+            # a comdat const folds to the game's copy at the pointer target — label
+            # that copy `comdat` so the obj folds to it (don't place the obj's own).
+            if fn["comdat"] and va is None and reloc_va is not None \
+                    and fn["symbol"] not in syms:
+                vinfo.setdefault("carves", []).append(
+                    {"name": fn["symbol"], "va": reloc_va, "size": fn["size"]})
             entry = {
                 "symbol": fn["symbol"],
                 "bin": fn["bin"],
@@ -725,6 +736,33 @@ def next_split_start_after(version, sec, addr):
     return best
 
 
+def carve_comdat(version, name, va, size):
+    """Label the game's copy of a shared float const as `comdat` so an object's
+    own copy folds into it (the earlier/game copy wins placement -> byte-exact).
+    Splits the containing blob symbol around it. No splits.txt change — dtk carves
+    a comdat symbol into its own unit automatically. Returns True if it edited."""
+    sy = symbols_path(version)
+    txt = sy.read_text()
+    if re.search(rf"^{re.escape(name)}\s*=", txt, re.M):
+        return False  # already carved (folds here already)
+    blob = find_blob_symbol(version, ".rdata", va)
+    hi = blob["end"] if blob else va + size
+    lines = []
+    if blob and va > blob["start"]:
+        lines.append(re.sub(r"size:0x[0-9A-Fa-f]+",
+                            f"size:0x{va - blob['start']:X}", blob["line"]))
+    lines.append(f"{name} = .rdata:0x{va:08X}; "
+                 f"// type:object size:0x{size:X} data:double comdat")
+    if va + size < hi:
+        lines.append(f"lbl_{va + size:08X} = .rdata:0x{va + size:08X}; "
+                     f"// type:object size:0x{hi - (va + size):X}")
+    if blob:
+        sy.write_text(txt.replace(blob["line"], "\n".join(lines), 1))
+    else:
+        sy.write_text(txt.rstrip("\n") + "\n" + "\n".join(lines) + "\n")
+    return True
+
+
 def subdivide_section(version, sec, os_, oe):
     """Carve whatever contains [os_, oe) in `sec` so the object sits clean, with
     an explicit align:1 tail. A region can be covered by BOTH a `type:object`
@@ -903,6 +941,11 @@ def apply_member(query, force=False):
             txt = txt.rstrip("\n") + "\n\n" + g + "\n"
         sp.write_text(txt)
         changed["splits"].append(ver)
+        # carve the game's copy of each folding comdat const so the obj folds to it
+        for c in rep["versions"][ver].get("carves", []):
+            if carve_comdat(ver, c["name"], c["va"], c["size"]):
+                changed.setdefault("carves", []).append(
+                    f"{ver} {c['name']}@{c['va']:#x}")
 
     return {"ok": True, "verdict": rep["verdict"], "flags": rep["flags"],
             "member": member, "unit": unit, "changed": changed,
