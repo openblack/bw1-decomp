@@ -262,6 +262,16 @@ lib/libcmt/util.obj:
 	.text       start:0x007D0FDD end:0x007D1185 align:1
 	.data       start:0x00C2FE58 end:0x00C2FE80
 
+lib/libcmt/timeset.obj:
+	.rdata      start:0x009A0AF4 end:0x009A0B31 align:1
+	.data       start:0x00C2FFA0 end:0x00C30034 align:1
+
+auto_gap_00C30034:
+	.data       start:0x00C30034 end:0x00C3C138 align:1
+
+auto_gap_009A0B31:
+	.rdata      start:0x009A0B31 end:0x009A6194 align:1
+
 lib/libcmt/fseeki64.obj:
 	.text       start:0x007D675C end:0x007D681C align:1
 
