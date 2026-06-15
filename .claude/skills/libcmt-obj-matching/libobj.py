@@ -1058,8 +1058,8 @@ def loop(limit=None, archive=None, only=None):
                            "needs_dependencies": rep.get("needs_dependencies")})
                 done.add(name); summary["skipped"].append(name); continue
 
-            ares = apply_member(o["member"])
-            renames = ares.get("changed", {}).get("renames", [])
+            snap = _snapshot_config()  # full undo incl. subdivision edits
+            apply_member(o["member"])
             res = verify(None)
             if not res["ok"]:
                 repaired = []
@@ -1069,8 +1069,7 @@ def loop(limit=None, archive=None, only=None):
                 if repaired:
                     res = verify(None)
                 if not res["ok"]:
-                    revert_member(o["member"])
-                    reverse_renames(renames)  # undo decoration edits apply made
+                    _restore_config(snap)  # undo apply + subdivision + renames
                     bad = [{"v": r["version"], "errors": r["errors"]}
                            for r in res["results"] if not r["ok"]]
                     _log_loop({"obj": name, "result": "fail", "detail": bad,
@@ -1104,6 +1103,23 @@ def reverse_renames(renames):
             pat = re.compile(rf"^{re.escape(to)}(\s*=)", re.M)
             if pat.search(txt):
                 sp.write_text(pat.sub(frm + r"\1", txt, count=1))
+
+
+def _config_files():
+    files = [CONFIGURE]
+    for v in VERSIONS:
+        files += [splits_path(v), symbols_path(v)]
+    return files
+
+
+def _snapshot_config():
+    return {f: f.read_text() for f in _config_files()}
+
+
+def _restore_config(snap):
+    for f, text in snap.items():
+        if f.read_text() != text:
+            f.write_text(text)
 
 
 def _log_loop(entry):
