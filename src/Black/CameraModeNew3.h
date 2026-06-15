@@ -4,10 +4,10 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
-#include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
-#include <lionhead/lh3dlib/development/LHMatrix.h> /* For struct LHMatrix */
-#include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint, struct Point2D */
-#include <lionhead/lh3dlib/development/Zoomer.h> /* For struct Zoomer, struct Zoomer3d */
+#include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
+#include <Lionhead/LH3DLib/development/LHMatrix.h> /* For struct LHMatrix */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint, struct Point2D */
+#include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer, struct Zoomer3d */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "CameraMode.h" /* For enum CAMERA_MODE_HAND_STATUS, enum CAMERA_MODE_MOUSE_STATUS, struct CameraMode, struct CameraModeVftable */

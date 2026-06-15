@@ -4,8 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <uchar.h> /* For char16_t */
 
-#include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
-#include <lionhead/lhlib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
+#include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
+#include <Lionhead/LHLib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
 
 #include "SetupControl.h" /* For struct SetupControl */
 

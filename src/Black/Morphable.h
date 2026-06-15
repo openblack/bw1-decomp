@@ -4,9 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int32_t, uint32_t, uint8_t, uintptr_t */
 
-#include <lionhead/lh3dlib/development/LH3DAnim.h> /* For struct LH3DAnimSet */
-#include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
-#include <lionhead/lhfile/ver3.0/LHReleasedFile.h> /* For struct LHReleasedFile */
+#include <Lionhead/LH3DLib/development/LH3DAnim.h> /* For struct LH3DAnimSet */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LHFile/ver3.0/LHReleasedFile.h> /* For struct LHReleasedFile */
 
 #include "DrawingObject.h" /* For struct DrawingObject */
 #include "Name.h" /* For struct Name */

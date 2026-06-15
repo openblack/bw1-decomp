@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t */
 
 #include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
-#include <lionhead/lh3dlib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
+#include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 
 #include "Abode.h" /* For struct Abode */
 

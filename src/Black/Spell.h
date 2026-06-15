@@ -6,7 +6,7 @@
 
 #include <chlasm/Enum.h> /* For enum IMPRESSIVE_TYPE, enum MAGIC_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
-#include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
 #include "MapCoords.h" /* For struct MapCoords */

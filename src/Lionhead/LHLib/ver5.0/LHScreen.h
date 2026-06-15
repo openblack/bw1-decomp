@@ -10,8 +10,8 @@
 #pragma clang diagnostic pop
 #include <stdint.h> /* For int32_t, uint16_t, uint32_t, uint8_t */
 
-#include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
-#include <lionhead/lh3dlib/development/LHRegion.h> /* For struct LHRegion */
+#include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
+#include <Lionhead/LH3DLib/development/LHRegion.h> /* For struct LHRegion */
 #include <reversing_utils/re_common.h> /* For HWND */
 
 // Forward Declares

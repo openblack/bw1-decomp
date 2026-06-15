@@ -6,7 +6,7 @@
 #include <uchar.h> /* For char16_t */
 #include <wchar.h> /* For wchar_t */
 
-#include <lionhead/lh3dlib/development/LHText.h> /* For struct LHText */
+#include <Lionhead/LH3DLib/development/LHText.h> /* For struct LHText */
 #include <reversing_utils/re_common.h> /* For HINSTANCE, HWND, bool32_t */
 
 #include "LHJoypad.h" /* For struct LHJoypads */

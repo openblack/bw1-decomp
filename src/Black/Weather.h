@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 
-#include <lionhead/lh3dlib/development/LH3DStorm.h> /* For struct LH3DStorm */
+#include <Lionhead/LH3DLib/development/LH3DStorm.h> /* For struct LH3DStorm */
 
 // Forward Declares
 

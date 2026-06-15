@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint16_t */
 
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
-#include <lionhead/lh3dlib/development/LHCoord.h> /* For struct LHCoord */
+#include <Lionhead/LH3DLib/development/LHCoord.h> /* For struct LHCoord */
 
 #include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
 #include "PictureRoom.h" /* For struct PictureRoomBase */

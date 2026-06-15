@@ -4,8 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint, struct Point2D */
+#include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint, struct Point2D */
 
 // Forward Declares
 

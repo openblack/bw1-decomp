@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint16_t, uint32_t */
 
 #include <chlasm/AudioSFX.h> /* For enum AUDIO_SFX_BANK_TYPE */
-#include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 #include "LocalBase.h" /* For struct LocalBase */
 

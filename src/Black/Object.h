@@ -8,8 +8,8 @@
 #include <chlasm/AllMeshes.h> /* For enum MESH_LIST */
 #include <chlasm/Enum.h> /* For enum EFFECT_TYPE, enum HOLD_TYPE, enum IMMERSION_EFFECT_TYPE, enum RESOURCE_TYPE, enum SOUND_COLLISION_TYPE, enum TRIBE_TYPE */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
-#include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <lionhead/lh3dlib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
+#include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <Lionhead/LH3DLib/development/LH3DObject.h> /* For enum LH3DObject__ObjectType */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */

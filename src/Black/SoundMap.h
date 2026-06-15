@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-#include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 #include "Base.h" /* For struct Base */
 #include "MapCoords.h" /* For struct MapCoords */

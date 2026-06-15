@@ -3,8 +3,8 @@
 
 #include <assert.h> /* For static_assert */
 
-#include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <lionhead/lhlib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
+#include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <Lionhead/LHLib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
 
 #include "SetupButton.h" /* For struct SetupButton */
 

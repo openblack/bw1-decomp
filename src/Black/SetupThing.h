@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 #include <uchar.h> /* For char16_t */
 
-#include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "GatheringText.h" /* For enum TEXTJUSTIFY */

@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint16_t */
 
 #include <chlasm/LHKeyBoard.h> /* For enum LH_KEY */
-#include <lionhead/lh3dlib/development/Prss.h> /* For struct Prss */
+#include <Lionhead/LH3DLib/development/Prss.h> /* For struct Prss */
 
 // Forward Declares
 

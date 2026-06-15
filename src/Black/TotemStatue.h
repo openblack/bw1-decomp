@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t */
 
-#include <lionhead/lh3dlib/development/Zoomer.h> /* For struct Zoomer */
+#include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "MultiMapFixed.h" /* For struct MultiMapFixed */

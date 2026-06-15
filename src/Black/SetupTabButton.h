@@ -4,8 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <uchar.h> /* For char16_t */
 
-#include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <lionhead/lhlib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
+#include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <Lionhead/LHLib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "SetupButton.h" /* For struct SetupButton */

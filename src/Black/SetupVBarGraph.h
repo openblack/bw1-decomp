@@ -4,9 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <uchar.h> /* For char16_t */
 
-#include <lionhead/lh3dlib/development/LH3DColor.h> /* For struct LH3DColor */
-#include <lionhead/lh3dlib/development/Zoomer.h> /* For struct Zoomer */
-#include <lionhead/lhlib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
+#include <Lionhead/LH3DLib/development/LH3DColor.h> /* For struct LH3DColor */
+#include <Lionhead/LH3DLib/development/Zoomer.h> /* For struct Zoomer */
+#include <Lionhead/LHLib/ver5.0/LHKey.h> /* For enum LHKey, enum LHKeyMod */
 
 #include "SetupButton.h" /* For struct SetupButton */
 #include "SetupControl.h" /* For struct SetupControlVftable */

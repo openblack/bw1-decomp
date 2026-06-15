@@ -4,8 +4,8 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
-#include <lionhead/lhfile/ver3.0/LHFile.h> /* For enum LH_FILE_MODE */
-#include <lionhead/lhfile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
+#include <Lionhead/LHFile/ver3.0/LHFile.h> /* For enum LH_FILE_MODE */
+#include <Lionhead/LHFile/ver3.0/LHReleasedOSFile.h> /* For struct LHReleasedOSFile */
 
 #include "GameThing.h" /* For struct GameThing */
 #include "SaveLoadPtr.h" /* For struct GSaveLoadPtr */

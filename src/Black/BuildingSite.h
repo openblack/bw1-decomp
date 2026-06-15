@@ -5,7 +5,7 @@
 #include <stdint.h> /* For uint32_t, uint8_t */
 
 #include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
-#include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
 #include "GameThing.h" /* For struct GameThing, struct GameThingVftable */

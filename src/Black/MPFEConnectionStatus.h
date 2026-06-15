@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 
-#include <lionhead/lhmultiplayer/ver4.0/LHLobby.h> /* For enum LOBBY_TYPE */
+#include <Lionhead/LHMultiplayer/ver4.0/LHLobby.h> /* For enum LOBBY_TYPE */
 
 struct MPFEConnectionStatus
 {

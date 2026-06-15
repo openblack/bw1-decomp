@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 
-#include <lionhead/lh3dlib/development/Prss.h> /* For struct Prss */
+#include <Lionhead/LH3DLib/development/Prss.h> /* For struct Prss */
 
 class PlayerMessage: public Prss
 {

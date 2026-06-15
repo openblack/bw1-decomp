@@ -3,7 +3,7 @@
 
 #include <assert.h> /* For static_assert */
 
-#include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
 
 struct Leash
 {

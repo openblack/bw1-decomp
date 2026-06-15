@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint8_t */
 
-#include <lionhead/lhfile/ver3.0/LHOSFile.h> /* For struct LHOSFile */
+#include <Lionhead/LHFile/ver3.0/LHOSFile.h> /* For struct LHOSFile */
 
 struct Config
 {

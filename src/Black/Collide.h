@@ -4,7 +4,7 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int16_t, uint32_t, uint8_t */
 
-#include <lionhead/lh3dlib/development/LHPoint.h> /* For struct LHPoint, struct Point2D */
+#include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint, struct Point2D */
 #include <reversing_utils/re_common.h> /* For bool32_t */
 
 // Forward Declares
