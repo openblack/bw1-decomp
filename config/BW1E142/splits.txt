@@ -185,6 +185,63 @@ zlib/infutil.c:
 zlib/inffast.c:
 	.text       start:0x007C4D70 end:0x007C5100
 
+lib/libcmt/wcscat.obj:
+	.text       start:0x007C5F8C end:0x007C5FDB align:1
+
+lib/libcmt/wcsncpy.obj:
+	.text       start:0x007C6425 end:0x007C6462 align:1
+
+lib/libcmt/wcslen.obj:
+	.text       start:0x007C6462 end:0x007C647F align:1
+
+lib/libcmt/swprintf.obj:
+	.text       start:0x007C647F end:0x007C64EE align:1
+
+lib/libcmt/fprintf.obj:
+	.text       start:0x007C6DB0 end:0x007C6DEC align:1
+
+lib/libcmt/wcscmp.obj:
+	.text       start:0x007C6EDF end:0x007C6F14 align:1
+
+lib/libcmt/fscanf.obj:
+	.text       start:0x007C7DAA end:0x007C7DD7 align:1
+
+lib/libcmt/vsprintf.obj:
+	.text       start:0x007C7E13 end:0x007C7E64 align:1
+
+lib/libcmt/bsearch.obj:
+	.text       start:0x007C8141 end:0x007C81CD align:1
+
+lib/libcmt/fgets.obj:
+	.text       start:0x007C8606 end:0x007C8668 align:1
+
+lib/libcmt/rand.obj:
+	.text       start:0x007C882A end:0x007C8859 align:1
+
+lib/libcmt/fseek.obj:
+	.text       start:0x007C8859 end:0x007C8912 align:1
+
+lib/libcmt/fputs.obj:
+	.text       start:0x007C8A95 end:0x007C8AE3 align:1
+
+lib/libcmt/strtok.obj:
+	.text       start:0x007C942A end:0x007C94CE align:1
+
+lib/libcmt/chmod.obj:
+	.text       start:0x007C9860 end:0x007C989F align:1
+
+lib/libcmt/ungetc.obj:
+	.text       start:0x007CA179 end:0x007CA210 align:1
+
+lib/libcmt/fgetpos.obj:
+	.text       start:0x007CA210 end:0x007CA232 align:1
+
+lib/libcmt/fsetpos.obj:
+	.text       start:0x007CA232 end:0x007CA24A align:1
+
+lib/libcmt/wcsncat.obj:
+	.text       start:0x007CA45F end:0x007CA49F align:1
+
 lib/libcmt/_freebuf.obj:
 	.text       start:0x007D0DCC end:0x007D0DF7 align:1
 
@@ -194,3 +251,12 @@ lib/libcmt/ldexp.obj:
 lib/libcmt/util.obj:
 	.text       start:0x007D0FDD end:0x007D1185 align:1
 	.data       start:0x00C2FE58 end:0x00C2FE80
+
+lib/libcmt/fseeki64.obj:
+	.text       start:0x007D675C end:0x007D681C align:1
+
+lib/libcmt/wcsdup.obj:
+	.text       start:0x008A5B0C end:0x008A5B3A align:1
+
+lib/libcmt/fileno.obj:
+	.text       start:0x008A5CA3 end:0x008A5CAB align:1
