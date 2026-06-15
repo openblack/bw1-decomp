@@ -579,10 +579,11 @@ def build_plan(report, deco=None):
         for bucket in (".text", ".data", ".rdata"):
             if bucket in v["bins"]:
                 b = v["bins"][bucket]
-                align = " align:1" if bucket == ".text" else ""
+                # align:1 — a verbatim lib object is placed at a fixed (often
+                # unaligned) address; dtk only does unaligned via explicit align:1.
                 lines.append(
                     f"\t{bucket:<11} start:0x{b['start']:08X} "
-                    f"end:0x{b['end']:08X}{align}"
+                    f"end:0x{b['end']:08X} align:1"
                 )
         if lines:
             plan["splits"][ver] = (report["unit"] + ":\n" + "\n".join(lines))
@@ -590,6 +591,135 @@ def build_plan(report, deco=None):
     for e in (deco or []):
         plan["symbol_renames"].append({"from": e["symbols_has"], "to": e["name"]})
     return plan
+
+
+# --------------------------------------------------------------------------- #
+# blob subdivision — carve the containing blob/gap around an object's section  #
+# --------------------------------------------------------------------------- #
+# A verbatim lib object placed mid-stream lands inside (a) a big data/blob
+# `type:object` symbol, (b) an explicit `align:1` gap unit from a prior match, or
+# (c) an unlabelled auto region. dtk then bails ("overlaps", "ends within symbol",
+# or "Invalid alignment" for the unaligned tail). These helpers carve the
+# container so the object's range is clean and the tail is an explicit align:1
+# unit (the only way dtk does unaligned). Mechanical; no judgement.
+
+SEC_DEFAULT_ALIGN = {".text": 4, ".rdata": 8, ".data": 8, ".bss": 8}
+BLOB_SYM_RE = re.compile(
+    r"^(?P<name>[^\s=]+)\s*=\s*\.(?P<sec>\w+):0x(?P<addr>[0-9A-Fa-f]+);"
+    r"\s*//\s*type:object\s+size:0x(?P<size>[0-9A-Fa-f]+)")
+ANY_SYM_RE = re.compile(r"^[^\s=]+\s*=\s*\.(?P<sec>\w+):0x(?P<addr>[0-9A-Fa-f]+);")
+
+
+def _split_units(text):
+    """Parse splits.txt -> list of (name, {sec: (start, end, line)}), preserving
+    file order. Skips the `Sections:` header block."""
+    units = []
+    cur = None
+    in_header = False
+    for line in text.splitlines():
+        if re.match(r"^Sections:\s*$", line):
+            in_header = True
+            continue
+        m = re.match(r"^(\S.*):\s*$", line)
+        if m:
+            in_header = False
+            cur = {"name": m.group(1), "secs": {}}
+            units.append(cur)
+            continue
+        if in_header:
+            continue
+        sm = re.match(
+            r"^\t(\.\w[\w$]*)\s+start:0x([0-9A-Fa-f]+)\s+end:0x([0-9A-Fa-f]+)", line)
+        if sm and cur is not None:
+            cur["secs"][sm.group(1)] = (int(sm.group(2), 16), int(sm.group(3), 16), line)
+    return units
+
+
+def find_explicit_unit(version, sec, addr, exclude):
+    for u in _split_units(splits_path(version).read_text()):
+        if u["name"] == exclude:
+            continue
+        if sec in u["secs"]:
+            s, e, _ = u["secs"][sec]
+            if s <= addr < e:
+                return u["name"], s, e
+    return None
+
+
+def find_blob_symbol(version, sec, addr):
+    bare = sec.lstrip(".")
+    for line in symbols_path(version).read_text().splitlines():
+        m = BLOB_SYM_RE.match(line.strip())
+        if m and m.group("sec") == bare:
+            s = int(m.group("addr"), 16)
+            sz = int(m.group("size"), 16)
+            if sz and s <= addr < s + sz:
+                return {"name": m.group("name"), "start": s, "size": sz,
+                        "end": s + sz, "line": line}
+    return None
+
+
+def next_label_after(version, sec, addr):
+    bare = sec.lstrip(".")
+    best = None
+    for line in symbols_path(version).read_text().splitlines():
+        m = ANY_SYM_RE.match(line.strip())
+        if m and m.group("sec") == bare:
+            a = int(m.group("addr"), 16)
+            if a > addr and (best is None or a < best):
+                best = a
+    return best
+
+
+def subdivide_section(version, sec, os_, oe):
+    """Carve whatever contains [os_, oe) in `sec` so the object sits clean, with
+    an explicit align:1 tail. A region can be covered by BOTH a `type:object`
+    blob symbol AND an explicit gap split (from a prior match) — carve both.
+    Edits symbols.txt / splits.txt; returns extra gap unit blocks + a log."""
+    extra_units, log = [], []
+    unit = find_explicit_unit(version, sec, os_, exclude=None)
+    blob = find_blob_symbol(version, sec, os_)
+    hi = (unit[2] if unit else blob["end"] if blob
+          else (next_label_after(version, sec, oe) or oe))
+
+    # (a) shrink/replace the blob symbol so it ends at os_, with a tail label.
+    if blob:
+        sp = symbols_path(version)
+        txt = sp.read_text()
+        new_lines = []
+        if os_ > blob["start"]:
+            new_lines.append(re.sub(r"size:0x[0-9A-Fa-f]+",
+                                    f"size:0x{os_ - blob['start']:X}", blob["line"]))
+        if oe < hi:
+            new_lines.append(
+                f"lbl_{oe:08X} = .{sec.lstrip('.')}:0x{oe:08X}; "
+                f"// type:object size:0x{hi - oe:X}")
+        sp.write_text(txt.replace(blob["line"], "\n".join(new_lines), 1)
+                      if new_lines else txt.replace(blob["line"] + "\n", "", 1))
+        log.append(f"{sec}: carved blob {blob['name']} [{blob['start']:#x},{hi:#x})")
+
+    # (b) shrink an explicit gap split unit so its section ends at os_.
+    if unit:
+        name, us, ue = unit
+        sp = splits_path(version)
+        txt = sp.read_text()
+        old = next(l for l in txt.splitlines()
+                   if re.match(rf"^\t{re.escape(sec)}\s+start:0x0*{us:X}\b", l, re.I))
+        if os_ > us:
+            sp.write_text(txt.replace(
+                old, f"\t{sec:<11} start:0x{us:08X} end:0x{os_:08X} align:1", 1))
+        else:
+            sp.write_text(txt.replace(old + "\n", "", 1))
+        log.append(f"{sec}: subdivided gap {name} [{us:#x},{ue:#x})")
+
+    if not unit and not blob:
+        log.append(f"{sec}: auto region, tail to {hi:#x}")
+
+    # (c) explicit align:1 tail gap — the post-object split is never auto/misaligned
+    if oe < hi:
+        extra_units.append(
+            f"auto_gap_{oe:08X}:\n\t{sec:<11} start:0x{oe:08X} end:0x{hi:08X} align:1")
+    return extra_units, log
 
 
 BUILD_NINJA = ROOT / "build.ninja"
@@ -692,22 +822,33 @@ def apply_member(query, force=False):
     else:
         return {"ok": False, "error": f"could not find LibObject line for {member}"}
 
-    # 2) splits.txt per version: insert unit block in configure.py order.
+    # 2) splits.txt per version: carve the containing blob/gap around each of the
+    #    object's sections, then insert the unit block in configure.py order.
     lib_order = [o["unit"] for o in list_libobjects()]
+    changed["subdivided"] = []
     for ver, block in rep["plan"]["splits"].items():
         sp = splits_path(ver)
-        txt = sp.read_text()
-        if re.search(rf"^{re.escape(unit)}:\s*$", txt, re.M):
+        if re.search(rf"^{re.escape(unit)}:\s*$", sp.read_text(), re.M):
             changed["already"].append(f"splits/{ver}")
             continue
-        sp.write_text(insert_split_block(txt, unit, block, lib_order))
+        # subdivide containers (edits symbols.txt / splits.txt; returns gap units)
+        extra = []
+        for bucket in (".text", ".rdata", ".data"):
+            if bucket in rep["versions"][ver]["bins"]:
+                b = rep["versions"][ver]["bins"][bucket]
+                gaps, log = subdivide_section(ver, bucket, b["start"], b["end"])
+                extra += gaps
+                changed["subdivided"] += [f"{ver} {l}" for l in log]
+        txt = insert_split_block(sp.read_text(), unit, block, lib_order)
+        for g in extra:
+            txt = txt.rstrip("\n") + "\n\n" + g + "\n"
+        sp.write_text(txt)
         changed["splits"].append(ver)
 
     return {"ok": True, "verdict": rep["verdict"], "flags": rep["flags"],
             "member": member, "unit": unit, "changed": changed,
             "note": "auto" if rep["verdict"] == "auto"
-            else "splits+configure written; symbols.txt may still need hand edits "
-                 "(undefined_externals / rdata comdat) — run verify to see errors."}
+            else "splits+configure+subdivision written; run verify."}
 
 
 # --------------------------------------------------------------------------- #

@@ -249,7 +249,7 @@ lib/libcmt/testfdiv.obj:
 
 auto_gap_0073971A:
 	.text       start:0x0073971A end:0x00739B40 align:1
-	.rdata      start:0x008D66ED end:0x008DA598 align:1
+	.rdata      start:0x008D66ED end:0x008D68A4 align:1
 
 lib/libcmt/_freebuf.obj:
 	.text       start:0x0073D294 end:0x0073D2BF align:1
@@ -257,6 +257,16 @@ lib/libcmt/_freebuf.obj:
 lib/libcmt/util.obj:
 	.text       start:0x0073D2BF end:0x0073D403 align:1
 	.data       start:0x00B52358 end:0x00B52380
+
+lib/libcmt/timeset.obj:
+	.rdata      start:0x008D68A4 end:0x008D68E1 align:1
+	.data       start:0x00B524A0 end:0x00B52534 align:1
+
+auto_gap_00B52534:
+	.data       start:0x00B52534 end:0x00CC7858 align:1
+
+auto_gap_008D68E1:
+	.rdata      start:0x008D68E1 end:0x008DA598 align:1
 
 lib/libcmt/fseeki64.obj:
 	.text       start:0x00743E6E end:0x00743F2E align:1

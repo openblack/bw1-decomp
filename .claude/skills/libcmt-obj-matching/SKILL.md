@@ -42,7 +42,7 @@ broken. Read `.claude/skills/libcmt-obj-matching/libobj_loop.jsonl`: `matched` =
 | `index` | cache only | no | parse all archive members → symbol→member map (the dependency graph). Cached to `.claude/skills/libcmt-obj-matching/libobj_index.json` |
 | `scan` | no | no | **read-only triage of the whole backlog**: per-object verdict, flags, dependencies + roll-up |
 | `analyze <name>` | no | no | per-object report: locate in all 3 exes, resolve every external, classify, propose splits + symbol renames |
-| `apply <name>` | **yes** | no | flip `configure.py`→`Matching`; insert splits (configure order); auto-rename decoration-mismatch symbols |
+| `apply <name>` | **yes** | no | flip `configure.py`→`Matching`; insert splits (configure order, `align:1`); **auto-subdivide** the containing blob/gap around each section (carve blob symbol, shrink prior gap, add `align:1` tail); auto-rename decoration-mismatch symbols |
 | `verify [--version V] [--member N]` | yes | **yes** | `dtk coff split`+`configure.py`+`ninja` per version; structured pass/fail; `--member` auto-reverts on fail |
 | `revert <name>` | yes | no | undo apply |
 | `loop [--archive A] [--limit N] [--only x.obj …]` | yes | yes | the multi-pass batch driver above |
