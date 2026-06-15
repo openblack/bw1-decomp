@@ -15,6 +15,13 @@
 #include "Object.h" /* For struct Object */
 #include "Villager.h" /* For struct Villager */
 
+enum ABODE_EPP
+{
+  ABODE_EPP_LANTERN = 0x0,
+  ABODE_EPP_SCRIPT_HIGHLIGHT = 0x1,
+  _ABODE_EPP_COUNT = 0x2
+};
+
 // Forward Declares
 
 class Base;

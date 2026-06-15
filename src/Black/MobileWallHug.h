@@ -10,6 +10,21 @@
 #include "Mobile.h" /* For struct Mobile, struct MobileVftable */
 #include "Object.h" /* For struct Object */
 
+enum MOVE_TO_STATES
+{
+  MOVE_TO_STATES_ARRIVED = 0x1,
+  MOVE_TO_STATES_FINAL_STEP = 0x4,
+  MOVE_TO_STATES_STEP_THROUGH = 0xb,
+  MOVE_TO_STATES_LINEAR = 0xc,
+  MOVE_TO_STATES_LINEAR_CW = 0xd,
+  MOVE_TO_STATES_LINEAR_CCW = 0xe,
+  MOVE_TO_STATES_ORBIT_CW = 0xf,
+  MOVE_TO_STATES_ORBIT_CCW = 0x10,
+  MOVE_TO_STATES_EXIT_CIRCLE_CCW = 0x11,
+  MOVE_TO_STATES_EXIT_CIRCLE_CW = 0x12,
+  _MOVE_TO_STATES_COUNT = 0x13
+};
+
 // Forward Declares
 
 class Base;

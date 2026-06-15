@@ -5,6 +5,19 @@
 
 #include "LHConnection.h" /* For struct LHConnection */
 
+enum LOBBY_TYPE
+{
+  LOBBY_TYPE_INTERNET = 0x0,
+  LOBBY_TYPE_LAN = 0x1,
+  _LOBBY_TYPE_COUNT = 0x2
+};
+
+enum LH_OPERATING_MODE
+{
+  LH_OPERATING_MODE_0 = 0x0,
+  _LH_OPERATING_MODE_COUNT = 0x1
+};
+
 // Forward Declares
 
 struct LHMPServerStartInfo;

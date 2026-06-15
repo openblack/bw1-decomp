@@ -20,6 +20,10 @@ class Spell;
 class PSysInterface: public PSysBase
 {
 public:
+    enum NET_GAME_TYPE
+    {
+      NET_GAME_TYPE_0 = 0x0,
+    };
 
     // Override methods
 
@@ -29,7 +33,7 @@ public:
     // Static methods
 
     // win1.41 0068e910 mac 100053c0 PSysInterface::Create(Spell *, PARTICLE_TYPE, LHPoint const &, LHPoint const &, float, PSysInterface::NET_GAME_TYPE)
-    static PSysInterface* Create(Spell* spell, PARTICLE_TYPE particle_type, LHPoint* param_3, LHPoint* param_4, float param_5, PSysInterface__NET_GAME_TYPE game_type);
+    static PSysInterface* Create(Spell* spell, PARTICLE_TYPE particle_type, LHPoint* param_3, LHPoint* param_4, float param_5, NET_GAME_TYPE game_type);
 };
 
 #endif /* BW1_DECOMP_P_SYS_INTERFACE_INCLUDED_H */

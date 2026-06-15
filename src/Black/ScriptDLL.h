@@ -6,6 +6,24 @@
 
 #include <Lionhead/LHDLL/ver1.0/LHDLL.h> /* For struct LHDLL */
 
+enum VMType
+{
+  VMType_0 = 0x0,
+  _VMType_COUNT = 0x1
+};
+
+enum VMScriptType
+{
+  VMScriptType_0 = 0x0,
+  _VMScriptType_COUNT = 0x1
+};
+
+enum STATE_TYPE
+{
+  STATE_TYPE_0 = 0x0,
+  _STATE_TYPE_COUNT = 0x1
+};
+
 // Forward Declares
 
 class LHTransport;

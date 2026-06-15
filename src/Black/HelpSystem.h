@@ -6,6 +6,24 @@
 
 #include "Base.h" /* For struct Base */
 
+enum HELP_SET_CATEGORY
+{
+  HELP_SET_CATEGORY_0 = 0x0,
+  _HELP_SET_CATEGORY_COUNT = 0x1
+};
+
+enum HELP_SYSTEM_MESSAGE_SET
+{
+  HELP_SYSTEM_MESSAGE_SET_0 = 0x0,
+  _HELP_SYSTEM_MESSAGE_SET_COUNT = 0x1
+};
+
+enum HELP_EVENT_TYPE
+{
+  HELP_EVENT_TYPE_0 = 0x0,
+  _HELP_EVENT_TYPE_COUNT = 0x1
+};
+
 // Forward Declares
 
 struct Bubble;

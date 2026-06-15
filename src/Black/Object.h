@@ -15,6 +15,12 @@
 #include "GameThingWithPos.h" /* For struct GameThingWithPos, struct GameThingWithPosVftable */
 #include "MapCoords.h" /* For struct MapCoords */
 
+enum FOOD_TYPE
+{
+  FOOD_TYPE_0 = 0x0,
+  _FOOD_TYPE_COUNT = 0x1
+};
+
 // Forward Declares
 
 class Base;
@@ -350,7 +356,7 @@ public:
     // win1.41 00636be0 mac 103d84b0 Object::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
     // win1.41 006364f0 mac 103d92f0 Object::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 004026d0 mac 10586d80 Object::GetFoodValue(FOOD_TYPE)
     virtual float GetFoodValue(FOOD_TYPE type);
     // win1.41 006395c0 mac 103d3390 Object::GetWoodValue(void)
@@ -605,7 +611,7 @@ public:
     // Static methods
 
     // win1.41 006364c0 mac 103d93a0 Object::Get3DType(MESH_LIST)
-    static LH3DObject__ObjectType Get3DType(MESH_LIST index);
+    static LH3DObject::ObjectType Get3DType(MESH_LIST index);
 
     // Constructors
 

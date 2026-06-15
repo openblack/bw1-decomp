@@ -10,6 +10,12 @@
 #include "BaseInfo.h" /* For struct GBaseInfo */
 #include "ScriptDLL.h" /* For enum VMScriptType, enum VMType */
 
+enum SCRIPT_FEATURE_COMMANDS
+{
+  SCRIPT_FEATURE_COMMANDS_0 = 0x0,
+  _SCRIPT_FEATURE_COMMANDS_COUNT = 0x1
+};
+
 // Forward Declares
 
 class Abode;

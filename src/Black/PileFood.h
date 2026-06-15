@@ -56,7 +56,7 @@ public:
     // win1.41 0066e1a0 mac 10119ea0 PileFood::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 0066e380 mac 10119a40 PileFood::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 0066ec50 mac 10117fe0 PileFood::GetResourceType(void)
     virtual RESOURCE_TYPE GetResourceType();
     // win1.41 0066e1f0 mac 10119d80 PileFood::CreatureMustAvoid(Creature *)

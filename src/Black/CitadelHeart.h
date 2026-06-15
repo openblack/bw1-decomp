@@ -152,7 +152,7 @@ public:
     // win1.41 004675a0 mac 101be430 CitadelHeart::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
     // win1.41 00464b40 mac 101be8a0 CitadelHeart::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 00467b60 mac 101bdef0 CitadelHeart::GetPhysicsConstantsType(void)
     virtual uint32_t GetPhysicsConstantsType();
     // win1.41 00467b70 mac 101bde40 CitadelHeart::SetUpPhysOb(PhysOb *)

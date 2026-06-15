@@ -19,6 +19,20 @@ struct LHPoint;
 class LH3DObject
 {
 public:
+    enum ObjectType
+    {
+      STATIC = 0x0,
+      MORPHABLE = 0x1,
+      ANIMATED = 0x2,
+      COMPLEX = 0x3,
+      SMOKE = 0x4,
+      FIRE_00 = 0x5,
+      FIRE_35 = 0x6,
+      MIST = 0x7,
+      CITADEL = 0x8,
+      COUNT = 0x9
+    };
+
     uint32_t flags_1; /* 0x4 */
     uint32_t flags_2;
     uint32_t field_0xc;
@@ -44,7 +58,7 @@ public:
     // win1.41 00423140 mac 10041480 LH3DObject::SetPosition(const LHPoint&, float, float)
     static void SetPosition(LH3DObject* this, LHPoint* point, float y_angle, float scale);
     // win1.41 0080b4d0 mac 10620204 LH3DObject::Create(LH3DObject::ObjectType)
-    static LH3DObject* Create(LH3DObject__ObjectType object_type);
+    static LH3DObject* Create(ObjectType object_type);
 
     // Constructors
 

@@ -38,7 +38,7 @@ public:
     // win1.41 0072c2a0 mac 10531420 MagicShield::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
     // win1.41 0072c340 mac 10531220 MagicShield::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 0072c320 mac 105312c0 MagicShield::SetDying(void)
     virtual bool SetDying();
     // win1.41 0072c310 mac 10531320 MagicShield::IsEffectReceiver(EffectValues *)

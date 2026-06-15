@@ -49,7 +49,7 @@ public:
     // win1.41 00779160 mac 101613c0 Wonder::CallVirtualFunctionsForCreation(const MapCoords&)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
     // win1.41 00779190 mac 10161310 Wonder::Get3DType(void)
-    virtual LH3DObject__ObjectType Get3DType();
+    virtual LH3DObject::ObjectType Get3DType();
     // win1.41 00778f30 mac 10161920 Wonder::Built(void)
     virtual bool Built();
     // win1.41 00779070 mac 10161620 Wonder::SetPower(float)

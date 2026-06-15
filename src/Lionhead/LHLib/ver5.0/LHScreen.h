@@ -2,6 +2,13 @@
 #define BW1_DECOMP_LH_SCREEN_INCLUDED_H
 
 #include <assert.h> /* For static_assert */
+
+enum LH_SCREEN_BUFFER
+{
+  LH_SCREEN_BUFFER_0x0 = 0x0,
+  LH_SCREEN_BUFFER_0x1 = 0x1,
+  _LH_SCREEN_BUFFER_COUNT = 0x2
+};
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpragma-pack"
 #pragma clang diagnostic ignored "-Wmacro-redefined"

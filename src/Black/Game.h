@@ -26,6 +26,18 @@
 #include "StatsDatabase.h" /* For struct StatsDatabase */
 #include "TerrainMap.h" /* For struct GTerrainMap */
 
+enum GAME_MODE
+{
+  GAME_MODE_RUNNING = 0x0,
+  GAME_MODE_1 = 0x1,
+  GAME_MODE_2 = 0x2,
+  GAME_MODE_ONLINE = 0x3,
+  GAME_MODE_4 = 0x4,
+  GAME_MODE_SKIRMISH = 0x5,
+  GAME_MODE_QUITTING = 0x6,
+  _GAME_MODE_COUNT = 0x7
+};
+
 // Forward Declares
 
 class Base;

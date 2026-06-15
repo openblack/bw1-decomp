@@ -6,6 +6,14 @@
 
 #include <chlasm/GStates.h> /* For enum VILLAGER_STATES */
 
+enum LIVING_ACTION_INDEX
+{
+  LIVING_ACTION_INDEX_TOP = 0x0,
+  LIVING_ACTION_INDEX_FINAL = 0x1,
+  LIVING_ACTION_INDEX_PREVIOUS = 0x2,
+  _LIVING_ACTION_INDEX_COUNT = 0x3
+};
+
 // Forward Declares
 
 class Living;

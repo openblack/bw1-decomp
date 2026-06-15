@@ -6,6 +6,17 @@
 
 #include "LHPoint.h" /* For struct LHPoint */
 
+enum AnimInfoType
+{
+  AnimInfoType_Minus = 0x0,
+  AnimInfoType_C = 0x1,
+  AnimInfoType_N = 0x2,
+  AnimInfoType_L = 0x6,
+  AnimInfoType_W = 0x9,
+  AnimInfoType_D = 0x10,
+  _AnimInfoType_COUNT = 0x11
+};
+
 // Forward Declares
 
 struct AnimInfo;

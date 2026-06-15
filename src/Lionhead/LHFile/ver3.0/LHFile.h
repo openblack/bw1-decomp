@@ -5,6 +5,14 @@
 #include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint32_t */
 
+enum LH_FILE_MODE
+{
+};
+
+enum LH_SEEK_MODE
+{
+};
+
 // Forward Declares
 
 struct LHSegment;

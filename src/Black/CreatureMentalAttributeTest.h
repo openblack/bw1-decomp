@@ -11,6 +11,12 @@
 #include "CreatureLearning.h" /* For struct CreatureLearningEpisode */
 #include "CreatureLessonChooser.h" /* For _LESSON_TYPE_COUNT */
 
+enum DECISION_TREE_TYPE
+{
+  DECISION_TREE_TYPE_0x0 = 0x0,
+  _DECISION_TREE_TYPE_COUNT = 0x1
+};
+
 struct AttributeTest
 {
     LHLinkedList__CreatureLearningEpisode episodes; /* 0x0 */

@@ -9,6 +9,18 @@
 
 #include "InterfaceMessage.h" /* For enum INTERFACE_MESSAGE_TYPES */
 
+enum TempleRoomsEnum
+{
+  WorldRoom = 0x0,
+  CreatureRoom = 0x1,
+  ChallengeRoom = 0x2,
+  UniverseRoom = 0x3,
+  GameOptionsRoom = 0x4,
+  SaveGameRoom = 0x5,
+  CreditsRoom = 0x6,
+  _TempleRoomsEnum_COUNT = 0x7
+};
+
 // Forward Declares
 
 enum BINDABLE_ACTIONS;

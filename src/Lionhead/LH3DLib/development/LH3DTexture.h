@@ -4,6 +4,12 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For uint32_t, uint8_t */
 
+enum TextureFormat_
+{
+  TextureFormat_0x0 = 0x0,
+  _TextureFormat__COUNT = 0x1
+};
+
 struct LH3DTexture
 {
     uint32_t field_0x0;

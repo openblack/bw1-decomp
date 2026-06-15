@@ -10,6 +10,12 @@
 #include "BaseInfo.h" /* For struct GBaseInfo */
 #include "CreatureMorph.h" /* For struct LH3DCreature */
 
+enum CREATURE_SUB_STATE_ACTIONS
+{
+  CREATURE_SUB_STATE_ACTIONS_0 = 0x0,
+  _CREATURE_SUB_STATE_ACTIONS_COUNT = 0x1
+};
+
 // Forward Declares
 
 class CreatureContext;

@@ -6,6 +6,12 @@
 
 #include "BaseInfo.h" /* For struct GBaseInfo */
 
+enum PLAYER_TYPE
+{
+  PLAYER_TYPE_0 = 0x0,
+  _PLAYER_TYPE_COUNT = 0x1
+};
+
 // Forward Declares
 
 class Base;
