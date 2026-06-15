@@ -59,8 +59,17 @@ zlib/infutil.c:
 zlib/inffast.c:
 	.text       start:0x007B4B90 end:0x007B4F20
 
+lib/libcmt/sprintf.obj:
+	.text       start:0x007B55F2 end:0x007B5644 align:1
+
+lib/libcmt/toupper.obj:
+	.text       start:0x007B5644 end:0x007B5787 align:1
+
 lib/libcmt/wcscat.obj:
 	.text       start:0x007B5787 end:0x007B57D6 align:1
+
+lib/libcmt/xtow.obj:
+	.text       start:0x007B57D6 end:0x007B58D6 align:1
 
 lib/libcmt/wcsncpy.obj:
 	.text       start:0x007B5C15 end:0x007B5C52 align:1
@@ -71,23 +80,83 @@ lib/libcmt/wcslen.obj:
 lib/libcmt/swprintf.obj:
 	.text       start:0x007B5C6F end:0x007B5CDE align:1
 
+lib/libcmt/atox.obj:
+	.text       start:0x007B6311 end:0x007B6461 align:1
+
+lib/libcmt/_ctype.obj:
+	.text       start:0x007B6684 end:0x007B68E8 align:1
+
+lib/libcmt/sscanf.obj:
+	.text       start:0x007B68E8 end:0x007B691C align:1
+
+lib/libcmt/_wctype.obj:
+	.text       start:0x007B691C end:0x007B69E6 align:1
+
+lib/libcmt/rename.obj:
+	.text       start:0x007B69E6 end:0x007B6A14 align:1
+
+lib/libcmt/unlink.obj:
+	.text       start:0x007B6A14 end:0x007B6A49 align:1
+
+lib/libcmt/stricmp.obj:
+	.text       start:0x007B6AF0 end:0x007B6BC0 align:1
+
 lib/libcmt/fprintf.obj:
 	.text       start:0x007B6BC0 end:0x007B6BFC align:1
+
+lib/libcmt/fopen.obj:
+	.text       start:0x007B6BFC end:0x007B6C40 align:1
 
 lib/libcmt/wcscmp.obj:
 	.text       start:0x007B6CEF end:0x007B6D24 align:1
 
+lib/libcmt/asin.obj:
+	.text       start:0x007B71D0 end:0x007B729B align:1
+
+lib/libcmt/fread.obj:
+	.text       start:0x007B729B end:0x007B73B2 align:1
+
+lib/libcmt/acos.obj:
+	.text       start:0x007B74F0 end:0x007B75BB align:1
+
+lib/libcmt/localtim.obj:
+	.text       start:0x007B76AD end:0x007B780D align:1
+
+lib/libcmt/pow.obj:
+	.text       start:0x007B78F0 end:0x007B7B10 align:1
+
+lib/libcmt/lldiv.obj:
+	.text       start:0x007B7B10 end:0x007B7BBA align:1
+
 lib/libcmt/fscanf.obj:
 	.text       start:0x007B7BBA end:0x007B7BE7 align:1
+
+lib/libcmt/fgetc.obj:
+	.text       start:0x007B7BE7 end:0x007B7C23 align:1
 
 lib/libcmt/vsprintf.obj:
 	.text       start:0x007B7C23 end:0x007B7C74 align:1
 
+lib/libcmt/ceil.obj:
+	.text       start:0x007B7E82 end:0x007B7F51 align:1
+
 lib/libcmt/bsearch.obj:
 	.text       start:0x007B7F51 end:0x007B7FDD align:1
 
+lib/libcmt/wcsstr.obj:
+	.text       start:0x007B7FDD end:0x007B801E align:1
+
+lib/libcmt/exsup.obj:
+	.text       start:0x007B8328 end:0x007B8416 align:1
+
 lib/libcmt/fgets.obj:
 	.text       start:0x007B8416 end:0x007B8478 align:1
+
+lib/libcmt/splitpat.obj:
+	.text       start:0x007B8478 end:0x007B85BF align:1
+
+lib/libcmt/wtox.obj:
+	.text       start:0x007B85BF end:0x007B863A align:1
 
 lib/libcmt/rand.obj:
 	.text       start:0x007B863A end:0x007B8669 align:1
@@ -95,17 +164,80 @@ lib/libcmt/rand.obj:
 lib/libcmt/fseek.obj:
 	.text       start:0x007B8669 end:0x007B8722 align:1
 
+lib/libcmt/ftell.obj:
+	.text       start:0x007B8722 end:0x007B88A5 align:1
+
 lib/libcmt/fputs.obj:
 	.text       start:0x007B88A5 end:0x007B88F3 align:1
+
+lib/libcmt/memchr.obj:
+	.text       start:0x007B8B40 end:0x007B8BE5 align:1
+
+lib/libcmt/strtol.obj:
+	.text       start:0x007B8BEB end:0x007B8E1E align:1
+
+lib/libcmt/strchr.obj:
+	.text       start:0x007B8FF0 end:0x007B90BC align:1
+
+lib/libcmt/printf.obj:
+	.text       start:0x007B91F9 end:0x007B923A align:1
 
 lib/libcmt/strtok.obj:
 	.text       start:0x007B923A end:0x007B92DE align:1
 
+lib/libcmt/atof.obj:
+	.text       start:0x007B92DE end:0x007B9335 align:1
+
+lib/libcmt/strstr.obj:
+	.text       start:0x007B9370 end:0x007B93F0 align:1
+
+lib/libcmt/tolower.obj:
+	.text       start:0x007B93F0 end:0x007B9532 align:1
+
+lib/libcmt/wcsncmp.obj:
+	.text       start:0x007B9532 end:0x007B956A align:1
+
+lib/libcmt/towlower.obj:
+	.text       start:0x007B956A end:0x007B9659 align:1
+
+lib/libcmt/abort.obj:
+	.text       start:0x007B9659 end:0x007B9670 align:1
+
 lib/libcmt/chmod.obj:
 	.text       start:0x007B9670 end:0x007B96AF align:1
 
+lib/libcmt/slbeep.obj:
+	.text       start:0x007B99DE end:0x007B9A00 align:1
+
+lib/libcmt/strrchr.obj:
+	.text       start:0x007B9A00 end:0x007B9A27 align:1
+
+lib/libcmt/llmul.obj:
+	.text       start:0x007B9C90 end:0x007B9CC4 align:1
+
+lib/libcmt/llshl.obj:
+	.text       start:0x007B9E40 end:0x007B9E60 align:1
+
+lib/libcmt/llrem.obj:
+	.text       start:0x007B9E60 end:0x007B9F12 align:1
+
+lib/libcmt/mkdir.obj:
+	.text       start:0x007B9F12 end:0x007B9F3E align:1
+
 lib/libcmt/wcsncat.obj:
 	.text       start:0x007B9F3E end:0x007B9F7E align:1
+
+lib/libcmt/wincrt0.obj:
+	.text       start:0x007B9F7E end:0x007BA0D0 align:1
+
+lib/libcmt/memcmp.obj:
+	.text       start:0x007BA4B0 end:0x007BA55C align:1
+
+lib/libcmt/memset.obj:
+	.text       start:0x007BABE0 end:0x007BAC38 align:1
+
+lib/libcmt/fputc.obj:
+	.text       start:0x007BAD98 end:0x007BADE3 align:1
 
 lib/libcmt/ungetc.obj:
 	.text       start:0x007BADE3 end:0x007BAE7A align:1
@@ -115,6 +247,63 @@ lib/libcmt/fgetpos.obj:
 
 lib/libcmt/fsetpos.obj:
 	.text       start:0x007BAE9C end:0x007BAEB4 align:1
+
+lib/libcmt/setvbuf.obj:
+	.text       start:0x007BAEB4 end:0x007BAF63 align:1
+
+lib/libcmt/fflush.obj:
+	.text       start:0x007BAF63 end:0x007BB0C9 align:1
+
+lib/libcmt/fputwc.obj:
+	.text       start:0x007BB0C9 end:0x007BB1FC align:1
+
+lib/libcmt/ungetwc.obj:
+	.text       start:0x007BB1FC end:0x007BB313 align:1
+
+lib/libcmt/fgetwc.obj:
+	.text       start:0x007BB313 end:0x007BB432 align:1
+
+lib/libcmt/isctype.obj:
+	.text       start:0x007BB7A4 end:0x007BB819 align:1
+
+lib/libcmt/strtod.obj:
+	.text       start:0x007BB819 end:0x007BB8C3 align:1
+
+lib/libcmt/fp8.obj:
+	.text       start:0x007BC773 end:0x007BC785 align:1
+
+lib/libcmt/strcmp.obj:
+	.text       start:0x007BCC20 end:0x007BCCA4 align:1
+
+lib/libcmt/_flsbuf.obj:
+	.text       start:0x007BCD92 end:0x007BCEAA align:1
+
+lib/libcmt/xtoa.obj:
+	.text       start:0x007BD6B4 end:0x007BD854 align:1
+
+lib/libcmt/exsup3.obj:
+	.text       start:0x007BE048 end:0x007BE128 align:1
+
+lib/libcmt/handler.obj:
+	.text       start:0x007BE128 end:0x007BE16D align:1
+
+lib/libcmt/input.obj:
+	.text       start:0x007BFC4D end:0x007C06FE align:1
+
+lib/libcmt/iswctype.obj:
+	.text       start:0x007C06FE end:0x007C0760 align:1
+
+lib/libcmt/mbsnbico.obj:
+	.text       start:0x007C0760 end:0x007C079F align:1
+
+lib/libcmt/_sftbuf.obj:
+	.text       start:0x007C080D end:0x007C08C4 align:1
+
+lib/libcmt/_open.obj:
+	.text       start:0x007C08C4 end:0x007C0A34 align:1
+
+lib/libcmt/close.obj:
+	.text       start:0x007C0AFC end:0x007C0BDC align:1
 
 lib/libcmt/_freebuf.obj:
 	.text       start:0x007C0BDC end:0x007C0C07 align:1
@@ -126,11 +315,191 @@ lib/libcmt/util.obj:
 	.text       start:0x007C0DED end:0x007C0F95 align:1
 	.data       start:0x00C1ECA8 end:0x00C1ECD0
 
+lib/libcmt/fpctrl.obj:
+	.text       start:0x007C1752 end:0x007C17F0 align:1
+
+lib/libcmt/87disp.obj:
+	.text       start:0x007C17F0 end:0x007C19C0 align:1
+
+lib/libcmt/common.obj:
+	.text       start:0x007C1A20 end:0x007C1BAC align:1
+
+lib/libcmt/_filbuf.obj:
+	.text       start:0x007C1BAC end:0x007C1C88 align:1
+
+lib/libcmt/gmtime.obj:
+	.text       start:0x007C2826 end:0x007C2930 align:1
+
+lib/libcmt/87cdisp.obj:
+	.text       start:0x007C2DA0 end:0x007C3010 align:1
+
+lib/libcmt/frnd.obj:
+	.text       start:0x007C3D9B end:0x007C3DAD align:1
+
+lib/libcmt/lowhelpr.obj:
+	.text       start:0x007C45D0 end:0x007C461C align:1
+
+lib/libcmt/mbsnbcpy.obj:
+	.text       start:0x007C4AEF end:0x007C4B89 align:1
+
+lib/libcmt/lseek.obj:
+	.text       start:0x007C4B89 end:0x007C4C61 align:1
+
+lib/libcmt/ioinit.obj:
+	.text       start:0x007C4C61 end:0x007C4E80 align:1
+
+lib/libcmt/strcat.obj:
+	.text       start:0x007C4E80 end:0x007C4F70 align:1
+
+lib/libcmt/cfin.obj:
+	.text       start:0x007C4FD4 end:0x007C5053 align:1
+
+lib/libcmt/winput.obj:
+	.text       start:0x007C5053 end:0x007C5BC5 align:1
+
+lib/libcmt/winsig.obj:
+	.text       start:0x007C5DFE end:0x007C61B3 align:1
+
+lib/libcmt/winxfltr.obj:
+	.text       start:0x007C6370 end:0x007C64E8 align:1
+
+lib/libcmt/initnum.obj:
+	.text       start:0x007C6EE7 end:0x007C70F3 align:1
+
+lib/libcmt/strpbrk.obj:
+	.text       start:0x007C75B0 end:0x007C75EA align:1
+
+lib/libcmt/closeall.obj:
+	.text       start:0x007C7E91 end:0x007C7F12 align:1
+
+lib/libcmt/_getbuf.obj:
+	.text       start:0x007C7F12 end:0x007C7F56 align:1
+
+lib/libcmt/ftelli64.obj:
+	.text       start:0x007C7F56 end:0x007C810E align:1
+
 lib/libcmt/fseeki64.obj:
 	.text       start:0x007C810E end:0x007C81CE align:1
+
+lib/libcmt/commit.obj:
+	.text       start:0x007C81CE end:0x007C8261 align:1
+
+lib/libcmt/_flswbuf.obj:
+	.text       start:0x007C8261 end:0x007C8388 align:1
+
+lib/libcmt/wctomb.obj:
+	.text       start:0x007C8388 end:0x007C844A align:1
+
+lib/libcmt/_filwbuf.obj:
+	.text       start:0x007C844A end:0x007C8531 align:1
+
+lib/libcmt/mbtowc.obj:
+	.text       start:0x007C8531 end:0x007C8657 align:1
+
+lib/libcmt/intrncvt.obj:
+	.text       start:0x007C87A0 end:0x007C8C34 align:1
+
+lib/libcmt/_fptostr.obj:
+	.text       start:0x007C8C34 end:0x007C8CAB align:1
+
+lib/libcmt/cfout.obj:
+	.text       start:0x007C8CAB end:0x007C8DBD align:1
+
+lib/libcmt/isatty.obj:
+	.text       start:0x007C8DC6 end:0x007C8DF0 align:1
+
+lib/libcmt/ullrem.obj:
+	.text       start:0x007C8DF0 end:0x007C8E65 align:1
+
+lib/libcmt/osfinfo.obj:
+	.text       start:0x007C9556 end:0x007C98DE align:1
+
+lib/libcmt/87except.obj:
+	.text       start:0x007C98E1 end:0x007C99B1 align:1
+
+lib/libcmt/validate.obj:
+	.text       start:0x007C99B1 end:0x007C9A01 align:1
+
+lib/libcmt/wcstombs.obj:
+	.text       start:0x007C9F0E end:0x007CA149 align:1
+
+lib/libcmt/crtmbox.obj:
+	.text       start:0x007CA149 end:0x007CA1D2 align:1
+
+lib/libcmt/ismbbyte.obj:
+	.text       start:0x007CA1D2 end:0x007CA2E0 align:1
+
+lib/libcmt/strnicmp.obj:
+	.text       start:0x007CA420 end:0x007CA521 align:1
+
+lib/libcmt/lseeki64.obj:
+	.text       start:0x007CA521 end:0x007CA617 align:1
+
+lib/libcmt/mantold.obj:
+	.text       start:0x007CA617 end:0x007CA7B8 align:1
+
+lib/libcmt/x10fout.obj:
+	.text       start:0x007CA7B8 end:0x007CAA4B align:1
+
+lib/libcmt/mbschr.obj:
+	.text       start:0x007CAA4B end:0x007CAAE2 align:1
+
+lib/libcmt/strdup.obj:
+	.text       start:0x007CAAE2 end:0x007CAB0D align:1
+
+lib/libcmt/tenpow.obj:
+	.text       start:0x007CAC8B end:0x007CAF27 align:1
+
+lib/libcmt/a_loc.obj:
+	.text       start:0x007CB03A end:0x007CB158 align:1
+
+lib/libcmt/setmode.obj:
+	.text       start:0x007CB158 end:0x007CB220 align:1
 
 lib/libcmt/wcsdup.obj:
 	.text       start:0x0089591C end:0x0089594A align:1
 
+lib/libcmt/wcsicmp.obj:
+	.text       start:0x0089594A end:0x00895A29 align:1
+
+lib/libcmt/flength.obj:
+	.text       start:0x00895A29 end:0x00895AB3 align:1
+
 lib/libcmt/fileno.obj:
 	.text       start:0x00895AB3 end:0x00895ABB align:1
+
+lib/libcmt/wcsnicmp.obj:
+	.text       start:0x00895ABB end:0x00895BB3 align:1
+
+lib/libcmt/chdir.obj:
+	.text       start:0x00895BB3 end:0x00895C39 align:1
+
+lib/libcmt/strlwr.obj:
+	.text       start:0x00895C39 end:0x00895D6D align:1
+
+lib/libcmt/ehvecdtr.obj:
+	.text       start:0x00895D73 end:0x00895E70 align:1
+
+lib/libcmt/strspn.obj:
+	.text       start:0x00895E70 end:0x00895EAE align:1
+
+lib/libcmt/wcschr.obj:
+	.text       start:0x00895EAE end:0x00895ED7 align:1
+
+lib/libcmt/wcsrchr.obj:
+	.text       start:0x00895ED7 end:0x00895F17 align:1
+
+lib/libcmt/wcspbrk.obj:
+	.text       start:0x00895F17 end:0x00895F55 align:1
+
+lib/libcmt/wcsspn.obj:
+	.text       start:0x00895F55 end:0x00895F97 align:1
+
+lib/libcmt/ehvecctr.obj:
+	.text       start:0x00895F97 end:0x00896019 align:1
+
+lib/libcmt/mbtoupr.obj:
+	.text       start:0x0089618B end:0x00896206 align:1
+
+lib/libcmt/sehsupp.obj:
+	.text       start:0x00896206 end:0x00896270 align:1
