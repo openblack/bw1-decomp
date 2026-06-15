@@ -219,6 +219,7 @@ cflags_base = [
     "/MT",
     "/GR",
     "/I", "include",
+    "/I", "src",
     f"/I", f"build/{config.version}/include",
     f"/I", f"build/compilers/{config.linker_version}/include",
     f"/DBUILD_VERSION={version_num}",
