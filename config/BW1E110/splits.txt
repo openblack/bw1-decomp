@@ -56,6 +56,63 @@ zlib/infutil.c:
 zlib/inffast.c:
 	.text       start:0x007B4B90 end:0x007B4F20
 
+lib/libcmt/wcscat.obj:
+	.text       start:0x007B5787 end:0x007B57D6 align:1
+
+lib/libcmt/wcsncpy.obj:
+	.text       start:0x007B5C15 end:0x007B5C52 align:1
+
+lib/libcmt/wcslen.obj:
+	.text       start:0x007B5C52 end:0x007B5C6F align:1
+
+lib/libcmt/swprintf.obj:
+	.text       start:0x007B5C6F end:0x007B5CDE align:1
+
+lib/libcmt/fprintf.obj:
+	.text       start:0x007B6BC0 end:0x007B6BFC align:1
+
+lib/libcmt/wcscmp.obj:
+	.text       start:0x007B6CEF end:0x007B6D24 align:1
+
+lib/libcmt/fscanf.obj:
+	.text       start:0x007B7BBA end:0x007B7BE7 align:1
+
+lib/libcmt/vsprintf.obj:
+	.text       start:0x007B7C23 end:0x007B7C74 align:1
+
+lib/libcmt/bsearch.obj:
+	.text       start:0x007B7F51 end:0x007B7FDD align:1
+
+lib/libcmt/fgets.obj:
+	.text       start:0x007B8416 end:0x007B8478 align:1
+
+lib/libcmt/rand.obj:
+	.text       start:0x007B863A end:0x007B8669 align:1
+
+lib/libcmt/fseek.obj:
+	.text       start:0x007B8669 end:0x007B8722 align:1
+
+lib/libcmt/fputs.obj:
+	.text       start:0x007B88A5 end:0x007B88F3 align:1
+
+lib/libcmt/strtok.obj:
+	.text       start:0x007B923A end:0x007B92DE align:1
+
+lib/libcmt/chmod.obj:
+	.text       start:0x007B9670 end:0x007B96AF align:1
+
+lib/libcmt/wcsncat.obj:
+	.text       start:0x007B9F3E end:0x007B9F7E align:1
+
+lib/libcmt/ungetc.obj:
+	.text       start:0x007BADE3 end:0x007BAE7A align:1
+
+lib/libcmt/fgetpos.obj:
+	.text       start:0x007BAE7A end:0x007BAE9C align:1
+
+lib/libcmt/fsetpos.obj:
+	.text       start:0x007BAE9C end:0x007BAEB4 align:1
+
 lib/libcmt/_freebuf.obj:
 	.text       start:0x007C0BDC end:0x007C0C07 align:1
 
@@ -65,3 +122,12 @@ lib/libcmt/ldexp.obj:
 lib/libcmt/util.obj:
 	.text       start:0x007C0DED end:0x007C0F95 align:1
 	.data       start:0x00C1ECA8 end:0x00C1ECD0
+
+lib/libcmt/fseeki64.obj:
+	.text       start:0x007C810E end:0x007C81CE align:1
+
+lib/libcmt/wcsdup.obj:
+	.text       start:0x0089591C end:0x0089594A align:1
+
+lib/libcmt/fileno.obj:
+	.text       start:0x00895AB3 end:0x00895ABB align:1

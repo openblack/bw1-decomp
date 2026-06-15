@@ -183,9 +183,75 @@ zlib/infutil.c:
 zlib/inffast.c:
 	.text       start:0x007338F0 end:0x00733C80
 
+lib/libcmt/wcscat.obj:
+	.text       start:0x00733FCE end:0x0073401D align:1
+
+lib/libcmt/wcsncpy.obj:
+	.text       start:0x00734395 end:0x007343D2 align:1
+
+lib/libcmt/wcslen.obj:
+	.text       start:0x007343D2 end:0x007343EF align:1
+
+lib/libcmt/swprintf.obj:
+	.text       start:0x007343EF end:0x0073445E align:1
+
+lib/libcmt/fprintf.obj:
+	.text       start:0x00734EB0 end:0x00734EEC align:1
+
+lib/libcmt/wcscmp.obj:
+	.text       start:0x00734FDF end:0x00735014 align:1
+
+lib/libcmt/fscanf.obj:
+	.text       start:0x00735ACA end:0x00735AF7 align:1
+
+lib/libcmt/vsprintf.obj:
+	.text       start:0x00735B28 end:0x00735B79 align:1
+
+lib/libcmt/bsearch.obj:
+	.text       start:0x00735E51 end:0x00735EDD align:1
+
+lib/libcmt/fgets.obj:
+	.text       start:0x007362F2 end:0x00736354 align:1
+
+lib/libcmt/rand.obj:
+	.text       start:0x007364C4 end:0x007364F3 align:1
+
+lib/libcmt/fseek.obj:
+	.text       start:0x007364F3 end:0x007365AC align:1
+
+lib/libcmt/fputs.obj:
+	.text       start:0x0073672F end:0x0073677D align:1
+
+lib/libcmt/strtok.obj:
+	.text       start:0x00737049 end:0x007370ED align:1
+
+lib/libcmt/chmod.obj:
+	.text       start:0x00737351 end:0x00737390 align:1
+
+lib/libcmt/wcsncat.obj:
+	.text       start:0x00737B4E end:0x00737B8E align:1
+
+lib/libcmt/ungetc.obj:
+	.text       start:0x007389E3 end:0x00738A7A align:1
+
+lib/libcmt/fgetpos.obj:
+	.text       start:0x00738A7A end:0x00738A9C align:1
+
+lib/libcmt/fsetpos.obj:
+	.text       start:0x00738A9C end:0x00738AB4 align:1
+
 lib/libcmt/_freebuf.obj:
 	.text       start:0x0073D294 end:0x0073D2BF align:1
 
 lib/libcmt/util.obj:
 	.text       start:0x0073D2BF end:0x0073D403 align:1
 	.data       start:0x00B52358 end:0x00B52380
+
+lib/libcmt/fseeki64.obj:
+	.text       start:0x00743E6E end:0x00743F2E align:1
+
+lib/libcmt/wcsdup.obj:
+	.text       start:0x007E894E end:0x007E897C align:1
+
+lib/libcmt/fileno.obj:
+	.text       start:0x007E8AE5 end:0x007E8AED align:1
