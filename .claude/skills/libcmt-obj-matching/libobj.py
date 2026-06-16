@@ -536,19 +536,24 @@ def analyze(query):
                 continue
             present.sort(key=lambda e: e["va"])
             start = present[0]["va"]
-            # contiguity check (allow simple adjacency, no gaps)
-            contiguous = True
-            cur = start
-            for e in present:
-                if e["va"] != cur:
-                    contiguous = False
-                cur = e["va"] + e["size"]
-            end = present[-1]["va"] + present[-1]["size"]
+            # Take the contiguous cluster from the anchor; a section found past a
+            # gap is an ambiguous byte-search stray (the same small function's
+            # bytes occur elsewhere) — exclude it so the bin isn't inflated.
+            cluster = [present[0]]
+            cur = start + present[0]["size"]
+            for e in present[1:]:
+                if e["va"] == cur:
+                    cluster.append(e)
+                    cur = e["va"] + e["size"]
+                else:
+                    break
+            end = cur
+            contiguous = len(cluster) == len(present)
             n_total = len([e for e in vinfo["sections"] if e["bin"] == bucket])
             vinfo["bins"][bucket] = {
                 "start": start, "end": end,
                 "contiguous": contiguous,
-                "survivors": len(present), "total": n_total,
+                "survivors": len(cluster), "total": n_total,
             }
         report["versions"][ver] = vinfo
 
@@ -764,58 +769,76 @@ def carve_comdat(version, name, va, size):
 
 
 def subdivide_section(version, sec, os_, oe):
-    """Carve whatever contains [os_, oe) in `sec` so the object sits clean, with
-    an explicit align:1 tail. A region can be covered by BOTH a `type:object`
-    blob symbol AND an explicit gap split (from a prior match) — carve both.
-    Edits symbols.txt / splits.txt; returns extra gap unit blocks + a log."""
+    """Carve whatever contains [os_, oe) in `sec` so the object sits clean.
+
+    The tail after the object is left to dtk's auto-splitter (which is what owns
+    bulk un-RE'd data/code) — we only emit a tiny explicit `align:1` gap for the
+    *unaligned head* [oe, align_up(oe)) when oe isn't aligned, because dtk's auto
+    gap splits floor at align 4/8. Everything from the aligned boundary on is a
+    plain `lbl_` blob that dtk auto-splits — never a giant explicit unit.
+
+    A region can be covered by BOTH a blob symbol and a prior explicit gap unit;
+    carve both. Edits symbols.txt / splits.txt; returns extra gap unit blocks."""
+    bare = sec.lstrip(".")
+    align = SEC_DEFAULT_ALIGN.get(sec, 8)
     extra_units, log = [], []
     unit = find_explicit_unit(version, sec, os_, exclude=None)
     blob = find_blob_symbol(version, sec, os_)
     hi = (unit[2] if unit else blob["end"] if blob
           else (next_label_after(version, sec, oe) or oe))
-    # never let the tail gap run into an already-matched neighbour: cap at the
-    # next explicit split start after oe (== oe means contiguous -> no gap).
     nss = next_split_start_after(version, sec, oe)
     if nss is not None and oe <= nss < hi:
         hi = nss
+    a = (oe + align - 1) & ~(align - 1)   # next aligned boundary after the object
 
-    # (a) shrink/replace the blob symbol so it ends at os_, with a tail label.
+    # (a) blob symbol: shrink to [start, os_), then label the tail. Split the tail
+    #     at the aligned boundary so [a, hi) is a clean aligned blob dtk auto-splits.
     if blob:
         sp = symbols_path(version)
         txt = sp.read_text()
-        new_lines = []
+        lines = []
         if os_ > blob["start"]:
-            new_lines.append(re.sub(r"size:0x[0-9A-Fa-f]+",
-                                    f"size:0x{os_ - blob['start']:X}", blob["line"]))
+            lines.append(re.sub(r"size:0x[0-9A-Fa-f]+",
+                                f"size:0x{os_ - blob['start']:X}", blob["line"]))
         if oe < hi:
-            new_lines.append(
-                f"lbl_{oe:08X} = .{sec.lstrip('.')}:0x{oe:08X}; "
-                f"// type:object size:0x{hi - oe:X}")
-        sp.write_text(txt.replace(blob["line"], "\n".join(new_lines), 1)
-                      if new_lines else txt.replace(blob["line"] + "\n", "", 1))
+            if oe < a < hi:
+                lines.append(f"lbl_{oe:08X} = .{bare}:0x{oe:08X}; "
+                             f"// type:object size:0x{a - oe:X}")
+                lines.append(f"lbl_{a:08X} = .{bare}:0x{a:08X}; "
+                             f"// type:object size:0x{hi - a:X}")
+            else:
+                lines.append(f"lbl_{oe:08X} = .{bare}:0x{oe:08X}; "
+                             f"// type:object size:0x{hi - oe:X}")
+        sp.write_text(txt.replace(blob["line"], "\n".join(lines), 1)
+                      if lines else txt.replace(blob["line"] + "\n", "", 1))
         log.append(f"{sec}: carved blob {blob['name']} [{blob['start']:#x},{hi:#x})")
 
-    # (b) shrink an explicit gap split unit so its section ends at os_.
+    # (b) prior explicit gap unit: shrink the before to [us, os) (drop if empty or
+    #     aligned, so it auto-splits).
     if unit:
         name, us, ue = unit
         sp = splits_path(version)
         txt = sp.read_text()
         old = next(l for l in txt.splitlines()
                    if re.match(rf"^\t{re.escape(sec)}\s+start:0x0*{us:X}\b", l, re.I))
-        if os_ > us:
+        if os_ > us and us & (align - 1):  # unaligned before -> keep a small unit
             sp.write_text(txt.replace(
                 old, f"\t{sec:<11} start:0x{us:08X} end:0x{os_:08X} align:1", 1))
-        else:
+        else:                              # aligned (or empty) -> let dtk auto-split
             sp.write_text(txt.replace(old + "\n", "", 1))
         log.append(f"{sec}: subdivided gap {name} [{us:#x},{ue:#x})")
 
     if not unit and not blob:
         log.append(f"{sec}: auto region, tail to {hi:#x}")
 
-    # (c) explicit align:1 tail gap — the post-object split is never auto/misaligned
+    # (c) only the unaligned head needs an explicit align:1 unit; the aligned bulk
+    #     [a, hi) auto-splits. If the whole tail is sub-alignment, it's one tiny gap.
     if oe < hi:
-        extra_units.append(
-            f"auto_gap_{oe:08X}:\n\t{sec:<11} start:0x{oe:08X} end:0x{hi:08X} align:1")
+        head_end = a if oe < a < hi else hi
+        if oe < head_end:
+            extra_units.append(
+                f"auto_gap_{oe:08X}:\n\t{sec:<11} "
+                f"start:0x{oe:08X} end:0x{head_end:08X} align:1")
     return extra_units, log
 
 
@@ -876,16 +899,20 @@ def insert_split_block(txt, unit, block, lib_order):
     return txt + "\n" + body
 
 
-def apply_member(query, force=False):
+def apply_member(query, force=False, label=False):
+    """label=True: add the object's located splits (+ subdivide/carve) but leave it
+    NonMatching in configure.py — i.e. name & extract the region verbatim rather
+    than link it. Used to give the un-RE'd neighbour objects real names (the obj's
+    sections are byte-exact verbatim regardless of unresolved externals)."""
     rep = analyze(query)
     if not rep.get("ok"):
         return rep
-    if rep["verdict"] == "manual" and not force:
+    if not label and rep["verdict"] == "manual" and not force:
         return {"ok": False, "verdict": "manual", "flags": rep["flags"],
                 "external_status": rep.get("external_status"),
                 "error": "verdict=manual; needs hand edits (see analyze). "
                          "rerun apply with force=True only after fixing symbols.txt."}
-    if rep["verdict"] == "blocked" and not force:
+    if not label and rep["verdict"] == "blocked" and not force:
         return {"ok": False, "verdict": "blocked", "flags": rep["flags"],
                 "needs_dependencies": rep["needs_dependencies"],
                 "error": "verdict=blocked; match these provider object(s) first: "
@@ -895,6 +922,8 @@ def apply_member(query, force=False):
     archive = rep["archive"]
     unit = rep["unit"]
     changed = {"configure": False, "splits": [], "renames": [], "already": []}
+    if label:
+        changed["label"] = True
 
     # 0) decoration-mismatch symbol renames (mechanical; all versions).
     for rn in rep["plan"].get("symbol_renames", []):
@@ -906,12 +935,14 @@ def apply_member(query, force=False):
                 sp.write_text(pat.sub(rn["to"] + r"\1", txt, count=1))
         changed["renames"].append(f"{rn['from']}->{rn['to']}")
 
-    # 1) configure.py: flip NonMatching -> Matching for this member line.
+    # 1) configure.py: flip NonMatching -> Matching (skip when only labelling).
     ctext = CONFIGURE.read_text()
     esc = member.replace("\\", "\\\\")
     needle = f'LibObject(NonMatching, "{archive}", "{esc}"'
     repl = f'LibObject(Matching, "{archive}", "{esc}"'
-    if needle in ctext:
+    if label:
+        pass  # keep NonMatching; we're only naming/extracting the region
+    elif needle in ctext:
         CONFIGURE.write_text(ctext.replace(needle, repl, 1))
         changed["configure"] = True
     elif f'LibObject(Matching, "{archive}", "{esc}"' in ctext:
@@ -1314,6 +1345,8 @@ def main(argv=None):
     ap.add_argument("member")
     ap.add_argument("--force", action="store_true",
                     help="apply even if verdict=manual (after hand-fixing symbols)")
+    ap.add_argument("--label", action="store_true",
+                    help="name/extract the region (add splits) but keep NonMatching")
     vp = sub.add_parser("verify", help="build + check one or all versions")
     vp.add_argument("--version", choices=VERSIONS)
     vp.add_argument("--member", help="for revert-on-failure checkpointing")
@@ -1336,7 +1369,8 @@ def main(argv=None):
     elif args.cmd == "analyze":
         print(json.dumps(_strip_internal(analyze(args.member)), indent=2))
     elif args.cmd == "apply":
-        print(json.dumps(apply_member(args.member, force=args.force), indent=2))
+        print(json.dumps(apply_member(args.member, force=args.force,
+                                      label=args.label), indent=2))
     elif args.cmd == "verify":
         print(json.dumps(verify(args.version, args.member), indent=2))
     elif args.cmd == "revert":
