@@ -401,6 +401,89 @@ def read_exe(version):
 
 
 # --------------------------------------------------------------------------- #
+# positional placement                                                        #
+# --------------------------------------------------------------------------- #
+# Byte-search fails on near-identical CRT functions (wcschr vs wcsrchr, the
+# isw* family, …). But the link order of objects equals their order in
+# configure.py, and each object's .text occupies the distance to the next
+# object (plus occasional 0x90/0xCC alignment padding). So between two
+# already-placed ("anchor") objects we can walk the intervening configure-order
+# objects, locating each by a *windowed* masked search (only the object expected
+# at this position is tried, in a small range that absorbs padding), and accept
+# the whole run only if it lands exactly on the next anchor. This disambiguates
+# the look-alikes that a global byte-search cannot.
+_POS_CACHE = {}
+_POS_PAD = 0x40  # max inter-object alignment padding to skip
+
+
+def _libcmt_text_info():
+    info = {}
+    for o in list_libobjects():
+        if o["archive"] != "libcmt":
+            continue
+        try:
+            co = CoffObj(extract_member("libcmt", o["member"]))
+        except Exception:
+            continue
+        ts = [s for s in co.sections if s.bin == ".text" and s.loaded]
+        if not ts:
+            continue
+        info[o["unit"]] = {"size": sum(len(s.data) for s in ts),
+                           "pat": masked_pattern(ts[0])}
+    return info
+
+
+def positional_locate(version):
+    """Map libcmt unit -> .text start VA for objects whose configure-order run
+    between two placed anchors validates exactly onto the next anchor."""
+    if version in _POS_CACHE:
+        return _POS_CACHE[version]
+    exe = read_exe(version)
+    info = _libcmt_text_info()
+    order = [o["unit"] for o in list_libobjects()
+             if o["archive"] == "libcmt" and o["unit"] in info]
+    # anchors: units already given a .text split in this version
+    anchor = {}
+    txt = splits_path(version).read_text()
+    for m in re.finditer(r"^(lib/libcmt/\S+):\n((?:\t.*\n)+)", txt, re.M):
+        tt = re.search(r"\.text\s+start:0x([0-9A-Fa-f]+)", m.group(2))
+        if tt and m.group(1) in info:
+            anchor[m.group(1)] = int(tt.group(1), 16)
+
+    def find(pat, lo):
+        m = re.search(pat, exe[lo - IMAGE_BASE: lo - IMAGE_BASE + _POS_PAD + len(pat)], re.S)
+        return lo + m.start() if m else None
+
+    placed = {}
+    i = 0
+    while i < len(order):
+        if order[i] not in anchor:
+            i += 1
+            continue
+        j = i + 1
+        while j < len(order) and order[j] not in anchor:
+            j += 1
+        if j >= len(order):
+            break
+        cur = anchor[order[i]] + info[order[i]]["size"]
+        b = anchor[order[j]]
+        run = order[i + 1:j]
+        ok, loc = True, {}
+        for w in run:
+            a = find(info[w]["pat"], cur)
+            if a is None:
+                ok = False
+                break
+            loc[w] = a
+            cur = a + info[w]["size"]
+        if ok and 0 <= b - cur <= _POS_PAD:
+            placed.update(loc)
+        i = j
+    _POS_CACHE[version] = placed
+    return placed
+
+
+# --------------------------------------------------------------------------- #
 # analyze                                                                     #
 # --------------------------------------------------------------------------- #
 def analyze(query):
@@ -473,8 +556,11 @@ def analyze(query):
     }
 
     # Locate every section in every version.
+    first_text = next((f["index"] for f in funcs if f["bin"] == ".text"), None)
     for ver in VERSIONS:
         exe = read_exe(ver)
+        pos = positional_locate(ver).get(obj_meta["unit"]) \
+            if archive == "libcmt" else None
         syms = load_symbols(ver)
         sym_by_norm = {}
         for nm, (sec, addr) in syms.items():
@@ -486,9 +572,15 @@ def analyze(query):
             hits = [m.start() for m in re.finditer(fn["pattern"], exe, re.S)]
             if len(hits) == 1:
                 placed[fn["index"]] = hits[0] + IMAGE_BASE
+            elif fn["index"] == first_text and pos is not None:
+                placed[fn["index"]] = pos  # configure-order positional anchor
         for fn in funcs:
             hits = [m.start() for m in re.finditer(fn["pattern"], exe, re.S)]
             va = (hits[0] + IMAGE_BASE) if len(hits) == 1 else None
+            via_pos = False
+            if va is None and fn["index"] == first_text and pos is not None:
+                va = pos
+                via_pos = True
             via_reloc = False
             # resolve the DIR32 anchor pointer once (the VA the obj points at).
             reloc_va = None
@@ -517,8 +609,9 @@ def analyze(query):
                 "size": fn["size"],
                 "comdat": fn["comdat"],
                 "found": va is not None,
-                "ambiguous": len(hits) > 1 and not via_reloc,
+                "ambiguous": len(hits) > 1 and not via_reloc and not via_pos,
                 "via_reloc": via_reloc,
+                "via_pos": via_pos,
                 "va": va,
             }
             vinfo["sections"].append(entry)

@@ -203,6 +203,9 @@ lib/libcmt/purevirt.obj:
 align_pad_007C60E4:
 	.text       start:0x007C60E4 end:0x007C60F0 align:1
 
+lib/libcmt/memmove.obj:
+	.text       start:0x007C60F0 end:0x007C6425 align:1
+
 lib/libcmt/wcsncpy.obj:
 	.text       start:0x007C6425 end:0x007C6462 align:1
 
@@ -236,8 +239,14 @@ lib/libcmt/fclose.obj:
 align_pad_007C6EAD:
 	.text       start:0x007C6EAD end:0x007C6EB0 align:1
 
+lib/libcmt/chkstk.obj:
+	.text       start:0x007C6EB0 end:0x007C6EDF align:1
+
 lib/libcmt/wcscmp.obj:
 	.text       start:0x007C6EDF end:0x007C6F14 align:1
+
+lib/libcmt/lldiv.obj:
+	.text       start:0x007C7D00 end:0x007C7DAA align:1
 
 lib/libcmt/fscanf.obj:
 	.text       start:0x007C7DAA end:0x007C7DD7 align:1
@@ -299,6 +308,12 @@ lib/libcmt/stdexcpt.obj:
 lib/libcmt/strtok.obj:
 	.text       start:0x007C942A end:0x007C94CE align:1
 
+lib/libcmt/atof.obj:
+	.text       start:0x007C94CE end:0x007C9525 align:1
+
+auto_gap_007C9525:
+	.text       start:0x007C9525 end:0x007C9528 align:1
+
 lib/libcmt/wcsncmp.obj:
 	.text       start:0x007C9722 end:0x007C975A align:1
 
@@ -328,6 +343,18 @@ lib/libcmt/fsetpos.obj:
 
 lib/libcmt/wcsncat.obj:
 	.text       start:0x007CA45F end:0x007CA49F align:1
+
+lib/libcmt/ehprolog.obj:
+	.text       start:0x007CA66C end:0x007CA68B align:1
+
+auto_gap_007CA68B:
+	.text       start:0x007CA68B end:0x007CA68C align:1
+
+lib/libcmt/isctype.obj:
+	.text       start:0x007CB993 end:0x007CBA08 align:1
+
+lib/libcmt/strtod.obj:
+	.text       start:0x007CBA08 end:0x007CBAB2 align:1
 
 lib/libcmt/fp8.obj:
 	.text       start:0x007CC962 end:0x007CC974 align:1
@@ -360,6 +387,13 @@ lib/libcmt/87disp.obj:
 align_pad_00C2FF9C:
 	.data       start:0x00C2FF9C end:0x00C2FFA0 align:1
 
+align_pad_007D1BAA:
+	.text       start:0x007D1BAA end:0x007D1BAC align:1
+
+lib/libcmt/common.obj:
+	.text       start:0x007D1C10 end:0x007D1D9C align:1
+	.rdata      start:0x009A0AB0 end:0x009A0AF4 align:1
+
 lib/libcmt/timeset.obj:
 	.rdata      start:0x009A0AF4 end:0x009A0B31 align:1
 	.data       start:0x00C2FFA0 end:0x00C30034 align:1
@@ -370,8 +404,8 @@ lib_fragment_00C30034:
 lib/libcmt/rtti.obj:
 	.rdata      start:0x009A0B31 end:0x009A0B38 align:1
 
-align_pad_007D1BAA:
-	.text       start:0x007D1BAA end:0x007D1BAC align:1
+auto_gap_007D1D9C:
+	.text       start:0x007D1D9C end:0x007D1E78 align:1
 
 lib/libcmt/powhlp.obj:
 	.text       start:0x007D2DF7 end:0x007D2F8C align:1
@@ -431,11 +465,35 @@ lib/libcmt/a_env.obj:
 lib/libcmt/inittime.obj:
 	.text       start:0x007D6EB7 end:0x007D6EB8 align:1
 
+lib/libcmt/strpbrk.obj:
+	.text       start:0x007D7AF0 end:0x007D7B2A align:1
+
+auto_gap_007D7B2A:
+	.text       start:0x007D7B2A end:0x007D7B2C align:1
+
 lib/libcmt/_fptostr.obj:
 	.text       start:0x007D8E28 end:0x007D8E9F align:1
 
 lib/libcmt/cfout.obj:
 	.text       start:0x007D8E9F end:0x007D8EA0 align:1
+
+lib/libcmt/crt0fp.obj:
+	.text       start:0x007D8FB1 end:0x007D8FBA align:1
+
+auto_gap_007D8FBA:
+	.text       start:0x007D8FBA end:0x007D8FBC align:1
+
+lib/libcmt/ullrem.obj:
+	.text       start:0x007D8FF0 end:0x007D9065 align:1
+
+auto_gap_007D9065:
+	.text       start:0x007D9065 end:0x007D9068 align:1
+
+lib/libcmt/87except.obj:
+	.text       start:0x007D9AE1 end:0x007D9BB1 align:1
+
+auto_gap_007D9BB1:
+	.text       start:0x007D9BB1 end:0x007D9BB4 align:1
 
 lib/libcmt/mantold.obj:
 	.text       start:0x007DA811 end:0x007DA9B2 align:1

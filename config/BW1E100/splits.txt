@@ -228,8 +228,14 @@ lib/libcmt/fclose.obj:
 align_pad_00734FAD:
 	.text       start:0x00734FAD end:0x00734FB0 align:1
 
+lib/libcmt/chkstk.obj:
+	.text       start:0x00734FB0 end:0x00734FDF align:1
+
 lib/libcmt/wcscmp.obj:
 	.text       start:0x00734FDF end:0x00735014 align:1
+
+lib/libcmt/lldiv.obj:
+	.text       start:0x00735A20 end:0x00735ACA align:1
 
 lib/libcmt/fscanf.obj:
 	.text       start:0x00735ACA end:0x00735AF7 align:1
@@ -288,6 +294,12 @@ lib/libcmt/nlsdata1.obj:
 lib/libcmt/strtok.obj:
 	.text       start:0x00737049 end:0x007370ED align:1
 
+lib/libcmt/atof.obj:
+	.text       start:0x007370ED end:0x00737144 align:1
+
+auto_gap_00737144:
+	.text       start:0x00737144 end:0x00737180 align:1
+
 lib/libcmt/abort.obj:
 	.text       start:0x0073733A end:0x00737351 align:1
 
@@ -300,6 +312,12 @@ lib/libcmt/mkdir.obj:
 lib/libcmt/wcsncat.obj:
 	.text       start:0x00737B4E end:0x00737B8E align:1
 
+lib/libcmt/ehprolog.obj:
+	.text       start:0x00737D5C end:0x00737D7B align:1
+
+auto_gap_00737D7B:
+	.text       start:0x00737D7B end:0x00737D7C align:1
+
 lib/libcmt/ungetc.obj:
 	.text       start:0x007389E3 end:0x00738A7A align:1
 
@@ -308,6 +326,12 @@ lib/libcmt/fgetpos.obj:
 
 lib/libcmt/fsetpos.obj:
 	.text       start:0x00738A9C end:0x00738AB4 align:1
+
+lib/libcmt/isctype.obj:
+	.text       start:0x00739305 end:0x0073937A align:1
+
+lib/libcmt/strtod.obj:
+	.text       start:0x0073937A end:0x00739424 align:1
 
 lib/libcmt/fp8.obj:
 	.text       start:0x007396A1 end:0x007396B3 align:1
@@ -341,6 +365,13 @@ lib/libcmt/87disp.obj:
 align_pad_00B5249C:
 	.data       start:0x00B5249C end:0x00B524A0 align:1
 
+align_pad_0073DD2A:
+	.text       start:0x0073DD2A end:0x0073DD2C align:1
+
+lib/libcmt/common.obj:
+	.text       start:0x0073DD90 end:0x0073DF1C align:1
+	.rdata      start:0x008D6860 end:0x008D68A4 align:1
+
 lib/libcmt/timeset.obj:
 	.rdata      start:0x008D68A4 end:0x008D68E1 align:1
 	.data       start:0x00B524A0 end:0x00B52534 align:1
@@ -351,8 +382,8 @@ lib_fragment_00B52534:
 lib/libcmt/rtti.obj:
 	.rdata      start:0x008D68E1 end:0x008D68E8 align:1
 
-align_pad_0073DD2A:
-	.text       start:0x0073DD2A end:0x0073DD2C align:1
+auto_gap_0073DF1C:
+	.text       start:0x0073DF1C end:0x0073DFF8 align:1
 
 lib/libcmt/powhlp.obj:
 	.text       start:0x0073EE97 end:0x0073F02C align:1
@@ -409,6 +440,12 @@ lib/libcmt/a_env.obj:
 lib/libcmt/inittime.obj:
 	.text       start:0x00742708 end:0x00742799 align:1
 
+lib/libcmt/strpbrk.obj:
+	.text       start:0x00743310 end:0x0074334A align:1
+
+auto_gap_0074334A:
+	.text       start:0x0074334A end:0x0074334C align:1
+
 lib/libcmt/fseeki64.obj:
 	.text       start:0x00743E6E end:0x00743F2E align:1
 
@@ -417,6 +454,18 @@ lib/libcmt/_fptostr.obj:
 
 lib/libcmt/cfout.obj:
 	.text       start:0x00744963 end:0x00744964 align:1
+
+lib/libcmt/ullrem.obj:
+	.text       start:0x00744AB0 end:0x00744B25 align:1
+
+auto_gap_00744B25:
+	.text       start:0x00744B25 end:0x00744B28 align:1
+
+lib/libcmt/87except.obj:
+	.text       start:0x007454E0 end:0x007455B0 align:1
+
+auto_gap_007455B0:
+	.text       start:0x007455B0 end:0x007455CC align:1
 
 lib/libcmt/mantold.obj:
 	.text       start:0x00746107 end:0x007462A8 align:1
