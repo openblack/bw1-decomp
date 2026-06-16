@@ -350,6 +350,9 @@ lib/libcmt/ehprolog.obj:
 auto_gap_007CA68B:
 	.text       start:0x007CA68B end:0x007CA68C align:1
 
+auto_gap_007CA9C5:
+	.text       start:0x007CA9C5 end:0x007CA9D0 align:1
+
 lib/libcmt/isctype.obj:
 	.text       start:0x007CB993 end:0x007CBA08 align:1
 
@@ -389,6 +392,12 @@ align_pad_00C2FF9C:
 
 align_pad_007D1BAA:
 	.text       start:0x007D1BAA end:0x007D1BAC align:1
+
+lib/libcmt/genexcep.obj:
+	.text       start:0x007D1BB0 end:0x007D1C03 align:1
+
+auto_gap_007D1C03:
+	.text       start:0x007D1C03 end:0x007D1C10 align:1
 
 lib/libcmt/common.obj:
 	.text       start:0x007D1C10 end:0x007D1D9C align:1

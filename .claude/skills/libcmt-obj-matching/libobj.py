@@ -924,10 +924,25 @@ def subdivide_section(version, sec, os_, oe):
     if not unit and not blob:
         log.append(f"{sec}: auto region, tail to {hi:#x}")
 
-    # (c) only the unaligned head needs an explicit align:1 unit; the aligned bulk
-    #     [a, hi) auto-splits. If the whole tail is sub-alignment, it's one tiny gap.
+    # (c) the explicit gap must span the *actual* trailing 0xCC/0x90 padding to the
+    #     next object (alignment can be 4 or 16; the real boundary is where the pad
+    #     ends). For .text we also cap the object's function with a boundary symbol
+    #     at `oe`, else dtk's x86 analysis absorbs the int3/nop pad into it (size
+    #     mismatch -> page-shift / "overlaps"/"ends within"). See memcpy/sprintf.
     if oe < hi:
         head_end = a if oe < a < hi else hi
+        if sec == ".text":
+            exe = read_exe(version)
+            p = oe
+            while p < hi and exe[p - IMAGE_BASE] in (0x90, 0xCC):
+                p += 1
+            if p > oe:
+                head_end = p
+                cap = f"fn_{oe:08X} = .text:0x{oe:08X}; // type:function scope:local"
+                sp = symbols_path(version)
+                st = sp.read_text()
+                if not re.search(rf"^\S+ = \.text:0x0*{oe:X};", st, re.M):
+                    sp.write_text(st.rstrip("\n") + "\n" + cap + "\n")
         if oe < head_end:
             extra_units.append(
                 f"auto_gap_{oe:08X}:\n\t{sec:<11} "

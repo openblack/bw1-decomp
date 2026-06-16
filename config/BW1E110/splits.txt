@@ -246,6 +246,12 @@ align_pad_00C1EDEC:
 align_pad_007C19BA:
 	.text       start:0x007C19BA end:0x007C19BC align:1
 
+lib/libcmt/genexcep.obj:
+	.text       start:0x007C19C0 end:0x007C1A13 align:1
+
+auto_gap_007C1A13:
+	.text       start:0x007C1A13 end:0x007C1A20 align:1
+
 lib/libcmt/common.obj:
 	.text       start:0x007C1A20 end:0x007C1BAC align:1
 	.rdata      start:0x009909B0 end:0x009909F4 align:1
