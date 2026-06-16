@@ -985,7 +985,7 @@ config.libs = [
             LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\delop.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\xlock.obj", progress_category="sdk"),
 
-            LibObject(NonMatching, "libcmt", "..\\build\\intel\\mt_obj\\fpinit.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\fpinit.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\typinfo.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\onexit.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\sprintf.obj", progress_category="sdk"),
