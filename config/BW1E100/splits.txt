@@ -186,6 +186,11 @@ zlib/infutil.c:
 zlib/inffast.c:
 	.text       start:0x007338F0 end:0x00733C80
 
+lib/libcmt/fpinit.obj:
+	.text       start:0x00733CA4 end:0x00733D04 align:1
+	.data       start:0x00B4F894 end:0x00B4F8A8
+	.bss        start:0x00D5B240 end:0x00D5B244
+
 lib/libcmt/sprintf.obj:
 	.text       start:0x00733E17 end:0x00733E69 align:1
 
