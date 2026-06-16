@@ -186,6 +186,12 @@ zlib/infutil.c:
 zlib/inffast.c:
 	.text       start:0x007338F0 end:0x00733C80
 
+lib/libcmt/sprintf.obj:
+	.text       start:0x00733E17 end:0x00733E69 align:1
+
+align_pad_00733E69:
+	.text       start:0x00733E69 end:0x00733E6C align:1
+
 lib/libcmt/wcscat.obj:
 	.text       start:0x00733FCE end:0x0073401D align:1
 
@@ -201,16 +207,25 @@ lib/libcmt/swprintf.obj:
 lib/libcmt/sscanf.obj:
 	.text       start:0x00734C81 end:0x00734CB5 align:1
 
-auto_gap_00734CB5:
+lib/libcmt/_wctype.obj:
 	.text       start:0x00734CB5 end:0x00734CC3 align:1
+
+lib/libcmt/rename.obj:
+	.text       start:0x00734CD1 end:0x00734CFF align:1
+
+lib/libcmt/unlink.obj:
+	.text       start:0x00734CFF end:0x00734D00 align:1
 
 lib/libcmt/fprintf.obj:
 	.text       start:0x00734EB0 end:0x00734EEC align:1
 
+lib/libcmt/fopen.obj:
+	.text       start:0x00734EEC end:0x00734F30 align:1
+
 lib/libcmt/fclose.obj:
 	.text       start:0x00734F30 end:0x00734FAD align:1
 
-auto_gap_00734FAD:
+align_pad_00734FAD:
 	.text       start:0x00734FAD end:0x00734FB0 align:1
 
 lib/libcmt/wcscmp.obj:
@@ -225,15 +240,12 @@ lib/libcmt/vsprintf.obj:
 lib/libcmt/qsort.obj:
 	.text       start:0x00735B79 end:0x00735D47 align:1
 
-auto_gap_00735D47:
+lib_fragment_00735D47:
 	.text       start:0x00735D47 end:0x00735D5A align:1
 
 lib/libcmt/ceil.obj:
 	.text       start:0x00735D82 end:0x00735E51 align:1
 	.data       start:0x00B4F9A0 end:0x00B4F9A4 align:1
-
-auto_gap_00B4F9A4:
-	.data       start:0x00B4F9A4 end:0x00B4F9B4 align:1
 
 lib/libcmt/bsearch.obj:
 	.text       start:0x00735E51 end:0x00735EDD align:1
@@ -241,8 +253,12 @@ lib/libcmt/bsearch.obj:
 lib/libcmt/wcsstr.obj:
 	.text       start:0x00735EDD end:0x00735F1E align:1
 
-auto_gap_00735F1E:
+lib/libcmt/trnsctrl.obj:
 	.text       start:0x00735F1E end:0x00735F52 align:1
+
+lib/libcmt/exsup.obj:
+	.text       start:0x00736204 end:0x007362F2 align:1
+	.data       start:0x00B4F9A4 end:0x00B4F9B4 align:1
 
 lib/libcmt/fgets.obj:
 	.text       start:0x007362F2 end:0x00736354 align:1
@@ -260,29 +276,26 @@ lib/libcmt/floor.obj:
 	.text       start:0x0073677D end:0x0073684C align:1
 	.data       start:0x00B4F9B4 end:0x00B4F9B8 align:1
 
-auto_gap_00B4F9B8:
-	.data       start:0x00B4F9B8 end:0x00B50020 align:1
-
 lib/libcmt/ctype.obj:
 	.data       start:0x00B50020 end:0x00B5022A align:1
 
-auto_gap_00B5022A:
+align_pad_00B5022A:
 	.data       start:0x00B5022A end:0x00B5022C align:1
 
 lib/libcmt/nlsdata1.obj:
 	.data       start:0x00B5022C end:0x00B50238 align:1
 
-auto_gap_00B50238:
-	.data       start:0x00B50238 end:0x00B52358 align:1
-
-auto_gap_0073684C:
-	.text       start:0x0073684C end:0x00736868 align:1
-
 lib/libcmt/strtok.obj:
 	.text       start:0x00737049 end:0x007370ED align:1
 
+lib/libcmt/abort.obj:
+	.text       start:0x0073733A end:0x00737351 align:1
+
 lib/libcmt/chmod.obj:
 	.text       start:0x00737351 end:0x00737390 align:1
+
+lib/libcmt/mkdir.obj:
+	.text       start:0x00737B22 end:0x00737B4E align:1
 
 lib/libcmt/wcsncat.obj:
 	.text       start:0x00737B4E end:0x00737B8E align:1
@@ -296,13 +309,16 @@ lib/libcmt/fgetpos.obj:
 lib/libcmt/fsetpos.obj:
 	.text       start:0x00738A9C end:0x00738AB4 align:1
 
+lib/libcmt/fp8.obj:
+	.text       start:0x007396A1 end:0x007396B3 align:1
+
 lib/libcmt/testfdiv.obj:
 	.text       start:0x007396B3 end:0x0073971A align:1
 	.rdata      start:0x008D66B8 end:0x008D66ED
 
-auto_gap_0073971A:
-	.text       start:0x0073971A end:0x00739B40 align:1
-	.rdata      start:0x008D66ED end:0x008D68A4 align:1
+lib/libcmt/cvt.obj:
+	.text       start:0x0073971A end:0x0073971C align:1
+	.rdata      start:0x008D66ED end:0x008D66F0 align:1
 
 lib/libcmt/_freebuf.obj:
 	.text       start:0x0073D294 end:0x0073D2BF align:1
@@ -311,64 +327,99 @@ lib/libcmt/util.obj:
 	.text       start:0x0073D2BF end:0x0073D403 align:1
 	.data       start:0x00B52358 end:0x00B52380
 
+lib/libcmt/fpctrl.obj:
+	.text       start:0x0073DABB end:0x0073DB51 align:1
+	.data       start:0x00B52458 end:0x00B52470 align:1
+
+align_pad_0073DB51:
+	.text       start:0x0073DB51 end:0x0073DB54 align:1
+
+lib/libcmt/87disp.obj:
+	.text       start:0x0073DB60 end:0x0073DD2A align:1
+	.data       start:0x00B52470 end:0x00B5249C align:1
+
+align_pad_00B5249C:
+	.data       start:0x00B5249C end:0x00B524A0 align:1
+
 lib/libcmt/timeset.obj:
 	.rdata      start:0x008D68A4 end:0x008D68E1 align:1
 	.data       start:0x00B524A0 end:0x00B52534 align:1
 
-auto_gap_00B52534:
-	.data       start:0x00B52534 end:0x00B52900 align:1
+lib_fragment_00B52534:
+	.data       start:0x00B52534 end:0x00B52538 align:1
 
-auto_gap_008D68E1:
-	.rdata      start:0x008D68E1 end:0x008DA598 align:1
+lib/libcmt/rtti.obj:
+	.rdata      start:0x008D68E1 end:0x008D68E8 align:1
+
+align_pad_0073DD2A:
+	.text       start:0x0073DD2A end:0x0073DD2C align:1
 
 lib/libcmt/powhlp.obj:
 	.text       start:0x0073EE97 end:0x0073F02C align:1
 
-auto_gap_0073F02C:
-	.text       start:0x0073F02C end:0x0073F0FA align:1
+lib/libcmt/adj_fdiv.obj:
+	.text       start:0x0073F2A0 end:0x0074002B align:1
+	.data       start:0x00B525C0 end:0x00B52720 align:1
+
+lib_fragment_00B52720:
+	.data       start:0x00B52720 end:0x00B52860 align:1
 
 lib/libcmt/frnd.obj:
 	.text       start:0x0074002B end:0x0074003D align:1
 
-auto_gap_0074003D:
+lib/libcmt/frame.obj:
 	.text       start:0x0074003D end:0x00740043 align:1
 
 lib/libcmt/cfin.obj:
 	.text       start:0x007411C4 end:0x00741243 align:1
 
-auto_gap_00741243:
-	.text       start:0x00741243 end:0x00741DB5 align:1
+lib/libcmt/winput.obj:
+	.text       start:0x00741243 end:0x00741D6C align:1
+	.data       start:0x00B52860 end:0x00B52870 align:1
+
+lib/libcmt/crt0msg.obj:
+	.data       start:0x00B52870 end:0x00B52900 align:1
+
+lib_fragment_00741D6C:
+	.text       start:0x00741D6C end:0x00741DB5 align:1
 
 lib/libcmt/winxfltr.obj:
 	.text       start:0x00742100 end:0x00742278 align:1
 	.data       start:0x00B52900 end:0x00B52988 align:1
 
-auto_gap_00B52988:
-	.data       start:0x00B52988 end:0x00B53144 align:1
-
 lib/libcmt/days.obj:
 	.data       start:0x00B53144 end:0x00B531AC align:1
 
-auto_gap_00B531AC:
+align_pad_00B531AC:
 	.data       start:0x00B531AC end:0x00B531B0 align:1
 
 lib/libcmt/constpow.obj:
 	.data       start:0x00B531B0 end:0x00B5346C align:1
 
-auto_gap_00B5346C:
-	.data       start:0x00B5346C end:0x00CC7858 align:1
+lib_fragment_00B5346C:
+	.data       start:0x00B5346C end:0x00B53470 align:1
 
-auto_gap_00742278:
+lib/libcmt/wincmdln.obj:
 	.text       start:0x00742278 end:0x007422D0 align:1
+
+lib/libcmt/a_env.obj:
+	.text       start:0x007425D6 end:0x00742708 align:1
+	.bss        start:0x00D5B590 end:0x00D5B594 align:1
+
+lib/libcmt/inittime.obj:
+	.text       start:0x00742708 end:0x00742799 align:1
 
 lib/libcmt/fseeki64.obj:
 	.text       start:0x00743E6E end:0x00743F2E align:1
 
+lib/libcmt/_fptostr.obj:
+	.text       start:0x007448EC end:0x00744963 align:1
+
+lib/libcmt/cfout.obj:
+	.text       start:0x00744963 end:0x00744964 align:1
+
 lib/libcmt/mantold.obj:
 	.text       start:0x00746107 end:0x007462A8 align:1
-
-auto_gap_007462A8:
-	.text       start:0x007462A8 end:0x0074634F align:1
 
 lib/libcmt/wcsdup.obj:
 	.text       start:0x007E894E end:0x007E897C align:1
