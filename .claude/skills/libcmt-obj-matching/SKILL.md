@@ -176,6 +176,34 @@ E110 `0x89B680`, E142 `0x8AB680`. An obj absent from a version (e.g. `ldexp` in
 E100) should be `MatchingFor(...)` only the versions it exists in — else its carve
 is orphaned and `/OPT:REF` dead-strips it.
 
+## lld-link `duplicate symbol` errors (two cases)
+
+After labelling many objects (e.g. from a map), `ninja` can fail with
+`lld-link: error: duplicate symbol: X`. Get the two definers from the
+`>>> defined at …o` lines. Two distinct causes, two fixes:
+
+1. **Shared COMDAT const** — `__real@8@…`, `__xmm@…`, string consts. Multiple
+   objects each carry the same constant as a COMDAT and the linker must fold them
+   to one copy. Add **`comdat`** to its symbols.txt line:
+   ```
+   __real@8@3fff8000000000000000 = .rdata:0x…; // type:object size:0x8 scope:global data:double comdat
+   ```
+   (Confirm the bytes really are identical first — see case 2.)
+
+2. **Same-named `static` helpers in different objects** — e.g. `_write_multi_char`,
+   `_write_string`, `_get_int_arg` exist in **both** output.obj and woutput.obj as
+   file-local statics. dtk splits each NonMatching object per-function, so each copy
+   becomes its own `.o` exporting the name → collision. They are **not** foldable
+   (the char vs wchar versions differ by a call target / `movsx` vs `mov word`), so
+   `comdat` is wrong. Fix: **rename the later copies** (keep the lowest address,
+   suffix the rest, e.g. `_write_multi_char_w`). For a NonMatching verbatim extract
+   this is cosmetic — dtk resolves each reloc to the symbol at the target address,
+   so renaming the definition also fixes its references. `scope:local` does **not**
+   help: dtk still exports a split unit's primary symbol.
+
+   Check identical-vs-different by reading both ranges from the exe before choosing
+   `comdat` (fold) vs rename (distinct).
+
 ## Worked examples (real numbers)
 
 **`wcscmp.obj`** — the clean `auto` case the loop nails with zero edits: one
