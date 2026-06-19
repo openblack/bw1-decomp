@@ -296,6 +296,13 @@ lib/libcmt/floor.obj:
 lib/libcmt/stdexcpt.obj:
 	.text       start:0x007C8BB2 end:0x007C8BC3 align:1
 
+lib/libcmt/dosmap.obj:
+	.text       start:0x007C900E end:0x007C9093 align:1
+	.data       start:0x00C2D500 end:0x00C2D668 align:1
+
+auto_gap_007C9093:
+	.text       start:0x007C9093 end:0x007C9094 align:1
+
 lib/libcmt/strtok.obj:
 	.text       start:0x007C942A end:0x007C94CE align:1
 
@@ -310,6 +317,12 @@ lib/libcmt/abort.obj:
 
 lib/libcmt/chmod.obj:
 	.text       start:0x007C9860 end:0x007C989F align:1
+
+lib/libcmt/slbeep.obj:
+	.text       start:0x007C9BCE end:0x007C9BF0 align:1
+
+auto_gap_007C9BF0:
+	.text       start:0x007C9BF0 end:0x007C9C17 align:1
 
 lib/libcmt/mkdir.obj:
 	.text       start:0x007CA102 end:0x007CA12E align:1
@@ -344,6 +357,9 @@ lib/libcmt/_freebuf.obj:
 
 lib/libcmt/ldexp.obj:
 	.text       start:0x007D0DF7 end:0x007D0FDD align:1
+
+auto_gap_00C2D668:
+	.data       start:0x00C2D668 end:0x00C2DB20 align:1
 
 lib/libcmt/ctype.obj:
 	.data       start:0x00C2DB20 end:0x00C2DD2A align:1
