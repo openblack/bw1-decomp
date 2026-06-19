@@ -4,6 +4,7 @@ Sections:
 	.rdata$r    type:rodata vaddr:0x008DA598 end:0x008EE238
 	.xdata$x    type:rodata vaddr:0x008EE238 end:0x008F52DE
 	.data       type:data align:4096
+	.bss        type:data vaddr:0x00B5E000 end:0x00EDFB00
 	SELFMOD     type:data align:4096
 	.rsrc       type:rodata align:4096
 
@@ -189,6 +190,11 @@ zlib/infutil.c:
 zlib/inffast.c:
 	.text       start:0x007338F0 end:0x00733C80
 
+lib/libcmt/fpinit.obj:
+	.text       start:0x00733CA4 end:0x00733CF4 align:1
+	.data       start:0x00B4F894 end:0x00B4F8A8 align:1
+	.bss        start:0x00D5B240 end:0x00D5B248 align:4
+
 lib/libcmt/sprintf.obj:
 	.text       start:0x00733E17 end:0x00733E69 align:1
 
@@ -279,15 +285,6 @@ lib/libcmt/floor.obj:
 	.text       start:0x0073677D end:0x0073684C align:1
 	.data       start:0x00B4F9B4 end:0x00B4F9B8 align:1
 
-lib/libcmt/ctype.obj:
-	.data       start:0x00B50020 end:0x00B5022A align:1
-
-align_pad_00B5022A:
-	.data       start:0x00B5022A end:0x00B5022C align:1
-
-lib/libcmt/nlsdata1.obj:
-	.data       start:0x00B5022C end:0x00B50238 align:1
-
 lib/libcmt/strtok.obj:
 	.text       start:0x00737049 end:0x007370ED align:1
 
@@ -326,6 +323,15 @@ lib/libcmt/cvt.obj:
 lib/libcmt/_freebuf.obj:
 	.text       start:0x0073D294 end:0x0073D2BF align:1
 
+lib/libcmt/ctype.obj:
+	.data       start:0x00B50020 end:0x00B5022A align:1
+
+align_pad_00B5022A:
+	.data       start:0x00B5022A end:0x00B5022C align:1
+
+lib/libcmt/nlsdata1.obj:
+	.data       start:0x00B5022C end:0x00B50238 align:1
+
 lib/libcmt/util.obj:
 	.text       start:0x0073D2BF end:0x0073D403 align:1
 	.data       start:0x00B52358 end:0x00B52380
@@ -341,6 +347,12 @@ lib/libcmt/87disp.obj:
 	.text       start:0x0073DB60 end:0x0073DD2A align:1
 	.data       start:0x00B52470 end:0x00B5249C align:1
 
+align_pad_0073DD2A:
+	.text       start:0x0073DD2A end:0x0073DD2C align:1
+
+lib/libcmt/powhlp.obj:
+	.text       start:0x0073EE97 end:0x0073F02C align:1
+
 align_pad_00B5249C:
 	.data       start:0x00B5249C end:0x00B524A0 align:1
 
@@ -351,21 +363,9 @@ lib/libcmt/timeset.obj:
 lib_fragment_00B52534:
 	.data       start:0x00B52534 end:0x00B52538 align:1
 
-lib/libcmt/rtti.obj:
-	.rdata      start:0x008D68E1 end:0x008D68E8 align:1
-
-align_pad_0073DD2A:
-	.text       start:0x0073DD2A end:0x0073DD2C align:1
-
-lib/libcmt/powhlp.obj:
-	.text       start:0x0073EE97 end:0x0073F02C align:1
-
 lib/libcmt/adj_fdiv.obj:
 	.text       start:0x0073F2A0 end:0x0074002B align:1
 	.data       start:0x00B525C0 end:0x00B52720 align:1
-
-lib_fragment_00B52720:
-	.data       start:0x00B52720 end:0x00B52860 align:1
 
 lib/libcmt/frnd.obj:
 	.text       start:0x0074002B end:0x0074003D align:1
@@ -376,31 +376,22 @@ lib/libcmt/frame.obj:
 lib/libcmt/cfin.obj:
 	.text       start:0x007411C4 end:0x00741243 align:1
 
+lib_fragment_00B52720:
+	.data       start:0x00B52720 end:0x00B52860 align:1
+
 lib/libcmt/winput.obj:
 	.text       start:0x00741243 end:0x00741D6C align:1
 	.data       start:0x00B52860 end:0x00B52870 align:1
 
-lib/libcmt/crt0msg.obj:
-	.data       start:0x00B52870 end:0x00B52900 align:1
-
 lib_fragment_00741D6C:
 	.text       start:0x00741D6C end:0x00741DB5 align:1
+
+lib/libcmt/crt0msg.obj:
+	.data       start:0x00B52870 end:0x00B52900 align:1
 
 lib/libcmt/winxfltr.obj:
 	.text       start:0x00742100 end:0x00742278 align:1
 	.data       start:0x00B52900 end:0x00B52988 align:1
-
-lib/libcmt/days.obj:
-	.data       start:0x00B53144 end:0x00B531AC align:1
-
-align_pad_00B531AC:
-	.data       start:0x00B531AC end:0x00B531B0 align:1
-
-lib/libcmt/constpow.obj:
-	.data       start:0x00B531B0 end:0x00B5346C align:1
-
-lib_fragment_00B5346C:
-	.data       start:0x00B5346C end:0x00B53470 align:1
 
 lib/libcmt/wincmdln.obj:
 	.text       start:0x00742278 end:0x007422D0 align:1
@@ -429,3 +420,18 @@ lib/libcmt/wcsdup.obj:
 
 lib/libcmt/fileno.obj:
 	.text       start:0x007E8AE5 end:0x007E8AED align:1
+
+lib/libcmt/rtti.obj:
+	.rdata      start:0x008D68E1 end:0x008D68E8 align:1
+
+lib/libcmt/days.obj:
+	.data       start:0x00B53144 end:0x00B531AC align:1
+
+align_pad_00B531AC:
+	.data       start:0x00B531AC end:0x00B531B0 align:1
+
+lib/libcmt/constpow.obj:
+	.data       start:0x00B531B0 end:0x00B5346C align:1
+
+lib_fragment_00B5346C:
+	.data       start:0x00B5346C end:0x00B53470 align:1
