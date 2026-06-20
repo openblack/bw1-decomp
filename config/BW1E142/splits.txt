@@ -209,6 +209,9 @@ lib/libcmt/toupper.obj:
 lib/libcmt/wcscat.obj:
 	.text       start:0x007C5F8C end:0x007C5FDB align:1
 
+lib/libcmt/xtow.obj:
+	.text       start:0x007C5FDB end:0x007C60DB align:1
+
 lib/libcmt/purevirt.obj:
 	.text       start:0x007C60DB end:0x007C60E4 align:1
 
@@ -354,6 +357,9 @@ lib/libcmt/testfdiv.obj:
 
 lib/libcmt/cvt.obj:
 	.text       start:0x007CC9DB end:0x007CC9DC align:1
+
+lib/libcmt/xtoa.obj:
+	.text       start:0x007CD984 end:0x007CDB24 align:1
 
 lib/libcmt/_freebuf.obj:
 	.text       start:0x007D0DCC end:0x007D0DF7 align:1
