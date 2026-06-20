@@ -200,7 +200,7 @@ lib/libcmt/fpinit.obj:
 lib/libcmt/sprintf.obj:
 	.text       start:0x007C57D2 end:0x007C5824 align:1
 
-lib/libcmt/rtti_007C5824.obj:
+lib/libcmt/rtti.obj:
 	.text       start:0x007C5824 end:0x007C5874 align:1
 
 lib/libcmt/wcscat.obj:
@@ -392,8 +392,8 @@ align_pad_00C2FF9C:
 	.data       start:0x00C2FF9C end:0x00C2FFA0 align:1
 
 lib/libcmt/timeset.obj:
-	.rdata      start:0x009A0AF4 end:0x009A0B31 align:1
-	.data       start:0x00C2FFA0 end:0x00C30034 align:1
+	.rdata      start:0x009A0AF4 end:0x009A0B34 align:4
+	.data       start:0x00C2FFA0 end:0x00C30034 align:4
 
 lib_fragment_00C30034:
 	.data       start:0x00C30034 end:0x00C30038 align:1
@@ -470,9 +470,6 @@ lib/libcmt/wcspbrk.obj:
 
 lib/libcmt/wcsspn.obj:
 	.text       start:0x008A6145 end:0x008A6187 align:1
-
-lib/libcmt/rtti.obj:
-	.rdata      start:0x009A0B31 end:0x009A0B38 align:1
 
 lib/libcmt/days.obj:
 	.data       start:0x00C30C44 end:0x00C30CAC align:1

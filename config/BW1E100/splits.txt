@@ -357,8 +357,8 @@ align_pad_00B5249C:
 	.data       start:0x00B5249C end:0x00B524A0 align:1
 
 lib/libcmt/timeset.obj:
-	.rdata      start:0x008D68A4 end:0x008D68E1 align:1
-	.data       start:0x00B524A0 end:0x00B52534 align:1
+	.rdata      start:0x008D68A4 end:0x008D68E4 align:4
+	.data       start:0x00B524A0 end:0x00B52534 align:4
 
 lib_fragment_00B52534:
 	.data       start:0x00B52534 end:0x00B52538 align:1
@@ -420,9 +420,6 @@ lib/libcmt/wcsdup.obj:
 
 lib/libcmt/fileno.obj:
 	.text       start:0x007E8AE5 end:0x007E8AED align:1
-
-lib/libcmt/rtti.obj:
-	.rdata      start:0x008D68E1 end:0x008D68E8 align:1
 
 lib/libcmt/days.obj:
 	.data       start:0x00B53144 end:0x00B531AC align:1
