@@ -162,12 +162,12 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.11"
+config.dtk_tag = "v0.0.12"
 config.objdiff_tag = "v3.6.1"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.1.0"
 config.compilers_tag = "6.5"  # MSVC 6.0 SP5
-config.lld_link_tag = "bw1-decomp-015"
+config.lld_link_tag = "bw1-decomp-016"
 # Static libraries to pull verbatim CRT objects from (see LibObject). All from
 # Visual Studio 6.0 (1998) SP5, downloaded from the public jmfrank63/VC6Ultimate
 # repo at a pinned commit — nothing committed. Add libs individually as needed
@@ -987,7 +987,7 @@ config.libs = [
 
             LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\fpinit.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\typinfo.obj", progress_category="sdk"),
-            LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\onexit.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\onexit.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\sprintf.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\rtti.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\toupper.obj", progress_category="sdk"),
@@ -1070,6 +1070,7 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\ulldiv.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\llmul.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\crt0dat.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\crt0init.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\llshr.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\llshl.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\llrem.obj", progress_category="sdk"),

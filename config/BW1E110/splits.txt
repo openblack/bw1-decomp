@@ -4,6 +4,18 @@ Sections:
 	.rdata$r    type:rodata vaddr:0x009961D8 end:0x009ABA90
 	.xdata$x    type:rodata vaddr:0x009ABA90 end:0x009B52EE
 	.data       type:data align:4096
+	.CRT$XCA    type:data vaddr:0x009B6000 end:0x009B6004
+	.CRT$XCU    type:data vaddr:0x009B6004 end:0x009B75F8
+	.CRT$XCZ    type:data vaddr:0x009B75F8 end:0x009B75FC
+	.CRT$XIA    type:data vaddr:0x009B75FC end:0x009B7600
+	.CRT$XIC    type:data vaddr:0x009B7600 end:0x009B7614
+	.CRT$XIZ    type:data vaddr:0x009B7614 end:0x009B7618
+	.CRT$XPA    type:data vaddr:0x009B7618 end:0x009B761C
+	.CRT$XPX    type:data vaddr:0x009B761C end:0x009B7620
+	.CRT$XPZ    type:data vaddr:0x009B7620 end:0x009B7624
+	.CRT$XTA    type:data vaddr:0x009B7624 end:0x009B7628
+	.CRT$XTX    type:data vaddr:0x009B7628 end:0x009B762C
+	.CRT$XTZ    type:data vaddr:0x009B762C end:0x009B7630
 	.bss        type:data vaddr:0x00C2C000 end:0x00FAE7A0
 	.data1      type:data align:4096
 	SELFMOD     type:data align:4096
@@ -67,6 +79,10 @@ lib/libcmt/fpinit.obj:
 	.text       start:0x007B5424 end:0x007B5484 align:1
 	.data       start:0x00C1C1DC end:0x00C1C1F0 align:1
 	.bss        start:0x00E72B58 end:0x00E72B60 align:4
+
+lib/libcmt/onexit.obj:
+	.text       start:0x007B5533 end:0x007B55F2 align:1
+	.CRT$XIC    start:0x009B7600 end:0x009B7604 align:4
 
 lib/libcmt/sprintf.obj:
 	.text       start:0x007B55F2 end:0x007B5644 align:1
@@ -319,6 +335,16 @@ lib/libcmt/wcspbrk.obj:
 
 lib/libcmt/wcsspn.obj:
 	.text       start:0x00895F55 end:0x00895F97 align:1
+
+lib/libcmt/crt0init.obj:
+	.CRT$XCA    start:0x009B6000 end:0x009B6004 align:4
+	.CRT$XCZ    start:0x009B75F8 end:0x009B75FC align:4
+	.CRT$XIA    start:0x009B75FC end:0x009B7600 align:4
+	.CRT$XIZ    start:0x009B7614 end:0x009B7618 align:4
+	.CRT$XPA    start:0x009B7618 end:0x009B761C align:4
+	.CRT$XPZ    start:0x009B7620 end:0x009B7624 align:4
+	.CRT$XTA    start:0x009B7624 end:0x009B7628 align:4
+	.CRT$XTZ    start:0x009B762C end:0x009B7630 align:4
 
 lib/libcmt/days.obj:
 	.data       start:0x00C1FA94 end:0x00C1FAFC align:1
