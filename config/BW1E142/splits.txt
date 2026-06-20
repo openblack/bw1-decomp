@@ -437,6 +437,9 @@ lib/libcmt/winxfltr.obj:
 lib/libcmt/wincmdln.obj:
 	.text       start:0x007D6A27 end:0x007D6A7F align:1
 
+lib/libcmt/nlsdata2.obj:
+	.bss        start:0x00E84298 end:0x00E842B8
+
 lib/libcmt/a_env.obj:
 	.text       start:0x007D6D85 end:0x007D6EB7 align:1
 	.bss        start:0x00E844E4 end:0x00E844E8 align:1
