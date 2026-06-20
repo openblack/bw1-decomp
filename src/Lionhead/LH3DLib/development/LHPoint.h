@@ -40,9 +40,10 @@ struct Point2D
     // win1.41 00611330 mac 100e7550 Point2D::Normalize(void)
     float Normalize();
     // win1.41 006115f0 mac 1005ba40 Point2D::GetNormSq(void) const
-    float GetNormSq();
     // win1.41 0086fda0 mac inlined Point2D::GetNormSq(void) const copy
-    float GetNormSq();
+    // Defined inline in the header: the release emits it as an (un-ICF'd) COMDAT
+    // at both 0x006115F0 and 0x0086FDA0 and inlines it at many call sites.
+    float GetNormSq() { return x * x + y * y; }
     // win1.41 006159c0 mac inlined Point2D::operator==(const Point2D&)
     bool operator==(const Point2D* other);
     // win1.41 0086fd00 mac 10089260 Point2D::GetHeading(void) const
