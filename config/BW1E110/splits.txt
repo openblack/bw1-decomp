@@ -72,7 +72,7 @@ lib/libcmt/sprintf.obj:
 	.text       start:0x007B55F2 end:0x007B5644 align:1
 
 lib/libcmt/toupper.obj:
-	.text       start:0x007B5644 end:0x007B564C align:1
+	.text       start:0x007B5644 end:0x007B5787 align:1
 
 lib/libcmt/wcscat.obj:
 	.text       start:0x007B5787 end:0x007B57D6 align:1

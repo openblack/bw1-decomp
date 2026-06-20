@@ -199,7 +199,10 @@ lib/libcmt/sprintf.obj:
 	.text       start:0x00733E17 end:0x00733E69 align:1
 
 align_pad_00733E69:
-	.text       start:0x00733E69 end:0x00733E6C align:1
+	.text       start:0x00733E69 end:0x00733E93 align:1
+
+lib/libcmt/toupper.obj:
+	.text       start:0x00733E93 end:0x00733FCE align:1
 
 lib/libcmt/wcscat.obj:
 	.text       start:0x00733FCE end:0x0073401D align:1
