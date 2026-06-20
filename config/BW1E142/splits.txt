@@ -4,6 +4,18 @@ Sections:
 	.rdata$r    type:rodata vaddr:0x009A62D8 end:0x009BBDC8
 	.xdata$x    type:rodata vaddr:0x009BBDC8 end:0x009C5564
 	.data       type:data align:4096
+	.CRT$XCA    type:data vaddr:0x009C6000 end:0x009C6004
+	.CRT$XCU    type:data vaddr:0x009C6004 end:0x009C7E3C
+	.CRT$XCZ    type:data vaddr:0x009C7E3C end:0x009C7E40
+	.CRT$XIA    type:data vaddr:0x009C7E40 end:0x009C7E44
+	.CRT$XIC    type:data vaddr:0x009C7E44 end:0x009C7E58
+	.CRT$XIZ    type:data vaddr:0x009C7E58 end:0x009C7E5C
+	.CRT$XPA    type:data vaddr:0x009C7E5C end:0x009C7E60
+	.CRT$XPX    type:data vaddr:0x009C7E60 end:0x009C7E64
+	.CRT$XPZ    type:data vaddr:0x009C7E64 end:0x009C7E68
+	.CRT$XTA    type:data vaddr:0x009C7E68 end:0x009C7E6C
+	.CRT$XTX    type:data vaddr:0x009C7E6C end:0x009C7E70
+	.CRT$XTZ    type:data vaddr:0x009C7E70 end:0x009C7E74
 	.bss        type:data vaddr:0x00C3D000 end:0x00FBFE00
 	.data1      type:data align:4096
 	SELFMOD     type:data align:4096
@@ -196,6 +208,10 @@ lib/libcmt/fpinit.obj:
 	.text       start:0x007C5604 end:0x007C5664 align:1
 	.data       start:0x00C2D394 end:0x00C2D3A8 align:1
 	.bss        start:0x00E84190 end:0x00E84198 align:4
+
+lib/libcmt/onexit.obj:
+	.text       start:0x007C5713 end:0x007C57D2 align:1
+	.CRT$XIC    start:0x009C7E44 end:0x009C7E48 align:4
 
 lib/libcmt/sprintf.obj:
 	.text       start:0x007C57D2 end:0x007C5824 align:1
@@ -482,6 +498,16 @@ lib/libcmt/wcspbrk.obj:
 
 lib/libcmt/wcsspn.obj:
 	.text       start:0x008A6145 end:0x008A6187 align:1
+
+lib/libcmt/crt0init.obj:
+	.CRT$XCA    start:0x009C6000 end:0x009C6004 align:4
+	.CRT$XCZ    start:0x009C7E3C end:0x009C7E40 align:4
+	.CRT$XIA    start:0x009C7E40 end:0x009C7E44 align:4
+	.CRT$XIZ    start:0x009C7E58 end:0x009C7E5C align:4
+	.CRT$XPA    start:0x009C7E5C end:0x009C7E60 align:4
+	.CRT$XPZ    start:0x009C7E64 end:0x009C7E68 align:4
+	.CRT$XTA    start:0x009C7E68 end:0x009C7E6C align:4
+	.CRT$XTZ    start:0x009C7E70 end:0x009C7E74 align:4
 
 lib/libcmt/days.obj:
 	.data       start:0x00C30C44 end:0x00C30CAC align:1
