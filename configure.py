@@ -167,7 +167,7 @@ config.objdiff_tag = "v3.6.1"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.1.0"
 config.compilers_tag = "6.5"  # MSVC 6.0 SP5
-config.lld_link_tag = "bw1-decomp-016"
+config.lld_link_tag = "bw1-decomp-017"
 # Static libraries to pull verbatim CRT objects from (see LibObject). All from
 # Visual Studio 6.0 (1998) SP5, downloaded from the public jmfrank63/VC6Ultimate
 # repo at a pinned commit — nothing committed. Add libs individually as needed
