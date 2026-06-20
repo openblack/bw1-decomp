@@ -77,6 +77,9 @@ lib/libcmt/toupper.obj:
 lib/libcmt/wcscat.obj:
 	.text       start:0x007B5787 end:0x007B57D6 align:1
 
+lib/libcmt/xtow.obj:
+	.text       start:0x007B57D6 end:0x007B58D6 align:1
+
 lib/libcmt/wcsncpy.obj:
 	.text       start:0x007B5C15 end:0x007B5C52 align:1
 
@@ -194,6 +197,9 @@ lib/libcmt/fp8.obj:
 lib/libcmt/testfdiv.obj:
 	.text       start:0x007BC785 end:0x007BC7EC align:1
 	.rdata      start:0x00990808 end:0x00990840
+
+lib/libcmt/xtoa.obj:
+	.text       start:0x007BD6B4 end:0x007BD854 align:1
 
 lib/libcmt/_freebuf.obj:
 	.text       start:0x007C0BDC end:0x007C0C07 align:1
