@@ -473,6 +473,12 @@ auto_gap_007E8A5B:
 lib/libcmt/fileno.obj:
 	.text       start:0x007E8AE5 end:0x007E8AED align:1
 
+lib/libcmt/wcsnicmp.obj:
+	.text       start:0x007E8AED end:0x007E8BE5 align:1
+
+auto_gap_007E8BE5:
+	.text       start:0x007E8BE5 end:0x007E8BE8 align:1
+
 lib/libcmt/towlower.obj:
 	.text       start:0x007E8FD8 end:0x007E904D align:1
 
