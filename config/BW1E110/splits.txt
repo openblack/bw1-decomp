@@ -102,6 +102,12 @@ lib/libcmt/wcscat.obj:
 lib/libcmt/xtow.obj:
 	.text       start:0x007B57D6 end:0x007B58D6 align:1
 
+lib/libcmt/purevirt.obj:
+	.text       start:0x007B58D6 end:0x007B58DF align:1
+
+align_pad_007B58DF:
+	.text       start:0x007B58DF end:0x007B58E0 align:1
+
 lib/libcmt/wcsncpy.obj:
 	.text       start:0x007B5C15 end:0x007B5C52 align:1
 
