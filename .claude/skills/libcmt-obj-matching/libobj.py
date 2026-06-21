@@ -200,12 +200,27 @@ class CoffObj:
         return best
 
     def undefined_externals(self):
+        # A section-0 external symbol is only a true undefined reference when its
+        # value is 0. A nonzero value means it's a COMMON symbol (a tentative
+        # uninitialized definition of `value` bytes that the obj itself supplies,
+        # allocated into .bss by the linker) — not a dependency on another obj.
         out = []
         for s in self.symbols:
             if s is None:
                 continue
-            if s.section == 0 and s.storage == 2 and s.name:
+            if s.section == 0 and s.storage == 2 and s.value == 0 and s.name:
                 out.append(s.name)
+        return out
+
+    def common_symbols(self):
+        """COMMON symbols (section 0, value = size): tentative .bss globals the
+        obj defines itself."""
+        out = []
+        for s in self.symbols:
+            if s is None:
+                continue
+            if s.section == 0 and s.storage == 2 and s.value > 0 and s.name:
+                out.append((s.name, s.value))
         return out
 
     def defined_externals(self):
