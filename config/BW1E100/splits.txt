@@ -265,6 +265,9 @@ lib/libcmt/fclose.obj:
 align_pad_00734FAD:
 	.text       start:0x00734FAD end:0x00734FB0 align:1
 
+lib/libcmt/chkstk.obj:
+	.text       start:0x00734FB0 end:0x00734FDF align:1
+
 lib/libcmt/wcscmp.obj:
 	.text       start:0x00734FDF end:0x00735014 align:1
 
