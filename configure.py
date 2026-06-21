@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.13"
+config.dtk_tag = "v0.0.14"
 config.objdiff_tag = "v3.6.1"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.1.0"
@@ -993,7 +993,7 @@ config.libs = [
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\toupper.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\wcscat.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\xtow.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1E110", "BW1E142"), "libcmt", "build\\intel\\mt_obj\\purevirt.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\purevirt.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\memmove.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\wcsncpy.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\wcslen.obj", progress_category="sdk"),
