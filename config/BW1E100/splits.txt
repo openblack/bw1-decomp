@@ -464,8 +464,17 @@ lib/libcmt/mantold.obj:
 lib/libcmt/wcsdup.obj:
 	.text       start:0x007E894E end:0x007E897C align:1
 
+lib/libcmt/wcsicmp.obj:
+	.text       start:0x007E897C end:0x007E8A5B align:1
+
+auto_gap_007E8A5B:
+	.text       start:0x007E8A5B end:0x007E8A5C align:1
+
 lib/libcmt/fileno.obj:
 	.text       start:0x007E8AE5 end:0x007E8AED align:1
+
+auto_gap_007E904D:
+	.text       start:0x007E904D end:0x007E9050 align:1
 
 lib/libcmt/crt0init.obj:
 	.CRT$XCA    start:0x008F6000 end:0x008F6004 align:4

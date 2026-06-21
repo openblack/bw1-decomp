@@ -343,9 +343,6 @@ lib/libcmt/strtok.obj:
 lib/libcmt/wcsncmp.obj:
 	.text       start:0x007C9722 end:0x007C975A align:1
 
-lib/libcmt/towlower.obj:
-	.text       start:0x007C975A end:0x007C975C align:1
-
 lib/libcmt/abort.obj:
 	.text       start:0x007C9849 end:0x007C9860 align:1
 
@@ -495,6 +492,12 @@ lib/libcmt/x10fout.obj:
 
 lib/libcmt/wcsdup.obj:
 	.text       start:0x008A5B0C end:0x008A5B3A align:1
+
+lib/libcmt/wcsicmp.obj:
+	.text       start:0x008A5B3A end:0x008A5C19 align:1
+
+auto_gap_008A5C19:
+	.text       start:0x008A5C19 end:0x008A5C1C align:1
 
 lib/libcmt/fileno.obj:
 	.text       start:0x008A5CA3 end:0x008A5CAB align:1
