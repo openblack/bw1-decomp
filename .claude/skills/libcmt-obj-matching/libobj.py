@@ -481,14 +481,50 @@ def analyze(query):
             sym_by_norm.setdefault(re.sub(r"@\d+$", "", nm), (sec, addr, nm))
         vinfo = {"sections": [], "bins": {}, "missing_externals": [],
                  "externals": [], "comdat_consts": []}
-        placed = {}  # section index -> VA (byte-search hits, for anchor resolution)
+        # Authoritative location: if the obj's defining symbol is already named in
+        # this version's symbols.txt and the obj's (reloc-masked) bytes match at
+        # that VA, trust it. Pins a function whose byte pattern is ambiguous (the
+        # same short body recurs elsewhere) or fails to byte-match across versions
+        # — the common reason a CRT obj is flagged not_found/ambiguous despite
+        # being a plainly-named library routine.
+        def resolve_name_va(fn):
+            if not fn["is_code"]:
+                return None
+            cand = sym_by_norm.get(re.sub(r"@\d+$", "", fn["symbol"]))
+            if not cand:
+                return None
+            cva = cand[1]
+            o = cva - IMAGE_BASE
+            if o >= 0 and o + fn["size"] <= len(exe) \
+                    and re.match(fn["pattern"], exe[o:o + fn["size"]], re.S):
+                return cva
+            return None
+
+        placed = {}  # section index -> VA (for anchor resolution)
         for fn in funcs:
+            if fn["size"] == 0:
+                continue
+            nva = resolve_name_va(fn)
+            if nva is not None:
+                placed[fn["index"]] = nva
+                continue
             hits = [m.start() for m in re.finditer(fn["pattern"], exe, re.S)]
             if len(hits) == 1:
                 placed[fn["index"]] = hits[0] + IMAGE_BASE
         for fn in funcs:
+            # An empty (0-byte) section — e.g. a 16-aligned empty .data — has nothing
+            # to locate; its empty byte pattern matches everywhere. Skip it so it
+            # doesn't spuriously flag the obj ambiguous/not_found. (Any alignment
+            # effect it has is caught later by verify.)
+            if fn["size"] == 0:
+                continue
             hits = [m.start() for m in re.finditer(fn["pattern"], exe, re.S)]
-            va = (hits[0] + IMAGE_BASE) if len(hits) == 1 else None
+            name_va = resolve_name_va(fn)
+            via_name = name_va is not None
+            if via_name:
+                va = name_va
+            else:
+                va = (hits[0] + IMAGE_BASE) if len(hits) == 1 else None
             via_reloc = False
             # resolve the DIR32 anchor pointer once (the VA the obj points at).
             reloc_va = None
@@ -517,8 +553,9 @@ def analyze(query):
                 "size": fn["size"],
                 "comdat": fn["comdat"],
                 "found": va is not None,
-                "ambiguous": len(hits) > 1 and not via_reloc,
+                "ambiguous": len(hits) > 1 and not via_reloc and not via_name,
                 "via_reloc": via_reloc,
+                "via_name": via_name,
                 "va": va,
             }
             vinfo["sections"].append(entry)
