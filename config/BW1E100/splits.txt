@@ -473,6 +473,9 @@ auto_gap_007E8A5B:
 lib/libcmt/fileno.obj:
 	.text       start:0x007E8AE5 end:0x007E8AED align:1
 
+lib/libcmt/towlower.obj:
+	.text       start:0x007E8FD8 end:0x007E904D align:1
+
 auto_gap_007E904D:
 	.text       start:0x007E904D end:0x007E9050 align:1
 

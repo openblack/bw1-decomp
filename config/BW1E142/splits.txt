@@ -343,6 +343,9 @@ lib/libcmt/strtok.obj:
 lib/libcmt/wcsncmp.obj:
 	.text       start:0x007C9722 end:0x007C975A align:1
 
+lib/libcmt/towlower.obj:
+	.text       start:0x007C975A end:0x007C9849 align:1
+
 lib/libcmt/abort.obj:
 	.text       start:0x007C9849 end:0x007C9860 align:1
 
