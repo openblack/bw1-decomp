@@ -739,11 +739,13 @@ def generate_build_ninja(
         )
         for lib_id, tag in config.static_libs.items():
             archive = config.build_dir / "lib" / f"{lib_id}.lib"
+            # All static libs ship on the one MSVC 6.5 disc; download_tool picks
+            # the member to extract from the output filename (lib_id).
             n.build(
                 outputs=archive,
                 rule="download_tool",
                 implicit=download_tool,
-                variables={"tool": lib_id, "tag": tag},
+                variables={"tool": "msvc65_libs", "tag": tag},
             )
             lib_archives[lib_id] = archive
         n.newline()

@@ -49,6 +49,10 @@ jobs:
         key: ${{ runner.os }}-${{ matrix.version }}-${{ github.sha }}
         restore-keys: ${{ runner.os }}-${{ matrix.version }}-
 
+    # py7zr: extracts LIBCMT.LIB from the VS6 SP5 disc (see download_tool.py)
+    - name: Install Python dependencies
+      run: python -m pip install py7zr
+
     # Build the project
     - name: Build
       run: |

@@ -169,11 +169,13 @@ config.wibo_tag = "1.1.0"
 config.compilers_tag = "6.5"  # MSVC 6.0 SP5
 config.lld_link_tag = "bw1-decomp-017"
 # Static libraries to pull verbatim CRT objects from (see LibObject). All from
-# Visual Studio 6.0 (1998) SP5, downloaded from the public jmfrank63/VC6Ultimate
-# repo at a pinned commit — nothing committed. Add libs individually as needed
-# (each id must have a matching download_tool URL entry).
+# Visual Studio 6.0 (1998) SP5. LIBCMT.LIB is extracted at build time from the
+# genuine SP5 install CD on the Internet Archive (item X08-02111): the disc is
+# downloaded and the file is pulled out of its ISO9660 filesystem, so nothing is
+# committed or redistributed (see tools/download_tool.py). The tag is the
+# archive.org item id; each id must have a matching download_tool URL entry.
 config.static_libs = {
-    "libcmt": "58b3876f249a11568cff05dc7d96b1a1c9c06637",  # LIBCMT.LIB
+    "libcmt": "X08-02111",   # multithreaded C runtime (CRT)
 }
 
 # Project
