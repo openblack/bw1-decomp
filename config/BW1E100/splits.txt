@@ -247,6 +247,12 @@ lib/libcmt/wcslen.obj:
 lib/libcmt/swprintf.obj:
 	.text       start:0x007343EF end:0x0073445E align:1
 
+lib/libcmt/new.obj:
+	.text       start:0x0073445E end:0x0073446C align:1
+
+auto_gap_0073446C:
+	.text       start:0x0073446C end:0x0073448E align:1
+
 lib/libcmt/sscanf.obj:
 	.text       start:0x00734C81 end:0x00734CB5 align:1
 
@@ -258,6 +264,9 @@ lib/libcmt/rename.obj:
 
 lib/libcmt/unlink.obj:
 	.text       start:0x00734CFF end:0x00734D00 align:1
+
+lib/libcmt/stricmp.obj:
+	.text       start:0x00734DE0 end:0x00734EB0 align:1
 
 lib/libcmt/fprintf.obj:
 	.text       start:0x00734EB0 end:0x00734EEC align:1
@@ -276,6 +285,9 @@ lib/libcmt/chkstk.obj:
 
 lib/libcmt/wcscmp.obj:
 	.text       start:0x00734FDF end:0x00735014 align:1
+
+lib/libcmt/lldiv.obj:
+	.text       start:0x00735A20 end:0x00735ACA align:1
 
 lib/libcmt/fscanf.obj:
 	.text       start:0x00735ACA end:0x00735AF7 align:1
@@ -336,6 +348,12 @@ lib/libcmt/mkdir.obj:
 
 lib/libcmt/wcsncat.obj:
 	.text       start:0x00737B4E end:0x00737B8E align:1
+
+lib/libcmt/ehprolog.obj:
+	.text       start:0x00737D5C end:0x00737D7B align:1
+
+auto_gap_00737D7B:
+	.text       start:0x00737D7B end:0x00737D7C align:1
 
 lib/libcmt/ungetc.obj:
 	.text       start:0x007389E3 end:0x00738A7A align:1
@@ -416,6 +434,12 @@ lib/libcmt/frnd.obj:
 lib/libcmt/frame.obj:
 	.text       start:0x0074003D end:0x00740043 align:1
 
+lib/libcmt/lowhelpr.obj:
+	.text       start:0x00740840 end:0x0074088C align:1
+
+auto_gap_0074088C:
+	.text       start:0x0074088C end:0x007408D4 align:1
+
 lib/libcmt/cfin.obj:
 	.text       start:0x007411C4 end:0x00741243 align:1
 
@@ -452,11 +476,27 @@ lib/libcmt/inittime.obj:
 lib/libcmt/fseeki64.obj:
 	.text       start:0x00743E6E end:0x00743F2E align:1
 
+lib/libcmt/intrncvt.obj:
+	.text       start:0x00744500 end:0x007448EC align:1
+	.data       start:0x00B53110 end:0x00B53140 align:1
+
 lib/libcmt/_fptostr.obj:
 	.text       start:0x007448EC end:0x00744963 align:1
 
 lib/libcmt/cfout.obj:
 	.text       start:0x00744963 end:0x00744964 align:1
+
+lib/libcmt/ullrem.obj:
+	.text       start:0x00744AB0 end:0x00744B25 align:1
+
+auto_gap_00744B25:
+	.text       start:0x00744B25 end:0x00744B28 align:1
+
+lib/libcmt/strnicmp.obj:
+	.text       start:0x00745F10 end:0x00746011 align:1
+
+auto_gap_00746011:
+	.text       start:0x00746011 end:0x00746014 align:1
 
 lib/libcmt/mantold.obj:
 	.text       start:0x00746107 end:0x007462A8 align:1
@@ -494,6 +534,9 @@ lib/libcmt/crt0init.obj:
 	.CRT$XPZ    start:0x008F7584 end:0x008F7588 align:4
 	.CRT$XTA    start:0x008F7588 end:0x008F758C align:4
 	.CRT$XTZ    start:0x008F7590 end:0x008F7594 align:4
+
+auto_gap_00B53140:
+	.data       start:0x00B53140 end:0x00B53144 align:1
 
 lib/libcmt/days.obj:
 	.data       start:0x00B53144 end:0x00B531AC align:1
