@@ -240,6 +240,9 @@ lib/libcmt/purevirt.obj:
 align_pad_007C60E4:
 	.text       start:0x007C60E4 end:0x007C60F0 align:1
 
+lib/libcmt/memmove.obj:
+	.text       start:0x007C60F0 end:0x007C6425 align:1
+
 lib/libcmt/wcsncpy.obj:
 	.text       start:0x007C6425 end:0x007C6462 align:1
 

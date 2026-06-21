@@ -108,6 +108,13 @@ lib/libcmt/purevirt.obj:
 align_pad_007B58DF:
 	.text       start:0x007B58DF end:0x007B58E0 align:1
 
+align_pad_00C1C208:
+	.data       start:0x00C1C208 end:0x00C1C210 align:1
+
+lib/libcmt/memmove.obj:
+	.text       start:0x007B58E0 end:0x007B5C15 align:1
+	.data       start:0x00C1C210 end:0x00C1C210 align:1
+
 lib/libcmt/wcsncpy.obj:
 	.text       start:0x007B5C15 end:0x007B5C52 align:1
 
@@ -137,9 +144,6 @@ lib/libcmt/fclose.obj:
 
 align_pad_007B6CBD:
 	.text       start:0x007B6CBD end:0x007B6CC0 align:1
-
-align_pad_00C1C208:
-	.data       start:0x00C1C208 end:0x00C1C210 align:1
 
 lib/libcmt/chkstk.obj:
 	.text       start:0x007B6CC0 end:0x007B6CEF align:1

@@ -232,6 +232,9 @@ lib/libcmt/wcscat.obj:
 lib/libcmt/xtow.obj:
 	.text       start:0x0073401D end:0x0073404F align:1
 
+lib/libcmt/memmove.obj:
+	.text       start:0x00734060 end:0x00734395 align:1
+
 lib/libcmt/wcsncpy.obj:
 	.text       start:0x00734395 end:0x007343D2 align:1
 
