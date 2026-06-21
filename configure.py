@@ -162,7 +162,7 @@ if not config.non_matching:
 
 # Tool versions
 config.binutils_tag = "2.42-2"
-config.dtk_tag = "v0.0.12"
+config.dtk_tag = "v0.0.13"
 config.objdiff_tag = "v3.6.1"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.1.0"
@@ -986,7 +986,7 @@ config.libs = [
             LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\xlock.obj", progress_category="sdk"),
 
             LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\fpinit.obj", progress_category="sdk"),
-            LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\typinfo.obj", progress_category="sdk"),
+            LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\typinfo.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\onexit.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\sprintf.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\rtti.obj", progress_category="sdk"),

@@ -80,6 +80,12 @@ lib/libcmt/fpinit.obj:
 	.data       start:0x00C1C1DC end:0x00C1C1F0 align:1
 	.bss        start:0x00E72B58 end:0x00E72B60 align:4
 
+lib/libcmt/typinfo.obj:
+	.text       start:0x007B5484 end:0x007B5533 align:1
+	.rdata      start:0x009904C8 end:0x009904D0 align:4
+	.rdata$r    start:0x009AB518 end:0x009AB560 align:4
+	.data       start:0x00C1C1F0 end:0x00C1C208 align:4
+
 lib/libcmt/onexit.obj:
 	.text       start:0x007B5533 end:0x007B55F2 align:1
 	.CRT$XIC    start:0x009B7600 end:0x009B7604 align:4

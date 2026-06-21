@@ -209,6 +209,12 @@ lib/libcmt/fpinit.obj:
 	.data       start:0x00C2D394 end:0x00C2D3A8 align:1
 	.bss        start:0x00E84190 end:0x00E84198 align:4
 
+lib/libcmt/typinfo.obj:
+	.text       start:0x007C5664 end:0x007C5713 align:1
+	.rdata      start:0x009A05C0 end:0x009A05C8 align:4
+	.rdata$r    start:0x009BB850 end:0x009BB898 align:4
+	.data       start:0x00C2D3A8 end:0x00C2D3C0 align:4
+
 lib/libcmt/onexit.obj:
 	.text       start:0x007C5713 end:0x007C57D2 align:1
 	.CRT$XIC    start:0x009C7E44 end:0x009C7E48 align:4
