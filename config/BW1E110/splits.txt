@@ -353,6 +353,12 @@ auto_gap_00895A29:
 lib/libcmt/fileno.obj:
 	.text       start:0x00895AB3 end:0x00895ABB align:1
 
+lib/libcmt/wcsnicmp.obj:
+	.text       start:0x00895ABB end:0x00895BB3 align:1
+
+auto_gap_00895BB3:
+	.text       start:0x00895BB3 end:0x00895BB4 align:1
+
 lib/libcmt/wcschr.obj:
 	.text       start:0x00895EAE end:0x00895ED7 align:1
 
