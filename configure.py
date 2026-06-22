@@ -176,6 +176,7 @@ config.lld_link_tag = "bw1-decomp-017"
 # archive.org item id; each id must have a matching download_tool URL entry.
 config.static_libs = {
     "libcmt": "X08-02111",   # multithreaded C runtime (CRT)
+    "libcpmt": "X08-02111",  # multithreaded C++ standard library (iostreams, RTTI)
 }
 
 # Project
@@ -986,6 +987,7 @@ config.libs = [
 
             LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\delop.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\xlock.obj", progress_category="sdk"),
+            LibObject(NonMatching, "libcpmt", "build\\intel\\mt_obj\\ios.obj", progress_category="sdk"),
 
             LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\fpinit.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\typinfo.obj", progress_category="sdk"),
