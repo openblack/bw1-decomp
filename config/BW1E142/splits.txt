@@ -340,7 +340,9 @@ lib/libcmt/floor.obj:
 	.data       start:0x00C2D4B4 end:0x00C2D4B8 align:1
 
 lib/libcmt/stdexcpt.obj:
-	.text       start:0x007C8BB2 end:0x007C8BC3 align:1
+	.text       start:0x007C8BB2 end:0x007C8CA8 align:1
+	.rdata      start:0x009A06C8 end:0x009A06E8
+	.rdata$r    start:0x009BB984 end:0x009BB9B4 align:4
 
 lib/libcmt/dosmap.obj:
 	.text       start:0x007C900E end:0x007C9093 align:1
