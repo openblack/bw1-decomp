@@ -1571,7 +1571,7 @@ def generate_build_ninja(
             outputs=ok_path,
             rule="check",
             inputs=config.check_sha_path,
-            implicit=[dtk, *link_outputs],
+            implicit=[dtk, *link_outputs, *lib_archives.values()],
             order_only="post-build",
         )
         n.newline()
