@@ -51,7 +51,9 @@ jobs:
 
     # py7zr: extracts LIBCMT.LIB from the VS6 SP5 disc (see download_tool.py)
     - name: Install Python dependencies
-      run: python -m pip install py7zr
+      run: |
+        apt-get update
+        apt-get install -y python3-py7zr
 
     # Build the project
     - name: Build
