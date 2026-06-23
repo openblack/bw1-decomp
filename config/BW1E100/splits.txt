@@ -253,6 +253,9 @@ lib/libcmt/new.obj:
 auto_gap_0073446C:
 	.text       start:0x0073446C end:0x0073448E align:1
 
+lib/libcmt/atox.obj:
+	.text       start:0x007348EE end:0x00734984 align:1
+
 lib/libcmt/sscanf.obj:
 	.text       start:0x00734C81 end:0x00734CB5 align:1
 
