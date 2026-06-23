@@ -262,6 +262,13 @@ lib/libcmt/malloc.obj:
 	.text       start:0x007C664C end:0x007C6786 align:1
 	.rdata      start:0x009A0698 end:0x009A06B0 align:4
 
+lib/libcmt/free.obj:
+	.text       start:0x007C6786 end:0x007C686F align:1
+	.rdata      start:0x009A06B0 end:0x009A06C8 align:4
+
+auto_gap_007b659b:
+	.text       start:0x007C686F end:0x007C6870 align:1
+
 lib/libcmt/sscanf.obj:
 	.text       start:0x007C6AD3 end:0x007C6B07 align:1
 
