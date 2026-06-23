@@ -154,11 +154,17 @@ class ProjectConfig:
         self.dtk_path: Optional[Path] = None  # If None, download
         self.compilers_tag: Optional[str] = None  # 1
         self.compilers_path: Optional[Path] = None  # If None, download
-        # Static libraries to pull verbatim objects from, keyed by archive id
-        # (the download_tool tool name, e.g. "libcmt"). Value is the GitHub
-        # commit/tag. Members are extracted at build time (see LibObject); the
-        # .LIB and extracted .obj are build artifacts, nothing committed.
+        # Static libraries to pull verbatim objects from. `static_libs` maps a
+        # lib id (e.g. "libcmt") to the package it ships in (e.g. "msvc6.5");
+        # `static_lib_packages` maps that package to its download_tool tag (the
+        # archive.org item id). Members are extracted at build time (see
+        # LibObject); the .LIB and extracted .obj are build artifacts.
         self.static_libs: Dict[str, str] = {}
+        self.static_lib_packages: Dict[str, str] = {}
+        # If set, the base directory holding the static libs. Each lib is looked
+        # up at <static_libs_path>/<package>/<lib_id>.lib and used verbatim
+        # instead of downloading; missing ones still fall back to download_tool.
+        self.static_libs_path: Optional[Path] = None
         self.wibo_tag: Optional[str] = None  # Git tag
         self.wrapper: Optional[Path] = None  # If None, download wibo on Linux
         self.sjiswrap_tag: Optional[str] = None  # Git tag
@@ -737,17 +743,35 @@ def generate_build_ninja(
             command=f"{llvm_ar} p $in '$member' > $out",
             description="AR $out",
         )
-        for lib_id, tag in config.static_libs.items():
+        # Collect the libs that must be downloaded, grouped by package, so each
+        # package's disc is fetched by a single download_tool edge (downloaded
+        # once, all its members extracted) rather than once per lib.
+        to_download: Dict[str, List[Path]] = {}
+        for lib_id, package in config.static_libs.items():
+            # Prefer a locally supplied lib (under <static_libs_path>/<package>)
+            # over the download: use it verbatim as a source input, so ninja
+            # never runs download_tool and the source disc is never fetched.
+            local = (
+                config.static_libs_path / package / f"{lib_id}.lib"
+                if config.static_libs_path is not None
+                else None
+            )
+            if local is not None and local.exists():
+                lib_archives[lib_id] = local
+                continue
             archive = config.build_dir / "lib" / f"{lib_id}.lib"
-            # All static libs ship on the one MSVC 6.5 disc; download_tool picks
-            # the member to extract from the output filename (lib_id).
+            lib_archives[lib_id] = archive
+            to_download.setdefault(package, []).append(archive)
+        for package, archives in to_download.items():
+            tag = config.static_lib_packages[package]
+            # One edge per package: download_tool fetches the disc once and
+            # extracts every listed member (keyed by output filename).
             n.build(
-                outputs=archive,
+                outputs=archives,
                 rule="download_tool",
                 implicit=download_tool,
                 variables={"tool": "msvc65_libs", "tag": tag},
             )
-            lib_archives[lib_id] = archive
         n.newline()
 
     ###

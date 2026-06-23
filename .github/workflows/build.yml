@@ -49,16 +49,13 @@ jobs:
         key: ${{ runner.os }}-${{ matrix.version }}-${{ github.sha }}
         restore-keys: ${{ runner.os }}-${{ matrix.version }}-
 
-    # py7zr: extracts LIBCMT.LIB from the VS6 SP5 disc (see download_tool.py)
-    - name: Install Python dependencies
-      run: |
-        apt-get update
-        apt-get install -y python3-py7zr
-
-    # Build the project
+    # Build the project. Static libs ship in the build container under
+    # orig/libs (copied above via /orig), so --static-libs-dir uses them
+    # verbatim and the SP5 disc is never downloaded.
     - name: Build
       run: |
-        python configure.py --map --version ${{ matrix.version }}
+        python configure.py --map --version ${{ matrix.version }} \
+            --static-libs-dir orig/libs
         ninja all_source progress build/${{ matrix.version }}/report.json
 
     # Upload map files
