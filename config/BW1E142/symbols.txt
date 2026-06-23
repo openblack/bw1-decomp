@@ -19304,7 +19304,6 @@ ___old_sbh_new_region = .text:0x007CF612; // type:function size:0x144 scope:glob
 ___old_sbh_release_region = .text:0x007CF756; // type:function size:0x56 scope:global
 ___old_sbh_decommit_pages = .text:0x007CF7AC; // type:function size:0xC2 scope:global
 ___old_sbh_find_block = .text:0x007CF86E; // type:function size:0x57 scope:global
-___old_sbh_free_block = .text:0x007CF8C5; // type:function size:0x45 scope:global
 ___old_sbh_alloc_block = .text:0x007CF90A; // type:function size:0x208 scope:global
 ___old_sbh_alloc_block_from_page = .text:0x007CFB12; // type:function size:0x124 scope:global
 ___old_sbh_resize_block = .text:0x007CFC36; // type:function size:0xA9 scope:global

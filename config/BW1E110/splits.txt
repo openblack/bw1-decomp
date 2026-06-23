@@ -137,8 +137,9 @@ lib/libcmt/malloc.obj:
 	.text       start:0x007B6461 end:0x007B659B align:1
 	.rdata      start:0x009905A0 end:0x009905B8 align:4
 
-auto_gap_007b659b:
-	.text       start:0x007B659B end:0x007B65A0 align:1
+lib/libcmt/free.obj:
+	.text       start:0x007B659B end:0x007B6684 align:1
+	.rdata      start:0x009905B8 end:0x009905D0 align:4
 
 lib/libcmt/sscanf.obj:
 	.text       start:0x007B68E8 end:0x007B691C align:1
