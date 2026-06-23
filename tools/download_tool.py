@@ -184,16 +184,17 @@ def _iso_extract(img: io.BufferedReader, path: str) -> bytes:
     return _iso_read_lba(img, lba, n)[:size]
 
 
-def _extract_lib_from_disc(response, output: Path) -> None:
-    member, expected_sha = MSVC65_DISC_MEMBERS[output.stem]
+def _extract_libs_from_disc(response, outputs: list) -> None:
+    # Download the disc archive ONCE and extract every requested member from the
+    # single image; callers pass all outputs that come from this disc so the big
+    # download/extract happens just once per build.
     try:
         import py7zr
     except ImportError:
         raise SystemExit(
-            f'The "py7zr" module is required to extract {member} from the SP5 '
-            'disc image. Install it with: python -m pip install py7zr'
+            'The "py7zr" module is required to extract libs from the SP5 disc '
+            'image. Install it with: python -m pip install py7zr'
         )
-    output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         tmp = Path(tmp)
         archive = tmp / "sp5.7z"
@@ -210,18 +211,21 @@ def _extract_lib_from_disc(response, output: Path) -> None:
                 raise SystemExit("no .mdf/.iso disc image found inside the 7z")
             z.extract(path=tmp, targets=[mdf_name])
         image_path = tmp / mdf_name
-        print(f"  reading {member} from ISO9660 filesystem ...")
         with open(image_path, "rb") as img:
-            data = _iso_extract(img, member)
-    digest = hashlib.sha256(data).hexdigest()
-    if digest != expected_sha:
-        raise SystemExit(
-            f"extracted {member} sha256 {digest} != expected "
-            f"{expected_sha}; wrong disc image?"
-        )
-    with open(output, "wb") as f:
-        f.write(data)
-    print(f"  wrote {output} ({len(data)} bytes, sha256 verified)")
+            for output in outputs:
+                member, expected_sha = MSVC65_DISC_MEMBERS[output.stem]
+                print(f"  reading {member} from ISO9660 filesystem ...")
+                data = _iso_extract(img, member)
+                digest = hashlib.sha256(data).hexdigest()
+                if digest != expected_sha:
+                    raise SystemExit(
+                        f"extracted {member} sha256 {digest} != expected "
+                        f"{expected_sha}; wrong disc image?"
+                    )
+                output.parent.mkdir(parents=True, exist_ok=True)
+                with open(output, "wb") as f:
+                    f.write(data)
+                print(f"  wrote {output} ({len(data)} bytes, sha256 verified)")
 
 
 def llvm_url(tag: str) -> str:
@@ -250,11 +254,15 @@ TOOLS: Dict[str, Callable[[str], str]] = {
 }
 
 
-def download(url, response, output) -> None:
+def download(url, response, outputs) -> None:
     if url.endswith(".7z"):
-        # Disc image (MSVC 6.0 SP5 CD): extract the requested static lib from it.
-        _extract_lib_from_disc(response, output)
-    elif url.endswith(".zip"):
+        # Disc image (MSVC 6.0 SP5 CD): extract every requested static lib from
+        # the single download.
+        _extract_libs_from_disc(response, outputs)
+        return
+    # Every other tool produces a single output.
+    (output,) = outputs
+    if url.endswith(".zip"):
         data = io.BytesIO(response.read())
         with zipfile.ZipFile(data) as f:
             f.extractall(output)
@@ -298,7 +306,11 @@ def download(url, response, output) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("tool", help="Tool name (or 'url' with --url)")
-    parser.add_argument("output", type=Path, help="output file path")
+    parser.add_argument(
+        "output", type=Path, nargs="+",
+        help="output file path(s); multiple only for the disc image, which is "
+        "downloaded once and all members extracted from it",
+    )
     parser.add_argument("--tag", help="GitHub tag")
     parser.add_argument("--url", help="Direct download URL (overrides tool/tag)")
     args = parser.parse_args()
@@ -309,13 +321,13 @@ def main() -> None:
         if not args.tag:
             parser.error("--tag is required unless --url is given")
         url = TOOLS[args.tool](args.tag)
-    output = Path(args.output)
+    outputs = [Path(o) for o in args.output]
 
-    print(f"Downloading {url} to {output}")
+    print(f"Downloading {url} to {', '.join(map(str, outputs))}")
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     try:
         with urllib.request.urlopen(req) as response:
-            download(url, response, output)
+            download(url, response, outputs)
     except urllib.error.URLError as e:
         if str(e).find("CERTIFICATE_VERIFY_FAILED") == -1:
             raise e
@@ -331,7 +343,7 @@ def main() -> None:
         with urllib.request.urlopen(
             req, context=ssl.create_default_context(cafile=certifi.where())
         ) as response:
-            download(url, response, output)
+            download(url, response, outputs)
 
 
 if __name__ == "__main__":
