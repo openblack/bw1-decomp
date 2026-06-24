@@ -479,11 +479,8 @@ lib/libcmt/cfin.obj:
 	.text       start:0x007411C4 end:0x00741243 align:1
 
 lib/libcmt/winput.obj:
-	.text       start:0x00741243 end:0x00741D6C align:1
-	.data       start:0x00B52860 end:0x00B52870 align:1
-
-lib_fragment_00741D6C:
-	.text       start:0x00741D6C end:0x00741DB5 align:1
+	.text       start:0x00741243 end:0x00741DB5 align:1
+	.data       start:0x00B52860 end:0x00B52870 align:4
 
 lib/libcmt/crt0msg.obj:
 	.data       start:0x00B52870 end:0x00B52900 align:1
