@@ -531,6 +531,12 @@ lib/libcmt/a_env.obj:
 lib/libcmt/inittime.obj:
 	.text       start:0x007D6EB7 end:0x007D6EB8 align:1
 
+lib/libcmt/getqloc.obj:
+	.text       start:0x007D7B2A end:0x007D83D1 align:1
+	.rdata      start:0x009A0EF0 end:0x009A1578 align:4
+	.data       start:0x00C30490 end:0x00C30C08 align:4
+	.bss        start:0x00E84528 end:0x00E8454C align:4
+
 lib/libcmt/intrncvt.obj:
 	.text       start:0x007D8994 end:0x007D8E28 align:1
 	.data       start:0x00C30C10 end:0x00C30C40 align:1

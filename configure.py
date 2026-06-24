@@ -1194,7 +1194,10 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\initcoll.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\strpbrk.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\nlsdata3.obj", progress_category="sdk"),
-            LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\getqloc.obj", progress_category="sdk"),
+            # TODO(#178): Looks like a different libcmt might be used for 1.1 and below because TestDefaultCountry in
+            #   getqloc.obj differs by one byte. A compare + jump moved from JC (0x72) in 1.1 to JL (0x7c) in 1.42,
+            #   indicating a shift from signed address compare in 1.1 and an unsigned compare in 1.42.
+            LibObject(MatchingFor("BW1E142"), "libcmt", "build\\intel\\mt_obj\\getqloc.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\closeall.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\_flswbuf.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\wctomb.obj", progress_category="sdk"),
