@@ -382,6 +382,15 @@ lib/libcmt/a_env.obj:
 lib/libcmt/inittime.obj:
 	.text       start:0x007C6978 end:0x007C6A09 align:1
 
+lib/libcmt/getqloc.obj:
+	.text       start:0x007C75EA end:0x007C7E91 align:1
+	.rdata      start:0x00990DF0 end:0x00991478 align:4
+	.data       start:0x00C1F2E0 end:0x00C1FA58 align:4
+	.bss        start:0x00E72EF0 end:0x00E72F14 align:4
+
+auto_gap_007C7E91:
+	.text       start:0x007C7E91 end:0x007C7E94 align:1
+
 lib/libcmt/fseeki64.obj:
 	.text       start:0x007C810E end:0x007C81CE align:1
 
