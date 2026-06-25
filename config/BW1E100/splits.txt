@@ -326,7 +326,7 @@ lib/libcmt/wcsstr.obj:
 	.text       start:0x00735EDD end:0x00735F1E align:1
 
 lib/libcmt/trnsctrl.obj:
-	.text       start:0x00735F1E end:0x00735F52 align:1
+	.text       start:0x00735F1E end:0x00736204 align:1
 
 lib/libcmt/exsup.obj:
 	.text       start:0x00736204 end:0x007362F2 align:1
@@ -459,7 +459,9 @@ lib/libcmt/frnd.obj:
 	.text       start:0x0074002B end:0x0074003D align:1
 
 lib/libcmt/frame.obj:
-	.text       start:0x0074003D end:0x00740043 align:1
+	.text       start:0x0074003D end:0x00740840 align:1
+	.rdata      start:0x008D6920 end:0x008D6968 align:4
+	.data       start:0x00B52720 end:0x00B52730 align:4
 
 lib/libcmt/lowhelpr.obj:
 	.text       start:0x00740840 end:0x0074088C align:1
@@ -469,9 +471,6 @@ auto_gap_0074088C:
 
 lib/libcmt/cfin.obj:
 	.text       start:0x007411C4 end:0x00741243 align:1
-
-lib_fragment_00B52720:
-	.data       start:0x00B52720 end:0x00B52860 align:1
 
 lib/libcmt/winput.obj:
 	.text       start:0x00741243 end:0x00741D6C align:1
