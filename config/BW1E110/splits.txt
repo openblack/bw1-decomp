@@ -198,7 +198,10 @@ lib/libcmt/wcsstr.obj:
 	.text       start:0x007B7FDD end:0x007B801E align:1
 
 lib/libcmt/trnsctrl.obj:
-	.text       start:0x007B801E end:0x007B8052 align:1
+	.text       start:0x007B801E end:0x007B8325 align:1
+
+auto_pad_007C8515:
+	.text       start:0x007B8325 end:0x007B8328 align:1
 
 lib/libcmt/exsup.obj:
 	.text       start:0x007B8328 end:0x007B8416 align:1
