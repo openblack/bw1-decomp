@@ -743,24 +743,32 @@ def generate_build_ninja(
             command=f"{llvm_ar} p $in '$member' > $out",
             description="AR $out",
         )
+        n.rule(
+            name="copy_lib",
+            command=f'$python -c "import shutil,sys;'
+            f'shutil.copyfile(sys.argv[1],sys.argv[2])" $in $out',
+            description="COPY $out",
+        )
         # Collect the libs that must be downloaded, grouped by package, so each
         # package's disc is fetched by a single download_tool edge (downloaded
         # once, all its members extracted) rather than once per lib.
         to_download: Dict[str, List[Path]] = {}
         for lib_id, package in config.static_libs.items():
+            # The .lib always lands at build/lib/<lib_id>.lib: it is both the
+            # member-extraction source and the sha-checked build artifact.
+            archive = config.build_dir / "lib" / f"{lib_id}.lib"
+            lib_archives[lib_id] = archive
             # Prefer a locally supplied lib (under <static_libs_path>/<package>)
-            # over the download: use it verbatim as a source input, so ninja
-            # never runs download_tool and the source disc is never fetched.
+            # over the download: copy it into place so ninja never runs
+            # download_tool and the source disc is never fetched.
             local = (
                 config.static_libs_path / package / f"{lib_id}.lib"
                 if config.static_libs_path is not None
                 else None
             )
             if local is not None and local.exists():
-                lib_archives[lib_id] = local
+                n.build(outputs=archive, rule="copy_lib", inputs=local)
                 continue
-            archive = config.build_dir / "lib" / f"{lib_id}.lib"
-            lib_archives[lib_id] = archive
             to_download.setdefault(package, []).append(archive)
         for package, archives in to_download.items():
             tag = config.static_lib_packages[package]
