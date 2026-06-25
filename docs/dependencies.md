@@ -9,7 +9,7 @@ Required on every host:
 Everything else is downloaded automatically by `configure.py` on first run:
 
 - `dtk` — [openblack/decomp-toolkit](https://github.com/openblack/decomp-toolkit) build (split + link verification)
-- `lld-link` — [openblack/llvm-project](https://github.com/openblack/llvm-project) release (PE linker, used for `BW1E100` / `BW1E142`)
+- `lld-link` — [openblack/llvm-project](https://github.com/openblack/llvm-project) release (PE linker)
 - MSVC 6.0 SP5 compilers — pulled at the version pinned in `configure.py`
 - `objdiff-cli` — diff report generator
 

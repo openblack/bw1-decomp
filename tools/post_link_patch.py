@@ -69,7 +69,7 @@ RICH_TRAILER      = b'Rich' + b'\x00' * 4   # 'Rich' + key placeholder (key fill
 RICH_RECORD_SIZE  = struct.calcsize('<II')   # two u32: (product << 16 | build) and use_count
 
 # link.exe always adds 3 reserved record-slots of zero padding after the trailer
-# before IMAGE_NT_HEADERS (observed consistently across BW1E100 and BW1E142).
+# before IMAGE_NT_HEADERS (observed consistently across BW1E100 and BW1E120).
 RICH_HEADER_RESERVED_SLOTS = 3
 RICH_HEADER_PAD  = RICH_HEADER_RESERVED_SLOTS * RICH_RECORD_SIZE  # = 0x18
 
@@ -145,14 +145,8 @@ BW1E110_RICH_RECORDS = [
     RichRecord(RichProductID.LINKER600,    8447,  26),
 ]
 
-# TODO: 1.20 is not yet cracked
 BW1E120_RICH_KEY = 0x0A8EE120   # extracted from original exe at offset 0x124
 BW1E120_RICH_RECORDS = [
-    # TODO
-]
-
-BW1E142_RICH_KEY = 0x0A8EE120   # extracted from original exe at offset 0x124
-BW1E142_RICH_RECORDS = [
     RichRecord(RichProductID.UTC12_C,      8168,   1),
     RichRecord(RichProductID.UTC12_C,      8447,  23),
     RichRecord(RichProductID.ALIAS_OBJ,    7291,  14),
@@ -248,13 +242,13 @@ BW1E110_LHDIALOG_RICH_KEY = BW1E100_LHDIALOG_RICH_KEY
 BW1E110_LHDIALOG_RICH_SLOTS = BW1E100_LHDIALOG_RICH_SLOTS
 BW1E110_LHDIALOG_RICH_RECORDS = BW1E100_LHDIALOG_RICH_RECORDS
 
-BW1E142_LHAUDIO_RICH_KEY = BW1E100_LHAUDIO_RICH_KEY
-BW1E142_LHAUDIO_RICH_SLOTS = BW1E100_LHAUDIO_RICH_SLOTS
-BW1E142_LHAUDIO_RICH_RECORDS = BW1E100_LHAUDIO_RICH_RECORDS
+BW1E120_LHAUDIO_RICH_KEY = BW1E100_LHAUDIO_RICH_KEY
+BW1E120_LHAUDIO_RICH_SLOTS = BW1E100_LHAUDIO_RICH_SLOTS
+BW1E120_LHAUDIO_RICH_RECORDS = BW1E100_LHAUDIO_RICH_RECORDS
 
-BW1E142_LHLOG_RICH_KEY = 0xE4859AE9   # extracted from original dll at offset 0xdc
-BW1E142_LHLOG_RICH_SLOTS = 3
-BW1E142_LHLOG_RICH_RECORDS = [
+BW1E120_LHLOG_RICH_KEY = 0xE4859AE9   # extracted from original dll at offset 0xdc
+BW1E120_LHLOG_RICH_SLOTS = 3
+BW1E120_LHLOG_RICH_RECORDS = [
     RichRecord(RichProductID.ALIASOBJ70,    9162,   2),
     RichRecord(RichProductID.MASM70,        9466,  23),
     RichRecord(RichProductID.UTC70_C,       9466, 126),
@@ -266,9 +260,9 @@ BW1E142_LHLOG_RICH_RECORDS = [
     RichRecord(RichProductID.LINKER70,      9466,   1),
 ]
 
-BW1E142_LHMULTIPLAYER_RICH_KEY = 0x40924540   # extracted from original dll at offset 0xec
-BW1E142_LHMULTIPLAYER_RICH_SLOTS = 3
-BW1E142_LHMULTIPLAYER_RICH_RECORDS = [
+BW1E120_LHMULTIPLAYER_RICH_KEY = 0x40924540   # extracted from original dll at offset 0xec
+BW1E120_LHMULTIPLAYER_RICH_SLOTS = 3
+BW1E120_LHMULTIPLAYER_RICH_RECORDS = [
     RichRecord(RichProductID.UTC12_C,      8799,  23),
     RichRecord(RichProductID.ALIAS_OBJ,    7291,   5),
     RichRecord(RichProductID.UTC12_CPP,    8047,  10),
@@ -282,9 +276,9 @@ BW1E142_LHMULTIPLAYER_RICH_RECORDS = [
     RichRecord(RichProductID.LINKER600,    8447,   3),
 ]
 
-BW1E142_LHDIALOG_RICH_KEY = BW1E100_LHDIALOG_RICH_KEY
-BW1E142_LHDIALOG_RICH_SLOTS = BW1E100_LHDIALOG_RICH_SLOTS
-BW1E142_LHDIALOG_RICH_RECORDS = BW1E100_LHDIALOG_RICH_RECORDS
+BW1E120_LHDIALOG_RICH_KEY = BW1E100_LHDIALOG_RICH_KEY
+BW1E120_LHDIALOG_RICH_SLOTS = BW1E100_LHDIALOG_RICH_SLOTS
+BW1E120_LHDIALOG_RICH_RECORDS = BW1E100_LHDIALOG_RICH_RECORDS
 
 
 # Rich header write helpers
@@ -444,13 +438,9 @@ def apply_BW1E110_patch_safedisc_cleaner(pe):
 
 
 def apply_BW1E120_patch_safedisc_cleaner(pe):
-    raise NotImplementedError("BW1E120 not yet decrytped by safedisc cleaner 2")
-
-
-def apply_BW1E142_patch_safedisc_cleaner(pe):
     # 4-byte marker immediately before IMAGE_NT_HEADERS.
     # First 2 bytes are version-specific; last 2 are the 0x2BAD "too bad" signature.
-    write_bytes(pe, pe_offset_after_rich_header(BW1E142_RICH_RECORDS) - 4, bytes([0x0D, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
+    write_bytes(pe, pe_offset_after_rich_header(BW1E120_RICH_RECORDS) - 4, bytes([0x0D, 0x00]) + SAFEDISC_CLEANER_SIGNATURE)
 
 
 def apply_BW1E100_patch(pe, cfg, out_dir, modules):
@@ -504,12 +494,8 @@ def apply_BW1E110_patch(pe, cfg, out_dir, modules):
 
 
 def apply_BW1E120_patch(pe, cfg, out_dir, modules):
-    raise NotImplementedError("BW1E120 not yet decrypted")
-
-
-def apply_BW1E142_patch(pe, cfg, out_dir, modules):
     apply_patch_safedisc(pe, cfg)
-    apply_BW1E142_patch_safedisc_cleaner(pe)
+    apply_BW1E120_patch_safedisc_cleaner(pe)
     apply_BW1_common_patch(pe, cfg)
     apply_intel_strings(pe, cfg)
 
@@ -537,11 +523,11 @@ PATCHES = {
         "LHDialog":      (BW1E110_LHDIALOG_RICH_KEY,      BW1E110_LHDIALOG_RICH_RECORDS,      BW1E110_LHDIALOG_RICH_SLOTS),
     }),
     "BW1E120": (BW1E120_RICH_KEY, BW1E120_RICH_RECORDS, apply_BW1E120_patch, {}),
-    "BW1E142": (BW1E142_RICH_KEY, BW1E142_RICH_RECORDS, apply_BW1E142_patch, {
-        "LHAudio":       (BW1E142_LHAUDIO_RICH_KEY,       BW1E142_LHAUDIO_RICH_RECORDS,       BW1E142_LHAUDIO_RICH_SLOTS),
-        "LHLog":         (BW1E142_LHLOG_RICH_KEY,         BW1E142_LHLOG_RICH_RECORDS,         BW1E142_LHLOG_RICH_SLOTS),
-        "LHMultiplayer": (BW1E142_LHMULTIPLAYER_RICH_KEY, BW1E142_LHMULTIPLAYER_RICH_RECORDS, BW1E142_LHMULTIPLAYER_RICH_SLOTS),
-        "LHDialog":      (BW1E142_LHDIALOG_RICH_KEY,      BW1E142_LHDIALOG_RICH_RECORDS,      BW1E142_LHDIALOG_RICH_SLOTS),
+    "BW1E120": (BW1E120_RICH_KEY, BW1E120_RICH_RECORDS, apply_BW1E120_patch, {
+        "LHAudio":       (BW1E120_LHAUDIO_RICH_KEY,       BW1E120_LHAUDIO_RICH_RECORDS,       BW1E120_LHAUDIO_RICH_SLOTS),
+        "LHLog":         (BW1E120_LHLOG_RICH_KEY,         BW1E120_LHLOG_RICH_RECORDS,         BW1E120_LHLOG_RICH_SLOTS),
+        "LHMultiplayer": (BW1E120_LHMULTIPLAYER_RICH_KEY, BW1E120_LHMULTIPLAYER_RICH_RECORDS, BW1E120_LHMULTIPLAYER_RICH_SLOTS),
+        "LHDialog":      (BW1E120_LHDIALOG_RICH_KEY,      BW1E120_LHDIALOG_RICH_RECORDS,      BW1E120_LHDIALOG_RICH_SLOTS),
     }),
 }
 

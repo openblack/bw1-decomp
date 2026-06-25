@@ -27,11 +27,11 @@ from tools.project import (
 )
 
 # Game versions
-DEFAULT_VERSION = 0
+DEFAULT_VERSION = 2
 VERSIONS = [
-    "BW1E100",  # 0   PE/COFF, Windows v1.00
-    "BW1E110",  # 1   PE/COFF, Windows v1.10
-    "BW1E142",  # 2   PE/COFF, Windows v1.42
+    "BW1E100",  # 0   PE/COFF, Windows v1.0
+    "BW1E110",  # 1   PE/COFF, Windows v1.1
+    "BW1E120",  # 2   PE/COFF, Windows v1.2
 ]
 
 parser = argparse.ArgumentParser()
@@ -1066,7 +1066,7 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\memchr.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\lconv.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\strtol.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1E142"), "libcmt", "build\\intel\\mt_obj\\dosmap.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1E120"), "libcmt", "build\\intel\\mt_obj\\dosmap.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\strncpy.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\strncmp.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\strchr.obj", progress_category="sdk"),
@@ -1077,12 +1077,12 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\swscanf.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\strstr.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\tolower.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1E110", "BW1E142"), "libcmt", "build\\intel\\mt_obj\\wcsncmp.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1E110", "BW1E120"), "libcmt", "build\\intel\\mt_obj\\wcsncmp.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\towlower.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\abort.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\chmod.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\realloc.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1E142"), "libcmt", "build\\intel\\mt_obj\\slbeep.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1E120"), "libcmt", "build\\intel\\mt_obj\\slbeep.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\strrchr.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "..\\build\\intel\\mt_obj\\ieee87.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\ulldiv.obj", progress_category="sdk"),
@@ -1144,7 +1144,7 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\stream.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\close.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "build\\intel\\mt_obj\\_freebuf.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1E110", "BW1E142"), "libcmt", "..\\build\\intel\\mt_obj\\ldexp.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1E110", "BW1E120"), "libcmt", "..\\build\\intel\\mt_obj\\ldexp.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\util.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "..\\build\\intel\\mt_obj\\fpexcept.obj", progress_category="sdk"),
             LibObject(Matching, "libcmt", "..\\build\\intel\\mt_obj\\fpctrl.obj", progress_category="sdk"),
@@ -1186,7 +1186,7 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\wincmdln.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\stdenvp.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\stdargv.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1E142"), "libcmt", "build\\intel\\mt_obj\\a_env.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1E120"), "libcmt", "build\\intel\\mt_obj\\a_env.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\inittime.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\initnum.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\initmon.obj", progress_category="sdk"),
@@ -1245,10 +1245,10 @@ config.libs = [
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\getpid.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\ehvecdtr.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\strspn.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1E110", "BW1E142"), "libcmt", "build\\intel\\mt_obj\\wcschr.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1E110", "BW1E142"), "libcmt", "build\\intel\\mt_obj\\wcsrchr.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1E110", "BW1E142"), "libcmt", "build\\intel\\mt_obj\\wcspbrk.obj", progress_category="sdk"),
-            LibObject(MatchingFor("BW1E110", "BW1E142"), "libcmt", "build\\intel\\mt_obj\\wcsspn.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1E110", "BW1E120"), "libcmt", "build\\intel\\mt_obj\\wcschr.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1E110", "BW1E120"), "libcmt", "build\\intel\\mt_obj\\wcsrchr.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1E110", "BW1E120"), "libcmt", "build\\intel\\mt_obj\\wcspbrk.obj", progress_category="sdk"),
+            LibObject(MatchingFor("BW1E110", "BW1E120"), "libcmt", "build\\intel\\mt_obj\\wcsspn.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\ehvecctr.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\clock.obj", progress_category="sdk"),
             LibObject(NonMatching, "libcmt", "build\\intel\\mt_obj\\longjmp.obj", progress_category="sdk"),
