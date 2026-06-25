@@ -2,7 +2,7 @@
 """libobj.py — drive matching of downloaded LIBCMT.LIB / LIBCPMT.LIB objects.
 
 One CRT object at a time, made byte-exact into all three BW1 versions
-(BW1E100, BW1E110, BW1E142). Designed so a small model can run a loop with
+(BW1E100, BW1E110, BW1E120). Designed so a small model can run a loop with
 minimal judgement: each subcommand prints a single JSON object to stdout.
 
 Subcommands
@@ -41,7 +41,7 @@ LIB_DIR = ROOT / "build" / "lib"
 LLVM_AR = ROOT / "build" / "tools" / "llvm" / "bin" / "llvm-ar"
 DTK = ROOT / "build" / "tools" / "dtk"
 NINJA = "ninja"
-VERSIONS = ["BW1E100", "BW1E110", "BW1E142"]
+VERSIONS = ["BW1E100", "BW1E110", "BW1E120"]
 IMAGE_BASE = 0x400000
 
 # COFF i386 relocation types
@@ -617,7 +617,7 @@ def analyze(query):
     not_found = {v: [e["symbol"] for e in report["versions"][v]["sections"]
                      if not e["found"]] for v in VERSIONS}
     # BW1E100 drops dead code via /OPT:REF, so missing there is expected.
-    e100_only_missing = (not not_found["BW1E110"] and not not_found["BW1E142"])
+    e100_only_missing = (not not_found["BW1E110"] and not not_found["BW1E120"])
     non_contig = any(
         not report["versions"][v]["bins"].get(b, {"contiguous": True})["contiguous"]
         for v in VERSIONS for b in (".text", ".data", ".rdata")

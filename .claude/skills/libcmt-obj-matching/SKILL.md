@@ -1,12 +1,12 @@
 ---
 name: libcmt-obj-matching
-description: Make CRT objects from the downloaded LIBCMT.LIB / LIBCPMT.LIB link byte-exact into all three BW1 versions (BW1E100, BW1E110, BW1E142). Script-driven loop (.claude/skills/libcmt-obj-matching/libobj.py) that auto-matches clean objects with no agent judgement and flags the hard ones (E100 /OPT:REF dead-strip, trailing-alignment, __real@8 comdat fold) for hand work. Covers the worked numbers, the verify/recover cycle, and the manual symbol edits.
+description: Make CRT objects from the downloaded LIBCMT.LIB / LIBCPMT.LIB link byte-exact into all three BW1 versions (BW1E100, BW1E110, BW1E120). Script-driven loop (.claude/skills/libcmt-obj-matching/libobj.py) that auto-matches clean objects with no agent judgement and flags the hard ones (E100 /OPT:REF dead-strip, trailing-alignment, __real@8 comdat fold) for hand work. Covers the worked numbers, the verify/recover cycle, and the manual symbol edits.
 ---
 
 # Match a LIBCMT.LIB object — all 3 versions, script-driven
 
 Goal: take members of `LIBCMT.LIB` / `LIBCPMT.LIB` and make them link **byte-exact**
-into BW1E100, BW1E110 and BW1E142. Nothing new is committed — the `.LIB` and the
+into BW1E100, BW1E110 and BW1E120. Nothing new is committed — the `.LIB` and the
 extracted `.obj` are build artifacts; the result is edits to `configure.py`,
 `config/<VER>/splits.txt` and `config/<VER>/symbols.txt`.
 
@@ -217,7 +217,7 @@ all OK.
 |---|---|---|---|
 | BW1E100 | 0x0073D2BF–0x0073D403 | 0x00B52358–0x00B52380 | 3 of 6 (REF drops `__get_exp`,`__add_exp`,`__set_bexp`) |
 | BW1E110 | 0x007C0DED–0x007C0F95 | 0x00C1ECA8–0x00C1ECD0 | all 6 |
-| BW1E142 | 0x007D0FDD–0x007D1185 | 0x00C2FE58–0x00C2FE80 | all 6 |
+| BW1E120 | 0x007D0FDD–0x007D1185 | 0x00C2FE58–0x00C2FE80 | all 6 |
 
 `__fltused` at: BW1E100 0x00B4F894, BW1E110 0x00C1C1DC.
 `__real@8` (comdat) at: BW1E100 0x00802630 (in `??_7Feature@@6B@` @0x00801D08,
