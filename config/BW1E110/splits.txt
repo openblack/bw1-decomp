@@ -148,7 +148,7 @@ lib/libcmt/rename.obj:
 	.text       start:0x007B69E6 end:0x007B6A14 align:1
 
 lib/libcmt/unlink.obj:
-	.text       start:0x007B6A14 end:0x007B6A3E align:1
+	.text       start:0x007B6A14 end:0x007B6A49 align:1
 
 lib/libcmt/stricmp.obj:
 	.text       start:0x007B6AF0 end:0x007B6BC0 align:1
