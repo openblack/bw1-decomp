@@ -353,6 +353,14 @@ lib/libcmt/stdexcpt.obj:
 	.rdata      start:0x008D6488 end:0x008D64A8
 	.rdata$r    start:0x008EE0FC end:0x008EE12C align:4
 
+lib/libcmt/throw.obj:
+	.text       start:0x00736912 end:0x0073694C align:1
+	.rdata      start:0x008D64A8 end:0x008D64C8 align:4
+	.data       start:0x00B4F9B8 end:0x00B4F9BC align:4
+
+auto_pad_0073694C:
+	.text       start:0x0073694C end:0x00736950 align:1
+
 lib/libcmt/strtok.obj:
 	.text       start:0x00737049 end:0x007370ED align:1
 
