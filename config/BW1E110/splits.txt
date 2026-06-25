@@ -333,7 +333,9 @@ lib/libcmt/frnd.obj:
 	.text       start:0x007C3D9B end:0x007C3DAD align:1
 
 lib/libcmt/frame.obj:
-	.text       start:0x007C3DAD end:0x007C3DB0 align:1
+	.text       start:0x007C3DAD end:0x007C45C4 align:1
+	.rdata      start:0x00990A70 end:0x00990AB8 align:4
+	.data       start:0x00C1F070 end:0x00C1F080 align:4
 
 lib/libcmt/lowhelpr.obj:
 	.text       start:0x007C45D0 end:0x007C461C align:1
@@ -343,9 +345,6 @@ auto_gap_007C461C:
 
 lib/libcmt/cfin.obj:
 	.text       start:0x007C4FD4 end:0x007C5053 align:1
-
-lib_fragment_00C1F070:
-	.data       start:0x00C1F070 end:0x00C1F1B0 align:1
 
 lib/libcmt/winput.obj:
 	.text       start:0x007C5053 end:0x007C5B7C align:1
