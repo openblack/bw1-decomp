@@ -6,7 +6,7 @@
 
 #include "LHOSFile.h" /* For struct LHOSFile */
 
-struct Archive
+class Archive
 {
   uint32_t field_0x0;
   uint32_t field_0x4;
