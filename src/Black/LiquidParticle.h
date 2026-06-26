@@ -24,7 +24,7 @@ struct LiquidParticle
   float field_0x24;
   float field_0x28;
 };
-static_assert(sizeof(struct LiquidParticle) == 0x2c, "Data type is of wrong size");
+static_assert(sizeof(LiquidParticle) == 0x2c, "Data type is of wrong size");
 
 struct LiquidParticleGroup
 {
@@ -35,7 +35,7 @@ struct LiquidParticleGroup
   struct GInterface* iface;
   void (__cdecl* sparkle_func)(struct LiquidParticleGroup* param_0, struct GInterface* param_1);
 };
-static_assert(sizeof(struct LiquidParticleGroup) == 0xb01c, "Data type is of wrong size");
+static_assert(sizeof(LiquidParticleGroup) == 0xb01c, "Data type is of wrong size");
 
 // win1.41 005cdfc0 mac 1035c8f0 sparklecbstub(LiquidParticleGroup *, unsigned long)
 void __cdecl sparklecbstub__FP19LiquidParticleGroupUl(struct LiquidParticleGroup* param_1, struct GInterface* param_2);

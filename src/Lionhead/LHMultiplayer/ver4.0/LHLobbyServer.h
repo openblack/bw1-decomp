@@ -9,6 +9,6 @@ struct LHLobbyServer
 {
   struct LHConnection connection;  /* 0x0 */
 };
-static_assert(sizeof(struct LHLobbyServer) == 0x90, "Data type is of wrong size");
+static_assert(sizeof(LHLobbyServer) == 0x90, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH_LOBBY_SERVER_INCLUDED_H */

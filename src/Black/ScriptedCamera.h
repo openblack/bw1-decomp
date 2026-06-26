@@ -14,6 +14,6 @@ struct ScriptedCamera
   struct Q27LH3DWay7Running* field_0x4;
   struct Q27LH3DWay7Running* field_0x8;
 };
-static_assert(sizeof(struct ScriptedCamera) == 0xc, "Data type is of wrong size");
+static_assert(sizeof(ScriptedCamera) == 0xc, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_SCRIPTED_CAMERA_INCLUDED_H */

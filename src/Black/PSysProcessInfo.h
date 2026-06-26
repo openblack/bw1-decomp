@@ -16,6 +16,6 @@ struct PSysProcessInfo
   uint32_t field_0x34;
   uint8_t field_0x38;
 };
-static_assert(sizeof(struct PSysProcessInfo) == 0x3c, "Data type is of wrong size");
+static_assert(sizeof(PSysProcessInfo) == 0x3c, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_P_SYS_PROCESS_INFO_INCLUDED_H */
