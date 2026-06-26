@@ -14,9 +14,9 @@ struct LHMatrix
     // Static methods
 
     // win1.41 00403530 mac inlined LHMatrix::Translation(const LHPoint&)
-    static void Translation(LHMatrix* this, const LHPoint* translation);
+    static LHMatrix Translation(const LHPoint& translation);
     // win1.41 00403570 mac inlined LHMatrix::PostTranslation(const LHPoint&)
-    static void PostTranslation(LHMatrix* this, LHPoint* translation);
+    static LHMatrix PostTranslation(const LHPoint& translation);
 
     // Non-virtual methods
 

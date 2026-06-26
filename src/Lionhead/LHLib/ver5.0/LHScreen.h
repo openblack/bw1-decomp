@@ -75,7 +75,7 @@ struct LHScreen
     // Non-virtual methods
 
     // win1.41 007dd8f0 mac 1014d890 LHScreen::~LHScreen(void)
-    void ~LHScreen();
+    ~LHScreen();
     // win1.41 007dd0d0 mac 1014e420 LHScreen::SetFullscreenMode(int)
     void SetFullscreenMode(int mode);
 };

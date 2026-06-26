@@ -61,7 +61,7 @@ struct CAnim
     // Non-virtual methods
 
     // win1.41 0085e4a0 mac 1061b7c4 CAnim::~CAnim(void)
-    void ~CAnim();
+    ~CAnim();
     // win1.41 00861a00 mac 1061fa9c CAnim::AdjustForNewBasedOnStand(CAnim *, CAnim *)
     void AdjustForNewBasedOnStand(CAnim* param_2, CAnim* param_3);
     // win1.41 00860860 mac 106200cc CAnim::ReadBinary(LHFile *)

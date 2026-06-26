@@ -4,6 +4,9 @@
 #include <assert.h> /* For static_assert */
 #include <stdint.h> /* For int16_t, int8_t, uint16_t, uint32_t, uint8_t */
 
+#include <map>
+#include <set>
+
 #include "Collide.h" /* For struct CircleHugInfo */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
 #include "MapCoords.h" /* For struct MapCoords */
@@ -36,9 +39,15 @@ struct GameThingVftable;
 struct GameThingWithPosVftable;
 struct LHPoint;
 struct ObjectVftable;
-struct Q210NewCollide3Obj;
 
-class MobileWallHug: public Mobile
+struct GMoveBy
+{
+  int x;  /* 0x0 */
+  float altitude;
+  int z;
+};
+
+class MobileWallHug : public Mobile
 {
 public:
     int16_t turns_until_next_state_change; /* 0x58 */
@@ -134,23 +143,23 @@ struct SubCollideBlockPos
     // Non-virtual methods
 
     // win1.41 inlined mac inlined SubCollideBlockPos::operator<( const(SubCollideBlockPos const &))
-    bool operator<(const SubCollideBlockPos* other);
+    bool operator<(const SubCollideBlockPos& other) const;
 };
 
 struct CircleHugStateInfoT
 {
-    std__map__pMobileWallHug__ulong field_0x0;
-    std__map__pQ210NewCollide3Obj__std__set__pMobileWallHug obj_to_mwh; /* 0x10 */
-    std__set__pMobileWallHug field_0x20;
-    std__set__pMobileWallHug field_0x30;
+    std::map<MobileWallHug*, uint32_t> field_0x0;
+    std::map<NewCollide::Obj*, std::set<MobileWallHug*>*> obj_to_mwh; /* 0x10 */
+    std::set<MobileWallHug*> field_0x20;
+    std::set<MobileWallHug*> field_0x30;
     bool field_0x40;
     uint8_t field_0x41[0x3];
-    std__map__SubCollideBlockPosPNewCollide3Obj field_0x44;
+    std::map<SubCollideBlockPos, NewCollide::Obj*> field_0x44;
 
     // Non-virtual methods
 
     // win1.41 0060d410 mac 10093270 CircleHugStateInfoT::fetch(MapCoords)
-    Q210NewCollide3Obj* fetch(MapCoords coords);
+    NewCollide::Obj* fetch(MapCoords coords);
 };
 
 struct LinearSquareSweepStruct
@@ -158,7 +167,7 @@ struct LinearSquareSweepStruct
     float dpmr; /* 0x0 */
     float dot_product;
     float dp2pr2ml2;
-    Q210NewCollide3Obj* obj;
+    NewCollide::Obj* obj;
 
     // Non-virtual methods
 

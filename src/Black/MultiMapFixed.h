@@ -50,6 +50,13 @@ struct MultiChild
     MultiChild();
 };
 
+struct MultiChildList
+{
+  struct MultiChild* array;  /* 0x0 */
+  uint32_t size;
+  uint32_t capacity;
+};
+
 class MultiMapFixed: public Fixed
 {
 public:

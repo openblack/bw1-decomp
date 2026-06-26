@@ -38,14 +38,14 @@ public:
     uintptr_t ParseFile;
     uintptr_t StartScript;
     uintptr_t FindScript;
-    FuncPtr(name='ScriptDLL__AutoStart', call_type='__cdecl', result='void', args=['struct LHTransport*'], arg_labels=['transport'], decorated_name='ScriptDLL__AutoStart', indirection_level=1) AutoStart; /* 0x40 */
+    void (__cdecl* AutoStart_ptr)(LHTransport* transport); /* 0x40 */
     uintptr_t StopTask;
-    uintptr_t StopAllTasks;
-    uintptr_t StopTasksOfType;
+    uintptr_t StopAllTasks_ptr;
+    uintptr_t StopTasksOfType_ptr;
     uintptr_t POP; /* 0x50 */
-    uintptr_t PUSH;
+    uintptr_t PUSH_ptr;
     uintptr_t STRING;
-    FuncPtr(name='ScriptDLL__LoadBinary', call_type='__cdecl', result='int', args=['struct LHTransport*', 'const char*'], arg_labels=['transport', 'path'], decorated_name='ScriptDLL__LoadBinary', indirection_level=1) LoadBinary;
+    int (__cdecl* LoadBinary_ptr)(LHTransport* transport, const char* path);
     uintptr_t SaveBinary; /* 0x60 */
     uintptr_t SaveState;
     uintptr_t RestoreState;
@@ -74,7 +74,7 @@ public:
     uint32_t GetFirstRunningTaskId;
     uint32_t LoopTaskVariables;
     uint32_t LoopGlobalVariables;
-    uint32_t GetScriptType; /* 0xd0 */
+    uint32_t GetScriptType_ptr; /* 0xd0 */
     uint32_t GetGlobalVariableValue;
     uint32_t field_0xd8;
 

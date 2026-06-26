@@ -55,8 +55,6 @@ public:
 
     // Static methods
 
-    // win1.41 00423140 mac 10041480 LH3DObject::SetPosition(const LHPoint&, float, float)
-    static void SetPosition(LH3DObject* this, LHPoint* point, float y_angle, float scale);
     // win1.41 0080b4d0 mac 10620204 LH3DObject::Create(LH3DObject::ObjectType)
     static LH3DObject* Create(ObjectType object_type);
 
@@ -64,6 +62,11 @@ public:
 
     // win1.41 inlined mac inlined LH3DObject::LH3DObject(void)
     LH3DObject();
+
+    // Non-virtual functions
+
+    // win1.41 00423140 mac 10041480 LH3DObject::SetPosition(const LHPoint&, float, float)
+    void SetPosition(const LHPoint& point, float y_angle, float scale);
 };
 
 #endif /* BW1_DECOMP_LH3D_OBJECT_INCLUDED_H */

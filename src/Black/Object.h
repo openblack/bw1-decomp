@@ -532,7 +532,7 @@ public:
     // win1.41 00638740 mac 103d48a0 Object::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
     // win1.41 00638790 mac 103d43b0 Object::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
-    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
+    virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl* param_4)(int, Point2D, float, int));
     // win1.41 006384c0 mac 103d5070 Object::GetRoutePlanRadius(Creature *)
     virtual float GetRoutePlanRadius(Creature* param_1);
     // win1.41 00638be0 mac 103d41e0 Object::VillagerMustAvoid(Villager *)

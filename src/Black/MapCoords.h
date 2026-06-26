@@ -45,8 +45,8 @@ struct JustWholeMapXZ
 
 struct MapCoords
 {
-    MapCoordsFull x; /* 0x0 */
-    MapCoordsFull z;
+    int x; /* 0x0 */
+    int z;
     float altitude;
 
     // Constructors
@@ -69,13 +69,13 @@ struct MapCoords
     // win1.41 006042c0 mac 100499f0 MapCoords::InBounds(void) const
     bool32_t InBounds();
     // win1.41 006053c0 mac 100028d0 MapCoords::IsCloseToEqual(const MapCoords&, float) const
-    bool32_t IsCloseToEqual(const MapCoords* other, float epsilon);
-    // win1.41 00605410 mac 1001fb00 MapCoords::operator+=(MapCoords const &) const
-    MapCoords* operator+=(const MapCoords* other);
-    // win1.41 00605470 mac 100494b0 MapCoords::operator+=(JustMapXZ const &) const
-    MapCoords* operator+=(const JustMapXZ* other);
+    bool32_t IsCloseToEqual(const MapCoords& other, float epsilon) const;
+    // win1.41 00605410 mac 1001fb00 MapCoords::operator+=(MapCoords const &)
+    MapCoords* operator+=(const MapCoords& other);
+    // win1.41 00605470 mac 100494b0 MapCoords::operator+=(JustMapXZ const &)
+    MapCoords* operator+=(const JustMapXZ& other) const;
     // win1.41 00605520 mac 100503e0 MapCoords::operator+(MapCoords const &) const
-    MapCoords* operator+(MapCoords* param_1, MapCoords* other);
+    MapCoords* operator+(const MapCoords& other) const;
     // win1.41 006020e0 mac 1048f050 MapCoords::GetNearestTown(float) const
     Town* GetNearestTown(float t_max);
     // win1.41 00603280 mac 10513100 MapCoords::Set(char *)
