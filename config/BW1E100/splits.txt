@@ -279,6 +279,12 @@ lib/libcmt/rename.obj:
 lib/libcmt/unlink.obj:
 	.text       start:0x00734CFF end:0x00734D34 align:1
 
+lib/libcmt/getenv.obj:
+	.text       start:0x00734D34 end:0x00734DD2 align:1
+
+align_pad_00734dd2:
+	.text       start:0x00734DD2 end:0x00734DE0 align:1
+
 lib/libcmt/stricmp.obj:
 	.text       start:0x00734DE0 end:0x00734EB0 align:1
 
