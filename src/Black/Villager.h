@@ -9,6 +9,7 @@
 #include <chlasm/GStates.h> /* For VILLAGER_STATE_LAST_STATE, enum VILLAGER_STATES */
 #include <chlasm/HelpTextEnums.h> /* For enum HELP_TEXT */
 #include <re_common.h> /* For bool32_t */
+#include <Lionhead/LHLib/ver5.0/LHOrderedLinkedList.h> /* For LHOrderedLinkedList */
 
 #include "GameThing.h" /* For struct GameThing */
 #include "GameThingWithPos.h" /* For struct GameThingWithPos */
@@ -57,6 +58,11 @@ class StoragePit;
 class Town;
 class Tree;
 class WorshipSite;
+
+struct SortedObject
+{
+  uint8_t field_0x0;
+};
 
 struct ClearAreaPoint
 {
@@ -271,7 +277,7 @@ public:
     // win1.41 0055c980 mac 10051310 Villager::IsFoodSpeedUp(void)
     virtual bool IsFoodSpeedUp();
     // win1.41 00756ad0 mac 10563fe0 Villager::GetFinalDestPos(MapCoords *)
-    virtual MapCoords* GetFinalDestPos(MapCoords* param_1);
+    virtual MapCoords GetFinalDestPos();
     // win1.41 00763b00 mac 10593810 Villager::FleeingFromObjectReaction(void)
     virtual bool FleeingFromObjectReaction();
     // win1.41 007642c0 mac 105927e0 Villager::LookingAtObjectReaction(void)
@@ -498,11 +504,9 @@ public:
     // Static methods
 
     // win1.41 inlined mac 1061e41c Villager::GetStateTable(void)
-    static Living__StateTableEntry* GetStateTable(VILLAGER_STATES state);
+    static Living::StateTableEntry& GetStateTable(VILLAGER_STATES state);
     // win1.41 0074fbe0 mac 10571750 Villager::Create(MapCoords const &, GVillagerInfo const *, unsigned long, int)
     static Villager* Create(MapCoords* coords, GVillagerInfo* info, uint32_t age, bool skeleton);
-    // win1.41 00756990 mac inlined Villager::FUN_00756990(void)
-    static void FUN_00756990(MissionaryControl* this);
 
     // Constructors
 
@@ -510,11 +514,6 @@ public:
     Villager();
     // win1.41 0074f950 mac 10571a90 Villager::Villager(MapCoords const &, GVillagerInfo const *, unsigned long, int)
     Villager(MapCoords* coords, GVillagerInfo* info, uint32_t age, bool skeleton);
-
-    // Non-virtual Destructors
-
-    // win1.41 0074fbc0 mac inlined Villager::_dt(void)
-    ~Villager();
 
     // Non-virtual methods
 
@@ -843,7 +842,7 @@ public:
     // win1.41 00756e20 mac 10573130 Villager::GetDiscipleInteractState(void)
     uint32_t GetDiscipleInteractState();
     // win1.41 00756e80 mac 1002ae20 Villager::FindCloseObjectsForInteract(class LHOrderedLinkedList<class SortedObject> *, struct MapCoords const &)
-    bool32_t FindCloseObjectsForInteract(LHOrderedLinkedList__SortedObject* param_1, const MapCoords* param_2);
+    bool32_t FindCloseObjectsForInteract(LHOrderedLinkedList<SortedObject>* param_1, const MapCoords& param_2);
     // win1.41 00757180 mac 10572de0 Villager::CheckMoveHouse(Object *)
     bool32_t CheckMoveHouse(Object* object);
     // win1.41 00757210 mac 10572cf0 Villager::CheckMoveIntoTown(Town &)
@@ -1682,8 +1681,8 @@ public:
     bool32_t EnterSitAndChillOut(unsigned char param_1, unsigned char param_2);
     // win1.41 0076b590 mac 10598c80 Villager::GoAndChilloutInTown(void)
     bool32_t GoAndChilloutInTown();
-    // win1.41 0076b610 mac 100118e0 Villager::GetMeToMyChillOutPos(int (Villager::)(void const *, void* , MapCoords &), MapCoords &, float, MapCoords const &)
-    void GetMeToMyChillOutPos(int (__fastcall*)(const Villager *, const void *, MapCoords *) callback, const void* unused_1, const void* unused_2, const void* unused_3, MapCoords* param_5, float param_6, MapCoords* param_7);
+    // win1.41 0076b610 mac 100118e0 Villager::.GetMeToMyChillOutPos(int (Villager::*)(MapCoords&), MapCoords&, float, const MapCoords&)
+    void GetMeToMyChillOutPos(int (Villager::* callback)(MapCoords&), MapCoords& param_5, float param_6, const MapCoords& param_7);
     // win1.41 0076b7e0 mac 10598b40 Villager::ArrivesHomeFromWorship(void)
     bool32_t ArrivesHomeFromWorship();
     // win1.41 0076b7f0 mac 10598ae0 Villager::SleepInTentFromWorship(void)
@@ -1813,11 +1812,6 @@ public:
     MissionaryControl();
     // win1.41 00756760 mac 10564aa0 MissionaryControl::MissionaryControl(Villager *, GPlayer *)
     MissionaryControl(Villager* param_1, GPlayer* param_2);
-
-    // Non-virtual Destructors
-
-    // win1.41 007567b0 mac inlined MissionaryControl::_dt(void)
-    ~MissionaryControl();
 
     // Non-virtual methods
 

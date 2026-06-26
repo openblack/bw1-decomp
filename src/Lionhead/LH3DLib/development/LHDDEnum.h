@@ -12,7 +12,7 @@ struct LHDDEnum
     // Non-virtual methods
 
     // win1.41 007dd010 mac 1014d920 LHDDEnum::~LHDDEnum(void)
-    void ~LHDDEnum();
+    ~LHDDEnum();
 };
 
 #endif /* BW1_DECOMP_LHDD_ENUM_INCLUDED_H */

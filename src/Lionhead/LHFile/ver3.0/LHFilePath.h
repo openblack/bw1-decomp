@@ -20,7 +20,7 @@ struct LHFilePath
     // win1.41 007c6e1d mac inlined LHFilePath::fopen(void)
     static LHFilePath* fopen(const char* path, const char* mode);
     // win1.41 007c6e30 mac 1016a4a0 LHFilePath::~LHFilePath(void)
-    static void ~LHFilePath(LHFilePath* this);
+    static ~LHFilePath(LHFilePath* this);
     // win1.41 007c6db0 mac inlined LHFilePath::fprintf
     static int fprintf(LHFilePath* path, char* fmt, void* param_2);
     // win1.41 007c7daa mac inlined LHFilePath::fscanf

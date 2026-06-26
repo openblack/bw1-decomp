@@ -97,6 +97,44 @@ public:
 class Living: public MobileWallHug
 {
 public:
+
+    struct StateTableSubEntry
+    {
+        bool (Living::* function)();  /* 0x0 */
+        uint32_t field_0x4;
+        uint32_t field_0x8;
+        int32_t field_0xc;
+    };
+
+    struct StateTableSubEntryState
+    {
+        uint32_t (Living::* function)();  /* 0x0 */
+        uint32_t field_0x4;
+        uint32_t field_0x8;
+        int32_t field_0xc;
+    };
+
+    struct StateTableSubEntryEntryState
+    {
+        bool (Living::* function)(VILLAGER_STATES param_1, VILLAGER_STATES param_2);  /* 0x0 */
+        uint32_t field_0x4;
+        uint32_t field_0x8;
+        int32_t field_0xc;
+    };
+
+    struct StateTableEntry
+    {
+        StateTableSubEntryState state;  /* 0x0 */
+        StateTableSubEntryEntryState entry_state;  /* 0x10 */
+        StateTableSubEntry exit_state;  /* 0x20 */
+        StateTableSubEntry save_state;  /* 0x30 */
+        StateTableSubEntry load_state;  /* 0x40 */
+        StateTableSubEntry field_0x50;
+        StateTableSubEntry field_0x60;
+        StateTableSubEntry transition_animation;  /* 0x70 */
+        StateTableSubEntry validate;  /* 0x80 */
+    };
+
     LivingAction action; /* 0x8c */
     Reaction* reaction; /* 0x94 */
     ReactionDoneWhen* reaction_done_when;
@@ -216,7 +254,7 @@ public:
     virtual bool AmILikelyToMove();
     // win1.41 005ec3e0 mac 10382af0 Living::GetNumTurnsToDieOver(void)
     virtual uint32_t GetNumTurnsToDieOver();
-    // win1.41 005ec1e0 mac 103830e0 Living::GetFinalDestPos(MapCoords *)
+    // win1.41 005ec1e0 maxc 103830e0 Living::GetFinalDestPos(MapCoords *)
     virtual void GetFinalDestPos(MapCoords* result);
     // win1.41 005ec4b0 mac 10382830 Living::Downed(void)
     virtual bool Downed();
@@ -231,9 +269,9 @@ public:
     // win1.41 005f26d0 mac 10385ce0 Living::LookAtFlyingObjectReaction(void)
     virtual bool LookAtFlyingObjectReaction();
     // win1.41 005f2980 mac 10076180 Living::SetCurrentAndDestinationState(unsigned char, unsigned char)
-    virtual uint32_t SetCurrentAndDestinationState(VILLAGER_STATES current, VILLAGER_STATES destination);
+    virtual int SetCurrentAndDestinationState(VILLAGER_STATES current, VILLAGER_STATES destination);
     // win1.41 005f28e0 mac 10075940 Living::SetTopState(unsigned char)
-    virtual uint32_t SetTopState(VILLAGER_STATES state);
+    virtual int SetTopState(VILLAGER_STATES state);
     // win1.41 00417040 mac 1012f8d0 Living::StorePreviousState(void)
     virtual void StorePreviousState();
     // win1.41 00473e50 mac 101e3470 Living::SetStateSpeed(void)

@@ -5,6 +5,8 @@
 #include <stddef.h> /* For size_t */
 #include <stdint.h> /* For uint16_t, uint32_t, uint8_t */
 
+#include <Lionhead/LHLib/ver5.0/LHListHead.h> /* For LHListHead */
+
 #include <chlasm/Enum.h> /* For RESOURCE_TYPE_LAST, enum ABODE_TYPE, enum RESOURCE_TYPE, enum TRIBE_TYPE */
 #include <chlasm/ScriptEnums.h> /* For enum SCRIPT_OBJECT_TYPE */
 #include <re_common.h> /* For bool32_t */
@@ -54,7 +56,7 @@ public:
     uint32_t field_0x94;
     Town* town;
     Abode* next;
-    LHListHead__Villager villagers; /* 0xa0 */
+    LHListHead<Villager> villagers; /* 0xa0 */
     Villager* male_female_villagers[0x2];
     uint32_t field_0xb0;
     uint8_t adult_count;
@@ -204,7 +206,7 @@ public:
     // win1.41 00404f60 mac 104f7960 Abode::DoResourceRemoving(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
     virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool param_4);
     // win1.41 00401690 mac 1037f370 Abode::SetTown(Town *)
-    virtual void SetTown(Town* town);
+    virtual bool SetTown(Town* town);
     // win1.41 00401650 mac 10565230 Abode::GetShouldNotBeAddedToPlanned(void)
     virtual bool GetShouldNotBeAddedToPlanned();
     // win1.41 00401660 mac 1031a9a0 Abode::SetShouldNotBeAddedToPlanned(int)
@@ -239,11 +241,6 @@ public:
 
     // win1.41 00401350 mac 1033b330 Abode::Abode(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
     Abode(const MapCoords* coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
-
-    // Non-virtual Destructors
-
-    // win1.41 00402b60 mac inlined Abode::_dt(void)
-    ~Abode();
 
     // Non-virtual methods
 
@@ -301,8 +298,8 @@ public:
     bool GetNearestWaterPos(MapCoords* coords);
     // win1.41 00406640 mac 10172a50 Abode::ApplyEffectsDueToPhysicalDestruction(Object *, GPlayer *)
     void ApplyEffectsDueToPhysicalDestruction(Object* object, GPlayer* player);
-    // win1.41 004069c0 mac 1036ee00 Abode::FindVillager( int (*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, ulong), SCRIPT_OBJECT_TYPE, ulong)
-    Villager* FindVillager(int (__cdecl*)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, uint32_t) param_1, SCRIPT_OBJECT_TYPE param_2, uint32_t param_3);
+    // win1.41 004069c0 mac 1036ee00 Abode::FindVillager(int (*)(GameThingWithPos*, SCRIPT_OBJECT_TYPE, unsigned long), SCRIPT_OBJECT_TYPE, unsigned long)
+    Villager* FindVillager(int (__cdecl* param_1)(GameThingWithPos *, SCRIPT_OBJECT_TYPE, uint32_t), SCRIPT_OBJECT_TYPE param_2, uint32_t param_3);
     // win1.41 00407020 mac inlined Abode::FindNearestDrinkingWater(float)
     void FindNearestDrinkingWater(float max_dist);
     // win1.41 004070d0 mac 104ed230 Abode::GetNumAdultsInAbode(void)
