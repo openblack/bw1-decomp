@@ -31308,6 +31308,7 @@ lbl_00C30C08 = .data:0x00C30C08; // type:object size:0x8
 ??_R0?AVistream_withassign@@@8 = .data:0x00C3C1E0; // type:object size:0x21
 ??_R0?AVostream_withassign@@@8 = .data:0x00C3C208; // type:object size:0x21
 lbl_00C3C229 = .data:0x00C3C229; // type:object size:0x457
+_AbodeInfos = .data:0x00C3C690; // type:object size:0x105D8 scope:global
 ___fastflag = .data:0x00E84190; // type:object size:0x4 scope:global
 __adjust_fdiv = .data:0x00E84194; // type:object size:0x4 scope:global
 __environ = .data:0x00E841F4; // type:object size:0x4 scope:global

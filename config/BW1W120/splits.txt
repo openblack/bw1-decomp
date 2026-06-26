@@ -16,7 +16,7 @@ Sections:
 	.CRT$XTA    type:data vaddr:0x009C7E68 end:0x009C7E6C
 	.CRT$XTX    type:data vaddr:0x009C7E6C end:0x009C7E70
 	.CRT$XTZ    type:data vaddr:0x009C7E70 end:0x009C7E74
-	.bss        type:data vaddr:0x00C3D000 end:0x00FBFE00
+	.bss        type:bss vaddr:0x00C3C680 end:0x00FBFE00
 	.data1      type:data align:4096
 	SELFMOD     type:data align:4096
 	.rsrc       type:rodata align:4096
@@ -26,6 +26,7 @@ Black/Abode.cpp:
 	.rdata      start:0x008A99DC end:0x008AB278
 	.rdata$r    start:0x009A62D8 end:0x009A6570
 	.data       start:0x009C7E80 end:0x009C8078
+	.bss        start:0x00C3C680 end:0x00C4CC68
 
 Black/AlignmentInfo.cpp:
 	.text       start:0x00413FF0 end:0x00414770
