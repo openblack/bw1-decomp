@@ -266,14 +266,14 @@ lib/libcmt/free.obj:
 	.text       start:0x007C6786 end:0x007C686F align:1
 	.rdata      start:0x009A06B0 end:0x009A06C8 align:4
 
-auto_gap_007b659b:
-	.text       start:0x007C686F end:0x007C6870 align:1
+lib/libcmt/_ctype.obj:
+	.text       start:0x007C686F end:0x007C6AD3 align:1
 
 lib/libcmt/sscanf.obj:
 	.text       start:0x007C6AD3 end:0x007C6B07 align:1
 
 lib/libcmt/_wctype.obj:
-	.text       start:0x007C6B07 end:0x007C6B08 align:1
+	.text       start:0x007C6B07 end:0x007C6BD1 align:1
 
 lib/libcmt/rename.obj:
 	.text       start:0x007C6BD1 end:0x007C6BFF align:1
