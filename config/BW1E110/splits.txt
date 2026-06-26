@@ -141,8 +141,14 @@ lib/libcmt/free.obj:
 	.text       start:0x007B659B end:0x007B6684 align:1
 	.rdata      start:0x009905B8 end:0x009905D0 align:4
 
+lib/libcmt/_ctype.obj:
+	.text       start:0x007B6684 end:0x007B68E8 align:1
+
 lib/libcmt/sscanf.obj:
 	.text       start:0x007B68E8 end:0x007B691C align:1
+
+lib/libcmt/_wctype.obj:
+	.text       start:0x007B691C end:0x007B69E6 align:1
 
 lib/libcmt/rename.obj:
 	.text       start:0x007B69E6 end:0x007B6A14 align:1

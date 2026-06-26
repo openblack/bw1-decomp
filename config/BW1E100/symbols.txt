@@ -13435,6 +13435,7 @@ _isspace = .text:0x00734BFD; // type:function scope:global
 _isalnum = .text:0x00734C25; // type:function scope:global
 _isprint = .text:0x00734C53; // type:function scope:global
 _sscanf = .text:0x00734C81; // type:function scope:global
+_iswdigit = .text:0x00734CB5; // type:function scope:global
 _iswspace = .text:0x00734CC3; // type:function scope:global
 _rename = .text:0x00734CD1; // type:function scope:global
 _remove = .text:0x00734CFF; // type:function scope:global
