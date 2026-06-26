@@ -27,11 +27,476 @@ Black/Abode.cpp:
 	.rdata$r    start:0x009961D8 end:0x00996470
 	.data       start:0x009B7640 end:0x009B7820
 
+Black/AlignmentInfo.cpp:
+	.text       start:0x00413D80 end:0x004144D0
+
+Black/AnimatedStatic.cpp:
+	.text       start:0x00421920 end:0x00422E90
+
+Black/Arrow.cpp:
+	.text       start:0x00425370 end:0x004256C0
+
+Black/Audio.cpp:
+	.text       start:0x00426510 end:0x00429620
+
+Black/Ball.cpp:
+	.text       start:0x004351A0 end:0x00435CA0
+
+Black/BigForest.cpp:
+	.text       start:0x004383C0 end:0x00439250
+
+Black/CitadelBuildingSite.cpp:
+	.text       start:0x0043A4C0 end:0x0043D440
+
+Black/BWLan.cpp:
+	.text       start:0x0043FE40 end:0x00440C80
+
+Black/Camera.cpp:
+	.text       start:0x00440C80 end:0x00443190
+
+Black/CameraEditor.cpp:
+	.text       start:0x00443190 end:0x00446900
+
 Black/CameraHelp.cpp:
 	.text       start:0x00448510 end:0x00448530
 
+Black/CameraMode.cpp:
+	.text       start:0x00449730 end:0x0044A1A0
+
+Black/CameraModeFlyAndClick.cpp:
+	.text       start:0x0044A1A0 end:0x0044AB80
+
+Black/CameraModePath.cpp:
+	.text       start:0x004600F0 end:0x004603C0
+
+Black/CameraModeTwoObjects.cpp:
+	.text       start:0x004603C0 end:0x00461B60
+
+Black/Citadel.cpp:
+	.text       start:0x00461B60 end:0x004634A0
+
+Black/CitadelHeart.cpp:
+	.text       start:0x004634A0 end:0x00464D10
+
+Black/CitadelPart.cpp:
+	.text       start:0x00468580 end:0x004699A0
+
+Black/CPUCheck.cpp:
+	.text       start:0x0046DE90 end:0x00471A80
+
+Black/CreatureAttitudeToPlayer.cpp:
+	.text       start:0x004C6C30 end:0x004C7260
+
+Black/CreatureVisionState.cpp:
+	.text       start:0x004CF000 end:0x004D0F80
+
+Black/CreatureActionsKnownAbout.cpp:
+	.text       start:0x004E0BE0 end:0x004E16D0
+
+Black/Alignment.cpp:
+	.text       start:0x004E37A0 end:0x004E81C0
+
+Black/CreatureMimicInfo.cpp:
+	.text       start:0x004E84D0 end:0x004E94C0
+
+Black/CreaturePen.cpp:
+	.text       start:0x004ED5B0 end:0x004EDAC0
+
+Black/CreatureSelect.cpp:
+	.text       start:0x004F5810 end:0x004F5D00
+
+Black/Creche.cpp:
+	.text       start:0x00508E10 end:0x005090A0
+
+Black/Dance.cpp:
+	.text       start:0x005099A0 end:0x0050AFD0
+
+Black/Data.cpp:
+	.text       start:0x0050E790 end:0x0050EA20
+
+Black/DeadTree.cpp:
+	.text       start:0x0050EA20 end:0x0050FD80
+
+Black/DialogBoxKeyBinding.cpp:
+	.text       start:0x005104E0 end:0x005114D0
+
+Black/DialogBoxBase.cpp:
+	.text       start:0x005114D0 end:0x00511960
+
+Black/EditorIconBase.cpp:
+	.text       start:0x0051E950 end:0x0051F050
+
+Black/EditorIconGraph.cpp:
+	.text       start:0x0051F050 end:0x0051FFE0
+
+Black/EditorIconPDM.cpp:
+	.text       start:0x0051FFE0 end:0x00520890
+
+Black/EffectValues.cpp:
+	.text       start:0x00522A10 end:0x00523890
+
+Black/Feature.cpp:
+	.text       start:0x00524E70 end:0x00525460
+
+Black/Flowers.cpp:
+	.text       start:0x00525460 end:0x00525760
+
+Black/FireFly.cpp:
+	.text       start:0x00527CC0 end:0x00529DA0
+
+Black/FishFarm.cpp:
+	.text       start:0x00529DA0 end:0x0052B650
+
+Black/MultiMapFixed.cpp:
+	.text       start:0x0052B650 end:0x0052D230
+
+Black/Flock.cpp:
+	.text       start:0x0052D230 end:0x0052E910
+
+Black/Football.cpp:
+	.text       start:0x0052E910 end:0x00531860
+
+Black/Footpath.cpp:
+	.text       start:0x00532680 end:0x00533250
+
+Black/FootpathLinkSave.cpp:
+	.text       start:0x00533250 end:0x00537310
+
+Black/Forest.cpp:
+	.text       start:0x00537310 end:0x00538E00
+
+Black/ProfileEditor.cpp:
+	.text       start:0x00538E00 end:0x00539D50
+
+Black/GameArea.cpp:
+	.text       start:0x005540C0 end:0x00554430
+
+Black/GameInfo.cpp:
+	.text       start:0x00554430 end:0x00554B00
+
+Black/GameStats.cpp:
+	.text       start:0x00561840 end:0x005677B0
+
+Black/GameThing.cpp:
+	.text       start:0x0056BC30 end:0x0056C8C0
+
+Black/SetupMP3Button.cpp:
+	.text       start:0x0056C8C0 end:0x0056FFC0
+
+Black/DialogBoxSaveMessage.cpp:
+	.text       start:0x00571740 end:0x00571B20
+
+Black/Graveyard.cpp:
+	.text       start:0x00591B40 end:0x00591ED0
+
+Black/GroupBehaviour.cpp:
+	.text       start:0x00591ED0 end:0x005950A0
+
+Black/HandStateCamera.cpp:
+	.text       start:0x005AC050 end:0x005AC960
+
+Black/HandStateCitadel.cpp:
+	.text       start:0x005AC960 end:0x005AD110
+
+Black/HandStateCreature.cpp:
+	.text       start:0x005AD110 end:0x005AE830
+
+Black/HandStateGrain.cpp:
+	.text       start:0x005AE830 end:0x005AF020
+
+Black/HandStateHolding.cpp:
+	.text       start:0x005AF6E0 end:0x005B18C0
+
+Black/HandStateNormal.cpp:
+	.text       start:0x005B18C0 end:0x005B3110
+
+Black/HandStatePlayAnim.cpp:
+	.text       start:0x005B3110 end:0x005B3990
+
+Black/HandStateTug.cpp:
+	.text       start:0x005B3990 end:0x005B4ABC
+
+Black/HelpProfile.cpp:
+	.text       start:0x005BFE60 end:0x005C0500
+
+Black/HelpSpiritInfo.cpp:
+	.text       start:0x005C0500 end:0x005C0E40
+
+Black/HelpSystem.cpp:
+	.text       start:0x005C0E40 end:0x005C3C90
+
+Black/ToolTipsInfo.cpp:
+	.text       start:0x005C52D0 end:0x005C63E0
+
+Black/HelpText.cpp:
+	.text       start:0x005C63E0 end:0x005C8780
+
+Black/Interface.cpp:
+	.text       start:0x005C94E0 end:0x005CBDB0
+
+Black/InterfaceStatus.cpp:
+	.text       start:0x005D6B30 end:0x005D86C0
+
+Black/IPSpecialDialog.cpp:
+	.text       start:0x005D86C0 end:0x005D8E90
+
+Black/Language.cpp:
+	.text       start:0x005E18D0 end:0x005E2AD0
+
+Black/Living.cpp:
+	.text       start:0x005E6CB0 end:0x005E74E0
+
+Black/DataPath.cpp:
+	.text       start:0x005E74E0 end:0x005EA6F0
+
+Black/MagicFood.cpp:
+	.text       start:0x005F5400 end:0x005F5810
+
+Black/MagicHand.cpp:
+	.text       start:0x005F5810 end:0x005F6450
+
+Black/MagicLivingInfo.cpp:
+	.text       start:0x005F6450 end:0x005F6900
+
+Black/MagicTeleport.cpp:
+	.text       start:0x005F6900 end:0x005F7950
+
+Black/MagicTree.cpp:
+	.text       start:0x005F7950 end:0x005F7D70
+
+Black/MagicWood.cpp:
+	.text       start:0x005F7D70 end:0x005FBA40
+
+Black/Map.cpp:
+	.text       start:0x005FBA40 end:0x005FC900
+
+Black/GameThingWithPos.cpp:
+	.text       start:0x00600A00 end:0x006014B0
+
+Black/FieldCrop.cpp:
+	.text       start:0x006014B0 end:0x00602DC0
+
+Black/MobileStatic.cpp:
+	.text       start:0x00602DC0 end:0x00604080
+
+Black/MPFEChooseConnection.cpp:
+	.text       start:0x00622A90 end:0x00623720
+
 Black/MPFEConnectionStatus.cpp:
 	.text       start:0x00625130 end:0x00625140
+
+Black/MPFEDownloads.cpp:
+	.text       start:0x00625B50 end:0x006261B0
+
+Black/MPFEFindGame.cpp:
+	.text       start:0x00626AB0 end:0x00627020
+
+Black/MultiplayerDatabase.cpp:
+	.text       start:0x0062A550 end:0x0062AC40
+
+Black/Object.cpp:
+	.text       start:0x0062D380 end:0x00631C00
+
+Black/ParticleContainer.cpp:
+	.text       start:0x00634FA0 end:0x00635790
+
+Black/PBall.cpp:
+	.text       start:0x00635790 end:0x00635A90
+
+Black/PFootball.cpp:
+	.text       start:0x0063A3D0 end:0x0063B080
+
+Black/PhysicsObject.cpp:
+	.text       start:0x0063B080 end:0x0063E2D0
+
+Black/PlannedMultiMapFixed.cpp:
+	.text       start:0x0063F4D0 end:0x0063FA40
+
+Black/Player.cpp:
+	.text       start:0x0063FA40 end:0x00644210
+
+Black/PlayerMessage.cpp:
+	.text       start:0x00660E80 end:0x006618C0
+
+Black/PlaytimeInfo.cpp:
+	.text       start:0x006618C0 end:0x00662340
+
+Black/PileFood.cpp:
+	.text       start:0x00662340 end:0x00665DC0
+
+Black/PrayerSite.cpp:
+	.text       start:0x00665DC0 end:0x006661E0
+
+Black/PSysManager.cpp:
+	.text       start:0x00668200 end:0x00668EB0
+
+Black/PSysBase.cpp:
+	.text       start:0x0066ACC0 end:0x0066B130
+
+Black/MagicFireBall.cpp:
+	.text       start:0x00677E40 end:0x006789E0
+
+Black/JPSysInterface.cpp:
+	.text       start:0x00683D70 end:0x00685250
+
+Black/DefensiveSphere.cpp:
+	.text       start:0x006C5CC0 end:0x006C6230
+
+Black/Rank.cpp:
+	.text       start:0x006D59E0 end:0x006D6030
+
+Black/Reaction.cpp:
+	.text       start:0x006D6030 end:0x006DA640
+
+Black/Reward.cpp:
+	.text       start:0x006DA640 end:0x006DC180
+
+Black/Rock.cpp:
+	.text       start:0x006DC180 end:0x006DD450
+
+Black/Scaffold.cpp:
+	.text       start:0x006DD450 end:0x006E0250
+
+Black/Script.cpp:
+	.text       start:0x006E0250 end:0x006E1A20
+
+Black/ScriptDLL.cpp:
+	.text       start:0x006EB170 end:0x006EBC80
+
+Black/ScriptHighlight.cpp:
+	.text       start:0x006FE470 end:0x006FFD50
+
+Black/ScriptTimer.cpp:
+	.text       start:0x00706160 end:0x00706450
+
+Black/SecretCreature.cpp:
+	.text       start:0x00706450 end:0x00706980
+
+Black/ShowNeedsVisuals.cpp:
+	.text       start:0x0070E2F0 end:0x0070ED50
+
+Black/Guidance.cpp:
+	.text       start:0x0070F200 end:0x00711D20
+
+Black/SoundInfo.cpp:
+	.text       start:0x00711D20 end:0x00712B00
+
+Black/SoundTag.cpp:
+	.text       start:0x00712B00 end:0x007135C0
+
+Black/SpecialVillagerInfo.cpp:
+	.text       start:0x007135C0 end:0x00714160
+
+Black/Spell.cpp:
+	.text       start:0x00714160 end:0x00716910
+
+Black/SpellDispenser.cpp:
+	.text       start:0x00716D80 end:0x007177A0
+
+Black/SpellIcon.cpp:
+	.text       start:0x0071A4D0 end:0x0071B400
+
+Black/SpellSeedGraphic.cpp:
+	.text       start:0x0071B400 end:0x0071C4F0
+
+Black/SpellSeed.cpp:
+	.text       start:0x0071C4F0 end:0x0071F360
+
+Black/SpellSeedInfo.cpp:
+	.text       start:0x0071F360 end:0x0071F870
+
+Black/SpellShield.cpp:
+	.text       start:0x0071F870 end:0x00720360
+
+Black/MagicShield.cpp:
+	.text       start:0x00720360 end:0x00721EB0
+
+Black/SpookyVoices.cpp:
+	.text       start:0x00722680 end:0x00722DF0
+
+Black/FireEffect.cpp:
+	.text       start:0x00722DF0 end:0x00725620
+
+Black/StoragePit.cpp:
+	.text       start:0x00727070 end:0x00729610
+
+Black/TerrainMaterialInfo.cpp:
+	.text       start:0x00729610 end:0x0072B6D0
+
+Black/Totem.cpp:
+	.text       start:0x0072B6D0 end:0x0072BCF0
+
+Black/TotemStatue.cpp:
+	.text       start:0x0072BCF0 end:0x0072D220
+
+Black/TownCreatureInfo.cpp:
+	.text       start:0x00737980 end:0x00737CE0
+
+Black/TownCentre.cpp:
+	.text       start:0x00737CE0 end:0x00738CE0
+
+Black/TownDesireFlags.cpp:
+	.text       start:0x00738CE0 end:0x0073B5A0
+
+Black/Tree.cpp:
+	.text       start:0x0073DE90 end:0x007409B0
+
+Black/TribeInfo.cpp:
+	.text       start:0x007409B0 end:0x007420F0
+
+Black/VillagerStateTableInfo.cpp:
+	.text       start:0x0075D100 end:0x0075F580
+
+Black/VirtualInfluence.cpp:
+	.text       start:0x00760810 end:0x00761000
+
+Black/WayPoint.cpp:
+	.text       start:0x00761000 end:0x00764800
+
+Black/Climate.cpp:
+	.text       start:0x00764800 end:0x007676A0
+
+Black/WeatherThing.cpp:
+	.text       start:0x007676A0 end:0x00768430
+
+Black/Whale.cpp:
+	.text       start:0x00768430 end:0x00768CA0
+
+Black/Wonder.cpp:
+	.text       start:0x00768CA0 end:0x007690B0
+
+Black/Workshop.cpp:
+	.text       start:0x007690B0 end:0x0076A5F0
+
+Black/WorshipSite.cpp:
+	.text       start:0x0076A5F0 end:0x0076E950
+
+Black/WorshipSiteUpgrade.cpp:
+	.text       start:0x0076E950 end:0x0076EDC0
+
+Black/WorshipSpellIcon.cpp:
+	.text       start:0x0076EDC0 end:0x00770410
+
+Black/WorshipTotem.cpp:
+	.text       start:0x00770410 end:0x00770F30
+
+Black/ChallengeRoom.cpp:
+	.text       start:0x00770F30 end:0x00774910
+
+Black/CreatureRoom.cpp:
+	.text       start:0x007761F0 end:0x007799B0
+
+Black/GameOptionsRoom.cpp:
+	.text       start:0x0077D1A0 end:0x0077E350
+
+Black/InnerCamera.cpp:
+	.text       start:0x00783260 end:0x00787C00
+
+Black/TempleRoom.cpp:
+	.text       start:0x00787C00 end:0x0078A050
+
+Black/WorldRoom.cpp:
+	.text       start:0x0078C900 end:0x0078F0D0
 
 zlib/deflate.c:
 	.text       start:0x007AF030 end:0x007B06F0
