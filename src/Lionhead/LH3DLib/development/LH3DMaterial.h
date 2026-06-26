@@ -54,7 +54,7 @@ struct MaterialProperties
   bool field_0x3;
   bool field_0x4;
 };
-static_assert(sizeof(struct MaterialProperties) == 0x5, "Data type is of wrong size");
+static_assert(sizeof(MaterialProperties) == 0x5, "Data type is of wrong size");
 
 struct LH3DMaterial
 {
@@ -64,6 +64,6 @@ struct LH3DMaterial
   struct LH3DTexture* texture;
   struct LH3DColor color;
 };
-static_assert(sizeof(struct LH3DMaterial) == 0x10, "Data type is of wrong size");
+static_assert(sizeof(LH3DMaterial) == 0x10, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH3D_MATERIAL_INCLUDED_H */

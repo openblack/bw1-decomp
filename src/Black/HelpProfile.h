@@ -23,7 +23,7 @@ struct CameraHelpAccumulator
     void Reset();
 };
 
-static_assert(sizeof(struct CameraHelpAccumulator) == 0x10c, "Data type is of wrong size");
+static_assert(sizeof(CameraHelpAccumulator) == 0x10c, "Data type is of wrong size");
 
 class HelpProfile: public Base
 {

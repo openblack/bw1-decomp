@@ -10,6 +10,6 @@ struct SetupRect
   struct LHCoord p0;
   struct LHCoord p1;
 };
-static_assert(sizeof(struct SetupRect) == 0x10, "Data type is of wrong size");
+static_assert(sizeof(SetupRect) == 0x10, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_SETUP_RECT_INCLUDED_H */

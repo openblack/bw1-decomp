@@ -22,6 +22,6 @@ struct Bubble
   uint32_t field_0xa8;
   uint32_t field_0xac;
 };
-static_assert(sizeof(struct Bubble) == 0xb0, "Data type is of wrong size");
+static_assert(sizeof(Bubble) == 0xb0, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_BUBBLE_INCLUDED_H */

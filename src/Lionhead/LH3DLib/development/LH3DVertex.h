@@ -11,7 +11,7 @@ struct LH3DVertex
   struct Point2D uv;
   struct LHPoint normal;  /* 0x14 */
 };
-static_assert(sizeof(struct LH3DVertex) == 0x20, "Data type is of wrong size");
+static_assert(sizeof(LH3DVertex) == 0x20, "Data type is of wrong size");
 
 struct Vertex3D
 {
@@ -19,6 +19,6 @@ struct Vertex3D
   struct Point2D uv;
   struct LHPoint normal;  /* 0x14 */
 };
-static_assert(sizeof(struct Vertex3D) == 0x20, "Data type is of wrong size");
+static_assert(sizeof(Vertex3D) == 0x20, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH3D_VERTEX_INCLUDED_H */

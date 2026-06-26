@@ -8,7 +8,7 @@ struct EarthQuake
 {
   uint8_t field_0x0;
 };
-static_assert(sizeof(struct EarthQuake) == 0x1, "Data type is of wrong size");
+static_assert(sizeof(EarthQuake) == 0x1, "Data type is of wrong size");
 
 DECLARE_LH_LIST_HEAD(EarthQuake);
 

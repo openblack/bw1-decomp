@@ -29,7 +29,7 @@ struct InfoTransform
   float inv_aspect_sqr_hypo_inv_times_inv_aspect;
   float inv_aspect_sqr_hypo_inv;
 };
-static_assert(sizeof(struct InfoTransform) == 0x3c, "Data type is of wrong size");
+static_assert(sizeof(InfoTransform) == 0x3c, "Data type is of wrong size");
 
 // win1.41 00819030 mac 100c0920 LH3DTech::UpdateViewPort(long, long)
 void __fastcall UpdateViewPort__8LH3DTechFll(int param_1, int param_2) asm("?UpdateViewPort@LH3DTech@@SAXJJ@Z");

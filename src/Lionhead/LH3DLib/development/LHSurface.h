@@ -30,6 +30,6 @@ struct LHSurface
   uint32_t field_0x28;
   int field_0x2c;
 };
-static_assert(sizeof(struct LHSurface) == 0x30, "Data type is of wrong size");
+static_assert(sizeof(LHSurface) == 0x30, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH_SURFACE_INCLUDED_H */

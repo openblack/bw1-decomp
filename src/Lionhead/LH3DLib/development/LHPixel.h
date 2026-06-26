@@ -8,6 +8,6 @@ struct LHPixel
 {
   uint32_t field_0x0;
 };
-static_assert(sizeof(struct LHPixel) == 0x4, "Data type is of wrong size");
+static_assert(sizeof(LHPixel) == 0x4, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH_PIXEL_INCLUDED_H */

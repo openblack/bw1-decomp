@@ -8,12 +8,12 @@ struct LH_USER_ID
 {
   uint32_t field_0x0;
 };
-static_assert(sizeof(struct LH_USER_ID) == 0x4, "Data type is of wrong size");
+static_assert(sizeof(LH_USER_ID) == 0x4, "Data type is of wrong size");
 
 struct LHNetUser
 {
   struct LH_USER_ID id;  /* 0x0 */
 };
-static_assert(sizeof(struct LHNetUser) == 0x4, "Data type is of wrong size");
+static_assert(sizeof(LHNetUser) == 0x4, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LH_NET_USER_INCLUDED_H */

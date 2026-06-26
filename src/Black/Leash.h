@@ -12,6 +12,6 @@ struct Leash
   float field_0x18;
   struct LHPoint field_0x1c;
 };
-static_assert(sizeof(struct Leash) == 0x28, "Data type is of wrong size");
+static_assert(sizeof(Leash) == 0x28, "Data type is of wrong size");
 
 #endif /* BW1_DECOMP_LEASH_INCLUDED_H */
