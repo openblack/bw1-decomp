@@ -244,8 +244,8 @@ public:
 
     // Non-virtual methods
 
-    // win1.41 00402bc0 mac inlined Abode::SetZero(void)
-    void SetZero();
+    // win1.41 00402bc0 mac inlined Abode::SetToZero(void)
+    void SetToZero();
     // win1.41 00403130 mac 1033b920 Abode::Init(int, unsigned long, unsigned long)
     void Init(int param_1, uint32_t food_amount, uint32_t wood_amount);
     // win1.41 00403590 mac 103602f0 Abode::GetNewEp(ABODE_EPP, MapCoords*)

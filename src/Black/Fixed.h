@@ -40,7 +40,10 @@ public:
     // win1.41 0052e140 mac 100e17b0 FixedObject::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* file);
     // win1.41 00401400 mac 10513b00 FixedObject::CanBeFrighteningToCreature(Creature *)
-    virtual bool32_t CanBeFrighteningToCreature(Creature* creature);
+    virtual bool32_t CanBeFrighteningToCreature(Creature* creature)
+    {
+        return false;
+    }
     // win1.41 00401410 mac 10570f10 FixedObject::CanBeSleptNextToByCreature(Creature *)
     virtual bool32_t CanBeSleptNextToByCreature(Creature* creature);
     // win1.41 00401440 mac 1056c2a0 FixedObject::CanBePickedUpByCreature(Creature *)

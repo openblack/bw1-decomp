@@ -7,7 +7,7 @@
 
 // Forward Declares
 
-struct Archive;
+class Archive;
 class BaseInfo;
 struct LHPoint;
 
@@ -19,31 +19,48 @@ public:
     // Override methods
 
     // win1.41 004011b0 mac 101228f0 Base::Serialise(Archive&)
-    virtual void Serialise(Archive* param_1);
-    // win1.41 00401210 mac 10082770 Base::~Base(void)
+    virtual void Serialise(Archive& param_1)
+    {
+    }
+    // win1.41 00436960 mac 10082770 Base::~Base(void)
     virtual ~Base();
-    // win1.41 004011c0 mac 1056ecc0 Base::Delete(int)
-    virtual void Delete();
+    // win1.41 004011c0 mac 1056ecc0 Base::Delete(void)
+    virtual void Delete()
+    {
+        delete this;
+    }
     // win1.41 004011d0 mac 1032b070 Base::ToBeDeleted(int)
-    virtual void ToBeDeleted(int param_1);
+    virtual void ToBeDeleted(int param_1)
+    {
+        Delete();
+    }
     // win1.41 004011e0 mac 1032b3d0 Base::Get3DSoundPos(LHPoint*)
-    virtual int Get3DSoundPos(LHPoint* param_1);
+    virtual int Get3DSoundPos(LHPoint* param_1)
+    {
+        return 0;
+    }
     // win1.41 004011f0 mac 1032cbf0 Base::CleanUpForSerialisation(void)
-    virtual void CleanUpForSerialisation();
+    virtual void CleanUpForSerialisation()
+    {
+    }
     // win1.41 00401200 mac 106fc7f0 Base::Dump(void)
-    virtual void Dump();
+    virtual void Dump()
+    {
+    }
 
     // Static methods
 
-    // win1.41 004366f0 mac 1009ebc0 Base::operator new(unsigned long)
-    static void* __nw(size_t size, const char* file_name, uint32_t line);
+    // win1.41 004366f0 mac 1009ebc0 Base::operator new(unsigned long, char const*, unsigned long)
+    static void* operator new(size_t size, const char* file_name, uint32_t line);
     // win1.41 00436970 mac 10425a80 Base::operator delete(void*, unsigned long)
-    static void __dl(void* ptr, size_t size);
+    static void operator delete(void* ptr, size_t size);
 
     // Constructors
 
     // win1.41 inlined mac 100a0450 Base::Base(void)
-    Base();
+    Base()
+    {
+    }
 
     // Non-virtual methods
 

@@ -77,9 +77,9 @@ public:
     // win1.41 0042b380 mac 104cc120 GObjectInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
     // win1.41 0042b370 mac 1016ddf0 GObjectInfo::GetMesh( const(void))
-    virtual uint32_t GetMesh();
+    virtual MESH_LIST GetMesh() const;
     // win1.41 00401290 mac 1016e3a0 GObjectInfo::GetMesh(TRIBE_TYPE) const
-    virtual uint32_t GetMesh(TRIBE_TYPE tribe);
+    virtual MESH_LIST GetMesh(TRIBE_TYPE tribe) const;
     // win1.41 004012a0 mac 1016de30 GObjectInfo::GetAlignmentType(void) const
     virtual ALIGNMENT_TYPE GetAlignmentType();
     // win1.41 004012b0 mac 100627a0 GObjectInfo::GetFoodType(void) const

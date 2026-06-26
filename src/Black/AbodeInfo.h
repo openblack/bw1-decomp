@@ -29,7 +29,7 @@ public:
     uint32_t field_0x150;
     uint32_t field_0x154;
     TRIBE_TYPE tribe_type;
-    uint32_t meshId;
+    MESH_LIST meshId;
     uint32_t canBePhysicallyDamaged; /* 0x160 */
     float startLife;
     uint32_t startStrength;
@@ -62,13 +62,22 @@ public:
     // win1.41 00401320 mac 101ca240 GAbodeInfo::~GAbodeInfo(unsigned int)
     virtual ~GAbodeInfo();
     // win1.41 00401270 mac 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
-    virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
+    virtual GBaseInfo& GetBaseInfo(uint32_t& param_1);
     // win1.41 00401240 mac 1019a370 GAbodeInfo::GetMesh() const
-    virtual uint32_t GetMesh();
+    virtual MESH_LIST GetMesh() const
+    {
+        return meshId;
+    }
     // win1.41 00401250 mac 106fde70 GAbodeInfo::GetAbodeType() const
-    virtual ABODE_TYPE GetAbodeType();
+    virtual ABODE_TYPE GetAbodeType() const
+    {
+        return abodeType;
+    }
     // win1.41 00401260 mac 100984c0 GAbodeInfo::GetAbodeNumber() const
-    virtual ABODE_NUMBER GetAbodeNumber();
+    virtual ABODE_NUMBER GetAbodeNumber() const
+    {
+        return abodeNumber;
+    }
 
     // Static methods
 
@@ -86,5 +95,14 @@ public:
     // win1.41 0042e520 mac inlined GAbodeInfo::LoadBinary(LHFile *)
     void LoadBinary(LHFile* file);
 };
+static_assert(sizeof(GAbodeInfo) == 0x1c8, "Data type is of wrong size");
+
+static GAbodeInfo AbodeInfos[0x93];
+
+GBaseInfo& GAbodeInfo::GetBaseInfo(uint32_t& param_1)
+{
+    param_1 = 0x93;
+    return AbodeInfos[0];
+}
 
 #endif /* BW1_DECOMP_ABODE_INFO_INCLUDED_H */

@@ -25,7 +25,9 @@ public:
     // win1.41 00436c60 mac 1055df70 GBaseInfo::GetDebugColor(void) const
     virtual LHColor* GetDebugColor(LHColor* color);
     // win1.41 00401230 mac 101228b0 GBaseInfo::UpdateValue(void)
-    virtual void UpdateValue(float param_1, uint32_t param_2, uint32_t param_3);
+    virtual void UpdateValue(float param_1, uint32_t param_2, uint32_t param_3)
+    {
+    }
 
     // Static methods
 
