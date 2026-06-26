@@ -21,10 +21,21 @@ Sections:
 	SELFMOD     type:data align:4096
 	.rsrc       type:rodata align:4096
 
+lib/libcmt/crt0init.obj:
+	.CRT$XCA    start:0x009C6000 end:0x009C6004 align:4
+	.CRT$XCZ    start:0x009C7E3C end:0x009C7E40 align:4
+	.CRT$XIA    start:0x009C7E40 end:0x009C7E44 align:4
+	.CRT$XIZ    start:0x009C7E58 end:0x009C7E5C align:4
+	.CRT$XPA    start:0x009C7E5C end:0x009C7E60 align:4
+	.CRT$XPZ    start:0x009C7E64 end:0x009C7E68 align:4
+	.CRT$XTA    start:0x009C7E68 end:0x009C7E6C align:4
+	.CRT$XTZ    start:0x009C7E70 end:0x009C7E74 align:4
+
 Black/Abode.cpp:
 	.text       start:0x00401000 end:0x00407840
 	.rdata      start:0x008A99DC end:0x008AB278
 	.rdata$r    start:0x009A62D8 end:0x009A6570
+	.CRT$XCU    start:0x009C6040 end:0x009C6078
 	.data       start:0x009C7E80 end:0x009C8078
 	.bss        start:0x00C3C680 end:0x00C4CC68
 
@@ -1105,16 +1116,6 @@ lib/libcmt/wcspbrk.obj:
 
 lib/libcmt/wcsspn.obj:
 	.text       start:0x008A6145 end:0x008A6187 align:1
-
-lib/libcmt/crt0init.obj:
-	.CRT$XCA    start:0x009C6000 end:0x009C6004 align:4
-	.CRT$XCZ    start:0x009C7E3C end:0x009C7E40 align:4
-	.CRT$XIA    start:0x009C7E40 end:0x009C7E44 align:4
-	.CRT$XIZ    start:0x009C7E58 end:0x009C7E5C align:4
-	.CRT$XPA    start:0x009C7E5C end:0x009C7E60 align:4
-	.CRT$XPZ    start:0x009C7E64 end:0x009C7E68 align:4
-	.CRT$XTA    start:0x009C7E68 end:0x009C7E6C align:4
-	.CRT$XTZ    start:0x009C7E70 end:0x009C7E74 align:4
 
 auto_gap_00C30C40:
 	.data       start:0x00C30C40 end:0x00C30C44 align:1
