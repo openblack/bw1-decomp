@@ -529,7 +529,6 @@ config.libs = [
             Object(NonMatching, "Black/GJVnoise.cpp"),
             Object(NonMatching, "Black/Global.cpp"),
             Object(NonMatching, "Black/GlobalGameLists.cpp"),
-            Object(NonMatching, "Black/Graveyard.cpp"),
             Object(NonMatching, "Black/GraveYard.cpp"),
             Object(NonMatching, "Black/GroupBehaviour.cpp"),
             Object(NonMatching, "Black/GSLobbybox.cpp"),

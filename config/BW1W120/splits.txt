@@ -222,7 +222,7 @@ Black/GameThing.cpp:
 Black/SetupMP3Button.cpp:
 	.text       start:0x00570620 end:0x00573D60
 
-Black/Graveyard.cpp:
+Black/GraveYard.cpp:
 	.text       start:0x00595C00 end:0x00595FC0
 
 Black/GroupBehaviour.cpp:

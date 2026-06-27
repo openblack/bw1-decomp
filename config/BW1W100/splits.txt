@@ -192,7 +192,7 @@ Black/SetupStaticTextNoHit.cpp:
 Black/GestureSystemData.cpp:
 	.text       start:0x005458D0 end:0x00545C50
 
-Black/Graveyard.cpp:
+Black/GraveYard.cpp:
 	.text       start:0x0055CD80 end:0x0055CFD0
 
 Black/GroupBehaviour.cpp:
