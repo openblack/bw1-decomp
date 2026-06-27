@@ -172,7 +172,7 @@ if not config.non_matching:
 # Tool versions
 config.binutils_tag = "2.42-2"
 config.dtk_tag = "v0.0.14"
-config.objdiff_tag = "v3.6.1"
+config.objdiff_tag = "v3.7.2"
 config.sjiswrap_tag = "v1.2.2"
 config.wibo_tag = "1.1.0"
 config.compilers_tag = "6.5"  # MSVC 6.0 SP5
