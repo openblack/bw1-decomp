@@ -1820,11 +1820,46 @@ def generate_build_ninja(
         deps="gcc",
         restat=1,
     )
+    # Augment the split config with verbatim library object paths so dtk can
+    # import their authoritative symbol sizes. This folds interior references
+    # into the real symbol + addend instead of per-element placeholder labels
+    # the verbatim object never defines (which would link as undefined).
+    split_config_path = config.config_path
+    lib_object_entries = []
+    lib_object_paths = []
+    static_libs = config.static_libs or {}
+    for obj in objects.values():
+        extracted = lib_extracted_path(config, obj)
+        # Entries are emitted for every verbatim object of a configured archive,
+        # independent of build_config (which is None while ninja regenerates).
+        # dtk skips any whose unit isn't present in the splits before opening it.
+        if extracted is None or obj.options["lib_archive"] not in static_libs:
+            continue
+        lib_object_entries.append((obj.name, extracted.as_posix()))
+        # Only depend on objects that actually have an extraction rule (units in
+        # the link); the rest are skipped by dtk and never opened.
+        if extracted in lib_extracted_added:
+            lib_object_paths.append(extracted)
+    if lib_object_entries:
+        block = ["lib_objects:"]
+        for unit, path in lib_object_entries:
+            block.append(f"- unit: {unit}")
+            block.append(f"  object: {path}")
+        block_text = "\n".join(block) + "\n"
+        lines = config.config_path.read_text(encoding="utf-8").splitlines(keepends=True)
+        insert_at = next(
+            (i for i, line in enumerate(lines) if line.startswith("modules:")),
+            len(lines),
+        )
+        new_text = "".join(lines[:insert_at]) + block_text + "".join(lines[insert_at:])
+        split_config_path = build_path / "config.yml"
+        split_config_path.parent.mkdir(parents=True, exist_ok=True)
+        split_config_path.write_text(new_text, encoding="utf-8")
     n.build(
-        inputs=config.config_path,
+        inputs=split_config_path,
         outputs=build_config_path,
         rule="split",
-        implicit=dtk,
+        implicit=[dtk, config.config_path, *lib_object_paths],
         variables={"out_dir": build_path},
     )
     n.newline()
