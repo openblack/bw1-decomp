@@ -6,20 +6,20 @@ See [Dependencies](dependencies.md) first.
 
 2. Place the original game executable in `orig/<VERSION>/`. The path inside `orig` matches the version ID in [`configure.py`](/configure.py).
 
-   - `orig/BW1E100/runblack-decrypted.exe` — Windows v1.0 (decrypted)
-   - `orig/BW1E110/runblack-decrypted.exe` — Windows v1.1 (decrypted)
-   - `orig/BW1E120/runblack-decrypted.exe` — Windows v1.2 (decrypted)
-   - `orig/BW1EMAC/Black & White` — Classic Mac OS PEF binary
+   - `orig/BW1W100/runblack-decrypted.exe` — Windows v1.0 (decrypted)
+   - `orig/BW1W110/runblack-decrypted.exe` — Windows v1.1 (decrypted)
+   - `orig/BW1W120/runblack-decrypted.exe` — Windows v1.2 (decrypted)
+   - `orig/BW1M100/Black & White` — Classic Mac OS v1.0.0 PEF binary
 
    The Windows builds expect a **decrypted** exe. The original retail discs ship the executable wrapped in SafeDisc 2 / Macrovision protection. Use the SafeDisc cleaner referenced in the project notes to produce `runblack-decrypted.exe`.
 
 3. Run `configure.py` with the version you want to work on:
 
    ```sh
-   python configure.py --version BW1E100
+   python configure.py --version BW1W100
    ```
 
-   Pass `--version BW1E120` or `--version BW1EMAC` for the other targets. Default is `BW1E120`.
+   Pass `--version BW1W120` or `--version BW1M100` for the other targets. Default is `BW1W120`.
 
 4. Build:
 

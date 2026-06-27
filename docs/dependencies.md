@@ -23,13 +23,13 @@ macOS / Linux
 
 `pip install ninja` (or your package manager) and you're done.
 
-`BW1EMAC` (Classic Mac OS PowerPC, PEF)
+`BW1M100` (Classic Mac OS PowerPC, PEF)
 ---------------------------------------
 
 The Mac target is **WIP** and needs an extra dependency that is **not** auto-downloaded:
 
 - [Retro68](https://github.com/autc04/Retro68), built locally. Provides the `powerpc-apple-macos` binutils, `MakePEF`, and the CFM stub libraries the link consumes.
 
-Set `RETRO68_BIN=/path/to/Retro68/build/toolchain/bin` (or accept the default of `~/code/Retro68/build/toolchain/bin`) before running `configure.py --version BW1EMAC`.
+Set `RETRO68_BIN=/path/to/Retro68/build/toolchain/bin` (or accept the default of `~/code/Retro68/build/toolchain/bin`) before running `configure.py --version BW1M100`.
 
 See the [PEF status TODO](../TODO.md) for the current gaps (objdiff XCOFF reader, MakePEF pidata compression, byte-identical link).

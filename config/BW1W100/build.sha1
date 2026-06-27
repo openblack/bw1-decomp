@@ -1,0 +1,12 @@
+d810fe43e2956f2b76533ab698632756ba99b44d  orig/BW1W100/runblack-decrypted.exe
+d810fe43e2956f2b76533ab698632756ba99b44d  build/BW1W100/runblack-decrypted.exe
+35f149cb77e9f770751112c0c814331c5b92bb4d  orig/BW1W100/LHaudiodllR.dll
+35f149cb77e9f770751112c0c814331c5b92bb4d  build/BW1W100/LHAudio.dll
+30a92037f5b0df604e5fa63aedb4633a6fcdb226  orig/BW1W100/lhlogr.dll
+30a92037f5b0df604e5fa63aedb4633a6fcdb226  build/BW1W100/LHLog.dll
+ef08506f38ea430b9c8348e0f9d44385964ff4d6  orig/BW1W100/LHMultiplayerR.dll
+ef08506f38ea430b9c8348e0f9d44385964ff4d6  build/BW1W100/LHMultiplayer.dll
+64a22b88a51adc4bc119777642263e419ea8d09e  orig/BW1W100/LHDialogLib.dll
+64a22b88a51adc4bc119777642263e419ea8d09e  build/BW1W100/LHDialog.dll
+8e8c7f7dcf2121114ff73ad65112d8eba51675fe  build/lib/libcmt.lib
+792e20d86eb741bc6f111f3ca439620f7b2cf566  build/lib/libcpmt.lib

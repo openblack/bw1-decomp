@@ -25,7 +25,7 @@ const char *z_errmsg[10] = {
 "incompatible version",/* Z_VERSION_ERROR (-6) */
 ""};
 
-#ifndef VERSION_BW1E100
+#ifndef VERSION_BW1W100
 
 const char * ZEXPORT zlibVersion()
 {
@@ -198,7 +198,7 @@ void  zcfree (voidpf opaque, voidpf ptr)
 
 #endif /* MSC */
 
-#endif // VERSION_BW1E100
+#endif // VERSION_BW1W100
 
 #ifndef MY_ZCALLOC /* Any system without a special alloc function */
 
@@ -217,7 +217,7 @@ voidpf zcalloc (opaque, items, size)
     return (voidpf)calloc(items, size);
 }
 
-#ifndef VERSION_BW1E100
+#ifndef VERSION_BW1W100
 
 void  zcfree (opaque, ptr)
     voidpf opaque;
@@ -227,6 +227,6 @@ void  zcfree (opaque, ptr)
     if (opaque) return; /* make compiler happy */
 }
 
-#endif // VERSION_BW1E100
+#endif // VERSION_BW1W100
 
 #endif /* MY_ZCALLOC */

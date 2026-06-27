@@ -1,8 +1,8 @@
-object_base: orig/BW1E110
+object_base: orig/BW1W110
 object: runblack-decrypted.exe
 hash: 44315eb19b6e2ab9023ea330b99bf5d471597402
-symbols: config/BW1E110/symbols.txt
-splits: config/BW1E110/splits.txt
+symbols: config/BW1W110/symbols.txt
+splits: config/BW1W110/splits.txt
 # TODO: Unsure why we get 0x832000, probably because of decryptor
 force_size: 0x00902a0b
 linker_version: "6.0"
@@ -28,23 +28,23 @@ modules:
 - object: LHaudiodllR.dll
   hash: 35f149cb77e9f770751112c0c814331c5b92bb4d
   name: LHAudio
-  symbols: config/BW1E110/LHAudio/symbols.txt
-  splits: config/BW1E110/LHAudio/splits.txt
+  symbols: config/BW1W110/LHAudio/symbols.txt
+  splits: config/BW1W110/LHAudio/splits.txt
 
 - object: LHLogR.dll
   hash: 34419383df8eafc4c4a755cb84da38e64b598f80
   name: LHLog
-  symbols: config/BW1E110/LHLog/symbols.txt
-  splits: config/BW1E110/LHLog/splits.txt
+  symbols: config/BW1W110/LHLog/symbols.txt
+  splits: config/BW1W110/LHLog/splits.txt
 
 - object: LHMultiplayerR.dll
   hash: 184601784d2eb1a2f999f79cd032128cf3196b38
   name: LHMultiplayer
-  symbols: config/BW1E110/LHMultiplayer/symbols.txt
-  splits: config/BW1E110/LHMultiplayer/splits.txt
+  symbols: config/BW1W110/LHMultiplayer/symbols.txt
+  splits: config/BW1W110/LHMultiplayer/splits.txt
 
 - object: LHDialogLib.dll
   hash: 64a22b88a51adc4bc119777642263e419ea8d09e
   name: LHDialog
-  symbols: config/BW1E110/LHDialog/symbols.txt
-  splits: config/BW1E110/LHDialog/splits.txt
+  symbols: config/BW1W110/LHDialog/symbols.txt
+  splits: config/BW1W110/LHDialog/splits.txt
