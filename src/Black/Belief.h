@@ -30,15 +30,12 @@ public:
     // win1.41 00739320 mac 105581c0 GBelief::_dt(void)
     virtual ~GBelief();
 
-    // Static methods
-
-    // win1.41 00438770 mac 100b1810 GBelief::DistanceChangeToBelief(float, float)
-    static float DistanceChangeToBelief(GBelief* this, float param_1, float param_2);
-
     // Non-virtual methods
 
     // win1.41 00437e70 mac 00437e70 GBelief::GetBeliefInPlayer(unsigned long)
     float GetBeliefInPlayer(unsigned long param_1);
+    // win1.41 00438770 mac 100b1810 GBelief::DistanceChangeToBelief(float, float)
+    float DistanceChangeToBelief(float param_1, float param_2);
     // win1.41 004387d0 mac 100b1700 GBelief::SetBelief(unsigned long, float)
     void SetBelief(int index, float value);
     // win1.41 00438a00 mac 100b13e0 GBelief::SetBeliefInPlayerCap(GPlayer *, float)

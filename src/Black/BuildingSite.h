@@ -6,6 +6,7 @@
 
 #include <chlasm/Enum.h> /* For enum RESOURCE_TYPE */
 #include <Lionhead/LH3DLib/development/LHPoint.h> /* For struct LHPoint */
+#include <Lionhead/LHLib/ver5.0/LHLinkedList.h> /* For struct LHLinkedList */
 #include <re_common.h> /* For bool32_t */
 
 #include "GameThing.h" /* For struct GameThing, struct GameThingVftable */
@@ -28,7 +29,7 @@ class BuildingSite: public GameThing
 {
 public:
     MultiMapFixed* root_building; /* 0x14 */
-    LHLinkedList__Villager building_worker_list;
+    LHLinkedList<Villager> building_worker_list;
     uint8_t field_0x20[0x14];
     LHPoint building_positions[0x7f]; /* 0x34 */
     uint8_t field_0x628[0x14];

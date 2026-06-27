@@ -48,7 +48,7 @@ public:
     // win1.41 00648940 mac 10115200 PlannedMultiMapFixed::GetText(void)
     virtual const char* GetText();
     // win1.41 00465560 mac 100d17b0 PlannedMultiMapFixed::IsWonder(void)
-    virtual bool IsWonder();
+    virtual bool32_t IsWonder();
     // win1.41 00648950 mac inlined PlannedMultiMapFixed::CreateBuildingSite(void)
     virtual bool32_t CreateBuildingSite();
     // win1.41 00469660 mac 100bd510 PlannedMultiMapFixed::CreatePlanned(float)
