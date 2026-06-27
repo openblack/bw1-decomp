@@ -14,10 +14,22 @@ class GTownDesireInfo;
 class Town;
 class Villager;
 
+struct DesireSort
+{
+  uint32_t field_0x0;
+  float field_0x4;
+  enum TOWN_DESIRE_INFO field_0x8;
+};
+
 class TownDesire: public Base
 {
 public:
-    TownDesire__field_0x8 field_0x8[TOWN_DESIRE_INFO_LAST];
+    struct field_0x8_t
+    {
+        uint8_t field_0x0[0x8];
+    };
+
+    field_0x8_t field_0x8[TOWN_DESIRE_INFO_LAST];
     float field_0x90[TOWN_DESIRE_INFO_LAST];
     float field_0xd4[TOWN_DESIRE_INFO_LAST];
     float field_0x118[TOWN_DESIRE_INFO_LAST];

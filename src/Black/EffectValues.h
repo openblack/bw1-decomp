@@ -14,6 +14,16 @@
 class GPlayer;
 class GameThing;
 
+struct EffectNumbers
+{
+    float values[EFFECT_TYPE_LAST];  /* 0x0 */
+
+    // Non-virtual methods
+
+    // win1.41 00525720 mac 100cba20 EffectNumbers::operator*=(const float&)
+    EffectNumbers& operator*=(const float& rhs);
+};
+
 class EffectValues: public Base
 {
 public:

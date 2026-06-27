@@ -99,33 +99,33 @@ public:
     uint32_t field_0x748;
     Abode* abode_0x74c;
     uint32_t field_0x750;
-    LHListHead__Abode abode_list;
+    LHListHead<Abode> abode_list;
     Town* next;
     uint32_t field_0x760;
     uint32_t field_0x764;
-    LHLinkedList__Villager homeless_list;
+    LHLinkedList<Villager> homeless_list;
     uint32_t field_0x770;
     uint32_t field_0x774;
-    LHListHead__TownSpellIcon spell_icon_list;
-    LHLinkedList__Field field_list; /* 0x780 */
-    LHLinkedList__FishFarm fish_farms;
-    LHListHead__BuildingSite building_site_list; /* 0x790 */
+    LHListHead<TownSpellIcon> spell_icon_list;
+    LHLinkedList<Field> field_list; /* 0x780 */
+    LHLinkedList<FishFarm> fish_farms;
+    LHListHead<BuildingSite> building_site_list; /* 0x790 */
     GBelief belief;
     uint32_t field_0x968;
     uint32_t field_0x96c;
     uint32_t field_0x970;
     uint32_t field_0x974;
     uint32_t field_0x978;
-    LHLinkedList__Object playthings;
+    LHLinkedList<Object> playthings;
     uint32_t field_0x984;
     uint32_t field_0x988;
     uint32_t field_0x98c;
     uint32_t field_0x990;
-    LHLinkedList__TownArtifact artifacts;
+    LHLinkedList<TownArtifact> artifacts;
     uint32_t field_0x99c;
     uint32_t field_0x9a0;
     TownCentre* town_centre;
-    LHListHead__PlannedMultiMapFixed planned_list;
+    LHListHead<PlannedMultiMapFixed> planned_list;
     TownDesireFlags* town_desire_flags[TOWN_DESIRE_INFO_LAST]; /* 0x9b0 */
     uint32_t field_0x9f4;
     uint32_t field_0x9f8;
@@ -218,9 +218,9 @@ public:
     // win1.41 0073eac0 mac 1054e290 Town::AsssignTownFeature(void)
     static void AsssignTownFeature();
     // win1.41 007412f0 mac 100233e0 Town::FindClearArea(MapCoords &, MapCoords &, float, float, float, int (Object::)(void const *, void const *), Object *)
-    static bool FindClearArea(MapCoords* param_1, MapCoords* param_2, float param_3, float param_4, float param_5, bool (__fastcall*)(Object *) callback, int index, uint32_t param_8, uint32_t param_9, Object* obj);
+    static bool FindClearArea(MapCoords* param_1, MapCoords* param_2, float param_3, float param_4, float param_5, bool (__fastcall* callback)(Object *), int index, uint32_t param_8, uint32_t param_9, Object* obj);
     // win1.41 007413d0 mac 10038890 Town::CheckForClearArea(MapCoords &, float, int (Object::)(void const *, void const *), Object *)
-    static bool CheckForClearArea(MapCoords* param_1, float param_2, bool (__fastcall*)(Object *) callback, int index, uint32_t param_5, uint32_t param_6, Object* obj);
+    static bool CheckForClearArea(MapCoords* param_1, float param_2, bool (__fastcall* callback)(Object *), int index, uint32_t param_5, uint32_t param_6, Object* obj);
 
     // Constructors
 
