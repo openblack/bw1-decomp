@@ -196,7 +196,7 @@ Black/SetupMP3Button.cpp:
 Black/DialogBoxSaveMessage.cpp:
 	.text       start:0x00571740 end:0x00571B20
 
-Black/Graveyard.cpp:
+Black/GraveYard.cpp:
 	.text       start:0x00591B40 end:0x00591ED0
 
 Black/GroupBehaviour.cpp:
