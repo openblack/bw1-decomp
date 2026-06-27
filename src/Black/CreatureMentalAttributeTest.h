@@ -35,7 +35,7 @@ struct AttributeTest
 
     // Constructors
 
-    // win1.41 004d4c20 mac 1024fa20 AttributeTest::AttributeTest(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
+    // BW1W120 004d4c20 BW1M100 1024fa20 AttributeTest::AttributeTest(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
     AttributeTest(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
 };
 
@@ -45,7 +45,7 @@ struct DecisionTree
 
     // Constructors
 
-    // win1.41 004d4380 mac 102506c0 DecisionTree::DecisionTree(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
+    // BW1W120 004d4380 BW1M100 102506c0 DecisionTree::DecisionTree(DECISION_TREE_TYPE, CREATURE_DESIRES, CREATURE_ACTION)
     DecisionTree(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire, CREATURE_ACTION action);
 };
 
@@ -60,7 +60,7 @@ struct DecisionTreeAgenda
 
     // Constructors
 
-    // win1.41 004d43f0 mac 102505c0 DecisionTreeAgenda::DecisionTreeAgenda(DECISION_TREE_TYPE, CREATURE_DESIRES)
+    // BW1W120 004d43f0 BW1M100 102505c0 DecisionTreeAgenda::DecisionTreeAgenda(DECISION_TREE_TYPE, CREATURE_DESIRES)
     DecisionTreeAgenda(DECISION_TREE_TYPE tree_type, CREATURE_DESIRES desire);
 };
 
@@ -70,7 +70,7 @@ struct DecisionTreeCollection
 
     // Constructors
 
-    // win1.41 004d7220 mac 1024c150 DecisionTreeCollection::DecisionTreeCollection(void)
+    // BW1W120 004d7220 BW1M100 1024c150 DecisionTreeCollection::DecisionTreeCollection(void)
     DecisionTreeCollection();
 };
 
@@ -80,7 +80,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cb750 mac 1023cc80 Attribute::_dt(void)
+    // BW1W120 004cb750 BW1M100 1023cc80 Attribute::_dt(void)
     virtual ~Attribute();
 };
 
@@ -90,7 +90,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d6090 mac 10249c80 AttributeAbodeBeingBuilt::_dt(void)
+    // BW1W120 004d6090 BW1M100 10249c80 AttributeAbodeBeingBuilt::_dt(void)
     virtual ~AttributeAbodeBeingBuilt();
 };
 
@@ -100,7 +100,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d6020 mac 10249e60 AttributeAbodeType::_dt(void)
+    // BW1W120 004d6020 BW1M100 10249e60 AttributeAbodeType::_dt(void)
     virtual ~AttributeAbodeType();
 };
 
@@ -110,7 +110,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cb7c0 mac 1024bad0 AttributeAllegiance::_dt(void)
+    // BW1W120 004cb7c0 BW1M100 1024bad0 AttributeAllegiance::_dt(void)
     virtual ~AttributeAllegiance();
 };
 
@@ -120,7 +120,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cb8b0 mac 1024b770 AttributeAnimate::_dt(void)
+    // BW1W120 004cb8b0 BW1M100 1024b770 AttributeAnimate::_dt(void)
     virtual ~AttributeAnimate();
 };
 
@@ -130,7 +130,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d5da0 mac 1024abd0 AttributeCreatureDominantDesire::_dt(void)
+    // BW1W120 004d5da0 BW1M100 1024abd0 AttributeCreatureDominantDesire::_dt(void)
     virtual ~AttributeCreatureDominantDesire();
 };
 
@@ -140,7 +140,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d5e10 mac 1024aa00 AttributeCreatureHeight::_dt(void)
+    // BW1W120 004d5e10 BW1M100 1024aa00 AttributeCreatureHeight::_dt(void)
     virtual ~AttributeCreatureHeight();
 };
 
@@ -150,7 +150,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d5e70 mac 1024a860 AttributeCreatureSpellKnowledge::_dt(void)
+    // BW1W120 004d5e70 BW1M100 1024a860 AttributeCreatureSpellKnowledge::_dt(void)
     virtual ~AttributeCreatureSpellKnowledge();
 };
 
@@ -160,7 +160,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cbbe0 mac 10247480 AttributeCreatureType::_dt(void)
+    // BW1W120 004cbbe0 BW1M100 10247480 AttributeCreatureType::_dt(void)
     virtual ~AttributeCreatureType();
 };
 
@@ -170,7 +170,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d5ed0 mac 1024a6c0 AttributeCreatureWhatHeIsCarrying::_dt(void)
+    // BW1W120 004d5ed0 BW1M100 1024a6c0 AttributeCreatureWhatHeIsCarrying::_dt(void)
     virtual ~AttributeCreatureWhatHeIsCarrying();
 };
 
@@ -180,7 +180,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d5f40 mac 1024a510 AttributeForestSize::_dt(void)
+    // BW1W120 004d5f40 BW1M100 1024a510 AttributeForestSize::_dt(void)
     virtual ~AttributeForestSize();
 };
 
@@ -190,7 +190,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cbb80 mac 102497e0 AttributeIsHarderThanMe::_dt(void)
+    // BW1W120 004cbb80 BW1M100 102497e0 AttributeIsHarderThanMe::_dt(void)
     virtual ~AttributeIsHarderThanMe();
 };
 
@@ -200,7 +200,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cb980 mac 1024b470 AttributeLife::_dt(void)
+    // BW1W120 004cb980 BW1M100 1024b470 AttributeLife::_dt(void)
     virtual ~AttributeLife();
 };
 
@@ -210,7 +210,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d5fb0 mac 1024a010 AttributeMobileObjectType::_dt(void)
+    // BW1W120 004d5fb0 BW1M100 1024a010 AttributeMobileObjectType::_dt(void)
     virtual ~AttributeMobileObjectType();
 };
 
@@ -220,7 +220,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cbac0 mac 10249ad0 AttributeOnFire::_dt(void)
+    // BW1W120 004cbac0 BW1M100 10249ad0 AttributeOnFire::_dt(void)
     virtual ~AttributeOnFire();
 };
 
@@ -230,7 +230,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cb830 mac 1024b920 AttributeOrigin::_dt(void)
+    // BW1W120 004cb830 BW1M100 1024b920 AttributeOrigin::_dt(void)
     virtual ~AttributeOrigin();
 };
 
@@ -240,7 +240,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cbb20 mac 10249960 AttributePlayerNumber::_dt(void)
+    // BW1W120 004cbb20 BW1M100 10249960 AttributePlayerNumber::_dt(void)
     virtual ~AttributePlayerNumber();
 };
 
@@ -250,7 +250,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cba50 mac 1024a200 AttributeSex::_dt(void)
+    // BW1W120 004cba50 BW1M100 1024a200 AttributeSex::_dt(void)
     virtual ~AttributeSex();
 };
 
@@ -260,7 +260,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cd710 mac 1024b0c0 AttributeTownReligiousBeliefInYou::_dt(void)
+    // BW1W120 004cd710 BW1M100 1024b0c0 AttributeTownReligiousBeliefInYou::_dt(void)
     virtual ~AttributeTownReligiousBeliefInYou();
 };
 
@@ -270,7 +270,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cd7e0 mac 1024ad70 AttributeTownSize::_dt(void)
+    // BW1W120 004cd7e0 BW1M100 1024ad70 AttributeTownSize::_dt(void)
     virtual ~AttributeTownSize();
 };
 
@@ -280,7 +280,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cd6a0 mac 1024b2c0 AttributeTribe::_dt(void)
+    // BW1W120 004cd6a0 BW1M100 1024b2c0 AttributeTribe::_dt(void)
     virtual ~AttributeTribe();
 };
 
@@ -290,7 +290,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cb910 mac 1024b610 AttributeType::_dt(void)
+    // BW1W120 004cb910 BW1M100 1024b610 AttributeType::_dt(void)
     virtual ~AttributeType();
 };
 
@@ -300,7 +300,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cb9e0 mac 1024a3a0 AttributeVillagerJob::_dt(void)
+    // BW1W120 004cb9e0 BW1M100 1024a3a0 AttributeVillagerJob::_dt(void)
     virtual ~AttributeVillagerJob();
 };
 
@@ -310,7 +310,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cd770 mac 1024af20 AttributeWhatTownNeedsMost::_dt(void)
+    // BW1W120 004cd770 BW1M100 1024af20 AttributeWhatTownNeedsMost::_dt(void)
     virtual ~AttributeWhatTownNeedsMost();
 };
 

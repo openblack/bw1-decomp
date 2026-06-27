@@ -15,7 +15,7 @@ public:
 
     // Override methods
 
-    // win1.41 0054bd90 mac 1040fcc0 GTerrainMap::_dt(void)
+    // BW1W120 0054bd90 BW1M100 1040fcc0 GTerrainMap::_dt(void)
     virtual ~GTerrainMap();
 };
 

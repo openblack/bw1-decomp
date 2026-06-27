@@ -34,31 +34,31 @@ public:
 
     // Override methods
 
-    // win1.41 005577b0 mac 102ffc00 GGameInfo::_dt(void)
+    // BW1W120 005577b0 BW1M100 102ffc00 GGameInfo::_dt(void)
     virtual ~GGameInfo();
 
     // Constructors
 
-    // win1.41 00557730 mac 102ff6c0 GGameInfo::GGameInfo(void)
+    // BW1W120 00557730 BW1M100 102ff6c0 GGameInfo::GGameInfo(void)
     GGameInfo();
 
     // Non-virtual methods
 
-    // win1.41 00557620 mac 102ff910 GGameInfo::SetVisualTimeCycle(float, float, float)
+    // BW1W120 00557620 BW1M100 102ff910 GGameInfo::SetVisualTimeCycle(float, float, float)
     void SetVisualTimeCycle(float param_1, float param_2, float param_3);
-    // win1.41 005577d0 mac 102ff520 GGameInfo::SetStartDate(long, long, long)
+    // BW1W120 005577d0 BW1M100 102ff520 GGameInfo::SetStartDate(long, long, long)
     void SetStartDate(int year, int month, int day);
-    // win1.41 005577f0 mac 102ff380 GGameInfo::SetStartTime(long, long, long)
+    // BW1W120 005577f0 BW1M100 102ff380 GGameInfo::SetStartTime(long, long, long)
     void SetStartTime(int hour, int minute, int second);
-    // win1.41 00557940 mac 100789f0 GGameInfo::GetDaysFromStart(void)
+    // BW1W120 00557940 BW1M100 100789f0 GGameInfo::GetDaysFromStart(void)
     float GetDaysFromStart();
-    // win1.41 00557950 mac 1008c390 GGameInfo::GetYear(void)
+    // BW1W120 00557950 BW1M100 1008c390 GGameInfo::GetYear(void)
     float GetYear();
-    // win1.41 00557a80 mac 10099e70 GGameInfo::GetSeason(void)
+    // BW1W120 00557a80 BW1M100 10099e70 GGameInfo::GetSeason(void)
     uint32_t GetSeason();
-    // win1.41 00557b60 mac 1008c3f0 GGameInfo::Process(void)
+    // BW1W120 00557b60 BW1M100 1008c3f0 GGameInfo::Process(void)
     void Process();
-    // win1.41 00557bb0 mac 102fecf0 GGameInfo::SetVisualTimeCycleFromMapEditor(float, float, float)
+    // BW1W120 00557bb0 BW1M100 102fecf0 GGameInfo::SetVisualTimeCycleFromMapEditor(float, float, float)
     void SetVisualTimeCycleFromMapEditor(float param_1, float param_2, float param_3);
 };
 

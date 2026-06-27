@@ -16,7 +16,7 @@ struct BookmarkGraphic
 
     // Static methods
 
-    // win1.41 0043a7d0 mac 100b5760 BookmarkGraphic::Create(long, CREATURE_TYPE)
+    // BW1W120 0043a7d0 BW1M100 100b5760 BookmarkGraphic::Create(long, CREATURE_TYPE)
     static BookmarkGraphic* Create(int param_1, CREATURE_TYPE type);
 };
 

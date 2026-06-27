@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 0062f4a0 mac 103a5220 MPFEFileTransferMessage::_dt(void)
+    // BW1W120 0062f4a0 BW1M100 103a5220 MPFEFileTransferMessage::_dt(void)
     virtual ~MPFEFileTransferMessage();
 };
 

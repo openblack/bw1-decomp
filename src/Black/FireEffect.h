@@ -35,35 +35,35 @@ public:
 
     // Override methods
 
-    // win1.41 0072eae0 mac 10150470 FireEffect::_dt(void)
+    // BW1W120 0072eae0 BW1M100 10150470 FireEffect::_dt(void)
     virtual ~FireEffect();
-    // win1.41 0072ebe0 mac 101500c0 FireEffect::ToBeDeleted(int)
+    // BW1W120 0072ebe0 BW1M100 101500c0 FireEffect::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0072ee70 mac 1014fd50 FireEffect::Get3DSoundPos(LHPoint *)
+    // BW1W120 0072ee70 BW1M100 1014fd50 FireEffect::Get3DSoundPos(LHPoint *)
     virtual int Get3DSoundPos(LHPoint* param_1);
-    // win1.41 0072eab0 mac 1014cc60 FireEffect::GetPlayer(void)
+    // BW1W120 0072eab0 BW1M100 1014cc60 FireEffect::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 0072ead0 mac 10150910 FireEffect::GetDebugText(void)
+    // BW1W120 0072ead0 BW1M100 10150910 FireEffect::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00730df0 mac 1014bcc0 FireEffect::Load(GameOSFile &)
+    // BW1W120 00730df0 BW1M100 1014bcc0 FireEffect::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00730b00 mac 1014c110 FireEffect::Save(GameOSFile &)
+    // BW1W120 00730b00 BW1M100 1014c110 FireEffect::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0072eac0 mac 101508d0 FireEffect::GetSaveType(void)
+    // BW1W120 0072eac0 BW1M100 101508d0 FireEffect::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 007310d0 mac 1014bc70 FireEffect::ResolveLoad(void)
+    // BW1W120 007310d0 BW1M100 1014bc70 FireEffect::ResolveLoad(void)
     virtual void ResolveLoad();
 
     // Constructors
 
-    // win1.41 0072ea80 mac 10150740 FireEffect::FireEffect(void)
+    // BW1W120 0072ea80 BW1M100 10150740 FireEffect::FireEffect(void)
     FireEffect();
 
     // Non-virtual methods
 
-    // win1.41 00730ad0 mac 1014c5c0 FireEffect::CreateSprites(void)
+    // BW1W120 00730ad0 BW1M100 1014c5c0 FireEffect::CreateSprites(void)
     FireGraphic* CreateSprites();
-    // win1.41 00732ae0 mac 10149240 FireEffect::GetFirstCaused(void)
+    // BW1W120 00732ae0 BW1M100 10149240 FireEffect::GetFirstCaused(void)
     uint32_t GetFirstCaused();
 };
 

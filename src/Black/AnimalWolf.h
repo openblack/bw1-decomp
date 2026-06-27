@@ -23,31 +23,31 @@ public:
 
     // Override methods
 
-    // win1.41 004208e0 mac 10176960 SpellWolf::_dt(void)
+    // BW1W120 004208e0 BW1M100 10176960 SpellWolf::_dt(void)
     virtual ~SpellWolf();
-    // win1.41 004208a0 mac 101769f0 SpellWolf::GetPlayer(void)
+    // BW1W120 004208a0 BW1M100 101769f0 SpellWolf::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 004208b0 mac 10176a30 SpellWolf::SetPlayer(GPlayer *)
+    // BW1W120 004208b0 BW1M100 10176a30 SpellWolf::SetPlayer(GPlayer *)
     virtual void SetPlayer(GPlayer* param_1);
-    // win1.41 004208d0 mac 10176ab0 SpellWolf::GetDebugText(void)
+    // BW1W120 004208d0 BW1M100 10176ab0 SpellWolf::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 004210b0 mac 10176d80 SpellWolf::Load(GameOSFile &)
+    // BW1W120 004210b0 BW1M100 10176d80 SpellWolf::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 004211d0 mac 10176bb0 SpellWolf::Save(GameOSFile &)
+    // BW1W120 004211d0 BW1M100 10176bb0 SpellWolf::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 004208c0 mac 10176a70 SpellWolf::GetSaveType(void)
+    // BW1W120 004208c0 BW1M100 10176a70 SpellWolf::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0051c560 mac 100c4a10 SpellWolf::Draw(void)
+    // BW1W120 0051c560 BW1M100 100c4a10 SpellWolf::Draw(void)
     virtual void Draw();
-    // win1.41 00420910 mac 10177d60 SpellWolf::CallVirtualFunctionsForCreation(MapCoords const &)
+    // BW1W120 00420910 BW1M100 10177d60 SpellWolf::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
-    // win1.41 00420cf0 mac 101777b0 SpellWolf::SetDying(void)
+    // BW1W120 00420cf0 BW1M100 101777b0 SpellWolf::SetDying(void)
     virtual bool SetDying();
-    // win1.41 0041c6a0 mac 1016ee70 SpellWolf::StandAnimation(void)
+    // BW1W120 0041c6a0 BW1M100 1016ee70 SpellWolf::StandAnimation(void)
     virtual uint32_t StandAnimation();
-    // win1.41 004209b0 mac 10177c00 SpellWolf::SetSpeed(long)
+    // BW1W120 004209b0 BW1M100 10177c00 SpellWolf::SetSpeed(long)
     virtual void SetSpeed(int param_1);
-    // win1.41 00420d50 mac 10177770 SpellWolf::GetNumTurnsToDieOver(void)
+    // BW1W120 00420d50 BW1M100 10177770 SpellWolf::GetNumTurnsToDieOver(void)
     virtual uint32_t GetNumTurnsToDieOver();
 };
 
@@ -57,13 +57,13 @@ public:
 
     // Override methods
 
-    // win1.41 00421680 mac 10120e40 Wolf::_dt(void)
+    // BW1W120 00421680 BW1M100 10120e40 Wolf::_dt(void)
     virtual ~Wolf();
-    // win1.41 00421670 mac 101790c0 Wolf::GetDebugText(void)
+    // BW1W120 00421670 BW1M100 101790c0 Wolf::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00421660 mac 10179090 Wolf::GetSaveType(void)
+    // BW1W120 00421660 BW1M100 10179090 Wolf::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0041c580 mac 1016f1b0 Wolf::StandAnimation(void)
+    // BW1W120 0041c580 BW1M100 1016f1b0 Wolf::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
 

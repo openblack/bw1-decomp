@@ -31,7 +31,7 @@ struct Q212WorshipTotem13TChargingData
 
     // Constructors
 
-    // win1.41 00780af0 mac inlined WorshipTotem::TChargingData::TChargingData(void)
+    // BW1W120 00780af0 BW1M100 inlined WorshipTotem::TChargingData::TChargingData(void)
     Q212WorshipTotem13TChargingData();
 };
 
@@ -44,55 +44,55 @@ public:
 
     // Override methods
 
-    // win1.41 00780810 mac 105b74d0 WorshipTotem::_dt(void)
+    // BW1W120 00780810 BW1M100 105b74d0 WorshipTotem::_dt(void)
     virtual ~WorshipTotem();
-    // win1.41 007808e0 mac 105b8520 WorshipTotem::ToBeDeleted(int)
+    // BW1W120 007808e0 BW1M100 105b8520 WorshipTotem::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00780800 mac 105b7760 WorshipTotem::GetDebugText(void)
+    // BW1W120 00780800 BW1M100 105b7760 WorshipTotem::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00780f10 mac 105b7910 WorshipTotem::Load(GameOSFile &)
+    // BW1W120 00780f10 BW1M100 105b7910 WorshipTotem::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00780f90 mac 105b7820 WorshipTotem::Save(GameOSFile &)
+    // BW1W120 00780f90 BW1M100 105b7820 WorshipTotem::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 007807f0 mac 105b7720 WorshipTotem::GetSaveType(void)
+    // BW1W120 007807f0 BW1M100 105b7720 WorshipTotem::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00780f00 mac 105b7a00 WorshipTotem::ResolveLoad(void)
+    // BW1W120 00780f00 BW1M100 105b7a00 WorshipTotem::ResolveLoad(void)
     virtual void ResolveLoad();
-    // win1.41 00780ad0 mac 105b8160 WorshipTotem::GetPSysPower( const(void))
+    // BW1W120 00780ad0 BW1M100 105b8160 WorshipTotem::GetPSysPower( const(void))
     virtual float GetPSysPower();
-    // win1.41 00780a80 mac 105b8330 WorshipTotem::CalculateDesireForFood(void)
+    // BW1W120 00780a80 BW1M100 105b8330 WorshipTotem::CalculateDesireForFood(void)
     virtual float CalculateDesireForFood();
-    // win1.41 00780a90 mac 105b82c0 WorshipTotem::CalculateDesireForRest(void)
+    // BW1W120 00780a90 BW1M100 105b82c0 WorshipTotem::CalculateDesireForRest(void)
     virtual float CalculateDesireForRest();
-    // win1.41 00780aa0 mac 105b8240 WorshipTotem::CalculatePeopleHidingIndicator(void)
+    // BW1W120 00780aa0 BW1M100 105b8240 WorshipTotem::CalculatePeopleHidingIndicator(void)
     virtual float CalculatePeopleHidingIndicator();
-    // win1.41 007807e0 mac 105b76e0 WorshipTotem::IsSacrificeAltar(void)
+    // BW1W120 007807e0 BW1M100 105b76e0 WorshipTotem::IsSacrificeAltar(void)
     virtual uint32_t IsSacrificeAltar();
-    // win1.41 007807b0 mac inlined WorshipTotem::SetSpecularColor(LH3DColor)
+    // BW1W120 007807b0 BW1M100 inlined WorshipTotem::SetSpecularColor(LH3DColor)
     virtual void SetSpecularColor(LH3DColor param_1);
-    // win1.41 007807c0 mac 105b7650 WorshipTotem::GetSpecularColor(void)
+    // BW1W120 007807c0 BW1M100 105b7650 WorshipTotem::GetSpecularColor(void)
     virtual LH3DColor GetSpecularColor();
-    // win1.41 00780a70 mac 105b83a0 WorshipTotem::GetMesh( const(void))
+    // BW1W120 00780a70 BW1M100 105b83a0 WorshipTotem::GetMesh( const(void))
     virtual int GetMesh();
-    // win1.41 00519360 mac 100c7bd0 WorshipTotem::Draw(void)
+    // BW1W120 00519360 BW1M100 100c7bd0 WorshipTotem::Draw(void)
     virtual void Draw();
-    // win1.41 00780ab0 mac 105b81d0 WorshipTotem::CallVirtualFunctionsForCreation(MapCoords const &)
+    // BW1W120 00780ab0 BW1M100 105b81d0 WorshipTotem::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
-    // win1.41 007807d0 mac 105b7690 WorshipTotem::Get3DType(void)
+    // BW1W120 007807d0 BW1M100 105b7690 WorshipTotem::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
-    // win1.41 00780790 mac 105b7570 WorshipTotem::IsSpellSeedReturnPoint( const(void))
+    // BW1W120 00780790 BW1M100 105b7570 WorshipTotem::IsSpellSeedReturnPoint( const(void))
     virtual bool IsSpellSeedReturnPoint();
-    // win1.41 007807a0 mac 105b75c0 WorshipTotem::IsEffectReceiver(EffectValues *)
+    // BW1W120 007807a0 BW1M100 105b75c0 WorshipTotem::IsEffectReceiver(EffectValues *)
     virtual uint32_t IsEffectReceiver(EffectValues* param_1);
 
     // Static methods
 
-    // win1.41 00780930 mac 105b8440 WorshipTotem::Create(WorshipSite *)
+    // BW1W120 00780930 BW1M100 105b8440 WorshipTotem::Create(WorshipSite *)
     static WorshipTotem* Create(WorshipSite* site);
 
     // Constructors
 
-    // win1.41 00780840 mac 105b8640 WorshipTotem::WorshipTotem(WorshipSite *)
+    // BW1W120 00780840 BW1M100 105b8640 WorshipTotem::WorshipTotem(WorshipSite *)
     WorshipTotem(WorshipSite* site);
 };
 

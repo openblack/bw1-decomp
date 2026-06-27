@@ -19,7 +19,7 @@ struct CameraHelpAccumulator
 
     // Non-virtual methods
 
-    // win1.41 00448f20 mac 1019cd90 CameraHelpAccumulator::Reset(void)
+    // BW1W120 00448f20 BW1M100 1019cd90 CameraHelpAccumulator::Reset(void)
     void Reset();
 };
 
@@ -33,19 +33,19 @@ public:
 
     // Override methods
 
-    // win1.41 005c4560 mac 1034b480 HelpProfile::_dt(void)
+    // BW1W120 005c4560 BW1M100 1034b480 HelpProfile::_dt(void)
     virtual ~HelpProfile();
 
     // Static methods
 
-    // win1.41 005c4500 mac 1034b3b0 HelpProfile::Create(void)
+    // BW1W120 005c4500 BW1M100 1034b3b0 HelpProfile::Create(void)
     static HelpProfile* Create();
 
     // Non-virtual methods
 
-    // win1.41 005c46e0 mac 100895a0 HelpProfile::Trigger(HELP_EVENT_TYPE)
+    // BW1W120 005c46e0 BW1M100 100895a0 HelpProfile::Trigger(HELP_EVENT_TYPE)
     void Trigger(HELP_EVENT_TYPE param_1);
-    // win1.41 005c4770 mac 1034b310 HelpProfile::SetToZero(void)
+    // BW1W120 005c4770 BW1M100 1034b310 HelpProfile::SetToZero(void)
     void SetToZero();
 };
 

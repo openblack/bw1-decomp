@@ -13,7 +13,7 @@ public:
 
     // Constructors
 
-    // win1.41 0078f110 mac 10114a00 PictureRoomBase::PictureRoomBase(char const *)
+    // BW1W120 0078f110 BW1M100 10114a00 PictureRoomBase::PictureRoomBase(char const *)
     PictureRoomBase(const char* param_1);
 };
 

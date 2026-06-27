@@ -19,13 +19,13 @@ public:
 
     // Static methods
 
-    // win1.41 00445050 mac 1019bdb0 GCameraEditor::FinalDraw(void)
+    // BW1W120 00445050 BW1M100 1019bdb0 GCameraEditor::FinalDraw(void)
     static void FinalDraw();
-    // win1.41 00445530 mac 1019b6c0 GCameraEditor::CreateSegFile(void)
+    // BW1W120 00445530 BW1M100 1019b6c0 GCameraEditor::CreateSegFile(void)
     static void CreateSegFile();
-    // win1.41 00445e10 mac 1019b440 GCameraEditor::Draw3DPart(void)
+    // BW1W120 00445e10 BW1M100 1019b440 GCameraEditor::Draw3DPart(void)
     static void Draw3DPart();
-    // win1.41 00446fe0 mac 1019adf0 GCameraEditor::LoadCameraFromHD(long, GCameraEditor::CameraBin &)
+    // BW1W120 00446fe0 BW1M100 1019adf0 GCameraEditor::LoadCameraFromHD(long, GCameraEditor::CameraBin &)
     static void LoadCameraFromHD(int param_1, GCameraEditor__CameraBin* param_2);
 };
 
@@ -45,7 +45,7 @@ struct Q213GCameraEditor9InfoTrack
 
     // Non-virtual methods
 
-    // win1.41 00446450 mac 1019b070 GCameraEditor::InfoTrack::Draw(void)
+    // BW1W120 00446450 BW1M100 1019b070 GCameraEditor::InfoTrack::Draw(void)
     void Draw();
 };
 

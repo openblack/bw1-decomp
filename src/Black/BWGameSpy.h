@@ -12,7 +12,7 @@ public:
 
     // Override methods
 
-    // win1.41 0043e290 mac 105d1460 BWGameSpy::Connect(void)
+    // BW1W120 0043e290 BW1M100 105d1460 BWGameSpy::Connect(void)
     virtual uint32_t Connect();
 };
 

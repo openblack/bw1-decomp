@@ -18,13 +18,13 @@ public:
 
     // Override methods
 
-    // win1.41 0041fca0 mac 10171210 Leopard::_dt(void)
+    // BW1W120 0041fca0 BW1M100 10171210 Leopard::_dt(void)
     virtual ~Leopard();
-    // win1.41 0041fc90 mac 101712e0 Leopard::GetDebugText(void)
+    // BW1W120 0041fc90 BW1M100 101712e0 Leopard::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0041fc80 mac 101712a0 Leopard::GetSaveType(void)
+    // BW1W120 0041fc80 BW1M100 101712a0 Leopard::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0041c2e0 mac 1016f8c0 Leopard::StandAnimation(void)
+    // BW1W120 0041c2e0 BW1M100 1016f8c0 Leopard::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
 

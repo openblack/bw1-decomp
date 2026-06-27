@@ -17,11 +17,11 @@ public:
 
     // Override methods
 
-    // win1.41 00466500 mac 10086ed0 PSysBase::_dt(void)
+    // BW1W120 00466500 BW1M100 10086ed0 PSysBase::_dt(void)
     virtual ~PSysBase();
-    // win1.41 004664f0 mac 10110ed0 PSysBase::GetDebugText(void)
+    // BW1W120 004664f0 BW1M100 10110ed0 PSysBase::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 006944b0 mac 1041db80 PSysBase::Load(GameOSFile &)
+    // BW1W120 006944b0 BW1M100 1041db80 PSysBase::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
 };
 

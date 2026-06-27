@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 00421f20 mac 100a67f0 GAnimatedStaticInfo::_dt(void)
+    // BW1W120 00421f20 BW1M100 100a67f0 GAnimatedStaticInfo::_dt(void)
     virtual ~GAnimatedStaticInfo();
 };
 

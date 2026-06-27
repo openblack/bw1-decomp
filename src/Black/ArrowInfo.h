@@ -17,9 +17,9 @@ public:
 
     // Override methods
 
-    // win1.41 00425980 mac 100ad540 GArrowInfo::_dt(void)
+    // BW1W120 00425980 BW1M100 100ad540 GArrowInfo::_dt(void)
     virtual ~GArrowInfo();
-    // win1.41 00425930 mac 100ad830 GArrowInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00425930 BW1M100 100ad830 GArrowInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

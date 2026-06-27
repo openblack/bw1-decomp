@@ -17,14 +17,14 @@ public:
 
     // Override methods
 
-    // win1.41 005159d0 mac 102b5db0 DialogBoxSaveMessage::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    // BW1W120 005159d0 BW1M100 102b5db0 DialogBoxSaveMessage::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
     virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // win1.41 00515b80 mac 102b5d50 DialogBoxSaveMessage::Destroy(void)
+    // BW1W120 00515b80 BW1M100 102b5d50 DialogBoxSaveMessage::Destroy(void)
     virtual void Destroy();
 
     // Constructors
 
-    // win1.41 00515990 mac 102b6020 DialogBoxSaveMessage::DialogBoxSaveMessage(void)
+    // BW1W120 00515990 BW1M100 102b6020 DialogBoxSaveMessage::DialogBoxSaveMessage(void)
     DialogBoxSaveMessage();
 };
 

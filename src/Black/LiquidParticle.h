@@ -37,7 +37,7 @@ struct LiquidParticleGroup
 };
 static_assert(sizeof(LiquidParticleGroup) == 0xb01c, "Data type is of wrong size");
 
-// win1.41 005cdfc0 mac 1035c8f0 sparklecbstub(LiquidParticleGroup *, unsigned long)
+// BW1W120 005cdfc0 BW1M100 1035c8f0 sparklecbstub(LiquidParticleGroup *, unsigned long)
 void __cdecl sparklecbstub__FP19LiquidParticleGroupUl(struct LiquidParticleGroup* param_1, struct GInterface* param_2);
 
 #endif /* BW1_DECOMP_LIQUID_PARTICLE_INCLUDED_H */

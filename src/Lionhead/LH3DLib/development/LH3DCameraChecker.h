@@ -18,7 +18,7 @@ struct LH3DCameraChecker
 
     // Static methods
 
-    // win1.41 00821050 mac 100c4df0 LH3DCameraChecker::Create(float, LHPoint, float, long, bool)
+    // BW1W120 00821050 BW1M100 100c4df0 LH3DCameraChecker::Create(float, LHPoint, float, long, bool)
     static void Create(float max_distance, LHPoint point, float param_3, long param_4, bool y_only);
 };
 

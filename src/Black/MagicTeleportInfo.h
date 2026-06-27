@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 004356c0 mac 103b2190 GMagicTeleportInfo::_dt(void)
+    // BW1W120 004356c0 BW1M100 103b2190 GMagicTeleportInfo::_dt(void)
     virtual ~GMagicTeleportInfo();
 };
 

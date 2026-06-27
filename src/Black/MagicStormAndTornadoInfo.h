@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 00435740 mac 103aebf0 GMagicStormAndTornadoInfo::_dt(void)
+    // BW1W120 00435740 BW1M100 103aebf0 GMagicStormAndTornadoInfo::_dt(void)
     virtual ~GMagicStormAndTornadoInfo();
 };
 

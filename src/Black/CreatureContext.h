@@ -27,7 +27,7 @@ public:
 
     // Override methods
 
-    // win1.41 004cfe60 mac 101da7e0 CreatureContext::_dt(void)
+    // BW1W120 004cfe60 BW1M100 101da7e0 CreatureContext::_dt(void)
     virtual ~CreatureContext();
 };
 

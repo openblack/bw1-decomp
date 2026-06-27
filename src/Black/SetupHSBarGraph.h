@@ -16,16 +16,16 @@ public:
 
     // Override methods
 
-    // win1.41 0040d3c0 mac 100df500 SetupHSBarGraph::Draw(bool, bool)
+    // BW1W120 0040d3c0 BW1M100 100df500 SetupHSBarGraph::Draw(bool, bool)
     virtual void Draw(bool hovered, bool selected);
-    // win1.41 0056d960 mac 100cd050 SetupHSBarGraph::~SetupHSBarGraph(void)
+    // BW1W120 0056d960 BW1M100 100cd050 SetupHSBarGraph::~SetupHSBarGraph(void)
     virtual ~SetupHSBarGraph();
-    // win1.41 0040d9a0 mac 10130720 SetupHSBarGraph::SetScale(float)
+    // BW1W120 0040d9a0 BW1M100 10130720 SetupHSBarGraph::SetScale(float)
     virtual void SetScale(float scale);
 
     // Constructors
 
-    // win1.41 inlined mac inlined SetupHSBarGraph::SetupHSBarGraph(int, int, int, int, int, wchar_t *)
+    // BW1W120 inlined BW1M100 inlined SetupHSBarGraph::SetupHSBarGraph(int, int, int, int, int, wchar_t *)
     SetupHSBarGraph(int id, int x, int y, int width, int height, const char16_t* label);
 };
 

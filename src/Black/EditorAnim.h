@@ -13,13 +13,13 @@ public:
 
     // Override methods
 
-    // win1.41 0051cde0 mac inlined AnimEdit::ProcessTurn(void)
+    // BW1W120 0051cde0 BW1M100 inlined AnimEdit::ProcessTurn(void)
     virtual int ProcessTurn();
-    // win1.41 0051d460 mac inlined AnimEdit::Display(void)
+    // BW1W120 0051d460 BW1M100 inlined AnimEdit::Display(void)
     virtual void Display();
-    // win1.41 0051de20 mac inlined AnimEdit::PrssKey(LH_KEY, unsigned short)
+    // BW1W120 0051de20 BW1M100 inlined AnimEdit::PrssKey(LH_KEY, unsigned short)
     virtual void PrssKey(LH_KEY param_1, uint16_t param_2);
-    // win1.41 0051e370 mac inlined AnimEdit::ClickFunction(int, int, int)
+    // BW1W120 0051e370 BW1M100 inlined AnimEdit::ClickFunction(int, int, int)
     virtual void ClickFunction(int param_1, int param_2, int param_3);
 };
 

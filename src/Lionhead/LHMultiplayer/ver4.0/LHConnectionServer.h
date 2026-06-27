@@ -14,7 +14,7 @@ struct LHConnectionServer
 
     // Non-virtual methods
 
-    // win1.41 inlined mac 100e09b0 LHConnectionServer::ConnectToConnection(LHConnection *)
+    // BW1W120 inlined BW1M100 100e09b0 LHConnectionServer::ConnectToConnection(LHConnection *)
     uint32_t ConnectToConnection(LHConnection* connection);
 };
 

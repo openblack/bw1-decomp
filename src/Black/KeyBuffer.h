@@ -16,12 +16,12 @@ public:
 
     // Override methods
 
-    // win1.41 0054b950 mac 10167a10 GKeyBuffer::_dt(void)
+    // BW1W120 0054b950 BW1M100 10167a10 GKeyBuffer::_dt(void)
     virtual ~GKeyBuffer();
 
     // Constructors
 
-    // win1.41 0054b930 mac inlined GKeyBuffer::GKeyBuffer(void)
+    // BW1W120 0054b930 BW1M100 inlined GKeyBuffer::GKeyBuffer(void)
     GKeyBuffer();
 };
 
@@ -31,7 +31,7 @@ public:
 
     // Override methods
 
-    // win1.41 005e1b40 mac 1016c7e0 GKeyInput::_dt(void)
+    // BW1W120 005e1b40 BW1M100 1016c7e0 GKeyInput::_dt(void)
     virtual ~GKeyInput();
 };
 

@@ -20,17 +20,17 @@ public:
 
     // Override methods
 
-    // win1.41 00672cb0 mac 103dcfb0 PSysManager::_dt(void)
+    // BW1W120 00672cb0 BW1M100 103dcfb0 PSysManager::_dt(void)
     virtual ~PSysManager();
-    // win1.41 006735c0 mac 103dc100 PSysManager::GetPlayer(void)
+    // BW1W120 006735c0 BW1M100 103dc100 PSysManager::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 00672ca0 mac 10423d00 PSysManager::GetDebugText(void)
+    // BW1W120 00672ca0 BW1M100 10423d00 PSysManager::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00694500 mac 1041d6f0 PSysManager::Load(GameOSFile &)
+    // BW1W120 00694500 BW1M100 1041d6f0 PSysManager::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 006cb090 mac 104858d0 PSysManager::Save(GameOSFile &)
+    // BW1W120 006cb090 BW1M100 104858d0 PSysManager::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 00672c90 mac 10423cc0 PSysManager::GetSaveType(void)
+    // BW1W120 00672c90 BW1M100 10423cc0 PSysManager::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
 

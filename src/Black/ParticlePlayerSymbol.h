@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 006c9d50 mac 1047a0b0 ParticlePlayerSymbol::_dt(void)
+    // BW1W120 006c9d50 BW1M100 1047a0b0 ParticlePlayerSymbol::_dt(void)
     virtual ~ParticlePlayerSymbol();
 };
 

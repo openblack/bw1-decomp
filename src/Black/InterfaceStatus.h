@@ -65,52 +65,52 @@ public:
 
     // Override methods
 
-    // win1.41 005db990 mac 1036f480 GInterfaceStatus::_dt(void)
+    // BW1W120 005db990 BW1M100 1036f480 GInterfaceStatus::_dt(void)
     virtual ~GInterfaceStatus();
-    // win1.41 005dbb00 mac 1036f260 GInterfaceStatus::ToBeDeleted(int)
+    // BW1W120 005dbb00 BW1M100 1036f260 GInterfaceStatus::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 005dbc20 mac 10058730 GInterfaceStatus::GetPlayer(void)
+    // BW1W120 005dbc20 BW1M100 10058730 GInterfaceStatus::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 005dc8f0 mac 1036d0e0 GInterfaceStatus::UpdateSpellInfo(Spell *, PSysProcessInfo *)
+    // BW1W120 005dc8f0 BW1M100 1036d0e0 GInterfaceStatus::UpdateSpellInfo(Spell *, PSysProcessInfo *)
     virtual void UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2);
-    // win1.41 005db980 mac 1036be40 GInterfaceStatus::GetDebugText(void)
+    // BW1W120 005db980 BW1M100 1036be40 GInterfaceStatus::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 005dcdc0 mac 1036c160 GInterfaceStatus::Load(GameOSFile &)
+    // BW1W120 005dcdc0 BW1M100 1036c160 GInterfaceStatus::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 005dca50 mac 1036c810 GInterfaceStatus::Save(GameOSFile &)
+    // BW1W120 005dca50 BW1M100 1036c810 GInterfaceStatus::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 005db970 mac 1036be00 GInterfaceStatus::GetSaveType(void)
+    // BW1W120 005db970 BW1M100 1036be00 GInterfaceStatus::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 005dd130 mac 1036c080 GInterfaceStatus::SaveExtraData(GameOSFile &)
+    // BW1W120 005dd130 BW1M100 1036c080 GInterfaceStatus::SaveExtraData(GameOSFile &)
     virtual void SaveExtraData(GameOSFile* param_1);
-    // win1.41 005dd190 mac 1036c020 GInterfaceStatus::ResolveLoad(void)
+    // BW1W120 005dd190 BW1M100 1036c020 GInterfaceStatus::ResolveLoad(void)
     virtual void ResolveLoad();
-    // win1.41 005db960 mac 1036bdc0 GInterfaceStatus::GetText(void)
+    // BW1W120 005db960 BW1M100 1036bdc0 GInterfaceStatus::GetText(void)
     virtual const char* GetText();
 
     // Static methods
 
-    // win1.41 005cedc0 mac 1035acc0 GInterfaceStatus::SetActive(int)
+    // BW1W120 005cedc0 BW1M100 1035acc0 GInterfaceStatus::SetActive(int)
     static void SetActive(GInterface* this, const void* edx, int param_1);
-    // win1.41 005d29c0 mac 10026ad0 GInterfaceStatus::ResetActionState(void)
+    // BW1W120 005d29c0 BW1M100 10026ad0 GInterfaceStatus::ResetActionState(void)
     static void ResetActionState(GInterface* this);
 
     // Constructors
 
-    // win1.41 005db860 mac 1036f590 GInterfaceStatus::GInterfaceStatus(void)
+    // BW1W120 005db860 BW1M100 1036f590 GInterfaceStatus::GInterfaceStatus(void)
     GInterfaceStatus();
 
     // Non-virtual methods
 
-    // win1.41 005dba00 mac 1036f310 GInterfaceStatus::SetToZero(GInterface *)
+    // BW1W120 005dba00 BW1M100 1036f310 GInterfaceStatus::SetToZero(GInterface *)
     void SetToZero(GInterface* param_1);
-    // win1.41 005dc130 mac 100755c0 GInterfaceStatus::GetFirstObjectInCurrentHand(void)
+    // BW1W120 005dc130 BW1M100 100755c0 GInterfaceStatus::GetFirstObjectInCurrentHand(void)
     Object* GetFirstObjectInCurrentHand();
-    // win1.41 005dc2f0 mac 1007b2f0 GInterfaceStatus::IsSpaceInHands(void)
+    // BW1W120 005dc2f0 BW1M100 1007b2f0 GInterfaceStatus::IsSpaceInHands(void)
     bool IsSpaceInHands();
-    // win1.41 005dc8b0 mac 10035b20 GInterfaceStatus::GetInterface(void)
+    // BW1W120 005dc8b0 BW1M100 10035b20 GInterfaceStatus::GetInterface(void)
     GInterface* GetInterface();
-    // win1.41 005dd1a0 mac 1036bf20 GInterfaceStatus::Init(unsigned char, GInterface *)
+    // BW1W120 005dd1a0 BW1M100 1036bf20 GInterfaceStatus::Init(unsigned char, GInterface *)
     void Init(uint8_t player_number, GInterface* iface);
 };
 

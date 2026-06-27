@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 00773ce0 mac 105a3a30 GClimateRainInfo::_dt(void)
+    // BW1W120 00773ce0 BW1M100 105a3a30 GClimateRainInfo::_dt(void)
     virtual ~GClimateRainInfo();
-    // win1.41 00773c90 mac 105a39e0 GClimateRainInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00773c90 BW1M100 105a39e0 GClimateRainInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

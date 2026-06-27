@@ -21,21 +21,21 @@ public:
 
     // Override methods
 
-    // win1.41 005371f0 mac 100eb6b0 GFootpathLinkSave::_dt(void)
+    // BW1W120 005371f0 BW1M100 100eb6b0 GFootpathLinkSave::_dt(void)
     virtual ~GFootpathLinkSave();
-    // win1.41 005371e0 mac 100ef0b0 GFootpathLinkSave::GetDebugText(void)
+    // BW1W120 005371e0 BW1M100 100ef0b0 GFootpathLinkSave::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 005370a0 mac 100eb5c0 GFootpathLinkSave::Load(GameOSFile &)
+    // BW1W120 005370a0 BW1M100 100eb5c0 GFootpathLinkSave::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* file);
 
     // Constructors
 
-    // win1.41 inlined mac inlined GFootpathLinkSave::GFootpathLinkSave(void)
+    // BW1W120 inlined BW1M100 inlined GFootpathLinkSave::GFootpathLinkSave(void)
     GFootpathLinkSave();
 
     // Non-virtual methods
 
-    // win1.41 00536fa0 mac inlined GFootpathLinkSave::FUN_00536fa0(void)
+    // BW1W120 00536fa0 BW1M100 inlined GFootpathLinkSave::FUN_00536fa0(void)
     void FUN_00536fa0();
 };
 

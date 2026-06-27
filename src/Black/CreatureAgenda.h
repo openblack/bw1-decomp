@@ -60,17 +60,17 @@ public:
 
     // Override methods
 
-    // win1.41 004d3600 mac 10246c50 CreatureAgenda::_dt(void)
+    // BW1W120 004d3600 BW1M100 10246c50 CreatureAgenda::_dt(void)
     virtual ~CreatureAgenda();
 
     // Constructors
 
-    // win1.41 004d34b0 mac 102471c0 CreatureAgenda::CreatureAgenda(Creature *, CreatureInfo const *)
+    // BW1W120 004d34b0 BW1M100 102471c0 CreatureAgenda::CreatureAgenda(Creature *, CreatureInfo const *)
     CreatureAgenda(CreatureInfo* info);
 
     // Non-virtual methods
 
-    // win1.41 004aca70 mac 10217d60 CreatureAgenda::ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long)
+    // BW1W120 004aca70 BW1M100 10217d60 CreatureAgenda::ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long)
     bool ConstructSubActionsForAttackerThrowBallAtGoal(unsigned long param_1);
 };
 

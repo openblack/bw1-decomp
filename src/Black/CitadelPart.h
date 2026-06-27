@@ -35,60 +35,60 @@ public:
 
     // Override methods
 
-    // win1.41 00469500 mac 101c3520 CitadelPart::_dt(void)
+    // BW1W120 00469500 BW1M100 101c3520 CitadelPart::_dt(void)
     virtual ~CitadelPart();
-    // win1.41 00469540 mac 101c3320 CitadelPart::ToBeDeleted(int)
+    // BW1W120 00469540 BW1M100 101c3320 CitadelPart::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00469750 mac 10075f70 CitadelPart::GetPlayer(void)
+    // BW1W120 00469750 BW1M100 10075f70 CitadelPart::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 004694e0 mac 101c37f0 CitadelPart::GetDebugText(void)
+    // BW1W120 004694e0 BW1M100 101c37f0 CitadelPart::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 004698b0 mac 101c2780 CitadelPart::Load(GameOSFile &)
+    // BW1W120 004698b0 BW1M100 101c2780 CitadelPart::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* file);
-    // win1.41 00469830 mac 101c2870 CitadelPart::Save(GameOSFile &)
+    // BW1W120 00469830 BW1M100 101c2870 CitadelPart::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 004694d0 mac 101c37b0 CitadelPart::GetSaveType(void)
+    // BW1W120 004694d0 BW1M100 101c37b0 CitadelPart::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00464aa0 mac 101c2460 CitadelPart::GetCreatureBeliefType(void)
+    // BW1W120 00464aa0 BW1M100 101c2460 CitadelPart::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
-    // win1.41 00464a80 mac 1008aa80 CitadelPart::GetCitadel(void)
+    // BW1W120 00464a80 BW1M100 1008aa80 CitadelPart::GetCitadel(void)
     virtual Citadel* GetCitadel();
-    // win1.41 00464b00 mac inlined CitadelPart::IsCitadelPart_0(void)
+    // BW1W120 00464b00 BW1M100 inlined CitadelPart::IsCitadelPart_0(void)
     virtual uint32_t IsCitadelPart_0();
-    // win1.41 00464b10 mac inlined CitadelPart::IsCitadelPart_1(Creature *)
+    // BW1W120 00464b10 BW1M100 inlined CitadelPart::IsCitadelPart_1(Creature *)
     virtual uint32_t IsCitadelPart_1(Creature* param_1);
-    // win1.41 00469780 mac 101c2a50 CitadelPart::GetActualObjectToEffect(GPlayer *, bool)
+    // BW1W120 00469780 BW1M100 101c2a50 CitadelPart::GetActualObjectToEffect(GPlayer *, bool)
     virtual void* GetActualObjectToEffect(GPlayer* param_1, bool param_2);
-    // win1.41 004695c0 mac 101c32d0 CitadelPart::DestroyedByEffect(GPlayer *, float)
+    // BW1W120 004695c0 BW1M100 101c32d0 CitadelPart::DestroyedByEffect(GPlayer *, float)
     virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
-    // win1.41 00469490 mac 101ba510 CitadelPart::Process(void)
+    // BW1W120 00469490 BW1M100 101ba510 CitadelPart::Process(void)
     virtual uint32_t Process();
-    // win1.41 00464a90 mac 101c2400 CitadelPart::GetMesh( const(void))
+    // BW1W120 00464a90 BW1M100 101c2400 CitadelPart::GetMesh( const(void))
     virtual int GetMesh();
-    // win1.41 00469760 mac 101c2b70 CitadelPart::CallVirtualFunctionsForCreation(MapCoords const &)
+    // BW1W120 00469760 BW1M100 101c2b70 CitadelPart::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
-    // win1.41 004694b0 mac 101c3720 CitadelPart::Get3DType(void)
+    // BW1W120 004694b0 BW1M100 101c3720 CitadelPart::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
-    // win1.41 004695d0 mac inlined CitadelPart::CanBeDestroyedBySpell_1(Spell *)
+    // BW1W120 004695d0 BW1M100 inlined CitadelPart::CanBeDestroyedBySpell_1(Spell *)
     virtual uint32_t CanBeDestroyedBySpell_1(Spell* param_1);
-    // win1.41 004697f0 mac 101c2970 CitadelPart::ReactToPhysicsImpact(PhysicsObject *, bool)
+    // BW1W120 004697f0 BW1M100 101c2970 CitadelPart::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-    // win1.41 004694c0 mac 101c3760 CitadelPart::SaveObject(LHOSFile &, MapCoords const &)
+    // BW1W120 004694c0 BW1M100 101c3760 CitadelPart::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
-    // win1.41 004694f0 mac 101c3830 CitadelPart::ShouldFootpathsGoRound(void)
+    // BW1W120 004694f0 BW1M100 101c3830 CitadelPart::ShouldFootpathsGoRound(void)
     virtual bool ShouldFootpathsGoRound();
-    // win1.41 00464ab0 mac 101c08e0 CitadelPart::IsRepaired(void)
+    // BW1W120 00464ab0 BW1M100 101c08e0 CitadelPart::IsRepaired(void)
     virtual bool IsRepaired();
-    // win1.41 00464ad0 mac 10081060 CitadelPart::IsBuilt(void)
+    // BW1W120 00464ad0 BW1M100 10081060 CitadelPart::IsBuilt(void)
     virtual bool IsBuilt();
-    // win1.41 004694a0 mac 101b91f0 CitadelPart::ConvertToPlanned(void)
+    // BW1W120 004694a0 BW1M100 101b91f0 CitadelPart::ConvertToPlanned(void)
     virtual PlannedMultiMapFixed* ConvertToPlanned();
 
     // Constructors
 
-    // win1.41 inlined mac 1030de40 CitadelPart::CitadelPart(void)
+    // BW1W120 inlined BW1M100 1030de40 CitadelPart::CitadelPart(void)
     CitadelPart();
-    // win1.41 004693f0 mac 101c35b0 CitadelPart::CitadelPart(MapCoords const &, GCitadelPartInfo const *, Citadel *, float, float, float, int)
+    // BW1W120 004693f0 BW1M100 101c35b0 CitadelPart::CitadelPart(MapCoords const &, GCitadelPartInfo const *, Citadel *, float, float, float, int)
     CitadelPart(MapCoords* coords, GCitadelPartInfo* info, Citadel* citadel, float y_angle, float scale, float param_6, int param_7);
 };
 

@@ -26,7 +26,7 @@ struct CreatureReceiveSpell
 
     // Constructors
 
-    // win1.41 004f5240 mac 102802a0 CreatureReceiveSpell::CreatureReceiveSpell(Creature *)
+    // BW1W120 004f5240 BW1M100 102802a0 CreatureReceiveSpell::CreatureReceiveSpell(Creature *)
     CreatureReceiveSpell(Creature* creature);
 };
 

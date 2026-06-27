@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 004db5c0 mac 1025bfd0 CreatureDevelopmentDurationEntry::_dt(void)
+    // BW1W120 004db5c0 BW1M100 1025bfd0 CreatureDevelopmentDurationEntry::_dt(void)
     virtual ~CreatureDevelopmentDurationEntry();
-    // win1.41 004db560 mac 1025c590 CreatureDevelopmentDurationEntry::GetBaseInfo(unsigned long &)
+    // BW1W120 004db560 BW1M100 1025c590 CreatureDevelopmentDurationEntry::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
@@ -28,9 +28,9 @@ public:
 
     // Override methods
 
-    // win1.41 004db4f0 mac 1025c220 CreatureDevelopmentPhaseEntry::_dt(void)
+    // BW1W120 004db4f0 BW1M100 1025c220 CreatureDevelopmentPhaseEntry::_dt(void)
     virtual ~CreatureDevelopmentPhaseEntry();
-    // win1.41 004db480 mac 1025c4d0 CreatureDevelopmentPhaseEntry::GetBaseInfo(unsigned long &)
+    // BW1W120 004db480 BW1M100 1025c4d0 CreatureDevelopmentPhaseEntry::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

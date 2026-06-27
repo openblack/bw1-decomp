@@ -18,15 +18,15 @@ public:
 
     // Override methods
 
-    // win1.41 0055f450 mac 1041f870 SpellPointInf::_dt(void)
+    // BW1W120 0055f450 BW1M100 1041f870 SpellPointInf::_dt(void)
     virtual ~SpellPointInf();
-    // win1.41 0055f440 mac 1041f940 SpellPointInf::GetDebugText(void)
+    // BW1W120 0055f440 BW1M100 1041f940 SpellPointInf::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00698240 mac 104192e0 SpellPointInf::Load(GameOSFile &)
+    // BW1W120 00698240 BW1M100 104192e0 SpellPointInf::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 006ced60 mac 10480d70 SpellPointInf::Save(GameOSFile &)
+    // BW1W120 006ced60 BW1M100 10480d70 SpellPointInf::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0055f430 mac 1041f900 SpellPointInf::GetSaveType(void)
+    // BW1W120 0055f430 BW1M100 1041f900 SpellPointInf::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
 

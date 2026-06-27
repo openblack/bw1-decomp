@@ -37,12 +37,12 @@ public:
 
     // Override methods
 
-    // win1.41 004dc040 mac 1025ad30 CreatureDesires::_dt(void)
+    // BW1W120 004dc040 BW1M100 1025ad30 CreatureDesires::_dt(void)
     virtual ~CreatureDesires();
 
     // Constructors
 
-    // win1.41 004dbff0 mac 1025b030 CreatureDesires::__ct(Creature *, CreatureInfo const *)
+    // BW1W120 004dbff0 BW1M100 1025b030 CreatureDesires::__ct(Creature *, CreatureInfo const *)
     CreatureDesires(Creature* creature, const CreatureInfo* info);
 };
 
@@ -52,9 +52,9 @@ public:
 
     // Override methods
 
-    // win1.41 00491980 mac 1022e3c0 CreatureDesireActionEntry::_dt(void)
+    // BW1W120 00491980 BW1M100 1022e3c0 CreatureDesireActionEntry::_dt(void)
     virtual ~CreatureDesireActionEntry();
-    // win1.41 00491910 mac 1022ed30 CreatureDesireActionEntry::GetBaseInfo(unsigned long &)
+    // BW1W120 00491910 BW1M100 1022ed30 CreatureDesireActionEntry::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
@@ -64,9 +64,9 @@ public:
 
     // Override methods
 
-    // win1.41 00491b70 mac 1022e150 CreatureDesireAttributeEntry::_dt(void)
+    // BW1W120 00491b70 BW1M100 1022e150 CreatureDesireAttributeEntry::_dt(void)
     virtual ~CreatureDesireAttributeEntry();
-    // win1.41 00491b10 mac 1022edf0 CreatureDesireAttributeEntry::GetBaseInfo(unsigned long &)
+    // BW1W120 00491b10 BW1M100 1022edf0 CreatureDesireAttributeEntry::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
@@ -76,9 +76,9 @@ public:
 
     // Override methods
 
-    // win1.41 004db350 mac 10259590 CreatureDesireDependency::_dt(void)
+    // BW1W120 004db350 BW1M100 10259590 CreatureDesireDependency::_dt(void)
     virtual ~CreatureDesireDependency();
-    // win1.41 004db2e0 mac 1025c710 CreatureDesireDependency::GetBaseInfo(unsigned long &)
+    // BW1W120 004db2e0 BW1M100 1025c710 CreatureDesireDependency::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
@@ -88,9 +88,9 @@ public:
 
     // Override methods
 
-    // win1.41 004db420 mac 1025ac00 CreatureDesireForType::_dt(void)
+    // BW1W120 004db420 BW1M100 1025ac00 CreatureDesireForType::_dt(void)
     virtual ~CreatureDesireForType();
-    // win1.41 004db3c0 mac 1025c650 CreatureDesireForType::GetBaseInfo(unsigned long &)
+    // BW1W120 004db3c0 BW1M100 1025c650 CreatureDesireForType::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
@@ -100,9 +100,9 @@ public:
 
     // Override methods
 
-    // win1.41 004dd1f0 mac 1025c960 CreatureDesireSourceTable::_dt(void)
+    // BW1W120 004dd1f0 BW1M100 1025c960 CreatureDesireSourceTable::_dt(void)
     virtual ~CreatureDesireSourceTable();
-    // win1.41 004dd180 mac 1025efa0 CreatureDesireSourceTable::GetBaseInfo(unsigned long &)
+    // BW1W120 004dd180 BW1M100 1025efa0 CreatureDesireSourceTable::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

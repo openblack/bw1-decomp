@@ -17,9 +17,9 @@ public:
 
     // Override methods
 
-    // win1.41 00682910 mac 103fbe00 GMagicFireBallInfo::_dt(void)
+    // BW1W120 00682910 BW1M100 103fbe00 GMagicFireBallInfo::_dt(void)
     virtual ~GMagicFireBallInfo();
-    // win1.41 006828a0 mac 103fce80 GMagicFireBallInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 006828a0 BW1M100 103fce80 GMagicFireBallInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

@@ -21,19 +21,19 @@ public:
 
     // Override methods
 
-    // win1.41 00670800 mac inlined PrayerSite::_dt(void)
+    // BW1W120 00670800 BW1M100 inlined PrayerSite::_dt(void)
     virtual ~PrayerSite();
-    // win1.41 00670830 mac inlined PrayerSite::ToBeDeleted(int)
+    // BW1W120 00670830 BW1M100 inlined PrayerSite::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 006708c0 mac inlined PrayerSite::GetPlayer(void)
+    // BW1W120 006708c0 BW1M100 inlined PrayerSite::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 006708e0 mac inlined PrayerSite::GetTown(void)
+    // BW1W120 006708e0 BW1M100 inlined PrayerSite::GetTown(void)
     virtual Town* GetTown();
-    // win1.41 006708b0 mac inlined PrayerSite::Process(void)
+    // BW1W120 006708b0 BW1M100 inlined PrayerSite::Process(void)
     virtual uint32_t Process();
-    // win1.41 006707f0 mac inlined PrayerSite::GetMesh( const(void))
+    // BW1W120 006707f0 BW1M100 inlined PrayerSite::GetMesh( const(void))
     virtual int GetMesh();
-    // win1.41 00670a10 mac inlined PrayerSite::CreatureMustAvoid(Creature *)
+    // BW1W120 00670a10 BW1M100 inlined PrayerSite::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
 };
 

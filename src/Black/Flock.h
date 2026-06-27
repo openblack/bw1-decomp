@@ -47,53 +47,53 @@ public:
 
     // Override methods
 
-    // win1.41 0052f920 mac 100e3420 Flock::_dt(void)
+    // BW1W120 0052f920 BW1M100 100e3420 Flock::_dt(void)
     virtual ~Flock();
-    // win1.41 0052ffb0 mac 100e5630 Flock::ToBeDeleted(int)
+    // BW1W120 0052ffb0 BW1M100 100e5630 Flock::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0052f870 mac 100e34e0 Flock::GetTown(void)
+    // BW1W120 0052f870 BW1M100 100e34e0 Flock::GetTown(void)
     virtual Town* GetTown();
-    // win1.41 0052f910 mac 100e37a0 Flock::GetDebugText(void)
+    // BW1W120 0052f910 BW1M100 100e37a0 Flock::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00530930 mac 100e3880 Flock::Load(GameOSFile &)
+    // BW1W120 00530930 BW1M100 100e3880 Flock::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 005305a0 mac 100e40b0 Flock::Save(GameOSFile &)
+    // BW1W120 005305a0 BW1M100 100e40b0 Flock::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0052f900 mac 100e3770 Flock::GetSaveType(void)
+    // BW1W120 0052f900 BW1M100 100e3770 Flock::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0052f8a0 mac 100e3580 Flock::GetCreatureBeliefType(void)
+    // BW1W120 0052f8a0 BW1M100 100e3580 Flock::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
-    // win1.41 0052f8b0 mac 100e35c0 Flock::GetCreatureBeliefListType(void)
+    // BW1W120 0052f8b0 BW1M100 100e35c0 Flock::GetCreatureBeliefListType(void)
     virtual uint32_t GetCreatureBeliefListType();
-    // win1.41 0052f8d0 mac 100e3650 Flock::IsActivityObjectWhichAngerAppliesTo(Creature *)
+    // BW1W120 0052f8d0 BW1M100 100e3650 Flock::IsActivityObjectWhichAngerAppliesTo(Creature *)
     virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
-    // win1.41 0052f8e0 mac 100e36b0 Flock::IsActivityObjectWhichCompassionAppliesTo(Creature *)
+    // BW1W120 0052f8e0 BW1M100 100e36b0 Flock::IsActivityObjectWhichCompassionAppliesTo(Creature *)
     virtual bool IsActivityObjectWhichCompassionAppliesTo(Creature* param_1);
-    // win1.41 0052f8f0 mac 100e3710 Flock::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
+    // BW1W120 0052f8f0 BW1M100 100e3710 Flock::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
     virtual bool IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
-    // win1.41 0052f8c0 mac 100e3600 Flock::IsSuitableForCreatureActivity(void)
+    // BW1W120 0052f8c0 BW1M100 100e3600 Flock::IsSuitableForCreatureActivity(void)
     virtual uint32_t IsSuitableForCreatureActivity();
-    // win1.41 0052f860 mac 100e34b0 Flock::IsFlock( const(void))
+    // BW1W120 0052f860 BW1M100 100e34b0 Flock::IsFlock( const(void))
     virtual uint32_t IsFlock();
-    // win1.41 0052f880 mac 100e3510 Flock::IsScriptContainer( const(void))
+    // BW1W120 0052f880 BW1M100 100e3510 Flock::IsScriptContainer( const(void))
     virtual uint32_t IsScriptContainer();
-    // win1.41 0052f890 mac 100e3550 Flock::GetText(void)
+    // BW1W120 0052f890 BW1M100 100e3550 Flock::GetText(void)
     virtual const char* GetText();
-    // win1.41 00530490 mac 100e4a70 Flock::GetScriptObjectType(void)
+    // BW1W120 00530490 BW1M100 100e4a70 Flock::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
 
     // Constructors
 
-    // win1.41 0052f780 mac 100e6ec0 Flock::Flock(MapCoords const &, GFlockInfo const *, GPlayer *, unsigned long)
+    // BW1W120 0052f780 BW1M100 100e6ec0 Flock::Flock(MapCoords const &, GFlockInfo const *, GPlayer *, unsigned long)
     Flock(MapCoords* coords, GFlockInfo* info, GPlayer* player, uint32_t param_4);
-    // win1.41 100e6be0 mac 0052f950 Flock::Flock(Living*)
+    // BW1W120 100e6be0 BW1M100 0052f950 Flock::Flock(Living*)
     Flock(Living* param_1);
 
     // Non-virtual methods
 
-    // win1.41 0052fc20 mac 100e6220 Flock::SetDomainCentrePos(MapCoords const &)
+    // BW1W120 0052fc20 BW1M100 100e6220 Flock::SetDomainCentrePos(MapCoords const &)
     void SetDomainCentrePos(const MapCoords* param_1);
-    // win1.41 00530570 mac 100684b0 Flock::GetFlockPos(void)
+    // BW1W120 00530570 BW1M100 100684b0 Flock::GetFlockPos(void)
     MapCoords* GetFlockPos();
 };
 

@@ -18,7 +18,7 @@ public:
 
     // Override methods
 
-    // win1.41 004ff6f0 mac 10290fd0 SubArgumentInteger::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)
+    // BW1W120 004ff6f0 BW1M100 10290fd0 SubArgumentInteger::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)
     virtual void SetArgumentOfSubActionAgenda(CreatureSubActionAgenda* param_1, uint32_t param_2);
 };
 
@@ -28,11 +28,11 @@ public:
 
     // Override methods
 
-    // win1.41 004ff6d0 mac 10291050 SubArgumentObjectAndInteger::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)
+    // BW1W120 004ff6d0 BW1M100 10291050 SubArgumentObjectAndInteger::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)
     virtual void SetArgumentOfSubActionAgenda(CreatureSubActionAgenda* param_1, uint32_t param_2);
-    // win1.41 0047c880 mac inlined SubArgumentObjectAndInteger::HasDestination(void)
+    // BW1W120 0047c880 BW1M100 inlined SubArgumentObjectAndInteger::HasDestination(void)
     virtual uint32_t HasDestination();
-    // win1.41 0047c890 mac inlined SubArgumentObjectAndInteger::GetDestination(void)
+    // BW1W120 0047c890 BW1M100 inlined SubArgumentObjectAndInteger::GetDestination(void)
     virtual LHPoint* GetDestination();
 };
 
@@ -42,13 +42,13 @@ public:
 
     // Override methods
 
-    // win1.41 004ff780 mac 10290e40 SubArgumentPoint::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)
+    // BW1W120 004ff780 BW1M100 10290e40 SubArgumentPoint::SetArgumentOfSubActionAgenda(CreatureSubActionAgenda *, unsigned long)
     virtual void SetArgumentOfSubActionAgenda(CreatureSubActionAgenda* param_1, uint32_t param_2);
-    // win1.41 004791c0 mac 102914c0 SubArgumentPoint::HasDestination(void)
+    // BW1W120 004791c0 BW1M100 102914c0 SubArgumentPoint::HasDestination(void)
     virtual uint32_t HasDestination();
-    // win1.41 004791d0 mac 10291500 SubArgumentPoint::GetDestination(void)
+    // BW1W120 004791d0 BW1M100 10291500 SubArgumentPoint::GetDestination(void)
     virtual LHPoint* GetDestination();
-    // win1.41 004791b0 mac inlined SubArgumentPoint::GetObject(void)
+    // BW1W120 004791b0 BW1M100 inlined SubArgumentPoint::GetObject(void)
     virtual Object* GetObject();
 };
 

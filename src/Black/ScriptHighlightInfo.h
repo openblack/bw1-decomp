@@ -17,9 +17,9 @@ public:
 
     // Override methods
 
-    // win1.41 007096b0 mac 104fb990 GScriptHighlightInfo::_dt(void)
+    // BW1W120 007096b0 BW1M100 104fb990 GScriptHighlightInfo::_dt(void)
     virtual ~GScriptHighlightInfo();
-    // win1.41 00709640 mac 104fc510 GScriptHighlightInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00709640 BW1M100 104fc510 GScriptHighlightInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

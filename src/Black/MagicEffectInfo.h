@@ -64,14 +64,14 @@ public:
 
     // Override methods
 
-    // win1.41 00524ea0 mac 100cca30 GMagicEffectInfo::_dt(void)
+    // BW1W120 00524ea0 BW1M100 100cca30 GMagicEffectInfo::_dt(void)
     virtual ~GMagicEffectInfo();
-    // win1.41 00524e30 mac 100ccbe0 GMagicEffectInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00524e30 BW1M100 100ccbe0 GMagicEffectInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 
     // Constructors
 
-    // win1.41 00524e00 mac 100ccad0 GMagicEffectInfo::GMagicEffectInfo(void)
+    // BW1W120 00524e00 BW1M100 100ccad0 GMagicEffectInfo::GMagicEffectInfo(void)
     GMagicEffectInfo();
 };
 

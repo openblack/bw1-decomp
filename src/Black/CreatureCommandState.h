@@ -17,7 +17,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d35e0 mac 10245e50 CreatureCommandState::_dt(void)
+    // BW1W120 004d35e0 BW1M100 10245e50 CreatureCommandState::_dt(void)
     virtual ~CreatureCommandState();
 };
 

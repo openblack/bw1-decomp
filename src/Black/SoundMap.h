@@ -21,14 +21,14 @@ public:
 
     // Override methods
 
-    // win1.41 0054ba10 mac 100cb590 GSoundMap::_dt(void)
+    // BW1W120 0054ba10 BW1M100 100cb590 GSoundMap::_dt(void)
     virtual ~GSoundMap();
-    // win1.41 0071d990 mac 10068330 GSoundMap::Dump(void)
+    // BW1W120 0071d990 BW1M100 10068330 GSoundMap::Dump(void)
     virtual void Dump();
 
     // Constructors
 
-    // win1.41 0054b9d0 mac inlined GSoundMap::GSoundMap(void)
+    // BW1W120 0054b9d0 BW1M100 inlined GSoundMap::GSoundMap(void)
     GSoundMap();
 };
 

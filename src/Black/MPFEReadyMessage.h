@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 00627d80 mac inlined MPFEReadyMessage::_dt(void)
+    // BW1W120 00627d80 BW1M100 inlined MPFEReadyMessage::_dt(void)
     virtual ~MPFEReadyMessage();
 };
 

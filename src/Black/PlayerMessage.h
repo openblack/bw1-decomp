@@ -11,9 +11,9 @@ public:
 
     // Override methods
 
-    // win1.41 0066b5e0 mac inlined PlayerMessage::ProcessTurn(void)
+    // BW1W120 0066b5e0 BW1M100 inlined PlayerMessage::ProcessTurn(void)
     virtual int ProcessTurn();
-    // win1.41 0066b610 mac inlined PlayerMessage::Display(void)
+    // BW1W120 0066b610 BW1M100 inlined PlayerMessage::Display(void)
     virtual void Display();
 };
 

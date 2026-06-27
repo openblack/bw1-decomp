@@ -17,9 +17,9 @@ public:
 
     // Override methods
 
-    // win1.41 006e54b0 mac 1013b160 GRewardInfo::_dt(void)
+    // BW1W120 006e54b0 BW1M100 1013b160 GRewardInfo::_dt(void)
     virtual ~GRewardInfo();
-    // win1.41 006e5440 mac 1013c260 GRewardInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 006e5440 BW1M100 1013c260 GRewardInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

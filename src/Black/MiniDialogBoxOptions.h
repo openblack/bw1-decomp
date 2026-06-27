@@ -34,18 +34,18 @@ public:
 
     // Override methods
 
-    // win1.41 00514f50 mac 102b2b00 MiniDialogBoxOptions::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    // BW1W120 00514f50 BW1M100 102b2b00 MiniDialogBoxOptions::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
     virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // win1.41 00515680 mac 102b2aa0 MiniDialogBoxOptions::Destroy(void)
+    // BW1W120 00515680 BW1M100 102b2aa0 MiniDialogBoxOptions::Destroy(void)
     virtual void Destroy();
-    // win1.41 00515810 mac 102b27a0 MiniDialogBoxOptions::CanESCOut(void)
+    // BW1W120 00515810 BW1M100 102b27a0 MiniDialogBoxOptions::CanESCOut(void)
     virtual bool CanESCOut();
-    // win1.41 00515690 mac 102b2800 MiniDialogBoxOptions::InitControls(void)
+    // BW1W120 00515690 BW1M100 102b2800 MiniDialogBoxOptions::InitControls(void)
     virtual void InitControls();
 
     // Constructors
 
-    // win1.41 00514f20 mac inlined MiniDialogBoxOptions::MiniDialogBoxOptions(void)
+    // BW1W120 00514f20 BW1M100 inlined MiniDialogBoxOptions::MiniDialogBoxOptions(void)
     MiniDialogBoxOptions();
 };
 

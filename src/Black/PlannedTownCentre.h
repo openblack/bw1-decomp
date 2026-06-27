@@ -21,21 +21,21 @@ public:
 
     // Override methods
 
-    // win1.41 0055dc10 mac 10559840 PlannedTownCentre::_dt(void)
+    // BW1W120 0055dc10 BW1M100 10559840 PlannedTownCentre::_dt(void)
     virtual ~PlannedTownCentre();
-    // win1.41 0055dc00 mac 10559960 PlannedTownCentre::GetDebugText(void)
+    // BW1W120 0055dc00 BW1M100 10559960 PlannedTownCentre::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0055dbf0 mac 10559920 PlannedTownCentre::GetSaveType(void)
+    // BW1W120 0055dbf0 BW1M100 10559920 PlannedTownCentre::GetSaveType(void)
     virtual uint32_t GetSaveType();
 
     // Static methods
 
-    // win1.41 007444d0 mac 1055a160 PlannedTownCentre::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float)
+    // BW1W120 007444d0 BW1M100 1055a160 PlannedTownCentre::Create(MapCoords const &, GAbodeInfo const *, Town *, float, float)
     static PlannedTownCentre* Create(const MapCoords* coords, const GAbodeInfo* info, Town* town, float param_4, float param_5);
 
     // Constructors
 
-    // win1.41 00744460 mac 1055a270 PlannedTownCentre::PlannedTownCentre(TownCentre*)
+    // BW1W120 00744460 BW1M100 1055a270 PlannedTownCentre::PlannedTownCentre(TownCentre*)
     PlannedTownCentre(const TownCentre* town_centre);
 };
 

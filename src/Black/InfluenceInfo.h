@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 005cd150 mac 100fd4f0 GInfluenceInfo::_dt(void)
+    // BW1W120 005cd150 BW1M100 100fd4f0 GInfluenceInfo::_dt(void)
     virtual ~GInfluenceInfo();
-    // win1.41 005cd110 mac 100fd4a0 GInfluenceInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 005cd110 BW1M100 100fd4a0 GInfluenceInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

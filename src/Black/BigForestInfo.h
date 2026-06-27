@@ -18,9 +18,9 @@ public:
 
     // Override methods
 
-    // win1.41 00438cb0 mac 100b33d0 GBigForestInfo::_dt(void)
+    // BW1W120 00438cb0 BW1M100 100b33d0 GBigForestInfo::_dt(void)
     virtual ~GBigForestInfo();
-    // win1.41 00438c50 mac 100b2530 GBigForestInfo::GetMesh( const(void))
+    // BW1W120 00438c50 BW1M100 100b2530 GBigForestInfo::GetMesh( const(void))
     virtual uint32_t GetMesh();
 };
 

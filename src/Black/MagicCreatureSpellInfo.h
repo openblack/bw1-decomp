@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 00435800 mac 103aba10 GMagicCreatureSpellInfo::_dt(void)
+    // BW1W120 00435800 BW1M100 103aba10 GMagicCreatureSpellInfo::_dt(void)
     virtual ~GMagicCreatureSpellInfo();
 };
 

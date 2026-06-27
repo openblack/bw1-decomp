@@ -15,7 +15,7 @@ public:
 
     // Override methods
 
-    // win1.41 005ce340 mac 1035c820 GInterfaceFlags::_dt(void)
+    // BW1W120 005ce340 BW1M100 1035c820 GInterfaceFlags::_dt(void)
     virtual ~GInterfaceFlags();
 };
 

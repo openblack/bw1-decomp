@@ -18,7 +18,7 @@ public:
 
     // Override methods
 
-    // win1.41 00731390 mac 1014b860 FireGraphic::_dt(void)
+    // BW1W120 00731390 BW1M100 1014b860 FireGraphic::_dt(void)
     virtual ~FireGraphic();
 };
 
@@ -28,11 +28,11 @@ public:
 
     // Override methods
 
-    // win1.41 00731a90 mac inlined FireGraphic::SpritePos::_dt( (void))
+    // BW1W120 00731a90 BW1M100 inlined FireGraphic::SpritePos::_dt( (void))
     virtual ~FireGraphic__SpritePos();
-    // win1.41 006cb040 mac inlined FireGraphic::SpritePos::Save( (GameOSFile &))
+    // BW1W120 006cb040 BW1M100 inlined FireGraphic::SpritePos::Save( (GameOSFile &))
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 004664e0 mac inlined FireGraphic::SpritePos::GetSaveType( (void))
+    // BW1W120 004664e0 BW1M100 inlined FireGraphic::SpritePos::GetSaveType( (void))
     virtual uint32_t GetSaveType();
 };
 

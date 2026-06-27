@@ -39,12 +39,12 @@ struct LightSheet
 
     // Constructors
 
-    // win1.41 0083e690 mac 100cddd0 LightSheet::LightSheet(void)
+    // BW1W120 0083e690 BW1M100 100cddd0 LightSheet::LightSheet(void)
     LightSheet();
 
     // Non-virtual methods
 
-    // win1.41 0083e610 mac 100cde20 LightSheet::PulseForceField(LHPoint, float)
+    // BW1W120 0083e610 BW1M100 100cde20 LightSheet::PulseForceField(LHPoint, float)
     void PulseForceField(LHPoint param_1, float param_2);
 };
 

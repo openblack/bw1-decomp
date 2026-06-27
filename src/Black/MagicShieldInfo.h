@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 00435780 mac 103aeca0 GMagicShieldInfo::_dt(void)
+    // BW1W120 00435780 BW1M100 103aeca0 GMagicShieldInfo::_dt(void)
     virtual ~GMagicShieldInfo();
 };
 

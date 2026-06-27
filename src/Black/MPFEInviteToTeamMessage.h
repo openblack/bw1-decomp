@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 00627410 mac 103977c0 MPFEInviteToTeamMessage::_dt(void)
+    // BW1W120 00627410 BW1M100 103977c0 MPFEInviteToTeamMessage::_dt(void)
     virtual ~MPFEInviteToTeamMessage();
 };
 

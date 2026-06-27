@@ -44,14 +44,14 @@ public:
 
     // Override methods
 
-    // win1.41 00744b90 mac 1055d6c0 GTownDesireInfo::_dt(void)
+    // BW1W120 00744b90 BW1M100 1055d6c0 GTownDesireInfo::_dt(void)
     virtual ~GTownDesireInfo();
-    // win1.41 00744b20 mac 1055ef20 GTownDesireInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00744b20 BW1M100 1055ef20 GTownDesireInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 
     // Non-virtual methods
 
-    // win1.41 00746580 mac 1005ebc0 GTownDesireInfo::GetDesireFunctions(void) const
+    // BW1W120 00746580 BW1M100 1005ebc0 GTownDesireInfo::GetDesireFunctions(void) const
     GTownDesireFunction* GetDesireFunctions();
 };
 

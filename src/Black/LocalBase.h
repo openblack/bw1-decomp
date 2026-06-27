@@ -13,17 +13,17 @@ public:
 
     // Override methods
 
-    // win1.41 005c2150 mac 1033f600 LocalBase::_dt(void)
+    // BW1W120 005c2150 BW1M100 1033f600 LocalBase::_dt(void)
     virtual ~LocalBase();
 
     // Static methods
 
-    // win1.41 005f8790 mac 1009eb9c LocalBase::operator new(unsigned long)
+    // BW1W120 005f8790 BW1M100 1009eb9c LocalBase::operator new(unsigned long)
     static LocalBase* __nw(size_t size, const char* file_name, uint32_t line);
 
     // Constructors
 
-    // win1.41 inlined mac 1034ab30 LocalBase::LocalBase(void)
+    // BW1W120 inlined BW1M100 1034ab30 LocalBase::LocalBase(void)
     LocalBase();
 };
 

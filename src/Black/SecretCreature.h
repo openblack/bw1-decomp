@@ -9,7 +9,7 @@ public:
 
     // Override methods
 
-    // win1.41 00711d60 mac 101441a0 SecretCreature::_dt(void)
+    // BW1W120 00711d60 BW1M100 101441a0 SecretCreature::_dt(void)
     virtual ~SecretCreature();
 };
 

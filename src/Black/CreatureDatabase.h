@@ -12,12 +12,12 @@ public:
 
     // Override methods
 
-    // win1.41 006336d0 mac 10109aa0 CreatureDatabase::Send(void)
+    // BW1W120 006336d0 BW1M100 10109aa0 CreatureDatabase::Send(void)
     virtual uint32_t Send();
 
     // Constructors
 
-    // win1.41 006336b0 mac 10109d30 CreatureDatabase::CreatureDatabase(void)
+    // BW1W120 006336b0 BW1M100 10109d30 CreatureDatabase::CreatureDatabase(void)
     CreatureDatabase();
 };
 

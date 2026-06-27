@@ -18,24 +18,24 @@ public:
 
     // Override methods
 
-    // win1.41 100206e0 mac 10114410 LHSocketTCP::Connect(LHTransportInfo *)
+    // BW1W120 100206e0 BW1M100 10114410 LHSocketTCP::Connect(LHTransportInfo *)
     virtual LH_RETURN Connect(LHTransportInfo* transport_info);
-    // win1.41 10020900 mac 10114350 LHSocketTCP::Send(void *, long)
+    // BW1W120 10020900 BW1M100 10114350 LHSocketTCP::Send(void *, long)
     virtual LH_RETURN Send(const void* data, long data_len);
-    // win1.41 100210c0 mac 10113550 LHSocketTCP::SendPacket(LHPacket *)
+    // BW1W120 100210c0 BW1M100 10113550 LHSocketTCP::SendPacket(LHPacket *)
     virtual LH_RETURN SendPacket(const LHPacket* packet);
 
     // Non-virtual methods
 
-    // win1.41 10020c30 mac 10113b90 LHSocketTCP::DoAttemptReadPacketNonBlocking(void)
+    // BW1W120 10020c30 BW1M100 10113b90 LHSocketTCP::DoAttemptReadPacketNonBlocking(void)
     LH_RETURN DoAttemptReadPacketNonBlocking();
-    // win1.41 10020e40 mac 10113960 LHSocketTCP::DecompressPacketIfCompressed(void)
+    // BW1W120 10020e40 BW1M100 10113960 LHSocketTCP::DecompressPacketIfCompressed(void)
     LH_RETURN DecompressPacketIfCompressed();
-    // win1.41 10020f80 mac 10113770 LHSocketTCP::ReceiveRaw(void *, long *)
+    // BW1W120 10020f80 BW1M100 10113770 LHSocketTCP::ReceiveRaw(void *, long *)
     LH_RETURN ReceiveRaw(void* data, long* data_len);
-    // win1.41 10021120 mac 10113390 LHSocketTCP::ReceivePacket(LHPacket **)
+    // BW1W120 10021120 BW1M100 10113390 LHSocketTCP::ReceivePacket(LHPacket **)
     LH_RETURN ReceivePacket(LHPacket** packet);
-    // win1.41 10021470 mac 10112f10 LHSocketTCP::ReceiveUDPPacket(LHPacket **, unsigned long, LHTransportInfo *)
+    // BW1W120 10021470 BW1M100 10112f10 LHSocketTCP::ReceiveUDPPacket(LHPacket **, unsigned long, LHTransportInfo *)
     LH_RETURN ReceiveUDPPacket(LHPacket** packet, uint32_t size, LHTransportInfo* transport_info);
 };
 

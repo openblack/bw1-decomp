@@ -18,13 +18,13 @@ public:
 
     // Override methods
 
-    // win1.41 0041db60 mac 101209b0 Tortoise::_dt(void)
+    // BW1W120 0041db60 BW1M100 101209b0 Tortoise::_dt(void)
     virtual ~Tortoise();
-    // win1.41 0041db50 mac 1016d0a0 Tortoise::GetDebugText(void)
+    // BW1W120 0041db50 BW1M100 1016d0a0 Tortoise::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0041db40 mac 1016d060 Tortoise::GetSaveType(void)
+    // BW1W120 0041db40 BW1M100 1016d060 Tortoise::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0041ce80 mac 1016d9a0 Tortoise::StandAnimation(void)
+    // BW1W120 0041ce80 BW1M100 1016d9a0 Tortoise::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
 

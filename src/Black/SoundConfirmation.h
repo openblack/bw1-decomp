@@ -12,7 +12,7 @@ public:
 
     // Override methods
 
-    // win1.41 0071a4e0 mac 1050d010 GConfirmation::_dt(void)
+    // BW1W120 0071a4e0 BW1M100 1050d010 GConfirmation::_dt(void)
     virtual ~GConfirmation();
 };
 

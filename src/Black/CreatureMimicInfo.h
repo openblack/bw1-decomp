@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 004e9cf0 mac 1026ea60 CreatureMimicInfo::_dt(void)
+    // BW1W120 004e9cf0 BW1M100 1026ea60 CreatureMimicInfo::_dt(void)
     virtual ~CreatureMimicInfo();
-    // win1.41 004e9c80 mac 1026ff90 CreatureMimicInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 004e9c80 BW1M100 1026ff90 CreatureMimicInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

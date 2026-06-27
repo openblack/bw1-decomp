@@ -45,20 +45,20 @@ public:
 
     // Static methods
 
-    // win1.41 00407ed0 mac 10075ef0 SetupBox::GetCurrentActiveBox(void)
+    // BW1W120 00407ed0 BW1M100 10075ef0 SetupBox::GetCurrentActiveBox(void)
     static SetupBox* GetCurrentActiveBox();
 
     // Non-virtual methods
 
-    // win1.41 00408160 mac 1043c330 SetupBox::FindControl(int)
+    // BW1W120 00408160 BW1M100 1043c330 SetupBox::FindControl(int)
     SetupControl* FindControl(int id);
-    // win1.41 00409140 mac 10598ed0 SetupBox::SetFocusControl(SetupControl *)
+    // BW1W120 00409140 BW1M100 10598ed0 SetupBox::SetFocusControl(SetupControl *)
     void SetFocusControl(SetupControl* widget);
-    // win1.41 00411090 mac 1047e3e0 SetupBox::SetFocusNext(SetupBox *)
+    // BW1W120 00411090 BW1M100 1047e3e0 SetupBox::SetFocusNext(SetupBox *)
     void SetFocusNext();
-    // win1.41 00411100 mac 10478e70 SetupBox::SetFocusPrev(SetupBox *)
+    // BW1W120 00411100 BW1M100 10478e70 SetupBox::SetFocusPrev(SetupBox *)
     void SetFocusPrev();
-    // win1.41 00411190 mac 100c3160 SetupBox::MessageBoxA(wchar_t*, MSGBOXSTYLE, ulong)
+    // BW1W120 00411190 BW1M100 100c3160 SetupBox::MessageBoxA(wchar_t*, MSGBOXSTYLE, ulong)
     void MessageBoxA(const char16_t* param_2, uint32_t param_3, uint32_t param_4);
 };
 

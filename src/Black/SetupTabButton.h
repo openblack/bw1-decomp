@@ -24,16 +24,16 @@ public:
 
     // Override methods
 
-    // win1.41 0040f3a0 mac 104081c0 SetupTabButton::Draw(bool, bool)
+    // BW1W120 0040f3a0 BW1M100 104081c0 SetupTabButton::Draw(bool, bool)
     virtual void Draw(bool hovered, bool selected);
-    // win1.41 0040f670 mac 1037abd0 SetupTabButton::KeyDown(int, int)
+    // BW1W120 0040f670 BW1M100 1037abd0 SetupTabButton::KeyDown(int, int)
     virtual void KeyDown(LHKey key, LHKeyMod mod);
-    // win1.41 0040f690 mac 10369440 SetupTabButton::~SetupTabButton(void)
+    // BW1W120 0040f690 BW1M100 10369440 SetupTabButton::~SetupTabButton(void)
     virtual ~SetupTabButton();
 
     // Constructors
 
-    // win1.41 0040f5e0 mac 101995b0 SetupTabButton::SetupTabButton(int, int, int, int, int, wchar_t *, int, int, int)
+    // BW1W120 0040f5e0 BW1M100 101995b0 SetupTabButton::SetupTabButton(int, int, int, int, int, wchar_t *, int, int, int)
     SetupTabButton(int id, int x, int y, int width, int height, const char16_t* label, bool selected, bool first_in_row, bool last_in_row);
 };
 

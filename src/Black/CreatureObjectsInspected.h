@@ -13,7 +13,7 @@ public:
 
     // Override methods
 
-    // win1.41 004e3520 mac 102466c0 CreatureObjectsInspected::_dt(void)
+    // BW1W120 004e3520 BW1M100 102466c0 CreatureObjectsInspected::_dt(void)
     virtual ~CreatureObjectsInspected();
 };
 

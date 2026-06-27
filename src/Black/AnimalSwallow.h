@@ -18,13 +18,13 @@ public:
 
     // Override methods
 
-    // win1.41 0041ece0 mac 101715b0 Swallow::_dt(void)
+    // BW1W120 0041ece0 BW1M100 101715b0 Swallow::_dt(void)
     virtual ~Swallow();
-    // win1.41 0041ecd0 mac 10171680 Swallow::GetDebugText(void)
+    // BW1W120 0041ecd0 BW1M100 10171680 Swallow::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0041ecc0 mac 10171640 Swallow::GetSaveType(void)
+    // BW1W120 0041ecc0 BW1M100 10171640 Swallow::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0041c070 mac 101700d0 Swallow::StandAnimation(void)
+    // BW1W120 0041c070 BW1M100 101700d0 Swallow::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
 

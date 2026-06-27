@@ -30,7 +30,7 @@ struct LHNetEvent
 
     // Non-virtual methods
 
-    // win1.41 10016a80 mac 10101090 LHNetEvent::RawDecode(LHNetEvent * this, char * param_1, char * param_2)
+    // BW1W120 10016a80 BW1M100 10101090 LHNetEvent::RawDecode(LHNetEvent * this, char * param_1, char * param_2)
     LH_RETURN RawDecode(const char* param_1, const char* param_2);
 };
 

@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 00527cc0 mac 100d5dc0 GFieldInfo::_dt(void)
+    // BW1W120 00527cc0 BW1M100 100d5dc0 GFieldInfo::_dt(void)
     virtual ~GFieldInfo();
 };
 

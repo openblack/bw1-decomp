@@ -13,14 +13,14 @@ public:
 
     // Override methods
 
-    // win1.41 0062e4f0 mac 103a35b0 MPFEDatabase::DatabaseError(void)
+    // BW1W120 0062e4f0 BW1M100 103a35b0 MPFEDatabase::DatabaseError(void)
     virtual void DatabaseError();
-    // win1.41 0062e510 mac 103a3520 MPFEDatabase::DatabaseComplete(void)
+    // BW1W120 0062e510 BW1M100 103a3520 MPFEDatabase::DatabaseComplete(void)
     virtual void DatabaseComplete();
 
     // Constructors
 
-    // win1.41 0062e100 mac 103a3ce0 MPFEDatabase::MPFEDatabase(void)
+    // BW1W120 0062e100 BW1M100 103a3ce0 MPFEDatabase::MPFEDatabase(void)
     MPFEDatabase();
 };
 

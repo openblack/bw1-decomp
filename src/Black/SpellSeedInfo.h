@@ -22,25 +22,25 @@ public:
 
     // Override methods
 
-    // win1.41 0072aee0 mac 1052d120 GSpellSeedInfo::_dt(void)
+    // BW1W120 0072aee0 BW1M100 1052d120 GSpellSeedInfo::_dt(void)
     virtual ~GSpellSeedInfo();
-    // win1.41 0072ae70 mac 1052df40 GSpellSeedInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 0072ae70 BW1M100 1052df40 GSpellSeedInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
-    // win1.41 0072ae60 mac 1052df00 GSpellSeedInfo::GetMesh( const(void))
+    // BW1W120 0072ae60 BW1M100 1052df00 GSpellSeedInfo::GetMesh( const(void))
     virtual uint32_t GetMesh();
 
     // Static methods
 
-    // win1.41 0072b090 mac 1052d6f0 GSpellSeedInfo::GetFirstSpellSeedForMagicType(MAGIC_TYPE)
+    // BW1W120 0072b090 BW1M100 1052d6f0 GSpellSeedInfo::GetFirstSpellSeedForMagicType(MAGIC_TYPE)
     static SPELL_SEED_TYPE GetFirstSpellSeedForMagicType(MAGIC_TYPE magic_type);
 
     // Non-virtual methods
 
-    // win1.41 0072af70 mac 1052dac0 GSpellSeedInfo::GetPowerUpFromMagicType(MAGIC_TYPE) const
+    // BW1W120 0072af70 BW1M100 1052dac0 GSpellSeedInfo::GetPowerUpFromMagicType(MAGIC_TYPE) const
     POWER_UP_TYPE GetPowerUpFromMagicType(MAGIC_TYPE magic_type);
-    // win1.41 0072afc0 mac 1052d9d0 GSpellSeedInfo::GetMagicTypeFromPULevel(POWER_UP_TYPE) const
+    // BW1W120 0072afc0 BW1M100 1052d9d0 GSpellSeedInfo::GetMagicTypeFromPULevel(POWER_UP_TYPE) const
     MAGIC_TYPE GetMagicTypeFromPULevel(POWER_UP_TYPE power_type);
-    // win1.41 0072b060 mac inlined GSpellSeedInfo::SpellSeedIsOfMagicType(MAGIC_TYPE) const
+    // BW1W120 0072b060 BW1M100 inlined GSpellSeedInfo::SpellSeedIsOfMagicType(MAGIC_TYPE) const
     bool SpellSeedIsOfMagicType(MAGIC_TYPE type);
 };
 

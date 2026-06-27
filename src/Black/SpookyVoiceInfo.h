@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 0072e220 mac 10149010 GSpookyVoiceInfo::_dt(void)
+    // BW1W120 0072e220 BW1M100 10149010 GSpookyVoiceInfo::_dt(void)
     virtual ~GSpookyVoiceInfo();
-    // win1.41 0072e1c0 mac 10149130 GSpookyVoiceInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 0072e1c0 BW1M100 10149130 GSpookyVoiceInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

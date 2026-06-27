@@ -11,11 +11,11 @@ public:
 
     // Override methods
 
-    // win1.41 00785300 mac 101b6a80 ChallengeRoomCamera::Init(char *)
+    // BW1W120 00785300 BW1M100 101b6a80 ChallengeRoomCamera::Init(char *)
     virtual void Init(char* param_1);
-    // win1.41 00785250 mac 101b6c30 ChallengeRoomCamera::Reinit(void)
+    // BW1W120 00785250 BW1M100 101b6c30 ChallengeRoomCamera::Reinit(void)
     virtual void Reinit();
-    // win1.41 007854c0 mac 101b6a20 ChallengeRoomCamera::Close(void)
+    // BW1W120 007854c0 BW1M100 101b6a20 ChallengeRoomCamera::Close(void)
     virtual void Close();
 };
 

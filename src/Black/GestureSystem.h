@@ -13,12 +13,12 @@ public:
 
     // Override methods
 
-    // win1.41 0054bb60 mac 1042dc00 GestureSystem::_dt(void)
+    // BW1W120 0054bb60 BW1M100 1042dc00 GestureSystem::_dt(void)
     virtual ~GestureSystem();
 
     // Constructors
 
-    // win1.41 0054bb40 mac inlined GestureSystem::GestureSystem(void)
+    // BW1W120 0054bb40 BW1M100 inlined GestureSystem::GestureSystem(void)
     GestureSystem();
 };
 

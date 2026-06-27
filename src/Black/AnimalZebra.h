@@ -18,13 +18,13 @@ public:
 
     // Override methods
 
-    // win1.41 0041d920 mac 10170f30 Zebra::_dt(void)
+    // BW1W120 0041d920 BW1M100 10170f30 Zebra::_dt(void)
     virtual ~Zebra();
-    // win1.41 0041d910 mac 10170ff0 Zebra::GetDebugText(void)
+    // BW1W120 0041d910 BW1M100 10170ff0 Zebra::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0041d900 mac 10170fc0 Zebra::GetSaveType(void)
+    // BW1W120 0041d900 BW1M100 10170fc0 Zebra::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0041cc30 mac 1016df70 Zebra::StandAnimation(void)
+    // BW1W120 0041cc30 BW1M100 1016df70 Zebra::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
 

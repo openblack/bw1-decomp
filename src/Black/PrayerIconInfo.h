@@ -19,9 +19,9 @@ public:
 
     // Override methods
 
-    // win1.41 00670770 mac 1011e8e0 GPrayerIconInfo::_dt(void)
+    // BW1W120 00670770 BW1M100 1011e8e0 GPrayerIconInfo::_dt(void)
     virtual ~GPrayerIconInfo();
-    // win1.41 00670720 mac 1011eb60 GPrayerIconInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00670720 BW1M100 1011eb60 GPrayerIconInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

@@ -17,17 +17,17 @@ public:
 
     // Override methods
 
-    // win1.41 0072d990 mac 1052dff0 SpellStormAndTornado::_dt(void)
+    // BW1W120 0072d990 BW1M100 1052dff0 SpellStormAndTornado::_dt(void)
     virtual ~SpellStormAndTornado();
-    // win1.41 0072da20 mac 1052e7f0 SpellStormAndTornado::ToBeDeleted(int)
+    // BW1W120 0072da20 BW1M100 1052e7f0 SpellStormAndTornado::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0072d960 mac 1052e140 SpellStormAndTornado::GetRadius(void)
+    // BW1W120 0072d960 BW1M100 1052e140 SpellStormAndTornado::GetRadius(void)
     virtual float GetRadius();
-    // win1.41 0072d950 mac 1052e0e0 SpellStormAndTornado::Get2DRadius(void)
+    // BW1W120 0072d950 BW1M100 1052e0e0 SpellStormAndTornado::Get2DRadius(void)
     virtual float Get2DRadius();
-    // win1.41 0072d980 mac 1052e1f0 SpellStormAndTornado::GetDebugText(void)
+    // BW1W120 0072d980 BW1M100 1052e1f0 SpellStormAndTornado::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0072d970 mac 1052e1b0 SpellStormAndTornado::GetSaveType(void)
+    // BW1W120 0072d970 BW1M100 1052e1b0 SpellStormAndTornado::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
 

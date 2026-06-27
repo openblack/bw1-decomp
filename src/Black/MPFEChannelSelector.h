@@ -39,23 +39,23 @@ public:
 
     // Override methods
 
-    // win1.41 00628450 mac 1039e270 MPFEChannelSelector::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    // BW1W120 00628450 BW1M100 1039e270 MPFEChannelSelector::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
     virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // win1.41 00628e20 mac 1039e230 MPFEChannelSelector::Destroy(void)
+    // BW1W120 00628e20 BW1M100 1039e230 MPFEChannelSelector::Destroy(void)
     virtual void Destroy();
-    // win1.41 00628430 mac 1039e800 MPFEChannelSelector::Show(void)
+    // BW1W120 00628430 BW1M100 1039e800 MPFEChannelSelector::Show(void)
     virtual void Show();
-    // win1.41 00628e30 mac 1039df20 MPFEChannelSelector::InitControls(void)
+    // BW1W120 00628e30 BW1M100 1039df20 MPFEChannelSelector::InitControls(void)
     virtual void InitControls();
 
     // Constructors
 
-    // win1.41 00628330 mac 1039f0c0 MPFEChannelSelector::MPFEChannelSelector(void)
+    // BW1W120 00628330 BW1M100 1039f0c0 MPFEChannelSelector::MPFEChannelSelector(void)
     MPFEChannelSelector();
 
     // Non-virtual methods
 
-    // win1.41 00629c50 mac 1039cab0 MPFEChannelSelector::RefreshChannelList(void)
+    // BW1W120 00629c50 BW1M100 1039cab0 MPFEChannelSelector::RefreshChannelList(void)
     void RefreshChannelList();
 };
 

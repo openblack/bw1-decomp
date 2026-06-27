@@ -14,7 +14,7 @@ public:
 
     // Override methods
 
-    // win1.41 005ce360 mac 1035c790 InterfaceHandState::_dt(void)
+    // BW1W120 005ce360 BW1M100 1035c790 InterfaceHandState::_dt(void)
     virtual ~InterfaceHandState();
 };
 

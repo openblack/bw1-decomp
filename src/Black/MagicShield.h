@@ -23,33 +23,33 @@ public:
 
     // Override methods
 
-    // win1.41 0072c230 mac 105340b0 MagicShield::_dt(void)
+    // BW1W120 0072c230 BW1M100 105340b0 MagicShield::_dt(void)
     virtual ~MagicShield();
-    // win1.41 0072c220 mac 10534190 MagicShield::GetDebugText(void)
+    // BW1W120 0072c220 BW1M100 10534190 MagicShield::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0072c3d0 mac 10531080 MagicShield::Load(GameOSFile &)
+    // BW1W120 0072c3d0 BW1M100 10531080 MagicShield::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 0072c3f0 mac 10531020 MagicShield::Save(GameOSFile &)
+    // BW1W120 0072c3f0 BW1M100 10531020 MagicShield::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0072c210 mac 10534150 MagicShield::GetSaveType(void)
+    // BW1W120 0072c210 BW1M100 10534150 MagicShield::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0072c300 mac 10531370 MagicShield::Draw(void)
+    // BW1W120 0072c300 BW1M100 10531370 MagicShield::Draw(void)
     virtual void Draw();
-    // win1.41 0072c2a0 mac 10531420 MagicShield::CallVirtualFunctionsForCreation(MapCoords const &)
+    // BW1W120 0072c2a0 BW1M100 10531420 MagicShield::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
-    // win1.41 0072c340 mac 10531220 MagicShield::Get3DType(void)
+    // BW1W120 0072c340 BW1M100 10531220 MagicShield::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
-    // win1.41 0072c320 mac 105312c0 MagicShield::SetDying(void)
+    // BW1W120 0072c320 BW1M100 105312c0 MagicShield::SetDying(void)
     virtual bool SetDying();
-    // win1.41 0072c310 mac 10531320 MagicShield::IsEffectReceiver(EffectValues *)
+    // BW1W120 0072c310 BW1M100 10531320 MagicShield::IsEffectReceiver(EffectValues *)
     virtual uint32_t IsEffectReceiver(EffectValues* param_1);
-    // win1.41 0072c330 mac 10531270 MagicShield::InteractsWithPhysicsObjects(void)
+    // BW1W120 0072c330 BW1M100 10531270 MagicShield::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
-    // win1.41 0072c2e0 mac 105313e0 MagicShield::ProcessShield(void)
+    // BW1W120 0072c2e0 BW1M100 105313e0 MagicShield::ProcessShield(void)
     virtual void ProcessShield();
-    // win1.41 0072c2f0 mac 105313a0 MagicShield::DrawShield(void)
+    // BW1W120 0072c2f0 BW1M100 105313a0 MagicShield::DrawShield(void)
     virtual void DrawShield();
-    // win1.41 0072b850 mac 10532df0 MagicShield::IsPointDefinietlyWithinShieldVolume(MapCoords const &)
+    // BW1W120 0072b850 BW1M100 10532df0 MagicShield::IsPointDefinietlyWithinShieldVolume(MapCoords const &)
     virtual bool IsPointDefinietlyWithinShieldVolume(const MapCoords* param_1);
 };
 

@@ -24,7 +24,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d2540 mac 10246630 CreatureMentalDebug::_dt(void)
+    // BW1W120 004d2540 BW1M100 10246630 CreatureMentalDebug::_dt(void)
     virtual ~CreatureMentalDebug();
 };
 

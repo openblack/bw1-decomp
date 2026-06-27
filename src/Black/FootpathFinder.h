@@ -30,31 +30,31 @@ public:
 
     // Override methods
 
-    // win1.41 00538ff0 mac 100e7f30 GFootpathFinder::_dt(void)
+    // BW1W120 00538ff0 BW1M100 100e7f30 GFootpathFinder::_dt(void)
     virtual ~GFootpathFinder();
-    // win1.41 005391c0 mac 100e78e0 GFootpathFinder::ToBeDeleted(int)
+    // BW1W120 005391c0 BW1M100 100e78e0 GFootpathFinder::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00538fe0 mac 100e7110 GFootpathFinder::GetDebugText(void)
+    // BW1W120 00538fe0 BW1M100 100e7110 GFootpathFinder::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 005390e0 mac 100e7ce0 GFootpathFinder::Load(GameOSFile &)
+    // BW1W120 005390e0 BW1M100 100e7ce0 GFootpathFinder::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* file);
-    // win1.41 00539150 mac 100e7c00 GFootpathFinder::Save(GameOSFile &)
+    // BW1W120 00539150 BW1M100 100e7c00 GFootpathFinder::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 00538fd0 mac 100e70d0 GFootpathFinder::GetSaveType(void)
+    // BW1W120 00538fd0 BW1M100 100e70d0 GFootpathFinder::GetSaveType(void)
     virtual uint32_t GetSaveType();
 
     // Constructors
 
-    // win1.41 inlined mac inlined GFootpathFinder::GFootpathFinder(void)
+    // BW1W120 inlined BW1M100 inlined GFootpathFinder::GFootpathFinder(void)
     GFootpathFinder();
 
     // Non-virtual methods
 
-    // win1.41 00539040 mac 100e7dc0 GFootpathFinder::GameTurnProcess(void)
+    // BW1W120 00539040 BW1M100 100e7dc0 GFootpathFinder::GameTurnProcess(void)
     void GameTurnProcess();
-    // win1.41 00539240 mac 100e7760 GFootpathFinder::Done(void)
+    // BW1W120 00539240 BW1M100 100e7760 GFootpathFinder::Done(void)
     void Done();
-    // win1.41 005392f0 mac 100e7150 GFootpathFinder::Init(void)
+    // BW1W120 005392f0 BW1M100 100e7150 GFootpathFinder::Init(void)
     void Init();
 };
 

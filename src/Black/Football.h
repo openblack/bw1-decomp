@@ -66,54 +66,54 @@ public:
 
     // Override methods
 
-    // win1.41 00531330 mac 102b8570 Football::_dt(void)
+    // BW1W120 00531330 BW1M100 102b8570 Football::_dt(void)
     virtual ~Football();
-    // win1.41 00531360 mac 102bd250 Football::ToBeDeleted(int)
+    // BW1W120 00531360 BW1M100 102bd250 Football::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00532220 mac 102bb880 Football::GetVillagerActivityDesire(Villager *)
+    // BW1W120 00532220 BW1M100 102bb880 Football::GetVillagerActivityDesire(Villager *)
     virtual float GetVillagerActivityDesire(Villager* param_1);
-    // win1.41 00532190 mac 102bb9b0 Football::SetVillagerActivity(Villager *)
+    // BW1W120 00532190 BW1M100 102bb9b0 Football::SetVillagerActivity(Villager *)
     virtual uint32_t SetVillagerActivity(Villager* param_1);
-    // win1.41 00531320 mac 102b8870 Football::GetDebugText(void)
+    // BW1W120 00531320 BW1M100 102b8870 Football::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 005336e0 mac 102b89e0 Football::Load(GameOSFile &)
+    // BW1W120 005336e0 BW1M100 102b89e0 Football::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 005332a0 mac 102b9230 Football::Save(GameOSFile &)
+    // BW1W120 005332a0 BW1M100 102b9230 Football::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 00531310 mac 102b8830 Football::GetSaveType(void)
+    // BW1W120 00531310 BW1M100 102b8830 Football::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00531180 mac 102bd4d0 Football::GetCreatureBeliefType(void)
+    // BW1W120 00531180 BW1M100 102bd4d0 Football::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
-    // win1.41 00531280 mac 102b8610 Football::IsFootball(void)
+    // BW1W120 00531280 BW1M100 102b8610 Football::IsFootball(void)
     virtual uint32_t IsFootball();
-    // win1.41 00531e40 mac 102bc020 Football::ReduceLife(float, GPlayer *)
+    // BW1W120 00531e40 BW1M100 102bc020 Football::ReduceLife(float, GPlayer *)
     virtual void ReduceLife(float param_1, GPlayer* param_2);
-    // win1.41 00533e40 mac 102be320 Football::Process(void)
+    // BW1W120 00533e40 BW1M100 102be320 Football::Process(void)
     virtual uint32_t Process();
-    // win1.41 00531610 mac 102bccb0 Football::Draw(void)
+    // BW1W120 00531610 BW1M100 102bccb0 Football::Draw(void)
     virtual void Draw();
-    // win1.41 00530f80 mac 102bd510 Football::CallVirtualFunctionsForCreation(MapCoords const &)
+    // BW1W120 00530f80 BW1M100 102bd510 Football::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
-    // win1.41 005312e0 mac 102b8760 Football::Get3DType(void)
+    // BW1W120 005312e0 BW1M100 102b8760 Football::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
-    // win1.41 00531930 mac 102bcad0 Football::InteractsWithPhysicsObjects(void)
+    // BW1W120 00531930 BW1M100 102bcad0 Football::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
-    // win1.41 005312f0 mac 102b87a0 Football::CreatureMustAvoid(Creature *)
+    // BW1W120 005312f0 BW1M100 102b87a0 Football::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
-    // win1.41 00533b30 mac inlined Football::GetDoorPos(MapCoords *)
+    // BW1W120 00533b30 BW1M100 inlined Football::GetDoorPos(MapCoords *)
     virtual MapCoords* GetDoorPos(MapCoords* param_1);
-    // win1.41 00531290 mac 102b8650 Football::IsRepaired(void)
+    // BW1W120 00531290 BW1M100 102b8650 Football::IsRepaired(void)
     virtual bool IsRepaired();
-    // win1.41 005312b0 mac 102b86c0 Football::IsBuilt(void)
+    // BW1W120 005312b0 BW1M100 102b86c0 Football::IsBuilt(void)
     virtual bool IsBuilt();
 
     // Non-virtual methods
 
-    // win1.41 00531410 mac 102bd040 Football::GetBall(void)
+    // BW1W120 00531410 BW1M100 102bd040 Football::GetBall(void)
     void* GetBall();
-    // win1.41 00532960 mac 102baa80 Football::IsPlayerOnHomeTeam(Villager *)
+    // BW1W120 00532960 BW1M100 102baa80 Football::IsPlayerOnHomeTeam(Villager *)
     bool IsPlayerOnHomeTeam(Villager* param_1);
-    // win1.41 00532c80 mac 102ba570 Football::GetGoalPosition(unsigned long)
+    // BW1W120 00532c80 BW1M100 102ba570 Football::GetGoalPosition(unsigned long)
     void GetGoalPosition(unsigned long param_1);
 };
 

@@ -17,15 +17,15 @@ public:
 
     // Override methods
 
-    // win1.41 00429320 mac 1017c8b0 ThingMusicInfo::_dt(void)
+    // BW1W120 00429320 BW1M100 1017c8b0 ThingMusicInfo::_dt(void)
     virtual ~ThingMusicInfo();
-    // win1.41 00429310 mac 1017c980 ThingMusicInfo::GetDebugText(void)
+    // BW1W120 00429310 BW1M100 1017c980 ThingMusicInfo::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00429ae0 mac 1017c9c0 ThingMusicInfo::Load(GameOSFile &)
+    // BW1W120 00429ae0 BW1M100 1017c9c0 ThingMusicInfo::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00429950 mac 1017cc10 ThingMusicInfo::Save(GameOSFile &)
+    // BW1W120 00429950 BW1M100 1017cc10 ThingMusicInfo::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 00429300 mac 1017c940 ThingMusicInfo::GetSaveType(void)
+    // BW1W120 00429300 BW1M100 1017c940 ThingMusicInfo::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
 

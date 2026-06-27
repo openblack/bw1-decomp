@@ -48,98 +48,98 @@ public:
 
     // Override methods
 
-    // win1.41 00561180 mac 105457d0 TotemStatue::_dt(void)
+    // BW1W120 00561180 BW1M100 105457d0 TotemStatue::_dt(void)
     virtual ~TotemStatue();
-    // win1.41 00737c20 mac 10545750 TotemStatue::ToBeDeleted(int)
+    // BW1W120 00737c20 BW1M100 10545750 TotemStatue::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00738490 mac 10544a00 TotemStatue::GetPlayer(void)
+    // BW1W120 00738490 BW1M100 10544a00 TotemStatue::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 00738480 mac 10544ac0 TotemStatue::GetTown(void)
+    // BW1W120 00738480 BW1M100 10544ac0 TotemStatue::GetTown(void)
     virtual Town* GetTown();
-    // win1.41 00561170 mac 10543f30 TotemStatue::GetDebugText(void)
+    // BW1W120 00561170 BW1M100 10543f30 TotemStatue::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00738800 mac 10544120 TotemStatue::Load(GameOSFile &)
+    // BW1W120 00738800 BW1M100 10544120 TotemStatue::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00738700 mac 105442e0 TotemStatue::Save(GameOSFile &)
+    // BW1W120 00738700 BW1M100 105442e0 TotemStatue::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 00561160 mac 10543ef0 TotemStatue::GetSaveType(void)
+    // BW1W120 00561160 BW1M100 10543ef0 TotemStatue::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00738940 mac 105440b0 TotemStatue::ResolveLoad(void)
+    // BW1W120 00738940 BW1M100 105440b0 TotemStatue::ResolveLoad(void)
     virtual void ResolveLoad();
-    // win1.41 005610f0 mac 10543cd0 TotemStatue::GetCreatureBeliefType(void)
+    // BW1W120 005610f0 BW1M100 10543cd0 TotemStatue::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
-    // win1.41 00561150 mac 10543eb0 TotemStatue::IsTotemStatue(void)
+    // BW1W120 00561150 BW1M100 10543eb0 TotemStatue::IsTotemStatue(void)
     virtual uint32_t IsTotemStatue();
-    // win1.41 00561110 mac 10543d70 TotemStatue::CanBePlayedWithByCreature(Creature *)
+    // BW1W120 00561110 BW1M100 10543d70 TotemStatue::CanBePlayedWithByCreature(Creature *)
     virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
-    // win1.41 00561100 mac 10543d20 TotemStatue::CanBeImpressedByCreature(Creature *)
+    // BW1W120 00561100 BW1M100 10543d20 TotemStatue::CanBeImpressedByCreature(Creature *)
     virtual uint32_t CanBeImpressedByCreature(Creature* param_1);
-    // win1.41 004e3e70 mac 105e6740 TotemStatue::DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature *)
+    // BW1W120 004e3e70 BW1M100 105e6740 TotemStatue::DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature *)
     virtual uint32_t DoesTotemBelongToATownWhichIsVeryImpressedIndeed(Creature* param_1);
-    // win1.41 007384d0 mac 10544960 TotemStatue::GetWorshipSite(void)
+    // BW1W120 007384d0 BW1M100 10544960 TotemStatue::GetWorshipSite(void)
     virtual WorshipSite* GetWorshipSite();
-    // win1.41 004e4110 mac 105e5eb0 TotemStatue::CanBeStolenByCreature(Creature *)
+    // BW1W120 004e4110 BW1M100 105e5eb0 TotemStatue::CanBeStolenByCreature(Creature *)
     virtual uint32_t CanBeStolenByCreature(Creature* param_1);
-    // win1.41 004e4170 mac 105e5d00 TotemStatue::IsTotemWithStealableSpell(Creature *)
+    // BW1W120 004e4170 BW1M100 105e5d00 TotemStatue::IsTotemWithStealableSpell(Creature *)
     virtual uint32_t IsTotemWithStealableSpell(Creature* param_1);
-    // win1.41 00738eb0 mac 10543f70 TotemStatue::GetScriptObjectType(void)
+    // BW1W120 00738eb0 BW1M100 10543f70 TotemStatue::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
-    // win1.41 00561120 mac 10543dc0 TotemStatue::HandShouldFeelWithMeshIntersect(void)
+    // BW1W120 00561120 BW1M100 10543dc0 TotemStatue::HandShouldFeelWithMeshIntersect(void)
     virtual uint32_t HandShouldFeelWithMeshIntersect();
-    // win1.41 00737c90 mac 10545510 TotemStatue::ReduceLife(float, GPlayer *)
+    // BW1W120 00737c90 BW1M100 10545510 TotemStatue::ReduceLife(float, GPlayer *)
     virtual void ReduceLife(float param_1, GPlayer* param_2);
-    // win1.41 00737c60 mac 105455d0 TotemStatue::IncreaseLife(float)
+    // BW1W120 00737c60 BW1M100 105455d0 TotemStatue::IncreaseLife(float)
     virtual void IncreaseLife(float param_1);
-    // win1.41 00737f40 mac 10077f00 TotemStatue::Process(void)
+    // BW1W120 00737f40 BW1M100 10077f00 TotemStatue::Process(void)
     virtual uint32_t Process();
-    // win1.41 005610e0 mac 10543c30 TotemStatue::GetMesh( const(void))
+    // BW1W120 005610e0 BW1M100 10543c30 TotemStatue::GetMesh( const(void))
     virtual int GetMesh();
-    // win1.41 00738960 mac 10024bb0 TotemStatue::Draw(void)
+    // BW1W120 00738960 BW1M100 10024bb0 TotemStatue::Draw(void)
     virtual void Draw();
-    // win1.41 00737d60 mac 10544f40 TotemStatue::CallVirtualFunctionsForCreation(MapCoords const &)
+    // BW1W120 00737d60 BW1M100 10544f40 TotemStatue::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
-    // win1.41 00738500 mac 105447e0 TotemStatue::ValidForLockedSelectProcess(GInterfaceStatus *)
+    // BW1W120 00738500 BW1M100 105447e0 TotemStatue::ValidForLockedSelectProcess(GInterfaceStatus *)
     virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
-    // win1.41 00738590 mac 10544700 TotemStatue::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
+    // BW1W120 00738590 BW1M100 10544700 TotemStatue::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
     virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
-    // win1.41 007385e0 mac 10544640 TotemStatue::NetworkUnfriendlyStartLockedSelect(void)
+    // BW1W120 007385e0 BW1M100 10544640 TotemStatue::NetworkUnfriendlyStartLockedSelect(void)
     virtual uint32_t NetworkUnfriendlyStartLockedSelect();
-    // win1.41 007386a0 mac 10544470 TotemStatue::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
+    // BW1W120 007386a0 BW1M100 10544470 TotemStatue::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
     virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
-    // win1.41 00738630 mac 10544580 TotemStatue::NetworkUnfriendlyEndLockedSelect(void)
+    // BW1W120 00738630 BW1M100 10544580 TotemStatue::NetworkUnfriendlyEndLockedSelect(void)
     virtual uint32_t NetworkUnfriendlyEndLockedSelect();
-    // win1.41 00738690 mac 10544520 TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
+    // BW1W120 00738690 BW1M100 10544520 TotemStatue::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
     virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
-    // win1.41 00561130 mac 10543e10 TotemStatue::IsEffectReceiver(EffectValues *)
+    // BW1W120 00561130 BW1M100 10543e10 TotemStatue::IsEffectReceiver(EffectValues *)
     virtual uint32_t IsEffectReceiver(EffectValues* param_1);
-    // win1.41 00737d40 mac 105451c0 TotemStatue::InteractsWithPhysicsObjects(void)
+    // BW1W120 00737d40 BW1M100 105451c0 TotemStatue::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
-    // win1.41 00737d50 mac 10545170 TotemStatue::ReactToPhysicsImpact(PhysicsObject *, bool)
+    // BW1W120 00737d50 BW1M100 10545170 TotemStatue::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-    // win1.41 00561140 mac 10543e60 TotemStatue::SaveObject(LHOSFile &, MapCoords const &)
+    // BW1W120 00561140 BW1M100 10543e60 TotemStatue::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
-    // win1.41 00561090 mac 10543660 TotemStatue::IsRepaired(void)
+    // BW1W120 00561090 BW1M100 10543660 TotemStatue::IsRepaired(void)
     virtual bool IsRepaired();
-    // win1.41 005610b0 mac 1001a9a0 TotemStatue::IsBuilt(void)
+    // BW1W120 005610b0 BW1M100 1001a9a0 TotemStatue::IsBuilt(void)
     virtual bool IsBuilt();
-    // win1.41 00738130 mac 10544dd0 TotemStatue::AddToPlayer(void)
+    // BW1W120 00738130 BW1M100 10544dd0 TotemStatue::AddToPlayer(void)
     virtual void AddToPlayer();
 
     // Static methods
 
-    // win1.41 00737cc0 mac 10545210 TotemStatue::Create(TownCentre *)
+    // BW1W120 00737cc0 BW1M100 10545210 TotemStatue::Create(TownCentre *)
     static TotemStatue* Create(TownCentre* this);
 
     // Constructors
 
-    // win1.41 00737b20 mac 10545880 TotemStatue::TotemStatue(TownCentre *, GTotemStatueInfo const *)
+    // BW1W120 00737b20 BW1M100 10545880 TotemStatue::TotemStatue(TownCentre *, GTotemStatueInfo const *)
     TotemStatue(TownCentre* tc, GTotemStatueInfo* info);
 
     // Non-virtual methods
 
-    // win1.41 00738260 mac 10544c70 TotemStatue::GetWorshipSpeed(void)
+    // BW1W120 00738260 BW1M100 10544c70 TotemStatue::GetWorshipSpeed(void)
     float GetWorshipSpeed();
-    // win1.41 00738270 mac 10544b90 TotemStatue::SetWorshipPercentage(float)
+    // BW1W120 00738270 BW1M100 10544b90 TotemStatue::SetWorshipPercentage(float)
     void SetWorshipPercentage(float percentage);
 };
 

@@ -19,7 +19,7 @@ public:
 
     // Constructors
 
-    // win1.41 007f9560 mac 100b45b0 LH3DMist::LH3DMist(void)
+    // BW1W120 007f9560 BW1M100 100b45b0 LH3DMist::LH3DMist(void)
     LH3DMist();
 };
 

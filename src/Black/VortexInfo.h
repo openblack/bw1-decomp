@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 005fd3f0 mac 103b8d80 GVortexInfo::_dt(void)
+    // BW1W120 005fd3f0 BW1M100 103b8d80 GVortexInfo::_dt(void)
     virtual ~GVortexInfo();
-    // win1.41 005fd390 mac 103b9150 GVortexInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 005fd390 BW1M100 103b9150 GVortexInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

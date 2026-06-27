@@ -18,15 +18,15 @@ public:
 
     // Override methods
 
-    // win1.41 0055ef20 mac inlined Particle3DPnt::_dt(void)
+    // BW1W120 0055ef20 BW1M100 inlined Particle3DPnt::_dt(void)
     virtual ~Particle3DPnt();
-    // win1.41 0055ef00 mac inlined Particle3DPnt::GetDebugText(void)
+    // BW1W120 0055ef00 BW1M100 inlined Particle3DPnt::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00695010 mac inlined Particle3DPnt::Load(GameOSFile &)
+    // BW1W120 00695010 BW1M100 inlined Particle3DPnt::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 006cbb30 mac inlined Particle3DPnt::Save(GameOSFile &)
+    // BW1W120 006cbb30 BW1M100 inlined Particle3DPnt::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0055eef0 mac inlined Particle3DPnt::GetSaveType(void)
+    // BW1W120 0055eef0 BW1M100 inlined Particle3DPnt::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
 

@@ -17,11 +17,11 @@ public:
 
     // Override methods
 
-    // win1.41 0052dd50 mac 100e2210 GSingleMapFixedInfo::_dt(void)
+    // BW1W120 0052dd50 BW1M100 100e2210 GSingleMapFixedInfo::_dt(void)
     virtual ~GSingleMapFixedInfo();
-    // win1.41 0052dce0 mac 100e3150 GSingleMapFixedInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 0052dce0 BW1M100 100e3150 GSingleMapFixedInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
-    // win1.41 0052dcd0 mac 100c3840 GSingleMapFixedInfo::GetMesh( const(void))
+    // BW1W120 0052dcd0 BW1M100 100c3840 GSingleMapFixedInfo::GetMesh( const(void))
     virtual uint32_t GetMesh();
 };
 

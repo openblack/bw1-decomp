@@ -19,22 +19,22 @@ public:
 
     // Override methods
 
-    // win1.41 00409a40 mac 10440200 SetupSlider::Draw(bool, bool)
+    // BW1W120 00409a40 BW1M100 10440200 SetupSlider::Draw(bool, bool)
     virtual void Draw(bool hovered, bool selected);
-    // win1.41 00409c70 mac 1043ff90 SetupSlider::Drag(int, int)
+    // BW1W120 00409c70 BW1M100 1043ff90 SetupSlider::Drag(int, int)
     virtual void Drag(int x, int y);
-    // win1.41 00409d60 mac 1043c240 SetupSlider::MouseDown(int, int, bool)
+    // BW1W120 00409d60 BW1M100 1043c240 SetupSlider::MouseDown(int, int, bool)
     virtual void MouseDown(int x, int y, bool param_3);
-    // win1.41 00409d90 mac 100b4690 SetupSlider::MouseUp(int, int, bool)
+    // BW1W120 00409d90 BW1M100 100b4690 SetupSlider::MouseUp(int, int, bool)
     virtual void MouseUp(int x, int y, bool param_3);
-    // win1.41 00409960 mac 10103d10 SetupSlider::KeyDown(int, int)
+    // BW1W120 00409960 BW1M100 10103d10 SetupSlider::KeyDown(int, int)
     virtual void KeyDown(LHKey key, LHKeyMod mod);
-    // win1.41 00409c50 mac 101c8450 SetupSlider::~SetupSlider(void)
+    // BW1W120 00409c50 BW1M100 101c8450 SetupSlider::~SetupSlider(void)
     virtual ~SetupSlider();
 
     // Constructors
 
-    // win1.41 00409bf0 mac 1043fbc0 SetupSlider::SetupSlider(int, int, int, int, int, float, wchar_t *)
+    // BW1W120 00409bf0 BW1M100 1043fbc0 SetupSlider::SetupSlider(int, int, int, int, int, float, wchar_t *)
     SetupSlider(int id, int x, int y, int width, int height, float value, char16_t* label);
 };
 

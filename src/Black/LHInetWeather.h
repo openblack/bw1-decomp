@@ -10,7 +10,7 @@ struct LHInetWeather
 
     // Non-virtual methods
 
-    // win1.41 005e98b0 mac 10352780 LHInetWeather::InitForGame(void)
+    // BW1W120 005e98b0 BW1M100 10352780 LHInetWeather::InitForGame(void)
     void InitForGame();
 };
 

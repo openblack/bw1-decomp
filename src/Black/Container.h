@@ -22,13 +22,13 @@ public:
 
     // Override methods
 
-    // win1.41 0046b900 mac 100bf890 Container::_dt(void)
+    // BW1W120 0046b900 BW1M100 100bf890 Container::_dt(void)
     virtual ~Container();
-    // win1.41 00462a50 mac 1005c760 Container::GetPlayer(void)
+    // BW1W120 00462a50 BW1M100 1005c760 Container::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 0046b960 mac 100bf930 Container::Load(GameOSFile &)
+    // BW1W120 0046b960 BW1M100 100bf930 Container::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 0046b920 mac 100bf9d0 Container::Save(GameOSFile &)
+    // BW1W120 0046b920 BW1M100 100bf9d0 Container::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
 };
 

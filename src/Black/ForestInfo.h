@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 005399c0 mac 100f2980 GForestInfo::_dt(void)
+    // BW1W120 005399c0 BW1M100 100f2980 GForestInfo::_dt(void)
     virtual ~GForestInfo();
 };
 

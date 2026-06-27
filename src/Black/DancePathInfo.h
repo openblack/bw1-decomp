@@ -20,7 +20,7 @@ public:
 
     // Override methods
 
-    // win1.41 005961c0 mac 100fafe0 DancePathInfo::_dt(void)
+    // BW1W120 005961c0 BW1M100 100fafe0 DancePathInfo::_dt(void)
     virtual ~DancePathInfo();
 };
 

@@ -20,22 +20,22 @@ public:
 
     // Override methods
 
-    // win1.41 0050ebd0 mac 100f7ab0 DanceKeyFrame::_dt(void)
+    // BW1W120 0050ebd0 BW1M100 100f7ab0 DanceKeyFrame::_dt(void)
     virtual ~DanceKeyFrame();
-    // win1.41 0050ebf0 mac 102ae1e0 DanceKeyFrame::ToBeDeleted(int)
+    // BW1W120 0050ebf0 BW1M100 102ae1e0 DanceKeyFrame::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0050ebc0 mac 102ace60 DanceKeyFrame::GetDebugText(void)
+    // BW1W120 0050ebc0 BW1M100 102ace60 DanceKeyFrame::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0050f2f0 mac 102acea0 DanceKeyFrame::Load(GameOSFile &)
+    // BW1W120 0050f2f0 BW1M100 102acea0 DanceKeyFrame::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 0050f1c0 mac 102ad2b0 DanceKeyFrame::Save(GameOSFile &)
+    // BW1W120 0050f1c0 BW1M100 102ad2b0 DanceKeyFrame::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0050ebb0 mac 102ace20 DanceKeyFrame::GetSaveType(void)
+    // BW1W120 0050ebb0 BW1M100 102ace20 DanceKeyFrame::GetSaveType(void)
     virtual uint32_t GetSaveType();
 
     // Constructors
 
-    // win1.41 0050eb60 mac 102ae450 DanceKeyFrame::DanceKeyFrame(long, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
+    // BW1W120 0050eb60 BW1M100 102ae450 DanceKeyFrame::DanceKeyFrame(long, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
     DanceKeyFrame(int param_1, LHDynamicStack__Ul* stack, DANCE_GROUP_ACTION_TYPE action_type, const DanceGroupActionArgument* arguments);
 };
 

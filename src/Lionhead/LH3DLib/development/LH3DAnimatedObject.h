@@ -21,7 +21,7 @@ public:
 
     // Constructors
 
-    // win1.41 inlined mac inlined LH3DAnimatedObject::LH3DAnimatedObject(void)
+    // BW1W120 inlined BW1M100 inlined LH3DAnimatedObject::LH3DAnimatedObject(void)
     LH3DAnimatedObject();
 };
 

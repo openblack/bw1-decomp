@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 00632d20 mac 10397440 MPFEChangedTeamRequestMessage::_dt(void)
+    // BW1W120 00632d20 BW1M100 10397440 MPFEChangedTeamRequestMessage::_dt(void)
     virtual ~MPFEChangedTeamRequestMessage();
 };
 

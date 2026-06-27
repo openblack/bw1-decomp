@@ -23,18 +23,18 @@ public:
 
     // Override methods
 
-    // win1.41 00564b00 mac 1031b740 GameStats::_dt(void)
+    // BW1W120 00564b00 BW1M100 1031b740 GameStats::_dt(void)
     virtual ~GameStats();
-    // win1.41 00564ac0 mac 103109d0 GameStats::GetPlayer(void)
+    // BW1W120 00564ac0 BW1M100 103109d0 GameStats::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 00564ad0 mac 10310a10 GameStats::SetPlayer(GPlayer *)
+    // BW1W120 00564ad0 BW1M100 10310a10 GameStats::SetPlayer(GPlayer *)
     virtual void SetPlayer(GPlayer* param_1);
-    // win1.41 00564af0 mac 10310a90 GameStats::GetDebugText(void)
+    // BW1W120 00564af0 BW1M100 10310a90 GameStats::GetDebugText(void)
     virtual char* GetDebugText();
 
     // Constructors
 
-    // win1.41 00564a40 mac 1031b7d0 GameStats::GameStats(void)
+    // BW1W120 00564a40 BW1M100 1031b7d0 GameStats::GameStats(void)
     GameStats();
 };
 

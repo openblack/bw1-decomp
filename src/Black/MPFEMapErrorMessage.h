@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 00631510 mac 103a4050 MPFEMapErrorMessage::_dt(void)
+    // BW1W120 00631510 BW1M100 103a4050 MPFEMapErrorMessage::_dt(void)
     virtual ~MPFEMapErrorMessage();
 };
 

@@ -21,16 +21,16 @@ struct PathCreator
 
     // Constructors
 
-    // win1.41 0078e8c0 mac 1017a270 PathCreator::PathCreator(void)
+    // BW1W120 0078e8c0 BW1M100 1017a270 PathCreator::PathCreator(void)
     PathCreator();
 
     // Non-virtual methods
 
-    // win1.41 0078eaa0 mac 1035b570 PathCreator::GetSaveGamePicturesPath__11PathCreatorFPc(char*)
+    // BW1W120 0078eaa0 BW1M100 1035b570 PathCreator::GetSaveGamePicturesPath__11PathCreatorFPc(char*)
     void GetSaveGamePicturesPath__11PathCreatorFPc(char* path);
-    // win1.41 0078eae0 mac 101ca330 PathCreator::GetCurrentGamePath(char*)
+    // BW1W120 0078eae0 BW1M100 101ca330 PathCreator::GetCurrentGamePath(char*)
     void GetCurrentGamePath(char* path);
-    // win1.41 0078efc0 mac 103655d0 PathCreator::CheckAndRecreateSaveGamePaths(void)
+    // BW1W120 0078efc0 BW1M100 103655d0 PathCreator::CheckAndRecreateSaveGamePaths(void)
     bool CheckAndRecreateSaveGamePaths();
 };
 

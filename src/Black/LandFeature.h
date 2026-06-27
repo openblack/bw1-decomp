@@ -10,7 +10,7 @@ struct LandFeature
 
     // Static methods
 
-    // win1.41 005e2f30 mac 10021e20 LandFeature::GetNearClipping(void)
+    // BW1W120 005e2f30 BW1M100 10021e20 LandFeature::GetNearClipping(void)
     static float GetNearClipping();
 };
 

@@ -26,12 +26,12 @@ public:
 
     // Override methods
 
-    // win1.41 00644d70 mac 10113d90 PhysicsObject::_dt(void)
+    // BW1W120 00644d70 BW1M100 10113d90 PhysicsObject::_dt(void)
     virtual ~PhysicsObject();
 
     // Constructors
 
-    // win1.41 00644330 mac 10113e20 PhysicsObject::PhysicsObject(void)
+    // BW1W120 00644330 BW1M100 10113e20 PhysicsObject::PhysicsObject(void)
     PhysicsObject();
 };
 

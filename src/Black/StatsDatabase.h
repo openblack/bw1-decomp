@@ -12,12 +12,12 @@ public:
 
     // Override methods
 
-    // win1.41 006338f0 mac 10109920 StatsDatabase::Send(void)
+    // BW1W120 006338f0 BW1M100 10109920 StatsDatabase::Send(void)
     virtual uint32_t Send();
 
     // Constructors
 
-    // win1.41 006338d0 mac 10109a30 StatsDatabase::StatsDatabase(void)
+    // BW1W120 006338d0 BW1M100 10109a30 StatsDatabase::StatsDatabase(void)
     StatsDatabase();
 };
 

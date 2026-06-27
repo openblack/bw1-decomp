@@ -24,22 +24,22 @@ public:
 
     // Override methods
 
-    // win1.41 005c4b10 mac 1034b510 HelpSpirit::_dt(void)
+    // BW1W120 005c4b10 BW1M100 1034b510 HelpSpirit::_dt(void)
     virtual ~HelpSpirit();
-    // win1.41 005c4b00 mac 1034b640 HelpSpirit::Create3DObject(void)
+    // BW1W120 005c4b00 BW1M100 1034b640 HelpSpirit::Create3DObject(void)
     virtual void Create3DObject();
-    // win1.41 005c5270 mac 10083340 HelpSpirit::Process(void)
+    // BW1W120 005c5270 BW1M100 10083340 HelpSpirit::Process(void)
     virtual uint32_t Process();
-    // win1.41 005c4b90 mac 1034c540 HelpSpirit::CallVirtualFunctionsForCreation(MapCoords const &)
+    // BW1W120 005c4b90 BW1M100 1034c540 HelpSpirit::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
-    // win1.41 005c4af0 mac 1034b5f0 HelpSpirit::ValidForPlaceInHand(GInterfaceStatus *)
+    // BW1W120 005c4af0 BW1M100 1034b5f0 HelpSpirit::ValidForPlaceInHand(GInterfaceStatus *)
     virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
-    // win1.41 005c4ae0 mac 1034b5a0 HelpSpirit::SaveObject(LHOSFile &, MapCoords const &)
+    // BW1W120 005c4ae0 BW1M100 1034b5a0 HelpSpirit::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 
     // Constructors
 
-    // win1.41 005c4aa0 mac 1034c700 HelpSpirit::HelpSpirit(MapCoords const &, HELP_SPIRIT_TYPE)
+    // BW1W120 005c4aa0 BW1M100 1034c700 HelpSpirit::HelpSpirit(MapCoords const &, HELP_SPIRIT_TYPE)
     HelpSpirit(const MapCoords* coords, HELP_SPIRIT_TYPE type);
 };
 

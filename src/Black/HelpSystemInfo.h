@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 005c53f0 mac 10351af0 HelpSystemInfo::_dt(void)
+    // BW1W120 005c53f0 BW1M100 10351af0 HelpSystemInfo::_dt(void)
     virtual ~HelpSystemInfo();
-    // win1.41 005c53a0 mac 10351aa0 HelpSystemInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 005c53a0 BW1M100 10351aa0 HelpSystemInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

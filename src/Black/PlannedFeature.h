@@ -19,17 +19,17 @@ public:
 
     // Override methods
 
-    // win1.41 005274a0 mac 100d1600 PlannedFeature::_dt(void)
+    // BW1W120 005274a0 BW1M100 100d1600 PlannedFeature::_dt(void)
     virtual ~PlannedFeature();
-    // win1.41 00527490 mac 100d16e0 PlannedFeature::GetDebugText(void)
+    // BW1W120 00527490 BW1M100 100d16e0 PlannedFeature::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00527580 mac 100d0f60 PlannedFeature::Load(GameOSFile &)
+    // BW1W120 00527580 BW1M100 100d0f60 PlannedFeature::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00527550 mac 100d0ff0 PlannedFeature::Save(GameOSFile &)
+    // BW1W120 00527550 BW1M100 100d0ff0 PlannedFeature::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 00527480 mac 100d16a0 PlannedFeature::GetSaveType(void)
+    // BW1W120 00527480 BW1M100 100d16a0 PlannedFeature::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 005274d0 mac 100d1080 PlannedFeature::CreatePlanned(float)
+    // BW1W120 005274d0 BW1M100 100d1080 PlannedFeature::CreatePlanned(float)
     virtual MultiMapFixed* CreatePlanned(float param_1);
 };
 

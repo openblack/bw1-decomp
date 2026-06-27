@@ -12,7 +12,7 @@ public:
 
     // Override methods
 
-    // win1.41 0072e250 mac 10148e30 GSpookyVoices::_dt(void)
+    // BW1W120 0072e250 BW1M100 10148e30 GSpookyVoices::_dt(void)
     virtual ~GSpookyVoices();
 };
 

@@ -31,16 +31,16 @@ public:
 
     // Override methods
 
-    // win1.41 0046e5e0 mac 101c6110 HandState::DrawTheHeldObject(void)
+    // BW1W120 0046e5e0 BW1M100 101c6110 HandState::DrawTheHeldObject(void)
     virtual void DrawTheHeldObject();
-    // win1.41 005b02d0 mac 101c5590 HandState::Exit(void)
+    // BW1W120 005b02d0 BW1M100 101c5590 HandState::Exit(void)
     virtual void Exit();
-    // win1.41 0046be80 mac 101a6900 HandState::AllowCameraTricons(void)
+    // BW1W120 0046be80 BW1M100 101a6900 HandState::AllowCameraTricons(void)
     virtual bool AllowCameraTricons();
 
     // Constructors
 
-    // win1.41 inlined mac inlined HandState::HandState(CHand*)
+    // BW1W120 inlined BW1M100 inlined HandState::HandState(CHand*)
     HandState(CHand* hand);
 };
 

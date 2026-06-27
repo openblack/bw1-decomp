@@ -19,14 +19,14 @@ public:
 
     // Override methods
 
-    // win1.41 005ce2a0 mac 10368cb0 GInterfaceMessageBuffer::_dt(void)
+    // BW1W120 005ce2a0 BW1M100 10368cb0 GInterfaceMessageBuffer::_dt(void)
     virtual ~GInterfaceMessageBuffer();
 
     // Non-virtual methods
 
-    // win1.41 005d9e80 mac 10368b50 GInterfaceMessageBuffer::Init(unsigned short)
+    // BW1W120 005d9e80 BW1M100 10368b50 GInterfaceMessageBuffer::Init(unsigned short)
     void Init(unsigned short param_1);
-    // win1.41 005d9f10 mac 1009c3b0 GInterfaceMessageBuffer::Add(INTERFACE_MESSAGE_TYPES, GInterfaceCollide *, LHCoord *)
+    // BW1W120 005d9f10 BW1M100 1009c3b0 GInterfaceMessageBuffer::Add(INTERFACE_MESSAGE_TYPES, GInterfaceCollide *, LHCoord *)
     bool Add(INTERFACE_MESSAGE_TYPES param_1, GInterfaceCollide* param_2, LHCoord* param_3);
 };
 

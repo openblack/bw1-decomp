@@ -12,7 +12,7 @@ public:
 
     // Override methods
 
-    // win1.41 00557220 mac 102fe950 GameArea::_dt(void)
+    // BW1W120 00557220 BW1M100 102fe950 GameArea::_dt(void)
     virtual ~GameArea();
 };
 

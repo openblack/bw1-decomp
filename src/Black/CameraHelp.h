@@ -810,7 +810,7 @@ static const char* CameraHelpReason_strs[_CameraHelpReason_COUNT] = {
   "CameraHelpReason_0x308",
 };
 
-// win1.41 00449140 mac 100018f0 CameraHelp::CameraHelpCallback(CameraHelpReason, LHPoint &, unsigned long)
+// BW1W120 00449140 BW1M100 100018f0 CameraHelp::CameraHelpCallback(CameraHelpReason, LHPoint &, unsigned long)
 void __cdecl CameraHelpCallback__10CameraHelpF16CameraHelpReasonR7LHPointUl(enum CameraHelpReason reason, struct LHPoint* point, uint32_t param_3) asm("?CameraHelpCallback@CameraHelp@@SAXW4CameraHelpReason@@AAULHPoint@@K@Z");
 
 #endif /* BW1_DECOMP_CAMERA_HELP_INCLUDED_H */

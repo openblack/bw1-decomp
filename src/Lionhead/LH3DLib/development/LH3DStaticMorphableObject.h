@@ -13,7 +13,7 @@ public:
 
     // Constructors
 
-    // win1.41 inlined mac 100826b0 LH3DStaticMorphableObject::LH3DStaticMorphableObject(void)
+    // BW1W120 inlined BW1M100 100826b0 LH3DStaticMorphableObject::LH3DStaticMorphableObject(void)
     LH3DStaticMorphableObject();
 };
 

@@ -19,19 +19,19 @@ public:
 
     // Override methods
 
-    // win1.41 0055d2f0 mac 1051bea0 SpellFlockGround::_dt(void)
+    // BW1W120 0055d2f0 BW1M100 1051bea0 SpellFlockGround::_dt(void)
     virtual ~SpellFlockGround();
-    // win1.41 0055d2e0 mac 1051bf80 SpellFlockGround::GetDebugText(void)
+    // BW1W120 0055d2e0 BW1M100 1051bf80 SpellFlockGround::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00724bb0 mac 1051c030 SpellFlockGround::Load(GameOSFile &)
+    // BW1W120 00724bb0 BW1M100 1051c030 SpellFlockGround::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00724bd0 mac 1051bfc0 SpellFlockGround::Save(GameOSFile &)
+    // BW1W120 00724bd0 BW1M100 1051bfc0 SpellFlockGround::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0055d2d0 mac 1051bf40 SpellFlockGround::GetSaveType(void)
+    // BW1W120 0055d2d0 BW1M100 1051bf40 SpellFlockGround::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00724290 mac 1051ccf0 SpellFlockGround::GetParticleType(void)
+    // BW1W120 00724290 BW1M100 1051ccf0 SpellFlockGround::GetParticleType(void)
     virtual void GetParticleType();
-    // win1.41 007242a0 mac 1051c720 SpellFlockGround::Process(void)
+    // BW1W120 007242a0 BW1M100 1051c720 SpellFlockGround::Process(void)
     virtual uint32_t Process();
 };
 

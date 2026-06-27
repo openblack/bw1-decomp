@@ -62,24 +62,24 @@ public:
 
     // Override methods
 
-    // win1.41 007391a0 mac 10558800 TownStats::_dt(void)
+    // BW1W120 007391a0 BW1M100 10558800 TownStats::_dt(void)
     virtual ~TownStats();
 
     // Non-virtual methods
 
-    // win1.41 007493c0 mac 10562b60 TownStats::Remove(Villager *)
+    // BW1W120 007493c0 BW1M100 10562b60 TownStats::Remove(Villager *)
     void Remove(Villager* villager);
-    // win1.41 00749490 mac 10562ac0 TownStats::ChildToAdult(Villager *)
+    // BW1W120 00749490 BW1M100 10562ac0 TownStats::ChildToAdult(Villager *)
     void ChildToAdult(Villager* param_1);
-    // win1.41 007494c0 mac 10562a10 TownStats::VillagerMoveOutOfAbode(Villager *)
+    // BW1W120 007494c0 BW1M100 10562a10 TownStats::VillagerMoveOutOfAbode(Villager *)
     void VillagerMoveOutOfAbode(Villager* villager);
-    // win1.41 00749a60 mac 10562330 TownStats::Add(PlannedMultiMapFixed *)
+    // BW1W120 00749a60 BW1M100 10562330 TownStats::Add(PlannedMultiMapFixed *)
     void Add(PlannedMultiMapFixed* planned);
-    // win1.41 00749aa0 mac 10562220 TownStats::Add(BuildingSite *)
+    // BW1W120 00749aa0 BW1M100 10562220 TownStats::Add(BuildingSite *)
     void Add(BuildingSite* param_1);
-    // win1.41 00749c60 mac 10561dd0 TownStats::IncrementNumOfDisciples(VILLAGER_DISCIPLE)
+    // BW1W120 00749c60 BW1M100 10561dd0 TownStats::IncrementNumOfDisciples(VILLAGER_DISCIPLE)
     void IncrementNumOfDisciples(VILLAGER_DISCIPLE param_1);
-    // win1.41 00749c80 mac 10561d60 TownStats::DecrementNumOfDisciples(VILLAGER_DISCIPLE)
+    // BW1W120 00749c80 BW1M100 10561d60 TownStats::DecrementNumOfDisciples(VILLAGER_DISCIPLE)
     void DecrementNumOfDisciples(VILLAGER_DISCIPLE param_1);
 };
 

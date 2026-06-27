@@ -3,9 +3,9 @@
 
 #include <uchar.h> /* For char16_t */
 
-// win1.41 100189d0 mac 101058d0 ushort * LHNetGetCurrentUsedProfile(void)
+// BW1W120 100189d0 BW1M100 101058d0 ushort * LHNetGetCurrentUsedProfile(void)
 char16_t* __cdecl LHNetGetCurrentUsedProfile__Fv(void);
-// win1.41 10018b30 mac 101054f0 ushort * LHNetGetCurrentProfileNameFromRegistry(void)
+// BW1W120 10018b30 BW1M100 101054f0 ushort * LHNetGetCurrentProfileNameFromRegistry(void)
 char16_t* __cdecl LHNetGetCurrentProfileNameFromRegistry__Fv(void);
 
 #endif /* BW1_DECOMP_LH_NET_UTILS_INCLUDED_H */

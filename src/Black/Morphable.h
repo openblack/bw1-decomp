@@ -85,37 +85,37 @@ public:
 
     // Override methods
 
-    // win1.41 00617eb0 mac 10107d70 Morphable::SetAnimTime(long, long)
+    // BW1W120 00617eb0 BW1M100 10107d70 Morphable::SetAnimTime(long, long)
     virtual void SetAnimTime(int param_1, int param_2);
-    // win1.41 00618360 mac 101073d0 Morphable::LoadBase(char *)
+    // BW1W120 00618360 BW1M100 101073d0 Morphable::LoadBase(char *)
     virtual uint32_t LoadBase(char* param_1);
-    // win1.41 00619100 mac 101063f0 Morphable::MorphAnims(void)
+    // BW1W120 00619100 BW1M100 101063f0 Morphable::MorphAnims(void)
     virtual void MorphAnims();
-    // win1.41 00619500 mac 101061c0 Morphable::MorphTexture(void)
+    // BW1W120 00619500 BW1M100 101061c0 Morphable::MorphTexture(void)
     virtual void MorphTexture();
 
     // Static methods
 
-    // win1.41 006186b0 mac 10107250 Morphable::LoadExtraTexture(void)
+    // BW1W120 006186b0 BW1M100 10107250 Morphable::LoadExtraTexture(void)
     static uint32_t LoadExtraTexture();
 
     // Non-virtual methods
 
-    // win1.41 00617310 mac 10108d10 Morphable::MorphInit(LHPoint &, long, void* )
+    // BW1W120 00617310 BW1M100 10108d10 Morphable::MorphInit(LHPoint &, long, void* )
     void MorphInit(LHPoint* point, long param_3, void* param_4);
-    // win1.41 00617470 mac 10108c30 Morphable::AddHairGroup()
+    // BW1W120 00617470 BW1M100 10108c30 Morphable::AddHairGroup()
     uint32_t AddHairGroup();
-    // win1.41 00617620 mac 10108960 Morphable::SelectMesh(long)
+    // BW1W120 00617620 BW1M100 10108960 Morphable::SelectMesh(long)
     void SelectMesh(int param_1);
-    // win1.41 00617ae0 mac 10107f50 Morphable::ReadBinary(LHFile *, AnimInfo *, AnimInfo *)
+    // BW1W120 00617ae0 BW1M100 10107f50 Morphable::ReadBinary(LHFile *, AnimInfo *, AnimInfo *)
     uint32_t ReadBinary(LHFile* file, AnimInfo* info_1, AnimInfo* info_2);
-    // win1.41 00617ee0 mac 10107a90 Morphable::ReadExtraDataBinary
+    // BW1W120 00617ee0 BW1M100 10107a90 Morphable::ReadExtraDataBinary
     void ReadExtraDataBinary(LHFile* param_1, AnimInfo* param_2, AnimInfo* param_3, long param_4);
-    // win1.41 00618720 mac 10106d80 Morphable::LoadMesh(char*, long)
+    // BW1W120 00618720 BW1M100 10106d80 Morphable::LoadMesh(char*, long)
     uint32_t LoadMesh(char* param_2, int param_3);
-    // win1.41 00619650 mac 10084860 Morphable::GetAnim(long, long)
+    // BW1W120 00619650 BW1M100 10084860 Morphable::GetAnim(long, long)
     CAnim* GetAnim(long anim_index, long param_3);
-    // win1.41 00619690 mac 10084450 Morphable::GetSetAnim(long, long, long)
+    // BW1W120 00619690 BW1M100 10084450 Morphable::GetSetAnim(long, long, long)
     CAnim* GetSetAnim(long param_1, long param_2, long param_3);
 };
 

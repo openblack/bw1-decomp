@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 006274f0 mac 10397500 MPFEReplyToInviteMessage::_dt(void)
+    // BW1W120 006274f0 BW1M100 10397500 MPFEReplyToInviteMessage::_dt(void)
     virtual ~MPFEReplyToInviteMessage();
 };
 

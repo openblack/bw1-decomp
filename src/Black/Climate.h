@@ -18,17 +18,17 @@ public:
 
     // Override methods
 
-    // win1.41 0055dee0 mac 105a2870 GClimate::_dt(void)
+    // BW1W120 0055dee0 BW1M100 105a2870 GClimate::_dt(void)
     virtual ~GClimate();
-    // win1.41 007713e0 mac 105a2620 GClimate::ToBeDeleted(int)
+    // BW1W120 007713e0 BW1M100 105a2620 GClimate::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0055ded0 mac 1059ef50 GClimate::GetDebugText(void)
+    // BW1W120 0055ded0 BW1M100 1059ef50 GClimate::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 007736e0 mac 1059ef90 GClimate::Load(GameOSFile &)
+    // BW1W120 007736e0 BW1M100 1059ef90 GClimate::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00773320 mac 1059f860 GClimate::Save(GameOSFile &)
+    // BW1W120 00773320 BW1M100 1059f860 GClimate::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0055dec0 mac 1059ef10 GClimate::GetSaveType(void)
+    // BW1W120 0055dec0 BW1M100 1059ef10 GClimate::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
 

@@ -34,7 +34,7 @@ struct PhysOb
 
     // Non-virtual methods
 
-    // win1.41 007fb780 mac 10088820 PhysOb::Initialise(LH3DObject *, float)
+    // BW1W120 007fb780 BW1M100 10088820 PhysOb::Initialise(LH3DObject *, float)
     void Initialise(LH3DObject* obj, float param_3);
 };
 

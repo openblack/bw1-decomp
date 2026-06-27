@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 00630050 mac 103a6e30 MPFEStartGameTransferFilesMessage::_dt(void)
+    // BW1W120 00630050 BW1M100 103a6e30 MPFEStartGameTransferFilesMessage::_dt(void)
     virtual ~MPFEStartGameTransferFilesMessage();
 };
 

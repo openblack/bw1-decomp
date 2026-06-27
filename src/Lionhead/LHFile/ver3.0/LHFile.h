@@ -42,41 +42,41 @@ public:
 
     // Override methods
 
-    // win1.41 007bd500 mac 10168d60 LHFile::Open(LH_FILE_MODE)
+    // BW1W120 007bd500 BW1M100 10168d60 LHFile::Open(LH_FILE_MODE)
     virtual uint32_t Open(LH_FILE_MODE mode);
 
     // Constructors
 
-    // win1.41 0042e110 mac 10183650 LHFile::LHFile(void)
+    // BW1W120 0042e110 BW1M100 10183650 LHFile::LHFile(void)
     LHFile();
 
     // Non-virtual methods
 
-    // win1.41 0042e160 mac 100cd100 LHFile::ResetData(void)
+    // BW1W120 0042e160 BW1M100 100cd100 LHFile::ResetData(void)
     uint32_t ResetData();
-    // win1.41 007bd390 mac 1061c61c LHFile::SetName(char const *)
+    // BW1W120 007bd390 BW1M100 1061c61c LHFile::SetName(char const *)
     uint32_t SetName(const char* name);
-    // win1.41 007bd7d0 mac 10168870 LHFile::VerifyFile(void)
+    // BW1W120 007bd7d0 BW1M100 10168870 LHFile::VerifyFile(void)
     uint32_t VerifyFile();
-    // win1.41 007bd9d0 mac 10168610 LHFile::AllocSegDataMem(LHSegment *)
+    // BW1W120 007bd9d0 BW1M100 10168610 LHFile::AllocSegDataMem(LHSegment *)
     uint32_t AllocSegDataMem(LHSegment* segment);
-    // win1.41 007bdb20 mac 101681d0 LHFile::WriteSegmentHeader(char *)
+    // BW1W120 007bdb20 BW1M100 101681d0 LHFile::WriteSegmentHeader(char *)
     uint32_t WriteSegmentHeader(char* segment_name);
-    // win1.41 007bdbc0 mac 1061c64c LHFile::Close(void)
+    // BW1W120 007bdbc0 BW1M100 1061c64c LHFile::Close(void)
     uint32_t Close();
-    // win1.41 007bdc60 mac 10005210 LHFile::Lookup(char *)
+    // BW1W120 007bdc60 BW1M100 10005210 LHFile::Lookup(char *)
     LHSegmentDesc* Lookup(char* segment_name);
-    // win1.41 007bdcd0 mac 100050e0 LHFile::SetLHFilePointer(char *, long)
+    // BW1W120 007bdcd0 BW1M100 100050e0 LHFile::SetLHFilePointer(char *, long)
     uint32_t SetLHFilePointer(char* segment_name, int offset);
-    // win1.41 007bddd0 mac 10167790 LHFile::GetSegment(char *, LHSegment *, int)
+    // BW1W120 007bddd0 BW1M100 10167790 LHFile::GetSegment(char *, LHSegment *, int)
     uint32_t GetSegment(char* param_2, LHSegment* segment, int param_4);
-    // win1.41 007bdec0 mac 10004fe0 LHFile::OpenSegment(char *)
+    // BW1W120 007bdec0 BW1M100 10004fe0 LHFile::OpenSegment(char *)
     uint32_t OpenSegment(char* name);
-    // win1.41 007bdf50 mac 10004d90 LHFile::CloseSegment(void)
+    // BW1W120 007bdf50 BW1M100 10004d90 LHFile::CloseSegment(void)
     uint32_t CloseSegment();
-    // win1.41 007be040 mac 10166bb0 LHFile::GetSegmentData(void* , unsigned long, long)
+    // BW1W120 007be040 BW1M100 10166bb0 LHFile::GetSegmentData(void* , unsigned long, long)
     uint32_t GetSegmentData(void* data, size_t data_size, int offset);
-    // win1.41 007be120 mac 10004c90 LHFile::ReadData(void* , unsigned long)
+    // BW1W120 007be120 BW1M100 10004c90 LHFile::ReadData(void* , unsigned long)
     uint32_t ReadData(void* data, size_t length);
 };
 

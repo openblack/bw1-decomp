@@ -18,7 +18,7 @@ struct CreatureDesireSource
 
     // Constructors
 
-    // win1.41 004de150 mac 1025dac0 CreatureDesireSource::CreatureDesireSource(CREATURE_DESIRE_SOURCE, Creature* )
+    // BW1W120 004de150 BW1M100 1025dac0 CreatureDesireSource::CreatureDesireSource(CREATURE_DESIRE_SOURCE, Creature* )
     CreatureDesireSource(CREATURE_DESIRE_SOURCE type, Creature* creature);
 };
 

@@ -35,11 +35,11 @@ public:
 
     // Override methods
 
-    // win1.41 00738fc0 mac 10545c00 GTownInfo::_dt(void)
+    // BW1W120 00738fc0 BW1M100 10545c00 GTownInfo::_dt(void)
     virtual ~GTownInfo();
-    // win1.41 0073fd80 mac inlined GTownInfo::GetDebugColor( const(LHColor *))
+    // BW1W120 0073fd80 BW1M100 inlined GTownInfo::GetDebugColor( const(LHColor *))
     virtual LHColor* GetDebugColor(LHColor* param_1);
-    // win1.41 00738f70 mac 10545ba0 GTownInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00738f70 BW1M100 10545ba0 GTownInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

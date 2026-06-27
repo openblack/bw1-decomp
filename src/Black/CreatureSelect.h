@@ -11,11 +11,11 @@ public:
 
     // Override methods
 
-    // win1.41 004f7210 mac inlined CreatureSelect::ProcessTurn(void)
+    // BW1W120 004f7210 BW1M100 inlined CreatureSelect::ProcessTurn(void)
     virtual int ProcessTurn();
-    // win1.41 004f7250 mac inlined CreatureSelect::Display(void)
+    // BW1W120 004f7250 BW1M100 inlined CreatureSelect::Display(void)
     virtual void Display();
-    // win1.41 004f74d0 mac inlined CreatureSelect::ClickFunction(int, int, int)
+    // BW1W120 004f74d0 BW1M100 inlined CreatureSelect::ClickFunction(int, int, int)
     virtual void ClickFunction(int param_1, int param_2, int param_3);
 };
 

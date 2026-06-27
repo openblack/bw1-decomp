@@ -47,39 +47,39 @@ public:
 
     // Override methods
 
-    // win1.41 0040a5c0 mac 10388e60 SetupList::Draw(bool, bool)
+    // BW1W120 0040a5c0 BW1M100 10388e60 SetupList::Draw(bool, bool)
     virtual void Draw(bool hovered, bool selected);
-    // win1.41 0040a110 mac 101c7fc0 SetupList::Drag(int, int)
+    // BW1W120 0040a110 BW1M100 101c7fc0 SetupList::Drag(int, int)
     virtual void Drag(int x, int y);
-    // win1.41 0040a370 mac 10478900 SetupList::MouseDown(int, int, bool)
+    // BW1W120 0040a370 BW1M100 10478900 SetupList::MouseDown(int, int, bool)
     virtual void MouseDown(int x, int y, bool param_3);
-    // win1.41 0040a3f0 mac 100c7610 SetupList::MouseUp(int, int, bool)
+    // BW1W120 0040a3f0 BW1M100 100c7610 SetupList::MouseUp(int, int, bool)
     virtual void MouseUp(int x, int y, bool param_3);
-    // win1.41 0040a360 mac 100b7170 SetupList::Click(int, int)
+    // BW1W120 0040a360 BW1M100 100b7170 SetupList::Click(int, int)
     virtual void Click(int x, int y);
-    // win1.41 00409eb0 mac 103d24f0 SetupList::KeyDown(int, int)
+    // BW1W120 00409eb0 BW1M100 103d24f0 SetupList::KeyDown(int, int)
     virtual void KeyDown(LHKey key, LHKeyMod mod);
-    // win1.41 0040a540 mac 1056c3d0 SetupList::~SetupList(void)
+    // BW1W120 0040a540 BW1M100 1056c3d0 SetupList::~SetupList(void)
     virtual ~SetupList();
-    // win1.41 0040a520 mac 104e2bb0 SetupList::IsSelected(int)
+    // BW1W120 0040a520 BW1M100 104e2bb0 SetupList::IsSelected(int)
     virtual bool IsSelected(int index);
 
     // Constructors
 
-    // win1.41 0040a450 mac 10494bc0 SetupList::SetupList(int, int, int, int, int)
+    // BW1W120 0040a450 BW1M100 10494bc0 SetupList::SetupList(int, int, int, int, int)
     SetupList(int id, int x, int y, int width, int height);
 
     // Non-virtual methods
 
-    // win1.41 00409dd0 mac 10594000 SetupList::AutoScroll(bool)
+    // BW1W120 00409dd0 BW1M100 10594000 SetupList::AutoScroll(bool)
     void AutoScroll(bool param_1);
-    // win1.41 0040aaf0 mac 1056d710 SetupList::UpdateHeights(void)
+    // BW1W120 0040aaf0 BW1M100 1056d710 SetupList::UpdateHeights(void)
     void UpdateHeights();
-    // win1.41 0040ad60 mac 10169200 SetupList::DeleteString(int)
+    // BW1W120 0040ad60 BW1M100 10169200 SetupList::DeleteString(int)
     void DeleteString(int index);
-    // win1.41 0040ae70 mac 10112d20 SetupList::InsertString(int, wchar_t *)
+    // BW1W120 0040ae70 BW1M100 10112d20 SetupList::InsertString(int, wchar_t *)
     void InsertString(int index, const char16_t* text);
-    // win1.41 0040b050 mac 104ea7a0 SetupList::SetNum(int)
+    // BW1W120 0040b050 BW1M100 104ea7a0 SetupList::SetNum(int)
     void SetNum(int num);
 };
 

@@ -44,7 +44,7 @@ struct NewCollide
 
         // Non-virtual methods
 
-        // win1.41 inlined mac inlined NewCollide::List::Collide(NewCollide::List)
+        // BW1W120 inlined BW1M100 inlined NewCollide::List::Collide(NewCollide::List)
         bool Collide(const List* other);
     };
 
@@ -59,23 +59,23 @@ struct NewCollide
 
         // Constructors
 
-        // win1.41 0082ad90 mac 1061bfd4 NewCollide::Obj::Obj(float, LHPoint*)
+        // BW1W120 0082ad90 BW1M100 1061bfd4 NewCollide::Obj::Obj(float, LHPoint*)
         Obj(float radius, LHPoint* position);
-        // win1.41 0082add0 mac 100d9da0 NewCollide::Obj::Obj(LHPoint*,float,float,float)
+        // BW1W120 0082add0 BW1M100 100d9da0 NewCollide::Obj::Obj(LHPoint*,float,float,float)
         Obj(LHPoint* position, float bb_x, float bb_z, float angle);
 
         // Non-virtual methods
 
-        // win1.41 00828f40 mac 100befb0 NewCollide::Obj::CreateList(void)
+        // BW1W120 00828f40 BW1M100 100befb0 NewCollide::Obj::CreateList(void)
         void CreateList();
-        // win1.41 inlined mac inlined NewCollide::Obj::Collide(NewCollide::List)
+        // BW1W120 inlined BW1M100 inlined NewCollide::Obj::Collide(NewCollide::List)
         bool Collide(const List* other);
-        // win1.41 00829140 mac 1061b32c NewCollide::Obj::Collide(float, NewCollide::Obj*)
+        // BW1W120 00829140 BW1M100 1061b32c NewCollide::Obj::Collide(float, NewCollide::Obj*)
         bool32_t Collide(const Obj* other);
 
         // Destructors
 
-        // win1.41 0082ae60 mac 1061b344 NewCollide::Obj::~Obj(void)
+        // BW1W120 0082ae60 BW1M100 1061b344 NewCollide::Obj::~Obj(void)
         ~Obj();
     };
 
@@ -83,12 +83,12 @@ struct NewCollide
 
     // Constructors
 
-    // win1.41 00829390 mac 100d9080 NewCollide::NewCollide(LH3DObject*)
+    // BW1W120 00829390 BW1M100 100d9080 NewCollide::NewCollide(LH3DObject*)
     NewCollide(LH3DObject* obj);
 
     // Destructors
 
-    // win1.41 0082aea0 mac 1061b35c NewCollide::~NewCollide(void)
+    // BW1W120 0082aea0 BW1M100 1061b35c NewCollide::~NewCollide(void)
     ~NewCollide();
 };
 
@@ -100,14 +100,14 @@ struct Point2DCompare
 
     // Non-virtual methods
 
-    // win1.41 0060f740 mac inlined Point2DCompare<0>::operator=(const Point2DCompare<0>*)
-    // win1.41 0060f720 mac inlined Point2DCompare<1>::operator=(const Point2DCompare<1>*)
+    // BW1W120 0060f740 BW1M100 inlined Point2DCompare<0>::operator=(const Point2DCompare<0>*)
+    // BW1W120 0060f720 BW1M100 inlined Point2DCompare<1>::operator=(const Point2DCompare<1>*)
     Point2DCompare* operator=(Point2DCompare* other);
-    // win1.41 006101f0 mac inlined Point2DCompare<0>::operator<(const Point2DCompare<0>*)
-    // win1.41 00610180 mac inlined Point2DCompare<1>::operator<(const Point2DCompare<1>*)
+    // BW1W120 006101f0 BW1M100 inlined Point2DCompare<0>::operator<(const Point2DCompare<0>*)
+    // BW1W120 00610180 BW1M100 inlined Point2DCompare<1>::operator<(const Point2DCompare<1>*)
     bool operator<(Point2DCompare* other);
-    // win1.41 00610230 mac inlined Point2DCompare<0>::Resolve()
-    // win1.41 006101c0 mac inlined Point2DCompare<1>::Resolve()
+    // BW1W120 00610230 BW1M100 inlined Point2DCompare<0>::Resolve()
+    // BW1W120 006101c0 BW1M100 inlined Point2DCompare<1>::Resolve()
     void Resolve();
 };
 
@@ -123,8 +123,8 @@ struct IntersectIntervalCircle
 
     // Non-virtual methods
 
-    // win1.41 006169f0 mac inlined IntersectIntervalCircle<0>::Resolve(void)
-    // win1.41 00616c70 mac inlined IntersectIntervalCircle<1>::Resolve(void)
+    // BW1W120 006169f0 BW1M100 inlined IntersectIntervalCircle<0>::Resolve(void)
+    // BW1W120 00616c70 BW1M100 inlined IntersectIntervalCircle<1>::Resolve(void)
     void Resolve();
 };
 
@@ -137,14 +137,14 @@ struct CircleHugInfo
 
     // Constructors
 
-    // win1.41 0060a640 mac 103c45d0 CircleHugInfo::CircleHugInfo(void)
+    // BW1W120 0060a640 BW1M100 103c45d0 CircleHugInfo::CircleHugInfo(void)
     CircleHugInfo();
 
     // Non-virtual methods
 
-    // win1.41 0060a660 mac 103c4590 CircleHugInfo::GetObjectPtr(void)
+    // BW1W120 0060a660 BW1M100 103c4590 CircleHugInfo::GetObjectPtr(void)
     NewCollide::Obj* GetObjectPtr();
-    // win1.41 0060a770 mac 100260e0 CircleHugInfo::SetObjectPtr(NewCollide::Obj*, MobileWallHug*, bool)
+    // BW1W120 0060a770 BW1M100 100260e0 CircleHugInfo::SetObjectPtr(NewCollide::Obj*, MobileWallHug*, bool)
     void SetObjectPtr(NewCollide::Obj* param_2, MobileWallHug* param_3, bool param_4);
 };
 
@@ -157,11 +157,11 @@ struct ObjectCircleIterator
 
     // Non-virtual methods
 
-    // win1.41 006159a0 mac 1005f630 ObjectCircleIterator::operator NewCollide::Obj
+    // BW1W120 006159a0 BW1M100 1005f630 ObjectCircleIterator::operator NewCollide::Obj
     operator NewCollide::Obj();
-    // win1.41 0060d0a0 mac 100644a0 ObjectCircleIterator::Init(int, MapCoords const &)
+    // BW1W120 0060d0a0 BW1M100 100644a0 ObjectCircleIterator::Init(int, MapCoords const &)
     void Init(ObjectCircleIteratorDirection direction, const MapCoords* coords);
-    // win1.41 0060d280 mac 100649d0 ObjectCircleIterator::Init(Object *, MapCoords const &)
+    // BW1W120 0060d280 BW1M100 100649d0 ObjectCircleIterator::Init(Object *, MapCoords const &)
     void Init(Object* obj, const MapCoords* coords);
 };
 
@@ -179,16 +179,16 @@ struct NewCollideDescriptor
 
     // Constructors
 
-    // win1.41 0046a860 mac 101c5420 NewCollideDescriptor::NewCollideDescriptor(Object*)
+    // BW1W120 0046a860 BW1M100 101c5420 NewCollideDescriptor::NewCollideDescriptor(Object*)
     NewCollideDescriptor(Object* obj);
 
     // Non-virtual methods
 
-    // win1.41 0046aaf0 mac 101c5310 NewCollideDescriptor::~NewCollideDescriptor(void)
+    // BW1W120 0046aaf0 BW1M100 101c5310 NewCollideDescriptor::~NewCollideDescriptor(void)
     ~NewCollideDescriptor();
-    // win1.41 0046ab10 mac 101c4f70 NewCollideDescriptor::Init(Game3DObject*)
+    // BW1W120 0046ab10 BW1M100 101c4f70 NewCollideDescriptor::Init(Game3DObject*)
     void Init(Game3DObject* obj);
-    // win1.41 0046ad80 mac 101c4db0 NewCollideDescriptor::GetNext(void)
+    // BW1W120 0046ad80 BW1M100 101c4db0 NewCollideDescriptor::GetNext(void)
     MapCell* GetNext();
 };
 

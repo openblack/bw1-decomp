@@ -16,14 +16,14 @@ public:
 
     // Override methods
 
-    // win1.41 005e1720 mac 100fe5c0 GJobInfo::_dt(void)
+    // BW1W120 005e1720 BW1M100 100fe5c0 GJobInfo::_dt(void)
     virtual ~GJobInfo();
-    // win1.41 005e16c0 mac 100fe6d0 GJobInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 005e16c0 BW1M100 100fe6d0 GJobInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 
     // Non-virtual methods
 
-    // win1.41 005e1740 mac 100fe450 GJobInfo::GetJobActivity(void) const
+    // BW1W120 005e1740 BW1M100 100fe450 GJobInfo::GetJobActivity(void) const
     uint32_t GetJobActivity();
 };
 

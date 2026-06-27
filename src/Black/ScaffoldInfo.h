@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 006e8360 mac 10144060 GScaffoldInfo::_dt(void)
+    // BW1W120 006e8360 BW1M100 10144060 GScaffoldInfo::_dt(void)
     virtual ~GScaffoldInfo();
 };
 

@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 006c7e40 mac inlined Particle3DObjAnimTextured::_dt(void)
+    // BW1W120 006c7e40 BW1M100 inlined Particle3DObjAnimTextured::_dt(void)
     virtual ~Particle3DObjAnimTextured();
 };
 

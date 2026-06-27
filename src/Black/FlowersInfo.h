@@ -17,9 +17,9 @@ public:
 
     // Override methods
 
-    // win1.41 00527910 mac 100d06a0 GFlowersInfo::_dt(void)
+    // BW1W120 00527910 BW1M100 100d06a0 GFlowersInfo::_dt(void)
     virtual ~GFlowersInfo();
-    // win1.41 005278b0 mac 100d15c0 GFlowersInfo::GetMesh( const(void))
+    // BW1W120 005278b0 BW1M100 100d15c0 GFlowersInfo::GetMesh( const(void))
     virtual uint32_t GetMesh();
 };
 

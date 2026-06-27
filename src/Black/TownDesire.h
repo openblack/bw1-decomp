@@ -50,19 +50,19 @@ public:
 
     // Override methods
 
-    // win1.41 00745730 mac 1055ea40 TownDesire::_dt(void)
+    // BW1W120 00745730 BW1M100 1055ea40 TownDesire::_dt(void)
     virtual ~TownDesire();
 
     // Constructors
 
-    // win1.41 00745710 mac 1055ead0 TownDesire::TownDesire(void)
+    // BW1W120 00745710 BW1M100 1055ead0 TownDesire::TownDesire(void)
     TownDesire();
 
     // Non-virtual methods
 
-    // win1.41 00745ae0 mac 1005c8d0 TownDesire::Process(void)
+    // BW1W120 00745ae0 BW1M100 1005c8d0 TownDesire::Process(void)
     void Process();
-    // win1.41 00745f80 mac 1005d280 TownDesire::GetInfo(unsigned long) const
+    // BW1W120 00745f80 BW1M100 1005d280 TownDesire::GetInfo(unsigned long) const
     GTownDesireInfo* GetInfo(unsigned long param_1);
 };
 

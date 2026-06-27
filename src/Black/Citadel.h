@@ -43,45 +43,45 @@ public:
 
     // Override methods
 
-    // win1.41 00462ae0 mac 101b6d30 Citadel::_dt(void)
+    // BW1W120 00462ae0 BW1M100 101b6d30 Citadel::_dt(void)
     virtual ~Citadel();
-    // win1.41 00462b90 mac 101ba6a0 Citadel::ToBeDeleted(int)
+    // BW1W120 00462b90 BW1M100 101ba6a0 Citadel::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00462ad0 mac 101b6ff0 Citadel::GetDebugText(void)
+    // BW1W120 00462ad0 BW1M100 101b6ff0 Citadel::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00463dc0 mac 101b71d0 Citadel::Load(GameOSFile &)
+    // BW1W120 00463dc0 BW1M100 101b71d0 Citadel::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00463b00 mac 101b7db0 Citadel::Save(GameOSFile &)
+    // BW1W120 00463b00 BW1M100 101b7db0 Citadel::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 00462ac0 mac 101b6fb0 Citadel::GetSaveType(void)
+    // BW1W120 00462ac0 BW1M100 101b6fb0 Citadel::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00462a60 mac 101b6e50 Citadel::GetCreatureBeliefType(void)
+    // BW1W120 00462a60 BW1M100 101b6e50 Citadel::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
-    // win1.41 00462a70 mac 101b6e90 Citadel::GetCreatureBeliefListType(void)
+    // BW1W120 00462a70 BW1M100 101b6e90 Citadel::GetCreatureBeliefListType(void)
     virtual uint32_t GetCreatureBeliefListType();
-    // win1.41 00462a80 mac 101b6ed0 Citadel::GetOrigin(void)
+    // BW1W120 00462a80 BW1M100 101b6ed0 Citadel::GetOrigin(void)
     virtual uint32_t GetOrigin();
-    // win1.41 004e40e0 mac 105e5f60 Citadel::IsActivityObjectWhichAngerAppliesTo(Creature *)
+    // BW1W120 004e40e0 BW1M100 105e5f60 Citadel::IsActivityObjectWhichAngerAppliesTo(Creature *)
     virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
-    // win1.41 00462a90 mac 101b6f00 Citadel::IsSuitableForCreatureActivity(void)
+    // BW1W120 00462a90 BW1M100 101b6f00 Citadel::IsSuitableForCreatureActivity(void)
     virtual uint32_t IsSuitableForCreatureActivity();
-    // win1.41 004d1b50 mac 10242fd0 Citadel::GetHowMuchCreatureWantsToLookAtMe(void)
+    // BW1W120 004d1b50 BW1M100 10242fd0 Citadel::GetHowMuchCreatureWantsToLookAtMe(void)
     virtual float GetHowMuchCreatureWantsToLookAtMe();
-    // win1.41 00462aa0 mac 101b6f50 Citadel::GetText(void)
+    // BW1W120 00462aa0 BW1M100 101b6f50 Citadel::GetText(void)
     virtual const char* GetText();
-    // win1.41 00462ab0 mac 101b6f80 Citadel::IsCitadel(void)
+    // BW1W120 00462ab0 BW1M100 101b6f80 Citadel::IsCitadel(void)
     virtual uint32_t IsCitadel();
 
     // Static methods
 
-    // win1.41 00463240 mac 101b9230 Citadel::CreateCitadel(MapCoords const &, GCitadelHeartInfo const *, unsigned char, float, float)
+    // BW1W120 00463240 BW1M100 101b9230 Citadel::CreateCitadel(MapCoords const &, GCitadelHeartInfo const *, unsigned char, float, float)
     static Citadel* CreateCitadel(MapCoords* coords, GCitadelHeartInfo* info, uint8_t param_3, float param_4, float param_5);
 
     // Non-virtual methods
 
-    // win1.41 00463130 mac 101b9680 Citadel::AddTown(Town*)
+    // BW1W120 00463130 BW1M100 101b9680 Citadel::AddTown(Town*)
     void* AddTown(Town* town);
-    // win1.41 00463220 mac 101b9420 Citadel::FindOrCreateWorshipSite(GTribeInfo const *)
+    // BW1W120 00463220 BW1M100 101b9420 Citadel::FindOrCreateWorshipSite(GTribeInfo const *)
     WorshipSite* FindOrCreateWorshipSite(GTribeInfo* tribe_info);
 };
 

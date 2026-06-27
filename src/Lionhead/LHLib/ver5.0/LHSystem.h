@@ -20,15 +20,15 @@ struct Q24slim5TbIME
 
     // Non-virtual methods
 
-    // win1.41 007f3d00 mac 101704a0 slim::TbIME::Activate(void* )
+    // BW1W120 007f3d00 BW1M100 101704a0 slim::TbIME::Activate(void* )
     void Activate(HWND param_1);
-    // win1.41 007f3d10 mac 10170460 slim::TbIME::UnActivate(void)
+    // BW1W120 007f3d10 BW1M100 10170460 slim::TbIME::UnActivate(void)
     void UnActivate();
-    // win1.41 007f3d50 mac 1061ec14 slim::TbIME::Composition_Get( (void))
+    // BW1W120 007f3d50 BW1M100 1061ec14 slim::TbIME::Composition_Get( (void))
     wchar_t* Composition_Get();
-    // win1.41 007f3dc0 mac 1061e884 slim::TbIME::CandidateList_GetSelectIdx( (void)
+    // BW1W120 007f3dc0 BW1M100 1061e884 slim::TbIME::CandidateList_GetSelectIdx( (void)
     uint32_t CandidateList_GetSelectIdx();
-    // win1.41 007f3de0 mac 1061e89c slim::TbIME::CandidateList_SetViewWindow( (unsigned int, unsigned int, unsigned int))
+    // BW1W120 007f3de0 BW1M100 1061e89c slim::TbIME::CandidateList_SetViewWindow( (unsigned int, unsigned int, unsigned int))
     void CandidateList_SetViewWindow(uint32_t param_1, uint32_t param_2, uint32_t idx);
 };
 
@@ -62,7 +62,7 @@ struct LHSys
 
     // Constructors
 
-    // win1.41 007db800 mac inlined LHSys::LHSys(void)
+    // BW1W120 007db800 BW1M100 inlined LHSys::LHSys(void)
     LHSys();
 };
 

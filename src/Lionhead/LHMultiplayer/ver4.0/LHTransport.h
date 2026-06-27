@@ -30,17 +30,17 @@ public:
 
     // Override methods
 
-    // win1.41 10022790 mac 1011acc0 LHTransport::Write(LHNetEvent *)
+    // BW1W120 10022790 BW1M100 1011acc0 LHTransport::Write(LHNetEvent *)
     virtual void Write(LHNetEvent* net_event);
 
     // Static methods
 
-    // win1.41 10022a70 mac 10119960 LHTransport::Create(LH_TRANSPORT_TYPE)
+    // BW1W120 10022a70 BW1M100 10119960 LHTransport::Create(LH_TRANSPORT_TYPE)
     static LHTransport* Create(LH_TRANSPORT_TYPE type);
 
     // Non-virtual methods
 
-    // win1.41 10022550 mac 1011b170 LHTransport::OpenConnectionToTransport(LHTransport *, void (*)(void *), void *)
+    // BW1W120 10022550 BW1M100 1011b170 LHTransport::OpenConnectionToTransport(LHTransport *, void (*)(void *), void *)
     LH_RETURN OpenConnectionToTransport(LHTransport* param_1, void (__cdecl*)(void *) param_2, void* param_3);
 };
 
@@ -50,7 +50,7 @@ struct LHTransportRemote
 
     // Non-virtual methods
 
-    // win1.41 10023880 mac 101178b0 LHTransportRemote::RemoteTransportThread(void)
+    // BW1W120 10023880 BW1M100 101178b0 LHTransportRemote::RemoteTransportThread(void)
     void RemoteTransportThread();
 };
 

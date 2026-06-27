@@ -21,15 +21,15 @@ struct LHScriptX_c_
 
     // Non-virtual methods
 
-    // win1.41 007e72c0 mac 1061e38c LHScriptX<c>::Load(char *, LHScriptCommandX<c> *, LH_RETURN (*)(long, LHScriptPramX<c> *), long *)
+    // BW1W120 007e72c0 BW1M100 1061e38c LHScriptX<c>::Load(char *, LHScriptCommandX<c> *, LH_RETURN (*)(long, LHScriptPramX<c> *), long *)
     void Load(const char* path, LHScriptCommandX_c_* command, LH_RETURN (__cdecl*)(int, LHScriptPramX_c_ *) callback, long* param_4);
-    // win1.41 007e7400 mac 1061cd3c LHScriptX<c>::LoadOneLine(LHReleasedOSFile &, char *)
+    // BW1W120 007e7400 BW1M100 1061cd3c LHScriptX<c>::LoadOneLine(LHReleasedOSFile &, char *)
     bool LoadOneLine(LHReleasedOSFile* file, char* line);
-    // win1.41 007e7540 mac 10150830 LHScriptX<c>::ScanLine(char *)
+    // BW1W120 007e7540 BW1M100 10150830 LHScriptX<c>::ScanLine(char *)
     uint32_t ScanLine(char* line);
-    // win1.41 007e8170 mac 10153040 LHScriptX<c>::LoadFile(char *, long *)
+    // BW1W120 007e8170 BW1M100 10153040 LHScriptX<c>::LoadFile(char *, long *)
     uint32_t LoadFile(const char* path, long* param_2);
-    // win1.41 007e8cb0 mac 101533a0 LHScriptX<c>::DestroyVariables(void)
+    // BW1W120 007e8cb0 BW1M100 101533a0 LHScriptX<c>::DestroyVariables(void)
     void DestroyVariables();
 };
 

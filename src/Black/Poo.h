@@ -21,19 +21,19 @@ public:
 
     // Override methods
 
-    // win1.41 0055d0c0 mac 103be130 Poo::_dt(void)
+    // BW1W120 0055d0c0 BW1M100 103be130 Poo::_dt(void)
     virtual ~Poo();
-    // win1.41 0055d0b0 mac 103be1e0 Poo::GetDebugText(void)
+    // BW1W120 0055d0b0 BW1M100 103be1e0 Poo::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0055d0a0 mac 103be1b0 Poo::GetSaveType(void)
+    // BW1W120 0055d0a0 BW1M100 103be1b0 Poo::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 006083c0 mac 103bad80 Poo::GetScriptObjectType(void)
+    // BW1W120 006083c0 BW1M100 103bad80 Poo::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
-    // win1.41 006079d0 mac 103bc130 Poo::InsertMapObject(void)
+    // BW1W120 006079d0 BW1M100 103bc130 Poo::InsertMapObject(void)
     virtual void InsertMapObject();
-    // win1.41 006083d0 mac 103bad50 Poo::GetHoldType(void)
+    // BW1W120 006083d0 BW1M100 103bad50 Poo::GetHoldType(void)
     virtual HOLD_TYPE GetHoldType();
-    // win1.41 006079c0 mac 103bc180 Poo::GetPhysicsConstantsType(void)
+    // BW1W120 006079c0 BW1M100 103bc180 Poo::GetPhysicsConstantsType(void)
     virtual uint32_t GetPhysicsConstantsType();
 };
 

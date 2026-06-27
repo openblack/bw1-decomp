@@ -16,16 +16,16 @@ public:
 
     // Override methods
 
-    // win1.41 0046be90 mac 101c9440 HandStateInvisible::Enter(void)
+    // BW1W120 0046be90 BW1M100 101c9440 HandStateInvisible::Enter(void)
     virtual void Enter();
-    // win1.41 0046bed0 mac 101c9510 HandStateInvisible::Exit(void)
+    // BW1W120 0046bed0 BW1M100 101c9510 HandStateInvisible::Exit(void)
     virtual void Exit();
-    // win1.41 0046bee0 mac 101c9570 HandStateInvisible::Update(float, LHMatrix *)
+    // BW1W120 0046bee0 BW1M100 101c9570 HandStateInvisible::Update(float, LHMatrix *)
     virtual void Update(float param_1, LHMatrix* param_2);
 
     // Constructors
 
-    // win1.41 inlined mac inlined HandStateInvisible::HandStateInvisible(CHand*)
+    // BW1W120 inlined BW1M100 inlined HandStateInvisible::HandStateInvisible(CHand*)
     HandStateInvisible(CHand* hand);
 };
 

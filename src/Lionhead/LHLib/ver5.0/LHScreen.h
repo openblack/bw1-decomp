@@ -69,14 +69,14 @@ struct LHScreen
 
     // Constructors
 
-    // win1.41 007dce20 mac 1014e500 LHScreen::LHScreen(void)
+    // BW1W120 007dce20 BW1M100 1014e500 LHScreen::LHScreen(void)
     LHScreen();
 
     // Non-virtual methods
 
-    // win1.41 007dd8f0 mac 1014d890 LHScreen::~LHScreen(void)
+    // BW1W120 007dd8f0 BW1M100 1014d890 LHScreen::~LHScreen(void)
     ~LHScreen();
-    // win1.41 007dd0d0 mac 1014e420 LHScreen::SetFullscreenMode(int)
+    // BW1W120 007dd0d0 BW1M100 1014e420 LHScreen::SetFullscreenMode(int)
     void SetFullscreenMode(int mode);
 };
 

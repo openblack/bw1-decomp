@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 004357e0 mac 1051ece0 GMagicFlockGroundInfo::_dt(void)
+    // BW1W120 004357e0 BW1M100 1051ece0 GMagicFlockGroundInfo::_dt(void)
     virtual ~GMagicFlockGroundInfo();
 };
 

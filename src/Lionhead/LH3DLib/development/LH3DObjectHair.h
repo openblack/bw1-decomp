@@ -14,7 +14,7 @@ struct LH3DObjectHair
 
     // Non-virtual methods
 
-    // win1.41 00848340 mac 10137b70 LH3DObjectHair::Init(long, HairGroup **)
+    // BW1W120 00848340 BW1M100 10137b70 LH3DObjectHair::Init(long, HairGroup **)
     void Init(long param_2, HairGroup** param_3);
 };
 

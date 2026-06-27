@@ -56,37 +56,37 @@ public:
 
     // Override methods
 
-    // win1.41 00596190 mac 100fa600 GroupBehaviour::_dt(void)
+    // BW1W120 00596190 BW1M100 100fa600 GroupBehaviour::_dt(void)
     virtual ~GroupBehaviour();
-    // win1.41 00596320 mac 100fa080 GroupBehaviour::ToBeDeleted(int)
+    // BW1W120 00596320 BW1M100 100fa080 GroupBehaviour::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 005985c0 mac 100f4e70 GroupBehaviour::Load(GameOSFile &)
+    // BW1W120 005985c0 BW1M100 100f4e70 GroupBehaviour::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00598240 mac 100f5a80 GroupBehaviour::Save(GameOSFile &)
+    // BW1W120 00598240 BW1M100 100f5a80 GroupBehaviour::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 005964a0 mac 106ffb98 GroupBehaviour::Process(void)
+    // BW1W120 005964a0 BW1M100 106ffb98 GroupBehaviour::Process(void)
     virtual void Process();
-    // win1.41 00596700 mac 100f90b0 GroupBehaviour::UpdateGroupBasedOnAction(DanceGroup *, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &, unsigned long)
+    // BW1W120 00596700 BW1M100 100f90b0 GroupBehaviour::UpdateGroupBasedOnAction(DanceGroup *, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &, unsigned long)
     virtual void UpdateGroupBasedOnAction(DanceGroup* dance_group, DANCE_GROUP_ACTION_TYPE action_type, const DanceGroupActionArgument* argument, uint32_t param_4);
-    // win1.41 00597300 mac 100f8760 GroupBehaviour::AddAction(float, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
+    // BW1W120 00597300 BW1M100 100f8760 GroupBehaviour::AddAction(float, LHDynamicStack<Ul> &, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
     virtual void AddAction(float param_1, LHDynamicStack__Ul* stack, DANCE_GROUP_ACTION_TYPE action_type, const DanceGroupActionArgument* argument);
-    // win1.41 00597270 mac 100f8990 GroupBehaviour::AddAction(float, unsigned long, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
+    // BW1W120 00597270 BW1M100 100f8990 GroupBehaviour::AddAction(float, unsigned long, DANCE_GROUP_ACTION_TYPE, DanceGroupActionArgument const &)
     virtual void AddAction(float param_1, uint32_t param_2, DANCE_GROUP_ACTION_TYPE action_type, DanceGroupActionArgument* arguments);
-    // win1.41 005978e0 mac 100f6eb0 GroupBehaviour::LoadDance(char const *)
+    // BW1W120 005978e0 BW1M100 100f6eb0 GroupBehaviour::LoadDance(char const *)
     virtual void LoadDance(const char* param_1);
-    // win1.41 0050cc40 mac 100f4e30 GroupBehaviour::GetAngle(void)
+    // BW1W120 0050cc40 BW1M100 100f4e30 GroupBehaviour::GetAngle(void)
     virtual float GetAngle();
 
     // Constructors
 
-    // win1.41 00596070 mac 100fad20 GroupBehaviour::GroupBehaviour(void)
+    // BW1W120 00596070 BW1M100 100fad20 GroupBehaviour::GroupBehaviour(void)
     GroupBehaviour();
 
     // Non-virtual methods
 
-    // win1.41 00597400 mac 100f8550 GroupBehaviour::FindDanceGroup(Living *)
+    // BW1W120 00597400 BW1M100 100f8550 GroupBehaviour::FindDanceGroup(Living *)
     bool FindDanceGroup(Living* param_1);
-    // win1.41 00597f20 mac 100f68a0 GroupBehaviour::CalculateDancePosition(MapCoords const &, MapCoords *, DanceGroup *, unsigned long)
+    // BW1W120 00597f20 BW1M100 100f68a0 GroupBehaviour::CalculateDancePosition(MapCoords const &, MapCoords *, DanceGroup *, unsigned long)
     void CalculateDancePosition(const MapCoords* param_1, MapCoords* param_2, DanceGroup* param_3, unsigned long param_4);
 };
 
@@ -96,9 +96,9 @@ public:
 
     // Override methods
 
-    // win1.41 0050cc50 mac inlined DanceEditState::_dt(void)
+    // BW1W120 0050cc50 BW1M100 inlined DanceEditState::_dt(void)
     virtual ~DanceEditState();
-    // win1.41 0050cc90 mac inlined DanceEditState::ToBeDeleted(int)
+    // BW1W120 0050cc90 BW1M100 inlined DanceEditState::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
 };
 
@@ -108,15 +108,15 @@ public:
 
     // Override methods
 
-    // win1.41 0050e3a0 mac 102aed30 DanceKeyAction::_dt(void)
+    // BW1W120 0050e3a0 BW1M100 102aed30 DanceKeyAction::_dt(void)
     virtual ~DanceKeyAction();
-    // win1.41 0050e390 mac 102aee40 DanceKeyAction::GetDebugText(void)
+    // BW1W120 0050e390 BW1M100 102aee40 DanceKeyAction::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0050ea00 mac 102ae600 DanceKeyAction::Load(GameOSFile &)
+    // BW1W120 0050ea00 BW1M100 102ae600 DanceKeyAction::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 0050e880 mac 102ae810 DanceKeyAction::Save(GameOSFile &)
+    // BW1W120 0050e880 BW1M100 102ae810 DanceKeyAction::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0050e380 mac 102aee00 DanceKeyAction::GetSaveType(void)
+    // BW1W120 0050e380 BW1M100 102aee00 DanceKeyAction::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
 

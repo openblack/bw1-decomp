@@ -13,16 +13,16 @@ struct LHMatrix
 
     // Static methods
 
-    // win1.41 00403530 mac inlined LHMatrix::Translation(const LHPoint&)
+    // BW1W120 00403530 BW1M100 inlined LHMatrix::Translation(const LHPoint&)
     static LHMatrix Translation(const LHPoint& translation);
-    // win1.41 00403570 mac inlined LHMatrix::PostTranslation(const LHPoint&)
+    // BW1W120 00403570 BW1M100 inlined LHMatrix::PostTranslation(const LHPoint&)
     static LHMatrix PostTranslation(const LHPoint& translation);
 
     // Non-virtual methods
 
-    // win1.41 00403500 mac 100417d0 LHMatrix::SetIdentityMatrix(void)
+    // BW1W120 00403500 BW1M100 100417d0 LHMatrix::SetIdentityMatrix(void)
     void SetIdentityMatrix();
-    // win1.41 007fb290 mac 1004f05c LHMatrix::SetInverse(LHMatrix const &)
+    // BW1W120 007fb290 BW1M100 1004f05c LHMatrix::SetInverse(LHMatrix const &)
     void SetInverse(const LHMatrix* r);
 };
 

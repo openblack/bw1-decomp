@@ -20,22 +20,22 @@ public:
 
     // Override methods
 
-    // win1.41 005faf40 mac 103ad580 GMagicHand::_dt(void)
+    // BW1W120 005faf40 BW1M100 103ad580 GMagicHand::_dt(void)
     virtual ~GMagicHand();
-    // win1.41 005fb2a0 mac 103acf80 GMagicHand::CleanUpForSerialisation(void)
+    // BW1W120 005fb2a0 BW1M100 103acf80 GMagicHand::CleanUpForSerialisation(void)
     virtual void CleanUpForSerialisation();
-    // win1.41 005faf30 mac 103acd80 GMagicHand::GetDebugText(void)
+    // BW1W120 005faf30 BW1M100 103acd80 GMagicHand::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 005fb320 mac 103acdc0 GMagicHand::Load(GameOSFile &)
+    // BW1W120 005fb320 BW1M100 103acdc0 GMagicHand::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 005fb2c0 mac 103ace90 GMagicHand::Save(GameOSFile &)
+    // BW1W120 005fb2c0 BW1M100 103ace90 GMagicHand::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 005faf20 mac 103acd40 GMagicHand::GetSaveType(void)
+    // BW1W120 005faf20 BW1M100 103acd40 GMagicHand::GetSaveType(void)
     virtual uint32_t GetSaveType();
 
     // Non-virtual methods
 
-    // win1.41 005fb040 mac 10075560 GMagicHand::GetObjectFromHand(void) const
+    // BW1W120 005fb040 BW1M100 10075560 GMagicHand::GetObjectFromHand(void) const
     Object* GetObjectFromHand();
 };
 

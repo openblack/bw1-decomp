@@ -17,7 +17,7 @@ public:
 
     // Override methods
 
-    // win1.41 00749dd0 mac 10155680 GTreeInfo::_dt(void)
+    // BW1W120 00749dd0 BW1M100 10155680 GTreeInfo::_dt(void)
     virtual ~GTreeInfo();
 };
 

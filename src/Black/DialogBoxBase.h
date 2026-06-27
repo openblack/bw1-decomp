@@ -21,31 +21,31 @@ public:
 
     // Override methods
 
-    // win1.41 00513400 mac 102b24c0 DialogBoxBase::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    // BW1W120 00513400 BW1M100 102b24c0 DialogBoxBase::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
     virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // win1.41 00513590 mac 102b23a0 DialogBoxBase::Destroy(void)
+    // BW1W120 00513590 BW1M100 102b23a0 DialogBoxBase::Destroy(void)
     virtual void Destroy();
-    // win1.41 005127d0 mac 100fd590 DialogBoxBase::InitSubDialogs(void)
+    // BW1W120 005127d0 BW1M100 100fd590 DialogBoxBase::InitSubDialogs(void)
     virtual void InitSubDialogs();
-    // win1.41 005135f0 mac 102b22e0 DialogBoxBase::Show(void)
+    // BW1W120 005135f0 BW1M100 102b22e0 DialogBoxBase::Show(void)
     virtual void Show();
-    // win1.41 005127e0 mac 100fd5d0 DialogBoxBase::CloseNotification(void)
+    // BW1W120 005127e0 BW1M100 100fd5d0 DialogBoxBase::CloseNotification(void)
     virtual bool CloseNotification();
-    // win1.41 005127f0 mac 10504080 DialogBoxBase::WantsKeyControl(void)
+    // BW1W120 005127f0 BW1M100 10504080 DialogBoxBase::WantsKeyControl(void)
     virtual bool WantsKeyControl();
-    // win1.41 00512800 mac 100fd610 DialogBoxBase::WantsMouseControl(void)
+    // BW1W120 00512800 BW1M100 100fd610 DialogBoxBase::WantsMouseControl(void)
     virtual bool WantsMouseControl();
-    // win1.41 00512810 mac 103c4090 DialogBoxBase::CanESCOut(void)
+    // BW1W120 00512810 BW1M100 103c4090 DialogBoxBase::CanESCOut(void)
     virtual void CanESCOut();
 
     // Static methods
 
-    // win1.41 005136e0 mac 102b1ff0 DialogBoxBase::HideAll(void)
+    // BW1W120 005136e0 BW1M100 102b1ff0 DialogBoxBase::HideAll(void)
     static void HideAll();
 
     // Constructors
 
-    // win1.41 005133a0 mac 102b2750 DialogBoxBase::DialogBoxBase(void)
+    // BW1W120 005133a0 BW1M100 102b2750 DialogBoxBase::DialogBoxBase(void)
     DialogBoxBase();
 };
 

@@ -15,9 +15,9 @@ public:
 
     // Override methods
 
-    // win1.41 006a9400 mac 103dfee0 ParticleCreator::_dt(void)
+    // BW1W120 006a9400 BW1M100 103dfee0 ParticleCreator::_dt(void)
     virtual ~ParticleCreator();
-    // win1.41 006b34c0 mac 10457740 ParticleCreator::DefineProperties(PropertyList *)
+    // BW1W120 006b34c0 BW1M100 10457740 ParticleCreator::DefineProperties(PropertyList *)
     virtual void DefineProperties(PropertyList* param_1);
 };
 

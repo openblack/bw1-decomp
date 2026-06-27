@@ -18,13 +18,13 @@ public:
 
     // Override methods
 
-    // win1.41 0041d9d0 mac 101207f0 Pig::_dt(void)
+    // BW1W120 0041d9d0 BW1M100 101207f0 Pig::_dt(void)
     virtual ~Pig();
-    // win1.41 0041d9c0 mac 10170ef0 Pig::GetDebugText(void)
+    // BW1W120 0041d9c0 BW1M100 10170ef0 Pig::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0041d9b0 mac 10170ec0 Pig::GetSaveType(void)
+    // BW1W120 0041d9b0 BW1M100 10170ec0 Pig::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0041cd90 mac 100a0190 Pig::StandAnimation(void)
+    // BW1W120 0041cd90 BW1M100 100a0190 Pig::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
 

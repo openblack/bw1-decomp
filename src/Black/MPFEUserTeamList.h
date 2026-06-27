@@ -15,9 +15,9 @@ public:
 
     // Override methods
 
-    // win1.41 00633050 mac 10396090 MPFEUserTeamList::_dt(void)
+    // BW1W120 00633050 BW1M100 10396090 MPFEUserTeamList::_dt(void)
     virtual ~MPFEUserTeamList();
-    // win1.41 00626a00 mac inlined MPFEUserTeamList::Send(MPFEPlayerDetails *)
+    // BW1W120 00626a00 BW1M100 inlined MPFEUserTeamList::Send(MPFEPlayerDetails *)
     virtual void Send(MPFEPlayerDetails* param_1);
 };
 

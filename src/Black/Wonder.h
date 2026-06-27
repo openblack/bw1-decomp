@@ -28,50 +28,50 @@ public:
 
     // Override methods
 
-    // win1.41 00561220 mac 10161090 Wonder::_dt(void)
+    // BW1W120 00561220 BW1M100 10161090 Wonder::_dt(void)
     virtual ~Wonder();
-    // win1.41 00778e40 mac 10161bc0 Wonder::ToBeDeleted(int)
+    // BW1W120 00778e40 BW1M100 10161bc0 Wonder::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00561210 mac 101612d0 Wonder::GetDebugText(void)
+    // BW1W120 00561210 BW1M100 101612d0 Wonder::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 007790f0 mac 10161470 Wonder::Load(GameOSFile &)
+    // BW1W120 007790f0 BW1M100 10161470 Wonder::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00779080 mac 10161540 Wonder::Save(GameOSFile &)
+    // BW1W120 00779080 BW1M100 10161540 Wonder::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 00561200 mac 10161290 Wonder::GetSaveType(void)
+    // BW1W120 00561200 BW1M100 10161290 Wonder::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 005611b0 mac inlined Wonder::GetArrivePos(MapCoords *)
+    // BW1W120 005611b0 BW1M100 inlined Wonder::GetArrivePos(MapCoords *)
     virtual MapCoords* GetArrivePos(MapCoords* param_1);
-    // win1.41 005611e0 mac 10161200 Wonder::CanActAsAContainer(Creature *)
+    // BW1W120 005611e0 BW1M100 10161200 Wonder::CanActAsAContainer(Creature *)
     virtual uint32_t CanActAsAContainer(Creature* param_1);
-    // win1.41 005611f0 mac 10161250 Wonder::IsStoragePit(Creature *)
+    // BW1W120 005611f0 BW1M100 10161250 Wonder::IsStoragePit(Creature *)
     virtual uint32_t IsStoragePit(Creature* param_1);
-    // win1.41 00779160 mac 101613c0 Wonder::CallVirtualFunctionsForCreation(const MapCoords&)
+    // BW1W120 00779160 BW1M100 101613c0 Wonder::CallVirtualFunctionsForCreation(const MapCoords&)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
-    // win1.41 00779190 mac 10161310 Wonder::Get3DType(void)
+    // BW1W120 00779190 BW1M100 10161310 Wonder::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
-    // win1.41 00778f30 mac 10161920 Wonder::Built(void)
+    // BW1W120 00778f30 BW1M100 10161920 Wonder::Built(void)
     virtual bool Built();
-    // win1.41 00779070 mac 10161620 Wonder::SetPower(float)
+    // BW1W120 00779070 BW1M100 10161620 Wonder::SetPower(float)
     virtual void SetPower(float param_1);
-    // win1.41 00778fc0 mac 10161700 Wonder::AddToPlayer(void)
+    // BW1W120 00778fc0 BW1M100 10161700 Wonder::AddToPlayer(void)
     virtual void AddToPlayer();
-    // win1.41 00778f50 mac 10161810 Wonder::RemoveFromPlayer(void)
+    // BW1W120 00778f50 BW1M100 10161810 Wonder::RemoveFromPlayer(void)
     virtual void RemoveFromPlayer();
 
     // Static methods
 
-    // win1.41 00778e80 mac 101619e0 Wonder::Create(const MapCoords&, const GAbodeInfo*, Town*, float, float, float, int)
+    // BW1W120 00778e80 BW1M100 101619e0 Wonder::Create(const MapCoords&, const GAbodeInfo*, Town*, float, float, float, int)
     static Wonder* Create(const MapCoords* coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
 
     // Constructors
 
-    // win1.41 00778e00 mac 10161c40 Wonder::Wonder(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
+    // BW1W120 00778e00 BW1M100 10161c40 Wonder::Wonder(MapCoords const &, GAbodeInfo const *, Town *, float, float, float, int)
     Wonder(const MapCoords* coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood);
 
     // Non-virtual methods
 
-    // win1.41 00779060 mac inlined Wonder::SetZero(void)
+    // BW1W120 00779060 BW1M100 inlined Wonder::SetZero(void)
     void SetZero();
 };
 

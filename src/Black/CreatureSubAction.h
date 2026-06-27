@@ -27,12 +27,12 @@ public:
 
     // Override methods
 
-    // win1.41 00473dd0 mac 101deb60 CreatureSubAction::_dt(void)
+    // BW1W120 00473dd0 BW1M100 101deb60 CreatureSubAction::_dt(void)
     virtual ~CreatureSubAction();
 
     // Constructors
 
-    // win1.41 00473db0 mac 101e0720 CreatureSubAction::CreatureSubAction(void)
+    // BW1W120 00473db0 BW1M100 101e0720 CreatureSubAction::CreatureSubAction(void)
     CreatureSubAction();
 };
 
@@ -61,19 +61,19 @@ public:
 
     // Override methods
 
-    // win1.41 00473df0 mac 101e0670 CreatureSubActionAgenda::_dt(void)
+    // BW1W120 00473df0 BW1M100 101e0670 CreatureSubActionAgenda::_dt(void)
     virtual ~CreatureSubActionAgenda();
 
     // Constructors
 
-    // win1.41 004ff1b0 mac 1028cea0 CreatureSubActionAgenda::CreatureSubActionAgenda(Creature*)
+    // BW1W120 004ff1b0 BW1M100 1028cea0 CreatureSubActionAgenda::CreatureSubActionAgenda(Creature*)
     CreatureSubActionAgenda(Creature* creature);
 
     // Non-virtual methods
 
-    // win1.41 004ff240 mac 1028cc30 CreatureSubActionAgenda::AddSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
+    // BW1W120 004ff240 BW1M100 1028cc30 CreatureSubActionAgenda::AddSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
     void AddSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2, int (__thiscall*)(Creature *, const void *, void *, MapCoords *) param_3, void (__thiscall*)(Creature *, const void *, void *) param_4);
-    // win1.41 004ff3a0 mac 1028cb10 CreatureSubActionAgenda::AddMainSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
+    // BW1W120 004ff3a0 BW1M100 1028cb10 CreatureSubActionAgenda::AddMainSubAction(CREATURE_SUB_STATE_ACTIONS, SubArgument *, int (__thiscall Creature::*)(void const *, void *, struct MapCoords *), void (__thiscall Creature::*)(void const *, void *))
     void AddMainSubAction(CREATURE_SUB_STATE_ACTIONS param_1, SubArgument* param_2, int (__thiscall*)(Creature *, const void *, void *, MapCoords *) param_3, void (__thiscall*)(Creature *, const void *, void *) param_4);
 };
 
