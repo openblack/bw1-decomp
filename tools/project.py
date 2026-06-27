@@ -1837,8 +1837,9 @@ def generate_build_ninja(
             continue
         lib_object_entries.append((obj.name, extracted.as_posix()))
         # Only depend on objects that actually have an extraction rule (units in
-        # the link); the rest are skipped by dtk and never opened.
-        if extracted in lib_extracted_added:
+        # the link); the rest are skipped by dtk and never opened. lib_extracted_added
+        # only exists when build_config is set (the link section ran).
+        if build_config and extracted in lib_extracted_added:
             lib_object_paths.append(extracted)
     if lib_object_entries:
         block = ["lib_objects:"]
