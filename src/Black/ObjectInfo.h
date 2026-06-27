@@ -30,7 +30,7 @@ public:
     uint32_t handCondition;
     float foodValue;
     uint32_t woodValue;
-    uint32_t food_type; /* 0x70 */
+    FOOD_TYPE food_type; /* 0x70 */
     float defenceEffectBurn;
     float defenceEffectCrush;
     float defenceEffectHit;
@@ -73,17 +73,29 @@ public:
     // win1.41 006363c0 mac 101cbbe0 GObjectInfo::_dt(void)
     virtual ~GObjectInfo();
     // win1.41 004012c0 mac 10511e08 GObjectInfo::GetDebugText(void)
-    virtual const char* GetDebugText();
+    virtual const char* GetDebugText()
+    {
+        return debugString;
+    }
     // win1.41 0042b380 mac 104cc120 GObjectInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
     // win1.41 0042b370 mac 1016ddf0 GObjectInfo::GetMesh( const(void))
     virtual MESH_LIST GetMesh() const;
     // win1.41 00401290 mac 1016e3a0 GObjectInfo::GetMesh(TRIBE_TYPE) const
-    virtual MESH_LIST GetMesh(TRIBE_TYPE tribe) const;
+    virtual MESH_LIST GetMesh(TRIBE_TYPE tribe) const
+    {
+        return MSH_DUMMY;
+    }
     // win1.41 004012a0 mac 1016de30 GObjectInfo::GetAlignmentType(void) const
-    virtual ALIGNMENT_TYPE GetAlignmentType();
+    virtual ALIGNMENT_TYPE GetAlignmentType() const
+    {
+        return alignmentType;
+    }
     // win1.41 004012b0 mac 100627a0 GObjectInfo::GetFoodType(void) const
-    virtual FOOD_TYPE GetFoodType();
+    virtual FOOD_TYPE GetFoodType() const
+    {
+        return food_type;
+    }
 };
 
 #endif /* BW1_DECOMP_OBJECT_INFO_INCLUDED_H */
