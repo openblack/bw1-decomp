@@ -70,6 +70,41 @@ public:
 
     // Override methods
 
+    // win1.41 00401490 mac 1056ea60 MultiMapFixed::AsMultiMapFixed(void)
+    virtual MultiMapFixed* AsMultiMapFixed()
+    {
+        return this;
+    }
+    // win1.41 004014a0 mac 103dc840 MultiMapFixed::IsPlaytimeStructure(void)
+    virtual bool32_t IsPlaytimeStructure()
+    {
+        return false;
+    }
+    // win1.41 004014b0 mac 103e2190 MultiMapFixed::IsPlaytimeStarted(void)
+    virtual bool32_t IsPlaytimeStarted()
+    {
+        return false;
+    }
+    // win1.41 004014c0 mac 1037fbf0 MultiMapFixed::AddPlaytimeVillager(Villager *)
+    virtual bool AddPlaytimeVillager(Villager* villager)
+    {
+        return false;
+    }
+    // win1.41 004014d0 mac 1016ecd0 MultiMapFixed::GetResourceDropPosForComputerPlayer(RESOURCE_TYPE)
+    virtual MapCoords GetResourceDropPosForComputerPlayer(RESOURCE_TYPE type)
+    {
+        return ((GameThingWithPos*)this)->coords;
+    }
+    // win1.41 004014f0 mac 100531e0 MultiMapFixed::GetPercentBuilt(void)
+    virtual float GetPercentBuilt()
+    {
+        return percent_built;
+    }
+    // win1.41 00401500 mac 1004b0a0 MultiMapFixed::GetPercentRepaired(void)
+    virtual float GetPercentRepaired()
+    {
+        return GetLife();
+    }
     // win1.41 0052e2b0 mac 100e1160 MultiMapFixed::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
     // win1.41 004220a0 mac 100a5880 MultiMapFixed::GetTown(void)
@@ -132,8 +167,6 @@ public:
     virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* status, Villager* villager);
     // win1.41 0052e890 mac 100e0240 MultiMapFixed::CallVirtualFunctionsForCreation(const MapCoords&)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* coords);
-    // win1.41 00401490 mac 1056ea60 MultiMapFixed::AsMultiMapFixed(void)
-    virtual MultiMapFixed* AsMultiMapFixed();
     // win1.41 0052f1f0 mac 100de6f0 MultiMapFixed::IsResourceStore(RESOURCE_TYPE)
     virtual bool IsResourceStore(RESOURCE_TYPE type);
     // win1.41 0052f460 mac 100de000 MultiMapFixed::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
@@ -158,20 +191,8 @@ public:
     virtual MapCoords* GetDoorPos(MapCoords* position);
     // win1.41 0052eca0 mac 1004af20 MultiMapFixed::GetInfluence(void)
     virtual float GetInfluence();
-    // win1.41 004014a0 mac 103dc840 MultiMapFixed::IsPlaytimeStructure(void)
-    virtual bool IsPlaytimeStructure();
-    // win1.41 004014b0 mac 103e2190 MultiMapFixed::IsPlaytimeStarted(void)
-    virtual bool IsPlaytimeStarted();
-    // win1.41 004014c0 mac 1037fbf0 MultiMapFixed::AddPlaytimeVillager(Villager *)
-    virtual bool AddPlaytimeVillager(Villager* villager);
     // win1.41 0052e840 mac 100e04f0 MultiMapFixed::CheckMapObject(void)
     virtual void CheckMapObject();
-    // win1.41 004014d0 mac 1016ecd0 MultiMapFixed::GetResourceDropPosForComputerPlayer(RESOURCE_TYPE)
-    virtual void GetResourceDropPosForComputerPlayer(MapCoords* drop_pos);
-    // win1.41 004014f0 mac 100531e0 MultiMapFixed::GetPercentBuilt(void)
-    virtual float GetPercentBuilt();
-    // win1.41 00401500 mac 1004b0a0 MultiMapFixed::GetPercentRepaired(void)
-    virtual float GetPercentRepaired();
     // win1.41 0052f010 mac 100debc0 MultiMapFixed::GetPercentRepairedFromWhenDamaged(void)
     virtual float GetPercentRepairedFromWhenDamaged();
     // win1.41 00438d70 mac 10368f30 MultiMapFixed::IsRepaired(void)
@@ -249,7 +270,7 @@ public:
     // win1.41 0052e1a0 mac 100e16a0 MultiMapFixed::MultiMapFixed(void)
     MultiMapFixed();
     // win1.41 0052e1e0 mac 100e1460 MultiMapFixed::MultiMapFixed(MapCoords const &, GMultiMapFixedInfo const *, float, float, float, int)
-    MultiMapFixed(const MapCoords* coords, const GMultiMapFixedInfo* info, float y_angle, float scale, float param_5, int param_6);
+    MultiMapFixed(const MapCoords& coords, const GMultiMapFixedInfo* info, float y_angle, float scale, float param_5, int param_6);
 
     // Non-virtual Destructors
 
