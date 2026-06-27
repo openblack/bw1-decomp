@@ -376,7 +376,7 @@ z_streamp z;
   return Z_OK;
 }
 
-#ifndef VERSION_BW1E100
+#ifndef VERSION_BW1W100
 void inflate_set_dictionary(s, d, n)
 inflate_blocks_statef *s;
 const Bytef *d;
@@ -397,4 +397,4 @@ inflate_blocks_statef *s;
   return s->mode == LENS;
 }
 
-#endif // VERSION_BW1E100
+#endif // VERSION_BW1W100

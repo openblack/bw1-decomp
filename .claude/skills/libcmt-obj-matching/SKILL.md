@@ -1,12 +1,12 @@
 ---
 name: libcmt-obj-matching
-description: Make CRT objects from the downloaded LIBCMT.LIB / LIBCPMT.LIB link byte-exact into all three BW1 versions (BW1E100, BW1E110, BW1E120). Script-driven loop (.claude/skills/libcmt-obj-matching/libobj.py) that auto-matches clean objects with no agent judgement and flags the hard ones (E100 /OPT:REF dead-strip, trailing-alignment, __real@8 comdat fold) for hand work. Covers the worked numbers, the verify/recover cycle, and the manual symbol edits.
+description: Make CRT objects from the downloaded LIBCMT.LIB / LIBCPMT.LIB link byte-exact into all three BW1 versions (BW1W100, BW1W110, BW1W120). Script-driven loop (.claude/skills/libcmt-obj-matching/libobj.py) that auto-matches clean objects with no agent judgement and flags the hard ones (E100 /OPT:REF dead-strip, trailing-alignment, __real@8 comdat fold) for hand work. Covers the worked numbers, the verify/recover cycle, and the manual symbol edits.
 ---
 
 # Match a LIBCMT.LIB object — all 3 versions, script-driven
 
 Goal: take members of `LIBCMT.LIB` / `LIBCPMT.LIB` and make them link **byte-exact**
-into BW1E100, BW1E110 and BW1E120. Nothing new is committed — the `.LIB` and the
+into BW1W100, BW1W110 and BW1W120. Nothing new is committed — the `.LIB` and the
 extracted `.obj` are build artifacts; the result is edits to `configure.py`,
 `config/<VER>/splits.txt` and `config/<VER>/symbols.txt`.
 
@@ -99,7 +99,7 @@ the split start is auto-repaired by `loop`; by hand, shrink that symbol (below).
     leading alignment and is only reproduced when that successor is also a
     16-aligned unit — i.e. these CRT objects must be matched as an
     **address-contiguous run**, not in isolation. `analyze` flags this.
-- **BW1E100 links with `/OPT:REF /OPT:NOICF`** (`dead_strip: true`). Two effects:
+- **BW1W100 links with `/OPT:REF /OPT:NOICF`** (`dead_strip: true`). Two effects:
   - Functions the original build didn't reference are dropped, so only the
     *referenced* functions of an object survive (size the `.text` range to the
     survivors, in obj section order). 110/142 link all of them.
@@ -215,13 +215,13 @@ all OK.
 
 | Version | .text | .data | survivors |
 |---|---|---|---|
-| BW1E100 | 0x0073D2BF–0x0073D403 | 0x00B52358–0x00B52380 | 3 of 6 (REF drops `__get_exp`,`__add_exp`,`__set_bexp`) |
-| BW1E110 | 0x007C0DED–0x007C0F95 | 0x00C1ECA8–0x00C1ECD0 | all 6 |
-| BW1E120 | 0x007D0FDD–0x007D1185 | 0x00C2FE58–0x00C2FE80 | all 6 |
+| BW1W100 | 0x0073D2BF–0x0073D403 | 0x00B52358–0x00B52380 | 3 of 6 (REF drops `__get_exp`,`__add_exp`,`__set_bexp`) |
+| BW1W110 | 0x007C0DED–0x007C0F95 | 0x00C1ECA8–0x00C1ECD0 | all 6 |
+| BW1W120 | 0x007D0FDD–0x007D1185 | 0x00C2FE58–0x00C2FE80 | all 6 |
 
-`__fltused` at: BW1E100 0x00B4F894, BW1E110 0x00C1C1DC.
-`__real@8` (comdat) at: BW1E100 0x00802630 (in `??_7Feature@@6B@` @0x00801D08,
-shrink 0x978→0x928), BW1E110 0x008B2C48 (Feature @0x008B2320, shrink 0x978→0x928).
+`__fltused` at: BW1W100 0x00B4F894, BW1W110 0x00C1C1DC.
+`__real@8` (comdat) at: BW1W100 0x00802630 (in `??_7Feature@@6B@` @0x00801D08,
+shrink 0x978→0x928), BW1W110 0x008B2C48 (Feature @0x008B2320, shrink 0x978→0x928).
 
 **`purevirt.obj`** — the dead-strip trap. `__purecall` (9 bytes) at E100 0x0073404F,
 E110 0x007B58D6, E142 0x007C60DB, followed by 0xCC fill to 16-aligned `_memmove`.
@@ -234,4 +234,4 @@ Match it together with its contiguous successors, or leave for hand work.
 - Forcing E100 dead-strip with `/INCLUDE` or `force_active` — wrong path; it's a
   run-matching / data-reference problem, not a linker-flag one.
 - Forgetting to re-run `configure.py` after a comdat carve → `.rdata` short.
-- Tabs (not spaces) in `splits.txt`. Always `-v <VERSION>` (default BW1E100).
+- Tabs (not spaces) in `splits.txt`. Always `-v <VERSION>` (default BW1W100).

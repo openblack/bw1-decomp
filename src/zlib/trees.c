@@ -1014,7 +1014,7 @@ void _tr_flush_block(s, buf, stored_len, eof)
            s->compressed_len-7*eof));
 }
 
-#ifndef VERSION_BW1E100
+#ifndef VERSION_BW1W100
 
 /* ===========================================================================
  * Save the match info and tally the frequency counts. Return true if
@@ -1067,7 +1067,7 @@ int _tr_tally (s, dist, lc)
      */
 }
 
-#endif // VERSION_BW1E100
+#endif // VERSION_BW1W100
 
 /* ===========================================================================
  * Send the block data compressed using the given Huffman trees

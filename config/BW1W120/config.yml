@@ -1,8 +1,8 @@
-object_base: orig/BW1E120
+object_base: orig/BW1W120
 object: runblack-decrypted.exe
 hash: bccccbd3a08fe9a5d6cf59cd114e916401abfb51
-symbols: config/BW1E120/symbols.txt
-splits: config/BW1E120/splits.txt
+symbols: config/BW1W120/symbols.txt
+splits: config/BW1W120/splits.txt
 
 timestamp: "2002-06-18T06:13:22+00:00"
 force_size: 0x00843000
@@ -22,24 +22,24 @@ modules:
 - object: LHaudiodllR.dll
   hash: 35f149cb77e9f770751112c0c814331c5b92bb4d
   name: LHAudio
-  symbols: config/BW1E120/LHAudio/symbols.txt
-  splits: config/BW1E120/LHAudio/splits.txt
+  symbols: config/BW1W120/LHAudio/symbols.txt
+  splits: config/BW1W120/LHAudio/splits.txt
 
 - object: LHLogR.dll
   hash: 3c42f20350da2c54eb1ba0a61829b94d9883669a
   name: LHLog
   linker_version: "7.0"
-  symbols: config/BW1E120/LHLog/symbols.txt
-  splits: config/BW1E120/LHLog/splits.txt
+  symbols: config/BW1W120/LHLog/symbols.txt
+  splits: config/BW1W120/LHLog/splits.txt
 
 - object: LHMultiplayerR.dll
   hash: 4042119212fb6a5da6d736b059347f340eb4cd17
   name: LHMultiplayer
-  symbols: config/BW1E120/LHMultiplayer/symbols.txt
-  splits: config/BW1E120/LHMultiplayer/splits.txt
+  symbols: config/BW1W120/LHMultiplayer/symbols.txt
+  splits: config/BW1W120/LHMultiplayer/splits.txt
 
 - object: LHDialogLib.dll
   hash: 64a22b88a51adc4bc119777642263e419ea8d09e
   name: LHDialog
-  symbols: config/BW1E120/LHDialog/symbols.txt
-  splits: config/BW1E120/LHDialog/splits.txt
+  symbols: config/BW1W120/LHDialog/symbols.txt
+  splits: config/BW1W120/LHDialog/splits.txt
