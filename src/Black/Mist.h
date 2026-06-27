@@ -28,36 +28,36 @@ public:
 
     // Override methods
 
-    // win1.41 0055ebd0 mac 101045f0 Mist::_dt(void)
+    // BW1W120 0055ebd0 BW1M100 101045f0 Mist::_dt(void)
     virtual ~Mist();
-    // win1.41 00606300 mac 10105480 Mist::ToBeDeleted(int)
+    // BW1W120 00606300 BW1M100 10105480 Mist::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0055eb70 mac 10104680 Mist::GetPlayer(void)
+    // BW1W120 0055eb70 BW1M100 10104680 Mist::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 0055ebc0 mac 10104780 Mist::GetDebugText(void)
+    // BW1W120 0055ebc0 BW1M100 10104780 Mist::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00606a10 mac 10104820 Mist::Load(GameOSFile &)
+    // BW1W120 00606a10 BW1M100 10104820 Mist::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00606920 mac 10104980 Mist::Save(GameOSFile &)
+    // BW1W120 00606920 BW1M100 10104980 Mist::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0055ebb0 mac 10104750 Mist::GetSaveType(void)
+    // BW1W120 0055ebb0 BW1M100 10104750 Mist::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00606af0 mac 101047c0 Mist::ResolveLoad(void)
+    // BW1W120 00606af0 BW1M100 101047c0 Mist::ResolveLoad(void)
     virtual void ResolveLoad();
-    // win1.41 0055eba0 mac 10104710 Mist::GetCreatureBeliefType(void)
+    // BW1W120 0055eba0 BW1M100 10104710 Mist::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
-    // win1.41 006067d0 mac 10104c90 Mist::GetDistanceFromObject(MapCoords const &)
+    // BW1W120 006067d0 BW1M100 10104c90 Mist::GetDistanceFromObject(MapCoords const &)
     virtual float GetDistanceFromObject(const MapCoords* param_1);
-    // win1.41 0055eb90 mac 101046e0 Mist::IsMist(void)
+    // BW1W120 0055eb90 BW1M100 101046e0 Mist::IsMist(void)
     virtual uint32_t IsMist();
-    // win1.41 0055eb80 mac 101046b0 Mist::GetText(void)
+    // BW1W120 0055eb80 BW1M100 101046b0 Mist::GetText(void)
     virtual const char* GetText();
-    // win1.41 00606910 mac 10104af0 Mist::GetScriptObjectType(void)
+    // BW1W120 00606910 BW1M100 10104af0 Mist::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
 
     // Constructors
 
-    // win1.41 00606270 mac 101056c0 Mist::Mist(MapCoords const &, float, unsigned long, float)
+    // BW1W120 00606270 BW1M100 101056c0 Mist::Mist(MapCoords const &, float, unsigned long, float)
     Mist(MapCoords* coords, float param_3, uint32_t param_4, float param_5);
 };
 

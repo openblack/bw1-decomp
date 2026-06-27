@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 00628010 mac inlined MPFEHasCreature::_dt(void)
+    // BW1W120 00628010 BW1M100 inlined MPFEHasCreature::_dt(void)
     virtual ~MPFEHasCreature();
 };
 

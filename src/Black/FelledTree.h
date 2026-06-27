@@ -17,11 +17,11 @@ public:
 
     // Override methods
 
-    // win1.41 005118e0 mac 100c0cc0 FelledTree::_dt(void)
+    // BW1W120 005118e0 BW1M100 100c0cc0 FelledTree::_dt(void)
     virtual ~FelledTree();
-    // win1.41 005118d0 mac 100c0de0 FelledTree::GetDebugText(void)
+    // BW1W120 005118d0 BW1M100 100c0de0 FelledTree::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 005118c0 mac 100c0da0 FelledTree::GetSaveType(void)
+    // BW1W120 005118c0 BW1M100 100c0da0 FelledTree::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
 

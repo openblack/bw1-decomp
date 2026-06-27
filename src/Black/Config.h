@@ -14,9 +14,9 @@ struct Config
 
     // Non-virtual methods
 
-    // win1.41 0046b1f0 mac 100bf310 Config::Process(void)
+    // BW1W120 0046b1f0 BW1M100 100bf310 Config::Process(void)
     void Process();
-    // win1.41 0046b290 mac 100befa0 Config::ProcessOneGameTurn(void)
+    // BW1W120 0046b290 BW1M100 100befa0 Config::ProcessOneGameTurn(void)
     void ProcessOneGameTurn();
 };
 

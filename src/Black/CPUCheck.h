@@ -10,7 +10,7 @@ public:
 
     // Override methods
 
-    // win1.41 00471a80 mac 100c00a0 CPUCheck::~CPUCheck(void)
+    // BW1W120 00471a80 BW1M100 100c00a0 CPUCheck::~CPUCheck(void)
     virtual ~CPUCheck();
 };
 

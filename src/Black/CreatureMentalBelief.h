@@ -13,7 +13,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d78d0 mac 10252070 CreatureBelief::_dt(void)
+    // BW1W120 004d78d0 BW1M100 10252070 CreatureBelief::_dt(void)
     virtual ~CreatureBelief();
 };
 
@@ -23,7 +23,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d6660 mac 10255910 CreatureBeliefAboutAbode::_dt(void)
+    // BW1W120 004d6660 BW1M100 10255910 CreatureBeliefAboutAbode::_dt(void)
     virtual ~CreatureBeliefAboutAbode();
 };
 
@@ -33,7 +33,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d6570 mac 102557b0 CreatureBeliefAboutCitadel::_dt(void)
+    // BW1W120 004d6570 BW1M100 102557b0 CreatureBeliefAboutCitadel::_dt(void)
     virtual ~CreatureBeliefAboutCitadel();
 };
 
@@ -43,7 +43,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d66c0 mac 10255710 CreatureBeliefAboutContext::_dt(void)
+    // BW1W120 004d66c0 BW1M100 10255710 CreatureBeliefAboutContext::_dt(void)
     virtual ~CreatureBeliefAboutContext();
 };
 
@@ -53,7 +53,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d65c0 mac 10255d30 CreatureBeliefAboutCreature::_dt(void)
+    // BW1W120 004d65c0 BW1M100 10255d30 CreatureBeliefAboutCreature::_dt(void)
     virtual ~CreatureBeliefAboutCreature();
 };
 
@@ -63,7 +63,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d6520 mac 10255e90 CreatureBeliefAboutFlock::_dt(void)
+    // BW1W120 004d6520 BW1M100 10255e90 CreatureBeliefAboutFlock::_dt(void)
     virtual ~CreatureBeliefAboutFlock();
 };
 
@@ -73,7 +73,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d6610 mac 10255bd0 CreatureBeliefAboutForest::_dt(void)
+    // BW1W120 004d6610 BW1M100 10255bd0 CreatureBeliefAboutForest::_dt(void)
     virtual ~CreatureBeliefAboutForest();
 };
 
@@ -83,7 +83,7 @@ public:
 
     // Override methods
 
-    // win1.41 004da700 mac inlined CreatureBeliefAboutMobileObject::_dt(void)
+    // BW1W120 004da700 BW1M100 inlined CreatureBeliefAboutMobileObject::_dt(void)
     virtual ~CreatureBeliefAboutMobileObject();
 };
 
@@ -93,7 +93,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d64d0 mac 10255ff0 CreatureBeliefAboutTown::_dt(void)
+    // BW1W120 004d64d0 BW1M100 10255ff0 CreatureBeliefAboutTown::_dt(void)
     virtual ~CreatureBeliefAboutTown();
 };
 
@@ -103,7 +103,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d6480 mac 10255a70 CreatureBeliefAboutVillager::_dt(void)
+    // BW1W120 004d6480 BW1M100 10255a70 CreatureBeliefAboutVillager::_dt(void)
     virtual ~CreatureBeliefAboutVillager();
 };
 
@@ -113,7 +113,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d6430 mac 10256140 CreatureBeliefSmall::_dt(void)
+    // BW1W120 004d6430 BW1M100 10256140 CreatureBeliefSmall::_dt(void)
     virtual ~CreatureBeliefSmall();
 };
 

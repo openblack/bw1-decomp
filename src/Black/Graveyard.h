@@ -24,35 +24,35 @@ public:
 
     // Override methods
 
-    // win1.41 0055e010 mac 100f42d0 Graveyard::_dt(void)
+    // BW1W120 0055e010 BW1M100 100f42d0 Graveyard::_dt(void)
     virtual ~Graveyard();
-    // win1.41 00595cb0 mac 100f4db0 Graveyard::ToBeDeleted(int)
+    // BW1W120 00595cb0 BW1M100 100f4db0 Graveyard::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0055e000 mac 100f4550 Graveyard::GetDebugText(void)
+    // BW1W120 0055e000 BW1M100 100f4550 Graveyard::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00595f50 mac 100f4590 Graveyard::Load(GameOSFile &)
+    // BW1W120 00595f50 BW1M100 100f4590 Graveyard::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00595ee0 mac 100f4670 Graveyard::Save(GameOSFile &)
+    // BW1W120 00595ee0 BW1M100 100f4670 Graveyard::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0055dff0 mac 100f4510 Graveyard::GetSaveType(void)
+    // BW1W120 0055dff0 BW1M100 100f4510 Graveyard::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0055df90 mac inlined Graveyard::GetArrivePos(MapCoords *)
+    // BW1W120 0055df90 BW1M100 inlined Graveyard::GetArrivePos(MapCoords *)
     virtual MapCoords* GetArrivePos(MapCoords* param_1);
-    // win1.41 0055dfd0 mac 100f4480 Graveyard::CanActAsAContainer(Creature *)
+    // BW1W120 0055dfd0 BW1M100 100f4480 Graveyard::CanActAsAContainer(Creature *)
     virtual uint32_t CanActAsAContainer(Creature* param_1);
-    // win1.41 0055dfe0 mac 100f44d0 Graveyard::IsStoragePit(Creature *)
+    // BW1W120 0055dfe0 BW1M100 100f44d0 Graveyard::IsStoragePit(Creature *)
     virtual uint32_t IsStoragePit(Creature* param_1);
-    // win1.41 00595dd0 mac 100f4a40 Graveyard::CallVirtualFunctionsForCreation(MapCoords const &)
+    // BW1W120 00595dd0 BW1M100 100f4a40 Graveyard::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
-    // win1.41 0055dfb0 mac 100f4400 Graveyard::Get3DType(void)
+    // BW1W120 0055dfb0 BW1M100 100f4400 Graveyard::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
-    // win1.41 00595cd0 mac 100f4d60 Graveyard::InteractsWithPhysicsObjects(void)
+    // BW1W120 00595cd0 BW1M100 100f4d60 Graveyard::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
-    // win1.41 00595ce0 mac 100f4c10 Graveyard::DeleteDependancys(void)
+    // BW1W120 00595ce0 BW1M100 100f4c10 Graveyard::DeleteDependancys(void)
     virtual void DeleteDependancys();
-    // win1.41 00595e00 mac 100f4870 Graveyard::MakeFunctional(void)
+    // BW1W120 00595e00 BW1M100 100f4870 Graveyard::MakeFunctional(void)
     virtual void MakeFunctional();
-    // win1.41 0055dfc0 mac 100f4440 Graveyard::CanBeHiddenIn(void)
+    // BW1W120 0055dfc0 BW1M100 100f4440 Graveyard::CanBeHiddenIn(void)
     virtual bool CanBeHiddenIn();
 };
 

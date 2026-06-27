@@ -29,15 +29,15 @@ struct LHLobby
 
     // Non-virtual methods
 
-    // win1.41 1000cb00 mac 100f0d70 LHLobby::OpenLocalLobby(LHMPServerStartInfo *)
+    // BW1W120 1000cb00 BW1M100 100f0d70 LHLobby::OpenLocalLobby(LHMPServerStartInfo *)
     LH_RETURN OpenLocalLobby(LHMPServerStartInfo* info);
-    // win1.41 1000d440 mac 100efe80 LHLobby::ProcessLobbyPlayerList(LHNetEvent *)
+    // BW1W120 1000d440 BW1M100 100efe80 LHLobby::ProcessLobbyPlayerList(LHNetEvent *)
     LH_RETURN ProcessLobbyPlayerList(LHNetEvent* net_event);
-    // win1.41 005ea900 mac 100ed350 LHLobby::_dt(void)
+    // BW1W120 005ea900 BW1M100 100ed350 LHLobby::_dt(void)
     void _dt();
-    // win1.41 007c549c mac 100eced0 LHLobby::Close(void)
+    // BW1W120 007c549c BW1M100 100eced0 LHLobby::Close(void)
     void Close();
-    // win1.41 007c54a2 mac 100f05c0 LHLobby::ProcessEvent(LHNetEvent *)
+    // BW1W120 007c54a2 BW1M100 100f05c0 LHLobby::ProcessEvent(LHNetEvent *)
     LH_RETURN ProcessEvent(LHNetEvent* param_1);
 };
 

@@ -19,17 +19,17 @@ public:
 
     // Override methods
 
-    // win1.41 0055d020 mac 1051ee70 SpellWater::_dt(void)
+    // BW1W120 0055d020 BW1M100 1051ee70 SpellWater::_dt(void)
     virtual ~SpellWater();
-    // win1.41 0055d010 mac 1051ef50 SpellWater::GetDebugText(void)
+    // BW1W120 0055d010 BW1M100 1051ef50 SpellWater::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 007253b0 mac 1051f070 SpellWater::Load(GameOSFile &)
+    // BW1W120 007253b0 BW1M100 1051f070 SpellWater::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00725420 mac 1051ef90 SpellWater::Save(GameOSFile &)
+    // BW1W120 00725420 BW1M100 1051ef90 SpellWater::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0055d000 mac 1051ef10 SpellWater::GetSaveType(void)
+    // BW1W120 0055d000 BW1M100 1051ef10 SpellWater::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00724ed0 mac 1051f310 SpellWater::Process(void)
+    // BW1W120 00724ed0 BW1M100 1051f310 SpellWater::Process(void)
     virtual uint32_t Process();
 };
 

@@ -13,7 +13,7 @@ public:
 
     // Override methods
 
-    // win1.41 004e2230 mac 10266a40 CreatureActionsKnownAbout::_dt(void)
+    // BW1W120 004e2230 BW1M100 10266a40 CreatureActionsKnownAbout::_dt(void)
     virtual ~CreatureActionsKnownAbout();
 };
 

@@ -29,15 +29,15 @@ public:
 
     // Override methods
 
-    // win1.41 0050cf00 mac 102aa590 DanceGroup::_dt(void)
+    // BW1W120 0050cf00 BW1M100 102aa590 DanceGroup::_dt(void)
     virtual ~DanceGroup();
-    // win1.41 0050cef0 mac 102aaa60 DanceGroup::GetDebugText(void)
+    // BW1W120 0050cef0 BW1M100 102aaa60 DanceGroup::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0050d9c0 mac 102aab20 DanceGroup::Load(GameOSFile &)
+    // BW1W120 0050d9c0 BW1M100 102aab20 DanceGroup::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 0050d640 mac 102ab450 DanceGroup::Save(GameOSFile &)
+    // BW1W120 0050d640 BW1M100 102ab450 DanceGroup::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0050cee0 mac 102aaa20 DanceGroup::GetSaveType(void)
+    // BW1W120 0050cee0 BW1M100 102aaa20 DanceGroup::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
 

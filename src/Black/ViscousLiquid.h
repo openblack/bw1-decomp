@@ -16,7 +16,7 @@ struct FragVertex
 
     // Constructors
 
-    // win1.41 0076d970 mac 1015ce60 FragVertex::FragVertex(void)
+    // BW1W120 0076d970 BW1M100 1015ce60 FragVertex::FragVertex(void)
     FragVertex();
 };
 
@@ -28,7 +28,7 @@ struct FragPrimitive
 
     // Constructors
 
-    // win1.41 0076d7a0 mac 1015de30 FragPrimitive::FragPrimitive(GameOSFile &, LH3DMesh *)
+    // BW1W120 0076d7a0 BW1M100 1015de30 FragPrimitive::FragPrimitive(GameOSFile &, LH3DMesh *)
     FragPrimitive(GameOSFile* file, LH3DMesh* mesh);
 };
 
@@ -43,12 +43,12 @@ struct FragMesh
 
     // Constructors
 
-    // win1.41 0076d520 mac 1015e3a0 FragMesh::FragMesh(GameOSFile &, LH3DMesh *)
+    // BW1W120 0076d520 BW1M100 1015e3a0 FragMesh::FragMesh(GameOSFile &, LH3DMesh *)
     FragMesh(GameOSFile* file, LH3DMesh* mesh);
 
     // Non-virtual methods
 
-    // win1.41 007f70e0 mac 1015e8f0 FragMesh::_dt(void)
+    // BW1W120 007f70e0 BW1M100 1015e8f0 FragMesh::_dt(void)
     void _dt();
 };
 

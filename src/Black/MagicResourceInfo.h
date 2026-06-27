@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 00435700 mac 103ac8f0 GMagicResourceInfo::_dt(void)
+    // BW1W120 00435700 BW1M100 103ac8f0 GMagicResourceInfo::_dt(void)
     virtual ~GMagicResourceInfo();
 };
 

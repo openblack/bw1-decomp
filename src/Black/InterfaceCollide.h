@@ -27,7 +27,7 @@ public:
 
     // Override methods
 
-    // win1.41 005ce380 mac 1017a1d0 GInterfaceCollide::_dt(void)
+    // BW1W120 005ce380 BW1M100 1017a1d0 GInterfaceCollide::_dt(void)
     virtual ~GInterfaceCollide();
 };
 

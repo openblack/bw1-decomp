@@ -3805,32 +3805,32 @@ public:
 
     // Override methods
 
-    // win1.41 004eac90 mac 10274660 LH3DCreature::LoadBase(char *)
+    // BW1W120 004eac90 BW1M100 10274660 LH3DCreature::LoadBase(char *)
     virtual uint32_t LoadBase(char* path);
 
     // Static methods
 
-    // win1.41 0047f1f0 mac 101fc320 LH3DCreature::FollowerCallbackFunction(int, int)
+    // BW1W120 0047f1f0 BW1M100 101fc320 LH3DCreature::FollowerCallbackFunction(int, int)
     static void FollowerCallbackFunction(int param_1, int param_2);
-    // win1.41 0047f260 mac 101fc1b0 LH3DCreature::FollowerCallbackPrepareAnims(int, float, float)
+    // BW1W120 0047f260 BW1M100 101fc1b0 LH3DCreature::FollowerCallbackPrepareAnims(int, float, float)
     static void FollowerCallbackPrepareAnims(Creature* param_1, float param_2, float param_3);
-    // win1.41 0047f280 mac 101fc130 LH3DCreature::FollowerCallbackGetStopDist(int)
+    // BW1W120 0047f280 BW1M100 101fc130 LH3DCreature::FollowerCallbackGetStopDist(int)
     static float FollowerCallbackGetStopDist(Creature* param_1);
 
     // Constructors
 
-    // win1.41 0047f770 mac 101fb470 LH3DCreature::LH3DCreature(Creature *, LHPoint const &, void *)
+    // BW1W120 0047f770 BW1M100 101fb470 LH3DCreature::LH3DCreature(Creature *, LHPoint const &, void *)
     LH3DCreature(Creature* creature, LHPoint* pos, void* param_3);
 
     // Non-virtual methods
 
-    // win1.41 004813f0 mac 101f8ba0 LH3DCreature::GetBonePos(long)
+    // BW1W120 004813f0 BW1M100 101f8ba0 LH3DCreature::GetBonePos(long)
     LHPoint* GetBonePos(int index);
-    // win1.41 004842b0 mac 101f4ce0 LH3DCreature::GetSafeBuffer(void)
+    // BW1W120 004842b0 BW1M100 101f4ce0 LH3DCreature::GetSafeBuffer(void)
     uint8_t* GetSafeBuffer();
-    // win1.41 004842d0 mac 101f4c90 LH3DCreature::IsPerformingBodyAction(void)
+    // BW1W120 004842d0 BW1M100 101f4c90 LH3DCreature::IsPerformingBodyAction(void)
     bool IsPerformingBodyAction();
-    // win1.41 0048b780 mac 101eb040 LH3DCreature::GetObjectActionStatus(void)
+    // BW1W120 0048b780 BW1M100 101eb040 LH3DCreature::GetObjectActionStatus(void)
     uint32_t GetObjectActionStatus();
 };
 

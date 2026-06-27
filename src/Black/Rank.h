@@ -12,7 +12,7 @@ public:
 
     // Override methods
 
-    // win1.41 006e0b80 mac inlined Rank::_dt(void)
+    // BW1W120 006e0b80 BW1M100 inlined Rank::_dt(void)
     virtual ~Rank();
 };
 

@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 00435830 mac 1018fa30 GMagicObjectInfo::_dt(void)
+    // BW1W120 00435830 BW1M100 1018fa30 GMagicObjectInfo::_dt(void)
     virtual ~GMagicObjectInfo();
 };
 

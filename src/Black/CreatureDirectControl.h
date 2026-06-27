@@ -12,7 +12,7 @@ public:
 
     // Override methods
 
-    // win1.41 004c7420 mac inlined CreatureCommand::_dt(void)
+    // BW1W120 004c7420 BW1M100 inlined CreatureCommand::_dt(void)
     virtual ~CreatureCommand();
 };
 

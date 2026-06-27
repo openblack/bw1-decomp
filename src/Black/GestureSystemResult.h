@@ -10,12 +10,12 @@ struct GestureSystemResult
 
     // Constructors
 
-    // win1.41 0054bb90 mac inlined GestureSystemResult::GestureSystemResult(void)
+    // BW1W120 0054bb90 BW1M100 inlined GestureSystemResult::GestureSystemResult(void)
     GestureSystemResult();
 
     // Non-virtual methods
 
-    // win1.41 inlined mac 100938a0 GestureSystemResult::SetToZero(void)
+    // BW1W120 inlined BW1M100 100938a0 GestureSystemResult::SetToZero(void)
     void SetToZero();
 };
 

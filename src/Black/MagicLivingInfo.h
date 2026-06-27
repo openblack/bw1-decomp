@@ -18,11 +18,11 @@ public:
 
     // Override methods
 
-    // win1.41 005fb980 mac inlined GMagicLivingInfo::_dt(void)
+    // BW1W120 005fb980 BW1M100 inlined GMagicLivingInfo::_dt(void)
     virtual ~GMagicLivingInfo();
-    // win1.41 005fb910 mac inlined GMagicLivingInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 005fb910 BW1M100 inlined GMagicLivingInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
-    // win1.41 005fb900 mac inlined GMagicLivingInfo::GetMesh( const(void))
+    // BW1W120 005fb900 BW1M100 inlined GMagicLivingInfo::GetMesh( const(void))
     virtual uint32_t GetMesh();
 };
 

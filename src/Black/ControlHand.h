@@ -192,31 +192,31 @@ public:
 
     // Override methods
 
-    // win1.41 0046c4a0 mac 101c85f0 CHand::SetSize(float)
+    // BW1W120 0046c4a0 BW1M100 101c85f0 CHand::SetSize(float)
     virtual void SetSize(float size);
-    // win1.41 0046bf80 mac 101c8cf0 CHand::MorphTexture(void)
+    // BW1W120 0046bf80 BW1M100 101c8cf0 CHand::MorphTexture(void)
     virtual void MorphTexture();
-    // win1.41 0046c350 mac 101c8670 CHand::UpdateTime(long)
+    // BW1W120 0046c350 BW1M100 101c8670 CHand::UpdateTime(long)
     virtual void UpdateTime(int param_1);
-    // win1.41 0046c550 mac 10029b00 CHand::PrepareForDrawing(void)
+    // BW1W120 0046c550 BW1M100 10029b00 CHand::PrepareForDrawing(void)
     virtual void PrepareForDrawing();
-    // win1.41 0046d0f0 mac 101c7f70 CHand::AddForDrawing(void)
+    // BW1W120 0046d0f0 BW1M100 101c7f70 CHand::AddForDrawing(void)
     virtual bool AddForDrawing();
 
     // Constructors
 
-    // win1.41 0046ba80 mac 101c8e00 CHand::CHand(LHPoint, GInterfaceStatus *)
+    // BW1W120 0046ba80 BW1M100 101c8e00 CHand::CHand(LHPoint, GInterfaceStatus *)
     CHand(LHPoint point, GInterfaceStatus* status);
 
     // Non-virtual methods
 
-    // win1.41 0046c260 mac 101c86d0 CHand::ToggleLeftRight(void)
+    // BW1W120 0046c260 BW1M100 101c86d0 CHand::ToggleLeftRight(void)
     void ToggleLeftRight();
-    // win1.41 0046d2c0 mac 101c76b0 CHand::LoadBinary(char *, int)
+    // BW1W120 0046d2c0 BW1M100 101c76b0 CHand::LoadBinary(char *, int)
     uint32_t LoadBinary_5CHandFPci(char* filename, int param_1);
-    // win1.41 0046ddd0 mac 101c6b10 CHand::ThrowObject(void)
+    // BW1W120 0046ddd0 BW1M100 101c6b10 CHand::ThrowObject(void)
     void ThrowObject();
-    // win1.41 0046e4e0 mac 10081dd0 CHand::GameTurnUpdate()
+    // BW1W120 0046e4e0 BW1M100 10081dd0 CHand::GameTurnUpdate()
     void GameTurnUpdate();
 };
 

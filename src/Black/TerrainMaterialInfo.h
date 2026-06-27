@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 00735290 mac 105420c0 GTerrainMaterialInfo::_dt(void)
+    // BW1W120 00735290 BW1M100 105420c0 GTerrainMaterialInfo::_dt(void)
     virtual ~GTerrainMaterialInfo();
-    // win1.41 00735230 mac 10542330 GTerrainMaterialInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00735230 BW1M100 10542330 GTerrainMaterialInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

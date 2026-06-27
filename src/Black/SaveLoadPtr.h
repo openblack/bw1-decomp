@@ -10,7 +10,7 @@ struct GSaveLoadPtr
 
     // Constructors
 
-    // win1.41 00562320 mac inlined GSaveLoadPtr::GSaveLoadPtr(void*)
+    // BW1W120 00562320 BW1M100 inlined GSaveLoadPtr::GSaveLoadPtr(void*)
     GSaveLoadPtr(void* ptr);
 };
 

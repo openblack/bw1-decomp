@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 0066fcb0 mac inlined PowerSpinRunner::DummyThereIsNoDrawingObjectVftableItsPureVirtualButCRequiresAValue(void)
+    // BW1W120 0066fcb0 BW1M100 inlined PowerSpinRunner::DummyThereIsNoDrawingObjectVftableItsPureVirtualButCRequiresAValue(void)
     virtual void DummyThereIsNoDrawingObjectVftableItsPureVirtualButCRequiresAValue();
 };
 

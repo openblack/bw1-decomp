@@ -30,14 +30,14 @@ struct GNetwork
 
     // Static methods
 
-    // win1.41 006349f0 mac 1010bff0 GNetwork::ProcessOnePacket(void)
+    // BW1W120 006349f0 BW1M100 1010bff0 GNetwork::ProcessOnePacket(void)
     static bool ProcessOnePacket(GNetwork* this);
-    // win1.41 006345e0 mac 10017240 GNetwork::ResetStateDebug(void)
+    // BW1W120 006345e0 BW1M100 10017240 GNetwork::ResetStateDebug(void)
     static void ResetStateDebug();
 
     // Non-virtual methods
 
-    // win1.41 00635290 mac 100229f0 GNetwork::ProcessOneSuperpacket(void)
+    // BW1W120 00635290 BW1M100 100229f0 GNetwork::ProcessOneSuperpacket(void)
     uint32_t ProcessOneSuperpacket();
 };
 

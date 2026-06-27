@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 0062c160 mac 10397200 MPFEChangeClanRequest::_dt(void)
+    // BW1W120 0062c160 BW1M100 10397200 MPFEChangeClanRequest::_dt(void)
     virtual ~MPFEChangeClanRequest();
 };
 

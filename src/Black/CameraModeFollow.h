@@ -28,12 +28,12 @@ public:
 
     // Constructors
 
-    // win1.41 0044b800 mac 101a00c0 CameraModeFollow::CameraModeFollow(GCamera *, GameThingWithPos *, float, int, int)
+    // BW1W120 0044b800 BW1M100 101a00c0 CameraModeFollow::CameraModeFollow(GCamera *, GameThingWithPos *, float, int, int)
     CameraModeFollow(GCamera* camera, GameThingWithPos* target, float param_3, int param_4, int param_5);
 
     // Non-virtual methods
 
-    // win1.41 0044ba00 mac 1019ff80 CameraModeFollow::Set(GameThingWithPos *)
+    // BW1W120 0044ba00 BW1M100 1019ff80 CameraModeFollow::Set(GameThingWithPos *)
     void Set(GameThingWithPos* target);
 };
 

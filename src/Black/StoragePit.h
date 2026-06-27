@@ -40,83 +40,83 @@ public:
 
     // Override methods
 
-    // win1.41 0055cd50 mac 10153360 StoragePit::_dt(void)
+    // BW1W120 0055cd50 BW1M100 10153360 StoragePit::_dt(void)
     virtual ~StoragePit();
-    // win1.41 00732c10 mac 101532f0 StoragePit::Delete(void)
+    // BW1W120 00732c10 BW1M100 101532f0 StoragePit::Delete(void)
     virtual void Delete();
-    // win1.41 00732c30 mac 101531a0 StoragePit::ToBeDeleted(int)
+    // BW1W120 00732c30 BW1M100 101531a0 StoragePit::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00732f60 mac 10003d60 StoragePit::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
+    // BW1W120 00732f60 BW1M100 10003d60 StoragePit::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
     virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4, const MapCoords* param_5, int param_6);
-    // win1.41 007332a0 mac 10152550 StoragePit::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
+    // BW1W120 007332a0 BW1M100 10152550 StoragePit::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
     virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
-    // win1.41 0055cd40 mac 101515a0 StoragePit::GetDebugText(void)
+    // BW1W120 0055cd40 BW1M100 101515a0 StoragePit::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00733920 mac 10151890 StoragePit::Load(GameOSFile &)
+    // BW1W120 00733920 BW1M100 10151890 StoragePit::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 007338d0 mac 10151930 StoragePit::Save(GameOSFile &)
+    // BW1W120 007338d0 BW1M100 10151930 StoragePit::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0055cd30 mac 10151560 StoragePit::GetSaveType(void)
+    // BW1W120 0055cd30 BW1M100 10151560 StoragePit::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0055ccb0 mac inlined StoragePit::GetArrivePos(MapCoords *)
+    // BW1W120 0055ccb0 BW1M100 inlined StoragePit::GetArrivePos(MapCoords *)
     virtual MapCoords* GetArrivePos(MapCoords* param_1);
-    // win1.41 0055ccf0 mac 10151430 StoragePit::IsCastShadowAtNight(void)
+    // BW1W120 0055ccf0 BW1M100 10151430 StoragePit::IsCastShadowAtNight(void)
     virtual uint32_t IsCastShadowAtNight();
-    // win1.41 0055cd10 mac 101514c0 StoragePit::CanBeEatenByCreature(Creature *)
+    // BW1W120 0055cd10 BW1M100 101514c0 StoragePit::CanBeEatenByCreature(Creature *)
     virtual uint32_t CanBeEatenByCreature(Creature* param_1);
-    // win1.41 0055cd00 mac 10151470 StoragePit::CanActAsAContainer(Creature *)
+    // BW1W120 0055cd00 BW1M100 10151470 StoragePit::CanActAsAContainer(Creature *)
     virtual uint32_t CanActAsAContainer(Creature* param_1);
-    // win1.41 004e4b50 mac 105e4020 StoragePit::CanHaveMagicFoodCastOnMe(Creature *)
+    // BW1W120 004e4b50 BW1M100 105e4020 StoragePit::CanHaveMagicFoodCastOnMe(Creature *)
     virtual uint32_t CanHaveMagicFoodCastOnMe(Creature* param_1);
-    // win1.41 004e4b70 mac 105e3f50 StoragePit::CanHaveMagicWoodCastOnMe(Creature *)
+    // BW1W120 004e4b70 BW1M100 105e3f50 StoragePit::CanHaveMagicWoodCastOnMe(Creature *)
     virtual uint32_t CanHaveMagicWoodCastOnMe(Creature* param_1);
-    // win1.41 004e4990 mac 105e4670 StoragePit::IsStoragePit(Creature *)
+    // BW1W120 004e4990 BW1M100 105e4670 StoragePit::IsStoragePit(Creature *)
     virtual uint32_t IsStoragePit(Creature* param_1);
-    // win1.41 004e4d90 mac 105e3860 StoragePit::IsStoragePitWithFoodInIt(Creature *)
+    // BW1W120 004e4d90 BW1M100 105e3860 StoragePit::IsStoragePitWithFoodInIt(Creature *)
     virtual uint32_t IsStoragePitWithFoodInIt(Creature* param_1);
-    // win1.41 004e49a0 mac 105e4580 StoragePit::IsStoragePitBelongingToAnotherPlayer(Creature *)
+    // BW1W120 004e49a0 BW1M100 105e4580 StoragePit::IsStoragePitBelongingToAnotherPlayer(Creature *)
     virtual uint32_t IsStoragePitBelongingToAnotherPlayer(Creature* param_1);
-    // win1.41 004e49e0 mac 105e44a0 StoragePit::IsStoragePitBelongingToMyPlayer(Creature *)
+    // BW1W120 004e49e0 BW1M100 105e44a0 StoragePit::IsStoragePitBelongingToMyPlayer(Creature *)
     virtual uint32_t IsStoragePitBelongingToMyPlayer(Creature* param_1);
-    // win1.41 007336b0 mac 10151ed0 StoragePit::IsPoisoned(void)
+    // BW1W120 007336b0 BW1M100 10151ed0 StoragePit::IsPoisoned(void)
     virtual uint32_t IsPoisoned();
-    // win1.41 00519350 mac 1001a950 StoragePit::Draw(void)
+    // BW1W120 00519350 BW1M100 1001a950 StoragePit::Draw(void)
     virtual void Draw();
-    // win1.41 00733a20 mac 101515e0 StoragePit::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
+    // BW1W120 00733a20 BW1M100 101515e0 StoragePit::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
     virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
-    // win1.41 00732e80 mac 10152d50 StoragePit::CallVirtualFunctionsForCreation(MapCoords const &)
+    // BW1W120 00732e80 BW1M100 10152d50 StoragePit::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
-    // win1.41 0055ccd0 mac 101513a0 StoragePit::Get3DType(void)
+    // BW1W120 0055ccd0 BW1M100 101513a0 StoragePit::Get3DType(void)
     virtual LH3DObject::ObjectType Get3DType();
-    // win1.41 0055cd20 mac 10151510 StoragePit::IsResourceStore(RESOURCE_TYPE)
+    // BW1W120 0055cd20 BW1M100 10151510 StoragePit::IsResourceStore(RESOURCE_TYPE)
     virtual bool IsResourceStore(RESOURCE_TYPE param_1);
-    // win1.41 00733750 mac 10151c60 StoragePit::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
+    // BW1W120 00733750 BW1M100 10151c60 StoragePit::DeleteObjectAndTakeResource(Object *, GInterfaceStatus *)
     virtual bool DeleteObjectAndTakeResource(Object* param_1, GInterfaceStatus* param_2);
-    // win1.41 00733810 mac 101519d0 StoragePit::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
+    // BW1W120 00733810 BW1M100 101519d0 StoragePit::DoCreatureMimicAfterAddingResource(RESOURCE_TYPE, GInterfaceStatus &)
     virtual bool DoCreatureMimicAfterAddingResource(RESOURCE_TYPE param_1, GInterfaceStatus* param_2);
-    // win1.41 007335f0 mac 10151f80 StoragePit::SetPoisonedResource(RESOURCE_TYPE, int)
+    // BW1W120 007335f0 BW1M100 10151f80 StoragePit::SetPoisonedResource(RESOURCE_TYPE, int)
     virtual void SetPoisonedResource(RESOURCE_TYPE param_1, int param_2);
-    // win1.41 007335d0 mac 10152110 StoragePit::SetPoisoned(int)
+    // BW1W120 007335d0 BW1M100 10152110 StoragePit::SetPoisoned(int)
     virtual void SetPoisoned(int param_1);
-    // win1.41 00733730 mac 10151d80 StoragePit::ReactToPhysicsImpact(PhysicsObject *, bool)
+    // BW1W120 00733730 BW1M100 10151d80 StoragePit::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-    // win1.41 00733550 mac inlined StoragePit::IsPoisonedResource(void)
+    // BW1W120 00733550 BW1M100 inlined StoragePit::IsPoisonedResource(void)
     virtual bool IsPoisonedResource();
-    // win1.41 00733400 mac 10002840 StoragePit::GetResourceNearestEdge(RESOURCE_TYPE, Object *, int)
+    // BW1W120 00733400 BW1M100 10002840 StoragePit::GetResourceNearestEdge(RESOURCE_TYPE, Object *, int)
     virtual MapCoords* GetResourceNearestEdge(MapCoords* param_1, RESOURCE_TYPE param_2, Object* param_3, int param_4);
-    // win1.41 00733260 mac 101526e0 StoragePit::CalulateAmountOverMaximum(RESOURCE_TYPE)
+    // BW1W120 00733260 BW1M100 101526e0 StoragePit::CalulateAmountOverMaximum(RESOURCE_TYPE)
     virtual int CalulateAmountOverMaximum(RESOURCE_TYPE param_1);
-    // win1.41 007331d0 mac 101527b0 StoragePit::RemovePotFromStructure(PotStructure *)
+    // BW1W120 007331d0 BW1M100 101527b0 StoragePit::RemovePotFromStructure(PotStructure *)
     virtual void RemovePotFromStructure(PotStructure* param_1);
-    // win1.41 00732cd0 mac 10153060 StoragePit::DeleteDependancys(void)
+    // BW1W120 00732cd0 BW1M100 10153060 StoragePit::DeleteDependancys(void)
     virtual void DeleteDependancys();
-    // win1.41 00732f30 mac 10152b90 StoragePit::MakeFunctional(void)
+    // BW1W120 00732f30 BW1M100 10152b90 StoragePit::MakeFunctional(void)
     virtual void MakeFunctional();
-    // win1.41 00733960 mac 10151770 StoragePit::StopBeingFunctional(GPlayer *)
+    // BW1W120 00733960 BW1M100 10151770 StoragePit::StopBeingFunctional(GPlayer *)
     virtual void StopBeingFunctional(GPlayer* param_1);
-    // win1.41 007339d0 mac 10151670 StoragePit::RestartBeingFunctional(void)
+    // BW1W120 007339d0 BW1M100 10151670 StoragePit::RestartBeingFunctional(void)
     virtual void RestartBeingFunctional();
-    // win1.41 0055cce0 mac 101513e0 StoragePit::CausesTownEmergencyIfDamaged(void)
+    // BW1W120 0055cce0 BW1M100 101513e0 StoragePit::CausesTownEmergencyIfDamaged(void)
     virtual bool CausesTownEmergencyIfDamaged();
 };
 

@@ -18,23 +18,23 @@ public:
 
     // Override methods
 
-    // win1.41 00561330 mac 10506140 ScriptTimer::_dt(void)
+    // BW1W120 00561330 BW1M100 10506140 ScriptTimer::_dt(void)
     virtual ~ScriptTimer();
-    // win1.41 00561320 mac 10506350 ScriptTimer::GetDebugText(void)
+    // BW1W120 00561320 BW1M100 10506350 ScriptTimer::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 007117b0 mac 10506390 ScriptTimer::Load(GameOSFile &)
+    // BW1W120 007117b0 BW1M100 10506390 ScriptTimer::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00711700 mac 105064b0 ScriptTimer::Save(GameOSFile &)
+    // BW1W120 00711700 BW1M100 105064b0 ScriptTimer::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 00561310 mac 10506310 ScriptTimer::GetSaveType(void)
+    // BW1W120 00561310 BW1M100 10506310 ScriptTimer::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00561300 mac 105062c0 ScriptTimer::IsDeletedWhenReleasedFromScript(void)
+    // BW1W120 00561300 BW1M100 105062c0 ScriptTimer::IsDeletedWhenReleasedFromScript(void)
     virtual uint32_t IsDeletedWhenReleasedFromScript();
-    // win1.41 005612e0 mac 105061e0 ScriptTimer::GetText(void)
+    // BW1W120 005612e0 BW1M100 105061e0 ScriptTimer::GetText(void)
     virtual const char* GetText();
-    // win1.41 005612f0 mac 1002b150 ScriptTimer::IsScriptTimer(void)
+    // BW1W120 005612f0 BW1M100 1002b150 ScriptTimer::IsScriptTimer(void)
     virtual uint32_t IsScriptTimer();
-    // win1.41 00711600 mac 10506a30 ScriptTimer::GetScriptObjectType(void)
+    // BW1W120 00711600 BW1M100 10506a30 ScriptTimer::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
 };
 

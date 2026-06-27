@@ -23,7 +23,7 @@ struct MeshIntersect
 
     // Non-virtual methods
 
-    // win1.41 00867c20 mac 1061c70c MeshIntersect::ReadBinary(LHFile *)
+    // BW1W120 00867c20 BW1M100 1061c70c MeshIntersect::ReadBinary(LHFile *)
     void ReadBinary(LHFile* file);
 };
 

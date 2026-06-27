@@ -36,12 +36,12 @@ public:
 
     // Override methods
 
-    // win1.41 0076cd10 mac 1015a660 GVirtualInfluence::_dt(void)
+    // BW1W120 0076cd10 BW1M100 1015a660 GVirtualInfluence::_dt(void)
     virtual ~GVirtualInfluence();
 
     // Constructors
 
-    // win1.41 0076cca0 mac 1015a6f0 GVirtualInfluence::GVirtualInfluence(GInterfaceStatus *)
+    // BW1W120 0076cca0 BW1M100 1015a6f0 GVirtualInfluence::GVirtualInfluence(GInterfaceStatus *)
     GVirtualInfluence(GInterfaceStatus* status);
 };
 

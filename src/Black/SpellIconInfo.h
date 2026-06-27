@@ -21,11 +21,11 @@ public:
 
     // Override methods
 
-    // win1.41 00725fb0 mac 10525b60 GSpellIconInfo::_dt(void)
+    // BW1W120 00725fb0 BW1M100 10525b60 GSpellIconInfo::_dt(void)
     virtual ~GSpellIconInfo();
-    // win1.41 00725f40 mac 10525c70 GSpellIconInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00725f40 BW1M100 10525c70 GSpellIconInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
-    // win1.41 00725f30 mac 10524c10 GSpellIconInfo::GetMesh( const(void))
+    // BW1W120 00725f30 BW1M100 10524c10 GSpellIconInfo::GetMesh( const(void))
     virtual uint32_t GetMesh();
 };
 

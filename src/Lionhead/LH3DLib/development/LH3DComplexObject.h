@@ -33,12 +33,12 @@ public:
 
     // Constructors
 
-    // win1.41 inlined mac inlined LH3DComplexObject::LH3DComplexObject(void)
+    // BW1W120 inlined BW1M100 inlined LH3DComplexObject::LH3DComplexObject(void)
     LH3DComplexObject();
 
     // Non-virtual methods
 
-    // win1.41 0080c020 mac 10081d10 LH3DComplexObject::CreateDynamicShadow
+    // BW1W120 0080c020 BW1M100 10081d10 LH3DComplexObject::CreateDynamicShadow
     void CreateDynamicShadow();
 };
 

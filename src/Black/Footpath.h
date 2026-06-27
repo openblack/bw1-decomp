@@ -28,48 +28,48 @@ public:
 
     // Override methods
 
-    // win1.41 00534e00 mac 100eeb80 GFootpath::_dt(void)
+    // BW1W120 00534e00 BW1M100 100eeb80 GFootpath::_dt(void)
     virtual ~GFootpath();
-    // win1.41 00534f00 mac 100ee7a0 GFootpath::ToBeDeleted(int)
+    // BW1W120 00534f00 BW1M100 100ee7a0 GFootpath::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00534df0 mac 100ef250 GFootpath::GetDebugText(void)
+    // BW1W120 00534df0 BW1M100 100ef250 GFootpath::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00535f10 mac 100ecb10 GFootpath::Load(GameOSFile &)
+    // BW1W120 00535f10 BW1M100 100ecb10 GFootpath::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00535e00 mac 100ece10 GFootpath::Save(GameOSFile &)
+    // BW1W120 00535e00 BW1M100 100ece10 GFootpath::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 00534de0 mac 100ef210 GFootpath::GetSaveType(void)
+    // BW1W120 00534de0 BW1M100 100ef210 GFootpath::GetSaveType(void)
     virtual uint32_t GetSaveType();
 
     // Static methods
 
-    // win1.41 00535a80 mac inlined GFootpath::FUN_00535a80(Point2D *, MultiMapFixed *, float, float)
+    // BW1W120 00535a80 BW1M100 inlined GFootpath::FUN_00535a80(Point2D *, MultiMapFixed *, float, float)
     static void FUN_00535a80(Point2D* param_1, MultiMapFixed* param_2, float point_x, float point_y);
-    // win1.41 00537290 mac 100ea6f0 GFootpath::SendFootpathsAroundObsticle(float, MapCoords const &)
+    // BW1W120 00537290 BW1M100 100ea6f0 GFootpath::SendFootpathsAroundObsticle(float, MapCoords const &)
     static void SendFootpathsAroundObsticle(float radius, MapCoords* coords);
-    // win1.41 00538340 mac 100e95b0 GFootpath::ConvertCreaturePlanToFootpath(RPHolder &, RPlan &, GFootpathNode *, GFootpathNode *, MapCoords const &)
+    // BW1W120 00538340 BW1M100 100e95b0 GFootpath::ConvertCreaturePlanToFootpath(RPHolder &, RPlan &, GFootpathNode *, GFootpathNode *, MapCoords const &)
     static void ConvertCreaturePlanToFootpath(RPHolder* holder, RPlan* plan, GFootpathNode* start, GFootpathNode* end, MapCoords* coord);
-    // win1.41 005387d0 mac 100e93a0 GFootpath::AttemptRerenderFootpathWithCreatureRP(GFootpathNode *, GFootpathNode *, MapCoords const &)
+    // BW1W120 005387d0 BW1M100 100e93a0 GFootpath::AttemptRerenderFootpathWithCreatureRP(GFootpathNode *, GFootpathNode *, MapCoords const &)
     static uint32_t AttemptRerenderFootpathWithCreatureRP(GFootpathNode* start, GFootpathNode* end, MapCoords* coord);
 
     // Constructors
 
-    // win1.41 00534dc0 mac 100eecb0 GFootpath::GFootpath(void)
+    // BW1W120 00534dc0 BW1M100 100eecb0 GFootpath::GFootpath(void)
     GFootpath();
-    // win1.41 00534eb0 mac 100ee9b0 GFootpath::GFootpath(GameThingWithPos *, GameThingWithPos *)
+    // BW1W120 00534eb0 BW1M100 100ee9b0 GFootpath::GFootpath(GameThingWithPos *, GameThingWithPos *)
     GFootpath(GameThingWithPos* param_2, GameThingWithPos* param_3);
 
     // Non-virtual methods
 
-    // win1.41 00534fc0 mac 100ee4c0 GFootpath::AddPos(MapCoords const &)
+    // BW1W120 00534fc0 BW1M100 100ee4c0 GFootpath::AddPos(MapCoords const &)
     void AddPos(MapCoords* coords);
-    // win1.41 005351a0 mac 100ee290 GFootpath::GetNextNode(GFootpathNode *, int)
+    // BW1W120 005351a0 BW1M100 100ee290 GFootpath::GetNextNode(GFootpathNode *, int)
     GFootpathNode* GetNextNode(GFootpathNode* node, int backwards);
-    // win1.41 005351f0 mac 100ee190 GFootpath::GetNextPos(MapCoords const &, GFootpathNode *&, MapCoords &, int, float)
+    // BW1W120 005351f0 BW1M100 100ee190 GFootpath::GetNextPos(MapCoords const &, GFootpathNode *&, MapCoords &, int, float)
     uint32_t GetNextPos(MapCoords* current_pos, GFootpathNode** next_node, MapCoords* next_pos, int backwards, float max_t);
-    // win1.41 00535270 mac 100ee0d0 GFootpath::GetNextPos(GFootpathNode *&, MapCoords &, int)
+    // BW1W120 00535270 BW1M100 100ee0d0 GFootpath::GetNextPos(GFootpathNode *&, MapCoords &, int)
     uint32_t GetNextPos(GFootpathNode** next_node, MapCoords* next_pos, int backwards);
-    // win1.41 005352c0 mac 100edfa0 GFootpath::GetNearestPos(MapCoords const &, int)
+    // BW1W120 005352c0 BW1M100 100edfa0 GFootpath::GetNearestPos(MapCoords const &, int)
     GFootpathNode* GetNearestPos(const MapCoords* coords, int param_3);
 };
 

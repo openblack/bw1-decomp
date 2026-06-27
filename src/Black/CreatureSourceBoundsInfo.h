@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 004dd400 mac 1025eab0 CreatureSourceBoundsInfo::_dt(void)
+    // BW1W120 004dd400 BW1M100 1025eab0 CreatureSourceBoundsInfo::_dt(void)
     virtual ~CreatureSourceBoundsInfo();
-    // win1.41 004dd3a0 mac 1025ee20 CreatureSourceBoundsInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 004dd3a0 BW1M100 1025ee20 CreatureSourceBoundsInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

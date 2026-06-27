@@ -11,12 +11,12 @@ public:
 
     // Static methods
 
-    // win1.41 007923a0 mac 104ce930 SaveGameRoom::CreateSaveGameFiles(char*)
+    // BW1W120 007923a0 BW1M100 104ce930 SaveGameRoom::CreateSaveGameFiles(char*)
     static bool CreateSaveGameFiles();
 
     // Constructors
 
-    // win1.41 0078f960 mac 104d5aa0 SaveGameRoom::SaveGameRoom(void)
+    // BW1W120 0078f960 BW1M100 104d5aa0 SaveGameRoom::SaveGameRoom(void)
     SaveGameRoom();
 };
 

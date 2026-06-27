@@ -20,7 +20,7 @@ struct Q29GGuidance10LastThings
 
     // Constructors
 
-    // win1.41 0071aec0 mac 10511e30 GGuidance::LastThings::LastThings(GameThingWithPos *)
+    // BW1W120 0071aec0 BW1M100 10511e30 GGuidance::LastThings::LastThings(GameThingWithPos *)
     Q29GGuidance10LastThings(GameThingWithPos* thing);
 };
 
@@ -48,24 +48,24 @@ public:
 
     // Override methods
 
-    // win1.41 0071ab30 mac 10512620 GGuidance::_dt(void)
+    // BW1W120 0071ab30 BW1M100 10512620 GGuidance::_dt(void)
     virtual ~GGuidance();
 
     // Static methods
 
-    // win1.41 0071b020 mac 10082330 GGuidance::ProcessTownDesireSFX(GInterfaceStatus &)
+    // BW1W120 0071b020 BW1M100 10082330 GGuidance::ProcessTownDesireSFX(GInterfaceStatus &)
     static void ProcessTownDesireSFX(GInterfaceStatus* status);
 
     // Constructors
 
-    // win1.41 0071ab10 mac 105126b0 GGuidance::GGuidance(void)
+    // BW1W120 0071ab10 BW1M100 105126b0 GGuidance::GGuidance(void)
     GGuidance();
 
     // Non-virtual methods
 
-    // win1.41 0071ac70 mac 105122a0 GGuidance::Init(GInterfaceStatus&)
+    // BW1W120 0071ac70 BW1M100 105122a0 GGuidance::Init(GInterfaceStatus&)
     void Init(GInterfaceStatus* status);
-    // win1.41 0071cbe0 mac 1050e610 GGuidance::HelpSpritesLowOnPeople(Town &)
+    // BW1W120 0071cbe0 BW1M100 1050e610 GGuidance::HelpSpritesLowOnPeople(Town &)
     void HelpSpritesLowOnPeople(Town* param_1);
 };
 

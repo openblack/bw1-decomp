@@ -20,9 +20,9 @@ public:
 
     // Override methods
 
-    // win1.41 0054bf00 mac 10512cc0 TerrainMapTypeInfo::_dt(void)
+    // BW1W120 0054bf00 BW1M100 10512cc0 TerrainMapTypeInfo::_dt(void)
     virtual ~TerrainMapTypeInfo();
-    // win1.41 0054bd70 mac 10588760 TerrainMapTypeInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 0054bd70 BW1M100 10588760 TerrainMapTypeInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

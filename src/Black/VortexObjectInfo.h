@@ -18,15 +18,15 @@ public:
 
     // Override methods
 
-    // win1.41 0055d830 mac 103b2be0 VortexObjectInfo::_dt(void)
+    // BW1W120 0055d830 BW1M100 103b2be0 VortexObjectInfo::_dt(void)
     virtual ~VortexObjectInfo();
-    // win1.41 0055d820 mac 103b2cb0 VortexObjectInfo::GetDebugText(void)
+    // BW1W120 0055d820 BW1M100 103b2cb0 VortexObjectInfo::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00600bf0 mac 103b2d00 VortexObjectInfo::Load(GameOSFile &)
+    // BW1W120 00600bf0 BW1M100 103b2d00 VortexObjectInfo::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00600ad0 mac 103b3000 VortexObjectInfo::Save(GameOSFile &)
+    // BW1W120 00600ad0 BW1M100 103b3000 VortexObjectInfo::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0055d810 mac 103b2c70 VortexObjectInfo::GetSaveType(void)
+    // BW1W120 0055d810 BW1M100 103b2c70 VortexObjectInfo::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
 

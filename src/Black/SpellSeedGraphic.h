@@ -43,45 +43,45 @@ public:
 
     // Override methods
 
-    // win1.41 00726e50 mac 10521480 SpellSeedGraphic::_dt(void)
+    // BW1W120 00726e50 BW1M100 10521480 SpellSeedGraphic::_dt(void)
     virtual ~SpellSeedGraphic();
-    // win1.41 00726fe0 mac 10523290 SpellSeedGraphic::ToBeDeleted(int)
+    // BW1W120 00726fe0 BW1M100 10523290 SpellSeedGraphic::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 007276a0 mac 10522450 SpellSeedGraphic::GetPlayer(void)
+    // BW1W120 007276a0 BW1M100 10522450 SpellSeedGraphic::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 007276b0 mac 105223a0 SpellSeedGraphic::SetPlayer(GPlayer *)
+    // BW1W120 007276b0 BW1M100 105223a0 SpellSeedGraphic::SetPlayer(GPlayer *)
     virtual void SetPlayer(GPlayer* param_1);
-    // win1.41 00726e40 mac 105215a0 SpellSeedGraphic::GetDebugText(void)
+    // BW1W120 00726e40 BW1M100 105215a0 SpellSeedGraphic::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00727ac0 mac 10521910 SpellSeedGraphic::Load(GameOSFile &)
+    // BW1W120 00727ac0 BW1M100 10521910 SpellSeedGraphic::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00727c70 mac 10521650 SpellSeedGraphic::Save(GameOSFile &)
+    // BW1W120 00727c70 BW1M100 10521650 SpellSeedGraphic::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 00726e30 mac 10521560 SpellSeedGraphic::GetSaveType(void)
+    // BW1W120 00726e30 BW1M100 10521560 SpellSeedGraphic::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00727e30 mac 105215f0 SpellSeedGraphic::ResolveLoad(void)
+    // BW1W120 00727e30 BW1M100 105215f0 SpellSeedGraphic::ResolveLoad(void)
     virtual void ResolveLoad();
-    // win1.41 00727340 mac 10522ce0 SpellSeedGraphic::GetScale(void)
+    // BW1W120 00727340 BW1M100 10522ce0 SpellSeedGraphic::GetScale(void)
     virtual float GetScale();
-    // win1.41 00726e20 mac 10521520 SpellSeedGraphic::GetText(void)
+    // BW1W120 00726e20 BW1M100 10521520 SpellSeedGraphic::GetText(void)
     virtual const char* GetText();
-    // win1.41 007277b0 mac 10522020 SpellSeedGraphic::ForDrawFXGetNumVertices(void)
+    // BW1W120 007277b0 BW1M100 10522020 SpellSeedGraphic::ForDrawFXGetNumVertices(void)
     virtual int ForDrawFXGetNumVertices();
-    // win1.41 00727800 mac 10521e20 SpellSeedGraphic::ForDrawFXGetVertexPos(long, LHPoint *)
+    // BW1W120 00727800 BW1M100 10521e20 SpellSeedGraphic::ForDrawFXGetVertexPos(long, LHPoint *)
     virtual void ForDrawFXGetVertexPos(int param_1, LHPoint* param_2);
 
     // Static methods
 
-    // win1.41 00725ea0 mac 10101da0 SpellSeedGraphic::operator new(unsigned long)
+    // BW1W120 00725ea0 BW1M100 10101da0 SpellSeedGraphic::operator new(unsigned long)
     static SpellSeedGraphic* __nw(uint32_t size);
-    // win1.41 00726f60 mac 10523670 SpellSeedGraphic::Create(MapCoords const &, SPELL_SEED_TYPE, GPlayer *, float, POWER_UP_TYPE)
+    // BW1W120 00726f60 BW1M100 10523670 SpellSeedGraphic::Create(MapCoords const &, SPELL_SEED_TYPE, GPlayer *, float, POWER_UP_TYPE)
     static SpellSeedGraphic* Create(const MapCoords* coords, SPELL_SEED_TYPE type, GPlayer* player, float param_4, POWER_UP_TYPE effect);
 
     // Non-virtual methods
 
-    // win1.41 00727060 mac 10523210 SpellSeedGraphic::SetPowerUpType(POWER_UP_TYPE)
+    // BW1W120 00727060 BW1M100 10523210 SpellSeedGraphic::SetPowerUpType(POWER_UP_TYPE)
     void SetPowerUpType(POWER_UP_TYPE type);
-    // win1.41 00727080 mac 10523130 SpellSeedGraphic::CreatePUBand(void)
+    // BW1W120 00727080 BW1M100 10523130 SpellSeedGraphic::CreatePUBand(void)
     void CreatePUBand();
 };
 

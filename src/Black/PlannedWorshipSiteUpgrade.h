@@ -18,9 +18,9 @@ public:
 
     // Override methods
 
-    // win1.41 0077ee70 mac inlined PlannedWorshipSiteUpgrade::_dt(void)
+    // BW1W120 0077ee70 BW1M100 inlined PlannedWorshipSiteUpgrade::_dt(void)
     virtual ~PlannedWorshipSiteUpgrade();
-    // win1.41 0077eea0 mac inlined PlannedWorshipSiteUpgrade::CreatePlanned(float)
+    // BW1W120 0077eea0 BW1M100 inlined PlannedWorshipSiteUpgrade::CreatePlanned(float)
     virtual MultiMapFixed* CreatePlanned(float param_1);
 };
 

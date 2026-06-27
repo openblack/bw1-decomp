@@ -97,57 +97,57 @@ public:
 
     // Override methods
 
-    // win1.41 00648eb0 mac 10497380 GPlayer::_dt(void)
+    // BW1W120 00648eb0 BW1M100 10497380 GPlayer::_dt(void)
     virtual ~GPlayer();
-    // win1.41 006490b0 mac 10497310 GPlayer::ToBeDeleted(int)
+    // BW1W120 006490b0 BW1M100 10497310 GPlayer::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0064a6d0 mac 10496550 GPlayer::Dump(void)
+    // BW1W120 0064a6d0 BW1M100 10496550 GPlayer::Dump(void)
     virtual void Dump();
-    // win1.41 00648e70 mac 1048ea90 GPlayer::GetPlayer(void)
+    // BW1W120 00648e70 BW1M100 1048ea90 GPlayer::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 0064b670 mac 1002b8e0 GPlayer::GetMaxAlignmentChangePerGameTurn(void)
+    // BW1W120 0064b670 BW1M100 1002b8e0 GPlayer::GetMaxAlignmentChangePerGameTurn(void)
     virtual float GetMaxAlignmentChangePerGameTurn();
-    // win1.41 0064c430 mac inlined GPlayer::MaintainSpell(unsigned int, float)
+    // BW1W120 0064c430 BW1M100 inlined GPlayer::MaintainSpell(unsigned int, float)
     virtual void MaintainSpell(uint32_t param_1, float param_2);
-    // win1.41 0064c470 mac 10491f30 GPlayer::UpdateSpellInfo(Spell *, PSysProcessInfo *)
+    // BW1W120 0064c470 BW1M100 10491f30 GPlayer::UpdateSpellInfo(Spell *, PSysProcessInfo *)
     virtual void UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2);
-    // win1.41 00648e80 mac 1048eac0 GPlayer::CastPlayer(void)
+    // BW1W120 00648e80 BW1M100 1048eac0 GPlayer::CastPlayer(void)
     virtual GPlayer* CastPlayer();
 
     // Static methods
 
-    // win1.41 00649a20 mac 100620c0 GPlayer::ProcessPlayers(void)
+    // BW1W120 00649a20 BW1M100 100620c0 GPlayer::ProcessPlayers(void)
     static void ProcessPlayers();
-    // win1.41 0064ab90 mac 10495bf0 GPlayer::PostLoadCleanup(void)
+    // BW1W120 0064ab90 BW1M100 10495bf0 GPlayer::PostLoadCleanup(void)
     static void PostLoadCleanup();
-    // win1.41 0064b5e0 mac 10494e00 GPlayer::GetPlayerFromText(char *)
+    // BW1W120 0064b5e0 BW1M100 10494e00 GPlayer::GetPlayerFromText(char *)
     static GPlayer* GetPlayerFromText(const char* str);
 
     // Non-virtual methods
 
-    // win1.41 00649190 mac 10497020 GPlayer::Init(PLAYER_TYPE, unsigned char, wchar_t *, unsigned char)
+    // BW1W120 00649190 BW1M100 10497020 GPlayer::Init(PLAYER_TYPE, unsigned char, wchar_t *, unsigned char)
     void Init(PLAYER_TYPE type, uint8_t player_number, char16_t* param_3, unsigned char param_4);
-    // win1.41 006494e0 mac 10036020 GPlayer::Process(void)
+    // BW1W120 006494e0 BW1M100 10036020 GPlayer::Process(void)
     void Process();
-    // win1.41 0064a6b0 mac 104965e0 GPlayer::Birthday(void)
+    // BW1W120 0064a6b0 BW1M100 104965e0 GPlayer::Birthday(void)
     void Birthday();
-    // win1.41 0064a790 mac 1005c3d0 GPlayer::GetPlayerNumber(void) const
+    // BW1W120 0064a790 BW1M100 1005c3d0 GPlayer::GetPlayerNumber(void) const
     uint8_t GetPlayerNumber();
-    // win1.41 0064aac0 mac 10035b60 GPlayer::GetNextInterfaceStatus(GInterfaceStatus *)
+    // BW1W120 0064aac0 BW1M100 10035b60 GPlayer::GetNextInterfaceStatus(GInterfaceStatus *)
     GInterfaceStatus* GetNextInterfaceStatus(GInterfaceStatus* param_1);
-    // win1.41 0064ac00 mac 100306d0 GPlayer::IsNeutral(void)
+    // BW1W120 0064ac00 BW1M100 100306d0 GPlayer::IsNeutral(void)
     bool IsNeutral();
-    // win1.41 0064ad00 mac 1004d120 GPlayer::CalculateInfluencePower(void)
+    // BW1W120 0064ad00 BW1M100 1004d120 GPlayer::CalculateInfluencePower(void)
     float CalculateInfluencePower();
-    // win1.41 0064b590 mac 10494ee0 GPlayer::GetPlayer3DColor(void)
+    // BW1W120 0064b590 BW1M100 10494ee0 GPlayer::GetPlayer3DColor(void)
     LH3DColor* GetPlayer3DColor(LH3DColor* color);
-    // win1.41 0064c220 mac 10492490 GPlayer::IsMagicTypeEnabled(MAGIC_TYPE)
+    // BW1W120 0064c220 BW1M100 10492490 GPlayer::IsMagicTypeEnabled(MAGIC_TYPE)
     bool32_t IsMagicTypeEnabled(MAGIC_TYPE type);
-    // win1.41 0064d120 mac 10051520 GPlayer::GetRealInterface(unsigned long)
+    // BW1W120 0064d120 BW1M100 10051520 GPlayer::GetRealInterface(unsigned long)
     GInterface* GetRealInterface(int param_2);
-    // win1.41 0064d750 mac 10033320 GPlayer::IsMemberOfThisPlayer(GInterfaceStatus *)
+    // BW1W120 0064d750 BW1M100 10033320 GPlayer::IsMemberOfThisPlayer(GInterfaceStatus *)
     bool IsMemberOfThisPlayer(GInterfaceStatus* param_1);
-    // win1.41 0064d800 mac 10021970 GPlayer::GetPlayerColour(void) const
+    // BW1W120 0064d800 BW1M100 10021970 GPlayer::GetPlayerColour(void) const
     LH3DColor GetPlayerColour();
 };
 

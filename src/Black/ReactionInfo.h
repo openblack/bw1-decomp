@@ -39,9 +39,9 @@ public:
 
     // Override methods
 
-    // win1.41 006e0e60 mac 10135410 ReactionInfo::_dt(void)
+    // BW1W120 006e0e60 BW1M100 10135410 ReactionInfo::_dt(void)
     virtual ~ReactionInfo();
-    // win1.41 006e0e00 mac 101368d0 ReactionInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 006e0e00 BW1M100 101368d0 ReactionInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

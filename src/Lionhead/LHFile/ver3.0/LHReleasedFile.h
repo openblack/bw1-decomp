@@ -12,14 +12,14 @@ public:
 
     // Override methods
 
-    // win1.41 007bd730 mac 1061c784 LHReleasedFile::Open(LH_FILE_MODE)
+    // BW1W120 007bd730 BW1M100 1061c784 LHReleasedFile::Open(LH_FILE_MODE)
     virtual uint32_t Open(LH_FILE_MODE mode);
 
     // Constructors
 
-    // win1.41 0047f6d0 mac 101c9350 LHReleasedFile::LHReleasedFile
+    // BW1W120 0047f6d0 BW1M100 101c9350 LHReleasedFile::LHReleasedFile
     LHReleasedFile();
-    // win1.41 00837350 mac inlined LHReleasedFile::LHReleasedFile(char const *)
+    // BW1W120 00837350 BW1M100 inlined LHReleasedFile::LHReleasedFile(char const *)
     LHReleasedFile(const char* name);
 };
 

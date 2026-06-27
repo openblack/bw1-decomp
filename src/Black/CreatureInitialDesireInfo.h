@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 004918a0 mac 1022e850 CreatureInitialDesireInfo::_dt(void)
+    // BW1W120 004918a0 BW1M100 1022e850 CreatureInitialDesireInfo::_dt(void)
     virtual ~CreatureInitialDesireInfo();
-    // win1.41 00491830 mac 1022ec70 CreatureInitialDesireInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00491830 BW1M100 1022ec70 CreatureInitialDesireInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

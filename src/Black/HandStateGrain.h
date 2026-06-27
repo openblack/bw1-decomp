@@ -17,7 +17,7 @@ public:
 
     // Constructors
 
-    // win1.41 005b2b80 mac 10339d60 HandStateGrain::HandStateGrain(CHand*)
+    // BW1W120 005b2b80 BW1M100 10339d60 HandStateGrain::HandStateGrain(CHand*)
     HandStateGrain(CHand* hand);
 };
 

@@ -17,13 +17,13 @@ public:
 
     // Override methods
 
-    // win1.41 0066c3f0 mac inlined PlaytimeElement::_dt(void)
+    // BW1W120 0066c3f0 BW1M100 inlined PlaytimeElement::_dt(void)
     virtual ~PlaytimeElement();
-    // win1.41 0066c6b0 mac inlined PlaytimeElement::ToBeDeleted(int)
+    // BW1W120 0066c6b0 BW1M100 inlined PlaytimeElement::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0066c3e0 mac inlined PlaytimeElement::GetTown(void)
+    // BW1W120 0066c3e0 BW1M100 inlined PlaytimeElement::GetTown(void)
     virtual Town* GetTown();
-    // win1.41 0066c810 mac inlined PlaytimeElement::IsFunctional(void)
+    // BW1W120 0066c810 BW1M100 inlined PlaytimeElement::IsFunctional(void)
     virtual bool IsFunctional();
 };
 

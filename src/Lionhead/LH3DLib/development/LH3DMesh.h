@@ -45,42 +45,42 @@ struct LH3DMesh
 
     // Static methods
 
-    // win1.41 inlined mac 103d9410 LH3DMesh::GetPackedMesh(long)
+    // BW1W120 inlined BW1M100 103d9410 LH3DMesh::GetPackedMesh(long)
     static LH3DMesh* GetPackedMesh(int index);
-    // win1.41 00806460 mac 1006c720 LH3DMesh::Create(void* , int)
+    // BW1W120 00806460 BW1M100 1006c720 LH3DMesh::Create(void* , int)
     static LH3DMesh* Create(const void* buf, bool dont_care_about_texture);
-    // win1.41 008067f0 mac 1006c640 LH3DMesh::CreateFromHD(char *, int)
+    // BW1W120 008067f0 BW1M100 1006c640 LH3DMesh::CreateFromHD(char *, int)
     static LH3DMesh* CreateFromHD(const char* filename, bool dont_care_about_textures);
-    // win1.41 00807be0 mac 1006b210 LH3DMesh::CreatePackInternal(void*)
+    // BW1W120 00807be0 BW1M100 1006b210 LH3DMesh::CreatePackInternal(void*)
     static void CreatePackInternal(const void* data);
-    // win1.41 00807c60 mac 1006b160 LH3DMesh::CreatePack(void)
+    // BW1W120 00807c60 BW1M100 1006b160 LH3DMesh::CreatePack(void)
     static void CreatePack();
 
     // Non-virtual methods
 
-    // win1.41 00403730 mac 1000e400 LH3DMesh::GetSizeFootprintData(void)
+    // BW1W120 00403730 BW1M100 1000e400 LH3DMesh::GetSizeFootprintData(void)
     uint32_t GetSizeFootprintData();
-    // win1.41 00403740 mac 1000e360 LH3DMesh::GetSizeUV2Data(void)
+    // BW1W120 00403740 BW1M100 1000e360 LH3DMesh::GetSizeUV2Data(void)
     uint32_t GetSizeUV2Data();
-    // win1.41 00403770 mac 1000e2b0 LH3DMesh::GetSizeNameData(void)
+    // BW1W120 00403770 BW1M100 1000e2b0 LH3DMesh::GetSizeNameData(void)
     uint32_t GetSizeNameData();
-    // win1.41 004037e0 mac 100242d0 LH3DMesh::GetSizeEMetricsData(void)
+    // BW1W120 004037e0 BW1M100 100242d0 LH3DMesh::GetSizeEMetricsData(void)
     uint32_t GetSizeEMetricsData();
-    // win1.41 004038e0 mac 1059c260 LH3DMesh::GetSizeEBone(void)
+    // BW1W120 004038e0 BW1M100 1059c260 LH3DMesh::GetSizeEBone(void)
     uint32_t GetSizeEBone();
-    // win1.41 00403a30 mac 103689c0 LH3DMesh::GetSizeTnLData(void)
+    // BW1W120 00403a30 BW1M100 103689c0 LH3DMesh::GetSizeTnLData(void)
     uint32_t GetSizeTnLData();
-    // win1.41 00403b90 mac inlined LH3DMesh::GetSizeFootprintData_dup1(void)
+    // BW1W120 00403b90 BW1M100 inlined LH3DMesh::GetSizeFootprintData_dup1(void)
     uint32_t GetSizeFootprintData_dup1();
-    // win1.41 00403bb0 mac inlined LH3DMesh::GetSizeUV2Data_dup1(void)
+    // BW1W120 00403bb0 BW1M100 inlined LH3DMesh::GetSizeUV2Data_dup1(void)
     uint32_t GetSizeUV2Data_dup1();
-    // win1.41 00403be0 mac inlined LH3DMesh::GetSizeNameData_dup1(void)
+    // BW1W120 00403be0 BW1M100 inlined LH3DMesh::GetSizeNameData_dup1(void)
     uint32_t GetSizeNameData_dup1();
-    // win1.41 00403c50 mac inlined LH3DMesh::GetSizeEMetricsData_dup1(void)
+    // BW1W120 00403c50 BW1M100 inlined LH3DMesh::GetSizeEMetricsData_dup1(void)
     uint32_t GetSizeEMetricsData_dup1();
-    // win1.41 00806d00 mac 1001165c LH3DMesh::Release(void)
+    // BW1W120 00806d00 BW1M100 1001165c LH3DMesh::Release(void)
     void Release();
-    // win1.41 008081b0 mac 1006aad0 LH3DMesh::ComputeBoundingBox(void)
+    // BW1W120 008081b0 BW1M100 1006aad0 LH3DMesh::ComputeBoundingBox(void)
     void ComputeBoundingBox();
 };
 

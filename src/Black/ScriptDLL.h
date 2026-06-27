@@ -80,27 +80,27 @@ public:
 
     // Static methods
 
-    // win1.41 006f6320 mac 104e8e70 ScriptDLL::Create(char const *)
+    // BW1W120 006f6320 BW1M100 104e8e70 ScriptDLL::Create(char const *)
     static ScriptDLL* Create(char* library_path);
 
     // Constructors
 
-    // win1.41 inlined mac inlined ScriptDLL::ScriptDLL(const char*)
+    // BW1W120 inlined BW1M100 inlined ScriptDLL::ScriptDLL(const char*)
     ScriptDLL(char* library_path);
 
     // Non-virtual methods
 
-    // win1.41 006f68c0 mac 104e8480 ScriptDLL::AutoStart(void)
+    // BW1W120 006f68c0 BW1M100 104e8480 ScriptDLL::AutoStart(void)
     void AutoStart();
-    // win1.41 006f68f0 mac 104e8410 ScriptDLL::StopTasksOfType(VMScriptType)
+    // BW1W120 006f68f0 BW1M100 104e8410 ScriptDLL::StopTasksOfType(VMScriptType)
     void StopTasksOfType(VMScriptType param_1);
-    // win1.41 006f6910 mac 104e83b0 ScriptDLL::StopAllTasks(void)
+    // BW1W120 006f6910 BW1M100 104e83b0 ScriptDLL::StopAllTasks(void)
     void StopAllTasks();
-    // win1.41 006f6920 mac 104e8350 ScriptDLL::LoadBinary(char const *)
+    // BW1W120 006f6920 BW1M100 104e8350 ScriptDLL::LoadBinary(char const *)
     int LoadBinary(const char* path);
-    // win1.41 006f6ba0 mac 10042e90 ScriptDLL::PUSH(void *, VMType)
+    // BW1W120 006f6ba0 BW1M100 10042e90 ScriptDLL::PUSH(void *, VMType)
     void PUSH(void* param_1, VMType param_2);
-    // win1.41 006f6c50 mac 104e7d70 ScriptDLL::GetScriptType(unsigned long)
+    // BW1W120 006f6c50 BW1M100 104e7d70 ScriptDLL::GetScriptType(unsigned long)
     void* GetScriptType(unsigned long param_1);
 };
 

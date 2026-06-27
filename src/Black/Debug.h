@@ -44,7 +44,7 @@ struct GDebug
 
     // Static methods
 
-    // win1.41 00511da0 mac 1002c710 GDebug::SetMessage(unsigned short, char *,...)
+    // BW1W120 00511da0 BW1M100 1002c710 GDebug::SetMessage(unsigned short, char *,...)
     static void SetMessage(GDebug* debug, uint16_t param_2, char* fmt, ...);
 };
 

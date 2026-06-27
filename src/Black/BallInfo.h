@@ -18,9 +18,9 @@ public:
 
     // Override methods
 
-    // win1.41 00435980 mac 100b0ff0 GBallInfo::_dt(void)
+    // BW1W120 00435980 BW1M100 100b0ff0 GBallInfo::_dt(void)
     virtual ~GBallInfo();
-    // win1.41 00435930 mac 100b1090 GBallInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00435930 BW1M100 100b1090 GBallInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
@@ -30,9 +30,9 @@ public:
 
     // Override methods
 
-    // win1.41 0063e8c0 mac 10110ff0 GPBallInfo::_dt(void)
+    // BW1W120 0063e8c0 BW1M100 10110ff0 GPBallInfo::_dt(void)
     virtual ~GPBallInfo();
-    // win1.41 0063e870 mac 10111090 GPBallInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 0063e870 BW1M100 10111090 GPBallInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

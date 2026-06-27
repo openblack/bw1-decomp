@@ -20,15 +20,15 @@ public:
 
     // Override methods
 
-    // win1.41 0055d6c0 mac 10116ea0 PileWood::_dt(void)
+    // BW1W120 0055d6c0 BW1M100 10116ea0 PileWood::_dt(void)
     virtual ~PileWood();
-    // win1.41 0055d6b0 mac 1011d4f0 PileWood::GetDebugText(void)
+    // BW1W120 0055d6b0 BW1M100 1011d4f0 PileWood::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0055d6a0 mac 1011d4b0 PileWood::GetSaveType(void)
+    // BW1W120 0055d6a0 BW1M100 1011d4b0 PileWood::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0051bc40 mac 10038aa0 PileWood::Draw(void)
+    // BW1W120 0051bc40 BW1M100 10038aa0 PileWood::Draw(void)
     virtual void Draw();
-    // win1.41 0066ec60 mac 10077d70 PileWood::GetResourceType(void)
+    // BW1W120 0066ec60 BW1M100 10077d70 PileWood::GetResourceType(void)
     virtual RESOURCE_TYPE GetResourceType();
 };
 

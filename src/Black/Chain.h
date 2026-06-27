@@ -18,15 +18,15 @@ public:
 
     // Override methods
 
-    // win1.41 006c8810 mac 1047b970 Chain::_dt(void)
+    // BW1W120 006c8810 BW1M100 1047b970 Chain::_dt(void)
     virtual ~Chain();
-    // win1.41 006c8800 mac 10422b00 Chain::GetDebugText(void)
+    // BW1W120 006c8800 BW1M100 10422b00 Chain::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00695c10 mac 1041bda0 Chain::Load(GameOSFile &)
+    // BW1W120 00695c10 BW1M100 1041bda0 Chain::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 006cc780 mac 10483590 Chain::Save(GameOSFile &)
+    // BW1W120 006cc780 BW1M100 10483590 Chain::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 006c87f0 mac 10422ad0 Chain::GetSaveType(void)
+    // BW1W120 006c87f0 BW1M100 10422ad0 Chain::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
 

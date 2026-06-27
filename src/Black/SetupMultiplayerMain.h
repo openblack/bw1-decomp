@@ -12,13 +12,13 @@ public:
 
     // Override methods
 
-    // win1.41 00549b60 mac 105ce270 SetupMultiplayerMain::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    // BW1W120 00549b60 BW1M100 105ce270 SetupMultiplayerMain::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
     virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // win1.41 00549f80 mac 105ce210 SetupMultiplayerMain::Destroy(void)
+    // BW1W120 00549f80 BW1M100 105ce210 SetupMultiplayerMain::Destroy(void)
     virtual void Destroy();
-    // win1.41 0054a180 mac 105cde40 SetupMultiplayerMain::InitSubDialogs(void)
+    // BW1W120 0054a180 BW1M100 105cde40 SetupMultiplayerMain::InitSubDialogs(void)
     virtual void InitSubDialogs();
-    // win1.41 00549f90 mac 105ce110 SetupMultiplayerMain::InitControls(void)
+    // BW1W120 00549f90 BW1M100 105ce110 SetupMultiplayerMain::InitControls(void)
     virtual void InitControls();
 };
 

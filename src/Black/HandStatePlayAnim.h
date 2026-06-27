@@ -20,14 +20,14 @@ public:
 
     // Override methods
 
-    // win1.41 005b7510 mac 1033cb10 HandStatePlayAnim::Enter(void)
+    // BW1W120 005b7510 BW1M100 1033cb10 HandStatePlayAnim::Enter(void)
     virtual void Enter();
-    // win1.41 005b7520 mac 1033c970 HandStatePlayAnim::Update(float, LHMatrix *)
+    // BW1W120 005b7520 BW1M100 1033c970 HandStatePlayAnim::Update(float, LHMatrix *)
     virtual void Update(float param_1, LHMatrix* param_2);
 
     // Constructors
 
-    // win1.41 005b74f0 mac 1033cb50 HandStatePlayAnim::HandStatePlayAnim(CHand*)
+    // BW1W120 005b74f0 BW1M100 1033cb50 HandStatePlayAnim::HandStatePlayAnim(CHand*)
     HandStatePlayAnim(CHand* hand);
 };
 

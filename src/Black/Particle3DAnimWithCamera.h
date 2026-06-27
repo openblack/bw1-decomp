@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 006c8680 mac inlined Particle3DAnimWithCamera::_dt(void)
+    // BW1W120 006c8680 BW1M100 inlined Particle3DAnimWithCamera::_dt(void)
     virtual ~Particle3DAnimWithCamera();
 };
 

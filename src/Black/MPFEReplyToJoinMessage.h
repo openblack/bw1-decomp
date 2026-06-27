@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 006270a0 mac 10394150 MPFEReplyToJoinMessage::_dt(void)
+    // BW1W120 006270a0 BW1M100 10394150 MPFEReplyToJoinMessage::_dt(void)
     virtual ~MPFEReplyToJoinMessage();
 };
 

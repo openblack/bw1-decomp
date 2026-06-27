@@ -11,9 +11,9 @@ struct MPFEConnectionStatus
 
     // Non-virtual methods
 
-    // win1.41 0062dab0 mac 103a1860 MPFEConnectionStatus::IsLanLobby(void)
+    // BW1W120 0062dab0 BW1M100 103a1860 MPFEConnectionStatus::IsLanLobby(void)
     bool IsLanLobby();
-    // win1.41 0062dac0 mac 103a1810 MPFEConnectionStatus::IsInternetLobby(void)
+    // BW1W120 0062dac0 BW1M100 103a1810 MPFEConnectionStatus::IsInternetLobby(void)
     bool IsInternetLobby();
 };
 

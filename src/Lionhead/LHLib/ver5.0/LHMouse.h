@@ -195,20 +195,20 @@ struct LHMouse
 
     // Constructors
 
-    // win1.41 007e4f20 mac 10145820 LHMouse::LHMouse(void)
+    // BW1W120 007e4f20 BW1M100 10145820 LHMouse::LHMouse(void)
     LHMouse();
 
     // Non-virtual methods
 
-    // win1.41 007e4810 mac 10091970 LHMouse::DeltaPos(void)
+    // BW1W120 007e4810 BW1M100 10091970 LHMouse::DeltaPos(void)
     void DeltaPos();
-    // win1.41 007e49a0 mac 10006f30 LHMouse::UpdateCurrentPos(LHCoord)
+    // BW1W120 007e49a0 BW1M100 10006f30 LHMouse::UpdateCurrentPos(LHCoord)
     void UpdateCurrentPos(LHCoord coord);
-    // win1.41 007e4e40 mac 101459e0 LHMouse::SetPosition(LHCoord *)
+    // BW1W120 007e4e40 BW1M100 101459e0 LHMouse::SetPosition(LHCoord *)
     bool SetPosition(LHCoord* position);
-    // win1.41 007e53b0 mac 10145190 LHMouse::SetCursor(void *, LH_MOUSE_IMAGE_TYPE, int)
+    // BW1W120 007e53b0 BW1M100 10145190 LHMouse::SetCursor(void *, LH_MOUSE_IMAGE_TYPE, int)
     uint32_t SetCursor(void* param_2, LH_MOUSE_IMAGE_TYPE mouse_image_type, int param_4);
-    // win1.41 007e57c0 mac 1003fb90 LHMouse::Draw(LH_SCREEN_BUFFER, LH_MOUSE_EVENT_TYPE)
+    // BW1W120 007e57c0 BW1M100 1003fb90 LHMouse::Draw(LH_SCREEN_BUFFER, LH_MOUSE_EVENT_TYPE)
     void Draw(LH_SCREEN_BUFFER buffer, LH_MOUSE_EVENT_TYPE event_type);
 };
 

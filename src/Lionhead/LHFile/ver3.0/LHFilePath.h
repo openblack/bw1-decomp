@@ -17,15 +17,15 @@ struct LHFilePath
 
     // Static methods
 
-    // win1.41 007c6e1d mac inlined LHFilePath::fopen(void)
+    // BW1W120 007c6e1d BW1M100 inlined LHFilePath::fopen(void)
     static LHFilePath* fopen(const char* path, const char* mode);
-    // win1.41 007c6e30 mac 1016a4a0 LHFilePath::~LHFilePath(void)
+    // BW1W120 007c6e30 BW1M100 1016a4a0 LHFilePath::~LHFilePath(void)
     static ~LHFilePath(LHFilePath* this);
-    // win1.41 007c6db0 mac inlined LHFilePath::fprintf
+    // BW1W120 007c6db0 BW1M100 inlined LHFilePath::fprintf
     static int fprintf(LHFilePath* path, char* fmt, void* param_2);
-    // win1.41 007c7daa mac inlined LHFilePath::fscanf
+    // BW1W120 007c7daa BW1M100 inlined LHFilePath::fscanf
     static int fscanf_10LHFilePath(LHFilePath* path, const char* fmt, void* param_2);
-    // win1.41 007c7dd7 mac inlined LHFilePath::getc
+    // BW1W120 007c7dd7 BW1M100 inlined LHFilePath::getc
     static char getc_10LHFilePath(LHFilePath* path);
 };
 

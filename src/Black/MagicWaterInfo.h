@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 004357a0 mac 103ac480 GMagicWaterInfo::_dt(void)
+    // BW1W120 004357a0 BW1M100 103ac480 GMagicWaterInfo::_dt(void)
     virtual ~GMagicWaterInfo();
 };
 

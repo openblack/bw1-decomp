@@ -18,15 +18,15 @@ public:
 
     // Override methods
 
-    // win1.41 0055f0e0 mac 10422de0 ParticleChainJoint::_dt(void)
+    // BW1W120 0055f0e0 BW1M100 10422de0 ParticleChainJoint::_dt(void)
     virtual ~ParticleChainJoint();
-    // win1.41 0055f0d0 mac 10422da0 ParticleChainJoint::GetDebugText(void)
+    // BW1W120 0055f0d0 BW1M100 10422da0 ParticleChainJoint::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 006959d0 mac 1041c0e0 ParticleChainJoint::Load(GameOSFile &)
+    // BW1W120 006959d0 BW1M100 1041c0e0 ParticleChainJoint::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 006cc540 mac 10483800 ParticleChainJoint::Save(GameOSFile &)
+    // BW1W120 006cc540 BW1M100 10483800 ParticleChainJoint::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0055f0c0 mac 10422d60 ParticleChainJoint::GetSaveType(void)
+    // BW1W120 0055f0c0 BW1M100 10422d60 ParticleChainJoint::GetSaveType(void)
     virtual uint32_t GetSaveType();
 };
 

@@ -18,11 +18,11 @@ public:
 
     // Override methods
 
-    // win1.41 0055f070 mac inlined Particle3DSprite::_dt(void)
+    // BW1W120 0055f070 BW1M100 inlined Particle3DSprite::_dt(void)
     virtual ~Particle3DSprite();
-    // win1.41 0055f050 mac inlined Particle3DSprite::GetDebugText(void)
+    // BW1W120 0055f050 BW1M100 inlined Particle3DSprite::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00695ac0 mac inlined Particle3DSprite::Load(GameOSFile &)
+    // BW1W120 00695ac0 BW1M100 inlined Particle3DSprite::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
 };
 

@@ -20,19 +20,19 @@ public:
 
     // Override methods
 
-    // win1.41 00510610 mac 1056c340 GData::_dt(void)
+    // BW1W120 00510610 BW1M100 1056c340 GData::_dt(void)
     virtual ~GData();
 
     // Constructors
 
-    // win1.41 00510500 mac 100c0a70 GData::GData(void)
+    // BW1W120 00510500 BW1M100 100c0a70 GData::GData(void)
     GData();
 
     // Non-virtual methods
 
-    // win1.41 00510650 mac 1002adb0 GData::Rand(long)
+    // BW1W120 00510650 BW1M100 1002adb0 GData::Rand(long)
     uint32_t Rand(uint32_t max, const char* src_file, uint32_t src_line);
-    // win1.41 00510750 mac 100c08f0 GData::Reset(void)
+    // BW1W120 00510750 BW1M100 100c08f0 GData::Reset(void)
     void Reset();
 };
 

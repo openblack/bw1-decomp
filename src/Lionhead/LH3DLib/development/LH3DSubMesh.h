@@ -19,9 +19,9 @@ struct LH3DSubMesh
 
     // Static methods
 
-    // win1.41 0087fa00 mac 100bbe90 LH3DSubMesh::Create(unsigned char *, LH3DSubMesh *)
+    // BW1W120 0087fa00 BW1M100 100bbe90 LH3DSubMesh::Create(unsigned char *, LH3DSubMesh *)
     static void Create(const uint8_t* buffer, LH3DSubMesh* submesh);
-    // win1.41 0087fb20 mac 100bbcb0 LH3DSubMesh::ComputeBoundingBox(LHPoint&, LHPoint&, int&)
+    // BW1W120 0087fb20 BW1M100 100bbcb0 LH3DSubMesh::ComputeBoundingBox(LHPoint&, LHPoint&, int&)
     static void ComputeBoundingBox(LH3DSubMesh* this, LHPoint* maxima, LHPoint* minima, int* initialized);
 };
 

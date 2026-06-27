@@ -25,23 +25,23 @@ public:
 
     // Override methods
 
-    // win1.41 0077ec70 mac inlined WorshipSiteUpgrade::_dt(void)
+    // BW1W120 0077ec70 BW1M100 inlined WorshipSiteUpgrade::_dt(void)
     virtual ~WorshipSiteUpgrade();
-    // win1.41 0077eca0 mac inlined WorshipSiteUpgrade::ToBeDeleted(int)
+    // BW1W120 0077eca0 BW1M100 inlined WorshipSiteUpgrade::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0077ed80 mac inlined WorshipSiteUpgrade::GetPlayer(void)
+    // BW1W120 0077ed80 BW1M100 inlined WorshipSiteUpgrade::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 0077ec60 mac inlined WorshipSiteUpgrade::GetWorshipSite(void)
+    // BW1W120 0077ec60 BW1M100 inlined WorshipSiteUpgrade::GetWorshipSite(void)
     virtual WorshipSite* GetWorshipSite();
-    // win1.41 0077ef30 mac inlined WorshipSiteUpgrade::SaveObject(LHOSFile &, MapCoords const &)
+    // BW1W120 0077ef30 BW1M100 inlined WorshipSiteUpgrade::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
-    // win1.41 004220f0 mac inlined WorshipSiteUpgrade::IsRepaired(void)
+    // BW1W120 004220f0 BW1M100 inlined WorshipSiteUpgrade::IsRepaired(void)
     virtual bool IsRepaired();
-    // win1.41 00422110 mac inlined WorshipSiteUpgrade::IsBuilt(void)
+    // BW1W120 00422110 BW1M100 inlined WorshipSiteUpgrade::IsBuilt(void)
     virtual bool IsBuilt();
-    // win1.41 00527790 mac inlined WorshipSiteUpgrade::IsDrawBuilding(void)
+    // BW1W120 00527790 BW1M100 inlined WorshipSiteUpgrade::IsDrawBuilding(void)
     virtual bool IsDrawBuilding();
-    // win1.41 0077edd0 mac inlined WorshipSiteUpgrade::ConvertToPlanned(void)
+    // BW1W120 0077edd0 BW1M100 inlined WorshipSiteUpgrade::ConvertToPlanned(void)
     virtual PlannedMultiMapFixed* ConvertToPlanned();
 };
 

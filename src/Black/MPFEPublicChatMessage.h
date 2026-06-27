@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 00626e00 mac 10398090 MPFEPublicChatMessage::_dt(void)
+    // BW1W120 00626e00 BW1M100 10398090 MPFEPublicChatMessage::_dt(void)
     virtual ~MPFEPublicChatMessage();
 };
 

@@ -34,17 +34,17 @@ struct Temple
 
     // Static methods
 
-    // win1.41 00794a30 mac 105362a0 Temple::ProcessGameTurn(void)
+    // BW1W120 00794a30 BW1M100 105362a0 Temple::ProcessGameTurn(void)
     static void ProcessGameTurn();
 
     // Constructors
 
-    // win1.41 00793ac0 mac 10537d50 Temple::Temple(void)
+    // BW1W120 00793ac0 BW1M100 10537d50 Temple::Temple(void)
     Temple();
 
     // Non-virtual methods
 
-    // win1.41 00794a20 mac 10536350 Temple::StartScript(unsigned long)
+    // BW1W120 00794a20 BW1M100 10536350 Temple::StartScript(unsigned long)
     bool StartScript(unsigned long param_1);
 };
 

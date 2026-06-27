@@ -32,12 +32,12 @@ struct LH3DSmoke
 
     // Static methods
 
-    // win1.41 007f8b60 mac 100b4ab0 LH3DSmoke::Create(const LHPoint*)
+    // BW1W120 007f8b60 BW1M100 100b4ab0 LH3DSmoke::Create(const LHPoint*)
     static LH3DSmoke* Create(LHPoint* position);
 
     // Non-virtual methods
 
-    // win1.41 007f8d10 mac 100b4a50 LH3DSmoke::Release(void)
+    // BW1W120 007f8d10 BW1M100 100b4a50 LH3DSmoke::Release(void)
     void Release();
 };
 

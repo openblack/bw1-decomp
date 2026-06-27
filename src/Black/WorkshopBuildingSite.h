@@ -21,11 +21,11 @@ public:
 
     // Override methods
 
-    // win1.41 0043d970 mac 100b7a40 WorkshopBuildingSite::_dt(void)
+    // BW1W120 0043d970 BW1M100 100b7a40 WorkshopBuildingSite::_dt(void)
     virtual ~WorkshopBuildingSite();
-    // win1.41 0043db20 mac 100b74c0 WorkshopBuildingSite::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
+    // BW1W120 0043db20 BW1M100 100b74c0 WorkshopBuildingSite::AddResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool, MapCoords const &, int)
     virtual uint32_t AddResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool param_4, const MapCoords* param_5, int param_6);
-    // win1.41 0043db60 mac 100b7370 WorkshopBuildingSite::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
+    // BW1W120 0043db60 BW1M100 100b7370 WorkshopBuildingSite::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
     virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
 };
 

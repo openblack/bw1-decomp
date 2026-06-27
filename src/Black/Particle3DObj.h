@@ -17,9 +17,9 @@ public:
 
     // Override methods
 
-    // win1.41 006c7a60 mac inlined Particle3DObj::_dt(void)
+    // BW1W120 006c7a60 BW1M100 inlined Particle3DObj::_dt(void)
     virtual ~Particle3DObj();
-    // win1.41 006c7a50 mac inlined Particle3DObj::GetDebugText(void)
+    // BW1W120 006c7a50 BW1M100 inlined Particle3DObj::GetDebugText(void)
     virtual char* GetDebugText();
 };
 

@@ -21,7 +21,7 @@ public:
 
     // Override methods
 
-    // win1.41 004ef4a0 mac 101e28f0 CreatureDamageMap::_dt(void)
+    // BW1W120 004ef4a0 BW1M100 101e28f0 CreatureDamageMap::_dt(void)
     virtual ~CreatureDamageMap();
 };
 
@@ -57,12 +57,12 @@ public:
 
     // Override methods
 
-    // win1.41 004ef4c0 mac 101defb0 CreaturePhysical::_dt(void)
+    // BW1W120 004ef4c0 BW1M100 101defb0 CreaturePhysical::_dt(void)
     virtual ~CreaturePhysical();
 
     // Constructors
 
-    // win1.41 004ef2c0 mac 102767c0 CreaturePhysical::CreaturePhysical(MapCoords const &, unsigned short, CreatureInfo const *, Creature *)
+    // BW1W120 004ef2c0 BW1M100 102767c0 CreaturePhysical::CreaturePhysical(MapCoords const &, unsigned short, CreatureInfo const *, Creature *)
     CreaturePhysical(const MapCoords* coords, uint16_t param_2, const CreatureInfo* info, Creature* creature);
 };
 

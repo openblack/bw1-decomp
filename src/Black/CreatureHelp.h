@@ -23,7 +23,7 @@ struct CreatureHelpState
 
     // Constructors
 
-    // win1.41 004c9c30 mac 1023b830 CreatureHelpState::CreatureHelpState(void)
+    // BW1W120 004c9c30 BW1M100 1023b830 CreatureHelpState::CreatureHelpState(void)
     CreatureHelpState();
 };
 
@@ -37,7 +37,7 @@ struct CreatureHelpStackEntry
 
     // Constructors
 
-    // win1.41 004ca6f0 mac 102389e0 CreatureHelpStackEntry::__ct(unsigned long, GameThingWithPos *, MapCoords const &)
+    // BW1W120 004ca6f0 BW1M100 102389e0 CreatureHelpStackEntry::__ct(unsigned long, GameThingWithPos *, MapCoords const &)
     CreatureHelpStackEntry(uint32_t param_2, GameThingWithPos* thing, const MapCoords* coord);
 };
 

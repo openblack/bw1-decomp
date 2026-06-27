@@ -35,7 +35,7 @@ struct GGlobal
 
     // Non-virtual methods
 
-    // win1.41 005910f0 mac 1032d3a0 GGlobal::DisplayPlayerTextMessages(void)
+    // BW1W120 005910f0 BW1M100 1032d3a0 GGlobal::DisplayPlayerTextMessages(void)
     void DisplayPlayerTextMessages();
 };
 

@@ -16,9 +16,9 @@ struct LHSerial
 
     // Non-virtual methods
 
-    // win1.41 1001c190 mac inlined LHSerial::SendPacket(LHPacket*)
+    // BW1W120 1001c190 BW1M100 inlined LHSerial::SendPacket(LHPacket*)
     LH_RETURN SendPacket(LHPacket* packet);
-    // win1.41 1001c1b0 mac inlined LHSerial::RecievePacket(LHPacket **)
+    // BW1W120 1001c1b0 BW1M100 inlined LHSerial::RecievePacket(LHPacket **)
     LH_RETURN RecievePacket(LHPacket** packet);
 };
 

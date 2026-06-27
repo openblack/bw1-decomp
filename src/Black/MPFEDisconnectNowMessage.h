@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 006302c0 mac 10393c20 MPFEDisconnectNowMessage::_dt(void)
+    // BW1W120 006302c0 BW1M100 10393c20 MPFEDisconnectNowMessage::_dt(void)
     virtual ~MPFEDisconnectNowMessage();
 };
 

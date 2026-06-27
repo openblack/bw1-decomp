@@ -18,7 +18,7 @@ struct CreatureInterestingThingToLookAt
 
     // Constructors
 
-    // win1.41 004d1b90 mac 10242e40 CreatureInterestingThingToLookAt::CreatureInterestingThingToLookAt(void)
+    // BW1W120 004d1b90 BW1M100 10242e40 CreatureInterestingThingToLookAt::CreatureInterestingThingToLookAt(void)
     CreatureInterestingThingToLookAt();
 };
 
@@ -37,7 +37,7 @@ public:
 
     // Override methods
 
-    // win1.41 004d0370 mac 10245880 CreatureVisionState::_dt(void)
+    // BW1W120 004d0370 BW1M100 10245880 CreatureVisionState::_dt(void)
     virtual ~CreatureVisionState();
 };
 

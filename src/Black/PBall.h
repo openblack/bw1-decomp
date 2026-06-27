@@ -17,11 +17,11 @@ public:
 
     // Override methods
 
-    // win1.41 0063e950 mac inlined PBall::_dt(void)
+    // BW1W120 0063e950 BW1M100 inlined PBall::_dt(void)
     virtual ~PBall();
-    // win1.41 0063e990 mac inlined PBall::Process(void)
+    // BW1W120 0063e990 BW1M100 inlined PBall::Process(void)
     virtual uint32_t Process();
-    // win1.41 0063e980 mac inlined PBall::Draw(void)
+    // BW1W120 0063e980 BW1M100 inlined PBall::Draw(void)
     virtual void Draw();
 };
 

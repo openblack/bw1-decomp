@@ -59,21 +59,21 @@ public:
 
     // Override methods
 
-    // win1.41 00401320 mac 101ca240 GAbodeInfo::~GAbodeInfo(unsigned int)
+    // BW1W120 00401320 BW1M100 101ca240 GAbodeInfo::~GAbodeInfo(unsigned int)
     virtual ~GAbodeInfo();
-    // win1.41 00401270 mac 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
+    // BW1W120 00401270 BW1M100 103d3790 GAbodeInfo::GetBaseInfo(ulong&)
     virtual GBaseInfo& GetBaseInfo(uint32_t& param_1);
-    // win1.41 00401240 mac 1019a370 GAbodeInfo::GetMesh() const
+    // BW1W120 00401240 BW1M100 1019a370 GAbodeInfo::GetMesh() const
     virtual MESH_LIST GetMesh() const
     {
         return meshId;
     }
-    // win1.41 00401250 mac 106fde70 GAbodeInfo::GetAbodeType() const
+    // BW1W120 00401250 BW1M100 106fde70 GAbodeInfo::GetAbodeType() const
     virtual ABODE_TYPE GetAbodeType() const
     {
         return abodeType;
     }
-    // win1.41 00401260 mac 100984c0 GAbodeInfo::GetAbodeNumber() const
+    // BW1W120 00401260 BW1M100 100984c0 GAbodeInfo::GetAbodeNumber() const
     virtual ABODE_NUMBER GetAbodeNumber() const
     {
         return abodeNumber;
@@ -81,18 +81,18 @@ public:
 
     // Static methods
 
-    // win1.41 00405a70 mac 101ca0c0 GAbodeInfo::GetInfoFromText(char *)
+    // BW1W120 00405a70 BW1M100 101ca0c0 GAbodeInfo::GetInfoFromText(char *)
     static int GetInfoFromText(const char* text);
-    // win1.41 00405b30 mac 1006f680 GAbodeInfo::Find(TRIBE_TYPE, ABODE_NUMBER)
+    // BW1W120 00405b30 BW1M100 1006f680 GAbodeInfo::Find(TRIBE_TYPE, ABODE_NUMBER)
     static GAbodeInfo* Find(TRIBE_TYPE tribe_type, ABODE_NUMBER abode_number);
 
     // Non-virtual methods
 
-    // win1.41 00404b10 mac 1015a260 GAbodeInfo::IsOkToCreateAtPos(MapCoords const &, float, float, Town *) const
+    // BW1W120 00404b10 BW1M100 1015a260 GAbodeInfo::IsOkToCreateAtPos(MapCoords const &, float, float, Town *) const
     bool IsOkToCreateAtPos(const MapCoords* coords, float param_2, float param_3, Town* town);
-    // win1.41 00405a60 mac inlined GAbodeInfo::GetDescription(void)
+    // BW1W120 00405a60 BW1M100 inlined GAbodeInfo::GetDescription(void)
     const char* GetDescription();
-    // win1.41 0042e520 mac inlined GAbodeInfo::LoadBinary(LHFile *)
+    // BW1W120 0042e520 BW1M100 inlined GAbodeInfo::LoadBinary(LHFile *)
     void LoadBinary(LHFile* file);
 };
 static_assert(sizeof(GAbodeInfo) == 0x1c8, "Data type is of wrong size");

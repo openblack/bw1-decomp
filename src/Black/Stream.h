@@ -18,24 +18,24 @@ public:
 
     // Override methods
 
-    // win1.41 0055de20 mac 101549b0 GStream::_dt(void)
+    // BW1W120 0055de20 BW1M100 101549b0 GStream::_dt(void)
     virtual ~GStream();
-    // win1.41 00733b10 mac 10154cf0 GStream::ToBeDeleted(int)
+    // BW1W120 00733b10 BW1M100 10154cf0 GStream::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0055de10 mac 10155220 GStream::GetDebugText(void)
+    // BW1W120 0055de10 BW1M100 10155220 GStream::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 007344e0 mac 10153560 GStream::Load(GameOSFile &)
+    // BW1W120 007344e0 BW1M100 10153560 GStream::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00734380 mac 10153ac0 GStream::Save(GameOSFile &)
+    // BW1W120 00734380 BW1M100 10153ac0 GStream::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0055de00 mac 101551e0 GStream::GetSaveType(void)
+    // BW1W120 0055de00 BW1M100 101551e0 GStream::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00734640 mac 101534f0 GStream::ResolveLoad(void)
+    // BW1W120 00734640 BW1M100 101534f0 GStream::ResolveLoad(void)
     virtual void ResolveLoad();
 
     // Static methods
 
-    // win1.41 00733ff0 mac 10154580 GStream::CreateAll(void)
+    // BW1W120 00733ff0 BW1M100 10154580 GStream::CreateAll(void)
     static void CreateAll();
 };
 

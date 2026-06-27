@@ -17,9 +17,9 @@ public:
 
     // Override methods
 
-    // win1.41 005c2110 mac 10348c90 HelpDude::_dt(void)
+    // BW1W120 005c2110 BW1M100 10348c90 HelpDude::_dt(void)
     virtual ~HelpDude();
-    // win1.41 005c20e0 mac 10348c40 HelpDude::Get3DSoundPos(LHPoint *)
+    // BW1W120 005c20e0 BW1M100 10348c40 HelpDude::Get3DSoundPos(LHPoint *)
     virtual int Get3DSoundPos(LHPoint* param_1);
 };
 

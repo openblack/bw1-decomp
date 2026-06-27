@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 0063e070 mac 101102f0 GSpotVisualInfo::_dt(void)
+    // BW1W120 0063e070 BW1M100 101102f0 GSpotVisualInfo::_dt(void)
     virtual ~GSpotVisualInfo();
-    // win1.41 0063e020 mac 10110f10 GSpotVisualInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 0063e020 BW1M100 10110f10 GSpotVisualInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

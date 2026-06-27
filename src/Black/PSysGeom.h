@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 006868e0 mac 10402ae0 TestFunnel::Eval( const(float, float *, float *))
+    // BW1W120 006868e0 BW1M100 10402ae0 TestFunnel::Eval( const(float, float *, float *))
     virtual void Eval(float param_1, float* param_2, float* param_3);
 };
 
@@ -21,7 +21,7 @@ public:
 
     // Override methods
 
-    // win1.41 00686910 mac 104029c0 TestFunnelParab::Eval( const(float, float *, float *))
+    // BW1W120 00686910 BW1M100 104029c0 TestFunnelParab::Eval( const(float, float *, float *))
     virtual void Eval(float param_1, float* param_2, float* param_3);
 };
 
@@ -31,7 +31,7 @@ public:
 
     // Override methods
 
-    // win1.41 00686940 mac 10402a20 TestFunnelSpout::Eval( const(float, float *, float *))
+    // BW1W120 00686940 BW1M100 10402a20 TestFunnelSpout::Eval( const(float, float *, float *))
     virtual void Eval(float param_1, float* param_2, float* param_3);
 };
 

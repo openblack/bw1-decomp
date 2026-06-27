@@ -26,9 +26,9 @@ struct LH3DPrimitive
 
     // Static methods
 
-    // win1.41 00807f30 mac 1006ad00 LH3DPrimitive::ComputeBoundingBox(LHPoint&, LHPoint&, int&)
+    // BW1W120 00807f30 BW1M100 1006ad00 LH3DPrimitive::ComputeBoundingBox(LHPoint&, LHPoint&, int&)
     static void ComputeBoundingBox(LH3DPrimitive* this, LHPoint* maxima, LHPoint* minima, int* initialized);
-    // win1.41 0084ab50 mac 100a01f0 LH3DPrimitive::Create(unsigned char *, LH3DPrimitive *)
+    // BW1W120 0084ab50 BW1M100 100a01f0 LH3DPrimitive::Create(unsigned char *, LH3DPrimitive *)
     static void Create(const uint8_t* buffer, LH3DPrimitive* primitive);
 };
 

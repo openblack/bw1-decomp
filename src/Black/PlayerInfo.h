@@ -22,7 +22,7 @@ public:
 
     // Override methods
 
-    // win1.41 00655b70 mac 104ab970 CPDesireNodeInfo::GetNumChildren(void)
+    // BW1W120 00655b70 BW1M100 104ab970 CPDesireNodeInfo::GetNumChildren(void)
     virtual int GetNumChildren();
 };
 
@@ -49,9 +49,9 @@ public:
 
     // Override methods
 
-    // win1.41 0054be50 mac 104e7bd0 GPlayerInfo::_dt(void)
+    // BW1W120 0054be50 BW1M100 104e7bd0 GPlayerInfo::_dt(void)
     virtual ~GPlayerInfo();
-    // win1.41 0054b830 mac 1058eb00 GPlayerInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 0054b830 BW1M100 1058eb00 GPlayerInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
@@ -61,7 +61,7 @@ struct PlayerInfo
 
     // Constructors
 
-    // win1.41 00648d50 mac 10375150 PlayerInfo::PlayerInfo(void)
+    // BW1W120 00648d50 BW1M100 10375150 PlayerInfo::PlayerInfo(void)
     PlayerInfo();
 };
 

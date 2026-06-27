@@ -33,92 +33,92 @@ public:
 
     // Override methods
 
-    // win1.41 0052df20 mac 100e1bd0 FixedObject::GetTownArtifactValue(void)
+    // BW1W120 0052df20 BW1M100 100e1bd0 FixedObject::GetTownArtifactValue(void)
     virtual float GetTownArtifactValue();
-    // win1.41 0052e170 mac inlined FixedObject::Load(GameOSFile &)
+    // BW1W120 0052e170 BW1M100 inlined FixedObject::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* file);
-    // win1.41 0052e140 mac 100e17b0 FixedObject::Save(GameOSFile &)
+    // BW1W120 0052e140 BW1M100 100e17b0 FixedObject::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* file);
-    // win1.41 00401400 mac 10513b00 FixedObject::CanBeFrighteningToCreature(Creature *)
+    // BW1W120 00401400 BW1M100 10513b00 FixedObject::CanBeFrighteningToCreature(Creature *)
     virtual bool32_t CanBeFrighteningToCreature(Creature* creature)
     {
         return false;
     }
-    // win1.41 00401410 mac 10570f10 FixedObject::CanBeSleptNextToByCreature(Creature *)
+    // BW1W120 00401410 BW1M100 10570f10 FixedObject::CanBeSleptNextToByCreature(Creature *)
     virtual bool32_t CanBeSleptNextToByCreature(Creature* creature)
     {
         return true;
     }
-    // win1.41 00401420 mac 105e81f0 FixedObject::CanBeDestroyedByStoning(Creature *)
+    // BW1W120 00401420 BW1M100 105e81f0 FixedObject::CanBeDestroyedByStoning(Creature *)
     virtual bool32_t CanBeDestroyedByStoning(Creature* creature)
     {
         return true;
     }
-    // win1.41 00401430 mac 100b19c0 FixedObject::CanBeSetOnFire(Creature *)
+    // BW1W120 00401430 BW1M100 100b19c0 FixedObject::CanBeSetOnFire(Creature *)
     virtual bool32_t CanBeSetOnFire(Creature* creature)
     {
         return (~(field_0xa) >> 3) & 1;
     }
-    // win1.41 00401440 mac 1056c2a0 FixedObject::CanBePickedUpByCreature(Creature *)
+    // BW1W120 00401440 BW1M100 1056c2a0 FixedObject::CanBePickedUpByCreature(Creature *)
     virtual bool32_t CanBePickedUpByCreature(Creature* creature)
     {
         return false;
     }
-    // win1.41 00401450 mac 1057a200 FixedObject::CanBeCrushed(void)
+    // BW1W120 00401450 BW1M100 1057a200 FixedObject::CanBeCrushed(void)
     virtual bool32_t CanBeCrushed()
     {
         return true;
     }
-    // win1.41 00401460 mac 10554e40 FixedObject::VillagerMustAvoid(Villager *)
+    // BW1W120 00401460 BW1M100 10554e40 FixedObject::VillagerMustAvoid(Villager *)
     virtual bool32_t VillagerMustAvoid(Villager* param_1)
     {
         return true;
     }
-    // win1.41 00401470 mac 1057ad40 FixedObject::GetTownArtifact(void)
+    // BW1W120 00401470 BW1M100 1057ad40 FixedObject::GetTownArtifact(void)
     virtual GameThing* GetTownArtifact()
     {
         return town_artifact;
     }
-    // win1.41 00401480 mac 10588280 FixedObject::IsTownArtifact(void)
+    // BW1W120 00401480 BW1M100 10588280 FixedObject::IsTownArtifact(void)
     virtual bool32_t IsTownArtifact()
     {
         return town_artifact != NULL;
     }
-    // win1.41 004d1b80 mac 10242ed0 FixedObject::GetHowMuchCreatureWantsToLookAtMe(void)
+    // BW1W120 004d1b80 BW1M100 10242ed0 FixedObject::GetHowMuchCreatureWantsToLookAtMe(void)
     virtual float GetHowMuchCreatureWantsToLookAtMe();
-    // win1.41 0052de30 mac 100e1ea0 FixedObject::Create3DObject(void)
+    // BW1W120 0052de30 BW1M100 100e1ea0 FixedObject::Create3DObject(void)
     virtual void Create3DObject();
-    // win1.41 0052e530 mac 100e0b90 FixedObject::InsertMapObject(void)
+    // BW1W120 0052e530 BW1M100 100e0b90 FixedObject::InsertMapObject(void)
     virtual void InsertMapObject();
-    // win1.41 0052e5c0 mac 100e0af0 FixedObject::RemoveMapObject(void)
+    // BW1W120 0052e5c0 BW1M100 100e0af0 FixedObject::RemoveMapObject(void)
     virtual void RemoveMapObject();
-    // win1.41 0052dea0 mac 100e1d30 FixedObject::InsertMapObjectToCell(MapCell *)
+    // BW1W120 0052dea0 BW1M100 100e1d30 FixedObject::InsertMapObjectToCell(MapCell *)
     virtual void InsertMapObjectToCell(MapCell* cell);
-    // win1.41 0052eb90 mac 100dff80 FixedObject::ValidForLockedSelectProcess(GInterfaceStatus *)
+    // BW1W120 0052eb90 BW1M100 100dff80 FixedObject::ValidForLockedSelectProcess(GInterfaceStatus *)
     virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* status);
-    // win1.41 0052eba0 mac 100dff20 FixedObject::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
+    // BW1W120 0052eba0 BW1M100 100dff20 FixedObject::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
     virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* status);
-    // win1.41 0052e0e0 mac 100e1840 FixedObject::InterfaceSetInMagicHand(GInterfaceStatus *)
+    // BW1W120 0052e0e0 BW1M100 100e1840 FixedObject::InterfaceSetInMagicHand(GInterfaceStatus *)
     virtual bool32_t InterfaceSetInMagicHand(GInterfaceStatus* status);
-    // win1.41 0052df50 mac 100e1950 FixedObject::EndPhysics(PhysicsObject *, bool)
+    // BW1W120 0052df50 BW1M100 100e1950 FixedObject::EndPhysics(PhysicsObject *, bool)
     virtual void EndPhysics(PhysicsObject* param_1, bool param_2);
-    // win1.41 0052de50 mac 100e1df0 FixedObject::GetSpecialPos(unsigned long, MapCoords *)
+    // BW1W120 0052de50 BW1M100 100e1df0 FixedObject::GetSpecialPos(unsigned long, MapCoords *)
     virtual bool32_t GetSpecialPos(uint32_t index, MapCoords* pos);
-    // win1.41 0052dee0 mac 100e1c70 FixedObject::InsertMapObjectToCellAssumeFixed(MapCell *)
+    // BW1W120 0052dee0 BW1M100 100e1c70 FixedObject::InsertMapObjectToCellAssumeFixed(MapCell *)
     virtual void InsertMapObjectToCellAssumeFixed(MapCell* cell);
-    // win1.41 004252f0 mac 100a9cd0 FixedObject::IsObjectFullyInMap(void)
+    // BW1W120 004252f0 BW1M100 100a9cd0 FixedObject::IsObjectFullyInMap(void)
     virtual bool IsObjectFullyInMap();
 
     // Constructors
 
-    // win1.41 0052dd80 mac inlined FixedObject::FixedObject(void)
+    // BW1W120 0052dd80 BW1M100 inlined FixedObject::FixedObject(void)
     Fixed();
-    // win1.41 0052ddc0 mac 100e1fb0 FixedObject::FixedObject(MapCoords const &, GObjectInfo const *, float, float)
+    // BW1W120 0052ddc0 BW1M100 100e1fb0 FixedObject::FixedObject(MapCoords const &, GObjectInfo const *, float, float)
     Fixed(const MapCoords* coords, const GObjectInfo* info, float y_angle, float scale);
 
     // Non-virtual Destructors
 
-    // win1.41 0052dda0 mac 100e1f20 FixedObject::_dt(void)
+    // BW1W120 0052dda0 BW1M100 100e1f20 FixedObject::_dt(void)
     ~Fixed();
 };
 
@@ -129,33 +129,33 @@ public:
 
     // Override methods
 
-    // win1.41 0052eb40 mac 100e00a0 SingleMapFixed::_dt(void)
+    // BW1W120 0052eb40 BW1M100 100e00a0 SingleMapFixed::_dt(void)
     virtual ~SingleMapFixed();
-    // win1.41 0052e620 mac 100e0990 SingleMapFixed::InsertMapObject(void)
+    // BW1W120 0052e620 BW1M100 100e0990 SingleMapFixed::InsertMapObject(void)
     virtual void InsertMapObject();
-    // win1.41 0052e600 mac 100e0a30 SingleMapFixed::RemoveMapObject(void)
+    // BW1W120 0052e600 BW1M100 100e0a30 SingleMapFixed::RemoveMapObject(void)
     virtual void RemoveMapObject();
-    // win1.41 0052f440 mac 100de110 SingleMapFixed::InsertMapObjectToCell(MapCell *)
+    // BW1W120 0052f440 BW1M100 100de110 SingleMapFixed::InsertMapObjectToCell(MapCell *)
     virtual void InsertMapObjectToCell(MapCell* param_1);
-    // win1.41 0052f450 mac 100de0a0 SingleMapFixed::RemoveMapObjectFromCell(MapCell *)
+    // BW1W120 0052f450 BW1M100 100de0a0 SingleMapFixed::RemoveMapObjectFromCell(MapCell *)
     virtual void RemoveMapObjectFromCell(MapCell* param_1);
-    // win1.41 0052eb10 mac 100e32e0 SingleMapFixed::GetMesh( const(void))
+    // BW1W120 0052eb10 BW1M100 100e32e0 SingleMapFixed::GetMesh( const(void))
     virtual int GetMesh();
-    // win1.41 00518100 mac 10038230 SingleMapFixed::Draw(void)
+    // BW1W120 00518100 BW1M100 10038230 SingleMapFixed::Draw(void)
     virtual void Draw();
-    // win1.41 0052e880 mac 100e0470 SingleMapFixed::CallVirtualFunctionsForCreation(MapCoords const &)
+    // BW1W120 0052e880 BW1M100 100e0470 SingleMapFixed::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
-    // win1.41 0052eaf0 mac 100e3210 SingleMapFixed::ValidForPlaceInHand(GInterfaceStatus *)
+    // BW1W120 0052eaf0 BW1M100 100e3210 SingleMapFixed::ValidForPlaceInHand(GInterfaceStatus *)
     virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
-    // win1.41 0052eb00 mac 100e3270 SingleMapFixed::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+    // BW1W120 0052eb00 BW1M100 100e3270 SingleMapFixed::ValidToApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &)
     virtual uint32_t ValidToApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
-    // win1.41 0052f420 mac 100de180 SingleMapFixed::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
+    // BW1W120 0052f420 BW1M100 100de180 SingleMapFixed::ApplyThisToMapCoord(GInterfaceStatus *, MapCoords const &, GestureSystemPacketData *)
     virtual uint32_t ApplyThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2, GestureSystemPacketData* param_3);
-    // win1.41 0052eb20 mac 100e3350 SingleMapFixed::ApplyOnlyAfterReleased(void)
+    // BW1W120 0052eb20 BW1M100 100e3350 SingleMapFixed::ApplyOnlyAfterReleased(void)
     virtual uint32_t ApplyOnlyAfterReleased();
-    // win1.41 0052eb30 mac 10095a30 SingleMapFixed::GetCollideData(void)
+    // BW1W120 0052eb30 BW1M100 10095a30 SingleMapFixed::GetCollideData(void)
     virtual NewCollide* GetCollideData();
-    // win1.41 0052f510 mac 100dde20 SingleMapFixed::CreateCollideData(void)
+    // BW1W120 0052f510 BW1M100 100dde20 SingleMapFixed::CreateCollideData(void)
     virtual void CreateCollideData();
 };
 

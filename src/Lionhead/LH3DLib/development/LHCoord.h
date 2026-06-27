@@ -10,7 +10,7 @@ struct LHCoord
 
     // Constructors
 
-    // win1.41 inlined mac 1006ebc0 LHCoord::LHCoord(LHCoord const &)
+    // BW1W120 inlined BW1M100 1006ebc0 LHCoord::LHCoord(LHCoord const &)
     LHCoord(const LHCoord* other);
 };
 

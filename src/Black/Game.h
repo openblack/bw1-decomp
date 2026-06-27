@@ -172,144 +172,144 @@ public:
 
     // Override methods
 
-    // win1.41 0054c330 mac 10496be0 GGame::Delete(void)
+    // BW1W120 0054c330 BW1M100 10496be0 GGame::Delete(void)
     virtual void Delete();
-    // win1.41 0054bfd0 mac 103dcca0 GGame::ToBeDeleted(int)
+    // BW1W120 0054bfd0 BW1M100 103dcca0 GGame::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00550780 mac 10560930 GGame::Dump(void)
+    // BW1W120 00550780 BW1M100 10560930 GGame::Dump(void)
     virtual void Dump();
-    // win1.41 0054b9a0 mac 1009d100 GGame::IsAvailable(void)
+    // BW1W120 0054b9a0 BW1M100 1009d100 GGame::IsAvailable(void)
     virtual bool IsAvailable();
-    // win1.41 0054b9c0 mac 10496160 GGame::GetDebugText(void)
+    // BW1W120 0054b9c0 BW1M100 10496160 GGame::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00554830 mac 10354cc0 GGame::Load(GameOSFile &)
+    // BW1W120 00554830 BW1M100 10354cc0 GGame::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00554090 mac 104935a0 GGame::Save(GameOSFile &)
+    // BW1W120 00554090 BW1M100 104935a0 GGame::Save(GameOSFile &)
     virtual int Save(GameOSFile* file);
-    // win1.41 0054b9b0 mac 10512c00 GGame::GetSaveType(void)
+    // BW1W120 0054b9b0 BW1M100 10512c00 GGame::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00555080 mac 100c76b0 GGame::ResolveLoad(void)
+    // BW1W120 00555080 BW1M100 100c76b0 GGame::ResolveLoad(void)
     virtual void ResolveLoad();
 
     // Static methods
 
-    // win1.41 0054cbd0 mac 101584c0 GGame::DoYesNoSkipTutorialRequestersIfNecessary(void)
+    // BW1W120 0054cbd0 BW1M100 101584c0 GGame::DoYesNoSkipTutorialRequestersIfNecessary(void)
     static void DoYesNoSkipTutorialRequestersIfNecessary();
-    // win1.41 0054ff80 mac 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void *)
+    // BW1W120 0054ff80 BW1M100 100a0cb0 GGame::KeyHandler(unsigned short, LH_KEY, unsigned short, unsigned short, void *)
     static void KeyHandler(GGame* this, unsigned short param_1, LH_KEY param_2, unsigned short param_3, unsigned short param_4, void* param_5);
-    // win1.41 0054ffe0 mac 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
+    // BW1W120 0054ffe0 BW1M100 100982b0 GGame::MouseHandler(void *, LH_MOUSE_EVENT_TYPE, unsigned long, unsigned long)
     static bool MouseHandler(GGame* this, void* param_1, LH_MOUSE_EVENT_TYPE param_2, unsigned long param_3, unsigned long param_4);
 
     // Constructors
 
-    // win1.41 0054b240 mac 104fda10 GGame::GGame(void)
+    // BW1W120 0054b240 BW1M100 104fda10 GGame::GGame(void)
     GGame();
 
     // Non-virtual methods
 
-    // win1.41 00510630 mac 100c09f0 GGame::SetupDataTables(void)
+    // BW1W120 00510630 BW1M100 100c09f0 GGame::SetupDataTables(void)
     void SetupDataTables();
-    // win1.41 0054bf20 mac 104eff40 GGame::ClearVariables(void)
+    // BW1W120 0054bf20 BW1M100 104eff40 GGame::ClearVariables(void)
     void ClearVariables();
-    // win1.41 0054c180 mac 1003a410 GGame::GetCamera(void)
+    // BW1W120 0054c180 BW1M100 1003a410 GGame::GetCamera(void)
     GCamera* GetCamera();
-    // win1.41 0054c190 mac 101c8360 GGame::StartGame(void)
+    // BW1W120 0054c190 BW1M100 101c8360 GGame::StartGame(void)
     void StartGame();
-    // win1.41 0054c340 mac 10079850 GGame::ProcessFrameInputs(void)
+    // BW1W120 0054c340 BW1M100 10079850 GGame::ProcessFrameInputs(void)
     void ProcessFrameInputs();
-    // win1.41 0054c3d0 mac 1001e260 GGame::ProcessGameInputs(void)
+    // BW1W120 0054c3d0 BW1M100 1001e260 GGame::ProcessGameInputs(void)
     void ProcessGameInputs();
-    // win1.41 0054c420 mac 10083f50 GGame::ProcessBufferedKeys(void)
+    // BW1W120 0054c420 BW1M100 10083f50 GGame::ProcessBufferedKeys(void)
     void ProcessBufferedKeys();
-    // win1.41 0054c4a0 mac 10029760 GGame::LocalTimerSaysDoATurn(void)
+    // BW1W120 0054c4a0 BW1M100 10029760 GGame::LocalTimerSaysDoATurn(void)
     bool LocalTimerSaysDoATurn();
-    // win1.41 0054cc30 mac 10029320 GGame::ProcessNetworkPackets(void)
+    // BW1W120 0054cc30 BW1M100 10029320 GGame::ProcessNetworkPackets(void)
     void ProcessNetworkPackets();
-    // win1.41 0054ced0 mac 100dc070 GGame::DoNetworkStart(void)
+    // BW1W120 0054ced0 BW1M100 100dc070 GGame::DoNetworkStart(void)
     void DoNetworkStart();
-    // win1.41 0054cf20 mac 100e23b0 GGame::Loop(void)
+    // BW1W120 0054cf20 BW1M100 100e23b0 GGame::Loop(void)
     void Loop();
-    // win1.41 0054d620 mac 1001e2f0 GGame::ProcessOneGameTurn(void)
+    // BW1W120 0054d620 BW1M100 1001e2f0 GGame::ProcessOneGameTurn(void)
     void ProcessOneGameTurn();
-    // win1.41 0054d820 mac 10083dd0 GGame::ProcessGameCode(void)
+    // BW1W120 0054d820 BW1M100 10083dd0 GGame::ProcessGameCode(void)
     void ProcessGameCode();
-    // win1.41 0054d850 mac 10079980 GGame::ProcessGraphicsEngine(unsigned long, unsigned long)
+    // BW1W120 0054d850 BW1M100 10079980 GGame::ProcessGraphicsEngine(unsigned long, unsigned long)
     void ProcessGraphicsEngine(uint32_t param_1, uint32_t param_2);
-    // win1.41 0054da80 mac 10033dd0 GGame::ProcessGraphicsEngine(void)
+    // BW1W120 0054da80 BW1M100 10033dd0 GGame::ProcessGraphicsEngine(void)
     void Process3dEngine();
-    // win1.41 0054e4f0 mac 10083c70 GGame::StartTurn(void)
+    // BW1W120 0054e4f0 BW1M100 10083c70 GGame::StartTurn(void)
     void StartTurn();
-    // win1.41 0054e5c0 mac 100665c0 GGame::ProcessTurn(void)
+    // BW1W120 0054e5c0 BW1M100 100665c0 GGame::ProcessTurn(void)
     void ProcessTurn();
-    // win1.41 0054e960 mac 10070430 GGame::EndTurn(void)
+    // BW1W120 0054e960 BW1M100 10070430 GGame::EndTurn(void)
     void EndTurn();
-    // win1.41 0054ef40 mac 10514230 GGame::InitOneTimeOnly(void)
+    // BW1W120 0054ef40 BW1M100 10514230 GGame::InitOneTimeOnly(void)
     uint32_t InitOneTimeOnly();
-    // win1.41 0054f3b0 mac 101b9770 GGame::Init(void)
+    // BW1W120 0054f3b0 BW1M100 101b9770 GGame::Init(void)
     bool Init();
-    // win1.41 0054f421 mac inlined GGame::InitInner(void)
+    // BW1W120 0054f421 BW1M100 inlined GGame::InitInner(void)
     bool InitInner();
-    // win1.41 00550080 mac 101c6850 GGame::UnfinishInitialisation(void)
+    // BW1W120 00550080 BW1M100 101c6850 GGame::UnfinishInitialisation(void)
     void UnfinishInitialisation();
-    // win1.41 00550110 mac 10505500 GGame::FinishInitialisation(void)
+    // BW1W120 00550110 BW1M100 10505500 GGame::FinishInitialisation(void)
     void FinishInitialisation();
-    // win1.41 00550170 mac inlined GGame::CreateMeshPack(void)
+    // BW1W120 00550170 BW1M100 inlined GGame::CreateMeshPack(void)
     void CreateMeshPack();
-    // win1.41 00550390 mac 10427340 GGame::LoadFiles(void)
+    // BW1W120 00550390 BW1M100 10427340 GGame::LoadFiles(void)
     bool LoadFiles();
-    // win1.41 00550410 mac 1054a080 GGame::SetupPlayers(void)
+    // BW1W120 00550410 BW1M100 1054a080 GGame::SetupPlayers(void)
     void SetupPlayers();
-    // win1.41 005507d0 mac inlined GGame::LoopThroughPlayers(void)
+    // BW1W120 005507d0 BW1M100 inlined GGame::LoopThroughPlayers(void)
     void LoopThroughPlayers();
-    // win1.41 005507f0 mac 10506220 GGame::Birthday(void)
+    // BW1W120 005507f0 BW1M100 10506220 GGame::Birthday(void)
     void Birthday();
-    // win1.41 00550820 mac inlined GGame::MyPlayerID(unsigned long)
+    // BW1W120 00550820 BW1M100 inlined GGame::MyPlayerID(unsigned long)
     int MyPlayerID(unsigned long param_1);
-    // win1.41 005508a0 mac 10064420 GGame::GetNextPlayer(GPlayer *)
+    // BW1W120 005508a0 BW1M100 10064420 GGame::GetNextPlayer(GPlayer *)
     GPlayer* GetNextPlayer(GPlayer* param_1);
-    // win1.41 005508d0 mac 100c0950 GGame::GetNextActivePlayer(GPlayer *)
+    // BW1W120 005508d0 BW1M100 100c0950 GGame::GetNextActivePlayer(GPlayer *)
     GPlayer* GetNextActivePlayer(GPlayer* param_1);
-    // win1.41 00550930 mac 10095d40 GGame::GetNextActivePlayerAndNeutral(GPlayer *)
+    // BW1W120 00550930 BW1M100 10095d40 GGame::GetNextActivePlayerAndNeutral(GPlayer *)
     GPlayer* GetNextActivePlayerAndNeutral(GPlayer* player);
-    // win1.41 00550980 mac 1005c2a0 GGame::GetNextPlayerAndNeutral(GPlayer *)
+    // BW1W120 00550980 BW1M100 1005c2a0 GGame::GetNextPlayerAndNeutral(GPlayer *)
     GPlayer* GetNextPlayerAndNeutral(GPlayer* player);
-    // win1.41 005509b0 mac 100586e0 GGame::GetPlayer(unsigned long)
+    // BW1W120 005509b0 BW1M100 100586e0 GGame::GetPlayer(unsigned long)
     GPlayer* GetPlayer(uint32_t param_1);
-    // win1.41 005509e0 mac 1000be00 GGame::GetPlayerFromReal(unsigned long)
+    // BW1W120 005509e0 BW1M100 1000be00 GGame::GetPlayerFromReal(unsigned long)
     GPlayer* GetPlayerFromReal(unsigned long param_1);
-    // win1.41 00550a10 mac inlined GGame::GetPlayerInterfaceFromReal(unsigned long)
+    // BW1W120 00550a10 BW1M100 inlined GGame::GetPlayerInterfaceFromReal(unsigned long)
     GInterface* GetPlayerInterfaceFromReal(unsigned long param_1);
-    // win1.41 00550a30 mac inlined GGame::GetNextPlayerWithNoCreature(GPlayer *)
+    // BW1W120 00550a30 BW1M100 inlined GGame::GetNextPlayerWithNoCreature(GPlayer *)
     GPlayer* GetNextPlayerWithNoCreature(GPlayer* param_1);
-    // win1.41 00550a60 mac inlined GGame::GetPlayer(PLAYER_NAME)
+    // BW1W120 00550a60 BW1M100 inlined GGame::GetPlayer(PLAYER_NAME)
     GPlayer* GetPlayer(PLAYER_NAME param_1);
-    // win1.41 00552620 mac 1005cfb0 GGame::GetTribe(TRIBE_TYPE)
+    // BW1W120 00552620 BW1M100 1005cfb0 GGame::GetTribe(TRIBE_TYPE)
     GTribeInfo* GetTribe(TRIBE_TYPE type);
-    // win1.41 00552640 mac 10073d30 GGame::AddPlayerSparkles(void)
+    // BW1W120 00552640 BW1M100 10073d30 GGame::AddPlayerSparkles(void)
     void AddPlayerSparkles();
-    // win1.41 00552bb0 mac 10424170 GGame::ClearMap(void)
+    // BW1W120 00552bb0 BW1M100 10424170 GGame::ClearMap(void)
     void ClearMap();
-    // win1.41 00552f40 mac 1056f520 GGame::StartPlaygroundGame(char *)
+    // BW1W120 00552f40 BW1M100 1056f520 GGame::StartPlaygroundGame(char *)
     void StartPlaygroundGame(char* map_path);
-    // win1.41 00552f80 mac 100369c0 GGame::IsMultiplayerGame(void) const
+    // BW1W120 00552f80 BW1M100 100369c0 GGame::IsMultiplayerGame(void) const
     bool IsMultiplayerGame();
-    // win1.41 00552fa0 mac 10423f90 GGame::FindTownWithID(unsigned long)
+    // BW1W120 00552fa0 BW1M100 10423f90 GGame::FindTownWithID(unsigned long)
     Town* FindTownWithID(int id);
-    // win1.41 005538e0 mac 10166f50 GGame::OnNewGame(void)
+    // BW1W120 005538e0 BW1M100 10166f50 GGame::OnNewGame(void)
     void OnNewGame();
-    // win1.41 00555280 mac 1008f570 GGame::Update3DInfluence(void)
+    // BW1W120 00555280 BW1M100 1008f570 GGame::Update3DInfluence(void)
     GPlayer* Update3DInfluence();
-    // win1.41 00555850 mac 10051560 GGame::MyInterface(void)
+    // BW1W120 00555850 BW1M100 10051560 GGame::MyInterface(void)
     GInterface* MyInterface();
-    // win1.41 00555890 mac 105996f0 GGame::SetLandBalance(unsigned long, float, GPlayer *)
+    // BW1W120 00555890 BW1M100 105996f0 GGame::SetLandBalance(unsigned long, float, GPlayer *)
     void SetLandBalance(int index, float balance, GPlayer* player);
-    // win1.41 00555990 mac inlined GGame::ResetAndStartPlaygroundGame(char *)
+    // BW1W120 00555990 BW1M100 inlined GGame::ResetAndStartPlaygroundGame(char *)
     void ResetAndStartPlaygroundGame(char* path);
-    // win1.41 0063c3d0 mac 1001e1e0 GGame::ProcessOneSuperpacket(void)
+    // BW1W120 0063c3d0 BW1M100 1001e1e0 GGame::ProcessOneSuperpacket(void)
     void ProcessOneSuperpacket();
-    // win1.41 0063f830 mac 1009f340 GGame::ProcessBindableKeys(LH_KEY, LH_KEY, unsigned long)
+    // BW1W120 0063f830 BW1M100 1009f340 GGame::ProcessBindableKeys(LH_KEY, LH_KEY, unsigned long)
     uint32_t ProcessBindableKeys(LH_KEY param_1, LH_KEY param_2, unsigned long param_3);
-    // win1.41 0063f940 mac 1009f4b0 GGame::DoAction(unsigned long)
+    // BW1W120 0063f940 BW1M100 1009f4b0 GGame::DoAction(unsigned long)
     uint32_t DoAction(unsigned long param_1);
 };
 

@@ -9,7 +9,7 @@ struct Name
 
     // Constructors
 
-    // win1.41 0046d5e0 mac 101c7b50 Name::Name(void)
+    // BW1W120 0046d5e0 BW1M100 101c7b50 Name::Name(void)
     Name();
 };
 

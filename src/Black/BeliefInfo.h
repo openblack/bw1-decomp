@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 00437db0 mac 100b22b0 GBeliefInfo::_dt(void)
+    // BW1W120 00437db0 BW1M100 100b22b0 GBeliefInfo::_dt(void)
     virtual ~GBeliefInfo();
-    // win1.41 00437d60 mac 100b2260 GBeliefInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00437d60 BW1M100 100b2260 GBeliefInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

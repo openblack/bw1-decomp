@@ -98,52 +98,52 @@ public:
 
     // Override methods
 
-    // win1.41 005ce310 mac 1035c380 GInterface::_dt(void)
+    // BW1W120 005ce310 BW1M100 1035c380 GInterface::_dt(void)
     virtual ~GInterface();
-    // win1.41 005ce480 mac 1035c0e0 GInterface::ToBeDeleted(int)
+    // BW1W120 005ce480 BW1M100 1035c0e0 GInterface::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 005cec50 mac 1035b240 GInterface::Get3DSoundPos(LHPoint *)
+    // BW1W120 005cec50 BW1M100 1035b240 GInterface::Get3DSoundPos(LHPoint *)
     virtual int Get3DSoundPos(LHPoint* param_1);
-    // win1.41 005ce2c0 mac 10069130 GInterface::GetPlayer(void)
+    // BW1W120 005ce2c0 BW1M100 10069130 GInterface::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 005ce300 mac 10357e40 GInterface::GetDebugText(void)
+    // BW1W120 005ce300 BW1M100 10357e40 GInterface::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 005d04d0 mac 10358550 GInterface::Load(GameOSFile &)
+    // BW1W120 005d04d0 BW1M100 10358550 GInterface::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 005d0490 mac 103585e0 GInterface::Save(GameOSFile &)
+    // BW1W120 005d0490 BW1M100 103585e0 GInterface::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 005ce2f0 mac 10357e00 GInterface::GetSaveType(void)
+    // BW1W120 005ce2f0 BW1M100 10357e00 GInterface::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 005d0590 mac 103581e0 GInterface::SaveExtraData(GameOSFile &)
+    // BW1W120 005d0590 BW1M100 103581e0 GInterface::SaveExtraData(GameOSFile &)
     virtual void SaveExtraData(GameOSFile* param_1);
-    // win1.41 005d0510 mac 10358340 GInterface::ResolveLoad(void)
+    // BW1W120 005d0510 BW1M100 10358340 GInterface::ResolveLoad(void)
     virtual void ResolveLoad();
-    // win1.41 005ce2e0 mac 10074680 GInterface::IsActive( const(void))
+    // BW1W120 005ce2e0 BW1M100 10074680 GInterface::IsActive( const(void))
     virtual uint32_t IsActive();
-    // win1.41 005ce2d0 mac 10357dc0 GInterface::GetText(void)
+    // BW1W120 005ce2d0 BW1M100 10357dc0 GInterface::GetText(void)
     virtual const char* GetText();
 
     // Non-virtual methods
 
-    // win1.41 005ce4d0 mac 1035be80 GInterface::SetToZero(void)
+    // BW1W120 005ce4d0 BW1M100 1035be80 GInterface::SetToZero(void)
     void SetToZero();
-    // win1.41 005ce670 mac 1035bd00 GInterface::Init(unsigned char)
+    // BW1W120 005ce670 BW1M100 1035bd00 GInterface::Init(unsigned char)
     void Init(uint8_t player_number);
-    // win1.41 005ce7f0 mac 1035ba90 GInterface::InitLeash(void)
+    // BW1W120 005ce7f0 BW1M100 1035ba90 GInterface::InitLeash(void)
     void InitLeash();
-    // win1.41 005ce920 mac 1035b8b0 GInterface::SetupHand(void)
+    // BW1W120 005ce920 BW1M100 1035b8b0 GInterface::SetupHand(void)
     void SetupHand();
-    // win1.41 005ce9e0 mac 1007b8b0 GInterface::PreDrawProcess(void)
+    // BW1W120 005ce9e0 BW1M100 1007b8b0 GInterface::PreDrawProcess(void)
     void PreDrawProcess();
-    // win1.41 005ceab0 mac 1007d9b0 GInterface::PostDrawProcess(void)
+    // BW1W120 005ceab0 BW1M100 1007d9b0 GInterface::PostDrawProcess(void)
     void PostDrawProcess();
-    // win1.41 005cec10 mac 100254c0 GInterface::Process(void)
+    // BW1W120 005cec10 BW1M100 100254c0 GInterface::Process(void)
     void Process();
-    // win1.41 005d0610 mac 10084060 GInterface::UpdateHandRenderCollide(void)
+    // BW1W120 005d0610 BW1M100 10084060 GInterface::UpdateHandRenderCollide(void)
     void UpdateHandRenderCollide();
-    // win1.41 005d9130 mac 100315f0 GInterface::UpdateAllLeashes(void)
+    // BW1W120 005d9130 BW1M100 100315f0 GInterface::UpdateAllLeashes(void)
     void UpdateAllLeashes();
-    // win1.41 005d9d80 mac 10004300 GInterface::SendMessageA(INTERFACE_MESSAGE_TYPES, LHCoord *)
+    // BW1W120 005d9d80 BW1M100 10004300 GInterface::SendMessageA(INTERFACE_MESSAGE_TYPES, LHCoord *)
     bool SendMessageA(INTERFACE_MESSAGE_TYPES param_1, LHCoord* param_2);
 };
 

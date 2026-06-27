@@ -22,9 +22,9 @@ public:
 
     // Override methods
 
-    // win1.41 00586220 mac 102dc140 BoolProperty::GetAsString(void)
+    // BW1W120 00586220 BW1M100 102dc140 BoolProperty::GetAsString(void)
     virtual const char* GetAsString();
-    // win1.41 00586350 mac inlined BoolProperty::ReadProperty(istream *, PersistenceStreamer *)
+    // BW1W120 00586350 BW1M100 inlined BoolProperty::ReadProperty(istream *, PersistenceStreamer *)
     virtual uint32_t ReadProperty(istream* param_1, PersistenceStreamer* param_2);
 };
 
@@ -34,9 +34,9 @@ public:
 
     // Override methods
 
-    // win1.41 00585740 mac 102dcd30 SoundActionProperty::GetAsString(void)
+    // BW1W120 00585740 BW1M100 102dcd30 SoundActionProperty::GetAsString(void)
     virtual const char* GetAsString();
-    // win1.41 00585a70 mac inlined SoundActionProperty::ReadProperty(istream *, PersistenceStreamer *)
+    // BW1W120 00585a70 BW1M100 inlined SoundActionProperty::ReadProperty(istream *, PersistenceStreamer *)
     virtual uint32_t ReadProperty(istream* param_1, PersistenceStreamer* param_2);
 };
 
@@ -46,9 +46,9 @@ public:
 
     // Override methods
 
-    // win1.41 005850d0 mac 102dd630 StringProperty::GetAsString(void)
+    // BW1W120 005850d0 BW1M100 102dd630 StringProperty::GetAsString(void)
     virtual const char* GetAsString();
-    // win1.41 00585200 mac inlined StringProperty::ReadProperty(istream *, PersistenceStreamer *)
+    // BW1W120 00585200 BW1M100 inlined StringProperty::ReadProperty(istream *, PersistenceStreamer *)
     virtual uint32_t ReadProperty(istream* param_1, PersistenceStreamer* param_2);
 };
 
@@ -58,7 +58,7 @@ public:
 
     // Override methods
 
-    // win1.41 00584630 mac inlined TPointerProperty::GetAsUserReadableString(void)
+    // BW1W120 00584630 BW1M100 inlined TPointerProperty::GetAsUserReadableString(void)
     virtual const char* GetAsUserReadableString();
 };
 

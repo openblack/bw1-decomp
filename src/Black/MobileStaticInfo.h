@@ -19,16 +19,16 @@ public:
 
     // Override methods
 
-    // win1.41 00608560 mac 103be790 GMobileStaticInfo::_dt(void)
+    // BW1W120 00608560 BW1M100 103be790 GMobileStaticInfo::_dt(void)
     virtual ~GMobileStaticInfo();
-    // win1.41 006084f0 mac 103c1240 GMobileStaticInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 006084f0 BW1M100 103c1240 GMobileStaticInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
-    // win1.41 006084e0 mac 10050090 GMobileStaticInfo::GetMesh( const(void))
+    // BW1W120 006084e0 BW1M100 10050090 GMobileStaticInfo::GetMesh( const(void))
     virtual uint32_t GetMesh();
 
     // Static methods
 
-    // win1.41 005ff2f0 mac 103c1190 GMobileStaticInfo::GetInfo(void)
+    // BW1W120 005ff2f0 BW1M100 103c1190 GMobileStaticInfo::GetInfo(void)
     static GMobileStaticInfo* GetInfo();
 };
 

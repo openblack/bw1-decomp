@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 007437d0 mac 10557190 TownCreatureInfo::_dt(void)
+    // BW1W120 007437d0 BW1M100 10557190 TownCreatureInfo::_dt(void)
     virtual ~TownCreatureInfo();
-    // win1.41 007437c0 mac 10558ea0 TownCreatureInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 007437c0 BW1M100 10558ea0 TownCreatureInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

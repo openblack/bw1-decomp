@@ -120,40 +120,40 @@ public:
 
     // Override methods
 
-    // win1.41 0045a960 mac 1003a4f0 CameraModeNew3::Update(void)
+    // BW1W120 0045a960 BW1M100 1003a4f0 CameraModeNew3::Update(void)
     virtual void Update();
 
     // Static methods
 
-    // win1.41 00458db0 mac 1007c250 CameraModeNew3::CalcPerpDistance(LHPoint &, LHPoint &, LHPoint &)
+    // BW1W120 00458db0 BW1M100 1007c250 CameraModeNew3::CalcPerpDistance(LHPoint &, LHPoint &, LHPoint &)
     static float CalcPerpDistance(LHPoint* param_1, LHPoint* param_2, LHPoint* param_3);
-    // win1.41 00458f40 mac 10062a70 CameraModeNew3::FindBestAngle(float, float, LHPoint &, float &, float *)
+    // BW1W120 00458f40 BW1M100 10062a70 CameraModeNew3::FindBestAngle(float, float, LHPoint &, float &, float *)
     static float FindBestAngle(float param_1, float param_2, float* param_3, float* param_4, float* param_5);
 
     // Constructors
 
-    // win1.41 004572e0 mac 101a6040 CameraModeNew3::CameraModeNew3(GCamera *)
+    // BW1W120 004572e0 BW1M100 101a6040 CameraModeNew3::CameraModeNew3(GCamera *)
     CameraModeNew3(GCamera* camera);
 
     // Non-virtual methods
 
-    // win1.41 00459230 mac 10025a60 CameraModeNew3::UpdateTricons(void)
+    // BW1W120 00459230 BW1M100 10025a60 CameraModeNew3::UpdateTricons(void)
     void UpdateTricons();
-    // win1.41 00459610 mac 101a4670 CameraModeNew3::UpdateClickParams(LHPoint &, LHPoint &, bool)
+    // BW1W120 00459610 BW1M100 101a4670 CameraModeNew3::UpdateClickParams(LHPoint &, LHPoint &, bool)
     void UpdateClickParams(const LHPoint* param_1, const LHPoint* param_2, bool param_3);
-    // win1.41 00459c30 mac 10037970 CameraModeNew3::
+    // BW1W120 00459c30 BW1M100 10037970 CameraModeNew3::
     float GetAltitude(LHPoint* param_1);
-    // win1.41 00459d20 mac 101a4380 CameraModeNew3::SetAltitudeAndNormal(LHPoint &, LHPoint &)
+    // BW1W120 00459d20 BW1M100 101a4380 CameraModeNew3::SetAltitudeAndNormal(LHPoint &, LHPoint &)
     void SetAltitudeAndNormal(LHPoint* param_1, LHPoint* normal);
-    // win1.41 00459f10 mac 1007e670 CameraModeNew3::DragFocusOntoLand(LHPoint &, LHPoint &)
+    // BW1W120 00459f10 BW1M100 1007e670 CameraModeNew3::DragFocusOntoLand(LHPoint &, LHPoint &)
     void DragFocusOntoLand(LHPoint* param_1, LHPoint* param_2);
-    // win1.41 0045a080 mac 101a3db0 CameraModeNew3::UpdateStrafe(LHPoint &, LHPoint &, float &, float &, float, unsigned long)
+    // BW1W120 0045a080 BW1M100 101a3db0 CameraModeNew3::UpdateStrafe(LHPoint &, LHPoint &, float &, float &, float, unsigned long)
     bool UpdateStrafe(LHPoint* param_1, LHPoint* param_2, float* param_3, float* param_4, float param_5, uint32_t param_6);
-    // win1.41 0045a390 mac 100098e0 CameraModeNew3::WantToQuitFight(LHPoint, LHPoint, float)
+    // BW1W120 0045a390 BW1M100 100098e0 CameraModeNew3::WantToQuitFight(LHPoint, LHPoint, float)
     bool WantToQuitFight(LHPoint param_1, LHPoint param_2, float param_3);
-    // win1.41 0045a4d0 mac 101a3910 CameraModeNew3::StartFight(GArena *)
+    // BW1W120 0045a4d0 BW1M100 101a3910 CameraModeNew3::StartFight(GArena *)
     void StartFight(GArena* arena);
-    // win1.41 0045a830 mac inlined CameraModeNew3::EndFightNow(int)
+    // BW1W120 0045a830 BW1M100 inlined CameraModeNew3::EndFightNow(int)
     void EndFightNow(int param_1);
 };
 

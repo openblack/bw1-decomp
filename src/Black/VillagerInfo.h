@@ -108,18 +108,18 @@ public:
 
     // Override methods
 
-    // win1.41 0074f900 mac 1056bfe0 GVillagerInfo::_dt(void)
+    // BW1W120 0074f900 BW1M100 1056bfe0 GVillagerInfo::_dt(void)
     virtual ~GVillagerInfo();
-    // win1.41 0074f890 mac 10571e90 GVillagerInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 0074f890 BW1M100 10571e90 GVillagerInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
-    // win1.41 0074f880 mac 10571e50 GVillagerInfo::GetMesh( const(void))
+    // BW1W120 0074f880 BW1M100 10571e50 GVillagerInfo::GetMesh( const(void))
     virtual uint32_t GetMesh();
 
     // Static methods
 
-    // win1.41 007519e0 mac 1056df60 GVillagerInfo::GetInfoFromText(char *)
+    // BW1W120 007519e0 BW1M100 1056df60 GVillagerInfo::GetInfoFromText(char *)
     static int GetInfoFromText(char* text);
-    // win1.41 00752650 mac 1056be30 GVillagerInfo::Find(TRIBE_TYPE, VILLAGER_NUMBER)
+    // BW1W120 00752650 BW1M100 1056be30 GVillagerInfo::Find(TRIBE_TYPE, VILLAGER_NUMBER)
     static GVillagerInfo* Find(TRIBE_TYPE type, int villager_number);
 };
 

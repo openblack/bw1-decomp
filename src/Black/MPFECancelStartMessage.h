@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 00627640 mac 1039ba50 MPFECancelStartMessage::_dt(void)
+    // BW1W120 00627640 BW1M100 1039ba50 MPFECancelStartMessage::_dt(void)
     virtual ~MPFECancelStartMessage();
 };
 

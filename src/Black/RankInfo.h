@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 006e0870 mac 10133c10 GRankInfo::_dt(void)
+    // BW1W120 006e0870 BW1M100 10133c10 GRankInfo::_dt(void)
     virtual ~GRankInfo();
-    // win1.41 006e0810 mac 101340a0 GRankInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 006e0810 BW1M100 101340a0 GRankInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

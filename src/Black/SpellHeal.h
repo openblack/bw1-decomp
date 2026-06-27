@@ -20,13 +20,13 @@ public:
 
     // Override methods
 
-    // win1.41 0055d1b0 mac 10533d20 SpellHeal::_dt(void)
+    // BW1W120 0055d1b0 BW1M100 10533d20 SpellHeal::_dt(void)
     virtual ~SpellHeal();
-    // win1.41 0055d1a0 mac 10533e00 SpellHeal::GetDebugText(void)
+    // BW1W120 0055d1a0 BW1M100 10533e00 SpellHeal::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0055d190 mac 10533dc0 SpellHeal::GetSaveType(void)
+    // BW1W120 0055d190 BW1M100 10533dc0 SpellHeal::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0072d870 mac 1052ed50 SpellHeal::InitWithPos(GameThing *, MapCoords const &, SpellCastData *, PSysProcessInfo const &)
+    // BW1W120 0072d870 BW1M100 1052ed50 SpellHeal::InitWithPos(GameThing *, MapCoords const &, SpellCastData *, PSysProcessInfo const &)
     virtual int InitWithPos(GameThing* param_1, const MapCoords* param_2, SpellCastData* param_3, const PSysProcessInfo* param_4);
 };
 

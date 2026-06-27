@@ -55,7 +55,7 @@ public:
 
     // Constructors
 
-    // win1.41 00798870 mac 1053f350 TempleRoom::TempleRoom(const char*)
+    // BW1W120 00798870 BW1M100 1053f350 TempleRoom::TempleRoom(const char*)
     TempleRoom(const char* name);
 };
 
@@ -75,7 +75,7 @@ struct InnerRoom
 
     // Constructors
 
-    // win1.41 00795030 mac 1053bfb0 InnerRoom::InnerRoom(void)
+    // BW1W120 00795030 BW1M100 1053bfb0 InnerRoom::InnerRoom(void)
     InnerRoom();
 };
 

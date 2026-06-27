@@ -11,9 +11,9 @@ struct Settings
 
     // Non-virtual methods
 
-    // win1.41 00714af0 mac 105e8db0 Settings::ParseConfigFile(char*)
+    // BW1W120 00714af0 BW1M100 105e8db0 Settings::ParseConfigFile(char*)
     void ParseConfigFile(char* path);
-    // win1.41 00714c20 mac 105e8d50 Settings::InitialiseToDefaults(void)
+    // BW1W120 00714c20 BW1M100 105e8d50 Settings::InitialiseToDefaults(void)
     void InitialiseToDefaults();
 };
 

@@ -20,24 +20,24 @@ struct MapCell
 
     // Static methods
 
-    // win1.41 00601510 mac 1000b040 MapCell::DoesObjectTypeCountAsFixed(OBJECT_TYPE)
+    // BW1W120 00601510 BW1M100 1000b040 MapCell::DoesObjectTypeCountAsFixed(OBJECT_TYPE)
     static bool DoesObjectTypeCountAsFixed(OBJECT_TYPE type);
 
     // Non-virtual methods
 
-    // win1.41 00601b60 mac 10054090 MapCell::SetFirstObjectMobile(Object *)
+    // BW1W120 00601b60 BW1M100 10054090 MapCell::SetFirstObjectMobile(Object *)
     void SetFirstObjectMobile(Object* object);
-    // win1.41 00601b70 mac 104a6ee0 MapCell::SetFirstObjectFixed(Object *)
+    // BW1W120 00601b70 BW1M100 104a6ee0 MapCell::SetFirstObjectFixed(Object *)
     void SetFirstObjectFixed(Object* object);
-    // win1.41 00601380 mac 101cbfc0 MapCell::Clean(void)
+    // BW1W120 00601380 BW1M100 101cbfc0 MapCell::Clean(void)
     void Clean();
-    // win1.41 006015e0 mac 100121f0 MapCell::FindTypeOnMap(OBJECT_TYPE, Object *) const
+    // BW1W120 006015e0 BW1M100 100121f0 MapCell::FindTypeOnMap(OBJECT_TYPE, Object *) const
     Object* FindTypeOnMap(OBJECT_TYPE type, Object* object);
-    // win1.41 00601b80 mac 100544d0 MapCell::GetX(void) const
+    // BW1W120 00601b80 BW1M100 100544d0 MapCell::GetX(void) const
     uint32_t GetX();
-    // win1.41 00601ba0 mac 10054640 MapCell::GetZ(void) const
+    // BW1W120 00601ba0 BW1M100 10054640 MapCell::GetZ(void) const
     uint32_t GetZ();
-    // win1.41 00601690 mac 10570500 MapCell::FindFixedOnMap(Object *)
+    // BW1W120 00601690 BW1M100 10570500 MapCell::FindFixedOnMap(Object *)
     Fixed* FindFixedOnMap(Object* param_1);
 };
 
@@ -49,7 +49,7 @@ struct MapCellIterator
 
     // Non-virtual methods
 
-    // win1.41 inlined mac 1002c620 MapCellIterator::MoveToMobileObsIfNeededAndPoss(void)
+    // BW1W120 inlined BW1M100 1002c620 MapCellIterator::MoveToMobileObsIfNeededAndPoss(void)
     void MoveToMobileObsIfNeededAndPoss();
 };
 
@@ -91,19 +91,19 @@ public:
 
     // Override methods
 
-    // win1.41 006010c0 mac 1055f620 GMap::_dt(void)
+    // BW1W120 006010c0 BW1M100 1055f620 GMap::_dt(void)
     virtual ~GMap();
 
     // Constructors
 
-    // win1.41 00601080 mac 10552040 GMap::GMap(void)
+    // BW1W120 00601080 BW1M100 10552040 GMap::GMap(void)
     GMap();
 
     // Non-virtual methods
 
-    // win1.41 00612660 mac 100fddf0 GMap::ToMap(long, long)
+    // BW1W120 00612660 BW1M100 100fddf0 GMap::ToMap(long, long)
     MapCell* ToMap(uint32_t cell_x, uint32_t cell_z);
-    // win1.41 00612690 mac 10049c10 GMap::InBounds(long, long)
+    // BW1W120 00612690 BW1M100 10049c10 GMap::InBounds(long, long)
     bool InBounds(uint32_t x, uint32_t z);
 };
 

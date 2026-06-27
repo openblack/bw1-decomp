@@ -14,7 +14,7 @@ public:
 
     // Override methods
 
-    // win1.41 004e03a0 mac 10245f80 CreaturePreviousLesson::_dt(void)
+    // BW1W120 004e03a0 BW1M100 10245f80 CreaturePreviousLesson::_dt(void)
     virtual ~CreaturePreviousLesson();
 };
 

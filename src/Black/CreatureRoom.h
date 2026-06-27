@@ -15,12 +15,12 @@ public:
 
     // Override methods
 
-    // win1.41 007878e0 mac 10284d70 CreatureRoom::InitEngine(void)
+    // BW1W120 007878e0 BW1M100 10284d70 CreatureRoom::InitEngine(void)
     virtual void InitEngine();
 
     // Constructors
 
-    // win1.41 007865e0 mac 10287800 CreatureRoom::CreatureRoom(void)
+    // BW1W120 007865e0 BW1M100 10287800 CreatureRoom::CreatureRoom(void)
     CreatureRoom();
 };
 

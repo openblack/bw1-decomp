@@ -20,15 +20,15 @@ public:
 
     // Override methods
 
-    // win1.41 0041d120 mac 101206f0 Cow::_dt(void)
+    // BW1W120 0041d120 BW1M100 101206f0 Cow::_dt(void)
     virtual ~Cow();
-    // win1.41 0041d100 mac 10171d80 Cow::GetDebugText(void)
+    // BW1W120 0041d100 BW1M100 10171d80 Cow::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0041d0f0 mac 10171d50 Cow::GetSaveType(void)
+    // BW1W120 0041d0f0 BW1M100 10171d50 Cow::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0041d110 mac 1012e4c0 Cow::IsCow(Creature *)
+    // BW1W120 0041d110 BW1M100 1012e4c0 Cow::IsCow(Creature *)
     virtual uint32_t IsCow(Creature* param_1);
-    // win1.41 0041d1b0 mac 1000e870 Cow::DecideWhatToDo(void)
+    // BW1W120 0041d1b0 BW1M100 1000e870 Cow::DecideWhatToDo(void)
     virtual bool DecideWhatToDo();
 };
 

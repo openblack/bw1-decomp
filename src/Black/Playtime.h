@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 0066c410 mac inlined Playtime::_dt(void)
+    // BW1W120 0066c410 BW1M100 inlined Playtime::_dt(void)
     virtual ~Playtime();
 };
 

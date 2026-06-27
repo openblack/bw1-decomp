@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 0042b3d0 mac 10182f90 GLeashSelectorInfo::_dt(void)
+    // BW1W120 0042b3d0 BW1M100 10182f90 GLeashSelectorInfo::_dt(void)
     virtual ~GLeashSelectorInfo();
 };
 

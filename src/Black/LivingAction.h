@@ -26,14 +26,14 @@ struct LivingAction
 
     // Constructors
 
-    // win1.41 005ecc70 mac 10381350 LivingAction::LivingAction(void)
+    // BW1W120 005ecc70 BW1M100 10381350 LivingAction::LivingAction(void)
     LivingAction();
 
     // Non-virtual methods
 
-    // win1.41 005ecc90 mac 10072200 LivingAction::SetState(unsigned long, unsigned char)
+    // BW1W120 005ecc90 BW1M100 10072200 LivingAction::SetState(unsigned long, unsigned char)
     void SetState(LIVING_ACTION_INDEX index, VILLAGER_STATES state);
-    // win1.41 inlined mac 1004c420 LivingAction::GetState(unsigned long) const
+    // BW1W120 inlined BW1M100 1004c420 LivingAction::GetState(unsigned long) const
     VILLAGER_STATES GetState(LIVING_ACTION_INDEX index);
 };
 

@@ -18,13 +18,13 @@ public:
 
     // Override methods
 
-    // win1.41 0041d550 mac 10120ff0 Sheep::_dt(void)
+    // BW1W120 0041d550 BW1M100 10120ff0 Sheep::_dt(void)
     virtual ~Sheep();
-    // win1.41 0041d540 mac 101711d0 Sheep::GetDebugText(void)
+    // BW1W120 0041d540 BW1M100 101711d0 Sheep::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0041d530 mac 101711a0 Sheep::GetSaveType(void)
+    // BW1W120 0041d530 BW1M100 101711a0 Sheep::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0041c8e0 mac 100a0150 Sheep::StandAnimation(void)
+    // BW1W120 0041c8e0 BW1M100 100a0150 Sheep::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
 

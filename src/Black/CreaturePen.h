@@ -21,11 +21,11 @@ public:
 
     // Override methods
 
-    // win1.41 004eeed0 mac 10275140 CreaturePen::_dt(void)
+    // BW1W120 004eeed0 BW1M100 10275140 CreaturePen::_dt(void)
     virtual ~CreaturePen();
-    // win1.41 004ef100 mac 10274980 CreaturePen::SaveObject(LHOSFile &, MapCoords const &)
+    // BW1W120 004ef100 BW1M100 10274980 CreaturePen::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
-    // win1.41 004eefc0 mac 10274e70 CreaturePen::ConvertToPlanned(void)
+    // BW1W120 004eefc0 BW1M100 10274e70 CreaturePen::ConvertToPlanned(void)
     virtual PlannedMultiMapFixed* ConvertToPlanned();
 };
 

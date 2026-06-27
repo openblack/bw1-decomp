@@ -25,9 +25,9 @@ public:
 
     // Override methods
 
-    // win1.41 0071f880 mac 10146650 GSpecialVillagerInfo::_dt(void)
+    // BW1W120 0071f880 BW1M100 10146650 GSpecialVillagerInfo::_dt(void)
     virtual ~GSpecialVillagerInfo();
-    // win1.41 0071ee80 mac 101463b0 GSpecialVillagerInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 0071ee80 BW1M100 101463b0 GSpecialVillagerInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

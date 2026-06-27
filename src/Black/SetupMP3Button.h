@@ -22,14 +22,14 @@ public:
 
     // Override methods
 
-    // win1.41 0040cda0 mac 10426080 SetupMP3Button::Draw(bool, bool)
+    // BW1W120 0040cda0 BW1M100 10426080 SetupMP3Button::Draw(bool, bool)
     virtual void Draw(bool hovered, bool selected);
-    // win1.41 00571f30 mac 103547d0 SetupMP3Button::~SetupMP3Button(void)
+    // BW1W120 00571f30 BW1M100 103547d0 SetupMP3Button::~SetupMP3Button(void)
     virtual ~SetupMP3Button();
 
     // Constructors
 
-    // win1.41 inlined mac inlined SetupMP3Button::SetupMP3Button(int, int, int, int, int, wchar_t *, int, unsigned int)
+    // BW1W120 inlined BW1M100 inlined SetupMP3Button::SetupMP3Button(int, int, int, int, int, wchar_t *, int, unsigned int)
     SetupMP3Button(int id, int x, int y, int width, int height, const char16_t* label, int param_8, uint32_t param_9);
 };
 

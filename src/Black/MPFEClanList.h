@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 0062bf30 mac 10396a90 MPFEClanList::_dt(void)
+    // BW1W120 0062bf30 BW1M100 10396a90 MPFEClanList::_dt(void)
     virtual ~MPFEClanList();
 };
 

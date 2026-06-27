@@ -16,20 +16,20 @@ public:
 
     // Override methods
 
-    // win1.41 004097a0 mac 100c7c90 SetupButton::Draw(bool, bool)
+    // BW1W120 004097a0 BW1M100 100c7c90 SetupButton::Draw(bool, bool)
     virtual void Draw(bool hovered, bool selected);
-    // win1.41 00409900 mac 101104d0 SetupButton::MouseDown(int, int, bool)
+    // BW1W120 00409900 BW1M100 101104d0 SetupButton::MouseDown(int, int, bool)
     virtual void MouseDown(int x, int y, bool param_3);
-    // win1.41 00409910 mac 10172660 SetupButton::MouseUp(int, int, bool)
+    // BW1W120 00409910 BW1M100 10172660 SetupButton::MouseUp(int, int, bool)
     virtual void MouseUp(int x, int y, bool param_3);
-    // win1.41 00409920 mac 1034a2d0 SetupButton::KeyDown(int, int)
+    // BW1W120 00409920 BW1M100 1034a2d0 SetupButton::KeyDown(int, int)
     virtual void KeyDown(LHKey key, LHKeyMod mod);
-    // win1.41 00409940 mac 10594240 SetupButton::~SetupButton(void)
+    // BW1W120 00409940 BW1M100 10594240 SetupButton::~SetupButton(void)
     virtual ~SetupButton();
 
     // Constructors
 
-    // win1.41 004098b0 mac 103dd710 SetupButton::SetupButton(int, int, int, int, int, wchar_t *, int)
+    // BW1W120 004098b0 BW1M100 103dd710 SetupButton::SetupButton(int, int, int, int, int, wchar_t *, int)
     SetupButton(int id, int x, int y, int width, int height, const char16_t* label, int param_8);
 };
 

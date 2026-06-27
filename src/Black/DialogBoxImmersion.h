@@ -26,16 +26,16 @@ public:
 
     // Override methods
 
-    // win1.41 00514a80 mac 102b39f0 DialogBoxImmersion::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
+    // BW1W120 00514a80 BW1M100 102b39f0 DialogBoxImmersion::Init(unsigned long, unsigned long, void (*)(int, SetupBox *, SetupControl *, int, int))
     virtual void Init(uint32_t param_1, uint32_t param_2, void (__stdcall*)(int, SetupBox *, SetupControl *, int, int) param_3);
-    // win1.41 00514d70 mac 102b3990 DialogBoxImmersion::Destroy(void)
+    // BW1W120 00514d70 BW1M100 102b3990 DialogBoxImmersion::Destroy(void)
     virtual void Destroy();
-    // win1.41 00514d80 mac 102b3920 DialogBoxImmersion::InitControls(void)
+    // BW1W120 00514d80 BW1M100 102b3920 DialogBoxImmersion::InitControls(void)
     virtual void InitControls();
 
     // Constructors
 
-    // win1.41 005149d0 mac inlined DialogBoxImmersion::DialogBoxImmersion(void)
+    // BW1W120 005149d0 BW1M100 inlined DialogBoxImmersion::DialogBoxImmersion(void)
     DialogBoxImmersion();
 };
 

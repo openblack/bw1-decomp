@@ -18,11 +18,11 @@ public:
 
     // Override methods
 
-    // win1.41 006ca450 mac 10423560 ParticleLightMap::_dt(void)
+    // BW1W120 006ca450 BW1M100 10423560 ParticleLightMap::_dt(void)
     virtual ~ParticleLightMap();
-    // win1.41 006ca440 mac 10423650 ParticleLightMap::GetDebugText(void)
+    // BW1W120 006ca440 BW1M100 10423650 ParticleLightMap::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00695180 mac 1041c890 ParticleLightMap::Load(GameOSFile &)
+    // BW1W120 00695180 BW1M100 1041c890 ParticleLightMap::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
 };
 

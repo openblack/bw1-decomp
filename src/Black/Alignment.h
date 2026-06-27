@@ -14,7 +14,7 @@ public:
 
     // Override methods
 
-    // win1.41 004740e0 mac 101debf0 GAlignment::_dt(void)
+    // BW1W120 004740e0 BW1M100 101debf0 GAlignment::_dt(void)
     virtual ~GAlignment();
 };
 

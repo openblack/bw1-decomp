@@ -110,14 +110,14 @@ public:
 
     // Override methods
 
-    // win1.41 0054b970 mac 10547350 GlobalGameLists::_dt(void)
+    // BW1W120 0054b970 BW1M100 10547350 GlobalGameLists::_dt(void)
     virtual ~GlobalGameLists();
-    // win1.41 005914d0 mac 10336280 GlobalGameLists::Dump(void)
+    // BW1W120 005914d0 BW1M100 10336280 GlobalGameLists::Dump(void)
     virtual void Dump();
 
     // Non-virtual methods
 
-    // win1.41 00591370 mac 10059120 GlobalGameLists::Process(void)
+    // BW1W120 00591370 BW1M100 10059120 GlobalGameLists::Process(void)
     void Process();
 };
 

@@ -42,110 +42,110 @@ public:
 
     // Override methods
 
-    // win1.41 0052c5c0 mac 100dcf40 FishFarm::_dt(void)
+    // BW1W120 0052c5c0 BW1M100 100dcf40 FishFarm::_dt(void)
     virtual ~FishFarm();
-    // win1.41 0052c690 mac 100dced0 FishFarm::ToBeDeleted(int)
+    // BW1W120 0052c690 BW1M100 100dced0 FishFarm::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0052c850 mac 100dc770 FishFarm::GetPlayer(void)
+    // BW1W120 0052c850 BW1M100 100dc770 FishFarm::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 0052c450 mac 100dac20 FishFarm::GetTown(void)
+    // BW1W120 0052c450 BW1M100 100dac20 FishFarm::GetTown(void)
     virtual Town* GetTown();
-    // win1.41 0052c470 mac 100dc730 FishFarm::Get2DRadius(void)
+    // BW1W120 0052c470 BW1M100 100dc730 FishFarm::Get2DRadius(void)
     virtual float Get2DRadius();
-    // win1.41 0052cf20 mac 100dbc20 FishFarm::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
+    // BW1W120 0052cf20 BW1M100 100dbc20 FishFarm::RemoveResource(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
     virtual uint32_t RemoveResource(RESOURCE_TYPE param_1, uint32_t param_2, GInterfaceStatus* param_3, bool* param_4);
-    // win1.41 0052c5b0 mac 100dd9a0 FishFarm::GetDebugText(void)
+    // BW1W120 0052c5b0 BW1M100 100dd9a0 FishFarm::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0052d4f0 mac 100daf80 FishFarm::Load(GameOSFile &)
+    // BW1W120 0052d4f0 BW1M100 100daf80 FishFarm::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 0052d3b0 mac 100db1a0 FishFarm::Save(GameOSFile &)
+    // BW1W120 0052d3b0 BW1M100 100db1a0 FishFarm::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0052c5a0 mac 100dd960 FishFarm::GetSaveType(void)
+    // BW1W120 0052c5a0 BW1M100 100dd960 FishFarm::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0052c490 mac inlined FishFarm::GetArrivePos(MapCoords *)
+    // BW1W120 0052c490 BW1M100 inlined FishFarm::GetArrivePos(MapCoords *)
     virtual MapCoords* GetArrivePos(MapCoords* param_1);
-    // win1.41 0052c4d0 mac 100dd5a0 FishFarm::GetCreatureBeliefType(void)
+    // BW1W120 0052c4d0 BW1M100 100dd5a0 FishFarm::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
-    // win1.41 0052c980 mac 100dc470 FishFarm::IsObjectInMap(void)
+    // BW1W120 0052c980 BW1M100 100dc470 FishFarm::IsObjectInMap(void)
     virtual bool IsObjectInMap();
-    // win1.41 0052c550 mac 100dd800 FishFarm::CanBeEatenByCreature(Creature *)
+    // BW1W120 0052c550 BW1M100 100dd800 FishFarm::CanBeEatenByCreature(Creature *)
     virtual uint32_t CanBeEatenByCreature(Creature* param_1);
-    // win1.41 0052c560 mac 100dd850 FishFarm::CanBeSleptNextToByCreature(Creature *)
+    // BW1W120 0052c560 BW1M100 100dd850 FishFarm::CanBeSleptNextToByCreature(Creature *)
     virtual uint32_t CanBeSleptNextToByCreature(Creature* param_1);
-    // win1.41 0052c4f0 mac 100dd620 FishFarm::CanBePickedUpByCreature(Creature *)
+    // BW1W120 0052c4f0 BW1M100 100dd620 FishFarm::CanBePickedUpByCreature(Creature *)
     virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
-    // win1.41 0052c500 mac 100dd670 FishFarm::CanBeStompedOnByCreature(Creature *)
+    // BW1W120 0052c500 BW1M100 100dd670 FishFarm::CanBeStompedOnByCreature(Creature *)
     virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
-    // win1.41 0052c510 mac 100dd6c0 FishFarm::CanBeGivenToVillager(Creature *)
+    // BW1W120 0052c510 BW1M100 100dd6c0 FishFarm::CanBeGivenToVillager(Creature *)
     virtual uint32_t CanBeGivenToVillager(Creature* param_1);
-    // win1.41 0052c520 mac 100dd710 FishFarm::CanBePutInAStoragePit(Creature *)
+    // BW1W120 0052c520 BW1M100 100dd710 FishFarm::CanBePutInAStoragePit(Creature *)
     virtual uint32_t CanBePutInAStoragePit(Creature* param_1);
-    // win1.41 0052c530 mac 100dd760 FishFarm::CanBeDestroyedByStoning(Creature *)
+    // BW1W120 0052c530 BW1M100 100dd760 FishFarm::CanBeDestroyedByStoning(Creature *)
     virtual uint32_t CanBeDestroyedByStoning(Creature* param_1);
-    // win1.41 0052c540 mac 100dd7b0 FishFarm::CanBeExaminedByCreature(Creature *)
+    // BW1W120 0052c540 BW1M100 100dd7b0 FishFarm::CanBeExaminedByCreature(Creature *)
     virtual uint32_t CanBeExaminedByCreature(Creature* param_1);
-    // win1.41 0052c570 mac 100dd8a0 FishFarm::IsBeingBuilt(Creature *)
+    // BW1W120 0052c570 BW1M100 100dd8a0 FishFarm::IsBeingBuilt(Creature *)
     virtual uint32_t IsBeingBuilt(Creature* param_1);
-    // win1.41 0052c580 mac 100dd8e0 FishFarm::NeedsRepair(Creature *)
+    // BW1W120 0052c580 BW1M100 100dd8e0 FishFarm::NeedsRepair(Creature *)
     virtual uint32_t NeedsRepair(Creature* param_1);
-    // win1.41 0052c4e0 mac 100dd5e0 FishFarm::CanBePoodOn(Creature *)
+    // BW1W120 0052c4e0 BW1M100 100dd5e0 FishFarm::CanBePoodOn(Creature *)
     virtual uint32_t CanBePoodOn(Creature* param_1);
-    // win1.41 0052cad0 mac 1009a360 FishFarm::GetMapChild(MapCell const &)
+    // BW1W120 0052cad0 BW1M100 1009a360 FishFarm::GetMapChild(MapCell const &)
     virtual Object* GetMapChild(const MapCell* param_1);
-    // win1.41 0052cb70 mac 100dc1a0 FishFarm::SetMapChild(Object *, MapCell *)
+    // BW1W120 0052cb70 BW1M100 100dc1a0 FishFarm::SetMapChild(Object *, MapCell *)
     virtual void SetMapChild(Object* param_1, MapCell* param_2);
-    // win1.41 0052ca10 mac 100dc3c0 FishFarm::InsertMapObject(void)
+    // BW1W120 0052ca10 BW1M100 100dc3c0 FishFarm::InsertMapObject(void)
     virtual void InsertMapObject();
-    // win1.41 0052ca70 mac 100dc310 FishFarm::RemoveMapObject(void)
+    // BW1W120 0052ca70 BW1M100 100dc310 FishFarm::RemoveMapObject(void)
     virtual void RemoveMapObject();
-    // win1.41 0052c480 mac 100dd430 FishFarm::GetMeshRadius( const(void))
+    // BW1W120 0052c480 BW1M100 100dd430 FishFarm::GetMeshRadius( const(void))
     virtual float GetMeshRadius();
-    // win1.41 0052d130 mac 1005f370 FishFarm::Process(void)
+    // BW1W120 0052d130 BW1M100 1005f370 FishFarm::Process(void)
     virtual uint32_t Process();
-    // win1.41 0052c830 mac 10025a30 FishFarm::Draw(void)
+    // BW1W120 0052c830 BW1M100 10025a30 FishFarm::Draw(void)
     virtual void Draw();
-    // win1.41 0052d720 mac 100dacf0 FishFarm::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
+    // BW1W120 0052d720 BW1M100 100dacf0 FishFarm::GetDiscipleStateIfInteractedWith(GInterfaceStatus *, Villager *)
     virtual uint32_t GetDiscipleStateIfInteractedWith(GInterfaceStatus* param_1, Villager* param_2);
-    // win1.41 0052c840 mac 100dc810 FishFarm::GetHeightForHandAboveInteractObject(void)
+    // BW1W120 0052c840 BW1M100 100dc810 FishFarm::GetHeightForHandAboveInteractObject(void)
     virtual float GetHeightForHandAboveInteractObject();
-    // win1.41 0052cc10 mac 100dbd10 FishFarm::CallVirtualFunctionsForCreation(MapCoords const &)
+    // BW1W120 0052cc10 BW1M100 100dbd10 FishFarm::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
-    // win1.41 0052d1e0 mac 100626c0 FishFarm::GetFoodValue(FOOD_TYPE)
+    // BW1W120 0052d1e0 BW1M100 100626c0 FishFarm::GetFoodValue(FOOD_TYPE)
     virtual float GetFoodValue(FOOD_TYPE param_1);
-    // win1.41 0052d760 mac 100dac50 FishFarm::GetResourceType(void)
+    // BW1W120 0052d760 BW1M100 100dac50 FishFarm::GetResourceType(void)
     virtual RESOURCE_TYPE GetResourceType();
-    // win1.41 0052c590 mac 100dd920 FishFarm::IsLockedInInteract(void)
+    // BW1W120 0052c590 BW1M100 100dd920 FishFarm::IsLockedInInteract(void)
     virtual bool IsLockedInInteract();
-    // win1.41 0052d750 mac 100dac90 FishFarm::ValidForLockedSelectProcess(GInterfaceStatus *)
+    // BW1W120 0052d750 BW1M100 100dac90 FishFarm::ValidForLockedSelectProcess(GInterfaceStatus *)
     virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
-    // win1.41 0052d770 mac 100da990 FishFarm::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
+    // BW1W120 0052d770 BW1M100 100da990 FishFarm::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
     virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
-    // win1.41 0052d880 mac 100da930 FishFarm::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
+    // BW1W120 0052d880 BW1M100 100da930 FishFarm::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
     virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
-    // win1.41 0052d890 mac 100da8e0 FishFarm::NetworkUnfriendlyEndLockedSelect(void)
+    // BW1W120 0052d890 BW1M100 100da8e0 FishFarm::NetworkUnfriendlyEndLockedSelect(void)
     virtual uint32_t NetworkUnfriendlyEndLockedSelect();
-    // win1.41 0052d8a0 mac 100da7c0 FishFarm::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
+    // BW1W120 0052d8a0 BW1M100 100da7c0 FishFarm::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
     virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
-    // win1.41 0052d670 mac 100daed0 FishFarm::ValidForPlaceInHand(GInterfaceStatus *)
+    // BW1W120 0052d670 BW1M100 100daed0 FishFarm::ValidForPlaceInHand(GInterfaceStatus *)
     virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
-    // win1.41 0052d6b0 mac 100dadc0 FishFarm::InterfaceSetInMagicHand(GInterfaceStatus *)
+    // BW1W120 0052d6b0 BW1M100 100dadc0 FishFarm::InterfaceSetInMagicHand(GInterfaceStatus *)
     virtual uint32_t InterfaceSetInMagicHand(GInterfaceStatus* param_1);
-    // win1.41 0052c4b0 mac 100dd510 FishFarm::InteractsWithPhysicsObjects(void)
+    // BW1W120 0052c4b0 BW1M100 100dd510 FishFarm::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
-    // win1.41 0052c460 mac 100dd3e0 FishFarm::CreatureMustAvoid(Creature *)
+    // BW1W120 0052c460 BW1M100 100dd3e0 FishFarm::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
-    // win1.41 0052d950 mac 100da4d0 FishFarm::ProcessInInteract(GInterfaceStatus *)
+    // BW1W120 0052d950 BW1M100 100da4d0 FishFarm::ProcessInInteract(GInterfaceStatus *)
     virtual uint32_t ProcessInInteract(GInterfaceStatus* param_1);
-    // win1.41 0052cf90 mac 100db980 FishFarm::SaveObject(LHOSFile &, MapCoords const &)
+    // BW1W120 0052cf90 BW1M100 100db980 FishFarm::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
-    // win1.41 0052cf40 mac inlined FishFarm::GetDoorPos(MapCoords *)
+    // BW1W120 0052cf40 BW1M100 inlined FishFarm::GetDoorPos(MapCoords *)
     virtual MapCoords* GetDoorPos(MapCoords* param_1);
-    // win1.41 0052c4c0 mac 100dd560 FishFarm::ConvertToPlanned(void)
+    // BW1W120 0052c4c0 BW1M100 100dd560 FishFarm::ConvertToPlanned(void)
     virtual PlannedMultiMapFixed* ConvertToPlanned();
 
     // Constructors
 
-    // win1.41 0052c360 mac 100dd070 FishFarm::FishFarm(MapCoords const &, GFishFarmInfo const *, Town *)
+    // BW1W120 0052c360 BW1M100 100dd070 FishFarm::FishFarm(MapCoords const &, GFishFarmInfo const *, Town *)
     FishFarm(MapCoords* coords, GFishFarmInfo* info, Town* town);
 };
 

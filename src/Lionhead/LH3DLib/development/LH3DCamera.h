@@ -14,7 +14,7 @@ struct LH3DCamera
 
     // Static methods
 
-    // win1.41 0045a7f0 mac inlined LH3DCamera::GetPos(void)
+    // BW1W120 0045a7f0 BW1M100 inlined LH3DCamera::GetPos(void)
     static LHPoint* GetPos();
 };
 

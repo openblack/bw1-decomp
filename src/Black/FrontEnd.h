@@ -96,15 +96,15 @@ struct FrontEnd
 
     // Static methods
 
-    // win1.41 0053b4d0 mac 105c4d10 FrontEnd::Init(void)
+    // BW1W120 0053b4d0 BW1M100 105c4d10 FrontEnd::Init(void)
     static void Init();
-    // win1.41 0053c450 mac 105c47d0 FrontEnd::SetCursorOn(void)
+    // BW1W120 0053c450 BW1M100 105c47d0 FrontEnd::SetCursorOn(void)
     static void SetCursorOn();
-    // win1.41 00544f90 mac 105b9c50 FrontEnd::JustDoABox(DialogBoxBase *)
+    // BW1W120 00544f90 BW1M100 105b9c50 FrontEnd::JustDoABox(DialogBoxBase *)
     static void JustDoABox(DialogBoxBase* this);
-    // win1.41 0053ce70 mac 105c3cf0 FrontEnd::JustDoNewProfileBox(void)
+    // BW1W120 0053ce70 BW1M100 105c3cf0 FrontEnd::JustDoNewProfileBox(void)
     static void JustDoNewProfileBox(FrontEnd* this);
-    // win1.41 00544f80 mac 105ba050 FrontEnd::JustDoSkirmishGameBox(void)
+    // BW1W120 00544f80 BW1M100 105ba050 FrontEnd::JustDoSkirmishGameBox(void)
     static void JustDoSkirmishGameBox(FrontEnd* this);
 };
 

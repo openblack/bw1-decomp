@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 00414120 mac 100a42b0 GAlignmentInfo::_dt(void)
+    // BW1W120 00414120 BW1M100 100a42b0 GAlignmentInfo::_dt(void)
     virtual ~GAlignmentInfo();
-    // win1.41 004140c0 mac 100a4bb0 GAlignmentInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 004140c0 BW1M100 100a4bb0 GAlignmentInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

@@ -25,14 +25,14 @@ struct ControlMap
 
     // Constructors
 
-    // win1.41 0046f6c0 mac 101cbaa0 ControlMap::ControlMap(void)
+    // BW1W120 0046f6c0 BW1M100 101cbaa0 ControlMap::ControlMap(void)
     ControlMap();
 
     // Non-virtual methods
 
-    // win1.41 00470910 mac 101caba0 ControlMap::GetText(ulong, wchar_t*)
+    // BW1W120 00470910 BW1M100 101caba0 ControlMap::GetText(ulong, wchar_t*)
     void GetText(LH_KEY key, char16_t* out_text);
-    // win1.41 00470ab0 mac 10090ab0 ControlMap::ProcessActionsPerformed(void)
+    // BW1W120 00470ab0 BW1M100 10090ab0 ControlMap::ProcessActionsPerformed(void)
     void ProcessActionsPerformed();
 };
 

@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 00626f90 mac 10397e50 MPFEAskJoinMessage::_dt(void)
+    // BW1W120 00626f90 BW1M100 10397e50 MPFEAskJoinMessage::_dt(void)
     virtual ~MPFEAskJoinMessage();
 };
 

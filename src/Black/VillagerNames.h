@@ -17,23 +17,23 @@ struct VillagerNameBlock
 
     // Static methods
 
-    // win1.41 00762720 mac 1058ba90 VillagerNameBlock::Alloc(void)
+    // BW1W120 00762720 BW1M100 1058ba90 VillagerNameBlock::Alloc(void)
     static VillagerName* Alloc();
-    // win1.41 00762780 mac 1058b960 VillagerNameBlock::Delete(VillagerName *)
+    // BW1W120 00762780 BW1M100 1058b960 VillagerNameBlock::Delete(VillagerName *)
     static void Delete(VillagerName* name);
 
     // Constructors
 
-    // win1.41 00762820 mac inlined VillagerNameBlock::VillagerNameBlock(void)
+    // BW1W120 00762820 BW1M100 inlined VillagerNameBlock::VillagerNameBlock(void)
     VillagerNameBlock();
 
     // Non-virtual methods
 
-    // win1.41 007627e0 mac 10012bf0 VillagerNameBlock::DeleteAll(void)
+    // BW1W120 007627e0 BW1M100 10012bf0 VillagerNameBlock::DeleteAll(void)
     bool32_t DeleteAll();
-    // win1.41 00762900 mac inlined VillagerNameBlock::~VillagerNameBlock()
+    // BW1W120 00762900 BW1M100 inlined VillagerNameBlock::~VillagerNameBlock()
     ~VillagerNameBlock();
-    // win1.41 00762970 mac inlined VillagerNameBlock::FreeAll(void)
+    // BW1W120 00762970 BW1M100 inlined VillagerNameBlock::FreeAll(void)
     void FreeAll();
 };
 
@@ -60,17 +60,17 @@ public:
 
     // Override methods
 
-    // win1.41 007628a0 mac 100b5250 VillagerName::AddDrawing(void)
+    // BW1W120 007628a0 BW1M100 100b5250 VillagerName::AddDrawing(void)
     virtual void AddDrawing();
 
     // Static methods
 
-    // win1.41 007629e0 mac 1058b1a0 VillagerName::Add(float, LHPoint, wchar_t *, LH3DColor &)
+    // BW1W120 007629e0 BW1M100 1058b1a0 VillagerName::Add(float, LHPoint, wchar_t *, LH3DColor &)
     static VillagerName* Add(float text_size, LHPoint point, const char16_t* text, const LH3DColor* p_color);
 
     // Non-virtual methods
 
-    // win1.41 00762dc0 mac 1058add0 VillagerName::Draw(void)
+    // BW1W120 00762dc0 BW1M100 1058add0 VillagerName::Draw(void)
     void Draw();
 };
 

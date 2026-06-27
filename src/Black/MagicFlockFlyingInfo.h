@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 004357c0 mac 1051ed80 GMagicFlockFlyingInfo::_dt(void)
+    // BW1W120 004357c0 BW1M100 1051ed80 GMagicFlockFlyingInfo::_dt(void)
     virtual ~GMagicFlockFlyingInfo();
 };
 

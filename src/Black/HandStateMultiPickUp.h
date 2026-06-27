@@ -15,7 +15,7 @@ public:
 
     // Constructors
 
-    // win1.41 005b5730 mac 1033c330 HandStateMultiPickUp::HandStateMultiPickUp(CHand*)
+    // BW1W120 005b5730 BW1M100 1033c330 HandStateMultiPickUp::HandStateMultiPickUp(CHand*)
     HandStateMultiPickUp(CHand* hand);
 };
 

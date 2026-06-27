@@ -18,13 +18,13 @@ public:
 
     // Override methods
 
-    // win1.41 0041eda0 mac 101717d0 Pigeon::_dt(void)
+    // BW1W120 0041eda0 BW1M100 101717d0 Pigeon::_dt(void)
     virtual ~Pigeon();
-    // win1.41 0041ed90 mac 101718a0 Pigeon::GetDebugText(void)
+    // BW1W120 0041ed90 BW1M100 101718a0 Pigeon::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0041ed80 mac 10171860 Pigeon::GetSaveType(void)
+    // BW1W120 0041ed80 BW1M100 10171860 Pigeon::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0041bf80 mac 101703f0 Pigeon::StandAnimation(void)
+    // BW1W120 0041bf80 BW1M100 101703f0 Pigeon::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
 

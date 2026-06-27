@@ -18,14 +18,14 @@ public:
 
     // Override methods
 
-    // win1.41 0054be80 mac 101522e0 TerrainMapInfo::_dt(void)
+    // BW1W120 0054be80 BW1M100 101522e0 TerrainMapInfo::_dt(void)
     virtual ~TerrainMapInfo();
-    // win1.41 0054bd80 mac 1032d1b0 TerrainMapInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 0054bd80 BW1M100 1032d1b0 TerrainMapInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 
     // Constructors
 
-    // win1.41 0054bcd0 mac 100c9280 TerrainMapInfo::TerrainMapInfo(void)
+    // BW1W120 0054bcd0 BW1M100 100c9280 TerrainMapInfo::TerrainMapInfo(void)
     TerrainMapInfo();
 };
 

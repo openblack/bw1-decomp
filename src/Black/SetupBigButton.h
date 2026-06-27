@@ -24,18 +24,18 @@ public:
 
     // Override methods
 
-    // win1.41 0040d310 mac 101670b0 SetupBigButton::HitTest(int, int)
+    // BW1W120 0040d310 BW1M100 101670b0 SetupBigButton::HitTest(int, int)
     virtual bool HitTest(int x, int y);
-    // win1.41 0040ceb0 mac 103deac0 SetupBigButton::Draw(bool, bool)
+    // BW1W120 0040ceb0 BW1M100 103deac0 SetupBigButton::Draw(bool, bool)
     virtual void Draw(bool hovered, bool selected);
-    // win1.41 0040d2f0 mac 101689f0 SetupBigButton::KeyDown(int, int)
+    // BW1W120 0040d2f0 BW1M100 101689f0 SetupBigButton::KeyDown(int, int)
     virtual void KeyDown(LHKey key, LHKeyMod mod);
-    // win1.41 0040d360 mac 1010fca0 SetupBigButton::~SetupBigButton(void)
+    // BW1W120 0040d360 BW1M100 1010fca0 SetupBigButton::~SetupBigButton(void)
     virtual ~SetupBigButton();
 
     // Constructors
 
-    // win1.41 0040d260 mac 100fd210 SetupBigButton::SetupBigButton(int, int, int, wchar_t *, int, int, int)
+    // BW1W120 0040d260 BW1M100 100fd210 SetupBigButton::SetupBigButton(int, int, int, wchar_t *, int, int, int)
     SetupBigButton(int id, int x, int y, const char16_t* label, int size, uint32_t text_position, BBSTYLE style);
 };
 

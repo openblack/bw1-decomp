@@ -19,16 +19,16 @@ public:
 
     // Override methods
 
-    // win1.41 005b7df0 mac 1033e740 HandStateTug::Enter(void)
+    // BW1W120 005b7df0 BW1M100 1033e740 HandStateTug::Enter(void)
     virtual void Enter();
-    // win1.41 005b8e40 mac 1033d5e0 HandStateTug::DrawTheHeldObject(void)
+    // BW1W120 005b8e40 BW1M100 1033d5e0 HandStateTug::DrawTheHeldObject(void)
     virtual void DrawTheHeldObject();
-    // win1.41 005b8070 mac 1033d650 HandStateTug::Update(float, LHMatrix *)
+    // BW1W120 005b8070 BW1M100 1033d650 HandStateTug::Update(float, LHMatrix *)
     virtual void Update(float param_1, LHMatrix* param_2);
 
     // Constructors
 
-    // win1.41 005b7dd0 mac 1033e9e0 HandStateTug::HandStateTug(CHand*)
+    // BW1W120 005b7dd0 BW1M100 1033e9e0 HandStateTug::HandStateTug(CHand*)
     HandStateTug(CHand* hand);
 };
 

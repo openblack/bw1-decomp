@@ -52,14 +52,14 @@ public:
 
     // Override methods
 
-    // win1.41 007695f0 mac 1059c500 GVillagerStateTableInfo::_dt(void)
+    // BW1W120 007695f0 BW1M100 1059c500 GVillagerStateTableInfo::_dt(void)
     virtual ~GVillagerStateTableInfo();
-    // win1.41 00769580 mac 1059c630 GVillagerStateTableInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00769580 BW1M100 1059c630 GVillagerStateTableInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 
     // Static methods
 
-    // win1.41 inlined mac 1004aff0 GVillagerStateTableInfo::GetInfo(void)
+    // BW1W120 inlined BW1M100 1004aff0 GVillagerStateTableInfo::GetInfo(void)
     static GVillagerStateTableInfo* GetInfo();
 };
 

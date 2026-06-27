@@ -23,33 +23,33 @@ public:
 
     // Override methods
 
-    // win1.41 00534d70 mac 100eef60 GFootpathNode::_dt(void)
+    // BW1W120 00534d70 BW1M100 100eef60 GFootpathNode::_dt(void)
     virtual ~GFootpathNode();
-    // win1.41 00538970 mac 100e91f0 GFootpathNode::ToBeDeleted(int)
+    // BW1W120 00538970 BW1M100 100e91f0 GFootpathNode::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00534d60 mac 100ef030 GFootpathNode::GetDebugText(void)
+    // BW1W120 00534d60 BW1M100 100ef030 GFootpathNode::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00538c10 mac 100e86f0 GFootpathNode::Load(GameOSFile &)
+    // BW1W120 00538c10 BW1M100 100e86f0 GFootpathNode::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 00538d70 mac 100e83f0 GFootpathNode::Save(GameOSFile &)
+    // BW1W120 00538d70 BW1M100 100e83f0 GFootpathNode::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 00534d50 mac 100eeff0 GFootpathNode::GetSaveType(void)
+    // BW1W120 00534d50 BW1M100 100eeff0 GFootpathNode::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00538ea0 mac 100e83b0 GFootpathNode::ResolveLoad(void)
+    // BW1W120 00538ea0 BW1M100 100e83b0 GFootpathNode::ResolveLoad(void)
     virtual void ResolveLoad();
 
     // Constructors
 
-    // win1.41 inlined mac inlined GFootpathNode::GFootpathNode(void)
+    // BW1W120 inlined BW1M100 inlined GFootpathNode::GFootpathNode(void)
     GFootpathNode();
-    // win1.41 00534cf0 mac 100eed50 GFootpathNode::GFootpathNode(MapCoords const &, int, int)
+    // BW1W120 00534cf0 BW1M100 100eed50 GFootpathNode::GFootpathNode(MapCoords const &, int, int)
     GFootpathNode(MapCoords* coords, int param_2, int param_3);
 
     // Non-virtual methods
 
-    // win1.41 005389d0 mac 100e90a0 GFootpathNode::PurgeFollowerList(void)
+    // BW1W120 005389d0 BW1M100 100e90a0 GFootpathNode::PurgeFollowerList(void)
     void PurgeFollowerList();
-    // win1.41 00538b10 mac 100e8d10 GFootpathNode::ClearFromPreviousNode(void)
+    // BW1W120 00538b10 BW1M100 100e8d10 GFootpathNode::ClearFromPreviousNode(void)
     void ClearFromPreviousNode();
 };
 

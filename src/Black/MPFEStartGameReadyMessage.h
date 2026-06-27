@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 0062fd00 mac 103a7130 MPFEStartGameReadyMessage::_dt(void)
+    // BW1W120 0062fd00 BW1M100 103a7130 MPFEStartGameReadyMessage::_dt(void)
     virtual ~MPFEStartGameReadyMessage();
 };
 

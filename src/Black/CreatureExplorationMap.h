@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 004df5c0 mac 10246800 CreatureExplorationMap::_dt(void)
+    // BW1W120 004df5c0 BW1M100 10246800 CreatureExplorationMap::_dt(void)
     virtual ~CreatureExplorationMap();
 };
 
@@ -26,7 +26,7 @@ public:
 
     // Override methods
 
-    // win1.41 004df430 mac 10260660 CreatureExplorationRegionEntry::_dt(void)
+    // BW1W120 004df430 BW1M100 10260660 CreatureExplorationRegionEntry::_dt(void)
     virtual ~CreatureExplorationRegionEntry();
 };
 
@@ -36,9 +36,9 @@ public:
 
     // Override methods
 
-    // win1.41 004df450 mac 102605a0 CreatureGlobalExplorationMap::_dt(void)
+    // BW1W120 004df450 BW1M100 102605a0 CreatureGlobalExplorationMap::_dt(void)
     virtual ~CreatureGlobalExplorationMap();
-    // win1.41 004dfbd0 mac 10260d20 CreatureGlobalExplorationMap::Dump(void)
+    // BW1W120 004dfbd0 BW1M100 10260d20 CreatureGlobalExplorationMap::Dump(void)
     virtual void Dump();
 };
 

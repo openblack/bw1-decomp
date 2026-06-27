@@ -30,26 +30,26 @@ public:
 
     // Override methods
 
-    // win1.41 00410740 mac 102410c0 SetupPicture::SetFocus(bool)
+    // BW1W120 00410740 BW1M100 102410c0 SetupPicture::SetFocus(bool)
     virtual void SetFocus(bool focus);
-    // win1.41 0040fa20 mac 100ab020 SetupPicture::Draw(bool, bool)
+    // BW1W120 0040fa20 BW1M100 100ab020 SetupPicture::Draw(bool, bool)
     virtual void Draw(bool hovered, bool selected);
-    // win1.41 0040fa10 mac 100e47c0 SetupPicture::Drag(int, int)
+    // BW1W120 0040fa10 BW1M100 100e47c0 SetupPicture::Drag(int, int)
     virtual void Drag(int x, int y);
-    // win1.41 0040f6b0 mac inlined SetupPicture::MouseDown(int, int, bool)
+    // BW1W120 0040f6b0 BW1M100 inlined SetupPicture::MouseDown(int, int, bool)
     virtual void MouseDown(int x, int y, bool param_3);
-    // win1.41 0040f840 mac 1036e5b0 SetupPicture::MouseUp(int, int, bool)
+    // BW1W120 0040f840 BW1M100 1036e5b0 SetupPicture::MouseUp(int, int, bool)
     virtual void MouseUp(int x, int y, bool param_3);
-    // win1.41 00410710 mac 10351210 SetupPicture::Click(int, int)
+    // BW1W120 00410710 BW1M100 10351210 SetupPicture::Click(int, int)
     virtual void Click(int x, int y);
-    // win1.41 004106f0 mac 100fe9d0 SetupPicture::KeyDown(int, int)
+    // BW1W120 004106f0 BW1M100 100fe9d0 SetupPicture::KeyDown(int, int)
     virtual void KeyDown(LHKey key, LHKeyMod mod);
-    // win1.41 00410720 mac 1034f1b0 SetupPicture::~SetupPicture(void)
+    // BW1W120 00410720 BW1M100 1034f1b0 SetupPicture::~SetupPicture(void)
     virtual ~SetupPicture();
 
     // Constructors
 
-    // win1.41 004105d0 mac 101a6a00 SetupPicture::SetupPicture(int, int, int, LH3DMaterial *, int, int, bool, int, bool)
+    // BW1W120 004105d0 BW1M100 101a6a00 SetupPicture::SetupPicture(int, int, int, LH3DMaterial *, int, int, bool, int, bool)
     SetupPicture(int id, int x, int y, LH3DMaterial* material, int picture_index, int num_rows, bool clickable, int size, bool draggable);
 };
 

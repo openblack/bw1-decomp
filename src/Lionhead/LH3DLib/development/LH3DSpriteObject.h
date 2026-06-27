@@ -16,7 +16,7 @@ public:
 
     // Constructors
 
-    // win1.41 00815380 mac 10078250 LH3DSpriteObject::LH3DSpriteObject(long)
+    // BW1W120 00815380 BW1M100 10078250 LH3DSpriteObject::LH3DSpriteObject(long)
     LH3DSpriteObject(int type);
 };
 

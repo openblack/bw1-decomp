@@ -24,7 +24,7 @@ struct LandCell
 
     // Non-virtual methods
 
-    // win1.41 inlined mac 1000cd10 LandCell::IsWater(void)
+    // BW1W120 inlined BW1M100 1000cd10 LandCell::IsWater(void)
     bool IsWater();
 };
 

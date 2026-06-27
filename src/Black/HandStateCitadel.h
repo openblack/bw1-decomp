@@ -19,14 +19,14 @@ public:
 
     // Override methods
 
-    // win1.41 005b0c10 mac 10337710 HandStateCitadel::Enter(void)
+    // BW1W120 005b0c10 BW1M100 10337710 HandStateCitadel::Enter(void)
     virtual void Enter();
-    // win1.41 005b0d00 mac 10336f60 HandStateCitadel::Update(float, LHMatrix *)
+    // BW1W120 005b0d00 BW1M100 10336f60 HandStateCitadel::Update(float, LHMatrix *)
     virtual void Update(float param_1, LHMatrix* param_2);
 
     // Constructors
 
-    // win1.41 005b0bf0 mac 103377e0 HandStateCitadel::HandStateCitadel(CHand*)
+    // BW1W120 005b0bf0 BW1M100 103377e0 HandStateCitadel::HandStateCitadel(CHand*)
     HandStateCitadel(CHand* hand);
 };
 

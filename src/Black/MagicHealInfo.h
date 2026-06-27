@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 004356a0 mac 103ae460 GMagicHealInfo::_dt(void)
+    // BW1W120 004356a0 BW1M100 103ae460 GMagicHealInfo::_dt(void)
     virtual ~GMagicHealInfo();
 };
 

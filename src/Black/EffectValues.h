@@ -20,7 +20,7 @@ struct EffectNumbers
 
     // Non-virtual methods
 
-    // win1.41 00525720 mac 100cba20 EffectNumbers::operator*=(const float&)
+    // BW1W120 00525720 BW1M100 100cba20 EffectNumbers::operator*=(const float&)
     EffectNumbers& operator*=(const float& rhs);
 };
 
@@ -36,12 +36,12 @@ public:
 
     // Override methods
 
-    // win1.41 00524f40 mac 10412ff0 EffectValues::_dt(void)
+    // BW1W120 00524f40 BW1M100 10412ff0 EffectValues::_dt(void)
     virtual ~EffectValues();
 
     // Constructors
 
-    // win1.41 00525040 mac 100cc350 EffectValues::EffectValues(EFFECT_TYPE, float, GameThing *, float, GPlayer *)
+    // BW1W120 00525040 BW1M100 100cc350 EffectValues::EffectValues(EFFECT_TYPE, float, GameThing *, float, GPlayer *)
     EffectValues(EFFECT_TYPE type, float value, GameThing* source, float param_4, GPlayer* player);
 };
 

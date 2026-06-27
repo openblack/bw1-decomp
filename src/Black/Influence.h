@@ -26,36 +26,36 @@ public:
 
     // Override methods
 
-    // win1.41 0055ec70 mac 100fbc20 InfluenceRing::_dt(void)
+    // BW1W120 0055ec70 BW1M100 100fbc20 InfluenceRing::_dt(void)
     virtual ~InfluenceRing();
-    // win1.41 005cd8a0 mac 100fcac0 InfluenceRing::ToBeDeleted(int)
+    // BW1W120 005cd8a0 BW1M100 100fcac0 InfluenceRing::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0055ec40 mac 10043da0 InfluenceRing::GetPlayer(void)
+    // BW1W120 0055ec40 BW1M100 10043da0 InfluenceRing::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 0055ec10 mac 100fbd20 InfluenceRing::SetPlayer(GPlayer *)
+    // BW1W120 0055ec10 BW1M100 100fbd20 InfluenceRing::SetPlayer(GPlayer *)
     virtual void SetPlayer(GPlayer* param_1);
-    // win1.41 0055ec60 mac 100fbe70 InfluenceRing::GetDebugText(void)
+    // BW1W120 0055ec60 BW1M100 100fbe70 InfluenceRing::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 005cdd40 mac 100fbeb0 InfluenceRing::Load(GameOSFile &)
+    // BW1W120 005cdd40 BW1M100 100fbeb0 InfluenceRing::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 005cdc60 mac 100fc000 InfluenceRing::Save(GameOSFile &)
+    // BW1W120 005cdc60 BW1M100 100fc000 InfluenceRing::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0055ec50 mac 100fbe30 InfluenceRing::GetSaveType(void)
+    // BW1W120 0055ec50 BW1M100 100fbe30 InfluenceRing::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0055ebf0 mac 100fbcc0 InfluenceRing::SetPos(MapCoords const &)
+    // BW1W120 0055ebf0 BW1M100 100fbcc0 InfluenceRing::SetPos(MapCoords const &)
     virtual void SetPos(const MapCoords* param_1);
-    // win1.41 0055ec30 mac 100fbda0 InfluenceRing::GetText(void)
+    // BW1W120 0055ec30 BW1M100 100fbda0 InfluenceRing::GetText(void)
     virtual const char* GetText();
-    // win1.41 0055ec20 mac 100fbd60 InfluenceRing::IsInfluenceRing(void)
+    // BW1W120 0055ec20 BW1M100 100fbd60 InfluenceRing::IsInfluenceRing(void)
     virtual uint32_t IsInfluenceRing();
-    // win1.41 005cdc50 mac 100fc170 InfluenceRing::GetScriptObjectType(void)
+    // BW1W120 005cdc50 BW1M100 100fc170 InfluenceRing::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
 
     // Constructors
 
-    // win1.41 005cd760 mac 100fd0a4 InfluenceRing::InfluenceRing(MapCoords const &, GPlayer *, float, int)
+    // BW1W120 005cd760 BW1M100 100fd0a4 InfluenceRing::InfluenceRing(MapCoords const &, GPlayer *, float, int)
     InfluenceRing(const MapCoords* coords, GPlayer* player, float param_4, int param_5);
-    // win1.41 005cd800 mac 100fce54 InfluenceRing::InfluenceRing(GameThingWithPos *, GPlayer *, float, int)
+    // BW1W120 005cd800 BW1M100 100fce54 InfluenceRing::InfluenceRing(GameThingWithPos *, GPlayer *, float, int)
     InfluenceRing(GameThingWithPos* thing, GPlayer* player, float param_4, int param_5);
 };
 

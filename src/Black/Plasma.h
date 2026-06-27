@@ -25,11 +25,11 @@ struct Plasma
 
     // Non-virtual methods
 
-    // win1.41 0053c640 mac 105c4040 Plasma::Init(void)
+    // BW1W120 0053c640 BW1M100 105c4040 Plasma::Init(void)
     void Init();
-    // win1.41 0053c840 mac 105c3d50 Plasma::Render(int)
+    // BW1W120 0053c840 BW1M100 105c3d50 Plasma::Render(int)
     void Render(int param_1);
-    // win1.41 inlined mac 100c9220 Plasma::Close(void)
+    // BW1W120 inlined BW1M100 100c9220 Plasma::Close(void)
     void Close();
 };
 

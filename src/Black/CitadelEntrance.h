@@ -23,23 +23,23 @@ public:
 
     // Override methods
 
-    // win1.41 00468e80 mac 101bb490 CitadelEntrance::_dt(void)
+    // BW1W120 00468e80 BW1M100 101bb490 CitadelEntrance::_dt(void)
     virtual ~CitadelEntrance();
-    // win1.41 00468e70 mac 101bb5b0 CitadelEntrance::GetDebugText(void)
+    // BW1W120 00468e70 BW1M100 101bb5b0 CitadelEntrance::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 00468e60 mac 101bb570 CitadelEntrance::GetSaveType(void)
+    // BW1W120 00468e60 BW1M100 101bb570 CitadelEntrance::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 00469380 mac 101bb5f0 CitadelEntrance::ResolveLoad(void)
+    // BW1W120 00469380 BW1M100 101bb5f0 CitadelEntrance::ResolveLoad(void)
     virtual void ResolveLoad();
-    // win1.41 00468f90 mac 101bbbe0 CitadelEntrance::GetQueryFirstEnumText(void)
+    // BW1W120 00468f90 BW1M100 101bbbe0 CitadelEntrance::GetQueryFirstEnumText(void)
     virtual HELP_TEXT GetQueryFirstEnumText();
-    // win1.41 00468fa0 mac 101bbb70 CitadelEntrance::GetQueryLastEnumText(void)
+    // BW1W120 00468fa0 BW1M100 101bbb70 CitadelEntrance::GetQueryLastEnumText(void)
     virtual HELP_TEXT GetQueryLastEnumText();
-    // win1.41 00468f50 mac 101bbc30 CitadelEntrance::InterfaceValidToTap(GInterfaceStatus *)
+    // BW1W120 00468f50 BW1M100 101bbc30 CitadelEntrance::InterfaceValidToTap(GInterfaceStatus *)
     virtual uint32_t InterfaceValidToTap(GInterfaceStatus* param_1);
-    // win1.41 00468ef0 mac 101bbce0 CitadelEntrance::InterfaceTap(GInterfaceStatus *)
+    // BW1W120 00468ef0 BW1M100 101bbce0 CitadelEntrance::InterfaceTap(GInterfaceStatus *)
     virtual uint32_t InterfaceTap(GInterfaceStatus* param_1);
-    // win1.41 00468e50 mac 101bb520 CitadelEntrance::SaveObject(LHOSFile &, MapCoords const &)
+    // BW1W120 00468e50 BW1M100 101bb520 CitadelEntrance::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
 };
 

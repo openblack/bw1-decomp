@@ -19,15 +19,15 @@ public:
 
     // Override methods
 
-    // win1.41 00606160 mac inlined Meeting::_dt(void)
+    // BW1W120 00606160 BW1M100 inlined Meeting::_dt(void)
     virtual ~Meeting();
-    // win1.41 00606180 mac inlined Meeting::ToBeDeleted(int)
+    // BW1W120 00606180 BW1M100 inlined Meeting::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00606230 mac inlined Meeting::GetPlayer(void)
+    // BW1W120 00606230 BW1M100 inlined Meeting::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 00606150 mac inlined Meeting::RemoveDance(void)
+    // BW1W120 00606150 BW1M100 inlined Meeting::RemoveDance(void)
     virtual void RemoveDance();
-    // win1.41 00606140 mac inlined Meeting::GetTown(void)
+    // BW1W120 00606140 BW1M100 inlined Meeting::GetTown(void)
     virtual Town* GetTown();
 };
 

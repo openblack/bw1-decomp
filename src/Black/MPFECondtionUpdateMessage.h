@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 0062c860 mac inlined MPFECondtionUpdateMessage::_dt(void)
+    // BW1W120 0062c860 BW1M100 inlined MPFECondtionUpdateMessage::_dt(void)
     virtual ~MPFECondtionUpdateMessage();
 };
 

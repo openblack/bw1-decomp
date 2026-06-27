@@ -66,12 +66,12 @@ public:
 
     // Override methods
 
-    // win1.41 004d2560 mac 10245b60 CreatureMental::_dt(void)
+    // BW1W120 004d2560 BW1M100 10245b60 CreatureMental::_dt(void)
     virtual ~CreatureMental();
 
     // Non-virtual methods
 
-    // win1.41 004d7bd0 mac 10253c90 CreatureMental::AddBeliefAboutObject(Creature *, GameThingWithPos *)
+    // BW1W120 004d7bd0 BW1M100 10253c90 CreatureMental::AddBeliefAboutObject(Creature *, GameThingWithPos *)
     void* AddBeliefAboutObject(Creature* param_1, GameThingWithPos* param_2);
 };
 

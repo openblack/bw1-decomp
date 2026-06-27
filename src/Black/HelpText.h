@@ -35,12 +35,12 @@ public:
 
     // Override methods
 
-    // win1.41 005cad90 mac 103575a0 HelpText::_dt(void)
+    // BW1W120 005cad90 BW1M100 103575a0 HelpText::_dt(void)
     virtual ~HelpText();
 
     // Constructors
 
-    // win1.41 005cad40 mac 103579b0 HelpText::HelpText(LHRegion const &)
+    // BW1W120 005cad40 BW1M100 103579b0 HelpText::HelpText(LHRegion const &)
     HelpText(LHRegion* region);
 };
 
@@ -51,7 +51,7 @@ struct HelpTextDataBase
 
     // Non-virtual methods
 
-    // win1.41 inlined mac 100924c0 HelpTextDataBase::GetHelpText(unsigned long) const
+    // BW1W120 inlined BW1M100 100924c0 HelpTextDataBase::GetHelpText(unsigned long) const
     const char16_t* GetHelpText(uint32_t index);
 };
 

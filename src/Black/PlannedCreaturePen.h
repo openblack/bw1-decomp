@@ -17,9 +17,9 @@ public:
 
     // Override methods
 
-    // win1.41 004ef050 mac 102748a0 PlannedCreaturePen::_dt(void)
+    // BW1W120 004ef050 BW1M100 102748a0 PlannedCreaturePen::_dt(void)
     virtual ~PlannedCreaturePen();
-    // win1.41 004ef040 mac 10274940 PlannedCreaturePen::GetText(void)
+    // BW1W120 004ef040 BW1M100 10274940 PlannedCreaturePen::GetText(void)
     virtual const char* GetText();
 };
 

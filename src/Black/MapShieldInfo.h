@@ -16,7 +16,7 @@ public:
 
     // Override methods
 
-    // win1.41 0072bdf0 mac 10531f60 GMapShieldInfo::_dt(void)
+    // BW1W120 0072bdf0 BW1M100 10531f60 GMapShieldInfo::_dt(void)
     virtual ~GMapShieldInfo();
 };
 

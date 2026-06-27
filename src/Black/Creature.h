@@ -215,372 +215,372 @@ public:
 
     // Override methods
 
-    // win1.41 00474100 mac 101de750 Creature::_dt(void)
+    // BW1W120 00474100 BW1M100 101de750 Creature::_dt(void)
     virtual ~Creature();
-    // win1.41 00474f00 mac 101df130 Creature::ToBeDeleted(int)
+    // BW1W120 00474f00 BW1M100 101df130 Creature::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 00473f20 mac 100a0db0 Creature::GetPlayer(void)
+    // BW1W120 00473f20 BW1M100 100a0db0 Creature::GetPlayer(void)
     virtual GPlayer* GetPlayer();
-    // win1.41 00473f30 mac 101e2cc0 Creature::RemoveDance(void)
+    // BW1W120 00473f30 BW1M100 101e2cc0 Creature::RemoveDance(void)
     virtual void RemoveDance();
-    // win1.41 00474090 mac 101e32a0 Creature::IsCreature(Creature *)
+    // BW1W120 00474090 BW1M100 101e32a0 Creature::IsCreature(Creature *)
     virtual bool IsCreature(Creature* param_1);
-    // win1.41 00474080 mac inlined Creature::IsCreature_1(void)
+    // BW1W120 00474080 BW1M100 inlined Creature::IsCreature_1(void)
     virtual bool IsCreature_1();
-    // win1.41 004e4080 mac 105e6020 Creature::IsCreatureNotTooNear(Creature *)
+    // BW1W120 004e4080 BW1M100 105e6020 Creature::IsCreatureNotTooNear(Creature *)
     virtual bool IsCreatureNotTooNear(Creature* param_1);
-    // win1.41 0047b1f0 mac 101d48a0 Creature::GetMaxAlignmentChangePerGameTurn(void)
+    // BW1W120 0047b1f0 BW1M100 101d48a0 Creature::GetMaxAlignmentChangePerGameTurn(void)
     virtual float GetMaxAlignmentChangePerGameTurn();
-    // win1.41 004f8350 mac inlined Creature::MaintainSpell(unsigned int, float)
+    // BW1W120 004f8350 BW1M100 inlined Creature::MaintainSpell(unsigned int, float)
     virtual void MaintainSpell(uint32_t param_1, float param_2);
-    // win1.41 004f8750 mac 1028b0e0 Creature::UpdateSpellInfo(Spell *, PSysProcessInfo *)
+    // BW1W120 004f8750 BW1M100 1028b0e0 Creature::UpdateSpellInfo(Spell *, PSysProcessInfo *)
     virtual void UpdateSpellInfo(Spell* param_1, PSysProcessInfo* param_2);
-    // win1.41 004792c0 mac 101d8510 Creature::GetRadius(void)
+    // BW1W120 004792c0 BW1M100 101d8510 Creature::GetRadius(void)
     virtual float GetRadius();
-    // win1.41 00477f40 mac 101d9fc0 Creature::Get2DRadius(void)
+    // BW1W120 00477f40 BW1M100 101d9fc0 Creature::Get2DRadius(void)
     virtual float Get2DRadius();
-    // win1.41 00474010 mac 101e3070 Creature::CastCreature(void)
+    // BW1W120 00474010 BW1M100 101e3070 Creature::CastCreature(void)
     virtual Creature* CastCreature();
-    // win1.41 004740d0 mac 101e3430 Creature::GetDebugText(void)
+    // BW1W120 004740d0 BW1M100 101e3430 Creature::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0071bd50 mac 1050fcd0 Creature::GetSampleForAttack(void)
+    // BW1W120 0071bd50 BW1M100 1050fcd0 Creature::GetSampleForAttack(void)
     virtual uint32_t GetSampleForAttack();
-    // win1.41 004e5ff0 mac 1026b130 Creature::Load(GameOSFile &)
+    // BW1W120 004e5ff0 BW1M100 1026b130 Creature::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 004e4ea0 mac 1026c9c0 Creature::Save(GameOSFile &)
+    // BW1W120 004e4ea0 BW1M100 1026c9c0 Creature::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 004740c0 mac 101e33f0 Creature::GetSaveType(void)
+    // BW1W120 004740c0 BW1M100 101e33f0 Creature::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 004e6ab0 mac 1026aa90 Creature::ResolveLoad(void)
+    // BW1W120 004e6ab0 BW1M100 1026aa90 Creature::ResolveLoad(void)
     virtual void ResolveLoad();
-    // win1.41 00473f70 mac 101e2dd0 Creature::GetCreatureBeliefType(void)
+    // BW1W120 00473f70 BW1M100 101e2dd0 Creature::GetCreatureBeliefType(void)
     virtual uint32_t GetCreatureBeliefType();
-    // win1.41 00477df0 mac 101da380 Creature::GetCreatureBeliefListType(void)
+    // BW1W120 00477df0 BW1M100 101da380 Creature::GetCreatureBeliefListType(void)
     virtual uint32_t GetCreatureBeliefListType();
-    // win1.41 004792d0 mac 101d84a0 Creature::GetCitadel(void)
+    // BW1W120 004792d0 BW1M100 101d84a0 Creature::GetCitadel(void)
     virtual Citadel* GetCitadel();
-    // win1.41 0047b190 mac 101d4a30 Creature::GetScale(void)
+    // BW1W120 0047b190 BW1M100 101d4a30 Creature::GetScale(void)
     virtual float GetScale();
-    // win1.41 0047b160 mac 101d4a80 Creature::SetScale(float)
+    // BW1W120 0047b160 BW1M100 101d4a80 Creature::SetScale(float)
     virtual void SetScale(float param_1);
-    // win1.41 0047d810 mac 101cf1e0 Creature::SetSpeedInMetres(float, int)
+    // BW1W120 0047d810 BW1M100 101cf1e0 Creature::SetSpeedInMetres(float, int)
     virtual void SetSpeedInMetres(float param_1, int param_2);
-    // win1.41 0047c630 mac 101d25d0 Creature::GetRunningSpeedInMetres(void)
+    // BW1W120 0047c630 BW1M100 101d25d0 Creature::GetRunningSpeedInMetres(void)
     virtual float GetRunningSpeedInMetres();
-    // win1.41 0047c640 mac 101d2580 Creature::GetDefaultSpeedInMetres(void)
+    // BW1W120 0047c640 BW1M100 101d2580 Creature::GetDefaultSpeedInMetres(void)
     virtual float GetDefaultSpeedInMetres();
-    // win1.41 0047de80 mac 101ce5d0 Creature::SetHeight(float)
+    // BW1W120 0047de80 BW1M100 101ce5d0 Creature::SetHeight(float)
     virtual void SetHeight(float param_1);
-    // win1.41 004f8b30 mac 1028a9c0 Creature::GetPSysBeamTargetPos(LHPoint *)
+    // BW1W120 004f8b30 BW1M100 1028a9c0 Creature::GetPSysBeamTargetPos(LHPoint *)
     virtual void GetPSysBeamTargetPos(LHPoint* param_1);
-    // win1.41 00477ac0 mac 101daa00 Creature::GetMovementDirection(LHPoint *)
+    // BW1W120 00477ac0 BW1M100 101daa00 Creature::GetMovementDirection(LHPoint *)
     virtual void GetMovementDirection(LHPoint* param_1);
-    // win1.41 00479e40 mac 101d6a50 Creature::IsMoving( const(void))
+    // BW1W120 00479e40 BW1M100 101d6a50 Creature::IsMoving( const(void))
     virtual bool IsMoving();
-    // win1.41 00477e10 mac 101da2c0 Creature::GetImpressiveType(void)
+    // BW1W120 00477e10 BW1M100 101da2c0 Creature::GetImpressiveType(void)
     virtual IMPRESSIVE_TYPE GetImpressiveType();
-    // win1.41 0047b150 mac 101d4b00 Creature::GetImpressiveIntensity(IMPRESSIVE_TYPE)
+    // BW1W120 0047b150 BW1M100 101d4b00 Creature::GetImpressiveIntensity(IMPRESSIVE_TYPE)
     virtual float GetImpressiveIntensity(IMPRESSIVE_TYPE param_1);
-    // win1.41 0047b200 mac 101d4730 Creature::GetImpressiveValue(Living *, Reaction *)
+    // BW1W120 0047b200 BW1M100 101d4730 Creature::GetImpressiveValue(Living *, Reaction *)
     virtual float GetImpressiveValue(Living* param_1, Reaction* param_2);
-    // win1.41 004e4310 mac 105e5880 Creature::IsActivityObjectWhichAngerAppliesTo(Creature *)
+    // BW1W120 004e4310 BW1M100 105e5880 Creature::IsActivityObjectWhichAngerAppliesTo(Creature *)
     virtual bool IsActivityObjectWhichAngerAppliesTo(Creature* param_1);
-    // win1.41 00474020 mac 101e30a0 Creature::IsActivityObjectWhichCompassionAppliesTo(Creature *)
+    // BW1W120 00474020 BW1M100 101e30a0 Creature::IsActivityObjectWhichCompassionAppliesTo(Creature *)
     virtual bool IsActivityObjectWhichCompassionAppliesTo(Creature* param_1);
-    // win1.41 00474030 mac 101e3100 Creature::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
+    // BW1W120 00474030 BW1M100 101e3100 Creature::IsActivityObjectWhichPlayfulnessAppliesTo(Creature *)
     virtual bool IsActivityObjectWhichPlayfulnessAppliesTo(Creature* param_1);
-    // win1.41 004c5e50 mac 10231ab0 Creature::FalseFunction(void)
+    // BW1W120 004c5e50 BW1M100 10231ab0 Creature::FalseFunction(void)
     virtual uint32_t FalseFunction();
-    // win1.41 00473fd0 mac 101e2f50 Creature::IsSuitableForCreatureActivity(void)
+    // BW1W120 00473fd0 BW1M100 101e2f50 Creature::IsSuitableForCreatureActivity(void)
     virtual uint32_t IsSuitableForCreatureActivity();
-    // win1.41 00474050 mac 101e31b0 Creature::CanBeEatenByCreature(Creature *)
+    // BW1W120 00474050 BW1M100 101e31b0 Creature::CanBeEatenByCreature(Creature *)
     virtual uint32_t CanBeEatenByCreature(Creature* param_1);
-    // win1.41 004e4280 mac 105e5900 Creature::CanBeAttackedByCreature(Creature *)
+    // BW1W120 004e4280 BW1M100 105e5900 Creature::CanBeAttackedByCreature(Creature *)
     virtual uint32_t CanBeAttackedByCreature(Creature* param_1);
-    // win1.41 004740b0 mac 101e33a0 Creature::CanBeFrighteningToCreature(Creature *)
+    // BW1W120 004740b0 BW1M100 101e33a0 Creature::CanBeFrighteningToCreature(Creature *)
     virtual uint32_t CanBeFrighteningToCreature(Creature* param_1);
-    // win1.41 00474070 mac 101e3250 Creature::CanBePlayedWithByCreature(Creature *)
+    // BW1W120 00474070 BW1M100 101e3250 Creature::CanBePlayedWithByCreature(Creature *)
     virtual uint32_t CanBePlayedWithByCreature(Creature* param_1);
-    // win1.41 00474060 mac 101e3200 Creature::CanBeBefriendedByCreature(Creature *)
+    // BW1W120 00474060 BW1M100 101e3200 Creature::CanBeBefriendedByCreature(Creature *)
     virtual uint32_t CanBeBefriendedByCreature(Creature* param_1);
-    // win1.41 00474040 mac 101e3160 Creature::CanBeSleptNextToByCreature(Creature *)
+    // BW1W120 00474040 BW1M100 101e3160 Creature::CanBeSleptNextToByCreature(Creature *)
     virtual uint32_t CanBeSleptNextToByCreature(Creature* param_1);
-    // win1.41 004e4cd0 mac 105e3b70 Creature::CanBePickedUpByCreature(Creature *)
+    // BW1W120 004e4cd0 BW1M100 105e3b70 Creature::CanBePickedUpByCreature(Creature *)
     virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
-    // win1.41 004e3f10 mac 105e6580 Creature::CanBeKissedByCreature(Creature *)
+    // BW1W120 004e3f10 BW1M100 105e6580 Creature::CanBeKissedByCreature(Creature *)
     virtual uint32_t CanBeKissedByCreature(Creature* param_1);
-    // win1.41 004e3c70 mac 105e6d70 Creature::CanBeStompedOnByCreature(Creature *)
+    // BW1W120 004e3c70 BW1M100 105e6d70 Creature::CanBeStompedOnByCreature(Creature *)
     virtual uint32_t CanBeStompedOnByCreature(Creature* param_1);
-    // win1.41 00473ff0 mac 101e2fe0 Creature::CanBeExaminedByCreature(Creature *)
+    // BW1W120 00473ff0 BW1M100 101e2fe0 Creature::CanBeExaminedByCreature(Creature *)
     virtual uint32_t CanBeExaminedByCreature(Creature* param_1);
-    // win1.41 004740a0 mac 101e3320 Creature::CanBeFoughtByCreature(Creature *)
+    // BW1W120 004740a0 BW1M100 101e3320 Creature::CanBeFoughtByCreature(Creature *)
     virtual uint32_t CanBeFoughtByCreature(Creature* param_1);
-    // win1.41 004792f0 mac 101d83c0 Creature::IsDominantCreature(Creature *)
+    // BW1W120 004792f0 BW1M100 101d83c0 Creature::IsDominantCreature(Creature *)
     virtual uint32_t IsDominantCreature(Creature* param_1);
-    // win1.41 004e4430 mac 105e55b0 Creature::IsCreatureAvailableForJointActivity(Creature *)
+    // BW1W120 004e4430 BW1M100 105e55b0 Creature::IsCreatureAvailableForJointActivity(Creature *)
     virtual uint32_t IsCreatureAvailableForJointActivity(Creature* param_1);
-    // win1.41 004e4450 mac 105e5530 Creature::IsCreatureNotAvailableForJointActivity(Creature *)
+    // BW1W120 004e4450 BW1M100 105e5530 Creature::IsCreatureNotAvailableForJointActivity(Creature *)
     virtual uint32_t IsCreatureNotAvailableForJointActivity(Creature* param_1);
-    // win1.41 004e45e0 mac 105e5000 Creature::IsCreatureWhoSeemsFriendly(Creature *)
+    // BW1W120 004e45e0 BW1M100 105e5000 Creature::IsCreatureWhoSeemsFriendly(Creature *)
     virtual uint32_t IsCreatureWhoSeemsFriendly(Creature* param_1);
-    // win1.41 00473f80 mac 101e2e10 Creature::GetCreatureMimicType(void)
+    // BW1W120 00473f80 BW1M100 101e2e10 Creature::GetCreatureMimicType(void)
     virtual uint32_t GetCreatureMimicType();
-    // win1.41 004d1b30 mac 10243070 Creature::GetHowMuchCreatureWantsToLookAtMe(void)
+    // BW1W120 004d1b30 BW1M100 10243070 Creature::GetHowMuchCreatureWantsToLookAtMe(void)
     virtual float GetHowMuchCreatureWantsToLookAtMe();
-    // win1.41 00477e30 mac 101da220 Creature::IsObjectTurningTooFastForCameraToFollowSmoothly(void)
+    // BW1W120 00477e30 BW1M100 101da220 Creature::IsObjectTurningTooFastForCameraToFollowSmoothly(void)
     virtual uint32_t IsObjectTurningTooFastForCameraToFollowSmoothly();
-    // win1.41 0063bad0 mac 103da330 Creature::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)
+    // BW1W120 0063bad0 BW1M100 103da330 Creature::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)
     virtual void CalculateWhereIWillBeAfterNSeconds(float param_1, LHPoint* param_2);
-    // win1.41 00477f50 mac 101d9f50 Creature::GetHeight(void)
+    // BW1W120 00477f50 BW1M100 101d9f50 Creature::GetHeight(void)
     virtual float GetHeight();
-    // win1.41 004794a0 mac 101d7fc0 Creature::IsReadyForNewScriptAction(void)
+    // BW1W120 004794a0 BW1M100 101d7fc0 Creature::IsReadyForNewScriptAction(void)
     virtual uint32_t IsReadyForNewScriptAction();
-    // win1.41 0047d2c0 mac 101cfdf0 Creature::SetControlledByScript(int)
+    // BW1W120 0047d2c0 BW1M100 101cfdf0 Creature::SetControlledByScript(int)
     virtual void SetControlledByScript(int param_1);
-    // win1.41 0047d8f0 mac 101cef90 Creature::GetQueryFirstEnumText(void)
+    // BW1W120 0047d8f0 BW1M100 101cef90 Creature::GetQueryFirstEnumText(void)
     virtual HELP_TEXT GetQueryFirstEnumText();
-    // win1.41 0047d940 mac 101cef30 Creature::GetQueryLastEnumText(void)
+    // BW1W120 0047d940 BW1M100 101cef30 Creature::GetQueryLastEnumText(void)
     virtual HELP_TEXT GetQueryLastEnumText();
-    // win1.41 0047c8b0 mac 101d10b0 Creature::GetScriptObjectType(void)
+    // BW1W120 0047c8b0 BW1M100 101d10b0 Creature::GetScriptObjectType(void)
     virtual uint32_t GetScriptObjectType();
-    // win1.41 00477ec0 mac 101da1c0 Creature::GetFacingDirection(void)
+    // BW1W120 00477ec0 BW1M100 101da1c0 Creature::GetFacingDirection(void)
     virtual float GetFacingDirection();
-    // win1.41 004f6760 mac 10289e50 Creature::SetFocus(LHPoint const &)
+    // BW1W120 004f6760 BW1M100 10289e50 Creature::SetFocus(LHPoint const &)
     virtual void SetFocus(const LHPoint* param_1);
-    // win1.41 00473f50 mac 101e2d40 Creature::IsReachable(void)
+    // BW1W120 00473f50 BW1M100 101e2d40 Creature::IsReachable(void)
     virtual bool IsReachable();
-    // win1.41 00479e50 mac 101d6990 Creature::MoveMapObject(MapCoords const &)
+    // BW1W120 00479e50 BW1M100 101d6990 Creature::MoveMapObject(MapCoords const &)
     virtual int MoveMapObject(const MapCoords* param_1);
-    // win1.41 0047dd00 mac 101ce700 Creature::ReduceLife(float, GPlayer *)
+    // BW1W120 0047dd00 BW1M100 101ce700 Creature::ReduceLife(float, GPlayer *)
     virtual void ReduceLife(float param_1, GPlayer* param_2);
-    // win1.41 0047de20 mac 101ce640 Creature::IncreaseLife(float)
+    // BW1W120 0047de20 BW1M100 101ce640 Creature::IncreaseLife(float)
     virtual void IncreaseLife(float param_1);
-    // win1.41 00478c00 mac 101d8e40 Creature::FillInEffectDefenceMultiplier(EffectNumbers &)
+    // BW1W120 00478c00 BW1M100 101d8e40 Creature::FillInEffectDefenceMultiplier(EffectNumbers &)
     virtual void FillInEffectDefenceMultiplier(EffectNumbers* param_1);
-    // win1.41 00478c80 mac 101d89d0 Creature::ApplyEffect(EffectValues &, int)
+    // BW1W120 00478c80 BW1M100 101d89d0 Creature::ApplyEffect(EffectValues &, int)
     virtual void ApplyEffect(EffectValues* param_1, int param_2);
-    // win1.41 00476f70 mac 101dbeb0 Creature::DestroyedByEffect(GPlayer *, float)
+    // BW1W120 00476f70 BW1M100 101dbeb0 Creature::DestroyedByEffect(GPlayer *, float)
     virtual uint32_t DestroyedByEffect(GPlayer* param_1, float param_2);
-    // win1.41 00479020 mac 101d8950 Creature::ApplySingleEffect(EFFECT_TYPE, float, GameThing *, MapCoords const &)
+    // BW1W120 00479020 BW1M100 101d8950 Creature::ApplySingleEffect(EFFECT_TYPE, float, GameThing *, MapCoords const &)
     virtual void ApplySingleEffect(EFFECT_TYPE param_1, float param_2, GameThing* param_3, const MapCoords* param_4);
-    // win1.41 00517910 mac 100c9670 Creature::Draw(void)
+    // BW1W120 00517910 BW1M100 100c9670 Creature::Draw(void)
     virtual void Draw();
-    // win1.41 00472dc0 mac 101e16f0 Creature::ProcessState(void)
+    // BW1W120 00472dc0 BW1M100 101e16f0 Creature::ProcessState(void)
     virtual uint32_t ProcessState();
-    // win1.41 00477ef0 mac 101da120 Creature::GetProjectileSpeed(void)
+    // BW1W120 00477ef0 BW1M100 101da120 Creature::GetProjectileSpeed(void)
     virtual float GetProjectileSpeed();
-    // win1.41 00473fe0 mac 101e2fa0 Creature::CanBePickedUp(void)
+    // BW1W120 00473fe0 BW1M100 101e2fa0 Creature::CanBePickedUp(void)
     virtual bool CanBePickedUp();
-    // win1.41 0047cd60 mac 101d06d0 Creature::GetWeight(void)
+    // BW1W120 0047cd60 BW1M100 101d06d0 Creature::GetWeight(void)
     virtual float GetWeight();
-    // win1.41 004f8a10 mac 1028ac60 Creature::CanBeSuckedIntoVortex(LandscapeVortex *)
+    // BW1W120 004f8a10 BW1M100 1028ac60 Creature::CanBeSuckedIntoVortex(LandscapeVortex *)
     virtual bool CanBeSuckedIntoVortex(LandscapeVortex* param_1);
-    // win1.41 00476e10 mac 101dc300 Creature::ValidForLockedSelectProcess(GInterfaceStatus *)
+    // BW1W120 00476e10 BW1M100 101dc300 Creature::ValidForLockedSelectProcess(GInterfaceStatus *)
     virtual bool32_t ValidForLockedSelectProcess(GInterfaceStatus* param_1);
-    // win1.41 00476e70 mac 101dc260 Creature::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
+    // BW1W120 00476e70 BW1M100 101dc260 Creature::NetworkFriendlyStartLockedSelect(GInterfaceStatus *)
     virtual bool32_t NetworkFriendlyStartLockedSelect(GInterfaceStatus* param_1);
-    // win1.41 00476eb0 mac 101dc160 Creature::IsReadyForNetworkUnfriendlyLockedSelect(void)
+    // BW1W120 00476eb0 BW1M100 101dc160 Creature::IsReadyForNetworkUnfriendlyLockedSelect(void)
     virtual uint32_t IsReadyForNetworkUnfriendlyLockedSelect();
-    // win1.41 00476ec0 mac 101dc100 Creature::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
+    // BW1W120 00476ec0 BW1M100 101dc100 Creature::NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo *)
     virtual uint32_t NetworkUnfriendlyLockedSelect(ControlHandUpdateInfo* param_1);
-    // win1.41 00476ed0 mac 101dc060 Creature::GetReadyForNetworkUnfriendlyEndLockedSelect(void)
+    // BW1W120 00476ed0 BW1M100 101dc060 Creature::GetReadyForNetworkUnfriendlyEndLockedSelect(void)
     virtual uint32_t GetReadyForNetworkUnfriendlyEndLockedSelect();
-    // win1.41 00476f00 mac 101dbf90 Creature::IsReadyForNetworkUnfriendlyEndLockedSelect(void)
+    // BW1W120 00476f00 BW1M100 101dbf90 Creature::IsReadyForNetworkUnfriendlyEndLockedSelect(void)
     virtual uint32_t IsReadyForNetworkUnfriendlyEndLockedSelect();
-    // win1.41 00476f60 mac 101dbf40 Creature::NetworkUnfriendlyEndLockedSelect(void)
+    // BW1W120 00476f60 BW1M100 101dbf40 Creature::NetworkUnfriendlyEndLockedSelect(void)
     virtual uint32_t NetworkUnfriendlyEndLockedSelect();
-    // win1.41 00476e90 mac 101dc1c0 Creature::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
+    // BW1W120 00476e90 BW1M100 101dc1c0 Creature::NetworkFriendlyEndLockedSelect(GInterfaceStatus *)
     virtual uint32_t NetworkFriendlyEndLockedSelect(GInterfaceStatus* param_1);
-    // win1.41 00473f60 mac 101e2d80 Creature::ValidForPlaceInHand(GInterfaceStatus *)
+    // BW1W120 00473f60 BW1M100 101e2d80 Creature::ValidForPlaceInHand(GInterfaceStatus *)
     virtual uint32_t ValidForPlaceInHand(GInterfaceStatus* param_1);
-    // win1.41 0047a330 mac 101d6240 Creature::InterfaceValidToGiveObject(GInterfaceStatus *, Object *)
+    // BW1W120 0047a330 BW1M100 101d6240 Creature::InterfaceValidToGiveObject(GInterfaceStatus *, Object *)
     virtual uint32_t InterfaceValidToGiveObject(GInterfaceStatus* param_1, Object* param_2);
-    // win1.41 0047a320 mac 101d63d0 Creature::InterfaceGiveObject(GInterfaceStatus *, Object *)
+    // BW1W120 0047a320 BW1M100 101d63d0 Creature::InterfaceGiveObject(GInterfaceStatus *, Object *)
     virtual uint32_t InterfaceGiveObject(GInterfaceStatus* param_1, Object* param_2);
-    // win1.41 00476dc0 mac 101dc510 Creature::ValidToSelectFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+    // BW1W120 00476dc0 BW1M100 101dc510 Creature::ValidToSelectFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
     virtual uint32_t ValidToSelectFightThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
-    // win1.41 00476dd0 mac 101dc480 Creature::ValidToApplyFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+    // BW1W120 00476dd0 BW1M100 101dc480 Creature::ValidToApplyFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
     virtual uint32_t ValidToApplyFightThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
-    // win1.41 004c6460 mac 10233f70 Creature::SelectFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+    // BW1W120 004c6460 BW1M100 10233f70 Creature::SelectFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
     virtual uint32_t SelectFightThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
-    // win1.41 004c64d0 mac 10233ea0 Creature::ApplyFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
+    // BW1W120 004c64d0 BW1M100 10233ea0 Creature::ApplyFightThisToMapCoord(GInterfaceStatus *, MapCoords const &)
     virtual uint32_t ApplyFightThisToMapCoord(GInterfaceStatus* param_1, const MapCoords* param_2);
-    // win1.41 00476df0 mac 101dc3f0 Creature::ValidToFightThisToObject(GInterfaceStatus *, MapCoords const &)
+    // BW1W120 00476df0 BW1M100 101dc3f0 Creature::ValidToFightThisToObject(GInterfaceStatus *, MapCoords const &)
     virtual uint32_t ValidToFightThisToObject(GInterfaceStatus* param_1, const MapCoords* param_2);
-    // win1.41 004c5fe0 mac 102345e0 Creature::FightThisToObject(GInterfaceStatus *, Object *)
+    // BW1W120 004c5fe0 BW1M100 102345e0 Creature::FightThisToObject(GInterfaceStatus *, Object *)
     virtual uint32_t FightThisToObject(GInterfaceStatus* param_1, Object* param_2);
-    // win1.41 0047b1e0 mac inlined Creature::CanBeDestroyedBySpell_1(Spell *)
+    // BW1W120 0047b1e0 BW1M100 inlined Creature::CanBeDestroyedBySpell_1(Spell *)
     virtual uint32_t CanBeDestroyedBySpell_1(Spell* param_1);
-    // win1.41 00479b80 mac 101d6f90 Creature::GetPhysicsConstantsType(void)
+    // BW1W120 00479b80 BW1M100 101d6f90 Creature::GetPhysicsConstantsType(void)
     virtual uint32_t GetPhysicsConstantsType();
-    // win1.41 00479b90 mac 101d6db0 Creature::SetUpPhysOb(PhysOb *)
+    // BW1W120 00479b90 BW1M100 101d6db0 Creature::SetUpPhysOb(PhysOb *)
     virtual void SetUpPhysOb(PhysOb* param_1);
-    // win1.41 00479970 mac 101d72a0 Creature::GetBoundingSphere(LHPoint &, float &)
+    // BW1W120 00479970 BW1M100 101d72a0 Creature::GetBoundingSphere(LHPoint &, float &)
     virtual void GetBoundingSphere(LHPoint* param_1, float* param_2);
-    // win1.41 00479d20 mac 101d6d20 Creature::InteractsWithPhysicsObjects(void)
+    // BW1W120 00479d20 BW1M100 101d6d20 Creature::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
-    // win1.41 00479990 mac 101d6fd0 Creature::ReactToPhysicsImpact(PhysicsObject *, bool)
+    // BW1W120 00479990 BW1M100 101d6fd0 Creature::ReactToPhysicsImpact(PhysicsObject *, bool)
     virtual void ReactToPhysicsImpact(PhysicsObject* param_1, bool param_2);
-    // win1.41 00479d10 mac 101d6d70 Creature::CanBecomeAPhysicsObject(void)
+    // BW1W120 00479d10 BW1M100 101d6d70 Creature::CanBecomeAPhysicsObject(void)
     virtual bool CanBecomeAPhysicsObject();
-    // win1.41 0047d4b0 mac 101cf930 Creature::CreatureMustAvoid(Creature *)
+    // BW1W120 0047d4b0 BW1M100 101cf930 Creature::CreatureMustAvoid(Creature *)
     virtual bool CreatureMustAvoid(Creature* param_1);
-    // win1.41 0047d500 mac 101cf7f0 Creature::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
+    // BW1W120 0047d500 BW1M100 101cf7f0 Creature::AddToRoutePlan(RPHolder *, Creature *, int, void (*)(int, Point2D, float, int))
     virtual void AddToRoutePlan(RPHolder* param_1, Creature* param_2, int param_3, void (__cdecl*)(int, Point2D, float, int) param_4);
-    // win1.41 00477f00 mac 101da0d0 Creature::IsScary(void)
+    // BW1W120 00477f00 BW1M100 101da0d0 Creature::IsScary(void)
     virtual bool IsScary();
-    // win1.41 00477ee0 mac 101da160 Creature::GetFacingPitch(void)
+    // BW1W120 00477ee0 BW1M100 101da160 Creature::GetFacingPitch(void)
     virtual float GetFacingPitch();
-    // win1.41 004770d0 mac 101dbbc0 Creature::SetHeadPos(MapCoords *)
+    // BW1W120 004770d0 BW1M100 101dbbc0 Creature::SetHeadPos(MapCoords *)
     virtual void SetHeadPos(MapCoords* param_1);
-    // win1.41 00477f70 mac 101d9d60 Creature::SaveObject(LHOSFile &, MapCoords const &)
+    // BW1W120 00477f70 BW1M100 101d9d60 Creature::SaveObject(LHOSFile &, MapCoords const &)
     virtual uint32_t SaveObject(LHOSFile* param_1, const MapCoords* param_2);
-    // win1.41 00477860 mac 101dae90 Creature::GetNearestEdgeOfObject(Object *)
+    // BW1W120 00477860 BW1M100 101dae90 Creature::GetNearestEdgeOfObject(Object *)
     virtual void GetNearestEdgeOfObject(Object* param_1);
-    // win1.41 004753c0 mac 101de710 Creature::GetDestPos(void)
+    // BW1W120 004753c0 BW1M100 101de710 Creature::GetDestPos(void)
     virtual MapCoords* GetDestPos();
-    // win1.41 004753d0 mac 101de690 Creature::GetFinalDestPos(MapCoords *)
+    // BW1W120 004753d0 BW1M100 101de690 Creature::GetFinalDestPos(MapCoords *)
     virtual MapCoords* GetFinalDestPos(MapCoords* param_1);
-    // win1.41 004f0560 mac 1027a2e0 Creature::DecideWhatToDo(void)
+    // BW1W120 004f0560 BW1M100 1027a2e0 Creature::DecideWhatToDo(void)
     virtual bool DecideWhatToDo();
-    // win1.41 0047b1a0 mac 101d49f0 Creature::GetAge(void)
+    // BW1W120 0047b1a0 BW1M100 101d49f0 Creature::GetAge(void)
     virtual uint32_t GetAge();
-    // win1.41 0047b1b0 mac 101d49b0 Creature::SetAge(unsigned long)
+    // BW1W120 0047b1b0 BW1M100 101d49b0 Creature::SetAge(unsigned long)
     virtual void SetAge(uint32_t param_1);
-    // win1.41 00473f00 mac inlined Creature::CallIntoAnimationFunction(VILLAGER_STATES)
+    // BW1W120 00473f00 BW1M100 inlined Creature::CallIntoAnimationFunction(VILLAGER_STATES)
     virtual int CallIntoAnimationFunction(VILLAGER_STATES param_1);
-    // win1.41 00473f10 mac inlined Creature::CallOutofAnimationFunction(VILLAGER_STATES)
+    // BW1W120 00473f10 BW1M100 inlined Creature::CallOutofAnimationFunction(VILLAGER_STATES)
     virtual int CallOutofAnimationFunction(VILLAGER_STATES param_1);
-    // win1.41 00473f40 mac inlined Creature::IsFinalState(VILLAGER_STATES)
+    // BW1W120 00473f40 BW1M100 inlined Creature::IsFinalState(VILLAGER_STATES)
     virtual bool IsFinalState(VILLAGER_STATES param_1);
-    // win1.41 00473f90 mac inlined Creature::SetAnim__i(int)
+    // BW1W120 00473f90 BW1M100 inlined Creature::SetAnim__i(int)
     virtual void SetAnim__i(int param_1);
-    // win1.41 00473ef0 mac 101e2be0 Creature::GetAnimId(void)
+    // BW1W120 00473ef0 BW1M100 101e2be0 Creature::GetAnimId(void)
     virtual ANIM_LIST GetAnimId();
-    // win1.41 00473fa0 mac inlined Creature::CallExitStateFunction(VILLAGER_STATES)
+    // BW1W120 00473fa0 BW1M100 inlined Creature::CallExitStateFunction(VILLAGER_STATES)
     virtual uint32_t CallExitStateFunction(VILLAGER_STATES param_1);
-    // win1.41 00473fc0 mac inlined Creature::CallEntryStateFunctionUcUc(VILLAGER_STATES, VILLAGER_STATES)
+    // BW1W120 00473fc0 BW1M100 inlined Creature::CallEntryStateFunctionUcUc(VILLAGER_STATES, VILLAGER_STATES)
     virtual uint32_t CallEntryStateFunction__UcUc(VILLAGER_STATES param_1, VILLAGER_STATES param_2);
-    // win1.41 00473fb0 mac inlined Creature::CallEntryStateFunctionUc(VILLAGER_STATES)
+    // BW1W120 00473fb0 BW1M100 inlined Creature::CallEntryStateFunctionUc(VILLAGER_STATES)
     virtual uint32_t CallEntryStateFunction__Uc(VILLAGER_STATES param_1);
-    // win1.41 0047c670 mac 101d2490 Creature::IsDancing(void)
+    // BW1W120 0047c670 BW1M100 101d2490 Creature::IsDancing(void)
     virtual bool IsDancing();
-    // win1.41 004f2820 mac 1027db00 Creature::IsAvailableForReaction(REACTION)
+    // BW1W120 004f2820 BW1M100 1027db00 Creature::IsAvailableForReaction(REACTION)
     virtual bool IsAvailableForReaction(REACTION param_1);
-    // win1.41 004f2780 mac 1027dca0 Creature::UpdateHowImpressed(Reaction *, int)
+    // BW1W120 004f2780 BW1M100 1027dca0 Creature::UpdateHowImpressed(Reaction *, int)
     virtual void UpdateHowImpressed(Reaction* param_1, int param_2);
-    // win1.41 004f2680 mac inlined Creature::AddReaction(Reaction *, VILLAGER_STATES)
+    // BW1W120 004f2680 BW1M100 inlined Creature::AddReaction(Reaction *, VILLAGER_STATES)
     virtual void AddReaction(Reaction* param_1, VILLAGER_STATES param_2);
-    // win1.41 004f26d0 mac 1027ddf0 Creature::StartReacting(REACTION, GameThingWithPos *, Reaction *)
+    // BW1W120 004f26d0 BW1M100 1027ddf0 Creature::StartReacting(REACTION, GameThingWithPos *, Reaction *)
     virtual void StartReacting(REACTION param_1, GameThingWithPos* param_2, Reaction* param_3);
-    // win1.41 00477f30 mac 101da020 Creature::ResetStateAfterReacting(void)
+    // BW1W120 00477f30 BW1M100 101da020 Creature::ResetStateAfterReacting(void)
     virtual void ResetStateAfterReacting();
-    // win1.41 004f2b00 mac 1027d490 Creature::SetupFleeFromObject(GameThingWithPos *, Reaction *)
+    // BW1W120 004f2b00 BW1M100 1027d490 Creature::SetupFleeFromObject(GameThingWithPos *, Reaction *)
     virtual void SetupFleeFromObject(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f2b40 mac 1027d3d0 Creature::SetupLookAtNiceSpell(GameThingWithPos *, Reaction *)
+    // BW1W120 004f2b40 BW1M100 1027d3d0 Creature::SetupLookAtNiceSpell(GameThingWithPos *, Reaction *)
     virtual void SetupLookAtNiceSpell(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f2ce0 mac 1027cef0 Creature::SetupReactToCreature(GameThingWithPos *, Reaction *)
+    // BW1W120 004f2ce0 BW1M100 1027cef0 Creature::SetupReactToCreature(GameThingWithPos *, Reaction *)
     virtual void SetupReactToCreature(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f2de0 mac 1027cd30 Creature::SetupReactToFood(GameThingWithPos *, Reaction *)
+    // BW1W120 004f2de0 BW1M100 1027cd30 Creature::SetupReactToFood(GameThingWithPos *, Reaction *)
     virtual void SetupReactToFood(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f2e50 mac 1027cbf0 Creature::SetupReactToMagicTree(GameThingWithPos *, Reaction *)
+    // BW1W120 004f2e50 BW1M100 1027cbf0 Creature::SetupReactToMagicTree(GameThingWithPos *, Reaction *)
     virtual void SetupReactToMagicTree(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f35a0 mac 1027bc30 Creature::SetupReactToFlyingObject(GameThingWithPos *, Reaction *)
+    // BW1W120 004f35a0 BW1M100 1027bc30 Creature::SetupReactToFlyingObject(GameThingWithPos *, Reaction *)
     virtual void SetupReactToFlyingObject(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f2f70 mac 1027c710 Creature::SetupReactToFire(GameThingWithPos *, Reaction *)
+    // BW1W120 004f2f70 BW1M100 1027c710 Creature::SetupReactToFire(GameThingWithPos *, Reaction *)
     virtual void SetupReactToFire(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f2ea0 mac 1027ca50 Creature::SetupReactToBall(GameThingWithPos *, Reaction *)
+    // BW1W120 004f2ea0 BW1M100 1027ca50 Creature::SetupReactToBall(GameThingWithPos *, Reaction *)
     virtual void SetupReactToBall(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f3090 mac 1027c690 Creature::SetupReactToMagicShield(GameThingWithPos *, Reaction *)
+    // BW1W120 004f3090 BW1M100 1027c690 Creature::SetupReactToMagicShield(GameThingWithPos *, Reaction *)
     virtual void SetupReactToMagicShield(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f36b0 mac 1027b920 Creature::SetupReactToHandPickUp(GameThingWithPos *, Reaction *)
+    // BW1W120 004f36b0 BW1M100 1027b920 Creature::SetupReactToHandPickUp(GameThingWithPos *, Reaction *)
     virtual void SetupReactToHandPickUp(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f3820 mac 1027b720 Creature::SetupReactToHandUsingTotem(GameThingWithPos *, Reaction *)
+    // BW1W120 004f3820 BW1M100 1027b720 Creature::SetupReactToHandUsingTotem(GameThingWithPos *, Reaction *)
     virtual void SetupReactToHandUsingTotem(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f3930 mac 1027b440 Creature::SetupReactToObjectCrushed(GameThingWithPos *, Reaction *)
+    // BW1W120 004f3930 BW1M100 1027b440 Creature::SetupReactToObjectCrushed(GameThingWithPos *, Reaction *)
     virtual void SetupReactToObjectCrushed(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f3a00 mac 1027b2e0 Creature::SetupReactToFight(GameThingWithPos *, Reaction *)
+    // BW1W120 004f3a00 BW1M100 1027b2e0 Creature::SetupReactToFight(GameThingWithPos *, Reaction *)
     virtual void SetupReactToFight(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f3a60 mac 1027b080 Creature::SetupReactToTeleport(GameThingWithPos *, Reaction *)
+    // BW1W120 004f3a60 BW1M100 1027b080 Creature::SetupReactToTeleport(GameThingWithPos *, Reaction *)
     virtual void SetupReactToTeleport(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f2b80 mac 1027d2e0 Creature::SetupReactToHandPuttingStuffInStoragePit(GameThingWithPos *, Reaction *)
+    // BW1W120 004f2b80 BW1M100 1027d2e0 Creature::SetupReactToHandPuttingStuffInStoragePit(GameThingWithPos *, Reaction *)
     virtual void SetupReactToHandPuttingStuffInStoragePit(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f3b50 mac 1027af10 Creature::SetupReactToDeath(GameThingWithPos *, Reaction *)
+    // BW1W120 004f3b50 BW1M100 1027af10 Creature::SetupReactToDeath(GameThingWithPos *, Reaction *)
     virtual void SetupReactToDeath(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f3b90 mac 1027ae30 Creature::SetupReactToFainting(GameThingWithPos *, Reaction *)
+    // BW1W120 004f3b90 BW1M100 1027ae30 Creature::SetupReactToFainting(GameThingWithPos *, Reaction *)
     virtual void SetupReactToFainting(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f3bd0 mac 1027ad40 Creature::SetupReactToConfused(GameThingWithPos *, Reaction *)
+    // BW1W120 004f3bd0 BW1M100 1027ad40 Creature::SetupReactToConfused(GameThingWithPos *, Reaction *)
     virtual void SetupReactToConfused(GameThingWithPos* param_1, Reaction* param_2);
-    // win1.41 004f2ab0 mac 1027d550 Creature::FleeFromSpellPriority(Reaction *, Reaction *)
+    // BW1W120 004f2ab0 BW1M100 1027d550 Creature::FleeFromSpellPriority(Reaction *, Reaction *)
     virtual uint8_t FleeFromSpellPriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f2bf0 mac 1027d060 Creature::ReactToCreaturePriority(Reaction *, Reaction *)
+    // BW1W120 004f2bf0 BW1M100 1027d060 Creature::ReactToCreaturePriority(Reaction *, Reaction *)
     virtual uint8_t ReactToCreaturePriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f2d90 mac 1027ce00 Creature::ReactToFoodPriority(Reaction *, Reaction *)
+    // BW1W120 004f2d90 BW1M100 1027ce00 Creature::ReactToFoodPriority(Reaction *, Reaction *)
     virtual uint8_t ReactToFoodPriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f2e20 mac 1027cc70 Creature::ReactToMagicTreePriority(Reaction *, Reaction *)
+    // BW1W120 004f2e20 BW1M100 1027cc70 Creature::ReactToMagicTreePriority(Reaction *, Reaction *)
     virtual uint8_t ReactToMagicTreePriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f3480 mac 1027bd70 Creature::ReactToFlyingObjectPriority(Reaction *, Reaction *)
+    // BW1W120 004f3480 BW1M100 1027bd70 Creature::ReactToFlyingObjectPriority(Reaction *, Reaction *)
     virtual uint8_t ReactToFlyingObjectPriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f2e70 mac 1027cb30 Creature::ReactToBallPriority(Reaction *, Reaction *)
+    // BW1W120 004f2e70 BW1M100 1027cb30 Creature::ReactToBallPriority(Reaction *, Reaction *)
     virtual uint8_t ReactToBallPriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f2ee0 mac 1027c920 Creature::ReactToFirePriority(Reaction *, Reaction *)
+    // BW1W120 004f2ee0 BW1M100 1027c920 Creature::ReactToFirePriority(Reaction *, Reaction *)
     virtual uint8_t ReactToFirePriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f3620 mac 1027bac0 Creature::ReactToHandPickUpPriority(Reaction *, Reaction *)
+    // BW1W120 004f3620 BW1M100 1027bac0 Creature::ReactToHandPickUpPriority(Reaction *, Reaction *)
     virtual uint8_t ReactToHandPickUpPriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f37d0 mac 1027b830 Creature::ReactToHandUsingTotemPriority(Reaction *, Reaction *)
+    // BW1W120 004f37d0 BW1M100 1027b830 Creature::ReactToHandUsingTotemPriority(Reaction *, Reaction *)
     virtual uint8_t ReactToHandUsingTotemPriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f3870 mac 1027b560 Creature::ReactToObjectCrushedPriority(Reaction *, Reaction *)
+    // BW1W120 004f3870 BW1M100 1027b560 Creature::ReactToObjectCrushedPriority(Reaction *, Reaction *)
     virtual uint8_t ReactToObjectCrushedPriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f3990 mac 1027b340 Creature::ReactToFightPriority(Reaction *, Reaction *)
+    // BW1W120 004f3990 BW1M100 1027b340 Creature::ReactToFightPriority(Reaction *, Reaction *)
     virtual uint8_t ReactToFightPriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f3a10 mac 1027b200 Creature::ReactToTeleportPriority(Reaction *, Reaction *)
+    // BW1W120 004f3a10 BW1M100 1027b200 Creature::ReactToTeleportPriority(Reaction *, Reaction *)
     virtual uint8_t ReactToTeleportPriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f2bc0 mac 1027d200 Creature::ReactToHandPuttingStuffInStoragePitPriority(Reaction *, Reaction *)
+    // BW1W120 004f2bc0 BW1M100 1027d200 Creature::ReactToHandPuttingStuffInStoragePitPriority(Reaction *, Reaction *)
     virtual uint8_t ReactToHandPuttingStuffInStoragePitPriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f3b20 mac 1027afe0 Creature::ReactToDeathPriority(Reaction *, Reaction *)
+    // BW1W120 004f3b20 BW1M100 1027afe0 Creature::ReactToDeathPriority(Reaction *, Reaction *)
     virtual uint8_t ReactToDeathPriority(Reaction* param_1, Reaction* param_2);
-    // win1.41 004f29c0 mac 1027d840 Creature::StandardNumGameTurnsToReactFunction(GameThingWithPos *, unsigned long, float)
+    // BW1W120 004f29c0 BW1M100 1027d840 Creature::StandardNumGameTurnsToReactFunction(GameThingWithPos *, unsigned long, float)
     virtual uint32_t StandardNumGameTurnsToReactFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
-    // win1.41 004f2a20 mac 1027d730 Creature::StandardNumGameTurnsBeforeReactingAgainFunction(GameThingWithPos *, unsigned long, float)
+    // BW1W120 004f2a20 BW1M100 1027d730 Creature::StandardNumGameTurnsBeforeReactingAgainFunction(GameThingWithPos *, unsigned long, float)
     virtual uint32_t StandardNumGameTurnsBeforeReactingAgainFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
-    // win1.41 004f2a70 mac 1027d6b0 Creature::NumGameTurnsToReactToCreatureFunction(GameThingWithPos *, unsigned long, float)
+    // BW1W120 004f2a70 BW1M100 1027d6b0 Creature::NumGameTurnsToReactToCreatureFunction(GameThingWithPos *, unsigned long, float)
     virtual uint32_t NumGameTurnsToReactToCreatureFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
-    // win1.41 004f2a90 mac 1027d620 Creature::NumGameTurnsBeforeReactingAgainToCreatureFunction(GameThingWithPos *, unsigned long, float)
+    // BW1W120 004f2a90 BW1M100 1027d620 Creature::NumGameTurnsBeforeReactingAgainToCreatureFunction(GameThingWithPos *, unsigned long, float)
     virtual uint32_t NumGameTurnsBeforeReactingAgainToCreatureFunction(GameThingWithPos* param_1, uint32_t param_2, float param_3);
 
     // Static methods
 
-    // win1.41 00474a20 mac 101dfc60 Creature::Create(MapCoords const &, CreatureInfo const *, GPlayer *)
+    // BW1W120 00474a20 BW1M100 101dfc60 Creature::Create(MapCoords const &, CreatureInfo const *, GPlayer *)
     static Creature* Create(const MapCoords* coords, const GCreatureInfo* info, GPlayer* player);
-    // win1.41 00474b50 mac 101dfb90 Creature::CreateCreature(MapCoords const &, CreatureInfo const *, GPlayer *)
+    // BW1W120 00474b50 BW1M100 101dfb90 Creature::CreateCreature(MapCoords const &, CreatureInfo const *, GPlayer *)
     static Creature* CreateCreature(const MapCoords* coords, const GCreatureInfo* info, GPlayer* player);
 
     // Constructors
 
-    // win1.41 00474690 mac 101dfe30 Creature::Creature(void)
+    // BW1W120 00474690 BW1M100 101dfe30 Creature::Creature(void)
     Creature();
 
     // Non-virtual methods
 
-    // win1.41 00475730 mac 101ddff0 Creature::FinishActionUnsuccessfully(char *, int, int)
+    // BW1W120 00475730 BW1M100 101ddff0 Creature::FinishActionUnsuccessfully(char *, int, int)
     void FinishActionUnsuccessfully(char* param_1, int param_2, int param_3);
-    // win1.41 00477850 mac 101daef0 Creature::GetCreature3D(void)
+    // BW1W120 00477850 BW1M100 101daef0 Creature::GetCreature3D(void)
     LH3DCreature* GetCreature3D();
-    // win1.41 0047c650 mac 101d2500 Creature::SetAnimationTimeModify(bool value)
+    // BW1W120 0047c650 BW1M100 101d2500 Creature::SetAnimationTimeModify(bool value)
     void SetAnimationTimeModify(bool value);
-    // win1.41 0047c690 mac 101d2420 Creature::IsOnHomeTeam(void)
+    // BW1W120 0047c690 BW1M100 101d2420 Creature::IsOnHomeTeam(void)
     bool IsOnHomeTeam();
-    // win1.41 004c4450 mac 10230ac0 Creature::ForceActivityAndForceAction(CREATURE_DESIRES, CreatureBelief *, CREATURE_ACTION, CreatureBelief *, CreatureBelief *, int, int)
+    // BW1W120 004c4450 BW1M100 10230ac0 Creature::ForceActivityAndForceAction(CREATURE_DESIRES, CreatureBelief *, CREATURE_ACTION, CreatureBelief *, CreatureBelief *, int, int)
     void ForceActivityAndForceAction(CREATURE_DESIRES param_1, CreatureBelief* param_2, CREATURE_ACTION param_3, CreatureBelief* param_4, CreatureBelief* param_5, int param_6, int param_7);
-    // win1.41 004c44b0 mac 10230950 Creature::ForceActivityAndForceAction(CreaturePlan &, int, int)
+    // BW1W120 004c44b0 BW1M100 10230950 Creature::ForceActivityAndForceAction(CreaturePlan &, int, int)
     void ForceActivityAndForceAction(CreaturePlan* param_1, int param_2, int param_3);
-    // win1.41 004ea670 mac 10279d20 Creature::DecideOnNewPlan(CreaturePlan &)
+    // BW1W120 004ea670 BW1M100 10279d20 Creature::DecideOnNewPlan(CreaturePlan &)
     void DecideOnNewPlan(CreaturePlan* param_1);
-    // win1.41 004f8b80 mac 1028a7b0 Creature::ProcessSpells(void)
+    // BW1W120 004f8b80 BW1M100 1028a7b0 Creature::ProcessSpells(void)
     void ProcessSpells();
-    // win1.41 004ffdd0 mac 102a0fc0 Creature::SubStatePerformPickUpParameter(CreatureBelief *)
+    // BW1W120 004ffdd0 BW1M100 102a0fc0 Creature::SubStatePerformPickUpParameter(CreatureBelief *)
     uint32_t SubStatePerformPickUpParameter(CreatureBelief* param_1);
-    // win1.41 00501d10 mac 1029da30 Creature::SubStatePerformAddVillagersToDance(void)
+    // BW1W120 00501d10 BW1M100 1029da30 Creature::SubStatePerformAddVillagersToDance(void)
     bool SubStatePerformAddVillagersToDance();
 };
 
@@ -590,33 +590,33 @@ public:
 
     // Override methods
 
-    // win1.41 0050b370 mac 100c01e0 Creed::_dt(void)
+    // BW1W120 0050b370 BW1M100 100c01e0 Creed::_dt(void)
     virtual ~Creed();
-    // win1.41 0050b3d0 mac 100c0600 Creed::ToBeDeleted(int)
+    // BW1W120 0050b3d0 BW1M100 100c0600 Creed::ToBeDeleted(int)
     virtual void ToBeDeleted(int param_1);
-    // win1.41 0050b360 mac 100c0320 Creed::GetDebugText(void)
+    // BW1W120 0050b360 BW1M100 100c0320 Creed::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0050b4e0 mac 100c03b0 Creed::Load(GameOSFile &)
+    // BW1W120 0050b4e0 BW1M100 100c03b0 Creed::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* param_1);
-    // win1.41 0050b4c0 mac 100c0410 Creed::Save(GameOSFile &)
+    // BW1W120 0050b4c0 BW1M100 100c0410 Creed::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* param_1);
-    // win1.41 0050b350 mac 100c02f0 Creed::GetSaveType(void)
+    // BW1W120 0050b350 BW1M100 100c02f0 Creed::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0050b4a0 mac 100c0470 Creed::SetScale(float)
+    // BW1W120 0050b4a0 BW1M100 100c0470 Creed::SetScale(float)
     virtual void SetScale(float param_1);
-    // win1.41 0050b500 mac 100c0360 Creed::CanBePickedUpByCreature(Creature *)
+    // BW1W120 0050b500 BW1M100 100c0360 Creed::CanBePickedUpByCreature(Creature *)
     virtual uint32_t CanBePickedUpByCreature(Creature* param_1);
-    // win1.41 0050b420 mac 100c04d0 Creed::Create3DObject(void)
+    // BW1W120 0050b420 BW1M100 100c04d0 Creed::Create3DObject(void)
     virtual void Create3DObject();
-    // win1.41 005186a0 mac 100c8cf0 Creed::Draw(void)
+    // BW1W120 005186a0 BW1M100 100c8cf0 Creed::Draw(void)
     virtual void Draw();
-    // win1.41 005186d0 mac 100c8c40 Creed::DrawOutOfMap(bool)
+    // BW1W120 005186d0 BW1M100 100c8c40 Creed::DrawOutOfMap(bool)
     virtual void DrawOutOfMap(bool param_1);
-    // win1.41 0050b3a0 mac 100c06a0 Creed::CallVirtualFunctionsForCreation(MapCoords const &)
+    // BW1W120 0050b3a0 BW1M100 100c06a0 Creed::CallVirtualFunctionsForCreation(MapCoords const &)
     virtual void CallVirtualFunctionsForCreation(const MapCoords* param_1);
-    // win1.41 0050b330 mac 100c0270 Creed::InteractsWithPhysicsObjects(void)
+    // BW1W120 0050b330 BW1M100 100c0270 Creed::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
-    // win1.41 0050b340 mac 100c02b0 Creed::CanBecomeAPhysicsObject(void)
+    // BW1W120 0050b340 BW1M100 100c02b0 Creed::CanBecomeAPhysicsObject(void)
     virtual bool CanBecomeAPhysicsObject();
 };
 

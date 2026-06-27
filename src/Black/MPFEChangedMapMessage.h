@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 00631270 mac 103969e0 MPFEChangedMapMessage::_dt(void)
+    // BW1W120 00631270 BW1M100 103969e0 MPFEChangedMapMessage::_dt(void)
     virtual ~MPFEChangedMapMessage();
 };
 

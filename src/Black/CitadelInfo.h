@@ -17,9 +17,9 @@ public:
 
     // Override methods
 
-    // win1.41 004629d0 mac 101bb390 GCitadelInfo::_dt(void)
+    // BW1W120 004629d0 BW1M100 101bb390 GCitadelInfo::_dt(void)
     virtual ~GCitadelInfo();
-    // win1.41 00462980 mac 101bb430 GCitadelInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00462980 BW1M100 101bb430 GCitadelInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

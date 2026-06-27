@@ -18,13 +18,13 @@ public:
 
     // Override methods
 
-    // win1.41 0041d790 mac 10120c80 Horse::_dt(void)
+    // BW1W120 0041d790 BW1M100 10120c80 Horse::_dt(void)
     virtual ~Horse();
-    // win1.41 0041d780 mac 10171060 Horse::GetDebugText(void)
+    // BW1W120 0041d780 BW1M100 10171060 Horse::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0041d770 mac 10171030 Horse::GetSaveType(void)
+    // BW1W120 0041d770 BW1M100 10171030 Horse::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0041cb40 mac 1016e1f0 Horse::StandAnimation(void)
+    // BW1W120 0041cb40 BW1M100 1016e1f0 Horse::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
 

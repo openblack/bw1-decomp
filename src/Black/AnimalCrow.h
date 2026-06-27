@@ -18,13 +18,13 @@ public:
 
     // Override methods
 
-    // win1.41 0041ec20 mac 101718e0 Crow::_dt(void)
+    // BW1W120 0041ec20 BW1M100 101718e0 Crow::_dt(void)
     virtual ~Crow();
-    // win1.41 0041ec10 mac 101719a0 Crow::GetDebugText(void)
+    // BW1W120 0041ec10 BW1M100 101719a0 Crow::GetDebugText(void)
     virtual char* GetDebugText();
-    // win1.41 0041ec00 mac 10171970 Crow::GetSaveType(void)
+    // BW1W120 0041ec00 BW1M100 10171970 Crow::GetSaveType(void)
     virtual uint32_t GetSaveType();
-    // win1.41 0041bf10 mac 10170590 Crow::StandAnimation(void)
+    // BW1W120 0041bf10 BW1M100 10170590 Crow::StandAnimation(void)
     virtual uint32_t StandAnimation();
 };
 

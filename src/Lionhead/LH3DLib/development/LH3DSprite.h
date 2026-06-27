@@ -25,16 +25,16 @@ struct LH3DSprite
 
     // Static methods
 
-    // win1.41 008404a0 mac 100b64f0 LH3DSprite::Create(long, int)
+    // BW1W120 008404a0 BW1M100 100b64f0 LH3DSprite::Create(long, int)
     static LH3DSprite* Create(int param_1, int param_2);
 
     // Non-virtual methods
 
-    // win1.41 008404f0 mac 1000c7c0 LH3DSprite::SetToZero(void)
+    // BW1W120 008404f0 BW1M100 1000c7c0 LH3DSprite::SetToZero(void)
     void SetToZero();
-    // win1.41 00840520 mac 100b6440 LH3DSprite::Release(void)
+    // BW1W120 00840520 BW1M100 100b6440 LH3DSprite::Release(void)
     void Release();
-    // win1.41 00840530 mac 1002a870 LH3DSprite::Draw(void)
+    // BW1W120 00840530 BW1M100 1002a870 LH3DSprite::Draw(void)
     void Draw();
 };
 

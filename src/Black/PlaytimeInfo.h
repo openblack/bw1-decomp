@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 0066c330 mac 10115d70 GPlaytimeInfo::_dt(void)
+    // BW1W120 0066c330 BW1M100 10115d70 GPlaytimeInfo::_dt(void)
     virtual ~GPlaytimeInfo();
-    // win1.41 0066c2d0 mac 10115f30 GPlaytimeInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 0066c2d0 BW1M100 10115f30 GPlaytimeInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

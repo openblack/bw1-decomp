@@ -22,17 +22,17 @@ public:
 
     // Static methods
 
-    // win1.41 007ad230 mac 100db740 LHDLL::AddToInternalList(LHDLL*)
+    // BW1W120 007ad230 BW1M100 100db740 LHDLL::AddToInternalList(LHDLL*)
     static LHDLL* AddToInternalList(LHDLL* param_1);
 
     // Constructors
 
-    // win1.41 007ad370 mac 1061e11c LHDLL::LHDLL(const char*)
+    // BW1W120 007ad370 BW1M100 1061e11c LHDLL::LHDLL(const char*)
     LHDLL(char* library_path);
 
     // Non-virtual Destructors
 
-    // win1.41 007ad4c0 mac 1061e14c LHDLL::~LHDLL(void)
+    // BW1W120 007ad4c0 BW1M100 1061e14c LHDLL::~LHDLL(void)
     ~LHDLL();
 };
 

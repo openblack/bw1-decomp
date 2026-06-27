@@ -17,9 +17,9 @@ public:
 
     // Override methods
 
-    // win1.41 0077ebc0 mac 105b4170 GWorshipSiteUpgradeInfo::_dt(void)
+    // BW1W120 0077ebc0 BW1M100 105b4170 GWorshipSiteUpgradeInfo::_dt(void)
     virtual ~GWorshipSiteUpgradeInfo();
-    // win1.41 0077eb70 mac 105b4210 GWorshipSiteUpgradeInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 0077eb70 BW1M100 105b4210 GWorshipSiteUpgradeInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 

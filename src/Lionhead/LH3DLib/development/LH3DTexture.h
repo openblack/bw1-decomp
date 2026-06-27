@@ -30,16 +30,16 @@ struct LH3DTexture
 
     // Static methods
 
-    // win1.41 008379e0 mac 1061afb4 LH3DTexture::Create
+    // BW1W120 008379e0 BW1M100 1061afb4 LH3DTexture::Create
     static LH3DTexture* Create(void* param_0, unsigned long param_1, unsigned long param_2, TextureFormat* param_3);
-    // win1.41 008377e0 mac inlined LH3DTexture::SetPackedTexture(void)
+    // BW1W120 008377e0 BW1M100 inlined LH3DTexture::SetPackedTexture(void)
     static void SetPackedTexture();
-    // win1.41 00838480 mac 100c9060 LH3DTexture::GetThisTexture
+    // BW1W120 00838480 BW1M100 100c9060 LH3DTexture::GetThisTexture
     static LH3DTexture* GetThisTexture(unsigned long id);
 
     // Non-virtual methods
 
-    // win1.41 00837d40 mac 1061b614 LH3DTexture::Release(void)
+    // BW1W120 00837d40 BW1M100 1061b614 LH3DTexture::Release(void)
     void Release();
 };
 

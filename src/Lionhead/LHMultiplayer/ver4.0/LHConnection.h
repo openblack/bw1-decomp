@@ -29,39 +29,39 @@ public:
 
     // Non-virtual methods
 
-    // win1.41 100046c0 mac 100df730 LHConnection::SetNetUser(LHNetUser *)
+    // BW1W120 100046c0 BW1M100 100df730 LHConnection::SetNetUser(LHNetUser *)
     void SetNetUser(LHNetUser* net_user);
-    // win1.41 100046e0 mac 100df6d0 LHConnection::GetTransportType(void)
+    // BW1W120 100046e0 BW1M100 100df6d0 LHConnection::GetTransportType(void)
     LH_TRANSPORT_TYPE GetTransportType();
-    // win1.41 10004760 mac 1000f630 LHConnection::GetIncomingEventQSize(void)
+    // BW1W120 10004760 BW1M100 1000f630 LHConnection::GetIncomingEventQSize(void)
     uint32_t GetIncomingEventQSize();
-    // win1.41 100047f0 mac 100df100 LHConnection::RawRead(unsigned long, LH_NETEVENT_TYPE)
+    // BW1W120 100047f0 BW1M100 100df100 LHConnection::RawRead(unsigned long, LH_NETEVENT_TYPE)
     LHNetEvent* RawRead(uint32_t param_1, LH_NETEVENT_TYPE type);
-    // win1.41 10004840 mac 100df070 LHConnection::RawPeek(unsigned long, LH_NETEVENT_TYPE)
+    // BW1W120 10004840 BW1M100 100df070 LHConnection::RawPeek(unsigned long, LH_NETEVENT_TYPE)
     LHNetEvent* RawPeek(uint32_t param_1, LH_NETEVENT_TYPE param_2);
-    // win1.41 10004870 mac 100095c0 LHConnection::Peek(ulong)
+    // BW1W120 10004870 BW1M100 100095c0 LHConnection::Peek(ulong)
     LHNetEvent* Peek(uint32_t param_1);
-    // win1.41 100048b0 mac 100ded90 LHConnection::BaseProcessEvent(LHNetEvent *)
+    // BW1W120 100048b0 BW1M100 100ded90 LHConnection::BaseProcessEvent(LHNetEvent *)
     LH_RETURN BaseProcessEvent(LHNetEvent* net_event);
-    // win1.41 10004d70 mac 100de0c0 LHConnection::Write(LHNetEvent *)
+    // BW1W120 10004d70 BW1M100 100de0c0 LHConnection::Write(LHNetEvent *)
     LH_RETURN Write(LHNetEvent* net_event);
-    // win1.41 10004e50 mac 100ddf50 LHConnection::OpenClientConnection(LHNetUser *, LHTransportInfo *)
+    // BW1W120 10004e50 BW1M100 100ddf50 LHConnection::OpenClientConnection(LHNetUser *, LHTransportInfo *)
     LH_RETURN OpenClientConnection(LHNetUser* user, LHTransportInfo* transport_info);
-    // win1.41 10004e80 mac 100dddd0 LHConnection::SendClientProtocol(void)
+    // BW1W120 10004e80 BW1M100 100dddd0 LHConnection::SendClientProtocol(void)
     LH_RETURN SendClientProtocol();
-    // win1.41 10004ee0 mac 100ddc70 LHConnection::RawOpen(LHNetUser *, LHTransportInfo *)
+    // BW1W120 10004ee0 BW1M100 100ddc70 LHConnection::RawOpen(LHNetUser *, LHTransportInfo *)
     LH_RETURN RawOpen(LHNetUser* user, LHTransportInfo* transport_info);
-    // win1.41 10004f80 mac 100ddc10 LHConnection::ConnectionOriented(void)
+    // BW1W120 10004f80 BW1M100 100ddc10 LHConnection::ConnectionOriented(void)
     bool32_t ConnectionOriented();
-    // win1.41 100051b0 mac 100dd710 LHConnection::ClearTransport(void)
+    // BW1W120 100051b0 BW1M100 100dd710 LHConnection::ClearTransport(void)
     void ClearTransport();
-    // win1.41 10005270 mac 10010210 LHConnection::IsDisconnected(void)
+    // BW1W120 10005270 BW1M100 10010210 LHConnection::IsDisconnected(void)
     bool IsDisconnected();
-    // win1.41 100052d0 mac 100dd3b0 LHConnection::CheckForEvents(void)
+    // BW1W120 100052d0 BW1M100 100dd3b0 LHConnection::CheckForEvents(void)
     bool CheckForEvents();
-    // win1.41 10005330 mac 100dd1e0 LHConnection::GetProtocolVersion(void)
+    // BW1W120 10005330 BW1M100 100dd1e0 LHConnection::GetProtocolVersion(void)
     uint32_t GetProtocolVersion();
-    // win1.41 100df100 mac 100047b0 LHConnection::Read(unsigned long, LH_NETEVENT_TYPE)
+    // BW1W120 100df100 BW1M100 100047b0 LHConnection::Read(unsigned long, LH_NETEVENT_TYPE)
     LHNetEvent* Read(uint32_t param_1, LH_NETEVENT_TYPE type);
 };
 

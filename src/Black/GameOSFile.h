@@ -32,43 +32,43 @@ public:
 
     // Override methods
 
-    // win1.41 00558030 mac 1030fcb0 GameOSFile::_dt(void)
+    // BW1W120 00558030 BW1M100 1030fcb0 GameOSFile::_dt(void)
     virtual ~GameOSFile();
-    // win1.41 inlined mac inlined GameOSFile::Open(char *, LH_FILE_MODE)
+    // BW1W120 inlined BW1M100 inlined GameOSFile::Open(char *, LH_FILE_MODE)
     virtual uint32_t Open(const char* filename, LH_FILE_MODE mode);
 
     // Static methods
 
-    // win1.41 005587b0 mac 1030ef00 GameOSFile::LoadAllGame(char *)
+    // BW1W120 005587b0 BW1M100 1030ef00 GameOSFile::LoadAllGame(char *)
     static bool LoadAllGame(char* filename);
 
     // Non-virtual methods
 
-    // win1.41 inlined mac inlined GameOSFile::ReadIt<MapCoords>(MapCoords*)
+    // BW1W120 inlined BW1M100 inlined GameOSFile::ReadIt<MapCoords>(MapCoords*)
     void ReadIt_MapCoords_(MapCoords* out);
-    // win1.41 inlined mac inlined GameOSFile::ReadIt<uint8_t>(uint8_t*)
+    // BW1W120 inlined BW1M100 inlined GameOSFile::ReadIt<uint8_t>(uint8_t*)
     void ReadIt_u8_(uint8_t* out);
-    // win1.41 inlined mac inlined GameOSFile::ReadIt<uint16_t>(uint16_t*)
+    // BW1W120 inlined BW1M100 inlined GameOSFile::ReadIt<uint16_t>(uint16_t*)
     void ReadIt_u16_(uint16_t* out);
-    // win1.41 inlined mac 104f2b44 GameOSFile::ReadIt<float>(float*)
+    // BW1W120 inlined BW1M100 104f2b44 GameOSFile::ReadIt<float>(float*)
     void ReadIt_f32_(float* out);
-    // win1.41 00407700 mac 1010b3b0 GameOSFile::WriteIt<uint32_t>(uint32_t&)
+    // BW1W120 00407700 BW1M100 1010b3b0 GameOSFile::WriteIt<uint32_t>(uint32_t&)
     void WriteIt_u32_(uint32_t* val);
-    // win1.41 00407750 mac 10331500 GameOSFile::ReadIt<int>(int&)
+    // BW1W120 00407750 BW1M100 10331500 GameOSFile::ReadIt<int>(int&)
     void ReadIt_i32_(int* out);
-    // win1.41 004077a0 mac 10139ad0 GameOSFile::ReadIt<uint32_t>(uint32_t&)
+    // BW1W120 004077a0 BW1M100 10139ad0 GameOSFile::ReadIt<uint32_t>(uint32_t&)
     void ReadIt_u32_(uint32_t* out);
-    // win1.41 00558dc0 mac 10304ef0 GameOSFile::LoadInstance(GameThing **)
+    // BW1W120 00558dc0 BW1M100 10304ef0 GameOSFile::LoadInstance(GameThing **)
     void LoadInstance(GameThing** out_thing);
-    // win1.41 00561c60 mac 103049e0 GameOSFile::ResolveAllLoads(void)
+    // BW1W120 00561c60 BW1M100 103049e0 GameOSFile::ResolveAllLoads(void)
     void ResolveAllLoads();
-    // win1.41 00561e10 mac 10304650 GameOSFile::WritePtr(GameThing *)
+    // BW1W120 00561e10 BW1M100 10304650 GameOSFile::WritePtr(GameThing *)
     void WritePtr(GameThing* param_1);
-    // win1.41 00562180 mac 10304470 GameOSFile::ReadPtr(GameThing **)
+    // BW1W120 00562180 BW1M100 10304470 GameOSFile::ReadPtr(GameThing **)
     void ReadPtr(GameThing** ptr);
-    // win1.41 00563f00 mac 103008a0 GameOSFile::ReadInfo(GBaseInfo const **)
+    // BW1W120 00563f00 BW1M100 103008a0 GameOSFile::ReadInfo(GBaseInfo const **)
     void ReadInfo(GBaseInfo** info);
-    // win1.41 00563fa0 mac 10300720 GameOSFile::ReadCheckSum(GameThing *)
+    // BW1W120 00563fa0 BW1M100 10300720 GameOSFile::ReadCheckSum(GameThing *)
     void ReadCheckSum(GameThing* thing);
 };
 

@@ -11,7 +11,7 @@ public:
 
     // Override methods
 
-    // win1.41 00627b00 mac 1039bb00 MPFEDatabaseID::_dt(void)
+    // BW1W120 00627b00 BW1M100 1039bb00 MPFEDatabaseID::_dt(void)
     virtual ~MPFEDatabaseID();
 };
 

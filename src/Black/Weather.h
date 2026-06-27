@@ -16,15 +16,15 @@ public:
 
     // Override methods
 
-    // win1.41 0083f900 mac inlined GWeather::Update(float)
+    // BW1W120 0083f900 BW1M100 inlined GWeather::Update(float)
     virtual void Update(float param_1);
-    // win1.41 0083fc90 mac inlined GWeather::DrawClouds(void)
+    // BW1W120 0083fc90 BW1M100 inlined GWeather::DrawClouds(void)
     virtual void DrawClouds();
-    // win1.41 008402e0 mac inlined GWeather::DebugDraw(void)
+    // BW1W120 008402e0 BW1M100 inlined GWeather::DebugDraw(void)
     virtual void DebugDraw();
-    // win1.41 008400e0 mac inlined GWeather::CalcAtmos(LHPoint *, WeatherInfo *)
+    // BW1W120 008400e0 BW1M100 inlined GWeather::CalcAtmos(LHPoint *, WeatherInfo *)
     virtual void CalcAtmos(LHPoint* param_1, WeatherInfo* param_2);
-    // win1.41 00770e80 mac 105a36f0 GWeather::_dt(void)
+    // BW1W120 00770e80 BW1M100 105a36f0 GWeather::_dt(void)
     virtual ~GWeather();
 };
 

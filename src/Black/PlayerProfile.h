@@ -23,9 +23,9 @@ struct PlayerProfile
 
     // Static methods
 
-    // win1.41 0066b7a0 mac 104cbec0 PlayerProfile::SetCurrentProfile(wchar_t *)
+    // BW1W120 0066b7a0 BW1M100 104cbec0 PlayerProfile::SetCurrentProfile(wchar_t *)
     static void SetCurrentProfile(char16_t* name);
-    // win1.41 0066bfb0 mac 104cb130 PlayerProfile::ProfileExists(wchar_t *)
+    // BW1W120 0066bfb0 BW1M100 104cb130 PlayerProfile::ProfileExists(wchar_t *)
     static uint32_t ProfileExists(char16_t* name);
 };
 

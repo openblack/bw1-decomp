@@ -11,7 +11,7 @@ public:
 
     // Constructors
 
-    // win1.41 00816540 mac 100763e0 LH3DStaticObject::LH3DStaticObject(void)
+    // BW1W120 00816540 BW1M100 100763e0 LH3DStaticObject::LH3DStaticObject(void)
     LH3DStaticObject();
 };
 

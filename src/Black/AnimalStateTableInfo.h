@@ -16,9 +16,9 @@ public:
 
     // Override methods
 
-    // win1.41 00416e80 mac 1016b620 GAnimalStateTableInfo::_dt(void)
+    // BW1W120 00416e80 BW1M100 1016b620 GAnimalStateTableInfo::_dt(void)
     virtual ~GAnimalStateTableInfo();
-    // win1.41 00416e10 mac 1016cd20 GAnimalStateTableInfo::GetBaseInfo(unsigned long &)
+    // BW1W120 00416e10 BW1M100 1016cd20 GAnimalStateTableInfo::GetBaseInfo(unsigned long &)
     virtual GBaseInfo* GetBaseInfo(uint32_t* param_1);
 };
 
