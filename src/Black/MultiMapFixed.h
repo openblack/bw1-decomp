@@ -251,7 +251,7 @@ public:
     // BW1W120 0052e490 BW1M100 100e0d80 MultiMapFixed::IsObjectFullyInMap(void)
     virtual bool IsObjectFullyInMap();
     // BW1W120 0052e370 BW1M100 1002c2e0 MultiMapFixed::GetDoorPos(void)
-    virtual MapCoords* GetDoorPos(MapCoords* position);
+    virtual MapCoords GetDoorPos();
     // BW1W120 0052eca0 BW1M100 1004af20 MultiMapFixed::GetInfluence(void)
     virtual float GetInfluence();
     // BW1W120 0052e840 BW1M100 100e04f0 MultiMapFixed::CheckMapObject(void)
@@ -259,9 +259,9 @@ public:
     // BW1W120 0052f010 BW1M100 100debc0 MultiMapFixed::GetPercentRepairedFromWhenDamaged(void)
     virtual float GetPercentRepairedFromWhenDamaged();
     // BW1W120 00438d70 BW1M100 10368f30 MultiMapFixed::IsRepaired(void)
-    virtual bool IsRepaired();
+    virtual bool32_t IsRepaired();
     // BW1W120 00438d80 BW1M100 10570e90 MultiMapFixed::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_t IsBuilt();
     // BW1W120 0052efc0 BW1M100 100dedd0 MultiMapFixed::GetPercentRepairedForNonFunctional(void)
     virtual float GetPercentRepairedForNonFunctional();
     // BW1W120 0052efd0 BW1M100 100ded00 MultiMapFixed::GetPercentForDrawBuilding(void)
@@ -291,11 +291,11 @@ public:
     // BW1W120 00422080 BW1M100 100a57d0 MultiMapFixed::DoResourceRemoving(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
     virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool param_4);
     // BW1W120 00422090 BW1M100 inlined MultiMapFixed::SetTown(void)
-    virtual bool SetTown(Town* town);
+    virtual void SetTown(Town* town);
     // BW1W120 0052f160 BW1M100 100de8b0 MultiMapFixed::RemovePotFromStructure(PotStructure *)
     virtual void RemovePotFromStructure(PotStructure* structure);
     // BW1W120 004220b0 BW1M100 100a58c0 MultiMapFixed::GetShouldNotBeAddedToPlanned(void)
-    virtual bool GetShouldNotBeAddedToPlanned();
+    virtual bool32_t GetShouldNotBeAddedToPlanned();
     // BW1W120 004220c0 BW1M100 100a5910 MultiMapFixed::SetShouldNotBeAddedToPlanned(int)
     virtual void SetShouldNotBeAddedToPlanned(bool value);
     // BW1W120 0052ed40 BW1M100 100df2d0 MultiMapFixed::BuildBy(float)
