@@ -799,7 +799,6 @@ config.libs = [
             Object(NonMatching, "Black/Reaction.cpp"),
             Object(NonMatching, "Black/ReactionInfo.cpp"),
             Object(NonMatching, "Black/RegisterBox.cpp"),
-            Object(NonMatching, "Black/reward.cpp"),
             Object(NonMatching, "Black/Reward.cpp"),
             Object(NonMatching, "Black/RewardInfo.cpp"),
             Object(NonMatching, "Black/Rock.cpp"),
