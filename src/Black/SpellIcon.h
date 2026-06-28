@@ -110,9 +110,9 @@ public:
     // BW1W120 007260e0 BW1M100 10525630 SpellIcon::InteractsWithPhysicsObjects(void)
     virtual bool InteractsWithPhysicsObjects();
     // BW1W120 0055d3b0 BW1M100 10525de0 SpellIcon::IsRepaired(void)
-    virtual bool IsRepaired();
+    virtual bool32_t IsRepaired();
     // BW1W120 0055d3d0 BW1M100 100c7990 SpellIcon::IsBuilt(void)
-    virtual bool IsBuilt();
+    virtual bool32_t IsBuilt();
 
     // Constructors
 

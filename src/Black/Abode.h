@@ -49,7 +49,10 @@ class Town;
 class Abode: public MultiMapFixed
 {
 public:
-    uint32_t field_0x7c;
+    uint8_t field_0x7c;
+    uint8_t field_0x7d;
+    uint8_t field_0x7e;
+    uint8_t field_0x7f;
     MapCoords drinking_water; /* 0x80 */
     LH3DSmoke* smoke;
     LH3DMesh* destruction_mesh; /* 0x90 */
@@ -68,6 +71,95 @@ public:
     uint32_t resources[RESOURCE_TYPE_LAST];
 
     // Override methods
+
+    // BW1W120 00401650 BW1M100 10565230 Abode::GetShouldNotBeAddedToPlanned(void)
+    virtual bool32_t GetShouldNotBeAddedToPlanned()
+    {
+        return (field_0x7c & 4) >> 2;
+    }
+    // BW1W120 00401660 BW1M100 1031a9a0 Abode::SetShouldNotBeAddedToPlanned(int)
+    virtual void SetShouldNotBeAddedToPlanned(bool value)
+    {
+        field_0x7c |= (value << 2);
+    }
+    // BW1W120 00401680 BW1M100 10371be0 Abode::RestartBeingFunctional(void)
+    virtual void RestartBeingFunctional()
+    {
+    }
+    // BW1W120 00401690 BW1M100 1037f370 Abode::SetTown(Town *)
+    virtual void SetTown(Town* _town)
+    {
+        town = _town;
+    }
+    // BW1W120 004016a0 BW1M100 10066b80 Abode::IsRepaired(void)
+    virtual bool32_t IsRepaired()
+    {
+        return GetPercentRepaired() >= 1.0f;
+    }
+    // BW1W120 004016c0 BW1M100 10055bb0 Abode::IsBuilt(void)
+    virtual bool32_t IsBuilt()
+    {
+        if (field_0x58 & 2)
+        {
+            return false;
+        }
+        return GetPercentBuilt() >= 1.0f;
+    }
+    // BW1W120 004016f0 BW1M100 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
+    virtual bool32_t CausesTownEmergencyIfDamaged()
+    {
+        return false;
+    }
+    // BW1W120 00401700 BW1M100 105756c0 Abode::GetDestructionMesh(void)
+    virtual LH3DMesh* GetDestructionMesh()
+    {
+        return destruction_mesh;
+    }
+    // BW1W120 00401710 BW1M100 100970f0 Abode::IsAbode(void)
+    virtual bool32_t IsAbode()
+    {
+        return true;
+    }
+    // BW1W120 00401720 BW1M100 10435a10 Abode::IsCastShadowAtNight(void)
+    virtual bool32_t IsCastShadowAtNight()
+    {
+        return true;
+    }
+    // BW1W120 00401740 BW1M100 1040f9d0 Abode::GetCreatureBeliefType(void)
+    virtual uint32_t GetCreatureBeliefType()
+    {
+        return 3;
+    }
+    // BW1W120 00401750 BW1M100 100a48c0 Abode::GetCreatureMimicType(void)
+    virtual uint32_t GetCreatureMimicType()
+    {
+        return 5;
+    }
+    // BW1W120 00401760 BW1M100 10110c50 Abode::GetOrigin(void)
+    virtual uint32_t GetOrigin()
+    {
+        return 1;
+    }
+    // BW1W120 00401770 BW1M100 1000c2b0 Abode::GetArrivePos(void)
+    virtual MapCoords GetArrivePos()
+    {
+        return GetDoorPos();
+    }
+    // BW1W120 00401790 BW1M100 10134300 Abode::IsHouse(void)
+    virtual bool32_t IsHouse()
+    {
+        return true;
+    }
+    // BW1W120 004017a0 BW1M100 103e1790 Abode::GetSaveType(void)
+    virtual uint32_t GetSaveType()
+    {
+        return 0x7;
+    }
+    // BW1W120 004017b0 BW1M100 10434340 Abode::GetDebugText(void)
+    virtual char* GetDebugText()
+    {
+        return "Abode:";
+    }
 
     // BW1W120 004017c0 BW1M100 103d4980 Abode::_dt(unsigned int)
     virtual ~Abode();
@@ -95,38 +187,20 @@ public:
     virtual uint16_t GetNumberOfInstanceForGlobalList();
     // BW1W120 00406200 BW1M100 1005ff20 Abode::IsFunctional(void)
     virtual bool IsFunctional();
-    // BW1W120 004017b0 BW1M100 10434340 Abode::GetDebugText(void)
-    virtual char* GetDebugText();
     // BW1W120 00406d20 BW1M100 101a2920 Abode::Load(GameOSFile &)
     virtual uint32_t Load(GameOSFile* file);
     // BW1W120 00406a10 BW1M100 103bd750 Abode::Save(GameOSFile &)
     virtual uint32_t Save(GameOSFile* file);
-    // BW1W120 004017a0 BW1M100 103e1790 Abode::GetSaveType(void)
-    virtual uint32_t GetSaveType();
-    // BW1W120 00401770 BW1M100 1000c2b0 Abode::GetArrivePos(void)
-    virtual MapCoords* GetArrivePos(MapCoords* coords);
-    // BW1W120 00401740 BW1M100 1040f9d0 Abode::GetCreatureBeliefType(void)
-    virtual uint32_t GetCreatureBeliefType();
-    // BW1W120 00401760 BW1M100 10110c50 Abode::GetOrigin(void)
-    virtual uint32_t GetOrigin();
     // BW1W120 00407200 BW1M100 1008a7b0 Abode::IsInteractable(void)
     virtual bool IsInteractable();
-    // BW1W120 00401720 BW1M100 10435a10 Abode::IsCastShadowAtNight(void)
-    virtual bool32_t IsCastShadowAtNight();
-    // BW1W120 00401710 BW1M100 100970f0 Abode::IsAbode(void)
-    virtual bool32_t IsAbode();
     // BW1W120 004e43f0 BW1M100 105e5610 Abode::CanBeStompedOnByCreature(Creature *)
     virtual bool32_t CanBeStompedOnByCreature(Creature* creature);
     // BW1W120 004e3fa0 BW1M100 105e63e0 Abode::CanBeKickedByCreature(Creature *)
     virtual bool32_t CanBeKickedByCreature(Creature* creature);
-    // BW1W120 00401750 BW1M100 100a48c0 Abode::GetCreatureMimicType(void)
-    virtual uint32_t GetCreatureMimicType();
     // BW1W120 004d1b60 BW1M100 10242f80 Abode::GetHowMuchCreatureWantsToLookAtMe(void)
     virtual float GetHowMuchCreatureWantsToLookAtMe();
     // BW1W120 0063b940 BW1M100 103da700 Abode::CalculateWhereIWillBeAfterNSeconds(float, LHPoint *)
     virtual void CalculateWhereIWillBeAfterNSeconds(float seconds, LHPoint* outPos);
-    // BW1W120 00401790 BW1M100 10134300 Abode::IsHouse(void)
-    virtual bool32_t IsHouse();
     // BW1W120 004061c0 BW1M100 1014d0e0 Abode::IsWonder(void)
     virtual bool32_t IsWonder();
     // BW1W120 00406810 BW1M100 1001b380 Abode::GetScriptObjectType(void)
@@ -177,10 +251,6 @@ public:
     virtual bool ShouldFootpathsGoRound();
     // BW1W120 004072a0 BW1M100 10053220 Abode::GetInfluence(void)
     virtual float GetInfluence();
-    // BW1W120 004016a0 BW1M100 10066b80 Abode::IsRepaired(void)
-    virtual bool IsRepaired();
-    // BW1W120 004016c0 BW1M100 10055bb0 Abode::IsBuilt(void)
-    virtual bool IsBuilt();
     // BW1W120 00407290 BW1M100 10064f30 Abode::GetPercentRepairedForNonFunctional(void)
     virtual float GetPercentRepairedForNonFunctional();
     // BW1W120 00407050 BW1M100 1004d310 Abode::GetPercentAbodeFullWithAdults(void)
@@ -191,8 +261,6 @@ public:
     virtual bool Built();
     // BW1W120 004047b0 BW1M100 105b9280 Abode::Repaired(void)
     virtual bool Repaired();
-    // BW1W120 00401700 BW1M100 105756c0 Abode::GetDestructionMesh(void)
-    virtual LH3DMesh* GetDestructionMesh();
     // BW1W120 00403f40 BW1M100 105861b0 Abode::RemoveDamage(void)
     virtual void RemoveDamage();
     // BW1W120 00405ff0 BW1M100 10199f30 Abode::IsCivic(void)
@@ -205,12 +273,6 @@ public:
     virtual uint32_t DoResourceAdding(RESOURCE_TYPE type, GInterfaceStatus* iface, bool param_3, MapCoords* param_4, int param_5);
     // BW1W120 00404f60 BW1M100 104f7960 Abode::DoResourceRemoving(RESOURCE_TYPE, unsigned long, GInterfaceStatus *, bool *)
     virtual uint32_t DoResourceRemoving(RESOURCE_TYPE type, uint32_t param_2, GInterfaceStatus* iface, bool param_4);
-    // BW1W120 00401690 BW1M100 1037f370 Abode::SetTown(Town *)
-    virtual bool SetTown(Town* town);
-    // BW1W120 00401650 BW1M100 10565230 Abode::GetShouldNotBeAddedToPlanned(void)
-    virtual bool GetShouldNotBeAddedToPlanned();
-    // BW1W120 00401660 BW1M100 1031a9a0 Abode::SetShouldNotBeAddedToPlanned(int)
-    virtual void SetShouldNotBeAddedToPlanned(bool value);
     // BW1W120 00405050 BW1M100 100a3330 Abode::ConvertToPlanned(void)
     virtual PlannedMultiMapFixed* ConvertToPlanned();
     // BW1W120 00404520 BW1M100 1036d5a0 Abode::MoveAbodeToPlannedAbodes(void)
@@ -221,10 +283,6 @@ public:
     virtual void MakeFunctional();
     // BW1W120 004073c0 BW1M100 103b5600 Abode::StopBeingFunctional(GPlayer *)
     virtual void StopBeingFunctional(GPlayer* param_1);
-    // BW1W120 00401680 BW1M100 10371be0 Abode::RestartBeingFunctional(void)
-    virtual void RestartBeingFunctional();
-    // BW1W120 004016f0 BW1M100 101cbc80 Abode::CausesTownEmergencyIfDamaged(void)
-    virtual bool CausesTownEmergencyIfDamaged();
     // BW1W120 00407280 BW1M100 100dcdb0 Abode::CanBeHiddenIn(void)
     virtual bool CanBeHiddenIn();
     // BW1W120 00405f50 BW1M100 103b5680 Abode::GetTribe(void)
