@@ -864,6 +864,10 @@ lib/libcmt/cfout.obj:
 lib/libcmt/ullrem.obj:
 	.text       start:0x007C8DF0 end:0x007C8E65 align:1
 
+lib/libcmt/inithelp.obj:
+	.text       start:0x007CA2E0 end:0x007CA418 align:1
+	.bss        start:0x00E72F2C end:0x00E72F34
+
 lib/libcmt/strnicmp.obj:
 	.text       start:0x007CA420 end:0x007CA521 align:1
 
