@@ -17,7 +17,6 @@ Town* Abode::GetTown()
     return town;
 }
 
-
 Abode::Abode(const MapCoords& coords, const GAbodeInfo* info, Town* town, float y_angle, float scale, float food, int wood)
     : MultiMapFixed(coords, info, y_angle, scale, food, wood)
     , drinking_water(0, 0, 0.0f)
