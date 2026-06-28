@@ -20954,6 +20954,7 @@ _term_action = .data:0x00D5B480; // type:object size:0x8 scope:local
 __adbgmsg = .data:0x00D5B488; // type:object size:0x4 scope:global
 _?_pgmname@?1??_setargv@@9@9 = .data:0x00D5B48C; // type:object size:0x104 scope:local
 _?f_use@?1??__crtGetEnvironmentStringsA@@9@9 = .data:0x00D5B590; // type:object size:0x4 scope:local
+_?wcbuffer@?4??__getlocaleinfo@@9@9 = .data:0x00D5B610; // type:object size:0x8 scope:global
 ___sbh_threshold = .data:0x00ECCA00; // type:object size:0x4 scope:global
 __crtheap = .data:0x00ECCA04; // type:object size:0x4
 ___active_heap = .data:0x00ECCA08; // type:object size:0x8 scope:global

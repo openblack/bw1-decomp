@@ -31443,6 +31443,7 @@ _iLcidState = .data:0x00E84540; // type:object size:0x4
 data_0x00e84541 = .data:0x00E84541; // type:object size:0x3 scope:local stripped
 _lcidCountry = .data:0x00E84544; // type:object size:0x4
 _pfnGetLocaleInfoA = .data:0x00E84548; // type:object size:0x4
+_?wcbuffer@?4??__getlocaleinfo@@9@9 = .data:0x00E84564; // type:object size:0x8 scope:global
 __setjmpexused = .data:0x00FAC888; // type:object size:0xD8 scope:global
 ?_Stz@?$fpos@H@std@@0HA = .data:0x00FAC930; // type:object size:0x8 scope:global
 ?_Stinit@?1??_Init@?$basic_filebuf@GU?$char_traits@G@std@@@std@@IAEXPAU_iobuf@@W4_Initfl@23@@Z@4HA = .data:0x00FAC938; // type:object size:0x28 scope:global
