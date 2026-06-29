@@ -1033,6 +1033,9 @@ lib/libcmt/cfout.obj:
 lib/libcmt/ullrem.obj:
 	.text       start:0x007D8FF0 end:0x007D9065 align:1
 
+lib/libcmt/ismbbyte.obj:
+	.text       start:0x007DA4C8 end:0x007DA5D6 align:1
+
 lib/libcmt/inithelp.obj:
 	.text       start:0x007DA5D6 end:0x007DA70E align:1
 	.bss        start:0x00E84564 end:0x00E8456C
