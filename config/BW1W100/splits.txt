@@ -951,6 +951,15 @@ lib/libcmt/cfout.obj:
 lib/libcmt/ullrem.obj:
 	.text       start:0x00744AB0 end:0x00744B25 align:1
 
+lib/libcmt/validate.obj:
+	.text       start:0x007455B0 end:0x00745600 align:1
+
+lib/libcmt/strgtold.obj:
+	.text       start:0x00745600 end:0x00745AD1 align:1
+
+lib/libcmt/wcstombs.obj:
+	.text       start:0x00745AD1 end:0x00745D0C align:1
+
 lib/libcmt/crtmbox.obj:
 	.text       start:0x00745D0C end:0x00745D95 align:1
 	.rdata      start:0x008D7338 end:0x008D7374 align:4
