@@ -1033,6 +1033,9 @@ lib/libcmt/cfout.obj:
 lib/libcmt/ullrem.obj:
 	.text       start:0x007D8FF0 end:0x007D9065 align:1
 
+lib/libcmt/lseeki64.obj:
+	.text       start:0x007DA3D2 end:0x007DA4C8 align:1
+
 lib/libcmt/ismbbyte.obj:
 	.text       start:0x007DA4C8 end:0x007DA5D6 align:1
 

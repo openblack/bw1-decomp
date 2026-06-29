@@ -961,6 +961,9 @@ lib/libcmt/inithelp.obj:
 lib/libcmt/strnicmp.obj:
 	.text       start:0x00745F10 end:0x00746011 align:1
 
+lib/libcmt/lseeki64.obj:
+	.text       start:0x00746011 end:0x00746107 align:1
+
 lib/libcmt/mantold.obj:
 	.text       start:0x00746107 end:0x007462A8 align:1
 
