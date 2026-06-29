@@ -668,9 +668,6 @@ lib/libcmt/onexit.obj:
 lib/libcmt/sprintf.obj:
 	.text       start:0x00733E17 end:0x00733E69 align:1
 
-align_pad_00733E69:
-	.text       start:0x00733E69 end:0x00733E93 align:1
-
 lib/libcmt/toupper.obj:
 	.text       start:0x00733E93 end:0x00733FCE align:1
 
@@ -727,9 +724,6 @@ lib/libcmt/unlink.obj:
 lib/libcmt/getenv.obj:
 	.text       start:0x00734D34 end:0x00734DD2 align:1
 
-align_pad_00734dd2:
-	.text       start:0x00734DD2 end:0x00734DE0 align:1
-
 lib/libcmt/stricmp.obj:
 	.text       start:0x00734DE0 end:0x00734EB0 align:1
 
@@ -741,9 +735,6 @@ lib/libcmt/fopen.obj:
 
 lib/libcmt/fclose.obj:
 	.text       start:0x00734F30 end:0x00734FAD align:1
-
-align_pad_00734FAD:
-	.text       start:0x00734FAD end:0x00734FB0 align:1
 
 lib/libcmt/chkstk.obj:
 	.text       start:0x00734FB0 end:0x00734FDF align:1
@@ -856,9 +847,6 @@ lib/libcmt/_freebuf.obj:
 lib/libcmt/ctype.obj:
 	.data       start:0x00B50020 end:0x00B5022A align:1
 
-align_pad_00B5022A:
-	.data       start:0x00B5022A end:0x00B5022C align:1
-
 lib/libcmt/nlsdata1.obj:
 	.data       start:0x00B5022C end:0x00B50238 align:1
 
@@ -870,21 +858,12 @@ lib/libcmt/fpctrl.obj:
 	.text       start:0x0073DABB end:0x0073DB51 align:1
 	.data       start:0x00B52458 end:0x00B52470 align:1
 
-align_pad_0073DB51:
-	.text       start:0x0073DB51 end:0x0073DB54 align:1
-
 lib/libcmt/87disp.obj:
 	.text       start:0x0073DB60 end:0x0073DD2A align:1
 	.data       start:0x00B52470 end:0x00B5249C align:1
 
-align_pad_0073DD2A:
-	.text       start:0x0073DD2A end:0x0073DD2C align:1
-
 lib/libcmt/powhlp.obj:
 	.text       start:0x0073EE97 end:0x0073F02C align:1
-
-align_pad_00B5249C:
-	.data       start:0x00B5249C end:0x00B524A0 align:1
 
 lib/libcmt/timeset.obj:
 	.rdata      start:0x008D68A4 end:0x008D68E4 align:4

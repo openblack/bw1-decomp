@@ -762,9 +762,6 @@ lib/libcmt/xtow.obj:
 lib/libcmt/purevirt.obj:
 	.text       start:0x007C60DB end:0x007C60E4 align:1
 
-align_pad_007C60E4:
-	.text       start:0x007C60E4 end:0x007C60F0 align:1
-
 lib/libcmt/memmove.obj:
 	.text       start:0x007C60F0 end:0x007C6425 align:1
 
