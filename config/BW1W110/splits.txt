@@ -580,12 +580,6 @@ lib/libcmt/xtow.obj:
 lib/libcmt/purevirt.obj:
 	.text       start:0x007B58D6 end:0x007B58DF align:1
 
-align_pad_007B58DF:
-	.text       start:0x007B58DF end:0x007B58E0 align:1
-
-align_pad_00C1C208:
-	.data       start:0x00C1C208 end:0x00C1C210 align:1
-
 lib/libcmt/memmove.obj:
 	.text       start:0x007B58E0 end:0x007B5C15 align:1
 	.data       start:0x00C1C210 end:0x00C1C210 align:1
@@ -631,9 +625,6 @@ lib/libcmt/unlink.obj:
 lib/libcmt/getenv.obj:
 	.text       start:0x007B6A49 end:0x007B6AE7 align:1
 
-align_pad_007b6ae7:
-	.text       start:0x007B6AE7 end:0x007B6AE8 align:1
-
 lib/libcmt/stricmp.obj:
 	.text       start:0x007B6AF0 end:0x007B6BC0 align:1
 
@@ -645,9 +636,6 @@ lib/libcmt/fopen.obj:
 
 lib/libcmt/fclose.obj:
 	.text       start:0x007B6C40 end:0x007B6CBD align:1
-
-align_pad_007B6CBD:
-	.text       start:0x007B6CBD end:0x007B6CC0 align:1
 
 lib/libcmt/chkstk.obj:
 	.text       start:0x007B6CC0 end:0x007B6CEF align:1
@@ -766,9 +754,6 @@ lib/libcmt/ldexp.obj:
 lib/libcmt/ctype.obj:
 	.data       start:0x00C1C970 end:0x00C1CB7A align:1
 
-align_pad_00C1CB7A:
-	.data       start:0x00C1CB7A end:0x00C1CB7C align:1
-
 lib/libcmt/nlsdata1.obj:
 	.data       start:0x00C1CB7C end:0x00C1CB88 align:1
 
@@ -784,14 +769,8 @@ lib/libcmt/87disp.obj:
 	.text       start:0x007C17F0 end:0x007C19BA align:1
 	.data       start:0x00C1EDC0 end:0x00C1EDEC align:1
 
-align_pad_007C19BA:
-	.text       start:0x007C19BA end:0x007C19BC align:1
-
 lib/libcmt/powhlp.obj:
 	.text       start:0x007C2C07 end:0x007C2D9C align:1
-
-align_pad_00C1EDEC:
-	.data       start:0x00C1EDEC end:0x00C1EDF0 align:1
 
 lib/libcmt/timeset.obj:
 	.rdata      start:0x009909F4 end:0x00990A34 align:4
