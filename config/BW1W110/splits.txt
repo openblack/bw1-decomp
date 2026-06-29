@@ -864,6 +864,11 @@ lib/libcmt/cfout.obj:
 lib/libcmt/ullrem.obj:
 	.text       start:0x007C8DF0 end:0x007C8E65 align:1
 
+lib/libcmt/crtmbox.obj:
+	.text       start:0x007CA149 end:0x007CA1D2 align:1
+	.rdata      start:0x009914A0 end:0x009914DC align:4
+	.bss        start:0x00E72F20 end:0x00E72F2C align:4
+
 lib/libcmt/ismbbyte.obj:
 	.text       start:0x007CA1D2 end:0x007CA2E0 align:1
 

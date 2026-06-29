@@ -1033,6 +1033,11 @@ lib/libcmt/cfout.obj:
 lib/libcmt/ullrem.obj:
 	.text       start:0x007D8FF0 end:0x007D9065 align:1
 
+lib/libcmt/crtmbox.obj:
+	.text       start:0x007DA349 end:0x007DA3D2 align:1
+	.rdata      start:0x009A15A0 end:0x009A15DC align:4
+	.bss        start:0x00E84558 end:0x00E84564 align:4
+
 lib/libcmt/lseeki64.obj:
 	.text       start:0x007DA3D2 end:0x007DA4C8 align:1
 
